@@ -5,10 +5,13 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-// Exclude Compose-generated resource files from ktlint in this subproject.
+// ktlint-gradle 12.x with KMP + Compose Multiplatform pulls files under
+// build/generated/ into its source sets, which makes KtLintCheckTask try to
+// lint generated Kotlin (e.g. Compose resource accessors). Exclude anything
+// under any build/generated/ directory until the plugin handles this natively.
 tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.BaseKtLintCheckTask>().configureEach {
     exclude { element ->
-        element.file.absolutePath.contains("${File.separator}build${File.separator}generated${File.separator}")
+        element.file.invariantSeparatorsPath.contains("/build/generated/")
     }
 }
 
