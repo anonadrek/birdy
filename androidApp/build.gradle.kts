@@ -1,1 +1,1 @@
-// Will be filled in by Task 2 (androidApp module setup)
+// Will be filled in by Task 7 (androidApp module setup)

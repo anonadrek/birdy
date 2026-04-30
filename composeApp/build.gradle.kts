@@ -1,1 +1,1 @@
-// Will be filled in by Task 2 (composeApp module setup)
+// Will be filled in by Task 6 (composeApp module setup)
