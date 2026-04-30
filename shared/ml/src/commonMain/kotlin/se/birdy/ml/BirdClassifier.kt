@@ -36,11 +36,11 @@ data class Classification(
 ) {
     fun top(): ClassificationResult? = results.maxByOrNull { it.confidence }
 
-    fun sortedByConfidenceDescending(): List<ClassificationResult> =
-        results.sortedByDescending { it.confidence }
+    fun sortedByConfidenceDescending(): List<ClassificationResult> = results.sortedByDescending { it.confidence }
 }
 
 expect class BirdClassifier {
     suspend fun classify(image: ImageInput): Classification
+
     fun close()
 }
