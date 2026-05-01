@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status:** Plan 1 (Foundation) är låst och pågår. Specs/plans-driven utveckling — vi diskuterar i brainstorming, skriver spec, skriver implementationsplan, sen exekverar.
+**Status (2026-05-01):** Plan 1 (Foundation) Tasks 1–11 ✅ committade och CI grönt på `main`. Task 12 (visuell on-device-verifiering + tag `v0.1.0-foundation`) återstår. Specs/plans-driven utveckling — vi diskuterar i brainstorming, skriver spec, skriver implementationsplan, sen exekverar.
 
 ## Var hittar du saker
 
@@ -23,7 +23,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 
 | # | Plan | Status |
 |---|---|---|
-| 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | **Pågår** |
+| 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | **Tasks 1–11 klara, Task 12 (verifiering+tag) återstår** |
 | 2 | Content pipeline (species data → species.db) | Nästa |
 | 3 | Encyclopedia (browse + species profile) | |
 | 4 | ML & Camera (TFLite + CameraX) | |
@@ -116,11 +116,38 @@ Tema-tokens implementeras i `composeApp/.../ui/theme/Color.kt` och `Type.kt` (Pl
 - **CI:** GitHub Actions (ktlint, detekt, unit tests, assembleDebug, APK-artefakt)
 - **Statisk analys:** ktlint 12.1.2 + detekt 1.23.7
 
+## Lokal utvecklingsmiljö (Windows + Galaxy S23 Ultra)
+
+Allt verktyg är installerat och konfigurerat:
+
+| Vad | Var |
+|---|---|
+| JDK 21 (Temurin) | `C:\Java\OpenJDK21U-jdk_x64_windows_hotspot_21.0.11_10\jdk-21.0.11+10\` |
+| Android SDK (platform-35, build-tools 34/36/37) | `C:\Users\abbea\AppData\Local\Android\Sdk` |
+| ADB | `C:\Users\abbea\AppData\Local\Android\Sdk\platform-tools\adb.exe` |
+| `local.properties` (gitignored) | redan satt med `sdk.dir` |
+| Telefon | SM-S918B (Galaxy S23 Ultra), USB-felsökning på, RSA-auktoriserad |
+
+**Standard-prefix för alla `./gradlew`-kommandon i bash:**
+
+```bash
+export JAVA_HOME="C:/Java/OpenJDK21U-jdk_x64_windows_hotspot_21.0.11_10/jdk-21.0.11+10"
+export PATH="$JAVA_HOME/bin:$PATH"
+```
+
+(Annars hittar Gradle inte Java på vägen.)
+
 ## Vanliga kommandon
 
 ```bash
-# Bygga + installera
+# Bygga + installera på ansluten enhet
 ./gradlew :androidApp:installDebug
+
+# Starta appen efter installation
+"/c/Users/abbea/AppData/Local/Android/Sdk/platform-tools/adb.exe" shell am start -n se.birdy.android/.MainActivity
+
+# Verifiera ADB ser enheten
+"/c/Users/abbea/AppData/Local/Android/Sdk/platform-tools/adb.exe" devices
 
 # Tester (snabba — bara delade moduler på JVM)
 ./gradlew :shared:domain:jvmTest :shared:ml:jvmTest
@@ -149,3 +176,25 @@ Branches: `main` är default. Plan-arbete sker på `main` med små commits per t
 Om en plan-task är otydlig eller kräver beslut, **stoppa och fråga** istället för att gissa. Bättre att pausa fem minuter än att rulla med fel antagande i tre tasks.
 
 Om du upptäcker en spec-motsägelse, lyft det direkt — vi uppdaterar specen tillsammans.
+
+## Autonomi-direktiv (gäller löpande)
+
+Användaren har sagt: **"Don't ask me for permission to run anything."** Det betyder:
+
+- Kör operationer som planen specar utan att be om bekräftelse — commits, push, gradle-kommandon, file-edits enligt task.
+- Vid scope-creep eller spec-avvikelse upptäckta i review: fixa autonomt (t.ex. soft-reset + re-commit för att splitta scope-creepiga commits).
+- Det betyder INTE att ignorera blockerare som kräver fysisk åtkomst (telefon, emulator) eller tredjepartsbeslut (CI-resultat) — där rapporterar man status och väntar.
+- Det betyder INTE heller att hoppa över granskning. Två-stegs-review (spec → kvalitet) körs alltid mellan tasks per `subagent-driven-development`.
+
+## Återstående för Plan 1 (vid sessionsstart)
+
+Plan 1 Task 12 är en manuell verifierings-grind. Om Task 12 inte är klar:
+
+1. Säkerställ att appen är installerad (`./gradlew :androidApp:installDebug` med JAVA_HOME satt — telefon ansluten med USB-debug).
+2. Användaren tittar på enheten och bekräftar Mossbädd-paletten + texterna.
+3. Ta en skärmdump: `adb exec-out screencap -p > docs/superpowers/screenshots/2026-04-30-foundation-home.png`
+4. Commit: `git add docs/superpowers/screenshots/ && git commit -m "docs: add foundation milestone screenshot"`
+5. `git push`
+6. Tagg: `git tag v0.1.0-foundation && git push --tags`
+
+Sen är Plan 1 klar och vi går till Plan 2 (Content pipeline).
