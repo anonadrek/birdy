@@ -40,3 +40,6 @@ Pods/
 Thumbs.db
 *.swp
 *~
+
+tools/content-pipeline/.cache/
+tools/content-pipeline/.env

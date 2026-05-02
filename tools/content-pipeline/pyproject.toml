@@ -1,0 +1,55 @@
+[project]
+name = "birdy-fetcher"
+version = "0.1.0"
+description = "Birdy Bird Scanner content pipeline — fetch & generate species YAML"
+requires-python = ">=3.12"
+dependencies = [
+    "click>=8.1.7",
+    "anthropic>=0.40.0",
+    "aiohttp>=3.10.10",
+    "pyyaml>=6.0.2",
+    "pillow>=11.0.0",
+    "rich>=13.9.4",
+    "platformdirs>=4.3.6",
+    "pydantic>=2.9.2",
+    "pdfplumber>=0.11.4",
+    "openpyxl>=3.1.5",
+]
+
+[project.scripts]
+birdy-fetcher = "birdy_fetcher.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/birdy_fetcher"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.3",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.7.4",
+    "mypy>=1.13.0",
+    "types-pyyaml>=6.0.12",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+disallow_untyped_defs = true
+warn_unused_ignores = true
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-v --strict-markers"
