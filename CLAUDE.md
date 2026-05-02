@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-01):** Plan 1 (Foundation) Tasks 1–11 ✅ committade och CI grönt på `main`. Task 12 (visuell on-device-verifiering + tag `v0.1.0-foundation`) återstår. Specs/plans-driven utveckling — vi diskuterar i brainstorming, skriver spec, skriver implementationsplan, sen exekverar.
+**Status (2026-05-02):** Plan 1 (Foundation) ✅ klar — alla 12 tasks committade, CI grönt, milstolpe taggad `v0.1.0-foundation`. Nästa: Plan 2 (Content pipeline). Specs/plans-driven utveckling — vi diskuterar i brainstorming, skriver spec, skriver implementationsplan, sen exekverar.
 
 ## Var hittar du saker
 
@@ -23,8 +23,8 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 
 | # | Plan | Status |
 |---|---|---|
-| 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | **Tasks 1–11 klara, Task 12 (verifiering+tag) återstår** |
-| 2 | Content pipeline (species data → species.db) | Nästa |
+| 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ Klar (`v0.1.0-foundation`) |
+| 2 | Content pipeline (species data → species.db) | **Nästa** |
 | 3 | Encyclopedia (browse + species profile) | |
 | 4 | ML & Camera (TFLite + CameraX) | |
 | 5 | Diary & Gamification | |
@@ -186,15 +186,13 @@ Användaren har sagt: **"Don't ask me for permission to run anything."** Det bet
 - Det betyder INTE att ignorera blockerare som kräver fysisk åtkomst (telefon, emulator) eller tredjepartsbeslut (CI-resultat) — där rapporterar man status och väntar.
 - Det betyder INTE heller att hoppa över granskning. Två-stegs-review (spec → kvalitet) körs alltid mellan tasks per `subagent-driven-development`.
 
-## Återstående för Plan 1 (vid sessionsstart)
+## Nästa steg: Plan 2 (Content pipeline)
 
-Plan 1 Task 12 är en manuell verifierings-grind. Om Task 12 inte är klar:
+Plan 1 är klar (`v0.1.0-foundation`, 2026-05-02). Nästa fas är att bygga content pipeline:
 
-1. Säkerställ att appen är installerad (`./gradlew :androidApp:installDebug` med JAVA_HOME satt — telefon ansluten med USB-debug).
-2. Användaren tittar på enheten och bekräftar Mossbädd-paletten + texterna.
-3. Ta en skärmdump: `adb exec-out screencap -p > docs/superpowers/screenshots/2026-04-30-foundation-home.png`
-4. Commit: `git add docs/superpowers/screenshots/ && git commit -m "docs: add foundation milestone screenshot"`
-5. `git push`
-6. Tagg: `git tag v0.1.0-foundation && git push --tags`
+- Definiera species-data-schema (vetenskapligt namn, lokalt namn SV/EN, familj, beskrivning, distribution, säsong, sång, etc.).
+- Välj datakälla (eBird/IOC/manuell kuratering — beslut behövs).
+- Bygg pipeline som genererar `species.db` (SQLDelight) som packas med appen.
+- Skissa Encyclopedia-skärmen i förbigående för att validera schemat.
 
-Sen är Plan 1 klar och vi går till Plan 2 (Content pipeline).
+Innan första task: **brainstorma scope + datakälla** med `superpowers:brainstorming`, sen skriv plan med `superpowers:writing-plans`.
