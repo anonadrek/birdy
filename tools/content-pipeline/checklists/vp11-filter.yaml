@@ -1,0 +1,11 @@
+# Filter applied to VP11 art-listan. Endast arter med en av dessa status-koder
+# inkluderas i species_list.yaml. R (raritet) exkluderas i v1 — för få träffar
+# i Sverige för att motivera content-arbete.
+description: VP11-status-koder att inkludera i Birdy v1
+include_statuses:
+  - H        # häckfågel i WP
+  - h        # häckningsstatus oklar/oregelbunden
+  - F        # flyttfågel
+  - "(H)"    # parentes — icke-etablerad häckare
+# Avsiktligt exkluderade:
+#   R   raritet — sällan sedda i WP, ej v1-prio

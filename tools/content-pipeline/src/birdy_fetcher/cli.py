@@ -23,7 +23,27 @@ def doctor() -> None:
 @click.option("--resume", is_flag=True, help="Continue an aborted init.")
 def init(resume: bool) -> None:
     """Build species_list.yaml from IOC + BirdLife checklists."""
-    click.echo(f"init: not implemented yet (resume={resume})")
+    import asyncio
+    from pathlib import Path
+
+    from .species_list import cli_init
+
+    root = Path(__file__).resolve().parent.parent.parent
+    exit_code = asyncio.run(
+        cli_init(
+            sources_dir=root / "sources",
+            checklists_dir=root / "checklists",
+            out_dir=root,
+            resume=resume,
+        )
+    )
+    if exit_code != 0:
+        click.secho(
+            "Mapping failures present — patch mapping_failures.yaml then re-run with --resume.",
+            fg="yellow",
+        )
+        raise click.exceptions.Exit(exit_code)
+    click.secho("species_list.yaml generated, all species mapped.", fg="green")
 
 
 @main.command()

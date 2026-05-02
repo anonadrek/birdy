@@ -33,6 +33,7 @@ dev = [
     "ruff>=0.7.4",
     "mypy>=1.13.0",
     "types-pyyaml>=6.0.12",
+    "types-openpyxl>=3.1.5",
 ]
 
 [tool.ruff]
@@ -48,6 +49,7 @@ strict = true
 disallow_untyped_defs = true
 warn_unused_ignores = true
 files = ["src", "tests"]
+exclude = ["tests/fixtures/_generate\\.py"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

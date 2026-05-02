@@ -1,0 +1,27 @@
+{
+  "head": {"vars": ["item", "scientificName"]},
+  "results": {
+    "bindings": [
+      {
+        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25372"},
+        "scientificName": {"type": "literal", "value": "Parus major"}
+      },
+      {
+        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q15545"},
+        "scientificName": {"type": "literal", "value": "Cyanistes caeruleus"}
+      },
+      {
+        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25334"},
+        "scientificName": {"type": "literal", "value": "Turdus merula"}
+      },
+      {
+        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q26586"},
+        "scientificName": {"type": "literal", "value": "Cygnus olor"}
+      },
+      {
+        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25410"},
+        "scientificName": {"type": "literal", "value": "Falco tinnunculus"}
+      }
+    ]
+  }
+}
