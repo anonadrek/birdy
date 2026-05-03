@@ -44,3 +44,4 @@ Thumbs.db
 
 tools/content-pipeline/.cache/
 tools/content-pipeline/.env
+tools/content-pipeline/sparse_content.yaml
