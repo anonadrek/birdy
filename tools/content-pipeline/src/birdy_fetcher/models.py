@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 class IocEntry(BaseModel):
@@ -34,7 +34,7 @@ class Vp11Entry(BaseModel):
 class SpeciesListEntry(BaseModel):
     """One mapped species in species_list.yaml."""
 
-    wikidata_id: str | None = Field(default=None, description="Q-ID; null if mapping failed")
+    wikidata_id: str | None = None  # Q-ID; null if mapping failed
     scientific_name: str
     family: str
     ioc_order: str
@@ -43,6 +43,8 @@ class SpeciesListEntry(BaseModel):
 
 
 class MappingFailure(BaseModel):
+    """Why a VP11 sci-name failed to map to a Wikidata Q-ID."""
+
     scientific_name: str
     family: str
     common_en: str

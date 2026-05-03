@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import asyncio
+from pathlib import Path
+
 import click
 
 from . import __version__
@@ -20,12 +23,15 @@ def doctor() -> None:
 
 
 @main.command()
-@click.option("--resume", is_flag=True, help="Continue an aborted init.")
+@click.option(
+    "--resume",
+    is_flag=True,
+    help="Re-run init while preserving manual edits in species_list.yaml.",
+)
 def init(resume: bool) -> None:
     """Build species_list.yaml from IOC + BirdLife checklists."""
-    import asyncio
-    from pathlib import Path
-
+    # species_list import is lazy because it pulls in pdfplumber/openpyxl/aiohttp,
+    # which would slow `birdy-fetcher --help` for sibling commands.
     from .species_list import cli_init
 
     root = Path(__file__).resolve().parent.parent.parent
@@ -39,7 +45,8 @@ def init(resume: bool) -> None:
     )
     if exit_code != 0:
         click.secho(
-            "Mapping failures present — patch mapping_failures.yaml then re-run with --resume.",
+            "Mapping failures present — patch species_list.yaml manually then "
+            "run `init --resume` to merge your additions.",
             fg="yellow",
         )
         raise click.exceptions.Exit(exit_code)

@@ -1,25 +1,26 @@
 {
+  "_comment": "Mock SPARQL response for unit tests. Q-IDs are the real Wikidata identifiers (verified via https://www.wikidata.org/wiki/Q25485 etc.) so test assertions match what production runs return.",
   "head": {"vars": ["item", "scientificName"]},
   "results": {
     "bindings": [
       {
-        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25372"},
+        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25485"},
         "scientificName": {"type": "literal", "value": "Parus major"}
       },
       {
-        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q15545"},
+        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25404"},
         "scientificName": {"type": "literal", "value": "Cyanistes caeruleus"}
       },
       {
-        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25334"},
+        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25234"},
         "scientificName": {"type": "literal", "value": "Turdus merula"}
       },
       {
-        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q26586"},
+        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25402"},
         "scientificName": {"type": "literal", "value": "Cygnus olor"}
       },
       {
-        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25410"},
+        "item": {"type": "uri", "value": "http://www.wikidata.org/entity/Q26490"},
         "scientificName": {"type": "literal", "value": "Falco tinnunculus"}
       }
     ]

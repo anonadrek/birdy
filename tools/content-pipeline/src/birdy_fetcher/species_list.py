@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import asyncio
 import json
 import re
 from pathlib import Path
+from typing import Any
 
 import aiohttp
 import openpyxl
@@ -46,7 +48,7 @@ def parse_ioc(xlsx_path: Path) -> list[IocEntry]:
     'Scientific Name' innehåller "ORDER X" / "Family Y" / Genus / binom beroende på rank.
     Vi traverserar och bygger upp current_order/current_family, och plockar bara Species-rader.
     """
-    wb = openpyxl.load_workbook(xlsx_path, read_only=False, data_only=True)
+    wb = openpyxl.load_workbook(xlsx_path, read_only=True, data_only=True)
     ws = wb["14.1"] if "14.1" in wb.sheetnames else wb.active
     if ws is None:
         raise ValueError(f"No usable sheet in {xlsx_path}")
@@ -104,7 +106,7 @@ def parse_vp11(pdf_path: Path) -> list[Vp11Entry]:
         for page in pdf.pages:
             words = page.extract_words(use_text_flow=False, keep_blank_chars=False)
             # Gruppera per rad med snap till 2pt
-            lines: dict[int, list[dict[str, object]]] = {}
+            lines: dict[int, list[dict[str, Any]]] = {}
             for w in words:
                 y_key = round(float(w["top"]) / 2) * 2
                 lines.setdefault(y_key, []).append(w)
@@ -116,7 +118,8 @@ def parse_vp11(pdf_path: Path) -> list[Vp11Entry]:
                 # Hierarki-rader — dessa kommer i "sci"-spalten (x ~147)
                 if sci.startswith("Ordning "):
                     m = re.match(r"^Ordning\s+([A-Z]+)", sci)
-                    current_order = m.group(1) if m else None
+                    # Capitalize matches IOC's "Passeriformes" output for cross-source consistency
+                    current_order = m.group(1).capitalize() if m else None
                     continue
                 if sci.startswith("Familj "):
                     m = re.match(r"^Familj\s+([A-Z][a-zA-Z\-']+)", sci)
@@ -148,11 +151,11 @@ def parse_vp11(pdf_path: Path) -> list[Vp11Entry]:
     return out
 
 
-def _split_vp11_columns(row_words: list[dict[str, object]]) -> dict[str, str]:
-    """Splittra ord per VP11-kolumn baserat på x-koordinat."""
+def _split_vp11_columns(row_words: list[dict[str, Any]]) -> dict[str, str]:
+    # pdfplumber emits no table structure — we rebuild columns from x-coordinates.
     buckets: dict[str, list[str]] = {"status": [], "sci": [], "eng": [], "notes": []}
     for w in row_words:
-        x = float(w["x0"])  # type: ignore[arg-type]
+        x = float(w["x0"])
         text = str(w["text"])
         if x < VP11_X_STATUS_END:
             buckets["status"].append(text)
@@ -230,6 +233,46 @@ async def map_to_wikidata(scientific_names: list[str]) -> dict[str, str]:
     return result
 
 
+async def _resolve_wikidata_qids(
+    scientific_names: list[str],
+    *,
+    batch_size: int,
+    concurrency: int,
+) -> dict[str, str]:
+    """Run map_to_wikidata in concurrent batches to amortize SPARQL latency."""
+    if not scientific_names:
+        return {}
+    sem = asyncio.Semaphore(concurrency)
+
+    async def _bounded(batch: list[str]) -> dict[str, str]:
+        async with sem:
+            return await map_to_wikidata(batch)
+
+    batches = [
+        scientific_names[i : i + batch_size] for i in range(0, len(scientific_names), batch_size)
+    ]
+    results = await asyncio.gather(*(_bounded(b) for b in batches))
+    out: dict[str, str] = {}
+    for r in results:
+        out.update(r)
+    return out
+
+
+def _merge_with_existing(
+    pipeline_entries: list[SpeciesListEntry], existing_yaml: Path
+) -> list[SpeciesListEntry]:
+    # Manual additions (entries the user added after reviewing mapping_failures) win
+    # over a re-run pipeline output for any name not produced by the pipeline.
+    existing_data = yaml.safe_load(existing_yaml.read_text(encoding="utf-8")) or []
+    pipeline_names = {e.scientific_name for e in pipeline_entries}
+    manual_extras = [
+        SpeciesListEntry(**d)
+        for d in existing_data
+        if d.get("scientific_name") not in pipeline_names
+    ]
+    return pipeline_entries + manual_extras
+
+
 async def build_species_list(
     *,
     ioc_xlsx: Path,
@@ -237,7 +280,9 @@ async def build_species_list(
     filter_yaml: Path,
     out_list: Path,
     out_failures: Path,
+    resume: bool = False,
     batch_size: int = 50,
+    sparql_concurrency: int = 5,
 ) -> None:
     ioc = parse_ioc(ioc_xlsx)
     vp11 = parse_vp11(vp11_pdf)
@@ -250,11 +295,11 @@ async def build_species_list(
     # Cross-check mot IOC
     matched, ioc_failures = cross_check_with_ioc(vp11_filtered, ioc)
 
-    # Wikidata Q-ID mapping
-    qid_map: dict[str, str] = {}
-    for i in range(0, len(matched), batch_size):
-        batch = [v.scientific_name for v in matched[i : i + batch_size]]
-        qid_map.update(await map_to_wikidata(batch))
+    qid_map = await _resolve_wikidata_qids(
+        [v.scientific_name for v in matched],
+        batch_size=batch_size,
+        concurrency=sparql_concurrency,
+    )
 
     entries: list[SpeciesListEntry] = []
     wikidata_failures: list[MappingFailure] = []
@@ -281,6 +326,15 @@ async def build_species_list(
             )
         )
 
+    if resume and out_list.exists():
+        entries = _merge_with_existing(entries, out_list)
+
+    # Auto-cleanup: any failure resolved by a manual addition disappears from failures.
+    resolved_names = {e.scientific_name for e in entries}
+    all_failures = [
+        f for f in (ioc_failures + wikidata_failures) if f.scientific_name not in resolved_names
+    ]
+
     out_list.parent.mkdir(parents=True, exist_ok=True)
     out_list.write_text(
         yaml.safe_dump(
@@ -290,9 +344,8 @@ async def build_species_list(
         ),
         encoding="utf-8",
     )
-    all_failures = ioc_failures + wikidata_failures
     out_failures.write_text(
-        _failures_header()
+        _FAILURES_HEADER
         + yaml.safe_dump(
             [f.model_dump() for f in all_failures],
             sort_keys=False,
@@ -302,16 +355,17 @@ async def build_species_list(
     )
 
 
-def _failures_header() -> str:
-    return (
-        "# Each entry below is a species the automatic mapper could not match.\n"
-        "# To fix:\n"
-        "#   1. Search wikidata.org for the scientific name → note the Q-ID\n"
-        "#   2. Add an entry to species_list.yaml manually\n"
-        "#   3. Delete the entry from this file\n"
-        "# After all entries are resolved, run: uv run birdy-fetcher init --resume\n"
-        "---\n"
-    )
+_FAILURES_HEADER = (
+    "# Each entry below is a species the automatic mapper could not match.\n"
+    "# To resolve a failure:\n"
+    "#   1. Search wikidata.org for the scientific name → note the Q-ID\n"
+    "#   2. Add an entry to species_list.yaml manually\n"
+    "#      (with wikidata_id, scientific_name, family, ioc_order, common_en, vp_status)\n"
+    "#   3. Run: uv run birdy-fetcher init --resume\n"
+    "# --resume re-reads species_list.yaml, preserves your manual additions,\n"
+    "# and removes resolved entries from this file automatically.\n"
+    "---\n"
+)
 
 
 async def cli_init(
@@ -324,8 +378,8 @@ async def cli_init(
     """Returns exit code: 0 if no failures, 1 if mapping_failures.yaml is non-empty."""
     out_list = out_dir / "species_list.yaml"
     out_failures = out_dir / "mapping_failures.yaml"
-    if resume and not out_failures.exists():
-        raise RuntimeError("nothing to resume — mapping_failures.yaml not found")
+    if resume and not out_list.exists():
+        raise RuntimeError("nothing to resume — species_list.yaml not found")
 
     await build_species_list(
         ioc_xlsx=sources_dir / "ioc-14.1.xlsx",
@@ -333,6 +387,7 @@ async def cli_init(
         filter_yaml=checklists_dir / "vp11-filter.yaml",
         out_list=out_list,
         out_failures=out_failures,
+        resume=resume,
     )
 
     failures = yaml.safe_load(out_failures.read_text(encoding="utf-8")) or []

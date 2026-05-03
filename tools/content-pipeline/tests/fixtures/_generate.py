@@ -15,16 +15,25 @@ HERE = Path(__file__).parent
 # IOC v14.1 har 13 kolumner. Vi använder bara fyra (Rank, English name, Counters,
 # Scientific Name); helpern fyller resten med None så fixturen speglar riktiga filen.
 _IOC_HEADERS = [
-    "", "13.2", "13.1", "Rank", "SP; Extinct", "English name",
-    "Counters", "Scientific Name", "Authority", "Breeding Range",
-    "Nonbreeding Range", "Code", "Comment",
+    "",
+    "13.2",
+    "13.1",
+    "Rank",
+    "SP; Extinct",
+    "English name",
+    "Counters",
+    "Scientific Name",
+    "Authority",
+    "Breeding Range",
+    "Nonbreeding Range",
+    "Code",
+    "Comment",
 ]
 
 
 def _ioc_row(rank: str, eng: str | None, counters: str | None, sci: str | None) -> tuple:
     """Bygg en 13-kolumns IOC-rad där bara fälten parsern läser har innehåll."""
-    return (None, None, None, rank, None, eng, counters, sci,
-            None, None, None, None, None)
+    return (None, None, None, rank, None, eng, counters, sci, None, None, None, None, None)
 
 
 def gen_ioc_xlsx() -> None:
