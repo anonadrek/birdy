@@ -11,9 +11,7 @@ from birdy_fetcher.wikipedia import WikipediaClient
 
 
 @pytest.mark.asyncio
-async def test_fetch_extract_returns_intro(
-    fixtures_dir: Path, tmp_path: Path
-) -> None:
+async def test_fetch_extract_returns_intro(fixtures_dir: Path, tmp_path: Path) -> None:
     fixture = (fixtures_dir / "wikipedia_sv_parus_major.json").read_text()
 
     async def fake_get(url: str) -> str:
@@ -40,9 +38,7 @@ async def test_fetch_extract_marks_sparse_below_threshold(
 
     cache = Cache(tmp_path)
     client = WikipediaClient(cache=cache, http_get=fake_get)
-    result = await client.fetch_extract(
-        "Q99999", title_by_lang={"sv": "Some bird"}, lang="sv"
-    )
+    result = await client.fetch_extract("Q99999", title_by_lang={"sv": "Some bird"}, lang="sv")
     assert result.is_sparse
     assert result.word_count < 100
 
@@ -54,18 +50,14 @@ async def test_fetch_extract_handles_missing_article(tmp_path: Path) -> None:
 
     cache = Cache(tmp_path)
     client = WikipediaClient(cache=cache, http_get=fake_get)
-    result = await client.fetch_extract(
-        "Q99999", title_by_lang={"sv": "Nonexistent"}, lang="sv"
-    )
+    result = await client.fetch_extract("Q99999", title_by_lang={"sv": "Nonexistent"}, lang="sv")
     assert result.extract == ""
     assert result.is_sparse
     assert result.revision is None
 
 
 @pytest.mark.asyncio
-async def test_fetch_extract_caches_per_revision(
-    fixtures_dir: Path, tmp_path: Path
-) -> None:
+async def test_fetch_extract_caches_per_revision(fixtures_dir: Path, tmp_path: Path) -> None:
     fixture = (fixtures_dir / "wikipedia_sv_parus_major.json").read_text()
 
     call_count = {"n": 0}

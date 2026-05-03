@@ -33,7 +33,7 @@ def doctor() -> None:
     table.add_column("OK")
     table.add_column("Detail")
     for c in report.checks:
-        table.add_row(c.name, "✓" if c.ok else "✗", c.detail)
+        table.add_row(c.name, "OK" if c.ok else "FAIL", c.detail)
     Console().print(table)
     if not report.is_ok:
         raise click.exceptions.Exit(1)

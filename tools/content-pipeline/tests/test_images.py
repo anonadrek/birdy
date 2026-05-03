@@ -117,9 +117,7 @@ def test_rank_prefers_pd_over_cc_by_sa() -> None:
     assert ranked[0].license == "Public domain"
 
 
-def test_processor_resizes_to_hero_dimensions(
-    fixtures_dir: Path, tmp_path: Path
-) -> None:
+def test_processor_resizes_to_hero_dimensions(fixtures_dir: Path, tmp_path: Path) -> None:
     cache = Cache(tmp_path)
     cache.put_bytes(
         "Q25485",

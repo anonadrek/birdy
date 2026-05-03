@@ -102,16 +102,8 @@ def rank_candidates(candidates: list[ImageCandidate]) -> list[ImageCandidate]:
 
     def _score(c: ImageCandidate) -> tuple[int, int, int, int]:
         license_rank = _LICENSE_PRIORITY.get(c.license.lower(), 5)
-        in_nature = (
-            0
-            if any("birds in nature" in cat.lower() for cat in c.categories)
-            else 1
-        )
-        photographs = (
-            0
-            if any("photographs of aves" in cat.lower() for cat in c.categories)
-            else 1
-        )
+        in_nature = 0 if any("birds in nature" in cat.lower() for cat in c.categories) else 1
+        photographs = 0 if any("photographs of aves" in cat.lower() for cat in c.categories) else 1
         # higher resolution sorts first via negation
         size = -(c.width * c.height)
         return (license_rank, photographs, in_nature, size)

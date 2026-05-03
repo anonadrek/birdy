@@ -11,7 +11,7 @@ from birdy_fetcher.cache import Cache
 from birdy_fetcher.claude_summarizer import ClaudeSummarizer, FakeClaudeClient
 from birdy_fetcher.cost import CostTracker
 from birdy_fetcher.images import ImageProcessor, ImageSelector
-from birdy_fetcher.orchestrator import RefreshContext, RefreshOptions, refresh_one
+from birdy_fetcher.orchestrator import RefreshContext, RefreshOptions, refresh_one, run_refresh
 from birdy_fetcher.wikidata import WikidataClient
 from birdy_fetcher.wikipedia import WikipediaClient
 
@@ -103,3 +103,76 @@ async def test_refresh_one_writes_yaml(fixtures_dir: Path, tmp_path: Path) -> No
     assert parsed["names"]["sv"] == "Talgoxe"
     assert parsed["abundance"] == "allmän"
     assert len(parsed["image_refs"]) >= 1
+
+
+@pytest.mark.asyncio
+async def test_run_refresh_returns_nonzero_when_species_fail(
+    fixtures_dir: Path, tmp_path: Path
+) -> None:
+    """If refresh_one raises for a species, run_refresh should return 1."""
+    pipeline_root = tmp_path / "pipeline"
+    content_root = tmp_path / "content"
+    (pipeline_root / "prompts").mkdir(parents=True)
+    (pipeline_root / "prompts" / "description-v1.md").write_text(
+        "System: ...\nUser: {scientific_name}\n", encoding="utf-8"
+    )
+    (pipeline_root / "prompts" / "migration-v1.md").write_text(
+        "System: ...\nUser: {scientific_name}\n", encoding="utf-8"
+    )
+    (pipeline_root / "species_list.yaml").write_text(
+        "- wikidata_id: Q99999\n  scientific_name: Failus testus\n",
+        encoding="utf-8",
+    )
+
+    cache = Cache(pipeline_root / ".cache")
+    cost = CostTracker(max_usd=None)
+
+    async def failing_sparql(query: str) -> str:
+        raise RuntimeError("simulated wikidata outage")
+
+    async def _empty_str(url: str) -> str:
+        return ""
+
+    async def _empty_bytes(url: str) -> bytes:
+        return b""
+
+    options = RefreshOptions(
+        species_filter=["Q99999"],
+        field="all",
+        force=False,
+        dry_run=False,
+        workers=1,
+        model="haiku",
+        max_cost=None,
+    )
+    fake_claude = FakeClaudeClient(
+        default=type(
+            "M",
+            (),
+            {
+                "text": "...",
+                "input_tokens": 0,
+                "output_tokens": 0,
+            },
+        )()
+    )
+    ctx = RefreshContext(
+        pipeline_root=pipeline_root,
+        content_root=content_root,
+        cache=cache,
+        cost=cost,
+        wikidata=WikidataClient(cache=cache, run_sparql=failing_sparql),
+        wikipedia=WikipediaClient(cache=cache, http_get=_empty_str),
+        images=ImageSelector(cache=cache, http_get=_empty_str),
+        image_processor=ImageProcessor(http_get_bytes=_empty_bytes),
+        claude=ClaudeSummarizer(
+            cache=cache,
+            cost=cost,
+            client=fake_claude,
+            prompt_dir=pipeline_root / "prompts",
+            prompt_version="v1",
+        ),
+        options=options,
+    )
+    exit_code = await run_refresh(ctx)
+    assert exit_code == 1

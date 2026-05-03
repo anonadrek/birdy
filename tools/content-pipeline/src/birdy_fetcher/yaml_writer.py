@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
-from dataclasses import dataclass, field, replace
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -134,6 +134,6 @@ def merge_overrides(
         ]
 
     if "abundance" in patch:
-        merged = replace(merged, abundance=str(patch["abundance"]))
+        merged.abundance = str(patch["abundance"])
 
     return merged

@@ -279,13 +279,16 @@ async def run_refresh(ctx: RefreshContext) -> int:
         return 0
 
     semaphore = asyncio.Semaphore(ctx.options.workers)
+    failed: list[str] = []
 
     async def bound(listed: dict[str, Any]) -> None:
         async with semaphore:
             try:
                 await refresh_one(ctx, listed)
             except Exception as exc:
-                console.print(f"[red]Failed {listed.get('wikidata_id')}: {exc}[/red]")
+                qid = listed.get("wikidata_id") or "unknown"
+                console.print(f"[red]Failed {qid}: {exc}[/red]")
+                failed.append(qid)
 
     with Progress(
         TextColumn("[progress.description]{task.description}"),
@@ -300,6 +303,10 @@ async def run_refresh(ctx: RefreshContext) -> int:
         for done in asyncio.as_completed(coros):
             await done
             progress.advance(prog_task)
+
+    if failed:
+        console.print(f"[red]{len(failed)} species failed: {', '.join(failed)}[/red]")
+        return 1
 
     console.print(f"Done. {ctx.cost.call_count} Claude calls, ~${ctx.cost.total_usd:.4f} total.")
     return 0

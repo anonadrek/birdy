@@ -87,3 +87,11 @@ def test_overrides_accept_missing_marks_field() -> None:
     }
     merged = merge_overrides(data, overrides)
     assert merged.description["sv"] == "[accept_missing]"
+
+
+def test_overrides_replace_abundance() -> None:
+    data = make_data()
+    overrides = {"Q25485": {"abundance": "ovanlig"}}
+    merged = merge_overrides(data, overrides)
+    assert merged.abundance == "ovanlig"
+    assert merged.description == data.description  # untouched

@@ -44,8 +44,8 @@ class FakeClaudeClient:
         if hasattr(canned, "text"):
             return ClaudeReply(
                 text=canned.text,
-                input_tokens=canned.input_tokens,                  # type: ignore[attr-defined]
-                output_tokens=canned.output_tokens,                # type: ignore[attr-defined]
+                input_tokens=canned.input_tokens,  # type: ignore[attr-defined]
+                output_tokens=canned.output_tokens,  # type: ignore[attr-defined]
             )
         return ClaudeReply(text="", input_tokens=0, output_tokens=0)
 
@@ -170,9 +170,7 @@ class ClaudeSummarizer:
         prompt_path = self.prompt_dir / f"{kind}-{self.prompt_version}.md"
         prompt_template = prompt_path.read_text(encoding="utf-8")
         prompt_hash = hashlib.sha256(prompt_template.encode("utf-8")).hexdigest()[:8]
-        cache_filename = (
-            f"claude-{kind}-{lang}-{model}-{self.prompt_version}-{prompt_hash}.txt"
-        )
+        cache_filename = f"claude-{kind}-{lang}-{model}-{self.prompt_version}-{prompt_hash}.txt"
         if self.cache.has(q_id, cache_filename):
             cached = self.cache.get(q_id, cache_filename)
             assert cached is not None
@@ -221,10 +219,10 @@ def _split_prompt(
         stripped = line.strip()
         if stripped.startswith("System:"):
             current = system_lines
-            system_lines.append(stripped[len("System:"):].strip())
+            system_lines.append(stripped[len("System:") :].strip())
         elif stripped.startswith("User:"):
             current = user_lines
-            user_lines.append(stripped[len("User:"):].strip())
+            user_lines.append(stripped[len("User:") :].strip())
         elif current is not None:
             current.append(line)
     system = "\n".join(system_lines).strip()
