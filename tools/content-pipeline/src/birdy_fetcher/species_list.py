@@ -35,27 +35,56 @@ VALID_VP_STATUSES: set[VpStatus] = {"H", "h", "F", "R", "(H)"}
 SCI_NAME_RE = re.compile(r"^[A-Z][a-zA-Z\-']+\s+[a-z\-']+(?:\s+[a-z\-']+)?$")
 
 
+_IOC_ORDER_RE = re.compile(r"^ORDER\s+([A-Z]+)$")
+_IOC_FAMILY_RE = re.compile(r"^Family\s+([A-Z][a-zA-Z]+)$")
+
+
 def parse_ioc(xlsx_path: Path) -> list[IocEntry]:
-    """Parse IOC v14.1 Excel master list. Header row defines columns."""
+    """Parse IOC v14.1 Excel master list.
+
+    IOC är hierarkiskt: rader har Rank ∈ {INFRACLASS, ORDER, Family, Genus, Species, ssp, Blank}.
+    'Scientific Name' innehåller "ORDER X" / "Family Y" / Genus / binom beroende på rank.
+    Vi traverserar och bygger upp current_order/current_family, och plockar bara Species-rader.
+    """
     wb = openpyxl.load_workbook(xlsx_path, read_only=False, data_only=True)
-    ws = wb.active
+    ws = wb["14.1"] if "14.1" in wb.sheetnames else wb.active
     if ws is None:
-        raise ValueError(f"No active sheet in {xlsx_path}")
+        raise ValueError(f"No usable sheet in {xlsx_path}")
     rows = ws.iter_rows(values_only=True)
     headers = [str(h).strip() if h else "" for h in next(rows)]
+
     out: list[IocEntry] = []
+    current_order: str | None = None
+    current_family: str | None = None
+    current_family_en: str | None = None
+
     for row in rows:
         d = dict(zip(headers, row, strict=False))
-        sci = (str(d.get("Scientific name") or "")).strip()
-        if not sci:
+        rank = (str(d.get("Rank") or "")).strip()
+        sci_field = (str(d.get("Scientific Name") or "")).strip()
+        eng = (str(d.get("English name") or "")).strip()
+
+        if rank == "ORDER":
+            m = _IOC_ORDER_RE.match(sci_field)
+            current_order = m.group(1).capitalize() if m else None
             continue
+        if rank == "Family":
+            m = _IOC_FAMILY_RE.match(sci_field)
+            current_family = m.group(1) if m else None
+            current_family_en = eng or None
+            continue
+        if rank != "Species":
+            continue
+        if not sci_field or not current_order or not current_family:
+            continue
+
         out.append(
             IocEntry(
-                scientific_name=sci,
-                family=(str(d.get("Family") or "")).strip(),
-                family_en=(str(d.get("FamilyEN") or "")).strip() or None,
-                ioc_order=(str(d.get("Order") or "")).strip(),
-                common_en=(str(d.get("English name") or "")).strip(),
+                scientific_name=sci_field,
+                family=current_family,
+                family_en=current_family_en,
+                ioc_order=current_order,
+                common_en=eng,
             )
         )
     return out

@@ -12,18 +12,54 @@ from reportlab.pdfgen import canvas
 
 HERE = Path(__file__).parent
 
+# IOC v14.1 har 13 kolumner. Vi använder bara fyra (Rank, English name, Counters,
+# Scientific Name); helpern fyller resten med None så fixturen speglar riktiga filen.
+_IOC_HEADERS = [
+    "", "13.2", "13.1", "Rank", "SP; Extinct", "English name",
+    "Counters", "Scientific Name", "Authority", "Breeding Range",
+    "Nonbreeding Range", "Code", "Comment",
+]
+
+
+def _ioc_row(rank: str, eng: str | None, counters: str | None, sci: str | None) -> tuple:
+    """Bygg en 13-kolumns IOC-rad där bara fälten parsern läser har innehåll."""
+    return (None, None, None, rank, None, eng, counters, sci,
+            None, None, None, None, None)
+
 
 def gen_ioc_xlsx() -> None:
-    """Skapar en mini-IOC-xlsx med samma kolumn-layout som riktiga filen."""
+    """Skapar en mini-IOC-xlsx som speglar riktiga IOC v14.1 hierarkiska struktur.
+
+    Rank-värden: 'INFRACLASS', 'ORDER', 'Family', 'Genus', 'Species', 'ssp', 'Blank'.
+    'Scientific Name' har "ORDER X" / "Family Y" / Genus / binom beroende på rank.
+    """
     wb = openpyxl.Workbook()
     ws = wb.active
-    ws.append(["Order", "Family", "FamilyEN", "Scientific name", "English name"])
+    ws.title = "14.1"
+    ws.append(_IOC_HEADERS)
     rows = [
-        ("Passeriformes", "Paridae", "Tits", "Parus major", "Great Tit"),
-        ("Passeriformes", "Paridae", "Tits", "Cyanistes caeruleus", "Eurasian Blue Tit"),
-        ("Passeriformes", "Turdidae", "Thrushes", "Turdus merula", "Common Blackbird"),
-        ("Anseriformes", "Anatidae", "Ducks Geese and Swans", "Cygnus olor", "Mute Swan"),
-        ("Falconiformes", "Falconidae", "Falcons", "Falco tinnunculus", "Common Kestrel"),
+        _ioc_row("INFRACLASS", "PASSERIFORMES", None, "NEOAVES"),
+        _ioc_row("ORDER", None, None, "ORDER PASSERIFORMES"),
+        _ioc_row("Family", "Tits", "2", "Family Paridae"),
+        _ioc_row("Genus", None, None, "Parus"),
+        _ioc_row("Species", "Great Tit", "Paridae", "Parus major"),
+        _ioc_row("ssp", "Great Tit", None, "Parus major major"),
+        _ioc_row("Genus", None, None, "Cyanistes"),
+        _ioc_row("Species", "Eurasian Blue Tit", "Paridae", "Cyanistes caeruleus"),
+        _ioc_row("Blank", None, None, None),
+        _ioc_row("Family", "Thrushes", "1", "Family Turdidae"),
+        _ioc_row("Genus", None, None, "Turdus"),
+        _ioc_row("Species", "Common Blackbird", "Turdidae", "Turdus merula"),
+        _ioc_row("Blank", None, None, None),
+        _ioc_row("ORDER", None, None, "ORDER ANSERIFORMES"),
+        _ioc_row("Family", "Ducks, Geese, Swans", "1", "Family Anatidae"),
+        _ioc_row("Genus", None, None, "Cygnus"),
+        _ioc_row("Species", "Mute Swan", "Anatidae", "Cygnus olor"),
+        _ioc_row("Blank", None, None, None),
+        _ioc_row("ORDER", None, None, "ORDER FALCONIFORMES"),
+        _ioc_row("Family", "Falcons, Caracaras", "1", "Family Falconidae"),
+        _ioc_row("Genus", None, None, "Falco"),
+        _ioc_row("Species", "Common Kestrel", "Falconidae", "Falco tinnunculus"),
     ]
     for r in rows:
         ws.append(r)
