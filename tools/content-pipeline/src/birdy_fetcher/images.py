@@ -8,6 +8,7 @@ import re
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.parse import quote_plus
 
 import aiohttp
 from PIL import Image
@@ -159,11 +160,14 @@ class ImageSelector:
             return parse_imageinfo_response(raw)
 
         get = self.http_get or _default_get_text
+        # quote_plus preserves the surrounding %22 quotes while safely encoding
+        # spaces/punctuation in scientific names (matters for trinomials and
+        # any future name with apostrophes or parens).
         url = (
             "https://commons.wikimedia.org/w/api.php?"
             "action=query&format=json&prop=imageinfo&"
             "iiprop=url|size|mime|extmetadata&"
-            f"generator=search&gsrsearch=intitle:%22{scientific_name}%22&gsrlimit=20"
+            f"generator=search&gsrsearch=intitle:%22{quote_plus(scientific_name)}%22&gsrlimit=20"
         )
         raw = await get(url)
         self.cache.put(q_id, cache_key, raw)
@@ -192,8 +196,9 @@ class ImageProcessor:
         img.thumbnail((max_side, max_side), Image.Resampling.LANCZOS)
 
         out_path.parent.mkdir(parents=True, exist_ok=True)
-        # EXIF stripped by Pillow's default `save` (no exif passed)
-        img.save(out_path, format="JPEG", quality=quality, optimize=True)
+        # exif=b"" actively strips EXIF rather than relying on Pillow's default
+        # behavior (which has historically round-tripped some metadata fields).
+        img.save(out_path, format="JPEG", quality=quality, optimize=True, exif=b"")
         return ProcessedImage(
             width=img.size[0],
             height=img.size[1],

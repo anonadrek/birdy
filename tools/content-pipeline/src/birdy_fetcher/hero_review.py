@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import html
 from pathlib import Path
+from urllib.parse import quote
 
 from .images import ImageCandidate
 
@@ -40,7 +42,8 @@ _CANDIDATE = """
     <strong>{filename}</strong><br>
     {width}x{height} | {license} | {author}<br>
     Categories: {categories}<br>
-    <a href="https://commons.wikimedia.org/wiki/File:{filename}" target="_blank">View on Commons</a>
+    <a href="https://commons.wikimedia.org/wiki/File:{commons_path}"
+       target="_blank">View on Commons</a>
   </div>
 </div>
 """
@@ -54,24 +57,28 @@ def render_hero_review(
     candidates: list[ImageCandidate],
     out_path: Path,
 ) -> None:
+    # Wikimedia's `Artist` extmetadata is HTML by design (often <a>-wrapped),
+    # and Commons filenames can contain quotes/ampersands. Escape every
+    # interpolation: html.escape() for text, quote() for URL paths.
     parts = [
         _CANDIDATE.format(
-            url=c.url,
-            filename=c.commons_filename,
+            url=html.escape(c.url, quote=True),
+            filename=html.escape(c.commons_filename, quote=True),
+            commons_path=quote(c.commons_filename),
             width=c.width,
             height=c.height,
-            license=c.license,
-            author=c.author,
-            categories=", ".join(c.categories) or "(none)",
+            license=html.escape(c.license),
+            author=html.escape(c.author),
+            categories=html.escape(", ".join(c.categories) or "(none)"),
         )
         for c in candidates[:5]
     ]
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(
         _TEMPLATE.format(
-            q_id=q_id,
-            common_sv=common_sv,
-            scientific_name=scientific_name,
+            q_id=html.escape(q_id),
+            common_sv=html.escape(common_sv),
+            scientific_name=html.escape(scientific_name),
             candidates_html="\n".join(parts),
         ),
         encoding="utf-8",

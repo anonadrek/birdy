@@ -4,12 +4,14 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
 from PIL import Image
 
 from birdy_fetcher.cache import Cache
 from birdy_fetcher.images import (
     ImageCandidate,
     ImageProcessor,
+    ImageSelector,
     parse_imageinfo_response,
     rank_candidates,
 )
@@ -137,3 +139,34 @@ def test_processor_resizes_to_hero_dimensions(
     assert max(img.size) <= 2400
     assert metadata.width == img.size[0]
     assert metadata.height == img.size[1]
+
+
+@pytest.mark.asyncio
+async def test_selector_url_quotes_scientific_name_and_caches(
+    fixtures_dir: Path, tmp_path: Path
+) -> None:
+    """ImageSelector quotes the scientific_name into the search URL and
+    caches the raw response on first call (no second HTTP call)."""
+    captured_urls: list[str] = []
+    fixture = (fixtures_dir / "commons_imageinfo_q25372.json").read_text()
+
+    async def fake_get(url: str) -> str:
+        captured_urls.append(url)
+        return fixture
+
+    cache = Cache(tmp_path)
+    selector = ImageSelector(cache=cache, http_get=fake_get)
+
+    first = await selector.fetch_candidates("Q25485", "Parus major minor")
+    assert len(captured_urls) == 1
+    assert "intitle:%22Parus+major+minor%22" in captured_urls[0]
+    assert any(c.commons_filename.startswith("Parus major") for c in first)
+
+    # Second call hits cache, no new HTTP call.
+    second = await selector.fetch_candidates("Q25485", "Parus major minor")
+    assert len(captured_urls) == 1
+    assert [c.commons_filename for c in second] == [c.commons_filename for c in first]
+
+    # force=True bypasses cache.
+    await selector.fetch_candidates("Q25485", "Parus major minor", force=True)
+    assert len(captured_urls) == 2
