@@ -15,6 +15,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | Designspec för v1 | `docs/superpowers/specs/2026-04-30-birdy-bird-scanner-v1-design.md` |
 | Implementationsplaner | `docs/superpowers/plans/YYYY-MM-DD-v1-NN-<phase>.md` |
 | Skärmdumpar per milstolpe | `docs/superpowers/screenshots/` |
+| Milstolpe-review-runbook (5–6 parallella granskar-agenter) | `docs/superpowers/runbooks/milstolpe-review.md` |
 | Visuellt språk (Mossbädd-paletten) | I auto-memory: `visual_language_birdy_v1.md`, sammanfattat nedan |
 | Den här guiden | `CLAUDE.md` (du läser den nu) |
 | Auto-memory (lokalt, inte i repo) | `~/.claude/projects/C--Users-.../memory/` |
@@ -204,7 +205,7 @@ Plan 2a är skriven, reviderad efter POC, och klar (`docs/superpowers/plans/2026
 
 - Per CLAUDE.md är `superpowers:subagent-driven-development` default-läge. Huvudtråden (Opus 4.7) dispatchar Sonnet 4.6-subagents per task och granskar diff mellan tasks.
 - API-nyckeln läses i Plan 2a via `tools/content-pipeline/.env` (gitignored, skapas av Task 1 från `.env.example`-mall). Om användaren föredrar `setx ANTHROPIC_API_KEY` på Windows-user-nivå istället, säg till — då justerar vi Task 1 så `python-dotenv` görs optionell.
-- Walking-skeleton-arterna (5 st i Task 8): Q25372 Talgoxe, Q25334 Koltrast, Q15545 Blåmes, Q26586 Knölsvan, Q25410 Tornfalk. Räcker för att verifiera hela pipelinen end-to-end och driva Plan 2b family-by-family.
+- Walking-skeleton-arterna (5 st i Task 8): Q25485 Talgoxe (Parus major), Q25234 Koltrast (Turdus merula), Q25404 Blåmes (Cyanistes caeruleus), Q25402 Knölsvan (Cygnus olor), Q26490 Tornfalk (Falco tinnunculus). Räcker för att verifiera hela pipelinen end-to-end och driva Plan 2b family-by-family.
 - **VP11-revision (2026-05-03):** Task 2 reviderades efter POC visat att VP11.pdf har defekt ToUnicode-mapping för åäö-glyfer. Plan: extrahera bara status/sci/eng/notes från VP11; svenska namn hämtas från Wikidata i Task 4. Verifierat: 1190 arter extraheras felfritt, alla 5 walking-skeleton-arter återfinns med korrekt status och familj.
 
 **Säg "kör Plan 2a" så dispatchar jag Task 1.**

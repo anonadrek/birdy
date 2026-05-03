@@ -14,9 +14,9 @@ Content pipeline CLI for Birdy Bird Scanner. Generates `shared/content/species/*
 ```bash
 uv run birdy-fetcher doctor                       # verify env + sources
 uv run birdy-fetcher init                         # build species_list.yaml
-uv run birdy-fetcher refresh --species Q25372     # one species end-to-end
+uv run birdy-fetcher refresh --species Q25485     # one species end-to-end
 uv run birdy-fetcher refresh --all --max-cost 5   # full refresh with cost cap
-uv run birdy-fetcher refresh --dry-run --species Q25372  # plan only
+uv run birdy-fetcher refresh --dry-run --species Q25485  # plan only
 uv run birdy-fetcher status                       # coverage report
 ```
 

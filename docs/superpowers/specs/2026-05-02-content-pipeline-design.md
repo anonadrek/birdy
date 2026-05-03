@@ -75,14 +75,14 @@ Dessa togs i brainstormingen 2026-05-02 och är fundament för resten av specen.
         ┌─────────────────────────────────────────────────────┐
         │  shared/content/species/                            │
         │     paridae/                                        │
-        │       Q25372.yaml   (Parus major, talgoxe)          │
-        │       Q15545.yaml   (Cyanistes caeruleus, blåmes)   │
+        │       Q25485.yaml   (Parus major, talgoxe)          │
+        │       Q25404.yaml   (Cyanistes caeruleus, blåmes)   │
         │     anatidae/                                       │
-        │       Q26586.yaml   (Cygnus olor, knölsvan)         │
+        │       Q25402.yaml   (Cygnus olor, knölsvan)         │
         │     ...                                             │
         │  shared/content/images/                             │
-        │     Q25372/hero.jpg                                 │
-        │     Q25372/secondary-1.jpg                          │
+        │     Q25485/hero.jpg                                 │
+        │     Q25485/secondary-1.jpg                          │
         │     ...                                             │
         │  shared/content/overrides.yaml  (manuella patches)  │
         └────────────────────────┬────────────────────────────┘
@@ -136,9 +136,9 @@ En art = en YAML-fil under `shared/content/species/{family}/{wikidata_id}.yaml`.
 ### 4.1 Konkret exempel
 
 ```yaml
-# shared/content/species/paridae/Q25372.yaml
+# shared/content/species/paridae/Q25485.yaml
 # Talgoxe — generated 2026-05-02, last refreshed 2026-05-02
-id: Q25372                              # Wikidata Q-ID — primärnyckel överallt
+id: Q25485                              # Wikidata Q-ID — primärnyckel överallt
 scientific_name: Parus major            # IOC binomial
 taxonomy:
   family: Paridae
@@ -194,7 +194,7 @@ migration:
 
 image_refs:
   - role: hero
-    path: Q25372/hero.jpg
+    path: Q25485/hero.jpg
     width: 2400
     height: 1800
     license: CC-BY-SA-4.0
@@ -202,7 +202,7 @@ image_refs:
     source_url: https://commons.wikimedia.org/wiki/File:Parus_major_-..._.jpg
     commons_filename: Parus_major_-_garden_-_Sweden.jpg
   - role: secondary
-    path: Q25372/secondary-1.jpg
+    path: Q25485/secondary-1.jpg
     width: 1800
     height: 1200
     license: CC-BY-2.0
@@ -235,7 +235,7 @@ Separat fil i `shared/content/overrides.yaml` tillåter manuell override av ensk
 
 ```yaml
 # shared/content/overrides.yaml
-Q25372:
+Q25485:
   description:
     sv: |
       Manuellt skriven text som ersätter Wikipedia-summariseringen.
@@ -286,8 +286,8 @@ uv run birdy-fetcher init                    # första gången: bygger artlistan
                                               #   mapping_failures.yaml
 uv run birdy-fetcher init --resume           # fortsätt efter manuella patches
 uv run birdy-fetcher refresh --all           # full refresh av alla arter (alla fält)
-uv run birdy-fetcher refresh --species Q25372  # bara talgoxe, alla fält
-uv run birdy-fetcher refresh --species Q25372 \
+uv run birdy-fetcher refresh --species Q25485  # bara talgoxe, alla fält
+uv run birdy-fetcher refresh --species Q25485 \
                               --field text   # bara text, behåll bilder
 uv run birdy-fetcher refresh --field images  # alla arter, bara bilder
 uv run birdy-fetcher refresh --stale         # bara arter där cachen är >30 dagar
@@ -324,8 +324,8 @@ species Q-ID
    ▼
 [merge_with_overrides → write yaml + images]
    ├─ läs overrides.yaml för manuella fält-patches
-   ├─ skriv shared/content/species/{family}/Q25372.yaml
-   ├─ skriv shared/content/images/Q25372/{hero,secondary-N}.jpg
+   ├─ skriv shared/content/species/{family}/Q25485.yaml
+   ├─ skriv shared/content/images/Q25485/{hero,secondary-N}.jpg
 ```
 
 ### 5.3 Cache-design
@@ -334,7 +334,7 @@ species Q-ID
 
 ```
 .cache/
-  Q25372/
+  Q25485/
     wikidata.json                      ← rådata + retrieval timestamp
     wikipedia-sv-r12345678.html
     wikipedia-en-r87654321.html
@@ -605,7 +605,7 @@ CI behöver ingen Anthropic-key och ingen utgående nätverksåtkomst — fetche
 - UI-tester av Encyclopedia-skärmen — Plan 3
 - ML-utvärdering / model-vs-species-vokabulär — Plan 4
 - Performance-test av sök på 700 arter — accepterar att SQLDelight med rätt index hanterar detta utan benchmark; revisit om Plan 3 visar problem
-- E2E-test av riktiga Wikipedia/Commons-API-anrop — manuell `birdy-fetcher refresh --species Q25372 --force` används som smoke-test
+- E2E-test av riktiga Wikipedia/Commons-API-anrop — manuell `birdy-fetcher refresh --species Q25485 --force` används som smoke-test
 
 ---
 
@@ -736,7 +736,7 @@ birdy-bird-scanner/
 - **CC-BY-SA** — CC Attribution + ShareAlike — attribution + derivativ måste delas under samma licens
 - **PAD** — Play Asset Delivery, Googles mekanism för att leverera stora assets utanför grund-APK:n
 - **IOC** — International Ornithological Congress; kanonisk taxonomi-standard för fåglar
-- **Wikidata Q-ID** — Wikidatas stabila identifierare per entitet (t.ex. Q25372 för Parus major)
+- **Wikidata Q-ID** — Wikidatas stabila identifierare per entitet (t.ex. Q25485 för Parus major)
 
 ---
 
