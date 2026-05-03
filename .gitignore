@@ -9,6 +9,8 @@
 .gradle/
 .kotlin/
 build/
+# Un-ignore Kotlin source packages named "build" (e.g. se.birdy.content.build)
+!**/src/**/kotlin/**/build/
 out/
 local.properties
 *.hprof

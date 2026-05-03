@@ -1,0 +1,68 @@
+id: Q25485
+scientific_name: Parus major
+taxonomy:
+  family: Paridae
+  family_sv: Mesar
+  genus: Parus
+  ioc_order: Passeriformes
+names:
+  sv: Talgoxe
+  en: Great Tit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: breeding
+  may: breeding
+  jun: breeding
+  jul: breeding
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+  - SE
+  - NO
+  - FI
+  - DK
+description:
+  sv: |
+    Talgoxen är en av Sveriges vanligaste fåglar och kan ses året runt i trädgårdar,
+    parker och skogsbryn. Den är lätt att känna igen på sin gula buk med svart slips
+    som löper från hakan ner över bröstet — slipsen är bredare hos hannen än hos honan.
+    Talgoxen är stark och utmärkt anpassad till människans miljöer; den utnyttjar
+    fågelmatningar villigt och bygger gärna bo i fågelholkar. Sången är ett ringande
+    "ti-tit-tit, ti-tit-tit" som hörs tydligt redan i februari.
+  en: |
+    The Great Tit is among Sweden's most familiar birds, and can be seen year round in
+    gardens, parks and forest edges. It is easily recognised by its yellow underparts
+    with a black "tie" running from the chin down across the chest — broader in the male
+    than the female. The Great Tit is strong, adaptable to human environments, takes
+    readily to bird feeders and builds nests gladly in bird boxes. Its song is a ringing
+    "ti-tit-tit" that can be heard clearly already in February.
+migration:
+  sv: |
+    Stationär i Sverige året runt. Vissa individer från nordliga populationer flyttar
+    söderut under hårda vintrar.
+  en: |
+    Resident year-round in Sweden. Some individuals from northern populations move south
+    during harsh winters.
+image_refs:
+  - role: hero
+    path: Q25485/hero.jpg
+    width: 2400
+    height: 1800
+    license: CC-BY-SA-4.0
+    author: Pierre Dalous
+    source_url: https://commons.wikimedia.org/wiki/File:Parus_major_-_garden.jpg
+    commons_filename: Parus_major_-_garden.jpg
+review_status: approved
+review_notes: ""
+generated_at: 2026-05-02T14:30:00Z
+sources:
+  wikipedia_sv_revision: "12345678"
+  wikipedia_en_revision: "87654321"
+  claude_model: claude-haiku-4-5-20251001

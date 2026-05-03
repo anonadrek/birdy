@@ -1,0 +1,17 @@
+CREATE TABLE SpeciesRegion (
+    species_id TEXT NOT NULL,
+    region_iso TEXT NOT NULL,
+    PRIMARY KEY (species_id, region_iso),
+    FOREIGN KEY (species_id) REFERENCES Species(id) ON DELETE CASCADE
+);
+
+CREATE INDEX species_region_iso ON SpeciesRegion(region_iso);
+
+selectBySpecies:
+SELECT region_iso FROM SpeciesRegion WHERE species_id = ?;
+
+selectByRegion:
+SELECT species_id FROM SpeciesRegion WHERE region_iso = ?;
+
+insert:
+INSERT INTO SpeciesRegion(species_id, region_iso) VALUES (?, ?);

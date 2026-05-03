@@ -1,0 +1,21 @@
+CREATE TABLE SpeciesImage (
+    species_id TEXT NOT NULL,
+    role TEXT NOT NULL,
+    path TEXT NOT NULL,
+    width INTEGER NOT NULL,
+    height INTEGER NOT NULL,
+    license TEXT NOT NULL,
+    author TEXT NOT NULL,
+    source_url TEXT NOT NULL,
+    commons_filename TEXT NOT NULL,
+    PRIMARY KEY (species_id, role, path),
+    FOREIGN KEY (species_id) REFERENCES Species(id) ON DELETE CASCADE
+);
+
+selectBySpecies:
+SELECT * FROM SpeciesImage WHERE species_id = ? ORDER BY role, path;
+
+insert:
+INSERT INTO SpeciesImage(
+    species_id, role, path, width, height, license, author, source_url, commons_filename
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);

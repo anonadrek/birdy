@@ -1,0 +1,13 @@
+CREATE TABLE SpeciesSeason (
+    species_id TEXT NOT NULL,
+    month TEXT NOT NULL,
+    status TEXT NOT NULL,
+    PRIMARY KEY (species_id, month),
+    FOREIGN KEY (species_id) REFERENCES Species(id) ON DELETE CASCADE
+);
+
+selectBySpecies:
+SELECT * FROM SpeciesSeason WHERE species_id = ?;
+
+insert:
+INSERT INTO SpeciesSeason(species_id, month, status) VALUES (?, ?, ?);

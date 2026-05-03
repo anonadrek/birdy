@@ -13,3 +13,9 @@ max_line_length = 140
 ktlint_standard_no-wildcard-imports = enabled
 ktlint_standard_filename = enabled
 ktlint_standard_function-naming = disabled  # Compose @Composable functions are PascalCase
+
+# SQLDelight generated sources use 2-space indent — exclude from ktlint
+[{**/build/generated/**,build/generated/**}]
+ktlint_code_style = android_studio
+indent_size = 2
+ktlint_disabled = true

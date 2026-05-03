@@ -1,0 +1,17 @@
+CREATE TABLE SpeciesText (
+    species_id TEXT NOT NULL,
+    locale TEXT NOT NULL,
+    kind TEXT NOT NULL,
+    text TEXT NOT NULL,
+    PRIMARY KEY (species_id, locale, kind),
+    FOREIGN KEY (species_id) REFERENCES Species(id) ON DELETE CASCADE
+);
+
+selectBySpecies:
+SELECT * FROM SpeciesText WHERE species_id = ?;
+
+selectBySpeciesAndLocale:
+SELECT * FROM SpeciesText WHERE species_id = ? AND locale = ?;
+
+insert:
+INSERT INTO SpeciesText(species_id, locale, kind, text) VALUES (?, ?, ?, ?);

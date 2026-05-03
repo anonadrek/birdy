@@ -1,0 +1,28 @@
+CREATE TABLE Species (
+    id TEXT NOT NULL PRIMARY KEY,
+    scientific_name TEXT NOT NULL,
+    abundance TEXT NOT NULL,
+    iucn_status TEXT NOT NULL,
+    generated_at TEXT NOT NULL,
+    review_status TEXT NOT NULL,
+    wikipedia_sv_revision TEXT,
+    wikipedia_en_revision TEXT,
+    claude_model TEXT
+);
+
+CREATE INDEX species_abundance ON Species(abundance);
+
+selectAll:
+SELECT * FROM Species;
+
+selectById:
+SELECT * FROM Species WHERE id = ?;
+
+count:
+SELECT count(*) FROM Species;
+
+insert:
+INSERT INTO Species(
+    id, scientific_name, abundance, iucn_status, generated_at,
+    review_status, wikipedia_sv_revision, wikipedia_en_revision, claude_model
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
