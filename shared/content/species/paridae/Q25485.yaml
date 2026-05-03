@@ -1,0 +1,129 @@
+id: Q25485
+scientific_name: Parus major
+taxonomy:
+  family: Paridae
+  family_sv: Mesar
+  genus: Parus
+  ioc_order: Passeriformes
+names:
+  sv: Talgoxe
+  en: Great Tit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Talgoxe
+
+
+    Talgoxen är en vanlig fågel som förekommer över stora delar av Europa, västra,
+    centrala och norra Asien samt delar av Nordafrika. Den är mycket anpassningsbar
+    och trivs i alla slags skogslandskap, från täta lövskogar till öppnare terränger.
+    Talgoxen är huvudsakligen stannfågel och stannar på sitt område året om, även
+    om särskilt hårt väder kan tvinga enskilda individer att flytta.
+
+
+    Arten är den mest utbredda inom sitt släkte Parus och har en komplicerad taxonomi
+    med flera underarter spridda över sitt område. Talgoxen är nära släkt med den
+    asiatiska grå talgoxen, som tidigare betraktades som en del av samma art men numera
+    erkänns som en separat art.'
+  en: '# Great Tit
+
+
+    The great tit is a small, strikingly patterned passerine with distinctive markings
+    that make it easy to identify. It features a black head with white cheeks, a white
+    stripe running down its back, and a bold black line down the breast and belly.
+    The back is olive-green and the wings are grey with white wingbars, creating a
+    neat, compact appearance.
+
+
+    This species is widespread and common across much of the northern hemisphere,
+    inhabiting woodlands and woodland edges throughout its range. It is highly adaptable
+    and readily visits gardens and parks, particularly at feeding stations during
+    colder months. Most great tits are resident year-round, though some populations
+    may move in response to harsh winters.
+
+
+    The great tit is an active and acrobatic forager, often seen clambering through
+    branches and visiting feeders with characteristic energy. It is highly vocal and
+    produces a variety of calls, including a distinctive loud, rhythmic song often
+    rendered as "tea-cher, tea-cher." Its behaviour is bold and inquisitive, and it
+    readily uses nest boxes provided by people. The species remains the most widespread
+    member of the tit family and is familiar to many birdwatchers across its extensive
+    range.'
+migration:
+  sv: '# Talgoxe – Förekomst i Skandinavien och Nordeuropa
+
+
+    Talgoxen är en stannfågel som förekommer året runt i Skandinavien och övriga Nordeuropa.
+    Till skillnad från många andra fåglar är talgoxen huvudsakligen bosatt, och individuerna
+    flyttar normalt inte från sina revir. Endast under extremt hårda vintrar med snö
+    och kyla kan vissa populationer genomföra längre förflyttningar. Detta gör talgoxen
+    till en permanent invånare i norra Europa, vilket är anmärkningsvärt för en så
+    liten fågel.'
+  en: '# Great Tit (Parus major) in Scandinavia and Northern Europe
+
+
+    The Great Tit is a year-round resident throughout most of Scandinavia and Northern
+    Europe, with populations remaining sedentary across their range. These birds are
+    highly adaptable and do not undertake regular seasonal migrations. However, during
+    exceptionally severe winters with prolonged harsh conditions, some populations
+    may move southward or to lower elevations seeking more favorable feeding opportunities.
+    The species is widespread and common in woodlands, gardens, and mixed habitats
+    year-round, making it one of the most familiar and resilient birds in the region
+    regardless of season.'
+image_refs:
+- role: hero
+  path: Q25485/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great tit (Parus major), North
+    Rhine-Westphalia.jpg
+  commons_filename: Great tit (Parus major), North Rhine-Westphalia.jpg
+- role: secondary
+  path: Q25485/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/44652224@N04">Anton
+    Whoa</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Parus major, Omsk, Russia.jpg
+  commons_filename: Parus major, Omsk, Russia.jpg
+- role: secondary
+  path: Q25485/secondary-2.jpg
+  width: 1800
+  height: 1771
+  license: CC BY-SA 3.0
+  author: '<div class="fn value">
+
+    <a href="//commons.wikimedia.org/wiki/User:Archaeodontosaurus" title="User:Archaeodontosaurus">Didier
+    Descouens</a></div>'
+  source_url: https://commons.wikimedia.org/wiki/File:Parus major excelsus MHNT 232
+    Aïn Béïda Algerie.jpg
+  commons_filename: Parus major excelsus MHNT 232 Aïn Béïda Algerie.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-03T21:30:18.596988+00:00'
+sources:
+  wikipedia_sv_revision: '59064377'
+  wikipedia_en_revision: '1334945574'
+  claude_model: claude-haiku-4-5-20251001

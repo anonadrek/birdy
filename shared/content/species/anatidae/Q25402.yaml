@@ -1,0 +1,130 @@
+id: Q25402
+scientific_name: Cygnus olor
+taxonomy:
+  family: Anatidae
+  family_sv: Andfåglar
+  genus: Cygnus
+  ioc_order: Anseriformes
+names:
+  sv: Knölsvan
+  en: Mute Swan
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Knölsvan
+
+
+    Knölsvan är en av världens största andfåglar med ett vingspann på drygt två meter
+    och en genomsnittsvikt på cirka 12 kilo. Det är en imponerande fågel med rent
+    vit fjäderdräkt, lång böjlig hals, och framför allt en mycket karakteristisk orange
+    näbb med en framträdande svart knöl på ovansidan av näbbroten. Den svarte knölen
+    är särskilt påtaglig hos hanar. Trots sin storlek kan knölsvan flyga, och då hörs
+    ett särskilt vingbrus som är artkarakteristiskt.
+
+
+    Knölsvanen är starkt revirhävdande och lever vid större vattensamlingar och kustnära
+    områden. Det förekommer främst i Europas och Asiens tempererade zoner, men har
+    introducerats till flera världsdelar. Fågeln föder sig huvudsakligen på vattenväxter,
+    vilka den "betar" från sjöbottnen genom att sträcka sin långa hals. Den bygger
+    ett stort bo av vass direkt på marken nära vattnet, och båda föräldrarna ruvar
+    de fem till nio äggen och tar hand om ungarna tillsammans.'
+  en: '# Mute Swan
+
+
+    The mute swan is a large, unmistakable waterfowl measuring 140–160 cm in length.
+    It is entirely white with a striking orange beak bordered in black, topped by
+    a pronounced knob that is noticeably larger in males. This distinctive facial
+    feature makes it easily identifiable even at a distance.
+
+
+    Despite its name, the mute swan is not completely silent, though it is considerably
+    less vocal than other swan species. It communicates through various calls and
+    produces loud wing-beats in flight. The bird is a powerful swimmer and grazes
+    on aquatic vegetation, often seen on lakes, rivers, and coastal waters.
+
+
+    Originally native to much of Europe, parts of Asia, and northern Africa, the mute
+    swan has been introduced widely beyond its range. It now thrives in North America,
+    which holds the largest populations outside its native regions, with smaller populations
+    established in Australasia and Southern Africa. It has adapted successfully to
+    diverse freshwater and brackish habitats across the globe.'
+migration:
+  sv: '# Knölsvanen i Skandinavien
+
+
+    Knölsvanen förekommer året runt i stora delar av Skandinavien och Nordeuropa,
+    där den är både stannfågel och flyttfågel beroende på område och väderförhållanden.
+    I södra Sverige och Danmark stannar många individer under vintern på öppna vattenområden,
+    medan populationer från nordligare regioner migrerar söderut hösten. Ankomsten
+    till häckningsområdena sker vanligen under mars-april när isarna börjar smälta.
+    Under hösten, från september till oktober, påbörjas återflyttningen söderut. I
+    milda vintrar kan även norska och svenska populationer förbli på platsen om tillräcklig
+    isfri yta finns att tillgå.'
+  en: '# Mute Swan (Cygnus olor) in Scandinavia/Northern Europe
+
+
+    The Mute Swan is a resident and partial migrant throughout Scandinavia and Northern
+    Europe. In southern Scandinavia, many populations are resident year-round, remaining
+    on ice-free lakes and coastal waters during winter. However, northern populations
+    show more pronounced migration patterns, with birds departing in autumn as waters
+    freeze and returning in spring (March–April). Winter movements are often driven
+    by ice formation rather than temperature alone, with birds relocating to unfrozen
+    waters in milder regions or moving southward. Arrival of spring migrants typically
+    occurs from late February onwards, while autumn departure peaks in October–November
+    as ice threatens their habitats.'
+image_refs:
+- role: hero
+  path: Q25402/hero.jpg
+  width: 2400
+  height: 2400
+  license: CC BY-SA 4.0
+  author: '<div class="fn value">
+
+    <a href="//commons.wikimedia.org/wiki/User:Erc%C3%A9" title="User:Ercé">Roger
+    Culos</a></div>'
+  source_url: https://commons.wikimedia.org/wiki/File:Cygnus olor MHNT.ZOO.2010.11.11.2.jpg
+  commons_filename: Cygnus olor MHNT.ZOO.2010.11.11.2.jpg
+- role: secondary
+  path: Q25402/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Gzen92" title="User:Gzen92">Gzen92</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cygne tuberculé (Cygnus olor)
+    - tête (2).jpg
+  commons_filename: Cygne tuberculé (Cygnus olor) - tête (2).jpg
+- role: secondary
+  path: Q25402/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Gzen92" title="User:Gzen92">Gzen92</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cygne tuberculé juvénile (Cygnus
+    olor) (07).jpg
+  commons_filename: Cygne tuberculé juvénile (Cygnus olor) (07).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-03T21:30:19.711428+00:00'
+sources:
+  wikipedia_sv_revision: '59207363'
+  wikipedia_en_revision: '1352078971'
+  claude_model: claude-haiku-4-5-20251001

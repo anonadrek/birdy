@@ -1,0 +1,136 @@
+id: Q25404
+scientific_name: Cyanistes caeruleus
+taxonomy:
+  family: Paridae
+  family_sv: Mesar
+  genus: Cyanistes
+  ioc_order: Passeriformes
+names:
+  sv: Blåmes
+  en: Eurasian Blue Tit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Blåmes
+
+
+    Blåmesen är en liten och lätt igenkännlig tåtting med en karakteristisk blågul
+    fjäderdräkt. Huvudet är vitt med mörka ögonsklingor, vingarna och stjärten är
+    blå, medan undersidan är gul. Denna färgkombination gör arten omöjlig att förväxla
+    med andra mesarter.
+
+
+    Arten förekommer i löv- och blandskog men är mycket anpassningsbar och ses ofta
+    i parker och trädgårdar där det finns tillräckligt med träd. Blåmesen är en livlig
+    och rörig fågel som ofta rör sig i mindre flockar, speciellt under höst och vinter.
+    Den söker föda i grenverken och på trädstammar, där den letar efter insekter och
+    larver.
+
+
+    Blåmesen är mycket vanlig över stora delar av Europa och förekommer även i angränsande
+    delar av Asien. Arten har ett karakteristiskt läte som låter som en skarp, metallisk
+    tripp-tripp-tripp. Populationen är stabil och arten är ingen conservation concern,
+    vilket gör den till en av de vanligaste och mest kända mesarterna i sitt utbytningsområde.'
+  en: '# Eurasian Blue Tit
+
+
+    The Eurasian blue tit is a small, unmistakable passerine instantly recognisable
+    by its bright blue and yellow plumage. Its upperparts are predominantly blue,
+    while the underparts are yellow with a thin dark line running down the belly.
+    It features a white face with a dark eye-stripe and a dark cap tinged with blue,
+    creating a distinctive masked appearance. Its compact size and active, acrobatic
+    movements make it a favourite at bird feeders across its range.
+
+
+    This tit is highly energetic and often seen in small flocks, particularly outside
+    the breeding season. It feeds primarily on small insects, seeds, and nuts, and
+    is known for its agility in foraging, frequently hanging upside down while searching
+    branches for food. The species is vocal, with a distinctive, high-pitched call
+    and a cheerful, repetitive song.
+
+
+    The Eurasian blue tit is widespread and common across much of temperate Europe
+    and Asia, favouring deciduous and mixed woodlands, parks, gardens, and scrubland
+    with suitable trees. It adapts well to human-modified landscapes and readily visits
+    garden feeders, making it one of the most familiar wild birds in populated areas
+    throughout its range.'
+migration:
+  sv: '# Blåmes – Förekomst i Norden
+
+
+    Blåmesen är en stannfågel som är närvarande året runt i Skandinavien och Nordeuropa.
+    Den är vanlig i löv- och blandskog, parker och trädgårdar under båda hälfterna
+    av året. Till skillnad från många andra mesar är blåmesen företrädesvis icke-migrerande
+    i norra delen av sitt utbredningsområde, och individer stannar ofta på sina häckningsplatser
+    även under vintermånaderna. Under hårda vintrar kan vissa populationer förskjutas
+    något sydvästut, men arten är generellt en permanent invånare i sitt skandinaviska
+    habitat.'
+  en: '# Eurasian Blue Tit Migration in Scandinavia
+
+
+    The Eurasian Blue Tit is a year-round resident throughout most of Scandinavia
+    and Northern Europe, though populations show considerable variation in migratory
+    behavior depending on regional conditions. In northern areas, some birds migrate
+    southwestward during harsh winters, while populations in milder regions remain
+    sedentary. Winter severity and food availability strongly influence movement patterns,
+    with irruptive movements occurring during particularly cold years. Spring arrivals
+    in breeding territories typically occur from February to March, while autumn dispersal
+    begins in August and September. The species readily uses bird feeders and gardens
+    as winter food sources, which has likely contributed to increasing year-round
+    residency in urban and suburban areas.'
+image_refs:
+- role: hero
+  path: Q25404/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jojovavasasa" title="User:Jojovavasasa">Jojovavasasa</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Blue Tit (Cyanistes caeruleus)
+    on bird feeder 06.jpg
+  commons_filename: Blue Tit (Cyanistes caeruleus) on bird feeder 06.jpg
+- role: secondary
+  path: Q25404/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cyanistes caeruleus ringing
+    SPOL mangeoire 20250220 n03.jpg
+  commons_filename: Cyanistes caeruleus ringing SPOL mangeoire 20250220 n03.jpg
+- role: secondary
+  path: Q25404/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cyanistes caeruleus 2022 03
+    18 01.jpg
+  commons_filename: Cyanistes caeruleus 2022 03 18 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-03T21:30:18.779472+00:00'
+sources:
+  wikipedia_sv_revision: '59235443'
+  wikipedia_en_revision: '1351670507'
+  claude_model: claude-haiku-4-5-20251001

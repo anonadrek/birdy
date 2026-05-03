@@ -1,0 +1,129 @@
+id: Q26490
+scientific_name: Falco tinnunculus
+taxonomy:
+  family: Falconidae
+  family_sv: Falkar
+  genus: falcon
+  ioc_order: Falconiformes
+names:
+  sv: Tornfalk
+  en: Common Kestrel
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tornfalk
+
+
+    Tornfalken är en medelstor rovfågel som tillhör familjen falkar. Det är en av
+    Europas talrikaste rovfåglar och kännetecknas av sitt karakteristiska flugbeteende
+    – det ryttlar ofta stillastående i luften över öppna landskap medan det spanar
+    efter byte.
+
+
+    Arten förekommer på kalhyggen, myrar och andra öppna ytor där det enkelt kan upptäcka
+    små gnagare och insekter. Tornfalken är välanpassad för jakt från luften tack
+    vare sin rörliga flygteknik och skarpa syn. Det är en bekant syn för många som
+    vistas i landsbygden, särskilt under perioder då det är aktivt på jakt.
+
+
+    Arten är robust och framgångsrik, vilket förklarar varför det är så talrikt över
+    stora delar av Europa. Dess förmåga att anpassa sig till olika miljöer och det
+    effektiva jaktsättet har gjort det till en av de mest framgångsrika rovfåglarna
+    på kontinenten.'
+  en: '# Common Kestrel
+
+
+    The common kestrel is a small falcon and member of the kestrel group within the
+    falcon family. It is widespread across Europe and beyond, where it is often simply
+    called the kestrel due to the absence of competing kestrel species in many regions.
+
+
+    This compact predator is renowned for its hunting technique of hovering motionless
+    in the air while scanning the ground below for small prey such as rodents and
+    insects. The kestrel''s pointed wings and long tail are perfectly adapted for
+    this characteristic flight behavior. It is a bird of open and semi-open habitats,
+    frequently seen perched on telegraph poles, cliff edges, or rocky outcrops where
+    it has a commanding view of its hunting territory.
+
+
+    The kestrel''s call is a distinctive high-pitched, chattering series of notes,
+    particularly audible during breeding season. It nests in cavities—in cliffs, old
+    buildings, or abandoned nests of other birds—rather than constructing its own
+    nest. Though small and delicate in appearance, the kestrel is an efficient and
+    adaptable predator that has successfully maintained populations across its extensive
+    range, making it a familiar sight to many birdwatchers.'
+migration:
+  sv: Tornfalk är en stannfågel och delvis trändfågel i Skandinavien. En del av populationen
+    är bosatt året runt, särskilt i södra delen av utbredningsområdet, medan norr
+    ifrån kommer migrerande fåglar under våren. Tornfalkar som häckar i norra Skandinavien
+    brukar dra söderut på hösten för att övervintra i södra Europa och Afrika. Ankomsten
+    från övervintringskvarteren sker vanligen i mars-april, medan flyttningen söderut
+    pågår från augusti till september. Under vintermånaderna kan man lokalt observera
+    tornfalkar som överväxer, framför allt i södra Skandinavien där förhållandena
+    är mildare.
+  en: '# Common Kestrel (Tornfalk) - Scandinavia Year-Round Occurrence
+
+
+    The Common Kestrel is a resident and partial migrant throughout Scandinavia and
+    Northern Europe. In southern regions, populations are largely resident year-round,
+    while northern populations undertake seasonal migrations. Birds typically arrive
+    in breeding areas during March and April, establishing territories for the breeding
+    season. During autumn, migratory populations depart between August and October,
+    heading south to overwinter in more temperate regions. Non-migratory populations
+    remain throughout winter, relying on open habitats and prey availability. The
+    species shows flexibility in its movements, with some individuals remaining year-round
+    depending on local food resources and climate conditions.'
+image_refs:
+- role: hero
+  path: Q26490/hero.jpg
+  width: 2400
+  height: 1602
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20210930 Falco tinnunculus.jpg
+  commons_filename: 20210930 Falco tinnunculus.jpg
+- role: secondary
+  path: Q26490/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Falco tinnunculus 2022 04 17.jpg
+  commons_filename: Falco tinnunculus 2022 04 17.jpg
+- role: secondary
+  path: Q26490/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20240815 Falco tinnunculus.jpg
+  commons_filename: 20240815 Falco tinnunculus.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-03T21:30:18.345383+00:00'
+sources:
+  wikipedia_sv_revision: '59171082'
+  wikipedia_en_revision: '1335187782'
+  claude_model: claude-haiku-4-5-20251001

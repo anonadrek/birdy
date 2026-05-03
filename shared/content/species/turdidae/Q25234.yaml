@@ -1,0 +1,136 @@
+id: Q25234
+scientific_name: Turdus merula
+taxonomy:
+  family: Turdidae
+  family_sv: Trastar
+  genus: Turdus
+  ioc_order: Passeriformes
+names:
+  sv: Koltrast
+  en: Common Blackbird
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Koltrast
+
+
+    Koltrast är en från familjen trastar och räknas som Europas mest utbredda trast.
+    Arten kännetecknas av sitt mörka fjäderdräkt – hanarna är helt svarta med gul
+    näbbring och ögonring, medan honorna är brunaktiga. Det är en medelstor fågel
+    med smal gestalt och upprätt hållning.
+
+
+    Historiskt var koltrasten främst en skogsfågel, men sedan mitten av 1800-talet
+    har den successivt anpassat sig till människans närmiljö. Idag är den en vanlig
+    kulturföljare som trivs väl i parker, trädgårdar och bebyggda områden nära bebyggelse.
+    Arten är iakttagbar både på marken och i träd, där den ofta ses springa och hoppa
+    omkring.
+
+
+    Koltrast är en aktiv och framträdande fågel med distinkt beteende – den är känd
+    för att söka föda på marken genom att skrapa bland löv och vegetation. Arten är
+    sedentär eller delvis flyttfågel beroende på geografisk placering.
+
+
+    Värt att notera är att genetiska studier har visat att det tidigare betraktades
+    som en stor grupp trastpopulationer inom arten faktiskt utgör fyra distinkta arter.'
+  en: '# Common Blackbird
+
+
+    The common blackbird is a true thrush found across Europe, western Asia, and North
+    Africa, with introduced populations in Australia and New Zealand. Several subspecies
+    exist throughout its extensive range, though some former Asian populations are
+    now classified as separate species. Migration patterns vary with latitude—some
+    populations remain year-round residents, while others migrate partially or completely
+    depending on seasonal conditions.
+
+
+    The male common blackbird is unmistakable with its glossy black plumage and bright
+    yellow-orange eye-ring and bill, making it one of Europe''s most recognizable
+    garden birds. Females and juveniles are considerably duller, displaying brown
+    or olive-brown tones rather than black. The species is highly vocal, particularly
+    during breeding season, delivering a rich, melodious song from exposed perches.
+    Its call is a sharp, repeated "chink-chink-chink" alarm note.
+
+
+    Common blackbirds favour gardens, woodlands, and scrubland where they forage on
+    the ground, characteristically hopping and pausing to listen and watch for invertebrates.
+    They are adaptable and have become increasingly common in urban and suburban areas.
+    Despite their ground-feeding behaviour, they roost in trees and bushes at night,
+    and males are notably territorial, defending their ranges vigorously during the
+    breeding season.'
+migration:
+  sv: '# Koltrast – Förekomst i Skandinavien
+
+
+    Koltrasten är en mycket vanlig fågel i Skandinavien och Nordeuropa med en komplex
+    migrationsekologi. Populationen består av både stationära och flyttfåglar. Många
+    individer övervintrarar i sitt hemområde, särskilt i södra Skandinavien och urbana
+    miljöer där födotillgång är god. Under hösten ankommer östeuropeiska populationer
+    till regionen, vilket ökar antalet individer betydligt. Västerut migrerar många
+    nordiska koltrastar under senhösten. Återkomsten från sydliga övervintringsområden
+    sker vanligen från februari till april, då sång från hannarna blir allt mera framträdande.'
+  en: '# Common Blackbird (Koltrast) in Scandinavia/Northern Europe
+
+
+    The Common Blackbird exhibits variable migration patterns across Scandinavia and
+    Northern Europe depending on latitude and local conditions. Southern populations
+    are largely resident year-round, while northern populations undertake partial
+    to complete migrations. Birds breeding in Scandinavia typically depart in autumn
+    (September-October) for wintering grounds in southern Europe and the Mediterranean
+    region, with some individuals remaining through milder winters. Spring arrival
+    occurs from March onwards as temperatures rise, with breeding populations re-establishing
+    across their northern ranges by April-May. The species'' flexible migratory strategy
+    allows populations to adjust their movements based on winter severity and food
+    availability.'
+image_refs:
+- role: hero
+  path: Q25234/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Musicaline" title="User:Musicaline">Musicaline</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus merula 1294.jpg
+  commons_filename: Turdus merula 1294.jpg
+- role: secondary
+  path: Q25234/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Musicaline" title="User:Musicaline">Musicaline</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus merula 1308.jpg
+  commons_filename: Turdus merula 1308.jpg
+- role: secondary
+  path: Q25234/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Musicaline" title="User:Musicaline">Musicaline</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus merula 1321.jpg
+  commons_filename: Turdus merula 1321.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-03T21:30:23.426529+00:00'
+sources:
+  wikipedia_sv_revision: '59018904'
+  wikipedia_en_revision: '1350843747'
+  claude_model: claude-haiku-4-5-20251001
