@@ -64,18 +64,14 @@ class WikipediaClient:
         if not title:
             return WikipediaResult(q_id, lang, "", "", None, 0)
 
-        # Cache lookup: if any revision is cached for this lang, reuse it (revision check
-        # happens via --stale or --force, not on every call).
+        # Cache lookup: reuse the most-recently-written revision file if any exists
+        # (revision re-validation happens via --stale or --force, not on every call).
         species_dir = self.cache.root / q_id
         if not force and species_dir.exists():
-            cached = sorted(species_dir.glob(f"wikipedia-{lang}-r*.json"))
+            cached = list(species_dir.glob(f"wikipedia-{lang}-r*.json"))
             if cached:
-                raw = cached[-1].read_text(encoding="utf-8")
-                data = json.loads(raw)
-                revision = str(data.get("revision")) if data.get("revision") else None
-                extract = data.get("extract", "")
-                word_count = len(extract.split())
-                return WikipediaResult(q_id, lang, title, extract, revision, word_count)
+                newest = max(cached, key=lambda p: p.stat().st_mtime)
+                return self._parse(q_id, lang, title, newest.read_text(encoding="utf-8"))
 
         url = f"https://{lang}.wikipedia.org/api/rest_v1/page/summary/{title}"
         try:
@@ -83,19 +79,15 @@ class WikipediaClient:
         except FileNotFoundError:
             return WikipediaResult(q_id, lang, title, "", None, 0)
 
+        result = self._parse(q_id, lang, title, raw)
+        if result.revision:
+            self.cache.put(q_id, f"wikipedia-{lang}-r{result.revision}.json", raw)
+        return result
+
+    @staticmethod
+    def _parse(q_id: str, lang: str, title: str, raw: str) -> WikipediaResult:
         data = json.loads(raw)
         revision = str(data.get("revision")) if data.get("revision") else None
         extract = data.get("extract", "")
         word_count = len(extract.split())
-
-        if revision:
-            self.cache.put(q_id, f"wikipedia-{lang}-r{revision}.json", raw)
-
-        return WikipediaResult(
-            q_id=q_id,
-            lang=lang,
-            title=title,
-            extract=extract,
-            revision=revision,
-            word_count=word_count,
-        )
+        return WikipediaResult(q_id, lang, title, extract, revision, word_count)
