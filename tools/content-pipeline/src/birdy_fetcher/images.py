@@ -159,7 +159,8 @@ class ImageSelector:
             "https://commons.wikimedia.org/w/api.php?"
             "action=query&format=json&prop=imageinfo&"
             "iiprop=url|size|mime|extmetadata&"
-            f"generator=search&gsrsearch=intitle:%22{quote_plus(scientific_name)}%22&gsrlimit=20"
+            f"generator=search&gsrsearch=intitle:%22{quote_plus(scientific_name)}%22"
+            "&gsrnamespace=6&gsrlimit=20"
         )
         raw = await get(url)
         self.cache.put(q_id, cache_key, raw)

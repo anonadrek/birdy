@@ -25,7 +25,9 @@
 - wikidata_id: Q25402
   scientific_name: Cygnus olor
   family: Anatidae
+  family_sv: Andfåglar
   ioc_order: Anseriformes
+  common_sv: Knölsvan
   common_en: Mute Swan
   vp_status: H
 - wikidata_id: Q131044
@@ -2647,7 +2649,9 @@
 - wikidata_id: Q26490
   scientific_name: Falco tinnunculus
   family: Falconidae
+  family_sv: Falkar
   ioc_order: Falconiformes
+  common_sv: Tornfalk
   common_en: Common Kestrel
   vp_status: H
 - wikidata_id: Q179625
@@ -2965,13 +2969,17 @@
 - wikidata_id: Q25404
   scientific_name: Cyanistes caeruleus
   family: Paridae
+  family_sv: Mesar
   ioc_order: Passeriformes
+  common_sv: Blåmes
   common_en: Eurasian Blue Tit
   vp_status: H
 - wikidata_id: Q25485
   scientific_name: Parus major
   family: Paridae
+  family_sv: Mesar
   ioc_order: Passeriformes
+  common_sv: Talgoxe
   common_en: Great Tit
   vp_status: H
 - wikidata_id: Q191096
@@ -3949,7 +3957,9 @@
 - wikidata_id: Q25234
   scientific_name: Turdus merula
   family: Turdidae
+  family_sv: Trastar
   ioc_order: Passeriformes
+  common_sv: Koltrast
   common_en: Common Blackbird
   vp_status: H
 - wikidata_id: Q25777

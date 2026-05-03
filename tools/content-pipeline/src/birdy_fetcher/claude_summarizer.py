@@ -179,6 +179,7 @@ class ClaudeSummarizer:
         if self.dry_run:
             return "[dry-run]"
 
+        lang_names = {"sv": "Swedish", "en": "English"}
         system, user = _split_prompt(
             prompt_template,
             scientific_name=scientific_name,
@@ -187,6 +188,7 @@ class ClaudeSummarizer:
             family=family,
             family_sv=family_sv,
             lang=lang,
+            lang_name=lang_names.get(lang, lang),
             wikipedia_intro_text=wikipedia_intro,
         )
 
@@ -228,5 +230,7 @@ def _split_prompt(
     system = "\n".join(system_lines).strip()
     user = "\n".join(user_lines).strip()
     for key, value in subs.items():
-        user = user.replace("{" + key + "}", value)
+        placeholder = "{" + key + "}"
+        system = system.replace(placeholder, value)
+        user = user.replace(placeholder, value)
     return system, user

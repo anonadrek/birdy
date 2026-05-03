@@ -209,13 +209,17 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
     season = _default_season()
     regions = ["SE", "NO", "FI", "DK", "DE"]
 
+    # Prefer ioc_order from species_list (source: IOC checklist) over Wikidata.
+    # Wikidata's P105=Q36602 traversal can return wrong ancestors (e.g. Saurischia).
+    ioc_order = listed.get("ioc_order") or wd.ioc_order
+
     data = SpeciesYamlData(
         wikidata_id=q_id,
         scientific_name=scientific_name,
         family=wd.family,
         family_sv=listed.get("family_sv") or wd.family,
         genus=wd.genus,
-        ioc_order=wd.ioc_order,
+        ioc_order=ioc_order,
         common_sv=listed.get("common_sv"),
         common_en=listed.get("common_en") or "",
         abundance=abundance,

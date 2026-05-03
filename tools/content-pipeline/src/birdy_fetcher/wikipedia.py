@@ -11,7 +11,7 @@ import aiohttp
 from .cache import Cache
 
 USER_AGENT = "birdy-fetcher/0.1.0 (https://github.com/anonadrek/birdy)"
-SPARSE_WORD_THRESHOLD = 100
+SPARSE_WORD_THRESHOLD = 20
 
 
 @dataclass(frozen=True)
