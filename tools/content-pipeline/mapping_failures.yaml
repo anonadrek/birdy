@@ -1,0 +1,13 @@
+# Each entry below is a species the automatic mapper could not match.
+# To resolve a failure:
+#   1. Search wikidata.org for the scientific name → note the Q-ID
+#   2. Add an entry to species_list.yaml manually
+#      (with wikidata_id, scientific_name, family, ioc_order, common_en, vp_status)
+#   3. Run: uv run birdy-fetcher init --resume
+# --resume re-reads species_list.yaml, preserves your manual additions,
+# and removes resolved entries from this file automatically.
+---
+- scientific_name: Fringilla moreletti
+  family: Fringillidae
+  common_en: Azores Chaffinch
+  reason: no Wikidata match for P225

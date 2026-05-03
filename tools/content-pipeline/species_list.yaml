@@ -1,0 +1,5034 @@
+- wikidata_id: Q17592
+  scientific_name: Struthio camelus
+  family: Struthionidae
+  ioc_order: Struthioniformes
+  common_en: Common Ostrich
+  vp_status: (H)
+- wikidata_id: Q839532
+  scientific_name: Nettapus coromandelianus
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Cotton Pygmy Goose
+  vp_status: H
+- wikidata_id: Q241399
+  scientific_name: Oxyura leucocephala
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: White-headed Duck
+  vp_status: H
+- wikidata_id: Q647461
+  scientific_name: Oxyura jamaicensis
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Ruddy Duck
+  vp_status: H
+- wikidata_id: Q25402
+  scientific_name: Cygnus olor
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Mute Swan
+  vp_status: H
+- wikidata_id: Q131044
+  scientific_name: Cygnus atratus
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Black Swan
+  vp_status: H
+- wikidata_id: Q26603
+  scientific_name: Cygnus columbianus
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Tundra Swan
+  vp_status: H
+- wikidata_id: Q25612
+  scientific_name: Cygnus cygnus
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Whooper Swan
+  vp_status: H
+- wikidata_id: Q27050
+  scientific_name: Branta bernicla
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Brant Goose
+  vp_status: H
+- wikidata_id: Q187852
+  scientific_name: Branta ruficollis
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Red-breasted Goose
+  vp_status: H
+- wikidata_id: Q26733
+  scientific_name: Branta canadensis
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Canada Goose
+  vp_status: H
+- wikidata_id: Q26680
+  scientific_name: Branta leucopsis
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Barnacle Goose
+  vp_status: H
+- wikidata_id: Q191125
+  scientific_name: Anser indicus
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Bar-headed Goose
+  vp_status: H
+- wikidata_id: Q27074540
+  scientific_name: Anser caerulescens
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Snow Goose
+  vp_status: F
+- wikidata_id: Q25882
+  scientific_name: Anser anser
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Greylag Goose
+  vp_status: H
+- wikidata_id: Q191628
+  scientific_name: Anser erythropus
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Lesser White-fronted Goose
+  vp_status: H
+- wikidata_id: Q172093
+  scientific_name: Anser albifrons
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Greater White-fronted Goose
+  vp_status: H
+- wikidata_id: Q673280
+  scientific_name: Anser serrirostris
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Tundra Bean Goose
+  vp_status: H
+- wikidata_id: Q209419
+  scientific_name: Anser brachyrhynchus
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Pink-footed Goose
+  vp_status: H
+- wikidata_id: Q26452
+  scientific_name: Anser fabalis
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Taiga Bean Goose
+  vp_status: H
+- wikidata_id: Q242851
+  scientific_name: Cairina moschata
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Muscovy Duck
+  vp_status: H
+- wikidata_id: Q200339
+  scientific_name: Aix galericulata
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Mandarin Duck
+  vp_status: H
+- wikidata_id: Q274179
+  scientific_name: Alopochen aegyptiaca
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Egyptian Goose
+  vp_status: H
+- wikidata_id: Q25761
+  scientific_name: Tadorna tadorna
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Common Shelduck
+  vp_status: H
+- wikidata_id: Q170723
+  scientific_name: Tadorna ferruginea
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Ruddy Shelduck
+  vp_status: H
+- wikidata_id: Q26597
+  scientific_name: Clangula hyemalis
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Long-tailed Duck
+  vp_status: H
+- wikidata_id: Q210954
+  scientific_name: Polysticta stelleri
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Steller’s Eider
+  vp_status: F
+- wikidata_id: Q207846
+  scientific_name: Somateria spectabilis
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: King Eider
+  vp_status: H
+- wikidata_id: Q26696
+  scientific_name: Somateria mollissima
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Common Eider
+  vp_status: H
+- wikidata_id: Q331179
+  scientific_name: Histrionicus histrionicus
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Harlequin Duck
+  vp_status: H
+- wikidata_id: Q27434
+  scientific_name: Melanitta nigra
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Common Scoter
+  vp_status: H
+- wikidata_id: Q742468
+  scientific_name: Melanitta perspicillata
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Surf Scoter
+  vp_status: F
+- wikidata_id: Q201300
+  scientific_name: Melanitta fusca
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Velvet Scoter
+  vp_status: H
+- wikidata_id: Q369767
+  scientific_name: Bucephala islandica
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Barrow’s Goldeneye
+  vp_status: H
+- wikidata_id: Q29865
+  scientific_name: Bucephala clangula
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Common Goldeneye
+  vp_status: H
+- wikidata_id: Q200646
+  scientific_name: Mergellus albellus
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Smew
+  vp_status: H
+- wikidata_id: Q189609
+  scientific_name: Mergus serrator
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Red-breasted Merganser
+  vp_status: H
+- wikidata_id: Q180991
+  scientific_name: Mergus merganser
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Common Merganser
+  vp_status: H
+- wikidata_id: Q331447
+  scientific_name: Marmaronetta angustirostris
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Marbled Duck
+  vp_status: H
+- wikidata_id: Q244350
+  scientific_name: Netta rufina
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Red-crested Pochard
+  vp_status: H
+- wikidata_id: Q191723
+  scientific_name: Aythya nyroca
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Ferruginous Duck
+  vp_status: H
+- wikidata_id: Q26742
+  scientific_name: Aythya ferina
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Common Pochard
+  vp_status: H
+- wikidata_id: Q601055
+  scientific_name: Aythya collaris
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Ring-necked Duck
+  vp_status: F
+- wikidata_id: Q26444
+  scientific_name: Aythya fuligula
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Tufted Duck
+  vp_status: H
+- wikidata_id: Q26635
+  scientific_name: Aythya marila
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Greater Scaup
+  vp_status: H
+- wikidata_id: Q28106902
+  scientific_name: Spatula querquedula
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Garganey
+  vp_status: H
+- wikidata_id: Q28106778
+  scientific_name: Spatula discors
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Blue-winged Teal
+  vp_status: F
+- wikidata_id: Q28106731
+  scientific_name: Spatula clypeata
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Northern Shoveler
+  vp_status: H
+- wikidata_id: Q28106966
+  scientific_name: Mareca strepera
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Gadwall
+  vp_status: H
+- wikidata_id: Q28106837
+  scientific_name: Mareca penelope
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Eurasian Wigeon
+  vp_status: H
+- wikidata_id: Q28106685
+  scientific_name: Mareca americana
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: American Wigeon
+  vp_status: F
+- wikidata_id: Q25348
+  scientific_name: Anas platyrhynchos
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Mallard
+  vp_status: H
+- wikidata_id: Q25450
+  scientific_name: Anas acuta
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Northern Pintail
+  vp_status: H
+- wikidata_id: Q25700
+  scientific_name: Anas crecca
+  family: Anatidae
+  ioc_order: Anseriformes
+  common_en: Green-winged Teal
+  vp_status: H
+- wikidata_id: Q251842
+  scientific_name: Numida meleagris
+  family: Numididae
+  ioc_order: Galliformes
+  common_en: Helmeted Guineafowl
+  vp_status: H
+- wikidata_id: Q142651
+  scientific_name: Colinus virginianus
+  family: Odontophoridae
+  ioc_order: Galliformes
+  common_en: Northern Bobwhite
+  vp_status: H
+- wikidata_id: Q830385
+  scientific_name: Callipepla californica
+  family: Odontophoridae
+  ioc_order: Galliformes
+  common_en: California Quail
+  vp_status: H
+- wikidata_id: Q182761
+  scientific_name: Tetrastes bonasia
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Hazel Grouse
+  vp_status: H
+- wikidata_id: Q205930
+  scientific_name: Lagopus muta
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Rock Ptarmigan
+  vp_status: H
+- wikidata_id: Q40655821
+  scientific_name: Lagopus scotica
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Red Grouse
+  vp_status: H
+- wikidata_id: Q178702
+  scientific_name: Lagopus lagopus
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Willow Ptarmigan
+  vp_status: H
+- wikidata_id: Q129059
+  scientific_name: Tetrao urogallus
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Western Capercaillie
+  vp_status: H
+- wikidata_id: Q845408
+  scientific_name: Lyrurus mlokosiewiczi
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Caucasian Grouse
+  vp_status: H
+- wikidata_id: Q155878
+  scientific_name: Lyrurus tetrix
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Black Grouse
+  vp_status: H
+- wikidata_id: Q26106
+  scientific_name: Perdix perdix
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Grey Partridge
+  vp_status: H
+- wikidata_id: Q339483
+  scientific_name: Syrmaticus reevesii
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Reeves’s Pheasant
+  vp_status: H
+- wikidata_id: Q335113
+  scientific_name: Chrysolophus pictus
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Golden Pheasant
+  vp_status: H
+- wikidata_id: Q385750
+  scientific_name: Chrysolophus amherstiae
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Lady Amherst’s Pheasant
+  vp_status: H
+- wikidata_id: Q25432
+  scientific_name: Phasianus colchicus
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Common Pheasant
+  vp_status: H
+- wikidata_id: Q117253126
+  scientific_name: Ortygornis pondicerianus
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Grey Francolin
+  vp_status: H
+- wikidata_id: Q285165
+  scientific_name: Francolinus francolinus
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Black Francolin
+  vp_status: H
+- wikidata_id: Q1137277
+  scientific_name: Tetraogallus caucasicus
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Caucasian Snowcock
+  vp_status: H
+- wikidata_id: Q1274601
+  scientific_name: Tetraogallus caspius
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Caspian Snowcock
+  vp_status: H
+- wikidata_id: Q920780
+  scientific_name: Ammoperdix griseogularis
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: See-see Partridge
+  vp_status: H
+- wikidata_id: Q1274275
+  scientific_name: Ammoperdix heyi
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Sand Partridge
+  vp_status: H
+- wikidata_id: Q28358
+  scientific_name: Coturnix coturnix
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Common Quail
+  vp_status: H
+- wikidata_id: Q606076
+  scientific_name: Coturnix delegorguei
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Harlequin Quail
+  vp_status: H
+- wikidata_id: Q202423
+  scientific_name: Alectoris barbara
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Barbary Partridge
+  vp_status: H
+- wikidata_id: Q251584
+  scientific_name: Alectoris melanocephala
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Arabian Partridge
+  vp_status: H
+- wikidata_id: Q754863
+  scientific_name: Alectoris rufa
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Red-legged Partridge
+  vp_status: H
+- wikidata_id: Q194043
+  scientific_name: Alectoris chukar
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Chukar Partridge
+  vp_status: H
+- wikidata_id: Q492684
+  scientific_name: Alectoris graeca
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Rock Partridge
+  vp_status: H
+- wikidata_id: Q371205
+  scientific_name: Alectoris philbyi
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Philby’s Partridge
+  vp_status: H
+- wikidata_id: Q1266683
+  scientific_name: Pternistis erckelii
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Erckel’s Spurfowl
+  vp_status: H
+- wikidata_id: Q27074570
+  scientific_name: Pternistis bicalcaratus
+  family: Phasianidae
+  ioc_order: Galliformes
+  common_en: Double-spurred Spurfowl
+  vp_status: H
+- wikidata_id: Q242369
+  scientific_name: Phoeniconaias minor
+  family: Phoenicopteridae
+  ioc_order: Phoenicopteriformes
+  common_en: Lesser Flamingo
+  vp_status: F
+- wikidata_id: Q179863
+  scientific_name: Phoenicopterus roseus
+  family: Phoenicopteridae
+  ioc_order: Phoenicopteriformes
+  common_en: Greater Flamingo
+  vp_status: H
+- wikidata_id: Q25421
+  scientific_name: Tachybaptus ruficollis
+  family: Podicipedidae
+  ioc_order: Podicipediformes
+  common_en: Little Grebe
+  vp_status: H
+- wikidata_id: Q192058
+  scientific_name: Podiceps auritus
+  family: Podicipedidae
+  ioc_order: Podicipediformes
+  common_en: Horned Grebe
+  vp_status: H
+- wikidata_id: Q179919
+  scientific_name: Podiceps grisegena
+  family: Podicipedidae
+  ioc_order: Podicipediformes
+  common_en: Red-necked Grebe
+  vp_status: H
+- wikidata_id: Q25422
+  scientific_name: Podiceps cristatus
+  family: Podicipedidae
+  ioc_order: Podicipediformes
+  common_en: Great Crested Grebe
+  vp_status: H
+- wikidata_id: Q185183
+  scientific_name: Podiceps nigricollis
+  family: Podicipedidae
+  ioc_order: Podicipediformes
+  common_en: Black-necked Grebe
+  vp_status: H
+- wikidata_id: Q171655
+  scientific_name: Otis tarda
+  family: Otididae
+  ioc_order: Otidiformes
+  common_en: Great Bustard
+  vp_status: H
+- wikidata_id: Q623791
+  scientific_name: Ardeotis arabs
+  family: Otididae
+  ioc_order: Otidiformes
+  common_en: Arabian Bustard
+  vp_status: H
+- wikidata_id: Q1262382
+  scientific_name: Chlamydotis macqueenii
+  family: Otididae
+  ioc_order: Otidiformes
+  common_en: Asian Houbara
+  vp_status: H
+- wikidata_id: Q290871
+  scientific_name: Chlamydotis undulata
+  family: Otididae
+  ioc_order: Otidiformes
+  common_en: African Houbara
+  vp_status: H
+- wikidata_id: Q188601
+  scientific_name: Tetrax tetrax
+  family: Otididae
+  ioc_order: Otidiformes
+  common_en: Little Bustard
+  vp_status: H
+- wikidata_id: Q749711
+  scientific_name: Centropus senegalensis
+  family: Cuculidae
+  ioc_order: Cuculiformes
+  common_en: Senegal Coucal
+  vp_status: H
+- wikidata_id: Q386116
+  scientific_name: Centropus superciliosus
+  family: Cuculidae
+  ioc_order: Cuculiformes
+  common_en: White-browed Coucal
+  vp_status: H
+- wikidata_id: Q665363
+  scientific_name: Clamator glandarius
+  family: Cuculidae
+  ioc_order: Cuculiformes
+  common_en: Great Spotted Cuckoo
+  vp_status: H
+- wikidata_id: Q839535
+  scientific_name: Clamator jacobinus
+  family: Cuculidae
+  ioc_order: Cuculiformes
+  common_en: Jacobin Cuckoo
+  vp_status: H
+- wikidata_id: Q798401
+  scientific_name: Eudynamys scolopaceus
+  family: Cuculidae
+  ioc_order: Cuculiformes
+  common_en: Asian Koel
+  vp_status: F
+- wikidata_id: Q519634
+  scientific_name: Chrysococcyx caprius
+  family: Cuculidae
+  ioc_order: Cuculiformes
+  common_en: Diederik Cuckoo
+  vp_status: H
+- wikidata_id: Q1189720
+  scientific_name: Chrysococcyx klaas
+  family: Cuculidae
+  ioc_order: Cuculiformes
+  common_en: Klaas’s Cuckoo
+  vp_status: H
+- wikidata_id: Q18845
+  scientific_name: Cuculus canorus
+  family: Cuculidae
+  ioc_order: Cuculiformes
+  common_en: Common Cuckoo
+  vp_status: H
+- wikidata_id: Q1266506
+  scientific_name: Cuculus optatus
+  family: Cuculidae
+  ioc_order: Cuculiformes
+  common_en: Oriental Cuckoo
+  vp_status: H
+- wikidata_id: Q128002
+  scientific_name: Syrrhaptes paradoxus
+  family: Pteroclidae
+  ioc_order: Pterocliformes
+  common_en: Pallas’s Sandgrouse
+  vp_status: F
+- wikidata_id: Q753741
+  scientific_name: Pterocles alchata
+  family: Pteroclidae
+  ioc_order: Pterocliformes
+  common_en: Pin-tailed Sandgrouse
+  vp_status: H
+- wikidata_id: Q127903
+  scientific_name: Pterocles exustus
+  family: Pteroclidae
+  ioc_order: Pterocliformes
+  common_en: Chestnut-bellied Sandgrouse
+  vp_status: H
+- wikidata_id: Q80832
+  scientific_name: Pterocles senegallus
+  family: Pteroclidae
+  ioc_order: Pterocliformes
+  common_en: Spotted Sandgrouse
+  vp_status: H
+- wikidata_id: Q383182
+  scientific_name: Pterocles orientalis
+  family: Pteroclidae
+  ioc_order: Pterocliformes
+  common_en: Black-bellied Sandgrouse
+  vp_status: H
+- wikidata_id: Q127886
+  scientific_name: Pterocles coronatus
+  family: Pteroclidae
+  ioc_order: Pterocliformes
+  common_en: Crowned Sandgrouse
+  vp_status: H
+- wikidata_id: Q127895
+  scientific_name: Pterocles lichtensteinii
+  family: Pteroclidae
+  ioc_order: Pterocliformes
+  common_en: Lichtenstein’s Sandgrouse
+  vp_status: H
+- wikidata_id: Q391198
+  scientific_name: Spilopelia senegalensis
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Laughing Dove
+  vp_status: H
+- wikidata_id: Q704987
+  scientific_name: Streptopelia orientalis
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Oriental Turtle Dove
+  vp_status: H
+- wikidata_id: Q168514
+  scientific_name: Streptopelia turtur
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: European Turtle Dove
+  vp_status: H
+- wikidata_id: Q1030039
+  scientific_name: Streptopelia lugens
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Dusky Turtle Dove
+  vp_status: H
+- wikidata_id: Q1072609
+  scientific_name: Streptopelia semitorquata
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Red-eyed Dove
+  vp_status: H
+- wikidata_id: Q54696
+  scientific_name: Streptopelia decaocto
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Eurasian Collared Dove
+  vp_status: H
+- wikidata_id: Q921348
+  scientific_name: Streptopelia roseogrisea
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: African Collared Dove
+  vp_status: H
+- wikidata_id: Q933542
+  scientific_name: Columba junoniae
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Laurel Pigeon
+  vp_status: H
+- wikidata_id: Q512840
+  scientific_name: Columba arquatrix
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: African Olive Pigeon
+  vp_status: H
+- wikidata_id: Q26026
+  scientific_name: Columba palumbus
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Common Wood Pigeon
+  vp_status: H
+- wikidata_id: Q770308
+  scientific_name: Columba trocaz
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Trocaz Pigeon
+  vp_status: H
+- wikidata_id: Q536817
+  scientific_name: Columba bollii
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Bolle’s Pigeon
+  vp_status: H
+- wikidata_id: Q42326
+  scientific_name: Columba livia
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Rock Dove / Feral Pigeon
+  vp_status: H
+- wikidata_id: Q26140
+  scientific_name: Columba oenas
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Stock Dove
+  vp_status: H
+- wikidata_id: Q932119
+  scientific_name: Columba eversmanni
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Yellow-eyed Pigeon
+  vp_status: H
+- wikidata_id: Q151851
+  scientific_name: Oena capensis
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Namaqua Dove
+  vp_status: H
+- wikidata_id: Q1188385
+  scientific_name: Treron waalia
+  family: Columbidae
+  ioc_order: Columbiformes
+  common_en: Bruce’s Green Pigeon
+  vp_status: H
+- wikidata_id: Q21949185
+  scientific_name: Leucogeranus leucogeranus
+  family: Gruidae
+  ioc_order: Gruiformes
+  common_en: Siberian Crane
+  vp_status: F
+- wikidata_id: Q23759614
+  scientific_name: Grus virgo
+  family: Gruidae
+  ioc_order: Gruiformes
+  common_en: Demoiselle Crane
+  vp_status: H
+- wikidata_id: Q4764
+  scientific_name: Grus grus
+  family: Gruidae
+  ioc_order: Gruiformes
+  common_en: Common Crane
+  vp_status: H
+- wikidata_id: Q185099
+  scientific_name: Rallus aquaticus
+  family: Rallidae
+  ioc_order: Gruiformes
+  common_en: Water Rail
+  vp_status: H
+- wikidata_id: Q26017
+  scientific_name: Crex crex
+  family: Rallidae
+  ioc_order: Gruiformes
+  common_en: Corn Crake
+  vp_status: H
+- wikidata_id: Q194024
+  scientific_name: Porzana porzana
+  family: Rallidae
+  ioc_order: Gruiformes
+  common_en: Spotted Crake
+  vp_status: H
+- wikidata_id: Q18847
+  scientific_name: Gallinula chloropus
+  family: Rallidae
+  ioc_order: Gruiformes
+  common_en: Common Moorhen
+  vp_status: H
+- wikidata_id: Q25376
+  scientific_name: Fulica atra
+  family: Rallidae
+  ioc_order: Gruiformes
+  common_en: Eurasian Coot
+  vp_status: H
+- wikidata_id: Q748033
+  scientific_name: Fulica cristata
+  family: Rallidae
+  ioc_order: Gruiformes
+  common_en: Red-knobbed Coot
+  vp_status: H
+- wikidata_id: Q187902
+  scientific_name: Porphyrio porphyrio
+  family: Rallidae
+  ioc_order: Gruiformes
+  common_en: Purple Swamphen
+  vp_status: H
+- wikidata_id: Q862825
+  scientific_name: Amaurornis phoenicurus
+  family: Rallidae
+  ioc_order: Gruiformes
+  common_en: White-breasted Waterhen
+  vp_status: F
+- wikidata_id: Q270680
+  scientific_name: Zapornia parva
+  family: Rallidae
+  ioc_order: Gruiformes
+  common_en: Little Crake
+  vp_status: H
+- wikidata_id: Q237670
+  scientific_name: Zapornia pusilla
+  family: Rallidae
+  ioc_order: Gruiformes
+  common_en: Baillon’s Crake
+  vp_status: H
+- wikidata_id: Q1260062
+  scientific_name: Esacus recurvirostris
+  family: Burhinidae
+  ioc_order: Charadriiformes
+  common_en: Great Stone-curlew
+  vp_status: H
+- wikidata_id: Q1002588
+  scientific_name: Burhinus capensis
+  family: Burhinidae
+  ioc_order: Charadriiformes
+  common_en: Spotted Thick-knee
+  vp_status: H
+- wikidata_id: Q922125
+  scientific_name: Burhinus senegalensis
+  family: Burhinidae
+  ioc_order: Charadriiformes
+  common_en: Senegal Thick-knee
+  vp_status: H
+- wikidata_id: Q184834
+  scientific_name: Burhinus oedicnemus
+  family: Burhinidae
+  ioc_order: Charadriiformes
+  common_en: Eurasian Stone-curlew
+  vp_status: H
+- wikidata_id: Q26147
+  scientific_name: Recurvirostra avosetta
+  family: Recurvirostridae
+  ioc_order: Charadriiformes
+  common_en: Pied Avocet
+  vp_status: H
+- wikidata_id: Q178821
+  scientific_name: Himantopus himantopus
+  family: Recurvirostridae
+  ioc_order: Charadriiformes
+  common_en: Black-winged Stilt
+  vp_status: H
+- wikidata_id: Q619728
+  scientific_name: Haematopus meadewaldoi
+  family: Haematopodidae
+  ioc_order: Charadriiformes
+  common_en: Canary Islands Oystercatcher†
+  vp_status: (H)
+- wikidata_id: Q25928
+  scientific_name: Haematopus ostralegus
+  family: Haematopodidae
+  ioc_order: Charadriiformes
+  common_en: Eurasian Oystercatcher
+  vp_status: H
+- wikidata_id: Q18835
+  scientific_name: Pluvialis squatarola
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Grey Plover
+  vp_status: F
+- wikidata_id: Q21148
+  scientific_name: Pluvialis apricaria
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: European Golden Plover
+  vp_status: H
+- wikidata_id: Q216836
+  scientific_name: Pluvialis dominica
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: American Golden Plover
+  vp_status: F
+- wikidata_id: Q18865
+  scientific_name: Pluvialis fulva
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Pacific Golden Plover
+  vp_status: F
+- wikidata_id: Q25677554
+  scientific_name: Eudromias morinellus
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Eurasian Dotterel
+  vp_status: H
+- wikidata_id: Q26816
+  scientific_name: Charadrius hiaticula
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Common Ringed Plover
+  vp_status: H
+- wikidata_id: Q136297294
+  scientific_name: Thinornis tricollaris
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Three-banded Plover
+  vp_status: H
+- wikidata_id: Q25392
+  scientific_name: Vanellus vanellus
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Northern Lapwing
+  vp_status: H
+- wikidata_id: Q749126
+  scientific_name: Vanellus spinosus
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Spur-winged Lapwing
+  vp_status: H
+- wikidata_id: Q752398
+  scientific_name: Vanellus indicus
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Red-wattled Lapwing
+  vp_status: H
+- wikidata_id: Q279307
+  scientific_name: Vanellus gregarius
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Sociable Lapwing
+  vp_status: H
+- wikidata_id: Q827245
+  scientific_name: Vanellus leucurus
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: White-tailed Lapwing
+  vp_status: H
+- wikidata_id: Q752485
+  scientific_name: Anarhynchus asiaticus
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Caspian Plover
+  vp_status: H
+- wikidata_id: Q114843683
+  scientific_name: Anarhynchus atrifrons
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Tibetan Sand Plover
+  vp_status: F
+- wikidata_id: Q137159050
+  scientific_name: Anarhynchus leschenaultii
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Greater Sand Plover
+  vp_status: H
+- wikidata_id: Q137162124
+  scientific_name: Anarhynchus pecuarius
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Kittlitz’s Plover
+  vp_status: H
+- wikidata_id: Q137156829
+  scientific_name: Anarhynchus alexandrinus
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Kentish Plover
+  vp_status: H
+- wikidata_id: Q31617
+  scientific_name: Rostratula benghalensis
+  family: Rostratulidae
+  ioc_order: Charadriiformes
+  common_en: Greater Painted-snipe
+  vp_status: H
+- wikidata_id: Q18861
+  scientific_name: Hydrophasianus chirurgus
+  family: Jacanidae
+  ioc_order: Charadriiformes
+  common_en: Pheasant-tailed Jacana
+  vp_status: F
+- wikidata_id: Q18858
+  scientific_name: Numenius phaeopus
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Eurasian Whimbrel
+  vp_status: H
+- wikidata_id: Q76411
+  scientific_name: Numenius tenuirostris
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Slender-billed Curlew
+  vp_status: F
+- wikidata_id: Q18854
+  scientific_name: Numenius arquata
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Eurasian Curlew
+  vp_status: H
+- wikidata_id: Q18864
+  scientific_name: Limosa lapponica
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Bar-tailed Godwit
+  vp_status: H
+- wikidata_id: Q18841
+  scientific_name: Limosa limosa
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Black-tailed Godwit
+  vp_status: H
+- wikidata_id: Q26711
+  scientific_name: Lymnocryptes minimus
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Jack Snipe
+  vp_status: H
+- wikidata_id: Q26114
+  scientific_name: Scolopax rusticola
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Eurasian Woodcock
+  vp_status: H
+- wikidata_id: Q27171
+  scientific_name: Gallinago media
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Great Snipe
+  vp_status: H
+- wikidata_id: Q595162
+  scientific_name: Gallinago stenura
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Pin-tailed Snipe
+  vp_status: H
+- wikidata_id: Q25692
+  scientific_name: Gallinago gallinago
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Common Snipe
+  vp_status: H
+- wikidata_id: Q18856
+  scientific_name: Xenus cinereus
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Terek Sandpiper
+  vp_status: H
+- wikidata_id: Q18850
+  scientific_name: Actitis hypoleucos
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Common Sandpiper
+  vp_status: H
+- wikidata_id: Q389691
+  scientific_name: Actitis macularius
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Spotted Sandpiper
+  vp_status: F
+- wikidata_id: Q208335
+  scientific_name: Phalaropus fulicarius
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Red Phalarope
+  vp_status: H
+- wikidata_id: Q206840
+  scientific_name: Phalaropus lobatus
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Red-necked Phalarope
+  vp_status: H
+- wikidata_id: Q28450
+  scientific_name: Tringa ochropus
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Green Sandpiper
+  vp_status: H
+- wikidata_id: Q28355
+  scientific_name: Tringa stagnatilis
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Marsh Sandpiper
+  vp_status: H
+- wikidata_id: Q18837
+  scientific_name: Tringa glareola
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Wood Sandpiper
+  vp_status: H
+- wikidata_id: Q18859
+  scientific_name: Tringa totanus
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Common Redshank
+  vp_status: H
+- wikidata_id: Q28103
+  scientific_name: Tringa erythropus
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Spotted Redshank
+  vp_status: H
+- wikidata_id: Q18840
+  scientific_name: Tringa nebularia
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Common Greenshank
+  vp_status: H
+- wikidata_id: Q26892
+  scientific_name: Arenaria interpres
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Ruddy Turnstone
+  vp_status: H
+- wikidata_id: Q27124
+  scientific_name: Calidris canutus
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Red Knot
+  vp_status: F
+- wikidata_id: Q28122714
+  scientific_name: Calidris pugnax
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Ruff
+  vp_status: H
+- wikidata_id: Q28114227
+  scientific_name: Calidris falcinellus
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Broad-billed Sandpiper
+  vp_status: H
+- wikidata_id: Q62345
+  scientific_name: Calidris ferruginea
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Curlew Sandpiper
+  vp_status: F
+- wikidata_id: Q58921
+  scientific_name: Calidris temminckii
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Temminck’s Stint
+  vp_status: H
+- wikidata_id: Q27452709
+  scientific_name: Calidris subruficollis
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Buff-breasted Sandpiper
+  vp_status: F
+- wikidata_id: Q58958
+  scientific_name: Calidris alba
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Sanderling
+  vp_status: H
+- wikidata_id: Q26650
+  scientific_name: Calidris alpina
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Dunlin
+  vp_status: H
+- wikidata_id: Q62359
+  scientific_name: Calidris maritima
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Purple Sandpiper
+  vp_status: H
+- wikidata_id: Q260716
+  scientific_name: Calidris melanotos
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Pectoral Sandpiper
+  vp_status: h
+- wikidata_id: Q27232
+  scientific_name: Calidris minuta
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: Little Stint
+  vp_status: H
+- wikidata_id: Q599749
+  scientific_name: Calidris fuscicollis
+  family: Scolopacidae
+  ioc_order: Charadriiformes
+  common_en: White-rumped Sandpiper
+  vp_status: F
+- wikidata_id: Q18836
+  scientific_name: Turnix sylvaticus
+  family: Turnicidae
+  ioc_order: Charadriiformes
+  common_en: Common Buttonquail
+  vp_status: H
+- wikidata_id: Q213836
+  scientific_name: Dromas ardeola
+  family: Dromadidae
+  ioc_order: Charadriiformes
+  common_en: Crab-plover
+  vp_status: H
+- wikidata_id: Q219199
+  scientific_name: Cursorius cursor
+  family: Glareolidae
+  ioc_order: Charadriiformes
+  common_en: Cream-colored Courser
+  vp_status: H
+- wikidata_id: Q934460
+  scientific_name: Glareola lactea
+  family: Glareolidae
+  ioc_order: Charadriiformes
+  common_en: Small Pratincole
+  vp_status: F
+- wikidata_id: Q695729
+  scientific_name: Glareola nordmanni
+  family: Glareolidae
+  ioc_order: Charadriiformes
+  common_en: Black-winged Pratincole
+  vp_status: H
+- wikidata_id: Q330310
+  scientific_name: Glareola pratincola
+  family: Glareolidae
+  ioc_order: Charadriiformes
+  common_en: Collared Pratincole
+  vp_status: H
+- wikidata_id: Q203053
+  scientific_name: Stercorarius parasiticus
+  family: Stercorariidae
+  ioc_order: Charadriiformes
+  common_en: Parasitic Jaeger
+  vp_status: H
+- wikidata_id: Q216921
+  scientific_name: Stercorarius longicaudus
+  family: Stercorariidae
+  ioc_order: Charadriiformes
+  common_en: Long-tailed Jaeger
+  vp_status: H
+- wikidata_id: Q212767
+  scientific_name: Stercorarius pomarinus
+  family: Stercorariidae
+  ioc_order: Charadriiformes
+  common_en: Pomarine Jaeger
+  vp_status: H
+- wikidata_id: Q207760
+  scientific_name: Stercorarius skua
+  family: Stercorariidae
+  ioc_order: Charadriiformes
+  common_en: Great Skua
+  vp_status: H
+- wikidata_id: Q26685
+  scientific_name: Fratercula arctica
+  family: Alcidae
+  ioc_order: Charadriiformes
+  common_en: Atlantic Puffin
+  vp_status: H
+- wikidata_id: Q212055
+  scientific_name: Cepphus grylle
+  family: Alcidae
+  ioc_order: Charadriiformes
+  common_en: Black Guillemot
+  vp_status: H
+- wikidata_id: Q27102
+  scientific_name: Alca torda
+  family: Alcidae
+  ioc_order: Charadriiformes
+  common_en: Razorbill
+  vp_status: H
+- wikidata_id: Q189193
+  scientific_name: Pinguinus impennis
+  family: Alcidae
+  ioc_order: Charadriiformes
+  common_en: Great Auk
+  vp_status: (H)
+- wikidata_id: Q26470
+  scientific_name: Alle alle
+  family: Alcidae
+  ioc_order: Charadriiformes
+  common_en: Little Auk
+  vp_status: H
+- wikidata_id: Q728682
+  scientific_name: Uria lomvia
+  family: Alcidae
+  ioc_order: Charadriiformes
+  common_en: Thick-billed Murre
+  vp_status: H
+- wikidata_id: Q21062
+  scientific_name: Uria aalge
+  family: Alcidae
+  ioc_order: Charadriiformes
+  common_en: Common Murre
+  vp_status: H
+- wikidata_id: Q525717
+  scientific_name: Anous stolidus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Brown Noddy
+  vp_status: H
+- wikidata_id: Q941644
+  scientific_name: Anous tenuirostris
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Lesser Noddy
+  vp_status: F
+- wikidata_id: Q28482
+  scientific_name: Onychoprion fuscatus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Sooty Tern
+  vp_status: H
+- wikidata_id: Q28490
+  scientific_name: Onychoprion anaethetus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Bridled Tern
+  vp_status: H
+- wikidata_id: Q12267692
+  scientific_name: Sternula albifrons
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Little Tern
+  vp_status: H
+- wikidata_id: Q1265260
+  scientific_name: Sternula saundersi
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Saunders’s Tern
+  vp_status: H
+- wikidata_id: Q27129
+  scientific_name: Hydroprogne caspia
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Caspian Tern
+  vp_status: H
+- wikidata_id: Q18834
+  scientific_name: Gelochelidon nilotica
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Gull-billed Tern
+  vp_status: H
+- wikidata_id: Q233616
+  scientific_name: Chlidonias hybrida
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Whiskered Tern
+  vp_status: H
+- wikidata_id: Q241753
+  scientific_name: Chlidonias leucopterus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: White-winged Tern
+  vp_status: H
+- wikidata_id: Q27215
+  scientific_name: Chlidonias niger
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Black Tern
+  vp_status: H
+- wikidata_id: Q27547
+  scientific_name: Thalasseus sandvicensis
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Sandwich Tern
+  vp_status: H
+- wikidata_id: Q18866
+  scientific_name: Thalasseus bergii
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Greater Crested Tern
+  vp_status: H
+- wikidata_id: Q85814978
+  scientific_name: Thalasseus albididorsalis
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: West African Crested Tern
+  vp_status: H
+- wikidata_id: Q18839
+  scientific_name: Thalasseus bengalensis
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Lesser Crested Tern
+  vp_status: H
+- wikidata_id: Q26800
+  scientific_name: Sterna paradisaea
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Arctic Tern
+  vp_status: H
+- wikidata_id: Q18875
+  scientific_name: Sterna hirundo
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Common Tern
+  vp_status: H
+- wikidata_id: Q921533
+  scientific_name: Sterna repressa
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: White-cheeked Tern
+  vp_status: H
+- wikidata_id: Q321293
+  scientific_name: Sterna dougallii
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Roseate Tern
+  vp_status: H
+- wikidata_id: Q164467
+  scientific_name: Hydrocoloeus minutus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Little Gull
+  vp_status: H
+- wikidata_id: Q747817
+  scientific_name: Rhodostethia rosea
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Ross’s Gull
+  vp_status: F
+- wikidata_id: Q26612
+  scientific_name: Rissa tridactyla
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Black-legged Kittiwake
+  vp_status: H
+- wikidata_id: Q212047
+  scientific_name: Xema sabini
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Sabine’s Gull
+  vp_status: H
+- wikidata_id: Q723064
+  scientific_name: Pagophila eburnea
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Ivory Gull
+  vp_status: H
+- wikidata_id: Q391421
+  scientific_name: Chroicocephalus genei
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Slender-billed Gull
+  vp_status: H
+- wikidata_id: Q25634
+  scientific_name: Chroicocephalus ridibundus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Black-headed Gull
+  vp_status: H
+- wikidata_id: Q652348
+  scientific_name: Chroicocephalus cirrocephalus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Grey-headed Gull
+  vp_status: H
+- wikidata_id: Q476356
+  scientific_name: Ichthyaetus ichthyaetus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Pallas’s Gull
+  vp_status: H
+- wikidata_id: Q519583
+  scientific_name: Ichthyaetus audouinii
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Audouin’s Gull
+  vp_status: H
+- wikidata_id: Q276189
+  scientific_name: Ichthyaetus melanocephalus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Mediterranean Gull
+  vp_status: H
+- wikidata_id: Q912041
+  scientific_name: Ichthyaetus leucophthalmus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: White-eyed Gull
+  vp_status: H
+- wikidata_id: Q589869
+  scientific_name: Ichthyaetus hemprichii
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Sooty Gull
+  vp_status: H
+- wikidata_id: Q26427
+  scientific_name: Larus canus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Common Gull
+  vp_status: H
+- wikidata_id: Q389505
+  scientific_name: Larus cachinnans
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Caspian Gull
+  vp_status: H
+- wikidata_id: Q28236
+  scientific_name: Larus argentatus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: European Herring Gull
+  vp_status: H
+- wikidata_id: Q704982
+  scientific_name: Larus michahellis
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Yellow-legged Gull
+  vp_status: H
+- wikidata_id: Q683138
+  scientific_name: Larus armenicus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Armenian Gull
+  vp_status: H
+- wikidata_id: Q26629
+  scientific_name: Larus marinus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Great Black-backed Gull
+  vp_status: H
+- wikidata_id: Q27375
+  scientific_name: Larus hyperboreus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Glaucous Gull
+  vp_status: H
+- wikidata_id: Q27160
+  scientific_name: Larus fuscus
+  family: Laridae
+  ioc_order: Charadriiformes
+  common_en: Lesser Black-backed Gull
+  vp_status: H
+- wikidata_id: Q686600
+  scientific_name: Phaethon aethereus
+  family: Phaethontidae
+  ioc_order: Phaethontiformes
+  common_en: Red-billed Tropicbird
+  vp_status: H
+- wikidata_id: Q26691
+  scientific_name: Gavia stellata
+  family: Gaviidae
+  ioc_order: Gaviiformes
+  common_en: Red-throated Loon
+  vp_status: H
+- wikidata_id: Q190342
+  scientific_name: Gavia immer
+  family: Gaviidae
+  ioc_order: Gaviiformes
+  common_en: Common Loon
+  vp_status: H
+- wikidata_id: Q208328
+  scientific_name: Gavia adamsii
+  family: Gaviidae
+  ioc_order: Gaviiformes
+  common_en: Yellow-billed Loon
+  vp_status: H
+- wikidata_id: Q184432
+  scientific_name: Gavia arctica
+  family: Gaviidae
+  ioc_order: Gaviiformes
+  common_en: Black-throated Loon
+  vp_status: H
+- wikidata_id: Q607024
+  scientific_name: Oceanites oceanicus
+  family: Oceanitidae
+  ioc_order: Procellariiformes
+  common_en: Wilson’s Storm Petrel
+  vp_status: F
+- wikidata_id: Q845982
+  scientific_name: Pelagodroma marina
+  family: Oceanitidae
+  ioc_order: Procellariiformes
+  common_en: White-faced Storm Petrel
+  vp_status: H
+- wikidata_id: Q27461
+  scientific_name: Hydrobates pelagicus
+  family: Hydrobatidae
+  ioc_order: Procellariiformes
+  common_en: European Storm Petrel
+  vp_status: H
+- wikidata_id: Q60895939
+  scientific_name: Hydrobates jabejabe
+  family: Hydrobatidae
+  ioc_order: Procellariiformes
+  common_en: Cape Verde Storm Petrel
+  vp_status: H
+- wikidata_id: Q28114472
+  scientific_name: Hydrobates castro
+  family: Hydrobatidae
+  ioc_order: Procellariiformes
+  common_en: Band-rumped Storm Petrel
+  vp_status: H
+- wikidata_id: Q28122611
+  scientific_name: Hydrobates monteiroi
+  family: Hydrobatidae
+  ioc_order: Procellariiformes
+  common_en: Monteiro’s Storm Petrel
+  vp_status: H
+- wikidata_id: Q28122606
+  scientific_name: Hydrobates monorhis
+  family: Hydrobatidae
+  ioc_order: Procellariiformes
+  common_en: Swinhoe’s Storm Petrel
+  vp_status: F
+- wikidata_id: Q211986
+  scientific_name: Hydrobates leucorhous
+  family: Hydrobatidae
+  ioc_order: Procellariiformes
+  common_en: Leach’s Storm Petrel
+  vp_status: H
+- wikidata_id: Q26896
+  scientific_name: Fulmarus glacialis
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Northern Fulmar
+  vp_status: H
+- wikidata_id: Q129413
+  scientific_name: Bulweria bulwerii
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Bulwer’s Petrel
+  vp_status: H
+- wikidata_id: Q129550
+  scientific_name: Bulweria fallax
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Jouanin’s Petrel
+  vp_status: H
+- wikidata_id: Q181323
+  scientific_name: Calonectris edwardsii
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Cape Verde Shearwater
+  vp_status: H
+- wikidata_id: Q216850
+  scientific_name: Calonectris diomedea
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Scopoli’s Shearwater
+  vp_status: H
+- wikidata_id: Q3410599
+  scientific_name: Calonectris borealis
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Cory’s Shearwater
+  vp_status: H
+- wikidata_id: Q27074601
+  scientific_name: Ardenna pacifica
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Wedge-tailed Shearwater
+  vp_status: F
+- wikidata_id: Q27074603
+  scientific_name: Ardenna grisea
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Sooty Shearwater
+  vp_status: F
+- wikidata_id: Q27074609
+  scientific_name: Ardenna gravis
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Great Shearwater
+  vp_status: F
+- wikidata_id: Q27074607
+  scientific_name: Ardenna carneipes
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Flesh-footed Shearwater
+  vp_status: F
+- wikidata_id: Q208405
+  scientific_name: Puffinus puffinus
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Manx Shearwater
+  vp_status: H
+- wikidata_id: Q511566
+  scientific_name: Puffinus yelkouan
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Mediterranean Shearwater
+  vp_status: H
+- wikidata_id: Q1272271
+  scientific_name: Puffinus baroli
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Barolo Shearwater
+  vp_status: H
+- wikidata_id: Q3410601
+  scientific_name: Puffinus boydi
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Boyd’s Shearwater
+  vp_status: H
+- wikidata_id: Q10416539
+  scientific_name: Puffinus persicus
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Persian Shearwater
+  vp_status: H
+- wikidata_id: Q1272830
+  scientific_name: Pterodroma madeira
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Zino’s Petrel
+  vp_status: H
+- wikidata_id: Q1261612
+  scientific_name: Pterodroma feae
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Fea’s Petrel
+  vp_status: H
+- wikidata_id: Q3412067
+  scientific_name: Pterodroma deserta
+  family: Procellariidae
+  ioc_order: Procellariiformes
+  common_en: Desertas Petrel
+  vp_status: H
+- wikidata_id: Q655510
+  scientific_name: Mycteria ibis
+  family: Ciconiidae
+  ioc_order: Ciconiiformes
+  common_en: Yellow-billed Stork
+  vp_status: F
+- wikidata_id: Q25398
+  scientific_name: Ciconia nigra
+  family: Ciconiidae
+  ioc_order: Ciconiiformes
+  common_en: Black Stork
+  vp_status: H
+- wikidata_id: Q25352
+  scientific_name: Ciconia ciconia
+  family: Ciconiidae
+  ioc_order: Ciconiiformes
+  common_en: White Stork
+  vp_status: H
+- wikidata_id: Q308199
+  scientific_name: Ciconia abdimii
+  family: Ciconiidae
+  ioc_order: Ciconiiformes
+  common_en: Abdim’s Stork
+  vp_status: H
+- wikidata_id: Q647512
+  scientific_name: Fregata magnificens
+  family: Fregatidae
+  ioc_order: Suliformes
+  common_en: Magnificent Frigatebird
+  vp_status: H
+- wikidata_id: Q26675
+  scientific_name: Morus bassanus
+  family: Sulidae
+  ioc_order: Suliformes
+  common_en: Northern Gannet
+  vp_status: H
+- wikidata_id: Q320193
+  scientific_name: Sula leucogaster
+  family: Sulidae
+  ioc_order: Suliformes
+  common_en: Brown Booby
+  vp_status: H
+- wikidata_id: Q602084
+  scientific_name: Sula dactylatra
+  family: Sulidae
+  ioc_order: Suliformes
+  common_en: Masked Booby
+  vp_status: H
+- wikidata_id: Q387379
+  scientific_name: Anhinga rufa
+  family: Anhingidae
+  ioc_order: Suliformes
+  common_en: African Darter
+  vp_status: H
+- wikidata_id: Q59492
+  scientific_name: Microcarbo africanus
+  family: Phalacrocoracidae
+  ioc_order: Suliformes
+  common_en: Reed Cormorant
+  vp_status: H
+- wikidata_id: Q244319
+  scientific_name: Microcarbo pygmaeus
+  family: Phalacrocoracidae
+  ioc_order: Suliformes
+  common_en: Pygmy Cormorant
+  vp_status: H
+- wikidata_id: Q83020448
+  scientific_name: Gulosus aristotelis
+  family: Phalacrocoracidae
+  ioc_order: Suliformes
+  common_en: European Shag
+  vp_status: H
+- wikidata_id: Q25440
+  scientific_name: Phalacrocorax carbo
+  family: Phalacrocoracidae
+  ioc_order: Suliformes
+  common_en: Great Cormorant
+  vp_status: H
+- wikidata_id: Q632399
+  scientific_name: Phalacrocorax nigrogularis
+  family: Phalacrocoracidae
+  ioc_order: Suliformes
+  common_en: Socotra Cormorant
+  vp_status: H
+- wikidata_id: Q178811
+  scientific_name: Plegadis falcinellus
+  family: Threskiornithidae
+  ioc_order: Pelecaniformes
+  common_en: Glossy Ibis
+  vp_status: H
+- wikidata_id: Q245414
+  scientific_name: Geronticus eremita
+  family: Threskiornithidae
+  ioc_order: Pelecaniformes
+  common_en: Northern Bald Ibis
+  vp_status: H
+- wikidata_id: Q512348
+  scientific_name: Platalea alba
+  family: Threskiornithidae
+  ioc_order: Pelecaniformes
+  common_en: African Spoonbill
+  vp_status: F
+- wikidata_id: Q171360
+  scientific_name: Platalea leucorodia
+  family: Threskiornithidae
+  ioc_order: Pelecaniformes
+  common_en: Eurasian Spoonbill
+  vp_status: H
+- wikidata_id: Q208763
+  scientific_name: Threskiornis aethiopicus
+  family: Threskiornithidae
+  ioc_order: Pelecaniformes
+  common_en: African Sacred Ibis
+  vp_status: H
+- wikidata_id: Q652151
+  scientific_name: Scopus umbretta
+  family: Scopidae
+  ioc_order: Pelecaniformes
+  common_en: Hamerkop
+  vp_status: H
+- wikidata_id: Q199427
+  scientific_name: Pelecanus onocrotalus
+  family: Pelecanidae
+  ioc_order: Pelecaniformes
+  common_en: Great White Pelican
+  vp_status: H
+- wikidata_id: Q527830
+  scientific_name: Pelecanus rufescens
+  family: Pelecanidae
+  ioc_order: Pelecaniformes
+  common_en: Pink-backed Pelican
+  vp_status: H
+- wikidata_id: Q184751
+  scientific_name: Pelecanus crispus
+  family: Pelecanidae
+  ioc_order: Pelecaniformes
+  common_en: Dalmatian Pelican
+  vp_status: H
+- wikidata_id: Q25709
+  scientific_name: Botaurus stellaris
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Eurasian Bittern
+  vp_status: H
+- wikidata_id: Q26129
+  scientific_name: Botaurus minutus
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Little Bittern
+  vp_status: H
+- wikidata_id: Q392570
+  scientific_name: Egretta gularis
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Western Reef Heron
+  vp_status: H
+- wikidata_id: Q131709
+  scientific_name: Egretta garzetta
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Little Egret
+  vp_status: H
+- wikidata_id: Q126216
+  scientific_name: Nycticorax nycticorax
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Black-crowned Night Heron
+  vp_status: H
+- wikidata_id: Q132482576
+  scientific_name: Butorides atricapilla
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Little Heron
+  vp_status: H
+- wikidata_id: Q498428
+  scientific_name: Ardeola grayii
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Indian Pond Heron
+  vp_status: H
+- wikidata_id: Q191394
+  scientific_name: Ardeola ralloides
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Squacco Heron
+  vp_status: H
+- wikidata_id: Q130730
+  scientific_name: Ardea alba
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Great Egret
+  vp_status: H
+- wikidata_id: Q27074615
+  scientific_name: Ardea intermedia
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Medium Egret
+  vp_status: F
+- wikidata_id: Q106447604
+  scientific_name: Ardea ibis
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Western Cattle Egret
+  vp_status: H
+- wikidata_id: Q160488
+  scientific_name: Ardea purpurea
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Purple Heron
+  vp_status: H
+- wikidata_id: Q220578
+  scientific_name: Ardea melanocephala
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Black-headed Heron
+  vp_status: F
+- wikidata_id: Q118608
+  scientific_name: Ardea goliath
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Goliath Heron
+  vp_status: H
+- wikidata_id: Q25273
+  scientific_name: Ardea cinerea
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Grey Heron
+  vp_status: H
+- wikidata_id: Q1137192
+  scientific_name: Caprimulgus ruficollis
+  family: Caprimulgidae
+  ioc_order: Caprimulgiformes
+  common_en: Red-necked Nightjar
+  vp_status: H
+- wikidata_id: Q26717
+  scientific_name: Caprimulgus europaeus
+  family: Caprimulgidae
+  ioc_order: Caprimulgiformes
+  common_en: European Nightjar
+  vp_status: H
+- wikidata_id: Q615437
+  scientific_name: Caprimulgus aegyptius
+  family: Caprimulgidae
+  ioc_order: Caprimulgiformes
+  common_en: Egyptian Nightjar
+  vp_status: H
+- wikidata_id: Q1269353
+  scientific_name: Caprimulgus nubicus
+  family: Caprimulgidae
+  ioc_order: Caprimulgiformes
+  common_en: Nubian Nightjar
+  vp_status: H
+- wikidata_id: Q2752089
+  scientific_name: Caprimulgus mahrattensis
+  family: Caprimulgidae
+  ioc_order: Caprimulgiformes
+  common_en: Sykes’s Nightjar
+  vp_status: H
+- wikidata_id: Q1264019
+  scientific_name: Caprimulgus eximius
+  family: Caprimulgidae
+  ioc_order: Caprimulgiformes
+  common_en: Golden Nightjar
+  vp_status: H
+- wikidata_id: Q1265442
+  scientific_name: Caprimulgus poliocephalus
+  family: Caprimulgidae
+  ioc_order: Caprimulgiformes
+  common_en: Montane Nightjar
+  vp_status: H
+- wikidata_id: Q1270252
+  scientific_name: Caprimulgus inornatus
+  family: Caprimulgidae
+  ioc_order: Caprimulgiformes
+  common_en: Plain Nightjar
+  vp_status: H
+- wikidata_id: Q772286
+  scientific_name: Cypsiurus parvus
+  family: Apodidae
+  ioc_order: Apodiformes
+  common_en: African Palm Swift
+  vp_status: H
+- wikidata_id: Q321267
+  scientific_name: Tachymarptis melba
+  family: Apodidae
+  ioc_order: Apodiformes
+  common_en: Alpine Swift
+  vp_status: H
+- wikidata_id: Q179356
+  scientific_name: Apus caffer
+  family: Apodidae
+  ioc_order: Apodiformes
+  common_en: White-rumped Swift
+  vp_status: H
+- wikidata_id: Q611324
+  scientific_name: Apus affinis
+  family: Apodidae
+  ioc_order: Apodiformes
+  common_en: Little Swift
+  vp_status: H
+- wikidata_id: Q1029778
+  scientific_name: Apus alexandri
+  family: Apodidae
+  ioc_order: Apodiformes
+  common_en: Cape Verde Swift
+  vp_status: H
+- wikidata_id: Q1264567
+  scientific_name: Apus berliozi
+  family: Apodidae
+  ioc_order: Apodiformes
+  common_en: Forbes-Watson’s Swift
+  vp_status: H
+- wikidata_id: Q1096617
+  scientific_name: Apus unicolor
+  family: Apodidae
+  ioc_order: Apodiformes
+  common_en: Plain Swift
+  vp_status: H
+- wikidata_id: Q25377
+  scientific_name: Apus apus
+  family: Apodidae
+  ioc_order: Apodiformes
+  common_en: Common Swift
+  vp_status: H
+- wikidata_id: Q165923
+  scientific_name: Apus pallidus
+  family: Apodidae
+  ioc_order: Apodiformes
+  common_en: Pallid Swift
+  vp_status: H
+- wikidata_id: Q25317
+  scientific_name: Tyto alba
+  family: Tytonidae
+  ioc_order: Strigiformes
+  common_en: Western Barn Owl
+  vp_status: H
+- wikidata_id: Q174466
+  scientific_name: Aegolius funereus
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Boreal Owl
+  vp_status: H
+- wikidata_id: Q129958
+  scientific_name: Athene noctua
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Little Owl
+  vp_status: H
+- wikidata_id: Q839524
+  scientific_name: Athene brama
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Spotted Owlet
+  vp_status: H
+- wikidata_id: Q193192
+  scientific_name: Surnia ulula
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Northern Hawk-Owl
+  vp_status: H
+- wikidata_id: Q191155
+  scientific_name: Glaucidium passerinum
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Eurasian Pygmy Owl
+  vp_status: H
+- wikidata_id: Q18920965
+  scientific_name: Otus pamelae
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Arabian Scops Owl
+  vp_status: H
+- wikidata_id: Q171563
+  scientific_name: Otus scops
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Eurasian Scops Owl
+  vp_status: H
+- wikidata_id: Q27074732
+  scientific_name: Otus cyprius
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Cyprus Scops Owl
+  vp_status: H
+- wikidata_id: Q1267714
+  scientific_name: Otus brucei
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Pallid Scops Owl
+  vp_status: H
+- wikidata_id: Q535374
+  scientific_name: Asio capensis
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Marsh Owl
+  vp_status: H
+- wikidata_id: Q25769
+  scientific_name: Asio flammeus
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Short-eared Owl
+  vp_status: H
+- wikidata_id: Q25384
+  scientific_name: Asio otus
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Long-eared Owl
+  vp_status: H
+- wikidata_id: Q170177
+  scientific_name: Bubo scandiacus
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Snowy Owl
+  vp_status: H
+- wikidata_id: Q584597
+  scientific_name: Bubo ascalaphus
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Pharaoh Eagle-Owl
+  vp_status: H
+- wikidata_id: Q130933
+  scientific_name: Bubo bubo
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Eurasian Eagle-Owl
+  vp_status: H
+- wikidata_id: Q40983416
+  scientific_name: Bubo milesi
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Arabian Eagle-Owl
+  vp_status: H
+- wikidata_id: Q828255
+  scientific_name: Ketupa zeylonensis
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Brown Fish Owl
+  vp_status: H
+- wikidata_id: Q25756
+  scientific_name: Strix aluco
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Tawny Owl
+  vp_status: H
+- wikidata_id: Q20900835
+  scientific_name: Strix hadorami
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Desert Owl
+  vp_status: H
+- wikidata_id: Q1272529
+  scientific_name: Strix butleri
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Omani Owl
+  vp_status: H
+- wikidata_id: Q190083
+  scientific_name: Strix uralensis
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Ural Owl
+  vp_status: H
+- wikidata_id: Q200724
+  scientific_name: Strix nebulosa
+  family: Strigidae
+  ioc_order: Strigiformes
+  common_en: Great Grey Owl
+  vp_status: H
+- wikidata_id: Q25332
+  scientific_name: Pandion haliaetus
+  family: Pandionidae
+  ioc_order: Accipitriformes
+  common_en: Osprey
+  vp_status: H
+- wikidata_id: Q27227
+  scientific_name: Elanus caeruleus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Black-winged Kite
+  vp_status: H
+- wikidata_id: Q126167
+  scientific_name: Gypaetus barbatus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Bearded Vulture
+  vp_status: H
+- wikidata_id: Q33504
+  scientific_name: Neophron percnopterus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Egyptian Vulture
+  vp_status: H
+- wikidata_id: Q170466
+  scientific_name: Pernis apivorus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: European Honey Buzzard
+  vp_status: H
+- wikidata_id: Q605431
+  scientific_name: Pernis ptilorhynchus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Crested Honey Buzzard
+  vp_status: F
+- wikidata_id: Q168677
+  scientific_name: Aegypius monachus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Cinereous Vulture
+  vp_status: H
+- wikidata_id: Q838162
+  scientific_name: Torgos tracheliotos
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Lappet-faced Vulture
+  vp_status: H
+- wikidata_id: Q327118
+  scientific_name: Gyps bengalensis
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: White-rumped Vulture
+  vp_status: (H)
+- wikidata_id: Q177856
+  scientific_name: Gyps fulvus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Griffon Vulture
+  vp_status: H
+- wikidata_id: Q55111925
+  scientific_name: Gyps rueppelli
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Rüppell’s Vulture
+  vp_status: F
+- wikidata_id: Q170251
+  scientific_name: Circaetus gallicus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Short-toed Snake Eagle
+  vp_status: H
+- wikidata_id: Q21090684
+  scientific_name: Clanga clanga
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Greater Spotted Eagle
+  vp_status: H
+- wikidata_id: Q232523
+  scientific_name: Clanga pomarina
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Lesser Spotted Eagle
+  vp_status: H
+- wikidata_id: Q182971
+  scientific_name: Hieraaetus pennatus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Booted Eagle
+  vp_status: H
+- wikidata_id: Q179359
+  scientific_name: Aquila nipalensis
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Steppe Eagle
+  vp_status: H
+- wikidata_id: Q374141
+  scientific_name: Aquila rapax
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Tawny Eagle
+  vp_status: H
+- wikidata_id: Q168976
+  scientific_name: Aquila heliaca
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Eastern Imperial Eagle
+  vp_status: H
+- wikidata_id: Q499568
+  scientific_name: Aquila adalberti
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Spanish Imperial Eagle
+  vp_status: H
+- wikidata_id: Q41181
+  scientific_name: Aquila chrysaetos
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Golden Eagle
+  vp_status: H
+- wikidata_id: Q747827
+  scientific_name: Aquila verreauxii
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Verreaux’s Eagle
+  vp_status: H
+- wikidata_id: Q234722
+  scientific_name: Aquila fasciata
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Bonelli’s Eagle
+  vp_status: H
+- wikidata_id: Q390328
+  scientific_name: Micronisus gabar
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Gabar Goshawk
+  vp_status: H
+- wikidata_id: Q843278
+  scientific_name: Melierax metabates
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Dark Chanting Goshawk
+  vp_status: H
+- wikidata_id: Q137397344
+  scientific_name: Tachyspiza badia
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Shikra
+  vp_status: H
+- wikidata_id: Q25380
+  scientific_name: Accipiter nisus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Eurasian Sparrowhawk
+  vp_status: H
+- wikidata_id: Q137474876
+  scientific_name: Astur gentilis
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Eurasian Goshawk
+  vp_status: H
+- wikidata_id: Q230837
+  scientific_name: Circus macrourus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Pallid Harrier
+  vp_status: H
+- wikidata_id: Q25572
+  scientific_name: Circus cyaneus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Hen Harrier
+  vp_status: H
+- wikidata_id: Q26574
+  scientific_name: Circus pygargus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Montagu’s Harrier
+  vp_status: H
+- wikidata_id: Q26431
+  scientific_name: Circus aeruginosus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Western Marsh Harrier
+  vp_status: H
+- wikidata_id: Q156250
+  scientific_name: Milvus milvus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Red Kite
+  vp_status: H
+- wikidata_id: Q80362
+  scientific_name: Milvus migrans
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Black Kite
+  vp_status: H
+- wikidata_id: Q25438
+  scientific_name: Haliaeetus albicilla
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: White-tailed Eagle
+  vp_status: H
+- wikidata_id: Q1268375
+  scientific_name: Butastur teesa
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: White-eyed Buzzard
+  vp_status: H
+- wikidata_id: Q26407
+  scientific_name: Buteo lagopus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Rough-legged Buzzard
+  vp_status: H
+- wikidata_id: Q25385
+  scientific_name: Buteo buteo
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Common Buzzard
+  vp_status: H
+- wikidata_id: Q233684
+  scientific_name: Buteo rufinus
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Long-legged Buzzard
+  vp_status: H
+- wikidata_id: Q25247
+  scientific_name: Upupa epops
+  family: Upupidae
+  ioc_order: Bucerotiformes
+  common_en: Common Hoopoe
+  vp_status: H
+- wikidata_id: Q27074817
+  scientific_name: Lophoceros nasutus
+  family: Bucerotidae
+  ioc_order: Bucerotiformes
+  common_en: African Grey Hornbill
+  vp_status: H
+- wikidata_id: Q961342
+  scientific_name: Coracias abyssinicus
+  family: Coraciidae
+  ioc_order: Coraciiformes
+  common_en: Abyssinian Roller
+  vp_status: H
+- wikidata_id: Q179367
+  scientific_name: Coracias garrulus
+  family: Coraciidae
+  ioc_order: Coraciiformes
+  common_en: European Roller
+  vp_status: H
+- wikidata_id: Q31873711
+  scientific_name: Merops viridissimus
+  family: Meropidae
+  ioc_order: Coraciiformes
+  common_en: African Green Bee-eater
+  vp_status: H
+- wikidata_id: Q28861196
+  scientific_name: Merops cyanophrys
+  family: Meropidae
+  ioc_order: Coraciiformes
+  common_en: Arabian Green Bee-eater
+  vp_status: H
+- wikidata_id: Q420840
+  scientific_name: Merops orientalis
+  family: Meropidae
+  ioc_order: Coraciiformes
+  common_en: Asian Green Bee-eater
+  vp_status: H
+- wikidata_id: Q170718
+  scientific_name: Merops apiaster
+  family: Meropidae
+  ioc_order: Coraciiformes
+  common_en: European Bee-eater
+  vp_status: H
+- wikidata_id: Q1951359
+  scientific_name: Merops persicus
+  family: Meropidae
+  ioc_order: Coraciiformes
+  common_en: Blue-cheeked Bee-eater
+  vp_status: H
+- wikidata_id: Q21127307
+  scientific_name: Corythornis cristatus
+  family: Alcedinidae
+  ioc_order: Coraciiformes
+  common_en: Malachite Kingfisher
+  vp_status: H
+- wikidata_id: Q79915
+  scientific_name: Alcedo atthis
+  family: Alcedinidae
+  ioc_order: Coraciiformes
+  common_en: Common Kingfisher
+  vp_status: H
+- wikidata_id: Q320043
+  scientific_name: Ceryle rudis
+  family: Alcedinidae
+  ioc_order: Coraciiformes
+  common_en: Pied Kingfisher
+  vp_status: H
+- wikidata_id: Q1270808
+  scientific_name: Halcyon leucocephala
+  family: Alcedinidae
+  ioc_order: Coraciiformes
+  common_en: Grey-headed Kingfisher
+  vp_status: H
+- wikidata_id: Q735158
+  scientific_name: Halcyon smyrnensis
+  family: Alcedinidae
+  ioc_order: Coraciiformes
+  common_en: White-throated Kingfisher
+  vp_status: H
+- wikidata_id: Q31898
+  scientific_name: Todiramphus chloris
+  family: Alcedinidae
+  ioc_order: Coraciiformes
+  common_en: Collared Kingfisher
+  vp_status: H
+- wikidata_id: Q25678
+  scientific_name: Jynx torquilla
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Eurasian Wryneck
+  vp_status: H
+- wikidata_id: Q195727
+  scientific_name: Picus squamatus
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Scaly-bellied Woodpecker
+  vp_status: (H)
+- wikidata_id: Q201106
+  scientific_name: Picus canus
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Grey-headed Woodpecker
+  vp_status: H
+- wikidata_id: Q757282
+  scientific_name: Picus vaillantii
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Levaillant’s Woodpecker
+  vp_status: H
+- wikidata_id: Q5983847
+  scientific_name: Picus sharpei
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Iberian Green Woodpecker
+  vp_status: H
+- wikidata_id: Q166171
+  scientific_name: Picus viridis
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: European Green Woodpecker
+  vp_status: H
+- wikidata_id: Q143284
+  scientific_name: Dryocopus martius
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Black Woodpecker
+  vp_status: H
+- wikidata_id: Q210418
+  scientific_name: Picoides tridactylus
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Eurasian Three-toed Woodpecker
+  vp_status: H
+- wikidata_id: Q275591
+  scientific_name: Dendrocoptes medius
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Middle Spotted Woodpecker
+  vp_status: H
+- wikidata_id: Q27074884
+  scientific_name: Dendrocoptes dorae
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Arabian Woodpecker
+  vp_status: H
+- wikidata_id: Q946681
+  scientific_name: Dendropicos goertae
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: African Grey Woodpecker
+  vp_status: H
+- wikidata_id: Q207290
+  scientific_name: Dendrocopos leucotos
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: White-backed Woodpecker
+  vp_status: H
+- wikidata_id: Q1260842
+  scientific_name: Dendrocopos leucopterus
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: White-winged Woodpecker
+  vp_status: (H)
+- wikidata_id: Q26209
+  scientific_name: Dendrocopos major
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Great Spotted Woodpecker
+  vp_status: H
+- wikidata_id: Q1274639
+  scientific_name: Dendrocopos assimilis
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Sind Woodpecker
+  vp_status: H
+- wikidata_id: Q752481
+  scientific_name: Dendrocopos syriacus
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Syrian Woodpecker
+  vp_status: H
+- wikidata_id: Q184518
+  scientific_name: Dryobates minor
+  family: Picidae
+  ioc_order: Piciformes
+  common_en: Lesser Spotted Woodpecker
+  vp_status: H
+- wikidata_id: Q229408
+  scientific_name: Falco naumanni
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Lesser Kestrel
+  vp_status: H
+- wikidata_id: Q26490
+  scientific_name: Falco tinnunculus
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Common Kestrel
+  vp_status: H
+- wikidata_id: Q179625
+  scientific_name: Falco vespertinus
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Red-footed Falcon
+  vp_status: H
+- wikidata_id: Q131918
+  scientific_name: Falco columbarius
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Merlin
+  vp_status: H
+- wikidata_id: Q212243
+  scientific_name: Falco eleonorae
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Eleonora’s Falcon
+  vp_status: H
+- wikidata_id: Q747785
+  scientific_name: Falco concolor
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Sooty Falcon
+  vp_status: H
+- wikidata_id: Q25876
+  scientific_name: Falco subbuteo
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Eurasian Hobby
+  vp_status: H
+- wikidata_id: Q738666
+  scientific_name: Falco chicquera
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Red-necked Falcon
+  vp_status: (H)
+- wikidata_id: Q30535
+  scientific_name: Falco peregrinus
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Peregrine Falcon
+  vp_status: H
+- wikidata_id: Q33554
+  scientific_name: Falco biarmicus
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Lanner Falcon
+  vp_status: H
+- wikidata_id: Q177688
+  scientific_name: Falco rusticolus
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Gyrfalcon
+  vp_status: H
+- wikidata_id: Q165974
+  scientific_name: Falco cherrug
+  family: Falconidae
+  ioc_order: Falconiformes
+  common_en: Saker Falcon
+  vp_status: H
+- wikidata_id: Q724987
+  scientific_name: Myiopsitta monachus
+  family: Psittacidae
+  ioc_order: Psittaciformes
+  common_en: Monk Parakeet
+  vp_status: H
+- wikidata_id: Q27074973
+  scientific_name: Aratinga nenday
+  family: Psittacidae
+  ioc_order: Psittaciformes
+  common_en: Nanday Parakeet
+  vp_status: H
+- wikidata_id: Q27074980
+  scientific_name: Thectocercus acuticaudatus
+  family: Psittacidae
+  ioc_order: Psittaciformes
+  common_en: Blue-crowned Parakeet
+  vp_status: H
+- wikidata_id: Q27074997
+  scientific_name: Psittacara mitratus
+  family: Psittacidae
+  ioc_order: Psittaciformes
+  common_en: Mitred Parakeet
+  vp_status: H
+- wikidata_id: Q27074999
+  scientific_name: Psittacara erythrogenys
+  family: Psittacidae
+  ioc_order: Psittaciformes
+  common_en: Red-masked Parakeet
+  vp_status: H
+- wikidata_id: Q753746
+  scientific_name: Psittacula eupatria
+  family: Psittaculidae
+  ioc_order: Psittaciformes
+  common_en: Alexandrine Parakeet
+  vp_status: H
+- wikidata_id: Q208060
+  scientific_name: Psittacula krameri
+  family: Psittaculidae
+  ioc_order: Psittaciformes
+  common_en: Rose-ringed Parakeet
+  vp_status: H
+- wikidata_id: Q27075303
+  scientific_name: Tchagra senegalus
+  family: Malaconotidae
+  ioc_order: Passeriformes
+  common_en: Black-crowned Tchagra
+  vp_status: H
+- wikidata_id: Q1303970
+  scientific_name: Rhodophoneus cruentus
+  family: Malaconotidae
+  ioc_order: Passeriformes
+  common_en: Rosy-patched Bushshrike
+  vp_status: H
+- wikidata_id: Q25388
+  scientific_name: Oriolus oriolus
+  family: Oriolidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Golden Oriole
+  vp_status: H
+- wikidata_id: Q541440
+  scientific_name: Terpsiphone viridis
+  family: Monarchidae
+  ioc_order: Passeriformes
+  common_en: African Paradise Flycatcher
+  vp_status: H
+- wikidata_id: Q184508
+  scientific_name: Lanius excubitor
+  family: Laniidae
+  ioc_order: Passeriformes
+  common_en: Great Grey Shrike
+  vp_status: H
+- wikidata_id: Q705505
+  scientific_name: Lanius meridionalis
+  family: Laniidae
+  ioc_order: Passeriformes
+  common_en: Iberian Grey Shrike
+  vp_status: H
+- wikidata_id: Q731085
+  scientific_name: Lanius nubicus
+  family: Laniidae
+  ioc_order: Passeriformes
+  common_en: Masked Shrike
+  vp_status: H
+- wikidata_id: Q239393
+  scientific_name: Lanius minor
+  family: Laniidae
+  ioc_order: Passeriformes
+  common_en: Lesser Grey Shrike
+  vp_status: H
+- wikidata_id: Q235052
+  scientific_name: Lanius senator
+  family: Laniidae
+  ioc_order: Passeriformes
+  common_en: Woodchat Shrike
+  vp_status: H
+- wikidata_id: Q781271
+  scientific_name: Lanius vittatus
+  family: Laniidae
+  ioc_order: Passeriformes
+  common_en: Bay-backed Shrike
+  vp_status: H
+- wikidata_id: Q752678
+  scientific_name: Lanius isabellinus
+  family: Laniidae
+  ioc_order: Passeriformes
+  common_en: Isabelline Shrike
+  vp_status: F
+- wikidata_id: Q26671
+  scientific_name: Lanius collurio
+  family: Laniidae
+  ioc_order: Passeriformes
+  common_en: Red-backed Shrike
+  vp_status: H
+- wikidata_id: Q15055407
+  scientific_name: Lanius phoenicuroides
+  family: Laniidae
+  ioc_order: Passeriformes
+  common_en: Red-tailed Shrike
+  vp_status: H
+- wikidata_id: Q191386
+  scientific_name: Pyrrhocorax graculus
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Alpine Chough
+  vp_status: H
+- wikidata_id: Q643836
+  scientific_name: Pyrrhocorax pyrrhocorax
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Red-billed Chough
+  vp_status: H
+- wikidata_id: Q12256020
+  scientific_name: Cyanopica cooki
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Iberian Magpie
+  vp_status: H
+- wikidata_id: Q214281
+  scientific_name: Perisoreus infaustus
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Siberian Jay
+  vp_status: H
+- wikidata_id: Q25354
+  scientific_name: Garrulus glandarius
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Jay
+  vp_status: H
+- wikidata_id: Q49002445
+  scientific_name: Pica mauritanica
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Maghreb Magpie
+  vp_status: H
+- wikidata_id: Q55115024
+  scientific_name: Pica asirensis
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Asir Magpie
+  vp_status: H
+- wikidata_id: Q25307
+  scientific_name: Pica pica
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Magpie
+  vp_status: H
+- wikidata_id: Q1590276
+  scientific_name: Podoces pleskei
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Iranian Ground Jay
+  vp_status: H
+- wikidata_id: Q184820
+  scientific_name: Nucifraga caryocatactes
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Northern Nutcracker
+  vp_status: H
+- wikidata_id: Q25345384
+  scientific_name: Coloeus monedula
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Western Jackdaw
+  vp_status: H
+- wikidata_id: Q25386
+  scientific_name: Corvus frugilegus
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Rook
+  vp_status: H
+- wikidata_id: Q420818
+  scientific_name: Corvus ruficollis
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Brown-necked Raven
+  vp_status: H
+- wikidata_id: Q894235
+  scientific_name: Corvus rhipidurus
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Fan-tailed Raven
+  vp_status: H
+- wikidata_id: Q25357
+  scientific_name: Corvus corax
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Northern Raven
+  vp_status: H
+- wikidata_id: Q26198
+  scientific_name: Corvus corone
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Carrion Crow
+  vp_status: H
+- wikidata_id: Q507383
+  scientific_name: Corvus splendens
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: House Crow
+  vp_status: H
+- wikidata_id: Q111674
+  scientific_name: Corvus macrorhynchos
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Large-billed Crow
+  vp_status: (H)
+- wikidata_id: Q2225275
+  scientific_name: Remiz coronatus
+  family: Remizidae
+  ioc_order: Passeriformes
+  common_en: White-crowned Penduline Tit
+  vp_status: H
+- wikidata_id: Q273067
+  scientific_name: Remiz pendulinus
+  family: Remizidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Penduline Tit
+  vp_status: H
+- wikidata_id: Q10684497
+  scientific_name: Remiz macronyx
+  family: Remizidae
+  ioc_order: Passeriformes
+  common_en: Black-headed Penduline Tit
+  vp_status: H
+- wikidata_id: Q10546857
+  scientific_name: Cyanistes teneriffae
+  family: Paridae
+  ioc_order: Passeriformes
+  common_en: African Blue Tit
+  vp_status: H
+- wikidata_id: Q25404
+  scientific_name: Cyanistes caeruleus
+  family: Paridae
+  ioc_order: Passeriformes
+  common_en: Eurasian Blue Tit
+  vp_status: H
+- wikidata_id: Q25485
+  scientific_name: Parus major
+  family: Paridae
+  ioc_order: Passeriformes
+  common_en: Great Tit
+  vp_status: H
+- wikidata_id: Q191096
+  scientific_name: Periparus ater
+  family: Paridae
+  ioc_order: Passeriformes
+  common_en: Coal Tit
+  vp_status: H
+- wikidata_id: Q207831
+  scientific_name: Lophophanes cristatus
+  family: Paridae
+  ioc_order: Passeriformes
+  common_en: Crested Tit
+  vp_status: H
+- wikidata_id: Q574281
+  scientific_name: Poecile lugubris
+  family: Paridae
+  ioc_order: Passeriformes
+  common_en: Sombre Tit
+  vp_status: H
+- wikidata_id: Q207838
+  scientific_name: Poecile palustris
+  family: Paridae
+  ioc_order: Passeriformes
+  common_en: Marsh Tit
+  vp_status: H
+- wikidata_id: Q4967039
+  scientific_name: Poecile hyrcanus
+  family: Paridae
+  ioc_order: Passeriformes
+  common_en: Caspian Tit
+  vp_status: H
+- wikidata_id: Q215211
+  scientific_name: Poecile montanus
+  family: Paridae
+  ioc_order: Passeriformes
+  common_en: Willow Tit
+  vp_status: H
+- wikidata_id: Q574447
+  scientific_name: Poecile cinctus
+  family: Paridae
+  ioc_order: Passeriformes
+  common_en: Grey-headed Chickadee
+  vp_status: H
+- wikidata_id: Q192817
+  scientific_name: Panurus biarmicus
+  family: Panuridae
+  ioc_order: Passeriformes
+  common_en: Bearded Reedling
+  vp_status: H
+- wikidata_id: Q899345
+  scientific_name: Alaemon alaudipes
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Greater Hoopoe-Lark
+  vp_status: H
+- wikidata_id: Q1589837
+  scientific_name: Ramphocoris clotbey
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Thick-billed Lark
+  vp_status: H
+- wikidata_id: Q1584207
+  scientific_name: Ammomanes cinctura
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Bar-tailed Lark
+  vp_status: H
+- wikidata_id: Q890990
+  scientific_name: Ammomanes deserti
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Desert Lark
+  vp_status: H
+- wikidata_id: Q1584282
+  scientific_name: Eremopterix nigriceps
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Black-crowned Sparrow-lark
+  vp_status: H
+- wikidata_id: Q1083050
+  scientific_name: Mirafra javanica
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Singing Bush Lark
+  vp_status: H
+- wikidata_id: Q26969
+  scientific_name: Lullula arborea
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Woodlark
+  vp_status: H
+- wikidata_id: Q1137284
+  scientific_name: Alauda leucoptera
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: White-winged Lark
+  vp_status: H
+- wikidata_id: Q890903
+  scientific_name: Alauda razae
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Raso Lark
+  vp_status: H
+- wikidata_id: Q525871
+  scientific_name: Alauda gulgula
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Oriental Skylark
+  vp_status: H
+- wikidata_id: Q25961
+  scientific_name: Alauda arvensis
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Skylark
+  vp_status: H
+- wikidata_id: Q851570
+  scientific_name: Galerida theklae
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Thekla’s Lark
+  vp_status: H
+- wikidata_id: Q26982
+  scientific_name: Galerida cristata
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Crested Lark
+  vp_status: H
+- wikidata_id: Q1193299
+  scientific_name: Eremophila bilopha
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Temminck’s Lark
+  vp_status: H
+- wikidata_id: Q207249
+  scientific_name: Eremophila alpestris
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Horned Lark
+  vp_status: H
+- wikidata_id: Q31874488
+  scientific_name: Calandrella eremica
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Rufous-capped Lark
+  vp_status: H
+- wikidata_id: Q24843
+  scientific_name: Calandrella brachydactyla
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Greater Short-toed Lark
+  vp_status: H
+- wikidata_id: Q966703
+  scientific_name: Calandrella acutirostris
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Hume’s Short-toed Lark
+  vp_status: H
+- wikidata_id: Q819885
+  scientific_name: Melanocorypha bimaculata
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Bimaculated Lark
+  vp_status: H
+- wikidata_id: Q318893
+  scientific_name: Melanocorypha yeltoniensis
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Black Lark
+  vp_status: H
+- wikidata_id: Q470853
+  scientific_name: Melanocorypha calandra
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Calandra Lark
+  vp_status: H
+- wikidata_id: Q1266617
+  scientific_name: Chersophilus duponti
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Dupont’s Lark
+  vp_status: H
+- wikidata_id: Q1092087
+  scientific_name: Eremalauda dunni
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Dunn’s Lark
+  vp_status: H
+- wikidata_id: Q55112126
+  scientific_name: Eremalauda eremodites
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Arabian Lark
+  vp_status: H
+- wikidata_id: Q27075424
+  scientific_name: Alaudala rufescens
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Mediterranean Short-toed Lark
+  vp_status: H
+- wikidata_id: Q27075426
+  scientific_name: Alaudala raytal
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Sand Lark
+  vp_status: H
+- wikidata_id: Q110812143
+  scientific_name: Alaudala heinei
+  family: Alaudidae
+  ioc_order: Passeriformes
+  common_en: Turkestan Short-toed Lark
+  vp_status: H
+- wikidata_id: Q2609351
+  scientific_name: Spiloptila clamans
+  family: Cisticolidae
+  ioc_order: Passeriformes
+  common_en: Cricket Warbler
+  vp_status: H
+- wikidata_id: Q248603
+  scientific_name: Prinia gracilis
+  family: Cisticolidae
+  ioc_order: Passeriformes
+  common_en: Graceful Prinia
+  vp_status: H
+- wikidata_id: Q117256935
+  scientific_name: Prinia lepida
+  family: Cisticolidae
+  ioc_order: Passeriformes
+  common_en: Delicate Prinia
+  vp_status: H
+- wikidata_id: Q210791
+  scientific_name: Cisticola juncidis
+  family: Cisticolidae
+  ioc_order: Passeriformes
+  common_en: Zitting Cisticola
+  vp_status: H
+- wikidata_id: Q27674
+  scientific_name: Hippolais icterina
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Icterine Warbler
+  vp_status: H
+- wikidata_id: Q752539
+  scientific_name: Hippolais polyglotta
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Melodious Warbler
+  vp_status: H
+- wikidata_id: Q1590574
+  scientific_name: Hippolais languida
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Upcher’s Warbler
+  vp_status: H
+- wikidata_id: Q63835
+  scientific_name: Hippolais olivetorum
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Olive-tree Warbler
+  vp_status: H
+- wikidata_id: Q757116
+  scientific_name: Iduna caligata
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Booted Warbler
+  vp_status: H
+- wikidata_id: Q370354
+  scientific_name: Iduna rama
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Sykes’s Warbler
+  vp_status: H
+- wikidata_id: Q14753772
+  scientific_name: Iduna pallida
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Eastern Olivaceous Warbler
+  vp_status: H
+- wikidata_id: Q10772716
+  scientific_name: Iduna opaca
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Western Olivaceous Warbler
+  vp_status: H
+- wikidata_id: Q27236
+  scientific_name: Acrocephalus schoenobaenus
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Sedge Warbler
+  vp_status: H
+- wikidata_id: Q242599
+  scientific_name: Acrocephalus paludicola
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Aquatic Warbler
+  vp_status: H
+- wikidata_id: Q385273
+  scientific_name: Acrocephalus melanopogon
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Moustached Warbler
+  vp_status: H
+- wikidata_id: Q827657
+  scientific_name: Acrocephalus agricola
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Paddyfield Warbler
+  vp_status: H
+- wikidata_id: Q312779
+  scientific_name: Acrocephalus dumetorum
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Blyth’s Reed Warbler
+  vp_status: H
+- wikidata_id: Q210422
+  scientific_name: Acrocephalus palustris
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Marsh Warbler
+  vp_status: H
+- wikidata_id: Q159080
+  scientific_name: Acrocephalus scirpaceus
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Common Reed Warbler
+  vp_status: H
+- wikidata_id: Q891376
+  scientific_name: Acrocephalus griseldis
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Basra Reed Warbler
+  vp_status: H
+- wikidata_id: Q890918
+  scientific_name: Acrocephalus brevipennis
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Cape Verde Warbler
+  vp_status: H
+- wikidata_id: Q180835
+  scientific_name: Acrocephalus arundinaceus
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Great Reed Warbler
+  vp_status: H
+- wikidata_id: Q74100
+  scientific_name: Acrocephalus stentoreus
+  family: Acrocephalidae
+  ioc_order: Passeriformes
+  common_en: Clamorous Reed Warbler
+  vp_status: H
+- wikidata_id: Q837761
+  scientific_name: Locustella lanceolata
+  family: Locustellidae
+  ioc_order: Passeriformes
+  common_en: Lanceolated Warbler
+  vp_status: H
+- wikidata_id: Q747787
+  scientific_name: Locustella fluviatilis
+  family: Locustellidae
+  ioc_order: Passeriformes
+  common_en: River Warbler
+  vp_status: H
+- wikidata_id: Q321272
+  scientific_name: Locustella luscinioides
+  family: Locustellidae
+  ioc_order: Passeriformes
+  common_en: Savi’s Warbler
+  vp_status: H
+- wikidata_id: Q208710
+  scientific_name: Locustella naevia
+  family: Locustellidae
+  ioc_order: Passeriformes
+  common_en: Common Grasshopper Warbler
+  vp_status: H
+- wikidata_id: Q25909
+  scientific_name: Riparia riparia
+  family: Hirundinidae
+  ioc_order: Passeriformes
+  common_en: Sand Martin
+  vp_status: H
+- wikidata_id: Q3136313
+  scientific_name: Riparia diluta
+  family: Hirundinidae
+  ioc_order: Passeriformes
+  common_en: Pale Martin
+  vp_status: F
+- wikidata_id: Q675850
+  scientific_name: Riparia paludicola
+  family: Hirundinidae
+  ioc_order: Passeriformes
+  common_en: Brown-throated Martin
+  vp_status: H
+- wikidata_id: Q213216
+  scientific_name: Ptyonoprogne rupestris
+  family: Hirundinidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Crag Martin
+  vp_status: H
+- wikidata_id: Q3113953
+  scientific_name: Ptyonoprogne obsoleta
+  family: Hirundinidae
+  ioc_order: Passeriformes
+  common_en: Pale Crag Martin
+  vp_status: H
+- wikidata_id: Q25429
+  scientific_name: Hirundo rustica
+  family: Hirundinidae
+  ioc_order: Passeriformes
+  common_en: Barn Swallow
+  vp_status: H
+- wikidata_id: Q26055
+  scientific_name: Delichon urbicum
+  family: Hirundinidae
+  ioc_order: Passeriformes
+  common_en: Western House Martin
+  vp_status: H
+- wikidata_id: Q137261195
+  scientific_name: Cecropis rufula
+  family: Hirundinidae
+  ioc_order: Passeriformes
+  common_en: European Red-rumped Swallow
+  vp_status: H
+- wikidata_id: Q170831
+  scientific_name: Aegithalos caudatus
+  family: Aegithalidae
+  ioc_order: Passeriformes
+  common_en: Long-tailed Tit
+  vp_status: H
+- wikidata_id: Q249695
+  scientific_name: Scotocerca inquieta
+  family: Cettiidae
+  ioc_order: Passeriformes
+  common_en: Streaked Scrub Warbler
+  vp_status: H
+- wikidata_id: Q650114
+  scientific_name: Cettia cetti
+  family: Cettiidae
+  ioc_order: Passeriformes
+  common_en: Cetti’s Warbler
+  vp_status: H
+- wikidata_id: Q27075477
+  scientific_name: Phylloscopus sibilatrix
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Wood Warbler
+  vp_status: H
+- wikidata_id: Q752489
+  scientific_name: Phylloscopus bonelli
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Western Bonelli’s Warbler
+  vp_status: H
+- wikidata_id: Q805062
+  scientific_name: Phylloscopus orientalis
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Eastern Bonelli’s Warbler
+  vp_status: H
+- wikidata_id: Q330318
+  scientific_name: Phylloscopus inornatus
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Yellow-browed Warbler
+  vp_status: H
+- wikidata_id: Q608313
+  scientific_name: Phylloscopus humei
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Hume’s Leaf Warbler
+  vp_status: F
+- wikidata_id: Q752513
+  scientific_name: Phylloscopus proregulus
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Pallas’s Leaf Warbler
+  vp_status: F
+- wikidata_id: Q809446
+  scientific_name: Phylloscopus schwarzi
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Radde’s Warbler
+  vp_status: F
+- wikidata_id: Q368505
+  scientific_name: Phylloscopus fuscatus
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Dusky Warbler
+  vp_status: F
+- wikidata_id: Q1586847
+  scientific_name: Phylloscopus neglectus
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Plain Leaf Warbler
+  vp_status: H
+- wikidata_id: Q27239
+  scientific_name: Phylloscopus trochilus
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Willow Warbler
+  vp_status: H
+- wikidata_id: Q3729103
+  scientific_name: Phylloscopus sindianus
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Mountain Chiffchaff
+  vp_status: H
+- wikidata_id: Q608804
+  scientific_name: Phylloscopus canariensis
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Canary Islands Chiffchaff
+  vp_status: H
+- wikidata_id: Q976787
+  scientific_name: Phylloscopus ibericus
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Iberian Chiffchaff
+  vp_status: H
+- wikidata_id: Q185784
+  scientific_name: Phylloscopus collybita
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Common Chiffchaff
+  vp_status: H
+- wikidata_id: Q3049745
+  scientific_name: Phylloscopus umbrovirens
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Brown Woodland Warbler
+  vp_status: H
+- wikidata_id: Q2672900
+  scientific_name: Phylloscopus nitidus
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Green Warbler
+  vp_status: H
+- wikidata_id: Q460229
+  scientific_name: Phylloscopus trochiloides
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Greenish Warbler
+  vp_status: H
+- wikidata_id: Q720497
+  scientific_name: Phylloscopus borealis
+  family: Phylloscopidae
+  ioc_order: Passeriformes
+  common_en: Arctic Warbler
+  vp_status: H
+- wikidata_id: Q501063
+  scientific_name: Pycnonotus jocosus
+  family: Pycnonotidae
+  ioc_order: Passeriformes
+  common_en: Red-whiskered Bulbul
+  vp_status: (H)
+- wikidata_id: Q509455
+  scientific_name: Pycnonotus cafer
+  family: Pycnonotidae
+  ioc_order: Passeriformes
+  common_en: Red-vented Bulbul
+  vp_status: H
+- wikidata_id: Q997298
+  scientific_name: Pycnonotus leucotis
+  family: Pycnonotidae
+  ioc_order: Passeriformes
+  common_en: White-eared Bulbul
+  vp_status: H
+- wikidata_id: Q1070620
+  scientific_name: Pycnonotus xanthopygos
+  family: Pycnonotidae
+  ioc_order: Passeriformes
+  common_en: White-spectacled Bulbul
+  vp_status: H
+- wikidata_id: Q790596
+  scientific_name: Pycnonotus barbatus
+  family: Pycnonotidae
+  ioc_order: Passeriformes
+  common_en: Common Bulbul
+  vp_status: H
+- wikidata_id: Q202478
+  scientific_name: Sylvia borin
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Garden Warbler
+  vp_status: H
+- wikidata_id: Q188446
+  scientific_name: Sylvia atricapilla
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Blackcap
+  vp_status: H
+- wikidata_id: Q104867606
+  scientific_name: Curruca nisoria
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Barred Warbler
+  vp_status: H
+- wikidata_id: Q110257504
+  scientific_name: Curruca curruca
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Lesser Whitethroat
+  vp_status: H
+- wikidata_id: Q110257500
+  scientific_name: Curruca buryi
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Yemen Warbler
+  vp_status: H
+- wikidata_id: Q109578179
+  scientific_name: Curruca leucomelaena
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Arabian Warbler
+  vp_status: H
+- wikidata_id: Q110257498
+  scientific_name: Curruca hortensis
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Western Orphean Warbler
+  vp_status: H
+- wikidata_id: Q110257499
+  scientific_name: Curruca crassirostris
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Eastern Orphean Warbler
+  vp_status: H
+- wikidata_id: Q110257494
+  scientific_name: Curruca nana
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Asian Desert Warbler
+  vp_status: H
+- wikidata_id: Q110257493
+  scientific_name: Curruca deserti
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: African Desert Warbler
+  vp_status: H
+- wikidata_id: Q110257525
+  scientific_name: Curruca deserticola
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Tristram’s Warbler
+  vp_status: H
+- wikidata_id: Q110257505
+  scientific_name: Curruca mystacea
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Menetries’s Warbler
+  vp_status: H
+- wikidata_id: Q110257516
+  scientific_name: Curruca communis
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Common Whitethroat
+  vp_status: H
+- wikidata_id: Q110257518
+  scientific_name: Curruca conspicillata
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Spectacled Warbler
+  vp_status: H
+- wikidata_id: Q110257519
+  scientific_name: Curruca sarda
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Marmora’s Warbler
+  vp_status: H
+- wikidata_id: Q110257522
+  scientific_name: Curruca balearica
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Balearic Warbler
+  vp_status: H
+- wikidata_id: Q110257524
+  scientific_name: Curruca undata
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Dartford Warbler
+  vp_status: H
+- wikidata_id: Q110257515
+  scientific_name: Curruca ruppeli
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Rüppell’s Warbler
+  vp_status: H
+- wikidata_id: Q110257506
+  scientific_name: Curruca melanothorax
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Cyprus Warbler
+  vp_status: H
+- wikidata_id: Q110257507
+  scientific_name: Curruca melanocephala
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Sardinian Warbler
+  vp_status: H
+- wikidata_id: Q110257513
+  scientific_name: Curruca subalpina
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Moltoni’s Warbler
+  vp_status: H
+- wikidata_id: Q99573734
+  scientific_name: Curruca iberiae
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Western Subalpine Warbler
+  vp_status: H
+- wikidata_id: Q110257508
+  scientific_name: Curruca cantillans
+  family: Sylviidae
+  ioc_order: Passeriformes
+  common_en: Eastern Subalpine Warbler
+  vp_status: H
+- wikidata_id: Q28646093
+  scientific_name: Suthora alphonsiana
+  family: Paradoxornithidae
+  ioc_order: Passeriformes
+  common_en: Ashy-throated Parrotbill
+  vp_status: H
+- wikidata_id: Q28646473
+  scientific_name: Suthora webbiana
+  family: Paradoxornithidae
+  ioc_order: Passeriformes
+  common_en: Vinous-throated Parrotbill
+  vp_status: H
+- wikidata_id: Q795545
+  scientific_name: Zosterops palpebrosus
+  family: Zosteropidae
+  ioc_order: Passeriformes
+  common_en: Indian White-eye
+  vp_status: H
+- wikidata_id: Q3178456
+  scientific_name: Zosterops abyssinicus
+  family: Zosteropidae
+  ioc_order: Passeriformes
+  common_en: Abyssinian White-eye
+  vp_status: H
+- wikidata_id: Q589245
+  scientific_name: Leiothrix lutea
+  family: Leiothrichidae
+  ioc_order: Passeriformes
+  common_en: Red-billed Leiothrix
+  vp_status: H
+- wikidata_id: Q28921354
+  scientific_name: Argya altirostris
+  family: Leiothrichidae
+  ioc_order: Passeriformes
+  common_en: Iraq Babbler
+  vp_status: H
+- wikidata_id: Q47489639
+  scientific_name: Argya huttoni
+  family: Leiothrichidae
+  ioc_order: Passeriformes
+  common_en: Afghan Babbler
+  vp_status: H
+- wikidata_id: Q28922092
+  scientific_name: Argya squamiceps
+  family: Leiothrichidae
+  ioc_order: Passeriformes
+  common_en: Arabian Babbler
+  vp_status: H
+- wikidata_id: Q28922176
+  scientific_name: Argya fulva
+  family: Leiothrichidae
+  ioc_order: Passeriformes
+  common_en: Fulvous Babbler
+  vp_status: H
+- wikidata_id: Q26135
+  scientific_name: Bombycilla garrulus
+  family: Bombycillidae
+  ioc_order: Passeriformes
+  common_en: Bohemian Waxwing
+  vp_status: H
+- wikidata_id: Q727891
+  scientific_name: Hypocolius ampelinus
+  family: Hypocoliidae
+  ioc_order: Passeriformes
+  common_en: Grey Hypocolius
+  vp_status: H
+- wikidata_id: Q1752281
+  scientific_name: Regulus madeirensis
+  family: Regulidae
+  ioc_order: Passeriformes
+  common_en: Madeira Firecrest
+  vp_status: H
+- wikidata_id: Q27471
+  scientific_name: Regulus ignicapilla
+  family: Regulidae
+  ioc_order: Passeriformes
+  common_en: Common Firecrest
+  vp_status: H
+- wikidata_id: Q26657
+  scientific_name: Regulus regulus
+  family: Regulidae
+  ioc_order: Passeriformes
+  common_en: Goldcrest
+  vp_status: H
+- wikidata_id: Q167230
+  scientific_name: Tichodroma muraria
+  family: Tichodromidae
+  ioc_order: Passeriformes
+  common_en: Wallcreeper
+  vp_status: H
+- wikidata_id: Q851556
+  scientific_name: Sitta krueperi
+  family: Sittidae
+  ioc_order: Passeriformes
+  common_en: Krüper’s Nuthatch
+  vp_status: H
+- wikidata_id: Q780476
+  scientific_name: Sitta ledanti
+  family: Sittidae
+  ioc_order: Passeriformes
+  common_en: Algerian Nuthatch
+  vp_status: H
+- wikidata_id: Q180051
+  scientific_name: Sitta whiteheadi
+  family: Sittidae
+  ioc_order: Passeriformes
+  common_en: Corsican Nuthatch
+  vp_status: H
+- wikidata_id: Q749701
+  scientific_name: Sitta neumayer
+  family: Sittidae
+  ioc_order: Passeriformes
+  common_en: Western Rock Nuthatch
+  vp_status: H
+- wikidata_id: Q928415
+  scientific_name: Sitta tephronota
+  family: Sittidae
+  ioc_order: Passeriformes
+  common_en: Eastern Rock Nuthatch
+  vp_status: H
+- wikidata_id: Q156767
+  scientific_name: Sitta europaea
+  family: Sittidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Nuthatch
+  vp_status: H
+- wikidata_id: Q193593
+  scientific_name: Certhia familiaris
+  family: Certhiidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Treecreeper
+  vp_status: H
+- wikidata_id: Q125895
+  scientific_name: Certhia brachydactyla
+  family: Certhiidae
+  ioc_order: Passeriformes
+  common_en: Short-toed Treecreeper
+  vp_status: H
+- wikidata_id: Q25740
+  scientific_name: Troglodytes troglodytes
+  family: Troglodytidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Wren
+  vp_status: H
+- wikidata_id: Q836833
+  scientific_name: Sturnus unicolor
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Spotless Starling
+  vp_status: H
+- wikidata_id: Q25469
+  scientific_name: Sturnus vulgaris
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Common Starling
+  vp_status: H
+- wikidata_id: Q301731
+  scientific_name: Creatophora cinerea
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Wattled Starling
+  vp_status: F
+- wikidata_id: Q20823352
+  scientific_name: Pastor roseus
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Rosy Starling
+  vp_status: H
+- wikidata_id: Q27075597
+  scientific_name: Gracupica contra
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Indian Pied Myna
+  vp_status: H
+- wikidata_id: Q1076571
+  scientific_name: Sturnia pagodarum
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Brahminy Starling
+  vp_status: H
+- wikidata_id: Q1088602
+  scientific_name: Acridotheres ginginianus
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Bank Myna
+  vp_status: H
+- wikidata_id: Q116667
+  scientific_name: Acridotheres tristis
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Common Myna
+  vp_status: H
+- wikidata_id: Q31874135
+  scientific_name: Acridotheres leucocephalus
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Vinous-breasted Myna
+  vp_status: H
+- wikidata_id: Q715819
+  scientific_name: Acridotheres cristatellus
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Crested Myna
+  vp_status: H
+- wikidata_id: Q694756
+  scientific_name: Cinnyricinclus leucogaster
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Violet-backed Starling
+  vp_status: H
+- wikidata_id: Q916098
+  scientific_name: Onychognathus tristramii
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Tristram’s Starling
+  vp_status: H
+- wikidata_id: Q608635
+  scientific_name: Lamprotornis superbus
+  family: Sturnidae
+  ioc_order: Passeriformes
+  common_en: Superb Starling
+  vp_status: H
+- wikidata_id: Q201831
+  scientific_name: Cinclus cinclus
+  family: Cinclidae
+  ioc_order: Passeriformes
+  common_en: White-throated Dipper
+  vp_status: H
+- wikidata_id: Q949662
+  scientific_name: Zoothera aurea
+  family: Turdidae
+  ioc_order: Passeriformes
+  common_en: White’s Thrush
+  vp_status: H
+- wikidata_id: Q178942
+  scientific_name: Turdus viscivorus
+  family: Turdidae
+  ioc_order: Passeriformes
+  common_en: Mistle Thrush
+  vp_status: H
+- wikidata_id: Q26349
+  scientific_name: Turdus philomelos
+  family: Turdidae
+  ioc_order: Passeriformes
+  common_en: Song Thrush
+  vp_status: H
+- wikidata_id: Q933567
+  scientific_name: Turdus menachensis
+  family: Turdidae
+  ioc_order: Passeriformes
+  common_en: Yemen Thrush
+  vp_status: H
+- wikidata_id: Q184825
+  scientific_name: Turdus iliacus
+  family: Turdidae
+  ioc_order: Passeriformes
+  common_en: Redwing
+  vp_status: H
+- wikidata_id: Q25234
+  scientific_name: Turdus merula
+  family: Turdidae
+  ioc_order: Passeriformes
+  common_en: Common Blackbird
+  vp_status: H
+- wikidata_id: Q25777
+  scientific_name: Turdus pilaris
+  family: Turdidae
+  ioc_order: Passeriformes
+  common_en: Fieldfare
+  vp_status: H
+- wikidata_id: Q26641
+  scientific_name: Turdus torquatus
+  family: Turdidae
+  ioc_order: Passeriformes
+  common_en: Ring Ouzel
+  vp_status: H
+- wikidata_id: Q80780
+  scientific_name: Turdus atrogularis
+  family: Turdidae
+  ioc_order: Passeriformes
+  common_en: Black-throated Thrush
+  vp_status: H
+- wikidata_id: Q864832
+  scientific_name: Cercotrichas podobe
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Black Scrub Robin
+  vp_status: H
+- wikidata_id: Q607027
+  scientific_name: Cercotrichas galactotes
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Rufous-tailed Scrub Robin
+  vp_status: H
+- wikidata_id: Q26607
+  scientific_name: Muscicapa striata
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Spotted Flycatcher
+  vp_status: H
+- wikidata_id: Q1317677
+  scientific_name: Muscicapa gambagae
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Gambaga Flycatcher
+  vp_status: H
+- wikidata_id: Q25334
+  scientific_name: Erithacus rubecula
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: European Robin
+  vp_status: H
+- wikidata_id: Q557745
+  scientific_name: Irania gutturalis
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: White-throated Robin
+  vp_status: H
+- wikidata_id: Q206130
+  scientific_name: Luscinia luscinia
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Thrush Nightingale
+  vp_status: H
+- wikidata_id: Q25393
+  scientific_name: Luscinia megarhynchos
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Common Nightingale
+  vp_status: H
+- wikidata_id: Q26578
+  scientific_name: Luscinia svecica
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Bluethroat
+  vp_status: H
+- wikidata_id: Q27075678
+  scientific_name: Calliope calliope
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Siberian Rubythroat
+  vp_status: H
+- wikidata_id: Q241499
+  scientific_name: Ficedula parva
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Red-breasted Flycatcher
+  vp_status: H
+- wikidata_id: Q2225944
+  scientific_name: Ficedula speculigera
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Atlas Pied Flycatcher
+  vp_status: H
+- wikidata_id: Q1591580
+  scientific_name: Ficedula semitorquata
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Semicollared Flycatcher
+  vp_status: H
+- wikidata_id: Q690826
+  scientific_name: Ficedula albicollis
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Collared Flycatcher
+  vp_status: H
+- wikidata_id: Q27442
+  scientific_name: Ficedula hypoleuca
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: European Pied Flycatcher
+  vp_status: H
+- wikidata_id: Q129219
+  scientific_name: Tarsiger cyanurus
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Red-flanked Bluetail
+  vp_status: H
+- wikidata_id: Q796489
+  scientific_name: Phoenicurus erythronotus
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Eversmann’s Redstart
+  vp_status: F
+- wikidata_id: Q796484
+  scientific_name: Phoenicurus erythrogastrus
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Güldenstädt’s Redstart
+  vp_status: H
+- wikidata_id: Q26755
+  scientific_name: Phoenicurus ochruros
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Black Redstart
+  vp_status: H
+- wikidata_id: Q774012
+  scientific_name: Phoenicurus moussieri
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Moussier’s Redstart
+  vp_status: H
+- wikidata_id: Q26620
+  scientific_name: Phoenicurus phoenicurus
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Common Redstart
+  vp_status: H
+- wikidata_id: Q1588780
+  scientific_name: Monticola rufocinereus
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Little Rock Thrush
+  vp_status: H
+- wikidata_id: Q235057
+  scientific_name: Monticola saxatilis
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Common Rock Thrush
+  vp_status: H
+- wikidata_id: Q152144
+  scientific_name: Monticola solitarius
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Blue Rock Thrush
+  vp_status: H
+- wikidata_id: Q155869
+  scientific_name: Saxicola rubetra
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Whinchat
+  vp_status: H
+- wikidata_id: Q864893
+  scientific_name: Saxicola caprata
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Pied Bush Chat
+  vp_status: H
+- wikidata_id: Q1589281
+  scientific_name: Saxicola maurus
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Siberian Stonechat
+  vp_status: H
+- wikidata_id: Q1315689
+  scientific_name: Saxicola torquatus
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: African Stonechat
+  vp_status: H
+- wikidata_id: Q1587242
+  scientific_name: Saxicola dacotiae
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Canary Islands Stonechat
+  vp_status: H
+- wikidata_id: Q838665
+  scientific_name: Saxicola rubicola
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: European Stonechat
+  vp_status: H
+- wikidata_id: Q874687
+  scientific_name: Oenanthe monacha
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Hooded Wheatear
+  vp_status: H
+- wikidata_id: Q769934
+  scientific_name: Oenanthe deserti
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Desert Wheatear
+  vp_status: H
+- wikidata_id: Q385723
+  scientific_name: Oenanthe hispanica
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Black-eared Wheatear
+  vp_status: H
+- wikidata_id: Q763538
+  scientific_name: Oenanthe pleschanka
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Pied Wheatear
+  vp_status: H
+- wikidata_id: Q85758401
+  scientific_name: Oenanthe melanoleuca
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Black-eared Wheatear
+  vp_status: H
+- wikidata_id: Q646917
+  scientific_name: Oenanthe cypriaca
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Cyprus Wheatear
+  vp_status: H
+- wikidata_id: Q31872926
+  scientific_name: Oenanthe seebohmi
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Atlas Wheatear
+  vp_status: H
+- wikidata_id: Q26420
+  scientific_name: Oenanthe oenanthe
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Northern Wheatear
+  vp_status: H
+- wikidata_id: Q767506
+  scientific_name: Oenanthe bottae
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Buff-breasted Wheatear
+  vp_status: H
+- wikidata_id: Q747686
+  scientific_name: Oenanthe isabellina
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Isabelline Wheatear
+  vp_status: H
+- wikidata_id: Q1584260
+  scientific_name: Oenanthe moesta
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Red-rumped Wheatear
+  vp_status: H
+- wikidata_id: Q12265004
+  scientific_name: Oenanthe melanura
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Blackstart
+  vp_status: H
+- wikidata_id: Q2668319
+  scientific_name: Oenanthe picata
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Variable Wheatear
+  vp_status: H
+- wikidata_id: Q769574
+  scientific_name: Oenanthe albonigra
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Hume’s Wheatear
+  vp_status: H
+- wikidata_id: Q769093
+  scientific_name: Oenanthe finschii
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Finsch’s Wheatear
+  vp_status: H
+- wikidata_id: Q1586903
+  scientific_name: Oenanthe lugens
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Mourning Wheatear
+  vp_status: H
+- wikidata_id: Q1303323
+  scientific_name: Oenanthe xanthoprymna
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Kurdish Wheatear
+  vp_status: H
+- wikidata_id: Q769528
+  scientific_name: Oenanthe chrysopygia
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Red-tailed Wheatear
+  vp_status: H
+- wikidata_id: Q856062
+  scientific_name: Oenanthe leucura
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Black Wheatear
+  vp_status: H
+- wikidata_id: Q912081
+  scientific_name: Oenanthe leucopyga
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: White-crowned Wheatear
+  vp_status: H
+- wikidata_id: Q3728611
+  scientific_name: Oenanthe lugentoides
+  family: Muscicapidae
+  ioc_order: Passeriformes
+  common_en: Arabian Wheatear
+  vp_status: H
+- wikidata_id: Q510366
+  scientific_name: Hedydipna platura
+  family: Nectariniidae
+  ioc_order: Passeriformes
+  common_en: Pygmy Sunbird
+  vp_status: H
+- wikidata_id: Q305391
+  scientific_name: Hedydipna metallica
+  family: Nectariniidae
+  ioc_order: Passeriformes
+  common_en: Nile Valley Sunbird
+  vp_status: H
+- wikidata_id: Q1528819
+  scientific_name: Cinnyris osea
+  family: Nectariniidae
+  ioc_order: Passeriformes
+  common_en: Palestine Sunbird
+  vp_status: H
+- wikidata_id: Q31874666
+  scientific_name: Cinnyris hellmayri
+  family: Nectariniidae
+  ioc_order: Passeriformes
+  common_en: Arabian Sunbird
+  vp_status: H
+- wikidata_id: Q1797393
+  scientific_name: Cinnyris asiaticus
+  family: Nectariniidae
+  ioc_order: Passeriformes
+  common_en: Purple Sunbird
+  vp_status: H
+- wikidata_id: Q659005
+  scientific_name: Ploceus galbula
+  family: Ploceidae
+  ioc_order: Passeriformes
+  common_en: Rüppell’s Weaver
+  vp_status: H
+- wikidata_id: Q998572
+  scientific_name: Ploceus melanocephalus
+  family: Ploceidae
+  ioc_order: Passeriformes
+  common_en: Black-headed Weaver
+  vp_status: H
+- wikidata_id: Q241529
+  scientific_name: Ploceus jacksoni
+  family: Ploceidae
+  ioc_order: Passeriformes
+  common_en: Golden-backed Weaver
+  vp_status: H
+- wikidata_id: Q1306610
+  scientific_name: Ploceus manyar
+  family: Ploceidae
+  ioc_order: Passeriformes
+  common_en: Streaked Weaver
+  vp_status: H
+- wikidata_id: Q1060466
+  scientific_name: Foudia madagascariensis
+  family: Ploceidae
+  ioc_order: Passeriformes
+  common_en: Red Fody
+  vp_status: H
+- wikidata_id: Q1300963
+  scientific_name: Euplectes afer
+  family: Ploceidae
+  ioc_order: Passeriformes
+  common_en: Yellow-crowned Bishop
+  vp_status: H
+- wikidata_id: Q908340
+  scientific_name: Vidua macroura
+  family: Viduidae
+  ioc_order: Passeriformes
+  common_en: Pin-tailed Whydah
+  vp_status: H
+- wikidata_id: Q27075729
+  scientific_name: Euodice malabarica
+  family: Estrildidae
+  ioc_order: Passeriformes
+  common_en: Indian Silverbill
+  vp_status: H
+- wikidata_id: Q994413
+  scientific_name: Euodice cantans
+  family: Estrildidae
+  ioc_order: Passeriformes
+  common_en: African Silverbill
+  vp_status: H
+- wikidata_id: Q36197
+  scientific_name: Lonchura punctulata
+  family: Estrildidae
+  ioc_order: Passeriformes
+  common_en: Scaly-breasted Munia
+  vp_status: H
+- wikidata_id: Q478632
+  scientific_name: Lonchura malacca
+  family: Estrildidae
+  ioc_order: Passeriformes
+  common_en: Tricolored Munia
+  vp_status: H
+- wikidata_id: Q1084995
+  scientific_name: Estrilda melpoda
+  family: Estrildidae
+  ioc_order: Passeriformes
+  common_en: Orange-cheeked Waxbill
+  vp_status: H
+- wikidata_id: Q583220
+  scientific_name: Estrilda astrild
+  family: Estrildidae
+  ioc_order: Passeriformes
+  common_en: Common Waxbill
+  vp_status: H
+- wikidata_id: Q1052022
+  scientific_name: Estrilda rufibarba
+  family: Estrildidae
+  ioc_order: Passeriformes
+  common_en: Arabian Waxbill
+  vp_status: H
+- wikidata_id: Q775649
+  scientific_name: Amandava subflava
+  family: Estrildidae
+  ioc_order: Passeriformes
+  common_en: Orange-breasted Waxbill
+  vp_status: H
+- wikidata_id: Q73741
+  scientific_name: Amandava amandava
+  family: Estrildidae
+  ioc_order: Passeriformes
+  common_en: Red Avadavat
+  vp_status: H
+- wikidata_id: Q560326
+  scientific_name: Lagonosticta senegala
+  family: Estrildidae
+  ioc_order: Passeriformes
+  common_en: Red-billed Firefinch
+  vp_status: H
+- wikidata_id: Q208334
+  scientific_name: Prunella collaris
+  family: Prunellidae
+  ioc_order: Passeriformes
+  common_en: Alpine Accentor
+  vp_status: H
+- wikidata_id: Q387783
+  scientific_name: Prunella atrogularis
+  family: Prunellidae
+  ioc_order: Passeriformes
+  common_en: Black-throated Accentor
+  vp_status: H
+- wikidata_id: Q1049121
+  scientific_name: Prunella ocularis
+  family: Prunellidae
+  ioc_order: Passeriformes
+  common_en: Radde’s Accentor
+  vp_status: H
+- wikidata_id: Q26698
+  scientific_name: Prunella modularis
+  family: Prunellidae
+  ioc_order: Passeriformes
+  common_en: Dunnock
+  vp_status: H
+- wikidata_id: Q163049
+  scientific_name: Prunella montanella
+  family: Prunellidae
+  ioc_order: Passeriformes
+  common_en: Siberian Accentor
+  vp_status: H
+- wikidata_id: Q736313
+  scientific_name: Petronia petronia
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Rock Sparrow
+  vp_status: H
+- wikidata_id: Q499290
+  scientific_name: Montifringilla nivalis
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: White-winged Snowfinch
+  vp_status: H
+- wikidata_id: Q1318638
+  scientific_name: Carpospiza brachydactyla
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Pale Rockfinch
+  vp_status: H
+- wikidata_id: Q25586001
+  scientific_name: Gymnoris xanthocollis
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Yellow-throated Sparrow
+  vp_status: H
+- wikidata_id: Q27075715
+  scientific_name: Gymnoris dentata
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Sahel Bush Sparrow
+  vp_status: H
+- wikidata_id: Q25968
+  scientific_name: Passer montanus
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Eurasian Tree Sparrow
+  vp_status: H
+- wikidata_id: Q634448
+  scientific_name: Passer ammodendri
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Saxaul Sparrow
+  vp_status: H
+- wikidata_id: Q1090157
+  scientific_name: Passer iagoensis
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Iago Sparrow
+  vp_status: H
+- wikidata_id: Q15731602
+  scientific_name: Passer zarudnyi
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Zarudny’s Sparrow
+  vp_status: (H)
+- wikidata_id: Q971520
+  scientific_name: Passer simplex
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Desert Sparrow
+  vp_status: H
+- wikidata_id: Q1318437
+  scientific_name: Passer moabiticus
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Dead Sea Sparrow
+  vp_status: H
+- wikidata_id: Q901708
+  scientific_name: Passer luteus
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Sudan Golden Sparrow
+  vp_status: H
+- wikidata_id: Q1316073
+  scientific_name: Passer euchlorus
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Arabian Golden Sparrow
+  vp_status: H
+- wikidata_id: Q466200
+  scientific_name: Passer hispaniolensis
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Spanish Sparrow
+  vp_status: H
+- wikidata_id: Q746339
+  scientific_name: Passer pyrrhonotus
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Sind Sparrow
+  vp_status: H
+- wikidata_id: Q937933
+  scientific_name: Passer italiae
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: Italian Sparrow
+  vp_status: H
+- wikidata_id: Q14683
+  scientific_name: Passer domesticus
+  family: Passeridae
+  ioc_order: Passeriformes
+  common_en: House Sparrow
+  vp_status: H
+- wikidata_id: Q266107
+  scientific_name: Dendronanthus indicus
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Forest Wagtail
+  vp_status: F
+- wikidata_id: Q201316
+  scientific_name: Motacilla cinerea
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Grey Wagtail
+  vp_status: H
+- wikidata_id: Q25984
+  scientific_name: Motacilla flava
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Western Yellow Wagtail
+  vp_status: H
+- wikidata_id: Q206540
+  scientific_name: Motacilla citreola
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Citrine Wagtail
+  vp_status: H
+- wikidata_id: Q530069
+  scientific_name: Motacilla aguimp
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: African Pied Wagtail
+  vp_status: H
+- wikidata_id: Q25399
+  scientific_name: Motacilla alba
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: White Wagtail
+  vp_status: H
+- wikidata_id: Q973164
+  scientific_name: Anthus godlewskii
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Blyth’s Pipit
+  vp_status: F
+- wikidata_id: Q27226
+  scientific_name: Anthus campestris
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Tawny Pipit
+  vp_status: H
+- wikidata_id: Q1445158
+  scientific_name: Anthus berthelotii
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Berthelot’s Pipit
+  vp_status: H
+- wikidata_id: Q1590302
+  scientific_name: Anthus similis
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Long-billed Pipit
+  vp_status: H
+- wikidata_id: Q995602
+  scientific_name: Anthus cinnamomeus
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: African Pipit
+  vp_status: H
+- wikidata_id: Q904790
+  scientific_name: Anthus richardi
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Richard’s Pipit
+  vp_status: H
+- wikidata_id: Q837757
+  scientific_name: Anthus gustavi
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Pechora Pipit
+  vp_status: H
+- wikidata_id: Q143313
+  scientific_name: Anthus trivialis
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Tree Pipit
+  vp_status: H
+- wikidata_id: Q726873
+  scientific_name: Anthus hodgsoni
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Olive-backed Pipit
+  vp_status: H
+- wikidata_id: Q241347
+  scientific_name: Anthus cervinus
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Red-throated Pipit
+  vp_status: H
+- wikidata_id: Q26956
+  scientific_name: Anthus pratensis
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Meadow Pipit
+  vp_status: H
+- wikidata_id: Q642685
+  scientific_name: Anthus petrosus
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: European Rock Pipit
+  vp_status: H
+- wikidata_id: Q208707
+  scientific_name: Anthus spinoletta
+  family: Motacillidae
+  ioc_order: Passeriformes
+  common_en: Water Pipit
+  vp_status: H
+- wikidata_id: Q188877
+  scientific_name: Fringilla montifringilla
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Brambling
+  vp_status: H
+- wikidata_id: Q847168
+  scientific_name: Fringilla teydea
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Tenerife Blue Chaffinch
+  vp_status: H
+- wikidata_id: Q22704092
+  scientific_name: Fringilla polatzeki
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Gran Canaria Blue Chaffinch
+  vp_status: H
+- wikidata_id: Q120964666
+  scientific_name: Fringilla spodiogenys
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: African Chaffinch
+  vp_status: H
+- wikidata_id: Q25383
+  scientific_name: Fringilla coelebs
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Chaffinch
+  vp_status: H
+- wikidata_id: Q40995958
+  scientific_name: Fringilla maderensis
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Madeira Chaffinch
+  vp_status: H
+- wikidata_id: Q120964621
+  scientific_name: Fringilla canariensis
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Canary Islands Chaffinch
+  vp_status: H
+- wikidata_id: Q848192
+  scientific_name: Mycerobas carnipes
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: White-winged Grosbeak
+  vp_status: H
+- wikidata_id: Q174088
+  scientific_name: Coccothraustes coccothraustes
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Hawfinch
+  vp_status: H
+- wikidata_id: Q46143
+  scientific_name: Carpodacus erythrinus
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Common Rosefinch
+  vp_status: H
+- wikidata_id: Q126618
+  scientific_name: Carpodacus synoicus
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Sinai Rosefinch
+  vp_status: H
+- wikidata_id: Q819706
+  scientific_name: Carpodacus rubicilla
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Great Rosefinch
+  vp_status: H
+- wikidata_id: Q27075750
+  scientific_name: Carpodacus sibiricus
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Long-tailed Rosefinch
+  vp_status: H
+- wikidata_id: Q214571
+  scientific_name: Pinicola enucleator
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Pine Grosbeak
+  vp_status: H
+- wikidata_id: Q786784
+  scientific_name: Pyrrhula murina
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Azores Bullfinch
+  vp_status: H
+- wikidata_id: Q25382
+  scientific_name: Pyrrhula pyrrhula
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Bullfinch
+  vp_status: H
+- wikidata_id: Q559977
+  scientific_name: Rhodopechys sanguineus
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Crimson-winged Finch
+  vp_status: H
+- wikidata_id: Q921335
+  scientific_name: Bucanetes mongolicus
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Mongolian Finch
+  vp_status: H
+- wikidata_id: Q559883
+  scientific_name: Bucanetes githagineus
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Trumpeter Finch
+  vp_status: H
+- wikidata_id: Q900715
+  scientific_name: Rhodospiza obsoleta
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Desert Finch
+  vp_status: H
+- wikidata_id: Q130241
+  scientific_name: Rhynchostruthus percivali
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Arabian Golden-winged GrosbEea.k
+  vp_status: H
+- wikidata_id: Q27075785
+  scientific_name: Chloris chloris
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: European Greenfinch
+  vp_status: H
+- wikidata_id: Q27075814
+  scientific_name: Crithagra rothschildi
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Arabian Serin
+  vp_status: H
+- wikidata_id: Q27075828
+  scientific_name: Crithagra menachensis
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Yemen Serin
+  vp_status: H
+- wikidata_id: Q10965357
+  scientific_name: Linaria flavirostris
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Twite
+  vp_status: H
+- wikidata_id: Q27075852
+  scientific_name: Linaria cannabina
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Common Linnet
+  vp_status: H
+- wikidata_id: Q27075854
+  scientific_name: Linaria yemenensis
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Yemen Linnet
+  vp_status: H
+- wikidata_id: Q20754771
+  scientific_name: Acanthis flammea
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Redpoll
+  vp_status: H
+- wikidata_id: Q331190
+  scientific_name: Loxia leucoptera
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Two-barred Crossbill
+  vp_status: H
+- wikidata_id: Q645055
+  scientific_name: Loxia pytyopsittacus
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Parrot Crossbill
+  vp_status: H
+- wikidata_id: Q1143180
+  scientific_name: Loxia scotica
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Scottish Crossbill
+  vp_status: H
+- wikidata_id: Q26552
+  scientific_name: Loxia curvirostra
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Red Crossbill
+  vp_status: H
+- wikidata_id: Q206550
+  scientific_name: Carduelis citrinella
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Citril Finch
+  vp_status: H
+- wikidata_id: Q1299974
+  scientific_name: Carduelis corsicana
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Corsican Finch
+  vp_status: H
+- wikidata_id: Q606679
+  scientific_name: Carduelis caniceps
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Grey-crowned Goldfinch
+  vp_status: H
+- wikidata_id: Q25418
+  scientific_name: Carduelis carduelis
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: European Goldfinch
+  vp_status: H
+- wikidata_id: Q192524
+  scientific_name: Serinus canaria
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Atlantic Canary
+  vp_status: H
+- wikidata_id: Q271807
+  scientific_name: Serinus serinus
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: European Serin
+  vp_status: H
+- wikidata_id: Q621833
+  scientific_name: Serinus pusillus
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Red-fronted Serin
+  vp_status: H
+- wikidata_id: Q184295
+  scientific_name: Serinus syriacus
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Syrian Serin
+  vp_status: H
+- wikidata_id: Q27075864
+  scientific_name: Spinus spinus
+  family: Fringillidae
+  ioc_order: Passeriformes
+  common_en: Eurasian Siskin
+  vp_status: H
+- wikidata_id: Q26416
+  scientific_name: Plectrophenax nivalis
+  family: Calcariidae
+  ioc_order: Passeriformes
+  common_en: Snow Bunting
+  vp_status: H
+- wikidata_id: Q208703
+  scientific_name: Calcarius lapponicus
+  family: Calcariidae
+  ioc_order: Passeriformes
+  common_en: Lapland Longspur
+  vp_status: H
+- wikidata_id: Q2742585
+  scientific_name: Emberiza sahari
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: House Bunting
+  vp_status: H
+- wikidata_id: Q1193031
+  scientific_name: Emberiza striolata
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Striolated Bunting
+  vp_status: H
+- wikidata_id: Q1034950
+  scientific_name: Emberiza tahapisi
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Cinnamon-breasted Bunting
+  vp_status: H
+- wikidata_id: Q26961
+  scientific_name: Emberiza schoeniclus
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Common Reed Bunting
+  vp_status: H
+- wikidata_id: Q335535
+  scientific_name: Emberiza aureola
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Yellow-breasted Bunting
+  vp_status: H
+- wikidata_id: Q216855
+  scientific_name: Emberiza pusilla
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Little Bunting
+  vp_status: H
+- wikidata_id: Q286809
+  scientific_name: Emberiza rustica
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Rustic Bunting
+  vp_status: H
+- wikidata_id: Q334183
+  scientific_name: Emberiza melanocephala
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Black-headed Bunting
+  vp_status: H
+- wikidata_id: Q547159
+  scientific_name: Emberiza bruniceps
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Red-headed Bunting
+  vp_status: H
+- wikidata_id: Q27220
+  scientific_name: Emberiza calandra
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Corn Bunting
+  vp_status: H
+- wikidata_id: Q205491
+  scientific_name: Emberiza cia
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Rock Bunting
+  vp_status: H
+- wikidata_id: Q648313
+  scientific_name: Emberiza buchanani
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Grey-necked Bunting
+  vp_status: H
+- wikidata_id: Q265701
+  scientific_name: Emberiza cineracea
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Cinereous Bunting
+  vp_status: H
+- wikidata_id: Q206630
+  scientific_name: Emberiza hortulana
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Ortolan Bunting
+  vp_status: H
+- wikidata_id: Q837753
+  scientific_name: Emberiza caesia
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Cretzschmar’s Bunting
+  vp_status: H
+- wikidata_id: Q148583
+  scientific_name: Emberiza cirlus
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Cirl Bunting
+  vp_status: H
+- wikidata_id: Q26205
+  scientific_name: Emberiza citrinella
+  family: Emberizidae
+  ioc_order: Passeriformes
+  common_en: Yellowhammer
+  vp_status: H
+- wikidata_id: Q18851
+  scientific_name: Thinornis dubius
+  family: Charadriidae
+  ioc_order: Charadriiformes
+  common_en: Little Ringed Plover
+  vp_status: H
+- wikidata_id: Q888536
+  scientific_name: Botaurus sinensis
+  family: Ardeidae
+  ioc_order: Pelecaniformes
+  common_en: Yellow Bittern
+  vp_status: H
+- wikidata_id: Q114338
+  scientific_name: Tachyspiza brevipes
+  family: Accipitridae
+  ioc_order: Accipitriformes
+  common_en: Levant Sparrowhawk
+  vp_status: H
