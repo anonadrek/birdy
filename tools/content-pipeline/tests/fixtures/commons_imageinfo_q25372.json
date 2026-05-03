@@ -1,0 +1,48 @@
+{
+  "query": {
+    "pages": {
+      "12345": {
+        "title": "File:Parus major - Mindelheim - 2012.jpg",
+        "imageinfo": [{
+          "url": "https://upload.wikimedia.org/wikipedia/commons/parus.jpg",
+          "width": 4000,
+          "height": 2667,
+          "mime": "image/jpeg",
+          "extmetadata": {
+            "LicenseShortName": {"value": "CC BY-SA 4.0"},
+            "Artist": {"value": "Pierre Dalous"},
+            "Categories": {"value": "Photographs of Parus major|Birds in nature|Photographs of Aves"}
+          }
+        }]
+      },
+      "12346": {
+        "title": "File:Parus major illustration.jpg",
+        "imageinfo": [{
+          "url": "https://upload.wikimedia.org/wikipedia/commons/parus_illust.jpg",
+          "width": 2000,
+          "height": 2000,
+          "mime": "image/jpeg",
+          "extmetadata": {
+            "LicenseShortName": {"value": "Public domain"},
+            "Artist": {"value": "John Gould"},
+            "Categories": {"value": "Bird illustrations|Drawings of birds"}
+          }
+        }]
+      },
+      "12347": {
+        "title": "File:Parus major specimen.jpg",
+        "imageinfo": [{
+          "url": "https://upload.wikimedia.org/wikipedia/commons/parus_specimen.jpg",
+          "width": 3000,
+          "height": 2000,
+          "mime": "image/jpeg",
+          "extmetadata": {
+            "LicenseShortName": {"value": "CC0"},
+            "Artist": {"value": "Museum of Wherever"},
+            "Categories": {"value": "Bird specimens|Taxidermy"}
+          }
+        }]
+      }
+    }
+  }
+}
