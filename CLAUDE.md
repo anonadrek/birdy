@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-03):** Plan 1 (Foundation) ✅ klar — alla 12 tasks committade, CI grönt, milstolpe taggad `v0.1.0-foundation`. Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a Tasks 1–8 ✅ klara** — hela content-pipelinen är byggd: species_list (836 arter), Wikidata, Wikipedia, Claude summarizer, Commons images, YAML writer + orchestrator + doctor + CLI-wiring. 46/46 pipeline-tester gröna, 2 commits ahead av origin/main (Tasks 1–7 är pushade). **Nästa steg: Plan 2a Task 9 (walking skeleton — fetch 5 arter mot riktiga API:er, commit YAML-filer + ~10 bilder under `shared/content/`).**
+**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar — alla 12 tasks committade, CI grönt, milstolpe taggad `v0.1.0-foundation`. Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a Tasks 1–10 ✅ klara** — hela content-pipelinen är byggd OCH walking skeleton är committad (5 arter med riktig Claude-content + 15 bilder under `shared/content/`) OCH KMP-sidan har SQLDelight-schemas + kaml YAML-parser med 2/2 jvmTest gröna. **Nästa steg: Plan 2a Task 11 (`SpeciesValidator` + `validateSpeciesData` Gradle-task — verifierar att de 5 art-YAMLs:erna i `shared/content/species/` validerar mot reglerna i schema-specen).**
 
 ## Var hittar du saker
 
@@ -25,7 +25,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | # | Plan | Status |
 |---|---|---|
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ Klar (`v0.1.0-foundation`) |
-| 2a | Content pipeline + walking skeleton (5 arter) | 🚧 Tasks 1–8 ✅ (hela pipelinen byggd); Task 9 nästa |
+| 2a | Content pipeline + walking skeleton (5 arter) | 🚧 Tasks 1–10 ✅ (pipeline + 5-art-skeleton + KMP-parser); Task 11 nästa |
 | 2b | Content backfill family-by-family (5 → ~700 arter) | Runbook stub i Plan 2a Task 15 |
 | 3 | Encyclopedia (browse + species profile) | |
 | 4 | ML & Camera (TFLite + CameraX) | |
@@ -190,7 +190,7 @@ Användaren har sagt: **"Don't ask me for permission to run anything."** Det bet
 
 ## Plan 2a status
 
-Plan: `docs/superpowers/plans/2026-05-02-v1-02a-content-pipeline.md`. Tasks 1–8 klara, Task 9 är nästa.
+Plan: `docs/superpowers/plans/2026-05-02-v1-02a-content-pipeline.md`. Tasks 1–10 klara, Task 11 är nästa.
 
 | # | Task | Status |
 |---|---|---|
@@ -201,9 +201,13 @@ Plan: `docs/superpowers/plans/2026-05-02-v1-02a-content-pipeline.md`. Tasks 1–
 | 5 | `wikipedia.py` REST-klient med revision-keyed cache | ✅ — commits `47ff44f`, `bb1618d` |
 | 6 | `claude_summarizer.py` + `cost.py` + 2 prompts | ✅ — commits `7cf7163`, `afff3de` |
 | 7 | `images.py` + `hero_review.py` (Commons fetch + selection + HTML) | ✅ — commits `988c7be`, `7420558` |
-| 8 | YAML writer + orchestrator + `doctor` + CLI-wiring | ✅ — commits `e820a23` (impl), `b223a63` (review-fixes: Windows cp1252, exit-code, merge_overrides) |
-| 9 | Walking skeleton — fetch 5 arter + commit content | ⏳ **Nästa** |
-| 10–14 | KMP-integration: SQLDelight + DTOs + repository + UI-wiring | ⏳ |
+| 8 | YAML writer + orchestrator + `doctor` + CLI-wiring | ✅ — commits `e820a23` (impl), `b223a63` (review-fixes) |
+| 9 | Walking skeleton — fetch 5 arter + commit content | ✅ — commits `8f00fb9` (5 pipeline-buggar fixade under körning), `d973e31` (5 art-YAMLs + 15 bilder, Claude-cost ~$0.023) |
+| 10 | SQLDelight-schemas + Kotlin DTOs + kaml YAML-parser | ✅ — commit `2e7099c` (7 `.sq`-filer, `SpeciesYaml.kt`, `SpeciesYamlParser.kt`, 2/2 jvmTest gröna) |
+| 11 | Validator + `validateSpeciesData` Gradle-task | ⏳ **Nästa** |
+| 12 | `SpeciesDbBuilder` + `buildSpeciesDb` Gradle-task | ⏳ |
+| 13 | `SpeciesRepository` interface + SQLDelight-implementation | ⏳ |
+| 14 | Wire species.db + bilder i composeApp + verify on device | ⏳ |
 | 15 | CI-integration + Plan 2b runbook-stub | ⏳ |
 
 **Pipeline-state att veta om:**
@@ -222,7 +226,7 @@ Plan: `docs/superpowers/plans/2026-05-02-v1-02a-content-pipeline.md`. Tasks 1–
 - **Async-pattern:** `aiohttp.ClientSession` per request (acceptabelt för Plan 2a's 5 arter; Plan 2b kan dela session via injicerad `http_get`).
 - **mypy strict + ruff:** alla pipeline-filer måste passera båda. Inga `Any`, inga otypade defs. RUF001 (Unicode multiplikationstecken) använder ASCII `x` istället.
 
-**Task 8 follow-ups (från code-review, ej blockerande för Task 9):**
+**Task 8 follow-ups (från code-review, ej blockerande för Task 9–10):**
 
 Code-review av Task 8 (commit `e820a23`) gav "Approved with conditions". Två kritiska issues fixades direkt i `b223a63` (Windows cp1252-krasch i `doctor`, silent failure-swallow i `run_refresh`, plus `merge_overrides`-refactor). Följande **Important** + **Minor** är inte fixade än — de blir kvalitetsläckor om de inte adresseras innan Plan 2b's `--all` på ~700 arter:
 
@@ -240,15 +244,37 @@ Code-review av Task 8 (commit `e820a23`) gav "Approved with conditions". Två kr
 
 **Adress innan Plan 2b's `--all`:** I1 + I2 ger debugbarhet vid 700-art-körning; I4 + I5 ger schema-stabilitet för KMP-konsumenten i Plan 3.
 
-**🚩 USER CHECKPOINT (icke-blockerande för Task 9, blockerande för Plan 2b's `--all` på ~700 arter):**
-`tools/content-pipeline/prompts/description-v1.md` har platshållare för **Koltrast** och **Blåmes** few-shot-exempel (Talgoxe är komplett). Walking skeleton (Task 9) går bra med bara Talgoxe-exemplet. Innan Plan 2b's `--all` behöver användaren antingen skriva två svenska beskrivningar (180-250 ord, samma struktur som Talgoxe) eller godkänna att vi kör med ett enda exempel. `<!-- TODO -->` kommentar markerar platsen i prompt-filen.
+**Task 9 follow-ups (5 pipeline-buggar autonomt fixade av subagent under körning, commit `8f00fb9`):**
 
-**Walking-skeleton-arter (5 st, för Task 9):** Q25485 Talgoxe (Parus major), Q25234 Koltrast (Turdus merula), Q25404 Blåmes (Cyanistes caeruleus), Q25402 Knölsvan (Cygnus olor), Q26490 Tornfalk (Falco tinnunculus).
+| Bugg | Var | Fix |
+|---|---|---|
+| Commons-sökningen returnerade artikel-sidor istället för File:-sidor — 0 bildkandidater | `images.py` | Lade till `gsrnamespace=6` i Commons-search-query |
+| Wikipedia REST-summaries (25–87 ord) tystades bort som "sparse" och nådde aldrig Claude | `wikipedia.py` | `SPARSE_WORD_THRESHOLD` 100 → 20 |
+| Prompts var hårdkodade till svenska oavsett `lang=`-parameter | `prompts/description-v1.md`, `prompts/migration-v1.md`, `claude_summarizer.py` | Substitutions appliceras nu på system-prompt också; `{lang_name}`-variabel; prompts skrivna språkneutralt |
+| `ioc_order` blev "Saurischia" (dinosaur-ancestor) för alla fåglar | `orchestrator.py` | `ioc_order` läses nu från `species_list.yaml` (förlitar inte SPARQL-P171\* traversal) |
+| 5 walking-skeleton-arter saknade `common_sv` + `family_sv` i species_list | `species_list.yaml` | Manuella tillägg för Q25485, Q25234, Q25404, Q25402, Q26490 |
 
-**Senaste 2 commits (på main, ännu ej pushade — Tasks 1–7 commits är pushade till origin):**
+**🚩 USER CHECKPOINT plus Plan 2b-blockerare (uppdaterad efter Task 9):**
+
+1. **Plan 2b's `--all` blockare:** Wikidata-stegen `map_to_wikidata` hämtar inte `P1705` (officiellt språk-namn) → 834 av 836 arter saknar `common_sv`. Måste utökas innan family-by-family backfill kan köras autonomt. (Workaround idag: manuell tillägg till `species_list.yaml` per art.)
+2. **Few-shot-exempel i `description-v1.md`:** Bara Talgoxe är komplett. Koltrast + Blåmes är platshållare. Räcker för Plan 2a's 5 arter; behövs två svenska 180–250-ords-beskrivningar (eller godkännande att köra med ett enda exempel) innan Plan 2b's `--all`.
+
+**Walking-skeleton-arter (committade, Task 9):** Q25485 Talgoxe (paridae/Parus major), Q25234 Koltrast (turdidae/Turdus merula), Q25404 Blåmes (paridae/Cyanistes caeruleus), Q25402 Knölsvan (anatidae/Cygnus olor), Q26490 Tornfalk (falconidae/Falco tinnunculus). Filer ligger under `shared/content/species/{family}/{Q-ID}.yaml` + `shared/content/images/{Q-ID}/{hero,secondary-1,secondary-2}.jpg`.
+
+**Task 10 deviationer från plan (commit `2e7099c`):**
+
+- Behöll `id("birdy.kmp-android-lib")`-konventionspluggen i stället för att duplicera dess konfiguration. La till `alias(libs.plugins.kotlin.serialization)` + `alias(libs.plugins.sqldelight)` ovanpå.
+- Lade till `alias(libs.plugins.kotlin.serialization) apply false` i root `build.gradle.kts` (annars konflikt vid plugin-resolution).
+- `.gitignore` fick negation `!**/src/**/kotlin/**/build/` — annars åt root-`build/`-regeln upp paketet `se.birdy.content.build` (kotlin-källkod).
+- `.editorconfig` + `afterEvaluate { ktlint.filter { exclude { ... "generated" ... } } }` i `shared/content/build.gradle.kts` — utesluter SQLDelight-genererade källor från ktlint (de använder 2-space indent och bryter våra regler).
+
+**Senaste 5 commits (på main, ännu ej pushade — Tasks 1–7 commits är pushade till origin):**
 ```
+2e7099c feat(content): SQLDelight schemas + kaml YAML parser + DTOs (jvmTest green)
+d973e31 data(content): walking skeleton — 5 species (talgoxe, koltrast, blåmes, knölsvan, tornfalk)
+8f00fb9 fix(content): fix 4 pipeline bugs found during walking-skeleton run
+3ed6a54 docs(claude): mark Plan 2a Task 8 done, log review follow-ups (I1, I2, I4, I5)
 b223a63 fix(content): doctor cp1252 crash, run_refresh exit code, merge_overrides simplification
-e820a23 feat(content): yaml writer + orchestrator + doctor + cli wiring
 ```
 
-**Säg "kör Plan 2a Task 9" så fortsätter jag** — eller "pusha till origin" först om du vill säkra commits, eller "fixa I1+I2 innan Task 9" om du hellre vill härda pipelinen innan walking skeleton.
+**Säg "kör Plan 2a Task 11" så fortsätter jag** — eller "pusha till origin" först om du vill säkra commits, eller "fixa Task 8/9-followups innan vi går vidare" om du vill härda först.
