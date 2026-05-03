@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-03):** Plan 1 (Foundation) ✅ klar — alla 12 tasks committade, CI grönt, milstolpe taggad `v0.1.0-foundation`. Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). Plan 2a Tasks 1–3 (CLI-scaffold, species_list-builder, mapping-failures-review) ✅ klara — `species_list.yaml` committad med 836 arter, 1 känt gap (Fringilla moreletti). **Nästa steg: Plan 2a Task 4 (Wikidata-berikning av svenska namn + bilder).**
+**Status (2026-05-03):** Plan 1 (Foundation) ✅ klar — alla 12 tasks committade, CI grönt, milstolpe taggad `v0.1.0-foundation`. Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a Tasks 1–8 ✅ klara** — hela content-pipelinen är byggd: species_list (836 arter), Wikidata, Wikipedia, Claude summarizer, Commons images, YAML writer + orchestrator + doctor + CLI-wiring. 46/46 pipeline-tester gröna, 2 commits ahead av origin/main (Tasks 1–7 är pushade). **Nästa steg: Plan 2a Task 9 (walking skeleton — fetch 5 arter mot riktiga API:er, commit YAML-filer + ~10 bilder under `shared/content/`).**
 
 ## Var hittar du saker
 
@@ -25,7 +25,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | # | Plan | Status |
 |---|---|---|
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ Klar (`v0.1.0-foundation`) |
-| 2a | Content pipeline + walking skeleton (5 arter) | 🚧 Tasks 1–3 ✅ (836-arts species_list klar); Task 4+ pågår |
+| 2a | Content pipeline + walking skeleton (5 arter) | 🚧 Tasks 1–8 ✅ (hela pipelinen byggd); Task 9 nästa |
 | 2b | Content backfill family-by-family (5 → ~700 arter) | Runbook stub i Plan 2a Task 15 |
 | 3 | Encyclopedia (browse + species profile) | |
 | 4 | ML & Camera (TFLite + CameraX) | |
@@ -190,27 +190,65 @@ Användaren har sagt: **"Don't ask me for permission to run anything."** Det bet
 
 ## Plan 2a status
 
-Plan: `docs/superpowers/plans/2026-05-02-v1-02a-content-pipeline.md`. Tasks 1–3 klara, Task 4+ kvarstår.
+Plan: `docs/superpowers/plans/2026-05-02-v1-02a-content-pipeline.md`. Tasks 1–8 klara, Task 9 är nästa.
 
 | # | Task | Status |
 |---|---|---|
 | 1 | CLI-scaffold (uv + click + ruff + mypy) | ✅ |
 | 2 | species_list-builder (VP11 + IOC + Wikidata) | ✅ |
 | 3 | mapping_failures.yaml-review (manuell godkänning) | ✅ — 836 arter, 1 känt gap (`Fringilla moreletti`) |
-| 4 | Wikidata-berikning (svenska namn, hero-bild Q-IDs) | ⏳ Nästa |
-| 5–7 | Wikipedia-sammanfattning, Commons-bilder, ranges | ⏳ |
-| 8 | Claude-prompt + walking-skeleton 5 arter | ⏳ Behöver few-shot-godkännande av användaren |
-| 9–14 | YAML-skrivning, KMP-loader, polish | ⏳ |
-| 15 | Plan 2b runbook-stub | ⏳ |
+| 4 | `wikidata.py` strukturerad fetch + `cache.py` | ✅ — commit `6176f71` |
+| 5 | `wikipedia.py` REST-klient med revision-keyed cache | ✅ — commits `47ff44f`, `bb1618d` |
+| 6 | `claude_summarizer.py` + `cost.py` + 2 prompts | ✅ — commits `7cf7163`, `afff3de` |
+| 7 | `images.py` + `hero_review.py` (Commons fetch + selection + HTML) | ✅ — commits `988c7be`, `7420558` |
+| 8 | YAML writer + orchestrator + `doctor` + CLI-wiring | ✅ — commits `e820a23` (impl), `b223a63` (review-fixes: Windows cp1252, exit-code, merge_overrides) |
+| 9 | Walking skeleton — fetch 5 arter + commit content | ⏳ **Nästa** |
+| 10–14 | KMP-integration: SQLDelight + DTOs + repository + UI-wiring | ⏳ |
+| 15 | CI-integration + Plan 2b runbook-stub | ⏳ |
 
 **Pipeline-state att veta om:**
 
-- `tools/content-pipeline/species_list.yaml` är committad och canonical input för Tasks 4–8.
+- `tools/content-pipeline/species_list.yaml` är committad och canonical input för Task 9.
 - `tools/content-pipeline/mapping_failures.yaml` innehåller bara `Fringilla moreletti` (ingen art-Q-ID på Wikidata; revidera när Wikidata uppdateras).
 - `init --resume` re-kör pipelinen och bevarar manuella entries i `species_list.yaml`; lösta failures auto-rensas. Använd alltid `--resume` om du redigerat `species_list.yaml` manuellt.
 - `cross_check_with_ioc` är soft (varnar bara, filtrerar inte). 1 kvarvarande varning: Scotocerca inquieta (VP11=Cettiidae, IOC=Scotocercidae — recent split).
 - `map_to_wikidata` har en synonym-fallback: misslyckad primär `wdt:P225`-lookup gör en andra fråga mot icke-deprecated `p:P225/ps:P225` så renamed-taxa (Botaurus, Astur, Tachyspiza) hittas trots att IOC v14.1 ännu inte adopterat nya genus.
 
-**Walking-skeleton-arter (5 st, för Task 8):** Q25485 Talgoxe (Parus major), Q25234 Koltrast (Turdus merula), Q25404 Blåmes (Cyanistes caeruleus), Q25402 Knölsvan (Cygnus olor), Q26490 Tornfalk (Falco tinnunculus).
+**Etablerade arkitektur-mönster (alla nya pipeline-moduler):**
 
-**Säg "kör Plan 2a Task 4" så fortsätter jag.**
+- **Constructor-injection för testbarhet:** `WikidataClient`, `WikipediaClient`, `ClaudeSummarizer`, `ImageSelector`, `ImageProcessor` tar alla `cache: Cache` + en injicerbar async callable (`run_sparql`/`http_get`/`http_get_bytes`) i konstruktorn. Default-implementationer använder aiohttp; tester injicerar fakes. `RefreshContext` (orchestrator) följer samma mönster — `build_context()` är produktionspath, `test_orchestrator.py` exercerar injection-sömmen med fakes.
+- **Cache-key med content-hash där prompt/innehåll matters:** `claude_summarizer.py` embeddar `sha256(prompt_template)[:8]` i cache-filnamnet så tysta prompt-edits invaliderar cache. Wikipedia-cachen är revision-keyed. Wikidata-cachen är q_id-keyed (rå JSON).
+- **Atomic-write-cache:** `Cache.put` skriver till `.tmp` → `os.replace`. Aldrig partial reads. Använd `cache.put_bytes` för binärdata (Commons-bilder).
+- **Async-pattern:** `aiohttp.ClientSession` per request (acceptabelt för Plan 2a's 5 arter; Plan 2b kan dela session via injicerad `http_get`).
+- **mypy strict + ruff:** alla pipeline-filer måste passera båda. Inga `Any`, inga otypade defs. RUF001 (Unicode multiplikationstecken) använder ASCII `x` istället.
+
+**Task 8 follow-ups (från code-review, ej blockerande för Task 9):**
+
+Code-review av Task 8 (commit `e820a23`) gav "Approved with conditions". Två kritiska issues fixades direkt i `b223a63` (Windows cp1252-krasch i `doctor`, silent failure-swallow i `run_refresh`, plus `merge_overrides`-refactor). Följande **Important** + **Minor** är inte fixade än — de blir kvalitetsläckor om de inte adresseras innan Plan 2b's `--all` på ~700 arter:
+
+| Sev | ID | Sak | Var |
+|---|---|---|---|
+| Important | I1 | `_NoopClient` i orchestrator har svag typning (`**kwargs: Any`, return `Any`) — spegla `FakeClaudeClient`-signaturen från `claude_summarizer.py` | `orchestrator.py` ~line 74 |
+| Important | I2 | `refresh_one` är 130 rader / 6 concerns — dekomponera i `_fetch_text_artifacts(ctx, listed, wd)`, `_fetch_image_refs(ctx, q_id, scientific_name)`, `_assemble_species(...)` (pure, no I/O). Underlättar parallel debug i Plan 2b. | `orchestrator.py:refresh_one` |
+| Important | I4 | `[accept_missing]`-sentinel-string skrivs som content i YAML-fältet. KMP-konsumenten i Plan 3 kommer rendera den som text. Lös via separat `description_status: missing`-fält eller `description: null` + `review_notes`. | `yaml_writer.py:113` |
+| Important | I5 | `wd.family.lower()` saknar sanitizer för tomma/icke-ASCII familjenamn. Family-rename i framtida Wikidata-revisioner skapar orphan-YAMLs i gamla family-mappen — ingen housekeeping. | `orchestrator.py` ~line 245 |
+| Minor | M1 | Hard-coded `regions = ["SE", "NO", "FI", "DK", "DE"]` och `_default_season()` (allt = "present") utan `# TODO(plan-2b)`-kommentar | `orchestrator.py` lines 209-210, 253-270 |
+| Minor | M2 | Hard-coded modell-ID-strängar i `sources.claude_model` — återanvänd `MODEL_IDS[ctx.options.model]` från `claude_summarizer` istället | `orchestrator.py` ~line 234 |
+| Minor | M3 | `dict[str, Any]` för `sources`/`season`/`description`/`migration` har kända shapes — typed alias eller TypedDict skulle fånga fältnamnstypos | flera ställen |
+| Minor | M6 | `.cache/`-checken i `doctor` är decoration (`ok=True` alltid). Lägg till riktigt predikat (t.ex. > 30 dagar gammal cache → varning) eller ta bort | `doctor.py:69-80` |
+| — | — | Ruff format applicerades på 5 pre-existing filer i `b223a63` (claude_summarizer, cost, images, test_images, test_wikipedia) — scope creep men gjorde quality gate grön | git: `b223a63` |
+
+**Adress innan Plan 2b's `--all`:** I1 + I2 ger debugbarhet vid 700-art-körning; I4 + I5 ger schema-stabilitet för KMP-konsumenten i Plan 3.
+
+**🚩 USER CHECKPOINT (icke-blockerande för Task 9, blockerande för Plan 2b's `--all` på ~700 arter):**
+`tools/content-pipeline/prompts/description-v1.md` har platshållare för **Koltrast** och **Blåmes** few-shot-exempel (Talgoxe är komplett). Walking skeleton (Task 9) går bra med bara Talgoxe-exemplet. Innan Plan 2b's `--all` behöver användaren antingen skriva två svenska beskrivningar (180-250 ord, samma struktur som Talgoxe) eller godkänna att vi kör med ett enda exempel. `<!-- TODO -->` kommentar markerar platsen i prompt-filen.
+
+**Walking-skeleton-arter (5 st, för Task 9):** Q25485 Talgoxe (Parus major), Q25234 Koltrast (Turdus merula), Q25404 Blåmes (Cyanistes caeruleus), Q25402 Knölsvan (Cygnus olor), Q26490 Tornfalk (Falco tinnunculus).
+
+**Senaste 2 commits (på main, ännu ej pushade — Tasks 1–7 commits är pushade till origin):**
+```
+b223a63 fix(content): doctor cp1252 crash, run_refresh exit code, merge_overrides simplification
+e820a23 feat(content): yaml writer + orchestrator + doctor + cli wiring
+```
+
+**Säg "kör Plan 2a Task 9" så fortsätter jag** — eller "pusha till origin" först om du vill säkra commits, eller "fixa I1+I2 innan Task 9" om du hellre vill härda pipelinen innan walking skeleton.
