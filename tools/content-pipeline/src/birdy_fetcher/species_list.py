@@ -36,6 +36,10 @@ VALID_VP_STATUSES: set[VpStatus] = {"H", "h", "F", "R", "(H)"}
 # Genus species (med valfri 3-ords subspecies) — strikt 2-3 ord lowercase efter Genus
 SCI_NAME_RE = re.compile(r"^[A-Z][a-zA-Z\-']+\s+[a-z\-']+(?:\s+[a-z\-']+)?$")
 
+# Familjnamn slutar på -idae (Family) eller -inae (Subfamily). Vissa VP11-rader
+# saknar "Familj"-prefix (t.ex. Alcedinidae) — fallback fångar dem.
+_BARE_FAMILY_RE = re.compile(r"^([A-Z][a-zA-Z]+idae)$")
+
 
 _IOC_ORDER_RE = re.compile(r"^ORDER\s+([A-Z]+)$")
 _IOC_FAMILY_RE = re.compile(r"^Family\s+([A-Z][a-zA-Z]+)$")
@@ -125,6 +129,13 @@ def parse_vp11(pdf_path: Path) -> list[Vp11Entry]:
                     m = re.match(r"^Familj\s+([A-Z][a-zA-Z\-']+)", sci)
                     current_family = m.group(1) if m else None
                     continue
+                # VP11 sometimes drops the "Familj" prefix and lists only the family name.
+                # Detect by status column being empty + sci being a single -idae word.
+                if not cols["status"]:
+                    m = _BARE_FAMILY_RE.match(sci)
+                    if m:
+                        current_family = m.group(1)
+                        continue
 
                 # Skippa header / fotnot
                 if not sci or "VETENSKAPLIGT" in sci or "Scientific" in sci:
@@ -170,26 +181,26 @@ def _split_vp11_columns(row_words: list[dict[str, Any]]) -> dict[str, str]:
     return {k: " ".join(v).strip() for k, v in buckets.items()}
 
 
-def cross_check_with_ioc(
-    vp11_entries: list[Vp11Entry], ioc_entries: list[IocEntry]
-) -> tuple[list[Vp11Entry], list[MappingFailure]]:
-    """Filtrera VP11-arter där vetenskapligt namn finns i IOC. Skillnader → failures."""
+def cross_check_with_ioc(vp11_entries: list[Vp11Entry], ioc_entries: list[IocEntry]) -> list[str]:
+    """Soft check: warn when VP11 entry's family/order disagrees with IOC.
+
+    Returns a list of human-readable warnings. Does NOT filter — VP11 is the
+    primary source of truth (it has its own family/order columns) and Wikidata
+    handles taxonomy drift via P225 + synonym fallback. IOC is consulted only
+    to flag inconsistencies for the maintainer.
+    """
     ioc_by_sci = {e.scientific_name: e for e in ioc_entries}
-    matched: list[Vp11Entry] = []
-    failures: list[MappingFailure] = []
+    warnings: list[str] = []
     for v in vp11_entries:
-        if v.scientific_name in ioc_by_sci:
-            matched.append(v)
-        else:
-            failures.append(
-                MappingFailure(
-                    scientific_name=v.scientific_name,
-                    family=v.family,
-                    common_en=v.common_en,
-                    reason="VP11 sci_name not found in IOC v14.1 — taxonomy drift?",
-                )
+        i = ioc_by_sci.get(v.scientific_name)
+        if i is None:
+            continue
+        if i.family != v.family or i.ioc_order != v.ioc_order:
+            warnings.append(
+                f"{v.scientific_name}: VP11 says {v.family}/{v.ioc_order}, "
+                f"IOC says {i.family}/{i.ioc_order}"
             )
-    return matched, failures
+    return warnings
 
 
 def _build_sparql_query(scientific_names: list[str]) -> str:
@@ -198,6 +209,26 @@ def _build_sparql_query(scientific_names: list[str]) -> str:
     SELECT ?item ?scientificName WHERE {{
       VALUES ?scientificName {{ {values} }}
       ?item wdt:P225 ?scientificName .
+      ?item wdt:P31/wdt:P279* wd:Q16521 .
+    }}
+    """
+
+
+def _build_synonym_sparql_query(scientific_names: list[str]) -> str:
+    """Fallback query: match historical P225 statements (non-deprecated rank only).
+
+    Catches taxa where Wikidata still has the old genus as preferred and the
+    new genus only as a normal-rank statement (e.g. Botaurus minutus as a
+    historical name on the Ixobrychus minutus item).
+    """
+    values = " ".join(f'"{n}"' for n in scientific_names)
+    return f"""
+    SELECT ?item ?scientificName WHERE {{
+      VALUES ?scientificName {{ {values} }}
+      ?item p:P225 ?stmt .
+      ?stmt ps:P225 ?scientificName .
+      ?stmt wikibase:rank ?rank .
+      FILTER(?rank != wikibase:DeprecatedRank)
       ?item wdt:P31/wdt:P279* wd:Q16521 .
     }}
     """
@@ -217,20 +248,45 @@ async def _run_sparql(query: str) -> str:
         return await response.text()
 
 
-async def map_to_wikidata(scientific_names: list[str]) -> dict[str, str]:
-    """Return mapping from scientific_name → Q-ID. Missing names omitted."""
-    if not scientific_names:
-        return {}
-    query = _build_sparql_query(scientific_names)
-    raw = await _run_sparql(query)
+def _parse_sparql_bindings(raw: str) -> dict[str, list[str]]:
+    """Parse SPARQL JSON → {scientific_name: [q_id, ...]} (list to surface ambiguity)."""
     data = json.loads(raw)
-    result: dict[str, str] = {}
+    result: dict[str, list[str]] = {}
     for binding in data["results"]["bindings"]:
         sn = binding["scientificName"]["value"]
         uri = binding["item"]["value"]
         q_id = uri.rsplit("/", 1)[-1]
-        result[sn] = q_id
+        result.setdefault(sn, []).append(q_id)
     return result
+
+
+async def map_to_wikidata(scientific_names: list[str]) -> dict[str, str]:
+    """Return mapping from scientific_name → Q-ID. Missing names omitted.
+
+    Strategy:
+    1. Truthy P225 lookup (preferred/normal rank, current best name).
+    2. For misses, retry with non-deprecated p:P225 statements to catch taxa
+       where Wikidata still has the old name preferred and the VP11/new name
+       only as a normal-rank historical statement.
+    Ambiguity (multiple Q-IDs for one name) keeps the lowest Q-number, which
+    is typically the older/more-established item.
+    """
+    if not scientific_names:
+        return {}
+
+    raw = await _run_sparql(_build_sparql_query(scientific_names))
+    primary = _parse_sparql_bindings(raw)
+
+    misses = [n for n in scientific_names if n not in primary]
+    fallback: dict[str, list[str]] = {}
+    if misses:
+        raw_fallback = await _run_sparql(_build_synonym_sparql_query(misses))
+        fallback = _parse_sparql_bindings(raw_fallback)
+
+    out: dict[str, str] = {}
+    for sn, qids in {**primary, **fallback}.items():
+        out[sn] = sorted(qids, key=lambda q: int(q[1:]))[0]
+    return out
 
 
 async def _resolve_wikidata_qids(
@@ -292,18 +348,28 @@ async def build_species_list(
     # Filter VP11 by status
     vp11_filtered = [v for v in vp11 if v.status in include_statuses]
 
-    # Cross-check mot IOC
-    matched, ioc_failures = cross_check_with_ioc(vp11_filtered, ioc)
+    # Soft IOC cross-check: warn on family/order disagreements but don't drop entries.
+    # VP11 carries its own family/order; Wikidata handles taxonomy drift via P225
+    # synonym fallback. IOC is consulted only to flag inconsistencies.
+    ioc_warnings = cross_check_with_ioc(vp11_filtered, ioc)
+    if ioc_warnings:
+        import sys
+
+        print(f"IOC cross-check: {len(ioc_warnings)} family/order mismatches", file=sys.stderr)
+        for w in ioc_warnings[:10]:
+            print(f"  - {w}", file=sys.stderr)
+        if len(ioc_warnings) > 10:
+            print(f"  ... and {len(ioc_warnings) - 10} more", file=sys.stderr)
 
     qid_map = await _resolve_wikidata_qids(
-        [v.scientific_name for v in matched],
+        [v.scientific_name for v in vp11_filtered],
         batch_size=batch_size,
         concurrency=sparql_concurrency,
     )
 
     entries: list[SpeciesListEntry] = []
     wikidata_failures: list[MappingFailure] = []
-    for v in matched:
+    for v in vp11_filtered:
         qid = qid_map.get(v.scientific_name)
         if qid is None:
             wikidata_failures.append(
@@ -331,9 +397,7 @@ async def build_species_list(
 
     # Auto-cleanup: any failure resolved by a manual addition disappears from failures.
     resolved_names = {e.scientific_name for e in entries}
-    all_failures = [
-        f for f in (ioc_failures + wikidata_failures) if f.scientific_name not in resolved_names
-    ]
+    all_failures = [f for f in wikidata_failures if f.scientific_name not in resolved_names]
 
     out_list.parent.mkdir(parents=True, exist_ok=True)
     out_list.write_text(

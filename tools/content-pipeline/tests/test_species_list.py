@@ -71,6 +71,68 @@ async def test_map_to_wikidata_uses_fixture(
 
 
 @pytest.mark.asyncio
+async def test_map_to_wikidata_falls_back_for_renamed_taxa(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Names missing from primary wdt:P225 are retried via the synonym query."""
+    from birdy_fetcher import species_list
+
+    primary_response = (
+        '{"head":{"vars":["item","scientificName"]},'
+        '"results":{"bindings":['
+        '{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q25485"},'
+        '"scientificName":{"type":"literal","value":"Parus major"}}]}}'
+    )
+    # Renamed taxon "Botaurus minutus" appears only via the historical-statement query.
+    fallback_response = (
+        '{"head":{"vars":["item","scientificName"]},'
+        '"results":{"bindings":['
+        '{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q26129"},'
+        '"scientificName":{"type":"literal","value":"Botaurus minutus"}},'
+        '{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q25587867"},'
+        '"scientificName":{"type":"literal","value":"Botaurus minutus"}}]}}'
+    )
+    calls: list[str] = []
+
+    async def fake_sparql(query: str) -> str:
+        calls.append(query)
+        return fallback_response if "wikibase:rank" in query else primary_response
+
+    monkeypatch.setattr(species_list, "_run_sparql", fake_sparql)
+
+    result = await map_to_wikidata(["Parus major", "Botaurus minutus"])
+    assert result["Parus major"] == "Q25485"
+    # Lower Q-number wins on ambiguity (older/more-established item).
+    assert result["Botaurus minutus"] == "Q26129"
+    assert len(calls) == 2, "fallback query should be issued for the missing name"
+
+
+@pytest.mark.asyncio
+async def test_map_to_wikidata_skips_fallback_when_all_names_resolved(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """If primary query covers everything, the fallback query is not issued."""
+    from birdy_fetcher import species_list
+
+    response = (
+        '{"head":{"vars":["item","scientificName"]},'
+        '"results":{"bindings":['
+        '{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q25485"},'
+        '"scientificName":{"type":"literal","value":"Parus major"}}]}}'
+    )
+    calls: list[str] = []
+
+    async def fake_sparql(query: str) -> str:
+        calls.append(query)
+        return response
+
+    monkeypatch.setattr(species_list, "_run_sparql", fake_sparql)
+
+    await map_to_wikidata(["Parus major"])
+    assert len(calls) == 1
+
+
+@pytest.mark.asyncio
 async def test_build_species_list_separates_failures(
     sample_ioc: Path,
     sample_vp11: Path,
