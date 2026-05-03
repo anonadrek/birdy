@@ -1,7 +1,10 @@
 plugins {
-    alias(libs.plugins.kotlin.multiplatform) apply false
-    alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.android.library) apply false
+    // KMP + Android plugins are provided by buildSrc's classpath
+    // (kotlin-gradle-plugin + android-tools-gradle), so no version specifier here —
+    // declaring a version would conflict with the classpath-supplied "unknown version".
+    id("org.jetbrains.kotlin.multiplatform") apply false
+    id("com.android.application") apply false
+    id("com.android.library") apply false
     alias(libs.plugins.compose.multiplatform) apply false
     alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.sqldelight) apply false
