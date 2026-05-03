@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import os
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -163,7 +164,15 @@ class ClaudeSummarizer:
         lang: str,
         model: str,
     ) -> str:
-        cache_filename = f"claude-{kind}-{lang}-{model}-{self.prompt_version}.txt"
+        # Cache key includes a content hash of the prompt template so that
+        # silent edits to a prompt file invalidate stale cached responses
+        # automatically (without requiring a manual prompt_version bump).
+        prompt_path = self.prompt_dir / f"{kind}-{self.prompt_version}.md"
+        prompt_template = prompt_path.read_text(encoding="utf-8")
+        prompt_hash = hashlib.sha256(prompt_template.encode("utf-8")).hexdigest()[:8]
+        cache_filename = (
+            f"claude-{kind}-{lang}-{model}-{self.prompt_version}-{prompt_hash}.txt"
+        )
         if self.cache.has(q_id, cache_filename):
             cached = self.cache.get(q_id, cache_filename)
             assert cached is not None
@@ -172,8 +181,6 @@ class ClaudeSummarizer:
         if self.dry_run:
             return "[dry-run]"
 
-        prompt_path = self.prompt_dir / f"{kind}-{self.prompt_version}.md"
-        prompt_template = prompt_path.read_text(encoding="utf-8")
         system, user = _split_prompt(
             prompt_template,
             scientific_name=scientific_name,
