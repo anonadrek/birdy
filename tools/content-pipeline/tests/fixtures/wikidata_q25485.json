@@ -1,0 +1,17 @@
+{
+  "head": {"vars": ["taxonName", "family", "familyLabel", "genus", "genusLabel", "ordo", "ordoLabel", "iucnStatus", "iucnStatusLabel", "image"]},
+  "results": {
+    "bindings": [{
+      "taxonName": {"type": "literal", "value": "Parus major"},
+      "family": {"type": "uri", "value": "http://www.wikidata.org/entity/Q193353"},
+      "familyLabel": {"type": "literal", "value": "Paridae"},
+      "genus": {"type": "uri", "value": "http://www.wikidata.org/entity/Q193357"},
+      "genusLabel": {"type": "literal", "value": "Parus"},
+      "ordo": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25379"},
+      "ordoLabel": {"type": "literal", "value": "Passeriformes"},
+      "iucnStatus": {"type": "uri", "value": "http://www.wikidata.org/entity/Q211005"},
+      "iucnStatusLabel": {"type": "literal", "value": "least concern"},
+      "image": {"type": "uri", "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Parus%20major%20-%20Mindelheim%20-%202012.jpg"}
+    }]
+  }
+}
