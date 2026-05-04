@@ -16,6 +16,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | Implementationsplaner | `docs/superpowers/plans/YYYY-MM-DD-v1-NN-<phase>.md` |
 | Skärmdumpar per milstolpe | `docs/superpowers/screenshots/` |
 | Milstolpe-review-runbook (5–6 parallella granskar-agenter) | `docs/superpowers/runbooks/milstolpe-review.md` |
+| Content-gaps (saknade beskrivningar — manuellt arbete efter Plan 2-5) | `docs/superpowers/runbooks/content-gaps.md` |
 | Visuellt språk (Mossbädd-paletten) | I auto-memory: `visual_language_birdy_v1.md`, sammanfattat nedan |
 | Den här guiden | `CLAUDE.md` (du läser den nu) |
 | Auto-memory (lokalt, inte i repo) | `~/.claude/projects/C--Users-.../memory/` |
