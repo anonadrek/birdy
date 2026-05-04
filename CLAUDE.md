@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a ✅ klar** (`v0.2.0a-pipeline`). **Plan 2b pågår** — paridae extended (+8 arter, totalt 13) committad i `f8cc17f`. Pre-Plan-2b-blockare avklarade: Wikidata `rdfs:label@sv` (P1705-ersättning, `237e9a5`), hero_review wirad i orchestrator, abundance default = `ovanlig` (vp_status=H räcker inte). **Nästa steg: nästa familj enligt runbook `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` — accipitridae.**
+**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a ✅ klar** (`v0.2.0a-pipeline`). **Plan 2b pågår** — paridae +8 (`f8cc17f`), accipitridae +38 (`1ed1895`), totalt 51/700. Pipeline-recovery-bug fixad i `1bac05d` (partial `--field` runs bevarar nu icke-rörda sektioner). **Nästa steg: nästa familj enligt runbook `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`.**
 
 ## Var hittar du saker
 
@@ -299,7 +299,8 @@ Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Sen
 |---|---|---|---|---|
 | 2026-05-02 | (walking skeleton) | +5 | 5 | `d973e31` |
 | 2026-05-04 | paridae | +8 | 13 | `f8cc17f` |
-| _(next)_ | accipitridae | | | |
+| 2026-05-04 | accipitridae | +38 | 51 | `1ed1895` |
+| _(next)_ | tba | | | |
 
 **Pre-Plan-2b-blockare avklarade:**
 
@@ -324,6 +325,15 @@ Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Sen
 - Q207838 (Entita) har endast 14-ords svwiki-artikel (under `SPARSE_WORD_THRESHOLD=20`) → `description.sv: ''`. Hanterat via `shared/content/overrides.yaml` `description_accept_missing: [sv]`.
 - Alla 8 markerades `review_status: approved` autonomt utan visuell hero-check (hero_review-modulen var inte wirad än vid körning). Det löpte risken att fel hero glider igenom; från och med nästa familj görs visuell check via genererad HTML.
 - Familjenamn på svenska från Wikidata = "Mesfåglar" (paridae). Walking-skeleton hade manuell "Mesar". Konsumenten i Plan 3 måste tåla varianter eller vi lägger en `family_sv`-mapping-tabell senare.
+
+**Accipitridae-batch lärdomar (2026-05-04, `1ed1895` + pipeline-fix `1bac05d`):**
+
+- 38 arter committade. 5 abundance:allmän (Sparvhök Q25380, Ormvråk Q25385, Havsörn Q25438, Fjällvråk Q26407, Brun kärrhök Q26431) approved efter visuell hero-check.
+- **Pipeline-bug upptäckt + fixad i `1bac05d`:** `--field text` skrev tomma image_refs (och tvärtom för `--field images`) — en partial-rerun-recovery destruerade committad data i andra sektionen. `refresh_one` läser nu existerande YAML när `--field` ≠ `all` och bevarar de ej-rörda fälten (image_refs/description/migration/review_status/review_notes). `--field=all` kvarstår som fresh-rebuild.
+- **REJECT_PATTERNS-utökning i `1bac05d`:** Plural-kategorier ("Bird illustrations", "(museum specimens)", "Taxidermied birds") och historiska zoologiska tryck (Iconographia, Hardwicke, Wellcome chromolithographs incl. trunkerad "Chromolithograp") matchas nu och filtreras bort i Commons-search.
+- **`commons_search_name`-override i `species_list.yaml`:** För taxon med ny genus där Commons-kategorier inte hängt med (Astur gentilis → Q137474876 söker `Accipiter gentilis`). Pattern återanvändbart för Botaurus/Tachyspiza i framtida familjer.
+- **18/38 arter (47%) behövde `description_accept_missing`-override** för minst ett språk. Stort dataquality-flag: svwiki har sparse coverage av mindre vanliga rovfåglar. Q55111925 (Rüppell's Vulture/Fläckgam) saknade artikel i båda språk → övervägd "borde inte vara i listan" men behållen för datakomplett.
+- **Recovery-flöde** efter trasig `--field images --force`-körning: `--field text` på alla 38 (cache hit, $0) återställde 12/23 tomma deskriptioner; resten täcktes av overrides. Pipeline-fixet möjliggjorde detta — utan den hade `--field text` slitit ut alla bilder.
 
 **Pre-Plan-2b prerequisites kvar (icke-blockerande):**
 
