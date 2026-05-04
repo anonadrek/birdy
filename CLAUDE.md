@@ -276,7 +276,7 @@ Code-review av Task 8 (commit `e820a23`) gav "Approved with conditions". Två kr
 
 **Senaste commits (Tasks 11–15, pushade till origin med tag `v0.2.0a-pipeline`):**
 ```
-<task15-sha> ci(content): integrate validation + db build; mark Plan 2a complete
+9a972ac ci(content): integrate validation + db build; mark Plan 2a complete
 8abf4dd feat(app): wire species.db into composeApp; HomeScreen shows 5 walking-skeleton species
 5c172ee feat(content): SpeciesRepository public API + SQLDelight implementation with i18n fallback
 502241b feat(content): SpeciesDbBuilder + buildSpeciesDb Gradle task; 5-species db generated
