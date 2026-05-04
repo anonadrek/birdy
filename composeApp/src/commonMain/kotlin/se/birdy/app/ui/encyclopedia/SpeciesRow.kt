@@ -18,6 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.badge_common
+import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.HeroImage
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.TextOnHero
@@ -61,7 +64,7 @@ fun SpeciesRow(
                         .padding(horizontal = 8.dp, vertical = 2.dp),
             ) {
                 Text(
-                    "ALLMÄN",
+                    stringResource(Res.string.badge_common),
                     style = MaterialTheme.typography.labelLarge,
                     color = TextOnHero,
                 )

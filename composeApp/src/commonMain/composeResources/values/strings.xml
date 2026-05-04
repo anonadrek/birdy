@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Bottom-nav -->
+    <string name="tab_scan">Skanna</string>
+    <string name="tab_encyclopedia">Uppslagsverk</string>
+    <string name="tab_diary">Dagbok</string>
+    <string name="tab_badges">Märken</string>
+
+    <!-- Top-bar titles -->
+    <string name="title_encyclopedia">UPPSLAGSVERK</string>
+
+    <!-- Profile -->
+    <string name="profile_label_description">BESKRIVNING</string>
+    <string name="profile_label_migration">FLYTTNING</string>
+    <string name="profile_label_photos">FOTOGRAFIER</string>
+    <string name="profile_back">Tillbaka</string>
+
+    <!-- Filter -->
+    <string name="filter_title">Filter</string>
+    <string name="filter_button">⚙ Filter</string>
+    <string name="filter_label_abundance">FÖREKOMST</string>
+    <string name="filter_label_region">REGION</string>
+    <string name="filter_label_month">MÅNAD</string>
+    <string name="filter_apply">Visa %1$d arter</string>
+    <string name="filter_reset">Återställ</string>
+
+    <!-- Badges + abundance presentation -->
+    <string name="badge_common">ALLMÄN</string>
+    <string name="badge_uncommon">OVANLIG</string>
+
+    <!-- Search -->
+    <string name="search_placeholder">Sök art, släkte eller familj…</string>
+    <string name="search_empty_title">Ingen art matchar</string>
+    <string name="search_empty_body">Prova andra filter eller sök på vetenskapligt namn.</string>
+
+    <!-- Sparse-data empty states -->
+    <string name="empty_description">Beskrivning kommer i en framtida uppdatering.</string>
+    <string name="empty_migration">Migrationsdata saknas för denna art.</string>
+    <string name="empty_photos">Inga foton tillgängliga.</string>
+
+    <!-- SpeciesNotFound -->
+    <string name="not_found_title">Art saknas.</string>
+    <string name="not_found_body">Tryck tillbaka för att gå till listan.</string>
+
+    <!-- Stub screens -->
+    <string name="stub_scan_title">Skanna</string>
+    <string name="stub_scan_body">Den här funktionen kommer i Plan 4 — ML &amp; Camera.</string>
+    <string name="stub_diary_title">Dagbok</string>
+    <string name="stub_diary_body">Den här funktionen kommer i Plan 5 — Dagbok.</string>
+    <string name="stub_badges_title">Märken</string>
+    <string name="stub_badges_body">Den här funktionen kommer i Plan 5 — Gamification.</string>
+
+    <!-- Sections -->
+    <string name="section_common_se">Allmänna i Sverige</string>
+    <string name="section_common_generic">Allmänna</string>
+    <string name="section_others">Övriga</string>
+
+    <!-- Loading -->
+    <string name="loading">Laddar…</string>
+</resources>

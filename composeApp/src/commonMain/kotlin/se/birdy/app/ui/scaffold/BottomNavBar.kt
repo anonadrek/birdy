@@ -16,19 +16,26 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.tab_badges
+import birdy_bird_scanner.composeapp.generated.resources.tab_diary
+import birdy_bird_scanner.composeapp.generated.resources.tab_encyclopedia
+import birdy_bird_scanner.composeapp.generated.resources.tab_scan
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
 private data class TabSpec(
     val route: AppRoute,
-    val label: String,
+    val label: StringResource,
     val icon: ImageVector,
 )
 
 private val tabs =
     listOf(
-        TabSpec(AppRoute.Scan, "Skanna", Icons.Filled.PhotoCamera),
-        TabSpec(AppRoute.Encyclopedia, "Uppslagsverk", Icons.AutoMirrored.Filled.MenuBook),
-        TabSpec(AppRoute.Diary, "Dagbok", Icons.Filled.Bookmark),
-        TabSpec(AppRoute.Badges, "Märken", Icons.Filled.EmojiEvents),
+        TabSpec(AppRoute.Scan, Res.string.tab_scan, Icons.Filled.PhotoCamera),
+        TabSpec(AppRoute.Encyclopedia, Res.string.tab_encyclopedia, Icons.AutoMirrored.Filled.MenuBook),
+        TabSpec(AppRoute.Diary, Res.string.tab_diary, Icons.Filled.Bookmark),
+        TabSpec(AppRoute.Badges, Res.string.tab_badges, Icons.Filled.EmojiEvents),
     )
 
 @Composable
@@ -50,7 +57,7 @@ fun BottomNavBar(navController: NavHostController) {
                     }
                 },
                 icon = { Icon(tab.icon, contentDescription = null) },
-                label = { Text(tab.label) },
+                label = { Text(stringResource(tab.label)) },
             )
         }
     }

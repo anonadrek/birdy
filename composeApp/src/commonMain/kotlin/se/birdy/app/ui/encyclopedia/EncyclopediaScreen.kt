@@ -31,6 +31,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.filter_button
+import birdy_bird_scanner.composeapp.generated.resources.loading
+import birdy_bird_scanner.composeapp.generated.resources.search_empty_body
+import birdy_bird_scanner.composeapp.generated.resources.search_empty_title
+import birdy_bird_scanner.composeapp.generated.resources.search_placeholder
+import birdy_bird_scanner.composeapp.generated.resources.section_others
+import birdy_bird_scanner.composeapp.generated.resources.title_encyclopedia
+import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.HeroMossLight
@@ -54,7 +63,7 @@ fun EncyclopediaScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("UPPSLAGSVERK", style = MaterialTheme.typography.titleLarge) },
+                title = { Text(stringResource(Res.string.title_encyclopedia), style = MaterialTheme.typography.titleLarge) },
                 colors =
                     TopAppBarDefaults.topAppBarColors(
                         containerColor = HeroMossLight,
@@ -72,7 +81,7 @@ fun EncyclopediaScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 8.dp),
                 singleLine = true,
-                placeholder = { Text("Sök art, släkte eller familj…") },
+                placeholder = { Text(stringResource(Res.string.search_placeholder)) },
             )
             Row(
                 modifier =
@@ -82,7 +91,7 @@ fun EncyclopediaScreen(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 OutlinedButton(onClick = { showSheet = true }) {
-                    Text("⚙ Filter")
+                    Text(stringResource(Res.string.filter_button))
                     if (activeFilterCount > 0) {
                         Spacer(Modifier.width(8.dp))
                         Box(
@@ -121,13 +130,13 @@ fun EncyclopediaScreen(
             when (val s = state) {
                 EncyclopediaUiState.Loading -> {
                     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        Text("Laddar…")
+                        Text(stringResource(Res.string.loading))
                     }
                 }
                 EncyclopediaUiState.Empty -> {
                     EmptyState(
-                        title = "Ingen art matchar",
-                        body = "Prova andra filter eller sök på vetenskapligt namn.",
+                        title = stringResource(Res.string.search_empty_title),
+                        body = stringResource(Res.string.search_empty_body),
                     )
                 }
                 is EncyclopediaUiState.Loaded -> {
@@ -142,7 +151,7 @@ fun EncyclopediaScreen(
                         }
                         if (s.grouped.others.isNotEmpty()) {
                             stickyHeader {
-                                SectionHeader("Övriga (${s.grouped.others.size})")
+                                SectionHeader("${stringResource(Res.string.section_others)} (${s.grouped.others.size})")
                             }
                             items(s.grouped.others, key = { it.id.raw }) { sum ->
                                 SpeciesRow(sum, onClick = { onSpeciesClick(sum.id) })

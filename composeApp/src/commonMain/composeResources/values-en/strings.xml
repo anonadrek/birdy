@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_scan">Scan</string>
+    <string name="tab_encyclopedia">Encyclopedia</string>
+    <string name="tab_diary">Diary</string>
+    <string name="tab_badges">Badges</string>
+
+    <string name="title_encyclopedia">ENCYCLOPEDIA</string>
+
+    <string name="profile_label_description">DESCRIPTION</string>
+    <string name="profile_label_migration">MIGRATION</string>
+    <string name="profile_label_photos">PHOTOS</string>
+    <string name="profile_back">Back</string>
+
+    <string name="filter_title">Filter</string>
+    <string name="filter_button">⚙ Filter</string>
+    <string name="filter_label_abundance">ABUNDANCE</string>
+    <string name="filter_label_region">REGION</string>
+    <string name="filter_label_month">MONTH</string>
+    <string name="filter_apply">Show %1$d species</string>
+    <string name="filter_reset">Reset</string>
+
+    <string name="badge_common">COMMON</string>
+    <string name="badge_uncommon">UNCOMMON</string>
+
+    <string name="search_placeholder">Search species, genus or family…</string>
+    <string name="search_empty_title">No species match</string>
+    <string name="search_empty_body">Try other filters or search by scientific name.</string>
+
+    <string name="empty_description">A description will be added in a future update.</string>
+    <string name="empty_migration">No migration data available for this species.</string>
+    <string name="empty_photos">No photos available.</string>
+
+    <string name="not_found_title">Species not found.</string>
+    <string name="not_found_body">Press back to return to the list.</string>
+
+    <string name="stub_scan_title">Scan</string>
+    <string name="stub_scan_body">This feature is coming in Plan 4 — ML &amp; Camera.</string>
+    <string name="stub_diary_title">Diary</string>
+    <string name="stub_diary_body">This feature is coming in Plan 5 — Diary.</string>
+    <string name="stub_badges_title">Badges</string>
+    <string name="stub_badges_body">This feature is coming in Plan 5 — Gamification.</string>
+
+    <string name="section_common_se">Common in Sweden</string>
+    <string name="section_common_generic">Common</string>
+    <string name="section_others">Others</string>
+
+    <string name="loading">Loading…</string>
+</resources>

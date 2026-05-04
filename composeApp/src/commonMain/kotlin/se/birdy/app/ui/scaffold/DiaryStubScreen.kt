@@ -14,6 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.stub_diary_body
+import birdy_bird_scanner.composeapp.generated.resources.stub_diary_title
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun DiaryStubScreen() {
@@ -32,9 +36,9 @@ fun DiaryStubScreen() {
             tint = MaterialTheme.colorScheme.primary,
             modifier = Modifier.padding(bottom = 16.dp),
         )
-        Text("Dagbok", style = MaterialTheme.typography.headlineLarge)
+        Text(stringResource(Res.string.stub_diary_title), style = MaterialTheme.typography.headlineLarge)
         Text(
-            "Den här funktionen kommer i Plan 5 — Dagbok.",
+            stringResource(Res.string.stub_diary_body),
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(top = 8.dp),
         )

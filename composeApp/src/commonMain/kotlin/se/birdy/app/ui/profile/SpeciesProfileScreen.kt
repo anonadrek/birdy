@@ -31,6 +31,20 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.badge_common
+import birdy_bird_scanner.composeapp.generated.resources.badge_uncommon
+import birdy_bird_scanner.composeapp.generated.resources.empty_description
+import birdy_bird_scanner.composeapp.generated.resources.empty_migration
+import birdy_bird_scanner.composeapp.generated.resources.empty_photos
+import birdy_bird_scanner.composeapp.generated.resources.loading
+import birdy_bird_scanner.composeapp.generated.resources.not_found_body
+import birdy_bird_scanner.composeapp.generated.resources.not_found_title
+import birdy_bird_scanner.composeapp.generated.resources.profile_back
+import birdy_bird_scanner.composeapp.generated.resources.profile_label_description
+import birdy_bird_scanner.composeapp.generated.resources.profile_label_migration
+import birdy_bird_scanner.composeapp.generated.resources.profile_label_photos
+import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.HeroImage
 import se.birdy.app.ui.components.SectionBlock
@@ -38,6 +52,7 @@ import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.SandCreme
 import se.birdy.app.ui.theme.TextOnHero
+import se.birdy.content.Abundance
 import se.birdy.content.model.Species
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,9 +64,12 @@ fun SpeciesProfileScreen(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     when (val s = state) {
         SpeciesProfileUiState.Loading ->
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { Text("Laddar…") }
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { Text(stringResource(Res.string.loading)) }
         SpeciesProfileUiState.NotFound ->
-            EmptyState(title = "Art saknas.", body = "Tryck tillbaka för att gå till listan.")
+            EmptyState(
+                title = stringResource(Res.string.not_found_title),
+                body = stringResource(Res.string.not_found_body),
+            )
         is SpeciesProfileUiState.Loaded -> ProfileContent(s.species, onBack)
     }
 }
@@ -88,7 +106,7 @@ private fun ProfileContent(
                     IconButton(onClick = onBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Tillbaka",
+                            contentDescription = stringResource(Res.string.profile_back),
                             tint = TextOnHero,
                         )
                     }
@@ -112,27 +130,27 @@ private fun ProfileContent(
             item { FactRow(species) }
             item {
                 SectionBlock(
-                    label = "BESKRIVNING",
+                    label = stringResource(Res.string.profile_label_description),
                     isEmpty = species.description.isNullOrBlank(),
-                    emptyMessage = "Beskrivning kommer i en framtida uppdatering.",
+                    emptyMessage = stringResource(Res.string.empty_description),
                 ) {
                     Text(species.description.orEmpty(), style = MaterialTheme.typography.bodyMedium)
                 }
             }
             item {
                 SectionBlock(
-                    label = "FLYTTNING",
+                    label = stringResource(Res.string.profile_label_migration),
                     isEmpty = species.migration.isNullOrBlank(),
-                    emptyMessage = "Migrationsdata saknas för denna art.",
+                    emptyMessage = stringResource(Res.string.empty_migration),
                 ) {
                     Text(species.migration.orEmpty(), style = MaterialTheme.typography.bodyMedium)
                 }
             }
             item {
                 SectionBlock(
-                    label = "FOTOGRAFIER",
+                    label = stringResource(Res.string.profile_label_photos),
                     isEmpty = species.images.isEmpty(),
-                    emptyMessage = "Inga foton tillgängliga.",
+                    emptyMessage = stringResource(Res.string.empty_photos),
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -154,8 +172,13 @@ private fun ProfileContent(
 
 @Composable
 private fun FactRow(species: Species) {
+    val abundanceLabel =
+        when (species.abundance) {
+            Abundance.ALLMÄN -> stringResource(Res.string.badge_common)
+            else -> stringResource(Res.string.badge_uncommon)
+        }
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        Chip(species.abundance.code.uppercase(), accent = true)
+        Chip(abundanceLabel, accent = true)
         species.taxonomy.familySv?.let { Chip(it) }
         Chip(species.iucnStatus)
     }

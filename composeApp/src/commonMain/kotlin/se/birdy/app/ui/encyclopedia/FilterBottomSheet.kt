@@ -23,6 +23,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.filter_apply
+import birdy_bird_scanner.composeapp.generated.resources.filter_label_abundance
+import birdy_bird_scanner.composeapp.generated.resources.filter_label_month
+import birdy_bird_scanner.composeapp.generated.resources.filter_label_region
+import birdy_bird_scanner.composeapp.generated.resources.filter_reset
+import birdy_bird_scanner.composeapp.generated.resources.filter_title
+import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.content.Abundance
@@ -50,9 +58,9 @@ fun FilterBottomSheet(
                     .padding(horizontal = 16.dp, vertical = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            Text("Filter", style = MaterialTheme.typography.titleLarge)
+            Text(stringResource(Res.string.filter_title), style = MaterialTheme.typography.titleLarge)
 
-            Text("FÖREKOMST", style = MaterialTheme.typography.labelLarge, color = AccentCopper)
+            Text(stringResource(Res.string.filter_label_abundance), style = MaterialTheme.typography.labelLarge, color = AccentCopper)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 listOf(Abundance.ALLMÄN, Abundance.OVANLIG).forEach { ab ->
                     FilterChip(
@@ -73,7 +81,7 @@ fun FilterBottomSheet(
                 }
             }
 
-            Text("REGION", style = MaterialTheme.typography.labelLarge, color = AccentCopper)
+            Text(stringResource(Res.string.filter_label_region), style = MaterialTheme.typography.labelLarge, color = AccentCopper)
             LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(REGIONS) { r ->
                     FilterChip(
@@ -94,7 +102,7 @@ fun FilterBottomSheet(
                 }
             }
 
-            Text("MÅNAD", style = MaterialTheme.typography.labelLarge, color = AccentCopper)
+            Text(stringResource(Res.string.filter_label_month), style = MaterialTheme.typography.labelLarge, color = AccentCopper)
             LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(MONTHS) { m ->
                     FilterChip(
@@ -114,12 +122,12 @@ fun FilterBottomSheet(
                 OutlinedButton(
                     onClick = { draft = SpeciesFilter() },
                     modifier = Modifier.weight(1f),
-                ) { Text("Återställ") }
+                ) { Text(stringResource(Res.string.filter_reset)) }
                 Button(
                     onClick = { onApply(draft) },
                     modifier = Modifier.weight(2f),
                     colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = TextOnHero),
-                ) { Text("Visa $previewCount arter") }
+                ) { Text(stringResource(Res.string.filter_apply, previewCount)) }
             }
         }
     }
