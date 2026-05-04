@@ -1,0 +1,123 @@
+id: Q574447
+scientific_name: Poecile cinctus
+taxonomy:
+  family: Paridae
+  family_sv: Mesfåglar
+  genus: Poecile
+  ioc_order: Passeriformes
+names:
+  sv: lappmes
+  en: Grey-headed Chickadee
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Lappmes
+
+
+    Lappmes är en liten mesart som skiljer sig från sina släktingar genom sitt nordligaste
+    utbredningsområde. Det är dessutom den enda mesarten som förekommer på tre kontinenter
+    – Europa, Asien och Nordamerika. Arten är anpassad för de hårda klimatförhållandena
+    i norr och har utvecklat strategier för att överleva de långa, kalla vintrar.
+
+
+    Fågeln förekommer främst i gammal, gles barrskog där det finns gott om döda träd
+    och stubbar som erbjuder mat och häckningsplatser. Den återfinns också i fjällbjörkskog
+    i mindre omfattning. Arten är utpräglad nordlig och söks där villkoren är lämpliga
+    för sina speciella habitat-krav.
+
+
+    Beståndet av lappmes minskar gradvis, men på global nivå bedöms arten fortfarande
+    vara livskraftig och långsiktigt stabil. Det minskande antalet kan förklaras av
+    förändringar i skogshabltaten och klimatförändringarna som påverkar dess nordiska
+    utbredningsområde.'
+  en: '# Grey-headed Chickadee
+
+
+    The grey-headed chickadee, also known as the Siberian tit, is a small passerine
+    belonging to the tit family. It is a specialist of coniferous forests, inhabiting
+    subarctic regions across Scandinavia and the northern Palearctic, with populations
+    extending into northern North America. Unlike many northern birds, it is largely
+    resident year-round, with most individuals remaining in their territories rather
+    than migrating seasonally.
+
+
+    This chickadee is well-adapted to harsh boreal conditions and is typically found
+    in conifer-dominated habitats where it forages for food throughout the year. Its
+    dependence on these specific forest types makes it an indicator species for the
+    health of subarctic ecosystems. The species maintains relatively stable populations
+    across its wide range, demonstrating its successful adaptation to some of the
+    coldest inhabited regions in the Northern Hemisphere.'
+migration:
+  sv: '# Lappmes – Förekomst i Skandinavien och Nordeuropa
+
+
+    Lappmes är en permanent bosatt art i Skandinavien och Nordeuropa. Fågeln är icke-flyttande
+    och stannar året om i sitt utbredningsområde, främst i de nordligaste delarna
+    av regionen där den förekommer i gammal, gles barrskog och fjällbjörkskog. Det
+    finns ingen säsongsväxling i förekomsten – populationerna är stationära och flyttar
+    inte längre söderut under vintermånaderna. Detta gör lappmes till en av få mesar
+    som är väl anpassad för att övervintras under de hårdaste nordiska klimatförhållandena.'
+  en: '# Poecile cinctus – Year-round Resident
+
+
+    The grey-headed chickadee is a permanent resident throughout its Scandinavian
+    range, showing little to no migratory behavior. This hardy species remains in
+    subarctic Scandinavia and northern Palearctic regions year-round, maintaining
+    stable populations despite harsh winter conditions. As a specialist of conifer
+    forests, it is well-adapted to surviving cold winters in northern latitudes without
+    the need for seasonal migration. Most individuals are sedentary, staying within
+    their breeding territories throughout all seasons.'
+image_refs:
+- role: hero
+  path: Q574447/hero.jpg
+  width: 2400
+  height: 1857
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Poecile Cinctus Kittila 20120307.JPG
+  commons_filename: Poecile Cinctus Kittila 20120307.JPG
+- role: secondary
+  path: Q574447/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Siberian Tit (Poecile cinctus)
+    (13667826373).jpg
+  commons_filename: Siberian Tit (Poecile cinctus) (13667826373).jpg
+- role: secondary
+  path: Q574447/secondary-2.jpg
+  width: 1800
+  height: 1127
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Poecile cinctus 190093338.jpg
+  commons_filename: Poecile cinctus 190093338.jpg
+review_status: approved
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+generated_at: '2026-05-04T10:00:37.650809+00:00'
+sources:
+  wikipedia_sv_revision: '58632473'
+  wikipedia_en_revision: '1338417104'
+  claude_model: claude-haiku-4-5-20251001

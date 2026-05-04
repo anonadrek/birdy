@@ -1,0 +1,128 @@
+id: Q191096
+scientific_name: Periparus ater
+taxonomy:
+  family: Paridae
+  family_sv: Mesfåglar
+  genus: Periparus
+  ioc_order: Passeriformes
+names:
+  sv: svartmes
+  en: Coal Tit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartmes
+
+
+    Svartmes är en liten mes som förekommer över stora delar av Europa och Asien.
+    Det är en typisk barrskogsfågel som trivs särskilt bra i skogar med gran och tall,
+    men återfinns även i blandad skog och parker med barrträd.
+
+
+    Arten är lätt att identifiera på sitt karakteristiska utseende med svart huvud
+    och vita fläckar på nacken, vilket ger det ett distinkt mönster. Det har också
+    vita kinder och en vit streck längs ryggen. Kroppen är grå och undersidan ljus.
+    Svartmesen är aktiv och rörig, ofta i små flockar, särskilt under höst och vinter.
+    Det söker föda bland grenarnas yttre delar och är skickligt på att hämta små insekter
+    och frön.
+
+
+    Kallelsen är karakteristisk och tvådelad, ofta beskriven som "si-si" eller liknande
+    ljud. Det varierar sitt läte och kan höras året runt.'
+  en: '# Coal Tit
+
+
+    The coal tit is a small passerine belonging to the tit family, Paridae. It is
+    a widespread and common resident breeder found throughout forests across the temperate
+    to subtropical Palearctic region, including North Africa. The species was formerly
+    separated from the black-crested tit, which is now recognized as part of this
+    species.
+
+
+    The coal tit is characterized by its distinctive plumage, featuring dark upperparts
+    contrasted with lighter underparts. It inhabits wooded areas where it forages
+    actively among branches and foliage, often joining mixed feeding flocks during
+    winter months. The bird is highly mobile and acrobatic, using its relatively short
+    tail for balance as it searches for insects and seeds.
+
+
+    In its preferred forest habitats, the coal tit plays an important ecological role
+    as both insectivore and seed disperser. Its behavior reflects adaptability to
+    various woodland types, from dense coniferous and mixed forests to more open deciduous
+    woodlands. The species remains a familiar sight to birdwatchers across its extensive
+    range wherever suitable forested habitat persists.'
+migration:
+  sv: '# Svartmes – säsongsvistelse i Norden
+
+
+    Svartmesen är en stannfågel som förekommer året runt i Skandinavien och Nordeuropa,
+    där den är bosatt i barrskogsmiljöer. Under vintermånaderna är populationen ofta
+    något större än under sommaren, delvis på grund av invandring från östra delen
+    av sitt utbredningsområde. Fågeln är mycket mobil och genomför omfattande lokala
+    förflyttningar under höst och vinter, då den söker mat i olika skogshabitat. Även
+    om den är en etablerad standare följer den inte en strikt migration utan förflyttar
+    sig snarare beroende på födotillgång.'
+  en: '# Coal Tit (Periparus ater) in Northern Europe
+
+
+    The Coal Tit is a year-round resident throughout Scandinavia and Northern Europe,
+    where it breeds in coniferous and mixed forests. Unlike many passerines, this
+    species does not undertake long-distance migrations and remains present during
+    winter months. Populations may show local movements and altitudinal shifts in
+    response to food availability and harsh weather conditions, but birds generally
+    stay within or near their breeding territories year-round. The species is well-adapted
+    to northern winters, utilizing its behavior of caching seeds for survival during
+    periods of food scarcity.'
+image_refs:
+- role: hero
+  path: Q191096/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Calandrella" title="User:Calandrella">Calandrella</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Periparus ater ringed by Landsort
+    Bird Observatory-10.JPG
+  commons_filename: Periparus ater ringed by Landsort Bird Observatory-10.JPG
+- role: secondary
+  path: Q191096/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Calandrella" title="User:Calandrella">Calandrella</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Periparus ater ringed by Landsort
+    Bird Observatory-6.JPG
+  commons_filename: Periparus ater ringed by Landsort Bird Observatory-6.JPG
+- role: secondary
+  path: Q191096/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 2.0
+  author: blondinrikard
+  source_url: https://commons.wikimedia.org/wiki/File:Coal tit, Periparus ater, Svartmes.jpg
+  commons_filename: Coal tit, Periparus ater, Svartmes.jpg
+review_status: approved
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+generated_at: '2026-05-04T10:01:08.509284+00:00'
+sources:
+  wikipedia_sv_revision: '57738243'
+  wikipedia_en_revision: '1350517212'
+  claude_model: claude-haiku-4-5-20251001

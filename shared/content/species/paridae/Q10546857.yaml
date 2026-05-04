@@ -1,0 +1,137 @@
+id: Q10546857
+scientific_name: Cyanistes teneriffae
+taxonomy:
+  family: Paridae
+  family_sv: Mesfåglar
+  genus: Cyanistes
+  ioc_order: Passeriformes
+names:
+  sv: koboltmes
+  en: African Blue Tit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Koboltmes
+
+
+    Koboltmes är en liten mesar som är närbesläktad med blåmesen. Det kännetecknas
+    av sin blå och gul färgsättning, liknande blåmesen men med egna särdrag. Arten
+    är relativt liten och behändig, väl anpassad för att röra sig mellan grenar och
+    vegetation.
+
+
+    Arten förekommer i Nordafrika och i Kanarieöarna, där det lever i olika habitattyper.
+    Det är en aktiv fågel som ofta ses söka föda bland löv och kvistar. Som andra
+    mesar är koboltmes en social fågel som kan förekomma ensam eller i små grupper.
+
+
+    Beståndet av koboltmes anses vara livskraftigt, och arten klassificeras inte som
+    hotad. Arten urskildes länge som en del av blåmesen men behandlas numera vanligen
+    som egen art baserat på sitt eget utseende och sitt utbredninsområde.'
+  en: '# African Blue Tit
+
+
+    The African blue tit is a small member of the Paridae family found in temperate
+    forest habitats across northern Africa and certain Mediterranean islands. It closely
+    resembles the Eurasian blue tit but was recognized as a distinct species relatively
+    recently, having previously been classified together with its European counterpart.
+
+
+    This species is particularly noted for its island populations, which have made
+    it valuable for evolutionary research. It remains common in its range, especially
+    on the larger islands where it inhabits suitable woodland environments. The bird''s
+    accessible populations have attracted considerable scientific attention, contributing
+    to broader understanding of how island species develop and adapt over time.
+
+
+    Like other tits, the African blue tit is an active, social bird of forested areas,
+    though detailed information about its specific plumage patterns, vocalizations,
+    and behavioral characteristics would benefit from direct field observation.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."
+
+
+    ---
+
+
+    **Förklaring:** Källtexten om Cyanistes teneriffae (koboltmes) innehåller endast
+    information om artens utbredning i Nordafrika och Kanarieöarna, samt taxonomisk
+    bakgrund. Det finns ingen information om migrationsvanor, vinterbiotoper, ankomstmånader
+    eller säsongsförekomst. Därför kan ingen faktisk beskrivning av arten i Skandinavien/Nordeuropa
+    under året skrivas baserat på källmaterialet.'
+  en: '# African Blue Tit (Cyanistes teneriffae) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The African Blue Tit is not a regular occurrence in Scandinavia or Northern Europe.
+    This species is endemic to northern Africa, Pantelleria in Italy, and the Canary
+    Islands, with established populations on Tenerife and Gran Canaria. It inhabits
+    temperate forests within its range but does not have documented migration patterns
+    involving Scandinavian or broader Northern European regions. Any sightings in
+    northern latitudes would represent exceptional vagrants rather than regular seasonal
+    movements.'
+image_refs:
+- role: hero
+  path: Q10546857/hero.jpg
+  width: 2048
+  height: 1281
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cyanistes teneriffae teneriffae
+    184052669.jpg
+  commons_filename: Cyanistes teneriffae teneriffae 184052669.jpg
+- role: secondary
+  path: Q10546857/secondary-1.jpg
+  width: 1800
+  height: 1125
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cyanistes teneriffae teneriffae
+    184052632.jpg
+  commons_filename: Cyanistes teneriffae teneriffae 184052632.jpg
+- role: secondary
+  path: Q10546857/secondary-2.jpg
+  width: 1800
+  height: 1513
+  license: CC BY-SA 3.0
+  author: '<div class="fn value">
+
+    <a href="//commons.wikimedia.org/wiki/User:Archaeodontosaurus" title="User:Archaeodontosaurus">Didier
+    Descouens</a></div>'
+  source_url: https://commons.wikimedia.org/wiki/File:Cyanistes teneriffae ultramarinus
+    (Bonaparte, 1841) 323 Aïn-Chénia, El Aouinet Algérie.jpg
+  commons_filename: Cyanistes teneriffae ultramarinus (Bonaparte, 1841) 323 Aïn-Chénia,
+    El Aouinet Algérie.jpg
+review_status: approved
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+generated_at: '2026-05-04T10:01:19.852102+00:00'
+sources:
+  wikipedia_sv_revision: '56586268'
+  wikipedia_en_revision: '1314064266'
+  claude_model: claude-haiku-4-5-20251001

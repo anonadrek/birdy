@@ -1,2 +1,10 @@
 # Overrides for committed species YAML.
 # See docs/superpowers/specs/2026-05-02-content-pipeline-design.md sek 4.3
+
+species:
+  Q207838:
+    # Swedish Wikipedia article for Entita is only ~14 words (below pipeline's
+    # SPARSE_WORD_THRESHOLD of 20), so Claude was never invoked for sv. English
+    # description is intact. Accept missing sv until svwiki article expands or
+    # we add a curated description manually.
+    description_accept_missing: [sv]

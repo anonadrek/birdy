@@ -1,0 +1,125 @@
+id: Q215211
+scientific_name: Poecile montanus
+taxonomy:
+  family: Paridae
+  family_sv: Mesfåglar
+  genus: Poecile
+  ioc_order: Passeriformes
+names:
+  sv: talltita
+  en: Willow Tit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Talltita
+
+
+    Talltita är en liten mes som är vida spridd över Europa och norra Asien, med undantag
+    för sydvästra delarna av kontinenten. Fågeln är mycket svår att skilja från sin
+    närbesläktade släkting gransisen, och båda arterna är ofta mycket likartade i
+    sitt utseende.
+
+
+    Talltitan föredrar att vistas i mindre skogar med björk och asp, där den gärna
+    söker föda bland grenarna och på marken. Under häckningsperioden gräver den själv
+    sitt eget hål i mjuka stubbar eller döda träd, vilket skiljer den från många andra
+    mesarter. Arten är relativt dold till sin natur och kan vara svår att få syn på
+    trots sitt begränsade utbredningsområde.
+
+
+    Fågeln är främst iakttagbar i norra och centrala områden med lämplig habitat,
+    framför allt i fuktig skogsmark.'
+  en: '# Willow Tit
+
+
+    The willow tit is a small songbird with distinctive grey-brown and off-white plumage,
+    marked by a black cap and bib. It closely resembles the marsh tit but shows a
+    preference for coniferous forests, allowing it to breed farther north across temperate
+    and subarctic regions of Europe and the Palearctic. Most populations are resident
+    year-round, with birds remaining in their territories rather than migrating seasonally.
+
+
+    This species is well-adapted to life in conifers and other wooded habitats where
+    it forages for insects and seeds. It is a common and widespread breeder throughout
+    its range, making it a familiar bird to observers in suitable woodland environments.
+    The willow tit''s ability to thrive in northern forests reflects its ecological
+    specialization compared to related species, establishing it as an important member
+    of boreal and temperate woodland bird communities.'
+migration:
+  sv: Talltita är en året runt närvarande art i Skandinavien och övriga Nordeuropa.
+    Arten är stationär och genomför ingen längre migration, utan övervintar inom sitt
+    utbredningsområde. Talltitan förekommer ganzåret i barr- och blandskogar från
+    låglanden upp till bergsregioner. Under hösten och vintern kan lokala rörelser
+    förekomma när fåglarna söker föda, men arten återvänder till sina revir för häckningen.
+    Populationen i Norden är därför relativt stabil under alla årstider.
+  en: '# Willow Tit in Northern Europe
+
+
+    The Willow Tit is a resident species throughout Scandinavia and northern Europe,
+    with most populations remaining year-round in their breeding territories. Unlike
+    many other northern passerines, the Willow Tit does not undertake significant
+    migration, instead staying put through winter months. This non-migratory behavior
+    is facilitated by the species'' adaptation to coniferous forests, where it can
+    find sufficient food resources during harsh winters. Some populations may show
+    limited local movements in severe winters, but these are not true migrations.
+    The species is a widespread and common breeder across temperate and subarctic
+    Europe, establishing permanent or semi-permanent territories that birds defend
+    throughout the year.'
+image_refs:
+- role: hero
+  path: Q215211/hero.jpg
+  width: 1739
+  height: 2400
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:John_Gerrard_Keulemans" class="extiw"
+    title="w:en:John Gerrard Keulemans"><span title="Dutch bird artist (1842-1912)">John
+    Gerrard Keulemans</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Poecile montanus songarus &
+    Poecile montanus affinis & Poecile superciliosus 1889.jpg
+  commons_filename: Poecile montanus songarus & Poecile montanus affinis & Poecile
+    superciliosus 1889.jpg
+- role: secondary
+  path: Q215211/secondary-1.jpg
+  width: 1800
+  height: 1180
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:John_Gerrard_Keulemans" class="extiw"
+    title="w:en:John Gerrard Keulemans"><span title="Dutch bird artist (1842-1912)">John
+    Gerrard Keulemans</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Poecile montanus affinis 1889.jpg
+  commons_filename: Poecile montanus affinis 1889.jpg
+- role: secondary
+  path: Q215211/secondary-2.jpg
+  width: 1800
+  height: 1352
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Poecile Montanus Kittilä 20220310
+    02.jpg
+  commons_filename: Poecile Montanus Kittilä 20220310 02.jpg
+review_status: approved
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+generated_at: '2026-05-04T10:00:57.015365+00:00'
+sources:
+  wikipedia_sv_revision: '56065327'
+  wikipedia_en_revision: '1325855671'
+  claude_model: claude-haiku-4-5-20251001

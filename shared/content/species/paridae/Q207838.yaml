@@ -1,0 +1,103 @@
+id: Q207838
+scientific_name: Poecile palustris
+taxonomy:
+  family: Paridae
+  family_sv: Mesfåglar
+  genus: Poecile
+  ioc_order: Passeriformes
+names:
+  sv: entita
+  en: Marsh Tit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Marsh Tit
+
+
+    The marsh tit is a small Eurasian songbird measuring around 12 cm long and weighing
+    just 12 grams. It is easily identified by its distinctive black crown and nape
+    contrasting with pale cheeks, combined with a brown back and greyish-brown wings
+    and tail. This compact bird belongs to the tit family and is closely related to
+    several other Poecile species, including the willow tit.
+
+
+    The marsh tit can be challenging to distinguish from the willow tit, particularly
+    in northern regions where the two species are strikingly similar in appearance.
+    Historically, they were not recognized as separate species until 1897. Between
+    8 and 11 subspecies are recognized across its Eurasian range, with plumage varying
+    slightly between populations.
+
+
+    The species inhabits deciduous and mixed woodlands, reed beds, and scrubby areas
+    where it forages actively among vegetation. It shares similar behaviour and ecological
+    preferences with its close relatives, though specific details about its call and
+    feeding habits would provide additional insight into distinguishing it from congeners
+    in the field.'
+migration:
+  sv: ''
+  en: '# Marsh Tit in Northern Europe
+
+
+    The Marsh Tit is a year-round resident throughout much of Scandinavia and Northern
+    Europe, with populations showing limited migration. Birds in northern regions
+    may undertake partial migrations during harsh winters, moving southward to milder
+    areas, while populations in southern Scandinavia tend to be largely sedentary.
+    The species favors wetland habitats with dense vegetation, where it remains present
+    throughout the year, though local movements can occur in response to food availability
+    and winter severity. Northern populations may show increased movement between
+    October and March.'
+image_refs:
+- role: hero
+  path: Q207838/hero.jpg
+  width: 2011
+  height: 2400
+  license: CC BY 2.0
+  author: blondinrikard
+  source_url: https://commons.wikimedia.org/wiki/File:Marsh tit, Poecile palustris,
+    Entita.jpg
+  commons_filename: Marsh tit, Poecile palustris, Entita.jpg
+- role: secondary
+  path: Q207838/secondary-1.jpg
+  width: 1800
+  height: 1448
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Marsh Tit Poecile palustris
+    (51977059969).jpg
+  commons_filename: Marsh Tit Poecile palustris (51977059969).jpg
+- role: secondary
+  path: Q207838/secondary-2.jpg
+  width: 1800
+  height: 1389
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Marsh Tit Poecile palustris
+    (51977059509).jpg
+  commons_filename: Marsh Tit Poecile palustris (51977059509).jpg
+review_status: approved
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+generated_at: '2026-05-04T10:00:31.878926+00:00'
+sources:
+  wikipedia_sv_revision: '58519788'
+  wikipedia_en_revision: '1325332649'
+  claude_model: claude-haiku-4-5-20251001

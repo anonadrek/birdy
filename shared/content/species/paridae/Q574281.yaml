@@ -1,0 +1,118 @@
+id: Q574281
+scientific_name: Poecile lugubris
+taxonomy:
+  family: Paridae
+  family_sv: Mesfåglar
+  genus: Poecile
+  ioc_order: Passeriformes
+names:
+  sv: balkanmes
+  en: Sombre Tit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Balkanmes
+
+
+    Balkanmes är en medlem av mesfågelfamiljen som förekommer i sydöstra Europa och
+    sydvästra Asien. Den är anpassad till varierade habitat och återfinns i bergsskogar,
+    buskmarker, olivlundar och fruktträdgårdar. Arten är något mindre utpräglad än
+    många andra mesar när det gäller ljud och beteende – den är relativt tystlåten
+    och tillbakadragen jämfört med sina släktingar.
+
+
+    Som medlem av mesfamiljen är balkanmes en liten, aktiv fågel. Den födosöker ofta
+    metodiskt i växtligheten och är dock inte lika högljudd eller iögonenfallande
+    som många andra mesfåglar. Denna större diskrethet gör den mindre påtaglig än
+    exempelvis blåmes eller större mes, trots att den är närvarande i sitt utbredningsområde.
+
+
+    IUCN klassificerar balkanmes som livskraftig, vilket indikerar att populationen
+    är stabil och arten inte står inför några allvarliga hotkällor för närvarande.'
+  en: '# Sombre Tit
+
+
+    The Sombre Tit is a small passerine belonging to the tit family, closely related
+    to other chickadees and tits found across Europe and Asia. This species inhabits
+    the southeastern parts of Europe and extends into southwest Asia, where it occupies
+    mixed and deciduous woodlands, particularly in mountainous regions.
+
+
+    In appearance, the Sombre Tit resembles other members of its family, though it
+    displays subtle characteristics that distinguish it from related species. Like
+    typical tits, it is compact and active, moving through trees with agility as it
+    forages for insects and seeds.
+
+
+    The species is generally quiet compared to some of its relatives, though it does
+    produce various calls used for communication with other members of its species.
+    It is typically seen in small groups, especially outside the breeding season,
+    gleaning food from bark and foliage. The Sombre Tit remains relatively inconspicuous
+    in its preferred habitats, making it a species that requires patience and careful
+    observation to locate and study in the field.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains only basic taxonomic and geographic information
+    about the Sombre Tit, stating that it is found in southeast Europe and southwest
+    Asia. There is no information regarding its occurrence in Scandinavia/Northern
+    Europe, migration patterns, seasonal movements, overwintering behavior, or arrival
+    months. To provide accurate migration information for this species in northern
+    European contexts, additional sources with detailed distributional and phenological
+    data would be needed.'
+image_refs:
+- role: hero
+  path: Q574281/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Aporia.j&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Aporia.j (page does not exist)">Aporia.j</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Poecile lugubris, Vlasinska
+    visoravan i Vlasinsko jezero, Srbija (147).jpg
+  commons_filename: Poecile lugubris, Vlasinska visoravan i Vlasinsko jezero, Srbija
+    (147).jpg
+- role: secondary
+  path: Q574281/secondary-1.jpg
+  width: 1800
+  height: 1336
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nikola_Veljkovi%C4%87&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Nikola Veljković (page does not exist)">Nikola Veljković</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Senica šljivarka (Poecile lugubris)
+    Sombre Tit.jpg
+  commons_filename: Senica šljivarka (Poecile lugubris) Sombre Tit.jpg
+review_status: approved
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+generated_at: '2026-05-04T10:01:05.041302+00:00'
+sources:
+  wikipedia_sv_revision: '58368879'
+  wikipedia_en_revision: '1332056727'
+  claude_model: claude-haiku-4-5-20251001

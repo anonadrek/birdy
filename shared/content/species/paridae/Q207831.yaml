@@ -1,0 +1,142 @@
+id: Q207831
+scientific_name: Lophophanes cristatus
+taxonomy:
+  family: Paridae
+  family_sv: Mesfåglar
+  genus: Lophophanes
+  ioc_order: Passeriformes
+names:
+  sv: tofsmes
+  en: Crested Tit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tofsmes
+
+
+    Tofsmes är en liten msfågel som kännetecknas av sin karaktäristiska tofs på huvudet.
+    Den är gråbrun på ovansidan med vit undersida och har en svartvit ansiktsmask
+    som gör den lätt att identifiera. Toften ger fågeln sitt namn och är särskilt
+    framträdande när den är uppretad.
+
+
+    Tofsmes förekommer huvudsakligen i barrskog över större delen av Europa, från
+    västra delarna österut till Uralbergen. I södra delen av sitt utbredningsområde,
+    såsom i Frankrike och på Iberiska halvön, bor det istället i lövskog. Arten är
+    en aktiv, liten fågel som gärna ses krypa runt i trädkronor på jakt efter insekter
+    och frön.
+
+
+    Tofsmes är känd för sitt karakteristiska läte – en väsande, raspig stämma med
+    tjattrande toner som hörs året runt. Arten är inte särskilt rädd för människor
+    och besöker gärna fågelbord under vinterhalvåret. Artens globala bestånd anses
+    vara livskraftigt och stabilt.'
+  en: '# Crested Tit
+
+
+    The Crested Tit is a small passerine of the tit family, easily identified by the
+    distinctive pointed crest on its head that it raises when alarmed or excited.
+    It inhabits coniferous forests across central and northern Europe, with populations
+    also found in deciduous woodlands in France and Iberian regions. The species is
+    a permanent resident throughout most of its range, with individuals showing strong
+    site fidelity and rarely venturing far from established territories.
+
+
+    These birds favour mature pine and spruce forests where they forage methodically
+    through branches and foliage, searching for insects and seeds. It is sociable
+    outside the breeding season, often joining mixed feeding flocks with other tit
+    species. The call is distinctive—a sharp, trilled "chi-chi-chi" or rolling "tsirrrr"
+    that carries well through woodland. During breeding season, it nests in cavities
+    within trees, often enlarging the holes itself.
+
+
+    The Crested Tit remains abundant and stable throughout its range, showing a preference
+    for undisturbed coniferous habitat. It is sedentary in most regions, with few
+    individuals undertaking significant movements, making it a reliable year-round
+    woodland resident where suitable forests exist.'
+migration:
+  sv: '# Tofsmes - Förekomst i Skandinavien och Nordeuropa
+
+
+    Tofsmes är en året runt bosatt art i Skandinavien och Nordeuropa. Den är en standpojke
+    som inte genomför större migrationer, utan återfinns permanent i sina häbitats
+    genom alla årstider. Arten förekommer huvudsakligen i barrskogs- och blandskogsmiljöer
+    där den är väl anpassad för de kalla nordiska vintrama. Populationen är relativt
+    stabil och etablerad inom sitt utbredningsområde, utan märkbara säsongsvariationer
+    i förekomst inom regionen.
+
+
+    Arten ses året om i samma områden där den häckar, vilket gör den till en konstant
+    och väl etablerad del av Skandinaviens fågelfauna. Tofsmes är därför inte beroende
+    av långa migrationsmönster för att övervinna vinterperioden, utan anpassar sig
+    väl till de nordiska klimatförhållandena.'
+  en: '# Crested Tit – Occurrence in Scandinavia/Northern Europe
+
+
+    The Crested Tit is a year-round resident throughout much of Scandinavia and northern
+    Europe, showing strong site fidelity with minimal migratory tendency. Populations
+    inhabiting coniferous and mixed forests from central Scandinavia northward remain
+    largely sedentary, with most individuals not undertaking seasonal migrations.
+    While the species is a permanent resident across its core range, occasional winter
+    movements or dispersal of younger birds may occur in response to food availability,
+    though these movements are not regular migrations. The species is present year-round
+    in suitable coniferous forest habitats, making it a reliable component of Scandinavian
+    winter bird communities.'
+image_refs:
+- role: hero
+  path: Q207831/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Gon%C3%A7alo_Vila_Ferraz&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Gonçalo Vila Ferraz (page does not exist)">Gonçalo Vila
+    Ferraz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lophophanes cristatus, Parque
+    Biológico de Gaia, Porto.jpg
+  commons_filename: Lophophanes cristatus, Parque Biológico de Gaia, Porto.jpg
+- role: secondary
+  path: Q207831/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lophophanes cristatus Gran Paradiso
+    20190908.jpg
+  commons_filename: Lophophanes cristatus Gran Paradiso 20190908.jpg
+- role: secondary
+  path: Q207831/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Matvei_Kiselev" title="User:Matvei
+    Kiselev">Matvei Kiselev</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lophophanes cristatus. Siverskiy
+    (3).jpg
+  commons_filename: Lophophanes cristatus. Siverskiy (3).jpg
+review_status: approved
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+generated_at: '2026-05-04T10:00:44.831280+00:00'
+sources:
+  wikipedia_sv_revision: '56667392'
+  wikipedia_en_revision: '1334213416'
+  claude_model: claude-haiku-4-5-20251001

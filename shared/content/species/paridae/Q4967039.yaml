@@ -1,0 +1,99 @@
+id: Q4967039
+scientific_name: Poecile hyrcanus
+taxonomy:
+  family: Paridae
+  family_sv: Mesfåglar
+  genus: Poecile
+  ioc_order: Passeriformes
+names:
+  sv: hyrkanmes
+  en: Caspian Tit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Hyrkanmes
+
+
+    Hyrkanmes är en liten mes inom familjen mesar som urskiljer sig från närbesläktade
+    arter genom sitt utseende, läten och genetisk bakgrund. Den är närmare släkt med
+    arter som talltita och entita än med balkanmesen, vilken den tidigare klassificerades
+    som underart till.
+
+
+    Arten förekommer endast i berglövskogar i begränsade områden i norra Iran och
+    närliggande Azerbajdzjan, där den är anpassad till sin speciella bergiga miljö.
+    Det är en fågel för den som söker efter mindre utforskade arter i sitt område.'
+  en: '# Caspian Tit
+
+
+    The Caspian tit is a small passerine bird belonging to the tit family. It is one
+    of the most range-restricted tit species, with its population concentrated in
+    the deciduous mountain forests of a specific region, with only limited extension
+    beyond its core range. This restricted distribution makes it a particularly noteworthy
+    species among tit species worldwide.
+
+
+    The bird inhabits deciduous mountain forests in its native range. Its specialized
+    habitat preferences and limited geographic range mean it is encountered only in
+    a specific forest ecosystem. The species'' dependence on these particular forest
+    conditions has shaped its population distribution and makes it an important indicator
+    of forest health in its region.
+
+
+    Due to its highly restricted range and specialized habitat requirements, the Caspian
+    tit remains relatively poorly known compared to more widespread tit species. Its
+    conservation status reflects the significance of protecting the deciduous mountain
+    forests upon which it depends for survival.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    The provided source text contains no information about the species'' occurrence
+    in Scandinavia/Northern Europe or any migration patterns throughout the year.
+    The text only describes that Caspian Tit occurs in mountain forests in northern
+    Iran and adjacent Azerbaijan, with no mention of northern European distribution
+    or seasonal movements.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides no information about the Caspian Tit''s occurrence in
+    Scandinavia or Northern Europe, seasonal movements, migration patterns, or wintering
+    behavior. The species is described only as breeding in the Hyrcanian forests of
+    Iran and Azerbaijan, with no reference to northern European distribution or migratory
+    tendencies.'
+image_refs:
+- role: hero
+  path: Q4967039/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/6924064">James
+    Eaton</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Poecile hyrcanus 351030492.jpg
+  commons_filename: Poecile hyrcanus 351030492.jpg
+review_status: approved
+review_notes: 'auto-approved (paridae backfill 2026-05-04): wikidata-sourced sv name + ranked Commons hero, no manual review checkpoint'
+generated_at: '2026-05-04T10:02:07.005965+00:00'
+sources:
+  wikipedia_sv_revision: '58595068'
+  wikipedia_en_revision: '1337161560'
+  claude_model: claude-haiku-4-5-20251001
