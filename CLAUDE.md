@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a ✅ klar** (`v0.2.0a-pipeline`). **Plan 2b PAUSAD** vid 97/700 — paridae +8 (`f8cc17f`), accipitridae +38 (`1ed1895`), acrocephalidae +19 (`3609b98`), alaudidae +27 (`d945e1f`). Pipeline-recovery-bug fixad i `1bac05d`; non-image-extension reject + gsrlimit=50 i `c803ed1`. **Plan 3 (Encyclopedia) är aktiv workstream** — design-spec klar (`docs/superpowers/specs/2026-05-04-encyclopedia-design.md`), nästa steg är `superpowers:writing-plans` för implementations-plan. Plan 2b återupptas (anatidae) efter Plan 3 ships.
+**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2a (pipeline + walking skeleton) ✅ klar (`v0.2.0a-pipeline`). Plan 2b (family-by-family backfill) **PAUSAD** vid 97/700 (alaudidae `d945e1f`). **Plan 3 (Encyclopedia) ✅ klar** — alla 11 tasks committade, milstolpe `v0.3.0-encyclopedia`. Bottom-nav-skelett (4 flikar), encyclopedia-browse med sök + filter-bottom-sheet, species-profile med collapsing toolbar + sparse-data-fallbacks + Coil-bilder, i18n via compose-resources (sv + en). **Plan 2b återupptas nu (nästa familj alfabetiskt = anatidae).** Device-verifiering av Plan 3 är pending — telefon var inte ansluten vid taggning.
 
 ## Var hittar du saker
 
@@ -28,7 +28,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ Klar (`v0.1.0-foundation`) |
 | 2a | Content pipeline + walking skeleton (5 arter) | ✅ Klar (`v0.2.0a-pipeline`) |
 | 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ PAUSAD vid 97/700 (alaudidae `d945e1f`); återupptas efter Plan 3 |
-| 3 | Encyclopedia (browse + species profile) | 🟢 ACTIVE — design-spec klar (`docs/superpowers/specs/2026-05-04-encyclopedia-design.md`); nästa: writing-plans |
+| 3 | Encyclopedia (browse + species profile) | ✅ Klar (`v0.3.0-encyclopedia`); device-verifiering pending |
 | 4 | ML & Camera (TFLite + CameraX) | |
 | 5 | Diary & Gamification | |
 | 6 | i18n, polish, Play Store-release | |
@@ -189,27 +189,54 @@ Användaren har sagt: **"Don't ask me for permission to run anything."** Det bet
 - Det betyder INTE att ignorera blockerare som kräver fysisk åtkomst (telefon, emulator) eller tredjepartsbeslut (CI-resultat) — där rapporterar man status och väntar.
 - Det betyder INTE heller att hoppa över granskning. Två-stegs-review (spec → kvalitet) körs alltid mellan tasks per `subagent-driven-development`.
 
-## Plan 3 status (BRAINSTORMING KLAR — DESIGN-SPEC SKRIVEN)
+## Plan 3 status (KLAR)
 
-**Spec:** `docs/superpowers/specs/2026-05-04-encyclopedia-design.md` (utkast 2026-05-04, väntar på användargranskning).
+Plan: `docs/superpowers/plans/2026-05-04-v1-03-encyclopedia.md`. Spec: `docs/superpowers/specs/2026-05-04-encyclopedia-design.md`. Alla 11 tasks committade. Milstolpe: `v0.3.0-encyclopedia`.
 
-**Scope (låst):** Encyclopedia (browse) + SpeciesProfileScreen + bottom-nav-skelett med 3 stubbade flikar (Skanna, Dagbok, Märken).
+| # | Task | Commit |
+|---|---|---|
+| 1 | Foundation deps + commonTest + AppGraph | (Plan 3 inline-batch) |
+| 2 | Nav graph + bottom-nav + 3 stub screens (Skanna, Dagbok, Märken) | inline-batch |
+| 3 | EncyclopediaScreen list-only med abundance-gruppering | inline-batch |
+| 4 | Utökat `search()` för regions/activeInMonth + scientific-name-sök | inline-batch |
+| 5 | Encyclopedia-sökfält (debounced 250ms) + ViewModel-test | inline-batch |
+| 6 | FilterBottomSheet med chip-grupper + count-pill | inline-batch |
+| 7 | SpeciesProfileScreen med collapsing toolbar (LargeTopAppBar) | inline-batch |
+| 8 | SectionBlock-helper + sparse-data inline-rendering | inline-batch |
+| 9 | HeroImage-komponent + Coil 3-wiring + glyph-fallback | inline-batch |
+| 10 | i18n — alla UI-strängar via `Res.string.*` (sv + en) | `4e4afdf` |
+| 11 | Polish + CI + tag | (denna commit) |
 
-**Tekniska beslut (låsta):**
-- Browse-default: lista grupperad allmän/övriga med sökfält + filter-knapp som öppnar bottom sheet
-- Profile-layout: collapsing toolbar (Material 3 LargeTopAppBar)
-- Sparse-data: sektioner behålls alltid, tomma renderas inline ("Beskrivning kommer.")
-- Navigation: Compose Multiplatform Navigation 2.x med `@Serializable` type-safe routes
-- State: ViewModel + StateFlow via `lifecycle-viewmodel-compose`
-- Image: Coil 3 mot bundlade `composeResources/files/images/`
-- i18n: `compose-multiplatform-resources` med `strings.xml` (sv) + `values-en/strings.xml` (en)
-- DI: manuell constructor-injection via `AppGraph`-klass
+**Tekniska beslut (alla låsta + implementerade):**
 
-**Self-review-fixes inom spec'n (8 inline):** kvarvarande `search()`-implementation matchar inte alla `SpeciesFilter`-fält (regions/månad ignoreras, scientific name ej sökt) → Plan 3 Task 4 utökar `SqlDelightSpeciesRepository.search()` + `SpeciesName.sq` för att honorera dessa.
+- Browse: lista grupperad i `Allmänna i Sverige` (Locale.SV pinned) / `Övriga (n)` med sökfält + filter-knapp som öppnar `ModalBottomSheet`.
+- Profile: `LargeTopAppBar` med `exitUntilCollapsedScrollBehavior`, FactRow (3 chips), 3 SectionBlock (BESKRIVNING/FLYTTNING/FOTOGRAFIER).
+- Sparse-data: sektioner behålls alltid, tomma renderas inline med italic-text + 0.7-alpha sand-creme-box.
+- Navigation: Compose Multiplatform Navigation 2.8.0-alpha10 med `@Serializable` type-safe routes (`AppRoute.Encyclopedia` / `AppRoute.SpeciesProfile(speciesId: String)` / 3 stub-routes).
+- State: ViewModel + StateFlow via `lifecycle-viewmodel-compose` (KMP-fork 2.8.4).
+- Image: Coil 3.0.4 (`AsyncImage` + `Res.getUri("files/images/<QID>/<slot>.jpg")`); fallback = linear-gradient + 📷-glyph.
+- i18n: `composeResources/values/strings.xml` (sv) + `values-en/strings.xml` (en), 25+ strängar inkl. `filter_apply` med `%1$d`-formatter.
+- DI: manuell constructor-injection via `AppGraph(repository, defaultLocale = Locale.SV)`-klass.
 
-**Milstolpe-tag (planerad):** `v0.3.0-encyclopedia`.
+**Etablerade arkitektur-mönster (Plan 4+ kommer återanvända):**
 
-**Nästa steg:** användaren granskar spec'n → invokera `superpowers:writing-plans` för att producera `docs/superpowers/plans/2026-05-04-v1-03-encyclopedia.md` med ~11 tasks.
+- **`FakeSpeciesRepository` test-helper** under `composeApp/src/commonTest/.../testing/` — Turbine + UnconfinedTestDispatcher utan setup-cost-duplikering. Plan 4 (ML) kan använda samma mönster för `FakeMlClassifier`.
+- **AppGraph-DI:** zero-overhead, type-safe, testbar utan extra ramverk. Skala upp till Plan 5 (Diary) med `AppGraph.diaryViewModel(date)` osv.
+- **`stickyHeader { stringResource(...) }`-pattern:** `stickyHeader` kör i LazyListScope (icke-Composable), så Composable-anrop måste ligga *inuti* lambdan, inte före.
+- **Resource-package är `birdy_bird_scanner.composeapp.generated.resources`** (inte `org.jetbrains.compose.resources.Res`) — generated path matchar artifact-namnet via Compose-resource-mangling.
+- **`AsyncImage` + `Res.getUri(...)`** är förstavalet för bundlade composeResources-bilder. KEEP_ON_DISK kvar mellan recompositions; pre-loading ej nödvändig för 36dp thumbnails eller 64dp profile-stripen.
+- **Material 3 `LargeTopAppBar` + `nestedScroll(scrollBehavior.nestedScrollConnection)` på Scaffold** är minsta wiringen för collapsing-toolbar. Annars triggas inte collapsen.
+
+**Avvikelser från plan / scope-creep upptäckta + accepterade:**
+
+- Plan beskrev 3 stub-screens med samma layout — användes som-är. Strängar `stub_*_title/body` adderades extra för att låta titel + body vara separat lokaliserbara (plan hade inte titel-sträng explicit).
+- `EncyclopediaViewModel`-test för filter-propagation behövde `advanceTimeBy(300)` istället för `awaitItem()` eftersom StateFlow dedupes equal `Loaded`-states (debounce-pipeline emitterar samma data, ingen ny event). Lärdom: ViewModel-tester med StateFlow + flatMapLatest kräver tids-baserad assertion när output kan vara identisk.
+- `SpeciesProfileViewModelTest` tog bort initial-Loading-assertion eftersom UnconfinedTestDispatcher kör `repo.getById()`-flow synkront → Loading skrivs över innan Turbine subskriberar. Trade-off: `Loading`-staten är inte unit-testad, men den är trivial (StateFlow.stateIn `initialValue`) och dyker upp i device-verifiering ändå.
+
+**Pending efter taggning:**
+
+- ⏳ **Device-verifiering på SM-S918B** — telefon var inte ansluten vid Task 11. Plan 11 Step 2 specificerar 7 screenshots (bottom-nav, list, search, filter, profile-talgoxe, profile-sparse, profile-collapsed). Mönstret från Plan 2a (`b9b85bb`): screenshots committas i en separat efter-tag commit utan att blockera milstolpe-taggen.
+- ⏳ **Plan 4 (ML & Camera)** kan inte starta förrän device-verifieringen är klar och ev. UI-buggar är fixade. Plan 2b's anatidae-batch är nästa workstream som *kan* starta utan device.
 
 ## Plan 2a status (KLAR)
 
@@ -314,9 +341,9 @@ d4e3926 docs(claude): update Task 15 commit SHA in CLAUDE.md
 
 **Nästa:** Plan 2b — content backfill family-by-family. Se `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Adressera Task 8 follow-ups (I1, I2, I4, I5) + Plan 2b prerequisites (P1705-gap, few-shot prompts) innan `--all` körs.
 
-## Plan 2b status (PAUSAD)
+## Plan 2b status (ÅTERUPPTAGEN)
 
-**Pausad 2026-05-04 vid 97/700.** Plan 3 (Encyclopedia) är aktiv workstream — se design-spec `docs/superpowers/specs/2026-05-04-encyclopedia-design.md`. Plan 2b återupptas (nästa familj alfabetiskt = anatidae) när Plan 3 har shippats. Resterande ~600 arter trickle-in blockerar inte Plan 3 eftersom 97 arter > tillräckligt för UI-iteration mot riktig data.
+**Pausad 2026-05-04 vid 97/700, återupptagen efter `v0.3.0-encyclopedia` 2026-05-04.** Plan 3 ✅ klar — se "Plan 3 status (KLAR)" ovan. Nästa familj alfabetiskt = anatidae. Ingen device-verifiering behövs för 2b-arbetet (det är pure-data-pipeline + validator + Gradle-build).
 
 
 
