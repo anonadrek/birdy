@@ -21,6 +21,7 @@ from rich.progress import (
 from .cache import Cache
 from .claude_summarizer import ClaudeSummarizer, real_anthropic_client
 from .cost import CostTracker
+from .hero_review import render_hero_review
 from .images import ImageProcessor, ImageSelector, rank_candidates
 from .wikidata import WikidataClient
 from .wikipedia import WikipediaClient
@@ -176,6 +177,14 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
             q_id=q_id, scientific_name=scientific_name, force=ctx.options.force
         )
         ranked = rank_candidates(candidates)[:3]
+        if not ctx.options.dry_run and candidates:
+            render_hero_review(
+                q_id=q_id,
+                scientific_name=scientific_name,
+                common_sv=common_sv or "",
+                candidates=ranked + [c for c in candidates if c not in ranked],
+                out_path=ctx.pipeline_root / "hero_review" / f"{q_id}.html",
+            )
         for idx, candidate in enumerate(ranked):
             role = "hero" if idx == 0 else "secondary"
             filename = "hero.jpg" if idx == 0 else f"secondary-{idx}.jpg"
@@ -204,9 +213,11 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
                 )
             )
 
-    # vp_status from VP11: H = breeding in WP (default allmän), F = migratory,
-    # h/(H) = unclear/non-established → ovanlig.
-    abundance = "allmän" if listed.get("vp_status") in {"H", "F"} else "ovanlig"
+    # VP11 vp_status (H = confirmed breeding) is a poor proxy for "common in
+    # Sweden" — many H-coded species are local rarities (e.g. Lappmes). Default
+    # to "ovanlig"; promote per-species via `abundance:` in species_list.yaml
+    # after deliberate review.
+    abundance = listed.get("abundance") or "ovanlig"
 
     season = _default_season()
     regions = ["SE", "NO", "FI", "DK", "DE"]

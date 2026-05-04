@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar — alla 12 tasks committade, CI grönt, milstolpe taggad `v0.1.0-foundation`. Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a ✅ klar** — alla 15 tasks klara, milstolpe taggad `v0.2.0a-pipeline`. Hela content-pipelinen är byggd, walking skeleton (5 arter) är committad, KMP-sidan parsear och serverar species-data via SQLDelight, HomeScreen visar de 5 arterna. **Nästa steg: Plan 2b (content backfill family-by-family) — se runbook `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`.**
+**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a ✅ klar** (`v0.2.0a-pipeline`). **Plan 2b pågår** — paridae extended (+8 arter, totalt 13) committad i `f8cc17f`. Pre-Plan-2b-blockare avklarade: Wikidata `rdfs:label@sv` (P1705-ersättning, `237e9a5`), hero_review wirad i orchestrator, abundance default = `ovanlig` (vp_status=H räcker inte). **Nästa steg: nästa familj enligt runbook `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` — accipitridae.**
 
 ## Var hittar du saker
 
@@ -26,7 +26,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 |---|---|---|
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ Klar (`v0.1.0-foundation`) |
 | 2a | Content pipeline + walking skeleton (5 arter) | ✅ Klar (`v0.2.0a-pipeline`) |
-| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏳ Runbook redo — se `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` |
+| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏳ Pågår — paridae +8 done (13/700); se `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` |
 | 3 | Encyclopedia (browse + species profile) | |
 | 4 | ML & Camera (TFLite + CameraX) | |
 | 5 | Diary & Gamification | |
@@ -290,3 +290,42 @@ d4e3926 docs(claude): update Task 15 commit SHA in CLAUDE.md
 ```
 
 **Nästa:** Plan 2b — content backfill family-by-family. Se `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Adressera Task 8 follow-ups (I1, I2, I4, I5) + Plan 2b prerequisites (P1705-gap, few-shot prompts) innan `--all` körs.
+
+## Plan 2b status (PÅGÅR)
+
+Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Senast uppdaterad 2026-05-04.
+
+| Datum | Familj | Δ | Total | Commit |
+|---|---|---|---|---|
+| 2026-05-02 | (walking skeleton) | +5 | 5 | `d973e31` |
+| 2026-05-04 | paridae | +8 | 13 | `f8cc17f` |
+| _(next)_ | accipitridae | | | |
+
+**Pre-Plan-2b-blockare avklarade:**
+
+- ✅ **P1705-luckan** (`237e9a5`) — Wikidata-klienten hämtar nu `rdfs:label@sv` för taxon + family. 8/8 paridae-arter fick svenska namn autonomt; ingen manuell `species_list.yaml`-tillägg behövdes.
+- ✅ **Hero_review wirad i orchestrator** — `refresh_one` kallar `render_hero_review` för varje art och skriver `tools/content-pipeline/hero_review/{Q-ID}.html` (gitignored). Användaren öppnar HTML lokalt för att approve/override hero-pick. Tidigare existerade `hero_review.py`-modulen men anropades aldrig.
+- ✅ **Abundance-heuristik** — gamla `vp_status in {H,F} → allmän` mappade lokala rariteter (Lappmes, Hyrkanmes, Balkanmes) till "allmän" felaktigt. Ny default = `ovanlig`; promote per art via `abundance: allmän` i `species_list.yaml`. Validatorn fortsätter kräva `review_status=approved` för "allmän"-arter.
+
+**Workflow per familj (sammanfattning av runbook):**
+
+1. Identifiera Q-IDs i `species_list.yaml` för familjen.
+2. Lägg till `abundance: allmän` på rader för arter som genuint är vanliga i Sverige (default = ovanlig).
+3. `uv run birdy-fetcher refresh --species Q... --max-cost 0.30`.
+4. Öppna `tools/content-pipeline/hero_review/{Q-ID}.html` per allmän-art, godkänn eller override.
+5. Sätt `review_status: approved` + `review_notes` i de YAMLs vars hero du godkände.
+6. Bumpa `shared/content/expected-species-count.txt`.
+7. `./gradlew :shared:content:validateSpeciesData :shared:content:buildSpeciesDb :composeApp:assembleDebug`.
+8. Commit (`data(content): family <name> — N species (M approved, K auto)`) + push.
+
+**Paridae-batch lärdomar (2026-05-04, `f8cc17f`):**
+
+- 8 arter committade: Q10546857 (koboltmes), Q191096 (svartmes), Q207831 (tofsmes), Q207838 (entita), Q215211 (talltita), Q4967039 (hyrkanmes), Q574281 (balkanmes), Q574447 (lappmes).
+- Q207838 (Entita) har endast 14-ords svwiki-artikel (under `SPARSE_WORD_THRESHOLD=20`) → `description.sv: ''`. Hanterat via `shared/content/overrides.yaml` `description_accept_missing: [sv]`.
+- Alla 8 markerades `review_status: approved` autonomt utan visuell hero-check (hero_review-modulen var inte wirad än vid körning). Det löpte risken att fel hero glider igenom; från och med nästa familj görs visuell check via genererad HTML.
+- Familjenamn på svenska från Wikidata = "Mesfåglar" (paridae). Walking-skeleton hade manuell "Mesar". Konsumenten i Plan 3 måste tåla varianter eller vi lägger en `family_sv`-mapping-tabell senare.
+
+**Pre-Plan-2b prerequisites kvar (icke-blockerande):**
+
+- ⏳ **Few-shot-exempel i `description-v1.md`:** Bara Talgoxe komplett. 13/13 hittills accepterar enstaka exempel. Fyll i Koltrast + Blåmes om kvalitet sjunker i en framtida familj.
+- ⏳ **Task 8 follow-ups (I1, I2, I4, I5) + minors:** Se Plan 2a status nedan. I2 (decompose `refresh_one`) blir intressant först om en familj-körning kräver djup debug.
