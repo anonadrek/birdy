@@ -87,3 +87,34 @@ val validateSpeciesData by tasks.registering(JavaExec::class) {
 tasks.named("check") {
     dependsOn(validateSpeciesData)
 }
+
+val composeAppFilesDir =
+    project(":composeApp").file("src/commonMain/composeResources/files")
+val targetDb = composeAppFilesDir.resolve("species.db")
+val targetImages = composeAppFilesDir.resolve("images")
+
+val buildSpeciesDb by tasks.registering(JavaExec::class) {
+    group = "build"
+    description = "Build species.db from committed YAML and copy images to composeApp assets."
+    dependsOn(validateSpeciesData)
+    dependsOn("jvmJar")
+    classpath =
+        files(tasks.named("jvmJar")) +
+        configurations.getByName("jvmRuntimeClasspath")
+    mainClass.set("se.birdy.content.build.BuildMain")
+    args =
+        listOf(
+            speciesDir.absolutePath,
+            imagesDir.absolutePath,
+            targetDb.absolutePath,
+            targetImages.absolutePath,
+        )
+    inputs.dir(speciesDir)
+    inputs.dir(imagesDir)
+    outputs.file(targetDb)
+    outputs.dir(targetImages)
+    val speciesDirExists = speciesDir.exists()
+    onlyIf("speciesDir exists") {
+        speciesDirExists
+    }
+}
