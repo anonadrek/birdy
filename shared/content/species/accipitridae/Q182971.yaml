@@ -1,0 +1,119 @@
+id: Q182971
+scientific_name: Hieraaetus pennatus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Hieraaetus
+  ioc_order: Accipitriformes
+names:
+  sv: dvärgörn
+  en: Booted Eagle
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dvärgörn
+
+
+    Dvärgörn är en av Europas minsta örnar och kännetecknas av sitt kompakta byggde
+    och relativt korta vingar. Det finns två färvarianter: en mörkare och en ljusare
+    form. Båda varianterna har karakteristiska "befjädrade ben" som sträcker sig ned
+    till tårna, vilket är ett typiskt kännetecken för arten. Huvudet är proportionellt
+    stort och ögonen är gula till orangegula.
+
+
+    Arten jagar främst små däggdjur, fåglar och ödlor från luften. Det flyger ofta
+    på låg höjd över öppen terräng eller mellan träd, och är känd för sin wendig flygstil.
+    Under häckningstiden hörs ett högt, starkt skrik.
+
+
+    Dvärgörn förekommer huvudsakligen i öppen och halvöppen miljö med glesa träd eller
+    bergiga områden. Den är flyttfågel i större delen av sitt utbredningsområde och
+    återvänder till häckningsplatsen varje vår. Arten är relativt sällsynt och kan
+    ibland observeras under genomflykt på våren och hösten.'
+  en: '# Booted Eagle
+
+
+    The Booted Eagle is a medium-sized, mostly migratory bird of prey found across
+    the Palearctic and southern Asia. It breeds in scattered populations, with a small
+    disjunct population in south-western Africa, and winters in tropical regions of
+    Africa and Asia. Like all eagles, it belongs to the family Accipitridae.
+
+
+    The species derives its name from the distinctive feathering that extends down
+    its legs to its toes, giving it a "booted" appearance. It is a skilled aerial
+    hunter, soaring on thermal currents while searching for prey. Its hunting behaviour
+    and agility make it well-adapted to diverse habitats ranging from open woodlands
+    to mountainous terrain.
+
+
+    The Booted Eagle''s migratory nature means its presence varies seasonally depending
+    on location. Birdwatchers seeking this species should look for it in open or semi-open
+    habitats where it hunts small mammals, birds, and reptiles. Its wide distribution
+    makes it a species of interest across much of the Old World, particularly during
+    migration periods when individuals may appear in unexpected locations.'
+migration:
+  sv: Dvärgörn är en flyttfågel som är mycket sällsynt i Skandinavien och Nordeuropa.
+    Arten häckar huvudsakligen i södra Europa och norra Afrika, och förekommer endast
+    undantagsvis som genomflyttare eller vagabond i norra områden under vår och höst.
+    De få observationer som gjorts i Sverige och övriga Skandinavien är i huvudsak
+    under april-maj och september-oktober. Dvärgörnen övervintar i Afrika söder om
+    Sahara och utgör därför ingen regelbunden vinterbesökare i nordiska regioner.
+  en: '# Booted Eagle in Northern Europe
+
+
+    The Booted Eagle is a rare vagrant to Scandinavia and northern Europe, with only
+    occasional sightings recorded. As a strongly migratory species, the few individuals
+    appearing in the region are typically passage migrants during spring and autumn
+    migration periods, when birds travel between their breeding grounds in southern
+    Palearctic regions and tropical wintering grounds in Africa and Asia. Winter occurrences
+    in Scandinavia are extremely uncommon, as the species does not establish regular
+    overwintering populations this far north. Most sightings in northern Europe occur
+    during April-May and August-September, coinciding with broader migration windows.'
+image_refs:
+- role: hero
+  path: Q182971/hero.jpg
+  width: 1995
+  height: 2400
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Booted eagle, Hieraaetus pennatus,
+    at Kgalagadi 001 (32334023978).jpg
+  commons_filename: Booted eagle, Hieraaetus pennatus, at Kgalagadi 001 (32334023978).jpg
+- role: secondary
+  path: Q182971/secondary-1.jpg
+  width: 1800
+  height: 1382
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Booted Eagle Hieraaetus pennatus
+    by Dr. Raju Kasambe DSCN2245 (3).jpg
+  commons_filename: Booted Eagle Hieraaetus pennatus by Dr. Raju Kasambe DSCN2245
+    (3).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.012559+00:00'
+sources:
+  wikipedia_sv_revision: '57082335'
+  wikipedia_en_revision: '1313897344'
+  claude_model: claude-haiku-4-5-20251001

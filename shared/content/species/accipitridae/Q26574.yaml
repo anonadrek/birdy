@@ -1,0 +1,102 @@
+id: Q26574
+scientific_name: Circus pygargus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Circus
+  ioc_order: Accipitriformes
+names:
+  sv: ängshök
+  en: Montagu’s Harrier
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ängshök
+
+
+    Ängshök är en slank hökfågel som tillhör kärrhöksfamiljen. Arten häckar vitt spritt
+    i Europa och Nordafrika, med utbredning österut till Kina. Under vinterhalvåret
+    är den flyttfågel som söker sig till tropiska Afrika och Sydasien. I Sverige är
+    ängshöken starkt hotad och ses endast sporadiskt under häckningstiden.
+
+
+    Arten är en skicklig jägare som ofta ses glidflyga lågt över öppna landskap när
+    den söker efter små däggdjur och fåglar. Ängshöken är något mindre än sin släkting
+    tornfalkens storlek och kännetecknas av sin smala kroppsform som är väl anpassad
+    för manövrering. Honan är större och mörkare än hanen.
+
+
+    Populationen minskar globalt, men arten klassificeras fortfarande som livskraftig.
+    Främsta hotet är förlust av lämpligt häckningshabitat och användningen av bekämpningsmedel
+    som påverkar näringskedjan.'
+  en: ''
+migration:
+  sv: '# Ängshök – Förekomst i Skandinavien
+
+
+    Ängshök är en långflyttare som återvänder till Sverige och övriga Skandinavien
+    under våren för att häcka. Fågeln anländer typiskt under maj månad och besätter
+    sina häckningsområden i öppna landskap som ängar och mossar. Efter framgångsrik
+    häckning påbörjar arten sin långa höstflyttning söderut i slutet av sommaren och
+    under hösten, vanligtvis från augusti till september. Under vintermånaderna övervintrar
+    ängshöken i tropiska Afrika och Sydasien, långt från sitt nordiska häckningsområde.
+    Återkomsten till häckningsområdena sker därefter igen följande vår, vilket gör
+    den till en säsongsvis förekommande art i regionen.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q26574/hero.jpg
+  width: 2400
+  height: 1826
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grauwe kiekendief - Montagu's
+    harrier - Circus pygargus 5.tif
+  commons_filename: Grauwe kiekendief - Montagu's harrier - Circus pygargus 5.tif
+- role: secondary
+  path: Q26574/secondary-1.jpg
+  width: 1800
+  height: 1208
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grauwe kiekendief - Montagu's
+    harrier - Circus pygargus 3.tif
+  commons_filename: Grauwe kiekendief - Montagu's harrier - Circus pygargus 3.tif
+- role: secondary
+  path: Q26574/secondary-2.jpg
+  width: 1800
+  height: 1197
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Montagu's harrier (Circus pygargus)
+    2016.jpg
+  commons_filename: Montagu's harrier (Circus pygargus) 2016.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.189628+00:00'
+sources:
+  wikipedia_sv_revision: '57082252'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

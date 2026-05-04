@@ -1,0 +1,97 @@
+id: Q234722
+scientific_name: Aquila fasciata
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Aquila
+  ioc_order: Accipitriformes
+names:
+  sv: hökörn
+  en: Bonelli’s Eagle
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Hökörn
+
+
+    Hökörn är en medelstor rovfågel inom familjen hökar. Det är en vida spridd art
+    som förekommer på flera kontinenter. Arten karakteriseras av mörk fjäderdräkt
+    med ljusare markering på undersidan, särskilt på huvudet och nacken. Under flykt
+    är hökörn smidig och manöverduglig med relativt korta vingar och lång stjärt.
+
+
+    Hökörn är en skicklig jägare som ofta ses cirklande högt över öppna landskap och
+    bergiga områden där det söker efter andra fåglar och små däggdjur. Det är en påtaglig
+    rovfågel som ofta jagar genom snabba anfall från luften. Arten häckar i klippor
+    och höga träd, ofta returning till samma bo år efter år.
+
+
+    Hökörnens globala population klassificeras som livskraftig, men antalet minskar
+    snabbt. Arten är känslig för förföljelse, habitatförlust och miljögifter. Världsomfattande
+    är det fortfarande en relativt vanlig rovfågel, men dess minskning är en växande
+    miljökoncern.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q234722/hero.jpg
+  width: 2048
+  height: 1405
+  license: CC BY 3.0
+  author: '<div class="fn value">
+
+    <a rel="nofollow" class="external text" href="https://500px.com/wildmishra">Wildmishra</a></div>'
+  source_url: https://commons.wikimedia.org/wiki/File:Aquila fasciata taking flight
+    (106032339).jpg
+  commons_filename: Aquila fasciata taking flight (106032339).jpg
+- role: secondary
+  path: Q234722/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Leonardo_FL&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Leonardo FL (page does not exist)">Leonardo Fernández
+    Lázaro</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aquila fasciata.JPG
+  commons_filename: Aquila fasciata.JPG
+- role: secondary
+  path: Q234722/secondary-2.jpg
+  width: 1800
+  height: 673
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Bonelli's eagle (Aquila fasciata)
+    mating composite.jpg
+  commons_filename: Bonelli's eagle (Aquila fasciata) mating composite.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.167865+00:00'
+sources:
+  wikipedia_sv_revision: '58592514'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

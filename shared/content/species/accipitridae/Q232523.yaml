@@ -1,0 +1,119 @@
+id: Q232523
+scientific_name: Clanga pomarina
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Clanga
+  ioc_order: Accipitriformes
+names:
+  sv: mindre skrikörn
+  en: Lesser Spotted Eagle
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mindre skrikörn
+
+
+    Mindre skrikörn är en medelstor rovfågel ur hokfamiljen som före detta klassificerades
+    tillsammans med indisk skrikörn. Det är en flyttfågel som häckar i Östeuropa och
+    västra Asien under sommaren. Vintertid drar arten långt söderut för att övervintra
+    i södra Afrika, varefter den återvänder till häckningsområdena på våren.
+
+
+    Arten klassificeras av IUCN som livskraftig, vilket innebär att populationen anses
+    vara stabil och inte hotad. Mindre skrikörn passar in i hokfamiljen Accipitridae
+    tillsammans med andra rovfåglar av liknande byggnad och levnadssätt.'
+  en: '# Lesser Spotted Eagle
+
+
+    The lesser spotted eagle is a large bird of prey belonging to the Accipitridae
+    family. It displays the characteristic features of typical eagles, though recent
+    taxonomic research suggests it shares closer affinities with slender accipitrines
+    than previously thought. Its classification reflects the complex evolutionary
+    relationships within the raptor family.
+
+
+    As a large Eastern European species, the lesser spotted eagle occupies an important
+    ecological niche as a predator. Its sizeable frame and powerful build equip it
+    for hunting across varied terrain. The bird exhibits the hunting prowess expected
+    of its family, though specific details of its diet, behavior patterns, and distinctive
+    vocalizations would benefit from direct field observation and specialized ornithological
+    sources for complete accuracy.'
+migration:
+  sv: '# Mindre skrikörn – förekomst i Skandinavien/Nordeuropa
+
+
+    Mindre skrikörn är en långdistansflyttare som inte häckar i Skandinavien eller
+    Nordeuropa. Arten förekommer endast som genomflyttare under våren och hösten när
+    populationer från Östeuropa och västra Asien migrerar mellan sina häckningsområden
+    och övervintringskvarteren i södra Afrika. Under hösten kan enstaka individer
+    observeras under augusti-september när de drar söderut, medan vårdragningen är
+    mindre påtaglig. Arten är således inte stationär eller övervintrande i Skandinavien,
+    utan passerar endast genom regionen som del av sin årliga migrationscykel mellan
+    Östeuropa och Afrika.'
+  en: '# Lesser Spotted Eagle (*Clanga pomarina*) in Scandinavia/Northern Europe
+
+
+    The lesser spotted eagle is a migratory species that occurs in Northern Europe
+    primarily as a passage migrant and vagrant. It breeds in Eastern Europe and winters
+    in sub-Saharan Africa, making it a long-distance migrant. In Scandinavia and northern
+    regions, this species is recorded irregularly during spring and autumn migration
+    periods, typically appearing in small numbers. Sightings are most frequent in
+    September and October during southbound migration, though occasional records occur
+    during spring passage in April and May. The species does not overwinter in Scandinavia
+    or Northern Europe.'
+image_refs:
+- role: hero
+  path: Q232523/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser spotted eagle (Clanga
+    pomarina) 2020.jpg
+  commons_filename: Lesser spotted eagle (Clanga pomarina) 2020.jpg
+- role: secondary
+  path: Q232523/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Clanga pomarina, Belarus 1.jpg
+  commons_filename: Clanga pomarina, Belarus 1.jpg
+- role: secondary
+  path: Q232523/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Clanga pomarina, Belarus 2.jpg
+  commons_filename: Clanga pomarina, Belarus 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.985713+00:00'
+sources:
+  wikipedia_sv_revision: '57082761'
+  wikipedia_en_revision: '1322269028'
+  claude_model: claude-haiku-4-5-20251001

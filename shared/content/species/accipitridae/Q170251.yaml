@@ -1,0 +1,104 @@
+id: Q170251
+scientific_name: Circaetus gallicus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Circaetus
+  ioc_order: Accipitriformes
+names:
+  sv: ormörn
+  en: Short-toed Snake Eagle
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Short-toed Snake Eagle
+
+
+    The short-toed snake eagle is a medium-sized raptor belonging to the hawk family
+    Accipitridae, which encompasses diverse diurnal predators including kites, buzzards,
+    and harriers. Its scientific name Circaetus gallicus derives from Ancient Greek
+    origins: *kirkos* referring to a hawk and *aetos* meaning "eagle," while *gallicus*
+    indicates its historical association with Gallia.
+
+
+    This eagle is specialized for hunting snakes and other reptiles, which distinguishes
+    it from many other raptors in its family. In appearance, it presents the characteristic
+    features of a medium-sized eagle of prey. It hunts by soaring at height, scanning
+    the ground below for movement, then diving to capture prey with its powerful talons.
+
+
+    The species inhabits open and semi-open landscapes where it can hunt effectively,
+    including steppes, grasslands, and areas with scattered trees. It tends to be
+    a summer visitor to temperate regions, migrating to warmer areas during winter
+    months. The short-toed snake eagle''s specialized diet and hunting behavior make
+    it an important indicator species for healthy reptile populations in its range.'
+migration:
+  sv: ''
+  en: '# Short-toed Snake Eagle in Scandinavia/Northern Europe
+
+
+    The Short-toed Snake Eagle is a rare summer visitor to Scandinavia and northern
+    Europe. Birds arrive in late spring (May) from their African wintering grounds,
+    primarily appearing in southern Scandinavia and occasionally further north during
+    migration periods. The species breeds sporadically in suitable habitat, including
+    coastal and open woodland areas, though breeding records remain uncommon in the
+    Nordic region. By late summer and autumn (August–September), these eagles depart
+    for their African wintering grounds, with most individuals absent from Scandinavian
+    waters by October. They do not overwinter in the region.'
+image_refs:
+- role: hero
+  path: Q170251/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Short-toed snake eagle (Circaetus
+    gallicus), Potokaki Wetland.jpg
+  commons_filename: Short-toed snake eagle (Circaetus gallicus), Potokaki Wetland.jpg
+- role: secondary
+  path: Q170251/secondary-1.jpg
+  width: 1800
+  height: 1476
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Black-chested snake-eagle (Circaetus
+    pectoralis).jpg
+  commons_filename: Black-chested snake-eagle (Circaetus pectoralis).jpg
+- role: secondary
+  path: Q170251/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Black-chested snake-eagle (Circaetus
+    pectoralis) in flight.jpg
+  commons_filename: Black-chested snake-eagle (Circaetus pectoralis) in flight.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.918139+00:00'
+sources:
+  wikipedia_sv_revision: '57082754'
+  wikipedia_en_revision: '1348885479'
+  claude_model: claude-haiku-4-5-20251001

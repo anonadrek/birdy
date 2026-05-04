@@ -1,0 +1,107 @@
+id: Q230837
+scientific_name: Circus macrourus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Circus
+  ioc_order: Accipitriformes
+names:
+  sv: stäpphök
+  en: Pallid Harrier
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Pallid Harrier
+
+
+    The pallid harrier is a slender bird of prey belonging to the harrier family.
+    It resembles other harrier species but is notably streamlined, with long, narrow
+    wings and a long tail that aid its agile, low-level hunting style. Males are pale
+    grey above with darker wing markings, while females and juveniles are brown with
+    streaked underparts.
+
+
+    This harrier hunts small mammals, birds, and insects by coursing low over open
+    grassland and steppe habitats, relying on speed and surprise to catch prey. It
+    quarters ground methodically with buoyant, graceful flight. The species is migratory,
+    breeding across southern eastern Europe, central Asia, and Iran during spring
+    and summer months before moving to winter grounds in India and southeast Asia.
+
+
+    The pallid harrier was historically rare in western Europe, but sightings have
+    increased in recent years, making it an occasional but noteworthy vagrant to Great
+    Britain and western Europe. Breeding has recently expanded westward, with pairs
+    successfully nesting in the Netherlands and Spain in recent years—significant
+    range extensions for the species. It favours open terrain including grasslands,
+    agricultural fields, and semi-desert regions.'
+migration:
+  sv: ''
+  en: '# Pallid Harrier in Northern Europe
+
+
+    The Pallid Harrier is a rare vagrant to Scandinavia and Northern Europe, with
+    no regular occurrence pattern. This species breeds in southern eastern Europe
+    and central Asia, wintering primarily in India and southeast Asia. While occasional
+    sightings have been documented in Great Britain and western Europe, the species
+    does not establish breeding populations in Scandinavian regions. Recent breeding
+    attempts in the Netherlands (2017) and Spain (2019) represent exceptional events
+    rather than indicators of range expansion northward. Any observations in Northern
+    Europe would constitute noteworthy sightings for local bird communities.'
+image_refs:
+- role: hero
+  path: Q230837/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pallid harrier (Circus macrourus)
+    2024.jpg
+  commons_filename: Pallid harrier (Circus macrourus) 2024.jpg
+- role: secondary
+  path: Q230837/secondary-1.jpg
+  width: 1800
+  height: 1173
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Rushikesh_Deshmukh_DOP&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Rushikesh Deshmukh DOP (page does not exist)">Rushikesh
+    Deshmukh DOP</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pallid harrier female (Circus
+    macrourus).jpg
+  commons_filename: Pallid harrier female (Circus macrourus).jpg
+- role: secondary
+  path: Q230837/secondary-2.jpg
+  width: 1800
+  height: 1246
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Chinmayisk" title="User:Chinmayisk">Chinmayisk</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Circus pygargus preparing for
+    flight at little rann of kutch.jpg
+  commons_filename: Circus pygargus preparing for flight at little rann of kutch.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.002740+00:00'
+sources:
+  wikipedia_sv_revision: '57082258'
+  wikipedia_en_revision: '1314555725'
+  claude_model: claude-haiku-4-5-20251001

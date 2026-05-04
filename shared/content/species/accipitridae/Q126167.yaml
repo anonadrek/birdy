@@ -1,0 +1,138 @@
+id: Q126167
+scientific_name: Gypaetus barbatus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Gypaetus
+  ioc_order: Accipitriformes
+names:
+  sv: lammgam
+  en: Bearded Vulture
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Lammgam (Gypaetus barbatus)
+
+
+    Lammgam är en imponerande gam som skiljer sig från andra gamarter genom sin täta
+    befjädring på huvud och hals – ett unikt drag inom gamsläktet. Det är en stor
+    rovfågel med mörka vingar och ofta rostfärgad undersida, särskilt på bröstet och
+    buken. Huvudet är karakteristiskt ljust med mörka ögonstreck, och arten har en
+    distinktiv tuft av långa fjädrar under underkäken, vilket förklarar dess namn.
+
+
+    Arten förekommer i bergiga regioner på flera kontinenter, framför allt i höga
+    fjällmiljöer där det finns gott om termiska uppvindningar. Lammgam är en skicklig
+    flygare som seglandes högt i luften och söker efter mat. Det är huvudsakligen
+    en benätare – det flyger ner kadaver från bergssidor för att dela upp skelettet
+    och äter därefter bennötet.
+
+
+    Globalt anses lammgamens population vara livskraftig, men i vissa regioner är
+    arten allvarligt hotad. Framför allt i södra världsdelarna och på vissa bergsmassiv
+    har populationen minskat kraftigt.'
+  en: '# Bearded Vulture
+
+
+    The bearded vulture is an enormous bird of prey distinguished by its pale plumage,
+    dark flight feathers, and characteristic facial markings that resemble a dark
+    moustache and chin patch. It is notably the only known vertebrate with a diet
+    consisting of 70–90% bone, which it locates by soaring at great heights over mountainous
+    terrain. The bird drops large bones onto rocks from considerable altitude to crack
+    them open, accessing the nutritious marrow inside—an adaptation reflected in one
+    of its alternative names, ossifrage, meaning "bone-breaker."
+
+
+    This vulture inhabits remote, rugged mountainous regions across parts of Europe,
+    Asia, and Africa. It is typically observed soaring solitarily or in pairs, riding
+    thermal currents with deliberate, measured wing-beats. The bearded vulture''s
+    calls are relatively quiet compared to other vultures, consisting of occasional
+    whistles and mews.
+
+
+    With impressive wingspans exceeding nine feet, it can sustain flight for extended
+    periods while searching for carrion. Its specialization on bone—a food source
+    largely ignored by other scavengers—allows it to fill a unique ecological niche,
+    though this dependence on bone-rich kills makes it vulnerable to habitat loss
+    and reduced carrion availability in modern landscapes.'
+migration:
+  sv: '# Lammgam (Gypaetus barbatus) i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Lammgam är en bergbeboende rovfågel som inte förekommer naturligt i Skandinavien
+    eller Nordeuropa. Arten är utbredda i bergiga områden i södra Europa, Asien och
+    Afrika. I de få fall där arten observerats i Skandinavien rör det sig om mycket
+    sällsynta villoflygare eller möjliga spridningsindivider från sydeuropeiska populationer.
+    För denna arts förekomst i sitt naturliga utbredningsområde krävs höga bergsmässor
+    och specifika klimatiska förhållanden som inte finns i norra Europa.'
+  en: '# Bearded Vulture (Gypaetus barbatus) in Scandinavia/Northern Europe
+
+
+    The Bearded Vulture is an extremely rare vagrant to Scandinavia and Northern Europe,
+    with no established resident or regular migratory population in the region. Historically,
+    this species was present in Alpine areas and parts of southern Europe, but it
+    has been absent from Scandinavia for centuries. Occasional sightings occur when
+    young birds disperse from populations in the Alps or other southern European ranges,
+    but these remain exceptional records rather than regular occurrences. The species
+    requires mountainous terrain and is adapted to much warmer climates than typical
+    Northern European conditions, making permanent establishment or regular seasonal
+    migration to this region highly unlikely.'
+image_refs:
+- role: hero
+  path: Q126167/hero.jpg
+  width: 2400
+  height: 1714
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Bearded vulture, Gypaetus barbatus,
+    also known as the Lämmergeier, Giant's Castle, KwaZulu-Natal, South Africa. (44080366295).jpg
+  commons_filename: Bearded vulture, Gypaetus barbatus, also known as the Lämmergeier,
+    Giant's Castle, KwaZulu-Natal, South Africa. (44080366295).jpg
+- role: secondary
+  path: Q126167/secondary-1.jpg
+  width: 1800
+  height: 1013
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Ibex73" title="User:Ibex73">Ibex73</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Gypaetus barbatus in Vanoise
+    (3).jpg
+  commons_filename: Gypaetus barbatus in Vanoise (3).jpg
+- role: secondary
+  path: Q126167/secondary-2.jpg
+  width: 1350
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Ibex73" title="User:Ibex73">Ibex73</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Gypaetus barbatus in Vanoise
+    (8).jpg
+  commons_filename: Gypaetus barbatus in Vanoise (8).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.075655+00:00'
+sources:
+  wikipedia_sv_revision: '57667814'
+  wikipedia_en_revision: '1349543315'
+  claude_model: claude-haiku-4-5-20251001

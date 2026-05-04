@@ -1,0 +1,126 @@
+id: Q27227
+scientific_name: Elanus caeruleus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Elanus
+  ioc_order: Accipitriformes
+names:
+  sv: svartvingad glada
+  en: Black-winged Kite
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartvingad glada
+
+
+    Svartvingad glada är en liten rovfågel inom hökfamiljen med mycket vid utbredning
+    i Asien och Afrika. Under senare år har arten etablerat sig i sydvästra Europa
+    och utvidgat sitt område norrut. Enskilda individer ses allt oftare längre norrut,
+    och arten har registrerats flera gånger i Sverige sedan första dokumenterade funnet
+    2004.
+
+
+    Arten är på många håll en vanlig fågel med ett stabilt bestånd. Det är en småväxt
+    rovfågel anpassad för att jaga på öppna terräer och från högt flugande position
+    kunna nabbra sitt byte från marken eller luften.'
+  en: '# Black-winged Kite
+
+
+    The Black-winged Kite is a small, striking bird of prey with distinctive plumage
+    combining white, grey, and black. It is immediately recognizable by its long wings,
+    owl-like forward-facing eyes with striking red irises, and overall elegant proportions.
+    This gives it an unusually refined appearance compared to many raptors.
+
+
+    The species is best known for its remarkable hovering behaviour over open grasslands,
+    a technique it shares with smaller kestrels. It hunts primarily in these open
+    habitats, though it occasionally ventures onto grassy slopes in elevated regions.
+    The Black-winged Kite is not migratory but moves nomadically in response to weather
+    patterns and food availability, showing particular adaptability when rodent populations
+    surge. It can raise multiple broods in a single year, an unusual ability among
+    birds of prey.
+
+
+    The kite''s range spans the Palearctic and Afrotropical regions. Notably, populations
+    in southern Europe have expanded significantly in recent decades, benefiting from
+    agricultural development and livestock farming, and the species has recently established
+    itself in Southwest France. Its capacity to exploit changing environmental conditions
+    demonstrates considerable ecological flexibility.'
+migration:
+  sv: '# Svartvingad glada i Skandinavien/Nordeuropa
+
+
+    Svartvingad glada är en art som tradicionalt förekommer i Asien och Afrika, men
+    har under senare år expanderat sitt utbredningsområde in i sydvästra Europa och
+    norrut mot Frankrike. I Skandinavien är arten mycket sällsynt och förekommer främst
+    som kringflygande individ. Det första svenska funnet registrerades 2004, och sedan
+    dess har arten påträffats allt oftare längre norrut. Arten är inte etablerad som
+    häckande eller övervintrande i regionen utan utgörs av sporadiska observationer
+    av individer som sprider sig från sydvästra Europa.'
+  en: '# Black-winged Kite in Northern Europe
+
+
+    The Black-winged Kite is a non-migratory species showing nomadic movements in
+    response to weather and food availability. Historically rare in Scandinavia and
+    Northern Europe, this kite has expanded its range northward in recent decades,
+    with populations increasing in southern Europe. While traditionally absent from
+    or extremely rare in Scandinavian regions, occasional sightings have been recorded,
+    particularly in southern parts of the Nordic countries. The species remains predominantly
+    a bird of southern and central European grasslands and open plains. Any northern
+    European occurrences would likely represent dispersing individuals or range expansion
+    events rather than established migratory patterns typical of the region''s raptors.'
+image_refs:
+- role: hero
+  path: Q27227/hero.jpg
+  width: 2400
+  height: 1869
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/56017663@N03">Srikaanth
+    Sekar</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Elanus caeruleus Annamalaichery.jpg
+  commons_filename: Elanus caeruleus Annamalaichery.jpg
+- role: secondary
+  path: Q27227/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Interaccoonale" title="User:Interaccoonale">Sun
+    Jiao (Interaccoonale)</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Elanus caeruleus-Weifang 06.jpg
+  commons_filename: Elanus caeruleus-Weifang 06.jpg
+- role: secondary
+  path: Q27227/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Interaccoonale" title="User:Interaccoonale">Sun
+    Jiao (Interaccoonale)</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Elanus caeruleus-Weifang 07.jpg
+  commons_filename: Elanus caeruleus-Weifang 07.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.932161+00:00'
+sources:
+  wikipedia_sv_revision: '57082854'
+  wikipedia_en_revision: '1349414718'
+  claude_model: claude-haiku-4-5-20251001

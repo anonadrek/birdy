@@ -1,0 +1,136 @@
+id: Q41181
+scientific_name: Aquila chrysaetos
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Aquila
+  ioc_order: Accipitriformes
+names:
+  sv: kungsörn
+  en: Golden Eagle
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kungsörn
+
+
+    Kungsörn är en stor rovfågel från familjen hökar som förekommer över norra halvklotet.
+    Honorna är märkbart större än hanarna. Adulta fåglar har mörkbrun till svartbrun
+    fjäderdräkt med en karakteristisk guldbrun färg på hjässa och nacke. Unga kungsörnars
+    mest iögonfallande kännetecken är vita fläckar på vingundersidorna och stjärten,
+    vilka gradvis försvinner när fågeln byter till adultdräkt omkring fem års ålder.
+
+
+    Kungsörnen är en skicklig rovfågel som jagar från luften över öppen terräng och
+    kuperad miljö. Den använder sina kraftiga vingar för att seglande sörja stora
+    områden på jakt efter sitt byte, främst större däggdjur och fåglar. Arten är långsint
+    och förblir ofta på samma revir många år.
+
+
+    Kungsörnen ses främst i öppet bergsterräng, skoglösa högland och områden med stora
+    åkrar. Den återfinns både i låglänta och högbergsregioner, och föredrar miljöer
+    med god sikt för jakt.'
+  en: '# Golden Eagle
+
+
+    The golden eagle is a formidable bird of prey found throughout the Northern Hemisphere
+    and ranks among the most widely distributed eagle species. It is dark brown overall,
+    with distinctive lighter golden-brown plumage on the nape—a feature that gives
+    the species its name. Immature birds are particularly striking, displaying white
+    patches on the tail and often white markings on the wings, making them readily
+    distinguishable from adults.
+
+
+    This powerful predator relies on exceptional agility and speed combined with muscular
+    legs and large, razor-sharp talons to hunt its prey. Golden eagles primarily target
+    ground-dwelling mammals such as hares, rabbits, marmots, and ground squirrels,
+    which they pursue with remarkable aerial prowess. The species belongs to the family
+    Accipitridae, a diverse group encompassing hawks and eagles.
+
+
+    Golden eagles typically inhabit open and semi-open landscapes, including mountainous
+    regions, moorlands, and grasslands where their prey is abundant. They are highly
+    mobile hunters, often seen soaring at great heights while scanning terrain below
+    for movement. Their presence often indicates healthy populations of small mammals
+    and relatively undisturbed wild habitats.'
+migration:
+  sv: '# Kungsörn – Förekomst i Skandinavien genom året
+
+
+    Kungsörn är en övervintrare i Skandinavien och Nordeuropa, där den förekommer
+    året runt i begränsade antal. I Sverige och Norge är arten främst stationär, särskilt
+    i fjällregionerna och kustområdena. Under hösten anländer individer från östra
+    populationer som söker sig söderut, medan någon del av den lokala populationen
+    stannar genom vintern. På våren återvänder flyttfåglarna under mars till april.
+    Arten är vid jakt beroende av öppen terräng och frekventerar därför högfjällen,
+    kustzonen och större sjöar där födan är tillgänglig även under vinterhalvåret.'
+  en: '# Golden Eagle Migration in Scandinavia and Northern Europe
+
+
+    The Golden Eagle is a year-round resident throughout much of Scandinavia and Northern
+    Europe, with populations showing varying degrees of residency and movement. Northern
+    populations breeding in Scandinavia and Russia are partially migratory, with some
+    birds remaining year-round while others migrate southward during winter months.
+    Spring arrival of migratory individuals typically occurs from March onwards, while
+    autumn departure generally takes place between September and November. Non-migratory
+    populations maintain territories year-round, relying on available prey including
+    hares, rabbits, and ground squirrels even during harsh winters.'
+image_refs:
+- role: hero
+  path: Q41181/hero.jpg
+  width: 2400
+  height: 1693
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Michael_G%C3%A4bler" title="User:Michael
+    Gäbler">Michael Gäbler</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aquila chrysaetos (Linnaeus
+    1758).jpg
+  commons_filename: Aquila chrysaetos (Linnaeus 1758).jpg
+- role: secondary
+  path: Q41181/secondary-1.jpg
+  width: 1800
+  height: 1231
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q28147777" class="extiw" title="d:Q28147777"><span
+    title="Spanish photographer">Diego Delso</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Busardo mixto (Parabuteo unicinctus),
+    Arcos de la Frontera, Cádiz, España, 2015-12-08, DD 06.jpg
+  commons_filename: Busardo mixto (Parabuteo unicinctus), Arcos de la Frontera, Cádiz,
+    España, 2015-12-08, DD 06.jpg
+- role: secondary
+  path: Q41181/secondary-2.jpg
+  width: 1800
+  height: 1597
+  license: CC BY-SA 3.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q28147777" class="extiw" title="d:Q28147777"><span
+    title="Spanish photographer">Diego Delso</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Halcón sacre (Falco cherrug),
+    Tierpark Hellabrunn, Múnich, Alemania, 2012-06-17, DD 02.jpg
+  commons_filename: Halcón sacre (Falco cherrug), Tierpark Hellabrunn, Múnich, Alemania,
+    2012-06-17, DD 02.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.979616+00:00'
+sources:
+  wikipedia_sv_revision: '58699267'
+  wikipedia_en_revision: '1348807723'
+  claude_model: claude-haiku-4-5-20251001

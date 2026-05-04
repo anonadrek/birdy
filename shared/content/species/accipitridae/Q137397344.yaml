@@ -1,0 +1,127 @@
+id: Q137397344
+scientific_name: Tachyspiza badia
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Tachyspiza
+  ioc_order: Accipitriformes
+names:
+  sv: null
+  en: Shikra
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Shikra
+
+
+    Shikra är en liten rovfågel i familjen hökar som förekommer i Sydasien och i Afrika
+    söder om Sahara. I stora delar av Afrika är det en av de vanligaste hökar man
+    stöter på i savannen.
+
+
+    Med sin små storlek är shikran väl anpassad för att jaga små fåglar och ödlor.
+    Det är en skicklig flygare som ofta ses sväva över öppen mark eller sitta på utblicksplatser
+    och vänta på bytesdjur. Arten är relativt lätt att upptäcka jämfört med många
+    andra hökar, tack vare sitt aktiva beteende under dagen.
+
+
+    Shikran trivs i olika typer av habitat inom sitt utbredningsområde, från savannen
+    till halvöppen terräng. Med sin begränsade storlek och vassa röströrelser utgör
+    den ingen fara för större djur, men utgör ett reellt hot för småfåglar och mindre
+    kräldjur som utgör dess huvudföda.'
+  en: '# Shikra
+
+
+    The shikra is a small hawk found across Asia and Africa, where it is also known
+    as the little banded goshawk. It closely resembles several other small raptors,
+    including the Eurasian sparrowhawk and Chinese sparrowhawk, making identification
+    challenging. The species exhibits the characteristic flap-and-glide flight pattern
+    typical of small hawks in its genus.
+
+
+    In behaviour and appearance, the shikra shares similarities with related goshawks
+    and sparrowhawks. It produces a distinctive sharp two-note call, which is frequently
+    imitated by other birds such as drongos. Interestingly, the common hawk-cuckoo
+    has evolved plumage that closely resembles the shikra, possibly as a form of mimicry.
+
+
+    The shikra''s wide distribution across Asia and Africa demonstrates its adaptability,
+    though African populations may represent distinct subspecies or even a separate
+    species altogether. Previously classified in the genus Accipiter, taxonomic revision
+    has placed it in Tachyspiza, reflecting a better understanding of its relationships
+    within the hawk family.'
+migration:
+  sv: '# Shikra - Migrering i Skandinavien och Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Shikra är en afroasiatisk rovfågel som inte förekommer naturligt i Skandinavien
+    eller Nordeuropa. Arten är endemisk för Sydasien och Afrika söder om Sahara, där
+    den är bosatt året runt i sina respektive områden. Det finns ingen dokumenterad
+    migration till eller genom nordeuropeiska regioner.'
+  en: 'Migration data unavailable for this species.
+
+
+    The shikra is distributed across Asia and Africa, with no established occurrence
+    in Scandinavia or Northern Europe. The provided source text contains no information
+    about migration patterns, seasonal movements, or presence in northern regions.
+    This species is not relevant to a Scandinavian bird guide.'
+image_refs:
+- role: hero
+  path: Q137397344/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Rohitjahnavi" title="User:Rohitjahnavi">Rohitjahnavi</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Shikra (Tachyspiza badia) in
+    Little Rann of Kutch, Gujarat, India DSCN8550 01.jpg
+  commons_filename: Shikra (Tachyspiza badia) in Little Rann of Kutch, Gujarat, India
+    DSCN8550 01.jpg
+- role: secondary
+  path: Q137397344/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Rohitjahnavi" title="User:Rohitjahnavi">Rohitjahnavi</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Shikra (Tachyspiza badia) in
+    Little Rann of Kutch, Gujarat, India DSCN8550 02.jpg
+  commons_filename: Shikra (Tachyspiza badia) in Little Rann of Kutch, Gujarat, India
+    DSCN8550 02.jpg
+- role: secondary
+  path: Q137397344/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Rohitjahnavi" title="User:Rohitjahnavi">Rohitjahnavi</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Shikra (Tachyspiza badia) in
+    Little Rann of Kutch, Gujarat, India DSCN8550 03.jpg
+  commons_filename: Shikra (Tachyspiza badia) in Little Rann of Kutch, Gujarat, India
+    DSCN8550 03.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.906120+00:00'
+sources:
+  wikipedia_sv_revision: '55840160'
+  wikipedia_en_revision: '1341273762'
+  claude_model: claude-haiku-4-5-20251001

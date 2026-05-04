@@ -1,0 +1,94 @@
+id: Q605431
+scientific_name: Pernis ptilorhynchus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Pernis
+  ioc_order: Accipitriformes
+names:
+  sv: tofsbivråk
+  en: Crested Honey Buzzard
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Crested Honey Buzzard
+
+
+    The Crested Honey Buzzard is a fairly large raptor belonging to the hawk family,
+    notably larger than its European relative. It exhibits sexual dimorphism, meaning
+    males and females display different plumage patterns. The species comprises six
+    subspecies distributed across its range.
+
+
+    This raptor has an unusual and specialized diet, feeding primarily on the larvae
+    of bees and wasps, which it extracts from honeycomb. This dietary specialization
+    has given the species its common name. It hunts these insects with remarkable
+    precision, making it a distinctive member of the raptor community despite sharing
+    its family with more generalist hunters like eagles, kites, and harriers.
+
+
+    The Crested Honey Buzzard inhabits woodland and forested regions across much of
+    Asia. It can be identified by its characteristic crested appearance and relatively
+    robust build. Like other honey buzzards, it is adapted for locating and raiding
+    nests of bees and wasps, using its keen eyesight to spot suitable colonies before
+    skillfully extracting the protein-rich larvae.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q605431/hero.jpg
+  width: 2102
+  height: 2400
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Crested honey buzzard (Pernis
+    ptilorhynchus) 7.jpg
+  commons_filename: Crested honey buzzard (Pernis ptilorhynchus) 7.jpg
+- role: secondary
+  path: Q605431/secondary-1.jpg
+  width: 1797
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Crested honey buzzard (Pernis
+    ptilorhynchus) 16.jpg
+  commons_filename: Crested honey buzzard (Pernis ptilorhynchus) 16.jpg
+- role: secondary
+  path: Q605431/secondary-2.jpg
+  width: 1392
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oriental Honey Buzzard Pernis
+    ptilorhynchus by Dr. Raju Kasambe DSCN9254 (2).jpg
+  commons_filename: Oriental Honey Buzzard Pernis ptilorhynchus by Dr. Raju Kasambe
+    DSCN9254 (2).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.960616+00:00'
+sources:
+  wikipedia_sv_revision: '57082536'
+  wikipedia_en_revision: '1344588459'
+  claude_model: claude-haiku-4-5-20251001

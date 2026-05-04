@@ -1,0 +1,131 @@
+id: Q327118
+scientific_name: Gyps bengalensis
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Gyps
+  ioc_order: Accipitriformes
+names:
+  sv: bengalgam
+  en: White-rumped Vulture
+abundance: ovanlig
+iucn_status: CR
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bengalgam
+
+
+    Bengalgam är en stor rovfågel i hökarfamiljen som hör hemma i Syd- och Sydostasien.
+    Det karakteriseras av sin vita övygge, vilket är särskilt framträdande under flykten.
+    Arten är en kraftfull flygare och framträder ofta i större flockar.
+
+
+    Bengalgam är en necrófag som förlitar sig på att söka föda från döda djur. Historiskt
+    sett var det världens vanligaste rovfågel med flera miljoner individer på 1980-talet.
+    Arten har dock genomgått en dramatisk nedgång sedan dess.
+
+
+    Populationen har kollapsat på grund av förgiftning från diklofenak, ett veterinärmedicin
+    som användes på boskap. Denna exponering har varit ödesdigert för arten. År 2018
+    uppskattas populationen till färre än 15 000 individer, och internationella naturvårdsunionen
+    IUCN klassificerar bengalgam som akut hotad sedan år 2000. Arten står inför en
+    kritisk framtid utan omfattande bevarandeansträngningar.'
+  en: '# White-rumped Vulture
+
+
+    The white-rumped vulture is a large Old World vulture found across South and Southeast
+    Asia. It is critically endangered, with fewer than 6,000 mature individuals remaining
+    globally—a catastrophic decline from several million in the 1980s when it was
+    the world''s most abundant large raptor.
+
+
+    The species is identified by its dark brown plumage contrasted with a white rump
+    patch, which gives it its name. Like other vultures, it is superbly adapted for
+    soaring flight, with broad wings and a lightweight skeleton that allow it to search
+    vast areas for carrion. It feeds almost entirely on the remains of dead animals,
+    playing a crucial ecological role as a scavenger.
+
+
+    The primary threat to the species is poisoning from diclofenac, a anti-inflammatory
+    drug used in livestock medicine. When vultures feed on carcasses of treated animals,
+    the drug causes fatal kidney failure. Conservation efforts have focused on phasing
+    out diclofenac and establishing vulture restaurants where safe food is provided.
+    Breeding programmes in captivity offer hope for eventual population recovery,
+    though the species faces an uncertain future without continued intensive intervention.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten från Wikipedia om bengalgam innehåller ingen information
+    om arten förekomst i Skandinavien eller Nordeuropa, migrationsvanor, övervintring
+    eller ankomsttider. Bengalgam är hemhörig i Syd- och Sydostasien, och texten fokuserar
+    på artens dramatiska populationsnedgång på grund av förgiftning. För att skriva
+    faktabaserad information om denna arts förekomst i norra Europa skulle ytterligare
+    källor behövas.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the occurrence, migration
+    patterns, or seasonal movements of the White-rumped Vulture in Scandinavia or
+    Northern Europe. The species is native to South and Southeast Asia, and the available
+    text focuses solely on its conservation status and population decline due to diclofenac
+    poisoning. No data regarding migratory behavior, overwintering locations, or arrival/departure
+    months in Northern European regions is included.'
+image_refs:
+- role: hero
+  path: Q327118/hero.jpg
+  width: 1604
+  height: 2400
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Ravi.sangeetha&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Ravi.sangeetha (page does not exist)">Ravi.sangeetha</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Gyps bengalensis by Ravi Sangeetha
+    (cropped).jpg
+  commons_filename: Gyps bengalensis by Ravi Sangeetha (cropped).jpg
+- role: secondary
+  path: Q327118/secondary-1.jpg
+  width: 1800
+  height: 1182
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Me and Indian White-backed Vultures
+    (Gyps bengalensis) - you can get very close when they eat ... (20012612580).jpg
+  commons_filename: Me and Indian White-backed Vultures (Gyps bengalensis) - you can
+    get very close when they eat ... (20012612580).jpg
+- role: secondary
+  path: Q327118/secondary-2.jpg
+  width: 1800
+  height: 1235
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Indian White-backed Vultures
+    (Gyps bengalensis) feeding on a dead cow (19579562073).jpg
+  commons_filename: Indian White-backed Vultures (Gyps bengalensis) feeding on a dead
+    cow (19579562073).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.041690+00:00'
+sources:
+  wikipedia_sv_revision: '57107234'
+  wikipedia_en_revision: '1339143862'
+  claude_model: claude-haiku-4-5-20251001

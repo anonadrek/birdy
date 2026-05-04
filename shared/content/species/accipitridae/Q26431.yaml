@@ -1,0 +1,142 @@
+id: Q26431
+scientific_name: Circus aeruginosus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Circus
+  ioc_order: Accipitriformes
+names:
+  sv: brun kärrhök
+  en: Western Marsh Harrier
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brun kärrhök
+
+
+    Brun kärrhök är en medelstor rovfågel som tillhör högenfamiljen. Hannen är gråbrun
+    med ljusare huvud och axlar, medan honan är mörkare och större. Arten kännetecknas
+    av långa vingar och lång stjärt, vilket ger den en behändig framfart när den jagar
+    över öppna områden.
+
+
+    Arten söker sin föda – huvudsakligen fåglar, små däggdjur och grodor – genom att
+    sväva lågt över sumpmarker och vassrika sjöar. Den är aktiv både på dagen och
+    vid skymning. Brun kärrhök har en karakteristisk läte, ett högt pipande som hörs
+    under häckningsperioden.
+
+
+    Arten häckar i jordbruksmarker och vid sjöar med riklig vegetation i stora delar
+    av Europa och Asien. Under vintern migrerar den till varmare regioner. Den är
+    världsvid klassificerad som livskraftig och bibehålls i många naturskyddsområden
+    för att säkra arten långsiktiga överlevnad.'
+  en: '# Western Marsh Harrier
+
+
+    The Western Marsh Harrier is a large bird of prey found across temperate and subtropical
+    regions of western Eurasia and adjacent Africa. It is a member of the harrier
+    family, distinguished by its characteristic long wings and tail that enable graceful,
+    buoyant flight low over wetland habitats. Males typically display pale plumage
+    on the head and breast, while females and juveniles are considerably darker with
+    striking cream-coloured markings on the head and shoulders—features that aid in
+    field identification.
+
+
+    This harrier hunts by quartering slowly over reed beds, marshes, and open water,
+    scanning for small mammals, birds, and occasionally reptiles. It is an agile predator,
+    capable of sudden acceleration to snatch prey from the ground or shallow water.
+    The species roosts communally in winter, often gathering in large numbers at favoured
+    wetland sites.
+
+
+    The Western Marsh Harrier inhabits wetland environments including reed beds, marshes,
+    and lakeshores where it nests on the ground among dense vegetation. Its call is
+    a sharp, piercing cry, typically delivered during displays or territorial encounters.
+    Formerly, several geographically separated populations were considered part of
+    a single "marsh harrier" species, but these are now recognized as distinct species
+    found in eastern Asia, Australasia, and the Indian Ocean region.'
+migration:
+  sv: '# Brun kärrhök i Skandinavien och Nordeuropa
+
+
+    Brun kärrhök är en flyttfågel som anländer till Skandinavien och Nordeuropa under
+    våren för att häcka i vassrika sjöar och våtmarker. Arten häckar i stora delar
+    av Europa från april-maj till augusti-september. Under hösten påbörjar fåglarna
+    sin långväga migration söderut, och de övervintering inte i Skandinavien eller
+    Nordeuropa utan drar istället till Medelhavsområdet, Afrika söder om Sahara, Mellanöstern
+    och Sydasien. Återkomsten till häckningsområdena sker på nytt under vårmånaderna.
+    Arten är således endast närvarande som häckfågel under växtsäsongen i denna nordliga
+    del av sitt stora utbred­ningsområde.'
+  en: '# Western Marsh Harrier (Circus aeruginosus) in Scandinavia/Northern Europe
+
+
+    The Western Marsh Harrier is a summer visitor to Scandinavia and Northern Europe,
+    arriving in spring to breed in extensive reed beds and wetland habitats. These
+    birds typically return to their breeding grounds from April onwards after wintering
+    in Africa and southern Europe. They depart in autumn as their wetland habitats
+    freeze over, with most individuals having left by September or October. During
+    migration periods, they may be observed in suitable wetland areas across the region
+    as they pass through.
+
+
+    Migration data for this species'' specific timing and overwintering locations
+    within Northern Europe is limited in the provided source material. For comprehensive
+    information about local population trends and precise arrival/departure dates
+    in particular Scandinavian regions, additional ornithological sources would be
+    recommended.'
+image_refs:
+- role: hero
+  path: Q26431/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nikolam993&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Nikolam993 (page does not exist)">Nikolam993</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eja močvarica (Circus aeruginosus).jpg
+  commons_filename: Eja močvarica (Circus aeruginosus).jpg
+- role: secondary
+  path: Q26431/secondary-1.jpg
+  width: 1800
+  height: 1095
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Circus aeruginosus - Western
+    Marsh Harrier 2021-03-27.jpg
+  commons_filename: Circus aeruginosus - Western Marsh Harrier 2021-03-27.jpg
+- role: secondary
+  path: Q26431/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Marsh harrier (Circus aeruginosus)
+    male Danube delta.jpg
+  commons_filename: Marsh harrier (Circus aeruginosus) male Danube delta.jpg
+review_status: approved
+review_notes: Hero approved 2026-05-04 via hero_review HTML.
+generated_at: '2026-05-04T12:14:53.088672+00:00'
+sources:
+  wikipedia_sv_revision: '56065211'
+  wikipedia_en_revision: '1315391772'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,111 @@
+id: Q25438
+scientific_name: Haliaeetus albicilla
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Haliaeetus
+  ioc_order: Accipitriformes
+names:
+  sv: havsörn
+  en: White-tailed Eagle
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# White-tailed Eagle
+
+
+    The white-tailed eagle is a massive bird of prey and one of the largest eagles
+    in its range. It belongs to the family Accipitridae, which encompasses hawks,
+    kites, and harriers. This species is one of eleven sea eagles in the genus Haliaeetus,
+    distinguished by its characteristic white tail feathers that contrast with darker
+    plumage on the body and wings. The bird''s powerful build and impressive wingspan
+    make it unmistakable in flight.
+
+
+    Primarily a hunter of fish and waterfowl, the white-tailed eagle is strongly associated
+    with aquatic habitats, particularly large lakes and coastal areas. It hunts by
+    soaring at considerable heights before diving to snatch prey from the water''s
+    surface with its formidable talons. The species is monogamous and builds enormous
+    stick nests that are reused and added to annually, eventually becoming massive
+    structures.
+
+
+    Widely distributed across temperate Eurasia, the white-tailed eagle inhabits regions
+    with suitable freshwater or marine environments and mature forests for nesting.
+    It has alternate names including sea eagle, erne, and gray sea eagle, reflecting
+    its widespread distribution and the varied traditions of different cultures across
+    its range.'
+migration:
+  sv: ''
+  en: '# White-tailed Eagle in Northern Europe
+
+
+    The White-tailed Eagle is a regular winter visitor and passage migrant throughout
+    Scandinavia and Northern Europe. Populations from eastern Europe and Russia migrate
+    westward during autumn, arriving in Nordic countries from September onwards, with
+    peak numbers occurring through winter months. Some individuals remain year-round,
+    particularly in coastal areas where open water provides hunting opportunities.
+    Spring departure occurs gradually from March through May as birds return to their
+    breeding grounds in Eastern Europe and Russia. In recent decades, recolonization
+    efforts have established small breeding populations in parts of Scandinavia, particularly
+    Sweden and Norway, with these resident birds showing more limited seasonal movements
+    compared to migratory populations.'
+image_refs:
+- role: hero
+  path: Q25438/hero.jpg
+  width: 2400
+  height: 1468
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:AWeith" title="User:AWeith">Andreas
+    Weith</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Adult white-tailed eagle (Haliaeetus
+    albicilla) of central Poland in flight (2).jpg
+  commons_filename: Adult white-tailed eagle (Haliaeetus albicilla) of central Poland
+    in flight (2).jpg
+- role: secondary
+  path: Q25438/secondary-1.jpg
+  width: 1800
+  height: 1013
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:AWeith" title="User:AWeith">Andreas
+    Weith</a>
+  source_url: https://commons.wikimedia.org/wiki/File:An adult white-tailed eagle
+    (Haliaeetus albicilla) defending its prey.jpg
+  commons_filename: An adult white-tailed eagle (Haliaeetus albicilla) defending its
+    prey.jpg
+- role: secondary
+  path: Q25438/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Gzen92" title="User:Gzen92">Gzen92</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pygargue à queue blanche (Haliaeetus
+    albicilla) - tête.jpg
+  commons_filename: Pygargue à queue blanche (Haliaeetus albicilla) - tête.jpg
+review_status: approved
+review_notes: Hero approved 2026-05-04 via hero_review HTML.
+generated_at: '2026-05-04T12:14:52.967100+00:00'
+sources:
+  wikipedia_sv_revision: '59205816'
+  wikipedia_en_revision: '1343154911'
+  claude_model: claude-haiku-4-5-20251001

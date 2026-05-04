@@ -1,0 +1,103 @@
+id: Q26407
+scientific_name: Buteo lagopus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Buteo
+  ioc_order: Accipitriformes
+names:
+  sv: fjällvråk
+  en: Rough-legged Buzzard
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Rough-legged Buzzard
+
+
+    The rough-legged buzzard is a medium-large bird of prey belonging to the hawk
+    family. It inhabits arctic and subarctic regions during the breeding season, then
+    migrates southward to escape the harsh winters. This migratory pattern takes it
+    across North America, Europe, and Asia, making it a widespread northern species.
+
+
+    In appearance, the rough-legged buzzard is robust and substantial, with the characteristic
+    feathering on its legs that gives it its name—an adaptation to cold climates.
+    It hunts over open terrain, often hovering in place while scanning the ground
+    for small mammals and other prey. Its flight style is distinctive and methodical,
+    making it relatively easy to identify in the field.
+
+
+    The species has been known by various common names throughout history, including
+    "rough-legged falcon," a term found in early ornithological works. Today, "rough-legged
+    buzzard" is the standard name in European usage, while "rough-legged hawk" prevails
+    in North America, reflecting the regional nomenclature differences for birds in
+    the hawk family.'
+migration:
+  sv: ''
+  en: '# Rough-legged Buzzard (Buteo lagopus) in Scandinavia
+
+
+    The Rough-legged Buzzard is a migratory species in Scandinavia, breeding in arctic
+    and subarctic regions during the summer months before undertaking long-distance
+    southward migration in autumn. Birds typically arrive on breeding grounds in northern
+    Scandinavia from April onwards, establishing territories across tundra and moorland
+    habitats. During winter months (October-March), the species is largely absent
+    from the region, having migrated south to lower latitudes where food remains more
+    accessible. Occasional individuals may overwinter in southern Scandinavia during
+    mild winters, though this is not typical. Spring return migration occurs progressively
+    northward through March and April.'
+image_refs:
+- role: hero
+  path: Q26407/hero.jpg
+  width: 2400
+  height: 1601
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/70957937@N00">David
+    A Mitchell</a> from Calgary, Canada
+  source_url: https://commons.wikimedia.org/wiki/File:Buteo lagopus (45356696964).jpg
+  commons_filename: Buteo lagopus (45356696964).jpg
+- role: secondary
+  path: Q26407/secondary-1.jpg
+  width: 1800
+  height: 1199
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/70957937@N00">David
+    A Mitchell</a> from Calgary, Canada
+  source_url: https://commons.wikimedia.org/wiki/File:Buteo lagopus (46030903972).jpg
+  commons_filename: Buteo lagopus (46030903972).jpg
+- role: secondary
+  path: Q26407/secondary-2.jpg
+  width: 1800
+  height: 1199
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/70957937@N00">David
+    A Mitchell</a> from Calgary, Canada
+  source_url: https://commons.wikimedia.org/wiki/File:Buteo lagopus (45356682994).jpg
+  commons_filename: Buteo lagopus (45356682994).jpg
+review_status: approved
+review_notes: Hero approved 2026-05-04 via hero_review HTML.
+generated_at: '2026-05-04T12:14:53.023816+00:00'
+sources:
+  wikipedia_sv_revision: '59200674'
+  wikipedia_en_revision: '1344375918'
+  claude_model: claude-haiku-4-5-20251001

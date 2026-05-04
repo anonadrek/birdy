@@ -1,0 +1,124 @@
+id: Q25380
+scientific_name: Accipiter nisus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Accipiter
+  ioc_order: Accipitriformes
+names:
+  sv: sparvhök
+  en: Eurasian Sparrowhawk
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sparvhök
+
+
+    Sparvhök är en liten rovfågel inom familjen hökar. Hanen är betydligt mindre än
+    honan – upp till 25 procent mindre, vilket är en av de största storleksskillnaderna
+    mellan könen inom fågelriket. Adulta hanar har blågrå ovansida och orangestreckad
+    undersida, medan honor och ungfåglar är bruna på ovansidan med brunstreckade undersidor.
+    Arten är specialiserad på att jaga fåglar, ofta i skogsmark, men förekommer även
+    i många andra biotoper inklusive större städer.
+
+
+    Sparvhöken är en snabb och smidig jägare som använder sin korta vingar och långa
+    stjärt för att manövrerar bland träd och buskar. Den lever av sitt rov och jaggar
+    framför allt mindre fåglar som sparvarna. Arten häckar i passande skogsområden
+    och utgör en av Europas vanligaste rovfåglar.
+
+
+    Sparvhöken förekommer från nordvästra Afrika till stora delar av det tempererade
+    och subtropiska Eurasien, vilket gör den till en vitt utbredd art över ett stort
+    geografiskt område.'
+  en: '# Eurasian Sparrowhawk
+
+
+    The Eurasian sparrowhawk is a small but formidable bird of prey with striking
+    sexual dimorphism. Males display bluish-grey upperparts with orange-barred underparts,
+    while females and juveniles are brown above with brown barring below. Remarkably,
+    females can be up to 25% larger than males—one of the most extreme size differences
+    between the sexes in any bird species. This size variation reflects their different
+    hunting strategies: males typically pursue smaller prey like tits, finches, and
+    sparrows, while females target larger birds such as thrushes and starlings, capable
+    of killing prey weighing over 500 grams.
+
+
+    Though the sparrowhawk specialises in woodland birds, it adapts readily to various
+    habitats and has become increasingly common in gardens and urban areas, where
+    it hunts at bird feeders and among shrubbery. Its agility and acceleration make
+    it a formidable hunter in confined spaces. The species hunts by stealth, using
+    woodland cover and hedgerows to approach prey before launching a swift attack
+    with precise aerial manoeuvrability.'
+migration:
+  sv: '# Sparvhök – Förekomst i Norden
+
+
+    Migrationsdata saknas för denna art.'
+  en: '# Eurasian Sparrowhawk (Accipiter nisus) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only information about the sparrowhawk''s appearance,
+    sexual dimorphism, and hunting behaviour, with no details regarding its seasonal
+    distribution, migration patterns, or occurrence throughout the year in Scandinavia
+    and Northern Europe.'
+image_refs:
+- role: hero
+  path: Q25380/hero.jpg
+  width: 2400
+  height: 1729
+  license: CC BY 4.0
+  author: caroline legg
+  source_url: https://commons.wikimedia.org/wiki/File:Sparrowhawk - Accipiter nisus
+    2.jpg
+  commons_filename: Sparrowhawk - Accipiter nisus 2.jpg
+- role: secondary
+  path: Q25380/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian sparrowhawk (Accipiter
+    nisus nisus) male.jpg
+  commons_filename: Eurasian sparrowhawk (Accipiter nisus nisus) male.jpg
+- role: secondary
+  path: Q25380/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Famberhorst" title="User:Famberhorst">Dominicus
+    Johannes Bergsma</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Door sperwer (Accipiter nisus)
+    gedode houtduif (Columba palumbus). Locatie, Natuurterrein De Famberhorst 01.jpg
+  commons_filename: Door sperwer (Accipiter nisus) gedode houtduif (Columba palumbus).
+    Locatie, Natuurterrein De Famberhorst 01.jpg
+review_status: approved
+review_notes: Hero approved 2026-05-04 via hero_review HTML.
+generated_at: '2026-05-04T12:14:52.945176+00:00'
+sources:
+  wikipedia_sv_revision: '57877004'
+  wikipedia_en_revision: '1349938735'
+  claude_model: claude-haiku-4-5-20251001

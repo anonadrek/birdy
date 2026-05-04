@@ -1,0 +1,136 @@
+id: Q170466
+scientific_name: Pernis apivorus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Pernis
+  ioc_order: Accipitriformes
+names:
+  sv: bivråk
+  en: European Honey Buzzard
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bivråk
+
+
+    Bivråk är en slank rovfågel från hökarfamiljen som trots sitt namn inte är närbesläktad
+    med vråkarna. Den är en långflyttare som häckar spritt i Europa och delar av Asien
+    innan den övervintrar i tropiska Afrika. Arten är lätt att förväxla med mindre
+    rovfåglar i flykten, men har ofta en karakteristisk smal och långsträckt silhuett.
+
+
+    Arten lever nästan uteslutande av insekter, särskilt larver och puppor från bin,
+    humlor och getingar, samt utvecklade bin och termiter. Denna specialisering gör
+    bivråken unik bland rovfåglarna. Den söker ofta sitt föda på marken eller från
+    träd, där det använder sin påtagligt långsträckta halshud för att skydda sig när
+    det ramar insektbon.
+
+
+    Bivråken är relativt tystlåten, men under häckningsperioden hörs ibland ett dovt
+    "piu"-ljud. Globalt minskar populationen, möjligen på grund av förändrad insektsförekomst
+    och habitatförlust, men arten anses fortfarande livskraftig. Det är en fågel som
+    uppskattas av naturintresserade för sin specifika levnadsstil och långväga flyttning.'
+  en: '# European Honey Buzzard
+
+
+    The European honey buzzard is a medium-sized raptor belonging to the hawk family.
+    It resembles a common buzzard but has a proportionally smaller head, longer neck,
+    and more slender wings, giving it a distinctive silhouette in flight. Plumage
+    varies considerably among individuals, ranging from pale to dark brown, often
+    with barred patterns on the wings and tail. A characteristic feature is the yellow
+    cere (the fleshy area around the nostrils) and pale eyes.
+
+
+    This specialized hunter feeds primarily on the larvae and pupae of wasps and bees,
+    using its thick plumage as protection against stings. It typically hunts by perching
+    and watching, then dropping to the ground to excavate nests. The species is migratory,
+    breeding in woodlands and forest edges across temperate regions before departing
+    for African wintering grounds.
+
+
+    The European honey buzzard is generally quiet, though it produces mewing calls
+    during breeding season. It often soars at height on thermal currents, where its
+    leisurely flight style and angled wing position help distinguish it from common
+    buzzards.'
+migration:
+  sv: '# Bivråk – Nordisk förekomst genom året
+
+
+    Bivråken är en långflyttare som anländer till Skandinavien och övriga Europa under
+    vårens senare del för att häcka. Arten ankomst äger rum framför allt under maj
+    månad. Efter häckningsperioden påbörjar bivråken sin långa höstflyttning redan
+    i slutet av juli och under augusti månad. Arten övervintra inte i norra Europa
+    utan flyger långväga till tropiska Afrika för att tillbringa vintern där. Bivråken
+    saknas helt från Scandinavia under oktober-april då arten befinner sig söder om
+    Sahara.'
+  en: '# European Honey Buzzard (Pernis apivorus) in Scandinavia/Northern Europe
+
+
+    The European Honey Buzzard is a summer visitor to Scandinavia and Northern Europe,
+    arriving in May and departing by September. This long-distance migratory raptor
+    breeds throughout the region during the warmer months, utilizing woodland and
+    forest habitats for nesting. The species undertakes an extensive autumn migration,
+    with Scandinavian populations traveling south to winter in sub-Saharan Africa.
+    Spring arrival typically occurs in late April to May as birds return from their
+    African wintering grounds. The species is largely absent from the region during
+    winter months, making it a characteristic breeding raptor of the northern summer
+    season.'
+image_refs:
+- role: hero
+  path: Q170466/hero.jpg
+  width: 1601
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Retired_electrician&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Retired electrician (page does not exist)">Retired electrician</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Moscow, Beloboka-2025 fundraiser
+    fair 2025-12-20, Pernis apivorus.jpg
+  commons_filename: Moscow, Beloboka-2025 fundraiser fair 2025-12-20, Pernis apivorus.jpg
+- role: secondary
+  path: Q170466/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pernis apivorus, Bresničićka
+    slatina.jpg
+  commons_filename: Pernis apivorus, Bresničićka slatina.jpg
+- role: secondary
+  path: Q170466/secondary-2.jpg
+  width: 1800
+  height: 1197
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Accipiter&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Accipiter (page does not exist)">Accipiter</a> (Rainer
+    Altenkamp, Berlin)
+  source_url: https://commons.wikimedia.org/wiki/File:Pernis apivorus i080515 w ad
+    080519.jpg
+  commons_filename: Pernis apivorus i080515 w ad 080519.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.924147+00:00'
+sources:
+  wikipedia_sv_revision: '59223975'
+  wikipedia_en_revision: '1346038370'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,103 @@
+id: Q233684
+scientific_name: Buteo rufinus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Buteo
+  ioc_order: Accipitriformes
+names:
+  sv: örnvråk
+  en: Long-legged Buzzard
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Long-legged Buzzard
+
+
+    The long-legged buzzard is a large raptor of the Buteo genus, widely distributed
+    across Eurasia and North Africa, from southeastern Europe through East Africa
+    to the Indian subcontinent. It is a robust and powerful hunter, though somewhat
+    sluggish in overall behaviour compared to other raptors. The species takes its
+    name from its notably long legs, which are a key identifying feature in the field.
+
+
+    This buzzard is an adaptable predator, primarily hunting small mammals such as
+    rodents, gerbils, ground squirrels, voles and rats. It also regularly takes reptiles,
+    birds, insects and carrion, making it a generalist feeder suited to varied environments.
+    It nests on diverse surfaces including cliffs, rocky outcrops and trees, displaying
+    typical buzzard breeding behaviour.
+
+
+    The long-legged buzzard inhabits open and semi-open landscapes across its wide
+    range, from lowlands to moderate elevations. Its population remains stable, and
+    it is classified as Least Concern by the IUCN. The species'' adaptability to different
+    habitats and flexible diet contribute to its success across such a broad geographic
+    range.'
+migration:
+  sv: ''
+  en: '# Long-legged Buzzard (Buteo rufinus) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text provided does not contain specific information about the occurrence,
+    migration patterns, or seasonal presence of the Long-legged Buzzard in Scandinavia
+    or Northern Europe. While the species is documented as widely distributed across
+    Eurasia and North Africa, detailed information regarding its migratory behavior,
+    overwintering status, or arrival periods in Scandinavian regions is not included
+    in the available source material.'
+image_refs:
+- role: hero
+  path: Q233684/hero.jpg
+  width: 1639
+  height: 2048
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Buteo rufinus 233696919.jpg
+  commons_filename: Buteo rufinus 233696919.jpg
+- role: secondary
+  path: Q233684/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:AlyonaKaptyonkina&amp;action=edit&amp;redlink=1"
+    class="new" title="User:AlyonaKaptyonkina (page does not exist)">AlyonaKaptyonkina</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Buteo rufinus in Kazakhstan2.jpg
+  commons_filename: Buteo rufinus in Kazakhstan2.jpg
+- role: secondary
+  path: Q233684/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:TwoWings" title="User:TwoWings">TwoWings</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Feather Buteo rufinus.jpg
+  commons_filename: Feather Buteo rufinus.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.081664+00:00'
+sources:
+  wikipedia_sv_revision: '57082589'
+  wikipedia_en_revision: '1348532973'
+  claude_model: claude-haiku-4-5-20251001

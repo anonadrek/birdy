@@ -1,0 +1,129 @@
+id: Q25572
+scientific_name: Circus cyaneus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Circus
+  ioc_order: Accipitriformes
+names:
+  sv: blå kärrhök
+  en: Hen Harrier
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Blå kärrhök
+
+
+    Blå kärrhök är en medelstor rovfågel som tillhör familjen hökar. Arten häckar
+    i våtmarker och jordbrukslandskap över stora delar av norra Europa och Asien.
+    Hanarna är gråblå till ljusgrå på ovansidan med vita undersidor, medan honorna
+    och ungfåglarna är bruna med ljusare streckad undersida. En viktig igenkänningsmärke
+    är de vita teckningarna på övergumpen, som syns väl när fågeln flyger.
+
+
+    Blå kärrhök är en skicklig jägare som glider lågt över marken när den söker efter
+    bytesdjur, främst mindre fåglar och gnagare. Arten är mycket elegant i flykten
+    med långa vingar och långa stjärt. Den är långsvansad och smäcker jämfört med
+    andra rovfåglar.
+
+
+    Beståndet av blå kärrhök har minskat under senare tid, men arten anses fortfarande
+    ha en livskraftig global population. Fågeln är huvudsakligen migratorisk över
+    mycket av sitt utbredningsområde och söker upp både öppna landskap och våtmarker
+    för häckning och övervintering.'
+  en: '# Hen Harrier
+
+
+    The hen harrier is a medium-sized bird of prey that hunts over open habitats including
+    marshes, grasslands, and moorland. It displays striking sexual dimorphism: males
+    are noticeably smaller with grey and white plumage and black wingtips, while females
+    are larger and predominantly brown with buff, barred underparts. Both sexes share
+    a characteristic white rump patch, particularly prominent in females and juveniles—a
+    useful field mark when watching it quarter low over open ground in its distinctive,
+    graceful hunting style.
+
+
+    This species is migratory across much of its range, vacating higher-altitude breeding
+    grounds in winter to move south. In milder regions, some birds remain year-round
+    residents. It breeds in open areas such as marshes and grasslands across Eurasia.
+    The hen harrier''s slender build and buoyant flight distinguish it from other
+    large raptors, making it relatively distinctive once observed in its preferred
+    open habitats.'
+migration:
+  sv: '# Blå kärrhök - Förekomst i Nordeuropa
+
+
+    Blå kärrhök är en migrerande art som häckar i norra Europa under sommaren och
+    flyttar söderut för att övervintra. I Skandinavien anländer arten vanligtvis på
+    våren, från april till maj, när den återvänder från sina övervintringskvartar
+    i södra Europa och Afrika. Under hösten påbörjar fåglarna sin avresa från juli
+    och in i september. Arten är således endast en säsongsboende häckfågel i nordiska
+    regioner och förekommer inte reguljärt under vintermånaderna, då den söker upp
+    märre snöfria områden med bättre tillgång till bytesdjur.'
+  en: '# Hen Harrier (Circus cyaneus) in Northern Europe
+
+
+    The Hen Harrier is a migratory raptor in Scandinavia and northern regions, though
+    migration patterns vary by location. Birds breeding in northern Eurasia migrate
+    southward in autumn, typically departing by September and October, leaving higher
+    altitudes largely empty during winter. Spring arrival occurs from March onwards
+    as temperatures rise. In milder areas such as southern Britain and France, some
+    populations remain resident year-round. Northern populations breeding in open
+    marshes and grasslands vacate their territories, moving to southern Europe and
+    beyond to avoid harsh winter conditions when prey becomes scarce.'
+image_refs:
+- role: hero
+  path: Q25572/hero.jpg
+  width: 2400
+  height: 2369
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Hen Harrier .Circus cyaneus
+    - Flickr - gailhampshire (1).jpg
+  commons_filename: Hen Harrier .Circus cyaneus - Flickr - gailhampshire (1).jpg
+- role: secondary
+  path: Q25572/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Circus cyaneus (39907167454).jpg
+  commons_filename: Circus cyaneus (39907167454).jpg
+- role: secondary
+  path: Q25572/secondary-2.jpg
+  width: 1800
+  height: 1331
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Hen Harrier. Circus cyaneus
+    - Flickr - gailhampshire.jpg
+  commons_filename: Hen Harrier. Circus cyaneus - Flickr - gailhampshire.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.029838+00:00'
+sources:
+  wikipedia_sv_revision: '59193262'
+  wikipedia_en_revision: '1332528608'
+  claude_model: claude-haiku-4-5-20251001

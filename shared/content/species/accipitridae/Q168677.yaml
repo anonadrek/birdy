@@ -1,0 +1,137 @@
+id: Q168677
+scientific_name: Aegypius monachus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Aegypius
+  ioc_order: Accipitriformes
+names:
+  sv: grågam
+  en: Cinereous Vulture
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Grågam
+
+
+    Grågam är en stor rovfågel som tillhör familjen hökar och representerar gamla
+    världens gamar. Det är en imponerande fågel med mörk fjäderdräkt, och det förekommer
+    lokalt i södra Europa samt i södra Asien ända till Kina och Tibet.
+
+
+    Arten har genomgått intressanta populationstrender. I Europa ökar antalet grågamar,
+    vilket representerar en positiv utveckling för arten. Motsatt trend ses dock i
+    Asien, där populationen minskar. Globalt klassificeras grågamen som nära hotad,
+    vilket återspeglar de utmaningar arten står inför på ett världsomfattande plan.
+
+
+    Grågamen är en arktypisk gamart som söker föda över stora områden från höga höjder
+    där det kan observeras seglande på termiska luftströmmar.'
+  en: '# Cinereous Vulture
+
+
+    The cinereous vulture is an enormous raptor and the largest vulture in the Old
+    World. It measures 1.2 metres in body length with a wingspan reaching 3.1 metres,
+    and weighs up to 14 kilograms. It is predominantly dark brown to blackish in plumage,
+    with a relatively bare head adapted for feeding on carrion without soiling its
+    feathers.
+
+
+    This vulture is a soaring specialist, spending much of its day riding thermal
+    currents at great heights while searching for dead animals. It often hunts cooperatively
+    with other vultures, and at carcasses it dominates smaller species due to its
+    massive size and strength. The bird is largely silent, though it may produce hisses
+    and grunts around food.
+
+
+    The cinereous vulture is distributed across temperate Eurasia, inhabiting mountainous
+    and open regions where it can find suitable updrafts for soaring flight. It prefers
+    areas with rocky cliffs for nesting and requires extensive wilderness with sufficient
+    food availability, making it sensitive to habitat loss and poisoning from contaminated
+    carcasses.'
+migration:
+  sv: '**Grågam - Förekomst i Norden**
+
+
+    Grågam är en mycket sällsynt gäst i Skandinavien och Northern Europa. Arten förekommer
+    normalt i södra Europa och södra Asien, men är inte en stannfågel eller vanlig
+    migrant i nordiska regioner. Observationer från Norden är mycket ovanliga och
+    representerar huvudsakligen vagabunderande individer långt från artens normala
+    utbredningsområde. Arten har ingen etablerad migrationsrutt genom eller till Skandinavien.
+
+
+    ---
+
+
+    **Note:** The source text provides no specific information about migration patterns,
+    seasonal occurrence, or movement patterns in Scandinavia/Northern Europe. The
+    species description only indicates its general geographic range (southern Europe
+    and southern Asia) but contains no temporal or migratory data relevant to Nordic
+    occurrence patterns.'
+  en: '# Cinereous Vulture in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text provides only general distribution information about the cinereous
+    vulture across temperate Eurasia and physical descriptions, but contains no specific
+    details regarding its occurrence, migration patterns, or seasonal movements in
+    Scandinavia and Northern Europe. To provide accurate information about this species''
+    phenology in the Nordic region, additional sources documenting its range limits,
+    vagrant records, and temporal occurrence would be needed.'
+image_refs:
+- role: hero
+  path: Q168677/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Monniksgier - cinereous vulture
+    - Aegypius monachus.jpg
+  commons_filename: Monniksgier - cinereous vulture - Aegypius monachus.jpg
+- role: secondary
+  path: Q168677/secondary-1.jpg
+  width: 1800
+  height: 1205
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%A5%D0%BE%D0%BC%D0%B5%D0%BB%D0%BA%D0%B0"
+    title="User:Хомелка">user:Хомелка</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aegypius monachus in Minsk Zoo.jpg
+  commons_filename: Aegypius monachus in Minsk Zoo.jpg
+- role: secondary
+  path: Q168677/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aegypius monachus, Bikaner,
+    Jorbeed JEG5014.jpg
+  commons_filename: Aegypius monachus, Bikaner, Jorbeed JEG5014.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.990216+00:00'
+sources:
+  wikipedia_sv_revision: '57107238'
+  wikipedia_en_revision: '1335846953'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,99 @@
+id: Q838162
+scientific_name: Torgos tracheliotos
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Torgos
+  ioc_order: Accipitriformes
+names:
+  sv: örongam
+  en: Lappet-faced Vulture
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Lappet-faced Vulture
+
+
+    The lappet-faced vulture is a massive Old World vulture, distinguishable by its
+    large, bare head and neck adorned with prominent fleshy lappets—loose folds of
+    skin that give the species its distinctive appearance. It is the sole surviving
+    member of its genus Torgos and belongs to the Accipitridae family, which encompasses
+    eagles, kites, buzzards, and hawks.
+
+
+    Unlike its superficially similar New World vulture cousins, the lappet-faced vulture
+    relies less on an acute sense of smell for locating food. Instead, it depends
+    on keen eyesight to spot carrion across open landscapes. It is typically seen
+    soaring at considerable heights, scanning the ground below for feeding opportunities.
+
+
+    This species inhabits arid and semi-arid regions where it searches for larger
+    carcasses. Its size and powerful build allow it to dominate other vultures at
+    feeding sites, making it a formidable scavenger in its range.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and morphological information
+    about the Lappet-faced Vulture, with no details regarding its occurrence, migration
+    patterns, or seasonal distribution in Scandinavia or Northern Europe. To provide
+    accurate information about this species'' presence in the region, additional sources
+    with specific biogeographical data would be required.'
+image_refs:
+- role: hero
+  path: Q838162/hero.jpg
+  width: 1603
+  height: 2400
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Lappet-faced vulture, Torgos
+    tracheliotos, at Kruger National Park, South Africa.jpg
+  commons_filename: Lappet-faced vulture, Torgos tracheliotos, at Kruger National
+    Park, South Africa.jpg
+- role: secondary
+  path: Q838162/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Lappet-faced vulture, Torgos
+    tracheliotos, at Kruger National Park, South Africa. - 49182403938.jpg
+  commons_filename: Lappet-faced vulture, Torgos tracheliotos, at Kruger National
+    Park, South Africa. - 49182403938.jpg
+- role: secondary
+  path: Q838162/secondary-2.jpg
+  width: 1800
+  height: 1198
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/7017570">Dirk
+    Froebel</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Torgos tracheliotos 288878816.jpg
+  commons_filename: Torgos tracheliotos 288878816.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.018306+00:00'
+sources:
+  wikipedia_sv_revision: '57107309'
+  wikipedia_en_revision: '1339353678'
+  claude_model: claude-haiku-4-5-20251001

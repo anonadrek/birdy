@@ -1,0 +1,123 @@
+id: Q168976
+scientific_name: Aquila heliaca
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Aquila
+  ioc_order: Accipitriformes
+names:
+  sv: kejsarörn
+  en: Eastern Imperial Eagle
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kejsarörn
+
+
+    Kejsarörn är en av Europas största rovfåglar och tillhör familjen hökar (Accipitridae).
+    Det är något mindre än kungsörnen, men imponerande stor och kraftfull. Kejsarörnen
+    har mörk brunt-svart fjäderdräkt och karakteristiska ljusare färgade partier på
+    nacke och skuldrorna, vilket gör det lätt att känna igen från andra större örnar.
+
+
+    Det är en sällsynt örn som förekommer främst i östra delen av sitt utbredningsområde.
+    Kejsarörnen föredrar öppna och halvöppna landskap där det finns både lämpliga
+    häckningsträd och god jaktmark. Det jagar huvudsakligen större fåglar och gnagare
+    från högt flykt, där det kan ses cirkulera majestätiskt på termiken.'
+  en: '# Eastern Imperial Eagle
+
+
+    The eastern imperial eagle is a large, dark eagle with feathered legs characteristic
+    of the genus Aquila. It is typically the darkest eagle species in its range, with
+    a powerful build suited to its predatory lifestyle. This impressive raptor breeds
+    across southeastern Europe and Central Asia, with most populations migrating to
+    northeastern Africa, the Middle East, and South and East Asia for winter.
+
+
+    An opportunistic hunter, it preys primarily on small mammals but also takes birds,
+    reptiles, and carrion. It shows a strong preference for the interface between
+    tall woodlands and open plains, particularly in steppe habitats and wooded mosaics.
+    Nesting occurs in large, mature trees where pairs typically raise one or two fledglings
+    per season.
+
+
+    The species faces significant conservation challenges. Its global population remains
+    small and is declining due to persecution, habitat loss, and reduced prey availability.
+    It has been listed as Vulnerable by the IUCN since 1994, making it a species of
+    considerable conservation concern across its range.'
+migration:
+  sv: Kejsarörn är en långdistansflyttare som huvudsakligen förekommer i Scandinavia
+    under våren och hösten under migration. Arten häckar inte regelmässigt i Nordeuropa
+    men observeras sporadiskt under flyttningsperioderna, särskilt under mars-april
+    och augusti-september. Kejsarörnen övervintrarar inte i Skandinavien utan söker
+    sig till Afrika och södra Asien för att tillbringa vintern. De få observationer
+    som gjorts i norra Europa under andra årstider utgör undantag från arten normala
+    utbredningsmönster.
+  en: '# Eastern Imperial Eagle (Aquila heliaca) in Scandinavia/Northern Europe
+
+
+    The Eastern Imperial Eagle is an extremely rare visitor to Scandinavia and Northern
+    Europe. This species breeds in southeastern Europe and across West and Central
+    Asia, with most populations being highly migratory. While the species winters
+    in northeastern Africa, the Middle East, and South and East Asia, it only occasionally
+    appears in Scandinavian countries during migration periods, typically as a vagrant
+    or accidental visitor. There is no established regular occurrence or overwintering
+    population in Northern Europe. Records in the region are sporadic and unpredictable,
+    making this species of limited significance for Northern European bird guides.'
+image_refs:
+- role: hero
+  path: Q168976/hero.jpg
+  width: 2400
+  height: 1590
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eastern Imperial Eagle Aquila
+    heliaca from Desert National Park, Rajasthan JEG7346.jpg
+  commons_filename: Eastern Imperial Eagle Aquila heliaca from Desert National Park,
+    Rajasthan JEG7346.jpg
+- role: secondary
+  path: Q168976/secondary-1.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Imperial Eagle Aquila heliaca
+    and cattle egrets in flight Bikaner Jorbeed JEG5174.jpg
+  commons_filename: Imperial Eagle Aquila heliaca and cattle egrets in flight Bikaner
+    Jorbeed JEG5174.jpg
+- role: secondary
+  path: Q168976/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Imperial Eagle Aquila heliaca
+    and cattle egrets in flight Bikaner Jorbeed JEG5176.jpg
+  commons_filename: Imperial Eagle Aquila heliaca and cattle egrets in flight Bikaner
+    Jorbeed JEG5176.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.912634+00:00'
+sources:
+  wikipedia_sv_revision: '58698362'
+  wikipedia_en_revision: '1349866223'
+  claude_model: claude-haiku-4-5-20251001

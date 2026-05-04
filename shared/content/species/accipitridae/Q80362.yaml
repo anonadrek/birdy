@@ -1,0 +1,121 @@
+id: Q80362
+scientific_name: Milvus migrans
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Milvus
+  ioc_order: Accipitriformes
+names:
+  sv: brun glada
+  en: Black Kite
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brun glada
+
+
+    Brun glada är sannolikt världens vanligaste rovfågel och förekommer vitt utbredd
+    över Europa, Asien, Afrika och Australien. Arten tillhör hökarfamiljen och är
+    väl anpassad till att leva i närheten av människan.
+
+
+    I tropiska områden ses brun glada ofta i stora antal, särskilt vid soptippar och
+    avstjälpningsplatser där den söker föda. Arten är mycket opportunistisk när det
+    gäller mat och utnyttjar gärna människans avfallsområden. Detta gör den till en
+    framgångsrik rovfågel som trivs väl i urbaniserade miljöer.
+
+
+    Arten är känd för sin skicklighet i luften och sitt distinktiva flygbeteende med
+    karakteristisk vingslängning under segling.'
+  en: '# Black Kite
+
+
+    The black kite is a medium-sized raptor and likely the world''s most abundant
+    bird of prey. It belongs to the hawk family, which encompasses numerous diurnal
+    raptors. With global population estimates reaching 6.7 million individuals, it
+    is remarkably widespread, though some regional populations have experienced significant
+    declines or fluctuations in numbers.
+
+
+    As a skilled hunter, the black kite exploits diverse habitats and food sources,
+    contributing to its success across much of the world. Its adaptability and widespread
+    distribution make it a familiar sight to birdwatchers in many regions, though
+    conservation efforts remain important for maintaining stable populations where
+    numbers have become vulnerable.'
+migration:
+  sv: '# Brun glada i Skandinavien och Nordeuropa
+
+
+    Brun glada är en sällsynt besökare i Skandinavien och Nordeuropa. Arten förekommer
+    framför allt under hösten som en genomflyttare, särskilt i södra Sverige och Danmark,
+    där enstaka individer observeras under augusti till oktober. Arten är huvudsakligen
+    häckvåg från Sydeuropa och Medelhavsregionen. Under vinterhalvåret övervintrarar
+    brun glada i Afrika och södra Asien, medan några få individer sporadiskt dyker
+    upp under senhösten och vintern i nordliga delen av sitt gamla världsutbredningsområde.'
+  en: '# Black Kite (*Milvus migrans*) in Northern Europe
+
+
+    The Black Kite is a rare and irregular visitor to Scandinavia and Northern Europe,
+    appearing primarily during spring and autumn migration periods. While the species
+    is a long-distance migrant across much of its Eurasian range, it does not establish
+    regular breeding populations in Scandinavian countries. Occasional sightings occur
+    in southern Scandinavia, particularly during May and September, likely representing
+    birds dispersing from breeding grounds in central and eastern Europe. Overwintering
+    in the region is extremely rare, as the vast majority of populations migrate to
+    Africa.'
+image_refs:
+- role: hero
+  path: Q80362/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/stuutje/">Tim
+    Sträter</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Milvus migrans head.jpg
+  commons_filename: Milvus migrans head.jpg
+- role: secondary
+  path: Q80362/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%E3%83%8E%E3%83%9C%E3%83%9B%E3%82%B7%E3%83%A7%E3%82%B3%E3%83%AD%E3%83%88%E3%82%BD&amp;action=edit&amp;redlink=1"
+    class="new" title="User:ノボホショコロトソ (page does not exist)">ノボホショコロトソ</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Milvus migrans in flight in
+    Kochi Prefecture 71.jpg
+  commons_filename: Milvus migrans in flight in Kochi Prefecture 71.jpg
+- role: secondary
+  path: Q80362/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%E3%83%8E%E3%83%9C%E3%83%9B%E3%82%B7%E3%83%A7%E3%82%B3%E3%83%AD%E3%83%88%E3%82%BD&amp;action=edit&amp;redlink=1"
+    class="new" title="User:ノボホショコロトソ (page does not exist)">ノボホショコロトソ</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Milvus migrans in flight in
+    Kochi Prefecture 72.jpg
+  commons_filename: Milvus migrans in flight in Kochi Prefecture 72.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.937667+00:00'
+sources:
+  wikipedia_sv_revision: '57857737'
+  wikipedia_en_revision: '1344343121'
+  claude_model: claude-haiku-4-5-20251001

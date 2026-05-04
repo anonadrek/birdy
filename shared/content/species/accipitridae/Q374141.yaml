@@ -1,0 +1,103 @@
+id: Q374141
+scientific_name: Aquila rapax
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Aquila
+  ioc_order: Accipitriformes
+names:
+  sv: Savannörn
+  en: Tawny Eagle
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Tawny Eagle
+
+
+    The tawny eagle is a large bird of prey belonging to the booted eagle subfamily,
+    identifiable by its heavily feathered legs. It displays warm brown plumage typical
+    of its name. This opportunistic hunter inhabits open dry landscapes across much
+    of Africa and the Indian subcontinent, favouring semideserts, steppes, and savanna
+    plains, though it requires scattered trees rather than completely barren terrain.
+
+
+    Remarkably adaptable in its feeding habits, the tawny eagle is among the most
+    opportunistic of all booted eagles. It hunts a diverse range of prey actively
+    and boldly, but equally readily scavenges carrion or steals food from other predators
+    through kleptoparasitism. The species breeds as a resident, typically laying one
+    to three eggs in stick nests built in tree crowns. It can live up to 16 years
+    in the wild.
+
+
+    Unfortunately, tawny eagle populations have declined dramatically throughout their
+    range. Habitat loss from logging, climate change, persecution, and other human-caused
+    mortality have pushed this once-numerous species towards possible extinction,
+    making conservation efforts increasingly urgent.'
+migration:
+  sv: ''
+  en: '**Migration data unavailable for this species.**
+
+
+    The source text provides no information about the Tawny Eagle''s occurrence in
+    Scandinavia or Northern Europe, nor does it contain any details about migration
+    patterns, seasonal movements, or overwintering behaviour in these regions. The
+    species is described as a resident breeder across Africa and the Indian subcontinent,
+    but its presence in or passage through Scandinavian or Northern European territories
+    is not mentioned in the provided text.'
+image_refs:
+- role: hero
+  path: Q374141/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tawny eagle (Aquila rapax).jpg
+  commons_filename: Tawny eagle (Aquila rapax).jpg
+- role: secondary
+  path: Q374141/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/7874649@N03">Regina
+    Hart</a> from Industry, United States
+  source_url: https://commons.wikimedia.org/wiki/File:Aquila rapax on a tree, sunset
+    (40634036312).jpg
+  commons_filename: Aquila rapax on a tree, sunset (40634036312).jpg
+- role: secondary
+  path: Q374141/secondary-2.jpg
+  width: 1366
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Tawny Eagle, Aquila rapax that
+    we believe had caught a red billed buffalo weaver (Kruger National Park) (19989702949).jpg
+  commons_filename: Tawny Eagle, Aquila rapax that we believe had caught a red billed
+    buffalo weaver (Kruger National Park) (19989702949).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.062297+00:00'
+sources:
+  wikipedia_sv_revision: '57082794'
+  wikipedia_en_revision: '1340915346'
+  claude_model: claude-haiku-4-5-20251001

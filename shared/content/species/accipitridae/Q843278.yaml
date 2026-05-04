@@ -1,0 +1,104 @@
+id: Q843278
+scientific_name: Melierax metabates
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Melierax
+  ioc_order: Accipitriformes
+names:
+  sv: mörk sånghök
+  en: Dark Chanting Goshawk
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Dark Chanting Goshawk
+
+
+    The dark chanting goshawk is a medium-sized raptor with predominantly grey plumage
+    and striking orange-red cere and legs that make it distinctive in flight. It has
+    a relatively long tail and shorter, rounded wings adapted for maneuvering through
+    woodland and savanna environments. The species is notably vocal for a raptor,
+    producing loud, far-carrying calls that give it its common name.
+
+
+    This goshawk inhabits open woodlands, savannas, and semi-arid regions across much
+    of sub-Saharan Africa, with a small declining population persisting in southern
+    Morocco. It hunts from perches or while soaring, preying on small mammals, birds,
+    and reptiles. The species is often seen perched conspicuously on dead trees or
+    termite mounds, where it calls frequently during the day—a behavior unusual among
+    most hawks.
+
+
+    The dark chanting goshawk remains relatively common throughout much of its range,
+    though the isolated North African population faces ongoing conservation concerns.
+    Its vocal nature and habit of hunting from exposed perches make it more conspicuous
+    than many other raptors in its habitat.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Dark Chanting Goshawk is a resident species of sub-Saharan Africa and southern
+    Arabia, with no regular occurrence in Scandinavia or Northern Europe. The species
+    is not migratory within its African range and does not naturally reach Nordic
+    or northern European territories. Therefore, migration patterns specific to Scandinavian
+    regions cannot be documented.'
+image_refs:
+- role: hero
+  path: Q843278/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:GANSO_Rockis_G%C3%A9rovenso_S%C3%A8dodjitch%C3%A9"
+    class="mw-redirect" title="User:GANSO Rockis Gérovenso Sèdodjitché">GANSO Rockis
+    Gérovenso Sèdodjitché</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Melierax metabates (juvenile),
+    Pendjari National Park, Benin.jpg
+  commons_filename: Melierax metabates (juvenile), Pendjari National Park, Benin.jpg
+- role: secondary
+  path: Q843278/secondary-1.jpg
+  width: 1407
+  height: 1800
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Dark Chanting-Goshawk (Melierax
+    metabates) (52959591513).jpg
+  commons_filename: Dark Chanting-Goshawk (Melierax metabates) (52959591513).jpg
+- role: secondary
+  path: Q843278/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Dark Chanting Goshawk (Melierax
+    metabates) juvenile (12907373035).jpg
+  commons_filename: Dark Chanting Goshawk (Melierax metabates) juvenile (12907373035).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.095188+00:00'
+sources:
+  wikipedia_sv_revision: '58474447'
+  wikipedia_en_revision: '1314038057'
+  claude_model: claude-haiku-4-5-20251001

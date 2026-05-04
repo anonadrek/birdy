@@ -1,0 +1,130 @@
+id: Q33504
+scientific_name: Neophron percnopterus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Neophron
+  ioc_order: Accipitriformes
+names:
+  sv: smutsgam
+  en: Egyptian Vulture
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: "# Smutsgam\n\nSmutsgam är en karakteristisk liten gam som förekommer i södra\
+    \ Europa, norra Afrika och Asien ända till Indien. Det är en distinkt art med\
+    \ vit huvud- och halsfärgning och mörka vingfjädrar, vilket gör det lätt att identifiera\
+    \ under flykt. \n\nArten häckar på klippiga platser och förekommer ofta på öppna\
+    \ landskap där det finns tillgång till kadaver. Smutsgam är migratorisk och flyttar\
+    \ mellan häcknings- och övervintringsområden. Det är en skicklig segelflygare\
+    \ som ofta ses cirklande på termik tillsammans med andra gamarter.\n\nArten har\
+    \ minskat dramatiskt i antal och kategoriseras som starkt hotad av IUCN. Denna\
+    \ nedgång beror på flera faktorer, inklusive förgiftning från giftiga jägarammunition,\
+    \ habitatförlust och tillgängligheten av döda djur."
+  en: '# Egyptian Vulture
+
+
+    The Egyptian vulture is a small Old World vulture with a distinctive appearance
+    in flight. Its most striking feature is the contrasting underwing pattern combined
+    with a wedge-shaped tail, making it easily recognizable as it soars effortlessly
+    on thermals during warm daylight hours. The species belongs to the monotypic genus
+    Neophron within the hawk family.
+
+
+    This opportunistic feeder primarily scavenges carrion but supplements its diet
+    with small mammals, birds, and reptiles when available. Remarkably, it demonstrates
+    tool use by breaking large eggs—tossing pebbles onto them to access the contents.
+    This unusual feeding behavior is one of few documented examples of tool use in
+    raptors.
+
+
+    The Egyptian vulture is widely distributed across the Old World, ranging from
+    the Iberian Peninsula through North Africa and West Asia to India. It favors open
+    and semi-open landscapes where thermals develop reliably, allowing it to hunt
+    efficiently with minimal energy expenditure. The species is typically seen soaring
+    singly or in small groups during the warmest parts of the day, when thermal currents
+    are strongest.'
+migration:
+  sv: '# Smutsgam i Skandinavien och Norra Europa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Smutsgamen är en mycket sällsynt fågel i Skandinavien och Norra Europa. Arten
+    häckar i södra Europa, norra Afrika och Asien, men förekommer inte regelbundet
+    i nordiska regioner. Det finns inga väletablerade migrations- eller övervintringsmönster
+    dokumenterade för Skandinavien, då arten normalt stannar inom sitt huvudsakliga
+    utbredningsområde i södern. För information om denna arts förekomst i Norra Europa
+    rekommenderas att konsultera regionala fågelkällor.'
+  en: '# Egyptian Vulture (Neophron percnopterus) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Egyptian Vulture has an extremely limited presence in Northern Europe and
+    Scandinavia. While the species is widely distributed across southern Europe, North
+    Africa, West Asia, and India, it does not naturally occur as a regular migrant
+    or resident in Scandinavian or Northern European regions. Any sightings in these
+    areas would represent rare vagrants far outside the species'' normal range. The
+    provided source material contains no information regarding migration patterns,
+    seasonal occurrence, or movements specific to Northern Europe.'
+image_refs:
+- role: hero
+  path: Q33504/hero.jpg
+  width: 2048
+  height: 1739
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/martin_ingemansson">martin_ingemansson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Egyptian Vulture (Neophron percnopterus),
+    Kukës District, Albania 2.jpg
+  commons_filename: Egyptian Vulture (Neophron percnopterus), Kukës District, Albania
+    2.jpg
+- role: secondary
+  path: Q33504/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43423936@N08">Siddhartha
+    Lammata</a> from Bangalore, India
+  source_url: https://commons.wikimedia.org/wiki/File:Neophron percnopterus -Indira
+    Gandhi Zoological Park, Visakhapatnam, India-8.jpg
+  commons_filename: Neophron percnopterus -Indira Gandhi Zoological Park, Visakhapatnam,
+    India-8.jpg
+- role: secondary
+  path: Q33504/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Till.niermann" title="User:Till.niermann">Till
+    Niermann</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Neophron percnopterus Cologne
+    Zoo.jpg
+  commons_filename: Neophron percnopterus Cologne Zoo.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.174797+00:00'
+sources:
+  wikipedia_sv_revision: '58833680'
+  wikipedia_en_revision: '1346134920'
+  claude_model: claude-haiku-4-5-20251001

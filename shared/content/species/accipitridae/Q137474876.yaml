@@ -1,0 +1,127 @@
+id: Q137474876
+scientific_name: Astur gentilis
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Astur
+  ioc_order: Accipitriformes
+names:
+  sv: null
+  en: Eurasian Goshawk
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Duvhök
+
+
+    Duvhöken är en medelstor men kraftfull rovfågel som tillhör hökarfamiljen. Den
+    kännetecknas av en robust byggnad med korta, breda vingar och en lång stjärt,
+    vilket ger den utmärkt manövrering i tät vegetation. Fjäderdräkten är mörkgrå
+    på ovansidan och vitaktig med tvärbanden på undersidan. Ögonen är gula till röda,
+    vilket ger den en intensiv blick.
+
+
+    Arten är en skicklig jägare som ofta använder överraskningstaktik för att fånga
+    sitt byte, vanligtvis större fåglar och små däggdjur. Den är snabb och wendig
+    och jagar ofta från skydd i träden. Duvhöken är vidare utbredd över tempererade
+    områden i Europa och Asien, där den förekommer i skogsmiljöer och blandad terräng.
+    Arten har återhämtat sig väl efter tidigare minskningar och klassificeras som
+    stabil av bevarandebehörigheter.'
+  en: '# Eurasian Goshawk
+
+
+    The Eurasian goshawk is a formidable medium-large raptor belonging to the hawk
+    family Accipitridae. It features the characteristic short, broad wings and long
+    tail typical of forest-dwelling raptors, which enable swift, agile flight through
+    woodland. Adults typically display slate-grey upperparts with pale underparts
+    barred in darker tones, while juveniles appear browner with heavier streaking.
+    The species is widespread across temperate Eurasia, inhabiting forested regions
+    where it hunts medium-sized birds and small mammals with remarkable aerial skill.
+
+
+    A highly powerful predator, the goshawk is often solitary and secretive, favouring
+    dense woodland where it hunts from perches or pursues prey through trees at speed.
+    It is primarily resident throughout much of its range, though birds from colder
+    northern regions migrate southward during winter. Its call is a harsh, rapid series
+    of notes, typically heard during breeding season or when defending territory.
+
+
+    The goshawk remains one of the most impressive woodland raptors, though its secretive
+    nature makes it challenging to observe. Where it occurs, it is often the only
+    goshawk species present, making identification straightforward for those fortunate
+    enough to encounter it.'
+migration:
+  sv: '# Duvhökens förekomst i Norden året runt
+
+
+    Duvhöken är en året-runt stationär art i Skandinavien och Nordeuropa, där den
+    är bosatt i skogsrika områden. Den utgör en naturlig del av rovfågelfaunan i regionen
+    under alla årstider. Populationen består dock delvis av flyttfåglar från östligare
+    delar av utbredningsområdet, vilket kan medföra variationer i beståndsstorlek
+    mellan årstiderna. Nordiska duvhökar som häckar i området stannar generellt kvar
+    genom vintern, medan några individer från östeuropeiska populationer kan vandra
+    västerut under hårdare vintrar, vilket gör arten mer talrik under vissa år.'
+  en: '# Eurasian Goshawk (Astur gentilis) in Northern Europe
+
+
+    The Eurasian Goshawk is primarily a resident species throughout Scandinavia and
+    Northern Europe, with birds remaining year-round in many areas. However, populations
+    from the coldest regions, particularly in northern Scandinavia and Russia, migrate
+    southward during winter months to escape severe conditions. These northern birds
+    typically depart in autumn (September-October) and return in spring (March-April).
+    Southern and central Scandinavian populations are largely sedentary, though some
+    local movements occur in response to prey availability and weather conditions.'
+image_refs:
+- role: hero
+  path: Q137474876/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/101181388@N07">Jevgenijs
+    Slihto</a> from Riga, Latvia
+  source_url: https://commons.wikimedia.org/wiki/File:Accipiter gentilis, Kronvalda
+    Park, Riga, Latvia.jpg
+  commons_filename: Accipiter gentilis, Kronvalda Park, Riga, Latvia.jpg
+- role: secondary
+  path: Q137474876/secondary-1.jpg
+  width: 1563
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2124083">Олег
+    Юмашев</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Accipiter gentilis 250245803.jpg
+  commons_filename: Accipiter gentilis 250245803.jpg
+- role: secondary
+  path: Q137474876/secondary-2.jpg
+  width: 1440
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/6284859">Рамзан</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Accipiter gentilis 248241022.jpg
+  commons_filename: Accipiter gentilis 248241022.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.972615+00:00'
+sources:
+  wikipedia_sv_revision: '59124271'
+  wikipedia_en_revision: '1347650748'
+  claude_model: claude-haiku-4-5-20251001

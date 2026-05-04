@@ -1,0 +1,90 @@
+id: Q114338
+scientific_name: Tachyspiza brevipes
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Accipiter
+  ioc_order: Accipitriformes
+names:
+  sv: Balkanhök
+  en: Levant Sparrowhawk
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Levant Sparrowhawk
+
+
+    The Levant sparrowhawk is a compact bird of prey, measuring 32–38 cm in length
+    with a wingspan of 65–75 cm. Females are noticeably larger than males, though
+    less dramatically so than in the closely related Eurasian sparrowhawk. Adult males
+    display distinctive blue-grey plumage on the upperparts with dark wingtips, while
+    the underparts feature reddish barring. Females tend to be browner above.
+
+
+    This small raptor hunts with agility and speed, taking small birds and occasionally
+    insects in flight. It favours open and semi-open habitats where it can manoeuvre
+    swiftly through the air. The species is migratory in parts of its range, moving
+    seasonally between breeding and wintering grounds. Its hunting style is characteristic
+    of sparrowhawks, relying on surprise and quick acceleration rather than sustained
+    pursuit.
+
+
+    Little detailed information is readily available about its vocalizations and specific
+    behaviour compared to more widely studied sparrowhawk species, though it shares
+    many habits with its close relatives. The Levant sparrowhawk inhabits woodland
+    edges, cultivated areas, and scrubland across portions of southern Europe and
+    western Asia, where keen observers may spot it perched watchfully or coursing
+    low over vegetation in search of prey.'
+migration:
+  sv: ''
+  en: '# Levant Sparrowhawk in Northern Europe
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q114338/hero.jpg
+  width: 1788
+  height: 2048
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/668311">Afsar
+    Nayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tachyspiza brevipes - Afsar
+    Nayakkan - 449110324.jpeg
+  commons_filename: Tachyspiza brevipes - Afsar Nayakkan - 449110324.jpeg
+- role: secondary
+  path: Q114338/secondary-1.jpg
+  width: 1572
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Levant sparrowhawk (Tachyspiza
+    brevipes ) 6.jpg
+  commons_filename: Levant sparrowhawk (Tachyspiza brevipes ) 6.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.180842+00:00'
+sources:
+  wikipedia_sv_revision: '57082324'
+  wikipedia_en_revision: '1333542055'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,97 @@
+id: Q499568
+scientific_name: Aquila adalberti
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Aquila
+  ioc_order: Accipitriformes
+names:
+  sv: Spansk kejsarörn
+  en: Spanish Imperial Eagle
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Spanish Imperial Eagle
+
+
+    The Spanish imperial eagle is a large, powerful raptor native to the Iberian Peninsula.
+    It is a dark brown eagle with distinctive pale patches on the shoulders and upper
+    back—features that earned it the alternative name "white-shouldered eagle" in
+    older literature. These striking "epaulettes" are among its most recognizable
+    characteristics, helping distinguish it from other large eagles in its range.
+
+
+    This species is a formidable hunter adapted to open and semi-open landscapes.
+    It hunts from the air, targeting medium-sized prey across its habitat. The bird
+    is generally solitary or seen in pairs, often perched prominently or soaring at
+    considerable heights while searching for food. Its behavior reflects the ecology
+    of its native region, where it has evolved to thrive in specific environmental
+    conditions.
+
+
+    Little detailed information about vocalizations is provided in the source material,
+    though like most eagles it likely produces calls during breeding and territorial
+    interactions. This species remains restricted to the Iberian Peninsula, where
+    conservation efforts have focused on protecting its population and suitable breeding
+    habitats. The scientific name honors Prince Adalbert of Bavaria, commemorating
+    his historical significance in the species'' identification and study.'
+migration:
+  sv: ''
+  en: '# Spanish Imperial Eagle (Aquila adalberti) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Spanish Imperial Eagle is native to the Iberian Peninsula and does not naturally
+    occur in Scandinavia or Northern Europe. This species is resident in its Mediterranean
+    and Iberian range and has no established migration pattern to northern European
+    regions. Therefore, no information on seasonal occurrence, arrival months, or
+    overwintering in Scandinavian territories can be provided.'
+image_refs:
+- role: hero
+  path: Q499568/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Drow_male" title="User:Drow male">Fernando
+    Losada Rodríguez</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aquila adalberti.001 - Avifauna.jpg
+  commons_filename: Aquila adalberti.001 - Avifauna.jpg
+- role: secondary
+  path: Q499568/secondary-1.jpg
+  width: 1800
+  height: 1012
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Juan_lacruz" class="mw-redirect"
+    title="User:Juan lacruz">Juan Lacruz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aquila adalberti 2014-02-08
+    2.jpg
+  commons_filename: Aquila adalberti 2014-02-08 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.949685+00:00'
+sources:
+  wikipedia_sv_revision: '57082798'
+  wikipedia_en_revision: '1334780508'
+  claude_model: claude-haiku-4-5-20251001

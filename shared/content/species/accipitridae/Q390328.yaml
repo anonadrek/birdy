@@ -1,0 +1,100 @@
+id: Q390328
+scientific_name: Micronisus gabar
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Micronisus
+  ioc_order: Accipitriformes
+names:
+  sv: gabarhök
+  en: Gabar Goshawk
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gabarhök
+
+
+    Gabarhök är en liten rovfågel som förekommer uteslutande i Afrika. Det är en medlem
+    av familjen hökar och tillhör ordningen hökfåglar. Arten är klassificerad som
+    livskraftig enligt IUCN.
+
+
+    Denna lilla hök är anpassad för jakt i öppen och halvöppen terräng. Det är en
+    smidig rovfågel som bygger sitt reveir där det finns lämplig miljö för att hitta
+    sitt byten. Arten är väl anpassad till afrikanska förhållanden och har utvecklats
+    för att klara sina specifika jaktbehov.
+
+
+    Gabarhöken är en relativt okänd art för många fågelskådare utanför Afrika, men
+    utgör en viktig del av sitt lokala ekosystem som rovfågel.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (Gabarhöken är en afrikansk art som inte förekommer naturligt i Skandinavien eller
+    Nordeuropa, varför migrationsinformation för denna region är irrelevant.)'
+  en: ''
+image_refs:
+- role: hero
+  path: Q390328/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/150102727@N06/">Nina
+    R</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a href="//commons.wikimedia.org/wiki/File:Gabarhabicht_(Micronisus_gabar_aequatorius),_Seitenansicht.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Gabarhabicht (Micronisus gabar
+    aequatorius), Seitenansicht.jpg
+  commons_filename: Gabarhabicht (Micronisus gabar aequatorius), Seitenansicht.jpg
+- role: secondary
+  path: Q390328/secondary-1.jpg
+  width: 1800
+  height: 1163
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Gabar goshawk, Micronisus gabar,
+    at Pilanesberg National Park, Northwest Province, South Africa (28572639022).jpg
+  commons_filename: Gabar goshawk, Micronisus gabar, at Pilanesberg National Park,
+    Northwest Province, South Africa (28572639022).jpg
+- role: secondary
+  path: Q390328/secondary-2.jpg
+  width: 1800
+  height: 1243
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Gabar goshawk, Micronisus gabar,
+    at Pilanesberg National Park, Northwest Province, South Africa (28572634552).jpg
+  commons_filename: Gabar goshawk, Micronisus gabar, at Pilanesberg National Park,
+    Northwest Province, South Africa (28572634552).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.056271+00:00'
+sources:
+  wikipedia_sv_revision: '57082558'
+  wikipedia_en_revision: '1313789443'
+  claude_model: claude-haiku-4-5-20251001

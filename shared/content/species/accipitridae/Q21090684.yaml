@@ -1,0 +1,120 @@
+id: Q21090684
+scientific_name: Clanga clanga
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Clanga
+  ioc_order: Accipitriformes
+names:
+  sv: Större skrikörn
+  en: Greater Spotted Eagle
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Större skrikörn
+
+
+    Större skrikörn är en rovfågel som tillhör familjen hökar, tillsammans med alla
+    örnar. Det är en art som häckar från Östeuropa och österut mot Kina. Populationen
+    är fåtalig och minskar i antal, vilket gör arten hotad globalt. Enligt IUCN är
+    större skrikörn klassificerad i hotkategorin sårbar, vilket indikerar att arten
+    står inför betydande naturskyddsutmaningar.'
+  en: '# Greater Spotted Eagle
+
+
+    The greater spotted eagle is a large, dark-brown bird of prey belonging to the
+    hawk family. It measures approximately 65-72 centimetres in length with a wingspan
+    reaching up to 1.9 metres. Adults are uniformly dark brown, sometimes appearing
+    almost black, with faint spotting on the wings and body that gives the species
+    its name. The bird has relatively short, broad wings and a medium-length tail,
+    characteristic features that aid identification in flight.
+
+
+    A migratory species, the greater spotted eagle travels between breeding grounds
+    in eastern Europe and Asia and wintering grounds in Africa and the Middle East.
+    It favours open and semi-open habitats including steppes, forests, and cultivated
+    areas where it hunts for prey from perches or in flight. The eagle typically feeds
+    on small mammals, birds, and amphibians, hunting with deliberate, powerful flight.
+
+
+    During breeding season, the species produces various calls including harsh screams
+    and yelping sounds. It nests in tall trees or on rocky outcrops, constructing
+    large stick nests that may be reused and enlarged over successive years. The greater
+    spotted eagle requires extensive, relatively undisturbed territories for successful
+    breeding and migration, making it susceptible to habitat loss and human disturbance.'
+migration:
+  sv: '# Större skrikörn - förekomst i Skandinavien/Nordeuropa
+
+
+    Större skrikörn är en östeuropeisk art som endast förekommer mycket sporadiskt
+    i Skandinavien och Nordeuropa. Arten häckar från Östeuropa österut och är därför
+    en ytterst sällsynt gäst i vårt område. Under flyttningen kan enstaka individer
+    observeras, särskilt under höstdragningen när ungfåglar sprider sig från häckningsområdena.
+    Det finns dock ingen etablerad population eller regelbound förekomst i Skandinavien.
+    Eventuella observationer är slumpartat förekommande vagabunder som anländer från
+    sina östeuropeiska häckningsområden.'
+  en: '# Greater Spotted Eagle (*Clanga clanga*) in Scandinavia/Northern Europe
+
+
+    The Greater Spotted Eagle is a rare but regular migrant through Scandinavia and
+    Northern Europe, appearing primarily during spring and autumn migration periods.
+    This large raptor breeds in eastern Europe and western Asia, with populations
+    passing through the region en route to and from African wintering grounds. Birds
+    typically arrive in spring (April-May) and depart in autumn (August-September),
+    making sightings in Scandinavia relatively uncommon. The species does not establish
+    breeding populations in Northern Europe and does not overwinter in the region,
+    occurring only as a transient visitor during migration corridors.'
+image_refs:
+- role: hero
+  path: Q21090684/hero.jpg
+  width: 2048
+  height: 1465
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Clanga clanga 91594689.jpg
+  commons_filename: Clanga clanga 91594689.jpg
+- role: secondary
+  path: Q21090684/secondary-1.jpg
+  width: 1800
+  height: 1287
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Clanga clanga 91218543.jpg
+  commons_filename: Clanga clanga 91218543.jpg
+- role: secondary
+  path: Q21090684/secondary-2.jpg
+  width: 1800
+  height: 1286
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Clanga clanga 91594684.jpg
+  commons_filename: Clanga clanga 91594684.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.955088+00:00'
+sources:
+  wikipedia_sv_revision: '57082762'
+  wikipedia_en_revision: '1347360339'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,123 @@
+id: Q1268375
+scientific_name: Butastur teesa
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Butastur
+  ioc_order: Accipitriformes
+names:
+  sv: vitögd vråk
+  en: White-eyed Buzzard
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitögd vråk
+
+
+    Vitögd vråk är en medelstor rovfågel från Sydöstasien som förekommer från sydöstra
+    Iran österut genom Indien till Burma. Det är en medlem av hökfamiljen och tillhör
+    ordningen hökfåglar.
+
+
+    Denna vråk är anpassad för att jaga i öppna och halvöppna landskap där det kan
+    ses sitta på torra grenar eller sväva högt upp i luften på jakt efter byten. Det
+    karakteriseras av sina ljusa ögon, vilka ger arten sitt namn. Fågeln är en skicklig
+    predator som följer sitt naturliga rovfågelbeteende.
+
+
+    Beståndssituationen för vitögd vråk anses stabila och arten klassificeras som
+    livskraftig, vilket innebär att populationen inte är hotad. Det återspeglar att
+    arten har lyckats anpassa sig väl till sina naturliga habitat inom sitt utbredningsområde
+    i Sydöstasien.'
+  en: '# White-eyed Buzzard
+
+
+    The white-eyed buzzard is a medium-sized hawk found across South Asia, easily
+    identified by its distinctive white iris and rufous tail. Adults display a brown
+    head and pale median coverts on the upper wings, with a white throat marked by
+    a dark central stripe. Unlike true buzzards, it lacks prominent carpal patches
+    beneath the wings, instead showing dark wing linings that contrast sharply with
+    the paler flight feathers.
+
+
+    This species is an active hunter, frequently spotted perching upright for extended
+    periods before launching into thermal soaring flights in search of insects and
+    small vertebrates. During the breeding season, it becomes particularly vocal,
+    and observers may hear several birds calling as they circle together on thermals.
+    This vocalisation is one of the most distinctive behavioural traits that can help
+    identify it in the field.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (The source text only describes the species'' geographic range in South Asia (southeastern
+    Iran through India to Burma) and does not contain any information about migration
+    patterns, seasonal occurrence, overwintering, or presence in Scandinavia/Northern
+    Europe.)'
+  en: '# White-eyed Buzzard in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The White-eyed Buzzard is a South Asian species with no documented occurrence
+    in Scandinavia or Northern Europe. This medium-sized raptor is resident to its
+    range in South Asia and does not migrate to European regions. Therefore, information
+    about seasonal presence, arrival months, or overwintering in Scandinavia/Northern
+    Europe cannot be provided, as this species does not occur there.'
+image_refs:
+- role: hero
+  path: Q1268375/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Davidvraju" title="User:Davidvraju">Davidvraju</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Butastur teesa by Davidraju
+    (2012).jpg
+  commons_filename: Butastur teesa by Davidraju (2012).jpg
+- role: secondary
+  path: Q1268375/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:White-eyed Buzzard Butastur
+    teesa by Raju Kasambe DSCN3886 03.jpg
+  commons_filename: White-eyed Buzzard Butastur teesa by Raju Kasambe DSCN3886 03.jpg
+- role: secondary
+  path: Q1268375/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:White-eyed Buzzard Butastur
+    teesa by Raju Kasambe DSCN3886 05.jpg
+  commons_filename: White-eyed Buzzard Butastur teesa by Raju Kasambe DSCN3886 05.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.998232+00:00'
+sources:
+  wikipedia_sv_revision: '57082586'
+  wikipedia_en_revision: '1315398950'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,108 @@
+id: Q747827
+scientific_name: Aquila verreauxii
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Aquila
+  ioc_order: Accipitriformes
+names:
+  sv: klippörn
+  en: Verreaux’s Eagle
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Klippörn
+
+
+    Klippörn är en stor rovfågel i familjen hökar som förekommer främst i Afrika söder
+    om Sahara, men även på Arabiska halvön. Den är huvudsakligen knuten till klippiga
+    bergstrakter, savann och halvöken där miljön erbjuder bra jaktförhållanden.
+
+
+    Arten är specialiserad på att jaga klippgrävling, vilket utgör huvuddelen av dess
+    diet. Klippörn är en effektiv jägare som patrullerar sina revir högt upp i luften
+    och använder sin styrka och precision för att fånga sitt byte. Den är väl anpassad
+    till sitt habitat och har ett stabilt bestånd.
+
+
+    Fågeln föredrar öppna och kuperade terränger där den kan få överblick och möjlighet
+    att anfalla sitt byte från höga höjder. Klippörn är ofta att se när den seglar
+    majestätiskt över bergiga områden och torra landsdelar.'
+  en: ''
+migration:
+  sv: '# Klippörn (Aquila verreauxii) - Förekomst i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Klippörn är en huvudsakligen afrikansk och mellanöstern fågel som inte förekommer
+    naturligt i Skandinavien eller Nordeuropa. Arten är stationär eller delvis flyttfågel
+    inom sitt naturliga utbredningsområde i Afrika söder om Sahara och på Arabiska
+    halvön, men har ingen etablerad förekomst i nordeuropeiska regioner. För information
+    om denna arts säsongsvariation rekommenderas att konsultera fältguider fokuserade
+    på afrikansk fågelfauna.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q747827/hero.jpg
+  width: 2400
+  height: 1427
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Verreaux's Eagle (Black Eagle),
+    Aquila verreauxii, at Walter Sisulu National Botanical Garden, Gauteng, South
+    Africa (28822888714).jpg
+  commons_filename: Verreaux's Eagle (Black Eagle), Aquila verreauxii, at Walter Sisulu
+    National Botanical Garden, Gauteng, South Africa (28822888714).jpg
+- role: secondary
+  path: Q747827/secondary-1.jpg
+  width: 1800
+  height: 1018
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Verreaux's Eagle. Black Eagle,
+    Aquila verreauxii, at Walter Sisulu National Botanical Garden, Gauteng, South
+    Africa (18987033114).jpg
+  commons_filename: Verreaux's Eagle. Black Eagle, Aquila verreauxii, at Walter Sisulu
+    National Botanical Garden, Gauteng, South Africa (18987033114).jpg
+- role: secondary
+  path: Q747827/secondary-2.jpg
+  width: 1800
+  height: 1208
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Verreaux's Eagle. Black Eagle,
+    Aquila verreauxii, at Walter Sisulu National Botanical Garden, Gauteng, South
+    Africa (19609395245).jpg
+  commons_filename: Verreaux's Eagle. Black Eagle, Aquila verreauxii, at Walter Sisulu
+    National Botanical Garden, Gauteng, South Africa (19609395245).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.195647+00:00'
+sources:
+  wikipedia_sv_revision: '57082777'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

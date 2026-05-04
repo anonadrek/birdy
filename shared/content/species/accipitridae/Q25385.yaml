@@ -1,0 +1,138 @@
+id: Q25385
+scientific_name: Buteo buteo
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Buteo
+  ioc_order: Accipitriformes
+names:
+  sv: ormvråk
+  en: Common Buzzard
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ormvråk
+
+
+    Ormvråk är en medelstor hökfågel och den vanligaste vråkarten i Europa och västra
+    Asien. Det är en robust rovfågel med mycket variabel fjäderdräkt som kan vara
+    brunaktig, grå eller melerad. Denna variation gör att den lätt förväxlas med närbesläktade
+    arter som bivråk och fjällvråk. Ormvråken ses ofta kretsa högt över terrängen
+    eller sitta upplyft på en utanför vägen medan det bevakar marken.
+
+
+    Arten häckar i skogar och dungar intill öppna områden där det kan jaga. Det är
+    en duktig rovfågel som tar smågnagare, fågelungar, reptiler, groddjur och även
+    daggmaskar. I stora delar av Europa är ormvråken stannfågel, men norr från häckar
+    flyttar bestånd söderut under vinterhalvåret.
+
+
+    Ormvråken är ofta vanlig och väl spridd över sitt utbredningsområde, och beståndet
+    anses vara livskraftigt. Det är därför en relativt lätt rovfågel att iaktta för
+    den intresserade fågelbeskådaren, särskilt under vår och höst när flera individer
+    kan ses tillsammans under flyttningen.'
+  en: '# Common Buzzard
+
+
+    The common buzzard is a medium-to-large bird of prey found across much of Europe
+    and extending eastward through the Palearctic region to northwestern China and
+    Mongolia. It belongs to the genus Buteo within the Accipitridae family. In warmer
+    parts of its range, it remains year-round, but birds from colder regions and eastern
+    populations typically migrate south during winter, with some traveling as far
+    south as Africa.
+
+
+    The species is versatile in its habitat use and hunting strategies. It often hunts
+    from elevated perches or while soaring, taking small mammals, birds, and other
+    prey. The common buzzard''s appearance varies considerably across its wide range,
+    with plumage ranging from pale to dark brown. In flight, it shows broad wings
+    and a relatively short tail, with a characteristic silhouette when soaring.
+
+
+    The species is vocal, particularly during breeding season, producing distinctive
+    mewing calls that resemble a cat''s cry—a sound that often draws attention to
+    circling birds. Its adaptability to various environments, from open countryside
+    to woodland edges, combined with its conspicuous soaring behavior, makes it one
+    of the most frequently observed raptors throughout much of its range.'
+migration:
+  sv: '# Ormvråk – utbredning och flyttning i Skandinavien
+
+
+    Ormvråken förekommer året runt i stora delar av Skandinavien, men med säsongsväxlingar.
+    Medan många ormvråkar i västra Europa är stannfåglar, moves de skandinaviska och
+    finska populationerna söderut under vintern. Detta gör arten till en delvis migrerande
+    art i regionen. De fåglar som stannar återvänder och etablerar sina revir under
+    våren för häckning i skogar och dungar intill öppna områden där de kan jaga smågnagare
+    och andra byten.
+
+
+    Flyttningen av de nordiska populationerna sker under hösten, då fåglarna drar
+    söderut för att undvika de snörika och matfattiga vintermånaderna. Återkomsten
+    till häckningsplatserna i Skandinavien sker under våren, när förhållandena förbättras
+    och bytestillgången ökar.'
+  en: '# Common Buzzard (*Buteo buteo*) in Scandinavia/Northern Europe
+
+
+    The Common Buzzard displays variable migratory behavior across Scandinavia and
+    Northern Europe. Southern and central Scandinavian populations are largely year-round
+    residents, remaining throughout winter. However, birds breeding in northern Scandinavia
+    and eastern regions typically migrate south during autumn, with departure occurring
+    from September through October. These northern populations winter in southern
+    Europe, the Mediterranean region, and occasionally as far as sub-Saharan Africa.
+    Return migration begins in February and March, with breeding birds reestablishing
+    territories by April. This species shows considerable individual variation in
+    migratory tendency, with some individuals overwintering despite breeding in northern
+    latitudes.'
+image_refs:
+- role: hero
+  path: Q25385/hero.jpg
+  width: 2400
+  height: 1594
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Buteo buteo insularum, Azores.jpg
+  commons_filename: Buteo buteo insularum, Azores.jpg
+- role: secondary
+  path: Q25385/secondary-1.jpg
+  width: 1800
+  height: 1648
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Yerpo" title="User:Yerpo">Yerpo</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Buteo buteo juv Log (2).jpg
+  commons_filename: Buteo buteo juv Log (2).jpg
+- role: secondary
+  path: Q25385/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Steppe buzzard (Buteo buteo
+    vulpinus).jpg
+  commons_filename: Steppe buzzard (Buteo buteo vulpinus).jpg
+review_status: approved
+review_notes: Hero approved 2026-05-04 via hero_review HTML.
+generated_at: '2026-05-04T12:14:53.048746+00:00'
+sources:
+  wikipedia_sv_revision: '57876994'
+  wikipedia_en_revision: '1346264174'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,126 @@
+id: Q156250
+scientific_name: Milvus milvus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Milvus
+  ioc_order: Accipitriformes
+names:
+  sv: röd glada
+  en: Red Kite
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Röd glada
+
+
+    Röd glada är en medelstor rovfågel från familjen hökar. Det kännetecknas av sin
+    rostbruna fjäderdräkt med mörkare vingar och en karakteristisk djupt kluven stjärt
+    som är rödbrun. Under flykten är röd glada mycket manöverbar och använder sin
+    flexibla stjärt för att snabbt ändra riktning.
+
+
+    Det är en skicklig jägare som främst jagar små gnagare och andra smådjur. Röd
+    glada är ofta mycket högflygande och kan ses segla på termik under långa perioder.
+    Det är inte särskilt vokaliskt, men kan ge från sig högfrekventa skrik under häckningstiden.
+
+
+    Historiskt var röd glada mycket vanlig i västra Europa och södra Skandinavien
+    fram till mitten av 1800-talet. Under förra århundradet ökade dock förföljelsen
+    dramatiskt, vilket ledde till kraftiga populationsnedgångar. Arten förekommer
+    därför idag endast lokalt i sitt tidigare utbredningsområde, även om IUCN numera
+    klassificerar den som livskraftig tack vare bevarandeinsatser.'
+  en: '# Red Kite
+
+
+    The red kite is a large bird of prey belonging to the hawk family. It displays
+    distinctive plumage with reddish-brown upperparts and a notably forked tail, which
+    is particularly visible in flight. The head appears relatively pale, and in flight
+    it shows contrasting darker flight feathers. Its silhouette—with long, angled
+    wings and that characteristic deeply forked tail—makes it readily identifiable,
+    especially when soaring.
+
+
+    This raptor hunts over open and semi-open landscapes, taking small mammals, birds,
+    and occasionally carrion. It is highly aerial, spending much time soaring and
+    gliding on thermals while searching for prey. The species is generally quiet,
+    though it may produce occasional mewing calls.
+
+
+    The red kite currently breeds throughout much of Europe. Historically, it was
+    confined to milder western regions, but populations in northern areas increasingly
+    remain year-round rather than migrating south. However, northern birds still undertake
+    seasonal movements, some reaching western Asia. The species has been recorded
+    as far north as Finland and as far south as parts of Africa and the Middle East,
+    though such occurrences are exceptional.'
+migration:
+  sv: Röd glada är en stannfågel och delvis flyttfågel i Skandinavien. I södra Sverige
+    och Norge förekommer arten året om, där vissa populationer är stationära medan
+    andra visar lokala förflyttningar. Under vinterhalvåret ankommer nordiska individer
+    från östligare områden, vilket ökar förekomsten i regionen. Arten är mest aktiv
+    under våren och sommaren när den hävdar revir och häckar. Röd glada föredrar öppna
+    landskap och är beroende av lämpliga jaktbiotoper för sitt försörjande.
+  en: '# Red Kite in Scandinavia/Northern Europe
+
+
+    The Red Kite''s presence in northern Europe has undergone significant changes
+    in recent decades. Historically, red kites breeding in Northern mainland Europe
+    were obligate migrants, wintering southward and westward, with some reaching western
+    Asia. However, an increasing proportion of northern populations now remain year-round
+    in their breeding regions rather than migrating. In Scandinavia specifically,
+    the species occurs primarily as a vagrant, with occasional records reaching as
+    far north as Finland. The species is currently resident only in the milder western
+    parts of Europe, where birds may remain throughout the year.'
+image_refs:
+- role: hero
+  path: Q156250/hero.jpg
+  width: 2400
+  height: 1601
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/185252831@N05">HLI-Photography</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rotmilan (Milvus milvus) (53662507778).jpg
+  commons_filename: Rotmilan (Milvus milvus) (53662507778).jpg
+- role: secondary
+  path: Q156250/secondary-1.jpg
+  width: 1800
+  height: 1599
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red Kite. Milvus milvus (51920791502).jpg
+  commons_filename: Red Kite. Milvus milvus (51920791502).jpg
+- role: secondary
+  path: Q156250/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/73433109@N07">Synaptic
+    Refuge</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Milvus milvus, Deadmans Hill,
+    Herts 1.jpg
+  commons_filename: Milvus milvus, Deadmans Hill, Herts 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:52.898106+00:00'
+sources:
+  wikipedia_sv_revision: '57367446'
+  wikipedia_en_revision: '1349223207'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,103 @@
+id: Q179359
+scientific_name: Aquila nipalensis
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Aquila
+  ioc_order: Accipitriformes
+names:
+  sv: stäppörn
+  en: Steppe Eagle
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Steppe Eagle
+
+
+    The steppe eagle is a large bird of prey belonging to the "booted eagles"—a subfamily
+    characterized by feathering that extends down the legs to the toes. This species
+    was historically considered closely related to the tawny eagle, and the two were
+    once classified as a single species. However, pronounced differences in morphology
+    and anatomy led to their separation into distinct species, a division supported
+    by molecular studies.
+
+
+    The steppe eagle is adapted for hunting across open terrain, with powerful build
+    and the characteristic leg feathering of its subfamily. It inhabits expansive
+    grasslands and semi-arid regions where it hunts for small mammals, birds, and
+    other prey. Its hunting behaviour and ecological preferences reflect its specialization
+    for life in open landscapes.
+
+
+    The steppe eagle''s range spans Central Asia and adjacent regions, with populations
+    undertaking seasonal migrations. Its distinctive silhouette and size make it recognizable
+    to birdwatchers observing raptors in appropriate habitat.'
+migration:
+  sv: ''
+  en: '# Migration of the Steppe Eagle in Northern Europe
+
+
+    The Steppe Eagle is a rare visitor to Scandinavia and Northern Europe, appearing
+    primarily during spring and autumn migration periods. This species is a long-distance
+    migrant that breeds in Central Asian steppes and winters in Africa and the Indian
+    subcontinent. In Northern Europe, sightings are irregular and typically occur
+    in September through October during southward migration, with occasional spring
+    records in April-May. The species does not establish breeding populations in the
+    region and does not overwinter in Scandinavia.'
+image_refs:
+- role: hero
+  path: Q179359/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aquila nipalensis 156507147.jpg
+  commons_filename: Aquila nipalensis 156507147.jpg
+- role: secondary
+  path: Q179359/secondary-1.jpg
+  width: 1800
+  height: 1165
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%E0%A4%95%E0%A5%83%E0%A4%B7%E0%A5%8D%E0%A4%A3_%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%9C%E0%A4%BE%E0%A4%AA%E0%A4%A4%E0%A4%BF&amp;action=edit&amp;redlink=1"
+    class="new" title="User:कृष्ण प्रजापति (page does not exist)">Krishna Prajapati</a>
+  source_url: https://commons.wikimedia.org/wiki/File:The steppe eagle (Aquila nipalensis)
+    - 68.jpg
+  commons_filename: The steppe eagle (Aquila nipalensis) - 68.jpg
+- role: secondary
+  path: Q179359/secondary-2.jpg
+  width: 1800
+  height: 1142
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%E0%A4%95%E0%A5%83%E0%A4%B7%E0%A5%8D%E0%A4%A3_%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%9C%E0%A4%BE%E0%A4%AA%E0%A4%A4%E0%A4%BF&amp;action=edit&amp;redlink=1"
+    class="new" title="User:कृष्ण प्रजापति (page does not exist)">Krishna Prajapati</a>
+  source_url: https://commons.wikimedia.org/wiki/File:The steppe eagle (Aquila nipalensis)
+    - 69.jpg
+  commons_filename: The steppe eagle (Aquila nipalensis) - 69.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.036181+00:00'
+sources:
+  wikipedia_sv_revision: '57082799'
+  wikipedia_en_revision: '1348516976'
+  claude_model: claude-haiku-4-5-20251001

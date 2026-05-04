@@ -2376,12 +2376,14 @@
   ioc_order: Accipitriformes
   common_en: Eurasian Sparrowhawk
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q137474876
   scientific_name: Astur gentilis
   family: Accipitridae
   ioc_order: Accipitriformes
   common_en: Eurasian Goshawk
   vp_status: H
+  commons_search_name: Accipiter gentilis
 - wikidata_id: Q230837
   scientific_name: Circus macrourus
   family: Accipitridae
@@ -2406,6 +2408,7 @@
   ioc_order: Accipitriformes
   common_en: Western Marsh Harrier
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q156250
   scientific_name: Milvus milvus
   family: Accipitridae
@@ -2424,6 +2427,7 @@
   ioc_order: Accipitriformes
   common_en: White-tailed Eagle
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q1268375
   scientific_name: Butastur teesa
   family: Accipitridae
@@ -2436,12 +2440,14 @@
   ioc_order: Accipitriformes
   common_en: Rough-legged Buzzard
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25385
   scientific_name: Buteo buteo
   family: Accipitridae
   ioc_order: Accipitriformes
   common_en: Common Buzzard
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q233684
   scientific_name: Buteo rufinus
   family: Accipitridae

@@ -1,0 +1,131 @@
+id: Q177856
+scientific_name: Gyps fulvus
+taxonomy:
+  family: Accipitridae
+  family_sv: hökar
+  genus: Gyps
+  ioc_order: Accipitriformes
+names:
+  sv: gåsgam
+  en: Griffon Vulture
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gåsgam
+
+
+    Gåsgam är en stor rovfågel från familjen hökar som förekommer från Medelhavsområdet
+    österut till Indien. Det är en imponerande fågel med massiv kropp och bred vingspänn,
+    vilket gör den väl anpassad för att sväva högt på termiska luftströmmar över öppna
+    landskap.
+
+
+    Arten är en skavlfågel som lever på kadaver och spelar en viktig ekologisk roll
+    som naturlig sanerings agent. Det förekommer ofta i större flockar vid kadaver,
+    där det tillsammans med andra rovfåglar utnyttjar livsmedlen effektivt. Gåsgamen
+    kan ibland höras ge ifrån sig skrapiga läten, särskilt när det samlas kring mat.
+
+
+    Gåsgam kategoriseras som livskraftig av IUCN och är den enda arten i underfamiljen
+    gamla världens gamar med denna status. Arten förekommer främst i öppna och halvöppna
+    terräng där det finns gott om föda i form av större djurkadaver.'
+  en: '# Griffon Vulture
+
+
+    The Griffon Vulture is a massive Old World vulture belonging to the hawk family.
+    It is one of the largest birds of prey, with a distinctive appearance featuring
+    pale buff and brown plumage, a relatively bare head and neck adapted for feeding
+    on carrion, and broad, fingered wings designed for soaring. In flight, it appears
+    remarkably graceful despite its considerable size, often seen riding thermal currents
+    at great heights.
+
+
+    These vultures are highly social birds, typically found in groups both at rest
+    and while hunting. It locates food primarily through sight, scanning vast territories
+    from the air for carcasses. The species is largely silent, though it produces
+    occasional grunts and hisses at feeding sites.
+
+
+    The Griffon Vulture inhabits mountainous and hilly regions across southern Europe,
+    North Africa, and western Asia. It favors dramatic cliff faces for nesting and
+    roosting, from which it can easily launch into flight. The species is a wanderer
+    rather than a true migrant, traveling widely in search of food. Once critically
+    endangered due to poisoning and habitat loss, populations in some regions have
+    recovered following conservation efforts, though the species remains vulnerable
+    across much of its range.'
+migration:
+  sv: '# Gåsgam - Förekomst i Norden
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Gåsgam förekommer naturligt från Medelhavsområdet och österut till Indien. Arten
+    är inte en naturlig del av Skandinaviens eller Nordeuropas fågelfauna. Det finns
+    ingen etablerad population eller regelbunden migration till denna region, varför
+    information om säsongsvariationer i Norden inte är tillämplig.'
+  en: '# Griffon Vulture (Gyps fulvus) – Occurrence in Scandinavia/Northern Europe
+
+
+    The Griffon Vulture is not a regular resident of Scandinavia or Northern Europe.
+    This species is primarily found in southern Europe, the Mediterranean region,
+    and Asia, with populations centered in mountain ranges and open terrain of warmer
+    climates. While vagrant individuals occasionally reach northern regions, particularly
+    during dispersal movements of juveniles or in response to food availability changes,
+    the species does not maintain established breeding populations or predictable
+    migration patterns through Scandinavia. Any northern sightings are exceptional
+    and unpredictable occurrences rather than part of a regular seasonal movement.'
+image_refs:
+- role: hero
+  path: Q177856/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis LOURS</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Griffon vulture (Gyps fulvus).jpg
+  commons_filename: Griffon vulture (Gyps fulvus).jpg
+- role: secondary
+  path: Q177856/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Uoaei1" title="User:Uoaei1">Uoaei1</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Gyps fulvus Riegersburg 02.jpg
+  commons_filename: Gyps fulvus Riegersburg 02.jpg
+- role: secondary
+  path: Q177856/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%92%D1%8B%D1%85_%D0%9F%D1%8B%D1%85%D0%BC%D0%B0%D0%BD%D0%BD"
+    class="mw-redirect" title="User:Вых Пыхманн">Вых Пыхманн</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Griffon vulture (gyps fulvus)
+    in flight.jpg
+  commons_filename: Griffon vulture (gyps fulvus) in flight.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:14:53.068802+00:00'
+sources:
+  wikipedia_sv_revision: '57107244'
+  wikipedia_en_revision: '1351526107'
+  claude_model: claude-haiku-4-5-20251001
