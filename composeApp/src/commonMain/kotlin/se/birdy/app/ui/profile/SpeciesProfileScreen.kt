@@ -27,7 +27,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -44,6 +47,8 @@ import birdy_bird_scanner.composeapp.generated.resources.profile_back
 import birdy_bird_scanner.composeapp.generated.resources.profile_label_description
 import birdy_bird_scanner.composeapp.generated.resources.profile_label_migration
 import birdy_bird_scanner.composeapp.generated.resources.profile_label_photos
+import coil3.compose.AsyncImage
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.HeroImage
@@ -74,7 +79,7 @@ fun SpeciesProfileScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalResourceApi::class)
 @Composable
 private fun ProfileContent(
     species: Species,
@@ -87,39 +92,64 @@ private fun ProfileContent(
                 .background(MaterialTheme.colorScheme.background)
                 .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            LargeTopAppBar(
-                title = {
-                    Column {
-                        Text(
-                            species.name,
-                            style = MaterialTheme.typography.headlineMedium,
-                            color = TextOnHero,
-                        )
-                        Text(
-                            species.scientificName,
-                            style = MaterialTheme.typography.bodyMedium.copy(fontStyle = FontStyle.Italic),
-                            color = TextOnHero.copy(alpha = 0.85f),
-                        )
-                    }
-                },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(Res.string.profile_back),
-                            tint = TextOnHero,
-                        )
-                    }
-                },
-                colors =
-                    TopAppBarDefaults.largeTopAppBarColors(
-                        containerColor = HeroMossLight,
-                        scrolledContainerColor = HeroMossLight,
-                        navigationIconContentColor = TextOnHero,
-                        titleContentColor = TextOnHero,
-                    ),
-                scrollBehavior = scrollBehavior,
-            )
+            val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
+            Box {
+                if (heroImage != null) {
+                    AsyncImage(
+                        model = Res.getUri("files/images/${heroImage.path}"),
+                        contentDescription = null,
+                        modifier = Modifier.matchParentSize(),
+                        contentScale = ContentScale.Crop,
+                    )
+                    Box(
+                        modifier =
+                            Modifier
+                                .matchParentSize()
+                                .background(
+                                    Brush.verticalGradient(
+                                        colors =
+                                            listOf(
+                                                Color.Black.copy(alpha = 0.25f),
+                                                Color.Black.copy(alpha = 0.65f),
+                                            ),
+                                    ),
+                                ),
+                    )
+                }
+                LargeTopAppBar(
+                    title = {
+                        Column {
+                            Text(
+                                species.name,
+                                style = MaterialTheme.typography.headlineMedium,
+                                color = TextOnHero,
+                            )
+                            Text(
+                                species.scientificName,
+                                style = MaterialTheme.typography.bodyMedium.copy(fontStyle = FontStyle.Italic),
+                                color = TextOnHero.copy(alpha = 0.85f),
+                            )
+                        }
+                    },
+                    navigationIcon = {
+                        IconButton(onClick = onBack) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                contentDescription = stringResource(Res.string.profile_back),
+                                tint = TextOnHero,
+                            )
+                        }
+                    },
+                    colors =
+                        TopAppBarDefaults.largeTopAppBarColors(
+                            containerColor = if (heroImage == null) HeroMossLight else Color.Transparent,
+                            scrolledContainerColor = if (heroImage == null) HeroMossLight else Color.Transparent,
+                            navigationIconContentColor = TextOnHero,
+                            titleContentColor = TextOnHero,
+                        ),
+                    scrollBehavior = scrollBehavior,
+                )
+            }
         },
     ) { padding ->
         LazyColumn(
