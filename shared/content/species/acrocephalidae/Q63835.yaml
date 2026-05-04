@@ -1,0 +1,119 @@
+id: Q63835
+scientific_name: Hippolais olivetorum
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Hippolais
+  ioc_order: Passeriformes
+names:
+  sv: olivsångare
+  en: Olive-tree Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Olivsångare
+
+
+    Olivsångare är en tätting i familjen rörsångare och det största medlemmet i sitt
+    släkte. Arten häckar i sydöstra Europa och det västligaste Asien, där den förekommer
+    i lämpliga biotoper under sommarmånaderna.
+
+
+    Arten är en migrationsvandrare som lämnar sina häckningsområden för att övervintra
+    på andra håll. Som medlem av rörsångfamiljen är olivsångare en insektätare som
+    uppsöker områden med lämplig vegetation för födosök och häckning.'
+  en: '# Olive-tree Warbler
+
+
+    The olive-tree warbler is a small passerine belonging to the reed and tree warbler
+    family. It is a migratory species with a breeding range in southeast Europe and
+    the Near East, undertaking long-distance migrations to winter across eastern and
+    southern Africa, from Kenya southward to South Africa.
+
+
+    The species is adapted to its woodland and scrubland habitats, where it forages
+    and nests during the breeding season. Like other members of its family, it is
+    primarily insectivorous, gleaning food from vegetation. Its movements between
+    breeding and wintering grounds follow the seasonal patterns typical of Old World
+    warblers, allowing it to exploit different resource-rich environments throughout
+    the year.
+
+
+    Observers interested in this species should look for it in appropriate olive-tree
+    and scrub habitats within its range during the breeding season, while those watching
+    African locations may encounter it during the winter months when substantial populations
+    arrive from their European breeding grounds.'
+migration:
+  sv: 'sv: Migrationsdata saknas för denna art.
+
+
+    en: Migration data unavailable for this species.'
+  en: '# Olive-tree Warbler in Scandinavia/Northern Europe
+
+
+    The Olive-tree Warbler is not a regular occurrence in Scandinavia or Northern
+    Europe. This species breeds in southeast Europe and the Near East, well south
+    of the Scandinavian region. As a long-distance migrant, it winters in eastern
+    and southern Africa from Kenya to South Africa, following a migration route that
+    does not typically include Northern Europe. Any sightings in Scandinavia would
+    represent vagrant individuals far outside their normal range and breeding distribution.'
+image_refs:
+- role: hero
+  path: Q63835/hero.jpg
+  width: 2400
+  height: 1606
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Olive-tree warbler, Hippolais
+    olivetorum, at Elephant Sands Lodge, Botswana (32248894256).jpg
+  commons_filename: Olive-tree warbler, Hippolais olivetorum, at Elephant Sands Lodge,
+    Botswana (32248894256).jpg
+- role: secondary
+  path: Q63835/secondary-1.jpg
+  width: 1800
+  height: 1194
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Olive-tree warbler, Hippolais
+    olivetorum, at Zaagkuildrift Road near Kgomo Kgomo, Limpopo, South Africa (33565742845).jpg
+  commons_filename: Olive-tree warbler, Hippolais olivetorum, at Zaagkuildrift Road
+    near Kgomo Kgomo, Limpopo, South Africa (33565742845).jpg
+- role: secondary
+  path: Q63835/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Olive-tree warbler, Hippolais
+    olivetorum, at Mkuze Game Reserve, Kwa Zulu-Natal, South Africa (39042644265).jpg
+  commons_filename: Olive-tree warbler, Hippolais olivetorum, at Mkuze Game Reserve,
+    Kwa Zulu-Natal, South Africa (39042644265).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:39:37.618467+00:00'
+sources:
+  wikipedia_sv_revision: '56850754'
+  wikipedia_en_revision: '1347245687'
+  claude_model: claude-haiku-4-5-20251001

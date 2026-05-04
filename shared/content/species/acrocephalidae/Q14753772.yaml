@@ -1,0 +1,119 @@
+id: Q14753772
+scientific_name: Iduna pallida
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Iduna
+  ioc_order: Passeriformes
+names:
+  sv: eksångare
+  en: Eastern Olivaceous Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Eksångare
+
+
+    Eksångare är en liten fågel i familjen rörsångare med en diskret, olivbrun färgteckning.
+    Det är en påfallande anspråkslös fågel utan särskilda märken, vilket gör den svår
+    att särskilja från närbesläktade arter. Fåglens kroppsform är långsträckt och
+    smal.
+
+
+    Arten är en migrationsaktiv fågel som häckar i det sydöstra delen av sitt utbredningsområde,
+    från sydöstra Europa till Iran, samt i spridda områden i Nordafrika. Under vintern
+    söker det sig till Afrika för att övervintra. Norr om sitt normala utbredningsområde
+    är arten en mycket sällsynt gäst, och endast ett fåtal fynd är dokumenterade i
+    svenska landet.
+
+
+    Eksångaren lever i låga växtligheter och tät buskmark, där det födosöker diskret
+    bland löven. Med sin stillsamma beteende och dämpad färgteckning är arten lätt
+    att förbise. Arten betraktas av IUCN som livskraftig, med stabil populationsutveckling.'
+  en: '# Eastern Olivaceous Warbler
+
+
+    The eastern olivaceous warbler is a small passerine with subdued, drab plumage
+    typical of its family. It inhabits breeding grounds across southeastern Europe,
+    the Middle East, and adjacent western Asia, before migrating to winter in the
+    northern Afrotropics. Like other members of the warbler family, it is an active,
+    insectivorous bird that forages among vegetation.
+
+
+    This species is often inconspicuous, preferring to remain within dense shrubery
+    and reed beds where it hunts for small insects. Its behaviour is characteristic
+    of warblers—restless and purposeful as it moves through its habitat. When disturbed,
+    it typically stays low in cover rather than taking flight.
+
+
+    The eastern olivaceous warbler is most easily identified by its uniform olive-brown
+    coloration and compact size, though it can be difficult to distinguish from related
+    species in the field. Observers seeking this warbler should focus on appropriate
+    habitat during migration periods and the breeding season, listening for its presence
+    as it is often heard before being seen.'
+migration:
+  sv: '# Eksångare (Iduna pallida) - Förekomst i Skandinavien/Nordeuropa
+
+
+    Eksångaren är en mycket sällsynt gäst i Skandinavien och övriga Nordeuropa. Arten
+    häckar normalt från sydöstra Europa till Iran, men förekommer endast sporadiskt
+    norr om sitt huvudsakliga utbredningsområde. I Sverige finns det endast ett fåtal
+    dokumenterade fynd av arten. Då eksångaren övervintar i Afrika, är eventuella
+    observationer i nordiska länder begränsade till passageperioden under våren och
+    hösten när fågeln är på väg mellan sina häcknings- och övervintringsområden.'
+  en: '# Eastern Olivaceous Warbler – Scandinavian Occurrence
+
+
+    The Eastern Olivaceous Warbler is a rare vagrant to Scandinavia and Northern Europe,
+    as its primary breeding range lies in southeastern Europe, the Middle East, and
+    western Asia. This long-distance migrant winters in the northern Afrotropics,
+    making it a trans-Saharan traveler. Any sightings in Scandinavian regions would
+    be exceptional occurrences outside its established range, likely representing
+    individuals that have deviated significantly from their normal migration routes.
+    The species does not have a regular migratory presence or overwintering population
+    in Northern Europe.'
+image_refs:
+- role: hero
+  path: Q14753772/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Medeniacus" title="User:Medeniacus">Medeniacus</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Iduna pallida - sivi voljić.jpg
+  commons_filename: Iduna pallida - sivi voljić.jpg
+- role: secondary
+  path: Q14753772/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
+    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eastern Olivaceous Warbler Iduna
+    pallida.jpg
+  commons_filename: Eastern Olivaceous Warbler Iduna pallida.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:40:20.427552+00:00'
+sources:
+  wikipedia_sv_revision: '56596564'
+  wikipedia_en_revision: '1347244562'
+  claude_model: claude-haiku-4-5-20251001

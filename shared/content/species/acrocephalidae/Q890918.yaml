@@ -1,0 +1,81 @@
+id: Q890918
+scientific_name: Acrocephalus brevipennis
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Acrocephalus
+  ioc_order: Passeriformes
+names:
+  sv: kapverdesångare
+  en: Cape Verde Warbler
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Cape Verde Warbler
+
+
+    The Cape Verde warbler is a small Old World warbler belonging to the Acrocephalidae
+    family. As a species adapted to wetland habitats, it inhabits well-vegetated valleys
+    across several islands, deliberately avoiding drier regions. It shows a preference
+    for reedbeds and similar dense vegetation where it constructs suspended nests.
+
+
+    This warbler breeds in specific island locations, laying clutches of two to three
+    eggs in its carefully woven nests suspended among reeds. The species has experienced
+    range changes over time, having previously occupied areas where it no longer breeds.
+    Its dependence on well-vegetated valleys and reedbeds makes it vulnerable to habitat
+    loss and environmental changes affecting these specialized wetland ecosystems.
+
+
+    The Cape Verde warbler represents an important part of the endemic birdlife of
+    its island range, with conservation of its remaining breeding sites being crucial
+    for the species'' survival.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides information about the Cape Verde Warbler''s breeding
+    locations in the Cape Verde Islands and its habitat preferences, but contains
+    no details regarding migration patterns, seasonal movements, overwintering locations,
+    or occurrence in Scandinavia or Northern Europe. Without reliable information
+    about this species'' annual movements and distribution outside its breeding range,
+    no accurate migration account can be provided.'
+image_refs:
+- role: hero
+  path: Q890918/hero.jpg
+  width: 2400
+  height: 1735
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Christian_Pirkl" title="User:Christian
+    Pirkl">Christian Pirkl</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Acrocephalus brevipennis 294A5867
+    Kapverdenrohrsänger.jpg
+  commons_filename: Acrocephalus brevipennis 294A5867 Kapverdenrohrsänger.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:39:17.780177+00:00'
+sources:
+  wikipedia_sv_revision: '55626435'
+  wikipedia_en_revision: '1320901520'
+  claude_model: claude-haiku-4-5-20251001

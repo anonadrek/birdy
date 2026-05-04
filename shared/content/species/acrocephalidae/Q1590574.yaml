@@ -1,0 +1,82 @@
+id: Q1590574
+scientific_name: Hippolais languida
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Hippolais
+  ioc_order: Passeriformes
+names:
+  sv: orientsångare
+  en: Upcher’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Orientsångare
+
+
+    Orientsångare är en asiatisk fågel i familjen kärrsångare som häckar i norra Mellanöstern
+    och södra Centralasien. Under vintermånaderna förflyttar sig arten till Östafrika.
+    I Europa är orientsångaren mycket sällsynt och har endast noterats vid några tillfällen
+    i ett fåtal länder.
+
+
+    Arten är klassificerad som livskraftig enligt IUCN, vilket indikerar att populationen
+    är stabil. Som medlem av familjen kärrsångare är det en mindre fågel som liknar
+    andra sångare inom denna familj.'
+  en: ''
+migration:
+  sv: '# Orientsångare (Hippolais languida) i Skandinavien och Nordeuropa
+
+
+    Orientsångaren är en asiatisk art som inte förekommer i Skandinavien eller övriga
+    Nordeuropa under normal omständighet. Arten häckar i norra Mellanöstern och södra
+    Centralasien, medan den under vinterhalvåret flyttar till Östafrika. I Europa
+    förekommer arten endast som en mycket sällsynt gäst, med dokumenterade fynd endast
+    från Bulgarien, Nederländerna och Cypern. Arten återkommer alltså inte återkommande
+    till Skandinavien eller övriga Nordeuropa under någon årstid under normala förhållanden.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q1590574/hero.jpg
+  width: 2048
+  height: 1538
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hippolais languida 121276391.jpg
+  commons_filename: Hippolais languida 121276391.jpg
+- role: secondary
+  path: Q1590574/secondary-1.jpg
+  width: 1800
+  height: 1352
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hippolais languida 121276401.jpg
+  commons_filename: Hippolais languida 121276401.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:40:57.977416+00:00'
+sources:
+  wikipedia_sv_revision: '56630364'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

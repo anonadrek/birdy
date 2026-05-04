@@ -1,0 +1,102 @@
+id: Q312779
+scientific_name: Acrocephalus dumetorum
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Acrocephalus
+  ioc_order: Passeriformes
+names:
+  sv: busksångare
+  en: Blyth’s Reed Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Busksångare
+
+
+    Busksångaren är en liten sångfågel från familjen rörsångare. Den är diskret och
+    svår att särskilja från närbesläktade arter, med gråbrun ovansida och ljusare
+    undersida. Fågeln är aktiv och rörig, ofta gömd i tätt vegetation där den gärna
+    håller till.
+
+
+    Busksångaren har en karakteristisk sång som består av snabba, repetitiva fraser
+    – ofta kallad "tjattrande" – som tjänar till att göra den hörd trots att den stannar
+    gömda i buskvegetationen. Fågeln är främst aktiv under skymningen och tidig morgon.
+
+
+    Arten häckar från Sverige och österut till Bajkalsjön, Mongoliet och västra Kina,
+    där den föredrar fuktig vegetations- och rörbevuxen miljö. Under vintern migrerar
+    den till Indien och Sri Lanka. Arten klassificeras som livskraftig av IUCN och
+    utgör ingen bevaringsbetydelse för närvarande.'
+  en: ''
+migration:
+  sv: '# Busksångare – Förekomst i Nordeuropa
+
+
+    Busksångare är en långdistansflyttare som häckar i Sverige och övriga delar av
+    sitt nordeuropeiska utbredningsområde. Arten ankommer till häckningsområdena under
+    våren för att sedan föröka sig. När häckningsperioden avslutas initieras höstflyttningen,
+    varvid fåglarna lämnar Skandinavien och övriga nordiska regioner. Arten övervintar
+    långt bort i Indien och Sri Lanka, varför den inte förekommer i Nordeuropa under
+    vintermånaderna.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q312779/hero.jpg
+  width: 2233
+  height: 1489
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/14940021@N08">Peter
+    von Bagh</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Blyth's reed warbler, Acrocephalus
+    dumetorum (35176687152).jpg
+  commons_filename: Blyth's reed warbler, Acrocephalus dumetorum (35176687152).jpg
+- role: secondary
+  path: Q312779/secondary-1.jpg
+  width: 1800
+  height: 1217
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Blyth's Reed Warbler Acrocephalus
+    dumetorum by Dr. Raju Kasambe DSC 6510 (3).jpg
+  commons_filename: Blyth's Reed Warbler Acrocephalus dumetorum by Dr. Raju Kasambe
+    DSC 6510 (3).jpg
+- role: secondary
+  path: Q312779/secondary-2.jpg
+  width: 1488
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Blyth's Reed Warbler Acrocephalus
+    dumetorum by Dr. Raju Kasambe DSCN6293 (2).jpg
+  commons_filename: Blyth's Reed Warbler Acrocephalus dumetorum by Dr. Raju Kasambe
+    DSCN6293 (2).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:40:11.467432+00:00'
+sources:
+  wikipedia_sv_revision: '59170214'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

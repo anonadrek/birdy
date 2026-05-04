@@ -1,0 +1,134 @@
+id: Q159080
+scientific_name: Acrocephalus scirpaceus
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Acrocephalus
+  ioc_order: Passeriformes
+names:
+  sv: rörsångare
+  en: Common Reed Warbler
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rörsångare
+
+
+    Rörsångare är en liten, ospektakulär fågel med enfärgad gråbrun fjäderdräkt. Den
+    är svår att skilja från andra rörsångarearter och kräver ofta uppmärksam observation
+    för att identifieras säkert. Fågeln är anpassad för liv i vass och rör, där den
+    rör sig skickligt genom vegetationen.
+
+
+    Arten är en rastlös insektätare som ofta ses krypa genom vassen på jakt efter
+    föda. Den är mycket vokal under häckningstiden och framförer en högljudd, ibland
+    lite kaotisk sång med många upprepade fraser och efterliknelser av andra fåglar.
+    Rösten är karakteristisk och ofta det säkraste sättet att identifiera arten.
+
+
+    Rörsångaren förekommer huvudsakligen i vassrika våtmarker och kärrmark där den
+    bygger sitt bo. Den är en långflyttare i större delen av sitt utbred område, med
+    populationer som häckar i Europa och tempererad Asien och övervintrar i Afrika.
+    Arten är livskraftig enligt IUCN, men antalet häckande fåglar minskar i flera
+    länder.'
+  en: '# Common Reed Warbler
+
+
+    The common reed warbler is a small, inconspicuous warbler with warm brown upperparts
+    and pale underparts. It is notably difficult to distinguish from related species
+    in the genus Acrocephalus. The bird is slim and long-bodied, adapted for moving
+    through reed stems and marsh vegetation where it forages for insects and small
+    invertebrates.
+
+
+    This species is highly vocal, particularly during breeding season. Its song is
+    a rapid, repetitive chatter of varied notes, often given from concealed positions
+    deep within reed beds. The bird is inherently secretive, spending much of its
+    time hidden among vegetation, though it occasionally perches openly on reed stems
+    or branches.
+
+
+    The common reed warbler is migratory across much of its range, breeding across
+    Europe and into temperate western Palaearctic regions before wintering in sub-Saharan
+    Africa. It is a year-round resident across large parts of Africa. It frequents
+    extensive reed beds, marshes, and wetland habitats with dense vegetation. The
+    species is typically seen singly or in pairs, clinging vertically to reed stems
+    as it hunts for food.'
+migration:
+  sv: '# Rörsångare (Acrocephalus scirpaceus) — Förekomst i Skandinavien
+
+
+    Rörsångaren är en långflyttare som häckar i stora delar av Europa, inklusive Skandinavien
+    och Sverige. Fåglarna anländer till sina häckningsområden under våren, vanligtvis
+    från april till maj, efter att ha övervintrat i Afrika söder om Sahara. Under
+    sommaren etablerar de sig i rörskogen vid sjöar, vattendrag och våtmarker där
+    de häckar. I hösten påbörjar de sin långa flyttning tillbaka till Afrika, främst
+    under augusti och september. Under vintermånaderna är arten helt frånvarande från
+    Skandinavien och Nordeuropa, då hela populationen befinner sig i sina afrikanska
+    övervintringsområden söder om Sahara.'
+  en: '# Common Reed Warbler Migration in Scandinavia
+
+
+    The Common Reed Warbler is a summer visitor to Scandinavia and Northern Europe,
+    arriving in late April through May to breed in reed beds and wetland habitats.
+    It is a complete migrant in the region, departing in August and September to winter
+    in sub-Saharan Africa. The species does not overwinter in Scandinavia or Northern
+    Europe. Return migration to breeding grounds typically occurs in spring as temperatures
+    rise and suitable habitat becomes accessible. Population numbers in the region
+    can fluctuate based on conditions in African wintering grounds and along migration
+    routes.'
+image_refs:
+- role: hero
+  path: Q159080/hero.jpg
+  width: 2044
+  height: 2189
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common Reed Warbler (Acrocephalus
+    scirpaceus).jpg
+  commons_filename: Common Reed Warbler (Acrocephalus scirpaceus).jpg
+- role: secondary
+  path: Q159080/secondary-1.jpg
+  width: 1800
+  height: 1444
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Reed Warbler. Acrocephalus scirpaceus
+    - Flickr - gailhampshire.jpg
+  commons_filename: Reed Warbler. Acrocephalus scirpaceus - Flickr - gailhampshire.jpg
+- role: secondary
+  path: Q159080/secondary-2.jpg
+  width: 1286
+  height: 1800
+  license: CC BY 4.0
+  author: caroline legg
+  source_url: https://commons.wikimedia.org/wiki/File:Common Reed Warbler - (Acrocephalus
+    scirpaceus).jpg
+  commons_filename: Common Reed Warbler - (Acrocephalus scirpaceus).jpg
+review_status: approved
+review_notes: Hero approved 2026-05-04 via hero_review HTML.
+generated_at: '2026-05-04T12:40:39.474170+00:00'
+sources:
+  wikipedia_sv_revision: '58970666'
+  wikipedia_en_revision: '1335757772'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,108 @@
+id: Q27674
+scientific_name: Hippolais icterina
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Hippolais
+  ioc_order: Passeriformes
+names:
+  sv: härmsångare
+  en: Icterine Warbler
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Härmsångare
+
+
+    Härmsångaren är en medelstor fågel inom familjen rörsångare med grönaktig ovansida
+    och gul undersida. Den är mycket lik polyglottsångaren men förekommer i östligare
+    regioner. Arten är en skicklig sångare med varierad sång som ofta innehåller imiterande
+    element från andra fåglar – därför "härmsångare" på svenska.
+
+
+    Arten häckar i buskage och träd från Centraleuropa och Skandinavien österut genom
+    Asien till Altaj. Under hösten är härmsångaren en aktiv långdistansflyktare som
+    söker sig till tropiska Afrika för att övervintra. Under häckningssäsongen är
+    den rörig och svårfångad, ofta i täta växtbårder där den söker föda bland lövverket.
+
+
+    Härmsångaren är klassificerad som livskraftig av IUCN och anses stabil i bestånd.'
+  en: '# Icterine Warbler
+
+
+    The Icterine Warbler is a medium-sized Old World warbler with yellowish-green
+    plumage and a pale underside, features that help distinguish it from similar warblers
+    in its range. It has a relatively robust bill and an alert posture. The species
+    is highly vocal and delivers an energetic, varied song that combines melodious
+    notes with rapid, chattering passages—a hallmark that aids identification in the
+    field.
+
+
+    This active warbler favors woodland edges, scrubland, and areas with tall shrubs
+    and small trees, where it forages for insects among foliage. It moves restlessly
+    through vegetation, often flicking its wings and tail. The species is migratory,
+    breeding across mainland Europe with the exception of southwestern regions, where
+    it is replaced by the closely related Melodious Warbler. It winters in sub-Saharan
+    Africa, making it absent from its breeding grounds during winter months.
+
+
+    The Icterine Warbler''s loud, distinctive song is one of its most recognizable
+    features and is often the best way to locate and identify the species during the
+    breeding season.'
+migration:
+  sv: '# Härmsångare – Förekomst i Skandinavien
+
+
+    Härmsångare är en sommargäst i Skandinavien och flyttfågel som häckar från Centraleuropa
+    österut genom Asien. I vårt område anländer arten under våren för att häcka, innan
+    den sedan flyttar söderut på hösten. Vintertid befinner sig härmsångaren i tropiska
+    Afrika, där den tillbringar vintermånaderna innan återkomsten till häckningsområdena.
+    Som många andra sångare är härmsångaren helt beroende av denna årliga vandring
+    mellan sitt nordiska häckningshabitat och sitt afrikanska övervintringsområde.'
+  en: '# Icterine Warbler in Scandinavia
+
+
+    The Icterine Warbler is a summer visitor to Scandinavia and Northern Europe, arriving
+    in late May and early June to breed in deciduous and mixed woodlands. It is a
+    long-distance migrant, wintering in sub-Saharan Africa and returning northward
+    in spring after departing breeding grounds in August and September. The species
+    does not overwinter in the region but undertakes an annual cycle of migration
+    between its African wintering grounds and European breeding territories, making
+    it absent from Scandinavia during the winter months.'
+image_refs:
+- role: hero
+  path: Q27674/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nikola_Veljkovi%C4%87&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Nikola Veljković (page does not exist)">Nikola Veljković</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Žuti voljić (Hippolais icterina)
+    Icterine Warbler.jpg
+  commons_filename: Žuti voljić (Hippolais icterina) Icterine Warbler.jpg
+review_status: approved
+review_notes: Hero approved 2026-05-04 via hero_review HTML.
+generated_at: '2026-05-04T12:39:28.779840+00:00'
+sources:
+  wikipedia_sv_revision: '58889842'
+  wikipedia_en_revision: '1330760357'
+  claude_model: claude-haiku-4-5-20251001

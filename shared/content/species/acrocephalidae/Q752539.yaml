@@ -1,0 +1,123 @@
+id: Q752539
+scientific_name: Hippolais polyglotta
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Hippolais
+  ioc_order: Passeriformes
+names:
+  sv: polyglottsångare
+  en: Melodious Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Polyglottsångare
+
+
+    Polyglottsångaren är en liten sångare från rörsångarfamiljen med ett utbredningsområde
+    främst i sydvästra Europa. Arten är mycket sällsynt norr om sitt huvudsakliga
+    utbredningsområde, med endast ett fåtal fynd dokumenterade. Den är närbesläktad
+    med härmsångaren, som förekommer vidare österut och norrut.
+
+
+    Fågeln är svår att särskilja från härmsångaren, men är i regel något mindre och
+    mer gracil. Den lever bland täta buskage och vegetation där den söker föda. Arten
+    är klassificerad som livskraftig enligt IUCN.'
+  en: '# Melodious Warbler
+
+
+    The melodious warbler is a small Old World warbler with a plain brownish-grey
+    plumage typical of its genus. It lacks distinctive markings, making it rather
+    inconspicuous in the field. Its appearance is similar to several other Hippolais
+    species, requiring careful observation to distinguish it from close relatives.
+
+
+    This active, insectivorous bird frequents open woodland with scattered bushes
+    and scrubland. It is highly migratory, breeding in southwest Europe and northwest
+    Africa during spring and summer before undertaking a long journey to sub-Saharan
+    Africa for winter. The species is vocal and conspicuous during the breeding season,
+    often singing from exposed perches. It nests in trees and bushes, typically laying
+    three to five eggs per clutch.
+
+
+    The melodious warbler remains common across much of its range and is classified
+    as of least concern by conservation authorities. Its adaptability to various scrubby
+    habitats and successful migration strategy have helped maintain healthy populations
+    despite seasonal movements across continents.'
+migration:
+  sv: Polyglottsångare är en sydvästeuropeisk art som förekommer mycket sällsynt i
+    Skandinavien. I Sverige finns endast åtta dokumenterade fynd av arten. Som sällsynt
+    gäst norr om sitt normala utbredningsområde är polyglottsångaren en sporadisk
+    besökare, snarare än en regelbunden flyttare till regionen. Arten är hemmahörande
+    i södra och västra Europa, och de svenska observationerna representerar utöverkanter
+    av artens naturliga spridning.
+  en: '# Melodious Warbler in Scandinavia
+
+
+    Migration data unavailable for this species.
+
+
+    The Melodious Warbler''s breeding range is restricted to southwest Europe and
+    northwest Africa, well south of Scandinavia and Northern Europe. While the species
+    is highly migratory, wintering in sub-Saharan Africa, there is no documented occurrence
+    or migration pattern involving Scandinavian or Northern European territories.
+    This warbler does not form part of the regular avifauna of these regions.'
+image_refs:
+- role: hero
+  path: Q752539/hero.jpg
+  width: 2400
+  height: 1477
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Melodious Warbler (Hippolais
+    polyglotta), Le Petit Loc'h, Guidel, Brittany, France (19958749471).jpg
+  commons_filename: Melodious Warbler (Hippolais polyglotta), Le Petit Loc'h, Guidel,
+    Brittany, France (19958749471).jpg
+- role: secondary
+  path: Q752539/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Melodious warbler (Hippolais
+    polyglotta) 2024.jpg
+  commons_filename: Melodious warbler (Hippolais polyglotta) 2024.jpg
+- role: secondary
+  path: Q752539/secondary-2.jpg
+  width: 1800
+  height: 1258
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Melodious warbler (Hippolais
+    polyglotta), Le Petit Loc'h, Guidel, Brittany, France (19765512360).jpg
+  commons_filename: Melodious warbler (Hippolais polyglotta), Le Petit Loc'h, Guidel,
+    Brittany, France (19765512360).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:41:05.919506+00:00'
+sources:
+  wikipedia_sv_revision: '57738359'
+  wikipedia_en_revision: '1330761181'
+  claude_model: claude-haiku-4-5-20251001

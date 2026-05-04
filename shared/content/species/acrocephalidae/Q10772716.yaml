@@ -1,0 +1,101 @@
+id: Q10772716
+scientific_name: Iduna opaca
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Iduna
+  ioc_order: Passeriformes
+names:
+  sv: macchiasångare
+  en: Western Olivaceous Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Macchiasångare
+
+
+    Macchiasångaren är en ljusbrun medelstor sångare som tillhör familjen rörsångare.
+    Den kännetecknas av sin diskreta färgteckning som passar väl in i den torra, buskig
+    miljön den föredrar.
+
+
+    Arten häckar på Iberiska halvön och i Nordafrika, där den förekommer i Marocko,
+    Tunisien, Algeriet och Libyen. Den är en flyttfågel som under vintertid migrerar
+    till Västafrika söder om Sahara. Macchiasångaren föredrar täta buskar och buskmark
+    där den söker föda och bygger sitt bo.
+
+
+    Tidigare klassificerades macchiasångaren som en underart av eksångaren, men den
+    behandlas numera som en egen art. Arten har ett livskraftigt bestånd och anses
+    inte vara hotad.'
+  en: '# Western Olivaceous Warbler
+
+
+    The western olivaceous warbler is a small, inconspicuous warbler belonging to
+    the Acrocephalidae family. It shares the genus Iduna with other tree warblers
+    and was historically grouped with the eastern olivaceous warbler before modern
+    taxonomy separated them into distinct species. The bird is alternatively known
+    as the isabelline warbler.
+
+
+    This species exhibits the typical behaviour of acrocephaline warblers, though
+    detailed information about its appearance, vocalizations, and habitat preferences
+    requires further source material. Like many warblers in its family, it is likely
+    a small, subtly coloured bird adapted to particular vegetation types. Observers
+    interested in identifying this species should consult field guides specific to
+    their region, as the western olivaceous warbler occupies particular geographic
+    ranges where it can be distinguished from related species.'
+migration:
+  sv: '# Macchiasångare – Förekomst i Skandinavien/Nordeuropa
+
+
+    Macchiasångare förekommer inte naturligt i Skandinavien eller övriga Nordeuropa.
+    Arten häckar på Iberiska halvön och i Nordafrika (Marocko, Tunisien, Algeriet
+    och Libyen), och övervintrerar i Västafrika söder om Sahara. Som långdistansmigrant
+    slutför den en årlig flyttning mellan sitt häckningsområde och sitt vinterkvarter.
+    Arten är därför endast av akademiskt intresse för nordeuropeiska fågelbeskrivningar
+    och registreras endast som extremt sällsynt vagare i norra Europa.'
+  en: '# Migration data unavailable for this species.
+
+
+    The Wikipedia source text provided contains no information about the Western Olivaceous
+    Warbler''s occurrence in Scandinavia or Northern Europe, seasonal movements, migration
+    patterns, or overwintering behavior. To provide accurate migration information
+    for this species in the Scandinavian/Northern European context, sources with specific
+    distributional and phenological data would be needed.'
+image_refs:
+- role: hero
+  path: Q10772716/hero.jpg
+  width: 2400
+  height: 1602
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/45759259@N06">sébastien
+    bertru</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Iduna opaca 1.jpg
+  commons_filename: Iduna opaca 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:40:38.418346+00:00'
+sources:
+  wikipedia_sv_revision: '58594908'
+  wikipedia_en_revision: '1330760804'
+  claude_model: claude-haiku-4-5-20251001

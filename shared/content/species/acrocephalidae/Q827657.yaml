@@ -1,0 +1,136 @@
+id: Q827657
+scientific_name: Acrocephalus agricola
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Acrocephalus
+  ioc_order: Passeriformes
+names:
+  sv: fältsångare
+  en: Paddyfield Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fältsångare
+
+
+    Fältsängaren är en liten, diskret insektsätare från familjen rörsångare. Det är
+    en anspråklös fågel med dämpad färgteckning som passar väl in i sin naturliga
+    miljö. Arten föredrar våtmarker med vassvegetation, men påträffas också i stäpplandskap
+    med låg växtlighet och gräs.
+
+
+    Arten häckar främst i centrala Eurasien och är en sällsynt besökare i västra Europa.
+    I Sverige är det en mycket ovanlig gäst som endast registrerats drygt 30 gånger.
+    Fältsångaren förlitar sig på insekter för sin näring och söker sitt föda bland
+    vassområdena och låga växter.
+
+
+    Beståndet av fältsångare anses för närvarande vara stabilt och livskraftigt. Arten
+    utgör en av många migrerande rörsångare som återkommer till sina häckningsområden
+    varje år, även om den endast utgör en sällsynt utfallare långt västerut från sitt
+    normala utbredningsområde.'
+  en: '# Paddyfield Warbler
+
+
+    The paddyfield warbler is a small marsh warbler belonging to the Acrocephalidae
+    family. This species was formerly classified within the broader "Old World warbler"
+    group, though taxonomic revision has since clarified its position. The Manchurian
+    reed warbler was previously considered a subspecies of the paddyfield warbler
+    but is now recognized as a distinct species.
+
+
+    As a marsh warbler, it inhabits reed beds and wetland environments where it forages
+    among dense vegetation. Like other members of its family, it is an active and
+    somewhat secretive bird, typically remaining concealed within tall marsh grasses
+    and reeds. It is primarily encountered in suitable wetland habitats across its
+    range.
+
+
+    The paddyfield warbler shares characteristics common to many small warblers in
+    its family, being relatively plain in plumage and inconspicuous in appearance.
+    Its behaviour and ecology reflect adaptations typical of reed-dwelling species,
+    though specific details about its distinctive field marks, vocalizations, and
+    seasonal movements would require additional sources for a complete description.'
+migration:
+  sv: '# Fältsångare - Förekomst i Skandinavien/Nordeuropa
+
+
+    Fältsängaren är en mycket sällsynt gäst i Skandinavien och övriga Nordeuropa.
+    Arten häckar i centrala Eurasien och är en långdistansmigrant som dragit söderut
+    för övervintering. I Sverige har arten påträffats endast ett 30-tal gånger och
+    betraktas som en ovanlig gäst, framför allt under höstmigrationen. Observationerna
+    är sporadiska och kan inte följas av något regelbundet mönster. Arten förekommer
+    naturligt inte som övervintrare i regionen och är inte en etablerad häckfågel
+    i Skandinavien.'
+  en: '# Migration and Occurrence in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Paddyfield Warbler is primarily an Asian species with a breeding range extending
+    from Central Asia westward. While it is occasionally recorded as a vagrant in
+    Western Europe, it does not have an established migratory pattern through Scandinavia
+    or Northern Europe. Any sightings in these regions would be exceptional occurrences
+    rather than regular seasonal movements. The species is not considered part of
+    the regular avifauna of Northern Europe.'
+image_refs:
+- role: hero
+  path: Q827657/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Paddyfield Warbler (Acrocephalus
+    agricola) പാടക്കുരുവി. (31869889503).jpg
+  commons_filename: Paddyfield Warbler (Acrocephalus agricola) പാടക്കുരുവി. (31869889503).jpg
+- role: secondary
+  path: Q827657/secondary-1.jpg
+  width: 1800
+  height: 1177
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Paddyfield Warbler Acrocephalus
+    agricola by Dr. Raju Kasambe DSCN8336 (10).jpg
+  commons_filename: Paddyfield Warbler Acrocephalus agricola by Dr. Raju Kasambe DSCN8336
+    (10).jpg
+- role: secondary
+  path: Q827657/secondary-2.jpg
+  width: 1800
+  height: 1215
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Paddyfield Warbler Acrocephalus
+    agricola by Dr. Raju Kasambe DSCN8336 (11).jpg
+  commons_filename: Paddyfield Warbler Acrocephalus agricola by Dr. Raju Kasambe DSCN8336
+    (11).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:39:57.798599+00:00'
+sources:
+  wikipedia_sv_revision: '58594904'
+  wikipedia_en_revision: '1314801017'
+  claude_model: claude-haiku-4-5-20251001

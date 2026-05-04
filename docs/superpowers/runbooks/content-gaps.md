@@ -42,6 +42,14 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 17 | Q747827 | accipitridae | Klippörn | Aquila verreauxii | en | 57082777 | — | pending |
 | 18 | Q838162 | accipitridae | Örongam | Torgos tracheliotos | sv | 57107309 | 1339353678 | pending |
 | 19 | Q843278 | accipitridae | Mörk sånghök | Melierax metabates | sv | 58474447 | 1314038057 | pending |
+| 20 | Q1590574 | acrocephalidae | Orientsångare | Hippolais languida | sv, en | 56630364 | — | pending |
+| 21 | Q312779 | acrocephalidae | Busksångare | Acrocephalus dumetorum | en | 59170214 | — | pending |
+| 22 | Q370354 | acrocephalidae | Saxaulsångare | Iduna rama | en | 58506848 | — | pending |
+| 23 | Q63835 | acrocephalidae | Olivsångare | Hippolais olivetorum | sv | 56850754 | 1347245687 | pending |
+| 24 | Q74100 | acrocephalidae | Papyrussångare | Acrocephalus stentoreus | sv | 55683024 | 1314274805 | pending |
+| 25 | Q752539 | acrocephalidae | Polyglottsångare | Hippolais polyglotta | sv | 57738359 | 1330761181 | pending |
+| 26 | Q890918 | acrocephalidae | Kapverdesångare | Acrocephalus brevipennis | sv | 55626435 | 1320901520 | pending |
+| 27 | Q891376 | acrocephalidae | Basrasångare | Acrocephalus griseldis | sv + image | 59025831 | 1351539333 | pending (saknar även hi-res Commons-foto) |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

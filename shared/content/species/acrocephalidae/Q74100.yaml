@@ -1,0 +1,109 @@
+id: Q74100
+scientific_name: Acrocephalus stentoreus
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Acrocephalus
+  ioc_order: Passeriformes
+names:
+  sv: papyrussångare
+  en: Clamorous Reed Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Clamorous Reed Warbler
+
+
+    The Clamorous Reed Warbler is a medium-sized Old World warbler with warm brown
+    upper parts and pale underparts, giving it a streaked appearance typical of reed
+    warblers. Its brownish plumage provides effective camouflage among reed beds and
+    wetland vegetation. Despite its modest appearance, it is notably vocal and delivers
+    loud, repetitive calls that are characteristic of the species and often heard
+    before the bird itself is spotted.
+
+
+    This species is highly associated with reed beds, marshes, and wetland habitats
+    where it hunts for insects and small invertebrates. It remains largely concealed
+    within dense vegetation, making visual observation challenging. The Clamorous
+    Reed Warbler breeds across a wide range spanning from northeastern Africa through
+    the Middle East and central Asia to southern China and Southeast Asia. A distinct
+    subspecies is found as an endemic race on the island of Sri Lanka.
+
+
+    The species is migratory in northern parts of its range but remains resident year-round
+    in southern regions. It typically nests in reed beds, constructing a cup-shaped
+    nest suspended among reed stems. Its loud, distinctive vocalizations serve as
+    the most reliable means of detecting its presence in suitable wetland habitats.'
+migration:
+  sv: ''
+  en: '# Clamorous Reed Warbler in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Clamorous Reed Warbler''s breeding range extends from Egypt through the Middle
+    East to south China and Southeast Asia, with no established populations in Scandinavia
+    or Northern Europe. This species is not known to occur regularly in these regions,
+    either as a breeding bird or as a migratory visitor. Consequently, information
+    about its seasonal occurrence in Scandinavian or Northern European territories
+    cannot be provided.'
+image_refs:
+- role: hero
+  path: Q74100/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Clamorous Reed Warbler (Acrocephalus
+    stentoreus) കൈതക്കള്ളൻ (30890370543).jpg
+  commons_filename: Clamorous Reed Warbler (Acrocephalus stentoreus) കൈതക്കള്ളൻ (30890370543).jpg
+- role: secondary
+  path: Q74100/secondary-1.jpg
+  width: 1800
+  height: 1336
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Rose_Thumboor" title="User:Rose
+    Thumboor">Rose Thumboor</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Clamorous reed warbler (Acrocephalus
+    stentoreus).JPG
+  commons_filename: Clamorous reed warbler (Acrocephalus stentoreus).JPG
+- role: secondary
+  path: Q74100/secondary-2.jpg
+  width: 1351
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Clamorous Reed Warbler Acrocephalus
+    stentoreus by Dr. Raju Kasambe DSCN8296 (1).jpg
+  commons_filename: Clamorous Reed Warbler Acrocephalus stentoreus by Dr. Raju Kasambe
+    DSCN8296 (1).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:39:57.394658+00:00'
+sources:
+  wikipedia_sv_revision: '55683024'
+  wikipedia_en_revision: '1314274805'
+  claude_model: claude-haiku-4-5-20251001

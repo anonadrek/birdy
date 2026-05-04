@@ -49,3 +49,23 @@ species:
   # Accipitridae batch (2026-05-04): wikipedia missing in both languages.
   Q55111925:
     description_accept_missing: [sv, en]  # Rüppell's Vulture (Fläckgam) — African vagrant
+  # Acrocephalidae batch (2026-05-04): svwiki extract too short for Claude.
+  Q63835:
+    description_accept_missing: [sv]  # Olivsångare (Olive-tree Warbler) — sv summary 65 words
+  Q74100:
+    description_accept_missing: [sv]  # Papyrussångare (Clamorous Reed Warbler) — African
+  Q752539:
+    description_accept_missing: [sv]  # Polyglottsångare (Melodious Warbler) — sv summary 76 words
+  Q890918:
+    description_accept_missing: [sv]  # Kapverdesångare (Cape Verde Warbler) — endemic
+  # Acrocephalidae batch (2026-05-04): enwiki extract too short for Claude.
+  Q1590574:
+    description_accept_missing: [sv, en]  # Orientsångare (Upcher's Warbler) — sv 72w (validator threshold 80)
+  Q312779:
+    description_accept_missing: [en]  # Busksångare (Blyth's Reed Warbler)
+  Q370354:
+    description_accept_missing: [en]  # Saxaulsångare (Sykes's Warbler)
+  # Acrocephalidae batch (2026-05-04): both languages sparse + image-coverage gap.
+  Q891376:
+    description_accept_missing: [sv]  # Basrasångare (Basra Reed Warbler) — endangered Iraqi-marsh
+    allow_missing_images: true  # Commons only has 1071x905 photo (below MIN_DIMENSION=2048)

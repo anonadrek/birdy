@@ -1,0 +1,75 @@
+id: Q891376
+scientific_name: Acrocephalus griseldis
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Acrocephalus
+  ioc_order: Passeriformes
+names:
+  sv: basrasångare
+  en: Basra Reed Warbler
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Basra Reed Warbler
+
+
+    The Basra reed warbler is a small warbler that breeds in extensive reed and papyrus
+    beds of the Tigris–Euphrates river system and nearby wetlands. It is migratory,
+    spending winters in East Africa. This species is easily confused with the larger
+    great reed warbler, but it is notably smaller with whiter underparts and a distinctively
+    narrower, longer, and more pointed bill. Its gruff "chaar" call is deeper and
+    more forceful than that of the common reed warbler, providing a useful identification
+    clue in the field.
+
+
+    The species favors dense reed beds and papyrus stands where it can forage and
+    nest concealed within the vegetation. It remains a rare vagrant to Europe, appearing
+    only occasionally outside its core breeding and wintering ranges. Within its established
+    range, it has recently expanded into wetlands beyond its traditional strongholds,
+    suggesting some adaptability to suitable habitats. Observers should note the combination
+    of small size, pale underparts, and pointed bill shape when attempting to distinguish
+    it from similar reed warblers in shared habitats.'
+migration:
+  sv: ''
+  en: '# Basra Reed Warbler – Occurrence in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Basra Reed Warbler is not a regular occurrence in Scandinavia or Northern
+    Europe. This species breeds in the Tigris–Euphrates river system in southwestern
+    Iran, Iraq, and Kuwait, and winters in East Africa. While it is migratory between
+    its breeding and wintering grounds, it is described as "a very rare vagrant in
+    Europe," making it an extremely unlikely visitor to Scandinavian or Northern European
+    regions. Any sightings in this region would be exceptional and noteworthy for
+    local bird records.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:40:39.599043+00:00'
+sources:
+  wikipedia_sv_revision: '59025831'
+  wikipedia_en_revision: '1351539333'
+  claude_model: claude-haiku-4-5-20251001

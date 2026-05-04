@@ -1,0 +1,133 @@
+id: Q27236
+scientific_name: Acrocephalus schoenobaenus
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Acrocephalus
+  ioc_order: Passeriformes
+names:
+  sv: sävsångare
+  en: Sedge Warbler
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sävsångare
+
+
+    Sävsångare är en liten rörsångare som förekommer i våtmarker över stora delar
+    av Europa och vidare österut till Centralasien. Under vintern flyttar arten till
+    Afrika söder om Sahara. Arten trivs i rörsamlingar och kärrmarker, men påträffas
+    även i fjälltrakterna där den förekommer i videsnår.
+
+
+    Denna lilla fågel är brun och streckad på huvudet och ryggen, vilket ger den en
+    kamuflerande utseende. Som rörsångare är det en snarare långsträckig och spenslig
+    fågel anpassad för att röra sig bland vegetation. Den är aktiv och rastlös i sina
+    rörelser och håller ofta till i täta växtsamlingar där den jagar små insekter.
+
+
+    Sävsångaren är känd för sitt karakteristiska, rastlöst pratande läte som ofta
+    hörs från rörsamlingar och kärrvegetation. Globalt anses beståndet vara livskraftigt.'
+  en: '# Sedge Warbler
+
+
+    The Sedge Warbler is a medium-sized warbler with streaked brown upperparts and
+    a distinctive pale stripe running above the eye. It blends well with reed-bed
+    vegetation but can be picked out by this characteristic eyebrow marking. Sedge
+    Warblers are active, restless birds often seen skulking low in reed beds and marshes,
+    where they hunt for insects among the vegetation.
+
+
+    The species is highly migratory, breeding across Europe and Asia before undertaking
+    an impressive journey across the Sahara Desert to winter in Africa. Males are
+    accomplished songsters, delivering rapid, chattering songs composed of seemingly
+    random phrases. They frequently incorporate mimicry of other bird species into
+    their repertoire, adding to the complexity of their performance.
+
+
+    These warblers are almost entirely insectivorous, gleaning small invertebrates
+    from reeds and other wetland plants. They favour dense reed beds and marshy areas
+    with tall vegetation near water, where they are most vocal during the breeding
+    season. Their skulking habits and preference for thick cover can make them challenging
+    to observe, though persistent watching in suitable wetland habitats usually rewards
+    the patient birder with sightings.'
+migration:
+  sv: '# Sävsångare – Förekomst i Nordeuropa
+
+
+    Sävsångaren är en sommargäst i Skandinavien och övriga Nordeuropa, där den anländer
+    under våren för att häcka i våtmarker och videsnår. Fågeln återvänder från sina
+    afrikanska övervintringsområden söder om Sahara vanligtvis från april till maj.
+    Under sommaren är arten vanlig i lämpliga biotoper över stora delar av regionen.
+    Hösten genomför sävsångaren sin långa flyttning söderut, och arten är borta från
+    Nordeuropa från september-oktober tills våren.'
+  en: '# Sedge Warbler in Northern Europe
+
+
+    The Sedge Warbler is a summer breeding visitor to Scandinavia and Northern Europe,
+    arriving in late April through May to occupy reed beds and wetland habitats. Breeding
+    populations establish themselves throughout the region during spring and early
+    summer months. In late August and September, these warblers begin their southward
+    migration, crossing the Sahara Desert to reach their African wintering grounds.
+    The species is absent from Northern Europe during winter months, making it a strictly
+    migratory species with no overwintering populations in the Scandinavian region.
+    Return migration begins in spring as temperatures warm and breeding habitat becomes
+    available again.'
+image_refs:
+- role: hero
+  path: Q27236/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sedge Warbler - Acrocephalus
+    schoenobaenus - Juvenile (51354422957).jpg
+  commons_filename: Sedge Warbler - Acrocephalus schoenobaenus - Juvenile (51354422957).jpg
+- role: secondary
+  path: Q27236/secondary-1.jpg
+  width: 1800
+  height: 1434
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Sedge Warbler. Acrocephalus
+    schoenobaenus - Flickr - gailhampshire (2).jpg
+  commons_filename: Sedge Warbler. Acrocephalus schoenobaenus - Flickr - gailhampshire
+    (2).jpg
+- role: secondary
+  path: Q27236/secondary-2.jpg
+  width: 1800
+  height: 1509
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Sedge Warbler Acrocephalus schoenobaenus
+    - Flickr - gailhampshire.jpg
+  commons_filename: Sedge Warbler Acrocephalus schoenobaenus - Flickr - gailhampshire.jpg
+review_status: approved
+review_notes: Hero approved 2026-05-04 via hero_review HTML.
+generated_at: '2026-05-04T12:40:49.848333+00:00'
+sources:
+  wikipedia_sv_revision: '58519822'
+  wikipedia_en_revision: '1315258838'
+  claude_model: claude-haiku-4-5-20251001

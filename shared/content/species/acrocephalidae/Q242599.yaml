@@ -1,0 +1,125 @@
+id: Q242599
+scientific_name: Acrocephalus paludicola
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Acrocephalus
+  ioc_order: Passeriformes
+names:
+  sv: vattensångare
+  en: Aquatic Warbler
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vattensångare
+
+
+    Vattensångare är en liten fågel som tillhör familjen rörsångare. Den är en diskret
+    art som häckar i kortväxta, fuktiga gräsmarker i östra Europa, där den föredrar
+    områden med låg vegetation nära vatten. Under vintern genomför den en långsträckt
+    flyttning till Västafrika, och under denna tid ses den endast sparsamt i Västeuropa.
+    Arten är känd för att vara svår att observera på grund av sitt dolda levnadssätt
+    i tät vegetation.
+
+
+    Arten har genomgått en dramatisk minskning både i antal individer och utbredningsområde.
+    Dess tidigare sammanhängande habitat har fragmenterats betydligt, vilket utgör
+    ett allvarligt hot mot populationen. På grund av dessa oroande utvecklingar klassificeras
+    vattensångaren som sårbar enligt IUCN:s hotkategorier, och arten anses vara utrotningshotad.
+    Fragmenteringen av dess naturliga miljöer fortsätter att utgöra ett kritiskt problem
+    för artens överlevnad.'
+  en: '# Aquatic Warbler
+
+
+    The aquatic warbler is a small Old World warbler with a distinctive striped head
+    pattern and buff-coloured underparts. It is a secretive bird, favoring dense reed
+    beds and wetlands with tall vegetation where it forages for insects among the
+    stems.
+
+
+    This species is highly migratory, breeding across temperate eastern Europe and
+    western Asia in suitable marshy habitats. It winters in west Africa, with a significant
+    portion of the European population gathering at Djoudj National Bird Sanctuary
+    in Senegal, where between 5,000 and 10,000 individuals may be present. During
+    spring and autumn migration, birds regularly pass through western regions, making
+    occasional appearances in Great Britain and Ireland as they follow their south-westerly
+    route.
+
+
+    The global population is modest, estimated at 11,000-15,000 breeding pairs. Like
+    many warblers, it is more often heard than seen, though its calls and songs may
+    be detected in suitable wetland habitats during breeding season. Its dependence
+    on specific wetland environments makes it vulnerable to habitat loss and drainage
+    schemes throughout its range.'
+migration:
+  sv: '# Vattensångare (Acrocephalus paludicola) – förekomst i Skandinavien och Nordeuropa
+
+
+    Vattensångaren är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten
+    häckar i östra Europa och genomför långdistansmigrationer till Västafrika för
+    övervintering. Under flyttningen ses den främst i västeuropeiska området, men
+    förekommer endast tillfälligt och fåtaligt i Skandinavien. I Sverige har arten
+    noterats endast ett tjugotiotal gånger under migration. Det är under höstens och
+    vårens flyttningsperioder som arten kan observeras i regionen, men förekomsterna
+    är mycket slumpmässiga och sporadiska.'
+  en: '# Aquatic Warbler (Acrocephalus paludicola) in Scandinavia/Northern Europe
+
+
+    The Aquatic Warbler is a long-distance migratory species that breeds across temperate
+    eastern Europe and western Asia. Birds breeding in or near Scandinavia migrate
+    south-westward to winter in West Africa, particularly in Senegal''s Djoudj National
+    Bird Sanctuary. This south-westerly migration route brings the species regularly
+    through western Europe on passage, including Great Britain and Ireland.
+
+
+    In Scandinavia, the Aquatic Warbler would be present during the breeding season
+    in spring and early summer, with birds arriving to breed and departing in late
+    summer and autumn for their African wintering grounds. The species is scarce in
+    the region and occurs mainly during migration periods rather than as a regular
+    breeder.'
+image_refs:
+- role: hero
+  path: Q242599/hero.jpg
+  width: 2400
+  height: 1607
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:David_Perez" title="User:David
+    Perez">David Perez</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Acrocephalus paludicola 5 by-dpc.jpg
+  commons_filename: Acrocephalus paludicola 5 by-dpc.jpg
+- role: secondary
+  path: Q242599/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:112grammarpolice&amp;action=edit&amp;redlink=1"
+    class="new" title="User:112grammarpolice (page does not exist)">112grammarpolice</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Breeding habitat of the aquatic
+    warbler (Acrocephalus paludicola).JPG
+  commons_filename: Breeding habitat of the aquatic warbler (Acrocephalus paludicola).JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:41:11.168138+00:00'
+sources:
+  wikipedia_sv_revision: '55754668'
+  wikipedia_en_revision: '1319702637'
+  claude_model: claude-haiku-4-5-20251001

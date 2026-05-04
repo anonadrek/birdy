@@ -1,0 +1,123 @@
+id: Q757116
+scientific_name: Iduna caligata
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Iduna
+  ioc_order: Passeriformes
+names:
+  sv: stäppsångare
+  en: Booted Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stäppsångare
+
+
+    Stäppsångaren är en liten och diskret gråbrun sångare som tillhör familjen rörsångare.
+    Den är svår att skilja från många andra små sångare, men kännetecknas av sin relativt
+    enfärgade, grågråbrun dräkt utan tydliga markerings. Fågeln är liten och kompakt
+    med kort stjärt.
+
+
+    Arten häckar från den europeiska delen av Ryssland österut till västra Mongoliet
+    och västra Kina. Den har på senare år etablerat en mindre population även i Finland.
+    Under vintern flyttar stäppsångaren huvudsakligen till Indien. I Sverige är den
+    en tillfällig gäst som kan observeras vid långväga flyttningar.
+
+
+    Stäppsångaren är en diskret fågel som ofta hålls till tät vegetation. Den söker
+    föda lågt bland buskar och låg växtlighet. Arten är känd för sitt livliga beteende
+    och rörlighet när den jagar insekter. IUCN kategoriserar arten som livskraftig,
+    vilket indikerar en stabil population.'
+  en: '# Booted Warbler
+
+
+    The Booted Warbler is a small passerine belonging to the reed and tree warbler
+    family. It breeds across Eastern Europe and western Asia before undertaking long
+    migrations to wintering grounds in south Asia. The species appears as a regular
+    vagrant to Western Europe, making occasional appearances outside its normal range.
+
+
+    This diminutive warbler shares characteristics typical of its family, though specific
+    details about its appearance, behaviour, and vocalizations are limited in available
+    sources. Like other members of the Acrocephalidae family, it is likely an active
+    forager among vegetation, though further information would be needed to fully
+    describe its feeding ecology and habitat preferences in detail.'
+migration:
+  sv: '# Stäppsångare – Förekomst i Skandinavien
+
+
+    Stäppsångaren är en mycket sällsynt fågel i Skandinavien och Sverige, där den
+    förekommer som tillfällig gäst. Arten häckar huvudsakligen från europiska Ryssland
+    österut till västra Mongoliet och västra Kina, men har på senare tid etablerat
+    en liten population i Finland. Under vintermånaderna flyttar stäppsångaren huvudsakligen
+    till Indien för att övervintra. De få observationer som gjorts i Sverige utgör
+    sannolikt spridningsindivider under flyttningsperioderna.'
+  en: '# Booted Warbler in Scandinavia/Northern Europe
+
+
+    The Booted Warbler is a rare vagrant to Scandinavia and Northern Europe rather
+    than a regular migratory species. This Eastern European and western Asian breeder
+    winters in south Asia, with its primary range lying well south and east of Scandinavia.
+    Occasionally, individuals appear in Western Europe during migration periods, making
+    records in Scandinavian countries exceptional rather than predictable. When sightings
+    do occur, they typically happen during spring or autumn migration windows as birds
+    disperse from their breeding grounds. The species should not be expected as a
+    regular seasonal visitor to the region.'
+image_refs:
+- role: hero
+  path: Q757116/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Booted Warbler (Iduna caligata)
+    ചിന്നൻ ഭേരി. (32641228266).jpg
+  commons_filename: Booted Warbler (Iduna caligata) ചിന്നൻ ഭേരി. (32641228266).jpg
+- role: secondary
+  path: Q757116/secondary-1.jpg
+  width: 1800
+  height: 1186
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Booted Warbler Iduna caligata
+    by Dr. Raju Kasambe DSCN3173 (2).jpg
+  commons_filename: Booted Warbler Iduna caligata by Dr. Raju Kasambe DSCN3173 (2).jpg
+- role: secondary
+  path: Q757116/secondary-2.jpg
+  width: 1800
+  height: 1478
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Booted warbler (iduna caligata)
+    from kannur 5.jpg
+  commons_filename: Booted warbler (iduna caligata) from kannur 5.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:39:55.516652+00:00'
+sources:
+  wikipedia_sv_revision: '57922789'
+  wikipedia_en_revision: '1347251780'
+  claude_model: claude-haiku-4-5-20251001

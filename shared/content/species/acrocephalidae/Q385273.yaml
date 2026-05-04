@@ -1,0 +1,113 @@
+id: Q385273
+scientific_name: Acrocephalus melanopogon
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Acrocephalus
+  ioc_order: Passeriformes
+names:
+  sv: kaveldunsångare
+  en: Moustached Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kaveldunsångare
+
+
+    Kaveldunsångare är en liten rörsångare som förekommer i Medelhavsområdet och västra
+    Asien. Arten är en sällsynt gäst i nordligare regioner, där endast enstaka fynd
+    dokumenterats. Denna lilla sångare är en typisk rörsångare med mörkare fjäderdräkt
+    och karakteristiska mörka ansiktstecken som ger arten sitt namn.
+
+
+    Kaveldunsångaren är en aktiv och livlig fågel som ofta ses i vassrika och buskiga
+    habitat nära vatten. Den lever övervägande dolt bland rörsump och täta buskar,
+    där den födosöker efter småinsekter. Arten är mest aktiv under skymningen och
+    är bättre hörd än sedd.
+
+
+    Med sitt höga, snabbt tempo och ofta återkommande ramsor är kaveldunsångarens
+    sång karakteristisk för rörsångargruppen. Arten är en duktig migrant, och dess
+    sydliga utbredningsområde gör att nordliga fynd ofta är tider kopplade till höstflyttningen.
+    Befolkningssituationen för arten bedöms som stabil.'
+  en: '# Moustached Warbler
+
+
+    The moustached warbler is a small Old World warbler with distinctive facial markings
+    that give it its common name. It belongs to the genus Acrocephalus, a group of
+    reed and bush warblers known for their skulking habits and preference for dense
+    vegetation.
+
+
+    This species exhibits interesting migratory patterns across its range. South-west
+    European populations are resident year-round, while birds breeding in south-east
+    Europe migrate to winter within the Mediterranean breeding region. The Asiatic
+    populations undertake longer migrations, traveling to winter grounds in Arabia,
+    India, and Pakistan. It breeds across southern Europe and southern temperate Asia,
+    with smaller breeding populations in north-west Africa.
+
+
+    Like many warblers, the moustached warbler typically inhabits reed beds and dense
+    scrubland where it forages for insects. Its behaviour is characteristically elusive,
+    often remaining concealed in thick vegetation. The species is partially migratory,
+    with movement patterns varying significantly depending on geographic origin.'
+migration:
+  sv: '# Kaveldunsångare i Skandinavien/Nordeuropa
+
+
+    Kaveldunsångare är en mycket sällsynt gäst i Skandinavien och förekommer normalt
+    i Medelhavsområdet och västra Asien. I Danmark och Sverige har endast enstaka
+    fynd dokumenterats. Arten är inte etablerad som häckande eller övervintrande population
+    i Norden. De observationer som gjorts representerar vandrande eller vilsefarna
+    individer långt utanför artens huvudsakliga utbredningsområde. Migrationen följer
+    således inte något regelbundet mönster i nordeuropeisk kontext.'
+  en: '# Moustached Warbler in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Moustached Warbler''s range is centered in southern Europe and southern temperate
+    Asia, with breeding populations extending into north-west Africa. While the species
+    is partially migratory, with south-west European populations being resident and
+    south-east European birds wintering within the Mediterranean region, there is
+    no documented occurrence in Scandinavia or Northern Europe. The species'' distribution
+    does not extend into these northern regions during any season.'
+image_refs:
+- role: hero
+  path: Q385273/hero.jpg
+  width: 2400
+  height: 1788
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Moustached Warbler Acrocephalus
+    melanopogon by Dr. Raju Kasambe (2).jpg
+  commons_filename: Moustached Warbler Acrocephalus melanopogon by Dr. Raju Kasambe
+    (2).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:39:25.506241+00:00'
+sources:
+  wikipedia_sv_revision: '58081853'
+  wikipedia_en_revision: '1314718965'
+  claude_model: claude-haiku-4-5-20251001

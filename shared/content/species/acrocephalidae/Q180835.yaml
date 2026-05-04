@@ -1,0 +1,126 @@
+id: Q180835
+scientific_name: Acrocephalus arundinaceus
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Acrocephalus
+  ioc_order: Passeriformes
+names:
+  sv: trastsångare
+  en: Great Reed Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Trastsångare
+
+
+    Trastsångare är en ovanligt stor medlem av rörsångarfamiljen, vilket gör den särskilt
+    lättidentifierad bland sina släktingar. Fågeln förekommer i stora delar av Europa
+    och Asien, där den är knuten till våtmarker och täta vassruggar. Under vintern
+    är den långflyttare som drar till tropiska Afrika.
+
+
+    Trastsångaren är en storväxt sångare med robust kroppsform och kraftig näbb. Fjäderdräkten
+    är brun på översidan och något ljusare på undersidan, vilket ger en ganska opräglad
+    utseende anpassat för liv bland röret. Den är huvudsakligen insektätare och söker
+    föda bland vegetation i sumpiga miljöer.
+
+
+    Arten är mycket högljudd och framför allt känd för sitt starkt utvecklade sångarteri.
+    Rösten är kraftfull och bullrig med många skrovliga och raspiga toner, ofta innehållande
+    upprepade fraser som kan höras långt bort från våtmarksområdena där den trivs.
+    Denna imponerande sång är ett karakteristiskt inslag under häckningstiden när
+    hannarna försvarar sina territorier.'
+  en: '# Great Reed Warbler
+
+
+    The great reed warbler is the largest European warbler, a medium-sized brown insectivorous
+    bird with relatively subtle plumage. The sexes are similar in appearance, showing
+    low sexual dimorphism. It is a migratory species, breeding throughout mainland
+    Europe and the Western Palearctic before migrating to sub-Saharan Africa for winter.
+
+
+    During breeding season, this bird favours reed beds, though it is more versatile
+    in winter, inhabiting reed beds, bush thickets, rice fields, and forest clearings.
+    It is notably adaptable in its social behaviour, capable of breeding both polygynously
+    and monogamously depending on circumstances. As an insectivore, it actively forages
+    for invertebrate prey among reeds and vegetation.
+
+
+    The great reed warbler is typically encountered in wetland habitats dominated
+    by reed growth during the breeding months, making it a characteristic sound of
+    reed beds in suitable regions across its range.'
+migration:
+  sv: '# Trastsångare – Förekomst i Skandinavien
+
+
+    Trastsångaren är en långdistansflyttare som anländer till Skandinavien och Nordeuropa
+    under våren, typiskt från april till maj. Arten häckar i vassruggar och våtmarker
+    över stora delar av regionen under sommarmånaderna. Redan från juli påbörjas höstflyttningen
+    när fåglarna börjar vandra söderut mot sina övervintringsområden i tropiska Afrika.
+    Trastsångaren är således helt frånvarande från norra Europa under vinterhalvåret.'
+  en: '# Great Reed Warbler Migration in Northern Europe
+
+
+    The Great Reed Warbler is a long-distance migrant throughout Scandinavia and Northern
+    Europe. Birds arrive in breeding territories from late April through May, establishing
+    themselves in reed beds along lakes, rivers, and wetlands. They remain during
+    the breeding season through August, then depart on southward migration in late
+    August and September, heading to sub-Saharan African wintering grounds. The species
+    is entirely absent from Northern Europe during winter months, making it a true
+    trans-Saharan migrant that does not overwinter in the region.'
+image_refs:
+- role: hero
+  path: Q180835/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:MilanIlic553&amp;action=edit&amp;redlink=1"
+    class="new" title="User:MilanIlic553 (page does not exist)">MilanIlic553</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Acrocephalus arundinaceus.jpg
+  commons_filename: Acrocephalus arundinaceus.jpg
+- role: secondary
+  path: Q180835/secondary-1.jpg
+  width: 1681
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common Reed Warbler (Acrocephalus
+    scirpaceus).jpg
+  commons_filename: Common Reed Warbler (Acrocephalus scirpaceus).jpg
+- role: secondary
+  path: Q180835/secondary-2.jpg
+  width: 1800
+  height: 1285
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/60513640@N07">Agustín
+    Povedano</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Carricero tordal Acrocephalus
+    arundinaceus.jpg
+  commons_filename: Carricero tordal Acrocephalus arundinaceus.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:39:46.734904+00:00'
+sources:
+  wikipedia_sv_revision: '59170244'
+  wikipedia_en_revision: '1335757827'
+  claude_model: claude-haiku-4-5-20251001

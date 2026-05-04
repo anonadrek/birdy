@@ -3228,6 +3228,7 @@
   ioc_order: Passeriformes
   common_en: Icterine Warbler
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q752539
   scientific_name: Hippolais polyglotta
   family: Acrocephalidae
@@ -3276,6 +3277,7 @@
   ioc_order: Passeriformes
   common_en: Sedge Warbler
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q242599
   scientific_name: Acrocephalus paludicola
   family: Acrocephalidae
@@ -3312,6 +3314,7 @@
   ioc_order: Passeriformes
   common_en: Common Reed Warbler
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q891376
   scientific_name: Acrocephalus griseldis
   family: Acrocephalidae

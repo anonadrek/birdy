@@ -1,0 +1,98 @@
+id: Q370354
+scientific_name: Iduna rama
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Iduna
+  ioc_order: Passeriformes
+names:
+  sv: saxaulsångare
+  en: Sykes’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Saxaulsångare
+
+
+    Saxaulsångaren är en ljust gråbrun sångare med ett diskret utseende som passar
+    väl för sitt hemland. Den tillhör rörsångarfamiljen och är en medelstor sångare
+    med en förhållandevis lång stjärt. Fågeln är svår att särskilja från närbesläktade
+    arter i fält.
+
+
+    Arten häckar främst i västra Centralasien, ofta i täta buskområden och saxaulfält,
+    varifrån dess svenska namn kommer. Under hösten övervintrare den på Indiska halvön,
+    där den håller sig i öppen vegetation. I Europa är saxaulsångaren mycket sällsynt
+    och endast observerad vid några enstaka tillfällen.
+
+
+    Saxaulsångaren behandlades tidigare som samma art som stäppsångaren under det
+    gemensamma namnet gråsångare. IUCN kategoriserar arten som livskraftig, vilket
+    tyder på att populationen är stabil.'
+  en: ''
+migration:
+  sv: '# Saxaulsångare (Iduna rama) i Norden
+
+
+    Saxaulsångaren är en mycket sällsynt gäst i Europa och förekommer således ytterst
+    sporadiskt i Skandinavien och Nordeuropa. Arten häckar främst i västra Centralasien
+    och övervintrar på Indiska halvön, vilket innebär att den ligger långt från våra
+    nordiska områden under båda årstiderna. De få observationer som gjorts i regionen
+    representerar troligtvis överblivna eller vilsekomna individer under flyttningstiderna,
+    men arten utgör ingen regelbunden del av den skandinaviska fågelfaunan.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q370354/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Sykes's warbler (Iduna rama)
+    (32559858931).jpg
+  commons_filename: Sykes's warbler (Iduna rama) (32559858931).jpg
+- role: secondary
+  path: Q370354/secondary-1.jpg
+  width: 1707
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sykes's warbler (Iduna rama)
+    (36435).jpg
+  commons_filename: Sykes's warbler (Iduna rama) (36435).jpg
+- role: secondary
+  path: Q370354/secondary-2.jpg
+  width: 1547
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sykes's warbler (Iduna rama)
+    (84608).jpg
+  commons_filename: Sykes's warbler (Iduna rama) (84608).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:40:14.994686+00:00'
+sources:
+  wikipedia_sv_revision: '58506848'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,107 @@
+id: Q210422
+scientific_name: Acrocephalus palustris
+taxonomy:
+  family: Acrocephalidae
+  family_sv: Kärrsångare
+  genus: Acrocephalus
+  ioc_order: Passeriformes
+names:
+  sv: kärrsångare
+  en: Marsh Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kärrsångare
+
+
+    Kärrsångare är en liten sångfågel som tillhör familjen rörsångare. Den är grönbrun
+    på ovansidan och ljusare på undersidan, med en karakteristisk ljus ögonbrynsrand.
+    Fågeln är mycket lik andra rörsångare och kan vara svår att särskilja i fält.
+
+
+    Arten häckar i frodig örtvegetation över stora delar av Europa, med undantag för
+    de nordligaste och sydvästra regionerna. Under vintermånaderna är kärrsångaren
+    flyttfågel som drar till Afrika söder om Sahara för att vila och hämta näring.
+
+
+    Kärrsångaren är en skicklig sångare med en varierande melodi. Arten är primärt
+    aktiv under säsongens värmaste månader när vegetationen erbjuder både föda och
+    häckningslokaliteter. IUCN klassificerar arten som livskraftig, vilket indikerar
+    att populationen är stabil.'
+  en: '# Marsh Warbler
+
+
+    The marsh warbler is a small, brownish warbler of the Old World family Acrocephalidae,
+    breeding across temperate Europe and wintering in southeast Africa. It is a rather
+    plain bird, with warm brown upperparts and pale underparts, making it difficult
+    to distinguish from related species in the field.
+
+
+    This species is best known for its remarkable vocal abilities. The male''s song
+    is exceptionally varied and complex, featuring striking imitations of many other
+    bird species woven together in lengthy, energetic performances. It sings from
+    concealed perches within dense vegetation and can be heard throughout the breeding
+    season, particularly in early morning and evening. These imitations are so convincing
+    that listeners may initially mistake them for other species.
+
+
+    The marsh warbler favours wetland habitats with tall reed beds and dense scrub,
+    where it forages for insects and small invertebrates among the vegetation. It
+    arrives at breeding grounds in spring and departs relatively early in late summer
+    for its African wintering grounds. While it can be challenging to see due to its
+    skulking habits and preference for dense cover, patient observers watching suitable
+    reed beds and wet vegetation may catch glimpses of this accomplished mimic.'
+migration:
+  sv: '# Kärrsångare – Förekomst i Skandinavien/Nordeuropa
+
+
+    Kärrsångare är en långdistansflyktare som endast förekommer i Skandinavien och
+    Nordeuropa under häckningstiden. Arten anländer från sitt afrikanskt övervintringsområde
+    under våren, typiskt från maj månad, för att häcka i frodig örtvegetation. Efter
+    avslutad häckning påbörjar arten sin höstflyttning tillbaka till Afrika söder
+    om Sahara under augusti-september. Arten förekommer alltså inte i regionen under
+    vinterhalvåret, då den helt saknas från Skandinavien och Nordeuropa.'
+  en: The Marsh Warbler is a long-distance migratory species that breeds across temperate
+    Europe during the breeding season. In Scandinavia and Northern Europe, it arrives
+    in late spring (May-June) to establish breeding territories in reed beds and marshy
+    habitats. This warbler is an obligate migrant that vacates its northern breeding
+    grounds entirely as autumn approaches, undertaking an impressive southbound migration
+    in late August and September. The entire Scandinavian population winters in southeast
+    Africa, returning north the following spring to breed again. Therefore, it is
+    absent from Northern Europe during the winter months.
+image_refs:
+- role: hero
+  path: Q210422/hero.jpg
+  width: 2400
+  height: 1804
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
+    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Marsh Warbler Acrocephalus palustris.jpg
+  commons_filename: Marsh Warbler Acrocephalus palustris.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T12:40:24.099658+00:00'
+sources:
+  wikipedia_sv_revision: '56416080'
+  wikipedia_en_revision: '1325332950'
+  claude_model: claude-haiku-4-5-20251001
