@@ -56,3 +56,34 @@ sqldelight {
 tasks.named<Test>("jvmTest") {
     useJUnitPlatform()
 }
+
+val speciesDir = file("species")
+val imagesDir = file("images")
+val expectedCountFile = file("expected-species-count.txt")
+val overridesFile = file("overrides.yaml")
+
+val validateSpeciesData by tasks.registering(JavaExec::class) {
+    group = "verification"
+    description = "Validate committed species YAML against the schema."
+    dependsOn("jvmJar")
+    classpath =
+        files(tasks.named("jvmJar")) +
+        configurations.getByName("jvmRuntimeClasspath")
+    mainClass.set("se.birdy.content.build.ValidateMain")
+    args =
+        listOf(
+            speciesDir.absolutePath,
+            imagesDir.absolutePath,
+            expectedCountFile.absolutePath,
+            overridesFile.absolutePath,
+        )
+    val speciesDirExists = speciesDir.exists()
+    val expectedCountFileExists = expectedCountFile.exists()
+    onlyIf("speciesDir and expectedCountFile exist") {
+        speciesDirExists && expectedCountFileExists
+    }
+}
+
+tasks.named("check") {
+    dependsOn(validateSpeciesData)
+}

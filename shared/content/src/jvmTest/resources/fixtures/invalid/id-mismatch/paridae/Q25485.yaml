@@ -1,0 +1,25 @@
+id: Q99999
+scientific_name: Parus major
+taxonomy: {family: Paridae, family_sv: Mesar, genus: Parus, ioc_order: Passeriformes}
+names: {sv: Talgoxe, en: Great Tit}
+abundance: ovanlig
+iucn_status: LC
+season: {jan: present, feb: present, mar: present, apr: present, may: present, jun: present, jul: present, aug: present, sep: present, oct: present, nov: present, dec: present}
+regions: [SE]
+description:
+  sv: |
+    En tillräckligt lång beskrivning för att passera valideringen så att vi kan testa
+    den fysiska match-regeln mellan filnamn och id-fält ordentligt utan att fastna på
+    description-too-short. Lägger till tillräckligt mycket text för att komma över
+    åttiordstrosken. Lägger till ännu lite mer text så att tröskeln passeras säkert.
+  en: |
+    A description long enough to pass the description-length validation so we can test
+    the filename-vs-id-field matching rule cleanly without getting tripped up on the
+    description-too-short rule. Adding enough text to clear the eighty-word threshold.
+    Adding still more text so the threshold is cleared safely.
+migration: {sv: "Stationär. Detaljerad text.", en: "Resident. Detailed text."}
+image_refs:
+  - {role: hero, path: Q99999/hero.jpg, width: 2400, height: 1800, license: PD, author: x, source_url: x, commons_filename: x}
+review_status: auto
+generated_at: 2026-05-02T14:30:00Z
+sources: {}

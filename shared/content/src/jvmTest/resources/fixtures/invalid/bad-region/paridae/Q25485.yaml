@@ -1,0 +1,23 @@
+id: Q25485
+scientific_name: Parus major
+taxonomy: {family: Paridae, family_sv: Mesar, genus: Parus, ioc_order: Passeriformes}
+names: {sv: Talgoxe, en: Great Tit}
+abundance: ovanlig
+iucn_status: LC
+season: {jan: present, feb: present, mar: present, apr: present, may: present, jun: present, jul: present, aug: present, sep: present, oct: present, nov: present, dec: present}
+regions: [XX]
+description:
+  sv: |
+    Tillräckligt lång svensk beskrivning för att klara valideringens åttiordstrosken;
+    detta används bara för att testa att fel regionkod fångas av validatorn.
+    Lägger till mer text för marginal.
+  en: |
+    Long enough English description for the validator to pass the eighty-word threshold;
+    only purpose is to test that the bad region code is caught by validation.
+    Padding with more words for safety.
+migration: {sv: "x. Detaljerad text.", en: "x. Detailed text."}
+image_refs:
+  - {role: hero, path: Q25485/hero.jpg, width: 2400, height: 1800, license: PD, author: x, source_url: x, commons_filename: x}
+review_status: auto
+generated_at: 2026-05-02T14:30:00Z
+sources: {}
