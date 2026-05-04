@@ -29,8 +29,20 @@ kotlin {
             implementation(project(":shared:data"))
             implementation(project(":shared:ml"))
             implementation(project(":shared:content"))
+            implementation(libs.sqldelight.coroutines)
+        }
+        androidMain.dependencies {
+            implementation(libs.sqldelight.android.driver)
         }
     }
+}
+
+afterEvaluate {
+    tasks
+        .matching { it.name.startsWith("assemble") || (it.name.startsWith("merge") && it.name.contains("Asset")) }
+        .configureEach {
+            dependsOn(":shared:content:buildSpeciesDb")
+        }
 }
 
 android {

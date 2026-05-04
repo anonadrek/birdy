@@ -1,42 +1,44 @@
 package se.birdy.app.ui
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import se.birdy.domain.Greeting
+import se.birdy.app.SpeciesRepositoryProvider
+import se.birdy.content.Locale
 
 @Composable
 fun HomeScreen() {
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background,
+    val repo = remember { SpeciesRepositoryProvider.get() }
+    val state =
+        remember { repo.all(Locale.SV) }.collectAsState(initial = emptyList())
+
+    Column(
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
     ) {
-        Box(contentAlignment = Alignment.Center) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.padding(24.dp),
-            ) {
-                Text(
-                    text = Greeting().welcome("sv"),
-                    style = MaterialTheme.typography.headlineLarge,
-                    color = MaterialTheme.colorScheme.onBackground,
-                )
-                Text(
-                    text = "AI-driven fågelidentifiering",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onBackground,
-                )
-            }
+        Text(
+            text = "Birdy Bird Scanner",
+            style = MaterialTheme.typography.headlineLarge,
+        )
+        Text(
+            text = "${state.value.size} fågelarter laddade",
+            style = MaterialTheme.typography.titleMedium,
+        )
+        for (s in state.value.take(5)) {
+            Text(s.name, style = MaterialTheme.typography.bodyLarge)
         }
     }
 }
