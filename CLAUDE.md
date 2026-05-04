@@ -302,7 +302,7 @@ Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Sen
 | 2026-05-04 | paridae | +8 | 13 | `f8cc17f` |
 | 2026-05-04 | accipitridae | +38 | 51 | `1ed1895` |
 | 2026-05-04 | acrocephalidae | +19 | 70 | `3609b98` |
-| 2026-05-04 | alaudidae | +27 | 97 | _(this commit)_ |
+| 2026-05-04 | alaudidae | +27 | 97 | `d945e1f` |
 | _(next)_ | anatidae | | | |
 
 **Pre-Plan-2b-blockare avklarade:**
@@ -347,7 +347,7 @@ Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Sen
 - Q27674 härmsångare hade bara 1 image_ref (hero, ingen secondary). Validatorn accepterar — minimum är 1 hero. Inte allt är problem.
 - Cost: 64 Claude-calls / $0.064 (cumulativt 70 arter / ~$0.38).
 
-**Alaudidae-batch lärdomar (2026-05-04, _(this commit)_):**
+**Alaudidae-batch lärdomar (2026-05-04, `d945e1f`):**
 
 - 27 arter committade. 2 abundance:allmän (Q25961 sånglärka, Q26969 trädlärka) approved efter visuell hero-check. Övriga lärkor är öken-/Asien-endemics som inte når ovanlig-kvalifikationen i SE.
 - **13/27 (48%) sparse-text + 8/27 (30%) image-coverage-overrides.** 5 arter (Q1083050, Q1092087, Q110812143, Q55112126, Q966703) behöver båda. Stort flag för datakvalitet: alaudidae är inte en outlier — Plan 3 UI måste hantera "beskrivning kommer" + saknade bilder som ett vanligt fall.
