@@ -27,6 +27,7 @@ class SpeciesDbBuilder {
             }
         }
 
+        driver.execute(null, "PRAGMA user_version = ${BirdyContent.Schema.version}", 0)
         driver.execute(null, "VACUUM INTO '${targetDb.toAbsolutePath()}'", 0)
         driver.close()
 

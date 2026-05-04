@@ -5,8 +5,10 @@ import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import se.birdy.content.SpeciesRepository
 import se.birdy.content.SqlDelightSpeciesRepository
 import se.birdy.content.db.BirdyContent
-import java.io.File
 import java.io.FileOutputStream
+
+private const val SPECIES_DB_ASSET_PATH =
+    "composeResources/birdy_bird_scanner.composeapp.generated.resources/files/species.db"
 
 actual object SpeciesRepositoryProvider {
     private var instance: SpeciesRepository? = null
@@ -18,9 +20,10 @@ actual object SpeciesRepositoryProvider {
 
     actual fun get(): SpeciesRepository {
         instance?.let { return it }
-        val dbFile = File(appContext.filesDir, "species.db")
+        val dbFile = appContext.getDatabasePath("species.db")
         if (!dbFile.exists()) {
-            appContext.assets.open("composeResources/composeApp.composeResources/files/species.db").use { input ->
+            dbFile.parentFile?.mkdirs()
+            appContext.assets.open(SPECIES_DB_ASSET_PATH).use { input ->
                 FileOutputStream(dbFile).use { output -> input.copyTo(output) }
             }
         }
