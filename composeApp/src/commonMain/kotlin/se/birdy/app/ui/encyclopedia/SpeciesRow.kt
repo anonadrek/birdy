@@ -18,8 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
+import se.birdy.app.ui.components.HeroImage
 import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.content.Abundance
 import se.birdy.content.model.SpeciesSummary
@@ -39,12 +39,10 @@ fun SpeciesRow(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Box(
-            modifier =
-                Modifier
-                    .size(36.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(HeroMossMid),
+        HeroImage(
+            imagePath = summary.heroImagePath,
+            modifier = Modifier.size(36.dp),
+            cornerRadius = 8.dp,
         )
         Column(modifier = Modifier.weight(1f)) {
             Text(summary.name, style = MaterialTheme.typography.bodyLarge)

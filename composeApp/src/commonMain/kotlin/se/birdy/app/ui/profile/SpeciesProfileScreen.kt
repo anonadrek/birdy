@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -30,6 +32,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import se.birdy.app.ui.components.EmptyState
+import se.birdy.app.ui.components.HeroImage
 import se.birdy.app.ui.components.SectionBlock
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.HeroMossLight
@@ -131,7 +134,18 @@ private fun ProfileContent(
                     isEmpty = species.images.isEmpty(),
                     emptyMessage = "Inga foton tillgängliga.",
                 ) {
-                    Text("${species.images.size} foton (Coil i Task 9).")
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        for (img in species.images.take(3)) {
+                            HeroImage(
+                                imagePath = img.path,
+                                modifier = Modifier.weight(1f).height(64.dp),
+                                cornerRadius = 8.dp,
+                            )
+                        }
+                    }
                 }
             }
         }
