@@ -265,7 +265,10 @@ Code-review av Task 8 (commit `e820a23`) gav "Approved with conditions". Två kr
 
 - **Domain types paket:** Domain types ligger i `se.birdy.content.model` (inte `se.birdy.content`) pga SQLDelight 2.x package-kollision. Plan 3 måste importera `se.birdy.content.model.{Species,SpeciesSummary,SpeciesTaxonomy,SpeciesImage}`.
 - **`verifyCommonMainBirdyContentMigration` disabled på Windows:** `afterEvaluate`-blocket i `shared/content/build.gradle.kts` disablar migration-verifiering pga SQLite JDBC native lib-bugg (`NativeDB._open_utf8`) på Windows. På Linux CI kör disabeln fortfarande (är OK — migration-verifiering är developer-fixture, inte CI-gate). Återaktivera när upstream fixar buggen.
-- **Task 14 Steps 7-10 device-blockade:** `./gradlew :androidApp:installDebug` + `adb shell am start -n se.birdy.android/.MainActivity` + screenshot → `docs/superpowers/screenshots/2026-05-02-walking-skeleton.png` — görs nästa gång S23 Ultra är inkopplad. Asset-path `composeResources/composeApp.composeResources/files/species.db` är overifierad på device — kan behöva justeras.
+- **Task 14 Steps 7-10 device-verifierad (2026-05-04, commits `2fe3f81` + `b9b85bb`):** Två runtime-buggar fixade under verifieringen:
+  1. Asset-path var fel — Compose Multiplatform mangling ger `composeResources/birdy_bird_scanner.composeapp.generated.resources/files/species.db` (inte `composeResources/composeApp.composeResources/files/species.db`). Kontrolleras alltid med `unzip -l <apk> | grep <fil>`.
+  2. `AndroidSqliteDriver(..., "species.db")` öppnar via `Context.openOrCreateDatabase()` mot `databases/`, inte `filesDir`. Kopiera till `appContext.getDatabasePath("species.db")`. Driver kallade dessutom `Schema.create()` när bundlade DB:n hade `user_version=0` → krasch på `table Species already exists`. Lösning: `SpeciesDbBuilder` sätter `PRAGMA user_version = ${BirdyContent.Schema.version}` innan `VACUUM INTO`.
+  Verifierat: HomeScreen renderar "5 fågelarter laddade" + Talgoxe/Koltrast/Blåmes/Knölsvan/Tornfalk på SM-S918B utan krasch. Screenshot: `docs/superpowers/screenshots/2026-05-02-walking-skeleton.png`.
 
 **Task 10 deviationer från plan (commit `2e7099c`):**
 
@@ -274,16 +277,16 @@ Code-review av Task 8 (commit `e820a23`) gav "Approved with conditions". Två kr
 - `.gitignore` fick negation `!**/src/**/kotlin/**/build/` — annars åt root-`build/`-regeln upp paketet `se.birdy.content.build` (kotlin-källkod).
 - `.editorconfig` + `afterEvaluate { ktlint.filter { exclude { ... "generated" ... } } }` i `shared/content/build.gradle.kts` — utesluter SQLDelight-genererade källor från ktlint (de använder 2-space indent och bryter våra regler).
 
-**Senaste commits (Tasks 11–15, pushade till origin med tag `v0.2.0a-pipeline`):**
+**Senaste commits (Tasks 11–15 + device-verifiering, pushade till origin med tag `v0.2.0a-pipeline`):**
 ```
+b9b85bb docs(screenshot): plan 2a walking-skeleton milestone
+2fe3f81 fix(app): bundle pre-populated species.db at correct runtime path
+d4e3926 docs(claude): update Task 15 commit SHA in CLAUDE.md
 9a972ac ci(content): integrate validation + db build; mark Plan 2a complete
 8abf4dd feat(app): wire species.db into composeApp; HomeScreen shows 5 walking-skeleton species
 5c172ee feat(content): SpeciesRepository public API + SQLDelight implementation with i18n fallback
 502241b feat(content): SpeciesDbBuilder + buildSpeciesDb Gradle task; 5-species db generated
 86d97f1 feat(content): SpeciesValidator + validateSpeciesData Gradle task with all schema rules
-61b1b91 docs(claude): mark Plan 2a Tasks 9 & 10 done, log Task 9 pipeline-fixes + Task 10 deviations
-2e7099c feat(content): SQLDelight schemas + kaml YAML parser + DTOs (jvmTest green)
-d973e31 data(content): walking skeleton — 5 species (talgoxe, koltrast, blåmes, knölsvan, tornfalk)
 ```
 
 **Nästa:** Plan 2b — content backfill family-by-family. Se `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Adressera Task 8 follow-ups (I1, I2, I4, I5) + Plan 2b prerequisites (P1705-gap, few-shot prompts) innan `--all` körs.
