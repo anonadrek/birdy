@@ -1,10 +1,12 @@
 {
-  "head": {"vars": ["taxonName", "family", "familyLabel", "genus", "genusLabel", "ordo", "ordoLabel", "iucnStatus", "iucnStatusLabel", "image"]},
+  "head": {"vars": ["taxonName", "taxonLabelSv", "family", "familyLabel", "familyLabelSv", "genus", "genusLabel", "ordo", "ordoLabel", "iucnStatus", "iucnStatusLabel", "image"]},
   "results": {
     "bindings": [{
       "taxonName": {"type": "literal", "value": "Parus major"},
+      "taxonLabelSv": {"type": "literal", "xml:lang": "sv", "value": "Talgoxe"},
       "family": {"type": "uri", "value": "http://www.wikidata.org/entity/Q193353"},
       "familyLabel": {"type": "literal", "value": "Paridae"},
+      "familyLabelSv": {"type": "literal", "xml:lang": "sv", "value": "Mesar"},
       "genus": {"type": "uri", "value": "http://www.wikidata.org/entity/Q193357"},
       "genusLabel": {"type": "literal", "value": "Parus"},
       "ordo": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25379"},

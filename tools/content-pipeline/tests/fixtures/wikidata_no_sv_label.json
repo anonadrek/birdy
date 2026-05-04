@@ -1,0 +1,14 @@
+{
+  "head": {"vars": ["taxonName", "taxonLabelSv", "family", "familyLabel", "familyLabelSv", "genus", "genusLabel", "ordo", "ordoLabel", "iucnStatus", "iucnStatusLabel", "image"]},
+  "results": {
+    "bindings": [{
+      "taxonName": {"type": "literal", "value": "Mystery bird"},
+      "family": {"type": "uri", "value": "http://www.wikidata.org/entity/Q999999"},
+      "familyLabel": {"type": "literal", "value": "Mysteriidae"},
+      "genus": {"type": "uri", "value": "http://www.wikidata.org/entity/Q888888"},
+      "genusLabel": {"type": "literal", "value": "Mysterius"},
+      "ordo": {"type": "uri", "value": "http://www.wikidata.org/entity/Q777777"},
+      "ordoLabel": {"type": "literal", "value": "Passeriformes"}
+    }]
+  }
+}

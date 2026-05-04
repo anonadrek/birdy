@@ -125,8 +125,10 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
     scientific_name = listed["scientific_name"]
 
     wd = await ctx.wikidata.fetch_structured(q_id, force=ctx.options.force)
+    common_sv = listed.get("common_sv") or wd.common_sv
+    family_sv = listed.get("family_sv") or wd.family_sv or wd.family
     title_by_lang = {
-        "sv": listed.get("common_sv") or scientific_name,
+        "sv": common_sv or scientific_name,
         "en": listed.get("common_en") or scientific_name,
     }
     sv_article = await ctx.wikipedia.fetch_extract(
@@ -148,10 +150,10 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
             description[lang] = await ctx.claude.summarize_description(
                 q_id=q_id,
                 scientific_name=scientific_name,
-                common_sv=listed.get("common_sv") or "",
+                common_sv=common_sv or "",
                 common_en=listed.get("common_en") or "",
                 family=wd.family,
-                family_sv=listed.get("family_sv") or wd.family,
+                family_sv=family_sv,
                 wikipedia_intro=article.extract,
                 lang=lang,
                 model=ctx.options.model,
@@ -159,10 +161,10 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
             migration[lang] = await ctx.claude.summarize_migration(
                 q_id=q_id,
                 scientific_name=scientific_name,
-                common_sv=listed.get("common_sv") or "",
+                common_sv=common_sv or "",
                 common_en=listed.get("common_en") or "",
                 family=wd.family,
-                family_sv=listed.get("family_sv") or wd.family,
+                family_sv=family_sv,
                 wikipedia_intro=article.extract,
                 lang=lang,
                 model=ctx.options.model,
@@ -217,10 +219,10 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
         wikidata_id=q_id,
         scientific_name=scientific_name,
         family=wd.family,
-        family_sv=listed.get("family_sv") or wd.family,
+        family_sv=family_sv,
         genus=wd.genus,
         ioc_order=ioc_order,
-        common_sv=listed.get("common_sv"),
+        common_sv=common_sv,
         common_en=listed.get("common_en") or "",
         abundance=abundance,
         iucn_status=wd.iucn_status,

@@ -32,10 +32,12 @@ class WikidataStructured:
     q_id: str
     scientific_name: str
     family: str
+    family_sv: str | None
     genus: str
     ioc_order: str
     iucn_status: str
     image_filename: str | None
+    common_sv: str | None
 
 
 SparqlRunner = Callable[[str], Awaitable[str]]
@@ -82,8 +84,8 @@ class WikidataClient:
     @staticmethod
     def _build_query(q_id: str) -> str:
         return f"""
-        SELECT ?taxonName ?family ?familyLabel ?genus ?genusLabel ?ordo ?ordoLabel
-               ?iucnStatus ?iucnStatusLabel ?image WHERE {{
+        SELECT ?taxonName ?taxonLabelSv ?family ?familyLabel ?familyLabelSv ?genus ?genusLabel
+               ?ordo ?ordoLabel ?iucnStatus ?iucnStatusLabel ?image WHERE {{
           BIND(wd:{q_id} AS ?taxon)
           ?taxon wdt:P225 ?taxonName ;
                  wdt:P171* ?family .
@@ -94,6 +96,8 @@ class WikidataClient:
           ?ordo wdt:P105 wd:Q36602 .
           OPTIONAL {{ ?taxon wdt:P141 ?iucnStatus . }}
           OPTIONAL {{ ?taxon wdt:P18 ?image . }}
+          OPTIONAL {{ ?taxon rdfs:label ?taxonLabelSv . FILTER(LANG(?taxonLabelSv) = "sv") }}
+          OPTIONAL {{ ?family rdfs:label ?familyLabelSv . FILTER(LANG(?familyLabelSv) = "sv") }}
           SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }}
         }}
         LIMIT 1
@@ -113,12 +117,16 @@ class WikidataClient:
         if image_uri:
             tail = image_uri.rsplit("/", 1)[-1]
             image_filename = unquote(tail)
+        common_sv = b.get("taxonLabelSv", {}).get("value") or None
+        family_sv = b.get("familyLabelSv", {}).get("value") or None
         return WikidataStructured(
             q_id=q_id,
             scientific_name=b["taxonName"]["value"],
             family=b["familyLabel"]["value"],
+            family_sv=family_sv,
             genus=b["genusLabel"]["value"],
             ioc_order=b["ordoLabel"]["value"],
             iucn_status=iucn_code,
             image_filename=image_filename,
+            common_sv=common_sv,
         )
