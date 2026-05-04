@@ -71,6 +71,82 @@ def test_rank_rejects_specimens() -> None:
     assert all("specimen" not in c.commons_filename.lower() for c in ranked)
 
 
+def test_rank_rejects_plural_categories() -> None:
+    illust_plural = ImageCandidate(
+        commons_filename="Parus major - field.jpg",
+        url="x",
+        width=4000,
+        height=3000,
+        license="Public domain",
+        author="A",
+        categories=["Parus major (illustrations)"],
+    )
+    specimen_plural = ImageCandidate(
+        commons_filename="Parus major - museum.jpg",
+        url="y",
+        width=4000,
+        height=3000,
+        license="CC0",
+        author="A",
+        categories=["Parus major (museum specimens)", "Taxidermied birds"],
+    )
+    photo = ImageCandidate(
+        commons_filename="Parus major - garden.jpg",
+        url="z",
+        width=4000,
+        height=3000,
+        license="CC BY-SA 4.0",
+        author="B",
+        categories=["Photographs of Aves"],
+    )
+    ranked = rank_candidates([illust_plural, specimen_plural, photo])
+    assert len(ranked) == 1
+    assert ranked[0].commons_filename == "Parus major - garden.jpg"
+
+
+def test_rank_rejects_historical_print_filenames() -> None:
+    print_file = ImageCandidate(
+        commons_filename="Pernis apivorus - 1700-1880 - Print - Iconographia Zoologica.jpg",
+        url="x",
+        width=4000,
+        height=3000,
+        license="Public domain",
+        author="A",
+        categories=[],
+    )
+    chromolitho = ImageCandidate(
+        # Wellcome upload truncated as "Chromolithograp" — regex must still match.
+        commons_filename="Aquila adalberti Chromolithograp Wellcome V0022220.jpg",
+        url="y",
+        width=4000,
+        height=3000,
+        license="Public domain",
+        author="A",
+        categories=[],
+    )
+    hardwicke = ImageCandidate(
+        commons_filename="Butastur teesa Hardwicke.jpg",
+        url="z",
+        width=4000,
+        height=3000,
+        license="Public domain",
+        author="A",
+        categories=[],
+    )
+    photo = ImageCandidate(
+        commons_filename="Pernis apivorus - flying.jpg",
+        url="w",
+        width=4000,
+        height=3000,
+        license="CC BY-SA 4.0",
+        author="B",
+        categories=["Photographs of Aves"],
+    )
+    ranked = rank_candidates([print_file, chromolitho, hardwicke, photo])
+    assert len(ranked) == 1
+    assert ranked[0].commons_filename == "Pernis apivorus - flying.jpg"
+
+
 def test_rank_rejects_below_min_resolution() -> None:
     too_small = ImageCandidate(
         commons_filename="Parus major small.jpg",

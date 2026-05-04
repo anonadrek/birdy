@@ -24,7 +24,17 @@ SECONDARY_MAX = 1800
 SECONDARY_QUALITY = 85
 
 REJECT_PATTERNS = re.compile(
-    r"\b(illustration|drawing|painting|specimen|skeleton|skull|egg|nest only|taxidermy)\b",
+    # Trailing `s?` matches plural Commons category names like "Bird illustrations"
+    # or "(museum specimens)" — without it `\b...\b` would only match singular.
+    # `print|chromolithograph|lithograph|engraving|iconographia|hardwicke` cover
+    # historical zoological plates that the Commons search surfaces near the top.
+    r"\b("
+    r"illustration|drawing|painting|specimen|skeleton|skull|egg|nest only|"
+    r"taxidermy|taxidermied|"
+    # Trailing `h?` on chromolithograph handles truncated Wellcome filenames
+    # like "Chromolithograp Wellcome V0022220.jpg".
+    r"print|chromolithograph?|lithograph|engraving|iconographia|hardwicke|wellcome"
+    r")s?\b",
     re.IGNORECASE,
 )
 

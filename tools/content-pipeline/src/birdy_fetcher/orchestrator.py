@@ -139,6 +139,16 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
         q_id, title_by_lang=title_by_lang, lang="en", force=ctx.options.force
     )
 
+    # Partial-run preservation: when --field is text or images, load the
+    # existing YAML so we can carry over the section we are NOT regenerating.
+    # Otherwise --field=text writes empty image_refs (and vice versa), wiping
+    # committed work. --field=all behaves as before (full rebuild from sources).
+    family_dir = wd.family.lower()
+    yaml_out_path = ctx.species_yaml_root / family_dir / f"{q_id}.yaml"
+    existing: dict[str, Any] | None = None
+    if ctx.options.field != "all" and yaml_out_path.exists():
+        existing = yaml.safe_load(yaml_out_path.read_text(encoding="utf-8"))
+
     description = {"sv": "", "en": ""}
     migration = {"sv": "", "en": ""}
 
@@ -170,11 +180,18 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
                 lang=lang,
                 model=ctx.options.model,
             )
+    elif existing is not None:
+        description = dict(existing.get("description") or description)
+        migration = dict(existing.get("migration") or migration)
 
     image_refs: list[ImageRef] = []
     if ctx.options.field in ("images", "all"):
+        # Commons categories often lag taxonomic genus renames (e.g. Astur gentilis
+        # is still under "Accipiter gentilis"). species_list.yaml may set a
+        # commons_search_name override; falls back to scientific_name otherwise.
+        commons_query = listed.get("commons_search_name") or scientific_name
         candidates = await ctx.images.fetch_candidates(
-            q_id=q_id, scientific_name=scientific_name, force=ctx.options.force
+            q_id=q_id, scientific_name=commons_query, force=ctx.options.force
         )
         ranked = rank_candidates(candidates)[:3]
         if not ctx.options.dry_run and candidates:
@@ -212,6 +229,20 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
                     commons_filename=candidate.commons_filename,
                 )
             )
+    elif existing is not None:
+        image_refs = [
+            ImageRef(
+                role=ref.get("role", ""),
+                path=ref.get("path", ""),
+                width=int(ref.get("width", 0)),
+                height=int(ref.get("height", 0)),
+                license=ref.get("license", ""),
+                author=ref.get("author", ""),
+                source_url=ref.get("source_url", ""),
+                commons_filename=ref.get("commons_filename", ""),
+            )
+            for ref in (existing.get("image_refs") or [])
+        ]
 
     # VP11 vp_status (H = confirmed breeding) is a poor proxy for "common in
     # Sweden" — many H-coded species are local rarities (e.g. Lappmes). Default
@@ -242,8 +273,18 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
         description=description,
         migration=migration,
         image_refs=image_refs,
-        review_status="auto",
-        review_notes="",
+        # Preserve manual approval across partial reruns. Full --field=all
+        # is treated as a fresh rebuild and resets to "auto".
+        review_status=(
+            (existing.get("review_status") if existing else None) or "auto"
+            if ctx.options.field != "all"
+            else "auto"
+        ),
+        review_notes=(
+            (existing.get("review_notes") if existing else "") or ""
+            if ctx.options.field != "all"
+            else ""
+        ),
         generated_at=datetime.now(UTC).isoformat(),
         sources={
             "wikipedia_sv_revision": sv_article.revision,
@@ -259,10 +300,8 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
         overrides_raw = yaml.safe_load(ctx.overrides_path.read_text(encoding="utf-8")) or {}
     data = merge_overrides(data, overrides_raw)
 
-    family_dir = wd.family.lower()
-    out_path = ctx.species_yaml_root / family_dir / f"{q_id}.yaml"
     if not ctx.options.dry_run:
-        write_species_yaml(data, out_path)
+        write_species_yaml(data, yaml_out_path)
 
     return data
 
