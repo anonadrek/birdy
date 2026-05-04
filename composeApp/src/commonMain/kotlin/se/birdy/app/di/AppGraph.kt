@@ -1,7 +1,9 @@
 package se.birdy.app.di
 
 import se.birdy.app.ui.encyclopedia.EncyclopediaViewModel
+import se.birdy.app.ui.profile.SpeciesProfileViewModel
 import se.birdy.content.Locale
+import se.birdy.content.SpeciesId
 import se.birdy.content.SpeciesRepository
 
 class AppGraph(
@@ -9,4 +11,7 @@ class AppGraph(
     val defaultLocale: Locale = Locale.SV,
 ) {
     fun encyclopediaViewModel(): EncyclopediaViewModel = EncyclopediaViewModel(repository, defaultLocale)
+
+    fun speciesProfileViewModel(speciesId: SpeciesId): SpeciesProfileViewModel =
+        SpeciesProfileViewModel(repository, speciesId, defaultLocale)
 }
