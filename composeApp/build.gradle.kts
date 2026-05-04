@@ -29,7 +29,7 @@ kotlin {
             implementation(project(":shared:domain"))
             implementation(project(":shared:data"))
             implementation(project(":shared:ml"))
-            implementation(project(":shared:content"))
+            api(project(":shared:content"))
             implementation(libs.sqldelight.coroutines)
             implementation(libs.androidx.lifecycle.viewmodel.compose)
             implementation(libs.androidx.lifecycle.runtime.compose)

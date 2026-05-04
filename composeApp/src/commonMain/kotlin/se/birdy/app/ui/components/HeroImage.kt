@@ -39,7 +39,7 @@ fun HeroImage(
     ) {
         if (imagePath != null) {
             AsyncImage(
-                model = Res.getUri(imagePath),
+                model = Res.getUri("files/images/$imagePath"),
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop,
