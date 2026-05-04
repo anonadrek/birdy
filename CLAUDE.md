@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a ✅ klar** (`v0.2.0a-pipeline`). **Plan 2b pågår** — paridae +8 (`f8cc17f`), accipitridae +38 (`1ed1895`), acrocephalidae +19 (`3609b98`), alaudidae +27, totalt 97/700. Pipeline-recovery-bug fixad i `1bac05d`; non-image-extension reject + gsrlimit=50 i `c803ed1`. **Nästa steg: nästa familj enligt runbook `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` (anatidae).**
+**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a ✅ klar** (`v0.2.0a-pipeline`). **Plan 2b PAUSAD** vid 97/700 — paridae +8 (`f8cc17f`), accipitridae +38 (`1ed1895`), acrocephalidae +19 (`3609b98`), alaudidae +27 (`d945e1f`). Pipeline-recovery-bug fixad i `1bac05d`; non-image-extension reject + gsrlimit=50 i `c803ed1`. **Plan 3 (Encyclopedia) är aktiv workstream** — design-spec klar (`docs/superpowers/specs/2026-05-04-encyclopedia-design.md`), nästa steg är `superpowers:writing-plans` för implementations-plan. Plan 2b återupptas (anatidae) efter Plan 3 ships.
 
 ## Var hittar du saker
 
@@ -27,8 +27,8 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 |---|---|---|
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ Klar (`v0.1.0-foundation`) |
 | 2a | Content pipeline + walking skeleton (5 arter) | ✅ Klar (`v0.2.0a-pipeline`) |
-| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏳ Pågår — paridae +8, accipitridae +38, acrocephalidae +19 (70/700); se `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` |
-| 3 | Encyclopedia (browse + species profile) | |
+| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ PAUSAD vid 97/700 (alaudidae `d945e1f`); återupptas efter Plan 3 |
+| 3 | Encyclopedia (browse + species profile) | 🟢 ACTIVE — design-spec klar (`docs/superpowers/specs/2026-05-04-encyclopedia-design.md`); nästa: writing-plans |
 | 4 | ML & Camera (TFLite + CameraX) | |
 | 5 | Diary & Gamification | |
 | 6 | i18n, polish, Play Store-release | |
@@ -189,6 +189,28 @@ Användaren har sagt: **"Don't ask me for permission to run anything."** Det bet
 - Det betyder INTE att ignorera blockerare som kräver fysisk åtkomst (telefon, emulator) eller tredjepartsbeslut (CI-resultat) — där rapporterar man status och väntar.
 - Det betyder INTE heller att hoppa över granskning. Två-stegs-review (spec → kvalitet) körs alltid mellan tasks per `subagent-driven-development`.
 
+## Plan 3 status (BRAINSTORMING KLAR — DESIGN-SPEC SKRIVEN)
+
+**Spec:** `docs/superpowers/specs/2026-05-04-encyclopedia-design.md` (utkast 2026-05-04, väntar på användargranskning).
+
+**Scope (låst):** Encyclopedia (browse) + SpeciesProfileScreen + bottom-nav-skelett med 3 stubbade flikar (Skanna, Dagbok, Märken).
+
+**Tekniska beslut (låsta):**
+- Browse-default: lista grupperad allmän/övriga med sökfält + filter-knapp som öppnar bottom sheet
+- Profile-layout: collapsing toolbar (Material 3 LargeTopAppBar)
+- Sparse-data: sektioner behålls alltid, tomma renderas inline ("Beskrivning kommer.")
+- Navigation: Compose Multiplatform Navigation 2.x med `@Serializable` type-safe routes
+- State: ViewModel + StateFlow via `lifecycle-viewmodel-compose`
+- Image: Coil 3 mot bundlade `composeResources/files/images/`
+- i18n: `compose-multiplatform-resources` med `strings.xml` (sv) + `values-en/strings.xml` (en)
+- DI: manuell constructor-injection via `AppGraph`-klass
+
+**Self-review-fixes inom spec'n (8 inline):** kvarvarande `search()`-implementation matchar inte alla `SpeciesFilter`-fält (regions/månad ignoreras, scientific name ej sökt) → Plan 3 Task 4 utökar `SqlDelightSpeciesRepository.search()` + `SpeciesName.sq` för att honorera dessa.
+
+**Milstolpe-tag (planerad):** `v0.3.0-encyclopedia`.
+
+**Nästa steg:** användaren granskar spec'n → invokera `superpowers:writing-plans` för att producera `docs/superpowers/plans/2026-05-04-v1-03-encyclopedia.md` med ~11 tasks.
+
 ## Plan 2a status (KLAR)
 
 Plan: `docs/superpowers/plans/2026-05-02-v1-02a-content-pipeline.md`. Alla 15 tasks klara. Milstolpe taggad `v0.2.0a-pipeline`.
@@ -292,7 +314,11 @@ d4e3926 docs(claude): update Task 15 commit SHA in CLAUDE.md
 
 **Nästa:** Plan 2b — content backfill family-by-family. Se `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Adressera Task 8 follow-ups (I1, I2, I4, I5) + Plan 2b prerequisites (P1705-gap, few-shot prompts) innan `--all` körs.
 
-## Plan 2b status (PÅGÅR)
+## Plan 2b status (PAUSAD)
+
+**Pausad 2026-05-04 vid 97/700.** Plan 3 (Encyclopedia) är aktiv workstream — se design-spec `docs/superpowers/specs/2026-05-04-encyclopedia-design.md`. Plan 2b återupptas (nästa familj alfabetiskt = anatidae) när Plan 3 har shippats. Resterande ~600 arter trickle-in blockerar inte Plan 3 eftersom 97 arter > tillräckligt för UI-iteration mot riktig data.
+
+
 
 Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Senast uppdaterad 2026-05-04.
 
