@@ -17,5 +17,13 @@ SELECT * FROM SpeciesName WHERE species_id = ?;
 searchByName:
 SELECT * FROM SpeciesName WHERE locale = ? AND name LIKE ('%' || ? || '%') ORDER BY name LIMIT ?;
 
+searchByNameOrScientific:
+SELECT sn.species_id AS species_id, sn.locale AS locale, sn.name AS name
+FROM SpeciesName sn
+JOIN Species s ON s.id = sn.species_id
+WHERE sn.locale = :locale
+  AND (sn.name LIKE ('%' || :query || '%') OR s.scientific_name LIKE ('%' || :query || '%'))
+ORDER BY sn.name LIMIT :max;
+
 insert:
 INSERT INTO SpeciesName(species_id, locale, name) VALUES (?, ?, ?);

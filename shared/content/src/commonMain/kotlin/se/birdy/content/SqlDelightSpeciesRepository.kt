@@ -92,33 +92,53 @@ class SqlDelightSpeciesRepository(
         filters: SpeciesFilter,
     ): Flow<List<SpeciesSummary>> =
         db.speciesNameQueries
-            .searchByName(locale.code, query, 50L)
+            .searchByNameOrScientific(locale = locale.code, query = query, max = 200L)
             .asFlow()
             .mapToList(Dispatchers.Default)
             .map { rows ->
-                rows.mapNotNull { name ->
-                    val sp =
-                        db.speciesQueries
-                            .selectById(name.species_id)
-                            .executeAsOneOrNull() ?: return@mapNotNull null
-                    val abundance =
-                        Abundance.fromCode(sp.abundance) ?: Abundance.OVANLIG
-                    if (filters.abundance.isNotEmpty() && abundance !in filters.abundance) {
-                        return@mapNotNull null
-                    }
-                    SpeciesSummary(
-                        id = SpeciesId(sp.id),
-                        name = name.name,
-                        scientificName = sp.scientific_name,
-                        abundance = abundance,
-                        heroImagePath =
-                            db.speciesImageQueries
-                                .selectBySpecies(sp.id)
-                                .executeAsList()
-                                .firstOrNull { it.role == "hero" }
-                                ?.path,
-                    )
-                }
+                rows
+                    .distinctBy { it.species_id }
+                    .mapNotNull { name ->
+                        val sp =
+                            db.speciesQueries
+                                .selectById(name.species_id)
+                                .executeAsOneOrNull() ?: return@mapNotNull null
+                        val abundance =
+                            Abundance.fromCode(sp.abundance) ?: Abundance.OVANLIG
+                        if (filters.abundance.isNotEmpty() && abundance !in filters.abundance) {
+                            return@mapNotNull null
+                        }
+                        if (filters.regions.isNotEmpty()) {
+                            val speciesRegions =
+                                db.speciesRegionQueries
+                                    .selectBySpecies(sp.id)
+                                    .executeAsList()
+                                    .toSet()
+                            if (filters.regions.intersect(speciesRegions).isEmpty()) {
+                                return@mapNotNull null
+                            }
+                        }
+                        if (filters.activeInMonth != null) {
+                            val seasons =
+                                db.speciesSeasonQueries.selectBySpecies(sp.id).executeAsList()
+                            val month = seasons.firstOrNull { it.month == filters.activeInMonth }
+                            if (month == null || month.status == "absent") {
+                                return@mapNotNull null
+                            }
+                        }
+                        SpeciesSummary(
+                            id = SpeciesId(sp.id),
+                            name = name.name,
+                            scientificName = sp.scientific_name,
+                            abundance = abundance,
+                            heroImagePath =
+                                db.speciesImageQueries
+                                    .selectBySpecies(sp.id)
+                                    .executeAsList()
+                                    .firstOrNull { it.role == "hero" }
+                                    ?.path,
+                        )
+                    }.take(50)
             }
 
     override fun listByFamily(

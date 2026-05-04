@@ -86,4 +86,84 @@ class SpeciesRepositoryTest {
         assertTrue(sv?.description?.contains("Great Tit") == true)
         driver.close()
     }
+
+    @Test
+    fun `search matches scientific name`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithFixtures(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        val results = repo.search(query = "Parus", locale = Locale.SV, filters = SpeciesFilter()).first()
+        assertTrue(
+            results.any { it.id == SpeciesId("Q25485") },
+            "expected to find Talgoxe (Parus major) when searching 'Parus', got ${results.map { it.scientificName }}",
+        )
+        driver.close()
+    }
+
+    @Test
+    fun `search filter by region restricts results`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithFixtures(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        val results =
+            repo
+                .search(
+                    query = "Talg",
+                    locale = Locale.SV,
+                    filters = SpeciesFilter(regions = setOf("SE")),
+                ).first()
+        assertTrue(results.any { it.id == SpeciesId("Q25485") })
+
+        val noResults =
+            repo
+                .search(
+                    query = "Talg",
+                    locale = Locale.SV,
+                    filters = SpeciesFilter(regions = setOf("ZZ")),
+                ).first()
+        assertTrue(noResults.none { it.id == SpeciesId("Q25485") })
+
+        driver.close()
+    }
+
+    @Test
+    fun `search filter by activeInMonth restricts results`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithFixtures(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        val janResults =
+            repo
+                .search(
+                    query = "Talg",
+                    locale = Locale.SV,
+                    filters = SpeciesFilter(activeInMonth = "jan"),
+                ).first()
+        assertTrue(janResults.any { it.id == SpeciesId("Q25485") })
+
+        driver.execute(null, "DELETE FROM SpeciesSeason WHERE species_id = 'Q25485' AND month = 'jan'", 0)
+        val janResultsAfter =
+            repo
+                .search(
+                    query = "Talg",
+                    locale = Locale.SV,
+                    filters = SpeciesFilter(activeInMonth = "jan"),
+                ).first()
+        assertTrue(janResultsAfter.none { it.id == SpeciesId("Q25485") })
+
+        driver.close()
+    }
+
+    @Test
+    fun `search empty query returns all species respecting filters`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithFixtures(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        val all = repo.search(query = "", locale = Locale.SV, filters = SpeciesFilter()).first()
+        assertTrue(all.any { it.id == SpeciesId("Q25485") }, "expected fixture species in empty-query result, got ${all.map { it.id }}")
+        driver.close()
+    }
 }
