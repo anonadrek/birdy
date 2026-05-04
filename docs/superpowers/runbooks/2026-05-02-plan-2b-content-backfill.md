@@ -9,7 +9,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-02 | (walking skeleton) | 5 | `d973e31` |
 | 2026-05-04 | paridae | +8 (totalt 13) | `f8cc17f` |
 | 2026-05-04 | accipitridae | +38 (totalt 51) | `1ed1895` |
-| | _next: acrocephalidae_ | | |
+| 2026-05-04 | acrocephalidae | +19 (totalt 70) | `3609b98` |
+| | _next: alaudidae_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -20,6 +21,14 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Pipeline partial-rerun-bug fixad i `1bac05d`:** `--field text/images` byggde tidigare SpeciesYamlData från noll → tömde icke-rörda fält (image_refs eller description). `refresh_one` läser nu existerande YAML när `--field` ≠ `all` och bevarar de andra sektionerna + `review_status`/`review_notes`. **Konsekvens för loopen:** sätt `review_status: approved` som SISTA steg innan commit (efter alla `refresh`-anrop), annars riskerar du nästa `--field`-körning skriva över din review.
 - **REJECT_PATTERNS utökad** för plural-kategorier ("Bird illustrations", "(museum specimens)", "Taxidermied birds") + historiska tryck (Iconographia, Hardwicke, Wellcome chromolithographs incl. trunkerad form).
 - **`commons_search_name`-override i `species_list.yaml`** löser genus-renames där Commons-kategorier inte hängt med (Astur gentilis → search "Accipiter gentilis"). Pattern återanvändbart för Botaurus, Tachyspiza i framtida familjer.
+
+**Acrocephalidae-batch lärdomar (2026-05-04):**
+
+- 3/19 abundance:allmän approved (Q27674 härmsångare, Q27236 sävsångare, Q159080 rörsångare).
+- **8/19 (42%) sparse-text-overrides** — liknande rate som accipitridae trots att tättingfamilj. Slutsats: rate driven av rariteter med tunna svwiki-stubbar, inte av familj-ordning.
+- **Validator-threshold (80w) > sparse-threshold (20w):** Q1590574 fick sv=72w (Claude körde, men under 80w-gränsen). Lägg `sv` i `description_accept_missing` även när text faktiskt finns men är för kort. Validatorn rapporterar `description-too-short` om missat.
+- **`allow_missing_images: true` per art** finns redan som override (`ValidateMain.kt:15`). Använd när Commons saknar foto över `MIN_DIMENSION=2048`. Q891376 basrasångare hade bara 1071×905 → satt allow_missing_images. Bättre än att sänka MIN_DIMENSION globalt.
+- Q27674 härmsångare hade bara 1 image_ref (hero, ingen secondary). Validatorn accepterar — minimum är 1 hero. Inte allt är problem.
 
 ## Hur du startar en ny session och tar upp tråden
 
@@ -83,8 +92,9 @@ Cumulative Claude budget for the full backfill: ~$5. Use `--max-cost` per run, s
 | walking skeleton | 5 | 10 (2 per art) | ~$0.023 | ~$0.005 |
 | paridae | 8 | 16 | ~$0.018 | ~$0.002 |
 | accipitridae | 38 | ~50 (sparse skip ~26 calls) | ~$0.27 | ~$0.007 |
+| acrocephalidae | 19 | 64 (sparse skip ~12 calls) | ~$0.064 | ~$0.003 |
 
-Vid ~700 arter och 30–40% sparse-rate landar vi på ~$3–4 totalt — väl under budget. Sparse-arter (overrides) bidrar nästan inte till kostnaden eftersom Claude inte anropas alls för det språket.
+Cumulativt: 70 arter / ~$0.38. Vid ~700 arter och 30–40% sparse-rate landar vi på ~$3–4 totalt — väl under budget. Sparse-arter (overrides) bidrar nästan inte till kostnaden eftersom Claude inte anropas alls för det språket.
 
 ## Relaterade runbooks
 

@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a ✅ klar** (`v0.2.0a-pipeline`). **Plan 2b pågår** — paridae +8 (`f8cc17f`), accipitridae +38 (`1ed1895`), totalt 51/700. Pipeline-recovery-bug fixad i `1bac05d` (partial `--field` runs bevarar nu icke-rörda sektioner). **Nästa steg: nästa familj enligt runbook `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`.**
+**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a ✅ klar** (`v0.2.0a-pipeline`). **Plan 2b pågår** — paridae +8 (`f8cc17f`), accipitridae +38 (`1ed1895`), acrocephalidae +19 (`3609b98`), totalt 70/700. Pipeline-recovery-bug fixad i `1bac05d` (partial `--field` runs bevarar nu icke-rörda sektioner). **Nästa steg: nästa familj enligt runbook `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` (alaudidae).**
 
 ## Var hittar du saker
 
@@ -27,7 +27,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 |---|---|---|
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ Klar (`v0.1.0-foundation`) |
 | 2a | Content pipeline + walking skeleton (5 arter) | ✅ Klar (`v0.2.0a-pipeline`) |
-| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏳ Pågår — paridae +8 done (13/700); se `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` |
+| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏳ Pågår — paridae +8, accipitridae +38, acrocephalidae +19 (70/700); se `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` |
 | 3 | Encyclopedia (browse + species profile) | |
 | 4 | ML & Camera (TFLite + CameraX) | |
 | 5 | Diary & Gamification | |
@@ -301,7 +301,8 @@ Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Sen
 | 2026-05-02 | (walking skeleton) | +5 | 5 | `d973e31` |
 | 2026-05-04 | paridae | +8 | 13 | `f8cc17f` |
 | 2026-05-04 | accipitridae | +38 | 51 | `1ed1895` |
-| _(next)_ | tba | | | |
+| 2026-05-04 | acrocephalidae | +19 | 70 | `3609b98` |
+| _(next)_ | alaudidae | | | |
 
 **Pre-Plan-2b-blockare avklarade:**
 
@@ -335,6 +336,15 @@ Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Sen
 - **`commons_search_name`-override i `species_list.yaml`:** För taxon med ny genus där Commons-kategorier inte hängt med (Astur gentilis → Q137474876 söker `Accipiter gentilis`). Pattern återanvändbart för Botaurus/Tachyspiza i framtida familjer.
 - **18/38 arter (47%) behövde `description_accept_missing`-override** för minst ett språk. Stort dataquality-flag: svwiki har sparse coverage av mindre vanliga rovfåglar. Q55111925 (Rüppell's Vulture/Fläckgam) saknade artikel i båda språk → övervägd "borde inte vara i listan" men behållen för datakomplett.
 - **Recovery-flöde** efter trasig `--field images --force`-körning: `--field text` på alla 38 (cache hit, $0) återställde 12/23 tomma deskriptioner; resten täcktes av overrides. Pipeline-fixet möjliggjorde detta — utan den hade `--field text` slitit ut alla bilder.
+
+**Acrocephalidae-batch lärdomar (2026-05-04, `3609b98`):**
+
+- 19 arter committade. 3 abundance:allmän (Q27674 härmsångare, Q27236 sävsångare, Q159080 rörsångare) approved efter visuell hero-check.
+- **8/19 (42%) sparse-text-overrides** — liknande rate som accipitridae trots tättingfamilj. Slutsats: rate driven av rariteter (orientsångare, papyrussångare, kapverdesångare etc.), inte av familj-ordning.
+- **Validator-threshold (80w) > sparse-threshold (20w):** Q1590574 fick sv=72w (Claude körde, men under 80w-gränsen). Lägg `sv` i `description_accept_missing` även när text faktiskt finns men är för kort. Validatorn ger `description-too-short` om missat. Audit-checklistan måste flagga `< 80 words` separately från `sparse (< 20 words)`.
+- **`allow_missing_images: true` per art** finns redan som override (`ValidateMain.kt:15`). Använd när Commons saknar foto över `MIN_DIMENSION=2048`. Q891376 basrasångare hade bara 1071×905 → satt allow_missing_images. Bättre än att sänka MIN_DIMENSION globalt.
+- Q27674 härmsångare hade bara 1 image_ref (hero, ingen secondary). Validatorn accepterar — minimum är 1 hero. Inte allt är problem.
+- Cost: 64 Claude-calls / $0.064 (cumulativt 70 arter / ~$0.38).
 
 **Pre-Plan-2b prerequisites kvar (icke-blockerande):**
 
