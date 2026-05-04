@@ -10,11 +10,13 @@ import kotlinx.coroutines.test.setMain
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.content.Abundance
 import se.birdy.content.Locale
+import se.birdy.content.SpeciesFilter
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.SpeciesSummary
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class EncyclopediaViewModelTest {
@@ -96,6 +98,34 @@ class EncyclopediaViewModelTest {
                 var current = awaitItem()
                 while (current !is EncyclopediaUiState.Empty) current = awaitItem()
                 assertEquals(EncyclopediaUiState.Empty, current)
+                cancelAndConsumeRemainingEvents()
+            }
+        }
+
+    @Test
+    fun filterChangesPropagateToRepoSearchCall() =
+        runTest {
+            val repo =
+                FakeSpeciesRepository().apply {
+                    searchResults.value = listOf(talgoxe)
+                }
+            val vm = EncyclopediaViewModel(repo, Locale.SV)
+            vm.uiState.test {
+                assertEquals(EncyclopediaUiState.Loading, awaitItem())
+                awaitItem()
+                vm.onFilterChanged(
+                    SpeciesFilter(
+                        abundance = setOf(Abundance.ALLMÄN),
+                        regions = setOf("SE"),
+                        activeInMonth = "jan",
+                    ),
+                )
+                advanceTimeBy(300)
+                assertNotNull(repo.lastSearchCall)
+                val call = repo.lastSearchCall!!
+                assertEquals(setOf(Abundance.ALLMÄN), call.third.abundance)
+                assertEquals(setOf("SE"), call.third.regions)
+                assertEquals("jan", call.third.activeInMonth)
                 cancelAndConsumeRemainingEvents()
             }
         }
