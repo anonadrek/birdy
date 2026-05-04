@@ -1,0 +1,80 @@
+id: Q110812143
+scientific_name: Alaudala heinei
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Alaudala
+  ioc_order: Passeriformes
+names:
+  sv: turkestandvärglärka
+  en: Turkestan Short-toed Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Turkestan Short-toed Lark
+
+
+    The Turkestan Short-toed Lark is a small member of the lark family, historically
+    grouped with the Mediterranean Short-toed Lark until genetic studies in 2020 confirmed
+    them as separate species. Like other short-toed larks, it is compact and relatively
+    inconspicuous, adapted to arid and semi-arid habitats where it blends into sandy
+    and rocky terrain.
+
+
+    This species inhabits open, dry landscapes across a broad range spanning from
+    Ukraine and central Turkey through Central Asia and southern Siberia, extending
+    east to south-central Mongolia and south to southern Afghanistan. It prefers sparse
+    grassland and desert-steppe environments where low vegetation provides minimal
+    cover. The bird''s behaviour is typical of larks: it spends much time on the ground,
+    running rather than hopping, and takes flight only when necessary, often with
+    a characteristic undulating flight pattern.
+
+
+    Like other larks, the Turkestan Short-toed Lark has a melodious song delivered
+    from the ground or during flight displays. Its relatively small size and cryptic
+    coloration make it challenging to observe, though patient birdwatchers in its
+    range may spot it perched briefly on low rocks or vegetation before it drops back
+    to the ground to forage for seeds and insects.'
+migration:
+  sv: ''
+  en: '# Turkestan Short-toed Lark in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Turkestan Short-toed Lark''s range extends from Ukraine and central Turkey
+    through Central Asia and southern Siberia to south-central Mongolia and southern
+    Afghanistan. While the species occurs in Ukraine, which borders Scandinavia and
+    Northern Europe, there is no documented information regarding its occurrence,
+    migration patterns, or seasonal movements specifically within Scandinavia or other
+    parts of Northern Europe. The species appears to be primarily distributed in continental
+    Asian and Central Asian regions, with its westernmost range in Ukraine.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:23:17.813280+00:00'
+sources:
+  wikipedia_sv_revision: '58537309'
+  wikipedia_en_revision: '1314771867'
+  claude_model: claude-haiku-4-5-20251001

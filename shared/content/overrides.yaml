@@ -69,3 +69,44 @@ species:
   Q891376:
     description_accept_missing: [sv]  # Basrasångare (Basra Reed Warbler) — endangered Iraqi-marsh
     allow_missing_images: true  # Commons only has 1071x905 photo (below MIN_DIMENSION=2048)
+  # Alaudidae batch (2026-05-04): svwiki extract too short for Claude.
+  Q1584282:
+    description_accept_missing: [sv]  # Svartkronad finklärka (Black-crowned Sparrow-lark)
+  Q525871:
+    description_accept_missing: [sv]  # Mindre sånglärka (Oriental Skylark)
+  Q890990:
+    description_accept_missing: [sv]  # Stenökenlärka (Desert Lark)
+  # Alaudidae batch (2026-05-04): enwiki extract too short for Claude.
+  Q1193299:
+    description_accept_missing: [en]  # Ökenberglärka (Temminck's Lark)
+  Q1266617:
+    description_accept_missing: [en]  # Dupontlärka (Dupont's Lark)
+  Q1589837:
+    description_accept_missing: [en]  # Tjocknäbbad lärka (Thick-billed Lark)
+  Q318893:
+    description_accept_missing: [en]  # Svartlärka (Black Lark)
+  Q851570:
+    description_accept_missing: [en]  # Lagerlärka (Thekla's Lark)
+  # Alaudidae batch (2026-05-04): Commons coverage gap (no photo above MIN_DIMENSION).
+  Q27075426:
+    allow_missing_images: true  # Sandlärka (Sand Lark) — Indian/SE-Asian distribution
+  Q31874488:
+    allow_missing_images: true  # Brunkronad lärka (Rufous-capped Lark) — Yemen endemic
+  Q890903:
+    allow_missing_images: true  # Rasolärka (Raso Lark) — Cape Verde endemic, critically endangered
+  # Alaudidae batch (2026-05-04): both text + image gaps.
+  Q1083050:
+    description_accept_missing: [sv]  # Australisk lärka (Singing Bush Lark)
+    allow_missing_images: true
+  Q1092087:
+    description_accept_missing: [en]  # Streckig ökenlärka (Dunn's Lark)
+    allow_missing_images: true
+  Q110812143:
+    description_accept_missing: [sv]  # Turkestandvärglärka (Turkestan Short-toed Lark)
+    allow_missing_images: true
+  Q55112126:
+    description_accept_missing: [sv]  # Arablärka (Arabian Lark) — sv 57w (validator threshold 80)
+    allow_missing_images: true
+  Q966703:
+    description_accept_missing: [en]  # Tibetansk korttålärka (Hume's Short-toed Lark)
+    allow_missing_images: true

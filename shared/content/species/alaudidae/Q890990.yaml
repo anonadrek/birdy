@@ -1,0 +1,82 @@
+id: Q890990
+scientific_name: Ammomanes deserti
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Ammomanes
+  ioc_order: Passeriformes
+names:
+  sv: stenökenlärka
+  en: Desert Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Desert Lark
+
+
+    The Desert Lark is a widespread inhabitant of arid regions, breeding across deserts
+    and semi-deserts from Morocco eastward to western India. This lark occupies a
+    vast geographical range and appears well-adapted to harsh, open landscapes with
+    minimal vegetation.
+
+
+    Despite its extensive distribution across challenging terrain, the Desert Lark
+    faces no significant conservation threats. Population surveys indicate a positive
+    trend, with numbers slowly increasing as the species gradually expands into new
+    areas. This expansion suggests the bird is successfully adapting to its environment
+    and potentially benefiting from changing conditions across its range.
+
+
+    The International Union for Conservation of Nature classifies the Desert Lark
+    as a species of "least concern," reflecting its stable and expanding population
+    status. Its ability to thrive across such a vast expanse of desert habitat demonstrates
+    considerable ecological resilience.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only information about the Desert Lark''s breeding range
+    (Morocco to western India) and conservation status, but contains no details about
+    migration patterns, seasonal movements, or occurrence in Scandinavia/Northern
+    Europe. To provide accurate information about this species'' seasonal occurrence
+    in Northern Europe, additional sources documenting its migratory behavior and
+    range would be needed.'
+image_refs:
+- role: hero
+  path: Q890990/hero.jpg
+  width: 2400
+  height: 1802
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/55663585@N00">Alastair
+    Rae</a> from London, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Ammomanes deserti -Wadi Rum,
+    Jordan-8.jpg
+  commons_filename: Ammomanes deserti -Wadi Rum, Jordan-8.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:11:53.289612+00:00'
+sources:
+  wikipedia_sv_revision: '56600163'
+  wikipedia_en_revision: '1348838390'
+  claude_model: claude-haiku-4-5-20251001

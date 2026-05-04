@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a ✅ klar** (`v0.2.0a-pipeline`). **Plan 2b pågår** — paridae +8 (`f8cc17f`), accipitridae +38 (`1ed1895`), acrocephalidae +19 (`3609b98`), totalt 70/700. Pipeline-recovery-bug fixad i `1bac05d` (partial `--field` runs bevarar nu icke-rörda sektioner). **Nästa steg: nästa familj enligt runbook `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` (alaudidae).**
+**Status (2026-05-04):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2 är split i Plan 2a (pipeline + walking skeleton, 5 arter) och Plan 2b (family-by-family backfill till ~700 arter). **Plan 2a ✅ klar** (`v0.2.0a-pipeline`). **Plan 2b pågår** — paridae +8 (`f8cc17f`), accipitridae +38 (`1ed1895`), acrocephalidae +19 (`3609b98`), alaudidae +27, totalt 97/700. Pipeline-recovery-bug fixad i `1bac05d`; non-image-extension reject + gsrlimit=50 i `c803ed1`. **Nästa steg: nästa familj enligt runbook `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` (anatidae).**
 
 ## Var hittar du saker
 
@@ -302,7 +302,8 @@ Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Sen
 | 2026-05-04 | paridae | +8 | 13 | `f8cc17f` |
 | 2026-05-04 | accipitridae | +38 | 51 | `1ed1895` |
 | 2026-05-04 | acrocephalidae | +19 | 70 | `3609b98` |
-| _(next)_ | alaudidae | | | |
+| 2026-05-04 | alaudidae | +27 | 97 | _(this commit)_ |
+| _(next)_ | anatidae | | | |
 
 **Pre-Plan-2b-blockare avklarade:**
 
@@ -345,6 +346,14 @@ Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Sen
 - **`allow_missing_images: true` per art** finns redan som override (`ValidateMain.kt:15`). Använd när Commons saknar foto över `MIN_DIMENSION=2048`. Q891376 basrasångare hade bara 1071×905 → satt allow_missing_images. Bättre än att sänka MIN_DIMENSION globalt.
 - Q27674 härmsångare hade bara 1 image_ref (hero, ingen secondary). Validatorn accepterar — minimum är 1 hero. Inte allt är problem.
 - Cost: 64 Claude-calls / $0.064 (cumulativt 70 arter / ~$0.38).
+
+**Alaudidae-batch lärdomar (2026-05-04, _(this commit)_):**
+
+- 27 arter committade. 2 abundance:allmän (Q25961 sånglärka, Q26969 trädlärka) approved efter visuell hero-check. Övriga lärkor är öken-/Asien-endemics som inte når ovanlig-kvalifikationen i SE.
+- **13/27 (48%) sparse-text + 8/27 (30%) image-coverage-overrides.** 5 arter (Q1083050, Q1092087, Q110812143, Q55112126, Q966703) behöver båda. Stort flag för datakvalitet: alaudidae är inte en outlier — Plan 3 UI måste hantera "beskrivning kommer" + saknade bilder som ett vanligt fall.
+- **Pillow-krasch på .webm fixad i `c803ed1`:** Q25961 (sånglärka) fick `Galerida cristata, South Hebron.webm` som top-2 Commons-kandidat → ImageProcessor kraschade på `Pillow.Image.open`. Lösning: `ALLOWED_IMAGE_EXTS`-frozenset (Pillow-decodable raster only) gate i `rank_candidates`. SVG distribution-kartor filtreras av samma.
+- **gsrlimit=20 → 50 i `c803ed1`:** Q26969 (trädlärka, allmän) fick 0 candidates med gsrlimit=20 — top-20 var museum-specimens + sub-MIN_DIMENSION-foton. 50 ger 3 användbara hi-res-foton. Sparse-arter med genuint tunt Commons-utbud påverkas inte.
+- **Bird-of-passage** alarm: Q318893 svartlärka, Q1266617 dupontlärka, Q851570 lagerlärka — svwiki har långa artiklar (sv summarized OK), men enwiki är i flera fall stub. För familjer med stark svensk-Wikipedia-coverage men svag enwiki: vänta inte med override på `[en]` — kasta bara på direkt.
 
 **Pre-Plan-2b prerequisites kvar (icke-blockerande):**
 

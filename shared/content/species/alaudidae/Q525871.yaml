@@ -1,0 +1,81 @@
+id: Q525871
+scientific_name: Alauda gulgula
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Alauda
+  ioc_order: Passeriformes
+names:
+  sv: mindre sånglärka
+  en: Oriental Skylark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Oriental Skylark
+
+
+    The Oriental skylark, also called the small skylark, is a compact member of the
+    lark family found across open grasslands in the Sino-Indian region and parts of
+    central Asia. It shares the characteristic behaviour of other skylarks, foraging
+    on the ground for seeds and insects among low vegetation.
+
+
+    Like its relatives, the Oriental skylark is adapted to open habitats where it
+    can easily detect predators and take flight. It feeds primarily by gleaning food
+    from the ground, moving methodically through grassland and scrubland. The species
+    is less conspicuous than the larger Eurasian skylark, blending into its arid surroundings
+    with subdued plumage.
+
+
+    Further details about its exact appearance, vocalizations, and seasonal movements
+    would require additional sources, as the species remains relatively understudied
+    compared to other lark species in the region.'
+migration:
+  sv: ''
+  en: '# Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the Oriental Skylark''s
+    occurrence in Scandinavia, Northern Europe, or any migration patterns throughout
+    the year. The Oriental Skylark is a resident species of the Sino-Indian region
+    and central Asia, with no established presence in Northern Europe. Therefore,
+    migration data for this species in a Scandinavian context cannot be provided from
+    the available source material.'
+image_refs:
+- role: hero
+  path: Q525871/hero.jpg
+  width: 2400
+  height: 1467
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:SVKMBFLY" title="User:SVKMBFLY">SVKMBFLY</a>
+  source_url: https://commons.wikimedia.org/wiki/File:ভরতপক্ষী (Alauda gulgula), লালগঞ্জ,
+    দক্ষিণ চব্বিশ পরগনা, পশ্চিমবঙ্গ, DSC6316.jpg
+  commons_filename: ভরতপক্ষী (Alauda gulgula), লালগঞ্জ, দক্ষিণ চব্বিশ পরগনা, পশ্চিমবঙ্গ,
+    DSC6316.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:14:02.103254+00:00'
+sources:
+  wikipedia_sv_revision: '57963556'
+  wikipedia_en_revision: '1327118317'
+  claude_model: claude-haiku-4-5-20251001

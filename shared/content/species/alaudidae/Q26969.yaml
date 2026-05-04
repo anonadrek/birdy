@@ -1,0 +1,124 @@
+id: Q26969
+scientific_name: Lullula arborea
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Lullula
+  ioc_order: Passeriformes
+names:
+  sv: trädlärka
+  en: Woodlark
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Trädlärka
+
+
+    Trädlärka är en liten och kompakt medlem av lärkfamiljen, betydligt mindre än
+    sånglärkan. Den är den enda arten i sitt släkte Lullula och kännetecknas av sin
+    behagliga utseende med diskreta färgmarkeringar typiska för lärkfamiljen.
+
+
+    Arten häckar över ett stort geografiskt område från södra Skandinavien österut
+    genom Europa till Turkmenistan, och förekommer även i norra Afrika. Den föredrar
+    öppna och halvöppna biotoper. Under häckningsperioden är födan blandad med både
+    insekter och frön, men under övriga årstider består näringen främst av frön. Denna
+    anpassning gör arten relativt mobil och mindre beroende av insekttillgång än många
+    andra lärksläkten.
+
+
+    Trädlärkan är värd att lära känna för den som intresserar sig för lärkfamiljen
+    och dess ekologiska roller i öppet landskap.'
+  en: '# Woodlark
+
+
+    The woodlark is a small member of the lark family and the sole surviving species
+    in its genus. It inhabits a broad geographic range spanning most of Europe, the
+    Middle East, western Asia, and north African mountains. Populations vary in their
+    migratory behaviour: western birds are largely resident year-round, while eastern
+    populations migrate southward during winter months.
+
+
+    This passerine displays the characteristic features typical of larks, though it
+    remains less familiar to many birdwatchers than its relatives. The woodlark''s
+    ecology and habitat preferences reflect its adaptation to diverse environments
+    across its extensive range, from lowland areas to mountainous terrain. Its presence
+    varies seasonally depending on geographic location, making it a species of interest
+    for both resident and visiting observers throughout its distribution.'
+migration:
+  sv: '# Trädlärka – förekomst i Skandinavien
+
+
+    Trädlärkan förekommer som häckfågel i södra Skandinavien under våren och sommaren.
+    Arten är en långdistanszigrare som övervintar i Nordafrika och återvänder till
+    sina häckningsområden under mars-april. Under hösten migrerar populationerna söderut
+    från juli till september för att undvika den nordiska vintern. I Sverige är trädlärkan
+    främst förekommande i södra och mellersta delen av landet.'
+  en: '# Woodlark in Scandinavia and Northern Europe
+
+
+    The Woodlark is mainly resident across western Europe, including Scandinavia,
+    where it does not undertake significant migrations. However, populations in eastern
+    regions are migratory, moving southward during winter months. In Scandinavia and
+    Northern Europe, the species is largely year-round, with resident birds remaining
+    throughout winter in suitable habitat. Some movement may occur within the region
+    in response to weather conditions, but the Woodlark does not perform the extensive
+    long-distance migrations characteristic of many northern European bird species.
+    Its sedentary nature in the western parts of its range means that individuals
+    present in Scandinavian territories tend to stay rather than undertake seasonal
+    journeys to distant wintering grounds.'
+image_refs:
+- role: hero
+  path: Q26969/hero.jpg
+  width: 2400
+  height: 1751
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Lullula arborea, Alconocales
+    1.jpg
+  commons_filename: Lullula arborea, Alconocales 1.jpg
+- role: secondary
+  path: Q26969/secondary-1.jpg
+  width: 1800
+  height: 1011
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1425580">Михаил
+    Малышев</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lullula arborea 85227474.jpg
+  commons_filename: Lullula arborea 85227474.jpg
+- role: secondary
+  path: Q26969/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Ksimog&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Ksimog (page does not exist)">K.B. Simoglou</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lullula arborea, Alaudidae.jpg
+  commons_filename: Lullula arborea, Alaudidae.jpg
+review_status: approved
+review_notes: 'Hero approved 2026-05-04 via hero_review HTML.'
+generated_at: '2026-05-04T13:23:25.186667+00:00'
+sources:
+  wikipedia_sv_revision: '56834212'
+  wikipedia_en_revision: '1328210392'
+  claude_model: claude-haiku-4-5-20251001

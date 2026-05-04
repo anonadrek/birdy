@@ -1,0 +1,131 @@
+id: Q26982
+scientific_name: Galerida cristata
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Galerida
+  ioc_order: Passeriformes
+names:
+  sv: tofslärka
+  en: Crested Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tofslärka
+
+
+    Tofslärka är en medelstor lärka som kännetecknas av sin karakteristiska tofs på
+    huvudet, som den kan höja och sänka efter behov. Färgen är sandig till gråbrun,
+    vilket gör den väl anpassad för att smälta in i torra miljöer. Arten är något
+    större än sånglärkan med ett kraftigare näbb.
+
+
+    Tofslärkan förekommer på torra, glesa marker i ett stort utbredningsområde från
+    Europa österut till Nepal och Kina. Den föredrar terräng med låg vegetation och
+    bar mark. Arten är framför allt aktiv på marken där den söker föda, och den har
+    en karakteristisk flygning med snabba vingslag.
+
+
+    Historiskt häckade tofslärkan även i södra Sverige fram till 1980-talet, men arten
+    är numera utdöd som häckfågel i landet. Den ses endast tillfälligt som sällsynt
+    gäst, vilket reflekterar förändringar i klimat och habitatförhållanden över tid.'
+  en: '# Crested Lark
+
+
+    The Crested Lark is a widespread lark species found across Eurasia and northern
+    Africa. It is a non-migratory resident throughout much of its range, though occasional
+    vagrants may appear in unexpected locations. This bird is highly adaptable to
+    various open and semi-open habitats, including grasslands, cultivated areas, and
+    disturbed ground.
+
+
+    The Crested Lark is readily identified by its distinctive crest of feathers on
+    the crown, which it raises when alert or alarmed. It is sandy-brown in overall
+    coloration with streaked plumage, providing effective camouflage in its preferred
+    terrain. The species is typically seen on the ground, where it walks and feeds
+    on seeds and insects.
+
+
+    The bird''s song is a melodious and far-carrying warble, often delivered from
+    an elevated perch or in flight. It also produces characteristic calls that help
+    identify it in the field. The Crested Lark remains active throughout the year
+    in its non-migratory populations, making it a fairly conspicuous resident where
+    it occurs, particularly in open agricultural landscapes and rocky areas with sparse
+    vegetation.'
+migration:
+  sv: '# Tofslärka (Galerida cristata) i Nordeuropa
+
+
+    Tofslärka är en mycket sällsynt besökare i Skandinavien och förekommer endast
+    tillfälligt i regionen. Arten häckade tidigare i södra Sverige fram till 1980-talet,
+    men är numera funktionellt utdöd som häckfågel i Sverige. De få observationer
+    som görs idag är sporadiska tillfälliga besök, troligen från populationer längre
+    söderut i Europa. Arten är huvudsakligen stationär eller flyttar endast kortare
+    sträckor i sitt kärnhabitat i södra Europa och västra Asien.'
+  en: '# Galerida cristata (Crested Lark) in Scandinavia/Northern Europe
+
+
+    The Crested Lark is essentially non-migratory throughout its range, including
+    northern Europe. In Scandinavia, it is primarily a resident species where established,
+    remaining year-round in its territories. However, the species has a limited and
+    discontinuous distribution in this region, with populations concentrated in southern
+    areas rather than extending into the far north. Occasionally, individuals may
+    be encountered as vagrants in northern regions, particularly during periods of
+    dispersal or unfavorable weather conditions, though such occurrences are irregular
+    and unpredictable. The species does not exhibit the seasonal migration patterns
+    typical of many other Eurasian larks.'
+image_refs:
+- role: hero
+  path: Q26982/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Crested Lark (Galerida cristata),
+    Oman.jpg
+  commons_filename: Crested Lark (Galerida cristata), Oman.jpg
+- role: secondary
+  path: Q26982/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Crested lark (Galerida cristata
+    cristata) Hungary.jpg
+  commons_filename: Crested lark (Galerida cristata cristata) Hungary.jpg
+- role: secondary
+  path: Q26982/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Skander_zarrad" title="User:Skander
+    zarrad">Skander zarrad</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Galerida cristata - tunisia.jpg
+  commons_filename: Galerida cristata - tunisia.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:12:54.444798+00:00'
+sources:
+  wikipedia_sv_revision: '58984393'
+  wikipedia_en_revision: '1324237522'
+  claude_model: claude-haiku-4-5-20251001

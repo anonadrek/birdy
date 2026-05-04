@@ -50,6 +50,22 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 25 | Q752539 | acrocephalidae | Polyglottsångare | Hippolais polyglotta | sv | 57738359 | 1330761181 | pending |
 | 26 | Q890918 | acrocephalidae | Kapverdesångare | Acrocephalus brevipennis | sv | 55626435 | 1320901520 | pending |
 | 27 | Q891376 | acrocephalidae | Basrasångare | Acrocephalus griseldis | sv + image | 59025831 | 1351539333 | pending (saknar även hi-res Commons-foto) |
+| 28 | Q1584282 | alaudidae | Svartkronad finklärka | Eremopterix nigriceps | sv | 56466598 | 1314034501 | pending |
+| 29 | Q525871 | alaudidae | Mindre sånglärka | Alauda gulgula | sv | 57963556 | 1327118317 | pending |
+| 30 | Q890990 | alaudidae | Stenökenlärka | Ammomanes deserti | sv | 56600163 | 1348838390 | pending |
+| 31 | Q1193299 | alaudidae | Ökenberglärka | Eremophila bilopha | en | 56773261 | — | pending |
+| 32 | Q1266617 | alaudidae | Dupontlärka | Chersophilus duponti | en | 57589435 | — | pending |
+| 33 | Q1589837 | alaudidae | Tjocknäbbad lärka | Ramphocoris clotbey | en | 56454789 | 1315213392 | pending (enwiki finns men för kort) |
+| 34 | Q318893 | alaudidae | Svartlärka | Melanocorypha yeltoniensis | en | 55739591 | 1314461620 | pending |
+| 35 | Q851570 | alaudidae | Lagerlärka | Galerida theklae | en | 56929571 | — | pending |
+| 36 | Q27075426 | alaudidae | Sandlärka | Alaudala raytal | image | 56454796 | 1315368429 | pending (saknar hi-res Commons-foto) |
+| 37 | Q31874488 | alaudidae | Brunkronad lärka | Calandrella eremica | image | 59025589 | 1337431158 | pending (saknar hi-res Commons-foto) |
+| 38 | Q890903 | alaudidae | Rasolärka | Alauda razae | image | 55711832 | 1337275433 | pending (saknar hi-res Commons-foto, kritiskt hotad) |
+| 39 | Q1083050 | alaudidae | Australisk lärka | Mirafra javanica | sv + image | 57591443 | 1315354773 | pending |
+| 40 | Q1092087 | alaudidae | Streckig ökenlärka | Eremalauda dunni | en + image | 58389660 | — | pending |
+| 41 | Q110812143 | alaudidae | Turkestandvärglärka | Alaudala heinei | sv + image | 58537309 | 1314771867 | pending |
+| 42 | Q55112126 | alaudidae | Arablärka | Eremalauda eremodites | sv + image | 58321237 | 1314534185 | pending |
+| 43 | Q966703 | alaudidae | Tibetansk korttålärka | Calandrella acutirostris | en + image | 56454762 | — | pending |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

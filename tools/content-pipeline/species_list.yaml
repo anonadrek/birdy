@@ -3078,6 +3078,7 @@
   ioc_order: Passeriformes
   common_en: Woodlark
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q1137284
   scientific_name: Alauda leucoptera
   family: Alaudidae
@@ -3102,6 +3103,7 @@
   ioc_order: Passeriformes
   common_en: Eurasian Skylark
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q851570
   scientific_name: Galerida theklae
   family: Alaudidae

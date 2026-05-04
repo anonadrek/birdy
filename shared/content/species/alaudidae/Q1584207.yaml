@@ -1,0 +1,126 @@
+id: Q1584207
+scientific_name: Ammomanes cinctura
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Ammomanes
+  ioc_order: Passeriformes
+names:
+  sv: sandökenlärka
+  en: Bar-tailed Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sandökenlärka
+
+
+    Sandökenlärka är en liten ökenlevande sångfågel som tillhör lärkfamiljen. Arten
+    förekommer i ökenhabitat från Nordafrika österut till Pakistan, där den är anpassad
+    till torr, stenig miljö. Beståndet minskar något men anses fortfarande vara livskraftigt.
+
+
+    Arten är en diskret fågel som föredrar att hålla sig på marken i sitt ökenhabitat.
+    Den är väl anpassad till sitt torra miljöval och återfinns där man söker efter
+    små sångfåglar bland klippor och gles vegetation. Som många lärkarter är sandökenlärka
+    en modest fågel som ofta är svår att se om man inte känner till var man ska leta.'
+  en: '# Bar-tailed Lark
+
+
+    The bar-tailed lark is a small desert lark found across a vast range from northwestern
+    Africa through the Middle East to Pakistan. It inhabits hot, arid deserts and
+    is generally common throughout much of its distribution, though patchily less
+    common in some areas. The species faces no immediate threats and maintains a "least
+    concern" conservation status, despite recent surveys indicating a gradual decline
+    in overall numbers.
+
+
+    This inconspicuous desert bird is well-adapted to harsh, barren environments where
+    few other species thrive. Like other larks, it tends to be more easily heard than
+    seen, preferring to forage on the ground among sparse vegetation and rocks. The
+    bar-tailed lark''s cryptic coloration helps it blend seamlessly with desert surroundings,
+    making visual identification challenging for observers. Its presence is often
+    confirmed through its distinctive vocalizations rather than direct sightings.
+
+
+    Those seeking this species should focus their efforts on appropriate arid habitats
+    during the appropriate season for their region, though the bird''s wide distribution
+    means it may be encountered across multiple desert zones within its range.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller endast information om artens utbredningsområde
+    (Nordafrika till Pakistan) och beståndsstatus, men ingen information om förekomst
+    i Skandinavien/Nordeuropa eller migrationsmönster. Sandökenlärka är en ökenart
+    som inte förekommer naturligt i norra Europa.'
+  en: '# Migration Data Unavailable for This Species
+
+
+    The provided source text contains no information about the occurrence, migration
+    patterns, or seasonal distribution of the Bar-tailed Lark in Scandinavia or Northern
+    Europe. The Wikipedia introductory passage only describes the species'' geographic
+    range (Morocco to Pakistan), habitat preferences (hot deserts), and conservation
+    status. Without reliable data on this species'' presence in Scandinavian or Northern
+    European regions, no factual account of its seasonal movements or occurrence can
+    be provided.'
+image_refs:
+- role: hero
+  path: Q1584207/hero.jpg
+  width: 2048
+  height: 1282
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ammomanes cinctura 97497203.jpg
+  commons_filename: Ammomanes cinctura 97497203.jpg
+- role: secondary
+  path: Q1584207/secondary-1.jpg
+  width: 1800
+  height: 1126
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ammomanes cinctura 93093047.jpg
+  commons_filename: Ammomanes cinctura 93093047.jpg
+- role: secondary
+  path: Q1584207/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Bar-tailed lark (Ammomanes cinctura)
+    Kebili.jpg
+  commons_filename: Bar-tailed lark (Ammomanes cinctura) Kebili.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:14:29.365542+00:00'
+sources:
+  wikipedia_sv_revision: '56454784'
+  wikipedia_en_revision: '1313812191'
+  claude_model: claude-haiku-4-5-20251001

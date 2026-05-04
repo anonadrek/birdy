@@ -1,0 +1,108 @@
+id: Q1584282
+scientific_name: Eremopterix nigriceps
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Eremopterix
+  ioc_order: Passeriformes
+names:
+  sv: svartkronad finklärka
+  en: Black-crowned Sparrow-lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Black-crowned Sparrow-lark
+
+
+    The black-crowned sparrow-lark is a small member of the lark family found across
+    a vast range spanning northern Africa through the Middle East to northwestern
+    India. It inhabits arid and semi-arid environments, favoring dry savanna landscapes
+    where sparse vegetation dominates. This species is well-adapted to harsh, open
+    terrain with minimal tree cover.
+
+
+    Little detailed information is readily available about this bird''s specific appearance,
+    behavior, and vocalizations in standard references. As with many larks, it likely
+    forages on the ground for seeds and insects, and probably nests on the ground
+    as well. The bird''s small size and coloring presumably reflect adaptations to
+    its dry habitat, providing camouflage against predators in open country.
+
+
+    The black-crowned sparrow-lark remains relatively understudied compared to more
+    widely distributed lark species, and observers seeking this bird in its range
+    should focus on appropriate arid savanna habitats where it is most likely to be
+    encountered.'
+migration:
+  sv: ''
+  en: '# Black-crowned Sparrow-lark in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Black-crowned Sparrow-lark is not a regular species in Scandinavia or Northern
+    Europe. This African and Middle Eastern lark is found across northern Africa from
+    Mauritania through the Middle East to north-western India, inhabiting dry savanna
+    regions. It does not occur as a migratory visitor or winter visitor to Northern
+    European regions.'
+image_refs:
+- role: hero
+  path: Q1584282/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black-crowned Sparrow-lark Eremopterix
+    nigriceps by Raju Kasambe DSCN0094 01.jpg
+  commons_filename: Black-crowned Sparrow-lark Eremopterix nigriceps by Raju Kasambe
+    DSCN0094 01.jpg
+- role: secondary
+  path: Q1584282/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black-crowned Sparrow-lark Eremopterix
+    nigriceps by Raju Kasambe DSCN0094 02.jpg
+  commons_filename: Black-crowned Sparrow-lark Eremopterix nigriceps by Raju Kasambe
+    DSCN0094 02.jpg
+- role: secondary
+  path: Q1584282/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black-crowned Sparrow-lark Eremopterix
+    nigriceps by Raju Kasambe DSCN0094 04.jpg
+  commons_filename: Black-crowned Sparrow-lark Eremopterix nigriceps by Raju Kasambe
+    DSCN0094 04.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:12:33.088692+00:00'
+sources:
+  wikipedia_sv_revision: '56466598'
+  wikipedia_en_revision: '1314034501'
+  claude_model: claude-haiku-4-5-20251001

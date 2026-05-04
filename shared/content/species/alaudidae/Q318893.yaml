@@ -1,0 +1,88 @@
+id: Q318893
+scientific_name: Melanocorypha yeltoniensis
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Melanocorypha
+  ioc_order: Passeriformes
+names:
+  sv: svartlärka
+  en: Black Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartlärka
+
+
+    Svartlärka är en medlem av lärkfamiljen som skiljer sig från många andra lärkor
+    genom sin mycket utmärkande sexuell dimorfism. Hanen är nästan helt svart med
+    vita fläckar på vingarna, medan honan är betydligt ljusare med brungrå färgteckning.
+    Arten är medelstor inom lärkfamiljen och anpassad för liv i öppet terräng.
+
+
+    Arten häckar i stäpplandskap främst i sydöstra Ryssland och Kazakstan. Den är
+    en kortflyttare som under vintern förflyttar sig något väster- och söderut för
+    att hitta lämpliga förhållanden. I Sverige är arten en mycket sällsynt gäst och
+    har endast dokumenterats en enda gång.
+
+
+    Svartlärkan är olyckligtvis under starkt tryck från habitatförstöring. Det stäpplandskap
+    där arten lever omvandlas i allt större omfattning till jordbruksmark, vilket
+    har lett till dramatiska beståndsminsningar, särskilt i Europa där arten nu är
+    närapå utgången som häckfågel. Globalt bedöms beståndet dock fortfarande vara
+    livskraftigt, även om trenden är oroande.'
+  en: ''
+migration:
+  sv: '# Svartlärka – Förekomst i Nordeuropa
+
+
+    Svartlärka är en kortflyttare som häckar i stäpplandskapen i sydöstra Ryssland
+    och Kazakstan. Under vintern rör sig arten något väster- och söderut från sina
+    häckningsområden. I Skandinavien och övriga Sverige är svartlärka en mycket sällsynt
+    gäst, med endast ett dokumenterat fynd i Sverige. Arten förekommer inte regelbundet
+    i Nordeuropa och kan betraktas som en mycket ovanlig tillfällig besökare snarare
+    än en etablerad migrant i regionen.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q318893/hero.jpg
+  width: 2048
+  height: 1367
+  license: CC BY-SA 4.0
+  author: Kudaibergen Amirekul
+  source_url: https://commons.wikimedia.org/wiki/File:Melanocorypha yeltoniensis 354566740.jpg
+  commons_filename: Melanocorypha yeltoniensis 354566740.jpg
+- role: secondary
+  path: Q318893/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY-SA 4.0
+  author: Kudaibergen Amirekul
+  source_url: https://commons.wikimedia.org/wiki/File:Melanocorypha yeltoniensis 321060703.jpg
+  commons_filename: Melanocorypha yeltoniensis 321060703.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:13:09.234714+00:00'
+sources:
+  wikipedia_sv_revision: '55739591'
+  wikipedia_en_revision: '1314461620'
+  claude_model: claude-haiku-4-5-20251001

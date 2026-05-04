@@ -1,0 +1,120 @@
+id: Q25961
+scientific_name: Alauda arvensis
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Alauda
+  ioc_order: Passeriformes
+names:
+  sv: sånglärka
+  en: Eurasian Skylark
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sånglärka
+
+
+    Sånglärka är en fågel i familjen lärkor och förekommer främst i Eurasien och Nordafrika,
+    men har även introducerats och spritt sig till andra delar av världen. Den är
+    starkt knuten till öppna landskap, ofta på och omkring jordbruksmark där den lever
+    av insekter och frön.
+
+
+    Arten är framför allt känd för sin imponerande sång, som den framför under spelflykt
+    högt upp i luften. Under denna spektakulära framflygning håller fågeln sin position
+    genom snabba vingslag medan den sjunger sin genomträngande, melodiösa sång. Det
+    är en utmärkande beteende som gör arten lätt att identifiera under häckningstiden.'
+  en: '# Eurasian Skylark
+
+
+    The Eurasian skylark is a streaked greyish-brown passerine with a buff-white belly,
+    found across open farmland and heath habitats. Both sexes are similar in appearance.
+    It is widely distributed throughout Europe and the Palearctic region, with introduced
+    populations established in Australia, New Zealand, Canada, and the Hawaiian Islands.
+
+
+    The species is best known for the remarkable song of the male, delivered during
+    distinctive hovering flight at heights of 50 to 100 metres above open ground.
+    This aerial display is a characteristic feature of the species and often provides
+    the best opportunity for identification, as the bird may be difficult to spot
+    among grassland vegetation. The song itself is a rich, varied warble that carries
+    well across open terrain, making it a memorable part of the soundscape in suitable
+    habitats during the breeding season.'
+migration:
+  sv: '# Sånglärka - Förekomst i Skandinavien/Nordeuropa
+
+
+    Sånglärkan är en flyttfågel som återkommer till Skandinavien och Nordeuropa under
+    våren för att häcka. Fågeln anländer vanligen mellan mars och april när öppen
+    jordbruksmark blir tillgänglig. Under hösten, från augusti till oktober, migrerar
+    sånglärkan söderut för att övervintra i södra Europa, Medelhavsregionen och Nordafrika.
+    Populeringen i norra delen av utbredningsområdet är helt migratorisk, medan vissa
+    populationer i södra Europa är mer stationära eller endast delvis flyttande.'
+  en: '# Eurasian Skylark (Alauda arvensis) in Scandinavia and Northern Europe
+
+
+    The Eurasian skylark is a common breeding bird across Scandinavia and northern
+    Europe during the spring and summer months, typically arriving from March to April.
+    Populations breed in open farmland, grasslands, and heath habitats throughout
+    the region. However, the species is largely migratory in northern areas, with
+    most birds departing in autumn as temperatures drop and food becomes scarce. Some
+    populations may overwinter in milder coastal regions of southern Scandinavia and
+    the British Isles, but the majority of northern European skylarks migrate south
+    to Mediterranean regions and North Africa for winter, returning in early spring
+    to establish territories and breed.'
+image_refs:
+- role: hero
+  path: Q25961/hero.jpg
+  width: 2106
+  height: 2400
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Alun_Williams333&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Alun Williams333 (page does not exist)">Alun Williams333</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Alauda arvensis Ehedydd.jpg
+  commons_filename: Alauda arvensis Ehedydd.jpg
+- role: secondary
+  path: Q25961/secondary-1.jpg
+  width: 1800
+  height: 1235
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Alauda arvensis - Skylark -
+    Tarlakuşu 02.jpg
+  commons_filename: Alauda arvensis - Skylark - Tarlakuşu 02.jpg
+- role: secondary
+  path: Q25961/secondary-2.jpg
+  width: 1800
+  height: 1181
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Alauda arvensis - Eurasian Skylark,
+    Mersin 2017-01-22 02-1.jpg
+  commons_filename: Alauda arvensis - Eurasian Skylark, Mersin 2017-01-22 02-1.jpg
+review_status: approved
+review_notes: 'Hero approved 2026-05-04 via hero_review HTML.'
+generated_at: '2026-05-04T13:16:04.799092+00:00'
+sources:
+  wikipedia_sv_revision: '59111033'
+  wikipedia_en_revision: '1350695661'
+  claude_model: claude-haiku-4-5-20251001

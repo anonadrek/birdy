@@ -1,0 +1,99 @@
+id: Q890903
+scientific_name: Alauda razae
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Alauda
+  ioc_order: Passeriformes
+names:
+  sv: rasolärka
+  en: Raso Lark
+abundance: ovanlig
+iucn_status: CR
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rasolärka
+
+
+    Rasolärka är en akut hotad lärka som förekommer enbart på en mycket liten ö i
+    Kap Verdeöarna. Arten är extremt sällsynt och hotad, vilket gör den till ett särskilt
+    intressant objekt för fågelskådare med särskilt intresse för hotade arter.
+
+
+    Arten tillhör familjen lärkor och har de karakteristiska drag som präglar denna
+    familj. Som en småtätting är den liten till storleken. För att få en närmare bild
+    av dess utseende, beteende och röster rekommenderas att konsultera specialiserad
+    fågellitteratur eller feltidsguider som fokuserar på denna geografiska region
+    och dess unika fauna.
+
+
+    Rasolärkan representerar ett viktigt exempel på hur vissa fågelarter är begränsade
+    till mycket små geografiska områden, vilket gör dem särskilt sårbara för miljöförändringar
+    och andra hot. Denna begränsade utbredning understryker vikten av bevarandeintressen
+    för att säkra artens överlevnad för framtida generationer.'
+  en: '# Raso Lark
+
+
+    The Raso lark is a small passerine belonging to the lark family, distinguished
+    by its highly restricted range. It is found exclusively on a single small islet
+    in the Cape Verde archipelago, making it one of the least known birds in the Western
+    Palaearctic region. This critically endangered species inhabits extremely arid
+    terrain with minimal vegetation, an environment that has received relatively little
+    ornithological attention.
+
+
+    Due to its remote location and the scarcity of detailed study, much remains unknown
+    about the Raso lark''s specific behaviour, appearance, and vocalizations compared
+    to other lark species. Its isolation on a tiny island has resulted in a very small
+    population, contributing to its vulnerable conservation status. The species represents
+    an important focus for ornithological research and conservation efforts in the
+    region.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller endast information om att rasolärkan är
+    en akut hotad art som förekommer enbart på en mycket liten ö i Kap Verdeöarna.
+    Det finns ingen information om migration, övervintringsplatser eller säsongsförekomst
+    i Skandinavien eller Nordeuropa. Arten är inte naturligt förekommande i denna
+    region.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Raso lark is endemic to Raso islet in the Cape Verde Islands, located off
+    the west coast of Africa, far south of Scandinavia and Northern Europe. This critically
+    endangered species has an extremely restricted range and does not occur in Scandinavia
+    or Northern Europe at any time of year. Therefore, migration patterns in this
+    region are not applicable to this species.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:23:37.572062+00:00'
+sources:
+  wikipedia_sv_revision: '55711832'
+  wikipedia_en_revision: '1337275433'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,108 @@
+id: Q470853
+scientific_name: Melanocorypha calandra
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Melanocorypha
+  ioc_order: Passeriformes
+names:
+  sv: kalanderlärka
+  en: Calandra Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '**Kalanderlärka**
+
+
+    Kalanderlärka är en större lärka som förekommer på stäpp och i jordbruksområden
+    omkring Medelhavet och västra Asien. Det är en talrik art, även om bestånd minskar
+    något i omfattning. Arten är väl anpassad till öppna, torra landskap där vegetation
+    är sparsam.
+
+
+    Kalanderlärkan är större än många andra lärkor med kraftig byggnad och prominent
+    näbb. Det är en markbunden fågel som vanligtvis ses på marken eller på låga stubbar,
+    där det ofta håller till i små flockar. Under fortplantningen är hanar kända för
+    sin imponerande sjungbeteende, ofta utförda under flygningar högt upp i luften.
+
+
+    Arten anses inte hotad trots att populationerna visar en viss nedgång. Det är
+    välkänd bland fågelintresserade i sitt utbredningsområde och utgör en viktigt
+    del av lärksångsamhället i dessa regioner.'
+  en: '# Calandra Lark
+
+
+    The Calandra Lark is a robust member of the lark family, notably larger and heavier
+    than most relatives. It displays rufous-brown plumage with darker streaking on
+    the back, while the underparts are pale with distinctive dark patches on the sides
+    of the neck—a key identification feature. In flight, it reveals white trailing
+    edges on its wings.
+
+
+    This species favors open, arid landscapes including steppes, semi-desert plains,
+    and cultivated lowlands. It feeds on the ground, moving methodically through sparse
+    vegetation in search of seeds and insects. The bird is typically seen singly or
+    in small flocks, though numbers may concentrate during migration periods.
+
+
+    The Calandra Lark''s song is loud and varied, featuring melodious warbling interspersed
+    with harsh notes, often delivered during impressive skylarking displays. Its call
+    is a distinctive metallic rattle. It breeds across warm temperate regions surrounding
+    the Mediterranean, extending eastward through Turkey into northern Iran and southern
+    Russia. The related Bimaculated Lark occupies territories further east, replacing
+    this species in the continental interior.'
+migration:
+  sv: Kalanderlärka är en flyttfågel som främst förekommer i Medelhavsregionen och
+    västra Asien. Arten är mycket sällsynt som gäst i Skandinavien och når normalt
+    inte långt upp i Nord- och Mellaneuropa. De få observationer som gjorts i Skandinavien
+    utgörs nästan uteslutande av vagabundar under höst och vinter, ofta enstaka individer
+    som avviker från artens normala utbredningsområde. Arten har ingen etablerad förekomst
+    i Skandinavien och ses därför inte som en regelbunden flyttfågel för denna region.
+  en: '# Calandra Lark in Scandinavia/Northern Europe
+
+
+    The Calandra Lark is a rare vagrant to Scandinavia and Northern Europe, with no
+    established breeding population in the region. This Mediterranean species breeds
+    in warm temperate zones from southern Europe through Turkey to Iran and southern
+    Russia, well south of Scandinavian latitudes. Occasional records in Northern Europe
+    represent vagrant individuals that have wandered north of their typical range,
+    likely during migration or dispersal periods. The species does not have a regular
+    migration pattern into Scandinavian waters or territories, and sightings remain
+    exceptional rather than seasonal occurrences.'
+image_refs:
+- role: hero
+  path: Q470853/hero.jpg
+  width: 2400
+  height: 1663
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Kalanderleeuwerik - calandra
+    lark - Melanocorypha calandra.jpg
+  commons_filename: Kalanderleeuwerik - calandra lark - Melanocorypha calandra.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:13:21.528140+00:00'
+sources:
+  wikipedia_sv_revision: '58506208'
+  wikipedia_en_revision: '1314242923'
+  claude_model: claude-haiku-4-5-20251001

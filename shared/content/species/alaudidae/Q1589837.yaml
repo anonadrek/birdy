@@ -1,0 +1,74 @@
+id: Q1589837
+scientific_name: Ramphocoris clotbey
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Ramphocoris
+  ioc_order: Passeriformes
+names:
+  sv: tjocknäbbad lärka
+  en: Thick-billed Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tjocknäbbad lärka
+
+
+    Tjocknäbbad lärka är en medlem av lärkfamiljen som är anpassad till ökniga miljöer
+    i Nordafrika och Mellanöstern. Fågeln är känd för sitt karakteristiska namn, vilket
+    syftar på dess kraftigt utbildade näbb som är större och tjockare än hos många
+    andra lärkarter. Näbben är en viktig anpassning för att klara tuffa öknförhållanden.
+
+
+    Arten förekommer framför allt i öppna ökenlandskap där vegetationen är sparsam.
+    Den är väl anpassad till dessa torra miljöer och kan ses söka föda på marken efter
+    insekter och frön. Som många andra lärkarter är tjocknäbbad lärka en markhäckare.
+
+
+    Beståndet av tjocknäbbad lärka anses för närvarande vara livskraftigt, vilket
+    innebär att arten inte hotas av utrotning. Det finns ingen större fokusering på
+    bevarandebehov för denna species vid detta tillfälle.'
+  en: ''
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."'
+  en: ''
+image_refs:
+- role: hero
+  path: Q1589837/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Thick-billed lark (Ramphocoris
+    clotbey) Kebili.jpg
+  commons_filename: Thick-billed lark (Ramphocoris clotbey) Kebili.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:13:59.080728+00:00'
+sources:
+  wikipedia_sv_revision: '56454789'
+  wikipedia_en_revision: '1315213392'
+  claude_model: claude-haiku-4-5-20251001

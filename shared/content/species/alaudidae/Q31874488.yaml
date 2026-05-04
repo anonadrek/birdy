@@ -1,0 +1,82 @@
+id: Q31874488
+scientific_name: Calandrella eremica
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Calandrella
+  ioc_order: Passeriformes
+names:
+  sv: brunkronad lärka
+  en: Rufous-capped Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brunkronad lärka
+
+
+    Brunkronad lärka är en relativt nyligen vetenskapligt urskild art inom lärkfamiljen.
+    Den är en liten marklärka med karakteristisk rostbrun hjässa som ger arten sitt
+    namn. Arten förekommer på båda sidor om Adenviken, på sydvästra Arabiska halvön
+    samt i Afrikas horn, där den bebor torr och karg miljö.
+
+
+    Som många andra lärkor är arten främst en markfågel som födosöker på marken. Den
+    är klassificerad som livskraftig av IUCN, vilket indikerar att populationen för
+    närvarande är stabil. Arten urskiljdes relativt nyligen från rostkronad lärka,
+    vilken den tidigare behandlades som underart till. Denna taxonomiska förändring
+    gjenspegler moderna genetiska och morfologiska studier som visat att de två taksa
+    är tillräckligt skilda för att betraktas som egna arter.'
+  en: '# Rufous-capped Lark
+
+
+    The Rufous-capped Lark is a small passerine of the lark family, found in southwestern
+    Arabia and the Horn of Africa. This diminutive bird is adapted to arid environments,
+    inhabiting sparse, open ground with minimal vegetation where it can blend seamlessly
+    into its surroundings.
+
+
+    Like other larks, the Rufous-capped Lark is primarily terrestrial, spending much
+    of its time on the ground foraging for insects and seeds. It is typically seen
+    in small groups or pairs, moving quietly through its habitat. The bird''s behaviour
+    reflects its preference for cryptic, ground-based living.
+
+
+    The species displays the characteristic rufous coloring on its crown that gives
+    it its English name, helping to distinguish it from related lark species. Its
+    call and song are typical of larks, though detailed descriptions of its vocalizations
+    require further observation in the field. The Rufous-capped Lark remains relatively
+    inconspicuous within its range, making it a challenging species for observers
+    to locate.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: Migration data unavailable for this species.
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:23:16.066232+00:00'
+sources:
+  wikipedia_sv_revision: '59025589'
+  wikipedia_en_revision: '1337431158'
+  claude_model: claude-haiku-4-5-20251001

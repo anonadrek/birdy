@@ -1,0 +1,69 @@
+id: Q966703
+scientific_name: Calandrella acutirostris
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Calandrella
+  ioc_order: Passeriformes
+names:
+  sv: tibetansk korttålärka
+  en: Hume’s Short-toed Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tibetansk korttålärka
+
+
+    Tibetansk korttålärka är en liten asiatisk lärka som tillhör familjen lärkor.
+    Den är mycket lik den närbesläktade korttålärkan och har de typiska kännetecknen
+    för kortålärkor – en liten, spetsig näbb och kompakt kropp anpassad för livet
+    i öppen terräng.
+
+
+    Arten häckar i högbelägen bergssöken från nordöstra Iran till västra Kina, samt
+    i Himalaya från Pakistan till norra Indien och östra Tibet. Under vintern flyttar
+    den söderut till Indien, där den söker föda på marken i de torra, öppna landskapen.
+    Den är en aktiv fågel som föredrar att vistas på stäppen och i öknen.
+
+
+    Arten är klassificerad som livskraftig av IUCN och verkar inte vara hotad. För
+    den intresserade ornitologen kan en träff med denna berglärka ge en värdefull
+    observation av högland-fågelvärlden i Asien.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Tibetansk korttålärka är en asiatisk bergsfågel som saknar dokumenterad förekomst
+    i Skandinavien eller Nordeuropa. Arten häckar i högbelägna bergöken från nordöstra
+    Iran till västra Kina och Himalaya, och migrera söderut inom sin asiatiska utbredningsområde
+    under vintermånaderna. För denna art föreligger ingen relevant migrationsdata
+    avseende Skandinavien och Nordeuropa.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:23:46.395643+00:00'
+sources:
+  wikipedia_sv_revision: '56454762'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,96 @@
+id: Q1193299
+scientific_name: Eremophila bilopha
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Eremophila
+  ioc_order: Passeriformes
+names:
+  sv: ökenberglärka
+  en: Temminck’s Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ökenberglärka
+
+
+    Ökenberglärka är en liten fågel som tillhör familjen lärkor. Den är väl anpassad
+    till livet i ökenlandskap och förekommer i Nordafrika och delar av Mellanöstern,
+    där den lever på karga och torra områden.
+
+
+    Arten är kategoriserad som livskraftig av IUCN, vilket innebär att beståndets
+    status för närvarande är stabil. Som många andra lärkor är det en jordnära fågel
+    som söker föda på marken. För den intresserade fågelseeländaren erbjuder arten
+    en glimt av öknens speciella fågelvärld, anpassad till hårt klimat och sparsamt
+    växtliv.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller endast grundläggande information om att
+    arten förekommer i öken i Nordafrika och Mellanöstern, men inga uppgifter om förekomst
+    i Skandinavien eller Nordeuropa, eller någon migrationsdata. Därför kan jag inte
+    skriva de efterfrågade styckena enligt instruktionerna.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q1193299/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Temminck's lark (Eremophila
+    bilopha) Kebili.jpg
+  commons_filename: Temminck's lark (Eremophila bilopha) Kebili.jpg
+- role: secondary
+  path: Q1193299/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Haytem93&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Haytem93 (page does not exist)">Haytem93</a>
+  source_url: https://commons.wikimedia.org/wiki/File:A tiny juvenile bird of Eremophila
+    bilopha.jpg
+  commons_filename: A tiny juvenile bird of Eremophila bilopha.jpg
+- role: secondary
+  path: Q1193299/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Temminck's lark (Eremophila
+    bilopha) Kebili 2.jpg
+  commons_filename: Temminck's lark (Eremophila bilopha) Kebili 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:13:12.694050+00:00'
+sources:
+  wikipedia_sv_revision: '56773261'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,143 @@
+id: Q24843
+scientific_name: Calandrella brachydactyla
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Calandrella
+  ioc_order: Passeriformes
+names:
+  sv: korttålärka
+  en: Greater Short-toed Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Korttålärka
+
+
+    Korttålärka är en liten lärka från familjen lärkor som förekommer i jordbrukslandskap
+    och torra marker från Medelhavsområdet österut till Mongoliet och Kina. De flesta
+    populationer är flyttfåglar som övervinerar i Afrika söder om Sahara och i Indien,
+    medan endast de sydligaste populationerna stannar året om. Arten ses regelbundet
+    norr om sitt normala utbredningsområde under vår och höst, med årliga fynd långt
+    upp i norden.
+
+
+    Korttålärkan är en kompakt och gråbrun lärka med karakteristisk kort svans. Den
+    har en relativt kort näbb och en till synes liten huvud. Fågeln är främst aktiv
+    på marken där den söker föda, och den håller sig gärna i öppna, kala områden.
+
+
+    Arten klassificeras av IUCN som livskraftig och verkar inte minska i antal. Under
+    migrations­perioderna kan den ibland påträffas långt från sitt huvudsakliga habitat
+    när den söker upp lämpliga rastplatser.'
+  en: '# Greater Short-toed Lark
+
+
+    The Greater Short-toed Lark is a small passerine belonging to the lark family.
+    Its name derives from Ancient Greek, with "Calandrella" being a diminutive form
+    related to the calandra lark, while "brachydactyla" refers to its characteristically
+    short toes—from the Greek words for "short" and "toe."
+
+
+    This diminutive songbird inhabits open, arid landscapes including grasslands,
+    semi-desert regions, and cultivated plains. It forages on the ground, searching
+    for seeds and insects among sparse vegetation. The species is generally inconspicuous,
+    relying on camouflage to blend with its surroundings. Its call is a simple, repetitive
+    chirping typical of larks, though relatively unremarkable compared to some larger
+    lark species. When alarmed, it often crouches rather than immediately taking flight.
+
+
+    The Greater Short-toed Lark favors warm, dry regions across southern Europe, northern
+    Africa, and into western Asia. It is partially migratory, with northern populations
+    moving south during winter months. The species prefers areas with minimal vegetation
+    cover, making it well-adapted to steppe and semi-arid environments where few other
+    birds thrive.'
+migration:
+  sv: '# Korttålärka i Skandinavien och Nordeuropa
+
+
+    Korttålärka är en flyttfågel som regelbundet förekommer norr om sitt ordinära
+    utbredningsområde under vår- och höstflyttningen. Arten ses relativt regelbundet
+    i Sverige med årliga fynd, särskilt under migrationstiderna. Populationerna i
+    Europa övervintrar i Afrika söder om Sahara och i Indien, vilket innebär att arten
+    är frånvarande från Skandinavien under vintern. Höstflyttningen äger rum på hösten
+    då fåglarna drar söderut, medan återkomsten sker under våren när de återvänder
+    från sina övervintringskvartar.'
+  en: '# Greater Short-toed Lark Migration in Scandinavia
+
+
+    The Greater Short-toed Lark is a summer visitor to Scandinavia, arriving in late
+    spring to breed in open, arid habitats. In northern Europe, the species typically
+    appears from May onwards, with breeding populations present through the summer
+    months. However, this lark is primarily a Mediterranean and Central Asian species,
+    so its occurrence in Scandinavia is limited and irregular, restricted mainly to
+    southern regions during the breeding season.
+
+
+    This species is migratory across most of its range, wintering in North Africa
+    and the Middle East. Scandinavian and northern European populations depart by
+    late summer and early autumn to return to their wintering grounds. The Greater
+    Short-toed Lark does not overwinter in northern Europe, making it an entirely
+    seasonal visitor to the region.
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q24843/hero.jpg
+  width: 2400
+  height: 2400
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater short-toed lark (Calandrella
+    brachydactyla) rescued Malta 2.jpg
+  commons_filename: Greater short-toed lark (Calandrella brachydactyla) rescued Malta
+    2.jpg
+- role: secondary
+  path: Q24843/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater short-toed lark (Calandrella
+    brachydactyla) rescued Malta.jpg
+  commons_filename: Greater short-toed lark (Calandrella brachydactyla) rescued Malta.jpg
+- role: secondary
+  path: Q24843/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater short-toed lark (Calandrella
+    brachydactyla rubiginosa) Kebili.jpg
+  commons_filename: Greater short-toed lark (Calandrella brachydactyla rubiginosa)
+    Kebili.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:11:58.051024+00:00'
+sources:
+  wikipedia_sv_revision: '56627712'
+  wikipedia_en_revision: '1321253700'
+  claude_model: claude-haiku-4-5-20251001

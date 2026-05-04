@@ -1,0 +1,106 @@
+id: Q27075424
+scientific_name: Alaudala rufescens
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Alaudala
+  ioc_order: Passeriformes
+names:
+  sv: medelhavslärka
+  en: Mediterranean Short-toed Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Medelhavslärka
+
+
+    Medelhavslärka är en liten lärka från familjen lärkor. Arten förekommer runt Medelhavsregionen,
+    på Kanarieöarna och i västra Mellanöstern. Det är en relativt nyligen urskilj
+    art – tidigare klassificerades den tillsammans med turkestanlärka och sidenvägslärka
+    under det gemensamma namnet dvärglärka. Dessa tre arter anses nu vanligen vara
+    egna, distinkta arter.
+
+
+    Som många andra små lärkor är medelhavslärkan välanpassad för sitt torra habitat.
+    Medan arten är rätt liten jämfört med andra lärkor, delar den många av familjens
+    karakteristiska drag och levnadssätt i öppna, kuperade terränger.'
+  en: '# Mediterranean Short-toed Lark
+
+
+    The Mediterranean short-toed lark is a small passerine belonging to the lark family.
+    It inhabits arid and semi-arid regions across a vast range spanning from Atlantic
+    coastal areas eastward through North Africa and the Mediterranean region to the
+    Middle East. The species is widespread and common throughout its distribution,
+    with populations showing no signs of decline, earning it a conservation status
+    of "least concern."
+
+
+    This diminutive lark favours open, dry habitats including stony ground, sparse
+    scrubland, and desert margins where vegetation is minimal. It forages on the ground
+    for seeds and insects, moving with quick, jerky movements characteristic of its
+    family. Like other larks, it is primarily terrestrial and tends to remain inconspicuous
+    until flushed.
+
+
+    The species'' adaptability to harsh, arid environments across diverse regions—from
+    Mediterranean coasts to desert areas—demonstrates its ecological flexibility and
+    contributes to its successful status as one of the region''s common larks.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Mediterranean Short-toed Lark in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Mediterranean Short-toed Lark is primarily a Mediterranean Basin species with
+    its range extending from the Canary Islands through North Africa to the Middle
+    East. The available source material does not contain information regarding its
+    occurrence, migration patterns, or seasonal distribution in Scandinavia or Northern
+    Europe. Given its Mediterranean and North African distribution, this species would
+    be outside its normal range in Scandinavian regions and would not be expected
+    as a regular migrant or winter visitor to Northern Europe.'
+image_refs:
+- role: hero
+  path: Q27075424/hero.jpg
+  width: 2048
+  height: 1555
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Alaudala rufescens 77058327.jpg
+  commons_filename: Alaudala rufescens 77058327.jpg
+- role: secondary
+  path: Q27075424/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/4514772">Olivier
+    Morel</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Alaudala rufescens 243254234.jpg
+  commons_filename: Alaudala rufescens 243254234.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:12:12.430346+00:00'
+sources:
+  wikipedia_sv_revision: '55649112'
+  wikipedia_en_revision: '1313783809'
+  claude_model: claude-haiku-4-5-20251001

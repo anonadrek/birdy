@@ -1,0 +1,106 @@
+id: Q1137284
+scientific_name: Alauda leucoptera
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Alauda
+  ioc_order: Passeriformes
+names:
+  sv: vitvingad lärka
+  en: White-winged Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitvingad lärka
+
+
+    Vitvingad lärka är en lärka från Centralasien som häckar på öppna stäpp-, hede-
+    och slättmarker från området öster om Svarta havet helt österut till västra Kina.
+    Under vintermånaderna flyttar arten något västerut och återfinns då norr om Svarta
+    havet. Det har skett tillfälliga förekomster även i Västeuropa, där den återkommande
+    observerats som gäst.
+
+
+    Arten är närmast besläktad med sånglärkan enligt genetiska studier, vilket ledde
+    till att den omklassificerades från släktet Melanocorypha till Alauda. Vitvingad
+    lärka är påverkad av habitatförstöring på sina häckningsplatser, vilket har medfört
+    att antalet individer minskar. Trots detta betraktas arten som livskraftig för
+    närvarande.'
+  en: '# White-winged Lark
+
+
+    The white-winged lark is a steppe-dwelling songbird of the lark family, found
+    across a vast range stretching from southwestern Russia through south-central
+    regions and Kazakhstan to the far western reaches of China. Its distribution reflects
+    a preference for open, arid grasslands typical of these continental areas.
+
+
+    This species demonstrates partial migratory behaviour, with populations showing
+    different seasonal movements depending on breeding location. Northern and central
+    breeding birds migrate southwest during winter, reaching southern Ukraine and
+    northern Iran. In contrast, birds breeding in the southernmost parts of the range
+    tend to remain resident year-round, adjusting to local conditions rather than
+    undertaking long-distance journeys.
+
+
+    The white-winged lark is an exceptionally rare visitor to western Europe, appearing
+    only as an occasional vagrant far beyond its established range. Its rarity in
+    western regions makes sightings particularly noteworthy for birdwatchers in those
+    areas.'
+migration:
+  sv: '# Vitvingad lärka i Nordeuropa
+
+
+    Vitvingad lärka är en centralasiatisk art som normalt inte förekommer i Skandinavien
+    eller Nordeuropa. Arten häckar på stepp och öppen slättmark från området östom
+    Svarta havet till västra Kina. Under vintermånaderna genomför den en kortare västlig
+    förflyttning till området norr om Svarta havet. Endast tillfälligt och sporadiskt
+    har arten observerats i Väst- och Nordeuropa, bland annat i Sverige, Norge och
+    Finland, vilket torde representera enstaka övervindrare eller vilseflugna individer
+    under höst- och vinterperioderna.'
+  en: '# White-winged Lark (Alauda leucoptera) in Scandinavia/Northern Europe
+
+
+    The White-winged Lark is a very rare vagrant to western Europe, including Scandinavia
+    and Northern Europe. This species breeds in southwestern Russia and Kazakhstan,
+    with populations being partially migratory. During winter months, birds move southwest
+    toward southern Ukraine and northern Iran, while southernmost breeding populations
+    remain largely resident. Northern European sightings are exceptional and unpredictable,
+    making this lark an uncommon visitor rather than a regular seasonal occurrence
+    in the region.'
+image_refs:
+- role: hero
+  path: Q1137284/hero.jpg
+  width: 2048
+  height: 1378
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2071613">Алина
+    Урусова</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Alauda leucoptera 57392188.jpg
+  commons_filename: Alauda leucoptera 57392188.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:13:36.899115+00:00'
+sources:
+  wikipedia_sv_revision: '55757848'
+  wikipedia_en_revision: '1352089345'
+  claude_model: claude-haiku-4-5-20251001

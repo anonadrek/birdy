@@ -1,0 +1,83 @@
+id: Q1266617
+scientific_name: Chersophilus duponti
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Chersophilus
+  ioc_order: Passeriformes
+names:
+  sv: dupontlärka
+  en: Dupont’s Lark
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dupontlärka
+
+
+    Dupontlärka är en skygg och mycket svårsedd lärka som huvudsakligen förekommer
+    på torra, steniga bergsluttningar med glest växtlighet. Det är en liten, diskret
+    lärka med dämpad färgteckning som gör den mycket väl kamouflaord i sin naturliga
+    miljö. Arten är märkt svårfångad även för erfarna fågelbeoökare.
+
+
+    Dupontlärkan är främst aktiv under skymningen och natten, vilket gör den extra
+    utmanande att observera. Den är mycket blyg och föredrar att stanna på marken
+    där den rör sig försiktigt mellan stenar och låg växtlighet. Sången är musikalisk
+    och karakteristisk, ofta framförd från en upphöjd position under tyst väder.
+
+
+    Arten klassificerades 2020 som utrotningshotad, vilket återspeglar den kraftigt
+    minskande populationen. Bevaringsinsatser är kritiska för att säkra arten för
+    framtiden.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller endast information om artens utbredning
+    (Iberiska halvön och Nordafrika) och bevaringsstatus, men inga uppgifter om migration,
+    övervintringsvanor eller förekomst i Skandinavien/Nordeuropa.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q1266617/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/32455">paloma</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Chersophilus duponti 1837961.jpg
+  commons_filename: Chersophilus duponti 1837961.jpg
+- role: secondary
+  path: Q1266617/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/645653">thibaudaronson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Chersophilus duponti 168410778.jpg
+  commons_filename: Chersophilus duponti 168410778.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:13:41.928710+00:00'
+sources:
+  wikipedia_sv_revision: '57589435'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

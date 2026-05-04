@@ -1,0 +1,85 @@
+id: Q27075426
+scientific_name: Alaudala raytal
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Alaudala
+  ioc_order: Passeriformes
+names:
+  sv: sandlärka
+  en: Sand Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sandlärka
+
+
+    Sandlärka är en liten asiatisk lärka som är anpassad till öppen sandmiljö. Det
+    är en diskret fågel som förekommer vid sandbankar längs vattendrag och i kustnära
+    sanddyner. Arten trivs i torra, öppna landskap där vegetationen är sparsam och
+    sandige eller grusiga ytor dominerar.
+
+
+    Denna lärka är en markvandare som ofta rör sig på marken för att söka föda. Som
+    många lärkarter har även sandlärkan en sång som den ofta framför från låga upphöjningar.
+    Arten är anpassad för att smälta in i sin öppen sandmiljö.
+
+
+    Sandlärkan förekommer från södra Iran österut till södra Myanmar. Arten anses
+    ha ett stabilt bestånd, och dess population klassificeras som livskraftig.'
+  en: '# Sand Lark (*Alaudala raytal*)
+
+
+    The Sand Lark is a diminutive member of the lark family, noticeably smaller than
+    its relative, the Short-toed Lark. As a small passerine bird, it shares the characteristic
+    features typical of larks, though its compact size makes it one of the more delicate
+    representatives of the group.
+
+
+    This species is found across southern Asia, inhabiting arid and semi-arid regions
+    where sparse vegetation provides suitable breeding and foraging habitat. Like
+    other larks, it is adapted to open ground environments, where it searches for
+    insects and seeds among sandy or stony terrain.
+
+
+    Further details about the Sand Lark''s specific plumage patterns, vocalizations,
+    and precise behavioral traits would require additional source material for an
+    accurate description.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only basic taxonomic and morphological information about
+    the Sand Lark, identifying it as a small passerine in the lark family found in
+    southern Asia. However, it contains no information regarding migration patterns,
+    seasonal occurrence, overwintering habits, or presence in Scandinavia or Northern
+    Europe. To provide accurate information about this species'' occurrence in northern
+    regions, additional sources with specific migratory data would be required.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:23:48.376239+00:00'
+sources:
+  wikipedia_sv_revision: '56454796'
+  wikipedia_en_revision: '1315368429'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,101 @@
+id: Q851570
+scientific_name: Galerida theklae
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Galerida
+  ioc_order: Passeriformes
+names:
+  sv: lagerlärka
+  en: Thekla’s Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Lagerlärka (Galerida theklae)
+
+
+    Lagerlärka är en medelstor lärka som förekommer i sydvästra Europa samt norra
+    och östra Afrika. Det är en buskig fågel med spräcklig fjäderdräkt i brunt och
+    grått, vilket gör den väl kamuflerad i sin torra miljö. Arten har en relativt
+    kort svans och karakteristisk tofs på huvudet.
+
+
+    Lagerlärkan lever på öppna, torra marker och förekommer ofta i kulturlandskap
+    och på klippiga sluttningar. Det är en marksökande fågel som söker föda på backen,
+    och det kan ses hur det hoppar omkring och söker efter insekter och frön. Arten
+    är territoriell och sällan långväg migrering.
+
+
+    Arten är känd för sitt varierade sång som ofta framförts från en upphöjd låg buske
+    eller från marken. Lagerlärkan är mest aktiv under de kallare tiderna på dagen
+    och håller sig gärna nära ris och låg växtlighet för skydd.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Explanation:** The provided source text only describes the geographic range
+    of Thekla''s Lark (southwestern Europe and northern/eastern Africa) but contains
+    no information about migration patterns, seasonal movements, or occurrence in
+    Scandinavia/Northern Europe throughout the year. Since the species'' distribution
+    in the source text is limited to southwestern Europe and Africa, and no migration
+    data is provided, the required response is the standard phrase for missing migration
+    information.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q851570/hero.jpg
+  width: 2400
+  height: 1778
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Theklaleeuwerik - Thekla's lark
+    - Galerida theklae.tif
+  commons_filename: Theklaleeuwerik - Thekla's lark - Galerida theklae.tif
+- role: secondary
+  path: Q851570/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:North African Thekla's lark
+    (Galerida theklae carolinae) Kebili.jpg
+  commons_filename: North African Thekla's lark (Galerida theklae carolinae) Kebili.jpg
+- role: secondary
+  path: Q851570/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Thekla lark (Galerida theklae
+    ruficolor).jpg
+  commons_filename: Thekla lark (Galerida theklae ruficolor).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:12:27.133419+00:00'
+sources:
+  wikipedia_sv_revision: '56929571'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

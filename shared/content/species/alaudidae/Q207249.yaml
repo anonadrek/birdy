@@ -1,0 +1,147 @@
+id: Q207249
+scientific_name: Eremophila alpestris
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Eremophila
+  ioc_order: Passeriformes
+names:
+  sv: berglärka
+  en: Horned Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Berglärka
+
+
+    Berglärkan är en av världens mest utbredda lärkor och förekommer på båda sidor
+    av Atlanten. Det är en kompakt fågel med karaktäristiska små "horn" på huvudet
+    – små fjädertofsar som är särskilt synliga när fågeln är uppretad. Berglärkan
+    har en gul och svart ansiktsmask, brun ovansida och ljus undersida.
+
+
+    Berglärkan är en markfågel som föredrar öppna, kala miljöer såsom fjäll, tundra
+    och steniga slätter. Det är mycket flyttfågel på många håll. Fågeln hoppar och
+    springer på marken när den söker föda, ofta i små flockar under hösten och vintern.
+    Under häckningstiden är hannar mycket synliga när de sjunger från marken eller
+    under sin karakteristiska flygsång högt upp i luften.
+
+
+    Berglärkan har en svag och spröd sång med många variationer. Locktonen är ett
+    distinkt "tsip" eller "pjuuu" som är lätt att känna igen när fågeln är i rörelse.
+    Berglärkan är allmänt förekommande inom sitt utbredningsområde och är ofta lätt
+    att observera på lämpliga lokaler under höst och vinter.'
+  en: '# Horned Lark
+
+
+    The Horned Lark is a distinctive lark found throughout the northern hemisphere.
+    Males in summer display characteristic feather tufts on their heads that resemble
+    small horns, making identification straightforward during the breeding season.
+    The species is more commonly called "Horned Lark" in the Americas and "Shore Lark"
+    in Europe, the latter name reflecting its winter habit of frequenting coastal
+    shorelines.
+
+
+    This lark inhabits open, sparsely vegetated terrain across its wide range. It
+    forages on the ground for seeds and insects, blending into barren landscapes with
+    its subtle plumage. The bird''s call is a characteristic tinkling song, delivered
+    in flight or from perches, which aids in locating it in open country where visual
+    detection can be challenging.
+
+
+    Populations vary seasonally and geographically, with birds shifting to different
+    habitats as seasons change. Winter visitors to lower elevations and coastlines
+    contrast with summer breeding populations in upland regions. Its adaptability
+    to harsh, open environments—from arctic tundra to high moorlands and winter beaches—makes
+    it a resilient species across its broad northern range.'
+migration:
+  sv: '# Berglärka (Eremophila alpestris) - Migration och övervintrimg i Nordeuropa
+
+
+    Berglärkan är en omfattande trageant i Skandinavien och Nordeuropa. Arten anländer
+    till sina häckningsområden på fjällen och kustslätterna vanligen under mars och
+    april. Under sommaren häckar berglärkan på öppna, vegetationskarga habitat i högfjällsregioner.
+    Hösten börjar fåglarna att dra söderut, och de flesta individer från Skandinavien
+    är borta från häckningsområdena senast oktober-november.
+
+
+    Arten övervintrarar dels genom att söka sig till lägre höjder och södra delar
+    av sitt utbredningsområde, dels genom att migrera längre söderut till södra Sverige,
+    Danmark och kontinentala Europa. Vissa mindre grupper kan dock stanna över vintern
+    på snöfattiga områden med god tillgång till föda. Vinterobservationer från Skandinavien
+    är därför inte ovanliga, särskilt under mildare vintrar.
+
+
+    ---
+
+
+    *Notering: Källtexten innehåller begränsad migrationsinformation. Svaren ovan
+    baseras på allmän ornitologisk kunskap om arten.*'
+  en: '# Horned Lark in Northern Europe
+
+
+    The Horned Lark is a resident and migratory species across Scandinavia and Northern
+    Europe, with populations showing variable movement patterns. Northern breeding
+    birds migrate southward in autumn, with peak arrivals in coastal and lowland areas
+    occurring from September through November. Some populations remain as winter residents
+    in suitable open habitats, particularly on sandy shores, coastal areas, and windswept
+    moorlands where food remains accessible. Spring migration back to breeding grounds
+    in northern regions occurs from March through May. The species'' presence in winter
+    along European shores is notable, as birds exploit ice-free coastal habitats and
+    areas with minimal snow cover.'
+image_refs:
+- role: hero
+  path: Q207249/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Shore Lark (Eremophila alpestris
+    flava), Helgoland 2021.jpg
+  commons_filename: Shore Lark (Eremophila alpestris flava), Helgoland 2021.jpg
+- role: secondary
+  path: Q207249/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Eremophila alpestris (26611497328).jpg
+  commons_filename: Eremophila alpestris (26611497328).jpg
+- role: secondary
+  path: Q207249/secondary-2.jpg
+  width: 1800
+  height: 1440
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
+    Sprinz">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Horned lark (eremophila alpestris)
+    01.jpg
+  commons_filename: Horned lark (eremophila alpestris) 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:13:41.713639+00:00'
+sources:
+  wikipedia_sv_revision: '59155664'
+  wikipedia_en_revision: '1350326754'
+  claude_model: claude-haiku-4-5-20251001

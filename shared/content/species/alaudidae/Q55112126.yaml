@@ -1,0 +1,90 @@
+id: Q55112126
+scientific_name: Eremalauda eremodites
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Eremalauda
+  ioc_order: Passeriformes
+names:
+  sv: Arablärka
+  en: Arabian Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Arablärka
+
+
+    Arablärka är en liten lärka förekommande i Mellanöstern. Arten behandlades tidigare
+    tillsammans med saharalärkan som en enda art under namnet streckad ökenlärka,
+    men klassificeras nu som en separat art.
+
+
+    Som medlem av lärkfamiljen har arblärkan anpassningar för att leva i öppen, torr
+    terräng. Arten är karakteristisk för sitt naturliga utbredningsområde i torra
+    miljöer i Mellanöstern.'
+  en: '# Arabian Lark
+
+
+    The Arabian lark is a small passerine of the lark family, perfectly adapted to
+    arid environments. It inhabits desert regions across the Middle East, with its
+    range extending from Syria and Jordan through Saudi Arabia to Oman. Like other
+    larks, it is primarily a ground-dwelling bird, blending seamlessly into sandy
+    and rocky desert landscapes.
+
+
+    This species shares the characteristic features typical of desert larks—a compact
+    body suited to harsh conditions and cryptic plumage that provides excellent camouflage
+    against desert terrain. Its appearance and behaviour reflect specialization for
+    life in arid regions where water and vegetation are scarce. The Arabian lark forages
+    on the ground for insects and seeds, moving with the characteristic gait of terrestrial
+    larks.
+
+
+    The species remains relatively understudied compared to some of its relatives,
+    and detailed information about its specific vocalizations and breeding behaviour
+    remains limited in general literature. Like many desert birds, it is most active
+    during cooler parts of the day, becoming less conspicuous during peak heat. Its
+    presence in the region is an indicator of the specialized bird communities that
+    have evolved to exploit desert habitats.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only information about the Arabian Lark''s geographic
+    range in the Middle East (Syria, Jordan, Saudi Arabia, and Oman) and its habitat
+    preference for desert environments. No information is given regarding its occurrence
+    in Scandinavia, Northern Europe, or any migration patterns, seasonal movements,
+    or overwintering behavior. Therefore, no factual account of this species'' annual
+    cycle in Northern European regions can be provided based on the available source
+    material.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:23:30.553593+00:00'
+sources:
+  wikipedia_sv_revision: '58321237'
+  wikipedia_en_revision: '1314534185'
+  claude_model: claude-haiku-4-5-20251001

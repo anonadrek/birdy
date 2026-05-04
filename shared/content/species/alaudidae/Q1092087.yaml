@@ -1,0 +1,64 @@
+id: Q1092087
+scientific_name: Eremalauda dunni
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Eremalauda
+  ioc_order: Passeriformes
+names:
+  sv: Streckig ökenlärka
+  en: Dunn’s Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Streckig ökenlärka
+
+
+    Streckig ökenlärka är en liten medlem av lärkfamiljen som förekommer i Nordafrika.
+    Det är en diskret fågel anpassad för öppen, torr miljö. Arten karakteriseras av
+    en relativt liten storlek och streckad fjäderdräkt som ger den utmärkt kamouflage
+    i sin naturliga habitat.
+
+
+    Denna lärka är en terräng- och marksökande fågel som främst rör sig på marken.
+    Det födosöker efter insekter och frön bland den glesa vegetationen i sin torra
+    miljö. Som många lärkarter kan arten sjunga från marken eller från låga upphöjningar.
+
+
+    Streckig ökenlärka är anpassad för att överleva i närmast öken- och halvökenhabitat.
+    Det är en relativt stillsam fågel som ofta kan vara svår att skymta på grund av
+    sin dunkla färg och marknära levnadssätt.'
+  en: ''
+migration:
+  sv: 'sv: Migrationsdata saknas för denna art.
+
+
+    en: Migration data unavailable for this species.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:23:26.477154+00:00'
+sources:
+  wikipedia_sv_revision: '58389660'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

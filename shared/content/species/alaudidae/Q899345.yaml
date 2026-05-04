@@ -1,0 +1,123 @@
+id: Q899345
+scientific_name: Alaemon alaudipes
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Alaemon
+  ioc_order: Passeriformes
+names:
+  sv: härfågellärka
+  en: Greater Hoopoe-Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Härfågellärka
+
+
+    Härfågellärka är en stor och långnäbbad lärka som är väl anpassad till liv i torra
+    miljöer. Det karaktäristiska långnäbbade utseendet skiljer arten från andra lärksor
+    och användes historiskt för att jaga insekter i sandig mark. Arten är färgad i
+    jordiga toner som gör det väl kamouflerat i sin ökenhabitat.
+
+
+    Arten förekommer i öknar och halvöknar över ett stort geografiskt område från
+    nordvästra delar österut till södra Asien. Det trivs på öppen sandig och stenig
+    mark där det söker föda på marken. Även om beståndet minskar gradvis anses det
+    fortfarande vara livskraftigt och arten klassificeras inte som hotad.'
+  en: '# Greater Hoopoe-Lark
+
+
+    The Greater Hoopoe-Lark is a passerine bird adapted to the harshest environments.
+    It is a breeding resident of arid and semi-desert regions, ranging from the Cape
+    Verde Islands across northern Africa, through the Arabian Peninsula, and eastward
+    to India and Afghanistan. The species inhabits open, sparsely vegetated landscapes
+    where few other birds thrive.
+
+
+    This lark is distinctly marked with striking plumage patterns that help it blend
+    into desert surroundings. Its appearance includes characteristic markings that
+    distinguish it from other desert larks, though detailed field marks are best confirmed
+    through regional bird guides. Like other larks, it is primarily a ground-dwelling
+    bird, foraging for insects and seeds among sparse vegetation and bare ground.
+
+
+    The species was formerly called the Bifasciated Lark, a reference to its distinctive
+    markings. It remains relatively specialized in its habitat preferences, being
+    found almost exclusively in open desert and semi-desert terrain where vegetation
+    is minimal. Its adaptations to such extreme environments make it a notable member
+    of desert bird communities across its extensive range.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller ingen information om härfågellärkan förekommer
+    i Skandinavien eller Nordeuropa, eller någon data om migration, övervintrering
+    eller ankomsttider för dessa regioner. Arten beskrivs endast som förekommande
+    i öknar och halvöknar från Nordafrika österut till Indien, vilket ligger långt
+    söder om Skandinavien/Nordeuropa.'
+  en: 'Migration data unavailable for this species.
+
+
+    The greater hoopoe-lark is described as a breeding resident of arid and desert
+    regions spanning from the Cape Verde Islands across northern Africa, the Arabian
+    Peninsula, Syria, Afghanistan, Pakistan, and India. The source text provides no
+    information regarding its occurrence in Scandinavia or Northern Europe, nor does
+    it contain any details about migration patterns, seasonal movements, or overwintering
+    behavior that would be relevant to Nordic bird guides.'
+image_refs:
+- role: hero
+  path: Q899345/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Haytem93&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Haytem93 (page does not exist)">Haytem93</a>
+  source_url: https://commons.wikimedia.org/wiki/File:A beautiful bird ( Alaemon alaudipes
+    ) posing for the camera.jpg
+  commons_filename: A beautiful bird ( Alaemon alaudipes ) posing for the camera.jpg
+- role: secondary
+  path: Q899345/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Haytem93&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Haytem93 (page does not exist)">Haytem93</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cursorius cursor ( bird in the
+    right ) saying to Alaemon alaudipes ( bird in the left ) get the hell out of here.jpg
+  commons_filename: Cursorius cursor ( bird in the right ) saying to Alaemon alaudipes
+    ( bird in the left ) get the hell out of here.jpg
+- role: secondary
+  path: Q899345/secondary-2.jpg
+  width: 1800
+  height: 1304
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Christian_Pirkl" title="User:Christian
+    Pirkl">Christian Pirkl</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Alaemon alaudipes 294A6376 Wüstenläuferlerche.jpg
+  commons_filename: Alaemon alaudipes 294A6376 Wüstenläuferlerche.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:12:18.998183+00:00'
+sources:
+  wikipedia_sv_revision: '57750194'
+  wikipedia_en_revision: '1313849423'
+  claude_model: claude-haiku-4-5-20251001

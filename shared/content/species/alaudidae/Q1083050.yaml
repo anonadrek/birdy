@@ -1,0 +1,75 @@
+id: Q1083050
+scientific_name: Mirafra javanica
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Mirafra
+  ioc_order: Passeriformes
+names:
+  sv: Australisk lärka
+  en: Singing Bush Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Singing Bush Lark
+
+
+    The Singing Bush Lark, also known as Horsfield''s Bush Lark, is a small lark species
+    found across grasslands and open country throughout much of Australia and Southeast
+    Asia. It belongs to the lark family (Alaudidae), known for their melodious songs
+    and ground-dwelling habits.
+
+
+    This species is a grassland specialist, preferring open habitats where it forages
+    on the ground for insects and seeds. It is characterised by its typically larking
+    appearance—modest plumage with streaked brown and buff tones that provide effective
+    camouflage in its preferred grassland environment. Like other bush larks, it tends
+    to be inconspicuous and easy to overlook unless it sings.
+
+
+    The Singing Bush Lark is particularly notable for its voice, living up to its
+    name with an attractive, warbling song often delivered from a prominent perch
+    or during short flights. This vocal activity is often the best way to locate the
+    species in its habitat. It is resident or nomadic depending on local rainfall
+    patterns, moving through its range in response to grass growth and food availability.
+    Birdwatchers seeking this species should focus on open grasslands and savanna-like
+    areas during times when vegetation is actively growing.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Singing Bush Lark (Mirafra javanica) is an Australian and Southeast Asian
+    species with no established occurrence in Scandinavia or Northern Europe. As a
+    resident bird of grasslands in Australia and Southeast Asia, it does not migrate
+    to or appear in Scandinavian regions during any season. Therefore, information
+    about its presence, migration patterns, or overwintering in Northern Europe cannot
+    be provided.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:23:30.097074+00:00'
+sources:
+  wikipedia_sv_revision: '57591443'
+  wikipedia_en_revision: '1315354773'
+  claude_model: claude-haiku-4-5-20251001

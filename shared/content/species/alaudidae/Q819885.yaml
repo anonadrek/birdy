@@ -1,0 +1,121 @@
+id: Q819885
+scientific_name: Melanocorypha bimaculata
+taxonomy:
+  family: Alaudidae
+  family_sv: lärkor
+  genus: Melanocorypha
+  ioc_order: Passeriformes
+names:
+  sv: asiatisk kalanderlärka
+  en: Bimaculated Lark
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Asiatisk kalanderlärka
+
+
+    Asiatisk kalanderlärka är en medelstor lärka som häckar i öppna, torra landskap
+    från Turkiet österut in i Centralasien. Arten är huvudsakligen flyttfågel och
+    övervintar i större delen av Afrika och på den indiska subkontinenten.
+
+
+    Den är mycket sällsynt i Västeuropa och har endast noterats ett fåtal gånger i
+    Sverige. På sitt häckningsområde förekommer arten i stäppor och halvtorrt terräng
+    där det växer låg vegetation. Som de flesta lärkor livnär det sig på frön och
+    insekter.
+
+
+    Arten är klassificerad som livskraftig av IUCN och populationen anses vara stabil.'
+  en: '# Bimaculated Lark
+
+
+    The Bimaculated Lark is a member of the lark family found across warm temperate
+    regions from Turkey eastward into Central Asia. It serves as the eastern counterpart
+    to the closely related Calandra Lark, occupying similar ecological niches across
+    its range.
+
+
+    This species inhabits open, arid landscapes typical of its continental distribution.
+    Like other larks, it is well-adapted to ground-living and open-country environments
+    where it forages for seeds and insects. The bird''s behavior and ecological preferences
+    reflect its specialization for the semi-arid habitats of its range.
+
+
+    Further details about its specific appearance, vocalizations, and detailed behavioral
+    patterns would benefit from additional sources, as the available information is
+    limited to its geographic distribution and taxonomic relationships.'
+migration:
+  sv: '# Asiatisk kalanderlärka – Förekomst i Norden
+
+
+    Asiatisk kalanderlärka är en mycket sällsynt gäst i Skandinavien och Västeuropa.
+    Arten är huvudsakligen stationär i sitt utbredningsområde från Turkiet österut
+    in i Centralasien, där den häckar. Merparten av populationen utgörs dock av flyttfåglar
+    som vintertid drar mot sydvästra vinterkvarteren från nordöstra Afrika till Indien.
+    I Sverige är arten extremt ovanlig med endast sex dokumenterade fynd totalt, och
+    den förekommer inte som någon regelbunden gäst eller övervintrare i området.'
+  en: '# Melanocorypha bimaculata in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Bimaculated Lark breeds in warm temperate regions from Turkey eastward through
+    Central Asia. This species does not occur in Scandinavia or Northern Europe during
+    any season. As a resident or short-distance migrant of Central Asian steppes and
+    semi-arid regions, the Bimaculated Lark remains outside the normal range of Northern
+    European bird communities.'
+image_refs:
+- role: hero
+  path: Q819885/hero.jpg
+  width: 2048
+  height: 1858
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1476120">Jan
+    Ebr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Melanocorypha bimaculata 117209398.jpg
+  commons_filename: Melanocorypha bimaculata 117209398.jpg
+- role: secondary
+  path: Q819885/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY-SA 4.0
+  author: Kudaibergen Amirekul (amirekul)
+  source_url: https://commons.wikimedia.org/wiki/File:Melanocorypha bimaculata from
+    iNaturalist photo 504864727.jpg
+  commons_filename: Melanocorypha bimaculata from iNaturalist photo 504864727.jpg
+- role: secondary
+  path: Q819885/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC BY-SA 4.0
+  author: Kudaibergen Amirekul (amirekul)
+  source_url: https://commons.wikimedia.org/wiki/File:Melanocorypha bimaculata from
+    iNaturalist photo 504864728.jpg
+  commons_filename: Melanocorypha bimaculata from iNaturalist photo 504864728.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-04T13:12:46.823365+00:00'
+sources:
+  wikipedia_sv_revision: '58592551'
+  wikipedia_en_revision: '1313789997'
+  claude_model: claude-haiku-4-5-20251001

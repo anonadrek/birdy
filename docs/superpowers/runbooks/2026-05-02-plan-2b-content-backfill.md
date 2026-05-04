@@ -10,7 +10,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-04 | paridae | +8 (totalt 13) | `f8cc17f` |
 | 2026-05-04 | accipitridae | +38 (totalt 51) | `1ed1895` |
 | 2026-05-04 | acrocephalidae | +19 (totalt 70) | `3609b98` |
-| | _next: alaudidae_ | | |
+| 2026-05-04 | alaudidae | +27 (totalt 97) | _(this commit)_ |
+| | _next: anatidae_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -29,6 +30,14 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Validator-threshold (80w) > sparse-threshold (20w):** Q1590574 fick sv=72w (Claude körde, men under 80w-gränsen). Lägg `sv` i `description_accept_missing` även när text faktiskt finns men är för kort. Validatorn rapporterar `description-too-short` om missat.
 - **`allow_missing_images: true` per art** finns redan som override (`ValidateMain.kt:15`). Använd när Commons saknar foto över `MIN_DIMENSION=2048`. Q891376 basrasångare hade bara 1071×905 → satt allow_missing_images. Bättre än att sänka MIN_DIMENSION globalt.
 - Q27674 härmsångare hade bara 1 image_ref (hero, ingen secondary). Validatorn accepterar — minimum är 1 hero. Inte allt är problem.
+
+**Alaudidae-batch lärdomar (2026-05-04):**
+
+- 2/27 abundance:allmän approved (Q25961 sånglärka, Q26969 trädlärka). Andra sångfågel-vana lärkor (berglärka, dvärglärka, korttålärka, tofslärka) bedömda `ovanlig` i SE — sparvfinklärkan/finklärkor och ökenarter är overwhelmingly södra/asiatiska.
+- **13/27 (48%) sparse-text-overrides + 8/27 (30%) image-coverage-overrides** — alaudidae är extremfall: många öken/Asien-endemics med tunn coverage på både svwiki och Commons. 5 arter (Q1083050, Q1092087, Q110812143, Q55112126, Q966703) behöver båda overrides — text- och bildgapen korrelerar för sparse-rariteter.
+- **Pillow-krasch på .webm:** Q25961 (sånglärka) trasslade pipelinen — Commons-search returnerade `Galerida cristata, South Hebron.webm` som top-2-kandidat (fel art till) och ImageProcessor kraschade på `Pillow.Image.open`. Fixat i `c803ed1` med `ALLOWED_IMAGE_EXTS`-frozenset (Pillow-decodable raster only). SVG distribution-kartor filtreras av samma gate. Återanvändbart för framtida familjer.
+- **gsrlimit=20 → 50 i `c803ed1`:** Q26969 (trädlärka, allmän) hittade 0 candidates — top-20 var museum-specimens + sub-MIN_DIMENSION-foton. Bumpning till 50 gav 3 användbara kandidater. Sparse-arter med genuint tunt Commons-utbud (Q890903 Rasolärka, Q31874488 Brunkronad lärka) berörs inte — `allow_missing_images` kvar.
+- **Stort flag för datakvalitet:** alaudidae är en utfallsfamilj där upstream-datat saknar svenska/engelska beskrivningar för >50% av arterna. För Plan 3 UI-design måste vi visa "beskrivning kommer" på ett sätt som fungerar för en stor andel arter; det är inte en sällsynt edge case.
 
 ## Hur du startar en ny session och tar upp tråden
 
@@ -93,8 +102,9 @@ Cumulative Claude budget for the full backfill: ~$5. Use `--max-cost` per run, s
 | paridae | 8 | 16 | ~$0.018 | ~$0.002 |
 | accipitridae | 38 | ~50 (sparse skip ~26 calls) | ~$0.27 | ~$0.007 |
 | acrocephalidae | 19 | 64 (sparse skip ~12 calls) | ~$0.064 | ~$0.003 |
+| alaudidae | 27 | ~36 (sparse skip ~18 calls) | ~$0.04 | ~$0.0015 |
 
-Cumulativt: 70 arter / ~$0.38. Vid ~700 arter och 30–40% sparse-rate landar vi på ~$3–4 totalt — väl under budget. Sparse-arter (overrides) bidrar nästan inte till kostnaden eftersom Claude inte anropas alls för det språket.
+Cumulativt: 97 arter / ~$0.42. Vid ~700 arter och 30–50% sparse-rate landar vi på ~$3–4 totalt — väl under budget. Sparse-arter (overrides) bidrar nästan inte till kostnaden eftersom Claude inte anropas alls för det språket.
 
 ## Relaterade runbooks
 
