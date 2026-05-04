@@ -1,0 +1,49 @@
+name: content-pipeline
+
+on:
+  push:
+    paths:
+      - "tools/content-pipeline/**"
+      - ".github/workflows/content-pipeline.yml"
+  pull_request:
+    paths:
+      - "tools/content-pipeline/**"
+      - ".github/workflows/content-pipeline.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: content-pipeline-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    name: Python lint + tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: tools/content-pipeline
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Sync dependencies
+        run: uv sync --all-extras --dev
+
+      - name: Lint (ruff)
+        run: uv run ruff check
+
+      - name: Format check (ruff)
+        run: uv run ruff format --check
+
+      - name: Type check (mypy)
+        run: uv run mypy
+
+      - name: Tests (pytest)
+        run: uv run pytest

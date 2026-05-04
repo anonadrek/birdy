@@ -39,6 +39,15 @@ jobs:
       - name: Unit tests (shared modules)
         run: ./gradlew :shared:domain:jvmTest :shared:ml:jvmTest --stacktrace
 
+      - name: Validate species data
+        run: ./gradlew :shared:content:validateSpeciesData --stacktrace
+
+      - name: Run :shared:content tests
+        run: ./gradlew :shared:content:jvmTest --stacktrace
+
+      - name: Build species.db
+        run: ./gradlew :shared:content:buildSpeciesDb --stacktrace
+
       - name: Assemble Android debug APK
         run: ./gradlew :androidApp:assembleDebug --stacktrace
 
