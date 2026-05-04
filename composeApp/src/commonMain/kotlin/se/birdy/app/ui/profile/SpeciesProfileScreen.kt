@@ -30,6 +30,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import se.birdy.app.ui.components.EmptyState
+import se.birdy.app.ui.components.SectionBlock
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.SandCreme
@@ -107,18 +108,29 @@ private fun ProfileContent(
         ) {
             item { FactRow(species) }
             item {
-                Text("BESKRIVNING", style = MaterialTheme.typography.labelLarge, color = AccentCopper)
-                Text(species.description ?: "Beskrivning kommer i en framtida uppdatering.")
+                SectionBlock(
+                    label = "BESKRIVNING",
+                    isEmpty = species.description.isNullOrBlank(),
+                    emptyMessage = "Beskrivning kommer i en framtida uppdatering.",
+                ) {
+                    Text(species.description.orEmpty(), style = MaterialTheme.typography.bodyMedium)
+                }
             }
             item {
-                Text("FLYTTNING", style = MaterialTheme.typography.labelLarge, color = AccentCopper)
-                Text(species.migration ?: "Migrationsdata saknas för denna art.")
+                SectionBlock(
+                    label = "FLYTTNING",
+                    isEmpty = species.migration.isNullOrBlank(),
+                    emptyMessage = "Migrationsdata saknas för denna art.",
+                ) {
+                    Text(species.migration.orEmpty(), style = MaterialTheme.typography.bodyMedium)
+                }
             }
             item {
-                Text("FOTOGRAFIER", style = MaterialTheme.typography.labelLarge, color = AccentCopper)
-                if (species.images.isEmpty()) {
-                    Text("Inga foton tillgängliga.")
-                } else {
+                SectionBlock(
+                    label = "FOTOGRAFIER",
+                    isEmpty = species.images.isEmpty(),
+                    emptyMessage = "Inga foton tillgängliga.",
+                ) {
                     Text("${species.images.size} foton (Coil i Task 9).")
                 }
             }
