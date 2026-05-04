@@ -38,6 +38,10 @@ REJECT_PATTERNS = re.compile(
     re.IGNORECASE,
 )
 
+# Pillow-decodable raster formats. Commons search occasionally returns videos
+# (.webm, .ogv) or vectors (.svg) which crash ImageProcessor.process().
+ALLOWED_IMAGE_EXTS = frozenset({".jpg", ".jpeg", ".png", ".gif", ".webp", ".tif", ".tiff"})
+
 _LICENSE_PRIORITY = {
     "public domain": 0,
     "cc0": 0,
@@ -102,6 +106,11 @@ def parse_imageinfo_response(raw: str) -> list[ImageCandidate]:
 def rank_candidates(candidates: list[ImageCandidate]) -> list[ImageCandidate]:
     survivors: list[ImageCandidate] = []
     for c in candidates:
+        if "." not in c.commons_filename:
+            continue
+        ext = "." + c.commons_filename.rsplit(".", 1)[-1].lower()
+        if ext not in ALLOWED_IMAGE_EXTS:
+            continue
         if REJECT_PATTERNS.search(c.commons_filename):
             continue
         if any(REJECT_PATTERNS.search(cat) for cat in c.categories):
@@ -170,7 +179,7 @@ class ImageSelector:
             "action=query&format=json&prop=imageinfo&"
             "iiprop=url|size|mime|extmetadata&"
             f"generator=search&gsrsearch=intitle:%22{quote_plus(scientific_name)}%22"
-            "&gsrnamespace=6&gsrlimit=20"
+            "&gsrnamespace=6&gsrlimit=50"
         )
         raw = await get(url)
         self.cache.put(q_id, cache_key, raw)

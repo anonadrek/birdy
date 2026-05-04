@@ -147,6 +147,38 @@ def test_rank_rejects_historical_print_filenames() -> None:
     assert ranked[0].commons_filename == "Pernis apivorus - flying.jpg"
 
 
+def test_rank_rejects_non_image_extensions() -> None:
+    video = ImageCandidate(
+        commons_filename="Galerida cristata, South Hebron.webm",
+        url="x",
+        width=2276,
+        height=1280,
+        license="CC0",
+        author="A",
+        categories=[],
+    )
+    svg = ImageCandidate(
+        commons_filename="Alauda arvensis distribution.svg",
+        url="y",
+        width=4000,
+        height=3000,
+        license="CC0",
+        author="A",
+        categories=[],
+    )
+    photo = ImageCandidate(
+        commons_filename="Alauda arvensis Ehedydd.jpg",
+        url="z",
+        width=2339,
+        height=2665,
+        license="CC0",
+        author="A",
+        categories=["Photographs of Aves"],
+    )
+    ranked = rank_candidates([video, svg, photo])
+    assert ranked == [photo]
+
+
 def test_rank_rejects_below_min_resolution() -> None:
     too_small = ImageCandidate(
         commons_filename="Parus major small.jpg",
