@@ -29,6 +29,7 @@ import birdy_bird_scanner.composeapp.generated.resources.scan_permission_require
 import birdy_bird_scanner.composeapp.generated.resources.scan_photo_analyze
 import birdy_bird_scanner.composeapp.generated.resources.scan_top1_searching
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.ml.CameraSource
 
 @Composable
@@ -103,7 +104,7 @@ fun ScanScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
-                    Text(text = stringResource(Res.string.scan_freeze_hint), color = Color(0xFFF0EAD8))
+                    Text(text = stringResource(Res.string.scan_freeze_hint), color = TextOnHero)
                     OutlinedButton(onClick = onPhotoAnalyzeClick) {
                         Text(stringResource(Res.string.scan_photo_analyze))
                     }
@@ -120,7 +121,7 @@ private fun PermissionRequiredView(onAllow: () -> Unit) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(stringResource(Res.string.scan_permission_required_body), color = Color(0xFFF0EAD8))
+        Text(stringResource(Res.string.scan_permission_required_body), color = TextOnHero)
         Box(modifier = Modifier.size(16.dp))
         Button(onClick = onAllow) { Text(stringResource(Res.string.scan_permission_allow)) }
     }
@@ -133,7 +134,7 @@ private fun PermissionDeniedView(onOpenSettings: () -> Unit) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(stringResource(Res.string.scan_permission_denied_body), color = Color(0xFFF0EAD8))
+        Text(stringResource(Res.string.scan_permission_denied_body), color = TextOnHero)
         Box(modifier = Modifier.size(16.dp))
         Button(onClick = onOpenSettings) { Text(stringResource(Res.string.scan_permission_open_settings)) }
     }
@@ -150,6 +151,6 @@ private fun ErrorView(kind: ScanErrorKind) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(message, color = Color(0xFFF0EAD8))
+        Text(message, color = TextOnHero)
     }
 }

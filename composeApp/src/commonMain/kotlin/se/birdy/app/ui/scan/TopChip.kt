@@ -19,11 +19,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.scan_throttle_indicator
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.HeroMossLight
+import se.birdy.app.ui.theme.SandCreme
+import se.birdy.app.ui.theme.TextOnCreme
 
 @Composable
 fun TopChip(
@@ -43,7 +46,7 @@ fun TopChip(
         modifier =
             modifier
                 .background(
-                    color = Color(0xF0D8D0BC), // sand-creme @ 0.94
+                    color = SandCreme.copy(alpha = 0.94f),
                     shape = RoundedCornerShape(16.dp),
                 ).padding(horizontal = 12.dp, vertical = 7.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -55,18 +58,18 @@ fun TopChip(
                 Modifier
                     .size(8.dp)
                     .background(
-                        color = Color(0xFF8C5A3C).copy(alpha = pulse),
+                        color = AccentCopper.copy(alpha = pulse),
                         shape = CircleShape,
                     ),
         )
-        Text(text = speciesName, color = Color(0xFF2A3525))
+        Text(text = speciesName, color = TextOnCreme)
         if (confidencePct != null) {
             Spacer(modifier = Modifier.width(4.dp))
-            Text(text = "$confidencePct%", color = Color(0xFF8C5A3C))
+            Text(text = "$confidencePct%", color = AccentCopper)
         }
         if (isThrottled) {
             Spacer(modifier = Modifier.width(4.dp))
-            Text(text = stringResource(Res.string.scan_throttle_indicator), color = Color(0xFF5C6E48))
+            Text(text = stringResource(Res.string.scan_throttle_indicator), color = HeroMossLight)
         }
     }
 }

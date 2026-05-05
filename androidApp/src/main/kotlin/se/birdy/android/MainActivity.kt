@@ -9,10 +9,12 @@ import se.birdy.app.di.AppGraph
 import se.birdy.content.Locale
 import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.camera.AndroidCameraSource
+import java.io.File
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        cleanOldCacheFrames()
         SpeciesRepositoryProvider.init(applicationContext)
         val graph =
             AppGraph(
@@ -24,5 +26,20 @@ class MainActivity : ComponentActivity() {
                 defaultLocale = Locale.SV,
             )
         setContent { App(graph) }
+    }
+
+    private fun cleanOldCacheFrames() {
+        val cutoff = System.currentTimeMillis() - ONE_HOUR_MS
+        listOf("scan-frames", "photo-input").forEach { sub ->
+            val dir = File(cacheDir, sub)
+            if (!dir.exists()) return@forEach
+            dir.listFiles()?.forEach { file ->
+                if (file.lastModified() < cutoff) file.delete()
+            }
+        }
+    }
+
+    private companion object {
+        private const val ONE_HOUR_MS = 60L * 60L * 1000L
     }
 }

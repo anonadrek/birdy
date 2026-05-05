@@ -69,7 +69,7 @@
 
     <!-- Result screen -->
     <string name="result_your_scan">din skan</string>
-    <string name="result_unresolved_count">%1$d förslag kunde inte resolveras</string>
+    <string name="result_unresolved_count">%1$d förslag kunde inte matchas</string>
     <string name="result_save_observation">Spara som observation</string>
     <string name="result_save_hint">Sparas i Plan 5</string>
     <string name="result_no_predictions">Inga förslag att visa.</string>
