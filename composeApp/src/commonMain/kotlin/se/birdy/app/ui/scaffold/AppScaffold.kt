@@ -14,7 +14,7 @@ import androidx.navigation.toRoute
 import se.birdy.app.di.AppGraph
 import se.birdy.app.ui.encyclopedia.EncyclopediaScreen
 import se.birdy.app.ui.profile.SpeciesProfileScreen
-import se.birdy.app.ui.scan.ScanScreen
+import se.birdy.app.ui.scan.ScanScreenHost
 import se.birdy.content.SpeciesId
 
 @Composable
@@ -27,7 +27,8 @@ fun AppScaffold(graph: AppGraph) {
             modifier = Modifier.padding(padding),
         ) {
             composable<AppRoute.Scan> {
-                ScanScreen(
+                ScanScreenHost(
+                    graph = graph,
                     onPhotoAnalyzeClick = { navController.navigate(AppRoute.PhotoAnalyze) },
                     onFrozen = { csv, path ->
                         navController.navigate(AppRoute.ClassificationResult(csv, path))
