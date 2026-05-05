@@ -160,6 +160,14 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 
 **Öppna icke-blockerande prereqs:** few-shot-exempel i `description-v1.md` (bara Talgoxe komplett — fyll Koltrast + Blåmes om kvalitet sjunker); Task 8 follow-ups I1/I2/I4/I5 (intressant först om en familj kräver djup pipeline-debug).
 
+## Roadmap post-v1.0 (referens)
+
+Tagits in från v1-design-spec så vi inte tappar bort dem. Inget byggs här innan v1.0 är ute.
+
+- **v1.5 — "Karta & moln":** Konton, molnsynk av dagboken, karta med fynd från publika datakällor, push-notiser om sällsynta arter nära användaren. **Plan 5a-koppling:** `Observation`-schemat har nullable kolumner `latitude` / `longitude` / `location_label` från start så v1.5 bara fyller i nya rader (ingen migration behövs).
+- **v2 — "Community":** Delning av fynd, kommentarer, flöde, moderering.
+- **v2.x:** Quiz/utbildningsläge, ljud-ID, fullt offline-läge för längre exkursioner.
+
 ## Avslutade planer (referens)
 
 - **Plan 1 (Foundation, `v0.1.0-foundation`):** KMP-bootstrap, Compose, CI, Mossbädd-tema. Plan: `docs/superpowers/plans/` (sök 01-foundation).
