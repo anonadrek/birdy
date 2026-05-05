@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-05):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2a (pipeline + walking skeleton) ✅ klar (`v0.2.0a-pipeline`). Plan 2b (family-by-family backfill) **PAUSAD** vid 97/700 (alaudidae `d945e1f`). **Plan 3 (Encyclopedia) ✅ klar** — alla 11 tasks committade, milstolpe `v0.3.0-encyclopedia`. Bottom-nav-skelett (4 flikar), encyclopedia-browse med sök + filter-bottom-sheet, species-profile med collapsing toolbar + sparse-data-fallbacks + Coil-bilder + hero-image som toolbar-bakgrund (`e3e2629`), i18n via compose-resources (sv + en). Två post-tag-fixar: hero-image-toolbar (`e3e2629`) och 50-art-cap-fix (`9011aae`). 6 av 7 device-verifierings-screenshots inne (`docs/superpowers/screenshots/2026-05-05-*.png` — saknar profile-sparse). **Plan 2b återupptas nu (nästa familj alfabetiskt = anatidae).**
+**Status (2026-05-05):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2a (pipeline + walking skeleton) ✅ klar (`v0.2.0a-pipeline`). Plan 2b (family-by-family backfill) **PAUSAD** vid 97/700 (alaudidae `d945e1f`). **Plan 3 (Encyclopedia) ✅ klar** — alla 11 tasks committade, milstolpe `v0.3.0-encyclopedia`. Bottom-nav-skelett (4 flikar), encyclopedia-browse med sök + filter-bottom-sheet, species-profile med collapsing toolbar + sparse-data-fallbacks + Coil-bilder + hero-image som toolbar-bakgrund (`e3e2629`), i18n via compose-resources (sv + en). Två post-tag-fixar: hero-image-toolbar (`e3e2629`) och 50-art-cap-fix (`9011aae`). 6 av 7 device-verifierings-screenshots inne (`docs/superpowers/screenshots/2026-05-05-*.png` — saknar profile-sparse). **Plan 4a (FakeClassifier + UI + CameraX) PÅGÅR — Tasks 1–6 ✅ klara (senast `e63d2fa`); nästa = Task 7 (AndroidCameraSource — CameraX 3 fps + JPEG capture).** Plan 2b återupptas i samband med Plan 4a polish eller efter `v0.4.0-ml-camera`-tagg.
 
 ## Var hittar du saker
 
@@ -28,8 +28,9 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ Klar (`v0.1.0-foundation`) |
 | 2a | Content pipeline + walking skeleton (5 arter) | ✅ Klar (`v0.2.0a-pipeline`) |
 | 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ PAUSAD vid 97/700 (alaudidae `d945e1f`); återupptas efter Plan 3 |
-| 3 | Encyclopedia (browse + species profile) | ✅ Klar (`v0.3.0-encyclopedia`); device-verifiering pending |
-| 4 | ML & Camera (TFLite + CameraX) | |
+| 3 | Encyclopedia (browse + species profile) | ✅ Klar (`v0.3.0-encyclopedia`); 6/7 device-screenshots committade |
+| 4a | ML & Camera UI (FakeClassifier + UI-flöde + CameraX 3 fps) | 🟡 PÅGÅR — Tasks 1–6 ✅ klara; nästa = Task 7 |
+| 4b | Real TFLite-modell (deferrad till separat brainstorm) | ⏸ |
 | 5 | Diary & Gamification | |
 | 6 | i18n, polish, Play Store-release | |
 
@@ -189,7 +190,63 @@ Användaren har sagt: **"Don't ask me for permission to run anything."** Det bet
 - Det betyder INTE att ignorera blockerare som kräver fysisk åtkomst (telefon, emulator) eller tredjepartsbeslut (CI-resultat) — där rapporterar man status och väntar.
 - Det betyder INTE heller att hoppa över granskning. Två-stegs-review (spec → kvalitet) körs alltid mellan tasks per `subagent-driven-development`.
 
-## Plan 3 status (KLAR)
+## Plan 4a status (PÅGÅR — Tasks 1–6 ✅, nästa = Task 7)
+
+Plan: `docs/superpowers/plans/2026-05-05-v1-04a-camera-ui.md`. Spec: `docs/superpowers/specs/2026-05-05-plan-4a-ml-camera-design.md`. Workflow: `superpowers:subagent-driven-development` (Sonnet 4.6 implementerar, Opus 4.7 reviewar). Plan 4b (real TFLite-modell) deferrad — separat brainstorm senare.
+
+**Branch + arbetstillstånd:** `main`, 12 commits ahead of origin (osynkroniserade). Working tree är ren. Nästa start = checka ut `main` eller pulla, läs Plan 4a-dokumentet för Task 7-spec, dispatcha implementer-subagent.
+
+| # | Task | Commit | Status |
+|---|---|---|---|
+| 1 | shared/ml refactor — `BirdClassifier` interface + `FakeBirdClassifier` | `045a40e` | ✅ |
+| 2 | AppGraph wiring + `CameraSource` interface | `42a4a0e` (+ `c79d760` cleanup) | ✅ |
+| 3 | Nav-routes (`PhotoAnalyze`, `ClassificationResult`) + ScanScreen-placeholder + default-flik = Skanna | `7916386` | ✅ |
+| 4 | Camera permission helper (Android JIT-request + `ON_RESUME`-recheck) | `2202907` | ✅ |
+| 5 | `ScanViewModel` + `MutableSharedFlow(DROP_OLDEST)` + auto-throttle + `FakeCameraSource` | `71668ee` (impl), `68476cc` (review-fix) | ✅ |
+| 6 | ScanScreen UI variant C — top-chip + crosshair + tap-to-freeze | `79c3a3f` (impl), `e63d2fa` (i18n follow-up) | ✅ |
+| 7 | AndroidCameraSource — CameraX 3 fps `ImageAnalysis` + JPEG capture via `ImageCapture.takePicture` | _pending_ | ⬜ |
+| 8 | `PhotoAnalyzeViewModel` + screen + Android host (gallerival → Bitmap → klassificera) | _pending_ | ⬜ |
+| 9 | `ClassificationResultScreen` + ViewModel (variant A — top-3 lista + freeze-frame) | _pending_ | ⬜ |
+| 10 | Polish — theme-token-cleanup, cache-cleanup, CI green, screenshots, tag `v0.4.0a-ml-camera` | _pending_ | ⬜ |
+
+**Plan 4a-arkitektur (låst i Tasks 1–6):**
+
+- **`BirdClassifier` interface** i `shared/ml/commonMain` — input `ImageInput`, output `ClassificationResult` (lista av top-K predictions + frame-timestamp). `FakeBirdClassifier` är "production of record" (committad i Tasks 1) — ger deterministiska top-3 med slumpmässiga confidence-värden för UI-utveckling utan TFLite-modell. Plan 4b byter ut implementationen utan att röra UI/VM/state.
+- **`CameraSource` interface** i samma modul — `start()`, `stop()`, `frames(): Flow<ImageInput>`. `FakeCameraSource` (test-only) använder `MutableSharedFlow` så testet kan injicera frames i takt med `nowMillis`-tick. AndroidCameraSource (Task 7) bryggar CameraX `ImageAnalysis` + `ImageCapture` till samma interface.
+- **`AppGraph.scanViewModel()`** lambdafactory tar `cameraSourceFactory: () -> CameraSource` (en ny instans per ViewModel) och `BirdClassifier` (singleton — får `close()` i `onCleared`).
+- **`ScanViewModel`-pipeline:** `MutableSharedFlow(replay=0, extraBufferCapacity=1, BufferOverflow.DROP_OLDEST)` som drop-oldest-frame-sink + `MutableStateFlow<Long>`-period + `flatMapLatest { period -> if (throttling && period > 0L) frameSink.sample(period) else frameSink }` så perioden går från 333ms (3 fps) till 666ms (1.5 fps) automatiskt när p95-latens > 333ms (deklareras `isThrottled` i Scanning-state). `Channel(CONFLATED)` blev refaktorerad till `MutableSharedFlow` eftersom Channel inte kan recolectas över `flatMapLatest`-restarts.
+- **`onCleared` cleanup:** `viewModelScope` är redan cancellerad när `onCleared` kör → använd `GlobalScope.launch(Dispatchers.Default + NonCancellable) { runCatching { src.stop() } }` för fire-and-forget teardown. `classifier.close()` kallas synkront.
+- **`expect`/`actual` Compose-seam:** `CameraPreviewHost(cameraSource, modifier)` + `ScanScreenHost(graph, onPhotoAnalyzeClick, onFrozen)`. Android-actual för `CameraPreviewHost` är `Box(modifier.fillMaxSize().background(Color.Black))` idag (Task 6); riktig `PreviewView` wires upp i Task 7 via `AndroidView { PreviewView(it).also { ... } }`.
+- **Permission-handling (Android):** `rememberCameraPermissionState(context)` returnerar `CameraPermissionStatus.{Granted, Denied, NotAsked}`. `Denied` vs `NotAsked` disambigueras via `ActivityCompat.shouldShowRequestPermissionRationale(activity, ...)`. `DisposableEffect(lifecycleOwner) { LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) statusState.value = computeStatus(context) } }` så när användaren returnerar från Inställningar uppdateras UI:t direkt.
+- **Tap-to-freeze:** `pointerInput(Unit) { awaitPointerEventScope { while(true) { if event.changes.any { it.pressed } → viewModel.onFreeze(captureJpeg(), persistFrame); break } } }`. `PointerInputScope` är själv en `CoroutineScope` så ingen extra `coroutineScope { ... }`-wrapper behövs.
+- **i18n-disciplin (etablerad i `e63d2fa`):** `ScanUiState.Error` bär en `ScanErrorKind`-enum istället för `String`-meddelande — UI-lagret kallar `stringResource` baserat på kind. Mönstret skalar till PhotoAnalyze + ClassificationResult i Tasks 8–9.
+
+**Task 6-reviewers' uppskjutna follow-ups (gör i Task 10 polish):**
+
+| Sev | Sak | Var |
+|---|---|---|
+| Important #1 | Inlined `Color(0xFF...)`-hexliteraler — ersätt med tokens från `ui/theme/Color.kt` | `ScanScreen.kt:96,113,126,139`, `TopChip.kt:43,55,59,62,66`, `Crosshair.kt:16-17` |
+| Minor #3 | "Analysera ett foto"-knappen kan dubbelnavigera under FrozenAt | `ScanScreen.kt:97-99` |
+| Minor #4 | JPEG-capture-placeholder läcker `Bitmap` (1×1 svart) — fixas i Task 7 när riktig frame-bytes ersätter | `ScanScreenHost.android.kt:46-52` |
+| Minor #5 | `cacheDir` (scan-frames) städas aldrig | `ScanScreenHost.android.kt:37` (skapande) — Task 10 lägger till purge-strategi |
+
+Important #2 (i18n) ✅ klar i `e63d2fa` — 7 hardcodade SV-strängar + ViewModel-error-literalen flyttade till `composeResources/values{,-en}/strings.xml`.
+
+**Etablerade mönster värda att återanvända i Plan 4b (real TFLite) + Plan 5+:**
+
+- **`expect`/`actual` Compose-seam.** Vill man ha en Android-only Composable utan att bryta common-koden, exponera den som `@Composable expect fun X(...)` + actual i androidMain. Bättre än `if (Platform == ANDROID)`-checkar.
+- **Drop-oldest-flow för frames.** `MutableSharedFlow(replay=0, extraBufferCapacity=1, DROP_OLDEST)` är rätt mekanism för "snabb producent, långsam konsument" där man bara vill bearbeta senaste värdet. `Channel(CONFLATED)` har samma semantik men kan inte recolectas över `flatMapLatest`.
+- **Dynamisk sample-rate via `MutableStateFlow<Long>` + `flatMapLatest`.** `Flow.sample(period)` fångar perioden vid construction → ändringar tar inte effekt. Wrap perioden i `MutableStateFlow` och rebuild-pipelinen via `flatMapLatest { period -> upstream.sample(period) }` för dynamisk justering.
+- **`GlobalScope + NonCancellable + Dispatchers.Default` i `onCleared()`.** `viewModelScope` är cancellerad när onCleared kör. Använd GlobalScope-undantaget här (inte överallt) för att städa native-resurser (kamera, modeller, filhandtag).
+- **`ScanErrorKind`-enum istället för String-error.** ViewModel ska inte känna till lokaliserade strängar. Skicka stable error-kind/sentinel; UI-lager mapper till `stringResource`.
+
+**Pending efter Task 6 (just nu):**
+
+- ➡️ **Task 7 — AndroidCameraSource.** Plan-rad 1739–2150 (ungefär). Wire CameraX `ImageAnalysis` (3 fps target via `STRATEGY_KEEP_ONLY_LATEST`) → `ImageInput` + `ImageCapture.takePicture` för JPEG-bytes. Ersätter `ScanScreenHost.android.kt`'s 1×1-svart placeholder.
+- 📦 **Task 7-deps:** `androidx.camera:camera-camera2` + `:camera-lifecycle` + `:camera-view` (alla 1.4.0+). Lägg till i `gradle/libs.versions.toml` + `composeApp/build.gradle.kts:dependencies { androidMain.implementation(...) }`.
+- 🐛 **Verify on device:** SM-S918B är redan auktoriserad. Efter Task 7 = riktig live-preview + frames flödar in i pipelinen → top-chip ska visa fake-predictions från `FakeBirdClassifier`.
+
+
 
 Plan: `docs/superpowers/plans/2026-05-04-v1-03-encyclopedia.md`. Spec: `docs/superpowers/specs/2026-05-04-encyclopedia-design.md`. Alla 11 tasks committade. Milstolpe: `v0.3.0-encyclopedia`.
 
