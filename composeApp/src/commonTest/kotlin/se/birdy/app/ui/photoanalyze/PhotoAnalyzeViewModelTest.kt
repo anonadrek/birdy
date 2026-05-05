@@ -114,4 +114,22 @@ class PhotoAnalyzeViewModelTest {
                 cancelAndIgnoreRemainingEvents()
             }
         }
+
+    @Test
+    fun decode_failed_emits_decode_failure_error() =
+        runTest(dispatcher) {
+            val vm =
+                PhotoAnalyzeViewModel(
+                    classifier = FakeBirdClassifier(),
+                    persist = { _ -> "ignored" },
+                )
+            vm.state.test {
+                assertEquals(PhotoAnalyzeUiState.Idle, awaitItem())
+                vm.decodeFailed()
+                val err = awaitItem()
+                assertIs<PhotoAnalyzeUiState.Error>(err)
+                assertEquals(PhotoAnalyzeUiState.Error.Kind.DecodeFailure, err.kind)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
 }

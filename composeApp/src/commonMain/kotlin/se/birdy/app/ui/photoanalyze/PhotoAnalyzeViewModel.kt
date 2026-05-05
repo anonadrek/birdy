@@ -2,6 +2,7 @@ package se.birdy.app.ui.photoanalyze
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -27,6 +28,7 @@ class PhotoAnalyzeViewModel(
         viewModelScope.launch {
             val classification =
                 runCatching { classifier.classify(frame) }
+                    .onFailure { if (it is CancellationException) throw it }
                     .getOrElse {
                         _state.value =
                             PhotoAnalyzeUiState.Error(
@@ -36,6 +38,7 @@ class PhotoAnalyzeViewModel(
                     }
             val path =
                 runCatching { persist(frame.bytes) }
+                    .onFailure { if (it is CancellationException) throw it }
                     .getOrElse {
                         _state.value =
                             PhotoAnalyzeUiState.Error(
@@ -49,6 +52,14 @@ class PhotoAnalyzeViewModel(
                     frameJpegPath = path,
                 )
         }
+    }
+
+    fun markAnalyzing() {
+        _state.value = PhotoAnalyzeUiState.Analyzing
+    }
+
+    fun decodeFailed() {
+        _state.value = PhotoAnalyzeUiState.Error(PhotoAnalyzeUiState.Error.Kind.DecodeFailure)
     }
 
     fun reset() {
