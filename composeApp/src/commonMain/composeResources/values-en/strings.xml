@@ -44,4 +44,14 @@
     <string name="section_others">Others</string>
 
     <string name="loading">Loading…</string>
+
+    <string name="scan_top1_searching">searching…</string>
+    <string name="scan_freeze_hint">TAP ANYWHERE TO FREEZE</string>
+    <string name="scan_photo_analyze">Analyze a photo</string>
+    <string name="scan_permission_required_body">Birdy needs camera access to scan birds.</string>
+    <string name="scan_permission_allow">Allow camera</string>
+    <string name="scan_permission_denied_body">Camera is blocked. Enable in settings to scan.</string>
+    <string name="scan_permission_open_settings">Open settings</string>
+    <string name="scan_error_classifier_failed">Classifier failed repeatedly.</string>
+    <string name="scan_throttle_indicator">1.5 fps</string>
 </resources>

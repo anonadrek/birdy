@@ -55,4 +55,15 @@
 
     <!-- Loading -->
     <string name="loading">Laddar…</string>
+
+    <!-- Scan screen -->
+    <string name="scan_top1_searching">söker…</string>
+    <string name="scan_freeze_hint">TRYCK VAR SOM HELST FÖR ATT FRYSA</string>
+    <string name="scan_photo_analyze">Analysera ett foto</string>
+    <string name="scan_permission_required_body">Birdy behöver tillgång till kameran för att skanna fåglar.</string>
+    <string name="scan_permission_allow">Tillåt kamera</string>
+    <string name="scan_permission_denied_body">Kameran är blockerad. Aktivera i inställningar för att skanna.</string>
+    <string name="scan_permission_open_settings">Öppna inställningar</string>
+    <string name="scan_error_classifier_failed">Klassificeraren misslyckades upprepade gånger</string>
+    <string name="scan_throttle_indicator">1.5 fps</string>
 </resources>

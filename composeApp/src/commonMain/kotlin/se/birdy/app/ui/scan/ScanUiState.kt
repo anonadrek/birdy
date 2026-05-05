@@ -21,6 +21,10 @@ sealed interface ScanUiState {
     ) : ScanUiState
 
     data class Error(
-        val message: String,
+        val kind: ScanErrorKind,
     ) : ScanUiState
+}
+
+enum class ScanErrorKind {
+    ClassifierFailed,
 }

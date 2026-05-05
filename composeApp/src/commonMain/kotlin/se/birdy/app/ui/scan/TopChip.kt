@@ -21,6 +21,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.scan_throttle_indicator
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun TopChip(
@@ -63,7 +66,7 @@ fun TopChip(
         }
         if (isThrottled) {
             Spacer(modifier = Modifier.width(4.dp))
-            Text(text = "1.5 fps", color = Color(0xFF5C6E48))
+            Text(text = stringResource(Res.string.scan_throttle_indicator), color = Color(0xFF5C6E48))
         }
     }
 }

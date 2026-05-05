@@ -93,7 +93,7 @@ class ScanViewModel(
                 .onFailure { consecutiveErrors += 1 }
                 .getOrNull()
         if (consecutiveErrors > 5) {
-            _state.value = ScanUiState.Error("Klassificeraren misslyckades upprepade gånger")
+            _state.value = ScanUiState.Error(ScanErrorKind.ClassifierFailed)
             return
         }
         if (result == null) return

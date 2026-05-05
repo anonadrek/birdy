@@ -19,6 +19,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.scan_error_classifier_failed
+import birdy_bird_scanner.composeapp.generated.resources.scan_freeze_hint
+import birdy_bird_scanner.composeapp.generated.resources.scan_permission_allow
+import birdy_bird_scanner.composeapp.generated.resources.scan_permission_denied_body
+import birdy_bird_scanner.composeapp.generated.resources.scan_permission_open_settings
+import birdy_bird_scanner.composeapp.generated.resources.scan_permission_required_body
+import birdy_bird_scanner.composeapp.generated.resources.scan_photo_analyze
+import birdy_bird_scanner.composeapp.generated.resources.scan_top1_searching
+import org.jetbrains.compose.resources.stringResource
 import se.birdy.ml.CameraSource
 
 @Composable
@@ -50,7 +60,7 @@ fun ScanScreen(
         when (val s = state) {
             is ScanUiState.PermissionRequired -> PermissionRequiredView(onAllow = onPermissionRequest)
             is ScanUiState.PermissionDenied -> PermissionDeniedView(onOpenSettings = onOpenSettings)
-            is ScanUiState.Error -> ErrorView(s.message)
+            is ScanUiState.Error -> ErrorView(s.kind)
             else -> {
                 CameraPreviewHost(cameraSource = cameraSource, modifier = Modifier.fillMaxSize())
                 Crosshair(
@@ -74,7 +84,7 @@ fun ScanScreen(
                 )
                 if (s is ScanUiState.Scanning) {
                     val pct = s.top1?.confidence?.let { (it * 100).toInt() }
-                    val name = s.top1?.speciesId ?: "söker…"
+                    val name = s.top1?.speciesId ?: stringResource(Res.string.scan_top1_searching)
                     TopChip(
                         speciesName = name,
                         confidencePct = pct,
@@ -93,9 +103,9 @@ fun ScanScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
-                    Text(text = "TRYCK VAR SOM HELST FÖR ATT FRYSA", color = Color(0xFFF0EAD8))
+                    Text(text = stringResource(Res.string.scan_freeze_hint), color = Color(0xFFF0EAD8))
                     OutlinedButton(onClick = onPhotoAnalyzeClick) {
-                        Text("Analysera ett foto")
+                        Text(stringResource(Res.string.scan_photo_analyze))
                     }
                 }
             }
@@ -110,9 +120,9 @@ private fun PermissionRequiredView(onAllow: () -> Unit) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text("Birdy behöver tillgång till kameran för att skanna fåglar.", color = Color(0xFFF0EAD8))
+        Text(stringResource(Res.string.scan_permission_required_body), color = Color(0xFFF0EAD8))
         Box(modifier = Modifier.size(16.dp))
-        Button(onClick = onAllow) { Text("Tillåt kamera") }
+        Button(onClick = onAllow) { Text(stringResource(Res.string.scan_permission_allow)) }
     }
 }
 
@@ -123,14 +133,18 @@ private fun PermissionDeniedView(onOpenSettings: () -> Unit) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text("Kameran är blockerad. Aktivera i inställningar för att skanna.", color = Color(0xFFF0EAD8))
+        Text(stringResource(Res.string.scan_permission_denied_body), color = Color(0xFFF0EAD8))
         Box(modifier = Modifier.size(16.dp))
-        Button(onClick = onOpenSettings) { Text("Öppna inställningar") }
+        Button(onClick = onOpenSettings) { Text(stringResource(Res.string.scan_permission_open_settings)) }
     }
 }
 
 @Composable
-private fun ErrorView(message: String) {
+private fun ErrorView(kind: ScanErrorKind) {
+    val message =
+        when (kind) {
+            ScanErrorKind.ClassifierFailed -> stringResource(Res.string.scan_error_classifier_failed)
+        }
     Column(
         modifier = Modifier.fillMaxSize().padding(24.dp),
         verticalArrangement = Arrangement.Center,
