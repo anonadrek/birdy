@@ -55,6 +55,14 @@
     <string name="photo_error_io">Could not save the image.</string>
     <string name="photo_retry">Try again</string>
 
+    <!-- Result screen -->
+    <string name="result_your_scan">your scan</string>
+    <string name="result_unresolved_count">%1$d suggestion(s) could not be resolved</string>
+    <string name="result_save_observation">Save as observation</string>
+    <string name="result_save_hint">Saved in Plan 5</string>
+    <string name="result_no_predictions">No predictions to show.</string>
+    <string name="result_no_matches">No species matched the database.</string>
+
     <string name="scan_top1_searching">searching…</string>
     <string name="scan_freeze_hint">TAP ANYWHERE TO FREEZE</string>
     <string name="scan_photo_analyze">Analyze a photo</string>

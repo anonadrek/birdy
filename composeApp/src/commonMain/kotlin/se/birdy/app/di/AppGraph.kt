@@ -3,6 +3,7 @@ package se.birdy.app.di
 import se.birdy.app.ui.encyclopedia.EncyclopediaViewModel
 import se.birdy.app.ui.photoanalyze.PhotoAnalyzeViewModel
 import se.birdy.app.ui.profile.SpeciesProfileViewModel
+import se.birdy.app.ui.result.ClassificationResultViewModel
 import se.birdy.app.ui.scan.ScanViewModel
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
@@ -29,4 +30,15 @@ class AppGraph(
 
     fun photoAnalyzeViewModel(persist: (ByteArray) -> String): PhotoAnalyzeViewModel =
         PhotoAnalyzeViewModel(classifier = classifier, persist = persist)
+
+    fun classificationResultViewModel(
+        predictionsCsv: String,
+        frameJpegPath: String?,
+    ): ClassificationResultViewModel =
+        ClassificationResultViewModel(
+            repository = repository,
+            predictionsCsv = predictionsCsv,
+            frameJpegPath = frameJpegPath,
+            locale = defaultLocale,
+        )
 }
