@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-05):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 97/700, nästa familj = anatidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). **Plan 4a 🟡 PÅGÅR — Tasks 1–6 ✅ (senast `e63d2fa`); nästa = Task 7 (AndroidCameraSource — CameraX 3 fps + JPEG capture).** Plan 4b deferrad (separat brainstorm).
+**Status (2026-05-05):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 97/700, nästa familj = anatidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). **Plan 4a 🟡 PÅGÅR — Tasks 1–7 ✅ device-verified på SM-S918B; nästa = Task 8 (PhotoAnalyzeViewModel).** Plan 4b deferrad (separat brainstorm).
 
 ## Var hittar du saker
 
@@ -28,7 +28,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | 2a | Content pipeline + walking skeleton (5 arter) | ✅ `v0.2.0a-pipeline` |
 | 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 97/700 (alaudidae `d945e1f`) |
 | 3 | Encyclopedia (browse + species profile) | ✅ `v0.3.0-encyclopedia` |
-| 4a | ML & Camera UI (FakeClassifier + UI + CameraX 3 fps) | 🟡 Tasks 1–6 ✅; nästa = Task 7 |
+| 4a | ML & Camera UI (FakeClassifier + UI + CameraX 3 fps) | 🟡 Tasks 1–7 ✅ device-verified; nästa = Task 8 |
 | 4b | Real TFLite-modell | ⏸ separat brainstorm senare |
 | 5 | Diary & Gamification | |
 | 6 | i18n, polish, Play Store-release | |
@@ -137,7 +137,7 @@ GitHub: https://github.com/anonadrek/birdy. Branch: `main` är default; plan-arb
 
 Plan: `docs/superpowers/plans/2026-05-05-v1-04a-camera-ui.md`. Spec: `docs/superpowers/specs/2026-05-05-plan-4a-ml-camera-design.md`. Workflow: `superpowers:subagent-driven-development`. Plan 4b (real TFLite) deferrad.
 
-**Branch + working tree:** `main`, 13 commits ahead of origin (osynkroniserade). Working tree clean. Senaste commit = `2888c72` (denna doc-uppdatering) ovanpå `e63d2fa` (i18n follow-up) ovanpå `79c3a3f` (Task 6).
+**Branch + working tree:** `main`, 16 commits ahead of origin (osynkroniserade). Working tree clean. Senaste commit = `727d4e0` (Task 7 review-fix) ovanpå `457ef6d` (Task 7 impl) ovanpå `6e2610e` (CLAUDE.md tightening). Device-verify på SM-S918B pending innan push.
 
 | # | Task | Status | Commit |
 |---|---|---|---|
@@ -147,12 +147,12 @@ Plan: `docs/superpowers/plans/2026-05-05-v1-04a-camera-ui.md`. Spec: `docs/super
 | 4 | Camera permission helper (JIT + ON_RESUME-recheck) | ✅ | `2202907` |
 | 5 | `ScanViewModel` + `MutableSharedFlow(DROP_OLDEST)` + auto-throttle + `FakeCameraSource` | ✅ | `71668ee` (impl), `68476cc` (review-fix) |
 | 6 | ScanScreen UI variant C — top-chip + crosshair + tap-to-freeze | ✅ | `79c3a3f` (impl), `e63d2fa` (i18n) |
-| 7 | AndroidCameraSource — CameraX 3 fps `ImageAnalysis` + `ImageCapture.takePicture` | ⬜ | _next_ |
-| 8 | `PhotoAnalyzeViewModel` + screen + Android host (gallerival → klassificera) | ⬜ | |
+| 7 | AndroidCameraSource — CameraX 3 fps `ImageAnalysis` + `lastJpegBytes()` capture | 🟡 code | `457ef6d` (impl), `727d4e0` (race-fix); device-verify pending |
+| 8 | `PhotoAnalyzeViewModel` + screen + Android host (gallerival → klassificera) | ⬜ | _next_ |
 | 9 | `ClassificationResultScreen` + ViewModel (variant A — top-3 + freeze-frame) | ⬜ | |
 | 10 | Polish — theme tokens, cache cleanup, CI green, screenshots, tag `v0.4.0a-ml-camera` | ⬜ | |
 
-**Låst arkitektur (Tasks 1–6 — utförlig version i auto-memory `project_plan_4a_status.md`):**
+**Låst arkitektur (Tasks 1–7 — utförlig version i auto-memory `project_plan_4a_status.md`):**
 
 - `BirdClassifier`/`CameraSource`-interfaces i `shared/ml/commonMain`. `FakeBirdClassifier` är "production of record" i 4a; Plan 4b byter implementation utan att röra UI/VM.
 - Frame-pipeline: `MutableSharedFlow(replay=0, extraBufferCapacity=1, DROP_OLDEST)` + `MutableStateFlow<Long>`-period + `flatMapLatest { period -> sink.sample(period) }` ger dynamisk auto-throttle. `Channel(CONFLATED)` fungerade inte — kan inte recolectas över `flatMapLatest`-restarts.
@@ -160,13 +160,19 @@ Plan: `docs/superpowers/plans/2026-05-05-v1-04a-camera-ui.md`. Spec: `docs/super
 - Compose-seam för Android-only Composables: `@Composable expect fun X(...)` + actual i androidMain (`CameraPreviewHost`, `ScanScreenHost`).
 - Permission-disambiguering: `ActivityCompat.shouldShowRequestPermissionRationale(activity, ...)` skiljer Denied vs NotAsked. `DisposableEffect` + `LifecycleEventObserver(ON_RESUME)` re-checkar när användaren returnerar från Inställningar.
 - i18n-disciplin (`e63d2fa`): `ScanUiState.Error` carryar `ScanErrorKind`-enum, inte `String` — UI-lager mapper till `stringResource`. ViewModel förblir Composable-context-fri.
+- **CameraX gate-on-StateFlow (`727d4e0`):** `AndroidCameraSource` håller `ImageAnalysis` i `MutableStateFlow<ImageAnalysis?>(null)`. `frames()`-callbackFlow suspendar på `analysisFlow.filterNotNull().first()` för att fånga use-casen som lokal innan `setAnalyzer(...)` + `awaitClose { local.clearAnalyzer() }`. Eliminerar dispatch-race där `frames().collect` annars vinner mot `start()` (som suspendar i `ProcessCameraProvider.getInstance(...)`'s `ListenableFuture`). Captured-local pattern undviker även symmetric race mot `stop()`.
 
-**Task 7 startpunkt:**
-1. `git status` clean; `git log --oneline -3` ska visa `2888c72` överst.
-2. Läs Task 7-specen i plan-doc (sök `## Task 7`).
-3. Lås CameraX vid 1.4.0 (eller senaste 1.4.x). Lägg till `androidx.camera:camera-camera2 / -lifecycle / -view` i `gradle/libs.versions.toml` + `composeApp/build.gradle.kts:dependencies { androidMain.implementation(...) }`.
-4. Wire CameraX `ImageAnalysis` (`STRATEGY_KEEP_ONLY_LATEST`) → `ImageInput` + `ImageCapture.takePicture` för JPEG-bytes; ersätter 1×1-svart placeholder i `ScanScreenHost.android.kt`.
-5. Device-verify på SM-S918B = obligatoriskt slutsteg innan task-commit. Top-chip ska visa fake-predictions från `FakeBirdClassifier` på live preview.
+**Task 7 device-verify checklist (gör innan push):**
+1. Plug in SM-S918B + bekräfta `adb devices` listar enheten.
+2. `./gradlew :androidApp:installDebug` (med JAVA_HOME-prefix) + starta appen via adb shell `am start`.
+3. Verifiera:
+   - Riktig kamerafeed renderar (FILL_CENTER fyller hela ytan).
+   - Top-chip uppdateras med fake-predictions; cyklar genom 6 entries (5 species + Q_LOW).
+   - Tap → frozen → nav till result-placeholder (Task 9 wirar real ResultScreen).
+   - Inga krasher; LogCat `ImageAnalysis`-framerate ~3 fps.
+4. Om OK: push 16 commits till origin (`git push`). Annars: rapportera repro + dispatcha fix-subagent.
+
+**Task 8 startpunkt** (after device-verify): Läs Task 8-spec i plan-doc (rad 2075). PhotoAnalyzeViewModel + screen + Android host för gallerival → klassificera-flow.
 
 **Uppskjutna follow-ups från Task 6-review (gör i Task 10 polish):**
 
