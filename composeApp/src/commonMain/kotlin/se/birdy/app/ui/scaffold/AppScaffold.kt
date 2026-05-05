@@ -36,7 +36,14 @@ fun AppScaffold(graph: AppGraph) {
                 )
             }
             composable<AppRoute.PhotoAnalyze> {
-                Text("PhotoAnalyzeScreen — placeholder (Task 8)")
+                se.birdy.app.ui.photoanalyze.PhotoAnalyzeHost(
+                    graph = graph,
+                    onLoaded = { csv, path ->
+                        navController.navigate(AppRoute.ClassificationResult(csv, path)) {
+                            popUpTo(AppRoute.Scan) { inclusive = false }
+                        }
+                    },
+                )
             }
             composable<AppRoute.ClassificationResult> { entry ->
                 val route = entry.toRoute<AppRoute.ClassificationResult>()

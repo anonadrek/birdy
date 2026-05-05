@@ -56,6 +56,17 @@
     <!-- Loading -->
     <string name="loading">Laddar…</string>
 
+    <!-- Photo analyze screen -->
+    <string name="photo_pick_from_gallery">Välj från galleri</string>
+    <string name="photo_take_photo">Ta foto</string>
+    <string name="photo_analyzing">Analyserar foto…</string>
+    <string name="photo_loaded_navigating">Klar — navigerar…</string>
+    <string name="photo_error_too_small">Bilden är för liten.</string>
+    <string name="photo_error_decode">Kunde inte läsa bilden.</string>
+    <string name="photo_error_classifier">Klassificeraren misslyckades.</string>
+    <string name="photo_error_io">Kunde inte spara bilden.</string>
+    <string name="photo_retry">Försök igen</string>
+
     <!-- Scan screen -->
     <string name="scan_top1_searching">söker…</string>
     <string name="scan_freeze_hint">TRYCK VAR SOM HELST FÖR ATT FRYSA</string>

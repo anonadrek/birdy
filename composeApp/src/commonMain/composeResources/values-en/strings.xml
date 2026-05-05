@@ -45,6 +45,16 @@
 
     <string name="loading">Loading…</string>
 
+    <string name="photo_pick_from_gallery">Pick from gallery</string>
+    <string name="photo_take_photo">Take photo</string>
+    <string name="photo_analyzing">Analyzing photo…</string>
+    <string name="photo_loaded_navigating">Done — navigating…</string>
+    <string name="photo_error_too_small">The image is too small.</string>
+    <string name="photo_error_decode">Could not read the image.</string>
+    <string name="photo_error_classifier">The classifier failed.</string>
+    <string name="photo_error_io">Could not save the image.</string>
+    <string name="photo_retry">Try again</string>
+
     <string name="scan_top1_searching">searching…</string>
     <string name="scan_freeze_hint">TAP ANYWHERE TO FREEZE</string>
     <string name="scan_photo_analyze">Analyze a photo</string>
