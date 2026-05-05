@@ -14,13 +14,12 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SpeciesRepositoryProvider.init(applicationContext)
-        val activity = this@MainActivity
         val graph =
             AppGraph(
                 repository = SpeciesRepositoryProvider.get(),
                 classifier = FakeBirdClassifier(),
                 cameraSourceFactory = {
-                    AndroidCameraSource(applicationContext, activity)
+                    AndroidCameraSource(applicationContext, this@MainActivity)
                 },
                 defaultLocale = Locale.SV,
             )

@@ -13,6 +13,8 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.suspendCancellableCoroutine
 import se.birdy.ml.CameraSource
 import se.birdy.ml.FrameFormat
@@ -27,7 +29,7 @@ class AndroidCameraSource(
 ) : CameraSource {
     private val executor = Executors.newSingleThreadExecutor()
     private var cameraProvider: ProcessCameraProvider? = null
-    private var imageAnalysis: ImageAnalysis? = null
+    private val analysisFlow = MutableStateFlow<ImageAnalysis?>(null)
     private val lastJpeg = MutableStateFlow<ByteArray?>(null)
     val previewUseCase: Preview = Preview.Builder().build()
 
@@ -55,13 +57,14 @@ class AndroidCameraSource(
                             ),
                         )
                     } catch (t: Throwable) {
-                        // log + drop (no logger wired in shared/ml; OK to swallow for now)
+                        // per-frame errors dropped; ScanViewModel handles persistent failures
                     } finally {
                         proxy.close()
                     }
                 }
-            imageAnalysis?.setAnalyzer(executor, analyzer)
-            awaitClose { imageAnalysis?.clearAnalyzer() }
+            val analysis = analysisFlow.filterNotNull().first()
+            analysis.setAnalyzer(executor, analyzer)
+            awaitClose { analysis.clearAnalyzer() }
         }
 
     override suspend fun start() {
@@ -71,7 +74,7 @@ class AndroidCameraSource(
                 .Builder()
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build()
-        this.imageAnalysis = analysis
+        analysisFlow.value = analysis
         val selector = CameraSelector.DEFAULT_BACK_CAMERA
         provider.unbindAll()
         provider.bindToLifecycle(lifecycleOwner, selector, previewUseCase, analysis)
@@ -80,8 +83,8 @@ class AndroidCameraSource(
 
     override suspend fun stop() {
         cameraProvider?.unbindAll()
-        imageAnalysis?.clearAnalyzer()
-        imageAnalysis = null
+        analysisFlow.value?.clearAnalyzer()
+        analysisFlow.value = null
     }
 
     private suspend fun awaitProvider(): ProcessCameraProvider =
