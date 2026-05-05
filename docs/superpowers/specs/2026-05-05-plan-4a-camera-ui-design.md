@@ -14,7 +14,7 @@ Plan 4 i v1-specen är "ML & Camera": realtidsskanning + foto-upload + klassifik
 
 För att låta UI-arbetet röra sig utan att blockeras på modellval splittas Plan 4 i två:
 
-- **Plan 4a (denna spec):** Bygger hela UI-stacken — LiveScanScreen, PhotoAnalyzeScreen, ClassificationResultScreen, app-navigations-graf — mot en `BirdClassifier`-interface med en `FakeBirdClassifier`-implementation som production-of-record. Wirar CameraX för riktiga frames. Wirar systemets gallery-picker + kamera-launcher för foto-upload. Levererar ett kö rbart "demoläge" där modellen är fejk men allting annat (kamera, navigation, freeze-flow, top-3-rendering, sparse-handling) är riktigt.
+- **Plan 4a (denna spec):** Bygger hela UI-stacken — LiveScanScreen, PhotoAnalyzeScreen, ClassificationResultScreen, app-navigations-graf — mot en `BirdClassifier`-interface med en `FakeBirdClassifier`-implementation som production-of-record. Wirar CameraX för riktiga frames. Wirar systemets gallery-picker + kamera-launcher för foto-upload. Levererar ett körbart "demoläge" där modellen är fejk men allting annat (kamera, navigation, freeze-flow, top-3-rendering, sparse-handling) är riktigt.
 - **Plan 4b (separat brainstorm + spec senare):** Plockar in en riktig modell (sannolikt iNaturalist-vision pre-trained → optionellt finetune på svenska arter) bakom samma `BirdClassifier`-interface. Hanterar label-mapping till Q-IDs. Inga ändringar i ViewModels, screens, eller nav-graf — bara `AppGraph`-bindningen byter implementation.
 
 **Plan 4a är klar när:**
@@ -207,11 +207,11 @@ Utöka `AppRoute`:
 @Serializable data object PhotoAnalyze : AppRoute
 @Serializable data class ClassificationResult(
     val predictionsCsv: String,                   // "Q25485:0.87,Q25234:0.08,Q25404:0.05"
-    val frameJpegPath: String?,                   // null för PhotoAnalyze (vi använder originalfoto)
+    val frameJpegPath: String?,                   // alltid satt i happy-path (live-scan: cacheDir/scan-frames/; photo: cacheDir/photo-input/)
 ) : AppRoute
 ```
 
-CSV-formatet är simpelt + diff-vänligt; max-storlek (5 predictions × ~12 chars = 60 chars) är långt under nav-args storleksbegränsning. `frameJpegPath` är en `file://`-path under `cacheDir/scan-frames/`; null tolereras (PhotoAnalyzeFlow visar inget frozen-frame eftersom användarens originalfoto redan finns i Loaded-state).
+CSV-formatet är simpelt + diff-vänligt; max-storlek (5 predictions × ~12 chars = 60 chars) är långt under nav-args storleksbegränsning. `frameJpegPath` är en `file://`-path under `cacheDir/`-subkatalog beroende på källa (`scan-frames/` för live-scan, `photo-input/` för foto-upload). Typen är nullable bara som säkerhetsnät om cacheDir-write skulle misslyckas — i normalfallet alltid satt så ResultScreen kan rendera frozen-frame-bannern oavsett källa.
 
 `AppScaffold` byter default-flik till `Scan` (var Encyclopedia i Plan 3). Encyclopedia-fliken är fortfarande nåbar via bottom-nav.
 
@@ -274,8 +274,9 @@ viewModelScope.launch {
 4. Klick på en av dem launchar `ActivityResultContracts.PickVisualMedia` eller `ActivityResultContracts.TakePicture`.
 5. På callback: `viewModel.analyze(uri, contentResolver)`.
 6. ViewModel: läser bytes via `contentResolver.openInputStream(uri)`, decodar med `BitmapFactory`, downscalar till 1024px-långsida, EXIF-rotation respekteras, encoding tillbaka till JPEG ByteArray, packar `Frame(bytes, w, h, JPEG, now)`, kallar `classifier.classify(frame)`.
-7. På success: nav.navigate(`ClassificationResult(predictionsCsv, frameJpegPath = pathTillUserFoto)`). frameJpegPath kan vara den downscaled-versionen eller null (vi visar originalfotot ändå i ResultScreen — det är användarens foto). Vi spar downscaled-versionen i cacheDir.
-8. På fail: `Error(PhotoTooSmall|DecodeFailure|...)`.
+7. ViewModel skriver downscaled JPEG till `cacheDir/photo-input/${UUID}.jpg` och får tillbaka pathen.
+8. På success: nav.navigate(`ClassificationResult(predictionsCsv, frameJpegPath = downscaledPath)`). ResultScreen visar samma frozen-frame-banner som live-scan-flödet.
+9. På fail: `Error(PhotoTooSmall|DecodeFailure|...)`.
 
 ### 4.7 `ClassificationResultScreen` + `ViewModel`
 
@@ -386,10 +387,10 @@ nav.navigate(ClassificationResult(predictionsCsv, frameJpegPath))
 
 ### 5.4 Cache-cleanup
 
-`scan-frames/`-katalogen kan växa. Två mekanismer:
+`scan-frames/`- och `photo-input/`-katalogerna kan växa. Två mekanismer:
 
 1. **DisposableEffect onDispose** i ClassificationResultScreen: när användaren navigerar bort raderas just denna `frameJpegPath`.
-2. **AppGraph-init safety-net pass:** `MainActivity.onCreate` raderar alla filer i `cacheDir/scan-frames/` äldre än 1h. Idempotent; körs alltid.
+2. **AppGraph-init safety-net pass:** `MainActivity.onCreate` raderar alla filer i `cacheDir/scan-frames/` + `cacheDir/photo-input/` äldre än 1h. Idempotent; körs alltid.
 
 ---
 
