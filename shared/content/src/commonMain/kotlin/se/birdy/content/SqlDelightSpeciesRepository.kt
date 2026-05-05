@@ -92,7 +92,7 @@ class SqlDelightSpeciesRepository(
         filters: SpeciesFilter,
     ): Flow<List<SpeciesSummary>> =
         db.speciesNameQueries
-            .searchByNameOrScientific(locale = locale.code, query = query, max = 200L)
+            .searchByNameOrScientific(locale = locale.code, query = query, max = Long.MAX_VALUE)
             .asFlow()
             .mapToList(Dispatchers.Default)
             .map { rows ->
@@ -138,7 +138,7 @@ class SqlDelightSpeciesRepository(
                                     .firstOrNull { it.role == "hero" }
                                     ?.path,
                         )
-                    }.take(50)
+                    }
             }
 
     override fun listByFamily(
