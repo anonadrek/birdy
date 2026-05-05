@@ -8,7 +8,9 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import se.birdy.app.testing.FakeCameraSource
+import se.birdy.ml.BirdClassifier
 import se.birdy.ml.FakeBirdClassifier
+import se.birdy.ml.ImageInput
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -32,7 +34,7 @@ class ScanViewModelTest {
                 ScanViewModel(
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { cameraSource },
-                    samplePeriodMs = 0L,
+                    frameThrottling = false,
                 )
             vm.onPermissionResult(granted = true)
             vm.state.test {
@@ -54,7 +56,7 @@ class ScanViewModelTest {
                 ScanViewModel(
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { cameraSource },
-                    samplePeriodMs = 0L,
+                    frameThrottling = false,
                 )
             vm.onPermissionResult(granted = true)
             vm.state.test {
@@ -79,7 +81,7 @@ class ScanViewModelTest {
                 ScanViewModel(
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { FakeCameraSource() },
-                    samplePeriodMs = 0L,
+                    frameThrottling = false,
                 )
             vm.state.test {
                 assertEquals(ScanUiState.PermissionRequired, awaitItem())
@@ -94,7 +96,7 @@ class ScanViewModelTest {
                 ScanViewModel(
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { FakeCameraSource() },
-                    samplePeriodMs = 0L,
+                    frameThrottling = false,
                 )
             vm.state.test {
                 assertEquals(ScanUiState.PermissionRequired, awaitItem())
@@ -112,7 +114,7 @@ class ScanViewModelTest {
                 ScanViewModel(
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { cameraSource },
-                    samplePeriodMs = 0L,
+                    frameThrottling = false,
                 )
             vm.onPermissionResult(granted = true)
             vm.state.test {
@@ -128,4 +130,44 @@ class ScanViewModelTest {
                 cancelAndIgnoreRemainingEvents()
             }
         }
+
+    @Test
+    fun auto_throttles_when_classifier_p95_above_threshold() =
+        runTest(dispatcher) {
+            val cameraSource = FakeCameraSource()
+            // Fake clock advances by 400ms per frame so p95 will exceed the 333ms threshold.
+            var fakeNow = 0L
+            val vm =
+                ScanViewModel(
+                    classifier = SlowClassifier(latencyMs = 400L),
+                    cameraSourceFactory = { cameraSource },
+                    frameThrottling = false,
+                    nowMillis = { fakeNow.also { fakeNow += 400L } },
+                )
+            vm.onPermissionResult(granted = true)
+            vm.state.test {
+                assertEquals(ScanUiState.Idle, awaitItem())
+                // Emit 10 frames to fill the rolling latency window.
+                repeat(10) { cameraSource.emit(timestampMillis = it.toLong()) }
+                var lastScanning: ScanUiState.Scanning? = null
+                repeat(10) {
+                    val s = awaitItem()
+                    assertIs<ScanUiState.Scanning>(s)
+                    lastScanning = s
+                }
+                assertEquals(true, lastScanning?.isThrottled, "isThrottled must be true when p95 > 333ms")
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+}
+
+/** Classifier that delegates to [FakeBirdClassifier] but reports high latency via injected clock. */
+private class SlowClassifier(
+    @Suppress("UNUSED_PARAMETER") val latencyMs: Long,
+) : BirdClassifier {
+    private val delegate = FakeBirdClassifier()
+
+    override suspend fun classify(image: ImageInput) = delegate.classify(image)
+
+    override fun close() {}
 }
