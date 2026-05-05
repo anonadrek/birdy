@@ -2,6 +2,7 @@ package se.birdy.app.ui.result
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -36,7 +37,8 @@ class ClassificationResultViewModel(
             val species =
                 runCatching {
                     repository.getById(SpeciesId(id), locale).first()
-                }.getOrNull()
+                }.onFailure { if (it is CancellationException) throw it }
+                    .getOrNull()
             if (species == null) {
                 unresolved += id
             } else {
@@ -48,7 +50,7 @@ class ClassificationResultViewModel(
             return
         }
         val top1 = resolved.first()
-        val runnerUps = resolved.drop(1)
+        val runnerUps = resolved.drop(1).take(2)
         _state.value =
             ClassificationResultUiState.Loaded(
                 top1 = top1,
@@ -66,6 +68,9 @@ class ClassificationResultViewModel(
             val confParts = parts[1].split("/")
             val numerator = confParts.getOrNull(0)?.toIntOrNull() ?: return@mapNotNull null
             val denominator = confParts.getOrNull(1)?.toIntOrNull() ?: 100
-            id to numerator.toFloat() / denominator.toFloat()
+            if (id.isBlank()) return@mapNotNull null
+            if (denominator <= 0 || numerator < 0) return@mapNotNull null
+            val conf = (numerator.toFloat() / denominator.toFloat()).coerceIn(0f, 1f)
+            id to conf
         }
 }

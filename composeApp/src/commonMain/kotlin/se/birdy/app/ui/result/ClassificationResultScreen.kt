@@ -95,7 +95,7 @@ private fun LoadedView(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                state.runnerUps.take(2).forEach { rp ->
+                state.runnerUps.forEach { rp ->
                     RunnerUpCard(
                         prediction = rp,
                         modifier = Modifier.weight(1f),
