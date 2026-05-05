@@ -2,6 +2,7 @@ package se.birdy.app.di
 
 import se.birdy.app.ui.encyclopedia.EncyclopediaViewModel
 import se.birdy.app.ui.profile.SpeciesProfileViewModel
+import se.birdy.app.ui.scan.ScanViewModel
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.content.SpeciesRepository
@@ -18,4 +19,10 @@ class AppGraph(
 
     fun speciesProfileViewModel(speciesId: SpeciesId): SpeciesProfileViewModel =
         SpeciesProfileViewModel(repository, speciesId, defaultLocale)
+
+    fun scanViewModel(): ScanViewModel =
+        ScanViewModel(
+            classifier = classifier,
+            cameraSourceFactory = cameraSourceFactory,
+        )
 }

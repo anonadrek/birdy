@@ -1,0 +1,131 @@
+package se.birdy.app.ui.scan
+
+import app.cash.turbine.test
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import se.birdy.app.testing.FakeCameraSource
+import se.birdy.ml.FakeBirdClassifier
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertIs
+import kotlin.test.assertTrue
+
+@OptIn(ExperimentalCoroutinesApi::class)
+class ScanViewModelTest {
+    private val dispatcher = UnconfinedTestDispatcher()
+
+    @BeforeTest fun before() = Dispatchers.setMain(dispatcher)
+
+    @AfterTest fun after() = Dispatchers.resetMain()
+
+    @Test
+    fun emits_scanning_with_top1_when_above_threshold() =
+        runTest(dispatcher) {
+            val cameraSource = FakeCameraSource()
+            val vm =
+                ScanViewModel(
+                    classifier = FakeBirdClassifier(),
+                    cameraSourceFactory = { cameraSource },
+                    samplePeriodMs = 0L,
+                )
+            vm.onPermissionResult(granted = true)
+            vm.state.test {
+                assertEquals(ScanUiState.Idle, awaitItem())
+                cameraSource.emit(timestampMillis = 1L)
+                val s = awaitItem()
+                assertIs<ScanUiState.Scanning>(s)
+                assertEquals("Q25485", s.top1?.speciesId)
+                assertTrue((s.top1?.confidence ?: 0f) >= 0.35f)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun emits_scanning_with_null_top1_when_below_threshold() =
+        runTest(dispatcher) {
+            val cameraSource = FakeCameraSource()
+            val vm =
+                ScanViewModel(
+                    classifier = FakeBirdClassifier(),
+                    cameraSourceFactory = { cameraSource },
+                    samplePeriodMs = 0L,
+                )
+            vm.onPermissionResult(granted = true)
+            vm.state.test {
+                assertEquals(ScanUiState.Idle, awaitItem())
+                // cycle indices 0..4 above threshold; index 5 = "Q_LOW" at 0.22 below
+                repeat(6) { cameraSource.emit(timestampMillis = it.toLong()) }
+                var sixth: ScanUiState.Scanning? = null
+                repeat(6) {
+                    val s = awaitItem()
+                    assertIs<ScanUiState.Scanning>(s)
+                    if (it == 5) sixth = s
+                }
+                assertEquals(null, sixth?.top1, "below-threshold prediction must surface as null top1")
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun emits_permission_required_when_not_granted_yet() =
+        runTest(dispatcher) {
+            val vm =
+                ScanViewModel(
+                    classifier = FakeBirdClassifier(),
+                    cameraSourceFactory = { FakeCameraSource() },
+                    samplePeriodMs = 0L,
+                )
+            vm.state.test {
+                assertEquals(ScanUiState.PermissionRequired, awaitItem())
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun emits_permission_denied_when_user_denies() =
+        runTest(dispatcher) {
+            val vm =
+                ScanViewModel(
+                    classifier = FakeBirdClassifier(),
+                    cameraSourceFactory = { FakeCameraSource() },
+                    samplePeriodMs = 0L,
+                )
+            vm.state.test {
+                assertEquals(ScanUiState.PermissionRequired, awaitItem())
+                vm.onPermissionResult(granted = false)
+                assertEquals(ScanUiState.PermissionDenied, awaitItem())
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun freeze_emits_frozen_at_with_path_and_predictions() =
+        runTest(dispatcher) {
+            val cameraSource = FakeCameraSource()
+            val vm =
+                ScanViewModel(
+                    classifier = FakeBirdClassifier(),
+                    cameraSourceFactory = { cameraSource },
+                    samplePeriodMs = 0L,
+                )
+            vm.onPermissionResult(granted = true)
+            vm.state.test {
+                assertEquals(ScanUiState.Idle, awaitItem())
+                cameraSource.emit(timestampMillis = 42L)
+                assertIs<ScanUiState.Scanning>(awaitItem())
+
+                vm.onFreeze(jpegBytes = byteArrayOf(1, 2, 3)) { _ -> "/cache/scan-frames/test.jpg" }
+                val frozen = awaitItem()
+                assertIs<ScanUiState.FrozenAt>(frozen)
+                assertEquals("/cache/scan-frames/test.jpg", frozen.frameJpegPath)
+                assertEquals("Q25485", frozen.predictions.firstOrNull()?.speciesId)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+}
