@@ -1,7 +1,5 @@
 package se.birdy.app.ui.scan
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -10,10 +8,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import se.birdy.app.di.AppGraph
 import se.birdy.app.permissions.CameraPermissionStatus
 import se.birdy.app.permissions.rememberCameraPermissionState
-import java.io.ByteArrayOutputStream
+import se.birdy.ml.camera.AndroidCameraSource
 import java.io.File
 import java.util.UUID
-import android.graphics.Color as AndroidColor
 
 @Composable
 actual fun ScanScreenHost(
@@ -44,11 +41,8 @@ actual fun ScanScreenHost(
         onPermissionRequest = { permission.launchRequest() },
         onOpenSettings = { permission.openAppSettings() },
         onCaptureJpeg = {
-            val bmp = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
-            Canvas(bmp).drawColor(AndroidColor.BLACK)
-            val baos = ByteArrayOutputStream()
-            bmp.compress(Bitmap.CompressFormat.JPEG, 90, baos)
-            baos.toByteArray()
+            val androidSource = cameraSource as? AndroidCameraSource
+            androidSource?.lastJpegBytes() ?: byteArrayOf()
         },
         persistFrame = { bytes ->
             val file = File(cacheDir, UUID.randomUUID().toString() + ".jpg")
