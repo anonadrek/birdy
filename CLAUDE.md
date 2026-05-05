@@ -1,12 +1,12 @@
 # Birdy Bird Scanner — arbetsguide för Claude Code
 
-> **Den här filen läses automatiskt av Claude Code i varje session.** Den ger sammanhang för vad projektet är, var du hittar saker, och hur vi arbetar tillsammans.
+> **Den här filen läses automatiskt av Claude Code i varje session.** Den ger sammanhang för projektet, var saker ligger, och hur vi arbetar.
 
 ## Vad är detta?
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-05):** Plan 1 (Foundation) ✅ klar (`v0.1.0-foundation`). Plan 2a (pipeline + walking skeleton) ✅ klar (`v0.2.0a-pipeline`). Plan 2b (family-by-family backfill) **PAUSAD** vid 97/700 (alaudidae `d945e1f`). **Plan 3 (Encyclopedia) ✅ klar** — alla 11 tasks committade, milstolpe `v0.3.0-encyclopedia`. Bottom-nav-skelett (4 flikar), encyclopedia-browse med sök + filter-bottom-sheet, species-profile med collapsing toolbar + sparse-data-fallbacks + Coil-bilder + hero-image som toolbar-bakgrund (`e3e2629`), i18n via compose-resources (sv + en). Två post-tag-fixar: hero-image-toolbar (`e3e2629`) och 50-art-cap-fix (`9011aae`). 6 av 7 device-verifierings-screenshots inne (`docs/superpowers/screenshots/2026-05-05-*.png` — saknar profile-sparse). **Plan 4a (FakeClassifier + UI + CameraX) PÅGÅR — Tasks 1–6 ✅ klara (senast `e63d2fa`); nästa = Task 7 (AndroidCameraSource — CameraX 3 fps + JPEG capture).** Plan 2b återupptas i samband med Plan 4a polish eller efter `v0.4.0-ml-camera`-tagg.
+**Status (2026-05-05):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 97/700, nästa familj = anatidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). **Plan 4a 🟡 PÅGÅR — Tasks 1–6 ✅ (senast `e63d2fa`); nästa = Task 7 (AndroidCameraSource — CameraX 3 fps + JPEG capture).** Plan 4b deferrad (separat brainstorm).
 
 ## Var hittar du saker
 
@@ -15,75 +15,47 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | Designspec för v1 | `docs/superpowers/specs/2026-04-30-birdy-bird-scanner-v1-design.md` |
 | Implementationsplaner | `docs/superpowers/plans/YYYY-MM-DD-v1-NN-<phase>.md` |
 | Skärmdumpar per milstolpe | `docs/superpowers/screenshots/` |
-| Milstolpe-review-runbook (5–6 parallella granskar-agenter) | `docs/superpowers/runbooks/milstolpe-review.md` |
-| Content-gaps (saknade beskrivningar — manuellt arbete efter Plan 2-5) | `docs/superpowers/runbooks/content-gaps.md` |
-| Visuellt språk (Mossbädd-paletten) | I auto-memory: `visual_language_birdy_v1.md`, sammanfattat nedan |
-| Den här guiden | `CLAUDE.md` (du läser den nu) |
-| Auto-memory (lokalt, inte i repo) | `~/.claude/projects/C--Users-.../memory/` |
+| Milstolpe-review-runbook | `docs/superpowers/runbooks/milstolpe-review.md` |
+| Plan 2b family-by-family-runbook | `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` |
+| Visuellt språk (Mossbädd) | sammanfattat nedan + auto-memory `visual_language_birdy_v1.md` |
+| Auto-memory (lokalt, inte i repo) | `~/.claude/projects/C--Users-abbea-dev-birdy-bird-scanner/memory/` |
 
 ## Plan-of-plans (v1)
 
 | # | Plan | Status |
 |---|---|---|
-| 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ Klar (`v0.1.0-foundation`) |
-| 2a | Content pipeline + walking skeleton (5 arter) | ✅ Klar (`v0.2.0a-pipeline`) |
-| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ PAUSAD vid 97/700 (alaudidae `d945e1f`); återupptas efter Plan 3 |
-| 3 | Encyclopedia (browse + species profile) | ✅ Klar (`v0.3.0-encyclopedia`); 6/7 device-screenshots committade |
-| 4a | ML & Camera UI (FakeClassifier + UI-flöde + CameraX 3 fps) | 🟡 PÅGÅR — Tasks 1–6 ✅ klara; nästa = Task 7 |
-| 4b | Real TFLite-modell (deferrad till separat brainstorm) | ⏸ |
+| 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ `v0.1.0-foundation` |
+| 2a | Content pipeline + walking skeleton (5 arter) | ✅ `v0.2.0a-pipeline` |
+| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 97/700 (alaudidae `d945e1f`) |
+| 3 | Encyclopedia (browse + species profile) | ✅ `v0.3.0-encyclopedia` |
+| 4a | ML & Camera UI (FakeClassifier + UI + CameraX 3 fps) | 🟡 Tasks 1–6 ✅; nästa = Task 7 |
+| 4b | Real TFLite-modell | ⏸ separat brainstorm senare |
 | 5 | Diary & Gamification | |
 | 6 | i18n, polish, Play Store-release | |
 
-Varje plan ska lämna projektet i ett byggbart, testbart tillstånd. Plan 1-12 är alltid sant: `./gradlew build` ska gå grönt.
+Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew build` ska gå grönt.
 
-## Hur vi jobbar (Claude Code-flödet)
+## Hur vi jobbar
 
 ### När du börjar en ny session
-
 1. Säg "Vi fortsätter med birdy-bird-scanner" eller liknande.
-2. Claude läser denna fil + auto-memory automatiskt.
-3. Be om en statusöversikt: "Var står vi?" → Claude kollar git log, senaste commit, vilken plan/task som är aktiv.
-4. Bestäm nästa steg utifrån status.
+2. Be om statusöversikt: "Var står vi?" → kolla git log + senaste commit.
+3. Bestäm nästa steg utifrån status.
 
 ### Behövs superpowers?
+- **Brainstorming, ny plan, plan-execution med review** → `superpowers:brainstorming` / `:writing-plans` / `:subagent-driven-development`.
+- **Vanliga frågor, snabba bugfixar, mindre refactoring** → bara prata; ingen skill.
 
-**Ja, för dessa moment:**
-- **Brainstorming av nya features eller större ändringar** → invoke `superpowers:brainstorming`
-- **Skriva ny implementationsplan från en spec** → invoke `superpowers:writing-plans`
-- **Exekvera en plan task-by-task med subagents + review** → invoke `superpowers:subagent-driven-development` (rekommenderat)
-- **Exekvera en plan inline (utan subagents)** → invoke `superpowers:executing-plans`
+Tumregeln: större än ett samtal eller kräver disciplin (TDD, plan-tracking) → skill. Annars inte.
 
-**Nej, för dessa moment:**
-- Vanliga frågor om kod ("vad gör den här filen?")
-- Snabba bugfixar eller justeringar
-- Att läsa specs/planer
-- Mindre refactoring där hela kontexten ryms i ett samtal
-
-Tumregeln: om du startar något som tar mer än ett samtal eller kräver disciplin (TDD-cykel, plan-tracking), använd skills. Annars bara prata.
-
-### Modell-strategi (vilken Claude för vad)
-
+### Modell-strategi
 | Uppgift | Modell |
 |---|---|
-| Brainstorming, designbeslut, arkitektur | **Opus 4.7** (denna session är ett exempel) |
-| Skriva implementationsplaner | Opus 4.7 |
-| Code review mellan tasks | Opus 4.7 |
-| Exekvera enskilda plan-tasks (subagents) | **Sonnet 4.6** (snabb + tillräckligt smart för TDD-cykler) |
-| Snabba lookups, formattering | Haiku 4.5 |
+| Brainstorming, design, arkitektur, code review | Opus 4.7 |
+| Implementer-subagents i `subagent-driven-development` | Sonnet 4.6 |
+| Snabba lookups | Haiku 4.5 |
 
-`subagent-driven-development` skickar normalt subagents till Sonnet 4.6 för execution och låter huvud-tråden (Opus 4.7) granska resultatet mellan tasks. Det ger snabb iteration utan att tappa noggrannhet.
-
-### Subagent-driven execution-flöde
-
-När en plan körs med `subagent-driven-development`:
-
-1. Huvudtråden (Opus 4.7) dispatchar en subagent (Sonnet 4.6) för **en task** ur planen.
-2. Subagenten implementerar tasken: skriver test → kör test → implementerar → kör test igen → committar.
-3. Huvudtråden granskar diffen och plan-progressionen.
-4. Du (användaren) kan stoppa, ändra riktning, eller låta nästa task dispatchas.
-5. Repetera tills planen är klar.
-
-**Vid avbrott:** all progress är committad i git. Nästa session kan fortsätta från senaste commit utan tappad kontext.
+Vid avbrott: all progress är committad i git. Nästa session fortsätter från senaste commit utan tappad kontext.
 
 ## Visuellt språk (Mossbädd)
 
@@ -92,69 +64,52 @@ Färgpalett (locked 2026-04-30):
 | Token | Hex | Roll |
 |---|---|---|
 | Background | `#E8E2D2` | Pale moss-creme |
-| Hero top | `#5C6E48` | Mossgrön |
-| Hero deep | `#3F4F30` | Djup moss |
-| Hero shadow | `#2A3520` | Skuggmoss |
+| Hero top / deep / shadow | `#5C6E48` / `#3F4F30` / `#2A3520` | Mossgrön gradient |
 | Accent | `#8C5A3C` | Koppar (CTA, aktiv flik, stat-siffror) |
 | Stat surface | `#D8D0BC` | Sand-creme |
 | Text primary | `#2A3525` | Djup skog |
 | Text on hero/accent | `#F0EAD8` | Varm offwhite |
 
-**Typografi:** Crimson Pro (serif) för rubriker/siffror; system sans för UI. UPPERCASE etiketter med spärr.
+**Typografi:** Crimson Pro (serif) för rubriker/siffror; system sans för UI. UPPERCASE-etiketter med spärr.
 
-**Layout-principer:**
-- Hero är en *zon*, inte ett kort — fade-out vertikal gradient mot bg.
-- CTA i koppar plockar upp samma accent som ekar i siffror och aktiv flik.
-- Bottom-bar 72dp med ikon + textetikett per flik.
-
-Tema-tokens implementeras i `composeApp/.../ui/theme/Color.kt` och `Type.kt` (Plan 1 Task 6).
+**Layout:** hero är en *zon* (vertikal gradient mot bg), inte ett kort. CTA i koppar ekas i siffror + aktiv flik. Bottom-bar 72dp, ikon + textetikett per flik. Tema-tokens i `composeApp/.../ui/theme/Color.kt` + `Type.kt`.
 
 ## Tekniska val (en rad var)
 
 - **Stack:** KMP + Compose Multiplatform (Android första, iOS-skelett)
 - **DB:** SQLDelight 2.x med Flow-baserade queries
-- **ML:** TensorFlow Lite (on-device, MobileNetV3-Large eller EfficientNet-Lite0/1)
-- **Kamera:** CameraX (Android), 3 fps streaming, confidence threshold 0.35
-- **Språk:** SV + EN, Sverige först
+- **ML:** TensorFlow Lite (on-device); 4a använder `FakeBirdClassifier` bakom `BirdClassifier`-interface
+- **Kamera:** CameraX (Android), 3 fps streaming, confidence threshold 0.35, auto-throttle till 1.5 fps vid p95-latens > 333ms
+- **Språk:** SV + EN, Sverige först; alla UI-strängar via compose-resources
 - **Distribution:** Play Asset Delivery för stora bundles
 - **CI:** GitHub Actions (ktlint, detekt, unit tests, assembleDebug, APK-artefakt)
 - **Statisk analys:** ktlint 12.1.2 + detekt 1.23.7
 
 ## Lokal utvecklingsmiljö (Windows + Galaxy S23 Ultra)
 
-Allt verktyg är installerat och konfigurerat:
-
 | Vad | Var |
 |---|---|
 | JDK 21 (Temurin) | `C:\Java\OpenJDK21U-jdk_x64_windows_hotspot_21.0.11_10\jdk-21.0.11+10\` |
-| Android SDK (platform-35, build-tools 34/36/37) | `C:\Users\abbea\AppData\Local\Android\Sdk` |
+| Android SDK | `C:\Users\abbea\AppData\Local\Android\Sdk` |
 | ADB | `C:\Users\abbea\AppData\Local\Android\Sdk\platform-tools\adb.exe` |
-| `local.properties` (gitignored) | redan satt med `sdk.dir` |
 | Telefon | SM-S918B (Galaxy S23 Ultra), USB-felsökning på, RSA-auktoriserad |
 
-**Standard-prefix för alla `./gradlew`-kommandon i bash:**
+**Standard-prefix för bash-`./gradlew`-kommandon** (annars hittar Gradle inte Java):
 
 ```bash
 export JAVA_HOME="C:/Java/OpenJDK21U-jdk_x64_windows_hotspot_21.0.11_10/jdk-21.0.11+10"
 export PATH="$JAVA_HOME/bin:$PATH"
 ```
 
-(Annars hittar Gradle inte Java på vägen.)
-
 ## Vanliga kommandon
 
 ```bash
-# Bygga + installera på ansluten enhet
+# Bygga + installera + starta på ansluten enhet
 ./gradlew :androidApp:installDebug
-
-# Starta appen efter installation
 "/c/Users/abbea/AppData/Local/Android/Sdk/platform-tools/adb.exe" shell am start -n se.birdy.android/.MainActivity
 
-# Verifiera ADB ser enheten
-"/c/Users/abbea/AppData/Local/Android/Sdk/platform-tools/adb.exe" devices
-
-# Tester (snabba — bara delade moduler på JVM)
-./gradlew :shared:domain:jvmTest :shared:ml:jvmTest
+# Snabba unit-tests (delade moduler på JVM)
+./gradlew :shared:domain:jvmTest :shared:ml:jvmTest :composeApp:testDebugUnitTest
 
 # Lint + statisk analys
 ./gradlew ktlintCheck detekt
@@ -163,258 +118,70 @@ export PATH="$JAVA_HOME/bin:$PATH"
 
 ## Repo
 
-GitHub: https://github.com/anonadrek/birdy
-
-Branches: `main` är default. Plan-arbete sker på `main` med små commits per task; tagga milstolpar (`v0.1.0-foundation` osv).
+GitHub: https://github.com/anonadrek/birdy. Branch: `main` är default; plan-arbete sker på `main` med små commits per task; tagga milstolpar (`v0.1.0-foundation` osv).
 
 ## Beslut & ramar
 
-- **Scope:** v1 = "Skanna & lär" + uppslagsverk. Inget mer (dagbok, mål, etc kommer i Plan 5+).
+- **Scope:** v1 = "Skanna & lär" + uppslagsverk. Inget mer (dagbok, mål osv kommer i Plan 5+).
 - **Geografi:** Norden/Europa, ~700 arter.
-- **Användare:** Bred två-lager (nybörjare som vill lära sig + entusiaster som vill scanna i fält).
-- **AI:** On-device, ingen backend för inference. Migrationsdata och sannolikhet är art-nivå statisk i v1.
-- **Solo-utvecklare:** användaren bygger detta själv via Claude Code. Granskning sker av användaren mellan tasks.
+- **Användare:** Bred två-lager (nybörjare som vill lära sig + entusiaster i fält).
+- **AI:** On-device, ingen backend för inference. Migrationsdata + sannolikhet är art-nivå statisk i v1.
+- **Solo-utvecklare:** användaren bygger via Claude Code; granskning sker av användaren mellan tasks.
 
-## Frågor under arbetet
+## Frågor + autonomi
 
-Om en plan-task är otydlig eller kräver beslut, **stoppa och fråga** istället för att gissa. Bättre att pausa fem minuter än att rulla med fel antagande i tre tasks.
+- Otydlig task eller spec-motsägelse? **Stoppa och fråga / lyft upp** istället för att gissa.
+- Annars: **"Don't ask me for permission to run anything"** — kör commits, push, gradle, file-edits enligt plan utan bekräftelse. Vid scope-creep i review: fixa autonomt (soft-reset + re-commit). Det inkluderar INTE blockerare som kräver fysisk åtkomst (telefon, emulator) eller tredjepartsbeslut (CI-resultat) — där rapporterar man status. Det inkluderar INTE heller att hoppa över granskning — två-stegs-review (spec → kvalitet) körs alltid mellan tasks.
 
-Om du upptäcker en spec-motsägelse, lyft det direkt — vi uppdaterar specen tillsammans.
+## Plan 4a status (PÅGÅR)
 
-## Autonomi-direktiv (gäller löpande)
+Plan: `docs/superpowers/plans/2026-05-05-v1-04a-camera-ui.md`. Spec: `docs/superpowers/specs/2026-05-05-plan-4a-ml-camera-design.md`. Workflow: `superpowers:subagent-driven-development`. Plan 4b (real TFLite) deferrad.
 
-Användaren har sagt: **"Don't ask me for permission to run anything."** Det betyder:
+**Branch + working tree:** `main`, 13 commits ahead of origin (osynkroniserade). Working tree clean. Senaste commit = `2888c72` (denna doc-uppdatering) ovanpå `e63d2fa` (i18n follow-up) ovanpå `79c3a3f` (Task 6).
 
-- Kör operationer som planen specar utan att be om bekräftelse — commits, push, gradle-kommandon, file-edits enligt task.
-- Vid scope-creep eller spec-avvikelse upptäckta i review: fixa autonomt (t.ex. soft-reset + re-commit för att splitta scope-creepiga commits).
-- Det betyder INTE att ignorera blockerare som kräver fysisk åtkomst (telefon, emulator) eller tredjepartsbeslut (CI-resultat) — där rapporterar man status och väntar.
-- Det betyder INTE heller att hoppa över granskning. Två-stegs-review (spec → kvalitet) körs alltid mellan tasks per `subagent-driven-development`.
-
-## Plan 4a status (PÅGÅR — Tasks 1–6 ✅, nästa = Task 7)
-
-Plan: `docs/superpowers/plans/2026-05-05-v1-04a-camera-ui.md`. Spec: `docs/superpowers/specs/2026-05-05-plan-4a-ml-camera-design.md`. Workflow: `superpowers:subagent-driven-development` (Sonnet 4.6 implementerar, Opus 4.7 reviewar). Plan 4b (real TFLite-modell) deferrad — separat brainstorm senare.
-
-**Branch + arbetstillstånd:** `main`, 12 commits ahead of origin (osynkroniserade). Working tree är ren. Nästa start = checka ut `main` eller pulla, läs Plan 4a-dokumentet för Task 7-spec, dispatcha implementer-subagent.
-
-| # | Task | Commit | Status |
+| # | Task | Status | Commit |
 |---|---|---|---|
-| 1 | shared/ml refactor — `BirdClassifier` interface + `FakeBirdClassifier` | `045a40e` | ✅ |
-| 2 | AppGraph wiring + `CameraSource` interface | `42a4a0e` (+ `c79d760` cleanup) | ✅ |
-| 3 | Nav-routes (`PhotoAnalyze`, `ClassificationResult`) + ScanScreen-placeholder + default-flik = Skanna | `7916386` | ✅ |
-| 4 | Camera permission helper (Android JIT-request + `ON_RESUME`-recheck) | `2202907` | ✅ |
-| 5 | `ScanViewModel` + `MutableSharedFlow(DROP_OLDEST)` + auto-throttle + `FakeCameraSource` | `71668ee` (impl), `68476cc` (review-fix) | ✅ |
-| 6 | ScanScreen UI variant C — top-chip + crosshair + tap-to-freeze | `79c3a3f` (impl), `e63d2fa` (i18n follow-up) | ✅ |
-| 7 | AndroidCameraSource — CameraX 3 fps `ImageAnalysis` + JPEG capture via `ImageCapture.takePicture` | _pending_ | ⬜ |
-| 8 | `PhotoAnalyzeViewModel` + screen + Android host (gallerival → Bitmap → klassificera) | _pending_ | ⬜ |
-| 9 | `ClassificationResultScreen` + ViewModel (variant A — top-3 lista + freeze-frame) | _pending_ | ⬜ |
-| 10 | Polish — theme-token-cleanup, cache-cleanup, CI green, screenshots, tag `v0.4.0a-ml-camera` | _pending_ | ⬜ |
+| 1 | shared/ml refactor — `BirdClassifier` interface + `FakeBirdClassifier` | ✅ | `045a40e` |
+| 2 | AppGraph wiring + `CameraSource` interface | ✅ | `42a4a0e` (+ `c79d760`) |
+| 3 | Nav-routes + ScanScreen-placeholder + default-flik = Skanna | ✅ | `7916386` |
+| 4 | Camera permission helper (JIT + ON_RESUME-recheck) | ✅ | `2202907` |
+| 5 | `ScanViewModel` + `MutableSharedFlow(DROP_OLDEST)` + auto-throttle + `FakeCameraSource` | ✅ | `71668ee` (impl), `68476cc` (review-fix) |
+| 6 | ScanScreen UI variant C — top-chip + crosshair + tap-to-freeze | ✅ | `79c3a3f` (impl), `e63d2fa` (i18n) |
+| 7 | AndroidCameraSource — CameraX 3 fps `ImageAnalysis` + `ImageCapture.takePicture` | ⬜ | _next_ |
+| 8 | `PhotoAnalyzeViewModel` + screen + Android host (gallerival → klassificera) | ⬜ | |
+| 9 | `ClassificationResultScreen` + ViewModel (variant A — top-3 + freeze-frame) | ⬜ | |
+| 10 | Polish — theme tokens, cache cleanup, CI green, screenshots, tag `v0.4.0a-ml-camera` | ⬜ | |
 
-**Plan 4a-arkitektur (låst i Tasks 1–6):**
+**Låst arkitektur (Tasks 1–6 — utförlig version i auto-memory `project_plan_4a_status.md`):**
 
-- **`BirdClassifier` interface** i `shared/ml/commonMain` — input `ImageInput`, output `ClassificationResult` (lista av top-K predictions + frame-timestamp). `FakeBirdClassifier` är "production of record" (committad i Tasks 1) — ger deterministiska top-3 med slumpmässiga confidence-värden för UI-utveckling utan TFLite-modell. Plan 4b byter ut implementationen utan att röra UI/VM/state.
-- **`CameraSource` interface** i samma modul — `start()`, `stop()`, `frames(): Flow<ImageInput>`. `FakeCameraSource` (test-only) använder `MutableSharedFlow` så testet kan injicera frames i takt med `nowMillis`-tick. AndroidCameraSource (Task 7) bryggar CameraX `ImageAnalysis` + `ImageCapture` till samma interface.
-- **`AppGraph.scanViewModel()`** lambdafactory tar `cameraSourceFactory: () -> CameraSource` (en ny instans per ViewModel) och `BirdClassifier` (singleton — får `close()` i `onCleared`).
-- **`ScanViewModel`-pipeline:** `MutableSharedFlow(replay=0, extraBufferCapacity=1, BufferOverflow.DROP_OLDEST)` som drop-oldest-frame-sink + `MutableStateFlow<Long>`-period + `flatMapLatest { period -> if (throttling && period > 0L) frameSink.sample(period) else frameSink }` så perioden går från 333ms (3 fps) till 666ms (1.5 fps) automatiskt när p95-latens > 333ms (deklareras `isThrottled` i Scanning-state). `Channel(CONFLATED)` blev refaktorerad till `MutableSharedFlow` eftersom Channel inte kan recolectas över `flatMapLatest`-restarts.
-- **`onCleared` cleanup:** `viewModelScope` är redan cancellerad när `onCleared` kör → använd `GlobalScope.launch(Dispatchers.Default + NonCancellable) { runCatching { src.stop() } }` för fire-and-forget teardown. `classifier.close()` kallas synkront.
-- **`expect`/`actual` Compose-seam:** `CameraPreviewHost(cameraSource, modifier)` + `ScanScreenHost(graph, onPhotoAnalyzeClick, onFrozen)`. Android-actual för `CameraPreviewHost` är `Box(modifier.fillMaxSize().background(Color.Black))` idag (Task 6); riktig `PreviewView` wires upp i Task 7 via `AndroidView { PreviewView(it).also { ... } }`.
-- **Permission-handling (Android):** `rememberCameraPermissionState(context)` returnerar `CameraPermissionStatus.{Granted, Denied, NotAsked}`. `Denied` vs `NotAsked` disambigueras via `ActivityCompat.shouldShowRequestPermissionRationale(activity, ...)`. `DisposableEffect(lifecycleOwner) { LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) statusState.value = computeStatus(context) } }` så när användaren returnerar från Inställningar uppdateras UI:t direkt.
-- **Tap-to-freeze:** `pointerInput(Unit) { awaitPointerEventScope { while(true) { if event.changes.any { it.pressed } → viewModel.onFreeze(captureJpeg(), persistFrame); break } } }`. `PointerInputScope` är själv en `CoroutineScope` så ingen extra `coroutineScope { ... }`-wrapper behövs.
-- **i18n-disciplin (etablerad i `e63d2fa`):** `ScanUiState.Error` bär en `ScanErrorKind`-enum istället för `String`-meddelande — UI-lagret kallar `stringResource` baserat på kind. Mönstret skalar till PhotoAnalyze + ClassificationResult i Tasks 8–9.
+- `BirdClassifier`/`CameraSource`-interfaces i `shared/ml/commonMain`. `FakeBirdClassifier` är "production of record" i 4a; Plan 4b byter implementation utan att röra UI/VM.
+- Frame-pipeline: `MutableSharedFlow(replay=0, extraBufferCapacity=1, DROP_OLDEST)` + `MutableStateFlow<Long>`-period + `flatMapLatest { period -> sink.sample(period) }` ger dynamisk auto-throttle. `Channel(CONFLATED)` fungerade inte — kan inte recolectas över `flatMapLatest`-restarts.
+- `onCleared`-cleanup: `viewModelScope` är cancellerad → `GlobalScope.launch(Dispatchers.Default + NonCancellable) { ... }` för fire-and-forget.
+- Compose-seam för Android-only Composables: `@Composable expect fun X(...)` + actual i androidMain (`CameraPreviewHost`, `ScanScreenHost`).
+- Permission-disambiguering: `ActivityCompat.shouldShowRequestPermissionRationale(activity, ...)` skiljer Denied vs NotAsked. `DisposableEffect` + `LifecycleEventObserver(ON_RESUME)` re-checkar när användaren returnerar från Inställningar.
+- i18n-disciplin (`e63d2fa`): `ScanUiState.Error` carryar `ScanErrorKind`-enum, inte `String` — UI-lager mapper till `stringResource`. ViewModel förblir Composable-context-fri.
 
-**Task 6-reviewers' uppskjutna follow-ups (gör i Task 10 polish):**
+**Task 7 startpunkt:**
+1. `git status` clean; `git log --oneline -3` ska visa `2888c72` överst.
+2. Läs Task 7-specen i plan-doc (sök `## Task 7`).
+3. Lås CameraX vid 1.4.0 (eller senaste 1.4.x). Lägg till `androidx.camera:camera-camera2 / -lifecycle / -view` i `gradle/libs.versions.toml` + `composeApp/build.gradle.kts:dependencies { androidMain.implementation(...) }`.
+4. Wire CameraX `ImageAnalysis` (`STRATEGY_KEEP_ONLY_LATEST`) → `ImageInput` + `ImageCapture.takePicture` för JPEG-bytes; ersätter 1×1-svart placeholder i `ScanScreenHost.android.kt`.
+5. Device-verify på SM-S918B = obligatoriskt slutsteg innan task-commit. Top-chip ska visa fake-predictions från `FakeBirdClassifier` på live preview.
+
+**Uppskjutna follow-ups från Task 6-review (gör i Task 10 polish):**
 
 | Sev | Sak | Var |
 |---|---|---|
-| Important #1 | Inlined `Color(0xFF...)`-hexliteraler — ersätt med tokens från `ui/theme/Color.kt` | `ScanScreen.kt:96,113,126,139`, `TopChip.kt:43,55,59,62,66`, `Crosshair.kt:16-17` |
-| Minor #3 | "Analysera ett foto"-knappen kan dubbelnavigera under FrozenAt | `ScanScreen.kt:97-99` |
-| Minor #4 | JPEG-capture-placeholder läcker `Bitmap` (1×1 svart) — fixas i Task 7 när riktig frame-bytes ersätter | `ScanScreenHost.android.kt:46-52` |
-| Minor #5 | `cacheDir` (scan-frames) städas aldrig | `ScanScreenHost.android.kt:37` (skapande) — Task 10 lägger till purge-strategi |
+| Important #1 | Inlined `Color(0xFF...)`-hex → tokens från `ui/theme/Color.kt` | `ScanScreen.kt`, `TopChip.kt`, `Crosshair.kt` |
+| Minor #3 | "Analysera ett foto"-knappen kan dubbel-navigera under FrozenAt | `ScanScreen.kt` |
+| Minor #4 | JPEG-capture-placeholder läcker `Bitmap` — fixas implicit i Task 7 | `ScanScreenHost.android.kt` |
+| Minor #5 | `cacheDir/scan-frames` städas aldrig — purge-strategi i Task 10 | `ScanScreenHost.android.kt` |
 
-Important #2 (i18n) ✅ klar i `e63d2fa` — 7 hardcodade SV-strängar + ViewModel-error-literalen flyttade till `composeResources/values{,-en}/strings.xml`.
+(Important #2 — i18n — ✅ stängd i `e63d2fa`.)
 
-**Etablerade mönster värda att återanvända i Plan 4b (real TFLite) + Plan 5+:**
+## Plan 2b status (PAUSAD)
 
-- **`expect`/`actual` Compose-seam.** Vill man ha en Android-only Composable utan att bryta common-koden, exponera den som `@Composable expect fun X(...)` + actual i androidMain. Bättre än `if (Platform == ANDROID)`-checkar.
-- **Drop-oldest-flow för frames.** `MutableSharedFlow(replay=0, extraBufferCapacity=1, DROP_OLDEST)` är rätt mekanism för "snabb producent, långsam konsument" där man bara vill bearbeta senaste värdet. `Channel(CONFLATED)` har samma semantik men kan inte recolectas över `flatMapLatest`.
-- **Dynamisk sample-rate via `MutableStateFlow<Long>` + `flatMapLatest`.** `Flow.sample(period)` fångar perioden vid construction → ändringar tar inte effekt. Wrap perioden i `MutableStateFlow` och rebuild-pipelinen via `flatMapLatest { period -> upstream.sample(period) }` för dynamisk justering.
-- **`GlobalScope + NonCancellable + Dispatchers.Default` i `onCleared()`.** `viewModelScope` är cancellerad när onCleared kör. Använd GlobalScope-undantaget här (inte överallt) för att städa native-resurser (kamera, modeller, filhandtag).
-- **`ScanErrorKind`-enum istället för String-error.** ViewModel ska inte känna till lokaliserade strängar. Skicka stable error-kind/sentinel; UI-lager mapper till `stringResource`.
-
-**Pending efter Task 6 (just nu):**
-
-- ➡️ **Task 7 — AndroidCameraSource.** Plan-rad 1739–2150 (ungefär). Wire CameraX `ImageAnalysis` (3 fps target via `STRATEGY_KEEP_ONLY_LATEST`) → `ImageInput` + `ImageCapture.takePicture` för JPEG-bytes. Ersätter `ScanScreenHost.android.kt`'s 1×1-svart placeholder.
-- 📦 **Task 7-deps:** `androidx.camera:camera-camera2` + `:camera-lifecycle` + `:camera-view` (alla 1.4.0+). Lägg till i `gradle/libs.versions.toml` + `composeApp/build.gradle.kts:dependencies { androidMain.implementation(...) }`.
-- 🐛 **Verify on device:** SM-S918B är redan auktoriserad. Efter Task 7 = riktig live-preview + frames flödar in i pipelinen → top-chip ska visa fake-predictions från `FakeBirdClassifier`.
-
-
-
-Plan: `docs/superpowers/plans/2026-05-04-v1-03-encyclopedia.md`. Spec: `docs/superpowers/specs/2026-05-04-encyclopedia-design.md`. Alla 11 tasks committade. Milstolpe: `v0.3.0-encyclopedia`.
-
-| # | Task | Commit |
-|---|---|---|
-| 1 | Foundation deps + commonTest + AppGraph | (Plan 3 inline-batch) |
-| 2 | Nav graph + bottom-nav + 3 stub screens (Skanna, Dagbok, Märken) | inline-batch |
-| 3 | EncyclopediaScreen list-only med abundance-gruppering | inline-batch |
-| 4 | Utökat `search()` för regions/activeInMonth + scientific-name-sök | inline-batch |
-| 5 | Encyclopedia-sökfält (debounced 250ms) + ViewModel-test | inline-batch |
-| 6 | FilterBottomSheet med chip-grupper + count-pill | inline-batch |
-| 7 | SpeciesProfileScreen med collapsing toolbar (LargeTopAppBar) | inline-batch |
-| 8 | SectionBlock-helper + sparse-data inline-rendering | inline-batch |
-| 9 | HeroImage-komponent + Coil 3-wiring + glyph-fallback | inline-batch |
-| 10 | i18n — alla UI-strängar via `Res.string.*` (sv + en) | `4e4afdf` |
-| 11 | Polish + CI + tag | (denna commit) |
-
-**Tekniska beslut (alla låsta + implementerade):**
-
-- Browse: lista grupperad i `Allmänna i Sverige` (Locale.SV pinned) / `Övriga (n)` med sökfält + filter-knapp som öppnar `ModalBottomSheet`.
-- Profile: `LargeTopAppBar` med `exitUntilCollapsedScrollBehavior`, FactRow (3 chips), 3 SectionBlock (BESKRIVNING/FLYTTNING/FOTOGRAFIER).
-- Sparse-data: sektioner behålls alltid, tomma renderas inline med italic-text + 0.7-alpha sand-creme-box.
-- Navigation: Compose Multiplatform Navigation 2.8.0-alpha10 med `@Serializable` type-safe routes (`AppRoute.Encyclopedia` / `AppRoute.SpeciesProfile(speciesId: String)` / 3 stub-routes).
-- State: ViewModel + StateFlow via `lifecycle-viewmodel-compose` (KMP-fork 2.8.4).
-- Image: Coil 3.0.4 (`AsyncImage` + `Res.getUri("files/images/<QID>/<slot>.jpg")`); fallback = linear-gradient + 📷-glyph.
-- i18n: `composeResources/values/strings.xml` (sv) + `values-en/strings.xml` (en), 25+ strängar inkl. `filter_apply` med `%1$d`-formatter.
-- DI: manuell constructor-injection via `AppGraph(repository, defaultLocale = Locale.SV)`-klass.
-
-**Etablerade arkitektur-mönster (Plan 4+ kommer återanvända):**
-
-- **`FakeSpeciesRepository` test-helper** under `composeApp/src/commonTest/.../testing/` — Turbine + UnconfinedTestDispatcher utan setup-cost-duplikering. Plan 4 (ML) kan använda samma mönster för `FakeMlClassifier`.
-- **AppGraph-DI:** zero-overhead, type-safe, testbar utan extra ramverk. Skala upp till Plan 5 (Diary) med `AppGraph.diaryViewModel(date)` osv.
-- **`stickyHeader { stringResource(...) }`-pattern:** `stickyHeader` kör i LazyListScope (icke-Composable), så Composable-anrop måste ligga *inuti* lambdan, inte före.
-- **Resource-package är `birdy_bird_scanner.composeapp.generated.resources`** (inte `org.jetbrains.compose.resources.Res`) — generated path matchar artifact-namnet via Compose-resource-mangling.
-- **`AsyncImage` + `Res.getUri(...)`** är förstavalet för bundlade composeResources-bilder. KEEP_ON_DISK kvar mellan recompositions; pre-loading ej nödvändig för 36dp thumbnails eller 64dp profile-stripen.
-- **Material 3 `LargeTopAppBar` + `nestedScroll(scrollBehavior.nestedScrollConnection)` på Scaffold** är minsta wiringen för collapsing-toolbar. Annars triggas inte collapsen.
-
-**Avvikelser från plan / scope-creep upptäckta + accepterade:**
-
-- Plan beskrev 3 stub-screens med samma layout — användes som-är. Strängar `stub_*_title/body` adderades extra för att låta titel + body vara separat lokaliserbara (plan hade inte titel-sträng explicit).
-- `EncyclopediaViewModel`-test för filter-propagation behövde `advanceTimeBy(300)` istället för `awaitItem()` eftersom StateFlow dedupes equal `Loaded`-states (debounce-pipeline emitterar samma data, ingen ny event). Lärdom: ViewModel-tester med StateFlow + flatMapLatest kräver tids-baserad assertion när output kan vara identisk.
-- `SpeciesProfileViewModelTest` tog bort initial-Loading-assertion eftersom UnconfinedTestDispatcher kör `repo.getById()`-flow synkront → Loading skrivs över innan Turbine subskriberar. Trade-off: `Loading`-staten är inte unit-testad, men den är trivial (StateFlow.stateIn `initialValue`) och dyker upp i device-verifiering ändå.
-
-**Post-tag bug-fix lärdomar (2026-05-04 → 2026-05-05):**
-
-Tre fixar landade på top of `v0.3.0-encyclopedia` när device-verifieringen körde — mönster värt att komma ihåg innan Plan 4:
-
-- **`4566791` — KMP-modul-dependency + composeResources-prefix.** Två krascher upptäckta i samma session:
-  1. `composeApp/build.gradle.kts` använde `implementation(project(":shared:content"))`. Den dolde `SpeciesRepository` + `Locale` från `androidApp/MainActivity` som konstruerar `AppGraph(repository, defaultLocale)`. Kompilator-error vid first-build-on-device. Fix: byt till `api(...)`. **Regel:** publicerar man typer från en KMP-modul via konstruktor-parameter måste den dependency vara `api`. CommonTest som faktiskt instansierar `AppGraph` skulle ha fångat regressionen i CI.
-  2. `HeroImage.kt` skickade YAML-stored relativ path (`"Q25404/hero.jpg"`) direkt till `Res.getUri()`, men bundlade composeResources-bilder ligger på `files/images/<QID>/<slot>.jpg`. `MissingResourceException` i samma frame som första `SpeciesRow` renderades. Fix: prefix `"files/images/"` centralt i `HeroImage`, YAML-schema förblir rent. **Regel för Plan 4:** TFLite-modellfiler bör få samma centraliserade prefix-helper (`MlAssets.modelUri(...)`).
-- **`9011aae` — list-cap är aldrig design.** `SqlDelightSpeciesRepository.search()` hade leftover `.take(50)` efter SQL `LIMIT 200` → med 97 arter blev "Allmänna i Sverige (N)"-headern (14) istället för (23) och allt efter alfabetisk position 50 osynligt. Tog bort cap'en + bumpade SQL `LIMIT` till `Long.MAX_VALUE`. **Regel för Plan 4:** UI bestämmer cut (top-K predictions = 5–7), repo levererar allt.
-- **`e3e2629` — hero photo som toolbar-bakgrund.** `LargeTopAppBar` hade flat `HeroMossLight`. Bytte till hero-foto + dark gradient (alpha 0.25 → 0.65) för läsbarhet. Fallback till moss-grön solid när inga images finns. Spec hintade om detta men låste det inte; addresserades efter visuell feedback.
-
-**Pending efter taggning:**
-
-- ✅ **Device-verifiering på SM-S918B** — 6/7 screenshots committade i `54a87e0`. Saknar `profile-sparse` (defererad — telefon frigjordes innan capture). Tas när enheten ändå är ansluten för Plan 4-arbete.
-- ➡️ **Plan 4 (ML & Camera)** kan starta. Brainstorming + spec + plan-skrivning idag (2026-05-05); execution efter användargranskning.
-
-## Plan 2a status (KLAR)
-
-Plan: `docs/superpowers/plans/2026-05-02-v1-02a-content-pipeline.md`. Alla 15 tasks klara. Milstolpe taggad `v0.2.0a-pipeline`.
-
-| # | Task | Status |
-|---|---|---|
-| 1 | CLI-scaffold (uv + click + ruff + mypy) | ✅ |
-| 2 | species_list-builder (VP11 + IOC + Wikidata) | ✅ |
-| 3 | mapping_failures.yaml-review (manuell godkänning) | ✅ — 836 arter, 1 känt gap (`Fringilla moreletti`) |
-| 4 | `wikidata.py` strukturerad fetch + `cache.py` | ✅ — commit `6176f71` |
-| 5 | `wikipedia.py` REST-klient med revision-keyed cache | ✅ — commits `47ff44f`, `bb1618d` |
-| 6 | `claude_summarizer.py` + `cost.py` + 2 prompts | ✅ — commits `7cf7163`, `afff3de` |
-| 7 | `images.py` + `hero_review.py` (Commons fetch + selection + HTML) | ✅ — commits `988c7be`, `7420558` |
-| 8 | YAML writer + orchestrator + `doctor` + CLI-wiring | ✅ — commits `e820a23` (impl), `b223a63` (review-fixes) |
-| 9 | Walking skeleton — fetch 5 arter + commit content | ✅ — commits `8f00fb9` (5 pipeline-buggar fixade under körning), `d973e31` (5 art-YAMLs + 15 bilder, Claude-cost ~$0.023) |
-| 10 | SQLDelight-schemas + Kotlin DTOs + kaml YAML-parser | ✅ — commit `2e7099c` (7 `.sq`-filer, `SpeciesYaml.kt`, `SpeciesYamlParser.kt`, 2/2 jvmTest gröna) |
-| 11 | Validator + `validateSpeciesData` Gradle-task | ✅ — commit `86d97f1` |
-| 12 | `SpeciesDbBuilder` + `buildSpeciesDb` Gradle-task | ✅ — commit `502241b` |
-| 13 | `SpeciesRepository` interface + SQLDelight-implementation | ✅ — commit `5c172ee` |
-| 14 | Wire species.db + bilder i composeApp + verify on device | ✅ — commit `8abf4dd` (device-verify deferred, se nedan) |
-| 15 | CI-integration + Plan 2b runbook-stub | ✅ |
-
-**Pipeline-state att veta om:**
-
-- `tools/content-pipeline/species_list.yaml` är committad och canonical input för Task 9.
-- `tools/content-pipeline/mapping_failures.yaml` innehåller bara `Fringilla moreletti` (ingen art-Q-ID på Wikidata; revidera när Wikidata uppdateras).
-- `init --resume` re-kör pipelinen och bevarar manuella entries i `species_list.yaml`; lösta failures auto-rensas. Använd alltid `--resume` om du redigerat `species_list.yaml` manuellt.
-- `cross_check_with_ioc` är soft (varnar bara, filtrerar inte). 1 kvarvarande varning: Scotocerca inquieta (VP11=Cettiidae, IOC=Scotocercidae — recent split).
-- `map_to_wikidata` har en synonym-fallback: misslyckad primär `wdt:P225`-lookup gör en andra fråga mot icke-deprecated `p:P225/ps:P225` så renamed-taxa (Botaurus, Astur, Tachyspiza) hittas trots att IOC v14.1 ännu inte adopterat nya genus.
-
-**Etablerade arkitektur-mönster (alla nya pipeline-moduler):**
-
-- **Constructor-injection för testbarhet:** `WikidataClient`, `WikipediaClient`, `ClaudeSummarizer`, `ImageSelector`, `ImageProcessor` tar alla `cache: Cache` + en injicerbar async callable (`run_sparql`/`http_get`/`http_get_bytes`) i konstruktorn. Default-implementationer använder aiohttp; tester injicerar fakes. `RefreshContext` (orchestrator) följer samma mönster — `build_context()` är produktionspath, `test_orchestrator.py` exercerar injection-sömmen med fakes.
-- **Cache-key med content-hash där prompt/innehåll matters:** `claude_summarizer.py` embeddar `sha256(prompt_template)[:8]` i cache-filnamnet så tysta prompt-edits invaliderar cache. Wikipedia-cachen är revision-keyed. Wikidata-cachen är q_id-keyed (rå JSON).
-- **Atomic-write-cache:** `Cache.put` skriver till `.tmp` → `os.replace`. Aldrig partial reads. Använd `cache.put_bytes` för binärdata (Commons-bilder).
-- **Async-pattern:** `aiohttp.ClientSession` per request (acceptabelt för Plan 2a's 5 arter; Plan 2b kan dela session via injicerad `http_get`).
-- **mypy strict + ruff:** alla pipeline-filer måste passera båda. Inga `Any`, inga otypade defs. RUF001 (Unicode multiplikationstecken) använder ASCII `x` istället.
-
-**Task 8 follow-ups (från code-review, ej blockerande för Task 9–10):**
-
-Code-review av Task 8 (commit `e820a23`) gav "Approved with conditions". Två kritiska issues fixades direkt i `b223a63` (Windows cp1252-krasch i `doctor`, silent failure-swallow i `run_refresh`, plus `merge_overrides`-refactor). Följande **Important** + **Minor** är inte fixade än — de blir kvalitetsläckor om de inte adresseras innan Plan 2b's `--all` på ~700 arter:
-
-| Sev | ID | Sak | Var |
-|---|---|---|---|
-| Important | I1 | `_NoopClient` i orchestrator har svag typning (`**kwargs: Any`, return `Any`) — spegla `FakeClaudeClient`-signaturen från `claude_summarizer.py` | `orchestrator.py` ~line 74 |
-| Important | I2 | `refresh_one` är 130 rader / 6 concerns — dekomponera i `_fetch_text_artifacts(ctx, listed, wd)`, `_fetch_image_refs(ctx, q_id, scientific_name)`, `_assemble_species(...)` (pure, no I/O). Underlättar parallel debug i Plan 2b. | `orchestrator.py:refresh_one` |
-| Important | I4 | `[accept_missing]`-sentinel-string skrivs som content i YAML-fältet. KMP-konsumenten i Plan 3 kommer rendera den som text. Lös via separat `description_status: missing`-fält eller `description: null` + `review_notes`. | `yaml_writer.py:113` |
-| Important | I5 | `wd.family.lower()` saknar sanitizer för tomma/icke-ASCII familjenamn. Family-rename i framtida Wikidata-revisioner skapar orphan-YAMLs i gamla family-mappen — ingen housekeeping. | `orchestrator.py` ~line 245 |
-| Minor | M1 | Hard-coded `regions = ["SE", "NO", "FI", "DK", "DE"]` och `_default_season()` (allt = "present") utan `# TODO(plan-2b)`-kommentar | `orchestrator.py` lines 209-210, 253-270 |
-| Minor | M2 | Hard-coded modell-ID-strängar i `sources.claude_model` — återanvänd `MODEL_IDS[ctx.options.model]` från `claude_summarizer` istället | `orchestrator.py` ~line 234 |
-| Minor | M3 | `dict[str, Any]` för `sources`/`season`/`description`/`migration` har kända shapes — typed alias eller TypedDict skulle fånga fältnamnstypos | flera ställen |
-| Minor | M6 | `.cache/`-checken i `doctor` är decoration (`ok=True` alltid). Lägg till riktigt predikat (t.ex. > 30 dagar gammal cache → varning) eller ta bort | `doctor.py:69-80` |
-| — | — | Ruff format applicerades på 5 pre-existing filer i `b223a63` (claude_summarizer, cost, images, test_images, test_wikipedia) — scope creep men gjorde quality gate grön | git: `b223a63` |
-
-**Adress innan Plan 2b's `--all`:** I1 + I2 ger debugbarhet vid 700-art-körning; I4 + I5 ger schema-stabilitet för KMP-konsumenten i Plan 3.
-
-**Task 9 follow-ups (5 pipeline-buggar autonomt fixade av subagent under körning, commit `8f00fb9`):**
-
-| Bugg | Var | Fix |
-|---|---|---|
-| Commons-sökningen returnerade artikel-sidor istället för File:-sidor — 0 bildkandidater | `images.py` | Lade till `gsrnamespace=6` i Commons-search-query |
-| Wikipedia REST-summaries (25–87 ord) tystades bort som "sparse" och nådde aldrig Claude | `wikipedia.py` | `SPARSE_WORD_THRESHOLD` 100 → 20 |
-| Prompts var hårdkodade till svenska oavsett `lang=`-parameter | `prompts/description-v1.md`, `prompts/migration-v1.md`, `claude_summarizer.py` | Substitutions appliceras nu på system-prompt också; `{lang_name}`-variabel; prompts skrivna språkneutralt |
-| `ioc_order` blev "Saurischia" (dinosaur-ancestor) för alla fåglar | `orchestrator.py` | `ioc_order` läses nu från `species_list.yaml` (förlitar inte SPARQL-P171\* traversal) |
-| 5 walking-skeleton-arter saknade `common_sv` + `family_sv` i species_list | `species_list.yaml` | Manuella tillägg för Q25485, Q25234, Q25404, Q25402, Q26490 |
-
-**🚩 USER CHECKPOINT plus Plan 2b-blockerare (uppdaterad efter Task 9):**
-
-1. **Plan 2b's `--all` blockare:** Wikidata-stegen `map_to_wikidata` hämtar inte `P1705` (officiellt språk-namn) → 834 av 836 arter saknar `common_sv`. Måste utökas innan family-by-family backfill kan köras autonomt. (Workaround idag: manuell tillägg till `species_list.yaml` per art.)
-2. **Few-shot-exempel i `description-v1.md`:** Bara Talgoxe är komplett. Koltrast + Blåmes är platshållare. Räcker för Plan 2a's 5 arter; behövs två svenska 180–250-ords-beskrivningar (eller godkännande att köra med ett enda exempel) innan Plan 2b's `--all`.
-
-**Walking-skeleton-arter (committade, Task 9):** Q25485 Talgoxe (paridae/Parus major), Q25234 Koltrast (turdidae/Turdus merula), Q25404 Blåmes (paridae/Cyanistes caeruleus), Q25402 Knölsvan (anatidae/Cygnus olor), Q26490 Tornfalk (falconidae/Falco tinnunculus). Filer ligger under `shared/content/species/{family}/{Q-ID}.yaml` + `shared/content/images/{Q-ID}/{hero,secondary-1,secondary-2}.jpg`.
-
-**Task 13/14 follow-ups (viktiga för Plan 3):**
-
-- **Domain types paket:** Domain types ligger i `se.birdy.content.model` (inte `se.birdy.content`) pga SQLDelight 2.x package-kollision. Plan 3 måste importera `se.birdy.content.model.{Species,SpeciesSummary,SpeciesTaxonomy,SpeciesImage}`.
-- **`verifyCommonMainBirdyContentMigration` disabled på Windows:** `afterEvaluate`-blocket i `shared/content/build.gradle.kts` disablar migration-verifiering pga SQLite JDBC native lib-bugg (`NativeDB._open_utf8`) på Windows. På Linux CI kör disabeln fortfarande (är OK — migration-verifiering är developer-fixture, inte CI-gate). Återaktivera när upstream fixar buggen.
-- **Task 14 Steps 7-10 device-verifierad (2026-05-04, commits `2fe3f81` + `b9b85bb`):** Två runtime-buggar fixade under verifieringen:
-  1. Asset-path var fel — Compose Multiplatform mangling ger `composeResources/birdy_bird_scanner.composeapp.generated.resources/files/species.db` (inte `composeResources/composeApp.composeResources/files/species.db`). Kontrolleras alltid med `unzip -l <apk> | grep <fil>`.
-  2. `AndroidSqliteDriver(..., "species.db")` öppnar via `Context.openOrCreateDatabase()` mot `databases/`, inte `filesDir`. Kopiera till `appContext.getDatabasePath("species.db")`. Driver kallade dessutom `Schema.create()` när bundlade DB:n hade `user_version=0` → krasch på `table Species already exists`. Lösning: `SpeciesDbBuilder` sätter `PRAGMA user_version = ${BirdyContent.Schema.version}` innan `VACUUM INTO`.
-  Verifierat: HomeScreen renderar "5 fågelarter laddade" + Talgoxe/Koltrast/Blåmes/Knölsvan/Tornfalk på SM-S918B utan krasch. Screenshot: `docs/superpowers/screenshots/2026-05-02-walking-skeleton.png`.
-
-**Task 10 deviationer från plan (commit `2e7099c`):**
-
-- Behöll `id("birdy.kmp-android-lib")`-konventionspluggen i stället för att duplicera dess konfiguration. La till `alias(libs.plugins.kotlin.serialization)` + `alias(libs.plugins.sqldelight)` ovanpå.
-- Lade till `alias(libs.plugins.kotlin.serialization) apply false` i root `build.gradle.kts` (annars konflikt vid plugin-resolution).
-- `.gitignore` fick negation `!**/src/**/kotlin/**/build/` — annars åt root-`build/`-regeln upp paketet `se.birdy.content.build` (kotlin-källkod).
-- `.editorconfig` + `afterEvaluate { ktlint.filter { exclude { ... "generated" ... } } }` i `shared/content/build.gradle.kts` — utesluter SQLDelight-genererade källor från ktlint (de använder 2-space indent och bryter våra regler).
-
-**Senaste commits (Tasks 11–15 + device-verifiering, pushade till origin med tag `v0.2.0a-pipeline`):**
-```
-b9b85bb docs(screenshot): plan 2a walking-skeleton milestone
-2fe3f81 fix(app): bundle pre-populated species.db at correct runtime path
-d4e3926 docs(claude): update Task 15 commit SHA in CLAUDE.md
-9a972ac ci(content): integrate validation + db build; mark Plan 2a complete
-8abf4dd feat(app): wire species.db into composeApp; HomeScreen shows 5 walking-skeleton species
-5c172ee feat(content): SpeciesRepository public API + SQLDelight implementation with i18n fallback
-502241b feat(content): SpeciesDbBuilder + buildSpeciesDb Gradle task; 5-species db generated
-86d97f1 feat(content): SpeciesValidator + validateSpeciesData Gradle task with all schema rules
-```
-
-**Nästa:** Plan 2b — content backfill family-by-family. Se `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Adressera Task 8 follow-ups (I1, I2, I4, I5) + Plan 2b prerequisites (P1705-gap, few-shot prompts) innan `--all` körs.
-
-## Plan 2b status (ÅTERUPPTAGEN)
-
-**Pausad 2026-05-04 vid 97/700, återupptagen efter `v0.3.0-encyclopedia` 2026-05-04.** Plan 3 ✅ klar — se "Plan 3 status (KLAR)" ovan. Nästa familj alfabetiskt = anatidae. Ingen device-verifiering behövs för 2b-arbetet (det är pure-data-pipeline + validator + Gradle-build).
-
-
-
-Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Senast uppdaterad 2026-05-04.
+Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Auto-memory: `project_plan_2b_status.md`.
 
 | Datum | Familj | Δ | Total | Commit |
 |---|---|---|---|---|
@@ -425,57 +192,22 @@ Runbook: `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Sen
 | 2026-05-04 | alaudidae | +27 | 97 | `d945e1f` |
 | _(next)_ | anatidae | | | |
 
-**Pre-Plan-2b-blockare avklarade:**
+**Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör anatidae". Pure-data — kan köras parallellt med Plan 4a.
 
-- ✅ **P1705-luckan** (`237e9a5`) — Wikidata-klienten hämtar nu `rdfs:label@sv` för taxon + family. 8/8 paridae-arter fick svenska namn autonomt; ingen manuell `species_list.yaml`-tillägg behövdes.
-- ✅ **Hero_review wirad i orchestrator** — `refresh_one` kallar `render_hero_review` för varje art och skriver `tools/content-pipeline/hero_review/{Q-ID}.html` (gitignored). Användaren öppnar HTML lokalt för att approve/override hero-pick. Tidigare existerade `hero_review.py`-modulen men anropades aldrig.
-- ✅ **Abundance-heuristik** — gamla `vp_status in {H,F} → allmän` mappade lokala rariteter (Lappmes, Hyrkanmes, Balkanmes) till "allmän" felaktigt. Ny default = `ovanlig`; promote per art via `abundance: allmän` i `species_list.yaml`. Validatorn fortsätter kräva `review_status=approved` för "allmän"-arter.
-
-**Workflow per familj (sammanfattning av runbook):**
-
-1. Identifiera Q-IDs i `species_list.yaml` för familjen.
-2. Lägg till `abundance: allmän` på rader för arter som genuint är vanliga i Sverige (default = ovanlig).
+**Workflow per familj** (sammanfattat — full version i runbook):
+1. Identifiera Q-IDs för familjen i `species_list.yaml`.
+2. Sätt `abundance: allmän` på rader för arter som genuint är vanliga i Sverige (default = `ovanlig`).
 3. `uv run birdy-fetcher refresh --species Q... --max-cost 0.30`.
-4. Öppna `tools/content-pipeline/hero_review/{Q-ID}.html` per allmän-art, godkänn eller override.
-5. Sätt `review_status: approved` + `review_notes` i de YAMLs vars hero du godkände.
+4. Öppna `tools/content-pipeline/hero_review/{Q-ID}.html` per allmän-art; godkänn/override hero-pick.
+5. Sätt `review_status: approved` + `review_notes` i godkända YAMLs.
 6. Bumpa `shared/content/expected-species-count.txt`.
 7. `./gradlew :shared:content:validateSpeciesData :shared:content:buildSpeciesDb :composeApp:assembleDebug`.
 8. Commit (`data(content): family <name> — N species (M approved, K auto)`) + push.
 
-**Paridae-batch lärdomar (2026-05-04, `f8cc17f`):**
+**Öppna icke-blockerande prereqs:** few-shot-exempel i `description-v1.md` (bara Talgoxe komplett — fyll Koltrast + Blåmes om kvalitet sjunker); Task 8 follow-ups I1/I2/I4/I5 (intressant först om en familj kräver djup pipeline-debug).
 
-- 8 arter committade: Q10546857 (koboltmes), Q191096 (svartmes), Q207831 (tofsmes), Q207838 (entita), Q215211 (talltita), Q4967039 (hyrkanmes), Q574281 (balkanmes), Q574447 (lappmes).
-- Q207838 (Entita) har endast 14-ords svwiki-artikel (under `SPARSE_WORD_THRESHOLD=20`) → `description.sv: ''`. Hanterat via `shared/content/overrides.yaml` `description_accept_missing: [sv]`.
-- Alla 8 markerades `review_status: approved` autonomt utan visuell hero-check (hero_review-modulen var inte wirad än vid körning). Det löpte risken att fel hero glider igenom; från och med nästa familj görs visuell check via genererad HTML.
-- Familjenamn på svenska från Wikidata = "Mesfåglar" (paridae). Walking-skeleton hade manuell "Mesar". Konsumenten i Plan 3 måste tåla varianter eller vi lägger en `family_sv`-mapping-tabell senare.
+## Avslutade planer (referens)
 
-**Accipitridae-batch lärdomar (2026-05-04, `1ed1895` + pipeline-fix `1bac05d`):**
-
-- 38 arter committade. 5 abundance:allmän (Sparvhök Q25380, Ormvråk Q25385, Havsörn Q25438, Fjällvråk Q26407, Brun kärrhök Q26431) approved efter visuell hero-check.
-- **Pipeline-bug upptäckt + fixad i `1bac05d`:** `--field text` skrev tomma image_refs (och tvärtom för `--field images`) — en partial-rerun-recovery destruerade committad data i andra sektionen. `refresh_one` läser nu existerande YAML när `--field` ≠ `all` och bevarar de ej-rörda fälten (image_refs/description/migration/review_status/review_notes). `--field=all` kvarstår som fresh-rebuild.
-- **REJECT_PATTERNS-utökning i `1bac05d`:** Plural-kategorier ("Bird illustrations", "(museum specimens)", "Taxidermied birds") och historiska zoologiska tryck (Iconographia, Hardwicke, Wellcome chromolithographs incl. trunkerad "Chromolithograp") matchas nu och filtreras bort i Commons-search.
-- **`commons_search_name`-override i `species_list.yaml`:** För taxon med ny genus där Commons-kategorier inte hängt med (Astur gentilis → Q137474876 söker `Accipiter gentilis`). Pattern återanvändbart för Botaurus/Tachyspiza i framtida familjer.
-- **18/38 arter (47%) behövde `description_accept_missing`-override** för minst ett språk. Stort dataquality-flag: svwiki har sparse coverage av mindre vanliga rovfåglar. Q55111925 (Rüppell's Vulture/Fläckgam) saknade artikel i båda språk → övervägd "borde inte vara i listan" men behållen för datakomplett.
-- **Recovery-flöde** efter trasig `--field images --force`-körning: `--field text` på alla 38 (cache hit, $0) återställde 12/23 tomma deskriptioner; resten täcktes av overrides. Pipeline-fixet möjliggjorde detta — utan den hade `--field text` slitit ut alla bilder.
-
-**Acrocephalidae-batch lärdomar (2026-05-04, `3609b98`):**
-
-- 19 arter committade. 3 abundance:allmän (Q27674 härmsångare, Q27236 sävsångare, Q159080 rörsångare) approved efter visuell hero-check.
-- **8/19 (42%) sparse-text-overrides** — liknande rate som accipitridae trots tättingfamilj. Slutsats: rate driven av rariteter (orientsångare, papyrussångare, kapverdesångare etc.), inte av familj-ordning.
-- **Validator-threshold (80w) > sparse-threshold (20w):** Q1590574 fick sv=72w (Claude körde, men under 80w-gränsen). Lägg `sv` i `description_accept_missing` även när text faktiskt finns men är för kort. Validatorn ger `description-too-short` om missat. Audit-checklistan måste flagga `< 80 words` separately från `sparse (< 20 words)`.
-- **`allow_missing_images: true` per art** finns redan som override (`ValidateMain.kt:15`). Använd när Commons saknar foto över `MIN_DIMENSION=2048`. Q891376 basrasångare hade bara 1071×905 → satt allow_missing_images. Bättre än att sänka MIN_DIMENSION globalt.
-- Q27674 härmsångare hade bara 1 image_ref (hero, ingen secondary). Validatorn accepterar — minimum är 1 hero. Inte allt är problem.
-- Cost: 64 Claude-calls / $0.064 (cumulativt 70 arter / ~$0.38).
-
-**Alaudidae-batch lärdomar (2026-05-04, `d945e1f`):**
-
-- 27 arter committade. 2 abundance:allmän (Q25961 sånglärka, Q26969 trädlärka) approved efter visuell hero-check. Övriga lärkor är öken-/Asien-endemics som inte når ovanlig-kvalifikationen i SE.
-- **13/27 (48%) sparse-text + 8/27 (30%) image-coverage-overrides.** 5 arter (Q1083050, Q1092087, Q110812143, Q55112126, Q966703) behöver båda. Stort flag för datakvalitet: alaudidae är inte en outlier — Plan 3 UI måste hantera "beskrivning kommer" + saknade bilder som ett vanligt fall.
-- **Pillow-krasch på .webm fixad i `c803ed1`:** Q25961 (sånglärka) fick `Galerida cristata, South Hebron.webm` som top-2 Commons-kandidat → ImageProcessor kraschade på `Pillow.Image.open`. Lösning: `ALLOWED_IMAGE_EXTS`-frozenset (Pillow-decodable raster only) gate i `rank_candidates`. SVG distribution-kartor filtreras av samma.
-- **gsrlimit=20 → 50 i `c803ed1`:** Q26969 (trädlärka, allmän) fick 0 candidates med gsrlimit=20 — top-20 var museum-specimens + sub-MIN_DIMENSION-foton. 50 ger 3 användbara hi-res-foton. Sparse-arter med genuint tunt Commons-utbud påverkas inte.
-- **Bird-of-passage** alarm: Q318893 svartlärka, Q1266617 dupontlärka, Q851570 lagerlärka — svwiki har långa artiklar (sv summarized OK), men enwiki är i flera fall stub. För familjer med stark svensk-Wikipedia-coverage men svag enwiki: vänta inte med override på `[en]` — kasta bara på direkt.
-
-**Pre-Plan-2b prerequisites kvar (icke-blockerande):**
-
-- ⏳ **Few-shot-exempel i `description-v1.md`:** Bara Talgoxe komplett. 13/13 hittills accepterar enstaka exempel. Fyll i Koltrast + Blåmes om kvalitet sjunker i en framtida familj.
-- ⏳ **Task 8 follow-ups (I1, I2, I4, I5) + minors:** Se Plan 2a status nedan. I2 (decompose `refresh_one`) blir intressant först om en familj-körning kräver djup debug.
+- **Plan 1 (Foundation, `v0.1.0-foundation`):** KMP-bootstrap, Compose, CI, Mossbädd-tema. Plan: `docs/superpowers/plans/` (sök 01-foundation).
+- **Plan 2a (Pipeline + walking skeleton, `v0.2.0a-pipeline`):** Python-baserad content-pipeline (Wikidata + Wikipedia + Claude + Commons → YAML → SQLDelight); 5 arter committade som walking skeleton. Plan: `2026-05-02-v1-02a-content-pipeline.md`. Pipeline-mönster: constructor-injection + content-hash i cache-nyckel + atomic-write + mypy strict + ruff (detaljer i `project_plan_2b_status.md`).
+- **Plan 3 (Encyclopedia, `v0.3.0-encyclopedia`):** Browse-lista (sök + filter-bottom-sheet) + species-profile (collapsing toolbar + sparse-data-fallbacks + Coil + hero-image-toolbar). Plan: `2026-05-04-v1-03-encyclopedia.md`. Återanvändbara mönster + post-tag bug-fixar i auto-memory `project_plan_3_strategy.md`. 6/7 device-screenshots committade — saknar `profile-sparse` (tas vid nästa device-session).
