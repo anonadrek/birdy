@@ -233,10 +233,20 @@ Plan: `docs/superpowers/plans/2026-05-04-v1-03-encyclopedia.md`. Spec: `docs/sup
 - `EncyclopediaViewModel`-test för filter-propagation behövde `advanceTimeBy(300)` istället för `awaitItem()` eftersom StateFlow dedupes equal `Loaded`-states (debounce-pipeline emitterar samma data, ingen ny event). Lärdom: ViewModel-tester med StateFlow + flatMapLatest kräver tids-baserad assertion när output kan vara identisk.
 - `SpeciesProfileViewModelTest` tog bort initial-Loading-assertion eftersom UnconfinedTestDispatcher kör `repo.getById()`-flow synkront → Loading skrivs över innan Turbine subskriberar. Trade-off: `Loading`-staten är inte unit-testad, men den är trivial (StateFlow.stateIn `initialValue`) och dyker upp i device-verifiering ändå.
 
+**Post-tag bug-fix lärdomar (2026-05-04 → 2026-05-05):**
+
+Tre fixar landade på top of `v0.3.0-encyclopedia` när device-verifieringen körde — mönster värt att komma ihåg innan Plan 4:
+
+- **`4566791` — KMP-modul-dependency + composeResources-prefix.** Två krascher upptäckta i samma session:
+  1. `composeApp/build.gradle.kts` använde `implementation(project(":shared:content"))`. Den dolde `SpeciesRepository` + `Locale` från `androidApp/MainActivity` som konstruerar `AppGraph(repository, defaultLocale)`. Kompilator-error vid first-build-on-device. Fix: byt till `api(...)`. **Regel:** publicerar man typer från en KMP-modul via konstruktor-parameter måste den dependency vara `api`. CommonTest som faktiskt instansierar `AppGraph` skulle ha fångat regressionen i CI.
+  2. `HeroImage.kt` skickade YAML-stored relativ path (`"Q25404/hero.jpg"`) direkt till `Res.getUri()`, men bundlade composeResources-bilder ligger på `files/images/<QID>/<slot>.jpg`. `MissingResourceException` i samma frame som första `SpeciesRow` renderades. Fix: prefix `"files/images/"` centralt i `HeroImage`, YAML-schema förblir rent. **Regel för Plan 4:** TFLite-modellfiler bör få samma centraliserade prefix-helper (`MlAssets.modelUri(...)`).
+- **`9011aae` — list-cap är aldrig design.** `SqlDelightSpeciesRepository.search()` hade leftover `.take(50)` efter SQL `LIMIT 200` → med 97 arter blev "Allmänna i Sverige (N)"-headern (14) istället för (23) och allt efter alfabetisk position 50 osynligt. Tog bort cap'en + bumpade SQL `LIMIT` till `Long.MAX_VALUE`. **Regel för Plan 4:** UI bestämmer cut (top-K predictions = 5–7), repo levererar allt.
+- **`e3e2629` — hero photo som toolbar-bakgrund.** `LargeTopAppBar` hade flat `HeroMossLight`. Bytte till hero-foto + dark gradient (alpha 0.25 → 0.65) för läsbarhet. Fallback till moss-grön solid när inga images finns. Spec hintade om detta men låste det inte; addresserades efter visuell feedback.
+
 **Pending efter taggning:**
 
-- ⏳ **Device-verifiering på SM-S918B** — telefon var inte ansluten vid Task 11. Plan 11 Step 2 specificerar 7 screenshots (bottom-nav, list, search, filter, profile-talgoxe, profile-sparse, profile-collapsed). Mönstret från Plan 2a (`b9b85bb`): screenshots committas i en separat efter-tag commit utan att blockera milstolpe-taggen.
-- ⏳ **Plan 4 (ML & Camera)** kan inte starta förrän device-verifieringen är klar och ev. UI-buggar är fixade. Plan 2b's anatidae-batch är nästa workstream som *kan* starta utan device.
+- ✅ **Device-verifiering på SM-S918B** — 6/7 screenshots committade i `54a87e0`. Saknar `profile-sparse` (defererad — telefon frigjordes innan capture). Tas när enheten ändå är ansluten för Plan 4-arbete.
+- ➡️ **Plan 4 (ML & Camera)** kan starta. Brainstorming + spec + plan-skrivning idag (2026-05-05); execution efter användargranskning.
 
 ## Plan 2a status (KLAR)
 

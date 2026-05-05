@@ -2843,4 +2843,34 @@ These additions go beyond the spec's preview:
 
 **2. Inline Execution** — Execute tasks in this session via `superpowers:executing-plans`, batch execution with checkpoints for review.
 
+---
+
+## Post-tag fixes & device-verify lärdomar (added 2026-05-05)
+
+Plan 3 taggades som `v0.3.0-encyclopedia` innan SM-S918B var ansluten. När device-verifieringen kördes följande kväll uppdagades två krascher + en lista-cap-bug + ett UX-fel på toolbar-bakgrunden. Alla fixar landade på top of tag (mönstret från Plan 2a:s `2fe3f81` post-tag-commit).
+
+**`4566791` — runtime-krasch 1 + 2 (device-verify):**
+
+1. `composeApp/build.gradle.kts` deklarerade `implementation(project(":shared:content"))`. Det dolde `SpeciesRepository` + `Locale` från downstream-konsumenter — `androidApp/MainActivity` konstruerar `AppGraph(repository, defaultLocale)` och kunde inte resolva typerna vid kompilering. Bytte till `api(project(":shared:content"))`. **Pattern att komma ihåg:** publicerar man typer från en KMP-modul via konstruktorparameter måste den dependency vara `api`, inte `implementation`.
+2. `HeroImage.kt` skickade YAML-stored relativ path direkt till `Res.getUri()` (t.ex. `"Q25404/hero.jpg"`), men bundlade composeResources-bilder ligger på `files/images/<QID>/<slot>.jpg`. Krasch med `MissingResourceException` i samma frame som `EncyclopediaScreen`-LazyColumn renderade första `SpeciesRow`. Fix: prefix `"files/images/"` centralt i `HeroImage` så YAML-schema förblir rent och båda call-sites (`SpeciesRow` + `SpeciesProfileScreen`-FOTOGRAFIER) får fixen automatiskt.
+
+**`9011aae` — Encyclopedia browse-list-cap (post-device-verify):**
+
+`SqlDelightSpeciesRepository.search()` hade hård cap på 50 resultat — SQL `LIMIT 200` följdes av en client-side `.take(50)`. Med 97 arter i DB blev "Allmänna i Sverige (N)"-headern fel ((14) istället för (23)) och alla arter efter alfabetisk position 50 blev osynliga. Tog bort `.take(50)` + bumpade SQL-`LIMIT` till `Long.MAX_VALUE`. LazyColumn klarar arbiträra listor; cap'en var leftover, inte design.
+
+**`e3e2629` — hero image toolbar (UX-fix, inte bug):**
+
+`SpeciesProfileScreen`-`LargeTopAppBar` hade en flat `HeroMossLight`-bakgrund — funktionellt men platt jämfört med specens vision. Bytte till artens hero-foto + en vertikal mörk gradient (alpha 0.25 → 0.65) så titel + scientific name förblir läsbara på vilket foto som helst. Fallback till moss-grön solid när `images` är tomt. Spec §4.3 hintade om detta men låste det inte; addresserades efter visuell feedback från första devicekörningen.
+
+**`54a87e0` — 6/7 device-verifierings-screenshots:**
+
+Screenshots tagna från SM-S918B i `docs/superpowers/screenshots/2026-05-05-*.png`: bottom-nav, encyclopedia-list, encyclopedia-search, encyclopedia-filter, profile-talgoxe (post-`e3e2629`), profile-collapsed. **Saknar:** `profile-sparse` (en art med tom sv+en-beskrivning som visar inline-empty-section). Defererad — telefon frigjordes innan capture. Tar vi när vi ändå har enheten ansluten för Plan 4-arbete.
+
+**Vad det innebär för Plan 4 + 2b:**
+
+- **Modul-dependency-mönster:** Plan 4 kommer addera `shared:ml` + `shared:camera` som `composeApp` konsumerar. Lock in `api(...)` så fort en konstruktor-injicerad typ läcker uppåt. Lägg en commonTest som faktiskt instansierar `AppGraph` så regressionen syns i CI istället för på device.
+- **Resource-path-prefixing:** Bundlade composeResources har en mangling-prefix vi inte alltid kontrollerar (`composeResources/birdy_bird_scanner.composeapp.generated.resources/...`). När Plan 4 bundlar TFLite-modellfiler, gör samma centraliserade prefix-helper (`MlAssets.modelUri(...)`) istället för att duplicera path-strings.
+- **List-caps är aldrig design:** Plan 4 result-list (top-K predictions) har naturligt cap (5–7 i UX) men ska inte limiteras i repo-lagret. UI bestämmer cut, repo levererar allt.
+
+
 Which approach?
