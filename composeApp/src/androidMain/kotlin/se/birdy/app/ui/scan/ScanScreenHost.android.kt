@@ -21,7 +21,7 @@ actual fun ScanScreenHost(
     val context = LocalContext.current
     val permission = rememberCameraPermissionState(context)
     val viewModel = viewModel { graph.scanViewModel() }
-    val cameraSource = remember(graph) { graph.cameraSourceFactory() }
+    val cameraSource = viewModel.cameraSource
 
     LaunchedEffect(permission.status) {
         when (permission.status) {

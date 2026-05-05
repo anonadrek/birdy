@@ -25,7 +25,7 @@ import se.birdy.ml.ImageInput
 
 class ScanViewModel(
     private val classifier: BirdClassifier,
-    private val cameraSourceFactory: () -> CameraSource,
+    cameraSourceFactory: () -> CameraSource,
     initialSamplePeriodMs: Long = 333L,
     private val confidenceThreshold: Float = 0.35f,
     private val frameThrottling: Boolean = true,
@@ -34,7 +34,10 @@ class ScanViewModel(
     private val _state = MutableStateFlow<ScanUiState>(ScanUiState.PermissionRequired)
     val state: StateFlow<ScanUiState> = _state.asStateFlow()
 
-    private var cameraSource: CameraSource? = null
+    // Single source instance owned by the VM and exposed to the UI so PreviewView
+    // and the camera bind to the same CameraSource.
+    val cameraSource: CameraSource = cameraSourceFactory()
+    private var pipelineStarted: Boolean = false
     private var lastClassification: Classification? = null
     private var consecutiveErrors: Int = 0
 
@@ -62,17 +65,16 @@ class ScanViewModel(
     }
 
     private fun startPipeline() {
-        if (cameraSource != null) return
-        val source = cameraSourceFactory()
-        cameraSource = source
+        if (pipelineStarted) return
+        pipelineStarted = true
 
         viewModelScope.launch {
-            runCatching { source.start() }
+            runCatching { cameraSource.start() }
         }
 
         // Producer: forward camera frames into the shared drop-oldest sink.
         viewModelScope.launch {
-            source.frames().collect { frame -> frameSink.tryEmit(frame) }
+            cameraSource.frames().collect { frame -> frameSink.tryEmit(frame) }
         }
 
         // Consumer: rebuild the sampled flow whenever the period changes.
@@ -136,16 +138,12 @@ class ScanViewModel(
     }
 
     override fun onCleared() {
-        val src = cameraSource
-        cameraSource = null
         classifier.close()
-        if (src != null) {
-            // viewModelScope is already cancelled when onCleared runs — any launch on it
-            // is a no-op. Use GlobalScope + NonCancellable for this fire-and-forget teardown.
-            @Suppress("OPT_IN_USAGE")
-            GlobalScope.launch(kotlinx.coroutines.Dispatchers.Default + NonCancellable) {
-                runCatching { src.stop() }
-            }
+        // viewModelScope is already cancelled when onCleared runs — any launch on it
+        // is a no-op. Use GlobalScope + NonCancellable for this fire-and-forget teardown.
+        @Suppress("OPT_IN_USAGE")
+        GlobalScope.launch(kotlinx.coroutines.Dispatchers.Default + NonCancellable) {
+            runCatching { cameraSource.stop() }
         }
     }
 }
