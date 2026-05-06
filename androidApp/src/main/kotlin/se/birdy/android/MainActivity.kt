@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import se.birdy.app.App
 import se.birdy.app.SpeciesRepositoryProvider
 import se.birdy.app.di.AppGraph
+import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.content.Locale
 import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.camera.AndroidCameraSource
@@ -16,6 +17,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         cleanOldCacheFrames()
         SpeciesRepositoryProvider.init(applicationContext)
+        PhotoStorageProvider.init(applicationContext)
         val graph =
             AppGraph(
                 repository = SpeciesRepositoryProvider.get(),
