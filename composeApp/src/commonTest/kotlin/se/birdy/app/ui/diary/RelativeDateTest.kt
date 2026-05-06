@@ -37,12 +37,23 @@ class RelativeDateTest {
     }
 
     @Test
-    fun older_than_seven_days_is_full() {
+    fun seven_days_ago_is_still_within_week() {
         val ts = Instant.parse("2026-04-29T06:55:00Z") // 08:55 Stockholm — 7 days ago
         val result = relativeDate(ts, now, tz)
-        val full = assertIs<RelativeDateText.WithinWeek>(result) // 7 days = still relative
-        assertEquals(29, full.dayOfMonth)
+        val rel = assertIs<RelativeDateText.WithinWeek>(result)
+        assertEquals(29, rel.dayOfMonth)
+        assertEquals(4, rel.month1Based)
+    }
+
+    @Test
+    fun eight_days_ago_is_full() {
+        val ts = Instant.parse("2026-04-28T06:55:00Z") // 08:55 Stockholm — 8 days ago
+        val result = relativeDate(ts, now, tz)
+        val full = assertIs<RelativeDateText.Full>(result)
+        assertEquals(2026, full.year)
+        assertEquals(28, full.dayOfMonth)
         assertEquals(4, full.month1Based)
+        assertEquals("08:55", full.timeOfDay)
     }
 
     @Test
