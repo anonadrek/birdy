@@ -16,6 +16,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -49,6 +50,7 @@ import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.MossCreme
 import se.birdy.app.ui.theme.SandCreme
 import se.birdy.app.ui.theme.TextOnCreme
+import se.birdy.app.ui.theme.TextOnHero
 
 @Composable
 fun ClassificationResultScreen(
@@ -86,104 +88,110 @@ private fun LoadedView(
     onSpeciesClick: (String) -> Unit,
     onSave: () -> Unit,
 ) {
-    Column(
-        modifier =
-            Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState()),
-    ) {
-        // Hero top-1
-        HeroCard(state.top1, onClick = { onSpeciesClick(state.top1.species.id.raw) })
+    val snackbarHost = remember { SnackbarHostState() }
+    val successLabel = stringResource(Res.string.diary_save_success)
+    val errorPhotoLabel = stringResource(Res.string.diary_save_error_photo)
+    val errorStorageLabel = stringResource(Res.string.diary_save_error_storage)
+    val errorDbLabel = stringResource(Res.string.diary_save_error_db)
+    val errorFrameLabel = stringResource(Res.string.diary_save_error_frame_unavailable)
 
-        // Frozen-frame banner
-        if (state.frozenFramePath != null) {
-            Spacer(modifier = Modifier.height(12.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(
-                    modifier =
-                        Modifier
-                            .size(80.dp)
-                            .background(SandCreme, RoundedCornerShape(12.dp)),
+    LaunchedEffect(state.saveStatus) {
+        when (val s = state.saveStatus) {
+            ClassificationResultUiState.SaveStatus.Saved -> snackbarHost.showSnackbar(successLabel)
+            is ClassificationResultUiState.SaveStatus.Failed ->
+                snackbarHost.showSnackbar(
+                    when (s.kind) {
+                        ClassificationResultUiState.SaveStatus.Failed.Kind.PhotoEncodeFailed -> errorPhotoLabel
+                        ClassificationResultUiState.SaveStatus.Failed.Kind.StorageFull -> errorStorageLabel
+                        ClassificationResultUiState.SaveStatus.Failed.Kind.DatabaseFailed -> errorDbLabel
+                        ClassificationResultUiState.SaveStatus.Failed.Kind.FrameUnavailable -> errorFrameLabel
+                    },
                 )
-                Spacer(modifier = Modifier.size(12.dp))
-                Text(stringResource(Res.string.result_your_scan), color = TextOnCreme)
-            }
+            else -> Unit
         }
-        Spacer(modifier = Modifier.height(16.dp))
+    }
 
-        // Top-2/3 row
-        if (state.runnerUps.isNotEmpty()) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-            ) {
-                state.runnerUps.forEach { rp ->
-                    RunnerUpCard(
-                        prediction = rp,
-                        modifier = Modifier.weight(1f),
-                        onClick = { onSpeciesClick(rp.species.id.raw) },
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState()),
+        ) {
+            // Hero top-1
+            HeroCard(state.top1, onClick = { onSpeciesClick(state.top1.species.id.raw) })
+
+            // Frozen-frame banner
+            if (state.frozenFramePath != null) {
+                Spacer(modifier = Modifier.height(12.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(
+                        modifier =
+                            Modifier
+                                .size(80.dp)
+                                .background(SandCreme, RoundedCornerShape(12.dp)),
                     )
+                    Spacer(modifier = Modifier.size(12.dp))
+                    Text(stringResource(Res.string.result_your_scan), color = TextOnCreme)
                 }
             }
-        }
-        Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-        // Unresolved pill
-        if (state.unresolved.isNotEmpty()) {
+            // Top-2/3 row
+            if (state.runnerUps.isNotEmpty()) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    state.runnerUps.forEach { rp ->
+                        RunnerUpCard(
+                            prediction = rp,
+                            modifier = Modifier.weight(1f),
+                            onClick = { onSpeciesClick(rp.species.id.raw) },
+                        )
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // Unresolved pill
+            if (state.unresolved.isNotEmpty()) {
+                Text(
+                    text = stringResource(Res.string.result_unresolved_count, state.unresolved.size),
+                    color = HeroMossLight,
+                    style = MaterialTheme.typography.labelSmall,
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+            }
+
+            val isSaved = state.saveStatus == ClassificationResultUiState.SaveStatus.Saved
+            val isSaving = state.saveStatus == ClassificationResultUiState.SaveStatus.Saving
+            Button(
+                onClick = { onSave() },
+                enabled = !isSaving && !isSaved,
+                colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = TextOnHero),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(
+                    if (isSaved) {
+                        stringResource(Res.string.diary_saved_indicator)
+                    } else {
+                        stringResource(Res.string.result_save_observation)
+                    },
+                )
+            }
             Text(
-                text = stringResource(Res.string.result_unresolved_count, state.unresolved.size),
+                text = stringResource(Res.string.result_save_hint),
                 color = HeroMossLight,
                 style = MaterialTheme.typography.labelSmall,
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-        }
-
-        val snackbarHost = remember { SnackbarHostState() }
-        val successLabel = stringResource(Res.string.diary_save_success)
-        val errorPhotoLabel = stringResource(Res.string.diary_save_error_photo)
-        val errorStorageLabel = stringResource(Res.string.diary_save_error_storage)
-        val errorDbLabel = stringResource(Res.string.diary_save_error_db)
-        val errorFrameLabel = stringResource(Res.string.diary_save_error_frame_unavailable)
-
-        LaunchedEffect(state.saveStatus) {
-            when (val s = state.saveStatus) {
-                ClassificationResultUiState.SaveStatus.Saved -> snackbarHost.showSnackbar(successLabel)
-                is ClassificationResultUiState.SaveStatus.Failed ->
-                    snackbarHost.showSnackbar(
-                        when (s.kind) {
-                            ClassificationResultUiState.SaveStatus.Failed.Kind.PhotoEncodeFailed -> errorPhotoLabel
-                            ClassificationResultUiState.SaveStatus.Failed.Kind.StorageFull -> errorStorageLabel
-                            ClassificationResultUiState.SaveStatus.Failed.Kind.DatabaseFailed -> errorDbLabel
-                            ClassificationResultUiState.SaveStatus.Failed.Kind.FrameUnavailable -> errorFrameLabel
-                        },
-                    )
-                else -> Unit
-            }
-        }
-
-        val isSaved = state.saveStatus == ClassificationResultUiState.SaveStatus.Saved
-        val isSaving = state.saveStatus == ClassificationResultUiState.SaveStatus.Saving
-        Button(
-            onClick = { onSave() },
-            enabled = !isSaving && !isSaved,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Text(
-                if (isSaved) {
-                    stringResource(Res.string.diary_saved_indicator)
-                } else {
-                    stringResource(Res.string.result_save_observation)
-                },
+                modifier = Modifier.padding(top = 4.dp),
             )
         }
-        Text(
-            text = stringResource(Res.string.result_save_hint),
-            color = HeroMossLight,
-            style = MaterialTheme.typography.labelSmall,
-            modifier = Modifier.padding(top = 4.dp),
+        SnackbarHost(
+            hostState = snackbarHost,
+            modifier = Modifier.align(Alignment.BottomCenter),
         )
-        SnackbarHost(snackbarHost)
     }
 }
 
