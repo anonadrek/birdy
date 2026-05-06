@@ -110,3 +110,23 @@ species:
   Q966703:
     description_accept_missing: [en]  # Tibetansk korttålärka (Hume's Short-toed Lark)
     allow_missing_images: true
+  # Anatidae batch (2026-05-06): Wikipedia lead paragraph too short (single-sentence stub).
+  Q210954:
+    description_accept_missing: [en]  # Alförrädare (Steller's Eider) — enwiki lead 1 sentence
+  Q241399:
+    description_accept_missing: [sv]  # Kopparand (White-headed Duck) — svwiki lead 1 sentence
+  Q26603:
+    description_accept_missing: [en]  # Mindre sångsvan (Tundra Swan) — enwiki lead 1 sentence
+  Q27074540:
+    description_accept_missing: [sv]  # Snögås (Snow Goose) — svwiki lead 1 sentence
+  Q28106778:
+    description_accept_missing: [sv]  # Blåvingad årta (Blue-winged Teal) — svwiki lead 1 sentence
+  Q28106902:
+    description_accept_missing: [sv]  # Årta (Garganey) — svwiki lead 1 sentence
+  Q331447:
+    description_accept_missing: [sv]  # Marmorand (Marbled Duck) — svwiki lead 1 sentence
+  Q369767:
+    description_accept_missing: [sv]  # Islandsknipa (Barrow's Goldeneye) — svwiki lead 1 sentence
+  # Anatidae allmän outlier: both languages have only 1-sentence Wikipedia leads.
+  Q28106966:
+    description_accept_missing: [sv, en]  # Snatterand (Gadwall) — both wikis have 1-sentence stub leads despite common species

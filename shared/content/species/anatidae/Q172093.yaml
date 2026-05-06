@@ -1,0 +1,122 @@
+id: Q172093
+scientific_name: Anser albifrons
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Anser
+  ioc_order: Anseriformes
+names:
+  sv: Bläsgås
+  en: Greater White-fronted Goose
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bläsgås
+
+
+    Bläsgås är en gås i familjen egentliga andfåglar och står nära släkt med fjällgås.
+    Det är en medelstor gås med karakteristisk vit panna och ansikte – en markering
+    som gett arten sitt namn. Kroppen är brungrå med mörkare övergumpp och vita undertäckare
+    under svansen. Benen är orange-gula.
+
+
+    Bläsgås är en flyttfågel som häckar i de arktiska regionerna runt Nordpolen, utspritt
+    över Europa, Asien, Nordamerika och Grönland. Under hösten drar det samtal av
+    gäss sydvart till övervintringsplatserna. Det är en social fågel som förekommer
+    i flockar, ofta tillsammans med andra gässarter. Det föda sig genom att beta på
+    gräs och växter.'
+  en: '# Greater White-fronted Goose
+
+
+    The greater white-fronted goose is a migratory species named for the distinctive
+    white patch of feathers bordering the base of its bill. Adults are particularly
+    recognizable by their salt-and-pepper markings on the breast—so characteristic
+    that the bird is colloquially called the "specklebelly." It is closely related
+    to the smaller lesser white-fronted goose, from which it can be distinguished
+    by size and plumage details.
+
+
+    This species breeds across northern regions including Canada, Alaska, Greenland,
+    and Russia, undertaking long migrations to wintering grounds in more temperate
+    areas across North America, Europe, and Asia. It is a highly migratory goose,
+    with populations moving seasonally between breeding and wintering territories.
+    The greater white-fronted goose favors open habitats where it can be spotted in
+    flocks during migration periods and winter months, making it a regular sight for
+    birdwatchers across its range.'
+migration:
+  sv: '# Bläsgås - Migration och förekomst i Norden
+
+
+    Bläsgåsen är en långdistansflyttfågel som häckar i arktiska regioner över stora
+    delar av Palearktis och Nearktis. Under hösten återvänder bläsgässen från sina
+    häckningsområden och passerar genom Skandinavien på väg till övervintringsplatserna
+    längre söderut, främst i Västeuropa och Medelhavsregionen. Arten ankommer till
+    Norden under våren, från april och framåt, då den fyller på energireserver innan
+    den återvänder till de arktiska häckningsplatserna. Under vintern är förekomsten
+    i Skandinavien begränsad, men arten förekommer då före allt i de västra delarna
+    av regionen.'
+  en: '# Greater White-fronted Goose (Anser albifrons) in Scandinavia/Northern Europe
+
+
+    The greater white-fronted goose is a migratory species that passes through and
+    winters in Northern Europe. Birds breeding in Greenland and Russia migrate southward
+    in autumn, with populations arriving in Scandinavia and Northern Europe from September
+    through November. They utilize these regions as both wintering grounds and migration
+    stopover sites, departing northward again in spring (March–April) to return to
+    arctic breeding territories. Some individuals overwinter in the region, particularly
+    in milder coastal areas and wetlands where open water remains available.'
+image_refs:
+- role: hero
+  path: Q172093/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater white-fronted goose
+    (Anser albifrons).jpg
+  commons_filename: Greater white-fronted goose (Anser albifrons).jpg
+- role: secondary
+  path: Q172093/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: LiCheng Shih
+  source_url: https://commons.wikimedia.org/wiki/File:Anser albifrons frontalis at
+    Shengang, Changhua 2022-11-19.jpg
+  commons_filename: Anser albifrons frontalis at Shengang, Changhua 2022-11-19.jpg
+- role: secondary
+  path: Q172093/secondary-2.jpg
+  width: 1800
+  height: 1185
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater white-fronted goose
+    (Anser albifrons) 2020.jpg
+  commons_filename: Greater white-fronted goose (Anser albifrons) 2020.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:52:20.120044+00:00'
+sources:
+  wikipedia_sv_revision: '58564101'
+  wikipedia_en_revision: '1339901957'
+  claude_model: claude-haiku-4-5-20251001

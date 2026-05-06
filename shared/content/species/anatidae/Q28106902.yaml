@@ -1,0 +1,103 @@
+id: Q28106902
+scientific_name: Spatula querquedula
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Spatula
+  ioc_order: Anseriformes
+names:
+  sv: Årta
+  en: Garganey
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Garganey
+
+
+    The garganey is a small, elegant dabbling duck that breeds across much of Europe
+    and the Palearctic region. It is highly migratory, with the entire population
+    abandoning breeding areas each winter to migrate to Africa, India, Bangladesh,
+    and Australasia, where it can form large flocks.
+
+
+    In flight, the garganey is notably agile and distinctive, rising quickly from
+    the water with a fast, twisting movement reminiscent of waders rather than typical
+    ducks. This characteristic flight style makes it relatively easy to identify in
+    action. The species prefers shallow wetland habitats where it can dabble for food.
+
+
+    As a migratory species, the garganey''s presence is seasonal and largely dependent
+    on local breeding and wintering ranges. Those in temperate regions will encounter
+    this duck primarily during breeding season in spring and early summer, while winter
+    sightings are unlikely in Northern Hemisphere locations outside of migration periods.
+    Its small size and agile flight distinguish it from larger dabbling ducks in its
+    range.'
+migration:
+  sv: ''
+  en: '# Garganey Migration in Northern Europe
+
+
+    The garganey is a strictly migratory species throughout Scandinavia and Northern
+    Europe. Breeding birds arrive in spring, typically from April onwards, to establish
+    populations across suitable wetland habitats. However, the entire Northern European
+    population departs during autumn migration, with birds leaving by September to
+    early October. The species winters entirely in Africa, India, Bangladesh, and
+    Australasia, making it an obligate long-distance migrant that completely vacates
+    the region during winter months. This complete absence during winter distinguishes
+    the garganey from more resident dabbling duck species in the region.'
+image_refs:
+- role: hero
+  path: Q28106902/hero.jpg
+  width: 2048
+  height: 1437
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Female garganey (Spatula querquedula)
+    in Algeria.jpg
+  commons_filename: Female garganey (Spatula querquedula) in Algeria.jpg
+- role: secondary
+  path: Q28106902/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Karthikeyan181189" title="User:Karthikeyan181189">Karthikeyan181189</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Garganey (Spatula querquedula)
+    Coimbatore DSCN2951.jpg
+  commons_filename: Garganey (Spatula querquedula) Coimbatore DSCN2951.jpg
+- role: secondary
+  path: Q28106902/secondary-2.jpg
+  width: 1800
+  height: 1346
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Garganey Spatula querquedula
+    02.jpg
+  commons_filename: Garganey Spatula querquedula 02.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:53:40.140761+00:00'
+sources:
+  wikipedia_sv_revision: '58510758'
+  wikipedia_en_revision: '1347137232'
+  claude_model: claude-haiku-4-5-20251001

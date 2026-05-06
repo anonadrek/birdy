@@ -1,0 +1,118 @@
+id: Q28106685
+scientific_name: Mareca americana
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Mareca
+  ioc_order: Anseriformes
+names:
+  sv: Amerikansk bläsand
+  en: American Wigeon
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Amerikansk bläsand
+
+
+    Amerikansk bläsand är en simandfågel som utgör den nordamerikanska motsvarigheten
+    till eurasisk bläsand. Det är en medelstor andart som tillhör familjen änder.
+
+
+    Arten förekommer primärt i Nordamerika och kan ses på både sötvattens- och brackvattenhabitat.
+    Amerikansk bläsand är en migrerande fågel som följer säsongsväxlingar, dock kan
+    den påträffas i olika regioner beroende på årstid och väderförhållanden.
+
+
+    För den intresserade fågelskådaren är denna art värd att lära känna, särskilt
+    i sitt utbredningsområde där den kan observeras tillsammans med andra andarter
+    vid olika vattendrag och våtmarker under lämpliga årstider.'
+  en: "# American Wigeon\n\nThe American wigeon, also called the baldpate, is a dabbling\
+    \ duck found across North America. It belongs to the genus Mareca, alongside other\
+    \ wigeons, and serves as the New World equivalent of the Eurasian wigeon.\n\n\
+    Male American wigeons are distinctive with their white foreheads and crowns, which\
+    \ inspired the \"baldpate\" nickname. The head is predominantly green with a white\
+    \ stripe running through the eye. The body displays a warm chestnut breast and\
+    \ neck, contrasting with a pale grey back. Females are more subdued in coloration,\
+    \ appearing greyish-brown overall. Both sexes show a characteristic pointed tail\
+    \ and white belly.\n\nThese ducks are dabbling specialists, often seen tipping\
+    \ forward in shallow water to feed on aquatic vegetation and seeds. They are notably\
+    \ gregarious birds, frequently gathering in flocks, particularly during migration\
+    \ and winter. American wigeons are also known for opportunistically stealing food\
+    \ from diving ducks, a behaviour called kleptoparasitism. \n\nThe call is distinctive—males\
+    \ produce a three-note whistle that sounds like \"whee-whoo-whee,\" while females\
+    \ make harsh quacking sounds. They breed in prairie wetlands and marshes across\
+    \ northern regions, and migrate to coastal and inland waterbodies for winter,\
+    \ where they can be observed in mixed flocks with other duck species."
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (The source text provided contains only taxonomic information about the American
+    Wigeon being a dabbling duck species and the North American counterpart of the
+    Eurasian Wigeon, but includes no information about its occurrence, migration patterns,
+    or seasonal distribution in Scandinavia/Northern Europe.)'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and geographic information about
+    the American Wigeon being found in North America, with no details about its occurrence
+    in Scandinavia or Northern Europe, nor any information about migration patterns,
+    overwintering, or seasonal arrival months in that region.'
+image_refs:
+- role: hero
+  path: Q28106685/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/132545975@N04">Melissa
+    McMasters</a> from Memphis, TN, United States
+  source_url: https://commons.wikimedia.org/wiki/File:Mareca americana (31542877912).jpg
+  commons_filename: Mareca americana (31542877912).jpg
+- role: secondary
+  path: Q28106685/secondary-1.jpg
+  width: 1800
+  height: 1163
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/52450054@N04">Judy
+    Gallagher</a>
+  source_url: https://commons.wikimedia.org/wiki/File:American Wigeon - Mareca americana,
+    Cambridge, Maryland, January 2, 2024 (53536171838).jpg
+  commons_filename: American Wigeon - Mareca americana, Cambridge, Maryland, January
+    2, 2024 (53536171838).jpg
+- role: secondary
+  path: Q28106685/secondary-2.jpg
+  width: 1800
+  height: 1268
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/52450054@N04">Judy
+    Gallagher</a>
+  source_url: https://commons.wikimedia.org/wiki/File:329 365 - American Wigeon -
+    Mareca americana, Cambridge, Maryland, November 25, 2023 (53355399277).jpg
+  commons_filename: 329 365 - American Wigeon - Mareca americana, Cambridge, Maryland,
+    November 25, 2023 (53355399277).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:57:03.113241+00:00'
+sources:
+  wikipedia_sv_revision: '57289178'
+  wikipedia_en_revision: '1345372721'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,135 @@
+id: Q331179
+scientific_name: Histrionicus histrionicus
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Histrionicus
+  ioc_order: Anseriformes
+names:
+  sv: Strömand
+  en: Harlequin Duck
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Strömand
+
+
+    Strömanden är en liten, stilig andfågel som tillhör underfamiljen Merginae. Den
+    karakteriseras av sitt slående färgmönster med mörkblå, vit och rostfärgad teckning.
+    Hanen är särskilt iögonfallande med vita fläckar på huvud och kropp, medan honan
+    är mer diskret brungrå färgad.
+
+
+    Arten är en specialiserad bofågel i turbulenta, strömmande vattendrag i nordliga
+    regioner, främst i Nordamerika och Asien, men häckar även på Island. Den är utmärkt
+    anpassad för liv i snabbt flytande vatten och dykningar för att finna föda på
+    botten. Strömanden är mycket sällsynt i Europa, med endast två dokumenterade fynd
+    i Sverige under 1800-talet.
+
+
+    Populationen anses i dag vara livskraftig och växer i antal. Arten håller sig
+    oftast på sina häckningsplatser och ses mycket sällan utanför sitt normala utbredningsområde.'
+  en: '# Harlequin Duck
+
+
+    The harlequin duck is a small, strikingly patterned sea duck that takes its name
+    from the theatrical Harlequin character due to its colourful and intricate plumage.
+    Males display distinctive patches of chestnut, cream, and slate-blue with bold
+    white markings on the head and body, creating a bold, almost comic appearance.
+    Females are duller brown with white spots on the head and ear patches.
+
+
+    This species inhabits fast-flowing mountain streams and coastal rocky areas, often
+    perching on boulders in turbulent waters. It dives readily to feed on aquatic
+    invertebrates, moving with agility through challenging currents. The harlequin
+    duck is known for its various vocalizations, including squeaking calls from which
+    one of its alternative names derives.
+
+
+    The species is found in northern regions, typically in areas with glacial or mountain-fed
+    waters. It prefers remote, rugged habitats far from human disturbance and is less
+    common and more elusive than many other duck species. Its specialized preference
+    for turbulent waters and sparse distribution makes it a sought-after sighting
+    for keen birdwatchers.'
+migration:
+  sv: '# Strömand (Histrionicus histrionicus) – Förekomst i Skandinavien/Nordeuropa
+
+
+    Strömanden är en mycket sällsynt besökare i Skandinavien och övriga Europa. Arten
+    häckar huvudsakligen i nordliga delar av Nordamerika och Asien, samt på Island,
+    där den förekommer i strömmande vattendrag. I Sverige är arten dokumenterad endast
+    genom två fynd från 1800-talet, vilket visar att den är ytterst ovanlig i våra
+    regioner. Det finns ingen etablerad migrationsmönster för arten i nordeuropeisk
+    kontext, då den inte är en regelbunden flyttfågel här. Eventuella observationer
+    i Skandinavien anses vara tillfälliga avvikningar från hennes normala utbredningsområde.'
+  en: '# Harlequin Duck (Histrionicus histrionicus) in Northern Europe
+
+
+    The Harlequin Duck is a rare visitor to Scandinavian waters, with only occasional
+    sightings recorded in the region. In northern Europe, this small sea duck appears
+    irregularly during winter months, typically from November through March, though
+    observations are sporadic and unpredictable. The species has a circumpolar distribution
+    centered on Arctic and subarctic regions, with populations breeding in Iceland,
+    northern Russia, and parts of Greenland. Wintering birds move to ice-free coastal
+    waters, and Scandinavian records likely represent individuals from the small Icelandic
+    breeding population dispersing during severe winters or when ice conditions force
+    them southward.'
+image_refs:
+- role: hero
+  path: Q331179/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
+    National Park</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Harlequin duck (Histrionicus
+    histrionicus) resting on a rock in Le Hardy Rapids (42879550752).jpg
+  commons_filename: Harlequin duck (Histrionicus histrionicus) resting on a rock in
+    Le Hardy Rapids (42879550752).jpg
+- role: secondary
+  path: Q331179/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/yellowstonenps/">YellowstoneNPS</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Harlequin duck (Histrionicus
+    histrionicus) pair in Soda Butte Creek (2) (52887592971).jpg
+  commons_filename: Harlequin duck (Histrionicus histrionicus) pair in Soda Butte
+    Creek (2) (52887592971).jpg
+- role: secondary
+  path: Q331179/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
+    National Park</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Harlequin duck (Histrionicus
+    histrionicus) male in Soda Butte Creek - Flickr - YellowstoneNPS.jpg
+  commons_filename: Harlequin duck (Histrionicus histrionicus) male in Soda Butte
+    Creek - Flickr - YellowstoneNPS.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:57:18.638943+00:00'
+sources:
+  wikipedia_sv_revision: '57455816'
+  wikipedia_en_revision: '1324162089'
+  claude_model: claude-haiku-4-5-20251001

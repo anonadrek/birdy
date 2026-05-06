@@ -1,0 +1,133 @@
+id: Q26452
+scientific_name: Anser fabalis
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Anser
+  ioc_order: Anseriformes
+names:
+  sv: Sädgås
+  en: Taiga Bean Goose
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sädgås
+
+
+    Sädgås var tidigare benämningen på en gåsart som numera är uppdelad i två olika
+    arter: Skogsgås och Tundragås. Båda är medelstor grå gäss som tillhör familjen
+    änder.
+
+
+    Skogsgås häckar i norra Europa och norra Asien, medan Tundragås förekommer på
+    tundra i norra Ryssland och Sibirien. De två arterna skiljer sig åt i sitt utbredningsområde
+    och sina häckningshabitat, där Skogsgås föredrar skogsmiljöer och Tundragås de
+    öppna tundrmarkerna.
+
+
+    Denna uppdelning gjordes officiell i juni 2025 för att bättre återspegla de genetiska
+    och ekologiska skillnaderna mellan de två populationerna.'
+  en: '# Taiga Bean Goose
+
+
+    The taiga bean goose is a northern-breeding goose found across boreal forests
+    in Europe and Asia. It is fully migratory, moving south during winter to lower
+    latitudes in both continents. This species was recognized as distinct from the
+    closely related tundra bean goose in 2007, though some authorities still treat
+    them as a single species. The two populations diverged approximately 2.5 million
+    years ago but reestablished contact around 60,000 years ago, resulting in significant
+    genetic overlap between them.
+
+
+    Identifying the taiga bean goose in the field requires careful observation, particularly
+    when distinguishing it from the tundra bean goose. Both species share similar
+    plumage patterns and size, making field identification challenging. The species
+    is best observed during migration periods and in winter habitats where it congregates
+    with other geese. Habitat preferences include wetlands, grasslands, and agricultural
+    areas where the birds feed on plants and seeds.
+
+
+    The taxonomic status of this species remains somewhat unsettled, with different
+    ornithological organizations maintaining different classifications. This ongoing
+    debate reflects the complex evolutionary history and gene flow between these closely
+    related populations.'
+migration:
+  sv: '# Sädgås (Anser fabalis) – Migration i Skandinavien
+
+
+    Sädgås är en migrerande gåsart som förekommer i Skandinavien främst under höst-
+    och vårflyttningen. Arten anländer till Norden från sina häckningsområden i norra
+    Europa och Asien under hösten, vanligtvis från september-oktober, för att övervintra
+    i södra Sverige och Danmark innan den återvänder norrut på våren i mars-april.
+    Under denna period ses arten ofta på våtmarker, sjöar och odlad mark där den förekommer
+    i mindre eller större flockningar.
+
+
+    Det är värt att notera att sedan juni 2025 är det gamla namnet "Sädgås" delat
+    upp i två separata arter: Skogsgås och Tundragås. Dessa två arter följer delvis
+    olika migrationsmönster, där Skogsgås häckar i norra Europa och Tundragås i Sibiriens
+    tundraregioner, vilket påverkar deras förekomst och flyttningsmönster i Skandinavien.'
+  en: '# Taiga Bean Goose in Northern Europe
+
+
+    The taiga bean goose is a migratory species that breeds across northern Europe
+    and Asia during the breeding season. These geese winter further south in Europe
+    and Asia, abandoning their northern breeding grounds during the coldest months.
+    In Scandinavia and Northern Europe, they are present as breeding birds in the
+    spring and summer, then depart southward in autumn to escape harsh winter conditions.
+    They return northward in spring to resume breeding on their taiga breeding grounds.'
+image_refs:
+- role: hero
+  path: Q26452/hero.jpg
+  width: 2400
+  height: 1597
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anser fabalis fabalis (Taiga
+    Bean Goose), Naturschutzgebiet Schellbruch, Lübeck, Germany.jpg
+  commons_filename: Anser fabalis fabalis (Taiga Bean Goose), Naturschutzgebiet Schellbruch,
+    Lübeck, Germany.jpg
+- role: secondary
+  path: Q26452/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/renshuchu">renshuchu</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anser fabalis middendorffii,
+    Izunuma, Miyagi, Japan 1.jpg
+  commons_filename: Anser fabalis middendorffii, Izunuma, Miyagi, Japan 1.jpg
+- role: secondary
+  path: Q26452/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/renshuchu">renshuchu</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anser fabalis middendorffii,
+    Izunuma, Miyagi, Japan 2.jpg
+  commons_filename: Anser fabalis middendorffii, Izunuma, Miyagi, Japan 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:55:16.296829+00:00'
+sources:
+  wikipedia_sv_revision: '58564241'
+  wikipedia_en_revision: '1344985591'
+  claude_model: claude-haiku-4-5-20251001

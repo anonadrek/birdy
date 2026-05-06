@@ -1,0 +1,133 @@
+id: Q187852
+scientific_name: Branta ruficollis
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Branta
+  ioc_order: Anseriformes
+names:
+  sv: Rödhalsad gås
+  en: Red-breasted Goose
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödhalsad gås
+
+
+    Rödhalsad gås är en mindre gåsart som häckar på den palearktiska tundran. Det
+    är en flyttfågel där huvuddelen av världspopulationen övervintrar på låglanden
+    i Rumänien och Bulgarien. Arten har en karakteristisk utseende med röd bröst och
+    hals, vilket ger den sitt svenska namn.
+
+
+    Arten är känd för sin migratory livscykel och är anpassad för att leva i öppna,
+    gräsbevuxna miljöer. Det förekommer i större flockformationer, särskilt under
+    vinter och under flyttningen mellan häcknings- och övervintringsområden.
+
+
+    Rödhalsad gås kategoriseras som sårbar då populationen har minskat kraftigt under
+    en kort tidsperiod. Denna nedgång gör arten till en fokusart för naturvårdande
+    insatser och internationellt samarbete.'
+  en: '# Red-breasted Goose
+
+
+    The red-breasted goose is a striking and distinctly marked member of the goose
+    family, native to Eurasian regions. It belongs to the genus Branta, which comprises
+    several dark-plumaged goose species. This species is currently listed as vulnerable
+    by conservation authorities, reflecting concerns about its population status.
+
+
+    The red-breasted goose is notable for its bold and contrasting plumage pattern,
+    which makes it highly recognizable among goose species. Its appearance is characterized
+    by bright markings that distinguish it from other geese in its range. Like other
+    Branta geese, it occupies open habitats and exhibits typical goose behaviour,
+    including gregarious feeding and migration patterns.
+
+
+    Due to its vulnerable conservation status, the species warrants attention from
+    birdwatchers and conservationists. Further information about its specific calls,
+    preferred habitats, and seasonal movements would enhance understanding of this
+    distinctive goose species.'
+migration:
+  sv: '# Rödhalsad gås – Förekomst i Norden
+
+
+    Rödhalsad gås är en flyttfågel som huvudsakligen förekommer i Skandinavien och
+    Nordeuropa under genomflyttningsperioderna. Arten häckar på den palearktiska tundran
+    längre österut och är endast en irregular besökare i norra Europa under vår och
+    höst. Huvuddelen av världspopulationen övervintrar på låglanden i Rumänien och
+    Bulgarien, varför arten endast passerar genom eller förekommer sporadiskt i Skandinavien
+    under migrationen mellan häckningsområdena och övervintringsplatserna. Observationer
+    i Sverige och övriga Norden är därför relativt sällsynta.'
+  en: '# Red-breasted Goose in Scandinavia/Northern Europe
+
+
+    The red-breasted goose is a rare vagrant to Scandinavia and Northern Europe, with
+    no established regular migration pattern through the region. This species breeds
+    in Arctic Siberia and winters primarily in the Black Sea and Caspian Sea regions.
+    Occasional individuals or small groups may appear in Scandinavia during migration
+    periods or winter, typically as rare records rather than predictable occurrences.
+    When present, they are most likely to be observed in coastal areas or wetlands
+    during autumn and winter months.
+
+
+    The species does not have a consistent seasonal presence in Northern Europe, and
+    sightings should be considered exceptional rather than routine. Any records in
+    Scandinavian countries are generally documented as vagrants displaced from their
+    normal migration routes.'
+image_refs:
+- role: hero
+  path: Q187852/hero.jpg
+  width: 2399
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:BertSeghers" title="User:BertSeghers">Bert
+    Seghers</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Branta-ruficollis-London2014.JPG
+  commons_filename: Branta-ruficollis-London2014.JPG
+- role: secondary
+  path: Q187852/secondary-1.jpg
+  width: 1219
+  height: 1800
+  license: CC0
+  author: Rijksmuseum
+  source_url: https://commons.wikimedia.org/wiki/File:Roodhalsgans (Branta ruficollis)
+    Anas Brasiliana (titel op object), RP-T-BR-2017-1-5-76.jpg
+  commons_filename: Roodhalsgans (Branta ruficollis) Anas Brasiliana (titel op object),
+    RP-T-BR-2017-1-5-76.jpg
+- role: secondary
+  path: Q187852/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/41018892@N00">David
+    Long</a> from London, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Branta ruficollis -Beale Park,
+    Berkshire, England-8a.jpg
+  commons_filename: Branta ruficollis -Beale Park, Berkshire, England-8a.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:52:40.124457+00:00'
+sources:
+  wikipedia_sv_revision: '58653629'
+  wikipedia_en_revision: '1351098282'
+  claude_model: claude-haiku-4-5-20251001

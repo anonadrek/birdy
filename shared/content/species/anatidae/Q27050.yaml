@@ -1,0 +1,129 @@
+id: Q27050
+scientific_name: Branta bernicla
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Branta
+  ioc_order: Anseriformes
+names:
+  sv: Prutgås
+  en: Brant Goose
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Prutgås
+
+
+    Prutgås är en liten gås som tillhör familjen egentliga andfåglar. Arten häckar
+    i arktiska områden på både kontinenter och är känd för sina långa migrations­resor.
+    Under vintermånaderna söker den sig till kusterna vid större hav för att föda
+    sig.
+
+
+    Prutgåsen är betydligt mindre än större gåsarter och kännetecknas av sitt mörka
+    fjäderdräkt. Den trivs väl i öppna, kustnära miljöer där den kan hitta föda bland
+    alger och vattenväxter. Arten är socialt lagd och ses ofta i mindre eller större
+    flockar, särskilt under flyttningen mellan häcknings­ och övervintringsområdena.
+
+
+    Idag betraktas prutgåsen som en livskraftig art med stabila populationer enligt
+    IUCN:s klassificering. Arten är väl anpassad till sitt speciella liv mellan arktiska
+    häckningsplatser och kustnära övervintringsområden runt världens större hav.'
+  en: '# Brant Goose
+
+
+    The brant is a small, dark goose with a distinctive appearance that makes it easily
+    recognizable. It features a blackish head and neck with a characteristic white
+    patch on the lower neck, contrasting sharply with its grey-brown body and white
+    undertail coverts. The species is noticeably smaller and more compact than most
+    other geese, making it well-suited to its coastal lifestyle.
+
+
+    This goose is highly specialized for life along temperate sea-coasts, where it
+    winters in substantial flocks. It feeds primarily on marine vegetation, particularly
+    eelgrass and other coastal plants, making it unique among geese in its reliance
+    on marine habitats. During breeding season, it undertakes impressive migrations
+    to the high-Arctic tundra, where it nests in small colonies on sparse vegetation.
+
+
+    The brant''s call is distinctive—a low, guttural "kronk" or "pruk" that carries
+    across coastal waters and helps flocks maintain cohesion during flight. Three
+    subspecies exist with slight variations in plumage and range, but all follow similar
+    patterns of Arctic breeding and temperate-zone wintering along coastlines worldwide.'
+migration:
+  sv: '# Prutgås – Förekomst i Skandinavien och Nordeuropa
+
+
+    Prutgås är en arktisk häckfågel som förekommer i Nordeuropa under migrationerna
+    och vintern. Arten häckar i arktiska områden men drar sig söderut när vintern
+    närmar sig. Under vintertid finns prutgåsen vid kusterna vid Nordsjön och Atlanten,
+    vilket gör den till en regelbunden övervintrare och genomfågelgäst i skandinaviska
+    och nordeuropeiska kustbälten. Ankomsten till området sker under höstmigration
+    medan återgången till häckningsområdena i norr äger rum på våren.'
+  en: '# Brant Goose Migration in Northern Europe
+
+
+    The Brant Goose is a migratory species that winters along temperate coastal waters
+    and breeds on high-Arctic tundra. In Scandinavia and Northern Europe, it is primarily
+    a passage migrant and winter visitor. Populations arrive in autumn (September–October)
+    from their Arctic breeding grounds, utilizing coastal areas and estuaries as key
+    feeding and resting sites during migration. Winter populations concentrate along
+    northern European coasts, particularly around Denmark, the Wadden Sea, and similar
+    shallow coastal habitats where eelgrass and other marine vegetation provide essential
+    food sources. Spring departure occurs in March–April as birds return northward
+    to their breeding territories on Arctic tundra in Greenland, Svalbard, and northern
+    Russia.'
+image_refs:
+- role: hero
+  path: Q27050/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Brent goose (Branta bernicla)
+    taking off.jpg
+  commons_filename: Brent goose (Branta bernicla) taking off.jpg
+- role: secondary
+  path: Q27050/secondary-1.jpg
+  width: 1800
+  height: 1197
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Brent goose (Branta bernicla)
+    in flight 2.jpg
+  commons_filename: Brent goose (Branta bernicla) in flight 2.jpg
+- role: secondary
+  path: Q27050/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Brant (Branta bernicla) 2025.jpg
+  commons_filename: Brant (Branta bernicla) 2025.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:57:15.641607+00:00'
+sources:
+  wikipedia_sv_revision: '59082976'
+  wikipedia_en_revision: '1339901880'
+  claude_model: claude-haiku-4-5-20251001

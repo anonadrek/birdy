@@ -1,0 +1,128 @@
+id: Q601055
+scientific_name: Aythya collaris
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Aythya
+  ioc_order: Anseriformes
+names:
+  sv: Ringand
+  en: Ring-necked Duck
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ringand
+
+
+    Ringand är en liten dykand från Nordamerika som påträffas mycket sällsynt i Europa.
+    Det är en relativt vanlig art på sitt hemkontinent, och beståndet anses vara livskraftigt
+    och i ökning.
+
+
+    Arten karakteriseras av sitt lilla format och tillhör familjen egentliga andfåglar.
+    Ringanden föredrar dammar och sjöar som miljö och är en dykfågel som söker sin
+    föda under vattenytan.
+
+
+    Som nordamerikansk art observeras ringanden endast undantagsvis utanför sitt naturliga
+    utbredningsområde, varför den inte är känd för den genomsnittlige fågelskådaren
+    i Europa.'
+  en: '# Ring-necked Duck
+
+
+    The ring-necked duck is a diving duck native to North America, commonly inhabiting
+    freshwater ponds and lakes. Despite its name, the ring around its neck is often
+    inconspicuous and difficult to spot in the field. Males display distinctive plumage
+    with a dark head, grey flanks, and a prominent white ring on the bill, while females
+    are more subtly marked with brownish-grey tones and a similar white bill ring.
+
+
+    This species is a true diving duck, meaning it feeds by submerging entirely underwater
+    rather than dabbling at the surface. It typically forages on aquatic vegetation,
+    seeds, and invertebrates in deeper water. Ring-necked ducks are relatively quiet
+    ducks, though males produce soft whistles during courtship and both sexes may
+    utter occasional low calls when alarmed or in flight.
+
+
+    The species frequents freshwater environments across its range, showing a preference
+    for deeper lakes and ponds with abundant aquatic vegetation. During migration
+    periods, ring-necked ducks may be seen in larger flocks, though they often remain
+    in small groups. Their compact body shape and diving behaviour make them easily
+    distinguished from dabbling ducks, even when the diagnostic neck ring is not clearly
+    visible.'
+migration:
+  sv: Ringand är en nordamerikansk art som förekommer mycket sällsynt i Europa och
+    Skandinavien. I Nordeuropa ses arten främst under höst- och vinterperioden, då
+    några individer sporadiskt dyker upp, särskilt vid kustnära områden och större
+    sjöar. Arten är en dykand som föredrar öppna vattenytor och ses oftast som tillfälliga
+    iakttagelser under oktober till mars. De nordamerikanska populationerna är långdistansmigratörer,
+    men när arten påträffas i Europa tycks det röra sig om individer från västra populationen
+    som antagligen driver västerut istället för söderut under hösten.
+  en: '# Ring-necked Duck (Aythya collaris) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the Ring-necked Duck''s
+    occurrence, migration patterns, or seasonal distribution in Scandinavia or Northern
+    Europe. While the species is described as a North American diving duck, specific
+    details about its presence or movements in the Nordic region are not included
+    in the available text.'
+image_refs:
+- role: hero
+  path: Q601055/hero.jpg
+  width: 2400
+  height: 1601
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aythya collaris male Lac des
+    Minimes 20190120 t142727.jpg
+  commons_filename: Aythya collaris male Lac des Minimes 20190120 t142727.jpg
+- role: secondary
+  path: Q601055/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aythya collaris male Lac des
+    Minimes 20190120 t142947.jpg
+  commons_filename: Aythya collaris male Lac des Minimes 20190120 t142947.jpg
+- role: secondary
+  path: Q601055/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ring-necked duck (Aythya collaris)
+    2023.jpg
+  commons_filename: Ring-necked duck (Aythya collaris) 2023.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:51:16.551685+00:00'
+sources:
+  wikipedia_sv_revision: '55996483'
+  wikipedia_en_revision: '1326437513'
+  claude_model: claude-haiku-4-5-20251001

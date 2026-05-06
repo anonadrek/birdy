@@ -1,0 +1,101 @@
+id: Q28106778
+scientific_name: Spatula discors
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Spatula
+  ioc_order: Anseriformes
+names:
+  sv: Blåvingad årta
+  en: Blue-winged Teal
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Blue-winged Teal
+
+
+    The blue-winged teal is a small dabbling duck belonging to the Anatidae family.
+    It is one of the smaller members of its group, making it relatively compact compared
+    to other dabbling ducks. The species is primarily found in North America, where
+    it has an extensive breeding range spanning from southern Alaska eastward to Nova
+    Scotia, and extending southward to northern Texas. During winter months, the species
+    migrates to coastal regions along both the Pacific and Atlantic coasts, as well
+    as further south into the Caribbean islands and Central America.
+
+
+    This migratory pattern demonstrates the species'' adaptability to various wetland
+    habitats across a wide geographic range. The blue-winged teal''s preference for
+    seasonal movement between breeding grounds in northern regions and wintering areas
+    in warmer southern locations is typical of many North American duck species. Its
+    ability to utilize diverse aquatic environments throughout its range makes it
+    a notable waterfowl species worth observing during both breeding and migration
+    seasons.'
+migration:
+  sv: ''
+  en: '# Blue-winged Teal in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text indicates that the Blue-winged Teal occurs in North America, breeding
+    from southern Alaska to Nova Scotia and wintering along Pacific and Atlantic coasts,
+    the Caribbean, and Central America. No information is provided regarding its occurrence,
+    migration patterns, or seasonal presence in Scandinavia or Northern Europe.'
+image_refs:
+- role: hero
+  path: Q28106778/hero.jpg
+  width: 2400
+  height: 1601
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/yellowstonenps/">YellowstoneNPS</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Blue-winged teal (Spatula discors)
+    on Alum Creek (52944847602).jpg
+  commons_filename: Blue-winged teal (Spatula discors) on Alum Creek (52944847602).jpg
+- role: secondary
+  path: Q28106778/secondary-1.jpg
+  width: 1800
+  height: 1098
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Mykola_Swarnyk" title="User:Mykola
+    Swarnyk">Mykola Swarnyk</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spatula discors m Sam Smith
+    Park Toronto.jpg
+  commons_filename: Spatula discors m Sam Smith Park Toronto.jpg
+- role: secondary
+  path: Q28106778/secondary-2.jpg
+  width: 1800
+  height: 1085
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Blue-winged Teal (Spatula discors)
+    male ... (53559312121).jpg
+  commons_filename: Blue-winged Teal (Spatula discors) male ... (53559312121).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:54:39.786871+00:00'
+sources:
+  wikipedia_sv_revision: '55900784'
+  wikipedia_en_revision: '1347137223'
+  claude_model: claude-haiku-4-5-20251001

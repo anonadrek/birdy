@@ -1,0 +1,130 @@
+id: Q25761
+scientific_name: Tadorna tadorna
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Tadorna
+  ioc_order: Anseriformes
+names:
+  sv: Gravand
+  en: Common Shelduck
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gravand
+
+
+    Gravanden är en andfågel som tillhör släktet gravänder inom familjen änder. Till
+    utseende, rörelsemönster och flygstil liknar den mest gässen. Det är en stor och
+    kraftig fågel med distinkt färgteckning.
+
+
+    Arten förekommer utmed kusterna i större delen av Europa och sträcker sig inåt
+    landet österut till Kina. Den är vanligt förekommande i kustmiljöer där det finns
+    lämpliga häckningsplatser. Globalt betraktas beståndet som livskraftigt.
+
+
+    Gravanden är anpassad för liv vid vatten och söker föda både i vatten och på land.
+    Fågeln uppvisar många gäsaktiga egenskaper i sitt beteende och är en imponerande
+    flygare trots sin storlek.'
+  en: '# Common Shelduck
+
+
+    The common shelduck is a distinctive waterfowl belonging to the shelduck genus.
+    It is widespread and common throughout the Euro-Siberian region, occupying a range
+    that extends across the Palearctic. The species demonstrates a clear seasonal
+    pattern, breeding primarily in temperate regions during the breeding season and
+    migrating to subtropical areas for winter. During winter months, it can also be
+    found in the Maghreb region of North Africa.
+
+
+    This species prefers aquatic habitats where it feeds and nests. The common shelduck
+    is a highly successful waterfowl, thriving across its broad geographic range and
+    maintaining healthy populations throughout its distribution. Its adaptability
+    to different regions and seasonal movements reflect its ecological flexibility
+    as a migratory species.'
+migration:
+  sv: '# Gravand – Förekomst i Skandinavien/Nordeuropa
+
+
+    Gravanden är en kuststäder som förekommer längs många europeiska kustlinjer. I
+    Skandinavien och Nordeuropa är den en främst sommargäst och flyttfågel. Arten
+    anländer till området från mars till april efter sin övervintring vid mildare
+    kustnära områden längs Västeuropa och Medelhavsregionen. Under häckningsperioden
+    på våren och sommaren ses gravanden vid kusterna och några inlandsvattnen. I höst
+    börjar arten sin migrera söderut från augusti och september, varvid de flesta
+    har lämnat Skandinavien före vintern inträder. Ett mindre antal kan dock övervintra
+    vid iskalla havsöppningar eller vid kuststräckor med öppet vatten, särskilt under
+    mildare vintrar.'
+  en: '# Common Shelduck in Northern Europe
+
+
+    The Common Shelduck is a migratory waterfowl with a complex movement pattern across
+    Scandinavia and Northern Europe. Birds breeding in temperate regions migrate southward
+    in autumn to wintering grounds in subtropical areas and the Maghreb region. Spring
+    return migration occurs as temperatures rise and breeding habitat becomes available.
+    However, the source text provided does not contain specific information about
+    arrival and departure months, overwintering locations within Scandinavia, or detailed
+    seasonal occurrence patterns for Northern Europe.
+
+
+    For comprehensive information about the Common Shelduck''s specific migration
+    timing and regional distribution throughout the year in Scandinavian countries,
+    additional sources with detailed phenological data would be needed.'
+image_refs:
+- role: hero
+  path: Q25761/hero.jpg
+  width: 2400
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Tsyganov_Sergey&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Tsyganov Sergey (page does not exist)">Tsyganov Sergey</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tadorna tadorna Common Shellduck
+    Пеганка в Санкт-Петербурге 03.jpg
+  commons_filename: Tadorna tadorna Common Shellduck Пеганка в Санкт-Петербурге 03.jpg
+- role: secondary
+  path: Q25761/secondary-1.jpg
+  width: 1800
+  height: 1263
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tadorna tadorna Oulu Finland
+    2017-05-03 (2).jpg
+  commons_filename: Tadorna tadorna Oulu Finland 2017-05-03 (2).jpg
+- role: secondary
+  path: Q25761/secondary-2.jpg
+  width: 1800
+  height: 1013
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Tsyganov_Sergey&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Tsyganov Sergey (page does not exist)">Tsyganov Sergey</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tadorna tadorna Common Shellduck
+    Пеганка в Санкт-Петербурге 04.jpg
+  commons_filename: Tadorna tadorna Common Shellduck Пеганка в Санкт-Петербурге 04.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:52:14.268039+00:00'
+sources:
+  wikipedia_sv_revision: '57943834'
+  wikipedia_en_revision: '1349994273'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,121 @@
+id: Q191723
+scientific_name: Aythya nyroca
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Aythya
+  ioc_order: Anseriformes
+names:
+  sv: Vitögd dykand
+  en: Ferruginous Duck
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: "# Vitögd dykand\n\nVitögd dykand är en medelstor dykand med karakteristisk\
+    \ utseende. Fågeln är kastanjebrun i fjäderdräkten och särskilt igenkännlig på\
+    \ sitt ljusa öga, vilket är arten mest utmärkande drag och gett den sitt svenska\
+    \ namn. \n\nArten häckar lokalt i våtmarker inom sitt utbredningsområde i palearktis.\
+    \ Norr om sitt normala område är vitögd dykand en sällsynt gäst – endast ett 70-tal\
+    \ fynd har noterats i Sverige under tiden. \n\nArten har dessvärre minskat kraftigt\
+    \ i antal och står på IUCNs röda lista som nära hotad. Detta gör den till en art\
+    \ som är värd att notera när den observeras."
+  en: '# Ferruginous Duck
+
+
+    The ferruginous duck is a medium-sized diving duck found across the Palearctic
+    region. It is readily identified by its distinctive white eye, which gives rise
+    to several of its common names including white-eyed pochard. The bird''s plumage
+    is predominantly russet-brown, with the male displaying a particularly rich chestnut
+    coloration on the head and body, while the female is duller and more uniformly
+    brown. Both sexes show the characteristic pale eye that makes identification straightforward.
+
+
+    As a diving duck, it feeds by submerging underwater to forage for aquatic vegetation,
+    invertebrates, and small fish. The ferruginous duck is typically found on freshwater
+    lakes, marshes, and reservoirs, often occurring in small flocks outside the breeding
+    season. It is generally quiet, though males produce soft whistles during courtship
+    displays. The species is somewhat wary and will dive to escape disturbance rather
+    than taking flight. During winter, it may be encountered on larger water bodies
+    where it congregates with other diving duck species, making it a rewarding sight
+    for those patient enough to scan mixed duck flocks with binoculars.'
+migration:
+  sv: '# Vitögd dykand - Förekomst i Skandinavien
+
+
+    Vitögd dykand är en sällsynt gäst i Skandinavien och övriga nordeuropeiska regioner.
+    Arten häckar lokalt i våtmarker längre söderut i sitt palearktiska utbredningsområde
+    och förekommer endast sporådiskt norr därom. I Sverige finns omkring 70 registrerade
+    fynd av arten, vilket indikerar att den är en mycket ovanlig besökare. Vitögd
+    dykand uppträder framför allt under migrations- och övervintringssäsongen när
+    individer från sydligare populationer färdas eller söker övervintringsplatser.
+    Arten föredrar våtmarker och sjöar där den kan näringsväxa. På grund av sitt begränsade
+    förekomststatus i Skandinavien är säker information om specifika ankomst- och
+    avgångstider begränsad.'
+  en: '# Ferruginous Duck (Aythya nyroca) in Northern Europe
+
+
+    The ferruginous duck is a rare and irregular visitor to Scandinavia and Northern
+    Europe, with occurrences varying significantly by year. This species is native
+    to the Palearctic region and occasionally appears during migration periods, particularly
+    in autumn and winter months. When present, ferruginous ducks are typically found
+    on larger freshwater lakes and coastal waters. However, they are not established
+    as regular migrants or overwintering residents in Scandinavia. Sightings remain
+    uncommon and sporadic, making this species an unpredictable vagrant rather than
+    a consistent seasonal visitor to the region.'
+image_refs:
+- role: hero
+  path: Q191723/hero.jpg
+  width: 2400
+  height: 1541
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aythya nyroca Georges-Valbon
+    03.jpg
+  commons_filename: Aythya nyroca Georges-Valbon 03.jpg
+- role: secondary
+  path: Q191723/secondary-1.jpg
+  width: 1800
+  height: 1124
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aythya nyroca Georges-Valbon
+    05.jpg
+  commons_filename: Aythya nyroca Georges-Valbon 05.jpg
+- role: secondary
+  path: Q191723/secondary-2.jpg
+  width: 1800
+  height: 1099
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aythya nyroca Georges-Valbon
+    01.jpg
+  commons_filename: Aythya nyroca Georges-Valbon 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:55:45.586639+00:00'
+sources:
+  wikipedia_sv_revision: '55901727'
+  wikipedia_en_revision: '1340614556'
+  claude_model: claude-haiku-4-5-20251001

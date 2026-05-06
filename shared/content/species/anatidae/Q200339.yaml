@@ -1,0 +1,126 @@
+id: Q200339
+scientific_name: Aix galericulata
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Aix
+  ioc_order: Anseriformes
+names:
+  sv: Mandarinand
+  en: Mandarin Duck
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mandarinand
+
+
+    Mandarinanden är en elegant ändfågel från Östasien som tillhör familjen egentliga
+    andfåglar. Arten är framför allt känd för sin extraordinärt vacker fjäderdräkt,
+    som gör den till en av världens mest iögonfallande andfåglar. Honan är betydligt
+    mattare färgad än hanen, som bär en imponerande dräkt med skimrande färger.
+
+
+    Arten förekommer naturligt i Östasien, men på grund av sin skönhet har den blivit
+    populär som prydnadsfågel och hålls därför i många fågeldammar i parker och zoologiska
+    trädgårdar världen över, även långt utanför sitt naturliga utbredningsområde.
+    I dessa miljöer är mandarinanden ofta en attraktion för besökare tack vare sitt
+    spektakulära utseende.'
+  en: '# Mandarin Duck
+
+
+    The mandarin duck is a striking medium-sized duck, measuring 41–49 cm long with
+    a 65–75 cm wingspan. It is most notable for its extreme sexual dimorphism: males
+    display elaborate and colourful plumage, while females are considerably more subdued
+    in appearance. It is closely related to the North American wood duck, being the
+    only other member of the genus Aix.
+
+
+    Native to the East Palearctic, the mandarin duck is a perching duck species, reflecting
+    its woodland habitat preferences. Beyond its native range, it has established
+    substantial introduced populations in the British Isles and Western Europe, with
+    smaller populations also present in North America. These introduced populations
+    have become established in various wetland and park environments.
+
+
+    The species name reflects its distinctive appearance: ''galericulata'' derives
+    from the Latin word for a wig or cap, referring to the elaborate head markings
+    of the male bird.'
+migration:
+  sv: '# Mandarinand i Skandinavien/Nordeuropa
+
+
+    Mandarinanden är en østasiatisk art som normalt inte förekommer naturligt i Skandinavien
+    eller Nordeuropa. De exemplar som påträffas i regionen är nästan uteslutande undsluppna
+    eller utslappade prydnadsfåglar från parker och zoologiska trädgårdar. Dessa introducerade
+    populationer har ingen etablerad migrationscykel i norden, då arten är bunden
+    till sitt introduktionsomgivningar och inte genomför regelbundna säsongsvandringar.
+    Under hårdare vintrar kan många av dessa fåglar dö eller försvinna från området
+    då de saknar anpassningar för nordeuropeiska klimatförhållanden.'
+  en: '# Mandarin Duck in Northern Europe
+
+
+    The Mandarin Duck is not native to Scandinavia or Northern Europe but occurs as
+    an introduced species, primarily in the British Isles and Western Europe. In these
+    regions, populations are largely sedentary or partially migratory, depending on
+    local conditions and winter severity. Most birds remain year-round where populations
+    are established, though some movement occurs during harsh winters when birds may
+    relocate to more favorable habitats with open water. The species is increasingly
+    visible in parks and on waterways across Western Europe, having escaped or been
+    released from captivity. In Scandinavia specifically, Mandarin Ducks remain rare
+    vagrants or occasional winter visitors rather than regular members of the avifauna.'
+image_refs:
+- role: hero
+  path: Q200339/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mandarin duck (Aix galericulata)
+    Franconville 02.jpg
+  commons_filename: Mandarin duck (Aix galericulata) Franconville 02.jpg
+- role: secondary
+  path: Q200339/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mandarin duck (Aix galericulata)
+    Franconville 03.jpg
+  commons_filename: Mandarin duck (Aix galericulata) Franconville 03.jpg
+- role: secondary
+  path: Q200339/secondary-2.jpg
+  width: 1800
+  height: 1213
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Diliff" title="User:Diliff">Diliff</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aix galericulata (Male), Richmond
+    Park, UK - May 2013.jpg
+  commons_filename: Aix galericulata (Male), Richmond Park, UK - May 2013.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:50:54.243150+00:00'
+sources:
+  wikipedia_sv_revision: '57942788'
+  wikipedia_en_revision: '1351519870'
+  claude_model: claude-haiku-4-5-20251001

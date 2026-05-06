@@ -1,0 +1,131 @@
+id: Q242851
+scientific_name: Cairina moschata
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Cairina
+  ioc_order: Anseriformes
+names:
+  sv: Myskand
+  en: Muscovy Duck
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Myskand
+
+
+    Myskand är en stor andart från familjen änder med ursprung i Mexiko och Sydamerika.
+    Det finns både vilda och domesticerade former. Den vilda formen är svart med vita
+    teckningar på vingarna, medan den domesticerade myskanka förekommer i olika färgvarianter.
+    Fågeln är relativt stor och kraftig med ett karakteristiskt utseende.
+
+
+    Arten är anpassad till både sötvattensmiljöer och brackvatten. Den är primärt
+    aktiv under dagliga timmar och förekommer ofta nära skogar och vattendrag. Myskand
+    är relativt tystlåten jämfört med många andra andarter, men producerar olika ljud
+    för kommunikation.
+
+
+    Ursprungligen begränsad till Mexiko och södra Amerika har myskanden expanderat
+    sitt utbredningsområde kraftigt. Domesticerade former introducerades till andra
+    världsdelar och har etablerat förvildade populationer, särskilt i Nordamerika
+    där stabila bestånd nu finns etablerade i flera regioner.'
+  en: '# Muscovy Duck
+
+
+    The Muscovy duck is a large, distinctive duck native to the Americas, ranging
+    from southern Texas and Mexico through Central and South America to Argentina
+    and Uruguay. It has been extensively domesticated worldwide, and feral populations
+    now occur in New Zealand, Australia, parts of the United States, and Central and
+    Eastern Europe, where it sometimes establishes itself in urban and suburban waterways.
+
+
+    The species is easily recognized by its size and unusual appearance. It has a
+    dark, iridescent plumage, often with white patches on the wings and body depending
+    on the individual. A characteristic feature is the bare, warty red facial skin
+    around the eyes and bill, which is particularly prominent in males. Males are
+    significantly larger and heavier than females, with a more pronounced head knob.
+
+
+    Muscovy ducks are relatively quiet compared to other duck species, though males
+    produce a distinctive hissing sound. They spend much time perching and roosting
+    on trees and branches, being more arboreal than most ducks. It often feeds by
+    dabbling in shallow water or grazing on land, consuming aquatic vegetation, seeds,
+    and insects. The species prefers freshwater habitats and wetlands, and it nests
+    in tree cavities or dense vegetation near water.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten behandlar endast myskandets ursprungliga utbredning
+    i Amerika (från Mexiko till centrala Sydamerika) och förvildade populationer i
+    USA och Nordamerika. Det finns ingen information om förekomst, migration eller
+    säsongsvis närvaro i Skandinavien eller Nordeuropa. Därför kan jag inte skriva
+    den efterfrågade guiden om arten i denna region.'
+  en: '# Muscovy Duck in Northern Europe
+
+
+    The Muscovy duck is not a naturally occurring species in Scandinavia or Northern
+    Europe. However, feral populations descended from domesticated birds have established
+    themselves locally in parts of Central and Eastern Europe, occasionally wandering
+    into Scandinavian regions during warmer months. These birds are not migratory
+    and do not have an established overwintering population in Northern Europe. Any
+    sightings in Scandinavia represent escapes or releases from captive populations
+    and should be considered vagrant or locally feral rather than part of a natural
+    migration pattern.'
+image_refs:
+- role: hero
+  path: Q242851/hero.jpg
+  width: 2400
+  height: 1452
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Wilfredor" class="mw-redirect"
+    title="User:Wilfredor">Wilfredor</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cairina moschata momelanotus
+    head.jpg
+  commons_filename: Cairina moschata momelanotus head.jpg
+- role: secondary
+  path: Q242851/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 3.0
+  author: <a rel="nofollow" class="external text" href="https://web.archive.org/web/20161031041731/http://www.panoramio.com/user/6452510?with_photo_id=115289668">lienyuan
+    lee</a>
+  source_url: https://commons.wikimedia.org/wiki/File:紅面鴨 Cairina moschata - panoramio.jpg
+  commons_filename: 紅面鴨 Cairina moschata - panoramio.jpg
+- role: secondary
+  path: Q242851/secondary-2.jpg
+  width: 1800
+  height: 1352
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Nizzan_Cohen" title="User:Nizzan
+    Cohen">Nizzan Cohen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cairina moschata in Ramat Gan
+    National Park.jpg
+  commons_filename: Cairina moschata in Ramat Gan National Park.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:55:56.346680+00:00'
+sources:
+  wikipedia_sv_revision: '58524319'
+  wikipedia_en_revision: '1349098756'
+  claude_model: claude-haiku-4-5-20251001

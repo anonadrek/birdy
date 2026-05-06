@@ -1,0 +1,141 @@
+id: Q28106731
+scientific_name: Spatula clypeata
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Spatula
+  ioc_order: Anseriformes
+names:
+  sv: Skedand
+  en: Northern Shoveler
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skedand
+
+
+    Skedanden är en simand med ett omfattande utbredningsområde på norra halvklotet.
+    Den är lätt att identifiera på sin karakteristiska stora, breda näbb – ett kännemärke
+    som givit arten dess namn. Hannen har en grön huvud, vit bröst och rostfärgad
+    undersida, medan honan är brunflackig. Merparten av populationen är flyttfåglar
+    som övervintrar i subtropiska och tropiska områden.
+
+
+    Arten förekommer i öppen, näringsrik våtmark där det finns gott om vattenvegetation.
+    Skedanden förekommer ofta i mindre flockar eller i par utanför häckningsperioden.
+    Vid födosökning använder det sin karakteristiska näbb på ett unikt sätt – det
+    "betar" vattenvegetation genom att svänga näbben från sida till sida i vattnet.
+    Under häckningsperioden kompletterar det vegetarisk föda med blötdjur och insekter.
+
+
+    Med sitt mycket stora globala utbredningsområde och stabila populationer kategoriseras
+    skedanden inte som en hotad art.'
+  en: '# Northern Shoveler
+
+
+    The northern shoveler is instantly recognizable by its spatulate bill—broad and
+    flattened like a spoon, which gives the species its scientific name. Males in
+    breeding plumage are striking, with an iridescent green head, white breast, and
+    chestnut flanks, while females are mottled brown. Both sexes display the characteristic
+    oversized bill, perfectly adapted for dabbling and filter-feeding in shallow waters.
+
+
+    This duck favors freshwater marshes, shallow lakes, and wetland areas where it
+    can filter-feed on small aquatic invertebrates and plant matter. It is a dabbling
+    duck, often seen tipping forward in the water rather than diving. The shoveler''s
+    call is relatively quiet compared to other ducks, with males producing soft, resonant
+    notes.
+
+
+    The northern shoveler is a common and widespread species, breeding across northern
+    temperate and subarctic regions, including large areas of Europe and North America.
+    It is highly migratory, wintering in southern regions including parts of Europe,
+    Asia, Central America, and South America. It occasionally appears as a rare vagrant
+    outside its normal range, making it a prized sighting for birdwatchers in unexpected
+    locations.'
+migration:
+  sv: '# Skedand – förekomst i Skandinavien/Nordeuropa
+
+
+    Skedanden är en flyttfågel som återkommer till Skandinavien och Nordeuropa under
+    våren för häckning. Fåglarna anländer typiskt under mars–april när ismörklen börjar
+    brytas upp och våtmarkerna blir tillgängliga. Efter häckningsperioden på sommaren
+    påbörjar de sin höstflytt redan från juli–augusti för att söka sig till subtropiska
+    och tropiska övervintringsområden. Arten förekommer spritt över öppna, näringsrika
+    våtmarker såsom sjöar, dammar och större våtmarksområden.
+
+
+    Under vintern är skedanden praktiskt taget frånvarande från regionen, då långt
+    större delen av populationen överväxlar i varmare klimat. Endast undantagsvis
+    kan enskilda individer observeras under mildare vintrar i södra Skandinavien.
+    Arten är således en säsongsbesökare som helt är beroende av säsongsmässiga klimatförändringar
+    för sin cykliska närvaro.'
+  en: '# Northern Shoveler (Skedand) in Scandinavia/Northern Europe
+
+
+    The Northern Shoveler is a migratory duck that breeds throughout northern Europe,
+    including Scandinavia, during the breeding season. These birds arrive in spring
+    to establish breeding territories in wetland habitats across the region. As autumn
+    approaches, Northern Shovelers begin their southward migration, vacating Scandinavian
+    breeding grounds to winter in southern Europe and around the Mediterranean basin.
+    The species is largely absent from northern Europe during winter months, though
+    occasional individuals may linger in milder coastal areas if conditions permit.
+    Spring return migration typically occurs in March and April as breeding grounds
+    become ice-free.'
+image_refs:
+- role: hero
+  path: Q28106731/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/yellowstonenps/">YellowstoneNPS</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Northern shoveler (Spatula clypeata)
+    male and female (51164997189).jpg
+  commons_filename: Northern shoveler (Spatula clypeata) male and female (51164997189).jpg
+- role: secondary
+  path: Q28106731/secondary-1.jpg
+  width: 1800
+  height: 1245
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spatula clypeata Oulu Finland
+    2016-05-07.jpg
+  commons_filename: Spatula clypeata Oulu Finland 2016-05-07.jpg
+- role: secondary
+  path: Q28106731/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Retired_electrician&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Retired electrician (page does not exist)">Retired electrician</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Moscow, male Spatula clypeata
+    in Vodootvodny Canal, March 2012 01.jpg
+  commons_filename: Moscow, male Spatula clypeata in Vodootvodny Canal, March 2012
+    01.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:55:33.423452+00:00'
+sources:
+  wikipedia_sv_revision: '59207406'
+  wikipedia_en_revision: '1347866416'
+  claude_model: claude-haiku-4-5-20251001

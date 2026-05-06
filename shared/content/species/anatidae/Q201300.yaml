@@ -1,0 +1,129 @@
+id: Q201300
+scientific_name: Melanitta fusca
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: scoter
+  ioc_order: Anseriformes
+names:
+  sv: Svärta
+  en: Velvet Scoter
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svärta
+
+
+    Svärta är en stor, mörk andfågel som tillhör familjen egentliga andfåglar. Det
+    är en robust dykarfågel med karakteristisk mörk fjäderdräkt. Honan är något ljusare
+    än hanen, som är nästan helt svart med ett vitt öga. Under vingen syns en vit
+    fläck som är tydlig i flykten.
+
+
+    Arten förekommer främst i nordliga regioner med utbredning i Skandinavien och
+    västra Ryssland. Svärtan är en dykand som föredrar kustvatten och större sjöar
+    där det finns rikligt med föda. Det är en social fågel som ofta ses i större flockar,
+    särskilt under migration och på övervintringskvarteren.
+
+
+    Även om svärtan inte är en särskilt högljudd fågel, kan man höra olika läten från
+    paren under häckningstiden. Globalt betraktas arten som sårbar, vilket reflekterar
+    bekymmer kring habitatförlust och andra miljöfaktorer. I sitt naturliga område
+    är det en välutvecklad och väladapterad art till sitt liv i nordliga vatten.'
+  en: '# Velvet Scoter
+
+
+    The velvet scoter is a large, robust sea duck found across northern regions of
+    Europe and Asia. Males are predominantly black with distinctive white patches
+    around the eyes and on the wings, while females are darker brown with whitish
+    facial markings. It is a diving duck, spending much of its time on open water
+    where it feeds on molluscs, crustaceans, and aquatic invertebrates.
+
+
+    In behaviour, the velvet scoter is gregarious and often forms large flocks, particularly
+    outside the breeding season. It is a powerful flier and diver, capable of reaching
+    considerable depths to forage on the seabed. The species produces a low, croaking
+    call, though it is generally quiet compared to other ducks.
+
+
+    This duck breeds in the far north of Europe and across the Palearctic, typically
+    near freshwater lakes and coastal areas. During winter, it migrates to coastal
+    regions where it can be encountered in sheltered bays and estuaries. It is particularly
+    notable for its preference for open water, and sightings are most reliable along
+    northern coasts and larger inland water bodies during migration periods.'
+migration:
+  sv: '# Svärta – Migration och förekomst i Nordeuropa
+
+
+    Svärta är en övervintrare i Skandinavien och förekommer året runt i norra och
+    västra Europa. Fågeln häckar i stora delar av norr Skandinavien och västra Ryssland
+    under sommaren. Under hösten samlas större flockar vid kusterna, där de övervintra
+    på öppet vatten vid Nordsjön och Atlantkusten. Några populationer drar längre
+    söderut under strängare vintrar. Under våren återvänder svärtan till sina häckningsområden
+    i norden.'
+  en: '# Velvet Scoter Migration in Northern Europe
+
+
+    The velvet scoter is a migratory sea duck that breeds across the far north of
+    Scandinavia and the broader Palearctic region during summer months. In autumn,
+    populations undertake significant migrations southward and westward to reach their
+    wintering grounds, which extend along the coasts of the North Sea, Baltic Sea,
+    and Atlantic waters. These birds typically depart breeding areas in September
+    and October. During winter, velvet scoters are commonly found in shallow coastal
+    waters throughout Scandinavia and Northern Europe, remaining until spring conditions
+    allow return migration. Spring migration back to breeding grounds occurs primarily
+    in April and May as ice melts and northern habitats become accessible again.'
+image_refs:
+- role: hero
+  path: Q201300/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Melanitta fusca (25611570907).jpg
+  commons_filename: Melanitta fusca (25611570907).jpg
+- role: secondary
+  path: Q201300/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Melanitta fusca (26611461158).jpg
+  commons_filename: Melanitta fusca (26611461158).jpg
+- role: secondary
+  path: Q201300/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Melanitta fusca (38672074440).jpg
+  commons_filename: Melanitta fusca (38672074440).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:54:58.267155+00:00'
+sources:
+  wikipedia_sv_revision: '59211069'
+  wikipedia_en_revision: '1324270099'
+  claude_model: claude-haiku-4-5-20251001

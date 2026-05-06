@@ -1,0 +1,124 @@
+id: Q189609
+scientific_name: Mergus serrator
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Mergus
+  ioc_order: Anseriformes
+names:
+  sv: Småskrake
+  en: Red-breasted Merganser
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Småskrake
+
+
+    Småskrake är en medelstor andfågel specialiserad på fiskjakt. Honan är gråbrun
+    med rustiga partier och tydlig vit halsring, medan hanen är påfallande med svart
+    huvud med grönglans, vit bröst och rostfärgade flanker. Båda könen har en karakteristisk
+    tofs på huvudet och den typiska sågtandade näbben som är utformad för att gripa
+    slipprig fisk.
+
+
+    Arten häckar cirkumpolärt i norra delen av världen, från tundra till tempererad
+    zon, alltid nära vatten i skogsbiotoper. Under vintern söker den sig till havskuster
+    där den övervintrar. Småskraken är en skicklig dykare som lever främst av fisk
+    som den fångar under vattnet. Den är relativt vanlig inom sitt utbredningsområde
+    och klassificeras av IUCN som livskraftig.'
+  en: '# Red-breasted Merganser
+
+
+    The red-breasted merganser is a streamlined diving duck found across the temperate
+    to subarctic Northern Hemisphere. Males in breeding plumage display a distinctive
+    rusty-red breast, while females and non-breeding males are more subdued. It is
+    the most aquatic of its genus, showing a preference for coastal saltwater environments
+    during winter, though it breeds on freshwater lakes and rivers.
+
+
+    This species is built for underwater hunting, with a slender body, rapid flight,
+    and notably serrated bills perfectly adapted for grasping slippery fish. It dives
+    from the surface to pursue prey underwater with impressive agility. The merganser
+    is highly migratory, with populations moving annually from breeding grounds to
+    predominantly coastal wintering areas.
+
+
+    The species'' global population remains stable, though it faces localized threats
+    from habitat loss and other environmental pressures. Its preference for both freshwater
+    breeding sites and saltwater wintering grounds makes it a more versatile habitant
+    of coastal regions than its close relatives.'
+migration:
+  sv: '# Småskrake – Förekomst i Skandinavien/Nordeuropa
+
+
+    Småskraken är en vanlig häckfågel i Skandinavien och Nordeuropa, där den förekommer
+    från april till oktober. Fågeln ankommer under våren för att häcka vid sjöar och
+    kustvatten i skogsbiotoper. Under hösten påbörjas migrationen southward, och fågeln
+    övervintrar vid havskuster, framför allt längs Nordsjökusten och Östersjön. En
+    del individer stannar året runt på öppna vattenytor där isen inte täcker helt,
+    men huvuddelen försvinner under vintern för att återvända på nytt när vattnet
+    blir isfritt under tidiga våren.'
+  en: '# Red-breasted Merganser in Northern Europe
+
+
+    The red-breasted merganser is a migratory species that breeds on lakes and rivers
+    across Scandinavia and northern Europe during spring and summer. These diving
+    ducks arrive at their breeding grounds in April and May, establishing territories
+    on freshwater systems. In autumn, typically from September onwards, they undertake
+    a substantial migration towards coastal wintering areas across the North Sea and
+    Atlantic coasts. Unlike many duck species, red-breasted mergansers are notably
+    salt-water tolerant and frequently overwinter in coastal and estuarine waters
+    throughout the winter months, though some populations may retreat to ice-free
+    areas if northern coasts freeze. Spring return migration begins in March, with
+    birds departing wintering grounds to recolonize their northern breeding territories.'
+image_refs:
+- role: hero
+  path: Q189609/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: lwolfartist
+  source_url: https://commons.wikimedia.org/wiki/File:Mergus serrator DSC 5939.jpg
+  commons_filename: Mergus serrator DSC 5939.jpg
+- role: secondary
+  path: Q189609/secondary-1.jpg
+  width: 1800
+  height: 1400
+  license: CC BY 2.0
+  author: peggycadigan
+  source_url: https://commons.wikimedia.org/wiki/File:Mergus serrator in water 02.jpg
+  commons_filename: Mergus serrator in water 02.jpg
+- role: secondary
+  path: Q189609/secondary-2.jpg
+  width: 1800
+  height: 1341
+  license: CC BY 2.0
+  author: peggycadigan
+  source_url: https://commons.wikimedia.org/wiki/File:Mergus serrator in water 07.jpg
+  commons_filename: Mergus serrator in water 07.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:52:16.119262+00:00'
+sources:
+  wikipedia_sv_revision: '57950240'
+  wikipedia_en_revision: '1343742706'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,137 @@
+id: Q28106837
+scientific_name: Mareca penelope
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Mareca
+  ioc_order: Anseriformes
+names:
+  sv: Bläsand
+  en: Eurasian Wigeon
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bläsand
+
+
+    Bläsanden är en medelstor simand som kännetecknas av hanens karakteristiska utseende
+    – ett rödbrunt huvud med en tydlig beige blås i pannan, vilket också är källan
+    till artens namn. Honan är mer diskret färgad i gråbrunt. Det är en livlig och
+    elegant and som ofta ses i mindre eller större flockar.
+
+
+    Arten häckar i norr, framför allt i taigazonen i Europa och Asien, men söker också
+    märkvärdigt nog upp mindre sällsynta häckningsplatser vid kuststräckor och slättsjöar
+    längre söderut. Bläsanden är en typisk flyttfågel som övervintar betydligt längre
+    söder ut än där den ynglar, främst vid kustnära vatten. Arten är ganska allmän
+    över stora delar av sitt utbredningsområde.
+
+
+    Bläsanden är en gräsande and som föredrar grunt vatten där det kan nappa växtmaterial
+    från botten. Det är en aktiv och social fågel som ofta umgås med andra andfåglar.
+    På vattnet är den påfallande rastlös och rörig jämfört med många andra änder.'
+  en: '# Eurasian Wigeon
+
+
+    The Eurasian wigeon is a dabbling duck of medium size, easily identified by its
+    distinctive appearance. Males display a chestnut head with a creamy-white forehead
+    and crown, contrasting sharply with a grey body and darker rear. Females are duller,
+    with warm brown plumage overall. In flight, both sexes show a striking white wing
+    patch that is particularly conspicuous.
+
+
+    This species favours shallow freshwater habitats, including lakes, marshes, and
+    coastal lagoons, where it dabbles for aquatic vegetation and grazes on grass like
+    a goose. It is highly social and often seen in flocks, particularly during migration
+    and winter. The wigeon is notably vocal, producing distinctive whistling calls—males
+    make a characteristic high-pitched "wheoo" whistle that is readily identifiable
+    in the field.
+
+
+    The Eurasian wigeon has a wide Palearctic distribution, breeding across northern
+    temperate and boreal regions. It is common and widespread throughout its range,
+    with populations undertaking significant migrations. Outside the breeding season,
+    it congregates in large numbers on wintering grounds, making it a familiar sight
+    on wetlands across much of the Northern Hemisphere.'
+migration:
+  sv: '# Bläsand – Förekomst i Skandinavien
+
+
+    Bläsand är en typisk flyttfågel i Nord- och Skandinavien. Arten häckar i de norra
+    regionerna under sommaren, främst i taigaskogsbältet. Under hösten, vanligtvis
+    från september-oktober, påbörjar bläsanden sin flyttning söderut för att övervintrera
+    vid kusterna längre söderut, särskilt vid Atlanten och Medelhavet. Under våren
+    återvänder fåglarna till sina häckningsområden, med ankomst under mars-april.
+    Bläsanden är ganska allmän över sitt utbredningsområde och utgör en viktig del
+    av våtmarksfaunan under både häckningstid och under genomfarten under migrationstiderna.'
+  en: '# Eurasian Wigeon in Scandinavia
+
+
+    The Eurasian Wigeon is a migratory dabbling duck that occurs throughout Scandinavia
+    and Northern Europe on a seasonal basis. Breeding populations are found across
+    northern regions during summer months, with birds arriving in April and May. The
+    species is particularly abundant in wetland and coastal habitats during breeding
+    season.
+
+
+    In autumn, typically from September onwards, these ducks begin their southward
+    migration to winter in milder regions of Western and Southern Europe, the Mediterranean,
+    and North Africa. However, significant numbers remain in Scandinavian coastal
+    areas and ice-free freshwater sites throughout winter, particularly in mild winters.
+    Spring return migration peaks in March and April, with flocks moving northward
+    to breeding grounds.'
+image_refs:
+- role: hero
+  path: Q28106837/hero.jpg
+  width: 2400
+  height: 1802
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mareca penelope Oulu 20110515
+    02.jpg
+  commons_filename: Mareca penelope Oulu 20110515 02.jpg
+- role: secondary
+  path: Q28106837/secondary-1.jpg
+  width: 1800
+  height: 1353
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mareca penelope Oulu 20110515
+    01.jpg
+  commons_filename: Mareca penelope Oulu 20110515 01.jpg
+- role: secondary
+  path: Q28106837/secondary-2.jpg
+  width: 1800
+  height: 1271
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mattivirtala (page does not exist)">Mattivirtala</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mareca penelope female Oulu
+    Finland 2021-05-03.jpg
+  commons_filename: Mareca penelope female Oulu Finland 2021-05-03.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:50:50.939749+00:00'
+sources:
+  wikipedia_sv_revision: '59210974'
+  wikipedia_en_revision: '1349400561'
+  claude_model: claude-haiku-4-5-20251001

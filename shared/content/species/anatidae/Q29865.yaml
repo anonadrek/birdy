@@ -1,0 +1,133 @@
+id: Q29865
+scientific_name: Bucephala clangula
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Bucephala
+  ioc_order: Anseriformes
+names:
+  sv: Knipa
+  en: Common Goldeneye
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Knipa
+
+
+    Knipa är en medelstor andfågel med distinkt utseende. Hanen är vit och svart med
+    en grön, glänsande huvud och karakteristisk vit fläck mellan näbb och öga. Honan
+    är mörkare med brunaktigt huvud och vit hals. Båda könen har gula ögon som är
+    mycket framträdande.
+
+
+    Arten förekommer cirkumpolärt i norra regioner och häckar i trädhål vid floder,
+    sjöar och våtmarker. Knipan är en skicklig dykare som söker sin föda under ytan.
+    Under flygningen hörs ett mycket karakteristiskt, högt visslande ljud från vingarna
+    – ett distinkt kännetecken som gör arten lätt att identifiera även på avstånd.
+
+
+    Knipan är en talrik art med ett livskraftigt bestånd. Den ses ofta på större vattensystem
+    både under häckningstid och under övervintringstid, då den samlas i större flockar
+    på öppna vattenytor.'
+  en: '# Common Goldeneye
+
+
+    The common goldeneye is a medium-sized diving duck easily recognized by its distinctive
+    appearance. Males sport a glossy dark-green head with a prominent white spot between
+    the eye and bill, contrasting sharply with their white body and black back. Females
+    are more subdued, featuring a chocolate-brown head and grey body. Both sexes display
+    striking golden-yellow eyes, which give the species its common name.
+
+
+    This duck is primarily a sea duck, though it also frequents freshwater lakes and
+    rivers. It is a skilled diver, feeding on small fish, invertebrates, and aquatic
+    plants by submerging itself underwater. Goldeneyes are highly vocal birds, particularly
+    during breeding season, producing distinctive calls that range from rasping sounds
+    to bell-like notes. The species name derives from the Latin *clangere*, meaning
+    "to resound," reflecting its vocal nature.
+
+
+    Common goldeneyes breed in northern regions, typically nesting in tree cavities
+    near water. During winter, they migrate to coastal and inland waters where they
+    gather in flocks, sometimes alongside other diving duck species. The species is
+    widespread across the northern hemisphere, making it a familiar sight to many
+    birdwatchers throughout temperate and arctic regions.'
+migration:
+  sv: '# Knipa - Förekomst och migration i Norden
+
+
+    Knipan är en talrik andfågel som förekommer cirkumpolärt i Skandinavien. Fågeln
+    häckar i trädhål vid floder, sjöar och våtmarker i norra delen av sitt utbredningsområde.
+    Som många andra andrarter är knipan en partiell migrant i Norden. Under vintermånaderna
+    återfinns arten framför allt på öppna vattendrag och kustnära områden, där den
+    stannar så länge vattnet inte fryser helt. Knipan är talrik och beståndet anses
+    vara livskraftigt i regionen.'
+  en: '# Common Goldeneye Migration in Scandinavia/Northern Europe
+
+
+    The Common Goldeneye is a migratory duck species that breeds throughout Scandinavia
+    and northern Europe during spring and summer months. Birds arrive at breeding
+    grounds from March onwards as ice melts on freshwater lakes and rivers. After
+    breeding concludes in late summer, populations begin southward migration in autumn,
+    typically departing breeding areas by September-October. Many Goldeneyes overwinter
+    on coastal waters and larger unfrozen lakes across Scandinavia and the North Sea
+    region, though some individuals migrate further south to central Europe and the
+    Mediterranean. Winter presence varies annually depending on ice conditions, with
+    harsh winters forcing more extensive southward movements.'
+image_refs:
+- role: hero
+  path: Q29865/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
+    Nyman</a> from Vaxholm, Sweden
+  source_url: https://commons.wikimedia.org/wiki/File:Bucephala clangula EM1B9784
+    (34375185890).jpg
+  commons_filename: Bucephala clangula EM1B9784 (34375185890).jpg
+- role: secondary
+  path: Q29865/secondary-1.jpg
+  width: 1800
+  height: 900
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
+    Nyman</a> from Vaxholm, Sweden
+  source_url: https://commons.wikimedia.org/wiki/File:Bucephala clangula EM1B9540
+    (33952163073).jpg
+  commons_filename: Bucephala clangula EM1B9540 (33952163073).jpg
+- role: secondary
+  path: Q29865/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
+    Nyman</a> from Vaxholm, Sweden
+  source_url: https://commons.wikimedia.org/wiki/File:Bucephala clangula EM1B9776
+    (34375186330).jpg
+  commons_filename: Bucephala clangula EM1B9776 (34375186330).jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:50:20.087088+00:00'
+sources:
+  wikipedia_sv_revision: '57169142'
+  wikipedia_en_revision: '1324160248'
+  claude_model: claude-haiku-4-5-20251001

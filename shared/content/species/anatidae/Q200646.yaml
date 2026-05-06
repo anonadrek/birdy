@@ -1,0 +1,129 @@
+id: Q200646
+scientific_name: Mergellus albellus
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Mergellus
+  ioc_order: Anseriformes
+names:
+  sv: Salskrake
+  en: Smew
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Salskrake
+
+
+    Salskrake är en liten andart som utgör sin egen släkt inom familjen änder. Det
+    är en elegant dykand anpassad för att fånga fisk under vattenytan. Arten karakteriseras
+    av sitt lilla format och sitt speciella utseende med kontrasterande färger.
+
+
+    Arten häckar i sjöar och flöden i norra taigabältet, särskilt i skandinaviska
+    och ryska områden. Under vintermånaderna genomför salskraken långväga flyttningar
+    söderut för att undvika frusen sjöar och bäckar. Den hittas då från västliga till
+    östliga världsdelar, från brittiska vatten till norra Indien och Koreahalvön.
+
+
+    Beståndet av salskrake anses vara livskraftigt och arten visar ingen tecken på
+    allvarlig tillbakagång. Den är väl anpassad till sitt aquatiska liv och utgör
+    ett intressant exempel på hur änder kan specialisera sig för olika livsmiljöer.'
+  en: '# Smew
+
+
+    The smew is a compact diving duck and the sole living member of its genus, Mergellus,
+    though genetic studies suggest it shares a close evolutionary relationship with
+    the larger merganser ducks. It occasionally hybridises with the common goldeneye,
+    indicating some compatibility between these waterfowl species.
+
+
+    This small duck is highly distinctive in appearance, particularly the male, which
+    displays striking white plumage contrasted with black markings on the head and
+    back. Females and immature birds are more subdued, showing grey-brown tones with
+    rufous-tinged heads. The smew''s compact body and relatively small bill suit its
+    specialisation for diving and hunting small fish and aquatic invertebrates in
+    freshwater lakes and coastal waters.
+
+
+    The smew is generally quiet compared to other ducks, though it produces various
+    calls during breeding and courtship. It frequents sheltered waters where it dives
+    with characteristic agility to forage underwater. During winter, smews often congregate
+    in small flocks on larger water bodies, making them a sought-after sight for birdwatchers
+    in temperate regions. These elegant ducks are migratory, breeding in northern
+    regions and dispersing southward during colder months to find ice-free waters
+    where they can feed effectively.'
+migration:
+  sv: Salskrake är en regelbunden flyttfågel i Skandinavien. Arten häckar under sommaren
+    i norra taigabältet, särskilt i Sverige, Norge och Ryssland vid sjöar och floder.
+    Under hösten påbörjar salskraken sin södervänd migration. Vintertid förekommer
+    arten långt söderut, från Storbritannien i väster till norra Indien och Koreahalvön
+    i öster. Återkomsten till häckningsområdena sker under våren. Salskraken är således
+    en typisk långdistansflyttare som följer säsongernas växling mellan höga nordiska
+    sjöar och mildare övervintringsområden i södra Europa och Asien.
+  en: '# Smew (Mergellus albellus) in Northern Europe
+
+
+    The Smew is a migratory duck species with a complex seasonal pattern across Scandinavia
+    and Northern Europe. Birds breeding in northern Russia migrate southwestward during
+    autumn, with peak arrival in Scandinavia occurring from September through November.
+    Most Smews do not overwinter in Scandinavia proper, instead continuing to ice-free
+    waters in central and southern Europe, the North Sea, and the Atlantic coast.
+    However, mild winters occasionally allow small numbers to remain in southern Scandinavian
+    coastal areas. Spring migration occurs from February through April, with birds
+    departing to their northern breeding grounds. The species is typically seen as
+    a passage migrant and winter visitor rather than a breeding resident in most of
+    Scandinavia, though rare breeding records exist in northern Sweden and Finland.'
+image_refs:
+- role: hero
+  path: Q200646/hero.jpg
+  width: 2400
+  height: 1590
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:BertSeghers" title="User:BertSeghers">Bert
+    Seghers</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mergellus-albellus-London.JPG
+  commons_filename: Mergellus-albellus-London.JPG
+- role: secondary
+  path: Q200646/secondary-1.jpg
+  width: 1800
+  height: 1192
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:BertSeghers" title="User:BertSeghers">Bert
+    Seghers</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mergellus-albellus.JPG
+  commons_filename: Mergellus-albellus.JPG
+- role: secondary
+  path: Q200646/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:BertSeghers" title="User:BertSeghers">Bert
+    Seghers</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mergellus-albellus London.JPG
+  commons_filename: Mergellus-albellus London.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:51:27.729142+00:00'
+sources:
+  wikipedia_sv_revision: '59239173'
+  wikipedia_en_revision: '1325724915'
+  claude_model: claude-haiku-4-5-20251001

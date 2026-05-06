@@ -1,0 +1,131 @@
+id: Q191125
+scientific_name: Anser indicus
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Anser
+  ioc_order: Anseriformes
+names:
+  sv: Stripgås
+  en: Bar-headed Goose
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stripgås
+
+
+    Stripgås är en medelstor gås med karakteristisk utseende. Den har vit huvud och
+    hals med två mörka längsgående streck längs nacken, vilket ger arten sitt namn.
+    Kroppen är gråbrun med vita partier på undersidan. Under flygning framträder en
+    kontrastrik silhuett med mörka vingar.
+
+
+    Arten häckar i höga bergstrakter i Centralasien, men är känd för sina extraordinära
+    migrationer. På väg till övervintringsområdena i Indien och Myanmar passerar fågeln
+    Himalaya och räknas bland världens högast flygande fåglar. Under flyttningen hörs
+    ofta dess karakteristiska, något gäslika läten.
+
+
+    I Europa och Nordamerika förekommer stripgås främst som parkfågel, ofta i större
+    samlingar. Förrymda individer ses regelbundet och har etablerat egna frilevande
+    populationer, särskilt i Nederländerna. Arten föredrar området kring vatten och
+    är ofta gregär, framför allt under migration och övervintring.'
+  en: '# Bar-headed Goose
+
+
+    The bar-headed goose is a striking waterfowl distinctive for its appearance: a
+    pale grey body contrasts with a white head marked by two conspicuous dark bars
+    running across it. This medium-sized goose breeds in large colonies across Central
+    Asian mountain lakes, where it nests on the ground and typically lays three to
+    eight eggs per clutch.
+
+
+    This species is renowned for its remarkable migratory behaviour, undertaking one
+    of the most challenging journeys in the avian world. It crosses the Himalayas
+    at extreme altitudes during migration, demonstrating extraordinary physiological
+    adaptations to cope with thin air and harsh conditions. After breeding, bar-headed
+    geese travel vast distances southward to winter in South Asia, with populations
+    reaching as far south as peninsular India.
+
+
+    While feeding, it forages on aquatic vegetation and grasses. Its voice consists
+    of honking calls similar to other geese, particularly audible during flight and
+    at breeding sites. The species is highly gregarious, remaining in flocks throughout
+    the year, especially during migration and wintering periods.'
+migration:
+  sv: '# Stripgås i Skandinavien/Nordeuropa
+
+
+    Stripgås förekommer inte naturligt som häckfågel i Skandinavien eller Nordeuropa.
+    Arten häckar i högalpin miljö i Centralasien och migrerar till övervintringsområden
+    i Indien och Myanmar. I Europa förekommer stripgås främst som parkfågel och från
+    förrymda eller utsläppta individer. Förrymda fåglar ses regelbundet i stora delar
+    av Europa, och etablerade frilevande populationer finns särskilt i Nederländerna.
+    Eventuella observationer i Skandinavien skulle utgöra mycket sällsynta vaganter
+    från dessa västereuropeiska populationer snarare än naturliga migration från arten''s
+    kärnhabitat i Asien.'
+  en: '# Bar-headed Goose Migration in Northern Europe
+
+
+    The Bar-headed Goose does not naturally occur in Scandinavia or Northern Europe
+    as a regular migrant or wintering species. This Asian goose breeds in Central
+    Asia near mountain lakes and winters in South Asia, migrating across the Himalayas
+    to reach wintering grounds in peninsular India and surrounding regions. Its migration
+    route and winter range are entirely within Asia, far from Northern European territories.
+    While occasional vagrants might appear in Europe due to weather or other circumstances,
+    the species has no established presence or migration pattern in Scandinavia.'
+image_refs:
+- role: hero
+  path: Q191125/hero.jpg
+  width: 2400
+  height: 1667
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dinkum" title="User:Dinkum">Dinkum</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anser indicus (captive).jpg
+  commons_filename: Anser indicus (captive).jpg
+- role: secondary
+  path: Q191125/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/41018892@N00">David
+    Long</a> from London, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Anser indicus -Beale Park, Berkshire,
+    England-8a.jpg
+  commons_filename: Anser indicus -Beale Park, Berkshire, England-8a.jpg
+- role: secondary
+  path: Q191125/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/41018892@N00">David
+    Long</a> from London, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Anser indicus -Beale Park, Berkshire,
+    England -head-8a.jpg
+  commons_filename: Anser indicus -Beale Park, Berkshire, England -head-8a.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:55:20.506764+00:00'
+sources:
+  wikipedia_sv_revision: '57938716'
+  wikipedia_en_revision: '1332425155'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,134 @@
+id: Q209419
+scientific_name: Anser brachyrhynchus
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Anser
+  ioc_order: Anseriformes
+names:
+  sv: Spetsbergsgås
+  en: Pink-footed Goose
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Spetsbergsgås
+
+
+    Spetsbergsgås är en medelstor gås som tillhör de äkta gässen. Den är mycket lik
+    både skogsgås och tundragås, vilket kan göra artbestämningen utmanande. Fågeln
+    kännetecknas av sitt ganska kort näbb och har en överlag grå färgtoning på kroppen.
+
+
+    Arten häckar på höga norra breddgrader på Grönland, Island och Spetsbergen, där
+    den trivs i tundramiljöer. Under vinterhalvåret genomför den omfattande flyttningar
+    västerut för att tillbringa säsongen i västra Europa. Under denna tid kan den
+    ses i större flockar, ofta tillsammans med andra gässarter.
+
+
+    Spetsbergsgåsen är återigen klassificerad som livskraftig av IUCN, vilket indikerar
+    att populationen är stabil. För den som intresserar sig för gäss är denna art
+    en spännande observation under flyttningsperioderna, särskilt i samband med andra
+    gässarter på rastplatser längs migrationsvägarna.'
+  en: '# Pink-footed Goose
+
+
+    The pink-footed goose is a medium-sized goose with a distinctive appearance that
+    gives it its common name. It features a pale grey-brown body with a darker head
+    and neck, and most notably, a short pink bill and pink legs that stand out against
+    its plumage. This compact build and shortened bill distinguish it from similar
+    goose species.
+
+
+    This highly migratory species breeds across Arctic regions including eastern Greenland,
+    Iceland, Svalbard, and more recently Novaya Zemlya. During winter, substantial
+    populations move southwestward to temperate areas of northwest Europe, where they
+    favour agricultural lands and coastal wetlands. The species is gregarious, often
+    seen in flocks ranging from small groups to large congregations, particularly
+    at staging areas during migration periods.
+
+
+    Pink-footed geese are vocal birds with characteristic honking calls that are frequently
+    heard during flight. They graze primarily on grasses and other vegetation, and
+    their presence can be notable in wintering grounds where they may gather in impressive
+    numbers. The species'' reliance on specific migration routes and wintering habitats
+    makes it a regular and recognizable component of autumn and winter birdwatching
+    in suitable regions.'
+migration:
+  sv: '# Spetsbergsgås – Säsonlig fördelning i Nordeuropa
+
+
+    Spetsbergsgås är en klassisk långdistansmigrant som häckar på höga nordiska breddgrader,
+    framförallt på Spetsbergen, Island och Grönland. Under hösten påbörjar arten sin
+    långa migration västerut mot Västeuropa för att övervinta. Fågeln återvänder till
+    sina häckningsområden på våren när isen går upp och förhållandena blir lämpliga
+    för reproduktion. I Sverige ses spetsbergsgäss huvudsakligen under höst- och vårflyttningen,
+    då de passerar genom landet på väg till och från sina övervintringskvartar längs
+    Atlantens västkust.'
+  en: '# Pink-footed Goose Migration in Northern Europe
+
+
+    The pink-footed goose is a highly migratory species that breeds across the Arctic,
+    with significant populations in Svalbard and eastern Greenland. In Scandinavia
+    and northern Europe, it is primarily a passage migrant and winter visitor. Birds
+    arrive in autumn, typically from September onwards, migrating southwestward from
+    their breeding grounds to winter in northwest Europe, with concentrations in Denmark,
+    particularly in western regions. During winter months (November–February), substantial
+    numbers remain in Danish and Swedish wetlands before departing northeastward in
+    spring, with most birds having left by May as they return to Arctic breeding territories.'
+image_refs:
+- role: hero
+  path: Q209419/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Karl_Pinnow&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Karl Pinnow (page does not exist)">Karl Pinnow</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anser brachyrhynchus Naturschutzgebiet
+    Zülowgrabenniederung 11.05.25.jpg
+  commons_filename: Anser brachyrhynchus Naturschutzgebiet Zülowgrabenniederung 11.05.25.jpg
+- role: secondary
+  path: Q209419/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pink-Footed Goose - Anser brachyrhynchus
+    (51446836402).jpg
+  commons_filename: Pink-Footed Goose - Anser brachyrhynchus (51446836402).jpg
+- role: secondary
+  path: Q209419/secondary-2.jpg
+  width: 1800
+  height: 1016
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/23164545@N02">Duncan
+    Brown (Cradlehall)</a> from Inverness, Scotland
+  source_url: https://commons.wikimedia.org/wiki/File:Anser brachyrhynchus Nairnshire
+    1.jpg
+  commons_filename: Anser brachyrhynchus Nairnshire 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:54:14.771190+00:00'
+sources:
+  wikipedia_sv_revision: '58651027'
+  wikipedia_en_revision: '1346843135'
+  claude_model: claude-haiku-4-5-20251001

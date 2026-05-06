@@ -1,0 +1,103 @@
+id: Q210954
+scientific_name: Polysticta stelleri
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Polysticta
+  ioc_order: Anseriformes
+names:
+  sv: Alförrädare
+  en: Steller’s Eider
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Alförrädare
+
+
+    Alförrädare är en liten ejder från en egen släkt och är väl anpassad för höga
+    nordliga breddgrader. Det är en flyttfågel som häckar längs Norra ishavets kuster
+    och övervintrar huvudsakligen i isfria vatten vid Berings hav och nedåt längs
+    Stilla havskusten. En mindre andel av populationen övervintrar vid norra Europas
+    kuster och i Östersjön.
+
+
+    Arten är utpräglad högarktisk och förekommer endast i de kallaste maritima miljöerna.
+    Under häckningsperioden återfinns det längs kusterna mellan stora arktiska halvöar
+    och Alaska, medan det under vinterhalvåret samlas i större eller mindre mängder
+    vid kusterna från Berings område söderut. En liten del av populationen stannar
+    året runt eller översomrar på särskilda platser utan att häcka.
+
+
+    Alförrädaren är starkt knuten till havet och representerar en specialiserad andfågel
+    mycket väl lämpad för arctisk miljö och kallt vatten.'
+  en: ''
+migration:
+  sv: '# Alförrädare – förekomst i Skandinavien och Nordeuropa
+
+
+    Alförrädaren är en högarktisk flyttfågel som endast förekommer regelbundet i nordligaste
+    Skandinavien. En mindre population övervintrar längs norra Norges kuster och i
+    nordöstra Östersjön, medan en ännu mindre del av arten översomrar vid Varangerhalvön
+    utan att häcka. Arten häckar långt norrut vid Norra ishavets kuster mellan Tajmyrhalvön
+    och norra Alaska. Huvuddelen av populationen övervintrar i isfria vatten från
+    Berings sund längs Stillahavskusten till södra Alaska och vidare söderut mot norra
+    Japan. För observatörer i Norge och Sverige är arten endast sporadisk, främst
+    under vinter- och övergångssäsongerna.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q210954/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Steller's Eider (Polysticta
+    stelleri) (13667593713).jpg
+  commons_filename: Steller's Eider (Polysticta stelleri) (13667593713).jpg
+- role: secondary
+  path: Q210954/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Steller's Eider (Polysticta
+    stelleri) (13667627635).jpg
+  commons_filename: Steller's Eider (Polysticta stelleri) (13667627635).jpg
+- role: secondary
+  path: Q210954/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Steller's Eider (Polysticta
+    stelleri) (13667898964).jpg
+  commons_filename: Steller's Eider (Polysticta stelleri) (13667898964).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:54:57.544156+00:00'
+sources:
+  wikipedia_sv_revision: '58985729'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

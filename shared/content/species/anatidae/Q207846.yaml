@@ -1,0 +1,135 @@
+id: Q207846
+scientific_name: Somateria spectabilis
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: eider
+  ioc_order: Anseriformes
+names:
+  sv: Praktejder
+  en: King Eider
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Praktejder
+
+
+    Praktejdern är en stor andfågel med en massiv kropp och karakteristisk fjäderdräkt.
+    Hannen är spektakulär med sitt orangegula huvud, blågrå bak och vit front, medan
+    honan är mer diskret brun. Det markanta huvudet på hanen är praktejderns mest
+    igenkännliga särdrag.
+
+
+    Arten är anpassad för livet på öppet hav och tillbringer större delen av året
+    i marina miljöer där det äter musslor och andra bottenlevande djur. Under häckningstiden
+    flyttar den till arktisk tundra i juni och juli för att reproducera sig. Honan
+    gräver en grund grop på marken, fodrad med gräs och sitt eget dun, där den lägger
+    fyra till sju ägg.
+
+
+    Praktejdern är en gregär fågel och bildar ofta stora flockar utanför häckningstiden,
+    ibland uppgående till tusentals individer. Dessa flockar ses ofta på öppna havsområden.
+    Arten är välanpassad för sin miljö med tätt fjäderdräkt och förmåga att dyka djupt
+    efter föda.'
+  en: '# King Eider
+
+
+    The king eider is a large sea duck inhabiting Arctic regions across the Northern
+    Hemisphere, breeding along coastal areas of northeast Europe, North America, and
+    Asia. It spends most of the year in cold marine ecosystems at high latitudes,
+    only venturing to Arctic tundra to breed during the short summer months of June
+    and July. The female constructs a simple nest—a ground scrape lined with grass
+    and down—where it lays between four and seven eggs.
+
+
+    This powerful diving duck is supremely adapted to harsh polar waters, where it
+    feeds primarily on benthic invertebrates. Males display distinctive plumage with
+    striking orange and pale coloring on the head and neck, while females are more
+    subdued brown. Both sexes show robust builds suited to their marine lifestyle.
+    The species'' calls include various grunts and croaks, though they are generally
+    quieter than many ducks.
+
+
+    King eiders remain largely in open ocean during winter, making them difficult
+    to observe except in specific coastal locations or from research vessels. Birdwatchers
+    encounter them most reliably in areas where ice breaks up seasonally, creating
+    accessible feeding zones along Arctic and subarctic shorelines.'
+migration:
+  sv: '**Praktejder i Skandinavien och Nordeuropa**
+
+
+    Praktejdern är en arktisk andfågel som förekommer i nordeuropeiska vatten under
+    större delen av året. Under hösten och vintern ses arten i havsområdena kring
+    Skandinavien och andra nordeuropeiska kuster, där den tillbringar tiden i marina
+    miljöer. Under våren migrerar praktejdern norrut till sina häckningsplatser i
+    arktisk tundra, där den anländer i maj-juni för att föra fram sitt släkte. Efter
+    häckningstiden återvänder den till sina övervintringskvalitéer i söndre vatten
+    under hösten, ofta i större flockbildningar.'
+  en: '# King Eider in Scandinavia/Northern Europe
+
+
+    The King Eider is a migratory Arctic sea duck that breeds in northern Scandinavia
+    and other Arctic regions during June and July. These birds arrive at breeding
+    grounds in early summer after spending much of the year in coastal marine waters
+    at high latitudes. Following breeding season, they return to their primary wintering
+    habitat in open waters and ice edges of the Arctic Ocean and North Atlantic, where
+    they remain throughout autumn and winter months. Some individuals may be found
+    in Scandinavian coastal waters during migration periods, though the species primarily
+    occurs in the region as a breeding visitor rather than a permanent or winter resident.'
+image_refs:
+- role: hero
+  path: Q207846/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:King Eider (Somateria spectabilis)
+    (13667676513).jpg
+  commons_filename: King Eider (Somateria spectabilis) (13667676513).jpg
+- role: secondary
+  path: Q207846/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:King Eider (Somateria spectabilis)
+    (13667952664).jpg
+  commons_filename: King Eider (Somateria spectabilis) (13667952664).jpg
+- role: secondary
+  path: Q207846/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:King Eider (Somateria spectabilis)
+    (13667642765).jpg
+  commons_filename: King Eider (Somateria spectabilis) (13667642765).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:50:21.573222+00:00'
+sources:
+  wikipedia_sv_revision: '59233965'
+  wikipedia_en_revision: '1324269629'
+  claude_model: claude-haiku-4-5-20251001

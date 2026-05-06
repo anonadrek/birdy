@@ -1,0 +1,135 @@
+id: Q26635
+scientific_name: Aythya marila
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Aythya
+  ioc_order: Anseriformes
+names:
+  sv: Bergand
+  en: Greater Scaup
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bergand
+
+
+    Bergand är en dykkand som tillhör familjen änder och förekommer som flyttfågel
+    i de arktiska och subarktiska regionerna. Arten häckar på tundra och vid taigans
+    norra gräns runt om i Arktis. Under senare år har bergand minskat kraftigt i antal,
+    särskilt i vissa regioner som Östersjön, även om det globala beståndet fortfarande
+    betraktas som livskraftigt.
+
+
+    Berganden är en medelstor andart som är väl anpassad för att dyka efter föda.
+    Arten kan återfinnas på både sötvattenssjöar under häckningstiden och på kustvatten
+    under vintern. Som många flyttfåglar söker den sig till mildare klimat när den
+    arktiska vintern närmar sig.'
+  en: '# Greater Scaup
+
+
+    The greater scaup is a mid-sized diving duck, noticeably larger than its close
+    relatives the lesser scaup and tufted duck. Males display striking black-and-white
+    plumage with a glossy green head, while females are predominantly brown with a
+    white facial patch near the bill. Both sexes show pale grey flanks and wings in
+    flight, creating a distinctive contrast with their darker bodies.
+
+
+    These diving ducks are highly gregarious and often gather in substantial flocks,
+    particularly during winter months. They feed by diving to the seabed, consuming
+    molluscs, crustaceans, and aquatic plants. The species is relatively quiet, though
+    males produce soft whistling calls during courtship, and females make growling
+    sounds.
+
+
+    The greater scaup breeds during summer across northern regions including Iceland,
+    Scandinavia, northern Russia, Siberia, Alaska, and northern Canada. In winter,
+    it migrates to coastal waters of Europe, eastern Asia, and North America, where
+    it is commonly seen on sheltered bays, estuaries, and open water. It favours marine
+    and brackish environments outside the breeding season, making it particularly
+    associated with coastal habitats rather than inland waters.'
+migration:
+  sv: '# Bergand - Migration i Skandinavien
+
+
+    Bergand är en flyttfågel som häckar cirkumpolärt i arktiska och subarktiska regioner.
+    Under häckningstiden förekommer arten på tundra och i norra gränsen av tajgan.
+    Som flyttfågel återvänder bergand till sina häckningsområden på våren och lämnar
+    dessa på hösten för att övervintrera på lägre latituder. I Skandinavien och Nordeuropa
+    förekommer arten främst under flyttningsperioderna samt under övervintringsperioden,
+    då den söker upp kustnära områden och större sjöar där isen inte lägger sig.
+
+
+    Migrationsdata saknas för denna art vad gäller exakta ankomst- och avgångsdatum
+    för Skandinavien.'
+  en: '# Greater Scaup Migration in Scandinavia
+
+
+    The greater scaup is a summer breeding visitor to Scandinavia, arriving to breed
+    during the summer months across Iceland, Scandinavia, and into northern Russia
+    and Siberia. These diving ducks utilize freshwater lakes and coastal wetlands
+    during the breeding season. As autumn approaches, populations begin their migration
+    southward, abandoning Scandinavian breeding grounds for coastal wintering areas
+    across Europe. The species spends the winter months on coastal waters of Europe,
+    where ice-free conditions provide access to food resources. Return migration to
+    northern breeding grounds occurs in spring as temperatures rise and ice begins
+    to break up on northern freshwater systems.'
+image_refs:
+- role: hero
+  path: Q26635/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/52450054@N04">Judy
+    Gallagher</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater Scaup - Aythya marila,
+    Delaware Seashore State Park, Indian River Inlet, Delaware (40045051162).jpg
+  commons_filename: Greater Scaup - Aythya marila, Delaware Seashore State Park, Indian
+    River Inlet, Delaware (40045051162).jpg
+- role: secondary
+  path: Q26635/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
+    C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater Scaup (Aythya marila)
+    (12141905363).jpg
+  commons_filename: Greater Scaup (Aythya marila) (12141905363).jpg
+- role: secondary
+  path: Q26635/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Needsmoreritalin" title="User:Needsmoreritalin">Chuck
+    Homler d/b/a Focus On Wildlife</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Drake Greater scaup (Aythya
+    marila) Barnegat Inlet, New Jersey, USA.jpg
+  commons_filename: Drake Greater scaup (Aythya marila) Barnegat Inlet, New Jersey,
+    USA.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:52:50.004352+00:00'
+sources:
+  wikipedia_sv_revision: '59181742'
+  wikipedia_en_revision: '1349274774'
+  claude_model: claude-haiku-4-5-20251001

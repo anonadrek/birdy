@@ -1,0 +1,128 @@
+id: Q180991
+scientific_name: Mergus merganser
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Mergus
+  ioc_order: Anseriformes
+names:
+  sv: Storskrake
+  en: Common Merganser
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Storskrake
+
+
+    Storskraken är en stor andfågel med vidsträckt utbredning över norra halvklotet.
+    Den är en skicklig dykare specialiserad på fiskfångst och förekommer vid djupa,
+    klara vattendrag där födan är riklig. Under häckningstiden häckar fågeln i naturliga
+    trädhål eller konstgjorda holkar, ofta nära vattnet.
+
+
+    Utanför häckningstiden är storskraken en mycket social fågel som kan forma stora,
+    ibland imponerande flockar på lämpliga vattnen. Den är välanpassad för sitt predatoriska
+    leverne med sin strömlinjeformade kropp och effektiva dykningsförmåga. Storskraken
+    är en av våra större andarter och är lätt att identifiera på sitt stora format
+    och sin karakteristiska kroppsform när den är i vattnet.'
+  en: '# Common Merganser
+
+
+    The common merganser is a large diving duck inhabiting rivers and lakes throughout
+    forested regions of the Northern Hemisphere. It is a specialized fish-eater with
+    a streamlined body, long neck, and distinctive long, narrow bill with serrated
+    edges—perfectly adapted for gripping slippery prey. Males display striking plumage
+    with dark green heads, white bodies, and black backs, while females are more subdued
+    with reddish-brown heads and grey bodies. Both sexes show a white wing patch in
+    flight.
+
+
+    True to its name, it favours freshwater environments rather than coastal areas,
+    diving skillfully to pursue fish beneath the surface. The species nests in tree
+    cavities, a behaviour unusual among ducks, laying clutches of 8-12 eggs. After
+    hatching, ducklings jump from the nest hole and follow their mother to water within
+    hours.
+
+
+    In flight, the common merganser appears elongated and streamlined, with rapid
+    wingbeats. Its call is relatively quiet for a duck, consisting of hoarse, guttural
+    sounds, particularly from males during courtship. The species is generally wary,
+    taking flight readily when disturbed. It occurs year-round in areas where water
+    remains unfrozen, though northern populations migrate seasonally to ice-free waters.'
+migration:
+  sv: '# Storskrake - Förekomst i Nordeuropa
+
+
+    Storskrake är en årlig fågel i Skandinavien och Nordeuropa. Arten häckar vid djupa
+    och klara vatten under sommarmånaderna och är då bosatt i större delen av regionen.
+    Under hösten genomför fågeln migrations söderut, och huvuddelen av populationen
+    övervintar i södra Europa eller längs öppna vattendrag i norra delen av sitt utbredningsområde.
+    Återkomsten till häckningsområdena sker under våren, typiskt från mars till maj
+    beroende på när isen går upp på sjöar och vattendrag.'
+  en: '# Common Merganser (Mergus merganser)
+
+
+    The Common Merganser is a widespread resident and migrant in Scandinavian and
+    Northern European waters. Populations breeding in northern regions migrate southward
+    in autumn, with arrival in ice-free waters typically occurring from September
+    onwards. Birds overwintering in the region remain on open rivers, lakes, and coastal
+    areas throughout winter, with return migration to breeding territories commencing
+    in March and April. Northern populations are largely migratory, while some southern
+    breeding birds may remain year-round in suitable habitats with adequate open water
+    for foraging and nesting.'
+image_refs:
+- role: hero
+  path: Q180991/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Goosander (Eurasian) (Mergus
+    merganser).jpg
+  commons_filename: Goosander (Eurasian) (Mergus merganser).jpg
+- role: secondary
+  path: Q180991/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a href="//www.flickr.com/people/97469566@N00" class="extiw" title="flickruser:97469566@N00">Bengt
+    Nyman</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mergus merganser, female, Vaxholm,
+    Sweden.jpg
+  commons_filename: Mergus merganser, female, Vaxholm, Sweden.jpg
+- role: secondary
+  path: Q180991/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
+    Nyman</a> from Vaxholm, Sweden
+  source_url: https://commons.wikimedia.org/wiki/File:Mergus merganser merganser 2124
+    (5561934028).jpg
+  commons_filename: Mergus merganser merganser 2124 (5561934028).jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:52:54.500581+00:00'
+sources:
+  wikipedia_sv_revision: '56498031'
+  wikipedia_en_revision: '1324159454'
+  claude_model: claude-haiku-4-5-20251001

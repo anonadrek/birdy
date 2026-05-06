@@ -1,0 +1,92 @@
+id: Q26603
+scientific_name: Cygnus columbianus
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Cygnus
+  ioc_order: Anseriformes
+names:
+  sv: Mindre sångsvan
+  en: Tundra Swan
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mindre sångsvan
+
+
+    Mindre sångsvan är en medlem av svanfamiljen och en mindre version av sin närmare
+    släkting sångsvanen. Det karakteriseras av en kortare hals och mindre gult på
+    näbben jämfört med sångsvanen. Arten är vitfärgad och elegant, väl anpassad för
+    sitt arktiska liv.
+
+
+    Arten häckar cirkumpolärt på arktisk tundra i norra Ryssland och norra Nordamerika.
+    Det är en vattenlevande art som förekommer på sjöar, lagöner och våtmarker under
+    häckningssäsongen. Mindre sångsvan är klassificerad som livskraftig och dess population
+    anses stabil.'
+  en: ''
+migration:
+  sv: '# Mindre sångsvan – Förekomst i Skandinavien/Nordeuropa
+
+
+    Mindre sångsvan är en sällsynt besökare i Skandinavien och Nordeuropa. Arten häckar
+    på arktisk tundra långt norr om regionen och genomför långväga migrationskörningar
+    mellan sina häckningsplatser och övervintringsområden. I nordeuropeisk kontext
+    förekommer arten främst under hösten och våren som genomflyttare, när individer
+    passerar genom området på väg mellan arktiska häckningsområden och sydligare övervintringsplatser.
+    Observationer är sporadiska och arten är inte en regelbunden växtsäsongbesökare
+    i området.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q26603/hero.jpg
+  width: 1600
+  height: 2400
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/glaciernps/">GlacierNPS</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tundra Swans (Cygnus columbianus)
+    (32651054017).jpg
+  commons_filename: Tundra Swans (Cygnus columbianus) (32651054017).jpg
+- role: secondary
+  path: Q26603/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: lwolfartist
+  source_url: https://commons.wikimedia.org/wiki/File:Anas carolinensis and Cygnus
+    columbianus DSC 5174.jpg
+  commons_filename: Anas carolinensis and Cygnus columbianus DSC 5174.jpg
+- role: secondary
+  path: Q26603/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: lwolfartist
+  source_url: https://commons.wikimedia.org/wiki/File:Cygnus columbianus DSC 5241.jpg
+  commons_filename: Cygnus columbianus DSC 5241.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:56:08.338777+00:00'
+sources:
+  wikipedia_sv_revision: '58510822'
+  wikipedia_en_revision: '1351593407'
+  claude_model: claude-haiku-4-5-20251001

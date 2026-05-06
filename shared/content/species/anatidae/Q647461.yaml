@@ -1,0 +1,137 @@
+id: Q647461
+scientific_name: Oxyura jamaicensis
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Oxyura
+  ioc_order: Anseriformes
+names:
+  sv: Amerikansk kopparand
+  en: Ruddy Duck
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Amerikansk kopparand
+
+
+    Amerikansk kopparand är en liten, undersätsig dykand med karakteristiska styva
+    stjärtfjädrar som ofta hålls upprätt. Hanen är omöjlig att misstas för: den har
+    en vacker kopparröd dräkt, svart hjässa, vita kindpartier och en påfallande blå
+    näbb. Honan är betydligt mer diskret i färgen med gråbrun dräkt och ett distinktivt
+    streck på kinden.
+
+
+    Arten simmar lågt i vattnet och dyker ofta för sin föda. Det är en ganska bullrig
+    fågel med spännande ljud – honan producerar en snarande kallas och hanen olika
+    pipande ljud, särskilt under häckningsperioden.
+
+
+    Arten kommer ursprungligen från Nordamerika och Västindien, men har introducerats
+    till Europa där den nu utgör ett allvarligt problem för bevarandet av den inhemska
+    kopparanden genom hybridisering. Det vilda beståndet i Nordamerika minskar dock
+    i antal, vilket utgör en växande bevaringsfråga för arten på sitt ursprungliga
+    område.'
+  en: '# Ruddy Duck
+
+
+    The ruddy duck is a compact diving duck belonging to the stiff-tailed family,
+    characterized by its distinctive rigid tail feathers held upright when swimming.
+    Males display vibrant chestnut-red plumage on the body with a contrasting white
+    face and black cap, while females are duller with brownish tones and a white cheek
+    patch. It is a small, sturdy duck with a proportionally large head and short neck.
+
+
+    This species is highly aquatic, spending most of its time on water where it dives
+    expertly to feed on aquatic invertebrates and vegetation. It is often seen in
+    small groups on lakes, ponds, and shallow coastal waters. The ruddy duck is native
+    to the Americas, where it inhabits freshwater and brackish habitats across a wide
+    range. It is notably silent outside the breeding season.
+
+
+    The species gained notoriety in the mid-twentieth century when introduced populations
+    established in Europe, particularly following escapes and releases from captivity.
+    Outside its native range, the ruddy duck is now considered invasive and has prompted
+    extensive eradication efforts in several countries to protect native wildfowl
+    species and wetland ecosystems.'
+migration:
+  sv: '# Amerikansk kopparand - Utbredning i Skandinavien
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Den amerikanska kopparanden är inte naturligt förekommande i Skandinavien eller
+    Nordeuropa. Arten är ursprunglig från Nordamerika och Västindien, men har införts
+    i Europa genom människans försorg. De europeiska populationer som finns är etablerade
+    främst i södra och västra Europa och är inte migranter utan är istället stadiga
+    eller delvis stadiga. I de få fall arten påträffas i nordiska länder rör det sig
+    om enstaka individer eller flyktingar från västereuropeiska populationer, inte
+    en återkommande eller regelbunden förekomst.'
+  en: '# Ruddy Duck (Amerikaanse kopparand) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text focuses on the ruddy duck''s invasive status in Europe
+    and its taxonomic classification, but contains no information regarding its occurrence,
+    migration patterns, or seasonal presence in Scandinavia or Northern Europe. To
+    provide accurate information about this species'' seasonal movements and distribution
+    in the region, additional sources specifically documenting its Scandinavian occurrence
+    would be required.'
+image_refs:
+- role: hero
+  path: Q647461/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
+    National Park</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ruddy ducks (Oxyura jamaicensis)
+    on Floating Island Lake (28055882327).jpg
+  commons_filename: Ruddy ducks (Oxyura jamaicensis) on Floating Island Lake (28055882327).jpg
+- role: secondary
+  path: Q647461/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: Public domain
+  author: Jacob W. Frank
+  source_url: https://commons.wikimedia.org/wiki/File:Ruddy ducks (Oxyura jamaicensis)
+    on Floating Island Lake (461672f1-72e6-4ca5-aab7-7b64eb71cc16).jpg
+  commons_filename: Ruddy ducks (Oxyura jamaicensis) on Floating Island Lake (461672f1-72e6-4ca5-aab7-7b64eb71cc16).jpg
+- role: secondary
+  path: Q647461/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
+    C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ruddy Duck (Oxyura jamaicensis)
+    (23534288653).jpg
+  commons_filename: Ruddy Duck (Oxyura jamaicensis) (23534288653).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:54:30.216614+00:00'
+sources:
+  wikipedia_sv_revision: '57822976'
+  wikipedia_en_revision: '1349935110'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,132 @@
+id: Q26680
+scientific_name: Branta leucopsis
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Branta
+  ioc_order: Anseriformes
+names:
+  sv: Vitkindad gås
+  en: Barnacle Goose
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitkindad gås
+
+
+    Vitkindad gås är en kompakt gås med karakteristisk fjäderdräkt i svart, vit och
+    grå. Den har en ganska kort hals och är mindre än många andra gåsarter. Huvudet
+    är vitt med svart på hjässa och nacke, medan halsen och bröstet är svart. Ryggen
+    är grå med svarta fjädrar, och den vita stjärten är väl synlig under flykt.
+
+
+    Det är en flyttfågel som häckar i Arktis men som sedan 1970-talet även förekommer
+    på vissa platser i Skandinavien. Den söker sig till küstbundna miljöer för häckning,
+    där den trivs på klipphyllor, gräsiga stränder, låga öar och flacka sandrevlar.
+    Arten är växtätare och betar bland annat på vide och annan växtmaterial.
+
+
+    Vitkindad gås är ofta en högljudd art med karakteristiska läten. Den påträffas
+    framförallt längs kustområden och är en sociala fågel som ofta förekommer i flockar.'
+  en: '# Barnacle Goose
+
+
+    The barnacle goose is a striking black goose distinguished by its bold patterning
+    of black and white plumage. Its face is predominantly white with a black cap and
+    neck, while the back and wings are dark grey-black, creating a distinctive appearance
+    that sets it apart from other goose species. The bird''s compact, relatively small
+    size for a goose makes it recognizable in mixed flocks.
+
+
+    This species is highly social and typically found in groups, ranging from small
+    gatherings to large flocks, particularly during migration and winter. Barnacle
+    geese favor open grassland and coastal habitats where they can graze on vegetation.
+    They are vocal birds with a distinctive barking call that sounds somewhat like
+    a dog''s bark, which helps identify them in the field.
+
+
+    Genetically, the barnacle goose is most closely related to the cackling goose,
+    despite superficial similarities to the brant goose. The species belongs to Branta,
+    a genus of black geese characterized by extensive black in their plumage, distinguishing
+    them clearly from the grey Anser geese. Barnacle geese are migratory, moving seasonally
+    between breeding grounds in the north and wintering areas, where they gather in
+    substantial numbers.'
+migration:
+  sv: '# Vitkindad gås – förekomst i Skandinavien
+
+
+    Vitkindad gås är en flyttfågel som traditionellt häckar i Arktis, men sedan 1970-talet
+    har arten etablerat sig även på vissa platser i Skandinavien. Under häckningstiden
+    uppehåller sig fågeln i nära anslutning till kusten och förekommer i varierade
+    biotoper som klipphyllor, gräsiga stränder, låga öar och flacka sandrevlar.
+
+
+    Migrationsdata saknas för denna art.'
+  en: '# Barnacle Goose in Northern Europe
+
+
+    The Barnacle Goose is a migratory species that winters in Scandinavia and northern
+    Europe, with populations following specific migration routes. Birds arrive in
+    autumn, typically from September onwards, staging in Scotland and Denmark before
+    moving south to wintering grounds in the Netherlands, Germany, and southern Scandinavia.
+    Some populations winter in coastal areas of Norway and Sweden. Spring migration
+    occurs from February through April, as geese return northward to their Arctic
+    breeding grounds in Greenland, Svalbard, and Russia. Peak presence in Scandinavian
+    regions occurs during autumn and spring passage periods, with numbers varying
+    annually depending on weather conditions and food availability.'
+image_refs:
+- role: hero
+  path: Q26680/hero.jpg
+  width: 2400
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Tsyganov_Sergey&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Tsyganov Sergey (page does not exist)">Tsyganov Sergey</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Branta leucopsis Белощёкая казарка
+    в Санкт-Петербурге 03.jpg
+  commons_filename: Branta leucopsis Белощёкая казарка в Санкт-Петербурге 03.jpg
+- role: secondary
+  path: Q26680/secondary-1.jpg
+  width: 1800
+  height: 1063
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Tsyganov_Sergey&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Tsyganov Sergey (page does not exist)">Tsyganov Sergey</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Branta leucopsis Белощёкая казарка
+    в Санкт-Петербурге 05.jpg
+  commons_filename: Branta leucopsis Белощёкая казарка в Санкт-Петербурге 05.jpg
+- role: secondary
+  path: Q26680/secondary-2.jpg
+  width: 1800
+  height: 1026
+  license: Public domain
+  author: No machine-readable author provided. <a href="//commons.wikimedia.org/wiki/User:M.Buschmann"
+    title="User:M.Buschmann">M.Buschmann</a> assumed (based on copyright claims).
+  source_url: https://commons.wikimedia.org/wiki/File:Flying-branta-leucopsis.jpg
+  commons_filename: Flying-branta-leucopsis.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:54:23.665785+00:00'
+sources:
+  wikipedia_sv_revision: '58545145'
+  wikipedia_en_revision: '1346527342'
+  claude_model: claude-haiku-4-5-20251001

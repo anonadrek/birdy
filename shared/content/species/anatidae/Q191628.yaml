@@ -1,0 +1,126 @@
+id: Q191628
+scientific_name: Anser erythropus
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Anser
+  ioc_order: Anseriformes
+names:
+  sv: Fjällgås
+  en: Lesser White-fronted Goose
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fjällgås
+
+
+    Fjällgåsen är en liten grå gås som är märkbar genom sin kompakta byggnad och relativt
+    korta hals jämfört med andra gåsarter. Den har en vit panna och ansiktsmärkning
+    som ger den sitt namn, samt gula ben och näbb. Fjällgåsen liknar grågåsen men
+    är mindre och mer kompakt i proportionerna.
+
+
+    Arten häckar i nordligaste Fennoskandien och Sibirien, på barmark och tundra i
+    de kallaste områdena. Fjällgåsen är samhällig och söker sin föda på gräsrika marker
+    där den betar på växter. Under flyttningen och på vinterkvarteren hittas den ofta
+    tillsammans med andra gåsarter på öppna slätter och vid vattenhål.
+
+
+    Fjällgåsens population har minskat drastiskt under 1900-talet, vilket gör arten
+    till en sällsynt observerad fågel idag. Den återkommer årligen på samma rastplatser
+    under sin årscykel, vilket är karakteristiskt för många gåsarter. Arten kan ibland
+    skymtas bland större flockar av andra gåser, särskilt under höst- och vårflyttningen.'
+  en: '# Lesser White-fronted Goose
+
+
+    The lesser white-fronted goose is a small goose closely related to the larger
+    greater white-fronted goose. It breeds in the northernmost reaches of the Palearctic
+    region, though it has become a scarce breeder across much of Europe. Conservation
+    efforts include reintroduction programs in northern regions.
+
+
+    As its name suggests, it is smaller than its greater white-fronted cousin, with
+    distinctive white markings on the forehead and face. The plumage is predominantly
+    brown-grey on the body, with darker flight feathers. Its bills and feet are typically
+    orange-yellow. In flight, it shows pale wing coverts contrasting with darker wings,
+    making it identifiable at distance when compared to related species.
+
+
+    This species is highly migratory, moving between its Arctic breeding grounds and
+    wintering areas at lower latitudes. It feeds on grasses, sedges, and other vegetation,
+    often grazing in flocks. The call is a higher-pitched honking than that of the
+    greater white-fronted goose—a useful identification feature when multiple goose
+    species are present. The species is typically seen in open habitats including
+    wetlands, grasslands, and coastal areas during migration and winter months.'
+migration:
+  sv: Fjällgås är en flyttfågel som förekommer i Fennoskandien under häckningssäsongen.
+    Arten häckar i nordligaste delen av regionen under sommaren. Under hösten migrerar
+    fjällgåsen söderut för att övervinta i värmere klimat. Under våren återvänder
+    den till sina häckningsområden i norr. Arten är således endast närvarande i Fennoskandien
+    under sommarmånaderna, medan den är frånvarande under större delen av året på
+    grund av sin långväga migration.
+  en: '# Lesser White-fronted Goose (Fjällgås) in Scandinavia
+
+
+    The Lesser White-fronted Goose is a scarce breeder in northern Scandinavia, with
+    populations sustained partly through reintroduction efforts in Fennoscandia. This
+    species breeds in the northernmost Palearctic regions during summer months. As
+    a migratory species, it follows seasonal movement patterns typical of arctic-breeding
+    geese, departing breeding grounds in autumn for wintering areas further south.
+    However, the provided source text does not contain specific details regarding
+    exact arrival and departure months, or precise overwintering locations in Northern
+    Europe.'
+image_refs:
+- role: hero
+  path: Q191628/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Uusijani" title="User:Uusijani">Uusijani</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anser erythropus (standing on
+    one leg).jpg
+  commons_filename: Anser erythropus (standing on one leg).jpg
+- role: secondary
+  path: Q191628/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3113277">nbasargin</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Unidentified hybrid goose, München,
+    Deutschland 425987939.jpg
+  commons_filename: Unidentified hybrid goose, München, Deutschland 425987939.jpg
+- role: secondary
+  path: Q191628/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Kyu3a" title="User:Kyu3a">Kyu3</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anser erythropus in Higashiyama
+    Zoo - 1.jpg
+  commons_filename: Anser erythropus in Higashiyama Zoo - 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:51:45.933075+00:00'
+sources:
+  wikipedia_sv_revision: '59200651'
+  wikipedia_en_revision: '1342155946'
+  claude_model: claude-haiku-4-5-20251001

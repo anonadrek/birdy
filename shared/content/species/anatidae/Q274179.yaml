@@ -1,0 +1,124 @@
+id: Q274179
+scientific_name: Alopochen aegyptiaca
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Alopochen
+  ioc_order: Anseriformes
+names:
+  sv: Nilgås
+  en: Egyptian Goose
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Nilgås
+
+
+    Nilgås är en stor afrikansk andfågel som tillhör samma släkte som gravänderna.
+    Det är den enda nu levande arten i sitt släkte, Alopochen. Arten har på senare
+    tid etablerat sig i Europa, där det betraktas som en invasiv art, medan det globalt
+    sett minskar i antal.
+
+
+    Nilgåsen är en stor fågel med karakteristiska drag som skiljer det från andra
+    andfåglar. Arten föredrar områden nära vatten och är känd för att visa aggressiv
+    territorialbeteende, särskilt under häckningstiden. Det är en relativt vocal fågel
+    som ger ifrån sig olika lud när det kommunicerar med sina artfränder.
+
+
+    Arten återfinns i Afrika, men har etablerat bestånd i Europa under senare år.
+    Det är främst att hitta på öppna våtmarker, sjöar och älvar med omgivande gräsmark,
+    där det kan föda sig och hålla till.'
+  en: '# Egyptian Goose
+
+
+    The Egyptian goose is a distinctive member of the duck and goose family, native
+    to Africa but now found on several continents due to its popularity as an ornamental
+    bird. It has been widely introduced to Europe, the United States, and other regions
+    outside its original range. The species holds cultural significance, having been
+    frequently depicted in ancient Egyptian art.
+
+
+    This adaptable waterfowl inhabits various wetland environments including lakes,
+    rivers, and marshes. Like other geese, it is a gregarious species, often seen
+    in small to large flocks. The Egyptian goose has established feral populations
+    in introduced ranges, where it can be observed year-round in suitable habitats.
+    Its spread beyond Africa demonstrates the species'' ability to thrive in diverse
+    environments, making it increasingly common in parks, wetland reserves, and coastal
+    areas where it was deliberately released or escaped from captivity.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller endast information om att nilgåsen är en
+    afrikansk andfågel som nyligen etablerat sig i Europa och klassificeras som invasiv,
+    men presenterar ingen faktisk migrationsdata angående påkomst, avgång, eller övervintring
+    i Skandinavien eller Nordeuropa.'
+  en: '# Egyptian Goose (Alopochen aegyptiaca) in Scandinavia/Northern Europe
+
+
+    The Egyptian Goose is not naturally occurring in Scandinavia or Northern Europe.
+    This African waterfowl species has been introduced to Europe primarily through
+    the ornamental bird trade, but it remains an exotic vagrant rather than an established
+    migratory or resident population in the Nordic region. Any sightings in Scandinavia
+    would represent escaped or feral individuals from captive populations in southern
+    Europe, rather than natural range expansion or migration. The species is fundamentally
+    adapted to African wetlands and lacks the migratory patterns typical of northern
+    European waterfowl.'
+image_refs:
+- role: hero
+  path: Q274179/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20180505 Alopochen aegyptiaca
+    03.jpg
+  commons_filename: 20180505 Alopochen aegyptiaca 03.jpg
+- role: secondary
+  path: Q274179/secondary-1.jpg
+  width: 1800
+  height: 1140
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Egyptian goose (Alopochen aegyptiaca)
+    taking off.jpg
+  commons_filename: Egyptian goose (Alopochen aegyptiaca) taking off.jpg
+- role: secondary
+  path: Q274179/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Egyptian goose (Alopochen aegyptiaca)
+    gosling 01.jpg
+  commons_filename: Egyptian goose (Alopochen aegyptiaca) gosling 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:51:35.041286+00:00'
+sources:
+  wikipedia_sv_revision: '55901264'
+  wikipedia_en_revision: '1350901363'
+  claude_model: claude-haiku-4-5-20251001

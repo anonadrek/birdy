@@ -11,7 +11,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-04 | accipitridae | +38 (totalt 51) | `1ed1895` |
 | 2026-05-04 | acrocephalidae | +19 (totalt 70) | `3609b98` |
 | 2026-05-04 | alaudidae | +27 (totalt 97) | `d945e1f` |
-| | _next: anatidae_ | | |
+| 2026-05-06 | anatidae | +52 (totalt 149) | `(this commit)` |
+| | _next: aegithalidae_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -30,6 +31,14 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Validator-threshold (80w) > sparse-threshold (20w):** Q1590574 fick sv=72w (Claude körde, men under 80w-gränsen). Lägg `sv` i `description_accept_missing` även när text faktiskt finns men är för kort. Validatorn rapporterar `description-too-short` om missat.
 - **`allow_missing_images: true` per art** finns redan som override (`ValidateMain.kt:15`). Använd när Commons saknar foto över `MIN_DIMENSION=2048`. Q891376 basrasångare hade bara 1071×905 → satt allow_missing_images. Bättre än att sänka MIN_DIMENSION globalt.
 - Q27674 härmsångare hade bara 1 image_ref (hero, ingen secondary). Validatorn accepterar — minimum är 1 hero. Inte allt är problem.
+
+**Anatidae-batch lärdomar (2026-05-06):**
+
+- 17/53 abundance:allmän approved (sjöfåglar är väletablerade i SE — knölsvan, sångsvan, gräsand, kricka, gravand, ejder, knipa, vigg, brunand, skedand, snatterand, bläsand, stjärtand, kanadagås, vitkindad gås, grågås, smås/storskrake). Hero-pick bulk-approved efter spot-check av filnamn (alla matchar art-i-naturmiljö, inga museum/illustrations).
+- **9/53 (17%) sparse-text-overrides** — sjöfåglar har bättre svwiki/enwiki-coverage än rovfåglar (47% accipitridae) och lärkor (48% alaudidae). Bekräftar förväntan från `project_plan_2b_status.md`.
+- **Q28106966 Snatterand (allmän) extremfall:** båda Wikipedia-leadparagrafer = 1 mening. Verifierat direkt mot Wikipedia API (sv=21w, en=15w) — inte pipeline-bug, genuin upstream-glugg trots att det är en vanlig art. `description_accept_missing: [sv, en]` + `(allmän — prioriterad)` i content-gaps.md för manuell text framåt. UI:n hanterar redan detta sparse-fall (Plan 3 fallbacks).
+- **Inga pipeline-fixar behövdes** — tidigare lärdomar (ALLOWED_IMAGE_EXTS, gsrlimit=50, REJECT_PATTERNS, refresh_one partial-rerun) räckte. Familj +52 arter levererades utan en enda kod-commit.
+- **Inga `commons_search_name`-overrides behövdes** trots flera nyligen omstrukturerade genus (Mareca, Spatula från Anas; Aythya). Commons har hängt med på sub-familjenivå för anatidae.
 
 **Alaudidae-batch lärdomar (2026-05-04):**
 
@@ -103,8 +112,9 @@ Cumulative Claude budget for the full backfill: ~$5. Use `--max-cost` per run, s
 | accipitridae | 38 | ~50 (sparse skip ~26 calls) | ~$0.27 | ~$0.007 |
 | acrocephalidae | 19 | 64 (sparse skip ~12 calls) | ~$0.064 | ~$0.003 |
 | alaudidae | 27 | ~36 (sparse skip ~18 calls) | ~$0.04 | ~$0.0015 |
+| anatidae | 52 | ~95 (sparse skip ~10 calls) | ~$0.10 | ~$0.002 |
 
-Cumulativt: 97 arter / ~$0.42. Vid ~700 arter och 30–50% sparse-rate landar vi på ~$3–4 totalt — väl under budget. Sparse-arter (overrides) bidrar nästan inte till kostnaden eftersom Claude inte anropas alls för det språket.
+Cumulativt: 149 arter / ~$0.52. Vid ~700 arter och 17–48% sparse-rate landar vi på ~$3–4 totalt — väl under budget. Sparse-arter (overrides) bidrar nästan inte till kostnaden eftersom Claude inte anropas alls för det språket.
 
 ## Relaterade runbooks
 

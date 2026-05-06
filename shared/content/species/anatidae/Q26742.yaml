@@ -1,0 +1,136 @@
+id: Q26742
+scientific_name: Aythya ferina
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Aythya
+  ioc_order: Anseriformes
+names:
+  sv: Brunand
+  en: Common Pochard
+abundance: allmän
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brunand
+
+
+    Brunand är en medelstor dykand som kännetecknas av sitt karakteristiska utseende.
+    Hanen är särskilt iögonfallande med rödbrun huvud, svart bröstkorg och grå rygg,
+    medan honan är mer diskret brunaktig. Arten häckar i grunda vatten på låglänta
+    områden och är förhållandevis tystlåten jämfört med många andra änder.
+
+
+    Brunanden dykandes för att söka föda på botten, där den äter vattenväxter och
+    småkryp. Under häckningstiden är arten beroende av näringsrika, grunda sjöar och
+    träsk. På senare år har arten minskat dramatiskt och är nu listad som sårbar internationellt.
+    I Sverige klassificeras den sedan 2020 som starkt hotad, vilket återspeglar en
+    oroande utveckling för arten.
+
+
+    Arten förekommer under höst- och vårflyttningen på olika vattendrag och sjöar,
+    men kan även ses övervintrande på större vattenytor.'
+  en: '# Common Pochard
+
+
+    The common pochard is a medium-sized diving duck found across the Palearctic region.
+    Males are striking with their chestnut-red head and neck contrasting sharply against
+    a black breast and pale grey back, while females are duller brown overall with
+    a lighter face patch. It is a true diving duck, submerging entirely to feed on
+    aquatic vegetation and invertebrates rather than dabbling at the surface like
+    some duck species.
+
+
+    This duck breeds primarily in steppe regions of northern Europe and Siberia, favoring
+    shallow lakes and marshes with abundant vegetation. During winter, it migrates
+    southward and westward to milder regions, often gathering in large flocks on open
+    water bodies. On water, it appears compact and sits quite low in the profile.
+    The pochard is relatively quiet but produces soft grunting and whistling calls
+    during breeding season.
+
+
+    Breeding birds establish territories on freshwater wetlands with good vegetation
+    cover, while wintering populations congregate on lakes, reservoirs, and coastal
+    waters. The species is highly gregarious in winter, sometimes forming substantial
+    flocks with other diving ducks, making it a familiar sight on suitable water bodies
+    across much of Eurasia during the colder months.'
+migration:
+  sv: '# Brunand - Migration och förekomst i Nordeuropa
+
+
+    Brunand är en flyttfågel som häckar i Palearktis under våren och försommaren.
+    Arten förekommer i Sverige under häckningsperioden i grunda vatten, men exakt
+    ankomst- och avgångstider framgår inte av tillgänglig källa. Som dykand är arten
+    beroende av öppna vattenområden för sin överlevnad. Under senare år har bestånden
+    minskat kraftigt i hela sitt utbredningsområde, vilket påverkar även förekomsterna
+    i Skandinavien.
+
+
+    Då brunanden klassificeras som en flyttfågel som häckar i norra Palearktis, antas
+    den förlägga vintern på sydligare breddgrader, men specifik information om övervintringsplatser
+    och exakta migrationstider för Skandinavien saknas i den tillhandahållna källtexten.'
+  en: '# Common Pochard in Scandinavia and Northern Europe
+
+
+    The common pochard is a migratory diving duck across Scandinavia and Northern
+    Europe. It breeds primarily in steppe regions of Scandinavia during spring and
+    summer months, typically arriving in April and May. The species winters farther
+    south and west, vacating Scandinavian breeding grounds in autumn as temperatures
+    drop. Migration occurs in autumn (September–October) when pochards depart northerly
+    breeding areas, with populations moving toward milder wintering grounds in central
+    and western Europe. Return migration to Scandinavian breeding territories begins
+    in early spring as ice melts and water bodies become accessible again.'
+image_refs:
+- role: hero
+  path: Q26742/hero.jpg
+  width: 2400
+  height: 1480
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/44093058@N06">Blondinrikard
+    Fröberg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common pochard, Aythya ferina,
+    Brunand (50829034922).jpg
+  commons_filename: Common pochard, Aythya ferina, Brunand (50829034922).jpg
+- role: secondary
+  path: Q26742/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/38584744@N00">Richard
+    Barrett-Small</a> from London, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Aythya ferina Finsbury 1.jpg
+  commons_filename: Aythya ferina Finsbury 1.jpg
+- role: secondary
+  path: Q26742/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37413900@N04">Maxwell
+    Hamilton</a> from Greater London, England United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Aythya ferina Bushy Park 1.jpg
+  commons_filename: Aythya ferina Bushy Park 1.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:50:19.751217+00:00'
+sources:
+  wikipedia_sv_revision: '57972229'
+  wikipedia_en_revision: '1332258917'
+  claude_model: claude-haiku-4-5-20251001

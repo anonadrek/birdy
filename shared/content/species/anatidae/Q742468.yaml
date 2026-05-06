@@ -1,0 +1,133 @@
+id: Q742468
+scientific_name: Melanitta perspicillata
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: scoter
+  ioc_order: Anseriformes
+names:
+  sv: Vitnackad svärta
+  en: Surf Scoter
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitnackad svärta
+
+
+    Vitnackad svärta är en amerikansk andfågel som häckar i Kanada och Alaska. Under
+    vintern flyttar arten främst till USA:s norra kuster, men dyker regelbundet upp
+    i Europa som gäst. I Sverige observeras den årligen, även om den är relativt fåtalig.
+
+
+    Arten kännetecknas av sitt karakteristiska utseende med svart fjäderdräkt och
+    vita märken på nacken och huvudet. Vitnackad svärta föredrar kustnära vatten där
+    den dykande och födosökning efter småfisk och andra vattenorganismer. Arten är
+    ofta aktiv på djupare vatten än många andra andarter.
+
+
+    Populationen vitnackad svärta minskar långsamt, men beståndet anses fortsatt vara
+    livskraftigt. Som många simfåglar är arten beroende av friska marina och kustmiljöer
+    för sin överlevnad.'
+  en: '# Surf Scoter
+
+
+    The surf scoter is a large sea duck with striking sexual dimorphism. Males are
+    predominantly black with distinctive white patches on the forehead and nape, making
+    them instantly recognizable. Females are noticeably smaller and browner overall,
+    lacking the bold white markings. Both sexes have characteristic heavy bills adapted
+    for their diving lifestyle.
+
+
+    This species is primarily a benthic feeder, diving to the seafloor to forage for
+    invertebrates, with mussels forming a significant part of its diet. Surf scoters
+    are highly specialized for marine life and are rarely seen on freshwater. They
+    breed in the northern regions of North America during summer months, then migrate
+    to coastal waters for winter, where they gather in large flocks often visible
+    from shore, particularly along rocky or sandy coasts where their preferred food
+    sources are abundant.'
+migration:
+  sv: '# Vitnackad svärta i Skandinavien
+
+
+    Vitnackad svärta är en nordamerikansk andfågel som endast förekommer som oregelbunden
+    gäst i Europa och Sverige. Arten observeras årligen i svenska farvatten, särskilt
+    under höst och vinter när nordamerikanska populationer migrerar söderut. Även
+    om den är en fåtalig besökare, ses den regelbundet längs våra kuster. Huvuddelen
+    av arten övervintrargränslös på östkusten av USA:s norra atlantkust, långt från
+    sitt häckningsområde i Kanada och Alaska. I Sverige anländer enstaka individer
+    framför allt under höst- och vinterperioden.'
+  en: '# Surf Scoter in Scandinavia/Northern Europe
+
+
+    The Surf Scoter is primarily a North American species with very limited occurrence
+    in Scandinavia and Northern Europe. While the species is native to breeding grounds
+    in Northern Canada and Alaska, wintering along North American coasts, occasional
+    vagrants may appear in northern European waters during winter months. However,
+    regular migration patterns to Scandinavia are not established, and sightings remain
+    rare and unpredictable. The species should not be considered a typical winter
+    visitor or regular migrant to the region.
+
+
+    **Migration data for regular Scandinavian/Northern European occurrence is unavailable
+    for this species.**'
+image_refs:
+- role: hero
+  path: Q742468/hero.jpg
+  width: 2400
+  height: 1648
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/usfwspacific/">USFWS
+    - Pacific Region</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
+    href="//commons.wikimedia.org/wiki/File:Brillenente_(Melanitta_perspicillata),_weiblich_nahe_Westport,_Washington,_Vereinigte_Staaten.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Brillenente (Melanitta perspicillata),
+    weiblich nahe Westport, Washington, Vereinigte Staaten.jpg
+  commons_filename: Brillenente (Melanitta perspicillata), weiblich nahe Westport,
+    Washington, Vereinigte Staaten.jpg
+- role: secondary
+  path: Q742468/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: Public domain
+  author: Peter Pearsall/U.S. Fish and Wildlife Service
+  source_url: https://commons.wikimedia.org/wiki/File:Melanitta perspicillata pair
+    Oregon.jpg
+  commons_filename: Melanitta perspicillata pair Oregon.jpg
+- role: secondary
+  path: Q742468/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/8375047">Chris
+    Spain</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Melanitta perspicillata 414951750.jpg
+  commons_filename: Melanitta perspicillata 414951750.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:54:02.764312+00:00'
+sources:
+  wikipedia_sv_revision: '55901725'
+  wikipedia_en_revision: '1337662037'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,127 @@
+id: Q25348
+scientific_name: Anas platyrhynchos
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Anas
+  ioc_order: Anseriformes
+names:
+  sv: Gräsand
+  en: Mallard
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gräsand
+
+
+    Gräsand är en av norra halvklotets vanligaste andfåglar. Arten är välbekant och
+    vida spridd över stora områden. Gräsanden är särskilt anmärkningsvärd eftersom
+    den, tillsammans med myskanden, är ursprunget till de tamänder som människan tämjt
+    genom historien.
+
+
+    Denna andfågel förekommer i många olika miljöer där det finns vatten – från små
+    dammar och sjöar till större vattendrag. Den är anpassad till såväl naturliga
+    som människoskapade vattenhabitat, vilket bidrar till dess framgång och utbredning
+    över norra halvklotet. Gräsanden är därför en art som många människor får möta
+    i sitt dagliga liv, både i städer och på landsbygden.'
+  en: '# Mallard
+
+
+    The mallard is a dabbling duck found across temperate and subtropical regions
+    worldwide, having been introduced to many additional locations. Males are distinctive
+    with their iridescent green heads, yellow bills, and chestnut breasts, while females
+    are mottled brown with orange-and-brown bills. It is a highly social species,
+    typically seen in groups of varying sizes on wetlands.
+
+
+    Mallards are adaptable foragers, dabbling in shallow water to feed on aquatic
+    plants and small animals. They are vocal ducks, with males producing a soft, nasal
+    call and females emitting the classic loud, repetitive quacking sound. The species
+    is often seen in pairs or larger flocks, particularly during breeding season,
+    and readily congregates in parks and urban waterways alongside other duck species.
+
+
+    This abundant and familiar duck prefers wetland habitats including lakes, ponds,
+    marshes, and rivers. Its adaptability and social nature have made it one of the
+    most widespread and recognizable waterfowl species, thriving in both natural and
+    human-modified environments.'
+migration:
+  sv: '# Gräsand - Säsongförekomst i Nordeuropa
+
+
+    Gräsanden är en övervintrare och flyttfågel i Skandinavien. Arten återvänder till
+    häckningsområdena under mars-april när isen börjar smälta. Under sommaren häckar
+    gräsanden vid sjöar, våtmarker och vattendrag över större delen av Sverige, Norge
+    och Danmark. Hösten påbörjas förflyttningen från augusti-september då många individer
+    drar söderut och västerut. En del gräsänder stannar kvar och överväxlar vid öppna
+    vattnet längs kusten och vid värmekällor där is inte bildas.'
+  en: '# Mallard in Scandinavia/Northern Europe
+
+
+    The mallard is a common and widespread dabbling duck throughout Scandinavia and
+    Northern Europe, occurring year-round in many areas. Northern populations are
+    migratory, with birds arriving from March onwards to breed in wetlands across
+    the region. During autumn, typically from September onwards, these populations
+    undertake southwesterly migrations to overwinter in more temperate regions. However,
+    substantial numbers remain as winter residents in Scandinavian countries, particularly
+    in coastal areas and unfrozen inland waters where food remains accessible. This
+    species'' flexibility in wintering habits makes it one of the few dabbling ducks
+    regularly present throughout the year in Northern Europe.'
+image_refs:
+- role: hero
+  path: Q25348/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mallard (Anas platyrhynchos)
+    male head.jpg
+  commons_filename: Mallard (Anas platyrhynchos) male head.jpg
+- role: secondary
+  path: Q25348/secondary-1.jpg
+  width: 1800
+  height: 983
+  license: CC BY 3.0
+  author: Calle Eklund/<a href="//commons.wikimedia.org/wiki/User:V-wolf" title="User:V-wolf">V-wolf</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anas platyrhynchos Vikmanshyttan
+    02.jpg
+  commons_filename: Anas platyrhynchos Vikmanshyttan 02.jpg
+- role: secondary
+  path: Q25348/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q28147777" class="extiw" title="d:Q28147777"><span
+    title="Spanish photographer">Diego Delso</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Ánades reales (Anas platyrhynchos),
+    Potter marsh, Alaska, USA, 2017-08-22, DD 141.jpg
+  commons_filename: Ánades reales (Anas platyrhynchos), Potter marsh, Alaska, USA,
+    2017-08-22, DD 141.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:52:43.502026+00:00'
+sources:
+  wikipedia_sv_revision: '58510779'
+  wikipedia_en_revision: '1351529773'
+  claude_model: claude-haiku-4-5-20251001

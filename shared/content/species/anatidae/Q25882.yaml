@@ -1,0 +1,136 @@
+id: Q25882
+scientific_name: Anser anser
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Anser
+  ioc_order: Anseriformes
+names:
+  sv: Grågås
+  en: Greylag Goose
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Grågås
+
+
+    Grågåsen är en stor och kraftig gås med grå fjäderdräkt och mycket karakteristiska
+    ljusa vingframkanter som är tydliga både sittande och flygande. Näbben och benen
+    är ljusrosa, vilket skiljer arten från andra gåsarter. Det är en robust fågel
+    som väl motsvarar många människors mentala bild av en typisk gås.
+
+
+    Som kortflyttande flyttfågel häckar grågåsen i stora delar av norra och mellersta
+    Palearktis. Arten är gregär och ses ofta i större eller mindre flockar, särskilt
+    under migration och på övervintringsområdena. Grågåsen föredrar våtmarker som
+    sjöar, vattendrag och sumpiga områden där den kan föda sig på växtmaterial.
+
+
+    Grågåsen är känd för sitt höga, trumpetliknande läte som ofta hörs när flockar
+    flyger förbi. Arten är också källan till vår tamgås, då tamgåsen domesticerades
+    från grågåsen redan för flera tusen år sedan. Idag klassificeras grågåsen som
+    livskraftig och förekommer fortfarande i gott antal på många håll inom sitt utbredningsområde.'
+  en: '# Greylag Goose
+
+
+    The greylag goose is a large waterfowl measuring 74–91 centimetres in length,
+    weighing around 3.3 kilograms. It displays mottled and barred grey and white plumage,
+    with a distinctive orange beak and pink legs. Its robust build and substantial
+    size make it one of the more impressive goose species encountered in the wild.
+
+
+    This species has a widespread distribution across Europe and Asia. Northern populations
+    are typically migratory, moving southward during winter to seek milder conditions,
+    while many southern populations remain resident year-round. The greylag goose
+    is notably the ancestor of most domestic goose breeds, having been domesticated
+    for thousands of years, with evidence of domestication dating back at least to
+    1360 BCE.
+
+
+    In its natural habitat, the greylag goose frequents lakes, marshes, and wetland
+    areas where it feeds on vegetation. It is highly sociable, often seen in flocks,
+    particularly during migration periods and winter gatherings. Its adaptability
+    to various wetland environments and its relatively large population make it a
+    familiar sight across much of its range, especially where protected from hunting
+    pressures.'
+migration:
+  sv: '# Grågås – Förekomst i Skandinavien/Nordeuropa
+
+
+    Grågåsen är en kortflyttande art som häckar i stora delar av norra och mellersta
+    Palearktis. I Skandinavien och Nordeuropa är den en sesongsarter som följer årscykeln.
+    Arten anländer till häckningsområdena under våren och återvänder till sina övervintringsområden
+    innan vintern sätter in. Som kortflyttare förflyttar sig populationerna mellan
+    nordiska häckningsplatser och mindre avlägsna övervintringshabitat, ofta inom
+    samma större geografiska region.
+
+
+    Grågåsen är därmed ingen långflyttare utan återkommer regelbundet till samma områden
+    säsong efter säsong, där förekomsten är starkt beroende av säsongens framsteg
+    och is- och snöförhållandena.'
+  en: '# Greylag Goose in Scandinavia/Northern Europe
+
+
+    The Greylag Goose shows variable migratory behavior throughout Scandinavia and
+    Northern Europe. Northern populations are highly migratory, with birds departing
+    breeding grounds in autumn to overwinter in southern regions, returning northward
+    in spring. However, many populations have become increasingly resident, remaining
+    year-round even in northern areas, particularly where winter conditions permit
+    access to open water and food sources. Spring arrival typically occurs from February
+    onwards, with peak breeding activity in spring and early summer. Autumn migration
+    intensifies from September through November as birds move southward to escape
+    harsh winter conditions.'
+image_refs:
+- role: hero
+  path: Q25882/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Greylag goose (Anser anser).jpg
+  commons_filename: Greylag goose (Anser anser).jpg
+- role: secondary
+  path: Q25882/secondary-1.jpg
+  width: 1800
+  height: 1196
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Wilfredor" class="mw-redirect"
+    title="User:Wilfredor">Wilfredor</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anser anser domesticus 2.jpg
+  commons_filename: Anser anser domesticus 2.jpg
+- role: secondary
+  path: Q25882/secondary-2.jpg
+  width: 1800
+  height: 1196
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:H005" title="User:H005">H005</a>,
+    denoised by <a href="//commons.wikimedia.org/w/index.php?title=User:Pro2&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Pro2 (page does not exist)">Pro2</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Graugans Anser Anser.jpg
+  commons_filename: Graugans Anser Anser.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:51:01.007182+00:00'
+sources:
+  wikipedia_sv_revision: '58506894'
+  wikipedia_en_revision: '1344164499'
+  claude_model: claude-haiku-4-5-20251001

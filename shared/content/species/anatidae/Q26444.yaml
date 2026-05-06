@@ -1,0 +1,127 @@
+id: Q26444
+scientific_name: Aythya fuligula
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Aythya
+  ioc_order: Anseriformes
+names:
+  sv: Vigg
+  en: Tufted Duck
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vigg
+
+
+    Viggen är en liten och kompakt dykand med påfallande färgteckning. Hanen är kontrastrikt
+    svart och vit med en karakteristisk hängande tofs på huvudet, medan honan är brunaktig
+    med en mindre framträdande tofs. Båda könen har gul iris och en ljust gråblå näbb
+    med svart näbbnagel, vilket gör arten lätt att identifiera.
+
+
+    Viggen är en dykand som återfinns på öppna vattenytor där den dykningar för att
+    söka föda. Arten förekommer på olika typer av vattenhabitat och är en vanlig fågel
+    på många sjöar och vattendrag. Den är en aktiv och ofta högljudd fågel som kan
+    ses både under dagen och vid skymningen.'
+  en: '# Tufted Duck
+
+
+    The Tufted Duck is a small diving duck found across northern Eurasia, with a global
+    population approaching one million birds. It is partially migratory, with some
+    populations remaining year-round in favourable locations while others undertake
+    seasonal movements. This species is valued as a game bird in many regions.
+
+
+    The Tufted Duck is identifiable by its compact size and distinctive appearance.
+    Males display striking black and white plumage, while females are brown with white
+    markings. Both sexes possess a characteristic tuft of feathers on the head, which
+    is particularly prominent in breeding males and gives the species its English
+    name.
+
+
+    As a diving duck, the Tufted Duck frequents freshwater lakes, reservoirs, and
+    coastal waters where it forages by submerging to feed on aquatic vegetation, invertebrates,
+    and small fish. It is a gregarious species, often seen in flocks, particularly
+    outside the breeding season. The birds are vocal, producing various calls that
+    serve in communication and pair formation during the breeding period.'
+migration:
+  sv: '# Viggens förekomst i Skandinavien
+
+
+    Vigg är en vanlig dykand i Skandinavien som förekommer året runt, dock med säsongsvariationer.
+    Under sommaren häckar arten vid större sjöar och vattendrag i Sverige, Norge och
+    Danmark. Hösten och vintern ses arten på öppna vatten, särskilt på större sjöar,
+    fjordar och kustnära områden där isen inte täcker vattenytan helt. En del viggar
+    är övervintrare som stannar i norden, medan andra migrerar söderut. Arten återkommer
+    till häckningsområdena under april-maj och försvinner successivt under oktober-november.'
+  en: '# Tufted Duck in Northern Europe
+
+
+    The Tufted Duck is a partially migratory species found throughout Scandinavia
+    and Northern Europe. During breeding season, populations establish across freshwater
+    lakes and coastal waters, with numbers increasing as birds arrive from southern
+    wintering grounds from March onwards. In autumn, typically from August through
+    October, significant numbers depart southward toward milder climates, though many
+    individuals remain throughout winter on ice-free waters, particularly in coastal
+    areas and larger lakes where open water persists. Winter populations fluctuate
+    depending on severity; harsh freezing conditions may force additional birds to
+    relocate southward, while milder winters support larger resident populations.
+    This flexible migratory strategy allows the species to exploit breeding opportunities
+    in the north while maintaining populations year-round in suitable northern habitats.'
+image_refs:
+- role: hero
+  path: Q26444/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tufted duck (Aythya fuligula)
+    pair.jpg
+  commons_filename: Tufted duck (Aythya fuligula) pair.jpg
+- role: secondary
+  path: Q26444/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aythya fuligula (male) 2022
+    03 20.jpg
+  commons_filename: Aythya fuligula (male) 2022 03 20.jpg
+- role: secondary
+  path: Q26444/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aythya fuligula 2022 03 20.jpg
+  commons_filename: Aythya fuligula 2022 03 20.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:52:04.633329+00:00'
+sources:
+  wikipedia_sv_revision: '58510315'
+  wikipedia_en_revision: '1349639915'
+  claude_model: claude-haiku-4-5-20251001

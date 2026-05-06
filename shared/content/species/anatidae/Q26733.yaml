@@ -1,0 +1,128 @@
+id: Q26733
+scientific_name: Branta canadensis
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Branta
+  ioc_order: Anseriformes
+names:
+  sv: Kanadagås
+  en: Canada Goose
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kanadagås
+
+
+    Kanadagåsen är en stor gåsart från Nordamerika som numera finns väl etablerad
+    även i Europa och Nya Zeeland. Det är en imponerande fågel med svart hals och
+    huvud, vit fläck på kinderna och ljusare brun kropp. Kanadagåsen är betydligt
+    större än många europeiska gåsarter och väger ofta flera kilo.
+
+
+    Arten är gregär och ses ofta i flockar, särskilt under flyttning och på övervintringslokaler.
+    Det är en gräsätare som ofta ockuperar parker, sjöar och vattendrag nära bebyggelse.
+    Kanadagåsen är känd för sitt högljudda, karakteristiska kall som låter som "honk"
+    eller "a-honk" och hörs ofta från flygande flockar.
+
+
+    Arten häckar vid större sjöar, bäckar och kustvatten och behöver växtlighet och
+    öppna vattenytor. Genom år av introduktion och möjlighet att övervintra på många
+    håll har kanadagåsen blivit en etablerad art långt från sitt ursprungliga utbredningsområde.'
+  en: '# Canada Goose
+
+
+    The Canada goose is a large goose instantly recognizable by its striking black
+    head and neck contrasting sharply with white cheeks and chin patch, set against
+    a brown body. This distinctive coloring makes identification straightforward even
+    at distance.
+
+
+    Originally native to North American arctic and temperate regions, the Canada goose
+    is primarily herbivorous and naturally migratory. It favors freshwater habitats
+    but adapts well to brackish marshes, estuaries, and lagoons. The species has been
+    widely introduced across the globe, now established in parts of Europe including
+    Scandinavia, as well as New Zealand, Japan, and South America, where it occasionally
+    appears during migration periods.
+
+
+    Like other geese, it is a highly social bird typically encountered in flocks,
+    particularly during seasonal movements. Its adaptability to various wetland environments
+    and introduced populations have made it increasingly common in many regions beyond
+    its native range.'
+migration:
+  sv: Kanadagåsen har sitt ursprung i Nordamerika men har genom introduktion etablerat
+    sig omfattande i Europa under de senaste decennierna. I Skandinavien och Nordeuropa
+    är arten numera en växande population, särskilt i södra regioner. Kanadagässen
+    är delvis flyttfåglar som under hösten migrerar söderut för att undvika de hårdaste
+    vinterklimaterna, medan vissa populationer övervintar på öppna vatten och i parklandskap.
+    Arten anländer till sina häckningsplatser under våren, ofta redan från februari-mars.
+    Under sommaren är de primärt sedda vid sjöar, dammer och andra större vattensamlingar
+    där de häckar.
+  en: '# Canada Goose in Scandinavia and Northern Europe
+
+
+    The Canada goose is primarily a vagrant to Scandinavia and northern Europe, occasionally
+    appearing during migration across the Atlantic. However, introduced populations
+    now occur in the region, particularly in the United Kingdom and Scandinavia, where
+    they have become established. These introduced birds have altered traditional
+    migration patterns, with some populations becoming increasingly sedentary rather
+    than fully migratory. In winter, Canada geese may remain in Scandinavian waters
+    if conditions permit, relying on open water in coastal areas and around human
+    settlements. Breeding populations have also expanded northward from introduced
+    stock, with arrivals typically occurring in spring months and departures in autumn,
+    following patterns similar to native European goose species.'
+image_refs:
+- role: hero
+  path: Q26733/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Grendelkhan" title="User:Grendelkhan">Grendelkhan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Branta canadensis gosling on
+    grass at Campbell Park.jpg
+  commons_filename: Branta canadensis gosling on grass at Campbell Park.jpg
+- role: secondary
+  path: Q26733/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Grendelkhan" title="User:Grendelkhan">Grendelkhan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Branta canadensis gosling on
+    grass at Campbell Park 2.jpg
+  commons_filename: Branta canadensis gosling on grass at Campbell Park 2.jpg
+- role: secondary
+  path: Q26733/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Grendelkhan" title="User:Grendelkhan">Grendelkhan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Branta canadensis gosling on
+    grass at Campbell Park 3.jpg
+  commons_filename: Branta canadensis gosling on grass at Campbell Park 3.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:53:29.134160+00:00'
+sources:
+  wikipedia_sv_revision: '59154976'
+  wikipedia_en_revision: '1351808726'
+  claude_model: claude-haiku-4-5-20251001

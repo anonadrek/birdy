@@ -1,0 +1,131 @@
+id: Q170723
+scientific_name: Tadorna ferruginea
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Tadorna
+  ioc_order: Anseriformes
+names:
+  sv: Rostand
+  en: Ruddy Shelduck
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rostand
+
+
+    Rostand är en stor andfågel med rostfärgad kropp och vit hals och huvud. Hanen
+    har en svart halsring och mer intensiv färgteckning än honan. Under flykten är
+    vingarna vita med svarta handpennor, vilket gör arten lätt att identifiera på
+    avstånd. Fågeln är betydligt större än vanlig gräsand.
+
+
+    Arten förekommer normalt från sydöstra Europa östut till Kina, samt lokalt i Kanarieöarna,
+    nordvästra Afrika och Etiopien. I nordiska landen påträffas rostand regelbundet
+    men sporadiskt. De flesta observationer av nordiska rostandar tros utgöras av
+    fåglar som rymt från människans fångenskap. Arten är mycket socker och föredrar
+    öppna, torra miljöer nära vatten.
+
+
+    Rostand är en livskraftig art enligt IUCN:s bedömning.'
+  en: '# Ruddy Shelduck
+
+
+    The ruddy shelduck is a striking waterfowl measuring 58-70 cm in length. It displays
+    distinctive orange-brown body plumage with a noticeably paler head, while the
+    tail and flight feathers are black. White wing-coverts provide striking contrast
+    in flight, and the wingspan reaches 110-135 cm. This combination of warm and cool
+    tones makes it unmistakable among similar duck species.
+
+
+    This is primarily a migratory species, breeding across southeastern Europe and
+    central Asia during the breeding season, then wintering in the Indian subcontinent.
+    Small resident populations persist in North Africa year-round. The ruddy shelduck
+    is highly vocal, with a distinctive loud honking call that often draws attention
+    before the bird is seen. It frequents freshwater habitats including lakes, rivers,
+    and wetlands where it can be observed singly, in pairs, or in small flocks depending
+    on the season and location.'
+migration:
+  sv: '# Rostand – förekomst i Nordeuropa
+
+
+    Rostand förekommer regelbundet i Norden, men observationerna bedöms huvudsakligen
+    utgöras av fåglar som förymtats från fångenskap snarare än naturliga migranter.
+    Arten häckar normalt från sydöstra Europa österut till Kina, vilket gör Skandinavien
+    långt utanför dess naturliga utbredningsområde. De rostandar som påträffas här
+    är därför oftast undvikare från människans vård, inte vilda fåglar på naturlig
+    migration.
+
+
+    Arten är således inte en etablerad flyttfågel i Nordeuropa och utgör ingen regelbunden
+    del av Skandinaviens årscykel för fågelvandring. Observationer bör tolkas som
+    enstaka eller återkommande händelser relaterade till undvikna fåglar snarare än
+    naturlig säsongsmässig förekomst.'
+  en: '# Tadorna ferruginea (Ruddy Shelduck) in Scandinavia/Northern Europe
+
+
+    The Ruddy Shelduck is a rare vagrant to Scandinavia and Northern Europe, with
+    no established breeding or regular wintering populations in the region. This species
+    is primarily migratory, with populations breeding in southeastern Europe and central
+    Asia before wintering in the Indian subcontinent. Occasional sightings in Scandinavian
+    countries occur during migration periods, particularly in spring and autumn, but
+    these represent birds dispersing from their core range rather than regular passage
+    migrants. The species should be considered highly unusual in Northern European
+    waters.'
+image_refs:
+- role: hero
+  path: Q170723/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Lautsch_Rheinfelden&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Lautsch Rheinfelden (page does not exist)">Lautsch Rheinfelden</a>
+  source_url: https://commons.wikimedia.org/wiki/File:DSCN8147 - Rostgans (Tadorna
+    ferruginea).jpg
+  commons_filename: DSCN8147 - Rostgans (Tadorna ferruginea).jpg
+- role: secondary
+  path: Q170723/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Lautsch_Rheinfelden&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Lautsch Rheinfelden (page does not exist)">Lautsch Rheinfelden</a>
+  source_url: https://commons.wikimedia.org/wiki/File:DSCN8148 - Rostgans (Tadorna
+    ferruginea).jpg
+  commons_filename: DSCN8148 - Rostgans (Tadorna ferruginea).jpg
+- role: secondary
+  path: Q170723/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Lautsch_Rheinfelden&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Lautsch Rheinfelden (page does not exist)">Lautsch Rheinfelden</a>
+  source_url: https://commons.wikimedia.org/wiki/File:DSCN8153 - Rostgans (Tadorna
+    ferruginea).jpg
+  commons_filename: DSCN8153 - Rostgans (Tadorna ferruginea).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:53:14.540443+00:00'
+sources:
+  wikipedia_sv_revision: '59212081'
+  wikipedia_en_revision: '1349791826'
+  claude_model: claude-haiku-4-5-20251001

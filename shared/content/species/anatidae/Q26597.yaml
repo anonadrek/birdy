@@ -1,0 +1,139 @@
+id: Q26597
+scientific_name: Clangula hyemalis
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Clangula
+  ioc_order: Anseriformes
+names:
+  sv: Alfågel
+  en: Long-tailed Duck
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Alfågel
+
+
+    Alfågeln är en andfågel som förekommer på höga nordliga breddgrader över hela
+    norra halvklotet. Den häckar i Nordamerika, Europa och Asien, ofta på arktiska
+    tundror och vid alpina sjöar. Det är ensam art inom sitt släkte Clangula.
+
+
+    Arten är särskilt känd för sitt långtråkiga svans som är markant förlängd, särskilt
+    hos hannarna under häckningstid. Plumagen varierar mellan säsonger, och fåglarna
+    genomgår omfattande omfjädring. Alfågeln är en duktig dykare som föredrar djupt
+    vatten för sitt födosök.
+
+
+    Arten anses minska globalt och listas som sårbar enligt IUCN. Detta beror på faktorer
+    som klimatförändring, förändring av livsmiljöer och påverkan på arktiska områden.
+    Alfågeln är därför en art som övervakas med särskild uppmärksamhet av ornitologer
+    och naturskyddare.'
+  en: '# Long-tailed Duck
+
+
+    The long-tailed duck is a medium-sized sea duck with distinctive elongated tail
+    feathers that give it its name. Males display striking plumage featuring dark
+    and white patterns that change seasonally, while females are more subdued in coloration.
+    Both sexes have compact, rounded bodies adapted for diving and underwater maneuvering.
+
+
+    This species breeds across arctic and subarctic tundra and taiga regions, where
+    it nests near freshwater lakes and coastal areas. During winter, it migrates to
+    northern coastlines of the Atlantic and Pacific Oceans, often forming large flocks
+    in open water. It is highly specialized for diving, spending much of its time
+    underwater foraging for small fish, crustaceans, and other aquatic invertebrates.
+
+
+    The long-tailed duck is particularly vocal, with males producing distinctive yodeling
+    calls during breeding season—a characteristic that has earned it attention among
+    birders. It remains the sole member of its genus, making it taxonomically unique
+    among the dabbling and diving ducks. Its presence in northern coastal waters makes
+    it a notable sight for those observing winter waterfowl, though it can be challenging
+    to approach closely.'
+migration:
+  sv: '# Alfågel (Clangula hyemalis) – Förekomst i Nordeuropa
+
+
+    Alfågeln är en typisk vinterbesökare i Skandinavien och Nordeuropa. Arten häckar
+    långt norrut i arktiska områden och anländer till skandinaviska farvatten och
+    kustzoner under hösten, vanligtvis från september-oktober. Under vintern förekommer
+    alfågeln i större antal på öppna vatten, framför allt vid kusterna och på större
+    sjöar där isen inte sluter helt. Arten återvänder till häckningsområdena under
+    våren, med huvudsaklig avgång i april-maj. Alfågeln är således en regelbunden
+    migrerande art för regionen, helt beroende av säsongens ismönster.
+
+
+    ---
+
+
+    *Notering: Källtexten innehåller endast grundläggande information om artens globala
+    förekomst. Detaljer om specifika ankomst- och avgångsmånader baseras på allmän
+    ornitologisk kunskap om arten.*'
+  en: '# Long-tailed Duck – Seasonal Occurrence in Northern Europe
+
+
+    The long-tailed duck is a highly migratory species that breeds across Arctic tundra
+    and taiga regions, including northern Scandinavia and Russia. During winter months,
+    large populations move southward to coastal waters of the northern Atlantic and
+    Pacific, where they remain until spring. These ducks typically arrive at breeding
+    grounds in northern Scandinavia from April onwards as ice breaks up, departing
+    again in September and October as autumn progresses. The species is a regular
+    winter visitor along Scandinavian coastlines, with peak numbers occurring during
+    harsh winter conditions when birds concentrate in ice-free coastal waters. Spring
+    return migration to Arctic breeding grounds occurs rapidly in April and May.'
+image_refs:
+- role: hero
+  path: Q26597/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: lwolfartist
+  source_url: https://commons.wikimedia.org/wiki/File:Clangula hyemalis DSC 5830.jpg
+  commons_filename: Clangula hyemalis DSC 5830.jpg
+- role: secondary
+  path: Q26597/secondary-1.jpg
+  width: 1800
+  height: 1410
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/44093058@N06">Blondinrikard
+    Fröberg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Long-tailed duck, Clangula hyemalis,
+    Alfågel (53071402768).jpg
+  commons_filename: Long-tailed duck, Clangula hyemalis, Alfågel (53071402768).jpg
+- role: secondary
+  path: Q26597/secondary-2.jpg
+  width: 1800
+  height: 1242
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/44093058@N06">Blondinrikard
+    Fröberg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Long-tailed duck, Clangula hyemalis,
+    Alfågel (53071298335).jpg
+  commons_filename: Long-tailed duck, Clangula hyemalis, Alfågel (53071298335).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:54:17.186609+00:00'
+sources:
+  wikipedia_sv_revision: '58691810'
+  wikipedia_en_revision: '1332383717'
+  claude_model: claude-haiku-4-5-20251001

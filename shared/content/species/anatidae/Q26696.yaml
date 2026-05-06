@@ -1,0 +1,131 @@
+id: Q26696
+scientific_name: Somateria mollissima
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: eider
+  ioc_order: Anseriformes
+names:
+  sv: Ejder
+  en: Common Eider
+abundance: allmän
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ejdern
+
+
+    Ejdern är en stor och tung dykand som mäter 60–70 cm och känns igen på sin karakteristiska
+    kilformade näbb som är fjäderklädd på sidorna. Hanen i praktdräkt är mycket kontrasterande
+    med svart hjässa, övergump och buk, ljusgrön nackfläck och övrigt vitt fjäderdräkt
+    med rödrosa anstrykning på bröstet. Honan är året runt brunvattrad i nyanser från
+    gråbrun till rödbrun eller sandfärgad, med en vitkantad mörk vingspegel. På grund
+    av en komplex ruggningsstrategi bär ejdern en växlande eklipsdräkt i svart, brunt
+    och vitt.
+
+
+    Ejdern är anpassad för att dyka och söka föda under vattenytan. Det är en kraftfull
+    och robust andfågel väl lämpad för livet vid kyliga kuster och öppna havsområden.
+    Arten ses främst på yttre skärgårdar och andra exponerade marina miljöer där den
+    föredrar grunt och produktivt vatten. Ejdern är en social fågel som ofta ses i
+    större flockar, särskilt under migrations- och vintermånaderna.'
+  en: '# Common Eider
+
+
+    The common eider is a large sea-duck found along northern coasts across the Arctic
+    and subarctic regions of Europe, North America, and eastern Siberia. Males are
+    striking in appearance, featuring black and white plumage with distinctive pale
+    green on the head and nape, while females are mottled brown. It is a powerful
+    flier, capable of reaching speeds of 113 km/h.
+
+
+    This duck breeds in Arctic and northern temperate regions during summer months,
+    then migrates south to temperate coastal waters for winter. During the cold season,
+    it often gathers in large, dense flocks on coastal waters, sometimes numbering
+    in the thousands. The eider is superbly adapted to cold marine environments, with
+    exceptional insulation and the ability to dive for mollusks and other invertebrates
+    on the seabed.
+
+
+    The species produces distinctive calls, with males giving a soft, cooing "oh-oo"
+    and females making harsh quacking sounds. It is most reliably seen on or near
+    the coast, particularly in sheltered bays and estuaries where it congregates with
+    other sea-ducks during winter months.'
+migration:
+  sv: '# Ejdern i Skandinavien och Nordeuropa
+
+
+    Ejdern är en nordlig art som förekommer året om i Skandinavien och Nordeuropa,
+    där den är knuten till kust- och skärgårdsområden. Under sommaren häckar ejdrar
+    i stora delar av Norden, från Norges västkust till Sibirien. Till större delen
+    är ejdern en flyttfågel som drar söderut på hösten, men betydande populationer
+    övervintra också i öppna vatten längs Skandinaviens västkust och i Östersjön,
+    särskilt i områden med mindre issäkerhet. De först ankomna fjäderplockarnas återkomst
+    till häckningsplatserna sker redan i februari-mars, medan huvuddelen anlander
+    under april-maj. På hösten påbörjas flyttningen redan under juli-augusti.'
+  en: '# Common Eider (Somateria mollissima)
+
+
+    The Common Eider is a resident and migratory sea-duck across Scandinavian and
+    Northern European coasts. Breeding populations establish themselves in Arctic
+    and subarctic regions during the warmer months, utilizing coastal habitats for
+    nesting. As winter approaches, these birds undertake southward migrations to temperate
+    coastal zones where waters remain more accessible for feeding. During winter months,
+    Common Eiders congregate in large flocks on open coastal waters, taking advantage
+    of ice-free areas. The species exhibits both year-round residents in milder coastal
+    regions and seasonal migrants, with movements varying by latitude and local ice
+    conditions. Spring returns to breeding grounds typically occur as ice breaks up
+    and suitable nesting habitat becomes available.'
+image_refs:
+- role: hero
+  path: Q26696/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common eider (Somateria mollissima).jpg
+  commons_filename: Common eider (Somateria mollissima).jpg
+- role: secondary
+  path: Q26696/secondary-1.jpg
+  width: 1800
+  height: 1197
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Somateria mollissima (female)
+    on the dune, Heligoland.jpg
+  commons_filename: Somateria mollissima (female) on the dune, Heligoland.jpg
+- role: secondary
+  path: Q26696/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common eider (Somateria mollissima)
+    2021.jpg
+  commons_filename: Common eider (Somateria mollissima) 2021.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:51:32.674510+00:00'
+sources:
+  wikipedia_sv_revision: '58201430'
+  wikipedia_en_revision: '1344054650'
+  claude_model: claude-haiku-4-5-20251001

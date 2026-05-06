@@ -66,6 +66,15 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 41 | Q110812143 | alaudidae | Turkestandvärglärka | Alaudala heinei | sv + image | 58537309 | 1314771867 | pending |
 | 42 | Q55112126 | alaudidae | Arablärka | Eremalauda eremodites | sv + image | 58321237 | 1314534185 | pending |
 | 43 | Q966703 | alaudidae | Tibetansk korttålärka | Calandrella acutirostris | en + image | 56454762 | — | pending |
+| 44 | Q210954 | anatidae | Alförrädare | Polysticta stelleri | en | 58985729 | — | pending |
+| 45 | Q241399 | anatidae | Kopparand | Oxyura leucocephala | sv | 58818108 | 1318890801 | pending |
+| 46 | Q26603 | anatidae | Mindre sångsvan | Cygnus columbianus | en | 58510822 | 1351593407 | pending |
+| 47 | Q27074540 | anatidae | Snögås | Anser caerulescens | sv | 55729875 | 1346622087 | pending |
+| 48 | Q28106778 | anatidae | Blåvingad årta | Spatula discors | sv | 55900784 | 1347137223 | pending |
+| 49 | Q28106902 | anatidae | Årta | Spatula querquedula | sv | 58510758 | 1347137232 | pending |
+| 50 | Q28106966 | anatidae | Snatterand | Mareca strepera | sv, en | 58662283 | 1351192999 | pending (allmän — prioriterad) |
+| 51 | Q331447 | anatidae | Marmorand | Marmaronetta angustirostris | sv | 55648211 | 1314728993 | pending |
+| 52 | Q369767 | anatidae | Islandsknipa | Bucephala islandica | sv | 55623245 | 1324201424 | pending |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

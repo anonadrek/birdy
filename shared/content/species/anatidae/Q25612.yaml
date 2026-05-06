@@ -1,0 +1,134 @@
+id: Q25612
+scientific_name: Cygnus cygnus
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Cygnus
+  ioc_order: Anseriformes
+names:
+  sv: Sångsvan
+  en: Whooper Swan
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sångsvan
+
+
+    Sångsvan är en mycket stor vit andfågel som tillhör familjen egentliga andfåglar.
+    Det är en imponerande fågel med långt hals och vit fjäderdräkt. Arten häckar i
+    norra Europa och Asien och är känd för sitt kraftiga och sorl ande läte – ett
+    karaktäristiskt samband mellan artens namn och dess ljudgivning.
+
+
+    Från att ha varit nästan utdöd i Sverige i början av 1900-talet har sångsvan ökat
+    explosionsartat. I dag finns arten etablerad i stora delar av Sverige. Globalt
+    betraktas arten som livskraftig och stabil. Det är Finlands nationalfågel, vilket
+    betonar dess betydelse i nordeuropeiska ekosystem.'
+  en: '# Whooper Swan
+
+
+    The whooper swan is a large, elegant waterfowl found across the northern hemisphere,
+    serving as the Eurasian equivalent of the North American trumpeter swan. It is
+    one of the heaviest flying birds, with pure white plumage and a distinctive long
+    neck held upright. Adults feature a striking black and yellow bill pattern, with
+    the yellow extending from the nostrils to beyond the eye—a key identification
+    feature that distinguishes it from the similar mute swan, which has an orange
+    bill.
+
+
+    Whooper swans are highly vocal birds, producing loud, bugling calls that give
+    the species its name. These resonant trumpet-like sounds are used for communication
+    between mates and within flocks, especially during flight. The birds are gregarious
+    and migratory, often seen in small groups or large congregations at wintering
+    sites. They favour open water on lakes, rivers, and coastal areas, where they
+    dabble and upend to feed on aquatic vegetation.
+
+
+    These swans breed in remote northern regions during summer months, then migrate
+    to temperate regions for winter. They form strong pair bonds and are often encountered
+    in family groups during migration periods, making them popular subjects for birdwatchers
+    and wildlife enthusiasts throughout their range.'
+migration:
+  sv: '# Sångsvan – Förekomst i Skandinavien
+
+
+    Sångsvan är en långdistansflyttare som häckar i norra Europa och Asien. I Skandinavien
+    ankommer arten till häckningsområdena under april-maj efter att ha övervintrat
+    långt söderut. Under sommaren reproduceras arten i Sverige, Norge och Finland.
+    Till hösten, vanligtvis från september, påbörjas återflyttningen söderut. Huvuddelen
+    av populationen övervintrar i södra Sverige, Danmark och kring Östersjön, medan
+    mindre antal stannar kvar om isen inte blir för tjock.
+
+
+    Arten är numera en vanlig förekomst i sitt svenska häckningsområde efter omfattande
+    återhämtning sedan början av 1900-talet. Flytande flockar kan observeras under
+    migrations- och övervintringssäsongen vid öppna vatten och sjöar.'
+  en: '# Whooper Swan Migration in Scandinavia/Northern Europe
+
+
+    The Whooper Swan is a migratory species that breeds across northern Scandinavia
+    and Russia during the summer months, with arrivals typically beginning in March
+    and April as ice melts on breeding lakes. These birds are highly adapted to northern
+    climates and occupy freshwater lakes and rivers throughout the breeding season.
+
+
+    As winter approaches and water bodies freeze over, Whooper Swans migrate southwestward
+    to their wintering grounds, with most departing by October and November. They
+    winter across milder regions of Scandinavia, the British Isles, northern France,
+    and the Baltic region, where they can access open water. Some populations remain
+    in Iceland year-round on geothermal springs and coastal areas. Their migration
+    patterns are driven primarily by ice formation, making them one of the later arrivals
+    and earlier departees compared to many other waterfowl species in northern Europe.'
+image_refs:
+- role: hero
+  path: Q25612/hero.jpg
+  width: 2400
+  height: 2184
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cygnus cygnus Reykjavik 20120623
+    04.JPG
+  commons_filename: Cygnus cygnus Reykjavik 20120623 04.JPG
+- role: secondary
+  path: Q25612/secondary-1.jpg
+  width: 1378
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cygnus cygnus Oulu 20170417
+    02.jpg
+  commons_filename: Cygnus cygnus Oulu 20170417 02.jpg
+- role: secondary
+  path: Q25612/secondary-2.jpg
+  width: 1800
+  height: 1273
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cygnus cygnus Oulu 20170417.jpg
+  commons_filename: Cygnus cygnus Oulu 20170417.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:50:48.748597+00:00'
+sources:
+  wikipedia_sv_revision: '58510681'
+  wikipedia_en_revision: '1348368845'
+  claude_model: claude-haiku-4-5-20251001

@@ -30,6 +30,7 @@
   common_sv: Knölsvan
   common_en: Mute Swan
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q131044
   scientific_name: Cygnus atratus
   family: Anatidae
@@ -48,6 +49,7 @@
   ioc_order: Anseriformes
   common_en: Whooper Swan
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q27050
   scientific_name: Branta bernicla
   family: Anatidae
@@ -66,12 +68,14 @@
   ioc_order: Anseriformes
   common_en: Canada Goose
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26680
   scientific_name: Branta leucopsis
   family: Anatidae
   ioc_order: Anseriformes
   common_en: Barnacle Goose
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q191125
   scientific_name: Anser indicus
   family: Anatidae
@@ -88,6 +92,7 @@
   scientific_name: Anser anser
   family: Anatidae
   ioc_order: Anseriformes
+  abundance: allmän
   common_en: Greylag Goose
   vp_status: H
 - wikidata_id: Q191628
@@ -144,6 +149,7 @@
   ioc_order: Anseriformes
   common_en: Common Shelduck
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q170723
   scientific_name: Tadorna ferruginea
   family: Anatidae
@@ -174,6 +180,7 @@
   ioc_order: Anseriformes
   common_en: Common Eider
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q331179
   scientific_name: Histrionicus histrionicus
   family: Anatidae
@@ -210,6 +217,7 @@
   ioc_order: Anseriformes
   common_en: Common Goldeneye
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q200646
   scientific_name: Mergellus albellus
   family: Anatidae
@@ -222,12 +230,14 @@
   ioc_order: Anseriformes
   common_en: Red-breasted Merganser
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q180991
   scientific_name: Mergus merganser
   family: Anatidae
   ioc_order: Anseriformes
   common_en: Common Merganser
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q331447
   scientific_name: Marmaronetta angustirostris
   family: Anatidae
@@ -252,6 +262,7 @@
   ioc_order: Anseriformes
   common_en: Common Pochard
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q601055
   scientific_name: Aythya collaris
   family: Anatidae
@@ -264,6 +275,7 @@
   ioc_order: Anseriformes
   common_en: Tufted Duck
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26635
   scientific_name: Aythya marila
   family: Anatidae
@@ -288,18 +300,21 @@
   ioc_order: Anseriformes
   common_en: Northern Shoveler
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q28106966
   scientific_name: Mareca strepera
   family: Anatidae
   ioc_order: Anseriformes
   common_en: Gadwall
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q28106837
   scientific_name: Mareca penelope
   family: Anatidae
   ioc_order: Anseriformes
   common_en: Eurasian Wigeon
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q28106685
   scientific_name: Mareca americana
   family: Anatidae
@@ -312,18 +327,21 @@
   ioc_order: Anseriformes
   common_en: Mallard
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25450
   scientific_name: Anas acuta
   family: Anatidae
   ioc_order: Anseriformes
   common_en: Northern Pintail
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25700
   scientific_name: Anas crecca
   family: Anatidae
   ioc_order: Anseriformes
   common_en: Green-winged Teal
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q251842
   scientific_name: Numida meleagris
   family: Numididae

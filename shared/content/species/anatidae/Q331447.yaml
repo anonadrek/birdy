@@ -1,0 +1,106 @@
+id: Q331447
+scientific_name: Marmaronetta angustirostris
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Marmaronetta
+  ioc_order: Anseriformes
+names:
+  sv: Marmorand
+  en: Marbled Duck
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Marbled Duck
+
+
+    The marbled duck is a medium-sized dabbling duck found across southern Europe,
+    northern Africa, and western and central Asia. Its scientific name reflects its
+    distinctive appearance: *Marmaronetta* refers to its marbled plumage pattern,
+    while *angustirostris* describes its notably narrow bill—an adaptation that sets
+    it apart from other ducks in its range.
+
+
+    The species displays a subtle, mottled plumage throughout its body, giving it
+    a soft, marbled appearance that provides excellent camouflage in shallow wetland
+    habitats. Both sexes share similar pale, spotted plumage rather than the dramatic
+    sexual dimorphism seen in many duck species. Its slender, pointed bill is particularly
+    useful for dabbling and picking food from the water surface and margins.
+
+
+    The marbled duck frequents shallow freshwater and brackish wetlands, including
+    marshes, lagoons, and lake edges with emergent vegetation. It is generally a quiet
+    species, less vocal than many ducks. It feeds by dabbling on shallow water and
+    grazing on vegetation, often preferring to stay close to cover. The species is
+    typically seen in small flocks or pairs, particularly during migration periods,
+    though populations remain scattered and localized throughout its range.'
+migration:
+  sv: ''
+  en: '# Marbled Duck in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The marbled duck''s primary range extends across southern Europe, northern Africa,
+    and western to central Asia, with no established populations in Scandinavia or
+    Northern Europe. While vagrant individuals may occasionally appear during migration
+    periods or dispersal events, this species does not form regular migratory populations
+    through Scandinavian regions and should be considered a rare vagrant rather than
+    a predictable seasonal visitor to northern European waters.'
+image_refs:
+- role: hero
+  path: Q331447/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: zabdiel
+  source_url: https://commons.wikimedia.org/wiki/File:Marmaronetta angustirostris
+    1.jpg
+  commons_filename: Marmaronetta angustirostris 1.jpg
+- role: secondary
+  path: Q331447/secondary-1.jpg
+  width: 1800
+  height: 1368
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Marbled duck (Marmaronetta angustirostris)
+    in Algeria.jpg
+  commons_filename: Marbled duck (Marmaronetta angustirostris) in Algeria.jpg
+- role: secondary
+  path: Q331447/secondary-2.jpg
+  width: 1800
+  height: 1127
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/74733773@N00">Vince
+    Smith</a> from London, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Marmaronetta angustirostris,
+    Torralba de Calatrava 1.jpg
+  commons_filename: Marmaronetta angustirostris, Torralba de Calatrava 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:53:53.460683+00:00'
+sources:
+  wikipedia_sv_revision: '55648211'
+  wikipedia_en_revision: '1314728993'
+  claude_model: claude-haiku-4-5-20251001

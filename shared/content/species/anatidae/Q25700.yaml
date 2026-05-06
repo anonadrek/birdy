@@ -1,0 +1,133 @@
+id: Q25700
+scientific_name: Anas crecca
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Anas
+  ioc_order: Anseriformes
+names:
+  sv: Kricka
+  en: Green-winged Teal
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kricka
+
+
+    Kricka är en av våra minsta andfåglar och tillhör gruppen simänder. Den förekommer
+    vida spridd i Eurasien och är generellt vanlig. Det är en liten, smidig fågel
+    som utanför häckningssäsongen kan samlas i stora, aktiva flockar på öppna vatten.
+
+
+    Under häckningen söker krickan främst upp skyddade våtmarker. Det är en allätare
+    som lever på frön och vattenlevande insekter. Fågeln är skicklig både på land
+    och i vatten och rör sig behändigt mellan båda miljöerna.
+
+
+    Även om arten globalt har ett livskraftigt bestånd, minskar antalet i Sverige
+    märkbart. Sedan 2020 är krickan därför upptagen på Artdatabankens rödlista som
+    sårbar art. Detta gör att observationer av arten blir allt mer värdefullt för
+    dokumentationen av vår inhemska fågelfauna.'
+  en: '# Green-winged Teal
+
+
+    The green-winged teal is a small, agile duck found across northern regions. Males
+    display striking plumage with a chestnut head marked by a distinctive green eye-stripe,
+    contrasting sharply with a grey body and black-edged white breast. Females are
+    more subdued, displaying mottled brown plumage. Both sexes show a small, neat
+    profile compared to larger duck species, and in flight reveal a characteristic
+    green speculum on the wing.
+
+
+    This species is highly active and graceful, often seen in tight flocks that perform
+    coordinated aerial maneuvers. It dabbles in shallow waters, readily tipping forward
+    to feed on aquatic vegetation and invertebrates. The green-winged teal produces
+    distinctive calls—males utter a clear, whistling sound while females make sharp
+    quacking notes.
+
+
+    The species breeds in northern areas, preferring open wetlands and marshes near
+    water bodies. During migration and winter, it congregates in larger numbers on
+    lakes, coastal bays, and sheltered water bodies. Its rapid wingbeats and swift,
+    erratic flight make it challenging to follow visually. The green-winged teal remains
+    common and widespread, making it a familiar sight to waterfowl observers throughout
+    its range.'
+migration:
+  sv: '# Krickans förekomst i Skandinavien året runt
+
+
+    Krickan är en regelbunden häckfågel i Skandinavien och Nordeuropa som anländer
+    till sina häckningsområden under våren, vanligtvis i april-maj. Under häckningsperioden
+    förekommer arten i skyddade våtmarker där den ruvar och uppfostrar sina ungar.
+    Med hösten påbörjar krickorna sin dragning southward, och de flesta individer
+    lämnar Skandinavien för att övervintra längre söderut i Västeuropa och omkring
+    Medelhavet. Under denna tid kan arten bilda stora samlingsflockar. Ett mindre
+    antal krickor stannar kvar eller återkommer redan på hösten om vädret och isläggningen
+    tillåter det.'
+  en: '# Green-winged Teal in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text focuses exclusively on the Green-winged Teal''s North American
+    distribution and taxonomic status relative to the Eurasian Teal, providing no
+    information about its occurrence in Scandinavia or Northern Europe. While the
+    species is mentioned in relation to the Eurasian Teal (which does occur in Northern
+    Europe), specific migration patterns, wintering areas, or seasonal presence in
+    Scandinavian regions are not documented in the provided text.'
+image_refs:
+- role: hero
+  path: Q25700/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian teal (Anas crecca).jpg
+  commons_filename: Eurasian teal (Anas crecca).jpg
+- role: secondary
+  path: Q25700/secondary-1.jpg
+  width: 1800
+  height: 1297
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Teal Anas crecca, male,
+    RSPB Titchwell, Norfolk (33587386401).jpg
+  commons_filename: Eurasian Teal Anas crecca, male, RSPB Titchwell, Norfolk (33587386401).jpg
+- role: secondary
+  path: Q25700/secondary-2.jpg
+  width: 1800
+  height: 1319
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Teal Anas crecca, RSPB
+    Titchwell, Norfolk (33675784246).jpg
+  commons_filename: Eurasian Teal Anas crecca, RSPB Titchwell, Norfolk (33675784246).jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:54:48.826769+00:00'
+sources:
+  wikipedia_sv_revision: '59176411'
+  wikipedia_en_revision: '1347153361'
+  claude_model: claude-haiku-4-5-20251001

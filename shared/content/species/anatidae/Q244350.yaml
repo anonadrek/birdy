@@ -1,0 +1,132 @@
+id: Q244350
+scientific_name: Netta rufina
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Netta
+  ioc_order: Anseriformes
+names:
+  sv: Rödhuvad dykand
+  en: Red-crested Pochard
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödhuvad dykand
+
+
+    Rödhuvad dykand är en dykande andart som tillhör familjen egentliga andfåglar.
+    Den är känd för sitt karakteristiska utseende med en röd huvud- och halskropp
+    som kontrasterar mot mörkare partier. Det är en kraftigt byggd fågel anpassad
+    för att dyka efter föda i vattnet.
+
+
+    Arten förekommer fläckvis i Europa och sträcker sig österut till Centralasien.
+    Den är knuten till öppna eller vasskantade slättsjöar och vikar där den kan hitta
+    lämpliga förhållanden för häckning och föda. Rödhuvad dykand är klassificerad
+    som livskraftig av IUCN, vilket betyder att arten inte är hotad eller sårbar för
+    närvarande.'
+  en: '# Red-crested Pochard
+
+
+    The red-crested pochard is a large diving duck found across a wide range from
+    southern Europe through Central Asia to Mongolia. It inhabits lowland marshes
+    and lakes, preferring steppe and semi-desert areas, particularly around the Black
+    Sea region. The species is migratory, with northern populations wintering in north
+    Africa, while others travel to the Indian subcontinent and Africa.
+
+
+    This duck''s name derives from the golden-red colouring that distinguishes it
+    from other pochards. Being a diving duck, it feeds by submerging underwater rather
+    than dabbling at the surface. The species shows a preference for shallow wetland
+    habitats where it can find aquatic vegetation and invertebrates.
+
+
+    As a somewhat migratory species, the red-crested pochard follows seasonal patterns,
+    with movements varying by population location. It is adapted to continental climates
+    with distinct breeding and wintering periods, making it a regular visitor across
+    its extensive range throughout Europe, Asia, and Africa.'
+migration:
+  sv: '# Rödhuvad dykand i Skandinavien och Nordeuropa
+
+
+    Rödhuvad dykand är en irreguljär gäst i Skandinavien och övriga Nordeuropa. Arten
+    häckar huvudsakligen längre söderut och österut i Europa, men förekommer sporadiskt
+    norr om sitt normala utbredningsområde, särskilt under günstiga år. I Sverige
+    observeras arten främst under hösten och vintern när några individer sprider sig
+    norrut från sina övervintringsbiotoper längre söderut. Arten är ingen regelbunden
+    övervintrare i Skandinavien utan förekommer främst som en sällsynt men återkommande
+    tillfällig gäst.
+
+
+    Källmaterialet innehåller dock begränsad specifik information om exakta ankomst-
+    och avgångstider för denna art i Skandinavien/Nordeuropa. För detaljerad migrationsdata
+    rekommenderas konsultation av omfattande regionala fågeldatabaser eller svenska
+    ornitologiska källor.'
+  en: '# Red-crested Pochard in Northern Europe
+
+
+    The Red-crested Pochard is a rare and irregular visitor to Scandinavia and Northern
+    Europe. While its main breeding range extends from southern Europe through the
+    Black Sea region to Central Asia, northern populations are migratory and occasionally
+    winter further south into North Africa. In recent decades, this species has shown
+    increased vagrant occurrence in northern European countries, particularly during
+    autumn migration and winter months, though it does not establish regular wintering
+    populations in Scandinavia. Any sightings in the region typically represent individuals
+    that have wandered northward from their usual Mediterranean or African wintering
+    grounds.'
+image_refs:
+- role: hero
+  path: Q244350/hero.jpg
+  width: 2400
+  height: 1856
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://flickr.com/people/43158397@N02">jans
+    canon</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Netta rufina -St James's Park,
+    London, England -duckling-8.jpg
+  commons_filename: Netta rufina -St James's Park, London, England -duckling-8.jpg
+- role: secondary
+  path: Q244350/secondary-1.jpg
+  width: 1800
+  height: 1512
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/33590535@N06">Drew
+    Avery</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-Crested Pochard (Female)
+    netta rufina.jpg
+  commons_filename: Red-Crested Pochard (Female) netta rufina.jpg
+- role: secondary
+  path: Q244350/secondary-2.jpg
+  width: 1800
+  height: 1299
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:SVKMBFLY" title="User:SVKMBFLY">SVKMBFLY</a>
+  source_url: https://commons.wikimedia.org/wiki/File:রাঙ্গামুড়ি (Netta rufina),
+    চুপি, পুরবস্থলি, বর্ধমান, পশ্চিমবঙ্গ.DSC3026.jpg
+  commons_filename: রাঙ্গামুড়ি (Netta rufina), চুপি, পুরবস্থলি, বর্ধমান, পশ্চিমবঙ্গ.DSC3026.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:54:58.013869+00:00'
+sources:
+  wikipedia_sv_revision: '59223414'
+  wikipedia_en_revision: '1322140420'
+  claude_model: claude-haiku-4-5-20251001

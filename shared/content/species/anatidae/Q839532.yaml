@@ -1,0 +1,122 @@
+id: Q839532
+scientific_name: Nettapus coromandelianus
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Nettapus
+  ioc_order: Anseriformes
+names:
+  sv: Bomullsdvärgand
+  en: Cotton Pygmy Goose
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bomullsdvärgand
+
+
+    Bomullsdvärgand är en av världens minsta änder, med ett kompakt byggd och rundad
+    kroppsform. Hanen är särskilt vacker med sin vita hals och övre bröst, medan huvud
+    och rygg är glansigt gröna. Honan är mer diskret med gråbrun färgteckning. Båda
+    könen har små röda prickar runt ögat och en kort, smal näbb anpassad för att plocka
+    föda från växter.
+
+
+    Arten förknippas med stillastående sötvattensvåtmarker där det finns riklig vegetation
+    och vattenväxter. Bomullsdvärgandar är ofta relativt tama och kan ses i mindre
+    flockar. De är dykande änder som söker sitt foder under vattenytan, där de äter
+    växtdelar, frön och små vattenlevande djur.
+
+
+    Arten är utbredd över stora delar av Asien och är talrik på sina habitater. Populationen
+    tros öka, vilket tyder på att arten anpassar sig väl till sitt naturliga miljö
+    och möjliga förändringar i denna.'
+  en: '# Cotton Pygmy Goose
+
+
+    The cotton pygmy goose is among the world''s smallest waterfowl, a diminutive
+    perching duck adapted to life among aquatic vegetation. Its compact size and ability
+    to roost and nest in trees distinguish it from larger duck species. The plumage
+    includes distinctive white markings, particularly on the flight feathers, giving
+    rise to the alternative name "white-quilled pygmy goose" in some regions.
+
+
+    These ducks favour waterbodies of varying sizes where emergent and floating vegetation
+    provides shelter and food. They are typically encountered in pairs or loose flocks,
+    and despite their small stature, they are accomplished fliers capable of considerable
+    dispersal, especially during winter months. Their breeding season aligns with
+    local rainfall patterns, ensuring adequate resources for raising young.
+
+
+    Cotton pygmy geese occupy a broad range across Asian and Southeast Asian wetlands,
+    extending to northern Australia. Their preference for vegetated wetlands and arboreal
+    roosting habits makes them well-adapted to diverse freshwater environments, from
+    small ponds to extensive lake systems. Their wide dispersal range and habitat
+    flexibility have enabled them to thrive across this extensive geographical distribution.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The Cotton Pygmy Goose breeds across Asia and Southeast Asia, extending to Queensland,
+    Australia. While the species is noted as a strong flier that disperses widely,
+    especially in winter, the provided source text contains no specific information
+    regarding its occurrence in Scandinavia or Northern Europe, nor details about
+    migration patterns, overwintering locations, or seasonal arrival times in northern
+    regions. This species does not naturally occur in Scandinavian or Northern European
+    territories.'
+image_refs:
+- role: hero
+  path: Q839532/hero.jpg
+  width: 2048
+  height: 1536
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Magalh%C3%A3es" title="User:Magalhães">Magalhães</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Nettapus coromandelianus.jpg
+  commons_filename: Nettapus coromandelianus.jpg
+- role: secondary
+  path: Q839532/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/638416">renjus
+    box</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Nettapus coromandelianus 339126403.jpg
+  commons_filename: Nettapus coromandelianus 339126403.jpg
+- role: secondary
+  path: Q839532/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: '<div class="fn value">
+
+    <a rel="nofollow" class="external text" href="https://500px.com/mkopta">Martin
+    Kopta</a></div>'
+  source_url: https://commons.wikimedia.org/wiki/File:Nettapus coromandelianus, Prague
+    Zoo (208976825).jpg
+  commons_filename: Nettapus coromandelianus, Prague Zoo (208976825).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:56:10.152614+00:00'
+sources:
+  wikipedia_sv_revision: '57942288'
+  wikipedia_en_revision: '1314016040'
+  claude_model: claude-haiku-4-5-20251001

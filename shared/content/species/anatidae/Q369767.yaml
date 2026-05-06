@@ -1,0 +1,105 @@
+id: Q369767
+scientific_name: Bucephala islandica
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Bucephala
+  ioc_order: Anseriformes
+names:
+  sv: Islandsknipa
+  en: Barrow’s Goldeneye
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Barrow''s Goldeneye
+
+
+    Barrow''s goldeneye is a medium-sized sea duck with a distinctive bulbous head
+    shape, from which its genus name derives (meaning "bullheaded" in Ancient Greek).
+    Males display striking black and white plumage with iridescent dark head markings,
+    while females are more subdued in grey and brown tones. The species is closely
+    related to the common goldeneye, though it can be distinguished by its larger
+    head profile and specific plumage patterns.
+
+
+    These diving ducks are typically found in northern freshwater and coastal habitats,
+    preferring clear, cold waters where they hunt for aquatic invertebrates and small
+    fish. They are strong, agile fliers and spend much time on water, diving to forage
+    on the lake or sea bed. The species is known for its rapid, whirring wingbeats
+    in flight and produces various vocalizations, particularly during breeding season.
+
+
+    Barrow''s goldeneye breeds in northern regions and migrates to coastal areas during
+    winter months, though some populations remain year-round in suitable habitat.
+    They are generally wary birds but can be observed in small groups or larger flocks,
+    particularly during migration periods.'
+migration:
+  sv: ''
+  en: '# Barrow''s Goldeneye in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and etymological information
+    about Barrow''s goldeneye and does not include any details regarding its occurrence,
+    migration patterns, or seasonal movements in Scandinavia or Northern Europe throughout
+    the year.'
+image_refs:
+- role: hero
+  path: Q369767/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
+    National Park</a>
+  source_url: https://commons.wikimedia.org/wiki/File:A male and female Barrow's goldeneye
+    (Bucephala islandica) floating on an ephemeral pond (47767552352).jpg
+  commons_filename: A male and female Barrow's goldeneye (Bucephala islandica) floating
+    on an ephemeral pond (47767552352).jpg
+- role: secondary
+  path: Q369767/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/yellowstonenps/">YellowstoneNPS</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Barrow's goldeneye (Bucephala
+    islandica) on Yellowstone Lake (52945443341).jpg
+  commons_filename: Barrow's goldeneye (Bucephala islandica) on Yellowstone Lake (52945443341).jpg
+- role: secondary
+  path: Q369767/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/yellowstonenps/">YellowstoneNPS</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Barrow's goldeneye (Bucephala
+    islandica) on Yellowstone Lake (2) (52945908708).jpg
+  commons_filename: Barrow's goldeneye (Bucephala islandica) on Yellowstone Lake (2)
+    (52945908708).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:55:43.652840+00:00'
+sources:
+  wikipedia_sv_revision: '55623245'
+  wikipedia_en_revision: '1324201424'
+  claude_model: claude-haiku-4-5-20251001

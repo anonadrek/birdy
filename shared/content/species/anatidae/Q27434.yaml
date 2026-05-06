@@ -1,0 +1,129 @@
+id: Q27434
+scientific_name: Melanitta nigra
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: scoter
+  ioc_order: Anseriformes
+names:
+  sv: Sjöorre
+  en: Common Scoter
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sjöorre
+
+
+    Sjöorre är en andfågel som förekommer i norra Europa och västra Asien, där arten
+    häckar. Tidigare betraktades den amerikanska varianten som en underart, men den
+    urskiljs nu som en separat art. Arten klassificeras av IUCN som livskraftig, vilket
+    indikerar en stabil population.
+
+
+    Sjöorre tillhör familjen egentliga andfåglar och är en typisk sjöfågel. Arten
+    föredrar kustnära miljöer under sina flyttningar, där den ofta ses i mindre eller
+    större flockar. Som många andarter är sjöorre väl anpassad för ett liv på vattnet,
+    med vattentätt fjäderdräkt och välutvecklad simförmåga.'
+  en: '# Common Scoter
+
+
+    The common scoter is a substantial sea duck measuring 43–54 cm in length. Males
+    are predominantly black with a distinctive bright yellow-orange knob at the base
+    of the bill, while females are darker brown with paler cheeks and throat. It is
+    a diving duck that feeds on aquatic invertebrates and small fish, typically foraging
+    in shallow coastal waters and larger lakes.
+
+
+    This species breeds across the far north of Europe and the Palearctic region,
+    favouring wetland habitats during the breeding season. Outside the breeding period,
+    it congregates in large flocks on coastal waters, often gathering in substantial
+    numbers where it is a regular winter visitor. The common scoter is highly vocal,
+    particularly during courtship, producing various whistling calls and grunts.
+
+
+    In flight, the common scoter appears uniformly dark, a useful identification feature
+    that distinguishes it from other scoter species. It is an excellent diver and
+    spends considerable time underwater when feeding. Outside breeding season, it
+    is primarily a marine bird, though it may also be found on large inland water
+    bodies during migration and winter months.'
+migration:
+  sv: '# Sjöorre (Melanitta nigra) – Förekomst i Norden
+
+
+    Sjöorre är en nordlig andfågel som häckar i norra Europa och västra Asien. Arten
+    är framför allt knuten till sitt häckningsområde i Skandinavien och andra nordiska
+    regioner under sommarhalvåret. Som migrationsart lämnar sjöorren sina nordiska
+    häckningsplatser på hösten för att övervintra vid kusterna i södra Europa och
+    Medelhavet, där öppna vatten möjliggör näringssökning. Återkomsten till häckningsområdena
+    sker under våren när isarna bryter upp.
+
+
+    Populationen av sjöorre anses enligt IUCN vara livskraftig, trots att arten är
+    känslig för miljöförändringar i både sina häcknings- och övervintringshabitat.
+    Observationer i Scandinavia är vanligast under migration och övervintering längs
+    kusterna.'
+  en: '# Common Scoter (Melanitta nigra) in Scandinavia
+
+
+    The Common Scoter breeds across northern Scandinavia and the Arctic, with populations
+    wintering in the North Atlantic and around the coasts of northern Europe. In Scandinavia,
+    breeding birds arrive in spring (April–May) and establish territories on freshwater
+    lakes and coastal areas. During autumn (September–October), populations migrate
+    southward to coastal wintering grounds, with some birds remaining in ice-free
+    waters off Scandinavia while others move further south to the North Sea and Atlantic
+    coasts. Winter populations are supplemented by migrants from eastern breeding
+    areas.'
+image_refs:
+- role: hero
+  path: Q27434/hero.jpg
+  width: 1601
+  height: 2400
+  license: CC0
+  author: Rijksmuseum
+  source_url: https://commons.wikimedia.org/wiki/File:Zwarte zee-eend (Melanitta nigra),
+    RP-T-BR-2017-1-5-84.jpg
+  commons_filename: Zwarte zee-eend (Melanitta nigra), RP-T-BR-2017-1-5-84.jpg
+- role: secondary
+  path: Q27434/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC0
+  author: Rijksmuseum
+  source_url: https://commons.wikimedia.org/wiki/File:Zwarte zee-eend (Melanitta nigra),
+    RP-T-BR-2017-1-5-85.jpg
+  commons_filename: Zwarte zee-eend (Melanitta nigra), RP-T-BR-2017-1-5-85.jpg
+- role: secondary
+  path: Q27434/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Melanitta nigra (39772066244).jpg
+  commons_filename: Melanitta nigra (39772066244).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:53:08.238290+00:00'
+sources:
+  wikipedia_sv_revision: '55901496'
+  wikipedia_en_revision: '1348442753'
+  claude_model: claude-haiku-4-5-20251001

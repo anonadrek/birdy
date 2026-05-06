@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-06):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 97/700, nästa familj = anatidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b deferrad. **Plan 5a (Diary) ✅ (`v0.5.0a-diary`).** Nästa plan är Plan 5b (Gamification) — kommer kräva ny brainstorm/plan. Detaljer i auto-memory `project_plan_5a_status.md`.
+**Status (2026-05-06):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 149/700, nästa familj = aegithalidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b deferrad. **Plan 5a (Diary) ✅ (`v0.5.0a-diary`).** Nästa plan är Plan 5b (Gamification) — kommer kräva ny brainstorm/plan. Detaljer i auto-memory `project_plan_5a_status.md`.
 
 ## Var hittar du saker
 
@@ -26,7 +26,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 |---|---|---|
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ `v0.1.0-foundation` |
 | 2a | Content pipeline + walking skeleton (5 arter) | ✅ `v0.2.0a-pipeline` |
-| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 97/700 (alaudidae `d945e1f`) |
+| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 149/700 (anatidae) |
 | 3 | Encyclopedia (browse + species profile) | ✅ `v0.3.0-encyclopedia` |
 | 4a | ML & Camera UI (FakeClassifier + UI + CameraX 3 fps) | ✅ `v0.4.0a-camera-ui` |
 | 4b | Real TFLite-modell | ⏸ separat brainstorm senare |
@@ -145,9 +145,10 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 | 2026-05-04 | accipitridae | +38 | 51 | `1ed1895` |
 | 2026-05-04 | acrocephalidae | +19 | 70 | `3609b98` |
 | 2026-05-04 | alaudidae | +27 | 97 | `d945e1f` |
-| _(next)_ | anatidae | | | |
+| 2026-05-06 | anatidae | +52 | 149 | `(this commit)` |
+| _(next)_ | aegithalidae | | | |
 
-**Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör anatidae". Pure-data — kan köras parallellt med Plan 5+.
+**Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör nästa familj". Pure-data — kan köras parallellt med Plan 5+.
 
 **Workflow per familj** (sammanfattat — full version i runbook):
 1. Identifiera Q-IDs för familjen i `species_list.yaml`.

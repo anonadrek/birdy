@@ -1,0 +1,131 @@
+id: Q673280
+scientific_name: Anser serrirostris
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Anser
+  ioc_order: Anseriformes
+names:
+  sv: Tundrasädgås
+  en: Tundra Bean Goose
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tundrasädgås
+
+
+    Tundrasädgåsen är en grå gås som häckar på tundra i norr. Den urskildes tidigare
+    från sädgåsen men betraktas numera allt oftare som egen art.
+
+
+    Denna gås återfinns främst på nordliga häckningsplatser under sommaren och migrerar
+    söderut vid höstens början. Som de flesta andfåglar är den en växt- och frötare
+    som ofta ses i flock tillsammans med andra gåsarter.
+
+
+    Arten har typiska gåsegenskaper med grå fjäderdräkt och mörkare hals- och huvudmarkering.
+    För noggrann artbestämning jämfört med närstående arter krävs ofta iakttagande
+    av fältkännetecken såsom näbbform och storlek.'
+  en: '# Tundra Bean Goose
+
+
+    The tundra bean goose is a medium-sized goose with a distinctive appearance characterized
+    by a dark head and neck contrasting with a brown body. It features a relatively
+    short neck and a characteristic bill that is orange-yellow with a black tip and
+    base, giving it its common name. The bird is noticeably smaller and slighter than
+    its taiga bean goose relative, with which it was historically considered a single
+    species.
+
+
+    This species breeds in the far north across Siberia in tundra habitats and is
+    highly migratory, moving to more southerly regions of Asia during winter months.
+    It typically inhabits open landscapes including tundra, marshes, and grasslands.
+    The tundra bean goose is a gregarious bird, often seen in flocks, particularly
+    during migration periods.
+
+
+    Little detailed information about specific calls is provided in standard references,
+    though like most geese it likely produces honking vocalizations. Its diet consists
+    primarily of plant material gleaned from ground vegetation. The species'' ability
+    to thrive in extreme northern environments and its long-distance migrations make
+    it a remarkable arctic breeder adapted to harsh seasonal conditions.'
+migration:
+  sv: '**Tundrasädgås i Skandinavien**
+
+
+    Tundrasädgås är en migrationsart som förekommer i Skandinavien huvudsakligen under
+    höst- och vårflyttningen. Arten häckar på tundra i norra Ryssland och Sibirien
+    och passerar genom norra Europa på vägen till och från sina övervintringskvartsäer
+    längre söderut. Under senhösten anländer flockar till Skandinavien, särskilt till
+    kustnära och fuktiga områden, innan de fortsätter vidare söderut. På våren återvänder
+    arten genom regionen under april-maj på vägen tillbaka till häckningsområdena.
+    Arten ses endast under migrationperioderna och överintrar inte i Skandinavien.'
+  en: '# Tundra Bean Goose Migration in Northern Europe
+
+
+    The Tundra Bean Goose is a highly migratory species that breeds across northern
+    Siberia and winters further south in Asia. While its primary wintering grounds
+    lie in Asian regions, populations occasionally reach Scandinavia and Northern
+    Europe during migration periods. The species typically appears in small numbers
+    during spring and autumn passage, with sightings most likely during April-May
+    and September-October as birds move between breeding and wintering grounds. In
+    Scandinavia, it is considered an irregular visitor rather than a common regular
+    migrant, with occurrence varying yearly depending on weather conditions and population
+    movements.'
+image_refs:
+- role: hero
+  path: Q673280/hero.jpg
+  width: 2368
+  height: 1760
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93892629@N07">Åsa
+    Berndtsson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anser serrirostris, Billdal,
+    Vastra Gotaland, Sweden 4.jpg
+  commons_filename: Anser serrirostris, Billdal, Vastra Gotaland, Sweden 4.jpg
+- role: secondary
+  path: Q673280/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1370639">Mickey
+    Wu</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anser serrirostris - Mickey
+    Wu - 604435511.jpeg
+  commons_filename: Anser serrirostris - Mickey Wu - 604435511.jpeg
+- role: secondary
+  path: Q673280/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1370639">Mickey
+    Wu</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anser serrirostris - Mickey
+    Wu - 604435540.jpeg
+  commons_filename: Anser serrirostris - Mickey Wu - 604435540.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:53:17.042731+00:00'
+sources:
+  wikipedia_sv_revision: '58564094'
+  wikipedia_en_revision: '1339902184'
+  claude_model: claude-haiku-4-5-20251001

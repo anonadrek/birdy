@@ -1,0 +1,116 @@
+id: Q131044
+scientific_name: Cygnus atratus
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Cygnus
+  ioc_order: Anseriformes
+names:
+  sv: Svart svan
+  en: Black Swan
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svart svan
+
+
+    Svart svan är en stor och iögonfallande andfågel från Australien. Den kännetecknas
+    av sitt helsvarta fjäderdräkt och röda näbb, vilket gör arten lätt att identifiera.
+    Det är en elegant fågel med långt, krökt hals och kraftig kropp.
+
+
+    Arten förekommer naturligt i Australien men har via människans försorg etablerat
+    sig på många andra platser runt om i världen, där den bildat friflygande populationer.
+    Svart svan är ofta social och kan ses i mindre eller större flockar, särskilt
+    på större vattensamlingar där den förekommer. Arten är väl anpassad till sitt
+    vattenhabitat och tillbringar mycket tid på vattnet.
+
+
+    Beståndet anses vara livskraftigt och arten utgör ingen hotad eller sårbar population.
+    Den har visat god förmåga att etablera sig i nya miljöer och har därmed blivit
+    en välbekant fågel även långt från sitt ursprungliga utbredningsområde.'
+  en: '# Black Swan
+
+
+    The black swan is a large waterbird instantly recognizable by its entirely black
+    plumage and distinctive red bill. It is a substantial species within the swan
+    family, built for life on lakes, rivers, and coastal waters.
+
+
+    This species exhibits nomadic behaviour across its range, with migration patterns
+    that vary unpredictably depending on local climatic conditions. It is monogamous,
+    and pairs work together to incubate eggs and raise their young. Both partners
+    share equally in these breeding responsibilities, demonstrating strong pair bonds.
+
+
+    The black swan inhabits waterways in the southeast and southwest regions of its
+    range, where it can be encountered on both freshwater and brackish water bodies.
+    Its striking appearance and graceful swimming make it a conspicuous waterbird
+    where it occurs.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Black Swan in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Black Swan is a native Australian species with no established natural occurrence
+    in Scandinavia or Northern Europe. While occasional vagrants have been recorded
+    in European waters, these represent rare dispersals rather than regular migration
+    patterns. The species does not have a predictable presence in the region and should
+    not be expected during any season in Northern European waters.'
+image_refs:
+- role: hero
+  path: Q131044/hero.jpg
+  width: 2400
+  height: 1581
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/88123769@N02">Bernard
+    Spragg. NZ</a> from Christchurch, New Zealand
+  source_url: https://commons.wikimedia.org/wiki/File:The black swan (Cygnus atratus)
+    (33064803230).jpg
+  commons_filename: The black swan (Cygnus atratus) (33064803230).jpg
+- role: secondary
+  path: Q131044/secondary-1.jpg
+  width: 1800
+  height: 1206
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Karora" title="User:Karora">Karora</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cygnus atratus in flight-2.jpg
+  commons_filename: Cygnus atratus in flight-2.jpg
+- role: secondary
+  path: Q131044/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: Public domain
+  author: Cassiopeia sweet
+  source_url: https://commons.wikimedia.org/wiki/File:Bathing Cygnus atratus Matsue
+    Vogel Park.jpg
+  commons_filename: Bathing Cygnus atratus Matsue Vogel Park.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:55:26.317736+00:00'
+sources:
+  wikipedia_sv_revision: '59250979'
+  wikipedia_en_revision: '1351948998'
+  claude_model: claude-haiku-4-5-20251001

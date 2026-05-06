@@ -1,0 +1,134 @@
+id: Q25450
+scientific_name: Anas acuta
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Anas
+  ioc_order: Anseriformes
+names:
+  sv: Stjärtand
+  en: Northern Pintail
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stjärtand
+
+
+    Stjärtand är en elegant simand med stor utbredning över norra halvklotet. Det
+    är en utpräglad flyttfågel som häckar i nordliga delar av Europa, Asien och Nordamerika,
+    för att sedan övervinta långt söderut. Arten saknar geografiskt åtskilda underarter,
+    vilket är ovanligt för en fågel med så omfattande utbredning.
+
+
+    Hannen är lätt igenkännlig med sitt vita bröst och ljusa huvud, medan honan är
+    mer dövfärgad. Båda könen karakteriseras av en smal, långsträckt kropp och en
+    utdragen stjärt. På vattnet rör sig stjärtanden med elegant uppsträckt hals.
+
+
+    Arten förekommer på både sötvatten och saltvatten, ofta på öppna vattenytor där
+    det kan ses i mindre grupper eller större samlingar under flyttningen. Det är
+    en aktiv fågel som ofta simmar och dyker för sitt föda.'
+  en: '# Northern Pintail
+
+
+    The northern pintail is an elegant dabbling duck with a distinctive silhouette.
+    Males are striking, featuring a chocolate-brown head, white breast, and grey body,
+    while females are more subdued in mottled brown. Both sexes have notably long,
+    slender necks and streamlined bodies that give the species its characteristic
+    appearance in flight.
+
+
+    This highly migratory duck breeds across northern regions of Europe, Asia, and
+    North America, favoring open wetlands and grasslands. It is remarkably adaptable,
+    with populations showing no geographic variation despite their vast breeding range.
+    Following breeding season, pintails undertake impressive migrations, wintering
+    across southern regions including tropical areas near the equator, making it one
+    of the most widely distributed duck species globally.
+
+
+    Northern pintails are social dabbling ducks, often seen in flocks on open water
+    or shallow wetlands. They feed by tipping forward to reach aquatic vegetation
+    rather than diving. The male''s call is a soft whistle, while females produce
+    quieter quacks. Their streamlined shape and agile flight make them instantly recognizable,
+    particularly males with their distinctive long-necked profile visible even at
+    distance.'
+migration:
+  sv: '# Stjärtand – Förekomst i Skandinavien och Norra Europa
+
+
+    Stjärtanden är en utpräglad flyttfågel som häckar i norr och är helt beroende
+    av säsongsväxlingen. I Skandinavien och Norra Europa anländer stjärtanden under
+    våren för att häcka i de nordliga delarna av regionen. Efter häckningsperioden
+    påbörjar arten sin långa söderväxt på hösten och övervintrar långt söder om häckningsområdet,
+    helt ned mot ekvatorn. Denna långdistansflyttare återvänder därför endast under
+    häckningssäsongen, vilket innebär att arten helt saknas under höst, vinter och
+    tidigt vår.'
+  en: '# Northern Pintail (Anas acuta) in Scandinavia/Northern Europe
+
+
+    The Northern Pintail is a highly migratory duck species across Scandinavia and
+    Northern Europe. Breeding populations arrive in spring (March-April) across northern
+    regions, establishing territories in wetlands and coastal areas. These northern
+    breeders depart in late summer and autumn (August-October) to winter in southern
+    Europe, Africa, and occasionally as far as the equator. Small numbers may overwinter
+    in ice-free coastal waters of southern Scandinavia during mild winters. The species
+    shows remarkable timing in its annual cycle, with breeding restricted to northern
+    latitudes and extensive southward migration to escape harsh winter conditions,
+    making it one of Europe''s most long-distance migratory duck species.'
+image_refs:
+- role: hero
+  path: Q25450/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Flock Of Northern Pintail Ducks
+    (Anas acuta).jpg
+  commons_filename: Flock Of Northern Pintail Ducks (Anas acuta).jpg
+- role: secondary
+  path: Q25450/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Northern pintail (Anas acuta)
+    2023 01.jpg
+  commons_filename: Northern pintail (Anas acuta) 2023 01.jpg
+- role: secondary
+  path: Q25450/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/52450054@N04/">Judy
+    Gallagher</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Northern Pintail (female) -
+    Anas acuta, Reifel Migratory Bird Sanctuary, Ladner, British Columbia.jpg
+  commons_filename: Northern Pintail (female) - Anas acuta, Reifel Migratory Bird
+    Sanctuary, Ladner, British Columbia.jpg
+review_status: approved
+review_notes: 'auto-pick OK (sjöfågel, klar identifierbar)'
+generated_at: '2026-05-06T12:53:45.430383+00:00'
+sources:
+  wikipedia_sv_revision: '59250309'
+  wikipedia_en_revision: '1351457832'
+  claude_model: claude-haiku-4-5-20251001

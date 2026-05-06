@@ -1,0 +1,105 @@
+id: Q27074540
+scientific_name: Anser caerulescens
+taxonomy:
+  family: Anatidae
+  family_sv: Egentliga andfåglar
+  genus: Anser
+  ioc_order: Anseriformes
+names:
+  sv: Snögås
+  en: Snow Goose
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Snow Goose
+
+
+    The snow goose is a North American goose with two distinct colour forms. The white
+    morph displays predominantly white plumage, which gives the species its name,
+    while the dark morph—historically called the blue goose—shows darker plumage.
+    Both forms may occur in the same population. The species belongs to the Anatidae
+    family and was previously classified in its own genus but is now grouped with
+    the gray geese in the genus Anser.
+
+
+    Snow geese are medium-sized waterfowl with characteristic black wingtips visible
+    in flight. They are highly gregarious birds, often seen in large flocks, particularly
+    during migration. Their diet consists mainly of vegetation, and they favour wetland
+    habitats including marshes, tundra, and agricultural areas. The species is known
+    for its loud, distinctive honking calls, which become particularly vocal during
+    flocking and flight.
+
+
+    These geese undertake extensive migrations between their northern breeding grounds
+    and wintering areas, making them conspicuous birds during passage periods. They
+    are adaptable to various aquatic environments and have shown remarkable population
+    recovery in recent decades, now numbering in the millions across North America.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and morphological information
+    about the Snow Goose, with no details regarding its occurrence in Scandinavia
+    or Northern Europe, migration patterns, or seasonal presence in these regions.
+    To write an accurate guide entry about this species'' Scandinavian distribution
+    and movements, additional sources documenting its presence in Northern Europe
+    would be required.'
+image_refs:
+- role: hero
+  path: Q27074540/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:IMGP5370Snow goose (Anser caerulescens),
+    white morph.jpg
+  commons_filename: IMGP5370Snow goose (Anser caerulescens), white morph.jpg
+- role: secondary
+  path: Q27074540/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Snow goose (Anser caerulescens),
+    blue morph.jpg
+  commons_filename: Snow goose (Anser caerulescens), blue morph.jpg
+- role: secondary
+  path: Q27074540/secondary-2.jpg
+  width: 1800
+  height: 1092
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/52450054@N04">Judy
+    Gallagher</a>
+  source_url: https://commons.wikimedia.org/wiki/File:040 366 - Snow Geese - Anser
+    caerulescens, Middle Creek Wildlife Management Area, Stevens, Pennsylvania, February
+    9, 2024 (53519898401).jpg
+  commons_filename: 040 366 - Snow Geese - Anser caerulescens, Middle Creek Wildlife
+    Management Area, Stevens, Pennsylvania, February 9, 2024 (53519898401).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T12:56:03.470820+00:00'
+sources:
+  wikipedia_sv_revision: '55729875'
+  wikipedia_en_revision: '1346622087'
+  claude_model: claude-haiku-4-5-20251001
