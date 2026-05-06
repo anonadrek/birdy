@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import se.birdy.content.Abundance
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesFilter
@@ -42,6 +43,10 @@ class FakeSpeciesRepository : SpeciesRepository {
     ): Flow<List<SpeciesSummary>> = flowOf(byFamily.value[familyKey].orEmpty())
 
     override fun all(locale: Locale): Flow<List<SpeciesSummary>> = allList.asStateFlow()
+
+    override fun observeTotalCount(): Flow<Int> = byId.map { it.size }
+
+    override suspend fun allByQid(): Map<SpeciesId, Species> = byId.value.filterValues { it != null }.mapValues { it.value!! }
 
     companion object {
         private val allMonths =

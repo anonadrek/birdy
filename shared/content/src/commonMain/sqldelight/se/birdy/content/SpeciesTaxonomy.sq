@@ -15,5 +15,8 @@ SELECT * FROM SpeciesTaxonomy WHERE species_id = ?;
 selectByFamily:
 SELECT species_id FROM SpeciesTaxonomy WHERE family = ?;
 
+selectAll:
+SELECT * FROM SpeciesTaxonomy;
+
 insert:
 INSERT INTO SpeciesTaxonomy(species_id, family, family_sv, genus, ioc_order) VALUES (?, ?, ?, ?, ?);

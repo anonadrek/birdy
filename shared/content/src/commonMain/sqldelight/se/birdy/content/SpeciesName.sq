@@ -25,5 +25,8 @@ WHERE sn.locale = :locale
   AND (sn.name LIKE ('%' || :query || '%') OR s.scientific_name LIKE ('%' || :query || '%'))
 ORDER BY sn.name LIMIT :max;
 
+selectAll:
+SELECT * FROM SpeciesName;
+
 insert:
 INSERT INTO SpeciesName(species_id, locale, name) VALUES (?, ?, ?);

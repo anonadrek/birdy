@@ -15,6 +15,9 @@ CREATE TABLE SpeciesImage (
 selectBySpecies:
 SELECT * FROM SpeciesImage WHERE species_id = ? ORDER BY role, path;
 
+selectAll:
+SELECT * FROM SpeciesImage ORDER BY role, path;
+
 insert:
 INSERT INTO SpeciesImage(
     species_id, role, path, width, height, license, author, source_url, commons_filename

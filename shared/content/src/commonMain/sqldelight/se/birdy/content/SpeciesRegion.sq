@@ -13,5 +13,8 @@ SELECT region_iso FROM SpeciesRegion WHERE species_id = ?;
 selectByRegion:
 SELECT species_id FROM SpeciesRegion WHERE region_iso = ?;
 
+selectAll:
+SELECT * FROM SpeciesRegion;
+
 insert:
 INSERT INTO SpeciesRegion(species_id, region_iso) VALUES (?, ?);

@@ -9,5 +9,8 @@ CREATE TABLE SpeciesSeason (
 selectBySpecies:
 SELECT * FROM SpeciesSeason WHERE species_id = ?;
 
+selectAll:
+SELECT * FROM SpeciesSeason;
+
 insert:
 INSERT INTO SpeciesSeason(species_id, month, status) VALUES (?, ?, ?);

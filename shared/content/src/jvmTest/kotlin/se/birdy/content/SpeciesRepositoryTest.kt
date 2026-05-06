@@ -189,7 +189,8 @@ class SpeciesRepositoryTest {
         val talgoxe = map[SpeciesId("Q25485")]
         assertNotNull(talgoxe)
         assertEquals("Talgoxe", talgoxe?.name)
-        assertNotNull(talgoxe?.taxonomy?.family)
+        assertEquals("Paridae", talgoxe?.taxonomy?.family)
+        assertEquals(Abundance.ALLMÄN, talgoxe?.abundance)
         driver.close()
     }
 }

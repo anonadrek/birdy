@@ -170,18 +170,47 @@ class SqlDelightSpeciesRepository(
 
     override suspend fun allByQid(): Map<SpeciesId, Species> =
         withContext(Dispatchers.Default) {
-            val rows = db.speciesQueries.selectAll().executeAsList()
-            rows
+            // Bulk-fetch: 6 queries total regardless of species count (vs N×6 previously)
+            val allSpecies = db.speciesQueries.selectAll().executeAsList()
+            val taxonomyById =
+                db.speciesTaxonomyQueries
+                    .selectAll()
+                    .executeAsList()
+                    .associateBy { it.species_id }
+            val namesBySpecies =
+                db.speciesNameQueries
+                    .selectAll()
+                    .executeAsList()
+                    .groupBy { it.species_id }
+            val textsBySpecies =
+                db.speciesTextQueries
+                    .selectAll()
+                    .executeAsList()
+                    .groupBy { it.species_id }
+            val regionsBySpecies =
+                db.speciesRegionQueries
+                    .selectAll()
+                    .executeAsList()
+                    .groupBy { it.species_id }
+            val seasonsBySpecies =
+                db.speciesSeasonQueries
+                    .selectAll()
+                    .executeAsList()
+                    .groupBy { it.species_id }
+            val imagesBySpecies =
+                db.speciesImageQueries
+                    .selectAll()
+                    .executeAsList()
+                    .groupBy { it.species_id }
+
+            allSpecies
                 .mapNotNull { row ->
-                    val taxonomy =
-                        db.speciesTaxonomyQueries
-                            .selectBySpecies(row.id)
-                            .executeAsOneOrNull() ?: return@mapNotNull null
-                    val names = db.speciesNameQueries.selectBySpecies(row.id).executeAsList()
-                    val texts = db.speciesTextQueries.selectBySpecies(row.id).executeAsList()
-                    val regions = db.speciesRegionQueries.selectBySpecies(row.id).executeAsList()
-                    val seasons = db.speciesSeasonQueries.selectBySpecies(row.id).executeAsList()
-                    val images = db.speciesImageQueries.selectBySpecies(row.id).executeAsList()
+                    val taxonomy = taxonomyById[row.id] ?: return@mapNotNull null
+                    val names = namesBySpecies[row.id].orEmpty()
+                    val texts = textsBySpecies[row.id].orEmpty()
+                    val regions = regionsBySpecies[row.id].orEmpty().map { it.region_iso }
+                    val seasons = seasonsBySpecies[row.id].orEmpty()
+                    val images = imagesBySpecies[row.id].orEmpty()
 
                     val name =
                         names.firstOrNull { it.locale == Locale.SV.code }?.name
