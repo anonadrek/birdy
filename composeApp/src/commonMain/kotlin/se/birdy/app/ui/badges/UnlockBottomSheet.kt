@@ -69,6 +69,7 @@ fun UnlockBottomSheet(
     var animationDone by rememberSaveable(badge.id) { mutableStateOf(!isCelebration) }
     LaunchedEffect(badge.id, isCelebration) {
         if (isCelebration) {
+            // Subtle 3s celebration window per Plan 5b §6.2 — no confetti.
             delay(3_000)
             animationDone = true
         }
