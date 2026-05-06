@@ -11,7 +11,7 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-04 | accipitridae | +38 (totalt 51) | `1ed1895` |
 | 2026-05-04 | acrocephalidae | +19 (totalt 70) | `3609b98` |
 | 2026-05-04 | alaudidae | +27 (totalt 97) | `d945e1f` |
-| 2026-05-06 | anatidae | +52 (totalt 149) | `(this commit)` |
+| 2026-05-06 | anatidae | +52 (totalt 149) | `1a99a63` |
 | | _next: aegithalidae_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.

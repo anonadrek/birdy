@@ -145,7 +145,7 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 | 2026-05-04 | accipitridae | +38 | 51 | `1ed1895` |
 | 2026-05-04 | acrocephalidae | +19 | 70 | `3609b98` |
 | 2026-05-04 | alaudidae | +27 | 97 | `d945e1f` |
-| 2026-05-06 | anatidae | +52 | 149 | `(this commit)` |
+| 2026-05-06 | anatidae | +52 | 149 | `1a99a63` |
 | _(next)_ | aegithalidae | | | |
 
 **Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör nästa familj". Pure-data — kan köras parallellt med Plan 5+.
