@@ -31,6 +31,7 @@ class BadgesViewModel(
     private val catalog: BadgeCatalog,
     private val recalc: RecalculateBadgesUseCase,
     private val zone: TimeZone,
+    // TODO Plan 5b Task 12: passed through for badge title/description rendering.
     @Suppress("UnusedPrivateMember")
     private val locale: Locale,
 ) : ViewModel() {
@@ -40,6 +41,8 @@ class BadgesViewModel(
             badgeRepo.observeUnlocks(),
             speciesTotalCount,
         ) { observations, unlocks, totalSpecies ->
+            // speciesByQid() runs per upstream emission (so per save / unlock change). The
+            // backing SqlDelightSpeciesRepository does 6 SELECTs ~once per visit; cheap for ~700 rows.
             val species = speciesByQid()
             buildLoaded(observations, unlocks, totalSpecies, species) as BadgesUiState
         }.onStart { emit(BadgesUiState.Loading) }
