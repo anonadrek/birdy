@@ -37,6 +37,7 @@ kotlin {
             implementation(libs.coil.compose)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kaml)
             implementation(compose.materialIconsExtended)
             implementation(libs.kotlinx.datetime)
         }
