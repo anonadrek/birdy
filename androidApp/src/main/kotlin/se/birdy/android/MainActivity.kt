@@ -27,6 +27,7 @@ class MainActivity : ComponentActivity() {
         val birdyData = BirdyData(DatabaseFactory(applicationContext).createDriver())
         val observationRepo = SqlDelightObservationRepository(birdyData.observationQueries)
         val badgeRepo = BadgeRepositoryImpl(birdyData.badgeUnlockQueries)
+        // TODO(T13): flytta katalog-ladd till App.kt LaunchedEffect så onCreate inte blockerar.
         val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         val graph =
             AppGraph(

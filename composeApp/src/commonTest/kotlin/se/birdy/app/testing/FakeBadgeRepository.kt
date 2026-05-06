@@ -7,21 +7,22 @@ import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.badge.BadgeUnlock
 
 class FakeBadgeRepository : BadgeRepository {
-    val unlocks = MutableStateFlow<List<BadgeUnlock>>(emptyList())
+    private val _unlocks = MutableStateFlow<List<BadgeUnlock>>(emptyList())
+    val unlocks: Flow<List<BadgeUnlock>> get() = _unlocks.asStateFlow()
 
-    override fun observeUnlocks(): Flow<List<BadgeUnlock>> = unlocks.asStateFlow()
+    override fun observeUnlocks(): Flow<List<BadgeUnlock>> = _unlocks.asStateFlow()
 
     override suspend fun persist(unlocks: List<BadgeUnlock>) {
         if (unlocks.isEmpty()) return
-        val byId = (this.unlocks.value + unlocks).associateBy { it.badgeId }
-        this.unlocks.value = byId.values.sortedByDescending { it.unlockedAt }
+        val byId = (_unlocks.value + unlocks).associateBy { it.badgeId }
+        _unlocks.value = byId.values.sortedByDescending { it.unlockedAt }
     }
 
     override suspend fun deleteAll() {
-        unlocks.value = emptyList()
+        _unlocks.value = emptyList()
     }
 
     fun seedUnlocks(unlocks: List<BadgeUnlock>) {
-        this.unlocks.value = unlocks
+        _unlocks.value = unlocks
     }
 }
