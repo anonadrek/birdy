@@ -15,8 +15,9 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-06 | aegithalidae | +1 (totalt 150) | `acb3249` |
 | 2026-05-06 | alcedinidae | +6 (totalt 156) | `e193080` |
 | 2026-05-06 | alcidae | +7 (totalt 163) | `d296bdd` |
-| 2026-05-06 | anhingidae | +1 (totalt 164) | _(this batch)_ |
-| | _next: apodidae — kolla species_list.yaml_ | | |
+| 2026-05-06 | anhingidae | +1 (totalt 164) | `0461611` |
+| 2026-05-06 | apodidae | +9 (totalt 173) | _(this batch)_ |
+| | _next: ardeidae — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -50,6 +51,14 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Wikidata SPARQL transient 502:** Q735158 fick `502 Bad Gateway` på första försöket. Retry på enskild art löste det utan kod-ändring. Pipeline-mönster: vid familj-failure med transient-pekare, retry den failade arten separat innan man eskalerar.
 - **Inga pipeline-fixar behövdes.**
 - Cost: ~$0.011 / 6 arter (4 Claude calls första körningen + 2 retry för Q735158).
+
+**Apodidae-batch lärdomar (2026-05-06):**
+
+- 1/9 abundance:allmän approved (Q25377 Tornseglare — Sveriges enda allmänna seglare, häckar i hela landet). Övriga 8 är afrikanska/medelhavs/Atlantö-endemics.
+- **3/9 (33%) sparse-overrides** — Q772286 (sv), Q1096617 (sv), Q1264567 (sv, en). Mönstret matchar tidigare exotic-familjer.
+- **Click multi-arg-bug:** `--species Q1,Q2,Q3` (komma-separerad) returnerade `No species matched filter; nothing to do.` istället för att fetch:a. Workaround: använd flera `--species`-flaggor (`--species Q1 --species Q2 --species Q3`). Det här är en lokal click-version-bug (inte runbook-dokumenterat tidigare). **Pipeline-förbättring kandidat:** verifiera CLI-`--species`-parser — den ska handle:a både komma-separerad och multi-flag enligt runbook §workflow steg 3.
+- **Wikidata 502 igen:** Q1264567 + Q1096617 first-fetch failed; retry-as-pair löste båda. Pattern bekräftat över alla familjer hittills.
+- Cost: ~$0.013 / 9 arter.
 
 **Anhingidae-batch lärdomar (2026-05-06):**
 

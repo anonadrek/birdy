@@ -1,0 +1,132 @@
+id: Q321267
+scientific_name: Tachymarptis melba
+taxonomy:
+  family: Apodidae
+  family_sv: Seglare
+  genus: Tachymarptis
+  ioc_order: Apodiformes
+names:
+  sv: Alpseglare
+  en: Alpine Swift
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Alpseglare
+
+
+    Alpseglare är en av seglararnas största arter och kännetecknas av sitt kraftiga
+    byggda, mörkbruna fjädrar och vita undersida. Med sin imponerande vingspännvidd
+    är det en skicklig flugare anpassad för att jaga insekter högt upp i luften.
+
+
+    Arten förekommer över ett stort geografiskt område från Medelhavsområdet österut
+    till Indien, samt i stora delar av Afrika och på Madagaskar. Alpseglaren är en
+    höghöjdsflugare som ofta ses cirkla högt upp i himlen när det jagar. Det är mycket
+    luftbundet och tillbringar mycket av sitt liv i flykten.
+
+
+    Arten kategoriseras av IUCN som livskraftig, vilket indikerar en stabil population.
+    Alpseglare häckar ofta på klippor och höga bergsväggar, där det bygger sitt bo.
+    Det är anpassat för ett liv i luften och är en imponerad seglare med snabb, elegant
+    flygstil.'
+  en: '# Alpine Swift
+
+
+    The Alpine Swift is a large swift found across Africa, southern Europe, and Asia,
+    breeding in mountainous regions from southern Europe through to the Himalayas.
+    Like other swifts, it is highly adapted to an aerial lifestyle, spending most
+    of its life airborne while hunting insects in its beak. The species possesses
+    characteristically short legs designed for clinging to vertical rock surfaces,
+    but rarely settles voluntarily on the ground.
+
+
+    Alpine Swifts are migratory birds. Populations breeding in southern Europe undertake
+    long journeys south to winter in southern Africa, demonstrating remarkable navigational
+    abilities. These swifts are gregarious and often seen in groups, wheeling and
+    diving through mountain valleys and gorges as they pursue flying insects. Their
+    swift, powerful flight is distinctive, with rapid wingbeats punctuating graceful
+    gliding movements.
+
+
+    The species is typically observed in its preferred mountain habitat during breeding
+    season, where it nests on high cliff faces and rocky outcrops. Its preference
+    for vertical surfaces and aerial foraging means it is seldom encountered away
+    from suitable terrain, but when present, its presence is often announced by its
+    characteristic calls as birds communicate while in flight.'
+migration:
+  sv: Alpseglaren är en långdistansflygerare som förekommer i Skandinavien och Nordeuropa
+    under sommarhalvåret. Arten anländer till häckningsområdena i södra Sverige och
+    Norge från april till maj, efter att ha övervintrerat i Afrika söder om Sahara.
+    Under hösten, från augusti till september, drar alpseglarna tillbaka mot sina
+    afrikanska vinterkvartering. Arten är en sällsynt men regelbunden passage genom
+    regionen, med sporadiska observationer också under hösten när ungfåglar och strykande
+    individer kan påträffas längre norrut än häckningsområdena.
+  en: '# Alpine Swift Migration in Northern Europe
+
+
+    The Alpine Swift is a rare visitor to Scandinavia and Northern Europe, occurring
+    primarily during migration periods in spring and autumn. The species breeds in
+    southern European mountains and migrates to wintering grounds in southern Africa.
+    Alpine Swifts occasionally overshooting their normal range appear in northern
+    regions during spring migration (May-June) and less frequently in autumn. These
+    birds do not establish regular breeding populations in Scandinavia, and sightings
+    remain uncommon and irregular. They are strictly aerial foragers, rarely landing
+    except at breeding sites, making them difficult to observe even when present in
+    northern European airspace.'
+image_refs:
+- role: hero
+  path: Q321267/hero.jpg
+  width: 2400
+  height: 1647
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Alpine Swifts Tachymarptis melba
+    (45597226622).jpg
+  commons_filename: Alpine Swifts Tachymarptis melba (45597226622).jpg
+- role: secondary
+  path: Q321267/secondary-1.jpg
+  width: 1800
+  height: 1524
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Alpine Swifts Tachymarptis melba
+    (45597230432).jpg
+  commons_filename: Alpine Swifts Tachymarptis melba (45597230432).jpg
+- role: secondary
+  path: Q321267/secondary-2.jpg
+  width: 1800
+  height: 1120
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/asarasua/">Asier
+    Sarasua Aranberri</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tachymarptis melba, Dubrovnik,
+    Croatia 2.jpg
+  commons_filename: Tachymarptis melba, Dubrovnik, Croatia 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:29:32.626996+00:00'
+sources:
+  wikipedia_sv_revision: '58833489'
+  wikipedia_en_revision: '1322270472'
+  claude_model: claude-haiku-4-5-20251001

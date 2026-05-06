@@ -1,0 +1,72 @@
+id: Q1264567
+scientific_name: Apus berliozi
+taxonomy:
+  family: Apodidae
+  family_sv: Seglare
+  genus: Apus
+  ioc_order: Apodiformes
+names:
+  sv: Somaliaseglare
+  en: Forbes-Watson’s Swift
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q1264567/hero.jpg
+  width: 2048
+  height: 1368
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Apus berliozi 92256738.jpg
+  commons_filename: Apus berliozi 92256738.jpg
+- role: secondary
+  path: Q1264567/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Apus berliozi 92256742.jpg
+  commons_filename: Apus berliozi 92256742.jpg
+- role: secondary
+  path: Q1264567/secondary-2.jpg
+  width: 1800
+  height: 1199
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Apus berliozi 92256731.jpg
+  commons_filename: Apus berliozi 92256731.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:32:36.442016+00:00'
+sources:
+  wikipedia_sv_revision: '56466641'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

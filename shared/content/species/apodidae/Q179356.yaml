@@ -1,0 +1,130 @@
+id: Q179356
+scientific_name: Apus caffer
+taxonomy:
+  family: Apodidae
+  family_sv: Seglare
+  genus: Apus
+  ioc_order: Apodiformes
+names:
+  sv: Vitgumpseglare
+  en: White-rumped Swift
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitgumpseglare
+
+
+    Vitgumpseglare är en afrikansk seglare som även förekommer i södra Spanien, där
+    den häckar. Fågeln tillhör familjen seglare och är anpassad för liv i luften med
+    sina långsmala vingar och liten kropp. Det vita på övergumpen är ett särskilt
+    märke som skiljer arten från andra seglare.
+
+
+    Arten är mest aktiv under dagtid då den jagar flygande insekter högt uppe i luften.
+    Vitgumpseglare är en skicklig flugare som sällan behöver slå sig ned. Beståndets
+    utveckling är positiv och arten anses livskraftigt.
+
+
+    Vitgumpseglare förekommer huvudsakligen i Afrika söder om Sahara, men har successivt
+    etablerat sig i södra Spanien. I sitt африkanskа utbredningsområde är fågeln en
+    vanlig syn på lämpliga lokaliteter där den hittar föda och lämpliga häckningsplatser.'
+  en: '# White-rumped Swift
+
+
+    The white-rumped swift is a small, dark swift with a distinctive white rump patch
+    that contrasts sharply with its otherwise blackish plumage. At first glance, it
+    superficially resembles a house martin, but despite these visual similarities,
+    the two are not closely related. The resemblance between swifts and swallows is
+    a remarkable example of convergent evolution, where unrelated species have evolved
+    similar features to suit comparable lifestyles—in this case, aerial insectivory
+    and agile flight.
+
+
+    As a true swift, the white-rumped swift is supremely adapted for life on the wing,
+    spending much of its time hunting insects in flight. It is highly maneuverable
+    and fast, though specific details about its vocalizations and exact behavioral
+    patterns are limited in available sources. The species inhabits various regions
+    across its range, typically seen in open and semi-open habitats where aerial insects
+    are abundant.'
+migration:
+  sv: '# Vitgumpseglare (Apus caffer) – Förekomst i Nordeuropa
+
+
+    Vitgumpseglare är en huvudsakligen afrikanskfågel som inte är naturlig i Skandinavien
+    och Nordeuropa. Arten häckar normalt i Afrika samt i södra Spanien, men förekommer
+    inte regelbundet i svenska eller övriga nordeuropeiska regioner under året. Arten
+    är därför inte relevantför nordeuropeisk migrationsbeskrivning.
+
+
+    **Migrationsdata saknas för denna art.**'
+  en: '# White-rumped Swift (Apus caffer)
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only general taxonomic and morphological information
+    about the White-rumped swift, with no details regarding its occurrence, migration
+    patterns, or seasonal movements in Scandinavia or Northern Europe. To provide
+    accurate information about this species'' annual cycle in the region, additional
+    sources with specific distributional and migratory data would be required.'
+image_refs:
+- role: hero
+  path: Q179356/hero.jpg
+  width: 2400
+  height: 1573
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:White-rumped swift, Apus caffer,
+    at Suikerbosrand Nature Reserve, Gauteng, South Africa (30424858271).jpg
+  commons_filename: White-rumped swift, Apus caffer, at Suikerbosrand Nature Reserve,
+    Gauteng, South Africa (30424858271).jpg
+- role: secondary
+  path: Q179356/secondary-1.jpg
+  width: 1800
+  height: 1121
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:White-rumped swift, Apus caffer,
+    at Suikerbosrand Nature Reserve, Gauteng, South Africa (30511369955).jpg
+  commons_filename: White-rumped swift, Apus caffer, at Suikerbosrand Nature Reserve,
+    Gauteng, South Africa (30511369955).jpg
+- role: secondary
+  path: Q179356/secondary-2.jpg
+  width: 1340
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:White-rumped swift, Apus caffer,
+    at Suikerbosrand Nature Reserve, Gauteng, South Africa (30475013756).jpg
+  commons_filename: White-rumped swift, Apus caffer, at Suikerbosrand Nature Reserve,
+    Gauteng, South Africa (30475013756).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:30:14.486915+00:00'
+sources:
+  wikipedia_sv_revision: '55757341'
+  wikipedia_en_revision: '1322270580'
+  claude_model: claude-haiku-4-5-20251001

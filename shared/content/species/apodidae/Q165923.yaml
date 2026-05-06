@@ -1,0 +1,118 @@
+id: Q165923
+scientific_name: Apus pallidus
+taxonomy:
+  family: Apodidae
+  family_sv: Seglare
+  genus: Apus
+  ioc_order: Apodiformes
+names:
+  sv: Blek tornseglare
+  en: Pallid Swift
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Blek tornseglare
+
+
+    Blek tornseglare är en fågelart inom familjen seglare och en sydligare närsläkting
+    till den vanligare tornseglaren. Arten förekommer främst i Medelhavsområdet, i
+    bergsregioner i Sahara och vidare österut till Pakistan. IUCN klassificerar den
+    som livskraftig, vilket indikerar en stabil population.
+
+
+    Som alla seglare är blek tornseglare mycket anpassad för flygande liv, där den
+    tillbringar mycket av sin tid i luften. Den är något blekare än tornseglaren,
+    vilket även sitt namn antyder. För den som är intresserad av att iaktta arten
+    krävs kunskap om var den förekommer, då utbredningen är begränsad till värmare
+    klimatregioner i söder och öster.'
+  en: '# Pallid Swift
+
+
+    The pallid swift is a small, aerial bird built for a life almost entirely in flight.
+    Its name derives from its pale plumage, which distinguishes it from other swift
+    species. Like all swifts, it possesses very short legs used solely for clinging
+    to vertical surfaces such as cliff faces and buildings—it never settles voluntarily
+    on the ground.
+
+
+    This species is superbly adapted to an airborne existence, spending the vast majority
+    of its life hunting insects on the wing. It catches prey directly in its beak
+    while flying and even drinks water by skimming the surface of ponds and lakes
+    without landing. Its rapid, agile flight allows it to pursue flying insects with
+    remarkable precision.
+
+
+    The pallid swift is found in warm regions where it exploits thermal updrafts to
+    gain altitude with minimal effort. It typically nests on vertical cliff faces
+    or in crevices on man-made structures, making it a characteristic summer visitor
+    to suitable territories during the breeding season.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Pallid Swift in Northern Europe
+
+
+    The Pallid Swift is a rare and irregular visitor to Scandinavia and Northern Europe,
+    with no established breeding population in the region. Sightings occur primarily
+    during late spring and summer months (May-August), typically representing overshooting
+    birds migrating northward from their Mediterranean and North African breeding
+    grounds. These records are uncommon and unpredictable, making the species a notable
+    vagrant rather than a regular seasonal migrant to Scandinavian waters and airspace.
+    The species breeds in southern Europe and winters in sub-Saharan Africa, with
+    only occasional individuals reaching northern latitudes during migration periods.'
+image_refs:
+- role: hero
+  path: Q165923/hero.jpg
+  width: 2400
+  height: 1597
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/86604360@N06">Steve
+    Slater</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Apus pallidus, Convent Square,
+    Gibraltar.jpg
+  commons_filename: Apus pallidus, Convent Square, Gibraltar.jpg
+- role: secondary
+  path: Q165923/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pallid swift (Apus pallidus)
+    2022.jpg
+  commons_filename: Pallid swift (Apus pallidus) 2022.jpg
+- role: secondary
+  path: Q165923/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pallid swift (Apus pallidus)
+    2022 2.jpg
+  commons_filename: Pallid swift (Apus pallidus) 2022 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:31:53.034322+00:00'
+sources:
+  wikipedia_sv_revision: '55996519'
+  wikipedia_en_revision: '1322270564'
+  claude_model: claude-haiku-4-5-20251001

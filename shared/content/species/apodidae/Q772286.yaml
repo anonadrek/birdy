@@ -1,0 +1,95 @@
+id: Q772286
+scientific_name: Cypsiurus parvus
+taxonomy:
+  family: Apodidae
+  family_sv: Seglare
+  genus: Cypsiurus
+  ioc_order: Apodiformes
+names:
+  sv: Afrikansk palmseglare
+  en: African Palm Swift
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# African Palm Swift
+
+
+    The African palm swift is a small, streamlined swift closely resembling the Asian
+    palm swift, from which it was only recently recognized as a separate species.
+    Like other swifts, it possesses the characteristic pointed wings and rapid, agile
+    flight that defines the family. Its diminutive size and pale plumage help distinguish
+    it from larger swift species in its range.
+
+
+    This species is highly adapted to an arboreal lifestyle, particularly favoring
+    palm trees where it hunts for small insects in flight. It is a common bird with
+    an extensive distribution across its range and appears to be benefiting from human
+    cultivation of exotic palms, which provide additional foraging and nesting habitat.
+    The species exhibits the swift family''s typical behavior of spending most of
+    its time airborne, catching prey on the wing with impressive aerial maneuverability.
+
+
+    With no significant conservation threats identified, the African palm swift maintains
+    a "least concern" status. Its adaptability to human-modified landscapes and expanding
+    palm tree plantations suggest stable or even increasing populations, making it
+    one of the more secure swift species in regions where it occurs.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q772286/hero.jpg
+  width: 2400
+  height: 1350
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:African palm swifts (Cypsiurus
+    parvus) showing them around their palm )(Hyphaene petersiana) habitat. - 52735566701.jpg
+  commons_filename: African palm swifts (Cypsiurus parvus) showing them around their
+    palm )(Hyphaene petersiana) habitat. - 52735566701.jpg
+- role: secondary
+  path: Q772286/secondary-1.jpg
+  width: 1800
+  height: 1012
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:African palm swifts (Cypsiurus
+    parvus) showing them around their.jpg
+  commons_filename: African palm swifts (Cypsiurus parvus) showing them around their.jpg
+- role: secondary
+  path: Q772286/secondary-2.jpg
+  width: 1201
+  height: 1800
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:African palm swifts (Cypsiurus
+    parvus) showing them around their palm )(Hyphaene petersiana) habitat. - 52735819244.jpg
+  commons_filename: African palm swifts (Cypsiurus parvus) showing them around their
+    palm )(Hyphaene petersiana) habitat. - 52735819244.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:28:44.773312+00:00'
+sources:
+  wikipedia_sv_revision: '55485810'
+  wikipedia_en_revision: '1314087616'
+  claude_model: claude-haiku-4-5-20251001

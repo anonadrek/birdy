@@ -1,0 +1,103 @@
+id: Q1029778
+scientific_name: Apus alexandri
+taxonomy:
+  family: Apodidae
+  family_sv: Seglare
+  genus: Apus
+  ioc_order: Apodiformes
+names:
+  sv: Kapverdeseglare
+  en: Cape Verde Swift
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kapverdeseglare
+
+
+    Kapverdeseglare är en liten fågel inom familjen seglare som är endemisk för Kap
+    Verdeöarna. Den är anpassad för livet i luften och skiljer sig från många andra
+    fågelarter genom sin extrema flygförmåga och sitt beroende av insekter som det
+    fångar under flykten.
+
+
+    Arten förekommer året runt på sina hemöar, men observeras ibland i Västafrika
+    under torrperioder när förhållandena på hemöarna blir mindre gynnsamma. Trots
+    sitt begränsade utbredningsområde klassificeras arten av IUCN som livskraftig,
+    vilket indikerar att populationen för närvarande är stabil.
+
+
+    Som medlem av seglerfamiljen är kapverdeseglaren väl anpassad för sitt aerobatiska
+    levnadssätt, där den tillbringar större delen av sitt liv i luften för att söka
+    föda och hålla sig i rörelse.'
+  en: '# Cape Verde Swift
+
+
+    The Cape Verde swift is a small member of the swift family, endemic to the Cape
+    Verde Islands. It occurs on most islands in the archipelago, though it probably
+    breeds only on a handful of them. The species maintains a generally common and
+    stable population across its limited range.
+
+
+    Like other swifts, it is highly aerial, spending much of its time in flight hunting
+    insects. Its small size and swift, agile movements are typical of the family.
+    Little detailed information is available about its specific appearance, calls,
+    or breeding behaviour from standard sources.
+
+
+    The species is named after Boyd Alexander, an English ornithologist who explored
+    the islands in 1897. It faces no significant conservation threats, with its population
+    remaining stable within its island habitat.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Kapverdeseglaren är en endemisk art som är bunden till Kap Verdeöarna utanför
+    Västafrikas kust. Arten förekommer året runt på öarna, vilket innebär att den
+    inte genomför några reguljära migrationssträck. Källmaterialet nämner observationer
+    i Västafrika under torrperioder, men innehåller ingen information om säsongsmässiga
+    förflyttningar eller användande av Skandinavien eller Nordeuropa. Denna art är
+    således irrelevant för en nordeuropeisk fågelbeskrivning.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Cape Verde Swift is endemic to the Cape Verde Islands and does not occur in
+    Scandinavia or Northern Europe. The provided source text contains no information
+    about migration patterns, seasonal movements, or occurrence in northern European
+    regions. This species has a restricted range limited to the Cape Verde archipelago
+    off the west coast of Africa.'
+image_refs:
+- role: hero
+  path: Q1029778/hero.jpg
+  width: 2048
+  height: 1390
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2692769">Tero
+    Linjama</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Apus alexandri 443633095.jpg
+  commons_filename: Apus alexandri 443633095.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:31:24.118083+00:00'
+sources:
+  wikipedia_sv_revision: '56775289'
+  wikipedia_en_revision: '1329402689'
+  claude_model: claude-haiku-4-5-20251001

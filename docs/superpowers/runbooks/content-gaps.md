@@ -79,6 +79,9 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 54 | Q21127307 | alcedinidae | Corythornis cristatus | Malachite Kingfisher | sv | 56775753 | 1314595144 | pending |
 | 55 | Q735158 | alcedinidae | Halcyon smyrnensis | White-throated Kingfisher | sv | 55885523 | 1315217781 | pending |
 | 56 | Q387379 | anhingidae | Afrikansk ormhalsfågel | Anhinga rufa | sv, en | 56594862 | 1352193487 | pending (afrikansk vagrant; ingen svwiki, en lead för kort) |
+| 57 | Q772286 | apodidae | Palmseglare | Cypsiurus parvus | sv | — | — | pending (afrikansk, ingen svwiki) |
+| 58 | Q1096617 | apodidae | Madeiraseglare | Apus unicolor | sv | — | — | pending (Madeira/Kanarie endemic, ingen svwiki) |
+| 59 | Q1264567 | apodidae | Forbes-Watsonseglare | Apus berliozi | sv, en | — | — | pending (afrikansk, båda wikis sparse) |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

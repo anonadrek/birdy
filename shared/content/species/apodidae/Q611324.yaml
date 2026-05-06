@@ -1,0 +1,130 @@
+id: Q611324
+scientific_name: Apus affinis
+taxonomy:
+  family: Apodidae
+  family_sv: Seglare
+  genus: Apus
+  ioc_order: Apodiformes
+names:
+  sv: Stubbstjärtseglare
+  en: Little Swift
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stubbstjärtseglare
+
+
+    Stubbstjärtseglare är en mycket liten medlem av seglaarfamiljen med karakteristisk
+    kort stjärt. Arten är närmast släkt med husseglaren och de två behandlades tidigare
+    som en enda art. Den förekommer huvudsakligen i Afrika, Mellanöstern och Asien,
+    men är mycket sällsynt längre norrut i Europa.
+
+
+    Denna små fågel är en skicklig flygare som jagar insekter högt upp i luften. Den
+    är mest aktiv under dagtid och spenderar mycket av sin tid på vingarna. Arten
+    föredrar urbana områden och byggnadsmiljöer där den gärna häckar i kolonier.
+
+
+    Stubbstjärtseglaren är en utpräglad långflyttare som söker sig till områden med
+    gott om flygande insekter. På sitt hemmaplan i Afrika och Asien är den relativt
+    vanlig, men endast mycket enstaka individer når fram till Europas nordligare delar.'
+  en: '# Little Swift
+
+
+    The little swift is a small, compact swift found across Africa and southwestern
+    Asia, with populations occasionally appearing in southern Europe. It resembles
+    other swifts in its streamlined, dark plumage adapted for rapid aerial hunting,
+    though it is notably smaller than many congeners. The species is highly adaptable,
+    thriving in both urban environments and at rocky cliff faces where it constructs
+    nests characteristic of the swift family.
+
+
+    Like all swifts, the little swift is an aerial insectivore, spending most of its
+    time in flight pursuing insects. It favors open spaces and can be seen hawking
+    across towns, villages, and natural rocky outcrops. The species nests communally
+    in crevices and caves, employing the typical swift construction method.
+
+
+    The little swift''s vocalizations are sharp and penetrating, typical of swifts,
+    helping birds communicate during their swift, synchronized flights. Its small
+    size and distinctive silhouette in flight distinguish it from larger swift species.
+    The taxonomy of this group has recently been clarified, with what was formerly
+    considered an eastern subspecies now recognized as the separate house swift species.'
+migration:
+  sv: '# Stubbstjärtseglare (Apus affinis) – Förekomst i Skandinavien
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Stubbstjärtseglaren är en mycket sällsynt gäst i Skandinavien och övriga Nordeuropa.
+    Arten är en afrikansk fågel med huvudsaklig utbredning söder om Sahara, Mellanöstern
+    och södra Asien. I Sverige förekommer den endast undantagsvis – endast tre fynd
+    har dokumenterats. Det finns ingen etablerad migrationsrutt eller övervintringsbestånd
+    av denna art i vårt nordiska område, utan observationer bör betraktas som få och
+    slumpmässiga avvikelser från artens normala utbredning.'
+  en: '# Little Swift (Apus affinis) in Scandinavia/Northern Europe
+
+
+    The Little Swift is extremely rare in Scandinavia and Northern Europe, occurring
+    only as an exceptional vagrant. This species is primarily resident in Africa and
+    southwestern Asia, with some breeding populations in southern Europe. Any records
+    in Scandinavian countries would represent rare overshoots during dispersal or
+    migration events, rather than regular seasonal occurrence. The species does not
+    establish winter populations or regular breeding colonies in the Nordic region.
+    Sightings are unpredictable and sporadic, making this swift essentially absent
+    from the annual avifauna cycle of Northern Europe.'
+image_refs:
+- role: hero
+  path: Q611324/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Apus affinis (15073004179).jpg
+  commons_filename: Apus affinis (15073004179).jpg
+- role: secondary
+  path: Q611324/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Apus affinis (15073193648).jpg
+  commons_filename: Apus affinis (15073193648).jpg
+- role: secondary
+  path: Q611324/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Apus affinis (15073193648) (2).jpg
+  commons_filename: Apus affinis (15073193648) (2).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:30:25.574366+00:00'
+sources:
+  wikipedia_sv_revision: '58595000'
+  wikipedia_en_revision: '1322270542'
+  claude_model: claude-haiku-4-5-20251001

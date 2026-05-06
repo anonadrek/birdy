@@ -140,3 +140,10 @@ species:
   # Anhingidae batch (2026-05-06): African vagrant, sparse Wikipedia coverage in both languages.
   Q387379:
     description_accept_missing: [sv, en]  # Anhinga rufa (Afrikansk ormhalsfågel) — sv saknas, en lead too short
+  # Apodidae batch (2026-05-06): exotic swifts without Swedish Wikipedia article (or both langs sparse).
+  Q772286:
+    description_accept_missing: [sv]  # Cypsiurus parvus (African Palm Swift) — afrikansk, ingen svwiki
+  Q1096617:
+    description_accept_missing: [sv]  # Apus unicolor (Plain Swift) — Madeira/Kanarie endemic
+  Q1264567:
+    description_accept_missing: [sv, en]  # Apus berliozi (Forbes-Watson's Swift) — afrikansk, båda wikis sparse

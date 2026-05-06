@@ -1,0 +1,128 @@
+id: Q25377
+scientific_name: Apus apus
+taxonomy:
+  family: Apodidae
+  family_sv: Seglare
+  genus: Apus
+  ioc_order: Apodiformes
+names:
+  sv: Tornseglare
+  en: Common Swift
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tornseglare
+
+
+    Tornseglaren är familjen seglares enda representant i norra Europa. Till utseendet
+    påminner den om svala, men är genom konvergent evolution utvecklad att likna denna
+    tättning. I verkligheten är tornseglaren närmare besläktad med kolibrier och trädseglare
+    än med svalorna.
+
+
+    Fågeln är en skicklig flugare som tillbringar mycket av sitt liv i luften. Den
+    är en långdistansflyttare som häckar över stora delar av Palearktis under sommarmånaderna
+    och övervintra i Afrika, huvudsakligen söder om ekvatorn. Med sitt stora utbredningsområde
+    är tornseglaren väl etablerad på många håll där den återkommer år efter år för
+    att föröka sig.'
+  en: '# Common Swift
+
+
+    The common swift is a medium-sized aerial specialist that superficially resembles
+    barn swallows and house martins, though it is not closely related to these passerines.
+    Swifts belong to the order Apodiformes and are more closely related to hummingbirds
+    and treeswifts than to conventional songbirds. The similarities in appearance
+    and behaviour between swifts and swallows represent a remarkable example of convergent
+    evolution—different bird families independently developing similar body shapes
+    and hunting techniques to exploit the same ecological niche of airborne insects.
+
+
+    Swifts are supremely adapted for a life spent almost entirely on the wing. Their
+    streamlined bodies, long curved wings, and rapid wingbeats allow them to manoeuvre
+    with extraordinary agility while pursuing flying insects. The common swift spends
+    the majority of its time aloft, feeding, drinking, and even sleeping while airborne.
+    It is a highly migratory species, appearing in summer months in temperate regions
+    across Europe and Asia before undertaking long journeys to sub-Saharan Africa
+    for winter.
+
+
+    The species is most frequently observed during breeding season when it becomes
+    particularly vocal and conspicuous around human settlements, where it nests in
+    buildings and other structures. Its distinctive screaming calls, often delivered
+    in rapid sequences by groups of birds, are a characteristic sound of summer skies
+    in towns and cities.'
+migration:
+  sv: '# Tornseglare – Förekomst i Nordeuropa
+
+
+    Tornseglaren är en långflyttare som har sina vinterkvarter i Afrika, huvudsakligen
+    söder om ekvatorn. Som häckfågel förekommer arten över stora delar av Palearktis,
+    inklusive Skandinavien och Nordeuropa. Under sommarmånaderna är tornseglaren en
+    vanlig syn över städer och landsbygd, där den jagar flygande insekter högt upp
+    i luften. Under hösten återvänder fåglarna till sina övervintringsområden i södra
+    Afrika, medan våren bär med sig återkomsten av de första individerna till Nordeuropa.'
+  en: '# Common Swift (Apus apus) in Northern Europe
+
+
+    The Common Swift is a highly migratory species across Scandinavia and Northern
+    Europe. These aerial specialists arrive in late April and May to breed, departing
+    again in August and September as they migrate to sub-Saharan Africa for the winter
+    months. Swifts are rarely seen outside the breeding season in the region, as they
+    spend approximately eight months annually in their African wintering grounds.
+    Their arrival and departure are closely tied to insect availability, with spring
+    arrivals typically delayed by cold weather, while autumn departures are among
+    the earliest of any European migrant species.'
+image_refs:
+- role: hero
+  path: Q25377/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common swift (Apus apus) 2024
+    3.jpg
+  commons_filename: Common swift (Apus apus) 2024 3.jpg
+- role: secondary
+  path: Q25377/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common swift (Apus apus) 2024.jpg
+  commons_filename: Common swift (Apus apus) 2024.jpg
+- role: secondary
+  path: Q25377/secondary-2.jpg
+  width: 1800
+  height: 1376
+  license: CC BY 4.0
+  author: NOIRLab
+  source_url: https://commons.wikimedia.org/wiki/File:Apus (apus-flashcard).jpg
+  commons_filename: Apus (apus-flashcard).jpg
+review_status: approved
+review_notes: 'auto-pick OK (Apus apus i flykt 2024, klar identifierbar; CC BY 4.0)'
+generated_at: '2026-05-06T14:31:28.174225+00:00'
+sources:
+  wikipedia_sv_revision: '59249603'
+  wikipedia_en_revision: '1351417751'
+  claude_model: claude-haiku-4-5-20251001

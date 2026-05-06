@@ -1,0 +1,81 @@
+id: Q1096617
+scientific_name: Apus unicolor
+taxonomy:
+  family: Apodidae
+  family_sv: Seglare
+  genus: Apus
+  ioc_order: Apodiformes
+names:
+  sv: Enfärgad seglare
+  en: Plain Swift
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Plain Swift
+
+
+    The plain swift is a medium-sized swift belonging to the Apodidae family. Though
+    it superficially resembles barn swallows or house martins, it is not closely related
+    to these passerine birds. The similarities between these groups represent convergent
+    evolution, reflecting their comparable aerial lifestyles and hunting strategies.
+
+
+    This swift shares the characteristic features of its family: a streamlined body
+    adapted for swift, agile flight and a diet consisting entirely of insects caught
+    in mid-air. Like other swifts, it spends most of its life airborne, only visiting
+    land to breed and roost.
+
+
+    The plain swift is distributed across its range in suitable habitats where it
+    can hunt insects in open airspace. It typically inhabits areas near cliffs, mountains,
+    or buildings that provide appropriate nesting sites. The species favors warm,
+    dry regions where insect prey is abundant.'
+migration:
+  sv: ''
+  en: '# Migration data unavailable for this species.
+
+
+    The provided source text contains only morphological and taxonomic information
+    about the Plain Swift, with no details regarding its occurrence in Scandinavia
+    or Northern Europe, migration patterns, seasonal movements, or overwintering behavior.
+    To provide accurate migration information for this species in the region, additional
+    sources documenting its geographic distribution and movement patterns would be
+    required.'
+image_refs:
+- role: hero
+  path: Q1096617/hero.jpg
+  width: 1457
+  height: 2400
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q21821238" class="extiw" title="d:Q21821238"><span
+    title="Dutch draughtsperson">Jos Zwarts</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Madeiragierzwaluw Apus unicolor
+    Jos Zwarts.tif
+  commons_filename: Madeiragierzwaluw Apus unicolor Jos Zwarts.tif
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:32:46.625788+00:00'
+sources:
+  wikipedia_sv_revision: '58595016'
+  wikipedia_en_revision: '1322270572'
+  claude_model: claude-haiku-4-5-20251001
