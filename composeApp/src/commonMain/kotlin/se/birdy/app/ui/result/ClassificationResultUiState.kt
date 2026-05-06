@@ -15,11 +15,26 @@ sealed interface ClassificationResultUiState {
         val runnerUps: List<ResolvedPrediction>,
         val frozenFramePath: String?,
         val unresolved: List<String>,
+        val saveStatus: SaveStatus = SaveStatus.NotSaved,
     ) : ClassificationResultUiState
 
     data class Error(
         val kind: Kind,
     ) : ClassificationResultUiState {
         enum class Kind { NoPredictions, NoMatches }
+    }
+
+    sealed interface SaveStatus {
+        data object NotSaved : SaveStatus
+
+        data object Saving : SaveStatus
+
+        data object Saved : SaveStatus
+
+        data class Failed(
+            val kind: Kind,
+        ) : SaveStatus {
+            enum class Kind { PhotoEncodeFailed, StorageFull, DatabaseFailed, FrameUnavailable }
+        }
     }
 }

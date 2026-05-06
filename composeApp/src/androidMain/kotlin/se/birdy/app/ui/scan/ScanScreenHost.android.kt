@@ -16,7 +16,7 @@ import java.util.UUID
 actual fun ScanScreenHost(
     graph: AppGraph,
     onPhotoAnalyzeClick: () -> Unit,
-    onFrozen: (predictionsCsv: String, frameJpegPath: String) -> Unit,
+    onFrozen: (predictionsCsv: String, frameJpegPath: String, capturedAtMs: Long) -> Unit,
 ) {
     val context = LocalContext.current
     val permission = rememberCameraPermissionState(context)

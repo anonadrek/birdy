@@ -10,7 +10,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import kotlinx.datetime.Clock
 import se.birdy.app.di.AppGraph
+import se.birdy.app.ui.diary.DiaryScreen
+import se.birdy.app.ui.diary.ObservationDetailScreen
 import se.birdy.app.ui.encyclopedia.EncyclopediaScreen
 import se.birdy.app.ui.profile.SpeciesProfileScreen
 import se.birdy.app.ui.result.ClassificationResultScreen
@@ -30,8 +33,8 @@ fun AppScaffold(graph: AppGraph) {
                 ScanScreenHost(
                     graph = graph,
                     onPhotoAnalyzeClick = { navController.navigate(AppRoute.PhotoAnalyze) },
-                    onFrozen = { csv, path ->
-                        navController.navigate(AppRoute.ClassificationResult(csv, path))
+                    onFrozen = { csv, path, capturedAtMs ->
+                        navController.navigate(AppRoute.ClassificationResult(csv, path, capturedAtMs))
                     },
                 )
             }
@@ -39,7 +42,8 @@ fun AppScaffold(graph: AppGraph) {
                 se.birdy.app.ui.photoanalyze.PhotoAnalyzeHost(
                     graph = graph,
                     onLoaded = { csv, path ->
-                        navController.navigate(AppRoute.ClassificationResult(csv, path)) {
+                        val ts = Clock.System.now().toEpochMilliseconds()
+                        navController.navigate(AppRoute.ClassificationResult(csv, path, ts)) {
                             popUpTo(AppRoute.Scan) { inclusive = false }
                         }
                     },
@@ -49,22 +53,18 @@ fun AppScaffold(graph: AppGraph) {
                 val route = entry.toRoute<AppRoute.ClassificationResult>()
                 val vm =
                     remember(graph, route) {
-                        graph.classificationResultViewModel(route.predictionsCsv, route.frameJpegPath)
+                        graph.classificationResultViewModel(route.predictionsCsv, route.frameJpegPath, route.capturedAtMs)
                     }
                 ClassificationResultScreen(
                     viewModel = vm,
-                    onSpeciesClick = { id ->
-                        navController.navigate(AppRoute.SpeciesProfile(id))
-                    },
+                    onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id)) },
                 )
             }
             navigation<AppRoute.Encyclopedia>(startDestination = AppRoute.EncyclopediaList) {
                 composable<AppRoute.EncyclopediaList> {
                     EncyclopediaScreen(
                         viewModel = remember(graph) { graph.encyclopediaViewModel() },
-                        onSpeciesClick = { id ->
-                            navController.navigate(AppRoute.SpeciesProfile(id.raw))
-                        },
+                        onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
                     )
                 }
                 composable<AppRoute.SpeciesProfile> { entry ->
@@ -78,7 +78,28 @@ fun AppScaffold(graph: AppGraph) {
                     )
                 }
             }
-            composable<AppRoute.Diary> { DiaryStubScreen() }
+            composable<AppRoute.Diary> {
+                DiaryScreen(
+                    viewModel = remember(graph) { graph.diaryViewModel() },
+                    onObservationClick = { id ->
+                        navController.navigate(AppRoute.ObservationDetail(id))
+                    },
+                    onScanCtaClick = {
+                        navController.navigate(AppRoute.Scan) {
+                            popUpTo(AppRoute.Scan) { inclusive = false }
+                            launchSingleTop = true
+                        }
+                    },
+                )
+            }
+            composable<AppRoute.ObservationDetail> { entry ->
+                val route = entry.toRoute<AppRoute.ObservationDetail>()
+                ObservationDetailScreen(
+                    viewModel = remember(graph, route.id) { graph.observationDetailViewModel(route.id) },
+                    onBack = { navController.popBackStack() },
+                    onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id)) },
+                )
+            }
             composable<AppRoute.Badges> { BadgesStubScreen() }
         }
     }

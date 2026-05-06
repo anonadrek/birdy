@@ -7,7 +7,12 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
+import kotlinx.datetime.Instant
+import se.birdy.app.testing.FakeClock
+import se.birdy.app.testing.FakeObservationRepository
+import se.birdy.app.testing.FakePhotoStorage
 import se.birdy.app.testing.FakeSpeciesRepository
+import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
@@ -18,6 +23,13 @@ import kotlin.test.assertIs
 @OptIn(ExperimentalCoroutinesApi::class)
 class ClassificationResultViewModelTest {
     private val dispatcher = StandardTestDispatcher()
+
+    private val saveUseCase =
+        SaveObservationUseCase(
+            FakeObservationRepository(),
+            FakePhotoStorage(),
+            FakeClock(now = Instant.parse("2026-05-06T10:00:00Z")),
+        )
 
     @BeforeTest fun before() = Dispatchers.setMain(dispatcher)
 
@@ -30,8 +42,10 @@ class ClassificationResultViewModelTest {
             val vm =
                 ClassificationResultViewModel(
                     repository = repo,
+                    saveUseCase = saveUseCase,
                     predictionsCsv = "Q25485:87/100,Q25234:8/100,Q25404:5/100",
                     frameJpegPath = "/cache/scan-frames/x.jpg",
+                    capturedAtMs = 1735000000000L,
                     locale = Locale.SV,
                 )
             vm.state.test {
@@ -56,8 +70,10 @@ class ClassificationResultViewModelTest {
             val vm =
                 ClassificationResultViewModel(
                     repository = repo,
+                    saveUseCase = saveUseCase,
                     predictionsCsv = "Q25485:87/100,Q_BOGUS:5/100",
                     frameJpegPath = null,
+                    capturedAtMs = 1735000000000L,
                     locale = Locale.SV,
                 )
             vm.state.test {
@@ -78,8 +94,10 @@ class ClassificationResultViewModelTest {
             val vm =
                 ClassificationResultViewModel(
                     repository = repo,
+                    saveUseCase = saveUseCase,
                     predictionsCsv = "Q_BOGUS1:50/100,Q_BOGUS2:30/100",
                     frameJpegPath = null,
+                    capturedAtMs = 1735000000000L,
                     locale = Locale.SV,
                 )
             vm.state.test {

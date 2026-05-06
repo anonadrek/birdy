@@ -11,6 +11,7 @@ sealed interface AppRoute {
     @Serializable data class ClassificationResult(
         val predictionsCsv: String,
         val frameJpegPath: String?,
+        val capturedAtMs: Long,
     ) : AppRoute
 
     @Serializable data object Encyclopedia : AppRoute
@@ -22,6 +23,10 @@ sealed interface AppRoute {
     ) : AppRoute
 
     @Serializable data object Diary : AppRoute
+
+    @Serializable data class ObservationDetail(
+        val id: String,
+    ) : AppRoute
 
     @Serializable data object Badges : AppRoute
 }

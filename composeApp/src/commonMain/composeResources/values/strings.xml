@@ -43,8 +43,6 @@
     <string name="not_found_body">Tryck tillbaka för att gå till listan.</string>
 
     <!-- Stub screens -->
-    <string name="stub_diary_title">Dagbok</string>
-    <string name="stub_diary_body">Den här funktionen kommer i Plan 5 — Dagbok.</string>
     <string name="stub_badges_title">Märken</string>
     <string name="stub_badges_body">Den här funktionen kommer i Plan 5 — Gamification.</string>
 

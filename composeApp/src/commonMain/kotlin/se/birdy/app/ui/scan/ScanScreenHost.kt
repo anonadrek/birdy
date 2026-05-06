@@ -7,5 +7,5 @@ import se.birdy.app.di.AppGraph
 expect fun ScanScreenHost(
     graph: AppGraph,
     onPhotoAnalyzeClick: () -> Unit,
-    onFrozen: (predictionsCsv: String, frameJpegPath: String) -> Unit,
+    onFrozen: (predictionsCsv: String, frameJpegPath: String, capturedAtMs: Long) -> Unit,
 )

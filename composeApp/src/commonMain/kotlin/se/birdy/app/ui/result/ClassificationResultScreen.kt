@@ -19,14 +19,24 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_db
+import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_frame_unavailable
+import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_photo
+import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_storage
+import birdy_bird_scanner.composeapp.generated.resources.diary_save_success
+import birdy_bird_scanner.composeapp.generated.resources.diary_saved_indicator
 import birdy_bird_scanner.composeapp.generated.resources.result_no_matches
 import birdy_bird_scanner.composeapp.generated.resources.result_no_predictions
 import birdy_bird_scanner.composeapp.generated.resources.result_save_hint
@@ -64,7 +74,8 @@ fun ClassificationResultScreen(
                     }
                 Text(msg, modifier = Modifier.align(Alignment.Center), color = TextOnCreme)
             }
-            is ClassificationResultUiState.Loaded -> LoadedView(s, onSpeciesClick)
+            is ClassificationResultUiState.Loaded ->
+                LoadedView(s, onSpeciesClick = onSpeciesClick, onSave = { viewModel.saveToDiary() })
         }
     }
 }
@@ -73,6 +84,7 @@ fun ClassificationResultScreen(
 private fun LoadedView(
     state: ClassificationResultUiState.Loaded,
     onSpeciesClick: (String) -> Unit,
+    onSave: () -> Unit,
 ) {
     Column(
         modifier =
@@ -127,13 +139,43 @@ private fun LoadedView(
             Spacer(modifier = Modifier.height(12.dp))
         }
 
-        // Save-disabled CTA
+        val snackbarHost = remember { SnackbarHostState() }
+        val successLabel = stringResource(Res.string.diary_save_success)
+        val errorPhotoLabel = stringResource(Res.string.diary_save_error_photo)
+        val errorStorageLabel = stringResource(Res.string.diary_save_error_storage)
+        val errorDbLabel = stringResource(Res.string.diary_save_error_db)
+        val errorFrameLabel = stringResource(Res.string.diary_save_error_frame_unavailable)
+
+        LaunchedEffect(state.saveStatus) {
+            when (val s = state.saveStatus) {
+                ClassificationResultUiState.SaveStatus.Saved -> snackbarHost.showSnackbar(successLabel)
+                is ClassificationResultUiState.SaveStatus.Failed ->
+                    snackbarHost.showSnackbar(
+                        when (s.kind) {
+                            ClassificationResultUiState.SaveStatus.Failed.Kind.PhotoEncodeFailed -> errorPhotoLabel
+                            ClassificationResultUiState.SaveStatus.Failed.Kind.StorageFull -> errorStorageLabel
+                            ClassificationResultUiState.SaveStatus.Failed.Kind.DatabaseFailed -> errorDbLabel
+                            ClassificationResultUiState.SaveStatus.Failed.Kind.FrameUnavailable -> errorFrameLabel
+                        },
+                    )
+                else -> Unit
+            }
+        }
+
+        val isSaved = state.saveStatus == ClassificationResultUiState.SaveStatus.Saved
+        val isSaving = state.saveStatus == ClassificationResultUiState.SaveStatus.Saving
         Button(
-            onClick = {},
-            enabled = false,
+            onClick = { onSave() },
+            enabled = !isSaving && !isSaved,
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Text(stringResource(Res.string.result_save_observation))
+            Text(
+                if (isSaved) {
+                    stringResource(Res.string.diary_saved_indicator)
+                } else {
+                    stringResource(Res.string.result_save_observation)
+                },
+            )
         }
         Text(
             text = stringResource(Res.string.result_save_hint),
@@ -141,6 +183,7 @@ private fun LoadedView(
             style = MaterialTheme.typography.labelSmall,
             modifier = Modifier.padding(top = 4.dp),
         )
+        SnackbarHost(snackbarHost)
     }
 }
 

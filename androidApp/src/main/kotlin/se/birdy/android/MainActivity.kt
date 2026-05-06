@@ -8,6 +8,9 @@ import se.birdy.app.SpeciesRepositoryProvider
 import se.birdy.app.di.AppGraph
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.content.Locale
+import se.birdy.data.DatabaseFactory
+import se.birdy.data.db.BirdyData
+import se.birdy.data.observation.SqlDelightObservationRepository
 import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.camera.AndroidCameraSource
 import java.io.File
@@ -18,6 +21,10 @@ class MainActivity : ComponentActivity() {
         cleanOldCacheFrames()
         SpeciesRepositoryProvider.init(applicationContext)
         PhotoStorageProvider.init(applicationContext)
+        val observationRepo =
+            SqlDelightObservationRepository(
+                BirdyData(DatabaseFactory(applicationContext).createDriver()).observationQueries,
+            )
         val graph =
             AppGraph(
                 repository = SpeciesRepositoryProvider.get(),
@@ -25,6 +32,8 @@ class MainActivity : ComponentActivity() {
                 cameraSourceFactory = {
                     AndroidCameraSource(applicationContext, this@MainActivity)
                 },
+                observationRepository = observationRepo,
+                photoStorage = PhotoStorageProvider.get(),
                 defaultLocale = Locale.SV,
             )
         setContent { App(graph) }

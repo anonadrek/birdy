@@ -34,8 +34,6 @@
     <string name="not_found_title">Species not found.</string>
     <string name="not_found_body">Press back to return to the list.</string>
 
-    <string name="stub_diary_title">Diary</string>
-    <string name="stub_diary_body">This feature is coming in Plan 5 — Diary.</string>
     <string name="stub_badges_title">Badges</string>
     <string name="stub_badges_body">This feature is coming in Plan 5 — Gamification.</string>
 

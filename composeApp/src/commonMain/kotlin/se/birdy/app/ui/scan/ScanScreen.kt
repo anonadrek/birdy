@@ -37,7 +37,7 @@ fun ScanScreen(
     viewModel: ScanViewModel,
     cameraSource: CameraSource,
     onPhotoAnalyzeClick: () -> Unit,
-    onFrozen: (predictionsCsv: String, frameJpegPath: String) -> Unit,
+    onFrozen: (predictionsCsv: String, frameJpegPath: String, capturedAtMs: Long) -> Unit,
     onPermissionRequest: () -> Unit,
     onOpenSettings: () -> Unit,
     onCaptureJpeg: () -> ByteArray,
@@ -52,7 +52,7 @@ fun ScanScreen(
                 s.predictions.joinToString(",") { p ->
                     p.speciesId + ":" + (p.confidence * 100).toInt() + "/100"
                 }
-            onFrozen(csv, s.frameJpegPath)
+            onFrozen(csv, s.frameJpegPath, s.timestampMillis)
             viewModel.onResumeAfterFreeze()
         }
     }
