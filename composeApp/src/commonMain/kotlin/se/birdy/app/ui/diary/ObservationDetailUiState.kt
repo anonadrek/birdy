@@ -17,7 +17,7 @@ sealed interface ObservationDetailUiState {
     data class Error(
         val kind: Kind,
     ) : ObservationDetailUiState {
-        enum class Kind { LoadFailed, SaveNoteFailed, DeleteFailed }
+        enum class Kind { LoadFailed }
     }
 }
 
@@ -27,4 +27,6 @@ sealed interface DetailEffect {
     ) : DetailEffect
 
     data object Deleted : DetailEffect
+
+    data object DeleteFailed : DetailEffect
 }

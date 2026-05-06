@@ -15,6 +15,12 @@ class FakeObservationRepository : ObservationRepository {
     /** Hook to simulate insert-fail for SaveObservationUseCaseTest. */
     var failOnInsert: Throwable? = null
 
+    /** Hook to simulate updateNote-fail for ObservationDetailViewModelTest. */
+    var failOnUpdateNote: Throwable? = null
+
+    /** Hook to simulate delete-fail for ObservationDetailViewModelTest. */
+    var failOnDelete: Throwable? = null
+
     override fun observeAll(): Flow<List<Observation>> =
         _rows.asStateFlow().map { it.sortedByDescending { o -> o.capturedAt.toEpochMilliseconds() } }
 
@@ -29,10 +35,12 @@ class FakeObservationRepository : ObservationRepository {
         id: String,
         note: String,
     ) {
+        failOnUpdateNote?.let { throw it }
         _rows.value = _rows.value.map { if (it.id == id) it.copy(note = note) else it }
     }
 
     override suspend fun delete(id: String) {
+        failOnDelete?.let { throw it }
         _rows.value = _rows.value.filter { it.id != id }
     }
 

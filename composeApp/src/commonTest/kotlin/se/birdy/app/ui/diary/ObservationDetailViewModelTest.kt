@@ -20,6 +20,7 @@ import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
+import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -30,27 +31,25 @@ class ObservationDetailViewModelTest {
 
     @AfterTest fun after() = Dispatchers.resetMain()
 
-    private fun seed(
+    private suspend fun seed(
         repo: FakeObservationRepository,
         id: String,
         speciesId: String,
     ) {
-        runTest {
-            repo.insert(
-                Observation(
-                    id = id,
-                    speciesId = speciesId,
-                    capturedAt = Instant.parse("2026-05-03T11:08:00Z"),
-                    savedAt = Instant.parse("2026-05-03T11:09:00Z"),
-                    photoPath = "/p/$id.jpg",
-                    note = "ursprunglig",
-                    confidence = 0.87f,
-                    latitude = null,
-                    longitude = null,
-                    locationLabel = null,
-                ),
-            )
-        }
+        repo.insert(
+            Observation(
+                id = id,
+                speciesId = speciesId,
+                capturedAt = Instant.parse("2026-05-03T11:08:00Z"),
+                savedAt = Instant.parse("2026-05-03T11:09:00Z"),
+                photoPath = "/p/$id.jpg",
+                note = "ursprunglig",
+                confidence = 0.87f,
+                latitude = null,
+                longitude = null,
+                locationLabel = null,
+            ),
+        )
     }
 
     @Test
@@ -137,5 +136,100 @@ class ObservationDetailViewModelTest {
             advanceUntilIdle()
             assertNull(obsRepo.observeById("o1").first())
             assertEquals(0, storage.persisted.size)
+        }
+
+    @Test
+    fun save_note_failure_emits_NoteSaved_false() =
+        runTest(dispatcher) {
+            val obsRepo = FakeObservationRepository()
+            seed(obsRepo, "o1", "Q25485")
+            obsRepo.failOnUpdateNote = RuntimeException("boom")
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            val storage = FakePhotoStorage()
+            val vm = ObservationDetailViewModel("o1", obsRepo, speciesRepo, storage, Locale.SV)
+            // Drive Loading→Loaded
+            vm.state.test {
+                awaitItem()
+                awaitItem()
+                cancelAndIgnoreRemainingEvents()
+            }
+            vm.effects.test {
+                vm.saveNote("x")
+                advanceUntilIdle()
+                val emitted = awaitItem()
+                assertIs<DetailEffect.NoteSaved>(emitted)
+                assertEquals(false, emitted.success)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun delete_failure_emits_DeleteFailed_and_keeps_observation() =
+        runTest(dispatcher) {
+            val obsRepo = FakeObservationRepository()
+            seed(obsRepo, "o1", "Q25485")
+            obsRepo.failOnDelete = RuntimeException("boom")
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            val storage = FakePhotoStorage()
+            val vm = ObservationDetailViewModel("o1", obsRepo, speciesRepo, storage, Locale.SV)
+            // Drive Loading→Loaded
+            vm.state.test {
+                awaitItem()
+                awaitItem()
+                cancelAndIgnoreRemainingEvents()
+            }
+            vm.effects.test {
+                vm.delete()
+                advanceUntilIdle()
+                assertIs<DetailEffect.DeleteFailed>(awaitItem())
+                cancelAndIgnoreRemainingEvents()
+            }
+            assertNotNull(obsRepo.observeById("o1").first())
+        }
+
+    @Test
+    fun save_note_emits_effect_on_success() =
+        runTest(dispatcher) {
+            val obsRepo = FakeObservationRepository()
+            seed(obsRepo, "o1", "Q25485")
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            val storage = FakePhotoStorage()
+            val vm = ObservationDetailViewModel("o1", obsRepo, speciesRepo, storage, Locale.SV)
+            // Drive Loading→Loaded
+            vm.state.test {
+                awaitItem()
+                awaitItem()
+                cancelAndIgnoreRemainingEvents()
+            }
+            vm.effects.test {
+                vm.saveNote("nytt")
+                advanceUntilIdle()
+                val emitted = awaitItem()
+                assertIs<DetailEffect.NoteSaved>(emitted)
+                assertEquals(true, emitted.success)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun delete_emits_Deleted_effect_on_success() =
+        runTest(dispatcher) {
+            val obsRepo = FakeObservationRepository()
+            seed(obsRepo, "o1", "Q25485")
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            val storage = FakePhotoStorage().apply { persisted["/p/o1.jpg"] = ByteArray(8) }
+            val vm = ObservationDetailViewModel("o1", obsRepo, speciesRepo, storage, Locale.SV)
+            // Drive Loading→Loaded
+            vm.state.test {
+                awaitItem()
+                awaitItem()
+                cancelAndIgnoreRemainingEvents()
+            }
+            vm.effects.test {
+                vm.delete()
+                advanceUntilIdle()
+                assertIs<DetailEffect.Deleted>(awaitItem())
+                cancelAndIgnoreRemainingEvents()
+            }
         }
 }
