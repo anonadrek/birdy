@@ -17,12 +17,17 @@ import se.birdy.app.testing.FakePhotoStorage
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
+import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeCatalog
+import se.birdy.domain.badge.BadgeCategory
+import se.birdy.domain.badge.BadgeRule
+import java.io.File
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
+import kotlin.test.assertNull
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ClassificationResultViewModelTest {
@@ -53,6 +58,7 @@ class ClassificationResultViewModelTest {
                 ClassificationResultViewModel(
                     repository = repo,
                     saveUseCase = saveUseCase,
+                    catalog = BadgeCatalog(version = 1, badges = emptyList()),
                     predictionsCsv = "Q25485:87/100,Q25234:8/100,Q25404:5/100",
                     frameJpegPath = "/cache/scan-frames/x.jpg",
                     capturedAtMs = 1735000000000L,
@@ -81,6 +87,7 @@ class ClassificationResultViewModelTest {
                 ClassificationResultViewModel(
                     repository = repo,
                     saveUseCase = saveUseCase,
+                    catalog = BadgeCatalog(version = 1, badges = emptyList()),
                     predictionsCsv = "Q25485:87/100,Q_BOGUS:5/100",
                     frameJpegPath = null,
                     capturedAtMs = 1735000000000L,
@@ -105,6 +112,7 @@ class ClassificationResultViewModelTest {
                 ClassificationResultViewModel(
                     repository = repo,
                     saveUseCase = saveUseCase,
+                    catalog = BadgeCatalog(version = 1, badges = emptyList()),
                     predictionsCsv = "Q_BOGUS1:50/100,Q_BOGUS2:30/100",
                     frameJpegPath = null,
                     capturedAtMs = 1735000000000L,
@@ -117,5 +125,93 @@ class ClassificationResultViewModelTest {
                 assertEquals(ClassificationResultUiState.Error.Kind.NoMatches, err.kind)
                 cancelAndIgnoreRemainingEvents()
             }
+        }
+
+    @Test
+    fun saveToDiary_enqueues_new_unlocks_and_disables_CTA_until_dismissed() =
+        runTest(dispatcher) {
+            val noviceBadge =
+                Badge(
+                    id = "novice",
+                    category = BadgeCategory.PROGRESSION,
+                    rule = BadgeRule.CountUniqueSpecies(target = 1),
+                )
+            val catalog = BadgeCatalog(version = 1, badges = listOf(noviceBadge))
+            val observationRepo = FakeObservationRepository()
+            val badgeRepo = FakeBadgeRepository()
+            val photoStorage = FakePhotoStorage()
+            val clock = FakeClock(now = Instant.parse("2026-05-07T10:00:00Z"))
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            val saveUseCase =
+                SaveObservationUseCase(
+                    repo = observationRepo,
+                    badgeRepo = badgeRepo,
+                    photoStorage = photoStorage,
+                    clock = clock,
+                    catalog = catalog,
+                    recalculate = RecalculateBadgesUseCase(clock = clock, zone = TimeZone.UTC),
+                    speciesByQid = { speciesRepo.allByQid() },
+                )
+
+            // Write a real temp file so File(path).readBytes() succeeds in the VM.
+            val tmpFile = File.createTempFile("birdy-test-frame", ".jpg")
+            tmpFile.writeBytes(byteArrayOf(0xFF.toByte(), 0xD8.toByte(), 0x01))
+            val framePath = tmpFile.absolutePath
+
+            val vm =
+                ClassificationResultViewModel(
+                    repository = speciesRepo,
+                    saveUseCase = saveUseCase,
+                    catalog = catalog,
+                    predictionsCsv = "Q25485:87/100",
+                    frameJpegPath = framePath,
+                    capturedAtMs = 1735000000000L,
+                    locale = Locale.SV,
+                )
+
+            vm.state.test {
+                // Skip Loading
+                var item = awaitItem()
+                while (item is ClassificationResultUiState.Loading) item = awaitItem()
+
+                // Initial Loaded — no pending unlock
+                val initial = item as ClassificationResultUiState.Loaded
+                assertEquals(0, initial.unlockQueueSize)
+                assertNull(initial.pendingUnlock)
+
+                vm.saveToDiary()
+
+                // Wait for state with unlock enqueued and status Saved
+                var seen: ClassificationResultUiState.Loaded? = null
+                while (true) {
+                    val n = awaitItem() as? ClassificationResultUiState.Loaded ?: continue
+                    if (n.unlockQueueSize > 0 && n.saveStatus == ClassificationResultUiState.SaveStatus.Saved) {
+                        seen = n
+                        break
+                    }
+                }
+                val afterSave = seen!!
+                assertEquals(1, afterSave.unlockQueueSize)
+                assertEquals("novice", afterSave.pendingUnlock?.badgeId)
+                assertEquals("novice", afterSave.pendingBadge?.id)
+
+                vm.dismissUnlock()
+
+                // Wait for queue to drain
+                var afterDismiss: ClassificationResultUiState.Loaded? = null
+                while (true) {
+                    val n = awaitItem() as? ClassificationResultUiState.Loaded ?: continue
+                    if (n.unlockQueueSize == 0) {
+                        afterDismiss = n
+                        break
+                    }
+                }
+                assertEquals(0, afterDismiss!!.unlockQueueSize)
+                assertNull(afterDismiss.pendingUnlock)
+
+                cancelAndIgnoreRemainingEvents()
+            }
+
+            tmpFile.delete()
         }
 }

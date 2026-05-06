@@ -14,6 +14,7 @@ import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
 import se.birdy.data.observation.SqlDelightObservationRepository
+import se.birdy.app.bootstrap.SharedPrefsBadgeVersionStore
 import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.camera.AndroidCameraSource
 import java.io.File
@@ -27,8 +28,11 @@ class MainActivity : ComponentActivity() {
         val birdyData = BirdyData(DatabaseFactory(applicationContext).createDriver())
         val observationRepo = SqlDelightObservationRepository(birdyData.observationQueries)
         val badgeRepo = BadgeRepositoryImpl(birdyData.badgeUnlockQueries)
-        // TODO(T13): flytta katalog-ladd till App.kt LaunchedEffect så onCreate inte blockerar.
+        // Catalog is small (25 badges from YAML); runBlocking ~10ms during onCreate is acceptable.
+        // Async-loading would require state machine in AppGraph (catalog is required by SaveObservationUseCase
+        // + BadgesViewModel constructors). Revisit post-v1.0 if cold-start budget tightens.
         val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
+        val badgeVersionStore = SharedPrefsBadgeVersionStore(applicationContext)
         val graph =
             AppGraph(
                 repository = SpeciesRepositoryProvider.get(),
@@ -40,6 +44,7 @@ class MainActivity : ComponentActivity() {
                 photoStorage = PhotoStorageProvider.get(),
                 badgeRepository = badgeRepo,
                 badgeCatalog = badgeCatalog,
+                badgeVersionStore = badgeVersionStore,
                 defaultLocale = Locale.SV,
             )
         setContent { App(graph) }

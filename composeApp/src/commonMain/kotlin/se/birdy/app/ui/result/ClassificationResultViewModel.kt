@@ -12,16 +12,19 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.Instant
 import se.birdy.app.photo.FrameUnavailableException
+import se.birdy.app.ui.badges.UnlockQueue
 import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.content.SpeciesRepository
+import se.birdy.domain.badge.BadgeCatalog
 import java.io.File
 import java.io.IOException
 
 class ClassificationResultViewModel(
     private val repository: SpeciesRepository,
     private val saveUseCase: SaveObservationUseCase,
+    private val catalog: BadgeCatalog,
     private val predictionsCsv: String,
     private val frameJpegPath: String?,
     private val capturedAtMs: Long,
@@ -30,8 +33,24 @@ class ClassificationResultViewModel(
     private val _state = MutableStateFlow<ClassificationResultUiState>(ClassificationResultUiState.Loading)
     val state: StateFlow<ClassificationResultUiState> = _state.asStateFlow()
 
+    private val unlockQueue = UnlockQueue()
+
     init {
         viewModelScope.launch { resolve() }
+        viewModelScope.launch {
+            unlockQueue.queue.collect { list ->
+                val current = _state.value
+                if (current is ClassificationResultUiState.Loaded) {
+                    val first = list.firstOrNull()
+                    _state.value =
+                        current.copy(
+                            pendingUnlock = first,
+                            pendingBadge = first?.let { catalog.findById(it.badgeId) },
+                            unlockQueueSize = list.size,
+                        )
+                }
+            }
+        }
     }
 
     private suspend fun resolve() {
@@ -92,7 +111,10 @@ class ClassificationResultViewModel(
                 }.onFailure { if (it is CancellationException) throw it }
             val status =
                 outcome.fold(
-                    onSuccess = { ClassificationResultUiState.SaveStatus.Saved },
+                    onSuccess = { result ->
+                        if (result.newUnlocks.isNotEmpty()) unlockQueue.enqueue(result.newUnlocks)
+                        ClassificationResultUiState.SaveStatus.Saved
+                    },
                     onFailure = { t ->
                         when (t) {
                             is FrameUnavailableException ->
@@ -112,6 +134,8 @@ class ClassificationResultViewModel(
             }
         }
     }
+
+    fun dismissUnlock() = unlockQueue.pop()
 
     private fun saveFailed(kind: ClassificationResultUiState.SaveStatus.Failed.Kind) = ClassificationResultUiState.SaveStatus.Failed(kind)
 

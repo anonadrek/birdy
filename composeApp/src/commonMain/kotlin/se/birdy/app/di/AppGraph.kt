@@ -3,7 +3,10 @@ package se.birdy.app.di
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import se.birdy.app.badges.RecalculateBadgesUseCase
+import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
+import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.photo.PhotoStorage
+import se.birdy.app.ui.badges.BadgesViewModel
 import se.birdy.app.ui.diary.DiaryViewModel
 import se.birdy.app.ui.diary.ObservationDetailViewModel
 import se.birdy.app.ui.encyclopedia.EncyclopediaViewModel
@@ -29,11 +32,23 @@ class AppGraph(
     val photoStorage: PhotoStorage,
     val badgeRepository: BadgeRepository,
     val badgeCatalog: BadgeCatalog,
+    val badgeVersionStore: BadgeVersionStore,
     val clock: Clock = Clock.System,
     val timeZone: TimeZone = TimeZone.currentSystemDefault(),
     val defaultLocale: Locale = Locale.SV,
 ) {
     private val recalculateBadges = RecalculateBadgesUseCase(clock = clock, zone = timeZone)
+
+    val badgeBackfill: BadgeBackfillOnAppStart by lazy {
+        BadgeBackfillOnAppStart(
+            recalc = recalculateBadges,
+            obsRepo = observationRepository,
+            speciesByQid = { repository.allByQid() },
+            badgeRepo = badgeRepository,
+            catalog = badgeCatalog,
+            versionStore = badgeVersionStore,
+        )
+    }
 
     private val saveObservationUseCase: SaveObservationUseCase =
         SaveObservationUseCase(
@@ -64,9 +79,22 @@ class AppGraph(
         ClassificationResultViewModel(
             repository = repository,
             saveUseCase = saveObservationUseCase,
+            catalog = badgeCatalog,
             predictionsCsv = predictionsCsv,
             frameJpegPath = frameJpegPath,
             capturedAtMs = capturedAtMs,
+            locale = defaultLocale,
+        )
+
+    fun badgesViewModel(): BadgesViewModel =
+        BadgesViewModel(
+            obsRepo = observationRepository,
+            badgeRepo = badgeRepository,
+            speciesByQid = { repository.allByQid() },
+            speciesTotalCount = repository.observeTotalCount(),
+            catalog = badgeCatalog,
+            recalc = recalculateBadges,
+            zone = timeZone,
             locale = defaultLocale,
         )
 

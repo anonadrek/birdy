@@ -58,6 +58,8 @@ fun AppScaffold(graph: AppGraph) {
                 ClassificationResultScreen(
                     viewModel = vm,
                     onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id)) },
+                    locale = graph.defaultLocale,
+                    zone = graph.timeZone,
                 )
             }
             navigation<AppRoute.Encyclopedia>(startDestination = AppRoute.EncyclopediaList) {
@@ -100,7 +102,7 @@ fun AppScaffold(graph: AppGraph) {
                     onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id)) },
                 )
             }
-            composable<AppRoute.Badges> { BadgesStubScreen() }
+            composable<AppRoute.Badges> { BadgesRoute(graph) }
         }
     }
 }

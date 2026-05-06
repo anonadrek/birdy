@@ -1,6 +1,8 @@
 package se.birdy.app.ui.result
 
 import se.birdy.content.model.Species
+import se.birdy.domain.badge.Badge
+import se.birdy.domain.badge.BadgeUnlock
 
 data class ResolvedPrediction(
     val species: Species,
@@ -16,6 +18,9 @@ sealed interface ClassificationResultUiState {
         val frozenFramePath: String?,
         val unresolved: List<String>,
         val saveStatus: SaveStatus = SaveStatus.NotSaved,
+        val pendingUnlock: BadgeUnlock? = null,
+        val pendingBadge: Badge? = null,
+        val unlockQueueSize: Int = 0,
     ) : ClassificationResultUiState
 
     data class Error(

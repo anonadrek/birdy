@@ -44,18 +44,24 @@ import birdy_bird_scanner.composeapp.generated.resources.result_save_hint
 import birdy_bird_scanner.composeapp.generated.resources.result_save_observation
 import birdy_bird_scanner.composeapp.generated.resources.result_unresolved_count
 import birdy_bird_scanner.composeapp.generated.resources.result_your_scan
+import kotlinx.datetime.TimeZone
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.badges.BadgeStringMap
+import se.birdy.app.ui.badges.UnlockBottomSheet
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.MossCreme
 import se.birdy.app.ui.theme.SandCreme
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.TextOnHero
+import se.birdy.content.Locale
 
 @Composable
 fun ClassificationResultScreen(
     viewModel: ClassificationResultViewModel,
     onSpeciesClick: (speciesId: String) -> Unit,
+    locale: Locale,
+    zone: TimeZone,
 ) {
     val state by viewModel.state.collectAsState()
     Box(modifier = Modifier.fillMaxSize().background(MossCreme)) {
@@ -77,7 +83,14 @@ fun ClassificationResultScreen(
                 Text(msg, modifier = Modifier.align(Alignment.Center), color = TextOnCreme)
             }
             is ClassificationResultUiState.Loaded ->
-                LoadedView(s, onSpeciesClick = onSpeciesClick, onSave = { viewModel.saveToDiary() })
+                LoadedView(
+                    state = s,
+                    onSpeciesClick = onSpeciesClick,
+                    onSave = { viewModel.saveToDiary() },
+                    locale = locale,
+                    zone = zone,
+                    onDismissUnlock = { viewModel.dismissUnlock() },
+                )
         }
     }
 }
@@ -87,6 +100,9 @@ private fun LoadedView(
     state: ClassificationResultUiState.Loaded,
     onSpeciesClick: (String) -> Unit,
     onSave: () -> Unit,
+    locale: Locale,
+    zone: TimeZone,
+    onDismissUnlock: () -> Unit,
 ) {
     val snackbarHost = remember { SnackbarHostState() }
     val successLabel = stringResource(Res.string.diary_save_success)
@@ -169,7 +185,7 @@ private fun LoadedView(
             val isSaving = state.saveStatus == ClassificationResultUiState.SaveStatus.Saving
             Button(
                 onClick = { onSave() },
-                enabled = !isSaving && !isSaved,
+                enabled = !isSaving && !isSaved && state.unlockQueueSize == 0,
                 colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = TextOnHero),
                 modifier = Modifier.fillMaxWidth(),
             ) {
@@ -192,6 +208,20 @@ private fun LoadedView(
             hostState = snackbarHost,
             modifier = Modifier.align(Alignment.BottomCenter),
         )
+        val pendingBadge = state.pendingBadge
+        val pendingUnlock = state.pendingUnlock
+        if (pendingBadge != null && pendingUnlock != null) {
+            UnlockBottomSheet(
+                badge = pendingBadge,
+                unlockedAt = pendingUnlock.unlockedAt,
+                isCelebration = true,
+                locale = locale,
+                zone = zone,
+                nameRes = BadgeStringMap.nameFor(pendingBadge.id),
+                descriptionRes = BadgeStringMap.descriptionFor(pendingBadge.id),
+                onDismiss = onDismissUnlock,
+            )
+        }
     }
 }
 
