@@ -1,0 +1,109 @@
+id: Q189193
+scientific_name: Pinguinus impennis
+taxonomy:
+  family: Alcidae
+  family_sv: Alkor
+  genus: Pinguinus
+  ioc_order: Charadriiformes
+names:
+  sv: Garfågel
+  en: Great Auk
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Garfågel
+
+
+    Garfågeln var en flightlös havsfågel som tillhörde familjen alkor och levde i
+    norra Atlanten. Den var utmärkt på dykningar och var helt anpassad för liv på
+    havet. Arten utrotades under 1800-talet genom intensiv jakt – människor döda den
+    för kött, dun, skinn och fett. Även insamling av ägg försvagade bestånden kraftigt.
+    De två sista säkert dokumenterade exemplaren dödades den 3 juli 1844 vid ön Eldey
+    utanför Islands kust, även om några opåverkade observationer rapporterades några
+    år senare.
+
+
+    Garfågeln är nu utdöd, men dess utseende och biologi är känd från museiexemplar
+    som finns bevarade på flera institutioner runt om i världen.'
+  en: '# The Great Auk
+
+
+    The great auk was a large, flightless alcid that inhabited the Northern Hemisphere
+    until its extinction in the mid-19th century. It was the sole modern member of
+    its genus, Pinguinus, and despite sharing the name "penguin" with Southern Hemisphere
+    birds, it was not closely related to them—rather, those penguins were named after
+    it. The species first appeared around 400,000 years ago, surviving for hundreds
+    of millennia before its relatively recent disappearance.
+
+
+    Today, the great auk exists only in museum specimens and historical records, serving
+    as a poignant reminder of human impact on wildlife. Its extinction marks the loss
+    of a unique alcid that had evolved in the Northern Hemisphere''s cold waters,
+    distinct from both its modern alcid relatives and the unrelated penguins of the
+    south.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."'
+  en: 'Migration data unavailable for this species.
+
+
+    The Great Auk (*Pinguinus impennis*) is an extinct species, having disappeared
+    in the mid-19th century, so contemporary migration patterns cannot be documented.
+    As a flightless alcid that inhabited northern Atlantic waters, historical records
+    suggest it was present year-round in northern European waters, including Scandinavian
+    regions, but detailed seasonal movement data are not available from reliable sources.'
+image_refs:
+- role: hero
+  path: Q189193/hero.jpg
+  width: 1601
+  height: 2400
+  license: CC BY-SA 4.0
+  author: Emőke Dénes
+  source_url: https://commons.wikimedia.org/wiki/File:Ma - Pinguinus impennis - 2.jpg
+  commons_filename: Ma - Pinguinus impennis - 2.jpg
+- role: secondary
+  path: Q189193/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Kyu3a" title="User:Kyu3a">Kyu3a</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pinguinus impennis model in
+    Bird Exhibition - 1.jpg
+  commons_filename: Pinguinus impennis model in Bird Exhibition - 1.jpg
+- role: secondary
+  path: Q189193/secondary-2.jpg
+  width: 1350
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Kyu3a" title="User:Kyu3a">Kyu3a</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pinguinus impennis model in
+    Bird Exhibition - 2.jpg
+  commons_filename: Pinguinus impennis model in Bird Exhibition - 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:17:00.269186+00:00'
+sources:
+  wikipedia_sv_revision: '58903295'
+  wikipedia_en_revision: '1352567391'
+  claude_model: claude-haiku-4-5-20251001

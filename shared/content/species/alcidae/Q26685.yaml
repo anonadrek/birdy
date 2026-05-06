@@ -1,0 +1,142 @@
+id: Q26685
+scientific_name: Fratercula arctica
+taxonomy:
+  family: Alcidae
+  family_sv: Alkor
+  genus: Puffin
+  ioc_order: Charadriiformes
+names:
+  sv: Lunnefågel
+  en: Atlantic Puffin
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Lunnefågel
+
+
+    Lunnefågeln är en liten alkfågel med distinkt utseende. Den har svart rygg och
+    vita undersidor, medan ansiktet är vitt med en karakteristisk svart mask runt
+    ögonen. Näbben är tjock, kraftig och färgad i orange, gult och svart, vilket gör
+    den lätt att känna igen. Under häckningstiden är dessa färger särskilt intensiva.
+
+
+    Arten lever huvudsakligen till havs och dykfiskar efter små fiskar som siklöja
+    och tobis. Det är en skicklig simmare och dykare som spenderar stora delar av
+    året ute på öppna hav. Under häckningstiden samlas lunnefåglarna i stora kolonier
+    på klippiga öar där de gräver sina bon i jordgångar eller använder bergssprickor.
+
+
+    Lunnefågeln hörs sällan, men kan ge ifrån sig dystra, låga ljud när den är på
+    land. Arten kännetecknas av sitt gregariösa beteende både till sjöss och under
+    häckningstiden. Tyvärr minskar populationerna kraftigt på grund av rovdjur från
+    invasiva arter, miljöförstöring och bristande födotillgång. Arten klassificeras
+    som sårbar enligt internationella naturvårdsunionen.'
+  en: '# Atlantic Puffin
+
+
+    The Atlantic puffin is a distinctive seabird in the auk family and the only puffin
+    species native to the Atlantic Ocean. It has the characteristic upright stance
+    typical of auks when on land. At sea, it swims on the surface and is an agile
+    underwater hunter, using its wings for propulsion while diving to catch small
+    fish, crabs, and zooplankton.
+
+
+    This species breeds across a wide range of northern Atlantic locations, from Russia
+    and Greenland to Iceland, Britain, Ireland, Norway, and parts of North America.
+    It is particularly abundant in certain breeding colonies. Although the Atlantic
+    puffin maintains a large overall population, it has experienced rapid declines
+    in parts of its range, leading to its classification as vulnerable by the IUCN.
+
+
+    Seeing Atlantic puffins in their natural habitat requires visiting their coastal
+    breeding grounds during the breeding season, where they gather in large numbers
+    on rocky islands and cliffs. At sea outside the breeding season, they can be spotted
+    during boat trips in Atlantic waters.'
+migration:
+  sv: '# Lunnefågel (Fratercula arctica) – Förekomst i Skandinavien
+
+
+    Lunnefågeln är en migratorisk art som tidigare häckade i Sverige, men betraktas
+    idag som utdöd i svenskt territorium sedan 1970-talet. Arten häckar huvudsakligen
+    i Nordatlanten på både europeiska och nordamerikanska kusten, med större bestånd
+    på Island, Färöarna och Norge. Under vintermånaderna drar lunnefåglarna ut till
+    havs för att övervintrera i Atlanten. Idag ses arten endast sporadiskt som en
+    tillfällig gäst under migration i Skandinaviens kustnära områden, främst under
+    höst och vår. Populationen minskar kraftigt globalt på grund av predation från
+    invasiva arter, miljöförstöring och brist på föda.'
+  en: '# Atlantic Puffin Migration in Scandinavia/Northern Europe
+
+
+    The Atlantic puffin is a migratory seabird that breeds throughout Scandinavia
+    and the North Atlantic during spring and summer months. Breeding colonies are
+    established in Norway, Iceland, and the Faroe Islands, where birds arrive in spring
+    to nest in burrows on coastal cliffs and islands. During the breeding season,
+    puffins feed on small fish and zooplankton in surrounding waters.
+
+
+    In autumn, Atlantic puffins migrate southward and westward, spending the winter
+    months at sea in the Atlantic Ocean. They return to their breeding grounds in
+    spring, typically from April onwards, to begin the breeding cycle anew. Outside
+    the breeding season, puffins are entirely pelagic, rarely coming ashore. Population
+    numbers have shown significant decline in recent decades across parts of their
+    range, though they remain relatively abundant in Iceland and the Faroe Islands.'
+image_refs:
+- role: hero
+  path: Q26685/hero.jpg
+  width: 2400
+  height: 1597
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jakubhal" title="User:Jakubhal">Jakub
+    Hałun</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fratercula arctica, Borgarfjörður
+    eystri, Iceland, 20240717 1210 1991.jpg
+  commons_filename: Fratercula arctica, Borgarfjörður eystri, Iceland, 20240717 1210
+    1991.jpg
+- role: secondary
+  path: Q26685/secondary-1.jpg
+  width: 1800
+  height: 1198
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jakubhal" title="User:Jakubhal">Jakub
+    Hałun</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fratercula arctica, Borgarfjörður
+    eystri, Iceland, 20240717 1025 1430.jpg
+  commons_filename: Fratercula arctica, Borgarfjörður eystri, Iceland, 20240717 1025
+    1430.jpg
+- role: secondary
+  path: Q26685/secondary-2.jpg
+  width: 1800
+  height: 1198
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jakubhal" title="User:Jakubhal">Jakub
+    Hałun</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fratercula arctica, Borgarfjörður
+    eystri, Iceland, 20240717 0939 1342.jpg
+  commons_filename: Fratercula arctica, Borgarfjörður eystri, Iceland, 20240717 0939
+    1342.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:18:26.821860+00:00'
+sources:
+  wikipedia_sv_revision: '59180328'
+  wikipedia_en_revision: '1335885239'
+  claude_model: claude-haiku-4-5-20251001

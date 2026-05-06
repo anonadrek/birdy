@@ -1,0 +1,132 @@
+id: Q26470
+scientific_name: Alle alle
+taxonomy:
+  family: Alcidae
+  family_sv: Alkor
+  genus: Alle
+  ioc_order: Charadriiformes
+names:
+  sv: Alkekung
+  en: Little Auk
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Alkekung
+
+
+    Alkekung är en liten sjöfågel från alkfamiljen och är den minsta arten i denna
+    grupp. Den är bara omkring 20 centimeter lång med en kompakt kropp, svart ovansida
+    och vit undersida. Under häckningstiden får den karakteristiska vita fläckar på
+    huvudet. Den har en kort, spetsig näbb och små vingar som det slår mycket snabbt
+    med.
+
+
+    Arten häckar i de nordligaste delarna av den holarktiska regionen, framför allt
+    runt Arktis. Under vintern ses alkekungen regelbundet utefter Sveriges västkust,
+    där den söker föda i de kallare havsområdena. Den är en skicklig dykare som jagar
+    små fiskar och kräftdjur under vattnet. På land är den mindre van och rör sig
+    ofta på ett klumpigt sätt.
+
+
+    Alkekungen är en tystlåten fågel, men under häckningstiden kan man höra olika
+    ljud från kolonierna. För den intresserade fågelskådaren är arten en trevlig vinterbesökare
+    längs kusten, särskilt när större skaror drivs in mot land under hårt väder.'
+  en: '# Little Auk
+
+
+    The little auk is the smallest member of the auk family, a seabird perfectly adapted
+    to life in extreme Arctic conditions. It breeds in vast colonies on high Arctic
+    islands during the breeding season, with populations dispersed across the far
+    north. Two subspecies are recognized, occupying different breeding regions across
+    the Arctic. The species is noticeably tiny compared to other auks, making it distinctive
+    among its relatives.
+
+
+    During winter, little auks undertake significant movements, dispersing widely
+    across Arctic and North Atlantic waters. They concentrate in large numbers near
+    pack ice edges where food is abundant, though some populations venture south into
+    more temperate waters, occasionally appearing off northern coastal regions. This
+    seasonal migration reflects their dependence on specific oceanographic conditions
+    and food availability.
+
+
+    The little auk''s adaptability to harsh Arctic environments and its massive breeding
+    colonies make it ecologically significant in polar regions. However, specific
+    details about its appearance, vocalizations, and detailed behavioral characteristics
+    would benefit from additional field observations or specialized ornithological
+    sources beyond the current information provided.'
+migration:
+  sv: Alkekungen är en arktisk art som förekommer i Skandinavien främst under vintermånaderna.
+    Arten häckar i nordligaste delen av den holarktiska regionen, långt norr om Skandinavien,
+    och migrerar söderut på hösten. Under höst och vinter ses alkekungen regelbundet
+    längs Sveriges västkust, där den uppehåller sig på öppet hav. Arten är därför
+    en karakteristisk vintergäst i nordiska vatten, särskilt under hårda vintrar då
+    större antal kan sköljas in till kusten. På våren återvänder fåglarna till sina
+    arktiska häckningsområden.
+  en: '# Little Auk in Scandinavia/Northern Europe
+
+
+    The Little Auk breeds in vast colonies throughout the high Arctic, with the subspecies
+    *A. a. alle* occurring in Greenland, Svalbard, and Novaya Zemlya—regions accessible
+    to Scandinavian observers. During winter, these birds disperse across the Arctic
+    and North Atlantic, with populations moving southward from their breeding grounds.
+    In Northern European waters, Little Auks are recorded wintering off the coasts
+    of Scandinavia and northern Great Britain, typically concentrating near the pack
+    ice edge. While some individuals reach southern Scandinavia and British waters,
+    the species is primarily a winter visitor to northern coastal regions rather than
+    a year-round resident.'
+image_refs:
+- role: hero
+  path: Q26470/hero.jpg
+  width: 1697
+  height: 2400
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/w/index.php?title=Gottfried_Feder&amp;action=edit&amp;redlink=1"
+    class="new" title="Gottfried Feder (page does not exist)">Gottfried Feder</a>
+  source_url: https://commons.wikimedia.org/wiki/File:An Alle, Alle! Heft 1, 1919.jpg
+  commons_filename: An Alle, Alle! Heft 1, 1919.jpg
+- role: secondary
+  path: Q26470/secondary-1.jpg
+  width: 963
+  height: 1800
+  license: Public domain
+  author: Jos. C. Huber
+  source_url: https://commons.wikimedia.org/wiki/File:An Alle, Alle! Heft 1, 1919
+    b 19.jpg
+  commons_filename: An Alle, Alle! Heft 1, 1919 b 19.jpg
+- role: secondary
+  path: Q26470/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: no rights reserved
+  source_url: https://commons.wikimedia.org/wiki/File:Little Auk (Alle alle) at Qagssissalik,
+    Greenland 18 July 2023 311710905.jpg
+  commons_filename: Little Auk (Alle alle) at Qagssissalik, Greenland 18 July 2023
+    311710905.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:17:22.807434+00:00'
+sources:
+  wikipedia_sv_revision: '59104239'
+  wikipedia_en_revision: '1332509728'
+  claude_model: claude-haiku-4-5-20251001

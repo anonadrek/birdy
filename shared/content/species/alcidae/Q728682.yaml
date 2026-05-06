@@ -1,0 +1,129 @@
+id: Q728682
+scientific_name: Uria lomvia
+taxonomy:
+  family: Alcidae
+  family_sv: Alkor
+  genus: Uria
+  ioc_order: Charadriiformes
+names:
+  sv: Spetsbergsgrissla
+  en: Thick-billed Murre
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Spetsbergsgrissla
+
+
+    Spetsbergsgrissla är en alcid som är nära släktad med sillgrisslan, men skiljer
+    sig genom att häcka betydligt längre norrut. Det är en sällsynt fågel söder om
+    sitt nordliga utbredningsområde. I Sverige har den noterats endast vid ett femtiotal
+    tillfällen, vilket gör varje observation värdefull för fågelintresserade.
+
+
+    Arten förekommer främst i höga nordliga breddgrader där det är lämpligt för häckning.
+    Observationer av spetsbergsgrissla utanför sitt normala område är mycket ovanliga
+    och ofta resultatet av väderomslag eller andra förhållanden som driver fågeln
+    söderut från sitt hemland.'
+  en: '# Thick-billed Murre
+
+
+    The thick-billed murre is a member of the auk family, a group of diving seabirds
+    adapted to cold oceanic environments. This species is distinguished by its stocky
+    build and robust, pointed bill—features that give it its common name. It shares
+    similarities with related auks but can be identified by its particularly heavy
+    bill structure.
+
+
+    Like other alcids, the thick-billed murre is a proficient diver, pursuing small
+    fish underwater with remarkable agility. It spends much of its time at sea, coming
+    ashore primarily during breeding season when it gathers in large colonies on rocky
+    cliffs and islands. During winter, it disperses across northern ocean waters.
+
+
+    The species exhibits regional variation, with populations differing in plumage
+    intensity. The North Pacific subspecies is notably darker, with very deep black
+    coloration. As a seabird, it is most commonly encountered during pelagic surveys
+    or observed from coastal vantage points where breeding colonies congregate during
+    the breeding season.'
+migration:
+  sv: '# Spetsbergsgrissla i Skandinavien och Nordeuropa
+
+
+    Spetsbergsgrissla är en arktisk art som är bosatt i nordliga regioner året om.
+    Den häckar i högnordiska områden, primärt på Spetsbergen och andra arktiska lokaler,
+    och utgör en vanlig häckfågel i dessa områden. Under vintern stannar många populationer
+    i eller närliggande de arktiska häckningsplatserna, där den söker föda på öppet
+    hav. I Skandinavien och övriga Nordeuropa ses arten mycket sällan, och förekommer
+    endast sporadiskt söder om sitt huvudsakliga utbredningsområde. I Sverige har
+    arten dokumenterats endast omkring 50 gånger, vilket gör den till en ytterst sällsynt
+    gäst för regionen. Denna begränsade förekomst söder om de arktiska häckningsområdena
+    beror på artens starkt nordliga habitat-preferenser.'
+  en: '# Thick-billed Murre (Uria lomvia) in Northern Europe
+
+
+    The thick-billed murre is a year-round resident in Scandinavian and Northern European
+    waters, particularly around Spitsbergen and other Arctic regions. This alcid species
+    breeds during summer months on coastal cliffs and rocky islands, where colonies
+    establish from May through August. Outside the breeding season, thick-billed murres
+    remain largely within northern waters, undertaking modest southward movements
+    during winter months as ice coverage increases. Some populations disperse to slightly
+    more southern latitudes along Norwegian coasts, but most individuals remain at
+    high northern latitudes throughout the year rather than undertaking extensive
+    long-distance migration typical of many seabird species.'
+image_refs:
+- role: hero
+  path: Q728682/hero.jpg
+  width: 2400
+  height: 1714
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Thick-billed Murre (Uria lomvia)
+    (13668126124).jpg
+  commons_filename: Thick-billed Murre (Uria lomvia) (13668126124).jpg
+- role: secondary
+  path: Q728682/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Thick-billed Murre (Uria lomvia)
+    (13667798953).jpg
+  commons_filename: Thick-billed Murre (Uria lomvia) (13667798953).jpg
+- role: secondary
+  path: Q728682/secondary-2.jpg
+  width: 1800
+  height: 1184
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Jerzystrzelecki:Jerzy_Strzelecki&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Jerzystrzelecki:Jerzy Strzelecki (page does not exist)">User:Jerzystrzelecki:Jerzy
+    Strzelecki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Uria lomvia 03(js), Hornsund.jpg
+  commons_filename: Uria lomvia 03(js), Hornsund.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:17:14.719172+00:00'
+sources:
+  wikipedia_sv_revision: '56065100'
+  wikipedia_en_revision: '1325656237'
+  claude_model: claude-haiku-4-5-20251001

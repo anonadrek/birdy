@@ -1,0 +1,123 @@
+id: Q21062
+scientific_name: Uria aalge
+taxonomy:
+  family: Alcidae
+  family_sv: Alkor
+  genus: Uria
+  ioc_order: Charadriiformes
+names:
+  sv: Sillgrissla
+  en: Common Murre
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sillgrissla
+
+
+    Sillgrissla är en medelstor havsfågel från familjen alkor med distinkt färgteckning.
+    Båda könen är svarta eller mörkbruna på ryggen, huvudet och överside av vingarna,
+    vilket skapar en markant kontrast mot den vita buken. Denna färgmönstring gör
+    arten lätt igenkännlig på havet.
+
+
+    Arten är en kolonihäckare som förekommer utmed kusterna i de norra delarna av
+    Holarktis. Det är en återkommande fågel på många kustlokaler inom sitt utbredningsområde,
+    där den ses ofta på öppet vatten nära häckningsöarna. Sillgrissla är välanpassad
+    för ett maritimt liv och tillbringar mycket tid på sjön där den söker föda.'
+  en: '# Common Murre
+
+
+    The common murre is a large, stocky auk with a distinctive appearance suited to
+    its marine lifestyle. It displays dark upperparts contrasting sharply with a white
+    breast and underparts, and possesses a slender, pointed bill designed for catching
+    fish underwater. During breeding season, some populations develop a white eye-ring
+    and ear stripe, adding subtle elegance to its otherwise austere plumage.
+
+
+    A truly oceanic bird, the common murre spends the majority of its year at sea
+    in northern waters across both the Atlantic and Pacific. It is an excellent diver,
+    pursuing small fish with remarkable agility beneath the waves. The species only
+    comes ashore during the breeding season, gathering in enormous colonies on rocky
+    cliff faces and islands. It nests directly on narrow ledges without constructing
+    a nest, relying on a remarkable egg shape that prevents it from rolling off precarious
+    perches.
+
+
+    The common murre is highly vocal at breeding colonies, producing various calls
+    including growls and trumpeting sounds that echo across the cliffs. Outside the
+    breeding season, it remains largely silent at sea. Its circumpolar distribution
+    in low-Arctic and boreal waters makes it a familiar sight to observers in coastal
+    regions of northern latitudes.'
+migration:
+  sv: Sillgrissla är en övervintrande art i nordeuropeiska vatten. Arten häckar vid
+    kusterna under sommaren och är tillsammans med andra alkfåglar bunden till marint
+    habitat året runt. Under hösten och vintern sprider sig populationen ut mot öppna
+    havsområden där de tillbringar tiden på vattnet. Individer från de nordliga häckningsområdena
+    kan vandra längre söderut under de kallaste månaderna, men många stannar året
+    om i närheten av sina häckningsrevir. Huvuddelen av året är arten således närvarande
+    i skandinaviska farvatten och omgivande nordeuropeiska havsområden.
+  en: '# Common Murre (Uria aalge) in Northern Europe
+
+
+    The Common Murre is a year-round resident in Scandinavian and Northern European
+    waters, with populations showing limited migration patterns. Birds breeding in
+    northern regions typically move southward during winter to ice-free waters, particularly
+    along the Norwegian coast, North Sea, and around the British Isles. Some populations
+    remain relatively sedentary if open water persists throughout the year. Breeding
+    birds return to their cliff colonies from March onwards, with egg-laying occurring
+    in April-May. Outside the breeding season (August-February), murres disperse widely
+    at sea, moving to deeper offshore waters where they remain until spring calling
+    draws them back to traditional breeding sites.'
+image_refs:
+- role: hero
+  path: Q21062/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common guillemot (Uria aalge).jpg
+  commons_filename: Common guillemot (Uria aalge).jpg
+- role: secondary
+  path: Q21062/secondary-1.jpg
+  width: 1800
+  height: 1197
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common guillemot (Uria aalge),
+    Heligoland.jpg
+  commons_filename: Common guillemot (Uria aalge), Heligoland.jpg
+- role: secondary
+  path: Q21062/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common murre (Uria aalge) 2021.jpg
+  commons_filename: Common murre (Uria aalge) 2021.jpg
+review_status: approved
+review_notes: 'auto-pick OK (Uria aalge, klar identifierbar)'
+generated_at: '2026-05-06T14:17:32.521057+00:00'
+sources:
+  wikipedia_sv_revision: '59050576'
+  wikipedia_en_revision: '1349854683'
+  claude_model: claude-haiku-4-5-20251001

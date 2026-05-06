@@ -14,6 +14,7 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-06 | anatidae | +52 (totalt 149) | `1a99a63` |
 | 2026-05-06 | aegithalidae | +1 (totalt 150) | `acb3249` |
 | 2026-05-06 | alcedinidae | +6 (totalt 156) | `e193080` |
+| 2026-05-06 | alcidae | +7 (totalt 163) | `<pending>` |
 | | _next: alle Q-IDs sorted alphabetically — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
@@ -33,6 +34,13 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Validator-threshold (80w) > sparse-threshold (20w):** Q1590574 fick sv=72w (Claude körde, men under 80w-gränsen). Lägg `sv` i `description_accept_missing` även när text faktiskt finns men är för kort. Validatorn rapporterar `description-too-short` om missat.
 - **`allow_missing_images: true` per art** finns redan som override (`ValidateMain.kt:15`). Använd när Commons saknar foto över `MIN_DIMENSION=2048`. Q891376 basrasångare hade bara 1071×905 → satt allow_missing_images. Bättre än att sänka MIN_DIMENSION globalt.
 - Q27674 härmsångare hade bara 1 image_ref (hero, ingen secondary). Validatorn accepterar — minimum är 1 hero. Inte allt är problem.
+
+**Alcidae-batch lärdomar (2026-05-06):**
+
+- 3/7 abundance:allmän approved (Q212055 tobisgrissla, Q27102 tordmule, Q21062 sillgrissla — alla häckar längs SE/Östersjökusten). Övriga 4: Q26685 lunnefågel (västkust-rar), Q26470 alkekung (arktisk), Q728682 spetsbergsgrissla (arktisk), Q189193 garfågel (utdöd 1844 — inte pipeline-fixat, default `ovanlig` räcker).
+- **0% sparse-overrides** — alla 7 alcidae har full svwiki + enwiki, inga `description_accept_missing` behövdes. Trots att 4 är arktiska/utdöda har de god wiki-coverage (kulturellt välkända fåglar). Förväntad mönster för "ikoniska" arter.
+- **Wikidata SPARQL transient 502 igen:** Q26685 + Q212055 fick `502 Bad Gateway` på första körningen. Retry separat löste båda. Mönstret upprepar sig: vid familj-fetch med flera 502:or, retry den failade SET som en grupp. **Pipeline-förbättring kandidat (icke-blockerande):** retry-with-backoff i `WikidataClient.fetch_taxon` skulle eliminera manuell retry. Inte kritiskt — lärdomen är att 502:or är transient och retry alltid funkar.
+- **Gradle UP-TO-DATE-bug observerad:** efter ny alcidae-data var `buildSpeciesDb` UP-TO-DATE trots att YAML-filer var nya. Workaround: `./gradlew :shared:content:buildSpeciesDb --rerun-tasks`. Roten: input-fingerprintet på buildSpeciesDb fångar inte upp nya filer i `shared/content/species/<family>/` korrekt — sannolikt en `@InputDirectory` som inte rekursiverar, eller `@SkipWhenEmpty` på fel nivå. **Icke-blockerande för Plan 2b** (workaround funkar), men **bör fixas före Plan 6 (Play Store-release)** eftersom CI-builds skulle få samma symtom.
 
 **Alcedinidae-batch lärdomar (2026-05-06):**
 

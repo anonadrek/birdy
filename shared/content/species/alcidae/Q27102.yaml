@@ -1,0 +1,129 @@
+id: Q27102
+scientific_name: Alca torda
+taxonomy:
+  family: Alcidae
+  family_sv: Alkor
+  genus: Alca
+  ioc_order: Charadriiformes
+names:
+  sv: Tordmule
+  en: Razorbill
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tordmule
+
+
+    Tordmule är en fågel i alkorfamiljen och den enda levande arten i sitt släkte.
+    Den är anpassad för livet till havs och förekommer längs norra Atlantens kuster,
+    från nordöstra Nordamerika i väster till Vita havet i öster. Arten hittas även
+    vid Island, Storbritannien och Frankrikes kuster.
+
+
+    Tordmulen tillhör de alkorfåglar som är utmärkta dykare och simmare. Den är en
+    havsspecialist som ofta ses på öppet vatten eller i större flockar. För den som
+    vill se denna intressanta fågel krävs vanligtvis en båttur eller observation från
+    kusten under de årstider då arten är närvarande i sitt utbredningsområde.'
+  en: '# Razorbill
+
+
+    The razorbill is a striking black-and-white seabird belonging to the auk family,
+    and the sole surviving member of its genus. It is the closest living relative
+    of the extinct great auk. This North Atlantic specialist is highly adapted for
+    life at sea, spending much of the year far from land.
+
+
+    Razorbills are distinguished by their characteristic compressed, blade-like black
+    bill with a distinctive white line running along it—a feature that gives the species
+    its name. The plumage is predominantly black above with a white belly and distinctive
+    white facial patches that vary seasonally. It is a compact, sturdy bird built
+    for diving, with relatively short wings and legs positioned far back on the body,
+    making it an excellent swimmer but ungainly on land.
+
+
+    These birds are highly colonial, gathering at sea cliffs and rocky coastlines
+    to breed during the breeding season. They are accomplished divers, pursuing small
+    fish and other prey underwater with agility. The razorbill''s call is a low, growling
+    vocalization heard mainly at breeding colonies. Outside the breeding season, they
+    disperse widely across northern Atlantic waters, often seen in pairs or small
+    groups. Despite historical declines, razorbill populations have shown recovery
+    in recent decades across much of their range.'
+migration:
+  sv: '# Tordmule – Utbredning och flyttning i Norden
+
+
+    Tordmule är en nordatlantisk havsfågel som förekommer längs Skandinaviens och
+    Norges kuster. Under häckningstiden finns arten vid steniga öar och klippor från
+    Island och Storbritannien österut. I norra delen av sitt utbredningsområde, inklusive
+    norskt och svenskt kustland, är tordmulen huvudsakligen en säsongsfågel som återvänder
+    till häckningsplatserna under våren. Efter häckningen drar många fåglar ut till
+    havet där de övervintrar i öppna oceaniska områden väster om Europa. Under vintermånaderna
+    kan mindre antal individer påträffas längs skandinavisk kust, men arten är framför
+    allt en sommargäst i inlandet och på norra breddgrader.'
+  en: '# Razorbill (Alca torda) in Northern Europe
+
+
+    The razorbill is a year-round North Atlantic seabird with populations breeding
+    throughout Scandinavian and northern European coastal regions during summer months.
+    These auks are primarily migratory, with breeding birds departing their cliff
+    colonies in autumn to winter in offshore Atlantic waters. Most Scandinavian razorbills
+    return to breeding sites between April and May, after spending winter months at
+    sea from October through March. During winter, they disperse southward into the
+    Atlantic, occasionally appearing in coastal waters further south. Some populations
+    remain relatively sedentary in ice-free northern waters, though severe winters
+    may force additional southward movement.'
+image_refs:
+- role: hero
+  path: Q27102/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: lwolfartist
+  source_url: https://commons.wikimedia.org/wiki/File:Alca torda DSC 5788.jpg
+  commons_filename: Alca torda DSC 5788.jpg
+- role: secondary
+  path: Q27102/secondary-1.jpg
+  width: 1800
+  height: 1178
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jerzystrzelecki" title="User:Jerzystrzelecki">Jerzy
+    Strzelecki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Skellig Michael - Alca torda
+    & Uria aalge 02.jpg
+  commons_filename: Skellig Michael - Alca torda & Uria aalge 02.jpg
+- role: secondary
+  path: Q27102/secondary-2.jpg
+  width: 1800
+  height: 1183
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jerzystrzelecki" title="User:Jerzystrzelecki">Jerzy
+    Strzelecki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Skellig Michael - Alca torda
+    & Uria aalge 01.jpg
+  commons_filename: Skellig Michael - Alca torda & Uria aalge 01.jpg
+review_status: approved
+review_notes: 'auto-pick OK (Alca torda i naturmiljö, klar identifierbar)'
+generated_at: '2026-05-06T14:17:41.114553+00:00'
+sources:
+  wikipedia_sv_revision: '56065070'
+  wikipedia_en_revision: '1352433743'
+  claude_model: claude-haiku-4-5-20251001

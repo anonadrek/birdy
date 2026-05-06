@@ -1,0 +1,131 @@
+id: Q212055
+scientific_name: Cepphus grylle
+taxonomy:
+  family: Alcidae
+  family_sv: Alkor
+  genus: Cepphus
+  ioc_order: Charadriiformes
+names:
+  sv: Tobisgrissla
+  en: Black Guillemot
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tobisgrissla
+
+
+    Tobisgrisslan är en liten alkfågel med karaktäristisk sommarplumage. Under häckningstiden
+    bär den en helsvart dräkt som kontrasteras vackert av vita vingfläckar och lysande
+    röda fötter. Denna färgkombination gör den lätt att identifiera när den syns på
+    vattnet eller vid klippor där den häckar.
+
+
+    Arten bebor stenskravel och klippiga områden nästan runt om i de nordligaste delarna
+    av världen. I Europa förekommer tobisgrisslan från nordligaste Nordamerika och
+    Asien ned till Irland och återfinns även i Östersjön. Den är således en typisk
+    art för kalla och subarktiska havsområden.
+
+
+    Globalt bedöms tobisgrisslan som livskraftig, och populationen verkar stabil.
+    Arten är väl anpassad till sitt liv vid kusten och bland klipporna där den söker
+    föda och häckar under sommarmånaderna.'
+  en: '# Black Guillemot
+
+
+    The black guillemot is a medium-sized diving seabird found throughout northern
+    Atlantic coasts and eastern North America. In breeding plumage, it displays striking
+    black and white coloring with distinctive white wing patches that are particularly
+    visible in flight. During winter, it becomes predominantly white with dark markings.
+    Its small size and compact build make it well-adapted for underwater pursuit of
+    food.
+
+
+    This alcid feeds primarily by diving to the sea floor in search of fish, crustaceans,
+    and benthic invertebrates. It typically occurs in small groups or pairs around
+    rocky shores, cliffs, and islands that serve as breeding habitat. The bird is
+    largely resident throughout much of its range, though populations from the high
+    Arctic migrate southward during winter months.
+
+
+    The black guillemot''s conservation status is listed as least concern on the IUCN
+    Red List, indicating stable population numbers. Its preference for rocky coastal
+    habitats makes it a characteristic species of northern maritime environments,
+    where observers may encounter it during both breeding and non-breeding seasons.'
+migration:
+  sv: '# Tobisgrissla i Skandinavien och Nordeuropa
+
+
+    Tobisgrisslan är en året omkring bofast art i många delar av Skandinavien och
+    Nordeuropa, särskilt längs kusterna och i Östersjön där den häckar. Under vintern
+    stannar populationerna i huvudsak kvar i sina häckningsområden eller förflyttar
+    sig endast kort sträcka, då de är anpassade för iskallt vatten. Arten är då svårare
+    att observera eftersom den tillbringar mycket tid till sjöss. På våren, i april-maj,
+    återkommer fåglarna till sina häckningsplatser bland klipporna för att börja fortplantningen.'
+  en: '# Cepphus grylle (Black Guillemot) in Northern Europe
+
+
+    The black guillemot is a resident seabird throughout much of Scandinavia and northern
+    European waters, remaining year-round in many coastal areas. However, populations
+    breeding in the high Arctic undertake significant southward migrations during
+    winter months, moving to more southerly waters with better feeding conditions.
+    Birds from the northernmost populations typically depart breeding areas in autumn
+    and return in spring, though the exact timing varies by region. Residents of more
+    moderate latitudes often remain in coastal waters throughout the winter, making
+    the species a characteristic year-round presence in Scandinavian rocky shore habitats.'
+image_refs:
+- role: hero
+  path: Q212055/hero.jpg
+  width: 2400
+  height: 1728
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/91677891@N07">Jacob  Spinks</a>
+    from England
+  source_url: https://commons.wikimedia.org/wiki/File:Cepphus grylle, Oban Harbour
+    1.jpg
+  commons_filename: Cepphus grylle, Oban Harbour 1.jpg
+- role: secondary
+  path: Q212055/secondary-1.jpg
+  width: 1800
+  height: 1299
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Black Guillemots Cepphus grylle
+    (24146121487).jpg
+  commons_filename: Black Guillemots Cepphus grylle (24146121487).jpg
+- role: secondary
+  path: Q212055/secondary-2.jpg
+  width: 1800
+  height: 1284
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Black Guillemots. Cepphus grylle
+    (38974131512).jpg
+  commons_filename: Black Guillemots. Cepphus grylle (38974131512).jpg
+review_status: approved
+review_notes: 'auto-pick OK (Cepphus grylle Oban Harbour, klar identifierbar)'
+generated_at: '2026-05-06T14:18:16.357724+00:00'
+sources:
+  wikipedia_sv_revision: '59258023'
+  wikipedia_en_revision: '1328883601'
+  claude_model: claude-haiku-4-5-20251001

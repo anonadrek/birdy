@@ -1314,12 +1314,14 @@
   ioc_order: Charadriiformes
   common_en: Black Guillemot
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q27102
   scientific_name: Alca torda
   family: Alcidae
   ioc_order: Charadriiformes
   common_en: Razorbill
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q189193
   scientific_name: Pinguinus impennis
   family: Alcidae
@@ -1344,6 +1346,7 @@
   ioc_order: Charadriiformes
   common_en: Common Murre
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q525717
   scientific_name: Anous stolidus
   family: Laridae
