@@ -44,6 +44,27 @@ class FakeObservationRepository : ObservationRepository {
         _rows.value = _rows.value.filter { it.id != id }
     }
 
+    fun seedObservation(
+        speciesId: String,
+        capturedAt: Instant,
+        id: String = "obs-${capturedAt.toEpochMilliseconds()}",
+    ) {
+        val obs =
+            Observation(
+                id = id,
+                speciesId = speciesId,
+                capturedAt = capturedAt,
+                savedAt = capturedAt,
+                photoPath = "/tmp/$id.jpg",
+                note = "",
+                confidence = 0.9f,
+                latitude = null,
+                longitude = null,
+                locationLabel = null,
+            )
+        _rows.value = _rows.value + obs
+    }
+
     companion object {
         /** Pre-populerad med 5 observationer över 2 månader för VM-tester. */
         fun withDefaults(): FakeObservationRepository {
