@@ -35,48 +35,31 @@ class RecalculateBadgesUseCase(
         rule: BadgeRule,
         observations: List<Observation>,
         speciesByQid: Map<SpeciesId, Species>,
-    ): Int {
-        val raw =
-            when (rule) {
-                is BadgeRule.CountUniqueSpecies -> observations.map { it.speciesId }.toSet().size
-                is BadgeRule.WeeklyStreak -> longestWeeklyStreak(observations.map { it.capturedAt }, zone)
-                is BadgeRule.MonthlyStreak -> longestMonthlyStreak(observations.map { it.capturedAt }, zone)
-                is BadgeRule.ObservedInSeason ->
-                    observations.count { seasonOf(it.capturedAt, zone) == rule.season }
-                is BadgeRule.ObservedInFamily ->
-                    observations.count { speciesByQid[SpeciesId(it.speciesId)]?.taxonomy?.family == rule.family }
-                is BadgeRule.ObservedWithAbundance ->
-                    observations.count {
-                        val s = speciesByQid[SpeciesId(it.speciesId)] ?: return@count false
-                        mapAbundance(s.abundance) == rule.abundance
-                    }
-            }
-        return raw.coerceAtMost(rule.target)
-    }
+    ): Int = rawValue(rule, observations, speciesByQid).coerceAtMost(rule.target)
 
     private fun evaluate(
         rule: BadgeRule,
         observations: List<Observation>,
         speciesByQid: Map<SpeciesId, Species>,
-    ): Boolean =
+    ): Boolean = rawValue(rule, observations, speciesByQid) >= rule.target
+
+    private fun rawValue(
+        rule: BadgeRule,
+        observations: List<Observation>,
+        speciesByQid: Map<SpeciesId, Species>,
+    ): Int =
         when (rule) {
-            is BadgeRule.CountUniqueSpecies ->
-                observations.map { it.speciesId }.toSet().size >= rule.target
-            is BadgeRule.WeeklyStreak ->
-                longestWeeklyStreak(observations.map { it.capturedAt }, zone) >= rule.target
-            is BadgeRule.MonthlyStreak ->
-                longestMonthlyStreak(observations.map { it.capturedAt }, zone) >= rule.target
+            is BadgeRule.CountUniqueSpecies -> observations.map { it.speciesId }.toSet().size
+            is BadgeRule.WeeklyStreak -> longestWeeklyStreak(observations.map { it.capturedAt }, zone)
+            is BadgeRule.MonthlyStreak -> longestMonthlyStreak(observations.map { it.capturedAt }, zone)
             is BadgeRule.ObservedInSeason ->
-                observations.count { seasonOf(it.capturedAt, zone) == rule.season } >= rule.target
+                observations.count { seasonOf(it.capturedAt, zone) == rule.season }
             is BadgeRule.ObservedInFamily ->
-                observations.count {
-                    speciesByQid[SpeciesId(it.speciesId)]?.taxonomy?.family == rule.family
-                } >= rule.target
+                observations.count { speciesByQid[SpeciesId(it.speciesId)]?.taxonomy?.family == rule.family }
             is BadgeRule.ObservedWithAbundance ->
                 observations.count {
-                    val s = speciesByQid[SpeciesId(it.speciesId)] ?: return@count false
-                    mapAbundance(s.abundance) == rule.abundance
-                } >= rule.target
+                    speciesByQid[SpeciesId(it.speciesId)]?.abundance?.let(::mapAbundance) == rule.abundance
+                }
         }
 
     private fun mapAbundance(content: ContentAbundance): BadgeAbundance =

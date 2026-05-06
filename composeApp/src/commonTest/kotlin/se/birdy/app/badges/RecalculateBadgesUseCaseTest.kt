@@ -14,6 +14,7 @@ import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeCategory
 import se.birdy.domain.badge.BadgeRule
 import se.birdy.domain.badge.BadgeSeason
+import se.birdy.domain.badge.BadgeUnlock
 import se.birdy.domain.observation.Observation
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -72,7 +73,7 @@ class RecalculateBadgesUseCaseTest {
                 obs("Q1", 2026, 5, 18),
             )
         val catalog = catalogOf(badge("ws3", BadgeRule.WeeklyStreak(3)))
-        assertEquals(listOf("ws3"), recalc.newUnlocks(obs, emptyMap(), catalog, emptySet()).map { it.badgeId })
+        assertEquals(listOf(BadgeUnlock("ws3", fixedNow)), recalc.newUnlocks(obs, emptyMap(), catalog, emptySet()))
     }
 
     @Test
