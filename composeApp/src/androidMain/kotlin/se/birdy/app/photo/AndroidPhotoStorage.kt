@@ -2,6 +2,7 @@ package se.birdy.app.photo
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -39,6 +40,7 @@ class AndroidPhotoStorage(
     override suspend fun delete(path: String) {
         withContext(Dispatchers.IO) {
             runCatching { File(path).delete() }
+                .onFailure { if (it is CancellationException) throw it }
         }
     }
 

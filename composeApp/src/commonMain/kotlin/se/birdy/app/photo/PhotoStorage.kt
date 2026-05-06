@@ -10,7 +10,7 @@ interface PhotoStorage {
      */
     suspend fun persistJpeg(bytes: ByteArray): String
 
-    /** Best-effort delete. Loggar tyst om filen inte finns eller delete failar. */
+    /** Best-effort delete. Sväljer fel tyst om filen inte finns eller delete failar. */
     suspend fun delete(path: String)
 }
 
