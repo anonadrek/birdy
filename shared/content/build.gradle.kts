@@ -95,6 +95,53 @@ tasks.named("check") {
     dependsOn(validateSpeciesData)
 }
 
+val badgesYamlFile =
+    project(":composeApp").file("src/commonMain/composeResources/files/badges.yaml")
+val badgeStringsSv =
+    project(":composeApp").file("src/commonMain/composeResources/values/strings.xml")
+val badgeStringsEn =
+    project(":composeApp").file("src/commonMain/composeResources/values-en/strings.xml")
+
+val validateBadgesYaml by tasks.registering(JavaExec::class) {
+    group = "verification"
+    description = "Validate badges.yaml structure and rule-type payloads."
+    dependsOn("jvmJar")
+    classpath =
+        files(tasks.named("jvmJar")) +
+        configurations.getByName("jvmRuntimeClasspath")
+    mainClass.set("se.birdy.content.build.ValidateBadgesYamlMain")
+    args = listOf(badgesYamlFile.absolutePath)
+    inputs.file(badgesYamlFile)
+    val yamlExists = badgesYamlFile.exists()
+    onlyIf("badges.yaml exists") { yamlExists }
+}
+
+val validateBadgeStrings by tasks.registering(JavaExec::class) {
+    group = "verification"
+    description = "Validate badge_name_*/badge_desc_* keys exist in sv+en strings.xml."
+    dependsOn("jvmJar")
+    classpath =
+        files(tasks.named("jvmJar")) +
+        configurations.getByName("jvmRuntimeClasspath")
+    mainClass.set("se.birdy.content.build.ValidateBadgeStringsMain")
+    args =
+        listOf(
+            badgesYamlFile.absolutePath,
+            badgeStringsSv.absolutePath,
+            badgeStringsEn.absolutePath,
+        )
+    inputs.file(badgesYamlFile)
+    inputs.file(badgeStringsSv)
+    inputs.file(badgeStringsEn)
+    val allExist = badgesYamlFile.exists() && badgeStringsSv.exists() && badgeStringsEn.exists()
+    onlyIf("badges.yaml + sv + en strings.xml exist") { allExist }
+}
+
+tasks.named("check") {
+    dependsOn(validateBadgesYaml)
+    dependsOn(validateBadgeStrings)
+}
+
 val composeAppFilesDir =
     project(":composeApp").file("src/commonMain/composeResources/files")
 val targetDb = composeAppFilesDir.resolve("species.db")

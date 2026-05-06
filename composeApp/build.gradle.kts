@@ -61,6 +61,8 @@ afterEvaluate {
         .matching { it.name.startsWith("assemble") || (it.name.startsWith("merge") && it.name.contains("Asset")) }
         .configureEach {
             dependsOn(":shared:content:buildSpeciesDb")
+            dependsOn(":shared:content:validateBadgesYaml")
+            dependsOn(":shared:content:validateBadgeStrings")
         }
 }
 
