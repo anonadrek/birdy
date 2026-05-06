@@ -44,6 +44,10 @@ class FakeObservationRepository : ObservationRepository {
         _rows.value = _rows.value.filter { it.id != id }
     }
 
+    fun seedDirect(obs: Observation) {
+        _rows.value = _rows.value + obs
+    }
+
     fun seedObservation(
         speciesId: String,
         capturedAt: Instant,
