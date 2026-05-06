@@ -166,4 +166,30 @@ class SpeciesRepositoryTest {
         assertTrue(all.any { it.id == SpeciesId("Q25485") }, "expected fixture species in empty-query result, got ${all.map { it.id }}")
         driver.close()
     }
+
+    @Test
+    fun `observeTotalCount returns species count`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithFixtures(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        val count = repo.observeTotalCount().first()
+        assertEquals(1, count)
+        driver.close()
+    }
+
+    @Test
+    fun `allByQid returns map keyed by SpeciesId with full species data`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithFixtures(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+        val map = repo.allByQid()
+        assertEquals(1, map.size)
+        val talgoxe = map[SpeciesId("Q25485")]
+        assertNotNull(talgoxe)
+        assertEquals("Talgoxe", talgoxe?.name)
+        assertNotNull(talgoxe?.taxonomy?.family)
+        driver.close()
+    }
 }

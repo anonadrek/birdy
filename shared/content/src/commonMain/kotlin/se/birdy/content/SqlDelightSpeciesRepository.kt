@@ -2,10 +2,12 @@ package se.birdy.content
 
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
+import app.cash.sqldelight.coroutines.mapToOne
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 import se.birdy.content.db.BirdyContent
 import se.birdy.content.model.Species
 import se.birdy.content.model.SpeciesImage
@@ -157,6 +159,69 @@ class SqlDelightSpeciesRepository(
         flow {
             val rows = db.speciesQueries.selectAll().executeAsList()
             emit(rows.mapNotNull { summaryFor(it.id, locale) })
+        }
+
+    override fun observeTotalCount(): Flow<Int> =
+        db.speciesQueries
+            .count()
+            .asFlow()
+            .mapToOne(Dispatchers.Default)
+            .map { it.toInt() }
+
+    override suspend fun allByQid(): Map<SpeciesId, Species> =
+        withContext(Dispatchers.Default) {
+            val rows = db.speciesQueries.selectAll().executeAsList()
+            rows
+                .mapNotNull { row ->
+                    val taxonomy =
+                        db.speciesTaxonomyQueries
+                            .selectBySpecies(row.id)
+                            .executeAsOneOrNull() ?: return@mapNotNull null
+                    val names = db.speciesNameQueries.selectBySpecies(row.id).executeAsList()
+                    val texts = db.speciesTextQueries.selectBySpecies(row.id).executeAsList()
+                    val regions = db.speciesRegionQueries.selectBySpecies(row.id).executeAsList()
+                    val seasons = db.speciesSeasonQueries.selectBySpecies(row.id).executeAsList()
+                    val images = db.speciesImageQueries.selectBySpecies(row.id).executeAsList()
+
+                    val name =
+                        names.firstOrNull { it.locale == Locale.SV.code }?.name
+                            ?: names.firstOrNull { it.locale == Locale.EN.code }?.name
+                            ?: row.scientific_name
+                    val description = pickText(texts, Locale.SV, "description")
+                    val migration = pickText(texts, Locale.SV, "migration")
+
+                    SpeciesId(row.id) to
+                        Species(
+                            id = SpeciesId(row.id),
+                            scientificName = row.scientific_name,
+                            taxonomy =
+                                SpeciesTaxonomy(
+                                    family = taxonomy.family,
+                                    familySv = taxonomy.family_sv,
+                                    genus = taxonomy.genus,
+                                    iocOrder = taxonomy.ioc_order,
+                                ),
+                            name = name,
+                            abundance = Abundance.fromCode(row.abundance) ?: Abundance.OVANLIG,
+                            iucnStatus = row.iucn_status,
+                            regions = regions,
+                            season = seasons.associate { it.month to it.status },
+                            description = description,
+                            migration = migration,
+                            images =
+                                images.map { img ->
+                                    SpeciesImage(
+                                        role = img.role,
+                                        path = img.path,
+                                        width = img.width.toInt(),
+                                        height = img.height.toInt(),
+                                        license = img.license,
+                                        author = img.author,
+                                        sourceUrl = img.source_url,
+                                    )
+                                },
+                        )
+                }.toMap()
         }
 
     private fun summaryFor(

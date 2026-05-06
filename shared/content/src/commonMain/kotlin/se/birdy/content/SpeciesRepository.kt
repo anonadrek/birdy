@@ -22,4 +22,13 @@ interface SpeciesRepository {
     ): Flow<List<SpeciesSummary>>
 
     fun all(locale: Locale): Flow<List<SpeciesSummary>>
+
+    /** Antal arter i katalogen (oberoende av locale). Används av Badges-fliken. */
+    fun observeTotalCount(): Flow<Int>
+
+    /**
+     * Engångs-snapshot av hela katalogen för rule-engine-evaluering.
+     * Locale påverkar inte resultaten — [Species.taxonomy] och [Species.abundance] är språkneutrala.
+     */
+    suspend fun allByQid(): Map<SpeciesId, Species>
 }
