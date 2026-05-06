@@ -15,7 +15,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-06 | aegithalidae | +1 (totalt 150) | `acb3249` |
 | 2026-05-06 | alcedinidae | +6 (totalt 156) | `e193080` |
 | 2026-05-06 | alcidae | +7 (totalt 163) | `d296bdd` |
-| | _next: alle Q-IDs sorted alphabetically — kolla species_list.yaml_ | | |
+| 2026-05-06 | anhingidae | +1 (totalt 164) | _(this batch)_ |
+| | _next: apodidae — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -49,6 +50,13 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Wikidata SPARQL transient 502:** Q735158 fick `502 Bad Gateway` på första försöket. Retry på enskild art löste det utan kod-ändring. Pipeline-mönster: vid familj-failure med transient-pekare, retry den failade arten separat innan man eskalerar.
 - **Inga pipeline-fixar behövdes.**
 - Cost: ~$0.011 / 6 arter (4 Claude calls första körningen + 2 retry för Q735158).
+
+**Anhingidae-batch lärdomar (2026-05-06):**
+
+- 0/1 abundance:allmän — Q387379 Afrikansk ormhalsfågel är en sällsynt afrikansk vagrant; default `ovanlig` är korrekt. Familjen har bara 1 art i species_list.
+- **100% sparse-overrides ([sv, en])** — svwiki saknas helt, enwiki-lead är för kort. Förväntat för afrikanska arter; mönstret matchar Q55111925 Rüppellgam (även afrikansk vagrant).
+- **Wikidata SPARQL transient 502 igen:** första försöket på Q387379 fick `502 Bad Gateway`. Retry löste det. Pattern: 502:or är genuint transient — retry alltid funkar utan kod-ändring.
+- **Single-species + båda-språk-gap-mönster:** snabbaste batch hittills (~2 min inkl 502-retry). Workflow: fetch → validator failar med båda språk → lägg `[sv, en]` i overrides → bumpa count + content-gaps → done.
 
 **Aegithalidae-batch lärdomar (2026-05-06):**
 

@@ -137,3 +137,6 @@ species:
     description_accept_missing: [sv]  # Corythornis cristatus (Malachite Kingfisher) — afrikansk, ingen svwiki
   Q735158:
     description_accept_missing: [sv]  # Halcyon smyrnensis (White-throated Kingfisher) — asiatisk, ingen svwiki
+  # Anhingidae batch (2026-05-06): African vagrant, sparse Wikipedia coverage in both languages.
+  Q387379:
+    description_accept_missing: [sv, en]  # Anhinga rufa (Afrikansk ormhalsfågel) — sv saknas, en lead too short

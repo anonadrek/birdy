@@ -1,0 +1,77 @@
+id: Q387379
+scientific_name: Anhinga rufa
+taxonomy:
+  family: Anhingidae
+  family_sv: Ormhalsfåglar
+  genus: Anhinga
+  ioc_order: Suliformes
+names:
+  sv: Afrikansk ormhalsfågel
+  en: African Darter
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q387379/hero.jpg
+  width: 1800
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Bj.schoenmakers" title="User:Bj.schoenmakers">Bj.schoenmakers</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anhinga rufa (African Darter
+    or snakebird), Burgers zoo, Arnhem, the Netherlands.JPG
+  commons_filename: Anhinga rufa (African Darter or snakebird), Burgers zoo, Arnhem,
+    the Netherlands.JPG
+- role: secondary
+  path: Q387379/secondary-1.jpg
+  width: 1800
+  height: 1062
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:African Darter, Anhinga rufa
+    at Marievale Nature Reserve, Gauteng, South Africa (20995427758).jpg
+  commons_filename: African Darter, Anhinga rufa at Marievale Nature Reserve, Gauteng,
+    South Africa (20995427758).jpg
+- role: secondary
+  path: Q387379/secondary-2.jpg
+  width: 1301
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:African Darter, Anhinga rufa
+    at Marievale Nature Reserve, Gauteng, South Africa (20995155630).jpg
+  commons_filename: African Darter, Anhinga rufa at Marievale Nature Reserve, Gauteng,
+    South Africa (20995155630).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:22:27.634502+00:00'
+sources:
+  wikipedia_sv_revision: '56594862'
+  wikipedia_en_revision: '1352193487'
+  claude_model: claude-haiku-4-5-20251001
