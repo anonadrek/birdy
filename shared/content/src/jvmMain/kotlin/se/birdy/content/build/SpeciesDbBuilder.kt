@@ -4,6 +4,7 @@ import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import se.birdy.content.db.BirdyContent
 import java.nio.file.Files
 import java.nio.file.Path
+import java.security.MessageDigest
 import kotlin.io.path.copyTo
 
 class SpeciesDbBuilder {
@@ -28,6 +29,7 @@ class SpeciesDbBuilder {
         }
 
         driver.execute(null, "PRAGMA user_version = ${BirdyContent.Schema.version}", 0)
+        driver.execute(null, "PRAGMA application_id = ${contentHash(items)}", 0)
         driver.execute(null, "VACUUM INTO '${targetDb.toAbsolutePath()}'", 0)
         driver.close()
 
@@ -97,5 +99,29 @@ class SpeciesDbBuilder {
                 commons_filename = img.commons_filename,
             )
         }
+    }
+
+    /**
+     * Stable content fingerprint stamped into the SQLite file header at byte
+     * 68-71 (PRAGMA application_id). The Android repository compares this 4-byte
+     * value between APK assets and the cached internal-storage copy on every
+     * launch, and re-copies the bundled DB when they differ. This is what makes
+     * new species data take effect on app upgrade without an app-data wipe.
+     *
+     * Hashed input: each species' id + generated_at, sorted by id. Sorting makes
+     * the hash insensitive to YAML file ordering; generated_at ensures any
+     * pipeline `refresh` of an existing species also flips the fingerprint.
+     */
+    private fun contentHash(items: List<Pair<Path, SpeciesYaml>>): Int {
+        val signature =
+            items
+                .map { (_, y) -> "${y.id}:${y.generated_at}" }
+                .sorted()
+                .joinToString("\n")
+        val digest = MessageDigest.getInstance("SHA-256").digest(signature.toByteArray())
+        return ((digest[0].toInt() and 0xFF) shl 24) or
+            ((digest[1].toInt() and 0xFF) shl 16) or
+            ((digest[2].toInt() and 0xFF) shl 8) or
+            (digest[3].toInt() and 0xFF)
     }
 }
