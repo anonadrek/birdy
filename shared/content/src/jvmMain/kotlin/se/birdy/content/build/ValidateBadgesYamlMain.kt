@@ -56,6 +56,10 @@ object ValidateBadgesYamlMain {
                     if (type !in validRuleTypes) {
                         errors += "$id: invalid rule type '$type' (allowed: $validRuleTypes)"
                     } else {
+                        val target = rule.scalarValue("target")?.toIntOrNull()
+                        if (target == null || target <= 0) {
+                            errors += "$id: missing or non-positive integer 'target' (got '${rule.scalarValue("target")}')"
+                        }
                         when (type) {
                             "observed_in_season" -> {
                                 val season = rule.scalarValue("season")
