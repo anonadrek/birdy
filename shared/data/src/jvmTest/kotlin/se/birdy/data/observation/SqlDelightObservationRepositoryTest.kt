@@ -1,8 +1,10 @@
 package se.birdy.data.observation
 
+import app.cash.sqldelight.db.SqlDriver
 import app.cash.turbine.test
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.Instant
+import org.junit.jupiter.api.AfterEach
 import se.birdy.data.DatabaseFactory
 import se.birdy.data.db.BirdyData
 import se.birdy.domain.observation.Observation
@@ -10,10 +12,19 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
-class ObservationRepositoryImplTest {
-    private fun newRepo(): ObservationRepositoryImpl {
+class SqlDelightObservationRepositoryTest {
+    private val drivers = mutableListOf<SqlDriver>()
+
+    private fun newRepo(): SqlDelightObservationRepository {
         val driver = DatabaseFactory().createDriver()
-        return ObservationRepositoryImpl(BirdyData(driver).observationQueries)
+        drivers += driver
+        return SqlDelightObservationRepository(BirdyData(driver).observationQueries)
+    }
+
+    @AfterEach
+    fun closeDrivers() {
+        drivers.forEach { it.close() }
+        drivers.clear()
     }
 
     private fun sample(

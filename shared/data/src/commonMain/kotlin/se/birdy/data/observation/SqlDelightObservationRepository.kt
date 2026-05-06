@@ -8,12 +8,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.Instant
-import se.birdy.data.db.Observation as ObservationRow
 import se.birdy.data.db.ObservationQueries
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationRepository
+import se.birdy.data.db.Observation as ObservationRow
 
-class ObservationRepositoryImpl(
+class SqlDelightObservationRepository(
     private val queries: ObservationQueries,
 ) : ObservationRepository {
     override fun observeAll(): Flow<List<Observation>> =
