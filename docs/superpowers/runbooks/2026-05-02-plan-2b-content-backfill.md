@@ -14,7 +14,7 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-06 | anatidae | +52 (totalt 149) | `1a99a63` |
 | 2026-05-06 | aegithalidae | +1 (totalt 150) | `acb3249` |
 | 2026-05-06 | alcedinidae | +6 (totalt 156) | `e193080` |
-| 2026-05-06 | alcidae | +7 (totalt 163) | `<pending>` |
+| 2026-05-06 | alcidae | +7 (totalt 163) | `d296bdd` |
 | | _next: alle Q-IDs sorted alphabetically — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.

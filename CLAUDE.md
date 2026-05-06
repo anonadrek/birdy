@@ -148,7 +148,7 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 | 2026-05-06 | anatidae | +52 | 149 | `1a99a63` |
 | 2026-05-06 | aegithalidae | +1 | 150 | `acb3249` |
 | 2026-05-06 | alcedinidae | +6 | 156 | `e193080` |
-| 2026-05-06 | alcidae | +7 | 163 | `<pending>` |
+| 2026-05-06 | alcidae | +7 | 163 | `d296bdd` |
 | _(next)_ | anhingidae | | | |
 
 **Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör nästa familj". Pure-data — kan köras parallellt med Plan 5+.
