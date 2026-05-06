@@ -104,6 +104,7 @@
     <string name="diary_relative_today">Today, %1$s</string>
     <string name="diary_relative_yesterday">Yesterday, %1$s</string>
     <string name="diary_relative_date_full">%2$s %1$d, %3$s</string>
+    <string name="diary_full_date_format">%2$s %1$d, %3$d, %4$s</string>
     <string name="diary_month_jan">JAN</string>
     <string name="diary_month_feb">FEB</string>
     <string name="diary_month_mar">MAR</string>

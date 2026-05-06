@@ -117,6 +117,7 @@
     <string name="diary_relative_today">Idag, %1$s</string>
     <string name="diary_relative_yesterday">Igår, %1$s</string>
     <string name="diary_relative_date_full">%1$d %2$s, %3$s</string>
+    <string name="diary_full_date_format">%1$d %2$s %3$d, %4$s</string>
     <string name="diary_month_jan">JAN</string>
     <string name="diary_month_feb">FEB</string>
     <string name="diary_month_mar">MAR</string>

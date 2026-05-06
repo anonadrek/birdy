@@ -65,6 +65,7 @@ import birdy_bird_scanner.composeapp.generated.resources.diary_detail_label_save
 import birdy_bird_scanner.composeapp.generated.resources.diary_detail_load_error
 import birdy_bird_scanner.composeapp.generated.resources.diary_detail_not_found
 import birdy_bird_scanner.composeapp.generated.resources.diary_detail_unknown_species
+import birdy_bird_scanner.composeapp.generated.resources.diary_full_date_format
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_label
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_save
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_save_error
@@ -152,7 +153,7 @@ private fun LoadedView(
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            Box {
+            Box(modifier = Modifier.background(HeroMossLight)) {
                 AsyncImage(
                     model = "file://${state.observation.photoPath}",
                     contentDescription = null,
@@ -335,5 +336,11 @@ private fun formatFullDate(
     val month = monthShortLower(ldt.monthNumber)
     val hh = ldt.hour.toString().padStart(2, '0')
     val mm = ldt.minute.toString().padStart(2, '0')
-    return "${ldt.dayOfMonth} $month ${ldt.year}, $hh:$mm"
+    return stringResource(
+        Res.string.diary_full_date_format,
+        ldt.dayOfMonth,
+        month,
+        ldt.year,
+        "$hh:$mm",
+    )
 }
