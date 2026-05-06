@@ -142,4 +142,85 @@
     <string name="diary_month_short_dec">dec</string>
     <string name="diary_month_header_format">%1$s %2$d</string>
     <string name="diary_confidence_format">%1$s säkerhet vid skanning</string>
+
+    <!-- ===== Plan 5b: Badges UI ===== -->
+    <string name="badges_title">Märken</string>
+    <string name="badges_label_species_seen">Arter sedda</string>
+    <string name="badges_label_badges">Märken</string>
+    <string name="badges_label_weekly_streak">V-streak</string>
+    <string name="badges_label_monthly_streak">M-streak</string>
+    <string name="badges_section_recently_unlocked">Senast upptäckta</string>
+    <string name="badges_section_to_discover">Att upptäcka · %1$d kvar</string>
+    <string name="badges_locked_tooltip">Hemligt — fortsätt skåda</string>
+    <string name="badges_progress_format">%1$d / %2$d</string>
+    <string name="badges_load_error">Kunde inte ladda märken — försök igen</string>
+    <string name="badges_load_error_retry">Försök igen</string>
+    <string name="badges_catalog_error">Märken kunde inte laddas — installera om appen</string>
+
+    <string name="unlock_label">MÄRKE UPPLÅST</string>
+    <string name="unlock_button_dismiss">Härligt</string>
+    <string name="unlock_unlocked_at">Upplåst %1$s</string>
+
+    <!-- ===== Badge names + descriptions ===== -->
+    <!-- Progression -->
+    <string name="badge_name_novice">Nybörjare</string>
+    <string name="badge_desc_novice">Du har sett dina första 5 fågelarter.</string>
+    <string name="badge_name_birder_bronze">Skådare</string>
+    <string name="badge_desc_birder_bronze">25 olika arter sedda — fältbiologi-brons.</string>
+    <string name="badge_name_birder_silver">Erfaren skådare</string>
+    <string name="badge_desc_birder_silver">100 olika arter sedda — du börjar bli kunnig.</string>
+
+    <!-- Streaks veckor -->
+    <string name="badge_name_weekly_streak_4">Månads-rytm</string>
+    <string name="badge_desc_weekly_streak_4">Du har skådat fåglar fyra veckor i rad.</string>
+    <string name="badge_name_weekly_streak_12">Kvartals-trogen</string>
+    <string name="badge_desc_weekly_streak_12">12 veckor i rad — du har hittat din rutin.</string>
+    <string name="badge_name_weekly_streak_26">Halvårs-skådare</string>
+    <string name="badge_desc_weekly_streak_26">26 veckor i rad — året halvgångert.</string>
+    <string name="badge_name_weekly_streak_52">Årets skådare</string>
+    <string name="badge_desc_weekly_streak_52">52 veckor i rad — ett helt år utan paus.</string>
+
+    <!-- Streaks månader -->
+    <string name="badge_name_monthly_streak_3">Säsong-skådare</string>
+    <string name="badge_desc_monthly_streak_3">Tre månader i rad — minst en obs varje månad.</string>
+    <string name="badge_name_monthly_streak_6">Halvårs-månader</string>
+    <string name="badge_desc_monthly_streak_6">Sex månader med obs varje.</string>
+    <string name="badge_name_monthly_streak_12">Året runt</string>
+    <string name="badge_desc_monthly_streak_12">Tolv månader med minst en obs varje.</string>
+
+    <!-- Säsong -->
+    <string name="badge_name_season_winter">Vinter-skådare</string>
+    <string name="badge_desc_season_winter">10 obs i december-februari — kall men givande.</string>
+    <string name="badge_name_season_spring">Vårfågel</string>
+    <string name="badge_desc_season_spring">5 obs i mars-maj — flyttfåglar i sikte.</string>
+    <string name="badge_name_season_summer">Sommarsångare</string>
+    <string name="badge_desc_season_summer">5 obs i juni-augusti.</string>
+    <string name="badge_name_season_autumn">Höstskådare</string>
+    <string name="badge_desc_season_autumn">5 obs i september-november.</string>
+
+    <!-- Familjer -->
+    <string name="badge_name_family_anatidae">Andfågel-vän</string>
+    <string name="badge_desc_family_anatidae">Du har sett en andfågel.</string>
+    <string name="badge_name_family_paridae">Mes-vän</string>
+    <string name="badge_desc_family_paridae">Du har sett en mes (talgoxe, blåmes, etc.).</string>
+    <string name="badge_name_family_accipitridae">Rovfågel-spanare</string>
+    <string name="badge_desc_family_accipitridae">Du har sett en hökfågel.</string>
+    <string name="badge_name_family_corvidae">Kråk-bekant</string>
+    <string name="badge_desc_family_corvidae">Du har sett en kråkfågel.</string>
+    <string name="badge_name_family_fringillidae">Fink-vän</string>
+    <string name="badge_desc_family_fringillidae">Du har sett en fink.</string>
+    <string name="badge_name_family_turdidae">Trast-vän</string>
+    <string name="badge_desc_family_turdidae">Du har sett en trast.</string>
+    <string name="badge_name_family_sylviidae">Sångar-vän</string>
+    <string name="badge_desc_family_sylviidae">Du har sett en sångare.</string>
+    <string name="badge_name_family_picidae">Hackspett-spanare</string>
+    <string name="badge_desc_family_picidae">Du har sett en hackspett.</string>
+
+    <!-- Sällsynt -->
+    <string name="badge_name_rare_first">Första sällsynta</string>
+    <string name="badge_desc_rare_first">Din första sällsynta art — minnesvärt.</string>
+    <string name="badge_name_rare_5">Sällsynt-jägare</string>
+    <string name="badge_desc_rare_5">Fem sällsynta arter sedda.</string>
+    <string name="badge_name_rare_10">Mästar-skådare</string>
+    <string name="badge_desc_rare_10">Tio sällsynta arter — imponerande.</string>
 </resources>

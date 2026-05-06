@@ -129,4 +129,85 @@
     <string name="diary_month_short_dec">Dec</string>
     <string name="diary_month_header_format">%1$s %2$d</string>
     <string name="diary_confidence_format">%1$s confidence when scanned</string>
+
+    <!-- ===== Plan 5b: Badges UI ===== -->
+    <string name="badges_title">Badges</string>
+    <string name="badges_label_species_seen">Species seen</string>
+    <string name="badges_label_badges">Badges</string>
+    <string name="badges_label_weekly_streak">W-streak</string>
+    <string name="badges_label_monthly_streak">M-streak</string>
+    <string name="badges_section_recently_unlocked">Recently discovered</string>
+    <string name="badges_section_to_discover">To discover · %1$d left</string>
+    <string name="badges_locked_tooltip">Secret — keep birding</string>
+    <string name="badges_progress_format">%1$d / %2$d</string>
+    <string name="badges_load_error">Could not load badges — try again</string>
+    <string name="badges_load_error_retry">Try again</string>
+    <string name="badges_catalog_error">Badges could not load — reinstall the app</string>
+
+    <string name="unlock_label">BADGE UNLOCKED</string>
+    <string name="unlock_button_dismiss">Wonderful</string>
+    <string name="unlock_unlocked_at">Unlocked %1$s</string>
+
+    <!-- ===== Badge names + descriptions ===== -->
+    <!-- Progression -->
+    <string name="badge_name_novice">Novice</string>
+    <string name="badge_desc_novice">You have spotted your first 5 bird species.</string>
+    <string name="badge_name_birder_bronze">Birder</string>
+    <string name="badge_desc_birder_bronze">25 species seen — bronze field-birding tier.</string>
+    <string name="badge_name_birder_silver">Seasoned birder</string>
+    <string name="badge_desc_birder_silver">100 species seen — you are getting skilled.</string>
+
+    <!-- Streaks weekly -->
+    <string name="badge_name_weekly_streak_4">Monthly rhythm</string>
+    <string name="badge_desc_weekly_streak_4">You have birded four weeks in a row.</string>
+    <string name="badge_name_weekly_streak_12">Quarter-faithful</string>
+    <string name="badge_desc_weekly_streak_12">12 weeks in a row — you have a rhythm.</string>
+    <string name="badge_name_weekly_streak_26">Half-year birder</string>
+    <string name="badge_desc_weekly_streak_26">26 weeks in a row — halfway through the year.</string>
+    <string name="badge_name_weekly_streak_52">Year-round birder</string>
+    <string name="badge_desc_weekly_streak_52">52 weeks in a row — a full year unbroken.</string>
+
+    <!-- Streaks monthly -->
+    <string name="badge_name_monthly_streak_3">Season birder</string>
+    <string name="badge_desc_monthly_streak_3">Three months in a row — at least one obs each month.</string>
+    <string name="badge_name_monthly_streak_6">Half-year months</string>
+    <string name="badge_desc_monthly_streak_6">Six months with observations each.</string>
+    <string name="badge_name_monthly_streak_12">All year</string>
+    <string name="badge_desc_monthly_streak_12">Twelve months with at least one observation each.</string>
+
+    <!-- Season -->
+    <string name="badge_name_season_winter">Winter birder</string>
+    <string name="badge_desc_season_winter">10 obs in December-February — cold but rewarding.</string>
+    <string name="badge_name_season_spring">Spring birder</string>
+    <string name="badge_desc_season_spring">5 obs in March-May — migrants in sight.</string>
+    <string name="badge_name_season_summer">Summer singer</string>
+    <string name="badge_desc_season_summer">5 obs in June-August.</string>
+    <string name="badge_name_season_autumn">Autumn birder</string>
+    <string name="badge_desc_season_autumn">5 obs in September-November.</string>
+
+    <!-- Family -->
+    <string name="badge_name_family_anatidae">Waterfowl friend</string>
+    <string name="badge_desc_family_anatidae">You have seen a waterfowl.</string>
+    <string name="badge_name_family_paridae">Tit friend</string>
+    <string name="badge_desc_family_paridae">You have seen a tit (great tit, blue tit, etc.).</string>
+    <string name="badge_name_family_accipitridae">Raptor scout</string>
+    <string name="badge_desc_family_accipitridae">You have seen a hawk-family raptor.</string>
+    <string name="badge_name_family_corvidae">Corvid friend</string>
+    <string name="badge_desc_family_corvidae">You have seen a corvid.</string>
+    <string name="badge_name_family_fringillidae">Finch friend</string>
+    <string name="badge_desc_family_fringillidae">You have seen a finch.</string>
+    <string name="badge_name_family_turdidae">Thrush friend</string>
+    <string name="badge_desc_family_turdidae">You have seen a thrush.</string>
+    <string name="badge_name_family_sylviidae">Warbler friend</string>
+    <string name="badge_desc_family_sylviidae">You have seen a warbler.</string>
+    <string name="badge_name_family_picidae">Woodpecker scout</string>
+    <string name="badge_desc_family_picidae">You have seen a woodpecker.</string>
+
+    <!-- Rare -->
+    <string name="badge_name_rare_first">First rarity</string>
+    <string name="badge_desc_rare_first">Your first rare species — memorable.</string>
+    <string name="badge_name_rare_5">Rarity hunter</string>
+    <string name="badge_desc_rare_5">Five rare species seen.</string>
+    <string name="badge_name_rare_10">Master birder</string>
+    <string name="badge_desc_rare_10">Ten rare species — impressive.</string>
 </resources>
