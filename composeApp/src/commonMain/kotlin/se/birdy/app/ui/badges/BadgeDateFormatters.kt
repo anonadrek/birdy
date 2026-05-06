@@ -64,3 +64,24 @@ fun formatBadgeFullDate(
         Locale.EN -> "$month ${ldt.dayOfMonth}, ${ldt.year}"
     }
 }
+
+/**
+ * "3 maj" (sv) / "May 3" (en). Helper for Recent-cards. Includes year when
+ * the year differs from `now`.
+ */
+fun formatRelativeBadgeDate(
+    instant: Instant,
+    now: Instant,
+    zone: TimeZone,
+    locale: Locale,
+): String {
+    val ldt = instant.toLocalDateTime(zone)
+    val nowLdt = now.toLocalDateTime(zone)
+    val months = if (locale == Locale.SV) swedishMonths else englishMonths
+    val month = months[ldt.monthNumber - 1]
+    val sameYear = ldt.year == nowLdt.year
+    return when (locale) {
+        Locale.SV -> if (sameYear) "${ldt.dayOfMonth} $month" else "${ldt.dayOfMonth} $month ${ldt.year}"
+        Locale.EN -> if (sameYear) "$month ${ldt.dayOfMonth}" else "$month ${ldt.dayOfMonth}, ${ldt.year}"
+    }
+}

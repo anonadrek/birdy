@@ -19,3 +19,9 @@ val AccentCopper = Color(0xFF8C5A3C)
 // Text
 val TextOnCreme = Color(0xFF2A3525) // primary text on background
 val TextOnHero = Color(0xFFF0EAD8) // text on hero zone or accent surfaces
+
+// Hero pill labels (lighter than TextOnHero)
+val LabelOnHero = Color(0xFFC5BC9F)
+
+// Caption/label color on creme background (between TextOnCreme and bg)
+val LabelOnCreme = Color(0xFF6B6F5C)
