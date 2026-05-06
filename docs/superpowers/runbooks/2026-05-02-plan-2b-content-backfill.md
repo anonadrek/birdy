@@ -12,7 +12,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-04 | acrocephalidae | +19 (totalt 70) | `3609b98` |
 | 2026-05-04 | alaudidae | +27 (totalt 97) | `d945e1f` |
 | 2026-05-06 | anatidae | +52 (totalt 149) | `1a99a63` |
-| | _next: aegithalidae_ | | |
+| 2026-05-06 | aegithalidae | +1 (totalt 150) | `<pending>` |
+| | _next: alcedinidae_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -31,6 +32,12 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Validator-threshold (80w) > sparse-threshold (20w):** Q1590574 fick sv=72w (Claude körde, men under 80w-gränsen). Lägg `sv` i `description_accept_missing` även när text faktiskt finns men är för kort. Validatorn rapporterar `description-too-short` om missat.
 - **`allow_missing_images: true` per art** finns redan som override (`ValidateMain.kt:15`). Använd när Commons saknar foto över `MIN_DIMENSION=2048`. Q891376 basrasångare hade bara 1071×905 → satt allow_missing_images. Bättre än att sänka MIN_DIMENSION globalt.
 - Q27674 härmsångare hade bara 1 image_ref (hero, ingen secondary). Validatorn accepterar — minimum är 1 hero. Inte allt är problem.
+
+**Aegithalidae-batch lärdomar (2026-05-06):**
+
+- 1/1 abundance:allmän approved (Q170831 stjärtmes — Europas enda stjärtmes-art, vanlig i löv- och blandskogar). Hela "familjen" är en enda art i SE/Norden.
+- **0% sparse-overrides** — fyllig svwiki + enwiki, hero auto-pick OK (klar identifierbar fågel). Snabbaste familjbatch hittills: ~1 minut total tid (1 fetch + 1 approve + 1 commit).
+- **Single-species-familj-mönster:** vissa familjer i species_list har bara 1–2 arter i Norden. Workflow är samma men ingen anledning till manuell hero-review HTML — direkt approve efter spot-check av YAML är OK.
 
 **Anatidae-batch lärdomar (2026-05-06):**
 

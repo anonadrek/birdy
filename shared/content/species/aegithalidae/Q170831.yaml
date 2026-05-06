@@ -1,0 +1,134 @@
+id: Q170831
+scientific_name: Aegithalos caudatus
+taxonomy:
+  family: Aegithalidae
+  family_sv: Stjärtmesar
+  genus: Aegithalos
+  ioc_order: Passeriformes
+names:
+  sv: Stjärtmes
+  en: Long-tailed Tit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stjärtmes
+
+
+    Stjärtmesen är en mycket liten tätting och Europas enda representant för familjen
+    stjärtmesar. Det mest iögonenfallande kännetecknet är den långa stjärten, som
+    utgör mer än hälften av kroppslängden. Med denna proportionering blir stjärtmesen
+    lätt igenkännlig när den fladdrar omkring i löv- och blandskogar.
+
+
+    Arten är mycket aktiv och ses ofta röra sig snabbt genom vegetation i små familjegrupper.
+    Det är framför allt dessa gäng som gör arten lätt att upptäcka, då flera individer
+    tillsammans blir mer synliga än en ensam fågel. Stjärtmesen är social till sin
+    natur och håller ihop i lösa grupper under mycket av året.
+
+
+    Boet är anmärkningsvärt konstruerat – ett litet, klotformat byggnadskonstverk
+    tillverkat av lav, fjädrar, spindelväv och mossa. Denna konstruktion ger både
+    isolering och flexibilitet. Arten är allmänt utbredd och kategoriseras av IUCN
+    som livskraftig.'
+  en: '# Long-tailed Tit
+
+
+    The long-tailed tit is a diminutive, distinctive bird found across Eurasia in
+    woodlands, scrub, heathland, farmland, and gardens. It is predominantly black
+    and white with varying amounts of pink and grey in its plumage. Northern populations
+    are paler with completely white heads, while southern birds display prominent
+    dark eyebrows contrasting with their facial markings.
+
+
+    This highly social species forms compact family flocks of six to seventeen individuals
+    outside the breeding season, making it a rewarding bird to observe as flocks move
+    energetically through vegetation. It feeds on insects and small invertebrates.
+    During breeding season, the flock disperses to nest. The bird favours thorny bushes
+    for nesting, typically building its nest less than 3 metres above the ground in
+    scrubland.
+
+
+    The long-tailed tit''s small size, elongated tail, and distinctive plumage pattern
+    make it recognizable once seen. Its gregarious nature and preference for lower
+    vegetation in scrubby habitats mean it is relatively accessible to observers willing
+    to watch carefully through suitable habitat.'
+migration:
+  sv: '# Stjärtmes (Aegithalos caudatus) – Förekomst i Skandinavien/Nordeuropa
+
+
+    Stjärtmesen är en året-runt-invånare i Skandinavien och större delen av Nordeuropa,
+    även om populationerna visar vissa lokala variationer. Under de strängaste vintrar
+    förekommer omfattande väststötta när fåglar från öst tvingar sig västerut på jakt
+    efter föda. Arten är endast delvis flyttfågel och huvuddelen av populationen stannar
+    kvar genom vintern, särskilt i södra och västra delar av sitt utbredningsområde.
+    Under hösten och vintern samlas stjärtmesarna ofta i större familjegrupper för
+    att gemensamt söka föda, vilket ökar deras överlevnadschanser under den kalla
+    årstiden.'
+  en: '# Long-tailed Tit in Scandinavia/Northern Europe
+
+
+    The long-tailed tit is a resident and partial migrant in Scandinavia and Northern
+    Europe. Northern populations, particularly those breeding in Scandinavia, are
+    largely sedentary or undertake short-distance movements, though some individuals
+    may retreat southwestward during harsh winters. The species remains present throughout
+    the year in suitable habitats including woodlands, scrub, and gardens, forming
+    characteristic compact family flocks during autumn and winter months. Breeding
+    occurs in spring and early summer, after which family groups coalesce into larger
+    foraging flocks. Northern subspecies with pale plumage and white heads are adapted
+    to these temperate and boreal regions, where they persist year-round despite variable
+    winter conditions.'
+image_refs:
+- role: hero
+  path: Q170831/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Membeth&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Membeth (page does not exist)">Membeth</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Parks.Range.Aegithalos.caudatus.caudatus.jpg
+  commons_filename: Parks.Range.Aegithalos.caudatus.caudatus.jpg
+- role: secondary
+  path: Q170831/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Long-tailed tit (Aegithalos
+    caudatus) on a twig.jpg
+  commons_filename: Long-tailed tit (Aegithalos caudatus) on a twig.jpg
+- role: secondary
+  path: Q170831/secondary-2.jpg
+  width: 1800
+  height: 861
+  license: CC BY 2.0
+  author: caroline legg
+  source_url: https://commons.wikimedia.org/wiki/File:2 Long Tailed Tits - Aegithalos
+    caudatus.jpg
+  commons_filename: 2 Long Tailed Tits - Aegithalos caudatus.jpg
+review_status: approved
+review_notes: 'auto-pick OK (distinkt liten tätting, lång stjärt, klar identifierbar)'
+generated_at: '2026-05-06T13:41:17.376389+00:00'
+sources:
+  wikipedia_sv_revision: '59030935'
+  wikipedia_en_revision: '1343148538'
+  claude_model: claude-haiku-4-5-20251001
