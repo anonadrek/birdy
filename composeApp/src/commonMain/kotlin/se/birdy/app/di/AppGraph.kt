@@ -2,6 +2,7 @@ package se.birdy.app.di
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
+import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.photo.PhotoStorage
 import se.birdy.app.ui.diary.DiaryViewModel
 import se.birdy.app.ui.diary.ObservationDetailViewModel
@@ -14,6 +15,8 @@ import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.content.SpeciesRepository
+import se.birdy.domain.badge.BadgeCatalog
+import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.observation.ObservationRepository
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.CameraSource
@@ -24,12 +27,24 @@ class AppGraph(
     val cameraSourceFactory: () -> CameraSource,
     val observationRepository: ObservationRepository,
     val photoStorage: PhotoStorage,
+    val badgeRepository: BadgeRepository,
+    val badgeCatalog: BadgeCatalog,
     val clock: Clock = Clock.System,
     val timeZone: TimeZone = TimeZone.currentSystemDefault(),
     val defaultLocale: Locale = Locale.SV,
 ) {
+    private val recalculateBadges = RecalculateBadgesUseCase(clock = clock, zone = timeZone)
+
     private val saveObservationUseCase: SaveObservationUseCase =
-        SaveObservationUseCase(observationRepository, photoStorage, clock)
+        SaveObservationUseCase(
+            repo = observationRepository,
+            badgeRepo = badgeRepository,
+            photoStorage = photoStorage,
+            clock = clock,
+            catalog = badgeCatalog,
+            recalculate = recalculateBadges,
+            speciesByQid = { repository.allByQid() },
+        )
 
     fun encyclopediaViewModel(): EncyclopediaViewModel = EncyclopediaViewModel(repository, defaultLocale)
 

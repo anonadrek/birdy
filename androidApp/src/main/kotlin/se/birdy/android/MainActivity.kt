@@ -3,12 +3,15 @@ package se.birdy.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import kotlinx.coroutines.runBlocking
 import se.birdy.app.App
 import se.birdy.app.SpeciesRepositoryProvider
+import se.birdy.app.badges.BadgeCatalogLoader
 import se.birdy.app.di.AppGraph
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.content.Locale
 import se.birdy.data.DatabaseFactory
+import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
 import se.birdy.data.observation.SqlDelightObservationRepository
 import se.birdy.ml.FakeBirdClassifier
@@ -21,10 +24,10 @@ class MainActivity : ComponentActivity() {
         cleanOldCacheFrames()
         SpeciesRepositoryProvider.init(applicationContext)
         PhotoStorageProvider.init(applicationContext)
-        val observationRepo =
-            SqlDelightObservationRepository(
-                BirdyData(DatabaseFactory(applicationContext).createDriver()).observationQueries,
-            )
+        val birdyData = BirdyData(DatabaseFactory(applicationContext).createDriver())
+        val observationRepo = SqlDelightObservationRepository(birdyData.observationQueries)
+        val badgeRepo = BadgeRepositoryImpl(birdyData.badgeUnlockQueries)
+        val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         val graph =
             AppGraph(
                 repository = SpeciesRepositoryProvider.get(),
@@ -34,6 +37,8 @@ class MainActivity : ComponentActivity() {
                 },
                 observationRepository = observationRepo,
                 photoStorage = PhotoStorageProvider.get(),
+                badgeRepository = badgeRepo,
+                badgeCatalog = badgeCatalog,
                 defaultLocale = Locale.SV,
             )
         setContent { App(graph) }

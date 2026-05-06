@@ -8,12 +8,16 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import se.birdy.app.badges.RecalculateBadgesUseCase
+import se.birdy.app.testing.FakeBadgeRepository
 import se.birdy.app.testing.FakeClock
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakePhotoStorage
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
+import se.birdy.domain.badge.BadgeCatalog
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -24,11 +28,17 @@ import kotlin.test.assertIs
 class ClassificationResultViewModelTest {
     private val dispatcher = StandardTestDispatcher()
 
+    private val fakeClock = FakeClock(now = Instant.parse("2026-05-06T10:00:00Z"))
+
     private val saveUseCase =
         SaveObservationUseCase(
-            FakeObservationRepository(),
-            FakePhotoStorage(),
-            FakeClock(now = Instant.parse("2026-05-06T10:00:00Z")),
+            repo = FakeObservationRepository(),
+            badgeRepo = FakeBadgeRepository(),
+            photoStorage = FakePhotoStorage(),
+            clock = fakeClock,
+            catalog = BadgeCatalog(version = 1, badges = emptyList()),
+            recalculate = RecalculateBadgesUseCase(zone = TimeZone.UTC, clock = fakeClock),
+            speciesByQid = { emptyMap() },
         )
 
     @BeforeTest fun before() = Dispatchers.setMain(dispatcher)
