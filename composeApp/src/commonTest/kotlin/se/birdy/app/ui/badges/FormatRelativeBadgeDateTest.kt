@@ -37,4 +37,19 @@ class FormatRelativeBadgeDateTest {
         val target = LocalDateTime(2026, 12, 30, 12, 0).toInstant(utc)
         assertEquals("Dec 30, 2026", formatRelativeBadgeDate(target, now, utc, Locale.EN))
     }
+
+    // Month-array boundary: month 1 (Jan) and month 12 (Dec) must not off-by-one.
+    @Test
+    fun `sv jan boundary uses jan`() {
+        val now = LocalDateTime(2026, 1, 15, 12, 0).toInstant(utc)
+        val target = LocalDateTime(2026, 1, 2, 12, 0).toInstant(utc)
+        assertEquals("2 jan", formatRelativeBadgeDate(target, now, utc, Locale.SV))
+    }
+
+    @Test
+    fun `en dec boundary uses Dec`() {
+        val now = LocalDateTime(2026, 12, 31, 23, 59).toInstant(utc)
+        val target = LocalDateTime(2026, 12, 1, 0, 0).toInstant(utc)
+        assertEquals("Dec 1", formatRelativeBadgeDate(target, now, utc, Locale.EN))
+    }
 }

@@ -26,7 +26,9 @@ import birdy_bird_scanner.composeapp.generated.resources.badges_label_badges
 import birdy_bird_scanner.composeapp.generated.resources.badges_label_monthly_streak
 import birdy_bird_scanner.composeapp.generated.resources.badges_label_species_seen
 import birdy_bird_scanner.composeapp.generated.resources.badges_label_weekly_streak
+import birdy_bird_scanner.composeapp.generated.resources.badges_monthly_streak_value
 import birdy_bird_scanner.composeapp.generated.resources.badges_progress_format
+import birdy_bird_scanner.composeapp.generated.resources.badges_weekly_streak_value
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.HeroMossLight
@@ -98,14 +100,14 @@ fun BadgeStatHero(
             )
             if (weeklyStreak != null) {
                 HeroPill(
-                    value = "${weeklyStreak}v",
+                    value = stringResource(Res.string.badges_weekly_streak_value, weeklyStreak),
                     label = stringResource(Res.string.badges_label_weekly_streak),
                     modifier = Modifier.weight(1f),
                 )
             }
             if (monthlyStreak != null) {
                 HeroPill(
-                    value = "${monthlyStreak}m",
+                    value = stringResource(Res.string.badges_monthly_streak_value, monthlyStreak),
                     label = stringResource(Res.string.badges_label_monthly_streak),
                     modifier = Modifier.weight(1f),
                 )

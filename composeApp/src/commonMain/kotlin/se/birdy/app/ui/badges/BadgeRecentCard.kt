@@ -18,11 +18,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import se.birdy.app.ui.theme.AccentCopper
@@ -36,12 +40,13 @@ import se.birdy.content.Locale
 fun BadgeRecentCard(
     localizedName: String,
     unlockedAt: Instant,
+    now: Instant,
     locale: Locale,
     zone: TimeZone,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    nowProvider: () -> Instant = { Clock.System.now() },
 ) {
+    val description = localizedName
     Column(
         modifier =
             modifier
@@ -49,7 +54,10 @@ fun BadgeRecentCard(
                 .clip(RoundedCornerShape(12.dp))
                 .background(SandCreme)
                 .clickable(onClick = onClick)
-                .padding(10.dp),
+                .semantics {
+                    contentDescription = description
+                    role = Role.Button
+                }.padding(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top,
     ) {
@@ -58,7 +66,8 @@ fun BadgeRecentCard(
                 Modifier
                     .size(44.dp)
                     .clip(CircleShape)
-                    .background(AccentCopper),
+                    .background(AccentCopper)
+                    .clearAndSetSemantics {},
             contentAlignment = Alignment.Center,
         ) {
             Text(text = "★", color = TextOnHero, fontSize = 22.sp)
@@ -70,11 +79,11 @@ fun BadgeRecentCard(
             fontSize = 11.sp,
             fontFamily = FontFamily.Serif,
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().clearAndSetSemantics {},
         )
         Spacer(Modifier.height(2.dp))
         Text(
-            text = formatRelativeBadgeDate(unlockedAt, nowProvider(), zone, locale),
+            text = formatRelativeBadgeDate(unlockedAt, now, zone, locale),
             color = LabelOnCreme,
             fontSize = 8.sp,
             textAlign = TextAlign.Center,

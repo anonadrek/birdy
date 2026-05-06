@@ -136,6 +136,8 @@
     <string name="badges_label_badges">Badges</string>
     <string name="badges_label_weekly_streak">W-streak</string>
     <string name="badges_label_monthly_streak">M-streak</string>
+    <string name="badges_weekly_streak_value">%1$d w</string>
+    <string name="badges_monthly_streak_value">%1$d m</string>
     <string name="badges_section_recently_unlocked">Recently discovered</string>
     <string name="badges_section_to_discover">To discover · %1$d left</string>
     <string name="badges_locked_tooltip">Secret — keep birding</string>

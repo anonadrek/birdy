@@ -149,6 +149,8 @@
     <string name="badges_label_badges">Märken</string>
     <string name="badges_label_weekly_streak">V-streak</string>
     <string name="badges_label_monthly_streak">M-streak</string>
+    <string name="badges_weekly_streak_value">%1$d v</string>
+    <string name="badges_monthly_streak_value">%1$d m</string>
     <string name="badges_section_recently_unlocked">Senast upptäckta</string>
     <string name="badges_section_to_discover">Att upptäcka · %1$d kvar</string>
     <string name="badges_locked_tooltip">Hemligt — fortsätt skåda</string>

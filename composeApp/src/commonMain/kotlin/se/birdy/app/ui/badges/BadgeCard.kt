@@ -10,6 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import se.birdy.app.ui.theme.AccentCopper
@@ -23,12 +28,14 @@ import se.birdy.domain.badge.BadgeProgress
 @Composable
 fun BadgeCard(
     progress: BadgeProgress,
+    contentDescription: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val isUnlocked = progress.isUnlocked
     val bg = if (isUnlocked) AccentCopper else SandCreme
     val fg = if (isUnlocked) TextOnHero else LabelOnCreme
+    val description = contentDescription
 
     Box(
         modifier =
@@ -36,13 +43,18 @@ fun BadgeCard(
                 .aspectRatio(1f)
                 .clip(RoundedCornerShape(12.dp))
                 .background(bg)
-                .clickable(onClick = onClick),
+                .clickable(onClick = onClick)
+                .semantics {
+                    this.contentDescription = description
+                    role = Role.Button
+                },
         contentAlignment = Alignment.Center,
     ) {
         Text(
             text = badgeGlyph(progress.badge, isUnlocked),
             color = fg,
             fontSize = if (isUnlocked) 22.sp else 18.sp,
+            modifier = Modifier.clearAndSetSemantics {},
         )
     }
 }

@@ -15,8 +15,8 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -40,6 +40,8 @@ import birdy_bird_scanner.composeapp.generated.resources.badges_section_recently
 import birdy_bird_scanner.composeapp.generated.resources.badges_section_to_discover
 import birdy_bird_scanner.composeapp.generated.resources.badges_title
 import kotlinx.coroutines.launch
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.HeroMossLight
@@ -62,6 +64,7 @@ fun BadgesScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     val lockedTooltip = stringResource(Res.string.badges_locked_tooltip)
+    val now = remember { Clock.System.now() }
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -86,7 +89,7 @@ fun BadgesScreen(
         when (state) {
             is BadgesUiState.Loading ->
                 Box(Modifier.fillMaxSize().padding(padding), Alignment.Center) {
-                    Text("…", color = MaterialTheme.colorScheme.onBackground)
+                    CircularProgressIndicator()
                 }
 
             is BadgesUiState.Error ->
@@ -100,6 +103,8 @@ fun BadgesScreen(
                     state = state,
                     locale = locale,
                     zone = zone,
+                    now = now,
+                    lockedTooltip = lockedTooltip,
                     contentPadding = padding,
                     onUnlockedClick = { badge, unlock -> onBadgeClick(badge, unlock) },
                     onLockedClick = {
@@ -117,6 +122,8 @@ private fun LoadedContent(
     state: BadgesUiState.Loaded,
     locale: Locale,
     zone: TimeZone,
+    now: Instant,
+    lockedTooltip: String,
     contentPadding: PaddingValues,
     onUnlockedClick: (Badge, BadgeUnlock) -> Unit,
     onLockedClick: () -> Unit,
@@ -151,11 +158,15 @@ private fun LoadedContent(
                     SectionLabel(stringResource(Res.string.badges_section_recently_unlocked))
                     Spacer(Modifier.height(6.dp))
                     LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                        items(state.recentlyUnlocked) { r ->
+                        items(
+                            items = state.recentlyUnlocked,
+                            key = { it.badge.id },
+                        ) { r ->
                             val nameRes = BadgeStringMap.nameFor(r.badge.id)
                             BadgeRecentCard(
                                 localizedName = stringResource(nameRes),
                                 unlockedAt = r.unlockedAt,
+                                now = now,
                                 locale = locale,
                                 zone = zone,
                                 onClick = { onUnlockedClick(r.badge, BadgeUnlock(r.badge.id, r.unlockedAt)) },
@@ -173,8 +184,15 @@ private fun LoadedContent(
             }
         }
 
-        items(state.locked) { p ->
-            BadgeCard(progress = p, onClick = onLockedClick)
+        items(
+            items = state.locked,
+            key = { it.badge.id },
+        ) { p ->
+            BadgeCard(
+                progress = p,
+                contentDescription = lockedTooltip,
+                onClick = onLockedClick,
+            )
         }
     }
 }
