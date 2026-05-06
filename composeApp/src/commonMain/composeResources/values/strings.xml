@@ -141,5 +141,5 @@
     <string name="diary_month_short_nov">nov</string>
     <string name="diary_month_short_dec">dec</string>
     <string name="diary_month_header_format">%1$s %2$d</string>
-    <string name="diary_confidence_format">%1$d%% säkerhet vid skanning</string>
+    <string name="diary_confidence_format">%1$s säkerhet vid skanning</string>
 </resources>

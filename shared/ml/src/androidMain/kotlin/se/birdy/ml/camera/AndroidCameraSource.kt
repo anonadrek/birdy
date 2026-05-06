@@ -53,7 +53,7 @@ class AndroidCameraSource(
                                 heightPx = proxy.height,
                                 rotationDegrees = proxy.imageInfo.rotationDegrees,
                                 format = FrameFormat.JPEG,
-                                timestampMillis = proxy.imageInfo.timestamp / 1_000_000L,
+                                timestampMillis = System.currentTimeMillis(),
                             ),
                         )
                     } catch (t: Throwable) {

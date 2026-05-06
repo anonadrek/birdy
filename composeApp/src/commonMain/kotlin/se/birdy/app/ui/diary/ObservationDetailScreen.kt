@@ -298,7 +298,7 @@ private fun DetailsSection(
         }
         DetailRow(label = stringResource(Res.string.diary_detail_label_confidence)) {
             Text(
-                stringResource(Res.string.diary_confidence_format, (state.observation.confidence * 100f).toInt()),
+                stringResource(Res.string.diary_confidence_format, "${(state.observation.confidence * 100f).toInt()}%"),
                 color = TextOnCreme,
             )
         }

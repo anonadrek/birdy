@@ -73,7 +73,7 @@
 
     <!-- Diary -->
     <string name="diary_title">Diary</string>
-    <string name="diary_empty_title">You haven\'t saved any sightings yet</string>
+    <string name="diary_empty_title">You haven't saved any sightings yet</string>
     <string name="diary_empty_cta">Scan a bird</string>
     <string name="diary_save_success">Saved to diary</string>
     <string name="diary_save_error_photo">Could not save the photo</string>
@@ -128,5 +128,5 @@
     <string name="diary_month_short_nov">Nov</string>
     <string name="diary_month_short_dec">Dec</string>
     <string name="diary_month_header_format">%1$s %2$d</string>
-    <string name="diary_confidence_format">%1$d%% confidence when scanned</string>
+    <string name="diary_confidence_format">%1$s confidence when scanned</string>
 </resources>

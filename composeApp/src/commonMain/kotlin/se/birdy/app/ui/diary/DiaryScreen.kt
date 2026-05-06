@@ -183,7 +183,7 @@ private fun ObservationRow(
             }
             Spacer(modifier = Modifier.width(8.dp))
             Text(
-                text = stringResource(Res.string.diary_confidence_format, item.confidencePct),
+                text = stringResource(Res.string.diary_confidence_format, "${item.confidencePct}%"),
                 style = MaterialTheme.typography.labelSmall,
                 color = AccentCopper,
                 fontWeight = FontWeight.Bold,
