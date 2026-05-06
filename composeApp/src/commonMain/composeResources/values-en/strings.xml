@@ -92,6 +92,7 @@
     <string name="diary_delete_confirm_body">This cannot be undone.</string>
     <string name="diary_delete_confirm_yes">Delete</string>
     <string name="diary_delete_confirm_no">Cancel</string>
+    <string name="diary_delete_failed">Couldn't delete — try again</string>
     <string name="diary_detail_not_found">This observation no longer exists</string>
     <string name="diary_detail_unknown_species">Unknown species</string>
     <string name="diary_detail_load_error">Could not load the observation</string>

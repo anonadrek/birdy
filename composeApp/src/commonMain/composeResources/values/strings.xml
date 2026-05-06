@@ -105,6 +105,7 @@
     <string name="diary_delete_confirm_body">Detta går inte att ångra.</string>
     <string name="diary_delete_confirm_yes">Ta bort</string>
     <string name="diary_delete_confirm_no">Avbryt</string>
+    <string name="diary_delete_failed">Kunde inte ta bort — försök igen</string>
     <string name="diary_detail_not_found">Observationen finns inte längre</string>
     <string name="diary_detail_unknown_species">Okänd art</string>
     <string name="diary_detail_load_error">Kunde inte ladda observationen</string>
