@@ -1,0 +1,101 @@
+id: Q21127307
+scientific_name: Corythornis cristatus
+taxonomy:
+  family: Alcedinidae
+  family_sv: Kungsfiskare
+  genus: Corythornis
+  ioc_order: Coraciiformes
+names:
+  sv: Malakitkungsfiskare
+  en: Malachite Kingfisher
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Malachite Kingfisher
+
+
+    The Malachite Kingfisher is a small river kingfisher found throughout sub-Saharan
+    Africa, where it remains largely resident year-round, though it may shift location
+    seasonally in response to climate changes. This compact bird is highly adapted
+    to freshwater environments and hunts by perching on low branches or rocks overhanging
+    water before diving swiftly to catch small fish and aquatic invertebrates.
+
+
+    It is a striking bird with brilliant turquoise-blue upperparts that give it its
+    common name, contrasting sharply with its rufous underparts and face. The crown
+    is crested, adding to its distinctive silhouette. Its relatively long, pointed
+    bill is perfectly designed for precision hunting in shallow water.
+
+
+    The Malachite Kingfisher favors rivers, streams, and freshwater pools, typically
+    in open or semi-open habitats rather than dense forests. It is most active during
+    dawn and dusk, often perching motionless for extended periods while watching for
+    prey movement. These kingfishers are usually solitary or seen in pairs and maintain
+    territories along suitable waterways throughout their range.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text indicates that the Malachite Kingfisher is an African species
+    distributed south of the Sahara and does not provide specific information about
+    its occurrence in Scandinavia or Northern Europe. This species is not known to
+    occur in these regions as a regular migrant or resident.'
+image_refs:
+- role: hero
+  path: Q21127307/hero.jpg
+  width: 2400
+  height: 1682
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Malachite Kingfisher (Corythornis
+    cristatus) (32063261832).jpg
+  commons_filename: Malachite Kingfisher (Corythornis cristatus) (32063261832).jpg
+- role: secondary
+  path: Q21127307/secondary-1.jpg
+  width: 1800
+  height: 1240
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Malachite Kingfisher (Corythornis
+    cristatus) (52746880154).jpg
+  commons_filename: Malachite Kingfisher (Corythornis cristatus) (52746880154).jpg
+- role: secondary
+  path: Q21127307/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Príncipe malachite kingfisher
+    (Corythornis cristatus nais) 2.jpg
+  commons_filename: Príncipe malachite kingfisher (Corythornis cristatus nais) 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:11:39.374864+00:00'
+sources:
+  wikipedia_sv_revision: '56775753'
+  wikipedia_en_revision: '1314595144'
+  claude_model: claude-haiku-4-5-20251001

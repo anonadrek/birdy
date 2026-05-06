@@ -130,3 +130,10 @@ species:
   # Anatidae allmän outlier: both languages have only 1-sentence Wikipedia leads.
   Q28106966:
     description_accept_missing: [sv, en]  # Snatterand (Gadwall) — both wikis have 1-sentence stub leads despite common species
+  # Alcedinidae batch (2026-05-06): exotic kingfishers without Swedish Wikipedia article.
+  Q1270808:
+    description_accept_missing: [sv]  # Halcyon leucocephala (Grey-headed Kingfisher) — afrikansk, ingen svwiki
+  Q21127307:
+    description_accept_missing: [sv]  # Corythornis cristatus (Malachite Kingfisher) — afrikansk, ingen svwiki
+  Q735158:
+    description_accept_missing: [sv]  # Halcyon smyrnensis (White-throated Kingfisher) — asiatisk, ingen svwiki

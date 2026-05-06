@@ -1,0 +1,131 @@
+id: Q320043
+scientific_name: Ceryle rudis
+taxonomy:
+  family: Alcedinidae
+  family_sv: Kungsfiskare
+  genus: Ceryle
+  ioc_order: Coraciiformes
+names:
+  sv: Gråfiskare
+  en: Pied Kingfisher
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gråfiskare
+
+
+    Gråfiskaren är en kungsfiskare med karakteristisk svartvit fjäderdräkt och en
+    framträdande tofs på huvudet. Hanen bär ett dubbelt svart bröstband medan honan
+    har ett enda, ofta ofullständigt band. Det är en liten till medelstor fiskare
+    med en kompakt byggnad anpassad för sitt fiskeyrke.
+
+
+    Arten är framför allt känd för sitt unikt sättet att jaga. I stället för att sitta
+    stilla och vänta blandar gråfiskaren aktivt genom att ryttla och sväva över stilla
+    sjöar och floder innan den dyker ned efter småfisk. När den vilar sitter den ofta
+    med vickande huvud och stjärt, ett beteende som gör den relativt lätt att upptäcka.
+
+
+    Gråfiskaren förekommer vanligen i par eller mindre familjegrupper över ett stort
+    utbredningsområde i Afrika och Asien. Den är bunden till vatten och trivs vid
+    sjöar, floder och andra stillastående eller långsamt flytande vattendrag där det
+    finns gott om små fiskar att livnära sig på.'
+  en: '# Pied Kingfisher
+
+
+    The pied kingfisher is a striking water kingfisher with distinctive black and
+    white plumage and a prominent crest. Males display a bold double band across the
+    breast, while females show a single broken band—a useful field mark for distinguishing
+    the sexes. Its compact build and contrasting colours make it unmistakable when
+    encountered.
+
+
+    This species is famous for its hovering technique, which it employs while hunting
+    over clear lakes and rivers before plunging dramatically to catch fish. When perched
+    between dives, it displays characteristic behaviour, bobbing its head and flicking
+    its tail upward with nervous energy. The bird is typically seen in pairs or small
+    family groups rather than solitary individuals.
+
+
+    Widely distributed across Africa and Asia, the pied kingfisher favours open water
+    habitats where visibility allows successful hunting. It remains one of the most
+    recognizable kingfisher species throughout its range, and its distinctive silhouette
+    and fishing behaviour make it relatively easy to identify for birdwatchers seeking
+    water-associated species.'
+migration:
+  sv: '**Migrationsdata saknas för denna art.**
+
+
+    Källtexten innehåller ingen information om hur gråfiskare förekommer i Skandinavien
+    eller Nordeuropa, eller om dess migrations- och övervintringsmönster. Arten beskrivs
+    endast som återfunnen över ett stort utbredningsområde i Afrika och Asien, men
+    inga uppgifter ges om eventuella förekomster i eller flyttningar till norra Europa.'
+  en: '# Pied Kingfisher in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Pied Kingfisher is not known to occur naturally in Scandinavia or Northern
+    Europe. This species is widely distributed across Africa and Asia, with its range
+    centered in warmer regions. It has not been documented as a regular migrant, vagrant,
+    or overwintering bird in Scandinavian countries or the broader Northern European
+    region.'
+image_refs:
+- role: hero
+  path: Q320043/hero.jpg
+  width: 2400
+  height: 1590
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pied kingfisher (Ceryle rudis)
+    from Kallanai JEG9784.jpg
+  commons_filename: Pied kingfisher (Ceryle rudis) from Kallanai JEG9784.jpg
+- role: secondary
+  path: Q320043/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 3.0
+  author: '<div class="fn value">
+
+    <a rel="nofollow" class="external text" href="https://500px.com/aufgang">Daniel
+    Aufgang</a></div>'
+  source_url: https://commons.wikimedia.org/wiki/File:Ceryle rudis rudis (181091491).jpg
+  commons_filename: Ceryle rudis rudis (181091491).jpg
+- role: secondary
+  path: Q320043/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q28147777" class="extiw" title="d:Q28147777"><span
+    title="Spanish photographer">Diego Delso</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Martín pescador pío (Ceryle
+    rudis), parque nacional de Amboseli, Kenia, 2024-05-22, DD 19.jpg
+  commons_filename: Martín pescador pío (Ceryle rudis), parque nacional de Amboseli,
+    Kenia, 2024-05-22, DD 19.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:12:22.690165+00:00'
+sources:
+  wikipedia_sv_revision: '57911231'
+  wikipedia_en_revision: '1339253631'
+  claude_model: claude-haiku-4-5-20251001

@@ -75,6 +75,9 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 50 | Q28106966 | anatidae | Snatterand | Mareca strepera | sv, en | 58662283 | 1351192999 | pending (allmän — prioriterad) |
 | 51 | Q331447 | anatidae | Marmorand | Marmaronetta angustirostris | sv | 55648211 | 1314728993 | pending |
 | 52 | Q369767 | anatidae | Islandsknipa | Bucephala islandica | sv | 55623245 | 1324201424 | pending |
+| 53 | Q1270808 | alcedinidae | Halcyon leucocephala | Grey-headed Kingfisher | sv | 56466565 | 1315068381 | pending |
+| 54 | Q21127307 | alcedinidae | Corythornis cristatus | Malachite Kingfisher | sv | 56775753 | 1314595144 | pending |
+| 55 | Q735158 | alcedinidae | Halcyon smyrnensis | White-throated Kingfisher | sv | 55885523 | 1315217781 | pending |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

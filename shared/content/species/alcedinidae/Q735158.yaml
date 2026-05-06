@@ -1,0 +1,106 @@
+id: Q735158
+scientific_name: Halcyon smyrnensis
+taxonomy:
+  family: Alcedinidae
+  family_sv: Kungsfiskare
+  genus: Halcyon
+  ioc_order: Coraciiformes
+names:
+  sv: Smyrnakungsfiskare
+  en: White-throated Kingfisher
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# White-throated Kingfisher
+
+
+    The white-throated kingfisher is a striking tree kingfisher with a turquoise back
+    and wings contrasting sharply with its rufous-chestnut head and white throat and
+    breast. It is widely distributed across Asia, from the Middle East through the
+    Indian subcontinent to China and Indonesia, where it is largely resident throughout
+    the year.
+
+
+    Unlike many kingfisher species, this bird is highly adaptable and often hunts
+    far from water, perching on wires, buildings, and trees while scanning for prey.
+    It feeds on a diverse range of items including small reptiles, amphibians, crabs,
+    small rodents, and even birds. This versatility allows it to thrive in both rural
+    and urban environments.
+
+
+    During breeding season, the white-throated kingfisher becomes notably vocal, calling
+    loudly and persistently from prominent perches in the early mornings. Its distinctive
+    loud, repetitive calls are often among the first sounds heard at dawn. This combination
+    of striking appearance, versatile hunting habits, and conspicuous behaviour makes
+    it one of Asia''s most recognizable kingfisher species.'
+migration:
+  sv: ''
+  en: '# White-throated Kingfisher in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The White-throated Kingfisher is an Asian species with a range extending from
+    the Sinai Peninsula through the Indian subcontinent to China and Indonesia. It
+    is primarily a resident species throughout its range, with some populations undertaking
+    only short-distance movements. This bird does not occur in Scandinavia or Northern
+    Europe and is therefore not relevant to regional migration patterns or seasonal
+    occurrence in these regions.'
+image_refs:
+- role: hero
+  path: Q735158/hero.jpg
+  width: 2400
+  height: 1750
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:White throeted kingfisher 2
+    ( Halcyon smyrnensis)മീൻകൊതിച്ചാത്തൻ .jpg
+  commons_filename: White throeted kingfisher 2 ( Halcyon smyrnensis)മീൻകൊതിച്ചാത്തൻ
+    .jpg
+- role: secondary
+  path: Q735158/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25902645@N08">Hafiz
+    Issadeen</a> from Dharga Town, Sri Lanka
+  source_url: https://commons.wikimedia.org/wiki/File:Halcyon smyrnensis -Dharga Town,
+    Sri Lanka-8.jpg
+  commons_filename: Halcyon smyrnensis -Dharga Town, Sri Lanka-8.jpg
+- role: secondary
+  path: Q735158/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Halcyon smyrnensis (43984480974).jpg
+  commons_filename: Halcyon smyrnensis (43984480974).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:13:11.594169+00:00'
+sources:
+  wikipedia_sv_revision: '55885523'
+  wikipedia_en_revision: '1315217781'
+  claude_model: claude-haiku-4-5-20251001

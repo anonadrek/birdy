@@ -1,0 +1,134 @@
+id: Q79915
+scientific_name: Alcedo atthis
+taxonomy:
+  family: Alcedinidae
+  family_sv: Kungsfiskare
+  genus: Alcedo
+  ioc_order: Coraciiformes
+names:
+  sv: Kungsfiskare
+  en: Common Kingfisher
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kungsfiskare
+
+
+    Kungsfiskaren är en liten och färgglad fågel inom familjen kungsfiskare. Arten
+    förekommer över ett stort geografiskt område med flera olika underarter utspridda
+    över denna region. Den är anpassad för liv nära vatten och är en skicklig fiskare.
+
+
+    Arten är en stannfågel i större delen av sitt utbredningsområde, vilket innebär
+    att den är bosatt året runt på samma plats. Under vintermånaderna utgör dock ismörkningar
+    av vattendrag ett problem för arten, vilket gör att den tvingas flytta från områden
+    där floder och åar fryser över. Denna flyttning är således en anpassning till
+    klimatiska förhållanden snarare än en regelbunden, långväga migration.
+
+
+    Kungsfiskaren är en art som är väl värd att söka upp för den som är intresserad
+    av fåglar, särskilt i närheten av öppna vattendrag där den kan ses jaga.'
+  en: '# Common Kingfisher
+
+
+    The common kingfisher is a small, jewel-like bird found across Eurasia and North
+    Africa. It is instantly recognizable by its brilliant plumage: vibrant blue-green
+    upperparts and orange-red underparts, with a long, pointed black bill perfectly
+    adapted for catching small fish. Despite its small size, it is a powerfully built
+    hunter with short legs positioned far back on its body.
+
+
+    This kingfisher is highly territorial and spends much of its time perched on low
+    branches overhanging water, watching intently for prey. It hunts by plunge-diving
+    into rivers, streams, and lakes with remarkable speed and accuracy. Its flight
+    is characteristically fast and direct, often following the course of waterways
+    with whirring wingbeats.
+
+
+    The common kingfisher''s call is a loud, sharp chittering sound, often uttered
+    in flight. It is generally resident throughout much of its range, though populations
+    in northern regions migrate southward when rivers and lakes freeze over in winter.
+    It nests in burrows excavated into riverbanks, where it raises its young hidden
+    from view. Look for it perched on rocks, branches, or reeds beside clean, fish-rich
+    freshwater habitats.'
+migration:
+  sv: '# Kungsfiskare
+
+
+    Kungsfiskaren är huvudsakligen en stannfågel i stora delar av sitt utbredningsområde,
+    men är samtidigt en partiell flyttfågel från områden med kallare vintrar. I Skandinavien
+    och Nordeuropa flyttar arten bort från regioner där vattendrag fryser till, då
+    den är beroende av öppet vatten för att kunna fiska. Under värmare vintrar stannar
+    fågeln året om, men under strängare vintrar är den tvungen att migrera sydvärts
+    eller västerut för att hitta isfritt vatten. Återkomsten till häckningsområdena
+    sker under vårmånaderna när is börjar smälta.'
+  en: '# Common Kingfisher Migration in Scandinavia
+
+
+    The Common Kingfisher is a partial migrant throughout Northern Europe, with its
+    presence in Scandinavia varying seasonally based on ice conditions. Birds are
+    resident in milder coastal regions and southern areas where rivers remain unfrozen
+    during winter, allowing year-round foraging. However, populations breeding in
+    northern Scandinavia and inland areas migrate southwestward in autumn (September-November)
+    as freshwater habitats freeze. Return migration begins in early spring (February-March)
+    as ice melts and water becomes accessible again. The species shows high site fidelity,
+    with many individuals returning to previous breeding territories. Harsh winters
+    with extensive ice coverage can cause significant population fluctuations, occasionally
+    forcing additional birds to relocate temporarily.'
+image_refs:
+- role: hero
+  path: Q79915/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Common Kingfisher (Alcedo atthis)
+    നീലപ്പൊന്മാന്‍. (25114264257).jpg
+  commons_filename: Common Kingfisher (Alcedo atthis) നീലപ്പൊന്മാന്‍. (25114264257).jpg
+- role: secondary
+  path: Q79915/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:IJsvogel - common kingfisher
+    - Alcedo atthis 6.jpg
+  commons_filename: IJsvogel - common kingfisher - Alcedo atthis 6.jpg
+- role: secondary
+  path: Q79915/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Common kingfisher (Alcedo atthis)
+    (23411312925).jpg
+  commons_filename: Common kingfisher (Alcedo atthis) (23411312925).jpg
+review_status: approved
+review_notes: 'auto-pick OK (Alcedo atthis i naturmiljö, klar identifierbar; CC BY 2.0)'
+generated_at: '2026-05-06T14:11:54.181226+00:00'
+sources:
+  wikipedia_sv_revision: '59176878'
+  wikipedia_en_revision: '1341290219'
+  claude_model: claude-haiku-4-5-20251001

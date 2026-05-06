@@ -13,7 +13,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-04 | alaudidae | +27 (totalt 97) | `d945e1f` |
 | 2026-05-06 | anatidae | +52 (totalt 149) | `1a99a63` |
 | 2026-05-06 | aegithalidae | +1 (totalt 150) | `acb3249` |
-| | _next: alcedinidae_ | | |
+| 2026-05-06 | alcedinidae | +6 (totalt 156) | `<pending>` |
+| | _next: alle Q-IDs sorted alphabetically — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -32,6 +33,14 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Validator-threshold (80w) > sparse-threshold (20w):** Q1590574 fick sv=72w (Claude körde, men under 80w-gränsen). Lägg `sv` i `description_accept_missing` även när text faktiskt finns men är för kort. Validatorn rapporterar `description-too-short` om missat.
 - **`allow_missing_images: true` per art** finns redan som override (`ValidateMain.kt:15`). Använd när Commons saknar foto över `MIN_DIMENSION=2048`. Q891376 basrasångare hade bara 1071×905 → satt allow_missing_images. Bättre än att sänka MIN_DIMENSION globalt.
 - Q27674 härmsångare hade bara 1 image_ref (hero, ingen secondary). Validatorn accepterar — minimum är 1 hero. Inte allt är problem.
+
+**Alcedinidae-batch lärdomar (2026-05-06):**
+
+- 1/6 abundance:allmän approved (Q79915 kungsfiskare — Sveriges enda häckande kungsfiskare). Övriga 5 är afrikanska/asiatiska arter, ovanliga.
+- **3/6 (50%) sparse-text-overrides** — alla tre exotiska arter (Q1270808 Halcyon leucocephala, Q21127307 Corythornis cristatus, Q735158 Halcyon smyrnensis) saknar svensk Wikipedia helt (svwiki revision ID:n går vidare men extracten är 0 ord). Förväntat för icke-skandinaviska arter; mönstret kommer återkomma i alla "exotic" familjer (afrikanska/sydostasiatiska).
+- **Wikidata SPARQL transient 502:** Q735158 fick `502 Bad Gateway` på första försöket. Retry på enskild art löste det utan kod-ändring. Pipeline-mönster: vid familj-failure med transient-pekare, retry den failade arten separat innan man eskalerar.
+- **Inga pipeline-fixar behövdes.**
+- Cost: ~$0.011 / 6 arter (4 Claude calls första körningen + 2 retry för Q735158).
 
 **Aegithalidae-batch lärdomar (2026-05-06):**
 

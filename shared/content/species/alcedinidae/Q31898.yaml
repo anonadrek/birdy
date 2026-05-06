@@ -1,0 +1,117 @@
+id: Q31898
+scientific_name: Todiramphus chloris
+taxonomy:
+  family: Alcedinidae
+  family_sv: Kungsfiskare
+  genus: Todiramphus
+  ioc_order: Coraciiformes
+names:
+  sv: Halsbandskungsfiskare
+  en: Collared Kingfisher
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Halsbandskungsfiskare
+
+
+    Halsbandskungsfiskare är en kungsfiskare med vid utbredning från Röda havet till
+    Stilla havet. Det är en medlem av familjen kungsfiskare inom ordningen praktfåglar.
+    DNA-studier har visat att flera tidigare klassificerade underarter är egna distinkta
+    arter, vilket har gjort att denna arts systematiska ställning har reviderats under
+    senare tid.
+
+
+    Arten återfinns i kustnära och deltamiljöer över sitt expansiva utbredningsområde,
+    där det jagar små fiskar och havskräktur från exponerade utgångspunkter. Som många
+    kungsfiskare är halsbandskungsfiskaren en skicklig bågjägare som dyker snabbt
+    ned i vattnet för att fånga sitt byte.'
+  en: '# Collared Kingfisher
+
+
+    The collared kingfisher is a medium-sized tree kingfisher with a distinctive appearance
+    featuring a prominent white collar that contrasts sharply with its darker head
+    and back plumage. Known by several alternative names—white-collared, black-masked,
+    and mangrove kingfisher—it displays considerable variation across its range, with
+    several populations now recognized as separate species. The bird''s striking facial
+    pattern and robust build make it relatively easy to identify in the field.
+
+
+    This kingfisher inhabits a vast geographic range spanning from the Red Sea eastward
+    across southern Asia and extending through the Indo-Pacific region to Melanesia.
+    It is typically found in coastal and mangrove habitats, though it also frequents
+    woodland and scrubland areas near water. The collared kingfisher perches alertly,
+    watching for small fish, crustaceans, and other prey in shallow waters below.
+
+
+    The species remains common throughout much of its range and has proven adaptable
+    to various wetland environments. Its wide distribution and habitat flexibility
+    have allowed populations to persist despite habitat changes, making it one of
+    the more successful kingfisher species across its substantial range.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the occurrence, migration
+    patterns, or seasonal distribution of the Collared Kingfisher in Scandinavia or
+    Northern Europe. The species'' range is described as extending from the Red Sea
+    across southern Asia to Melanesia, which does not include Northern European or
+    Scandinavian regions. Therefore, migration data for this species in the specified
+    geographic area cannot be provided based on the available source material.'
+image_refs:
+- role: hero
+  path: Q31898/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29237715@N05">Noel
+    Reynolds</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Collared Kingfisher (Todiramphus
+    chloris) (7319838026).jpg
+  commons_filename: Collared Kingfisher (Todiramphus chloris) (7319838026).jpg
+- role: secondary
+  path: Q31898/secondary-1.jpg
+  width: 1800
+  height: 1214
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Kramthenik27" title="User:Kramthenik27">Kramthenik27</a>
+  source_url: https://commons.wikimedia.org/wiki/File:White Collared Kingfisher (Todiramphus
+    chloris).jpg
+  commons_filename: White Collared Kingfisher (Todiramphus chloris).jpg
+- role: secondary
+  path: Q31898/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Melindra12&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Melindra12 (page does not exist)">Melindra12</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Collared kingfisher (Todiramphus
+    chloris) at Seliu Island, Belitung, Bangka-Belitung, Indonesia.jpg
+  commons_filename: Collared kingfisher (Todiramphus chloris) at Seliu Island, Belitung,
+    Bangka-Belitung, Indonesia.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:11:36.321384+00:00'
+sources:
+  wikipedia_sv_revision: '56856708'
+  wikipedia_en_revision: '1351072413'
+  claude_model: claude-haiku-4-5-20251001

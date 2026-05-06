@@ -1,0 +1,102 @@
+id: Q1270808
+scientific_name: Halcyon leucocephala
+taxonomy:
+  family: Alcedinidae
+  family_sv: Kungsfiskare
+  genus: Halcyon
+  ioc_order: Coraciiformes
+names:
+  sv: Gråhuvad kungsfiskare
+  en: Grey-headed Kingfisher
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Grey-headed Kingfisher
+
+
+    The grey-headed kingfisher is a widespread African kingfisher found across the
+    continent from west to east and extending into southern Arabia. It occurs in suitable
+    habitats from coastal regions to inland areas, inhabiting both mainland territories
+    and offshore islands throughout its extensive range.
+
+
+    This species belongs to the kingfisher family and is adapted to hunting in aquatic
+    environments characteristic of kingfishers. Like other members of its family,
+    it is specialized for diving and capturing prey from water, though specific details
+    about its appearance, behaviour, and vocalizations would benefit from additional
+    field observation guides. The bird''s distribution reflects its ability to exploit
+    diverse wetland and waterside habitats across its broad geographic range, making
+    it a relatively accessible kingfisher species for observers across much of Africa
+    and the Arabian Peninsula.'
+migration:
+  sv: ''
+  en: '# Migration Data Unavailable for This Species
+
+
+    Migration data unavailable for this species.
+
+
+    The source text provides only information about the Grey-headed Kingfisher''s
+    geographic range across Africa and southern Arabia, with no details regarding
+    its occurrence in Scandinavia or Northern Europe, seasonal movements, or migration
+    patterns. This species is an African and Arabian resident with no documented presence
+    in northern European regions.'
+image_refs:
+- role: hero
+  path: Q1270808/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Grey-headed kingfisher, Halcyon
+    leucocephala, at Kruger National Park, South Africa (51755302302).jpg
+  commons_filename: Grey-headed kingfisher, Halcyon leucocephala, at Kruger National
+    Park, South Africa (51755302302).jpg
+- role: secondary
+  path: Q1270808/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Grey-headed kingfisher, Halcyon
+    leucocephala, at Kruger National Park, South Africa - 51756375123.jpg
+  commons_filename: Grey-headed kingfisher, Halcyon leucocephala, at Kruger National
+    Park, South Africa - 51756375123.jpg
+- role: secondary
+  path: Q1270808/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Grey-headed kingfisher, Halcyon
+    leucocephala, at Kruger National Park, South Africa - 51756375343.jpg
+  commons_filename: Grey-headed kingfisher, Halcyon leucocephala, at Kruger National
+    Park, South Africa - 51756375343.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:12:07.063356+00:00'
+sources:
+  wikipedia_sv_revision: '56466565'
+  wikipedia_en_revision: '1315068381'
+  claude_model: claude-haiku-4-5-20251001
