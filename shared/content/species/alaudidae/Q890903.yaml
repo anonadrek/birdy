@@ -2,11 +2,11 @@ id: Q890903
 scientific_name: Alauda razae
 taxonomy:
   family: Alaudidae
-  family_sv: lärkor
+  family_sv: Lärkor
   genus: Alauda
   ioc_order: Passeriformes
 names:
-  sv: rasolärka
+  sv: Rasolärka
   en: Raso Lark
 abundance: ovanlig
 iucn_status: CR

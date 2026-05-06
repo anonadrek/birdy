@@ -2,11 +2,11 @@ id: Q41181
 scientific_name: Aquila chrysaetos
 taxonomy:
   family: Accipitridae
-  family_sv: hökar
+  family_sv: Hökar
   genus: Aquila
   ioc_order: Accipitriformes
 names:
-  sv: kungsörn
+  sv: Kungsörn
   en: Golden Eagle
 abundance: ovanlig
 iucn_status: LC

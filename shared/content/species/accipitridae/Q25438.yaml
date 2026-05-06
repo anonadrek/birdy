@@ -2,11 +2,11 @@ id: Q25438
 scientific_name: Haliaeetus albicilla
 taxonomy:
   family: Accipitridae
-  family_sv: hökar
+  family_sv: Hökar
   genus: Haliaeetus
   ioc_order: Accipitriformes
 names:
-  sv: havsörn
+  sv: Havsörn
   en: White-tailed Eagle
 abundance: allmän
 iucn_status: LC

@@ -2,11 +2,11 @@ id: Q234722
 scientific_name: Aquila fasciata
 taxonomy:
   family: Accipitridae
-  family_sv: hökar
+  family_sv: Hökar
   genus: Aquila
   ioc_order: Accipitriformes
 names:
-  sv: hökörn
+  sv: Hökörn
   en: Bonelli’s Eagle
 abundance: ovanlig
 iucn_status: LC

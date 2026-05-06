@@ -2,11 +2,11 @@ id: Q25380
 scientific_name: Accipiter nisus
 taxonomy:
   family: Accipitridae
-  family_sv: hökar
+  family_sv: Hökar
   genus: Accipiter
   ioc_order: Accipitriformes
 names:
-  sv: sparvhök
+  sv: Sparvhök
   en: Eurasian Sparrowhawk
 abundance: allmän
 iucn_status: LC

@@ -2,11 +2,11 @@ id: Q126167
 scientific_name: Gypaetus barbatus
 taxonomy:
   family: Accipitridae
-  family_sv: hökar
+  family_sv: Hökar
   genus: Gypaetus
   ioc_order: Accipitriformes
 names:
-  sv: lammgam
+  sv: Lammgam
   en: Bearded Vulture
 abundance: ovanlig
 iucn_status: NT

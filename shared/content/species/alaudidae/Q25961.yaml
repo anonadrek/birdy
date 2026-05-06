@@ -2,11 +2,11 @@ id: Q25961
 scientific_name: Alauda arvensis
 taxonomy:
   family: Alaudidae
-  family_sv: lärkor
+  family_sv: Lärkor
   genus: Alauda
   ioc_order: Passeriformes
 names:
-  sv: sånglärka
+  sv: Sånglärka
   en: Eurasian Skylark
 abundance: allmän
 iucn_status: LC
