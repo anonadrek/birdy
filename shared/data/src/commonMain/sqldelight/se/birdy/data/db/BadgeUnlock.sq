@@ -1,0 +1,15 @@
+CREATE TABLE badge_unlock (
+    badge_id        TEXT NOT NULL PRIMARY KEY,
+    unlocked_at_ms  INTEGER NOT NULL
+);
+
+CREATE INDEX badge_unlock_unlocked_at_idx ON badge_unlock(unlocked_at_ms DESC);
+
+selectAll:
+SELECT * FROM badge_unlock ORDER BY unlocked_at_ms DESC;
+
+upsert:
+INSERT OR REPLACE INTO badge_unlock(badge_id, unlocked_at_ms) VALUES (?, ?);
+
+deleteAll:
+DELETE FROM badge_unlock;
