@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-06):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 97/700, nästa familj = anatidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b deferrad. **Plan 5a (Diary) pågår — Tasks 1–9 ✅ (HEAD `7120f6d`), Task 10 (ObservationDetailScreen UI) är nästa.** Detaljer i auto-memory `project_plan_5a_status.md`.
+**Status (2026-05-06):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 97/700, nästa familj = anatidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b deferrad. **Plan 5a (Diary) pågår — Tasks 1–10 ✅ (HEAD `35d0ebf`), Task 11 (Navigation + AppGraph + Save-CTA, 8+ filer) är nästa.** Detaljer i auto-memory `project_plan_5a_status.md`.
 
 ## Var hittar du saker
 
@@ -30,7 +30,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | 3 | Encyclopedia (browse + species profile) | ✅ `v0.3.0-encyclopedia` |
 | 4a | ML & Camera UI (FakeClassifier + UI + CameraX 3 fps) | ✅ `v0.4.0a-camera-ui` |
 | 4b | Real TFLite-modell | ⏸ separat brainstorm senare |
-| 5a | Diary (browse + detail + save flow) | 🚧 Tasks 1–9 ✅ (`7120f6d`), Task 10 (Detail UI) nästa |
+| 5a | Diary (browse + detail + save flow) | 🚧 Tasks 1–10 ✅ (`35d0ebf`), Task 11 (nav-wiring) nästa |
 | 5b | Gamification (badges, streaks) | |
 | 6 | Polish + Play Store-release | |
 
