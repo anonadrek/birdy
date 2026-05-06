@@ -7,6 +7,7 @@ import kotlinx.coroutines.runBlocking
 import se.birdy.app.App
 import se.birdy.app.SpeciesRepositoryProvider
 import se.birdy.app.badges.BadgeCatalogLoader
+import se.birdy.app.bootstrap.SharedPrefsBadgeVersionStore
 import se.birdy.app.di.AppGraph
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.content.Locale
@@ -14,7 +15,6 @@ import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
 import se.birdy.data.observation.SqlDelightObservationRepository
-import se.birdy.app.bootstrap.SharedPrefsBadgeVersionStore
 import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.camera.AndroidCameraSource
 import java.io.File

@@ -38,6 +38,10 @@ class ClassificationResultViewModel(
     init {
         viewModelScope.launch { resolve() }
         viewModelScope.launch {
+            // Loading-guard: collector emits emptyList immediately at subscription;
+            // resolve() may not have set Loaded yet. Skip non-Loaded states so we don't
+            // mutate Error/Loading. After Loaded, both this collector and saveToDiary
+            // run on Main (single-threaded), so .copy() reads/writes are safe.
             unlockQueue.queue.collect { list ->
                 val current = _state.value
                 if (current is ClassificationResultUiState.Loaded) {
