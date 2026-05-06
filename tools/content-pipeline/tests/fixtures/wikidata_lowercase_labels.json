@@ -1,0 +1,19 @@
+{
+  "head": {"vars": ["taxonName", "taxonLabelSv", "family", "familyLabel", "familyLabelSv", "genus", "genusLabel", "ordo", "ordoLabel", "iucnStatus", "iucnStatusLabel", "image"]},
+  "results": {
+    "bindings": [{
+      "taxonName": {"type": "literal", "value": "Gypaetus barbatus"},
+      "taxonLabelSv": {"type": "literal", "xml:lang": "sv", "value": "lammgam"},
+      "family": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25324"},
+      "familyLabel": {"type": "literal", "value": "Accipitridae"},
+      "familyLabelSv": {"type": "literal", "xml:lang": "sv", "value": "hökar"},
+      "genus": {"type": "uri", "value": "http://www.wikidata.org/entity/Q186514"},
+      "genusLabel": {"type": "literal", "value": "Gypaetus"},
+      "ordo": {"type": "uri", "value": "http://www.wikidata.org/entity/Q25517"},
+      "ordoLabel": {"type": "literal", "value": "Accipitriformes"},
+      "iucnStatus": {"type": "uri", "value": "http://www.wikidata.org/entity/Q278113"},
+      "iucnStatusLabel": {"type": "literal", "value": "near threatened"},
+      "image": {"type": "uri", "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Gypaetus%20barbatus.jpg"}
+    }]
+  }
+}

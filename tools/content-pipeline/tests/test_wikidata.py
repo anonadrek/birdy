@@ -36,6 +36,24 @@ async def test_fetch_structured_uses_fixture(
 
 
 @pytest.mark.asyncio
+async def test_fetch_structured_capitalizes_lowercase_sv_labels(
+    fixtures_dir: Path,
+    tmp_path: Path,
+) -> None:
+    fixture = (fixtures_dir / "wikidata_lowercase_labels.json").read_text(encoding="utf-8")
+
+    async def fake_sparql(query: str) -> str:
+        return fixture
+
+    cache = Cache(tmp_path)
+    client = WikidataClient(cache=cache, run_sparql=fake_sparql)
+
+    result = await client.fetch_structured("Q126167")
+    assert result.common_sv == "Lammgam"
+    assert result.family_sv == "H\u00f6kar"
+
+
+@pytest.mark.asyncio
 async def test_fetch_structured_handles_missing_sv_labels(
     fixtures_dir: Path,
     tmp_path: Path,

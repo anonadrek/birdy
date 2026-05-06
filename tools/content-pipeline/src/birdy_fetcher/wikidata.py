@@ -43,6 +43,15 @@ class WikidataStructured:
 SparqlRunner = Callable[[str], Awaitable[str]]
 
 
+def _capitalize_first(s: str | None) -> str | None:
+    # Wikidata rdfs:label@sv arrives inconsistently: "Talgoxe" capitalized but
+    # "lammgam"/"vitögd vråk" lowercase. Force capital-first while preserving
+    # any internal casing (proper nouns, abbreviations like "USA-stork").
+    if not s:
+        return s
+    return s[0].upper() + s[1:]
+
+
 async def _default_run_sparql(query: str) -> str:
     async with (
         aiohttp.ClientSession(headers={"User-Agent": USER_AGENT}) as session,
@@ -117,8 +126,8 @@ class WikidataClient:
         if image_uri:
             tail = image_uri.rsplit("/", 1)[-1]
             image_filename = unquote(tail)
-        common_sv = b.get("taxonLabelSv", {}).get("value") or None
-        family_sv = b.get("familyLabelSv", {}).get("value") or None
+        common_sv = _capitalize_first(b.get("taxonLabelSv", {}).get("value") or None)
+        family_sv = _capitalize_first(b.get("familyLabelSv", {}).get("value") or None)
         return WikidataStructured(
             q_id=q_id,
             scientific_name=b["taxonName"]["value"],
