@@ -89,6 +89,7 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 64 | Q392570 | ardeidae | Revhäger | Egretta gularis | sv | — | — | pending (atlantkust Afrika) |
 | 65 | Q498428 | ardeidae | Damrallhäger | Ardeola grayii | sv | — | — | pending (sv summary 71w under 80-tröskeln) |
 | 66 | Q888536 | ardeidae | Kinesisk dvärgrördrom | Botaurus sinensis | sv | — | — | pending (asiatisk) |
+| 67 | Q27074817 | bucerotidae | Gråtoko | Lophoceros nasutus | sv | — | — | pending (afrikansk vagrant, ingen svwiki) |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

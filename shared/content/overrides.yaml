@@ -162,3 +162,6 @@ species:
     description_accept_missing: [sv]  # Ardeola grayii (Damrallhäger) — sv summary 71w (validator threshold 80)
   Q888536:
     description_accept_missing: [sv]  # Botaurus sinensis (Kinesisk dvärgrördrom) — asiatisk
+  # Bucerotidae batch (2026-05-07): African vagrant, no Swedish Wikipedia article.
+  Q27074817:
+    description_accept_missing: [sv]  # Lophoceros nasutus (Gråtoko / African Grey Hornbill) — afrikansk, ingen svwiki

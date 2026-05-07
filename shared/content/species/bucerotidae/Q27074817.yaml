@@ -1,0 +1,105 @@
+id: Q27074817
+scientific_name: Lophoceros nasutus
+taxonomy:
+  family: Bucerotidae
+  family_sv: Näshornsfåglar
+  genus: Lophoceros
+  ioc_order: Bucerotiformes
+names:
+  sv: Gråtoko
+  en: African Grey Hornbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# African Grey Hornbill
+
+
+    The African grey hornbill is a widespread resident breeder across much of sub-Saharan
+    Africa and the southwest of the Arabian Peninsula. This member of the hornbill
+    family represents the diverse near-passerine birds predominantly found in tropical
+    Old World regions.
+
+
+    The species is characterized by its distinctive appearance typical of hornbills,
+    though specific plumage details from the source remain limited. Like other hornbills,
+    it likely displays the family''s characteristic features, though further description
+    would require additional sources.
+
+
+    The African grey hornbill has occasionally appeared outside its native range,
+    with records of escaped or deliberately released individuals in Florida, USA.
+    However, there is no evidence of established breeding populations in this introduced
+    location, with any persistence likely dependent on continued releases or escapes
+    rather than natural reproduction.'
+migration:
+  sv: ''
+  en: '# African Grey Hornbill in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The African Grey Hornbill is a resident species of sub-Saharan Africa and the
+    Arabian Peninsula, with no natural occurrence in Scandinavia or Northern Europe.
+    While the species has appeared in Florida through human-mediated releases or escapes,
+    there is no evidence of established breeding populations there or any presence
+    in Nordic regions.'
+image_refs:
+- role: hero
+  path: Q27074817/hero.jpg
+  width: 2400
+  height: 1652
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:African Grey Hornbill (Lophoceros
+    nasutus epirhinus) male ... (46748824682).jpg
+  commons_filename: African Grey Hornbill (Lophoceros nasutus epirhinus) male ...
+    (46748824682).jpg
+- role: secondary
+  path: Q27074817/secondary-1.jpg
+  width: 1800
+  height: 1211
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:African Grey Hornbill (Lophoceros
+    nasutus) male ... (51669319300).jpg
+  commons_filename: African Grey Hornbill (Lophoceros nasutus) male ... (51669319300).jpg
+- role: secondary
+  path: Q27074817/secondary-2.jpg
+  width: 1800
+  height: 1365
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:African Grey Hornbill (Lophoceros
+    nasutus epirhinus) female.jpg
+  commons_filename: African Grey Hornbill (Lophoceros nasutus epirhinus) female.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T20:12:54.308019+00:00'
+sources:
+  wikipedia_sv_revision: '58542501'
+  wikipedia_en_revision: '1314195664'
+  claude_model: claude-haiku-4-5-20251001
