@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-07):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 189/700, nästa familj = bombycillidae (eller liknande, kolla species_list.yaml). Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b deferrad. Plan 5a (Diary) ✅ (`v0.5.0a-diary`). **Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`).** Nästa plan är Plan 6 (Polish + Play Store-release). Detaljer i auto-memory `project_plan_5b_status.md`.
+**Status (2026-05-07):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 190/700, nästa familj = bucerotidae (eller liknande, kolla species_list.yaml). Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b deferrad. Plan 5a (Diary) ✅ (`v0.5.0a-diary`). **Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`).** Nästa plan är Plan 6 (Polish + Play Store-release). Detaljer i auto-memory `project_plan_5b_status.md`.
 
 ## Var hittar du saker
 
@@ -26,7 +26,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 |---|---|---|
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ `v0.1.0-foundation` |
 | 2a | Content pipeline + walking skeleton (5 arter) | ✅ `v0.2.0a-pipeline` |
-| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 189/700 (ardeidae) |
+| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 190/700 (bombycillidae) |
 | 3 | Encyclopedia (browse + species profile) | ✅ `v0.3.0-encyclopedia` |
 | 4a | ML & Camera UI (FakeClassifier + UI + CameraX 3 fps) | ✅ `v0.4.0a-camera-ui` |
 | 4b | Real TFLite-modell | ⏸ separat brainstorm senare |
@@ -152,7 +152,8 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 | 2026-05-06 | anhingidae | +1 | 164 | `0461611` |
 | 2026-05-06 | apodidae | +9 | 173 | `89f2ca3` |
 | 2026-05-07 | ardeidae | +16 | 189 | `103c76c` |
-| _(next)_ | _kolla species_list.yaml_ | | | |
+| 2026-05-07 | bombycillidae | +1 | 190 | _(this commit)_ |
+| _(next)_ | _bucerotidae (1 art) — kolla species_list.yaml_ | | | |
 
 **Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör nästa familj". Pure-data — kan köras parallellt med Plan 5+.
 

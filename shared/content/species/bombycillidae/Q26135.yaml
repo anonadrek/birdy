@@ -1,0 +1,134 @@
+id: Q26135
+scientific_name: Bombycilla garrulus
+taxonomy:
+  family: Bombycillidae
+  family_sv: Bombycillidae
+  genus: Bombycilla
+  ioc_order: Passeriformes
+names:
+  sv: Sidensvans
+  en: Bohemian Waxwing
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sidensvans
+
+
+    Sidensvans är en elegant fågel som tillhör familjen sidensvansar. Den är känd
+    för sin karakteristiska utseende med rostbrun färgton på huvud och överdelar,
+    gul och svart märkning på vingarna samt svart märke runt ögat som liknar en mask.
+    Fjädertoppkammen på huvudet är framträdande och ger fågeln ett vågat utseende.
+
+
+    Arten häckar i de nordligaste delarna av Eurasien och nordvästra Nordamerika,
+    där den förekommer i barrskog och områden med gles vegetation. På vintern rör
+    den sig långt söderut och kan då observeras i större flockar när den söker efter
+    bär från framför allt rönn, hägg och andra bärträdslag. Under dessa perioder är
+    den relativt tamjad och tillåter människor att komma ganska nära.
+
+
+    Sidensvansen är huvudsakligen fruktätare och är mycket rörig när den äter, ofta
+    i sällskap med många andra individer. Den har en viss sång men är generellt inte
+    särskilt högljudd. Under vintern är den beroende av tillgången på bär, vilket
+    gör att förekomsten längre söderut varierar från år till år beroende på bärskörden
+    i norr.'
+  en: '# Bohemian Waxwing
+
+
+    The Bohemian waxwing is a striking, starling-sized bird with distinctive plumage
+    that makes it unmistakable in the field. It displays buff-grey upperparts contrasting
+    with black face markings and a pointed crest. The wings are particularly eye-catching,
+    featuring white and bright yellow patterning, while some flight feathers are tipped
+    with red—a feature that inspired the bird''s common name, as these tips resemble
+    sealing wax. Females are similarly plumaged to males, though young birds appear
+    duller with reduced white and yellow markings, and lack the characteristic waxy
+    red wingtips.
+
+
+    It breeds across northern forests throughout the Palearctic and North America,
+    inhabiting boreal woodlands where it feeds primarily on berries and insects. The
+    Bohemian waxwing is highly nomadic, moving irregularly in flocks in response to
+    food availability, which sometimes brings it to lower latitudes during winter
+    months. These movements can result in periodic invasions into temperate regions.
+
+
+    When present, it is easily distinguished from related cedar and Japanese waxwings
+    by its larger size and more robust plumage markings. It is a sociable species,
+    typically encountered in small to large flocks, particularly during migration
+    and winter. The bird''s behaviour and appearance make it a rewarding sighting
+    for birdwatchers fortunate enough to encounter these northern wanderers.'
+migration:
+  sv: Sidensvans är en nordlig art som förekommer i Skandinavien och Nordeuropa främst
+    under vintermånaderna. Arten häckar i de nordligaste delarna av Eurasien och återvänder
+    söderut när förhållandena försämras på sina häckningsplatser. Under hösten och
+    vintern kan sidensvans observeras i varierande antal i Skandinavien, ofta i stora
+    nomadiska flockar som söker föda på bär- och fruktbärande träd. Ankomsten till
+    södra delen av regionen är oregelbunden och beror på tillgången på naturlig föda
+    på häckningsplatserna. Under snöfattiga vintrar kan arten helt utebli från södra
+    Skandinavien.
+  en: '# Bohemian Waxwing in Scandinavia/Northern Europe
+
+
+    The Bohemian Waxwing is an irregular winter visitor to Scandinavia and Northern
+    Europe, with arrival timing and numbers varying considerably between years. These
+    birds breed in northern forests from Scandinavia eastward across Russia and North
+    America. During autumn, typically from September onwards, they migrate southwestward
+    from breeding grounds, reaching Scandinavia and Northern Europe as winters approach.
+    Their presence is highly unpredictable, influenced by berry crop availability
+    in their breeding regions—abundant food sources may keep populations further north,
+    while poor harvests trigger more southerly movements. Most individuals retreat
+    northward again by spring, typically March-April, returning to breeding territories.'
+image_refs:
+- role: hero
+  path: Q26135/hero.jpg
+  width: 2400
+  height: 2237
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%B8%D0%BC%D0%B0%D0%B8%D0%BD%D0%B0_%D1%85%D0%B8%D0%BA%D0%B0%D1%80%D0%B8"
+    title="User:Аимаина хикари">Аимаина хикари</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bombycilla garrulus Kiev1.jpg
+  commons_filename: Bombycilla garrulus Kiev1.jpg
+- role: secondary
+  path: Q26135/secondary-1.jpg
+  width: 1800
+  height: 1348
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%B8%D0%BC%D0%B0%D0%B8%D0%BD%D0%B0_%D1%85%D0%B8%D0%BA%D0%B0%D1%80%D0%B8"
+    title="User:Аимаина хикари">Аимаина хикари</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bombycilla garrulus Kiev3.jpg
+  commons_filename: Bombycilla garrulus Kiev3.jpg
+- role: secondary
+  path: Q26135/secondary-2.jpg
+  width: 1800
+  height: 1448
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%B8%D0%BC%D0%B0%D0%B8%D0%BD%D0%B0_%D1%85%D0%B8%D0%BA%D0%B0%D1%80%D0%B8"
+    title="User:Аимаина хикари">Аимаина хикари</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bombycilla garrulus Kiev6.jpg
+  commons_filename: Bombycilla garrulus Kiev6.jpg
+review_status: approved
+review_notes: 'Hero visar tydlig sidensvans med crest, svart ögonmask, rönnbär i bakgrunden — bra ID-foto.'
+generated_at: '2026-05-07T10:58:29.095682+00:00'
+sources:
+  wikipedia_sv_revision: '58515218'
+  wikipedia_en_revision: '1345670511'
+  claude_model: claude-haiku-4-5-20251001
