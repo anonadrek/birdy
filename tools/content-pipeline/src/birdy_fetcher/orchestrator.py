@@ -127,7 +127,11 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
 
     wd = await ctx.wikidata.fetch_structured(q_id, force=ctx.options.force)
     common_sv = listed.get("common_sv") or wd.common_sv
-    family_sv = listed.get("family_sv") or wd.family_sv or wd.family
+    # Prefer family from species_list (IOC source-of-truth) over Wikidata's
+    # familyLabel — Wikidata's P171* traversal can return common-name labels
+    # like "heron" instead of the IOC family name "Ardeidae".
+    family = listed.get("family") or wd.family
+    family_sv = listed.get("family_sv") or wd.family_sv or family
     title_by_lang = {
         "sv": common_sv or scientific_name,
         "en": listed.get("common_en") or scientific_name,
@@ -143,7 +147,7 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
     # existing YAML so we can carry over the section we are NOT regenerating.
     # Otherwise --field=text writes empty image_refs (and vice versa), wiping
     # committed work. --field=all behaves as before (full rebuild from sources).
-    family_dir = wd.family.lower()
+    family_dir = family.lower()
     yaml_out_path = ctx.species_yaml_root / family_dir / f"{q_id}.yaml"
     existing: dict[str, Any] | None = None
     if ctx.options.field != "all" and yaml_out_path.exists():
@@ -163,7 +167,7 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
                 scientific_name=scientific_name,
                 common_sv=common_sv or "",
                 common_en=listed.get("common_en") or "",
-                family=wd.family,
+                family=family,
                 family_sv=family_sv,
                 wikipedia_intro=article.extract,
                 lang=lang,
@@ -174,7 +178,7 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
                 scientific_name=scientific_name,
                 common_sv=common_sv or "",
                 common_en=listed.get("common_en") or "",
-                family=wd.family,
+                family=family,
                 family_sv=family_sv,
                 wikipedia_intro=article.extract,
                 lang=lang,
@@ -260,7 +264,7 @@ async def refresh_one(ctx: RefreshContext, listed: dict[str, Any]) -> SpeciesYam
     data = SpeciesYamlData(
         wikidata_id=q_id,
         scientific_name=scientific_name,
-        family=wd.family,
+        family=family,
         family_sv=family_sv,
         genus=wd.genus,
         ioc_order=ioc_order,
