@@ -2,9 +2,11 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Byt ut `FakeBirdClassifier` mot en off-the-shelf TFLite-implementation av iNat2021 Aves bakom samma `BirdClassifier`-interface från Plan 4a. Inkluderar cross-walk iNat-taxon-ID → Q-ID via Wikidata SPARQL, build-time `validateModelMapping`-Gradle-task, fallback till FakeClassifier vid TFLite-fel, Python `tools/ml-eval/` för accuracy-mätning, Android `BenchmarkScreen` för on-device latens. Tag `v0.4.0b-real-tflite`.
+**Goal:** Byt ut `FakeBirdClassifier` mot en off-the-shelf TFLite-implementation av Google AIY Birds V1 (964 fågelarter, 3.5 MB MobileNetV2-quantized) bakom samma `BirdClassifier`-interface från Plan 4a. Inkluderar cross-walk scientific-name → Q-ID via Wikidata SPARQL P225, build-time `validateModelMapping`-Gradle-task, fallback till FakeClassifier vid TFLite-fel, Python `tools/ml-eval/` för accuracy-mätning, Android `BenchmarkScreen` för on-device latens. Tag `v0.4.0b-real-tflite`.
 
-**Architecture:** `:shared:ml/commonMain` får `TfLiteBirdClassifier` (expect/actual), `BirdClassifierFactory` (fallback-logic), `InatLabelMapper`, `ImagePreprocessor` (expect/actual), `ModelArtifactProvider` (expect/actual). Modell-artefakt + mapping + metadata bundlas i compose-resources om < 80 MB, annars Play Asset Delivery. `tools/content-pipeline/birdy_fetcher/inat_mapping.py` bygger `inat_to_qid.json` från Wikidata-property P3151. `tools/ml-eval/` är ny Python-modul med corpus-loader, TFLite-runner, metrics, Markdown-rapport. Android `BenchmarkScreen` (DEBUG-only) kör samma `BirdClassifier`-instans som production-flow för end-to-end latens-sampling. ViewModels + screens från Plan 4a är **orörda**; bara `AppGraph` byter `classifier`-binding.
+> **Pivot 2026-05-07:** Ursprungsplanen pekade på iNat2021 Aves; efter Task 1 var klar (generisk SPARQL P3151-plumbing committad som `inat_mapping.py`, behålls som referens) visade Task 2:s artefakt-jakt att iNat2021 Aves inte distribueras publikt som off-the-shelf TFLite. Pivoterade till Google AIY Birds V1. Spec-doc revision committad i samma commit som plan-doc revisionen.
+
+**Architecture:** `:shared:ml/commonMain` får `TfLiteBirdClassifier` (expect/actual), `BirdClassifierFactory` (fallback-logic), `AiyLabelMapper`, `ImagePreprocessor` (expect/actual), `ModelArtifactProvider` (expect/actual). Modell-artefakt + mapping + metadata bundlas i compose-resources (AIY V1 är 3.5 MB → ingen PAD behövs). `tools/content-pipeline/birdy_fetcher/name_mapping.py` (Task 1b, NY) bygger `aiy_to_qid.json` från Wikidata-property P225 (taxon name). `tools/ml-eval/` är ny Python-modul med corpus-loader, TFLite-runner, metrics, Markdown-rapport. Android `BenchmarkScreen` (DEBUG-only) kör samma `BirdClassifier`-instans som production-flow för end-to-end latens-sampling. ViewModels + screens från Plan 4a är **orörda**; bara `AppGraph` byter `classifier`-binding.
 
 **Tech Stack:** Kotlin 2.1.20, Compose Multiplatform 1.7.3, TFLite-Java (`org.tensorflow:tensorflow-lite:2.16.1` + `tensorflow-lite-support:0.4.4`), kotlinx-serialization-json 1.7.3, Turbine 1.1.0. Python: `uv` + `tensorflow-cpu==2.16.1` + `pillow` + `pyyaml` + `httpx` + `pytest` (mirror `tools/content-pipeline/`).
 
@@ -16,7 +18,7 @@
 
 ## Plan-of-plans context
 
-This is **Plan 4b of 6** for v1. Plan 4a (`v0.4.0a-camera-ui`) shippade FakeClassifier som production-of-record bakom `BirdClassifier`-interfacet. Plan 5a + 5b (Diary + Gamification) shippade `v0.5.0a-diary` och `v0.5.0b-gamification`. Plan 2b (content backfill) är pausad vid 189/700 arter — kan köras parallellt med 4b. Plan 4b ersätter FakeClassifier i prod med riktig iNat2021-modell. Plan 4c (custom finetune) är separat brainstorm/spec, planerad efter 2b är 100% och vi har vokabulär att finetuna mot.
+This is **Plan 4b of 6** for v1. Plan 4a (`v0.4.0a-camera-ui`) shippade FakeClassifier som production-of-record bakom `BirdClassifier`-interfacet. Plan 5a + 5b (Diary + Gamification) shippade `v0.5.0a-diary` och `v0.5.0b-gamification`. Plan 2b (content backfill) är pausad vid 190/700 arter — kan köras parallellt med 4b. Plan 4b ersätter FakeClassifier i prod med Google AIY Birds V1 (off-the-shelf, 964 arter). Plan 4c (custom finetune) är separat brainstorm/spec, planerad efter 2b är 100% och vi har vokabulär att finetuna mot.
 
 Plan 4b leaves the project buildable + CI-green at every commit. Slutartefakt: APK på SM-S918B där realtime-scan + photo-analyze använder riktig TFLite-modell, ml-eval-rapport visar top-3 ≥ 70%, benchmark visar p95 < 333 ms.
 
@@ -24,7 +26,7 @@ Plan 4b leaves the project buildable + CI-green at every commit. Slutartefakt: A
 
 ## Avvikelser från spec
 
-Inga planerade avvikelser vid plan-skrivning. Avsteg under exekvering loggas här.
+**2026-05-07 — pivot från iNat2021 till AIY Birds V1.** Task 2's artefakt-jakt visade att iNat2021 Aves inte är off-the-shelf publikt distribuerad. Spec-doc Decision 2 + 5 + 10 reviderade. Plan-doc top-block + file-structure + Task 2 + Task 5 + Status-tabellen reviderade. Task 1's commit (`c2ed1c1` + `341d64c`) behålls som generisk SPARQL-plumbing-historik; Task 1b (NY) implementerar `name_mapping.py` med SPARQL P225 för scientific-name → Q-ID.
 
 ---
 
@@ -34,18 +36,21 @@ Inga planerade avvikelser vid plan-skrivning. Avsteg under exekvering loggas hä
 
 | Fil | Ansvar |
 |---|---|
-| `tools/content-pipeline/birdy_fetcher/inat_mapping.py` | SPARQL P3151 → `inat_to_qid.json` |
-| `tools/content-pipeline/tests/test_inat_mapping.py` | HTTPX-mock SPARQL-tester |
-| `shared/ml/src/commonMain/composeResources/files/ml/inat_to_qid.json` | Cross-walk-mapping (genererad) |
+| `tools/content-pipeline/src/birdy_fetcher/inat_mapping.py` | (Task 1 ✅) Generisk SPARQL P3151-plumbing — behålls som referens, används inte i runtime efter pivot |
+| `tools/content-pipeline/tests/test_inat_mapping.py` | (Task 1 ✅) Mock SPARQL-tester |
+| `tools/content-pipeline/src/birdy_fetcher/name_mapping.py` | (Task 1b — NY) SPARQL P225 → `aiy_to_qid.json` (återanvänder plumbing från `inat_mapping.py`) |
+| `tools/content-pipeline/tests/test_name_mapping.py` | (Task 1b — NY) Mock SPARQL-tester |
+| `shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json` | Cross-walk-mapping (genererad — class_index → Q-ID) |
 | `shared/ml/src/commonMain/composeResources/files/ml/model_metadata.json` | Modell-version, input-shape, normalization |
-| `shared/ml/src/commonMain/composeResources/files/ml/inat2021_aves.tflite` | TFLite-artefakt (om bundlad — se Task 2) |
+| `shared/ml/src/commonMain/composeResources/files/ml/aiy_birds_v1.tflite` | TFLite-artefakt (~3.5 MB, bundlad i AAB) |
+| `shared/ml/src/commonMain/composeResources/files/ml/aiy_labelmap.csv` | AIY V1 labelmap (`id,name`) — input till `name_mapping.py`, committat för reproducibility |
 | `shared/ml/src/commonMain/kotlin/se/birdy/ml/BirdClassifierModelInfo.kt` | Data class — modell-metadata-laddare |
 | `shared/ml/src/commonMain/kotlin/se/birdy/ml/BirdClassifierModelInfoLoader.kt` | `Res.readBytes("ml/model_metadata.json")` + JSON-parse |
 | `shared/ml/src/commonTest/kotlin/se/birdy/ml/BirdClassifierModelInfoLoaderTest.kt` | Parse-tester (valid + malformed) |
 | `shared/ml/src/commonMain/kotlin/se/birdy/ml/ModelArtifactProvider.kt` | `expect class` |
-| `shared/ml/src/androidMain/kotlin/se/birdy/ml/ModelArtifactProvider.android.kt` | `actual` — compose-resources eller PAD |
-| `shared/ml/src/commonMain/kotlin/se/birdy/ml/InatLabelMapper.kt` | Q-ID-lookup från `inat_to_qid.json` |
-| `shared/ml/src/commonTest/kotlin/se/birdy/ml/InatLabelMapperTest.kt` | Träffar/missar/dubbletter/malformed |
+| `shared/ml/src/androidMain/kotlin/se/birdy/ml/ModelArtifactProvider.android.kt` | `actual` — compose-resources |
+| `shared/ml/src/commonMain/kotlin/se/birdy/ml/AiyLabelMapper.kt` | Q-ID-lookup från `aiy_to_qid.json` (drop class 964 = background tyst) |
+| `shared/ml/src/commonTest/kotlin/se/birdy/ml/AiyLabelMapperTest.kt` | Träffar/missar/dubbletter/malformed/background-class |
 | `shared/ml/src/commonMain/kotlin/se/birdy/ml/ImagePreprocessor.kt` | `expect class` |
 | `shared/ml/src/androidMain/kotlin/se/birdy/ml/ImagePreprocessor.android.kt` | `actual` — JPEG/YUV/RGBA → tensor |
 | `shared/ml/src/commonTest/kotlin/se/birdy/ml/ImagePreprocessorContractTest.kt` | Kontrakt-tester (input-output-shape) |
@@ -89,8 +94,8 @@ Inga planerade avvikelser vid plan-skrivning. Avsteg under exekvering loggas hä
 
 | Fil | Ändring |
 |---|---|
-| `tools/content-pipeline/pyproject.toml` | Lägg till `httpx` (om inte redan); registrera `build-mapping` subcommand i `[project.scripts]` (om CLI-multi-command-mönstret kräver det) |
-| `tools/content-pipeline/birdy_fetcher/__main__.py` | Routa `build-mapping`-subcommand till `inat_mapping.py` |
+| `tools/content-pipeline/pyproject.toml` | (Task 1 ✅ — aiohttp redan tillgänglig) ingen ändring för Task 1b |
+| `tools/content-pipeline/src/birdy_fetcher/cli.py` | (Task 1b — NY) Bytt `build-mapping`-subcommand: läser AIY V1 labelmap CSV istället för species_list.yaml; routar till `name_mapping.py` |
 | `shared/ml/build.gradle.kts` | Lägg `tensorflow-lite` + `tensorflow-lite-support` deps i androidMain; kotlinx-serialization-json i commonMain |
 | `shared/content/build.gradle.kts` | Ny `validateModelMapping` JavaExec-task; hookad i `tasks.named("preBuild") { dependsOn(...) }` indirekt (faktiskt hookas i `:composeApp:preBuild`) |
 | `shared/content/src/main/kotlin/se/birdy/content/build/ValidateModelMapping.kt` | JavaExec entry-point (mönster från `ValidateBadgesYaml`) |
@@ -119,16 +124,17 @@ Ingenting i Plan 4b. `FakeBirdClassifier` behålls (test-fixture + fallback).
 
 | # | Task | Phase | Beroenden |
 |---|---|---|---|
-| 1 | `birdy-fetcher build-mapping` — SPARQL P3151 → `inat_to_qid.json` | Bygg-tid (Python) | — |
-| 2 | Obtain iNat2021 TFLite-artefakt + `model_metadata.json` | Modell | — |
-| 3 | Distribution-beslut (bundle vs PAD) — applicera | Modell | 2 |
+| 1 | ✅ `birdy-fetcher build-mapping` — generisk SPARQL P3151-plumbing (`inat_mapping.py`) | Bygg-tid (Python) | — |
+| 1b | (NY) `name_mapping.py` — SPARQL P225 → `aiy_to_qid.json` | Bygg-tid (Python) | 2 (behöver labelmap.csv) |
+| 2 | Obtain AIY Birds V1 TFLite + labelmap.csv + `model_metadata.json` | Modell | — |
+| 3 | Bundle AIY V1 i AAB (no PAD) — applicera | Modell | 2 |
 | 4 | `:shared:ml` deps + `BirdClassifierModelInfo` + `ModelArtifactProvider` | Runtime | 2, 3 |
-| 5 | `InatLabelMapper` (commonMain) | Runtime | 1 |
+| 5 | `AiyLabelMapper` (commonMain) | Runtime | 1b |
 | 6 | `ImagePreprocessor` (expect/actual) | Runtime | 4 |
 | 7 | `TfliteRunner` interface + `TfLiteBirdClassifier` (commonMain expect, commonTest) | Runtime | 5, 6 |
 | 8 | `TfLiteBirdClassifier.android.kt` (actual) + jvmTest mikro-modell | Runtime | 7 |
 | 9 | `BirdClassifierFactory` (init-fallback + 3-strikes) | Runtime | 7, 8 |
-| 10 | `validateModelMapping` Gradle-task | Bygg-tid | 1, 2 |
+| 10 | `validateModelMapping` Gradle-task | Bygg-tid | 1b, 2 |
 | 11 | Wire `AppGraph` + DEMO-banner i ScanScreen + i18n | Integration | 9 |
 | 12 | `tools/ml-eval/` scaffold + `corpus.py` | Eval | — |
 | 13 | `runner.py` + `metrics.py` | Eval | 12 |
@@ -137,7 +143,7 @@ Ingenting i Plan 4b. `FakeBirdClassifier` behålls (test-fixture + fallback).
 | 16 | `BenchmarkRunner` + `BenchmarkScreen` (Android debug) | Benchmark | 11 |
 | 17 | Run benchmark on device + commit JSON + screenshots + tag `v0.4.0b-real-tflite` | Verify | 11, 15, 16 |
 
-Tasks 1, 2, 12 är oberoende — kan köras i parallell om subagent-driven-development används.
+Tasks 2, 12 är oberoende — kan köras i parallell om subagent-driven-development används. Task 1b kräver att Task 2 levererat labelmap.csv.
 
 ---
 
@@ -145,11 +151,12 @@ Tasks 1, 2, 12 är oberoende — kan köras i parallell om subagent-driven-devel
 
 | # | Task | Status | Commit |
 |---|---|---|---|
-| 1 | birdy-fetcher build-mapping (SPARQL P3151) | ✅ | `c2ed1c1` + fixup `341d64c` |
-| 2 | Obtain iNat2021 TFLite + model_metadata | ⬜ | _next_ |
-| 3 | Distribution beslut (bundle vs PAD) | ⬜ | |
+| 1 | birdy-fetcher build-mapping (SPARQL P3151, generisk plumbing) | ✅ | `c2ed1c1` + fixup `341d64c` |
+| 1b | name_mapping.py (SPARQL P225 → aiy_to_qid.json) | ⬜ | (efter Task 2) |
+| 2 | Obtain AIY Birds V1 TFLite + labelmap.csv + model_metadata | ⬜ | _next_ |
+| 3 | Bundle AIY V1 i AAB (no PAD) | ⬜ | |
 | 4 | shared/ml deps + ModelInfo + ArtifactProvider | ⬜ | |
-| 5 | InatLabelMapper | ⬜ | |
+| 5 | AiyLabelMapper | ⬜ | |
 | 6 | ImagePreprocessor | ⬜ | |
 | 7 | TfliteRunner + TfLiteBirdClassifier (expect + tests) | ⬜ | |
 | 8 | TfLiteBirdClassifier.android.kt + jvmTest mikro-modell | ⬜ | |
@@ -166,6 +173,8 @@ Tasks 1, 2, 12 är oberoende — kan köras i parallell om subagent-driven-devel
 ---
 
 ## Task 1: `birdy-fetcher build-mapping` — SPARQL P3151 → `inat_to_qid.json`
+
+> **Pivot-not (2026-05-07):** Den här uppgiften är ✅ committad (`c2ed1c1` + fixup `341d64c`). Sektionsbeskrivningen reflekterar **committat arbete** — modulen `inat_mapping.py` finns kvar som generisk SPARQL P3151-plumbing och referens. Output-filnamnet `inat_to_qid.json` produceras inte i runtime efter pivoten; Task 1b's nya `name_mapping.py` skriver `aiy_to_qid.json` istället. Ingenting i den här sektionen ska implementeras igen.
 
 **Mål:** Bygg cross-walk från iNat-taxon-ID (heltal) till Wikidata Q-ID via SPARQL property P3151. Output: `inat_to_qid.json` med `_meta`-block (model-version, generated_at, coverage_pct, mapped_qids, total_qids) och `mappings`-block (`{ "12345": "Q25485", ... }`).
 
@@ -350,10 +359,10 @@ def test_render_mapping_json_writes_meta_and_sorted_mappings() -> None:
         requested_qids=10,
         mapped_qids=2,
     )
-    rendered = render_mapping_json(result, model_version="inat2021_aves_quant_v1",
+    rendered = render_mapping_json(result, model_version="aiy_birds_v1",
                                    generated_at=datetime(2026, 5, 7, 12, 0, 0, tzinfo=UTC))
     parsed = json.loads(rendered)
-    assert parsed["_meta"]["generated_for_model_version"] == "inat2021_aves_quant_v1"
+    assert parsed["_meta"]["generated_for_model_version"] == "aiy_birds_v1"
     assert parsed["_meta"]["coverage_pct"] == 20.0
     assert parsed["_meta"]["mapped_qids"] == 2
     assert parsed["_meta"]["total_qids"] == 10
@@ -439,7 +448,7 @@ from datetime import UTC, datetime
 @click.option("--species-list", type=click.Path(exists=True, path_type=Path),
               default=Path("../../shared/content/species_list.yaml"))
 @click.option("--model-version", required=True,
-              help="ex: inat2021_aves_quant_v1")
+              help="ex: aiy_birds_v1")
 @click.option("--out", type=click.Path(path_type=Path),
               default=Path("../../shared/ml/src/commonMain/composeResources/files/ml/inat_to_qid.json"))
 def build_mapping(species_list: Path, model_version: str, out: Path) -> None:
@@ -460,7 +469,7 @@ def build_mapping(species_list: Path, model_version: str, out: Path) -> None:
 
 ```bash
 cd tools/content-pipeline
-uv run birdy-fetcher build-mapping --model-version inat2021_aves_quant_v1 --out /tmp/inat_test.json
+uv run birdy-fetcher build-mapping --model-version aiy_birds_v1 --out /tmp/inat_test.json
 cat /tmp/inat_test.json | head -20
 ```
 
@@ -486,259 +495,195 @@ git commit -m "feat(content-pipeline): Plan 4b Task 1 — birdy-fetcher build-ma
 
 ---
 
-## Task 2: Obtain iNat2021 TFLite-artefakt + `model_metadata.json`
+## Task 2: Obtain Google AIY Birds V1 TFLite + labelmap.csv + `model_metadata.json`
 
-**Mål:** Skaffa en TFLite-version av iNat2021 Aves-modellen + skriv `model_metadata.json` med input-shape, normalization-mean/std, expected `output_classes`-count, model-version-tag.
+**Mål:** Ladda ner Google AIY Birds V1 TFLite-bundle från TFHub + AIY Birds V1 labelmap CSV från gstatic. Bundla båda i `:shared:ml` compose-resources. Skriv `model_metadata.json` med model-version-tag, input-shape, normalization-konstanter (verifierat via TFLite metadata-extractor), expected output-classes-count (965 = 964 arter + 1 background).
 
 **Files:**
+- Create: `shared/ml/src/commonMain/composeResources/files/ml/aiy_birds_v1.tflite` (~3.5 MB, ladda från TFHub)
+- Create: `shared/ml/src/commonMain/composeResources/files/ml/aiy_labelmap.csv` (~30 KB, ladda från gstatic, committas för reproducibility)
 - Create: `shared/ml/src/commonMain/composeResources/files/ml/model_metadata.json`
-- Create: `shared/ml/src/commonMain/composeResources/files/ml/inat2021_aves.tflite` (om bundle-distribution — annars i Task 3)
-- Optional helper: `tools/model-prep/convert_to_tflite.py` (Path B — om vi måste konvertera SavedModel)
 
-**Inneboende osäkerhet:** TFLite-binären kan finnas direkt publicerad på TF Hub eller Kaggle; alternativt får vi konvertera från SavedModel/Keras med `tf.lite.TFLiteConverter`. Sub-stegen försöker Path A först, fallback till Path B.
+**Källor (verifierade 2026-05-07 i pivot-research):**
 
-- [ ] **Step 2.1: Survey publicerade artefakter (15 min, manuell)**
+| Asset | URL | Storlek | Format |
+|---|---|---|---|
+| TFLite-bundle | `https://tfhub.dev/google/lite-model/aiy/vision/classifier/birds_V1/3?lite-format=tflite` | ~3.5 MB | zip → innehåller `.tflite` + `probability-labels-en.txt` + `probability-labels.txt` |
+| Labelmap CSV | `https://www.gstatic.com/aihub/tfhub/labelmaps/aiy_birds_V1_labelmap.csv` | ~30 KB | `id,name` (964 arter scientific names + class 964 = "background") |
 
-Sök i ordning:
-1. TF Hub: `tfhub.dev` — sökord "inaturalist", "aves", "bird classification"
-2. Kaggle Models: `kaggle.com/models` — filter TFLite + sökord "inat", "bird"
-3. iNaturalist Vision Github (`inaturalist/inatVisionTraining`) — README + Releases
-4. Google AI for Birding samarbetspartners (Cornell Macaulay-data?) — om publicerade
+**Inneboende osäkerhet:** Normalization-konstanter MÅSTE verifieras från TFLite-modellens inbäddade metadata — AIY V1 standardiserar input som `uint8` ([0, 255]) men exponerar likely `float32`-input efter quantization-dequant; eller använder `[-1, 1]` som MobileNetV2 originally trained with. Step 2.4 kör Python-inspektion för att låsa exakt värden.
 
-Dokumentera fyndet i en kort note:
-
-```bash
-# Skapa quick-note (committas inte — bara för session-context)
-mkdir -p /tmp/birdy-plan-4b
-echo "Source URL: ..." > /tmp/birdy-plan-4b/model-survey.txt
-echo "Path: A (download) or B (convert)" >> /tmp/birdy-plan-4b/model-survey.txt
-```
-
-**Decision-out-of-task:** Om ingen publicerad iNat2021 Aves-modell finns:
-- Path A: ladda ner iNat2021 _full_ (alla taxa) och filtrera output-classes till bara Aves vid runtime — accepteras endast om filstorlek < 100 MB.
-- Path B: hämta SavedModel + konvertera lokalt (steg 2.2-2.4).
-- **STOP**-bom: ingen källa hittas alls → rapportera till användaren, blockera Plan 4b.
-
-- [ ] **Step 2.2: Path A — ladda ner direkt**
-
-```bash
-# Exempel: TF Hub
-curl -L -o /tmp/inat2021_aves.tflite "https://tfhub.dev/.../model.tflite"
-ls -lh /tmp/inat2021_aves.tflite
-# Förväntad storlek: 25–60 MB (quantized) eller 80–150 MB (float)
-```
-
-Hoppa till Step 2.5 om Path A lyckas.
-
-- [ ] **Step 2.3: Path B — konvertera SavedModel → TFLite (om Path A misslyckas)**
-
-```python
-# tools/model-prep/convert_to_tflite.py
-"""Convert iNat2021 Aves SavedModel to TFLite (int8 dynamic-range quant)."""
-
-import argparse
-from pathlib import Path
-import tensorflow as tf
-
-
-def convert(saved_model_dir: Path, out_path: Path, *, quantize: bool = True) -> None:
-    converter = tf.lite.TFLiteConverter.from_saved_model(str(saved_model_dir))
-    if quantize:
-        converter.optimizations = [tf.lite.Optimize.DEFAULT]
-    tflite = converter.convert()
-    out_path.write_bytes(tflite)
-    print(f"Wrote {out_path} ({len(tflite) / 1024 / 1024:.1f} MB)")
-
-
-if __name__ == "__main__":
-    p = argparse.ArgumentParser()
-    p.add_argument("--saved-model", type=Path, required=True)
-    p.add_argument("--out", type=Path, required=True)
-    p.add_argument("--no-quantize", action="store_true")
-    args = p.parse_args()
-    convert(args.saved_model, args.out, quantize=not args.no_quantize)
-```
-
-```bash
-# Setup tooling-env (engångsoperation, committas inte i monorepo — använd uv venv lokalt)
-cd /tmp && uv venv .model-prep --python 3.11 && source .model-prep/bin/activate
-uv pip install tensorflow-cpu==2.16.1
-python tools/model-prep/convert_to_tflite.py --saved-model /path/to/saved-model --out /tmp/inat2021_aves.tflite
-ls -lh /tmp/inat2021_aves.tflite
-```
-
-- [ ] **Step 2.4: Inspektera artefakt med Python — extrahera input/output-shape**
-
-```python
-# Quick inspection — körs inline i terminal, inte committas
-import tensorflow as tf
-i = tf.lite.Interpreter(model_path="/tmp/inat2021_aves.tflite")
-i.allocate_tensors()
-print("Input details:", i.get_input_details())
-print("Output details:", i.get_output_details())
-# Förväntat:
-#   input shape: [1, 224, 224, 3] (eller 299×299 för Inception-baserade)
-#   output shape: [1, N] där N = antal Aves-klasser (~10000)
-```
-
-Notera värden — de behövs i Step 2.5.
-
-- [ ] **Step 2.5: Skriv `model_metadata.json`**
+- [ ] **Step 2.1: Skapa katalog**
 
 ```bash
 mkdir -p shared/ml/src/commonMain/composeResources/files/ml/
 ```
 
+- [ ] **Step 2.2: Ladda ner TFLite-bundle från TFHub**
+
+```bash
+# TFHub levererar AIY V1 som zip-bundle (TFLite + label-text-filer).
+curl -L -o /tmp/aiy_birds_v1.zip \
+  "https://tfhub.dev/google/lite-model/aiy/vision/classifier/birds_V1/3?lite-format=tflite"
+ls -lh /tmp/aiy_birds_v1.zip
+# Förväntad storlek: ~3.5 MB
+
+# Extrahera TFLite-fil ur zip
+unzip -l /tmp/aiy_birds_v1.zip
+# Innehåll: model.tflite + probability-labels-en.txt + probability-labels.txt
+unzip -j /tmp/aiy_birds_v1.zip -d /tmp/aiy_v1/
+ls -lh /tmp/aiy_v1/
+```
+
+(Om unzip ger annat filnamn än `model.tflite`, justera nedan.)
+
+- [ ] **Step 2.3: Ladda ner labelmap CSV från gstatic**
+
+```bash
+curl -L -o /tmp/aiy_v1/aiy_labelmap.csv \
+  "https://www.gstatic.com/aihub/tfhub/labelmaps/aiy_birds_V1_labelmap.csv"
+head -5 /tmp/aiy_v1/aiy_labelmap.csv
+# Förväntat första 5 rader (varierar lite med leveranser):
+#   id,name
+#   964,background
+#   0,Haemorhous cassinii
+#   1,Aramus guarauna
+#   2,Charadrius vociferus
+wc -l /tmp/aiy_v1/aiy_labelmap.csv
+# Förväntat: 966 rader (header + 965 klasser)
+```
+
+- [ ] **Step 2.4: Inspektera TFLite-metadata med Python**
+
+```bash
+# Setup engångs-env (committas inte i repo)
+uv venv /tmp/.aiy-inspect --python 3.11
+source /tmp/.aiy-inspect/bin/activate  # PowerShell: . /tmp/.aiy-inspect/Scripts/Activate.ps1
+uv pip install tensorflow-cpu==2.16.1 tflite-support
+```
+
+```python
+# /tmp/inspect_aiy.py
+import tensorflow as tf
+from tflite_support import metadata
+
+MODEL_PATH = "/tmp/aiy_v1/model.tflite"
+
+# Input/output shapes
+i = tf.lite.Interpreter(model_path=MODEL_PATH)
+i.allocate_tensors()
+print("Input details:", i.get_input_details())
+print("Output details:", i.get_output_details())
+
+# Inbyggd metadata (om den finns)
+displayer = metadata.MetadataDisplayer.with_model_file(MODEL_PATH)
+print("Metadata JSON:", displayer.get_metadata_json())
+print("Associated files:", displayer.get_packed_associated_file_list())
+```
+
+```bash
+python /tmp/inspect_aiy.py | tee /tmp/aiy_v1/inspect.txt
+```
+
+**Förväntat:**
+- Input shape: `[1, 224, 224, 3]`, dtype `uint8` eller `float32`
+- Output shape: `[1, 965]`, dtype `float32`
+- Metadata `image_normalization` block med `mean` + `std` arrays — **läs och kopiera dessa exakt** till `model_metadata.json`. För MobileNetV2-quantized AIY-default: `mean=[0.0, 0.0, 0.0]`, `std=[255.0, 255.0, 255.0]` (= rescale `[0,255] → [0,1]`).
+
+- [ ] **Step 2.5: Skriv `model_metadata.json`**
+
 ```json
 // shared/ml/src/commonMain/composeResources/files/ml/model_metadata.json
 {
-  "version": "inat2021_aves_quant_v1",
-  "source_url": "https://...",
+  "modelVersion": "aiy_birds_v1",
+  "sourceUrl": "https://tfhub.dev/google/lite-model/aiy/vision/classifier/birds_V1/3",
+  "labelmapUrl": "https://www.gstatic.com/aihub/tfhub/labelmaps/aiy_birds_V1_labelmap.csv",
+  "downloadedAt": "2026-05-07",
   "input": {
     "shape": [1, 224, 224, 3],
-    "dtype": "float32",
+    "dtype": "uint8",
     "normalization": {
-      "mean": [0.485, 0.456, 0.406],
-      "std":  [0.229, 0.224, 0.225]
+      "mean": [0.0, 0.0, 0.0],
+      "std":  [255.0, 255.0, 255.0]
     }
   },
   "output": {
-    "shape": [1, 10000],
+    "shape": [1, 965],
     "dtype": "float32",
-    "label_format": "inat_taxon_id"
+    "labelFormat": "aiy_class_index",
+    "outputClasses": 965,
+    "backgroundClassIndex": 964
   },
-  "size_bytes": 0,
-  "sha256": ""
+  "tfliteFileBytes": 0,
+  "tfliteSha256": ""
 }
 ```
+
+(Värdena i `input.dtype` och `normalization` kommer **från Step 2.4-inspektionen** — uppdatera om de avviker.)
 
 - [ ] **Step 2.6: Beräkna size_bytes + sha256 + uppdatera metadata**
 
 ```bash
-SIZE=$(stat -c%s /tmp/inat2021_aves.tflite 2>/dev/null || stat -f%z /tmp/inat2021_aves.tflite)
-SHA=$(sha256sum /tmp/inat2021_aves.tflite | awk '{print $1}')
+SIZE=$(stat -c%s /tmp/aiy_v1/model.tflite 2>/dev/null || stat -f%z /tmp/aiy_v1/model.tflite)
+SHA=$(sha256sum /tmp/aiy_v1/model.tflite | awk '{print $1}')
 echo "size=$SIZE sha=$SHA"
-# Uppdatera model_metadata.json med dessa värden manuellt eller via jq.
+# Uppdatera model_metadata.json med dessa värden i tfliteFileBytes och tfliteSha256.
 ```
 
-- [ ] **Step 2.7: Bestäm Git LFS-strategi**
-
-| Storlek | Beslut |
-|---|---|
-| < 50 MB | Commit direkt (binär i repo) |
-| 50–95 MB | Git LFS (lägg till `*.tflite` i `.gitattributes`) |
-| ≥ 95 MB | Distribuera ej via repo — kör Plan 4b Task 3 PAD-path och hämta från remote (eller LFS som mellanlösning under utveckling) |
+- [ ] **Step 2.7: Kopiera artefakter till repo**
 
 ```bash
-# Om LFS:
-git lfs track "*.tflite"
-git add .gitattributes
+cp /tmp/aiy_v1/model.tflite \
+   shared/ml/src/commonMain/composeResources/files/ml/aiy_birds_v1.tflite
+cp /tmp/aiy_v1/aiy_labelmap.csv \
+   shared/ml/src/commonMain/composeResources/files/ml/aiy_labelmap.csv
+ls -lh shared/ml/src/commonMain/composeResources/files/ml/
 ```
 
-- [ ] **Step 2.8: Kopiera artefakt till repo (om bundling — annars Task 3)**
+AIY V1 är 3.5 MB → ingen Git LFS-konfiguration behövs (under 100 MB GitHub-tröskel).
+
+- [ ] **Step 2.8: Verifiera att compose-resources läser filerna**
 
 ```bash
-cp /tmp/inat2021_aves.tflite shared/ml/src/commonMain/composeResources/files/ml/inat2021_aves.tflite
+./gradlew :shared:ml:assemble
+# Inga errors förväntade — composeResources/files/ blir åtkomliga via Res.readBytes(...) i Task 5/8.
 ```
-
-(Om PAD: hoppa detta steg, hanteras i Task 3.)
 
 - [ ] **Step 2.9: Commit**
 
 ```bash
-git add shared/ml/src/commonMain/composeResources/files/ml/model_metadata.json
-# Om bundle:
-git add shared/ml/src/commonMain/composeResources/files/ml/inat2021_aves.tflite
-# Om LFS aktiverad:
-git add .gitattributes
-git commit -m "feat(ml): Plan 4b Task 2 — iNat2021 Aves TFLite-artefakt + metadata"
+git add shared/ml/src/commonMain/composeResources/files/ml/
+git commit -m "feat(ml): Plan 4b Task 2 — AIY Birds V1 TFLite + labelmap.csv + metadata"
 ```
 
 ---
 
-## Task 3: Distribution-beslut (bundle vs PAD)
+## Task 3: Bundle AIY V1 i AAB (no PAD)
 
-**Mål:** Avgör om TFLite-artefakten distribueras inbäddad i APK (compose-resources) eller via Play Asset Delivery (install-time pack). Beslutsregeln är `size_bytes < 80 MB` → bundle; annars PAD.
+**Mål:** Verifiera att AIY V1-artefakten (3.5 MB) bundlas korrekt i APK via compose-resources och dokumentera distribution-path i `model_metadata.json`. PAD-spåret avskaffat efter pivot — AIY V1 är liten nog för bundling.
 
-**Files (om bundle, < 80 MB):**
-- Inget extra arbete; artefakten ligger i `shared/ml/.../files/ml/inat2021_aves.tflite` från Task 2.
+**Files:**
+- Modify: `shared/ml/src/commonMain/composeResources/files/ml/model_metadata.json` (lägg `"distribution": "compose-resources"`-fält)
 
-**Files (om PAD, ≥ 80 MB):**
-- Create: `androidApp/install-time/build.gradle.kts` (asset pack module)
-- Create: `androidApp/install-time/src/main/AndroidManifest.xml`
-- Create: `androidApp/install-time/src/main/assets/ml/inat2021_aves.tflite` (flytta från Task 2:s plats)
-- Modify: `androidApp/build.gradle.kts` — `assetPacks += listOf(":androidApp:install-time")`
-- Modify: `settings.gradle.kts` — `include(":androidApp:install-time")`
-
-- [ ] **Step 3.1: Inspektera storlek och välj path**
+- [ ] **Step 3.1: Verifiera storlek**
 
 ```bash
-ls -lh shared/ml/src/commonMain/composeResources/files/ml/inat2021_aves.tflite
-# < 80 MB → BUNDLE-path; hoppa till Step 3.10 (commit)
-# ≥ 80 MB → PAD-path; fortsätt med 3.2
+ls -lh shared/ml/src/commonMain/composeResources/files/ml/aiy_birds_v1.tflite
+# Förväntat: ~3.5 MB. Långt under 80 MB-bar; ingen PAD behövs.
 ```
 
-- [ ] **Step 3.2 (PAD): Skapa asset-pack-modul**
+- [ ] **Step 3.2: Lägg `distribution`-fält i metadata**
 
-```bash
-mkdir -p androidApp/install-time/src/main/assets/ml
-```
-
-```kotlin
-// androidApp/install-time/build.gradle.kts
-plugins {
-    id("com.android.asset-pack")
-}
-
-assetPack {
-    packName.set("ml_models")
-    dynamicDelivery {
-        deliveryType.set("install-time")
-    }
+```json
+// shared/ml/src/commonMain/composeResources/files/ml/model_metadata.json
+{
+  "modelVersion": "aiy_birds_v1",
+  "distribution": "compose-resources",
+  // ... resten oförändrat
 }
 ```
 
-- [ ] **Step 3.3 (PAD): AndroidManifest för asset pack**
-
-```xml
-<!-- androidApp/install-time/src/main/AndroidManifest.xml -->
-<manifest xmlns:dist="http://schemas.android.com/apk/distribution"
-          package="se.birdy.android.assetpack.ml_models">
-    <dist:module
-        dist:type="asset-pack">
-        <dist:fusing dist:include="true" />
-        <dist:delivery>
-            <dist:install-time />
-        </dist:delivery>
-    </dist:module>
-</manifest>
-```
-
-- [ ] **Step 3.4 (PAD): Flytta artefakt till asset-pack**
-
-```bash
-git mv shared/ml/src/commonMain/composeResources/files/ml/inat2021_aves.tflite \
-       androidApp/install-time/src/main/assets/ml/inat2021_aves.tflite
-```
-
-- [ ] **Step 3.5 (PAD): Wire i `androidApp/build.gradle.kts`**
-
-```kotlin
-// androidApp/build.gradle.kts — i android { ... }-blocket
-android {
-    // ... befintligt ...
-    assetPacks += listOf(":androidApp:install-time")
-}
-```
-
-- [ ] **Step 3.6 (PAD): Wire i `settings.gradle.kts`**
-
-```kotlin
-// settings.gradle.kts — append
-include(":androidApp:install-time")
-```
-
-- [ ] **Step 3.7 (PAD): Verifiera build**
+- [ ] **Step 3.3: Verifiera APK-build inkluderar artefakten**
 
 ```bash
 export JAVA_HOME="C:/Java/OpenJDK21U-jdk_x64_windows_hotspot_21.0.11_10/jdk-21.0.11+10"
@@ -746,48 +691,19 @@ export PATH="$JAVA_HOME/bin:$PATH"
 ./gradlew :androidApp:assembleDebug
 ```
 
-Expected: BUILD SUCCESSFUL. Verifiera att APK innehåller asset-packet:
+Expected: BUILD SUCCESSFUL. Verifiera att APK innehåller TFLite-filen:
 
 ```bash
 "/c/Users/abbea/AppData/Local/Android/Sdk/build-tools/34.0.0/aapt.exe" list \
-  androidApp/build/outputs/apk/debug/androidApp-debug.apk | grep ml_models
+  androidApp/build/outputs/apk/debug/androidApp-debug.apk | grep -E "aiy_birds_v1|aiy_labelmap"
+# Förväntat: båda listas under composeResources/files/ml/
 ```
 
-- [ ] **Step 3.8 (PAD): Dokumentera asset-pack-loading-path**
-
-`ModelArtifactProvider.android.kt` (skapas i Task 4) ska veta om path:en. Lägg en kommentar i metadata-filen som indikator:
-
-```json
-// shared/ml/src/commonMain/composeResources/files/ml/model_metadata.json — uppdatera
-{
-  "version": "inat2021_aves_quant_v1",
-  "distribution": "play-asset-delivery",
-  "asset_pack_name": "ml_models",
-  "asset_relative_path": "ml/inat2021_aves.tflite"
-  // ... resten
-}
-```
-
-(Om bundle: lägg `"distribution": "compose-resources"` istället.)
-
-- [ ] **Step 3.9: Verifiera build (alla paths)**
+- [ ] **Step 3.4: Commit**
 
 ```bash
-./gradlew :androidApp:assembleDebug
-```
-
-Expected: BUILD SUCCESSFUL.
-
-- [ ] **Step 3.10: Commit**
-
-```bash
-# Bundle-path:
 git add shared/ml/src/commonMain/composeResources/files/ml/model_metadata.json
-git commit -m "feat(ml): Plan 4b Task 3 — distribution=compose-resources (bundle, <80MB)"
-
-# PAD-path:
-git add androidApp/install-time/ androidApp/build.gradle.kts settings.gradle.kts shared/ml/src/commonMain/composeResources/files/ml/model_metadata.json
-git commit -m "feat(ml): Plan 4b Task 3 — distribution=play-asset-delivery (install-time)"
+git commit -m "feat(ml): Plan 4b Task 3 — distribution=compose-resources (AIY V1, 3.5 MB)"
 ```
 
 ---
@@ -859,7 +775,7 @@ class BirdClassifierModelInfoLoaderTest {
     fun parses_valid_metadata_json() {
         val raw = """
             {
-              "version": "inat2021_aves_quant_v1",
+              "version": "aiy_birds_v1",
               "distribution": "compose-resources",
               "input": {
                 "shape": [1, 224, 224, 3],
@@ -872,7 +788,7 @@ class BirdClassifierModelInfoLoaderTest {
             }
         """.trimIndent()
         val info = BirdClassifierModelInfoLoader.parse(raw)
-        assertEquals("inat2021_aves_quant_v1", info.version)
+        assertEquals("aiy_birds_v1", info.version)
         assertEquals(224, info.inputHeightPx)
         assertEquals(224, info.inputWidthPx)
         assertEquals(3, info.inputChannels)
@@ -1026,7 +942,7 @@ actual class ModelArtifactProvider(private val context: Context) {
     actual suspend fun loadModelBytes(info: BirdClassifierModelInfo): ByteArray {
         return when (info.distribution) {
             ModelDistribution.COMPOSE_RESOURCES ->
-                Res.readBytes("files/ml/inat2021_aves.tflite")
+                Res.readBytes("files/ml/aiy_birds_v1.tflite")
             ModelDistribution.PLAY_ASSET_DELIVERY -> {
                 val packName = requireNotNull(info.assetPackName) {
                     "PAD distribution requires asset_pack_name in metadata"
@@ -1068,52 +984,60 @@ git commit -m "feat(ml): Plan 4b Task 4 — TFLite deps + ModelInfo loader + Art
 
 ---
 
-## Task 5: `InatLabelMapper` (commonMain)
+## Task 5: `AiyLabelMapper` (commonMain)
 
-**Mål:** Lookup från iNat-taxon-ID (heltal) till Birdy Q-ID (string). Laddar `inat_to_qid.json` via `Res.readBytes`. Vid lookup-miss → returnera null så att caller (`TfLiteBirdClassifier`) kan emittera "okänd" (ingen profil-länk i ResultScreen).
+**Mål:** Lookup från AIY V1 class-index (heltal 0-964) till Birdy Q-ID (string). Laddar `aiy_to_qid.json` via `Res.readBytes`. Vid lookup-miss → returnera null så att caller (`TfLiteBirdClassifier`) kan emittera "okänd" (ingen profil-länk i ResultScreen). Class-index 964 (background) returnerar alltid null — det är inte en art.
 
 **Files:**
-- Create: `shared/ml/src/commonMain/kotlin/se/birdy/ml/InatLabelMapper.kt`
-- Create: `shared/ml/src/commonTest/kotlin/se/birdy/ml/InatLabelMapperTest.kt`
-- Create: `shared/ml/src/commonTest/resources/test_inat_to_qid.json` (test-fixture)
+- Create: `shared/ml/src/commonMain/kotlin/se/birdy/ml/AiyLabelMapper.kt`
+- Create: `shared/ml/src/commonTest/kotlin/se/birdy/ml/AiyLabelMapperTest.kt`
+- Create: `shared/ml/src/commonTest/resources/test_aiy_to_qid.json` (test-fixture)
 
 - [ ] **Step 5.1: Write failing test**
 
 ```kotlin
-// shared/ml/src/commonTest/kotlin/se/birdy/ml/InatLabelMapperTest.kt
+// shared/ml/src/commonTest/kotlin/se/birdy/ml/AiyLabelMapperTest.kt
 package se.birdy.ml
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
-class InatLabelMapperTest {
+class AiyLabelMapperTest {
 
     private val fixture = """
         {
-          "_meta": { "generated_for_model_version": "test_v1", "coverage_pct": 100.0,
-                     "mapped_qids": 2, "total_qids": 2 },
-          "mappings": { "12345": "Q25485", "67890": "Q25404" }
+          "_meta": { "generated_for_model_version": "aiy_birds_v1", "coverage_pct": 78.5,
+                     "mapped_classes": 757, "total_classes": 964 },
+          "mappings": { "0": "Q1226346", "1": "Q913049", "12": "Q25485" }
         }
     """.trimIndent()
 
     @Test
-    fun lookup_returns_qid_for_known_inat_id() {
-        val mapper = InatLabelMapper.parse(fixture)
-        assertEquals("Q25485", mapper.lookup(12345))
-        assertEquals("Q25404", mapper.lookup(67890))
+    fun lookup_returns_qid_for_known_class_index() {
+        val mapper = AiyLabelMapper.parse(fixture)
+        assertEquals("Q1226346", mapper.lookup(0))
+        assertEquals("Q913049", mapper.lookup(1))
+        assertEquals("Q25485", mapper.lookup(12))
     }
 
     @Test
-    fun lookup_returns_null_for_unknown_inat_id() {
-        val mapper = InatLabelMapper.parse(fixture)
-        assertNull(mapper.lookup(99999))
+    fun lookup_returns_null_for_unmapped_class_index() {
+        val mapper = AiyLabelMapper.parse(fixture)
+        assertNull(mapper.lookup(99))
+    }
+
+    @Test
+    fun lookup_returns_null_for_background_class() {
+        val mapper = AiyLabelMapper.parse(fixture)
+        // Background-class (964) ska alltid droppas tyst, även om mapping skulle innehålla den.
+        assertNull(mapper.lookup(964))
     }
 
     @Test
     fun coverage_pct_exposed_for_factory() {
-        val mapper = InatLabelMapper.parse(fixture)
-        assertEquals(100.0, mapper.coveragePct)
+        val mapper = AiyLabelMapper.parse(fixture)
+        assertEquals(78.5, mapper.coveragePct)
     }
 }
 ```
@@ -1121,34 +1045,39 @@ class InatLabelMapperTest {
 - [ ] **Step 5.2: Run test — expect FAIL**
 
 ```bash
-./gradlew :shared:ml:testDebugUnitTest --tests "se.birdy.ml.InatLabelMapperTest"
+./gradlew :shared:ml:testDebugUnitTest --tests "se.birdy.ml.AiyLabelMapperTest"
 ```
 
 Expected: kompileringsfel.
 
-- [ ] **Step 5.3: Implementera `InatLabelMapper`**
+- [ ] **Step 5.3: Implementera `AiyLabelMapper`**
 
 ```kotlin
-// shared/ml/src/commonMain/kotlin/se/birdy/ml/InatLabelMapper.kt
+// shared/ml/src/commonMain/kotlin/se/birdy/ml/AiyLabelMapper.kt
 package se.birdy.ml
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-class InatLabelMapper internal constructor(
+class AiyLabelMapper internal constructor(
     private val table: Map<Int, String>,
     val coveragePct: Double,
     val modelVersion: String,
 ) {
-    fun lookup(inatId: Int): String? = table[inatId]
+    fun lookup(classIndex: Int): String? {
+        if (classIndex == BACKGROUND_CLASS_INDEX) return null
+        return table[classIndex]
+    }
 
     companion object {
+        const val BACKGROUND_CLASS_INDEX = 964
+
         private val json = Json { ignoreUnknownKeys = true }
 
-        fun parse(raw: String): InatLabelMapper {
+        fun parse(raw: String): AiyLabelMapper {
             val dto = json.decodeFromString<MappingDto>(raw)
             val table = dto.mappings.entries.associate { (k, v) -> k.toInt() to v }
-            return InatLabelMapper(
+            return AiyLabelMapper(
                 table = table,
                 coveragePct = dto._meta.coverage_pct,
                 modelVersion = dto._meta.generated_for_model_version,
@@ -1163,8 +1092,8 @@ class InatLabelMapper internal constructor(
     private data class MetaDto(
         val generated_for_model_version: String,
         val coverage_pct: Double,
-        val mapped_qids: Int,
-        val total_qids: Int,
+        val mapped_classes: Int,
+        val total_classes: Int,
     )
 }
 ```
@@ -1172,22 +1101,22 @@ class InatLabelMapper internal constructor(
 - [ ] **Step 5.4: Run test — expect PASS**
 
 ```bash
-./gradlew :shared:ml:testDebugUnitTest --tests "se.birdy.ml.InatLabelMapperTest"
+./gradlew :shared:ml:testDebugUnitTest --tests "se.birdy.ml.AiyLabelMapperTest"
 ```
 
-Expected: 3 PASS.
+Expected: 4 PASS.
 
 - [ ] **Step 5.5: Lägg loader-helper för Compose-resources**
 
 ```kotlin
-// Append i InatLabelMapper.kt
+// Append i AiyLabelMapper.kt
 import birdyscanner.shared.ml.generated.resources.Res
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 @OptIn(ExperimentalResourceApi::class)
-suspend fun loadInatLabelMapper(): InatLabelMapper {
-    val bytes = Res.readBytes("files/ml/inat_to_qid.json")
-    return InatLabelMapper.parse(bytes.decodeToString())
+suspend fun loadAiyLabelMapper(): AiyLabelMapper {
+    val bytes = Res.readBytes("files/ml/aiy_to_qid.json")
+    return AiyLabelMapper.parse(bytes.decodeToString())
 }
 ```
 
@@ -1202,8 +1131,8 @@ Expected: BUILD SUCCESSFUL.
 - [ ] **Step 5.7: Commit**
 
 ```bash
-git add shared/ml/src/commonMain/kotlin/se/birdy/ml/InatLabelMapper.kt shared/ml/src/commonTest/kotlin/se/birdy/ml/InatLabelMapperTest.kt
-git commit -m "feat(ml): Plan 4b Task 5 — InatLabelMapper (Q-ID lookup)"
+git add shared/ml/src/commonMain/kotlin/se/birdy/ml/AiyLabelMapper.kt shared/ml/src/commonTest/kotlin/se/birdy/ml/AiyLabelMapperTest.kt
+git commit -m "feat(ml): Plan 4b Task 5 — AiyLabelMapper (class-index → Q-ID lookup)"
 ```
 
 ---
@@ -1495,11 +1424,11 @@ import kotlin.test.assertTrue
 
 class TfLiteBirdClassifierTest {
 
-    private val mapper = InatLabelMapper.parse("""
+    private val mapper = AiyLabelMapper.parse("""
         {
-          "_meta": { "generated_for_model_version": "test_v1", "coverage_pct": 100.0,
-                     "mapped_qids": 3, "total_qids": 3 },
-          "mappings": { "10": "Q-talgoxe", "20": "Q-koltrast", "30": "Q-blames" }
+          "_meta": { "generated_for_model_version": "test_v1", "coverage_pct": 60.0,
+                     "mapped_classes": 3, "total_classes": 5 },
+          "mappings": { "0": "Q-talgoxe", "1": "Q-koltrast", "2": "Q-blames" }
         }
     """.trimIndent())
 
@@ -1511,11 +1440,9 @@ class TfLiteBirdClassifierTest {
         inputChannels = 3,
         normalizationMean = floatArrayOf(0f, 0f, 0f),
         normalizationStd = floatArrayOf(1f, 1f, 1f),
-        outputClasses = 5, // index 0..4 = inat IDs 10,20,30,40,50
+        outputClasses = 5, // class indices 0..4 (subset av riktiga AIY V1's 965)
         sizeBytes = 0L, sha256 = "",
     )
-
-    private val inatIds = intArrayOf(10, 20, 30, 40, 50)
 
     private fun fakeInput(): ImageInput = ImageInput(
         bytes = ByteArray(4 * 4 * 3),
@@ -1529,7 +1456,7 @@ class TfLiteBirdClassifierTest {
         val pre = StubPreprocessor()
         val classifier = TfLiteBirdClassifier(
             info = info, runner = runner, preprocessor = pre,
-            mapper = mapper, inatIds = inatIds, threshold = 0.15f, topK = 3,
+            mapper = mapper, threshold = 0.15f, topK = 3,
         )
         val result = classifier.classify(fakeInput())
         assertEquals(3, result.results.size)
@@ -1545,7 +1472,7 @@ class TfLiteBirdClassifierTest {
         val runner = ScriptedRunner(scores = floatArrayOf(0.1f, 0.05f, 0.02f, 0.01f, 0.01f))
         val classifier = TfLiteBirdClassifier(
             info = info, runner = runner, preprocessor = StubPreprocessor(),
-            mapper = mapper, inatIds = inatIds, threshold = 0.35f, topK = 3,
+            mapper = mapper, threshold = 0.35f, topK = 3,
         )
         val result = classifier.classify(fakeInput())
         assertEquals(0, result.results.size) // alla under 0.35
@@ -1553,11 +1480,11 @@ class TfLiteBirdClassifierTest {
 
     @Test
     fun drops_results_with_unknown_qid_mapping() = runTest {
-        // Index 3 har inat-ID 40 som inte finns i mapper → ska droppas.
+        // Class index 3 är inte i mapper → mapper.lookup(3) == null → ska droppas.
         val runner = ScriptedRunner(scores = floatArrayOf(0.1f, 0.1f, 0.1f, 0.7f, 0.05f))
         val classifier = TfLiteBirdClassifier(
             info = info, runner = runner, preprocessor = StubPreprocessor(),
-            mapper = mapper, inatIds = inatIds, threshold = 0.0f, topK = 3,
+            mapper = mapper, threshold = 0.0f, topK = 3,
         )
         val result = classifier.classify(fakeInput())
         // Förväntat: top-3 efter filter = index 0, 1, 2 (alla 0.1, ordning tie-break kan variera)
@@ -1596,8 +1523,7 @@ class TfLiteBirdClassifier(
     private val info: BirdClassifierModelInfo,
     private val runner: TfliteRunner,
     private val preprocess: (ImageInput, BirdClassifierModelInfo) -> FloatArray,
-    private val mapper: InatLabelMapper,
-    private val inatIds: IntArray,
+    private val mapper: AiyLabelMapper,
     private val threshold: Float = 0.35f,
     private val topK: Int = 3,
 ) : BirdClassifier {
@@ -1623,15 +1549,17 @@ class TfLiteBirdClassifier(
     }
 
     private fun topK(scores: FloatArray): List<ClassificationResult> {
-        require(scores.size == inatIds.size) {
-            "scores.size=${scores.size} != inatIds.size=${inatIds.size}"
+        require(scores.size == info.outputClasses) {
+            "scores.size=${scores.size} != info.outputClasses=${info.outputClasses}"
         }
         val indexed = scores.mapIndexed { idx, score -> idx to score }
             .sortedByDescending { it.second }
         val out = mutableListOf<ClassificationResult>()
         for ((idx, score) in indexed) {
             if (score < threshold) break
-            val qid = mapper.lookup(inatIds[idx]) ?: continue
+            // mapper.lookup returnerar null för (a) background class index 964 och
+            // (b) class indices som inte finns i aiy_to_qid.json.
+            val qid = mapper.lookup(idx) ?: continue
             out += ClassificationResult(speciesId = qid, confidence = score)
             if (out.size == topK) break
         }
@@ -1682,7 +1610,7 @@ fun concurrent_calls_serialize_via_mutex() = runTest {
     }
     val classifier = TfLiteBirdClassifier(
         info = info, runner = runner, preprocess = stubPreprocess,
-        mapper = mapper, inatIds = inatIds,
+        mapper = mapper,
     )
     coroutineScope {
         repeat(10) { launch { classifier.classify(fakeInput()) } }
@@ -1712,7 +1640,7 @@ git commit -m "feat(ml): Plan 4b Task 7 — TfLiteBirdClassifier + TfliteRunner 
 
 ## Task 8: Android `actual TfliteRunner` + jvmTest mikro-modell
 
-**Mål:** Skriv Android-actual som wrappar `org.tensorflow.lite.Interpreter`. Validera end-to-end-pipelinen mot en ~100 KB `micro_classifier.tflite` (1 input → 1 output, identitets-ish) via jvmTest. Detta fångar binding-buggar (input-shape mismatch, byte-order, output-tensor-mappning) utan att behöva skicka 30+ MB iNat-modell genom test-resources.
+**Mål:** Skriv Android-actual som wrappar `org.tensorflow.lite.Interpreter`. Validera end-to-end-pipelinen mot en ~100 KB `micro_classifier.tflite` (1 input → 1 output, identitets-ish) via jvmTest. Detta fångar binding-buggar (input-shape mismatch, byte-order, output-tensor-mappning) utan att behöva skicka 3.5 MB AIY V1-modell genom test-resources.
 
 **Files:**
 - Create: `shared/ml/src/androidMain/kotlin/se/birdy/ml/AndroidTfliteRunner.kt`
@@ -1727,7 +1655,7 @@ git commit -m "feat(ml): Plan 4b Task 7 — TfLiteBirdClassifier + TfliteRunner 
 """Builds a tiny TFLite model: input [1,4,4,3] -> output [1,5], deterministic.
 
 Used in :shared:ml jvmTest to verify the Interpreter wiring without shipping
-the full iNat2021 artifact in test resources.
+the full AIY Birds V1 artifact in test resources.
 """
 
 from pathlib import Path
@@ -2165,7 +2093,7 @@ git commit -m "feat(ml): Plan 4b Task 9 — BirdClassifierFactory + SessionFailu
 
 ## Task 10: `validateModelMapping` Gradle-task
 
-**Mål:** Build-time-validator (mönster från Plan 5b `validateBadgesYaml` / `validateBadgeStrings`). Kraschar bygget tidigt om `inat_to_qid.json` är ogiltig: malformed JSON, dubbletter på iNat-ID, Q-IDs som inte finns i `species.db`, eller `model_metadata.json` saknar fält. Hookas in i `:composeApp:preBuild` så CI fångar fel innan APK byggs.
+**Mål:** Build-time-validator (mönster från Plan 5b `validateBadgesYaml` / `validateBadgeStrings`). Kraschar bygget tidigt om `aiy_to_qid.json` är ogiltig: malformed JSON, dubbletter på class-index, eller `model_metadata.json` saknar fält / version-mismatch mot mapping. Q-IDs i mapping som inte finns i `species_list.yaml` **tolereras** — det är förväntat eftersom AIY V1 har 964 arter och species-DB växer från 5 → 700 (4a's `unresolved`-pill hanterar det runtime). Hookas in i `:composeApp:preBuild` så CI fångar fel innan APK byggs.
 
 **Files:**
 - Create: `shared/content/src/main/kotlin/se/birdy/content/build/ValidateModelMapping.kt`
@@ -2188,56 +2116,66 @@ class ValidateModelMappingTest {
     private val validMappingJson = """
         {
           "_meta": { "generated_for_model_version": "v1", "coverage_pct": 95.0,
-                     "mapped_qids": 2, "total_qids": 2 },
-          "mappings": { "12345": "Q1", "67890": "Q2" }
+                     "mapped_classes": 2, "total_classes": 2 },
+          "mappings": { "0": "Q1", "1": "Q2" }
         }
     """.trimIndent()
 
     private val validMetadataJson = """
         {
-          "version": "v1", "distribution": "compose-resources",
-          "input": { "shape": [1,224,224,3], "dtype": "float32",
-                     "normalization": { "mean":[0.485,0.456,0.406], "std":[0.229,0.224,0.225] } },
-          "output": { "shape": [1,5], "dtype": "float32", "label_format": "inat_taxon_id" },
-          "size_bytes": 1024, "sha256": "abc"
+          "modelVersion": "v1", "distribution": "compose-resources",
+          "input": { "shape": [1,224,224,3], "dtype": "uint8",
+                     "normalization": { "mean":[0.0,0.0,0.0], "std":[255.0,255.0,255.0] } },
+          "output": { "shape": [1,965], "dtype": "float32", "labelFormat": "aiy_class_index",
+                      "outputClasses": 965, "backgroundClassIndex": 964 },
+          "tfliteFileBytes": 3492096, "tfliteSha256": "abc"
         }
     """.trimIndent()
 
-    private val knownQids = setOf("Q1", "Q2", "Q3")
-
     @Test
-    fun passes_when_all_qids_known_and_no_duplicates() {
+    fun passes_with_valid_mapping_and_metadata() {
         ValidateModelMapping.validate(
             mappingJson = validMappingJson,
             metadataJson = validMetadataJson,
-            knownQids = knownQids,
         )
         // No throw → success
     }
 
     @Test
-    fun fails_when_mapping_has_unknown_qid() {
-        val bad = validMappingJson.replace("Q2", "QXXX")
-        val ex = assertFailsWith<IllegalStateException> {
-            ValidateModelMapping.validate(bad, validMetadataJson, knownQids)
-        }
-        assertTrue(ex.message!!.contains("QXXX"))
-    }
-
-    @Test
     fun fails_when_metadata_version_mismatch() {
         val mismatched = validMappingJson.replace("\"v1\"", "\"v2\"")
-        // _meta.generated_for_model_version = v2, metadata.version = v1 → mismatch
+        // _meta.generated_for_model_version = v2, metadata.modelVersion = v1 → mismatch
         val ex = assertFailsWith<IllegalStateException> {
-            ValidateModelMapping.validate(mismatched, validMetadataJson, knownQids)
+            ValidateModelMapping.validate(mismatched, validMetadataJson)
         }
         assertTrue(ex.message!!.contains("version"))
     }
 
     @Test
+    fun fails_when_mapping_has_duplicate_class_index() {
+        val withDuplicate = validMappingJson.replace(
+            "\"mappings\": { \"0\": \"Q1\", \"1\": \"Q2\" }",
+            "\"mappings\": { \"0\": \"Q1\", \"0\": \"Q-DUPE\" }",
+        )
+        // Strict JSON parsers may already reject this; if not, validator does.
+        assertFailsWith<RuntimeException> {
+            ValidateModelMapping.validate(withDuplicate, validMetadataJson)
+        }
+    }
+
+    @Test
+    fun fails_when_mapping_coverage_below_50_pct() {
+        val low = validMappingJson.replace("\"coverage_pct\": 95.0", "\"coverage_pct\": 30.0")
+        val ex = assertFailsWith<IllegalStateException> {
+            ValidateModelMapping.validate(low, validMetadataJson)
+        }
+        assertTrue(ex.message!!.contains("coverage"))
+    }
+
+    @Test
     fun fails_on_malformed_json() {
         assertFailsWith<IllegalArgumentException> {
-            ValidateModelMapping.validate("{not json", validMetadataJson, knownQids)
+            ValidateModelMapping.validate("{not json", validMetadataJson)
         }
     }
 }
@@ -2267,20 +2205,18 @@ object ValidateModelMapping {
     private val json = Json { ignoreUnknownKeys = true }
 
     @JvmStatic
-    fun runFromFiles(mappingFile: File, metadataFile: File, speciesYamlFile: File) {
-        val knownQids = loadKnownQids(speciesYamlFile)
+    fun runFromFiles(mappingFile: File, metadataFile: File) {
         validate(
             mappingJson = mappingFile.readText(),
             metadataJson = metadataFile.readText(),
-            knownQids = knownQids,
         )
     }
 
-    fun validate(mappingJson: String, metadataJson: String, knownQids: Set<String>) {
+    fun validate(mappingJson: String, metadataJson: String) {
         val mapping = try {
             json.decodeFromString<MappingFile>(mappingJson)
         } catch (e: Exception) {
-            throw IllegalArgumentException("Malformed inat_to_qid.json", e)
+            throw IllegalArgumentException("Malformed aiy_to_qid.json", e)
         }
         val metadata = try {
             json.decodeFromString<MetadataFile>(metadataJson)
@@ -2290,42 +2226,38 @@ object ValidateModelMapping {
 
         val errors = mutableListOf<String>()
 
-        if (mapping._meta.generated_for_model_version != metadata.version) {
+        if (mapping._meta.generated_for_model_version != metadata.modelVersion) {
             errors += "version mismatch: mapping says " +
-                "'${mapping._meta.generated_for_model_version}' but metadata says '${metadata.version}'"
+                "'${mapping._meta.generated_for_model_version}' but metadata says '${metadata.modelVersion}'"
         }
 
-        val seenInat = mutableSetOf<String>()
-        for ((inatId, qid) in mapping.mappings) {
-            if (!seenInat.add(inatId)) {
-                errors += "duplicate iNat-ID: $inatId"
-            }
-            if (qid !in knownQids) {
-                errors += "unknown Q-ID in mapping: $qid (iNat=$inatId)"
-            }
+        if (mapping._meta.coverage_pct < COVERAGE_FAIL_PCT) {
+            errors += "coverage too low: ${mapping._meta.coverage_pct}% (failbar: $COVERAGE_FAIL_PCT%)"
+        } else if (mapping._meta.coverage_pct < COVERAGE_WARN_PCT) {
+            println(
+                "WARN: coverage ${mapping._meta.coverage_pct}% — kör birdy-fetcher build-mapping " +
+                    "igen eller eskalera till manuell overrides.yaml",
+            )
         }
+
+        // Q-IDs i mapping som inte finns i species_list.yaml tolereras — AIY V1 har 964 arter
+        // och species-DB växer 5 → 700. Runtime hanterar via 4a's `unresolved`-pill.
 
         if (errors.isNotEmpty()) {
             error("validateModelMapping failed:\n" + errors.joinToString("\n  - ", prefix = "  - "))
         }
     }
 
-    private fun loadKnownQids(speciesYaml: File): Set<String> {
-        @Serializable
-        data class Item(val q_id: String)
-        @Serializable
-        data class Wrap(val species: List<Item>)
-        val wrap = Yaml.default.decodeFromString(Wrap.serializer(), speciesYaml.readText())
-        return wrap.species.map { it.q_id }.toSet()
-    }
+    private const val COVERAGE_FAIL_PCT = 50.0
+    private const val COVERAGE_WARN_PCT = 90.0
 
     @Serializable
     private data class MappingFile(val _meta: MappingMeta, val mappings: Map<String, String>)
     @Serializable
     private data class MappingMeta(val generated_for_model_version: String, val coverage_pct: Double,
-                                   val mapped_qids: Int, val total_qids: Int)
+                                   val mapped_classes: Int, val total_classes: Int)
     @Serializable
-    private data class MetadataFile(val version: String)
+    private data class MetadataFile(val modelVersion: String)
 }
 ```
 
@@ -2343,13 +2275,12 @@ Expected: 4 PASS.
 // shared/content/build.gradle.kts — append i bottom
 tasks.register<JavaExec>("validateModelMapping") {
     group = "verification"
-    description = "Validates inat_to_qid.json against model_metadata.json + species_list.yaml"
+    description = "Validates aiy_to_qid.json against model_metadata.json"
     classpath = sourceSets.main.get().runtimeClasspath
     mainClass.set("se.birdy.content.build.ValidateModelMappingMain")
     args = listOf(
-        rootProject.projectDir.resolve("shared/ml/src/commonMain/composeResources/files/ml/inat_to_qid.json").absolutePath,
+        rootProject.projectDir.resolve("shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json").absolutePath,
         rootProject.projectDir.resolve("shared/ml/src/commonMain/composeResources/files/ml/model_metadata.json").absolutePath,
-        rootProject.projectDir.resolve("shared/content/species_list.yaml").absolutePath,
     )
 }
 ```
@@ -2394,13 +2325,13 @@ Expected: `validateModelMapping: OK`.
 - [ ] **Step 10.8: Verifiera negativ path (regression-test)**
 
 ```bash
-# Tillfälligt korrumpera mappingen
-sed -i 's/"Q1"/"QBROKEN"/' shared/ml/src/commonMain/composeResources/files/ml/inat_to_qid.json
+# Tillfälligt korrumpera modellversion i mapping så den inte matchar metadata
+sed -i 's/"aiy_birds_v1"/"WRONG_VERSION"/' shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json
 ./gradlew :shared:content:validateModelMapping || echo "Expected failure ✓"
-git checkout -- shared/ml/src/commonMain/composeResources/files/ml/inat_to_qid.json
+git checkout -- shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json
 ```
 
-Expected: task failar med `unknown Q-ID in mapping: QBROKEN`.
+Expected: task failar med `version mismatch: mapping says WRONG_VERSION but metadata says aiy_birds_v1`.
 
 - [ ] **Step 10.9: Verifiera assembleDebug kör validator**
 
@@ -2508,11 +2439,10 @@ suspend fun buildClassifier(context: android.content.Context): Pair<BirdClassifi
         createReal = {
             val metadataRaw = Res.readBytes("files/ml/model_metadata.json").decodeToString()
             val info = BirdClassifierModelInfoLoader.parse(metadataRaw)
-            val mapper = loadInatLabelMapper()
+            val mapper = loadAiyLabelMapper()
             val modelBytes = artifactProvider.loadModelBytes(info)
             val runner = AndroidTfliteRunner(modelBytes, info)
             val preprocessor = ImagePreprocessor()
-            val inatIds = mapper.allInatIdsInOutputOrder()  // helper added in Step 11.6
             TfLiteBirdClassifier(
                 info = info,
                 runner = runner,
@@ -2526,7 +2456,6 @@ suspend fun buildClassifier(context: android.content.Context): Pair<BirdClassifi
                     )
                 },
                 mapper = mapper,
-                inatIds = inatIds,
             )
         },
         createFallback = { FakeBirdClassifier() },
@@ -2539,26 +2468,9 @@ suspend fun buildClassifier(context: android.content.Context): Pair<BirdClassifi
 }
 ```
 
-- [ ] **Step 11.6: Lägg `allInatIdsInOutputOrder()` på mapper**
+- [ ] **Step 11.6: ~~Class-index helper~~ — utgår med pivot till AIY V1**
 
-> **Note:** iNat-modeller bestämmer output-index-ordning vid träning (oftast sorterat på taxon-ID stigande). Mapping-filen från Task 1 listar bara träffade Q-IDs. För `topK`-loopen behöver vi en `IntArray` av samma längd som `info.outputClasses` där index = output-position och värde = iNat-ID. Detta kommer **från modell-distributionen**, inte från Task 1. Om iNat2021-modellen har en `labels.txt` med iNat-IDs i ordning → inkludera den som `inat_class_index.txt` i Task 2 och ladda här.
-
-```kotlin
-// Lägg i InatLabelMapper.kt
-suspend fun loadInatClassIndex(): IntArray {
-    // Format: en iNat-ID per rad, ordningen matchar output-tensor-indexet.
-    val raw = Res.readBytes("files/ml/inat_class_index.txt").decodeToString()
-    return raw.lineSequence()
-        .filter { it.isNotBlank() }
-        .map { it.trim().toInt() }
-        .toList()
-        .toIntArray()
-}
-```
-
-Och i `loadInatLabelMapper`-flödet: `val inatIds = loadInatClassIndex()` (ej på själva mappern).
-
-> **STOP-bom:** Om iNat2021-modellen inte har en publicerad `labels.txt`/`labelmap.txt` → Plan 4b kan inte mappa output-index till iNat-IDs. Eskalera till användaren med alternativen: (a) extrahera labels från SavedModel-metadata om finns; (b) Plan 4c (custom finetune) där vi kontrollerar label-ordningen själva.
+> **Pivot-not (2026-05-07):** Den ursprungliga planen krävde en separat `inat_class_index.txt` för att översätta TFLite output-tensor-position → iNat taxon-ID innan Q-ID-lookup. AIY Birds V1 nycklar mapping-filen direkt på output-tensor-positionen (class_index 0..964), så `mapper.lookup(idx)` tar output-positionen direkt. Inget `IntArray`-mellansteg behövs. Step 11.6 lämnas som tom rad för nummer-stabilitet.
 
 - [ ] **Step 11.7: Update `MainActivity.kt` att kalla factory async**
 
@@ -2590,7 +2502,7 @@ Expected: BUILD SUCCESSFUL.
 - [ ] **Step 11.9: Commit**
 
 ```bash
-git add composeApp/src/commonMain/kotlin/se/birdy/app/ui/scan/ScanUiState.kt composeApp/src/commonMain/kotlin/se/birdy/app/ui/scan/ScanViewModel.kt composeApp/src/commonMain/kotlin/se/birdy/app/ui/scan/ScanScreen.kt composeApp/src/commonMain/kotlin/se/birdy/app/AppGraph.kt composeApp/src/androidMain/kotlin/se/birdy/app/AppGraph.android.kt composeApp/src/androidMain/kotlin/se/birdy/app/MainActivity.kt composeApp/src/commonMain/composeResources/values/strings.xml composeApp/src/commonMain/composeResources/values-en/strings.xml shared/ml/src/commonMain/kotlin/se/birdy/ml/InatLabelMapper.kt
+git add composeApp/src/commonMain/kotlin/se/birdy/app/ui/scan/ScanUiState.kt composeApp/src/commonMain/kotlin/se/birdy/app/ui/scan/ScanViewModel.kt composeApp/src/commonMain/kotlin/se/birdy/app/ui/scan/ScanScreen.kt composeApp/src/commonMain/kotlin/se/birdy/app/AppGraph.kt composeApp/src/androidMain/kotlin/se/birdy/app/AppGraph.android.kt composeApp/src/androidMain/kotlin/se/birdy/app/MainActivity.kt composeApp/src/commonMain/composeResources/values/strings.xml composeApp/src/commonMain/composeResources/values-en/strings.xml shared/ml/src/commonMain/kotlin/se/birdy/ml/AiyLabelMapper.kt
 git commit -m "feat(app): Plan 4b Task 11 — wire BirdClassifierFactory + DEMO-banner + i18n"
 ```
 
@@ -2843,16 +2755,15 @@ def test_predictor_returns_top_n_predictions_in_descending_order(tmp_path: Path)
     interp.get_output_details.return_value = [{"index": 0, "shape": [1, 5]}]
     interp.get_tensor.return_value = np.array([[0.1, 0.6, 0.2, 0.05, 0.05]])
 
-    inat_to_qid = {10: "Q-talgoxe", 20: "Q-koltrast", 30: "Q-blames",
-                   40: "Q-grasparv", 50: "Q-koltrast2"}
-    inat_class_index = [10, 20, 30, 40, 50]
+    aiy_to_qid = {0: "Q-talgoxe", 1: "Q-koltrast", 2: "Q-blames",
+                  3: "Q-grasparv", 4: "Q-koltrast2"}
 
     pred = Predictor(
         interpreter=interp,
-        inat_class_index=inat_class_index,
-        inat_to_qid=inat_to_qid,
-        normalization_mean=(0.485, 0.456, 0.406),
-        normalization_std=(0.229, 0.224, 0.225),
+        aiy_to_qid=aiy_to_qid,
+        background_class_index=964,  # AIY V1 background-klass
+        normalization_mean=(0.0, 0.0, 0.0),
+        normalization_std=(255.0, 255.0, 255.0),
         input_size=224,
         top_n=3,
     )
@@ -2867,7 +2778,7 @@ def test_predictor_returns_top_n_predictions_in_descending_order(tmp_path: Path)
     assert result.top_n_scores[0] == pytest.approx(0.6)
 
 
-def test_predictor_skips_unmapped_inat_ids(tmp_path: Path) -> None:
+def test_predictor_skips_unmapped_class_indices(tmp_path: Path) -> None:
     img_path = fake_jpeg(tmp_path)
     item = CorpusItem(image_path=img_path, q_id="Q1", family="x", source="x")
     interp = MagicMock()
@@ -2877,10 +2788,10 @@ def test_predictor_skips_unmapped_inat_ids(tmp_path: Path) -> None:
 
     pred = Predictor(
         interpreter=interp,
-        inat_class_index=[10, 20, 30],
-        inat_to_qid={20: "Q-mapped"},  # bara 20 mappad
+        aiy_to_qid={1: "Q-mapped"},  # bara class index 1 mappad
+        background_class_index=964,
         normalization_mean=(0.0, 0.0, 0.0),
-        normalization_std=(1.0, 1.0, 1.0),
+        normalization_std=(255.0, 255.0, 255.0),
         input_size=224,
         top_n=3,
     )
@@ -2927,16 +2838,16 @@ class Predictor:
         self,
         *,
         interpreter: Any,
-        inat_class_index: list[int],
-        inat_to_qid: dict[int, str],
+        aiy_to_qid: dict[int, str],
+        background_class_index: int,
         normalization_mean: tuple[float, float, float],
         normalization_std: tuple[float, float, float],
         input_size: int,
         top_n: int = 3,
     ) -> None:
         self.interpreter = interpreter
-        self.inat_class_index = inat_class_index
-        self.inat_to_qid = inat_to_qid
+        self.aiy_to_qid = aiy_to_qid
+        self.background_class_index = background_class_index
         self.mean = np.array(normalization_mean, dtype=np.float32)
         self.std = np.array(normalization_std, dtype=np.float32)
         self.input_size = input_size
@@ -2945,7 +2856,7 @@ class Predictor:
     def predict(self, item: CorpusItem) -> Prediction:
         img = Image.open(item.image_path).convert("RGB")
         img = img.resize((self.input_size, self.input_size), Image.BILINEAR)
-        arr = np.asarray(img, dtype=np.float32) / 255.0
+        arr = np.asarray(img, dtype=np.float32)
         arr = (arr - self.mean) / self.std
         arr = arr[np.newaxis, ...]  # batch dim
 
@@ -2962,8 +2873,10 @@ class Predictor:
         qids: list[str] = []
         chosen_scores: list[float] = []
         for idx in order:
-            inat_id = self.inat_class_index[int(idx)]
-            qid = self.inat_to_qid.get(inat_id)
+            class_index = int(idx)
+            if class_index == self.background_class_index:
+                continue
+            qid = self.aiy_to_qid.get(class_index)
             if qid is None:
                 continue
             qids.append(qid)
@@ -3157,7 +3070,7 @@ def test_render_markdown_matches_golden(tmp_path: Path) -> None:
     ]
     md = render_markdown(
         preds,
-        model_version="inat2021_aves_quant_v1",
+        model_version="aiy_birds_v1",
         coverage_pct=87.3,
         threshold_for_app=0.35,
     )
@@ -3282,11 +3195,11 @@ def main() -> None: ...
 @click.option("--model", "model_path", type=click.Path(exists=True, path_type=Path), required=True)
 @click.option("--corpus", "manifest_path", type=click.Path(exists=True, path_type=Path), required=True)
 @click.option("--mapping", "mapping_path", type=click.Path(exists=True, path_type=Path), required=True)
-@click.option("--class-index", "class_index_path", type=click.Path(exists=True, path_type=Path),
+@click.option("--metadata", "metadata_path", type=click.Path(exists=True, path_type=Path),
               required=True)
 @click.option("--out", "out_path", type=click.Path(path_type=Path), required=True)
 def run(model_path: Path, manifest_path: Path, mapping_path: Path,
-        class_index_path: Path, out_path: Path) -> None:
+        metadata_path: Path, out_path: Path) -> None:
     """Run TFLite inference over corpus and render Markdown report."""
     import tensorflow as tf
 
@@ -3296,20 +3209,22 @@ def run(model_path: Path, manifest_path: Path, mapping_path: Path,
     input_size = int(input_details["shape"][1])
 
     mapping_raw = json.loads(mapping_path.read_text(encoding="utf-8"))
-    inat_to_qid = {int(k): v for k, v in mapping_raw["mappings"].items()}
+    aiy_to_qid = {int(k): v for k, v in mapping_raw["mappings"].items()}
     coverage_pct = float(mapping_raw["_meta"]["coverage_pct"])
     model_version = mapping_raw["_meta"]["generated_for_model_version"]
 
-    inat_class_index = [int(line.strip()) for line in
-                        class_index_path.read_text().splitlines() if line.strip()]
+    metadata_raw = json.loads(metadata_path.read_text(encoding="utf-8"))
+    norm = metadata_raw["input"]["normalization"]
+    output_meta = metadata_raw["output"]
+    background_class_index = int(output_meta.get("backgroundClassIndex", 964))
 
     items = load_corpus(manifest_path)
     predictor = Predictor(
         interpreter=interpreter,
-        inat_class_index=inat_class_index,
-        inat_to_qid=inat_to_qid,
-        normalization_mean=(0.485, 0.456, 0.406),
-        normalization_std=(0.229, 0.224, 0.225),
+        aiy_to_qid=aiy_to_qid,
+        background_class_index=background_class_index,
+        normalization_mean=tuple(norm["mean"]),
+        normalization_std=tuple(norm["std"]),
         input_size=input_size,
     )
     preds = [predictor.predict(item) for item in items]
@@ -3329,7 +3244,7 @@ uv run birdy-eval --help
 uv run birdy-eval run --help
 ```
 
-Expected: `--model`, `--corpus`, `--mapping`, `--class-index`, `--out` syns.
+Expected: `--model`, `--corpus`, `--mapping`, `--metadata`, `--out` syns.
 
 - [ ] **Step 14.7: mypy + ruff**
 
@@ -3398,10 +3313,10 @@ items:
 cd tools/ml-eval
 DATE=$(date -u +%Y-%m-%d)
 uv run birdy-eval run \
-  --model ../../shared/ml/src/commonMain/composeResources/files/ml/inat2021_aves.tflite \
+  --model ../../shared/ml/src/commonMain/composeResources/files/ml/aiy_birds_v1.tflite \
   --corpus corpus/manifest.yaml \
-  --mapping ../../shared/ml/src/commonMain/composeResources/files/ml/inat_to_qid.json \
-  --class-index ../../shared/ml/src/commonMain/composeResources/files/ml/inat_class_index.txt \
+  --mapping ../../shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json \
+  --metadata ../../shared/ml/src/commonMain/composeResources/files/ml/model_metadata.json \
   --out ../../docs/superpowers/eval/accuracy_report_${DATE}.md
 ```
 
@@ -3420,9 +3335,10 @@ cat docs/superpowers/eval/accuracy_report_*.md | head -30
 
 **Decision-out-of-task:** Om Top-3 < 70%:
 - Inspektera felklassificeringar per familj — kanske systematiskt fel?
-- Kolla `inat_class_index.txt` — är ordningen korrekt?
-- Kontrollera `normalization_mean/std` mot iNat2021-träningskonfig (vissa modeller använder ImageNet-stats, andra egna).
-- Om allt ser rätt ut men accuracy låg → eskalera till användaren; kan vara att modellvalet behöver omprövas (Plan 4c).
+- Kolla `aiy_to_qid.json` — matchar `_meta.generated_for_model_version` aktuell `model_metadata.json`-version? Är coverage-pct rimlig för svenska arter?
+- Kontrollera `normalization_mean/std` i `model_metadata.json` mot vad TFLite-metadata-extractorn rapporterade (Task 2 step 2.4).
+- Verifiera att AIY V1's labelmap (scientific names) faktiskt mappar in europeiska arter — många AIY V1-klasser är tropiska/amerikanska.
+- Om allt ser rätt ut men accuracy låg → eskalera till användaren; kan vara att modellvalet behöver omprövas (Plan 4c custom finetune).
 
 - [ ] **Step 15.5: Commit**
 
@@ -3769,7 +3685,7 @@ Bumpa status-raden:
 Lägg in kort entry i "Avslutade planer" (mönster från Plan 5b):
 
 ```markdown
-- **Plan 4b (Real TFLite-modell, `v0.4.0b-real-tflite`, 2026-05-XX):** off-the-shelf iNat2021 Aves bakom samma `BirdClassifier`-interface; SPARQL-cross-walk via P3151 (`birdy-fetcher build-mapping`); compose-resources/PAD distribution; `BirdClassifierFactory` med init-fallback + 3-strikes-failure-guard till FakeClassifier; `validateModelMapping` Gradle-task hookat i preBuild; `tools/ml-eval/` Python-modul för accuracy-rapporter; `BenchmarkScreen` (DEBUG-only) för on-device latens. Plan: `2026-05-07-v1-04b-real-tflite.md`. Accuracy: top-3 = XX% (n=YY foton); benchmark p95 = ZZ ms på SM-S918B. 6 device-screenshots. **Återanvändbara mönster:** `expect class` + lambda-injected preprocess för testbarhet utan att refactorera bort plattform-specifik kod; `SessionFailureGuard` med atomic counter + `onDegrade`-callback för Crashlytics; build-time `validateModelMapping` modellerat efter Plan 5b's `validateBadgesYaml`; mikro-modell (~100 KB Keras→TFLite) i jvmTest/androidUnitTest för end-to-end Interpreter-wiring utan att skicka full modell genom test-resources.
+- **Plan 4b (Real TFLite-modell, `v0.4.0b-real-tflite`, 2026-05-XX):** Google AIY Birds V1 (965 klasser, MobileNetV2-quantized, 3.5 MB) bakom samma `BirdClassifier`-interface; SPARQL-cross-walk scientific-name → Q-ID via P225 (`birdy-fetcher build-mapping`, `name_mapping.py`); bundlad i AAB via compose-resources (no PAD); `BirdClassifierFactory` med init-fallback + 3-strikes-failure-guard till FakeClassifier; `validateModelMapping` Gradle-task hookat i preBuild; `tools/ml-eval/` Python-modul för accuracy-rapporter; `BenchmarkScreen` (DEBUG-only) för on-device latens. Plan: `2026-05-07-v1-04b-real-tflite.md`. Pivoterad från iNat2021 → AIY V1 efter Task 2's artefakt-jakt. Accuracy: top-3 = XX% (n=YY foton); benchmark p95 = ZZ ms på SM-S918B. 6 device-screenshots. **Återanvändbara mönster:** `expect class` + lambda-injected preprocess för testbarhet utan att refactorera bort plattform-specifik kod; `SessionFailureGuard` med atomic counter + `onDegrade`-callback för Crashlytics; build-time `validateModelMapping` modellerat efter Plan 5b's `validateBadgesYaml`; mikro-modell (~100 KB Keras→TFLite) i jvmTest/androidUnitTest för end-to-end Interpreter-wiring utan att skicka full modell genom test-resources; AiyLabelMapper.lookup(classIndex) tar output-tensor-positionen direkt (background class index 964 returnerar null).
 ```
 
 - [ ] **Step 17.8: Commit screenshots + benchmark + CLAUDE.md**
