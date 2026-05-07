@@ -162,7 +162,7 @@ class ScanViewModelTest {
         }
 
     @Test
-    fun classifierMode_defaults_to_real_and_rounds_trips_demo() =
+    fun classifierMode_defaults_to_real_and_round_trips_demo() =
         runTest(dispatcher) {
             val vmReal =
                 ScanViewModel(

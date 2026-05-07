@@ -1,6 +1,5 @@
 package se.birdy.android
 
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -48,7 +47,7 @@ class MainActivity : ComponentActivity() {
         // read can take longer than the badge catalog (~10ms), but avoids a loading screen and
         // keeps App(graph) signature unchanged. Post-v1.0 this can move to an async splash flow
         // if cold-start budget tightens.
-        val (classifier, classifierMode) = runBlocking { buildClassifier(applicationContext) }
+        val (classifier, classifierMode) = runBlocking { buildClassifier() }
         val graph =
             AppGraph(
                 repository = SpeciesRepositoryProvider.get(),
@@ -67,7 +66,7 @@ class MainActivity : ComponentActivity() {
         setContent { App(graph) }
     }
 
-    private suspend fun buildClassifier(context: Context): Pair<BirdClassifier, ClassifierMode> {
+    private suspend fun buildClassifier(): Pair<BirdClassifier, ClassifierMode> {
         val artifactProvider = ModelArtifactProvider()
         val factory =
             BirdClassifierFactory(
@@ -92,6 +91,7 @@ class MainActivity : ComponentActivity() {
                         mapper = mapper,
                     )
                 },
+                // MUST be cheap + non-throwing — BirdClassifierFactory does not guard the DEMO-path fallback.
                 createFallback = { FakeBirdClassifier() },
                 onCrashlytics = { t ->
                     android.util.Log.e("Birdy", "TFLite init failed, falling back to Fake", t)
