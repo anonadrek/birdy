@@ -1,5 +1,6 @@
 package se.birdy.android
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,8 +16,17 @@ import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
 import se.birdy.data.observation.SqlDelightObservationRepository
+import se.birdy.ml.AndroidTfliteRunner
+import se.birdy.ml.BirdClassifier
+import se.birdy.ml.BirdClassifierFactory
+import se.birdy.ml.ClassifierMode
 import se.birdy.ml.FakeBirdClassifier
+import se.birdy.ml.ImagePreprocessor
+import se.birdy.ml.ModelArtifactProvider
+import se.birdy.ml.TfLiteBirdClassifier
 import se.birdy.ml.camera.AndroidCameraSource
+import se.birdy.ml.loadAiyLabelMapper
+import se.birdy.ml.loadModelMetadata
 import java.io.File
 
 class MainActivity : ComponentActivity() {
@@ -33,10 +43,17 @@ class MainActivity : ComponentActivity() {
         // + BadgesViewModel constructors). Revisit post-v1.0 if cold-start budget tightens.
         val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         val badgeVersionStore = SharedPrefsBadgeVersionStore(applicationContext)
+        // BirdClassifierFactory.create() is suspend — we run it blocking here for v1 simplicity,
+        // following the same precedent as BadgeCatalogLoader above. TFLite init + 3.5 MB model
+        // read can take longer than the badge catalog (~10ms), but avoids a loading screen and
+        // keeps App(graph) signature unchanged. Post-v1.0 this can move to an async splash flow
+        // if cold-start budget tightens.
+        val (classifier, classifierMode) = runBlocking { buildClassifier(applicationContext) }
         val graph =
             AppGraph(
                 repository = SpeciesRepositoryProvider.get(),
-                classifier = FakeBirdClassifier(),
+                classifier = classifier,
+                classifierMode = classifierMode,
                 cameraSourceFactory = {
                     AndroidCameraSource(applicationContext, this@MainActivity)
                 },
@@ -48,6 +65,40 @@ class MainActivity : ComponentActivity() {
                 defaultLocale = Locale.SV,
             )
         setContent { App(graph) }
+    }
+
+    private suspend fun buildClassifier(context: Context): Pair<BirdClassifier, ClassifierMode> {
+        val artifactProvider = ModelArtifactProvider()
+        val factory =
+            BirdClassifierFactory(
+                createReal = {
+                    val info = loadModelMetadata()
+                    val mapper = loadAiyLabelMapper()
+                    val modelBytes = artifactProvider.loadModelBytes(info)
+                    val runner = AndroidTfliteRunner(modelBytes, info)
+                    val preprocessor = ImagePreprocessor()
+                    TfLiteBirdClassifier(
+                        info = info,
+                        runner = runner,
+                        preprocess = { input, modelInfo ->
+                            preprocessor.preprocess(
+                                input = input,
+                                outHeight = modelInfo.inputHeightPx,
+                                outWidth = modelInfo.inputWidthPx,
+                                normalizationMean = modelInfo.normalizationMean.toFloatArray(),
+                                normalizationStd = modelInfo.normalizationStd.toFloatArray(),
+                            )
+                        },
+                        mapper = mapper,
+                    )
+                },
+                createFallback = { FakeBirdClassifier() },
+                onCrashlytics = { t ->
+                    android.util.Log.e("Birdy", "TFLite init failed, falling back to Fake", t)
+                    // FirebaseCrashlytics integration deferred — Plan 6 polish.
+                },
+            )
+        return factory.create()
     }
 
     private fun cleanOldCacheFrames() {

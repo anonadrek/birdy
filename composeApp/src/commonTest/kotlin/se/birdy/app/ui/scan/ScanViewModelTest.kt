@@ -9,6 +9,7 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import se.birdy.app.testing.FakeCameraSource
 import se.birdy.ml.BirdClassifier
+import se.birdy.ml.ClassifierMode
 import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.ImageInput
 import kotlin.test.AfterTest
@@ -158,6 +159,27 @@ class ScanViewModelTest {
                 assertEquals(true, lastScanning?.isThrottled, "isThrottled must be true when p95 > 333ms")
                 cancelAndIgnoreRemainingEvents()
             }
+        }
+
+    @Test
+    fun classifierMode_defaults_to_real_and_rounds_trips_demo() =
+        runTest(dispatcher) {
+            val vmReal =
+                ScanViewModel(
+                    classifier = FakeBirdClassifier(),
+                    cameraSourceFactory = { FakeCameraSource() },
+                    frameThrottling = false,
+                )
+            assertEquals(ClassifierMode.REAL, vmReal.classifierMode, "default must be REAL")
+
+            val vmDemo =
+                ScanViewModel(
+                    classifier = FakeBirdClassifier(),
+                    cameraSourceFactory = { FakeCameraSource() },
+                    classifierMode = ClassifierMode.DEMO,
+                    frameThrottling = false,
+                )
+            assertEquals(ClassifierMode.DEMO, vmDemo.classifierMode, "DEMO must round-trip via constructor")
         }
 }
 

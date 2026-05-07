@@ -13,8 +13,12 @@ kotlin {
             implementation(project(":composeApp"))
             implementation(project(":shared:domain"))
             implementation(project(":shared:data"))
+            implementation(project(":shared:ml"))
             implementation(libs.kotlinx.datetime)
             implementation("androidx.activity:activity-compose:1.9.3")
+            // TFLite needed so Kotlin compiler can resolve Interpreter.Options when calling
+            // AndroidTfliteRunner(modelBytes, info) with default options param in buildClassifier.
+            implementation("org.tensorflow:tensorflow-lite:2.16.1")
         }
     }
 }

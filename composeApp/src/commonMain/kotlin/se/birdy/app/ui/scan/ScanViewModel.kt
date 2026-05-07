@@ -21,11 +21,13 @@ import kotlinx.datetime.Clock
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.CameraSource
 import se.birdy.ml.Classification
+import se.birdy.ml.ClassifierMode
 import se.birdy.ml.ImageInput
 
 class ScanViewModel(
     private val classifier: BirdClassifier,
     cameraSourceFactory: () -> CameraSource,
+    val classifierMode: ClassifierMode = ClassifierMode.REAL,
     initialSamplePeriodMs: Long = 333L,
     private val confidenceThreshold: Float = 0.35f,
     private val frameThrottling: Boolean = true,

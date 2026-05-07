@@ -23,10 +23,12 @@ import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.observation.ObservationRepository
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.CameraSource
+import se.birdy.ml.ClassifierMode
 
 class AppGraph(
     val repository: SpeciesRepository,
     val classifier: BirdClassifier,
+    val classifierMode: ClassifierMode = ClassifierMode.REAL,
     val cameraSourceFactory: () -> CameraSource,
     val observationRepository: ObservationRepository,
     val photoStorage: PhotoStorage,
@@ -66,7 +68,12 @@ class AppGraph(
     fun speciesProfileViewModel(speciesId: SpeciesId): SpeciesProfileViewModel =
         SpeciesProfileViewModel(repository, speciesId, defaultLocale)
 
-    fun scanViewModel(): ScanViewModel = ScanViewModel(classifier = classifier, cameraSourceFactory = cameraSourceFactory)
+    fun scanViewModel(): ScanViewModel =
+        ScanViewModel(
+            classifier = classifier,
+            cameraSourceFactory = cameraSourceFactory,
+            classifierMode = classifierMode,
+        )
 
     fun photoAnalyzeViewModel(persist: (ByteArray) -> String): PhotoAnalyzeViewModel =
         PhotoAnalyzeViewModel(classifier = classifier, persist = persist)

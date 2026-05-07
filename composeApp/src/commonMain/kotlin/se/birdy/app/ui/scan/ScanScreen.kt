@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.demo_mode_banner
 import birdy_bird_scanner.composeapp.generated.resources.scan_error_classifier_failed
 import birdy_bird_scanner.composeapp.generated.resources.scan_freeze_hint
 import birdy_bird_scanner.composeapp.generated.resources.scan_permission_allow
@@ -29,8 +32,10 @@ import birdy_bird_scanner.composeapp.generated.resources.scan_permission_require
 import birdy_bird_scanner.composeapp.generated.resources.scan_photo_analyze
 import birdy_bird_scanner.composeapp.generated.resources.scan_top1_searching
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.ml.CameraSource
+import se.birdy.ml.ClassifierMode
 
 @Composable
 fun ScanScreen(
@@ -111,6 +116,32 @@ fun ScanScreen(
                 }
             }
         }
+        // DEMO banner is session-wide truth — show across all states (PermissionRequired,
+        // Idle, Scanning, FrozenAt, Error) so the user always knows they are in fallback mode.
+        if (viewModel.classifierMode == ClassifierMode.DEMO) {
+            DemoBanner(
+                modifier =
+                    Modifier
+                        .align(Alignment.TopCenter)
+                        .padding(top = 8.dp),
+            )
+        }
+    }
+}
+
+@Composable
+private fun DemoBanner(modifier: Modifier = Modifier) {
+    Surface(
+        color = AccentCopper,
+        contentColor = TextOnHero,
+        shape = MaterialTheme.shapes.small,
+        modifier = modifier,
+    ) {
+        Text(
+            text = stringResource(Res.string.demo_mode_banner),
+            style = MaterialTheme.typography.labelMedium,
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        )
     }
 }
 

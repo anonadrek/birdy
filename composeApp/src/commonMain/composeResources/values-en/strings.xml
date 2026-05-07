@@ -70,6 +70,7 @@
     <string name="scan_permission_open_settings">Open settings</string>
     <string name="scan_error_classifier_failed">Classifier failed repeatedly.</string>
     <string name="scan_throttle_indicator">1.5 fps</string>
+    <string name="demo_mode_banner">DEMO — model missing, fake data shown</string>
 
     <!-- Diary -->
     <string name="diary_title">Diary</string>

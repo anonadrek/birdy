@@ -83,6 +83,7 @@
     <string name="scan_permission_open_settings">Öppna inställningar</string>
     <string name="scan_error_classifier_failed">Klassificeraren misslyckades upprepade gånger</string>
     <string name="scan_throttle_indicator">1.5 fps</string>
+    <string name="demo_mode_banner">DEMO — modell saknas, fake-data visas</string>
 
     <!-- Diary -->
     <string name="diary_title">Dagbok</string>

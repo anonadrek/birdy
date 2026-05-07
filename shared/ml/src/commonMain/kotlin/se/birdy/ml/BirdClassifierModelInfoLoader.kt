@@ -1,8 +1,20 @@
 package se.birdy.ml
 
+import birdy_bird_scanner.shared.ml.generated.resources.Res
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+
+/**
+ * Loads [BirdClassifierModelInfo] from the bundled `files/ml/model_metadata.json` in the
+ * shared/ml compose-resources bundle. Mirrors [loadAiyLabelMapper] in the same pattern.
+ */
+@OptIn(ExperimentalResourceApi::class)
+suspend fun loadModelMetadata(): BirdClassifierModelInfo {
+    val bytes = Res.readBytes("files/ml/model_metadata.json")
+    return BirdClassifierModelInfoLoader.parseJson(bytes.decodeToString())
+}
 
 object BirdClassifierModelInfoLoader {
     private val json = Json { ignoreUnknownKeys = true }
