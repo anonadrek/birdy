@@ -1,13 +1,15 @@
 package se.birdy.content.build
 
+import java.io.File
+
 object ValidateModelMappingMain {
     @JvmStatic
     fun main(args: Array<String>) {
         require(args.size == 2) {
             "Usage: ValidateModelMappingMain <aiy_to_qid.json> <model_metadata.json>"
         }
-        val mappingFile = java.io.File(args[0])
-        val metadataFile = java.io.File(args[1])
+        val mappingFile = File(args[0])
+        val metadataFile = File(args[1])
         try {
             ValidateModelMapping.runFromFiles(mappingFile, metadataFile)
             println("validateModelMapping: OK")

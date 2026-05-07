@@ -72,6 +72,13 @@ class ValidateModelMappingTest {
     }
 
     @Test
+    fun `passes with warning when coverage in warn band`() {
+        val warnLevel = validMapping.replace("\"coverage_pct\": 99.0", "\"coverage_pct\": 70.0")
+        // Should NOT throw — 70.0 is below the 90% warn threshold but above the 50% fail threshold.
+        ValidateModelMapping.validate(warnLevel, validMetadata)
+    }
+
+    @Test
     fun `duplicate class index throws RuntimeException`() {
         // Raw JSON with duplicate key "0" — kotlinx.serialization silently overwrites,
         // so we detect it via raw-text scan
