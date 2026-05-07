@@ -152,7 +152,7 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 | 2026-05-06 | anhingidae | +1 | 164 | `0461611` |
 | 2026-05-06 | apodidae | +9 | 173 | `89f2ca3` |
 | 2026-05-07 | ardeidae | +16 | 189 | `103c76c` |
-| 2026-05-07 | bombycillidae | +1 | 190 | _(this commit)_ |
+| 2026-05-07 | bombycillidae | +1 | 190 | `7c29d4f` |
 | _(next)_ | _bucerotidae (1 art) — kolla species_list.yaml_ | | | |
 
 **Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör nästa familj". Pure-data — kan köras parallellt med Plan 5+.
