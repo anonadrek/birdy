@@ -33,9 +33,16 @@ kotlin {
             implementation("org.tensorflow:tensorflow-lite:2.16.1")
             implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
         }
+        androidUnitTest.dependencies {
+            implementation("org.robolectric:robolectric:4.13")
+            implementation("junit:junit:4.13.2")
+        }
     }
 }
 
 android {
     namespace = "se.birdy.ml"
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
 }
