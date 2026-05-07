@@ -5,10 +5,12 @@ import android.graphics.Color
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 import java.io.ByteArrayOutputStream
 import kotlin.test.assertEquals
 
 @RunWith(RobolectricTestRunner::class)
+@Config(sdk = [33])
 class ImagePreprocessorAndroidTest {
     private fun jpegBytes(
         width: Int,

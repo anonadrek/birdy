@@ -22,21 +22,27 @@ actual class ImagePreprocessor actual constructor() {
 
         val decoded = decode(input)
         val rotated = applyRotation(decoded, input.rotationDegrees)
+        if (rotated !== decoded) decoded.recycle()
         val resized = Bitmap.createScaledBitmap(rotated, outWidth, outHeight, true)
+        if (resized !== rotated) rotated.recycle()
 
-        val out = FloatArray(outHeight * outWidth * 3)
-        val pixels = IntArray(outHeight * outWidth)
-        resized.getPixels(pixels, 0, outWidth, 0, 0, outWidth, outHeight)
-        var idx = 0
-        for (px in pixels) {
-            val r = ((px shr 16) and 0xFF) / 255f
-            val g = ((px shr 8) and 0xFF) / 255f
-            val b = (px and 0xFF) / 255f
-            out[idx++] = (r - normalizationMean[0]) / normalizationStd[0]
-            out[idx++] = (g - normalizationMean[1]) / normalizationStd[1]
-            out[idx++] = (b - normalizationMean[2]) / normalizationStd[2]
+        try {
+            val out = FloatArray(outHeight * outWidth * 3)
+            val pixels = IntArray(outHeight * outWidth)
+            resized.getPixels(pixels, 0, outWidth, 0, 0, outWidth, outHeight)
+            var idx = 0
+            for (px in pixels) {
+                val r = ((px shr 16) and 0xFF) / 255f
+                val g = ((px shr 8) and 0xFF) / 255f
+                val b = (px and 0xFF) / 255f
+                out[idx++] = (r - normalizationMean[0]) / normalizationStd[0]
+                out[idx++] = (g - normalizationMean[1]) / normalizationStd[1]
+                out[idx++] = (b - normalizationMean[2]) / normalizationStd[2]
+            }
+            return out
+        } finally {
+            resized.recycle()
         }
-        return out
     }
 
     private fun decode(input: ImageInput): Bitmap =
@@ -54,10 +60,16 @@ actual class ImagePreprocessor actual constructor() {
         return bmp
     }
 
+    /**
+     * Decodes [ImageInput] bytes assumed to already be NV21-packed (Y plane followed by
+     * interleaved VU). CameraX YUV_420_888 frames are NOT directly NV21 — upstream
+     * callers must repack via [se.birdy.ml.camera.YuvToJpeg] (or equivalent) before
+     * setting [FrameFormat.YUV_420_888] on the [ImageInput].
+     */
     private fun decodeYuv420(input: ImageInput): Bitmap {
         val yuv = YuvImage(input.bytes, ImageFormat.NV21, input.widthPx, input.heightPx, null)
         val baos = ByteArrayOutputStream()
-        yuv.compressToJpeg(Rect(0, 0, input.widthPx, input.heightPx), 90, baos)
+        yuv.compressToJpeg(Rect(0, 0, input.widthPx, input.heightPx), YUV_TO_JPEG_QUALITY, baos)
         val jpeg = baos.toByteArray()
         return BitmapFactory.decodeByteArray(jpeg, 0, jpeg.size)
             ?: error("YUV→JPEG→Bitmap decode failed")
@@ -70,5 +82,9 @@ actual class ImagePreprocessor actual constructor() {
         if (degrees == 0) return bitmap
         val matrix = Matrix().apply { postRotate(degrees.toFloat()) }
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+    }
+
+    companion object {
+        private const val YUV_TO_JPEG_QUALITY = 90
     }
 }
