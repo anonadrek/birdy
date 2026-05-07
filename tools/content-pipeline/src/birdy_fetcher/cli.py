@@ -170,70 +170,33 @@ def eval_prompts() -> None:
 
 
 @main.command("build-mapping")
-@click.option(
-    "--species-list",
-    type=click.Path(exists=True, path_type=Path),
-    default=None,
-    help="Path to species_list.yaml (default: species_list.yaml next to this script).",
-)
-@click.option(
-    "--model-version",
-    required=True,
-    help="ex: inat2021_aves_quant_v1",
-)
-@click.option(
-    "--out",
-    type=click.Path(path_type=Path),
-    default=None,
-    help="Output path for inat_to_qid.json.",
-)
-def build_mapping(species_list: Path | None, model_version: str, out: Path | None) -> None:
-    """Build iNat-ID → Q-ID mapping via SPARQL P3151."""
+@click.option("--labelmap", type=click.Path(exists=True, path_type=Path),
+              default=Path("../../shared/ml/src/commonMain/composeResources/files/ml/aiy_labelmap.csv"))
+@click.option("--model-version", required=True,
+              help="ex: aiy_birds_v1")
+@click.option("--out", type=click.Path(path_type=Path),
+              default=Path("../../shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json"))
+def build_mapping(labelmap: Path, model_version: str, out: Path) -> None:
+    """Build AIY class_index → Q-ID mapping via SPARQL P225 (taxon name)."""
     from datetime import UTC, datetime
 
-    import aiohttp
-    import yaml
-
-    from .inat_mapping import render_mapping_json, run_build_mapping
-
-    pipeline_root = Path(__file__).resolve().parent.parent.parent
-    resolved_species_list = species_list or (pipeline_root / "species_list.yaml")
-    resolved_out = out or (
-        pipeline_root.parent.parent
-        / "shared"
-        / "ml"
-        / "src"
-        / "commonMain"
-        / "composeResources"
-        / "files"
-        / "ml"
-        / "inat_to_qid.json"
+    from .name_mapping import (
+        parse_labelmap_csv,
+        render_mapping_json_by_class_index,
+        run_build_name_mapping,
     )
 
-    raw = yaml.safe_load(resolved_species_list.read_text(encoding="utf-8"))
-    if not isinstance(raw, list):
-        raise click.UsageError(
-            f"Expected {resolved_species_list} to be a list, got {type(raw).__name__}"
-        )
-    qids = [item["wikidata_id"] for item in raw]
-    try:
-        result = asyncio.run(run_build_mapping(qids))
-    except (TimeoutError, aiohttp.ClientResponseError, aiohttp.ClientConnectorError) as exc:
-        raise click.ClickException(f"Wikidata SPARQL request failed: {exc}") from exc
-    rendered = render_mapping_json(
-        result,
-        model_version=model_version,
-        generated_at=datetime.now(UTC),
+    pairs = parse_labelmap_csv(labelmap)
+    result = asyncio.run(run_build_name_mapping(pairs))
+    rendered = render_mapping_json_by_class_index(
+        result, model_version=model_version, generated_at=datetime.now(UTC),
     )
-    resolved_out.parent.mkdir(parents=True, exist_ok=True)
-    resolved_out.write_text(rendered, encoding="utf-8")
-    summary = (
-        f"Wrote {resolved_out} ({result.mapped_qids}/{result.requested_qids} mapped, "
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(rendered, encoding="utf-8")
+    click.echo(
+        f"Wrote {out} ({result.mapped_classes}/{result.requested_classes} mapped, "
         f"coverage={result.coverage_pct}%)"
     )
-    if result.cross_batch_conflicts > 0:
-        summary += f", cross_batch_conflicts={result.cross_batch_conflicts}"
-    click.echo(summary)
 
 
 if __name__ == "__main__":
