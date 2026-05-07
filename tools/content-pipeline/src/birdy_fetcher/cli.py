@@ -169,5 +169,64 @@ def eval_prompts() -> None:
     click.echo("eval-prompts: not implemented yet")
 
 
+@main.command("build-mapping")
+@click.option(
+    "--species-list",
+    type=click.Path(exists=True, path_type=Path),
+    default=None,
+    help="Path to species_list.yaml (default: species_list.yaml next to this script).",
+)
+@click.option(
+    "--model-version",
+    required=True,
+    help="ex: inat2021_aves_quant_v1",
+)
+@click.option(
+    "--out",
+    type=click.Path(path_type=Path),
+    default=None,
+    help="Output path for inat_to_qid.json.",
+)
+def build_mapping(species_list: Path | None, model_version: str, out: Path | None) -> None:
+    """Build iNat-ID → Q-ID mapping via SPARQL P3151."""
+    import asyncio
+    from datetime import UTC, datetime
+
+    import yaml
+
+    from .inat_mapping import render_mapping_json, run_build_mapping
+
+    pipeline_root = Path(__file__).resolve().parent.parent.parent
+    resolved_species_list = species_list or (pipeline_root / "species_list.yaml")
+    resolved_out = out or (
+        pipeline_root.parent.parent
+        / "shared"
+        / "ml"
+        / "src"
+        / "commonMain"
+        / "composeResources"
+        / "files"
+        / "ml"
+        / "inat_to_qid.json"
+    )
+
+    raw = yaml.safe_load(resolved_species_list.read_text(encoding="utf-8"))
+    # species_list.yaml is a top-level list; each entry has a "wikidata_id" field.
+    species_entries = raw if isinstance(raw, list) else raw["species"]
+    qids = [item["wikidata_id"] for item in species_entries]
+    result = asyncio.run(run_build_mapping(qids))
+    rendered = render_mapping_json(
+        result,
+        model_version=model_version,
+        generated_at=datetime.now(UTC),
+    )
+    resolved_out.parent.mkdir(parents=True, exist_ok=True)
+    resolved_out.write_text(rendered, encoding="utf-8")
+    click.echo(
+        f"Wrote {resolved_out} ({result.mapped_qids}/{result.requested_qids} mapped, "
+        f"coverage={result.coverage_pct}%)"
+    )
+
+
 if __name__ == "__main__":
     main()
