@@ -189,3 +189,6 @@ species:
     description_accept_missing: [sv]  # Caprimulgus inornatus (Sahelnattskärra / Plain Nightjar) — afrikansk, ingen svwiki
   Q2752089:
     description_accept_missing: [en]  # Caprimulgus mahrattensis (Sindnattskärra / Sykes's Nightjar) — asiatisk, enwiki lead för kort
+  # Certhiidae batch (2026-05-08): allmän SE-art men svwiki lead under SPARSE_WORD_THRESHOLD.
+  Q193593:
+    description_accept_missing: [sv]  # Certhia familiaris (Trädkrypare) — allmän SE-stannfågel, men svwiki lead för kort. Prioriterad manuell text.

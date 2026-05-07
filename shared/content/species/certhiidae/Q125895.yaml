@@ -1,0 +1,129 @@
+id: Q125895
+scientific_name: Certhia brachydactyla
+taxonomy:
+  family: Certhiidae
+  family_sv: Trädkrypare
+  genus: Certhia
+  ioc_order: Passeriformes
+names:
+  sv: Trädgårdsträdkrypare
+  en: Short-toed Treecreeper
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Trädgårdsträdkrypare
+
+
+    Trädgårdsträdkryparen är en liten fågel i familjen trädkrypare som förekommer
+    i de varmare delarna av Europa och Nordafrika. Det är en skicklig klättrare som
+    rör sig upp för trädstammar på jakt efter små insekter och spindlar. Fågeln är
+    svårdifferentierad från sin närbesläktade släkting större trädkrypare, men är
+    generellt något mindre med kortare näbb.
+
+
+    Trädgårdsträdkryparen är en diskret fågel som ofta förbises på grund av sin små
+    storlek och färgteckning som passar väl in bland barkskuggor. Det föredrar lövträd
+    och fruktträdgårdar framför barrnål, vilket skiljer det från större trädkrypare.
+    Under häckningsperioden kan fågeln höras med sitt höga, tunna läte. Det är en
+    året-runt bosatt art i större delen av sitt utbredningsområde.'
+  en: '# Short-toed Treecreeper
+
+
+    The short-toed treecreeper is a small passerine found across woodlands in warmer
+    regions of Europe and north Africa, with a generally more southerly distribution
+    than its close relative, the common treecreeper. Where their ranges overlap, the
+    short-toed treecreeper shows a preference for deciduous trees and lower altitudes,
+    making habitat selection useful for field identification between the two similar
+    species.
+
+
+    This bird is mainly sedentary, though occasional vagrants appear beyond the regular
+    breeding range. Its small size and behaviour of creeping methodically up tree
+    trunks in search of insects are typical of treecreepers. The short-toed treecreeper
+    can be challenging to distinguish from the common treecreeper in the field, requiring
+    careful attention to plumage details, call notes, and habitat preference for reliable
+    identification.'
+migration:
+  sv: '# Trädgårdsträdkrypare – Förekomst i Skandinavien och Nordeuropa
+
+
+    Trädgårdsträdkryparen förekommer inte naturligt som etablerad häckfågel i Skandinavien
+    eller övriga Nordeuropa. Arten är i huvudsak utbredd i de varmare tempererade
+    delarna av Europa och Nordafrika, där den är mestadels stationär. Endast sporadiskt
+    registreras arten som en vilsefluggen gäst i norra Europa, främst under hösten
+    och vintern. De enstaka observationer som gjorts i Skandinavien utgör alltså undantag
+    snarare än en regelbunden migration eller övervintringsförekomst.'
+  en: '# Short-toed Treecreeper in Northern Europe
+
+
+    The Short-toed Treecreeper is primarily a resident species throughout its European
+    range, showing sedentary habits year-round in established breeding territories.
+    In Scandinavia and Northern Europe, it occurs only as a vagrant outside its main
+    distribution, which is centered in warmer southern and central European regions.
+    The species does not undertake regular seasonal migrations like some other treecreeper
+    species, though occasional individuals may wander beyond their normal range, particularly
+    during dispersal periods.
+
+
+    Being largely non-migratory, this species does not follow predictable arrival
+    or departure patterns in northern areas. Its presence in Scandinavia remains exceptional
+    rather than routine, reflecting its strong preference for the milder climates
+    and deciduous woodland habitats of southern Europe. The species is not considered
+    a regular winter visitor or migrant through the Nordic region.'
+image_refs:
+- role: hero
+  path: Q125895/hero.jpg
+  width: 1480
+  height: 2226
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/79805947@N02">Sandra</a>
+    from France
+  source_url: https://commons.wikimedia.org/wiki/File:Certhia brachydactyla, Toulouse,
+    France 1.jpg
+  commons_filename: Certhia brachydactyla, Toulouse, France 1.jpg
+- role: secondary
+  path: Q125895/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Cyprus treecreeper (Certhia
+    brachydactyla dorotheae).jpg
+  commons_filename: Cyprus treecreeper (Certhia brachydactyla dorotheae).jpg
+- role: secondary
+  path: Q125895/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Cyprus treecreeper (Certhia
+    brachydactyla dorotheae) 3.jpg
+  commons_filename: Cyprus treecreeper (Certhia brachydactyla dorotheae) 3.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:34:18.795299+00:00'
+sources:
+  wikipedia_sv_revision: '59180744'
+  wikipedia_en_revision: '1315308493'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,106 @@
+id: Q193593
+scientific_name: Certhia familiaris
+taxonomy:
+  family: Certhiidae
+  family_sv: Trädkrypare
+  genus: Certhia
+  ioc_order: Passeriformes
+names:
+  sv: Trädkrypare
+  en: Eurasian Treecreeper
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Eurasian Treecreeper
+
+
+    The Eurasian treecreeper is a small, distinctive bird with a notably curved bill
+    perfectly adapted for extracting insects from bark crevices. It displays cryptic
+    brown and buff plumage on its upperparts with whitish underparts, providing excellent
+    camouflage against tree trunks. Its long, stiff tail feathers serve as a crucial
+    prop, allowing it to maintain balance while spiraling up tree trunks in its characteristic
+    creeping manner.
+
+
+    This species is solitary and rather inconspicuous, spending most of its time searching
+    methodically along tree bark for food. It typically works upward in a spiral pattern,
+    then drops to the base of another tree to repeat the process. In winter, it may
+    join mixed feeding flocks with other small birds.
+
+
+    The Eurasian treecreeper''s song provides the most reliable identification feature,
+    as it closely resembles the similar short-toed treecreeper across much of its
+    range. The call is a high, thin "tsee" or "tsuit" sound. It inhabits deciduous,
+    coniferous, and mixed woodlands, parks, and gardens with mature trees throughout
+    much of temperate Eurasia, showing preference for areas with rough-barked specimens
+    that offer abundant foraging opportunities.'
+migration:
+  sv: ''
+  en: '# Eurasian Treecreeper - Seasonal Occurrence in Scandinavia/Northern Europe
+
+
+    The Eurasian treecreeper is a year-round resident throughout much of Scandinavia
+    and Northern Europe, though populations show some seasonal movement. Northern
+    breeding populations migrate southwestward in autumn, with birds departing breeding
+    areas from September onwards. Return migration typically occurs from March through
+    May, with birds re-establishing territories on their breeding grounds. Southern
+    populations are largely sedentary, remaining throughout winter. The species is
+    most abundant during the breeding season (April-July) in suitable woodland habitats,
+    but some individuals persist through winter in northern regions where suitable
+    sheltered forests provide sufficient foraging opportunities.'
+image_refs:
+- role: hero
+  path: Q193593/hero.jpg
+  width: 1623
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Certhia familiaris Rome 20130304.jpg
+  commons_filename: Certhia familiaris Rome 20130304.jpg
+- role: secondary
+  path: Q193593/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Certhia familiaris ringing SPOL
+    mangeoire 20250220 n02.jpg
+  commons_filename: Certhia familiaris ringing SPOL mangeoire 20250220 n02.jpg
+- role: secondary
+  path: Q193593/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Certhia familiaris, Spomenik
+    prirode Lisine (1).jpg
+  commons_filename: Certhia familiaris, Spomenik prirode Lisine (1).jpg
+review_status: approved
+review_notes: '2026-05-08: hero shows trädkrypare i klassisk klätterpose mot grov bark — stelt stjärtfäste mot trädstam, böjd insektsnäbb, mottled brun-vit kamouflage. Diagnostiska fältkännetecken syns klart. Etablerad SE-stannfågel i barr/bland-skog över hela landet, året runt.'
+generated_at: '2026-05-07T23:35:31.754463+00:00'
+sources:
+  wikipedia_sv_revision: '59098976'
+  wikipedia_en_revision: '1338369555'
+  claude_model: claude-haiku-4-5-20251001

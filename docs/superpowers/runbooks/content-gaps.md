@@ -100,6 +100,7 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 75 | Q1269353 | caprimulgidae | Nubisk nattskärra | Caprimulgus nubicus | sv | — | — | pending (afrikansk, ingen svwiki) |
 | 76 | Q1270252 | caprimulgidae | Sahelnattskärra | Caprimulgus inornatus | sv | — | — | pending (afrikansk, ingen svwiki) |
 | 77 | Q2752089 | caprimulgidae | Sindnattskärra | Caprimulgus mahrattensis | en | 56773477 | — | pending (asiatisk; enwiki lead för kort) |
+| 78 | Q193593 | certhiidae | Trädkrypare | Certhia familiaris | sv | 59098976 | 1338369555 | pending (allmän — prioriterad; svwiki lead under SPARSE_WORD_THRESHOLD trots vanlig SE-stannfågel) |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 
