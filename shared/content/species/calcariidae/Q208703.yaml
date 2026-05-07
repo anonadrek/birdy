@@ -1,0 +1,127 @@
+id: Q208703
+scientific_name: Calcarius lapponicus
+taxonomy:
+  family: Calcariidae
+  family_sv: Fältsparvar
+  genus: Calcarius
+  ioc_order: Passeriformes
+names:
+  sv: Lappsparv
+  en: Lapland Longspur
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Lappsparv
+
+
+    Lappsparven är en liten fågel som tillhör familjen sporrsparvar. Det är en talrik
+    art som förekommer på höga nordliga breddgrader, där det häckar på fjällhedar
+    och myrar runt om i polarregionen. Under vintermånaderna beger sig fågeln sig
+    söderut för att övervintra på tempererade slättområden med öppnare växtlighet.
+
+
+    Arten är klassificerad som livskraftig av IUCN, vilket tyder på en stabil population.
+    För den intresserade fågelskådaren är lappsparven mest spännande att iaktta under
+    dess nordliga häckningssäsong eller under flyttperioderna när flockvis invandring
+    kan observeras på tempererade bärkmarker och öppna marker.'
+  en: '# Lapland Longspur
+
+
+    The Lapland longspur is a small passerine bird belonging to the longspur family,
+    and it is the only member of its genus found in Eurasia. It breeds throughout
+    arctic regions in a circumpolar distribution, making it one of the northernmost
+    songbirds.
+
+
+    This species favors open tundra habitats where it nests on the ground among sparse
+    vegetation. During breeding season, males are distinctive with dark plumage on
+    the head and breast contrasting with rusty-buff coloring on the nape. In winter
+    plumage, it appears more subdued and streaked. The bird''s call is a sharp, musical
+    note often given in flight, particularly during its characteristic display flights
+    over breeding territories.
+
+
+    The Lapland longspur is highly migratory, vacating arctic breeding grounds for
+    southern wintering areas where it joins flocks in open grasslands and agricultural
+    regions. It feeds primarily on seeds and insects, foraging on the ground and gleaning
+    from vegetation. In winter, it becomes more social and may be encountered in mixed
+    flocks with other buntings and larks in suitable open habitats.'
+migration:
+  sv: '# Lappsparv (Calcarius lapponicus) - Förekomst i Skandinavien och Nordeuropa
+
+
+    Lappsparven är en migrationsart som återkommer till sitt häckningsområde på nordliga
+    fjällhedar och myrar under våren. Arten häckar cirkumpolärt på höga norska fjällen,
+    svenska fjällen och i Nordkalotten från april-maj till augusti-september. Under
+    hösten påbörjar arten en omfattande sydvandring då populationerna överflyttar
+    från sina häckningsområden till tempererade slättregioner i söder, där de övervintrar.
+    Arten är således endast tillfälligt närvarande i sitt nordiska häckningsområde
+    under sommarmånaderna, medan den under vinterhalvåret förekommer långt söderut.'
+  en: '# Lapland Longspur in Northern Europe
+
+
+    The Lapland longspur is a circumpolar arctic breeder that occurs throughout Scandinavia
+    and northern Europe during the breeding season. These birds arrive in their arctic
+    breeding grounds in spring, typically from May onwards, after wintering in southern
+    regions. During autumn, they migrate southward from August through October as
+    breeding activities conclude. In winter, Lapland longspurs are found in lower
+    latitudes across southern Scandinavia and continental Europe, where they form
+    flocks in open habitats. Their presence in the far north is strictly seasonal,
+    making them characteristic summer visitors to the arctic tundra regions of northern
+    Scandinavia and Russia.'
+image_refs:
+- role: hero
+  path: Q208703/hero.jpg
+  width: 2400
+  height: 1655
+  license: Public domain
+  author: unknown, USFWS
+  source_url: https://commons.wikimedia.org/wiki/File:Lapland Longspur (Calcarius
+    lapponicus).jpg
+  commons_filename: Lapland Longspur (Calcarius lapponicus).jpg
+- role: secondary
+  path: Q208703/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lapland longspur (Calcarius
+    lapponicus) 2023 4.jpg
+  commons_filename: Lapland longspur (Calcarius lapponicus) 2023 4.jpg
+- role: secondary
+  path: Q208703/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lapland longspur (Calcarius
+    lapponicus) 2023 01.jpg
+  commons_filename: Lapland longspur (Calcarius lapponicus) 2023 01.jpg
+review_status: approved
+review_notes: '2026-05-08: hero shows breeding-plumage male lappsparv på fjälltundra med gulnäbb, svart bröstplåt och rödbrun nackfärg. Diagnostiska fältkännetecken syns klart. Etablerad SE-fjällhäckare + genomflyttare över hela landet om hösten.'
+generated_at: '2026-05-07T22:21:12.173583+00:00'
+sources:
+  wikipedia_sv_revision: '59190748'
+  wikipedia_en_revision: '1338865933'
+  claude_model: claude-haiku-4-5-20251001

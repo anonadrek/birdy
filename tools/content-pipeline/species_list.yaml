@@ -4954,12 +4954,14 @@
   ioc_order: Passeriformes
   common_en: Snow Bunting
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q208703
   scientific_name: Calcarius lapponicus
   family: Calcariidae
   ioc_order: Passeriformes
   common_en: Lapland Longspur
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q2742585
   scientific_name: Emberiza sahari
   family: Emberizidae

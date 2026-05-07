@@ -1,0 +1,127 @@
+id: Q26416
+scientific_name: Plectrophenax nivalis
+taxonomy:
+  family: Calcariidae
+  family_sv: Fältsparvar
+  genus: Plectrophenax
+  ioc_order: Passeriformes
+names:
+  sv: Snösparv
+  en: Snow Bunting
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Snösparv
+
+
+    Snösparven är en svartvit fågel med markanta kontraster i sin fjäderdräkt. Den
+    är liten och tillhör familjen sporrsparvar. Fågeln är välkänd för sitt karakteristiska
+    utseende med vita och svarta partier, vilket gör den lätt att identifiera.
+
+
+    Arten häckar i arktiska områden där den trivs i de kallaste och mest ödsliga miljöerna.
+    Under vintertid migrerar snösparven söderut och ses då i flockar på snötäckta
+    områden och öppna landskap i tempererade, nordliga regioner. Den är ofta gregär
+    och bildar gärna större sammanhängande grupper när den söker föda.
+
+
+    Snösparven är klassificerad som minskat antal, men nedgången är inte tillräckligt
+    kraftig för att arten ska betecknas som hotad. Populationen är relativt stabil
+    trots de observerade trenderna över tid.'
+  en: '# Snow Bunting
+
+
+    The snow bunting is a striking Arctic specialist with a circumpolar breeding range
+    across the northern hemisphere''s Arctic regions. It holds the distinction of
+    being the world''s most northerly passerine species. Beyond its main Arctic habitat,
+    small isolated populations persist on high mountain tops at lower latitudes, including
+    a few alpine areas in Scotland and others along the Alaska-Yukon border.
+
+
+    This small bunting is highly adapted to harsh, cold environments where few other
+    songbirds venture. It breeds in sparse, rocky Arctic tundra and visits lower latitudes
+    primarily during winter months, when birds from Arctic populations migrate southward.
+    During migration and winter, it frequents open, windswept terrain including coastal
+    areas, grasslands, and agricultural fields, often in small flocks.
+
+
+    The snow bunting''s appearance and behaviour reflect its extreme habitat specialization,
+    making it a remarkable example of a passerine pushed to the ecological limits
+    of where songbirds can survive.'
+migration:
+  sv: '# Snösparv – Förekomst i Skandinavien
+
+
+    Snösparven är en arktisk häckfågel som förekommer i norra Skandinavien under sommaren.
+    Under vintern migrerar arten söderut och ses då i flockar i tempererade nordliga
+    områden, inklusive Sverige och Norge. Fågeln ankommer till häckningsområdena på
+    våren och drar bort under hösten när de arktiska områdena blir snötäckta. I Skandinavien
+    är snösparven därför både sommargäst i högfjällen och vintergäst i de södra delarna
+    av regionen.'
+  en: '# Snow Bunting Migration in Northern Europe
+
+
+    The Snow Bunting is a highly migratory Arctic specialist that breeds throughout
+    the high Arctic and visits Scandinavia and northern Europe primarily during winter
+    months. Birds from Arctic breeding populations migrate south in autumn, typically
+    arriving in Scandinavia from September onwards, with numbers peaking through winter
+    until March or April. They favor coastal areas, open terrain, and agricultural
+    land where they feed on seeds and insects. Breeding occurs from May to July in
+    the far north, though small resident populations maintain year-round presence
+    on high Scottish mountains. By late spring, the majority depart northward to return
+    to their circumpolar Arctic breeding grounds.'
+image_refs:
+- role: hero
+  path: Q26416/hero.jpg
+  width: 2400
+  height: 1791
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Plectrophenax nivalis Oulu 20140406
+    03.JPG
+  commons_filename: Plectrophenax nivalis Oulu 20140406 03.JPG
+- role: secondary
+  path: Q26416/secondary-1.jpg
+  width: 1800
+  height: 1344
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Plectrophenax nivalis Oulu 20140406
+    01.JPG
+  commons_filename: Plectrophenax nivalis Oulu 20140406 01.JPG
+- role: secondary
+  path: Q26416/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Snow Bunting (Plectrophenax
+    nivalis), Helgoland 2021 2.jpg
+  commons_filename: Snow Bunting (Plectrophenax nivalis), Helgoland 2021 2.jpg
+review_status: approved
+review_notes: '2026-05-08: hero is winter photo from Oulu (Finland) — snösparv på klipphäll vid is/havsstrand. Klassisk SE-vintervisitör; foto matchar det användare ser i fält. Pipeline-fix landed simultaneously: Rijksmuseum 1600s watercolour rejected via REJECT_PATTERNS additions (historia naturalis|rijksmuseum + author-field check).'
+generated_at: '2026-05-07T22:25:24.532337+00:00'
+sources:
+  wikipedia_sv_revision: '58847310'
+  wikipedia_en_revision: '1338864982'
+  claude_model: claude-haiku-4-5-20251001

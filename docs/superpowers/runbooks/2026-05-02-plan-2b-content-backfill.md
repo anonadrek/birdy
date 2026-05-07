@@ -21,7 +21,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-07 | bombycillidae | +1 (totalt 190) | `7c29d4f` |
 | 2026-05-07 | bucerotidae | +1 (totalt 191) | `356996b` |
 | 2026-05-07 | burhinidae | +4 (totalt 195) | `acaedae` |
-| | _next: calcariidae (2 arter) — kolla species_list.yaml_ | | |
+| 2026-05-08 | calcariidae | +2 (totalt 197) | _(this commit)_ |
+| | _next: caprimulgidae (8 arter) — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -64,6 +65,14 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Wikidata 502 igen:** 5/16 första-fetch failed (Q888536, Q132482576, Q191394, Q27074615, Q220578); retry som grupp efter pipeline-fix löste alla 5.
 - **Click multi-arg-bug bekräftad igen:** `--species Q1,Q2,Q3` returnerar `No species matched filter`; använd `--species Q1 --species Q2 --species Q3`.
 - Cost: ~$0.029 / 16 arter (11 första-batch + 5 retry).
+
+**Calcariidae-batch lärdomar (2026-05-08):**
+
+- 2/2 abundance:allmän approved (Q26416 Snösparv — vinterbesökare längs SE-kusten + fjällhäckare; Q208703 Lappsparv — etablerad SE-fjällhäckare + nationell genomflyttare).
+- **0% sparse-overrides** — båda arter har full svwiki + enwiki. Mönster för "kulturellt välkända SE/Norden-arter": full coverage, ingen Claude-skip.
+- **Pipeline-bug upptäckt + fixad (separat commit `ab2b8bd`):** Q26416 hero auto-pick valde en 1600-tals akvarell från Rijksmuseum-manuskriptet *Historia Naturalis van Rudolf II* (filnamn `Sneeuwgors (Plectrophenax nivalis), RP-T-BR-2017-1-4-18.jpg`). Existing `REJECT_PATTERNS` missade detta eftersom (1) filnamnet inte innehåller "drawing"/"illustration", (2) kategorin `Historia Naturalis van Rudolf II` matchade inte heller, och (3) `c.author == "Rijksmuseum"` kollades inte. Fix: lade till `historia naturalis|rijksmuseum` i regex + `REJECT_PATTERNS.search(c.author)`-check i `rank_candidates`. Re-rank picked `Plectrophenax nivalis Oulu 20140406 03.JPG` (riktigt vinterfoto från Finland). **Återanvändbart pattern:** alla museum-source images i framtida familjer kommer fångas via author-check + Latin "historia naturalis"-kategori-prefix.
+- **Q26416 första-batch fail-pattern:** båda arterna failade på första fetch (transient SPARQL); Q26416 behövde tredje retry. Pattern bekräftat igen.
+- Cost: ~$0.0039 / 2 arter (4 Claude-calls, full SV+EN för båda).
 
 **Burhinidae-batch lärdomar (2026-05-07):**
 
