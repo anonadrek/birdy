@@ -43,15 +43,69 @@ class BirdClassifierModelInfoLoaderTest {
         assertEquals(224, info.inputWidthPx)
         assertEquals(224, info.inputHeightPx)
         assertEquals(3, info.inputChannels)
-        assertEquals("uint8", info.inputDtype)
-        assertEquals(127.5f, info.normalizationMean[0])
-        assertEquals(127.5f, info.normalizationStd[0])
+        assertEquals(TensorDtype.UINT8, info.inputDtype)
+        assertEquals(listOf(127.5f, 127.5f, 127.5f), info.normalizationMean)
+        assertEquals(listOf(127.5f, 127.5f, 127.5f), info.normalizationStd)
         assertEquals(965, info.outputClasses)
         assertEquals(964, info.backgroundClassIndex)
-        assertEquals("uint8", info.outputDtype)
+        assertEquals(TensorDtype.UINT8, info.outputDtype)
         assertEquals(0.00390625f, info.outputScale)
         assertEquals(0, info.outputZeroPoint)
         assertEquals(3561598L, info.tfliteFileBytes)
+    }
+
+    @Test
+    fun rejects_input_shape_with_wrong_rank() {
+        val json =
+            """
+            {
+              "modelVersion": "x",
+              "distribution": "compose-resources",
+              "input": {
+                "shape": [1, 224, 224],
+                "dtype": "uint8",
+                "normalization": { "mean": [0.0], "std": [1.0] }
+              },
+              "output": {
+                "shape": [1, 965],
+                "dtype": "uint8",
+                "labelFormat": "aiy_class_index",
+                "outputClasses": 965,
+                "backgroundClassIndex": 964,
+                "quantization": { "scale": 1.0, "zeroPoint": 0 }
+              }
+            }
+            """.trimIndent()
+        assertFailsWith<IllegalArgumentException> {
+            BirdClassifierModelInfoLoader.parseJson(json)
+        }
+    }
+
+    @Test
+    fun rejects_unknown_dtype() {
+        val json =
+            """
+            {
+              "modelVersion": "x",
+              "distribution": "compose-resources",
+              "input": {
+                "shape": [1, 224, 224, 3],
+                "dtype": "bfloat16",
+                "normalization": { "mean": [0.0], "std": [1.0] }
+              },
+              "output": {
+                "shape": [1, 965],
+                "dtype": "uint8",
+                "labelFormat": "aiy_class_index",
+                "outputClasses": 965,
+                "backgroundClassIndex": 964,
+                "quantization": { "scale": 1.0, "zeroPoint": 0 }
+              }
+            }
+            """.trimIndent()
+        assertFailsWith<IllegalArgumentException> {
+            BirdClassifierModelInfoLoader.parseJson(json)
+        }
     }
 
     @Test

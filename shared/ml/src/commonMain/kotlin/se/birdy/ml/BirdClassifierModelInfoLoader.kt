@@ -1,6 +1,7 @@
 package se.birdy.ml
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 
 object BirdClassifierModelInfoLoader {
@@ -10,15 +11,19 @@ object BirdClassifierModelInfoLoader {
         val dto =
             try {
                 json.decodeFromString<MetadataDto>(raw)
-            } catch (e: Exception) {
+            } catch (e: SerializationException) {
                 throw IllegalArgumentException("Failed to parse model metadata JSON: ${e.message}", e)
             }
         return dto.toDomain()
     }
 
     private fun MetadataDto.toDomain(): BirdClassifierModelInfo {
-        val shape = input.shape
-        // shape = [batch, height, width, channels]
+        require(input.shape.size == 4) {
+            "input.shape must be [batch, height, width, channels]; got ${input.shape}"
+        }
+        require(output.shape.size == 2) {
+            "output.shape must be [batch, classes]; got ${output.shape}"
+        }
         return BirdClassifierModelInfo(
             modelVersion = modelVersion,
             distribution =
@@ -26,21 +31,28 @@ object BirdClassifierModelInfoLoader {
                     "compose-resources" -> ModelDistribution.COMPOSE_RESOURCES
                     else -> throw IllegalArgumentException("Unknown distribution: $distribution")
                 },
-            inputWidthPx = shape[2],
-            inputHeightPx = shape[1],
-            inputChannels = shape[3],
-            inputDtype = input.dtype,
-            normalizationMean = input.normalization.mean.toFloatArray(),
-            normalizationStd = input.normalization.std.toFloatArray(),
+            inputWidthPx = input.shape[2],
+            inputHeightPx = input.shape[1],
+            inputChannels = input.shape[3],
+            inputDtype = parseDtype(input.dtype),
+            normalizationMean = input.normalization.mean,
+            normalizationStd = input.normalization.std,
             outputClasses = output.outputClasses,
             backgroundClassIndex = output.backgroundClassIndex,
-            outputDtype = output.dtype,
+            outputDtype = parseDtype(output.dtype),
             outputScale = output.quantization.scale,
             outputZeroPoint = output.quantization.zeroPoint,
             tfliteFileBytes = tfliteFileBytes,
             tfliteSha256 = tfliteSha256,
         )
     }
+
+    private fun parseDtype(raw: String): TensorDtype =
+        when (raw) {
+            "uint8" -> TensorDtype.UINT8
+            "float32" -> TensorDtype.FLOAT32
+            else -> throw IllegalArgumentException("Unsupported dtype: $raw")
+        }
 
     @Serializable
     private data class MetadataDto(
