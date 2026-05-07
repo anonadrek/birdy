@@ -19,7 +19,7 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-06 | apodidae | +9 (totalt 173) | `89f2ca3` |
 | 2026-05-07 | ardeidae | +16 (totalt 189) | `103c76c` |
 | 2026-05-07 | bombycillidae | +1 (totalt 190) | `7c29d4f` |
-| 2026-05-07 | bucerotidae | +1 (totalt 191) | _(this commit)_ |
+| 2026-05-07 | bucerotidae | +1 (totalt 191) | `356996b` |
 | | _next: burhinidae (4 arter) — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
