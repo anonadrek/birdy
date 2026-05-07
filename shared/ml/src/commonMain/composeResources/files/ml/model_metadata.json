@@ -1,0 +1,31 @@
+{
+  "modelVersion": "aiy_birds_v1",
+  "sourceUrl": "https://tfhub.dev/google/lite-model/aiy/vision/classifier/birds_V1/3",
+  "labelmapUrl": "https://www.gstatic.com/aihub/tfhub/labelmaps/aiy_birds_V1_labelmap.csv",
+  "downloadedAt": "2026-05-07",
+  "input": {
+    "shape": [1, 224, 224, 3],
+    "dtype": "uint8",
+    "normalization": {
+      "mean": [127.5, 127.5, 127.5],
+      "std":  [127.5, 127.5, 127.5]
+    },
+    "quantization": {
+      "scale": 0.0078125,
+      "zeroPoint": 128
+    }
+  },
+  "output": {
+    "shape": [1, 965],
+    "dtype": "uint8",
+    "labelFormat": "aiy_class_index",
+    "outputClasses": 965,
+    "backgroundClassIndex": 964,
+    "quantization": {
+      "scale": 0.00390625,
+      "zeroPoint": 0
+    }
+  },
+  "tfliteFileBytes": 3561598,
+  "tfliteSha256": "95f59df4cff9053355abcd0b6e5e7e740f6eae19ed8cded32e2c3e8068195093"
+}
