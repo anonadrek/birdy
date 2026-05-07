@@ -189,9 +189,9 @@ def eval_prompts() -> None:
 )
 def build_mapping(species_list: Path | None, model_version: str, out: Path | None) -> None:
     """Build iNat-ID → Q-ID mapping via SPARQL P3151."""
-    import asyncio
     from datetime import UTC, datetime
 
+    import aiohttp
     import yaml
 
     from .inat_mapping import render_mapping_json, run_build_mapping
@@ -211,10 +211,15 @@ def build_mapping(species_list: Path | None, model_version: str, out: Path | Non
     )
 
     raw = yaml.safe_load(resolved_species_list.read_text(encoding="utf-8"))
-    # species_list.yaml is a top-level list; each entry has a "wikidata_id" field.
-    species_entries = raw if isinstance(raw, list) else raw["species"]
-    qids = [item["wikidata_id"] for item in species_entries]
-    result = asyncio.run(run_build_mapping(qids))
+    if not isinstance(raw, list):
+        raise click.UsageError(
+            f"Expected {resolved_species_list} to be a list, got {type(raw).__name__}"
+        )
+    qids = [item["wikidata_id"] for item in raw]
+    try:
+        result = asyncio.run(run_build_mapping(qids))
+    except (TimeoutError, aiohttp.ClientResponseError, aiohttp.ClientConnectorError) as exc:
+        raise click.ClickException(f"Wikidata SPARQL request failed: {exc}") from exc
     rendered = render_mapping_json(
         result,
         model_version=model_version,
@@ -222,10 +227,13 @@ def build_mapping(species_list: Path | None, model_version: str, out: Path | Non
     )
     resolved_out.parent.mkdir(parents=True, exist_ok=True)
     resolved_out.write_text(rendered, encoding="utf-8")
-    click.echo(
+    summary = (
         f"Wrote {resolved_out} ({result.mapped_qids}/{result.requested_qids} mapped, "
         f"coverage={result.coverage_pct}%)"
     )
+    if result.cross_batch_conflicts > 0:
+        summary += f", cross_batch_conflicts={result.cross_batch_conflicts}"
+    click.echo(summary)
 
 
 if __name__ == "__main__":

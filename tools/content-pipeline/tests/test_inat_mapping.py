@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 from datetime import UTC, datetime
 
 import pytest
@@ -15,7 +16,6 @@ from birdy_fetcher.inat_mapping import (
     render_mapping_json,
     run_build_mapping,
 )
-
 
 # ---------------------------------------------------------------------------
 # parse_sparql_response
@@ -172,12 +172,12 @@ def test_mapping_result_coverage_pct_rounded_to_one_decimal() -> None:
 @pytest.mark.asyncio
 async def test_run_build_mapping_merges_batches_via_fake_runner() -> None:
     """Verifies that the orchestrator chunks + merges results correctly."""
-    # Simulate 250 QIDs split across 2 batches, each returning 2 mappings
+    # Use batch_size=2 with 3 disjoint QIDs to force 2 batches cheaply
     calls: list[str] = []
 
     async def fake_runner(query: str) -> str:
         calls.append(query)
-        # Return a minimal but valid response per batch
+        # Return a minimal but valid response per batch (unique iNat-IDs per batch)
         return json.dumps(
             {
                 "results": {
@@ -186,22 +186,19 @@ async def test_run_build_mapping_merges_batches_via_fake_runner() -> None:
                             "item": {"value": f"http://www.wikidata.org/entity/Q{len(calls)}1"},
                             "inatId": {"value": f"{len(calls)}0001"},
                         },
-                        {
-                            "item": {"value": f"http://www.wikidata.org/entity/Q{len(calls)}2"},
-                            "inatId": {"value": f"{len(calls)}0002"},
-                        },
                     ]
                 }
             }
         )
 
-    qids = [f"Q{i}" for i in range(250)]
-    result = await run_build_mapping(qids, run_sparql=fake_runner)
-    # 250 QIDs → 2 batches (200 + 50) → 2 calls
+    qids = ["QA", "QB", "QC"]
+    result = await run_build_mapping(qids, run_sparql=fake_runner, batch_size=2)
+    # 3 QIDs → 2 batches (2 + 1) → 2 calls
     assert len(calls) == 2
-    # Each batch returned 2 mappings → 4 total
-    assert result.mapped_qids == 4
-    assert result.requested_qids == 250
+    # Each batch returned 1 mapping → 2 total
+    assert result.mapped_qids == 2
+    assert result.requested_qids == 3
+    assert result.cross_batch_conflicts == 0
 
 
 @pytest.mark.asyncio
@@ -213,3 +210,59 @@ async def test_run_build_mapping_empty_qids_returns_empty_result() -> None:
     assert result.mappings == {}
     assert result.requested_qids == 0
     assert result.mapped_qids == 0
+
+
+@pytest.mark.asyncio
+async def test_run_build_mapping_logs_warning_on_cross_batch_conflict(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """Two batches returning the same iNat-ID with different Q-IDs triggers a warning."""
+    batch_num = 0
+
+    async def fake_runner(query: str) -> str:
+        nonlocal batch_num
+        batch_num += 1
+        if batch_num == 1:
+            # First batch: iNat-ID "100" → Q1
+            return json.dumps(
+                {
+                    "results": {
+                        "bindings": [
+                            {
+                                "item": {"value": "http://www.wikidata.org/entity/Q1"},
+                                "inatId": {"value": "100"},
+                            }
+                        ]
+                    }
+                }
+            )
+        else:
+            # Second batch: same iNat-ID "100" → Q2 (conflict!)
+            return json.dumps(
+                {
+                    "results": {
+                        "bindings": [
+                            {
+                                "item": {"value": "http://www.wikidata.org/entity/Q2"},
+                                "inatId": {"value": "100"},
+                            }
+                        ]
+                    }
+                }
+            )
+
+    # Two QIDs with batch_size=1 forces two separate batch calls
+    with caplog.at_level(logging.WARNING, logger="birdy_fetcher.inat_mapping"):
+        result = await run_build_mapping(
+            ["QA", "QB"], run_sparql=fake_runner, batch_size=1
+        )
+
+    # First batch wins
+    assert result.mappings == {"100": "Q1"}
+    # Conflict counter incremented
+    assert result.cross_batch_conflicts == 1
+    # Warning record contains iNat-ID and both Q-IDs
+    warning_messages = [r.message for r in caplog.records if r.levelno == logging.WARNING]
+    assert any(
+        "100" in msg and "Q1" in msg and "Q2" in msg for msg in warning_messages
+    ), f"Expected warning mentioning 100, Q1, Q2 but got: {warning_messages}"

@@ -20,6 +20,7 @@ class MappingResult:
     mappings: dict[str, str]
     requested_qids: int
     mapped_qids: int
+    cross_batch_conflicts: int = 0
 
     @property
     def coverage_pct(self) -> float:
@@ -104,13 +105,29 @@ async def run_build_mapping(
     qids: list[str],
     *,
     run_sparql: SparqlRunner | None = None,
+    batch_size: int = SPARQL_BATCH_SIZE,
 ) -> MappingResult:
     runner = run_sparql or _default_run_sparql
     merged: dict[str, str] = {}
-    for batch in chunked(qids, SPARQL_BATCH_SIZE):
+    cross_batch_conflicts = 0
+    for batch in chunked(qids, batch_size):
         query = build_query(batch)
         raw = await runner(query)
         for inat_id, qid in parse_sparql_response(raw).items():
-            if inat_id not in merged:
+            if inat_id in merged:
+                if merged[inat_id] != qid:
+                    logger.warning(
+                        "Cross-batch duplicate iNat-ID %s: keeping %s, dropping %s",
+                        inat_id,
+                        merged[inat_id],
+                        qid,
+                    )
+                    cross_batch_conflicts += 1
+            else:
                 merged[inat_id] = qid
-    return MappingResult(mappings=merged, requested_qids=len(qids), mapped_qids=len(merged))
+    return MappingResult(
+        mappings=merged,
+        requested_qids=len(qids),
+        mapped_qids=len(merged),
+        cross_batch_conflicts=cross_batch_conflicts,
+    )
