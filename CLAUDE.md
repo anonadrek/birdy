@@ -156,7 +156,7 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 | 2026-05-07 | bucerotidae | +1 | 191 | `356996b` |
 | 2026-05-07 | burhinidae | +4 | 195 | `acaedae` |
 | 2026-05-08 | calcariidae | +2 | 197 | `29cc339` |
-| 2026-05-08 | caprimulgidae | +8 | 205 | `_(this commit)_` |
+| 2026-05-08 | caprimulgidae | +8 | 205 | `092484d` |
 | _(next)_ | _certhiidae (2 arter) — kolla species_list.yaml_ | | | |
 
 **Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör nästa familj". Pure-data — kan köras parallellt med Plan 5+.
