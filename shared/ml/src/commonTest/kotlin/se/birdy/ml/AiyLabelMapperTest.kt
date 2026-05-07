@@ -2,6 +2,7 @@ package se.birdy.ml
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertNull
 
 class AiyLabelMapperTest {
@@ -38,5 +39,12 @@ class AiyLabelMapperTest {
     fun coverage_pct_exposed_for_factory() {
         val mapper = AiyLabelMapper.parse(fixture)
         assertEquals(78.5, mapper.coveragePct)
+    }
+
+    @Test
+    fun rejects_malformed_json() {
+        assertFailsWith<IllegalArgumentException> {
+            AiyLabelMapper.parse("not json at all {{{")
+        }
     }
 }
