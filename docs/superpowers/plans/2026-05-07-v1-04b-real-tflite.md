@@ -495,6 +495,373 @@ git commit -m "feat(content-pipeline): Plan 4b Task 1 — birdy-fetcher build-ma
 
 ---
 
+## Task 1b: `name_mapping.py` (SPARQL P225) — scientific-name → Q-ID via AIY labelmap
+
+**Mål:** Bygg cross-walk från AIY V1 class_index (heltal 0–963) till Wikidata Q-ID via SPARQL property P225 (taxon name). Input: `shared/ml/src/commonMain/composeResources/files/ml/aiy_labelmap.csv` (committat i Task 2). Output: `shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json` med `_meta`-block (model-version, generated_at, coverage_pct, mapped_classes, total_classes) och `mappings`-block (`{ "0": "Q1226346", "1": "Q913049", ... }`).
+
+**Files:**
+- Create: `tools/content-pipeline/src/birdy_fetcher/name_mapping.py`
+- Create: `tools/content-pipeline/tests/test_name_mapping.py`
+- Modify: `tools/content-pipeline/src/birdy_fetcher/cli.py` (rewrite `build-mapping`-subcommand: läser AIY V1 labelmap CSV i stället för `species_list.yaml`)
+
+**Återanvänd från Task 1:** `chunked`, `_default_run_sparql`, `WIKIDATA_SPARQL`, `USER_AGENT`, `SPARQL_BATCH_SIZE`, `SparqlRunner`. Importera dem från `inat_mapping`-modulen i stället för att duplicera.
+
+**Skip background:** Class index 964 i labelmap.csv är `background` — inkluderas ej i SPARQL-frågorna och ej i mapping-output.
+
+**Test-corpus:** Mock-runtime — verifiera att `parse_labelmap_csv` läser `id,name`-rader korrekt + skippar background, att `build_query` chunkar arter i batchar om 200, att `parse_sparql_response_for_names` mappar tillbaka till class_index, och att `render_mapping_json_by_class_index` producerar deterministisk JSON med sorterade nycklar.
+
+- [ ] **Step 1b.1: Write failing test för `parse_labelmap_csv`**
+
+```python
+# tools/content-pipeline/tests/test_name_mapping.py
+import json
+from pathlib import Path
+
+from birdy_fetcher.name_mapping import (
+    parse_labelmap_csv,
+    build_query,
+    parse_sparql_response_for_names,
+    render_mapping_json_by_class_index,
+    NameMappingResult,
+)
+
+
+def test_parse_labelmap_csv_skips_background_and_header(tmp_path: Path) -> None:
+    csv = tmp_path / "labelmap.csv"
+    csv.write_text(
+        "id,name\n"
+        "964,background\n"
+        "0,Cyanistes caeruleus\n"
+        "1,Turdus merula\n"
+        "2,Parus major\n",
+        encoding="utf-8",
+    )
+    pairs = parse_labelmap_csv(csv)
+    assert pairs == [
+        (0, "Cyanistes caeruleus"),
+        (1, "Turdus merula"),
+        (2, "Parus major"),
+    ]
+```
+
+- [ ] **Step 1b.2: Run test — expect FAIL**
+
+```bash
+cd tools/content-pipeline
+uv run pytest tests/test_name_mapping.py::test_parse_labelmap_csv_skips_background_and_header -v
+```
+
+Expected: `ModuleNotFoundError: No module named 'birdy_fetcher.name_mapping'`.
+
+- [ ] **Step 1b.3: Implementera `parse_labelmap_csv` + `NameMappingResult`**
+
+```python
+# tools/content-pipeline/src/birdy_fetcher/name_mapping.py
+"""Build AIY V1 class_index → Q-ID mapping via Wikidata SPARQL property P225 (taxon name)."""
+
+from __future__ import annotations
+
+import csv
+import json
+import logging
+from collections.abc import Iterable
+from dataclasses import dataclass
+from datetime import UTC, datetime
+from pathlib import Path
+
+from .inat_mapping import (
+    SPARQL_BATCH_SIZE,
+    SparqlRunner,
+    _default_run_sparql,
+    chunked,
+)
+
+BACKGROUND_CLASS_INDEX = 964
+
+logger = logging.getLogger(__name__)
+
+
+@dataclass(frozen=True)
+class NameMappingResult:
+    mappings: dict[int, str]  # class_index → Q-ID
+    requested_classes: int
+    mapped_classes: int
+
+    @property
+    def coverage_pct(self) -> float:
+        if self.requested_classes == 0:
+            return 0.0
+        return round(100.0 * self.mapped_classes / self.requested_classes, 1)
+
+
+def parse_labelmap_csv(path: Path) -> list[tuple[int, str]]:
+    """Returnera (class_index, scientific_name)-par. Skippar `background` (index 964)."""
+    out: list[tuple[int, str]] = []
+    with path.open(encoding="utf-8", newline="") as fh:
+        reader = csv.DictReader(fh)
+        for row in reader:
+            class_index = int(row["id"])
+            name = row["name"].strip()
+            if class_index == BACKGROUND_CLASS_INDEX or name == "background":
+                continue
+            out.append((class_index, name))
+    return out
+```
+
+- [ ] **Step 1b.4: Run test — expect PASS**
+
+```bash
+uv run pytest tests/test_name_mapping.py::test_parse_labelmap_csv_skips_background_and_header -v
+```
+
+Expected: PASS.
+
+- [ ] **Step 1b.5: Write failing test för `build_query` + `parse_sparql_response_for_names`**
+
+```python
+# Lägg i test_name_mapping.py
+def test_build_query_emits_p225_values_clause_for_names() -> None:
+    names = ["Cyanistes caeruleus", "Turdus merula"]
+    query = build_query(names)
+    assert "wdt:P225" in query
+    assert '"Cyanistes caeruleus"' in query
+    assert '"Turdus merula"' in query
+    assert "VALUES ?name" in query
+
+
+def test_parse_sparql_response_for_names_returns_name_to_qid() -> None:
+    raw = json.dumps({
+        "results": {"bindings": [
+            {"item": {"value": "http://www.wikidata.org/entity/Q1226346"},
+             "name": {"value": "Cyanistes caeruleus"}},
+            {"item": {"value": "http://www.wikidata.org/entity/Q913049"},
+             "name": {"value": "Turdus merula"}},
+        ]}
+    })
+    result = parse_sparql_response_for_names(raw)
+    assert result == {"Cyanistes caeruleus": "Q1226346", "Turdus merula": "Q913049"}
+
+
+def test_parse_sparql_response_for_names_first_wins_on_duplicates() -> None:
+    # Subspecies-Q-IDs kan dela P225 — ta första.
+    raw = json.dumps({
+        "results": {"bindings": [
+            {"item": {"value": "http://www.wikidata.org/entity/Q1"},
+             "name": {"value": "Parus major"}},
+            {"item": {"value": "http://www.wikidata.org/entity/Q2"},
+             "name": {"value": "Parus major"}},
+        ]}
+    })
+    result = parse_sparql_response_for_names(raw)
+    assert result == {"Parus major": "Q1"}
+```
+
+- [ ] **Step 1b.6: Run test — expect FAIL**
+
+Expected: `ImportError: cannot import name 'build_query' from 'birdy_fetcher.name_mapping'`.
+
+- [ ] **Step 1b.7: Implementera `build_query` + `parse_sparql_response_for_names`**
+
+```python
+def build_query(names: Iterable[str]) -> str:
+    # P225-värden är strängar (inte entiteter) → använd "..."-literaler i VALUES.
+    # Escape:a inbäddade citattecken om något arts-namn råkar innehålla ".
+    def escape(name: str) -> str:
+        return name.replace('\\', '\\\\').replace('"', '\\"')
+
+    values = " ".join(f'"{escape(n)}"' for n in names)
+    return f"""
+    SELECT ?item ?name WHERE {{
+      VALUES ?name {{ {values} }}
+      ?item wdt:P225 ?name .
+    }}
+    """
+
+
+def parse_sparql_response_for_names(raw: str) -> dict[str, str]:
+    data = json.loads(raw)
+    out: dict[str, str] = {}
+    for binding in data["results"]["bindings"]:
+        qid_uri = binding["item"]["value"]
+        name = binding["name"]["value"]
+        qid = qid_uri.rsplit("/", 1)[-1]
+        if name in out:
+            logger.warning(
+                "Duplicate taxon name %r: keeping %s, dropping %s",
+                name, out[name], qid,
+            )
+            continue
+        out[name] = qid
+    return out
+```
+
+- [ ] **Step 1b.8: Run test — expect PASS**
+
+```bash
+uv run pytest tests/test_name_mapping.py -v
+```
+
+Expected: alla 4 PASS.
+
+- [ ] **Step 1b.9: Write failing test för `render_mapping_json_by_class_index` + orchestrator**
+
+```python
+def test_render_mapping_json_writes_meta_and_class_index_keys() -> None:
+    result = NameMappingResult(
+        mappings={1: "Q913049", 0: "Q1226346"},
+        requested_classes=964,
+        mapped_classes=2,
+    )
+    rendered = render_mapping_json_by_class_index(
+        result,
+        model_version="aiy_birds_v1",
+        generated_at=datetime(2026, 5, 7, 12, 0, 0, tzinfo=UTC),
+    )
+    parsed = json.loads(rendered)
+    assert parsed["_meta"]["generated_for_model_version"] == "aiy_birds_v1"
+    assert parsed["_meta"]["mapped_classes"] == 2
+    assert parsed["_meta"]["total_classes"] == 964
+    assert parsed["_meta"]["coverage_pct"] == 0.2
+    keys = list(parsed["mappings"].keys())
+    assert keys == ["0", "1"]  # sorterade på class_index numerisk
+    assert parsed["mappings"]["0"] == "Q1226346"
+```
+
+- [ ] **Step 1b.10: Run test — expect FAIL**
+
+Expected: `ImportError`.
+
+- [ ] **Step 1b.11: Implementera `render_mapping_json_by_class_index` + `run_build_name_mapping`**
+
+```python
+def render_mapping_json_by_class_index(
+    result: NameMappingResult,
+    *,
+    model_version: str,
+    generated_at: datetime,
+) -> str:
+    sorted_mappings = {
+        str(k): v for k, v in sorted(result.mappings.items(), key=lambda kv: kv[0])
+    }
+    payload = {
+        "_meta": {
+            "generated_for_model_version": model_version,
+            "generated_at": generated_at.isoformat().replace("+00:00", "Z"),
+            "coverage_pct": result.coverage_pct,
+            "mapped_classes": result.mapped_classes,
+            "total_classes": result.requested_classes,
+        },
+        "mappings": sorted_mappings,
+    }
+    return json.dumps(payload, indent=2, ensure_ascii=False) + "\n"
+
+
+async def run_build_name_mapping(
+    pairs: list[tuple[int, str]],
+    *,
+    run_sparql: SparqlRunner | None = None,
+) -> NameMappingResult:
+    runner = run_sparql or _default_run_sparql
+    name_to_index: dict[str, int] = {name: idx for idx, name in pairs}
+    merged_by_index: dict[int, str] = {}
+    names = [name for _, name in pairs]
+    for batch in chunked(names, SPARQL_BATCH_SIZE):
+        query = build_query(batch)
+        raw = await runner(query)
+        for name, qid in parse_sparql_response_for_names(raw).items():
+            class_index = name_to_index.get(name)
+            if class_index is None or class_index in merged_by_index:
+                continue
+            merged_by_index[class_index] = qid
+    return NameMappingResult(
+        mappings=merged_by_index,
+        requested_classes=len(pairs),
+        mapped_classes=len(merged_by_index),
+    )
+```
+
+- [ ] **Step 1b.12: Run test — expect PASS**
+
+```bash
+uv run pytest tests/test_name_mapping.py -v
+```
+
+Expected: alla 5 PASS.
+
+- [ ] **Step 1b.13: Rewrite `build-mapping` CLI-subcommand i `cli.py`**
+
+Den ursprungliga `build-mapping` (Task 1) läste `species_list.yaml`. Vi ersätter den med en variant som läser AIY V1 labelmap.csv och kallar P225-flödet.
+
+```python
+# tools/content-pipeline/src/birdy_fetcher/cli.py
+# Ersätt befintlig build_mapping-funktion (Task 1's version) med:
+
+import asyncio
+from datetime import UTC, datetime
+from pathlib import Path
+
+from .name_mapping import (
+    parse_labelmap_csv,
+    run_build_name_mapping,
+    render_mapping_json_by_class_index,
+)
+
+
+@main.command("build-mapping")
+@click.option("--labelmap", type=click.Path(exists=True, path_type=Path),
+              default=Path("../../shared/ml/src/commonMain/composeResources/files/ml/aiy_labelmap.csv"))
+@click.option("--model-version", required=True,
+              help="ex: aiy_birds_v1")
+@click.option("--out", type=click.Path(path_type=Path),
+              default=Path("../../shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json"))
+def build_mapping(labelmap: Path, model_version: str, out: Path) -> None:
+    """Build AIY class_index → Q-ID mapping via SPARQL P225 (taxon name)."""
+    pairs = parse_labelmap_csv(labelmap)
+    result = asyncio.run(run_build_name_mapping(pairs))
+    rendered = render_mapping_json_by_class_index(
+        result, model_version=model_version, generated_at=datetime.now(UTC),
+    )
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(rendered, encoding="utf-8")
+    click.echo(
+        f"Wrote {out} ({result.mapped_classes}/{result.requested_classes} mapped, "
+        f"coverage={result.coverage_pct}%)"
+    )
+```
+
+- [ ] **Step 1b.14: Smoke-testa CLI mot riktig Wikidata SPARQL**
+
+```bash
+cd tools/content-pipeline
+uv run birdy-fetcher build-mapping --model-version aiy_birds_v1
+head -25 ../../shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json
+```
+
+Expected: JSON med `_meta`-block (`mapped_classes`, `total_classes = 964`, `coverage_pct`) + `mappings`-block med åtminstone några hundra träffar. För 964 arter förväntar vi ≥ 70% coverage (~675 mappade) — många AIY V1-arter är icke-europeiska men har P225 i Wikidata.
+
+**Decision-out-of-task:** Om `coverage_pct < 50%`, eskalera till användaren — kan tyda på att P225-värden i Wikidata har taxonomiska varianter (t.ex. "Cyanistes caeruleus" vs "Parus caeruleus"). Plan 4c (custom finetune) eller name-fuzzy-matching kan behövas.
+
+- [ ] **Step 1b.15: Run mypy + ruff**
+
+```bash
+uv run mypy src/birdy_fetcher/name_mapping.py src/birdy_fetcher/cli.py
+uv run ruff check src/birdy_fetcher/name_mapping.py src/birdy_fetcher/cli.py
+```
+
+Expected: 0 fel.
+
+- [ ] **Step 1b.16: Commit**
+
+```bash
+git add tools/content-pipeline/src/birdy_fetcher/name_mapping.py \
+        tools/content-pipeline/tests/test_name_mapping.py \
+        tools/content-pipeline/src/birdy_fetcher/cli.py \
+        shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json
+git commit -m "feat(content-pipeline): Plan 4b Task 1b — name_mapping.py (SPARQL P225) + aiy_to_qid.json"
+```
+
+---
+
 ## Task 2: Obtain Google AIY Birds V1 TFLite + labelmap.csv + `model_metadata.json`
 
 **Mål:** Ladda ner Google AIY Birds V1 TFLite-bundle från TFHub + AIY Birds V1 labelmap CSV från gstatic. Bundla båda i `:shared:ml` compose-resources. Skriv `model_metadata.json` med model-version-tag, input-shape, normalization-konstanter (verifierat via TFLite metadata-extractor), expected output-classes-count (965 = 964 arter + 1 background).
