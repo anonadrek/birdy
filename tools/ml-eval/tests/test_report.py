@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 from birdy_eval.corpus import CorpusItem
-from birdy_eval.metrics import EvalResult, FamilyResult, ThresholdPoint, compute_metrics
+from birdy_eval.metrics import EvalResult, compute_metrics
 from birdy_eval.report import render_report
 from birdy_eval.runner import Prediction
 
@@ -17,7 +17,7 @@ def _item(qid: str, family: str) -> CorpusItem:
 
 
 def _pred(item: CorpusItem, top_indices: list[int], top_scores: list[float]) -> Prediction:
-    return Prediction(item=item, top_scores=list(zip(top_indices, top_scores)))
+    return Prediction(item=item, top_scores=list(zip(top_indices, top_scores, strict=True)))
 
 
 _MAPPING: dict[int, str] = {0: "Q18009", 1: "Q13364"}

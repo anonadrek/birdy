@@ -29,13 +29,7 @@ def main() -> None:
     "--mapping",
     required=True,
     type=click.Path(exists=True, path_type=Path),
-    help="Path to ModelMapping.kt (or a JSON model-index-to-QID map).",
-)
-@click.option(
-    "--metadata",
-    required=True,
-    type=click.Path(exists=True, path_type=Path),
-    help="Path to the TFLite model metadata JSON.",
+    help="aiy_to_qid.json (model-index → QID, nested or flat).",
 )
 @click.option(
     "--out",
@@ -48,7 +42,6 @@ def run(
     model: Path,
     corpus: Path,
     mapping: Path,
-    metadata: Path,
     out: Path,
 ) -> None:
     """Run evaluation and write a Markdown report to --out."""
@@ -92,30 +85,24 @@ def run(
 
 
 def _load_mapping(path: Path) -> dict[int, str]:
-    """Load model-index to QID mapping from a JSON file or Kotlin source.
+    """Load model-index to QID mapping from a JSON file.
 
-    If *path* ends with ``.json``, it is parsed directly as
-    ``{"0": "Q18009", ...}``.  Otherwise the file is scanned for lines
-    matching ``index to "Q<digits>"`` (Kotlin map literal pattern).
+    Accepts both nested shape ``{"_meta": {...}, "mappings": {"0": "Q..."}}``
+    and flat shape ``{"0": "Q..."}``.
 
     Args:
-        path: Path to the mapping file.
+        path: Path to the JSON mapping file.
 
     Returns:
         Dict mapping int index to QID string.
     """
     text = path.read_text(encoding="utf-8")
-    if path.suffix == ".json":
-        raw: dict[str, str] = json.loads(text)
-        return {int(k): v for k, v in raw.items()}
-
-    # Parse Kotlin: `0 to "Q18009"` or `0 to "Q18009",`
-    import re
-
-    mapping: dict[int, str] = {}
-    for m in re.finditer(r"(\d+)\s+to\s+\"(Q\d+)\"", text):
-        mapping[int(m.group(1))] = m.group(2)
-    return mapping
+    data: dict[str, object] = json.loads(text)
+    if "_meta" in data:
+        raw: dict[str, str] = data["mappings"]  # type: ignore[assignment]
+    else:
+        raw = data  # type: ignore[assignment]
+    return {int(k): v for k, v in raw.items()}
 
 
 if __name__ == "__main__":

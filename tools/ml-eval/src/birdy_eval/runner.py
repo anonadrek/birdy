@@ -66,8 +66,13 @@ class Predictor:
         img = Image.open(item.path).convert("RGB").resize(
             (self._INPUT_SIZE, self._INPUT_SIZE)
         )
-        arr = np.array(img, dtype=np.float32) / 255.0
-        tensor = arr[np.newaxis, ...]
+        input_dtype = self._input_details[0]["dtype"]
+        tensor: np.ndarray[Any, Any]
+        if input_dtype == np.uint8:
+            tensor = np.array(img, dtype=np.uint8)[np.newaxis, ...]
+        else:
+            arr = np.array(img, dtype=np.float32) / 255.0
+            tensor = arr[np.newaxis, ...]
 
         input_index = self._input_details[0]["index"]
         output_index = self._output_details[0]["index"]

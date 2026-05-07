@@ -19,10 +19,9 @@ uv sync --all-extras
 
 ```bash
 uv run birdy-eval run \
-  --model ../../shared/ml/src/commonMain/composeResources/files/aiy_birds_V1_3.tflite \
+  --model ../../shared/ml/src/commonMain/composeResources/files/ml/aiy_birds_v1.tflite \
   --corpus corpus/manifest.yaml \
-  --mapping ../../shared/ml/src/commonMain/kotlin/se/birdy/ml/ModelMapping.kt \
-  --metadata ../../shared/ml/src/commonMain/composeResources/files/aiy_birds_V1_3_metadata.json \
+  --mapping ../../shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json \
   --out report.md
 ```
 
