@@ -1,3 +1,4 @@
+import asyncio
 import json
 from datetime import UTC, datetime
 from pathlib import Path
@@ -8,6 +9,7 @@ from birdy_fetcher.name_mapping import (
     parse_labelmap_csv,
     parse_sparql_response_for_names,
     render_mapping_json_by_class_index,
+    run_build_name_mapping,
 )
 
 
@@ -98,3 +100,78 @@ def test_render_mapping_json_writes_meta_and_class_index_keys() -> None:
     keys = list(parsed["mappings"].keys())
     assert keys == ["0", "1"]
     assert parsed["mappings"]["0"] == "Q1226346"
+
+
+def test_run_build_name_mapping_stitches_batches_and_drops_unknown_names() -> None:
+    pairs = [(0, "Cyanistes caeruleus"), (1, "Turdus merula"), (2, "Parus major")]
+
+    batch_responses = [
+        json.dumps({
+            "results": {"bindings": [
+                {"item": {"value": "http://www.wikidata.org/entity/Q1226346"},
+                 "name": {"value": "Cyanistes caeruleus"}},
+                {"item": {"value": "http://www.wikidata.org/entity/Q913049"},
+                 "name": {"value": "Turdus merula"}},
+                {"item": {"value": "http://www.wikidata.org/entity/Q9999"},
+                 "name": {"value": "Not in pairs — must be ignored"}},
+            ]}
+        }),
+        json.dumps({
+            "results": {"bindings": [
+                {"item": {"value": "http://www.wikidata.org/entity/Q3534"},
+                 "name": {"value": "Parus major"}},
+            ]}
+        }),
+    ]
+    queries: list[str] = []
+
+    async def fake_runner(query: str) -> str:
+        queries.append(query)
+        return batch_responses[len(queries) - 1]
+
+    # Batch boundary forced via SPARQL_BATCH_SIZE — patch to 2 so 3 pairs split 2+1.
+    from birdy_fetcher import name_mapping
+    original_size = name_mapping.SPARQL_BATCH_SIZE
+    name_mapping.SPARQL_BATCH_SIZE = 2
+    try:
+        result = asyncio.run(run_build_name_mapping(pairs, run_sparql=fake_runner))
+    finally:
+        name_mapping.SPARQL_BATCH_SIZE = original_size
+
+    assert len(queries) == 2
+    assert result.mappings == {0: "Q1226346", 1: "Q913049", 2: "Q3534"}
+    assert result.requested_classes == 3
+    assert result.mapped_classes == 3
+
+
+def test_run_build_name_mapping_first_batch_wins_on_cross_batch_duplicates() -> None:
+    pairs = [(0, "Parus major"), (1, "Turdus merula")]
+
+    batch_responses = [
+        json.dumps({"results": {"bindings": [
+            {"item": {"value": "http://www.wikidata.org/entity/Q3534"},
+             "name": {"value": "Parus major"}},
+        ]}}),
+        json.dumps({"results": {"bindings": [
+            {"item": {"value": "http://www.wikidata.org/entity/Q9999"},
+             "name": {"value": "Parus major"}},
+            {"item": {"value": "http://www.wikidata.org/entity/Q913049"},
+             "name": {"value": "Turdus merula"}},
+        ]}}),
+    ]
+    call_count = [0]
+
+    async def fake_runner(_: str) -> str:
+        idx = call_count[0]
+        call_count[0] += 1
+        return batch_responses[idx]
+
+    from birdy_fetcher import name_mapping
+    original_size = name_mapping.SPARQL_BATCH_SIZE
+    name_mapping.SPARQL_BATCH_SIZE = 1
+    try:
+        result = asyncio.run(run_build_name_mapping(pairs, run_sparql=fake_runner))
+    finally:
+        name_mapping.SPARQL_BATCH_SIZE = original_size
+
+    assert result.mappings == {0: "Q3534", 1: "Q913049"}

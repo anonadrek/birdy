@@ -121,7 +121,13 @@ async def run_build_name_mapping(
         raw = await runner(query)
         for name, qid in parse_sparql_response_for_names(raw).items():
             class_index = name_to_index.get(name)
-            if class_index is None or class_index in merged_by_index:
+            if class_index is None:
+                continue
+            if class_index in merged_by_index:
+                logger.warning(
+                    "Cross-batch duplicate for %r (class_index=%d): keeping %s, dropping %s",
+                    name, class_index, merged_by_index[class_index], qid,
+                )
                 continue
             merged_by_index[class_index] = qid
     return NameMappingResult(
