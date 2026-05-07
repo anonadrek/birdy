@@ -151,7 +151,7 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 | 2026-05-06 | alcidae | +7 | 163 | `d296bdd` |
 | 2026-05-06 | anhingidae | +1 | 164 | `0461611` |
 | 2026-05-06 | apodidae | +9 | 173 | `89f2ca3` |
-| 2026-05-07 | ardeidae | +16 | 189 | _(this batch)_ |
+| 2026-05-07 | ardeidae | +16 | 189 | `103c76c` |
 | _(next)_ | _kolla species_list.yaml_ | | | |
 
 **Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör nästa familj". Pure-data — kan köras parallellt med Plan 5+.
