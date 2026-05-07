@@ -3,6 +3,7 @@ package se.birdy.ml
 import org.tensorflow.lite.Interpreter
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
+import kotlin.math.roundToInt
 
 /**
  * Wraps a TFLite [Interpreter] for the AIY Birds V1 quantized model. The classifier
@@ -28,6 +29,16 @@ class AndroidTfliteRunner(
     private val info: BirdClassifierModelInfo,
     options: Interpreter.Options = Interpreter.Options().apply { numThreads = 4 },
 ) : TfliteRunner {
+    private val inputBuffer: ByteBuffer =
+        ByteBuffer
+            .allocateDirect(info.inputHeightPx * info.inputWidthPx * info.inputChannels)
+            .apply { order(ByteOrder.nativeOrder()) }
+
+    private val outputBuffer: ByteBuffer =
+        ByteBuffer
+            .allocateDirect(info.outputClasses)
+            .apply { order(ByteOrder.nativeOrder()) }
+
     private val interpreter: Interpreter =
         run {
             val buffer =
@@ -39,15 +50,7 @@ class AndroidTfliteRunner(
             Interpreter(buffer, options)
         }
 
-    private val inputBuffer: ByteBuffer =
-        ByteBuffer
-            .allocateDirect(info.inputHeightPx * info.inputWidthPx * info.inputChannels)
-            .apply { order(ByteOrder.nativeOrder()) }
-
-    private val outputBuffer: ByteBuffer =
-        ByteBuffer
-            .allocateDirect(info.outputClasses)
-            .apply { order(ByteOrder.nativeOrder()) }
+    private var closed = false
 
     override fun run(
         input: FloatArray,
@@ -64,7 +67,7 @@ class AndroidTfliteRunner(
         for (v in input) {
             val quantized =
                 (v / AIY_INPUT_SCALE + AIY_INPUT_ZERO_POINT)
-                    .toInt()
+                    .roundToInt()
                     .coerceIn(0, 255)
             inputBuffer.put(quantized.toByte())
         }
@@ -82,6 +85,8 @@ class AndroidTfliteRunner(
     }
 
     override fun close() {
+        if (closed) return
+        closed = true
         interpreter.close()
     }
 
