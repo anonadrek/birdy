@@ -145,8 +145,8 @@ Tasks 1, 2, 12 är oberoende — kan köras i parallell om subagent-driven-devel
 
 | # | Task | Status | Commit |
 |---|---|---|---|
-| 1 | birdy-fetcher build-mapping (SPARQL P3151) | ⬜ | _next_ |
-| 2 | Obtain iNat2021 TFLite + model_metadata | ⬜ | |
+| 1 | birdy-fetcher build-mapping (SPARQL P3151) | ✅ | `c2ed1c1` + fixup `341d64c` |
+| 2 | Obtain iNat2021 TFLite + model_metadata | ⬜ | _next_ |
 | 3 | Distribution beslut (bundle vs PAD) | ⬜ | |
 | 4 | shared/ml deps + ModelInfo + ArtifactProvider | ⬜ | |
 | 5 | InatLabelMapper | ⬜ | |
