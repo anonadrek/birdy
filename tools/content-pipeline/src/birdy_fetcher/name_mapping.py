@@ -68,14 +68,20 @@ def parse_sparql_response_for_names(raw: str) -> dict[str, str]:
     for binding in data["results"]["bindings"]:
         qid_uri = binding["item"]["value"]
         name = binding["name"]["value"]
-        qid = qid_uri.rsplit("/", 1)[-1]
+        entity = qid_uri.rsplit("/", 1)[-1]
+        # P225 can resolve to Lexeme entities (L-prefix) for some taxa
+        # (e.g. "Gallus gallus domesticus" → L1370926-S1 alongside Q780).
+        # Validate Q-prefix to keep aiy_to_qid.json clean for downstream consumers.
+        if not entity.startswith("Q"):
+            logger.info("Skipping non-Q entity for %r: %s", name, entity)
+            continue
         if name in out:
             logger.warning(
                 "Duplicate taxon name %r: keeping %s, dropping %s",
-                name, out[name], qid,
+                name, out[name], entity,
             )
             continue
-        out[name] = qid
+        out[name] = entity
     return out
 
 

@@ -3,11 +3,11 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from birdy_fetcher.name_mapping import (
-    parse_labelmap_csv,
+    NameMappingResult,
     build_query,
+    parse_labelmap_csv,
     parse_sparql_response_for_names,
     render_mapping_json_by_class_index,
-    NameMappingResult,
 )
 
 
@@ -62,6 +62,21 @@ def test_parse_sparql_response_for_names_first_wins_on_duplicates() -> None:
     })
     result = parse_sparql_response_for_names(raw)
     assert result == {"Parus major": "Q1"}
+
+
+def test_parse_sparql_response_for_names_skips_lexeme_entities() -> None:
+    # P225 can resolve to Lexeme entities (L-prefix) for some taxa. Filter them
+    # so downstream consumers get only Q-IDs in aiy_to_qid.json.
+    raw = json.dumps({
+        "results": {"bindings": [
+            {"item": {"value": "http://www.wikidata.org/entity/L1370926-S1"},
+             "name": {"value": "Gallus gallus domesticus"}},
+            {"item": {"value": "http://www.wikidata.org/entity/Q780"},
+             "name": {"value": "Gallus gallus domesticus"}},
+        ]}
+    })
+    result = parse_sparql_response_for_names(raw)
+    assert result == {"Gallus gallus domesticus": "Q780"}
 
 
 def test_render_mapping_json_writes_meta_and_class_index_keys() -> None:
