@@ -33,6 +33,7 @@ fun BenchmarkScreen(
     var lastMs by remember { mutableStateOf<Long?>(null) }
     var result by remember { mutableStateOf<BenchmarkRun?>(null) }
     var savedPath by remember { mutableStateOf<String?>(null) }
+    var running by remember { mutableStateOf(false) }
 
     Column(
         Modifier
@@ -42,25 +43,33 @@ fun BenchmarkScreen(
     ) {
         Text("Benchmark", style = MaterialTheme.typography.headlineMedium)
         Text("Model: $modelVersion")
-        Button(onClick = {
-            scope.launch {
-                progressText = "Running…"
-                result = null
-                BenchmarkRunner(context, classifier, modelVersion).run().collect { p ->
-                    when (p) {
-                        is BenchmarkProgress.Tick -> {
-                            progressText = "${p.photo}: ${p.iteration}/${p.total}"
-                            lastMs = p.lastMs
+        Button(
+            enabled = !running,
+            onClick = {
+                scope.launch {
+                    running = true
+                    progressText = "Running…"
+                    result = null
+                    try {
+                        BenchmarkRunner(context, classifier, modelVersion).run().collect { p ->
+                            when (p) {
+                                is BenchmarkProgress.Tick -> {
+                                    progressText = "${p.photo}: ${p.iteration}/${p.total}"
+                                    lastMs = p.lastMs
+                                }
+                                is BenchmarkProgress.Done -> {
+                                    result = p.run
+                                    savedPath = p.outputPath
+                                    progressText = "Done"
+                                }
+                            }
                         }
-                        is BenchmarkProgress.Done -> {
-                            result = p.run
-                            savedPath = p.outputPath
-                            progressText = "Done"
-                        }
+                    } finally {
+                        running = false
                     }
                 }
-            }
-        }) { Text("Run benchmark") }
+            },
+        ) { Text("Run benchmark") }
 
         Text(progressText)
         lastMs?.let { Text("Last ms: $it") }

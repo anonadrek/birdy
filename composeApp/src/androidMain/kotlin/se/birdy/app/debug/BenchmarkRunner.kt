@@ -1,8 +1,10 @@
 package se.birdy.app.debug
 
 import android.content.Context
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import se.birdy.ml.BirdClassifier
@@ -10,6 +12,8 @@ import se.birdy.ml.FrameFormat
 import se.birdy.ml.ImageInput
 import java.io.File
 import kotlin.system.measureTimeMillis
+
+private val benchmarkJson = Json { prettyPrint = true }
 
 @Serializable
 data class BenchmarkResult(
@@ -80,11 +84,11 @@ class BenchmarkRunner(
                     device = "${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}",
                     results = results,
                 )
-            val json = Json { prettyPrint = true }.encodeToString(BenchmarkRun.serializer(), run)
+            val json = benchmarkJson.encodeToString(BenchmarkRun.serializer(), run)
             val out = File(context.filesDir, "benchmark_${System.currentTimeMillis()}.json")
             out.writeText(json)
             emit(BenchmarkProgress.Done(run, out.absolutePath))
-        }
+        }.flowOn(Dispatchers.IO)
 }
 
 sealed class BenchmarkProgress {
