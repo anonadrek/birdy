@@ -46,7 +46,7 @@ def run(
 ) -> None:
     """Run evaluation and write a Markdown report to --out."""
     # Heavy imports are lazy so --help is fast.
-    import tensorflow as tf  # type: ignore[import-untyped]
+    from ai_edge_litert.interpreter import Interpreter  # type: ignore[import-untyped]
 
     from birdy_eval.corpus import load_corpus
     from birdy_eval.metrics import compute_metrics
@@ -60,7 +60,7 @@ def run(
         sys.exit(1)
 
     click.echo(f"Loading model from {model} …")
-    interpreter = tf.lite.Interpreter(model_path=str(model))
+    interpreter = Interpreter(model_path=str(model))
     interpreter.allocate_tensors()
     predictor = Predictor(interpreter=interpreter)
 

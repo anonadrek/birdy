@@ -97,19 +97,20 @@ class Predictor:
 
 
 def load_interpreter(model_path: Path) -> Any:
-    """Load and return a ``tf.lite.Interpreter`` for *model_path*.
+    """Load and return a TFLite Interpreter for *model_path*.
 
-    TensorFlow is imported lazily so that tests that don't exercise the TFLite
-    path can run without a heavy TF import.
+    Uses ``ai_edge_litert`` (Google's TFLite runtime for Python 3.12+).
+    Imported lazily so that tests that don't exercise the TFLite path can run
+    without a heavy import.
 
     Args:
         model_path: Path to the ``.tflite`` model file.
 
     Returns:
-        A ``tf.lite.Interpreter`` instance with tensors allocated.
+        An ``ai_edge_litert.interpreter.Interpreter`` instance with tensors allocated.
     """
-    import tensorflow as tf  # type: ignore[import-untyped]
+    from ai_edge_litert.interpreter import Interpreter  # type: ignore[import-untyped]
 
-    interpreter = tf.lite.Interpreter(model_path=str(model_path))
+    interpreter = Interpreter(model_path=str(model_path))
     interpreter.allocate_tensors()
     return interpreter
