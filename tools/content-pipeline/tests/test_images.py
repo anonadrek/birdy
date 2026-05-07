@@ -147,6 +147,35 @@ def test_rank_rejects_historical_print_filenames() -> None:
     assert ranked[0].commons_filename == "Pernis apivorus - flying.jpg"
 
 
+def test_rank_rejects_rijksmuseum_manuscripts() -> None:
+    """Rijksmuseum 1600s watercolours surface for many `allmän` SE species
+    (e.g. Sneeuwgors / Plectrophenax nivalis from "Historia Naturalis van
+    Rudolf II"). The filename uses inventory codes (RP-T-BR-...) without
+    the words "drawing" / "illustration", so we reject via category text
+    ("Historia Naturalis") and via the author field ("Rijksmuseum")."""
+    rudolf_ii_watercolour = ImageCandidate(
+        commons_filename="Sneeuwgors (Plectrophenax nivalis), RP-T-BR-2017-1-4-18.jpg",
+        url="x",
+        width=4264,
+        height=6410,
+        license="CC0",
+        author="Rijksmuseum",
+        categories=["CC-Zero", "Historia Naturalis van Rudolf II", "T IV"],
+    )
+    photo = ImageCandidate(
+        commons_filename="Plectrophenax nivalis Oulu 20140406 03.JPG",
+        url="y",
+        width=4000,
+        height=3000,
+        license="CC BY-SA 4.0",
+        author="Estormiz",
+        categories=["Photographs of Aves", "Birds in nature"],
+    )
+    ranked = rank_candidates([rudolf_ii_watercolour, photo])
+    assert len(ranked) == 1
+    assert ranked[0].commons_filename == "Plectrophenax nivalis Oulu 20140406 03.JPG"
+
+
 def test_rank_rejects_non_image_extensions() -> None:
     video = ImageCandidate(
         commons_filename="Galerida cristata, South Hebron.webm",

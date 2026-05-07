@@ -33,7 +33,11 @@ REJECT_PATTERNS = re.compile(
     r"taxidermy|taxidermied|"
     # Trailing `h?` on chromolithograph handles truncated Wellcome filenames
     # like "Chromolithograp Wellcome V0022220.jpg".
-    r"print|chromolithograph?|lithograph|engraving|iconographia|hardwicke|wellcome"
+    r"print|chromolithograph?|lithograph|engraving|iconographia|hardwicke|wellcome|"
+    # Rijksmuseum manuscripts/prints (e.g. "Historia Naturalis van Rudolf II"
+    # category for 1600s watercolour collections; author field "Rijksmuseum"
+    # for inventory-coded plates like "RP-T-BR-2017-1-4-18.jpg").
+    r"historia naturalis|rijksmuseum"
     r")s?\b",
     re.IGNORECASE,
 )
@@ -114,6 +118,8 @@ def rank_candidates(candidates: list[ImageCandidate]) -> list[ImageCandidate]:
         if REJECT_PATTERNS.search(c.commons_filename):
             continue
         if any(REJECT_PATTERNS.search(cat) for cat in c.categories):
+            continue
+        if REJECT_PATTERNS.search(c.author):
             continue
         if max(c.width, c.height) < MIN_DIMENSION:
             continue
