@@ -36,6 +36,7 @@ kotlin {
         jvmMain.dependencies {
             implementation(libs.kaml)
             implementation(libs.sqldelight.sqlite.driver)
+            implementation(libs.kotlinx.serialization.json)
         }
         jvmTest.dependencies {
             implementation(libs.junit.jupiter)
@@ -93,6 +94,30 @@ val validateSpeciesData by tasks.registering(JavaExec::class) {
 
 tasks.named("check") {
     dependsOn(validateSpeciesData)
+}
+
+val mlResourcesDir =
+    project(":shared:ml").file("src/commonMain/composeResources/files/ml")
+val mappingFile = mlResourcesDir.resolve("aiy_to_qid.json")
+val metadataFile = mlResourcesDir.resolve("model_metadata.json")
+
+val validateModelMapping by tasks.registering(JavaExec::class) {
+    group = "verification"
+    description = "Validate aiy_to_qid.json against model_metadata.json (Plan 4b Task 10)."
+    dependsOn("jvmJar")
+    classpath =
+        files(tasks.named("jvmJar")) +
+        configurations.getByName("jvmRuntimeClasspath")
+    mainClass.set("se.birdy.content.build.ValidateModelMappingMain")
+    args = listOf(mappingFile.absolutePath, metadataFile.absolutePath)
+    inputs.file(mappingFile)
+    inputs.file(metadataFile)
+    val bothExist = mappingFile.exists() && metadataFile.exists()
+    onlyIf("aiy_to_qid.json + model_metadata.json exist") { bothExist }
+}
+
+tasks.named("check") {
+    dependsOn(validateModelMapping)
 }
 
 val badgesYamlFile =

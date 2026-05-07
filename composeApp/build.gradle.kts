@@ -63,6 +63,7 @@ afterEvaluate {
             dependsOn(":shared:content:buildSpeciesDb")
             dependsOn(":shared:content:validateBadgesYaml")
             dependsOn(":shared:content:validateBadgeStrings")
+            dependsOn(":shared:content:validateModelMapping")
         }
 }
 
