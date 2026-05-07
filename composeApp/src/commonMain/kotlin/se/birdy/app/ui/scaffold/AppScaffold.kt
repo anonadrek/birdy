@@ -67,6 +67,8 @@ fun AppScaffold(graph: AppGraph) {
                     EncyclopediaScreen(
                         viewModel = remember(graph) { graph.encyclopediaViewModel() },
                         onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
+                        showDebugMenu = graph.benchmarkScreen != null,
+                        onDebugBenchmarkClick = { navController.navigate(AppRoute.DebugBenchmark) },
                     )
                 }
                 composable<AppRoute.SpeciesProfile> { entry ->
@@ -103,6 +105,9 @@ fun AppScaffold(graph: AppGraph) {
                 )
             }
             composable<AppRoute.Badges> { BadgesRoute(graph) }
+            graph.benchmarkScreen?.let { benchmarkContent ->
+                composable<AppRoute.DebugBenchmark> { benchmarkContent() }
+            }
         }
     }
 }

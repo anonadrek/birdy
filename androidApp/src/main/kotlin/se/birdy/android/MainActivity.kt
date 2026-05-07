@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
         // read can take longer than the badge catalog (~10ms), but avoids a loading screen and
         // keeps App(graph) signature unchanged. Post-v1.0 this can move to an async splash flow
         // if cold-start budget tightens.
-        val (classifier, classifierMode) = runBlocking { buildClassifier() }
+        val (classifier, classifierMode, modelVersion) = runBlocking { buildClassifier() }
         val graph =
             AppGraph(
                 repository = SpeciesRepositoryProvider.get(),
@@ -62,16 +62,28 @@ class MainActivity : ComponentActivity() {
                 badgeCatalog = badgeCatalog,
                 badgeVersionStore = badgeVersionStore,
                 defaultLocale = Locale.SV,
+                modelVersion = modelVersion,
+                benchmarkScreen =
+                    if (BuildConfig.DEBUG && modelVersion != null) {
+                        {
+                            se.birdy.app.debug
+                                .BenchmarkScreen(classifier = classifier, modelVersion = modelVersion)
+                        }
+                    } else {
+                        null
+                    },
             )
         setContent { App(graph) }
     }
 
-    private suspend fun buildClassifier(): Pair<BirdClassifier, ClassifierMode> {
+    private suspend fun buildClassifier(): Triple<BirdClassifier, ClassifierMode, String?> {
         val artifactProvider = ModelArtifactProvider()
+        var capturedModelVersion: String? = null
         val factory =
             BirdClassifierFactory(
                 createReal = {
                     val info = loadModelMetadata()
+                    capturedModelVersion = info.modelVersion
                     val mapper = loadAiyLabelMapper()
                     val modelBytes = artifactProvider.loadModelBytes(info)
                     val runner = AndroidTfliteRunner(modelBytes, info)
@@ -98,7 +110,9 @@ class MainActivity : ComponentActivity() {
                     // FirebaseCrashlytics integration deferred — Plan 6 polish.
                 },
             )
-        return factory.create()
+        val (classifier, mode) = factory.create()
+        // capturedModelVersion is null when createReal threw and we fell back to DEMO.
+        return Triple(classifier, mode, capturedModelVersion)
     }
 
     private fun cleanOldCacheFrames() {

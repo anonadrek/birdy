@@ -1,5 +1,6 @@
 package se.birdy.app.di
 
+import androidx.compose.runtime.Composable
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import se.birdy.app.badges.RecalculateBadgesUseCase
@@ -38,6 +39,14 @@ class AppGraph(
     val clock: Clock = Clock.System,
     val timeZone: TimeZone = TimeZone.currentSystemDefault(),
     val defaultLocale: Locale = Locale.SV,
+    /** Non-null only when the real TFLite model is loaded. Null in DEMO/fallback mode. */
+    val modelVersion: String? = null,
+    /**
+     * Non-null = show debug overflow menu + register debug route.
+     * Null = DEBUG features hidden (release builds, DEMO mode).
+     * The composable lambda is androidMain-only; defined in MainActivity.
+     */
+    val benchmarkScreen: (@Composable () -> Unit)? = null,
 ) {
     private val recalculateBadges = RecalculateBadgesUseCase(clock = clock, zone = timeZone)
 

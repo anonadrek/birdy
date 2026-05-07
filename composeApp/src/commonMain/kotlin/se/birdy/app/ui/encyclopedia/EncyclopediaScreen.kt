@@ -13,7 +13,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -53,12 +59,15 @@ import se.birdy.content.SpeciesId
 fun EncyclopediaScreen(
     viewModel: EncyclopediaViewModel,
     onSpeciesClick: (SpeciesId) -> Unit,
+    showDebugMenu: Boolean = false,
+    onDebugBenchmarkClick: () -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val query by viewModel.query.collectAsStateWithLifecycle()
     val filter by viewModel.filter.collectAsStateWithLifecycle()
     val activeFilterCount = filter.activeCount()
     var showSheet by remember { mutableStateOf(false) }
+    var menuExpanded by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -69,6 +78,25 @@ fun EncyclopediaScreen(
                         containerColor = HeroMossLight,
                         titleContentColor = TextOnHero,
                     ),
+                actions = {
+                    if (showDebugMenu) {
+                        IconButton(onClick = { menuExpanded = true }) {
+                            Icon(Icons.Default.MoreVert, contentDescription = "Debug menu")
+                        }
+                        DropdownMenu(
+                            expanded = menuExpanded,
+                            onDismissRequest = { menuExpanded = false },
+                        ) {
+                            DropdownMenuItem(
+                                text = { Text("Run benchmark") },
+                                onClick = {
+                                    onDebugBenchmarkClick()
+                                    menuExpanded = false
+                                },
+                            )
+                        }
+                    }
+                },
             )
         },
     ) { padding ->
