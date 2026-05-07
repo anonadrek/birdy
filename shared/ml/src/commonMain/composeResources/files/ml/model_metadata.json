@@ -1,5 +1,6 @@
 {
   "modelVersion": "aiy_birds_v1",
+  "distribution": "compose-resources",
   "sourceUrl": "https://tfhub.dev/google/lite-model/aiy/vision/classifier/birds_V1/3",
   "downloadUrl": "https://tfhub.dev/google/lite-model/aiy/vision/classifier/birds_V1/3?lite-format=tflite",
   "labelmapUrl": "https://www.gstatic.com/aihub/tfhub/labelmaps/aiy_birds_V1_labelmap.csv",
