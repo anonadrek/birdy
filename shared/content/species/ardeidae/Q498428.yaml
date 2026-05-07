@@ -1,0 +1,120 @@
+id: Q498428
+scientific_name: Ardeola grayii
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Ardeola
+  ioc_order: Pelecaniformes
+names:
+  sv: Rishäger
+  en: Indian Pond Heron
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rishäger
+
+
+    Rishägern är en sydasiatisk häger som förekommer från Persiska viken österut genom
+    Indien och Sri Lanka till Myanmar. Den är en vanlig fågel vid olika typer av våtmarker,
+    både kustområden och inlandsvatten.
+
+
+    Till skillnad från många andra härfåglar ses rishägern ofta ute i öppna miljöer
+    snarare än gömda i täta vassområden. Den är väl anpassad till sitt våtmarksekoystem
+    och utgör ingen konservationsbrist enligt IUCN, som klassificerar arten som livskraftig.'
+  en: '# Indian Pond Heron
+
+
+    The Indian pond heron is a small heron found across a wide range from southern
+    regions through the Indian subcontinent to nearby areas. It is widespread and
+    common throughout its range, though easily overlooked due to its inconspicuous
+    habits and preference for remaining close to water edges and human settlements.
+
+
+    This species is a skilled hunter, stalking prey at the margins of small water
+    bodies with patient, deliberate movements. It often roosts near human habitations,
+    blending seamlessly into its surroundings. The bird''s cryptic behavior and modest
+    size make it surprisingly easy to miss even when present in suitable habitat,
+    earning it the alternative name "paddybird."
+
+
+    The Indian pond heron favors shallow freshwater environments such as ponds, marshes,
+    and small watercourses where it can hunt for fish, frogs, and aquatic invertebrates.
+    Its adaptability to human-modified landscapes, including agricultural areas and
+    village ponds, has enabled it to thrive across much of its range. The species
+    remains one of the most abundant herons in its region despite being frequently
+    overlooked by casual observers.'
+migration:
+  sv: '# Rishäger – Förekomst i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Rishägern är en sydasiatisk art som naturligt förekommer från Persiska viken österut
+    till Myanmar och Sri Lanka. Arten är inte etablerad i Skandinavien eller Nordeuropa
+    och utgör ingen del av den nordeuropeiska fågelfaunan. För information om denna
+    arts säsongsmässiga rörelser hänvisas till källor om indisk och asiatisk ornitologi.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides information about the Indian Pond Heron''s breeding range
+    in southern Iran, the Indian subcontinent, Burma, and Sri Lanka, but contains
+    no information about migration patterns, overwintering behavior, or occurrence
+    in Scandinavia/Northern Europe. Therefore, I cannot provide the requested paragraph
+    about this species'' seasonal occurrence in Northern Europe.'
+image_refs:
+- role: hero
+  path: Q498428/hero.jpg
+  width: 1787
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Vengolis" title="User:Vengolis">Vengolis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ardeola grayii 04726-Enhanced-NR-2.jpg
+  commons_filename: Ardeola grayii 04726-Enhanced-NR-2.jpg
+- role: secondary
+  path: Q498428/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/27717684@N00">Prashanth
+    dotcompals</a> from Tattamangalam, India
+  source_url: https://commons.wikimedia.org/wiki/File:Indian Pond Heron Ardeola grayii
+    (51326779697).jpg
+  commons_filename: Indian Pond Heron Ardeola grayii (51326779697).jpg
+- role: secondary
+  path: Q498428/secondary-2.jpg
+  width: 1350
+  height: 1800
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Indian pond heron 4 breeding
+    plumage (Ardeola grayii) കുളക്കൊക്ക് .jpg
+  commons_filename: Indian pond heron 4 breeding plumage (Ardeola grayii) കുളക്കൊക്ക്
+    .jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:38:51.027581+00:00'
+sources:
+  wikipedia_sv_revision: '58318813'
+  wikipedia_en_revision: '1314836657'
+  claude_model: claude-haiku-4-5-20251001

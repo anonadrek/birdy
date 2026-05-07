@@ -1,0 +1,119 @@
+id: Q131709
+scientific_name: Egretta garzetta
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Egretta
+  ioc_order: Pelecaniformes
+names:
+  sv: Silkeshäger
+  en: Little Egret
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Silkeshäger
+
+
+    Silkeshäger är en liten vit häger från samma familj som större arter. Den är lätt
+    att känna igen på sin vita färg och eleganta skepnad. Arten förekommer i Gamla
+    världen och liknar snöhägern från Nya världen, men silkeshägern är densens närmare
+    släkting.
+
+
+    Historiskt jagades silkeshägern intensivt för sina vackra fjädrar, men arten har
+    sedan dess återhämtat sig väl. Dagens bestånd anses vara livskraftigt och arten
+    är långt ifrån hotad. Denna framgång är ett exempel på hur fågelpopulationer kan
+    återställas när hot elimineras.'
+  en: '# Little Egret
+
+
+    The little egret is a small, elegant white heron with a distinctive slender black
+    beak and long black legs. In western populations, it displays bright yellow feet
+    that contrast sharply with its dark legs—a useful identifying feature. The bird''s
+    refined appearance and graceful movements make it a pleasure to observe in suitable
+    habitats.
+
+
+    It is primarily an aquatic forager, hunting in shallow water and on land for small
+    fish, crustaceans, and other prey. The little egret often feeds with deliberate,
+    careful movements, stalking prey methodically. It is a colonial breeder, frequently
+    nesting alongside other waterbirds. Pairs construct platform nests from sticks
+    in trees, bushes, or reed beds, where females lay three to five bluish-green eggs.
+    Both parents share incubation duties for about three weeks, and young fledge at
+    around six weeks old.
+
+
+    The little egret frequents shallow wetlands, coastal areas, and freshwater habitats
+    where small prey is abundant. It has become increasingly common in many regions
+    in recent decades, expanding its range northward and inland. The species is often
+    seen singly or in small groups, though larger gatherings occur at favored feeding
+    and roosting sites.'
+migration:
+  sv: Silkeshägern är en expansiv art i Europa och har under de senaste decennierna
+    utökat sitt utbredningsområde norrut. I Skandinavien förekommer arten framför
+    allt som sommargäst under våren och sommaren, med ankomst från april-maj. Under
+    hösten drar fåglarna bort till sina övervintringsområden i Medelhavsregionen och
+    Afrika. Genom miljöförbättringar och minskat jaktövergrepp har populationen ökat
+    kraftigt, vilket möjliggjort en nordligare utbredning. Idag kan silkeshägern ses
+    regelbundet längs Sveriges och Norwegens kustzoner under främst maj-september,
+    även om förekomsten varierar mellan åren beroende på väderförhållanden.
+  en: '**Migration data unavailable for this species.**
+
+
+    The provided source text contains only information about the Little Egret''s physical
+    characteristics, feeding behaviour, and breeding biology, with no details regarding
+    its migration patterns, seasonal occurrence, or distribution throughout the year
+    in Scandinavia or Northern Europe.'
+image_refs:
+- role: hero
+  path: Q131709/hero.jpg
+  width: 2400
+  height: 1800
+  license: Public domain
+  author: '<a rel="nofollow" class="external text" href="https://www.flickr.com/people/156700692@N02">GeorgeTan
+    #1...thanks for millionth support (PASSIVE)</a> from Singapore'
+  source_url: https://commons.wikimedia.org/wiki/File:Egretta garzetta 2020-03-27.jpg
+  commons_filename: Egretta garzetta 2020-03-27.jpg
+- role: secondary
+  path: Q131709/secondary-1.jpg
+  width: 1800
+  height: 1197
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Little egret (Egretta garzetta).jpg
+  commons_filename: Little egret (Egretta garzetta).jpg
+- role: secondary
+  path: Q131709/secondary-2.jpg
+  width: 1800
+  height: 1197
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Little egret (Egretta garzetta)
+    in flight.jpg
+  commons_filename: Little egret (Egretta garzetta) in flight.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:39:25.081175+00:00'
+sources:
+  wikipedia_sv_revision: '59072517'
+  wikipedia_en_revision: '1347191198'
+  claude_model: claude-haiku-4-5-20251001

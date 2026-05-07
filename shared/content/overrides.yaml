@@ -147,3 +147,18 @@ species:
     description_accept_missing: [sv]  # Apus unicolor (Plain Swift) — Madeira/Kanarie endemic
   Q1264567:
     description_accept_missing: [sv, en]  # Apus berliozi (Forbes-Watson's Swift) — afrikansk, båda wikis sparse
+  # Ardeidae batch (2026-05-07): svwiki sparse for non-SE-resident herons.
+  Q118608:
+    description_accept_missing: [sv]  # Ardea goliath (Goliathhäger) — afrikansk
+  Q126216:
+    description_accept_missing: [sv]  # Nycticorax nycticorax (Natthäger) — sällsynt i SE
+  Q130730:
+    description_accept_missing: [sv]  # Ardea alba (Ägretthäger) — växer söderut i SE men svwiki sparse
+  Q132482576:
+    description_accept_missing: [sv]  # Butorides atricapilla (Strandhäger) — afrikansk
+  Q392570:
+    description_accept_missing: [sv]  # Egretta gularis (Revhäger) — atlantkust Afrika
+  Q498428:
+    description_accept_missing: [sv]  # Ardeola grayii (Damrallhäger) — sv summary 71w (validator threshold 80)
+  Q888536:
+    description_accept_missing: [sv]  # Botaurus sinensis (Kinesisk dvärgrördrom) — asiatisk

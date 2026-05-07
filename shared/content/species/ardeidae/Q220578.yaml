@@ -1,0 +1,126 @@
+id: Q220578
+scientific_name: Ardea melanocephala
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Ardea
+  ioc_order: Pelecaniformes
+names:
+  sv: Svarthuvad häger
+  en: Black-headed Heron
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svarthuvad häger
+
+
+    Svarthuvad häger är en större häger från Afrika som tillhör familjen hägrar. Det
+    är en sällsynt gäst i Europa, där den bara dokumenterats vid två tillfällen, båda
+    gånger i Frankrike. Arten är framför allt hemmastadd på den afrikanska kontinenten.
+
+
+    Arten kännetecknas av sitt utseende med svart huvud, vilket också ger den sitt
+    namn. Som övriga hägrar är det en elegant vadare med långt hals och lång näbb,
+    väl anpassad för att fiska i vatten.
+
+
+    Beståndet av svarthuvad häger anses vara livskraftigt och arten tros öka i antal.
+    Det gör arten mindre oroande ur bevarandeperspektiv jämfört med många andra rovfåglar
+    och vadare.'
+  en: '# Black-headed Heron
+
+
+    The black-headed heron is a large wading bird found throughout much of sub-Saharan
+    Africa and Madagascar. It is predominantly resident in its range, though some
+    populations in western Africa shift northward during the rainy season, following
+    seasonal water availability.
+
+
+    This heron is a skilled hunter of wetland environments, feeding on fish, frogs,
+    and other aquatic prey. It typically hunts by stalking slowly through shallow
+    water or standing motionless for extended periods before striking with its sharp
+    bill. The bird is often seen in pairs or small groups, particularly in areas with
+    suitable wetland habitat.
+
+
+    Unfortunately, the provided source material contains limited detail about the
+    species'' specific appearance, vocalizations, and behavioral characteristics beyond
+    its general distribution and migratory patterns. For a complete guide to identifying
+    this species and understanding its calls and finer behavioral details, additional
+    ornithological sources would be recommended.'
+migration:
+  sv: '# Svarthuvad häger – Förekomst i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Svarthuvad häger är en afrikansk art som inte är etablerad i Skandinavien eller
+    Nordeuropa. Arten är endast dokumenterad i Europa genom två enstaka observationer
+    i Frankrike, vilket indikerar att den är en mycket sällsynt vagran till regionen.
+    Det finns ingen regelbunden migration till eller förekomst av arten i norra Europa
+    under något årstid.'
+  en: '# Black-headed Heron – Northern European Occurrence
+
+
+    The Black-headed Heron is not a regular species in Scandinavia or Northern Europe.
+    This African wading bird is primarily resident throughout sub-Saharan Africa and
+    Madagascar, with only limited seasonal movements within western Africa during
+    rainy seasons. There are no documented regular migration patterns or overwintering
+    populations in Scandinavian or Northern European regions. Any sightings in this
+    area would represent extreme vagrants far outside the species'' normal range.'
+image_refs:
+- role: hero
+  path: Q220578/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black-headed Heron (Ardea melanocephala)
+    in Serengeti National Park, Tanzania.jpg
+  commons_filename: Black-headed Heron (Ardea melanocephala) in Serengeti National
+    Park, Tanzania.jpg
+- role: secondary
+  path: Q220578/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black-headed heron (Ardea melanocephala),
+    Kenya.jpg
+  commons_filename: Black-headed heron (Ardea melanocephala), Kenya.jpg
+- role: secondary
+  path: Q220578/secondary-2.jpg
+  width: 1800
+  height: 1058
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5819835">Ansel
+    Archives</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ardea melanocephala 374512233.jpg
+  commons_filename: Ardea melanocephala 374512233.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T09:06:28.862041+00:00'
+sources:
+  wikipedia_sv_revision: '56594894'
+  wikipedia_en_revision: '1341628923'
+  claude_model: claude-haiku-4-5-20251001

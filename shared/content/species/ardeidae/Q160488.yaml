@@ -1,0 +1,127 @@
+id: Q160488
+scientific_name: Ardea purpurea
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Ardea
+  ioc_order: Pelecaniformes
+names:
+  sv: Purpurhäger
+  en: Purple Heron
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Purpurhäger
+
+
+    Purpurhäger är en medelstor häger med ett karakteristiskt utseende. Den är mindre
+    än gråhägern och har en slankare kroppsform. Fågeln är övervägande grönaktigt-brunt
+    färgad med en purpurfärgad hals och bröst, vilket ger den sitt namn. Under häckningsperioden
+    får den en dramatisk look med långa nackfjädrar.
+
+
+    Purpurhäger är en mycket dold fågel som föredrar att uppehålla sig i täta vass-
+    och rörbestånd vid större vattendrag och sjöar. Den är svårare att se än gråhägern
+    och är framför allt aktiv vid skymning och natt. Fågeln är en skicklig fiskare
+    som vadrar långsamt genom grunda vatten för att söka föda. Den är mindre högljudd
+    än andra hägrar men ger ifrån sig olika läten, särskilt under häckningstiden.
+
+
+    Arten förekommer över ett stort område i Europa, Afrika och Asien. Populationen
+    minskar långsamt, men beståndet anses fortfarande vara stabilt och livskraftigt.
+    Purpurhägern är migratorisk i större delen av sitt utbredningsområde.'
+  en: '# Purple Heron
+
+
+    The purple heron is a slender, dark-plumaged cousin of the more familiar grey
+    heron, though noticeably smaller and more delicate in build. Its darker coloration
+    and streamlined form make it well-suited to its preferred habitat of dense reed
+    beds and heavily vegetated wetlands, where it hunts with characteristic patience.
+    It takes a variety of prey including fish, rodents, frogs, and insects, employing
+    two hunting strategies: methodical stalking or patient, motionless ambush among
+    the reeds.
+
+
+    This elusive species has a broad geographic range spanning Africa, Europe, and
+    southern Asia. Western populations are migratory, traveling between breeding grounds
+    and winter quarters, while African and tropical Asian populations remain largely
+    resident year-round. The purple heron''s preference for thick vegetation and secretive
+    behaviour make it less conspicuous than its grey relative, requiring careful observation
+    in suitable wetland habitats to locate.'
+migration:
+  sv: Purpurhägern är en migrant som förekommer sporadiskt i Skandinavien och Nordeuropa
+    under sommaren. Arten häckar främst i södra och centrala Europa, men individer
+    sprider sig norrut under häckningstiden och kan då påträffas i Danmark, södra
+    Sverige och södra Norge under juni och juli månaderna. Purpurhägern är en långdistansmigrant
+    som överintrar i Afrika söder om Sahara och återvänder till häckningsområdena
+    under våren, oftast från april. Arten är dock sällsynt i Norden och förekomsten
+    är mycket oregelbunden från år till år.
+  en: '# Purple Heron in Scandinavia/Northern Europe
+
+
+    The Purple Heron is a migratory visitor to northern Europe, including Scandinavia,
+    breeding during the warmer months. Western Palearctic populations, which include
+    those reaching Scandinavia, migrate between breeding and wintering grounds. Birds
+    arrive in spring (typically April–May) to breed in reed beds and wetland areas,
+    departing in late summer and autumn (August–September) to winter in Africa south
+    of the Sahara. Purple Herons are irregular and relatively uncommon visitors to
+    Scandinavia, occurring mainly in southern and central regions during the breeding
+    season, with sightings becoming rarer further north.'
+image_refs:
+- role: hero
+  path: Q160488/hero.jpg
+  width: 2400
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Purple Heron, Ardea purpurea,
+    at Waterfall Estate, Gauteng, South Africa (35295449423).jpg
+  commons_filename: Purple Heron, Ardea purpurea, at Waterfall Estate, Gauteng, South
+    Africa (35295449423).jpg
+- role: secondary
+  path: Q160488/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Garça-vermelha (Ardea purpurea)
+    (53082635918).jpg
+  commons_filename: Garça-vermelha (Ardea purpurea) (53082635918).jpg
+- role: secondary
+  path: Q160488/secondary-2.jpg
+  width: 1800
+  height: 1410
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Purple heron - purperreiger
+    - Ardea purpurea 2.tif
+  commons_filename: Purple heron - purperreiger - Ardea purpurea 2.tif
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:37:57.436316+00:00'
+sources:
+  wikipedia_sv_revision: '56065190'
+  wikipedia_en_revision: '1337172573'
+  claude_model: claude-haiku-4-5-20251001

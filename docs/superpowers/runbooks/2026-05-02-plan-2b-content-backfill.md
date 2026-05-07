@@ -17,7 +17,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-06 | alcidae | +7 (totalt 163) | `d296bdd` |
 | 2026-05-06 | anhingidae | +1 (totalt 164) | `0461611` |
 | 2026-05-06 | apodidae | +9 (totalt 173) | `89f2ca3` |
-| | _next: ardeidae — kolla species_list.yaml_ | | |
+| 2026-05-07 | ardeidae | +16 (totalt 189) | _(this batch)_ |
+| | _next: bombycillidae eller liknande — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -51,6 +52,15 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Wikidata SPARQL transient 502:** Q735158 fick `502 Bad Gateway` på första försöket. Retry på enskild art löste det utan kod-ändring. Pipeline-mönster: vid familj-failure med transient-pekare, retry den failade arten separat innan man eskalerar.
 - **Inga pipeline-fixar behövdes.**
 - Cost: ~$0.011 / 6 arter (4 Claude calls första körningen + 2 retry för Q735158).
+
+**Ardeidae-batch lärdomar (2026-05-07):**
+
+- 2/16 abundance:allmän approved (Q25709 Rördrom — häckar i SE-vassmiljöer, Q25273 Gråhäger — vanlig året runt). Övriga 14 är ovanliga vagrants/exotics.
+- **7/16 (44%) sparse-overrides [sv]** — afrikanska/asiatiska hägrar saknar svwiki helt eller har för korta extracts. Q498428 Damrallhäger hade 71w (under 80-tröskel). Inga `[en]`-overrides — enwiki har god coverage av icke-europeiska hägrar.
+- **Pipeline-bugg upptäckt + fixad:** `WikidataClient` returnerade `familyLabel = "heron"` istället för `"Ardeidae"` för Ardea cinerea (P171*-traversal genom common-name-label). Resultat: 11 första-batch-YAMLs hamnade i `species/heron/` med `family: heron` istället för `species/ardeidae/` + `family: Ardeidae`. **Fix:** `orchestrator.py:refresh_one` prioriterar nu `listed.get("family")` (IOC-källa från species_list.yaml) över `wd.family` för både `family_dir` och `family`-fältet i YAML. Existerande 11 YAMLs flyttades manuellt + sed-fix på `family:`-fältet. De 5 retry'ade arterna efter fixen skrev till rätt katalog från start. Commit: pipeline-fix + data-batch som separata commits så fixen kan refereras isolerat. **Återanvändbart pattern:** alla `wd.X`-värden där species_list har auktoritativ IOC-data (family, ioc_order) ska gå genom `listed.get("X") or wd.X`.
+- **Wikidata 502 igen:** 5/16 första-fetch failed (Q888536, Q132482576, Q191394, Q27074615, Q220578); retry som grupp efter pipeline-fix löste alla 5.
+- **Click multi-arg-bug bekräftad igen:** `--species Q1,Q2,Q3` returnerar `No species matched filter`; använd `--species Q1 --species Q2 --species Q3`.
+- Cost: ~$0.029 / 16 arter (11 första-batch + 5 retry).
 
 **Apodidae-batch lärdomar (2026-05-06):**
 

@@ -1,0 +1,121 @@
+id: Q27074615
+scientific_name: Ardea intermedia
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Ardea
+  ioc_order: Pelecaniformes
+names:
+  sv: Mellanhäger
+  en: Medium Egret
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mellanhäger
+
+
+    Mellanhäger är en mellanstora häger som tillhör familjen hägrar. Arten förekommer
+    i södra och östra Asien, där den utgör en naturlig del av våtmarkernas fågelfauna.
+    Fram till nyligen omfattade arten även den afrikanska gulnäbbade hägern och den
+    australiska plymhägern, men dessa urskiljs nu allmänt som egna arter.
+
+
+    Mellanhägers bestånd anses vara livskraftigt och arten är inte klassificerad som
+    hotad. Som många andra hägrar är den väl anpassad till liv i eller nära vatten,
+    där den söker föda bland vegetation och i grund vatten.'
+  en: '# Medium Egret
+
+
+    The medium egret is a medium-sized heron that occupies a taxonomic middle ground,
+    with some ornithologists classifying it within the genus Egretta or Mesophoyx
+    rather than Ardea. It is primarily a resident breeder across southern and eastern
+    Asia, where it maintains populations year-round in suitable habitats.
+
+
+    The species shares the typical heron body plan with long legs and neck adapted
+    for wading in aquatic environments. Like other egrets, it likely displays the
+    white or pale plumage characteristic of many egret species, though the source
+    material does not detail specific plumage characteristics. Its intermediate size
+    places it between smaller egrets and larger heron species, making it distinguishable
+    in the field when compared directly with related species.
+
+
+    As a resident breeder, the medium egret establishes breeding colonies in its Asian
+    range rather than undertaking long migrations. It inhabits wetland environments
+    suitable for hunting small fish and aquatic prey. Birdwatchers seeking this species
+    in appropriate regions should focus on freshwater and coastal wetlands where heron
+    communities congregate.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (The source text provided contains only information about the species'' geographic
+    distribution in Asia and taxonomic history, with no information about migration
+    patterns, overwintering behavior, or seasonal occurrence in Scandinavia or Northern
+    Europe. Therefore, according to the instructions, the response must be the specified
+    phrase indicating that migration data is unavailable for this species.)'
+  en: '# Medium Egret Migration in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Medium Egret is a resident breeder in southern and eastern Asia and does not
+    occur naturally in Scandinavia or Northern Europe. This species has a purely Asian
+    distribution and would be extremely rare as a vagrant to the region. Therefore,
+    there is no established migration pattern, overwintering population, or regular
+    seasonal occurrence to document for this part of the world.'
+image_refs:
+- role: hero
+  path: Q27074615/hero.jpg
+  width: 2400
+  height: 1596
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Los688" title="User:Los688">Los688</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ardea intermedia, Katsushika,
+    Tokyo 20080914-01.jpg
+  commons_filename: Ardea intermedia, Katsushika, Tokyo 20080914-01.jpg
+- role: secondary
+  path: Q27074615/secondary-1.jpg
+  width: 1800
+  height: 1197
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Los688" title="User:Los688">Los688</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ardea intermedia, Katsushika,
+    Tokyo 20080914-02.jpg
+  commons_filename: Ardea intermedia, Katsushika, Tokyo 20080914-02.jpg
+- role: secondary
+  path: Q27074615/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Ardea intermedia (6368102465).jpg
+  commons_filename: Ardea intermedia (6368102465).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T09:06:21.201622+00:00'
+sources:
+  wikipedia_sv_revision: '56041658'
+  wikipedia_en_revision: '1334151936'
+  claude_model: claude-haiku-4-5-20251001

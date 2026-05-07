@@ -1917,6 +1917,7 @@
   ioc_order: Pelecaniformes
   common_en: Eurasian Bittern
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26129
   scientific_name: Botaurus minutus
   family: Ardeidae
@@ -2001,6 +2002,7 @@
   ioc_order: Pelecaniformes
   common_en: Grey Heron
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q1137192
   scientific_name: Caprimulgus ruficollis
   family: Caprimulgidae

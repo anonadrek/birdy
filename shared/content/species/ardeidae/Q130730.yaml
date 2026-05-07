@@ -1,0 +1,105 @@
+id: Q130730
+scientific_name: Ardea alba
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Ardea
+  ioc_order: Pelecaniformes
+names:
+  sv: Ägretthäger
+  en: Great Egret
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Great Egret
+
+
+    The great egret is a large, white heron found across tropical and warmer temperate
+    regions worldwide, with four subspecies distributed throughout Asia, Africa, the
+    Americas, and southern Europe. It has recently expanded its range northward into
+    cooler European areas, indicating a shift in its distribution patterns.
+
+
+    This species is highly social and colonial in its breeding habits. It builds stick
+    nests in trees, often in large groups positioned close to water bodies. The great
+    egret hunts in shallow water, stalking fish and other aquatic prey with characteristic
+    deliberate movements. It is generally silent outside the breeding season, though
+    it produces various calls during nesting, including croaks and bill-clattering
+    sounds used in pair bonding and territorial displays.
+
+
+    The bird''s pure white plumage makes it unmistakable among herons. It is noticeably
+    larger and more robust than smaller white egret species, with a long neck, pointed
+    yellow bill, and dark legs. During breeding season, it develops filoplumes—wispy
+    plumes along the back and neck. It frequents wetlands, marshes, lake edges, and
+    river valleys wherever shallow water provides good hunting opportunities.'
+migration:
+  sv: ''
+  en: '# Great Egret (Ardea alba) in Northern Europe
+
+
+    The Great Egret has historically been absent or extremely rare in Scandinavia
+    and Northern Europe, being primarily a tropical and warm temperate species. However,
+    in recent decades, the species has begun expanding its range northward into more
+    northern areas of Europe, including Scandinavia. This range expansion is likely
+    linked to climate change and increasing water temperatures. While the species
+    now appears with growing frequency in southern Scandinavia during late summer
+    and autumn, it remains primarily a summer visitor rather than a year-round resident.
+    Regular overwintering in Northern Europe is still uncommon, with most individuals
+    returning to southern regions or Africa during winter months.'
+image_refs:
+- role: hero
+  path: Q130730/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great egret 3 (Ardea alba) at
+    Federsee.jpg
+  commons_filename: Great egret 3 (Ardea alba) at Federsee.jpg
+- role: secondary
+  path: Q130730/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great egret (great egret (Ardea
+    alba) at Federsee, Germany) at Federsee.jpg
+  commons_filename: Great egret (great egret (Ardea alba) at Federsee, Germany) at
+    Federsee.jpg
+- role: secondary
+  path: Q130730/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great egret (Ardea alba) 2 at
+    Federsee.jpg
+  commons_filename: Great egret (Ardea alba) 2 at Federsee.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:38:40.648890+00:00'
+sources:
+  wikipedia_sv_revision: '59181545'
+  wikipedia_en_revision: '1349112022'
+  claude_model: claude-haiku-4-5-20251001

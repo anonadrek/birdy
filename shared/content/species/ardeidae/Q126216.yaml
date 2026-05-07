@@ -1,0 +1,102 @@
+id: Q126216
+scientific_name: Nycticorax nycticorax
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Nycticorax
+  ioc_order: Pelecaniformes
+names:
+  sv: Natthäger
+  en: Black-crowned Night Heron
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Black-crowned Night Heron
+
+
+    The black-crowned night heron is a medium-sized heron with a distinctive appearance:
+    it has a black cap and back, pale underparts, and striking red eyes. In flight,
+    it shows broad wings and a compact body shape. It is primarily nocturnal, remaining
+    hidden in dense vegetation during the day and becoming active at dusk to hunt
+    fish, frogs, and other aquatic prey in shallow water.
+
+
+    This species is highly vocal at night, producing harsh, guttural calls that echo
+    across wetlands. Its hunched posture when perched is characteristic, quite different
+    from the upright stance of larger herons. The bird often stands motionless for
+    extended periods while hunting, relying on patience to ambush prey.
+
+
+    Found across much of the world, including parts of Europe, Asia, and both American
+    continents, the black-crowned night heron inhabits wetlands, marshes, and lakesides
+    with suitable cover. It typically nests in colonies, often in trees or reed beds
+    near water. In Australasia, it is replaced by the closely related Nankeen night
+    heron, with which it occasionally hybridises where their ranges overlap.'
+migration:
+  sv: ''
+  en: '# Black-crowned Night Heron in Scandinavia/Northern Europe
+
+
+    The Black-crowned Night Heron is a rare and irregular visitor to Scandinavia and
+    Northern Europe, with no established breeding population in the region. Sightings
+    occur primarily during late spring and autumn migration periods, typically from
+    May onwards and again in August-September, when individuals disperse from their
+    main breeding grounds in southern and central Europe. Most records come from coastal
+    areas and wetlands. Winter occurrences are exceptional, as the species does not
+    overwinter in Scandinavian latitudes. The species remains uncommon and unpredictable
+    in the north, appearing mainly as a vagrant during migration rather than as a
+    regular seasonal visitor.'
+image_refs:
+- role: hero
+  path: Q126216/hero.jpg
+  width: 1600
+  height: 2400
+  license: Public domain
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q26235785" class="extiw" title="d:Q26235785"><span
+    title="photographer">David Menke</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Nycticorax nycticorax FWS.jpg
+  commons_filename: Nycticorax nycticorax FWS.jpg
+- role: secondary
+  path: Q126216/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29310050@N04">yamatsu</a>
+  source_url: https://commons.wikimedia.org/wiki/File:ゴイサギ(五位鷺)(Nycticorax nycticorax
+    nycticorax)-幼鳥(ホシゴイ) (7254286006).jpg
+  commons_filename: ゴイサギ(五位鷺)(Nycticorax nycticorax nycticorax)-幼鳥(ホシゴイ) (7254286006).jpg
+- role: secondary
+  path: Q126216/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: lwolfartist
+  source_url: https://commons.wikimedia.org/wiki/File:Nycticorax nycticorax DSC 0146.jpg
+  commons_filename: Nycticorax nycticorax DSC 0146.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:37:50.200476+00:00'
+sources:
+  wikipedia_sv_revision: '58587737'
+  wikipedia_en_revision: '1345413871'
+  claude_model: claude-haiku-4-5-20251001

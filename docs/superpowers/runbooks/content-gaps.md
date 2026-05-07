@@ -82,6 +82,13 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 57 | Q772286 | apodidae | Palmseglare | Cypsiurus parvus | sv | — | — | pending (afrikansk, ingen svwiki) |
 | 58 | Q1096617 | apodidae | Madeiraseglare | Apus unicolor | sv | — | — | pending (Madeira/Kanarie endemic, ingen svwiki) |
 | 59 | Q1264567 | apodidae | Forbes-Watsonseglare | Apus berliozi | sv, en | — | — | pending (afrikansk, båda wikis sparse) |
+| 60 | Q118608 | ardeidae | Goliathhäger | Ardea goliath | sv | — | — | pending (afrikansk) |
+| 61 | Q126216 | ardeidae | Natthäger | Nycticorax nycticorax | sv | — | — | pending (sällsynt i SE) |
+| 62 | Q130730 | ardeidae | Ägretthäger | Ardea alba | sv | — | — | pending (växer söderut i SE men svwiki sparse) |
+| 63 | Q132482576 | ardeidae | Strandhäger | Butorides atricapilla | sv | — | — | pending (afrikansk) |
+| 64 | Q392570 | ardeidae | Revhäger | Egretta gularis | sv | — | — | pending (atlantkust Afrika) |
+| 65 | Q498428 | ardeidae | Damrallhäger | Ardeola grayii | sv | — | — | pending (sv summary 71w under 80-tröskeln) |
+| 66 | Q888536 | ardeidae | Kinesisk dvärgrördrom | Botaurus sinensis | sv | — | — | pending (asiatisk) |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

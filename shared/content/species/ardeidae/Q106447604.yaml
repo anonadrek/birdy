@@ -1,0 +1,133 @@
+id: Q106447604
+scientific_name: Ardea ibis
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Ardea
+  ioc_order: Pelecaniformes
+names:
+  sv: Kohäger
+  en: Western Cattle Egret
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kohäger
+
+
+    Kohägern är en liten vit häger som ursprungligen härstammar från Asien och Afrika,
+    men som under senare tid har etablerat sig i Europa och Nordamerika. Till skillnad
+    från många andra hägrararter är kohägern mindre beroende av vattenmiljöer och
+    förekommer ofta i torrare områden, långt från sjöar och vattendrag.
+
+
+    Arten är känd för sitt karaktäristiska beteende att följa boskap på betesmark.
+    Det närmar sig nöt och får för att fånga insekter som djuren skrämmer upp när
+    de betar, eller plockar parasiter direkt från djurens ryggar. Detta har gett arten
+    sitt svenska namn, som direkt hänvisar till denna nära association med kreaturen.
+
+
+    Kohägern är på frammarsch och ökar stadigt i antal samtidigt som den expanderar
+    sitt geografiska utbredningsområde. Populationerna öster om Iran skiljs numera
+    ofta ut som en egen art, orientkohägern. Med sitt vita fjäderdräkt och sina mindre
+    dimensioner är kohägern lätt att skilja från större hägerarterna.'
+  en: '# Western Cattle Egret
+
+
+    The western cattle egret is a heron species inhabiting tropical, subtropical,
+    and warm temperate regions worldwide. Despite superficial plumage similarities
+    to egrets of the genus *Egretta*, it is more closely related to larger herons
+    in the genus *Ardea*. Originally native to Africa, southwest Asia, and southern
+    Europe, this adaptable species has undergone remarkable range expansion, successfully
+    colonizing much of the Americas during the past century.
+
+
+    The western cattle egret is a relatively compact white heron, noticeably smaller
+    than most *Ardea* herons. During breeding season, it develops buff-yellow plumage
+    on the crown, back, and breast, along with orange-red facial skin and bill. In
+    non-breeding plumage, it appears entirely white with a yellow bill and dark legs.
+
+
+    This species typically forages in open habitats, often following livestock to
+    catch insects disturbed by grazing animals—behavior reflected in its common name.
+    It is highly gregarious, roosting and nesting in colonies, sometimes alongside
+    other heron species. The western cattle egret''s call consists of various croaks
+    and harsh notes, heard mainly at breeding colonies. Its ability to thrive in human-modified
+    landscapes has made it one of the most successful and widespread heron species
+    globally.'
+migration:
+  sv: '# Kohäger – Förekomst i Skandinavien och Nordeuropa
+
+
+    Kohägern är en relativt ny tillskott i Skandinaviens avifauna. Arten har under
+    senare decennier gradvis utökat sitt utbredningsområde norrut från södra Europa
+    och förekommer idag regelbundet under late sommarmånaderna (juli-september) i
+    södra Skandinavien, särskilt i Danmark och södra Sverige. Några individer övervintrarar
+    eller dyker upp under hösten på västkusten. Kohägern är fortfarande ett relativt
+    sällsynt besök i norra delen av regionen, men ser ut att bli allt vanligare som
+    följd av sitt expansiva utbredningsmönster och möjligt klimatförändringar som
+    underlättar nordlig förekomst.'
+  en: '# Western Cattle Egret in Scandinavia/Northern Europe
+
+
+    The Western Cattle Egret is a rare visitor to Scandinavia and Northern Europe,
+    occurring primarily as a vagrant or occasional wanderer outside its normal range.
+    The species is not a regular migrant through the region and does not have an established
+    breeding or overwintering population in Scandinavia. Any records from this area
+    represent exceptional occurrences, likely involving individuals dispersing northward
+    from populations in southern Europe or further south during periods of range expansion.'
+image_refs:
+- role: hero
+  path: Q106447604/hero.jpg
+  width: 2400
+  height: 1602
+  license: CC0
+  author: Mustang Joe
+  source_url: https://commons.wikimedia.org/wiki/File:Western Cattle-Egret (Ardea
+    ibis) - Morocco.jpg
+  commons_filename: Western Cattle-Egret (Ardea ibis) - Morocco.jpg
+- role: secondary
+  path: Q106447604/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Western cattle egret (Ardea
+    ibis) 2023.jpg
+  commons_filename: Western cattle egret (Ardea ibis) 2023.jpg
+- role: secondary
+  path: Q106447604/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Western cattle egret (Ardea
+    ibis) 2022.jpg
+  commons_filename: Western cattle egret (Ardea ibis) 2022.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:39:09.567150+00:00'
+sources:
+  wikipedia_sv_revision: '58587854'
+  wikipedia_en_revision: '1345165649'
+  claude_model: claude-haiku-4-5-20251001

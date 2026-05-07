@@ -1,0 +1,134 @@
+id: Q25709
+scientific_name: Botaurus stellaris
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Botaurus
+  ioc_order: Pelecaniformes
+names:
+  sv: Rördrom
+  en: Eurasian Bittern
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rördrom
+
+
+    Rördrom är en medelstor häger som förekommer i Palearktis och södra Afrika, där
+    den är starkt bunden till våtmarker med täta vassbestånd. Fågeln är väl anpassad
+    för liv bland vassen – dess spräckliga, brunspräcklig fjäderdräkt ger utmärkt
+    kamouflage i vegetationen.
+
+
+    Rördrom är främst känd för sitt karakteristiska läte, ett dovt, vittljudande tutande
+    som hörs särskilt under parningstiden. Låten är mycket distinktiv och kan höras
+    på långt håll över våtmarkerna. Fågeln är ofta dold och svår att få ögonen på,
+    men när den hotas använder den en effektiv försvarsstrategi: den står helt stilla
+    med näbben riktad rakt upp, varvid dess spräckliga fjäderdräkt smälter helt in
+    i vassbevuxna omgivningen och gör fågeln praktiskt taget omöjlig att upptäcka.
+
+
+    Rördrom är huvudsakligen en nattkräk som jagar små fiskar, grodor och andra smådjur
+    i våtmarkerna. Under dagen håller den sig dold djupt in i vassbestånden.'
+  en: '# Eurasian Bittern
+
+
+    The Eurasian bittern is a stocky wading bird belonging to the heron family, characterized
+    by its heavily streaked brown and buff plumage that provides excellent camouflage
+    in reed beds. It is a secretive species, remaining hidden in dense vegetation
+    near freshwater and brackish wetlands, where it hunts for fish, small mammals,
+    amphibians, and insects. The bird''s presence is most obvious during the spring
+    breeding season, when males produce their distinctive booming call—a deep, resonant
+    sound that can carry considerable distances across wetlands.
+
+
+    Despite its size, the Eurasian bittern is surprisingly difficult to observe in
+    the open, as it prefers to remain concealed among reeds and thick aquatic vegetation.
+    Its cryptic coloration and behavior make it elusive even in suitable habitat.
+    Two subspecies are recognized: the northern race breeds across parts of northern
+    and central regions extending into the Palearctic, while the southern race is
+    found in parts of southern Africa. These habitat specialists depend on extensive
+    reed beds and similar wetland vegetation for both breeding and foraging, making
+    them sensitive indicators of wetland health.'
+migration:
+  sv: '# Rördrom i Skandinavien och Nordeuropa
+
+
+    Rördrom är en migrerande art som förekommer i Skandinavien och större delen av
+    Nordeuropa främst under våren och sommaren. Arten anländer typiskt till sitt häckningsområde
+    under april och maj månad. Under hösten drar rördromen bort för att övervintra
+    i södra Europa och Afrika, med huvudsaklig avgång under augusti och september.
+    Vintrar förekommer rördrom endast sporadiskt i Nordeuropa, främst längs kustnära
+    områden där vassbeständen inte är helt tillfrysna. Arten är starkt bunden till
+    större våtmarksområden med täta vassbestånd, där den lever ett dolt liv under
+    större delen av året.'
+  en: '# Eurasian Bittern in Northern Europe
+
+
+    The Eurasian Bittern is a migratory species in Scandinavia and Northern Europe,
+    with populations breeding in reed beds during spring and summer. Males arrive
+    in April and May, establishing territories and producing their distinctive booming
+    calls throughout the breeding season. These birds depart in autumn, typically
+    from August onwards, migrating to wintering grounds in southern Europe, North
+    Africa, and the Mediterranean region. Northern European populations are largely
+    absent during winter months, though some individuals may occasionally overwinter
+    in milder coastal areas. The species'' dependence on reed bed habitats makes it
+    vulnerable to wetland degradation and climate changes affecting migration timing
+    and success.'
+image_refs:
+- role: hero
+  path: Q25709/hero.jpg
+  width: 2400
+  height: 1664
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bittern (M) - Botaurus stellaris
+    (52911849783).jpg
+  commons_filename: Bittern (M) - Botaurus stellaris (52911849783).jpg
+- role: secondary
+  path: Q25709/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a href="//www.flickr.com/people/97370666@N05" class="extiw" title="flickruser:97370666@N05">Jo
+    Garbutt</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Botaurus stellaris -Minsmere
+    RSPB reserve, Suffolk, England-8.jpg
+  commons_filename: Botaurus stellaris -Minsmere RSPB reserve, Suffolk, England-8.jpg
+- role: secondary
+  path: Q25709/secondary-2.jpg
+  width: 1285
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bittern (M) - Botaurus stellaris
+    (52884665079).jpg
+  commons_filename: Bittern (M) - Botaurus stellaris (52884665079).jpg
+review_status: approved
+review_notes: 'auto-pick OK (Botaurus stellaris i naturmiljö, klar identifierbar; CC BY 2.0)'
+generated_at: '2026-05-06T14:39:39.866454+00:00'
+sources:
+  wikipedia_sv_revision: '59203401'
+  wikipedia_en_revision: '1337961262'
+  claude_model: claude-haiku-4-5-20251001

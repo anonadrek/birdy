@@ -1,0 +1,130 @@
+id: Q25273
+scientific_name: Ardea cinerea
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Ardea
+  ioc_order: Pelecaniformes
+names:
+  sv: Gråhäger
+  en: Grey Heron
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gråhäger
+
+
+    Gråhäger är en stor och imponerande häger som tillhör pelikanfåglarnas ordning.
+    Det är en långbent vadare med slank hals, spetsig näbb och grå fjäderdräkt. Arten
+    är ofta den enda hägerarten som förekommer i norra delen av sitt utbredningsområde.
+
+
+    Gråhägern är en skicklig fiskare som står stilla i vattnet eller vadande längs
+    stränder och sjöar för att snappa upp sitt byte. Det är en tystlåten fågel, men
+    under häckningsperioden ger det fram olika läten från sitt häckningslokal. Arten
+    uppträder oftast ensam eller i par, men samlas ibland vid rikliga födokällor.
+
+
+    Gråhägern är vida spridd över Europa, Asien och Afrika. Den förekommer vid sjöar,
+    vattendrag, kuster och våtmarker där det finns möjlighet att fiska. Populationen
+    är relativt stabil i många områden, och fågeln är en känd skådeplaatts vid många
+    växter där vadare söker föda.'
+  en: '# Grey Heron
+
+
+    The grey heron is a large, long-legged wading bird found across temperate regions
+    of Europe, Asia, and parts of Africa. It is a striking bird with grey upperparts
+    and a white underside, featuring a distinctive dark stripe running above each
+    eye. Some northern populations migrate southwards in autumn, while others remain
+    resident year-round in their territories.
+
+
+    This patient hunter frequents wetland habitats including lakes, rivers, ponds,
+    marshes, and coastal areas. It employs two distinct feeding strategies: standing
+    motionless beside or in shallow water waiting for prey to pass, or slowly stalking
+    through shallows with deliberate steps. It feeds predominantly on fish and other
+    aquatic creatures captured with rapid strikes of its sharp bill.
+
+
+    Grey herons are generally solitary or found in pairs, though they may gather at
+    productive feeding sites. They produce a variety of harsh, croaking calls, particularly
+    during breeding season. Their slow, ponderous flight with deeply bowed wings is
+    distinctive, making them instantly recognizable as they travel between roosting
+    and feeding areas. Their presence indicates healthy wetland ecosystems.'
+migration:
+  sv: '# Gråhäger – Förekomst i Skandinavien och Nordeuropa
+
+
+    Gråhägern förekommer året runt i Skandinavien och Nordeuropa, men dess närvaro
+    varierar säsongsvis. Under sommaren häckar arten utbredd över regionen, men många
+    individer drar bort under hösten när vattnen börjar frysa till. Gråhäger som stannar
+    kvar under vintern är ofta bundna till öppna vatten vid kuster, större sjöar och
+    älvar. Återkomsten på häckningsplatserna sker tidigt på våren när isen börjar
+    gå upp. Arten är många nordeuropeiska områdens enda hägerart och spelar därmed
+    en viktig roll i våtmarksekosystemen.'
+  en: '# Grey Heron Migration in Northern Europe
+
+
+    The Grey Heron is primarily resident throughout much of Scandinavia and Northern
+    Europe, with many birds remaining year-round in their territories. However, northern
+    populations exhibit partial migration, with some individuals moving southward
+    during autumn months as water bodies freeze over, reducing feeding opportunities.
+    Birds typically return to breeding grounds in late winter and early spring, with
+    peak arrival occurring in February through March. The timing of departure and
+    return varies considerably depending on winter severity and local ice conditions,
+    making this species an irregular migrant in the northernmost regions of its range.'
+image_refs:
+- role: hero
+  path: Q25273/hero.jpg
+  width: 2009
+  height: 2368
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jebulon" title="User:Jebulon">Jebulon</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Héron cendré Ardea cinerea Tiergarten
+    Schönbrunn.jpg
+  commons_filename: Héron cendré Ardea cinerea Tiergarten Schönbrunn.jpg
+- role: secondary
+  path: Q25273/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20200720 Ardea cinerea 02.jpg
+  commons_filename: 20200720 Ardea cinerea 02.jpg
+- role: secondary
+  path: Q25273/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
+    Sprinz">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Graureiher (Ardea cinerea) auf
+    gefrorenem Teich.jpg
+  commons_filename: Graureiher (Ardea cinerea) auf gefrorenem Teich.jpg
+review_status: approved
+review_notes: 'auto-pick OK (Ardea cinerea, klar art-identifiering; CC0). Schönbrunn-zoo men korrekt art.'
+generated_at: '2026-05-06T14:36:54.860672+00:00'
+sources:
+  wikipedia_sv_revision: '56065189'
+  wikipedia_en_revision: '1351620754'
+  claude_model: claude-haiku-4-5-20251001

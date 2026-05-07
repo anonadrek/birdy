@@ -1,0 +1,98 @@
+id: Q392570
+scientific_name: Egretta gularis
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Egretta
+  ioc_order: Pelecaniformes
+names:
+  sv: Revhäger
+  en: Western Reef Heron
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Western Reef Heron
+
+
+    The western reef heron is a medium-sized coastal heron with a variable appearance
+    depending on geographic location and individual variation. It occurs in three
+    main plumage forms: slaty-grey, pure white, and black with a white throat. The
+    white form resembles the little egret but can be distinguished by its larger,
+    paler bill. The grey form may be confused with the uncommon dark morph of the
+    little egret, though the reef heron differs in size and structure. It is found
+    in southern Europe, Africa, and parts of Asia, typically in coastal habitats.
+
+
+    The western reef heron forages differently from the little egret, with distinctive
+    hunting behaviour adapted to reef environments. Its behaviour and structural differences
+    help separate it from similar species where ranges overlap. The species'' taxonomy
+    remains somewhat debated, with some authorities considering different populations
+    as subspecies of the little egret rather than a separate species.'
+migration:
+  sv: ''
+  en: '# Western Reef Heron in Northern Europe
+
+
+    The Western Reef Heron is not a regular occurrence in Scandinavia or Northern
+    Europe. This species is primarily found in southern Europe, Africa, and parts
+    of Asia with a mainly coastal distribution. While it occasionally appears as a
+    vagrant in southern European regions, there is no established migration pattern
+    or regular seasonal presence documented for Scandinavia or Northern Europe. Any
+    sightings in these northern areas would represent rare or accidental occurrences
+    rather than predictable migratory movements.'
+image_refs:
+- role: hero
+  path: Q392570/hero.jpg
+  width: 2400
+  height: 1590
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29237715@N05">Noel
+    Reynolds</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Western Reef-Egret (Egretta
+    gularis) (6786523408).jpg
+  commons_filename: Western Reef-Egret (Egretta gularis) (6786523408).jpg
+- role: secondary
+  path: Q392570/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Egretta gularis (15797993670).jpg
+  commons_filename: Egretta gularis (15797993670).jpg
+- role: secondary
+  path: Q392570/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Egretta gularis (15983285841).jpg
+  commons_filename: Egretta gularis (15983285841).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:37:51.548136+00:00'
+sources:
+  wikipedia_sv_revision: '58642447'
+  wikipedia_en_revision: '1315250690'
+  claude_model: claude-haiku-4-5-20251001

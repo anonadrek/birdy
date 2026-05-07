@@ -1,0 +1,96 @@
+id: Q132482576
+scientific_name: Butorides atricapilla
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Butorides
+  ioc_order: Pelecaniformes
+names:
+  sv: Mangrovehäger
+  en: Little Heron
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Little Heron
+
+
+    The little heron is a diminutive member of the heron family, standing just 44
+    centimetres tall. It inhabits both freshwater and saltwater environments across
+    tropical regions of the Old World, ranging from western Africa through to Japan
+    and Australia. It is predominantly sedentary, remaining in its preferred habitats
+    year-round rather than undertaking long migrations.
+
+
+    This species was historically classified as conspecific with the striated heron,
+    but taxonomic revision has since recognized it as a distinct species. The little
+    heron''s small size distinguishes it from most other herons, making it well-suited
+    to hunting in confined spaces such as mangrove margins and densely vegetated wetlands
+    where larger herons would be less effective.
+
+
+    Further detailed information about its specific plumage patterns, vocalizations,
+    and hunting behaviour would require additional sources beyond the introductory
+    material provided.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Little Heron (Butoedison atricapilla) is a tropical species with a range extending
+    from West Africa to Japan and Australia. The source material indicates it is "mostly
+    sedentary," suggesting limited migratory behavior. However, no specific information
+    regarding occurrence in Scandinavia or Northern Europe is provided. This species''
+    tropical distribution means it does not naturally occur in Scandinavian or Northern
+    European regions throughout the year or during migration periods. The available
+    source text contains insufficient details about migration patterns to provide
+    accurate information about seasonal movements within or through northern temperate
+    zones.'
+image_refs:
+- role: hero
+  path: Q132482576/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Little heron (Butorides atricapilla
+    javanica) immature in flight Taal Lake.jpg
+  commons_filename: Little heron (Butorides atricapilla javanica) immature in flight
+    Taal Lake.jpg
+- role: secondary
+  path: Q132482576/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Little heron (Butorides atricapilla
+    javanica) immature Taal Lake.jpg
+  commons_filename: Little heron (Butorides atricapilla javanica) immature Taal Lake.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T09:06:14.663771+00:00'
+sources:
+  wikipedia_sv_revision: '59072330'
+  wikipedia_en_revision: '1346774489'
+  claude_model: claude-haiku-4-5-20251001

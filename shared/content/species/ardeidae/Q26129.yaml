@@ -1,0 +1,120 @@
+id: Q26129
+scientific_name: Botaurus minutus
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Ixobrychus
+  ioc_order: Pelecaniformes
+names:
+  sv: Dvärgrördrom
+  en: Little Bittern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dvärgrördrom
+
+
+    Dvärgrördrom är en av världens minsta härfåglar. Det är en smärt fågel med kompakt
+    kroppsbyggnad och kort hals, vilket gör det utmärkt anpassad för liv bland vass
+    och sälor. Färgningen är gulbrun till kastanjebrun, ofta med mörka streck och
+    fläckar som ger en utmärkt kamouflage i vegetationen.
+
+
+    Arten är mycket dold till sin natur och föredrar att vistas dolda bland tätt växande
+    vass och rör. Det är främst aktivt under skymningen och natten när det jagar små
+    fiskar, grodor och insekter. Dvärgrördrommen har ett karakteristiskt ljud – en
+    kort, dov "oo-oo" eller "ump-ump" som kan höras under häckningstiden, särskilt
+    på kvällen.
+
+
+    Arten förekommer utspritt över större delar av Europa, Afrika och Asien i sumpiga
+    sjöar och våtmarker med rik växlighet. Det är ofta svårt att få syn på eftersom
+    det är så väl dolt i den täta vegetationen, men ses ibland när det flyger kort
+    mellan olika växtbestånd. IUCN klassificerar arten som livskraftig.'
+  en: '# Little Bittern
+
+
+    The little bittern is a small wading bird belonging to the heron family. It is
+    notably diminutive compared to its relatives, making it one of the smallest members
+    of the Ardeidae family. Its compact size and secretive nature make it easily overlooked
+    in its preferred habitat.
+
+
+    This species frequents freshwater wetlands, reed beds, and marshy areas where
+    dense vegetation provides excellent cover. The little bittern is highly cryptic,
+    spending much of its time concealed among reeds and rushes where it hunts for
+    small fish, frogs, and aquatic invertebrates. It is generally solitary and most
+    active during dawn and dusk.
+
+
+    The little bittern''s call is distinctive—a series of deep, guttural croaks, particularly
+    noticeable during the breeding season. Its plumage features pale underparts contrasting
+    with darker upperparts, providing effective camouflage in its reed-bed environment.
+    When alarmed, it may adopt a vertical posture, stretching its neck to blend seamlessly
+    with surrounding vegetation. The species is migratory across much of its range,
+    breeding in suitable wetlands during spring and summer before departing for wintering
+    grounds.'
+migration:
+  sv: '# Dvärgrördrom – Förekomst i Skandinavien och Nordeuropa
+
+
+    Dvärgrördrommen är en långflyttare som förekommer i Skandinavien och Nordeuropa
+    främst under sommaren. Arten anländer till häckningsområdena under våren, vanligtvis
+    från april till maj, och återvänder sedan till sina övervintringskvartar i Afrika
+    under hösten, huvudsakligen augusti till september. Arten är helt beroende av
+    lämpliga våtmarksmiljöer med riklig vass och röricht för häckning och näringssökning.
+
+
+    Under vintermånaderna är dvärgrördrommen helt frånvarande från Skandinavien och
+    övriga Nordeuropa, då den drar söderut till varmare klimat. Arten är således endast
+    närvarande under häckningssäsongen och utgör en karakteristisk sommargäst i lämpliga
+    våtmarker i region.'
+  en: '# Little Bittern (Botaurus minutus) – Scandinavian Occurrence
+
+
+    The Little Bittern is a rare summer visitor to Scandinavia and Northern Europe,
+    arriving in late spring (May-June) to breed in reed beds and wetlands. This small
+    heron is highly migratory, wintering in Africa south of the Sahara and returning
+    northward during spring migration. In Scandinavian countries, breeding populations
+    are extremely scarce and localized, with records primarily from southern regions.
+    The species departs in late summer and autumn (August-September) to return to
+    African wintering grounds. Most sightings in Northern Europe occur during migration
+    periods, making it an uncommon passage migrant rather than a regular breeding
+    resident.'
+image_refs:
+- role: hero
+  path: Q26129/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Woudaap - little bittern - Botaurus
+    minutus.jpg
+  commons_filename: Woudaap - little bittern - Botaurus minutus.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:38:50.047157+00:00'
+sources:
+  wikipedia_sv_revision: '56465124'
+  wikipedia_en_revision: '1328088410'
+  claude_model: claude-haiku-4-5-20251001

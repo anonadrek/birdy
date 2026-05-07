@@ -1,0 +1,108 @@
+id: Q118608
+scientific_name: Ardea goliath
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Ardea
+  ioc_order: Pelecaniformes
+names:
+  sv: Goliathäger
+  en: Goliath Heron
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Goliath Heron
+
+
+    The Goliath heron is the largest member of the heron family and truly lives up
+    to its name. This massive wading bird stands taller than most humans, making it
+    unmistakable in its habitat. It possesses the typical heron silhouette with long
+    legs, extended neck, and a powerful, dagger-like bill designed for catching large
+    prey. The plumage is predominantly slate-grey with chestnut and black markings
+    on the head and neck, giving it a striking appearance.
+
+
+    This solitary hunter frequents freshwater wetlands, marshes, and lake margins
+    where it stalks fish, amphibians, and other aquatic creatures with patience and
+    deliberate movements. Despite its impressive size, the Goliath heron hunts by
+    standing motionless for extended periods before striking with explosive speed.
+    It is generally silent but occasionally produces deep croaking calls, particularly
+    during breeding season.
+
+
+    The species is distributed across sub-Saharan Africa, where it remains relatively
+    widespread in suitable habitat. Populations also occur in Southwest and South
+    Asia, though these are significantly smaller and continue to decline. While not
+    yet threatened with extinction, the Goliath heron''s reliance on pristine wetland
+    environments makes it vulnerable to habitat loss and wetland degradation.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Goliath Heron is a sub-Saharan African species with its range primarily concentrated
+    in that region, and does not occur in Scandinavia or Northern Europe. The available
+    source material provides no information regarding migration patterns, overwintering
+    behavior, or seasonal occurrence in Scandinavian or Northern European territories.
+    This species is not a regular visitor to these regions.'
+image_refs:
+- role: hero
+  path: Q118608/hero.jpg
+  width: 2400
+  height: 1603
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Goliath Heron, Ardea goliath
+    at Marievale Nature Reserve, Gauteng, South Africa (43682833130).jpg
+  commons_filename: Goliath Heron, Ardea goliath at Marievale Nature Reserve, Gauteng,
+    South Africa (43682833130).jpg
+- role: secondary
+  path: Q118608/secondary-1.jpg
+  width: 1496
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Goliath Heron, Ardea goliath
+    at Marievale Nature Reserve, Gauteng, South Africa (30559502317).jpg
+  commons_filename: Goliath Heron, Ardea goliath at Marievale Nature Reserve, Gauteng,
+    South Africa (30559502317).jpg
+- role: secondary
+  path: Q118608/secondary-2.jpg
+  width: 1302
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Goliath Heron, Ardea goliath
+    at Marievale Nature Reserve, Gauteng, South Africa (20955452346).jpg
+  commons_filename: Goliath Heron, Ardea goliath at Marievale Nature Reserve, Gauteng,
+    South Africa (20955452346).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-06T14:38:26.072132+00:00'
+sources:
+  wikipedia_sv_revision: '58567254'
+  wikipedia_en_revision: '1352654927'
+  claude_model: claude-haiku-4-5-20251001

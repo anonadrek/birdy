@@ -1,0 +1,125 @@
+id: Q191394
+scientific_name: Ardeola ralloides
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Ardeola
+  ioc_order: Pelecaniformes
+names:
+  sv: Rallhäger
+  en: Squacco Heron
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rallhäger
+
+
+    Rallhägern är en liten häger tillhörande familjen Ardeidae. Den häckar främst
+    i Mellanöstern och Afrika, men förekommer även lokalt i Sydeuropa. Arten ses endast
+    sällsynt utanför sitt naturliga utbredningsområde, och i Sverige har den dokumenterats
+    vid omkring tjugo tillfällen.
+
+
+    Globalt bedöms rallhägerns bestånd som livskraftigt, vilket innebär att arten
+    inte utgör någon större bevarandehöjd. För den intresserade fågelskådaren är arter
+    som denna ofta särskilt värdefulla att följa, då de utgör ovanliga fynd när de
+    väl uppträder utanför sitt vanliga område.'
+  en: '# Squacco Heron
+
+
+    The Squacco Heron is a small heron measuring 44–47 cm in length with a wingspan
+    of 80–92 cm. It is a species of Old World origin, breeding in southern Europe
+    and the Greater Middle East. This diminutive heron inhabits wetland environments
+    where it hunts for fish, frogs, and aquatic invertebrates in shallow waters.
+
+
+    In appearance, the Squacco Heron displays subtle plumage that provides excellent
+    camouflage among reed beds and marsh vegetation. Its small size and compact build
+    distinguish it from larger heron species. When alarmed or in flight, it reveals
+    white wings and back that contrast with its darker head and neck.
+
+
+    The species is typically solitary or found in small groups, often remaining motionless
+    for extended periods while hunting. It is a migratory bird, arriving at breeding
+    grounds in spring and departing in autumn. The Squacco Heron''s quiet nature means
+    it is often overlooked, though its presence can be detected by watching for movement
+    in shallow water margins and wetland edges during dawn and dusk hours.'
+migration:
+  sv: '# Rallhäger – Förekomst i Skandinavien/Nordeuropa
+
+
+    Rallhägern är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten häckar
+    främst i Mellanöstern och Afrika, med endast lokala populationer i Sydeuropa.
+    I Sverige har den noterats vid omkring tjugo tillfällen och förekommer helt oregelbundet
+    som en vagabund utanför sitt normala utbredningsområde. Det finns ingen etablerad
+    migrationsmönster för arten i regionen, utan framförandet av rallhäger i norra
+    Europa måste betraktas som sällsynta avvikelser från dess huvudsakliga distribution.'
+  en: '# Squacco Heron in Northern Europe
+
+
+    The Squacco Heron is a rare vagrant to Scandinavia and Northern Europe, with only
+    occasional records from these regions. As a breeding species, it is primarily
+    confined to southern Europe and the Greater Middle East, making sightings in Scandinavia
+    exceptional rather than regular. When individuals do appear in Northern Europe,
+    they typically occur during spring and autumn migration periods, likely representing
+    overshooting or displaced birds from their main range. The species is not considered
+    a regular migrant through Scandinavian territories and should be regarded as an
+    accidental visitor to this region.'
+image_refs:
+- role: hero
+  path: Q191394/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Ardeola ralloides and Egretta
+    dimorpha (22194228345).jpg
+  commons_filename: Ardeola ralloides and Egretta dimorpha (22194228345).jpg
+- role: secondary
+  path: Q191394/secondary-1.jpg
+  width: 1800
+  height: 1198
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/196198470@N02">Sam
+    Thomas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Squacco Heron (Ardeola ralloides)
+    Aswan (52260545878).jpg
+  commons_filename: Squacco Heron (Ardeola ralloides) Aswan (52260545878).jpg
+- role: secondary
+  path: Q191394/secondary-2.jpg
+  width: 1800
+  height: 1182
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Squacco Heron, Ardeola ralloides
+    at Marievale Nature Reserve, Gauteng, South Africa (20375651613).jpg
+  commons_filename: Squacco Heron, Ardeola ralloides at Marievale Nature Reserve,
+    Gauteng, South Africa (20375651613).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T09:06:29.145228+00:00'
+sources:
+  wikipedia_sv_revision: '55901391'
+  wikipedia_en_revision: '1315235560'
+  claude_model: claude-haiku-4-5-20251001

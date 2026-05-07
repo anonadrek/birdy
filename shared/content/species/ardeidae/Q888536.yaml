@@ -1,0 +1,83 @@
+id: Q888536
+scientific_name: Botaurus sinensis
+taxonomy:
+  family: Ardeidae
+  family_sv: Hägrar
+  genus: Ixobrychus
+  ioc_order: Pelecaniformes
+names:
+  sv: Kinesisk dvärgrördrom
+  en: Yellow Bittern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Yellow Bittern
+
+
+    The yellow bittern is a small member of the heron family found across Asia. It
+    breeds from the northern Indian subcontinent eastward through Russia and Japan
+    to Indonesia. Most populations are resident year-round, though birds from northern
+    regions undertake short migrations. Vagrants occasionally appear well outside
+    the normal range, with records from Alaska.
+
+
+    This compact bittern inhabits reed beds and marshy wetlands where it hunts small
+    fish, frogs, and aquatic insects. It is a secretive, solitary bird more often
+    heard than seen, remaining concealed within dense vegetation. Like other bitterns,
+    it produces distinctive booming calls during breeding season.
+
+
+    The species is characterized by its warm buff and yellow plumage with darker markings,
+    giving it excellent camouflage among reeds and rushes. Its small size and cryptic
+    habits make it challenging to observe, though patient watchers at suitable wetland
+    habitats may glimpse it perched or slowly stalking through shallow water.'
+migration:
+  sv: ''
+  en: '# Yellow Bittern (*Botaurus sinensis*) in Northern Europe
+
+
+    Migration data unavailable for this species. The yellow bittern''s range extends
+    from the Indian subcontinent eastward to the Russian Far East and Japan, with
+    populations in Indonesia. While primarily resident throughout its range, some
+    northern populations undertake short-distance migrations. However, the species
+    has not been documented as a regular migrant or winter visitor to Scandinavia
+    or Northern Europe, with only accidental vagrant records known from distant regions
+    like Alaska.'
+image_refs:
+- role: hero
+  path: Q888536/hero.jpg
+  width: 2400
+  height: 1601
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Yellow bittern (Botaurus sinensis)
+    Prek Toal.jpg
+  commons_filename: Yellow bittern (Botaurus sinensis) Prek Toal.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T09:06:33.313623+00:00'
+sources:
+  wikipedia_sv_revision: '56470105'
+  wikipedia_en_revision: '1337012804'
+  claude_model: claude-haiku-4-5-20251001
