@@ -1,18 +1,16 @@
 {
   "modelVersion": "aiy_birds_v1",
   "sourceUrl": "https://tfhub.dev/google/lite-model/aiy/vision/classifier/birds_V1/3",
+  "downloadUrl": "https://tfhub.dev/google/lite-model/aiy/vision/classifier/birds_V1/3?lite-format=tflite",
   "labelmapUrl": "https://www.gstatic.com/aihub/tfhub/labelmaps/aiy_birds_V1_labelmap.csv",
   "downloadedAt": "2026-05-07",
+  "implementationNotes": "input.dtype is uint8 — pass raw pixel bytes [0..255] directly to the TFLite interpreter; do not pre-normalize in Kotlin. input.normalization is reference-only (documents the float-domain semantics the model was trained for). output is also uint8-quantized — dequantize scores via output.quantization (float = (q - zeroPoint) * scale).",
   "input": {
     "shape": [1, 224, 224, 3],
     "dtype": "uint8",
     "normalization": {
       "mean": [127.5, 127.5, 127.5],
       "std":  [127.5, 127.5, 127.5]
-    },
-    "quantization": {
-      "scale": 0.0078125,
-      "zeroPoint": 128
     }
   },
   "output": {
