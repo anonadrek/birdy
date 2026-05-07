@@ -1,5 +1,6 @@
 package se.birdy.ml
 
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -11,6 +12,11 @@ import kotlinx.coroutines.sync.withLock
  * [onDegrade] is called exactly once when the threshold is crossed (e.g. to log
  * to Crashlytics). State is coordinated via [Mutex] to match the repo pattern
  * (no atomicfu dependency configured in :shared:ml).
+ *
+ * The whole class assumes a single-threaded caller (the camera pipeline). Concurrent
+ * [classify] invocations could result in lost failure increments around the success-path
+ * reset. Only the throwable that crosses the threshold reaches [onDegrade]; earlier
+ * failures (1..threshold-1) are rethrown to the caller.
  */
 class SessionFailureGuard(
     private val real: BirdClassifier,
@@ -39,12 +45,13 @@ class SessionFailureGuard(
             stateMutex.withLock { failures = 0 }
             result
         } catch (t: Throwable) {
-            val (_, justDegraded) =
+            if (t is CancellationException) throw t
+            val justDegraded =
                 stateMutex.withLock {
                     failures += 1
-                    val degradeNow = failures > threshold && !degraded
-                    if (degradeNow) degraded = true
-                    failures to degradeNow
+                    val now = failures > threshold && !degraded
+                    if (now) degraded = true
+                    now
                 }
             if (justDegraded) {
                 onDegrade(t)
@@ -56,7 +63,10 @@ class SessionFailureGuard(
     }
 
     override fun close() {
-        real.close()
-        fallback.close()
+        try {
+            real.close()
+        } finally {
+            fallback.close()
+        }
     }
 }

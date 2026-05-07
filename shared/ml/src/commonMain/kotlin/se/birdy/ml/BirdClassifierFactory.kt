@@ -1,5 +1,7 @@
 package se.birdy.ml
 
+import kotlinx.coroutines.CancellationException
+
 /**
  * Single entry-point for obtaining a [BirdClassifier] at app startup.
  *
@@ -15,19 +17,30 @@ class BirdClassifierFactory(
     private val onCrashlytics: (Throwable) -> Unit,
     private val sessionFailureThreshold: Int = 3,
 ) {
-    suspend fun create(): Pair<BirdClassifier, ClassifierMode> =
-        try {
-            val real = createReal()
-            val guarded =
-                SessionFailureGuard(
-                    real = real,
-                    fallback = createFallback(),
-                    threshold = sessionFailureThreshold,
-                    onDegrade = onCrashlytics,
-                )
-            guarded to ClassifierMode.REAL
-        } catch (t: Throwable) {
-            onCrashlytics(t)
-            createFallback() to ClassifierMode.DEMO
-        }
+    suspend fun create(): Pair<BirdClassifier, ClassifierMode> {
+        val real =
+            try {
+                createReal()
+            } catch (t: Throwable) {
+                if (t is CancellationException) throw t
+                onCrashlytics(t)
+                return createFallback() to ClassifierMode.DEMO
+            }
+
+        val fallback =
+            try {
+                createFallback()
+            } catch (t: Throwable) {
+                // Don't leak `real` if fallback creation itself fails.
+                runCatching { real.close() }
+                throw t
+            }
+
+        return SessionFailureGuard(
+            real = real,
+            fallback = fallback,
+            threshold = sessionFailureThreshold,
+            onDegrade = onCrashlytics,
+        ) to ClassifierMode.REAL
+    }
 }
