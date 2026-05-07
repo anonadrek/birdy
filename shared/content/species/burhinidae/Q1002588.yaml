@@ -1,0 +1,106 @@
+id: Q1002588
+scientific_name: Burhinus capensis
+taxonomy:
+  family: Burhinidae
+  family_sv: Tjockfotar
+  genus: Burhinus
+  ioc_order: Charadriiformes
+names:
+  sv: Fläcktjockfot
+  en: Spotted Thick-knee
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Spotted Thick-knee
+
+
+    The spotted thick-knee is a distinctive wader belonging to the Burhinidae family,
+    found across tropical regions of central and southern Africa. Known locally as
+    the spotted dikkop or Cape thick-knee, it is characterized by its notably thick
+    legs and sturdy build adapted to terrestrial habitats.
+
+
+    This species is primarily nocturnal and crepuscular, being most active during
+    dawn, dusk, and night hours. It frequents open and semi-open habitats, including
+    grasslands and scrubland areas where it can forage for invertebrates and small
+    vertebrates on the ground. Its behaviour is typically cautious and alert, relying
+    on camouflage and remaining still when threatened.
+
+
+    The spotted thick-knee produces distinctive calls, particularly during evening
+    and night, which help identify it in the field. Its plumage provides effective
+    camouflage in its preferred habitats, with mottled patterns that break up its
+    outline. The species is generally solitary or found in pairs, and it nests on
+    the ground in simple scrapes. While details of its exact appearance and vocalizations
+    would benefit from field observation, it remains a challenging but rewarding species
+    for dedicated bird enthusiasts to locate and observe in its natural range.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Spotted Thick-knee is a resident species of tropical Africa with no established
+    occurrence in Scandinavia or Northern Europe. The source material indicates it
+    is native to central and southern African regions only, with no mention of migratory
+    movements toward or presence in northern European territories. Therefore, information
+    about its occurrence in Scandinavia throughout the year cannot be provided.'
+image_refs:
+- role: hero
+  path: Q1002588/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted Thick-knee (Burhinus
+    capensis) cooling down by panting ... (32236049388).jpg
+  commons_filename: Spotted Thick-knee (Burhinus capensis) cooling down by panting
+    ... (32236049388).jpg
+- role: secondary
+  path: Q1002588/secondary-1.jpg
+  width: 1800
+  height: 1123
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted Thick-knee (Burhinus
+    capensis) couple with hidden chick (bottom left) ... (40116383053).jpg
+  commons_filename: Spotted Thick-knee (Burhinus capensis) couple with hidden chick
+    (bottom left) ... (40116383053).jpg
+- role: secondary
+  path: Q1002588/secondary-2.jpg
+  width: 1422
+  height: 1800
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted Thick-Knee (Burhinus
+    capensis) (52656528039).jpg
+  commons_filename: Spotted Thick-Knee (Burhinus capensis) (52656528039).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T20:34:29.462041+00:00'
+sources:
+  wikipedia_sv_revision: '57974200'
+  wikipedia_en_revision: '1318547566'
+  claude_model: claude-haiku-4-5-20251001

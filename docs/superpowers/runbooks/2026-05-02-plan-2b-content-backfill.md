@@ -20,7 +20,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-07 | ardeidae | +16 (totalt 189) | `103c76c` |
 | 2026-05-07 | bombycillidae | +1 (totalt 190) | `7c29d4f` |
 | 2026-05-07 | bucerotidae | +1 (totalt 191) | `356996b` |
-| | _next: burhinidae (4 arter) — kolla species_list.yaml_ | | |
+| 2026-05-07 | burhinidae | +4 (totalt 195) | _(this commit)_ |
+| | _next: calcariidae (2 arter) — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -63,6 +64,14 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Wikidata 502 igen:** 5/16 första-fetch failed (Q888536, Q132482576, Q191394, Q27074615, Q220578); retry som grupp efter pipeline-fix löste alla 5.
 - **Click multi-arg-bug bekräftad igen:** `--species Q1,Q2,Q3` returnerar `No species matched filter`; använd `--species Q1 --species Q2 --species Q3`.
 - Cost: ~$0.029 / 16 arter (11 första-batch + 5 retry).
+
+**Burhinidae-batch lärdomar (2026-05-07):**
+
+- 0/4 abundance:allmän — alla 4 arter är afrikanska/asiatiska/sydeuropeiska vagrants utan etablerad SE-population. Default `ovanlig` korrekt; tjockfot (Q184834 Burhinus oedicnemus) ses sporadiskt i SE men inte tillräckligt regelbundet för `allmän`.
+- **4/4 (100%) sparse-overrides** — tre exotiska arter (Q1002588 Fläcktjockfot, Q1260062 Strandtjockfot, Q922125 Senegaltjockfot) saknar svwiki helt; Q184834 Tjockfot har enwiki lead på **exakt** 20 ord (= `SPARSE_WORD_THRESHOLD`). Påminnelse: tröskeln är hård, så även välkända EU-arter kan falla under om wikilead är minimal.
+- **Wikidata transient errors stack:** första batch-fetch fick `429 Too Many Requests` på Q1260062 (propagerade till alla 4); retry löste 3/4 men Q1260062 fick sedan 2× `502 Bad Gateway` i rad innan tredje retry lyckades. Pattern: 4–10 sekunders pause mellan retries räcker; ingen kod-fix behövs.
+- **Override-kommentar gotcha:** mina första override-kommentarer hade fel sv-namn (Kaptjockfot/Stortjockfot — gissningar baserat på vetenskapligt namn). Korrekt sv-namn (Fläcktjockfot/Strandtjockfot per Wikidata `names.sv` i YAML) skiljer sig från direkt översättning. **Lärdom:** alltid läs `names.sv` ur den genererade YAML innan du skriver override-kommentar — gissa inte från vetenskapligt epitet.
+- Cost: ~$0.0016 / 4 arter (Q1260062-retry triggade Claude 2 ggr; övriga 3 inga Claude-calls eftersom alla språk var sparse).
 
 **Apodidae-batch lärdomar (2026-05-06):**
 

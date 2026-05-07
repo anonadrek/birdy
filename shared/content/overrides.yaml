@@ -165,3 +165,13 @@ species:
   # Bucerotidae batch (2026-05-07): African vagrant, no Swedish Wikipedia article.
   Q27074817:
     description_accept_missing: [sv]  # Lophoceros nasutus (Gråtoko / African Grey Hornbill) — afrikansk, ingen svwiki
+  # Burhinidae batch (2026-05-07): exotic thick-knees without Swedish Wikipedia article.
+  Q1002588:
+    description_accept_missing: [sv]  # Burhinus capensis (Fläcktjockfot / Spotted Thick-knee) — afrikansk, ingen svwiki
+  Q1260062:
+    description_accept_missing: [sv]  # Esacus recurvirostris (Strandtjockfot / Great Stone-curlew) — sydostasiatisk, ingen svwiki
+  Q922125:
+    description_accept_missing: [sv]  # Burhinus senegalensis (Senegaltjockfot / Senegal Thick-knee) — afrikansk, ingen svwiki
+  # Burhinidae outlier: well-known European species but enwiki intro = exactly SPARSE_WORD_THRESHOLD (20 words).
+  Q184834:
+    description_accept_missing: [en]  # Burhinus oedicnemus (Tjockfot / Eurasian Stone-curlew) — enwiki lead 20w (genuine stub despite well-known species)

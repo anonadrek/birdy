@@ -1,0 +1,77 @@
+id: Q922125
+scientific_name: Burhinus senegalensis
+taxonomy:
+  family: Burhinidae
+  family_sv: Tjockfotar
+  genus: Burhinus
+  ioc_order: Charadriiformes
+names:
+  sv: Senegaltjockfot
+  en: Senegal Thick-knee
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Senegal Thick-knee
+
+
+    The Senegal thick-knee is a stone-curlew belonging to the wader family Burhinidae,
+    easily recognized by its distinctively long, thick legs with prominent joints.
+    These legs are typically yellow or greenish in colour, giving the bird its characteristic
+    appearance and scientific name. It is a member of a specialized group of waders
+    adapted to terrestrial rather than aquatic environments.
+
+
+    The species is primarily nocturnal and crepuscular, being most active during dawn,
+    dusk, and night hours. It forages on the ground for invertebrates and other small
+    prey, moving with a characteristic upright posture. When disturbed, it tends to
+    freeze or run rather than immediately taking flight, relying on its cryptic plumage
+    for camouflage in its natural habitat.
+
+
+    The Senegal thick-knee inhabits open and semi-open environments, preferring stony
+    or sandy ground with sparse vegetation. It is found across sub-Saharan Africa
+    in appropriate habitat, though specific distribution details would require additional
+    sources beyond the provided text. Its nocturnal habits make it challenging to
+    observe, though its presence may be detected through its distinctive calls during
+    night hours.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q922125/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Senegal thick-knee (Burhinus
+    senegalensis).jpg
+  commons_filename: Senegal thick-knee (Burhinus senegalensis).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T20:34:36.684859+00:00'
+sources:
+  wikipedia_sv_revision: '58603103'
+  wikipedia_en_revision: '1326547544'
+  claude_model: claude-haiku-4-5-20251001

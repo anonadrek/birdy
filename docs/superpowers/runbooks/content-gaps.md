@@ -90,6 +90,10 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 65 | Q498428 | ardeidae | Damrallhäger | Ardeola grayii | sv | — | — | pending (sv summary 71w under 80-tröskeln) |
 | 66 | Q888536 | ardeidae | Kinesisk dvärgrördrom | Botaurus sinensis | sv | — | — | pending (asiatisk) |
 | 67 | Q27074817 | bucerotidae | Gråtoko | Lophoceros nasutus | sv | — | — | pending (afrikansk vagrant, ingen svwiki) |
+| 68 | Q1002588 | burhinidae | Fläcktjockfot | Burhinus capensis | sv | 57974200 | 1318547566 | pending (afrikansk, ingen svwiki) |
+| 69 | Q1260062 | burhinidae | Strandtjockfot | Esacus recurvirostris | sv | 55735322 | 1314148858 | pending (sydostasiatisk, ingen svwiki) |
+| 70 | Q184834 | burhinidae | Tjockfot | Burhinus oedicnemus | en | 57857788 | 1313792943 | pending (enwiki lead 20w — exakt SPARSE_WORD_THRESHOLD trots välkänd EU-art) |
+| 71 | Q922125 | burhinidae | Senegaltjockfot | Burhinus senegalensis | sv | 58603103 | 1326547544 | pending (afrikansk, ingen svwiki) |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

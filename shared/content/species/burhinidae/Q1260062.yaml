@@ -1,0 +1,102 @@
+id: Q1260062
+scientific_name: Esacus recurvirostris
+taxonomy:
+  family: Burhinidae
+  family_sv: Tjockfotar
+  genus: Esacus
+  ioc_order: Charadriiformes
+names:
+  sv: Strandtjockfot
+  en: Great Stone-curlew
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Great Stone-curlew
+
+
+    The great stone-curlew is a large, distinctive wader belonging to the thick-knee
+    family. It inhabits tropical regions across southern Asia, from the Indian subcontinent
+    through South-east Asia, where it remains year-round as a resident breeder.
+
+
+    This species favors open, stony habitats where it blends remarkably well with
+    its surroundings through cryptic plumage. It is primarily nocturnal and crepuscular,
+    becoming most active during dawn, dusk, and night hours. The bird is relatively
+    solitary or found in small groups, spending much of the day resting motionless
+    in shaded spots.
+
+
+    Little detailed information is provided in the source material regarding its specific
+    appearance beyond its large size, call characteristics, or precise behavioral
+    preferences. However, like other stone-curlews, it likely feeds on invertebrates
+    and small vertebrates, hunted primarily during low-light periods. Observers seeking
+    this species should focus on open, sparsely vegetated ground in appropriate tropical
+    regions during early morning or evening hours, when it becomes more conspicuous
+    and vocal.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text indicates that the Great Stone-curlew is a resident breeder in
+    tropical southern Asia (India, Pakistan, Sri Lanka, Bangladesh, and Southeast
+    Asia), with no mention of occurrence in Scandinavia or Northern Europe, nor any
+    migration patterns relevant to these regions.'
+image_refs:
+- role: hero
+  path: Q1260062/hero.jpg
+  width: 2400
+  height: 1590
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great thick-knee (Esacus recurvirostris)
+    from Ranganathittu Bird Sanctuary JEG4078.jpg
+  commons_filename: Great thick-knee (Esacus recurvirostris) from Ranganathittu Bird
+    Sanctuary JEG4078.jpg
+- role: secondary
+  path: Q1260062/secondary-1.jpg
+  width: 1800
+  height: 1192
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great thick-knee (Esacus recurvirostris)
+    from Ranganathittu Bird Sanctuary JEG4108.jpg
+  commons_filename: Great thick-knee (Esacus recurvirostris) from Ranganathittu Bird
+    Sanctuary JEG4108.jpg
+- role: secondary
+  path: Q1260062/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 3.0
+  author: PJeganathan
+  source_url: https://commons.wikimedia.org/wiki/File:Great thick-knee (Esacus recurvirostris)
+    from Ranganathittu Bird Sanctuary JEG4070.JPG
+  commons_filename: Great thick-knee (Esacus recurvirostris) from Ranganathittu Bird
+    Sanctuary JEG4070.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T20:39:00.309092+00:00'
+sources:
+  wikipedia_sv_revision: '55735322'
+  wikipedia_en_revision: '1314148858'
+  claude_model: claude-haiku-4-5-20251001

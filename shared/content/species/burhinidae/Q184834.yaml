@@ -1,0 +1,107 @@
+id: Q184834
+scientific_name: Burhinus oedicnemus
+taxonomy:
+  family: Burhinidae
+  family_sv: Tjockfotar
+  genus: Burhinus
+  ioc_order: Charadriiformes
+names:
+  sv: Tjockfot
+  en: Eurasian Stone-curlew
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tjockfot
+
+
+    Tjockfoten är en skymnings- och nattaktiv vadarfågel som skiljer sig från många
+    andra vadare genom att det föredrar torra, sandiga områden. Den är den nordligaste
+    arten inom familjen tjockfotar och har ett omfattande utbredningsområde som sträcker
+    sig över stora delar av Europa, norra Afrika och sydvästra Asien. Fågeln är mestadels
+    aktiv under skymningen och på natten, vilket gör den svår att observera under
+    dagtid.
+
+
+    Tjockfotens läte påminner slående om storspovens kraftiga rop, vilket återspeglas
+    i det engelska namnet Stone Curlew. Denna karakteristiska röst är ofta det första
+    tecknet på fågelns närvaro. Arten förekommer regelbundet utanför sitt normala
+    utbredningsområde och ses årligen på migration, bland annat i Sverige där den
+    är en återkommande besökare.
+
+
+    Globalt anses tjockfoten vara livskraftig enligt IUCN, men arten har genomgått
+    en kraftig minskning inom Europa. Detta gör den till ett exempel på en fågel som
+    förutsätter särskilda habitatkrav och är känslig för förändringar i sitt miljöer,
+    trots att den inte är klassificerad som hotad på världsbasis.'
+  en: ''
+migration:
+  sv: '# Tjockfot – Förekomst i Skandinavien och Nordeuropa
+
+
+    Tjockfoten är en sällsynt besökare i Skandinavien och förekommer regelbundet norr
+    om sitt huvudsakliga utbredningsområde. Arten ses årligen i Sverige, särskilt
+    under våren och sommaren när den anlander från sina övervintringskvarteren i södra
+    Europa och norra Afrika. Tjockfoten är en flyttfågel som övervintra söder om Medelhavet
+    och återvänder till nordeuropeiska områden under häckningssäsongen. I Skandinavien
+    är arten dock alltid en ovanlig gäst snarare än en etablerad häckare, och observationer
+    är begränsade till sporadiska upptäckter under lämpliga årstider.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q184834/hero.jpg
+  width: 2400
+  height: 1391
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Stone-curlew (Burhinus
+    oedicnemus insularum), "El Jable" Plains, Lanzarote (25061727151).jpg
+  commons_filename: Eurasian Stone-curlew (Burhinus oedicnemus insularum), "El Jable"
+    Plains, Lanzarote (25061727151).jpg
+- role: secondary
+  path: Q184834/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Burhinus oedicnemus insularum
+    Lanzarote 1.jpg
+  commons_filename: Burhinus oedicnemus insularum Lanzarote 1.jpg
+- role: secondary
+  path: Q184834/secondary-2.jpg
+  width: 1800
+  height: 1283
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Canary Island Stone-curlew (Burhinus
+    oedicnemus insularum), "El Jable" plains, Lanzarote (53396579790).jpg
+  commons_filename: Canary Island Stone-curlew (Burhinus oedicnemus insularum), "El
+    Jable" plains, Lanzarote (53396579790).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T20:34:43.210915+00:00'
+sources:
+  wikipedia_sv_revision: '57857788'
+  wikipedia_en_revision: '1313792943'
+  claude_model: claude-haiku-4-5-20251001
