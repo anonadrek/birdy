@@ -94,6 +94,12 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 69 | Q1260062 | burhinidae | Strandtjockfot | Esacus recurvirostris | sv | 55735322 | 1314148858 | pending (sydostasiatisk, ingen svwiki) |
 | 70 | Q184834 | burhinidae | Tjockfot | Burhinus oedicnemus | en | 57857788 | 1313792943 | pending (enwiki lead 20w — exakt SPARSE_WORD_THRESHOLD trots välkänd EU-art) |
 | 71 | Q922125 | burhinidae | Senegaltjockfot | Burhinus senegalensis | sv | 58603103 | 1326547544 | pending (afrikansk, ingen svwiki) |
+| 72 | Q1137192 | caprimulgidae | Rödhalsad nattskärra | Caprimulgus ruficollis | sv | — | — | pending (sydeuropeisk, ingen svwiki) |
+| 73 | Q1264019 | caprimulgidae | Guldnattskärra | Caprimulgus eximius | sv + image | — | — | pending (sahelisk; saknar hi-res Commons-foto) |
+| 74 | Q1265442 | caprimulgidae | Bergnattskärra | Caprimulgus poliocephalus | sv | — | — | pending (afrikansk, ingen svwiki) |
+| 75 | Q1269353 | caprimulgidae | Nubisk nattskärra | Caprimulgus nubicus | sv | — | — | pending (afrikansk, ingen svwiki) |
+| 76 | Q1270252 | caprimulgidae | Sahelnattskärra | Caprimulgus inornatus | sv | — | — | pending (afrikansk, ingen svwiki) |
+| 77 | Q2752089 | caprimulgidae | Sindnattskärra | Caprimulgus mahrattensis | en | 56773477 | — | pending (asiatisk; enwiki lead för kort) |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

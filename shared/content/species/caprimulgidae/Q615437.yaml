@@ -1,0 +1,101 @@
+id: Q615437
+scientific_name: Caprimulgus aegyptius
+taxonomy:
+  family: Caprimulgidae
+  family_sv: Nattskärror
+  genus: Caprimulgus
+  ioc_order: Caprimulgiformes
+names:
+  sv: Ökennattskärra
+  en: Egyptian Nightjar
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ökennattskärra
+
+
+    Ökennattskärra är en liten till medelstor nattskärra som förekommer i sydvästra
+    Asien och norra Afrika. Arten är specialiserad på mycket torra områden där vegetation
+    är sparsam, med endast ett fåtal buskar eller träd. Det är en nattaktiv insektätare
+    som är anpassad till ökenliknande miljöer.
+
+
+    Arten är en ytterst sällsynt gäst i Europa och ses mycket sällan långt från sitt
+    normala utbredningsområde. Det finns endast ett känt fynd i Sverige, som gjordes
+    på en ö 1972. Arten klassificeras som livskraftig enligt IUCN:s bedömning, även
+    om populationen visar en nedåtgående trend.'
+  en: '# Egyptian Nightjar
+
+
+    The Egyptian nightjar is a medium-small member of the nightjar family with a wide
+    distribution across southwest Asia and north Africa. It is a migratory species,
+    wintering in tropical Africa during the colder months. This fairly common bird
+    faces few direct threats, though habitat destruction poses some concern, and it
+    is currently rated as "least concern" by conservation authorities.
+
+
+    As a nightjar, it is adapted to nocturnal hunting, though specific details about
+    its appearance, calls, and behaviour warrant further study from field guides focused
+    exclusively on this species. The Egyptian nightjar inhabits open and semi-open
+    habitats typical of arid and semi-arid regions where it hunts insects in flight
+    during twilight and night hours. Its presence in a given area is often more easily
+    detected by its calls than by sight, as is typical for nightjars generally.'
+migration:
+  sv: '# Ökennattskärra – Förekomst i Nordeuropa
+
+
+    Ökennattskärra är en mycket sällsynt företeelse i Skandinavien och Nordeuropa.
+    Arten häckar primärt i sydvästra Asien och norra Afrika i mycket torra områden,
+    långt från sitt potentiella nordeuropeiska utbredningsområde. I Sverige är arten
+    dokumenterad endast genom ett enstaka fynd på Stora Karlsö år 1972, vilket illustrerar
+    artens extrema sällsynthet i regionen. Arten migrerar mellan sitt afrikanskt-asiatiska
+    utbredningsområde men förekommer inte som regelbunden växtrare eller övervintrare
+    i Skandinavien eller övriga Nordeuropa. Observationer i Europa betraktas som mycket
+    ovanliga vaganter utanför dess normala utbredningsområde.'
+  en: '# Egyptian Nightjar in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Egyptian Nightjar is a North African and south-west Asian species with no
+    established occurrence in Scandinavia or Northern Europe. While the source text
+    indicates the species winters in tropical Africa and occurs across south-west
+    Asia and north Africa, it provides no information regarding any presence in, migration
+    through, or seasonal patterns in Scandinavian or Northern European regions. This
+    species is outside the normal range of northern European bird populations.'
+image_refs:
+- role: hero
+  path: Q615437/hero.jpg
+  width: 2400
+  height: 1805
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Yuriy75" title="User:Yuriy75">Yuriy75</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus aegyptius distr.png
+  commons_filename: Caprimulgus aegyptius distr.png
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:00:54.366383+00:00'
+sources:
+  wikipedia_sv_revision: '55764479'
+  wikipedia_en_revision: '1345092929'
+  claude_model: claude-haiku-4-5-20251001

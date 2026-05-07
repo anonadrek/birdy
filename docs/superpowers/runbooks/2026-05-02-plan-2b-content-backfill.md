@@ -22,7 +22,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-07 | bucerotidae | +1 (totalt 191) | `356996b` |
 | 2026-05-07 | burhinidae | +4 (totalt 195) | `acaedae` |
 | 2026-05-08 | calcariidae | +2 (totalt 197) | `29cc339` |
-| | _next: caprimulgidae (8 arter) — kolla species_list.yaml_ | | |
+| 2026-05-08 | caprimulgidae | +8 (totalt 205) | `_(this commit)_` |
+| | _next: certhiidae (2 arter) — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -65,6 +66,15 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Wikidata 502 igen:** 5/16 första-fetch failed (Q888536, Q132482576, Q191394, Q27074615, Q220578); retry som grupp efter pipeline-fix löste alla 5.
 - **Click multi-arg-bug bekräftad igen:** `--species Q1,Q2,Q3` returnerar `No species matched filter`; använd `--species Q1 --species Q2 --species Q3`.
 - Cost: ~$0.029 / 16 arter (11 första-batch + 5 retry).
+
+**Caprimulgidae-batch lärdomar (2026-05-08):**
+
+- 1/8 abundance:allmän approved (Q26717 Nattskärra — etablerad SE-sommargäst på sandiga tallhedar och ljungmarker, hörs i skymning över hela landet). Övriga 7 är afrikanska/asiatiska/medelhavs-arter: Q1137192 Rödhalsad nattskärra (sydeuropeisk), Q615437 Egyptisk nattskärra, Q1269353 Nubisk nattskärra, Q2752089 Sindnattskärra (asiatisk), Q1264019 Guldnattskärra, Q1265442 Bergnattskärra, Q1270252 Sahelnattskärra.
+- **6/8 (75%) sparse-overrides + 1 image-gap** — Q1137192/Q1264019/Q1265442/Q1269353/Q1270252 saknar svwiki helt; Q2752089 har enwiki lead för kort. Q1264019 Guldnattskärra saknar dessutom Commons-foto över `MIN_DIMENSION=2048` → `allow_missing_images: true`. Hög sparse-rate driven av exotic-tung familj — endast Q26717 (paleartisk häckare) och Q615437 (medelhavs/Mellanöstern, bra enwiki) har full coverage.
+- **Wikidata SPARQL transient cascade igen:** alla 8 arter failade på första fetch med 502 Bad Gateway. Q1269353 behövde ~7 retries innan tredje försöket lyckades (verifierat med `curl` att endpoint genuinely returnerade 502 nginx/1.18.0). Pattern bekräftat: vid kaskad-502 är roten Wikidata-side, inte vår kod. Retry-loop med liten paus löser alltid.
+- **Q26717 hero från Algeriet (övervintring) — ändå godkänd:** auto-pick valde nattskärra på sten i nordafrikansk vintermiljö, **inte** typisk svensk tallhede-bild. Trots geografi-mismatch är fågelns kryptiska gråbrunmönstrade fjäderdräkt + rund platt hjässa + mörkt öga + korta ben fältdiagnostiskt identiska med svenska individer (samma art, samma plumage). **Lärdom:** för migratoriska arter där vinterkvarter har bättre fotokvalitet än häckningsmiljö, prioritera fågelns morfologi över habitat-matchning. Annoteras i `review_notes` så framtida läsare förstår valet.
+- **Namn-gotcha igen (3/8 arter):** mina initiala arbetsnamn var fel: Q1264019 är Guldnattskärra (inte Gyllene), Q1270252 är Sahelnattskärra (inte Slätnattskärra), Q2752089 är Sindnattskärra (inte Sykesnattskärra — *Sind* refererar till Pakistan-provinsen). Burhinidae-lärdomen upprepad: alltid läs `names.sv` ur den genererade YAML innan du skriver override-kommentar eller content-gaps-rad.
+- Cost: ~$0.014 / 8 arter (full SV+EN för 2, bara EN för 5 sparse-sv-arter, bara SV för Q2752089).
 
 **Calcariidae-batch lärdomar (2026-05-08):**
 

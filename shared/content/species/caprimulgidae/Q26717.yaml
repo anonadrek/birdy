@@ -1,0 +1,124 @@
+id: Q26717
+scientific_name: Caprimulgus europaeus
+taxonomy:
+  family: Caprimulgidae
+  family_sv: Nattskärror
+  genus: Caprimulgus
+  ioc_order: Caprimulgiformes
+names:
+  sv: Nattskärra
+  en: European Nightjar
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Nattskärra
+
+
+    Nattskärra är en liten, mörkgrå fågel med tätt mönstrad fjäderdräkt som ger utmärkt
+    kamouflage mot trädbark. Det är en utpräglad nattaktiv art som är activ framför
+    allt under skymningen och natten. Fågeln har stora ögon anpassade för svagt ljus
+    och ett brett bett perfekt för att fånga flygande insekter.
+
+
+    Arten jagar med elegant och vig flugning, ofta över öppna eller halvöppna områden.
+    Under dagen vilar det på marken eller längs grenar, där dess färgning gör det
+    nästan omöjligt att upptäcka. Nattskärra är känd för sitt karakteristiska ljud
+    – ett långt, tremolande, maskinliknande trillande som hörs särskilt vid gryning
+    och skymning.
+
+
+    Arten häckar i Eurasien och nordvästra Afrika, ofta i glesa skogar, ljunghedar
+    och på torra, öppna marker. Det är en långflyttare som återvänder från sitt afrikaniska
+    övervintringsområde för att häcka under sommaren. Även om arten inte är sällsynt
+    där det förekommer lämplig miljö, kan det vara svårt att observera på grund av
+    dess hemliga levnadssätt och nattaktiva vanor.'
+  en: '# European Nightjar
+
+
+    The European nightjar is a nocturnal and crepuscular bird found across Europe
+    and the Palearctic, wintering in sub-Saharan Africa. Its densely patterned grey
+    and brown plumage provides excellent camouflage during the day, when it rests
+    motionless on the ground or along branches. In flight at night, males reveal distinctive
+    white patches in the wings and tail, making them more visible. The species'' cryptic
+    appearance and nocturnal habits make daytime observation challenging.
+
+
+    This bird is best located by listening for its characteristic churring call delivered
+    at dusk and through the night. The sound resembles a prolonged, rolling trill.
+    European nightjars are typically found in open or sparsely vegetated habitats
+    such as heathland, moorland, and woodland edges. Active predators of flying insects,
+    they pursue their prey in fast, erratic flight during darkness. Six subspecies
+    exist across the range, with birds becoming progressively smaller and paler toward
+    the eastern limits of distribution. All populations are migratory, abandoning
+    breeding grounds as insect availability declines in autumn.'
+migration:
+  sv: Nattskärran är en långflygare som anländer till Skandinavien och Nordeuropa
+    under våren, typiskt från april till maj. Arten häckar i större delen av regionen
+    under sommarmånaderna, särskilt i öppna och halvöppna biotoper med ljung och gamla
+    granar. I augusti och september påbörjar populationen sin långstrackade höstmigrering
+    söderut mot övervintringskvarteren i Afrika söder om Sahara. Under vintermånaderna
+    är arten helt frånvarande från nordiska områdena. Nattskärran är således en typisk
+    sommargäst i Skandinavien och Nordeuropa.
+  en: '# European Nightjar in Northern Europe
+
+
+    The European Nightjar is a summer breeding visitor to Scandinavia and Northern
+    Europe, arriving in late May and June after wintering in sub-Saharan Africa. This
+    strictly migratory species departs in August and September to return to its African
+    wintering grounds, making it a long-distance trans-Saharan migrant. The species
+    is entirely absent during winter months. Males arrive slightly before females,
+    and both sexes depend on warm nights for their insectivorous feeding, making them
+    sensitive to cool weather patterns during their breeding season in northern regions.'
+image_refs:
+- role: hero
+  path: Q26717/hero.jpg
+  width: 2048
+  height: 1461
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/mourad-harzallah">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian nightjar (Caprimulgus
+    europaeus) in Algeria.jpg
+  commons_filename: Eurasian nightjar (Caprimulgus europaeus) in Algeria.jpg
+- role: secondary
+  path: Q26717/secondary-1.jpg
+  width: 1800
+  height: 1273
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/thomas--">Thomas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus europaeus by thomas--.jpg
+  commons_filename: Caprimulgus europaeus by thomas--.jpg
+- role: secondary
+  path: Q26717/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/mourad-harzallah">Mourad
+    Harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus europaeus by mourad-harzallah.jpg
+  commons_filename: Caprimulgus europaeus by mourad-harzallah.jpg
+review_status: approved
+review_notes: '2026-05-08: hero shows nattskärra vilande på sten i Algeriet (övervintringsområde) — kryptisk gråbrunmönstrad fjäderdräkt, rund platt hjässa, mörkt öga och korta ben. Diagnostiska fältkännetecken syns klart trots non-Nordic habitat. Etablerad SE-sommargäst på sandiga tallhedar och ljungmarker, här i samma plumage som ses dagtid längs grenar i Sverige.'
+generated_at: '2026-05-07T23:01:25.649964+00:00'
+sources:
+  wikipedia_sv_revision: '56541268'
+  wikipedia_en_revision: '1330090664'
+  claude_model: claude-haiku-4-5-20251001

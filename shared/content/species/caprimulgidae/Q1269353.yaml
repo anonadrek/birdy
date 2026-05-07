@@ -1,0 +1,81 @@
+id: Q1269353
+scientific_name: Caprimulgus nubicus
+taxonomy:
+  family: Caprimulgidae
+  family_sv: Nattskärror
+  genus: Caprimulgus
+  ioc_order: Caprimulgiformes
+names:
+  sv: Nubisk nattskärra
+  en: Nubian Nightjar
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Nubian Nightjar
+
+
+    The Nubian Nightjar is a member of the nightjar family, specialized for nocturnal
+    insect hunting. Like other nightjars, it possesses cryptic plumage and a wide
+    mouth adapted for catching flying insects in darkness. Its precise appearance
+    and distinctive calls reflect adaptations to its specific desert and salt marsh
+    habitats.
+
+
+    This species inhabits salt marshes across arid regions of northeast Africa and
+    the Arabian Peninsula. It is primarily nocturnal, becoming active at dusk when
+    it hunts for insects. As with most nightjars, it likely has a characteristic churring
+    or repetitive call used during breeding season, though detailed behavioral descriptions
+    are limited in general sources.
+
+
+    The Nubian Nightjar''s distribution is restricted to salt marsh and coastal environments
+    in hot, dry climates, where it exploits the abundance of nocturnal insects. Its
+    specialized habitat requirements and nocturnal habits make it relatively inconspicuous
+    despite its range, and it remains less documented than many other nightjar species.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only information about the Nubian Nightjar''s geographic
+    range in Africa and the Middle East, with no details regarding its occurrence,
+    migration patterns, or seasonal movements in Scandinavia or Northern Europe. This
+    species is not known to occur in these regions.'
+image_refs:
+- role: hero
+  path: Q1269353/hero.jpg
+  width: 1904
+  height: 2200
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Joseph_Wolf" class="extiw"
+    title="w:en:Joseph Wolf"><span title="German artist (1820-1899)">Joseph Wolf</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus nubicus tamaricis
+    1866.jpg
+  commons_filename: Caprimulgus nubicus tamaricis 1866.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:10:41.983085+00:00'
+sources:
+  wikipedia_sv_revision: '58594996'
+  wikipedia_en_revision: '1314920247'
+  claude_model: claude-haiku-4-5-20251001

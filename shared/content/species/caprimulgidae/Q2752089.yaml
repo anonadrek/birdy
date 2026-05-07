@@ -1,0 +1,81 @@
+id: Q2752089
+scientific_name: Caprimulgus mahrattensis
+taxonomy:
+  family: Caprimulgidae
+  family_sv: Nattskärror
+  genus: Caprimulgus
+  ioc_order: Caprimulgiformes
+names:
+  sv: Sindnattskärra
+  en: Sykes’s Nightjar
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sindnattskärra
+
+
+    Sindnattskärra är en asiatisk nattskärra som främst förekommer från sydvästra
+    Iran till nordvästra Indien. Det är en livskraftig art enligt IUCN:s bedömning.
+
+
+    Som andra nattskärror är sindnattskärran en nattaktiv insektätare som är väl anpassad
+    för sitt levnadssätt. Arten föredrar torra och halvöppna miljöer där den kan jaga
+    flygande insekter under skymningen och natten. Det är en diskret fågel som är
+    svår att iaktta under dagen, då den vilar på marken eller på grenar där dess kamouflerade
+    fjäderdräkt gör den nästan omöjlig att upptäcka.
+
+
+    Som många nattskärror har sindnattskärran ett karakteristiskt samtal som ofta
+    hörs under kvällen och natten. Arten är huvudsakligen stationär eller återvändande
+    besökare i sina utbredningsområden, beroende på säsong och lokala förhållanden.'
+  en: ''
+migration:
+  sv: 'sv: Migrationsdata saknas för denna art.
+
+
+    en: Migration data unavailable for this species.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q2752089/hero.jpg
+  width: 2048
+  height: 1366
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus mahrattensis 236702298.jpg
+  commons_filename: Caprimulgus mahrattensis 236702298.jpg
+- role: secondary
+  path: Q2752089/secondary-1.jpg
+  width: 1800
+  height: 1129
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Pkspks" title="User:Pkspks">Pkspks</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus mahrattensis.JPG
+  commons_filename: Caprimulgus mahrattensis.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:01:48.296443+00:00'
+sources:
+  wikipedia_sv_revision: '56773477'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

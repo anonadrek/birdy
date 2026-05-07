@@ -175,3 +175,17 @@ species:
   # Burhinidae outlier: well-known European species but enwiki intro = exactly SPARSE_WORD_THRESHOLD (20 words).
   Q184834:
     description_accept_missing: [en]  # Burhinus oedicnemus (Tjockfot / Eurasian Stone-curlew) — enwiki lead 20w (genuine stub despite well-known species)
+  # Caprimulgidae batch (2026-05-08): exotic nightjars with missing/sparse svwiki extracts.
+  Q1137192:
+    description_accept_missing: [sv]  # Caprimulgus ruficollis (Rödhalsad nattskärra / Red-necked Nightjar) — sydeuropeisk, ingen svwiki
+  Q1264019:
+    description_accept_missing: [sv]  # Caprimulgus eximius (Guldnattskärra / Golden Nightjar) — sahelisk, ingen svwiki
+    allow_missing_images: true  # Commons saknar foto över MIN_DIMENSION=2048
+  Q1265442:
+    description_accept_missing: [sv]  # Caprimulgus poliocephalus (Bergnattskärra / Montane Nightjar) — afrikansk, ingen svwiki
+  Q1269353:
+    description_accept_missing: [sv]  # Caprimulgus nubicus (Nubisk nattskärra / Nubian Nightjar) — afrikansk, ingen svwiki
+  Q1270252:
+    description_accept_missing: [sv]  # Caprimulgus inornatus (Sahelnattskärra / Plain Nightjar) — afrikansk, ingen svwiki
+  Q2752089:
+    description_accept_missing: [en]  # Caprimulgus mahrattensis (Sindnattskärra / Sykes's Nightjar) — asiatisk, enwiki lead för kort

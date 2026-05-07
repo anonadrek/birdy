@@ -1,0 +1,71 @@
+id: Q1264019
+scientific_name: Caprimulgus eximius
+taxonomy:
+  family: Caprimulgidae
+  family_sv: Nattskärror
+  genus: Caprimulgus
+  ioc_order: Caprimulgiformes
+names:
+  sv: Guldnattskärra
+  en: Golden Nightjar
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Golden Nightjar
+
+
+    The golden nightjar is a nightjar species found across the Sahel region of northern
+    Sub-Saharan Africa. Like other members of the Caprimulgidae family, it is a nocturnal
+    insectivore adapted for hunting flying insects in low light conditions.
+
+
+    This species shares the characteristic features of nightjars: a streamlined body,
+    large eyes, and a wide gape for capturing insects in flight. The plumage displays
+    golden and buff tones that provide effective camouflage in its arid habitat. During
+    the day, it rests on the ground or among branches, where its cryptic coloration
+    makes it difficult to spot.
+
+
+    The golden nightjar is primarily crepuscular and nocturnal, becoming active at
+    dusk to hunt aerial insects. Like other nightjars, it produces distinctive vocalizations,
+    though specific details of its call are not widely documented. It inhabits open
+    and semi-open landscapes typical of the Sahel, including scrubland and sparse
+    woodland areas. Its preference for arid regions distinguishes it from many other
+    nightjar species found in more heavily vegetated habitats.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Golden Nightjar is found in the Sahel region of northern Sub-Saharan Africa
+    and does not occur in Scandinavia or Northern Europe. Therefore, no information
+    about its occurrence, migration patterns, or seasonal movements in this region
+    can be provided.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:02:14.158008+00:00'
+sources:
+  wikipedia_sv_revision: '56773482'
+  wikipedia_en_revision: '1335984004'
+  claude_model: claude-haiku-4-5-20251001

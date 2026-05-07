@@ -1,0 +1,103 @@
+id: Q1137192
+scientific_name: Caprimulgus ruficollis
+taxonomy:
+  family: Caprimulgidae
+  family_sv: Nattskärror
+  genus: Caprimulgus
+  ioc_order: Caprimulgiformes
+names:
+  sv: Rödhalsad nattskärra
+  en: Red-necked Nightjar
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red-necked Nightjar
+
+
+    The red-necked nightjar is Europe''s largest nightjar species, distinguished by
+    its rufous-tinged neck and head markings that give it its common name. Like other
+    nightjars, it possesses cryptic plumage with mottled grey-brown tones that provide
+    excellent camouflage against bark and leaf litter. The species has the characteristic
+    broad mouth and flattened head typical of its family, adapted for catching insects
+    in flight during twilight hours.
+
+
+    This nocturnal hunter is primarily crepuscular and nocturnal, remaining hidden
+    during daylight on the ground or perched lengthwise on branches. It feeds on flying
+    insects captured in aerial pursuits, using its wide gape to engulf prey. The bird''s
+    call is a distinctive churring sound, often delivered from perches at dusk and
+    throughout the night.
+
+
+    The red-necked nightjar breeds across Iberia and North Africa during the warmer
+    months, favouring dry, rocky terrain and woodland edges. It is a long-distance
+    migrant, wintering in the savannas and open woodlands of tropical West Africa
+    before returning to breeding grounds in spring. It is rarely seen by day due to
+    its cryptic habits and nocturnal nature, though its presence can be detected by
+    its characteristic calls during breeding season.'
+migration:
+  sv: ''
+  en: '# Red-necked Nightjar - Scandinavian Occurrence
+
+
+    The red-necked nightjar is extremely rare in Scandinavia and Northern Europe.
+    This species breeds in Iberia and North Africa, with populations wintering in
+    tropical West Africa. Given its southern breeding range and African wintering
+    grounds, it does not naturally occur in Scandinavian territory during any season.
+    Any records in Scandinavia would represent exceptional vagrants far outside the
+    species'' normal range. The bird''s migratory pathway between Iberian breeding
+    grounds and West African wintering areas lies well south of Northern Europe.'
+image_refs:
+- role: hero
+  path: Q1137192/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 3.0
+  author: Samuel Lopez Ligero
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus ruficollis.jpg
+  commons_filename: Caprimulgus ruficollis.jpg
+- role: secondary
+  path: Q1137192/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Bagguh&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Bagguh (page does not exist)">Andre Heuzer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus ruficollis, kuikens.JPG
+  commons_filename: Caprimulgus ruficollis, kuikens.JPG
+- role: secondary
+  path: Q1137192/secondary-2.jpg
+  width: 1800
+  height: 1170
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Oliven%C3%A7a&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Olivença (page does not exist)">Olivença</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus ruficollis -Portugal-8.jpg
+  commons_filename: Caprimulgus ruficollis -Portugal-8.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:01:49.426630+00:00'
+sources:
+  wikipedia_sv_revision: '55717805'
+  wikipedia_en_revision: '1325866560'
+  claude_model: claude-haiku-4-5-20251001

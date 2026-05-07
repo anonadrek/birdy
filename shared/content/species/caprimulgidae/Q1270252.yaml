@@ -1,0 +1,98 @@
+id: Q1270252
+scientific_name: Caprimulgus inornatus
+taxonomy:
+  family: Caprimulgidae
+  family_sv: Nattskärror
+  genus: Caprimulgus
+  ioc_order: Caprimulgiformes
+names:
+  sv: Sahelnattskärra
+  en: Plain Nightjar
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Plain Nightjar
+
+
+    The plain nightjar is a cryptically plumaged nocturnal bird found across the Sahel,
+    Sudan, the Horn of Africa, and southwestern Arabian Peninsula, with populations
+    migrating to lower latitudes during certain seasons. It exhibits grey-brown, brown,
+    and rufous color morphs, providing excellent camouflage against its preferred
+    habitat. Sexual dimorphism is evident: males display distinctive white spots on
+    the primary feathers and conspicuous white corners on the tail, while lacking
+    white on the throat. Females present a subtler appearance with buffy-brown wing
+    spots and absence of white tail markings.
+
+
+    Like other nightjars, this species is primarily nocturnal and aerial, hunting
+    insects in flight during darkness. Its preferred habitats include open and semi-open
+    terrain with sparse vegetation. The bird''s behavior and vocalizations are typical
+    of nightjars, though specific call descriptions require additional sources for
+    detailed information.
+
+
+    For birders seeking this species, knowledge of seasonal movements and habitat
+    preferences is essential. The plain nightjar''s cryptic coloration means visual
+    identification relies heavily on distinguishing the white markings in males and
+    the overall plumage patterns, making flashlight work valuable during nocturnal
+    searches in appropriate habitats.'
+migration:
+  sv: ''
+  en: '# Plain Nightjar in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Plain Nightjar is an African species with a breeding range confined to the
+    southern Sahel, southern Sudan, the Horn of Africa, and southwestern Arabian Peninsula.
+    Its migratory movements are limited to lower latitudes within Africa, including
+    central Congo and northern Tanzania. This species does not occur in Scandinavia
+    or Northern Europe during any season and therefore has no relevance to northern
+    European avifauna or seasonal occurrence patterns.'
+image_refs:
+- role: hero
+  path: Q1270252/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1676835">anasacuta</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus inornatus 128478334.jpg
+  commons_filename: Caprimulgus inornatus 128478334.jpg
+- role: secondary
+  path: Q1270252/secondary-1.jpg
+  width: 1800
+  height: 1069
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1476120">Jan
+    Ebr &amp; Ivana Ebrová</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus inornatus - Jan
+    Ebr and Ivana Ebrová - 177267110.jpeg
+  commons_filename: Caprimulgus inornatus - Jan Ebr and Ivana Ebrová - 177267110.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:00:49.065483+00:00'
+sources:
+  wikipedia_sv_revision: '56455220'
+  wikipedia_en_revision: '1340008402'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,91 @@
+id: Q1265442
+scientific_name: Caprimulgus poliocephalus
+taxonomy:
+  family: Caprimulgidae
+  family_sv: Nattskärror
+  genus: Caprimulgus
+  ioc_order: Caprimulgiformes
+names:
+  sv: Bergnattskärra
+  en: Montane Nightjar
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Montane Nightjar
+
+
+    The montane nightjar is a small nightjar inhabiting upland regions of Central
+    and Eastern Africa, where it is locally common. Like other nightjars, it is a
+    nocturnal insectivore with cryptic plumage that blends well with rocky and wooded
+    mountain habitats, making it difficult to spot during daylight hours.
+
+
+    This species is primarily active at dawn and dusk, when it hunts flying insects
+    in the characteristic nightjar manner—catching prey mid-flight with its wide gaping
+    mouth. It is most easily detected by its distinctive call, a repetitive churring
+    or churr-churr sound that males produce from elevated perches at night during
+    the breeding season.
+
+
+    The montane nightjar typically inhabits mountainous terrain with suitable rocky
+    outcrops and scattered vegetation, avoiding both dense forests and open plains.
+    It prefers altitudes where montane woodland meets more open country, making it
+    a characteristic bird of highland regions across its African range.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides information only about the Montane Nightjar''s distribution
+    in Central and Eastern Africa and its habitat preference for upland regions, with
+    no details regarding its occurrence in Scandinavia, Northern Europe, or any migration
+    patterns throughout the year. This species is not known to occur in Scandinavia
+    or Northern Europe.'
+image_refs:
+- role: hero
+  path: Q1265442/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/7580">Carrie
+    Seltzer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus poliocephalus in
+    Tanzania 3089114.jpg
+  commons_filename: Caprimulgus poliocephalus in Tanzania 3089114.jpg
+- role: secondary
+  path: Q1265442/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/97441">Ryan
+    van Huyssteen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus poliocephalus in
+    Tanzania 379982756.jpg
+  commons_filename: Caprimulgus poliocephalus in Tanzania 379982756.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:02:38.045868+00:00'
+sources:
+  wikipedia_sv_revision: '56455218'
+  wikipedia_en_revision: '1315095062'
+  claude_model: claude-haiku-4-5-20251001
