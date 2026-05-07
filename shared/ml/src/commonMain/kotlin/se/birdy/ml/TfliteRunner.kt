@@ -11,5 +11,11 @@ interface TfliteRunner {
         output: FloatArray,
     )
 
+    /**
+     * Releases native resources. Caller must guarantee no [run] call is in
+     * flight when [close] fires — TFLite [Interpreter.close] while [run]
+     * executes is undefined behavior. [TfLiteBirdClassifier] coordinates this
+     * via its mutex; direct callers are responsible.
+     */
     fun close()
 }

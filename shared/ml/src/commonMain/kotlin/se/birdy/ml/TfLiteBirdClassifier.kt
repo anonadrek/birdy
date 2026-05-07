@@ -3,13 +3,18 @@ package se.birdy.ml
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
+/**
+ * Drives the AIY Birds V1 inference pipeline: preprocess → runner → top-K with
+ * threshold + Q-ID mapping. Mutex-serializes calls to [runner] so a single
+ * instance can be shared across concurrent classify() callers.
+ */
 class TfLiteBirdClassifier(
     private val info: BirdClassifierModelInfo,
     private val runner: TfliteRunner,
     private val preprocess: (ImageInput, BirdClassifierModelInfo) -> FloatArray,
     private val mapper: AiyLabelMapper,
-    private val threshold: Float = 0.35f,
-    private val topK: Int = 3,
+    private val threshold: Float = DEFAULT_THRESHOLD,
+    private val topK: Int = DEFAULT_TOP_K,
 ) : BirdClassifier {
     private val mutex = Mutex()
 
@@ -47,5 +52,10 @@ class TfLiteBirdClassifier(
             if (out.size == topK) break
         }
         return out
+    }
+
+    companion object {
+        const val DEFAULT_THRESHOLD: Float = 0.35f
+        const val DEFAULT_TOP_K: Int = 3
     }
 }
