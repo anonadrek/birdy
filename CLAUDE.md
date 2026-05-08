@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 207/700, nästa familj = charadriidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). **Plan 4b (Real TFLite) 🔄 IN PROGRESS — 14/17 tasks done (HEAD `df9f071`); BLOCKED på Tasks 15 (real photo corpus) + 17 (device verify) som kräver fysisk åtkomst. Detaljer + plan-doc-error-katalog i auto-memory `project_plan_4b_status.md`.** Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). Plan 6 (Polish + Play Store-release) väntar på Plan 4b.
+**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 207/700, nästa familj = charadriidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). **Plan 4b (Real TFLite) 🔄 IN PROGRESS — 15/17 tasks done (HEAD `94f0743`); Task 15 stängd via Wikimedia hero-photos från content-pipeline (top-1=52%, top-3=72%, spec ≥70% MET). Endast Task 17 (device verify + tag) återstår — BLOCKED på fysisk åtkomst till S23 Ultra. Detaljer + plan-doc-error-katalog i auto-memory `project_plan_4b_status.md`.** Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). Plan 6 (Polish + Play Store-release) väntar på Plan 4b.
 
 ## Var hittar du saker
 
@@ -29,7 +29,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 207/700 (certhiidae) |
 | 3 | Encyclopedia (browse + species profile) | ✅ `v0.3.0-encyclopedia` |
 | 4a | ML & Camera UI (FakeClassifier + UI + CameraX 3 fps) | ✅ `v0.4.0a-camera-ui` |
-| 4b | Real TFLite-modell (AIY Birds V1) | 🔄 14/17 (HEAD `df9f071`); BLOCKED på Tasks 15 + 17 (fysisk åtkomst) |
+| 4b | Real TFLite-modell (AIY Birds V1) | 🔄 15/17 (HEAD `94f0743`); BLOCKED på Task 17 (device verify) |
 | 5a | Diary (browse + detail + save flow) | ✅ `v0.5.0a-diary` |
 | 5b | Gamification (badges, streaks, unlock-queue) | ✅ `v0.5.0b-gamification` |
 | 6 | Polish + Play Store-release | |
