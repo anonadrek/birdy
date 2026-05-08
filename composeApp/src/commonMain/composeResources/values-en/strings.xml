@@ -250,6 +250,9 @@
     <string name="listen_breadcrumb">LISTEN</string>
     <string name="listen_headline">Three ways to *catch.*</string>
     <string name="listen_sub">A stamp waits in each.</string>
+    <string name="listen_journal_label">CATCH · NO 0</string>
+    <string name="listen_journal_headline">Three ways to *catch.*</string>
+    <string name="listen_journal_sub">A stamp waits in each.</string>
     <string name="listen_card_audio_title">Listen</string>
     <string name="listen_card_audio_body">Identify by call — coming soon.</string>
     <string name="listen_card_camera_title">Look</string>
