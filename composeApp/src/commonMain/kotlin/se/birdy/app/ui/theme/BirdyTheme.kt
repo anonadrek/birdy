@@ -22,7 +22,7 @@ private val BirdyLightColors =
 fun BirdyTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = BirdyLightColors,
-        typography = BirdyTypography,
+        typography = birdyTypography(),
         content = content,
     )
 }
