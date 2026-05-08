@@ -66,6 +66,61 @@ class StampNumberMigrationTest {
         driver.close()
     }
 
+    @Test
+    fun `insert after migration continues sequence at MAX+1`() {
+        val driver = JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY)
+        driver.execute(null, V1_SCHEMA, 0)
+        // Seed 3 V1 rows
+        listOf("a" to 1000L, "b" to 2000L, "c" to 3000L).forEach { (id, captured) ->
+            driver.execute(
+                identifier = null,
+                sql =
+                    """
+                    INSERT INTO observation (id, species_id, captured_at_ms, saved_at_ms,
+                        photo_path, note, confidence)
+                    VALUES (?, 'Q1', ?, ?, '/tmp/x.jpg', '', 0.9)
+                    """.trimIndent(),
+                parameters = 3,
+            ) {
+                bindString(0, id)
+                bindLong(1, captured)
+                bindLong(2, captured)
+            }
+        }
+        BirdyData.Schema.migrate(driver, oldVersion = 1, newVersion = 2)
+
+        // Now use the SQLDelight-generated insert via the BirdyData wrapper
+        val db = BirdyData(driver)
+        db.observationQueries.insert(
+            id = "d",
+            species_id = "Q1",
+            captured_at_ms = 4000L,
+            saved_at_ms = 4000L,
+            photo_path = "/tmp/d.jpg",
+            note = "",
+            confidence = 0.95,
+            latitude = null,
+            longitude = null,
+            location_label = null,
+        )
+
+        val newStamp =
+            driver
+                .executeQuery(
+                    identifier = null,
+                    sql = "SELECT stamp_number FROM observation WHERE id = 'd'",
+                    mapper = { c ->
+                        c.next()
+                        app.cash.sqldelight.db.QueryResult
+                            .Value(c.getLong(0)!!)
+                    },
+                    parameters = 0,
+                ).value
+
+        assertEquals(4L, newStamp)
+        driver.close()
+    }
+
     private companion object {
         private const val V1_SCHEMA = """
             CREATE TABLE observation (

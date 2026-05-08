@@ -141,7 +141,7 @@ class SqlDelightObservationRepositoryTest {
         }
 
     @Test
-    fun delete_then_insert_reuses_stamp_number_sequence_no_gap_fill() =
+    fun delete_then_insert_does_not_recycle_stamp_number() =
         runTest {
             val repo = newRepo()
             repo.insert(sample("a", 1_000L)) // #1

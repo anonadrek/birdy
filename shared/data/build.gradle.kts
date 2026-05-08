@@ -5,8 +5,7 @@ plugins {
 
 // Exclude SQLDelight generated sources from ktlint — they use 2-space indent
 // and won't pass our style rules.
-// Exclude verifyMigration and generateSchema from check — SQLite native library
-// conflict in Gradle worker process on Windows (pre-existing, same as :shared:content).
+// Disable verifyMigration + generateSchema on Windows — native SQLite worker process crashes (same workaround as :shared:content). Migration correctness is verified by StampNumberMigrationTest at runtime.
 afterEvaluate {
     extensions.configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
         filter {
@@ -56,6 +55,7 @@ sqldelight {
         create("BirdyData") {
             packageName.set("se.birdy.data.db")
             srcDirs.setFrom("src/commonMain/sqldelight")
+            // Schema dir is committed but generation is disabled locally on Windows; CI/Linux populates it.
             schemaOutputDirectory.set(file("src/commonMain/sqldelight/databases"))
         }
     }

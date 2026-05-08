@@ -12,4 +12,4 @@ SET stamp_number = 1 + (
        OR (o2.captured_at_ms = observation.captured_at_ms AND o2.id < observation.id)
 );
 
-CREATE INDEX observation_stamp_number_idx ON observation(stamp_number DESC);
+CREATE INDEX IF NOT EXISTS observation_stamp_number_idx ON observation(stamp_number DESC);
