@@ -18,8 +18,14 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.LibraryBooks
+import androidx.compose.material.icons.filled.Hearing
+import androidx.compose.material.icons.filled.Stars
+import androidx.compose.material.icons.outlined.CollectionsBookmark
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -34,6 +40,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -209,18 +216,22 @@ private fun Page2Overview() {
         )
         Spacer(Modifier.height(28.dp))
         FeatureRow(
+            icon = Icons.Filled.Hearing,
             name = stringResource(Res.string.onboarding_p2_listen_name),
             description = stringResource(Res.string.onboarding_p2_listen_desc),
         )
         FeatureRow(
+            icon = Icons.AutoMirrored.Filled.LibraryBooks,
             name = stringResource(Res.string.onboarding_p2_archive_name),
             description = stringResource(Res.string.onboarding_p2_archive_desc),
         )
         FeatureRow(
+            icon = Icons.Outlined.CollectionsBookmark,
             name = stringResource(Res.string.onboarding_p2_lifelist_name),
             description = stringResource(Res.string.onboarding_p2_lifelist_desc),
         )
         FeatureRow(
+            icon = Icons.Filled.Stars,
             name = stringResource(Res.string.onboarding_p2_badges_name),
             description = stringResource(Res.string.onboarding_p2_badges_desc),
         )
@@ -229,6 +240,7 @@ private fun Page2Overview() {
 
 @Composable
 private fun FeatureRow(
+    icon: ImageVector,
     name: String,
     description: String,
 ) {
@@ -242,7 +254,15 @@ private fun FeatureRow(
                     .size(40.dp)
                     .clip(RoundedCornerShape(10.dp))
                     .background(AccentCopper.copy(alpha = 0.18f)),
-        )
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = AccentCopperLight,
+                modifier = Modifier.size(22.dp),
+            )
+        }
         Spacer(Modifier.width(14.dp))
         Column {
             Text(
