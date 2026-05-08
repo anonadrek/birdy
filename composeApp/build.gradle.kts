@@ -59,8 +59,13 @@ kotlin {
 
 afterEvaluate {
     tasks
-        .matching { it.name.startsWith("assemble") || (it.name.startsWith("merge") && it.name.contains("Asset")) }
-        .configureEach {
+        .matching {
+            it.name.startsWith("assemble") ||
+                (it.name.startsWith("merge") && it.name.contains("Asset")) ||
+                it.name.startsWith("copyNonXmlValueResources") ||
+                it.name.startsWith("convertXmlValueResources") ||
+                it.name.startsWith("prepareComposeResources")
+        }.configureEach {
             dependsOn(":shared:content:buildSpeciesDb")
             dependsOn(":shared:content:validateBadgesYaml")
             dependsOn(":shared:content:validateBadgeStrings")
