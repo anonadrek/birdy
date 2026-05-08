@@ -1,0 +1,36 @@
+{
+    "modelVersion": "aiy_birds_v1",
+    "device": "samsung SM-S918B",
+    "results": [
+        {
+            "photoLabel": "talgoxe.jpg",
+            "n": 100,
+            "p50": 14,
+            "p90": 14,
+            "p95": 14,
+            "p99": 15,
+            "mean": 13.67,
+            "timestampMillis": 1778199132426
+        },
+        {
+            "photoLabel": "koltrast.jpg",
+            "n": 100,
+            "p50": 14,
+            "p90": 14,
+            "p95": 14,
+            "p99": 16,
+            "mean": 13.64,
+            "timestampMillis": 1778199133868
+        },
+        {
+            "photoLabel": "blames.jpg",
+            "n": 100,
+            "p50": 14,
+            "p90": 16,
+            "p95": 18,
+            "p99": 24,
+            "mean": 14.16,
+            "timestampMillis": 1778199135363
+        }
+    ]
+}
