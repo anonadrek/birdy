@@ -23,6 +23,7 @@ import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.ImagePreprocessor
 import se.birdy.ml.ModelArtifactProvider
 import se.birdy.ml.TfLiteBirdClassifier
+import se.birdy.datastore.UserPreferencesStore
 import se.birdy.ml.camera.AndroidCameraSource
 import se.birdy.ml.loadAiyLabelMapper
 import se.birdy.ml.loadModelMetadata
@@ -42,6 +43,7 @@ class MainActivity : ComponentActivity() {
         // + BadgesViewModel constructors). Revisit post-v1.0 if cold-start budget tightens.
         val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         val badgeVersionStore = SharedPrefsBadgeVersionStore(applicationContext)
+        val userPreferences = UserPreferencesStore(applicationContext).preferences()
         // BirdClassifierFactory.create() is suspend — we run it blocking here for v1 simplicity,
         // following the same precedent as BadgeCatalogLoader above. TFLite init + 3.5 MB model
         // read can take longer than the badge catalog (~10ms), but avoids a loading screen and
@@ -61,6 +63,7 @@ class MainActivity : ComponentActivity() {
                 badgeRepository = badgeRepo,
                 badgeCatalog = badgeCatalog,
                 badgeVersionStore = badgeVersionStore,
+                userPreferences = userPreferences,
                 defaultLocale = Locale.SV,
                 modelVersion = modelVersion,
                 benchmarkScreen =

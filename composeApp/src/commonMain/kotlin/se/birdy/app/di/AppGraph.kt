@@ -22,6 +22,7 @@ import se.birdy.content.SpeciesRepository
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.observation.ObservationRepository
+import se.birdy.datastore.UserPreferences
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.CameraSource
 import se.birdy.ml.ClassifierMode
@@ -36,6 +37,7 @@ class AppGraph(
     val badgeRepository: BadgeRepository,
     val badgeCatalog: BadgeCatalog,
     val badgeVersionStore: BadgeVersionStore,
+    val userPreferences: UserPreferences,
     val clock: Clock = Clock.System,
     val timeZone: TimeZone = TimeZone.currentSystemDefault(),
     val defaultLocale: Locale = Locale.SV,

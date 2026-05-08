@@ -40,6 +40,7 @@ kotlin {
             implementation(libs.kaml)
             implementation(compose.materialIconsExtended)
             implementation(libs.kotlinx.datetime)
+            implementation(project(":shared:datastore"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

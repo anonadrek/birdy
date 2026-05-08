@@ -14,6 +14,7 @@ kotlin {
             implementation(project(":shared:domain"))
             implementation(project(":shared:data"))
             implementation(project(":shared:ml"))
+            implementation(project(":shared:datastore"))
             implementation(libs.kotlinx.datetime)
             implementation("androidx.activity:activity-compose:1.9.3")
             // TFLite needed so Kotlin compiler can resolve Interpreter.Options when calling
