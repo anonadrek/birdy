@@ -43,18 +43,23 @@ class ArchiveViewModel(
         prefs.archiveSort
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), ArchiveSort.ALPHA)
 
-    private val stampedSpeciesIds: StateFlow<Set<String>> =
+    private val stampNumbersBySpecies: StateFlow<Map<String, Int>> =
         observationRepo
             .observeAll()
-            .map { it.map { o -> o.speciesId }.toSet() }
-            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), emptySet())
+            .map { observations ->
+                observations
+                    .filter { it.stampNumber > 0 }
+                    .groupBy { it.speciesId }
+                    .mapValues { (_, obs) -> obs.minOf { it.stampNumber } }
+            }
+            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), emptyMap())
 
     val uiState: StateFlow<ArchiveUiState> =
         combine(
             _query.debounce(DEBOUNCE_MS).distinctUntilChanged(),
             chip,
             sort,
-            stampedSpeciesIds,
+            stampNumbersBySpecies,
         ) { q, c, s, stamped -> Quad(q, c, s, stamped) }
             .flatMapLatest { (q, c, s, stamped) ->
                 repo.search(q, locale, SpeciesFilter()).map { list -> toUiState(list, c, s, stamped) }
@@ -85,7 +90,7 @@ class ArchiveViewModel(
         list: List<SpeciesSummary>,
         c: ArchiveChip,
         s: ArchiveSort,
-        stamped: Set<String>,
+        stamped: Map<String, Int>,
     ): ArchiveUiState {
         val filtered =
             if (c == ArchiveChip.ALL) {
@@ -101,7 +106,15 @@ class ArchiveViewModel(
                 ArchiveSort.FAMILY -> filtered.sortedWith(compareBy({ it.family }, { it.name.lowercase() }))
                 ArchiveSort.RECENT -> filtered
             }
-        val rows = sorted.map { ArchiveRow(summary = it, isStamped = it.id.raw in stamped) }
+        val rows =
+            sorted.map {
+                val stampNumber = stamped[it.id.raw]
+                ArchiveRow(
+                    summary = it,
+                    isStamped = stampNumber != null,
+                    stampNumber = stampNumber,
+                )
+            }
         return ArchiveUiState.Loaded(rows = rows, sort = s)
     }
 

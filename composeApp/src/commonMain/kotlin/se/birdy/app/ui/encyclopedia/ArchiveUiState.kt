@@ -6,6 +6,7 @@ import se.birdy.datastore.ArchiveSort
 data class ArchiveRow(
     val summary: SpeciesSummary,
     val isStamped: Boolean,
+    val stampNumber: Int? = null,
 )
 
 sealed interface ArchiveUiState {
