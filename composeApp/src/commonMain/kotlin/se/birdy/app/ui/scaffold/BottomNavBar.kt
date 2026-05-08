@@ -46,7 +46,7 @@ private val tabs =
                     AppRoute.ClassificationResult::class,
                 ),
         ),
-        TabSpec(AppRoute.Encyclopedia, Res.string.tab_archive, Icons.AutoMirrored.Filled.LibraryBooks),
+        TabSpec(AppRoute.Archive, Res.string.tab_archive, Icons.AutoMirrored.Filled.LibraryBooks),
         TabSpec(AppRoute.Diary, Res.string.tab_lifelist, Icons.Outlined.CollectionsBookmark),
         TabSpec(AppRoute.Badges, Res.string.tab_badges, Icons.Filled.Stars),
     )

@@ -10,7 +10,7 @@ import se.birdy.app.photo.PhotoStorage
 import se.birdy.app.ui.badges.BadgesViewModel
 import se.birdy.app.ui.diary.DiaryViewModel
 import se.birdy.app.ui.diary.ObservationDetailViewModel
-import se.birdy.app.ui.encyclopedia.EncyclopediaViewModel
+import se.birdy.app.ui.encyclopedia.ArchiveViewModel
 import se.birdy.app.ui.listen.ListenLauncherViewModel
 import se.birdy.app.ui.onboarding.OnboardingViewModel
 import se.birdy.app.ui.photoanalyze.PhotoAnalyzeViewModel
@@ -77,7 +77,7 @@ class AppGraph(
             speciesByQid = { repository.allByQid() },
         )
 
-    fun encyclopediaViewModel(): EncyclopediaViewModel = EncyclopediaViewModel(repository, defaultLocale)
+    fun archiveViewModel(): ArchiveViewModel = ArchiveViewModel(repository, observationRepository, userPreferences, defaultLocale)
 
     fun speciesProfileViewModel(speciesId: SpeciesId): SpeciesProfileViewModel =
         SpeciesProfileViewModel(repository, speciesId, defaultLocale)

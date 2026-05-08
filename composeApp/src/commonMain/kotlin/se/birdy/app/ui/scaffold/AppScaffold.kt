@@ -14,7 +14,7 @@ import kotlinx.datetime.Clock
 import se.birdy.app.di.AppGraph
 import se.birdy.app.ui.diary.DiaryScreen
 import se.birdy.app.ui.diary.ObservationDetailScreen
-import se.birdy.app.ui.encyclopedia.EncyclopediaScreen
+import se.birdy.app.ui.encyclopedia.ArchiveScreen
 import se.birdy.app.ui.listen.ListenLauncherScreen
 import se.birdy.app.ui.profile.SpeciesProfileScreen
 import se.birdy.app.ui.result.ClassificationResultScreen
@@ -78,10 +78,10 @@ fun AppScaffold(graph: AppGraph) {
                     zone = graph.timeZone,
                 )
             }
-            navigation<AppRoute.Encyclopedia>(startDestination = AppRoute.EncyclopediaList) {
-                composable<AppRoute.EncyclopediaList> {
-                    EncyclopediaScreen(
-                        viewModel = remember(graph) { graph.encyclopediaViewModel() },
+            navigation<AppRoute.Archive>(startDestination = AppRoute.ArchiveList) {
+                composable<AppRoute.ArchiveList> {
+                    ArchiveScreen(
+                        viewModel = remember(graph) { graph.archiveViewModel() },
                         onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
                         showDebugMenu = graph.benchmarkScreen != null,
                         onDebugBenchmarkClick = { navController.navigate(AppRoute.DebugBenchmark) },

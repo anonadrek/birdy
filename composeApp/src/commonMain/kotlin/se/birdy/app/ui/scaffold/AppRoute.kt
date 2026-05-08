@@ -16,9 +16,9 @@ sealed interface AppRoute {
         val capturedAtMs: Long,
     ) : AppRoute
 
-    @Serializable data object Encyclopedia : AppRoute
+    @Serializable data object Archive : AppRoute
 
-    @Serializable data object EncyclopediaList : AppRoute
+    @Serializable data object ArchiveList : AppRoute
 
     @Serializable data class SpeciesProfile(
         val speciesId: String,

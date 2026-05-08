@@ -38,6 +38,7 @@ private class AndroidUserPreferences(
         val HAS_SEEN_ONBOARDING = booleanPreferencesKey("has_seen_onboarding")
         val APP_LANGUAGE = stringPreferencesKey("app_language")
         val LIFELIST_STAT3 = stringPreferencesKey("lifelist_stat3_choice")
+        val ARCHIVE_CHIP = stringPreferencesKey("archive_chip")
         val ARCHIVE_SORT = stringPreferencesKey("archive_sort")
         val LIFELIST_SORT = stringPreferencesKey("lifelist_sort")
     }
@@ -54,6 +55,7 @@ private class AndroidUserPreferences(
             LifelistStat3Choice.entries.firstOrNull { it.name == prefs[Keys.LIFELIST_STAT3] }
                 ?: LifelistStat3Choice.STREAK
         }
+    override val archiveChip: Flow<String> = safeData.map { it[Keys.ARCHIVE_CHIP] ?: "ALL" }
     override val archiveSort: Flow<ArchiveSort> =
         safeData.map { prefs ->
             ArchiveSort.entries.firstOrNull { it.name == prefs[Keys.ARCHIVE_SORT] } ?: ArchiveSort.ALPHA
@@ -77,6 +79,10 @@ private class AndroidUserPreferences(
 
     override suspend fun setLifelistStat3(value: LifelistStat3Choice) {
         store.edit { it[Keys.LIFELIST_STAT3] = value.name }
+    }
+
+    override suspend fun setArchiveChip(value: String) {
+        store.edit { it[Keys.ARCHIVE_CHIP] = value }
     }
 
     override suspend fun setArchiveSort(value: ArchiveSort) {

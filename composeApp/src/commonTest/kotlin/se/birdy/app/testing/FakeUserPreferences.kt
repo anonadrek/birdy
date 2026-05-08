@@ -1,15 +1,15 @@
-package se.birdy.datastore
+package se.birdy.app.testing
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import se.birdy.datastore.AppLanguage
+import se.birdy.datastore.ArchiveSort
+import se.birdy.datastore.LifelistSort
+import se.birdy.datastore.LifelistStat3Choice
+import se.birdy.datastore.UserPreferences
 
-/**
- * In-memory impl för tester. Ligger i commonMain så den är synlig från
- * composeApp:commonTest (KMP-regel: commonTest ser bara commonMain-symboler
- * från dependencies, inte jvmMain).
- */
-class InMemoryUserPreferences : UserPreferences {
+class FakeUserPreferences : UserPreferences {
     private val _userName = MutableStateFlow("")
     private val _hasSeenOnboarding = MutableStateFlow(false)
     private val _appLanguage = MutableStateFlow(AppLanguage.SYSTEM)
@@ -17,6 +17,13 @@ class InMemoryUserPreferences : UserPreferences {
     private val _archiveChip = MutableStateFlow("ALL")
     private val _archiveSort = MutableStateFlow(ArchiveSort.ALPHA)
     private val _lifelistSort = MutableStateFlow(LifelistSort.RECENT)
+
+    val archiveChipWrites = mutableListOf<String>()
+    var archiveSortValue: ArchiveSort
+        get() = _archiveSort.value
+        set(value) {
+            _archiveSort.value = value
+        }
 
     override val userName: Flow<String> = _userName.asStateFlow()
     override val hasSeenOnboarding: Flow<Boolean> = _hasSeenOnboarding.asStateFlow()
@@ -43,6 +50,7 @@ class InMemoryUserPreferences : UserPreferences {
     }
 
     override suspend fun setArchiveChip(value: String) {
+        archiveChipWrites.add(value)
         _archiveChip.value = value
     }
 

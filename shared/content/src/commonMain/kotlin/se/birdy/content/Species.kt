@@ -40,4 +40,6 @@ data class SpeciesSummary(
     val scientificName: String,
     val abundance: Abundance,
     val heroImagePath: String?,
+    val iocOrder: String = "",
+    val family: String = "",
 )

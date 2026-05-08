@@ -20,6 +20,7 @@ interface UserPreferences {
     val hasSeenOnboarding: Flow<Boolean>
     val appLanguage: Flow<AppLanguage>
     val lifelistStat3: Flow<LifelistStat3Choice>
+    val archiveChip: Flow<String>
     val archiveSort: Flow<ArchiveSort>
     val lifelistSort: Flow<LifelistSort>
 
@@ -30,6 +31,8 @@ interface UserPreferences {
     suspend fun setAppLanguage(value: AppLanguage)
 
     suspend fun setLifelistStat3(value: LifelistStat3Choice)
+
+    suspend fun setArchiveChip(value: String)
 
     suspend fun setArchiveSort(value: ArchiveSort)
 

@@ -128,6 +128,10 @@ class SqlDelightSpeciesRepository(
                                 return@mapNotNull null
                             }
                         }
+                        val taxonomy =
+                            db.speciesTaxonomyQueries
+                                .selectBySpecies(sp.id)
+                                .executeAsOneOrNull()
                         SpeciesSummary(
                             id = SpeciesId(sp.id),
                             name = name.name,
@@ -139,6 +143,8 @@ class SqlDelightSpeciesRepository(
                                     .executeAsList()
                                     .firstOrNull { it.role == "hero" }
                                     ?.path,
+                            iocOrder = taxonomy?.ioc_order ?: "",
+                            family = taxonomy?.family ?: "",
                         )
                     }
             }
@@ -269,12 +275,15 @@ class SqlDelightSpeciesRepository(
                 .executeAsList()
                 .firstOrNull { it.role == "hero" }
                 ?.path
+        val taxonomy = db.speciesTaxonomyQueries.selectBySpecies(speciesId).executeAsOneOrNull()
         return SpeciesSummary(
             id = SpeciesId(sp.id),
             name = name,
             scientificName = sp.scientific_name,
             abundance = Abundance.fromCode(sp.abundance) ?: Abundance.OVANLIG,
             heroImagePath = hero,
+            iocOrder = taxonomy?.ioc_order ?: "",
+            family = taxonomy?.family ?: "",
         )
     }
 
