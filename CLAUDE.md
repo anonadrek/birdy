@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 224/700, nästa familj = cettiidae (hoppades över alfabetiskt mellan certhiidae och charadriidae). Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). **Plan 6 (Polish + Play Store-release) är nästa.**
+**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 226/700, nästa familj = ciconiidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). **Plan 6 (Polish + Play Store-release) är PAUSAD — Plan 7 (redesign: stamp-metafor + ny IA + match-flow) kommer först. Spec utkast i `232f528`.**
 
 ## Var hittar du saker
 
@@ -26,13 +26,14 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 |---|---|---|
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ `v0.1.0-foundation` |
 | 2a | Content pipeline + walking skeleton (5 arter) | ✅ `v0.2.0a-pipeline` |
-| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 224/700 (charadriidae) |
+| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 226/700 (cettiidae) |
 | 3 | Encyclopedia (browse + species profile) | ✅ `v0.3.0-encyclopedia` |
 | 4a | ML & Camera UI (FakeClassifier + UI + CameraX 3 fps) | ✅ `v0.4.0a-camera-ui` |
 | 4b | Real TFLite-modell (AIY Birds V1) | ✅ `v0.4.0b-real-tflite` |
 | 5a | Diary (browse + detail + save flow) | ✅ `v0.5.0a-diary` |
 | 5b | Gamification (badges, streaks, unlock-queue) | ✅ `v0.5.0b-gamification` |
-| 6 | Polish + Play Store-release | |
+| 7 | Redesign (stamp-metafor + ny IA + match-flow) | 🔜 nästa upp; spec-utkast i commit `232f528` |
+| 6 | Polish + Play Store-release | ⏸ pausad — väntar på Plan 7 |
 
 Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew build` ska gå grönt.
 
