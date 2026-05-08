@@ -14,8 +14,9 @@ import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
+import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeCatalog
-import se.birdy.domain.badge.BadgeProgress
+import se.birdy.domain.badge.BadgeCategory
 import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.badge.BadgeUnlock
 import se.birdy.domain.badge.longestMonthlyStreak
@@ -74,14 +75,8 @@ class BadgesViewModel(
         val locked =
             catalog.badges
                 .filter { it.id !in unlockedIds }
-                .map { b ->
-                    BadgeProgress(
-                        badge = b,
-                        current = recalc.currentValue(b.rule, observations, speciesMap),
-                        target = b.rule.target,
-                        unlock = null,
-                    )
-                }.sortedWith(compareBy({ it.badge.category.order }, { it.badge.rule.target }))
+                .map { b -> LockedBadgeProgress(badge = b, state = computeLockedState(b, observations, speciesMap)) }
+                .sortedWith(compareBy({ it.badge.category.order }, { it.badge.rule.target }))
 
         val weeklyStreak = longestWeeklyStreak(capturedInstants, zone).takeIf { it >= 2 }
         val monthlyStreak = longestMonthlyStreak(capturedInstants, zone).takeIf { it >= 2 }
@@ -95,5 +90,19 @@ class BadgesViewModel(
             recentlyUnlocked = recentlyUnlocked,
             locked = locked,
         )
+    }
+
+    private fun computeLockedState(
+        badge: Badge,
+        observations: List<Observation>,
+        speciesByQid: Map<SpeciesId, Species>,
+    ): BadgeGridState {
+        if (badge.category == BadgeCategory.RARE) return BadgeGridState.Hidden
+        val current = recalc.currentValue(badge.rule, observations, speciesByQid)
+        return if (current > 0) {
+            BadgeGridState.InProgress(current = current, target = badge.rule.target)
+        } else {
+            BadgeGridState.Locked
+        }
     }
 }

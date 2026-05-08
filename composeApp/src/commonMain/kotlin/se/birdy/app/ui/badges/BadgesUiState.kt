@@ -2,7 +2,6 @@ package se.birdy.app.ui.badges
 
 import kotlinx.datetime.Instant
 import se.birdy.domain.badge.Badge
-import se.birdy.domain.badge.BadgeProgress
 
 sealed interface BadgesUiState {
     data object Loading : BadgesUiState
@@ -14,7 +13,7 @@ sealed interface BadgesUiState {
         val weeklyStreak: Int?, // null = dölj pillet
         val monthlyStreak: Int?,
         val recentlyUnlocked: List<BadgeWithUnlock>, // upp till 5 senaste, DESC
-        val locked: List<BadgeProgress>, // alla låsta, sorterade
+        val locked: List<LockedBadgeProgress>, // alla låsta, sorterade
     ) : BadgesUiState
 
     data class Error(
@@ -33,3 +32,19 @@ data class BadgeWithUnlock(
 )
 
 enum class BadgeErrorKind { CatalogParseFailed, LoadFailed }
+
+sealed interface BadgeGridState {
+    data object Locked : BadgeGridState
+
+    data object Hidden : BadgeGridState
+
+    data class InProgress(
+        val current: Int,
+        val target: Int,
+    ) : BadgeGridState
+}
+
+data class LockedBadgeProgress(
+    val badge: Badge,
+    val state: BadgeGridState,
+)

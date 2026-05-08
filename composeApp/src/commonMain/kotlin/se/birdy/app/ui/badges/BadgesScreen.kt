@@ -49,6 +49,7 @@ import se.birdy.app.ui.theme.LabelOnCreme
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.content.Locale
 import se.birdy.domain.badge.Badge
+import se.birdy.domain.badge.BadgeProgress
 import se.birdy.domain.badge.BadgeUnlock
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -187,9 +188,10 @@ private fun LoadedContent(
         items(
             items = state.locked,
             key = { it.badge.id },
-        ) { p ->
+        ) { lbp ->
+            val current = (lbp.state as? BadgeGridState.InProgress)?.current ?: 0
             BadgeCard(
-                progress = p,
+                progress = BadgeProgress(badge = lbp.badge, current = current, target = lbp.badge.rule.target, unlock = null),
                 contentDescription = lockedTooltip,
                 onClick = onLockedClick,
             )
