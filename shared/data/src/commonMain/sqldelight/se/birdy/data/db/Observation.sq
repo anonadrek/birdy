@@ -8,23 +8,34 @@ CREATE TABLE observation (
     confidence      REAL NOT NULL,
     latitude        REAL,
     longitude       REAL,
-    location_label  TEXT
+    location_label  TEXT,
+    stamp_number    INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE INDEX observation_captured_at_idx ON observation(captured_at_ms DESC);
+CREATE INDEX observation_stamp_number_idx ON observation(stamp_number DESC);
 
 selectAll:
 SELECT * FROM observation ORDER BY captured_at_ms DESC;
 
+selectAllByStampNumber:
+SELECT * FROM observation ORDER BY stamp_number DESC;
+
 selectById:
 SELECT * FROM observation WHERE id = ?;
+
+nextStampNumber:
+SELECT COALESCE(MAX(stamp_number), 0) + 1 FROM observation;
 
 insert:
 INSERT INTO observation(
     id, species_id, captured_at_ms, saved_at_ms,
     photo_path, note, confidence,
-    latitude, longitude, location_label
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    latitude, longitude, location_label,
+    stamp_number
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+    (SELECT COALESCE(MAX(stamp_number), 0) + 1 FROM observation)
+);
 
 updateNote:
 UPDATE observation SET note = ? WHERE id = ?;

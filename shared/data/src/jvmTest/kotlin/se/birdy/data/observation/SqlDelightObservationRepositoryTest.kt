@@ -124,4 +124,34 @@ class SqlDelightObservationRepositoryTest {
                 cancelAndIgnoreRemainingEvents()
             }
         }
+
+    @Test
+    fun insert_assigns_sequential_stamp_number_starting_at_1() =
+        runTest {
+            val repo = newRepo()
+            repo.insert(sample("a", 1_000L))
+            repo.insert(sample("b", 2_000L))
+            repo.insert(sample("c", 3_000L))
+            repo.observeAll().test {
+                val rows = awaitItem()
+                // selectAll orders DESC by captured_at, so c=3, b=2, a=1
+                assertEquals(listOf(3, 2, 1), rows.map { it.stampNumber })
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun delete_then_insert_reuses_stamp_number_sequence_no_gap_fill() =
+        runTest {
+            val repo = newRepo()
+            repo.insert(sample("a", 1_000L)) // #1
+            repo.insert(sample("b", 2_000L)) // #2
+            repo.delete("a")
+            repo.insert(sample("c", 3_000L)) // #3 (not #2)
+            repo.observeAllByStampNumber().test {
+                val rows = awaitItem()
+                assertEquals(listOf(3, 2), rows.map { it.stampNumber })
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
 }

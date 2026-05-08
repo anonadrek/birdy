@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.Flow
 interface ObservationRepository {
     fun observeAll(): Flow<List<Observation>>
 
+    fun observeAllByStampNumber(): Flow<List<Observation>>
+
     fun observeById(id: String): Flow<Observation?>
 
     suspend fun insert(observation: Observation)

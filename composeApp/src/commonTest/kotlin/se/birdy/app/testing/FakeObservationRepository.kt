@@ -24,6 +24,9 @@ class FakeObservationRepository : ObservationRepository {
     override fun observeAll(): Flow<List<Observation>> =
         _rows.asStateFlow().map { it.sortedByDescending { o -> o.capturedAt.toEpochMilliseconds() } }
 
+    override fun observeAllByStampNumber(): Flow<List<Observation>> =
+        _rows.asStateFlow().map { it.sortedByDescending { o -> o.stampNumber } }
+
     override fun observeById(id: String): Flow<Observation?> = _rows.asStateFlow().map { list -> list.firstOrNull { it.id == id } }
 
     override suspend fun insert(observation: Observation) {

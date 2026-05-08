@@ -1,0 +1,15 @@
+-- Plan 7a — add stamp_number with chronological backfill.
+-- Existing observations get sequential numbers ordered by captured_at_ms ASC
+-- (tie-break by id for determinism), so oldest obs becomes #1.
+
+ALTER TABLE observation ADD COLUMN stamp_number INTEGER NOT NULL DEFAULT 0;
+
+UPDATE observation
+SET stamp_number = 1 + (
+    SELECT COUNT(*)
+    FROM observation o2
+    WHERE o2.captured_at_ms < observation.captured_at_ms
+       OR (o2.captured_at_ms = observation.captured_at_ms AND o2.id < observation.id)
+);
+
+CREATE INDEX observation_stamp_number_idx ON observation(stamp_number DESC);

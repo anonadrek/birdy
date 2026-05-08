@@ -23,6 +23,13 @@ class SqlDelightObservationRepository(
             .mapToList(Dispatchers.IO)
             .map { rows -> rows.map { it.toDomain() } }
 
+    override fun observeAllByStampNumber(): Flow<List<Observation>> =
+        queries
+            .selectAllByStampNumber()
+            .asFlow()
+            .mapToList(Dispatchers.IO)
+            .map { rows -> rows.map { it.toDomain() } }
+
     override fun observeById(id: String): Flow<Observation?> =
         queries
             .selectById(id)
@@ -74,5 +81,6 @@ class SqlDelightObservationRepository(
             latitude = latitude,
             longitude = longitude,
             locationLabel = location_label,
+            stampNumber = stamp_number.toInt(),
         )
 }

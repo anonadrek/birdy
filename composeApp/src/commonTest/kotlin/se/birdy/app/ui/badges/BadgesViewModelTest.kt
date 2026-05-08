@@ -122,6 +122,8 @@ class BadgesViewModelTest {
                 object : ObservationRepository {
                     override fun observeAll(): Flow<List<Observation>> = flow { throw RuntimeException("boom") }
 
+                    override fun observeAllByStampNumber(): Flow<List<Observation>> = flowOf(emptyList())
+
                     override fun observeById(id: String): Flow<Observation?> = flowOf(null)
 
                     override suspend fun insert(observation: Observation) {}

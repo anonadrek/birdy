@@ -13,4 +13,5 @@ data class Observation(
     val latitude: Double?,
     val longitude: Double?,
     val locationLabel: String?,
+    val stampNumber: Int = 0,
 )
