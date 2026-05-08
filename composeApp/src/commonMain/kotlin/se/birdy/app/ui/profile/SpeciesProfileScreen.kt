@@ -24,16 +24,14 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -99,16 +97,6 @@ private fun ProfileContent(
                 .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
-            val heroGradient =
-                remember {
-                    Brush.verticalGradient(
-                        listOf(
-                            HeroMossLight,
-                            AccentCopper.copy(alpha = 0.4f),
-                            HeroMossDeep,
-                        ),
-                    )
-                }
             Box(
                 modifier = Modifier.clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp)),
             ) {
@@ -123,9 +111,15 @@ private fun ProfileContent(
                         modifier =
                             Modifier
                                 .matchParentSize()
-                                .drawBehind {
-                                    drawRect(brush = heroGradient, blendMode = BlendMode.Multiply)
-                                },
+                                .background(
+                                    Brush.verticalGradient(
+                                        listOf(
+                                            HeroMossLight.copy(alpha = 0.55f),
+                                            AccentCopper.copy(alpha = 0.4f),
+                                            HeroMossDeep.copy(alpha = 0.85f),
+                                        ),
+                                    ),
+                                ),
                     )
                 }
                 LargeTopAppBar(
@@ -235,16 +229,17 @@ private fun Chip(
         modifier =
             Modifier
                 .clip(RoundedCornerShape(12.dp))
-                .background(SandCreme)
-                .padding(16.dp),
+                .background(if (accent) AccentCopper.copy(alpha = 0.18f) else SandCreme)
+                .padding(horizontal = 12.dp, vertical = 8.dp),
     ) {
         Text(
             text,
             style =
                 MaterialTheme.typography.labelLarge.copy(
+                    fontFamily = FontFamily.Serif,
                     fontStyle = FontStyle.Italic,
-                    color = if (accent) AccentCopper else AccentCopper.copy(alpha = 0.75f),
                 ),
+            color = if (accent) AccentCopper else AccentCopper.copy(alpha = 0.75f),
         )
     }
 }

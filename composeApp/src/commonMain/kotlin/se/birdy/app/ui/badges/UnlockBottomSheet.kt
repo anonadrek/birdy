@@ -34,7 +34,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -142,8 +141,7 @@ fun UnlockBottomSheet(
             ItalicMixedText(
                 text = stringResource(Res.string.unlock_label),
                 style =
-                    MaterialTheme.typography.headlineSmall.copy(
-                        fontFamily = FontFamily.Serif,
+                    MaterialTheme.typography.headlineMedium.copy(
                         color = TextOnCreme,
                     ),
                 italicAccent = AccentCopperLight,

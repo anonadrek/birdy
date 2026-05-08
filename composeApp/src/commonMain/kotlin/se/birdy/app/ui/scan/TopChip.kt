@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
@@ -67,8 +68,8 @@ fun TopChip(
                         shape = CircleShape,
                     ),
         )
-        Text(
-            text =
+        val annotatedName =
+            remember(speciesName) {
                 buildAnnotatedString {
                     withStyle(
                         SpanStyle(
@@ -80,8 +81,9 @@ fun TopChip(
                     ) {
                         append(speciesName)
                     }
-                },
-        )
+                }
+            }
+        Text(text = annotatedName)
         if (confidencePct != null) {
             Spacer(modifier = Modifier.width(4.dp))
             Text(text = "$confidencePct%", color = AccentCopper)

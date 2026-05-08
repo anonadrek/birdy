@@ -100,7 +100,14 @@ fun PhotoAnalyzeScreen(
                     }
                 Text(msg)
                 Spacer(modifier = Modifier.height(16.dp))
-                Button(onClick = { viewModel.reset() }) { Text(stringResource(Res.string.photo_retry)) }
+                Button(
+                    onClick = { viewModel.reset() },
+                    colors =
+                        ButtonDefaults.buttonColors(
+                            containerColor = AccentCopper,
+                            contentColor = OffwhiteWarm,
+                        ),
+                ) { Text(stringResource(Res.string.photo_retry)) }
             }
         }
     }
