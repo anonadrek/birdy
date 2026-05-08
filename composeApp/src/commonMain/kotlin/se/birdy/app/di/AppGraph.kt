@@ -8,7 +8,7 @@ import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.photo.PhotoStorage
 import se.birdy.app.ui.badges.BadgesViewModel
-import se.birdy.app.ui.diary.DiaryViewModel
+import se.birdy.app.ui.diary.LifelistViewModel
 import se.birdy.app.ui.diary.ObservationDetailViewModel
 import se.birdy.app.ui.encyclopedia.ArchiveViewModel
 import se.birdy.app.ui.listen.ListenLauncherViewModel
@@ -119,13 +119,13 @@ class AppGraph(
             locale = defaultLocale,
         )
 
-    fun diaryViewModel(): DiaryViewModel =
-        DiaryViewModel(
-            obsRepo = observationRepository,
+    fun lifelistViewModel(): LifelistViewModel =
+        LifelistViewModel(
+            observationRepo = observationRepository,
             speciesRepo = repository,
+            prefs = userPreferences,
+            zone = timeZone,
             locale = defaultLocale,
-            clock = clock,
-            timeZone = timeZone,
         )
 
     fun observationDetailViewModel(id: String): ObservationDetailViewModel =

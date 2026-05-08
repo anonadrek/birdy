@@ -52,6 +52,10 @@ class FakeObservationRepository : ObservationRepository {
 
     override suspend fun nextStampNumber(): Int = (_rows.value.maxOfOrNull { it.stampNumber } ?: 0) + 1
 
+    fun seed(observations: List<Observation>) {
+        _rows.value = observations
+    }
+
     fun seedDirect(obs: Observation) {
         _rows.value = _rows.value + obs
     }

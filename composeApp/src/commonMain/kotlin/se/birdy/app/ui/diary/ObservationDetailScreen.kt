@@ -66,6 +66,18 @@ import birdy_bird_scanner.composeapp.generated.resources.diary_detail_load_error
 import birdy_bird_scanner.composeapp.generated.resources.diary_detail_not_found
 import birdy_bird_scanner.composeapp.generated.resources.diary_detail_unknown_species
 import birdy_bird_scanner.composeapp.generated.resources.diary_full_date_format
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_apr
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_aug
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_dec
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_feb
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_jan
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_jul
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_jun
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_mar
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_may
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_nov
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_oct
+import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_sep
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_label
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_save
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_save_error
@@ -344,3 +356,23 @@ private fun formatFullDate(
         "$hh:$mm",
     )
 }
+
+@Composable
+private fun monthShortLower(month1Based: Int): String =
+    stringResource(
+        when (month1Based) {
+            1 -> Res.string.diary_month_short_jan
+            2 -> Res.string.diary_month_short_feb
+            3 -> Res.string.diary_month_short_mar
+            4 -> Res.string.diary_month_short_apr
+            5 -> Res.string.diary_month_short_may
+            6 -> Res.string.diary_month_short_jun
+            7 -> Res.string.diary_month_short_jul
+            8 -> Res.string.diary_month_short_aug
+            9 -> Res.string.diary_month_short_sep
+            10 -> Res.string.diary_month_short_oct
+            11 -> Res.string.diary_month_short_nov
+            12 -> Res.string.diary_month_short_dec
+            else -> error("Invalid month $month1Based")
+        },
+    )

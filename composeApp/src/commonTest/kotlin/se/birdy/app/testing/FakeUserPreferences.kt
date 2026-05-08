@@ -24,6 +24,21 @@ class FakeUserPreferences : UserPreferences {
         set(value) {
             _archiveSort.value = value
         }
+    var userNameValue: String
+        get() = _userName.value
+        set(value) {
+            _userName.value = value
+        }
+    var lifelistStat3Value: LifelistStat3Choice
+        get() = _lifelistStat3.value
+        set(value) {
+            _lifelistStat3.value = value
+        }
+    var lifelistSortValue: LifelistSort
+        get() = _lifelistSort.value
+        set(value) {
+            _lifelistSort.value = value
+        }
 
     override val userName: Flow<String> = _userName.asStateFlow()
     override val hasSeenOnboarding: Flow<Boolean> = _hasSeenOnboarding.asStateFlow()

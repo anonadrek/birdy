@@ -12,7 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import kotlinx.datetime.Clock
 import se.birdy.app.di.AppGraph
-import se.birdy.app.ui.diary.DiaryScreen
+import se.birdy.app.ui.diary.LifelistScreen
 import se.birdy.app.ui.diary.ObservationDetailScreen
 import se.birdy.app.ui.encyclopedia.ArchiveScreen
 import se.birdy.app.ui.listen.ListenLauncherScreen
@@ -99,15 +99,13 @@ fun AppScaffold(graph: AppGraph) {
                     )
                 }
             }
-            composable<AppRoute.Diary> {
-                DiaryScreen(
-                    viewModel = remember(graph) { graph.diaryViewModel() },
-                    onObservationClick = { id ->
-                        navController.navigate(AppRoute.ObservationDetail(id))
-                    },
+            composable<AppRoute.Lifelist> {
+                LifelistScreen(
+                    viewModel = remember(graph) { graph.lifelistViewModel() },
+                    onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
                     onScanCtaClick = {
-                        navController.navigate(AppRoute.Scan) {
-                            popUpTo(AppRoute.Scan) { inclusive = false }
+                        navController.navigate(AppRoute.Listen) {
+                            popUpTo(AppRoute.Listen) { inclusive = false }
                             launchSingleTop = true
                         }
                     },

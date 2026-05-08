@@ -47,7 +47,7 @@ private val tabs =
                 ),
         ),
         TabSpec(AppRoute.Archive, Res.string.tab_archive, Icons.AutoMirrored.Filled.LibraryBooks),
-        TabSpec(AppRoute.Diary, Res.string.tab_lifelist, Icons.Outlined.CollectionsBookmark),
+        TabSpec(AppRoute.Lifelist, Res.string.tab_lifelist, Icons.Outlined.CollectionsBookmark),
         TabSpec(AppRoute.Badges, Res.string.tab_badges, Icons.Filled.Stars),
     )
 

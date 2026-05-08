@@ -24,7 +24,7 @@ sealed interface AppRoute {
         val speciesId: String,
     ) : AppRoute
 
-    @Serializable data object Diary : AppRoute
+    @Serializable data object Lifelist : AppRoute
 
     @Serializable data class ObservationDetail(
         val id: String,
