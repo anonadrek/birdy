@@ -15,6 +15,7 @@ import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
 import se.birdy.data.observation.SqlDelightObservationRepository
+import se.birdy.datastore.UserPreferencesStore
 import se.birdy.ml.AndroidTfliteRunner
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.BirdClassifierFactory
@@ -23,7 +24,6 @@ import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.ImagePreprocessor
 import se.birdy.ml.ModelArtifactProvider
 import se.birdy.ml.TfLiteBirdClassifier
-import se.birdy.datastore.UserPreferencesStore
 import se.birdy.ml.camera.AndroidCameraSource
 import se.birdy.ml.loadAiyLabelMapper
 import se.birdy.ml.loadModelMetadata
