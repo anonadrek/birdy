@@ -106,6 +106,8 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 81 | Q752398 | charadriidae | Rödflikvipa | Vanellus indicus | sv | 58642442 | 1351337438 | pending (sydostasiatisk vagrant; svwiki lead under SPARSE_WORD_THRESHOLD) |
 | 82 | Q752485 | charadriidae | Kaspisk pipare | Anarhynchus asiaticus | sv + image | 55626669 | 1344156599 | pending (centralasiatisk; ingen svwiki + saknar hi-res Commons-foto) |
 | 83 | Q18851 | charadriidae | Mindre strandpipare | Thinornis dubius | image | 59251641 | 1352507808 | pending (saknar hi-res Commons-foto trots vanlig SE-häckare) |
+| 84 | Q249695 | cettiidae | Snårsångare | Scotocerca inquieta | sv | 59162147 | 1350108561 | pending (afrikansk/mellanöstern, ingen svwiki) |
+| 85 | Q650114 | cettiidae | Cettisångare | Cettia cetti | en | 57586582 | — | pending (sydeuropeisk vagrant, enwiki lead saknas helt) |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

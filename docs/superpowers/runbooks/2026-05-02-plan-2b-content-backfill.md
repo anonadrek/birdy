@@ -25,7 +25,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-08 | caprimulgidae | +8 (totalt 205) | `092484d` |
 | 2026-05-08 | certhiidae | +2 (totalt 207) | `725cd49` |
 | 2026-05-08 | charadriidae | +17 (totalt 224) | `96512e5` |
-| | _next: cettiidae (skipped earlier) — kolla species_list.yaml_ | | |
+| 2026-05-08 | cettiidae | +2 (totalt 226) | `24311b1` |
+| | _next: ciconiidae — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -85,6 +86,13 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Q25677554 Fjällpipare hade `names.sv: null`** trots att SE-häckare. Wikidata SPARQL returnerade inte `rdfs:label@sv` för entryn (sannolikt nyare entry utan SV-label). Manuell fix: satt `names.sv: Fjällpipare` direkt i YAML. **Återanvändbart pattern:** vid validator-error om saknad sv-name för känd SE-art, manuell fix i YAML är OK; det är inte värt att lägga in i pipeline-fixen utan en bredare task-list över Wikidata-entries som behöver SV-label-edits uppströms.
 - **Wikidata SPARQL transient cascade igen:** 4/17 first-fetch failed (Q136297294 + Q137162124 + Q137159050 + Q25677554); Q25677554 behövde flera retries innan första lyckades. Pattern bekräftat — same as caprimulgidae/certhiidae.
 - Cost: ~$0.027 / 17 arter (full SV+EN för 12, bara EN för 4 sparse-sv, plus retry-overhead).
+
+**Cettiidae-batch lärdomar (2026-05-08):**
+
+- 0/2 abundance:allmän — Q249695 Snårsångare (afrikansk/mellanöstern) + Q650114 Cettisångare (sydeuropeisk vagrant, expanderar norrut men inte etablerad SE-häckare än). Default `ovanlig` korrekt för båda.
+- **2/2 (100%) sparse-overrides på olika språk** — symmetriskt mönster: Q249695 [sv] saknar svwiki helt (afrikansk art utan SE-coverage); Q650114 [en] har enwiki lead för kort eller saknad. Första gången jag ser exotic-art och europeisk-art i samma familj behöva oppositional-language-overrides. Påminner om att `description_accept_missing` per språk är rätt nivå, inte per art.
+- **Wikidata SPARQL transient 502 igen:** Q249695 failade på första två försöken (cascade-pattern); ~8s paus och tredje försök lyckades. Q650114 lyckades direkt på första försöket. Pattern bekräftat — same som charadriidae/caprimulgidae/certhiidae.
+- Cost: ~$0.0019 / 2 arter (2 Claude-calls för cross-fill: Q249695 EN + Q650114 SV; båda hade halv coverage från Wikipedia).
 
 
 - 1/8 abundance:allmän approved (Q26717 Nattskärra — etablerad SE-sommargäst på sandiga tallhedar och ljungmarker, hörs i skymning över hela landet). Övriga 7 är afrikanska/asiatiska/medelhavs-arter: Q1137192 Rödhalsad nattskärra (sydeuropeisk), Q615437 Egyptisk nattskärra, Q1269353 Nubisk nattskärra, Q2752089 Sindnattskärra (asiatisk), Q1264019 Guldnattskärra, Q1265442 Bergnattskärra, Q1270252 Sahelnattskärra.

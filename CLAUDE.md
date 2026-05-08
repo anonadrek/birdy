@@ -160,7 +160,8 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 | 2026-05-08 | caprimulgidae | +8 | 205 | `092484d` |
 | 2026-05-08 | certhiidae | +2 | 207 | `725cd49` |
 | 2026-05-08 | charadriidae | +17 | 224 | `96512e5` |
-| _(next)_ | _cettiidae (skipped earlier) — kolla species_list.yaml_ | | | |
+| 2026-05-08 | cettiidae | +2 | 226 | `24311b1` |
+| _(next)_ | _ciconiidae — kolla species_list.yaml_ | | | |
 
 **Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör nästa familj". Pure-data — kan köras parallellt med Plan 5+.
 
