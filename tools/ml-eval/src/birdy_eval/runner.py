@@ -84,10 +84,18 @@ class Predictor:
         except AttributeError:
             pass
 
-        scores_raw: np.ndarray[Any, np.dtype[np.float32]] = self._interp.get_tensor(
-            output_index
-        )
-        scores_1d: np.ndarray[Any, np.dtype[np.float32]] = scores_raw[0]
+        scores_raw: np.ndarray[Any, Any] = self._interp.get_tensor(output_index)
+        scores_1d: np.ndarray[Any, Any] = scores_raw[0]
+
+        # Dequantize uint8 outputs to floats in [0, 1] using the model's
+        # affine quantization params. Without this, "confidence" is a raw
+        # uint8 [0..255] and any threshold sweep against [0..1] is meaningless.
+        # Top-N ordering is unaffected (argmax is monotone), so this only
+        # changes calibration, not accuracy.
+        output_dtype = self._output_details[0]["dtype"]
+        if output_dtype == np.uint8:
+            scale, zero_point = self._output_details[0]["quantization"]
+            scores_1d = (scores_1d.astype(np.float32) - zero_point) * scale
 
         top_indices: np.ndarray[Any, np.dtype[np.intp]] = np.argsort(scores_1d)[::-1][:3]
         top_scores: list[tuple[int, float]] = [
