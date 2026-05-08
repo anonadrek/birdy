@@ -16,47 +16,43 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.badges_journal_headline
+import birdy_bird_scanner.composeapp.generated.resources.badges_journal_label
+import birdy_bird_scanner.composeapp.generated.resources.badges_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.badges_load_error
 import birdy_bird_scanner.composeapp.generated.resources.badges_load_error_retry
 import birdy_bird_scanner.composeapp.generated.resources.badges_locked_tooltip
-import birdy_bird_scanner.composeapp.generated.resources.badges_screen_headline
 import birdy_bird_scanner.composeapp.generated.resources.badges_section_recently_unlocked
 import birdy_bird_scanner.composeapp.generated.resources.badges_section_to_discover
-import birdy_bird_scanner.composeapp.generated.resources.badges_title
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import org.jetbrains.compose.resources.stringResource
-import se.birdy.app.ui.theme.HeroMossLight
-import se.birdy.app.ui.theme.HeroZone
-import se.birdy.app.ui.theme.LabelOnCreme
-import se.birdy.app.ui.theme.OffwhiteWarm
-import se.birdy.app.ui.theme.TextOnHero
+import se.birdy.app.ui.components.JournalIntro
+import se.birdy.app.ui.components.StampTrack
+import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.paperBackground
 import se.birdy.content.Locale
 import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeUnlock
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BadgesScreen(
     state: BadgesUiState,
@@ -73,51 +69,24 @@ fun BadgesScreen(
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        stringResource(Res.string.badges_title),
-                        fontFamily = FontFamily.Serif,
-                        fontSize = 22.sp,
-                    )
-                },
-                colors =
-                    TopAppBarDefaults.topAppBarColors(
-                        containerColor = HeroMossLight,
-                        titleContentColor = TextOnHero,
-                    ),
-            )
-        },
+        containerColor = Color.Transparent,
         snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
-        when (state) {
-            is BadgesUiState.Loading ->
-                Box(Modifier.fillMaxSize().padding(padding), Alignment.Center) {
-                    CircularProgressIndicator()
-                }
-
-            is BadgesUiState.Error ->
-                ErrorState(
-                    onRetry = onRetry,
-                    modifier = Modifier.fillMaxSize().padding(padding),
-                )
-
-            is BadgesUiState.Loaded ->
-                LoadedContent(
+        Box(modifier = Modifier.fillMaxSize().paperBackground().padding(padding)) {
+            when (state) {
+                is BadgesUiState.Loading -> Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
+                is BadgesUiState.Error -> ErrorState(onRetry = onRetry, modifier = Modifier.fillMaxSize())
+                is BadgesUiState.Loaded -> LoadedContent(
                     state = state,
                     locale = locale,
                     zone = zone,
                     now = now,
-                    lockedTooltip = lockedTooltip,
-                    contentPadding = padding,
                     onUnlockedClick = { badge, unlock -> onBadgeClick(badge, unlock) },
                     onLockedClick = {
-                        scope.launch {
-                            snackbarHostState.showSnackbar(message = lockedTooltip)
-                        }
+                        scope.launch { snackbarHostState.showSnackbar(message = lockedTooltip) }
                     },
                 )
+            }
         }
     }
 }
@@ -128,54 +97,45 @@ private fun LoadedContent(
     locale: Locale,
     zone: TimeZone,
     now: Instant,
-    lockedTooltip: String,
-    contentPadding: PaddingValues,
     onUnlockedClick: (Badge, BadgeUnlock) -> Unit,
     onLockedClick: () -> Unit,
 ) {
     LazyVerticalGrid(
-        columns = GridCells.Fixed(4),
+        columns = GridCells.Fixed(3),
         modifier = Modifier.fillMaxSize(),
-        contentPadding =
-            PaddingValues(
-                start = 12.dp,
-                end = 12.dp,
-                top = contentPadding.calculateTopPadding(),
-                bottom = contentPadding.calculateBottomPadding() + 16.dp,
-            ),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 0.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         item(span = { GridItemSpan(maxLineSpan) }) {
-            HeroZone {
-                Column {
-                    Text(
-                        text = stringResource(Res.string.badges_screen_headline),
-                        color = OffwhiteWarm,
-                        fontFamily = FontFamily.Serif,
-                        fontStyle = FontStyle.Italic,
-                        fontSize = 38.sp,
-                        fontWeight = FontWeight.W700,
-                    )
-                    Spacer(Modifier.height(16.dp))
-                    BadgeProgressBar(unlocked = state.unlockedCount, total = state.totalBadges)
-                }
+            Column {
+                JournalIntro(
+                    label = stringResource(Res.string.badges_journal_label, state.unlockedCount.toString()),
+                    headline = stringResource(Res.string.badges_journal_headline, state.unlockedCount.toString()),
+                    sub = stringResource(Res.string.badges_journal_sub, (state.totalBadges - state.unlockedCount).toString()),
+                    horizontalPadding = 0,
+                    topPadding = 24,
+                )
+                StampTrack(
+                    filled = state.unlockedCount,
+                    total = state.totalBadges,
+                    modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
+                )
             }
         }
 
         if (state.recentlyUnlocked.isNotEmpty()) {
             item(span = { GridItemSpan(maxLineSpan) }) {
-                Column(Modifier.padding(top = 12.dp)) {
+                Column {
                     SectionLabel(stringResource(Res.string.badges_section_recently_unlocked))
-                    Spacer(Modifier.height(6.dp))
-                    LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                        items(
-                            items = state.recentlyUnlocked,
-                            key = { it.badge.id },
-                        ) { r ->
+                    Spacer(Modifier.height(8.dp))
+                    LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        items(items = state.recentlyUnlocked, key = { it.badge.id }) { r ->
                             val nameRes = BadgeStringMap.nameFor(r.badge.id)
                             BadgeRecentCard(
                                 localizedName = stringResource(nameRes),
+                                stampNumber = r.stampNumber,
+                                glyph = null,
                                 unlockedAt = r.unlockedAt,
                                 now = now,
                                 locale = locale,
@@ -189,14 +149,15 @@ private fun LoadedContent(
         }
 
         item(span = { GridItemSpan(maxLineSpan) }) {
-            Column(Modifier.padding(top = 14.dp)) {
-                SectionLabel(stringResource(Res.string.badges_section_to_discover, state.locked.size))
-                Spacer(Modifier.height(6.dp))
-            }
+            Column { SectionLabel(stringResource(Res.string.badges_section_to_discover, state.locked.size)) }
         }
 
         items(items = state.locked, key = { it.badge.id }) { lbp ->
-            BadgeGridCell(progress = lbp, onClick = onLockedClick)
+            BadgeGridCell(
+                progress = lbp,
+                onClick = onLockedClick,
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
     }
 }
@@ -205,9 +166,10 @@ private fun LoadedContent(
 private fun SectionLabel(text: String) {
     Text(
         text = text.uppercase(),
-        color = LabelOnCreme,
+        color = MarginaliaInk,
         fontSize = 9.sp,
-        modifier = Modifier.padding(horizontal = 4.dp),
+        fontWeight = FontWeight.W700,
+        letterSpacing = 0.22.em,
     )
 }
 
@@ -220,8 +182,6 @@ private fun ErrorState(
         Spacer(Modifier.height(48.dp))
         Text(stringResource(Res.string.badges_load_error))
         Spacer(Modifier.height(8.dp))
-        TextButton(onClick = onRetry) {
-            Text(stringResource(Res.string.badges_load_error_retry))
-        }
+        TextButton(onClick = onRetry) { Text(stringResource(Res.string.badges_load_error_retry)) }
     }
 }

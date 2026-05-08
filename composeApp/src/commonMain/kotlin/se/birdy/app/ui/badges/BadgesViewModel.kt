@@ -63,19 +63,28 @@ class BadgesViewModel(
         val seenSpecies = observations.map { it.speciesId }.toSet().size
         val unlockedIds = unlocks.map { it.badgeId }.toSet()
         val capturedInstants = observations.map { it.capturedAt }
+        val stampNumbersById = catalog.badges.withIndex().associate { (i, b) -> b.id to (i + 1) }
 
         val recentlyUnlocked =
             unlocks
                 .sortedByDescending { it.unlockedAt }
                 .take(5)
                 .mapNotNull { u ->
-                    catalog.findById(u.badgeId)?.let { b -> BadgeWithUnlock(b, u.unlockedAt) }
+                    catalog.findById(u.badgeId)?.let { b ->
+                        BadgeWithUnlock(b, u.unlockedAt, stampNumbersById[b.id] ?: 0)
+                    }
                 }
 
         val locked =
             catalog.badges
                 .filter { it.id !in unlockedIds }
-                .map { b -> LockedBadgeProgress(badge = b, state = computeLockedState(b, observations, speciesMap)) }
+                .map { b ->
+                    LockedBadgeProgress(
+                        badge = b,
+                        state = computeLockedState(b, observations, speciesMap),
+                        stampNumber = stampNumbersById[b.id] ?: 0,
+                    )
+                }
                 .sortedWith(compareBy({ it.badge.category.order }, { it.badge.rule.target }))
 
         val weeklyStreak = longestWeeklyStreak(capturedInstants, zone).takeIf { it >= 2 }

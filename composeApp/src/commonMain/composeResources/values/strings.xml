@@ -314,6 +314,9 @@
     <string name="badges_screen_progress_label">UPPLÅSTA MÄRKEN</string>
     <string name="badges_grid_hidden">???</string>
     <string name="badges_in_progress_pill">%1$s/%2$s</string>
+    <string name="badges_journal_label">UPPTÄCKTER · NO %1$s</string>
+    <string name="badges_journal_headline">*%1$s* funna.</string>
+    <string name="badges_journal_sub">%1$s väntar därute.</string>
 
     <!-- ===== Plan 7b: LifelistScreen ===== -->
     <string name="lifelist_breadcrumb">LIFELIST</string>

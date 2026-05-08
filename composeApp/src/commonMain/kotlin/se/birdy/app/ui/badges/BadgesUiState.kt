@@ -29,6 +29,7 @@ data class SpeciesProgress(
 data class BadgeWithUnlock(
     val badge: Badge,
     val unlockedAt: Instant,
+    val stampNumber: Int = 0,
 )
 
 enum class BadgeErrorKind { CatalogParseFailed, LoadFailed }
@@ -47,4 +48,5 @@ sealed interface BadgeGridState {
 data class LockedBadgeProgress(
     val badge: Badge,
     val state: BadgeGridState,
+    val stampNumber: Int = 0,
 )
