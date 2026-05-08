@@ -23,16 +23,29 @@ import birdy_bird_scanner.composeapp.generated.resources.tab_lifelist
 import birdy_bird_scanner.composeapp.generated.resources.tab_listen
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import kotlin.reflect.KClass
 
 private data class TabSpec(
     val route: AppRoute,
     val label: StringResource,
     val icon: ImageVector,
+    val ownedRoutes: Set<KClass<out AppRoute>> = setOf(route::class),
 )
 
 private val tabs =
     listOf(
-        TabSpec(AppRoute.Scan, Res.string.tab_listen, Icons.Filled.Hearing),
+        TabSpec(
+            route = AppRoute.Listen,
+            label = Res.string.tab_listen,
+            icon = Icons.Filled.Hearing,
+            ownedRoutes =
+                setOf(
+                    AppRoute.Listen::class,
+                    AppRoute.Scan::class,
+                    AppRoute.PhotoAnalyze::class,
+                    AppRoute.ClassificationResult::class,
+                ),
+        ),
         TabSpec(AppRoute.Encyclopedia, Res.string.tab_archive, Icons.AutoMirrored.Filled.LibraryBooks),
         TabSpec(AppRoute.Diary, Res.string.tab_lifelist, Icons.Outlined.CollectionsBookmark),
         TabSpec(AppRoute.Badges, Res.string.tab_badges, Icons.Filled.Stars),
@@ -45,7 +58,7 @@ fun BottomNavBar(navController: NavHostController) {
         for (tab in tabs) {
             val selected =
                 backStackEntry?.destination?.parentChain()?.any { dest ->
-                    dest.hasRoute(tab.route::class)
+                    tab.ownedRoutes.any { dest.hasRoute(it) }
                 } == true
             NavigationBarItem(
                 selected = selected,

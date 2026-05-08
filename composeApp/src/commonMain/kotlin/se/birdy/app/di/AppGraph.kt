@@ -11,6 +11,7 @@ import se.birdy.app.ui.badges.BadgesViewModel
 import se.birdy.app.ui.diary.DiaryViewModel
 import se.birdy.app.ui.diary.ObservationDetailViewModel
 import se.birdy.app.ui.encyclopedia.EncyclopediaViewModel
+import se.birdy.app.ui.listen.ListenLauncherViewModel
 import se.birdy.app.ui.onboarding.OnboardingViewModel
 import se.birdy.app.ui.photoanalyze.PhotoAnalyzeViewModel
 import se.birdy.app.ui.profile.SpeciesProfileViewModel
@@ -137,6 +138,8 @@ class AppGraph(
         )
 
     fun settingsViewModel(): SettingsViewModel = SettingsViewModel(userPreferences)
+
+    fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel()
 
     fun onboardingViewModel(fallbackName: String): OnboardingViewModel =
         OnboardingViewModel(prefs = userPreferences, defaultFallbackName = fallbackName)

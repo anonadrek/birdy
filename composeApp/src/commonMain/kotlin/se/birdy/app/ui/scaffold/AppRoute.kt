@@ -4,6 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 sealed interface AppRoute {
+    @Serializable data object Listen : AppRoute
+
     @Serializable data object Scan : AppRoute
 
     @Serializable data object PhotoAnalyze : AppRoute

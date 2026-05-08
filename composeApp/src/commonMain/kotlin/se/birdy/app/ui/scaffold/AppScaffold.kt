@@ -15,6 +15,7 @@ import se.birdy.app.di.AppGraph
 import se.birdy.app.ui.diary.DiaryScreen
 import se.birdy.app.ui.diary.ObservationDetailScreen
 import se.birdy.app.ui.encyclopedia.EncyclopediaScreen
+import se.birdy.app.ui.listen.ListenLauncherScreen
 import se.birdy.app.ui.profile.SpeciesProfileScreen
 import se.birdy.app.ui.result.ClassificationResultScreen
 import se.birdy.app.ui.scan.ScanScreenHost
@@ -26,9 +27,24 @@ fun AppScaffold(graph: AppGraph) {
     Scaffold(bottomBar = { BottomNavBar(navController) }) { padding ->
         NavHost(
             navController = navController,
-            startDestination = AppRoute.Scan,
+            startDestination = AppRoute.Listen,
             modifier = Modifier.padding(padding),
         ) {
+            composable<AppRoute.Listen> {
+                ListenLauncherScreen(
+                    viewModel = remember(graph) { graph.listenLauncherViewModel() },
+                    onCameraClick = {
+                        navController.navigate(AppRoute.Scan) {
+                            launchSingleTop = true
+                        }
+                    },
+                    onPhotoClick = {
+                        navController.navigate(AppRoute.PhotoAnalyze) {
+                            launchSingleTop = true
+                        }
+                    },
+                )
+            }
             composable<AppRoute.Scan> {
                 ScanScreenHost(
                     graph = graph,
