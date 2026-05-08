@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 226/700, nästa familj = ciconiidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). **Plan 6 (Polish + Play Store-release) är PAUSAD — Plan 7 (redesign: stamp-metafor + ny IA + match-flow) kommer först. Spec utkast i `232f528`.**
+**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 226/700, nästa familj = ciconiidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). **Plan 6 (Polish + Play Store-release) är PAUSAD — Plan 7 (redesign: stamp-metafor + ny IA + match-flow) kommer först. Spec klar i `232f528`. Plan 7a (Foundation, 13 tasks) skriven i `docs/superpowers/plans/2026-05-08-v1-07a-redesign-foundation.md` (commit `b453e58`) — redo för subagent-driven execution. Säg `kör Plan 7a` (eller `fortsätt`) så startar nästa session implementationen.**
 
 ## Var hittar du saker
 
@@ -32,7 +32,9 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | 4b | Real TFLite-modell (AIY Birds V1) | ✅ `v0.4.0b-real-tflite` |
 | 5a | Diary (browse + detail + save flow) | ✅ `v0.5.0a-diary` |
 | 5b | Gamification (badges, streaks, unlock-queue) | ✅ `v0.5.0b-gamification` |
-| 7 | Redesign (stamp-metafor + ny IA + match-flow) | 🔜 nästa upp; spec-utkast i commit `232f528` |
+| 7a | Redesign Foundation — tokens, ItalicMixed, HeroZone, DataStore, Onboarding, Settings, bottom-bar-rename | 🔜 plan skriven (`b453e58`); redo för subagent-driven execution |
+| 7b | Redesign Skärmar — Listen-launcher, Archive, Lifelist, Badges, polish | ⏳ skrivs efter 7a tagged |
+| 7c | Redesign Match-flow — threshold-logik, Match-skärm, Disambig | ⏳ skrivs efter 7b tagged |
 | 6 | Polish + Play Store-release | ⏸ pausad — väntar på Plan 7 |
 
 Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew build` ska gå grönt.
