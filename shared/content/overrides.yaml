@@ -192,3 +192,16 @@ species:
   # Certhiidae batch (2026-05-08): allmän SE-art men svwiki lead under SPARSE_WORD_THRESHOLD.
   Q193593:
     description_accept_missing: [sv]  # Certhia familiaris (Trädkrypare) — allmän SE-stannfågel, men svwiki lead för kort. Prioriterad manuell text.
+  # Charadriidae batch (2026-05-08): exotic/asiatic plovers with sparse svwiki + image gaps.
+  Q137159050:
+    description_accept_missing: [sv]  # Anarhynchus leschenaultii (Ökenpipare / Greater Sand Plover) — sv 73w under 80-tröskeln
+  Q752398:
+    description_accept_missing: [sv]  # Vanellus indicus (Rödflikvipa / Red-wattled Lapwing) — asiatisk, ingen svwiki
+  Q137162124:
+    description_accept_missing: [sv]  # Anarhynchus pecuarius (Kittlitzpipare / Kittlitz's Plover) — afrikansk, ingen svwiki
+    allow_missing_images: true  # Commons saknar foto över MIN_DIMENSION=2048
+  Q752485:
+    description_accept_missing: [sv]  # Anarhynchus asiaticus (Kaspisk pipare / Caspian Plover) — asiatisk, ingen svwiki
+    allow_missing_images: true  # Commons saknar foto över MIN_DIMENSION=2048
+  Q18851:
+    allow_missing_images: true  # Charadrius dubius (Mindre strandpipare / Little Ringed Plover) — Commons saknar foto över MIN_DIMENSION=2048

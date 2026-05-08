@@ -1,0 +1,118 @@
+id: Q137156829
+scientific_name: Anarhynchus alexandrinus
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Anarhynchus
+  ioc_order: Charadriiformes
+names:
+  sv: null
+  en: Kentish Plover
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartbent strandpipare
+
+
+    Svartbent strandpipare är en liten vadarfågel i pipfamiljen som förekommer på
+    flacka sand- och lerstränder. Arten är utbredd i Europa och Nordafrika, och sträcker
+    sig österut till Japan, med isolerade populationer i södra Indien och på Sri Lanka.
+
+
+    Fågeln är anpassad till öppna, kala strandmiljöer där den kan röra sig fritt.
+    Den förekommer främst i dessa karaktäristiska livsmiljöer, där den hittar föda
+    längs vattnets kant.
+
+
+    Beståndet av svartbent strandpipare minskar globalt, men anses trots det vara
+    livskraftigt på världsbasis. I Sverige förändrades statusen märkbart – arten var
+    tidigare en regelbunden häckfågel men klassificerades från 2002 som utdöd i landet.'
+  en: '# Kentish Plover
+
+
+    The Kentish plover is a small wader with pale plumage, a white underside, and
+    a grey-brown back. Both sexes share dark legs and a dark bill, but males are distinctly
+    more marked, displaying dark incomplete breast bands and dark patches on either
+    side of the head, making this species sexually dimorphic. Its compact size and
+    subtle coloration make it well-adapted to its preferred habitats.
+
+
+    This species favours the shores of saline lakes, lagoons, and coastal areas, breeding
+    across sand dunes, marshes, semi-arid deserts, and tundra environments. Its preference
+    for open, often sparsely vegetated ground reflects its feeding and nesting requirements
+    as a ground-nesting wader. The Kentish plover typically forages along waterline
+    margins and bare ground, picking at small invertebrates.
+
+
+    Like many plovers, it employs characteristic running-and-stopping behaviour while
+    feeding. The bird is relatively inconspicuous, relying on its cryptic plumage
+    for concealment, particularly important for a ground-nester. During breeding season,
+    males become more territorial and vocal, though details of its specific calls
+    would require additional sources.'
+migration:
+  sv: '# Svartbent strandpipare i Skandinavien/Nordeuropa
+
+
+    Svartbent strandpipare förekom tidigare som regelbunden häckfågel i Sverige, men
+    är sedan 2002 kategoriserad som utdöd i landet. Arten förekommer främst på flacka
+    sand- eller lerstränder i Europa och Nordafrika, men förekommer inte längre som
+    etablerad population i Skandinavien eller Nordeuropa. Historiskt sett hade arten
+    säkerligen en säsongsmässig förekomst under häckningstid på lämpliga lokaler längs
+    svenska kuster, men denna population är nu försvunnen.'
+  en: '# Kentish Plover in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text provided contains no information regarding the Kentish Plover''s
+    occurrence, migration patterns, or seasonal distribution in Scandinavia or Northern
+    Europe. To obtain accurate migration and wintering information for this species
+    in these regions, additional sources focusing on its northern European range and
+    seasonal movements would be required.'
+image_refs:
+- role: hero
+  path: Q137156829/hero.jpg
+  width: 2181
+  height: 1440
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Strandplevier - Kentish plover
+    - Anarhynchus alexandrinus.jpg
+  commons_filename: Strandplevier - Kentish plover - Anarhynchus alexandrinus.jpg
+- role: secondary
+  path: Q137156829/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Smailtn" title="User:Smailtn">Smailtn</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anarhynchus alexandrinus Radès
+    beach.jpg
+  commons_filename: Anarhynchus alexandrinus Radès beach.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:56:53.045653+00:00'
+sources:
+  wikipedia_sv_revision: '58641227'
+  wikipedia_en_revision: '1332714498'
+  claude_model: claude-haiku-4-5-20251001

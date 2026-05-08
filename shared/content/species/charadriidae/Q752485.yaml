@@ -1,0 +1,96 @@
+id: Q752485
+scientific_name: Anarhynchus asiaticus
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Anarhynchus
+  ioc_order: Charadriiformes
+names:
+  sv: Kaspisk pipare
+  en: Caspian Plover
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kaspisk pipare
+
+
+    Kaspisk pipare är en liten vadare i familjen pipare. Den häckar på öppna stepp-
+    och halvökenmiljöer i Centralasien, från Kaspiska havet österut till västra Kina.
+    Under vintern genomför arten en långflyttning till Afrika, där den söker upp större
+    savannh- och fuktigare områden i östra och södra delen av kontinenten.
+
+
+    I Europa är kaspisk pipare mycket sällsynt och uppträder endast sporadiskt som
+    gäst. Antalet fynd är begränsat, och arten drar ofta uppmärksamhet när den observeras.
+    Beståndet visar en nedåtgående trend, något som övervakas noga av ornitologer.
+    Trots denna minskning anses populationen fortfarande livskraftig i helhet.
+
+
+    För den som är intresserad av vadare är arten framför allt relevant som en potentiell
+    raritet att hålla ögonen öppna efter, särskilt under migrationssäsongerna när
+    fåglar förirrar sig längre västerut än normalt.'
+  en: '# Caspian Plover
+
+
+    The Caspian plover is a small wader belonging to the plover family. It is a ground-dwelling
+    bird adapted to open habitats, displaying the characteristic features of plovers
+    including a compact body and relatively short legs. The plumage patterns typical
+    of this species help it blend into its preferred terrain.
+
+
+    This plover inhabits grasslands and semi-arid regions across Asia, where it forages
+    on the ground for invertebrates and small food items. Like other plovers, it likely
+    employs the characteristic "run-and-stop" hunting technique, pausing periodically
+    to locate prey. Its behaviour reflects adaptations to open country living, where
+    visibility is important for detecting both food and potential threats.
+
+
+    The species'' common name references the Caspian region, highlighting its geographic
+    range within Asian territories. Despite its scientific name suggesting Indian
+    origins as the type locality, the Caspian plover is distributed across various
+    Asian habitats suitable to its ecological requirements as a ground-feeding wader.'
+migration:
+  sv: '# Kaspisk pipare – Förekomst i Skandinavien/Nordeuropa
+
+
+    Kaspisk pipare är en mycket sällsynt gäst i Europa och därmed även i Skandinavien
+    och Nordeuropa. Arten häckar i Centralasien och migrerar långväga till östra och
+    södra Afrika för övervintering. Endast ett fåtal fynd har registrerats i Europa,
+    inklusive tre observationer i Sverige. Arten förekommer således inte regelbundet
+    i regionen utan är en mycket ovanlig tillfällig besökare.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and nomenclatural information
+    about the Caspian plover, with no details regarding its occurrence, migration
+    patterns, or seasonal distribution in Scandinavia or Northern Europe. To provide
+    accurate information about this species'' migratory behavior and presence throughout
+    the year in the region, additional source material with specific distributional
+    and phenological data would be required.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:57:39.951062+00:00'
+sources:
+  wikipedia_sv_revision: '55626669'
+  wikipedia_en_revision: '1344156599'
+  claude_model: claude-haiku-4-5-20251001

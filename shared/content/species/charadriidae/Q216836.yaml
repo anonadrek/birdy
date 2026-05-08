@@ -1,0 +1,132 @@
+id: Q216836
+scientific_name: Pluvialis dominica
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Pluvialis
+  ioc_order: Charadriiformes
+names:
+  sv: Amerikansk tundrapipare
+  en: American Golden Plover
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Amerikansk tundrapipare
+
+
+    Amerikansk tundrapipare är en medelstor pipare som påminner mycket om sina närbesläktade
+    arter sibirisk tundrapipare och ljungpipare. Under häckningstiden uppvisar den
+    mörkare fjäderdräkt med svart undersida och guldgul märkning på rygg och huvud.
+    Utanför häckningstiden blir färgerna mer diskreta och gråbruna. Det karakteristiska
+    gula ögonbrynet är framträdande året om.
+
+
+    Arten är en långstäckare som hör hemma på nordiska tundraslätter. Den förekommer
+    på öppna, kala häckningsområden där vegetation är sparsam. Under flyttningarna
+    och på övervintringsplatserna hittar man den på kustnära områden, stränder och
+    gräsmarker. Amerikansk tundrapipare är en snabb och smidig fågel som rör sig lätt
+    över marken.
+
+
+    Arten hörs ofta under sitt lopp – ett karakteristiskt, distinkt tjut som hjälper
+    till vid artidentifikation. Det är en mycket långväga migrant som flyger mellan
+    sitt arktiska häckningsområde och övervintringsplatserna på södra halvklotet.'
+  en: '# American Golden Plover
+
+
+    The American golden plover is a medium-sized plover whose scientific name reflects
+    an ancient belief that these birds gathered in flocks when rain approached. The
+    genus name derives from the Latin word for rain, while the species name references
+    Santo Domingo in the West Indies, reflecting where the bird was first described.
+
+
+    This plover undertakes one of the longest migrations of any bird species, traveling
+    between breeding grounds in arctic tundra regions and wintering areas in South
+    America. In breeding plumage, it displays distinctive golden spotting on its back
+    and wings, with a black face and underparts bordered by a white stripe running
+    down the neck and side. Non-breeding birds appear more subdued in coloration.
+    The species frequents open habitats including tundra, grasslands, and coastal
+    areas during migration and winter.
+
+
+    American golden plovers are typically seen singly or in small groups, moving along
+    the ground with characteristic stop-and-start feeding behavior, pausing to probe
+    or pick at prey. Their calls include a distinctive, mournful whistle that carries
+    across open country. The species is highly migratory, making it visible in various
+    regions during spring and autumn passage, though it is most numerous in open,
+    treeless landscapes.'
+migration:
+  sv: '# Amerikansk tundrapipare - Migration i Nordeuropa
+
+
+    Amerikansk tundrapipare är en långdistansvandrar som förekommer mycket sällsynt
+    i Skandinavien och Nordeuropa. Arten häckar i arktiska och subarktiska områden
+    i Nord-Amerika och Sibir, men migrerar långt under flyttningsperioderna. I Nordeuropa
+    observeras den främst under höstmigrationen från augusti till oktober, då enstaka
+    individer kan påträffas längs kusten eller på mossar. Under våren (april-maj)
+    är arten ännu mer sällsynt förekommande. Arten övervintar långt bort i södra Amerika
+    och Afrika, varför den praktiskt taget saknas från Skandinavien under vintermånaderna.
+    Observationer av denna art i nordeuropeisk miljö betraktas därför som märkliga
+    fynd av intresse för fågelskådare.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only etymological and taxonomic information
+    about the American Golden Plover, with no details about its occurrence in Scandinavia/Northern
+    Europe, migration patterns, overwintering, or seasonal movements. To provide accurate
+    migration information for this species in Northern Europe, additional sources
+    with specific distributional and phenological data would be needed.'
+image_refs:
+- role: hero
+  path: Q216836/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1029721">Owen
+    Strickland</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pluvialis dominica 228355544.jpg
+  commons_filename: Pluvialis dominica 228355544.jpg
+- role: secondary
+  path: Q216836/secondary-1.jpg
+  width: 1800
+  height: 1199
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1029721">Owen
+    Strickland</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pluvialis dominica 231830137.jpg
+  commons_filename: Pluvialis dominica 231830137.jpg
+- role: secondary
+  path: Q216836/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: Cataloging Nature
+  source_url: https://commons.wikimedia.org/wiki/File:2014-03-31 Pluvialis dominica
+    (American Golden Plover).jpg
+  commons_filename: 2014-03-31 Pluvialis dominica (American Golden Plover).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:59:02.788167+00:00'
+sources:
+  wikipedia_sv_revision: '56403155'
+  wikipedia_en_revision: '1321141049'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,123 @@
+id: Q137159050
+scientific_name: Anarhynchus leschenaultii
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Anarhynchus
+  ioc_order: Charadriiformes
+names:
+  sv: null
+  en: Greater Sand Plover
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ökenpipare
+
+
+    Ökenpipare är en liten vadarfågel som tillhör pipärsläktet. Den är en långdistansfågel
+    som häckar från Turkiet österut till västra Kina. Under vintern sprider sig arten
+    över ett stort område och förekommer då i östra Medelhavsområdet, Afrika, Asien
+    och Australien.
+
+
+    Arten påträffas endast tillfälligt i Europa och är mycket sällsynt i Sverige,
+    där det hittills registrerats omkring 20 fynd. Ökenpiparen är klassificerad som
+    livskraftig av IUCN och anses därför inte vara hotad.'
+  en: '# Greater Sand Plover
+
+
+    The Greater Sand Plover is a small wader belonging to the plover family. It is
+    a compact, streamlined shorebird adapted for hunting on sandy and open ground
+    habitats. The species was recently reclassified from the genus Charadrius to Anarhynchus,
+    reflecting modern taxonomic understanding of plover relationships.
+
+
+    Like other members of its genus, the Greater Sand Plover is an active forager,
+    typically seen moving quickly across flat, sandy terrain where it hunts for small
+    invertebrates. It often occurs in small flocks, particularly during migration
+    and winter months. The species is highly mobile, ranging across multiple regions
+    and varying its habitat use seasonally.
+
+
+    Identifying features and specific behavioral details such as plumage patterns,
+    size comparisons to similar species, vocalizations, and precise distribution patterns
+    would benefit from consulting additional field guide sources. Amateurs interested
+    in this species should note its preference for open, sandy environments and its
+    restless, energetic foraging behavior characteristic of many plovers.'
+migration:
+  sv: '# Ökenpipare i Skandinavien/Nordeuropa
+
+
+    Ökenpiparen är en mycket sällsynt gäst i Skandinavien och övriga Nordeuropa. Arten
+    häckar i Asien och förekommer normalt inte i regionen under någon årstid. Dock
+    påträffas den tillfälligt i Europa som en östlig strandgäst, och Sverige har dokumenterade
+    fynd av arten. Dessa observationer är ovanliga och oregelbundna, varför arten
+    inte utgör någon regelbunden del av Skandinaviens fågelfauna. De svenska funnen
+    representerar således före detta spridning långt från artens normala utbredningsområde.'
+  en: '# Greater Sand Plover in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the occurrence, migration
+    patterns, or seasonal presence of the Greater Sand Plover in Scandinavia or Northern
+    Europe. To provide accurate migration information for this species in the region,
+    additional ornithological sources would be required.'
+image_refs:
+- role: hero
+  path: Q137159050/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2024-07-26 Anarhynchus leschenaultii
+    leschenaultii, Newbiggin, Northumberland 1.jpg
+  commons_filename: 2024-07-26 Anarhynchus leschenaultii leschenaultii, Newbiggin,
+    Northumberland 1.jpg
+- role: secondary
+  path: Q137159050/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2024-07-26 Anarhynchus leschenaultii
+    leschenaultii, Newbiggin, Northumberland 2.jpg
+  commons_filename: 2024-07-26 Anarhynchus leschenaultii leschenaultii, Newbiggin,
+    Northumberland 2.jpg
+- role: secondary
+  path: Q137159050/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2024-07-26 Anarhynchus leschenaultii
+    leschenaultii, Newbiggin, Northumberland 3.jpg
+  commons_filename: 2024-07-26 Anarhynchus leschenaultii leschenaultii, Newbiggin,
+    Northumberland 3.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:01:53.093778+00:00'
+sources:
+  wikipedia_sv_revision: '55781096'
+  wikipedia_en_revision: '1314196381'
+  claude_model: claude-haiku-4-5-20251001

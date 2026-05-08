@@ -1,0 +1,135 @@
+id: Q25392
+scientific_name: Vanellus vanellus
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Vanellus
+  ioc_order: Charadriiformes
+names:
+  sv: Tofsvipa
+  en: Northern Lapwing
+abundance: allmän
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tofsvipa
+
+
+    Tofsvipa är en vadarfågel som tillhör familjen pipare. Den är en elegant fågel
+    med distinkt utseende och karakteristisk långt uppstupen tofs på huvudet. Fjäderdräkten
+    är mörkgrön med vita och svarta markeringar, särskilt påtagligt under vingarna
+    där vita fläckar syns tydligt under flykten.
+
+
+    Arten är en migrationsexpert som främst flyttar under dagtid, ofta i stora, välorganiserade
+    flockar. Den häckar över stora delar av tempererade Eurasien och använder öppna,
+    fuktiga områden som häckningsmiljö. Merparten av populationen övervintrar långt
+    söderut, från norra Afrika till södra Asien, medan vissa populations i västligaste
+    Europas låglänta områden är stannfåglar som stannar året om.
+
+
+    Tofsvipan är känd för sitt karakteristiska beteende och sin högljudda röst. Under
+    häckningstiden är den mycket territorial och framåtlutande, ofta utförande spektakulära
+    flygtuppvisningar för att försvara sitt revir. Arten föredrar öppna landskap där
+    den kan söka föda på marken efter små ryggradslösa djur och frön.'
+  en: '# Northern Lapwing
+
+
+    The Northern Lapwing is a distinctive wader found throughout temperate Eurosiberia.
+    It is instantly recognizable by its striking black and white plumage, with an
+    iridescent green back and a characteristic long, spiky crest on its head that
+    gives it a unique silhouette. The bird''s name "peewit" derives from its distinctive
+    call—a sharp, repetitive "pee-wit" or "pew-it" sound that is often heard before
+    the bird is seen.
+
+
+    Behaviorally, the Northern Lapwing is highly vocal and animated, particularly
+    during breeding season when it performs dramatic aerial displays with rapid wing-beats
+    and tumbling movements. It frequents open habitats including grasslands, farmland,
+    marshes, and wetland margins, where it forages for invertebrates by walking across
+    the ground and probing in soft soil. The species is migratory in many parts of
+    its range, though populations vary seasonally depending on local conditions.
+
+
+    The lapwing is commonly encountered in open countryside and agricultural areas,
+    often seen in small flocks or pairs. Its bold, energetic behavior and loud calls
+    make it conspicuous even from a distance, making it a familiar sight to countryside
+    observers throughout its range.'
+migration:
+  sv: '# Tofsvipa i Skandinavien och Nordeuropa
+
+
+    Tofsvipa är en flyttfågel som återvänder till Skandinavien och Nordeuropa för
+    att häcka under våren. Merparten av populationen överintrar långt söderut i Afrika,
+    Indien, Pakistan och sydöstra Kina, och återkommer till häckningsområdena när
+    temperaturen stiger. Fågeln flyttar huvudsakligen under dagtid, ofta i stora flockar,
+    vilket gör att observatörer kan följa dessa spektakulära migrationsvågor över
+    kontinenten. I låglandsområdena i västligaste Europa finns dock en stannande population
+    som stannar året runt.'
+  en: '# Northern Lapwing in Scandinavia/Northern Europe
+
+
+    The Northern Lapwing is a migratory species in Scandinavia, with breeding populations
+    throughout the region. Birds arrive in early spring, typically from March onwards,
+    to establish territories in open grasslands and wetlands. During summer months,
+    they are widespread breeders across Scandinavia and much of Northern Europe. In
+    autumn, populations begin departing in August and September, with most birds moving
+    southwestward to winter in milder regions of western Europe. Some individuals
+    may overwinter in southern Scandinavia during mild winters, but the majority of
+    northern breeding birds migrate to avoid harsh conditions. Return migration begins
+    in February and March as weather improves.'
+image_refs:
+- role: hero
+  path: Q25392/hero.jpg
+  width: 2400
+  height: 1601
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
+    Nyman</a> from Vaxholm, Sweden
+  source_url: https://commons.wikimedia.org/wiki/File:Vanellus vanellus CR5 9288 (51191855686).jpg
+  commons_filename: Vanellus vanellus CR5 9288 (51191855686).jpg
+- role: secondary
+  path: Q25392/secondary-1.jpg
+  width: 1800
+  height: 1286
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lapwing - Vanellus vanellus
+    (52227600256).jpg
+  commons_filename: Lapwing - Vanellus vanellus (52227600256).jpg
+- role: secondary
+  path: Q25392/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/46956042@N00">Arjan
+    Haverkamp</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Vanellus vanellus -Rotterdam
+    Zoo, Netherlands -chick-8a.jpg
+  commons_filename: Vanellus vanellus -Rotterdam Zoo, Netherlands -chick-8a.jpg
+review_status: approved
+review_notes: '2026-05-08: hero shows tofsvipa i flykt mot blå himmel — diagnostisk svart-vit kroppsteckning, breda rundade vingar och tydlig tofs. Klassisk silhuett som syns över sankmarker och åkrar i hela landet. Ikonisk SE-jordbrukslandskap-art, häckar i hela Sverige men har minskat senaste decennierna.'
+generated_at: '2026-05-07T23:58:29.427112+00:00'
+sources:
+  wikipedia_sv_revision: '59261719'
+  wikipedia_en_revision: '1350385540'
+  claude_model: claude-haiku-4-5-20251001

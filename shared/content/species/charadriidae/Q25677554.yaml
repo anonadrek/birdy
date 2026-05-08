@@ -1,0 +1,126 @@
+id: Q25677554
+scientific_name: Eudromias morinellus
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Eudromias
+  ioc_order: Charadriiformes
+names:
+  sv: Fjällpipare
+  en: Eurasian Dotterel
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fjällpipare
+
+
+    Fjällpipare är en liten pipare som förekommer i bergstrakter under häckningstiden.
+    Arten är känd för sin ovanliga könsordning – honan är mer intensivt färgad än
+    hanen, som är vedbiten förälder och står för runingen av äggen. Fjällpiparen har
+    relativt enkel fjäderdräkt i grå och brunaktiga toner med vit undersida, och den
+    karakteriseras av små storlek och snabb, sprallig gång.
+
+
+    Under häckningstiden ses arten på höga fjäll där den är väl anpassad till den
+    karga miljön. Den är en flyttfågel som övervinnar i långt söder innan den återvänder
+    till häckningsområdena på våren. Fjällpiparen förekommer i större delar av norra
+    Europa och Asien. Globalt sett minskar beståndet, men i Sverige visar arten en
+    positiv trend med ökande populationer.'
+  en: '# Eurasian Dotterel
+
+
+    The Eurasian dotterel is a small, delicate wader belonging to the plover family.
+    In breeding plumage, it displays distinctive features: a pale eyebrow stripe contrasts
+    with a dark cap, and the breast shows a warm buff-orange coloration bordered by
+    a black band. The underparts are largely white. Non-breeding birds appear more
+    subdued in coloration. It is relatively tame and approachable compared to other
+    plovers, often allowing close observation before flushing.
+
+
+    This species favors high-altitude and high-latitude habitats, breeding in mountainous
+    regions and Arctic tundra where it nests on rocky ground with sparse vegetation.
+    During migration and winter, it frequents similar open, elevated terrain. The
+    Eurasian dotterel has an unusual breeding system where females may lay multiple
+    clutches with different males, reversing typical gender roles in parental care.
+
+
+    The bird''s call is a soft, piping whistle. It feeds on insects and other small
+    invertebrates picked from the ground. When alarmed, it runs rather than flies,
+    relying on its cryptic plumage for concealment. The species undertakes long migrations
+    between breeding grounds in northern regions and wintering areas further south.'
+migration:
+  sv: '# Fjällpipare – Förekomst i Skandinavien
+
+
+    Fjällpipare är en flyttfågel som häckar i bergstrakter i norra Europa under sommarhalvåret.
+    Arten ankommer till sina häckningsområden i Skandinavien under våren, vanligtvis
+    från april-maj. Efter häckningssäsongen drar fjällpiparen söderut för att övervinta
+    i värmere klimat, främst i Afrika och Mellanöstern. Återflyttningen från övervintringsquarteren
+    sker under vårens senare månader. I Sverige förekommer arten huvudsakligen i fjälltrakten,
+    där den söker upp sin typiska miljö i höga bergsmiljöer.'
+  en: '# Eurasian Dotterel Migration in Scandinavia/Northern Europe
+
+
+    The Eurasian dotterel is a migratory species with a brief breeding presence in
+    northern Scandinavia during summer months. Birds arrive in late May and breed
+    on high mountain plateaus and tundra habitats, particularly in northern Norway
+    and Sweden. The breeding season is short-lived, with departure beginning in August
+    as birds migrate southward to their wintering grounds in North Africa and the
+    Middle East. By September, most individuals have left Scandinavia. Spring migration
+    sees their return in late May. As a high-altitude specialist breeding in extreme
+    northern latitudes, the dotterel''s presence in the region is highly seasonal
+    and concentrated to the brief arctic summer.'
+image_refs:
+- role: hero
+  path: Q25677554/hero.jpg
+  width: 2400
+  height: 1351
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Asarasua" title="User:Asarasua">Asarasua</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Txirri lepokoduna, 'Eudromias
+    morinellus' 01.jpg
+  commons_filename: Txirri lepokoduna, 'Eudromias morinellus' 01.jpg
+- role: secondary
+  path: Q25677554/secondary-1.jpg
+  width: 1800
+  height: 1013
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Asarasua" title="User:Asarasua">Asarasua</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Txirri lepokoduna, 'Eudromias
+    morinellus' 02.jpg
+  commons_filename: Txirri lepokoduna, 'Eudromias morinellus' 02.jpg
+- role: secondary
+  path: Q25677554/secondary-2.jpg
+  width: 1800
+  height: 1013
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Asarasua" title="User:Asarasua">Asarasua</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Txirri lepokoduna, 'Eudromias
+    morinellus' 04.jpg
+  commons_filename: Txirri lepokoduna, 'Eudromias morinellus' 04.jpg
+review_status: approved
+review_notes: '2026-05-08: hero shows fjällpipare i fjälltundra-miljö — typisk häckningshabitat på högfjäll med gles vegetation. Bilden är tagen på avstånd men individen och miljön är tydligt fältdiagnostiska. Etablerad SE-häckare på höga fjäll i norra Sverige, sommargäst april–september.'
+generated_at: '2026-05-08T00:03:34.449431+00:00'
+sources:
+  wikipedia_sv_revision: '58510330'
+  wikipedia_en_revision: '1326610484'
+  claude_model: claude-haiku-4-5-20251001

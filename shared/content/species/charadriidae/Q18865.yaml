@@ -1,0 +1,130 @@
+id: Q18865
+scientific_name: Pluvialis fulva
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Pluvialis
+  ioc_order: Charadriiformes
+names:
+  sv: Sibirisk tundrapipare
+  en: Pacific Golden Plover
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sibirisk tundrapipare
+
+
+    Sibirisk tundrapipare är en medelstor vadare som häckar i nordligaste Asien och
+    västra Alaska. Under vintern flyttar den till södra Asien och Australien, och
+    återkommer då till värmere områden för att föda upp ungarna under sommaren.
+
+
+    I Europa är arten mycket sällsynt och ses endast några få gånger per år, med ungefär
+    80 fynd dokumenterade i Sverige hittills. Den är därför en mycket eftersökt fågel
+    för många birdare.
+
+
+    Arten skilde sig senare från den närbesläktade amerikanska tundrapiparen, då man
+    insåg att det rörde sig om två distinkta arter trots tidigare klassificering som
+    samma fågel. Antalet häckande individer har minskat, men beståndet anses fortfarande
+    vara stabilt och långsiktigt livskraftigt.'
+  en: '# Pacific Golden Plover
+
+
+    The Pacific golden plover is a medium-sized shorebird belonging to the plover
+    family. It is highly migratory, breeding during summer months in the Arctic regions
+    of Alaska and Siberia before undertaking extensive migrations across the Pacific
+    during the nonbreeding season. This wide-ranging pattern makes it a regular visitor
+    across much of the Pacific basin.
+
+
+    The species displays the characteristic features typical of golden plovers, with
+    speckled golden plumage that provides effective camouflage in its tundra breeding
+    grounds. Like other plovers, it has a compact body, relatively short bill, and
+    the alert posture characteristic of shorebirds. In flight, it shows distinctive
+    markings that help distinguish it from related species.
+
+
+    As a shorebird, the Pacific golden plover frequents coastal areas, beaches, and
+    tidal flats during migration and winter. It feeds on invertebrates and small organisms
+    found in these habitats, using the typical plover foraging technique of running
+    and pausing to peck at prey. Its call is a clear, whistled note often heard during
+    migration periods, helping observers identify the species in the field.'
+migration:
+  sv: '# Sibirisk tundrapipare i Nordeuropa
+
+
+    Sibirisk tundrapipare är en sällsynt gäst i Skandinavien och övriga Europa. Arten
+    häckar i nordligaste Asien och västra Alaska, och genomför långväga flyttningar
+    till södra Asien och Australien under vintermånaderna. I Sverige har ungefär 80
+    fynd dokumenterats, vilket indikerar att arten endast uppträder sporadiskt på
+    passage eller som irrgäst. Observationerna är således mycket ovanliga och oregelbundna,
+    utan något förutsägbart mönster för ankomst eller närvaro under året.'
+  en: '# Pluvialis fulva (Pacific Golden Plover) in Scandinavia/Northern Europe
+
+
+    The Pacific Golden Plover is a rare vagrant to Scandinavia and Northern Europe,
+    as its primary migration routes span the Pacific Ocean between breeding grounds
+    in Alaska and Siberia and wintering areas across the Pacific region. While this
+    species is a highly migratory shorebird, it does not follow regular migration
+    pathways through Northern Europe or Scandinavia. Occasional records in the region
+    represent exceptional individuals that have deviated from their typical trans-Pacific
+    migration routes, typically occurring during spring or autumn migration periods
+    when vagrants are more likely to appear.'
+image_refs:
+- role: hero
+  path: Q18865/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pacific Golden Plovers Pluvialis
+    fulva DSCN3967 (10).jpg
+  commons_filename: Pacific Golden Plovers Pluvialis fulva DSCN3967 (10).jpg
+- role: secondary
+  path: Q18865/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pacific Golden Plovers Pluvialis
+    fulva DSCN3967 (5).jpg
+  commons_filename: Pacific Golden Plovers Pluvialis fulva DSCN3967 (5).jpg
+- role: secondary
+  path: Q18865/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pacific Golden Plovers Pluvialis
+    fulva DSCN3967 (6).jpg
+  commons_filename: Pacific Golden Plovers Pluvialis fulva DSCN3967 (6).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:57:18.850142+00:00'
+sources:
+  wikipedia_sv_revision: '58641229'
+  wikipedia_en_revision: '1346169847'
+  claude_model: claude-haiku-4-5-20251001

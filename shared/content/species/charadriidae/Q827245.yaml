@@ -1,0 +1,126 @@
+id: Q827245
+scientific_name: Vanellus leucurus
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Vanellus
+  ioc_order: Charadriiformes
+names:
+  sv: Sumpvipa
+  en: White-tailed Lapwing
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sumpvipa
+
+
+    Sumpvipa är en vadare som tillhör familjen pipare. Den häckar i västra och centrala
+    Asien, där den förekommer i grunda sumpmarker och fuktiga områden. Som flyttfågel
+    sprider den sig delvis till södra Asien, Mellanöstern och nordöstra Afrika under
+    övriga årstider.
+
+
+    I Europa är sumpvipa en sällsynt gäst och endast ett tiotal fynd har registrerats
+    i Sverige. Det är därför en art som väcker intresse bland fågelskådare när den
+    observeras, då den ligger långt bort från sitt normala utbredningsområde.
+
+
+    Det globala beståndet av sumpvipa anses vara livskraftigt och arten är inte hotad.
+    För den intresserade fågelskådaren är sumpvipa en art att hålla ögonen öppna efter
+    under våren och hösten, då migrationen är som mest aktiv.'
+  en: '# White-tailed Lapwing
+
+
+    The white-tailed lapwing is a wader belonging to the lapwing genus Vanellus. Its
+    scientific name perfectly describes the species: *Vanellus*, derived from Medieval
+    Latin meaning "winnowing fan" (referring to the bird''s wing movements), and *leucurus*,
+    from Ancient Greek meaning "white-tailed."
+
+
+    This lapwing is distinguished by its white tail, which contrasts with the darker
+    plumage of related species. Like other lapwings, it displays characteristic behaviour
+    typical of plovers, moving quickly across open ground with sudden stops. The species
+    is adapted to wetland habitats and grasslands where it forages for invertebrates.
+
+
+    The white-tailed lapwing is found across various regions where suitable wetland
+    and open ground habitats exist. It prefers areas with water and bare or sparsely
+    vegetated ground, making it a common sight in marshes, river floodplains, and
+    irrigated fields during appropriate seasons.'
+migration:
+  sv: '# Sumpvipa i Skandinavien/Nordeuropa
+
+
+    Sumpvipa är en mycket sällsynt gäst i Skandinavien och övriga Nordeuropa. Arten
+    häckar i västra och centrala Asien och flyttar delvis till södra Asien, Mellanöstern
+    och nordöstra Afrika. I Sverige har arten dokumenterats endast cirka tio gånger,
+    vilket gör den till en mycket ovanlig vagrant. Arten förekommer inte regelbundet
+    i regionen och utgör aldrig en naturlig del av den skandinaviska fågelfaunan under
+    året. Möten med arten måste betraktas som tillfälliga vandringar långt utanför
+    dess normala utbredningsområde.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and etymological information
+    about the White-tailed Lapwing, with no details regarding its occurrence, migration
+    patterns, or seasonal distribution in Scandinavia or Northern Europe. To provide
+    accurate information about this species'' migration and overwintering behavior
+    in the region, additional sources with specific biogeographic and phenological
+    data would be required.'
+image_refs:
+- role: hero
+  path: Q827245/hero.jpg
+  width: 2400
+  height: 1920
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:White-tailed Lapwing (Vanellus
+    leucurus (8605045409).jpg
+  commons_filename: White-tailed Lapwing (Vanellus leucurus (8605045409).jpg
+- role: secondary
+  path: Q827245/secondary-1.jpg
+  width: 1800
+  height: 1440
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:White-tailed Lapwing (Vanellus
+    leucurus (8606149906).jpg
+  commons_filename: White-tailed Lapwing (Vanellus leucurus (8606149906).jpg
+- role: secondary
+  path: Q827245/secondary-2.jpg
+  width: 1800
+  height: 1440
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:White-tailed Lapwing (Vanellus
+    leucurus (8606152182).jpg
+  commons_filename: White-tailed Lapwing (Vanellus leucurus (8606152182).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:59:09.138038+00:00'
+sources:
+  wikipedia_sv_revision: '57416859'
+  wikipedia_en_revision: '1322140804'
+  claude_model: claude-haiku-4-5-20251001

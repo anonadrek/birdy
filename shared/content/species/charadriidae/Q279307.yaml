@@ -1,0 +1,138 @@
+id: Q279307
+scientific_name: Vanellus gregarius
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Vanellus
+  ioc_order: Charadriiformes
+names:
+  sv: Stäppvipa
+  en: Sociable Lapwing
+abundance: ovanlig
+iucn_status: CR
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stäppvipa
+
+
+    Stäppvipa är en akut utrotninghotad vadare från Eurasien. Arten häckar i stäpplandskapen
+    i Ryssland och Kazakstan, men flyttar långt söderut när vintern närmar sig. Vintertid
+    finns den i områden från Östafrika över Mellanöstern till nordvästra Indien.
+
+
+    Stäppvipan är en medelstor pipare med karakteristisk tecknad huvud- och bröstmarkering.
+    Under häckningstiden är den särskilt vacker med svarta och vita markeringar. Arten
+    är oftast att se på öppna, släta marker där den söker föda på marken.
+
+
+    Arten är mycket sällsynt i Sverige, där den endast registrerats elva gånger. Vid
+    dessa tillfällen ses den ofta tillsammans med tofsvipor. Stäppvipans population
+    har minskat dramatiskt under de senaste decennierna, och arten klassificerades
+    som akut hotad av IUCN redan 2004. Orsaken till minskningen är inte helt klarlagd,
+    men habitatförlust och miljöförsämringar på häcknings- och övervintringsplatserna
+    anses spela en betydande roll.'
+  en: '# Sociable Lapwing
+
+
+    The Sociable Lapwing is a medium-sized wader belonging to the plover family, recognizable
+    by its distinctive plumage featuring a black belly contrasting with lighter upperparts.
+    This fully migratory species breeds across the steppes of Kazakhstan during the
+    breeding season, then undertakes an impressive journey to winter grounds spanning
+    the Middle East, the Indian subcontinent, Sudan, and occasionally Iberia in small
+    numbers.
+
+
+    As its name suggests, this lapwing is notably gregarious, often encountered in
+    flocks rather than solitary. It shares the characteristic alert behavior and swift
+    flight typical of plovers, foraging on open ground for invertebrates and small
+    prey. The species has historically been called the black-bellied lapwing, a reference
+    to its striking black abdominal markings that distinguish it from related plover
+    species.
+
+
+    The bird''s long-distance migration makes it dependent on suitable stopover sites
+    and wintering habitats across its range. Like other plovers, it likely produces
+    distinctive calls during breeding and migration periods, though these are less
+    documented than in some related species. Its presence in any given location is
+    determined entirely by seasonal movements, making timing crucial for observers
+    hoping to encounter this impressive migratory wader.'
+migration:
+  sv: '# Stäppvipa – Förekomst i Skandinavien/Nordeuropa
+
+
+    Stäppvipan är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten häckar
+    normalt i stäppområden i Ryssland och Kazakstan, medan den på hösten migrerar
+    söderut till övervintringsområden från Israel till nordvästra Indien samt till
+    nordöstra Afrika, framför allt i Etiopien, Eritrea och Sudan. Under höst- och
+    vårflyttningen ses stäppvipan endast tillfälligt och sporadiskt utanför sitt ordinarie
+    utbredningsområde. I Sverige har arten dokumenterats elva gånger, ofta tillsammans
+    med andra vadare som tofsvipor. Dessa fynd representerar extrema avvikelser från
+    artens normala migrationsmönster.'
+  en: '# Sociable Lapwing in Northern Europe
+
+
+    The Sociable Lapwing is a fully migratory species with only rare occurrences in
+    Scandinavia and Northern Europe. This bird breeds in Kazakhstan and undertakes
+    long-distance migration to winter in the Middle East, Indian subcontinent, and
+    Sudan, with a tiny wintering population in Iberia. Occasional records in Northern
+    Europe represent vagrant individuals well outside their normal migration routes
+    rather than regular passage or established populations. Any sightings in Scandinavia
+    would be exceptional and typically occur during spring or autumn migration periods
+    when birds occasionally deviate from their primary migration corridors.'
+image_refs:
+- role: hero
+  path: Q279307/hero.jpg
+  width: 2400
+  height: 1625
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Sanjeev_Kumar_Goyal&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Sanjeev Kumar Goyal (page does not exist)">Sanjeev Kumar
+    Goyal</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sociable Lapwing(Vanellus gregarius).jpg
+  commons_filename: Sociable Lapwing(Vanellus gregarius).jpg
+- role: secondary
+  path: Q279307/secondary-1.jpg
+  width: 1800
+  height: 1189
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:The_Great_Mule_of_Eupatoria&amp;action=edit&amp;redlink=1"
+    class="new" title="User:The Great Mule of Eupatoria (page does not exist)">The
+    Great Mule of Eupatoria</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Vanellus gregarius range map
+    2.png
+  commons_filename: Vanellus gregarius range map 2.png
+- role: secondary
+  path: Q279307/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:The_Great_Mule_of_Eupatoria&amp;action=edit&amp;redlink=1"
+    class="new" title="User:The Great Mule of Eupatoria (page does not exist)">The
+    Great Mule of Eupatoria</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Vanellus gregarius range map.png
+  commons_filename: Vanellus gregarius range map.png
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:57:33.715849+00:00'
+sources:
+  wikipedia_sv_revision: '55738452'
+  wikipedia_en_revision: '1332276366'
+  claude_model: claude-haiku-4-5-20251001

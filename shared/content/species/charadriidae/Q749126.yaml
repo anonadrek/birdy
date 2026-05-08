@@ -1,0 +1,128 @@
+id: Q749126
+scientific_name: Vanellus spinosus
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Vanellus
+  ioc_order: Charadriiformes
+names:
+  sv: Sporrvipa
+  en: Spur-winged Lapwing
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sporrvipa
+
+
+    Sporrvipa är en karakteristisk vadarfågel som tillhör familjen pipare. Den förekommer
+    i östra Medelhavsområdet och i ett brett band som sträcker sig från Västafrika
+    till Arabiska halvön, där den främst hittas i öppna och halvöppna biotoper nära
+    vatten.
+
+
+    Arten är lätt att känna igen på sitt iögonfallande utseende med svart och vit
+    färgteckning. Det mest karakteristiska kännetecknet är de spetsiga sporrar som
+    finns på vingarna – dessa gav arten sitt namn. Under flykten är den mycket påfallande
+    med sin kontrasterande fjäderdräkt.
+
+
+    Sporrvipa är en aktiv och högljudd fågel som ofta ses i par eller mindre grupper.
+    Den är framför allt känd för sitt aggressiva beteende under häckningstiden, då
+    den försvarar sitt revir energiskt mot intänkande. Arten föder sig på insekter
+    och andra smådjur som den plockar från marken.'
+  en: '# Spur-winged Lapwing
+
+
+    The spur-winged lapwing is a distinctive wader belonging to the lapwing group
+    within the Charadriidae family. It is a notably large member of this wader family,
+    making it relatively easy to identify in the field compared to smaller shorebird
+    species.
+
+
+    Unfortunately, the source material provided contains limited detail about specific
+    identification features, behavior, vocalizations, and habitat preferences. To
+    give you a comprehensive guide covering appearance, distinctive calls, behavioral
+    traits, and where this species is typically encountered, more detailed information
+    would be needed.
+
+
+    For a complete bird guide entry on the spur-winged lapwing, I would recommend
+    consulting additional ornithological sources that provide descriptions of its
+    plumage patterns, wing markings (particularly the characteristic spurs), call
+    characteristics, feeding behavior, and geographic distribution and habitat preferences.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (The source text only mentions that the Spur-winged Lapwing occurs in the eastern
+    Mediterranean region and across a band from West Africa to the Arabian Peninsula,
+    with no information about occurrence in Scandinavia/Northern Europe or migration
+    patterns throughout the year.)'
+  en: '# Vanellus spinosus – Migration and Distribution in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Spur-winged Lapwing is primarily a species of Africa, the Middle East, and
+    southern Asia. It does not have a regular or established presence in Scandinavia
+    or Northern Europe, and therefore detailed information about its occurrence, migration
+    patterns, or seasonal distribution in this region cannot be provided. Sightings
+    in Northern Europe would be considered vagrant or accidental occurrences rather
+    than part of a normal migration cycle.'
+image_refs:
+- role: hero
+  path: Q749126/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sporenkievit - Spur-winged Lapwing
+    - Vanellus spinosus.jpg
+  commons_filename: Sporenkievit - Spur-winged Lapwing - Vanellus spinosus.jpg
+- role: secondary
+  path: Q749126/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sporenkievit - Spur-winged Lapwing
+    - Vanellus spinosus 02.jpg
+  commons_filename: Sporenkievit - Spur-winged Lapwing - Vanellus spinosus 02.jpg
+- role: secondary
+  path: Q749126/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Eitan_f" title="User:Eitan f">Eitan
+    Ferman</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Vanellus spinosus - TelAviv.JPG
+  commons_filename: Vanellus spinosus - TelAviv.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:56:52.043332+00:00'
+sources:
+  wikipedia_sv_revision: '58595134'
+  wikipedia_en_revision: '1332573754'
+  claude_model: claude-haiku-4-5-20251001

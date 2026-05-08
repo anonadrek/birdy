@@ -1,0 +1,99 @@
+id: Q18851
+scientific_name: Thinornis dubius
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Charadrius
+  ioc_order: Charadriiformes
+names:
+  sv: Mindre strandpipare
+  en: Little Ringed Plover
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mindre strandpipare
+
+
+    Mindre strandpipare är en liten pipare som återfinns över stora delar av Europa
+    och Asien. Den är en flyttfågel som övervintrar i tropiska områden. Fågeln häckar
+    på öppna, grusiga och sandiga marker, ofta längs insjöar och vattendrag. Det har
+    blivit allt vanligare att arten också bosätter sig i människoskapade miljöer,
+    vilket tyder på att den är anpassningsbar.
+
+
+    Arten är globalt livskraftig enligt internationella bedömningar. Med sin förmåga
+    att utnyttja olika typer av öppna, grus- och sandiga habitat har mindre strandpipare
+    kunnat upprätthålla sina populationer väl. Denna flexibilitet när det gäller häckningsplats
+    har gjort arten framgångsrik i sitt utbredningsområde.'
+  en: '# Little Ringed Plover
+
+
+    The Little Ringed Plover is a diminutive wading bird easily identified by its
+    distinctive facial markings. It displays brown upperparts contrasting with a white
+    forehead, breast, and belly. A striking black neckband encircles the lower neck,
+    while a bold black eye-mask is framed by a conspicuous yellow eyering—a key feature
+    distinguishing it from larger relatives.
+
+
+    This species favors open gravel habitats during breeding season, particularly
+    around freshwater environments such as gravel pits, river edges, and small islands.
+    It is a migratory bird, shifting locations between breeding and wintering grounds.
+    Its feeding behavior involves methodically foraging through muddy ground and shallow
+    water margins for invertebrates.
+
+
+    The bird''s diet comprises primarily insects and small worms, which it typically
+    hunts by running across exposed ground and pausing to pick at prey items. It remains
+    an active ground-feeder, well-adapted to open terrain with minimal vegetation.
+    Its small size and lightweight frame make it ideally suited to moving swiftly
+    across bare earth and gravelly substrates.'
+migration:
+  sv: '# Mindre strandpipare – Förekomst i Skandinavien
+
+
+    Mindre strandpipare är en flyttfågel som förekommer i Skandinavien och Nordeuropa
+    under häckningstiden på våren och sommaren. Arten ankommer till området under
+    april-maj för att häcka i grusiga och sandiga marker vid insjöar och vattendrag.
+    Under hösten, vanligtvis från augusti-september, påbörjar arten sin långväga migration
+    söderut till tropiska övervintringsområden i Afrika och södra Asien. Fågeln är
+    således helt frånvarande från Skandinavien under vintermånaderna.'
+  en: '# Little Ringed Plover (Thinornis dubius) in Scandinavia
+
+
+    The Little Ringed Plover is a migratory species that occurs in Scandinavia during
+    the breeding season, typically arriving in spring and departing in autumn. However,
+    the provided source text does not contain specific information about its arrival
+    months, overwintering locations, or detailed migration patterns in Northern Europe.
+    To provide accurate information about when this species arrives in Scandinavia,
+    where northern populations overwinter, and their specific migration routes, more
+    detailed regional migration data would be needed.
+
+
+    Migration data unavailable for this species.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:59:09.307116+00:00'
+sources:
+  wikipedia_sv_revision: '59251641'
+  wikipedia_en_revision: '1352507808'
+  claude_model: claude-haiku-4-5-20251001

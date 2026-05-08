@@ -936,6 +936,7 @@
   ioc_order: Charadriiformes
   common_en: European Golden Plover
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q216836
   scientific_name: Pluvialis dominica
   family: Charadriidae
@@ -954,24 +955,25 @@
   ioc_order: Charadriiformes
   common_en: Eurasian Dotterel
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26816
   scientific_name: Charadrius hiaticula
   family: Charadriidae
   ioc_order: Charadriiformes
   common_en: Common Ringed Plover
   vp_status: H
-- wikidata_id: Q136297294
-  scientific_name: Thinornis tricollaris
-  family: Charadriidae
-  ioc_order: Charadriiformes
-  common_en: Three-banded Plover
-  vp_status: H
+  abundance: allmän
+# Q136297294 (Thinornis tricollaris / Three-banded Plover) skipped 2026-05-08:
+# Wikidata stub-entry saknar P171 (parent taxon) → pipelinen kan inte traversa
+# till family/genus/order. Afrikansk art utan vagrant-track i Norden; not blocking.
+# Återinför om Q-ID hittas med kompletta taxonomiska relationer.
 - wikidata_id: Q25392
   scientific_name: Vanellus vanellus
   family: Charadriidae
   ioc_order: Charadriiformes
   common_en: Northern Lapwing
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q749126
   scientific_name: Vanellus spinosus
   family: Charadriidae

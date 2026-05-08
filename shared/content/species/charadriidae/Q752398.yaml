@@ -1,0 +1,99 @@
+id: Q752398
+scientific_name: Vanellus indicus
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Vanellus
+  ioc_order: Charadriiformes
+names:
+  sv: Rödflikvipa
+  en: Red-wattled Lapwing
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red-wattled Lapwing
+
+
+    The red-wattled lapwing is a large, ground-dwelling plover found across Asia.
+    It is a distinctive wader that cannot perch, instead remaining on the ground where
+    its cryptically patterned plumage provides camouflage. The species derives one
+    colloquial name, the "did-he-do-it bird," from its characteristically loud alarm
+    calls, which sound like those words and serve to alert other birds and animals
+    to potential threats in the vicinity.
+
+
+    The species is typically seen in pairs or small groups in open areas near water,
+    though it sometimes gathers in larger flocks during the non-breeding season. It
+    nests in simple ground scrapes, where it lays three to four well-camouflaged eggs.
+    Both adults fiercely defend their nest, diving repeatedly at predators while calling
+    loudly. The chicks are precocial, hatching ready to follow their parents immediately
+    to feed. When danger threatens, the young instinctively crouch and hide low in
+    grass or on bare ground, relying on their cryptic coloration for protection.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides no information about the occurrence of Red-wattled Lapwing
+    in Scandinavia or Northern Europe, nor does it contain any details about migration
+    patterns, seasonal movements, or overwintering behavior in these regions. This
+    species is described as Asian, and the provided Wikipedia excerpt focuses only
+    on general behavior, breeding, and non-breeding season aggregations without geographic
+    specificity relevant to Northern Europe.'
+image_refs:
+- role: hero
+  path: Q752398/hero.jpg
+  width: 2114
+  height: 1315
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:D%C3%BBrzan" title="User:Dûrzan">Dûrzan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-wattled Lapwing - Vanellus
+    indicus.jpg
+  commons_filename: Red-wattled Lapwing - Vanellus indicus.jpg
+- role: secondary
+  path: Q752398/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-wattled Lapwing Vanellus
+    indicus Juvenile DSCN7305 (11).jpg
+  commons_filename: Red-wattled Lapwing Vanellus indicus Juvenile DSCN7305 (11).jpg
+- role: secondary
+  path: Q752398/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Red wattled Lapwing (Vanellus
+    indicus) (23121009336).jpg
+  commons_filename: Red wattled Lapwing (Vanellus indicus) (23121009336).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:58:19.175208+00:00'
+sources:
+  wikipedia_sv_revision: '58642442'
+  wikipedia_en_revision: '1351337438'
+  claude_model: claude-haiku-4-5-20251001

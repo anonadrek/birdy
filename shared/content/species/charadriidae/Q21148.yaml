@@ -1,0 +1,126 @@
+id: Q21148
+scientific_name: Pluvialis apricaria
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Pluvialis
+  ioc_order: Charadriiformes
+names:
+  sv: Ljungpipare
+  en: European Golden Plover
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ljungpipare
+
+
+    Ljungpipare är en medelstor pipare som tillhör familjen pipare. Under häckningstiden
+    bär den ett karakteristiskt guldgult fjäderdräkt med svarta partier på undersidan
+    och ansiktet, medan den på hösten blir mer gråbrun och diskret. Fågeln är en skicklig
+    löpare som ofta ses gå på marken eller stå stilla och lyssna efter bytesdjur.
+
+
+    Ljungpiparen häckar på öppna, lågt växtäta miljöer som hedar, mossar och tundra
+    i högre norr. Här söker den sin föda på marken, bestående av insekter och andra
+    ryggradslösa djur. Under vintertid är fågeln migratorisk och flyttar söderut till
+    västra Europa och Medelhavsregionen för att söka föda på mer öppna områden.
+
+
+    Arten är globalt bedömd som livskraftig och uppvisar en stabil populationstrend.'
+  en: '# European Golden Plover
+
+
+    The European golden plover is a relatively large plover with distinctive golden-spangled
+    plumage on its back and crown. It can be distinguished from its smaller cousins,
+    the American and Pacific golden plovers, by its stockier build, shorter legs,
+    and notably white rather than grey feathers in the armpit area. In breeding plumage,
+    adults display striking black underparts bordered by a white stripe running from
+    the forehead down the neck and along the flanks.
+
+
+    This species favors open habitats including moorlands, grasslands, and tundra
+    regions where it nests during the breeding season. It is a migratory bird, moving
+    to coastal areas and lowland grasslands during winter. European golden plovers
+    are typically seen singly or in small groups on the ground, where they forage
+    for insects, spiders, and other invertebrates using their characteristic stop-and-peck
+    feeding technique. They are alert and relatively approachable birds.
+
+
+    The call is a distinctive, mournful whistle—"tlu-ee"—which is particularly audible
+    during the breeding season. In flight, the bird appears compact and swift, showing
+    the contrast between its dark upperparts and white underparts. These plovers are
+    active both day and night, particularly during migration periods.'
+migration:
+  sv: '# Ljungpipare – årlig förekomst i Skandinavien
+
+
+    Ljungpipare är en flyttfågel som häckar i norra Skandinavien och återvänder på
+    våren för att reproducera sig på hedar, mossar och tundra. Fågeln anländer vanligtvis
+    från april till maj efter att ha tillbringat vintern längre söderut. Under hösten,
+    från augusti till oktober, påbörjar ljungpiparen sin återflyttning västerut mot
+    Västeuropa och Medelhavsområdet där den övervintrar. Under vintertiden är arten
+    således mycket sällsynt eller helt frånvarande från sitt nordiska häckningsområde.'
+  en: '# European Golden Plover Migration in Scandinavia
+
+
+    The European Golden Plover is a migratory species in Scandinavia and Northern
+    Europe. Birds breeding in the region depart in autumn, typically from August onwards,
+    heading to wintering grounds in southern Europe, North Africa, and the Mediterranean
+    region. Return migration occurs in spring, with plovers arriving back at their
+    breeding territories from March through May. Some individuals may overwinter in
+    milder coastal areas of Northern Europe during favorable conditions, but the majority
+    vacate breeding grounds during winter months.'
+image_refs:
+- role: hero
+  path: Q21148/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:European golden plover (Pluvialis
+    apricaria) in flight.jpg
+  commons_filename: European golden plover (Pluvialis apricaria) in flight.jpg
+- role: secondary
+  path: Q21148/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pluvialis apricaria in flight.jpg
+  commons_filename: Pluvialis apricaria in flight.jpg
+- role: secondary
+  path: Q21148/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/196198470@N02">Sam
+    Thomas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Golden plover Pluvialis apricaria,
+    Foel Fras (52973860519).jpg
+  commons_filename: Golden plover Pluvialis apricaria, Foel Fras (52973860519).jpg
+review_status: approved
+review_notes: '2026-05-08: hero shows ljungpipare i flykt över vatten — dorsal vy med diagnostisk gyllenfläckig ovansida och kontrast mot mörk buk. Skarp, fältdiagnostisk bild av god kvalitet. Etablerad SE-häckare på fjäll, ljungmark och myrar i hela landet, vanligare i norr.'
+generated_at: '2026-05-07T23:57:11.659185+00:00'
+sources:
+  wikipedia_sv_revision: '59207741'
+  wikipedia_en_revision: '1351369823'
+  claude_model: claude-haiku-4-5-20251001

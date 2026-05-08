@@ -1,0 +1,84 @@
+id: Q137162124
+scientific_name: Anarhynchus pecuarius
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Anarhynchus
+  ioc_order: Charadriiformes
+names:
+  sv: null
+  en: Kittlitz’s Plover
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Herdepipare
+
+
+    Herdepipare, även kallad kittlitzstrandpipare, är en liten afrikansk vadarfågel
+    som tillhör familjen pipare. Arten är en ytterst sällsynt gäst i Europa och förekommer
+    endast sporadiskt i Medelhavsområdet, där den utgör en stor raritet för fågelskådare.
+    Beståndet i sitt ursprungliga utbredningsområde anses dock vara livskraftigt och
+    stabilt.
+
+
+    Denna lilla vadarfågel är lätt att förvexla med andra strandpipor, men utmärker
+    sig genom sin kompakta byggnad och anpassning till specifika biotoper i Afrika.
+    Arten är en typisk vadarfågel som söker föda på marken, ofta på områden med gles
+    vegetation och sand- eller steniga substrat.
+
+
+    För den som får glädjen att observera denna sällsynta besökare från söder är det
+    ett värdefullt fynd. Även om uppgifter om utseende, beteende och läte är begränsade
+    i denna källtext, representerar varje sighting ett viktigt bidrag till kunskap
+    om artens migrationsvägar och spridning utanför Afrika.'
+  en: '# Kittlitz''s Plover
+
+
+    Kittlitz''s plover is a small shorebird belonging to the plover family. It displays
+    monomorphic plumage, meaning males and females look identical. The species inhabits
+    a variety of open habitats including coastal and inland saltmarshes, sandy or
+    muddy riverbanks, and alkaline grasslands with short vegetation that provide suitable
+    breeding grounds.
+
+
+    The bird is native to much of Sub-Saharan Africa, the Nile Delta, and Madagascar,
+    where it breeds in these characteristic shallow-water and grassland environments.
+    It is thought to be mainly polygamous in its breeding behaviour, a trait distinguishing
+    it from many other plover species that form monogamous pairs.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    Kittlitz''s Plover is an African species with no established occurrence in Scandinavia
+    or Northern Europe. The provided source text contains no information regarding
+    migration patterns, seasonal movements, or presence in these regions. This small
+    shorebird is native to Sub-Saharan Africa, the Nile Delta, and Madagascar, remaining
+    outside the typical range of Northern European bird fauna.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:01:41.654015+00:00'
+sources:
+  wikipedia_sv_revision: '58949354'
+  wikipedia_en_revision: '1314834343'
+  claude_model: claude-haiku-4-5-20251001

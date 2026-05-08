@@ -1,0 +1,127 @@
+id: Q26816
+scientific_name: Charadrius hiaticula
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Charadrius
+  ioc_order: Charadriiformes
+names:
+  sv: Större strandpipare
+  en: Common Ringed Plover
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Större strandpipare
+
+
+    Större strandpipare är en medelstor vadarfågel som tillhör pipfamiljen. Det är
+    en livskraftig art med vid utbredning över norra Europa och Asien, samt förekommer
+    även i nordöstra Kanada. Arten är långflyttare och lämnar sina häckningsområden
+    under vintern för att söka sig till södra Europa, Afrika och olika delar av Asien.
+
+
+    Fågeln är väl anpassad för att leva på öppna, kuperade miljöer som strander, sandiga
+    marker och moräner. Som typisk vadarfågel söker det föda genom att springa och
+    plocka från marken. Större strandpipare är erkänd för sitt karakteristiska utseende
+    med sin vita och bruna teckningsbild och markanta bandmönster på huvud och bröst.'
+  en: '# Common Ringed Plover
+
+
+    The Common Ringed Plover is a small wading bird with distinctive markings that
+    make it easy to identify. It displays a bold black and white head pattern featuring
+    a black mask across the eyes and a black band across the chest, contrasting with
+    its buff-brown upperparts and white underparts. Its orange-yellow legs and orange-red
+    bill complete its striking appearance.
+
+
+    This plover favours open, sandy habitats such as beaches, lakeshores, and gravel
+    plains. It is an active forager, typically running along the ground in short bursts
+    before pausing to peck at prey items like small invertebrates and insects. When
+    disturbed, it may employ a broken-wing display to distract predators from its
+    nest or young. Its call is a distinctive soft, melodic whistle, often heard during
+    breeding displays and territorial interactions.
+
+
+    The species breeds across much of northern Eurasia and Greenland, where it nests
+    in simple scrapes on the ground. It is highly migratory, with populations moving
+    to coastal regions and inland wetlands during winter months. The Common Ringed
+    Plover''s preference for sparsely vegetated ground and its adaptability to various
+    open habitats make it a relatively familiar sight to those who frequent suitable
+    breeding and wintering grounds.'
+migration:
+  sv: '# Större strandpipare – Flyttning i Norden
+
+
+    Större strandpipare är en långdistansflytt som har stor utbredning i norra Europa
+    och Asien. Under sommaren häckar arten i Skandinavien och övriga nordiska regioner.
+    När hösten kommer, migrerar fåglarna söderut för att övernvintra. Vinterkvarteren
+    ligger främst i södra Europa, Afrika samt östra, södra och sydvästra Asien. På
+    våren återvänder större strandpipare till sina häckningsområden i norr. Arten
+    är således en typisk långdistansflytt som följer ett regelbundet årscyklus mellan
+    nord och söd.'
+  en: '# Common Ringed Plover - Scandinavian Occurrence
+
+
+    The Common Ringed Plover is a migratory species in Scandinavia and Northern Europe.
+    Birds breeding in the region typically arrive in spring (April-May) from their
+    wintering grounds in Africa and southern Europe. They breed throughout the summer
+    on coastal areas, sandy shores, and inland habitats across Scandinavia. In autumn
+    (August-September), populations migrate southward, with most individuals leaving
+    by October to winter in Africa, the Mediterranean region, and along Atlantic coasts.
+    Small numbers may occasionally overwinter in ice-free coastal areas of southern
+    Scandinavia during mild winters, but the majority of northern breeding populations
+    are absent during winter months.'
+image_refs:
+- role: hero
+  path: Q26816/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ringed plover (Charadrius hiaticula).jpg
+  commons_filename: Ringed plover (Charadrius hiaticula).jpg
+- role: secondary
+  path: Q26816/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common ringed plover (Charadrius
+    hiaticula), Seltjarnarnes, Iceland.jpg
+  commons_filename: Common ringed plover (Charadrius hiaticula), Seltjarnarnes, Iceland.jpg
+- role: secondary
+  path: Q26816/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ringed Plover - Charadrius hiaticula
+    - Juvenile (51427262079).jpg
+  commons_filename: Ringed Plover - Charadrius hiaticula - Juvenile (51427262079).jpg
+review_status: approved
+review_notes: '2026-05-08: hero shows större strandpipare som födosöker på sandstrand med mask i näbben — diagnostiskt svart bröstband, ansiktsmask, gulorange ben och spegling i vatten. Skarp fältdiagnostisk bild. Etablerad SE-häckare längs hela kusten samt vid sjöar och vattendrag i inlandet.'
+generated_at: '2026-05-07T23:58:21.958323+00:00'
+sources:
+  wikipedia_sv_revision: '58946350'
+  wikipedia_en_revision: '1342334533'
+  claude_model: claude-haiku-4-5-20251001

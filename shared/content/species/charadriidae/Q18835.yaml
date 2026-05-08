@@ -1,0 +1,135 @@
+id: Q18835
+scientific_name: Pluvialis squatarola
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Pluvialis
+  ioc_order: Charadriiformes
+names:
+  sv: Kustpipare
+  en: Grey Plover
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kustpipare
+
+
+    Kustpipare är en medelstor pipare som förekommer på tundra i Arktis under häckningstiden,
+    särskilt i norra Ryssland, Alaska och Kanada. Under vintermånaderna sprider arten
+    sig längs kuster världen över, där den lever av små djur som det plockar från
+    sanden och mudret.
+
+
+    Under häckningstiden bär kustpiparen en karakteristisk dräkt med svart bröst och
+    ansikte samt grå och svart rygg. På vintern blir färgerna mer dova och gråaktiga.
+    Arten är snabb och smidig på marken och flyger fort med snärtande vingslag.
+
+
+    Arten är talrik men populationen har minskat märkbart de senaste åren. Denna nedgång
+    är så kraftig att kustpiparen sedan 2024 klassificeras som sårbar enligt IUCN.
+    Arten är relativt lätt att höra till sitt karakteristiska samtal, en trillande
+    tvåstavigt läte som ofta hörs när fågeln flyger.'
+  en: '# Grey Plover
+
+
+    The grey plover is a large plover species that breeds across Arctic regions and
+    undertakes extensive migrations, establishing a nearly worldwide coastal distribution
+    outside the breeding season. Its striking appearance changes seasonally: during
+    breeding plumage, it displays a distinctive black belly contrasting sharply with
+    white underparts and grey-mottled upperparts, while non-breeding birds appear
+    more uniformly grey above with white below. The species typically favours coastal
+    habitats, particularly mudflats, beaches, and estuaries where it forages for invertebrates.
+
+
+    In behaviour, the grey plover is generally wary and alert, often seen singly or
+    in small groups rather than large flocks. It employs the characteristic plover
+    feeding technique of running and stopping to peck at prey. The bird''s distinctive
+    call is a clear, far-carrying whistle that is often the first indication of its
+    presence. This plover is a true long-distance migrant, with populations moving
+    between Arctic breeding grounds and wintering areas across temperate and tropical
+    coasts worldwide, making it one of the most widely distributed plover species
+    globally.'
+migration:
+  sv: '# Kustpipare – Årlig förekomst i Nordeuropa
+
+
+    Kustpipare är en långdistansmigrant som förekommer i Skandinavien och Nordeuropa
+    främst under flyttningsperioderna. Arten häckar på arktisk tundra i norra Ryssland
+    och Alaska, långt norr om sitt övervintringsområde. Under hösten migrerar kustpipare
+    genom Nordeuropa på väg till sina övervintringsplatser längs västeuropeiska kuster
+    och längre söderut. Under våren återvänder arten genom området. Under vintermånaderna
+    förekommer arten endast sporadiskt längs skandinaviska kuster, där den övervintrarvid
+    öppet vatten och kustnära miljöer. Arten är en regelbunden genomflyttare snarare
+    än en fast övervintrare i Skandinavien.'
+  en: '# Grey Plover (Kustpipare) - Seasonal Occurrence in Northern Europe
+
+
+    The Grey Plover is a long-distance migrant that passes through Scandinavia and
+    northern Europe during spring and autumn migration periods. Birds arrive in northern
+    European coastal areas from late March through May on their way to Arctic breeding
+    grounds, where they breed in tundra regions. After breeding, they return southward
+    from July onwards, with peak passage typically occurring in August and September.
+    Most Grey Plovers winter in more southern coastal regions, including parts of
+    southern Scandinavia and Atlantic coasts, though some individuals may overwinter
+    in milder coastal areas. The species is primarily a passage migrant through northern
+    Europe rather than a year-round resident.'
+image_refs:
+- role: hero
+  path: Q18835/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grey plover (Pluvialis squatarola)
+    2022.jpg
+  commons_filename: Grey plover (Pluvialis squatarola) 2022.jpg
+- role: secondary
+  path: Q18835/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grey plover (Pluvialis squatarola)
+    2022 2.jpg
+  commons_filename: Grey plover (Pluvialis squatarola) 2022 2.jpg
+- role: secondary
+  path: Q18835/secondary-2.jpg
+  width: 1800
+  height: 1120
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/44093058@N06">Blondinrikard
+    Fröberg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common sandpiper, Actitis hypoleucos,
+    Drillsnäppa, Northern lapwing, Vanellus vanellus, Tofsvipa and Grey plover Black-bellied
+    plover, Pluvialis squatarola, Kustpipare (51378489140).jpg
+  commons_filename: Common sandpiper, Actitis hypoleucos, Drillsnäppa, Northern lapwing,
+    Vanellus vanellus, Tofsvipa and Grey plover Black-bellied plover, Pluvialis squatarola,
+    Kustpipare (51378489140).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:57:36.187824+00:00'
+sources:
+  wikipedia_sv_revision: '57970020'
+  wikipedia_en_revision: '1331002813'
+  claude_model: claude-haiku-4-5-20251001

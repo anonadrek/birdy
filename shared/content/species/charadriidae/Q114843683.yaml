@@ -1,0 +1,128 @@
+id: Q114843683
+scientific_name: Anarhynchus atrifrons
+taxonomy:
+  family: Charadriidae
+  family_sv: Pipare
+  genus: Anarhynchus
+  ioc_order: Charadriiformes
+names:
+  sv: Tibetpipare
+  en: Tibetan Sand Plover
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tibetpipare
+
+
+    Tibetpipare är en liten fågelart inom familjen pipare som förekommer i Centralasien.
+    Det är närbesläktat med kamtjatkapipare och ökenpipare, arter som liknar varandra
+    på flera sätt. Fram till nyligen klassificerades tibetpipare och kamtjatkapipare
+    tillsammans som en gemensam art kallad mongolpipare, innan de separerades till
+    två olika arter baserat på nyare kunskaper.
+
+
+    Arten häckar i Centralasien där det är anpassat till de förhållanden som råder
+    i regionen. För den som är intresserad av att observera denna art är det viktigt
+    att söka i dess naturliga utbredningsområde i höglanden och öppna miljöer i Asien,
+    där den tillsammans med sina närbesläktade arter utgör en del av det lokala fågelfaunan.'
+  en: '# Tibetan Sand Plover
+
+
+    The Tibetan sand plover is a small wader belonging to the plover family. It is
+    a compact bird adapted for life in open, sparse habitats across high-altitude
+    regions.
+
+
+    This species breeds across extensive highland areas including the Pamir Mountains,
+    Tian Shan mountain range, the Tibetan Plateau, and southern Mongolia. Following
+    the breeding season, it undertakes a substantial migration southward. The species
+    winters across a wide range in Africa, from the eastern to southern regions, and
+    throughout south, east, and southeast Asia, making it a long-distance migratory
+    bird.
+
+
+    The Tibetan sand plover''s breeding and wintering ranges reflect its preference
+    for open terrain and its remarkable capacity for long-distance travel between
+    distant continents.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller endast information om att Tibetpipare häckar
+    i Centralasien och dess släktskap med andra pipare-arter. Det finns ingen information
+    om förekomst i Skandinavien/Nordeuropa, migrationsmönster, övervintringsområden
+    eller ankomstmånader. Därför kan jag inte tillhandahålla faktiska migrationsuppgifter
+    för denna art i regionen.'
+  en: '# Tibetan Sand Plover in Northern Europe
+
+
+    The Tibetan Sand Plover does not occur in Scandinavia or Northern Europe. This
+    species breeds in high-altitude regions of Central Asia, including the Pamir Mountains,
+    Tian Shan, Tibetan Plateau, and southern Mongolia. During winter, it migrates
+    to Africa and southern and southeastern Asia, where it remains until returning
+    to its breeding grounds in spring. The species'' range is entirely restricted
+    to Asia and Africa, making it absent from Scandinavian and Northern European territories
+    year-round.'
+image_refs:
+- role: hero
+  path: Q114843683/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tibetan Sand Plover Anarhynchus
+    atrifrons DSCN4277 01.jpg
+  commons_filename: Tibetan Sand Plover Anarhynchus atrifrons DSCN4277 01.jpg
+- role: secondary
+  path: Q114843683/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tibetan Sand Plover Anarhynchus
+    atrifrons DSCN4277 02.jpg
+  commons_filename: Tibetan Sand Plover Anarhynchus atrifrons DSCN4277 02.jpg
+- role: secondary
+  path: Q114843683/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tibetan Sand Plover Anarhynchus
+    atrifrons DSCN4277 03.jpg
+  commons_filename: Tibetan Sand Plover Anarhynchus atrifrons DSCN4277 03.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-07T23:59:46.268274+00:00'
+sources:
+  wikipedia_sv_revision: '55749457'
+  wikipedia_en_revision: '1314622904'
+  claude_model: claude-haiku-4-5-20251001
