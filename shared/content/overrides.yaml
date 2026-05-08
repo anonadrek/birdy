@@ -210,3 +210,33 @@ species:
     description_accept_missing: [sv]  # Scotocerca inquieta (Snårsångare / Streaked Scrub Warbler) — afrikansk/mellanöstern, ingen svwiki
   Q650114:
     description_accept_missing: [en]  # Cettia cetti (Cettisångare / Cetti's Warbler) — sydeuropeisk, enwiki lead saknas/för kort
+  # Ciconiidae batch (2026-05-08): exotic storks with sparse coverage.
+  Q308199:
+    description_accept_missing: [en]  # Ciconia abdimii (Blåkindad stork / Abdim's Stork) — afrikansk, enwiki lead för kort
+  Q655510:
+    description_accept_missing: [sv]  # Mycteria ibis (Afrikansk ibisstork / Yellow-billed Stork) — afrikansk, ingen svwiki
+  # Cisticolidae batch (2026-05-08): mellanöstern/afrikanska sångare med sparse coverage + image-gap.
+  Q117256935:
+    description_accept_missing: [sv]  # Prinia lepida (Dvärgprinia / Delicate Prinia) — mellanöstern, ingen svwiki
+  Q2609351:
+    description_accept_missing: [sv]  # Spiloptila clamans (Sahelsångare / Cricket Warbler) — afrikansk, ingen svwiki
+    allow_missing_images: true  # Commons saknar foto över MIN_DIMENSION=2048
+  # Columbidae batch (2026-05-08): exotic doves/pigeons with sparse svwiki + image-gap.
+  Q1030039:
+    description_accept_missing: [en]  # Streptopelia lugens (Mörk turturduva / Dusky Turtle Dove) — afrikansk, enwiki lead för kort
+  Q1072609:
+    description_accept_missing: [sv]  # Streptopelia semitorquata (Rödögd duva / Red-eyed Dove) — afrikansk, ingen svwiki
+  Q1188385:
+    description_accept_missing: [en]  # Treron waalia (Gulbukig grönduva / Bruce's Green Pigeon) — afrikansk, enwiki lead för kort
+  Q536817:
+    description_accept_missing: [sv, en]  # Columba bollii (Kanarieduva / Bolle's Pigeon) — Kanarieöarna endemic, båda wikis sparse
+  Q704987:
+    description_accept_missing: [sv]  # Streptopelia orientalis (Större turturduva / Oriental Turtle Dove) — asiatisk, ingen svwiki
+  Q932119:
+    description_accept_missing: [sv]  # Columba eversmanni (Turkestanduva / Yellow-eyed Pigeon) — centralasiatisk, ingen svwiki
+    allow_missing_images: true  # Commons saknar foto över MIN_DIMENSION=2048
+  Q933542:
+    description_accept_missing: [sv]  # Columba junoniae (Lagerduva / Laurel Pigeon) — Kanarieöarna endemic, ingen svwiki
+  # Coraciidae batch (2026-05-08).
+  Q961342:
+    description_accept_missing: [sv]  # Coracias abyssinicus (Savannblåkråka / Abyssinian Roller) — afrikansk, ingen svwiki

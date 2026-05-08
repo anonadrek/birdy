@@ -1,0 +1,139 @@
+id: Q25352
+scientific_name: Ciconia ciconia
+taxonomy:
+  family: Ciconiidae
+  family_sv: Storkar
+  genus: Ciconia
+  ioc_order: Ciconiiformes
+names:
+  sv: Vit stork
+  en: White Stork
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vit stork
+
+
+    Vit stork är en mycket stor fågel som omöjligt går att förväxla med andra arter.
+    Den har en långsträckt kropp med lång hals, höga röda ben och imponerande breda
+    vingar. Fjäderdräkten är huvudsakligen vit, men arm- och vingpennorna är svarta,
+    vilket skapar en iögonfallande kontrast när fågeln flyger. Näbben är lång och
+    röd, liksom benen.
+
+
+    Arten häckar i Europa, norra Afrika och västra Asien, där den bygger stora bon
+    ofta på människans konstruktioner som stugor eller kyrktorn. Vit stork föredrar
+    fuktiga områden som våtmarker och åkrar där den söker föda på marken. Den är en
+    långflyttare som övervintra i Afrika.
+
+
+    Fågeln är ofta tyst, men kan producera karakteristiska ljud genom att klappra
+    med näbben – en rytmisk och tydlig ljud som är typisk för arten och ofta hörs
+    under häckningstiden.'
+  en: '# White Stork
+
+
+    The white stork is a striking large bird measuring 100–115 cm in length with an
+    impressive wingspan of 155–215 cm. Its plumage is predominantly white with black
+    flight feathers, while adults display distinctive long red legs and long pointed
+    red beaks. Two subspecies exist with slight size variations, breeding across Europe
+    extending north to subarctic regions, northwestern Africa, and into central Asia,
+    with populations also found in southern Africa.
+
+
+    This is a long-distance migrant of remarkable endurance. European populations
+    winter in Africa, from tropical regions to the southern tip of the continent,
+    while some individuals winter on the Indian subcontinent. During migration between
+    continents, the species demonstrates sophisticated route-finding behavior, avoiding
+    the Mediterranean Sea where thermal updrafts are absent. Instead, it detours eastward
+    via the Levant or westward through the Strait of Gibraltar, relying on these thermal
+    corridors for efficient soaring flight—a energy-conserving strategy essential
+    for such extensive journeys.
+
+
+    The white stork is often seen in open and semi-open habitats where it can readily
+    hunt for prey. Its breeding range spans from temperate to subtropical zones, with
+    populations returning to traditional nesting sites year after year, frequently
+    building massive stick nests in prominent locations visible across the landscape.'
+migration:
+  sv: '# Vit stork – Förekomst i Skandinavien
+
+
+    Vit storken är en långdistansmigrant som återvänder till Skandinavien under våren,
+    framför allt till Danmark och Skåne där arten häckar. Fåglarna anländer vanligtvis
+    i mars–april efter sin övervintring i Afrika. Efter häckningssäsongen påbörjar
+    de sin långa återflyttning söderut på hösten, vanligtvis i juli–september, för
+    att undvika vinterns hårdhet. Under övriga delar av året förekommer arten inte
+    regelbundet i Skandinavien.'
+  en: '# White Stork (Ciconia ciconia) in Scandinavia/Northern Europe
+
+
+    The white stork is a long-distance migrant in Northern Europe, breeding across
+    Scandinavia and the broader region during spring and summer months. These birds
+    arrive from African wintering grounds typically between March and April, establishing
+    breeding territories before departing again in late summer and early autumn. Migration
+    timing varies slightly depending on weather conditions and food availability along
+    their routes.
+
+
+    White storks do not overwinter in Scandinavia; instead, they migrate to Africa
+    for the winter months, where populations disperse across Sub-Saharan regions.
+    The species avoids crossing the Mediterranean Sea during migration, instead routing
+    through the Levant to the east or the Strait of Gibraltar to the west, following
+    thermal currents essential for their energy-efficient soaring flight. This makes
+    their presence in Northern Europe strictly seasonal, concentrated between spring
+    arrival and autumn departure.'
+image_refs:
+- role: hero
+  path: Q25352/hero.jpg
+  width: 1602
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jakubhal" title="User:Jakubhal">Jakub
+    Hałun</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ciconia ciconia nest in Marrakech,
+    Morocco, 20250125 0912 7069.jpg
+  commons_filename: Ciconia ciconia nest in Marrakech, Morocco, 20250125 0912 7069.jpg
+- role: secondary
+  path: Q25352/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Llez" title="User:Llez">H. Zell</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ciconia ciconia - Forst - 02.jpg
+  commons_filename: Ciconia ciconia - Forst - 02.jpg
+- role: secondary
+  path: Q25352/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Uoaei1" title="User:Uoaei1">Uoaei1</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ciconia ciconia Horn 20200727
+    02.jpg
+  commons_filename: Ciconia ciconia Horn 20200727 02.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:43:53.621390+00:00'
+sources:
+  wikipedia_sv_revision: '58693316'
+  wikipedia_en_revision: '1346352804'
+  claude_model: claude-haiku-4-5-20251001

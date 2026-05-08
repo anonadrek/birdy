@@ -1,0 +1,105 @@
+id: Q1072609
+scientific_name: Streptopelia semitorquata
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Streptopelia
+  ioc_order: Columbiformes
+names:
+  sv: Rödögd duva
+  en: Red-eyed Dove
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red-eyed Dove
+
+
+    The red-eyed dove is a widespread and common dove species found throughout Sub-Saharan
+    Africa. It is a medium-sized dove with distinctive plumage featuring soft grey
+    and vinous tones, though its most striking feature is its bright red eye-ring,
+    which gives the species its name. The bird''s appearance is relatively understated
+    compared to some other dove species, but the red orbital ring provides a clear
+    identification mark for observers.
+
+
+    Like other doves, the red-eyed dove is primarily a ground and low-level forager,
+    feeding on seeds and grain. It is a social species often seen in small flocks,
+    particularly in woodland and savanna habitats. The bird''s call is a characteristic
+    cooing sound typical of doves, which helps identify it in areas where multiple
+    dove species may occur together.
+
+
+    The species remains abundant across its range and shows no signs of decline, having
+    been assessed as Least Concern on the IUCN Red List since 2004. It adapts well
+    to various habitats within Sub-Saharan Africa and has benefited from human settlement
+    in some regions where grain and seeds are more readily available.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only information about the Red-eyed Dove''s distribution
+    in Sub-Saharan Africa and its conservation status, with no details regarding occurrence
+    in Scandinavia or Northern Europe, seasonal movements, or migration patterns in
+    these regions.'
+image_refs:
+- role: hero
+  path: Q1072609/hero.jpg
+  width: 2400
+  height: 1520
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Red-eyed Dove Streptopelia semitorquata
+    at Marievale Nature Reserve, Gauteng, South Africa (32558626764).jpg
+  commons_filename: Red-eyed Dove Streptopelia semitorquata at Marievale Nature Reserve,
+    Gauteng, South Africa (32558626764).jpg
+- role: secondary
+  path: Q1072609/secondary-1.jpg
+  width: 1800
+  height: 1123
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Red-eyed Dove Streptopelia semitorquata
+    at Marievale Nature Reserve, Gauteng, South Africa (32587266553).jpg
+  commons_filename: Red-eyed Dove Streptopelia semitorquata at Marievale Nature Reserve,
+    Gauteng, South Africa (32587266553).jpg
+- role: secondary
+  path: Q1072609/secondary-2.jpg
+  width: 1327
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Red-eyed Dove Streptopelia semitorquata
+    at Marievale Nature Reserve, Gauteng, South Africa (32587269063).jpg
+  commons_filename: Red-eyed Dove Streptopelia semitorquata at Marievale Nature Reserve,
+    Gauteng, South Africa (32587269063).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:42:01.739871+00:00'
+sources:
+  wikipedia_sv_revision: '56588564'
+  wikipedia_en_revision: '1349074403'
+  claude_model: claude-haiku-4-5-20251001

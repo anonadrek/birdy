@@ -1,0 +1,128 @@
+id: Q26140
+scientific_name: Columba oenas
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Columba
+  ioc_order: Columbiformes
+names:
+  sv: Skogsduva
+  en: Stock Dove
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skogsduva
+
+
+    Skogsduvan är en medlem av familjeen duvor som är utbredd i västra och centrala
+    delarna av palearktis. Det är en ganska skygg art som huvudsakligen lever av frön.
+    Arten föredrar att häcka i trädhålor och är en flyttfågel, vilket innebär att
+    merparten av populationen migrerar säsongsvis.
+
+
+    Arten ses främst på öppna och halvöppna miljöer där det finns både betes- och
+    odlingsmark. Skogsduvan söker ofta föda på marken och är kända för sitt diskreta
+    beteende. Arten är mindre framträdande än många andra duvor och undviker gärna
+    människor och täta bosättningar.'
+  en: '# Stock Dove
+
+
+    The stock dove is a medium-sized member of the pigeon family found across the
+    western Palearctic region, from central Scandinavia in the north to northwestern
+    Africa in the south. It is the type species of its genus, Columba, making it scientifically
+    significant among pigeons.
+
+
+    The species exhibits different migration patterns depending on location. Western
+    and southern populations remain resident year-round, while birds breeding in the
+    colder northeastern parts of its range migrate seasonally to escape harsh winters.
+    This flexibility in movement patterns reflects the stock dove''s adaptation to
+    varying climate zones across its extensive geographic distribution.
+
+
+    The stock dove typically inhabits open woodlands, farmland, and coastal areas
+    where it can find suitable nesting sites and food sources. Its widespread presence
+    throughout much of Europe and beyond makes it a familiar sight to many birdwatchers,
+    though detailed information about its specific appearance, vocalizations, and
+    behaviour would benefit from direct field observation or specialized ornithological
+    sources.'
+migration:
+  sv: '# Skogsduva (Columba oenas) – migration i Nordeuropa
+
+
+    Skogsduvan är främst en flyttfågel som återvänder till Skandinavien och Nordeuropa
+    under våren för att häcka. Arten förekommer i västra och centrala Palearktis och
+    merparten av populationen migrerar säsongsvis. Skogsduvor anländer till häckningsområdena
+    under april-maj och återvänder för att övervintra i södra områden under hösten.
+    Arten föredrar att häcka i trädhålor och lever främst av frön, vilket gör den
+    beroende av tillgången på lämpliga föda och boplatser under året.'
+  en: '# Stock Dove (Columba oenas) - Scandinavian Distribution
+
+
+    The Stock Dove occurs throughout Scandinavia with distinct seasonal patterns.
+    Western and southern Scandinavian populations are largely resident year-round,
+    though some movement occurs during winter months. However, northeastern populations,
+    particularly in northern Sweden and Finland, are migratory, departing in autumn
+    to escape harsh winters and returning in spring. Birds typically arrive in Scandinavia
+    from March onwards, with breeding activity throughout summer. Wintering birds
+    concentrate in milder western and southern regions, while breeding populations
+    occupy woodlands and parkland across the region.'
+image_refs:
+- role: hero
+  path: Q26140/hero.jpg
+  width: 2016
+  height: 2400
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Couple de Pigeons colombin (Columba
+    oenas), Parc de Woluwe, Bruxelles (51978316920).jpg
+  commons_filename: Couple de Pigeons colombin (Columba oenas), Parc de Woluwe, Bruxelles
+    (51978316920).jpg
+- role: secondary
+  path: Q26140/secondary-1.jpg
+  width: 1800
+  height: 1278
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Pigeon colombin (Columba oenas),
+    Parc de Woluwe, Bruxelles (52843953909).jpg
+  commons_filename: Pigeon colombin (Columba oenas), Parc de Woluwe, Bruxelles (52843953909).jpg
+- role: secondary
+  path: Q26140/secondary-2.jpg
+  width: 1138
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Jaana_Siitonen&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Jaana Siitonen (page does not exist)">Jaana Siitonen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Columba oenas DSCN7119-01.jpg
+  commons_filename: Columba oenas DSCN7119-01.jpg
+review_status: approved
+review_notes: Hero auto-pick OK — skogsduva i parkmiljö med karaktäristisk blågrå
+  dräkt och iridescenta halssidor (skiljer från ringduva genom avsaknad av vita halsfläckar
+  och vingband).
+generated_at: '2026-05-08T00:47:17.374377+00:00'
+sources:
+  wikipedia_sv_revision: '58537196'
+  wikipedia_en_revision: '1345924661'
+  claude_model: claude-haiku-4-5-20251001

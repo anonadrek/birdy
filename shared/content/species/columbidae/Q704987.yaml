@@ -1,0 +1,107 @@
+id: Q704987
+scientific_name: Streptopelia orientalis
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Streptopelia
+  ioc_order: Columbiformes
+names:
+  sv: Större turturduva
+  en: Oriental Turtle Dove
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Oriental Turtle Dove
+
+
+    The Oriental turtle dove is a medium-sized dove with rufous-tinged plumage and
+    subtle patterning variations across its wide Asian range. It belongs to the Columbidae
+    family and displays geographical variation, with at least six recognized subspecies
+    showing differences in plumage markings. The species is predominantly granivorous,
+    spending much of its time foraging on the ground for seeds and grains.
+
+
+    Behaviorally, the Oriental turtle dove shows distinct migratory patterns depending
+    on latitude. Populations breeding in higher latitudes undertake southward migrations
+    during winter, while those inhabiting tropical regions remain sedentary year-round.
+    This flexibility in movement has allowed the species to maintain a broad distribution
+    stretching from Central Asia eastward across Asia to Japan. Occasionally, vagrants
+    appear in North America, indicating occasional long-distance dispersal beyond
+    its established range.
+
+
+    The species'' preference for ground foraging and seed-eating lifestyle makes it
+    relatively inconspicuous, though its presence can often be detected through its
+    distinctive calls. It typically frequents open woodlands, scrublands, and cultivated
+    areas where seeds are readily available, making it adaptable to various habitats
+    across its range.'
+migration:
+  sv: ''
+  en: '# Streptopelia orientalis in Northern Europe
+
+
+    The Oriental Turtle Dove is a rare vagrant to Scandinavia and Northern Europe,
+    with only occasional records. The species is not a regular migrant through the
+    region. Given its native range extending from Central Asia eastward to Japan,
+    any individuals recorded in Scandinavia represent exceptional dispersal events
+    rather than established migration patterns. While populations in higher latitudes
+    of their Asian range migrate southward during winter months, the species shows
+    no consistent migratory presence in Northern European territories. Sightings remain
+    sporadic and unpredictable.'
+image_refs:
+- role: hero
+  path: Q704987/hero.jpg
+  width: 2400
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:DogilRobot&amp;action=edit&amp;redlink=1"
+    class="new" title="User:DogilRobot (page does not exist)">DogilRobot</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Streptopelia orientalis in Seoul,
+    Namsan Park.jpg
+  commons_filename: Streptopelia orientalis in Seoul, Namsan Park.jpg
+- role: secondary
+  path: Q704987/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37407903@N06">nubobo</a>
+    from Iwata, Shizuoka, Japan
+  source_url: https://commons.wikimedia.org/wiki/File:Streptopelia orientalis -Japan-8.jpg
+  commons_filename: Streptopelia orientalis -Japan-8.jpg
+- role: secondary
+  path: Q704987/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 3.0
+  author: <a rel="nofollow" class="external text" href="https://web.archive.org/web/20161028180426/http://www.panoramio.com/user/6452510?with_photo_id=105252059">lienyuan
+    lee</a>
+  source_url: https://commons.wikimedia.org/wiki/File:金背鳩 Streptopelia orientalis
+    - panoramio.jpg
+  commons_filename: 金背鳩 Streptopelia orientalis - panoramio.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:51:06.631713+00:00'
+sources:
+  wikipedia_sv_revision: '56466632'
+  wikipedia_en_revision: '1352055294'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,83 @@
+id: Q1188385
+scientific_name: Treron waalia
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Treron
+  ioc_order: Columbiformes
+names:
+  sv: Gulbukig grönduva
+  en: Bruce’s Green Pigeon
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: "# Gulbukig grönduva\n\nGulbukig grönduva är en liten till medelstor duva som\
+    \ förekommer i Afrika strax söder om Sahara samt på sydvästra Arabiska halvön.\
+    \ Arten tillhör familjen duvor och är anpassad till sitt varma klimat.\n\nArten\
+    \ är grönfärgad, vilket är typiskt för många duvor i denna region. Den gula bukmarkeringen\
+    \ utgör ett distinktivt kännetecken som särskiljer den från närbesläktade arter.\
+    \ \n\nGulbukig grönduva förekommer främst i torra och halvtorra miljöer där det\
+    \ finns lämplig vegetation. Som andra duvor är arten frugivör och söker sin föda\
+    \ i träd och buskar. Arten är en typisk fågel för sitt biotopval i området söder\
+    \ om Sahara."
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q1188385/hero.jpg
+  width: 2048
+  height: 1281
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Treron waalia 95507055.jpg
+  commons_filename: Treron waalia 95507055.jpg
+- role: secondary
+  path: Q1188385/secondary-1.jpg
+  width: 1800
+  height: 1126
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Treron waalia 95590450.jpg
+  commons_filename: Treron waalia 95590450.jpg
+- role: secondary
+  path: Q1188385/secondary-2.jpg
+  width: 1386
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%C3%81llatkertellen%C5%91r&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Állatkertellenőr (page does not exist)">Állatkertellenőr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Papagájgalamb (Treron waalia).jpg
+  commons_filename: Papagájgalamb (Treron waalia).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:46:55.648116+00:00'
+sources:
+  wikipedia_sv_revision: '56773460'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

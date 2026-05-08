@@ -1,0 +1,75 @@
+id: Q1030039
+scientific_name: Streptopelia lugens
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Streptopelia
+  ioc_order: Columbiformes
+names:
+  sv: Mörk turturduva
+  en: Dusky Turtle Dove
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mörk turturduva
+
+
+    Mörk turturduva är en afrikansk duvfågel som huvudsakligen förekommer i bergsskogar
+    i östra Afrika och på den sydvästra Arabiska halvön. Arten tillhör familjen duvor
+    och är klassificerad som livskraftig vad gäller beståndsstatus.
+
+
+    Arten är anpassad till bergsmiljöer där den söker föda och bygger sitt bo. Som
+    många duvor är arten social och kan ses både individuellt och i mindre grupper.
+    Det är en medelstor duva med mörkare fjäderdräkt jämfört med många andra turturduvor
+    – en egenskap som återspeglas i dess namn.
+
+
+    Denna duvart spelar en viktig roll i sina bergiga hemtrakter och utgör en del
+    av det biologiska mångfaldet i dessa bergsskogar.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    The provided source text contains only information about the species'' geographic
+    distribution in Africa and the Arabian Peninsula, with no details about migration
+    patterns, seasonal occurrence, or presence in Scandinavia/Northern Europe. Therefore,
+    migration information cannot be provided for this species.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q1030039/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Streptopelia lugens 222958843.jpg
+  commons_filename: Streptopelia lugens 222958843.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:48:32.371667+00:00'
+sources:
+  wikipedia_sv_revision: '58858534'
+  wikipedia_en_revision: '1342473692'
+  claude_model: claude-haiku-4-5-20251001

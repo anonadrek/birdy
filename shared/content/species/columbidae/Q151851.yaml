@@ -1,0 +1,126 @@
+id: Q151851
+scientific_name: Oena capensis
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Oena
+  ioc_order: Columbiformes
+names:
+  sv: Långstjärtsduva
+  en: Namaqua Dove
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Långstjärtsduva
+
+
+    Långstjärtsduvan är en mycket liten duva som kännetecknas av en markant långt
+    utdragen stjärt, vilket ger arten sitt namn. Detta gör den lätt att identifiera
+    trots sitt lilla format. Arten är spridd över ett brett geografiskt område och
+    förekommer huvudsakligen i Afrika samt på närliggande områden runt Arabiska halvön.
+    Populationen verkar stabil och ökar i antal.
+
+
+    Arten är anpassad till sin miljö och trivs väl i sitt utbredningsområde. Den är
+    vida spridd över sitt ursprungliga område och har visa tecken på ökande antal,
+    vilket tyder på att arten mår bra och kan anpassas till varierande förhållanden.'
+  en: '# Namaqua Dove
+
+
+    The Namaqua dove is an exceptionally small pigeon, distinctly diminutive compared
+    to other members of the dove family. It is the sole species within its genus,
+    Oena, making it taxonomically unique. The bird''s compact size and streamlined
+    build reflect adaptations suited to arid and semi-arid environments.
+
+
+    This species inhabits a wide geographic range across Sub-Saharan Africa, extending
+    into parts of Arabia and Madagascar. It typically favours dry, open habitats including
+    scrubland, grassland, and cultivated areas, where it forages for seeds on the
+    ground. The Namaqua dove is generally inconspicuous and often goes unnoticed in
+    its sparse habitat until it takes flight.
+
+
+    With its small frame and characteristic flight pattern, the species displays the
+    typical dove behaviour of explosive takeoff when disturbed. Like other doves,
+    it feeds primarily on seeds picked from the ground, often visiting water sources
+    during dry periods. The species'' abundance and adaptability to various arid regions
+    make it a relatively common sight across much of its range, though its small size
+    and preference for open ground means observers must watch carefully to locate
+    it.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller ingen information om långstjärtduvans förekomst
+    i Skandinavien eller Nordeuropa, och ingen migrationsdata ges. Arten beskrivs
+    endast som huvudsakligen африkansk med spridning till Arabiska halvön och sporadisk
+    förekomst i södra Levanten. Det finns ingen grund för att skriva om nordeuropeisk
+    förekomst eller migration för denna art.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the Namaqua Dove''s occurrence
+    in Scandinavia or Northern Europe, nor any details about migration patterns, overwintering,
+    or seasonal movements in these regions. This species is native to Sub-Saharan
+    Africa, Arabia, and Madagascar, and would not be expected to occur naturally in
+    Scandinavia or Northern Europe.'
+image_refs:
+- role: hero
+  path: Q151851/hero.jpg
+  width: 2400
+  height: 1592
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Namaqua dove, Oena capensis,
+    at Mapungubwe National Park, Limpopo, South Africa (18085767542).jpg
+  commons_filename: Namaqua dove, Oena capensis, at Mapungubwe National Park, Limpopo,
+    South Africa (18085767542).jpg
+- role: secondary
+  path: Q151851/secondary-1.jpg
+  width: 1800
+  height: 1078
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Namaqua dove, Oena capensis,
+    at Mapungubwe National Park, Limpopo, South Africa (18089217755).jpg
+  commons_filename: Namaqua dove, Oena capensis, at Mapungubwe National Park, Limpopo,
+    South Africa (18089217755).jpg
+- role: secondary
+  path: Q151851/secondary-2.jpg
+  width: 1800
+  height: 1224
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Namaqua dove, Oena capensis,
+    at Mapungubwe National Park, Limpopo, South Africa (18089201995).jpg
+  commons_filename: Namaqua dove, Oena capensis, at Mapungubwe National Park, Limpopo,
+    South Africa (18089201995).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:48:19.866345+00:00'
+sources:
+  wikipedia_sv_revision: '56773465'
+  wikipedia_en_revision: '1314967652'
+  claude_model: claude-haiku-4-5-20251001

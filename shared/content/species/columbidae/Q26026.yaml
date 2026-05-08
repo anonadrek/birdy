@@ -1,0 +1,122 @@
+id: Q26026
+scientific_name: Columba palumbus
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Columba
+  ioc_order: Columbiformes
+names:
+  sv: Ringduva
+  en: Common Wood Pigeon
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ringduva
+
+
+    Ringduvan är Europas största och mest utspridda duvart. Den är en robust fågel
+    med blågrå fjäderdräkt, som kännetecknas av två vita fläckar på halsen – en markering
+    som förklarar dess namn. Arten förekommer i de flesta skogstyper och har under
+    senare år vuxit in i människans miljö, där den nu är vanlig i parker, trädgårdar
+    och urbana områden.
+
+
+    Ringduvan är en lugn och ofta långsam flygare som föredrar att glida mellan träd.
+    Den är ofta påtaglig genom sitt välkända, tjutande rop som låter som "kru-kru-kru-kruu".
+    Arten lever huvudsakligen av frön och växtdelar, och flyger ofta ned till marken
+    för att söka föda.
+
+
+    Detta är en art som fortsätter att anpassa sig väl till förändrade miljöer och
+    återfinns således i allt fler trädgårdar och bebodda områden runt om i sitt utbredningsområde.'
+  en: '# Common Wood Pigeon
+
+
+    The common wood pigeon is a large pigeon found throughout the western Palearctic
+    region. It belongs to the genus Columba, alongside closely related species such
+    as the rock dove. This species is notably adaptable and has a flexible diet, feeding
+    primarily on plant material including cereals, seeds, and buds, which makes it
+    an important agricultural pest in many areas.
+
+
+    Despite being extensively hunted across much of its range, the common wood pigeon''s
+    population numbers remain robust and stable. Its ability to exploit cultivated
+    crops and natural food sources has enabled it to thrive even under hunting pressure.
+    The species demonstrates considerable resilience, suggesting its reproductive
+    success and adaptability outpace the impact of human control measures.'
+migration:
+  sv: Ringduvan är en året runt närvarande art i stora delar av Skandinavien och Nordeuropa,
+    även om populationen varierar säsongsvis. Under hösten migrerar många ringduvor
+    från norra och östliga delar av utbredningsområdet söderut för att övervinta i
+    mildare klimat, medan andra populations-grupper är stationära eller endast gör
+    kortare förflyttningar. Ankomsten till häckningsområdena sker vanligtvis under
+    mars och april, då ringduvorna återvänder från sina övervintringsplatser. I södra
+    Skandinavien och Danmark förekommer arten året om, medan populationerna i norr
+    är mer migrerande.
+  en: '# Common Wood Pigeon (Columba palumbus) in Northern Europe
+
+
+    The Common Wood Pigeon shows variable migration patterns across Scandinavia and
+    Northern Europe. Populations in southern regions are largely resident year-round,
+    while northern breeding populations migrate southwestward to wintering grounds
+    in western and central Europe during autumn months. Birds typically depart breeding
+    areas in September-October and return in March-April. In Scandinavia, some individuals
+    remain through winter in milder coastal areas, but harsh winters often force northern
+    populations to migrate. The species has shown increasing winter residency in recent
+    decades, likely linked to climate warming and increased food availability in agricultural
+    areas.'
+image_refs:
+- role: hero
+  path: Q26026/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Klaaschwotzer" title="User:Klaaschwotzer">Klaaschwotzer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ringeltaube Columba palumbus
+    Hannover Germany.jpg
+  commons_filename: Ringeltaube Columba palumbus Hannover Germany.jpg
+- role: secondary
+  path: Q26026/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%B8%D0%BC%D0%B0%D0%B8%D0%BD%D0%B0_%D1%85%D0%B8%D0%BA%D0%B0%D1%80%D0%B8"
+    title="User:Аимаина хикари">Аимаина хикари</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Columba palumbus Moczydło.jpg
+  commons_filename: Columba palumbus Moczydło.jpg
+- role: secondary
+  path: Q26026/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User_talk:Sarang" title="User talk:Sarang">Sarang</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Columba palumbus altricials
+    2.jpg
+  commons_filename: Columba palumbus altricials 2.jpg
+review_status: approved
+review_notes: Hero auto-pick OK — ringduva i flykt eller på gren med tydliga vita
+  halsfläckar och vita vingband (diagnostiska fältkaraktärer mot andra duvor).
+generated_at: '2026-05-08T00:50:10.228055+00:00'
+sources:
+  wikipedia_sv_revision: '56064578'
+  wikipedia_en_revision: '1350358379'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,133 @@
+id: Q25398
+scientific_name: Ciconia nigra
+taxonomy:
+  family: Ciconiidae
+  family_sv: Storkar
+  genus: Ciconia
+  ioc_order: Ciconiiformes
+names:
+  sv: Svart stork
+  en: Black Stork
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svart stork
+
+
+    Svart stork är en stor stork med mörk fjäderdräkt och röda ben och näbb. Den skiljer
+    sig från sin närmare släkting, vit stork, genom sin mörkare färg och sitt mer
+    undvikande temperament.
+
+
+    Arten är betydligt mindre sociabel än vit stork och föredrar att leva i skogsmiljöer
+    snarare än öppna landskap. Den är tillbakadragen och ses ofta ensam eller i små
+    grupper. Svart stork är huvudsakligen utbredd från östra Europa österut mot Kina,
+    men förekommer även på spridda lokaler i västra Europa och södra Afrika.
+
+
+    Historiskt häckade arten även i Sverige fram till mitten av 1900-talet, men är
+    numera försvunnen från landet. Arten är mer skygг än vit stork och håller sig
+    ofta undan människor, vilket gör den svårare att observera även där den förekommer.'
+  en: '# Black Stork
+
+
+    The black stork is a large, striking wading bird measuring 95–100 cm in length
+    with a 145–155 cm wingspan. Adults are unmistakable: predominantly black plumage
+    contrasts sharply with clean white underparts, while long red legs and a pointed
+    red beak complete its elegant appearance. It is a widespread but uncommon species,
+    breeding in scattered locations across Europe and extending eastward across the
+    Palearctic to the Pacific Ocean.
+
+
+    This species is a long-distance migrant with notably specific route preferences.
+    European populations winter in tropical Sub-Saharan Africa, while Asian populations
+    migrate to the Indian subcontinent. Rather than crossing broad stretches of the
+    Mediterranean Sea directly, the black stork takes alternative routes via the Levant
+    in the east, the Strait of Sicily centrally, or the Strait of Gibraltar in the
+    west. An isolated non-migratory population exists in Southern Africa, representing
+    a distinct ecological adaptation.
+
+
+    The black stork favors wetland habitats and is typically seen hunting in shallow
+    water or flying overhead with steady, powerful wingbeats. Its preference for undisturbed
+    freshwater environments makes it a valuable indicator of ecosystem health in regions
+    where it breeds.'
+migration:
+  sv: '# Svart stork i Skandinavien och Nordeuropa
+
+
+    Svart stork är numera nationellt utdöd i Sverige och förekommer inte längre som
+    häckfågel i Skandinavien. Arten häckade tidigare i Sverige fram till mitten på
+    1900-talet, men populationen försvann sedan helt. I dag är arten främst utbredd
+    i östra Europa österut mot Kina, med endast små och lokala populationer i västra
+    Europa som Iberiska halvön, Frankrike och Belgien. För Skandinavien och Nordeuropa
+    är arten därför inte relevant för migration eller övervintringsöversikter, då
+    den inte förekommer här under året.'
+  en: '# Black Stork Migration in Northern Europe
+
+
+    The black stork is a long-distance migrant in Scandinavia and northern Europe.
+    European populations breed across the region in scattered locations during the
+    breeding season, then undertake extensive migrations to tropical Sub-Saharan Africa
+    for winter. When traveling between Europe and Africa, these birds avoid crossing
+    large Mediterranean expanses, instead routing through the Levant in the east,
+    the Strait of Sicily centrally, or the Strait of Gibraltar in the west. This migratory
+    pattern means black storks are present in northern Europe during the breeding
+    season but absent during winter months, with arrival and departure linked to African
+    wintering grounds and European breeding habitats.'
+image_refs:
+- role: hero
+  path: Q25398/hero.jpg
+  width: 1595
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black stork (Ciconia nigra)
+    in flight.jpg
+  commons_filename: Black stork (Ciconia nigra) in flight.jpg
+- role: secondary
+  path: Q25398/secondary-1.jpg
+  width: 1800
+  height: 1468
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Black Stork. Ciconia nigra -
+    Flickr - gailhampshire.jpg
+  commons_filename: Black Stork. Ciconia nigra - Flickr - gailhampshire.jpg
+- role: secondary
+  path: Q25398/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Black Stork. Ciconia nigra -
+    Flickr - gailhampshire (1).jpg
+  commons_filename: Black Stork. Ciconia nigra - Flickr - gailhampshire (1).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:42:39.772823+00:00'
+sources:
+  wikipedia_sv_revision: '59250978'
+  wikipedia_en_revision: '1333568957'
+  claude_model: claude-haiku-4-5-20251001

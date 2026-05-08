@@ -732,6 +732,7 @@
   ioc_order: Columbiformes
   common_en: Eurasian Collared Dove
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q921348
   scientific_name: Streptopelia roseogrisea
   family: Columbidae
@@ -756,6 +757,7 @@
   ioc_order: Columbiformes
   common_en: Common Wood Pigeon
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q770308
   scientific_name: Columba trocaz
   family: Columbidae
@@ -772,14 +774,16 @@
   scientific_name: Columba livia
   family: Columbidae
   ioc_order: Columbiformes
-  common_en: Rock Dove / Feral Pigeon
+  common_en: Rock Dove
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26140
   scientific_name: Columba oenas
   family: Columbidae
   ioc_order: Columbiformes
   common_en: Stock Dove
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q932119
   scientific_name: Columba eversmanni
   family: Columbidae
@@ -3966,6 +3970,7 @@
   ioc_order: Passeriformes
   common_en: White-throated Dipper
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q949662
   scientific_name: Zoothera aurea
   family: Turdidae

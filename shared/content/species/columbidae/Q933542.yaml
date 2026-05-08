@@ -1,0 +1,90 @@
+id: Q933542
+scientific_name: Columba junoniae
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Columba
+  ioc_order: Columbiformes
+names:
+  sv: Lagerduva
+  en: Laurel Pigeon
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Laurel Pigeon
+
+
+    The Laurel Pigeon is a medium-sized pigeon endemic to the Canary Islands, where
+    it inhabits laurel forests—ancient woodlands that provide its primary habitat.
+    This species is notably the official animal symbol of one of the islands in the
+    archipelago.
+
+
+    The bird is characterized by its distinctive white tail, which contrasts with
+    its darker plumage and gives the species its alternative common name. Like other
+    pigeons, it has a compact body suited to forest living. Its behaviour is typical
+    of woodland pigeons, feeding on seeds and fruits found within the forest canopy
+    and understory.
+
+
+    The Laurel Pigeon''s calls are characteristic cooing sounds common to pigeons,
+    though details specific to this species are limited. As a forest specialist, it
+    remains relatively inconspicuous within its preferred laurel woodland habitat,
+    making it a species of particular interest to birdwatchers visiting these unique
+    island ecosystems. Its dependence on laurel forest makes it an indicator species
+    for the health of these specialized woodland environments.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Laurel Pigeon is endemic to the Canary Islands and does not occur in Scandinavia
+    or Northern Europe. The provided source text contains no information about migration
+    patterns or presence in these regions. This species is restricted to laurel forest
+    habitats in the Canary Islands and would not be encountered in Scandinavian or
+    Northern European bird guides as a regular or vagrant occurrence.'
+image_refs:
+- role: hero
+  path: Q933542/hero.jpg
+  width: 2048
+  height: 1279
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Columba junoniae 185005927.jpg
+  commons_filename: Columba junoniae 185005927.jpg
+- role: secondary
+  path: Q933542/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/645653">thibaudaronson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Columba junoniae 163958122.jpg
+  commons_filename: Columba junoniae 163958122.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:44:16.384962+00:00'
+sources:
+  wikipedia_sv_revision: '58671940'
+  wikipedia_en_revision: '1343202036'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,131 @@
+id: Q248603
+scientific_name: Prinia gracilis
+taxonomy:
+  family: Cisticolidae
+  family_sv: Grässångare
+  genus: Prinia
+  ioc_order: Passeriformes
+names:
+  sv: Nilprinia
+  en: Graceful Prinia
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Nilprinia
+
+
+    Nilprinia är en liten fågel i familjen grässångare. Den erkändes som egen art
+    år 2021, då den tidigare hade behandlats tillsammans med den östligare dvärgprinian
+    under det gemensamma namnet streckad prinia. De två arterna är närbesläktade men
+    utgör nu två skilda arter.
+
+
+    Arten är känd för sitt livliga beteende och förekommer framför allt i torra och
+    halvöppna habitat. Nilprinia är en aktiv och rörig fågel som ofta syns i låg växtlighet
+    där den söker föda. Liksom andra grässångare är det en relativt blyg art som kan
+    vara svår att få syn på trots sitt aktiva väsen.'
+  en: '# Graceful Prinia
+
+
+    The graceful prinia is a small warbler belonging to the Cisticolidae family, characterized
+    by its delicate, streamlined appearance typical of grass warblers. It is a resident
+    breeder found across northeastern Africa and southern Asia, inhabiting regions
+    from Egypt and Somalia eastward to Saudi Arabia.
+
+
+    This diminutive species favors open grassland and scrubland habitats where it
+    hunts for small insects among vegetation. The graceful prinia is an active forager,
+    often seen moving restlessly through low growth. It tends to be a permanent resident
+    throughout its range, remaining in breeding territories year-round rather than
+    undertaking seasonal migrations.
+
+
+    The bird''s vocalizations are characteristic of the wren-warblers, with sharp,
+    scratchy calls that reflect its common alternative name, the streaked wren-warbler.
+    Its plumage displays subtle streaking patterns that provide effective camouflage
+    within its grassland environment, blending readily with dry vegetation and sparse
+    scrub.'
+migration:
+  sv: '# Nilprinia - migration och förekomst
+
+
+    Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    *Note: The source text provided contains only taxonomic classification and nomenclatural
+    history information, with no details about the species'' migration patterns, seasonal
+    occurrence, or distribution in Scandinavia/Northern Europe. Therefore, the required
+    response in Swedish is:*
+
+
+    **sv: "Migrationsdata saknas för denna art."**
+
+    **en: "Migration data unavailable for this species."**'
+  en: 'Migration data unavailable for this species.
+
+
+    The Graceful Prinia is a resident species throughout its range in northeastern
+    Africa and southern Asia, from Egypt and Somalia east to Saudi Arabia. As a resident
+    breeder, it does not undertake long-distance migrations and remains in its breeding
+    territories year-round. Therefore, this species does not occur in Scandinavia
+    or Northern Europe at any time of year, whether as a migrant or winter visitor.'
+image_refs:
+- role: hero
+  path: Q248603/hero.jpg
+  width: 2400
+  height: 1590
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hatem_Moushir" title="User:Hatem
+    Moushir">Hatem Moushir</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Prinia gracilis at Abassa by
+    Hatem Moushir 4.JPG
+  commons_filename: Prinia gracilis at Abassa by Hatem Moushir 4.JPG
+- role: secondary
+  path: Q248603/secondary-1.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hatem_Moushir" title="User:Hatem
+    Moushir">Hatem Moushir</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Prinia gracilis at Fayoum by
+    Hatem Moushir 1.JPG
+  commons_filename: Prinia gracilis at Fayoum by Hatem Moushir 1.JPG
+- role: secondary
+  path: Q248603/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hatem_Moushir" title="User:Hatem
+    Moushir">Hatem Moushir</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Prinia gracilis at Fayoum by
+    Hatem Moushir 2.JPG
+  commons_filename: Prinia gracilis at Fayoum by Hatem Moushir 2.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:41:32.833523+00:00'
+sources:
+  wikipedia_sv_revision: '58648506'
+  wikipedia_en_revision: '1314011845'
+  claude_model: claude-haiku-4-5-20251001

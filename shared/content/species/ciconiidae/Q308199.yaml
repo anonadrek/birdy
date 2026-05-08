@@ -1,0 +1,91 @@
+id: Q308199
+scientific_name: Ciconia abdimii
+taxonomy:
+  family: Ciconiidae
+  family_sv: Storkar
+  genus: Ciconia
+  ioc_order: Ciconiiformes
+names:
+  sv: Blåkindad stork
+  en: Abdim’s Stork
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Blåkindad stork
+
+
+    Blåkindad stork är en medelstor afrikan stork som tillhör släktet egentliga storkar,
+    tillsammans med den vita och svarta storken. Den är mindre än sina närmaste släktingar
+    och kännetecknas av sin karakteristiska blåfärgade hud på kinderna, vilket är
+    mycket framträdande på det annars mörkfärgade huvudet.
+
+
+    Arten förekommer över stora delar av Afrika söder om Sahara, där den trivs i olika
+    öppna miljöer som savanner och gräsmarker. Som många storkar är den en migratorisk
+    art som följer regntiderna för att hitta bästa förutsättningar för födosökning.
+    Den lever gärna i kolonier tillsammans med andra storkar och födosökande fåglar.
+
+
+    Blåkindad stork är en stillsam fågel utan särskilt utvecklad röstförmåga, vilket
+    är typiskt för många storkarter. Den födosöker på marken efter små djur och andra
+    föda som den hittar när den vattnar omkring i sitt habitat.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q308199/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Abdim's stork (Ciconia abdimii).jpg
+  commons_filename: Abdim's stork (Ciconia abdimii).jpg
+- role: secondary
+  path: Q308199/secondary-1.jpg
+  width: 1800
+  height: 1286
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/51156152@N00">Brian
+    Ralphs</a> from Berkhamsted, Hertfordshire, UK
+  source_url: https://commons.wikimedia.org/wiki/File:Ciconia abdimii Kalahara En
+    Route from Grootkolk 045.jpg
+  commons_filename: Ciconia abdimii Kalahara En Route from Grootkolk 045.jpg
+- role: secondary
+  path: Q308199/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="https://cs.wikipedia.org/wiki/User:Dezidor" class="extiw" title="cs:User:Dezidor">Dezidor</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ciconia abdimii.JPG
+  commons_filename: Ciconia abdimii.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:47:56.129483+00:00'
+sources:
+  wikipedia_sv_revision: '58506094'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

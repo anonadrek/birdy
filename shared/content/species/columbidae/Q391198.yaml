@@ -1,0 +1,133 @@
+id: Q391198
+scientific_name: Spilopelia senegalensis
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Spilopelia
+  ioc_order: Columbiformes
+names:
+  sv: Palmduva
+  en: Laughing Dove
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Palmduva
+
+
+    Palmduva är en liten och gråaktig duva som förekommer i spridda populationer över
+    Afrika, Mellanöstern och större delar av Asien. Arten är uppkallad efter sitt
+    förkärlek för palmrika miljöer, där den ofta ses i palmdungar. Den är klassificerad
+    som livskraftig av IUCN.
+
+
+    Arten är relativt liten för en duva och har en diskret grå färgtoning. Palmduvan
+    kännetecknas av ett karakteristiskt utseende som skiljer den från större duvor.
+    Den är anpassad till varma, torra miljöer och är ofta att finna i öppna eller
+    halvöppna habitat med sparse vegetation.
+
+
+    Palmduvan har ett igenkännligt läte som på engelska kallas "laughing dove" – en
+    referens till dess distinkta och repetitiva rullande eller skrattliknande ljud.
+    Arten är gregär och trivs ofta i mindre flockar, särskilt på matningsplatserna.
+    Den äter huvudsakligen frön och andra växtdelar. Palmduvan är vanligt förekommande
+    inom sitt utbredningsområde och är relativt lätt att observera, framför allt under
+    morgon- och kvällstimmar.'
+  en: '# Laughing Dove
+
+
+    The Laughing Dove is a small, long-tailed pigeon with warm brown plumage and a
+    delicate appearance. It differs from the closely related Spotted Dove by lacking
+    that species'' distinctive white and black chequered necklace. Instead, it has
+    a more uniform, subtle colouration that blends well with its preferred arid environments.
+
+
+    This dove inhabits dry scrub and semi-desert habitats across Africa, the Middle
+    East, South Asia, and Western Australia. It is typically seen in pairs foraging
+    on the ground, pecking for seeds and other food. The species is a resident breeder
+    throughout its range, remaining in suitable areas year-round rather than migrating
+    seasonally.
+
+
+    The bird''s common name derives from its distinctive call—a soft, rhythmic cooing
+    that resembles gentle laughter. This vocalisation is one of the most reliable
+    ways to locate and identify the species in the field, particularly during breeding
+    season when calling is most frequent.'
+migration:
+  sv: '# Palmduva – Förekomst i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Palmduva är en afrikansk och asiatisk art som inte naturligt förekommer i Skandinavien
+    eller Nordeuropa. Arten är hemmahörande i värmare regioner från Afrika, Mellanöstern
+    och Asien, och finns inte etablerad som vild population i de nordiska länderna.
+    Därför finns ingen relevant migrationsdata för denna region.'
+  en: '# Palmduva (Laughing Dove) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Laughing Dove is not a native or regular visitor to Scandinavia or Northern
+    Europe. This small pigeon is primarily a resident breeder across Africa, the Middle
+    East, South Asia, and Western Australia, inhabiting dry scrub and semi-desert
+    habitats far south and east of the Nordic region. Any occurrence in Northern Europe
+    would be extremely exceptional and not part of the species'' normal range or migration
+    patterns.'
+image_refs:
+- role: hero
+  path: Q391198/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Mostafameraji" title="User:Mostafameraji">Mostafameraji</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spilopelia senegalensis In Iran-Qom-2011-Photographs
+    by mostafa meraji 04.jpg
+  commons_filename: Spilopelia senegalensis In Iran-Qom-2011-Photographs by mostafa
+    meraji 04.jpg
+- role: secondary
+  path: Q391198/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Mostafameraji" title="User:Mostafameraji">Mostafameraji</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spilopelia senegalensis In Iran-Qom-2011-Photographs
+    by mostafa meraji 06.jpg
+  commons_filename: Spilopelia senegalensis In Iran-Qom-2011-Photographs by mostafa
+    meraji 06.jpg
+- role: secondary
+  path: Q391198/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Spilopelia senegalensis (14528880666).jpg
+  commons_filename: Spilopelia senegalensis (14528880666).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:41:18.188503+00:00'
+sources:
+  wikipedia_sv_revision: '55681606'
+  wikipedia_en_revision: '1352107860'
+  claude_model: claude-haiku-4-5-20251001

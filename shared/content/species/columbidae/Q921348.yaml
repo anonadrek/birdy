@@ -1,0 +1,132 @@
+id: Q921348
+scientific_name: Streptopelia roseogrisea
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Streptopelia
+  ioc_order: Columbiformes
+names:
+  sv: Skrattduva
+  en: African Collared Dove
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skrattduva
+
+
+    Skrattduva är en liten och smäcker duva med ett karakteristiskt utseende. Den
+    har en grå fjäderdräkt med rosfärgade toner, särskilt på bröstet. En markant svart
+    nackkrage är ett kännetecknande drag. Arten är elegantare och spädare än många
+    andra duvor.
+
+
+    Arten förekommer naturligt i torra miljöer i Afrika söder om Sahara samt på södra
+    Arabiska halvön, där den anpassat sig väl till halv-öknar och torra savanner.
+    Det är också en art som häckar ofta och gärna söker upp människans närhet för
+    att föda sig på frön.
+
+
+    Burrymlingar av en domesticerad form har etablerat frilevande populationer på
+    olika platser världen över. Dessa utförda fåglar har kunnat anpassa sig väl till
+    nya miljöer och utgör nu stabila vilda populationer på flera kontinenter.'
+  en: '# African Collared Dove
+
+
+    The African collared dove is a small member of the pigeon family found across
+    the Sahel region, northern parts of the Horn of Africa, and southwestern Arabia.
+    Despite inhabiting arid landscapes, it gravitates toward water sources where it
+    can drink and feed.
+
+
+    This dove is characterized by its compact size and soft plumage coloring typical
+    of collared doves. Like other members of its genus, it likely displays the distinctive
+    dark collar marking on the nape of its neck that gives the group its common name.
+    Its behaviour centres around visiting water holes and feeding grounds, often in
+    small groups.
+
+
+    The species'' call is likely a repetitive cooing sound, though specific vocal
+    details would require field observation or specialist recordings. It occupies
+    open and semi-arid habitats where vegetation is sparse but reliable water availability
+    exists, making it well-adapted to the dry regions it inhabits. Its dependence
+    on water sources means it is often found in wadis, near wells, or at other reliable
+    drinking spots within its arid range.'
+migration:
+  sv: '# Skrattduvans förekomst i Nordeuropa
+
+
+    Skrattduvan är inte en naturlig företeelse i Skandinavien eller Nordeuropa. Arten
+    förekommer naturligt i torra delar av Afrika söder om Sahara samt på södra Arabiska
+    halvön. De populationer som ibland observeras i Europa härrör från rymlingar från
+    fångenskap, där domesticerade former av arten hålls. Dessa etablerade sig under
+    vissa perioder på vissa platser världen över, men utgör inte en etablerad övervintrande
+    eller återkommande population i Skandinavien.
+
+
+    Migrationsdata saknas för denna art i skandinavisk/nordeuropeisk kontext.'
+  en: 'Migration data unavailable for this species.
+
+
+    The African Collared Dove is primarily a resident species of arid regions in Africa
+    and southwestern Arabia, with no established natural presence in Scandinavia or
+    Northern Europe. The source text provides no information about migration patterns,
+    seasonal movements, or occurrence in northern regions. This species does not occur
+    in Scandinavia throughout the year, nor does it undertake regular migrations to
+    or through Northern European territories.'
+image_refs:
+- role: hero
+  path: Q921348/hero.jpg
+  width: 2400
+  height: 1604
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20190730 Streptopelia roseogrisea
+    02.jpg
+  commons_filename: 20190730 Streptopelia roseogrisea 02.jpg
+- role: secondary
+  path: Q921348/secondary-1.jpg
+  width: 1800
+  height: 1203
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20200122 Streptopelia roseogrisea
+    01.jpg
+  commons_filename: 20200122 Streptopelia roseogrisea 01.jpg
+- role: secondary
+  path: Q921348/secondary-2.jpg
+  width: 1800
+  height: 1204
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20190730 Streptopelia roseogrisea
+    01.jpg
+  commons_filename: 20190730 Streptopelia roseogrisea 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:47:13.879302+00:00'
+sources:
+  wikipedia_sv_revision: '55436836'
+  wikipedia_en_revision: '1349234498'
+  claude_model: claude-haiku-4-5-20251001

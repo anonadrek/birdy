@@ -1,0 +1,132 @@
+id: Q179367
+scientific_name: Coracias garrulus
+taxonomy:
+  family: Coraciidae
+  family_sv: Blåkråkor
+  genus: Coracias
+  ioc_order: Coraciiformes
+names:
+  sv: Blåkråka
+  en: European Roller
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Blåkråka
+
+
+    Blåkråkan är en färgglad fågel med turkos och azurblå fjäderdräkt blandad med
+    rostbrun på rygg och vingar. Det är familjen blåkråkors enda europeiska art. Fågeln
+    är medelstor och har en robust kroppsbyggnad.
+
+
+    Blåkråkan är en akrobatisk flygare som ofta ses från en upphöjd sittplats, varifrån
+    den spanar efter insekter på marken. Det är en spektakulär jägare som kan ses
+    stupa och vira dramatiskt i luften när det jaktar byte. Arten ger ifrån sig hårda,
+    raspiga ljud.
+
+
+    Fram till 1967 häckade blåkråkan i Sverige, men är numera nationellt utdöd i landet.
+    Arten fanns tidigare i öppen och halvöppen terräng där den kunde hitta lämpliga
+    häckningsplatser i trädhål eller bergssprickor. Idag är arten endast känd som
+    mycket sällsynt genomfågel under flyttning.'
+  en: '# European Roller
+
+
+    The European roller is a striking, jay-sized bird with vibrant blue and chestnut
+    plumage, making it unmistakable in its range. It is the only roller breeding in
+    Europe, with populations extending across the Maghreb, West Asia, and Central
+    Asia. The species favors diverse habitats but typically avoids open treeless plains,
+    preferring wooded and bushy terrain where it can find suitable nesting sites in
+    tree cavities.
+
+
+    A summer visitor to its breeding grounds, the European roller winters in southern
+    Africa, primarily in dry wooded savanna and bushy plains. It is an active hunter,
+    often perching prominently on wires, posts, or trees while scanning for prey.
+    The bird''s common name derives from its spectacular aerial displays and acrobatic
+    "rolling" flight maneuvers performed during breeding season. Its vocalizations
+    include harsh, grating calls that can be surprisingly loud for its size.
+
+
+    The roller''s preference for open woodland with scattered large trees makes it
+    a conspicuous summer presence in suitable habitats. Observers can often locate
+    it by watching for its characteristic hunting behavior—swooping from exposed perches
+    to catch insects and small animals on the ground or in flight.'
+migration:
+  sv: '# Blåkråka i Skandinavien och Nordeuropa
+
+
+    Blåkråkan är numera praktiskt taget försvunnen från Skandinavien och Nordeuropa.
+    Arten häckade tidigare i Sverige fram till 1967, men är idag nationellt utdöd
+    i vårt land. Historiskt var blåkråkan en sommargäst som anlände under häckningstiden,
+    men denna population finns således inte längre. I övriga delar av Europa förekommer
+    arten fortfarande som migrerande sommargäst, men den är inte en vanlig fågelart
+    någonstans i nordiska regioner idag.'
+  en: '# European Roller in Scandinavia/Northern Europe
+
+
+    The European Roller is a summer visitor to Scandinavia and Northern Europe, typically
+    arriving in late May and departing by September. This species migrates between
+    its breeding grounds in temperate Europe and its winter quarters in southern Africa,
+    undertaking one of Europe''s longest avian migrations. During the breeding season,
+    rollers inhabit open woodlands and semi-open landscapes with suitable nesting
+    cavities in large trees. Their presence in the region is strictly seasonal, with
+    breeding limited to the warmer months before they depart for African wintering
+    grounds in dry savannas and bushy plains.'
+image_refs:
+- role: hero
+  path: Q179367/hero.jpg
+  width: 2400
+  height: 1623
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Scharrelaar - European roller
+    - Coracias garrulus 2.jpg
+  commons_filename: Scharrelaar - European roller - Coracias garrulus 2.jpg
+- role: secondary
+  path: Q179367/secondary-1.jpg
+  width: 1800
+  height: 1294
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/7917307@N03">I
+    Love Trees</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Coracias garrulus -Kruger National
+    Park, South Africa-8.jpg
+  commons_filename: Coracias garrulus -Kruger National Park, South Africa-8.jpg
+- role: secondary
+  path: Q179367/secondary-2.jpg
+  width: 1800
+  height: 1215
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Scharrelaar - European roller
+    - Coracias garrulus.jpg
+  commons_filename: Scharrelaar - European roller - Coracias garrulus.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:49:07.203183+00:00'
+sources:
+  wikipedia_sv_revision: '56065253'
+  wikipedia_en_revision: '1352807646'
+  claude_model: claude-haiku-4-5-20251001

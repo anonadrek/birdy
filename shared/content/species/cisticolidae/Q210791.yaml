@@ -1,0 +1,133 @@
+id: Q210791
+scientific_name: Cisticola juncidis
+taxonomy:
+  family: Cisticolidae
+  family_sv: Grässångare
+  genus: Cisticola
+  ioc_order: Passeriformes
+names:
+  sv: Grässångare
+  en: Zitting Cisticola
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Grässångare
+
+
+    Grässångare är en liten, diskret fågel i cistikolfamiljen som förekommer i varma
+    slättlandskap med högt gräs. Arten är långstäckad med ljusbrun ovansida och vitaktig
+    undersida. Det är en mycket aktiv och skicklig flygare som ofta ses hoppa mellan
+    grässtjälkar.
+
+
+    Fågeln är känd för sitt karakteristiska beteende – den flyger upp från gräset
+    med snabba vingslag medan den sjunger sitt högljudda, mekaniska "zitt-zitt-zitt"-läte,
+    varfrån det engelska namnet kommer. Arten är mycket mobil och söker föda genom
+    att klättra på grässtjälkar efter små insekter.
+
+
+    Grässångaren är vanlig i sina ursprungliga utbredningsområden från Medelhavsregionen
+    genom södra Asien till Afrika, där den undviker regnskogs- och ökenområden. Den
+    förekommer framför allt i torra och halvtorra gräsmarker. Arten är klassificerad
+    som livskraftig av IUCN. Det är anmärkningsvärt att arten påträffades en gång
+    långt norr om sitt normala utbredningsområde, i Sverige år 2000.'
+  en: '# Zitting Cisticola
+
+
+    The zitting cisticola is a small warbler found across grasslands in the Old World,
+    from southern Europe through Africa (excluding deserts and rainforests) to southern
+    Asia and northern Australia. It is best identified by its distinctive rufous rump,
+    combined with a brownish tail tipped white and lack of gold on the collar.
+
+
+    During breeding season, males perform a striking zigzagging flight display while
+    producing regular "zit" calls—the source of the bird''s English name. Outside
+    this display, it remains rather inconspicuous, foraging quietly in grass. The
+    species builds a distinctive pouch nest, carefully woven and suspended within
+    a grass clump for protection.
+
+
+    The zitting cisticola favors open grassland habitats where it can hunt for insects
+    among the vegetation. Its small size and restless behaviour make it easy to overlook
+    when not displaying, but the male''s energetic territorial flights and characteristic
+    vocalizations make it relatively easy to locate during the breeding season.'
+migration:
+  sv: '# Grässångare – Förekomst i Norden
+
+
+    Grässångare är en mycket sällsynt besökare i Skandinavien och Nordeuropa. Arten
+    är hemma i varma slättlandskap från Medelhavet till södra Asien och Afrika, långt
+    söder om det nordiska området. Den enda dokumenterade observationen i Sverige
+    utgörs av ett fynd i Skåne år 2000, vilket indikerar att arten mycket sporadiskt
+    når så långt norrut. Arten förekommer inte regelbundet som övervintrare eller
+    flyttfågel i norra Europa och är praktiskt taget frånvarande från Skandinavien
+    under året.
+
+
+    Migrationsdata saknas för denna art.'
+  en: '# Cisticola juncidis in Northern Europe
+
+
+    The Zitting Cisticola is a rare vagrant to Scandinavia and Northern Europe, with
+    no established regular migration pattern to the region. This species'' main breeding
+    range lies in southern and western Europe, Africa, and southern Asia. In Northern
+    Europe, any sightings represent individuals dispersing beyond their typical range,
+    typically occurring as isolated records rather than predictable seasonal movements.
+    The species is not considered a regular migrant to Scandinavian or Northern European
+    territories, and observations remain exceptional occurrences rather than part
+    of any consistent annual cycle in these regions.'
+image_refs:
+- role: hero
+  path: Q210791/hero.jpg
+  width: 1598
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Zitting cisticola 2 (Cisticola
+    juncidis), Cabanas de Tavira, Portugal.jpg
+  commons_filename: Zitting cisticola 2 (Cisticola juncidis), Cabanas de Tavira, Portugal.jpg
+- role: secondary
+  path: Q210791/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Zitting cisticola (Cisticola
+    juncidis), Cabanas de Tavira, Portugal.jpg
+  commons_filename: Zitting cisticola (Cisticola juncidis), Cabanas de Tavira, Portugal.jpg
+- role: secondary
+  path: Q210791/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Zitting Cisticola (Cisticola
+    juncidis) പോതപ്പൊട്ടൻ (31406290434).jpg
+  commons_filename: Zitting Cisticola (Cisticola juncidis) പോതപ്പൊട്ടൻ (31406290434).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:46:36.206081+00:00'
+sources:
+  wikipedia_sv_revision: '56596555'
+  wikipedia_en_revision: '1347082065'
+  claude_model: claude-haiku-4-5-20251001

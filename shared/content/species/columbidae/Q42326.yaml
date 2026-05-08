@@ -1,0 +1,137 @@
+id: Q42326
+scientific_name: Columba livia
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Columba
+  ioc_order: Columbiformes
+names:
+  sv: Klippduva
+  en: Rock Dove
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Klippduva
+
+
+    Klippduvan är en medelstor fågel i familjen duvor som förekommer i många färgvarianter.
+    Arten är bekant för sin förmåga att anpassa sig till olika miljöer, och det domesticerade
+    tamduva-släktet samt förrymda hundar från tamduvebestånd har skapat de stadsduvor
+    som idag är vanliga i många miljöer. Dessa tre typer kan härka tillsammans, vilket
+    visar på artens flexibilitet.
+
+
+    Klippduvan är en social fågel som ofta ses i större flockar. Den hämtar sitt foder
+    från marken och är framför allt växtätare. Arten är också känd för sin karakteristiska
+    murrande kluclande-ljud som ofta hörs när fåglarna interagerar med varandra.
+
+
+    Arten häckar gärna på klippor och bergsväggar i naturliga miljöer, men har framgångsrikt
+    koloniserat människans bebyggelse där den använder byggnader och broar som häckningsplatser.
+    Detta gör klippduvan till en av världens mest framgångsrika fågelarter.'
+  en: '# Rock Dove
+
+
+    The rock dove is a plump, medium-sized pigeon belonging to the Columbidae family.
+    Wild rock doves display blue-grey plumage on the head and upper body, with distinctive
+    black bars across the wings and a white rump. Domesticated forms, which are far
+    more commonly encountered, show tremendous colour variation ranging from pure
+    white through to dark charcoal, often with mixed patterns. The bird has a small
+    head, compact body, and characteristic red-orange eye-ring.
+
+
+    Rock doves are highly social birds, typically found in flocks that may number
+    from a few individuals to several hundred. They feed primarily on seeds and grain,
+    often visiting the ground in coordinated groups. The species produces a soft,
+    rhythmic cooing call that is deeper and more sonorous than many other pigeons.
+    In flight, the birds are agile and direct, with swift wingbeats.
+
+
+    The rock dove inhabits rocky cliffs in its wild form, but domesticated populations
+    thrive in urban and suburban environments worldwide, roosting on buildings, bridges,
+    and other structures. They have become one of the most widespread and successful
+    bird species globally, adapting readily to human settlements and becoming a familiar
+    sight in towns and cities.'
+migration:
+  sv: '# Klippduva - Förekomst i Skandinavien och Nordeuropa
+
+
+    Klippduvan är ett året omkring stedfast fågelart i Skandinavien och Nordeuropa.
+    Arten förekommer både som vildlevande klippduvor längs kusterna och som förvildade
+    stadsduvor i urbana områden. De nordiska populationerna visar endast begränsade
+    migrationsmönster, med möjliga lokala förflyttningar under hårdare vintrar. Stadsduvor
+    är helt stedfast året runt i sitt område, medan de vilda klippduvornas rörelser
+    varierar beroende på födotillgång och väderförhållanden.
+
+
+    Migrationsdata saknas för denna art.'
+  en: '# Rock Dove (Columba livia) in Scandinavia/Northern Europe
+
+
+    The Rock Dove is a permanent resident throughout Scandinavia and Northern Europe,
+    with populations present year-round. In these regions, the species does not undertake
+    significant migratory movements, though some local dispersal occurs outside the
+    breeding season. Rock Doves are highly adapted to urban and suburban environments,
+    where they find shelter in buildings and structures that provide protection from
+    winter weather. Their abundance and distribution remain relatively stable throughout
+    the year, with birds relying on urban food sources and roosting sites during the
+    colder months.'
+image_refs:
+- role: hero
+  path: Q42326/hero.jpg
+  width: 2400
+  height: 1602
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20220926 Columba livia.jpg
+  commons_filename: 20220926 Columba livia.jpg
+- role: secondary
+  path: Q42326/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20200115 Columba livia domestica
+    Bürgerpark Saarbrücken 06.jpg
+  commons_filename: 20200115 Columba livia domestica Bürgerpark Saarbrücken 06.jpg
+- role: secondary
+  path: Q42326/secondary-2.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20200115 Columba livia domestica
+    Bürgerpark Saarbrücken 02.jpg
+  commons_filename: 20200115 Columba livia domestica Bürgerpark Saarbrücken 02.jpg
+review_status: approved
+review_notes: 'Hero auto-pick OK — tamduva (förvildad Columba livia) i parkmiljö med
+  typisk grå-blå färgvariant och iridescenta halsfjädrar. Notera: common_en kortades
+  från "Rock Dove / Feral Pigeon" till "Rock Dove" eftersom snedstrecket bröt Wikipedia-fetcherns
+  URL-bygge.'
+generated_at: '2026-05-08T00:51:17.019456+00:00'
+sources:
+  wikipedia_sv_revision: '59122965'
+  wikipedia_en_revision: '1351549061'
+  claude_model: claude-haiku-4-5-20251001

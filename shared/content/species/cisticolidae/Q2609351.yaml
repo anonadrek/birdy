@@ -1,0 +1,91 @@
+id: Q2609351
+scientific_name: Spiloptila clamans
+taxonomy:
+  family: Cisticolidae
+  family_sv: Grässångare
+  genus: Spiloptila
+  ioc_order: Passeriformes
+names:
+  sv: Sahelsångare
+  en: Cricket Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sahelsångare
+
+
+    Sahelsängare är en liten tätting som tillhör familjen grässångare. Arten förekommer
+    i ett smalt band direkt söder om Saharas sydgräns i Afrika. Beståndet anses vara
+    livskraftigt.
+
+
+    Denna lilla art är karakteristisk för sitt habitat i torr savann och busksavann.
+    Som många andra grässångare är Sahelsångare en duktig sångare med en karakteristisk
+    och repetitiv stämma som ofta hörs under värmaste delen av dagen. Arten är aktiv
+    och livlig i sitt beteende, ofta skjul i låg vegetation där den söker föda.'
+  en: '# Cricket Warbler
+
+
+    The cricket warbler is a small warbler belonging to the Cisticolidae family, also
+    known by several alternative names including cricket longtail, scaly longtail,
+    and cricket prinia. It typically forms the sole species within its genus Spiloptila,
+    though the red-fronted prinia is occasionally classified alongside it.
+
+
+    As a member of the warbler family, it shares the characteristic small size and
+    active foraging behaviour typical of its relatives. The cricket warbler is found
+    in arid and semi-arid habitats across its range. Like many warblers in this family,
+    it is an agile and energetic bird, often seen moving through vegetation as it
+    searches for insects.
+
+
+    The species'' common names reflect its distinctive features and vocalizations.
+    The "cricket" element refers to its insect-like call, while references to "longtail"
+    indicate a proportionally longer tail than some related warblers. Its plumage
+    includes scaly patterning, which accounts for one of its alternative names. Further
+    details about specific appearance, behaviour, and exact geographic distribution
+    would benefit from additional source material.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the distribution, migration
+    patterns, or seasonal occurrence of Spiloptila clamans in Scandinavia or Northern
+    Europe. The Cricket Warbler is a species in the family Cisticolidae found in Africa,
+    and there is no documented regular occurrence in Scandinavian or Northern European
+    regions that would allow for a factual account of its presence throughout the
+    year or migration patterns in these areas.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:50:09.527352+00:00'
+sources:
+  wikipedia_sv_revision: '56454797'
+  wikipedia_en_revision: '1313976624'
+  claude_model: claude-haiku-4-5-20251001

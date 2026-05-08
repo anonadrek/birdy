@@ -1,0 +1,75 @@
+id: Q932119
+scientific_name: Columba eversmanni
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Columba
+  ioc_order: Columbiformes
+names:
+  sv: Turkestanduva
+  en: Yellow-eyed Pigeon
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Yellow-eyed Pigeon
+
+
+    The yellow-eyed pigeon is a member of the pigeon family, distinguished by its
+    pale plumage and characteristic yellow eye-ring. It is a migratory species that
+    breeds across a broad range of mountainous and semi-arid regions in Central and
+    South Asia during the breeding season. In winter, it moves to lower elevations
+    in adjacent areas, seeking more favorable conditions.
+
+
+    Sadly, this species has experienced significant population declines over recent
+    decades, primarily due to hunting pressure. As a result, it is classified as vulnerable
+    by the International Union for Conservation of Nature. The yellow-eyed pigeon
+    inhabits arid and semi-arid terrain, typically favoring rocky slopes and open
+    woodlands where it can nest and forage. Like other pigeons, it feeds on seeds
+    and grains found on the ground and in vegetation.
+
+
+    Observers wishing to see this species should focus on appropriate habitat during
+    its seasonal movements, though declining numbers make sightings increasingly challenging.
+    Conservation of its breeding and wintering grounds remains important for the species''
+    survival.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains information about the species'' breeding range
+    (southern Kazakhstan, Uzbekistan, Turkmenistan, Tajikistan, Kyrgyzstan, Afghanistan,
+    north-east Iran, and extreme north-west China) and wintering grounds (north-east
+    Pakistan, Jammu and Kashmir, and parts of Rajasthan), but does not include any
+    information about its occurrence in Scandinavia or Northern Europe. Therefore,
+    no migration data relevant to the requested geographic region can be provided
+    based on this source.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:46:17.445656+00:00'
+sources:
+  wikipedia_sv_revision: '55752121'
+  wikipedia_en_revision: '1315224899'
+  claude_model: claude-haiku-4-5-20251001

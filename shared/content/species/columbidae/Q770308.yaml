@@ -1,0 +1,117 @@
+id: Q770308
+scientific_name: Columba trocaz
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Columba
+  ioc_order: Columbiformes
+names:
+  sv: Madeiraduva
+  en: Trocaz Pigeon
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Madeiraduva
+
+
+    Madeiraduva är en endemisk duva som endast förekommer på ön Madeira. Arten är
+    huvudsakligen jämngrå med ett karakteristiskt rosalila skimrande bröst. Den silvergrå
+    halsfläcken, avsaknaden av vita tvärband på vingovansidan och dess annorlunda
+    stjärtteckning skiljer den tydligt från ringduvan, som är dess närmsta släkting.
+
+
+    Arten har ett karakteristiskt lockläte – ett sexstavigt "hoande" som är svagare
+    och i en lägre ton än ringduvans. I flykten upplevs madeiraduvan som relativt
+    tung och storstjärtad, med ett snabbt och rakt flygmönster.'
+  en: '# Trocaz Pigeon
+
+
+    The Trocaz Pigeon is a handsome, medium-sized pigeon endemic to Madeira. It is
+    predominantly grey with a distinctive pinkish breast and a striking silvery patch
+    on the neck. These features, combined with its lack of white wing markings, clearly
+    separate it from its close relative, the Common Wood Pigeon. The bird has a notably
+    long tail and bulky build, yet despite this rather heavy appearance, it is surprisingly
+    agile in flight, moving swiftly and directly through the air.
+
+
+    The Trocaz Pigeon''s call is one of its most characteristic features—a gentle,
+    six-note cooing that is noticeably weaker and lower-pitched than the more familiar
+    calls of the Common Wood Pigeon. This softer vocalisation is often the first sign
+    of the bird''s presence in its woodland habitat. The species is closely related
+    to the Common Wood Pigeon and is thought to be its descendant, adapted to island
+    life.
+
+
+    As an endemic species found nowhere else in the wild, the Trocaz Pigeon is a special
+    subject for birdwatchers visiting Madeira, where it inhabits laurel forests and
+    other suitable woodland areas.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller endast beskrivningar av Madeiraduvas utseende,
+    läte och flygbeteende, men innehåller ingen information om migration, övervintringsvanor
+    eller säsongsförekomst i Skandinavien eller Nordeuropa. Eftersom Madeiraduvan
+    är endemisk för Madeira förekommer arten inte naturligt i Skandinavien eller Nordeuropa
+    under något årstid, vilket förklarar avsaknaden av migrationsinformation.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the Trocaz Pigeon''s occurrence
+    in Scandinavia or Northern Europe, nor any details about its migration patterns,
+    seasonal movements, or presence throughout the year in these regions. The species
+    is endemic to Madeira, Portugal, and the source material focuses solely on its
+    physical characteristics and identification features rather than its biogeography
+    or migratory behavior.'
+image_refs:
+- role: hero
+  path: Q770308/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/932358">famkoe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Columba trocaz 525000647.jpg
+  commons_filename: Columba trocaz 525000647.jpg
+- role: secondary
+  path: Q770308/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2200409">Oscar
+    Hopgood</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Columba trocaz 482834173.jpg
+  commons_filename: Columba trocaz 482834173.jpg
+- role: secondary
+  path: Q770308/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/645653">thibaudaronson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Columba trocaz 175416504.jpg
+  commons_filename: Columba trocaz 175416504.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:41:02.753349+00:00'
+sources:
+  wikipedia_sv_revision: '49203573'
+  wikipedia_en_revision: '1346255318'
+  claude_model: claude-haiku-4-5-20251001

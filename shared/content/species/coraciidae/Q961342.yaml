@@ -1,0 +1,122 @@
+id: Q961342
+scientific_name: Coracias abyssinicus
+taxonomy:
+  family: Coraciidae
+  family_sv: Blåkråkor
+  genus: Coracias
+  ioc_order: Coraciiformes
+names:
+  sv: Savannblåkråka
+  en: Abyssinian Roller
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Abyssinian Roller
+
+
+    The Abyssinian roller is a striking member of the roller family found across tropical
+    Africa''s Sahel belt, south of the Sahara. It inhabits this region year-round
+    in the south, though northern populations migrate southward after the wet season,
+    making them short-distance migrants that follow seasonal rainfall patterns.
+
+
+    This species is characterized by vibrant plumage typical of rollers, with bold
+    coloration that makes it conspicuous in its savanna and open woodland habitats.
+    The Abyssinian roller is an active flyer, often seen hunting from exposed perches
+    where it watches for prey before diving to catch insects in mid-air—a hunting
+    technique that gives the roller family its distinctive name.
+
+
+    The bird''s call is a distinctive harsh, grating sound, often delivered from prominent
+    perches or in flight. It prefers relatively open country where it can spot and
+    pursue prey effectively, avoiding dense forest. Its presence and movements are
+    closely tied to the availability of insects and local weather patterns, making
+    it a seasonal presence in some areas and a permanent resident in others.'
+migration:
+  sv: ''
+  en: '# Abyssinian Roller in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Abyssinian Roller is a tropical African species with no established presence
+    in Scandinavia or Northern Europe. It breeds in the Sahel region south of the
+    Sahara and does not occur naturally in northern European regions. While northern
+    African populations undertake short-distance migrations southward after breeding,
+    this movement is confined to tropical Africa and does not extend to Scandinavia
+    or Northern Europe. This species is entirely absent from the Nordic region throughout
+    the year.'
+image_refs:
+- role: hero
+  path: Q961342/hero.jpg
+  width: 2400
+  height: 1592
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/rod_waddington/">Rod
+    Waddington</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
+    href="//commons.wikimedia.org/wiki/File:Senegalracke_(Coracias_abyssinicus),_Ansitz.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Senegalracke (Coracias abyssinicus),
+    Ansitz.jpg
+  commons_filename: Senegalracke (Coracias abyssinicus), Ansitz.jpg
+- role: secondary
+  path: Q961342/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/rod_waddington/">Rod
+    Waddington</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
+    href="//commons.wikimedia.org/wiki/File:Senegalracke_(Coracias_abyssinicus)_im_Kidepo_Valley_Nationalpark.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Senegalracke (Coracias abyssinicus)
+    im Kidepo Valley Nationalpark.jpg
+  commons_filename: Senegalracke (Coracias abyssinicus) im Kidepo Valley Nationalpark.jpg
+- role: secondary
+  path: Q961342/secondary-2.jpg
+  width: 1800
+  height: 1186
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/rod_waddington/">Rod
+    Waddington</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
+    href="//commons.wikimedia.org/wiki/File:Senegalracke_(Coracias_abyssinicus),_Seitenansicht.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Senegalracke (Coracias abyssinicus),
+    Seitenansicht.jpg
+  commons_filename: Senegalracke (Coracias abyssinicus), Seitenansicht.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:47:42.747282+00:00'
+sources:
+  wikipedia_sv_revision: '56466575'
+  wikipedia_en_revision: '1313848592'
+  claude_model: claude-haiku-4-5-20251001

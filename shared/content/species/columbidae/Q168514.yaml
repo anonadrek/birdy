@@ -1,0 +1,129 @@
+id: Q168514
+scientific_name: Streptopelia turtur
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Streptopelia
+  ioc_order: Columbiformes
+names:
+  sv: Turturduva
+  en: European Turtle Dove
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Turturduva
+
+
+    Turturduvan är en medelstor duva som tillhör familjen duvor. Den är något mindre
+    än ringduvan och har ett vackert rostfärgat fjäderdräkt med svarta fläckar på
+    vingarna. Halsen är ljusare och nacken präglas av karakteristiska svarta och vita
+    strimmor som ger den ett distinkt utseende.
+
+
+    Arten är känd för sitt mjuka, rullande kurrkurrande läte, som ofta hörs under
+    häckningstiden. Det är en ganska blyg fågel som håller sig ofta i träd och buskar,
+    där den söker föda på marken. Turturduvan föredrar varmare miljöer och återfinns
+    främst på halvöppna landskap med träd och buskar.
+
+
+    Turturduvan är enligt dagens status kraftigt hotad och antalet minskar dramatiskt.
+    Arten har historiskt varit en väl känd symbol inom kulturen för trofast kärlek
+    och ömhet. Dess minskande förekomst är ett bekymmersamt tecken på förändringen
+    av jordbruks- och naturmiljöer.'
+  en: '# European Turtle Dove
+
+
+    The European turtle dove is a small, delicate member of the dove family, notably
+    more slender and elegant than its common pigeon relatives. It displays distinctive
+    rufous and black patterning on its wings, with a characteristic patchwork appearance
+    that distinguishes it from larger dove species. The head is pale grey-blue with
+    a striking black and white striped patch on the neck.
+
+
+    This species is a long-distance migrant, breeding across much of south-western
+    Eurasia and North Africa during spring and summer, then undertaking an impressive
+    journey to winter in northern sub-Saharan Africa. It favours open and semi-open
+    habitats, often seen feeding on the ground or perched on wires and low branches.
+
+
+    Unfortunately, the European turtle dove is now classified as threatened or vulnerable
+    across much of its range, with populations declining significantly. Its soft,
+    purring call—a gentle, repetitive cooing sound—is characteristic and easily recognised
+    in suitable habitats. The species'' preference for warm, agricultural regions
+    and seed-bearing plants makes it dependent on maintaining appropriate habitat
+    conditions throughout both its breeding and wintering grounds.'
+migration:
+  sv: Turturduvan är en sommarfågel i Skandinavien och Nordeuropa som anländer under
+    maj månad för att föda upp ungarna. Arten häckar spritt i södra och mellersta
+    delen av regionen, men förekomsten minskar kraftigt. Under augusti och september
+    påbörjar turturduvor sin långa flyttning söderut till Afrika, där de överinterar.
+    Återkomsten till häckningsområdena sker sent på våren. Arten är numera mycket
+    ovanlig i många delar av sitt tidigare utbredningsområde i norra Europa.
+  en: '# European Turtle Dove (*Streptopelia turtur*)
+
+
+    The European Turtle Dove is a summer breeding visitor to Scandinavia and Northern
+    Europe, arriving in late April and May from its African wintering grounds. This
+    migratory species breeds throughout the region during the warmer months before
+    undertaking a complete autumn migration southward. Birds depart for sub-Saharan
+    Africa in August and September to escape the harsh northern winter, making the
+    species entirely absent from the region during winter months. The species thus
+    follows a typical Palearctic migration pattern, utilizing Northern European breeding
+    habitats during the short summer season before retreating to African wintering
+    areas.'
+image_refs:
+- role: hero
+  path: Q168514/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/25553993@N02">Kev
+    Chapman</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Streptopelia turtur in an English
+    zoo.jpg
+  commons_filename: Streptopelia turtur in an English zoo.jpg
+- role: secondary
+  path: Q168514/secondary-1.jpg
+  width: 1800
+  height: 1197
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/59787340@N00">David
+    King</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Streptopelia turtur on a branch.jpg
+  commons_filename: Streptopelia turtur on a branch.jpg
+- role: secondary
+  path: Q168514/secondary-2.jpg
+  width: 1800
+  height: 1440
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
+    Sprinz">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turteltaube (Streptopelia turtur)
+    in Rheinland-Pfalz.jpg
+  commons_filename: Turteltaube (Streptopelia turtur) in Rheinland-Pfalz.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:47:26.382919+00:00'
+sources:
+  wikipedia_sv_revision: '56064581'
+  wikipedia_en_revision: '1352487826'
+  claude_model: claude-haiku-4-5-20251001

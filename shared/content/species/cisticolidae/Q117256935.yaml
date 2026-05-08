@@ -1,0 +1,78 @@
+id: Q117256935
+scientific_name: Prinia lepida
+taxonomy:
+  family: Cisticolidae
+  family_sv: Grässångare
+  genus: Prinia
+  ioc_order: Passeriformes
+names:
+  sv: Dvärgprinia
+  en: Delicate Prinia
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Delicate Prinia
+
+
+    The delicate prinia is a small warbler belonging to the cisticolidae family. It
+    is a resident breeder across southern Asia, inhabiting regions from Turkey eastward
+    to North India.
+
+
+    Being a small species, the delicate prinia favors scrubby and grassland habitats
+    where it forages for insects. Like other prinias, it is an active and somewhat
+    skulking bird, often remaining low in vegetation where it can be difficult to
+    observe. Its behaviour is typical of warblers in this family—restless and energetic,
+    with frequent movements through dense cover.
+
+
+    The species is a year-round resident throughout its range rather than a migratory
+    visitor, establishing territories and breeding locally. While specific details
+    about its call and exact plumage markings would require additional sources, the
+    delicate prinia is best sought in appropriate scrub and grassland habitats within
+    its southern Asian range.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Delicate Prinia is a resident breeder in southern Asia, ranging from Turkey
+    to North India, and does not occur regularly in Scandinavia or Northern Europe.
+    Therefore, specific migration or occurrence patterns for this region cannot be
+    documented.'
+image_refs:
+- role: hero
+  path: Q117256935/hero.jpg
+  width: 2236
+  height: 1367
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:D%C3%BBrzan" title="User:Dûrzan">Dûrzan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Prinia lepida.jpg
+  commons_filename: Prinia lepida.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:46:59.140676+00:00'
+sources:
+  wikipedia_sv_revision: '55578939'
+  wikipedia_en_revision: '1117646557'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,102 @@
+id: Q655510
+scientific_name: Mycteria ibis
+taxonomy:
+  family: Ciconiidae
+  family_sv: Storkar
+  genus: Mycteria
+  ioc_order: Ciconiiformes
+names:
+  sv: Afrikansk ibisstork
+  en: Yellow-billed Stork
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Yellow-billed Stork
+
+
+    The yellow-billed stork is a large African stork with distinctive plumage and
+    a striking yellow bill. It displays white and black feathering with bare red facial
+    skin around the eyes, making it readily identifiable in the field. The bird''s
+    long legs and neck are characteristic of storks, enabling it to wade through shallow
+    waters.
+
+
+    This species is primarily a wader, feeding in wetland habitats where it hunts
+    fish, frogs, and other aquatic prey. It often feeds in small flocks, using a characteristic
+    feeding technique of stirring the water with its feet to disturb prey. The yellow-billed
+    stork is generally silent but occasionally produces bill-clattering sounds, particularly
+    during breeding season.
+
+
+    The species is widespread throughout sub-Saharan Africa, inhabiting lakes, rivers,
+    marshes, and floodplain wetlands. It also occurs in Madagascar. The bird''s presence
+    is closely linked to water availability, making seasonal wetlands and flood plains
+    particularly important habitats. Its distribution extends across much of the continent
+    south of the Sahara Desert, though local populations fluctuate with rainfall patterns
+    and water levels.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Yellow-billed Stork is an African species with no established occurrence in
+    Scandinavia or Northern Europe. As a sub-Saharan African resident, it does not
+    migrate to or occur naturally in Scandinavian regions during any season. Therefore,
+    migration patterns relevant to Northern Europe cannot be documented for this species.'
+image_refs:
+- role: hero
+  path: Q655510/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Yellow-billed stork (Mycteria
+    ibis).jpg
+  commons_filename: Yellow-billed stork (Mycteria ibis).jpg
+- role: secondary
+  path: Q655510/secondary-1.jpg
+  width: 1800
+  height: 1192
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/13456343@N00">Benjamin
+    Hollis</a> from Seattle, WA, USA
+  source_url: https://commons.wikimedia.org/wiki/File:Mycteria ibis -near Kwara Camp,
+    North-West District, Botswana -flying-8.jpg
+  commons_filename: Mycteria ibis -near Kwara Camp, North-West District, Botswana
+    -flying-8.jpg
+- role: secondary
+  path: Q655510/secondary-2.jpg
+  width: 1800
+  height: 1196
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Morray" title="User:Morray">Philipp
+    Weigell</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mycteria ibis et al..JPG
+  commons_filename: Mycteria ibis et al..JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:41:49.934508+00:00'
+sources:
+  wikipedia_sv_revision: '55485790'
+  wikipedia_en_revision: '1349004894'
+  claude_model: claude-haiku-4-5-20251001

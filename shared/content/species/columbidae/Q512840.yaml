@@ -1,0 +1,124 @@
+id: Q512840
+scientific_name: Columba arquatrix
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Columba
+  ioc_order: Columbiformes
+names:
+  sv: Olivduva
+  en: African Olive Pigeon
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Olivduva
+
+
+    Olivduva är en medlem av duvfamiljen och förekommer i bergstrakter över stora
+    delar av Afrika söder om Sahara. Arten har ett stabilt bestånd och anses inte
+    vara hotad.
+
+
+    Olivduvan är en medelstor duva med en karakteristisk olivfärgad fjäderdräkt som
+    ger arten sitt namn. Den är välanpassad för livet i bergiga områden där den ofta
+    ses sitta i träd eller på klippor. Som de flesta duvor är arten socialt lagd och
+    kan förekomma i mindre flockar, särskilt vid vattenhål och betesmarker.
+
+
+    Arten är känd för sitt mjuka, sorglösa ropande som ofta hörs från bergskogen på
+    mornar och kvällar. Olivduvan föredrar högre belägna skogshabitat och är därför
+    ofta svårare att observera än låglandsduvorna. Den är omnöjsam när det gäller
+    föda och äter främst frön och växtmaterial som den plockar från marken eller från
+    träden.'
+  en: '# African Olive Pigeon
+
+
+    The African olive pigeon is a resident pigeon found across eastern and southern
+    Africa, with isolated populations in western regions and the Arabian Peninsula.
+    It is locally common but shows a patchy distribution, reflecting its specific
+    habitat preferences. The species is monotypic, meaning birds throughout its range
+    show no significant geographical variation.
+
+
+    This pigeon favors forested and woodland environments where it can find suitable
+    food and breeding sites. It remains in its territories year-round rather than
+    migrating seasonally. While locally abundant in suitable areas, the species''
+    discontinuous range reflects its dependence on particular forest conditions, creating
+    notable gaps where habitat becomes unsuitable.
+
+
+    The African olive pigeon is a moderate-sized pigeon that blends into its woodland
+    surroundings. Observers in appropriate habitats may encounter it feeding or perched
+    in trees, though it can be inconspicuous among foliage. Its preference for specific
+    forest types makes it a sought-after species for birdwatchers exploring suitable
+    woodland areas within its range.'
+migration:
+  sv: 'sv: Migrationsdata saknas för denna art.
+
+
+    en: Migration data unavailable for this species.'
+  en: '# Migration Data Unavailable for This Species
+
+
+    The source text provided contains no information about seasonal movements, migration
+    patterns, or occurrence throughout the year in Scandinavia or Northern Europe.
+    The African Olive Pigeon is described as a resident breeding bird in Africa, the
+    Arabian Peninsula, and adjacent regions, but there is no mention of its presence
+    in Scandinavian or Northern European territories at any time of year.
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q512840/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/christiaan_viljoen">christiaan_viljoen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Columba arquatrix, Cape Winelands,
+    South Africa 2.jpg
+  commons_filename: Columba arquatrix, Cape Winelands, South Africa 2.jpg
+- role: secondary
+  path: Q512840/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/christiaan_viljoen">christiaan_viljoen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Columba arquatrix, Cape Winelands,
+    South Africa 3.jpg
+  commons_filename: Columba arquatrix, Cape Winelands, South Africa 3.jpg
+- role: secondary
+  path: Q512840/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/christiaan_viljoen">christiaan_viljoen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Columba arquatrix, Cape Winelands,
+    South Africa 4.jpg
+  commons_filename: Columba arquatrix, Cape Winelands, South Africa 4.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:48:40.939569+00:00'
+sources:
+  wikipedia_sv_revision: '56773458'
+  wikipedia_en_revision: '1352530253'
+  claude_model: claude-haiku-4-5-20251001

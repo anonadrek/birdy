@@ -1,0 +1,135 @@
+id: Q54696
+scientific_name: Streptopelia decaocto
+taxonomy:
+  family: Columbidae
+  family_sv: Duvor
+  genus: Streptopelia
+  ioc_order: Columbiformes
+names:
+  sv: Turkduva
+  en: Eurasian Collared Dove
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Turkduva
+
+
+    Turkduvan är en långsträckt duva med ljust beigegrå fjäderdräkt och ett karakteristiskt
+    svart band över nacken. Stjärten har en vit kant som är särskilt märkbar när fågeln
+    flyger. Arten är något större än ringduvan och har en mer elegant hållning.
+
+
+    Turkduvan uppträder helt nära människan och föredrar lummiga trädgårdar, parker
+    och allèer med högvuxna träd. Den återfinns också vid gårdssamlingar och i blandade
+    kulturlandskap. Arten häckar ofta högt upp i träden och ses ofta parvis eller
+    i små flockar.
+
+
+    Turkduvan är känd för sitt karakteristiska läte – ett rytmiskt "kuu-kok-kuk" som
+    ofta hörs upprepat från trädens kronor. Arten spred sig dramatiskt norr och väster
+    från Sydösteuropa under 1900-talet och förekommer idag över stora delar av Europa.
+    Under senare decennier har den expanderat sitt utbredningsområde betydligt i norra
+    delen av sitt område.'
+  en: '# Eurasian Collared Dove
+
+
+    The Eurasian collared dove is a medium-sized dove with pale, warm buff-grey plumage
+    that distinguishes it from other dove species. Its most distinctive feature is
+    the bold black collar marking on the nape of its neck, from which it derives its
+    common name. The bird has a streamlined body adapted for swift, direct flight.
+
+
+    This species is highly vocal and produces a characteristic repetitive cooing call—a
+    distinctive "coo-coo-coo" phrase—that is often heard from exposed perches. It
+    typically forages on the ground, feeding on seeds and grains. The Eurasian collared
+    dove is remarkably adaptable and has become increasingly common in urban and suburban
+    environments, where it frequents parks, gardens, and open spaces around human
+    habitation.
+
+
+    Native to Europe, Asia, and northern Africa, the species has undergone a dramatic
+    range expansion over the past century. It has successfully colonized new territories
+    across North America, the Caribbean, Japan, and beyond, demonstrating its flexibility
+    in adapting to diverse climates and environments. Its ability to thrive in human-modified
+    landscapes has made it one of the most successful invasive bird species worldwide.'
+migration:
+  sv: '# Turkduva i Skandinavien och Norra Europa
+
+
+    Turkduvan är en relativt nyligen etablerad art i Skandinavien och Norra Europa,
+    där den började sprida sig kraftigt från sydöst under 1930-talet och framåt. Arten
+    har koloniserat stora delar av Europa och är numera ett vanligt inslag i många
+    regioner, inklusive Skandinavien. Turkduvan är huvudsakligen stationär eller delvis
+    flyttfågel i sitt utbredningsområde, och många populationer är närvaraktiga året
+    runt. I norra delar kan arten visa flyttningsbenägenhet under hårdare vintrar,
+    men många individer stannar kvar och förlitar sig på människans närvaro för mat
+    och skydd.'
+  en: '# Eurasian Collared Dove in Scandinavia/Northern Europe
+
+
+    The Eurasian Collared Dove has shown a dramatic range expansion northward during
+    the past several decades, becoming increasingly established in Scandinavia and
+    Northern Europe. Originally a resident of warmer regions, this species now occurs
+    year-round in much of Southern and Central Scandinavia, particularly in Sweden
+    and Denmark where populations have become resident. Northern populations are partially
+    migratory, with birds moving south during harsh winters. Arrival in spring typically
+    occurs from March onwards, while autumn departure begins in September-October.
+    The species has adapted well to human-dominated landscapes, favoring parks, gardens,
+    and towns where food sources are reliable, allowing many individuals to remain
+    through winter in milder areas.'
+image_refs:
+- role: hero
+  path: Q54696/hero.jpg
+  width: 969
+  height: 2048
+  license: CC0
+  author: Dan Horowitz
+  source_url: https://commons.wikimedia.org/wiki/File:Streptopelia decaocto, feral,
+    Yuma, Arizona.jpg
+  commons_filename: Streptopelia decaocto, feral, Yuma, Arizona.jpg
+- role: secondary
+  path: Q54696/secondary-1.jpg
+  width: 1800
+  height: 1125
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Christian_Ferrer" title="User:Christian
+    Ferrer">Christian Ferrer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Streptopelia decaocto, Sète
+    02.jpg
+  commons_filename: Streptopelia decaocto, Sète 02.jpg
+- role: secondary
+  path: Q54696/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/29231471@N00">Willip
+    Von Ree</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Streptopelia decaocto -drinking-8.jpg
+  commons_filename: Streptopelia decaocto -drinking-8.jpg
+review_status: approved
+review_notes: Hero auto-pick OK — turkduva i karaktäristisk gråbeige dräkt med tydlig
+  svart halsring (diagnostisk fältkaraktär).
+generated_at: '2026-05-08T00:42:52.329247+00:00'
+sources:
+  wikipedia_sv_revision: '59225537'
+  wikipedia_en_revision: '1352531139'
+  claude_model: claude-haiku-4-5-20251001
