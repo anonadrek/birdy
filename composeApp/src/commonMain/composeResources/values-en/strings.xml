@@ -289,4 +289,24 @@
     <string name="archive_sort_recent">Recently added</string>
     <string name="archive_pill_stamped">STAMPED</string>
     <string name="archive_section_count">%1$s species</string>
+
+    <!-- ===== Plan 7b: LifelistScreen ===== -->
+    <string name="lifelist_breadcrumb">LIFELIST</string>
+    <string name="lifelist_headline_format">*%1$s*'s collection.</string>
+    <string name="lifelist_headline_fallback">My collection.</string>
+    <string name="lifelist_stat_species">SPECIES</string>
+    <string name="lifelist_stat_stamps">STAMPS</string>
+    <string name="lifelist_stat_streak">DAY STREAK</string>
+    <string name="lifelist_stat_year">SPECIES THIS YEAR</string>
+    <string name="lifelist_stat_month">SPECIES THIS MONTH</string>
+    <string name="lifelist_stat_longest">LONGEST STREAK</string>
+    <string name="lifelist_section_recent">Recent · %1$s stamps</string>
+    <string name="lifelist_sort_recent">Recent</string>
+    <string name="lifelist_sort_stamp">Stamp #</string>
+    <string name="lifelist_sort_species">Species</string>
+    <string name="lifelist_relative_just_now">just now</string>
+    <string name="lifelist_relative_minutes">%1$s min ago</string>
+    <string name="lifelist_relative_hours">%1$s h ago</string>
+    <string name="lifelist_relative_days">%1$s d ago</string>
+    <string name="lifelist_empty_cta">Scan first bird</string>
 </resources>

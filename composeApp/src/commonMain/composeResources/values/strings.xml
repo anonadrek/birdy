@@ -302,4 +302,24 @@
     <string name="archive_sort_recent">Senast tillagd</string>
     <string name="archive_pill_stamped">STÄMPLAD</string>
     <string name="archive_section_count">%1$s arter</string>
+
+    <!-- ===== Plan 7b: LifelistScreen ===== -->
+    <string name="lifelist_breadcrumb">LIFELIST</string>
+    <string name="lifelist_headline_format">*%1$s*s samling.</string>
+    <string name="lifelist_headline_fallback">Min samling.</string>
+    <string name="lifelist_stat_species">ARTER</string>
+    <string name="lifelist_stat_stamps">STÄMPLAR</string>
+    <string name="lifelist_stat_streak">DAGARS SVIT</string>
+    <string name="lifelist_stat_year">ARTER I ÅR</string>
+    <string name="lifelist_stat_month">ARTER DENNA MÅNAD</string>
+    <string name="lifelist_stat_longest">LÄNGSTA SVIT</string>
+    <string name="lifelist_section_recent">Senaste · %1$s stämplar</string>
+    <string name="lifelist_sort_recent">Senaste</string>
+    <string name="lifelist_sort_stamp">Stämpel #</string>
+    <string name="lifelist_sort_species">Art</string>
+    <string name="lifelist_relative_just_now">just nu</string>
+    <string name="lifelist_relative_minutes">för %1$s min sen</string>
+    <string name="lifelist_relative_hours">för %1$s h sen</string>
+    <string name="lifelist_relative_days">för %1$s d sen</string>
+    <string name="lifelist_empty_cta">Skanna första fågeln</string>
 </resources>

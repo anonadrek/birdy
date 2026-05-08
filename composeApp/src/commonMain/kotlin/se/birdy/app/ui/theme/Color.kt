@@ -41,3 +41,8 @@ val AccentCopperLight = Color(0xFFE0A47C)
 val PremiumGoldLight = Color(0xFFFFE8B5)
 val PremiumGoldMid = Color(0xFFE8C374)
 val PremiumGoldDeep = Color(0xFFB88944)
+
+// Match-confidence color grades — used in LifelistScreen stamp rows.
+val MatchHigh = Color(0xFF7CA868) // ≥80% confidence
+val MatchMid = Color(0xFFD9B45A) // 60–79%
+val MatchLow = Color(0xFFC07560) // <60%
