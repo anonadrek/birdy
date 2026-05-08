@@ -1,0 +1,81 @@
+package se.birdy.datastore
+
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+
+private val Context.userPrefsDataStore: DataStore<Preferences> by preferencesDataStore(name = "birdy_user_prefs")
+
+actual class UserPreferencesStore actual constructor(
+    platformContext: Any?,
+) {
+    private val context: Context =
+        (platformContext as? Context)
+            ?: error("Android UserPreferencesStore requires Context, got: $platformContext")
+
+    actual fun preferences(): UserPreferences = AndroidUserPreferences(context.userPrefsDataStore)
+}
+
+private class AndroidUserPreferences(
+    private val store: DataStore<Preferences>,
+) : UserPreferences {
+    private object Keys {
+        val USER_NAME = stringPreferencesKey("user_name")
+        val HAS_SEEN_ONBOARDING = booleanPreferencesKey("has_seen_onboarding")
+        val APP_LANGUAGE = stringPreferencesKey("app_language")
+        val LIFELIST_STAT3 = stringPreferencesKey("lifelist_stat3_choice")
+        val ARCHIVE_SORT = stringPreferencesKey("archive_sort")
+        val LIFELIST_SORT = stringPreferencesKey("lifelist_sort")
+    }
+
+    override val userName: Flow<String> = store.data.map { it[Keys.USER_NAME] ?: "" }
+    override val hasSeenOnboarding: Flow<Boolean> = store.data.map { it[Keys.HAS_SEEN_ONBOARDING] ?: false }
+
+    override val appLanguage: Flow<AppLanguage> =
+        store.data.map { prefs ->
+            AppLanguage.entries.firstOrNull { it.name == prefs[Keys.APP_LANGUAGE] } ?: AppLanguage.SYSTEM
+        }
+    override val lifelistStat3: Flow<LifelistStat3Choice> =
+        store.data.map { prefs ->
+            LifelistStat3Choice.entries.firstOrNull { it.name == prefs[Keys.LIFELIST_STAT3] }
+                ?: LifelistStat3Choice.STREAK
+        }
+    override val archiveSort: Flow<ArchiveSort> =
+        store.data.map { prefs ->
+            ArchiveSort.entries.firstOrNull { it.name == prefs[Keys.ARCHIVE_SORT] } ?: ArchiveSort.ALPHA
+        }
+    override val lifelistSort: Flow<LifelistSort> =
+        store.data.map { prefs ->
+            LifelistSort.entries.firstOrNull { it.name == prefs[Keys.LIFELIST_SORT] } ?: LifelistSort.RECENT
+        }
+
+    override suspend fun setUserName(name: String) {
+        store.edit { it[Keys.USER_NAME] = name }
+    }
+
+    override suspend fun setHasSeenOnboarding(value: Boolean) {
+        store.edit { it[Keys.HAS_SEEN_ONBOARDING] = value }
+    }
+
+    override suspend fun setAppLanguage(value: AppLanguage) {
+        store.edit { it[Keys.APP_LANGUAGE] = value.name }
+    }
+
+    override suspend fun setLifelistStat3(value: LifelistStat3Choice) {
+        store.edit { it[Keys.LIFELIST_STAT3] = value.name }
+    }
+
+    override suspend fun setArchiveSort(value: ArchiveSort) {
+        store.edit { it[Keys.ARCHIVE_SORT] = value.name }
+    }
+
+    override suspend fun setLifelistSort(value: LifelistSort) {
+        store.edit { it[Keys.LIFELIST_SORT] = value.name }
+    }
+}
