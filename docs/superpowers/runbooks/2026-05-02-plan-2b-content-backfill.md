@@ -24,7 +24,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-08 | calcariidae | +2 (totalt 197) | `29cc339` |
 | 2026-05-08 | caprimulgidae | +8 (totalt 205) | `092484d` |
 | 2026-05-08 | certhiidae | +2 (totalt 207) | `725cd49` |
-| | _next: charadriidae — kolla species_list.yaml_ | | |
+| 2026-05-08 | charadriidae | +17 (totalt 224) | `96512e5` |
+| | _next: cettiidae (skipped earlier) — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -75,6 +76,16 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **Wikidata SPARQL transient cascade igen:** båda arter failade på första fetch (Q125895 502 Bad Gateway, Q193593 connection drop). Q125895 lyckades på andra retry, Q193593 behövde tredje. Pattern bekräftat — same as caprimulgidae.
 - **Memory-vs-verifierad-data lärdom:** auto-memory `project_plan_2b_status.md` påstod att Trädkrypare = `Q14916`. Faktiskt Q-ID är `Q193593`. Verifierat via species_list.yaml innan jag agerade. **Återanvändbart pattern:** Q-IDs i memory är inte autoritära — kör alltid Q-ID-lookup i species_list.yaml innan ny familj startas. Memory ska bara säga "next family = X", inte specifika Q-IDs.
 - Cost: ~$0.0023 / 2 arter (2 Claude-calls för Q125895 SV+EN; Q193593 fick bara EN-call eftersom SV var sparse).
+
+**Charadriidae-batch lärdomar (2026-05-08):**
+
+- 4/17 abundance:allmän approved (Q21148 Ljungpipare, Q25392 Tofsvipa, Q25677554 Fjällpipare, Q26816 Större strandpipare — alla etablerade SE-häckare). Övriga 13 är vagrants/exotics/sydliga arter med sporadiska SE-fynd.
+- **5/17 sparse-overrides + 3 image-gaps** (~30% override-rate, lägre än caprimulgidae-mönstret för exotic-tunga familjer). Sparse-sv: Q137159050, Q137162124, Q752398, Q752485 + Q25677554 fixade vi manuellt med korrekt names.sv. Allow-missing-images: Q137162124, Q18851, Q752485.
+- **Q136297294 (Thinornis tricollaris) hoppades över helt:** Wikidata-entry är en stub utan P171 (parent taxon) — pipelinen kan inte traversa till family/genus/order. Har P31, P1813, P225, P2026, P105, P1420, men ingen taxonomiklass. Afrikansk art utan Norden-vagrant-track, så inte blockerande. **Återanvändbart pattern:** vid `No Wikidata structured data for QXXX`-fel, kontrollera först om Wikidata-entry saknar P171 — i så fall ta bort raden från species_list.yaml med en kommentar-block som förklarar varför + ev. återinför-trigger ("om Q-ID hittas med kompletta taxonomiska relationer"). Spara inte tid på att övertyga pipelinen — den är korrekt att avvisa stub-entries.
+- **Q25677554 Fjällpipare hade `names.sv: null`** trots att SE-häckare. Wikidata SPARQL returnerade inte `rdfs:label@sv` för entryn (sannolikt nyare entry utan SV-label). Manuell fix: satt `names.sv: Fjällpipare` direkt i YAML. **Återanvändbart pattern:** vid validator-error om saknad sv-name för känd SE-art, manuell fix i YAML är OK; det är inte värt att lägga in i pipeline-fixen utan en bredare task-list över Wikidata-entries som behöver SV-label-edits uppströms.
+- **Wikidata SPARQL transient cascade igen:** 4/17 first-fetch failed (Q136297294 + Q137162124 + Q137159050 + Q25677554); Q25677554 behövde flera retries innan första lyckades. Pattern bekräftat — same as caprimulgidae/certhiidae.
+- Cost: ~$0.027 / 17 arter (full SV+EN för 12, bara EN för 4 sparse-sv, plus retry-overhead).
+
 
 - 1/8 abundance:allmän approved (Q26717 Nattskärra — etablerad SE-sommargäst på sandiga tallhedar och ljungmarker, hörs i skymning över hela landet). Övriga 7 är afrikanska/asiatiska/medelhavs-arter: Q1137192 Rödhalsad nattskärra (sydeuropeisk), Q615437 Egyptisk nattskärra, Q1269353 Nubisk nattskärra, Q2752089 Sindnattskärra (asiatisk), Q1264019 Guldnattskärra, Q1265442 Bergnattskärra, Q1270252 Sahelnattskärra.
 - **6/8 (75%) sparse-overrides + 1 image-gap** — Q1137192/Q1264019/Q1265442/Q1269353/Q1270252 saknar svwiki helt; Q2752089 har enwiki lead för kort. Q1264019 Guldnattskärra saknar dessutom Commons-foto över `MIN_DIMENSION=2048` → `allow_missing_images: true`. Hög sparse-rate driven av exotic-tung familj — endast Q26717 (paleartisk häckare) och Q615437 (medelhavs/Mellanöstern, bra enwiki) har full coverage.

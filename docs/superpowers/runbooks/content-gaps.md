@@ -101,6 +101,11 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 76 | Q1270252 | caprimulgidae | Sahelnattskärra | Caprimulgus inornatus | sv | — | — | pending (afrikansk, ingen svwiki) |
 | 77 | Q2752089 | caprimulgidae | Sindnattskärra | Caprimulgus mahrattensis | en | 56773477 | — | pending (asiatisk; enwiki lead för kort) |
 | 78 | Q193593 | certhiidae | Trädkrypare | Certhia familiaris | sv | 59098976 | 1338369555 | pending (allmän — prioriterad; svwiki lead under SPARSE_WORD_THRESHOLD trots vanlig SE-stannfågel) |
+| 79 | Q137159050 | charadriidae | Ökenpipare | Anarhynchus leschenaultii | sv | 55781096 | 1314196381 | pending (mellanöstern/asiatisk vagrant; ingen svwiki) |
+| 80 | Q137162124 | charadriidae | Herdepipare | Anarhynchus pecuarius | sv + image | 58949354 | 1314834343 | pending (afrikansk; ingen svwiki + saknar hi-res Commons-foto) |
+| 81 | Q752398 | charadriidae | Rödflikvipa | Vanellus indicus | sv | 58642442 | 1351337438 | pending (sydostasiatisk vagrant; svwiki lead under SPARSE_WORD_THRESHOLD) |
+| 82 | Q752485 | charadriidae | Kaspisk pipare | Anarhynchus asiaticus | sv + image | 55626669 | 1344156599 | pending (centralasiatisk; ingen svwiki + saknar hi-res Commons-foto) |
+| 83 | Q18851 | charadriidae | Mindre strandpipare | Thinornis dubius | image | 59251641 | 1352507808 | pending (saknar hi-res Commons-foto trots vanlig SE-häckare) |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

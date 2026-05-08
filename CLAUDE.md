@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 207/700, nästa familj = charadriidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). **Plan 4b (Real TFLite) 🔄 IN PROGRESS — 15/17 tasks done (HEAD `94f0743`); Task 15 stängd via Wikimedia hero-photos från content-pipeline (top-1=52%, top-3=72%, spec ≥70% MET). Endast Task 17 (device verify + tag) återstår — BLOCKED på fysisk åtkomst till S23 Ultra. Detaljer + plan-doc-error-katalog i auto-memory `project_plan_4b_status.md`.** Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). Plan 6 (Polish + Play Store-release) väntar på Plan 4b.
+**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 224/700, nästa familj = cettiidae (hoppades över alfabetiskt mellan certhiidae och charadriidae). Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). **Plan 4b (Real TFLite) 🔄 IN PROGRESS — 15/17 tasks done (HEAD `94f0743`); Task 15 stängd via Wikimedia hero-photos från content-pipeline (top-1=52%, top-3=72%, spec ≥70% MET). Endast Task 17 (device verify + tag) återstår — BLOCKED på fysisk åtkomst till S23 Ultra. Detaljer + plan-doc-error-katalog i auto-memory `project_plan_4b_status.md`.** Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). Plan 6 (Polish + Play Store-release) väntar på Plan 4b.
 
 ## Var hittar du saker
 
@@ -26,7 +26,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 |---|---|---|
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ `v0.1.0-foundation` |
 | 2a | Content pipeline + walking skeleton (5 arter) | ✅ `v0.2.0a-pipeline` |
-| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 207/700 (certhiidae) |
+| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 224/700 (charadriidae) |
 | 3 | Encyclopedia (browse + species profile) | ✅ `v0.3.0-encyclopedia` |
 | 4a | ML & Camera UI (FakeClassifier + UI + CameraX 3 fps) | ✅ `v0.4.0a-camera-ui` |
 | 4b | Real TFLite-modell (AIY Birds V1) | 🔄 15/17 (HEAD `94f0743`); BLOCKED på Task 17 (device verify) |
@@ -158,7 +158,8 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 | 2026-05-08 | calcariidae | +2 | 197 | `29cc339` |
 | 2026-05-08 | caprimulgidae | +8 | 205 | `092484d` |
 | 2026-05-08 | certhiidae | +2 | 207 | `725cd49` |
-| _(next)_ | _charadriidae — kolla species_list.yaml_ | | | |
+| 2026-05-08 | charadriidae | +17 | 224 | `96512e5` |
+| _(next)_ | _cettiidae (skipped earlier) — kolla species_list.yaml_ | | | |
 
 **Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör nästa familj". Pure-data — kan köras parallellt med Plan 5+.
 
