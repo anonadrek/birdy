@@ -32,6 +32,7 @@ include(
     ":androidApp",
     ":shared:domain",
     ":shared:data",
+    ":shared:datastore",
     ":shared:ml",
     ":shared:content",
 )
