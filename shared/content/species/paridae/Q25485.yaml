@@ -89,6 +89,9 @@ migration:
     The species is widespread and common in woodlands, gardens, and mixed habitats
     year-round, making it one of the most familiar and resilient birds in the region
     regardless of season.'
+marginalia:
+  sv: Talgoxen söker frön i barren mitt i vintern.
+  en: The great tit forages among pine needles deep in winter.
 image_refs:
 - role: hero
   path: Q25485/hero.jpg

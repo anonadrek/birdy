@@ -12,6 +12,12 @@
     <string name="profile_label_photos">PHOTOS</string>
     <string name="profile_back">Back</string>
 
+    <!-- Plan 7c: Profile Field Journal -->
+    <string name="profile_journal_label">SPECIES · NO %1$s</string>
+    <string name="profile_journal_headline">*%1$s.*</string>
+    <string name="profile_journal_sub">%1$s · %2$s</string>
+    <string name="profile_plate_caption">in nature</string>
+
     <string name="filter_title">Filter</string>
     <string name="filter_button">⚙ Filter</string>
     <string name="filter_label_abundance">ABUNDANCE</string>

@@ -80,6 +80,10 @@ class SpeciesDbBuilder {
             if (text.isNullOrBlank()) continue
             db.speciesTextQueries.insert(yaml.id, lang, "migration", text)
         }
+        for ((lang, text) in yaml.marginalia) {
+            if (text.isNullOrBlank()) continue
+            db.speciesTextQueries.insert(yaml.id, lang, "marginalia", text)
+        }
         for (region in yaml.regions) {
             db.speciesRegionQueries.insert(yaml.id, region)
         }

@@ -52,6 +52,7 @@ class SqlDelightSpeciesRepository(
                     ?: row.scientific_name
             val description = pickText(texts, locale, "description")
             val migration = pickText(texts, locale, "migration")
+            val marginalia = pickText(texts, locale, "marginalia")
 
             emit(
                 Species(
@@ -72,6 +73,7 @@ class SqlDelightSpeciesRepository(
                     season = seasons.associate { it.month to it.status },
                     description = description,
                     migration = migration,
+                    marginalia = marginalia,
                     images =
                         images.map { img ->
                             SpeciesImage(
@@ -224,6 +226,7 @@ class SqlDelightSpeciesRepository(
                             ?: row.scientific_name
                     val description = pickText(texts, Locale.SV, "description")
                     val migration = pickText(texts, Locale.SV, "migration")
+                    val marginalia = pickText(texts, Locale.SV, "marginalia")
 
                     SpeciesId(row.id) to
                         Species(
@@ -243,6 +246,7 @@ class SqlDelightSpeciesRepository(
                             season = seasons.associate { it.month to it.status },
                             description = description,
                             migration = migration,
+                            marginalia = marginalia,
                             images =
                                 images.map { img ->
                                     SpeciesImage(

@@ -94,6 +94,9 @@ migration:
     involving Scandinavian or broader Northern European regions. Any sightings in
     northern latitudes would represent exceptional vagrants rather than regular seasonal
     movements.'
+marginalia:
+  sv: Endast på Kanarieöarna — en blåmes som glömt vintern.
+  en: Found only in the Canary Islands — a blue tit that forgot winter.
 image_refs:
 - role: hero
   path: Q10546857/hero.jpg

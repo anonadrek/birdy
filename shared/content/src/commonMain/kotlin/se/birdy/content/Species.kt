@@ -15,6 +15,7 @@ data class Species(
     val description: String?, // localized
     val migration: String?, // localized
     val images: List<SpeciesImage>,
+    val marginalia: String? = null, // localized; short Caveat-rendered note shown in Profile (Plan 7c)
 )
 
 data class SpeciesTaxonomy(

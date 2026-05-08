@@ -14,6 +14,7 @@ data class SpeciesYaml(
     val regions: List<String>,
     val description: Map<String, String?> = emptyMap(),
     val migration: Map<String, String?> = emptyMap(),
+    val marginalia: Map<String, String?> = emptyMap(),
     val image_refs: List<ImageRefYaml> = emptyList(),
     val review_status: String = "auto",
     val review_notes: String = "",

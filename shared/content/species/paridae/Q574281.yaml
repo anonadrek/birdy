@@ -87,6 +87,9 @@ migration:
     months. To provide accurate migration information for this species in northern
     European contexts, additional sources with detailed distributional and phenological
     data would be needed.'
+marginalia:
+  sv: Bär sin sotgrå hätta som en sjömanns mössa.
+  en: Wears its sooty-grey cap like a sailor's hat.
 image_refs:
 - role: hero
   path: Q574281/hero.jpg
