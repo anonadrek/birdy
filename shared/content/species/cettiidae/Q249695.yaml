@@ -1,0 +1,103 @@
+id: Q249695
+scientific_name: Scotocerca inquieta
+taxonomy:
+  family: Cettiidae
+  family_sv: Cettiidae
+  genus: Scotocerca
+  ioc_order: Passeriformes
+names:
+  sv: Snårsångare
+  en: Streaked Scrub Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Streaked Scrub Warbler
+
+
+    The streaked scrub warbler is a small passerine bird belonging to the Cettiidae
+    family, forming its own genus within this group. It inhabits desert fringes across
+    northern Africa and southwestern Asia, where it frequents scrubby vegetation,
+    ravines, and gorges. This species is primarily resident throughout its range,
+    though it may undertake local movements during non-breeding periods.
+
+
+    As a bird of arid and semi-arid regions, the streaked scrub warbler is well-adapted
+    to harsh, sparse habitats where other songbirds struggle to thrive. It tends to
+    remain secretive and skulking in its preferred scrubby terrain, making it a challenging
+    species for observers to locate. The bird''s behavior reflects its adaptation
+    to life in challenging landscapes, typically staying low in dense vegetation where
+    it forages and nests.
+
+
+    While specific details about its plumage pattern, vocalizations, and detailed
+    behavioral ecology would enhance understanding of this species, the available
+    information confirms it as a distinctive small warbler specialized for survival
+    in desert-edge environments across its range.'
+migration:
+  sv: ''
+  en: '# Streaked Scrub Warbler – Occurrence in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Streaked Scrub Warbler does not occur in Scandinavia or Northern Europe. Its
+    range is restricted to northern Africa and south-western Asia, where it inhabits
+    desert fringes and scrubby terrain. This species is primarily resident throughout
+    its range, with only local movements occurring outside the breeding season. Therefore,
+    it has no relevance to Northern European bird guides.'
+image_refs:
+- role: hero
+  path: Q249695/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
+    title="User:מינוזיג">מינוזיג</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Scotocerca inquieta, Israel.jpg
+  commons_filename: Scotocerca inquieta, Israel.jpg
+- role: secondary
+  path: Q249695/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
+    title="User:מינוזיג">מינוזיג</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Scotocerca inquieta. Israel.jpg
+  commons_filename: Scotocerca inquieta. Israel.jpg
+- role: secondary
+  path: Q249695/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
+    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Scotocerca inquieta - Israel.jpg
+  commons_filename: Scotocerca inquieta - Israel.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:17:38.721522+00:00'
+sources:
+  wikipedia_sv_revision: '59162147'
+  wikipedia_en_revision: '1350108561'
+  claude_model: claude-haiku-4-5-20251001

@@ -205,3 +205,8 @@ species:
     allow_missing_images: true  # Commons saknar foto över MIN_DIMENSION=2048
   Q18851:
     allow_missing_images: true  # Charadrius dubius (Mindre strandpipare / Little Ringed Plover) — Commons saknar foto över MIN_DIMENSION=2048
+  # Cettiidae batch (2026-05-08): two species, båda sparse på ett språk vardera.
+  Q249695:
+    description_accept_missing: [sv]  # Scotocerca inquieta (Snårsångare / Streaked Scrub Warbler) — afrikansk/mellanöstern, ingen svwiki
+  Q650114:
+    description_accept_missing: [en]  # Cettia cetti (Cettisångare / Cetti's Warbler) — sydeuropeisk, enwiki lead saknas/för kort

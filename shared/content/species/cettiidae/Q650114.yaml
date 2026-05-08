@@ -1,0 +1,99 @@
+id: Q650114
+scientific_name: Cettia cetti
+taxonomy:
+  family: Cettiidae
+  family_sv: Cettisångare
+  genus: Cettia
+  ioc_order: Passeriformes
+names:
+  sv: Cettisångare
+  en: Cetti’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Cettisångare
+
+
+    Cettisångare är en liten, diskret fågel och den enda europeiska medlemmen av familjen
+    cettior. Den är svåridentifierad med sitt brunaktiga och gräsliknande utseende,
+    vilket gör det lätt att förbise den i sin naturliga miljö.
+
+
+    Arten är känd för sitt höga, markant rop som hörs särskilt under häckningstiden.
+    Trots sitt lilla format producerar den överraskande kraftfulla ljud som ekar genom
+    sitt habitat. Fågeln är mycket hemlighetsfull och verbös snarare än synlig – den
+    föredrar att röra sig i tät vegetation där den är svår att få ögonkontakt med.
+
+
+    Cettisångaren förekommer normalt från södra England och södra Europa österut till
+    Afghanistan, samt i Nordafrika. Den ses huvudsakligen i våtmarker, vass och tätt
+    buskage. Norrut från sitt vanliga utbredningsområde är den endast tillfällig och
+    mycket sällsynt – endast tre fynd är registrerade i Sverige, vilket gör dessa
+    observationer extra värdefulla för lokala fågelintresserade.'
+  en: ''
+migration:
+  sv: '**Cettisångare (Cettia cetti) i Skandinavien**
+
+
+    Cettisångaren är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten
+    förekommer normalt inte regelbundet i regionen utan är istället en tillfällig
+    besökare långt norr om sitt huvudsakliga utbredningsområde i södra och centrala
+    Europa. I Sverige har arten endast noterats tre gånger, vilket understryker dess
+    extrema sällsynthet i norr. Några bestämd migrationsmönster för arten i Skandinavien
+    kan därför inte fastställas, då förekomsterna verkar vara sporadiska vandringar
+    långt bortom artens normala område snarare än regelbundna migrationsmönster.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q650114/hero.jpg
+  width: 2400
+  height: 1701
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:WikiPokos" title="User:WikiPokos">WikiPokos</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cetia ruiseñor (Cettia cetti)
+    en Salburua.jpg
+  commons_filename: Cetia ruiseñor (Cettia cetti) en Salburua.jpg
+- role: secondary
+  path: Q650114/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/mattpilkington">mattpilkington</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cetti's Warbler (Cettia cetti),
+    Leighton Moss, Lancashire 2.jpg
+  commons_filename: Cetti's Warbler (Cettia cetti), Leighton Moss, Lancashire 2.jpg
+- role: secondary
+  path: Q650114/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/mattpilkington">mattpilkington</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cetti's Warbler (Cettia cetti),
+    Leighton Moss, Lancashire 3.jpg
+  commons_filename: Cetti's Warbler (Cettia cetti), Leighton Moss, Lancashire 3.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-08T00:16:14.345247+00:00'
+sources:
+  wikipedia_sv_revision: '57586582'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001
