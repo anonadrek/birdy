@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.content.SpeciesRepository
@@ -91,10 +92,16 @@ class LifelistViewModel(
                             list.sortedWith(compareBy { it.species?.name ?: it.observation.speciesId })
                     }
                 }
+        val daysActive =
+            obs
+                .map { it.capturedAt.toLocalDateTime(zone).date }
+                .toSet()
+                .size
         return LifelistUiState.Loaded(
             userName = name,
             speciesCount = obs.map { it.speciesId }.toSet().size,
             stampsCount = obs.size,
+            daysActive = daysActive,
             stat3 = computeStat3(obs, stat3),
             sort = sort,
             rows = rows,

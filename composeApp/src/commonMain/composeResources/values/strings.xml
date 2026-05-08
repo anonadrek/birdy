@@ -337,4 +337,12 @@
     <string name="lifelist_relative_hours">för %1$s h sen</string>
     <string name="lifelist_relative_days">för %1$s d sen</string>
     <string name="lifelist_empty_cta">Skanna första fågeln</string>
+
+    <!-- ===== Plan 7c: Lifelist Field Journal ===== -->
+    <string name="lifelist_journal_label">MIN SAMLING · VOL. I</string>
+    <string name="lifelist_journal_headline">*%1$s* dagbok.</string>
+    <string name="lifelist_journal_sub">%1$s dagar. %2$s funna.</string>
+    <string name="lifelist_journal_headline_anonymous">*Min* samling.</string>
+    <string name="lifelist_journal_sub_empty">En tom sida, för nu.</string>
+    <string name="lifelist_empty_caveat_cta">*Skanna* första fågeln</string>
 </resources>

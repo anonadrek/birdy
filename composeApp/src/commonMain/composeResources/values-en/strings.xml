@@ -324,4 +324,12 @@
     <string name="lifelist_relative_hours">%1$s h ago</string>
     <string name="lifelist_relative_days">%1$s d ago</string>
     <string name="lifelist_empty_cta">Scan first bird</string>
+
+    <!-- ===== Plan 7c: Lifelist Field Journal ===== -->
+    <string name="lifelist_journal_label">MY COLLECTION · VOL. I</string>
+    <string name="lifelist_journal_headline">*%1$s* journal.</string>
+    <string name="lifelist_journal_sub">%1$s days. %2$s found.</string>
+    <string name="lifelist_journal_headline_anonymous">*My* collection.</string>
+    <string name="lifelist_journal_sub_empty">An empty page, for now.</string>
+    <string name="lifelist_empty_caveat_cta">*Scan* first bird</string>
 </resources>

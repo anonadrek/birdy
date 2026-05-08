@@ -24,6 +24,7 @@ sealed interface LifelistUiState {
         val userName: String,
         val speciesCount: Int,
         val stampsCount: Int,
+        val daysActive: Int,
         val stat3: Stat3Value,
         val sort: LifelistSort,
         val rows: List<LifelistRow>,
