@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 254/700, nästa familj = corvidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). Plan 7a (Redesign Foundation) ✅ (`v0.7.0a-foundation`, 2026-05-08). **Nästa: Plan 7b (Redesign Skärmar — Listen-launcher, Archive, Lifelist, Badges, polish) ska skrivas. Plan 6 (Polish + Play Store-release) PAUSAD tills Plan 7 är klar.**
+**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 254/700, nästa familj = corvidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). Plan 7a (Redesign Foundation) ✅ (`v0.7.0a-foundation`, 2026-05-08). Plan 7b (Redesign Skärmar) ✅ (`v0.7.0b-screens`, 2026-05-08). **Nästa: Plan 7c (Redesign Match-flow — threshold-logik, Match-skärm, Disambig) ska skrivas. Plan 6 (Polish + Play Store-release) PAUSAD tills Plan 7 är klar.**
 
 ## Var hittar du saker
 
@@ -33,8 +33,8 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | 5a | Diary (browse + detail + save flow) | ✅ `v0.5.0a-diary` |
 | 5b | Gamification (badges, streaks, unlock-queue) | ✅ `v0.5.0b-gamification` |
 | 7a | Redesign Foundation — tokens, ItalicMixed, HeroZone, DataStore, Onboarding, Settings, bottom-bar-rename | ✅ `v0.7.0a-foundation` |
-| 7b | Redesign Skärmar — Listen-launcher, Archive, Lifelist, Badges, polish | ⏳ skrivs härnäst (efter 7a tagged) |
-| 7c | Redesign Match-flow — threshold-logik, Match-skärm, Disambig | ⏳ skrivs efter 7b tagged |
+| 7b | Redesign Skärmar — Listen-launcher, Archive, Lifelist, Badges, polish | ✅ `v0.7.0b-screens` |
+| 7c | Redesign Match-flow — threshold-logik, Match-skärm, Disambig | ⏳ skrivs härnäst |
 | 6 | Polish + Play Store-release | ⏸ pausad — väntar på Plan 7 |
 
 Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew build` ska gå grönt.
