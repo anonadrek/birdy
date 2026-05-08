@@ -102,6 +102,7 @@ class StampNumberMigrationTest {
             latitude = null,
             longitude = null,
             location_label = null,
+            stamp_number = db.observationQueries.nextStampNumber().executeAsOne(),
         )
 
         val newStamp =

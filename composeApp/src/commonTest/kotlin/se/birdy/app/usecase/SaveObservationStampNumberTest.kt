@@ -1,11 +1,6 @@
 package se.birdy.app.usecase
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import se.birdy.app.badges.RecalculateBadgesUseCase
@@ -14,25 +9,15 @@ import se.birdy.app.testing.FakeClock
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakePhotoStorage
 import se.birdy.domain.badge.BadgeCatalog
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class SaveObservationStampNumberTest {
-    private val dispatcher = UnconfinedTestDispatcher()
     private val clock = FakeClock(Instant.fromEpochMilliseconds(1_000_000L))
-
-    @BeforeTest
-    fun setMain() = Dispatchers.setMain(dispatcher)
-
-    @AfterTest
-    fun tearDown() = Dispatchers.resetMain()
 
     @Test
     fun `first save assigns stamp_number 1`() =
-        runTest(dispatcher) {
+        runTest {
             val repo = FakeObservationRepository()
             val useCase = makeUseCase(repo)
             useCase.save(
@@ -47,7 +32,7 @@ class SaveObservationStampNumberTest {
 
     @Test
     fun `subsequent saves increment stamp_number`() =
-        runTest(dispatcher) {
+        runTest {
             val repo = FakeObservationRepository()
             val useCase = makeUseCase(repo)
             repeat(3) { i ->

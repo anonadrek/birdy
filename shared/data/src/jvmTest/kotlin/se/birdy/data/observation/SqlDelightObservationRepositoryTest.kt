@@ -129,9 +129,9 @@ class SqlDelightObservationRepositoryTest {
     fun insert_assigns_sequential_stamp_number_starting_at_1() =
         runTest {
             val repo = newRepo()
-            repo.insert(sample("a", 1_000L))
-            repo.insert(sample("b", 2_000L))
-            repo.insert(sample("c", 3_000L))
+            repo.insert(sample("a", 1_000L).copy(stampNumber = repo.nextStampNumber()))
+            repo.insert(sample("b", 2_000L).copy(stampNumber = repo.nextStampNumber()))
+            repo.insert(sample("c", 3_000L).copy(stampNumber = repo.nextStampNumber()))
             repo.observeAll().test {
                 val rows = awaitItem()
                 // selectAll orders DESC by captured_at, so c=3, b=2, a=1
@@ -144,10 +144,10 @@ class SqlDelightObservationRepositoryTest {
     fun delete_then_insert_does_not_recycle_stamp_number() =
         runTest {
             val repo = newRepo()
-            repo.insert(sample("a", 1_000L)) // #1
-            repo.insert(sample("b", 2_000L)) // #2
+            repo.insert(sample("a", 1_000L).copy(stampNumber = repo.nextStampNumber())) // #1
+            repo.insert(sample("b", 2_000L).copy(stampNumber = repo.nextStampNumber())) // #2
             repo.delete("a")
-            repo.insert(sample("c", 3_000L)) // #3 (not #2)
+            repo.insert(sample("c", 3_000L).copy(stampNumber = repo.nextStampNumber())) // #3 (not #2)
             repo.observeAllByStampNumber().test {
                 val rows = awaitItem()
                 assertEquals(listOf(3, 2), rows.map { it.stampNumber })

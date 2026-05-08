@@ -33,8 +33,8 @@ class SaveObservationUseCase(
         note: String,
     ): SaveResult {
         val id = Uuid.random().toString()
-        val photoPath = photoStorage.persistJpeg(rawJpegBytes)
         val nextStamp = repo.nextStampNumber()
+        val photoPath = photoStorage.persistJpeg(rawJpegBytes)
         try {
             repo.insert(
                 Observation(

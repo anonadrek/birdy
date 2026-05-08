@@ -39,7 +39,7 @@ class SqlDelightObservationRepository(
 
     override suspend fun nextStampNumber(): Int =
         withContext(Dispatchers.IO) {
-            (queries.nextStampNumber().executeAsOne() ?: 0L).toInt()
+            queries.nextStampNumber().executeAsOne().toInt()
         }
 
     override suspend fun insert(observation: Observation) {
