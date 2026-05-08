@@ -259,6 +259,19 @@
     <string name="onboarding_p3_cta">Börja samla →</string>
     <string name="onboarding_p3_fallback_name">Min</string>
 
+    <!-- ===== Plan 7b: ListenLauncherScreen ===== -->
+    <string name="listen_breadcrumb">LYSSNA</string>
+    <string name="listen_headline">Tre sätt att *fånga.*</string>
+    <string name="listen_sub">En stämpel väntar i varje.</string>
+    <string name="listen_card_audio_title">Lyssna</string>
+    <string name="listen_card_audio_body">Identifiera via läte — kommer snart.</string>
+    <string name="listen_card_camera_title">Kika</string>
+    <string name="listen_card_camera_body">Realtidsskanning via kameran.</string>
+    <string name="listen_card_photo_title">Leta upp</string>
+    <string name="listen_card_photo_body">Välj foto från galleri eller ta nytt.</string>
+    <string name="listen_premium_label">PREMIUM</string>
+    <string name="listen_audio_locked_snackbar">Audio kommer snart</string>
+
     <!-- ===== Plan 7a: Settings ===== -->
     <string name="settings_title">Inställningar</string>
     <string name="settings_menu_item">Inställningar</string>

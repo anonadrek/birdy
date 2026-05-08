@@ -246,6 +246,19 @@
     <string name="onboarding_p3_cta">Start collecting →</string>
     <string name="onboarding_p3_fallback_name">My</string>
 
+    <!-- ===== Plan 7b: ListenLauncherScreen ===== -->
+    <string name="listen_breadcrumb">LISTEN</string>
+    <string name="listen_headline">Three ways to *catch.*</string>
+    <string name="listen_sub">A stamp waits in each.</string>
+    <string name="listen_card_audio_title">Listen</string>
+    <string name="listen_card_audio_body">Identify by call — coming soon.</string>
+    <string name="listen_card_camera_title">Look</string>
+    <string name="listen_card_camera_body">Real-time camera scanning.</string>
+    <string name="listen_card_photo_title">Find</string>
+    <string name="listen_card_photo_body">Pick from gallery or take new.</string>
+    <string name="listen_premium_label">PREMIUM</string>
+    <string name="listen_audio_locked_snackbar">Audio coming soon</string>
+
     <!-- ===== Plan 7a: Settings ===== -->
     <string name="settings_title">Settings</string>
     <string name="settings_menu_item">Settings</string>
