@@ -55,7 +55,13 @@ class TfLiteBirdClassifier(
     }
 
     companion object {
-        const val DEFAULT_THRESHOLD: Float = 0.35f
+        // 0.10 — empirically calibrated against AIY V1's per-class confidence.
+        // The model spreads probability mass across visually similar species (e.g.
+        // paridae tit cluster), so even a correct top-3 prediction often scores
+        // 0.10–0.20 rather than ≥0.35. ScanViewModel applies a higher threshold
+        // (0.35) for the live top-1 chip, so the conservative UX is preserved
+        // while the freeze/result screen sees the full top-K candidate set.
+        const val DEFAULT_THRESHOLD: Float = 0.10f
         const val DEFAULT_TOP_K: Int = 3
     }
 }
