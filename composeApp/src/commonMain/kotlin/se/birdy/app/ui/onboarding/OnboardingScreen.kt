@@ -28,6 +28,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -90,7 +91,7 @@ fun OnboardingScreen(
         }
     }
 
-    val gradient = Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid, HeroMossDeep))
+    val gradient = remember { Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid, HeroMossDeep)) }
 
     Box(modifier = Modifier.fillMaxSize().background(gradient)) {
         // Skip-link top-right (alla sidor utom sista — eller även där, hoppa = complete med tomt namn)
@@ -131,7 +132,7 @@ fun OnboardingScreen(
             modifier =
                 Modifier
                     .align(Alignment.BottomCenter)
-                    .padding(bottom = if (state.pageIndex == PAGE_COUNT - 1) 148.dp else 28.dp),
+                    .padding(bottom = if (pagerState.currentPage == PAGE_COUNT - 1) 148.dp else 28.dp),
         )
     }
 }
