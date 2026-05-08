@@ -1,38 +1,38 @@
 package se.birdy.app.ui.diary
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Save
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -43,13 +43,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.diary_confidence_format
@@ -80,23 +81,28 @@ import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_may
 import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_nov
 import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_oct
 import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_sep
-import birdy_bird_scanner.composeapp.generated.resources.diary_note_label
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_save
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_save_error
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_save_success
+import birdy_bird_scanner.composeapp.generated.resources.observation_journal_label
+import birdy_bird_scanner.composeapp.generated.resources.observation_note_caveat_prompt
+import birdy_bird_scanner.composeapp.generated.resources.observation_visit_profile
+import birdy_bird_scanner.composeapp.generated.resources.profile_journal_headline
+import birdy_bird_scanner.composeapp.generated.resources.profile_plate_caption
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.stringResource
-import se.birdy.app.ui.components.StampNumberBadge
+import se.birdy.app.ui.components.JournalIntro
+import se.birdy.app.ui.components.PlateFrame
 import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.HeroMossLight
-import se.birdy.app.ui.theme.MossCreme
-import se.birdy.app.ui.theme.SandCreme
+import se.birdy.app.ui.theme.MarginaliaBorder
+import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.TextOnHero
+import se.birdy.app.ui.theme.paperBackground
+import se.birdy.app.ui.theme.rememberCaveat
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -126,7 +132,7 @@ fun ObservationDetailScreen(
         }
     }
     Scaffold(snackbarHost = { SnackbarHost(snackbarHost) }) { padding ->
-        Box(modifier = Modifier.fillMaxSize().padding(padding).background(MossCreme)) {
+        Box(modifier = Modifier.fillMaxSize().padding(padding).paperBackground()) {
             when (val s = state) {
                 ObservationDetailUiState.Loading ->
                     CircularProgressIndicator(
@@ -153,7 +159,6 @@ fun ObservationDetailScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun LoadedView(
     state: ObservationDetailUiState.Loaded,
@@ -161,106 +166,95 @@ private fun LoadedView(
     onBack: () -> Unit,
     onSpeciesClick: (String) -> Unit,
 ) {
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     var noteText by remember(state.observation.id) { mutableStateOf(state.observation.note) }
     var showDeleteDialog by remember { mutableStateOf(false) }
-    val speciesName = state.species?.name ?: stringResource(Res.string.diary_detail_unknown_species)
-    Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = {
-            Box(modifier = Modifier.background(HeroMossLight)) {
-                Box(
-                    modifier =
-                        Modifier
-                            .matchParentSize()
-                            .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp)),
+    val unknownLabel = stringResource(Res.string.diary_detail_unknown_species)
+    val speciesName = state.species?.name ?: unknownLabel
+    val tz = TimeZone.currentSystemDefault()
+    val capturedSub = formatFullDate(state.observation.capturedAt, tz)
+    val plateLabel = state.observation.stampNumber.toString()
+    val captionPart = stringResource(Res.string.profile_plate_caption)
+
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(bottom = 24.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        item {
+            Box {
+                JournalIntro(
+                    label = stringResource(Res.string.observation_journal_label, plateLabel),
+                    headline = stringResource(Res.string.profile_journal_headline, speciesName),
+                    sub = capturedSub,
+                    headlineFontSize = 32.sp,
+                )
+                IconButton(
+                    onClick = onBack,
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(top = 24.dp, start = 12.dp),
                 ) {
-                    AsyncImage(
-                        model = "file://${state.observation.photoPath}",
-                        contentDescription = null,
-                        modifier = Modifier.matchParentSize(),
-                        contentScale = ContentScale.Crop,
-                    )
-                    Box(
-                        modifier =
-                            Modifier
-                                .matchParentSize()
-                                .background(
-                                    Brush.verticalGradient(
-                                        listOf(
-                                            Color.Black.copy(alpha = 0.25f),
-                                            Color.Black.copy(alpha = 0.65f),
-                                        ),
-                                    ),
-                                ),
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = stringResource(Res.string.diary_detail_back),
+                        tint = AccentCopper,
                     )
                 }
-                LargeTopAppBar(
-                    title = {
-                        Column {
-                            Text(speciesName, style = MaterialTheme.typography.headlineMedium, color = TextOnHero)
-                        }
-                    },
-                    navigationIcon = {
-                        IconButton(onClick = onBack) {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = stringResource(Res.string.diary_detail_back),
-                                tint = TextOnHero,
-                            )
-                        }
-                    },
-                    actions = {
-                        val canSave = noteText != state.observation.note
-                        IconButton(
-                            onClick = { viewModel.saveNote(noteText) },
-                            enabled = canSave && !state.noteSaving,
-                        ) {
-                            Icon(
-                                imageVector = Icons.Filled.Save,
-                                contentDescription = stringResource(Res.string.diary_note_save),
-                                tint = if (canSave && !state.noteSaving) TextOnHero else TextOnHero.copy(alpha = 0.4f),
-                            )
-                        }
-                    },
-                    colors =
-                        TopAppBarDefaults.largeTopAppBarColors(
-                            containerColor = Color.Transparent,
-                            scrolledContainerColor = Color.Transparent,
-                            navigationIconContentColor = TextOnHero,
-                            titleContentColor = TextOnHero,
-                            actionIconContentColor = TextOnHero,
-                        ),
-                    scrollBehavior = scrollBehavior,
-                )
-                StampNumberBadge(
-                    number = state.observation.stampNumber,
-                    modifier =
-                        Modifier
-                            .align(Alignment.BottomEnd)
-                            .padding(end = 16.dp, bottom = 16.dp),
+            }
+        }
+
+        item {
+            PlateFrame(
+                plateLabel = plateLabel,
+                captionLine = "$speciesName, $captionPart",
+            ) {
+                AsyncImage(
+                    model = "file://${state.observation.photoPath}",
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop,
                 )
             }
-        },
-    ) { padding ->
-        LazyColumn(
-            modifier = Modifier.fillMaxSize().padding(padding),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            item { NoteSection(noteText = noteText, onNoteChange = { noteText = it }) }
-            item { DetailsSection(state = state, onSpeciesClick = onSpeciesClick) }
+        }
+
+        item {
+            NoteSection(
+                noteText = noteText,
+                onNoteChange = { noteText = it },
+                canSave = noteText != state.observation.note && !state.noteSaving,
+                onSave = { viewModel.saveNote(noteText) },
+            )
+        }
+
+        item {
+            DetailsSection(state = state)
+        }
+
+        if (state.species != null) {
             item {
-                Spacer(modifier = Modifier.size(8.dp))
-                HorizontalDivider(color = SandCreme)
-                Spacer(modifier = Modifier.size(8.dp))
-                Button(
-                    onClick = { showDeleteDialog = true },
-                    colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = TextOnHero),
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(stringResource(Res.string.diary_delete_button))
-                }
+                ProfileLink(
+                    scientificName = state.species.scientificName,
+                    onClick = { onSpeciesClick(state.observation.speciesId) },
+                )
+            }
+        }
+
+        item {
+            Spacer(modifier = Modifier.size(8.dp))
+            HorizontalDivider(
+                color = AccentCopper.copy(alpha = 0.3f),
+                modifier = Modifier.padding(horizontal = 24.dp),
+            )
+            Spacer(modifier = Modifier.size(8.dp))
+            TextButton(
+                onClick = { showDeleteDialog = true },
+                modifier = Modifier.padding(horizontal = 24.dp),
+            ) {
+                Text(
+                    stringResource(Res.string.diary_delete_button),
+                    color = AccentCopper,
+                    fontStyle = FontStyle.Italic,
+                )
             }
         }
     }
@@ -273,86 +267,168 @@ private fun LoadedView(
                 TextButton(onClick = {
                     showDeleteDialog = false
                     viewModel.delete()
-                }) { Text(stringResource(Res.string.diary_delete_confirm_yes)) }
+                }) { Text(stringResource(Res.string.diary_delete_confirm_yes), color = AccentCopper) }
             },
             dismissButton = {
                 TextButton(onClick = { showDeleteDialog = false }) {
-                    Text(stringResource(Res.string.diary_delete_confirm_no))
+                    Text(stringResource(Res.string.diary_delete_confirm_no), color = TextOnCreme)
                 }
             },
         )
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun NoteSection(
     noteText: String,
     onNoteChange: (String) -> Unit,
+    canSave: Boolean,
+    onSave: () -> Unit,
 ) {
-    Column {
-        Text(
-            stringResource(Res.string.diary_note_label),
-            style = MaterialTheme.typography.labelLarge,
-            color = HeroMossLight,
-            fontWeight = FontWeight.Bold,
-        )
-        Spacer(modifier = Modifier.size(4.dp))
+    val caveat = rememberCaveat()
+    Column(modifier = Modifier.padding(horizontal = 24.dp, vertical = 4.dp)) {
         OutlinedTextField(
             value = noteText,
             onValueChange = onNoteChange,
+            placeholder = {
+                Text(
+                    stringResource(Res.string.observation_note_caveat_prompt),
+                    fontFamily = caveat,
+                    fontSize = 16.sp,
+                    color = MarginaliaInk.copy(alpha = 0.6f),
+                )
+            },
+            textStyle = MaterialTheme.typography.bodyMedium.copy(
+                fontFamily = caveat,
+                fontSize = 16.sp,
+                color = MarginaliaInk,
+            ),
             modifier = Modifier.fillMaxWidth(),
             minLines = 3,
             maxLines = 6,
+            shape = RoundedCornerShape(8.dp),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = AccentCopper.copy(alpha = 0.6f),
+                unfocusedBorderColor = AccentCopper.copy(alpha = 0.3f),
+                focusedContainerColor = Color.White.copy(alpha = 0.4f),
+                unfocusedContainerColor = Color.White.copy(alpha = 0.4f),
+            ),
             keyboardOptions = KeyboardOptions(autoCorrectEnabled = true),
         )
-    }
-}
-
-@Composable
-private fun DetailsSection(
-    state: ObservationDetailUiState.Loaded,
-    onSpeciesClick: (String) -> Unit,
-) {
-    val tz = TimeZone.currentSystemDefault()
-    Column {
-        Text(
-            stringResource(Res.string.diary_detail_label_details),
-            style = MaterialTheme.typography.labelLarge,
-            color = HeroMossLight,
-            fontWeight = FontWeight.Bold,
-        )
-        Spacer(modifier = Modifier.size(8.dp))
-        DetailRow(label = stringResource(Res.string.diary_detail_label_date)) {
-            Text(formatFullDate(state.observation.capturedAt, tz), color = TextOnCreme)
-        }
-        DetailRow(label = stringResource(Res.string.diary_detail_label_confidence)) {
-            Text(
-                stringResource(Res.string.diary_confidence_format, "${(state.observation.confidence * 100f).toInt()}%"),
-                color = TextOnCreme,
-            )
-        }
-        DetailRow(label = stringResource(Res.string.diary_detail_label_saved)) {
-            Text(formatFullDate(state.observation.savedAt, tz), color = TextOnCreme)
-        }
-        if (state.species != null) {
-            Spacer(modifier = Modifier.size(8.dp))
+        if (canSave) {
+            Spacer(modifier = Modifier.size(6.dp))
             TextButton(
-                onClick = { onSpeciesClick(state.observation.speciesId) },
+                onClick = onSave,
+                modifier = Modifier.align(Alignment.End),
             ) {
-                Text(state.species.name + " — " + state.species.scientificName, color = AccentCopper)
+                Text(
+                    stringResource(Res.string.diary_note_save),
+                    color = AccentCopper,
+                    fontFamily = caveat,
+                    fontSize = 15.sp,
+                )
             }
         }
     }
 }
 
 @Composable
+private fun DetailsSection(state: ObservationDetailUiState.Loaded) {
+    val tz = TimeZone.currentSystemDefault()
+    Column(modifier = Modifier.padding(horizontal = 24.dp, vertical = 4.dp)) {
+        SectionLabel(stringResource(Res.string.diary_detail_label_details))
+        Spacer(modifier = Modifier.size(6.dp))
+        DetailRow(
+            label = stringResource(Res.string.diary_detail_label_date),
+            value = formatFullDate(state.observation.capturedAt, tz),
+        )
+        DetailRow(
+            label = stringResource(Res.string.diary_detail_label_confidence),
+            value = stringResource(
+                Res.string.diary_confidence_format,
+                "${(state.observation.confidence * 100f).toInt()}%",
+            ),
+        )
+        DetailRow(
+            label = stringResource(Res.string.diary_detail_label_saved),
+            value = formatFullDate(state.observation.savedAt, tz),
+        )
+    }
+}
+
+@Composable
+private fun SectionLabel(text: String) {
+    Text(
+        text = text.uppercase(),
+        color = MarginaliaInk,
+        fontSize = 9.sp,
+        fontWeight = FontWeight.W700,
+        letterSpacing = 0.22.em,
+    )
+}
+
+@Composable
 private fun DetailRow(
     label: String,
-    content: @Composable () -> Unit,
+    value: String,
 ) {
-    Column(modifier = Modifier.padding(vertical = 4.dp)) {
-        Text(label, style = MaterialTheme.typography.labelSmall, color = HeroMossLight)
-        content()
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = label,
+            color = MarginaliaInk,
+            fontSize = 12.sp,
+            modifier = Modifier.weight(1f),
+        )
+        Text(
+            text = value,
+            color = TextOnCreme,
+            fontSize = 13.sp,
+        )
+    }
+}
+
+@Composable
+private fun ProfileLink(
+    scientificName: String,
+    onClick: () -> Unit,
+) {
+    val caveat = rememberCaveat()
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier = Modifier
+                .width(2.dp)
+                .height(40.dp)
+                .background(MarginaliaBorder),
+        )
+        Spacer(modifier = Modifier.size(10.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = scientificName,
+                color = MarginaliaInk,
+                fontStyle = FontStyle.Italic,
+                fontSize = 13.sp,
+            )
+            TextButton(
+                onClick = onClick,
+                contentPadding = PaddingValues(0.dp),
+            ) {
+                Text(
+                    text = stringResource(Res.string.observation_visit_profile),
+                    color = AccentCopper,
+                    fontFamily = caveat,
+                    fontSize = 16.sp,
+                )
+            }
+        }
     }
 }
 

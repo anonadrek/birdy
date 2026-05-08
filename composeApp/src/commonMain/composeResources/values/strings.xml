@@ -21,6 +21,11 @@
     <string name="profile_journal_sub">%1$s · %2$s</string>
     <string name="profile_plate_caption">i naturen</string>
 
+    <!-- Plan 7c: Observation Detail Field Journal -->
+    <string name="observation_journal_label">FYND · NO %1$s</string>
+    <string name="observation_note_caveat_prompt">Notera i marginalen…</string>
+    <string name="observation_visit_profile">visa artprofil</string>
+
     <!-- Filter -->
     <string name="filter_title">Filter</string>
     <string name="filter_button">⚙ Filter</string>
