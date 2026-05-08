@@ -40,6 +40,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.filter_button
 import birdy_bird_scanner.composeapp.generated.resources.loading
+import birdy_bird_scanner.composeapp.generated.resources.menu_button
 import birdy_bird_scanner.composeapp.generated.resources.search_empty_body
 import birdy_bird_scanner.composeapp.generated.resources.search_empty_title
 import birdy_bird_scanner.composeapp.generated.resources.search_placeholder
@@ -82,7 +83,7 @@ fun EncyclopediaScreen(
                     ),
                 actions = {
                     IconButton(onClick = { menuExpanded = true }) {
-                        Icon(Icons.Default.MoreVert, contentDescription = "Menu")
+                        Icon(Icons.Default.MoreVert, contentDescription = stringResource(Res.string.menu_button))
                     }
                     DropdownMenu(
                         expanded = menuExpanded,

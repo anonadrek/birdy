@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -29,6 +30,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -100,8 +102,8 @@ fun SettingsScreen(
             )
             SettingsRow(
                 label = stringResource(Res.string.settings_label_about),
-                value = "v0.7.0a", // bumpa när tag sätts
-                onClick = { /* about-dialog kommer i Plan 7b — visa version i 7a */ },
+                value = "v0.7.0a",
+                onClick = null,
             )
         }
     }
@@ -122,7 +124,7 @@ fun SettingsScreen(
 private fun SettingsRow(
     label: String,
     value: String,
-    onClick: () -> Unit,
+    onClick: (() -> Unit)?,
 ) {
     Row(
         modifier =
@@ -130,7 +132,7 @@ private fun SettingsRow(
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(12.dp))
                 .background(SandCreme)
-                .clickable(onClick = onClick)
+                .let { if (onClick != null) it.clickable(onClick = onClick) else it }
                 .padding(horizontal = 16.dp, vertical = 16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
@@ -160,11 +162,15 @@ private fun LanguageSection(
             fontSize = 16.sp,
         )
         Spacer(Modifier.height(8.dp))
-        listOf(
-            AppLanguage.SV to Res.string.settings_language_sv,
-            AppLanguage.EN to Res.string.settings_language_en,
-            AppLanguage.SYSTEM to Res.string.settings_language_system,
-        ).forEach { (lang, label) ->
+        val options =
+            remember {
+                listOf(
+                    AppLanguage.SV to Res.string.settings_language_sv,
+                    AppLanguage.EN to Res.string.settings_language_en,
+                    AppLanguage.SYSTEM to Res.string.settings_language_system,
+                )
+            }
+        options.forEach { (lang, label) ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier =
@@ -174,7 +180,7 @@ private fun LanguageSection(
                         .padding(vertical = 6.dp),
             ) {
                 RadioButton(selected = current == lang, onClick = { onSelect(lang) })
-                Spacer(Modifier.height(0.dp))
+                Spacer(Modifier.width(8.dp))
                 Text(stringResource(label), color = TextOnCreme, fontSize = 15.sp)
             }
         }
@@ -187,7 +193,8 @@ private fun NameEditDialog(
     onSave: (String) -> Unit,
     onDismiss: () -> Unit,
 ) {
-    var draft by remember { mutableStateOf(initial) }
+    var draft by rememberSaveable { mutableStateOf(initial) }
+    val canSave = draft.trim().isNotEmpty()
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(stringResource(Res.string.settings_name_dialog_title)) },
@@ -199,7 +206,7 @@ private fun NameEditDialog(
             )
         },
         confirmButton = {
-            TextButton(onClick = { onSave(draft) }) {
+            TextButton(onClick = { onSave(draft) }, enabled = canSave) {
                 Text(stringResource(Res.string.settings_name_dialog_save))
             }
         },

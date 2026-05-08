@@ -272,4 +272,5 @@
     <string name="settings_name_dialog_save">Spara</string>
     <string name="settings_name_dialog_cancel">Avbryt</string>
     <string name="settings_back">Tillbaka</string>
+    <string name="menu_button">Meny</string>
 </resources>
