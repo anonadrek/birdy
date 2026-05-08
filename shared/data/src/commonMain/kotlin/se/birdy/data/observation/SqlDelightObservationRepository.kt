@@ -37,6 +37,11 @@ class SqlDelightObservationRepository(
             .mapToOneOrNull(Dispatchers.IO)
             .map { it?.toDomain() }
 
+    override suspend fun nextStampNumber(): Int =
+        withContext(Dispatchers.IO) {
+            (queries.nextStampNumber().executeAsOne() ?: 0L).toInt()
+        }
+
     override suspend fun insert(observation: Observation) {
         withContext(Dispatchers.IO) {
             queries.insert(
@@ -50,6 +55,7 @@ class SqlDelightObservationRepository(
                 latitude = observation.latitude,
                 longitude = observation.longitude,
                 location_label = observation.locationLabel,
+                stamp_number = observation.stampNumber.toLong(),
             )
         }
     }

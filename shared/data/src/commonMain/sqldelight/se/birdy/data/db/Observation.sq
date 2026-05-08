@@ -27,19 +27,16 @@ SELECT * FROM observation WHERE id = ?;
 nextStampNumber:
 SELECT COALESCE(MAX(stamp_number), 0) + 1 FROM observation;
 
--- stamp_number is computed via (SELECT COALESCE(MAX, 0) + 1) — assumes a single
--- writer (the app's repo singleton). Concurrent inserts on separate connections
--- could race and produce duplicate stamps. v1 has no UNIQUE constraint to keep
--- migration simple; revisit if multi-writer access lands.
+-- stamp_number is caller-provided. Use nextStampNumber: to read the next value,
+-- then pass it to insert. Single-writer assumption holds for v1; concurrent
+-- inserts from different connections could still race (no UNIQUE constraint).
 insert:
 INSERT INTO observation(
     id, species_id, captured_at_ms, saved_at_ms,
     photo_path, note, confidence,
     latitude, longitude, location_label,
     stamp_number
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
-    (SELECT COALESCE(MAX(stamp_number), 0) + 1 FROM observation)
-);
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 updateNote:
 UPDATE observation SET note = ? WHERE id = ?;

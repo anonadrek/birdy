@@ -17,4 +17,6 @@ interface ObservationRepository {
     )
 
     suspend fun delete(id: String)
+
+    suspend fun nextStampNumber(): Int
 }

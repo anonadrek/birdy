@@ -34,6 +34,7 @@ class SaveObservationUseCase(
     ): SaveResult {
         val id = Uuid.random().toString()
         val photoPath = photoStorage.persistJpeg(rawJpegBytes)
+        val nextStamp = repo.nextStampNumber()
         try {
             repo.insert(
                 Observation(
@@ -47,6 +48,7 @@ class SaveObservationUseCase(
                     latitude = null,
                     longitude = null,
                     locationLabel = null,
+                    stampNumber = nextStamp,
                 ),
             )
         } catch (t: Throwable) {

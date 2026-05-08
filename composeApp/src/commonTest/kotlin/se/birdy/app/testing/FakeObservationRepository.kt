@@ -12,6 +12,9 @@ class FakeObservationRepository : ObservationRepository {
     private val _rows = MutableStateFlow<List<Observation>>(emptyList())
     val rows: Flow<List<Observation>> get() = _rows.asStateFlow()
 
+    val allInserted: List<Observation> get() = _rows.value
+    val lastInserted: Observation? get() = _rows.value.lastOrNull()
+
     /** Hook to simulate insert-fail for SaveObservationUseCaseTest. */
     var failOnInsert: Throwable? = null
 
@@ -46,6 +49,8 @@ class FakeObservationRepository : ObservationRepository {
         failOnDelete?.let { throw it }
         _rows.value = _rows.value.filter { it.id != id }
     }
+
+    override suspend fun nextStampNumber(): Int = (_rows.value.maxOfOrNull { it.stampNumber } ?: 0) + 1
 
     fun seedDirect(obs: Observation) {
         _rows.value = _rows.value + obs

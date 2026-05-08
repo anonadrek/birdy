@@ -134,6 +134,8 @@ class BadgesViewModelTest {
                     ) {}
 
                     override suspend fun delete(id: String) {}
+
+                    override suspend fun nextStampNumber(): Int = 1
                 }
             val badgeRepo = FakeBadgeRepository()
             val recalc =
