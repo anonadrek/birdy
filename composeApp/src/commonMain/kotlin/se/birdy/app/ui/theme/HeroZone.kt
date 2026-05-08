@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -33,9 +34,11 @@ fun HeroZone(
     content: @Composable () -> Unit,
 ) {
     val gradient =
-        Brush.verticalGradient(
-            colors = listOf(HeroMossLight, HeroMossMid, HeroMossDeep),
-        )
+        remember {
+            Brush.verticalGradient(
+                colors = listOf(HeroMossLight, HeroMossMid, HeroMossDeep),
+            )
+        }
     Box(
         modifier =
             modifier
