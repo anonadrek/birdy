@@ -108,6 +108,19 @@ och den nya texten hämtas + summeras. Verifiera ordlängd ≥ 80, ta bort overr
 | 83 | Q18851 | charadriidae | Mindre strandpipare | Thinornis dubius | image | 59251641 | 1352507808 | pending (saknar hi-res Commons-foto trots vanlig SE-häckare) |
 | 84 | Q249695 | cettiidae | Snårsångare | Scotocerca inquieta | sv | 59162147 | 1350108561 | pending (afrikansk/mellanöstern, ingen svwiki) |
 | 85 | Q650114 | cettiidae | Cettisångare | Cettia cetti | en | 57586582 | — | pending (sydeuropeisk vagrant, enwiki lead saknas helt) |
+| 86 | Q308199 | ciconiidae | Blåkindad stork | Ciconia abdimii | en | — | — | pending (afrikansk monsun-art) |
+| 87 | Q655510 | ciconiidae | Afrikansk ibisstork | Mycteria ibis | sv | — | — | pending (afrikansk våtmarksart) |
+| 88 | Q201831 | cinclidae | Strömstare | Cinclus cinclus | hero-quality (allmän — prioriterad) | 58995035 | 1342459649 | pending (auto-pick visar gul/distanserad fågel utan diagnostisk vit bröstfläck; bättre kandidat Lisine 6 är 1800×1200 < MIN_DIMENSION=2048 — hämta större version eller alternativ) |
+| 89 | Q117256935 | cisticolidae | Dvärgprinia | Prinia lepida | sv | — | — | pending (mellanöstern, ingen svwiki) |
+| 90 | Q2609351 | cisticolidae | Sahelsångare | Spiloptila clamans | sv + image | — | — | pending (afrikansk, ingen svwiki + saknar hi-res Commons-foto) |
+| 91 | Q1030039 | columbidae | Mörk turturduva | Streptopelia lugens | en | — | — | pending (afrikansk, enwiki lead för kort) |
+| 92 | Q1072609 | columbidae | Rödögd duva | Streptopelia semitorquata | sv | — | — | pending (afrikansk, ingen svwiki) |
+| 93 | Q1188385 | columbidae | Gulbukig grönduva | Treron waalia | en | — | — | pending (afrikansk, enwiki lead saknas) |
+| 94 | Q536817 | columbidae | Kanarieduva | Columba bollii | sv + en | — | — | pending (Kanarieöarna endemic, sparse på båda språken) |
+| 95 | Q704987 | columbidae | Större turturduva | Streptopelia orientalis | sv | — | — | pending (asiatisk, ingen svwiki) |
+| 96 | Q932119 | columbidae | Turkestanduva | Columba eversmanni | sv + image | — | — | pending (centralasiatisk, ingen svwiki + saknar hi-res Commons-foto) |
+| 97 | Q933542 | columbidae | Lagerduva | Columba junoniae | sv | — | — | pending (Kanarieöarna endemic, ingen svwiki) |
+| 98 | Q961342 | coraciidae | Savannblåkråka | Coracias abyssinicus | sv | — | — | pending (afrikansk, ingen svwiki) |
 
 `svwiki rev` / `enwiki rev` är revisions-ID för den artikel pipelinen senast hämtade. `—` = artikel saknas helt på språket. Om revisionsnumret går upp innebär det att svwiki har vuxit — bra signal att retry:a `refresh --field text --force`.
 

@@ -26,7 +26,8 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-08 | certhiidae | +2 (totalt 207) | `725cd49` |
 | 2026-05-08 | charadriidae | +17 (totalt 224) | `96512e5` |
 | 2026-05-08 | cettiidae | +2 (totalt 226) | `24311b1` |
-| | _next: ciconiidae — kolla species_list.yaml_ | | |
+| 2026-05-08 | ciconiidae+cinclidae+cisticolidae+columbidae+coraciidae | +28 (totalt 254) | `6fbd4e7` |
+| | _next: corvidae — kolla species_list.yaml_ | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
@@ -93,6 +94,15 @@ Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 - **2/2 (100%) sparse-overrides på olika språk** — symmetriskt mönster: Q249695 [sv] saknar svwiki helt (afrikansk art utan SE-coverage); Q650114 [en] har enwiki lead för kort eller saknad. Första gången jag ser exotic-art och europeisk-art i samma familj behöva oppositional-language-overrides. Påminner om att `description_accept_missing` per språk är rätt nivå, inte per art.
 - **Wikidata SPARQL transient 502 igen:** Q249695 failade på första två försöken (cascade-pattern); ~8s paus och tredje försök lyckades. Q650114 lyckades direkt på första försöket. Pattern bekräftat — same som charadriidae/caprimulgidae/certhiidae.
 - Cost: ~$0.0019 / 2 arter (2 Claude-calls för cross-fill: Q249695 EN + Q650114 SV; båda hade halv coverage från Wikipedia).
+
+**Multi-family pause-batch lärdomar (2026-05-08): ciconiidae+cinclidae+cisticolidae+columbidae+coraciidae**
+
+- 28 arter på en pause-batch (4+1+4+17+2). 5/28 abundance:allmän approved: Q201831 Strömstare, Q54696 Turkduva, Q26026 Ringduva, Q42326 Tamduva, Q26140 Skogsduva. Övriga 23 = exotiska arter (afrikanska/asiatiska/medelhavs).
+- **14/28 (50%) overrides** — 12 sparse-text + 4 image-gap (vissa arter har båda). Splittrar väl mellan svenska sparse (afrikanska/asiatiska arter utan svwiki) och engelska sparse (Q1030039 Streptopelia lugens, Q1188385 Treron waalia, Q536817 Columba bollii, Q308199 Ciconia abdimii — relativt obekanta för engelsk Wikipedia också).
+- **Q42326 (Tamduva) common_en bröt fetcher:** ursprunglig `common_en: "Rock Dove / Feral Pigeon"` producerade Wikipedia REST URL `https://en.wikipedia.org/api/rest_v1/page/summary/Rock%20Dove%20/%20Feral%20Pigeon` → 400 Bad Request. Fix: kortade till `"Rock Dove"` i species_list.yaml. **Återanvändbart pattern:** common_en med `/` är giftigt eftersom encoded slash bryter REST endpoint route — håll det enskilda namn med space, inga slashes.
+- **Q201831 (Strömstare) hero auto-pick problem:** Lisine 2 (2400×1600) klarar MIN_DIMENSION men visar gul/distanserad fågel utan diagnostisk vit bröstfläck. Lisine 6 (1800×1200) är diagnostisk men under MIN_DIMENSION → validatorn `hero-too-small` blockerar swap. Det finns ingen `allow_smaller_hero` override; reverterade swap, dokumenterade i review_notes + content-gaps som follow-up. **Lärdom:** validatorns 2048-tröskel är binär — försök inte byta till en mindre fil utan att lägga till stöd för dimension-override först. Dokumentera i `content-gaps.md` med `hero-quality` markering, fixa när vi gör en pipeline-iteration.
+- **Wikidata SPARQL transient cascade massiv:** ~18/28 första-fetch failade med 502 Bad Gateway. 5 behövde andra retry. Q704987 (Streptopelia orientalis) behövde tre retries. Pattern bekräftat — den värsta cascaden hittills, men fortfarande löst genom ren retry-loop. Backoff-with-retry i WikidataClient blir mer attraktivt vid stora batch-sizes (>20 arter).
+- Cost: ~$0.04 / 28 arter (uppskattat — full SV+EN för 14, single-language för 12 sparse-arter, plus retry-overhead).
 
 
 - 1/8 abundance:allmän approved (Q26717 Nattskärra — etablerad SE-sommargäst på sandiga tallhedar och ljungmarker, hörs i skymning över hela landet). Övriga 7 är afrikanska/asiatiska/medelhavs-arter: Q1137192 Rödhalsad nattskärra (sydeuropeisk), Q615437 Egyptisk nattskärra, Q1269353 Nubisk nattskärra, Q2752089 Sindnattskärra (asiatisk), Q1264019 Guldnattskärra, Q1265442 Bergnattskärra, Q1270252 Sahelnattskärra.
