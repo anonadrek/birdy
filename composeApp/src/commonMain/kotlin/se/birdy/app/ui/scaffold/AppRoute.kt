@@ -30,5 +30,7 @@ sealed interface AppRoute {
 
     @Serializable data object Badges : AppRoute
 
+    @Serializable data object Settings : AppRoute
+
     @Serializable data object DebugBenchmark : AppRoute
 }

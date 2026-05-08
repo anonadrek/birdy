@@ -258,4 +258,18 @@
     <string name="onboarding_p3_premium_label">PREMIUM</string>
     <string name="onboarding_p3_cta">Börja samla →</string>
     <string name="onboarding_p3_fallback_name">Min</string>
+
+    <!-- ===== Plan 7a: Settings ===== -->
+    <string name="settings_title">Inställningar</string>
+    <string name="settings_menu_item">Inställningar</string>
+    <string name="settings_label_name">Namn</string>
+    <string name="settings_label_language">Språk</string>
+    <string name="settings_label_about">Om appen</string>
+    <string name="settings_language_sv">Svenska</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_name_dialog_title">Ändra namn</string>
+    <string name="settings_name_dialog_save">Spara</string>
+    <string name="settings_name_dialog_cancel">Avbryt</string>
+    <string name="settings_back">Tillbaka</string>
 </resources>

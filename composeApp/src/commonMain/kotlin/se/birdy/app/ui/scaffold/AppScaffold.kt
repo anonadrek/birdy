@@ -69,6 +69,7 @@ fun AppScaffold(graph: AppGraph) {
                         onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
                         showDebugMenu = graph.benchmarkScreen != null,
                         onDebugBenchmarkClick = { navController.navigate(AppRoute.DebugBenchmark) },
+                        onSettingsClick = { navController.navigate(AppRoute.Settings) },
                     )
                 }
                 composable<AppRoute.SpeciesProfile> { entry ->
@@ -105,6 +106,12 @@ fun AppScaffold(graph: AppGraph) {
                 )
             }
             composable<AppRoute.Badges> { BadgesRoute(graph) }
+            composable<AppRoute.Settings> {
+                se.birdy.app.ui.settings.SettingsScreen(
+                    viewModel = remember(graph) { graph.settingsViewModel() },
+                    onBack = { navController.popBackStack() },
+                )
+            }
             graph.benchmarkScreen?.let { benchmarkContent ->
                 composable<AppRoute.DebugBenchmark> { benchmarkContent() }
             }

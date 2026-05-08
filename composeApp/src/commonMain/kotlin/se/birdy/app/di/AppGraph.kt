@@ -15,6 +15,7 @@ import se.birdy.app.ui.photoanalyze.PhotoAnalyzeViewModel
 import se.birdy.app.ui.profile.SpeciesProfileViewModel
 import se.birdy.app.ui.result.ClassificationResultViewModel
 import se.birdy.app.ui.scan.ScanViewModel
+import se.birdy.app.ui.settings.SettingsViewModel
 import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
@@ -133,4 +134,6 @@ class AppGraph(
             photoStorage = photoStorage,
             locale = defaultLocale,
         )
+
+    fun settingsViewModel(): SettingsViewModel = SettingsViewModel(userPreferences)
 }

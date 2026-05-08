@@ -44,6 +44,7 @@ import birdy_bird_scanner.composeapp.generated.resources.search_empty_body
 import birdy_bird_scanner.composeapp.generated.resources.search_empty_title
 import birdy_bird_scanner.composeapp.generated.resources.search_placeholder
 import birdy_bird_scanner.composeapp.generated.resources.section_others
+import birdy_bird_scanner.composeapp.generated.resources.settings_menu_item
 import birdy_bird_scanner.composeapp.generated.resources.title_encyclopedia
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.EmptyState
@@ -61,6 +62,7 @@ fun EncyclopediaScreen(
     onSpeciesClick: (SpeciesId) -> Unit,
     showDebugMenu: Boolean = false,
     onDebugBenchmarkClick: () -> Unit = {},
+    onSettingsClick: () -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val query by viewModel.query.collectAsStateWithLifecycle()
@@ -79,14 +81,21 @@ fun EncyclopediaScreen(
                         titleContentColor = TextOnHero,
                     ),
                 actions = {
-                    if (showDebugMenu) {
-                        IconButton(onClick = { menuExpanded = true }) {
-                            Icon(Icons.Default.MoreVert, contentDescription = "Debug menu")
-                        }
-                        DropdownMenu(
-                            expanded = menuExpanded,
-                            onDismissRequest = { menuExpanded = false },
-                        ) {
+                    IconButton(onClick = { menuExpanded = true }) {
+                        Icon(Icons.Default.MoreVert, contentDescription = "Menu")
+                    }
+                    DropdownMenu(
+                        expanded = menuExpanded,
+                        onDismissRequest = { menuExpanded = false },
+                    ) {
+                        DropdownMenuItem(
+                            text = { Text(stringResource(Res.string.settings_menu_item)) },
+                            onClick = {
+                                onSettingsClick()
+                                menuExpanded = false
+                            },
+                        )
+                        if (showDebugMenu) {
                             DropdownMenuItem(
                                 text = { Text("Run benchmark") },
                                 onClick = {

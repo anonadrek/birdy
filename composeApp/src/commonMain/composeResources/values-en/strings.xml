@@ -245,4 +245,18 @@
     <string name="onboarding_p3_premium_label">PREMIUM</string>
     <string name="onboarding_p3_cta">Start collecting →</string>
     <string name="onboarding_p3_fallback_name">My</string>
+
+    <!-- ===== Plan 7a: Settings ===== -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_label_name">Name</string>
+    <string name="settings_label_language">Language</string>
+    <string name="settings_label_about">About</string>
+    <string name="settings_language_sv">Svenska</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_name_dialog_title">Change name</string>
+    <string name="settings_name_dialog_save">Save</string>
+    <string name="settings_name_dialog_cancel">Cancel</string>
+    <string name="settings_back">Back</string>
 </resources>
