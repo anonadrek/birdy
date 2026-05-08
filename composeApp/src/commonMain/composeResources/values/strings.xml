@@ -226,4 +226,36 @@
     <string name="badge_desc_rare_5">Fem sällsynta arter sedda.</string>
     <string name="badge_name_rare_10">Mästar-skådare</string>
     <string name="badge_desc_rare_10">Tio sällsynta arter — imponerande.</string>
+
+    <!-- ===== Plan 7a: Onboarding ===== -->
+    <string name="onboarding_skip">Hoppa över</string>
+
+    <!-- Page 1 (Brand) -->
+    <string name="onboarding_p1_breadcrumb">VÄLKOMMEN</string>
+    <string name="onboarding_p1_headline">Birdy.</string>
+    <string name="onboarding_p1_body">Lyssna, känn igen, *samla*.</string>
+    <string name="onboarding_p1_sub">En fält-följeslagare bland fåglar — en stämpel i taget.</string>
+    <string name="onboarding_p1_cta">Visa hur</string>
+
+    <!-- Page 2 (Overview) -->
+    <string name="onboarding_p2_breadcrumb">ÖVERBLICK</string>
+    <string name="onboarding_p2_headline">Fyra ställen att *vara* på.</string>
+    <string name="onboarding_p2_listen_name">Listen</string>
+    <string name="onboarding_p2_listen_desc">*Lyssna och fånga* — kamera, ljud eller foto.</string>
+    <string name="onboarding_p2_archive_name">Archive</string>
+    <string name="onboarding_p2_archive_desc">*Bläddra och utforska* tusentals fåglar.</string>
+    <string name="onboarding_p2_lifelist_name">Lifelist</string>
+    <string name="onboarding_p2_lifelist_desc">*Samla* stämplar — din lista växer för varje fynd.</string>
+    <string name="onboarding_p2_badges_name">Badges</string>
+    <string name="onboarding_p2_badges_desc">*Förtjäna märken*, håll sviter levande.</string>
+    <string name="onboarding_p2_cta">Nästan klar</string>
+
+    <!-- Page 3 (Name) -->
+    <string name="onboarding_p3_breadcrumb">SISTA STEGET</string>
+    <string name="onboarding_p3_headline">Vad ska vi kalla din *samling*?</string>
+    <string name="onboarding_p3_input_placeholder">Albin</string>
+    <string name="onboarding_p3_input_helper">Du kan ändra detta senare i inställningarna.</string>
+    <string name="onboarding_p3_premium_label">PREMIUM</string>
+    <string name="onboarding_p3_cta">Börja samla →</string>
+    <string name="onboarding_p3_fallback_name">Min</string>
 </resources>

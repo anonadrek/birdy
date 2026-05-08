@@ -213,4 +213,36 @@
     <string name="badge_desc_rare_5">Five rare species seen.</string>
     <string name="badge_name_rare_10">Master birder</string>
     <string name="badge_desc_rare_10">Ten rare species — impressive.</string>
+
+    <!-- ===== Plan 7a: Onboarding ===== -->
+    <string name="onboarding_skip">Skip</string>
+
+    <!-- Page 1 (Brand) -->
+    <string name="onboarding_p1_breadcrumb">WELCOME</string>
+    <string name="onboarding_p1_headline">Birdy.</string>
+    <string name="onboarding_p1_body">Listen, recognize, *collect*.</string>
+    <string name="onboarding_p1_sub">A field companion among birds — one stamp at a time.</string>
+    <string name="onboarding_p1_cta">Show me how</string>
+
+    <!-- Page 2 (Overview) -->
+    <string name="onboarding_p2_breadcrumb">OVERVIEW</string>
+    <string name="onboarding_p2_headline">Four places to *be*.</string>
+    <string name="onboarding_p2_listen_name">Listen</string>
+    <string name="onboarding_p2_listen_desc">*Listen and capture* — camera, audio or photo.</string>
+    <string name="onboarding_p2_archive_name">Archive</string>
+    <string name="onboarding_p2_archive_desc">*Browse and explore* thousands of birds.</string>
+    <string name="onboarding_p2_lifelist_name">Lifelist</string>
+    <string name="onboarding_p2_lifelist_desc">*Collect* stamps — your list grows with every find.</string>
+    <string name="onboarding_p2_badges_name">Badges</string>
+    <string name="onboarding_p2_badges_desc">*Earn discoveries*, keep your streaks alive.</string>
+    <string name="onboarding_p2_cta">Almost there</string>
+
+    <!-- Page 3 (Name) -->
+    <string name="onboarding_p3_breadcrumb">LAST STEP</string>
+    <string name="onboarding_p3_headline">What should we call your *collection*?</string>
+    <string name="onboarding_p3_input_placeholder">Alex</string>
+    <string name="onboarding_p3_input_helper">You can change this later in settings.</string>
+    <string name="onboarding_p3_premium_label">PREMIUM</string>
+    <string name="onboarding_p3_cta">Start collecting →</string>
+    <string name="onboarding_p3_fallback_name">My</string>
 </resources>
