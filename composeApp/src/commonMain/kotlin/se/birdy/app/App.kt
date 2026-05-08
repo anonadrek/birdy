@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import kotlinx.coroutines.CancellationException
 import se.birdy.app.di.AppGraph
-import se.birdy.app.ui.scaffold.AppScaffold
+import se.birdy.app.ui.scaffold.AppGate
 import se.birdy.app.ui.theme.BirdyTheme
 
 @Composable
@@ -14,6 +14,6 @@ fun App(graph: AppGraph) {
             .onFailure { if (it is CancellationException) throw it }
     }
     BirdyTheme {
-        AppScaffold(graph)
+        AppGate(graph)
     }
 }

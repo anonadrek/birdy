@@ -11,6 +11,7 @@ import se.birdy.app.ui.badges.BadgesViewModel
 import se.birdy.app.ui.diary.DiaryViewModel
 import se.birdy.app.ui.diary.ObservationDetailViewModel
 import se.birdy.app.ui.encyclopedia.EncyclopediaViewModel
+import se.birdy.app.ui.onboarding.OnboardingViewModel
 import se.birdy.app.ui.photoanalyze.PhotoAnalyzeViewModel
 import se.birdy.app.ui.profile.SpeciesProfileViewModel
 import se.birdy.app.ui.result.ClassificationResultViewModel
@@ -136,4 +137,7 @@ class AppGraph(
         )
 
     fun settingsViewModel(): SettingsViewModel = SettingsViewModel(userPreferences)
+
+    fun onboardingViewModel(fallbackName: String): OnboardingViewModel =
+        OnboardingViewModel(prefs = userPreferences, defaultFallbackName = fallbackName)
 }
