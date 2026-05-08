@@ -30,12 +30,15 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.badges_load_error
 import birdy_bird_scanner.composeapp.generated.resources.badges_load_error_retry
 import birdy_bird_scanner.composeapp.generated.resources.badges_locked_tooltip
+import birdy_bird_scanner.composeapp.generated.resources.badges_screen_headline
 import birdy_bird_scanner.composeapp.generated.resources.badges_section_recently_unlocked
 import birdy_bird_scanner.composeapp.generated.resources.badges_section_to_discover
 import birdy_bird_scanner.composeapp.generated.resources.badges_title
@@ -45,11 +48,12 @@ import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.HeroMossLight
+import se.birdy.app.ui.theme.HeroZone
 import se.birdy.app.ui.theme.LabelOnCreme
+import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.content.Locale
 import se.birdy.domain.badge.Badge
-import se.birdy.domain.badge.BadgeProgress
 import se.birdy.domain.badge.BadgeUnlock
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -130,7 +134,7 @@ private fun LoadedContent(
     onLockedClick: () -> Unit,
 ) {
     LazyVerticalGrid(
-        columns = GridCells.Fixed(5),
+        columns = GridCells.Fixed(4),
         modifier = Modifier.fillMaxSize(),
         contentPadding =
             PaddingValues(
@@ -143,14 +147,20 @@ private fun LoadedContent(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         item(span = { GridItemSpan(maxLineSpan) }) {
-            BadgeStatHero(
-                seenSpecies = state.speciesProgress.seen,
-                totalSpecies = state.speciesProgress.total,
-                unlockedCount = state.unlockedCount,
-                totalBadges = state.totalBadges,
-                weeklyStreak = state.weeklyStreak,
-                monthlyStreak = state.monthlyStreak,
-            )
+            HeroZone {
+                Column {
+                    Text(
+                        text = stringResource(Res.string.badges_screen_headline),
+                        color = OffwhiteWarm,
+                        fontFamily = FontFamily.Serif,
+                        fontStyle = FontStyle.Italic,
+                        fontSize = 38.sp,
+                        fontWeight = FontWeight.W700,
+                    )
+                    Spacer(Modifier.height(16.dp))
+                    BadgeProgressBar(unlocked = state.unlockedCount, total = state.totalBadges)
+                }
+            }
         }
 
         if (state.recentlyUnlocked.isNotEmpty()) {
@@ -185,16 +195,8 @@ private fun LoadedContent(
             }
         }
 
-        items(
-            items = state.locked,
-            key = { it.badge.id },
-        ) { lbp ->
-            val current = (lbp.state as? BadgeGridState.InProgress)?.current ?: 0
-            BadgeCard(
-                progress = BadgeProgress(badge = lbp.badge, current = current, target = lbp.badge.rule.target, unlock = null),
-                contentDescription = lockedTooltip,
-                onClick = onLockedClick,
-            )
+        items(items = state.locked, key = { it.badge.id }) { lbp ->
+            BadgeGridCell(progress = lbp, onClick = onLockedClick)
         }
     }
 }

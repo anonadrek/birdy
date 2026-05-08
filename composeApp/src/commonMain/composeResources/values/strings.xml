@@ -303,6 +303,12 @@
     <string name="archive_pill_stamped">STÄMPLAD</string>
     <string name="archive_section_count">%1$s arter</string>
 
+    <!-- ===== Plan 7b: BadgesScreen redesign ===== -->
+    <string name="badges_screen_headline">Märken.</string>
+    <string name="badges_screen_progress_label">UPPLÅSTA MÄRKEN</string>
+    <string name="badges_grid_hidden">???</string>
+    <string name="badges_in_progress_pill">%1$s/%2$s</string>
+
     <!-- ===== Plan 7b: LifelistScreen ===== -->
     <string name="lifelist_breadcrumb">LIFELIST</string>
     <string name="lifelist_headline_format">*%1$s*s samling.</string>

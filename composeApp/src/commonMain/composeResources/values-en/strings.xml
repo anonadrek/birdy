@@ -290,6 +290,12 @@
     <string name="archive_pill_stamped">STAMPED</string>
     <string name="archive_section_count">%1$s species</string>
 
+    <!-- ===== Plan 7b: BadgesScreen redesign ===== -->
+    <string name="badges_screen_headline">Discoveries.</string>
+    <string name="badges_screen_progress_label">BADGES UNLOCKED</string>
+    <string name="badges_grid_hidden">???</string>
+    <string name="badges_in_progress_pill">%1$s/%2$s</string>
+
     <!-- ===== Plan 7b: LifelistScreen ===== -->
     <string name="lifelist_breadcrumb">LIFELIST</string>
     <string name="lifelist_headline_format">*%1$s*'s collection.</string>
