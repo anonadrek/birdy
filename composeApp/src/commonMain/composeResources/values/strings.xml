@@ -26,6 +26,20 @@
     <string name="observation_note_caveat_prompt">Notera i marginalen…</string>
     <string name="observation_visit_profile">visa artprofil</string>
 
+    <!-- Plan 7c: Onboarding Field Journal -->
+    <string name="onboarding_journal_p1_label">VÄLKOMMEN · NO 1</string>
+    <string name="onboarding_journal_p1_headline">*Birdy.*</string>
+    <string name="onboarding_journal_p1_sub">En fältdagbok för fynd.</string>
+    <string name="onboarding_journal_p1_body1">Rikta kameran, ta ett foto, eller välj från galleriet. *Birdy* identifierar fågeln på enheten — utan internet i fält — och stämplar den i din dagbok.</string>
+    <string name="onboarding_journal_p1_body2">Varje fynd låser upp en ny sida. Se din *samling* växa över årstiderna. Dagboken stannar på enheten om du inte väljer att dela den.</string>
+    <string name="onboarding_journal_p2_label">SÅ FUNGERAR DET · NO 2</string>
+    <string name="onboarding_journal_p2_headline">*Tre* delar.</string>
+    <string name="onboarding_journal_p2_sub">Att leta. Att lära. Att samla.</string>
+    <string name="onboarding_journal_p3_label">DITT NAMN · NO 3</string>
+    <string name="onboarding_journal_p3_headline">*Vem* skriver?</string>
+    <string name="onboarding_journal_p3_sub">Namnet visas i dagboken.</string>
+    <string name="onboarding_journal_p3_cta">*Börja* dagboken</string>
+
     <!-- Filter -->
     <string name="filter_title">Filter</string>
     <string name="filter_button">⚙ Filter</string>
