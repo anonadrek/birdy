@@ -5,10 +5,13 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
+import java.io.IOException
 
 private val Context.userPrefsDataStore: DataStore<Preferences> by preferencesDataStore(name = "birdy_user_prefs")
 
@@ -25,6 +28,11 @@ actual class UserPreferencesStore actual constructor(
 private class AndroidUserPreferences(
     private val store: DataStore<Preferences>,
 ) : UserPreferences {
+    private val safeData: Flow<Preferences> =
+        store.data.catch { e ->
+            if (e is IOException) emit(emptyPreferences()) else throw e
+        }
+
     private object Keys {
         val USER_NAME = stringPreferencesKey("user_name")
         val HAS_SEEN_ONBOARDING = booleanPreferencesKey("has_seen_onboarding")
@@ -34,24 +42,24 @@ private class AndroidUserPreferences(
         val LIFELIST_SORT = stringPreferencesKey("lifelist_sort")
     }
 
-    override val userName: Flow<String> = store.data.map { it[Keys.USER_NAME] ?: "" }
-    override val hasSeenOnboarding: Flow<Boolean> = store.data.map { it[Keys.HAS_SEEN_ONBOARDING] ?: false }
+    override val userName: Flow<String> = safeData.map { it[Keys.USER_NAME] ?: "" }
+    override val hasSeenOnboarding: Flow<Boolean> = safeData.map { it[Keys.HAS_SEEN_ONBOARDING] ?: false }
 
     override val appLanguage: Flow<AppLanguage> =
-        store.data.map { prefs ->
+        safeData.map { prefs ->
             AppLanguage.entries.firstOrNull { it.name == prefs[Keys.APP_LANGUAGE] } ?: AppLanguage.SYSTEM
         }
     override val lifelistStat3: Flow<LifelistStat3Choice> =
-        store.data.map { prefs ->
+        safeData.map { prefs ->
             LifelistStat3Choice.entries.firstOrNull { it.name == prefs[Keys.LIFELIST_STAT3] }
                 ?: LifelistStat3Choice.STREAK
         }
     override val archiveSort: Flow<ArchiveSort> =
-        store.data.map { prefs ->
+        safeData.map { prefs ->
             ArchiveSort.entries.firstOrNull { it.name == prefs[Keys.ARCHIVE_SORT] } ?: ArchiveSort.ALPHA
         }
     override val lifelistSort: Flow<LifelistSort> =
-        store.data.map { prefs ->
+        safeData.map { prefs ->
             LifelistSort.entries.firstOrNull { it.name == prefs[Keys.LIFELIST_SORT] } ?: LifelistSort.RECENT
         }
 
