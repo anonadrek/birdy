@@ -86,8 +86,11 @@ Stamps är det andra återkommande motivet, både visuellt och konceptuellt (vi 
 | Stat-label | Inter, 8sp, weight 700, letterSpacing 0.22em, caps, MossGreen |
 | Stamp №-nummer | Caveat Bold, 11sp, AccentCopper |
 | Stamp namn-label | DM Serif Display Italic, 8-10sp, TextOnPaper |
-| Marginalia / brödtext | DM Serif Display Regular, 12-13sp, line-height 1.5 |
-| Marginal-note (handskriven citat) | Caveat Regular, 14sp, MossGreen, vänster-border AccentCopper |
+| Brödtext (paragrafer ≥2 rader) | **Inter Regular, 12-13sp, line-height 1.55-1.6** — alltid Inter, aldrig Caveat |
+| Drop-cap (första bokstaven i Species-description) | DM Serif Display Italic, 26sp, AccentCopper, float left |
+| Marginal-note (kort handskriven citat ≤1 mening) | Caveat Regular, 14sp, MossGreen, vänster-border AccentCopper |
+
+**Läsbarhetsregel (gäller hela appen):** Caveat används ENDAST för (a) 1-3 accent-ord per headline, (b) sub-line-frasen direkt under headline, (c) kort marginalia ≤1 mening, (d) stat-prefix `№N` och stamp-nummer. **Aldrig** för paragrafer, listrader, settings-värden, observation-noter eller någon text som ska skannas snabbt — där används Inter.
 | Pill / chip | DM Serif Display Italic, 10sp |
 | Bottom-bar etikett | Inter, 10sp, weight 600 |
 | Search-fält placeholder | Caveat Regular, 14sp, mossgrön @ 50% |
@@ -198,7 +201,19 @@ För varje skärm: vad ändras (layout/komponent) + vad behålls.
 
 **Behåller:** note-edit-flow, delete-confirm, navigation till species.
 
-### 6.7 Bottom-bar (gemensam)
+### 6.7 Onboarding (intro)
+
+**Ändrar:**
+- Hero ersätts: `WELCOME · NO 1` / `*Birdy.*` / `A field journal for finds.` / ❦-rule. Headline större (~34sp) eftersom det är första intrycket.
+- Brödtext-paragrafer (2 stycken om appen och journal-flödet): **Inter Regular 13sp, line-height 1.6** för läsbarhet. Caveat används endast för 1-2 accentord per stycke ("*Birdy*", "*collection*").
+- "Begin" CTA: copper button med Caveat-accent på "*Begin*" + Inter på "the journal".
+- Sekundär link "Continue without onboarding" / "Fortsätt utan introduktion": Inter Regular 11sp, mossgrön @ 60%.
+
+**Behåller:** flow-state (single page eller multi-step om det finns idag), navigation till Listen launcher efter completion, locale-strings (sv/en).
+
+**Läsbarhets-regel:** lång brödtext är ALLTID Inter, aldrig Caveat — Caveat sprinklas bara på enstaka accent-ord (max 2 per stycke). Detta är generellt mönster för hela appen, inte Onboarding-specifikt.
+
+### 6.8 Bottom-bar (gemensam)
 
 **Ändrar:**
 - Container-bg: papper-toned `#EFE8DA` istället för Material 3 lavendel-default.
@@ -247,7 +262,7 @@ För varje skärm: vad ändras (layout/komponent) + vad behålls.
 
 ## 8. Out of scope
 
-- **Settings + Onboarding**: behålls med befintlig styling tills vidare. Kan anpassas i Plan 6 (Polish) om scope tillåter.
+- **Settings**: behålls med befintlig styling tills vidare. Kan anpassas i Plan 6 (Polish) om scope tillåter. (Onboarding är nu in scope — se §6.7.)
 - **Scan / PhotoAnalyze / ClassificationResult (kameran-skärmar)**: kameravyn behåller svart bakgrund (kamera-foto syns) men chip + crosshair behåller nuvarande styling. Klassifikations-resultat-skärmen anpassas dock med journal-intro `MATCH · NO XX` / `*{topMatch}*?` / `A {confidence}% match.` (kan rymmas inom scope).
 - **Plan 7c (Match-flow) nya skärmar**: Match-skärm + Disambig byggs i Plan 7c **ovanpå** detta design-system. Inte här.
 - **Animations / motion**: gradient-pan, stamp-rotation-on-press etc. lämnas till en separat polish-iteration.
@@ -281,7 +296,7 @@ Plan är klar när:
 - [ ] Alla 6 skärmar i §6 visuellt matchar mockups (jämför mot `.superpowers/brainstorm/.../full-app-c.html` om kvar, annars ny screenshot-set)
 - [ ] DM Serif Display + Caveat bundlade som compose-resources, laddas på alla supported devices
 - [ ] Inga gröna hero-block kvar någonstans (HeroZone gammal-stil borttagen)
-- [ ] Mikro-label · italic-headline · handskriven sub · ❦-rule återkommer på Listen, Archive, Badges, Lifelist, Species
+- [ ] Mikro-label · italic-headline · handskriven sub · ❦-rule återkommer på Listen, Archive, Badges, Lifelist, Species, Onboarding
 - [ ] StampSeal-systemet (locked/in-progress/unlocked) konsekvent över Badges, Lifelist, Archive
 - [ ] Bottom-bar paper-toned (ej Material 3 lavendel-default)
 - [ ] `./gradlew build` grön
