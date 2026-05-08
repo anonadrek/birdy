@@ -46,3 +46,19 @@ val PremiumGoldDeep = Color(0xFFB88944)
 val MatchHigh = Color(0xFF7CA868) // ≥80% confidence
 val MatchMid = Color(0xFFD9B45A) // 60–79%
 val MatchLow = Color(0xFFC07560) // <60%
+
+// ===== Plan 7c Field Journal tokens (locked 2026-05-09) =====
+
+// Paper background gradient — replaces MossCreme as primary bg on all
+// redesigned screens. Lighter top, darker bottom.
+val PaperTop = Color(0xFFF0E7D0)
+val PaperBottom = Color(0xFFE6D8B8)
+
+// Stamp (sigill) state-tints
+val StampLocked = Color(0x668C5A3C) // 40% AccentCopper for dashed border on locked stamps
+val StampLockedBg = Color(0x99E8E2D2) // 60% MossCreme for locked stamp interior
+val StampUnlockedBg = Color(0x1F8C5A3C) // 12% AccentCopper for unlocked stamp interior
+
+// Marginalia — left border and text color for handwritten citations
+val MarginaliaInk = Color(0xFF5C6E48) // mossgrön (same as HeroMossLight but explicit token for Caveat marginalia text)
+val MarginaliaBorder = Color(0xFF8C5A3C) // AccentCopper for 2dp left border
