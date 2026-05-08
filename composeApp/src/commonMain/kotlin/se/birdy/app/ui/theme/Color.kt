@@ -25,3 +25,19 @@ val LabelOnHero = Color(0xFFC5BC9F)
 
 // Caption/label color on creme background (between TextOnCreme and bg)
 val LabelOnCreme = Color(0xFF6B6F5C)
+
+// ===== Plan 7 redesign tokens (locked 2026-05-08) =====
+
+// Warmer offwhite for hero text — replaces TextOnHero on redesigned screens.
+// Slightly more white-toned than #F0EAD8 for pop on mossgrön gradient.
+val OffwhiteWarm = Color(0xFFFFFCF0)
+
+// Lighter copper for italic accents within hero headlines (e.g. *fånga* in
+// "Tre sätt att *fånga*."). Brighter than AccentCopper so italic segments pop.
+val AccentCopperLight = Color(0xFFE0A47C)
+
+// Premium-tier visual gold gradient — used only on the premium-sparkle marker
+// in onboarding (Page 3) and Listen launcher (Audio-locked card). NOT a CTA.
+val PremiumGoldLight = Color(0xFFFFE8B5)
+val PremiumGoldMid = Color(0xFFE8C374)
+val PremiumGoldDeep = Color(0xFFB88944)
