@@ -85,7 +85,8 @@ class BenchmarkRunner(
                     results = results,
                 )
             val json = benchmarkJson.encodeToString(BenchmarkRun.serializer(), run)
-            val out = File(context.filesDir, "benchmark_${System.currentTimeMillis()}.json")
+            val dir = File(context.filesDir, "benchmarks").apply { mkdirs() }
+            val out = File(dir, "benchmark_${System.currentTimeMillis()}.json")
             out.writeText(json)
             emit(BenchmarkProgress.Done(run, out.absolutePath))
         }.flowOn(Dispatchers.IO)

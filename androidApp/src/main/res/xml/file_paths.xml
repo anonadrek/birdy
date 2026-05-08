@@ -2,4 +2,5 @@
 <paths>
     <cache-path name="photo-input" path="photo-input/" />
     <cache-path name="scan-frames" path="scan-frames/" />
+    <files-path name="benchmarks" path="benchmarks/" />
 </paths>
