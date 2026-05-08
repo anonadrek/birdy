@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 226/700, nästa familj = ciconiidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). **Plan 6 (Polish + Play Store-release) är PAUSAD — Plan 7 (redesign: stamp-metafor + ny IA + match-flow) kommer först. Spec klar i `232f528`. Plan 7a (Foundation, 13 tasks) skriven i `docs/superpowers/plans/2026-05-08-v1-07a-redesign-foundation.md` (commit `b453e58`) — redo för subagent-driven execution. Säg `kör Plan 7a` (eller `fortsätt`) så startar nästa session implementationen.**
+**Status (2026-05-08):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 254/700, nästa familj = corvidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). **Plan 6 (Polish + Play Store-release) är PAUSAD — Plan 7 (redesign: stamp-metafor + ny IA + match-flow) kommer först. Spec klar i `232f528`. Plan 7a (Foundation, 13 tasks) skriven i `docs/superpowers/plans/2026-05-08-v1-07a-redesign-foundation.md` (commit `b453e58`) — redo för subagent-driven execution. Säg `kör Plan 7a` (eller `fortsätt`) så startar nästa session implementationen.**
 
 ## Var hittar du saker
 
@@ -163,7 +163,8 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 | 2026-05-08 | certhiidae | +2 | 207 | `725cd49` |
 | 2026-05-08 | charadriidae | +17 | 224 | `96512e5` |
 | 2026-05-08 | cettiidae | +2 | 226 | `24311b1` |
-| _(next)_ | _ciconiidae — kolla species_list.yaml_ | | | |
+| 2026-05-08 | ciconiidae+cinclidae+cisticolidae+columbidae+coraciidae | +28 | 254 | `6fbd4e7` |
+| _(next)_ | _corvidae — kolla species_list.yaml_ | | | |
 
 **Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör nästa familj". Pure-data — kan köras parallellt med Plan 5+.
 
