@@ -286,4 +286,20 @@
     <string name="settings_name_dialog_cancel">Avbryt</string>
     <string name="settings_back">Tillbaka</string>
     <string name="menu_button">Meny</string>
+
+    <!-- ===== Plan 7b: ArchiveScreen ===== -->
+    <string name="archive_breadcrumb">ARCHIVE</string>
+    <string name="archive_headline">Birds.</string>
+    <string name="archive_sub">Sök, filtrera, *lär.*</string>
+    <string name="archive_chip_all">Alla</string>
+    <string name="archive_chip_songbirds">Sångfåglar</string>
+    <string name="archive_chip_water">Vatten</string>
+    <string name="archive_chip_raptors">Rovfåglar</string>
+    <string name="archive_chip_owls">Ugglor</string>
+    <string name="archive_chip_waders">Vadare</string>
+    <string name="archive_sort_alpha">A–Ö</string>
+    <string name="archive_sort_family">Familj</string>
+    <string name="archive_sort_recent">Senast tillagd</string>
+    <string name="archive_pill_stamped">STÄMPLAD</string>
+    <string name="archive_section_count">%1$s arter</string>
 </resources>
