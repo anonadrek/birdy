@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="tab_scan">Scan</string>
-    <string name="tab_encyclopedia">Encyclopedia</string>
-    <string name="tab_diary">Diary</string>
+    <string name="tab_listen">Listen</string>
+    <string name="tab_archive">Archive</string>
+    <string name="tab_lifelist">Lifelist</string>
     <string name="tab_badges">Badges</string>
 
     <string name="title_encyclopedia">ENCYCLOPEDIA</string>

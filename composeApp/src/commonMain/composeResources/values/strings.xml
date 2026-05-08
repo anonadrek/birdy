@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Bottom-nav -->
-    <string name="tab_scan">Skanna</string>
-    <string name="tab_encyclopedia">Uppslagsverk</string>
-    <string name="tab_diary">Dagbok</string>
-    <string name="tab_badges">Märken</string>
+    <string name="tab_listen">Listen</string>
+    <string name="tab_archive">Archive</string>
+    <string name="tab_lifelist">Lifelist</string>
+    <string name="tab_badges">Badges</string>
 
     <!-- Top-bar titles -->
     <string name="title_encyclopedia">UPPSLAGSVERK</string>
