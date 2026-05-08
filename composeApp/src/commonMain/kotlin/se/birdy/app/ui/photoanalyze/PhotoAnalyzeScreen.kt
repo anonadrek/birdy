@@ -1,5 +1,6 @@
 package se.birdy.app.ui.photoanalyze
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -7,7 +8,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -27,6 +30,8 @@ import birdy_bird_scanner.composeapp.generated.resources.photo_pick_from_gallery
 import birdy_bird_scanner.composeapp.generated.resources.photo_retry
 import birdy_bird_scanner.composeapp.generated.resources.photo_take_photo
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.OffwhiteWarm
 
 @Composable
 fun PhotoAnalyzeScreen(
@@ -55,9 +60,23 @@ fun PhotoAnalyzeScreen(
     ) {
         when (val s = state) {
             PhotoAnalyzeUiState.Idle -> {
-                Button(onClick = onPickFromGallery) { Text(stringResource(Res.string.photo_pick_from_gallery)) }
+                Button(
+                    onClick = onPickFromGallery,
+                    colors =
+                        ButtonDefaults.buttonColors(
+                            containerColor = AccentCopper,
+                            contentColor = OffwhiteWarm,
+                        ),
+                ) { Text(stringResource(Res.string.photo_pick_from_gallery)) }
                 Spacer(modifier = Modifier.height(16.dp))
-                Button(onClick = onTakePhoto) { Text(stringResource(Res.string.photo_take_photo)) }
+                OutlinedButton(
+                    onClick = onTakePhoto,
+                    colors =
+                        ButtonDefaults.outlinedButtonColors(
+                            contentColor = AccentCopper,
+                        ),
+                    border = BorderStroke(1.dp, AccentCopper),
+                ) { Text(stringResource(Res.string.photo_take_photo)) }
             }
             PhotoAnalyzeUiState.Analyzing -> {
                 CircularProgressIndicator()

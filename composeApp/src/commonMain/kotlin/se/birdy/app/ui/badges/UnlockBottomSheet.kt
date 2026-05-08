@@ -7,6 +7,7 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -33,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -46,9 +48,13 @@ import kotlinx.datetime.TimeZone
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.AccentCopperLight
 import se.birdy.app.ui.theme.HeroMossDeep
+import se.birdy.app.ui.theme.ItalicMixedText
+import se.birdy.app.ui.theme.MossCreme
+import se.birdy.app.ui.theme.OffwhiteWarm
+import se.birdy.app.ui.theme.SandCreme
 import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.content.Locale
 import se.birdy.domain.badge.Badge
 
@@ -96,7 +102,7 @@ fun UnlockBottomSheet(
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState = sheetState,
-        containerColor = MaterialTheme.colorScheme.surface,
+        containerColor = MossCreme,
     ) {
         Column(
             modifier =
@@ -108,9 +114,10 @@ fun UnlockBottomSheet(
             Box(
                 modifier =
                     Modifier
-                        .size(96.dp)
+                        .size(80.dp)
                         .clip(CircleShape)
-                        .background(AccentCopper)
+                        .background(SandCreme)
+                        .border(4.dp, AccentCopper, CircleShape)
                         .drawBehind {
                             if (glowAlpha > 0f) {
                                 drawCircle(
@@ -124,7 +131,7 @@ fun UnlockBottomSheet(
             ) {
                 Text(
                     text = badge.id.firstOrNull()?.uppercase() ?: "★",
-                    color = TextOnHero,
+                    color = AccentCopper,
                     fontSize = 36.sp,
                     fontWeight = FontWeight.Bold,
                 )
@@ -132,11 +139,14 @@ fun UnlockBottomSheet(
 
             Spacer(Modifier.height(20.dp))
 
-            Text(
+            ItalicMixedText(
                 text = stringResource(Res.string.unlock_label),
-                fontSize = 11.sp,
-                color = HeroMossDeep,
-                letterSpacing = 1.5.sp,
+                style =
+                    MaterialTheme.typography.headlineSmall.copy(
+                        fontFamily = FontFamily.Serif,
+                        color = TextOnCreme,
+                    ),
+                italicAccent = AccentCopperLight,
             )
 
             Spacer(Modifier.height(6.dp))
@@ -175,7 +185,7 @@ fun UnlockBottomSheet(
                 colors =
                     ButtonDefaults.buttonColors(
                         containerColor = AccentCopper,
-                        contentColor = TextOnHero,
+                        contentColor = OffwhiteWarm,
                     ),
             ) {
                 Text(stringResource(Res.string.unlock_button_dismiss))

@@ -24,9 +24,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -54,9 +57,12 @@ import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.HeroImage
 import se.birdy.app.ui.components.SectionBlock
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.AccentCopperLight
+import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossLight
+import se.birdy.app.ui.theme.ItalicMixedText
+import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.SandCreme
-import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.content.Abundance
 import se.birdy.content.model.Species
 
@@ -93,7 +99,19 @@ private fun ProfileContent(
                 .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
-            Box {
+            val heroGradient =
+                remember {
+                    Brush.verticalGradient(
+                        listOf(
+                            HeroMossLight,
+                            AccentCopper.copy(alpha = 0.4f),
+                            HeroMossDeep,
+                        ),
+                    )
+                }
+            Box(
+                modifier = Modifier.clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp)),
+            ) {
                 if (heroImage != null) {
                     AsyncImage(
                         model = Res.getUri("files/images/${heroImage.path}"),
@@ -105,29 +123,23 @@ private fun ProfileContent(
                         modifier =
                             Modifier
                                 .matchParentSize()
-                                .background(
-                                    Brush.verticalGradient(
-                                        colors =
-                                            listOf(
-                                                Color.Black.copy(alpha = 0.25f),
-                                                Color.Black.copy(alpha = 0.65f),
-                                            ),
-                                    ),
-                                ),
+                                .drawBehind {
+                                    drawRect(brush = heroGradient, blendMode = BlendMode.Multiply)
+                                },
                     )
                 }
                 LargeTopAppBar(
                     title = {
                         Column {
-                            Text(
-                                species.name,
-                                style = MaterialTheme.typography.headlineMedium,
-                                color = TextOnHero,
+                            ItalicMixedText(
+                                text = "*${species.name}*.",
+                                style = MaterialTheme.typography.headlineMedium.copy(color = OffwhiteWarm),
+                                italicAccent = AccentCopperLight,
                             )
                             Text(
                                 species.scientificName,
                                 style = MaterialTheme.typography.bodyMedium.copy(fontStyle = FontStyle.Italic),
-                                color = TextOnHero.copy(alpha = 0.85f),
+                                color = OffwhiteWarm.copy(alpha = 0.85f),
                             )
                         }
                     },
@@ -136,7 +148,7 @@ private fun ProfileContent(
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = stringResource(Res.string.profile_back),
-                                tint = TextOnHero,
+                                tint = OffwhiteWarm,
                             )
                         }
                     },
@@ -144,8 +156,8 @@ private fun ProfileContent(
                         TopAppBarDefaults.largeTopAppBarColors(
                             containerColor = if (heroImage == null) HeroMossLight else Color.Transparent,
                             scrolledContainerColor = if (heroImage == null) HeroMossLight else Color.Transparent,
-                            navigationIconContentColor = TextOnHero,
-                            titleContentColor = TextOnHero,
+                            navigationIconContentColor = OffwhiteWarm,
+                            titleContentColor = OffwhiteWarm,
                         ),
                     scrollBehavior = scrollBehavior,
                 )
@@ -222,14 +234,17 @@ private fun Chip(
     Box(
         modifier =
             Modifier
-                .clip(RoundedCornerShape(14.dp))
-                .background(if (accent) AccentCopper else SandCreme)
-                .padding(horizontal = 12.dp, vertical = 6.dp),
+                .clip(RoundedCornerShape(12.dp))
+                .background(SandCreme)
+                .padding(16.dp),
     ) {
         Text(
             text,
-            style = MaterialTheme.typography.labelLarge,
-            color = if (accent) TextOnHero else MaterialTheme.colorScheme.onBackground,
+            style =
+                MaterialTheme.typography.labelLarge.copy(
+                    fontStyle = FontStyle.Italic,
+                    color = if (accent) AccentCopper else AccentCopper.copy(alpha = 0.75f),
+                ),
         )
     }
 }

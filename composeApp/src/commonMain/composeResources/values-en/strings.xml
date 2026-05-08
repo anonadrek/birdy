@@ -147,7 +147,7 @@
     <string name="badges_load_error_retry">Try again</string>
     <string name="badges_catalog_error">Badges could not load — reinstall the app</string>
 
-    <string name="unlock_label">BADGE UNLOCKED</string>
+    <string name="unlock_label">New *badge*!</string>
     <string name="unlock_button_dismiss">Wonderful</string>
     <string name="unlock_unlocked_at">Unlocked %1$s</string>
 

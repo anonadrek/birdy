@@ -160,7 +160,7 @@
     <string name="badges_load_error_retry">Försök igen</string>
     <string name="badges_catalog_error">Märken kunde inte laddas — installera om appen</string>
 
-    <string name="unlock_label">MÄRKE UPPLÅST</string>
+    <string name="unlock_label">Nytt *märke*!</string>
     <string name="unlock_button_dismiss">Härligt</string>
     <string name="unlock_unlocked_at">Upplåst %1$s</string>
 

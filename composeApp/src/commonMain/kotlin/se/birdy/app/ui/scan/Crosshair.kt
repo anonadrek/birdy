@@ -8,13 +8,13 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
-import se.birdy.app.ui.theme.TextOnHero
+import se.birdy.app.ui.theme.AccentCopperLight
 
 @Composable
 fun Crosshair(modifier: Modifier = Modifier) {
     Canvas(modifier = modifier.size(88.dp)) {
-        val frame = TextOnHero.copy(alpha = 0.55f)
-        val tick = TextOnHero.copy(alpha = 0.75f)
+        val frame = AccentCopperLight.copy(alpha = 0.55f)
+        val tick = AccentCopperLight.copy(alpha = 0.85f)
         drawRoundRect(
             color = frame,
             topLeft = Offset.Zero,
