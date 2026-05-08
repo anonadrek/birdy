@@ -19,10 +19,10 @@ import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.content.SpeciesRepository
+import se.birdy.datastore.UserPreferences
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.observation.ObservationRepository
-import se.birdy.datastore.UserPreferences
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.CameraSource
 import se.birdy.ml.ClassifierMode
