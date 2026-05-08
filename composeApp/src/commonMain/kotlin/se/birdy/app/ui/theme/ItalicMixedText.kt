@@ -2,6 +2,7 @@ package se.birdy.app.ui.theme
 
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
@@ -14,8 +15,15 @@ import androidx.compose.ui.text.style.TextAlign
  * Parses inline italic-mixed syntax: `Birdy *of* Sweden` → AnnotatedString where
  * `*of*` is rendered with [SpanStyle(fontStyle = Italic, color = accent)].
  *
- * Escape literal asterisks with `\*`. Unmatched single asterisk is left as-is.
- * Empty pairs `**` collapse to nothing.
+ * Escape rules:
+ * - `\*` outside an italic segment is rendered as a literal `*`.
+ * - Inside an italic segment, `\*` is NOT escaped — the next `*` always closes the
+ *   segment. (This is a deliberate simplification; v1 hero headlines never need
+ *   nested escapes.)
+ * - Unmatched single asterisk is left as-is.
+ * - Empty pairs `**` collapse to nothing.
+ *
+ * Italic-segment color is always [accent] regardless of any outer text color.
  */
 internal fun parseItalicMixed(
     input: String,
@@ -70,7 +78,7 @@ fun ItalicMixedText(
     italicAccent: Color = AccentCopperLight,
     textAlign: TextAlign? = null,
 ) {
-    val annotated = parseItalicMixed(text, italicAccent)
+    val annotated = remember(text, italicAccent) { parseItalicMixed(text, italicAccent) }
     BasicText(
         text = annotated,
         modifier = modifier,
