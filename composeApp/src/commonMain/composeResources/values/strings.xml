@@ -26,6 +26,11 @@
     <string name="observation_note_caveat_prompt">Notera i marginalen…</string>
     <string name="observation_visit_profile">visa artprofil</string>
 
+    <!-- Plan 7c: ClassificationResult Field Journal -->
+    <string name="result_journal_label">MATCHNING · NO %1$s</string>
+    <string name="result_journal_headline">*%1$s*?</string>
+    <string name="result_journal_sub">%1$s säkerhet.</string>
+
     <!-- Plan 7c: Onboarding Field Journal -->
     <string name="onboarding_journal_p1_label">VÄLKOMMEN · NO 1</string>
     <string name="onboarding_journal_p1_headline">*Birdy.*</string>

@@ -23,6 +23,11 @@
     <string name="observation_note_caveat_prompt">Note in the margin…</string>
     <string name="observation_visit_profile">visit profile</string>
 
+    <!-- Plan 7c: ClassificationResult Field Journal -->
+    <string name="result_journal_label">MATCH · NO %1$s</string>
+    <string name="result_journal_headline">*%1$s*?</string>
+    <string name="result_journal_sub">A %1$s match.</string>
+
     <!-- Plan 7c: Onboarding Field Journal -->
     <string name="onboarding_journal_p1_label">WELCOME · NO 1</string>
     <string name="onboarding_journal_p1_headline">*Birdy.*</string>

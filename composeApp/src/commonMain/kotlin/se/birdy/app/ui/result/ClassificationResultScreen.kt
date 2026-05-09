@@ -1,6 +1,7 @@
 package se.birdy.app.ui.result
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,7 +20,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -30,7 +30,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
+import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_db
 import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_frame_unavailable
@@ -38,6 +44,9 @@ import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_photo
 import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_storage
 import birdy_bird_scanner.composeapp.generated.resources.diary_save_success
 import birdy_bird_scanner.composeapp.generated.resources.diary_saved_indicator
+import birdy_bird_scanner.composeapp.generated.resources.result_journal_headline
+import birdy_bird_scanner.composeapp.generated.resources.result_journal_label
+import birdy_bird_scanner.composeapp.generated.resources.result_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.result_no_matches
 import birdy_bird_scanner.composeapp.generated.resources.result_no_predictions
 import birdy_bird_scanner.composeapp.generated.resources.result_save_hint
@@ -48,12 +57,14 @@ import kotlinx.datetime.TimeZone
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.badges.BadgeStringMap
 import se.birdy.app.ui.badges.UnlockBottomSheet
+import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.HeroMossLight
-import se.birdy.app.ui.theme.MossCreme
-import se.birdy.app.ui.theme.SandCreme
+import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.TextOnHero
+import se.birdy.app.ui.theme.paperBackground
+import se.birdy.app.ui.theme.rememberCaveat
+import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.content.Locale
 
 @Composable
@@ -64,7 +75,7 @@ fun ClassificationResultScreen(
     zone: TimeZone,
 ) {
     val state by viewModel.state.collectAsState()
-    Box(modifier = Modifier.fillMaxSize().background(MossCreme)) {
+    Box(modifier = Modifier.fillMaxSize().paperBackground()) {
         when (val s = state) {
             ClassificationResultUiState.Loading -> {
                 CircularProgressIndicator(
@@ -127,82 +138,107 @@ private fun LoadedView(
         }
     }
 
+    val plateLabel = state.top1.species.id.raw.removePrefix("Q")
+    val confidencePct = (state.top1.confidence * 100).toInt()
+
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier =
                 Modifier
                     .fillMaxSize()
-                    .padding(16.dp)
                     .verticalScroll(rememberScrollState()),
         ) {
-            // Hero top-1
-            HeroCard(state.top1, onClick = { onSpeciesClick(state.top1.species.id.raw) })
+            JournalIntro(
+                label = stringResource(Res.string.result_journal_label, plateLabel),
+                headline = stringResource(Res.string.result_journal_headline, state.top1.species.name),
+                sub = stringResource(Res.string.result_journal_sub, "$confidencePct%"),
+                headlineFontSize = 36.sp,
+            )
 
-            // Frozen-frame banner
-            if (state.frozenFramePath != null) {
-                Spacer(modifier = Modifier.height(12.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Box(
-                        modifier =
-                            Modifier
-                                .size(80.dp)
-                                .background(SandCreme, RoundedCornerShape(12.dp)),
-                    )
-                    Spacer(modifier = Modifier.size(12.dp))
-                    Text(stringResource(Res.string.result_your_scan), color = TextOnCreme)
-                }
-            }
-            Spacer(modifier = Modifier.height(16.dp))
+            Column(modifier = Modifier.padding(horizontal = 16.dp)) {
+                HeroCard(state.top1, onClick = { onSpeciesClick(state.top1.species.id.raw) })
 
-            // Top-2/3 row
-            if (state.runnerUps.isNotEmpty()) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    state.runnerUps.forEach { rp ->
-                        RunnerUpCard(
-                            prediction = rp,
-                            modifier = Modifier.weight(1f),
-                            onClick = { onSpeciesClick(rp.species.id.raw) },
+                if (state.frozenFramePath != null) {
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(
+                            modifier =
+                                Modifier
+                                    .size(72.dp)
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(Color.White.copy(alpha = 0.4f))
+                                    .border(
+                                        width = 1.dp,
+                                        color = AccentCopper.copy(alpha = 0.3f),
+                                        shape = RoundedCornerShape(10.dp),
+                                    ),
+                        )
+                        Spacer(modifier = Modifier.size(12.dp))
+                        Text(
+                            stringResource(Res.string.result_your_scan),
+                            color = MarginaliaInk,
+                            fontStyle = FontStyle.Italic,
+                            fontSize = 13.sp,
                         )
                     }
                 }
-            }
-            Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
-            // Unresolved pill
-            if (state.unresolved.isNotEmpty()) {
-                Text(
-                    text = stringResource(Res.string.result_unresolved_count, state.unresolved.size),
-                    color = HeroMossLight,
-                    style = MaterialTheme.typography.labelSmall,
-                )
-                Spacer(modifier = Modifier.height(12.dp))
-            }
+                if (state.runnerUps.isNotEmpty()) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        state.runnerUps.forEach { rp ->
+                            RunnerUpCard(
+                                prediction = rp,
+                                modifier = Modifier.weight(1f),
+                                onClick = { onSpeciesClick(rp.species.id.raw) },
+                            )
+                        }
+                    }
+                }
+                Spacer(modifier = Modifier.height(20.dp))
 
-            val isSaved = state.saveStatus == ClassificationResultUiState.SaveStatus.Saved
-            val isSaving = state.saveStatus == ClassificationResultUiState.SaveStatus.Saving
-            Button(
-                onClick = { onSave() },
-                enabled = !isSaving && !isSaved && state.unlockQueueSize == 0,
-                colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = TextOnHero),
-                modifier = Modifier.fillMaxWidth(),
-            ) {
+                if (state.unresolved.isNotEmpty()) {
+                    Text(
+                        text = stringResource(Res.string.result_unresolved_count, state.unresolved.size),
+                        color = MarginaliaInk,
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.W700,
+                        letterSpacing = 0.22.em,
+                    )
+                    Spacer(modifier = Modifier.height(12.dp))
+                }
+
+                val isSaved = state.saveStatus == ClassificationResultUiState.SaveStatus.Saved
+                val isSaving = state.saveStatus == ClassificationResultUiState.SaveStatus.Saving
+                Button(
+                    onClick = { onSave() },
+                    enabled = !isSaving && !isSaved && state.unlockQueueSize == 0,
+                    colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm),
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier.fillMaxWidth().height(52.dp),
+                ) {
+                    Text(
+                        text = if (isSaved) {
+                            stringResource(Res.string.diary_saved_indicator)
+                        } else {
+                            stringResource(Res.string.result_save_observation)
+                        },
+                        fontWeight = FontWeight.W600,
+                        fontSize = 16.sp,
+                    )
+                }
                 Text(
-                    if (isSaved) {
-                        stringResource(Res.string.diary_saved_indicator)
-                    } else {
-                        stringResource(Res.string.result_save_observation)
-                    },
+                    text = stringResource(Res.string.result_save_hint),
+                    color = MarginaliaInk.copy(alpha = 0.7f),
+                    fontStyle = FontStyle.Italic,
+                    fontSize = 12.sp,
+                    modifier = Modifier.padding(top = 6.dp),
                 )
+                Spacer(modifier = Modifier.height(24.dp))
             }
-            Text(
-                text = stringResource(Res.string.result_save_hint),
-                color = HeroMossLight,
-                style = MaterialTheme.typography.labelSmall,
-                modifier = Modifier.padding(top = 4.dp),
-            )
         }
         SnackbarHost(
             hostState = snackbarHost,
@@ -230,35 +266,50 @@ private fun HeroCard(
     prediction: ResolvedPrediction,
     onClick: () -> Unit,
 ) {
+    val serif = rememberDmSerifDisplay()
+    val caveat = rememberCaveat()
+    val pct = (prediction.confidence * 100).toInt()
     Column(
         modifier =
             Modifier
                 .fillMaxWidth()
                 .clickable(onClick = onClick)
-                .background(SandCreme, RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(14.dp))
+                .background(Color.White.copy(alpha = 0.4f))
+                .border(
+                    width = 1.dp,
+                    color = AccentCopper.copy(alpha = 0.35f),
+                    shape = RoundedCornerShape(14.dp),
+                )
                 .padding(16.dp),
     ) {
         Text(
             text = prediction.species.name,
-            style = MaterialTheme.typography.headlineSmall,
             color = TextOnCreme,
+            fontFamily = serif,
+            fontStyle = FontStyle.Italic,
+            fontSize = 24.sp,
         )
         Text(
             text = prediction.species.scientificName,
-            style = MaterialTheme.typography.bodySmall,
-            color = HeroMossLight,
+            color = MarginaliaInk,
+            fontStyle = FontStyle.Italic,
+            fontSize = 13.sp,
         )
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         LinearProgressIndicator(
             progress = { prediction.confidence },
             modifier = Modifier.fillMaxWidth(),
             color = AccentCopper,
-            trackColor = MossCreme,
+            trackColor = AccentCopper.copy(alpha = 0.18f),
         )
+        Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = (prediction.confidence * 100).toInt().toString() + "%",
-            style = MaterialTheme.typography.labelMedium,
+            text = "$pct%",
             color = AccentCopper,
+            fontFamily = caveat,
+            fontWeight = FontWeight.Bold,
+            fontSize = 18.sp,
         )
     }
 }
@@ -269,22 +320,36 @@ private fun RunnerUpCard(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
+    val serif = rememberDmSerifDisplay()
+    val caveat = rememberCaveat()
+    val pct = (prediction.confidence * 100).toInt()
     Column(
         modifier =
             modifier
                 .clickable(onClick = onClick)
-                .background(SandCreme, RoundedCornerShape(12.dp))
+                .clip(RoundedCornerShape(10.dp))
+                .background(Color.White.copy(alpha = 0.3f))
+                .border(
+                    width = 1.dp,
+                    color = AccentCopper.copy(alpha = 0.25f),
+                    shape = RoundedCornerShape(10.dp),
+                )
                 .padding(12.dp),
     ) {
         Text(
             text = prediction.species.name,
-            style = MaterialTheme.typography.titleSmall,
             color = TextOnCreme,
+            fontFamily = serif,
+            fontStyle = FontStyle.Italic,
+            fontSize = 16.sp,
         )
+        Spacer(modifier = Modifier.height(2.dp))
         Text(
-            text = (prediction.confidence * 100).toInt().toString() + "%",
-            style = MaterialTheme.typography.labelSmall,
+            text = "$pct%",
             color = AccentCopper,
+            fontFamily = caveat,
+            fontWeight = FontWeight.Bold,
+            fontSize = 14.sp,
         )
     }
 }
