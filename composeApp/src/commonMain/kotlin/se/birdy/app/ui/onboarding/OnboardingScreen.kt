@@ -2,6 +2,7 @@ package se.birdy.app.ui.onboarding
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,57 +27,59 @@ import androidx.compose.material.icons.outlined.CollectionsBookmark
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_p1_body
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_p1_breadcrumb
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_p1_headline
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_p1_sub
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p1_body1
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p1_body2
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p1_headline
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p1_label
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p1_sub
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p2_headline
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p2_label
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p2_sub
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p3_cta
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p3_headline
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p3_label
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p3_sub
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p2_archive_desc
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p2_archive_name
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p2_badges_desc
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p2_badges_name
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_p2_breadcrumb
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_p2_headline
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p2_lifelist_desc
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p2_lifelist_name
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p2_listen_desc
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p2_listen_name
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_breadcrumb
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_cta
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_headline
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_input_helper
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_input_placeholder
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_skip
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BodyTextWithCaveatAccents
+import se.birdy.app.ui.components.JournalHeadline
+import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.AccentCopperLight
-import se.birdy.app.ui.theme.HeroMossDeep
-import se.birdy.app.ui.theme.HeroMossLight
-import se.birdy.app.ui.theme.HeroMossMid
-import se.birdy.app.ui.theme.ItalicMixedText
+import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.OffwhiteWarm
-import se.birdy.app.ui.theme.SandCreme
+import se.birdy.app.ui.theme.TextOnCreme
+import se.birdy.app.ui.theme.paperBackground
+import se.birdy.app.ui.theme.rememberCaveat
+import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
 private const val PAGE_COUNT = 3
 
@@ -98,10 +101,7 @@ fun OnboardingScreen(
         }
     }
 
-    val gradient = remember { Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid, HeroMossDeep)) }
-
-    Box(modifier = Modifier.fillMaxSize().background(gradient)) {
-        // Skip-link top-right (alla sidor utom sista — eller även där, hoppa = complete med tomt namn)
+    Box(modifier = Modifier.fillMaxSize().paperBackground()) {
         TextButton(
             onClick = {
                 if (state.pageIndex == PAGE_COUNT - 1) {
@@ -114,7 +114,8 @@ fun OnboardingScreen(
         ) {
             Text(
                 text = stringResource(Res.string.onboarding_skip),
-                color = OffwhiteWarm.copy(alpha = 0.65f),
+                color = MarginaliaInk.copy(alpha = 0.7f),
+                fontStyle = FontStyle.Italic,
                 fontSize = 13.sp,
             )
         }
@@ -132,7 +133,6 @@ fun OnboardingScreen(
             }
         }
 
-        // Pager dots
         PagerDots(
             currentPage = pagerState.currentPage,
             pageCount = PAGE_COUNT,
@@ -147,42 +147,26 @@ fun OnboardingScreen(
 @Composable
 private fun Page1Brand() {
     Column(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 32.dp),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.Start,
     ) {
-        Text(
-            text = stringResource(Res.string.onboarding_p1_breadcrumb),
-            color = AccentCopperLight,
-            fontSize = 12.sp,
-            letterSpacing = 4.8.sp,
-            fontWeight = FontWeight.W600,
+        JournalIntro(
+            label = stringResource(Res.string.onboarding_journal_p1_label),
+            headline = stringResource(Res.string.onboarding_journal_p1_headline),
+            sub = stringResource(Res.string.onboarding_journal_p1_sub),
+            headlineFontSize = 56.sp,
+        )
+        Spacer(Modifier.height(8.dp))
+        BodyTextWithCaveatAccents(
+            text = stringResource(Res.string.onboarding_journal_p1_body1),
+            modifier = Modifier.padding(horizontal = 24.dp),
+            fontSize = 14.sp,
         )
         Spacer(Modifier.height(16.dp))
-        Text(
-            text = stringResource(Res.string.onboarding_p1_headline),
-            color = AccentCopperLight,
-            fontStyle = FontStyle.Italic,
-            fontSize = 68.sp,
-            fontWeight = FontWeight.W700,
-            style = MaterialTheme.typography.displayLarge,
-        )
-        Spacer(Modifier.height(28.dp))
-        ItalicMixedText(
-            text = stringResource(Res.string.onboarding_p1_body),
-            style =
-                MaterialTheme.typography.headlineSmall.copy(
-                    color = OffwhiteWarm,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.W600,
-                ),
-        )
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = stringResource(Res.string.onboarding_p1_sub),
-            color = OffwhiteWarm.copy(alpha = 0.75f),
-            fontSize = 16.sp,
-            fontStyle = FontStyle.Italic,
+        BodyTextWithCaveatAccents(
+            text = stringResource(Res.string.onboarding_journal_p1_body2),
+            modifier = Modifier.padding(horizontal = 24.dp),
+            fontSize = 14.sp,
         )
     }
 }
@@ -190,51 +174,38 @@ private fun Page1Brand() {
 @Composable
 private fun Page2Overview() {
     Column(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 32.dp),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(
-            text = stringResource(Res.string.onboarding_p2_breadcrumb),
-            color = AccentCopperLight,
-            fontSize = 12.sp,
-            letterSpacing = 4.8.sp,
-            fontWeight = FontWeight.W600,
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Start,
+        JournalIntro(
+            label = stringResource(Res.string.onboarding_journal_p2_label),
+            headline = stringResource(Res.string.onboarding_journal_p2_headline),
+            sub = stringResource(Res.string.onboarding_journal_p2_sub),
+            headlineFontSize = 36.sp,
         )
-        Spacer(Modifier.height(16.dp))
-        ItalicMixedText(
-            text = stringResource(Res.string.onboarding_p2_headline),
-            style =
-                MaterialTheme.typography.displaySmall.copy(
-                    color = OffwhiteWarm,
-                    fontSize = 56.sp,
-                    fontWeight = FontWeight.W700,
-                ),
-            textAlign = TextAlign.Center,
-        )
-        Spacer(Modifier.height(28.dp))
-        FeatureRow(
-            icon = Icons.Filled.Hearing,
-            name = stringResource(Res.string.onboarding_p2_listen_name),
-            description = stringResource(Res.string.onboarding_p2_listen_desc),
-        )
-        FeatureRow(
-            icon = Icons.AutoMirrored.Filled.LibraryBooks,
-            name = stringResource(Res.string.onboarding_p2_archive_name),
-            description = stringResource(Res.string.onboarding_p2_archive_desc),
-        )
-        FeatureRow(
-            icon = Icons.Outlined.CollectionsBookmark,
-            name = stringResource(Res.string.onboarding_p2_lifelist_name),
-            description = stringResource(Res.string.onboarding_p2_lifelist_desc),
-        )
-        FeatureRow(
-            icon = Icons.Filled.Stars,
-            name = stringResource(Res.string.onboarding_p2_badges_name),
-            description = stringResource(Res.string.onboarding_p2_badges_desc),
-        )
+        Spacer(Modifier.height(8.dp))
+        Column(modifier = Modifier.padding(horizontal = 24.dp)) {
+            FeatureRow(
+                icon = Icons.Filled.Hearing,
+                name = stringResource(Res.string.onboarding_p2_listen_name),
+                description = stringResource(Res.string.onboarding_p2_listen_desc),
+            )
+            FeatureRow(
+                icon = Icons.AutoMirrored.Filled.LibraryBooks,
+                name = stringResource(Res.string.onboarding_p2_archive_name),
+                description = stringResource(Res.string.onboarding_p2_archive_desc),
+            )
+            FeatureRow(
+                icon = Icons.Outlined.CollectionsBookmark,
+                name = stringResource(Res.string.onboarding_p2_lifelist_name),
+                description = stringResource(Res.string.onboarding_p2_lifelist_desc),
+            )
+            FeatureRow(
+                icon = Icons.Filled.Stars,
+                name = stringResource(Res.string.onboarding_p2_badges_name),
+                description = stringResource(Res.string.onboarding_p2_badges_desc),
+            )
+        }
     }
 }
 
@@ -244,8 +215,9 @@ private fun FeatureRow(
     name: String,
     description: String,
 ) {
+    val serif = rememberDmSerifDisplay()
     Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 10.dp),
+        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
@@ -253,32 +225,34 @@ private fun FeatureRow(
                 Modifier
                     .size(40.dp)
                     .clip(RoundedCornerShape(10.dp))
-                    .background(AccentCopper.copy(alpha = 0.18f)),
+                    .background(AccentCopper.copy(alpha = 0.12f))
+                    .border(
+                        width = 1.dp,
+                        color = AccentCopper.copy(alpha = 0.3f),
+                        shape = RoundedCornerShape(10.dp),
+                    ),
             contentAlignment = Alignment.Center,
         ) {
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                tint = AccentCopperLight,
-                modifier = Modifier.size(22.dp),
+                tint = AccentCopper,
+                modifier = Modifier.size(20.dp),
             )
         }
         Spacer(Modifier.width(14.dp))
         Column {
             Text(
                 text = name,
-                color = OffwhiteWarm,
-                fontWeight = FontWeight.W700,
-                fontSize = 19.sp,
+                color = TextOnCreme,
+                fontFamily = serif,
+                fontStyle = FontStyle.Italic,
+                fontSize = 18.sp,
             )
             Spacer(Modifier.height(2.dp))
-            ItalicMixedText(
+            BodyTextWithCaveatAccents(
                 text = description,
-                style =
-                    MaterialTheme.typography.bodyMedium.copy(
-                        color = OffwhiteWarm.copy(alpha = 0.78f),
-                        fontSize = 14.sp,
-                    ),
+                fontSize = 13.sp,
             )
         }
     }
@@ -290,63 +264,72 @@ private fun Page3Name(
     onNameChange: (String) -> Unit,
     onComplete: () -> Unit,
 ) {
+    val caveat = rememberCaveat()
     Column(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 32.dp),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
     ) {
-        Text(
-            text = stringResource(Res.string.onboarding_p3_breadcrumb),
-            color = AccentCopperLight,
-            fontSize = 12.sp,
-            letterSpacing = 4.8.sp,
-            fontWeight = FontWeight.W600,
-        )
-        Spacer(Modifier.height(16.dp))
-        ItalicMixedText(
-            text = stringResource(Res.string.onboarding_p3_headline),
-            style =
-                MaterialTheme.typography.displaySmall.copy(
-                    color = OffwhiteWarm,
-                    fontSize = 36.sp,
-                    fontWeight = FontWeight.W700,
-                ),
-        )
-        Spacer(Modifier.height(28.dp))
-        OutlinedTextField(
-            value = nameInput,
-            onValueChange = onNameChange,
-            placeholder = { Text(stringResource(Res.string.onboarding_p3_input_placeholder)) },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-            modifier = Modifier.fillMaxWidth(),
-            colors =
-                TextFieldDefaults.colors(
-                    focusedContainerColor = SandCreme,
-                    unfocusedContainerColor = SandCreme,
-                ),
+        JournalIntro(
+            label = stringResource(Res.string.onboarding_journal_p3_label),
+            headline = stringResource(Res.string.onboarding_journal_p3_headline),
+            sub = stringResource(Res.string.onboarding_journal_p3_sub),
+            headlineFontSize = 36.sp,
         )
         Spacer(Modifier.height(8.dp))
-        Text(
-            text = stringResource(Res.string.onboarding_p3_input_helper),
-            color = OffwhiteWarm.copy(alpha = 0.6f),
-            fontSize = 13.sp,
-            fontStyle = FontStyle.Italic,
-        )
-        Spacer(Modifier.height(40.dp))
-        Button(
-            onClick = onComplete,
-            modifier = Modifier.fillMaxWidth().height(56.dp),
-            colors =
-                ButtonDefaults.buttonColors(
-                    containerColor = AccentCopper,
-                    contentColor = OffwhiteWarm,
+        Column(modifier = Modifier.padding(horizontal = 24.dp)) {
+            OutlinedTextField(
+                value = nameInput,
+                onValueChange = onNameChange,
+                placeholder = {
+                    Text(
+                        stringResource(Res.string.onboarding_p3_input_placeholder),
+                        fontFamily = caveat,
+                        fontSize = 18.sp,
+                        color = MarginaliaInk.copy(alpha = 0.6f),
+                    )
+                },
+                textStyle = androidx.compose.ui.text.TextStyle(
+                    fontFamily = caveat,
+                    fontSize = 18.sp,
+                    color = MarginaliaInk,
                 ),
-        ) {
-            Text(
-                text = stringResource(Res.string.onboarding_p3_cta),
-                fontWeight = FontWeight.W600,
-                fontSize = 17.sp,
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(8.dp),
+                colors =
+                    OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = AccentCopper.copy(alpha = 0.6f),
+                        unfocusedBorderColor = AccentCopper.copy(alpha = 0.3f),
+                        focusedContainerColor = Color.White.copy(alpha = 0.4f),
+                        unfocusedContainerColor = Color.White.copy(alpha = 0.4f),
+                    ),
             )
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = stringResource(Res.string.onboarding_p3_input_helper),
+                color = MarginaliaInk.copy(alpha = 0.7f),
+                fontSize = 13.sp,
+                fontStyle = FontStyle.Italic,
+            )
+            Spacer(Modifier.height(40.dp))
+            Button(
+                onClick = onComplete,
+                modifier = Modifier.fillMaxWidth().height(56.dp),
+                colors =
+                    ButtonDefaults.buttonColors(
+                        containerColor = AccentCopper,
+                        contentColor = OffwhiteWarm,
+                    ),
+                shape = RoundedCornerShape(12.dp),
+            ) {
+                JournalHeadline(
+                    text = stringResource(Res.string.onboarding_journal_p3_cta),
+                    fontSize = 20.sp,
+                    plainColor = OffwhiteWarm,
+                    accentColor = OffwhiteWarm,
+                )
+            }
         }
     }
 }
@@ -368,7 +351,7 @@ private fun PagerDots(
                     Modifier
                         .size(width = width, height = 8.dp)
                         .clip(CircleShape)
-                        .background(if (i == currentPage) AccentCopperLight else OffwhiteWarm.copy(alpha = 0.3f)),
+                        .background(if (i == currentPage) AccentCopper else MarginaliaInk.copy(alpha = 0.25f)),
             )
         }
     }
