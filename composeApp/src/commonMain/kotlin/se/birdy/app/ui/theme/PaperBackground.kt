@@ -25,14 +25,15 @@ private fun DrawScope.drawPaperDots() {
     val h = size.height
     // 6 fixed dots — low-alpha ink-fleck feel. Positions in normalized
     // (0..1) coords so they scale across screen sizes.
-    val dots = listOf(
-        Triple(0.12f, 0.18f, 1.5f),
-        Triple(0.78f, 0.32f, 2.2f),
-        Triple(0.35f, 0.65f, 1.2f),
-        Triple(0.88f, 0.78f, 1.8f),
-        Triple(0.22f, 0.88f, 1.0f),
-        Triple(0.55f, 0.42f, 1.4f),
-    )
+    val dots =
+        listOf(
+            Triple(0.12f, 0.18f, 1.5f),
+            Triple(0.78f, 0.32f, 2.2f),
+            Triple(0.35f, 0.65f, 1.2f),
+            Triple(0.88f, 0.78f, 1.8f),
+            Triple(0.22f, 0.88f, 1.0f),
+            Triple(0.55f, 0.42f, 1.4f),
+        )
     val ink = Color(0x14000000) // ≈8% black
     dots.forEach { (xRel, yRel, radiusDp) ->
         drawCircle(

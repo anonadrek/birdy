@@ -30,12 +30,13 @@ fun MiniStamp(
 ) {
     val caveat = rememberCaveat()
     Box(
-        modifier = modifier
-            .size(size)
-            .rotate(-4f)
-            .clip(CircleShape)
-            .background(StampUnlockedBg)
-            .border(width = 2.dp, color = AccentCopper, shape = CircleShape),
+        modifier =
+            modifier
+                .size(size)
+                .rotate(-4f)
+                .clip(CircleShape)
+                .background(StampUnlockedBg)
+                .border(width = 2.dp, color = AccentCopper, shape = CircleShape),
         contentAlignment = Alignment.Center,
     ) {
         Text(

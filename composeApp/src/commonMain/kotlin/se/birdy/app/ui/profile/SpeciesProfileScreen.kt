@@ -115,9 +115,10 @@ private fun ProfileContent(
                     )
                     IconButton(
                         onClick = onBack,
-                        modifier = Modifier
-                            .align(Alignment.TopStart)
-                            .padding(top = 24.dp, start = 12.dp),
+                        modifier =
+                            Modifier
+                                .align(Alignment.TopStart)
+                                .padding(top = 24.dp, start = 12.dp),
                     ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -243,21 +244,23 @@ private fun DescriptionWithDropCap(
     val firstChar = text.first().toString()
     val rest = text.drop(1)
     val annotated =
-        AnnotatedString.Builder().apply {
-            pushStyle(
-                SpanStyle(
-                    fontFamily = serif,
-                    fontSize = 26.sp,
-                    fontStyle = FontStyle.Italic,
-                    color = AccentCopper,
-                ),
-            )
-            append(firstChar)
-            pop()
-            pushStyle(SpanStyle(fontSize = 13.sp))
-            append(rest)
-            pop()
-        }.toAnnotatedString()
+        AnnotatedString
+            .Builder()
+            .apply {
+                pushStyle(
+                    SpanStyle(
+                        fontFamily = serif,
+                        fontSize = 26.sp,
+                        fontStyle = FontStyle.Italic,
+                        color = AccentCopper,
+                    ),
+                )
+                append(firstChar)
+                pop()
+                pushStyle(SpanStyle(fontSize = 13.sp))
+                append(rest)
+                pop()
+            }.toAnnotatedString()
     Text(
         text = annotated,
         color = TextOnCreme,
@@ -269,16 +272,18 @@ private fun DescriptionWithDropCap(
 private fun MarginaliaBlock(text: String) {
     val caveat = rememberCaveat()
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
-            modifier = Modifier
-                .width(2.dp)
-                .height(48.dp)
-                .background(MarginaliaBorder),
+            modifier =
+                Modifier
+                    .width(2.dp)
+                    .height(48.dp)
+                    .background(MarginaliaBorder),
         )
         Spacer(Modifier.width(10.dp))
         Text(
@@ -298,15 +303,15 @@ private fun JournalPill(
 ) {
     val serif = rememberDmSerifDisplay()
     Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(50))
-            .background(if (isFilled) AccentCopper else Color.Transparent)
-            .border(
-                width = 1.dp,
-                color = AccentCopper.copy(alpha = if (isFilled) 0f else 0.5f),
-                shape = RoundedCornerShape(50),
-            )
-            .padding(horizontal = 10.dp, vertical = 4.dp),
+        modifier =
+            Modifier
+                .clip(RoundedCornerShape(50))
+                .background(if (isFilled) AccentCopper else Color.Transparent)
+                .border(
+                    width = 1.dp,
+                    color = AccentCopper.copy(alpha = if (isFilled) 0f else 0.5f),
+                    shape = RoundedCornerShape(50),
+                ).padding(horizontal = 10.dp, vertical = 4.dp),
     ) {
         Text(
             text = text,

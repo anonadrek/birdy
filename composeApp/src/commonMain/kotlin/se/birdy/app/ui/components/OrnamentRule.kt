@@ -41,16 +41,17 @@ fun OrnamentRule(modifier: Modifier = Modifier) {
 @Composable
 private fun GradientLine(modifier: Modifier = Modifier) {
     Box(
-        modifier = modifier
-            .height(1.dp)
-            .background(
-                Brush.horizontalGradient(
-                    listOf(
-                        Color.Transparent,
-                        MarginaliaInk.copy(alpha = 0.4f),
-                        Color.Transparent,
+        modifier =
+            modifier
+                .height(1.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            Color.Transparent,
+                            MarginaliaInk.copy(alpha = 0.4f),
+                            Color.Transparent,
+                        ),
                     ),
                 ),
-            ),
     )
 }

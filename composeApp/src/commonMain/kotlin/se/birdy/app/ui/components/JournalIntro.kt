@@ -33,9 +33,10 @@ fun JournalIntro(
     trailingContent: (@Composable () -> Unit)? = null,
 ) {
     Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = horizontalPadding.dp, vertical = topPadding.dp),
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .padding(horizontal = horizontalPadding.dp, vertical = topPadding.dp),
     ) {
         MicroLabel(label)
         Spacer(Modifier.height(6.dp))

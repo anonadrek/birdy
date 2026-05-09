@@ -3,9 +3,13 @@ package se.birdy.app.ui.components
 sealed interface HeadlineSegment {
     val text: String
 
-    data class Plain(override val text: String) : HeadlineSegment
+    data class Plain(
+        override val text: String,
+    ) : HeadlineSegment
 
-    data class Accent(override val text: String) : HeadlineSegment
+    data class Accent(
+        override val text: String,
+    ) : HeadlineSegment
 }
 
 /**

@@ -78,10 +78,11 @@ fun ListenLauncherScreen(
         snackbarHost = { SnackbarHost(snackbar) },
     ) { padding ->
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .paperBackground()
-                .padding(padding),
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .paperBackground()
+                    .padding(padding),
             verticalArrangement = Arrangement.spacedBy(0.dp),
         ) {
             JournalIntro(
@@ -134,29 +135,30 @@ private fun LaunchCard(
     val cardBg = Color.White.copy(alpha = 0.35f)
     val borderAlpha = if (variant == LaunchCardVariant.Primary) 0.5f else 0.18f
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(14.dp))
-            .background(cardBg)
-            .border(
-                width = if (variant == LaunchCardVariant.Primary) 1.5.dp else 1.dp,
-                color = AccentCopper.copy(alpha = borderAlpha),
-                shape = RoundedCornerShape(14.dp),
-            )
-            .clickable(onClick = onClick)
-            .padding(horizontal = 14.dp, vertical = 14.dp),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(14.dp))
+                .background(cardBg)
+                .border(
+                    width = if (variant == LaunchCardVariant.Primary) 1.5.dp else 1.dp,
+                    color = AccentCopper.copy(alpha = borderAlpha),
+                    shape = RoundedCornerShape(14.dp),
+                ).clickable(onClick = onClick)
+                .padding(horizontal = 14.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
-            modifier = Modifier
-                .padding(end = 12.dp)
-                .size(40.dp)
-                .clip(CircleShape)
-                .border(
-                    width = 1.5.dp,
-                    color = AccentCopper.copy(alpha = if (variant == LaunchCardVariant.Locked) 0.4f else 1f),
-                    shape = CircleShape,
-                ),
+            modifier =
+                Modifier
+                    .padding(end = 12.dp)
+                    .size(40.dp)
+                    .clip(CircleShape)
+                    .border(
+                        width = 1.5.dp,
+                        color = AccentCopper.copy(alpha = if (variant == LaunchCardVariant.Locked) 0.4f else 1f),
+                        shape = CircleShape,
+                    ),
             contentAlignment = Alignment.Center,
         ) {
             Icon(imageVector = icon, contentDescription = null, tint = AccentCopper)

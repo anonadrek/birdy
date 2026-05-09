@@ -211,12 +211,13 @@ private fun JournalSearchField(
                 fontSize = 14.sp,
             )
         },
-        colors = TextFieldDefaults.colors(
-            focusedContainerColor = Color.White.copy(alpha = 0.4f),
-            unfocusedContainerColor = Color.White.copy(alpha = 0.4f),
-            focusedIndicatorColor = AccentCopper,
-            unfocusedIndicatorColor = AccentCopper.copy(alpha = 0.3f),
-        ),
+        colors =
+            TextFieldDefaults.colors(
+                focusedContainerColor = Color.White.copy(alpha = 0.4f),
+                unfocusedContainerColor = Color.White.copy(alpha = 0.4f),
+                focusedIndicatorColor = AccentCopper,
+                unfocusedIndicatorColor = AccentCopper.copy(alpha = 0.3f),
+            ),
     )
 }
 
@@ -225,14 +226,15 @@ private fun ChipBar(
     selected: ArchiveChip,
     onSelect: (ArchiveChip) -> Unit,
 ) {
-    val labels = listOf(
-        ArchiveChip.ALL to stringResource(Res.string.archive_chip_all),
-        ArchiveChip.SONGBIRDS to stringResource(Res.string.archive_chip_songbirds),
-        ArchiveChip.WATER to stringResource(Res.string.archive_chip_water),
-        ArchiveChip.RAPTORS to stringResource(Res.string.archive_chip_raptors),
-        ArchiveChip.OWLS to stringResource(Res.string.archive_chip_owls),
-        ArchiveChip.WADERS to stringResource(Res.string.archive_chip_waders),
-    )
+    val labels =
+        listOf(
+            ArchiveChip.ALL to stringResource(Res.string.archive_chip_all),
+            ArchiveChip.SONGBIRDS to stringResource(Res.string.archive_chip_songbirds),
+            ArchiveChip.WATER to stringResource(Res.string.archive_chip_water),
+            ArchiveChip.RAPTORS to stringResource(Res.string.archive_chip_raptors),
+            ArchiveChip.OWLS to stringResource(Res.string.archive_chip_owls),
+            ArchiveChip.WADERS to stringResource(Res.string.archive_chip_waders),
+        )
     val serif = rememberDmSerifDisplay()
     LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp),
@@ -241,16 +243,16 @@ private fun ChipBar(
         items(labels) { (chipValue, label) ->
             val isSelected = selected == chipValue
             Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(50))
-                    .background(if (isSelected) AccentCopper else Color.Transparent)
-                    .border(
-                        width = 1.dp,
-                        color = AccentCopper.copy(alpha = if (isSelected) 0f else 0.5f),
-                        shape = RoundedCornerShape(50),
-                    )
-                    .clickable { onSelect(chipValue) }
-                    .padding(horizontal = 12.dp, vertical = 6.dp),
+                modifier =
+                    Modifier
+                        .clip(RoundedCornerShape(50))
+                        .background(if (isSelected) AccentCopper else Color.Transparent)
+                        .border(
+                            width = 1.dp,
+                            color = AccentCopper.copy(alpha = if (isSelected) 0f else 0.5f),
+                            shape = RoundedCornerShape(50),
+                        ).clickable { onSelect(chipValue) }
+                        .padding(horizontal = 12.dp, vertical = 6.dp),
             ) {
                 Text(
                     text = label,
@@ -269,18 +271,20 @@ private fun SortChip(
     sort: ArchiveSort,
     onClick: () -> Unit,
 ) {
-    val label = when (sort) {
-        ArchiveSort.ALPHA -> stringResource(Res.string.archive_sort_alpha)
-        ArchiveSort.FAMILY -> stringResource(Res.string.archive_sort_family)
-        ArchiveSort.RECENT -> stringResource(Res.string.archive_sort_recent)
-    }
+    val label =
+        when (sort) {
+            ArchiveSort.ALPHA -> stringResource(Res.string.archive_sort_alpha)
+            ArchiveSort.FAMILY -> stringResource(Res.string.archive_sort_family)
+            ArchiveSort.RECENT -> stringResource(Res.string.archive_sort_recent)
+        }
     val serif = rememberDmSerifDisplay()
     Row(
-        modifier = Modifier
-            .clip(RoundedCornerShape(50))
-            .background(PaperBottom.copy(alpha = 0.6f))
-            .clickable(onClick = onClick)
-            .padding(horizontal = 12.dp, vertical = 6.dp),
+        modifier =
+            Modifier
+                .clip(RoundedCornerShape(50))
+                .background(PaperBottom.copy(alpha = 0.6f))
+                .clickable(onClick = onClick)
+                .padding(horizontal = 12.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
@@ -303,17 +307,19 @@ private fun SpeciesRow(
 ) {
     val serif = rememberDmSerifDisplay()
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .clickable(onClick = onClick)
+                .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
-            modifier = Modifier
-                .size(36.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .background(MarginaliaInk.copy(alpha = 0.1f)),
+            modifier =
+                Modifier
+                    .size(36.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(MarginaliaInk.copy(alpha = 0.1f)),
         )
         Spacer(Modifier.width(12.dp))
         Column(modifier = Modifier.weight(1f)) {

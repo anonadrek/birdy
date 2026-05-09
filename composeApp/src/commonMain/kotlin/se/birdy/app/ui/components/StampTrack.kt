@@ -77,10 +77,11 @@ private fun StampCell(
     modifier: Modifier = Modifier,
 ) {
     Box(
-        modifier = modifier
-            .clip(CircleShape)
-            .background(if (isFilled) AccentCopper else Color.Transparent)
-            .let { m -> if (isFilled) m else m.dashedCircleStroke(StampLocked, 1.5.dp) },
+        modifier =
+            modifier
+                .clip(CircleShape)
+                .background(if (isFilled) AccentCopper else Color.Transparent)
+                .let { m -> if (isFilled) m else m.dashedCircleStroke(StampLocked, 1.5.dp) },
         contentAlignment = Alignment.Center,
     ) {
         if (isFilled) {

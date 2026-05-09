@@ -10,23 +10,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.OffwhiteWarm
+import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
-/**
- * Copper-pill med `#N` i Crimson Pro italic + cream-ring.
- * Designat för overlay på 44–80dp cirkulära thumbs (nedre högra hörnet).
- */
 @Composable
 fun StampNumberBadge(
     number: Int,
     modifier: Modifier = Modifier,
 ) {
+    val serif = rememberDmSerifDisplay()
     Box(
         modifier =
             modifier
@@ -39,9 +36,9 @@ fun StampNumberBadge(
         Text(
             text = "#$number",
             color = OffwhiteWarm,
-            fontFamily = FontFamily.Serif,
-            fontWeight = FontWeight.W700,
+            fontFamily = serif,
             fontStyle = FontStyle.Italic,
+            fontWeight = FontWeight.Normal,
             fontSize = 11.sp,
         )
     }

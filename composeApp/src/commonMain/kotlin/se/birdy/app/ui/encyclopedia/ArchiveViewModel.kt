@@ -51,8 +51,7 @@ class ArchiveViewModel(
                     .filter { it.stampNumber > 0 }
                     .groupBy { it.speciesId }
                     .mapValues { (_, obs) -> obs.minOf { it.stampNumber } }
-            }
-            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), emptyMap())
+            }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), emptyMap())
 
     val uiState: StateFlow<ArchiveUiState> =
         combine(

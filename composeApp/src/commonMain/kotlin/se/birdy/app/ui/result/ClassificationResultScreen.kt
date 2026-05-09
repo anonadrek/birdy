@@ -138,7 +138,9 @@ private fun LoadedView(
         }
     }
 
-    val plateLabel = state.top1.species.id.raw.removePrefix("Q")
+    val plateLabel =
+        state.top1.species.id.raw
+            .removePrefix("Q")
     val confidencePct = (state.top1.confidence * 100).toInt()
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -221,11 +223,12 @@ private fun LoadedView(
                     modifier = Modifier.fillMaxWidth().height(52.dp),
                 ) {
                     Text(
-                        text = if (isSaved) {
-                            stringResource(Res.string.diary_saved_indicator)
-                        } else {
-                            stringResource(Res.string.result_save_observation)
-                        },
+                        text =
+                            if (isSaved) {
+                                stringResource(Res.string.diary_saved_indicator)
+                            } else {
+                                stringResource(Res.string.result_save_observation)
+                            },
                         fontWeight = FontWeight.W600,
                         fontSize = 16.sp,
                     )
@@ -280,8 +283,7 @@ private fun HeroCard(
                     width = 1.dp,
                     color = AccentCopper.copy(alpha = 0.35f),
                     shape = RoundedCornerShape(14.dp),
-                )
-                .padding(16.dp),
+                ).padding(16.dp),
     ) {
         Text(
             text = prediction.species.name,
@@ -333,8 +335,7 @@ private fun RunnerUpCard(
                     width = 1.dp,
                     color = AccentCopper.copy(alpha = 0.25f),
                     shape = RoundedCornerShape(10.dp),
-                )
-                .padding(12.dp),
+                ).padding(12.dp),
     ) {
         Text(
             text = prediction.species.name,

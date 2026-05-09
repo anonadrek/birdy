@@ -84,8 +84,7 @@ class BadgesViewModel(
                         state = computeLockedState(b, observations, speciesMap),
                         stampNumber = stampNumbersById[b.id] ?: 0,
                     )
-                }
-                .sortedWith(compareBy({ it.badge.category.order }, { it.badge.rule.target }))
+                }.sortedWith(compareBy({ it.badge.category.order }, { it.badge.rule.target }))
 
         val weeklyStreak = longestWeeklyStreak(capturedInstants, zone).takeIf { it >= 2 }
         val monthlyStreak = longestMonthlyStreak(capturedInstants, zone).takeIf { it >= 2 }

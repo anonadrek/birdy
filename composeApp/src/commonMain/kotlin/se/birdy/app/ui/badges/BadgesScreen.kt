@@ -76,16 +76,17 @@ fun BadgesScreen(
             when (state) {
                 is BadgesUiState.Loading -> Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
                 is BadgesUiState.Error -> ErrorState(onRetry = onRetry, modifier = Modifier.fillMaxSize())
-                is BadgesUiState.Loaded -> LoadedContent(
-                    state = state,
-                    locale = locale,
-                    zone = zone,
-                    now = now,
-                    onUnlockedClick = { badge, unlock -> onBadgeClick(badge, unlock) },
-                    onLockedClick = {
-                        scope.launch { snackbarHostState.showSnackbar(message = lockedTooltip) }
-                    },
-                )
+                is BadgesUiState.Loaded ->
+                    LoadedContent(
+                        state = state,
+                        locale = locale,
+                        zone = zone,
+                        now = now,
+                        onUnlockedClick = { badge, unlock -> onBadgeClick(badge, unlock) },
+                        onLockedClick = {
+                            scope.launch { snackbarHostState.showSnackbar(message = lockedTooltip) }
+                        },
+                    )
             }
         }
     }

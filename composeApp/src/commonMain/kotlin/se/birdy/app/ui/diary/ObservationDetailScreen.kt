@@ -1,7 +1,6 @@
 package se.birdy.app.ui.diary
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,7 +41,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontStyle
@@ -190,9 +188,10 @@ private fun LoadedView(
                 )
                 IconButton(
                     onClick = onBack,
-                    modifier = Modifier
-                        .align(Alignment.TopStart)
-                        .padding(top = 24.dp, start = 12.dp),
+                    modifier =
+                        Modifier
+                            .align(Alignment.TopStart)
+                            .padding(top = 24.dp, start = 12.dp),
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -299,21 +298,23 @@ private fun NoteSection(
                     color = MarginaliaInk.copy(alpha = 0.6f),
                 )
             },
-            textStyle = MaterialTheme.typography.bodyMedium.copy(
-                fontFamily = caveat,
-                fontSize = 16.sp,
-                color = MarginaliaInk,
-            ),
+            textStyle =
+                MaterialTheme.typography.bodyMedium.copy(
+                    fontFamily = caveat,
+                    fontSize = 16.sp,
+                    color = MarginaliaInk,
+                ),
             modifier = Modifier.fillMaxWidth(),
             minLines = 3,
             maxLines = 6,
             shape = RoundedCornerShape(8.dp),
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = AccentCopper.copy(alpha = 0.6f),
-                unfocusedBorderColor = AccentCopper.copy(alpha = 0.3f),
-                focusedContainerColor = Color.White.copy(alpha = 0.4f),
-                unfocusedContainerColor = Color.White.copy(alpha = 0.4f),
-            ),
+            colors =
+                OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = AccentCopper.copy(alpha = 0.6f),
+                    unfocusedBorderColor = AccentCopper.copy(alpha = 0.3f),
+                    focusedContainerColor = Color.White.copy(alpha = 0.4f),
+                    unfocusedContainerColor = Color.White.copy(alpha = 0.4f),
+                ),
             keyboardOptions = KeyboardOptions(autoCorrectEnabled = true),
         )
         if (canSave) {
@@ -345,10 +346,11 @@ private fun DetailsSection(state: ObservationDetailUiState.Loaded) {
         )
         DetailRow(
             label = stringResource(Res.string.diary_detail_label_confidence),
-            value = stringResource(
-                Res.string.diary_confidence_format,
-                "${(state.observation.confidence * 100f).toInt()}%",
-            ),
+            value =
+                stringResource(
+                    Res.string.diary_confidence_format,
+                    "${(state.observation.confidence * 100f).toInt()}%",
+                ),
         )
         DetailRow(
             label = stringResource(Res.string.diary_detail_label_saved),
@@ -398,16 +400,18 @@ private fun ProfileLink(
 ) {
     val caveat = rememberCaveat()
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 24.dp, vertical = 8.dp),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
-            modifier = Modifier
-                .width(2.dp)
-                .height(40.dp)
-                .background(MarginaliaBorder),
+            modifier =
+                Modifier
+                    .width(2.dp)
+                    .height(40.dp)
+                    .background(MarginaliaBorder),
         )
         Spacer(modifier = Modifier.size(10.dp))
         Column(modifier = Modifier.weight(1f)) {

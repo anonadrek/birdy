@@ -14,16 +14,17 @@ fun BadgeGridCell(
 ) {
     val nameRes = BadgeStringMap.nameFor(progress.badge.id)
     val name = stringResource(nameRes)
-    val state = when (val s = progress.state) {
-        is BadgeGridState.InProgress ->
-            StampSealState.InProgress(
-                number = progress.stampNumber,
-                name = name,
-                progressLabel = "${s.current}/${s.target}",
-            )
-        BadgeGridState.Hidden -> StampSealState.Locked(name = null)
-        BadgeGridState.Locked -> StampSealState.Locked(name = name)
-    }
+    val state =
+        when (val s = progress.state) {
+            is BadgeGridState.InProgress ->
+                StampSealState.InProgress(
+                    number = progress.stampNumber,
+                    name = name,
+                    progressLabel = "${s.current}/${s.target}",
+                )
+            BadgeGridState.Hidden -> StampSealState.Locked(name = null)
+            BadgeGridState.Locked -> StampSealState.Locked(name = name)
+        }
     StampSeal(
         state = state,
         modifier = modifier,

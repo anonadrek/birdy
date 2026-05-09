@@ -36,19 +36,21 @@ fun PlateFrame(
 ) {
     val caveat = rememberCaveat()
     Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp)
-            .clip(RoundedCornerShape(12.dp))
-            .background(PaperBottom.copy(alpha = 0.5f))
-            .border(width = 1.dp, color = AccentCopper.copy(alpha = 0.3f), shape = RoundedCornerShape(12.dp))
-            .padding(8.dp),
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 12.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(PaperBottom.copy(alpha = 0.5f))
+                .border(width = 1.dp, color = AccentCopper.copy(alpha = 0.3f), shape = RoundedCornerShape(12.dp))
+                .padding(8.dp),
     ) {
         Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(220.dp)
-                .clip(RoundedCornerShape(8.dp)),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .height(220.dp)
+                    .clip(RoundedCornerShape(8.dp)),
             contentAlignment = Alignment.Center,
         ) {
             image()

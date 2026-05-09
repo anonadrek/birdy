@@ -41,7 +41,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -288,11 +287,12 @@ private fun Page3Name(
                         color = MarginaliaInk.copy(alpha = 0.6f),
                     )
                 },
-                textStyle = androidx.compose.ui.text.TextStyle(
-                    fontFamily = caveat,
-                    fontSize = 18.sp,
-                    color = MarginaliaInk,
-                ),
+                textStyle =
+                    androidx.compose.ui.text.TextStyle(
+                        fontFamily = caveat,
+                        fontSize = 18.sp,
+                        color = MarginaliaInk,
+                    ),
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                 modifier = Modifier.fillMaxWidth(),

@@ -42,7 +42,9 @@ sealed interface StampSealState {
 
     fun rotationDegrees(): Float
 
-    data class Locked(val name: String?) : StampSealState {
+    data class Locked(
+        val name: String?,
+    ) : StampSealState {
         override fun borderStyle() = StampStyle.Dashed
 
         override fun rotationDegrees() = 0f
@@ -110,8 +112,7 @@ fun StampSeal(
                         StampStyle.Dashed ->
                             m.dashedCircleBorder(width = 1.5.dp, color = borderColor)
                     }
-                }
-                .let { m -> if (onClick != null) m.clickable(onClick = onClick) else m }
+                }.let { m -> if (onClick != null) m.clickable(onClick = onClick) else m }
         Box(
             modifier = sealModifier,
             contentAlignment = Alignment.Center,
