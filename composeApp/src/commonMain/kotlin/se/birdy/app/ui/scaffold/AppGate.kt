@@ -1,6 +1,5 @@
 package se.birdy.app.ui.scaffold
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
@@ -16,7 +15,8 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
 import se.birdy.app.ui.onboarding.OnboardingScreen
 import se.birdy.app.ui.onboarding.OnboardingUiState
-import se.birdy.app.ui.theme.MossCreme
+import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.paperBackground
 
 @Composable
 fun AppGate(graph: AppGraph) {
@@ -46,7 +46,7 @@ fun AppGate(graph: AppGraph) {
 
 @Composable
 private fun SplashLoading() {
-    Box(modifier = Modifier.fillMaxSize().background(MossCreme), contentAlignment = Alignment.Center) {
-        CircularProgressIndicator()
+    Box(modifier = Modifier.fillMaxSize().paperBackground(), contentAlignment = Alignment.Center) {
+        CircularProgressIndicator(color = AccentCopper)
     }
 }
