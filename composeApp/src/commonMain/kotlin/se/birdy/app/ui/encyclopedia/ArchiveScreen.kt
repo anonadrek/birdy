@@ -38,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -64,6 +65,8 @@ import birdy_bird_scanner.composeapp.generated.resources.search_empty_body
 import birdy_bird_scanner.composeapp.generated.resources.search_empty_title
 import birdy_bird_scanner.composeapp.generated.resources.search_placeholder
 import birdy_bird_scanner.composeapp.generated.resources.settings_menu_item
+import coil3.compose.AsyncImage
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.JournalIntro
@@ -298,6 +301,7 @@ private fun SortChip(
     }
 }
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun SpeciesRow(
     summary: se.birdy.content.model.SpeciesSummary,
@@ -314,13 +318,21 @@ private fun SpeciesRow(
                 .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(
-            modifier =
-                Modifier
-                    .size(36.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(MarginaliaInk.copy(alpha = 0.1f)),
-        )
+        val thumbModifier =
+            Modifier
+                .size(36.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(MarginaliaInk.copy(alpha = 0.1f))
+        if (summary.heroImagePath != null) {
+            AsyncImage(
+                model = Res.getUri("files/images/${summary.heroImagePath}"),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = thumbModifier,
+            )
+        } else {
+            Box(modifier = thumbModifier)
+        }
         Spacer(Modifier.width(12.dp))
         Column(modifier = Modifier.weight(1f)) {
             Text(
