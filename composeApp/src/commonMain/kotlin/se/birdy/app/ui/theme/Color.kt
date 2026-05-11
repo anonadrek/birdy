@@ -62,3 +62,7 @@ val StampUnlockedBg = Color(0x1F8C5A3C) // 12% AccentCopper for unlocked stamp i
 // Marginalia — left border and text color for handwritten citations
 val MarginaliaInk = Color(0xFF5C6E48) // mossgrön (same as HeroMossLight but explicit token for Caveat marginalia text)
 val MarginaliaBorder = Color(0xFF8C5A3C) // AccentCopper for 2dp left border
+
+// Bottom navigation bar background — also applied to system navigation bar so
+// the two surfaces read as a single continuous paper strip.
+val PaperBottomBar = Color(0xFFEFE8DA)

@@ -3,6 +3,8 @@ package se.birdy.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.ui.graphics.toArgb
+import androidx.core.view.WindowCompat
 import kotlinx.coroutines.runBlocking
 import se.birdy.app.App
 import se.birdy.app.SpeciesRepositoryProvider
@@ -10,6 +12,7 @@ import se.birdy.app.badges.BadgeCatalogLoader
 import se.birdy.app.bootstrap.SharedPrefsBadgeVersionStore
 import se.birdy.app.di.AppGraph
 import se.birdy.app.photo.PhotoStorageProvider
+import se.birdy.app.ui.theme.PaperBottomBar
 import se.birdy.content.Locale
 import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
@@ -32,6 +35,7 @@ import java.io.File
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        applySystemNavBarPaperTint()
         cleanOldCacheFrames()
         SpeciesRepositoryProvider.init(applicationContext)
         PhotoStorageProvider.init(applicationContext)
@@ -116,6 +120,17 @@ class MainActivity : ComponentActivity() {
         val (classifier, mode) = factory.create()
         // capturedModelVersion is null when createReal threw and we fell back to DEMO.
         return Triple(classifier, mode, capturedModelVersion)
+    }
+
+    // Match the system navigation bar to the in-app BottomNavBar so the two
+    // surfaces read as one continuous paper strip. Light-icon mode = dark
+    // glyphs on the light paper background.
+    @Suppress("DEPRECATION") // navigationBarColor is still the supported API on < 35.
+    private fun applySystemNavBarPaperTint() {
+        window.navigationBarColor = PaperBottomBar.toArgb()
+        WindowCompat
+            .getInsetsController(window, window.decorView)
+            .isAppearanceLightNavigationBars = true
     }
 
     private fun cleanOldCacheFrames() {

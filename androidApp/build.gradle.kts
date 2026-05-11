@@ -16,6 +16,7 @@ kotlin {
             implementation(project(":shared:ml"))
             implementation(project(":shared:datastore"))
             implementation(libs.kotlinx.datetime)
+            implementation(libs.androidx.core.ktx)
             implementation("androidx.activity:activity-compose:1.9.3")
             // TFLite needed so Kotlin compiler can resolve Interpreter.Options when calling
             // AndroidTfliteRunner(modelBytes, info) with default options param in buildClassifier.

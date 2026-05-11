@@ -40,9 +40,8 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.PaperBottomBar
 import kotlin.reflect.KClass
-
-private val BottomBarBg = Color(0xFFEFE8DA)
 
 private data class TabSpec(
     val route: AppRoute,
@@ -78,7 +77,7 @@ fun BottomNavBar(navController: NavHostController) {
             Modifier
                 .fillMaxWidth()
                 .height(72.dp)
-                .background(BottomBarBg)
+                .background(PaperBottomBar)
                 .padding(horizontal = 8.dp, vertical = 6.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
