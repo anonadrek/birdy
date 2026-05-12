@@ -1,0 +1,45 @@
+# Premium-only badges. Rendered as locked-dashed in BadgesScreen "Field Marks"-row.
+# Unlock-logic intentionally missing in v1 — these are visual placeholders gated
+# behind the premium paywall.
+version: 1
+badges:
+  - id: premium_dawn_chorus
+    icon: "🌅"
+    nameSv: "Gryningskör"
+    nameEn: "Dawn chorus"
+  - id: premium_winter_wanderer
+    icon: "❄"
+    nameSv: "Vintervandrare"
+    nameEn: "Winter wanderer"
+  - id: premium_migration_mapper
+    icon: "🗺"
+    nameSv: "Flyttkartograf"
+    nameEn: "Migration mapper"
+  - id: premium_song_scholar
+    icon: "♪"
+    nameSv: "Sång-lärd"
+    nameEn: "Song scholar"
+  - id: premium_field_journalist
+    icon: "✒"
+    nameSv: "Fältjournalist"
+    nameEn: "Field journalist"
+  - id: premium_archive_curator
+    icon: "📚"
+    nameSv: "Arkivkurator"
+    nameEn: "Archive curator"
+  - id: premium_seasonal_steward
+    icon: "🍂"
+    nameSv: "Säsongs-väktare"
+    nameEn: "Seasonal steward"
+  - id: premium_lifelist_legend
+    icon: "★"
+    nameSv: "Lifelist-legend"
+    nameEn: "Lifelist legend"
+  - id: premium_rare_seeker
+    icon: "✦"
+    nameSv: "Sällsynt-sökare"
+    nameEn: "Rare seeker"
+  - id: premium_field_member
+    icon: "❦"
+    nameSv: "Fältmedlem"
+    nameEn: "Field member"
