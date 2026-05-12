@@ -2,21 +2,30 @@ package se.birdy.app.ui.scaffold
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.premium_dismiss_toast
+import birdy_bird_scanner.composeapp.generated.resources.premium_welcome_toast
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.toLocalDateTime
+import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
 import se.birdy.app.premium.EntryFlowDecider
+import se.birdy.app.ui.components.CaveatToast
 import se.birdy.app.ui.diary.LifelistScreen
 import se.birdy.app.ui.diary.ObservationDetailScreen
 import se.birdy.app.ui.encyclopedia.ArchiveScreen
@@ -30,6 +39,10 @@ import se.birdy.content.SpeciesId
 @Composable
 fun AppScaffold(graph: AppGraph) {
     val navController = rememberNavController()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
+    val dismissToast = stringResource(Res.string.premium_dismiss_toast)
+    val welcomeToast = stringResource(Res.string.premium_welcome_toast)
     LaunchedEffect(Unit) {
         val today = graph.clock.now().toLocalDateTime(graph.timeZone).date
         val lastShownRaw = graph.userPreferences.premiumModalLastShown.first()
@@ -47,7 +60,10 @@ fun AppScaffold(graph: AppGraph) {
             navController.navigate(AppRoute.Premium)
         }
     }
-    Scaffold(bottomBar = { BottomNavBar(navController) }) { padding ->
+    Scaffold(
+        bottomBar = { BottomNavBar(navController) },
+        snackbarHost = { SnackbarHost(snackbarHostState) { data -> CaveatToast(data) } },
+    ) { padding ->
         NavHost(
             navController = navController,
             startDestination = AppRoute.Listen,
@@ -168,8 +184,14 @@ fun AppScaffold(graph: AppGraph) {
             composable<AppRoute.Premium> {
                 PremiumScreen(
                     viewModel = remember(graph) { graph.premiumViewModel() },
-                    onClose = { navController.popBackStack() },
-                    onPurchaseComplete = { navController.popBackStack(AppRoute.Premium, inclusive = true) },
+                    onClose = {
+                        navController.popBackStack()
+                        scope.launch { snackbarHostState.showSnackbar(dismissToast) }
+                    },
+                    onPurchaseComplete = {
+                        navController.popBackStack(AppRoute.Premium, inclusive = true)
+                        scope.launch { snackbarHostState.showSnackbar(welcomeToast) }
+                    },
                 )
             }
             graph.benchmarkScreen?.let { benchmarkContent ->
