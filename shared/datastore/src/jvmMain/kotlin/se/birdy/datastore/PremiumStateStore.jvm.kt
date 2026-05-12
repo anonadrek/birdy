@@ -18,8 +18,7 @@ actual class PremiumStateStore actual constructor(
 
     actual fun repository(): PremiumRepository = repo
 
-    /** JVM-only convenience for tests — returns the debug-override API without unsafe casts. */
-    fun debugOverrides(): DebugPremiumOverrides = repo
+    actual fun debugOverrides(): DebugPremiumOverrides = repo
 }
 
 private class InMemoryPremiumRepository :

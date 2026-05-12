@@ -7,8 +7,8 @@ actual class PremiumStateStore actual constructor(
     platformContext: Any?,
 ) {
     actual fun repository(): PremiumRepository =
-        throw NotImplementedError("iOS PremiumStateStore not implemented in v1 (Android-only)")
+        throw NotImplementedError("Android PremiumStateStore not implemented yet — replaced in Task 4")
 
     actual fun debugOverrides(): DebugPremiumOverrides =
-        throw NotImplementedError("iOS PremiumStateStore not implemented in v1 (Android-only)")
+        throw NotImplementedError("Android PremiumStateStore not implemented yet — replaced in Task 4")
 }
