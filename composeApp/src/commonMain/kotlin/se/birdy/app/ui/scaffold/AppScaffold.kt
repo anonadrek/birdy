@@ -29,7 +29,6 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
 import se.birdy.app.premium.EntryFlowDecider
 import se.birdy.app.ui.components.CaveatToast
-import se.birdy.domain.premium.PremiumState
 import se.birdy.app.ui.diary.LifelistScreen
 import se.birdy.app.ui.diary.ObservationDetailScreen
 import se.birdy.app.ui.encyclopedia.ArchiveScreen
@@ -39,6 +38,7 @@ import se.birdy.app.ui.premium.PremiumScreen
 import se.birdy.app.ui.profile.SpeciesProfileScreen
 import se.birdy.app.ui.scan.ScanScreenHost
 import se.birdy.content.SpeciesId
+import se.birdy.domain.premium.PremiumState
 
 @Composable
 fun AppScaffold(graph: AppGraph) {
@@ -56,7 +56,11 @@ fun AppScaffold(graph: AppGraph) {
     }
     val showPremiumTeaser = !effectivePremiumActive
     LaunchedEffect(Unit) {
-        val today = graph.clock.now().toLocalDateTime(graph.timeZone).date
+        val today =
+            graph.clock
+                .now()
+                .toLocalDateTime(graph.timeZone)
+                .date
         val lastShownRaw = graph.userPreferences.premiumModalLastShown.first()
         val lastShown = lastShownRaw?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
         val premiumState = graph.premiumOverride ?: graph.premiumRepository.state.value
