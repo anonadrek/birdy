@@ -395,4 +395,53 @@
     <string name="lifelist_journal_headline_anonymous">*My* collection.</string>
     <string name="lifelist_journal_sub_empty">An empty page, for now.</string>
     <string name="lifelist_empty_caveat_cta">*Scan* first bird</string>
+
+    <!-- Plan 7e — Premium tier -->
+    <string name="premium_screen_close">Close</string>
+    <string name="premium_headline_plain">A</string>
+    <string name="premium_headline_accent">field birder\'s</string>
+    <string name="premium_subline">— Support Birdy and get more tools in the field. —</string>
+    <string name="premium_feature_audio">Listen to bird song</string>
+    <string name="premium_feature_export">Export field journal as PDF</string>
+    <string name="premium_feature_stats">Seasonal statistics &amp; yearly overview</string>
+    <string name="premium_feature_badges">Field marks (10 premium stamps)</string>
+    <string name="premium_tier_yearly_title">1 year</string>
+    <string name="premium_tier_yearly_price">199 kr / year</string>
+    <string name="premium_tier_yearly_sub">Save 60% · ~17 kr / mo</string>
+    <string name="premium_tier_lifetime_title">Lifetime</string>
+    <string name="premium_tier_lifetime_price">499 kr · one-time</string>
+    <string name="premium_cta_primary">Continue</string>
+    <string name="premium_cta_subtext">Cancel anytime.</string>
+    <string name="premium_attribution_format">Photo: Wikimedia / %1$s · %2$s</string>
+    <string name="premium_welcome_toast">Welcome, field member.</string>
+    <string name="premium_dismiss_toast">Find it in Settings →</string>
+    <string name="premium_hero_chip">Premium →</string>
+    <!-- Settings rewrite -->
+    <string name="settings_hero_plain">Become a</string>
+    <string name="settings_hero_accent">field member.</string>
+    <string name="settings_hero_subline">Support Birdy &amp; unlock every tool.</string>
+    <string name="settings_section_account">ACCOUNT</string>
+    <string name="settings_section_about_birdy">ABOUT BIRDY</string>
+    <string name="settings_section_legal">LEGAL</string>
+    <string name="settings_row_rate">Rate Birdy</string>
+    <string name="settings_row_share">Share the app</string>
+    <string name="settings_row_feedback">Feedback</string>
+    <string name="settings_row_privacy">Privacy policy</string>
+    <string name="settings_row_terms">Terms of use</string>
+    <string name="settings_footer">— Birdy is a field prospectus. —</string>
+    <!-- Gear -->
+    <string name="gear_content_description">Settings</string>
+    <!-- Per-tab markers -->
+    <string name="premium_archive_title">Export &amp; back up</string>
+    <string name="premium_archive_subtitle">PDF field journal · cloud sync · multiple photos per find</string>
+    <string name="premium_lifelist_title">Seasonal statistics</string>
+    <string name="premium_lifelist_cta">Unlock seasonal stats</string>
+    <string name="premium_lifelist_badge">PREMIUM</string>
+    <string name="premium_lifelist_preview_caption">Spring 2026 · 23 new species</string>
+    <string name="premium_badges_section">Field marks · PREMIUM</string>
+    <string name="premium_badges_cta">Unlock 10 field marks →</string>
+    <string name="premium_species_title">Field observer\'s insights</string>
+    <string name="premium_species_subtitle">Migration map · songs · deeper field notes</string>
+    <string name="premium_teaser_corner">PREMIUM</string>
+    <string name="premium_teaser_cta">→ Unlock</string>
 </resources>

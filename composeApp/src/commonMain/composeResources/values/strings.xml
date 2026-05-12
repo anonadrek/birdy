@@ -408,4 +408,53 @@
     <string name="lifelist_journal_headline_anonymous">*Min* samling.</string>
     <string name="lifelist_journal_sub_empty">En tom sida, för nu.</string>
     <string name="lifelist_empty_caveat_cta">*Skanna* första fågeln</string>
+
+    <!-- Plan 7e — Premium tier -->
+    <string name="premium_screen_close">Stäng</string>
+    <string name="premium_headline_plain">Hela året som</string>
+    <string name="premium_headline_accent">fältornitolog.</string>
+    <string name="premium_subline">— Stöd Birdy och få fler verktyg i fält. —</string>
+    <string name="premium_feature_audio">Lyssna på fågelsång</string>
+    <string name="premium_feature_export">Exportera fältdagbok som PDF</string>
+    <string name="premium_feature_stats">Säsongs-statistik &amp; årsöversikt</string>
+    <string name="premium_feature_badges">Fältmärken (10 premium-stämplar)</string>
+    <string name="premium_tier_yearly_title">1 år</string>
+    <string name="premium_tier_yearly_price">199 kr / år</string>
+    <string name="premium_tier_yearly_sub">Spara 60% · ~17 kr / mån</string>
+    <string name="premium_tier_lifetime_title">För alltid</string>
+    <string name="premium_tier_lifetime_price">499 kr · engångsköp</string>
+    <string name="premium_cta_primary">Fortsätt</string>
+    <string name="premium_cta_subtext">Avbryt när som helst.</string>
+    <string name="premium_attribution_format">Foto: Wikimedia / %1$s · %2$s</string>
+    <string name="premium_welcome_toast">Välkommen, fältmedlem.</string>
+    <string name="premium_dismiss_toast">Hittas i Inställningar →</string>
+    <string name="premium_hero_chip">Premium →</string>
+    <!-- Settings rewrite -->
+    <string name="settings_hero_plain">Bli</string>
+    <string name="settings_hero_accent">fältmedlem.</string>
+    <string name="settings_hero_subline">Stöd Birdy &amp; lås upp alla verktyg.</string>
+    <string name="settings_section_account">KONTO</string>
+    <string name="settings_section_about_birdy">OM BIRDY</string>
+    <string name="settings_section_legal">JURIDISKT</string>
+    <string name="settings_row_rate">Betygsätt Birdy</string>
+    <string name="settings_row_share">Dela appen</string>
+    <string name="settings_row_feedback">Feedback</string>
+    <string name="settings_row_privacy">Integritetspolicy</string>
+    <string name="settings_row_terms">Användarvillkor</string>
+    <string name="settings_footer">— Birdy är ett fält-prospekt. —</string>
+    <!-- Gear -->
+    <string name="gear_content_description">Inställningar</string>
+    <!-- Per-tab markers -->
+    <string name="premium_archive_title">Exportera &amp; säkerhetskopiera</string>
+    <string name="premium_archive_subtitle">PDF-fältdagbok · molnsynk · flera foton per fynd</string>
+    <string name="premium_lifelist_title">Säsongs-statistik</string>
+    <string name="premium_lifelist_cta">Lås upp säsongs-stats</string>
+    <string name="premium_lifelist_badge">PREMIUM</string>
+    <string name="premium_lifelist_preview_caption">Vår 2026 · 23 nya arter</string>
+    <string name="premium_badges_section">Fältmärken · PREMIUM</string>
+    <string name="premium_badges_cta">Lås upp 10 fältmärken →</string>
+    <string name="premium_species_title">Fältobservatörens insikter</string>
+    <string name="premium_species_subtitle">Migrationskarta · läten · djupare fält-anteckningar</string>
+    <string name="premium_teaser_corner">PREMIUM</string>
+    <string name="premium_teaser_cta">→ Lås upp</string>
 </resources>
