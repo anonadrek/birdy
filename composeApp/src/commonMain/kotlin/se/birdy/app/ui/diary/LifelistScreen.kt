@@ -56,11 +56,16 @@ import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_species
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_stamps
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_streak
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_year
+import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_badge
+import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_cta
+import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_preview_caption
+import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_title
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.JournalHeadline
 import se.birdy.app.ui.components.JournalIntro
+import se.birdy.app.ui.components.LockedStatsPreview
 import se.birdy.app.ui.components.MiniStamp
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
@@ -81,6 +86,7 @@ fun LifelistScreen(
     viewModel: LifelistViewModel,
     onObservationClick: (id: String) -> Unit,
     onScanCtaClick: () -> Unit,
+    onPremiumClick: () -> Unit,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     Scaffold(containerColor = Color.Transparent) { padding ->
@@ -97,6 +103,7 @@ fun LifelistScreen(
                         onObservationClick = onObservationClick,
                         onStat3Toggle = viewModel::onStat3Toggle,
                         onSortToggle = viewModel::onSortToggle,
+                        onPremiumClick = onPremiumClick,
                     )
             }
         }
@@ -138,6 +145,7 @@ private fun LoadedLifelist(
     onObservationClick: (id: String) -> Unit,
     onStat3Toggle: () -> Unit,
     onSortToggle: () -> Unit,
+    onPremiumClick: () -> Unit,
 ) {
     val now = remember { Clock.System.now() }
     val labelStat1 = stringResource(Res.string.lifelist_stat_species)
@@ -192,6 +200,26 @@ private fun LoadedLifelist(
                 row = row,
                 now = now,
                 onClick = { onObservationClick(row.observation.id) },
+            )
+        }
+
+        item {
+            Spacer(Modifier.height(20.dp))
+            Text(
+                text = stringResource(Res.string.premium_lifelist_title),
+                fontSize = 10.sp,
+                fontWeight = FontWeight.W600,
+                letterSpacing = 0.16.em,
+                color = MarginaliaInk,
+                modifier = Modifier.padding(horizontal = 24.dp, vertical = 6.dp),
+            )
+            Spacer(Modifier.height(8.dp))
+            LockedStatsPreview(
+                title = stringResource(Res.string.premium_lifelist_preview_caption),
+                overlayCta = stringResource(Res.string.premium_lifelist_cta),
+                overlayBadge = stringResource(Res.string.premium_lifelist_badge),
+                onClick = onPremiumClick,
+                modifier = Modifier.padding(horizontal = 16.dp),
             )
         }
 

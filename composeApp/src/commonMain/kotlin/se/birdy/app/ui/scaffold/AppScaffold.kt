@@ -116,6 +116,7 @@ fun AppScaffold(graph: AppGraph) {
                             launchSingleTop = true
                         }
                     },
+                    onPremiumClick = { navController.navigate(AppRoute.Premium) },
                 )
             }
             composable<AppRoute.ObservationDetail> { entry ->
