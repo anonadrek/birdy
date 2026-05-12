@@ -1,7 +1,7 @@
 package se.birdy.app.premium
 
-import kotlinx.datetime.LocalDate
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
 import kotlin.test.Test
@@ -20,7 +20,9 @@ class EntryFlowDeciderTest {
 
     @Test
     fun `show when last shown was yesterday`() {
-        assertTrue(EntryFlowDecider.shouldShowPremiumModal(today, lastShown = yesterday, state = PremiumState.Free, onboardingComplete = true))
+        assertTrue(
+            EntryFlowDecider.shouldShowPremiumModal(today, lastShown = yesterday, state = PremiumState.Free, onboardingComplete = true),
+        )
     }
 
     @Test
@@ -40,13 +42,22 @@ class EntryFlowDeciderTest {
 
     @Test
     fun `skip when premium active even if last shown was long ago`() {
-        assertFalse(EntryFlowDecider.shouldShowPremiumModal(today, lastShown = LocalDate(2020, 1, 1), state = activeYearly, onboardingComplete = true))
+        assertFalse(
+            EntryFlowDecider.shouldShowPremiumModal(
+                today,
+                lastShown = LocalDate(2020, 1, 1),
+                state = activeYearly,
+                onboardingComplete = true,
+            ),
+        )
     }
 
     @Test
     fun `show when both onboarding done and free and last shown was 2 days ago`() {
         val twoDaysAgo = LocalDate(2026, 5, 10)
-        assertTrue(EntryFlowDecider.shouldShowPremiumModal(today, lastShown = twoDaysAgo, state = PremiumState.Free, onboardingComplete = true))
+        assertTrue(
+            EntryFlowDecider.shouldShowPremiumModal(today, lastShown = twoDaysAgo, state = PremiumState.Free, onboardingComplete = true),
+        )
     }
 
     @Test
