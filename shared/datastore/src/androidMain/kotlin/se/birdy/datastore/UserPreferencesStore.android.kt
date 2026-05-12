@@ -41,6 +41,7 @@ private class AndroidUserPreferences(
         val ARCHIVE_CHIP = stringPreferencesKey("archive_chip")
         val ARCHIVE_SORT = stringPreferencesKey("archive_sort")
         val LIFELIST_SORT = stringPreferencesKey("lifelist_sort")
+        val PREMIUM_MODAL_LAST_SHOWN = stringPreferencesKey("premium_modal_last_shown_date")
     }
 
     override val userName: Flow<String> = safeData.map { it[Keys.USER_NAME] ?: "" }
@@ -64,6 +65,8 @@ private class AndroidUserPreferences(
         safeData.map { prefs ->
             LifelistSort.entries.firstOrNull { it.name == prefs[Keys.LIFELIST_SORT] } ?: LifelistSort.RECENT
         }
+    override val premiumModalLastShown: Flow<String?> =
+        safeData.map { it[Keys.PREMIUM_MODAL_LAST_SHOWN] }
 
     override suspend fun setUserName(name: String) {
         store.edit { it[Keys.USER_NAME] = name }
@@ -91,5 +94,9 @@ private class AndroidUserPreferences(
 
     override suspend fun setLifelistSort(value: LifelistSort) {
         store.edit { it[Keys.LIFELIST_SORT] = value.name }
+    }
+
+    override suspend fun setPremiumModalLastShown(isoDate: String) {
+        store.edit { it[Keys.PREMIUM_MODAL_LAST_SHOWN] = isoDate }
     }
 }

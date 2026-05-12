@@ -24,6 +24,9 @@ interface UserPreferences {
     val archiveSort: Flow<ArchiveSort>
     val lifelistSort: Flow<LifelistSort>
 
+    /** ISO LocalDate-sträng eller null om aldrig visad. Null tolkas som "show nu om andra villkor stämmer". */
+    val premiumModalLastShown: Flow<String?>
+
     suspend fun setUserName(name: String)
 
     suspend fun setHasSeenOnboarding(value: Boolean)
@@ -37,4 +40,6 @@ interface UserPreferences {
     suspend fun setArchiveSort(value: ArchiveSort)
 
     suspend fun setLifelistSort(value: LifelistSort)
+
+    suspend fun setPremiumModalLastShown(isoDate: String)
 }
