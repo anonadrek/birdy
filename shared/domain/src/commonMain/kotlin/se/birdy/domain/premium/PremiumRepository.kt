@@ -11,7 +11,4 @@ interface PremiumRepository {
 
     /** Re-läser DataStore (för "Restore purchases"-knapp). Stub i v1. */
     suspend fun restore()
-
-    /** Test-only / debug-only — sätter state direkt utan att gå via DataStore. */
-    suspend fun forceState(state: PremiumState)
 }
