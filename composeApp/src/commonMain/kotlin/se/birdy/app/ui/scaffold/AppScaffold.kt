@@ -3,6 +3,7 @@ package se.birdy.app.ui.scaffold
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
@@ -10,8 +11,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import kotlinx.coroutines.flow.first
 import kotlinx.datetime.Clock
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.toLocalDateTime
 import se.birdy.app.di.AppGraph
+import se.birdy.app.premium.EntryFlowDecider
 import se.birdy.app.ui.diary.LifelistScreen
 import se.birdy.app.ui.diary.ObservationDetailScreen
 import se.birdy.app.ui.encyclopedia.ArchiveScreen
@@ -25,6 +30,23 @@ import se.birdy.content.SpeciesId
 @Composable
 fun AppScaffold(graph: AppGraph) {
     val navController = rememberNavController()
+    LaunchedEffect(Unit) {
+        val today = graph.clock.now().toLocalDateTime(graph.timeZone).date
+        val lastShownRaw = graph.userPreferences.premiumModalLastShown.first()
+        val lastShown = lastShownRaw?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
+        val premiumState = graph.premiumOverride ?: graph.premiumRepository.state.value
+        val shouldShow =
+            EntryFlowDecider.shouldShowPremiumModal(
+                today = today,
+                lastShown = lastShown,
+                state = premiumState,
+                onboardingComplete = true,
+            )
+        if (shouldShow) {
+            graph.userPreferences.setPremiumModalLastShown(today.toString())
+            navController.navigate(AppRoute.Premium)
+        }
+    }
     Scaffold(bottomBar = { BottomNavBar(navController) }) { padding ->
         NavHost(
             navController = navController,
