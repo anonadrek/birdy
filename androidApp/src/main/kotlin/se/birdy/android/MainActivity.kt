@@ -6,6 +6,7 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import kotlinx.coroutines.runBlocking
+import kotlinx.datetime.Clock
 import se.birdy.app.App
 import se.birdy.app.SpeciesRepositoryProvider
 import se.birdy.app.badges.BadgeCatalogLoader
@@ -19,6 +20,8 @@ import se.birdy.data.db.BirdyData
 import se.birdy.data.observation.SqlDelightObservationRepository
 import se.birdy.datastore.PremiumStateStore
 import se.birdy.datastore.UserPreferencesStore
+import se.birdy.domain.premium.PremiumState
+import se.birdy.domain.premium.PremiumTier
 import se.birdy.ml.AndroidTfliteRunner
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.BirdClassifierFactory
@@ -66,6 +69,12 @@ class MainActivity : ComponentActivity() {
         // keeps App(graph) signature unchanged. Post-v1.0 this can move to an async splash flow
         // if cold-start budget tightens.
         val (classifier, classifierMode, modelVersion) = runBlocking { buildClassifier() }
+        val premiumOverride: PremiumState? =
+            if (BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE) {
+                PremiumState.Active(PremiumTier.YEARLY, Clock.System.now())
+            } else {
+                null
+            }
         val graph =
             AppGraph(
                 repository = SpeciesRepositoryProvider.get(),
@@ -81,6 +90,7 @@ class MainActivity : ComponentActivity() {
                 badgeVersionStore = badgeVersionStore,
                 userPreferences = userPreferences,
                 premiumRepository = premiumRepository,
+                premiumOverride = premiumOverride,
                 defaultLocale = Locale.SV,
                 modelVersion = modelVersion,
                 benchmarkScreen =

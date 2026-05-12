@@ -52,8 +52,12 @@ android {
     }
 
     buildTypes {
+        getByName("debug") {
+            buildConfigField("Boolean", "PREMIUM_DEBUG_FORCE_ACTIVE", "false")
+        }
         release {
             isMinifyEnabled = false
+            buildConfigField("Boolean", "PREMIUM_DEBUG_FORCE_ACTIVE", "false")
         }
     }
 
