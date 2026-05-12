@@ -17,6 +17,7 @@ import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
 import se.birdy.data.observation.SqlDelightObservationRepository
+import se.birdy.datastore.PremiumStateStore
 import se.birdy.datastore.UserPreferencesStore
 import se.birdy.ml.AndroidTfliteRunner
 import se.birdy.ml.BirdClassifier
@@ -58,6 +59,7 @@ class MainActivity : ComponentActivity() {
         val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         val badgeVersionStore = SharedPrefsBadgeVersionStore(applicationContext)
         val userPreferences = UserPreferencesStore(applicationContext).preferences()
+        val premiumRepository = PremiumStateStore(applicationContext).repository()
         // BirdClassifierFactory.create() is suspend — we run it blocking here for v1 simplicity,
         // following the same precedent as BadgeCatalogLoader above. TFLite init + 3.5 MB model
         // read can take longer than the badge catalog (~10ms), but avoids a loading screen and
@@ -78,6 +80,7 @@ class MainActivity : ComponentActivity() {
                 badgeCatalog = badgeCatalog,
                 badgeVersionStore = badgeVersionStore,
                 userPreferences = userPreferences,
+                premiumRepository = premiumRepository,
                 defaultLocale = Locale.SV,
                 modelVersion = modelVersion,
                 benchmarkScreen =

@@ -15,6 +15,7 @@ import se.birdy.app.ui.listen.ListenLauncherViewModel
 import se.birdy.app.ui.match.MatchResultViewModel
 import se.birdy.app.ui.onboarding.OnboardingViewModel
 import se.birdy.app.ui.photoanalyze.PhotoAnalyzeViewModel
+import se.birdy.app.ui.premium.PremiumViewModel
 import se.birdy.app.ui.profile.SpeciesProfileViewModel
 import se.birdy.app.ui.scan.ScanViewModel
 import se.birdy.app.ui.settings.SettingsViewModel
@@ -26,6 +27,8 @@ import se.birdy.datastore.UserPreferences
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.observation.ObservationRepository
+import se.birdy.domain.premium.PremiumRepository
+import se.birdy.domain.premium.PremiumState
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.CameraSource
 import se.birdy.ml.ClassifierMode
@@ -41,6 +44,8 @@ class AppGraph(
     val badgeCatalog: BadgeCatalog,
     val badgeVersionStore: BadgeVersionStore,
     val userPreferences: UserPreferences,
+    val premiumRepository: PremiumRepository,
+    val premiumOverride: PremiumState? = null,
     val clock: Clock = Clock.System,
     val timeZone: TimeZone = TimeZone.currentSystemDefault(),
     val defaultLocale: Locale = Locale.SV,
@@ -139,6 +144,8 @@ class AppGraph(
         )
 
     fun settingsViewModel(): SettingsViewModel = SettingsViewModel(userPreferences)
+
+    fun premiumViewModel(): PremiumViewModel = PremiumViewModel(premiumRepository)
 
     fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel()
 

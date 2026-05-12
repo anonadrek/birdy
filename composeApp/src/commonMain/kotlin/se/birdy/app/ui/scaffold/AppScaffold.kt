@@ -17,6 +17,7 @@ import se.birdy.app.ui.diary.ObservationDetailScreen
 import se.birdy.app.ui.encyclopedia.ArchiveScreen
 import se.birdy.app.ui.listen.ListenLauncherScreen
 import se.birdy.app.ui.match.MatchResultScreen
+import se.birdy.app.ui.premium.PremiumScreen
 import se.birdy.app.ui.profile.SpeciesProfileScreen
 import se.birdy.app.ui.scan.ScanScreenHost
 import se.birdy.content.SpeciesId
@@ -124,6 +125,13 @@ fun AppScaffold(graph: AppGraph) {
                 se.birdy.app.ui.settings.SettingsScreen(
                     viewModel = remember(graph) { graph.settingsViewModel() },
                     onBack = { navController.popBackStack() },
+                )
+            }
+            composable<AppRoute.Premium> {
+                PremiumScreen(
+                    viewModel = remember(graph) { graph.premiumViewModel() },
+                    onClose = { navController.popBackStack() },
+                    onPurchaseComplete = { navController.popBackStack(AppRoute.Premium, inclusive = true) },
                 )
             }
             graph.benchmarkScreen?.let { benchmarkContent ->
