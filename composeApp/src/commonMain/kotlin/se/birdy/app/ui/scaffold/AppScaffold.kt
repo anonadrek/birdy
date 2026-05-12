@@ -125,7 +125,13 @@ fun AppScaffold(graph: AppGraph) {
                     onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id)) },
                 )
             }
-            composable<AppRoute.Badges> { BadgesRoute(graph) }
+            composable<AppRoute.Badges> {
+                BadgesRoute(
+                    graph = graph,
+                    onSettingsClick = { navController.navigate(AppRoute.Settings) { launchSingleTop = true } },
+                    onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                )
+            }
             composable<AppRoute.Settings> {
                 se.birdy.app.ui.settings.SettingsScreen(
                     viewModel = remember(graph) { graph.settingsViewModel() },

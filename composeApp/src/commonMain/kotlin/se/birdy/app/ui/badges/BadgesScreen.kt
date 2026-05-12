@@ -1,9 +1,13 @@
 package se.birdy.app.ui.badges
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +19,8 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -26,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -40,15 +47,21 @@ import birdy_bird_scanner.composeapp.generated.resources.badges_load_error_retry
 import birdy_bird_scanner.composeapp.generated.resources.badges_locked_tooltip
 import birdy_bird_scanner.composeapp.generated.resources.badges_section_recently_unlocked
 import birdy_bird_scanner.composeapp.generated.resources.badges_section_to_discover
+import birdy_bird_scanner.composeapp.generated.resources.gear_content_description
+import birdy_bird_scanner.composeapp.generated.resources.premium_badges_cta
+import birdy_bird_scanner.composeapp.generated.resources.premium_badges_section
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.StampTrack
+import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.paperBackground
+import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.content.Locale
 import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeUnlock
@@ -60,6 +73,8 @@ fun BadgesScreen(
     zone: TimeZone,
     onBadgeClick: (Badge, BadgeUnlock?) -> Unit,
     onRetry: () -> Unit,
+    onSettingsClick: () -> Unit,
+    onPremiumClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
@@ -86,6 +101,8 @@ fun BadgesScreen(
                         onLockedClick = {
                             scope.launch { snackbarHostState.showSnackbar(message = lockedTooltip) }
                         },
+                        onSettingsClick = onSettingsClick,
+                        onPremiumClick = onPremiumClick,
                     )
             }
         }
@@ -100,6 +117,8 @@ private fun LoadedContent(
     now: Instant,
     onUnlockedClick: (Badge, BadgeUnlock) -> Unit,
     onLockedClick: () -> Unit,
+    onSettingsClick: () -> Unit,
+    onPremiumClick: () -> Unit,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
@@ -109,13 +128,24 @@ private fun LoadedContent(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         item(span = { GridItemSpan(maxLineSpan) }) {
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(end = 0.dp, top = 8.dp),
+                horizontalArrangement = Arrangement.End,
+            ) {
+                GearButton(
+                    onClick = onSettingsClick,
+                    contentDescription = stringResource(Res.string.gear_content_description),
+                )
+            }
+        }
+        item(span = { GridItemSpan(maxLineSpan) }) {
             Column {
                 JournalIntro(
                     label = stringResource(Res.string.badges_journal_label, state.unlockedCount.toString()),
                     headline = stringResource(Res.string.badges_journal_headline, state.unlockedCount.toString()),
                     sub = stringResource(Res.string.badges_journal_sub, (state.totalBadges - state.unlockedCount).toString()),
                     horizontalPadding = 0,
-                    topPadding = 24,
+                    topPadding = 0,
                 )
                 StampTrack(
                     filled = state.unlockedCount,
@@ -160,6 +190,62 @@ private fun LoadedContent(
                 modifier = Modifier.fillMaxWidth(),
             )
         }
+        item(span = { GridItemSpan(maxLineSpan) }) {
+            PremiumBadgesRow(onPremiumClick = onPremiumClick)
+        }
+    }
+}
+
+@Composable
+private fun PremiumBadgesRow(onPremiumClick: () -> Unit) {
+    Column(modifier = Modifier.fillMaxWidth().padding(top = 24.dp)) {
+        Text(
+            text = stringResource(Res.string.premium_badges_section),
+            fontSize = 10.sp,
+            fontWeight = FontWeight.W600,
+            letterSpacing = 0.16.em,
+            color = MarginaliaInk,
+            modifier = Modifier.padding(start = 8.dp, bottom = 8.dp),
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            repeat(5) {
+                Box(
+                    modifier =
+                        Modifier
+                            .weight(1f)
+                            .height(44.dp)
+                            .clip(CircleShape)
+                            .background(Color.Transparent)
+                            .border(1.5.dp, AccentCopper.copy(alpha = 0.5f), CircleShape),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text("★", color = AccentCopper.copy(alpha = 0.7f), fontSize = 16.sp)
+                }
+            }
+        }
+        Spacer(Modifier.height(14.dp))
+        Box(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(AccentCopper)
+                    .clickable(onClick = onPremiumClick)
+                    .padding(vertical = 10.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                text = stringResource(Res.string.premium_badges_cta),
+                color = Color.White,
+                fontFamily = rememberCaveat(),
+                fontSize = 16.sp,
+                fontWeight = FontWeight.W600,
+            )
+        }
+        Spacer(Modifier.height(24.dp))
     }
 }
 

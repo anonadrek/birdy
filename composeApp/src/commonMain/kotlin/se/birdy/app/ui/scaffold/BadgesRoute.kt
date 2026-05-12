@@ -14,7 +14,11 @@ import se.birdy.app.ui.badges.UnlockBottomSheet
 import se.birdy.domain.badge.Badge
 
 @Composable
-fun BadgesRoute(graph: AppGraph) {
+fun BadgesRoute(
+    graph: AppGraph,
+    onSettingsClick: () -> Unit,
+    onPremiumClick: () -> Unit,
+) {
     val viewModel = remember(graph) { graph.badgesViewModel() }
     val state by viewModel.state.collectAsState()
     var bottomSheetUnlock by remember { mutableStateOf<Pair<Badge, Instant>?>(null) }
@@ -27,6 +31,8 @@ fun BadgesRoute(graph: AppGraph) {
             unlock?.let { bottomSheetUnlock = badge to it.unlockedAt }
         },
         onRetry = { /* state is a hot Flow — no manual retry needed */ },
+        onSettingsClick = onSettingsClick,
+        onPremiumClick = onPremiumClick,
     )
 
     bottomSheetUnlock?.let { (badge, unlockedAt) ->
