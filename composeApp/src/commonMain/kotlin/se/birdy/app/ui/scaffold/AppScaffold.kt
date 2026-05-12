@@ -16,8 +16,8 @@ import se.birdy.app.ui.diary.LifelistScreen
 import se.birdy.app.ui.diary.ObservationDetailScreen
 import se.birdy.app.ui.encyclopedia.ArchiveScreen
 import se.birdy.app.ui.listen.ListenLauncherScreen
+import se.birdy.app.ui.match.MatchResultScreen
 import se.birdy.app.ui.profile.SpeciesProfileScreen
-import se.birdy.app.ui.result.ClassificationResultScreen
 import se.birdy.app.ui.scan.ScanScreenHost
 import se.birdy.content.SpeciesId
 
@@ -50,7 +50,7 @@ fun AppScaffold(graph: AppGraph) {
                     graph = graph,
                     onPhotoAnalyzeClick = { navController.navigate(AppRoute.PhotoAnalyze) },
                     onFrozen = { csv, path, capturedAtMs ->
-                        navController.navigate(AppRoute.ClassificationResult(csv, path, capturedAtMs))
+                        navController.navigate(AppRoute.MatchResult(csv, path, capturedAtMs))
                     },
                 )
             }
@@ -59,21 +59,21 @@ fun AppScaffold(graph: AppGraph) {
                     graph = graph,
                     onLoaded = { csv, path ->
                         val ts = Clock.System.now().toEpochMilliseconds()
-                        navController.navigate(AppRoute.ClassificationResult(csv, path, ts)) {
+                        navController.navigate(AppRoute.MatchResult(csv, path, ts)) {
                             popUpTo(AppRoute.Scan) { inclusive = false }
                         }
                     },
                 )
             }
-            composable<AppRoute.ClassificationResult> { entry ->
-                val route = entry.toRoute<AppRoute.ClassificationResult>()
+            composable<AppRoute.MatchResult> { entry ->
+                val route = entry.toRoute<AppRoute.MatchResult>()
                 val vm =
                     remember(graph, route) {
-                        graph.classificationResultViewModel(route.predictionsCsv, route.frameJpegPath, route.capturedAtMs)
+                        graph.matchResultViewModel(route.predictionsCsv, route.frameJpegPath, route.capturedAtMs)
                     }
-                ClassificationResultScreen(
+                MatchResultScreen(
                     viewModel = vm,
-                    onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id)) },
+                    onBack = { navController.popBackStack() },
                     locale = graph.defaultLocale,
                     zone = graph.timeZone,
                 )

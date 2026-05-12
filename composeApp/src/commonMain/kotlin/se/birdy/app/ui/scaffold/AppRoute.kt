@@ -10,7 +10,7 @@ sealed interface AppRoute {
 
     @Serializable data object PhotoAnalyze : AppRoute
 
-    @Serializable data class ClassificationResult(
+    @Serializable data class MatchResult(
         val predictionsCsv: String,
         val frameJpegPath: String?,
         val capturedAtMs: Long,

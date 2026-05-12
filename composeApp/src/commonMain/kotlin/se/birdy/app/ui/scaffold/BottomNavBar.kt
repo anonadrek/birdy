@@ -64,7 +64,7 @@ private val tabs =
                     AppRoute.Listen::class,
                     AppRoute.Scan::class,
                     AppRoute.PhotoAnalyze::class,
-                    AppRoute.ClassificationResult::class,
+                    AppRoute.MatchResult::class,
                 ),
         ),
         TabSpec(AppRoute.Archive, Res.string.tab_archive, Icons.AutoMirrored.Filled.LibraryBooks),

@@ -12,10 +12,10 @@ import se.birdy.app.ui.diary.LifelistViewModel
 import se.birdy.app.ui.diary.ObservationDetailViewModel
 import se.birdy.app.ui.encyclopedia.ArchiveViewModel
 import se.birdy.app.ui.listen.ListenLauncherViewModel
+import se.birdy.app.ui.match.MatchResultViewModel
 import se.birdy.app.ui.onboarding.OnboardingViewModel
 import se.birdy.app.ui.photoanalyze.PhotoAnalyzeViewModel
 import se.birdy.app.ui.profile.SpeciesProfileViewModel
-import se.birdy.app.ui.result.ClassificationResultViewModel
 import se.birdy.app.ui.scan.ScanViewModel
 import se.birdy.app.ui.settings.SettingsViewModel
 import se.birdy.app.usecase.SaveObservationUseCase
@@ -92,13 +92,14 @@ class AppGraph(
     fun photoAnalyzeViewModel(persist: (ByteArray) -> String): PhotoAnalyzeViewModel =
         PhotoAnalyzeViewModel(classifier = classifier, persist = persist)
 
-    fun classificationResultViewModel(
+    fun matchResultViewModel(
         predictionsCsv: String,
         frameJpegPath: String?,
         capturedAtMs: Long,
-    ): ClassificationResultViewModel =
-        ClassificationResultViewModel(
+    ): MatchResultViewModel =
+        MatchResultViewModel(
             repository = repository,
+            observationRepo = observationRepository,
             saveUseCase = saveObservationUseCase,
             catalog = badgeCatalog,
             predictionsCsv = predictionsCsv,
