@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-12):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 254/700, nästa familj = corvidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). Plan 7a (Redesign Foundation) ✅ (`v0.7.0a-foundation`, 2026-05-08). Plan 7b (Redesign Skärmar) ✅ (`v0.7.0b-screens`, 2026-05-08). Plan 7c (Field Journal redesign) ✅ (`v0.7.0c-field-journal`, 2026-05-10). Plan 7d (Match-flow) ✅ (`v0.7.0d-match-flow`, 2026-05-12). Plan 7e (Premium tier) ✅ (`v0.7.0e-premium`, 2026-05-12). **Nästa: Plan 6 (Polish + Play Store-release) återupptas.**
+**Status (2026-05-12):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 273/700, nästa familj = cuculidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). Plan 7a (Redesign Foundation) ✅ (`v0.7.0a-foundation`, 2026-05-08). Plan 7b (Redesign Skärmar) ✅ (`v0.7.0b-screens`, 2026-05-08). Plan 7c (Field Journal redesign) ✅ (`v0.7.0c-field-journal`, 2026-05-10). Plan 7d (Match-flow) ✅ (`v0.7.0d-match-flow`, 2026-05-12). Plan 7e (Premium tier) ✅ (`v0.7.0e-premium`, 2026-05-12). **Nästa: Plan 6 (Polish + Play Store-release) återupptas.**
 
 ## Var hittar du saker
 
@@ -26,7 +26,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 |---|---|---|
 | 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ `v0.1.0-foundation` |
 | 2a | Content pipeline + walking skeleton (5 arter) | ✅ `v0.2.0a-pipeline` |
-| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 226/700 (cettiidae) |
+| 2b | Content backfill family-by-family (5 → ~700 arter) | ⏸ 273/700 (corvidae) |
 | 3 | Encyclopedia (browse + species profile) | ✅ `v0.3.0-encyclopedia` |
 | 4a | ML & Camera UI (FakeClassifier + UI + CameraX 3 fps) | ✅ `v0.4.0a-camera-ui` |
 | 4b | Real TFLite-modell (AIY Birds V1) | ✅ `v0.4.0b-real-tflite` |
@@ -168,7 +168,8 @@ Runbook (autoritativ källa för per-familj-lärdomar): `docs/superpowers/runboo
 | 2026-05-08 | charadriidae | +17 | 224 | `96512e5` |
 | 2026-05-08 | cettiidae | +2 | 226 | `24311b1` |
 | 2026-05-08 | ciconiidae+cinclidae+cisticolidae+columbidae+coraciidae | +28 | 254 | `6fbd4e7` |
-| _(next)_ | _corvidae — kolla species_list.yaml_ | | | |
+| 2026-05-12 | corvidae | +19 | 273 | `1e5843a` |
+| _(next)_ | _cuculidae — kolla species_list.yaml_ | | | |
 
 **Återupptas-trigger:** användaren säger "fortsätt Plan 2b" / "kör nästa familj". Pure-data — kan köras parallellt med Plan 5+.
 
