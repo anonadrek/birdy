@@ -61,6 +61,10 @@ import birdy_bird_scanner.composeapp.generated.resources.archive_sort_family
 import birdy_bird_scanner.composeapp.generated.resources.archive_sort_recent
 import birdy_bird_scanner.composeapp.generated.resources.loading
 import birdy_bird_scanner.composeapp.generated.resources.menu_button
+import birdy_bird_scanner.composeapp.generated.resources.premium_archive_subtitle
+import birdy_bird_scanner.composeapp.generated.resources.premium_archive_title
+import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_corner
+import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_cta
 import birdy_bird_scanner.composeapp.generated.resources.search_empty_body
 import birdy_bird_scanner.composeapp.generated.resources.search_empty_title
 import birdy_bird_scanner.composeapp.generated.resources.search_placeholder
@@ -71,6 +75,7 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.MiniStamp
+import se.birdy.app.ui.components.PremiumTeaserCard
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.OffwhiteWarm
@@ -86,6 +91,7 @@ import se.birdy.datastore.ArchiveSort
 fun ArchiveScreen(
     viewModel: ArchiveViewModel,
     onSpeciesClick: (SpeciesId) -> Unit,
+    onPremiumClick: () -> Unit,
     showDebugMenu: Boolean = false,
     onDebugBenchmarkClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
@@ -139,6 +145,15 @@ fun ArchiveScreen(
                     }
                 }
             }
+
+            PremiumTeaserCard(
+                title = stringResource(Res.string.premium_archive_title),
+                subtitle = stringResource(Res.string.premium_archive_subtitle),
+                cornerLabel = stringResource(Res.string.premium_teaser_corner),
+                ctaLabel = stringResource(Res.string.premium_teaser_cta),
+                onClick = onPremiumClick,
+                modifier = Modifier.padding(horizontal = 16.dp),
+            )
 
             JournalSearchField(
                 value = query,

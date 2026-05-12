@@ -89,6 +89,7 @@ fun AppScaffold(graph: AppGraph) {
                     ArchiveScreen(
                         viewModel = remember(graph) { graph.archiveViewModel() },
                         onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
+                        onPremiumClick = { navController.navigate(AppRoute.Premium) },
                         showDebugMenu = graph.benchmarkScreen != null,
                         onDebugBenchmarkClick = { navController.navigate(AppRoute.DebugBenchmark) },
                         onSettingsClick = { navController.navigate(AppRoute.Settings) },
