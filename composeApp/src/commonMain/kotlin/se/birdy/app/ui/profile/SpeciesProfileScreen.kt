@@ -45,6 +45,10 @@ import birdy_bird_scanner.composeapp.generated.resources.empty_photos
 import birdy_bird_scanner.composeapp.generated.resources.loading
 import birdy_bird_scanner.composeapp.generated.resources.not_found_body
 import birdy_bird_scanner.composeapp.generated.resources.not_found_title
+import birdy_bird_scanner.composeapp.generated.resources.premium_species_subtitle
+import birdy_bird_scanner.composeapp.generated.resources.premium_species_title
+import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_corner
+import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_cta
 import birdy_bird_scanner.composeapp.generated.resources.profile_back
 import birdy_bird_scanner.composeapp.generated.resources.profile_journal_headline
 import birdy_bird_scanner.composeapp.generated.resources.profile_journal_label
@@ -60,6 +64,7 @@ import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.HeroImage
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.PlateFrame
+import se.birdy.app.ui.components.PremiumTeaserCard
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaBorder
 import se.birdy.app.ui.theme.MarginaliaInk
@@ -75,6 +80,7 @@ import se.birdy.content.model.Species
 fun SpeciesProfileScreen(
     viewModel: SpeciesProfileViewModel,
     onBack: () -> Unit,
+    onPremiumClick: () -> Unit,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     when (val s = state) {
@@ -88,7 +94,7 @@ fun SpeciesProfileScreen(
                 title = stringResource(Res.string.not_found_title),
                 body = stringResource(Res.string.not_found_body),
             )
-        is SpeciesProfileUiState.Loaded -> ProfileContent(s.species, onBack)
+        is SpeciesProfileUiState.Loaded -> ProfileContent(s.species, onBack, onPremiumClick)
     }
 }
 
@@ -97,6 +103,7 @@ fun SpeciesProfileScreen(
 private fun ProfileContent(
     species: Species,
     onBack: () -> Unit,
+    onPremiumClick: () -> Unit,
 ) {
     val serif = rememberDmSerifDisplay()
     val plateLabel = species.id.raw.removePrefix("Q")
@@ -175,6 +182,17 @@ private fun ProfileContent(
 
             if (!species.marginalia.isNullOrBlank()) {
                 item { MarginaliaBlock(text = species.marginalia!!) }
+            }
+
+            item {
+                PremiumTeaserCard(
+                    title = stringResource(Res.string.premium_species_title),
+                    subtitle = stringResource(Res.string.premium_species_subtitle),
+                    cornerLabel = stringResource(Res.string.premium_teaser_corner),
+                    ctaLabel = stringResource(Res.string.premium_teaser_cta),
+                    onClick = onPremiumClick,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+                )
             }
 
             item {

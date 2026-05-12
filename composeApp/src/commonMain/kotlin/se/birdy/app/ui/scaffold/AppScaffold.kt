@@ -103,6 +103,7 @@ fun AppScaffold(graph: AppGraph) {
                                 graph.speciesProfileViewModel(SpeciesId(route.speciesId))
                             },
                         onBack = { navController.popBackStack() },
+                        onPremiumClick = { navController.navigate(AppRoute.Premium) },
                     )
                 }
             }
