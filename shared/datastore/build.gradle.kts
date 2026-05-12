@@ -6,6 +6,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.datetime)
+            implementation(project(":shared:domain"))
         }
         androidMain.dependencies {
             implementation(libs.androidx.datastore.preferences)
