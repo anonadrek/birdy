@@ -17,6 +17,7 @@ class FakeUserPreferences : UserPreferences {
     private val _archiveChip = MutableStateFlow("ALL")
     private val _archiveSort = MutableStateFlow(ArchiveSort.ALPHA)
     private val _lifelistSort = MutableStateFlow(LifelistSort.RECENT)
+    private val _premiumModalLastShown = MutableStateFlow<String?>(null)
 
     val archiveChipWrites = mutableListOf<String>()
     var archiveSortValue: ArchiveSort
@@ -47,6 +48,7 @@ class FakeUserPreferences : UserPreferences {
     override val archiveChip: Flow<String> = _archiveChip.asStateFlow()
     override val archiveSort: Flow<ArchiveSort> = _archiveSort.asStateFlow()
     override val lifelistSort: Flow<LifelistSort> = _lifelistSort.asStateFlow()
+    override val premiumModalLastShown: Flow<String?> = _premiumModalLastShown.asStateFlow()
 
     override suspend fun setUserName(name: String) {
         _userName.value = name
@@ -75,5 +77,9 @@ class FakeUserPreferences : UserPreferences {
 
     override suspend fun setLifelistSort(value: LifelistSort) {
         _lifelistSort.value = value
+    }
+
+    override suspend fun setPremiumModalLastShown(isoDate: String) {
+        _premiumModalLastShown.value = isoDate
     }
 }
