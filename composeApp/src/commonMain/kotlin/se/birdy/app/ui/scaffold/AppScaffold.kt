@@ -6,6 +6,9 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -26,6 +29,7 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
 import se.birdy.app.premium.EntryFlowDecider
 import se.birdy.app.ui.components.CaveatToast
+import se.birdy.domain.premium.PremiumState
 import se.birdy.app.ui.diary.LifelistScreen
 import se.birdy.app.ui.diary.ObservationDetailScreen
 import se.birdy.app.ui.encyclopedia.ArchiveScreen
@@ -43,6 +47,14 @@ fun AppScaffold(graph: AppGraph) {
     val scope = rememberCoroutineScope()
     val dismissToast = stringResource(Res.string.premium_dismiss_toast)
     val welcomeToast = stringResource(Res.string.premium_welcome_toast)
+    val backendState by graph.premiumRepository.state.collectAsState()
+    val effectivePremiumActive by remember(graph) {
+        derivedStateOf {
+            val effective = graph.premiumOverride ?: backendState
+            effective is PremiumState.Active
+        }
+    }
+    val showPremiumTeaser = !effectivePremiumActive
     LaunchedEffect(Unit) {
         val today = graph.clock.now().toLocalDateTime(graph.timeZone).date
         val lastShownRaw = graph.userPreferences.premiumModalLastShown.first()
@@ -128,6 +140,7 @@ fun AppScaffold(graph: AppGraph) {
                         viewModel = remember(graph) { graph.archiveViewModel() },
                         onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
                         onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                        showPremiumTeaser = showPremiumTeaser,
                         showDebugMenu = graph.benchmarkScreen != null,
                         onDebugBenchmarkClick = { navController.navigate(AppRoute.DebugBenchmark) },
                         onSettingsClick = { navController.navigate(AppRoute.Settings) },
@@ -142,6 +155,7 @@ fun AppScaffold(graph: AppGraph) {
                             },
                         onBack = { navController.popBackStack() },
                         onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                        showPremiumTeaser = showPremiumTeaser,
                     )
                 }
             }
@@ -156,6 +170,7 @@ fun AppScaffold(graph: AppGraph) {
                         }
                     },
                     onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                    showPremiumTeaser = showPremiumTeaser,
                 )
             }
             composable<AppRoute.ObservationDetail> { entry ->
@@ -171,6 +186,7 @@ fun AppScaffold(graph: AppGraph) {
                     graph = graph,
                     onSettingsClick = { navController.navigate(AppRoute.Settings) { launchSingleTop = true } },
                     onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                    showPremiumTeaser = showPremiumTeaser,
                 )
             }
             composable<AppRoute.Settings> {

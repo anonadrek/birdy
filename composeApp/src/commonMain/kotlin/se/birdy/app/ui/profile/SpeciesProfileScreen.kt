@@ -81,6 +81,7 @@ fun SpeciesProfileScreen(
     viewModel: SpeciesProfileViewModel,
     onBack: () -> Unit,
     onPremiumClick: () -> Unit,
+    showPremiumTeaser: Boolean = true,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     when (val s = state) {
@@ -94,7 +95,7 @@ fun SpeciesProfileScreen(
                 title = stringResource(Res.string.not_found_title),
                 body = stringResource(Res.string.not_found_body),
             )
-        is SpeciesProfileUiState.Loaded -> ProfileContent(s.species, onBack, onPremiumClick)
+        is SpeciesProfileUiState.Loaded -> ProfileContent(s.species, onBack, onPremiumClick, showPremiumTeaser)
     }
 }
 
@@ -104,6 +105,7 @@ private fun ProfileContent(
     species: Species,
     onBack: () -> Unit,
     onPremiumClick: () -> Unit,
+    showPremiumTeaser: Boolean,
 ) {
     val serif = rememberDmSerifDisplay()
     val plateLabel = species.id.raw.removePrefix("Q")
@@ -184,15 +186,17 @@ private fun ProfileContent(
                 item { MarginaliaBlock(text = species.marginalia!!) }
             }
 
-            item {
-                PremiumTeaserCard(
-                    title = stringResource(Res.string.premium_species_title),
-                    subtitle = stringResource(Res.string.premium_species_subtitle),
-                    cornerLabel = stringResource(Res.string.premium_teaser_corner),
-                    ctaLabel = stringResource(Res.string.premium_teaser_cta),
-                    onClick = onPremiumClick,
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
-                )
+            if (showPremiumTeaser) {
+                item {
+                    PremiumTeaserCard(
+                        title = stringResource(Res.string.premium_species_title),
+                        subtitle = stringResource(Res.string.premium_species_subtitle),
+                        cornerLabel = stringResource(Res.string.premium_teaser_corner),
+                        ctaLabel = stringResource(Res.string.premium_teaser_cta),
+                        onClick = onPremiumClick,
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+                    )
+                }
             }
 
             item {

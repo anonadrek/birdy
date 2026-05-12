@@ -75,6 +75,7 @@ fun BadgesScreen(
     onRetry: () -> Unit,
     onSettingsClick: () -> Unit,
     onPremiumClick: () -> Unit,
+    showPremiumTeaser: Boolean = true,
     modifier: Modifier = Modifier,
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
@@ -103,6 +104,7 @@ fun BadgesScreen(
                         },
                         onSettingsClick = onSettingsClick,
                         onPremiumClick = onPremiumClick,
+                        showPremiumTeaser = showPremiumTeaser,
                     )
             }
         }
@@ -119,6 +121,7 @@ private fun LoadedContent(
     onLockedClick: () -> Unit,
     onSettingsClick: () -> Unit,
     onPremiumClick: () -> Unit,
+    showPremiumTeaser: Boolean,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
@@ -190,8 +193,10 @@ private fun LoadedContent(
                 modifier = Modifier.fillMaxWidth(),
             )
         }
-        item(span = { GridItemSpan(maxLineSpan) }) {
-            PremiumBadgesRow(onPremiumClick = onPremiumClick)
+        if (showPremiumTeaser) {
+            item(span = { GridItemSpan(maxLineSpan) }) {
+                PremiumBadgesRow(onPremiumClick = onPremiumClick)
+            }
         }
     }
 }

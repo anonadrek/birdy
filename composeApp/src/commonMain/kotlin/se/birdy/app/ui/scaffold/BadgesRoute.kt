@@ -18,6 +18,7 @@ fun BadgesRoute(
     graph: AppGraph,
     onSettingsClick: () -> Unit,
     onPremiumClick: () -> Unit,
+    showPremiumTeaser: Boolean = true,
 ) {
     val viewModel = remember(graph) { graph.badgesViewModel() }
     val state by viewModel.state.collectAsState()
@@ -33,6 +34,7 @@ fun BadgesRoute(
         onRetry = { /* state is a hot Flow — no manual retry needed */ },
         onSettingsClick = onSettingsClick,
         onPremiumClick = onPremiumClick,
+        showPremiumTeaser = showPremiumTeaser,
     )
 
     bottomSheetUnlock?.let { (badge, unlockedAt) ->

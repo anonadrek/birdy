@@ -92,6 +92,7 @@ fun ArchiveScreen(
     viewModel: ArchiveViewModel,
     onSpeciesClick: (SpeciesId) -> Unit,
     onPremiumClick: () -> Unit,
+    showPremiumTeaser: Boolean = true,
     showDebugMenu: Boolean = false,
     onDebugBenchmarkClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
@@ -146,14 +147,16 @@ fun ArchiveScreen(
                 }
             }
 
-            PremiumTeaserCard(
-                title = stringResource(Res.string.premium_archive_title),
-                subtitle = stringResource(Res.string.premium_archive_subtitle),
-                cornerLabel = stringResource(Res.string.premium_teaser_corner),
-                ctaLabel = stringResource(Res.string.premium_teaser_cta),
-                onClick = onPremiumClick,
-                modifier = Modifier.padding(horizontal = 16.dp),
-            )
+            if (showPremiumTeaser) {
+                PremiumTeaserCard(
+                    title = stringResource(Res.string.premium_archive_title),
+                    subtitle = stringResource(Res.string.premium_archive_subtitle),
+                    cornerLabel = stringResource(Res.string.premium_teaser_corner),
+                    ctaLabel = stringResource(Res.string.premium_teaser_cta),
+                    onClick = onPremiumClick,
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                )
+            }
 
             JournalSearchField(
                 value = query,
