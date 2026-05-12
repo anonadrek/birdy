@@ -3,11 +3,15 @@ package se.birdy.app.ui.match
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.datetime.Instant
+import se.birdy.app.photo.FrameUnavailableException
 import se.birdy.app.ui.badges.UnlockQueue
 import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
@@ -15,6 +19,8 @@ import se.birdy.content.SpeciesId
 import se.birdy.content.SpeciesRepository
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.observation.ObservationRepository
+import java.io.File
+import java.io.IOException
 
 class MatchResultViewModel(
     private val repository: SpeciesRepository,
@@ -120,4 +126,86 @@ class MatchResultViewModel(
             val conf = (numerator.toFloat() / denominator.toFloat()).coerceIn(0f, 1f)
             id to conf
         }
+
+    fun pickFromDisambig(speciesId: SpeciesId) {
+        val current = _state.value as? MatchResultUiState.Disambig ?: return
+        val picked = current.candidates.firstOrNull { it.species.id == speciesId } ?: return
+        viewModelScope.launch {
+            val count = observationRepo.countByQid(speciesId.raw)
+            val prev = if (count > 0) observationRepo.firstByQid(speciesId.raw) else null
+            _state.value =
+                MatchResultUiState.Match(
+                    species = picked.species,
+                    confidence = picked.confidence,
+                    isManualPick = true,
+                    isFirstSighting = count == 0,
+                    prevObservedAt = prev,
+                    sightingCount = count + 1,
+                    stampNumber = current.stampNumber,
+                    frameJpegPath = current.frameJpegPath,
+                    capturedAtMs = current.capturedAtMs,
+                )
+        }
+    }
+
+    fun saveToDiary() {
+        val current = _state.value as? MatchResultUiState.Match ?: return
+        if (current.saveStatus is MatchResultUiState.SaveStatus.Saving ||
+            current.saveStatus is MatchResultUiState.SaveStatus.Saved
+        ) {
+            return
+        }
+        val path = current.frameJpegPath
+        if (path == null) {
+            _state.value =
+                current.copy(
+                    saveStatus =
+                        MatchResultUiState.SaveStatus.Failed(
+                            MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable,
+                        ),
+                )
+            return
+        }
+        _state.value = current.copy(saveStatus = MatchResultUiState.SaveStatus.Saving)
+        viewModelScope.launch {
+            val outcome =
+                runCatching {
+                    val bytes = withContext(Dispatchers.IO) { File(path).readBytes() }
+                    saveUseCase.save(
+                        speciesId = current.species.id.raw,
+                        capturedAt = Instant.fromEpochMilliseconds(current.capturedAtMs),
+                        confidence = current.confidence,
+                        rawJpegBytes = bytes,
+                        note = "",
+                    )
+                }.onFailure { if (it is CancellationException) throw it }
+            val status: MatchResultUiState.SaveStatus =
+                outcome.fold(
+                    onSuccess = { result ->
+                        if (result.newUnlocks.isNotEmpty()) unlockQueue.enqueue(result.newUnlocks)
+                        MatchResultUiState.SaveStatus.Saved
+                    },
+                    onFailure = { t ->
+                        val kind =
+                            when (t) {
+                                is FrameUnavailableException ->
+                                    MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable
+                                is java.io.FileNotFoundException ->
+                                    MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable
+                                is IOException ->
+                                    MatchResultUiState.SaveStatus.Failed.Kind.StorageFull
+                                else ->
+                                    MatchResultUiState.SaveStatus.Failed.Kind.DatabaseFailed
+                            }
+                        MatchResultUiState.SaveStatus.Failed(kind)
+                    },
+                )
+            val latest = _state.value
+            if (latest is MatchResultUiState.Match) {
+                _state.value = latest.copy(saveStatus = status)
+            }
+        }
+    }
+
+    fun dismissUnlock() = unlockQueue.pop()
 }

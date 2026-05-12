@@ -17,7 +17,11 @@ import se.birdy.app.testing.FakePhotoStorage
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
+import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeCatalog
+import se.birdy.domain.badge.BadgeCategory
+import se.birdy.domain.badge.BadgeRule
+import java.io.File
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -168,6 +172,176 @@ class MatchResultViewModelTest {
                 val err = awaitItem()
                 assertIs<MatchResultUiState.Error>(err)
                 assertEquals(MatchResultUiState.Error.Kind.ParseFailed, err.kind)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun pickFromDisambig_known_species_transitions_to_match_manual() =
+        runTest(dispatcher) {
+            val vm = makeVm("Q25485:42/100,Q25234:40/100,Q25404:36/100")
+            vm.state.test {
+                assertIs<MatchResultUiState.Loading>(awaitItem())
+                val disambig = awaitItem()
+                assertIs<MatchResultUiState.Disambig>(disambig)
+                vm.pickFromDisambig(disambig.candidates[1].species.id)
+                val match = awaitItem()
+                assertIs<MatchResultUiState.Match>(match)
+                assertEquals("Q25234", match.species.id.raw)
+                assertTrue(match.isManualPick)
+                assertEquals(disambig.stampNumber, match.stampNumber)
+                assertEquals(disambig.frameJpegPath, match.frameJpegPath)
+                assertEquals(disambig.capturedAtMs, match.capturedAtMs)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun pickFromDisambig_unknown_species_id_is_noop() =
+        runTest(dispatcher) {
+            val vm = makeVm("Q25485:42/100,Q25234:40/100")
+            vm.state.test {
+                assertIs<MatchResultUiState.Loading>(awaitItem())
+                val disambig = awaitItem()
+                assertIs<MatchResultUiState.Disambig>(disambig)
+                vm.pickFromDisambig(se.birdy.content.SpeciesId("Q_NOT_IN_LIST"))
+                expectNoEvents()
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun pickFromDisambig_called_on_non_disambig_state_is_noop() =
+        runTest(dispatcher) {
+            val vm = makeVm("Q25485:87/100")
+            vm.state.test {
+                assertIs<MatchResultUiState.Loading>(awaitItem())
+                val match = awaitItem()
+                assertIs<MatchResultUiState.Match>(match)
+                vm.pickFromDisambig(se.birdy.content.SpeciesId("Q25485"))
+                expectNoEvents()
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun saveToDiary_on_nobird_state_is_noop() =
+        runTest(dispatcher) {
+            val vm = makeVm("Q25485:20/100")
+            vm.state.test {
+                assertIs<MatchResultUiState.Loading>(awaitItem())
+                assertIs<MatchResultUiState.NoBird>(awaitItem())
+                vm.saveToDiary()
+                expectNoEvents()
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun saveToDiary_on_match_success_transitions_to_saved_and_enqueues_unlocks() =
+        runTest(dispatcher) {
+            val noviceBadge =
+                Badge(
+                    id = "novice",
+                    category = BadgeCategory.PROGRESSION,
+                    rule = BadgeRule.CountUniqueSpecies(target = 1),
+                )
+            val catalog = BadgeCatalog(version = 1, badges = listOf(noviceBadge))
+            val obsRepo = FakeObservationRepository()
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            val clock = FakeClock(now = Instant.parse("2026-05-12T10:00:00Z"))
+            val saveUseCase =
+                SaveObservationUseCase(
+                    repo = obsRepo,
+                    badgeRepo = FakeBadgeRepository(),
+                    photoStorage = FakePhotoStorage(),
+                    clock = clock,
+                    catalog = catalog,
+                    recalculate = RecalculateBadgesUseCase(zone = TimeZone.UTC, clock = clock),
+                    speciesByQid = { speciesRepo.allByQid() },
+                )
+
+            val tmpFile = File.createTempFile("birdy-test-frame", ".jpg")
+            tmpFile.writeBytes(byteArrayOf(0xFF.toByte(), 0xD8.toByte(), 0x01))
+
+            val vm =
+                MatchResultViewModel(
+                    repository = speciesRepo,
+                    observationRepo = obsRepo,
+                    saveUseCase = saveUseCase,
+                    catalog = catalog,
+                    predictionsCsv = "Q25485:87/100",
+                    frameJpegPath = tmpFile.absolutePath,
+                    capturedAtMs = capturedAtMs,
+                    locale = Locale.SV,
+                )
+
+            vm.state.test {
+                var item = awaitItem()
+                while (item is MatchResultUiState.Loading) item = awaitItem()
+                val initial = item as MatchResultUiState.Match
+                assertEquals(0, initial.unlockQueueSize)
+                assertNull(initial.pendingUnlock)
+
+                vm.saveToDiary()
+
+                var seen: MatchResultUiState.Match? = null
+                while (true) {
+                    val n = awaitItem() as? MatchResultUiState.Match ?: continue
+                    if (n.unlockQueueSize > 0 && n.saveStatus == MatchResultUiState.SaveStatus.Saved) {
+                        seen = n
+                        break
+                    }
+                }
+                val afterSave = seen!!
+                assertEquals(1, afterSave.unlockQueueSize)
+                assertEquals("novice", afterSave.pendingUnlock?.badgeId)
+
+                vm.dismissUnlock()
+
+                var afterDismiss: MatchResultUiState.Match? = null
+                while (true) {
+                    val n = awaitItem() as? MatchResultUiState.Match ?: continue
+                    if (n.unlockQueueSize == 0) {
+                        afterDismiss = n
+                        break
+                    }
+                }
+                assertEquals(0, afterDismiss!!.unlockQueueSize)
+                assertNull(afterDismiss.pendingUnlock)
+
+                cancelAndIgnoreRemainingEvents()
+            }
+
+            tmpFile.delete()
+        }
+
+    @Test
+    fun saveToDiary_on_match_with_null_frame_transitions_to_failed_frame_unavailable() =
+        runTest(dispatcher) {
+            val obsRepo = FakeObservationRepository()
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            val vm =
+                MatchResultViewModel(
+                    repository = speciesRepo,
+                    observationRepo = obsRepo,
+                    saveUseCase = makeSaveUseCase(obsRepo, speciesRepo),
+                    catalog = emptyCatalog(),
+                    predictionsCsv = "Q25485:87/100",
+                    frameJpegPath = null,
+                    capturedAtMs = capturedAtMs,
+                    locale = Locale.SV,
+                )
+            vm.state.test {
+                var item = awaitItem()
+                while (item is MatchResultUiState.Loading) item = awaitItem()
+                assertIs<MatchResultUiState.Match>(item)
+                vm.saveToDiary()
+                val after = awaitItem()
+                assertIs<MatchResultUiState.Match>(after)
+                val status = after.saveStatus
+                assertIs<MatchResultUiState.SaveStatus.Failed>(status)
+                assertEquals(MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable, status.kind)
                 cancelAndIgnoreRemainingEvents()
             }
         }
