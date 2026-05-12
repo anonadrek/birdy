@@ -14,6 +14,7 @@ CREATE TABLE observation (
 
 CREATE INDEX observation_captured_at_idx ON observation(captured_at_ms DESC);
 CREATE INDEX observation_stamp_number_idx ON observation(stamp_number DESC);
+CREATE INDEX observation_species_id_idx ON observation(species_id);
 
 selectAll:
 SELECT * FROM observation ORDER BY captured_at_ms DESC;
@@ -26,6 +27,15 @@ SELECT * FROM observation WHERE id = ?;
 
 nextStampNumber:
 SELECT COALESCE(MAX(stamp_number), 0) + 1 FROM observation;
+
+countByQid:
+SELECT COUNT(*) FROM observation WHERE species_id = ?;
+
+firstByQid:
+SELECT captured_at_ms FROM observation
+WHERE species_id = ?
+ORDER BY captured_at_ms ASC
+LIMIT 1;
 
 -- stamp_number is caller-provided. Use nextStampNumber: to read the next value,
 -- then pass it to insert. Single-writer assumption holds for v1; concurrent

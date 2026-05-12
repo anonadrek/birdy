@@ -136,6 +136,10 @@ class BadgesViewModelTest {
                     override suspend fun delete(id: String) {}
 
                     override suspend fun nextStampNumber(): Int = 1
+
+                    override suspend fun countByQid(speciesId: String): Int = 0
+
+                    override suspend fun firstByQid(speciesId: String): Instant? = null
                 }
             val badgeRepo = FakeBadgeRepository()
             val recalc =

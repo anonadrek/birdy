@@ -1,6 +1,7 @@
 package se.birdy.domain.observation
 
 import kotlinx.coroutines.flow.Flow
+import kotlinx.datetime.Instant
 
 interface ObservationRepository {
     fun observeAll(): Flow<List<Observation>>
@@ -19,4 +20,10 @@ interface ObservationRepository {
     suspend fun delete(id: String)
 
     suspend fun nextStampNumber(): Int
+
+    /** Antal observationer för given Q-ID. 0 = first sighting för Plan 7d Match-flow. */
+    suspend fun countByQid(speciesId: String): Int
+
+    /** Tidigaste `captured_at` för given Q-ID, eller null om inga observationer finns. */
+    suspend fun firstByQid(speciesId: String): Instant?
 }

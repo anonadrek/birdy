@@ -52,6 +52,14 @@ class FakeObservationRepository : ObservationRepository {
 
     override suspend fun nextStampNumber(): Int = (_rows.value.maxOfOrNull { it.stampNumber } ?: 0) + 1
 
+    override suspend fun countByQid(speciesId: String): Int = _rows.value.count { it.speciesId == speciesId }
+
+    override suspend fun firstByQid(speciesId: String): Instant? =
+        _rows.value
+            .filter { it.speciesId == speciesId }
+            .minByOrNull { it.capturedAt }
+            ?.capturedAt
+
     fun seed(observations: List<Observation>) {
         _rows.value = observations
     }

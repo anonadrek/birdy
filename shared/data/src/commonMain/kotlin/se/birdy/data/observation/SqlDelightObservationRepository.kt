@@ -42,6 +42,16 @@ class SqlDelightObservationRepository(
             queries.nextStampNumber().executeAsOne().toInt()
         }
 
+    override suspend fun countByQid(speciesId: String): Int =
+        withContext(Dispatchers.IO) {
+            queries.countByQid(speciesId).executeAsOne().toInt()
+        }
+
+    override suspend fun firstByQid(speciesId: String): Instant? =
+        withContext(Dispatchers.IO) {
+            queries.firstByQid(speciesId).executeAsOneOrNull()?.let { Instant.fromEpochMilliseconds(it) }
+        }
+
     override suspend fun insert(observation: Observation) {
         withContext(Dispatchers.IO) {
             queries.insert(
