@@ -240,3 +240,23 @@ species:
   # Coraciidae batch (2026-05-08).
   Q961342:
     description_accept_missing: [sv]  # Coracias abyssinicus (Savannblåkråka / Abyssinian Roller) — afrikansk, ingen svwiki
+  # Corvidae batch (2026-05-12).
+  Q184820:
+    description_accept_missing: [sv]  # Nucifraga caryocatactes (Nötkråka) — allmän SE-stannfågel men svwiki lead för kort
+  Q25386:
+    description_accept_missing: [en]  # Corvus frugilegus (Råka) — allmän södra SE men enwiki lead saknas/för kort
+  Q643836:
+    description_accept_missing: [sv]  # Pyrrhocorax pyrrhocorax (Klippkaja / Red-billed Chough) — sparse svwiki
+  Q49002445:
+    description_accept_missing: [sv]  # Pica mauritanica (Maghreb-skata) — nordafrikansk, ingen svwiki
+  Q55115024:
+    allow_missing_images: true  # Pica asirensis (Asir-skata) — Saudi-endemic, Commons saknar foto över MIN_DIMENSION
+  Q1590276:
+    description_accept_missing: [sv]  # Podoces pleskei (Iransk markskata) — iransk endemic, ingen svwiki
+  Q420818:
+    description_accept_missing: [sv]  # Corvus ruficollis (Ökenkorp / Brown-necked Raven) — Mellanöstern/NE Afrika
+    allow_missing_images: true  # Commons saknar foto över MIN_DIMENSION
+  Q894235:
+    description_accept_missing: [en]  # Corvus rhipidurus (Solfjäderkorp / Fan-tailed Raven) — enwiki lead för kort
+  Q507383:
+    description_accept_missing: [sv]  # Corvus splendens (Husskråka / House Crow) — asiatisk, ingen svwiki

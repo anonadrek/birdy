@@ -1,0 +1,128 @@
+id: Q111674
+scientific_name: Corvus macrorhynchos
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Corvus
+  ioc_order: Passeriformes
+names:
+  sv: Stornäbbad kråka
+  en: Large-billed Crow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stornäbbad kråka
+
+
+    Stornäbbad kråka är en stor asiatisk fågel som tillhör kråkfåglarnas familj. Den
+    kännetecknas av sitt stora, kraftigt utformat näbb, vilket är dess mest framträdande
+    karaktäristik. Fågeln är helt svart eller mörkgrå till färgen och liknar andra
+    större kråkfåglar, men näbben är märkligt större och kraftigare.
+
+
+    Arten är vida spridd över stora delar av Asien och förekommer i varierande habitat,
+    från tätbebyggda områden till mer öppna landskap. Det är en allmän fågel inom
+    sitt utbredningsområde. Arten är socialt lagd och ses ofta i mindre flockar, särskilt
+    utanför häckningstiden.
+
+
+    Taxonomin för arten är komplex och fortfarande omdiskuterad bland ornitologer.
+    Det finns indikationer på att det som betecknas som stornäbbad kråka faktiskt
+    utgör ett komplex av flera närbesläktade arter snarare än en enda enhetlig art.'
+  en: '# Large-billed Crow
+
+
+    The large-billed crow is a widespread Asian corvid characterized by its notably
+    large, heavy bill—the feature from which both its scientific name and common names
+    derive. Its substantial bill may cause confusion with the larger common raven,
+    though the crow is a distinctly smaller bird overall. It is entirely black in
+    plumage, presenting a sleek appearance typical of the crow family.
+
+
+    This species demonstrates remarkable adaptability, thriving on a diverse diet
+    and successfully colonizing a wide range of habitats and environments. Its dietary
+    flexibility and ability to exploit new territories have enabled rapid range expansion,
+    though this success has made it a nuisance species in many areas, particularly
+    on islands where introduced populations can become problematic.
+
+
+    The large-billed crow inhabits various Asian regions and favors environments ranging
+    from urban and cultivated areas to more open landscapes. It is a highly social
+    bird, often seen in small flocks or larger gatherings. While the source material
+    does not provide specific details about its calls or behavior beyond its feeding
+    adaptability, its intelligence and problem-solving abilities are consistent with
+    other corvid species, allowing it to thrive in increasingly human-modified landscapes.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Den tillhandahållna källtexten innehåller endast information om
+    att stornäbbad kråka är en asiатisk fågel inom kråkfåglarnas familj, och att dess
+    systematik är omdiskuterad. Det finns ingen information om förekomst i Skandinavien/Nordeuropa
+    eller om migrationsvanor, övervintringsplatser eller ankomsttider. Därför kan
+    ingen faktisk information presenteras enligt instruktionerna.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and morphological information
+    about the Large-billed Crow, with no details regarding its occurrence in Scandinavia
+    or Northern Europe, migration patterns, seasonal movements, or overwintering behavior.
+    The species is described as a widespread Asian crow, but no information is given
+    about its presence in or movements through Scandinavian regions.'
+image_refs:
+- role: hero
+  path: Q111674/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%E3%83%8E%E3%83%9C%E3%83%9B%E3%82%B7%E3%83%A7%E3%82%B3%E3%83%AD%E3%83%88%E3%82%BD&amp;action=edit&amp;redlink=1"
+    class="new" title="User:ノボホショコロトソ (page does not exist)">ノボホショコロトソ</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus macrorhynchos in Sapporo
+    02.jpg
+  commons_filename: Corvus macrorhynchos in Sapporo 02.jpg
+- role: secondary
+  path: Q111674/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%E3%83%8E%E3%83%9C%E3%83%9B%E3%82%B7%E3%83%A7%E3%82%B3%E3%83%AD%E3%83%88%E3%82%BD&amp;action=edit&amp;redlink=1"
+    class="new" title="User:ノボホショコロトソ (page does not exist)">ノボホショコロトソ</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus macrorhynchos in Sapporo
+    03.jpg
+  commons_filename: Corvus macrorhynchos in Sapporo 03.jpg
+- role: secondary
+  path: Q111674/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%E3%83%8E%E3%83%9C%E3%83%9B%E3%82%B7%E3%83%A7%E3%82%B3%E3%83%AD%E3%83%88%E3%82%BD&amp;action=edit&amp;redlink=1"
+    class="new" title="User:ノボホショコロトソ (page does not exist)">ノボホショコロトソ</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus macrorhynchos in Ueno
+    01.jpg
+  commons_filename: Corvus macrorhynchos in Ueno 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-12T20:02:25.951393+00:00'
+sources:
+  wikipedia_sv_revision: '57630619'
+  wikipedia_en_revision: '1352022244'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,87 @@
+id: Q55115024
+scientific_name: Pica asirensis
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Pica
+  ioc_order: Passeriformes
+names:
+  sv: Asirskata
+  en: Asir Magpie
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Asirskata
+
+
+    Asirskata är en starkt utrotningshotad tätting i familjen kråkfåglar. Den betraktades
+    tidigare som en underart till skatan men räknas numera som egen art. Arten förekommer
+    enbart isolerat i ett begränsat bergsområde och är därför mycket sårbar för miljöförändringar.
+
+
+    Asirskata är en relativt liten medlem av kråkfågelfamiljen. Precis som många andra
+    skatartade har den troligen en svartvit eller mörkfärgad fjäderdräkt, men detaljerade
+    beskrivningar av dess utseende är begränsade. Arten är mycket sparsamt dokumenterad
+    i naturvårdslitteraturen, vilket reflekterar dess isolerade utbredning och små
+    population.
+
+
+    På grund av sitt mycket begränsade utbredningsområde och små bestånd klassificeras
+    Asirskata som starkt utrotningshotad. Arten är därför föremål för internationell
+    naturvård och forskning för att säkra dess överlevnad.'
+  en: '# Asir Magpie
+
+
+    The Asir magpie is a critically endangered corvid endemic to the southwestern
+    highlands of Saudi Arabia, where it inhabits African juniper forests within well-vegetated
+    wadis and valleys. Once classified as a subspecies of the Eurasian magpie, it
+    is now recognized as a distinct species by most authorities, though taxonomic
+    debate continues. It shares the characteristic features typical of magpies, with
+    striking black and white plumage.
+
+
+    This highly threatened species faces severe habitat destruction as its native
+    forests fail to regenerate naturally. Tourism development and climate change compound
+    these pressures, pushing the species toward extinction. Currently, fewer than
+    135 breeding pairs remain in the wild, and population numbers continue to decline.
+    The bird''s restricted range and dependence on specific forest habitats make it
+    particularly vulnerable to environmental changes. Conservation efforts are crucial
+    to prevent the loss of this unique Arabian endemic, as it exists nowhere else
+    in the world and represents an irreplaceable part of the region''s avifauna.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The Asir magpie is endemic to Saudi Arabia''s southwestern highlands and does
+    not occur naturally in Scandinavia or Northern Europe. The source text contains
+    no information about migration patterns, seasonal movements, or presence in northern
+    regions, making it impossible to provide relevant information about its occurrence
+    throughout the year in Scandinavia/Northern Europe.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-12T19:59:43.764617+00:00'
+sources:
+  wikipedia_sv_revision: '56249725'
+  wikipedia_en_revision: '1346666226'
+  claude_model: claude-haiku-4-5-20251001

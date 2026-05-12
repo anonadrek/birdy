@@ -1,0 +1,131 @@
+id: Q26198
+scientific_name: Corvus corone
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Corvus
+  ioc_order: Passeriformes
+names:
+  sv: Kråka
+  en: Carrion Crow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kråka
+
+
+    Kråkan är en stor och robust fågel i familjen kråkfåglar med helt svart fjäderdräkt
+    och kraftig näbb. Det är en vanlig fågel över stora delar av Europa, Nordafrika
+    och Asien ända till Japan. I Sverige förekommer den över nästan hela landet, men
+    beståndet minskar stadigt och arten kategoriseras numera som nära hotad.
+
+
+    Kråkan är en allätare som ofta ses på marken där det söker efter föda. Det är
+    en aktiv och intelligent fågel som ofta uppträder själv eller i mindre grupper.
+    Under flykt är det lätt igenkännligt med sitt karakteristiska "kra-kra"-läte,
+    en skrovlig och ganska djup kall. På våren hörs även andra ljud från arten.
+
+
+    Arten förekommer i varierande miljöer men föredrar område med en blandning av
+    öppen mark och träd. Det är ofta påträffat nära bebyggelse, på jordbruksmark och
+    i öppen skogslandskap.'
+  en: '# Carrion Crow
+
+
+    The Carrion Crow is a large, robust corvid with entirely black plumage, stockier
+    in build than its American relative. It is a versatile and adaptable passerine
+    found across western Europe and into the eastern Palearctic, occupying similar
+    ecological roles to the American crow in North America. In areas where it overlaps
+    with the hooded crow, the two species are closely related but can be distinguished
+    by the carrion crow''s larger size and more compact frame.
+
+
+    Carrion crows are highly intelligent and opportunistic, feeding on a wide variety
+    of items from grain and insects to carrion and human refuse. They are often seen
+    foraging on the ground or perched prominently on trees and buildings. The species
+    is vocal, producing a distinctive harsh, croaking call. It is equally at home
+    in agricultural landscapes, urban areas, and open country, demonstrating the flexibility
+    that has allowed corvids to thrive across diverse habitats.'
+migration:
+  sv: '# Kråkan i Skandinavien
+
+
+    Kråkan är en helårsboende fågel i Skandinavien och Nordeuropa, även om populationen
+    visar stora regionala variationer. Under hösten och vintern förekommer ökad rörlighet,
+    då vissa individer från nordligare områden drar mot söder för att söka föda. Många
+    kråkor är dock stationära året runt, särskilt i södra Skandinavien där snöförhållandena
+    tillåter detta. Under våren återvänder flyttfåglar från februari till april för
+    att etablera revir och häcka.
+
+
+    I Sverige är arten klassificerad som nära hotad då populationen minskar märkbart.
+    Kråkan är anpassad till både urbana och rurala miljöer och trots minskande nummer
+    är den fortfarande en vanlig synyn på många håll i landet. Arten är relativt hårdför
+    och kan övervinta på höga breddgrader där födan är tillgänglig, särskilt vid människobosättningar.'
+  en: '# Carrion Crow in Scandinavia and Northern Europe
+
+
+    The Carrion Crow is a resident and partial migrant throughout Scandinavia and
+    Northern Europe. In southern regions, many birds remain year-round, while northern
+    populations exhibit seasonal movement patterns. Birds breeding in the far north
+    typically migrate south during autumn months, with departures occurring from September
+    through November. Return migration happens in early spring, generally from February
+    through April. Some individuals establish winter territories in milder lowland
+    areas before returning to breeding grounds. The species adapts flexibly to local
+    conditions, with hardier individuals remaining in northern territories during
+    mild winters while others seek more temperate regions.'
+image_refs:
+- role: hero
+  path: Q26198/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus corone anting JdP 20250607
+    n02.jpg
+  commons_filename: Corvus corone anting JdP 20250607 n02.jpg
+- role: secondary
+  path: Q26198/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus corone 2023 10 28 07.jpg
+  commons_filename: Corvus corone 2023 10 28 07.jpg
+- role: secondary
+  path: Q26198/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus corone 2023 10 28 01.jpg
+  commons_filename: Corvus corone 2023 10 28 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-12T20:00:30.777325+00:00'
+sources:
+  wikipedia_sv_revision: '59227890'
+  wikipedia_en_revision: '1349315050'
+  claude_model: claude-haiku-4-5-20251001

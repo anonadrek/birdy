@@ -1,0 +1,117 @@
+id: Q184820
+scientific_name: Nucifraga caryocatactes
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Nucifraga
+  ioc_order: Passeriformes
+names:
+  sv: Nötkråka
+  en: Northern Nutcracker
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Northern Nutcracker
+
+
+    The Northern Nutcracker is a striking corvid slightly smaller than a Eurasian
+    Jay, distinguished by its notably large bill and slender, uncrestled head. Its
+    plumage is predominantly chocolate-brown, heavily marked with distinctive white
+    spots and patches across the body. The wings and upper tail are black with a greenish-blue
+    iridescent sheen, creating a handsome contrast.
+
+
+    This specialized bird is strongly associated with coniferous forests, where it
+    feeds primarily on pine and spruce seeds. It has evolved a remarkable relationship
+    with these trees: it caches thousands of seeds annually for winter use, and its
+    behaviour significantly influences seed dispersal and forest regeneration. The
+    nutcracker uses its powerful bill to extract seeds from cones with impressive
+    efficiency.
+
+
+    In terms of behaviour, it is generally wary and can be difficult to observe, though
+    it may become more visible during years of seed abundance or scarcity when populations
+    move through different regions. Its call is a distinctive series of harsh, grating
+    notes. It is resident across much of its range in northern and central regions,
+    though populations exhibit irregular movements in response to food availability,
+    occasionally appearing in unexpected areas when local seed crops fail.'
+migration:
+  sv: ''
+  en: '# Northern Nutcracker in Scandinavia/Northern Europe
+
+
+    The Northern Nutcracker is an irruptive species in Scandinavia and Northern Europe,
+    with highly variable occurrence depending on food availability. In years of good
+    cone crops, resident and breeding populations are supplemented by influxes from
+    eastern regions, particularly from Russian conifer forests. These irregular invasions
+    typically occur in autumn and winter months, with arrival timing closely linked
+    to seed crop failures in their core range. Some birds remain year-round in suitable
+    conifer habitats, while others undertake irregular southwestward movements when
+    food becomes scarce.
+
+
+    The species shows no predictable migration pattern, making its appearance in Scandinavia
+    unpredictable. Winter months (October-March) are most likely to see nutcrackers
+    present, though numbers fluctuate dramatically. In poor seed years, significant
+    numbers may irrupt westward across the continent, while favourable conditions
+    keep populations concentrated in eastern strongholds.'
+image_refs:
+- role: hero
+  path: Q184820/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/tls-60">tls-60</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Nucifraga caryocatactes macrorhynchos,
+    Khanty-Mansiysk, Khanty-Mansi Autonomous Okrug, Russia 1.jpg
+  commons_filename: Nucifraga caryocatactes macrorhynchos, Khanty-Mansiysk, Khanty-Mansi
+    Autonomous Okrug, Russia 1.jpg
+- role: secondary
+  path: Q184820/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/83657186@N05">Pierre-Marie
+    Epiney</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cassenoix moucheté Nucifraga
+    caryocatactes DSC 6800 (53018322450).jpg
+  commons_filename: Cassenoix moucheté Nucifraga caryocatactes DSC 6800 (53018322450).jpg
+- role: secondary
+  path: Q184820/secondary-2.jpg
+  width: 1800
+  height: 1199
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/83657186@N05">Pierre-Marie
+    Epiney</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cassenoix moucheté Nucifraga
+    caryocatactes DSC 6760 (53018420268).jpg
+  commons_filename: Cassenoix moucheté Nucifraga caryocatactes DSC 6760 (53018420268).jpg
+review_status: approved
+review_notes: Nötkråka — etablerad SE-stannfågel i barrskog. Hero visar macrorhynchos-underart (Asien)
+  men plumage/morfologi är fält-identisk med nominate caryocatactes (samma argument
+  som Plan 2b nattskärra-Algeriet-precedent). svwiki sparse-override applicerad.
+generated_at: '2026-05-12T20:01:46.980528+00:00'
+sources:
+  wikipedia_sv_revision: '59216726'
+  wikipedia_en_revision: '1334799175'
+  claude_model: claude-haiku-4-5-20251001

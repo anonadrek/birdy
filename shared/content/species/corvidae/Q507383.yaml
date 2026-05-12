@@ -1,0 +1,106 @@
+id: Q507383
+scientific_name: Corvus splendens
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Corvus
+  ioc_order: Passeriformes
+names:
+  sv: Huskråka
+  en: House Crow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# House Crow
+
+
+    The house crow is a medium-sized corvid, smaller and more slender than the carrion
+    crow but larger than the jackdaw. Its most distinctive feature is the striking
+    contrast between its glossy black head, throat, and upper breast and the distinctive
+    grey-brown neck and breast. The wings, tail, and legs are black. Regional populations
+    show variations in bill thickness and plumage coloration depth.
+
+
+    Originally native to Asia, the house crow has spread globally through human trade
+    and shipping routes, now establishing populations in many parts of the world.
+    It is primarily an urban and suburban species, thriving in human-modified environments
+    where it forages for food scraps and refuse. Like other corvids, it is highly
+    adaptable and intelligent, often seen in small flocks around towns and cities.
+
+
+    The species is vocal, with a distinctive harsh, cawing call characteristic of
+    the crow family. It feeds opportunistically on discarded food, insects, and small
+    animals. Though originally confined to Asian regions, the house crow''s association
+    with human settlements and shipping has made it a successful coloniser of new
+    territories, where it may impact local ecosystems and compete with native corvid
+    species.'
+migration:
+  sv: ''
+  en: '# House Crow (Corvus splendens) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The House Crow is not a naturally occurring species in Scandinavia or Northern
+    Europe. While it is native to Asia and has established populations in parts of
+    the Middle East, Africa, and other regions through human-assisted dispersal via
+    shipping and trade routes, there is no documented regular occurrence or migration
+    pattern involving Scandinavian or Northern European territories. Any sightings
+    in these regions would represent exceptional vagrants rather than part of an established
+    migratory or resident population.'
+image_refs:
+- role: hero
+  path: Q507383/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:GerifalteDelSabana" title="User:GerifalteDelSabana">GerifalteDelSabana</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus splendens @ Kuala Lumpur
+    (4s, p7).jpg
+  commons_filename: Corvus splendens @ Kuala Lumpur (4s, p7).jpg
+- role: secondary
+  path: Q507383/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:GerifalteDelSabana" title="User:GerifalteDelSabana">GerifalteDelSabana</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus splendens insolens @
+    Kuala Lumpur.jpg
+  commons_filename: Corvus splendens insolens @ Kuala Lumpur.jpg
+- role: secondary
+  path: Q507383/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:GerifalteDelSabana" title="User:GerifalteDelSabana">GerifalteDelSabana</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus splendens insolens @
+    Kuala Lumpur (2).jpg
+  commons_filename: Corvus splendens insolens @ Kuala Lumpur (2).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-12T19:58:57.726462+00:00'
+sources:
+  wikipedia_sv_revision: '55615235'
+  wikipedia_en_revision: '1352275827'
+  claude_model: claude-haiku-4-5-20251001

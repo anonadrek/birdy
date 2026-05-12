@@ -1,0 +1,133 @@
+id: Q25405
+scientific_name: Corvus cornix
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Corvus
+  ioc_order: Passeriformes
+names:
+  sv: Gråkråka
+  en: Hooded Crow
+abundance: allmän
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gråkråka
+
+
+    Gråkråkan är en stor kråkfågel som kännetecknas av sin karakteristiska grå och
+    svarta färgteckning. Huvudet, halsen, vingarna och svansen är svarta, medan ryggen,
+    bröstet och buken är gråa. Det är en robust fågel med kraftig näbb och intelligent
+    uppsyn.
+
+
+    Arten är mycket anpassningsbar och förekommer i ett brett spektrum av miljöer,
+    från städer och jordbruksmark till skogar och fjällbygd. Gråkråkan är intelligent
+    och framåtsträvande, ofta observerad när den äter från innehållsrikt område eller
+    söker föda på marken. Den är mycket social och ses ofta i smågrupper eller större
+    flockningar, särskilt under höst och vinter.
+
+
+    Arten är högljudd med ett karakteristiskt "kra-kra-kra"-läte som är grovt och
+    raspigt. Det använder också andra läten för kommunikation med artfränder. Gråkråkan
+    är en smart fågel som lätt anpassar sig till människans närhet och kan observeras
+    året runt i många regioner.'
+  en: '# Hooded Crow
+
+
+    The hooded crow is a distinctive corvid with striking plumage that makes it instantly
+    recognizable. Its ashy-grey body contrasts sharply with its black head, throat,
+    wings, tail, and thigh feathers, while the bill, eyes, and feet are also black.
+    This striking two-tone coloration distinguishes it from the all-black carrion
+    crow.
+
+
+    Like other members of the crow family, the hooded crow is highly adaptable and
+    omnivorous, opportunistically foraging for whatever food sources are available.
+    It exploits a wide range of habitats and feeding opportunities, from urban areas
+    to open countryside. The species is vocal and intelligent, displaying the problem-solving
+    abilities characteristic of corvids.
+
+
+    The hooded crow is widely distributed across northern, eastern, and southeastern
+    regions of Europe, as well as parts of the Middle East. It thrives in varied environments,
+    making it a common sight throughout much of its range. Its combination of bold
+    plumage, adaptability, and intelligence makes it a fascinating subject for bird
+    observation.'
+migration:
+  sv: '# Gråkråka - Förekomst i Norden
+
+
+    Gråkråka är en årlig fågel i Skandinavien och Nordeuropa. Arten är främst stationär
+    eller delvandring i området, med populationer som övervintringar på flera platser.
+    Under hösten ankommer några individer från östligare regioner, medan inhemska
+    fåglar kan förflytta sig sydväst. Arten ses året om i sitt utbredningsområde,
+    särskilt i kustnära och öppna habitat. Övervintringsbestånden består ofta av både
+    lokala fåglar och invandrare från öster, vilka förstärker populationen under kallare
+    perioder. Våren märks en påtaglig återvändande av nordligare häckande fåglar.'
+  en: '# Hooded Crow (Corvus cornix) in Scandinavia
+
+
+    The Hooded Crow is a year-round resident throughout much of Scandinavia and Northern
+    Europe, with populations showing varying degrees of migratory behavior depending
+    on latitude and winter severity. In southern Scandinavia, birds are largely sedentary,
+    remaining in their territories throughout winter. However, northern populations
+    may undertake partial migrations, with some individuals moving southwestward during
+    harsh winter conditions. Spring arrival of migratory birds typically occurs from
+    March onwards, while autumn dispersal begins in September and October.
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q25405/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus cornix Vienna.JPG
+  commons_filename: Corvus cornix Vienna.JPG
+- role: secondary
+  path: Q25405/secondary-1.jpg
+  width: 1800
+  height: 1292
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus cornix Oulu 20160130.JPG
+  commons_filename: Corvus cornix Oulu 20160130.JPG
+- role: secondary
+  path: Q25405/secondary-2.jpg
+  width: 1225
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jebulon" title="User:Jebulon">Jebulon</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus cornix amiral Pericles
+    Ioannidis Rhodes.jpg
+  commons_filename: Corvus cornix amiral Pericles Ioannidis Rhodes.jpg
+review_status: approved
+review_notes: Gråkråka — den vanligaste kråkan i SE; ny rad tillagd 2026-05-12 (IOC corone/cornix-split).
+  Hero Vienna är typisk gråkråka-färgning (grå rygg/svart huvud + vingar).
+generated_at: '2026-05-12T20:03:33.988429+00:00'
+sources:
+  wikipedia_sv_revision: '59133938'
+  wikipedia_en_revision: '1349524075'
+  claude_model: claude-haiku-4-5-20251001

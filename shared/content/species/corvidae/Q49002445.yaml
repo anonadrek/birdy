@@ -1,0 +1,101 @@
+id: Q49002445
+scientific_name: Pica mauritanica
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Pica
+  ioc_order: Passeriformes
+names:
+  sv: Maghrebskata
+  en: Maghreb Magpie
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Maghreb Magpie
+
+
+    The Maghreb magpie is a striking corvid that inhabits North Africa across a wide
+    range of elevations, from coastal regions to mountain areas. It shares the characteristic
+    black-and-white plumage of other magpies but can be reliably distinguished by
+    several distinctive features: a patch of bare blue skin behind the eye, a narrower
+    white belly stripe, proportionally shorter wings, and a notably longer tail compared
+    to its Eurasian relative.
+
+
+    This species occupies diverse habitats throughout its range, from lowland areas
+    to mountainous terrain at altitudes exceeding 2,300 metres. Like other magpies,
+    it is likely an intelligent and adaptable bird, though detailed behavioral information
+    specific to this species remains limited in general literature. It shares the
+    corvid family''s reputation for intelligence and social behavior.
+
+
+    The Maghreb magpie represents an important North African endemic, with its range
+    extending across multiple countries in the region. Its adaptation to such varied
+    elevations suggests ecological flexibility, allowing it to thrive in both Mediterranean
+    and higher-altitude environments throughout its distribution.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the occurrence of Pica
+    mauritanica in Scandinavia or Northern Europe, nor does it include any migration,
+    overwintering, or seasonal movement data. The species is described as being found
+    exclusively in North Africa, from Morocco to Tunisia, making it geographically
+    irrelevant to a guide on Scandinavian and Northern European birds.'
+image_refs:
+- role: hero
+  path: Q49002445/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Maghreb magpie (Pica mauritanica).jpg
+  commons_filename: Maghreb magpie (Pica mauritanica).jpg
+- role: secondary
+  path: Q49002445/secondary-1.jpg
+  width: 1800
+  height: 1156
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37174512@N03">Panegyrics
+    of Granovetter</a> from Toronto, Ontario, Canada
+  source_url: https://commons.wikimedia.org/wiki/File:Pica mauritanica, Agadir 1.jpg
+  commons_filename: Pica mauritanica, Agadir 1.jpg
+- role: secondary
+  path: Q49002445/secondary-2.jpg
+  width: 1625
+  height: 1800
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/60678622@N04">Len
+    Worthington</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Moroccan Magpie Pica pica mauritanica
+    (8470664586).jpg
+  commons_filename: Moroccan Magpie Pica pica mauritanica (8470664586).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-12T19:59:47.215361+00:00'
+sources:
+  wikipedia_sv_revision: '57667828'
+  wikipedia_en_revision: '1352819102'
+  claude_model: claude-haiku-4-5-20251001

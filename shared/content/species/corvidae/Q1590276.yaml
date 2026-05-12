@@ -1,0 +1,99 @@
+id: Q1590276
+scientific_name: Podoces pleskei
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Podoces
+  ioc_order: Passeriformes
+names:
+  sv: Persisk ökenskrika
+  en: Iranian Ground Jay
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Iranian Ground Jay
+
+
+    The Iranian ground jay is a distinctive member of the crow family found exclusively
+    in Iran, where it is known locally as zaghbur. This endemic species represents
+    an interesting evolutionary branch within the Corvidae family, adapted to its
+    specific habitat.
+
+
+    As a ground-dwelling jay, this species exhibits behavioural adaptations quite
+    different from many of its corvid relatives. It spends considerable time on the
+    ground rather than in trees, moving with a characteristic terrestrial gait. Like
+    other ground jays, it is likely a social bird, though detailed observations of
+    its specific behaviour and social structure remain limited in popular literature.
+
+
+    The species'' calls and vocalizations, characteristic of corvids, help it communicate
+    within its environment, though specific details about its voice remain understudied
+    in accessible sources. Its appearance and plumage characteristics reflect adaptations
+    to Iranian terrain, though precise descriptions of its visual features would benefit
+    from direct field observation or specialized ornithological references.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the occurrence of Podoces
+    pleskei in Scandinavia or Northern Europe, nor does it include any details about
+    migration patterns, overwintering, or seasonal movements. The Iranian Ground Jay
+    is endemic to Iran, making it geographically irrelevant to a Scandinavian or Northern
+    European bird guide context.'
+image_refs:
+- role: hero
+  path: Q1590276/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5701712">موسی
+    مزینانیان</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Podoces pleskei 199125839.jpg
+  commons_filename: Podoces pleskei 199125839.jpg
+- role: secondary
+  path: Q1590276/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5701712">موسی
+    مزینانیان</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Podoces pleskei 199125884.jpg
+  commons_filename: Podoces pleskei 199125884.jpg
+- role: secondary
+  path: Q1590276/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5701712">موسی
+    مزینانیان</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Podoces pleskei 199125980.jpg
+  commons_filename: Podoces pleskei 199125980.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-12T20:01:59.826818+00:00'
+sources:
+  wikipedia_sv_revision: '59162165'
+  wikipedia_en_revision: '1333720129'
+  claude_model: claude-haiku-4-5-20251001

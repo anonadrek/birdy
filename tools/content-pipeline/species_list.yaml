@@ -648,6 +648,7 @@
   ioc_order: Cuculiformes
   common_en: Common Cuckoo
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q1266506
   scientific_name: Cuculus optatus
   family: Cuculidae
@@ -2692,6 +2693,7 @@
   common_sv: Tornfalk
   common_en: Common Kestrel
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q179625
   scientific_name: Falco vespertinus
   family: Falconidae
@@ -2704,6 +2706,7 @@
   ioc_order: Falconiformes
   common_en: Merlin
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q212243
   scientific_name: Falco eleonorae
   family: Falconidae
@@ -2722,6 +2725,7 @@
   ioc_order: Falconiformes
   common_en: Eurasian Hobby
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q738666
   scientific_name: Falco chicquera
   family: Falconidae
@@ -2734,6 +2738,7 @@
   ioc_order: Falconiformes
   common_en: Peregrine Falcon
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q33554
   scientific_name: Falco biarmicus
   family: Falconidae
@@ -2896,12 +2901,14 @@
   ioc_order: Passeriformes
   common_en: Siberian Jay
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25354
   scientific_name: Garrulus glandarius
   family: Corvidae
   ioc_order: Passeriformes
   common_en: Eurasian Jay
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q49002445
   scientific_name: Pica mauritanica
   family: Corvidae
@@ -2920,6 +2927,7 @@
   ioc_order: Passeriformes
   common_en: Eurasian Magpie
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q1590276
   scientific_name: Podoces pleskei
   family: Corvidae
@@ -2932,18 +2940,21 @@
   ioc_order: Passeriformes
   common_en: Northern Nutcracker
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25345384
   scientific_name: Coloeus monedula
   family: Corvidae
   ioc_order: Passeriformes
   common_en: Western Jackdaw
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25386
   scientific_name: Corvus frugilegus
   family: Corvidae
   ioc_order: Passeriformes
   common_en: Rook
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q420818
   scientific_name: Corvus ruficollis
   family: Corvidae
@@ -2962,12 +2973,20 @@
   ioc_order: Passeriformes
   common_en: Northern Raven
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26198
   scientific_name: Corvus corone
   family: Corvidae
   ioc_order: Passeriformes
   common_en: Carrion Crow
   vp_status: H
+- wikidata_id: Q25405
+  scientific_name: Corvus cornix
+  family: Corvidae
+  ioc_order: Passeriformes
+  common_en: Hooded Crow
+  vp_status: H
+  abundance: allmän
 - wikidata_id: Q507383
   scientific_name: Corvus splendens
   family: Corvidae
@@ -4717,6 +4736,7 @@
   ioc_order: Passeriformes
   common_en: Brambling
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q847168
   scientific_name: Fringilla teydea
   family: Fringillidae
@@ -4741,6 +4761,7 @@
   ioc_order: Passeriformes
   common_en: Eurasian Chaffinch
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q40995958
   scientific_name: Fringilla maderensis
   family: Fringillidae
@@ -4765,12 +4786,14 @@
   ioc_order: Passeriformes
   common_en: Hawfinch
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q46143
   scientific_name: Carpodacus erythrinus
   family: Fringillidae
   ioc_order: Passeriformes
   common_en: Common Rosefinch
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q126618
   scientific_name: Carpodacus synoicus
   family: Fringillidae
@@ -4795,6 +4818,7 @@
   ioc_order: Passeriformes
   common_en: Pine Grosbeak
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q786784
   scientific_name: Pyrrhula murina
   family: Fringillidae
@@ -4807,6 +4831,7 @@
   ioc_order: Passeriformes
   common_en: Eurasian Bullfinch
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q559977
   scientific_name: Rhodopechys sanguineus
   family: Fringillidae
@@ -4843,6 +4868,7 @@
   ioc_order: Passeriformes
   common_en: European Greenfinch
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q27075814
   scientific_name: Crithagra rothschildi
   family: Fringillidae
@@ -4861,12 +4887,14 @@
   ioc_order: Passeriformes
   common_en: Twite
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q27075852
   scientific_name: Linaria cannabina
   family: Fringillidae
   ioc_order: Passeriformes
   common_en: Common Linnet
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q27075854
   scientific_name: Linaria yemenensis
   family: Fringillidae
@@ -4879,6 +4907,7 @@
   ioc_order: Passeriformes
   common_en: Redpoll
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q331190
   scientific_name: Loxia leucoptera
   family: Fringillidae
@@ -4891,6 +4920,7 @@
   ioc_order: Passeriformes
   common_en: Parrot Crossbill
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q1143180
   scientific_name: Loxia scotica
   family: Fringillidae
@@ -4903,6 +4933,7 @@
   ioc_order: Passeriformes
   common_en: Red Crossbill
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q206550
   scientific_name: Carduelis citrinella
   family: Fringillidae
@@ -4927,6 +4958,7 @@
   ioc_order: Passeriformes
   common_en: European Goldfinch
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q192524
   scientific_name: Serinus canaria
   family: Fringillidae
@@ -4957,6 +4989,7 @@
   ioc_order: Passeriformes
   common_en: Eurasian Siskin
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26416
   scientific_name: Plectrophenax nivalis
   family: Calcariidae
@@ -4995,6 +5028,7 @@
   ioc_order: Passeriformes
   common_en: Common Reed Bunting
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q335535
   scientific_name: Emberiza aureola
   family: Emberizidae
@@ -5013,6 +5047,7 @@
   ioc_order: Passeriformes
   common_en: Rustic Bunting
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q334183
   scientific_name: Emberiza melanocephala
   family: Emberizidae
@@ -5073,6 +5108,7 @@
   ioc_order: Passeriformes
   common_en: Yellowhammer
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q18851
   scientific_name: Thinornis dubius
   family: Charadriidae

@@ -1,0 +1,125 @@
+id: Q214281
+scientific_name: Perisoreus infaustus
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Perisoreus
+  ioc_order: Passeriformes
+names:
+  sv: Lavskrika
+  en: Siberian Jay
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Lavskrika
+
+
+    Lavskrika är en liten kråkfågel, den minsta i västpalearktis, med en karakteristisk
+    gråbrun yvigt fjäderdräkt. Den känns igen på sin klart roströda färg på vingar,
+    stjärt och övergump, vilket ger den ett distinktivt utseende bland övriga kråkfåglar.
+
+
+    Arten förekommer i lavklädd barrskog från Norge till östra Sibirien och är en
+    utpräglad stannfågel som stannar året runt i sitt utbredningsområde. Lavskrikan
+    är känd för att vara mycket orädd och söker sig ofta till människor i skogen för
+    att söka föda, vilket gör den relativt lätt att observera.
+
+
+    Arten har spelat en viktig roll i lokal folktro och kultur inom sitt utbredningsområde.'
+  en: '# Siberian Jay
+
+
+    The Siberian Jay is a small corvid with subtle colouration perfectly suited to
+    its boreal habitat. It displays grey-brown plumage with a darker brown crown contrasting
+    against a paler throat. Distinctive rusty-red patches adorn the wing-bend area,
+    undertail coverts, and tail sides, providing flashes of colour in flight. Males
+    and females are alike in appearance.
+
+
+    This jay inhabits extensive coniferous forests across North Eurasia, where it
+    remains a common resident despite ongoing habitat fragmentation. It typically
+    stays within the shelter of dense spruce and pine forests, though it may venture
+    into more open woodland. The species is highly adaptable to its challenging northern
+    environment and maintains stable populations across its wide range.
+
+
+    The International Union for Conservation of Nature classifies the Siberian Jay
+    as of "least concern," reflecting its abundance and the vastness of its distribution.
+    Its resilience in one of the world''s most demanding forest ecosystems makes it
+    a successful northern corvid, well-adapted to the long winters and short growing
+    seasons of the boreal zone.'
+migration:
+  sv: '# Lavskrika - Årsrunt i Skandinavien
+
+
+    Lavskrikan är en utpräglad stannfågel som förekommer året runt inom sitt utbredningsområde
+    i lavklädd barrskog från Norge till östra Sibirien. Den flyttar inte långväga
+    utan stannar kvar på sina revir även under de kallaste vintermånaderna. Arten
+    är väl anpassad till nordiska förhållanden och har ingen migration att tala om,
+    utan är permanent bosatt i sitt naturliga habitat i Skandinavien och övriga Nordeuropa.'
+  en: '# Siberian Jay in Scandinavia/Northern Europe
+
+
+    The Siberian Jay is a year-round resident throughout its range in northern Scandinavia
+    and boreal Eurasia. Unlike many other jay species, it does not migrate seasonally
+    but remains in its coniferous forest habitat throughout the year, including harsh
+    winters. In Scandinavia, populations are found primarily in northern Sweden and
+    Finland, where they are permanent residents. The species is well-adapted to extreme
+    cold and relies on cached food stores accumulated during autumn months to survive
+    the winter period. There is minimal movement between regions, with birds maintaining
+    relatively fixed territories year-round.'
+image_refs:
+- role: hero
+  path: Q214281/hero.jpg
+  width: 2400
+  height: 1803
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Perisoreus infaustus Kittilä
+    20260408 01.jpg
+  commons_filename: Perisoreus infaustus Kittilä 20260408 01.jpg
+- role: secondary
+  path: Q214281/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Perisoreus infaustus Kittilä
+    20260408 04.jpg
+  commons_filename: Perisoreus infaustus Kittilä 20260408 04.jpg
+- role: secondary
+  path: Q214281/secondary-2.jpg
+  width: 1347
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Perisoreus infaustus Kittilä
+    20220312 03.jpg
+  commons_filename: Perisoreus infaustus Kittilä 20220312 03.jpg
+review_status: approved
+review_notes: Lavskrika — etablerad stannfågel i norra SE-barrskog. Hero från Kittilä (FI) visar
+  typisk plumage.
+generated_at: '2026-05-12T20:01:36.353490+00:00'
+sources:
+  wikipedia_sv_revision: '59223875'
+  wikipedia_en_revision: '1351859736'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,120 @@
+id: Q12256020
+scientific_name: Cyanopica cooki
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Cyanopica
+  ioc_order: Passeriformes
+names:
+  sv: Iberisk blåskata
+  en: Iberian Magpie
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Iberisk blåskata
+
+
+    Iberisk blåskata är en medlem av kråkfågelfamiljen som är endemisk för Iberiska
+    halvön. Arten betraktades tidigare som samma art som den östasiatiska östlig blåskata,
+    men klassificeras nu som en egen art.
+
+
+    Arten har det karakteristiska blåa och vita fjäderdräkten som är typiskt för blåskator.
+    Det är en medelstor fågel med långt svans och markant färgteckning. Beteendemässigt
+    är den social och ses ofta i mindre flockar, särskilt under icke-häckningssäsongen.
+    Arten förekommer främst i öppen och halvöppen miljö.
+
+
+    Denna fågel är anpassad till sin specifika geografiska miljö på Iberiska halvön
+    och representerar ett exempel på artbildning bland tidigare sammanslagna populationer.'
+  en: '# Iberian Magpie
+
+
+    The Iberian magpie is a corvid measuring 31–35 cm in length, making it comparable
+    to the Eurasian magpie in overall size and shape. However, it is noticeably slenderer
+    with proportionately smaller legs and bill than its more widespread relative.
+    It belongs to the genus Cyanopica, which contains several Asian species.
+
+
+    This bird inhabits specific regions within southwestern Europe, where it favours
+    open woodland and scrubland habitats. Like other magpies, it is likely to be an
+    opportunistic feeder and socially gregarious, though specific details about its
+    behaviour and vocalizations would benefit from additional observation and study.
+
+
+    The species represents an interesting isolated population within Europe, separated
+    from its Asiatic relatives, making it of particular interest to ornithologists
+    studying biogeography and the evolution of corvid populations.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (The source text only states that the Iberian Magpie occurs exclusively on the
+    Iberian Peninsula and provides taxonomic information, but contains no information
+    about migration patterns, seasonal occurrence, or movements throughout the year.)'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only morphological information about the Iberian
+    Magpie (size, shape, and taxonomic classification) and does not include any data
+    regarding its migration patterns, seasonal movements, or occurrence throughout
+    the year in Scandinavia or Northern Europe. To provide accurate migration information,
+    additional sources with specific biogeographical and seasonal distribution data
+    would be required.'
+image_refs:
+- role: hero
+  path: Q12256020/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Pega-azul (Cyanopica cooki)
+    (50989853202).jpg
+  commons_filename: Pega-azul (Cyanopica cooki) (50989853202).jpg
+- role: secondary
+  path: Q12256020/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Pega azul ou Charneco ( Cyanopica
+    Cooki ) (49870213008).jpg
+  commons_filename: Pega azul ou Charneco ( Cyanopica Cooki ) (49870213008).jpg
+- role: secondary
+  path: Q12256020/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Pega azul ou Charneco ( Cyanopica
+    Cooki ) (49871055817).jpg
+  commons_filename: Pega azul ou Charneco ( Cyanopica Cooki ) (49871055817).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-12T20:01:09.320460+00:00'
+sources:
+  wikipedia_sv_revision: '59100030'
+  wikipedia_en_revision: '1346415200'
+  claude_model: claude-haiku-4-5-20251001

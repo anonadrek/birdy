@@ -1,0 +1,137 @@
+id: Q25354
+scientific_name: Garrulus glandarius
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Garrulus
+  ioc_order: Passeriformes
+names:
+  sv: Nötskrika
+  en: Eurasian Jay
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Nötskrika
+
+
+    Nötskrika är en medelstor kråkfågel med vidsträckt utbredning över Europa, Afrika
+    och Asien. I sittande ställning framträder dess rödgrå till beigeröda fjäderdräkt,
+    men dess mest påtagliga särdrag blir synliga under flykten – kraftigt kontrasterade
+    vingar och stjärt i svart och vitt med inslag av ljusblått. Denna färgkombination
+    gör den lätt igenkännlig när den flyger mellan träden.
+
+
+    Nötskrikans läten är mycket karakteristiska. Dess hesa varningsrop hörs långt
+    bort och används både som varningssignal och lockläte, vilket gör att fågeln ofta
+    avslöjar sin närvaro genom sitt högljudda beteende. Under vårvintern kan man även
+    höra dess sång, som kontrasterar starkt mot varningslätet – den är lågmäld och
+    har en djup, visslande klang som är långt mindre aggressiv än dess vanligare utrop.
+
+
+    Nötskrikor är iakttagbar i ett vidsträckt område inom den palearktiska regionen
+    och förekommer i många underarter med varierande utseende beroende på geografiskt
+    ursprung.'
+  en: '# Eurasian Jay
+
+
+    The Eurasian jay is a striking woodland bird with distinctive plumage that makes
+    it unmistakable in the field. It displays pinkish-brown upperparts contrasted
+    by a whitish throat crossed with bold black stripes on each side. The most eye-catching
+    feature is the bright blue panel on the upper wing, which flashes vividly in flight,
+    complemented by a black tail. This passerine is a member of the crow family (Corvidae),
+    sharing the intelligence and boldness characteristic of that group.
+
+
+    This jay inhabits woodlands across an enormous geographic range spanning from
+    western Europe and north-west Africa eastward through the Indian subcontinent
+    to eastern Asia and south-east Asia. The species has evolved several distinct
+    regional forms throughout this vast distribution, with birds at the extremes of
+    the range showing marked differences in appearance. This variation reflects how
+    the species has adapted to diverse woodland habitats and climatic zones across
+    its range.
+
+
+    The Eurasian jay is an active and alert bird, often seen moving through tree canopies
+    with characteristic jerky flight. It is known for its loud, raucous calls that
+    echo through woodlands, alerting other birds to potential threats.'
+migration:
+  sv: '# Nötskrika (Garrulus glandarius) - Förekomst i Skandinavien/Nordeuropa
+
+
+    Nötskrkan är en året runt bosatt art i större delen av Skandinavien och Nordeuropa,
+    även om populationerna varierar säsongsätt. Arten är främst stannfågel, men vissa
+    individer från nordöstra populationer migrerar söderut under hårda vintrar. I
+    Sverige och Norge är den en vanlig häckfågel som återvänder till sina häckningsområden
+    under vårvintern, då även dess karakteristiska låga sång hörs. Under hösten genomför
+    arten lokal omflyttning, och individuell varierande migrations- och övervintringsmönster
+    förekommer beroende på väderförhållanden och födotillgång.'
+  en: '# Eurasian Jay in Scandinavia and Northern Europe
+
+
+    The Eurasian Jay is a year-round resident throughout much of Scandinavia and Northern
+    Europe, with populations largely sedentary within their woodland territories.
+    However, northern populations exhibit partial migration, with some individuals
+    moving southward during harsh winters, particularly from the northernmost parts
+    of the Scandinavian range. The species remains present in suitable habitat throughout
+    the winter months, though populations may fluctuate seasonally depending on food
+    availability and weather conditions.
+
+
+    In spring, returning migrants and residents begin territorial activity, with breeding
+    season commencing as winter retreats. The jay''s adaptability to various woodland
+    habitats allows it to persist year-round across the region, though this varies
+    by latitude and local conditions. Autumn months see some southward movement of
+    northern populations before winter settlement.'
+image_refs:
+- role: hero
+  path: Q25354/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Klaaschwotzer" title="User:Klaaschwotzer">Klaaschwotzer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Garrulus glandarius 4.jpg
+  commons_filename: Garrulus glandarius 4.jpg
+- role: secondary
+  path: Q25354/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Klaaschwotzer" title="User:Klaaschwotzer">Klaaschwotzer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Garrulus glandarius DS 3.jpg
+  commons_filename: Garrulus glandarius DS 3.jpg
+- role: secondary
+  path: Q25354/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Garrulus glandarius ringing
+    SPOL mangeoire 20250220 n05.jpg
+  commons_filename: Garrulus glandarius ringing SPOL mangeoire 20250220 n05.jpg
+review_status: approved
+review_notes: Nötskrika — hela SE upp till södra Norrland. Hero standard ID-foto.
+generated_at: '2026-05-12T20:02:18.684635+00:00'
+sources:
+  wikipedia_sv_revision: '59269248'
+  wikipedia_en_revision: '1349149348'
+  claude_model: claude-haiku-4-5-20251001

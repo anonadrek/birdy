@@ -1,0 +1,136 @@
+id: Q25357
+scientific_name: Corvus corax
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Corvus
+  ioc_order: Passeriformes
+names:
+  sv: Korp
+  en: Northern Raven
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Korp
+
+
+    Korpen är en stor, helt svart kråkfågel och den mest utbredda av alla medlemmar
+    i familjen Corvidae. Det återfinns på större delen av norra halvklotet och förekommer
+    i många olika underarter, vilka visar liten visuell variation men betydande genetiska
+    skillnader.
+
+
+    Med sin imponerade storlek och helt svarta fjäderdräkt är korpen en karakteristisk
+    fågel. Det är en intelligent och allätande fågel som är anpassad till många olika
+    miljöer, från bergiga områden till skogar och kustremsor. Korpen är känd för sitt
+    intelligenta beteende och förmåga att lösa problem, och det är ofta ses solit
+    eller i små grupper.
+
+
+    Korpen är en imponerande flygare med kraftfulla vingslag och kan ofta ses glida
+    högt i luften. Det är en långlivad fågel som kan uppnå betydande ålder i naturen.
+    Arten spelar en viktig roll i sitt ekosystem som både rovfågel och skallfågel.'
+  en: '# Northern Raven
+
+
+    The Northern Raven is a magnificent all-black passerine and the heaviest of all
+    songbirds, weighing up to 2 kilograms and measuring around 63 centimetres in length.
+    It holds the distinction of being the most widely distributed corvid across the
+    Northern Hemisphere, with 11 recognized subspecies showing relatively consistent
+    appearance despite significant genetic variation between populations. This large,
+    robust bird is one of only two corvids that rival it in size.
+
+
+    Behaviourally, Northern Ravens are highly social in their youth, often travelling
+    in flocks, but mature birds form lasting pair bonds. Mated couples establish and
+    actively defend territories throughout the year. The species is notably long-lived
+    for a passerine, with individuals documented surviving over 23 years in the wild,
+    though their average lifespan is considerably shorter.
+
+
+    Its all-black plumage, substantial build, and powerful presence make the Northern
+    Raven unmistakable in the field. The bird''s intelligence and adaptability have
+    allowed it to thrive across diverse habitats throughout the Northern Hemisphere,
+    from urban areas to remote wilderness regions.'
+migration:
+  sv: '# Korp (Corvus corax) – Förekomst i Skandinavien/Nordeuropa
+
+
+    Korpen är en permanent bosatt art i Skandinavien och Nordeuropa under större delen
+    av året. Den återfinns året runt i regionen, där den är en icke-flyttande eller
+    endast partiellt flyttande population. Under de kallaste vintermånaderna kan vissa
+    individer från nordligare populationer förflytta sig söderut för att söka föda,
+    men huvuddelen av populationen förblir i sitt hemområde genom hela året. Korpen
+    är väl anpassad för kallt klimat och kan övervintras framgångsrikt i norra områden,
+    där den lever på ben, offrade eller döda djur samt människans matavfall.'
+  en: '# Migration and Year-Round Distribution in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the Northern Raven''s migration
+    patterns, seasonal movements, or occurrence throughout the year in Scandinavia
+    and Northern Europe. While the text confirms that ravens are widely distributed
+    across the Northern Hemisphere and describes their general biology, behavior,
+    and physical characteristics, it does not include specific details about their
+    migratory habits or seasonal presence in northern European regions.'
+image_refs:
+- role: hero
+  path: Q25357/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus corax massif du Sancy
+    20230506.jpg
+  commons_filename: Corvus corax massif du Sancy 20230506.jpg
+- role: secondary
+  path: Q25357/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus corax -Tefia, Lanzarote,
+    Canary Islands, Spain-8.jpg
+  commons_filename: Corvus corax -Tefia, Lanzarote, Canary Islands, Spain-8.jpg
+- role: secondary
+  path: Q25357/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC BY 3.0
+  author: <a rel="nofollow" class="external text" href="https://web.archive.org/web/20161020203425/http://www.panoramio.com/user/1100550?with_photo_id=68208854">Henk
+    Monster</a>
+  source_url: https://commons.wikimedia.org/wiki/File:With prey (dead chamois) there
+    are alway ravens (corvus corax) to eat the meat - panoramio.jpg
+  commons_filename: With prey (dead chamois) there are alway ravens (corvus corax)
+    to eat the meat - panoramio.jpg
+review_status: approved
+review_notes: Korp — hela landet, skog och fjäll. Hero från Massif du Sancy (FR) visar typisk silhuett
+  + plumage.
+generated_at: '2026-05-12T20:00:27.620248+00:00'
+sources:
+  wikipedia_sv_revision: '59280352'
+  wikipedia_en_revision: '1350688790'
+  claude_model: claude-haiku-4-5-20251001

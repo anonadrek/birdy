@@ -1,0 +1,129 @@
+id: Q25345384
+scientific_name: Coloeus monedula
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: jackdaw
+  ioc_order: Passeriformes
+names:
+  sv: Kaja
+  en: Western Jackdaw
+abundance: allmän
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kaja
+
+
+    Kaja är en medelstor kråkfågel som förekommer över Europa, västra Asien och Nordafrika.
+    Den är mestadels stannfågel, även om nordliga och östliga populationer flyttar
+    söderut under vintern. Arten är betydligt mindre än andra kråkfåglar och kännetecknas
+    av sin svarta fjäderdräkt med grå färgtoner på nacke och överrygg. En markant
+    ljus iris ger den ett karakteristiskt utseende.
+
+
+    Kaja är mycket social och ses ofta i större flockar, särskilt utanför häckningstiden.
+    Det är en skicklig flygare med snabba, raka vingslag. Arten är opportunistisk
+    när det gäller föda och äter gärna frön, insekter och smådjur. Den häckar gärna
+    i kolonier på klippor, gamla byggnader och höga träd.
+
+
+    Arten är högljudd och lätt igenkänlig vid sitt karakteristiska läte – ett skarp
+    "kjäck, kjäck" eller gnaggande "käck-käck-käck". Denna lust att höras och dess
+    sociala beteende gör kajan till en påtaglig fågel där den förekommer, ofta nära
+    människor.'
+  en: '# Western Jackdaw
+
+
+    The western jackdaw is a small but distinctive member of the crow family. It is
+    notably smaller and more slender than its larger corvid relatives, with predominantly
+    black plumage enlivened by pale grey on the nape and upper back. A striking feature
+    is its pale eye, which stands out against the dark face. Four subspecies are recognised
+    across its range, differing mainly in the intensity of grey tones on the head
+    and nape.
+
+
+    This is a highly social and intelligent bird, often seen in flocks, particularly
+    outside the breeding season. It is vocal and noisy, with a characteristic sharp,
+    distinctive call that gives the bird its common name. The western jackdaw is found
+    throughout Europe, western Asia, and western North Africa. Whilst many populations
+    are resident year-round, those breeding in northern and eastern regions migrate
+    southward during winter months, joining with resident populations in more temperate
+    areas.'
+migration:
+  sv: '# Kaja – Säsongsförekomst i Skandinavien och Nordeuropa
+
+
+    Kaja är huvudsakligen en stannfågel i Sverige och Skandinavien, vilket betyder
+    att många individer är närvarande året runt. Den underart som förekommer här övervintrar
+    delvis regionalt. Under hösten och vintern kan populationerna dock förstärkas
+    av nordborna och österborna individer som flyttar söderut från kallare områden.
+    Dessa flyttfåglar anländer från sina häckningsmiljöer i norra och östra Europa
+    för att undvika de strängaste vinterklimaterna. Trots att arten är relativt stabil
+    under vinterhalvåret varierar förekomsterna mellan olika år beroende på väderförhållanden
+    och födotillgång.'
+  en: '# Western Jackdaw Migration in Scandinavia/Northern Europe
+
+
+    The western jackdaw is primarily a resident species across much of Europe, but
+    northern and eastern populations exhibit migratory behavior. In Scandinavia and
+    Northern Europe, jackdaws breeding in these regions migrate southward during winter
+    months to escape harsh conditions, while more southern populations remain year-round
+    residents. Birds typically depart breeding areas in autumn and return in spring,
+    though exact timing varies by latitude and local weather conditions. The degree
+    of migration increases with distance from the equator, with populations in the
+    far north showing more consistent southward movement than those in temperate zones.'
+image_refs:
+- role: hero
+  path: Q25345384/hero.jpg
+  width: 1800
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:ChoucasChoucas&amp;action=edit&amp;redlink=1"
+    class="new" title="User:ChoucasChoucas (page does not exist)">ChoucasChoucas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Choucas (Coloeus monedula) à
+    5080 Emines 01.jpg
+  commons_filename: Choucas (Coloeus monedula) à 5080 Emines 01.jpg
+- role: secondary
+  path: Q25345384/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Coloeus monedula Oulu 20250503
+    02.jpg
+  commons_filename: Coloeus monedula Oulu 20250503 02.jpg
+- role: secondary
+  path: Q25345384/secondary-2.jpg
+  width: 1800
+  height: 1349
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Coloeus monedula Oulu 20250503
+    03.jpg
+  commons_filename: Coloeus monedula Oulu 20250503 03.jpg
+review_status: approved
+review_notes: Kaja — vanlig stadsfågel, hela landet. Hero standard adult från Belgien.
+generated_at: '2026-05-12T19:59:02.841853+00:00'
+sources:
+  wikipedia_sv_revision: '59193816'
+  wikipedia_en_revision: '1349946403'
+  claude_model: claude-haiku-4-5-20251001

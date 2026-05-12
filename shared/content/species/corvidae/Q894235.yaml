@@ -1,0 +1,94 @@
+id: Q894235
+scientific_name: Corvus rhipidurus
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Corvus
+  ioc_order: Passeriformes
+names:
+  sv: Kortstjärtad korp
+  en: Fan-tailed Raven
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kortstjärtad korp
+
+
+    Kortstjärtad korp är en medlem av kråkfåglarnas familj och förekommer i Mellanöstern
+    samt i Afrika söder om Sahara, från Mali till Kenya. Arten är anpassad till de
+    halva och torra miljöer som finns inom sitt utbredningsområde.
+
+
+    Det är en medelstor korp med karakteristisk kort stjärt, vilket gett arten sitt
+    namn. För att lära känna arten bör man främst fokusera på denna särskiljande stjärtform,
+    som skiljer den från andra korparter i området. Arten är anpassad till liv i öppen
+    eller halvöppen terräng.
+
+
+    Kortstjärtad korp förekommer i lämpliga habitat inom sitt omfattande afrikanska
+    och mellanöstligt område, där den lever i anpassning till dessa torka- eller halvtorra
+    regioner.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Kortstjärtad korp är en afrikansk och mellanöstlig art som inte förekommer naturligt
+    i Skandinavien eller Nordeuropa. Arten är stationär inom sitt utbredningsområde
+    i Afrika och Mellanöstern, men finns inte bland de fåglar som normalt observeras
+    i norra Europa under året.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q894235/hero.jpg
+  width: 2048
+  height: 1465
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus rhipidurus 91598565.jpg
+  commons_filename: Corvus rhipidurus 91598565.jpg
+- role: secondary
+  path: Q894235/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1682329">Claude
+    Kolwelter</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus rhipidurus 155958810.jpg
+  commons_filename: Corvus rhipidurus 155958810.jpg
+- role: secondary
+  path: Q894235/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1682329">Claude
+    Kolwelter</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus rhipidurus 155958862.jpg
+  commons_filename: Corvus rhipidurus 155958862.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-12T19:59:51.463356+00:00'
+sources:
+  wikipedia_sv_revision: '56771830'
+  wikipedia_en_revision: '1338623577'
+  claude_model: claude-haiku-4-5-20251001

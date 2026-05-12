@@ -1,0 +1,121 @@
+id: Q191386
+scientific_name: Pyrrhocorax graculus
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Pyrrhocorax
+  ioc_order: Passeriformes
+names:
+  sv: Alpkaja
+  en: Alpine Chough
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Alpkaja
+
+
+    Alpkaja är en bergslevande medlem av kråkfågelfamiljen som förekommer på europeiska
+    kontinenten och långt österut till Indien. Det är en anpassad höghöjdsfågel som
+    trivas i bergsmiljöer och har klassificerats som livskraftig av IUCN, vilket tyder
+    på en stabil populationsstatus.
+
+
+    Arten är en karakteristisk bergsbo som är väl anpassad för livet på höga höjder
+    där få andra fåglar kan överleva. Den återfinns i alpina och subalpina regioner
+    där dess närvaro ofta är ett tecken på bergiga terräng och höga altitude. Även
+    om denna kort beskrivning baseras på begränsad information, bekräftar statusen
+    att arten fortsatt förekommer genom sitt naturliga utbredningsområde.'
+  en: '# Alpine Chough
+
+
+    The Alpine chough is a striking member of the crow family, distinguished by its
+    glossy black plumage, bright yellow beak, and yellow legs. This remarkable bird
+    inhabits some of the world''s highest mountain ranges, breeding at altitudes that
+    exceed those of virtually any other bird species. Its eggs have evolved special
+    adaptations to cope with the thin mountain air, featuring enhanced oxygen uptake
+    and reduced water loss—crucial physiological features for surviving in extreme
+    environments.
+
+
+    Alpine choughs are found across high-altitude regions from Spain through southern
+    Europe and North Africa to Central Asia and Nepal, where they form small flocks.
+    They are highly adapted to their harsh alpine habitat, foraging on rocky slopes
+    and peaks for seeds, insects, and organic matter. These agile birds are often
+    seen performing acrobatic flight displays among the mountain peaks, using air
+    currents with remarkable skill.
+
+
+    The species belongs to the genus Pyrrhocorax, which contains only two species.
+    Its presence at extreme altitudes makes it a symbol of adaptation to one of Earth''s
+    most challenging environments, where few other birds can successfully breed and
+    raise young.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: '# Alpine Chough in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Alpine Chough is a high-mountain specialist breeding across southern Europe,
+    North Africa, and Central Asia, with no regular occurrence in Scandinavia or Northern
+    Europe. The species'' distribution is restricted to alpine regions south of the
+    Scandinavian peninsula, and it does not form part of the region''s avifauna during
+    any season.'
+image_refs:
+- role: hero
+  path: Q191386/hero.jpg
+  width: 2400
+  height: 1590
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Vassil" title="User:Vassil">Vassil</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pyrrhocorax graculus Les Grands
+    Montets 15072015.jpg
+  commons_filename: Pyrrhocorax graculus Les Grands Montets 15072015.jpg
+- role: secondary
+  path: Q191386/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pyrrhocorax graculus (3).JPG
+  commons_filename: Pyrrhocorax graculus (3).JPG
+- role: secondary
+  path: Q191386/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pyrrhocorax graculus (4).JPG
+  commons_filename: Pyrrhocorax graculus (4).JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-12T19:59:15.100889+00:00'
+sources:
+  wikipedia_sv_revision: '56596549'
+  wikipedia_en_revision: '1342491508'
+  claude_model: claude-haiku-4-5-20251001

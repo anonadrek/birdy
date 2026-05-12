@@ -1,0 +1,76 @@
+id: Q420818
+scientific_name: Corvus ruficollis
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Corvus
+  ioc_order: Passeriformes
+names:
+  sv: Ökenkorp
+  en: Brown-necked Raven
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Brown-necked Raven
+
+
+    The brown-necked raven is a large corvid, intermediate in size between the carrion
+    crow and common raven. It shares the common raven''s overall proportions but has
+    a noticeably smaller, less deep bill and more pointed wings. The defining feature
+    is its distinctive brownish-black head and throat, contrasting with glossy black
+    plumage on the body that shows purple and blue iridescence. The bird''s appearance
+    changes notably with age and wear—feathers fade to brownish-black relatively quickly,
+    sometimes making older individuals appear predominantly brown before moulting.
+    It has black feet, legs, and bill.
+
+
+    This species inhabits arid and semi-arid regions across North Africa and the Middle
+    East, where it occupies similar ecological niches to other large ravens. Like
+    its relatives, it is an adaptable omnivore, feeding on carrion, insects, small
+    animals, and plant material. It is typically encountered as a solitary bird or
+    in small groups, though occasionally larger gatherings form.
+
+
+    The brown-necked raven''s vocalizations resemble those of the common raven—deep,
+    resonant calls and croaks that carry across open terrain. It is often seen in
+    flight, displaying strong, direct wingbeats characteristic of large ravens, soaring
+    at considerable heights.'
+migration:
+  sv: ''
+  en: '# Migration Data Unavailable for This Species
+
+
+    The provided source text contains no information about the occurrence, migration
+    patterns, or seasonal movements of the Brown-necked Raven in Scandinavia or Northern
+    Europe. The excerpt focuses exclusively on the bird''s morphological characteristics
+    and plumage description. To provide accurate information about this species''
+    distribution and migratory behavior in the region, additional sources documenting
+    its range and seasonal patterns would be required.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-12T19:59:44.635685+00:00'
+sources:
+  wikipedia_sv_revision: '56466595'
+  wikipedia_en_revision: '1323461485'
+  claude_model: claude-haiku-4-5-20251001

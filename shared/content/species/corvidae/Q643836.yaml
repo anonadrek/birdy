@@ -1,0 +1,104 @@
+id: Q643836
+scientific_name: Pyrrhocorax pyrrhocorax
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Pyrrhocorax
+  ioc_order: Passeriformes
+names:
+  sv: Alpkråka
+  en: Red-billed Chough
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red-billed Chough
+
+
+    The red-billed chough is a striking member of the crow family, distinguished by
+    its glossy black plumage contrasted with bright red bill and legs. It is a relatively
+    compact corvid, smaller than most of its relatives, with an elegant silhouette
+    in flight. The bird''s acrobatic aerial displays are remarkable, featuring steep
+    dives and rolls that showcase its mastery of mountain air currents.
+
+
+    This species favors mountainous and coastal cliff terrain, where it forages for
+    insects, small invertebrates, and seeds among rocky ground. It is highly social,
+    often seen in small groups that wheel and tumble through the air with apparent
+    ease. The red-billed chough produces a distinctive loud, ringing call—a sharp
+    "chow" or "chough" from which its common name derives.
+
+
+    The species has a wide but discontinuous range across Eurasia, from western Atlantic
+    coasts eastward through southern regions to Central Asia and East Asia. Eight
+    recognized subspecies inhabit this vast range, each adapted to their particular
+    mountain and cliff habitats. Once more widespread, it now occupies scattered populations,
+    making it a prized sighting for birdwatchers in regions where it occurs.'
+migration:
+  sv: ''
+  en: '# Red-billed Chough in Northern Europe
+
+
+    The Red-billed Chough is not a regular resident of Scandinavia or Northern Europe.
+    Its range extends from western Ireland and Britain eastward through southern Europe,
+    with no established populations occurring in Scandinavian countries. While vagrant
+    individuals may occasionally appear in northern regions during dispersal or unusual
+    weather conditions, the species does not have predictable migration patterns to
+    or through Northern Europe. The chough remains primarily restricted to its southern
+    and western European breeding range throughout the year, with populations showing
+    local movements rather than long-distance migration.'
+image_refs:
+- role: hero
+  path: Q643836/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-billed chough (Pyrrhocorax
+    pyrrhocorax), Algarve.jpg
+  commons_filename: Red-billed chough (Pyrrhocorax pyrrhocorax), Algarve.jpg
+- role: secondary
+  path: Q643836/secondary-1.jpg
+  width: 1800
+  height: 1196
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-billed chough (Pyrrhocorax
+    pyrrhocorax).jpg
+  commons_filename: Red-billed chough (Pyrrhocorax pyrrhocorax).jpg
+- role: secondary
+  path: Q643836/secondary-2.jpg
+  width: 1800
+  height: 1196
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/35693053@N04">Ross
+    Elliott</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pyrrhocorax pyrrhocorax -Living
+    Coasts, Devon, England-8a.jpg
+  commons_filename: Pyrrhocorax pyrrhocorax -Living Coasts, Devon, England-8a.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-12T20:00:58.373260+00:00'
+sources:
+  wikipedia_sv_revision: '56588481'
+  wikipedia_en_revision: '1352517681'
+  claude_model: claude-haiku-4-5-20251001

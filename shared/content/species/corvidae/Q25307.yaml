@@ -1,0 +1,128 @@
+id: Q25307
+scientific_name: Pica pica
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Pica
+  ioc_order: Passeriformes
+names:
+  sv: Skata
+  en: Eurasian Magpie
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skata (Pica pica)
+
+
+    Skatan är en mycket karakteristisk fågel som är svår att förväxla med andra arter.
+    Den kännetecknas av sin svartvita fjäderdräkt och påfallande långa stjärt, som
+    är mycket långre än kroppen. Skatan tillhör familjen kråkfåglar och är en medelstor
+    fågel med elegant utseende.
+
+
+    Skatan är en kulturföljare som är starkt knuten till mänsklig bebyggelse. Den
+    förekommer både i städer och på landsbygden, liksom i kustområden. Det är en allätare
+    som ses ofta proviantera på marken, där den letar efter både animalisk och vegetabilisk
+    föda under hela året. Arten är mycket aktiv och påtaglig i sitt beteende.
+
+
+    Skatan förekommer i stora delar av Europa samt västra och norra Asien, där den
+    är vanlig särskilt i bebodda områden.'
+  en: '# Eurasian Magpie
+
+
+    The Eurasian magpie is a large, unmistakable corvid with striking black-and-white
+    plumage. Its head, back, wings, and tail are glossy black, while the breast and
+    belly are pure white, and the wings display white patches visible in flight. It
+    is a resident breeding bird across northern regions of the Eurasian continent
+    and remains the only magpie species found in most of Europe.
+
+
+    Magpies are highly social and intelligent birds, often seen in small groups or
+    pairs. They are adaptable to various habitats, from open countryside to urban
+    gardens and parks. Their behaviour is bold and inquisitive, and they are known
+    to forage on the ground for insects, seeds, and scraps. They also have a reputation
+    for collecting shiny objects.
+
+
+    The call is loud and distinctive—a rapid, harsh chattering or rattling sound,
+    often accompanied by visual displays. Their intelligence is evident in their complex
+    social interactions and problem-solving abilities. The magpie''s striking appearance,
+    confident demeanour, and vocal presence make it one of the most recognizable birds
+    throughout its range.'
+migration:
+  sv: Skata är en året-runt-resident i större delen av sitt europeiska utbredningsområde,
+    inklusive Skandinavien och Nordeuropa. Arten är inte migrerande utan stannar permanent
+    i sina häckningsrevir under både vinter och sommar. Skatan är väl anpassad till
+    att övervinta i sitt hemområde tack vare sin allätande diet – den äter både animalisk
+    och vegetabilisk föda året om. I norra delar av sitt utbredningsområde kan det
+    förekomma viss lokal förflyttning under hårt väder, men detta utgör ingen regelrätt
+    migration. Populationen är stabil och väletablerad i svenska, norska och danska
+    städer och landsbygd året runt.
+  en: '# Eurasian Magpie (Pica pica) in Scandinavia and Northern Europe
+
+
+    The Eurasian magpie is a year-round resident throughout Scandinavia and northern
+    Europe, with populations breeding and remaining sedentary across the region. As
+    a resident species, magpies do not undertake significant seasonal migrations and
+    can be found in the same territories throughout all seasons. This adaptability
+    to cold winters allows them to maintain permanent populations across their northern
+    range, making them a conspicuous and characteristic feature of the Scandinavian
+    landscape year-round.'
+image_refs:
+- role: hero
+  path: Q25307/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Julian_Herzog" title="User:Julian
+    Herzog">Julian Herzog</a> (<a rel="nofollow" class="external text" href="http://julianherzog.com">Website</a>)<br>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Magpie Pica Pica Brackley
+    2025 01.jpg
+  commons_filename: Eurasian Magpie Pica Pica Brackley 2025 01.jpg
+- role: secondary
+  path: Q25307/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian magpie (Pica pica).jpg
+  commons_filename: Eurasian magpie (Pica pica).jpg
+- role: secondary
+  path: Q25307/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q28147777" class="extiw" title="d:Q28147777"><span
+    title="Spanish photographer">Diego Delso</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Urraca (Pica pica), Almuradiel,
+    Ciudad Real, España, 2021-12-19, DD 19.jpg
+  commons_filename: Urraca (Pica pica), Almuradiel, Ciudad Real, España, 2021-12-19,
+    DD 19.jpg
+review_status: approved
+review_notes: Skata — hela landet inkl städer. Hero standard adult.
+generated_at: '2026-05-12T20:00:38.228535+00:00'
+sources:
+  wikipedia_sv_revision: '59183259'
+  wikipedia_en_revision: '1352532433'
+  claude_model: claude-haiku-4-5-20251001

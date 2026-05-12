@@ -1,0 +1,97 @@
+id: Q25386
+scientific_name: Corvus frugilegus
+taxonomy:
+  family: Corvidae
+  family_sv: Kråkfåglar
+  genus: Corvus
+  ioc_order: Passeriformes
+names:
+  sv: Råka
+  en: Rook
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Råka
+
+
+    Råkan är en större kråkfågel med en karakteristisk långa, spetsig näbb som är
+    svagt nedåtböjd. Det mest utmärkande kännetecknet är det ljusa, nakna hudpartiet
+    vid näbbasen, vilket framstår tydligt mot fjäderdräkten. Fjädrarna är metalliskt
+    glänsande och helt svarta, vilket ger fågeln ett elegant utseende.
+
+
+    Råkan förekommer i stora delar av den palearktiska regionen och har även introducerats
+    på Nya Zeeland. Den är en social fågel som ofta ses i flockar, särskilt utanför
+    häckningssäsongen. Som medlem av kråksläktet är den en intelligent och anpassningsbar
+    art.'
+  en: ''
+migration:
+  sv: '# Råka - Utbredning och Migration i Norden
+
+
+    Råkan är en partiell migrant i Skandinavien och Nordeuropa. Under sommaren häckar
+    arten utbrett över större delen av regionen, men populationerna i norr drar sig
+    söderut under hösten. Många råkor från Sverige och Norge övervintrarar i Centraleuropa
+    och Sydeuropa, medan andra stannar kvar under mildare vintrar. Återkomsten till
+    häckningsområdena sker vanligtvis från mars till april då förhållandena förbättras.
+
+
+    I södra Skandinavien förekommer råkan mera regelbundet året runt, särskilt där
+    vinterklimat är mildare. Ankomsten till häckningsplatserna i norr påbörjas typiskt
+    från slutet av mars, med toppen under april. Arten är känd för att bilda större
+    flockar under flyttperioderna och på övervintringsplatserna.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q25386/hero.jpg
+  width: 2400
+  height: 1800
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Monedula" title="User:Monedula">User:Monedula</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus frugilegus 001.jpg
+  commons_filename: Corvus frugilegus 001.jpg
+- role: secondary
+  path: Q25386/secondary-1.jpg
+  width: 2400
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Mi%C5%82o%C5%9Bnik_Zwierz%C4%85t974"
+    title="User:Miłośnik Zwierząt974">Miłośnik Zwierząt974</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus frugilegus nestling.jpg
+  commons_filename: Corvus frugilegus nestling.jpg
+- role: secondary
+  path: Q25386/secondary-2.jpg
+  width: 1483
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D7%99%D7%A2%D7%A7%D7%91&amp;action=edit&amp;redlink=1"
+    class="new" title="User:יעקב (page does not exist)">יעקב</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corvus frugilegus (Rook) 4065.jpg
+  commons_filename: Corvus frugilegus (Rook) 4065.jpg
+review_status: approved
+review_notes: Råka — allmän i södra SE-jordbrukslandskap. Hero swappad från nestling till adult
+  (secondary-1 → hero). enwiki sparse-override applicerad.
+generated_at: '2026-05-12T19:59:21.356887+00:00'
+sources:
+  wikipedia_sv_revision: '59270526'
+  wikipedia_en_revision: '1346088466'
+  claude_model: claude-haiku-4-5-20251001
