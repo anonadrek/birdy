@@ -1,6 +1,5 @@
 package se.birdy.app.ui.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -28,6 +27,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.premium_hero_chip
+import coil3.compose.AsyncImage
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.rememberCaveat
@@ -35,10 +36,11 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
 /**
  * Settings-skärmens premium-upsell. 16:9 foto med svart gradient + headline + pill.
+ * Foto laddas via Coil från files/premium/great-tit-hero.jpg.
  */
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun PremiumHeroCard(
-    heroPainter: androidx.compose.ui.graphics.painter.Painter,
     headlinePlain: String,
     headlineAccent: String,
     subline: String,
@@ -54,8 +56,8 @@ fun PremiumHeroCard(
                 .clip(RoundedCornerShape(18.dp))
                 .clickable(onClick = onClick),
     ) {
-        Image(
-            painter = heroPainter,
+        AsyncImage(
+            model = Res.getUri("files/premium/great-tit-hero.jpg"),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize(),

@@ -1,30 +1,40 @@
 package se.birdy.app.ui.settings
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.MailOutline
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Public
+import androidx.compose.material.icons.outlined.Share
+import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material.icons.outlined.VerifiedUser
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -35,11 +45,20 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.settings_back
+import birdy_bird_scanner.composeapp.generated.resources.settings_footer
+import birdy_bird_scanner.composeapp.generated.resources.settings_hero_accent
+import birdy_bird_scanner.composeapp.generated.resources.settings_hero_plain
+import birdy_bird_scanner.composeapp.generated.resources.settings_hero_subline
 import birdy_bird_scanner.composeapp.generated.resources.settings_label_about
 import birdy_bird_scanner.composeapp.generated.resources.settings_label_language
 import birdy_bird_scanner.composeapp.generated.resources.settings_label_name
@@ -49,62 +68,143 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_language_syste
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_cancel
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_save
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_title
+import birdy_bird_scanner.composeapp.generated.resources.settings_row_feedback
+import birdy_bird_scanner.composeapp.generated.resources.settings_row_privacy
+import birdy_bird_scanner.composeapp.generated.resources.settings_row_rate
+import birdy_bird_scanner.composeapp.generated.resources.settings_row_share
+import birdy_bird_scanner.composeapp.generated.resources.settings_row_terms
+import birdy_bird_scanner.composeapp.generated.resources.settings_section_about_birdy
+import birdy_bird_scanner.composeapp.generated.resources.settings_section_account
+import birdy_bird_scanner.composeapp.generated.resources.settings_section_legal
 import birdy_bird_scanner.composeapp.generated.resources.settings_title
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.OrnamentRule
+import se.birdy.app.ui.components.PremiumHeroCard
 import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.MossCreme
+import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.PaperTop
 import se.birdy.app.ui.theme.SandCreme
 import se.birdy.app.ui.theme.TextOnCreme
+import se.birdy.app.ui.theme.paperBackground
+import se.birdy.app.ui.theme.rememberCaveat
+import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.datastore.AppLanguage
 
-@OptIn(ExperimentalMaterial3Api::class)
+enum class SettingsAction {
+    RateApp, ShareApp, SendFeedback, OpenAbout, OpenPrivacy, OpenTerms,
+}
+
 @Composable
 fun SettingsScreen(
     viewModel: SettingsViewModel,
     onBack: () -> Unit,
+    onPremiumClick: () -> Unit,
+    onRowClick: (SettingsAction) -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
-    var showNameDialog by remember { mutableStateOf(false) }
+    var showNameDialog by rememberSaveable { mutableStateOf(false) }
+    var showLanguageDialog by rememberSaveable { mutableStateOf(false) }
 
-    Scaffold(
-        containerColor = MossCreme,
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(Res.string.settings_title), fontWeight = FontWeight.W700) },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(Res.string.settings_back),
-                        )
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = MossCreme),
-            )
-        },
-    ) { padding ->
-        Column(
-            modifier =
-                Modifier
-                    .fillMaxSize()
-                    .padding(padding)
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+    Box(modifier = Modifier.fillMaxSize().paperBackground()) {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(bottom = 32.dp),
         ) {
-            SettingsRow(
-                label = stringResource(Res.string.settings_label_name),
-                value = state.userName.ifEmpty { "—" },
-                onClick = { showNameDialog = true },
-            )
-            LanguageSection(
-                current = state.language,
-                onSelect = { viewModel.saveLanguage(it) },
-            )
-            SettingsRow(
-                label = stringResource(Res.string.settings_label_about),
-                value = "v0.7.0a",
-                onClick = null,
-            )
+            item { TopBar(onBack = onBack) }
+            if (!state.premiumActive) {
+                item {
+                    PremiumHeroCard(
+                        headlinePlain = stringResource(Res.string.settings_hero_plain),
+                        headlineAccent = stringResource(Res.string.settings_hero_accent),
+                        subline = stringResource(Res.string.settings_hero_subline),
+                        onClick = onPremiumClick,
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                    )
+                }
+                item { OrnamentRule() }
+            }
+            item { SectionHeader(stringResource(Res.string.settings_section_account)) }
+            item {
+                PaperCard {
+                    SettingsRow(
+                        icon = Icons.Outlined.Person,
+                        label = stringResource(Res.string.settings_label_name),
+                        value = state.userName.ifEmpty { "—" },
+                        onClick = { showNameDialog = true },
+                    )
+                    DashedDivider()
+                    SettingsRow(
+                        icon = Icons.Outlined.Public,
+                        label = stringResource(Res.string.settings_label_language),
+                        value = stringResource(state.language.labelRes()),
+                        onClick = { showLanguageDialog = true },
+                    )
+                }
+            }
+            item { SectionHeader(stringResource(Res.string.settings_section_about_birdy)) }
+            item {
+                PaperCard {
+                    SettingsRow(
+                        icon = Icons.Outlined.Star,
+                        label = stringResource(Res.string.settings_row_rate),
+                        value = null,
+                        onClick = { onRowClick(SettingsAction.RateApp) },
+                    )
+                    DashedDivider()
+                    SettingsRow(
+                        icon = Icons.Outlined.Share,
+                        label = stringResource(Res.string.settings_row_share),
+                        value = null,
+                        onClick = { onRowClick(SettingsAction.ShareApp) },
+                    )
+                    DashedDivider()
+                    SettingsRow(
+                        icon = Icons.Outlined.MailOutline,
+                        label = stringResource(Res.string.settings_row_feedback),
+                        value = null,
+                        onClick = { onRowClick(SettingsAction.SendFeedback) },
+                    )
+                    DashedDivider()
+                    SettingsRow(
+                        icon = Icons.Outlined.Info,
+                        label = stringResource(Res.string.settings_label_about),
+                        value = "v0.7.0e",
+                        onClick = { onRowClick(SettingsAction.OpenAbout) },
+                    )
+                }
+            }
+            item { SectionHeader(stringResource(Res.string.settings_section_legal)) }
+            item {
+                PaperCard {
+                    SettingsRow(
+                        icon = Icons.Outlined.VerifiedUser,
+                        label = stringResource(Res.string.settings_row_privacy),
+                        value = null,
+                        onClick = { onRowClick(SettingsAction.OpenPrivacy) },
+                    )
+                    DashedDivider()
+                    SettingsRow(
+                        icon = Icons.Outlined.VerifiedUser,
+                        label = stringResource(Res.string.settings_row_terms),
+                        value = null,
+                        onClick = { onRowClick(SettingsAction.OpenTerms) },
+                    )
+                }
+            }
+            item {
+                Text(
+                    text = stringResource(Res.string.settings_footer),
+                    fontFamily = rememberCaveat(),
+                    fontSize = 14.sp,
+                    color = MarginaliaInk,
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 24.dp, bottom = 32.dp),
+                    textAlign = TextAlign.Center,
+                )
+            }
         }
     }
 
@@ -118,73 +218,131 @@ fun SettingsScreen(
             onDismiss = { showNameDialog = false },
         )
     }
+    if (showLanguageDialog) {
+        LanguagePickerDialog(
+            current = state.language,
+            onSelect = {
+                viewModel.saveLanguage(it)
+                showLanguageDialog = false
+            },
+            onDismiss = { showLanguageDialog = false },
+        )
+    }
+}
+
+private fun AppLanguage.labelRes(): StringResource =
+    when (this) {
+        AppLanguage.SV -> Res.string.settings_language_sv
+        AppLanguage.EN -> Res.string.settings_language_en
+        AppLanguage.SYSTEM -> Res.string.settings_language_system
+    }
+
+@Composable
+private fun TopBar(onBack: () -> Unit) {
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(start = 4.dp, top = 8.dp, end = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        IconButton(onClick = onBack) {
+            Icon(
+                Icons.AutoMirrored.Outlined.ArrowBack,
+                contentDescription = stringResource(Res.string.settings_back),
+                tint = AccentCopper,
+            )
+        }
+        Spacer(Modifier.size(4.dp))
+        Text(
+            text = stringResource(Res.string.settings_title),
+            fontFamily = rememberDmSerifDisplay(),
+            fontStyle = FontStyle.Italic,
+            fontSize = 22.sp,
+            color = TextOnCreme,
+        )
+    }
+}
+
+@Composable
+private fun SectionHeader(label: String) {
+    Text(
+        text = label,
+        fontSize = 10.sp,
+        fontWeight = FontWeight.W600,
+        letterSpacing = 0.16.em,
+        color = MarginaliaInk,
+        modifier = Modifier.padding(start = 24.dp, top = 18.dp, bottom = 8.dp),
+    )
+}
+
+@Composable
+private fun PaperCard(content: @Composable ColumnScope.() -> Unit) {
+    Column(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .clip(RoundedCornerShape(14.dp))
+                .background(SandCreme),
+        content = content,
+    )
 }
 
 @Composable
 private fun SettingsRow(
+    icon: ImageVector,
     label: String,
-    value: String,
-    onClick: (() -> Unit)?,
+    value: String?,
+    onClick: () -> Unit,
 ) {
     Row(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(12.dp))
-                .background(SandCreme)
-                .let { if (onClick != null) it.clickable(onClick = onClick) else it }
-                .padding(horizontal = 16.dp, vertical = 16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
+                .height(56.dp)
+                .clickable(onClick = onClick)
+                .padding(horizontal = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(label, color = TextOnCreme, fontWeight = FontWeight.W600, fontSize = 16.sp)
-        Text(value, color = AccentCopper, fontWeight = FontWeight.W600, fontSize = 16.sp)
+        Box(
+            modifier =
+                Modifier
+                    .size(32.dp)
+                    .clip(CircleShape)
+                    .background(Color.Transparent)
+                    .border(1.5.dp, AccentCopper, CircleShape),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(icon, contentDescription = null, tint = AccentCopper, modifier = Modifier.size(16.dp))
+        }
+        Spacer(Modifier.size(12.dp))
+        Text(
+            text = label,
+            color = TextOnCreme,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.W500,
+            modifier = Modifier.weight(1f),
+        )
+        if (value != null) {
+            Text(
+                text = value,
+                color = MarginaliaInk,
+                fontSize = 13.sp,
+                modifier = Modifier.padding(end = 8.dp),
+            )
+        }
+        Text("›", color = AccentCopper, fontSize = 18.sp, fontWeight = FontWeight.W600)
     }
 }
 
 @Composable
-private fun LanguageSection(
-    current: AppLanguage,
-    onSelect: (AppLanguage) -> Unit,
-) {
-    Column(
+private fun DashedDivider() {
+    Box(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(12.dp))
-                .background(SandCreme)
-                .padding(16.dp),
-    ) {
-        Text(
-            text = stringResource(Res.string.settings_label_language),
-            color = TextOnCreme,
-            fontWeight = FontWeight.W600,
-            fontSize = 16.sp,
-        )
-        Spacer(Modifier.height(8.dp))
-        val options =
-            remember {
-                listOf(
-                    AppLanguage.SV to Res.string.settings_language_sv,
-                    AppLanguage.EN to Res.string.settings_language_en,
-                    AppLanguage.SYSTEM to Res.string.settings_language_system,
-                )
-            }
-        options.forEach { (lang, label) ->
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .clickable(onClick = { onSelect(lang) })
-                        .padding(vertical = 6.dp),
-            ) {
-                RadioButton(selected = current == lang, onClick = { onSelect(lang) })
-                Spacer(Modifier.width(8.dp))
-                Text(stringResource(label), color = TextOnCreme, fontSize = 15.sp)
-            }
-        }
-    }
+                .padding(horizontal = 14.dp)
+                .height(1.dp)
+                .background(MarginaliaInk.copy(alpha = 0.18f)),
+    )
 }
 
 @Composable
@@ -215,6 +373,50 @@ private fun NameEditDialog(
                 Text(stringResource(Res.string.settings_name_dialog_cancel))
             }
         },
-        containerColor = MossCreme,
+        containerColor = PaperTop,
+    )
+}
+
+@Composable
+private fun LanguagePickerDialog(
+    current: AppLanguage,
+    onSelect: (AppLanguage) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val options =
+        remember {
+            listOf(
+                AppLanguage.SV to Res.string.settings_language_sv,
+                AppLanguage.EN to Res.string.settings_language_en,
+                AppLanguage.SYSTEM to Res.string.settings_language_system,
+            )
+        }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(Res.string.settings_label_language)) },
+        text = {
+            Column {
+                options.forEach { (lang, label) ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .clickable(onClick = { onSelect(lang) })
+                                .padding(vertical = 6.dp),
+                    ) {
+                        RadioButton(selected = current == lang, onClick = { onSelect(lang) })
+                        Spacer(Modifier.width(8.dp))
+                        Text(stringResource(label), color = TextOnCreme, fontSize = 15.sp)
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(Res.string.settings_name_dialog_cancel))
+            }
+        },
+        containerColor = PaperTop,
     )
 }

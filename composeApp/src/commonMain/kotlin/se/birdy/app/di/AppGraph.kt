@@ -143,7 +143,7 @@ class AppGraph(
             locale = defaultLocale,
         )
 
-    fun settingsViewModel(): SettingsViewModel = SettingsViewModel(userPreferences)
+    fun settingsViewModel(): SettingsViewModel = SettingsViewModel(userPreferences, premiumRepository)
 
     fun premiumViewModel(): PremiumViewModel = PremiumViewModel(premiumRepository)
 

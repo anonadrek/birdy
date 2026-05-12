@@ -125,6 +125,8 @@ fun AppScaffold(graph: AppGraph) {
                 se.birdy.app.ui.settings.SettingsScreen(
                     viewModel = remember(graph) { graph.settingsViewModel() },
                     onBack = { navController.popBackStack() },
+                    onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                    onRowClick = { /* TODO: wire row-actions in Plan 6 (Rate/Share/Feedback/About/Privacy/Terms) */ },
                 )
             }
             composable<AppRoute.Premium> {
