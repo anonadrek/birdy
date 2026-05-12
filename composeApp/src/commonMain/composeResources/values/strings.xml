@@ -413,6 +413,7 @@
     <string name="premium_screen_close">Stäng</string>
     <string name="premium_headline_plain">Hela året som</string>
     <string name="premium_headline_accent">fältornitolog.</string>
+    <string name="premium_headline_suffix"></string>
     <string name="premium_subline">— Stöd Birdy och få fler verktyg i fält. —</string>
     <string name="premium_feature_audio">Lyssna på fågelsång</string>
     <string name="premium_feature_export">Exportera fältdagbok som PDF</string>
@@ -421,6 +422,7 @@
     <string name="premium_tier_yearly_title">1 år</string>
     <string name="premium_tier_yearly_price">199 kr / år</string>
     <string name="premium_tier_yearly_sub">Spara 60% · ~17 kr / mån</string>
+    <string name="premium_tier_yearly_stamp">spara 60%</string>
     <string name="premium_tier_lifetime_title">För alltid</string>
     <string name="premium_tier_lifetime_price">499 kr · engångsköp</string>
     <string name="premium_cta_primary">Fortsätt</string>
