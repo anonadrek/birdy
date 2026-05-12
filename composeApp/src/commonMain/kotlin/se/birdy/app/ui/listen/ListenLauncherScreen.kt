@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.gear_content_description
 import birdy_bird_scanner.composeapp.generated.resources.listen_audio_locked_snackbar
 import birdy_bird_scanner.composeapp.generated.resources.listen_card_audio_body
 import birdy_bird_scanner.composeapp.generated.resources.listen_card_audio_title
@@ -51,6 +52,7 @@ import birdy_bird_scanner.composeapp.generated.resources.listen_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.listen_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.listen_premium_label
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
@@ -63,6 +65,7 @@ fun ListenLauncherScreen(
     viewModel: ListenLauncherViewModel,
     onCameraClick: () -> Unit,
     onPhotoClick: () -> Unit,
+    onSettingsClick: () -> Unit,
 ) {
     val snackbar = remember { SnackbarHostState() }
     val audioLockedMsg = stringResource(Res.string.listen_audio_locked_snackbar)
@@ -85,6 +88,18 @@ fun ListenLauncherScreen(
                     .padding(padding),
             verticalArrangement = Arrangement.spacedBy(0.dp),
         ) {
+            Row(
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(end = 16.dp, top = 8.dp),
+                horizontalArrangement = Arrangement.End,
+            ) {
+                GearButton(
+                    onClick = onSettingsClick,
+                    contentDescription = stringResource(Res.string.gear_content_description),
+                )
+            }
             JournalIntro(
                 label = stringResource(Res.string.listen_journal_label),
                 headline = stringResource(Res.string.listen_journal_headline),

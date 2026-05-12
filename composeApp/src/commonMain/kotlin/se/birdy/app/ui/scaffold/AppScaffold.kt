@@ -44,6 +44,11 @@ fun AppScaffold(graph: AppGraph) {
                             launchSingleTop = true
                         }
                     },
+                    onSettingsClick = {
+                        navController.navigate(AppRoute.Settings) {
+                            launchSingleTop = true
+                        }
+                    },
                 )
             }
             composable<AppRoute.Scan> {
