@@ -103,6 +103,39 @@
     <string name="result_no_predictions">Inga förslag att visa.</string>
     <string name="result_no_matches">Inga arter kunde matchas mot databasen.</string>
 
+    <!-- ===== Plan 7d: Match / Disambig / NoBird ===== -->
+    <!-- Match-skärm (top-1 >= 0.50) -->
+    <string name="match_eyebrow">MATCH · NO %1$d</string>
+    <string name="match_headline">*%1$s*</string>
+    <string name="match_sub_confidence">En %1$d%% match.</string>
+    <string name="match_marginalia_first_sighting">*NY ART*</string>
+    <string name="match_marginalia_repeat">GÅNG *%1$d* · FÖRSTA: %2$s</string>
+    <string name="match_marginalia_manual_pick">*ditt val*</string>
+    <string name="match_stamp_caption_pending">väntar på din signatur</string>
+    <string name="match_save_cta">Spara observation</string>
+    <string name="match_cancel_cta">Avbryt</string>
+    <string name="match_saved_text">Sparad i fältdagboken — gå tillbaka</string>
+
+    <!-- Disambig-skärm (top-1 0.35–0.50) -->
+    <string name="disambig_eyebrow_three">TRE KANDIDATER · NO %1$d</string>
+    <string name="disambig_eyebrow_two">TVÅ KANDIDATER · NO %1$d</string>
+    <string name="disambig_headline">*Vilken matchar?*</string>
+    <string name="disambig_sub">Modellen är inte säker.</string>
+    <string name="disambig_frame_caption">*vad du såg*</string>
+    <string name="disambig_candidate_confidence">%1$s · %2$d%% match</string>
+    <string name="disambig_pick_hint">Tryck för att välja</string>
+    <string name="disambig_cancel_cta">Avbryt</string>
+
+    <!-- NoBird-skärm (top-1 < 0.35) -->
+    <string name="nobird_eyebrow">INGEN MATCH · NO %1$s</string>
+    <string name="nobird_headline">*Ingen art kunde tecknas*</string>
+    <string name="nobird_sub">En obestämd skugga, en vingfladder.</string>
+    <string name="nobird_tip_closer">*kom närmare*</string>
+    <string name="nobird_tip_center">*centrera fågeln*</string>
+    <string name="nobird_tip_light">*mer ljus*</string>
+    <string name="nobird_retry_cta">Försök igen</string>
+    <string name="nobird_date_format">%1$d %2$s %3$d</string>
+
     <!-- Scan screen -->
     <string name="scan_top1_searching">söker…</string>
     <string name="scan_freeze_hint">TRYCK VAR SOM HELST FÖR ATT FRYSA</string>

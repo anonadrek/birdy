@@ -91,6 +91,39 @@
     <string name="result_no_predictions">No predictions to show.</string>
     <string name="result_no_matches">No species matched the database.</string>
 
+    <!-- ===== Plan 7d: Match / Disambig / NoBird ===== -->
+    <!-- Match screen (top-1 >= 0.50) -->
+    <string name="match_eyebrow">MATCH · NO %1$d</string>
+    <string name="match_headline">*%1$s*</string>
+    <string name="match_sub_confidence">A %1$d%% match.</string>
+    <string name="match_marginalia_first_sighting">*NEW SPECIES*</string>
+    <string name="match_marginalia_repeat">TIME *%1$d* · FIRST: %2$s</string>
+    <string name="match_marginalia_manual_pick">*your choice*</string>
+    <string name="match_stamp_caption_pending">awaiting your signature</string>
+    <string name="match_save_cta">Save observation</string>
+    <string name="match_cancel_cta">Cancel</string>
+    <string name="match_saved_text">Saved to the field journal — go back</string>
+
+    <!-- Disambig screen (top-1 0.35–0.50) -->
+    <string name="disambig_eyebrow_three">THREE CANDIDATES · NO %1$d</string>
+    <string name="disambig_eyebrow_two">TWO CANDIDATES · NO %1$d</string>
+    <string name="disambig_headline">*Which one matches?*</string>
+    <string name="disambig_sub">The model is uncertain.</string>
+    <string name="disambig_frame_caption">*what you saw*</string>
+    <string name="disambig_candidate_confidence">%1$s · %2$d%% match</string>
+    <string name="disambig_pick_hint">Tap to choose</string>
+    <string name="disambig_cancel_cta">Cancel</string>
+
+    <!-- NoBird screen (top-1 < 0.35) -->
+    <string name="nobird_eyebrow">NO MATCH · NO %1$s</string>
+    <string name="nobird_headline">*No species could be sketched*</string>
+    <string name="nobird_sub">A blur, a flicker of wings.</string>
+    <string name="nobird_tip_closer">*get closer*</string>
+    <string name="nobird_tip_center">*center the bird*</string>
+    <string name="nobird_tip_light">*more light*</string>
+    <string name="nobird_retry_cta">Try again</string>
+    <string name="nobird_date_format">%1$d %2$s %3$d</string>
+
     <string name="scan_top1_searching">searching…</string>
     <string name="scan_freeze_hint">TAP ANYWHERE TO FREEZE</string>
     <string name="scan_photo_analyze">Analyze a photo</string>
