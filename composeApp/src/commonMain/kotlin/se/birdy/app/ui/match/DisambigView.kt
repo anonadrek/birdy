@@ -131,7 +131,7 @@ private fun CandidateCard(
     val serif = rememberDmSerifDisplay()
     val caveat = rememberCaveat()
     val pct = (candidate.confidence * 100).toInt()
-    val confidenceLabel = stringResource(Res.string.disambig_candidate_confidence, candidate.species.scientificName, pct)
+    val confidenceLabel = stringResource(Res.string.disambig_candidate_confidence, candidate.species.scientificName, "$pct%")
     Column(
         modifier =
             Modifier

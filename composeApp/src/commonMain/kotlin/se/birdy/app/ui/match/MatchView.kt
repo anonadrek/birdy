@@ -114,7 +114,7 @@ internal fun MatchView(
             JournalIntro(
                 label = stringResource(Res.string.match_eyebrow, state.stampNumber),
                 headline = stringResource(Res.string.match_headline, state.species.name),
-                sub = stringResource(Res.string.match_sub_confidence, confidencePct),
+                sub = stringResource(Res.string.match_sub_confidence, "$confidencePct%"),
                 headlineFontSize = 36.sp,
             )
 
