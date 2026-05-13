@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432">
+  <circle cx="216" cy="216" r="130" fill="none" stroke="#8C5A3C" stroke-width="14"/>
+  <circle cx="216" cy="216" r="148" fill="none" stroke="#8C5A3C" stroke-width="2"
+          stroke-dasharray="6 8"/>
+  <!-- Bird silhouette (placeholder — refine with vector tool) -->
+  <path d="M170 230 Q 200 200 230 210 Q 260 200 280 220 L 270 240 Q 230 250 200 245 Q 180 245 170 230 Z"
+        fill="#3F4F30"/>
+</svg>
