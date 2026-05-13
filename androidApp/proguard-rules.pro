@@ -40,7 +40,7 @@
 -keep class org.jetbrains.compose.resources.** { *; }
 
 # Birdy specific — säkra alla ViewModels och datamodeller.
--keep class se.birdy.app.ui.**.ViewModel { *; }
+-keep class se.birdy.app.ui.**ViewModel { *; }
 -keep class se.birdy.domain.** { *; }
 -keep class se.birdy.content.** { *; }
 -keep class se.birdy.ml.** { *; }
