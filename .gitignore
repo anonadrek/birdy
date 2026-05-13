@@ -47,3 +47,9 @@ Thumbs.db
 tools/content-pipeline/.cache/
 tools/content-pipeline/.env
 tools/content-pipeline/sparse_content.yaml
+
+# Signing keystores — never commit
+keystore/
+*.jks
+*.keystore
+/keystore.properties

@@ -51,6 +51,18 @@ android {
         compose = true
     }
 
+    signingConfigs {
+        create("release") {
+            val keystorePath = providers.gradleProperty("BIRDY_KEYSTORE_PATH").orNull
+            if (keystorePath != null) {
+                storeFile = file(keystorePath)
+                storePassword = providers.gradleProperty("BIRDY_KEYSTORE_PASSWORD").get()
+                keyAlias = providers.gradleProperty("BIRDY_KEY_ALIAS").get()
+                keyPassword = providers.gradleProperty("BIRDY_KEY_PASSWORD").get()
+            }
+        }
+    }
+
     buildTypes {
         getByName("debug") {
             buildConfigField("Boolean", "PREMIUM_DEBUG_FORCE_ACTIVE", "false")
@@ -62,6 +74,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            signingConfig = signingConfigs.getByName("release")
             buildConfigField("Boolean", "PREMIUM_DEBUG_FORCE_ACTIVE", "false")
         }
     }
