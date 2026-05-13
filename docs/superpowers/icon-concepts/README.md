@@ -41,11 +41,26 @@ färgpalett (teal + koppar + creme). **Pros:** Tydlig läsbarhet på alla storle
 "app-mascot"-potential för marketing, känns inbjudande för nybörjare. **Cons:** Generisk "söt
 fågel" — saknar Field Journal-tema-koppling, ingen specifik art-identitet.
 
-## Val
+## Val (2026-05-14)
 
-[**TBD efter användarinput** — fyll i här innan T4]
+Runda 2 (D/E/F) avvisad också — användaren designade själv ett komplett set i Field Journal-stil.
+Slutgiltigt set finns i `final/`:
 
-## Monokrom-variant
+- `final/ic_launcher_512.svg` — Play Store hi-res icon (512×512), stiliserad fågel-siluett i koppar
+  (`#A8552D`) på paper-creme (`#EBDEC2`) med warmth-gradient + grain-filter (SVG-only — bakas
+  in i PNG-rasterisering för Play Store; strippas i Android VectorDrawable för launcher).
+- `final/feature_graphic.svg` — Play Store feature graphic (1024×500): fågel + "Birdy." Caveat-cursive
+  + tagline "A field journal for finds." + monospace eyebrow "IDENTIFY · LEARN · COLLECT" + stamp-seal.
+- `final/ic_notification.svg` — 24×24 vit silhuett för Android notification small icon (krav: monochrome
+  vit på transparent).
+- `final/ic_launcher_monochrome.svg` — 108×108 svart silhuett för Android 13+ "themed icons".
 
-Vald koncept måste också ha en monokrom-variant där färger byts mot solid svart.
-Verifieras i T4 (Asset Studio-export + adaptive icon XML).
+Färgpaletten har en lätt drift mot varmare/mer mättat koppar jämfört med appens token (`AccentCopper
+#8C5A3C`). T4 hanterar:
+- Konvertering SVG → Android VectorDrawable (strippa filter, bevara path-data)
+- Rasterisering 512×512 PNG med grain bevarat (för Play Store)
+- 1024×500 feature graphic PNG-rasterisering
+- Mipmap fallbacks (mdpi/hdpi/xhdpi/xxhdpi/xxxhdpi)
+- Adaptive icon XML (`mipmap-anydpi-v26/ic_launcher.xml`)
+- Eventuell uppdatering av in-app `AccentCopper`-token för palett-konsistens
+
