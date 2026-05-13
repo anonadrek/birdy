@@ -56,7 +56,12 @@ android {
             buildConfigField("Boolean", "PREMIUM_DEBUG_FORCE_ACTIVE", "false")
         }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
             buildConfigField("Boolean", "PREMIUM_DEBUG_FORCE_ACTIVE", "false")
         }
     }
