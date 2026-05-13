@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432">
+  <!-- Concept F: Birdy-maskot — vänlig tecknad fågel-karaktär (Duolingo-vibes men varmare) -->
+
+  <!-- Background -->
+  <rect width="432" height="432" fill="#EFE7D6"/>
+
+  <!-- Body (round teal-blue blob) -->
+  <ellipse cx="216" cy="245" rx="125" ry="115" fill="#5C7D9F" stroke="#2A3F55" stroke-width="6"/>
+
+  <!-- Wing back-shape (slightly darker) -->
+  <path d="M105 240
+           Q 95 290 115 335
+           Q 145 340 165 315
+           Q 175 285 168 250
+           Q 135 235 105 240 Z"
+        fill="#3F5C7D"/>
+
+  <!-- Belly (paper-creme) -->
+  <ellipse cx="225" cy="285" rx="78" ry="60" fill="#EFE7D6"/>
+
+  <!-- Cheek blush (warm copper) -->
+  <circle cx="172" cy="235" r="22" fill="#D88A6A" opacity="0.55"/>
+
+  <!-- Eye (big and friendly) -->
+  <circle cx="188" cy="195" r="28" fill="#FFFAEC" stroke="#1F1A0F" stroke-width="3"/>
+  <circle cx="180" cy="200" r="13" fill="#1F1A0F"/>
+  <circle cx="176" cy="195" r="4.5" fill="#FFFAEC"/>
+  <circle cx="185" cy="207" r="2" fill="#FFFAEC"/>
+
+  <!-- Eyebrow tuft (small feathers above eye) -->
+  <path d="M165 165 Q 175 158 188 162 Q 200 158 210 165" stroke="#2A3F55" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Beak (copper triangle, slightly open — playful) -->
+  <path d="M138 218
+           L 102 232
+           L 138 240 Z"
+        fill="#E89B3C" stroke="#8C5A3C" stroke-width="2"/>
+  <path d="M138 240 L 110 248 L 138 252 Z" fill="#C77B26" stroke="#8C5A3C" stroke-width="2"/>
+
+  <!-- Wing-tip / feathers detail (peeking out) -->
+  <path d="M325 270
+           Q 360 280 365 305
+           Q 348 318 325 312 Z"
+        fill="#3F5C7D"/>
+
+  <!-- Tail feathers (small fan) -->
+  <path d="M330 220 L 360 200 L 358 232 Z" fill="#3F5C7D"/>
+  <path d="M345 235 L 375 225 L 365 252 Z" fill="#3F5C7D"/>
+
+  <!-- Feet (cute orange) -->
+  <ellipse cx="190" cy="360" rx="20" ry="9" fill="#E89B3C" stroke="#8C5A3C" stroke-width="2"/>
+  <ellipse cx="245" cy="360" rx="20" ry="9" fill="#E89B3C" stroke="#8C5A3C" stroke-width="2"/>
+
+  <!-- Small head highlight -->
+  <ellipse cx="210" cy="160" rx="35" ry="18" fill="#7B9CB8" opacity="0.6"/>
+</svg>

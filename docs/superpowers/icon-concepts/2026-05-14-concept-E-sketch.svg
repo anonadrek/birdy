@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432">
+  <!-- Concept E: Sketchad fågel på gren — Field Journal-stil naturalist-skiss -->
+
+  <!-- Paper background -->
+  <rect width="432" height="432" fill="#EFE7D6"/>
+
+  <!-- Subtle paper texture (light dot pattern) -->
+  <circle cx="80" cy="80" r="1.5" fill="#D8C9A8" opacity="0.5"/>
+  <circle cx="350" cy="120" r="1.5" fill="#D8C9A8" opacity="0.5"/>
+  <circle cx="100" cy="380" r="1.5" fill="#D8C9A8" opacity="0.5"/>
+  <circle cx="370" cy="350" r="1.5" fill="#D8C9A8" opacity="0.5"/>
+
+  <!-- Branch sweeping under bird -->
+  <path d="M50 340 Q 200 322 410 348" stroke="#5C3A1F" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M50 340 Q 200 322 410 348" stroke="#8C5A3C" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Small leaves on branch -->
+  <path d="M115 335 Q 105 325 115 318 Q 125 322 122 335 Z" fill="#3F4F30"/>
+  <path d="M340 343 Q 350 330 345 322 Q 332 326 332 340 Z" fill="#3F4F30"/>
+
+  <!-- Bird body — robin-like profile, perched, head turned slightly -->
+  <path d="M165 305
+           Q 130 270 145 220
+           Q 165 170 215 165
+           Q 270 170 300 215
+           Q 318 260 305 295
+           Q 280 320 230 325
+           Q 190 325 165 305 Z"
+        fill="#5C6E48" stroke="#1F1A0F" stroke-width="3.5"/>
+
+  <!-- Breast wash (copper) -->
+  <ellipse cx="195" cy="265" rx="42" ry="32" fill="#B07248" opacity="0.85"/>
+  <ellipse cx="195" cy="260" rx="32" ry="22" fill="#D88A6A" opacity="0.6"/>
+
+  <!-- Wing -->
+  <path d="M215 215
+           Q 265 218 290 245
+           Q 298 275 280 295
+           Q 240 305 215 295
+           Q 200 270 215 215 Z"
+        fill="#3F4F30" stroke="#1F1A0F" stroke-width="2"/>
+
+  <!-- Wing feather lines -->
+  <line x1="225" y1="245" x2="275" y2="252" stroke="#1F1A0F" stroke-width="1.5" opacity="0.65"/>
+  <line x1="225" y1="262" x2="275" y2="270" stroke="#1F1A0F" stroke-width="1.5" opacity="0.65"/>
+  <line x1="225" y1="280" x2="275" y2="287" stroke="#1F1A0F" stroke-width="1.5" opacity="0.65"/>
+
+  <!-- Head shape on left side (turned) -->
+  <ellipse cx="160" cy="220" rx="34" ry="32" fill="#5C6E48" stroke="#1F1A0F" stroke-width="3"/>
+
+  <!-- Eye -->
+  <circle cx="148" cy="215" r="5" fill="#1F1A0F"/>
+  <circle cx="146" cy="213" r="1.5" fill="#FFFAEC"/>
+
+  <!-- Beak -->
+  <path d="M128 222 L112 224 L128 230 Z" fill="#8C5A3C" stroke="#1F1A0F" stroke-width="1"/>
+
+  <!-- Legs (delicate) -->
+  <path d="M210 322 L210 348" stroke="#1F1A0F" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M242 322 L242 348" stroke="#1F1A0F" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M204 348 L216 348 M236 348 L248 348" stroke="#1F1A0F" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- "Field journal" stamp mark — circle + B initial top-right -->
+  <circle cx="370" cy="62" r="28" fill="none" stroke="#8C5A3C" stroke-width="2.5" opacity="0.7"/>
+  <text x="370" y="74" text-anchor="middle" font-family="serif" font-style="italic" font-size="28" fill="#8C5A3C" opacity="0.85">B</text>
+</svg>

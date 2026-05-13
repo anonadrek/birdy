@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 432">
+  <!-- Concept D: Kawaii Talgoxe (Great Tit) — Sveriges vanligaste trädgårdsfågel, appens flaggart -->
+
+  <!-- Background placeholder (adaptive-icon bg layer hanteras separat i Asset Studio) -->
+  <rect width="432" height="432" fill="#EFE7D6"/>
+
+  <!-- Body (round yellow — great tit's signature yellow belly) -->
+  <ellipse cx="216" cy="260" rx="118" ry="108" fill="#F2C84A" stroke="#1F1A0F" stroke-width="7"/>
+
+  <!-- White belly highlight (soft) -->
+  <ellipse cx="216" cy="285" rx="55" ry="40" fill="#FFFAEC" opacity="0.55"/>
+
+  <!-- Black tie/stripe (the great tit's iconic vertical chest mark) -->
+  <path d="M216 188 L216 360" stroke="#1F1A0F" stroke-width="22" stroke-linecap="round"/>
+
+  <!-- Head (black) -->
+  <ellipse cx="216" cy="170" rx="92" ry="82" fill="#1F1A0F"/>
+
+  <!-- White cheek patches (iconic great-tit feature) -->
+  <ellipse cx="178" cy="195" rx="28" ry="22" fill="#FFFAEC"/>
+  <ellipse cx="254" cy="195" rx="28" ry="22" fill="#FFFAEC"/>
+
+  <!-- Eyes (cute dots on cheeks) -->
+  <circle cx="178" cy="193" r="7" fill="#1F1A0F"/>
+  <circle cx="254" cy="193" r="7" fill="#1F1A0F"/>
+  <circle cx="180" cy="190" r="2.5" fill="#FFFAEC"/>
+  <circle cx="256" cy="190" r="2.5" fill="#FFFAEC"/>
+
+  <!-- Beak (small copper triangle) -->
+  <path d="M216 175 L204 192 L228 192 Z" fill="#8C5A3C" stroke="#5C3A1F" stroke-width="1.5"/>
+
+  <!-- Wings — blue-grey, peeking from sides -->
+  <path d="M105 250 Q 88 295 115 335 Q 140 325 145 290 Z" fill="#4A6B85"/>
+  <path d="M327 250 Q 344 295 317 335 Q 292 325 287 290 Z" fill="#4A6B85"/>
+
+  <!-- Tail feather hint (bottom) -->
+  <path d="M196 365 L208 388 L216 372 L224 388 L236 365 Z" fill="#4A6B85"/>
+
+  <!-- Tiny feet -->
+  <path d="M200 365 L196 380 L204 380 Z" fill="#8C5A3C"/>
+  <path d="M232 365 L228 380 L236 380 Z" fill="#8C5A3C"/>
+</svg>
