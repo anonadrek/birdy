@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Clock
@@ -26,6 +28,8 @@ import se.birdy.domain.premium.PremiumTier
 import se.birdy.ml.AndroidTfliteRunner
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.BirdClassifierFactory
+import se.birdy.ml.ClassifierBootstrap
+import se.birdy.ml.ClassifierBootstrapState
 import se.birdy.ml.ClassifierMode
 import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.ImagePreprocessor
@@ -39,7 +43,6 @@ import android.graphics.Color as AndroidColor
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        // TODO(Plan 6a Task 5): wire setKeepOnScreenCondition to ClassifierBootstrap state.
         installSplashScreen()
         // Edge-to-edge: BottomNavBar's paper background flows beneath the
         // system nav bar so the two surfaces fuse into a single strip.
@@ -56,58 +59,56 @@ class MainActivity : ComponentActivity() {
         cleanOldCacheFrames()
         SpeciesRepositoryProvider.init(applicationContext)
         PhotoStorageProvider.init(applicationContext)
+        setContent { App(buildAppGraph()) }
+    }
+
+    private fun buildAppGraph(): AppGraph {
         val birdyData = BirdyData(DatabaseFactory(applicationContext).createDriver())
         val observationRepo = SqlDelightObservationRepository(birdyData.observationQueries)
         val badgeRepo = BadgeRepositoryImpl(birdyData.badgeUnlockQueries)
         // Catalog is small (25 badges from YAML); runBlocking ~10ms during onCreate is acceptable.
-        // Async-loading would require state machine in AppGraph (catalog is required by SaveObservationUseCase
-        // + BadgesViewModel constructors). Revisit post-v1.0 if cold-start budget tightens.
         val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         val badgeVersionStore = SharedPrefsBadgeVersionStore(applicationContext)
         val userPreferences = UserPreferencesStore(applicationContext).preferences()
         val premiumRepository = PremiumStateStore(applicationContext).repository()
-        // BirdClassifierFactory.create() is suspend — we run it blocking here for v1 simplicity,
-        // following the same precedent as BadgeCatalogLoader above. TFLite init + 3.5 MB model
-        // read can take longer than the badge catalog (~10ms), but avoids a loading screen and
-        // keeps App(graph) signature unchanged. Post-v1.0 this can move to an async splash flow
-        // if cold-start budget tightens.
-        val (classifier, classifierMode, modelVersion) = runBlocking { buildClassifier() }
+        val classifierBootstrap = ClassifierBootstrap(buildClassifier = { buildClassifier() })
         val premiumOverride: PremiumState? =
             if (BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE) {
                 PremiumState.Active(PremiumTier.YEARLY, Clock.System.now())
             } else {
                 null
             }
-        val graph =
-            AppGraph(
-                repository = SpeciesRepositoryProvider.get(),
-                classifier = classifier,
-                classifierMode = classifierMode,
-                cameraSourceFactory = {
-                    AndroidCameraSource(applicationContext, this@MainActivity)
-                },
-                observationRepository = observationRepo,
-                photoStorage = PhotoStorageProvider.get(),
-                badgeRepository = badgeRepo,
-                badgeCatalog = badgeCatalog,
-                badgeVersionStore = badgeVersionStore,
-                userPreferences = userPreferences,
-                premiumRepository = premiumRepository,
-                premiumOverride = premiumOverride,
-                defaultLocale = Locale.SV,
-                modelVersion = modelVersion,
-                benchmarkScreen =
-                    if (BuildConfig.DEBUG && modelVersion != null) {
-                        {
-                            se.birdy.app.debug
-                                .BenchmarkScreen(classifier = classifier, modelVersion = modelVersion)
-                        }
-                    } else {
-                        null
-                    },
-            )
-        setContent { App(graph) }
+        return AppGraph(
+            repository = SpeciesRepositoryProvider.get(),
+            classifierBootstrap = classifierBootstrap,
+            cameraSourceFactory = { AndroidCameraSource(applicationContext, this@MainActivity) },
+            observationRepository = observationRepo,
+            photoStorage = PhotoStorageProvider.get(),
+            badgeRepository = badgeRepo,
+            badgeCatalog = badgeCatalog,
+            badgeVersionStore = badgeVersionStore,
+            userPreferences = userPreferences,
+            premiumRepository = premiumRepository,
+            premiumOverride = premiumOverride,
+            defaultLocale = Locale.SV,
+            benchmarkScreen = buildBenchmarkScreen(classifierBootstrap),
+        )
     }
+
+    private fun buildBenchmarkScreen(bootstrap: ClassifierBootstrap): (@Composable () -> Unit)? =
+        if (BuildConfig.DEBUG) {
+            @Composable {
+                val ready = bootstrap.state.collectAsState().value as? ClassifierBootstrapState.Ready
+                if (ready != null) {
+                    se.birdy.app.debug.BenchmarkScreen(
+                        classifier = ready.classifier,
+                        modelVersion = ready.modelVersion ?: "unknown",
+                    )
+                }
+            }
+        } else {
+            null
+        }
 
     private suspend fun buildClassifier(): Triple<BirdClassifier, ClassifierMode, String?> {
         val artifactProvider = ModelArtifactProvider()

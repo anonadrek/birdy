@@ -396,6 +396,12 @@
     <string name="lifelist_journal_sub_empty">An empty page, for now.</string>
     <string name="lifelist_empty_caveat_cta">*Scan* first bird</string>
 
+    <!-- ===== Plan 6a Task 5: Bootstrap ===== -->
+    <string name="bootstrap_loading">Preparing the field journal…</string>
+    <string name="bootstrap_failed_title">Something went wrong</string>
+    <string name="bootstrap_failed_body">Couldn't load the bird archive. Try again in a moment.</string>
+    <string name="bootstrap_failed_retry">Try again</string>
+
     <!-- Plan 7e — Premium tier -->
     <string name="premium_screen_close">Close</string>
     <string name="premium_headline_plain">A</string>

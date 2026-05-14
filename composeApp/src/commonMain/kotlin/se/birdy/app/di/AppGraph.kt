@@ -31,12 +31,13 @@ import se.birdy.domain.premium.PremiumRepository
 import se.birdy.domain.premium.PremiumState
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.CameraSource
+import se.birdy.ml.ClassifierBootstrap
+import se.birdy.ml.ClassifierBootstrapState
 import se.birdy.ml.ClassifierMode
 
 class AppGraph(
     val repository: SpeciesRepository,
-    val classifier: BirdClassifier,
-    val classifierMode: ClassifierMode = ClassifierMode.REAL,
+    val classifierBootstrap: ClassifierBootstrap,
     val cameraSourceFactory: () -> CameraSource,
     val observationRepository: ObservationRepository,
     val photoStorage: PhotoStorage,
@@ -49,8 +50,6 @@ class AppGraph(
     val clock: Clock = Clock.System,
     val timeZone: TimeZone = TimeZone.currentSystemDefault(),
     val defaultLocale: Locale = Locale.SV,
-    /** Non-null only when the real TFLite model is loaded. Null in DEMO/fallback mode. */
-    val modelVersion: String? = null,
     /**
      * Non-null = show debug overflow menu + register debug route.
      * Null = DEBUG features hidden (release builds, DEMO mode).
@@ -58,6 +57,19 @@ class AppGraph(
      */
     val benchmarkScreen: (@Composable () -> Unit)? = null,
 ) {
+    val classifier: BirdClassifier
+        get() =
+            (classifierBootstrap.state.value as? ClassifierBootstrapState.Ready)?.classifier
+                ?: error("Classifier not ready — AppGate should gate on bootstrap state")
+
+    val classifierMode: ClassifierMode
+        get() =
+            (classifierBootstrap.state.value as? ClassifierBootstrapState.Ready)?.mode
+                ?: ClassifierMode.DEMO
+
+    val modelVersion: String?
+        get() = (classifierBootstrap.state.value as? ClassifierBootstrapState.Ready)?.modelVersion
+
     private val recalculateBadges = RecalculateBadgesUseCase(clock = clock, zone = timeZone)
 
     val badgeBackfill: BadgeBackfillOnAppStart by lazy {

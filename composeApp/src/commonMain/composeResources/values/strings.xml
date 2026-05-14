@@ -409,6 +409,12 @@
     <string name="lifelist_journal_sub_empty">En tom sida, för nu.</string>
     <string name="lifelist_empty_caveat_cta">*Skanna* första fågeln</string>
 
+    <!-- ===== Plan 6a Task 5: Bootstrap ===== -->
+    <string name="bootstrap_loading">Förbereder fältboken…</string>
+    <string name="bootstrap_failed_title">Något gick fel</string>
+    <string name="bootstrap_failed_body">Kunde inte ladda fågel-arkivet. Försök igen om en stund.</string>
+    <string name="bootstrap_failed_retry">Försök igen</string>
+
     <!-- Plan 7e — Premium tier -->
     <string name="premium_screen_close">Stäng</string>
     <string name="premium_headline_plain">Hela året som</string>
