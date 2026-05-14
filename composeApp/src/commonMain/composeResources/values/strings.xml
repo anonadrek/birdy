@@ -92,6 +92,7 @@
 
     <!-- Loading -->
     <string name="loading">Laddar…</string>
+    <string name="journal_loading_default">Bläddrar i fältboken…</string>
 
     <!-- Photo analyze screen -->
     <string name="photo_pick_from_gallery">Välj från galleri</string>

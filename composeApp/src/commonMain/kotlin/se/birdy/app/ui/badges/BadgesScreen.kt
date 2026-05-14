@@ -21,8 +21,6 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -57,10 +55,11 @@ import kotlinx.datetime.TimeZone
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
+import se.birdy.app.ui.components.JournalLoading
+import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.StampTrack
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
-import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.content.Locale
 import se.birdy.domain.badge.Badge
@@ -83,14 +82,13 @@ fun BadgesScreen(
     val lockedTooltip = stringResource(Res.string.badges_locked_tooltip)
     val now = remember { Clock.System.now() }
 
-    Scaffold(
-        modifier = modifier.fillMaxSize(),
-        containerColor = Color.Transparent,
+    JournalScaffold(
+        modifier = modifier,
         snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
-        Box(modifier = Modifier.fillMaxSize().paperBackground().padding(padding)) {
+        Box(modifier = Modifier.fillMaxSize().padding(padding)) {
             when (state) {
-                is BadgesUiState.Loading -> Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
+                is BadgesUiState.Loading -> JournalLoading()
                 is BadgesUiState.Error -> ErrorState(onRetry = onRetry, modifier = Modifier.fillMaxSize())
                 is BadgesUiState.Loaded ->
                     LoadedContent(

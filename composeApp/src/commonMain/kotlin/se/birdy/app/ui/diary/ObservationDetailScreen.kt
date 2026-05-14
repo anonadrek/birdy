@@ -18,8 +18,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -93,7 +91,9 @@ import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.JournalDialog
 import se.birdy.app.ui.components.JournalIntro
+import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.PlateFrame
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaBorder
@@ -132,11 +132,7 @@ fun ObservationDetailScreen(
     Scaffold(snackbarHost = { SnackbarHost(snackbarHost) }) { padding ->
         Box(modifier = Modifier.fillMaxSize().padding(padding).paperBackground()) {
             when (val s = state) {
-                ObservationDetailUiState.Loading ->
-                    CircularProgressIndicator(
-                        modifier = Modifier.align(Alignment.Center),
-                        color = AccentCopper,
-                    )
+                ObservationDetailUiState.Loading -> JournalLoading()
                 ObservationDetailUiState.NotFound ->
                     Text(
                         stringResource(Res.string.diary_detail_not_found),
@@ -258,21 +254,16 @@ private fun LoadedView(
         }
     }
     if (showDeleteDialog) {
-        AlertDialog(
-            onDismissRequest = { showDeleteDialog = false },
-            title = { Text(stringResource(Res.string.diary_delete_confirm_title)) },
-            text = { Text(stringResource(Res.string.diary_delete_confirm_body)) },
-            confirmButton = {
-                TextButton(onClick = {
-                    showDeleteDialog = false
-                    viewModel.delete()
-                }) { Text(stringResource(Res.string.diary_delete_confirm_yes), color = AccentCopper) }
+        JournalDialog(
+            title = stringResource(Res.string.diary_delete_confirm_title),
+            body = stringResource(Res.string.diary_delete_confirm_body),
+            confirmLabel = stringResource(Res.string.diary_delete_confirm_yes),
+            onConfirm = {
+                showDeleteDialog = false
+                viewModel.delete()
             },
-            dismissButton = {
-                TextButton(onClick = { showDeleteDialog = false }) {
-                    Text(stringResource(Res.string.diary_delete_confirm_no), color = TextOnCreme)
-                }
-            },
+            dismissLabel = stringResource(Res.string.diary_delete_confirm_no),
+            onDismiss = { showDeleteDialog = false },
         )
     }
 }

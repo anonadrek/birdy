@@ -81,6 +81,7 @@
     <string name="section_others">Others</string>
 
     <string name="loading">Loading…</string>
+    <string name="journal_loading_default">Browsing the field journal…</string>
 
     <string name="photo_pick_from_gallery">Pick from gallery</string>
     <string name="photo_take_photo">Take photo</string>

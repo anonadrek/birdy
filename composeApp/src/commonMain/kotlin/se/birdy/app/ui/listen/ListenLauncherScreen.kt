@@ -21,7 +21,6 @@ import androidx.compose.material.icons.filled.PhotoCamera
 import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -54,10 +53,10 @@ import birdy_bird_scanner.composeapp.generated.resources.listen_premium_label
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
+import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
 @Composable
@@ -76,15 +75,13 @@ fun ListenLauncherScreen(
             }
         }
     }
-    Scaffold(
-        containerColor = Color.Transparent,
+    JournalScaffold(
         snackbarHost = { SnackbarHost(snackbar) },
     ) { padding ->
         Column(
             modifier =
                 Modifier
                     .fillMaxSize()
-                    .paperBackground()
                     .padding(padding),
             verticalArrangement = Arrangement.spacedBy(0.dp),
         ) {

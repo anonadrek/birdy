@@ -26,7 +26,6 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -74,6 +73,7 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.JournalIntro
+import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.MiniStamp
 import se.birdy.app.ui.components.PremiumTeaserCard
 import se.birdy.app.ui.theme.AccentCopper
@@ -81,7 +81,6 @@ import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.PaperBottom
 import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.content.SpeciesId
@@ -103,9 +102,9 @@ fun ArchiveScreen(
     val sort by viewModel.sort.collectAsStateWithLifecycle()
     var menuExpanded by remember { mutableStateOf(false) }
 
-    Scaffold(containerColor = Color.Transparent) { padding ->
+    JournalScaffold { padding ->
         LazyColumn(
-            modifier = Modifier.fillMaxSize().paperBackground().padding(padding),
+            modifier = Modifier.fillMaxSize().padding(padding),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             item(key = "header") {

@@ -42,7 +42,6 @@ import birdy_bird_scanner.composeapp.generated.resources.badge_uncommon
 import birdy_bird_scanner.composeapp.generated.resources.empty_description
 import birdy_bird_scanner.composeapp.generated.resources.empty_migration
 import birdy_bird_scanner.composeapp.generated.resources.empty_photos
-import birdy_bird_scanner.composeapp.generated.resources.loading
 import birdy_bird_scanner.composeapp.generated.resources.not_found_body
 import birdy_bird_scanner.composeapp.generated.resources.not_found_title
 import birdy_bird_scanner.composeapp.generated.resources.premium_species_subtitle
@@ -63,6 +62,7 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.HeroImage
 import se.birdy.app.ui.components.JournalIntro
+import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.PlateFrame
 import se.birdy.app.ui.components.PremiumTeaserCard
 import se.birdy.app.ui.theme.AccentCopper
@@ -85,11 +85,7 @@ fun SpeciesProfileScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     when (val s = state) {
-        SpeciesProfileUiState.Loading ->
-            Box(
-                modifier = Modifier.fillMaxSize().paperBackground(),
-                contentAlignment = Alignment.Center,
-            ) { Text(stringResource(Res.string.loading)) }
+        SpeciesProfileUiState.Loading -> JournalLoading()
         SpeciesProfileUiState.NotFound ->
             EmptyState(
                 title = stringResource(Res.string.not_found_title),

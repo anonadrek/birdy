@@ -18,8 +18,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -65,6 +63,8 @@ import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.JournalHeadline
 import se.birdy.app.ui.components.JournalIntro
+import se.birdy.app.ui.components.JournalLoading
+import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.LockedStatsPreview
 import se.birdy.app.ui.components.MiniStamp
 import se.birdy.app.ui.theme.AccentCopper
@@ -75,7 +75,6 @@ import se.birdy.app.ui.theme.MatchMid
 import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.PaperBottom
 import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.datastore.LifelistSort
@@ -90,13 +89,10 @@ fun LifelistScreen(
     showPremiumTeaser: Boolean = true,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    Scaffold(containerColor = Color.Transparent) { padding ->
-        Box(modifier = Modifier.fillMaxSize().paperBackground().padding(padding)) {
+    JournalScaffold { padding ->
+        Box(modifier = Modifier.fillMaxSize().padding(padding)) {
             when (val s = state) {
-                LifelistUiState.Loading ->
-                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        CircularProgressIndicator()
-                    }
+                LifelistUiState.Loading -> JournalLoading()
                 LifelistUiState.Empty -> EmptyLifelist(onScanCtaClick = onScanCtaClick)
                 is LifelistUiState.Loaded ->
                     LoadedLifelist(
