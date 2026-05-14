@@ -16,18 +16,23 @@ class ColorTokensTest {
     }
 
     @Test
+    fun `accent copper is retinted warm copper`() {
+        assertEquals(0xFFA8552D.toInt(), AccentCopper.argb())
+    }
+
+    @Test
     fun `stamp locked is 40 percent copper`() {
-        assertEquals(0x668C5A3C.toInt(), StampLocked.argb())
+        assertEquals(0x66A8552D.toInt(), StampLocked.argb())
     }
 
     @Test
     fun `stamp unlocked bg is 12 percent copper`() {
-        assertEquals(0x1F8C5A3C.toInt(), StampUnlockedBg.argb())
+        assertEquals(0x1FA8552D.toInt(), StampUnlockedBg.argb())
     }
 
     @Test
     fun `marginalia border is copper`() {
-        assertEquals(0xFF8C5A3C.toInt(), MarginaliaBorder.argb())
+        assertEquals(0xFFA8552D.toInt(), MarginaliaBorder.argb())
     }
 }
 

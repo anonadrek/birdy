@@ -73,7 +73,7 @@ Färgpalett (locked 2026-04-30):
 |---|---|---|
 | Background | `#E8E2D2` | Pale moss-creme |
 | Hero top / deep / shadow | `#5C6E48` / `#3F4F30` / `#2A3520` | Mossgrön gradient |
-| Accent | `#8C5A3C` | Koppar (CTA, aktiv flik, stat-siffror) |
+| Accent | `#A8552D` | Koppar (CTA, aktiv flik, stat-siffror) |
 | Stat surface | `#D8D0BC` | Sand-creme |
 | Text primary | `#2A3525` | Djup skog |
 | Text on hero/accent | `#F0EAD8` | Varm offwhite |

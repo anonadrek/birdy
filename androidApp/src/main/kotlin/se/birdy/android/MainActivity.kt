@@ -39,6 +39,7 @@ import android.graphics.Color as AndroidColor
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        // TODO(Plan 6a Task 5): wire setKeepOnScreenCondition to ClassifierBootstrap state.
         installSplashScreen()
         // Edge-to-edge: BottomNavBar's paper background flows beneath the
         // system nav bar so the two surfaces fuse into a single strip.

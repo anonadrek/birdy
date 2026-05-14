@@ -553,6 +553,18 @@ EOF
 )"
 ```
 
+### Task 4 follow-ups (pre-release)
+
+PNG mipmap fallbacks for API 24–25 are currently flat copper-on-creme rasters from `svglib` — no warmth gradient, no circular crop for round-icon. Acceptable for v0.8.0-rc1 device-verify (most users on API 26+ see the adaptive icon), but **must** be regenerated before Play Store production push:
+
+1. Open `docs/superpowers/icon-concepts/final/ic_launcher_512.svg` in Android Studio → New → Image Asset → Launcher Icons (Adaptive and Legacy).
+2. Configure foreground = the bird-only SVG (strip warmth bg), background = `#EBDEC2` solid + grain noise.
+3. Let Asset Studio generate proper masked legacy PNGs across all densities + circular crops for round-icon.
+4. Overwrite the existing files in `androidApp/src/main/res/mipmap-{m,h,xh,xxh,xxxh}dpi/`.
+5. Re-add `ic_launcher_round.png` at all 5 densities (currently absent — adaptive XML handles API 26+ and framework falls back to `ic_launcher.png` for API 24–25).
+
+This is wired into Task 14 (Play Store artefakter).
+
 ---
 
 ## Task 5: Cold-start TFLite-flytt till AppGate
