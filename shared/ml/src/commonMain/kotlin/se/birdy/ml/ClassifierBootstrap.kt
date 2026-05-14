@@ -1,7 +1,9 @@
 package se.birdy.ml
 
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -30,24 +32,30 @@ class ClassifierBootstrap(
     val state: StateFlow<ClassifierBootstrapState> = _state.asStateFlow()
 
     init {
-        scope.launch {
-            try {
-                val (clf, mode, version) = withContext(Dispatchers.Default) { buildClassifier() }
-                _state.value = ClassifierBootstrapState.Ready(clf, mode, version)
-            } catch (t: Throwable) {
-                _state.value = ClassifierBootstrapState.Failed(t)
-            }
-        }
+        launchBuild()
     }
 
     fun retry() {
-        if (_state.value !is ClassifierBootstrapState.Failed) return
-        _state.value = ClassifierBootstrapState.Initializing
+        val current = _state.value
+        if (current !is ClassifierBootstrapState.Failed) return
+        if (!_state.compareAndSet(current, ClassifierBootstrapState.Initializing)) return
+        launchBuild()
+    }
+
+    /** Cancels the in-flight build coroutine and closes any ready classifier. */
+    fun close() {
+        val current = _state.value
+        scope.cancel()
+        if (current is ClassifierBootstrapState.Ready) current.classifier.close()
+    }
+
+    private fun launchBuild() {
         scope.launch {
             try {
                 val (clf, mode, version) = withContext(Dispatchers.Default) { buildClassifier() }
                 _state.value = ClassifierBootstrapState.Ready(clf, mode, version)
             } catch (t: Throwable) {
+                if (t is CancellationException) throw t
                 _state.value = ClassifierBootstrapState.Failed(t)
             }
         }

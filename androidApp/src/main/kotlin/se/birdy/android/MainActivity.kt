@@ -42,6 +42,8 @@ import java.io.File
 import android.graphics.Color as AndroidColor
 
 class MainActivity : ComponentActivity() {
+    private lateinit var appGraph: AppGraph
+
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         // Edge-to-edge: BottomNavBar's paper background flows beneath the
@@ -59,7 +61,18 @@ class MainActivity : ComponentActivity() {
         cleanOldCacheFrames()
         SpeciesRepositoryProvider.init(applicationContext)
         PhotoStorageProvider.init(applicationContext)
-        setContent { App(buildAppGraph()) }
+        // Build graph before setContent so recomposition cannot orphan
+        // ClassifierBootstrap or leak the TFLite Interpreter.
+        appGraph = buildAppGraph()
+        setContent { App(appGraph) }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Cancel in-flight init coroutine and free TFLite native handle.
+        // Rotation destroys+recreates Activity so the classifier re-loads
+        // (~14ms p95); singleton-lift to Application scope is a follow-up.
+        appGraph.classifierBootstrap.close()
     }
 
     private fun buildAppGraph(): AppGraph {
@@ -99,10 +112,11 @@ class MainActivity : ComponentActivity() {
         if (BuildConfig.DEBUG) {
             @Composable {
                 val ready = bootstrap.state.collectAsState().value as? ClassifierBootstrapState.Ready
-                if (ready != null) {
+                val version = ready?.modelVersion
+                if (ready != null && version != null) {
                     se.birdy.app.debug.BenchmarkScreen(
                         classifier = ready.classifier,
-                        modelVersion = ready.modelVersion ?: "unknown",
+                        modelVersion = version,
                     )
                 }
             }

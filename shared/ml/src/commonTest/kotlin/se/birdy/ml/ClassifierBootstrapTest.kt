@@ -1,5 +1,6 @@
 package se.birdy.ml
 
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
@@ -32,5 +33,18 @@ class ClassifierBootstrapTest {
             val states = bootstrap.state.take(2).toList()
             val failed = states[1] as ClassifierBootstrapState.Failed
             assertEquals("boom", failed.cause.message)
+        }
+
+    @Test
+    fun retry_is_noop_when_not_failed() =
+        runTest {
+            val bootstrap =
+                ClassifierBootstrap(
+                    buildClassifier = { Triple(FakeBirdClassifier(), ClassifierMode.REAL, "v1.0") },
+                )
+            // Wait until Ready
+            val readyState = bootstrap.state.first { it is ClassifierBootstrapState.Ready }
+            bootstrap.retry() // should not change state
+            assertEquals(readyState, bootstrap.state.value)
         }
 }
