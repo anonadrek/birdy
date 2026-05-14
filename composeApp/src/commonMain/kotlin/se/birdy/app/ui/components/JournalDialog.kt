@@ -11,6 +11,16 @@ import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
+/**
+ * Field Journal–styled AlertDialog with paper background and Caveat typography.
+ *
+ * Contract:
+ * - When [dismissLabel] == null: dialog is non-dismissable. [DialogProperties] locks both
+ *   back-press and click-outside; [onDismiss] is effectively unused.
+ * - When [dismissLabel] != null: dialog is dismissable. Callers SHOULD pass an explicit
+ *   [onDismiss] to handle that path (e.g. closing the dialog state). The default `{}` is a
+ *   deliberate no-op — it keeps the dialog open, which is safe but rarely the desired behaviour.
+ */
 @Composable
 fun JournalDialog(
     title: String,
@@ -18,7 +28,7 @@ fun JournalDialog(
     confirmLabel: String,
     onConfirm: () -> Unit,
     dismissLabel: String? = null,
-    onDismiss: () -> Unit = onConfirm,
+    onDismiss: () -> Unit = {},
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,

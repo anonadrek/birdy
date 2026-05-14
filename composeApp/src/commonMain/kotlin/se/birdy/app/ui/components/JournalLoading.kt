@@ -11,9 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.journal_loading_default
 import org.jetbrains.compose.resources.stringResource
@@ -39,7 +38,7 @@ fun JournalLoading(
             Text(
                 text = label,
                 fontFamily = rememberCaveat(),
-                fontSize = TextUnit(18f, TextUnitType.Sp),
+                fontSize = 18.sp,
                 color = MarginaliaInk,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(horizontal = 32.dp),
