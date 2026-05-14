@@ -35,6 +35,7 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -109,6 +110,15 @@ fun SettingsScreen(
     val state by viewModel.state.collectAsState()
     var showNameDialog by rememberSaveable { mutableStateOf(false) }
     var showLanguageDialog by rememberSaveable { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        viewModel.effects.collect { effect ->
+            when (effect) {
+                is SettingsEffect.RestartForLocale -> applyLocale(effect.tag)
+                else -> Unit // other effects wired in T13
+            }
+        }
+    }
 
     Box(modifier = Modifier.fillMaxSize().paperBackground()) {
         LazyColumn(

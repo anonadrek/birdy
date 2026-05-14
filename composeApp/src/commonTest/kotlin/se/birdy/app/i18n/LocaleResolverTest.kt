@@ -21,4 +21,19 @@ class LocaleResolverTest {
     fun fallback_to_sv_for_unknown_system_locale() {
         assertEquals(Locale.SV, LocaleResolver.resolve(override = null, systemTag = "de-DE"))
     }
+
+    @Test
+    fun override_with_subtag_normalizes() {
+        assertEquals(Locale.EN, LocaleResolver.resolve(override = "en-GB", systemTag = "sv-SE"))
+    }
+
+    @Test
+    fun system_tag_case_insensitive() {
+        assertEquals(Locale.EN, LocaleResolver.resolve(override = null, systemTag = "EN-US"))
+    }
+
+    @Test
+    fun empty_system_tag_falls_back_to_sv() {
+        assertEquals(Locale.SV, LocaleResolver.resolve(override = null, systemTag = ""))
+    }
 }

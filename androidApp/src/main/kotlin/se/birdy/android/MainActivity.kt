@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Clock
 import se.birdy.app.App
@@ -91,9 +92,17 @@ class MainActivity : ComponentActivity() {
             } else {
                 null
             }
+        val overrideTag =
+            runBlocking { userPreferences.appLanguage.first() }.let {
+                when (it) {
+                    se.birdy.datastore.AppLanguage.SV -> "sv"
+                    se.birdy.datastore.AppLanguage.EN -> "en"
+                    se.birdy.datastore.AppLanguage.SYSTEM -> null
+                }
+            }
         val resolvedLocale =
             LocaleResolver.resolve(
-                override = null,
+                override = overrideTag,
                 systemTag = resources.configuration.locales[0].toLanguageTag(),
             )
         return AppGraph(

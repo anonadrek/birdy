@@ -2,8 +2,11 @@ package se.birdy.app.ui.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
@@ -18,6 +21,9 @@ class SettingsViewModel(
 ) : ViewModel() {
     private val _state = MutableStateFlow(SettingsUiState())
     val state: StateFlow<SettingsUiState> = _state.asStateFlow()
+
+    private val _effects = MutableSharedFlow<SettingsEffect>(replay = 1, extraBufferCapacity = 1)
+    val effects: SharedFlow<SettingsEffect> = _effects.asSharedFlow()
 
     init {
         viewModelScope.launch {
@@ -40,6 +46,15 @@ class SettingsViewModel(
     }
 
     fun saveLanguage(value: AppLanguage) {
-        viewModelScope.launch { prefs.setAppLanguage(value) }
+        viewModelScope.launch {
+            prefs.setAppLanguage(value)
+            val tag =
+                when (value) {
+                    AppLanguage.SV -> "sv"
+                    AppLanguage.EN -> "en"
+                    AppLanguage.SYSTEM -> ""
+                }
+            _effects.tryEmit(SettingsEffect.RestartForLocale(tag))
+        }
     }
 }

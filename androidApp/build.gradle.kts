@@ -22,6 +22,7 @@ kotlin {
             // AndroidTfliteRunner(modelBytes, info) with default options param in buildClassifier.
             implementation("org.tensorflow:tensorflow-lite:2.16.1")
             implementation(libs.androidx.core.splashscreen)
+            implementation(libs.androidx.appcompat)
         }
     }
 }

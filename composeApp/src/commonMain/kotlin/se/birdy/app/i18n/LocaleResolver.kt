@@ -7,8 +7,8 @@ object LocaleResolver {
         override: String?,
         systemTag: String,
     ): Locale {
-        val candidate = override ?: systemTag.substringBefore('-').lowercase()
-        return when (candidate.substringBefore('-').lowercase()) {
+        val raw = override ?: systemTag
+        return when (raw.substringBefore('-').lowercase()) {
             "sv", "se" -> Locale.SV
             "en" -> Locale.EN
             else -> Locale.SV

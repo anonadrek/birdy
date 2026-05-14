@@ -53,6 +53,7 @@ kotlin {
             implementation(libs.androidx.core.ktx)
             implementation(libs.androidx.camera.view)
             implementation(libs.androidx.exifinterface)
+            implementation(libs.androidx.appcompat)
         }
     }
 }
