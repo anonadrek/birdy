@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Clock
 import se.birdy.app.App
@@ -38,6 +39,7 @@ import android.graphics.Color as AndroidColor
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         // Edge-to-edge: BottomNavBar's paper background flows beneath the
         // system nav bar so the two surfaces fuse into a single strip.
         // BottomNavBar applies windowInsetsPadding(navigationBars) to keep

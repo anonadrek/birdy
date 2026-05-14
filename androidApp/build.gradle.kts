@@ -21,6 +21,7 @@ kotlin {
             // TFLite needed so Kotlin compiler can resolve Interpreter.Options when calling
             // AndroidTfliteRunner(modelBytes, info) with default options param in buildClassifier.
             implementation("org.tensorflow:tensorflow-lite:2.16.1")
+            implementation(libs.androidx.core.splashscreen)
         }
     }
 }

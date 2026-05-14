@@ -14,7 +14,7 @@ val HeroMossMid = Color(0xFF3F4F30)
 val HeroMossDeep = Color(0xFF2A3520)
 
 // Accent (warm copper — CTA, active tab, stat numbers)
-val AccentCopper = Color(0xFF8C5A3C)
+val AccentCopper = Color(0xFFA8552D)
 
 // Text
 val TextOnCreme = Color(0xFF2A3525) // primary text on background
@@ -55,13 +55,13 @@ val PaperTop = Color(0xFFF0E7D0)
 val PaperBottom = Color(0xFFE6D8B8)
 
 // Stamp (sigill) state-tints
-val StampLocked = Color(0x668C5A3C) // 40% AccentCopper for dashed border on locked stamps
+val StampLocked = Color(0x66A8552D) // 40% AccentCopper for dashed border on locked stamps
 val StampLockedBg = Color(0x99E8E2D2) // 60% MossCreme for locked stamp interior
-val StampUnlockedBg = Color(0x1F8C5A3C) // 12% AccentCopper for unlocked stamp interior
+val StampUnlockedBg = Color(0x1FA8552D) // 12% AccentCopper for unlocked stamp interior
 
 // Marginalia — left border and text color for handwritten citations
 val MarginaliaInk = Color(0xFF5C6E48) // mossgrön (same as HeroMossLight but explicit token for Caveat marginalia text)
-val MarginaliaBorder = Color(0xFF8C5A3C) // AccentCopper for 2dp left border
+val MarginaliaBorder = Color(0xFFA8552D) // AccentCopper for 2dp left border
 
 // Bottom navigation bar background — also applied to system navigation bar so
 // the two surfaces read as a single continuous paper strip.
