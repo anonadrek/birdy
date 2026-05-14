@@ -17,6 +17,7 @@ import se.birdy.app.badges.BadgeCatalogLoader
 import se.birdy.app.bootstrap.SharedPrefsBadgeVersionStore
 import se.birdy.app.di.AppGraph
 import se.birdy.app.i18n.LocaleResolver
+import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
@@ -92,14 +93,7 @@ class MainActivity : ComponentActivity() {
             } else {
                 null
             }
-        val overrideTag =
-            runBlocking { userPreferences.appLanguage.first() }.let {
-                when (it) {
-                    se.birdy.datastore.AppLanguage.SV -> "sv"
-                    se.birdy.datastore.AppLanguage.EN -> "en"
-                    se.birdy.datastore.AppLanguage.SYSTEM -> null
-                }
-            }
+        val overrideTag = runBlocking { userPreferences.appLanguage.first() }.toLocaleTagOrNull()
         val resolvedLocale =
             LocaleResolver.resolve(
                 override = overrideTag,
