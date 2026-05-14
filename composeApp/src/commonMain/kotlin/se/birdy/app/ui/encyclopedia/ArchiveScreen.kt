@@ -104,105 +104,119 @@ fun ArchiveScreen(
     var menuExpanded by remember { mutableStateOf(false) }
 
     Scaffold(containerColor = Color.Transparent) { padding ->
-        Column(
+        LazyColumn(
             modifier = Modifier.fillMaxSize().paperBackground().padding(padding),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                JournalIntro(
-                    label = stringResource(Res.string.archive_journal_label),
-                    headline = stringResource(Res.string.archive_journal_headline),
-                    sub = stringResource(Res.string.archive_journal_sub),
-                    headlineFontSize = 36.sp,
-                )
-                Box(modifier = Modifier.align(Alignment.TopEnd).padding(top = 24.dp, end = 16.dp)) {
-                    IconButton(onClick = { menuExpanded = true }) {
-                        Icon(
-                            imageVector = Icons.Default.MoreVert,
-                            contentDescription = stringResource(Res.string.menu_button),
-                            tint = AccentCopper,
-                        )
-                    }
-                    DropdownMenu(
-                        expanded = menuExpanded,
-                        onDismissRequest = { menuExpanded = false },
-                    ) {
-                        DropdownMenuItem(
-                            text = { Text(stringResource(Res.string.settings_menu_item)) },
-                            onClick = {
-                                onSettingsClick()
-                                menuExpanded = false
-                            },
-                        )
-                        if (showDebugMenu) {
+            item(key = "header") {
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    JournalIntro(
+                        label = stringResource(Res.string.archive_journal_label),
+                        headline = stringResource(Res.string.archive_journal_headline),
+                        sub = stringResource(Res.string.archive_journal_sub),
+                        headlineFontSize = 36.sp,
+                    )
+                    Box(modifier = Modifier.align(Alignment.TopEnd).padding(top = 24.dp, end = 16.dp)) {
+                        IconButton(onClick = { menuExpanded = true }) {
+                            Icon(
+                                imageVector = Icons.Default.MoreVert,
+                                contentDescription = stringResource(Res.string.menu_button),
+                                tint = AccentCopper,
+                            )
+                        }
+                        DropdownMenu(
+                            expanded = menuExpanded,
+                            onDismissRequest = { menuExpanded = false },
+                        ) {
                             DropdownMenuItem(
-                                text = { Text("Run benchmark") },
+                                text = { Text(stringResource(Res.string.settings_menu_item)) },
                                 onClick = {
-                                    onDebugBenchmarkClick()
+                                    onSettingsClick()
                                     menuExpanded = false
                                 },
                             )
+                            if (showDebugMenu) {
+                                DropdownMenuItem(
+                                    text = { Text("Run benchmark") },
+                                    onClick = {
+                                        onDebugBenchmarkClick()
+                                        menuExpanded = false
+                                    },
+                                )
+                            }
                         }
                     }
                 }
             }
 
             if (showPremiumTeaser) {
-                PremiumTeaserCard(
-                    title = stringResource(Res.string.premium_archive_title),
-                    subtitle = stringResource(Res.string.premium_archive_subtitle),
-                    cornerLabel = stringResource(Res.string.premium_teaser_corner),
-                    ctaLabel = stringResource(Res.string.premium_teaser_cta),
-                    onClick = onPremiumClick,
-                    modifier = Modifier.padding(horizontal = 16.dp),
+                item(key = "premium") {
+                    PremiumTeaserCard(
+                        title = stringResource(Res.string.premium_archive_title),
+                        subtitle = stringResource(Res.string.premium_archive_subtitle),
+                        cornerLabel = stringResource(Res.string.premium_teaser_corner),
+                        ctaLabel = stringResource(Res.string.premium_teaser_cta),
+                        onClick = onPremiumClick,
+                        modifier = Modifier.padding(horizontal = 16.dp),
+                    )
+                }
+            }
+
+            item(key = "search") {
+                JournalSearchField(
+                    value = query,
+                    onValueChange = viewModel::onQueryChanged,
+                    placeholder = stringResource(Res.string.search_placeholder),
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
                 )
             }
 
-            JournalSearchField(
-                value = query,
-                onValueChange = viewModel::onQueryChanged,
-                placeholder = stringResource(Res.string.search_placeholder),
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-            )
+            item(key = "chips") {
+                ChipBar(selected = chip, onSelect = viewModel::onChipSelected)
+            }
 
-            ChipBar(selected = chip, onSelect = viewModel::onChipSelected)
-
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.End,
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                SortChip(sort = sort, onClick = viewModel::onSortToggle)
+            item(key = "sort") {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.End,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    SortChip(sort = sort, onClick = viewModel::onSortToggle)
+                }
             }
 
             when (val s = state) {
                 ArchiveUiState.Loading ->
-                    Box(Modifier.fillMaxSize(), Alignment.Center) { Text(stringResource(Res.string.loading)) }
+                    item(key = "loading") {
+                        Box(Modifier.fillMaxWidth().padding(vertical = 64.dp), Alignment.Center) {
+                            Text(stringResource(Res.string.loading))
+                        }
+                    }
                 ArchiveUiState.Empty ->
-                    EmptyState(
-                        title = stringResource(Res.string.search_empty_title),
-                        body = stringResource(Res.string.search_empty_body),
-                    )
+                    item(key = "empty") {
+                        EmptyState(
+                            title = stringResource(Res.string.search_empty_title),
+                            body = stringResource(Res.string.search_empty_body),
+                        )
+                    }
                 is ArchiveUiState.Loaded -> {
-                    LazyColumn(modifier = Modifier.fillMaxSize()) {
-                        item {
-                            Text(
-                                text = stringResource(Res.string.archive_section_count, s.rows.size.toString()),
-                                color = MarginaliaInk.copy(alpha = 0.6f),
-                                fontSize = 9.sp,
-                                fontWeight = FontWeight.W700,
-                                letterSpacing = 0.22.em,
-                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp),
-                            )
-                        }
-                        items(s.rows, key = { it.summary.id.raw }) { row ->
-                            SpeciesRow(
-                                summary = row.summary,
-                                isStamped = row.isStamped,
-                                stampNumber = row.stampNumber,
-                                onClick = { onSpeciesClick(row.summary.id) },
-                            )
-                        }
+                    item(key = "count") {
+                        Text(
+                            text = stringResource(Res.string.archive_section_count, s.rows.size.toString()),
+                            color = MarginaliaInk.copy(alpha = 0.6f),
+                            fontSize = 9.sp,
+                            fontWeight = FontWeight.W700,
+                            letterSpacing = 0.22.em,
+                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp),
+                        )
+                    }
+                    items(s.rows, key = { it.summary.id.raw }) { row ->
+                        SpeciesRow(
+                            summary = row.summary,
+                            isStamped = row.isStamped,
+                            stampNumber = row.stampNumber,
+                            onClick = { onSpeciesClick(row.summary.id) },
+                        )
                     }
                 }
             }
