@@ -6,7 +6,7 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över ~700 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
 
-**Status (2026-05-12):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 273/700, nästa familj = cuculidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). Plan 7a (Redesign Foundation) ✅ (`v0.7.0a-foundation`, 2026-05-08). Plan 7b (Redesign Skärmar) ✅ (`v0.7.0b-screens`, 2026-05-08). Plan 7c (Field Journal redesign) ✅ (`v0.7.0c-field-journal`, 2026-05-10). Plan 7d (Match-flow) ✅ (`v0.7.0d-match-flow`, 2026-05-12). Plan 7e (Premium tier) ✅ (`v0.7.0e-premium`, 2026-05-12). **Nästa: Plan 6 (Polish + Play Store-release) återupptas.**
+**Status (2026-05-14):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). Plan 2b ⏸ pausad vid 273/700, nästa familj = cuculidae. Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). Plan 7a–e ✅ (foundation/screens/field-journal/match-flow/premium — alla taggade `v0.7.0a..e`). **Plan 6a (Foundation = UX-polish + release-mekanik) ⏳ IN PROGRESS — 4/15 tasks done (HEAD `43d852a`):** T1 R8/ProGuard, T2 signing config + upload-keystore, T3 icon-koncept (användaren gjorde eget Field Journal-set i `docs/superpowers/icon-concepts/final/`), T4 adaptive launcher + Splash API 31+ + AccentCopper-token retintad `#8C5A3C` → `#A8552D`. **Nästa = Task 5 (Cold-start TFLite-flytt → ClassifierBootstrap + AppGate state-gating).** Plan 6b (Billing + Premium-feature-leverans) följer mot `v1.0.0`.
 
 ## Var hittar du saker
 
@@ -37,9 +37,10 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | 7c | Field Journal redesign — DM Serif Italic + Caveat fonttema, paper-bg, stamp-collector, marginalia | ✅ `v0.7.0c-field-journal` |
 | 7d | Match-flow — threshold-logik, Match-skärm, Disambig (i Field Journal-stil) | ✅ `v0.7.0d-match-flow` |
 | 7e | Premium tier — Premium-skärm, Settings-rewrite, per-tab-markers, cold-start-modal, DataStore-state | ✅ `v0.7.0e-premium` |
-| 6 | Polish + Play Store-release | ⏸ pausad — nästa upp |
+| 6a | Foundation — UX-polish + release-mekanik (R8, signing, icon, splash, locale, a11y) | ⏳ 4/15 done, mål `v0.8.0-rc1` |
+| 6b | Billing + Premium-feature-leverans (Google Play Billing v6, audio, PDF, stats) | ⏸ efter 6a, mål `v1.0.0` |
 
-**Föreslagen ordning för utförande:** 6. Plan 6 är Play Store-release.
+**Föreslagen ordning för utförande:** Plan 6a → tag rc1 → Plan 6b → tag v1.0 → Play Store.
 
 Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew build` ska gå grönt.
 
