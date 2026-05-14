@@ -15,8 +15,8 @@ import se.birdy.app.SpeciesRepositoryProvider
 import se.birdy.app.badges.BadgeCatalogLoader
 import se.birdy.app.bootstrap.SharedPrefsBadgeVersionStore
 import se.birdy.app.di.AppGraph
+import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.photo.PhotoStorageProvider
-import se.birdy.content.Locale
 import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
@@ -91,6 +91,11 @@ class MainActivity : ComponentActivity() {
             } else {
                 null
             }
+        val resolvedLocale =
+            LocaleResolver.resolve(
+                override = null,
+                systemTag = resources.configuration.locales[0].toLanguageTag(),
+            )
         return AppGraph(
             repository = SpeciesRepositoryProvider.get(),
             classifierBootstrap = classifierBootstrap,
@@ -103,7 +108,7 @@ class MainActivity : ComponentActivity() {
             userPreferences = userPreferences,
             premiumRepository = premiumRepository,
             premiumOverride = premiumOverride,
-            defaultLocale = Locale.SV,
+            defaultLocale = resolvedLocale,
             benchmarkScreen = buildBenchmarkScreen(classifierBootstrap),
         )
     }

@@ -51,8 +51,17 @@
     <string name="filter_label_abundance">FÖREKOMST</string>
     <string name="filter_label_region">REGION</string>
     <string name="filter_label_month">MÅNAD</string>
-    <string name="filter_apply">Visa %1$d arter</string>
+    <plurals name="filter_apply">
+        <item quantity="one">Visa %1$d art</item>
+        <item quantity="other">Visa %1$d arter</item>
+    </plurals>
     <string name="filter_reset">Återställ</string>
+
+    <string-array name="months_short_uppercase">
+        <item>JAN</item><item>FEB</item><item>MAR</item><item>APR</item>
+        <item>MAJ</item><item>JUN</item><item>JUL</item><item>AUG</item>
+        <item>SEP</item><item>OKT</item><item>NOV</item><item>DEC</item>
+    </string-array>
 
     <!-- Badges + abundance presentation -->
     <string name="badge_common">ALLMÄN</string>

@@ -301,22 +301,7 @@ private fun MatchMarginalia(
             val dateLabel =
                 if (prev != null) {
                     val dt = prev.toLocalDateTime(zone)
-                    val month =
-                        when (dt.monthNumber) {
-                            1 -> "JAN"
-                            2 -> "FEB"
-                            3 -> "MAR"
-                            4 -> "APR"
-                            5 -> "MAJ"
-                            6 -> "JUN"
-                            7 -> "JUL"
-                            8 -> "AUG"
-                            9 -> "SEP"
-                            10 -> "OKT"
-                            11 -> "NOV"
-                            12 -> "DEC"
-                            else -> "—"
-                        }
+                    val month = monthShortUppercase(dt.monthNumber)
                     "${dt.dayOfMonth} $month ${dt.year}"
                 } else {
                     "—"
