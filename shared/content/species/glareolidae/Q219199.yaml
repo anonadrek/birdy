@@ -1,0 +1,127 @@
+id: Q219199
+scientific_name: Cursorius cursor
+taxonomy:
+  family: Glareolidae
+  family_sv: Glareolidae
+  genus: Cursorius
+  ioc_order: Charadriiformes
+names:
+  sv: Ökenlöpare
+  en: Cream-colored Courser
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ökenlöpare
+
+
+    Ökenlöparen är en vadare från familjen vadarsvalor med ett anpassat utseende för
+    ökenlivet. Fågeln är sandfärgad, vilket ger den utmärkt kamouflage i sin naturliga
+    miljö av öppen, flack ökenartad terräng med sand och grus.
+
+
+    Beteendemässigt är ökenlöparen välkänd för sin snabbhet – namnet säger det själv.
+    Den ses ofta springa med snabba steg över marken i jakt på föda, snarare än att
+    flyga. Denna anpassning gör den särskilt väl lämpad för sitt habitat i torr miljö.
+
+
+    Arten förekommer i norra Afrika, sydvästra Asien och på några ögrupper som Kanarieöarna
+    och Kap Verdeöarna. Populationerna visar en minskande trend, även om minskningen
+    inte ännu är tillräckligt allvarlig för att klassificera arten som globalt hotad.
+    Ökenlöparen är därför en art som väcker intresse bland fågelskådare som är intresserade
+    av ökenlevande arter.'
+  en: '# Cream-coloured Courser
+
+
+    The cream-coloured courser is a terrestrial wader belonging to the pratincole
+    and courser family. Its name perfectly describes both its appearance—predominantly
+    creamy-buff plumage—and its behaviour, as "cursor" derives from the Latin word
+    for "runner." It is perfectly adapted for life in arid landscapes, habitually
+    hunting insects and other small prey across the ground in dry, open semi-desert
+    regions.
+
+
+    True to its name, the cream-coloured courser is constantly on the move, using
+    its running ability to pursue food in the sparse vegetation and bare ground of
+    its preferred habitat. This ground-dwelling lifestyle defines its existence, whether
+    it is foraging or navigating the expansive semi-desert terrain it calls home.
+
+
+    The species inhabits the arid regions of the Middle East and northern Africa,
+    where it remains well-suited to the harsh conditions of these open landscapes.
+    Its combination of cryptic colouration and swift movement makes it an efficient
+    hunter in environments where insects are scattered and cover is minimal.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: '# Cream-colored Courser in Scandinavia/Northern Europe
+
+
+    The cream-colored courser is an extremely rare vagrant to northern Europe and
+    Scandinavia, occurring only as an accidental visitor far outside its normal range.
+    This species is primarily resident in North Africa and the Middle East, inhabiting
+    arid semi-desert regions where it hunts insects on open ground. Records in Scandinavia
+    are exceptional and sporadic, with no predictable seasonal pattern or established
+    migration route through the region. When occasionally observed in northern Europe,
+    these sightings represent individuals that have significantly overshot their normal
+    distributional limits, making the species essentially absent as a regular migrant
+    or winter resident in the Nordic countries.'
+image_refs:
+- role: hero
+  path: Q219199/hero.jpg
+  width: 2048
+  height: 1349
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/terolinjama">terolinjama</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cream-coloured Courser (Cursorius
+    cursor), Abu Simbel, Egypt 2.jpg
+  commons_filename: Cream-coloured Courser (Cursorius cursor), Abu Simbel, Egypt 2.jpg
+- role: secondary
+  path: Q219199/secondary-1.jpg
+  width: 1800
+  height: 1103
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/terolinjama">terolinjama</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cream-coloured Courser (Cursorius
+    cursor), Abu Simbel, Egypt 1.jpg
+  commons_filename: Cream-coloured Courser (Cursorius cursor), Abu Simbel, Egypt 1.jpg
+- role: secondary
+  path: Q219199/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/jrp01">jrp01</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cream-coloured Courser (Cursorius
+    cursor), Errachidia, Morocco 1.jpg
+  commons_filename: Cream-coloured Courser (Cursorius cursor), Errachidia, Morocco
+    1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:33:10.784170+00:00'
+sources:
+  wikipedia_sv_revision: '58510989'
+  wikipedia_en_revision: '1323592909'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,132 @@
+id: Q330310
+scientific_name: Glareola pratincola
+taxonomy:
+  family: Glareolidae
+  family_sv: Glareolidae
+  genus: Glareola
+  ioc_order: Charadriiformes
+names:
+  sv: Rödvingad vadarsvala
+  en: Collared Pratincole
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödvingad vadarsvala
+
+
+    Rödvingad vadarsvala är en vadare som tillhör familjen vadarsvalor. Arten häckar
+    i de varmare delarna av Europa, delar av tropiska Afrika och sydvästra Asien.
+    Under vintern flyttar vissa populationer söderut till Afrika strax söder om Sahara,
+    medan andra är kortflyttare eller stannar året runt på sina häckningsplatser.
+
+
+    Fågeln är mycket social och lever i flock både när den häckar, föds och genomför
+    sina flyttningar. Födan består huvudsakligen av insekter som den fångar antingen
+    när den är i flykten eller på marken. Arten föredrager att jaga dynamiskt genom
+    luften, ofta i små eller större grupper tillsammans med artfränder.
+
+
+    Även om rödvingad vadarsvala minskar i antal klassificeras arten fortfarande som
+    livskraftig. Beståndet påverkas av förändrad livsmiljö, men arten visar en viss
+    anpassningsförmåga i olika delar av sitt utbredningsområde.'
+  en: '# Collared Pratincole
+
+
+    The collared pratincole is a graceful wader belonging to the pratincole family.
+    It is characterized by a slender, streamlined body adapted for aerial feeding,
+    with distinctive chestnut-red underwings visible in flight. The bird displays
+    a subtle head pattern with a pale throat bordered by a dark collar marking, which
+    gives it its name. Its overall plumage is warm buff-brown above, providing effective
+    camouflage in its preferred habitats.
+
+
+    Behaviour-wise, the collared pratincole is notably agile and acrobatic, often
+    seen hawking insects in flight with swift, tern-like movements. It favors open,
+    arid landscapes and is frequently observed near water, particularly in wetland
+    margins and bare ground areas. The species is highly social and often gathers
+    in flocks, particularly during migration periods.
+
+
+    The bird''s call is a distinctive sharp, chattering sound, often delivered in
+    flight. Native to the Old World, the collared pratincole inhabits regions across
+    southern Europe, Africa, and Asia. It is a summer visitor to cooler regions and
+    resident in tropical areas, undertaking significant migrations between breeding
+    and wintering grounds.'
+migration:
+  sv: '# Rödvingad vadarsvala - Migration i Nordeuropa
+
+
+    Rödvingad vadarsvala förekommer inte regelbundet som häckfågel i Skandinavien
+    eller Nordeuropa. Arten häckar i varmare delar av Europa och är en långflyttare
+    som övervintrarar i Afrika söder om Sahara. Under flyttningen kan enstaka individer
+    observeras som vagabunder i norra Europa under våren och hösten, men arten är
+    inte etablerad som nordeuropeisk häckfågel eller övervintrare. Förekomsten i regionen
+    är därför mycket begränsad och oregelbunden.'
+  en: '# Collared Pratincole (Glareola pratincola) in Northern Europe
+
+
+    The Collared Pratincole is a rare vagrant to Scandinavia and Northern Europe,
+    with only occasional records. When it does occur in the region, it is typically
+    observed during late spring and summer months (May–August), representing overshoots
+    from its main breeding range in southern Europe, North Africa, and western Asia.
+    These sightings are unpredictable and irregular, with no established migration
+    pattern through Scandinavia. The species is not known to overwinter in Northern
+    Europe, as it is a long-distance migrant that winters in sub-Saharan Africa. Any
+    northern European records represent exceptional occurrences rather than regular
+    migration movements.'
+image_refs:
+- role: hero
+  path: Q330310/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/78782622@N03">Jac.
+    Janssen</a> from Baarlo lb, NL
+  source_url: https://commons.wikimedia.org/wiki/File:Glareola pratincola (34303629902).jpg
+  commons_filename: Glareola pratincola (34303629902).jpg
+- role: secondary
+  path: Q330310/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Ludovic_Hirlimann" title="User:Ludovic
+    Hirlimann">Ludovic Hirlimann</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Glareola pratincola in Ambosélie
+    National Park kenya.jpg
+  commons_filename: Glareola pratincola in Ambosélie National Park kenya.jpg
+- role: secondary
+  path: Q330310/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nouhouhouk&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Nouhouhouk (page does not exist)">Nouhouhouk</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Glaréole à collier - Glareola
+    pratincola.JPG
+  commons_filename: Glaréole à collier - Glareola pratincola.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:33:14.895841+00:00'
+sources:
+  wikipedia_sv_revision: '58641492'
+  wikipedia_en_revision: '1314036662'
+  claude_model: claude-haiku-4-5-20251001

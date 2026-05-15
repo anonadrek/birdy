@@ -1,0 +1,106 @@
+id: Q695729
+scientific_name: Glareola nordmanni
+taxonomy:
+  family: Glareolidae
+  family_sv: Glareolidae
+  genus: Glareola
+  ioc_order: Charadriiformes
+names:
+  sv: Svartvingad vadarsvala
+  en: Black-winged Pratincole
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartvingad vadarsvala
+
+
+    Svartvingad vadarsvala är en elegantflygande vadare som tillhör familjen vadarsvalor.
+    Den är en långdragen fågel med spetsiga vingar och en karakteristisk svart vingunderside
+    som ger arten sitt namn. Under häckningssäsongen ses den på öppna, stäppartade
+    landskapsmiljöer i östra Europa och västra Asien, där den ofta rör sig i små flockar.
+
+
+    Efter häckningstiden genomför fågeln en långväga flyttning huvudsakligen till
+    södra Afrika. Under året kan den även ses oregelbundet i andra övervintringsområden
+    längre norr. Som många vadare är arten mycket rörlig och anpassad för ett nomadiskt
+    liv.
+
+
+    Arten har upplevt en märkbar nedgång i antal under senare decennier och klassificeras
+    därför av IUCN som nära hotad. Denna minskning belyser vikten av att skydda de
+    öppna stäpmarksmiljöer som arten är beroende av för sin häckning.'
+  en: '# Black-winged Pratincole
+
+
+    The black-winged pratincole is a wader belonging to the Glareolidae family, a
+    group of birds adapted to open, gravelly environments. Its scientific name reflects
+    this habitat preference—the genus Glareola derives from Latin *glarea*, meaning
+    gravel, which describes the typical breeding grounds where these birds nest. The
+    species epithet honours Alexander von Nordmann, a Finnish-born zoologist and explorer
+    whose work contributed significantly to ornithological knowledge.
+
+
+    As a pratincole, this species exhibits the characteristic traits of its family:
+    a streamlined build suited to aerial foraging and shallow-water environments.
+    Like other members of the Glareolidae, it is an agile flier, often seen hunting
+    insects in flight over open ground and water. The bird''s behaviour and appearance
+    are shaped by its preference for sparse, gravelly terrain where it can nest with
+    minimal vegetation.
+
+
+    The black-winged pratincole inhabits open landscapes across eastern regions, favoring
+    areas with suitable nesting substrate and proximity to water sources where insects
+    are abundant.'
+migration:
+  sv: '**Svartvingad vadarsvala i Norden**
+
+
+    Svartvingad vadarsvala är en regelbunden genomfågel i Skandinavien och Nordeuropa
+    under våren och hösten. Arten häckar på stäppartad mark i östra Europa och västra
+    Asien, väl väster om sitt huvudsakliga utbredningsområde. Efter häckningstiden
+    migrerar arten huvudsakligen till södra Afrika för övervintering, men några individer
+    kan förekomma oregelbundet i Etiopien under vintern. Ankomsten till häckningsområdena
+    sker under våren, medan höstflyttningen är omfattande då populationen söker sig
+    söderut.'
+  en: '# Black-winged Pratincole (Glareola nordmanni) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q695729/hero.jpg
+  width: 2356
+  height: 2400
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Black-winged pratincole (Glareola
+    nordmanni) at Mkhombo Dam, Mpumalanga (36861637734).jpg
+  commons_filename: Black-winged pratincole (Glareola nordmanni) at Mkhombo Dam, Mpumalanga
+    (36861637734).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:33:01.925114+00:00'
+sources:
+  wikipedia_sv_revision: '55739859'
+  wikipedia_en_revision: '1314232856'
+  claude_model: claude-haiku-4-5-20251001

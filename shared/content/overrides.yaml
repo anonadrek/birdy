@@ -326,6 +326,9 @@ species:
   # Gaviidae batch (2026-05-15): högarktisk vagrant svwiki kort.
   Q208328:
     description_accept_missing: [sv]  # Vitnäbbad islom (Yellow-billed Loon) — arktisk vagrant
+  # Glareolidae batch (2026-05-15): asiatisk endemic båda extracts saknas.
+  Q934460:
+    description_accept_missing: [sv, en]  # Mindre vadarsvala (Small Pratincole) — asien-endemic
   # Fringillidae batch (2026-05-15): svwiki kort/saknas för många arter.
   Q1143180:
     description_accept_missing: [sv]  # Trumpetargimpel (Trumpeter Finch) — kort svwiki
