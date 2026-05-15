@@ -1,0 +1,131 @@
+id: Q25393
+scientific_name: Luscinia megarhynchos
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Luscinia
+  ioc_order: Passeriformes
+names:
+  sv: Sydnäktergal
+  en: Common Nightingale
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sydnäktergal
+
+
+    Sydnäktergalen är en fågel i familjen flugsnappare som är berömd för sin exceptionellt
+    kraftfulla och varierad sång. Det är denna art som beskrivs i engelskspråkig litteratur,
+    poesi och sånger som "the nightingale". Arten är en medelstor, brun fågel med
+    diskret utseende som gör den lätt att förbise på marken eller i låg vegetation
+    där den helst söker föda.
+
+
+    Arten är främst känd för sin sång, som är mycket högljudd och kraftfull med många
+    olika fraser och läten. Sydnäktergalen förekommer i västra och södra delar av
+    sitt utbredningsområde, där den ersätter den närbesläktade näktergalen. Den är
+    en flyttfågel som återvänder under våren för att häcka i lämplig buskmark och
+    fuktiga skogar. Fågeln är främst aktiv under gryning och skymning, då sången hörs
+    bäst.'
+  en: '# Common Nightingale
+
+
+    The common nightingale is a small Old World flycatcher renowned for its powerful
+    and extraordinarily beautiful song, which is arguably the finest of any European
+    bird. It belongs to a group of terrestrial relatives known as chats, distinguishing
+    it from true thrushes despite its common name. The species'' range overlaps with
+    the closely related thrush nightingale in some regions, and the two occasionally
+    interbreed where their distributions meet.
+
+
+    As a small passerine, the nightingale is rather unobtrusive in appearance, with
+    warm brown-rufous plumage that provides excellent camouflage in dense vegetation.
+    Despite its modest looks, the bird''s vocal abilities are legendary—its song is
+    rich, varied, and remarkably loud, capable of carrying considerable distances.
+    The nightingale is primarily heard during spring and early summer when males establish
+    territories and sing persistently, often from low perches or dense cover.
+
+
+    The species favors thick scrub, woodland edges, and dense undergrowth, typically
+    in lowland areas. It is a summer visitor to much of Europe and western Asia, arriving
+    in spring to breed before migrating south. It remains largely nocturnal and crepuscular,
+    though it may sing at any hour during breeding season, making it easier to hear
+    than to see.'
+migration:
+  sv: '# Sydnäktergalens förekomst i Skandinavien och Nordeuropa
+
+
+    Sydnäktergalen är en långdistansflyttare som endast förekommer i södra och västra
+    Skandinavien under sommaren. Arten anländer till häckningsområdena i maj och stannar
+    fram till augusti-september innan den återvänder till sina övervintringsområden
+    i Afrika. I Sverige är sydnäktergalen främst utbredd i södra Skåne och längs västra
+    kusten, där den föredrar fuktig lövskog och täta buskmarker. Under övriga delen
+    av året är arten helt frånvarande från Skandinavien, då hela populationen drar
+    söderut för att tillbringa vintern i tropiska Afrika.'
+  en: '# Common Nightingale in Scandinavia/Northern Europe
+
+
+    The Common Nightingale is a summer visitor to Scandinavia and Northern Europe,
+    arriving in late April and May as it returns from its wintering grounds in sub-Saharan
+    Africa. The species breeds in southern Scandinavia, particularly in Denmark and
+    southern Sweden, in dense scrubland and woodland habitats. It departs in August
+    and September to return south before winter. The northerly Thrush Nightingale
+    overlaps with the Common Nightingale''s range in parts of the region, with the
+    two species occasionally producing hybrids where their distributions meet.'
+image_refs:
+- role: hero
+  path: Q25393/hero.jpg
+  width: 2048
+  height: 1532
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/francescocecere">Francesco
+    Cecere</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Luscinia megarhynchos by Francesco
+    Cecere.jpg
+  commons_filename: Luscinia megarhynchos by Francesco Cecere.jpg
+- role: secondary
+  path: Q25393/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Luscinia megarhynchos Moëze-Oléron
+    20250506.jpg
+  commons_filename: Luscinia megarhynchos Moëze-Oléron 20250506.jpg
+- role: secondary
+  path: Q25393/secondary-2.jpg
+  width: 1800
+  height: 1300
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Nightingale . Luscinia megarhynchos
+    - Flickr - gailhampshire (1).jpg
+  commons_filename: Nightingale . Luscinia megarhynchos - Flickr - gailhampshire (1).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:20:46.030101+00:00'
+sources:
+  wikipedia_sv_revision: '58502851'
+  wikipedia_en_revision: '1342790857'
+  claude_model: claude-haiku-4-5-20251001

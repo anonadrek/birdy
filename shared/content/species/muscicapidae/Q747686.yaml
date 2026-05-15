@@ -1,0 +1,131 @@
+id: Q747686
+scientific_name: Oenanthe isabellina
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Isabellastenskvätta
+  en: Isabelline Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Isabellastenskvätta
+
+
+    Isabellastenskvätta är en liten tätting som tillhör familjen flugsnappare. Det
+    är en diskret fågel med ljus, sandkologad fjäderdräkt som gör den väl anpassad
+    till sin miljö. Som andra stenskvättor har det karakteristisk vita övergump och
+    mörk stjärt.
+
+
+    Arten förekommer på torra, öppna slätter och steniga områden där det finns god
+    utsikt. Det födosöker ofta på marken och är relativt skyggt. Under häckningstiden
+    är det bosatt från sydöstra Europa österut genom Centralasien till Mongoliet.
+    Under vintern migrerar det långt söderut till Afrika och Indien, vilket gör det
+    till en långdistansflyttare.
+
+
+    I västra Europa är isabellastenskvätta en mycket sällsynt gäst som endast påträffas
+    tillfälligt under passager. Det finns endast ett tjugutal fynd dokumenterade i
+    Sverige. Arten är stabil i världspopulation enligt IUCN.'
+  en: '# Isabelline Wheatear
+
+
+    The isabelline wheatear is a small Old World flycatcher with pale, sandy-brown
+    plumage that blends seamlessly with arid landscapes. Like other wheatears, it
+    has a distinctive white rump and dark wings that contrast with its warm, buff-colored
+    back and underparts. The bird is slender and compact, typically perched upright
+    on rocks and low vegetation.
+
+
+    This migratory species inhabits open steppe and barren countryside across a broad
+    range from southern Russia and Central Asia through to northern Pakistan. It feeds
+    on insects caught in short, darting flights or gleaned from the ground. The bird
+    winters in African savanna regions and northwestern India, undertaking impressive
+    long-distance migrations between its breeding and wintering grounds.
+
+
+    In western Europe, the isabelline wheatear remains a very rare visitor, appearing
+    only as an occasional vagrant. Its call is a sharp, clicking note, and during
+    breeding season it may deliver a brief, melodious song. The species favors exposed,
+    rocky terrain and semi-desert environments where it can hunt efficiently and nest
+    in cliff crevices or burrows.'
+migration:
+  sv: '# Isabellastenskvätta – Förekomst i Skandinavien/Nordeuropa
+
+
+    Isabellastenskvätta är en sällsynt gäst i Skandinavien och Nordeuropa. Arten häckar
+    långt österut i Centralasien och Mongoliet, och under vintermånaderna flyttar
+    den söderut till Afrika och Indien. I Sverige har arten dokumenterats endast tillfälligt
+    med totalt 28 fynd fram till 2020, vilket gör den till en mycket ovanlig iakttagelse.
+    Arten förekommer inte regelbundet i regionen och utgör således en raritet för
+    nordeuropeiska fågelbeskådare.'
+  en: '# Isabellian Wheatear in Scandinavia
+
+
+    The isabelline wheatear is a very rare vagrant to Scandinavia and northern Europe,
+    with no regular occurrence in the region. This migratory species breeds in southern
+    Russia and Central Asia, then winters in Africa and northwestern India, following
+    migration routes that typically do not pass through Scandinavian territories.
+    When isabelline wheatears do appear in western Europe, including occasional sightings
+    in Scandinavia, they represent exceptional vagrants rather than predictable seasonal
+    visitors. The species'' normal range and migration patterns place it far south
+    and east of northern Europe during both breeding and wintering periods.'
+image_refs:
+- role: hero
+  path: Q747686/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Yuriy75" title="User:Yuriy75">Yuriy75</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe isabellina in Baikonur
+    01.jpg
+  commons_filename: Oenanthe isabellina in Baikonur 01.jpg
+- role: secondary
+  path: Q747686/secondary-1.jpg
+  width: 1800
+  height: 1240
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe isabellina - Isabelline
+    wheatear 02.jpg
+  commons_filename: Oenanthe isabellina - Isabelline wheatear 02.jpg
+- role: secondary
+  path: Q747686/secondary-2.jpg
+  width: 1800
+  height: 1253
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe isabellina - Isabelline
+    wheatear 01.jpg
+  commons_filename: Oenanthe isabellina - Isabelline wheatear 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:24:23.450102+00:00'
+sources:
+  wikipedia_sv_revision: '56586195'
+  wikipedia_en_revision: '1315007708'
+  claude_model: claude-haiku-4-5-20251001

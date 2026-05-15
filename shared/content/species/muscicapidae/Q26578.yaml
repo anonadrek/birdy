@@ -1,0 +1,130 @@
+id: Q26578
+scientific_name: Luscinia svecica
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Luscinia
+  ioc_order: Passeriformes
+names:
+  sv: Blåhake
+  en: Bluethroat
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Blåhake
+
+
+    Blåhaken är en liten tätting som tillhör flugsnappare-familjen. Arten är en flyttfågel
+    som häckar utspritt över Europa, Asien och nordvästra Alaska. Under vintermånaderna
+    söker den sig till övervintringskvarteren i norra Afrika och södra Asien.
+
+
+    Blåhaken föredrar öppna och halvöppna biotoper. Den bygger sitt väl dolda bo lågt
+    i grästuvor eller i täta buskage, vilket ger ungarna skydd från både rovdjur och
+    väder. Arten är talrik på många håll och klassificeras som livskraftig av internationella
+    naturvårdsunionen IUCN.'
+  en: '# Bluethroat
+
+
+    The bluethroat is a small, energetic passerine that breeds across northern Europe
+    and the Palearctic region, extending into western Alaska. It frequents wet birch
+    woodlands and bushy swamps, where it nests low in dense vegetation or among tussocks.
+    This migratory insectivore winters in the Iberian Peninsula, northern Africa,
+    and southern Asia.
+
+
+    Despite its modest size, the bluethroat is a striking bird, particularly the males
+    with their distinctive blue throats—the species'' namesake feature. It shares
+    characteristics with other small European flycatchers and is often grouped with
+    the "chats." The species is primarily insectivorous, feeding on small invertebrates
+    gleaned from vegetation and occasionally caught in flight.
+
+
+    Bluethroats are active and restless birds, often seen flitting through low scrub
+    and marsh vegetation. They are generally shy but can be located by their distinctive
+    vocalizations. Their breeding season involves complex movements across vast distances,
+    with populations undertaking remarkable migrations between northern breeding grounds
+    and wintering areas. This pattern of long-distance migration, combined with their
+    preference for specific wetland habitats, makes them a notable subject for ornithological
+    study and birdwatching.'
+migration:
+  sv: '# Blåhake - Förekomst i Skandinavien under året
+
+
+    Blåhaken är en flyttfågel som häckar i norra Europa, inklusive Skandinavien, under
+    sommarmånaderna. Arten anländer till häckningsområdena på våren, vanligtvis från
+    april till maj, efter att ha tillbringat vintern i norra Afrika och södra Asien.
+    Under hösten, från augusti till september, påbörjar blåhaken sin långa flyttning
+    söderut när häckningssäsongen avslutas. Arten ses således endast under sommar-
+    och genomflyttningsperioderna i Skandinavien, medan området helt lämnas under
+    vintermånaderna då populationen befinner sig i sina övervintringskartier.'
+  en: '# Bluethroat (Luscinia svecica) in Scandinavia/Northern Europe
+
+
+    The Bluethroat is a migratory breeder throughout Scandinavia and northern Europe,
+    arriving in spring to breed in wet birch forests and bushy wetlands. Birds return
+    to their breeding territories from April onwards after wintering in the Iberian
+    Peninsula, North Africa, and southern Asia. The species is present during the
+    breeding season through summer months.
+
+
+    In autumn, Bluethroats begin their southward migration from August, vacating Scandinavian
+    breeding areas to reach their winter quarters. The species does not overwinter
+    in northern Europe, making it an obligate long-distance migrant. This insectivorous
+    flycatcher''s presence in the region is therefore strictly seasonal, limited to
+    the breeding months when suitable wetland habitats provide adequate food resources.'
+image_refs:
+- role: hero
+  path: Q26578/hero.jpg
+  width: 2400
+  height: 1647
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Luscinia svecica Oulu 20180907
+    02.jpg
+  commons_filename: Luscinia svecica Oulu 20180907 02.jpg
+- role: secondary
+  path: Q26578/secondary-1.jpg
+  width: 1800
+  height: 1246
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Luscinia svecica Oulu 20180907
+    01.jpg
+  commons_filename: Luscinia svecica Oulu 20180907 01.jpg
+- role: secondary
+  path: Q26578/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Nguyen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Luscinia svecica Jardin des
+    Grands moulins 2018-03-29 n04.jpg
+  commons_filename: Luscinia svecica Jardin des Grands moulins 2018-03-29 n04.jpg
+review_status: approved
+review_notes: "Blåhake — Luscinia svecica från Oulu; allmän N SE-art i fjällbjörkskog."
+generated_at: '2026-05-15T20:21:36.266095+00:00'
+sources:
+  wikipedia_sv_revision: '59210860'
+  wikipedia_en_revision: '1349792609'
+  claude_model: claude-haiku-4-5-20251001

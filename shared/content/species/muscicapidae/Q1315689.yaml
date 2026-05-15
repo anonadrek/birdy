@@ -1,0 +1,106 @@
+id: Q1315689
+scientific_name: Saxicola torquatus
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Saxicola
+  ioc_order: Passeriformes
+names:
+  sv: Afrikansk buskskvätta
+  en: African Stonechat
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# African Stonechat
+
+
+    The African stonechat is a small Old World flycatcher with a distinctive appearance
+    that reflects its scientific name "collared rock-dweller." Males are particularly
+    striking, displaying a black head with a prominent white collar and orange-rufous
+    breast, while females are duller with brown and buff tones. Both sexes share the
+    characteristic upright posture typical of stonechats, often perching on exposed
+    rocks, low vegetation, or fence posts where they scan for insects.
+
+
+    This species is an active, restless hunter, frequently dropping to the ground
+    to catch prey and returning to prominent vantage points. Its behaviour and habitat
+    preferences—rocky outcrops, grasslands, and scrubland—have earned it its colloquial
+    name. The call is sharp and distinctive, resembling stones being struck together,
+    which also contributes to its common English name.
+
+
+    The African stonechat is found throughout sub-Saharan Africa and adjacent regions,
+    where it inhabits open, rocky terrain. It prefers areas with scattered vegetation
+    that provide both hunting perches and nesting opportunities, making it a characteristic
+    bird of arid and semi-arid landscapes.'
+migration:
+  sv: ''
+  en: '# African Stonechat - Occurrence in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The African Stonechat is a sub-Saharan African species with no established presence
+    in Scandinavia or Northern Europe. This bird is endemic to Africa and does not
+    occur regularly in the Nordic region or broader Northern European area. Therefore,
+    no meaningful information about seasonal migration, overwintering, or arrival
+    patterns in Scandinavian territories can be provided.'
+image_refs:
+- role: hero
+  path: Q1315689/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Joselodos&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Joselodos (page does not exist)">Joselodos</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Saxicola torquatus on a green
+    twig.jpg
+  commons_filename: Saxicola torquatus on a green twig.jpg
+- role: secondary
+  path: Q1315689/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/552380">Henry
+    de Lange</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Saxicola torquatus - Henry de
+    Lange - 466318311.jpeg
+  commons_filename: Saxicola torquatus - Henry de Lange - 466318311.jpeg
+- role: secondary
+  path: Q1315689/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/552380">Henry
+    de Lange</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Saxicola torquatus - Henry de
+    Lange - 466320819.jpeg
+  commons_filename: Saxicola torquatus - Henry de Lange - 466320819.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:20:31.973837+00:00'
+sources:
+  wikipedia_sv_revision: '56818703'
+  wikipedia_en_revision: '1338802449'
+  claude_model: claude-haiku-4-5-20251001

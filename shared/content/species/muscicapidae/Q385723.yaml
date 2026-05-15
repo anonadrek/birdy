@@ -1,0 +1,105 @@
+id: Q385723
+scientific_name: Oenanthe hispanica
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Västlig medelhavsstenskvätta
+  en: Black-eared Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Västlig medelhavsstenskvätta
+
+
+    Västlig medelhavsstenskvätta är en liten, vacker stenskvätta som förekommer i
+    sydöstra Europa och sydvästra Asien. Arten hade länge behandlats tillsammans med
+    sin östliga motsvarighet, men urskildes som egen art 2019. Hanen är särskilt påfallande
+    med sitt svart-vitrandade dräkt, medan honan är mer diskret färgad i grå och beiga
+    nyanser.
+
+
+    Arten föredrar öppna, torra miljöer som klippareas och steniga slopor med gles
+    växtlighet. Det är en flitig jägare som ofta ses hoppa mellan stenarna på marken
+    när den söker efter insekter och andra små djur. Under flyktfasen är det vita
+    på ryggen och stjärten väldigt påfallande.
+
+
+    Västlig medelhavsstenskvätta är främst aktiv under våren och sommaren i sitt utbredningsområde.
+    Det är en livlig och rastlös fågel som ofta sitter uppsittare på höga stenar eller
+    låga buskar för att speja efter mat.'
+  en: ''
+migration:
+  sv: '# Västlig medelhavsstenskvätta – förekomst i Skandinavien/Nordeuropa
+
+
+    Västlig medelhavsstenskvätta är en mycket sällsynt gäst i Skandinavien och förekommer
+    normalt inte där. Arten är hemhörig i sydöstra Europa och sydvästra Asien, långt
+    söder om Nordens geografiska område. Endast sporadiska observationer från skandinaviska
+    länder är dokumenterade, och dessa utgör undantag snarare än regel. Arten är inte
+    etablerad som stamgäst eller övervintrare i nordiska regioner.
+
+
+    Migrationsdata saknas för denna art i skandinavisk kontext, då arten inte utgör
+    en regulär del av nordeuropeisk fågelfauna. För information om artens migrationsmönster
+    i sitt huvudsakliga utbredningsområde hänvisas till källtexter fokuserade på Medelhavsregionen
+    och västra Asien.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q385723/hero.jpg
+  width: 2400
+  height: 1970
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Westelijke blonde tapuit - western
+    black-eared wheatear - Oenanthe hispanica.tif
+  commons_filename: Westelijke blonde tapuit - western black-eared wheatear - Oenanthe
+    hispanica.tif
+- role: secondary
+  path: Q385723/secondary-1.jpg
+  width: 1800
+  height: 1352
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/mourad-harzallah">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe hispanica, El Achir,
+    Algeria 1.jpg
+  commons_filename: Oenanthe hispanica, El Achir, Algeria 1.jpg
+- role: secondary
+  path: Q385723/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/bigayon">bigayon</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe hispanica, Fitou, France
+    1.jpg
+  commons_filename: Oenanthe hispanica, Fitou, France 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:19:03.570615+00:00'
+sources:
+  wikipedia_sv_revision: '56857631'
+  wikipedia_en_revision: '1297096522'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,45 @@
+id: Q796489
+scientific_name: Phoenicurus erythronotus
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Phoenicurus
+  ioc_order: Passeriformes
+names:
+  sv: Altajrödstjärt
+  en: Eversmann’s Redstart
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:22:16.640804+00:00'
+sources:
+  wikipedia_sv_revision: '57891240'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

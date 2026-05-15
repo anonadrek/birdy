@@ -1,0 +1,89 @@
+id: Q864832
+scientific_name: Cercotrichas podobe
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Cercotrichas
+  ioc_order: Passeriformes
+names:
+  sv: Svart trädnäktergal
+  en: Black Scrub Robin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svart trädnäktergal
+
+
+    Svart trädnäktergal är en fågel i familjen flugsnappare som förekommer i Afrika
+    söder om Sahara samt på Arabiska halvön. Arten tillhör ordningen tättingar.'
+  en: '# Black Scrub Robin
+
+
+    The Black Scrub Robin is a member of the flycatcher family found across the Sahel
+    region and montane areas of the Arabian Peninsula. It inhabits dry savanna environments
+    where it forages among scattered trees and scrubland vegetation.
+
+
+    Little detailed information is readily available about this species'' appearance
+    and behaviour in standard references. Like other members of its family, it likely
+    feeds on insects, though specific feeding habits and preferences remain poorly
+    documented in popular literature. Its call and vocalizations are not well-described
+    in widely accessible sources.
+
+
+    The species'' preference for arid savanna habitats means it occupies some of the
+    harshest environments in its range. More detailed observations and field studies
+    would help birdwatchers better understand this relatively understudied scrub robin''s
+    ecology and identification features.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Svart trädnäktergal är en afrikansk art som är bosatt i sitt utbredningsområde
+    söder om Sahara och på Arabiska halvön. Arten förekommer inte naturligt i Skandinavien
+    eller Nordeuropa, varför uppgifter om migration eller övervintering i denna region
+    är ej tillämpliga.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Black Scrub Robin is native to the Sahel region and montane areas of the Arabian
+    Peninsula, occurring in dry savanna habitats. This species does not naturally
+    occur in Scandinavia or Northern Europe, making it irrelevant for a northern European
+    bird guide. The source material provides no information about its presence, migration
+    patterns, or seasonal occurrence in Scandinavian regions.'
+image_refs:
+- role: hero
+  path: Q864832/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/83785">Francesco
+    Cecere</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cercotrichas podobe 60453870.jpg
+  commons_filename: Cercotrichas podobe 60453870.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:23:24.601852+00:00'
+sources:
+  wikipedia_sv_revision: '55739253'
+  wikipedia_en_revision: '1314341459'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,124 @@
+id: Q912081
+scientific_name: Oenanthe leucopyga
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Vitkronad stenskvätta
+  en: White-crowned Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitkronad stenskvätta
+
+
+    Vitkronad stenskvätta är en liten tätting som förekommer i ökenartade miljöer
+    i norra Afrika och delar av Mellanöstern. Det är en mycket sällsynt gäst i Europa,
+    där de nordligaste observationerna gjorts långt norr om dess normala utbredningsområde.
+
+
+    Arten hör till familjen flugsnappare och är väl anpassad till sitt torrt habitat.
+    Fågeln har ett livskraftigt bestånd, trots sitt begränsade utbredningsområde.
+    För den intresserade fågelskådaren är arten betydelsefull som en sällsynt tillfällig
+    besökare norr om sitt naturliga område.'
+  en: '# White-crowned Wheatear
+
+
+    The white-crowned wheatear is a small passerine bird belonging to the Old World
+    flycatcher family. It is distinguished by its striking white crown, which contrasts
+    with its darker plumage—a characteristic that defines both its common and scientific
+    names. The species exhibits the compact build typical of wheatears, making it
+    well-adapted to its preferred habitats.
+
+
+    This bird inhabits rocky and arid environments where it forages on the ground
+    and among stones, displaying the active, alert behaviour characteristic of wheatears.
+    It typically hunts for insects and other small prey by darting across open terrain.
+    The species is vocal, though specific details about its call patterns require
+    additional sources beyond the provided text.
+
+
+    The white-crowned wheatear is found across arid and semi-arid regions, favoring
+    exposed rocky ground and sparse vegetation. Its preference for harsh, open landscapes
+    makes it an indicator species for particular habitat types. The bird''s classification
+    was historically uncertain, being considered part of the thrush family before
+    modern taxonomy reclassified it within the flycatcher family, reflecting evolving
+    understanding of bird relationships.'
+migration:
+  sv: '# Vitkronad stenskvätta - Förekomst i Skandinavien
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Vitkronad stenskvätta är en nordafrikansk och mellanösterneuropeisk art som endast
+    är en mycket sällsynt tillfällig gäst i Europa. Det nordligaste dokumenterade
+    fyndet av arten i Europa ligger i Danmark, vilket indikerar att den mycket exceptionally
+    långt norrut kan förekomma. Arten är inte etablerad som regelbunden rastare eller
+    övervintrare i Skandinavien eller Nordeuropa, utan uppträder endast sporadiskt
+    som en vind- eller väderdriven vagrant från sitt huvudutbredningsområde i Nordafrika.'
+  en: '# White-crowned Wheatear in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The White-crowned Wheatear is a North African and Middle Eastern species with
+    a range centered in arid regions far south of Scandinavia and Northern Europe.
+    This bird does not occur regularly in Northern Europe and is not part of the regular
+    avifauna of the region. Therefore, there are no established migration patterns,
+    overwintering populations, or seasonal occurrence data for this species in Scandinavia
+    or Northern Europe.'
+image_refs:
+- role: hero
+  path: Q912081/hero.jpg
+  width: 2048
+  height: 1546
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe leucopyga 207461319.jpg
+  commons_filename: Oenanthe leucopyga 207461319.jpg
+- role: secondary
+  path: Q912081/secondary-1.jpg
+  width: 1800
+  height: 1267
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe leucopyga 194759365.jpg
+  commons_filename: Oenanthe leucopyga 194759365.jpg
+- role: secondary
+  path: Q912081/secondary-2.jpg
+  width: 1800
+  height: 1265
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe leucopyga 194758644.jpg
+  commons_filename: Oenanthe leucopyga 194758644.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:21:01.476922+00:00'
+sources:
+  wikipedia_sv_revision: '55769994'
+  wikipedia_en_revision: '1315246089'
+  claude_model: claude-haiku-4-5-20251001

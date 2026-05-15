@@ -1,0 +1,124 @@
+id: Q646917
+scientific_name: Oenanthe cypriaca
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Cypernstenskvätta
+  en: Cyprus Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Cypernstenskvätta
+
+
+    Cypernstenskvätta är en liten tätting som tillhör familjen flugsnappare och är
+    endemisk för Cypern, där den förekommer året om, även om den flyttar till nordöstra
+    afrika på vintern. Arten utgör en egen population på ön, vilket gör den unik för
+    denna region.
+
+
+    Trots sitt begränsade utbredningsområde, begränsat till Cypern, anses beståndet
+    vara livskraftigt och stabilt. Detta tyder på att arten kan upprätthålla en hållbar
+    population inom sitt relativt lilla geografiska område.'
+  en: '# Cyprus Wheatear
+
+
+    The Cyprus wheatear is a small passerine, measuring 14–15 cm in length, belonging
+    to the Old World flycatcher family. It was long considered a subspecies of the
+    pied wheatear until taxonomic revision in 1982 established it as a distinct species,
+    primarily based on differences in measurements, song characteristics, and the
+    absence of sexual plumage dimorphism—meaning males and females appear essentially
+    identical.
+
+
+    This species exhibits the typical wheatear characteristics of a compact, alert
+    songbird. Like other wheatear species, it likely inhabits open, rocky terrain
+    and scrubland habitats. The Cyprus wheatear''s song and call patterns distinguish
+    it from closely related species, making vocalization an important identification
+    feature for observers.
+
+
+    The bird''s classification history—moving from the thrush family Turdidae to the
+    Old World flycatcher family Muscicapidae—reflects evolving understanding of passerine
+    relationships based on modern genetic and behavioral evidence. Today it is recognized
+    as an endemic or near-endemic species with a restricted range, making it of particular
+    interest to regional birdwatchers and ornithologists studying Mediterranean and
+    Middle Eastern avifauna.'
+migration:
+  sv: '# Cypernstenskvätta – förekomst i Norden
+
+
+    Cypernstenskvätta är endemisk för Cypern och förekommer inte naturligt i Skandinavien
+    eller Nordeuropa. Arten är en långdistansflygtare som under vintern migrerar till
+    nordöstra Afrika. För Sverige, Norge och Danmark är denna art därför inte relevant
+    ur ett migrationssynpunkt, då den helt saknar förekomst i dessa länder under året.'
+  en: '# Cyprus Wheatear Migration in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Cyprus Wheatear is a resident or summer breeder endemic to Cyprus and nearby
+    regions of the eastern Mediterranean. There is no documented occurrence or migration
+    pattern in Scandinavia or Northern Europe. This species has a highly restricted
+    range centered on Cyprus and does not participate in the long-distance migrations
+    characteristic of other wheatear species found in northern regions.'
+image_refs:
+- role: hero
+  path: Q646917/hero.jpg
+  width: 2048
+  height: 1282
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe cypriaca 104211274.jpg
+  commons_filename: Oenanthe cypriaca 104211274.jpg
+- role: secondary
+  path: Q646917/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Shiv%27s_fotografia" title="User:Shiv's
+    fotografia">Shiv's fotografia</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cyprus Wheatear (Oenanthe cypriaca)
+    01.jpg
+  commons_filename: Cyprus Wheatear (Oenanthe cypriaca) 01.jpg
+- role: secondary
+  path: Q646917/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Shiv%27s_fotografia" title="User:Shiv's
+    fotografia">Shiv's fotografia</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cyprus Wheatear (Oenanthe cypriaca)
+    02.jpg
+  commons_filename: Cyprus Wheatear (Oenanthe cypriaca) 02.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:21:28.834994+00:00'
+sources:
+  wikipedia_sv_revision: '56588525'
+  wikipedia_en_revision: '1313778526'
+  claude_model: claude-haiku-4-5-20251001

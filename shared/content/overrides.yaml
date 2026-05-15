@@ -333,6 +333,73 @@ species:
   Q619728:
     description_accept_missing: [sv, en]  # Kanariestrandskata (Canary Islands Oystercatcher †, EX)
     allow_missing_images: true  # extinct, ingen Commons hi-res
+  # Muscicapidae batch (2026-05-15): stenskvättor/flugsnappare/näktergaler svwiki/enwiki kort.
+  Q12265004:
+    description_accept_missing: [sv]  # Blackstart
+  Q1315689:
+    description_accept_missing: [sv]  # African Stonechat
+  Q1317677:
+    allow_missing_images: true  # Gambaga Flycatcher
+  Q1586903:
+    description_accept_missing: [sv]  # Mourning Wheatear
+  Q1587242:
+    description_accept_missing: [sv]  # Canary Islands Stonechat
+  Q1588780:
+    description_accept_missing: [sv]  # Little Rock Thrush
+  Q1589281:
+    description_accept_missing: [sv]  # Siberian Stonechat
+  Q1591580:
+    description_accept_missing: [sv]  # Semicollared Flycatcher
+    allow_missing_images: true
+  Q2225944:
+    description_accept_missing: [sv]  # Atlas Pied Flycatcher
+    allow_missing_images: true
+  Q26420:
+    description_accept_missing: [sv]  # Stenskvätta — allmän SE
+  Q26578:
+    description_accept_missing: [sv]  # Blåhake 78w
+  Q2668319:
+    description_accept_missing: [sv]  # Variable Wheatear
+  Q26755:
+    description_accept_missing: [sv]  # Black Redstart
+  Q31872926:
+    allow_missing_images: true  # Atlas Wheatear
+  Q3728611:
+    description_accept_missing: [sv]  # Arabian Wheatear 78w
+    allow_missing_images: true
+  Q385723:
+    description_accept_missing: [en]  # Black-eared Wheatear
+  Q607027:
+    description_accept_missing: [sv]  # Rufous-tailed Scrub Robin
+  Q646917:
+    description_accept_missing: [sv]  # Cyprus Wheatear 73w
+  Q763538:
+    description_accept_missing: [sv]  # Pied Wheatear 54w
+  Q767506:
+    allow_missing_images: true  # Buff-breasted Wheatear
+  Q769093:
+    description_accept_missing: [en]  # Finsch’s Wheatear
+    allow_missing_images: true
+  Q769528:
+    description_accept_missing: [sv]  # Red-tailed Wheatear 71w
+    allow_missing_images: true
+  Q769574:
+    description_accept_missing: [en]  # Hume’s Wheatear
+  Q774012:
+    description_accept_missing: [en]  # Moussier’s Redstart
+  Q796484:
+    allow_missing_images: true  # Güldenstädt’s Redstart
+  Q796489:
+    description_accept_missing: [sv, en]  # Eversmann’s Redstart
+    allow_missing_images: true
+  Q85758401:
+    description_accept_missing: [en]  # Black-eared Wheatear (split)
+  Q864832:
+    description_accept_missing: [sv]  # Black Scrub Robin 26w
+  Q864893:
+    description_accept_missing: [sv]  # Pied Bush Chat 78w
+  Q912081:
+    description_accept_missing: [sv]  # White-crowned Wheatear 79w
   # Motacillidae batch (2026-05-15): piplärkor svwiki kort/saknas.
   Q266107:
     allow_missing_images: true  # Forest Wagtail

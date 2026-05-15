@@ -1,0 +1,133 @@
+id: Q25334
+scientific_name: Erithacus rubecula
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Erithacus
+  ioc_order: Passeriformes
+names:
+  sv: Rödhake
+  en: European Robin
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödhake
+
+
+    Rödhaken är en liten och knubbig fågel som återfinns över hela Sverige. Det är
+    ungefär 12,5–14 centimeter långt och kännetecknas av sitt karakteristiska orangerött
+    bröst och ansikte, som kontrasterar vackert mot den grå till bruna ovansidan och
+    vitaktiga buken. Huvudet är relativt stort i förhållande till kroppen, och stjärten
+    är kort. Både honor och hanar har samma fjäderdräkt.
+
+
+    Rödhaken är en vanlig och välkänd fågel som uppsöker trädgårdar, parker och skogsbryn.
+    Det är ofta blygt men nyfiken och låter sig gärna observeras från närmare håll.
+    Arten är en aktiv jägare som snabbt hoppar mellan grenar för att fånga insekter
+    och småkryp.
+
+
+    Rödhaken är numera klassificerad i familjen flugsnappare (Muscicapidae), en större
+    grupp av små fåglar kända för sitt snabba flygande och insektätande beteende.'
+  en: '# European Robin
+
+
+    The European robin is a small, plump insectivorous bird immediately recognizable
+    by its distinctive orange-red breast and face, contrasting with brownish-grey
+    upperparts. It has a dark eye and a relatively upright posture. Adults are solitary
+    and highly territorial, often perching openly on low branches or garden features
+    where it watches for insects and other invertebrates on the ground. It is particularly
+    active during dawn and dusk.
+
+
+    The robin''s call is a sharp, distinctive "tic-tic" alarm note, while its song
+    is a cheerful, warbling melody delivered year-round—unusual among European songbirds.
+    The song is often heard in autumn and winter despite the species'' association
+    with winter in popular culture.
+
+
+    Found across Europe from Western Siberia to North Africa, the robin''s distribution
+    varies seasonally. Western and southern populations are largely sedentary, remaining
+    year-round, while northern and eastern birds migrate to escape harsh winters.
+    It adapts well to human environments, particularly gardens, woodlands, and parks,
+    where it becomes surprisingly tame and may follow gardeners searching for disturbed
+    insects.'
+migration:
+  sv: '# Rödhakens förekomst i Scandinavia/Nordeuropa
+
+
+    Rödhaken är en resande art som förekommer i Sverige året runt, även om populationen
+    varierar säsongsvis. Under sommaren häckar rödhaken över större delen av Sverige.
+    En del individer är stannfåglar som övervintar i landet, medan andra flyttar längre
+    söderut under de kalla månaderna. Många rödhaker från norra Europa drar mot södra
+    Europa eller Medelhavet för att övervintra. Återankomsten till häckningsplatserna
+    sker huvudsakligen under mars och april, medan höstflyttningen pågår från augusti
+    till oktober. Rödhaken är därmed en art som är märkbar i Sverige under både häck-
+    och övervintringsperioder.'
+  en: '# European Robin Migration in Scandinavia/Northern Europe
+
+
+    The European Robin exhibits variable migration patterns across its range. In Scandinavia
+    and Northern Europe, populations are predominantly migratory, departing in autumn
+    (September-October) as temperatures drop and insect availability declines. These
+    northern birds migrate southwestward to overwinter in Western Europe and the Mediterranean
+    region. Spring return occurs from March onwards as conditions improve. However,
+    some robins in southern Scandinavia and established populations in milder western
+    regions may remain sedentary year-round, particularly if adequate food sources
+    persist through winter. The timing and extent of migration varies considerably
+    depending on local weather conditions and individual population dynamics.'
+image_refs:
+- role: hero
+  path: Q25334/hero.jpg
+  width: 2400
+  height: 1800
+  license: Public domain
+  author: '<a href="//commons.wikimedia.org/w/index.php?title=User:Rob_Hille/Rob_Hille&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Rob Hille/Rob Hille (page does not exist)">User: Rob Hille/Rob
+    Hille</a>'
+  source_url: https://commons.wikimedia.org/wiki/File:Robin - Erithacus rubecula 1.jpg
+  commons_filename: Robin - Erithacus rubecula 1.jpg
+- role: secondary
+  path: Q25334/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:European robin (Erithacus rubecula)
+    2024.jpg
+  commons_filename: European robin (Erithacus rubecula) 2024.jpg
+- role: secondary
+  path: Q25334/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Chme82" title="User:Chme82">Chme82</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Erithacus rubecula 2026-01-02.jpg
+  commons_filename: Erithacus rubecula 2026-01-02.jpg
+review_status: approved
+review_notes: "Rödhake — Erithacus rubecula klassisk röd bröst; allmän SE-art året runt i skog + trädgårdar."
+generated_at: '2026-05-15T20:24:19.305121+00:00'
+sources:
+  wikipedia_sv_revision: '57929084'
+  wikipedia_en_revision: '1350876510'
+  claude_model: claude-haiku-4-5-20251001

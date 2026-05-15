@@ -1,0 +1,84 @@
+id: Q774012
+scientific_name: Phoenicurus moussieri
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Phoenicurus
+  ioc_order: Passeriformes
+names:
+  sv: Diademrödstjärt
+  en: Moussier’s Redstart
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Diademrödstjärt
+
+
+    Diademrödstjärten är en nordafrikansk fågel som tillhör flugsnapperfamiljen. Det
+    är en liten tätting som huvudsakligen förekommer i Nordafrika, där det är bosatt.
+    Arten är mycket sällsynt i Europa och noteras då endast sporadiskt, bland annat
+    under migration. Beståndets status anses enligt internationella bedömningar vara
+    tillfredsställande och livskraftigt.
+
+
+    För den som är intresserad av att observera denna art är det praktiskt taget uteslutet
+    att träffa den i norra Europa, där den bara förekommer helt undantagsvis. En möjlighet
+    att se arten är istället att besöka dess hemtrakter i Nordafrika, där den är mer
+    regelbundet förekommande. Trots sitt begränsade utbredningsområde i Europa anses
+    arten inte vara hotad globalt.'
+  en: ''
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: ''
+image_refs:
+- role: hero
+  path: Q774012/hero.jpg
+  width: 2048
+  height: 1617
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phoenicurus moussieri 198655586.jpg
+  commons_filename: Phoenicurus moussieri 198655586.jpg
+- role: secondary
+  path: Q774012/secondary-1.jpg
+  width: 1351
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2401694">William
+    Stephens</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phoenicurus moussieri 239292380.jpg
+  commons_filename: Phoenicurus moussieri 239292380.jpg
+- role: secondary
+  path: Q774012/secondary-2.jpg
+  width: 1800
+  height: 1349
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phoenicurus moussieri 187917101.jpg
+  commons_filename: Phoenicurus moussieri 187917101.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:19:41.978817+00:00'
+sources:
+  wikipedia_sv_revision: '55566506'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

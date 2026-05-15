@@ -1,0 +1,98 @@
+id: Q1586903
+scientific_name: Oenanthe lugens
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Sorgstenskvätta
+  en: Mourning Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Mourning Wheatear
+
+
+    The Mourning Wheatear is a small passerine belonging to the Old World flycatcher
+    family. It is one of 14 wheatear species found across northern Africa and the
+    Middle East, regions where it has adapted to arid and semi-arid environments.
+
+
+    This bird is characterized by its distinctive plumage pattern, which typically
+    features dark upperparts contrasting with lighter underparts—a coloration that
+    reflects its mourning-inspired common name. Like other wheatears, it is an active
+    ground forager, often seen perching on rocks or low vegetation as it hunts for
+    insects and small invertebrates.
+
+
+    The Mourning Wheatear favors open, rocky habitats and desert margins where sparse
+    vegetation provides adequate foraging opportunities. It shares behavioural traits
+    common to wheatears, including a preference for exposed perches from which it
+    can survey its territory and watch for prey movement.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and classification information
+    about the Mourning Wheatear, with no details regarding its occurrence, migration
+    patterns, or seasonal distribution in Scandinavia or Northern Europe. To provide
+    accurate information about this species'' movements in northern regions, additional
+    sources with specific migration and distribution data would be required.'
+image_refs:
+- role: hero
+  path: Q1586903/hero.jpg
+  width: 2400
+  height: 1704
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/79382895@N08">PsJeremy</a>
+    from Melbourne, Australia
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe lugens Petra, Jordan
+    1.jpg
+  commons_filename: Oenanthe lugens Petra, Jordan 1.jpg
+- role: secondary
+  path: Q1586903/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
+    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe lugens 2.jpg
+  commons_filename: Oenanthe lugens 2.jpg
+- role: secondary
+  path: Q1586903/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
+    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe lugens 1.jpg
+  commons_filename: Oenanthe lugens 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:23:42.211095+00:00'
+sources:
+  wikipedia_sv_revision: '58956806'
+  wikipedia_en_revision: '1345506826'
+  claude_model: claude-haiku-4-5-20251001

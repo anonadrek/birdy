@@ -1,0 +1,124 @@
+id: Q27075678
+scientific_name: Calliope calliope
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Calliope
+  ioc_order: Passeriformes
+names:
+  sv: Rubinnäktergal
+  en: Siberian Rubythroat
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rubinnäktergal
+
+
+    Rubinnäktergal är en sibirisk tätting som tillhör familjen flugsnappare. Hanen
+    är lätt att identifiera tack vare sin karakteristiska rubinröda strupe, som kontrasterar
+    mot mörkare övre delar. Honan är betydligt mer diskret tecknad och saknar den
+    iögonfallande strupen. Fågeln är liten och spenslig, väl anpassad för att söka
+    föda bland löv och grenar.
+
+
+    Arten häckar i Sibirien och österut till Japan, där den väljer skogshabitat. Under
+    vintern genomför den en lång migration till Sydostasien för att undgå det hårda
+    klimatet. I Västeuropa är rubinnäktergal en mycket sällsynt gäst, och observationer
+    är därför av intresse för fågelskådare. IUCN klassificerar arten som livskraftig,
+    vilket indikerar en stabil population trots dess begränsade utbredning.'
+  en: '# Siberian Rubythroat
+
+
+    The Siberian rubythroat is a small passerine bird belonging to the Old World flycatcher
+    family. Males are particularly distinctive, displaying a striking ruby-red throat
+    and upper breast that contrasts sharply with their grey-brown upperparts and white
+    underparts. Females are duller, lacking the vibrant red coloring and appearing
+    predominantly grey-brown with a white belly. It is a relatively compact bird,
+    similar in size to other chat species.
+
+
+    This species is an active forager, typically hunting insects in low vegetation
+    and undergrowth, often flitting between bushes with quick, jerky movements. It
+    tends to be rather skulking in habit, preferring to remain concealed in dense
+    cover. The bird has a pleasant, warbling song, and it produces various call notes
+    when alarmed or in flight.
+
+
+    The Siberian rubythroat breeds across northern regions in open woodlands and scrublands,
+    particularly in areas with juniper and dwarf birch. During migration and winter,
+    it inhabits similar scrubby habitats and open woodland edges. It is primarily
+    an Asian species, with populations found across a broad range during breeding
+    season, making it an occasional vagrant to western regions during migration periods.'
+migration:
+  sv: Rubinnäktergal är en långdistansflyggare som häckar i Sibirien och övervintrarar
+    i Sydostasien. Arten är en mycket sällsynt gäst i Skandinavien och övriga Västeuropa,
+    där den endast förekommer sporadiskt under höstmigrationen. Rubinnäktergalen följer
+    en typisk östvatlig migreringsmönster, där fåglarna lämnar sina häckningsområden
+    i Sibirien på hösten för att söka sig till övervintringsområdena i Sydostasien.
+    Några individer avviker från denna rutt och påträffas då i västra Europa, särskilt
+    under hösten när migrationstrycket är som störst.
+  en: '# Siberian Rubythroat: Occurrence in Northern Europe
+
+
+    The Siberian Rubythroat is a rare vagrant to Scandinavia and Northern Europe,
+    with no established regular migration pattern through the region. Records in Northern
+    Europe are sporadic and typically occur during autumn migration periods, mainly
+    in September and October, when individuals occasionally appear as overshoots or
+    drift migrants, particularly in coastal areas. The species is primarily resident
+    or migrant within its Asian breeding range, wintering in southern Asia. Sightings
+    in Scandinavia remain exceptional and unpredictable, making it an uncommon but
+    noteworthy observation for regional birdwatchers.'
+image_refs:
+- role: hero
+  path: Q27075678/hero.jpg
+  width: 2048
+  height: 1335
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3138967">Юрий
+    Носков</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Calliope calliope 241712738.jpg
+  commons_filename: Calliope calliope 241712738.jpg
+- role: secondary
+  path: Q27075678/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2497873">Валерия
+    Ковалева</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Calliope calliope 201092723.jpg
+  commons_filename: Calliope calliope 201092723.jpg
+- role: secondary
+  path: Q27075678/secondary-2.jpg
+  width: 1800
+  height: 1555
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/506512">Rejoice
+    Gassah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Calliope calliope 176230137.jpg
+  commons_filename: Calliope calliope 176230137.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:22:24.856055+00:00'
+sources:
+  wikipedia_sv_revision: '58833969'
+  wikipedia_en_revision: '1353076311'
+  claude_model: claude-haiku-4-5-20251001

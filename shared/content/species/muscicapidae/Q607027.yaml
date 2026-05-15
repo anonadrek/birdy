@@ -1,0 +1,108 @@
+id: Q607027
+scientific_name: Cercotrichas galactotes
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Cercotrichas
+  ioc_order: Passeriformes
+names:
+  sv: Trädnäktergal
+  en: Rufous-tailed Scrub Robin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Rufous-tailed Scrub Robin
+
+
+    The rufous-tailed scrub robin is a medium-sized member of the flycatcher family,
+    characterized by its distinctive rufous (reddish-brown) tail, which is particularly
+    noticeable in flight. The plumage is warm brown above with a paler underside,
+    giving it good camouflage in scrubby habitats. It is an active, rather restless
+    bird, often seen hopping on the ground or perching low in bushes where it hunts
+    for insects and small invertebrates.
+
+
+    This species breeds around the Mediterranean region and extends eastward to Pakistan.
+    A separate population occurs south of the Sahara, from the Sahel region through
+    to Somalia, sometimes considered a distinct subspecies. The bird is partially
+    migratory, with northern populations wintering in Africa or India, while some
+    southern African populations may be resident year-round.
+
+
+    Rufous-tailed scrub robins are typically found in dry, scrubby terrain, including
+    cultivated areas with scattered bushes. They are very rare visitors to northern
+    Europe, appearing only as exceptional vagrants. The species favors habitats with
+    low vegetation where it can forage on the ground or move through dense brush with
+    ease.'
+migration:
+  sv: ''
+  en: '# Cercotrichas galactotes – Occurrence in Scandinavia/Northern Europe
+
+
+    The Rufous-tailed Scrub Robin is an extremely rare visitor to Scandinavia and
+    northern Europe. This species is partially migratory, with populations breeding
+    around the Mediterranean and wintering primarily in Africa and India. Given its
+    primary range in southern Europe and Africa, sightings in Scandinavia are exceptional
+    and unpredictable vagrant records rather than regular occurrences. The species
+    does not establish breeding populations or predictable migration routes through
+    northern Europe.'
+image_refs:
+- role: hero
+  path: Q607027/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D7%A1%D7%99%D7%95%D7%9F_%D7%A9&amp;action=edit&amp;redlink=1"
+    class="new" title="User:סיון ש (page does not exist)">סיון ש</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2015-07-10 08.03.53 Cercotrichas
+    galactotes.jpg
+  commons_filename: 2015-07-10 08.03.53 Cercotrichas galactotes.jpg
+- role: secondary
+  path: Q607027/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Iraqi_eco" title="User:Iraqi
+    eco">Iraqi eco</a>
+  source_url: https://commons.wikimedia.org/wiki/File:(Cercotrichas galactotes) in
+    Iraq دخلة حمراء (شوّالة) في العراق 01.jpg
+  commons_filename: (Cercotrichas galactotes) in Iraq دخلة حمراء (شوّالة) في العراق
+    01.jpg
+- role: secondary
+  path: Q607027/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Iraqi_eco" title="User:Iraqi
+    eco">Iraqi eco</a>
+  source_url: https://commons.wikimedia.org/wiki/File:(Cercotrichas galactotes) in
+    Iraq دخلة حمراء (شوّالة) في العراق 02.jpg
+  commons_filename: (Cercotrichas galactotes) in Iraq دخلة حمراء (شوّالة) في العراق
+    02.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:21:41.195599+00:00'
+sources:
+  wikipedia_sv_revision: '55760295'
+  wikipedia_en_revision: '1331843228'
+  claude_model: claude-haiku-4-5-20251001

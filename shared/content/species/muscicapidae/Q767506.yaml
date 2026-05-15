@@ -1,0 +1,93 @@
+id: Q767506
+scientific_name: Oenanthe bottae
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Jemenstenskvätta
+  en: Buff-breasted Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Jemenstenskvätta
+
+
+    Jemenstenskvätta är en liten fågel i flugsnappfamiljen som tidigare klassificerades
+    tillsammans med höglandsstenskvättan under ett gemensamt namn. Denna art är nu
+    definierad i begränsad mening, vilket skiljer den från närbesläktade former.
+
+
+    Arten är anpassad till stenig terräng och öppen miljö där den söker föda genom
+    att hoppa på marken. Som medlem av flugsnappfamiljen älskar arten att fånga insekter
+    både från luften och från marken. Jemenstenskvätta är en aktiv och vaksam fågel
+    som ofta vilar på höga punkter för att spana efter både mat och möjliga faror.
+
+
+    Arten förekommer i sitt naturliga utbredningsområde där den är stationär eller
+    delvis flyttande beroende på säsong och förhållanden.'
+  en: '# Buff-breasted Wheatear
+
+
+    The buff-breasted wheatear is a small Old World flycatcher distinguished by its
+    warm buff and reddish coloring on the breast and underparts, contrasting with
+    darker upperparts. Like other wheatears, it displays characteristic pale rump
+    and tail patterns visible in flight, which aid identification in the field.
+
+
+    This species favors rocky, mountainous terrain with sparse vegetation, where it
+    hunts insects from exposed perches. It typically forages on the ground or makes
+    short sallies to catch prey in the air, displaying the characteristic upright
+    posture and frequent tail-bobbing behavior common to wheatears.
+
+
+    The buff-breasted wheatear is endemic to a limited highland range, making it a
+    species of conservation interest due to its restricted distribution. Amateur birders
+    seeking this bird will need to explore appropriate high-altitude habitats within
+    its known range, where it can be observed during suitable seasons.'
+migration:
+  sv: '# Jemenstenskvätta i Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Jemenstenskvätta är en arabisk fågel vars förekomst i Skandinavien och Nordeuropa
+    inte är dokumenterad i tillgänglig källmaterial. Arten är hemmahörande i Mellanöstern
+    och förekommer inte som regelbunden migrant eller övervintrare i norra Europa.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains only basic taxonomic and nomenclatural information
+    about the Buff-breasted Wheatear, with no details about its occurrence, migration
+    patterns, or seasonal movements in Scandinavia or Northern Europe. To provide
+    accurate migration information for this species in the region, additional sources
+    with specific distributional and phenological data would be required.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:23:46.193210+00:00'
+sources:
+  wikipedia_sv_revision: '59056689'
+  wikipedia_en_revision: '1338583567'
+  claude_model: claude-haiku-4-5-20251001

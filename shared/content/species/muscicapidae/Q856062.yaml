@@ -1,0 +1,114 @@
+id: Q856062
+scientific_name: Oenanthe leucura
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Svart stenskvätta
+  en: Black Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svart stenskvätta
+
+
+    Svart stenskvätta är en liten fågel som tillhör flugsnappfamiljen. Den är en stenskvätta,
+    en grupp som tidigare klassificerades tillsammans med trastar men numera förs
+    till flugsnappare.
+
+
+    Arten förekommer på Iberiska halvön och i nordvästra afrika, där den bebor steniga
+    och karga miljöer. Arten är fåtalig och beståndet minskar, även om det anses vara
+    relativt livskraftigt. Med sitt namn hintad på ett svart yttre skiljer sig svart
+    stenskvätta från sina närmaste släktingar, och dess anpassning till öppen stenmark
+    gör den välkänd för den som söker fåglar i torra, kuperade terränger.'
+  en: '# Black Wheatear
+
+
+    The black wheatear is a small passerine in the Old World flycatcher family, found
+    in the Iberian Peninsula and western North Africa. This striking bird is predominantly
+    black or very dark grey, with white markings on the rump and tail that are particularly
+    noticeable in flight. The contrast between its dark plumage and pale rear end
+    makes it relatively easy to identify among wheatear species.
+
+
+    Black wheatears favour rocky, arid habitats with sparse vegetation, where they
+    forage on the ground for insects and other invertebrates. They are active, alert
+    birds that often perch on rocks or low outcrops, making short flights to catch
+    prey. Like other wheatears, they frequently bob and move with jerky, energetic
+    movements.
+
+
+    The species is less commonly encountered than some of its relatives, remaining
+    in its preferred ranges year-round or making only short-distance movements. It
+    tends to favour more barren, stony terrain than many other wheatears, requiring
+    specific habitat conditions. While details on its calls and song are limited in
+    available sources, like other wheatears it likely produces sharp, distinctive
+    sounds typical of the genus.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The Black Wheatear is a resident bird of the Iberian Peninsula and western North
+    Africa, with no established presence or migration patterns documented in Scandinavia
+    or Northern Europe. This species does not occur in these regions during any season
+    of the year.'
+image_refs:
+- role: hero
+  path: Q856062/hero.jpg
+  width: 2400
+  height: 1589
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Zwarte tapuit - black wheatear
+    - Oenanthe leucura.tif
+  commons_filename: Zwarte tapuit - black wheatear - Oenanthe leucura.tif
+- role: secondary
+  path: Q856062/secondary-1.jpg
+  width: 1800
+  height: 1437
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Black Wheatear. Oenanthe leucura
+    - Flickr - gailhampshire.jpg
+  commons_filename: Black Wheatear. Oenanthe leucura - Flickr - gailhampshire.jpg
+- role: secondary
+  path: Q856062/secondary-2.jpg
+  width: 1350
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2401694">William
+    Stephens</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe leucura 239289556.jpg
+  commons_filename: Oenanthe leucura 239289556.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:20:17.074238+00:00'
+sources:
+  wikipedia_sv_revision: '55739242'
+  wikipedia_en_revision: '1345317805'
+  claude_model: claude-haiku-4-5-20251001

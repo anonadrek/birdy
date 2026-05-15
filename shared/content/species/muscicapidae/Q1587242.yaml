@@ -1,0 +1,102 @@
+id: Q1587242
+scientific_name: Saxicola dacotiae
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Saxicola
+  ioc_order: Passeriformes
+names:
+  sv: Kanariebuskskvätta
+  en: Canary Islands Stonechat
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Canary Islands Stonechat
+
+
+    The Canary Islands Stonechat is a small resident bird endemic to Fuerteventura,
+    where it is locally known as the Caldereta. It belongs to the flycatcher family
+    and remains year-round on its island home, never migrating.
+
+
+    Little detailed information is available in standard references about this bird''s
+    specific appearance, behaviour, and vocalizations. However, like other stonechats,
+    it likely perches conspicuously on low shrubs and rocks, sallying out to catch
+    insects in flight or gleaning them from vegetation. Its diet probably consists
+    mainly of invertebrates, supplemented with berries when available.
+
+
+    The species was once more widespread across the Canary Islands but is now restricted
+    to Fuerteventura, making it a species of conservation concern due to its limited
+    range and small population. Habitat loss and degradation on its island home pose
+    ongoing threats to its survival.'
+migration:
+  sv: ''
+  en: '# Canary Islands Stonechat (Saxicola dacotiae) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Canary Islands Stonechat is a sedentary resident bird endemic to Fuerteventura
+    in the Canary Islands, with no documented occurrence in Scandinavia or Northern
+    Europe. This species does not migrate and does not naturally occur in northern
+    European regions. Its range is restricted to its island habitat year-round, making
+    it irrelevant for ornithological study in Scandinavian contexts.'
+image_refs:
+- role: hero
+  path: Q1587242/hero.jpg
+  width: 2042
+  height: 2126
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Canary Islands stonechat (Saxicola
+    dacotiae).jpg
+  commons_filename: Canary Islands stonechat (Saxicola dacotiae).jpg
+- role: secondary
+  path: Q1587242/secondary-1.jpg
+  width: 1800
+  height: 1222
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Gerd_Eichmann" title="User:Gerd
+    Eichmann">Gerd Eichmann</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fuerteventura-Morro Jable-Natur-04-Saxicola
+    dacotiae-Kanarenschmaetzer-2015-gje.jpg
+  commons_filename: Fuerteventura-Morro Jable-Natur-04-Saxicola dacotiae-Kanarenschmaetzer-2015-gje.jpg
+- role: secondary
+  path: Q1587242/secondary-2.jpg
+  width: 1800
+  height: 1462
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Gerd_Eichmann" title="User:Gerd
+    Eichmann">Gerd Eichmann</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fuerteventura-Morro Jable-Natur-06-Saxicola
+    dacotiae-Kanarenschmaetzer-2015-gje.jpg
+  commons_filename: Fuerteventura-Morro Jable-Natur-06-Saxicola dacotiae-Kanarenschmaetzer-2015-gje.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:21:12.801941+00:00'
+sources:
+  wikipedia_sv_revision: '55626191'
+  wikipedia_en_revision: '1314310123'
+  claude_model: claude-haiku-4-5-20251001

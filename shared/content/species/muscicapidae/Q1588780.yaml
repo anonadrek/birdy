@@ -1,0 +1,101 @@
+id: Q1588780
+scientific_name: Monticola rufocinereus
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Monticola
+  ioc_order: Passeriformes
+names:
+  sv: Dvärgstentrast
+  en: Little Rock Thrush
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Little Rock Thrush
+
+
+    The little rock thrush is a diminutive passerine, measuring just 15-16 centimetres,
+    making it the smallest member of the Muscicapidae family. The male displays striking
+    plumage with a blue-grey head, throat, and upper mantle contrasting sharply with
+    bright orange-red underparts. Its blackish tail feathers, tipped and centered
+    to form an inverted T-shape, are particularly distinctive. The female is considerably
+    duller and paler than the male, with more subdued coloration throughout.
+
+
+    This species favours rocky terrain interspersed with trees and occasionally ventures
+    near human settlements. It is readily confused with various redstart species due
+    to its characteristic tail-trembling behaviour, a distinctive habit it employs
+    frequently. The species inhabits arid and semi-arid regions across northeastern
+    Africa and the Arabian Peninsula, where it actively forages among rocky outcrops
+    and sparse vegetation.
+
+
+    The little rock thrush remains relatively inconspicuous despite its striking male
+    plumage, often perching quietly on rocks before making quick foraging movements.
+    Its small size and preference for rocky habitats make it well-adapted to harsh,
+    sparsely vegetated environments where few other thrushes venture.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Little Rock Thrush is an African species with a range limited to East Africa
+    and the Arabian Peninsula (Eritrea, Ethiopia, Kenya, Oman, Saudi Arabia, Somalia,
+    South Sudan, Tanzania, Uganda, and Yemen). It does not naturally occur in Scandinavia
+    or Northern Europe, and the source text contains no information about migration
+    patterns or seasonal movements relevant to this region.'
+image_refs:
+- role: hero
+  path: Q1588780/hero.jpg
+  width: 2048
+  height: 1366
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Monticola rufocinereus 284522556.jpg
+  commons_filename: Monticola rufocinereus 284522556.jpg
+- role: secondary
+  path: Q1588780/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Monticola rufocinereus 556032233.jpg
+  commons_filename: Monticola rufocinereus 556032233.jpg
+- role: secondary
+  path: Q1588780/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1114896">Tommy
+    Andriollo</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Monticola rufocinereus 442107238.jpg
+  commons_filename: Monticola rufocinereus 442107238.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:21:19.878302+00:00'
+sources:
+  wikipedia_sv_revision: '56466653'
+  wikipedia_en_revision: '1314927060'
+  claude_model: claude-haiku-4-5-20251001

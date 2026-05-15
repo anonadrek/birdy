@@ -1,0 +1,79 @@
+id: Q1591580
+scientific_name: Ficedula semitorquata
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Ficedula
+  ioc_order: Passeriformes
+names:
+  sv: Balkanflugsnappare
+  en: Semicollared Flycatcher
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Semicollared Flycatcher
+
+
+    The semicollared flycatcher is a small black-and-white passerine belonging to
+    the Old World flycatcher family. It closely resembles other Western Palearctic
+    black-and-white flycatchers, featuring characteristic dark plumage contrasted
+    with white markings, particularly around the face and underparts. The "semicollar"
+    refers to the incomplete white collar that distinguishes it from related species.
+
+
+    This bird breeds in montane forests of southeastern Europe extending into northwestern
+    Iran, preferring higher elevations where it hunts insects among the trees. It
+    is highly migratory, breeding during spring and summer before departing for Central
+    and Eastern Africa in winter, making it a rare vagrant when it appears in western
+    Europe outside its normal range.
+
+
+    Recent tracking studies using geolocators have demonstrated that spring migration
+    timing is substantially influenced by weather conditions, which also affects adult
+    bird survival rates. Understanding these ecological factors has proven important
+    for comprehending the species'' population dynamics and movements across its vast
+    geographic range.'
+migration:
+  sv: ''
+  en: '# Semicollared Flycatcher in Northern Europe
+
+
+    The Semicollared Flycatcher is an extremely rare visitor to Scandinavia and Northern
+    Europe, as it breeds in southeastern Europe and the Balkans rather than in the
+    north. This species is a long-distance migrant that winters in Central and Eastern
+    Africa. Birds breeding in their core range depart for African wintering grounds
+    in autumn, with return migration occurring in spring. Tracking studies have demonstrated
+    that spring migration timing is significantly influenced by weather conditions,
+    which can also affect adult bird survival rates.
+
+
+    Given its southern breeding distribution, any occurrence in Scandinavia would
+    represent a rare vagrant event rather than regular migration through the region.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:18:49.091717+00:00'
+sources:
+  wikipedia_sv_revision: '57724828'
+  wikipedia_en_revision: '1332777570'
+  claude_model: claude-haiku-4-5-20251001

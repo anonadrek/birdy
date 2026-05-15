@@ -1,0 +1,99 @@
+id: Q85758401
+scientific_name: Oenanthe melanoleuca
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Östlig medelhavsstenskvätta
+  en: Black-eared Wheatear
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Östlig medelhavsstenskvätta
+
+
+    Östlig medelhavsstenskvätta är en liten tätting som tillhör familjen flugsnappare.
+    Den förekommer i sydöstra Europa och sydvästra Asien, där den lever i öppna och
+    halvöppna miljöer med stenig terräng.
+
+
+    Arten behandlades länge som en underart till medelhavsstenskvättan men urskildes
+    som egen art år 2019. Den liknar sin västra släkting medelhavsstenskvättan, men
+    skiljer sig genom sina karaktäristiska märken, särskilt de mörka öron- och ansiktsmärkena
+    som ger arten sitt namn.
+
+
+    Arten föredrar buskland och steniga områden där den söker föda på marken. Liksom
+    andra stenskvättor är den aktiv och rörlig, ofta observerad på låga utpostar eller
+    på marken.'
+  en: ''
+migration:
+  sv: '# Migrationsdata saknas för denna art.
+
+
+    Källtexten innehåller ingen information om hur denna art förekommer i Skandinavien
+    eller Nordeuropa under året, eller om dess migrationsmönster. Arten behandlas
+    främst som sydeuropeisk och sydvästasiatisk, men utan specifika uppgifter om nordeuropeisk
+    förekomst eller säsongsväxling kan ingen faktagrundad beskrivning av dess fenologi
+    i regionen skrivas.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q85758401/hero.jpg
+  width: 2400
+  height: 1436
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eastern black-eared wheatear
+    (Oenanthe melanoleuca) 2019 2.jpg
+  commons_filename: Eastern black-eared wheatear (Oenanthe melanoleuca) 2019 2.jpg
+- role: secondary
+  path: Q85758401/secondary-1.jpg
+  width: 1800
+  height: 1105
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eastern black-eared wheatear
+    (Oenanthe melanoleuca) 2019.jpg
+  commons_filename: Eastern black-eared wheatear (Oenanthe melanoleuca) 2019.jpg
+- role: secondary
+  path: Q85758401/secondary-2.jpg
+  width: 1800
+  height: 1228
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Eastern Black-eared Wheatear
+    (Oenanthe melanoleuca), male, Lesvos, Greece, 17.04.2015 (17163344538).jpg
+  commons_filename: Eastern Black-eared Wheatear (Oenanthe melanoleuca), male, Lesvos,
+    Greece, 17.04.2015 (17163344538).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:20:17.749395+00:00'
+sources:
+  wikipedia_sv_revision: '55781609'
+  wikipedia_en_revision: '1297096522'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,93 @@
+id: Q796484
+scientific_name: Phoenicurus erythrogastrus
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Phoenicurus
+  ioc_order: Passeriformes
+names:
+  sv: Bergrödstjärt
+  en: Güldenstädt’s Redstart
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bergrödstjärt
+
+
+    Bergrödstjärt är en medelstor fågel i flugsnappfamiljen som förekommer i högre
+    bergstrakter. Arten hittas från Kaukasus och österut genom Centralasien till Himalaya,
+    där den är anpassad för livet i bergsmiljöer.
+
+
+    Fågeln är en insektätare som jagar flygande insekter efter flugsnappares klassiska
+    sätt. Som många medlemmar av sin familj använder den sig av snabba och skickliga
+    manövrar för att fånga sitt byte i luften. Arten är därmed väl anpassad för sitt
+    liv bland bergens höga höjder.
+
+
+    För mer detaljerad information om bergrödstärtens utseende, beteende och läten
+    rekommenderas att konsultera fågellitteratur med utförligare beskrivningar av
+    denna bergspecialiserade fågel.'
+  en: '# Güldenstädt''s Redstart
+
+
+    Güldenstädt''s redstart, also called the white-winged redstart, is a small flycatcher
+    inhabiting high mountain regions across a vast range from the Caucasus eastward
+    through Central Asia to the Altai. It occupies rocky alpine and subalpine terrain
+    in Afghanistan, the Himalayas, Pamir, Tian Shan, and surrounding mountain systems.
+
+
+    Like other redstarts, it is a striking bird with distinctive plumage featuring
+    white wing patches that give it one of its common names. The species is an active
+    insectivore, characteristic of the flycatcher family, hunting in its rocky mountain
+    habitat. Its behavior and calls reflect adaptations to high-altitude living, though
+    specific details of its vocalizations and breeding habits remain less documented
+    than some lowland relatives.
+
+
+    This redstart is primarily a resident of remote, elevated terrain, making it a
+    challenging species to observe. Its distribution spans multiple countries across
+    southwestern and central Asia, always in mountainous regions where few other birds
+    venture. Birdwatchers seeking this species must be prepared for high-altitude
+    fieldwork in some of the world''s most challenging landscapes.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Güldenstädt''s Redstart Migration in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    Güldenstädt''s redstart is a high-mountain species of the southwestern and central
+    Palearctic, occurring in the Caucasus, Karakoram, Pamir, Himalaya, Tian Shan,
+    and Altai ranges. Its distribution extends across Afghanistan, Armenia, Azerbaijan,
+    Bhutan, China, Georgia, India, Iran, Kazakhstan, Mongolia, Nepal, Pakistan, Russia,
+    Tajikistan, Turkmenistan, and Uzbekistan. The species does not regularly occur
+    in Scandinavia or Northern Europe.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:23:17.170073+00:00'
+sources:
+  wikipedia_sv_revision: '58595194'
+  wikipedia_en_revision: '1332757839'
+  claude_model: claude-haiku-4-5-20251001

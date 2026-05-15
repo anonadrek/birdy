@@ -1,0 +1,90 @@
+id: Q31872926
+scientific_name: Oenanthe seebohmi
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Atlasstenskvätta
+  en: Atlas Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: "# Atlasstenskvätta\n\nAtlasstenskvätta är en nordafrikansk tätting som tillhör\
+    \ familjen flugsnappare. Den behandlades traditionellt som underart till stenskvättan,\
+    \ men urskiljs numera allt oftare som egen art. \n\nArten är nära släkt med stenskvättan\
+    \ och liknar denna till utseendet, men har sina egna karakteristika som skiljer\
+    \ den åt. Som de flesta stenskvätor är det en flyttfågel som föredrar öppna och\
+    \ karga miljöer. Arten ses framför allt i bergiga och steniga terränger där den\
+    \ jagar små insekter från marken och låga buskar.\n\nFör den som är intresserad\
+    \ av att urskilja denna art från den närbesläktade stenskvättan krävs kunskap\
+    \ om deras subtila skillnader i fjäderdräkt och beteende. Atlasstenskvätta är\
+    \ en faszinerande exempel på hur taxonomin inom fågelvärlden ständigt utvecklas\
+    \ när forskare får bättre möjlighet att studera och jämföra populationer."
+  en: '# Atlas Wheatear
+
+
+    The Atlas wheatear is a small passerine bird in the flycatcher family, formerly
+    classified as a subspecies of the northern wheatear before being recognized as
+    a distinct species in 2021. It is also called the black-throated wheatear or Seebohm''s
+    wheatear.
+
+
+    This species breeds in the Maghreb region of North Africa and undertakes a seasonal
+    migration to the western Sahel for winter. Like other wheatears, it likely inhabits
+    open, rocky terrain where it can forage on the ground and use elevated perches
+    for scanning. As a small flycatcher, it probably feeds on insects and other invertebrates,
+    though specific details of its behaviour and distinctive field marks are not provided
+    in the available source material.
+
+
+    The Atlas wheatear''s separation as a distinct species represents recent taxonomic
+    refinement within the wheatear genus, reflecting updated understanding of North
+    African bird populations.'
+migration:
+  sv: '# Atlasstenskvätta - Migration och säsongsförekomst
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Atlas-stenskvätta är en nordafrikansk art med begränsad utbredning, och information
+    om dess migrations- och övervintringsmönster i Skandinavien och Nordeuropa är
+    inte tillgänglig i källmaterialet. Arten är traditionellt behandlad som underart
+    till stenskvätta men betraktas allt oftare som egen art.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides information about the Atlas Wheatear''s breeding range
+    (Maghreb region of North Africa) and wintering grounds (western Sahel), but contains
+    no specific details about its occurrence in Scandinavia or Northern Europe, migration
+    timing, arrival months, or any other migration patterns relevant to that region.
+    Therefore, this species cannot be described in the context requested.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:21:58.109231+00:00'
+sources:
+  wikipedia_sv_revision: '56584580'
+  wikipedia_en_revision: '1314230428'
+  claude_model: claude-haiku-4-5-20251001

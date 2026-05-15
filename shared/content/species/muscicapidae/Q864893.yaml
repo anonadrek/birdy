@@ -1,0 +1,124 @@
+id: Q864893
+scientific_name: Saxicola caprata
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Saxicola
+  ioc_order: Passeriformes
+names:
+  sv: Svart buskskvätta
+  en: Pied Bush Chat
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svart buskskvätta
+
+
+    Svart buskskvätta är en liten medlem av flugsnappfamiljen med utbredning över
+    stora delar av Asien, från Iran österut till Nya Guinea. Arten är mycket sällsynt
+    i Europa, där bara några enstaka fynd är dokumenterade.
+
+
+    Arten förekommer främst i sitt asiatiska hemområde, men har undantagsvis påträffats
+    i Europa. Ett fåtal observationer finns noterade från norra Europa samt ett fynd
+    från skandinavisk region under senare år. Den klassificeras av IUCN som livskraftig,
+    vilket indikerar en stabil populationsstatus.'
+  en: '# Pied Bush Chat
+
+
+    The pied bush chat is a small flycatcher with a distinctive appearance that varies
+    between subspecies across its wide range from West Asia through the Indian subcontinent
+    to Southeast Asia. Males typically display bold black and white plumage, while
+    females are generally duller with brownish tones. Its compact size and upright
+    posture make it unmistakable when perched.
+
+
+    This species favors open countryside, scrub, and grassland habitats where it hunts
+    for insects. It characteristically perches on top of low thorn trees and shrubs,
+    providing a commanding vantage point for spotting prey. Unlike many flycatchers
+    that catch insects in flight, the pied bush chat primarily forages on the ground,
+    gleaning insects from vegetation and the soil surface.
+
+
+    The bird is highly active and alert, constantly scanning its surroundings from
+    exposed perches. Its behavior—sitting conspicuously atop bushes while searching
+    for food—makes it relatively easy to observe in suitable habitat. Originally classified
+    with thrushes, it is now recognized as belonging to the Old World flycatcher family,
+    reflecting its hunting techniques and ecological role.'
+migration:
+  sv: '# Svart buskskvätta (Saxicola caprata) - Förekomst i Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Svart buskskvätta är en asiatisk art med mycket begränsad förekomst i Europa.
+    I Skandinavien och Nordeuropa är arten extremt sällsynt och förekommer endast
+    som enstaka vagranterna. I Finland har arten noterats endast tre gånger, och i
+    Sverige registrerades ett enda fynd utanför Ulricehamn i Västergötland år 2018.
+    Det finns ingen etablerad migration eller övervintringsbestånd av denna art i
+    nordiska regioner, utan förekomsterna utgörs av tillfälliga irrflytt från dess
+    huvudsakliga utbredningsområde i Asien.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides no information about the Pied Bush Chat''s occurrence
+    in Scandinavia or Northern Europe, nor does it contain any details about migration
+    patterns, overwintering behavior, or seasonal movements throughout the year. The
+    species is described as occurring in West Asia, Central Asia, the Indian subcontinent,
+    and Southeast Asia, with no mention of northern European distribution or migration
+    to/from that region.'
+image_refs:
+- role: hero
+  path: Q864893/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pied bush chat (Saxicola caprata)
+    ചുറ്റീന്തൽക്കിളി 15.jpg
+  commons_filename: Pied bush chat (Saxicola caprata) ചുറ്റീന്തൽക്കിളി 15.jpg
+- role: secondary
+  path: Q864893/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pied bush chat (Saxicola caprata)
+    ചുറ്റീന്തൽക്കിളി 4.jpg
+  commons_filename: Pied bush chat (Saxicola caprata) ചുറ്റീന്തൽക്കിളി 4.jpg
+- role: secondary
+  path: Q864893/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pied bush chat (Saxicola caprata)
+    ചുറ്റീന്തൽക്കിളി 6.jpg
+  commons_filename: Pied bush chat (Saxicola caprata) ചുറ്റീന്തൽക്കിളി 6.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:19:07.738656+00:00'
+sources:
+  wikipedia_sv_revision: '57826334'
+  wikipedia_en_revision: '1346800025'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,126 @@
+id: Q235057
+scientific_name: Monticola saxatilis
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Monticola
+  ioc_order: Passeriformes
+names:
+  sv: Stentrast
+  en: Common Rock Thrush
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stentrast
+
+
+    Stentrast är en bergslevande fågel som häckar i södra delar av Europa och nordvästra
+    Afrika. Tidigare klassificerades den som trast, men genetiska studier visade att
+    arten faktiskt tillhör familjen flugsnappare. Det är en sällsynt gäst norr om
+    sitt normala utbredningsområde, med endast några få fynd registrerade i norden.
+
+
+    Arten är mycket sällsynt att påträffa utanför sitt hemområde, där det endast dokumenterats
+    ett fåtal observationer. IUCN klassificerar arten som livskraftig med stabil population.
+    Stentrasten föredrar bergiga terränger och höglandet där den lever på bergsklipper
+    och öppna bergssidor.'
+  en: '# Common Rock Thrush
+
+
+    The Common Rock Thrush is a striking chat species that breeds across southern
+    regions from west to east, with populations wintering far south in Africa. This
+    bird is a strong migrant, undertaking substantial seasonal journeys. It appears
+    as an uncommon visitor to northern areas, where sightings are noteworthy for birdwatchers.
+
+
+    The species favors rocky, mountainous habitats where it hunts for insects and
+    small prey. It is known for its vibrant plumage, though specific details on appearance
+    would benefit from additional descriptive sources. Its behaviour includes typical
+    chat-like foraging and perching on exposed rocks.
+
+
+    The Common Rock Thrush''s range has contracted somewhat in recent decades, primarily
+    due to habitat loss in peripheral areas. However, the species remains relatively
+    stable globally and is not considered threatened. It continues to breed successfully
+    across its core range in suitable rocky terrain.'
+migration:
+  sv: '# Stentrast (Monticola saxatilis) – Förekomst i Nordeuropa
+
+
+    Stentrast är en mycket sällsynt gäst i Scandinavia och övriga Nordeuropa. Arten
+    häckar i södra Europa och är en långdistansmigrant som övervintrar i Afrika. Då
+    den huvudsakligen förekommer i södra och mellaneuropeiska bergsmiljöer, ligger
+    dess naturliga utbredning långt söder om Skandinavien. Några få observationer
+    har dock gjorts i Sverige, vilket tyder på sporadiska fellokaliseringar under
+    migration eller på hösten. Arten påträffas inte regelbundet i regionen.'
+  en: '# Common Rock Thrush in Scandinavia/Northern Europe
+
+
+    The Common Rock Thrush is a strongly migratory species that is an uncommon visitor
+    to northern Europe, including Scandinavia. Birds wintering in Africa migrate northward
+    through the continent in spring, with occasional individuals reaching Scandinavian
+    regions during this period. These sightings are irregular and unpredictable rather
+    than part of an established regular occurrence. All populations winter in Africa
+    south of the Sahara, meaning any individuals present in northern Europe during
+    summer months would be transient visitors rather than breeding residents. Autumn
+    migration carries birds southward again toward their African wintering grounds.'
+image_refs:
+- role: hero
+  path: Q235057/hero.jpg
+  width: 2400
+  height: 1764
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rode rotslijster - rufous-tailed
+    rock thrush - Monticola saxatilis 02.tif
+  commons_filename: Rode rotslijster - rufous-tailed rock thrush - Monticola saxatilis
+    02.tif
+- role: secondary
+  path: Q235057/secondary-1.jpg
+  width: 1800
+  height: 1425
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rode rotslijster - rufous-tailed
+    rock thrush - Monticola saxatilis 01.tif
+  commons_filename: Rode rotslijster - rufous-tailed rock thrush - Monticola saxatilis
+    01.tif
+- role: secondary
+  path: Q235057/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Essarpee1&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Essarpee1 (page does not exist)">Essarpee1</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rufous-tailed Rock Thrush Monticola
+    saxatilis - 1st winter male - Side 1.jpg
+  commons_filename: Rufous-tailed Rock Thrush Monticola saxatilis - 1st winter male
+    - Side 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:22:22.696610+00:00'
+sources:
+  wikipedia_sv_revision: '56588519'
+  wikipedia_en_revision: '1313846264'
+  claude_model: claude-haiku-4-5-20251001

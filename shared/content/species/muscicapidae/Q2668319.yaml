@@ -1,0 +1,103 @@
+id: Q2668319
+scientific_name: Oenanthe picata
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Orientstenskvätta
+  en: Variable Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Variable Wheatear
+
+
+    The Variable Wheatear is a small songbird belonging to the flycatcher family.
+    It inhabits arid and semi-arid regions across a vast range spanning from the Middle
+    East through Central Asia and into the Indian subcontinent. The species favours
+    rocky hillsides, mountainous terrain, and desert margins where sparse vegetation
+    provides suitable habitat.
+
+
+    This wheatear is an active, ground-dwelling bird that forages for insects and
+    small invertebrates. It typically perches on rocks or low vantage points, from
+    which it watches for prey or potential threats. The bird''s behaviour reflects
+    its adaptation to open, exposed landscapes where visibility is essential for survival.
+
+
+    The Variable Wheatear''s call is characteristic of its family, delivering sharp,
+    distinctive notes that carry well across open ground. Like other wheatears, it
+    tends to be alert and wary, often taking flight when disturbed. The species is
+    found across its broad geographic range in suitable habitat, though specific populations
+    may be migratory or resident depending on local conditions and seasonal food availability.'
+migration:
+  sv: ''
+  en: '# Migration data unavailable for this species.
+
+
+    The provided source text contains only information about the Variable Wheatear''s
+    geographical distribution across Asia and the Middle East, with no details regarding
+    its occurrence in Scandinavia or Northern Europe, nor any migration patterns,
+    overwintering behavior, or seasonal movements. To write an accurate account of
+    this species'' seasonal occurrence in northern European regions, additional sources
+    with specific data on its migratory routes and winter/breeding distributions would
+    be required.'
+image_refs:
+- role: hero
+  path: Q2668319/hero.jpg
+  width: 1365
+  height: 2048
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe picata 156507002.jpg
+  commons_filename: Oenanthe picata 156507002.jpg
+- role: secondary
+  path: Q2668319/secondary-1.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Variable Wheatear Oenanthe picata
+    Bikaner Jorbeed JEG5399.jpg
+  commons_filename: Variable Wheatear Oenanthe picata Bikaner Jorbeed JEG5399.jpg
+- role: secondary
+  path: Q2668319/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Variable Wheatear Oenanthe picata
+    picata by Raju Kasambe DSCN9897 01.jpg
+  commons_filename: Variable Wheatear Oenanthe picata picata by Raju Kasambe DSCN9897
+    01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:21:14.544031+00:00'
+sources:
+  wikipedia_sv_revision: '59036340'
+  wikipedia_en_revision: '1315187587'
+  claude_model: claude-haiku-4-5-20251001

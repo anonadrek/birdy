@@ -1,0 +1,130 @@
+id: Q206130
+scientific_name: Luscinia luscinia
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Luscinia
+  ioc_order: Passeriformes
+names:
+  sv: Näktergal
+  en: Thrush Nightingale
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Näktergal
+
+
+    Näktergalen är en liten, diskret fågelart som tillhör familjen flugsnappare. Den
+    är främst känd för sin imponerande sång, som hanen ofta framför under nattens
+    timmar. Sången är kraftfull och varierad med många olika motiv och är ett av naturens
+    mest lyssnadvärda ljud.
+
+
+    Näktergalen häckar i norra och östra Europa och småland fortsätter sin utbredning
+    österut till västra Asien. Under vintern drar arten söderiut för att overvintra
+    i Mellanöstern och nordöstra Afrika. Det är en kortflyttare som är mest aktiv
+    under dämningen och natten, då den födosöker på marken efter små insekter och
+    andra småkryp.
+
+
+    Fågeln är brun till olivbrun på ovansidan med en något ljusare undersida, vilket
+    gör den väl kamuflerad bland tät vegetation där den håller till. Näktergalen är
+    en försiktig och dold fågelart som ofta är svår att få syn på trots sin präktiga
+    sång, men dess karakteristiska sång avslöjar ofta dess närvaro.'
+  en: '# Thrush Nightingale
+
+
+    The thrush nightingale is a small Old World flycatcher that closely resembles
+    its relative, the common nightingale, though it breeds in more northerly regions.
+    It is a migratory species, breeding throughout European and Palearctic forests
+    before traveling to Africa for winter.
+
+
+    This insectivore favors dense undergrowth and nests close to the ground, remaining
+    secretive and difficult to observe. Its appearance is similar to the common nightingale,
+    with brownish plumage and reddish-brown tail, making field identification challenging
+    where the two species'' ranges overlap. Hybrids between the two species have been
+    documented in these contact zones.
+
+
+    The thrush nightingale is best located by listening for its powerful, rich song,
+    which includes rapid phrases and distinctive guttural notes that differ from the
+    common nightingale''s more flute-like melody. During migration and on breeding
+    grounds, it stays hidden in thick vegetation, emerging mainly at dawn and dusk
+    to feed.'
+migration:
+  sv: '# Näktergalens förekomst i Norden
+
+
+    Näktergalen är en långflyttare som förekommer som häckfågel i norra och östra
+    Europa. I Skandinavien är arten en sommargäst som anländer under våren för att
+    häcka under sommarmånaderna. Fågeln återvänder till sina övervintringskvarter
+    i Mellanöstern och nordöstra Afrika under hösten, då den försvinner helt från
+    nordiska områden. Arten är således inte närvarande under vinterhalvåret i Norden,
+    utan tillbringar endast häckningsperioden här före sin långa förflyttning söderut.'
+  en: '# Thrush Nightingale (Luscinia luscinia) in Scandinavia
+
+
+    The thrush nightingale is a long-distance migratory species in Scandinavia, arriving
+    in late April and May to breed in southern and central regions, particularly in
+    dense woodland undergrowth. The birds establish territories during the breeding
+    season and depart in August and September to overwinter in sub-Saharan Africa.
+    This species is entirely absent from the region during winter months, returning
+    annually to the same breeding grounds. Its more northerly distribution compared
+    to the closely related common nightingale makes it a characteristic summer visitor
+    to Scandinavian forests, where breeding males are renowned for their powerful
+    nocturnal song.'
+image_refs:
+- role: hero
+  path: Q206130/hero.jpg
+  width: 2164
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%B8%D0%BC%D0%B0%D0%B8%D0%BD%D0%B0_%D1%85%D0%B8%D0%BA%D0%B0%D1%80%D0%B8"
+    title="User:Аимаина хикари">Аимаина хикари</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Luscinia luscinia Muromets2.JPG
+  commons_filename: Luscinia luscinia Muromets2.JPG
+- role: secondary
+  path: Q206130/secondary-1.jpg
+  width: 1800
+  height: 1404
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%B8%D0%BC%D0%B0%D0%B8%D0%BD%D0%B0_%D1%85%D0%B8%D0%BA%D0%B0%D1%80%D0%B8"
+    title="User:Аимаина хикари">Аимаина хикари</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Luscinia luscinia Bobrovnya1.JPG
+  commons_filename: Luscinia luscinia Bobrovnya1.JPG
+- role: secondary
+  path: Q206130/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/windof">windof</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Luscinia luscinia, Mezhdurechensk,
+    Kemerovo Oblast, Russia 1.jpg
+  commons_filename: Luscinia luscinia, Mezhdurechensk, Kemerovo Oblast, Russia 1.jpg
+review_status: approved
+review_notes: "Näktergal — Luscinia luscinia från Ryssland; allmän SE sommarart i lövbestånd."
+generated_at: '2026-05-15T20:20:05.496657+00:00'
+sources:
+  wikipedia_sv_revision: '59148621'
+  wikipedia_en_revision: '1322894728'
+  claude_model: claude-haiku-4-5-20251001

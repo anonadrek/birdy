@@ -1,0 +1,101 @@
+id: Q1317677
+scientific_name: Muscicapa gambagae
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Muscicapa
+  ioc_order: Passeriformes
+names:
+  sv: Akaciaflugsnappare
+  en: Gambaga Flycatcher
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Akaciaflugsnappare
+
+
+    Akaciaflugsnappare är en liten flugsnappare som förekommer i ett smalt band söder
+    om Sahara i Afrika samt på sydvästra Arabiska halvön. Arten är anpassad till de
+    halvtorra miljöer där den lever bland spridda träd och buskvegetation.
+
+
+    Som flugsnappare är arten en skicklig insektsjägare som fångar sitt byte genom
+    snabba, riktade flugningar från en utsiktpost. Den är därför ofta att se på exponerade
+    grenar där den sitter uppmärksamt och spanar efter passerade insekter. Arten trivs
+    i öppna och halvöppna landskap med glesa trädbeskåd, där den kan röra sig effektivt
+    mellan olika jaktplatser.
+
+
+    Arten är relativt diskret i sitt beteende men är vidare känd bland berörda fågelintresserade
+    i sitt utbredningsområde. Som många flugsnappare är den främst en sommargäst eller
+    flyttfågel i delar av sitt område, medan den kan förekomma året runt i mer sydliga
+    delar av sin utbredning.'
+  en: '# Gambaga Flycatcher
+
+
+    The Gambaga flycatcher is a member of the flycatcher family, characterized by
+    the typical adaptations of insectivorous birds in this group. It inhabits dry
+    woodland and scrubland environments, favoring areas with low to medium canopy
+    height rather than dense forests.
+
+
+    This species occurs sparsely across arid and semi-arid regions, showing a patchy
+    distribution within suitable habitat. It is adapted to subtropical and tropical
+    dry forests, dry savannas, and thorny shrublands where it hunts insects in flight.
+    The bird''s preference for open woodland with scattered trees reflects its feeding
+    ecology as an aerial insectivore.
+
+
+    The Gambaga flycatcher remains relatively poorly documented compared to many other
+    African birds, with limited detailed information available about its specific
+    behavior, calls, and appearance in general ornithological literature.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller endast information om akaciaflugsnappares
+    geografiska utbredning i Afrika och på Arabiska halvön. Det finns ingen information
+    om förekomst i Skandinavien/Nordeuropa eller om migrationsmönster i denna region.
+    Arten är därför inte relevant för en nordeuropeisk fågelbeskrivning.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only information about the Gambaga Flycatcher''s geographical
+    distribution (Sudan region and Arabian Highlands) and habitat preferences (dry
+    forests, savannas, and shrublands), with no details regarding its occurrence in
+    Scandinavia, Northern Europe, or any migration patterns throughout the year. This
+    species is endemic to Africa and the Arabian Peninsula and does not occur in northern
+    European regions.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:23:24.452687+00:00'
+sources:
+  wikipedia_sv_revision: '58910529'
+  wikipedia_en_revision: '1331578881'
+  claude_model: claude-haiku-4-5-20251001

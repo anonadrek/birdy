@@ -1,0 +1,88 @@
+id: Q3728611
+scientific_name: Oenanthe lugentoides
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Arabstenskvätta
+  en: Arabian Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Arabstenskvätta
+
+
+    Arabstenskvätta är en liten tätting som tillhör flugsnappfamiljen. Arten förekommer
+    uteslutande på södra Arabiska halvön, där den är endemisk. Dess exakta taxonomiska
+    status har diskuterats bland ornitologer, då den står nära släktingen stenskvätta
+    och dessa två arter kan möjligen representera populationer av samma art snarare
+    än två distinkta arter.
+
+
+    Beståndet av arabstenskvätta anses för närvarande vara livskraftigt och hotas
+    inte av någon omedelbar utrotningsrisk. Arten är väl anpassad till de torra miljöer
+    som dominerar sitt utbredningsområde.'
+  en: '# Arabian Wheatear
+
+
+    The Arabian wheatear is a small insectivorous bird belonging to the Muscicapidae
+    family, closely related to other wheatear species. It is endemic to arid and semi-arid
+    regions of the Arabian Peninsula, inhabiting rocky slopes, desert scrubland, and
+    sparse vegetated areas where it hunts for insects among stones and low vegetation.
+
+
+    Like other wheatears, it is an active, ground-dwelling bird that characteristically
+    bobs its tail and darts between perches while foraging. It favours open terrain
+    with minimal cover, allowing it to spot prey and potential threats easily. The
+    species feeds primarily on insects and other small invertebrates caught on the
+    ground or in short flights.
+
+
+    Due to limited information in widely available sources, specific details about
+    its plumage patterns, distinctive calls, and detailed seasonal behaviour remain
+    less well-documented than some other wheatear species. Birdwatchers visiting suitable
+    habitat in its restricted range may encounter it, particularly during breeding
+    season when it is more vocal and territorial.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    The source text provides only information about the bird''s geographic distribution
+    (southern Arabian Peninsula) and taxonomic status, with no details about migration
+    patterns, seasonal movements, or occurrence in Scandinavia/Northern Europe.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Arabian Wheatear is endemic to the Arabian Peninsula and does not occur in
+    Scandinavia or Northern Europe. The source text provides no information about
+    its presence, migration patterns, or seasonal movements in these regions, as its
+    range is restricted to Oman, Saudi Arabia, and Yemen.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:21:48.635850+00:00'
+sources:
+  wikipedia_sv_revision: '55790504'
+  wikipedia_en_revision: '1313884322'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,123 @@
+id: Q152144
+scientific_name: Monticola solitarius
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Monticola
+  ioc_order: Passeriformes
+names:
+  sv: Blåtrast
+  en: Blue Rock Thrush
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Blåtrast
+
+
+    Blåtrast är en fågel från familjen flugsnappare, inte trastar som namnet kan föreslå.
+    Det är en medelstor fågel med karakteristisk blå färg på hane och grå-brun färg
+    på hona.
+
+
+    Arten föredrar bergiga och klippiga miljöer där den ofta ses sitta uppsittande
+    på stenar eller låga växtlighet. Blåtrasten är en aktiv jägare som flyger ut från
+    sin sittplats för att fånga insekter i luften, typiskt för flugsnappare. Den är
+    också känd för sitt ganska högt ljud och sitt territoriebetonande beteende.
+
+
+    Arten förekommer i bergiga och torra regioner med stenbunden terräng. Blåtrast
+    är Maltas nationalfågel, vilket återspeglar dess betydelse i vissa Medelhavsregioner.'
+  en: '# Blue Rock Thrush
+
+
+    The Blue Rock Thrush is a striking Old World flycatcher with distinctive plumage.
+    Males display vibrant blue coloring on the head, back, and wings, contrasting
+    sharply with orange-rufous underparts, while females are more subdued with greyish-brown
+    tones. This medium-sized bird inhabits rocky terrain and mountainous regions across
+    a wide range.
+
+
+    It favors steep cliffs, rocky slopes, and gorges where it hunts for insects and
+    small prey, typically catching food in short sallies from exposed perches. The
+    species is relatively solitary and somewhat shy, though males can be quite vocal
+    during breeding season. Its call and song are melodious and distinctive, often
+    delivered from prominent rocks.
+
+
+    The Blue Rock Thrush breeds across southern regions from the Mediterranean east
+    through Central Asia to northern China and Malaysia. It prefers open, arid landscapes
+    with exposed rock formations and minimal vegetation, making it a characteristic
+    bird of harsh, mountainous terrain. During winter, some populations migrate to
+    lower elevations or more southern areas, while others remain resident year-round
+    in milder climates.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Blue Rock Thrush (Monticola solitarius) in Northern Europe
+
+
+    The Blue Rock Thrush is an extremely rare vagrant to Scandinavia and Northern
+    Europe, with no established breeding or regular wintering populations in the region.
+    This species is primarily resident in southern European and Mediterranean regions,
+    where it breeds in rocky mountainous habitats. Occasional individuals have been
+    recorded in northern Europe during migration periods, typically in autumn and
+    spring, but such sightings are exceptional and unpredictable. The species does
+    not form a regular migratory pattern through Scandinavia and should be considered
+    a very rare and irregular visitor rather than a typical seasonal migrant to this
+    region.'
+image_refs:
+- role: hero
+  path: Q152144/hero.jpg
+  width: 2400
+  height: 1583
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Blauwe rotslijster - blue rock
+    thrush - Monticola solitarius - Forum Romanum 2.jpg
+  commons_filename: Blauwe rotslijster - blue rock thrush - Monticola solitarius -
+    Forum Romanum 2.jpg
+- role: secondary
+  path: Q152144/secondary-1.jpg
+  width: 1800
+  height: 1147
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Blue Rock Thrush. Monticola
+    solitarius. female (32904370331).jpg
+  commons_filename: Blue Rock Thrush. Monticola solitarius. female (32904370331).jpg
+- role: secondary
+  path: Q152144/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Blue Rock-Thrush Monticola solitarius
+    from Anamalai hills JEG2836.jpg
+  commons_filename: Blue Rock-Thrush Monticola solitarius from Anamalai hills JEG2836.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:23:00.217754+00:00'
+sources:
+  wikipedia_sv_revision: '56586112'
+  wikipedia_en_revision: '1341336314'
+  claude_model: claude-haiku-4-5-20251001

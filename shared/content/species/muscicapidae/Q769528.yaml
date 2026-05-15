@@ -1,0 +1,83 @@
+id: Q769528
+scientific_name: Oenanthe chrysopygia
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Persisk stenskvätta
+  en: Red-tailed Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Persisk stenskvätta
+
+
+    Persisk stenskvätta är en liten tätting som tillhör släktet stenskvättor inom
+    familjen flugsnappare. Arten klassificerades tidigare tillsammans med kurdstenskvätta
+    som en enda art, men behandlas numera som separat. Bestånd av persisk stenskvätta
+    anses vara stabilt och livskraftigt.
+
+
+    Arten är anpassad för sitt habitat i stenig terräng, där det framför allt söker
+    föda bland markvegetationen. Persisk stenskvätta är en migratorisk art som återfinns
+    i sitt utbredningsområde under passande årstider.'
+  en: '# Red-tailed Wheatear
+
+
+    The red-tailed wheatear is a small passerine bird found in mountainous regions
+    of south-west and central Asia. It belongs to the wheatear genus Oenanthe, recently
+    reclassified from the thrush family into the Old World flycatcher family. The
+    species was historically considered a subspecies of the Kurdish wheatear before
+    being recognized as a distinct species.
+
+
+    This wheatear inhabits rocky, elevated terrain where it forages for insects and
+    other small prey typical of its flycatcher family. Like other wheatears, it is
+    an active and alert bird, often perching on stones and low vegetation while hunting
+    for food. The "red-tailed" or "rusty-tailed" in its common names refers to distinctive
+    coloration in the tail, a key identifying feature when observing the bird in the
+    field.
+
+
+    Further details about its specific plumage patterns, vocalizations, and seasonal
+    movements would require additional source material beyond the introductory information
+    provided.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and general distributional information
+    about the red-tailed wheatear''s breeding range in south-west and central Asia,
+    but includes no specific details regarding its occurrence in Scandinavia or Northern
+    Europe, migration patterns, overwintering behavior, or seasonal presence in these
+    regions.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:19:09.213941+00:00'
+sources:
+  wikipedia_sv_revision: '55323934'
+  wikipedia_en_revision: '1319192960'
+  claude_model: claude-haiku-4-5-20251001

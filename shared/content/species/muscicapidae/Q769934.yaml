@@ -1,0 +1,129 @@
+id: Q769934
+scientific_name: Oenanthe deserti
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Ökenstenskvätta
+  en: Desert Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ökenstenskvätta
+
+
+    Ökenstenskvätta är en liten tätting med distinkt färgteckning. Hannen är huvudsakligen
+    grå på ovansidan med svart ansikte och vita ögonbryn, medan undersidan är buff
+    eller vitaktig. Honan är brunare och mindre kontrastrik. Arten har en karakteristisk
+    vita stjärtbaser som syns väl under flykt.
+
+
+    Arten häckar från nordvästra Afrika genom Mellanöstern till Mongoliet, Afghanistan,
+    Tibet och västra Kina. Under vintern flyttar populationerna söderut till området
+    från norra Afrika till nordvästra Indien. Det är en regelbunden men sällsynt besökare
+    i Europa, med endast omkring 60 fynd noterade på sina håll.
+
+
+    Ökenstenskvätta föredrar öppen, stenig och torr habitat där den söker föda på
+    marken. Den är klassificerad som livskraftig av IUCN och anses inte vara hotad.'
+  en: '# Desert Wheatear
+
+
+    The Desert Wheatear is a small insectivorous passerine, measuring 14.5–15 cm in
+    length. Once classified as a thrush, it is now recognized as an Old World flycatcher.
+    It is a migratory species adapted to arid environments, with distinct western
+    and eastern races occupying different geographical ranges.
+
+
+    The western form breeds in the Sahara and northern Arabian Peninsula, while the
+    eastern race inhabits the semi-deserts of Central Asia, wintering in Pakistan
+    and northeast Africa. Both forms are rare vagrants to western Europe, making sightings
+    outside their normal ranges noteworthy for birders.
+
+
+    As a specialist insect-eater, it forages in typical desert habitat. The species
+    exhibits the characteristic behaviour of wheatears, using open ground and sparse
+    vegetation to hunt for food.'
+migration:
+  sv: '# Ökenstenskvätta i Skandinavien/Nordeuropa
+
+
+    Ökenstenskvätta är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten
+    häckar långt söder och öster om regionen, från Nordafrika genom Mellanöstern till
+    Asien. Under hösten förekommer regelbundna men mycket sparsamma observationer
+    i Europa, framför allt under migrationen mellan häcknings- och övervintringsområdena.
+    I Sverige finns omkring 60 dokumenterade fynd, vilket illustrerar artens status
+    som en ytterst ovanlig besökare. Övervintringsområdet ligger långt söder om Skandinavien,
+    i nordafrika och nordvästra Indien.'
+  en: '# Desert Wheatear – Occurrence in Northern Europe
+
+
+    The Desert Wheatear is primarily a vagrant to Scandinavia and Northern Europe
+    rather than a regular migratory visitor. Both the western and eastern subspecies
+    are classified as rare vagrants to this region. The species is a long-distance
+    migrant within its primary range, breeding in the Sahara and Arabian Peninsula
+    (western form) or Central Asian semi-deserts (eastern form), and wintering in
+    Africa and Pakistan respectively. Northern European records are exceptional and
+    unpredictable, representing rare overshoots or dispersal events rather than established
+    migration patterns through the region.'
+image_refs:
+- role: hero
+  path: Q769934/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Desert Wheatear Oenanthe deserti
+    by Dr. Raju Kasambe DSCN9433.jpg
+  commons_filename: Desert Wheatear Oenanthe deserti by Dr. Raju Kasambe DSCN9433.jpg
+- role: secondary
+  path: Q769934/secondary-1.jpg
+  width: 1800
+  height: 1190
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Desert Wheatear Oenanthe deserti
+    by Dr. Raju Kasambe DSCN9430 (2).jpg
+  commons_filename: Desert Wheatear Oenanthe deserti by Dr. Raju Kasambe DSCN9430
+    (2).jpg
+- role: secondary
+  path: Q769934/secondary-2.jpg
+  width: 1800
+  height: 1228
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Desert Wheatear Oenanthe deserti
+    by Dr. Raju Kasambe DSCN9430 (1).jpg
+  commons_filename: Desert Wheatear Oenanthe deserti by Dr. Raju Kasambe DSCN9430
+    (1).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:23:52.815614+00:00'
+sources:
+  wikipedia_sv_revision: '58594896'
+  wikipedia_en_revision: '1313826294'
+  claude_model: claude-haiku-4-5-20251001

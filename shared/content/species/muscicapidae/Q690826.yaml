@@ -1,0 +1,131 @@
+id: Q690826
+scientific_name: Ficedula albicollis
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Ficedula
+  ioc_order: Passeriformes
+names:
+  sv: Halsbandsflugsnappare
+  en: Collared Flycatcher
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Halsbandsflugsnappare
+
+
+    Halsbandsflugsnappare är en liten och elegant fågel med karakteristisk svartvit
+    fjäderdräkt. Hanen är särskilt präktig med sina kraftiga kontraster mellan svart
+    och vitt, medan honan är något mattare i färgerna. Arten tillhör familjen flugsnappare
+    och kännetecknas av sin spända hållning och aktiva rörelser.
+
+
+    Som namnet antyder är halsbandsflugsnapparen en flitig flygsnappare som uppehåller
+    sig i trädens kronor och snabbt fångar insekter i luften. Den är livlig och energisk
+    i sitt uppträdande. Arten häckar främst i östra Europa, men förekommer även isolerat
+    på några svenska lokaler. Under vintern är fågeln flyttfågel som drar söderut
+    till Centralafrika för att hitta tillräckligt med föda.
+
+
+    Halsbandsflugsnapparen föredrar lövrika och blandskogar där den kan jaga från
+    grenarna. Som många flugsnappare är den beroende av tillgången på flygande insekter,
+    vilket gör säsongsförflyttningen nödvändig.'
+  en: '# Collared Flycatcher
+
+
+    The collared flycatcher is a small, striking passerine bird belonging to the Old
+    World flycatcher family. It is one of four black-and-white flycatcher species
+    found in the Western Palearctic region. The bird''s distinctive plumage features
+    bold contrasting patterns that make it readily identifiable, particularly during
+    the breeding season.
+
+
+    This species breeds across southeastern Europe, from eastern France through the
+    Balkan Peninsula to Ukraine. It is a long-distance migrant, departing for Sub-Saharan
+    Africa during winter months. The collared flycatcher is notably rare as a vagrant
+    in western Europe, making sightings outside its regular range particularly noteworthy
+    for birdwatchers.
+
+
+    Like other flycatchers, it feeds primarily on insects caught in flight, displaying
+    the characteristic aerial foraging behaviour typical of its family. Its preference
+    for woodland habitats and active hunting style make it a rewarding bird to observe
+    within its breeding range, though patience may be required to locate it during
+    migration periods.'
+migration:
+  sv: Halsbandsflugsnappare är en långflyttare som häckar i östra Europa samt isolerat
+    på svenska öar som Öland och Gotland. Arten anländer till häckningsområdena under
+    våren, vanligen från april månad. Efter häckningssäsongen påbörjas höstflyttningen,
+    och populationerna övervintra i Centralafrika. Arten förekommer således inte i
+    Skandinavien under vintermånaderna utan är en säsongsbesökare som är närvarande
+    under häckningssäsongen och de närmast föregående migrationsmånaderna.
+  en: '# Collared Flycatcher Migration in Northern Europe
+
+
+    The Collared Flycatcher is a long-distance migratory species that does not breed
+    in Scandinavia or Northern Europe, though it occasionally appears as a vagrant
+    in western regions. This species breeds in southeast Europe and the Balkans, then
+    undertakes an impressive migration to Sub-Saharan Africa for the winter months.
+    Birds that occasionally wander northwestward during migration or dispersal may
+    be spotted as rare vagrants in western European countries, but regular seasonal
+    occurrence in Scandinavia is not documented. The species follows the typical trans-African
+    migration pattern of many Old World flycatchers, with spring passage occurring
+    as birds return to breeding grounds and autumn passage as they depart for African
+    wintering grounds.'
+image_refs:
+- role: hero
+  path: Q690826/hero.jpg
+  width: 1800
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%A2%D1%96%D1%82%D0%B0%D1%80%D0%B5%D0%BD%D0%BA%D0%BE_%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE"
+    title="User:Тітаренко Михайло">Тітаренко Михайло</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Мухоло́вка білоши́я (Ficedula
+    albicollis) 01.jpg
+  commons_filename: Мухоло́вка білоши́я (Ficedula albicollis) 01.jpg
+- role: secondary
+  path: Q690826/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%A2%D1%96%D1%82%D0%B0%D1%80%D0%B5%D0%BD%D0%BA%D0%BE_%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE"
+    title="User:Тітаренко Михайло">Тітаренко Михайло</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Мухоло́вка білоши́я (Ficedula
+    albicollis) 02.jpg
+  commons_filename: Мухоло́вка білоши́я (Ficedula albicollis) 02.jpg
+- role: secondary
+  path: Q690826/secondary-2.jpg
+  width: 1800
+  height: 1276
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Collared Flycatcher hen . Ficedula
+    albicollis (25294948747).jpg
+  commons_filename: Collared Flycatcher hen . Ficedula albicollis (25294948747).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:20:10.970737+00:00'
+sources:
+  wikipedia_sv_revision: '58515220'
+  wikipedia_en_revision: '1350368065'
+  claude_model: claude-haiku-4-5-20251001

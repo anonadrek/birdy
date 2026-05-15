@@ -1,0 +1,106 @@
+id: Q26755
+scientific_name: Phoenicurus ochruros
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Phoenicurus
+  ioc_order: Passeriformes
+names:
+  sv: Svart rödstjärt
+  en: Black Redstart
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Black Redstart
+
+
+    The black redstart is a small Old World flycatcher found across a wide range of
+    rocky habitats from the British Isles to central China, extending south to North
+    Africa. It is a year-round resident in milder regions, though populations breeding
+    in northern and eastern areas migrate seasonally.
+
+
+    This compact bird favors rocky terrain and mountainous landscapes where it can
+    perch and hunt insects. Its behaviour is characteristically active and alert,
+    flitting between exposed vantage points as it catches prey in flight. The species
+    is often seen on rocky outcrops, cliffs, and similar open ground where vegetation
+    is sparse.
+
+
+    The black redstart''s name refers to its distinctive plumage features, which help
+    identify it in its preferred rocky habitats. Its small size and active foraging
+    style make it a characteristic inhabitant of the rocky regions throughout its
+    broad Eurasian and North African range.'
+migration:
+  sv: ''
+  en: '# Black Redstart in Scandinavia/Northern Europe
+
+
+    The black redstart is a partial migrant in northern Europe, with populations showing
+    distinct seasonal patterns. Northern and eastern birds migrate southward in autumn,
+    typically departing between September and October, while some individuals overwinter
+    in milder coastal regions of southern Scandinavia and the British Isles. Spring
+    arrival occurs from March onwards as birds return to breeding territories. In
+    Scandinavia, the species is primarily a summer breeder in suitable rocky habitats,
+    with populations concentrated in southern regions where mild winters allow limited
+    overwintering. The species exhibits flexibility in migration timing and distance,
+    depending on local weather conditions and food availability.'
+image_refs:
+- role: hero
+  path: Q26755/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Ljiljana_Krupanj" title="User:Ljiljana
+    Krupanj">Ljiljana Krupanj</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black redstart (Phoenicurus
+    ochruros) fledgling in Krupanj, Western Serbia.jpg
+  commons_filename: Black redstart (Phoenicurus ochruros) fledgling in Krupanj, Western
+    Serbia.jpg
+- role: secondary
+  path: Q26755/secondary-1.jpg
+  width: 1800
+  height: 1440
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Ssprmannheim" class="mw-redirect"
+    title="User:Ssprmannheim">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Juveniler Hausrotschwanz (Phoenicurus
+    ochruros) 01.jpg
+  commons_filename: Juveniler Hausrotschwanz (Phoenicurus ochruros) 01.jpg
+- role: secondary
+  path: Q26755/secondary-2.jpg
+  width: 1573
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hyppolyte_de_Saint-Rambert" title="User:Hyppolyte
+    de Saint-Rambert">Hyppolyte de Saint-Rambert</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Byōdō-in (UJI, Kyoto) hdsr Phoenicurus
+    ochruros S5 85.jpg
+  commons_filename: Byōdō-in (UJI, Kyoto) hdsr Phoenicurus ochruros S5 85.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:18:51.478158+00:00'
+sources:
+  wikipedia_sv_revision: '59207433'
+  wikipedia_en_revision: '1352841949'
+  claude_model: claude-haiku-4-5-20251001

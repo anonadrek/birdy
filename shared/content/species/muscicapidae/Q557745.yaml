@@ -1,0 +1,104 @@
+id: Q557745
+scientific_name: Irania gutturalis
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Irania
+  ioc_order: Passeriformes
+names:
+  sv: Vitstrupig näktergal
+  en: White-throated Robin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitstrupig näktergal
+
+
+    Vitstrupig näktergal är en medlem av flugsnappfamiljen som häckar i sydvästra
+    Asien och övervintrar i östra Afrika. Det är en långdistansflygarare som följer
+    en årlig migrationscykel mellan dessa två regioner.
+
+
+    Arten är anpassad för sitt levnadssätt och sin rörelse mellan de varma häckningsområdena
+    och övervintringsplatserna. Som många flugsnappare är det en insektätare som jagar
+    från strategiska positioner. Arten förekommer i lämpliga habitat under både häcknings-
+    och övervintringstiden, där det söker föda bland vegetation och öppen mark.
+
+
+    För den som är intresserad av palearktiska migranters ekologi utgör vitstrupig
+    näktergal ett intressant exempel på hur arter anpassar sig till säsongsväxlingar
+    och använder olika världsdelar för att fullfölja sin årscykel.'
+  en: '# White-throated Robin
+
+
+    The white-throated robin is a small, migratory flycatcher found across high-altitude
+    mountain slopes in western Asia during breeding season, with populations wintering
+    in East Africa. It inhabits dense scrub habitats in mountainous terrain.
+
+
+    Males are distinctive with lead-grey upperparts contrasting sharply with bright
+    orange underparts and a prominent white throat patch. Females are considerably
+    duller, displaying greyer underparts with orange on the sides and a much fainter
+    white throat marking. This sexual dimorphism makes males unmistakable in their
+    breeding range, while females require more careful observation.
+
+
+    As the only member of its genus, the white-throated robin represents a unique
+    lineage within the Old World flycatcher family. Its preference for high-altitude
+    scrubland and migratory lifestyle between two continents reflect adaptations to
+    seasonal environmental changes across its extensive range.'
+migration:
+  sv: Vitstrupig näktergal är en långflyttare som häckar i sydvästra Asien och övervintrar
+    i östra Afrika. Arten förekommer endast under migration genom Mellanöstern och
+    är extremt sällsynt i Skandinavien och övriga norra Europa. De få observationer
+    som gjorts i regionen sker under våren och hösten då fågeln passerar mellan sina
+    häcknings- och övervintringsområden. Arten är därför praktiskt taget frånvarande
+    från Skandinavien under hela året och utgör en stor raritet när den påträffas.
+  en: '# White-throated Robin (Irania gutturalis) in Scandinavia
+
+
+    Migration data unavailable for this species.
+
+
+    The White-throated Robin is a long-distance migratory bird that breeds in high-altitude
+    mountain regions of western Asia and winters in East Africa. However, this species
+    does not naturally occur in Scandinavia or Northern Europe. Its migration routes
+    lie entirely south and east of Europe, between its Asian breeding grounds and
+    African wintering grounds. Therefore, sightings in Scandinavia would be exceptional
+    vagrants rather than regular seasonal visitors.'
+image_refs:
+- role: hero
+  path: Q557745/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Irania gutturalis 222955391.jpg
+  commons_filename: Irania gutturalis 222955391.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:19:14.594447+00:00'
+sources:
+  wikipedia_sv_revision: '56586184'
+  wikipedia_en_revision: '1346258636'
+  claude_model: claude-haiku-4-5-20251001

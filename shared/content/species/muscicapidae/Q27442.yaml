@@ -1,0 +1,138 @@
+id: Q27442
+scientific_name: Ficedula hypoleuca
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Ficedula
+  ioc_order: Passeriformes
+names:
+  sv: Svartvit flugsnappare
+  en: European Pied Flycatcher
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartvit flugsnappare
+
+
+    Svartvit flugsnappare är en elegant flugsnappare med tydliga könsskillnader. Den
+    adulta hanen är karakteristisk svartvit med kontrasterande färger, medan honan
+    är mer diskret brungrå och vit. Båda könen är små och kompakt byggda fåglar som
+    är väl anpassade för sin jaktlivsstil.
+
+
+    Arten är en duktig insektsjägare som snappar sitt byte direkt från luften, vilket
+    dess namn väl beskriver. Den föredrar lövskog och blandskog där det finns gott
+    om flygande insekter. Som hålhäckare är den beroende av hölen i gamla träd eller
+    lämpliga naturliga häckningsmöjligheter.
+
+
+    Svartvit flugsnappare är en långdistansflyttfågel som häckar över stora delar
+    av Eurasien under sommaren. Under vintermånaderna drar den långt söderut till
+    tropiska Afrika för att hitta tillräckligt med föda. Denna årliga migration är
+    anpassad efter insekternas säsongsvariation på häckningsplatserna.'
+  en: '# European Pied Flycatcher
+
+
+    The European pied flycatcher is a small, striking black-and-white passerine with
+    a distinctive appearance. Males display bold black upperparts and white underparts,
+    while females are duller with brownish-grey tones and white patches. It is one
+    of four similar black-and-white flycatcher species in the Western Palearctic,
+    though it occasionally hybridizes with the closely related collared flycatcher.
+
+
+    This species is a long-distance migrant, breeding across much of Europe before
+    undertaking an impressive journey to winter in tropical Africa. It shows interesting
+    breeding behaviour, with males practicing polygyny—typically maintaining two mates
+    simultaneously. A male will court and mate with a secondary female before returning
+    to assist his primary partner with chick-rearing and feeding duties, an unusual
+    reproductive strategy among European birds.
+
+
+    The pied flycatcher favours deciduous and mixed woodlands, typically nesting in
+    tree cavities, particularly those in oak trees. It hunts insects in characteristic
+    flycatcher fashion, sallying out from perches to catch prey in mid-air. Its call
+    is a sharp, distinctive note, while its song consists of brief, melodious phrases.
+    It is most commonly encountered during spring and autumn migration periods when
+    it passes through various habitats during its intercontinental travels.'
+migration:
+  sv: '# Svartvit flugsnappare - Förekomst i Skandinavien och Nordeuropa
+
+
+    Svartvit flugsnappare är en långdistansflyttfågel som återvänder till Skandinavien
+    och Nordeuropa för häckning under våren, vanligtvis från mitten av april till
+    maj. Arten häckar i lövskog och blandskog över stora delar av regionen under sommarmånaderna.
+    Efter häckningssäsongen, från juli-augusti, påbörjar fåglarna sin långa höstflyttning
+    söderut. Under hösten och vintern övervintrar arten i tropiska Afrika, långt söder
+    om Sahara, och återkommer först följande vår för att upprepa cykeln.'
+  en: '# European Pied Flycatcher: Seasonal Occurrence in Scandinavia
+
+
+    The European pied flycatcher is a trans-Saharan migrant that breeds widely across
+    Scandinavia and Northern Europe during the breeding season. These birds arrive
+    in late spring, typically from May onwards, after wintering in tropical Africa.
+    They establish breeding territories in deciduous and mixed forests, where they
+    nest in tree cavities. Following successful breeding, they depart in late summer
+    and early autumn (August-September) to return to their African wintering grounds,
+    making them entirely absent from the region during winter months.
+
+
+    This species shows strong migratory behaviour with no populations overwintering
+    in Scandinavia or Northern Europe, as they are strictly dependent on insects that
+    are unavailable during the harsh winter months. Their annual cycle is thus tightly
+    synchronized with the availability of arthropod prey in northern breeding habitats.'
+image_refs:
+- role: hero
+  path: Q27442/hero.jpg
+  width: 2400
+  height: 1714
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Ficedula hypoleuca Sussex 2.jpg
+  commons_filename: Ficedula hypoleuca Sussex 2.jpg
+- role: secondary
+  path: Q27442/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pied Flycatcher - Ficedula hypoleuca
+    - Male (51220779018).jpg
+  commons_filename: Pied Flycatcher - Ficedula hypoleuca - Male (51220779018).jpg
+- role: secondary
+  path: Q27442/secondary-2.jpg
+  width: 1305
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pied Flycatcher (M) - Ficedula
+    hypoleuca (52019532406).jpg
+  commons_filename: Pied Flycatcher (M) - Ficedula hypoleuca (52019532406).jpg
+review_status: approved
+review_notes: "Svartvit flugsnappare — Ficedula hypoleuca; allmän SE-art häckar i holkar."
+generated_at: '2026-05-15T20:20:54.564694+00:00'
+sources:
+  wikipedia_sv_revision: '59273363'
+  wikipedia_en_revision: '1341343180'
+  claude_model: claude-haiku-4-5-20251001

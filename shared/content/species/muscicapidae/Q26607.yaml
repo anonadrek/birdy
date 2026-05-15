@@ -1,0 +1,129 @@
+id: Q26607
+scientific_name: Muscicapa striata
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Muscicapa
+  ioc_order: Passeriformes
+names:
+  sv: Grå flugsnappare
+  en: Spotted Flycatcher
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Grå flugsnappare
+
+
+    Grå flugsnappare är en liten och diskret fågel med gråbrun ovansida och smutsvit
+    undersida. Arten tillhör familjen flugsnappare och har ett oansenligt utseende
+    som gör den lätt att förbise i naturen. Även dess läten är svaga och diskreta,
+    vilket bidrar till dess återhållsamma framtoning.
+
+
+    Arten är en klassisk flugsnappare som ofta ses sitta på exponerade grenar, där
+    den spanar efter insekter. När ett byte upptäcks kastas den sig ut i luften med
+    snabba utfall för att fånga flygtande insekter. Det är denna karakteristiska jaktbeteende
+    som är det säkraste sättet att identifiera arten i sitt naturliga beteende.
+
+
+    Grå flugsnappare häckar i västra Asien och stora delar av Europa, men inte på
+    Island. Arten är en långdistansflyktare som vintertid drar söderut till Afrika
+    under Sahara. I Sverige är den mycket talrik och utgör landets tionde vanligaste
+    fågelart. Arten ses i olika typer av öppna skogsområden och kategoriseras av IUCN
+    som livskraftig.'
+  en: '# Spotted Flycatcher
+
+
+    The spotted flycatcher is a small, inconspicuous passerine belonging to the Old
+    World flycatcher family. It possesses subtle grey-brown plumage with faint streaking
+    on the crown and breast, making it somewhat understated in appearance despite
+    its accomplished hunting abilities.
+
+
+    This species is renowned for its characteristic feeding behaviour, sallying from
+    a perch to snatch insects mid-air with impressive precision, often returning to
+    the same vantage point. It favours open woodland edges, gardens, and parks where
+    insects are readily available. The bird''s call is a thin, high-pitched note,
+    and it produces a quiet, rather inconsequential song.
+
+
+    The spotted flycatcher breeds across most of Europe and throughout the Palearctic
+    region eastward to Siberia. It is a long-distance migrant, arriving late in spring
+    and departing early in autumn to winter in Africa and southwestern Asia. Sadly,
+    populations have undergone significant declines across parts of its breeding range
+    in recent decades, reflecting broader concerns about insect availability in modified
+    landscapes.'
+migration:
+  sv: '# Grå flugsnappare – Utbredning och migration i Norden
+
+
+    Grå flugsnapparen är en klassisk sommargäst i Skandinavien och övriga Europa.
+    Arten häckar i västra Asien och stora delar av Europa, men återfinns inte på Island.
+    Under vintertid genomför den en långväga migration söderut och övervintrarar i
+    Afrika söder om Sahara. I Sverige anländer arten typiskt under maj månad för att
+    häcka i olika öppna skogstyper. Efter häckningen, från juli och framåt, påbörjar
+    ungfåglar och sedan vuxna sin återvänd mot Afrika, där de spenderar vintermånaderna
+    innan nästa vårs återkomst till häckningsområdena.'
+  en: '# Spotted Flycatcher Migration in Northern Europe
+
+
+    The Spotted Flycatcher is a summer visitor to Scandinavia and Northern Europe,
+    arriving in late May and early June to breed. It departs in August and September,
+    heading south on its long migration to wintering grounds in sub-Saharan Africa
+    and southwestern Asia. The species is entirely migratory throughout its northern
+    European range, with no birds remaining to overwinter in Scandinavia or other
+    northern regions. This small flycatcher relies on aerial insects for food, making
+    year-round residence in the north impossible.'
+image_refs:
+- role: hero
+  path: Q26607/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Muscicapa striata (8752019704).jpg
+  commons_filename: Muscicapa striata (8752019704).jpg
+- role: secondary
+  path: Q26607/secondary-1.jpg
+  width: 1800
+  height: 1065
+  license: CC BY 2.0
+  author: blondinrikard
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted flycatcher, Muscicapa
+    striata, Grå flugsnappare.jpg
+  commons_filename: Spotted flycatcher, Muscicapa striata, Grå flugsnappare.jpg
+- role: secondary
+  path: Q26607/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Badadaba" title="User:Badadaba">Badadaba</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Muscicapa striata 1.jpg
+  commons_filename: Muscicapa striata 1.jpg
+review_status: approved
+review_notes: "Grå flugsnappare — Muscicapa striata med karakteristisk upprätt pose; allmän SE-art i lövskog + bebyggelse."
+generated_at: '2026-05-15T20:22:51.875910+00:00'
+sources:
+  wikipedia_sv_revision: '57942475'
+  wikipedia_en_revision: '1334795180'
+  claude_model: claude-haiku-4-5-20251001

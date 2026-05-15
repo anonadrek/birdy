@@ -1,0 +1,126 @@
+id: Q241499
+scientific_name: Ficedula parva
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Ficedula
+  ioc_order: Passeriformes
+names:
+  sv: Mindre flugsnappare
+  en: Red-breasted Flycatcher
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mindre flugsnappare
+
+
+    Mindre flugsnappare är en liten fågel som tillhör familjen flugsnappare. Den är
+    en migrationsart som häckar i centrala och östra Europa under häckningssäsongen.
+    När hösten kommer flyttar den långväga mot sydost för att övervintras i Indien,
+    vilket gör den till en långdistansflyttare.
+
+
+    Arten har uppvisat en positiv utveckling de senaste decennierna och populationen
+    ökar. Beståndet anses idag vara livskraftigt och arten är inte hotad. Mindre flugsnappare
+    är därmed ett gott exempel på en framgångsrik flugsnappare i Europa vars population
+    utvecklas väl trots de utmaningar som många migrerande fågelarter står inför.'
+  en: '# Red-breasted Flycatcher
+
+
+    The red-breasted flycatcher is a small passerine bird of the Old World flycatcher
+    family. Males are distinctive with a grey head, muted brown upperparts, white
+    underparts, and a prominent orange throat patch. Females and immatures are similar
+    in coloration but lack the orange throat, making them less conspicuous. The species
+    breeds across eastern Europe and Central Asia, undertaking long migrations to
+    winter in south Asia.
+
+
+    It is a regular passage migrant in western Europe, particularly notable during
+    migration periods. The red-breasted flycatcher can be distinguished from the closely
+    related taiga flycatcher by its warmer-toned plumage, more extensive orange throat
+    patch, and notably different song. Like other flycatchers, it is an active forager,
+    catching insects in flight with characteristic aerial maneuvers.
+
+
+    The bird''s migratory route differs from that of the collared flycatcher, which
+    remains scarce in western Europe. It forms a superspecies with both the taiga
+    and Kashmir flycatchers, representing an interesting group of closely related
+    species with distinct ranges and characteristics.'
+migration:
+  sv: '# Mindre flugsnappare – Förekomst i Skandinavien/Nordeuropa
+
+
+    Mindre flugsnappare är en flyttfågel som häckar i centrala och östra Europa, vilket
+    innebär att arten förekommer mycket sparsamt eller inte alls i Skandinavien under
+    häckningstiden. Under hösten påbörjar arten sin långflyttning mot sydost, med
+    övervintring i Indien och omgivande områden. Arten återvänder till sina östeuropeiska
+    häckningsområden under våren. I Skandinavien är arten därför en mycket sällsynt
+    gäst under migration, framför allt under hösten när några individer kan observeras
+    under genomflyttningen söderut.'
+  en: '# Red-breasted Flycatcher in Scandinavia/Northern Europe
+
+
+    The Red-breasted Flycatcher is a regular passage migrant through Scandinavia and
+    western Europe, though it does not breed in the region. This small flycatcher
+    breeds in eastern Europe and Central Asia, with populations undertaking long-distance
+    migration to wintering grounds in south Asia. In northern Europe, the species
+    is encountered during spring and autumn migration periods as birds move between
+    their breeding and wintering ranges. While not a resident or breeding species
+    in Scandinavia, the Red-breasted Flycatcher''s predictable passage through western
+    Europe makes it a notable migrant in the region during seasonal movements.'
+image_refs:
+- role: hero
+  path: Q241499/hero.jpg
+  width: 2048
+  height: 1540
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3160036">Александр
+    Чегодаев</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ficedula parva - Zwergschnäpper
+    128458411.jpg
+  commons_filename: Ficedula parva - Zwergschnäpper 128458411.jpg
+- role: secondary
+  path: Q241499/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ficedula parva 233716274.jpg
+  commons_filename: Ficedula parva 233716274.jpg
+- role: secondary
+  path: Q241499/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-breasted Flycatcher Ficedula
+    parva from keoladeo national park JEG3015.jpg
+  commons_filename: Red-breasted Flycatcher Ficedula parva from keoladeo national
+    park JEG3015.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:23:26.515164+00:00'
+sources:
+  wikipedia_sv_revision: '55658888'
+  wikipedia_en_revision: '1341345476'
+  claude_model: claude-haiku-4-5-20251001

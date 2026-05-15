@@ -1,0 +1,102 @@
+id: Q763538
+scientific_name: Oenanthe pleschanka
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Nunnestenskvätta
+  en: Pied Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Nunnestenskvätta
+
+
+    Nunnestenskvätta är en liten stenskvätta som tillhör familjen flugsnappare. Arten
+    häckar från sydöstra Europa och österut till Kina, medan den flyttar till östra
+    afrika under vintermånaderna. I övriga delar av Europa är det en ovanlig tillfällig
+    gäst – det har registrerats omkring 60 fynd i Sverige. Fågeln klassificeras av
+    IUCN som livskraftig.'
+  en: '# Pied Wheatear
+
+
+    The pied wheatear is a small insectivorous passerine that belongs to the Old World
+    flycatcher family. It breeds across central Asia, from the southeastern edge of
+    Europe eastward to China, making it a migratory species that travels considerable
+    distances seasonally. During winter, populations relocate to India and northeastern
+    Africa. The species is an extremely rare vagrant to western Europe, appearing
+    only occasionally outside its normal range.
+
+
+    As with other wheatears, the pied wheatear is adapted for catching insects, hunting
+    actively in open habitats. Its plumage follows the characteristic wheatear pattern,
+    though specific details of its appearance would be needed from additional sources
+    for a complete description. The species favors open terrain typical of central
+    Asian landscapes, where it can forage effectively and maintain visibility of approaching
+    threats or prey.
+
+
+    Birdwatchers in western Europe should consider any wheatear sighting carefully,
+    as pied wheatears are sufficiently uncommon in these regions to warrant documentation.
+    The species'' preference for its traditional breeding and wintering grounds means
+    sightings elsewhere remain exceptional events.'
+migration:
+  sv: '# Nunnestenskvätta – förekomst i Skandinavien
+
+
+    Nunnestenskvätta är en sällsynt tillfällig gäst i Sverige och övriga Skandinavien.
+    Arten häckar i sydosteuropeiska regioner och migrerarbort till Afrika under vintern.
+    I Sverige finns endast omkring 60 dokumenterade fynd, vilket indikerar att arten
+    endast passerar genom området vid migration. Den är ingen regelbunden förekommande
+    art i Skandinavien och förekommer endast sporadiskt under flyttningsperioder.'
+  en: '# Pied Wheatear (Oenanthe pleschanka) in Northern Europe
+
+
+    The Pied Wheatear is a migratory species with a central Asian distribution that
+    only rarely reaches Scandinavia and Northern Europe. This bird occurs from southeastern
+    Europe eastward to China, making Northern Europe well outside its typical range.
+    It is considered a very rare vagrant to western Europe, including Scandinavia.
+    The species winters in India and northeastern Africa, undertaking long-distance
+    migrations between its breeding grounds in central Asia and wintering quarters.
+    Given its extreme rarity in the Nordic region, it should be regarded as an accidental
+    visitor rather than a regular seasonal occurrence in Northern European birding
+    records.'
+image_refs:
+- role: hero
+  path: Q763538/hero.jpg
+  width: 2278
+  height: 1385
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9765210@N03">Dominic
+    Sherony</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pied Wheatear (Oenanthe pleschanka)
+    (44761522690).jpg
+  commons_filename: Pied Wheatear (Oenanthe pleschanka) (44761522690).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:19:37.341821+00:00'
+sources:
+  wikipedia_sv_revision: '56777835'
+  wikipedia_en_revision: '1314662449'
+  claude_model: claude-haiku-4-5-20251001

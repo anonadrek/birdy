@@ -1,0 +1,118 @@
+id: Q1584260
+scientific_name: Oenanthe moesta
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Berberstenskvätta
+  en: Red-rumped Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Berberstenskvätta
+
+
+    Berberstenskvätta är en liten tätting som numera klassificeras inom familjen flugsnappare.
+    Arten förekommer i Nordafrika och västra Asien, där den är anpassad till de torra
+    bergiga miljöerna i dessa regioner. Beståndet anses vara livskraftigt och arten
+    utgör ingen naturvårdskoncern.
+
+
+    Arten är en typisk stenkvatta med karakteristisk färgteckning. Det är en aktiv
+    fågel som ofta ses hoppa på marken och från stenblock, där den letar efter insekter.
+    Arten föredrar öppna, steniga terränger och klippiga områden. Som många stenkvattor
+    har arten ett distinkt samtalande läte.
+
+
+    Berberstenskvätta är möjlig att observera för den som reser i dess utbredningsområde
+    och söker aktivt på lämpliga lokaler med stenig, tämligen bar miljö.'
+  en: '# Red-rumped Wheatear
+
+
+    The red-rumped wheatear is a small passerine in the flycatcher family, inhabiting
+    arid and semi-arid regions of North Africa and the Middle East. It is a ground-dwelling
+    species typically found in rocky, open terrain where it forages for insects and
+    small invertebrates. The bird''s name derives from its distinctive buff or reddish
+    rump, which contrasts with its darker upperparts and provides useful field identification.
+
+
+    This wheatear is an active, restless bird that spends much of its time on the
+    ground, frequently perching on rocks or low vegetation. It hunts by spotting prey
+    from exposed positions, often making short flights to catch insects. Like other
+    wheatears, it displays characteristic tail-flicking behavior and tends to be wary,
+    typically remaining at a distance from observers.
+
+
+    The species'' vocalizations include a simple warbling song and various contact
+    calls, though it is generally less vocal than some congeners. Seasonally migratory
+    populations move between breeding grounds and winter ranges, though some birds
+    remain resident year-round in their range. Its preference for open, barren habitats
+    makes it well-adapted to the harsh desert and semi-desert environments it frequents.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only basic taxonomic and geographic information (North
+    Africa and Middle East distribution) without any details about migration patterns,
+    seasonal movements, or occurrence in Scandinavia/Northern Europe. Therefore, I
+    cannot provide factual information about how this species occurs throughout the
+    year in northern Europe.'
+image_refs:
+- role: hero
+  path: Q1584260/hero.jpg
+  width: 2400
+  height: 2400
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-rumped wheatear (Oenanthe
+    moesta) Kebili.jpg
+  commons_filename: Red-rumped wheatear (Oenanthe moesta) Kebili.jpg
+- role: secondary
+  path: Q1584260/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-rumped wheatear (Oenanthe
+    moesta moesta) male Kebili.jpg
+  commons_filename: Red-rumped wheatear (Oenanthe moesta moesta) male Kebili.jpg
+- role: secondary
+  path: Q1584260/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:OlivierPDupont&amp;action=edit&amp;redlink=1"
+    class="new" title="User:OlivierPDupont (page does not exist)">OlivierPDupont</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe moesta Morocco.jpg
+  commons_filename: Oenanthe moesta Morocco.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:19:37.287758+00:00'
+sources:
+  wikipedia_sv_revision: '58185052'
+  wikipedia_en_revision: '1315210220'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,104 @@
+id: Q874687
+scientific_name: Oenanthe monacha
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Munkstenskvätta
+  en: Hooded Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Munkstenskvätta
+
+
+    Munkstenskvätta är en liten tätting som tillhör släktet stenskvättor inom familjen
+    flugsnappare. Arten är starkt knuten till ökenlandskap och förekommer från Sudan
+    österut till Pakistan. I Europa är den mycket sällsynt och har endast noterats
+    två gånger, båda gångerna i Grekland.
+
+
+    Arten anses ha ett livskraftigt bestånd inom sitt naturliga utbredningsområde
+    i de stora ökenzonen. Munkstenskvätta är väl anpassad till det torra klimatet
+    i sin hemregion och lever i miljöer med glesa växter och stenig mark där det finns
+    gott om insekter att jaga.'
+  en: '# Hooded Wheatear
+
+
+    The hooded wheatear is a small insectivorous passerine belonging to the Old World
+    flycatcher family. It is a wheatear, a group of compact songbirds adapted to open,
+    often rocky habitats. Like other wheatears, it has a characteristic upright posture
+    and restless, energetic behaviour, frequently flitting between perches as it hunts
+    for insects. The bird''s plumage is distinctive, featuring dark and pale markings
+    that give it a "hooded" appearance, though exact coloration patterns vary between
+    individuals and populations.
+
+
+    This species is found across arid and semi-arid regions, typically in stony, sparsely
+    vegetated terrain where it can move nimbly across the ground and among rocks.
+    It shares the typical wheatear habit of perching prominently on elevated points
+    to watch for prey, then dropping to catch insects in flight or on the ground.
+    The hooded wheatear''s call and song are characteristic of the genus, though specific
+    vocal details are not widely documented in general literature.
+
+
+    The bird is migratory in much of its range, following seasonal patterns tied to
+    insect availability in its harsh preferred habitats. It nests in crevices among
+    rocks or in abandoned burrows, taking advantage of the shelter these provide.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and classification information
+    about the Hooded Wheatear, with no details regarding its occurrence, migration
+    patterns, or seasonal distribution in Scandinavia or Northern Europe. To provide
+    accurate migration information for this species, additional sources documenting
+    its geographical range and movement patterns would be required.'
+image_refs:
+- role: hero
+  path: Q874687/hero.jpg
+  width: 2048
+  height: 1367
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1476120">Jan
+    Ebr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe monacha 120956079.jpg
+  commons_filename: Oenanthe monacha 120956079.jpg
+- role: secondary
+  path: Q874687/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe monacha 93093564.jpg
+  commons_filename: Oenanthe monacha 93093564.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:22:51.987006+00:00'
+sources:
+  wikipedia_sv_revision: '55661521'
+  wikipedia_en_revision: '1315093655'
+  claude_model: claude-haiku-4-5-20251001

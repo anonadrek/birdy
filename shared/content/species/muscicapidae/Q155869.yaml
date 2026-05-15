@@ -1,0 +1,131 @@
+id: Q155869
+scientific_name: Saxicola rubetra
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Saxicola
+  ioc_order: Passeriformes
+names:
+  sv: Buskskvätta
+  en: Whinchat
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Buskskvätta
+
+
+    Buskskvätta är en liten fågel som numera räknas till familjen flugsnappare. Det
+    är en vanlig och väl spridd art som återfinns över stora delar av sitt utbredningsområde.
+
+
+    Arten häckar förkärleksvis i öppna och halvöppna miljöer såsom ängs- och hedmark,
+    dikesrenar samt på glest bevuxna myrar och kalhyggen. Här hittar buskskvätta lämpliga
+    förhållanden för sitt val av häckningsplats.
+
+
+    Under vintermånaderna är arten en flyttfågel som huvudsakligen drar söderut till
+    Afrika söder om Sahara för att söka föda under de kallare månaderna.'
+  en: '# Whinchat
+
+
+    The whinchat is a small, migratory flycatcher that breeds across Europe and western
+    Asia before wintering in central Africa. It is a distinctly patterned bird with
+    a striking pale eyebrow stripe that stands out against its brownish, darker-mottled
+    upperparts. Both sexes share a characteristic blackish tail with white patches
+    at the base of the outer feathers. The throat, breast, and belly are pale, though
+    breeding males develop a distinctive orange-buff coloration on the throat and
+    breast during the breeding season, making them particularly eye-catching.
+
+
+    This is an active, alert bird that often perches upright on low vegetation, fence
+    posts, or rocky outcrops, from which it makes short flights to catch insects in
+    typical flycatcher fashion. It favors open, scrubby habitats with scattered bushes
+    and grassland. The whinchat''s call is a distinctive hard, clicking note, often
+    described as "tic-tic," which it uses to maintain contact and advertise territory.
+
+
+    The species shows a strong preference for upland and marginal habitats with gorse,
+    heather, or other low scrub vegetation. It is best observed during the breeding
+    season when males are most vocal and conspicuous, though it becomes harder to
+    locate once breeding is complete and birds prepare for their long migration south.'
+migration:
+  sv: '# Buskskvätta - Förekomst under året
+
+
+    Buskskvätta är en långdistansflyttare som häckar i norra Europa under sommaren.
+    Arten anländer till Skandinavien och Nordeuropa under våren, där den bebor ängs-
+    och hedmarker, dikesrenar samt glest bevuxna områden. Under hösten påbörjar arten
+    sin långa migration söderut. Vintermånaderna tillbringar buskskvätta huvudsakligen
+    i Afrika söder om Sahara, där arten söker skydd för att undvika de nordiska vinterförhållandena.
+    Denna migrationsväg är artens karakteristiska livscykel varje år.'
+  en: '# Whinchat Migration in Northern Europe
+
+
+    The whinchat is a summer breeding visitor to Scandinavia and northern Europe,
+    typically arriving in May and departing in August-September. Breeding populations
+    are found across the region during the warmer months, utilizing open habitats
+    such as heathland, grassland, and scrub. As an obligate long-distance migrant,
+    the species undertakes an arduous journey to central African wintering grounds,
+    where it remains from October through March. The whinchat is entirely absent from
+    Scandinavia during winter months. Return migration occurs progressively through
+    April and May as birds establish breeding territories. Population trends in northern
+    Europe show regional variation, with numbers fluctuating in response to habitat
+    management and climatic conditions affecting both breeding and wintering areas.'
+image_refs:
+- role: hero
+  path: Q155869/hero.jpg
+  width: 2400
+  height: 1740
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Saxicola rubetra Oulu Finland
+    2020-07-19.jpg
+  commons_filename: Saxicola rubetra Oulu Finland 2020-07-19.jpg
+- role: secondary
+  path: Q155869/secondary-1.jpg
+  width: 1800
+  height: 1256
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Braunkehlchen (Saxicola rubetra),
+    Warchetal bei Hünningen, Ostbelgien (19134054681).jpg
+  commons_filename: Braunkehlchen (Saxicola rubetra), Warchetal bei Hünningen, Ostbelgien
+    (19134054681).jpg
+- role: secondary
+  path: Q155869/secondary-2.jpg
+  width: 1800
+  height: 1517
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Whinchat Saxicola rubetra, Arran
+    (25465367978).jpg
+  commons_filename: Whinchat Saxicola rubetra, Arran (25465367978).jpg
+review_status: approved
+review_notes: "Buskskvätta — Saxicola rubetra från Oulu; allmän SE-art på öppna fält + slåtterängar."
+generated_at: '2026-05-15T20:24:03.347597+00:00'
+sources:
+  wikipedia_sv_revision: '59227973'
+  wikipedia_en_revision: '1352052013'
+  claude_model: claude-haiku-4-5-20251001

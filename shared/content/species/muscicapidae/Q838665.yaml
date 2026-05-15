@@ -1,0 +1,132 @@
+id: Q838665
+scientific_name: Saxicola rubicola
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Saxicola
+  ioc_order: Passeriformes
+names:
+  sv: Svarthakad buskskvätta
+  en: European Stonechat
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svarthakad buskskvätta
+
+
+    Svarthakad buskskvätta är en liten och påfallande fågel i flugsnappfamiljen. Hanen
+    är lätt att känna igen på sin svarta huvud- och halsdel som kontrasterar skarpt
+    mot den rostfärgade bröstet och de vita nackteckningarna. Honan är betydligt brunare
+    och mer dämpad i färgteckningen. Arten är kompakt byggd och sitter ofta upprättstödd
+    på exponerade växtdelar.
+
+
+    Arten förekommer främst i områden med låg vegetation, gräsmarker och öppen busksnår.
+    Den är en aktiv insektsjägare som ofta sänker sig från en upphöjd sittplats för
+    att snappa upp sitt byte på marken eller i låg vegetation. Svarthakad buskskvätta
+    är något rastlös till sitt temperament och genomför ofta korta flygningar mellan
+    olika sittplatser.
+
+
+    Arten häckar i västra och södra Europa samt Nordafrika, och förekommer numera
+    även på svenska Västkusten. Den är mest aktiv under varmare årstider och söker
+    upp öppna, solexponerade miljöer med glest växtbestånd.'
+  en: '# European Stonechat
+
+
+    The European stonechat is a small passerine bird belonging to the Old World flycatcher
+    family. Until recently, it was considered a subspecies of the common stonechat
+    and was traditionally classified with thrushes, but genetic analysis has revealed
+    its true family affiliation with the flycatchers.
+
+
+    This diminutive species inhabits open country across Europe, ranging from western
+    regions eastward to Ukraine and the South Caucasus, with populations also present
+    in North Africa. It typically favours rough, scrubby terrain and moorland where
+    it can perch prominently on low bushes and posts while hunting for insects and
+    other small prey.
+
+
+    The stonechat is an active and alert bird, often seen flicking its tail as it
+    moves between vantage points. Its distinctive appearance and behaviour make it
+    relatively easy to identify in suitable habitat, though specific details of plumage,
+    calls, and seasonal movements would benefit from field observation or additional
+    reference materials for complete identification guidance.'
+migration:
+  sv: '# Svarthakad buskskvätta i Skandinavien
+
+
+    Svarthakad buskskvätta är en relativt ny häckfågel i Skandinavien och förekommer
+    numera på svenska Västkusten, där arten började etablera sig under senare delen
+    av 1900-talet. Arten häckar primärt i västra och södra Europa samt Nordafrika,
+    men dess utbredning har expanderat norrut. I norra Skandinavien är arten endast
+    en sparsam fågel under värmeprioderna. Arten förekommer huvudsakligen som en stationär
+    eller partiell trekant, där vissa populationer övervintra medan andra migrerar
+    söderut till sina häckningsområden under våren.'
+  en: '# European Stonechat (Saxicola rubicola) in Northern Europe
+
+
+    The European stonechat is a year-round resident across much of Scandinavia and
+    Northern Europe, though populations show considerable seasonal variation. Birds
+    breeding in northern regions typically migrate southward during autumn, with departures
+    occurring from September onwards, while milder-wintering populations may remain
+    throughout the year in southern Scandinavia and coastal areas. Spring return migration
+    begins in March and April, with breeding territories reoccupied by late spring.
+    Winter presence varies by location and severity, with some individuals overwintering
+    in sheltered habitats, particularly in areas with open grasslands and heathland
+    where food remains accessible.'
+image_refs:
+- role: hero
+  path: Q838665/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:European stonechat (Saxicola
+    rubicola), Algarve.jpg
+  commons_filename: European stonechat (Saxicola rubicola), Algarve.jpg
+- role: secondary
+  path: Q838665/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:European stonechat (Saxicola
+    rubicola).jpg
+  commons_filename: European stonechat (Saxicola rubicola).jpg
+- role: secondary
+  path: Q838665/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:European stonechat (Saxicola
+    rubicola) 2022.jpg
+  commons_filename: European stonechat (Saxicola rubicola) 2022.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:22:17.104944+00:00'
+sources:
+  wikipedia_sv_revision: '59273532'
+  wikipedia_en_revision: '1352985747'
+  claude_model: claude-haiku-4-5-20251001

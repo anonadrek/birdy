@@ -4084,6 +4084,7 @@
   ioc_order: Passeriformes
   common_en: Spotted Flycatcher
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q1317677
   scientific_name: Muscicapa gambagae
   family: Muscicapidae
@@ -4096,6 +4097,7 @@
   ioc_order: Passeriformes
   common_en: European Robin
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q557745
   scientific_name: Irania gutturalis
   family: Muscicapidae
@@ -4108,6 +4110,7 @@
   ioc_order: Passeriformes
   common_en: Thrush Nightingale
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25393
   scientific_name: Luscinia megarhynchos
   family: Muscicapidae
@@ -4120,6 +4123,7 @@
   ioc_order: Passeriformes
   common_en: Bluethroat
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q27075678
   scientific_name: Calliope calliope
   family: Muscicapidae
@@ -4156,6 +4160,7 @@
   ioc_order: Passeriformes
   common_en: European Pied Flycatcher
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q129219
   scientific_name: Tarsiger cyanurus
   family: Muscicapidae
@@ -4192,6 +4197,7 @@
   ioc_order: Passeriformes
   common_en: Common Redstart
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q1588780
   scientific_name: Monticola rufocinereus
   family: Muscicapidae
@@ -4216,6 +4222,7 @@
   ioc_order: Passeriformes
   common_en: Whinchat
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q864893
   scientific_name: Saxicola caprata
   family: Muscicapidae
@@ -4294,6 +4301,7 @@
   ioc_order: Passeriformes
   common_en: Northern Wheatear
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q767506
   scientific_name: Oenanthe bottae
   family: Muscicapidae

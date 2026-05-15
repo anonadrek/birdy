@@ -1,0 +1,136 @@
+id: Q26620
+scientific_name: Phoenicurus phoenicurus
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Phoenicurus
+  ioc_order: Passeriformes
+names:
+  sv: Rödstjärt
+  en: Common Redstart
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödstjärt
+
+
+    Rödstjärt är en elegant insektsätande fågel från familjen flugsnappare. Hanen
+    är särskilt vacker med sin röda bringa och stjärt, svart ansikte och grå rygg,
+    medan honan är mer diskret brunaktig. Det är en återkommande och väl känd häckfågel
+    som anländer på våren från sina övervintringskvartar.
+
+
+    Rödstjärten är en aktiv och rastlös fågel som ofta sitter högt exponerat på grenar
+    och stolpar, där den från tid till annan flyger ut efter flygande insekter. Den
+    är en typisk flugsnappare med snabba rörelser och wendningar i luften. Arten är
+    också känd för sitt ljusa, ljudligt samlade sång och sin karakteristiska "hui-hui"
+    lockröst.
+
+
+    Arten förekommer överallt där det finns lämplig habitat med gamla träd och öppna
+    områden, såsom skogsbryn, parker och trädgårdar. Den är en långflyttare som häckar
+    i stora delar av norra och mellersta Europa innan den drar söderut för övervintering
+    i Centralafrika.'
+  en: '# Common Redstart
+
+
+    The common redstart is a small, active flycatcher with striking plumage that differs
+    notably between sexes. Males display a distinctive black face and throat, white
+    forehead, and orange-red breast and tail, making them unmistakable in breeding
+    plumage. Females and juveniles are duller, with grey-brown upperparts and a warmer
+    peachy-orange tail that provides the key identifying feature across all plumages.
+
+
+    This species is notably restless and fidgety, constantly flitting between perches
+    while hunting insects in flight or gleaning them from foliage. It has a characteristic
+    habit of quivering its tail, revealing the bright orange coloration. The call
+    is a soft "hwit" or "tuc tuc," while the song is a brief, cheerful warble often
+    delivered from an exposed perch.
+
+
+    Common redstarts favour open woodlands, parks, and scrubby habitats with scattered
+    trees and bushes. They are summer visitors to northern and central regions, arriving
+    in spring to breed before departing in autumn. During migration periods, they
+    may appear in various habitats including gardens and hedgerows, making them relatively
+    approachable and rewarding to observe.'
+migration:
+  sv: '# Rödstjärt - Förekomst i Skandinavien
+
+
+    Rödstjärten är en långdistansflyttfågel som återvänder till Skandinavien och Nordeuropa
+    på våren för häckning. Den anländer typiskt under april-maj och etablerar sig
+    i lämpliga biotoper med öppna träd och springor för bobygge. Under sommaren häckar
+    arten i stora delar av Sverige, Norge och Danmark.
+
+
+    Redan från juli-augusti påbörjas höstflyttningen då ungfåglar och senare även
+    gamla fåglar lämnar häckningsområdena. Arten är helt frånvarande under vintern,
+    då den övervintrar långt söderut, främst i Centralafrika. En och annan individ
+    kan ibland observeras långt fram på hösten under migrationstiden.'
+  en: '# Common Redstart in Northern Europe
+
+
+    The Common Redstart is a summer visitor to Scandinavia and northern Europe, arriving
+    in late April and May after wintering in sub-Saharan Africa. It breeds throughout
+    the region during the warmer months, inhabiting woodlands, parks, and gardens.
+    By late August and September, these birds undertake their southward migration,
+    departing before winter arrives. The species does not overwinter in Scandinavia,
+    as it is entirely dependent on insect populations that become unavailable during
+    the cold months. Spring arrival is concentrated in May, with peak breeding activity
+    occurring from June through July before the return migration begins in late summer.'
+image_refs:
+- role: hero
+  path: Q26620/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common Redstart - (Phoenicurus
+    phoenicurus, juvenile).jpg
+  commons_filename: Common Redstart - (Phoenicurus phoenicurus, juvenile).jpg
+- role: secondary
+  path: Q26620/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/101181388@N07">Jevgenijs
+    Slihto</a> from Riga, Latvia
+  source_url: https://commons.wikimedia.org/wiki/File:Common redstart (Phoenicurus
+    phoenicurus, juvenile) (26767090208).jpg
+  commons_filename: Common redstart (Phoenicurus phoenicurus, juvenile) (26767090208).jpg
+- role: secondary
+  path: Q26620/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Skot" title="User:Skot">Skot</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rehek zahradní (Phoenicurus
+    phoenicurus), Vrch Třešňovka, Praha – Hrdlořezy 01.jpg
+  commons_filename: Rehek zahradní (Phoenicurus phoenicurus), Vrch Třešňovka, Praha
+    – Hrdlořezy 01.jpg
+review_status: approved
+review_notes: "Rödstjärt — Phoenicurus phoenicurus juvenile; allmän SE-art med rost-röd stjärt."
+generated_at: '2026-05-15T20:20:54.313867+00:00'
+sources:
+  wikipedia_sv_revision: '57468539'
+  wikipedia_en_revision: '1349136849'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,114 @@
+id: Q1303323
+scientific_name: Oenanthe xanthoprymna
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Kurdstenskvätta
+  en: Kurdish Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kurdstenskvätta
+
+
+    Kurdstenskvätta är en berglevande fågel inom familjen flugsnappare. Arten häckar
+    i bergstrakter från sydöstra Turkiet till sydvästra Iran. Tidigare klassificerades
+    kurdstenskvätta tillsammans med persisk stenskvätta som en enda art, men dessa
+    behandlas nu som två skilda arter.
+
+
+    Beståndet av kurdstenskvätta är relativt begränsat, men anses ändå vara stabilt
+    och livskraftigt. Fågeln är anpassad för liv i höglänta, steniga miljöer där den
+    hittar lämpliga häckningsplatser och föda. Som medlem av släktet stenskvättor
+    delar den många egenskaper med andra arter inom denna grupp, främst en förkärlek
+    för öppna bergsmiljöer.'
+  en: '# Kurdish Wheatear
+
+
+    The Kurdish wheatear is a distinctive member of the wheatear family, characterized
+    by its chestnut or reddish rump—a feature that gives rise to several of its alternative
+    names. Like other wheatears, it is a small, upright-standing bird adapted to open
+    terrain. The species has historically shared taxonomic uncertainty with the red-tailed
+    wheatear, which was once considered a subspecies but is now typically treated
+    as separate, though the two populations may interbreed in some regions. Age-related
+    plumage variation adds complexity to identification, with younger birds potentially
+    displaying intermediate coloring that can create confusion in the field.
+
+
+    The Kurdish wheatear inhabits rocky hillsides and arid scrubland across its range
+    in western Asia. It favors open ground where it can perch conspicuously and hunt
+    insects in characteristic wheatear fashion. Like its relatives, it is an active,
+    ground-feeding bird that uses exposed perches to scan for prey and watch for potential
+    threats. The species remains relatively understudied compared to some wheatears,
+    and detailed information about its vocalizations and precise behavioral patterns
+    remains limited in general ornithological literature.'
+migration:
+  sv: '# Kurdstenskvätta – Förekomst i Skandinavien/Nordeuropa
+
+
+    Kurdstenskvätta förekommer inte naturligt i Skandinavien eller Nordeuropa. Arten
+    är en bergsboendes stennötskvätta som är begränsad till Mellanöstern, där den
+    häckar från sydöstra Turkiet till sydvästra Iran. Arten är därför inte relevant
+    för nordeuropeiska fågelguider då den aldrig eller endast mycket undantagsvis
+    når skandinaviska eller nordeuropeiska områden.'
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q1303323/hero.jpg
+  width: 2400
+  height: 1654
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe xanthoprymna - Kurdish
+    Wheatear, Osmaniye, Turkey 05.jpg
+  commons_filename: Oenanthe xanthoprymna - Kurdish Wheatear, Osmaniye, Turkey 05.jpg
+- role: secondary
+  path: Q1303323/secondary-1.jpg
+  width: 1800
+  height: 1270
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe xanthoprymna - Kurdish
+    Wheatear, Osmaniye, Turkey 04.jpg
+  commons_filename: Oenanthe xanthoprymna - Kurdish Wheatear, Osmaniye, Turkey 04.jpg
+- role: secondary
+  path: Q1303323/secondary-2.jpg
+  width: 1800
+  height: 1259
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe xanthoprymna - Kurdish
+    Wheatear, Osmaniye, Turkey 03.jpg
+  commons_filename: Oenanthe xanthoprymna - Kurdish Wheatear, Osmaniye, Turkey 03.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:24:11.883869+00:00'
+sources:
+  wikipedia_sv_revision: '55629338'
+  wikipedia_en_revision: '1314775728'
+  claude_model: claude-haiku-4-5-20251001

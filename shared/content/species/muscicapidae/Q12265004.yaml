@@ -1,0 +1,108 @@
+id: Q12265004
+scientific_name: Oenanthe melanura
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Svartstjärt
+  en: Blackstart
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Blackstart
+
+
+    The blackstart is a small chat inhabiting arid desert landscapes across North
+    Africa, the Middle East, and the Arabian Peninsula, where it remains year-round.
+    This species is well-adapted to harsh, rocky terrain with minimal vegetation.
+
+
+    The blackstart is characterized by its distinctive plumage: dark grey-black upperparts
+    contrasting sharply with a bright rufous-orange lower back and rump, which is
+    particularly striking in flight. The tail is predominantly black, and the underparts
+    are pale grey. Both sexes share similar coloration, though females may appear
+    slightly duller than males.
+
+
+    In behavior, the blackstart is an active ground-feeder, often seen hopping amongst
+    rocks and low scrub in search of insects and small invertebrates. It tends to
+    stay close to the ground and is relatively secretive, though it will perch on
+    exposed rocks to survey its surroundings. The species is typically solitary or
+    found in pairs. Its call is a sharp, distinctive sound characteristic of desert
+    chats, though it is generally less vocal than some related species.
+
+
+    The blackstart''s preference for open desert with rocky outcrops makes it well-suited
+    to some of the world''s harshest environments, where few other birds can thrive.'
+migration:
+  sv: ''
+  en: '# Blackstart (Oenanthe melanura) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Blackstart is a resident bird of desert regions in North Africa, the Middle
+    East, and the Arabian Peninsula, with no documented occurrence or migration patterns
+    in Scandinavia or Northern Europe.'
+image_refs:
+- role: hero
+  path: Q12265004/hero.jpg
+  width: 2261
+  height: 2340
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Nicolas_Huet_the_Younger"
+    class="extiw" title="w:en:Nicolas Huet the Younger"><span title="French painter,
+    illustrator and engraver (1770-1830)">Nicolas Huet</span></a></bdi> / <bdi><a
+    href="https://en.wikipedia.org/wiki/en:Jean-Gabriel_Pr%C3%AAtre" class="extiw"
+    title="w:en:Jean-Gabriel Prêtre"><span title="Swiss illustrator (1768-1849)">Jean
+    Gabriel Prêtre</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe melanura 1838.jpg
+  commons_filename: Oenanthe melanura 1838.jpg
+- role: secondary
+  path: Q12265004/secondary-1.jpg
+  width: 1800
+  height: 1246
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/89580006@N08">getthepictures
+    photography blog</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe melanura -Israel-8.jpg
+  commons_filename: Oenanthe melanura -Israel-8.jpg
+- role: secondary
+  path: Q12265004/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
+    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe melanura ,Israel.jpg
+  commons_filename: Oenanthe melanura ,Israel.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:19:58.541031+00:00'
+sources:
+  wikipedia_sv_revision: '56466650'
+  wikipedia_en_revision: '1313968302'
+  claude_model: claude-haiku-4-5-20251001

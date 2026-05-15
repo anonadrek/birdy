@@ -1,0 +1,95 @@
+id: Q769574
+scientific_name: Oenanthe albonigra
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Svartvit stenskvätta
+  en: Hume’s Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartvit stenskvätta
+
+
+    Svartvit stenskvätta är en asiatisk fågel som tillhör flugsnappefamiljen. Den
+    är anpassad för liv i torra, klippiga miljöer och förekommer året runt från Iran
+    till Pakistan samt på sydöstra Arabiska halvön. Arten är klassificerad som livskraftig
+    enligt IUCN.
+
+
+    Denna stenskvätta trivs i steniga och bergiga terräng där den söker föda bland
+    klipporna och stenblocket. Som många stensskvätor är den aktiv och alert, ofta
+    perchad på höga punkter där den spanar efter insekter eller andra förutsättningar.
+    Den är anpassad för ett liv i dessa karga miljöer där få andra fåglar trivs lika
+    bra.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller ingen information om förekomst i Skandinavien/Nordeuropa
+    eller om migrationsmönster. Arten beskrivs endast som förekommande året runt i
+    sitt asiatiska utbredningsområde (Iran till Pakistan och sydöstra Arabiska halvön),
+    vilket ligger långt utanför Nordens geografiska område. Därför kan inget faktabaserat
+    guidetextavsnitt om arten i nordisk kontext skrivas.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q769574/hero.jpg
+  width: 2048
+  height: 1538
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe albonigra 46176684.jpg
+  commons_filename: Oenanthe albonigra 46176684.jpg
+- role: secondary
+  path: Q769574/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe albonigra 103721244.jpg
+  commons_filename: Oenanthe albonigra 103721244.jpg
+- role: secondary
+  path: Q769574/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe albonigra 115521704.jpg
+  commons_filename: Oenanthe albonigra 115521704.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:21:58.433873+00:00'
+sources:
+  wikipedia_sv_revision: '55739895'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

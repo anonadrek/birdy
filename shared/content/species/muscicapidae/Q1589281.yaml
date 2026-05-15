@@ -1,0 +1,119 @@
+id: Q1589281
+scientific_name: Saxicola maurus
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Saxicola
+  ioc_order: Passeriformes
+names:
+  sv: Vitgumpad buskskvätta
+  en: Siberian Stonechat
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitgumpad buskskvätta
+
+
+    Vitgumpad buskskvätta är en buskskvätta som tillhör familjen flugsnappare. Arten
+    har en omstridd systematik inom sitt släkte. Det är en relativt liten fågel med
+    karakteristisk färgteckning, där det vita på bakdelen är särskilt utmärkande.
+
+
+    Arten häckar i tempererade delar av Asien samt i nordöstra Europa ner till östra
+    Ukraina. I Sverige förekommer vitgumpad buskskvätta endast som tillfällig gäst,
+    vilket gör att den är en sällsynt och eftertraktad observation för många fågelskådare.'
+  en: '# Siberian Stonechat
+
+
+    The Siberian stonechat is a small Old World flycatcher recently recognized as
+    a distinct species. It belongs to the Muscicapidae family, though it was historically
+    classified among thrushes due to its thrush-like characteristics. This migratory
+    bird breeds across the East Palearctic region, including the easternmost areas
+    of Europe, before undertaking substantial migrations to wintering grounds in the
+    Old World tropics.
+
+
+    The species exhibits the typical compact, alert posture characteristic of stonechats.
+    Like other members of its genus, it is likely an active forager, hunting insects
+    in its favored habitats. Its call patterns and plumage details follow the general
+    stonechat template, though specific field marks distinguish it from closely related
+    species.
+
+
+    Birdwatchers encountering this species would need to observe it in appropriate
+    seasonal and geographic contexts—during breeding season in higher latitudes and
+    temperate regions, or in tropical wintering areas during the cold months. Its
+    recent validation as a separate species means field identification requires careful
+    attention to distinguishing features compared to related stonechats.'
+migration:
+  sv: Vitgumpad buskskvätta är en sällsynt och tillfällig gäst i Sverige. Arten häckar
+    primärt i tempererade delar av Asien och nordöstra Europa till östra Ukraina.
+    I Skandinavien förekommer arten endast sporadiskt, främst under höst- och vintermånaderna
+    när några individer kan irra västerut från sina asiatiska häckningsområden. Det
+    är framför allt under oktober-november som vitgumpad buskskvätta observeras i
+    Sverige, då arten utgör en opåräknelig vintergäst. Arten är inte etablerad som
+    häckfågel i Skandinavien och återvänder inte regelbundet till regionen.
+  en: '# Saxicola maurus (Siberian Stonechat) in Scandinavia
+
+
+    The Siberian Stonechat is a rare vagrant to Northern Europe rather than a regular
+    migrant. This species breeds in the far eastern Palearctic and winters in tropical
+    regions of the Old World, placing Scandinavia well outside its typical range.
+    Occasional individuals may appear during migration periods, particularly in spring
+    and autumn, but such sightings are exceptional. The species does not maintain
+    regular populations in Northern Europe and should not be expected as a seasonal
+    visitor to Scandinavian habitats.'
+image_refs:
+- role: hero
+  path: Q1589281/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Tonynirappathu" title="User:Tonynirappathu">Tonynirappathu</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Siberian stonechat (Saxicola
+    maurus)1.jpg
+  commons_filename: Siberian stonechat (Saxicola maurus)1.jpg
+- role: secondary
+  path: Q1589281/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Siberian stonechat (Saxicola
+    maurus) ചരൽക്കുരുവി .jpg
+  commons_filename: Siberian stonechat (Saxicola maurus) ചരൽക്കുരുവി .jpg
+- role: secondary
+  path: Q1589281/secondary-2.jpg
+  width: 1800
+  height: 1111
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Siberian stonechat male 5 (Saxicola
+    maurus) ചരൽക്കുരുവി .jpg
+  commons_filename: Siberian stonechat male 5 (Saxicola maurus) ചരൽക്കുരുവി .jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:19:37.871461+00:00'
+sources:
+  wikipedia_sv_revision: '57770705'
+  wikipedia_en_revision: '1332090404'
+  claude_model: claude-haiku-4-5-20251001

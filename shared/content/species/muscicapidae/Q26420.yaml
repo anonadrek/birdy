@@ -1,0 +1,108 @@
+id: Q26420
+scientific_name: Oenanthe oenanthe
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Stenskvätta
+  en: Northern Wheatear
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Northern Wheatear
+
+
+    The Northern Wheatear is a small, active passerine that breeds across open, rocky
+    landscapes throughout much of the northern hemisphere. It is notably migratory,
+    with populations traveling vast distances between breeding grounds in Europe,
+    Asia, and parts of North America to winter in Africa. The species favors sparse,
+    stony terrain where it can nest in rock crevices or abandoned burrows.
+
+
+    This insectivorous bird is characteristically restless and alert, often perching
+    prominently on rocks or low vegetation as it hunts. It has a distinctive appearance
+    with pale underparts, a dark eye-mask, and a striking white rump that is conspicuous
+    in flight. Males display warmer buff and orange tones on the head and back, while
+    females are duller overall.
+
+
+    The Northern Wheatear is typically found in open country with minimal vegetation,
+    including moorland, tundra, and stony hillsides. It forages on the ground and
+    in low brush, catching insects in flight or gleaning them from vegetation. During
+    breeding season, the species is vocal and animated, though details of its specific
+    calls and song would benefit from field observation of live individuals.'
+migration:
+  sv: ''
+  en: '# Northern Wheatear (Stenskvätta) in Scandinavia/Northern Europe
+
+
+    The Northern Wheatear is a long-distance migratory species in Scandinavia, breeding
+    during summer months in open, stony habitats across the region. Birds arrive in
+    spring from their African wintering grounds, typically from April onwards, and
+    depart again in late August through September for their trans-African migration.
+    All northern populations are obligate migrants, spending the winter months exclusively
+    in Africa, making them absent from Scandinavia during the colder season. The species
+    is adapted to extreme latitudes and migration routes, with some Greenlandic and
+    North American populations utilizing the longest migration routes of any songbird
+    relative to body size.'
+image_refs:
+- role: hero
+  path: Q26420/hero.jpg
+  width: 2400
+  height: 1929
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Northern Wheatear, Oenanthe
+    oenanthe, female (28185169449).jpg
+  commons_filename: Northern Wheatear, Oenanthe oenanthe, female (28185169449).jpg
+- role: secondary
+  path: Q26420/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
+    Sprinz">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Farbberingter Steinschmätzer
+    (Oenanthe oenanthe) auf Norderney 02.jpg
+  commons_filename: Farbberingter Steinschmätzer (Oenanthe oenanthe) auf Norderney
+    02.jpg
+- role: secondary
+  path: Q26420/secondary-2.jpg
+  width: 1713
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Alun_Williams333&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Alun Williams333 (page does not exist)">Alun Williams333</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Oenanthe oenanthe Tinwen y Graig
+    ifanc.jpg
+  commons_filename: Oenanthe oenanthe Tinwen y Graig ifanc.jpg
+review_status: approved
+review_notes: "Stenskvätta — Oenanthe oenanthe hona; allmän SE-art på stenmarker + öppet landskap."
+generated_at: '2026-05-15T20:23:04.523170+00:00'
+sources:
+  wikipedia_sv_revision: '55733901'
+  wikipedia_en_revision: '1345551929'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,61 @@
+id: Q769093
+scientific_name: Oenanthe finschii
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Oenanthe
+  ioc_order: Passeriformes
+names:
+  sv: Vitryggig stenskvätta
+  en: Finsch’s Wheatear
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitryggig stenskvätta
+
+
+    Vitryggig stenskvätta är en tätting i familjen flugsnappare som förekommer på
+    karga högplatåer och bergssluttningar i västra Asien. Arten är sällsynt i Europa
+    med bara ett fåtal dokumenterade fynd. Beståndet anses vara livskraftigt.
+
+
+    Arten är väl anpassad för sitt höglänta habitat där vegetationen är sparsam. Den
+    ses ofta på öppna bergsområden där den söker föda bland stenar och låg växtlighet.
+    Som flugsnappare använder den ofta en karakteristisk jagtteknik där den flyger
+    ut från en upphöjd plats för att fånga flygande insekter.
+
+
+    För den intresserade fågelskådaren är vitryggig stenskvätta en mycket lokal och
+    svårfunnen art som kräver resa till dess specifika utbredningsområden i västra
+    Asien för att observeras.'
+  en: ''
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:22:30.147561+00:00'
+sources:
+  wikipedia_sv_revision: '57197758'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

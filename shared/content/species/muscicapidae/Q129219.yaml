@@ -1,0 +1,135 @@
+id: Q129219
+scientific_name: Tarsiger cyanurus
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Tarsiger
+  ioc_order: Passeriformes
+names:
+  sv: Tajgablåstjärt
+  en: Red-flanked Bluetail
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tajgablåstjärt
+
+
+    Tajgablåstjärten är en liten tätting som tillhör flugsnappfamiljen. Den är en
+    återkommande men mycket sällsynt häckfågel i nordliga delarna av landet, där den
+    främst förekommer i inlandsområdena. Arten häckar från Finland österut genom Ryssland
+    och ner till Japan.
+
+
+    Fågeln är en flyttfågel som övervintrar huvudsakligen i Sydostasien. Under häckningsperioden
+    lever den i norrländska skogar, men under vintern söker den sig till varmare områden.
+    IUCN klassificerar arten som livskraftig, och det finns ingen omedelbar risk för
+    dess bestånd.
+
+
+    Historiskt behandlades tajgablåstjärten tillsammans med himalayablåstjärten som
+    en enda art under namnet blåstjärt, men de är numera erkända som två separata
+    arter. Denna klassificering hjälper till att bättre förstå fördelningen och egenskaperna
+    hos dessa nära släktade fåglar.'
+  en: '# Red-flanked Bluetail
+
+
+    The red-flanked bluetail is a small passerine belonging to the Old World flycatcher
+    family. This diminutive bird is characterized by its distinctive blue coloration
+    on the tail and rump, contrasting with warmer orange-red flanks that give it one
+    of its common names. Its compact size and active, restless demeanor make it a
+    challenging subject to observe, as it tends to remain in dense vegetation.
+
+
+    This species breeds in mixed coniferous forests across northern Asia, parts of
+    central Asia, and northeastern Europe, where it inhabits woodland with substantial
+    evergreen coverage. It is highly migratory, spending winters in southeast Asia,
+    the Indian subcontinent, the Himalayas, Taiwan, and northern Indochina, where
+    it frequents forest undergrowth and scrubland habitats. During migration periods,
+    it may appear in unexpected locations as it travels between breeding and wintering
+    grounds.
+
+
+    The red-flanked bluetail is primarily insectivorous, foraging in typical flycatcher
+    fashion, though detailed information about its specific vocalizations and call
+    patterns requires further observation in the field.'
+migration:
+  sv: '# Tajgablåstjärt – Förekomst i Skandinavien
+
+
+    Tajgablåstjärten är en långdistansflyttare som huvudsakligen häckar i Rysslands
+    tajgaskog, men har under senare år etablerat sig som en mycket sällsynt häckfågel
+    i norra Norrlands inland i Sverige. Under vintern migerar arten långt österut
+    till Sydostasien för att undvika de nordiska kallperioderna. Arten återkommer
+    till häckningsområdena på våren efter sin långa södervägen, vilket gör den till
+    en typisk långdistansflyttare bland småfåglar i norr.'
+  en: '# Red-flanked Bluetail (Tarsiger cyanurus) in Northern Europe
+
+
+    The red-flanked bluetail is a rare but regular vagrant to Scandinavia and Northern
+    Europe, with occasional records particularly in autumn migration. While breeding
+    occurs in northeastern Europe and northern Asia, Scandinavian sightings represent
+    birds moving between breeding grounds in the east and wintering areas in southeast
+    Asia and the Indian subcontinent. These eastern birds are strongly migratory,
+    typically arriving at breeding grounds in spring and departing by autumn. In Northern
+    Europe, individuals are most likely encountered during fall migration, particularly
+    from August to October, when young birds may disperse westward. Winter records
+    are exceptionally rare in Scandinavia, as the species vacates temperate regions
+    entirely.'
+image_refs:
+- role: hero
+  path: Q129219/hero.jpg
+  width: 2400
+  height: 1920
+  license: CC BY 2.0
+  author: <a href="//www.flickr.com/people/79492850@N00" class="extiw" title="flickruser:79492850@N00">Jason
+    Thompson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tarsiger cyanurus, Doi Lang,
+    Chiang Mai, Thailand.jpg
+  commons_filename: Tarsiger cyanurus, Doi Lang, Chiang Mai, Thailand.jpg
+- role: secondary
+  path: Q129219/secondary-1.jpg
+  width: 1800
+  height: 1169
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Blauschwanz (Tarsiger cyanurus),
+    Montzen, Ostbelgien (24817597527).jpg
+  commons_filename: Blauschwanz (Tarsiger cyanurus), Montzen, Ostbelgien (24817597527).jpg
+- role: secondary
+  path: Q129219/secondary-2.jpg
+  width: 1800
+  height: 1148
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Red-flanked Bluetail (Tarsiger
+    cyanurus), Ruka, Kuusamo, Finland (41093752850).jpg
+  commons_filename: Red-flanked Bluetail (Tarsiger cyanurus), Ruka, Kuusamo, Finland
+    (41093752850).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:21:37.107275+00:00'
+sources:
+  wikipedia_sv_revision: '59227464'
+  wikipedia_en_revision: '1332884911'
+  claude_model: claude-haiku-4-5-20251001

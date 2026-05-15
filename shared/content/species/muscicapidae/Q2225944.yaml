@@ -1,0 +1,71 @@
+id: Q2225944
+scientific_name: Ficedula speculigera
+taxonomy:
+  family: Muscicapidae
+  family_sv: Flugsnappare
+  genus: Ficedula
+  ioc_order: Passeriformes
+names:
+  sv: Atlasflugsnappare
+  en: Atlas Pied Flycatcher
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Atlas Pied Flycatcher
+
+
+    The Atlas pied flycatcher is a striking black-and-white flycatcher endemic to
+    northwestern Africa as a breeding species. It belongs to the Muscicapidae family
+    and is one of four black-and-white flycatcher species found in the Western Palearctic
+    region.
+
+
+    Like other pied flycatchers, it displays the characteristic contrasting plumage
+    typical of its genus, making it distinctive in its range. The species inhabits
+    suitable woodland and forest habitats where it hunts insects in flight, employing
+    the quick, agile movements characteristic of flycatchers.
+
+
+    This species is primarily seen in its breeding range in northwestern Africa, where
+    it occupies appropriate woodland and montane forest environments. Its presence
+    is largely seasonal, tied to breeding activities in its restricted geographic
+    range.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Atlas Pied Flycatcher is endemic to north-western Africa as a breeding species
+    and does not occur regularly in Scandinavia or Northern Europe. The provided source
+    text contains no information about migration patterns, overwintering locations,
+    or seasonal occurrence in the region. Therefore, detailed information about its
+    presence throughout the year in Scandinavia/Northern Europe cannot be provided
+    based on available sources.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:23:53.721057+00:00'
+sources:
+  wikipedia_sv_revision: '58189522'
+  wikipedia_en_revision: '1329247659'
+  claude_model: claude-haiku-4-5-20251001
