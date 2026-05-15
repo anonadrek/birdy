@@ -1,0 +1,124 @@
+id: Q165974
+scientific_name: Falco cherrug
+taxonomy:
+  family: Falconidae
+  family_sv: Falkfåglar
+  genus: falcon
+  ioc_order: Falconiformes
+names:
+  sv: Tatarfalk
+  en: Saker Falcon
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tatarfalk
+
+
+    Tatarfalk är världens näst största falk och är en imponerande rovfågel. Det är
+    en kraftigt byggd falk med mörkare fjäderdräkt än jaktfalken, ofta med rostfärgade
+    töningar på huvudet och bröstet. Arten kännetecknas av sin storlek och relativt
+    massiva struktur jämfört med andra falkar.
+
+
+    Tatarfalken är en skicklig jägare som jagas från luften eller från höga utgångspunkter.
+    Det lever huvudsakligen av små däggdjur och fåglar och jagar ofta över öppna landskap
+    och stäpper där det har god överblick. Arten är känd för sin snabbhet och rörlighet
+    trots sin storlek.
+
+
+    Arten är numera hotad, främst på grund av habitatförstöring där dess biotoper
+    förstörs eller förändras. Dessutom har illegal handel med ägg och ungar för falkenering
+    påverkat populationerna negativt. Detta har gjort tatarfalken till en art som
+    kräver aktiva bevarandeinsatser för att säkra överlevnaden.'
+  en: '# Saker Falcon
+
+
+    The saker falcon is a large and powerful bird of prey with a broad, muscular build.
+    It displays variable plumage, typically ranging from brown to pale cream with
+    darker markings on the crown and face. Its robust build and direct, powerful flight
+    distinguish it from smaller falcon species.
+
+
+    This species exhibits flexible migration patterns depending on geography and age.
+    In Europe, juvenile birds typically migrate south for winter while adults remain
+    year-round. Migratory populations travel considerable distances, with Western
+    birds wintering in African Sahel regions after crossing the Middle East, while
+    eastern populations move to the Tibetan plateau. Unfortunately, saker falcons
+    face significant threats from illegal trapping during migration, particularly
+    in Pakistan and the Middle East.
+
+
+    The species breeds across a vast range from Central Europe extending eastward
+    through the Palearctic to Manchuria. It hunts medium-sized prey in open landscapes,
+    using its strength and speed in pursuit. The saker falcon''s ability to thrive
+    in diverse environments from steppe to semi-desert regions demonstrates its ecological
+    flexibility, though its populations require protection from illegal capture and
+    habitat loss.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Saker Falcon Migration in Scandinavia/Northern Europe
+
+
+    The Saker Falcon is a partial migrant with complex movement patterns across its
+    range. In Northern Europe, the species exhibits differential migration: while
+    adult birds are largely resident year-round, juveniles undertake southward migrations
+    during autumn. European breeding populations that do migrate winter primarily
+    in the Sahel region, crossing the Middle East, Arabian Peninsula, and Pakistan
+    en route. Spring returns to breeding grounds typically occur from March onwards,
+    with birds establishing territories in preparation for the breeding season. However,
+    the Saker Falcon remains uncommon in Scandinavia proper, with most sightings occurring
+    in southern regions during migration periods.'
+image_refs:
+- role: hero
+  path: Q165974/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/stuutje/">Tim
+    Sträter</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Falco cherrug aka Sakervalk.jpg
+  commons_filename: Falco cherrug aka Sakervalk.jpg
+- role: secondary
+  path: Q165974/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/stuutje/">Tim
+    Sträter</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Saker Falcon (Falco cherrug)
+    image.jpg
+  commons_filename: Saker Falcon (Falco cherrug) image.jpg
+- role: secondary
+  path: Q165974/secondary-2.jpg
+  width: 1281
+  height: 1800
+  license: CC BY 2.0
+  author: Flickr user <a rel="nofollow" class="external text" href="https://www.flickr.com/people/q6r/">Qatari</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Falco cherrug Qatar.jpg
+  commons_filename: Falco cherrug Qatar.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:00:58.900283+00:00'
+sources:
+  wikipedia_sv_revision: '55901634'
+  wikipedia_en_revision: '1346432531'
+  claude_model: claude-haiku-4-5-20251001

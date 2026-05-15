@@ -1,0 +1,127 @@
+id: Q179625
+scientific_name: Falco vespertinus
+taxonomy:
+  family: Falconidae
+  family_sv: Falkfåglar
+  genus: falcon
+  ioc_order: Falconiformes
+names:
+  sv: Aftonfalk
+  en: Red-footed Falcon
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Aftonfalk
+
+
+    Aftonfalk är en liten och smidig falk med specialisering på insektsföda. Hanen
+    är mörkgrå till nästan svart på övre delen med karakteristiska röda ben och ansikte,
+    medan honan är gul-brun med mörkare teckning. Det är en elegant fågel med spetsiga
+    vingar och snabb, wendig flygstil som påminner om en mindre tornfalk.
+
+
+    Arten förekommer som häckfågel i Östeuropa och västra Asien, där den återvänder
+    varje vår. Under hösten drar arten långt söderut för att övervinta i Afrika söder
+    om Sahara. Under häckningsperioden ses aftonfalk ofta i öppna och halvöppna landskap
+    med glesa träd, ofta nära vatten.
+
+
+    Arten är mycket insektsätande och jagar ofta från låg höjd eller från pinnar,
+    där den spottar och snatchar flygande insekter. Populationen har minskat märkbart
+    på grund av habitatförlust och klimatförändringar, vilket har fört arten till
+    kategorin sårbar enligt IUCN.'
+  en: '# Red-footed Falcon
+
+
+    The red-footed falcon is a small falcon belonging to the family Falconidae. This
+    bird of prey is found across eastern Europe and Asia, where it breeds before migrating
+    to Africa for winter. It occasionally wanders into western Europe, demonstrating
+    its migratory restlessness during seasonal movements.
+
+
+    The species is characterized by its distinctive red feet, which give it its common
+    name. Its populations have declined significantly in recent decades due to habitat
+    loss and hunting pressure, making it an increasingly scarce sight throughout much
+    of its range. The red-footed falcon typically hunts small birds and insects in
+    open habitats, employing agile aerial pursuit typical of smaller falcons.
+
+
+    This falcon''s appearance and behaviour mark it as an active, energetic hunter
+    adapted to open country. While detailed descriptions of its plumage and calls
+    are not provided in available sources, its small size and red feet make it identifiable
+    among falcon species. Its occurrence as a vagrant to western Europe and its rare
+    appearance in North America highlight its capacity for long-distance wandering,
+    occasionally taking individuals far beyond their normal range.'
+migration:
+  sv: Aftonfalk är en långflyttare som häckar i Östeuropa och Asien men övervintrar
+    i Afrika söder om Sahara. Under vårmigration anländer arten till häckningsområdena
+    från april till maj. Efter häckningssäsongen påbörjas höstflyttningen från juli,
+    och fågeln är borta från Europa under vintermånaderna. I Skandinavien och Norden
+    är aftonfalk en sparsam genomfartsgenomfågelart under migrationerna, då den passerar
+    genom regionen på vägen mellan sina östeuropeiska häckningsområden och afrikanska
+    övervintringsplatser.
+  en: '# Red-footed Falcon in Scandinavia and Northern Europe
+
+
+    The red-footed falcon is a migratory species that occurs irregularly in Scandinavia
+    and northern Europe, primarily as a wanderer during migration periods. This eastern
+    European and Asian breeder is not a regular resident in the region but appears
+    sporadically, particularly in late summer and autumn when individuals disperse
+    westward. The species winters in Africa, making it a trans-Saharan migrant. While
+    sightings in Scandinavia remain uncommon, they are most likely during August and
+    September when vagrant birds occasionally reach western European countries during
+    their southbound migration to African wintering grounds.'
+image_refs:
+- role: hero
+  path: Q179625/hero.jpg
+  width: 2400
+  height: 1375
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Apinanaivot" title="User:Apinanaivot">Apinanaivot</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Falco vespertinus on a cable.png
+  commons_filename: Falco vespertinus on a cable.png
+- role: secondary
+  path: Q179625/secondary-1.jpg
+  width: 1800
+  height: 1068
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-footed falcon (Falco vespertinus)
+    2020.jpg
+  commons_filename: Red-footed falcon (Falco vespertinus) 2020.jpg
+- role: secondary
+  path: Q179625/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/60740813@N04">Michele
+    Lamberti</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Falco vespertinus Falco cuculo.jpg
+  commons_filename: Falco vespertinus Falco cuculo.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:00:57.954524+00:00'
+sources:
+  wikipedia_sv_revision: '55900668'
+  wikipedia_en_revision: '1331342118'
+  claude_model: claude-haiku-4-5-20251001

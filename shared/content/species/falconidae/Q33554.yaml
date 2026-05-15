@@ -1,0 +1,127 @@
+id: Q33554
+scientific_name: Falco biarmicus
+taxonomy:
+  family: Falconidae
+  family_sv: Falkfåglar
+  genus: falcon
+  ioc_order: Falconiformes
+names:
+  sv: Slagfalk
+  en: Lanner Falcon
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Slagfalk
+
+
+    Slagfalk är en stor rovfågel som tillhör falkfamiljen och påminner morfologiskt
+    mycket om pilgrimsfalken. Arten förekommer främst i Afrika och på Arabiska halvön.
+    Slagfalken är en skicklig jägare som jagtar andra fåglar i flygning, präglad av
+    snabba manövrer och stor smidighet i luften.
+
+
+    Arten är anpassad för jakt i öppna och halvöppna miljöer där den kan nå höga hastigheter
+    när den förföljer sitt byte. Slagfalken är ofta att se när den patrullerar sitt
+    revirhögt ovanför marken eller sitter på utposter som träd och klippor. Arten
+    är territoriell och återvänder ofta till samma häckningsplatser år efter år.
+
+
+    Som rovfågel spelar slagfalken en viktig roll i sitt ekosystem genom att reglera
+    populationerna av mindre fåglar. Arten är anpassad för varmt klimat och trivs
+    i olika typer av öppna terränger från halvöken till savann. Slagfalken är en imponerande
+    fågel att observera tack vare sin storlek, snabbhet och skicklighet i luften.'
+  en: '# Lanner Falcon
+
+
+    The lanner falcon is a large, medium-sized bird of prey with a streamlined build
+    adapted for hunting in open terrain. It displays the typical falcon silhouette
+    with pointed wings and a relatively long tail, allowing for agile flight when
+    pursuing prey.
+
+
+    This species hunts primarily birds and bats in swift, aerial pursuits characteristic
+    of falcons. It prefers open habitats where it can exploit its speed and manoeuvrability
+    to catch quarry mid-flight. Most populations are resident year-round, though some
+    individuals disperse more widely after breeding season, moving beyond their typical
+    range.
+
+
+    The lanner falcon breeds across Africa, southeast Europe, and into parts of Asia.
+    Its historical significance is notable—it may well have been the sacred falcon
+    species of ancient Egypt, with deities such as Ra and Horus frequently depicted
+    with the lanner falcon''s head in religious iconography.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Lanner Falcon in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Lanner Falcon breeds primarily in Africa, southeast Europe, and marginally
+    into Asia, with its range extending only into southeastern parts of Europe. Scandinavia
+    and Northern Europe lie well outside its natural distribution. While the species
+    is largely resident throughout its African and Mediterranean range, with some
+    post-breeding dispersal occurring, there is no documented occurrence or migration
+    pattern involving Scandinavian or Northern European territories. The species should
+    not be expected in this region during any season.'
+image_refs:
+- role: hero
+  path: Q33554/hero.jpg
+  width: 2400
+  height: 1439
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Lanner falcon, Falco biarmicus,
+    at Kgalagadi Transfrontier Park, Northern Cape, South Africa (34447024561).jpg
+  commons_filename: Lanner falcon, Falco biarmicus, at Kgalagadi Transfrontier Park,
+    Northern Cape, South Africa (34447024561).jpg
+- role: secondary
+  path: Q33554/secondary-1.jpg
+  width: 1800
+  height: 1012
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Lanner falcon, Falco biarmicus,
+    at Kgalagadi Transfrontier Park, Northern Cape, South Africa (33767245233).jpg
+  commons_filename: Lanner falcon, Falco biarmicus, at Kgalagadi Transfrontier Park,
+    Northern Cape, South Africa (33767245233).jpg
+- role: secondary
+  path: Q33554/secondary-2.jpg
+  width: 1800
+  height: 1012
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Lanner falcon, Falco biarmicus,
+    at Kgalagadi Transfrontier Park, Northern Cape, South Africa (34415575072).jpg
+  commons_filename: Lanner falcon, Falco biarmicus, at Kgalagadi Transfrontier Park,
+    Northern Cape, South Africa (34415575072).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:00:50.998258+00:00'
+sources:
+  wikipedia_sv_revision: '57082395'
+  wikipedia_en_revision: '1317623376'
+  claude_model: claude-haiku-4-5-20251001

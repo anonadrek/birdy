@@ -1,0 +1,102 @@
+id: Q212243
+scientific_name: Falco eleonorae
+taxonomy:
+  family: Falconidae
+  family_sv: Falkfåglar
+  genus: falcon
+  ioc_order: Falconiformes
+names:
+  sv: Eleonorafalk
+  en: Eleonora’s Falcon
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Eleonorafalk
+
+
+    Eleonorafalk är en falk i familjen falkfåglar som huvudsakligen häckar runt Medelhavet.
+    Det är en specialiserad rovfågel som har anpassat sitt häckningsbeteende på ett
+    ovanligt sätt – den häckar mellan juli och september, vilket är senare än de flesta
+    andra falkarter. Denna tidpunkt är ingen slump utan en perfekt anpassning till
+    artens jagtstrategi.
+
+
+    Arten livnär sig framför allt på flyttfåglar, vilket är nyckeln till att förstå
+    dess biologi. Under hösten passerar miljontals fåglar genom sitt häckningsområde
+    under sin sydliga migration, och eleonorafalk tiden sitt reproduktion för att
+    kunna mata sina ungar just när denna överflöd av bytesdjur är som störst. På så
+    sätt säkrar den ett rikligt födotillbud för sitt växande kullnöt.
+
+
+    Arten är således ett fascinerande exempel på hur rovfåglar har utvecklat sofistikerade
+    anpassningar till sin miljö och bytestillgång, där häckningstidpunkten helt och
+    hållet styrs av migrationsmönstren hos andra fågelarter.'
+  en: ''
+migration:
+  sv: '# Eleonorafalk i Skandinavien/Nordeuropa
+
+
+    Eleonorafalk är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten häckar
+    övervägande kring Medelhavet och förekommer endast sporadiskt under flyttningen
+    genom regionen. De fåtal observationer som görs i norden inträffar huvudsakligen
+    under sensommaren och hösten när ungfåglar och överskottspopulationer sprider
+    sig från häckningsområdena. Arten övervintrar inte i nordiska områden utan återvänder
+    till sitt hemland efter häckningssäsongen.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q212243/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Eleonora's falcon (Falco eleonorae)
+    in flight composite.jpg
+  commons_filename: Eleonora's falcon (Falco eleonorae) in flight composite.jpg
+- role: secondary
+  path: Q212243/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Eleonora's falcon (Falco eleonorae)
+    in flight 1.jpg
+  commons_filename: Eleonora's falcon (Falco eleonorae) in flight 1.jpg
+- role: secondary
+  path: Q212243/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Eleonora's falcon (Falco eleonorae)
+    in flight 2.jpg
+  commons_filename: Eleonora's falcon (Falco eleonorae) in flight 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:01:52.991261+00:00'
+sources:
+  wikipedia_sv_revision: '59130532'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

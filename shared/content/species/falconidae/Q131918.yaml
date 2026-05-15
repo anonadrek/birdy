@@ -1,0 +1,92 @@
+id: Q131918
+scientific_name: Falco columbarius
+taxonomy:
+  family: Falconidae
+  family_sv: Falkfåglar
+  genus: falcon
+  ioc_order: Falconiformes
+names:
+  sv: Stenfalk
+  en: Merlin
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: 'I appreciate the request, but I notice the source text provided is about Merlin
+    the legendary figure from Arthurian legend, not about the Merlin bird species
+    (Falco columbarius).
+
+
+    To write an accurate bird guide entry about the Merlin falcon, I would need source
+    material about the actual bird—its physical characteristics, behavior, vocalizations,
+    and habitat preferences.
+
+
+    Could you please provide the correct source text about Falco columbarius? Once
+    you do, I''ll be happy to write a 2-3 paragraph guide (or shorter if needed) following
+    your specifications: focusing on appearance, behavior, call, and habitat while
+    avoiding anecdotes and place names.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided is about Merlin from Arthurian legend and contains no
+    information about the bird species Falco columbarius (Merlin/Stenfalk). To write
+    an accurate guide about the migration patterns of this falcon species in Scandinavia
+    and Northern Europe, I would need ornithological source material rather than mythological
+    content.'
+image_refs:
+- role: hero
+  path: Q131918/hero.jpg
+  width: 1597
+  height: 2400
+  license: Public domain
+  author: Robert Burton / USFWS
+  source_url: https://commons.wikimedia.org/wiki/File:Falco columbarius FWS 14007.jpg
+  commons_filename: Falco columbarius FWS 14007.jpg
+- role: secondary
+  path: Q131918/secondary-1.jpg
+  width: 1800
+  height: 1421
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/8048027@N05">Bear
+    Golden Retriever</a> from auburn,ny, usa
+  source_url: https://commons.wikimedia.org/wiki/File:Falco columbarius Auburn NY.jpg
+  commons_filename: Falco columbarius Auburn NY.jpg
+- role: secondary
+  path: Q131918/secondary-2.jpg
+  width: 1176
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/8048027@N05">Bear
+    Golden Retriever</a> from auburn,ny, usa
+  source_url: https://commons.wikimedia.org/wiki/File:Falco columbarius pair Auburn
+    NY 1.jpg
+  commons_filename: Falco columbarius pair Auburn NY 1.jpg
+review_status: approved
+review_notes: "Hero = Falco columbarius USFWS-foto, matchar art. Stenfalk häckar i fjäll/myrar, vintergäst i södra SE."
+generated_at: '2026-05-15T19:00:14.206869+00:00'
+sources:
+  wikipedia_sv_revision: '59194706'
+  wikipedia_en_revision: '1353678534'
+  claude_model: claude-haiku-4-5-20251001

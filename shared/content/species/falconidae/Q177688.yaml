@@ -1,0 +1,134 @@
+id: Q177688
+scientific_name: Falco rusticolus
+taxonomy:
+  family: Falconidae
+  family_sv: Falkfåglar
+  genus: falcon
+  ioc_order: Falconiformes
+names:
+  sv: Jaktfalk
+  en: Gyrfalcon
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Jaktfalk
+
+
+    Jaktfalk är världens största falk och är en imponerande rovfågel med kraftig byggnad
+    och stor spännvidd. Den förekommer huvudsakligen i fjälltrakter och på tundra
+    runt polregionerna. Arten är framträdande stor jämfört med andra falkar, med ett
+    robust utseende som passar dess miljö.
+
+
+    Arten är en skicklig jägare som jagas på flygande byten, ofta andra fåglar. Jaktfalken
+    är aktiv och kraftfull i luften och använder sitt goda seende för att spana efter
+    bytesdjur över de öppna landskap där den lever.
+
+
+    Globalt sett är arten inte hotad, men i Norden visar populationen en oroande minskande
+    trend. Detta gör arten till ett fokus för naturvårdsbemödanden i nordiska regioner.
+    Dess närvaro är starkt knuten till de nordliga ekosystemen där den har utvecklats.'
+  en: '# Gyrfalcon
+
+
+    The gyrfalcon is the largest falcon in the world, a powerful Arctic predator that
+    commands respect in its harsh northern habitat. Its plumage is remarkably variable,
+    ranging from nearly all-white to dark brown, with regional populations often displaying
+    consistent colour patterns or "morphs." Like other falcons, females are noticeably
+    larger than males, an adaptation thought to allow them to hunt larger prey for
+    their families.
+
+
+    This high-latitude hunter breeds on Arctic coasts, tundra, and northern islands
+    across the far north. It is largely resident throughout the year in its breeding
+    range, but some individuals disperse more widely during winter or after breeding
+    season. Occasionally, individual birds may wander far from their usual territory,
+    sometimes appearing in unexpected locations—a behaviour known as vagrancy.
+
+
+    The gyrfalcon hunts with the speed and agility typical of its family, pursuing
+    prey from swift dives. Its powerful build and fierce demeanour reflect its role
+    as an apex predator in one of Earth''s most unforgiving environments.'
+migration:
+  sv: '# Jaktfalk – Utbredning i Norden genom året
+
+
+    Jaktfalken är en arktisk art som förekommer året runt i Norges fjäll och norra
+    fjälltrakter. Under höst och vinter sprider sig populationen southligare och kan
+    då påträffas sporadiskt längre ner i Sverige och Norge. Många individer är stannare
+    eller flyttar endast kortare sträckor, medan andra övervintringar längre söderut
+    under snörika eller hårt väder. Ankomsten till reviren på högt fjäll sker typiskt
+    våren, ofta redan under mars–april.
+
+
+    Jaktfalk är känd för att följa sitt bytestillgång av snöugglor, dalripar och andra
+    fåglar, vilket påverkar dess lokala närvaro. I Norden är arten främst knuten till
+    fjällen och högfjällsomården, där den hävdar sina revir på klippor och höga bergiga
+    miljöer.'
+  en: '# Gyrfalcon in Scandinavia/Northern Europe
+
+
+    The gyrfalcon is primarily a resident species throughout its northern range, including
+    Scandinavia, where breeding birds remain year-round in Arctic coastal regions
+    and tundra habitats. However, some individuals disperse more widely during winter
+    months, and occasional vagrancy can bring gyrfalcons to lower latitudes in northern
+    Europe, particularly during harsh winters or food scarcity. These movements are
+    irregular and unpredictable rather than following fixed migration patterns, making
+    winter sightings in Scandinavia variable by year. Birds that do occur outside
+    their breeding territories during the non-breeding season typically appear in
+    late autumn and winter months.'
+image_refs:
+- role: hero
+  path: Q177688/hero.jpg
+  width: 1536
+  height: 2048
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Orlica" title="User:Orlica">Orlica</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Falco rusticolus in Spain.jpg
+  commons_filename: Falco rusticolus in Spain.jpg
+- role: secondary
+  path: Q177688/secondary-1.jpg
+  width: 1205
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25609635@N03">Elena
+    Gaillard</a> from New York, USA
+  source_url: https://commons.wikimedia.org/wiki/File:Falco rusticolus 1.jpg
+  commons_filename: Falco rusticolus 1.jpg
+- role: secondary
+  path: Q177688/secondary-2.jpg
+  width: 1308
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Julesvernex2" title="User:Julesvernex2">Jules
+    Verne Times Two</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Gyrfalcon (Falco rusticolus),
+    Mafra National Palace, Mafra, Portugal julesvernex2.jpg
+  commons_filename: Gyrfalcon (Falco rusticolus), Mafra National Palace, Mafra, Portugal
+    julesvernex2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:00:28.848344+00:00'
+sources:
+  wikipedia_sv_revision: '55901065'
+  wikipedia_en_revision: '1352667847'
+  claude_model: claude-haiku-4-5-20251001

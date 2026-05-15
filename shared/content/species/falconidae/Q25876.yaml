@@ -1,0 +1,128 @@
+id: Q25876
+scientific_name: Falco subbuteo
+taxonomy:
+  family: Falconidae
+  family_sv: Falkfåglar
+  genus: falcon
+  ioc_order: Falconiformes
+names:
+  sv: Lärkfalk
+  en: Eurasian Hobby
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Lärkfalk
+
+
+    Lärkfalken är en medelstor falk som kännetecknas av sin mörka ovansida och ljusare
+    undersida. Det är en extraordinärt skicklig flygare med långa, spetsiga vingar
+    och stor rörlighet i luften. Med sin smidiga flygstil kan det snabbt och elegant
+    manövreras när det jagar sin föda.
+
+
+    Arten lever av stora insekter och småfåglar som den fångar under flygning. Lärkfalken
+    är beroende av närhet till vatten och ses därför ofta vid sjöar, myrar och kustnära
+    områden där insekterna är rikliga. Det är en migrerande art som häckar över stora
+    delar av Palearktis och ofta använder övergivna kråkbon, helst placerade högt
+    uppe i tall eller andra höga träd.
+
+
+    Lärkfalkens bestånd anses vara livskraftigt. Arten är en spännande observation
+    för fågelskådare tack vare sin dynamiska flygning och sitt intressanta jaktbeteende.'
+  en: '# Eurasian Hobby
+
+
+    The Eurasian hobby is a small, elegant falcon renowned for its exceptional agility
+    and speed. It displays a sleek, streamlined build with pointed wings and a relatively
+    short tail, adapted perfectly for hunting in flight. The plumage is predominantly
+    dark slate-grey above with a contrasting rufous-red undertail and thigh patch,
+    while the face features distinctive dark "moustache" markings against a pale throat.
+
+
+    In behaviour, the hobby is a master aeronaut, often hunting on the wing with remarkable
+    manoeuvrability, particularly targeting small birds and insects in flight. It
+    frequently hunts at dawn and dusk, exploiting the activity patterns of its prey.
+    The species is highly vocal during breeding season, producing sharp, rapid calls
+    that serve as territorial advertisements and alarm signals.
+
+
+    The hobby breeds across temperate regions of Europe and Asia, favouring open woodlands,
+    grasslands, and cultivated areas where prey is abundant. It is a summer visitor
+    to many regions, arriving in spring and departing in autumn. The species typically
+    nests in old crow or magpie nests rather than creating its own, demonstrating
+    flexibility in breeding habitat selection.'
+migration:
+  sv: '# Lärkfalk - Förekomst i Nordeuropa
+
+
+    Lärkfalken är en långdistansmigrant som anländer till Skandinavien och Nordeuropa
+    under senhåren, typiskt från april till maj. Arten häckar över större delen av
+    regionen under sommaren och förekommer vid sjöar, myrar och kustområden där födan
+    av insekter och småfåglar är riklig. Under hösten, från augusti till september,
+    påbörjar lärkfalken sin återvandring söderut för att övervinta i Afrika. Arten
+    är således helt frånvarande från Skandinavien under vintermånaderna.'
+  en: '# Eurasian Hobby in Northern Europe
+
+
+    The Eurasian Hobby is a summer visitor to Scandinavia and Northern Europe, arriving
+    in late April through May to breed. These agile falcons depart in August and September,
+    heading south to their African wintering grounds. They are absent throughout the
+    winter months, returning reliably each spring to traditional breeding sites. The
+    species favors open landscapes and woodland edges where they hunt small birds
+    and insects in flight during the breeding season.'
+image_refs:
+- role: hero
+  path: Q25876/hero.jpg
+  width: 2400
+  height: 1504
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian hobby (Falco subbuteo)
+    2020.jpg
+  commons_filename: Eurasian hobby (Falco subbuteo) 2020.jpg
+- role: secondary
+  path: Q25876/secondary-1.jpg
+  width: 1198
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/32639361@N02">Rodrigo
+    Saldanha  de Almeida</a> from Marco de Canaveses, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Ógea - Falco subbuteo.jpg
+  commons_filename: Ógea - Falco subbuteo.jpg
+- role: secondary
+  path: Q25876/secondary-2.jpg
+  width: 1800
+  height: 1439
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Hobby hunting. Falco subbuteo
+    - Flickr - gailhampshire.jpg
+  commons_filename: Hobby hunting. Falco subbuteo - Flickr - gailhampshire.jpg
+review_status: approved
+review_notes: "Hero = Eurasian hobby foto 2020, matchar Falco subbuteo. Lärkfalk SE-sommargäst i halvöppna landskap."
+generated_at: '2026-05-15T19:01:20.827158+00:00'
+sources:
+  wikipedia_sv_revision: '57262784'
+  wikipedia_en_revision: '1353977182'
+  claude_model: claude-haiku-4-5-20251001

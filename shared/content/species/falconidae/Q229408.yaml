@@ -1,0 +1,126 @@
+id: Q229408
+scientific_name: Falco naumanni
+taxonomy:
+  family: Falconidae
+  family_sv: Falkfåglar
+  genus: falcon
+  ioc_order: Falconiformes
+names:
+  sv: Rödfalk
+  en: Lesser Kestrel
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödfalk
+
+
+    Rödfalk är en liten falk som tillhör familjen falkfåglar. Arten häckar i Medelhavsområdet
+    och sträcker sig österut till Kina. Den är migratorisk och flyttar under vintertid
+    till Afrika söder om Sahara för att söka föda.
+
+
+    Arten har länge varit klassificerad som utrotningshotad på grund av habitatförlust
+    och förföljelse. Under senare år har dock situationen förbättrats märkbart. Beståndet
+    har stabiliserats och har till och med ökat i vissa områden, vilket är ett positivt
+    tecken för artens överlevnad. Denna positiva utveckling är resultatet av ökade
+    naturvårdsinsatser och bättre skydd av häckningslokalerna.'
+  en: '# Lesser Kestrel
+
+
+    The lesser kestrel is a small falcon with a compact build suited to its aerial
+    hunting lifestyle. It breeds across a broad range spanning from the Mediterranean
+    eastward through Central Asia to China and Mongolia, making it one of the more
+    widespread falcon species. The bird is highly migratory, departing breeding grounds
+    to winter in Africa, Pakistan, and occasionally India and Iraq. It is rarely encountered
+    north of its established breeding range, and populations in Europe show concerning
+    declines.
+
+
+    This species favors open and semi-open habitats where it hunts small prey from
+    the air or low perches. The lesser kestrel is a summer breeder, timing its reproduction
+    to coincide with seasonal abundance of food resources. Its populations have faced
+    pressure from habitat loss and environmental changes across its range, contributing
+    to the downward trend observed particularly in European populations.'
+migration:
+  sv: '# Rödfalk – Förekomst i Nordeuropa
+
+
+    Rödfalk är en flyttfågel som inte är en regelbunden förekomstare i Skandinavien
+    och Nordeuropa. Arten häckar i Medelhavsområdet och eastut till Kina, men förekommer
+    inte som häckfågel i vårt område. Under hösten påbörjar rödfalken sin långväga
+    migration söderut till Afrika söder om Sahara, där den tillbringar vintern. Under
+    våren återvänder arten till sina häckningsområden i söder. Observationer av rödfalk
+    i Norden är mycket sällsynta och skulle klassificeras som extraordinära avvikelser
+    snarare än regelbundna migrationer genom vårt område.'
+  en: '# Lesser Kestrel (Rödfalk) in Scandinavia/Northern Europe
+
+
+    The Lesser Kestrel is extremely rare in Scandinavia and Northern Europe. This
+    small falcon breeds primarily in the Mediterranean region and Central Asia, with
+    its European range now declining significantly. As a summer migrant, it winters
+    primarily in Africa, with some populations reaching Pakistan, India, and Iraq.
+    The species is only occasionally recorded north of its main breeding range, making
+    sightings in Scandinavia highly exceptional. Any occurrences in Northern Europe
+    would represent vagrants far outside the species'' typical migration routes and
+    established range.'
+image_refs:
+- role: hero
+  path: Q229408/hero.jpg
+  width: 2086
+  height: 2400
+  license: CC BY 2.0
+  author: '<ul><li><a href="//commons.wikimedia.org/wiki/File:Falco_naumanni_back.jpg"
+    title="File:Falco naumanni back.jpg">Falco_naumanni_back.jpg</a>: <a rel="nofollow"
+    class="external text" href="https://www.flickr.com/photos/stuutje/">Tim Sträter</a></li>
+
+    <li>derivative work: <span typeof="mw:File"><a href="//commons.wikimedia.org/wiki/File:Madrid_Barajas_R.svg"
+    class="mw-file-description"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Madrid_Barajas_R.svg/20px-Madrid_Barajas_R.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
+    decoding="async" width="18" height="18" class="mw-file-element" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Madrid_Barajas_R.svg/40px-Madrid_Barajas_R.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail
+    2x" data-file-width="150" data-file-height="150"></a></span><a href="//commons.wikimedia.org/wiki/User:Raghith"
+    title="User:Raghith">aghith</a></li></ul>'
+  source_url: https://commons.wikimedia.org/wiki/File:Falco naumanni back crop.jpg
+  commons_filename: Falco naumanni back crop.jpg
+- role: secondary
+  path: Q229408/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Falco naumanni 91766371.jpg
+  commons_filename: Falco naumanni 91766371.jpg
+- role: secondary
+  path: Q229408/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Falco naumanni 91766358.jpg
+  commons_filename: Falco naumanni 91766358.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:00:24.583814+00:00'
+sources:
+  wikipedia_sv_revision: '56991927'
+  wikipedia_en_revision: '1325802332'
+  claude_model: claude-haiku-4-5-20251001

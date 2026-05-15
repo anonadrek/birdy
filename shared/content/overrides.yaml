@@ -312,3 +312,11 @@ species:
   Q1052022:
     description_accept_missing: [sv]  # Jemenastrild (Arabian Waxbill) — endemic Jemen
     allow_missing_images: true  # Commons saknar foto över MIN_DIMENSION=2048
+  # Falconidae batch (2026-05-15): svwiki kort/saknas.
+  Q131918:
+    description_accept_missing: [sv]  # Stenfalk (Merlin) — sv svwiki extract för kort
+  Q747785:
+    description_accept_missing: [sv]  # Sotfalk (Sooty Falcon) — afrikansk/Mellanöstern
+  # Falconidae batch (2026-05-15): enwiki kort.
+  Q212243:
+    description_accept_missing: [en]  # Eleonorafalk (Eleonora's Falcon) — medelhavsklippor

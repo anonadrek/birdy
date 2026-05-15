@@ -1,0 +1,105 @@
+id: Q747785
+scientific_name: Falco concolor
+taxonomy:
+  family: Falconidae
+  family_sv: Falkfåglar
+  genus: falcon
+  ioc_order: Falconiformes
+names:
+  sv: Sotfalk
+  en: Sooty Falcon
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Sooty Falcon
+
+
+    The Sooty Falcon is a medium-sized falcon with a distinctive dark plumage that
+    gives it its common name. It breeds across a broad range from northeastern Africa
+    through to the southern Persian Gulf region, making it a bird of arid and semi-arid
+    landscapes. During winter months, the species migrates southward to East Africa
+    and Madagascar, demonstrating a notable long-distance migratory pattern.
+
+
+    This falcon is adapted to open and sparsely vegetated habitats where it hunts
+    small birds and insects in flight. Its streamlined build and agile flight style
+    reflect its aerial hunting prowess. The Sooty Falcon''s call and specific behavioral
+    characteristics, typical of falcons, include rapid stooping dives when pursuing
+    prey.
+
+
+    Amateur birdwatchers encountering this species should note its overall dark coloration,
+    which distinguishes it from paler falcon species in the same regions. Timing observations
+    according to the species'' migratory schedule—breeding season in the northern
+    portions of its range and winter presence in southern regions—will improve sighting
+    opportunities.'
+migration:
+  sv: ''
+  en: '# Sooty Falcon (Falco concolor) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Sooty Falcon breeds in northeastern Africa and the Persian Gulf region, wintering
+    in East Africa and Madagascar. This species does not naturally occur in Scandinavia
+    or Northern Europe, and there are no documented records of regular or seasonal
+    presence in these regions.'
+image_refs:
+- role: hero
+  path: Q747785/hero.jpg
+  width: 2048
+  height: 1538
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2572233">Mahomed
+    Desai</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Falco concolor - Mahomed Desai
+    - 577990859.jpeg
+  commons_filename: Falco concolor - Mahomed Desai - 577990859.jpeg
+- role: secondary
+  path: Q747785/secondary-1.jpg
+  width: 1800
+  height: 1352
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2572233">Mahomed
+    Desai</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Falco concolor - Mahomed Desai
+    - 577990860.jpeg
+  commons_filename: Falco concolor - Mahomed Desai - 577990860.jpeg
+- role: secondary
+  path: Q747785/secondary-2.jpg
+  width: 1800
+  height: 1352
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2572233">Mahomed
+    Desai</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Falco concolor - Mahomed Desai
+    - 577990863.jpeg
+  commons_filename: Falco concolor - Mahomed Desai - 577990863.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:00:32.658376+00:00'
+sources:
+  wikipedia_sv_revision: '55731023'
+  wikipedia_en_revision: '1336479686'
+  claude_model: claude-haiku-4-5-20251001

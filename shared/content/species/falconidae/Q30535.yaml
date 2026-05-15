@@ -1,0 +1,128 @@
+id: Q30535
+scientific_name: Falco peregrinus
+taxonomy:
+  family: Falconidae
+  family_sv: Falkfåglar
+  genus: falcon
+  ioc_order: Falconiformes
+names:
+  sv: Pilgrimsfalk
+  en: Peregrine Falcon
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Pilgrimsfalk
+
+
+    Pilgrimen är en stor och kraftfull falk med iögonfallande utseende. Ryggen är
+    mörk grå till svart medan undersidan är ljus med tät grå vattring. Det mest karakteristiska
+    draget är den skarpa ansiktsmasken med en tydlig "mustasch" – ett mörkt streck
+    som löper ner från ögat. Hanen är ungefär lika stor som en ringduva, medan honan
+    är något större än en kråka. Kroppslängden varierar mellan 40–50 cm och vingspannet
+    mellan 80–110 cm.
+
+
+    Pilgrimen är känd för sitt spektakulära jaktbeteende. När den dykstötar mot sitt
+    byte – främst mindre fåglar – kan den nå hastigheter på över 320 km/h, vilket
+    gör den till världens snabbaste djur under dessa attackdykningar. Det är dock
+    viktigt att notera att pilgrimen inte flyger på denna hastighet under normal kryss,
+    utan endast under dessa kontrollerade dykningar.
+
+
+    Arten förekommer på nästan alla kontinenter och har gjort en bemerkvär återhämtning
+    efter att ha varit nära utrotning. Man kan ofta se pilgrimen jaga från höga utgångspunkter
+    som klippor, tornspiraler och höga byggnader i urbana miljöer.'
+  en: '# Peregrine Falcon
+
+
+    The peregrine falcon is a large, crow-sized raptor renowned for its exceptional
+    speed in pursuit of flying prey. It displays distinctive plumage: a blue-grey
+    back contrasts sharply with barred white underparts, while a striking black head
+    and "moustache" markings give it a characterful appearance. Like other bird-eating
+    falcons, it exhibits marked sexual dimorphism, with females noticeably larger
+    than males.
+
+
+    This species is a specialist hunter of birds in flight, which dictates much of
+    its behaviour and habitat preferences. Peregrines favour open landscapes—cliffs,
+    moorlands, and urban areas with tall buildings—where they can launch high-speed
+    stoops at passing prey. They are highly adaptable and have successfully colonised
+    cities, nesting on buildings and bridges where abundant pigeon populations provide
+    food.
+
+
+    The falcon''s vocalisation is a sharp, repeated chitter-chatter, particularly
+    intense around the nest. Historically persecuted and nearly extinct in many regions
+    due to pesticide poisoning, peregrine falcon populations have recovered remarkably
+    well following legal protection and intensive conservation efforts. Today, it
+    is found across most continents and remains one of the most impressive and iconic
+    raptors encountered by birdwatchers.'
+migration:
+  sv: '# Pilgrimsfalk – Förekomst i Nordeuropa
+
+
+    Migrationsdata saknas för denna art.'
+  en: '# Peregrine Falcon in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only morphological and taxonomic information
+    about the Peregrine Falcon, with no details regarding its occurrence, migration
+    patterns, or seasonal distribution in Scandinavia or Northern Europe. To provide
+    accurate information about this species'' phenology in the region, additional
+    sources with specific migration and overwintering data would be required.'
+image_refs:
+- role: hero
+  path: Q30535/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: Jacob W. Frank
+  source_url: https://commons.wikimedia.org/wiki/File:Peregrine falcon (Falco peregrinus)
+    and four chicks (ed4d091b-79a4-4752-be96-589ad25c39c7).jpg
+  commons_filename: Peregrine falcon (Falco peregrinus) and four chicks (ed4d091b-79a4-4752-be96-589ad25c39c7).jpg
+- role: secondary
+  path: Q30535/secondary-1.jpg
+  width: 1800
+  height: 1491
+  license: Public domain
+  author: USFWS photo
+  source_url: https://commons.wikimedia.org/wiki/File:Falco peregrinus nest USFWS.jpg
+  commons_filename: Falco peregrinus nest USFWS.jpg
+- role: secondary
+  path: Q30535/secondary-2.jpg
+  width: 1457
+  height: 1800
+  license: Public domain
+  author: USFWS photo
+  source_url: https://commons.wikimedia.org/wiki/File:Falco peregrinus nest USFWS
+    free.jpg
+  commons_filename: Falco peregrinus nest USFWS free.jpg
+review_status: approved
+review_notes: "Hero = Falco peregrinus med fyra ungar, klassisk fältidentifiering av adult + bo. Pilgrimsfalk häckar på klippor + stadshus i hela SE."
+generated_at: '2026-05-15T19:00:23.670861+00:00'
+sources:
+  wikipedia_sv_revision: '59258079'
+  wikipedia_en_revision: '1352535534'
+  claude_model: claude-haiku-4-5-20251001
