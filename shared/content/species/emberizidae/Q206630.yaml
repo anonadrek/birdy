@@ -1,0 +1,128 @@
+id: Q206630
+scientific_name: Emberiza hortulana
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Ortolansparv
+  en: Ortolan Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ortolansparv
+
+
+    Ortolansparven är en liten fågel i familjen fältsparvar. Dess namn kommer från
+    det latinska ordet "hortulus" – trädgårdsfågeln – vilket återspeglar att arten
+    länge varit associerad med odlade områden och trädgårdar.
+
+
+    Arten kännetecknas av en tämligen anspräkslös utseende med brun och grågul färgteckning.
+    Ortolansparven är en buskhoppare som ofta ses på öppna marker och i glest beväxade
+    områden där den födosöker på marken och bland låg vegetation. Under häckningstiden
+    är den något skygger och kan vara svår att få syn på.
+
+
+    Arten har minskat dramatiskt i antal och är numera akut hotad i Sverige. Denna
+    nedgång utgör en oroande trend för en fågel som tidigare var mer vanlig än idag.
+    Arten förekommer vid häckningen främst i kärleksfulla miljöer med lämpligt växtsamhälle.'
+  en: '# Ortolan Bunting
+
+
+    The ortolan bunting is a small passerine belonging to the bunting family. Its
+    name derives from Middle French, referring to its association with gardens and
+    cultivated areas. It is found across Eurasian regions, where it inhabits open
+    woodlands, scrubland, and agricultural landscapes.
+
+
+    In appearance, it is a compact bunting with distinctive plumage that varies seasonally.
+    Males display greenish-yellow head markings and warmer underparts, while females
+    are duller overall. The species is primarily active during breeding season in
+    temperate regions, with populations migrating to wintering grounds in Africa.
+
+
+    The ortolan bunting has a characteristic call and song, though it is generally
+    a rather quiet bird. It feeds on seeds and insects, foraging on the ground or
+    in low vegetation. It is typically observed singly or in small groups, often perching
+    openly on exposed branches or posts, making it relatively easy to locate during
+    the appropriate season. Migration periods are when the species is most noticeable
+    to birders, as individuals move between their breeding and wintering territories.'
+migration:
+  sv: '# Ortolansparv - Migration och förekomst i Norden
+
+
+    Ortolansparven är en långdistansflygerifågel som är en sommargäst i Skandinavien
+    och Nordeuropa. Arten anländer till sina häckningsområden under våren, typiskt
+    från april till maj, efter att ha övervintrerat i Afrika söder om Sahara. Under
+    sommaren häckar arten spritt i olika delar av Skandinavien, främst i öppna och
+    halvöppna biotoper. Hösten, omkring augusti till september, påbörjas återflyttningen
+    sydvästerut mot afrikaniska övervintringsområden. Arten förekommer aldrig under
+    vintermånaderna i nordiska regioner.'
+  en: '# Ortolan Bunting (Emberiza hortulana) in Scandinavia
+
+
+    The Ortolan Bunting is a summer visitor to Scandinavia and Northern Europe, arriving
+    in late April and May to breed in open woodland, scrubland, and agricultural areas.
+    The species is most common in southern and central parts of the region, with populations
+    decreasing northward. During the breeding season, males are conspicuous and vocal,
+    occupying territories in suitable habitat. In late August and September, birds
+    begin their southward migration, vacating Scandinavian breeding grounds to overwinter
+    in Africa south of the Sahara. The species does not overwinter in Northern Europe.'
+image_refs:
+- role: hero
+  path: Q206630/hero.jpg
+  width: 2048
+  height: 2048
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/4147611">Сергей
+    Неклюдов</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza hortulana 164714240.jpg
+  commons_filename: Emberiza hortulana 164714240.jpg
+- role: secondary
+  path: Q206630/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza hortulana, Djerdap
+    NP, Srbija (112).jpg
+  commons_filename: Emberiza hortulana, Djerdap NP, Srbija (112).jpg
+- role: secondary
+  path: Q206630/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza hortulana, Djerdap
+    NP, Srbija (127).jpg
+  commons_filename: Emberiza hortulana, Djerdap NP, Srbija (127).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:39:39.894671+00:00'
+sources:
+  wikipedia_sv_revision: '57325783'
+  wikipedia_en_revision: '1344000790'
+  claude_model: claude-haiku-4-5-20251001

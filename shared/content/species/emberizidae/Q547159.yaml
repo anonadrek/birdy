@@ -1,0 +1,96 @@
+id: Q547159
+scientific_name: Emberiza bruniceps
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Stäppsparv
+  en: Red-headed Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stäppsparv
+
+
+    Stäppsparven är en fågel inom familjen fältsparvar som häckar i Centralasien.
+    Den är mycket nära släkt med svarthuvad sparv och hybridiserar med denna där deras
+    utbredningsområden möts. Arten är klassificerad som livskraftig enligt IUCN:s
+    bedömning.
+
+
+    Denna sparv förekommer primärt i öppna stäppmiljöer och gräsrika områden i Centralasien,
+    där den hittas under häckningstiden. Släktskapet med svarthuvad sparv gör att
+    de två arterna kan påverka varandra där de möts, något som forskare följer noga.
+    Trots detta behöll arten en stabil population och räknas inte som hotad.'
+  en: ''
+migration:
+  sv: '# Stäppsparv - Utbredning i Nordeuropa
+
+
+    Stäppsparven är en centralasiatisk art som inte förekommer i Skandinavien eller
+    Nordeuropa under något senare år. Arten är knuten till stäppregionerna i Centralasien
+    där den häckar. Det finns inga etablerade migrationsmönster mellan Centralasien
+    och nordiska länder, och arten ses inte regelbundet i denna region.
+
+
+    Migrationsdata saknas för denna art i relation till Skandinavien och Nordeuropa.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q547159/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/6014575">Кирилл</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza bruniceps 515937518.jpg
+  commons_filename: Emberiza bruniceps 515937518.jpg
+- role: secondary
+  path: Q547159/secondary-1.jpg
+  width: 1335
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-headed Bunting Emberiza
+    bruniceps Female in Jowar crop by Dr. Raju Kasambe DSC 4546.jpg
+  commons_filename: Red-headed Bunting Emberiza bruniceps Female in Jowar crop by
+    Dr. Raju Kasambe DSC 4546.jpg
+- role: secondary
+  path: Q547159/secondary-2.jpg
+  width: 1437
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-headed Bunting Emberiza
+    bruniceps Female by Dr. Raju Kasambe DSCN9058 (173).jpg
+  commons_filename: Red-headed Bunting Emberiza bruniceps Female by Dr. Raju Kasambe
+    DSCN9058 (173).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:37:57.043363+00:00'
+sources:
+  wikipedia_sv_revision: '58681304'
+  wikipedia_en_revision: '1315368339'
+  claude_model: claude-haiku-4-5-20251001

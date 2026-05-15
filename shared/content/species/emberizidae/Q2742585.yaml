@@ -1,0 +1,91 @@
+id: Q2742585
+scientific_name: Emberiza sahari
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Hussparv
+  en: House Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Hussparv
+
+
+    Hussparv är en nordafrikansk fältsparvfågel som förekommer från Marocko till Senegal
+    och Tchad. Till skillnad från den närbesläktade bergsparven är hussparven knuten
+    till människans närhet och förekommer ofta i bebyggelse. Arten är noterad för
+    att öka i antal.
+
+
+    Hussparven tillhör familjen fältsparvar inom ordningen tättingar och är således
+    närbesläktad med andra sparvar i samma familj. Arten skiljer sig från bergsparven
+    genom sin förkärlek för mänskliga bosättningar, där den är väl anpassad för att
+    leva i nära samspel med människan.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (The source text only describes the bird''s geographic range in North Africa and
+    does not contain any information about occurrence in Scandinavia/Northern Europe
+    or migration patterns. Hussparv is a North African species that does not naturally
+    occur in Scandinavia or Northern Europe.)'
+  en: ''
+image_refs:
+- role: hero
+  path: Q2742585/hero.jpg
+  width: 1566
+  height: 2106
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/61021753@N02">Biodiversity
+    Heritage Library</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Malurus nimudicus + Emberiza
+    Sahari (Algeria).jpg
+  commons_filename: Malurus nimudicus + Emberiza Sahari (Algeria).jpg
+- role: secondary
+  path: Q2742585/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Robdefreitas&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Robdefreitas (page does not exist)">Robdefreitas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tibibt (Emberiza sahari), Marrakesh.jpg
+  commons_filename: Tibibt (Emberiza sahari), Marrakesh.jpg
+- role: secondary
+  path: Q2742585/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Henri_Pidoux" title="User:Henri
+    Pidoux">Henri Pidoux</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza sahari, Marrakech.jpg
+  commons_filename: Emberiza sahari, Marrakech.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:38:13.920595+00:00'
+sources:
+  wikipedia_sv_revision: '57758351'
+  wikipedia_en_revision: '1349930334'
+  claude_model: claude-haiku-4-5-20251001

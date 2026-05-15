@@ -1,0 +1,110 @@
+id: Q1193031
+scientific_name: Emberiza striolata
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Bergsparv
+  en: Striolated Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bergsparv
+
+
+    Bergsparv är en tätting som tillhör familjen fältsparvar. Det är en liten fågel
+    som är nära släkt med hussparven, och dessa två arter behandlades tidigare som
+    en enda art. Bergsparven förekommer i karga bergstrakter från nordöstra Afrika
+    genom Mellanöstern till Indien, där det trivs i höglänta och torra miljöer.
+
+
+    Arten har ett stabilt bestånd och antalet individer ökar, vilket gör att det klassificeras
+    som livskraftigt. Bergsparven är välanpassad för sitt tuffa bergsmiljöer och är
+    en viktig del av de lokala ekosystemen där den förekommer.'
+  en: '# Striolated Bunting
+
+
+    The striolated bunting is a small passerine in the bunting family Emberizidae.
+    It is a compact, heavily streaked bird with fine linear markings throughout its
+    plumage, giving it a distinctly striped appearance that distinguishes it from
+    related bunting species. The overall coloration is subdued, with buff and brown
+    tones predominating.
+
+
+    This species inhabits arid and semi-arid regions, typically favoring rocky slopes,
+    sparse scrubland, and mountainous terrain. It tends to be rather inconspicuous,
+    often remaining hidden within low vegetation. The striolated bunting forages on
+    the ground for seeds and insects, sometimes joining small feeding flocks outside
+    the breeding season.
+
+
+    The call is a simple, quiet chip, while the song is a brief, undistinctive warble
+    that lacks the complexity heard in some other bunting species. During breeding
+    season, males may sing from exposed perches, though they generally remain unobtrusive
+    birds. The striolated bunting''s cryptic appearance and retiring behavior mean
+    it often goes unnoticed despite being reasonably common within its range.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    En: Migration data unavailable for this species.'
+  en: '# Migration Data Unavailable for This Species
+
+
+    The provided source text contains only taxonomic information about the Striolated
+    Bunting''s classification within the bunting family Emberizidae. No information
+    regarding its occurrence in Scandinavia, Northern Europe, seasonal distribution,
+    migration patterns, overwintering habits, or arrival months is included in the
+    source material.
+
+
+    To provide accurate information about this species'' annual cycle in northern
+    regions, additional sources documenting its geographic range and seasonal movements
+    would be required.'
+image_refs:
+- role: hero
+  path: Q1193031/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Robdefreitas&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Robdefreitas (page does not exist)">Robdefreitas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tibibt (Emberiza sahari), Marrakesh.jpg
+  commons_filename: Tibibt (Emberiza sahari), Marrakesh.jpg
+- role: secondary
+  path: Q1193031/secondary-1.jpg
+  width: 1800
+  height: 1069
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/145489125@N03">peterichman</a>
+  source_url: https://commons.wikimedia.org/wiki/File:House Bunting ( Emberiza striolata
+    ) ... Southern Morocco (53460985289).jpg
+  commons_filename: House Bunting ( Emberiza striolata ) ... Southern Morocco (53460985289).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:38:03.619035+00:00'
+sources:
+  wikipedia_sv_revision: '59162122'
+  wikipedia_en_revision: '1329227190'
+  claude_model: claude-haiku-4-5-20251001

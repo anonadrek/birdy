@@ -1,0 +1,119 @@
+id: Q286809
+scientific_name: Emberiza rustica
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Videsparv
+  en: Rustic Bunting
+abundance: allmän
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Videsparv
+
+
+    Videsparv är en liten fågel som tillhör familjen fältsparvar. Den häckar på den
+    sibiriska tajgan i ett vidsträckt område från Skandinavien och österut. Arten
+    är migrationsbenägen och flyttar långväga vintertid – en del populationer reser
+    hela vägen till östra Kina för att tillbringa de kallare månaderna.
+
+
+    Arten möter idag utmaningar på grund av habitatförändringar. Både på häckplatserna
+    i norr och i övervintringsområdena i söder försvinner lämplig miljö, vilket har
+    lett till en minskning av beståndet. Denna utveckling kräver uppmärksamhet för
+    att bevara arten för framtiden.'
+  en: '# Rustic Bunting
+
+
+    The rustic bunting is a small passerine belonging to the bunting family Emberizidae,
+    a group now recognized as distinct from finches. Its name derives from the Old
+    German "Embritz" (bunting) and the Latin "rustica" (rustic, simple), reflecting
+    both its taxonomic classification and modest appearance.
+
+
+    This species exhibits the characteristic compact build typical of buntings, with
+    a relatively short tail and conical bill adapted for seed-eating. Rustic buntings
+    display subtle but distinctive plumage patterns that aid identification in the
+    field. The bird''s call and song are diagnostic features useful for detection,
+    particularly during breeding season when males become vocal.
+
+
+    The rustic bunting frequents open and semi-open habitats, favoring areas with
+    scattered shrubs and grassland. It shows typical bunting behavior, often foraging
+    on the ground for seeds and insects, though it may also glean food from vegetation.
+    The species has an extensive range across northern regions, with populations showing
+    migratory tendencies that bring individuals through various habitats during passage
+    periods and winter months.'
+migration:
+  sv: '# Videsparv (Emberiza rustica) – Förekomst i Skandinavien
+
+
+    Videsparven häckar i Skandinavien och utgör den västra delen av sin sibieriska
+    häckningspopulation. Under häckningstiden förekommer arten i öppen tajgamiljö.
+    Arten är en långdistansflytt som överge Skandinavien när hösten nalkas och flyttar
+    långt söderut till sina övervintringsområden i östra Asien, framför allt östra
+    Kina. Under vintern saknas arten helt i Skandinavien. Återkomsten till häckningsområdena
+    sker på våren då miljöförhållandena möjliggör häckning igen. Populationen minskar
+    på grund av habitatförstöring både i häckningsområdet och i övervintringsområdet.'
+  en: '# Rustic Bunting (Emberiza rustica) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q286809/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29310050@N04">yamatsu</a>
+  source_url: https://commons.wikimedia.org/wiki/File:カシラダカ (頭高) (Rustic Bunting)
+    (Emberiza rustica) (23264222832).jpg
+  commons_filename: カシラダカ (頭高) (Rustic Bunting) (Emberiza rustica) (23264222832).jpg
+- role: secondary
+  path: Q286809/secondary-1.jpg
+  width: 1800
+  height: 1161
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=Template:Kjetil_Hansen&amp;action=edit&amp;redlink=1"
+    class="new" title="Template:Kjetil Hansen (page does not exist)">Template:Kjetil
+    Hansen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza rustica european distribution
+    2010-2011.png
+  commons_filename: Emberiza rustica european distribution 2010-2011.png
+- role: secondary
+  path: Q286809/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3160036">Лариса
+    Артемьева</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza rustica 430410539.jpg
+  commons_filename: Emberiza rustica 430410539.jpg
+review_status: approved
+review_notes: "Hero = Rustic Bunting foto med japansk filtitel (arten övervintrar i östra Asien), matchar Emberiza rustica. Videsparv häckar i norrlandssumpar."
+generated_at: '2026-05-15T18:39:48.231803+00:00'
+sources:
+  wikipedia_sv_revision: '59193509'
+  wikipedia_en_revision: '1318524740'
+  claude_model: claude-haiku-4-5-20251001

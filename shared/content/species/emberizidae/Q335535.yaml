@@ -1,0 +1,89 @@
+id: Q335535
+scientific_name: Emberiza aureola
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Gyllensparv
+  en: Yellow-breasted Bunting
+abundance: ovanlig
+iucn_status: CR
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gyllensparv
+
+
+    Gyllensparv är en liten sparv med karakteristisk färgteckning. Hanen är särskilt
+    distinkt med sitt gula bröst, svarta ansiktsmask och rödbrun rygg. Honan är mattare
+    färgad med gulgröna toner och mindre uttalad mönstring. Arten häckar i nordöstra
+    Europa och norra Asien, där den förekommer mycket sparsamt. Under vintern flyttar
+    arten till södra och sydöstra Asien.
+
+
+    Arten förekommer typiskt i öppna och halvöppna biotoper med låg vegetation. Det
+    är en liten sparv med någorlunda kort stjärt och konisk näbb, väl anpassad för
+    att plocka frön. Arten är relativt ljudlös jämfört med många andra sparvar.
+
+
+    Gyllensparven minskar mycket kraftigt i antal, framför allt på grund av omfattande
+    fångst i övervintringsområdet där stora mängder fåglar samlas. IUCN klassificerar
+    den som akut hotad art, vilket gör den till en av Europas mest hotade fågelarter.'
+  en: "# Yellow-breasted Bunting\n\nThe yellow-breasted bunting is a bunting in the\
+    \ family Emberizidae, found across boreal and East Palearctic regions. Its name\
+    \ derives from Latin *aureola*, meaning \"golden,\" referring to the bird's distinctive\
+    \ coloration. \n\nThe species has a characteristic call described as a distinctive\
+    \ \"zick\" sound, while its song is a clear, repeated \"tru-tru, tri-tri\" pattern.\
+    \ These vocalizations are useful for identifying the species in the field, particularly\
+    \ during breeding season when males are most vocal.\n\nThe bird inhabits boreal\
+    \ and East Palearctic environments, making it a species of interest to birdwatchers\
+    \ in these northern regions. Like other buntings, it is a passerine bird adapted\
+    \ to open or semi-open habitats typical of these climatic zones."
+migration:
+  sv: '**Gyllensparv (Emberiza aureola) – förekomst i Norden**
+
+
+    Gyllensparv är en migrerande art som häckar i nordöstra Europa och norra Asien,
+    men förekommer endast mycket fåtaligt i Finland under häckningsperioden. Arten
+    är en långdistansmigrant som lämnar sina nordiska häckningsområden under hösten
+    för att övervintra i södra och sydöstra Asien. Den återvänder till häckningsområdena
+    under vårens gång. I Skandinavien och Nordeuropa är arten därför en sparsam passage-fågel
+    under migrations-perioderna, särskilt under hösten då den passerar genom norra
+    Europa på väg söderut.'
+  en: '# Yellow-breasted Bunting in Northern Europe
+
+
+    The Yellow-breasted Bunting is a summer visitor to Scandinavia and northern Europe,
+    arriving in late May and early June to breed in boreal forests and birch woodlands.
+    The species departs in August and September to winter in southeastern Asia, making
+    it a long-distance migrant. In Scandinavia, it is primarily found in northern
+    regions, with populations concentrated in Sweden, Norway, and Finland. The species
+    is often detected during migration periods in May and August-September. It is
+    rare in southern Scandinavia except as a vagrant during spring and autumn migration.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:39:42.876483+00:00'
+sources:
+  wikipedia_sv_revision: '55877099'
+  wikipedia_en_revision: '1315289805'
+  claude_model: claude-haiku-4-5-20251001

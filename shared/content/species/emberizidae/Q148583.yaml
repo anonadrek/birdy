@@ -1,0 +1,136 @@
+id: Q148583
+scientific_name: Emberiza cirlus
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Häcksparv
+  en: Cirl Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Häcksparv
+
+
+    Häcksparv är en mindre sparv inom familjen fältsparvar som förekommer i Sydeuropa
+    och Nordafrika. Det är en stannfågel som stannar året runt i sitt utbredningsområde.
+    Arten kategoriseras av IUCN som livskraftig med en stabil population.
+
+
+    Häcksparven är en medelstor sparv med karakteristisk fjäderdräkt. Hanfågeln är
+    särskilt färgglad under häckningstiden med gulfärgade partier på ansiktet och
+    klassiska sparv-liknande teckningsmönster. Honan är mer diskret färgad i bruna
+    och gråa toner.
+
+
+    Arten förekommer typiskt i halvöppna, varma miljöer med låg vegetation och buskar.
+    Det är en häcksparv som visar territorium under reproduktionstiden. Arten är främst
+    fröätare men varierar dieten med insekter under häckningsperioden, särskilt när
+    den matar unga. Häcksparven är relativt hemlighetsfull men kan observeras från
+    exponerade sittplatser där den ofta ses singandes från låga buskar eller träd
+    under morgonen och kvällen.'
+  en: '# Cirl Bunting
+
+
+    The Cirl Bunting is a small passerine bird belonging to the bunting family Emberizidae.
+    Males are particularly striking, displaying a distinctive yellow and black head
+    pattern with olive-green upperparts and yellow underparts streaked with brown.
+    Females are duller, with more subdued colouration and less pronounced head markings,
+    making them somewhat challenging to identify in the field.
+
+
+    This species is primarily a ground and low vegetation forager, often feeding on
+    seeds and insects. It tends to be quite vocal, particularly during breeding season,
+    with males producing a characteristically repetitive, metallic song that sounds
+    like a variation of common and lesser goldfinch calls. The call is often described
+    as a sharp, wiry note.
+
+
+    The Cirl Bunting frequents warm, open habitats including scrubland, hedgerows,
+    and cultivated areas with scattered vegetation. It prefers regions with a Mediterranean
+    or warm temperate climate, typically staying year-round in milder areas or undertaking
+    short-distance migrations in more northern regions. The species has expanded its
+    range northward in recent decades, likely in response to climate change and habitat
+    management practices that favour its preferred open, scrubby landscape.'
+migration:
+  sv: '# Häcksparv - förekomst i norra Europa
+
+
+    Häcksparven är primärt en sydeuropeisk art som inte förekommer naturligt i Skandinavien
+    eller Nordeuropa under året. Arten är klassificerad som stannfågel, vilket innebär
+    att den är företrädesvis icke-migratorisk i sitt naturliga utbredningsområde i
+    Sydeuropa och Nordafrika. Då arten inte är etablerad i norra Europa, förekommer
+    den inte regelbundet här varken under häckningstid, övervintring eller under migrationstider.
+    Eventuella observationer i Skandinavien skulle utgöra spridda vaganter långt utanför
+    artens normala utbredningsområde.'
+  en: '# Cirl Bunting (Emberiza cirlus) - Occurrence in Scandinavia/Northern Europe
+
+
+    The Cirl Bunting is a rare vagrant to Scandinavia and Northern Europe, with no
+    established breeding population in the region. This southern European species
+    has a breeding range centered on the Mediterranean and temperate zones, extending
+    north to southern France and occasionally southern England. In Scandinavia, sightings
+    are extremely sporadic and primarily occur during spring and autumn migration
+    periods, representing birds that have wandered northward from their core range.
+    The species is not a regular winter visitor to Northern Europe, and any records
+    in the region are considered exceptional occurrences rather than predictable seasonal
+    movements.'
+image_refs:
+- role: hero
+  path: Q148583/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza cirlus, Le Petit Loc'h,
+    Guidel, Brittany, France (19811048488).jpg
+  commons_filename: Emberiza cirlus, Le Petit Loc'h, Guidel, Brittany, France (19811048488).jpg
+- role: secondary
+  path: Q148583/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nikola_Veljkovi%C4%87&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Nikola Veljković (page does not exist)">Nikola Veljković</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Crnogrla strnadica (Emberiza
+    cirlus). Cirl Bunting.jpg
+  commons_filename: Crnogrla strnadica (Emberiza cirlus). Cirl Bunting.jpg
+- role: secondary
+  path: Q148583/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/83657186@N05">Pierre-Marie
+    Epiney</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bruant zizi Emberiza cirlus
+    DSC 8050 (51823540881).jpg
+  commons_filename: Bruant zizi Emberiza cirlus DSC 8050 (51823540881).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:40:01.571303+00:00'
+sources:
+  wikipedia_sv_revision: '57320383'
+  wikipedia_en_revision: '1334592378'
+  claude_model: claude-haiku-4-5-20251001

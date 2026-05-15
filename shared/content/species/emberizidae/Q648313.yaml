@@ -1,0 +1,120 @@
+id: Q648313
+scientific_name: Emberiza buchanani
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Bergortolan
+  en: Grey-necked Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bergortolan
+
+
+    Bergortolan är en asiatisk bergslevande fågelart inom familjen fältsparvar. Det
+    är en flyttfågel som häckar över ett stort område från Kaspiska havet till Altaj
+    i Centralasien och övervintrar i södra Asien. Arten uppträder ofta i mindre flockar
+    utanför häckningssäsongen.
+
+
+    Bergortolan är en mycket tillfällig gäst i Europa och ses endast undantagsvis
+    långt från sitt normala utbredningsområde. Arten är klassificerad som livskraftig
+    enligt IUCN. För den intresserade fågelbeskådaren är bergortolan en sällsynt och
+    oväntat fynd, där enstaka observationer har gjorts långt västerut bland annat
+    i Skandinavien.'
+  en: '# Grey-necked Bunting
+
+
+    The grey-necked bunting is a small bunting species found across Central Asia.
+    It breeds in a wide range stretching from the Caspian Sea region eastward to the
+    Altai Mountains, then migrates to winter grounds in southern parts of Asia. Like
+    other buntings, it is a social bird and is typically encountered in small flocks
+    rather than as solitary individuals.
+
+
+    The species favors open habitats across its range, though specific details about
+    plumage and distinctive field marks would aid identification in the field. As
+    with many buntings, observing it during migration periods or in its wintering
+    grounds offers the best opportunities for birdwatchers to encounter this species.
+    Its preference for flocking behavior means that finding one individual often leads
+    to locating several others nearby.'
+migration:
+  sv: '# Bergortolan i Skandinavien
+
+
+    Bergortolan är en mycket sällsynt och tillfällig gäst i Skandinavien och övriga
+    Europa. Arten är en flyttfågel som häckar i Centralasien från Kaspiska havet till
+    Altaj-bergskedjan och övervintrar i södra Asien. Endast enstaka fynd har dokumenterats
+    i Europa, inklusive observationer från Finland och Sverige. Dessa förekomster
+    representerar vagrantfåglar långt från artens normala utbredningsområde och följer
+    ingen regelbunden migrationsmönster till regionen. Bergortolan är därför inte
+    etablerad som någon förutsägbar återvändande fågel i det nordiska området.'
+  en: '# Grey-necked Bunting in Northern Europe
+
+
+    The grey-necked bunting is extremely rare in Scandinavia and Northern Europe,
+    occurring only as a vagrant outside its regular range. This Central Asian species
+    breeds from the Caspian Sea to the Altai Mountains and winters in Southern Asia,
+    far from northern latitudes. Any sightings in Scandinavia would be exceptional
+    and accidental rather than part of established migration patterns. The species
+    does not have a predictable seasonal presence in the Nordic region.'
+image_refs:
+- role: hero
+  path: Q648313/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza buchanani (22883202923).jpg
+  commons_filename: Emberiza buchanani (22883202923).jpg
+- role: secondary
+  path: Q648313/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Grey-necked Bunting (Emberiza
+    buchanani) (23384996356).jpg
+  commons_filename: Grey-necked Bunting (Emberiza buchanani) (23384996356).jpg
+- role: secondary
+  path: Q648313/secondary-2.jpg
+  width: 1320
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grey-necked Bunting Emberiza
+    buchanani by Dr. Raju Kasambe DSCN2126 (1).jpg
+  commons_filename: Grey-necked Bunting Emberiza buchanani by Dr. Raju Kasambe DSCN2126
+    (1).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:39:15.416065+00:00'
+sources:
+  wikipedia_sv_revision: '57680835'
+  wikipedia_en_revision: '1314585236'
+  claude_model: claude-haiku-4-5-20251001

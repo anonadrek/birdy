@@ -1,0 +1,128 @@
+id: Q334183
+scientific_name: Emberiza melanocephala
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Svarthuvad sparv
+  en: Black-headed Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svarthuvad sparv
+
+
+    Svarthuvad sparv är en medelstor fågel i fältsparvfamiljen. Hanen i häckningsdräkt
+    är karakteristisk med sin svarta huvud- och ansiktsmask som kontrasterar skarpt
+    mot den gula undersidan och bröstpartiet. Honan och fåglar utanför häckningstiden
+    är mycket svårare att särskilja från den närbesläktade stäppsparven – de är nästan
+    identiska. Arten förekommer främst i östra Medelhavsområdet och västra Asien under
+    häckningstiden.
+
+
+    Svarthuvad sparv är en flyttfågel som övervintrarna huvudsakligen i Indien och
+    närliggande områden. Under flyttning påträffas den sporadiskt långt norr om sitt
+    normala utbredningsområde, och den har observerats i Sverige vid ungefär 50 tillfällen.
+    Arten är klassificerad som livskraftig av IUCN.'
+  en: '# Black-headed Bunting
+
+
+    The black-headed bunting is a striking bunting species that breeds across south-east
+    Europe extending eastward to Iran, then migrates to winter grounds primarily in
+    India and occasionally further into south-east Asia. It inhabits open grassland
+    environments where it characteristically forages in flocks, searching the ground
+    for grains and seeds.
+
+
+    Adult males display bold plumage with bright yellow underparts contrasting sharply
+    against a chestnut back and distinctive black head. Females in breeding plumage
+    appear as duller versions of males, though their basic pattern remains recognizable.
+    Non-breeding birds and females in other plumages can prove challenging to identify,
+    particularly when compared to the closely related red-headed bunting. The two
+    species'' ranges overlap in northern Iran, where natural hybridization occasionally
+    occurs between them, further complicating field identification in that region.
+
+
+    The species'' preference for open grassland and gregarious feeding behaviour make
+    it relatively easy to observe during migration and on winter grounds, where flocks
+    may congregate in suitable habitat patches.'
+migration:
+  sv: '# Svarthuvad sparv – Förekomst i Skandinavien
+
+
+    Svarthuvad sparv är en mycket sällsynt gäst i Skandinavien och övriga Nordeuropa.
+    Arten häckar i östra Medelhavsområdet och västra Asien, och flyttar under vintern
+    huvudsakligen till Indien och närliggande länder. Den påträffas endast tillfälligt
+    norr om sitt normala utbredningsområde, och har dokumenterats i Sverige vid ungefär
+    50 tillfällen. Det rör sig således om enstaka observationer under migrationsperioderna,
+    utan att arten etablerar någon regelbunden förekomst i Skandinavien.'
+  en: '# Black-headed Bunting in Scandinavia/Northern Europe
+
+
+    The Black-headed Bunting is not a regular occurrence in Scandinavia or Northern
+    Europe. This species breeds in south-east Europe and winters primarily in India
+    and south-east Asia, with its range centered far south of the Nordic region. While
+    vagrant individuals may occasionally be recorded during migration periods, particularly
+    in spring and autumn, the species has no established presence in Scandinavian
+    territories. Any sightings in northern Europe would represent exceptional wanderers
+    well outside their normal migratory range, which spans from south-eastern European
+    breeding grounds to Indian wintering grounds.'
+image_refs:
+- role: hero
+  path: Q334183/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Carduelis carduelis & Emberiza
+    melanocephala, Peštersko Polјe, Serbia 140.jpg
+  commons_filename: Carduelis carduelis & Emberiza melanocephala, Peštersko Polјe,
+    Serbia 140.jpg
+- role: secondary
+  path: Q334183/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza melanocephala 237307853.jpg
+  commons_filename: Emberiza melanocephala 237307853.jpg
+- role: secondary
+  path: Q334183/secondary-2.jpg
+  width: 1440
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mdkshots&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mdkshots (page does not exist)">Mdkshots</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black-headed bunting (Emberiza
+    melanocephala).jpg
+  commons_filename: Black-headed bunting (Emberiza melanocephala).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:38:43.199639+00:00'
+sources:
+  wikipedia_sv_revision: '56588504'
+  wikipedia_en_revision: '1341627308'
+  claude_model: claude-haiku-4-5-20251001

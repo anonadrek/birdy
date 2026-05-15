@@ -278,3 +278,18 @@ species:
   # Dromadidae batch (2026-05-15): single-species exotic, ingen svwiki.
   Q213836:
     description_accept_missing: [sv]  # Hägerpipare (Crab-plover) — Indiska havet, ingen svwiki
+  # Emberizidae batch (2026-05-15): svwiki saknas/kort för sydliga sparvar.
+  Q205491:
+    description_accept_missing: [sv]  # Klippsparv (Rock Bunting) — sydeuropéer
+  Q216855:
+    description_accept_missing: [sv, en]  # Dvärgsparv (Little Bunting) — sv 48w under 80-tröskel + en saknas
+  # Emberizidae batch (2026-05-15): enwiki lead för kort/saknas.
+  Q2742585:
+    description_accept_missing: [en]  # Hussparv (House Bunting) — nordafrikansk
+  Q547159:
+    description_accept_missing: [en]  # Stäppsparv (Red-headed Bunting) — asiatisk vagrant
+  Q837753:
+    description_accept_missing: [en]  # Rostsparv (Cretzschmar's Bunting) — Mellanösterns medelhavskust
+  # Emberizidae batch (2026-05-15): inga Commons-foton över MIN_DIMENSION=2048.
+  Q335535:
+    allow_missing_images: true  # Gyllensparv (Yellow-breasted Bunting) — CR, sparse Commons hi-res

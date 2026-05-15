@@ -1,0 +1,99 @@
+id: Q837753
+scientific_name: Emberiza caesia
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Rostsparv
+  en: Cretzschmar’s Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rostsparv
+
+
+    Rostsparven är en sparv som tillhör familjen fältsparvar. Det är en mycket liten
+    fågel som liknar ortolansparven och bergortolanen närmare släkt. Arten häckar
+    framför allt utmed kustnära områden vid Medelhavet, medan det övervintrarar framför
+    allt i Sudan. Rostsparven är klassificerad som livskraftig enligt IUCN.
+
+
+    Arten ses endast tillfälligt norr om sitt ordinarie utbredningsområde. I Sverige
+    har arten noterats mycket sällan, med endast tre fynd dokumenterade. På grund
+    av källtextens begränsade information är detaljer om utseende, beteende och ljud
+    svåra att presentera utan att gissa. För mera specifik information om rostsparven
+    rekommenderas specieliserad fågellitteratur eller ornitologiska resurser.'
+  en: ''
+migration:
+  sv: '# Rostsparv (Cretzschmar''s Bunting) i Skandinavien
+
+
+    Rostsparven är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten häckar
+    längs kusterna vid östra Medelhavet och genomför långdistansmigration till övervintringsområden
+    huvudsakligen i Sudan, Afrika. I Sverige har arten endast dokumenterats vid tre
+    tillfällen, vilket gör den till en mycket ovanlig irrfågel norr om sitt normala
+    utbredningsområde. Dessa fynd representerar gränsöverskridande vagabonderande
+    individer långt från arten typiska migrationsvägar. Rostsparven förekommer således
+    inte regelbundet i något område i Skandinavien eller Nordeuropa under någon årstid.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q837753/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Cretzschmar's Bunting (Emberiza
+    caesia), Lesvos, Greece, 17.04.2015 (17330404772).jpg
+  commons_filename: Cretzschmar's Bunting (Emberiza caesia), Lesvos, Greece, 17.04.2015
+    (17330404772).jpg
+- role: secondary
+  path: Q837753/secondary-1.jpg
+  width: 1800
+  height: 1340
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Cretzschmar's Bunting (Emberiza
+    caesia) Mt. Olympus, Lesvos, Greece, 14.04.2015 (17294601805).jpg
+  commons_filename: Cretzschmar's Bunting (Emberiza caesia) Mt. Olympus, Lesvos, Greece,
+    14.04.2015 (17294601805).jpg
+- role: secondary
+  path: Q837753/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bruinkeelortolaan - Cretzschmar's
+    Bunting - Emberiza caesia.jpg
+  commons_filename: Bruinkeelortolaan - Cretzschmar's Bunting - Emberiza caesia.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:38:37.648997+00:00'
+sources:
+  wikipedia_sv_revision: '56586104'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

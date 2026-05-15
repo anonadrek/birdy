@@ -1,0 +1,100 @@
+id: Q265701
+scientific_name: Emberiza cineracea
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Gulgrå sparv
+  en: Cinereous Bunting
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gulgrå sparv
+
+
+    Gulgrå sparv är en fågel som tillhör familjen fältsparvar och förekommer främst
+    i västra Asien samt i sydostligaste Europa. Arten är mycket sällsynt som besökare
+    i övriga Europa och har endast dokumenterats ett fåtal gånger väster om sitt normala
+    utbredningsområde.
+
+
+    Populationen av gulgrå sparv är liten och minskande, vilket har lett till att
+    IUCN klassificerar arten som nära hotad. Detta gör den till en intressant raritet
+    för européiska fågelsägare, även om möjligheten att observera den utanför sitt
+    huvudsakliga utbredningsområde är mycket begränsad.'
+  en: '# Cinereous Bunting
+
+
+    The cinereous bunting is a member of the bunting family Emberizidae, a passerine
+    group distinct from finches. This species, first described by Christian Ludwig
+    Brehm, displays the characteristic features typical of its family.
+
+
+    Unfortunately, the available source material provides limited detail about the
+    cinereous bunting''s appearance, behaviour, vocalizations, and habitat preferences.
+    To offer a comprehensive guide suitable for amateur birdwatchers—covering plumage,
+    distinguishing features, call characteristics, and geographic distribution—additional
+    descriptive information would be required. Interested readers are encouraged to
+    consult more detailed regional bird guides or ornithological references that document
+    this species'' specific identification marks and ecology.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and historical information about
+    the Cinereous Bunting (Emberiza cineracea), with no details regarding its occurrence
+    in Scandinavia/Northern Europe, migration patterns, seasonal movements, or overwintering
+    behavior. To provide accurate information about this species'' annual cycle in
+    northern regions, additional ornithological sources would be required.'
+image_refs:
+- role: hero
+  path: Q265701/hero.jpg
+  width: 2400
+  height: 1698
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Cinereous Bunting (Emberiza
+    cineracea), Lesvos, Greece, 17.04.2015 (17284201896).jpg
+  commons_filename: Cinereous Bunting (Emberiza cineracea), Lesvos, Greece, 17.04.2015
+    (17284201896).jpg
+- role: secondary
+  path: Q265701/secondary-1.jpg
+  width: 1800
+  height: 1273
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Cinereous Bunting (Emberiza
+    cineracea), Lesvos, Greece, 17.04.2015 (17284201896) (cropped).jpg
+  commons_filename: Cinereous Bunting (Emberiza cineracea), Lesvos, Greece, 17.04.2015
+    (17284201896) (cropped).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:38:34.177343+00:00'
+sources:
+  wikipedia_sv_revision: '55606597'
+  wikipedia_en_revision: '1328297323'
+  claude_model: claude-haiku-4-5-20251001

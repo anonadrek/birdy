@@ -1,0 +1,105 @@
+id: Q205491
+scientific_name: Emberiza cia
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Klippsparv
+  en: Rock Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Rock Bunting
+
+
+    The rock bunting is a small passerine in the bunting family Emberizidae. It is
+    a distinctive bird with grey and chestnut plumage, featuring characteristic bold
+    head markings with white and dark stripes that make it recognizable in the field.
+    The male typically displays brighter, more contrasting coloration than the female.
+
+
+    This species inhabits rocky slopes, cliffs, and stony hillsides where sparse vegetation
+    provides suitable habitat. It is often seen perched conspicuously on rocks or
+    low vegetation, from which it forages for seeds and insects. During breeding season,
+    the male delivers its simple, rhythmic song from exposed perches, a distinctive
+    tinkling phrase that helps identify the species. The call is a sharp, thin note.
+
+
+    The rock bunting favours arid and semi-arid regions across southern Europe, the
+    Mediterranean basin, and into Central Asia and the Middle East. It tends to be
+    a summer breeding visitor in northern parts of its range, though populations in
+    southern areas may be resident year-round. These bunting are typically seen singly
+    or in pairs during the breeding season, though they may form small flocks during
+    migration and winter months.'
+migration:
+  sv: ''
+  en: '# Rock Bunting (Emberiza cia) in Scandinavia/Northern Europe
+
+
+    The Rock Bunting is primarily a summer visitor to Scandinavia and Northern Europe,
+    with breeding populations arriving in late April through May. This species is
+    largely absent during winter months, with most individuals migrating southward
+    to Mediterranean and North African wintering grounds in September and October.
+    In Scandinavia, the Rock Bunting is restricted to suitable rocky habitats in southern
+    regions, particularly in Sweden where it is scarce and local. The species is present
+    from May through August during the breeding season, making it a typical trans-Saharan
+    migrant that winters in Africa before returning north in spring.'
+image_refs:
+- role: hero
+  path: Q205491/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rock Bunting (Emberiza cia),
+    Cochem.jpg
+  commons_filename: Rock Bunting (Emberiza cia), Cochem.jpg
+- role: secondary
+  path: Q205491/secondary-1.jpg
+  width: 1800
+  height: 1426
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Rock Bunting. Emberiza cia -
+    Flickr - gailhampshire.jpg
+  commons_filename: Rock Bunting. Emberiza cia - Flickr - gailhampshire.jpg
+- role: secondary
+  path: Q205491/secondary-2.jpg
+  width: 1800
+  height: 1298
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grijze gors - rock bunting -
+    Emberiza cia 2.tif
+  commons_filename: Grijze gors - rock bunting - Emberiza cia 2.tif
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:38:00.376164+00:00'
+sources:
+  wikipedia_sv_revision: '56586091'
+  wikipedia_en_revision: '1315252942'
+  claude_model: claude-haiku-4-5-20251001

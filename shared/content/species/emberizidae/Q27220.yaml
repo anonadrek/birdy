@@ -1,0 +1,129 @@
+id: Q27220
+scientific_name: Emberiza calandra
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Kornsparv
+  en: Corn Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kornsparv
+
+
+    Kornsparv är den största fågeln i familjen fältsparvar. Det är en robust, gråbrun
+    fågel med kraftig näbb, anpassad för att krossa frön. Hannar och honor ser mycket
+    lika ut, med tätt streckad fjäderdräkt som ger god kamouflage i öppen miljö.
+
+
+    Arten häckar i södra och centrala Europa och fortsätter östut i ett bälte ända
+    till Mongoliet. Det föredrar öppna landskap som jordbruksmark, steppper och torra
+    ängar. Populationen i Nordeuropa har minskat betydligt under senare decennier,
+    men arten anses fortfarande livskraftig överallt.
+
+
+    Kornsparv är en markhäckande fågel som ofta ses från upphöjda platser, där den
+    gärna sitter på stolpar eller tråd. Det är något mindre flyttfågel i vissa delar
+    av utbredningsområdet.'
+  en: '# Corn Bunting
+
+
+    The corn bunting is a large, heavily streaked bunting with buff-brown plumage
+    that provides excellent camouflage in open countryside. Males and females look
+    similar, though males are noticeably larger. Its robust build and stocky shape
+    distinguish it from smaller bunting species.
+
+
+    This bunting inhabits open agricultural landscapes and grasslands across its wide
+    range, which extends from Western Europe and North Africa eastward to northwestern
+    China. It typically frequents fields, scrubland, and areas with scattered vegetation
+    where it can perch and forage. The species is often seen in small groups, particularly
+    outside the breeding season.
+
+
+    The corn bunting has a distinctive, unmusical call often described as resembling
+    the sound of jingling keys, which is delivered from a prominent perch. This vocal
+    behaviour helps identify it in its open habitat, where visual observation may
+    prove challenging due to its camouflaged plumage. Its preference for exposed singing
+    posts makes it relatively conspicuous despite its drab coloration.'
+migration:
+  sv: '# Kornsparv – Förekomst i Norden
+
+
+    Kornsparv är en iraggande art som förekommer oregelbundet i Nordeuropa. Under
+    häcksäsongen är den främst knuten till södra och centrala Europa, men har tidigare
+    förekommit som häckfågel även i Skandinavien, särskilt i södra Sverige. Populationen
+    i Nordeuropa har minskat avsevärt under senare decennier. När arten förekommer
+    i norden anländer den typiskt under våren och återvänder söderut innan vintern.
+    Idag är observationer av kornsparv i Skandinavien mycket ovanliga och arten kan
+    betraktas som en sällsynt och oregelbunden gäst under höst- och vårtrasslningen,
+    särskilt i kustnära områden.'
+  en: '# Corn Bunting (Emberiza calandra) in Scandinavia/Northern Europe
+
+
+    The Corn Bunting is a summer breeder across much of Scandinavia and Northern Europe,
+    arriving in spring (April-May) from wintering grounds in southern Europe, North
+    Africa, and the Mediterranean region. During breeding season, this large bunting
+    inhabits open agricultural landscapes and grasslands. As autumn approaches (August-September),
+    populations migrate southwestward, abandoning northern breeding territories. While
+    some individuals may occasionally overwinter in milder coastal regions of southern
+    Scandinavia, the species is largely absent from the region during winter months.
+    Population numbers in Scandinavia have declined significantly in recent decades
+    due to agricultural intensification.'
+image_refs:
+- role: hero
+  path: Q27220/hero.jpg
+  width: 2400
+  height: 1549
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza calandra singing.jpg
+  commons_filename: Emberiza calandra singing.jpg
+- role: secondary
+  path: Q27220/secondary-1.jpg
+  width: 1800
+  height: 1197
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Corn bunting (Emberiza calandra).jpg
+  commons_filename: Corn bunting (Emberiza calandra).jpg
+- role: secondary
+  path: Q27220/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grauwe gors - corn bunting -
+    Emberiza calandra.jpg
+  commons_filename: Grauwe gors - corn bunting - Emberiza calandra.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:39:12.666037+00:00'
+sources:
+  wikipedia_sv_revision: '57966465'
+  wikipedia_en_revision: '1313934845'
+  claude_model: claude-haiku-4-5-20251001

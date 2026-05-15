@@ -1,0 +1,131 @@
+id: Q26961
+scientific_name: Emberiza schoeniclus
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Sävsparv
+  en: Common Reed Bunting
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sävsparv
+
+
+    Sävsparven är en fågel från familjen fältsparvar som förekommer över ett stort
+    område i Europa och norra Asien, ända österut till Stilla havet. Det är en art
+    som är anpassad till våtmarker, men förekommer även i fjälltrakters björk- och
+    videbälten där det finns lämpliga habitat med vegetation.
+
+
+    Arten har minskat i antal under senare år, något som troligen beror på förändrade
+    miljöförhållanden och habitatförlust. Trots denna minskning kategoriseras sävsparven
+    fortfarande som livskraftig av IUCN, vilket innebär att arten inte anses vara
+    hotad för närvarande.'
+  en: '# Common Reed Bunting
+
+
+    The common reed bunting is a small passerine in the bunting family, widespread
+    across Europe and much of the Palearctic. Males are distinctive with black and
+    white head markings, while females are duller and streakier. It is a common and
+    familiar sight in reedbeds, where it often perches prominently on reed stems and
+    vegetation.
+
+
+    This species is highly adaptable and breeds in diverse habitats beyond reedbeds,
+    including moorland, arable land, and rush pastures on poorly drained soils. Most
+    populations migrate south in winter, though birds in milder regions remain year-round
+    residents. It forages for seeds and insects among low vegetation, and males deliver
+    their thin, scratchy song from exposed perches during breeding season.
+
+
+    The reed bunting''s call is a sharp, metallic *tink*, while its song is a characteristically
+    brief, unmusical series of notes. It favors lowland and upland fringe areas with
+    rough or wet grassland, making it a common breeding resident in suitable wetland
+    habitats across its range.'
+migration:
+  sv: '# Sävsparv - Förekomst i Nordeuropa
+
+
+    Sävsparv är en partiell flyttfågel som förekommer året runt i Skandinavien, men
+    populationen varierar säsongsmässigt. Under våren anländer fler individer från
+    söder för att häcka i våtmarker och framför allt i björk- och videbälten på högre
+    höjder. En del fåglar övervintrar i södra Skandinavien och längs kusterna där
+    området inte fryser helt, medan större delen av populationen drar söderut under
+    hösten. De nordligaste häckarna är tvungna att migrera längre för att undvika
+    de hårdaste klimatbetingelserna.
+
+
+    Arten är således en typisk sommargäst i fjälltrakterna men kan förekomma året
+    runt i mildare kustnära områden. Flyttningen är inte helt preciserad i tillgängligt
+    material, men huvudsakligen sker ankomsten till häckningsområdena under april-maj
+    och avflyttningen under augusti-oktober.'
+  en: '# Common Reed Bunting in Northern Europe
+
+
+    The Common Reed Bunting is a widespread breeding bird throughout Scandinavia and
+    Northern Europe, with populations present from spring through autumn. Most individuals
+    are migratory, departing for southern wintering grounds during autumn months,
+    typically from September onwards. However, some birds remain resident year-round,
+    particularly in milder coastal and western regions of the range. Spring arrivals
+    generally occur from March to April as breeding birds return to establish territories
+    in reedbeds and open wetland habitats. The species'' migration patterns reflect
+    the severity of local winters, with northern populations showing more pronounced
+    southward movement than their western counterparts.'
+image_refs:
+- role: hero
+  path: Q26961/hero.jpg
+  width: 1469
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common reed bunting (Emberiza
+    schoeniclus) 2021.jpg
+  commons_filename: Common reed bunting (Emberiza schoeniclus) 2021.jpg
+- role: secondary
+  path: Q26961/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Reed Bunting (Male) - Emberiza
+    schoeniclus (50968939411).jpg
+  commons_filename: Reed Bunting (Male) - Emberiza schoeniclus (50968939411).jpg
+- role: secondary
+  path: Q26961/secondary-2.jpg
+  width: 1800
+  height: 1412
+  license: CC BY 2.0
+  author: Gidzy
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza schoeniclus M.jpg
+  commons_filename: Emberiza schoeniclus M.jpg
+review_status: approved
+review_notes: "Hero = Common reed bunting foto 2021, matchar art. Sävsparv häckar i vass och våtmarker över hela SE."
+generated_at: '2026-05-15T18:38:05.100850+00:00'
+sources:
+  wikipedia_sv_revision: '59194672'
+  wikipedia_en_revision: '1335493293'
+  claude_model: claude-haiku-4-5-20251001

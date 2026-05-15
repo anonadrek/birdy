@@ -1,0 +1,128 @@
+id: Q26205
+scientific_name: Emberiza citrinella
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Gulsparv
+  en: Yellowhammer
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gulsparv
+
+
+    Gulsparven är en stor och långstjärtad sparv som kännetecknas av sin gula färgteckning.
+    Det är en robust fågel med en karakteristisk silhuett och en relativt lång svans
+    som oftast är väl synlig när det sitter uppöst på buskar eller teleledningar.
+
+
+    Arten förekommer över stora delar av Europa samt i väst- och centralasien. Merparten
+    av den europeiska populationen är stannfåglar som stannar året runt, medan den
+    östra underarten är delvis flyttfågel som söker sig längre söderut under vintermånaderna
+    för att finna föda.
+
+
+    Gulsparven är en ganska aktiv och alert fågel som ofta sitter väl synligt. Det
+    föredrar öppna och halvöppna landskapsmiljöer där det kan hitta frön och insekter.'
+  en: '# Yellowhammer
+
+
+    The yellowhammer is a striking bunting with distinctive plumage that varies between
+    sexes and seasons. Males display a bright yellow head and underparts contrasted
+    with a streaked brown back and chestnut rump, while females and non-breeding birds
+    show duller versions of the same pattern. This colouration makes them recognisable
+    even at a distance, particularly when flushed from cover.
+
+
+    It favours open habitats with scattered shrubs and trees, where it hunts for seeds
+    and insects on the ground. In winter, it forms small flocks, often joining mixed
+    feeding groups with other seed-eating birds. The yellowhammer is highly vocal,
+    especially during breeding season, delivering its characteristic song with a distinctive
+    rhythm often likened to "a little bit of bread and no cheese."
+
+
+    The species is native across Eurasia, where populations show varying migratory
+    patterns. Western European birds typically remain year-round in their breeding
+    territories, while eastern populations migrate southward to escape harsh winters.
+    It has also been introduced to the southern hemisphere with established populations
+    in both regions.'
+migration:
+  sv: '# Gulsparv (Emberiza citrinella) – förekomst i Skandinavien
+
+
+    Gulsparven är en mycket vanlig art i Skandinavien och Nordeuropa. Huvuddelen av
+    populationen i denna region är stannfåglar som stannar året runt, särskilt i södra
+    Skandinavien. Den östra underarten består dock delvis av flyttfåglar som migrerar
+    söderut under hösten för att övervintras i mildare klimatzoner. Under vintern
+    kan det ske en viss inflyttning av östliga individer från närliggande områden.
+    Arten återvänder från sin vinterövervintering under mars och april, och är sedan
+    mycket synlig under häckningstiden från april till juli.'
+  en: '# Yellowhammer (Emberiza citrinella) in Scandinavia/Northern Europe
+
+
+    The yellowhammer is a year-round resident across much of Scandinavia and Northern
+    Europe, with most Western European populations remaining in their breeding ranges
+    throughout winter. However, eastern subspecies populations are partially migratory,
+    with significant numbers moving southward to winter in more temperate regions.
+    Birds that do remain in northern areas form small flocks during the colder months
+    to improve foraging efficiency. Spring arrival occurs in March and April as migratory
+    populations return to breeding grounds, while departures for southern wintering
+    grounds typically take place from September through November, depending on local
+    weather conditions and food availability.'
+image_refs:
+- role: hero
+  path: Q26205/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Sunny365days" title="User:Sunny365days">Sunny365days</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza citrinella IMG 4214
+    01.jpg
+  commons_filename: Emberiza citrinella IMG 4214 01.jpg
+- role: secondary
+  path: Q26205/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza citrinella (19678972820).jpg
+  commons_filename: Emberiza citrinella (19678972820).jpg
+- role: secondary
+  path: Q26205/secondary-2.jpg
+  width: 1303
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Yellowhammer (Emberiza citrinella).jpg
+  commons_filename: Yellowhammer (Emberiza citrinella).jpg
+review_status: approved
+review_notes: "Hero = Emberiza citrinella foto, matchar art. Gulsparv är etablerad SE-häckare i öppna jordbrukslandskap året runt."
+generated_at: '2026-05-15T18:39:03.391548+00:00'
+sources:
+  wikipedia_sv_revision: '56851350'
+  wikipedia_en_revision: '1351156329'
+  claude_model: claude-haiku-4-5-20251001

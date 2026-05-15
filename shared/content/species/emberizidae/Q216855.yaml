@@ -1,0 +1,85 @@
+id: Q216855
+scientific_name: Emberiza pusilla
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Dvärgsparv
+  en: Little Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dvärgsparv
+
+
+    Dvärgsparv är en liten fågel i familjen fältsparvar som häckar på tajgan i norra
+    delen av den palearktiska zonen, med utbredning västerut in i nordligaste Norrland.
+    Under vintern är arten en långdistansflyttare som framför allt söker sig till
+    södra Kina. Arten anses ha ett livskraftigt bestånd.'
+  en: ''
+migration:
+  sv: '# Dvärgsparv – Förekomst i Norden
+
+
+    Dvärgsparven häckar på tajgan i norra palearkis och når västerut in i nordligaste
+    Norrland under häckningstiden. Det är en flyttfågel som genomför ett omfattande
+    årligt förflyttning. Vintertid lämnar arten Skandinavien och flyttar framför allt
+    till södra Kina, där den tillbringar vintermånaderna. Beståndet är stabilt och
+    anses livskraftigt.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q216855/hero.jpg
+  width: 2400
+  height: 1786
+  license: CC BY 4.0
+  author: Le <i>et al.</i> (2024)
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza pusilla (10.3897-BDJ.12.e133721)
+    Figure 5.jpg
+  commons_filename: Emberiza pusilla (10.3897-BDJ.12.e133721) Figure 5.jpg
+- role: secondary
+  path: Q216855/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Lorensonowal" title="User:Lorensonowal">Lorensonowal</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Little Bunting (Emberiza pusilla)
+    DSC 7473.jpg
+  commons_filename: Little Bunting (Emberiza pusilla) DSC 7473.jpg
+- role: secondary
+  path: Q216855/secondary-2.jpg
+  width: 1800
+  height: 1399
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Emberiza pusilla Harrington
+    Burn 2.jpg
+  commons_filename: Emberiza pusilla Harrington Burn 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:38:25.652673+00:00'
+sources:
+  wikipedia_sv_revision: '59170283'
+  wikipedia_en_revision: '1314606220'
+  claude_model: claude-haiku-4-5-20251001

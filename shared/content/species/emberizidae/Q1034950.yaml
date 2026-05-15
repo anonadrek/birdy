@@ -1,0 +1,123 @@
+id: Q1034950
+scientific_name: Emberiza tahapisi
+taxonomy:
+  family: Emberizidae
+  family_sv: Fältsparvar
+  genus: Emberiza
+  ioc_order: Passeriformes
+names:
+  sv: Zebrasparv
+  en: Cinnamon-breasted Bunting
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Zebrasparv
+
+
+    Zebrasparv är en sparv inom familjen fältsparvar som förekommer i stora delar
+    av Afrika samt i sydvästra Arabien. Arten är medelstor och karakteriseras av sitt
+    rostfärgade bröst och karakteristiska teckningar. Fjäderdräkten är varierande
+    mellan könen och åldersgrupperna, med mörkare markeringar på huvudet och en distinkt
+    teckning på undersidan.
+
+
+    Arten är vanligtvis knuten till halvöppen habitat med gräsmarker och låg växtlighet.
+    Det är en fågelart som ofta ses på marken eller i låga buskar, där det söker föda
+    bestående av frön och små insekter. Zebrasparven är en aktiv fågel som ofta rör
+    sig i små grupper.
+
+
+    Artens bestånd anses vara livskraftigt, och den är relativt vanlig inom sitt utbredningsområde.
+    För den intresserade fågelskådaren kan denna sparv vara ett givande fynd i lämpliga
+    biotoper inom sitt geografiska område.'
+  en: '# Cinnamon-breasted Bunting
+
+
+    The cinnamon-breasted bunting is a striking member of the Emberizidae family,
+    recognizable by its distinctive plumage featuring warm cinnamon tones on the breast
+    and underparts, contrasted with darker markings on the head and back. It has a
+    compact, sturdy build typical of buntings, with a conical bill adapted for seed-eating.
+
+
+    This species inhabits rocky outcrops, boulder-strewn hillsides, and arid scrubland
+    across sub-Saharan Africa. It is often seen perching on exposed rocks or low vegetation,
+    where it forages for seeds and insects. The bird tends to be quite vocal, delivering
+    sharp, distinctive calls that help reveal its presence even in sparse habitat.
+
+
+    The cinnamon-breasted bunting is generally social and may be encountered singly
+    or in small loose groups. It has adapted well to harsh, dry environments where
+    food and water are scarce, making it a characteristic species of rocky African
+    landscapes. Its preference for elevated perches and rocky terrain makes observation
+    relatively straightforward for patient birdwatchers in its range.'
+migration:
+  sv: 'sv: Migrationsdata saknas för denna art.
+
+
+    en: Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Cinnamon-breasted Bunting is an African species distributed south of the Sahara
+    and does not occur naturally in Scandinavia or Northern Europe. The source material
+    provides no information about its migration patterns, seasonal movements, or occurrence
+    in any temperate regions. This species is restricted to sub-Saharan African habitats
+    and would not be relevant for a Northern European bird guide.'
+image_refs:
+- role: hero
+  path: Q1034950/hero.jpg
+  width: 2400
+  height: 1530
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Cinnamon-breasted bunting, Emberiza
+    tahapisi, at Pilanesberg National Park, Northwest Province, South Africa (28486796805).jpg
+  commons_filename: Cinnamon-breasted bunting, Emberiza tahapisi, at Pilanesberg National
+    Park, Northwest Province, South Africa (28486796805).jpg
+- role: secondary
+  path: Q1034950/secondary-1.jpg
+  width: 1800
+  height: 1234
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Cinnamon-breasted bunting, Emberiza
+    tahapisi, at Pilanesberg National Park, Northwest Province, South Africa (28381650062).jpg
+  commons_filename: Cinnamon-breasted bunting, Emberiza tahapisi, at Pilanesberg National
+    Park, Northwest Province, South Africa (28381650062).jpg
+- role: secondary
+  path: Q1034950/secondary-2.jpg
+  width: 1800
+  height: 1092
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/21162417@N07">flowcomm</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cinnamon-breasted bunting (Emberiza
+    tahapisi) (51846908255).jpg
+  commons_filename: Cinnamon-breasted bunting (Emberiza tahapisi) (51846908255).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:39:10.729914+00:00'
+sources:
+  wikipedia_sv_revision: '55763062'
+  wikipedia_en_revision: '1351541403'
+  claude_model: claude-haiku-4-5-20251001
