@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
@@ -36,7 +37,7 @@ fun JournalHeadline(
     val serif = rememberDmSerifDisplay()
     val caveat = rememberCaveat()
 
-    FlowRow(modifier = modifier) {
+    FlowRow(modifier = modifier.semantics(mergeDescendants = true) {}) {
         segments.forEach { seg ->
             when (seg) {
                 is HeadlineSegment.Plain ->

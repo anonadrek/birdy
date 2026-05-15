@@ -68,6 +68,7 @@ import birdy_bird_scanner.composeapp.generated.resources.search_empty_body
 import birdy_bird_scanner.composeapp.generated.resources.search_empty_title
 import birdy_bird_scanner.composeapp.generated.resources.search_placeholder
 import birdy_bird_scanner.composeapp.generated.resources.settings_menu_item
+import birdy_bird_scanner.composeapp.generated.resources.species_photo_label
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
@@ -357,7 +358,7 @@ private fun SpeciesRow(
         if (summary.heroImagePath != null) {
             AsyncImage(
                 model = Res.getUri("files/images/${summary.heroImagePath}"),
-                contentDescription = null,
+                contentDescription = stringResource(Res.string.species_photo_label, summary.name),
                 contentScale = ContentScale.Crop,
                 modifier = thumbModifier,
             )

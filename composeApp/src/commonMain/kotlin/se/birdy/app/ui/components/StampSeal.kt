@@ -21,11 +21,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.stamp_in_progress_label
+import birdy_bird_scanner.composeapp.generated.resources.stamp_locked_label
+import birdy_bird_scanner.composeapp.generated.resources.stamp_unlocked_label
+import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.StampLocked
@@ -96,8 +105,30 @@ fun StampSeal(
             is StampSealState.Unlocked -> StampUnlockedBg
         }
 
+    val badgeName =
+        when (state) {
+            is StampSealState.Locked -> state.name.orEmpty()
+            is StampSealState.InProgress -> state.name.orEmpty()
+            is StampSealState.Unlocked -> state.name.orEmpty()
+        }
+    val semanticsLabel =
+        when (state) {
+            is StampSealState.Locked ->
+                stringResource(Res.string.stamp_locked_label, badgeName)
+            is StampSealState.InProgress ->
+                stringResource(Res.string.stamp_in_progress_label, badgeName, state.progressLabel.orEmpty())
+            is StampSealState.Unlocked ->
+                stringResource(Res.string.stamp_unlocked_label, badgeName)
+        }
+
     Column(
-        modifier = modifier.rotate(state.rotationDegrees()),
+        modifier =
+            modifier
+                .rotate(state.rotationDegrees())
+                .semantics(mergeDescendants = true) {
+                    contentDescription = semanticsLabel
+                    if (onClick != null) role = Role.Button
+                },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         val sealModifier =

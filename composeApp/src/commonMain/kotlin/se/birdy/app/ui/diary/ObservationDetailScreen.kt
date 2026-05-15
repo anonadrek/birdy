@@ -82,6 +82,7 @@ import birdy_bird_scanner.composeapp.generated.resources.diary_note_save_error
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_save_success
 import birdy_bird_scanner.composeapp.generated.resources.observation_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.observation_note_caveat_prompt
+import birdy_bird_scanner.composeapp.generated.resources.observation_photo_label
 import birdy_bird_scanner.composeapp.generated.resources.observation_visit_profile
 import birdy_bird_scanner.composeapp.generated.resources.profile_journal_headline
 import birdy_bird_scanner.composeapp.generated.resources.profile_plate_caption
@@ -205,7 +206,7 @@ private fun LoadedView(
             ) {
                 AsyncImage(
                     model = "file://${state.observation.photoPath}",
-                    contentDescription = null,
+                    contentDescription = stringResource(Res.string.observation_photo_label, speciesName),
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop,
                 )

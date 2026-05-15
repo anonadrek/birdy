@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.premium_hero_chip
+import birdy_bird_scanner.composeapp.generated.resources.premium_hero_photo_label
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
@@ -48,6 +49,7 @@ fun PremiumHeroCard(
     modifier: Modifier = Modifier,
 ) {
     val chipLabel = stringResource(Res.string.premium_hero_chip)
+    val heroPhotoLabel = stringResource(Res.string.premium_hero_photo_label)
     Box(
         modifier =
             modifier
@@ -58,7 +60,7 @@ fun PremiumHeroCard(
     ) {
         AsyncImage(
             model = Res.getUri("files/premium/great-tit-hero.jpg"),
-            contentDescription = null,
+            contentDescription = heroPhotoLabel,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize(),
         )

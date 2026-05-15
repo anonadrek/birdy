@@ -27,6 +27,7 @@ fun HeroImage(
     imagePath: String?,
     modifier: Modifier = Modifier,
     cornerRadius: Dp = 0.dp,
+    contentDescription: String? = null,
 ) {
     Box(
         modifier =
@@ -40,7 +41,7 @@ fun HeroImage(
         if (imagePath != null) {
             AsyncImage(
                 model = Res.getUri("files/images/$imagePath"),
-                contentDescription = null,
+                contentDescription = contentDescription,
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop,
             )

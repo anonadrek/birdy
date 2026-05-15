@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,6 +41,7 @@ fun PlateFrame(
             modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp, vertical = 12.dp)
+                .semantics(mergeDescendants = true) {}
                 .clip(RoundedCornerShape(12.dp))
                 .background(PaperBottom.copy(alpha = 0.5f))
                 .border(width = 1.dp, color = AccentCopper.copy(alpha = 0.3f), shape = RoundedCornerShape(12.dp))

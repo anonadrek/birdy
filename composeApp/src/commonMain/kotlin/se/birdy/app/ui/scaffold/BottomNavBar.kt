@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -121,9 +122,12 @@ private fun TabCell(
                 .clip(RoundedCornerShape(50))
                 .background(if (selected) AccentCopper.copy(alpha = 0.12f) else Color.Transparent)
                 .clickable(onClick = onClick)
-                .padding(vertical = 6.dp),
+                .padding(vertical = 6.dp)
+                .semantics(mergeDescendants = true) {},
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        // contentDescription = null: the Text label below is merged via mergeDescendants
+        // and serves as the announcement for TalkBack.
         Icon(tab.icon, contentDescription = null, tint = color)
         Spacer(Modifier.height(2.dp))
         Text(

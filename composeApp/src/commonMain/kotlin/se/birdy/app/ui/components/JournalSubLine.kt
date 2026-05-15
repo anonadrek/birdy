@@ -3,6 +3,7 @@ package se.birdy.app.ui.components
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import se.birdy.app.ui.theme.MarginaliaInk
@@ -19,7 +20,7 @@ fun JournalSubLine(
     val caveat = rememberCaveat()
     Text(
         text = text,
-        modifier = modifier,
+        modifier = modifier.semantics(mergeDescendants = true) {},
         color = MarginaliaInk,
         fontFamily = caveat,
         fontWeight = FontWeight.Normal,

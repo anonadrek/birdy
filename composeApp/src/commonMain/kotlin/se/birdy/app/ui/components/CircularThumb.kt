@@ -17,11 +17,16 @@ import se.birdy.app.ui.theme.SandCreme
  * Circular thumbnail with a warm-offwhite border ring, clipped to a circle.
  * Falls back to SandCreme background when the photo is loading or unavailable.
  * Sized by the [modifier] at call-site (typically 50dp).
+ *
+ * Pass a [contentDescription] when the image conveys meaning (e.g. the species name).
+ * Leave null when the thumbnail is decorative or when the surrounding row already
+ * announces the subject (TalkBack will skip the image).
  */
 @Composable
 fun CircularThumb(
     photoPath: String,
     modifier: Modifier = Modifier,
+    contentDescription: String? = null,
 ) {
     Box(
         modifier =
@@ -32,7 +37,7 @@ fun CircularThumb(
     ) {
         AsyncImage(
             model = "file://$photoPath",
-            contentDescription = null,
+            contentDescription = contentDescription,
             contentScale = ContentScale.Crop,
             modifier = Modifier.matchParentSize().clip(CircleShape),
         )
