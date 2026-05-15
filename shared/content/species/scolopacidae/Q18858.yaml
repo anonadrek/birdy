@@ -1,0 +1,128 @@
+id: Q18858
+scientific_name: Numenius phaeopus
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Numenius
+  ioc_order: Charadriiformes
+names:
+  sv: Småspov
+  en: Eurasian Whimbrel
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Småspov
+
+
+    Småspov är en medelstor vadarfågel som tillhör familjen snäppor. Den är karakteriserad
+    av långt, nedåtböjt näbb och brun, streckad fjäderdräkt. Huvudet är markerat med
+    två ljusa ögonbrynsränder som löper från näbbans bas bakåt, vilket är ett avgörande
+    igenkänningstecken.
+
+
+    Arten häckar i öppna landskap i norra Europa och Asien, ofta på myrmarker och
+    tundra. Under flyttningen och på övervintringsplatserna söker den föda på stränder,
+    mudderbankar och grunt vatten. Småspov äter främst små djur som det plockar eller
+    provar med sitt långa näbb.
+
+
+    Småspovens läte är karakteristiskt och består av en serie pipiga, visslade toner
+    som ofta hörs när fågeln är i flykt. Under vintern migrerar arten långt söderut
+    till kuster i Afrika, södra Asien och Australien, för att återvända till häckningsområdena
+    på våren. IUCN klassificerar arten som livskraftig.'
+  en: '# Eurasian Whimbrel
+
+
+    The Eurasian whimbrel is a medium-sized wader belonging to the curlew family.
+    It displays the characteristic curved bill typical of curlews, though shorter
+    and less pronounced than larger relatives. Its plumage is streaked brown and buff,
+    with a distinctive striped crown pattern that helps identify it in the field.
+    The bird''s overall appearance is more compact and streamlined than the larger
+    curlew species.
+
+
+    This species is highly migratory, breeding across subarctic regions and northern
+    Europe, including as far south as Scotland. It favors open moorland and tundra
+    habitats during breeding season. The whimbrel is one of the most widespread curlews
+    globally, undertaking impressive long-distance migrations to wintering grounds.
+    It typically feeds by probing wet ground and shallow water for invertebrates,
+    often moving in small flocks.
+
+
+    The whimbrel''s call is distinctive and easy to recognize—a rapid, bubbling whistle
+    often transcribed as "tit-tit-tit-tit-tit," quite different from the deeper calls
+    of larger curlews. During migration and on wintering grounds, it inhabits mudflats,
+    coastal areas, and estuaries where it can be spotted either singly or in loose
+    groups feeding alongside other wader species.'
+migration:
+  sv: Småspov är en långdistansflyttare som häckar i norra Europa och Asien. Under
+    häckningstiden återfinns arten i nordliga regioner, men när hösten nalkas påbörjar
+    småspovet sin långa migration söderut. Vinterkvarteren ligger vid kuststräckor
+    i Afrika, södra Asien och Australien. Återkomsten till häckningsområdena sker
+    under våren. Som långflyttare är småspovet beroende av att kunna passera genom
+    olika rastlokaler under sin migration mellan nord och söder.
+  en: '# Numenius phaeopus (Eurasian Whimbrel) in Northern Europe
+
+
+    The Eurasian Whimbrel is a migratory wader that breeds across the subarctic Palearctic
+    region and northern Europe, including Scotland. These birds arrive in their northern
+    breeding grounds during late spring, typically from May onwards. After the breeding
+    season concludes in summer, whimbrels undertake long-distance migrations southward
+    in late summer and autumn, departing Scandinavia and northern Europe by September.
+    They spend the winter in Africa and other southern regions, returning north again
+    the following spring to breed.'
+image_refs:
+- role: hero
+  path: Q18858/hero.jpg
+  width: 2400
+  height: 1590
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Whimbrel (Numenius phaeopus)
+    on Fuerteventura 2.jpg
+  commons_filename: Whimbrel (Numenius phaeopus) on Fuerteventura 2.jpg
+- role: secondary
+  path: Q18858/secondary-1.jpg
+  width: 1800
+  height: 1013
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/143108011@N05">Rickard
+    Holgersson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Numenius phaeopus, Norrbottens
+    Län, Sweden.jpg
+  commons_filename: Numenius phaeopus, Norrbottens Län, Sweden.jpg
+- role: secondary
+  path: Q18858/secondary-2.jpg
+  width: 1800
+  height: 1197
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian whimbrel (Numenius
+    phaeopus).jpg
+  commons_filename: Eurasian whimbrel (Numenius phaeopus).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:02:06.529374+00:00'
+sources:
+  wikipedia_sv_revision: '56538226'
+  wikipedia_en_revision: '1352624654'
+  claude_model: claude-haiku-4-5-20251001

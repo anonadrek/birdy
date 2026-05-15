@@ -1,0 +1,132 @@
+id: Q26114
+scientific_name: Scolopax rusticola
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Woodcock
+  ioc_order: Charadriiformes
+names:
+  sv: Morkulla
+  en: Eurasian Woodcock
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Morkulla
+
+
+    Morkulla är en fågel inom familjen snäppor som lever i skogsområden över stora
+    delar av de tempererade och subarktiska områdena i palearktis. Till skillnad från
+    många andra snäppor som föredrar öppna terränger är morkulla en skogsfågel. Den
+    är en medelstor snäppa med långt näbb, anpassat för att söka föda i mark och lera.
+    Fjäderdräkten är mörkbrun med varierad teckning som ger utmärkt kamouflage bland
+    löv och mossa på skogsbotten.
+
+
+    Morkulla är känd för sitt hemlighetsfulla beteende och är ofta svår att observera.
+    Under häckningstiden är den mest synlig under sina karakteristiska luftningar,
+    då den fyker omkring över markerna på skymningen och natten. Fågeln är en långflyttare
+    som återvänder till sina häckningsområden på våren efter att ha tillbringat vintern
+    i mildare klimat.'
+  en: '# Eurasian Woodcock
+
+
+    The Eurasian woodcock is a medium-small wading bird inhabiting temperate and subarctic
+    regions across Eurasia. Its plumage provides exceptional camouflage in woodland
+    settings, featuring reddish-brown upperparts and buff-coloured underparts that
+    blend seamlessly with leaf litter and woodland floor. One of its most distinctive
+    features is the positioning of its eyes far back on its head, granting it an unusual
+    360-degree field of vision—an adaptation valuable for detecting predators while
+    foraging.
+
+
+    The woodcock feeds by probing its long, sensitive bill into soft ground to extract
+    invertebrates and other prey. This foraging behaviour makes it particularly vulnerable
+    during harsh winters when frozen ground prevents effective feeding. The species
+    is typically encountered in woodlands and damp habitats where it can access suitable
+    soil for probing. Its cryptic nature and preference for concealment make it a
+    challenging bird to observe, though attentive watchers may spot it in suitable
+    woodland areas, particularly during dawn or dusk when it is most active.'
+migration:
+  sv: '# Morkulla - Flyttning i Skandinavien
+
+
+    Morkulla är en flyttfågel som återkommer till Skandinavien och Nordeuropa under
+    våren, vanligtvis från mars till april. Arten häckar i de tempererade och subarktiska
+    skogarna, där den förekommer under sommarmånaderna. Under hösten, typiskt från
+    september till oktober, migrerar morkullorna söderut för att övervintring i södra
+    Europa och Medelhavsregionen. En del individer från södra populationer kan förekomma
+    året runt i mildare delen av sitt utbredningsområde.
+
+
+    Migrationsdata saknas för denna art.
+
+    Migration data unavailable for this species.'
+  en: '# Eurasian Woodcock in Northern Europe
+
+
+    The Eurasian woodcock is a migratory species across Scandinavia and Northern Europe.
+    Breeding populations arrive in spring, typically from March onwards, establishing
+    territories in woodlands where they remain through the breeding season. As winter
+    approaches and ground conditions freeze, these birds migrate southward to milder
+    regions, with most departing by November. Some individuals may overwinter in southern
+    Scandinavia during mild winters, but the majority retreat to continental Europe
+    and the Mediterranean basin. This migration pattern is driven by the species''
+    dependence on accessible soil for foraging, as frozen ground prevents them from
+    probing for their invertebrate prey.'
+image_refs:
+- role: hero
+  path: Q26114/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/dmitry_tikhonov">dmitry_tikhonov</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Woodcock Scolopax rusticola,
+    Smolenskoye Poozer'e, Russia 207906425.jpg
+  commons_filename: Eurasian Woodcock Scolopax rusticola, Smolenskoye Poozer'e, Russia
+    207906425.jpg
+- role: secondary
+  path: Q26114/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/dmitry_tikhonov">dmitry_tikhonov</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Woodcock Scolopax rusticola,
+    Smolenskoye Poozer'e, Russia 207906517.jpg
+  commons_filename: Eurasian Woodcock Scolopax rusticola, Smolenskoye Poozer'e, Russia
+    207906517.jpg
+- role: secondary
+  path: Q26114/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/tcager">tcager</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Woodcock Scolopax rusticola,
+    Sverdlovsky District, Perm, Russia 423809263.jpg
+  commons_filename: Eurasian Woodcock Scolopax rusticola, Sverdlovsky District, Perm,
+    Russia 423809263.jpg
+review_status: approved
+review_notes: "Hero = Scolopax rusticola (Eurasian Woodcock); allmän skogsfågel i SE, häckar i fuktig blandskog och löv-skog över hela landet."
+generated_at: '2026-05-15T20:59:55.418122+00:00'
+sources:
+  wikipedia_sv_revision: '58627786'
+  wikipedia_en_revision: '1344983781'
+  claude_model: claude-haiku-4-5-20251001

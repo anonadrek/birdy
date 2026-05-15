@@ -1,0 +1,136 @@
+id: Q18864
+scientific_name: Limosa lapponica
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Limosa
+  ioc_order: Charadriiformes
+names:
+  sv: Myrspov
+  en: Bar-tailed Godwit
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Myrspov
+
+
+    Myrspov är en karakteristisk vadarfågel med långt, svagt uppåtböjt näbb och höga
+    ben. Under häckningstid bär arten rostfärgad fjäderdräkt på huvud, hals och bröst,
+    medan undersidan är gulvit. På hösten blir färgerna mattare och gråare. Fågeln
+    är cirka 37-41 cm lång.
+
+
+    Arten häckar på tundran i norra Eurasien och nordvästra Alaska, där den föredrar
+    öppna, fuktiga miljöer. Myrspov är känd för att genomföra några av djurrikets
+    längsta icke-avbrutna flygningar mellan häckningsplatser och vinterkvarter – en
+    prestation som är unik bland de flesta fågelarter.
+
+
+    Under födosöket stickar myrspoven sitt långa näbb i märg och djupt i marken för
+    att leta efter maskar och andra evertebrater. På rastplatser hittar man den ofta
+    i flock tillsammans med andra vadarfåglar. Arten har minskat kraftigt i antal,
+    särskilt i den östra delen av sitt utbredningsområde, och klassificeras av IUCN
+    som globalt nära hotad.'
+  en: '# Bar-tailed Godwit
+
+
+    The bar-tailed godwit is a striking large wader with a distinctive long, slightly
+    upturned bill and long legs built for wading. During breeding season, it displays
+    rich red plumage, making it unmistakable in its Arctic habitat. In non-breeding
+    plumage, it appears more subdued with greyish-brown tones. It feeds on bristle-worms
+    and shellfish, probing coastal mudflats and estuaries methodically.
+
+
+    This species is renowned for its extraordinary migratory behaviour. Populations
+    breed across Arctic coasts and tundra from Scandinavia eastward to Alaska. After
+    breeding, they undertake one of nature''s most remarkable journeys, with some
+    populations flying non-stop across the Pacific Ocean to overwinter in temperate
+    and tropical coastal regions of Australia and New Zealand. The Pacific population''s
+    migration is the longest known non-stop flight of any bird, covering vast distances
+    without pausing to feed—a testament to remarkable physiological adaptation.
+
+
+    The bar-tailed godwit is typically observed on coastal mudflats and estuaries,
+    particularly during migration periods and winter. Its presence at these wetland
+    habitats makes it a rewarding sighting for wader enthusiasts, though its time
+    in any given location is often brief given its migratory nature.'
+migration:
+  sv: '# Myrspov – Förekomst i Skandinavien/Nordeuropa
+
+
+    Myrspov är en långdistansflyttare som häckar på fjälltundran i norra Skandinavien
+    och Ryssland under sommaren. Arten anländer till häckningsområdena i maj-juni
+    efter sin återfärd från vinterkvarten. Under hösten, från juli-september, påbörjar
+    fåglarna sin migration southåt mot mediterrana och afrikanska vinterkvarter, där
+    de stannar under vintermånaderna. Arten ses därför endast i Skandinavien under
+    häckningssäsongen och under korta passager under flyttningstiderna, särskilt under
+    hösten då de passerar igenom på väg söderut.'
+  en: '# Bar-tailed Godwit (Limosa lapponica) in Scandinavia
+
+
+    The bar-tailed godwit is a highly migratory Arctic breeder that occurs in Scandinavia
+    during the breeding season, nesting on coastal tundra and Arctic regions. Birds
+    arrive in spring to breed, then depart in late summer and autumn for their wintering
+    grounds in temperate and tropical coastal regions. Scandinavian populations undertake
+    remarkable long-distance migrations, with some individuals traveling thousands
+    of kilometers to reach wintering areas. The species is present in northern Scandinavia
+    from late spring through mid-autumn, with arrival typically occurring in May and
+    departure in August-September.'
+image_refs:
+- role: hero
+  path: Q18864/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Limosa lapponica (Bar-tailed
+    godwit), Heligoland.jpg
+  commons_filename: Limosa lapponica (Bar-tailed godwit), Heligoland.jpg
+- role: secondary
+  path: Q18864/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Calidris tenuirostris, Calidris
+    ferruginea, and Limosa lapponica (24579574951).jpg
+  commons_filename: Calidris tenuirostris, Calidris ferruginea, and Limosa lapponica
+    (24579574951).jpg
+- role: secondary
+  path: Q18864/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Calidris tenuirostris, Calidris
+    ferruginea and Limosa lapponica (24673164275).jpg
+  commons_filename: Calidris tenuirostris, Calidris ferruginea and Limosa lapponica
+    (24673164275).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:02:08.167669+00:00'
+sources:
+  wikipedia_sv_revision: '58663424'
+  wikipedia_en_revision: '1349633646'
+  claude_model: claude-haiku-4-5-20251001

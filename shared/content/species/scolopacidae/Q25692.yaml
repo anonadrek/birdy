@@ -1,0 +1,133 @@
+id: Q25692
+scientific_name: Gallinago gallinago
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Gallinago
+  ioc_order: Charadriiformes
+names:
+  sv: Enkelbeckasin
+  en: Common Snipe
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Enkelbeckasin
+
+
+    Enkelbeckasin är en medelstor vadarfågel med varm brunspräcklig övre sida och
+    vit undersida. Den kännetecknas av en lång, rak näbb som är anpassad för att sonda
+    i mjuka lerbottnar på jakt efter föda. Färgteckningen ger utmärkt kamouflage i
+    sumpig terräng.
+
+
+    Under häckningsperioden är arten känd för sin spektakulära spelflykt, där hanen
+    störtdyker mot marken. De utbredda stjärtfjädrarna vibrerar under dykningen och
+    skapar ett karakteristiskt brummande, mekaniskt ljud – en helt unik ljud­framställning
+    för arten. Detta display­beteende är särskilt framträdande tidigt på säsongen.
+
+
+    Enkelbeckasin är huvudsakligen flyttfågel som häckar över stora delar av norra
+    Palearktis. Den förekommer ofta på våtmarker, kärrmarker och fuktig ängsmark där
+    den kan sonda efter bytesdjur i marken. Beståndet har minskat globalt, men räknas
+    fortfarande som livskraftigt.'
+  en: '# Common Snipe
+
+
+    The common snipe is a small, stocky wader with cryptic plumage that blends remarkably
+    well into its marshy habitat. Its long, straight bill is perfectly adapted for
+    probing soft mud in search of invertebrates, particularly insects and earthworms,
+    though it also consumes some plant material. The bird is characteristically shy
+    and elusive, often remaining hidden until flushed from cover.
+
+
+    During breeding season, males perform a distinctive courtship display called "winnowing."
+    They climb high into the sky in wide circles before diving sharply, vibrating
+    their tail feathers to produce a rapid drumming or bleating sound—an arresting
+    acoustic display that can be heard from considerable distances. This behaviour
+    is one of the most reliable ways to detect the species during the breeding season.
+
+
+    The common snipe breeds across the Old World in marshes, bogs, tundra, and wet
+    meadows, favouring habitats with soft ground and shallow water. It is found across
+    northern and temperate regions during breeding season, with populations moving
+    to lower latitudes during winter. In migration and winter, it frequents similar
+    wetland habitats, often occurring singly or in small, scattered groups.'
+migration:
+  sv: '# Enkelbeckasin – Förekomst i Skandinavien/Nordeuropa
+
+
+    Enkelbeckasin är en flyttfågel som häckar över stora delar av norra Palearktis,
+    inklusive Skandinavien och Nordeuropa. Arten återvänder till sina häckningsplatser
+    under våren för att börja fortplantningen, där hanarna genomför spektakulära spelflyger
+    med karakteristiska brummande ljud. Under hösten migrerar absoluta merparten av
+    populationen söderut för att övervintra i värmare områden vid Medelhavet, västra
+    Afrika och andra mediterraneiska regioner. Enkelbeckasin är således en långdistansflyttfågel
+    som endast är närvarande under häckningssäsongen i de nordiska länderna.'
+  en: '# Common Snipe (Gallinago gallinago) in Scandinavia
+
+
+    The Common Snipe is a migratory wader throughout Northern Europe and Scandinavia.
+    Breeding populations arrive in spring (March–April) to occupy marshes, bogs, and
+    wet meadows across the region. During summer months, they perform elaborate courtship
+    displays with characteristic "winnowing" sounds produced by diving with vibrating
+    tail feathers. As autumn approaches (August–September), populations begin their
+    southward migration, with most birds departing Scandinavia by October to overwinter
+    in southern Europe, the Mediterranean, and North Africa. Some individuals may
+    remain in milder coastal areas during winter if conditions permit. Spring return
+    migration occurs from February onwards, completing their annual cycle.'
+image_refs:
+- role: hero
+  path: Q25692/hero.jpg
+  width: 2325
+  height: 1549
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common snipe (Gallinago gallinago)
+    in courtship flight.jpg
+  commons_filename: Common snipe (Gallinago gallinago) in courtship flight.jpg
+- role: secondary
+  path: Q25692/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common snipe (Gallinago gallinago)
+    in courtship flight, Seltjarnarnes, Iceland.jpg
+  commons_filename: Common snipe (Gallinago gallinago) in courtship flight, Seltjarnarnes,
+    Iceland.jpg
+- role: secondary
+  path: Q25692/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common snipe (Gallinago gallinago)
+    2020.jpg
+  commons_filename: Common snipe (Gallinago gallinago) 2020.jpg
+review_status: approved
+review_notes: "Hero = Gallinago gallinago (Common Snipe / Enkelbeckasin); allmän våtmarksfågel i SE, häckar i myrar och kärr."
+generated_at: '2026-05-15T21:01:14.415381+00:00'
+sources:
+  wikipedia_sv_revision: '59194823'
+  wikipedia_en_revision: '1350011216'
+  claude_model: claude-haiku-4-5-20251001

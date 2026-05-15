@@ -1,0 +1,128 @@
+id: Q18850
+scientific_name: Actitis hypoleucos
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Actitis
+  ioc_order: Charadriiformes
+names:
+  sv: Drillsnäppa
+  en: Common Sandpiper
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Drillsnäppa
+
+
+    Drillsnäppa är en liten vadare som förekommer vid steniga stränder i Europa och
+    Asien. Arten är lätt att känna igen på sina karakteristiska gungande kroppsrörelser
+    när den rör sig på marken. I flykten är drillsnäppan mycket distinktiv – den flyger
+    lågt och stelt tätt ovanför vattenytan med snabba vingslag.
+
+
+    Drillsnäppan är en vadare som söker föda längs strandkanten, ofta på småstenar
+    och grus. Arten föredrar steniga miljöer där den kan röra sig lättfotad bland
+    stenarna. Den är en aktiv fågel som ofta ses gå eller springa snarare än att stå
+    stilla.
+
+
+    Arten har dessvärre minskat betydligt i antal. I Sverige är situationen särskilt
+    oroande och drillsnäppan listas nu som nära hotad, vilket indikerar ett kraftigt
+    minskande bestånd.'
+  en: '# Common Sandpiper
+
+
+    The common sandpiper is a small, active wader found across the Palearctic region.
+    It is a delicate bird with a slender build, brownish-grey upperparts, and white
+    underparts, with a distinctive thin white line above the eye. Its most characteristic
+    feature is its habit of constantly bobbing its rear end while standing, giving
+    it a nervous, restless appearance.
+
+
+    This species favors sandy and shingly shores of rivers, lakes, and coastal areas
+    during migration and winter. It typically feeds along waterlines, picking small
+    invertebrates from shallow water and muddy margins. In flight, it displays a rapid,
+    stiff-winged action with occasional glides. Its call is a sharp, high-pitched
+    "twee-wee-wee," often heard as it takes flight.
+
+
+    The common sandpiper has a close relationship with the American spotted sandpiper,
+    with the two species replacing each other geographically. Stray individuals may
+    occasionally hybridize with either the spotted sandpiper or the closely related
+    green sandpiper, though such occurrences are uncommon in the wild.'
+migration:
+  sv: '# Drillsnäppa - Förekomst i Skandinavien
+
+
+    Drillsnäppa är en tillflyttare som ankommer till Skandinavien och Nordeuropa under
+    våren, typiskt från april till maj. Arten häckar vid steniga bäckar, sjöar och
+    kustområden under sommarmånaderna. Mot hösten, från juli till september, återvänder
+    drillsnäppan till sina övervintringsområden i Afrika och södra Asien. Under vintermånaderna
+    förekommer arten inte i Skandinavien. Några fåtal individer kan ibland observeras
+    senare på hösten eller tidigt på våren under passagen.'
+  en: '# Common Sandpiper (Actitis hypoleucos) in Scandinavia
+
+
+    The Common Sandpiper is a summer breeding visitor to Scandinavia and Northern
+    Europe, arriving in late April and May to breed along rivers, streams, and lakeshores.
+    These small waders depart in August and September for their African wintering
+    grounds, with most populations vacating northern regions by October. During migration
+    periods, they may be encountered in coastal areas and wetlands throughout the
+    region. Small numbers occasionally overwinter in milder coastal zones of southern
+    Scandinavia, though this remains uncommon.'
+image_refs:
+- role: hero
+  path: Q18850/hero.jpg
+  width: 2400
+  height: 1518
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Actitis hypoleucos Oulu 20140623
+    01.JPG
+  commons_filename: Actitis hypoleucos Oulu 20140623 01.JPG
+- role: secondary
+  path: Q18850/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37180297@N08">LiCheng
+    Shih</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Actitis hypoleucos (25574447361).jpg
+  commons_filename: Actitis hypoleucos (25574447361).jpg
+- role: secondary
+  path: Q18850/secondary-2.jpg
+  width: 1800
+  height: 1168
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Common Sandpiper, Actitis hypoleucos,
+    Chobe National Park, Botswana (31558465823).jpg
+  commons_filename: Common Sandpiper, Actitis hypoleucos, Chobe National Park, Botswana
+    (31558465823).jpg
+review_status: approved
+review_notes: "Hero = Actitis hypoleucos (Common Sandpiper / Drillsnäppa); allmän vid sjöar och vattendrag i hela SE."
+generated_at: '2026-05-15T21:02:54.458863+00:00'
+sources:
+  wikipedia_sv_revision: '59205984'
+  wikipedia_en_revision: '1333983584'
+  claude_model: claude-haiku-4-5-20251001

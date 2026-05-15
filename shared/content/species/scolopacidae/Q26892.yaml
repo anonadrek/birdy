@@ -1,0 +1,98 @@
+id: Q26892
+scientific_name: Arenaria interpres
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Arenaria
+  ioc_order: Charadriiformes
+names:
+  sv: Roskarl
+  en: Ruddy Turnstone
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Roskarl
+
+
+    Roskarl är en liten vadare med karakteristisk mosaikartad fjäderdräkt i rött-brunt,
+    svart och vitt. Under häckningstiden är den särskilt färgrik med kontrastrik teckning
+    på huvud och bröst. Det är en mycket aktiv fågel som ofta ses vända på stenar
+    och skräp längs strandlinjen för att leta efter föda – en beteende som gett den
+    sitt namn. Roskarlens kort och kraftig näbb är väl anpassad för denna sökstrategi.
+
+
+    Arten förekommer huvudsakligen i Arktis och norra Europa under häckningstiden.
+    Under flyttning och vinter är den mycket spridd och kan påträffas vid nästan alla
+    kuster världen över. Den föredrar steniga och sandig strandmiljöer. Roskarlens
+    läte är ett distinkt, klickande "kut-a-dit" som ofta hörs från fåglar i flock.
+
+
+    Populationen minskar oroande och arten är klassificerad som nära hotad globalt.
+    I Sverige är situationen ännu allvarligare, där arten numera är starkt hotad och
+    endast återstår i mycket reducerad antal.'
+  en: ''
+migration:
+  sv: '# Roskarl i Skandinavien och Nordeuropa
+
+
+    Roskarl är en flyttfågel som häckar i Arktis och norra Europa. Under våren anländer
+    fågeln till sina häckningsområden, medan den under hösten drar söderut för att
+    övervinta vid kusterna. Under flyttningsperioderna kan roskarl observeras vid
+    nästan alla kuster i världen, inklusive Skandinaviens och Nordeuropas strandlinjer.
+    I Sverige är arten mer eller mindre genomflyttande och ses främst vid kusterna
+    under våren och hösten, då den passerar på väg mellan sina arktiska häckningsplatser
+    och övervintringsområden vid mer sydliga kuster.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q26892/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ruddy turnstone (Arenaria interpres),
+    Seltjarnarnes, Iceland.jpg
+  commons_filename: Ruddy turnstone (Arenaria interpres), Seltjarnarnes, Iceland.jpg
+- role: secondary
+  path: Q26892/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Tangopaso" title="User:Tangopaso">Tangopaso</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Arenaria interpres (Capbreton).jpg
+  commons_filename: Arenaria interpres (Capbreton).jpg
+- role: secondary
+  path: Q26892/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ruddy turnstone (Arenaria interpres)
+    at Amrum.jpg
+  commons_filename: Ruddy turnstone (Arenaria interpres) at Amrum.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:00:23.445504+00:00'
+sources:
+  wikipedia_sv_revision: '56437924'
+  wikipedia_en_revision: '1347908496'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,128 @@
+id: Q62345
+scientific_name: Calidris ferruginea
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Spovsnäppa
+  en: Curlew Sandpiper
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Spovsnäppa
+
+
+    Spovsnäppa är en liten vadare från familjen snäppor. Under häckningstiden kan
+    den uppvisa en distintiv rostfärgad undersida, medan den i övriga dräkter är mer
+    diskret färgad i gråbrunt. Det är en ganska liten snäppa med en något nedåtkurväd
+    näbb, vilket skiljer den från många närbesläktade arter.
+
+
+    Arten häckar i norra Sibirien och gör långa årliga flyttningar. Under hösten och
+    våren passerar stora populationer genom Europa på väg mellan häckningsområdena
+    och huvudsakliga övervintringsområdena i Västafrika. Under flyttningen ses den
+    ofta på våtmarker, strandzoner och mudderbankar där den söker föda tillsammans
+    med andra vadare.
+
+
+    Spovsnäppan är talrik men har minskat relativt kraftigt i antal under senare tid.
+    Sedan 2024 är arten upptagen på IUCN:s röda lista över hotade arter, vilket visar
+    på behovet av ökad uppmärksamhet kring såväl häcknings- som övervintrings- och
+    rastområden.'
+  en: '# Curlew Sandpiper
+
+
+    The curlew sandpiper is a small wader belonging to the sandpiper family. It is
+    highly migratory, breeding in the Arctic bogs and coastal lowlands of Siberia
+    during the summer months of June through August or September. After the breeding
+    season concludes, it undertakes a remarkable long-distance migration southward
+    to winter in Africa and along the coasts of southern Eurasia and Oceania.
+
+
+    During winter, the curlew sandpiper favours tidal mudflats and saltpans, where
+    it feeds in shallow water and on exposed substrate. It is typically encountered
+    as a passage migrant in many regions outside its breeding range, making it a familiar
+    sight to wader enthusiasts during spring and autumn migrations. The species''
+    reliance on extensive tidal and wetland habitats makes it dependent on the conservation
+    of these increasingly threatened ecosystems.'
+migration:
+  sv: '# Spovsnäppa i Skandinavien och Nordeuropa
+
+
+    Spovsnäppa är en långdistansmigrör som passerar Skandinavien och Nordeuropa under
+    sina säsongsvandringarna. Arten häckar i norra Sibirien och övervintrar främst
+    i Västafrika. Under våren och hösten genomkorsas stora delar av Europa, inklusive
+    Skandinavien, då fåglarna färdas mellan sina häcknings- och övervintringskvartal.
+    I Skandinavien ses arten huvudsakligen som genomflyktare under flyttningsperioderna,
+    då den rastar vid lämpliga våtmarker och kustområden innan den fortsätter sin
+    långa resa.'
+  en: '# Curlew Sandpiper in Scandinavia and Northern Europe
+
+
+    The Curlew Sandpiper is a long-distance migrant that passes through Scandinavia
+    and Northern Europe during its seasonal movements between Arctic breeding grounds
+    and African wintering areas. These birds typically arrive in spring (May-June)
+    on their northward journey to Siberian breeding sites, and again in late summer
+    and autumn (July-September) during southward migration. They do not overwinter
+    in the region, as the entire population migrates to Africa and southern Eurasian
+    coasts after breeding. Small numbers may occasionally linger into early autumn
+    along coastal mudflats and saltpans during migration periods.'
+image_refs:
+- role: hero
+  path: Q62345/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Calidris tenuirostris and Calidris
+    ferruginea (24044997444).jpg
+  commons_filename: Calidris tenuirostris and Calidris ferruginea (24044997444).jpg
+- role: secondary
+  path: Q62345/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Curlew Sandpiper Calidris ferruginea
+    DSCN4064 02.jpg
+  commons_filename: Curlew Sandpiper Calidris ferruginea DSCN4064 02.jpg
+- role: secondary
+  path: Q62345/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Curlew sandpiper (Calidris ferruginea)
+    2023.jpg
+  commons_filename: Curlew sandpiper (Calidris ferruginea) 2023.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:59:00.441785+00:00'
+sources:
+  wikipedia_sv_revision: '57377491'
+  wikipedia_en_revision: '1353685817'
+  claude_model: claude-haiku-4-5-20251001

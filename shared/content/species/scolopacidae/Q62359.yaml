@@ -1,0 +1,132 @@
+id: Q62359
+scientific_name: Calidris maritima
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Skärsnäppa
+  en: Purple Sandpiper
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skärsnäppa
+
+
+    Skärsnäppa är en liten vadarfågel som tillhör familjen snäppor. Den har en kompakt
+    byggnad anpassad för livet på klippiga kustmiljöer. Under häckningstiden besöker
+    den arktiska kustnära områden, tundra och högtliggande fjälltrakter i Nordamerika,
+    norra Europa och norra Sibirien. Arten är väl anpassad för sitt miljöval och rör
+    sig säkert bland stenar och klippor.
+
+
+    Under vinterhalvåret flyttar skärsnäppa till kustnära skär där den söker föda
+    mellan stenarna vid vattenbrynet. Dess säkerhet bland klippor gör den väl lämpad
+    för denna miljö, där många andra vadare skulle ha svårare att röra sig.
+
+
+    Populationen visar en nedåtgående trend, men arten anses fortfarande livskraftig.
+    Den utgör därmed inte någon större artskyddsfråga för närvarande, även om övervakning
+    av beståndsutvecklingen är relevant för framtiden.'
+  en: '# Purple Sandpiper
+
+
+    The purple sandpiper is a compact shorebird belonging to the sandpiper family.
+    Despite its name, it displays no obvious purple coloration; the name likely refers
+    to subtle purplish tones visible in certain light. It is a hardy species, notably
+    resilient to cold conditions, which allows it to inhabit harsh Arctic and subarctic
+    environments where few other shorebirds venture.
+
+
+    Breeding occurs across the Arctic and subarctic regions of both Eurasia and North
+    America during summer months. As winter approaches, populations migrate southward,
+    with many wintering along Atlantic coasts where they remain relatively abundant
+    compared to other sandpiper species during the colder months. This adaptability
+    to extreme temperatures distinguishes it from more delicate relatives that require
+    warmer wintering grounds.
+
+
+    When observed, the purple sandpiper appears stocky and short-legged compared to
+    related species. Its plumage provides effective camouflage on rocky shores and
+    tundra habitats, where it forages for small invertebrates and organic matter.
+    The species favors rocky and pebbly coastlines during winter, often remaining
+    in areas where gentler-bodied sandpipers cannot survive the conditions.'
+migration:
+  sv: '# Skärsnäppa – förekomst i Skandinavien/Nordeuropa
+
+
+    Skärsnäppa är en arktisk vadarfågel som häckar under sommaren i högt belägna fjälltrakter
+    och tundra i norra Europa, inklusive Skandinavien. Under vintern stannar många
+    individer kvar på skandinaviska kustnära skär och fyrkanter, där de söker föda
+    vid lågt vattenstånd. Arten är därför närvarande året runt i många nordiska kustområden,
+    även om övervintrande populationer varierar mellan åren. En del fåglar migrerar
+    längre söderut under säsongens hårdaste period, men många återkommer till samma
+    övervintringsplatser varje vinter. Arten föredrar exponerade steniga miljöer på
+    kusten under både häck- och vintermånaderna.'
+  en: '# Purple Sandpiper in Scandinavia/Northern Europe
+
+
+    The Purple Sandpiper is a hardy arctic breeder that migrates through and winters
+    in Northern Europe. Breeding populations from northern Scandinavia and arctic
+    Eurasia migrate southward in autumn, arriving on coastal wintering grounds from
+    September through November. The species favors rocky shorelines and coastal areas
+    throughout winter, remaining in Scandinavian waters and along the Atlantic coast
+    until spring migration begins in March and April. Small numbers may overwinter
+    in northern regions during milder winters, but most populations retreat to more
+    southerly coasts. Return to arctic breeding grounds occurs from April through
+    May.'
+image_refs:
+- role: hero
+  path: Q62359/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Calidris maritima, Island of
+    Wangerooge.jpg
+  commons_filename: Calidris maritima, Island of Wangerooge.jpg
+- role: secondary
+  path: Q62359/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Purple sandpiper (Calidris maritima),
+    bathing.jpg
+  commons_filename: Purple sandpiper (Calidris maritima), bathing.jpg
+- role: secondary
+  path: Q62359/secondary-2.jpg
+  width: 1800
+  height: 1608
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Purple sandpiper (Calidris maritima),
+    sleeping.jpg
+  commons_filename: Purple sandpiper (Calidris maritima), sleeping.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:01:38.457044+00:00'
+sources:
+  wikipedia_sv_revision: '57991001'
+  wikipedia_en_revision: '1347425637'
+  claude_model: claude-haiku-4-5-20251001

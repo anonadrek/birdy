@@ -1,0 +1,98 @@
+id: Q18859
+scientific_name: Tringa totanus
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Tringa
+  ioc_order: Charadriiformes
+names:
+  sv: Rödbena
+  en: Common Redshank
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödbena
+
+
+    Rödbena är en medelstor vadarfågel som kännetecknas av sina karakteristiska röda
+    ben och röda näbbrot, vilket gör den lätt att identifiera. Det har en relativt
+    långsmal näbb, grågott fjäderdräkt och betydligt ljusare undersida. Under flykten
+    är vitfläckar på vingarna mycket iögonfallande.
+
+
+    Arten förekommer i stora delar av Europa och Asien, norr om Himalaya och österut
+    till Kina. I västra delen av sitt utbredningsområde är många populationer stannfåglar
+    eller kortflyttare, medan övriga flyttar till Mellanöstern, Indien, Sydostasien
+    och Afrikas kuster för att övervintra.
+
+
+    Rödbena är mycket vokal och har ett karakteristiskt ljud som kan beskrivas som
+    ett högt, klargörande tjut. Det hittas främst i strandängar både längs kusten
+    och i våtmarker inåt landet, men även i fjällmiljöer. Det är en talrik art som
+    förekommer i olika våtmarkhabitat där det kan ses födosöka i grund vatten eller
+    på blöt mark.'
+  en: ''
+migration:
+  sv: '# Rödbena – Förekomst i Skandinavien och Nordeuropa
+
+
+    Rödbena är en vanlig vadarfågel i Skandinavien och Nordeuropa med variabel flyttbeteende.
+    De flesta populationer är flyttfåglar som återvänder till häckningsområdena under
+    april-maj och avgår på hösten i augusti-september. Fåglarna övervintrar huvudsakligen
+    i Mellanöstern, Sydeuropa och längs Afrikas kuster. En mindre del av populationen,
+    särskilt i Västeuropa, stannar året runt eller genomför endast kortare förflyttningar.
+    Arten förekommer i strandängar, våtmarker och fjällmiljöer under häckningstiden.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q18859/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Redshank (Tringa totanus).jpg
+  commons_filename: Redshank (Tringa totanus).jpg
+- role: secondary
+  path: Q18859/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/185252831@N05">HLI-Photography</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rotschenkel (Tringa totanus)
+    (53633851007).jpg
+  commons_filename: Rotschenkel (Tringa totanus) (53633851007).jpg
+- role: secondary
+  path: Q18859/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common redshank 6 (Tringa totanus)
+    ചോരക്കാലി .jpg
+  commons_filename: Common redshank 6 (Tringa totanus) ചോരക്കാലി .jpg
+review_status: approved
+review_notes: "Hero = Tringa totanus (Common Redshank / Rödbena); allmän kustfågel och våtmarkshäckare i SE."
+generated_at: '2026-05-15T20:58:57.431307+00:00'
+sources:
+  wikipedia_sv_revision: '58511944'
+  wikipedia_en_revision: '1313997191'
+  claude_model: claude-haiku-4-5-20251001

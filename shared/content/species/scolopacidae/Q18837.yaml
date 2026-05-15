@@ -1,0 +1,123 @@
+id: Q18837
+scientific_name: Tringa glareola
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Tringa
+  ioc_order: Charadriiformes
+names:
+  sv: Grönbena
+  en: Wood Sandpiper
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Grönbena
+
+
+    Grönbena är en liten vadarfågel som tillhör familjen snäppor. Den är en utpräglad
+    flyttfågel som häckar från norra Europa till östra Asien och övervintrar i Afrika
+    och södra Asien samt Australien. Under flyttningen uppträder den ofta i mindre
+    flockar vid våtmarker och kustområden, där den är en karakteristisk syn under
+    våren och hösten.
+
+
+    Arten är välanpassad för sitt livssätt som en långdistansflyttare och hittas ofta
+    på fuktiga lador och vid vattendrag under rastpausen under migrationen. Grönbena
+    är en alert och rörig fågel som ofta ses hoppa mellan stenar eller vada på grunt
+    vatten medan den söker föda.'
+  en: '# Wood Sandpiper
+
+
+    The wood sandpiper is a small wader and the tiniest member of the shank genus.
+    It belongs to the sandpiper family and is found across Eurasia. Unlike many related
+    species that favour coastal habitats, the wood sandpiper shows a distinct preference
+    for freshwater and wetland environments, making it more of an inland bird than
+    its maritime cousins.
+
+
+    As a small, long-legged wader, it shares the characteristic proportions of shanks—notably
+    elongated legs suited for wading through shallow water. It typically frequents
+    marshes, lake margins, and other freshwater wetlands where it can probe soft substrates
+    for invertebrate prey. The species is often seen in loose flocks, particularly
+    during migration periods, when it may visit temporary pools and flooded fields.
+
+
+    The wood sandpiper''s call is a distinctive, sharp, three-note whistle that helps
+    identify it even at a distance. In flight, it displays pale wing bars and a white
+    rump patch, features that distinguish it from similar small waders.'
+migration:
+  sv: '# Grönbena – Förekomst i Skandinavien/Nordeuropa
+
+
+    Grönbena är en utpräglad flyttfågel som återkommer till Skandinavien och Nordeuropa
+    för häckning under våren. Arten anländer vanligen i maj och häckar från norra
+    delen av regionen. Under hösten påbörjar fågeln sin långa flyttning mot övervintringplatserna
+    i södra Afrika, södra och sydöstra Asien samt Australien. Under migrations­perioderna,
+    både våren och hösten, uppträder grönbena ofta i mindre flockar vid våtmarker
+    och kustområden, där den rastar innan fortsatt färd.'
+  en: '# Wood Sandpiper Migration in Scandinavia
+
+
+    The Wood Sandpiper is a migratory species in Northern Europe, arriving in Scandinavia
+    during spring migration (typically May) to breed in wetland habitats. It is a
+    summer visitor, breeding across northern and central Scandinavia in boreal regions.
+    The species vacates Scandinavian breeding grounds in late summer and autumn (August-September),
+    undertaking long-distance migration southward to winter in Africa and southern
+    Eurasia. Wood Sandpipers do not overwinter in Scandinavia or Northern Europe.
+    During passage periods, they may be encountered at wetland sites across the region
+    as they move between breeding and wintering grounds.'
+image_refs:
+- role: hero
+  path: Q18837/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Wood sandpiper (Tringa glareola)
+    പുള്ളിക്കാടക്കൊക്ക്. (32089301224).jpg
+  commons_filename: Wood sandpiper (Tringa glareola) പുള്ളിക്കാടക്കൊക്ക്. (32089301224).jpg
+- role: secondary
+  path: Q18837/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Wood sandpiper (Tringa glareola)
+    പുള്ളിക്കാടക്കൊക്ക് 22.jpg
+  commons_filename: Wood sandpiper (Tringa glareola) പുള്ളിക്കാടക്കൊക്ക് 22.jpg
+- role: secondary
+  path: Q18837/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Wood sandpiper (Tringa glareola)
+    പുള്ളിക്കാടക്കൊക്ക് 26.jpg
+  commons_filename: Wood sandpiper (Tringa glareola) പുള്ളിക്കാടക്കൊക്ക് 26.jpg
+review_status: approved
+review_notes: "Hero = Tringa glareola (Wood Sandpiper / Grönbena); allmän myrfågel i norra och mellersta SE."
+generated_at: '2026-05-15T21:01:38.004054+00:00'
+sources:
+  wikipedia_sv_revision: '58680779'
+  wikipedia_en_revision: '1315217096'
+  claude_model: claude-haiku-4-5-20251001

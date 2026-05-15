@@ -1,0 +1,131 @@
+id: Q260716
+scientific_name: Calidris melanotos
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Tuvsnäppa
+  en: Pectoral Sandpiper
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tuvsnäppa
+
+
+    Tuvsnäppa är en vadarfågel som tillhör familjen snäppor. Arten häckar på tundra
+    i Nordamerika och nordöstra Asien. Under hösten och våren ses den regelbundet
+    under flyttningen genom västra Europa, och flera individer observeras årligen
+    i Sverige vid denna tid. Vintertid migrerar huvuddelen av populationen till Sydamerika.
+
+
+    Arten kännetecknas av sitt namn från en tydlig tuvkrage på bröstet, särskilt framträdande
+    hos hanarna. Tuvsnäppan är en mindre vadarfågel med en gräaktig färgteckning som
+    gör den väl anpassad till sitt tundramiljö. Den söker föda på märglanden och strandkanter,
+    ofta tillsammans med andra vadarfåglar.
+
+
+    Beståndet av tuvsnäppa anses vara livskraftigt utan större hot. För den som är
+    intresserad av vadarfåglar under flyttningssäsongen utgör arten ett intressant
+    observationsobjekt, då den återkommer årligen med flera fynd.'
+  en: '# Pectoral Sandpiper
+
+
+    The pectoral sandpiper is a compact wader measuring 19–23 cm in length with a
+    wingspan of 38–46 cm. It is a long-distance migrant, breeding in arctic regions
+    across North America and Asia before traveling to South America and Oceania for
+    winter. The species feeds on small invertebrates found in wetland habitats.
+
+
+    During breeding season, the pectoral sandpiper constructs a distinctive nest by
+    scraping a shallow hole in the ground and lining it thickly with vegetation and
+    other materials. This substantial lining provides insulation, protecting the clutch
+    of four eggs from the cold winds characteristic of arctic environments. The birds''
+    migratory lifestyle requires them to undertake lengthy journeys twice annually
+    between their breeding and wintering grounds, making them remarkable long-distance
+    travelers among waders.'
+migration:
+  sv: '# Tuvsnäppa i Skandinavien och Nordeuropa
+
+
+    Tuvsnäppa är en långdistansflytt från Nordamerika och nordöstra Asien som inte
+    häckar regelbundet i Skandinavien eller Nordeuropa. Arten ses regelbundet under
+    höstflyttningen i västra Europa, inklusive Sverige, där den dokumenteras med flera
+    fynd årligen. Dessa observationer utgör huvudsakligen genomfartsfåglar under migrationstiden
+    då arterna passerar genom regionen på vägen till Sydamerika, där huvuddelen av
+    populationen överinterverar.'
+  en: '# Pectoral Sandpiper in Scandinavia/Northern Europe
+
+
+    The Pectoral Sandpiper is a scarce passage migrant through Scandinavia and Northern
+    Europe, appearing primarily during spring and autumn migration periods. Birds
+    breeding in arctic Asia migrate through the region en route to their southern
+    wintering grounds in South America and Oceania. Sightings in Scandinavia typically
+    occur from late July to September during autumn passage, with smaller numbers
+    recorded during spring migration from May to June. This species does not winter
+    in Northern Europe, as the population is committed to trans-equatorial migration
+    to distant tropical and subtropical wintering areas.'
+image_refs:
+- role: hero
+  path: Q260716/hero.jpg
+  width: 2400
+  height: 1727
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/usfwspacific/">USFWS
+    - Pacific Region</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
+    href="//commons.wikimedia.org/wiki/File:Graubruststrandl%C3%A4ufer_(Calidris_melanotos),_nahrungssuchend_im_Willapa_National_Wildlife_Refuge.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Graubruststrandläufer (Calidris
+    melanotos), nahrungssuchend im Willapa National Wildlife Refuge.jpg
+  commons_filename: Graubruststrandläufer (Calidris melanotos), nahrungssuchend im
+    Willapa National Wildlife Refuge.jpg
+- role: secondary
+  path: Q260716/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
+    C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pectoral Sandpiper (Calidris
+    melanotos) (29119997223).jpg
+  commons_filename: Pectoral Sandpiper (Calidris melanotos) (29119997223).jpg
+- role: secondary
+  path: Q260716/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
+    C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pectoral Sandpiper (Calidris
+    melanotos) (29709338526).jpg
+  commons_filename: Pectoral Sandpiper (Calidris melanotos) (29709338526).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:02:06.346457+00:00'
+sources:
+  wikipedia_sv_revision: '56667390'
+  wikipedia_en_revision: '1348840754'
+  claude_model: claude-haiku-4-5-20251001

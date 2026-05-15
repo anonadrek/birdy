@@ -1,0 +1,124 @@
+id: Q599749
+scientific_name: Calidris fuscicollis
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Vitgumpsnäppa
+  en: White-rumped Sandpiper
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitgumpsnäppa
+
+
+    Vitgumpsnäppa är en liten nordamerikansk snäppa som förekommer som tillfällig
+    gäst i Europa, bland annat med omkring 30 fynd dokumenterade i Sverige. Det är
+    en av världens långflytta fåglar – den häckar i de arktiska delarna av Alaska
+    och Kanada men drar sedan långt söderut till södra Sydamerika för att övervinta.
+    Detta gör den till en av de nordamerikanska fåglarna med längst årlig flyttväg.
+
+
+    Arten är hotad och antalet individer minskar, vilket gör att den numera betraktas
+    som utrotningshotad. De exemplar som påträffas i Sverige är övervagande ungfåglar
+    under höstflyttningen, då arten orienterar sig felaktigt från sin normala väg.'
+  en: '# White-rumped Sandpiper
+
+
+    The white-rumped sandpiper is a small migratory shorebird that breeds across the
+    northern tundra of Canada and Alaska. Like other tiny sandpipers collectively
+    known as "peeps" or "stints," it can be challenging to distinguish from similar
+    species when at rest. However, in flight, the bird becomes far more identifiable
+    thanks to its distinctive white rump patch, which gives the species its common
+    name.
+
+
+    As a highly migratory species, the white-rumped sandpiper travels considerable
+    distances between breeding and wintering grounds. It is typically encountered
+    during migration periods when it moves through coastal areas and wetlands. The
+    bird''s small size and cryptic plumage make it inconspicuous on the ground, but
+    observing it in flight—particularly noting the contrasting white rump against
+    its darker upper parts—provides the most reliable field identification. This characteristic
+    feature alone often sets it apart from the numerous other small sandpipers with
+    which it shares habitat and migration routes.'
+migration:
+  sv: '# Vitgumpsnäppa i Norden
+
+
+    Vitgumpsnäppa är en nordamerikansk art som endast förekommer tillfälligt i Skandinavien
+    och övriga Europa. Arten häckar i arktiska delar av Alaska och Kanada och genomför
+    en mycket långt flyttväg söderut till sydlig Sydamerika för övervintering. Under
+    höstmigrationen påträffas arten då och då i Europa, där Sverige har registrerat
+    omkring 30 fynd. Dessa observationer är sällsynta och oförutsägbara, och arten
+    förekommer inte regelbundet i något särskilt område i Norden.'
+  en: '# White-rumped Sandpiper in Scandinavia/Northern Europe
+
+
+    The White-rumped Sandpiper is a rare vagrant to Scandinavia and Northern Europe.
+    This small shorebird breeds in the Arctic tundra of North America and undertakes
+    an extraordinarily long migration, traveling to South American wintering grounds.
+    Occasional individuals appear in Scandinavia during autumn migration (August-September),
+    representing overshoots or vagrancy from their normal transatlantic migration
+    route. Spring records are significantly less frequent. The species does not establish
+    regular populations in Northern Europe and is not known to overwinter in the region.
+    Most sightings occur along coastal areas during passage periods.'
+image_refs:
+- role: hero
+  path: Q599749/hero.jpg
+  width: 2400
+  height: 1398
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:ImagePerson&amp;action=edit&amp;redlink=1"
+    class="new" title="User:ImagePerson (page does not exist)">ImagePerson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Semipalmated plovers Charadrius
+    semipalmatus, white-rumped sandpiper Calidris fuscicollis.jpg
+  commons_filename: Semipalmated plovers Charadrius semipalmatus, white-rumped sandpiper
+    Calidris fuscicollis.jpg
+- role: secondary
+  path: Q599749/secondary-1.jpg
+  width: 1800
+  height: 1122
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:ImagePerson&amp;action=edit&amp;redlink=1"
+    class="new" title="User:ImagePerson (page does not exist)">ImagePerson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:White-rumped sandpipers Calidris
+    fuscicollis Mingan Islands 7025.jpg
+  commons_filename: White-rumped sandpipers Calidris fuscicollis Mingan Islands 7025.jpg
+- role: secondary
+  path: Q599749/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/68069539@N07">Silver
+    Leapers</a> from remote NE Coastline, Newfoundland, Canada
+  source_url: https://commons.wikimedia.org/wiki/File:Calidris fuscicollis, Deadman's
+    Bay, Newfoundland 1.jpg
+  commons_filename: Calidris fuscicollis, Deadman's Bay, Newfoundland 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:59:24.814490+00:00'
+sources:
+  wikipedia_sv_revision: '59070695'
+  wikipedia_en_revision: '1322539522'
+  claude_model: claude-haiku-4-5-20251001

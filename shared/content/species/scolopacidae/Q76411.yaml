@@ -1,0 +1,102 @@
+id: Q76411
+scientific_name: Numenius tenuirostris
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Numenius
+  ioc_order: Charadriiformes
+names:
+  sv: Smalnäbbad spov
+  en: Slender-billed Curlew
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Smalnäbbad spov
+
+
+    Smalnäbbad spov var en medlem av snäppfamiljen som kännetecknades av sin tunna
+    näbb – en anpassning till arten specialiserade födosök. Arten häckade tidigare
+    i det sibiriska taigabältet, där det letade efter föda i våtmarker och sumpiga
+    områden.
+
+
+    Arten är nu klassificerad som utdöd. År 2024 publicerades vetenskapliga studier
+    som bedömde att smalnäbbad spov längre existerar i vild tillstånd, och i oktober
+    2025 formaliserades denna bedömning officiellt av IUCN (internationella naturvårdsunionen).
+    Arten försvann gradvis under 1900-talet, troligen på grund av habitatförlust och
+    jaktpress under sin flyttning mellan häcknings- och övervintringsområden.'
+  en: '# Slender-billed Curlew
+
+
+    The slender-billed curlew was a medium-sized wading bird in the curlew family,
+    distinguished by its notably thin, decurved bill—longer and more slender than
+    other curlew species. It belonged to the Scolopacidae family of shorebirds.
+
+
+    This migratory species formerly bred across Eurasian grasslands and wetlands,
+    with isotope studies indicating the main breeding population occupied the Kazakh
+    Steppe. During winter, it migrated to shallow freshwater habitats around the Mediterranean
+    region. The species occasionally appeared as a vagrant across western Europe,
+    island groups in the Atlantic, the Middle East, and even reached North America
+    and Asia.
+
+
+    The slender-billed curlew is now extinct, with the last confirmed sightings occurring
+    in the mid-20th century. Its decline resulted from habitat loss in both breeding
+    and wintering grounds, along with hunting pressure. The species represents a significant
+    loss to Eurasian wading bird diversity.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Den smalnäbbade spoven bedöms vara utdöd sedan 2024-2025, varför aktuell migrationsdata
+    för denna art inte finns tillgänglig. Arten häckade tidigare i det sibiriska taigabältet,
+    men ingen dokumenterad information om dess tidigare migrations- och övervintringsmönster
+    i Skandinavien eller Nordeuropa är tillgänglig från källtexten.'
+  en: '# Slender-billed Curlew in Scandinavia/Northern Europe
+
+
+    The slender-billed curlew is now extinct, so it no longer occurs in Scandinavia
+    or Northern Europe. However, historically this species was migratory, breeding
+    in the Kazakh Steppe and wintering in shallow freshwater habitats around the Mediterranean.
+    Records indicate it occurred as a vagrant in western Europe, suggesting occasional
+    individuals may have appeared in northern regions during migration. The species''
+    former migration route likely took it through or near European areas, though specific
+    documentation of Scandinavian occurrences is not detailed in available sources.'
+image_refs:
+- role: hero
+  path: Q76411/hero.jpg
+  width: 2400
+  height: 2400
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Federigo_Federighi" title="User:Federigo
+    Federighi">Federigo Federighi</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Numenius tenuirostris at University
+    of Pisa Natural History Museum.jpg
+  commons_filename: Numenius tenuirostris at University of Pisa Natural History Museum.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:00:45.182210+00:00'
+sources:
+  wikipedia_sv_revision: '58452846'
+  wikipedia_en_revision: '1353230863'
+  claude_model: claude-haiku-4-5-20251001

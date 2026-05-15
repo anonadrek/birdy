@@ -1,0 +1,94 @@
+id: Q28450
+scientific_name: Tringa ochropus
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Tringa
+  ioc_order: Charadriiformes
+names:
+  sv: Skogssnäppa
+  en: Green Sandpiper
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skogssnäppa
+
+
+    Skogssnäppa är en liten vadarfågel som tillhör familjen snäppor. Den är en elegant
+    vadare med mörk överside och vitaktig underside. Fågeln kännetecknas av sitt karakteristiska
+    utseende med vita ögonring och en distinkt vit stjärt med mörka tvärband, vilket
+    är särskilt tydligt under flykt.
+
+
+    Arten häckar i våtmarker inom barrskogsområden i norra Europa och Asien, där den
+    föredrar fuktig mark nära skogar. Under vintern är skogssnäppan en långdistansflyktare
+    som drar söderut till södra Europa, södra Asien och tropiska Afrika. Under flyttningen
+    kan den ses på rastplatser vid våtmarker och bäckar.
+
+
+    Skogssnäppan är en talrik art med stabila bestånd globalt. Den är en skicklig
+    och snabb flugare med karakteristiska vingslag och kan höras framför allt under
+    häckningstiden med sitt tjattrande läte.'
+  en: ''
+migration:
+  sv: Skogssnäppa är en migrerande vadarfågel som häckar i våtmarkerna i barrskogsområdena
+    i norra Europa och Asien under sommaren. Arten är en långdistansflytt som övervintrarar
+    långt söderut. Under hösten lämnar fåglarna sina häckningsområden för att dra
+    till södra Europa, västra Asien och tropiska Afrika där de stannar under vintermånaderna.
+    På våren återvänder skogssnäpporna till sina nordiska häckningsområden. Beståndet
+    är talrikt och anses stabilt.
+  en: ''
+image_refs:
+- role: hero
+  path: Q28450/hero.jpg
+  width: 1697
+  height: 2400
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/10850348@N07">Edd
+    deane</a> from Swaffham, England
+  source_url: https://commons.wikimedia.org/wiki/File:Tringa ochropus Norfolk 1.jpg
+  commons_filename: Tringa ochropus Norfolk 1.jpg
+- role: secondary
+  path: Q28450/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Synezis&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Synezis (page does not exist)">Synezis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tringa ochropus Srbija (16).jpg
+  commons_filename: Tringa ochropus Srbija (16).jpg
+- role: secondary
+  path: Q28450/secondary-2.jpg
+  width: 1800
+  height: 1209
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:SVKMBFLY" title="User:SVKMBFLY">SVKMBFLY</a>
+  source_url: https://commons.wikimedia.org/wiki/File:সবুজ বাটান ( Tringa ochropus),
+    চুপি, পুরবস্থলি, বর্ধমান, পশ্চিমবঙ্গ.DSC3366.jpg
+  commons_filename: সবুজ বাটান ( Tringa ochropus), চুপি, পুরবস্থলি, বর্ধমান, পশ্চিমবঙ্গ.DSC3366.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:00:40.533821+00:00'
+sources:
+  wikipedia_sv_revision: '58511844'
+  wikipedia_en_revision: '1349494311'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,114 @@
+id: Q27171
+scientific_name: Gallinago media
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Gallinago
+  ioc_order: Charadriiformes
+names:
+  sv: Dubbelbeckasin
+  en: Great Snipe
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dubbelbeckasin
+
+
+    Dubbelbeckasin är en vadare som tillhör familjen snäppor. Den är något större
+    än enkelbeckasinen, betydligt tyngre och har en kortare näbb. Dräktmässigt skiljs
+    arterna främst på att dubbelbeckasinen har tvärvattrad buk istället för vit buk,
+    och den har tydliga vita stjärtkanter.
+
+
+    Det är en flyttfågel som häckar i Eurasiens barrskogszon från Norge och österut
+    till Jenisej i Ryssland. Under vintern söker arten upp Afrika för att övervinta.
+    Dubbelbeckasinen är brunspräcklig och kan därför lätt förväxlas med sin närmare
+    släkting enkelbeckasinen, men nämnda skillnader hjälper till vid artigentifieringen.'
+  en: '# Great Snipe
+
+
+    The great snipe is a small, stocky wader belonging to the snipe family. It closely
+    resembles the common snipe but is slightly larger and more robust, with a more
+    compact build. Like other snipes, it features cryptic brown and buff plumage with
+    darker markings that provide excellent camouflage in its marshy habitats.
+
+
+    This species breeds in marshes and wet meadows with short vegetation across north-eastern
+    Europe and north-western Russia. During breeding season, males perform elaborate
+    display flights at dusk and dawn, producing loud mechanical sounds. The bird is
+    migratory, departing breeding grounds in autumn to winter in Africa, then returning
+    in spring. Like other snipes, it has a characteristic rapid, zigzagging flight
+    when flushed.
+
+
+    The great snipe''s diet consists primarily of invertebrates, particularly earthworms
+    and aquatic insects, which it probes from wet soil and mud using its long, sensitive
+    bill. Unfortunately, the European breeding population has experienced steep decline
+    in recent decades, likely due to habitat loss from wetland drainage and agricultural
+    intensification. Conservation of remaining marshland habitats is crucial for this
+    species'' survival.'
+migration:
+  sv: '# Dubbelbeckasin – Förekomst i Skandinavien/Nordeuropa
+
+
+    Dubbelbeckasinen är en flyttfågel som häckar i Skandinavien och återstoden av
+    Eurasiens barrskogszon från Norge österut till Jenisej i Ryssland. Den anländer
+    till häckningsområdena på våren och återvänder därefter till Afrika för övervintring
+    under hösten. Under häckningstiden förekommer arten i de nordeuropeiska barrskogsområdena,
+    medan den är helt frånvarande under vinterhalvåret då populationen övervintraar
+    på den afrikanska kontinenten.'
+  en: '# Great Snipe (Gallinago media) – Migration in Scandinavia
+
+
+    The Great Snipe is a migratory wader that breeds in marshes and wet meadows across
+    north-eastern Europe, including areas of Scandinavia and north-western Russia.
+    These birds arrive at breeding grounds in spring and depart in autumn to winter
+    in Africa, making them long-distance migrants. The European breeding population
+    has experienced significant decline in recent decades, though the species remains
+    a notable summer visitor to suitable wetland habitats in northern regions during
+    the breeding season.'
+image_refs:
+- role: hero
+  path: Q27171/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2458916">konstantinseliverstov</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Gallinago media 57850158.jpg
+  commons_filename: Gallinago media 57850158.jpg
+- role: secondary
+  path: Q27171/secondary-1.jpg
+  width: 1800
+  height: 1126
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great Snipe (Gallinago media)
+    in Sweden.jpg
+  commons_filename: Great Snipe (Gallinago media) in Sweden.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:00:21.533860+00:00'
+sources:
+  wikipedia_sv_revision: '59195209'
+  wikipedia_en_revision: '1314201610'
+  claude_model: claude-haiku-4-5-20251001

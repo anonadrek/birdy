@@ -1,0 +1,121 @@
+id: Q58958
+scientific_name: Calidris alba
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Sandlöpare
+  en: Sanderling
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sandlöpare
+
+
+    Sandlöpare är en liten snäppa som häckar cirkumpolärt i Arktis. Under större delen
+    av året är den en rastlös migrant som passerar genom stora delar av Europa och
+    Nordamerika på vägen mellan sina häckningsområden och övervintringsplatser i Afrika,
+    Sydamerika och Australien.
+
+
+    Under flyttningen ses sandlöparen ofta på stränderna där den snabbt springer fram
+    och letar efter föda i vattenkanten. Det är en liten och gråvit fågel med karakteristiska
+    snabba rörelser. Arten är välanpassad för ett liv på både arktiska tundror och
+    kustzonen, och den är en av världens längsta migranters med sina långa flyttvägar
+    över flera kontinenter.'
+  en: '# Sanderling
+
+
+    The sanderling is a tiny, pale wading bird notable for its extreme Arctic breeding
+    range, nesting on the coldest tundra north of the 5°C July isotherm. It is among
+    the world''s most northerly breeding birds, with only a handful of pairs breeding
+    at its southernmost European locality. Despite this remote breeding habitat, it
+    is an extraordinary long-distance migrant, with populations wintering across South
+    America, southern and western Europe, Africa, and Australia.
+
+
+    In winter, the sanderling is highly gregarious, often forming large flocks on
+    coastal mudflats and sandy beaches. Its pale plumage and small size make it distinctive
+    in these coastal settings, where it typically feeds in energetic, fast-moving
+    groups. The species'' remarkable migratory journey—connecting Arctic breeding
+    grounds with distant wintering sites—represents one of the most impressive feats
+    of endurance among wading birds.'
+migration:
+  sv: '# Sandlöpare i Skandinavien
+
+
+    Sandlöparen är en långdistansflyttare som passerar genom Skandinavien och Nordeuropa
+    under sina två årliga migrationsvandringr. Arten häckar i Arktis men övervintrar
+    på fjärran håll i Afrika, Sydamerika och Australien. Under våren och hösten ses
+    sandlöpare regelbundet på nordeuropeiska kuster och strandar när fåglar migrerar
+    mellan sina häcknings- och övervintringsområden. Arten är således inte stadbo
+    i regionen utan förekommer främst under genomflyttningsperioderna under april-maj
+    och juli-september.'
+  en: '# Sanderling (Calidris alba) in Scandinavia/Northern Europe
+
+
+    The sanderling is an extreme Arctic breeder with only a handful of pairs nesting
+    in Svalbard, Europe''s northernmost breeding locality. As a long-distance migrant,
+    it arrives in northern Scandinavia during late spring (May-June) for the brief
+    breeding season on the coldest tundra. Following breeding, populations undertake
+    extensive southward migrations beginning in July-August, wintering across southern
+    Europe, Africa, and beyond. During migration and winter, sanderlings are highly
+    gregarious, congregating in large flocks on coastal mudflats and sandy beaches
+    throughout Scandinavia and southern Europe before departing for distant wintering
+    grounds in warmer regions.'
+image_refs:
+- role: hero
+  path: Q58958/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Calidris alba - Island of Wangerooge.jpg
+  commons_filename: Calidris alba - Island of Wangerooge.jpg
+- role: secondary
+  path: Q58958/secondary-1.jpg
+  width: 1800
+  height: 1196
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Wilfredor" class="mw-redirect"
+    title="User:Wilfredor">Wilfredor</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Calidris alba on Margarita island.jpg
+  commons_filename: Calidris alba on Margarita island.jpg
+- role: secondary
+  path: Q58958/secondary-2.jpg
+  width: 1800
+  height: 1328
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Wilfredor" class="mw-redirect"
+    title="User:Wilfredor">Wilfredor</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Calidris alba on Margarita island
+    2.jpg
+  commons_filename: Calidris alba on Margarita island 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:00:20.581575+00:00'
+sources:
+  wikipedia_sv_revision: '58946835'
+  wikipedia_en_revision: '1354273891'
+  claude_model: claude-haiku-4-5-20251001

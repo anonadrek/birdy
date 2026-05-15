@@ -1,0 +1,140 @@
+id: Q389691
+scientific_name: Actitis macularius
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Actitis
+  ioc_order: Charadriiformes
+names:
+  sv: Fläckdrillsnäppa
+  en: Spotted Sandpiper
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fläckdrillsnäppa
+
+
+    Fläckdrillsnäppa är Nordamerikas vanligaste vadare och är systerart till den europeiska
+    drillsnäppan. Det är en liten snäppa som kännetecknas av sina karakteristiska
+    gungande kroppsrörelser när det förflyttar sig på marken. Under häckningssäsongen
+    bär den tydliga bruna fläckar på undersidan, vilket är ursprunget till dess namn.
+
+
+    Arten känns igen på sin stela, snabb flykt tätt ovanför vattenytan – ett beteende
+    den delar med drillsnäppan. Det är mycket aktiv och nervös till sitt väsen, ständigt
+    i rörelse när det jagar efter små insekter, kräftdjur och andra små djur längs
+    stränder och gräsbevuxna partier vid vatten.
+
+
+    Fläckdrillsnäppa är en sällsynt gäst i Europa, även i Sverige. Den förekommer
+    främst under höstens flyttning. IUCN klassificerar arten som livskraftig globalt.
+    För den intresserade fågelskådaren är det en exotisk raritet värd att leta efter
+    under senare sommaren och hösten vid lämplig livsmiljö.'
+  en: '# Spotted Sandpiper
+
+
+    The spotted sandpiper is a small shorebird belonging to the sandpiper family.
+    It shares the genus *Actitis* with the common sandpiper, and the two species have
+    largely replaced each other geographically across their respective ranges. Interestingly,
+    when spotted sandpipers occasionally stray beyond their normal territory, they
+    may settle among common sandpiper populations and produce hybrids between the
+    two species.
+
+
+    This species is characterized by its compact size and spotted plumage, which gives
+    it its distinctive name. Spotted sandpipers are typically found near freshwater
+    habitats such as streams, rivers, lake margins, and pond edges, where they forage
+    along shorelines. They are active, restless birds often seen bobbing their tails
+    as they move about. Their call is a sharp, distinctive whistle.
+
+
+    The species breeds across much of North America, with populations migrating to
+    wintering grounds in Central and South America. During breeding season, spotted
+    sandpipers exhibit unusual breeding behavior where females may mate with multiple
+    males, leaving each to incubate a clutch of eggs—a reversal of typical bird sex
+    roles.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    sv: "Migrationsdata saknas för denna art."
+
+    en: "Migration data unavailable for this species."
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller endast information om att fläckdrillsnäppan
+    är Nordamerikas mest spridda vadare, att den är systerart till drillsnäppan, och
+    att den är en sällsynt gäst i Europa/Sverige. Det finns ingen information om migration,
+    ankomstmånader, övervintringsvanor eller säsongsmässig förekomst i Skandinavien/Nordeuropa.
+    Därför kan ingen faktisk migrationsbeskrivning skrivas baserat på denna källa.'
+  en: '# Spotted Sandpiper (Actitis macularius) in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Spotted Sandpiper is a North American shorebird species that does not naturally
+    occur in Scandinavia or Northern Europe as a regular migrant or wintering bird.
+    While the source text describes its taxonomic relationship with the Common Sandpiper
+    (which does breed in Northern Europe), it provides no information about the Spotted
+    Sandpiper''s occurrence in the Scandinavian region. Any records in Northern Europe
+    would represent exceptional vagrants rather than regular seasonal movements.'
+image_refs:
+- role: hero
+  path: Q389691/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
+    National Park</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted sandpiper (Actitis macularius)
+    looking for food along the Yellowstone River (41114085810).jpg
+  commons_filename: Spotted sandpiper (Actitis macularius) looking for food along
+    the Yellowstone River (41114085810).jpg
+- role: secondary
+  path: Q389691/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
+    National Park</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted sandpiper (Actitis macularius)
+    nest (28202030197).jpg
+  commons_filename: Spotted sandpiper (Actitis macularius) nest (28202030197).jpg
+- role: secondary
+  path: Q389691/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted sandpiper (Actitis macularius).jpg
+  commons_filename: Spotted sandpiper (Actitis macularius).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:59:08.374691+00:00'
+sources:
+  wikipedia_sv_revision: '58685737'
+  wikipedia_en_revision: '1322416352'
+  claude_model: claude-haiku-4-5-20251001

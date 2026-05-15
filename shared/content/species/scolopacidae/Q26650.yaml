@@ -1,0 +1,157 @@
+id: Q26650
+scientific_name: Calidris alpina
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Kärrsnäppa
+  en: Dunlin
+abundance: allmän
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kärrsnäppa
+
+
+    Kärrsnäppa är en liten vadare som tillhör familjen snäppor och är en av de vanligaste
+    småvadarna på norra halvklotet. Det är en flyttfågel med vid utbredning och delas
+    in i nio underarter. Arten häckar på höga nordliga breddgrader och överintrar
+    längre söderut, vilket gör den bekant inom stora delar av sitt utbredningsområde.
+
+
+    Under häckningsperioden utvecklar kärrsnäppa en karakteristisk svart fläck på
+    buken, vilket skiljer den från många andra småvadare. Under övervintringen blir
+    färgteckningen mindre markant och mer enhetligt grå. Fågeln är anpassad för att
+    söka föda i fuktiga miljöer, där den genomsöker mjuk botten efter små ryggradslösa
+    djur.
+
+
+    Kärrsnäppa är en vanlig och påtaglig fågel på sina häcknings- och övervintringsplatser,
+    där det ofta förekommer i små flockar. Arten föredrar våtmarker och kustområden,
+    där flera individer kan observeras tillsammans under passage och övervintering.'
+  en: '# Dunlin
+
+
+    The dunlin is a small wader belonging to the sandpiper family, distinguished by
+    its compact size and pointed bill. In breeding plumage, it displays a striking
+    black belly patch contrasting with rufous-brown upperparts and grey flanks. Non-breeding
+    birds appear more uniformly grey-brown. It is one of the most common waders across
+    its range, often seen in flocks that perform coordinated aerial manoeuvres.
+
+
+    This species inhabits a variety of wet habitats including coastal mudflats, salt
+    marshes, estuaries, and inland marshes during migration and winter. During breeding
+    season, it favours tundra, moorland, and boggy areas at high latitudes. The dunlin
+    is highly migratory, with populations undertaking impressive long-distance movements
+    between Arctic breeding grounds and temperate or tropical wintering areas.
+
+
+    The dunlin feeds by probing in mud and shallow water for small invertebrates,
+    often seen with other waders. Its call is a distinctive thin, reedy note, and
+    males produce a characteristic trilling song during breeding displays. Recognition
+    can be aided by its relatively short legs and the characteristic feeding posture
+    with a slightly drooped bill.'
+migration:
+  sv: '# Kärrsnäppa - Förekomst i Skandinavien/Nordeuropa
+
+
+    Kärrsnäppa är en klassisk flyttfågel som förekommer i Skandinavien främst under
+    häckningstiden på våren och sommaren. Arten anländer till sina nordiska häckningsplatser
+    i april-maj efter vintervistelsen i sydligare områden. Under hösten genomför arten
+    en omfattande återflyttning söderut i augusti-september, då ungfåglar och adulta
+    individer drar mot övervintringsområden längs Atlantens kuster och vid Medelhavet.
+    En mindre del av populationen kan övervintra längs Skandinaviens västra kuster
+    under mildare vintrar, men majoriteten är helt bosatt som flyttfågel med två årliga
+    massförflyttningar.'
+  en: '# Dunlin in Scandinavia/Northern Europe
+
+
+    The Dunlin is a migratory wader that occurs throughout Scandinavia in varying
+    numbers depending on the season. During breeding season (April–August), populations
+    are found across northern Scandinavia and Russia, where they nest in arctic and
+    subarctic wetlands. In autumn, these breeding birds migrate southward, with peak
+    passage occurring in August and September. Some individuals remain in Scandinavia
+    during winter, particularly in coastal areas of southern Scandinavia where they
+    feed in estuaries and sheltered bays, while others continue to winter grounds
+    in western and southern Europe or Africa. Spring return migration typically occurs
+    from March onwards, with birds gradually recolonizing breeding territories through
+    May.'
+image_refs:
+- role: hero
+  path: Q26650/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dunlin (Calidris alpina), Seltjarnarnes,
+    Iceland.jpg
+  commons_filename: Dunlin (Calidris alpina), Seltjarnarnes, Iceland.jpg
+- role: secondary
+  path: Q26650/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: '<p><a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+
+    </p>
+
+    <table class="toccolours layouttemplate commons-file-information-table" style="width:
+    100%;" dir="ltr" lang="en">
+
+    <tbody><tr><th class="type fileinfo-paramfield">Camera location</th><td style="border:none;"><span
+    class="plainlinks"><span class="plainlinksneverexpand"><a class="external text"
+    href="https://geohack.toolforge.org/geohack.php?pagename=File:Dunlin_(Calidris_alpina),_sleeping,_Seltjarnarnes,_Iceland.jpg&amp;params=064.155498_N_-022.018844_E_globe:Earth_type:camera__&amp;language=en">64° 09′ 19.79″ N,
+    22° 01′ 07.84″ W</a></span></span> <a class="mw-kartographer-maplink no-icon"
+    data-mw-kartographer="maplink" data-style="osm-intl" href="//commons.wikimedia.org/wiki/Special:Map/13/64.155498/-22.018844/en"
+    data-zoom="13" data-lat="64.155498" data-lon="-22.018844" data-overlays=''["_b5af063af32558d57ad622d8853a0601ec3556ec"]''><span
+    typeof="mw:File"><span title="Kartographer map based on OpenStreetMap."><img alt="Kartographer
+    map based on OpenStreetMap." src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/20px-Openstreetmap_logo.svg.png"
+    decoding="async" width="20" height="20" class="mw-file-element" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/40px-Openstreetmap_logo.svg.png
+    2x" data-file-width="256" data-file-height="256"></span></span></a></td><td style="border:none;">View
+    this and other nearby images on: <a class="external text" href="https://wikimap.toolforge.org/?wp=false&amp;cluster=false&amp;zoom=16&amp;lat=064.155498&amp;lon=-022.018844">OpenStreetMap</a></td><td
+    style="border:none;"><span class="skin-invert" typeof="mw:File"><a href="//commons.wikimedia.org/wiki/Commons:Geocoding"
+    title="Commons:Geocoding"><img alt="info" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/OOjs_UI_icon_help.svg/20px-OOjs_UI_icon_help.svg.png"
+    decoding="async" width="18" height="18" class="mw-file-element" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/OOjs_UI_icon_help.svg/40px-OOjs_UI_icon_help.svg.png
+    2x" data-file-width="24" data-file-height="24"></a></span><span class="geo" style="display:none">
+    64.155498;  -22.018844</span></td></tr>
+
+    </tbody></table>'
+  source_url: https://commons.wikimedia.org/wiki/File:Dunlin (Calidris alpina), sleeping,
+    Seltjarnarnes, Iceland.jpg
+  commons_filename: Dunlin (Calidris alpina), sleeping, Seltjarnarnes, Iceland.jpg
+- role: secondary
+  path: Q26650/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
+    C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dunlin (Calidris alpina) (15402301464).jpg
+  commons_filename: Dunlin (Calidris alpina) (15402301464).jpg
+review_status: approved
+review_notes: "Hero = Calidris alpina (Dunlin / Kärrsnäppa); allmän kustfågel under flyttning och häckar i fjällen."
+generated_at: '2026-05-15T21:00:51.173095+00:00'
+sources:
+  wikipedia_sv_revision: '57938212'
+  wikipedia_en_revision: '1321253485'
+  claude_model: claude-haiku-4-5-20251001

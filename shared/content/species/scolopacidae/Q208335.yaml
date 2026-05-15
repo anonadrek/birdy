@@ -1,0 +1,106 @@
+id: Q208335
+scientific_name: Phalaropus fulicarius
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Phalaropus
+  ioc_order: Charadriiformes
+names:
+  sv: Brednäbbad simsnäppa
+  en: Red Phalarope
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red Phalarope
+
+
+    The red phalarope is a small wader that breeds throughout Arctic regions across
+    both North America and Eurasia. It is highly migratory, following an unusual strategy
+    for waders by undertaking long oceanic journeys rather than hugging coastlines.
+    It winters at sea in tropical ocean waters, spending much of its life away from
+    land.
+
+
+    This phalarope is distinctive among waders for its maritime habits. Unlike most
+    relatives that favour shallow coastal waters or inland wetlands, it is adapted
+    to pelagic life, swimming buoyantly on open ocean. Its small size, combined with
+    its distinctive plumage patterns that change seasonally between breeding and non-breeding
+    seasons, makes it identifiable even at sea.
+
+
+    The red phalarope''s reliance on oceanic migration routes and offshore wintering
+    grounds sets it apart from other wader species. Birdwatchers may encounter it
+    during migration periods when it occasionally appears on inland waters or coastlines,
+    though its natural habitat remains the open ocean where it feeds in loose flocks
+    throughout much of the year.'
+migration:
+  sv: ''
+  en: '# Red Phalarope Migration in Northern Europe
+
+
+    The Red Phalarope is a rare but regular passage migrant through Scandinavian waters,
+    primarily during spring and autumn migration periods. This species breeds in Arctic
+    regions and migrates predominantly along oceanic routes rather than inland flyways,
+    making it difficult to observe from land. In northern Europe, Red Phalaropes may
+    be encountered during May and August-September as they travel between Arctic breeding
+    grounds and tropical ocean wintering grounds. They are most likely to be seen
+    from coastal areas or during stormy weather when birds are blown inland from their
+    marine migration routes. Very few individuals overwinter in northern waters, as
+    this species winters exclusively at sea in tropical oceans, making it essentially
+    absent from Scandinavian regions during winter months.'
+image_refs:
+- role: hero
+  path: Q208335/hero.jpg
+  width: 2142
+  height: 2400
+  license: Public domain
+  author: Scan by NYPL
+  source_url: https://commons.wikimedia.org/wiki/File:232. The Red Phalarope (Phalaropus
+    fulicarius). 233. The American Coot (Fulica americana) (NYPL b14505696-113646).tiff
+  commons_filename: 232. The Red Phalarope (Phalaropus fulicarius). 233. The American
+    Coot (Fulica americana) (NYPL b14505696-113646).tiff
+- role: secondary
+  path: Q208335/secondary-1.jpg
+  width: 1800
+  height: 1183
+  license: Public domain
+  author: U.S. Fish &amp; Wildlife Service
+  source_url: https://commons.wikimedia.org/wiki/File:Phalaropus fulicarius.jpg
+  commons_filename: Phalaropus fulicarius.jpg
+- role: secondary
+  path: Q208335/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red phalarope (Phalaropus fulicarius)
+    2021 2.jpg
+  commons_filename: Red phalarope (Phalaropus fulicarius) 2021 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:59:49.188354+00:00'
+sources:
+  wikipedia_sv_revision: '56596506'
+  wikipedia_en_revision: '1332152043'
+  claude_model: claude-haiku-4-5-20251001

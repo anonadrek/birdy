@@ -1,0 +1,120 @@
+id: Q28114227
+scientific_name: Calidris falcinellus
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Myrsnäppa
+  en: Broad-billed Sandpiper
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Myrsnäppa
+
+
+    Myrsnäppa är en mindre vadarfågel från familjen snäppor. Den är anpassad för liv
+    på fuktiga myrar, där den häckar från norra Skandinavien österut genom Sibirien.
+    Under vintermånaderna är arten migratorisk och återfinns då i ett omfattande område
+    som sträcker sig från Östafrika via södra Asien till Australasien.
+
+
+    Arten har genomgått taxonomiska förändringar och placerades tidigare som ensam
+    art i sitt eget släkte, Limicola, men inkluderas numera i det större släktet Calidris
+    tillsammans med andra mindre snäppor. Det är en anpassad vassvadarfågel med särskilda
+    morfologiska drag för sitt livsmiljö.
+
+
+    Oroande nog minskar populationen av myrsnäppa märkbart, vilket har lett till att
+    arten sedan 2024 är upptagen på IUCN:s röda lista över utrotningshotade arter.
+    Detta gör den till ett viktigt fokusområde för naturvårdsinsatser.'
+  en: '# Broad-billed Sandpiper
+
+
+    The broad-billed sandpiper is a small wading bird whose scientific name reflects
+    its distinctive curved bill, derived from the Latin word for "sickle." This compact
+    shorebird is noticeably petite compared to many other sandpipers, making it easy
+    to overlook on mudflats and coastal margins.
+
+
+    In appearance, it is characterized by its notably broad, slightly downcurved bill—a
+    feature that distinguishes it from similar small sandpipers. The plumage is generally
+    drab, with mottled grey-brown upperparts and paler underparts. During breeding
+    season, it develops more contrasting patterns. It feeds by probing in soft substrates,
+    often with a characteristic hunched posture.
+
+
+    The broad-billed sandpiper inhabits coastal wetlands, mudflats, and shallow waters,
+    particularly during migration periods. It is found in tundra breeding grounds
+    during summer and moves to coastal regions in winter. Its behaviour is typical
+    of small sandpipers—feeding in flocks, often in the company of other wading birds.
+    The species was historically classified in its own genus but was reclassified
+    into the larger Calidris genus in 2004 following taxonomic review.'
+migration:
+  sv: Myrsnäppan är en migrationsvadarfågel som häckar på myrar i norra Skandinavien
+    och därefter österut genom Sibirien under sommarmånaderna. Under vintertid genomför
+    arten en omfattande migration söderut och överinterar i ett stort område som sträcker
+    sig från Östafrika via södra Asien till Australasien. Detta innebär att arten
+    är vanligtvis frånvarande från Skandinavien under vintermånaderna och återkommer
+    för häckning under våren.
+  en: '# Broad-billed Sandpiper in Northern Europe
+
+
+    The broad-billed sandpiper is a migratory wading bird that breeds in the Arctic
+    regions of northern Scandinavia and Russia. In Northern Europe, it appears as
+    a passage migrant and summer breeder, with populations arriving in breeding areas
+    from May onwards. The species undertakes long-distance migration to winter in
+    Africa and southern Asia, departing Scandinavian breeding grounds from July through
+    September. During spring migration (April-May) and autumn migration (July-September),
+    small numbers may be observed in coastal areas and wetlands of northern Scandinavia.
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q28114227/hero.jpg
+  width: 2400
+  height: 1670
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Broad-billed Sandpiper Calidris
+    falcinellus DSCN8335 (2).jpg
+  commons_filename: Broad-billed Sandpiper Calidris falcinellus DSCN8335 (2).jpg
+- role: secondary
+  path: Q28114227/secondary-1.jpg
+  width: 1800
+  height: 1169
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Broad-billed Sandpiper Calidris
+    falcinellus DSCN8335 (1).jpg
+  commons_filename: Broad-billed Sandpiper Calidris falcinellus DSCN8335 (1).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:02:22.988886+00:00'
+sources:
+  wikipedia_sv_revision: '59190766'
+  wikipedia_en_revision: '1335310412'
+  claude_model: claude-haiku-4-5-20251001

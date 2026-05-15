@@ -1,0 +1,131 @@
+id: Q28103
+scientific_name: Tringa erythropus
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Tringa
+  ioc_order: Charadriiformes
+names:
+  sv: Svartsnäppa
+  en: Spotted Redshank
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartsnäppa
+
+
+    Svartsnäppa är en elegant vadarfågel som genomgår en spektakulär dräktförändring
+    mellan årstiderna. Under häckningstiden bär den en helsvart fjäderdräkt, vilket
+    gav arten sitt namn. I vinterdräkt blir utseendet helt annorlunda – då är den
+    gråvit färgad med iögonfallande röda ben och näbb. Detta gör den lätt att identifiera
+    när den inte är i häckningstolk.
+
+
+    Arten häckar i nordligaste Europa och norra Asien, främst i myrmarker och sumpskogar.
+    Som flyttfågel åker den långt söderut på vintern och hittas då vid kustnära miljöer
+    runt Medelhavet, i södra Asien och ibland även i tropiska Afrika. I Sverige är
+    svartsnäppa en genomflyttare på våren och hösten, men beståndet minskar oroande.
+
+
+    Vid förflyttningen ses den ofta i små flockar vid strandsöm och grund vatten,
+    där den söker föda genom att peck eller stöka i bottnen. Även om arten globalt
+    bedöms ha ett livskraftigt bestånd, är det svenska antalet minskande och arten
+    är klassificerad som nära hotad.'
+  en: '# Spotted Redshank
+
+
+    The spotted redshank is a medium-sized wader belonging to the Scolopacidae family.
+    During breeding season, it develops distinctive dark plumage with white spotting,
+    while in winter it becomes noticeably paler and greyer. The bird has long reddish
+    legs and a long, slightly downcurved bill, features that aid identification in
+    the field.
+
+
+    This species breeds across northern Scandinavia and the northern Palearctic regions,
+    favouring wetland habitats. It is a long-distance migrant, departing breeding
+    grounds in autumn to winter in the Mediterranean, southern British Isles, France,
+    tropical Africa, and tropical Asia. The bird occasionally appears as a vagrant
+    to Australia and North America.
+
+
+    When feeding, the spotted redshank often wades in shallow water, sometimes immersing
+    itself deeply while probing for invertebrates. It is generally more active and
+    vocal than many other redshank species. The bird can be encountered on coastal
+    mudflats, estuaries, and inland wetlands during migration and winter periods,
+    often in small flocks or mixed groups with other wader species.'
+migration:
+  sv: '# Svartsnäppa i Norden
+
+
+    Svartsnäppan är en flyttfågel som häckar i nordligaste Europa och norra Asien.
+    Under häckningstiden är den helsvart, medan den i vinterdräkten är gråvit med
+    röda ben. För att undvika de hårda nordiska vintrar migrera svartsnäppan söderut,
+    där den övervintra i Medelhavsområdet och södra Asien, ibland även i tropiska
+    Afrika. Arten återkommer till sina häckningsrevir under våren för att reproducera
+    sig i de nordligaste delarna av Europa.'
+  en: '# Spotted Redshank Migration in Northern Europe
+
+
+    The Spotted Redshank breeds across northern Scandinavia and the northern Palearctic
+    during the breeding season. This wader species is a long-distance migrant, departing
+    breeding grounds in late summer and autumn to winter in warmer regions including
+    the Mediterranean, southern British Isles, France, tropical Africa, and tropical
+    Asia. Birds return to Scandinavian breeding areas in spring to complete their
+    annual cycle. The species is occasionally recorded as a vagrant in Australia and
+    North America, indicating occasional long-distance dispersal events beyond their
+    typical migration routes.'
+image_refs:
+- role: hero
+  path: Q28103/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/78782622@N03">Jac.
+    Janssen</a> from Baarlo lb, NL
+  source_url: https://commons.wikimedia.org/wiki/File:Tringa erythropus (34304271882).jpg
+  commons_filename: Tringa erythropus (34304271882).jpg
+- role: secondary
+  path: Q28103/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/78782622@N03">Jac.
+    Janssen</a> from Baarlo lb, NL
+  source_url: https://commons.wikimedia.org/wiki/File:Tringa erythropus (34079135840).jpg
+  commons_filename: Tringa erythropus (34079135840).jpg
+- role: secondary
+  path: Q28103/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:JJ_Harrison" title="User:JJ Harrison">JJ
+    Harrison</a> (<a rel="nofollow" class="external free" href="https://www.jjharrison.com.au/">https://www.jjharrison.com.au/</a>)
+  source_url: https://commons.wikimedia.org/wiki/File:Tringa erythropus - Laem Pak
+    Bia.jpg
+  commons_filename: Tringa erythropus - Laem Pak Bia.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:59:36.119409+00:00'
+sources:
+  wikipedia_sv_revision: '58511078'
+  wikipedia_en_revision: '1326481647'
+  claude_model: claude-haiku-4-5-20251001

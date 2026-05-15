@@ -1,0 +1,134 @@
+id: Q28355
+scientific_name: Tringa stagnatilis
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Tringa
+  ioc_order: Charadriiformes
+names:
+  sv: Dammsnäppa
+  en: Marsh Sandpiper
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dammsnäppa
+
+
+    Dammsnäppa är en ganska liten vadare som liknar sina närmaste släktingar grönbenan
+    och rödbenan. Fågeln är särskilt karakteristisk för sitt långsmala utseende med
+    tunna, långa ben och en spetsig, rät näbb. Under häckningsperioden förekommer
+    den i öppna våtmarker på flack terräng, framför allt i tajga och på stäpp från
+    östligaste Europa till Centralasien.
+
+
+    Under flyttningen är dammsnäppa relativt vanlig västerut genom Europa och påträffas
+    regelbundet i bland annat Sverige. Arten trivs i grunt vatten och på fuktiga marker
+    där den födosöker genom att picka vid vattenytan. Dammsnäppa är en ganska tystlåten
+    fågel jämfört med många andra vadare.
+
+
+    Populationen minskar gradvis, men arten anses trots detta vara livskraftig globalt.
+    I Sverige har arten etablerat sig som häckfågel vid flera tillfällen, vilket visar
+    på artens förmåga att kolonisera nya områden under lämpliga förhållanden.'
+  en: '# Marsh Sandpiper
+
+
+    The marsh sandpiper is a small wader belonging to the shank family, notably slender
+    and delicate in build. It favors open grassy steppe and taiga wetlands, breeding
+    across a vast range from easternmost Europe eastward to the Russian Far East.
+    During migration and winter, it disperses to wetland habitats across Africa, Asia,
+    and Australasia.
+
+
+    This species is distinguished by its fine, straight bill and relatively long,
+    greenish legs—features typical of shanks adapted for probing shallow water and
+    wet ground. Its plumage is predominantly pale grey-brown above with white underparts,
+    and it shares the characteristic white rump visible in flight that the ancient
+    Greeks noted in their descriptions of wading birds.
+
+
+    Marsh sandpipers are generally quiet birds, though they produce sharp, distinctive
+    calls when alarmed or in flight. They are typically seen singly or in small groups,
+    often wading in shallow marshes, pools, and muddy margins where they feed on small
+    invertebrates. Occasionally, they associate with other shank species during migration
+    and wintering periods.'
+migration:
+  sv: '# Dammsnäppa – förekomst i Norden
+
+
+    Dammsnäppa är en östeuropeisk och centralasiatisk art som under flyttningen regelbundet
+    påträffas i västra Europa, inklusive Sverige. Arten häckar på våtmarker i tajga
+    och stäpp från östligaste Europa till Centralasien, men har också dokumenterat
+    häckat vid flera tillfällen i Sverige. Under våren och hösten ses fågeln därför
+    regelbundet under sina migrationströvor genom våra nordiska områden när den förflyttar
+    sig mellan sina östliga häckningsplatser och övervintringsområden i södra Afrika
+    och södra Asien.'
+  en: '# Marsh Sandpiper in Scandinavia/Northern Europe
+
+
+    The Marsh Sandpiper is a rare vagrant to Scandinavia and Northern Europe, with
+    no established breeding population in the region. This small wader primarily breeds
+    in eastern European and Asian wetlands, far from regular Scandinavian range. Occasional
+    sightings occur during migration periods, particularly in late spring (May) and
+    autumn (August-September), when birds dispersing from eastern breeding grounds
+    may appear as vagrants in northern European wetlands and coastal areas. Most records
+    are sporadic and unpredictable, making this species an uncommon but noteworthy
+    find for birdwatchers in the region.'
+image_refs:
+- role: hero
+  path: Q28355/hero.jpg
+  width: 2400
+  height: 1761
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
+    Sprinz">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Teichwasserläufer (Tringa stagnatilis).jpg
+  commons_filename: Teichwasserläufer (Tringa stagnatilis).jpg
+- role: secondary
+  path: Q28355/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Marsh Sandpiper, Tringa stagnatilis,
+    at Marievale Nature Reserve, Gauteng, South Africa (31665103988).jpg
+  commons_filename: Marsh Sandpiper, Tringa stagnatilis, at Marievale Nature Reserve,
+    Gauteng, South Africa (31665103988).jpg
+- role: secondary
+  path: Q28355/secondary-2.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Marsh Sandpiper, Tringa stagnatilis,
+    at Marievale Nature Reserve, Gauteng, South Africa (31665103698).jpg
+  commons_filename: Marsh Sandpiper, Tringa stagnatilis, at Marievale Nature Reserve,
+    Gauteng, South Africa (31665103698).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:01:09.756606+00:00'
+sources:
+  wikipedia_sv_revision: '58681922'
+  wikipedia_en_revision: '1333014111'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,129 @@
+id: Q18856
+scientific_name: Xenus cinereus
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Xenus
+  ioc_order: Charadriiformes
+names:
+  sv: Tereksnäppa
+  en: Terek Sandpiper
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tereksnäppa
+
+
+    Tereksnäppa är en liten vadarfågel som utgör den enda arten i sitt släkte Xenus.
+    Den är en intressant gäst i Sverige där den förekommer årligen, även om antalet
+    observationer är begränsat. Arten häckar i omfattande område från Finland och
+    österut genom Sibirien. Under vintermånaderna migrerar den långväga mot varmare
+    kuster där den övervintrarar i områden kring Östafrika, Sydasien och Australien.
+
+
+    I Västeuropa är tereksnäppa tillfällig förekomst och relativt sällsynt, men årliga
+    observationer visar att några individer återvänder regelbundet under flyttningsperioderna.
+    Fågeln är uppkallad efter floden Terek i Kaukasus, vilket återspeglar dess ursprungliga
+    häckningsområde i denna region och vidare öster ut.
+
+
+    För den svenska fågelintresserad är tereksnäppa en spännande art att hålla utkik
+    efter vid kusterna och på strandängar under vårens och höstens flyttningsperioder,
+    särskilt eftersom den är årlig men aldrig talrik.'
+  en: '# Terek Sandpiper
+
+
+    The Terek sandpiper is a small, distinctive wader that stands out among its relatives
+    through several unique features. It has a slightly curved, relatively long bill
+    and an upright posture that gives it a characteristic silhouette. Its plumage
+    is predominantly grey and white, with subtle markings that provide effective camouflage
+    on mudflats and sandy shores.
+
+
+    This migratory species is highly active and restless, constantly moving across
+    feeding grounds in search of small invertebrates. It often runs rapidly with jerky
+    movements, appearing nervous and alert. The bird is known for its distinctive
+    high-pitched calls, which it uses frequently both in flight and while feeding.
+
+
+    The Terek sandpiper breeds in the northern Palearctic regions and undertakes long-distance
+    migrations to wintering grounds in Africa and southern Asia. It frequents coastal
+    areas, estuaries, and inland wetlands during migration and winter, preferring
+    soft substrates where it can probe and pick for food. As the sole member of its
+    genus, it represents a unique evolutionary lineage within the sandpiper family.'
+migration:
+  sv: '# Tereksnäppa i Skandinavien/Nordeuropa
+
+
+    Tereksnäppa är en genomflyttare i Sverige och övriga Skandinavien, utan häckande
+    population i regionen. Arten häckar i Sibirien och återkommer årligen under flyttningstiderna.
+    Under hösten, från juli till september, observeras fågeln sällsynt men regelbundet
+    när den migrerar söderut från sina häckningsområden. Under vintermånaderna befinner
+    sig arten i Östafrika, Sydasien och Australien. Under våren, framför allt april
+    till maj, kan enstaka individer iakttas när de passerar genom Sverige på väg norrut
+    till sina sibiriska häckningsområden. Arten förekommer tillfälligt i Västeuropa.'
+  en: '# Terek Sandpiper in Scandinavia/Northern Europe
+
+
+    The Terek Sandpiper is a rare vagrant to Northern Europe and Scandinavia, occurring
+    only occasionally during migration periods. This small wader breeds in the western
+    Palearctic, primarily in Russia, and winters in Africa and southern Asia. In Scandinavia,
+    it appears sporadically as a passage migrant, typically during spring and autumn
+    migration seasons, when individuals disperse beyond their normal range. Records
+    from the region are irregular and unpredictable, making it an uncommon sight for
+    northern birdwatchers. The species does not establish regular presence or overwintering
+    populations in Scandinavian countries.'
+image_refs:
+- role: hero
+  path: Q18856/hero.jpg
+  width: 2400
+  height: 1611
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37949120@N07">Ekaterina
+    Chernetsova (Papchinskaya)</a> from Saint-Petersburg, Russia
+  source_url: https://commons.wikimedia.org/wiki/File:Xenus cinereus (34099320884).jpg
+  commons_filename: Xenus cinereus (34099320884).jpg
+- role: secondary
+  path: Q18856/secondary-1.jpg
+  width: 1800
+  height: 1182
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37949120@N07">Ekaterina
+    Chernetsova (Papchinskaya)</a> from Saint-Petersburg, Russia
+  source_url: https://commons.wikimedia.org/wiki/File:Xenus cinereus (34852062152).jpg
+  commons_filename: Xenus cinereus (34852062152).jpg
+- role: secondary
+  path: Q18856/secondary-2.jpg
+  width: 1800
+  height: 1140
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37949120@N07">Ekaterina
+    Chernetsova (Papchinskaya)</a> from Saint-Petersburg, Russia
+  source_url: https://commons.wikimedia.org/wiki/File:Xenus cinereus (34172095914).jpg
+  commons_filename: Xenus cinereus (34172095914).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:01:49.651985+00:00'
+sources:
+  wikipedia_sv_revision: '58510997'
+  wikipedia_en_revision: '1315182606'
+  claude_model: claude-haiku-4-5-20251001

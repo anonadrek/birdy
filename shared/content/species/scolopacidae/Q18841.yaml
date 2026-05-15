@@ -1,0 +1,127 @@
+id: Q18841
+scientific_name: Limosa limosa
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Limosa
+  ioc_order: Charadriiformes
+names:
+  sv: Rödspov
+  en: Black-tailed Godwit
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödspov
+
+
+    Rödspov är en medelstor vadare som tillhör familjen snäppor. Det är en elegant
+    fågel med långt, rakt näbb och slankt byggd. Under häckningstiden får den rostfärg
+    på huvud, bröst och undersida, medan vintertid blir färgerna mattare och gråaktiga.
+    En säker igenkänningsmärke är den svarta bandningen på stjärtens basdel, vilket
+    motsvaras av det engelska namnet.
+
+
+    Arten häckar i stora delar av Europa och Asien på öppna, fuktiga marker som ängar
+    och våtmarker. Under flyttningstiderna ses den ofta på våtmarker och kustområden
+    där det letar efter föda genom att sticka näbben ned i leran. Rödspoven är en
+    långdistansflyttare som övervintrar i Afrika och södra Asien.
+
+
+    Arten har under senare årtionden minskat kraftigt i antal och är numera klassificerad
+    som nära hotad. Denna nedgång beror främst på förlust av lämpliga häckningsbiotoper
+    genom jordbruksmässig intensifiering och dränering av våtmarker.'
+  en: '# Black-tailed Godwit
+
+
+    The black-tailed godwit is a striking large shorebird distinguished by its exceptionally
+    long legs and long, straight bill. During breeding season, it displays a distinctive
+    orange head, neck, and chest that contrasts sharply with its darker back and wings.
+    In winter, this vibrant plumage fades to dull grey-brown tones. Year-round, a
+    bold black and white wingbar is visible in flight, making identification reliable
+    even from a distance. The species comprises four subspecies showing slight regional
+    variation.
+
+
+    This wader inhabits wet meadows, marshes, and shallow water habitats where it
+    feeds by probing the ground or wading in shallow water. It is often seen in small
+    to large flocks, particularly during migration periods. The black-tailed godwit
+    breeds in open grasslands and wetland areas across northern regions, then migrates
+    to coastal and inland wetlands for winter. It is a highly migratory species, undertaking
+    long-distance journeys between breeding and wintering grounds, making it a familiar
+    sight at wetland reserves and estuaries during passage periods.'
+migration:
+  sv: Rödspov är en långdistansmigrant som återkommer till Skandinavien under våren,
+    vanligtvis från april till maj. Arten häckar i större delen av norra Europa, inklusive
+    Sverige och Norge, där den föredrar våtmarker och ängsmark. Under hösten migrerar
+    rödspoven söderut för att övervinta i södra Europa, Afrika och södra Asien. Vintermånaderna
+    tillbringas utanför häckningsområdena, och arten är således praktiskt taget frånvarande
+    från Skandinavien under denna period. Återflyttningen på våren är ett viktigt
+    fenomen för nordiska ornitologer, då arten under denna tid passerar genom olika
+    habitat på vägen till sina häckningsplatser.
+  en: '# Black-tailed Godwit (Limosa limosa) in Scandinavia
+
+
+    The Black-tailed Godwit is a migratory shorebird that breeds throughout Scandinavia
+    and Northern Europe during spring and summer months. Populations arrive in breeding
+    territories from March to May after wintering in southern regions. These birds
+    breed in wetland habitats across the Nordic countries, displaying their characteristic
+    orange breeding plumage during this period. As autumn approaches, typically from
+    July onwards, they begin their southward migration to winter grounds in Africa,
+    the Mediterranean region, and western Europe. Some individuals may remain in ice-free
+    coastal areas during mild winters, but the majority of Scandinavian breeding birds
+    are long-distance migrants, completely absent during the winter months.'
+image_refs:
+- role: hero
+  path: Q18841/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Icelandic black-tailed godwit
+    (Limosa limosa islandica).jpg
+  commons_filename: Icelandic black-tailed godwit (Limosa limosa islandica).jpg
+- role: secondary
+  path: Q18841/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Icelandic black-tailed godwit
+    (Limosa limosa islandica), Iceland.jpg
+  commons_filename: Icelandic black-tailed godwit (Limosa limosa islandica), Iceland.jpg
+- role: secondary
+  path: Q18841/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Icelandic black-tailed godwit
+    (Limosa limosa islandica), Seltjarnarnes, Iceland.jpg
+  commons_filename: Icelandic black-tailed godwit (Limosa limosa islandica), Seltjarnarnes,
+    Iceland.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:02:36.519627+00:00'
+sources:
+  wikipedia_sv_revision: '58700001'
+  wikipedia_en_revision: '1341641781'
+  claude_model: claude-haiku-4-5-20251001

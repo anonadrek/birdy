@@ -660,3 +660,18 @@ species:
     description_accept_missing: [sv]  # Common Bulbul — sparse svwiki
   Q997298:
     description_accept_missing: [sv]  # White-eared Bulbul — sparse svwiki
+  # Scolopacidae (2026-05-15)
+  Q18859:
+    description_accept_missing: [en]  # Common Redshank — sparse enwiki (allmän SE)
+  Q208335:
+    description_accept_missing: [sv]  # Red Phalarope — sparse svwiki
+  Q26892:
+    description_accept_missing: [en]  # Ruddy Turnstone — sparse enwiki
+  Q28122714:
+    description_accept_missing: [en]  # Ruff — sparse enwiki
+  Q28450:
+    description_accept_missing: [en]  # Green Sandpiper — sparse enwiki
+  Q58921:
+    description_accept_missing: [en]  # Temminck's Stint — sparse enwiki
+  Q595162:
+    description_accept_missing: [sv, en]  # Pin-tailed Snipe — sparse on both (78w sv)

@@ -1,0 +1,127 @@
+id: Q26711
+scientific_name: Lymnocryptes minimus
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Lymnocryptes
+  ioc_order: Charadriiformes
+names:
+  sv: Dvärgbeckasin
+  en: Jack Snipe
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dvärgbeckasin
+
+
+    Dvärgbeckasin är en liten medlem av snäppfamiljen och är betydligt mindre än sina
+    närmare släktingar enkelbeckasin och dubbelbeckasin. Trots det yttre likheter
+    med dessa arter utgör den sitt eget släkte och är genetiskt närmare släkt med
+    morkullor. Fågeln häckar på myrar i norra regioner och sprider sig österut till
+    östra Ryssland. Under vintermånaderna är den en långflyttare som söker sig till
+    sydligare områden från södra Europa till Sydostasien, med populationer även i
+    Centralafrika.
+
+
+    Arten är klassificerad som livskraftig enligt IUCN och tycks kunna hålla sina
+    populationer stabil. För den som vill observera denna lilla snäppfågel krävs ofta
+    tålamod och ett intresse för våtmarksmiljöer där den vistas under häckningssäsongen.'
+  en: '# Jack Snipe
+
+
+    The jack snipe is the smallest member of the snipe family, instantly recognizable
+    by its compact, stocky build. It is the sole species in its genus, Lymnocryptes,
+    and possesses distinctive anatomical features that set it apart from other snipes
+    and woodcocks, including a characteristic sternum structure.
+
+
+    One of the jack snipe''s most notable behaviours is its continuous bobbing motion,
+    moving up and down in a rhythmic pattern that is quite different from other waders.
+    This distinctive habit, combined with its diminutive size, makes it relatively
+    easy to identify in the field once observed.
+
+
+    The jack snipe inhabits wet, marshy habitats where it feeds on invertebrates in
+    soft ground. It is generally a secretive bird, often remaining concealed among
+    vegetation, though its characteristic bobbing action can betray its presence to
+    attentive observers.'
+migration:
+  sv: '# Dvärgbeckasin – Förekomst i Skandinavien
+
+
+    Dvärgbeckasinen häckar på myrar i norra Skandinavien under sommarmånaderna. Det
+    är en migrationsart som flyttar söderut på hösten för att övervintra. Huvudsakliga
+    övervintringsområden ligger i södra Europa, Centralafrika och Sydostasien. Under
+    våren återvänder arten till sina häckningsområden i nordiska myrkomplex. Dvärgbeckasinen
+    är en ganska dold fågel som ofta förbises, men under dragperioderna kan individer
+    observeras på fuktigare lokaler under genomflyttningen mellan nord och syd.'
+  en: '# Jack Snipe Migration in Northern Europe
+
+
+    The jack snipe is a migratory wader with a complex distribution pattern across
+    Scandinavia and Northern Europe. During winter months, small numbers overwinter
+    in southern Scandinavia and coastal areas, though the species is primarily absent
+    from the region during the coldest periods. Spring arrival occurs from March onwards
+    as birds return from wintering grounds in southern Europe and North Africa to
+    breed in northern wetlands. The breeding season extends through summer, with birds
+    occupying boggy habitats across northern latitudes. Autumn migration begins in
+    August and September, with most populations departing for wintering areas by October,
+    making the jack snipe a typical passage migrant through much of the region rather
+    than a permanent resident.'
+image_refs:
+- role: hero
+  path: Q26711/hero.jpg
+  width: 1536
+  height: 2048
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3086182">Esa
+    Aalto</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lymnocryptes minimus - Esa Aalto
+    - 139895612.jpeg
+  commons_filename: Lymnocryptes minimus - Esa Aalto - 139895612.jpeg
+- role: secondary
+  path: Q26711/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Jack snipe (Lymnocryptes minimus)
+    2022.jpg
+  commons_filename: Jack snipe (Lymnocryptes minimus) 2022.jpg
+- role: secondary
+  path: Q26711/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Burzawa_cl%C3%A9ment_PIM%27S&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Burzawa clément PIM'S (page does not exist)">Burzawa clément
+    PIM'S</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lymnocryptes minimus au sol.jpg
+  commons_filename: Lymnocryptes minimus au sol.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:59:27.530349+00:00'
+sources:
+  wikipedia_sv_revision: '58520108'
+  wikipedia_en_revision: '1315032266'
+  claude_model: claude-haiku-4-5-20251001

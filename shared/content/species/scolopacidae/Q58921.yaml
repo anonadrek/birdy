@@ -1,0 +1,99 @@
+id: Q58921
+scientific_name: Calidris temminckii
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Mosnäppa
+  en: Temminck’s Stint
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mosnäppa
+
+
+    Mosnäppa är en mycket liten vadarfågel som tillhör familjen snäppor. Den är betydligt
+    mindre än de flesta andra vadare och har ett kompakt, diskret utseende. Fågeln
+    karakteriseras av sin lilla storlek och nedåtböjda näbb, vilket gör den lätt att
+    skilja från närbesläktade arter.
+
+
+    Till skillnad från många andra Calidris-vadare ses mosnäppa sällan i större flockar.
+    Den rastar ofta ensam eller i små grupper i våtmarker i inlandet, snarare än på
+    öppna strandpartier. Detta beteende gör den mindre framträdande än många andra
+    vadarfåglar.
+
+
+    Arten häckar från norra Europa och österut genom norra Asien. Under vintermånaderna
+    flyttar den till tropiska Afrika och södra Asien. Dess globala bestånd anses vara
+    livskraftigt. För att få syn på mosnäppa krävs ofta tålamod och uppmärksamhet
+    på lämpliga rastplatser, då den lätt kan överses på grund av sin diskreta natur.'
+  en: ''
+migration:
+  sv: '# Mosnäppa (Temminck''s Stint) – Förekomst i Skandinavien
+
+
+    Mosnäppa är en flyttfågel som häckar i norra Europa och återvänder efter häckningstiden.
+    Arten migrerare långväga söderut till tropiska Afrika och södra Asien för att
+    övervintra, vilket innebär att den är helt frånvarande från Skandinavien under
+    vintermånaderna. Under våren återkommer fågeln för att häcka i sitt nordeuropeiska
+    utbredningsområde. Till skillnad från många andra vadare förekommer mosnäppa sällan
+    i större flockar, utan rastar istället oftare i mindre grupper i våtmarker i inlandet
+    under genom- och utflyttningsperioderna.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q58921/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mlkniemi&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mlkniemi (page does not exist)">Mlkniemi</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Calidris temminckii.jpg
+  commons_filename: Calidris temminckii.jpg
+- role: secondary
+  path: Q58921/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Calidris temminckii (33795213884).jpg
+  commons_filename: Calidris temminckii (33795213884).jpg
+- role: secondary
+  path: Q58921/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Calidris temminckii (34638250315).jpg
+  commons_filename: Calidris temminckii (34638250315).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:59:29.287944+00:00'
+sources:
+  wikipedia_sv_revision: '59193166'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

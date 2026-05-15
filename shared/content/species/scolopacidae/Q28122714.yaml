@@ -1,0 +1,97 @@
+id: Q28122714
+scientific_name: Calidris pugnax
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Brushane
+  en: Ruff
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brushane
+
+
+    Brushane är en snäppa med slående sexuell dimorfism – hanen är betydligt större
+    än honan och bär under häckningstiden en unik praktdräkt med stora, individuellt
+    varierande halskragar i många färger. Denna variation mellan hanarna är mycket
+    ovanlig bland fåglar. Honan är däremot diskret färgad i brunt och beige. Arten
+    förekommer på våtmarker i kallare regioner under häckningssäsongen.
+
+
+    Brushanen är en mobil art som förflyttar sig mellan häckningsplatserna och övervintringsbiotoper.
+    Arten är idag klassificerad inom släktet *Calidris* tillsammans med andra mindre
+    vadare, en förändring från tidigare när den utgör en helt egen art inom sitt eget
+    släkte *Philomachus*.'
+  en: ''
+migration:
+  sv: '# Brushane – Förekomst i Skandinavien/Nordeuropa
+
+
+    Brushane är en migrerande art som förekommer i Skandinavien och Nordeuropa framförallt
+    under våren och hösten. Arten häckar i våtmarker i kallare områden av Europa,
+    inklusive delar av Skandinavien, där den anländer under vårmånaderna för att reproducera
+    sig. Under hösten drar fåglarna bort när häckningsperioden avslutas. Arten övervintar
+    inte regelbundet i Skandinavien utan söker sig till mildare klimatzoner under
+    vinterhalvåret. Brushanen är därför en klassisk långdistansmigrant som endast
+    är närvarande under de värmare delarna av året i norra Europa.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q28122714/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ruff (Calidris pugnax) 2021
+    2.jpg
+  commons_filename: Ruff (Calidris pugnax) 2021 2.jpg
+- role: secondary
+  path: Q28122714/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ruff Calidris pugnax female
+    Mumbai DSCN0762 (1).jpg
+  commons_filename: Ruff Calidris pugnax female Mumbai DSCN0762 (1).jpg
+- role: secondary
+  path: Q28122714/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ruff Calidris pugnax female
+    Mumbai DSCN0762 (2).jpg
+  commons_filename: Ruff Calidris pugnax female Mumbai DSCN0762 (2).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:01:29.291382+00:00'
+sources:
+  wikipedia_sv_revision: '58520102'
+  wikipedia_en_revision: '1321407778'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,84 @@
+id: Q595162
+scientific_name: Gallinago stenura
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Gallinago
+  ioc_order: Charadriiformes
+names:
+  sv: Sibirisk beckasin
+  en: Pin-tailed Snipe
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sibirisk beckasin
+
+
+    Sibirisk beckasin är en vadarfågel från familjen snäppor som huvudsakligen förekommer
+    i Asien. Arten häckar i Sibirien och drar sedan söderut för att övervinta i södra
+    och sydöstra Asien. I Europa är arten mycket sällsynt och uppträder endast som
+    en ytterst ovanlig gäst – endast två fynd har dokumenterats, båda från Italien.
+
+
+    Arten är starkt bunden till sitt asiatskt utbredningsområde och utgör en raritet
+    för europeiska fågelbeskådare. Beståndet anses för närvarande vara livskraftigt
+    och stabilt.'
+  en: ''
+migration:
+  sv: '# Sibirisk beckasin – Förekomst i Skandinavien/Nordeuropa
+
+
+    Sibirisk beckasin är en mycket sällsynt gäst i Europa och förekommer endast undantagsvis
+    i Skandinavien och Nordeuropa. Arten häckar i Sibirien och övervintrar i södra
+    och sydöstra Asien. De mycket få europeiska fynden – endast två dokumenterade
+    observationer, båda från Italien – visar att arten mycket sällan når västerut
+    under sin migration. För Skandinavien och Nordeuropa bör arten betraktas som en
+    extraordinär vagabund snarare än en regelbunden förekomst.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q595162/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:JJ_Harrison" title="User:JJ Harrison">JJ
+    Harrison</a> (<a rel="nofollow" class="external free" href="https://www.jjharrison.com.au/">https://www.jjharrison.com.au/</a>)
+  source_url: https://commons.wikimedia.org/wiki/File:Gallinago stenura - Laem Pak
+    Bia.jpg
+  commons_filename: Gallinago stenura - Laem Pak Bia.jpg
+- role: secondary
+  path: Q595162/secondary-1.jpg
+  width: 1800
+  height: 1021
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Shino_jacob_koottanad" title="User:Shino
+    jacob koottanad">Shino jacob koottanad</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pin-tailed snipe or pintail
+    snipe (Gallinago stenura).jpg
+  commons_filename: Pin-tailed snipe or pintail snipe (Gallinago stenura).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:00:39.232169+00:00'
+sources:
+  wikipedia_sv_revision: '58595118'
+  wikipedia_en_revision: '1315096273'
+  claude_model: claude-haiku-4-5-20251001

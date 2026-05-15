@@ -1,0 +1,131 @@
+id: Q27232
+scientific_name: Calidris minuta
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Småsnäppa
+  en: Little Stint
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Småsnäppa
+
+
+    Småsnäppa är en mycket liten snäppa som häckar i arktiska områden inom palearktis.
+    Det är en flyttfågel som övervintrar i Medelhavsregionen, Afrika och södra Asien.
+    Arten uppskattas öka i antal och betecknas av IUCN som livskraftig.
+
+
+    Med sitt lilla format är småsnäppa en av de minsta snäpporna. Under häckningstiden
+    är den värd att leta efter på tundra och kärrmark i höga nordliga breddgrader.
+    Arten ses ofta vid påvägen och hemvägen mellan häcknings- och övervintringsområdena,
+    där den kan observeras på stränder, mudderbankar och grunt vatten tillsammans
+    med andra snäppor.'
+  en: '# Little Stint
+
+
+    The little stint is a tiny wader, among the smallest in its family, making it
+    instantly recognisable in the field. It breeds across arctic regions of Europe
+    and Asia, favoring tundra habitats during the breeding season.
+
+
+    This species is a remarkable long-distance migrant, traveling vast distances between
+    its northern breeding grounds and wintering areas in Africa and southern Asia.
+    The journey demonstrates the extraordinary endurance of such a small bird. Occasionally,
+    individuals wander off course and appear as vagrants in North America and Australia,
+    testament to the unpredictable nature of migration.
+
+
+    In non-breeding plumage, the little stint displays subtle grey and white tones,
+    though breeding birds show warmer rufous coloring on the crown and ear-coverts.
+    It typically forages on mudflats and shallow water edges, picking at small invertebrates
+    with its fine, straight bill. The bird''s diminutive size—reflected in its scientific
+    name *minuta*, Latin for "small"—is its most distinctive feature when observed
+    alongside other waders.'
+migration:
+  sv: '# Småsnäppa – Migration och förekomst i Nordeuropa
+
+
+    Småsnäppa är en långdistansflyttare som häckar i arcktiska områden långt norr
+    om Skandinavien. Under våren anländer arten till nordeuropa under april-maj på
+    väg till sina häckningsplatser i Sibirien och andra arktiska regioner. Efter häckningen
+    påbörjar fåglarna sin southbound-migration under juli-augusti, då de passerar
+    genom Skandinavien och övriga Nordeuropa på vägen söderut. Arten övervintrarar
+    inte i Skandinavien utan fortsätter till Medelhavsregionen, Afrika och södra Asien
+    där den tillbringar vintern.
+
+
+    I Sverige och övriga Skandinavien förekommer småsnäppa således endast under trakttiden,
+    särskilt under hösten när den är ganska regelbunden vid kusterna och på våtmarker.
+    Arten är en vanlig genomflyttare på många lokaler under sensommaren och hösten.'
+  en: '# Little Stint (Calidris minuta) in Northern Europe
+
+
+    The Little Stint is a long-distance migrant that breeds across arctic Europe and
+    Asia. In Scandinavia and Northern Europe, it arrives during spring migration (typically
+    May-June) to breed in subarctic and arctic regions. Following breeding, birds
+    undertake an extensive southward migration in late summer and autumn (July-September),
+    wintering in Africa and south Asia. The species is primarily a passage migrant
+    through Northern Europe rather than an overwintering resident, with occasional
+    vagrant records to the region during migration periods.'
+image_refs:
+- role: hero
+  path: Q27232/hero.jpg
+  width: 2400
+  height: 1603
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Little stint, Calidris minuta
+    (Erolia minuta), at Marievale Nature Reserve, Gauteng, South Africa (45489023512).jpg
+  commons_filename: Little stint, Calidris minuta (Erolia minuta), at Marievale Nature
+    Reserve, Gauteng, South Africa (45489023512).jpg
+- role: secondary
+  path: Q27232/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Pilrito-pequeno Calidris minuta
+    (51403695993).jpg
+  commons_filename: Pilrito-pequeno Calidris minuta (51403695993).jpg
+- role: secondary
+  path: Q27232/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Pilrito-pequeno Calidris minuta
+    (51404818285).jpg
+  commons_filename: Pilrito-pequeno Calidris minuta (51404818285).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:59:05.592170+00:00'
+sources:
+  wikipedia_sv_revision: '55729788'
+  wikipedia_en_revision: '1320468076'
+  claude_model: claude-haiku-4-5-20251001

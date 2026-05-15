@@ -1066,6 +1066,7 @@
   ioc_order: Charadriiformes
   common_en: Eurasian Curlew
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q18864
   scientific_name: Limosa lapponica
   family: Scolopacidae
@@ -1090,6 +1091,7 @@
   ioc_order: Charadriiformes
   common_en: Eurasian Woodcock
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q27171
   scientific_name: Gallinago media
   family: Scolopacidae
@@ -1108,6 +1110,7 @@
   ioc_order: Charadriiformes
   common_en: Common Snipe
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q18856
   scientific_name: Xenus cinereus
   family: Scolopacidae
@@ -1120,6 +1123,7 @@
   ioc_order: Charadriiformes
   common_en: Common Sandpiper
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q389691
   scientific_name: Actitis macularius
   family: Scolopacidae
@@ -1156,12 +1160,14 @@
   ioc_order: Charadriiformes
   common_en: Wood Sandpiper
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q18859
   scientific_name: Tringa totanus
   family: Scolopacidae
   ioc_order: Charadriiformes
   common_en: Common Redshank
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q28103
   scientific_name: Tringa erythropus
   family: Scolopacidae
@@ -1174,6 +1180,7 @@
   ioc_order: Charadriiformes
   common_en: Common Greenshank
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26892
   scientific_name: Arenaria interpres
   family: Scolopacidae
@@ -1228,6 +1235,7 @@
   ioc_order: Charadriiformes
   common_en: Dunlin
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q62359
   scientific_name: Calidris maritima
   family: Scolopacidae

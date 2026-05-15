@@ -1,0 +1,131 @@
+id: Q206840
+scientific_name: Phalaropus lobatus
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Phalaropus
+  ioc_order: Charadriiformes
+names:
+  sv: Smalnäbbad simsnäppa
+  en: Red-necked Phalarope
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Smalnäbbad simsnäppa
+
+
+    Smalnäbbad simsnäppa är en mycket liten vadarfågel som häckar i arktiska områden
+    och övervintrar till havs i tropiska och subtropiska vatten. Under häckningstiden
+    är honan färgstarkare än hanen med en rödaktig hals och nacke, medan båda könen
+    är gråaktiga under övervintringen. Fågeln är en skicklig simmare med kompakt byggnad
+    och relativ kort näbb.
+
+
+    Arten uppvisar ett unikt könsystem där honan är dominant och häckar med flera
+    hanar. Efter att ha lagt ägg överlåter honan helt ruvning och vård av ungarna
+    till hanen. En karakteristisk beteende är födosökningstekniken: fågeln simmar
+    i små cirklar på grunt vatten för att skapa en virvel som tvingar byten upp till
+    ytan.
+
+
+    Under växtationen ses smalnäbbad simsnäppa vid våtmarker och mindre vattensamlingar.
+    Det är en långdistansflyttfågel som efter häckningen samlas i stora flockar ute
+    till havs innan den återvänder till häckningsområdena. Arten är relativt vanlig
+    på sina häckningsplatser men sparsamt förekommande på genomfart.'
+  en: '# Red-necked Phalarope
+
+
+    The red-necked phalarope is a small wader with a distinctive appearance that changes
+    seasonally. During breeding season, it displays a russet-red neck and upper breast,
+    contrasting with a grey back and white underparts. In non-breeding plumage, it
+    becomes predominantly grey and white. It has a notably fine, straight bill adapted
+    for picking food from the water''s surface.
+
+
+    This phalarope exhibits unusual behaviour for a wader: it spends winters at sea
+    on tropical oceans rather than in traditional coastal wintering grounds. It breeds
+    across Arctic regions of North America and Eurasia during summer months, making
+    it a highly migratory species that undertakes impressive long-distance journeys
+    between breeding and wintering areas.
+
+
+    On water, the red-necked phalarope often spins rapidly in circles to create feeding
+    currents that bring food particles to the surface. It is highly aquatic and graceful
+    in its movements. The species produces quiet calls and is generally inconspicuous,
+    though breeding birds are more vocal. It is typically found on open water, coastal
+    areas, and occasionally on inland lakes and pools during migration periods.'
+migration:
+  sv: Smalnäbbad simsnäppa är en långdistansflyttfågel som häckar cirkumpolärt i arktiska
+    områden under sommaren. Arten anländer till sina häckningsplatser i Skandinavien
+    och Nordeuropa under maj-juni för att reproducera sig i våtmarker och mindre vattensamlingar.
+    Efter häckningssäsongen påbörjar fåglarna sin höstflyttning i juli-augusti, då
+    de vandrar långt söderut för att övervintring i stora flockar ute till havs i
+    tropiska och subtropiska områden. Fåglarna återvänder därefter till arktiska häckningsplatser
+    följande vår, vilket gör arten till en utpräglad säsongflyttare som saknas från
+    Skandinavien under vintern.
+  en: '# Red-necked Phalarope in Scandinavia
+
+
+    The red-necked phalarope is a summer breeding visitor to Scandinavia and northern
+    Europe, arriving in late May and June to breed in Arctic and subarctic wetlands.
+    After breeding concludes in July and August, these birds undertake an exceptional
+    long-distance migration, departing northern regions in August and September. Unlike
+    most waders that winter in coastal areas, red-necked phalaropes are highly pelagic,
+    wintering far out at sea in tropical oceans, particularly in the Arabian Sea and
+    off Peru. They do not overwinter in northern Europe and are absent during winter
+    months, returning to breeding grounds the following spring to complete their remarkable
+    annual cycle.'
+image_refs:
+- role: hero
+  path: Q206840/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: U.S. Fish &amp; Wildlife Service
+  source_url: https://commons.wikimedia.org/wiki/File:Phalaropus lobatus.jpg
+  commons_filename: Phalaropus lobatus.jpg
+- role: secondary
+  path: Q206840/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Christoph_Sager" title="User:Christoph
+    Sager">Christoph Sager</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phalaropus lobatus Cadiz CS01.jpg
+  commons_filename: Phalaropus lobatus Cadiz CS01.jpg
+- role: secondary
+  path: Q206840/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
+    C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-necked Phalarope (Phalaropus
+    lobatus) (15202634526).jpg
+  commons_filename: Red-necked Phalarope (Phalaropus lobatus) (15202634526).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:00:19.945558+00:00'
+sources:
+  wikipedia_sv_revision: '59224004'
+  wikipedia_en_revision: '1343716618'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,136 @@
+id: Q18854
+scientific_name: Numenius arquata
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Numenius
+  ioc_order: Charadriiformes
+names:
+  sv: Storspov
+  en: Eurasian Curlew
+abundance: allmän
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Storspov
+
+
+    Storspov är en stor vadare som tillhör familjen snäppor. Den kännetecknas av sin
+    stora storlek, långt böjt näbb och brunaktig fjäderdräkt. Arten är en karakteristisk
+    fågel på öppen terräng.
+
+
+    Storspov häckar i Europa och Asien, främst på jordbruksmark och myrar där det
+    finns gott om mat och lämpliga häckningsplatser. Under häckningstiden är arten
+    mycket territoriell och kan ses patrullera sitt område från luften. Det är en
+    mobil fågel som söker föda genom att sticka sitt långa näbb ned i marken för att
+    leta insekter, maskar och andra små djur.
+
+
+    Arten har genomgått en dramatisk nedgång under de senaste decennierna. Världspopulationen
+    klassificeras numera som nära hotad, och i Sverige är situationen ännu allvarligare
+    där arten betecknas som starkt hotad. Minskningen orsakas bland annat av förlust
+    av lämpliga häckningshabitat, intensifierad jordbruksverksamhet och miljöförsämringar.'
+  en: '# Eurasian Curlew
+
+
+    The Eurasian curlew is one of the largest waders in its family, instantly recognizable
+    by its impressive downward-curved bill. This substantial bird is predominantly
+    brown and buff with streaked plumage, providing excellent camouflage in open habitats.
+    In flight, it reveals a white lower back and rump, contrasting with darker wings.
+
+
+    This species is highly vocal, particularly during breeding season, with a distinctive
+    whistling call that gives the bird its common name—a clear, melodious "cur-lee"
+    that carries across moorlands and grasslands. On the ground, it forages deliberately,
+    probing into soil and shallow water with its long bill to extract invertebrates
+    and small creatures.
+
+
+    The Eurasian curlew breeds widely across temperate regions of Europe and Asia,
+    favoring open grasslands, heathlands, and moorlands. It frequents both inland
+    habitats and coastal areas, particularly during migration and winter when birds
+    gather on estuaries, mudflats, and coastal marshes. Breeding birds favor areas
+    with low vegetation where they nest on the ground, while non-breeding populations
+    are highly migratory, traveling considerable distances between breeding and wintering
+    grounds.'
+migration:
+  sv: '# Storspov – Förekomst i Skandinavien
+
+
+    Storspov är en flyttfågel som häckar i Europa och Asien. I Skandinavien och Nordeuropa
+    förekommer arten under häckningstiden på våtmarker och jordbruksmark. Arten är
+    en långdistansflyttare som överintrar i Afrika och södra Europa. Storvpoven anländer
+    till sina häckningsområden under våren och avgår under hösten för att nå sina
+    övervintringsquarterer. Populationen har minskat dramatiskt under de senaste decennierna,
+    och arten är numera klassificerad som starkt hotad i Sverige.
+
+
+    ---
+
+
+    *Obs: Källtexten innehåller inte detaljerad information om specifika ankomst-
+    eller avgångsmånader för Skandinavien.*'
+  en: '# Eurasian Curlew in Northern Europe
+
+
+    The Eurasian Curlew is a migratory wader in Scandinavia and Northern Europe. Breeding
+    populations arrive in spring (typically March-April) across temperate regions
+    including Scandinavia, where they occupy wetlands and moorlands. During autumn
+    (August-October), they undertake significant southward migration, with Northern
+    European birds moving toward wintering grounds in southern Europe, Africa, and
+    the Mediterranean region. Few individuals overwinter in the northernmost regions,
+    with most populations absent during winter months.'
+image_refs:
+- role: hero
+  path: Q18854/hero.jpg
+  width: 2400
+  height: 1774
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Numenius arquata Liminka Finland
+    2020-05-22.jpg
+  commons_filename: Numenius arquata Liminka Finland 2020-05-22.jpg
+- role: secondary
+  path: Q18854/secondary-1.jpg
+  width: 1800
+  height: 1295
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Numenius Arquata Simo 20110715.JPG
+  commons_filename: Numenius Arquata Simo 20110715.JPG
+- role: secondary
+  path: Q18854/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 2.0
+  author: blondinrikard
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian curlew, Numenius arquata,
+    Storspov.jpg
+  commons_filename: Eurasian curlew, Numenius arquata, Storspov.jpg
+review_status: approved
+review_notes: "Hero = Numenius arquata (Eurasian Curlew / Storspov); allmän men minskande häckare i SE öppen mark."
+generated_at: '2026-05-15T21:01:18.072434+00:00'
+sources:
+  wikipedia_sv_revision: '57898531'
+  wikipedia_en_revision: '1342821716'
+  claude_model: claude-haiku-4-5-20251001

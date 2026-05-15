@@ -1,0 +1,135 @@
+id: Q27452709
+scientific_name: Calidris subruficollis
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Prärielöpare
+  en: Buff-breasted Sandpiper
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Prärielöpare
+
+
+    Prärielöparen är en liten vadare som tillhör familjen snäppor. Arten är markant
+    mindre än många andra vadare och kännetecknas av sitt gräs- och bufféfärgade dräkt
+    med undertoner av rostfärg på bröstet. Kroppen är kompakt och benen relativt långa
+    för storleken.
+
+
+    Arten häckar lokalt i nordöstra Ryssland och nordligaste Nordamerika, men observeras
+    regelbundet under fåglarnas flyttningsperioder i Europa. Prärielöparen föredrar
+    öppna miljöer som gräsmarker och tundra där den söker föda på marken. Den ses
+    ofta ensam eller i mindre grupper.
+
+
+    Prärielöparen är tyvärr hotad och antalet individer har minskat kraftigt under
+    senare år. Arten betraktas numera som utrotningshotad, vilket gör varje observation
+    värdefull för övervakningen av populationen.'
+  en: '# Buff-breasted Sandpiper
+
+
+    The buff-breasted sandpiper is a small, compact shorebird with warm buff-coloured
+    underparts that give the species its common name. Its back is mottled brown and
+    grey, providing effective camouflage in its preferred habitats. The bird has relatively
+    long legs for its size and a straight, slender bill suited to picking food from
+    the ground.
+
+
+    This species inhabits open grasslands and barren plains, where it forages deliberately
+    on the ground for small invertebrates and insects. During migration and winter,
+    it favours short-grass areas and burnt or recently grazed fields. The buff-breasted
+    sandpiper is notably tame and approachable compared to many other shorebirds,
+    often allowing close observation before flushing.
+
+
+    The bird''s call is generally quiet, consisting of soft, low trills and whistles.
+    It breeds in arctic regions and undertakes a lengthy migration to reach wintering
+    grounds in South America, making it a long-distance migrant. During spring migration,
+    males perform elaborate aerial displays, flying high with rapid wingbeats while
+    calling to establish territories and attract females.'
+migration:
+  sv: Prärielöparen är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten
+    häckar långt bort i nordöstra Ryssland och nordligaste Nordamerika, men ses regelbundet
+    under flyttningen genom Europa, vilket tyder på att den passerar genom vår region.
+    Då arten är utrotningshotad och har minskat drastiskt i antal är observationer
+    mycket sporadiska. Exakta ankomst- och avgångsmånader för Skandinavien saknas
+    dock i tillgänglig källa.
+  en: '# Buff-breasted Sandpiper (Prärielöpare)
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and morphological information
+    about the buff-breasted sandpiper, with no details regarding its occurrence in
+    Scandinavia or Northern Europe, migration patterns, seasonal movements, or overwintering
+    behavior. To provide accurate information about this species'' presence in the
+    region throughout the year, additional sources with specific distributional and
+    migratory data would be required.'
+image_refs:
+- role: hero
+  path: Q27452709/hero.jpg
+  width: 2400
+  height: 1710
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/usfwspacific/">USFWS
+    - Pacific Region</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
+    href="//commons.wikimedia.org/wiki/File:Grasl%C3%A4ufer_(Calidris_subruficollis)_am_Strand_im_Willapa_National_Wildlife_Refuge.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Grasläufer (Calidris subruficollis)
+    am Strand im Willapa National Wildlife Refuge.jpg
+  commons_filename: Grasläufer (Calidris subruficollis) am Strand im Willapa National
+    Wildlife Refuge.jpg
+- role: secondary
+  path: Q27452709/secondary-1.jpg
+  width: 1800
+  height: 1281
+  license: Public domain
+  author: Jake Bonello (USFWS)
+  source_url: https://commons.wikimedia.org/wiki/File:Grasläufer (Calidris subruficollis)
+    am Strand im Willapa National Wildlife Refuge (cropped).jpg
+  commons_filename: Grasläufer (Calidris subruficollis) am Strand im Willapa National
+    Wildlife Refuge (cropped).jpg
+- role: secondary
+  path: Q27452709/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
+    Sprinz">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Buff-breasted sandpiper (Calidris
+    subruficollis) 03.jpg
+  commons_filename: Buff-breasted sandpiper (Calidris subruficollis) 03.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:59:51.182940+00:00'
+sources:
+  wikipedia_sv_revision: '56586395'
+  wikipedia_en_revision: '1321921605'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,134 @@
+id: Q18840
+scientific_name: Tringa nebularia
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Tringa
+  ioc_order: Charadriiformes
+names:
+  sv: Gluttsnäppa
+  en: Common Greenshank
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gluttsnäppa
+
+
+    Gluttsnäppa är en långflyttande vadare som häckar på myrar i skogslandskapet i
+    norra palearktis. Den är närmast släkt med den amerikanska större gulbenan och
+    tillhör familjen snäppor.
+
+
+    Arten kännetecknas av sitt utpräglat långflyttande beteende och genomför årligen
+    långa migrationer mellan sina häckningsområden och övervintringsplatser. Som vadare
+    är den anpassad för att söka föda på blöta marker och vid vattenbrynen, där den
+    matar sig på småkryp och andra smådjur.
+
+
+    Den globala populationen av gluttsnäppa anses vara livskraftig, vilket indikerar
+    att arten inte står inför några omedelbara bevarandeproblem. Dess förmåga att
+    anpassa sig till olika biotoper under både häckning och övervintering har varit
+    viktig för artens framgång.'
+  en: '# Common Greenshank
+
+
+    The common greenshank is a graceful wader with a distinctive appearance and behaviour.
+    It displays long greenish legs and a slightly upturned bill, with grey-brown plumage
+    above and white underparts. In flight, its white rump is particularly noticeable.
+    The bird is notably active and alert, frequently bobbing its tail and moving restlessly
+    through its habitat.
+
+
+    This species inhabits damp marshy environments, favouring wetland areas where
+    it hunts for small fish, insects, and crustaceans. It often wades in shallow water,
+    probing and pecking with its upturned bill. The greenshank is known for its loud,
+    distinctive three-syllable call, often described as "chew-chew-chew" or similar
+    variants, which it uses to maintain contact with other birds.
+
+
+    The common greenshank is found across northern breeding grounds during summer
+    months, migrating to coastal and inland wetlands in warmer regions during winter.
+    It is frequently observed as a passage migrant in spring and autumn, making it
+    a regular sight at suitable wetland locations during migration periods. The species
+    often associates with other waders at favoured feeding sites.'
+migration:
+  sv: '# Gluttsnäppa – Förekomst i Skandinavien och Nordeuropa
+
+
+    Gluttsnäppa är en utpräglad långflyttare som häckar i norra delen av Palearktis,
+    inklusive Skandinavien, på myrar i skogslandskap. Arten ankommer till häckningsområdena
+    på våren och återvänder till sina övervintringsplatser i södra världsdelar under
+    hösten. Som långflyttare är gluttsnäppan endast närvarande under häckningssäsongen
+    i nordiska regioner. Arten ses regelbundet på vårvandringen april–maj och på höstvandringen
+    juli–september när den passerar genom området mellan sina nordiska häckningsplatser
+    och mediterranea övervintringsområden.'
+  en: '# Common Greenshank (Tringa nebularia) in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and etymological information
+    about the Common Greenshank, with no details regarding its migration patterns,
+    seasonal occurrence, or presence throughout the year in Scandinavia or Northern
+    Europe. Additional sources focusing on the species'' biogeography and phenology
+    would be needed to provide accurate information about its arrival, departure,
+    and overwintering status in this region.'
+image_refs:
+- role: hero
+  path: Q18840/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Perna-verde-comum (Tringa nebularia)
+    (51417764246).jpg
+  commons_filename: Perna-verde-comum (Tringa nebularia) (51417764246).jpg
+- role: secondary
+  path: Q18840/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Perna-verde-comum (Tringa nebularia)
+    (51418511804).jpg
+  commons_filename: Perna-verde-comum (Tringa nebularia) (51418511804).jpg
+- role: secondary
+  path: Q18840/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Common Greenshank, Tringa nebularia
+    (I think) at Borakalalo National Park (25081215708).jpg
+  commons_filename: Common Greenshank, Tringa nebularia (I think) at Borakalalo National
+    Park (25081215708).jpg
+review_status: approved
+review_notes: "Hero = Tringa nebularia (Common Greenshank / Gluttsnäppa); allmän myrfågel i norra SE."
+generated_at: '2026-05-15T21:00:01.728709+00:00'
+sources:
+  wikipedia_sv_revision: '58511928'
+  wikipedia_en_revision: '1337848811'
+  claude_model: claude-haiku-4-5-20251001

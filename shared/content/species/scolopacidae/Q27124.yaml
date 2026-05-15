@@ -1,0 +1,134 @@
+id: Q27124
+scientific_name: Calidris canutus
+taxonomy:
+  family: Scolopacidae
+  family_sv: Snäppor
+  genus: Calidris
+  ioc_order: Charadriiformes
+names:
+  sv: Kustsnäppa
+  en: Red Knot
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kustsnäppa
+
+
+    Kustsnäppa är en liten vadarfågel som genomgår dramatiska säsongsmässiga förändringar.
+    Under häckningen på högarktiska tundror får den en rostbrun bröstfärgning, medan
+    den under övervintringen är gråvit och betydligt mattare. Arten är relativt kompakt
+    byggd med medellång näbb och ben.
+
+
+    Det är en av världens mest imponerande långflyttare och genomför en av naturens
+    längsta migreringsvägar. Kustsnäppan häckar på högarktisk tundra i norra hemisfären
+    och övervintrrar på dyiga stränder och saltmarker långt söder ut. Under flyttningsperioderna
+    ses den ofta på mudderbankar och strandkanter där den söker föda tillsammans med
+    andra vadarfåglar.
+
+
+    På rastplatserna födosöker arten genom att plocka små kräftdjur och snäckor från
+    leran. Den är social och sällan ensam, utan rör sig ofta i större eller mindre
+    flockar med andra vadarfåglar. Arten kräver opåverkade tundra för häckningen och
+    ostörda rastlokaler för att orka de enorma migrationssträckorna, vilket gör den
+    känslig för miljöförändringar längs hela dess väg.'
+  en: '# Red Knot
+
+
+    The red knot is a medium-sized shorebird and the second-largest member of the
+    Calidris sandpiper genus. It is a robust, compact wader with relatively short
+    legs and a straight bill proportionate to its head size. In breeding plumage,
+    it displays rusty-red coloring on the face and underparts, though it adopts duller
+    grey-brown tones during winter months.
+
+
+    This highly migratory species breeds across tundra and Arctic regions in the far
+    north of Canada, Europe, and Russia. It undertakes one of the longest migrations
+    of any shorebird, traveling between Arctic breeding grounds and wintering areas
+    in South America, Africa, and Asia. During migration and winter, it frequents
+    coastal mudflats, beaches, and estuaries where it forages for invertebrates by
+    probing into soft substrates.
+
+
+    Six subspecies are recognized, with populations showing distinct migration routes
+    and timing. The red knot is a social bird, often seen in flocks, particularly
+    during migration and winter. Its relatively quiet nature means it produces soft
+    calls, though it becomes more vocal during the breeding season. Population levels
+    have declined significantly in recent decades, making conservation efforts important
+    for this remarkable long-distance migrant.'
+migration:
+  sv: Kustsnäppa är en långflyttare som häckar på högarktisk tundra i norra delen
+    av den holarktiska regionen. Arten övervintrerar på dyiga stränder långt söderut,
+    inklusive områden så långt bort som Argentina, Sydafrika och Nya Zeeland. Under
+    hösten migrerar fåglarna från sina nordliga häckningsområden för att nå sina övervintringsplatser,
+    medan vårmigration återförde dem till tundran för reproduktion. Kustsnäppan är
+    således en av våra mest långflyttande vadare med migrationsvägar som sträcker
+    sig mellan polarregionerna och södra halvklotet.
+  en: '# Red Knot in Scandinavia/Northern Europe
+
+
+    The Red Knot is a long-distance migratory shorebird that passes through Scandinavia
+    and Northern Europe during spring and autumn migrations. Birds breeding in Arctic
+    Russia and Siberia migrate southward in late August through September, with peak
+    numbers in coastal areas during September and October. Spring return migration
+    occurs from late March through May, as birds travel northward to Arctic breeding
+    grounds. Red Knots are primarily passage migrants through the region rather than
+    regular winterers, though small numbers occasionally remain in milder coastal
+    areas during winter months, particularly in southern Scandinavia.'
+image_refs:
+- role: hero
+  path: Q27124/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Ssprmannheim" class="mw-redirect"
+    title="User:Ssprmannheim">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Knutt (Calidris canutus) im
+    Naturschutzgebiet Wallnau (Fehmarn).jpg
+  commons_filename: Knutt (Calidris canutus) im Naturschutzgebiet Wallnau (Fehmarn).jpg
+- role: secondary
+  path: Q27124/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
+    C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red Knot (Calidris canutus)
+    (29663230761).jpg
+  commons_filename: Red Knot (Calidris canutus) (29663230761).jpg
+- role: secondary
+  path: Q27124/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
+    C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red Knot (Calidris canutus)
+    (29117922294).jpg
+  commons_filename: Red Knot (Calidris canutus) (29117922294).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:01:06.920760+00:00'
+sources:
+  wikipedia_sv_revision: '57470230'
+  wikipedia_en_revision: '1325656421'
+  claude_model: claude-haiku-4-5-20251001
