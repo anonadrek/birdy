@@ -27,7 +27,36 @@ Plan 2a delivered the pipeline + walking skeleton. Plan 2b is the work of runnin
 | 2026-05-08 | charadriidae | +17 (totalt 224) | `96512e5` |
 | 2026-05-08 | cettiidae | +2 (totalt 226) | `24311b1` |
 | 2026-05-08 | ciconiidae+cinclidae+cisticolidae+columbidae+coraciidae | +28 (totalt 254) | `6fbd4e7` |
-| | _next: corvidae — kolla species_list.yaml_ | | |
+| 2026-05-12 | corvidae | +19 (totalt 273) | `1e5843a` |
+| 2026-05-15 | cuculidae | +9 (totalt 282) | `a5d4ada` |
+| 2026-05-15 | dromadidae | +1 (totalt 283) | `59e698d` |
+| 2026-05-15 | emberizidae | +17 (totalt 300) | `3db40f0` |
+| 2026-05-15 | estrildidae | +10 (totalt 310) | `1d610cb` |
+| 2026-05-15 | falconidae | +11 (totalt 321) | `7873130` |
+| 2026-05-15 | fregatidae | +1 (totalt 322) | `e6c4d7f` |
+| 2026-05-15 | fringillidae | +41 (totalt 363) | `4ec397c` |
+| 2026-05-15 | gaviidae | +4 (totalt 367) | `c1a3edb` |
+| 2026-05-15 | glareolidae | +4 (totalt 371) | `e4fefd1` |
+| 2026-05-15 | gruidae | +3 (totalt 374) | `f9a6fc7` |
+| 2026-05-15 | haematopodidae | +2 (totalt 376) | `92911ca` |
+| 2026-05-15 | hirundinidae | +8 (totalt 384) | `b74a293` |
+| 2026-05-15 | hydrobatidae | +6 (totalt 390) | `0af0cda` |
+| 2026-05-15 | mono-family micro-batch ×16 (struthionidae→viduidae) | +16 (totalt 406) | `da0cc80` |
+| 2026-05-15 | laniidae | +9 (totalt 415) | `98c999c` |
+| 2026-05-15 | laridae | +40 (totalt 455) | `792e60b` |
+| 2026-05-15 | leiothrichidae+locustellidae+malaconotidae+meropidae | +16 (totalt 471) | `8b88ee2` |
+| 2026-05-15 | motacillidae | +19 (totalt 490) | `72630b9` |
+| 2026-05-15 | muscicapidae | +51 (totalt 541) | `85775da` |
+| 2026-05-15 | bundle1 (nectariniidae+oceanitidae+odontophoridae+paradoxornithidae+recurvirostridae+regulidae+remizidae+sulidae+zosteropidae) | +24 (totalt 565) | `9632243` |
+| 2026-05-15 | bundle2 (otididae+pelecanidae+phoenicopteridae+ploceidae+prunellidae+psittacidae+psittaculidae+pteroclidae+pycnonotidae) | +40 (totalt 605) | `28e55ff` |
+| 2026-05-15 | scolopacidae | +34 (totalt 639) | `26b5c41` |
+| 2026-05-15 | phasianidae | +28 (totalt 667) | `b56af31` |
+| 2026-05-15 | sylviidae | +23 (totalt 690) | `3ff1535` |
+| 2026-05-15 | strigidae | +22 (totalt 712) | `4f58abc` |
+| 2026-05-15 | bundle3 (phylloscopidae+procellariidae) | +36 (totalt 748) | `b1e0d5a` |
+| 2026-05-15 | bundle4 (picidae+passeridae) | +34 (totalt 782) | `529247f` |
+| 2026-05-15 | bundle5 (sturnidae+rallidae+turdidae+sittidae+phalacrocoracidae+podicipedidae+threskiornithidae+stercorariidae+troglodytidae) | +57 (totalt 839) | `fc3675f` |
+| **2026-05-15** | **PLAN 2B KLAR — taggad `v0.2.0-content`. Alla 839 arter i species_list.yaml har YAMLs.** | | |
 
 Cumulative species count tracked in `shared/content/expected-species-count.txt`.
 
