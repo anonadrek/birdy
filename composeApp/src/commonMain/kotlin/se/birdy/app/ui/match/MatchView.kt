@@ -38,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -61,8 +62,10 @@ import birdy_bird_scanner.composeapp.generated.resources.match_save_cta
 import birdy_bird_scanner.composeapp.generated.resources.match_saved_text
 import birdy_bird_scanner.composeapp.generated.resources.match_stamp_caption_pending
 import birdy_bird_scanner.composeapp.generated.resources.match_sub_confidence
+import coil3.compose.AsyncImage
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.badges.BadgeStringMap
 import se.birdy.app.ui.badges.UnlockBottomSheet
@@ -78,6 +81,7 @@ import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.content.Locale
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 internal fun MatchView(
     state: MatchResultUiState.Match,
@@ -134,13 +138,17 @@ internal fun MatchView(
                     plateLabel = state.stampNumber.toString(),
                     captionLine = state.species.scientificName,
                 ) {
-                    // Plate-image slot. v1 = placeholder Box; v2 (Plan 6) wires Coil.
-                    Box(
-                        modifier =
-                            Modifier
-                                .fillMaxSize()
-                                .padding(8.dp),
-                    )
+                    val heroImage =
+                        state.species.images.firstOrNull { it.role == "hero" }
+                            ?: state.species.images.firstOrNull()
+                    if (heroImage != null) {
+                        AsyncImage(
+                            model = Res.getUri("files/images/${heroImage.path}"),
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Crop,
+                        )
+                    }
                 }
 
                 Spacer(Modifier.height(16.dp))

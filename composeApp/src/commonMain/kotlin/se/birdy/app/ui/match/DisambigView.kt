@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -36,6 +37,8 @@ import birdy_bird_scanner.composeapp.generated.resources.disambig_headline
 import birdy_bird_scanner.composeapp.generated.resources.disambig_pick_hint
 import birdy_bird_scanner.composeapp.generated.resources.disambig_save_unknown
 import birdy_bird_scanner.composeapp.generated.resources.disambig_sub
+import coil3.compose.AsyncImage
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.theme.AccentCopper
@@ -136,6 +139,7 @@ internal fun DisambigView(
     }
 }
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun CandidateCard(
     candidate: ResolvedPrediction,
@@ -159,6 +163,9 @@ private fun CandidateCard(
                 ).padding(12.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
+        val heroImage =
+            candidate.species.images.firstOrNull { it.role == "hero" }
+                ?: candidate.species.images.firstOrNull()
         Box(
             modifier =
                 Modifier
@@ -166,7 +173,16 @@ private fun CandidateCard(
                     .height(140.dp)
                     .clip(RoundedCornerShape(8.dp))
                     .background(Color.White.copy(alpha = 0.3f)),
-        )
+        ) {
+            if (heroImage != null) {
+                AsyncImage(
+                    model = Res.getUri("files/images/${heroImage.path}"),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop,
+                )
+            }
+        }
         Text(
             text = candidate.species.name,
             color = TextOnCreme,
