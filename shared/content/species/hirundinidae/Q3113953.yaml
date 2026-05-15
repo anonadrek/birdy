@@ -1,0 +1,88 @@
+id: Q3113953
+scientific_name: Ptyonoprogne obsoleta
+taxonomy:
+  family: Hirundinidae
+  family_sv: Svalor
+  genus: Ptyonoprogne
+  ioc_order: Passeriformes
+names:
+  sv: Blek klippsvala
+  en: Pale Crag Martin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Blek klippsvala
+
+
+    Blek klippsvala är en fågel i svalofamiljen som förekommer som stannfågel i norra
+    afrika och sydvästra asien. Arten är väl anpassad till torra, bergiga miljöer
+    och skiljer sig från många andra svalor genom att den inte är beroende av närhet
+    till vatten för att kunna leva.
+
+
+    Arten häckar vanligen i bergstrakter där den använder klippor som boplatser, men
+    den anpassar sig väl till urbana miljöer och hittas även på lägre höjder kring
+    städer. Olikt många andra svalor återfinns blek klippsvala ofta långt från större
+    vattendrag, vilket gör den väl lämpad för att leva i torra och steniga landskap.'
+  en: '# Pale Crag Martin
+
+
+    The pale crag martin is a small swallow measuring 12–13 cm, with predominantly
+    brown plumage and a noticeably paler upper breast and underwing coverts. In flight,
+    distinctive white "windows" on the spread tail are conspicuous. Juveniles show
+    pale fringes on the upperparts and flight feathers. The sexes are similar in appearance
+    overall.
+
+
+    This species exhibits behaviour quite different from typical swallows, hunting
+    flying insects along cliff faces with a characteristically slow flight interspersed
+    with much gliding. Unlike most of its family, it is often found far from water,
+    favouring rocky areas and mountainous terrain, though it also inhabits lower altitudes
+    and around towns. Its call is a soft twitter.
+
+
+    The pale crag martin is resident across Northern Africa and Southwestern Asia,
+    extending east to Pakistan. It was formerly classified as the northern subspecies
+    of the rock martin found in southern Africa, though it remains noticeably smaller,
+    paler, and whiter-throated than that species.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the occurrence of Pale
+    Crag Martin in Scandinavia or Northern Europe, nor does it include any details
+    about migration patterns, seasonal movements, or overwintering behavior. The species
+    is described as resident in Northern Africa and Southwestern Asia, with no mention
+    of presence in northern European regions. Therefore, migration data cannot be
+    provided based on the available source material.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:38:09.423990+00:00'
+sources:
+  wikipedia_sv_revision: '57856541'
+  wikipedia_en_revision: '1315029222'
+  claude_model: claude-haiku-4-5-20251001

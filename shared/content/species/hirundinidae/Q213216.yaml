@@ -1,0 +1,125 @@
+id: Q213216
+scientific_name: Ptyonoprogne rupestris
+taxonomy:
+  family: Hirundinidae
+  family_sv: Svalor
+  genus: Ptyonoprogne
+  ioc_order: Passeriformes
+names:
+  sv: Klippsvala
+  en: Eurasian Crag Martin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Klippsvala
+
+
+    Klippsvala är en liten svala som häckar i bergsområden från södra Europa till
+    södra Asien. Arten är en skicklig flygare som ofta ses sväva längs klippväggar
+    och byggnader. Det är övervägande en stannfågel i södra Europa, men populationer
+    från norrare områden och från Asien är flyttfåglar som övervintrar söder om sitt
+    häckningsområde.
+
+
+    Arten bygger sitt bo under utskjutande klippor eller på byggnader, vilket blir
+    allt vanligare. Klippsvalor är sociala fåglar som ofta ses i mindre flockgrupper,
+    särskilt under flyttningstiden. De är anpassade för livet nära bergsväggar och
+    urbana miljöer, där de hittar lämpliga platser för sina nästen.'
+  en: '# Eurasian Crag Martin
+
+
+    The Eurasian crag martin is a small swallow about 14 cm long, characterized by
+    ash-brown upperparts contrasting with paler underparts. Its most distinctive feature
+    is a short, square tail decorated with white patches visible on most feathers—brighter
+    and more prominent than in closely related species. It also shows a different
+    plumage tone compared to the three other species in its genus, making identification
+    easier once this combination is learned.
+
+
+    This species inhabits mountainous regions, where it breeds across southern Europe,
+    northwestern Africa, and throughout the Palearctic zone. Behaviour typical of
+    swallows—hunting insects in flight and utilizing cliff faces for nesting—characterizes
+    this bird. Movement patterns vary by population: many European birds are resident
+    year-round, while northern European populations and most Asian breeders migrate
+    seasonally, dispersing to wintering grounds in northern Africa, the Middle East,
+    or India.
+
+
+    The crag martin''s preference for rocky, mountainous terrain distinguishes it
+    from many other swallow species that favour open country or human habitation.'
+migration:
+  sv: '# Klippsvala – Förekomst i Skandinavien och Nordeuropa
+
+
+    Klippsvala är en mycket sällsynt fågel i Skandinavien och Nordeuropa. Arten häckar
+    huvudsakligen i södra Europa, och endast vissa nordliga populationer är flyttfåglar.
+    De europeiska häckfåglarna som förekommer längre söderut är till stor del stannfåglar.
+    De populationer som är flyttfåglar övervintrar i norra Afrika och Mellanöstern.
+    I Skandinavien och Nordeuropa är arten endast en ytterst sporadisk tillfällig
+    gäst och förekommer inte regelbundet under någon årstid.'
+  en: '# Eurasian Crag Martin in Northern Europe
+
+
+    The Eurasian Crag Martin''s occurrence in Scandinavia and Northern Europe is limited
+    and irregular. While the species breeds in southern European mountains and across
+    the Palearctic region, it does not establish regular breeding populations in Scandinavia.
+    Some northern European populations are migratory, wintering in northern Africa
+    and the Middle East, though Asian breeding populations migrate to India. Scandinavian
+    records of this species would be considered vagrant or accidental occurrences
+    rather than regular seasonal visitors, as the species'' main range remains south
+    of the Nordic region.'
+image_refs:
+- role: hero
+  path: Q213216/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/4514772">Olivier
+    Morel</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ptyonoprogne rupestris 241864842.jpg
+  commons_filename: Ptyonoprogne rupestris 241864842.jpg
+- role: secondary
+  path: Q213216/secondary-1.jpg
+  width: 1800
+  height: 1331
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Petit_colibri&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Petit colibri (page does not exist)">Aline Deflorenne</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hirondelle de rochers Ptyonoprogne
+    rupestris.jpg
+  commons_filename: Hirondelle de rochers Ptyonoprogne rupestris.jpg
+- role: secondary
+  path: Q213216/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Amikosik" title="User:Amikosik">Amikosik</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ptyonoprogne rupestris in flight
+    AM 1.JPG
+  commons_filename: Ptyonoprogne rupestris in flight AM 1.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:37:43.783547+00:00'
+sources:
+  wikipedia_sv_revision: '58703060'
+  wikipedia_en_revision: '1314321905'
+  claude_model: claude-haiku-4-5-20251001

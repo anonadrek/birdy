@@ -1,0 +1,124 @@
+id: Q25429
+scientific_name: Hirundo rustica
+taxonomy:
+  family: Hirundinidae
+  family_sv: Svalor
+  genus: Hirundo
+  ioc_order: Passeriformes
+names:
+  sv: Ladusvala
+  en: Barn Swallow
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ladusvala
+
+
+    Ladusvala är en elegant och lätt igenkännbar fågel som tillhör svalorfamiljen.
+    Den karakteriseras av sin blå ovansida, långstrackad silhuett och framför allt
+    sin långt kluvna stjärt, som är mycket karakteristisk för arten. Vingarna är böjda
+    och spetsiga, vilket ger fågeln en behändig flygstil. Ladusvalan är den mest spridda
+    arten inom svalornas familj och förekommer på flera kontinenter.
+
+
+    Arten är en aktiv jägare som fångar småinsekter under flykten med imponerande
+    manövreringsförmåga. Ladusvalan ses ofta flyga lågt över öppna områden och nära
+    människor. Den är känd för sitt glada, tjittrande läte och sina korta, skarpna
+    rop. Arten är en långdistansflyttare och återvänder regelbundet till samma häckningsområden
+    år efter år, där den bygger boar av lera.'
+  en: '# Barn Swallow
+
+
+    The barn swallow is the world''s most widespread swallow species, found on every
+    continent and occasionally reported even in Antarctica. It is unmistakable in
+    appearance, with glossy blue-black upperparts contrasting sharply with its buff-white
+    underparts. Its most striking feature is the long, deeply forked tail, which it
+    uses with remarkable agility when hunting insects in flight. The bird is highly
+    acrobatic, sweeping through the air with elegant, darting movements to catch prey.
+
+
+    These birds are highly vocal and social, often gathering in large flocks, particularly
+    during migration. Their call is a cheerful, twittering song, frequently heard
+    as they dart overhead. Barn swallows are strongly associated with human habitation,
+    nesting in buildings, barns, and other structures where they construct mud nests.
+
+
+    The species occurs in open and semi-open country worldwide, particularly near
+    water sources and farmland where insects are abundant. It is a long-distance migrant
+    in many regions, with populations shifting seasonally between breeding and wintering
+    grounds.'
+migration:
+  sv: '# Ladusvala (Hirundo rustica) - Migration och förekomst i Nordeuropa
+
+
+    Ladusvalan är en långdistansfågel som är en klassisk sommargäst i Skandinavien
+    och Nordeuropa. Arten anländer under våren, vanligtvis från april till maj, efter
+    att ha övervintrat i Afrika söder om Sahara. Under sommarmånaderna (juni-augusti)
+    häckar ladusvalan utbrett över hela regionen, där den använder människans byggnader
+    som häckningsplatser. I hösten, från augusti till september, börjar återflyttningen
+    söderut när ungfåglarna är flygga, och arten är då helt frånvarande under vintermånaderna.'
+  en: '# Barn Swallow Migration in Northern Europe
+
+
+    The barn swallow is a long-distance migratory species in Scandinavia and northern
+    Europe, arriving in spring (typically April-May) to breed throughout the region.
+    Birds depart in late summer and early autumn (August-September), undertaking extensive
+    migrations to sub-Saharan Africa where they overwinter. The species is entirely
+    absent during winter months, with populations returning annually to breed in farmland,
+    villages, and open habitats near water. Some variation occurs in arrival and departure
+    dates depending on spring weather conditions and geographic location within Scandinavia.'
+image_refs:
+- role: hero
+  path: Q25429/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%B8%D0%BC%D0%B0%D0%B8%D0%BD%D0%B0_%D1%85%D0%B8%D0%BA%D0%B0%D1%80%D0%B8"
+    title="User:Аимаина хикари">Аимаина хикари</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hirundo rustica Zazymya3.JPG
+  commons_filename: Hirundo rustica Zazymya3.JPG
+- role: secondary
+  path: Q25429/secondary-1.jpg
+  width: 1800
+  height: 1349
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hirundo rustica nest Kuivaniemi
+    20140614 01.JPG
+  commons_filename: Hirundo rustica nest Kuivaniemi 20140614 01.JPG
+- role: secondary
+  path: Q25429/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Barn swallow (Hirundo rustica)
+    2021.jpg
+  commons_filename: Barn swallow (Hirundo rustica) 2021.jpg
+review_status: approved
+review_notes: "Ladusvala — hero Hirundo rustica Zazymya (Ukraina); klassisk lång stjärt + rödbrun strupe; allmän SE-art."
+generated_at: '2026-05-15T19:37:36.224021+00:00'
+sources:
+  wikipedia_sv_revision: '59205888'
+  wikipedia_en_revision: '1348554515'
+  claude_model: claude-haiku-4-5-20251001

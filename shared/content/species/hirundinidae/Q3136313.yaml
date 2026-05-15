@@ -1,0 +1,89 @@
+id: Q3136313
+scientific_name: Riparia diluta
+taxonomy:
+  family: Hirundinidae
+  family_sv: Svalor
+  genus: Riparia
+  ioc_order: Passeriformes
+names:
+  sv: Blek backsvala
+  en: Pale Martin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Blek backsvala
+
+
+    Blek backsvala är en mindre svalart som tillhör familjen svalor. Arten förekommer
+    i delar av Asien, där den är utbredd från Kazakstan och Pakistan österut till
+    Kina. Under vintermånaderna är fågeln flyttfågel och söker sig till södra Asien,
+    med enstaka observationer även längre västerut.
+
+
+    Arten behandlades tidigare som en del av den närbesläktade backsvalan men betraktas
+    numera som egen art. Beståndet anses vara livskraftigt och arten utgör inte något
+    bevarandeproblem.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    En: Migration data unavailable for this species.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten beskriver endast att arten förekommer i delar av Asien
+    och flyttar till södra Asien vintertid, men innehåller ingen information om förekomst
+    i Skandinavien eller Nordeuropa. Därför kan ingen faktabaserad guide om artens
+    förekomst i denna region skrivas utifrån tillgänglig information.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q3136313/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D0%9C%D1%83%D1%85%D0%B0%D0%BC%D0%BC%D0%B0%D0%B4%D1%81%D0%BE%D0%BB%D0%B5%D1%85_%D0%9E%D0%B5%D0%B2&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Мухаммадсолех Оев (page does not exist)">Мухаммадсолех
+    Оев</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pale Martin (Riparia diluta).jpg
+  commons_filename: Pale Martin (Riparia diluta).jpg
+- role: secondary
+  path: Q3136313/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D0%9C%D1%83%D1%85%D0%B0%D0%BC%D0%BC%D0%B0%D0%B4%D1%81%D0%BE%D0%BB%D0%B5%D1%85_%D0%9E%D0%B5%D0%B2&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Мухаммадсолех Оев (page does not exist)">Мухаммадсолех
+    Оев</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Бледная береговушка - Pale Martin
+    (Riparia diluta).jpg
+  commons_filename: Бледная береговушка - Pale Martin (Riparia diluta).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:37:25.784112+00:00'
+sources:
+  wikipedia_sv_revision: '56463418'
+  wikipedia_en_revision: '1315101746'
+  claude_model: claude-haiku-4-5-20251001

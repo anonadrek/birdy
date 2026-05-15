@@ -333,6 +333,13 @@ species:
   Q619728:
     description_accept_missing: [sv, en]  # Kanariestrandskata (Canary Islands Oystercatcher †, EX)
     allow_missing_images: true  # extinct, ingen Commons hi-res
+  # Hirundinidae batch (2026-05-15): centralasiatiska/afrikanska arter sparse.
+  Q3113953:
+    allow_missing_images: true  # Pale Crag Martin — afrikansk, ingen Commons hi-res
+  Q3136313:
+    description_accept_missing: [sv, en]  # Pale Martin (Riparia diluta) — centralasiatisk vagrant
+  Q675850:
+    description_accept_missing: [sv]  # Brown-throated Martin — afrikansk
   # Fringillidae batch (2026-05-15): svwiki kort/saknas för många arter.
   Q1143180:
     description_accept_missing: [sv]  # Trumpetargimpel (Trumpeter Finch) — kort svwiki

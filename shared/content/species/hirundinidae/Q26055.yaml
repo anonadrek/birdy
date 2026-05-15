@@ -1,0 +1,130 @@
+id: Q26055
+scientific_name: Delichon urbicum
+taxonomy:
+  family: Hirundinidae
+  family_sv: Svalor
+  genus: Delichon
+  ioc_order: Passeriformes
+names:
+  sv: Hussvala
+  en: Western House Martin
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Hussvala
+
+
+    Hussvala är en liten, elegant svala med distinktiv färgteckning. Den är mörkblå
+    på huvud och ovansida, medan gump och undersida är snövita – en kontrast som gör
+    den lätt att känna igen under flygning. Den är något mindre än till exempel ladusvala
+    och har en mer kompakt silhuett.
+
+
+    Som alla svalor är hussvala en skicklig flygare som lever på insekter den fångar
+    under flykten. Den förekommer såväl i öppna områden som nära människans bosättningar,
+    ofta vid byggnader där den kan bygga sitt karakteristiska kullertstensformade
+    bo. Arten är en långdistansflyttfågel som häckar över stora delar av Europa, Nordafrika
+    och tempererade Asien, men övervintra långt söderut i subsahariska Afrika och
+    tropiska Asien för att säkra tillgång på flygande insekter året runt.
+
+
+    Hussvalan är stilla till sitt väsen och moins högljudd än många andra svalor.
+    Den noteras framför allt genom sitt flygande – ofta sällskapsligt med andra svalor
+    – snarare än genom uppseendeväckande ljud eller beteende.'
+  en: '# Western House Martin
+
+
+    The western house martin is a small, elegant swallow with distinctive plumage:
+    a glossy blue-black head and upperparts contrasting sharply with a bright white
+    rump and pure white underparts. This combination makes it readily identifiable
+    in flight. It is a highly migratory species, breeding across Europe, north Africa,
+    and west-central Asia before traveling to sub-Saharan Africa and southwestern
+    Asia for winter, following the availability of flying insects.
+
+
+    As an insectivore, the western house martin is constantly in motion during the
+    breeding season, catching small insects entirely on the wing with impressive aerial
+    agility. It frequents both open countryside and areas near human settlements,
+    often nesting colonially on building eaves and under cliff overhangs. Its gregarious
+    nature makes it a conspicuous presence in suitable habitat, particularly during
+    migration periods when flocks can be quite large.
+
+
+    The species is similar to two Asian congeners but remains the only martin species
+    found across much of its range, with two recognized subspecies accounting for
+    geographic variation.'
+migration:
+  sv: '# Hussvala - Migration i Norden
+
+
+    Hussvalan är en typisk flyttfågel som anländer till Skandinavien och Nordeuropa
+    under våren för att häcka. Arten ankommer vanligtvis i maj-juni, när insektstillgången
+    blir tillräcklig för att försörja fåglarna. Efter en kort häckningssäsong påbörjar
+    husvalan en omfattande söderflyttning redan i augusti-september, då insekttillgången
+    minskar drastiskt i norr. Arten övervintrar i subsahariska Afrika och tropiska
+    Asien, där den kan fortsätta sitt insektätande året om. Hussvalan förekommer således
+    endast som sommargäst i Skandinavien och kan inte observeras här under vintertid.'
+  en: '# Western House Martin in Scandinavia/Northern Europe
+
+
+    The Western House Martin is a summer breeding visitor to Scandinavia and Northern
+    Europe, arriving in late spring (typically May) to breed on cliff faces and buildings.
+    These migratory birds depart in late summer and autumn (August-September) to winter
+    in sub-Saharan Africa, where flying insects remain abundant throughout their non-breeding
+    season. The species does not overwinter in the region. Their presence is strictly
+    seasonal, synchronized with the availability of aerial insects, making them entirely
+    absent during the harsh winter months when food is unavailable.'
+image_refs:
+- role: hero
+  path: Q26055/hero.jpg
+  width: 2400
+  height: 1696
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Delichon urbicum Oulu 20120527
+    07.JPG
+  commons_filename: Delichon urbicum Oulu 20120527 07.JPG
+- role: secondary
+  path: Q26055/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Redcompote" title="User:Redcompote">Redcompote</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Delichon urbicum from Blaues
+    Wunder 6 August 2016 DSC04743.jpg
+  commons_filename: Delichon urbicum from Blaues Wunder 6 August 2016 DSC04743.jpg
+- role: secondary
+  path: Q26055/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Redcompote" title="User:Redcompote">Redcompote</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Delichon urbicum from Blaues
+    Wunder 6 August 2016 DSC04745.jpg
+  commons_filename: Delichon urbicum from Blaues Wunder 6 August 2016 DSC04745.jpg
+review_status: approved
+review_notes: "Hussvala — hero Delichon urbicum Oulu (Finland); vit övergump + svartblå översida; allmän SE-art."
+generated_at: '2026-05-15T19:38:13.090315+00:00'
+sources:
+  wikipedia_sv_revision: '57942725'
+  wikipedia_en_revision: '1344772317'
+  claude_model: claude-haiku-4-5-20251001

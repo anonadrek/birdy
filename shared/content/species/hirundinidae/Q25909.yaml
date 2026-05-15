@@ -1,0 +1,130 @@
+id: Q25909
+scientific_name: Riparia riparia
+taxonomy:
+  family: Hirundinidae
+  family_sv: Svalor
+  genus: Riparia
+  ioc_order: Passeriformes
+names:
+  sv: Backsvala
+  en: Sand Martin
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Backsvala
+
+
+    Backsvalan är en liten, kolonihäckande svala med brungrå ovansida och vit undersida.
+    Det är en behändig flygare som är väl anpassad för att jaga småinsekter i luften.
+    Arten är utbredd över stora delar av norra halvklotet under häckningstiden och
+    söker upp öppna landskap nära vatten där det finns lämpliga gräv­ningsplatser.
+
+
+    Under hösten drar backsvalorna långt söderut för att övervinta i tropiska områden
+    på södra halvklotet. Arten förekommer ofta i mindre eller större flockar, särskilt
+    under flyttningen. Det globala beståndet anses livskraftigt, även om antalet individer
+    minskar på många håll. Backsvalorna är lätta att känna igen på sina snabba, vingslag
+    och karakteristiska flygteknik när de skär genom luften efter sitt fångade byte.'
+  en: '# Sand Martin
+
+
+    The sand martin is a small, migratory swallow with a distinctive appearance: brownish-grey
+    upperparts and white underparts, with a characteristic dark band across the breast.
+    It is noticeably slighter and shorter-winged than other swallows, giving it a
+    more compact silhouette in flight. Despite its small size, it is an agile aerial
+    hunter, darting swiftly after small insects with quick, erratic movements.
+
+
+    These birds are highly social and colonial, often nesting in large groups within
+    sandbanks and earthen cliffs where they excavate burrows. The sand martin''s call
+    is a distinctive, dry, chattering note delivered in flight, quite different from
+    the melodious song of some swallow relatives. Its behaviour is restless and energetic,
+    constantly twittering as it hunts above water and open ground.
+
+
+    The sand martin is a long-distance migrant with an enormous range. During summer,
+    it breeds across the Northern Hemisphere from Europe eastward through Asia to
+    the Pacific and throughout North America. In winter, populations retreat to Africa,
+    southern Asia, and South America. It favours open country near water—lakes, rivers,
+    and marshes—where it can hunt efficiently for flying insects. Its arrival in spring
+    is often one of the earliest signs of the breeding season.'
+migration:
+  sv: '# Backsvala (Riparia riparia)
+
+
+    Backsvalan är en långdistansmigrant som återvänder till Skandinavien och Nordeuropa
+    under våren för att häcka. Arten anländer typiskt från april till maj efter övervintringen
+    i tropiska områden på Afrikas södra delar. Under häckningsperioden från maj till
+    augusti koloniserar backsvalorna sandiga bränningar vid vattendrag där de gräver
+    sina bohål. I augusti och september börjar fåglar att samlas innan den långa höstmigrationen
+    sätter igång mot de afrikanska övervintringsområdena. Arten är helt migrerande
+    i norra Europa och förekommer inte under vintermånaderna.'
+  en: '# Sand Martin (Riparia riparia) in Scandinavia/Northern Europe
+
+
+    The sand martin is a summer visitor to Scandinavia and northern Europe, arriving
+    in spring to breed across the region''s suitable habitats. These highly migratory
+    birds winter in Africa, southern Asia, and South America, returning northward
+    as temperatures warm. They typically arrive in late April to May and depart again
+    in August through September during their southbound migration. The species breeds
+    throughout the Holarctic region during summer months, making it a familiar sight
+    near water bodies and sandy banks where they nest colonially. Their presence is
+    strictly seasonal, with no individuals overwintering in northern European regions.'
+image_refs:
+- role: hero
+  path: Q25909/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Klaaschwotzer" title="User:Klaaschwotzer">Klaaschwotzer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2025-08-08 Riparia riparia (Uferschwalben)
+    neben dem Südende der Hessenwand auf der Seeseite vor dem Zeltplatz auf Spiekeroog
+    (12).jpg
+  commons_filename: 2025-08-08 Riparia riparia (Uferschwalben) neben dem Südende der
+    Hessenwand auf der Seeseite vor dem Zeltplatz auf Spiekeroog (12).jpg
+- role: secondary
+  path: Q25909/secondary-1.jpg
+  width: 1286
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bank swallow (Riparia riparia)
+    2021.jpg
+  commons_filename: Bank swallow (Riparia riparia) 2021.jpg
+- role: secondary
+  path: Q25909/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Rolf_Tuinstra&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Rolf Tuinstra (page does not exist)">Rolf Tuinstra</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20170531 - 06.04 Oeverzwaluw
+    (Riparia riparia) 2.jpg
+  commons_filename: 20170531 - 06.04 Oeverzwaluw (Riparia riparia) 2.jpg
+review_status: approved
+review_notes: "Backsvala — hero Uferschwalben kolonibild från Tyskland; allmän SE-art i sandbankar."
+generated_at: '2026-05-15T19:37:49.071022+00:00'
+sources:
+  wikipedia_sv_revision: '59225183'
+  wikipedia_en_revision: '1345374505'
+  claude_model: claude-haiku-4-5-20251001

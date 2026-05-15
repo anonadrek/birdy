@@ -1,0 +1,107 @@
+id: Q675850
+scientific_name: Riparia paludicola
+taxonomy:
+  family: Hirundinidae
+  family_sv: Svalor
+  genus: Riparia
+  ioc_order: Passeriformes
+names:
+  sv: Brunstrupig backsvala
+  en: Brown-throated Martin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Brown-throated Martin
+
+
+    The brown-throated martin is a small passerine belonging to the swallow family,
+    widely distributed across Africa. This aerial insectivore shares characteristics
+    typical of martins, catching insects in flight with impressive agility. Its plumage
+    is relatively plain compared to some swallow species, with brown tones dominating
+    its appearance, particularly on the throat—a feature that gives the species its
+    distinctive common name.
+
+
+    Little detailed information is available in standard references about the brown-throated
+    martin''s specific calls and vocalizations, though like other martins it likely
+    produces chirping and twittering sounds during flight and social interactions.
+    It favours open habitats and airspace where it can hunt insects efficiently.
+
+
+    The species was historically classified with both the grey-throated martin and
+    the Madagascar martin as a single species, but taxonomic revision has recognized
+    them as distinct. The brown-throated martin remains a common sight across suitable
+    African habitats, though it is often overlooked due to its inconspicuous appearance
+    and aerial habits.'
+migration:
+  sv: ''
+  en: '# Brown-throated Martin in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Brown-throated Martin is a small African swallow with a wide distribution
+    across the African continent. It does not naturally occur in Scandinavia or Northern
+    Europe, and therefore no information regarding its migration patterns, overwintering
+    behavior, or seasonal arrival in these regions can be provided. This species remains
+    endemic to Africa year-round.'
+image_refs:
+- role: hero
+  path: Q675850/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC0
+  author: 葉子 ( leaf0605)
+  source_url: https://commons.wikimedia.org/wiki/File:Riparia chinensis from iNaturalist
+    photo 78705413.jpg
+  commons_filename: Riparia chinensis from iNaturalist photo 78705413.jpg
+- role: secondary
+  path: Q675850/secondary-1.jpg
+  width: 1800
+  height: 1156
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Brown-throated martin, Riparia
+    paludicola, at Marievale Nature Reserve, Gauteng, South Africa. (22695083881).jpg
+  commons_filename: Brown-throated martin, Riparia paludicola, at Marievale Nature
+    Reserve, Gauteng, South Africa. (22695083881).jpg
+- role: secondary
+  path: Q675850/secondary-2.jpg
+  width: 1800
+  height: 1197
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Brown-throated martin, Riparia
+    paludicola, at Marievale Nature Reserve, Gauteng, South Africa. (22683909195).jpg
+  commons_filename: Brown-throated martin, Riparia paludicola, at Marievale Nature
+    Reserve, Gauteng, South Africa. (22683909195).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:37:55.089252+00:00'
+sources:
+  wikipedia_sv_revision: '56772609'
+  wikipedia_en_revision: '1344772494'
+  claude_model: claude-haiku-4-5-20251001

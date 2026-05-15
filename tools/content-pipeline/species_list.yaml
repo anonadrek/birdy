@@ -3426,6 +3426,7 @@
   ioc_order: Passeriformes
   common_en: Sand Martin
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q3136313
   scientific_name: Riparia diluta
   family: Hirundinidae
@@ -3456,12 +3457,14 @@
   ioc_order: Passeriformes
   common_en: Barn Swallow
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26055
   scientific_name: Delichon urbicum
   family: Hirundinidae
   ioc_order: Passeriformes
   common_en: Western House Martin
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q137261195
   scientific_name: Cecropis rufula
   family: Hirundinidae

@@ -1,0 +1,130 @@
+id: Q137261195
+scientific_name: Cecropis rufula
+taxonomy:
+  family: Hirundinidae
+  family_sv: Svalor
+  genus: Cecropis
+  ioc_order: Passeriformes
+names:
+  sv: Rostgumpsvala
+  en: European Red-rumped Swallow
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rostgumpsvala
+
+
+    Rostgumpsvala är en medlem av svalorfamiljen som är anpassad till värmere klimat.
+    Det är en mindre sval med karakteristisk rostfärgad bakdel som ger arten sitt
+    namn. Arten förekommer huvudsakligen runt Medelhavsregionen och österut in i västra
+    Asien, där det är vanligast under värmare månader.
+
+
+    Denna sval är en skicklig flygare som ofta ses i öppna landskap och över vattenytor
+    där det jagas insekter. Som andra svalor är det mycket manöverbar och wendigt
+    när det förföljer sitt byte genom luften. Arten är migratorisk och återvänder
+    årligen till sina häckningsområden efter att ha tillbringat vintern längre söderut.
+
+
+    Rostgumpsvala är mindre känd än många andra svalarter men kan ändå återfinnas
+    i lämpliga habitat inom sitt utbredningsområde, särskilt där det finns öppna terränger
+    och närhet till vatten.'
+  en: '# European Red-rumped Swallow
+
+
+    The European red-rumped swallow is a small passerine in the swallow family, formerly
+    classified within the genus Hirundo but now placed in Cecropis. It shares taxonomic
+    similarities with the eastern and African red-rumped swallows, though it is now
+    recognized as a distinct species rather than a subspecies.
+
+
+    This bird is characterized by its distinctive rufous rump, which contrasts with
+    its darker upperparts. Like other swallows, it is an agile flyer, catching insects
+    in aerial pursuit. The species typically inhabits open and semi-open landscapes
+    where it hunts over grasslands and water bodies. It nests in colonies, constructing
+    distinctive mud nests under rock overhangs, cliffs, or man-made structures such
+    as bridges and buildings. The bird''s call is typical of swallows—sharp and twittering—often
+    heard during breeding season when birds gather at nesting sites.
+
+
+    The European red-rumped swallow is primarily a summer visitor to temperate regions,
+    arriving in spring to breed before departing for wintering grounds in warmer climates.
+    It shows a preference for areas with suitable nesting substrate and adequate insect
+    populations, making it a common sight in appropriate habitats during the breeding
+    season.'
+migration:
+  sv: '# Rostgumpsvala - Förekomst i Skandinavien/Nordeuropa
+
+
+    Rostgumpsvala förekommer inte regelbundet i Skandinavien och Nordeuropa. Arten
+    är en mediterran och västasiartisk fågel som är bunden till värmere klimatregioner.
+    Endast under mycket ovanliga omständigheter, som vid felnavigering under migration
+    eller under exceptionallt milda vintrar, kan enstaka individer påträffas långt
+    norr om artens normala utbredningsområde. För denna art gäller därmed att den
+    inte utgör någon etablerad del av Skandinaviens fågelfauna.'
+  en: '# European Red-rumped Swallow (*Cecropis rufula*) in Northern Europe
+
+
+    The European Red-rumped Swallow is a summer visitor to Scandinavia and Northern
+    Europe, arriving in late spring (typically May) to breed before departing in late
+    summer and early autumn (August-September). The species winters in Africa, south
+    of the Sahara, making it a long-distance migrant. In Northern Europe, populations
+    are concentrated in southern regions during the breeding season, with numbers
+    declining northward. The species is largely absent from Scandinavia during winter
+    months, returning only as a transient visitor during spring and autumn migration
+    periods.'
+image_refs:
+- role: hero
+  path: Q137261195/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cecropis rufula, Serbia 101.jpg
+  commons_filename: Cecropis rufula, Serbia 101.jpg
+- role: secondary
+  path: Q137261195/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cecropis rufula, Serbia 001.jpg
+  commons_filename: Cecropis rufula, Serbia 001.jpg
+- role: secondary
+  path: Q137261195/secondary-2.jpg
+  width: 1800
+  height: 1205
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:David_Perez" title="User:David
+    Perez">David Perez</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cecropis rufula, nest, Vila
+    Nova de Foz Coa, Portugal 01 by-dpc.jpg
+  commons_filename: Cecropis rufula, nest, Vila Nova de Foz Coa, Portugal 01 by-dpc.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:37:46.657883+00:00'
+sources:
+  wikipedia_sv_revision: '58675428'
+  wikipedia_en_revision: '1353369426'
+  claude_model: claude-haiku-4-5-20251001
