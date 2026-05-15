@@ -1,0 +1,93 @@
+id: Q752513
+scientific_name: Phylloscopus proregulus
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Kungsfågelsångare
+  en: Pallas’s Leaf Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kungsfågelsångare
+
+
+    Kungsfågelsångaren är en mycket liten insektsätande lövsångare med vida utbredningsområden.
+    Den häckar i sydöstra Sibirien och genomför långa migrationsvagnar till sydöstra
+    Asien för att övervintra. Trots det stora avståndet dyker arten regelbundet upp
+    i Europa, särskilt under höstflyttningen, och påträffas årligen i Sverige där
+    mellan 20 och 70 fynd registreras varje år.
+
+
+    Arten är klassificerad som livskraftig av IUCN och förefaller därmed att klara
+    sig väl populationsmässigt trots sina långa flyttningsvägar.'
+  en: ''
+migration:
+  sv: '**Kungsfågelsångare i Skandinavien/Nordeuropa**
+
+
+    Kungsfågelsångare är en regelbunden höstgäst i Sverige och övriga Nordeuropa,
+    trots att arten häckar långt bort i sydöstra Sibirien. Under höstflyttningen i
+    augusti–oktober påträffas den årligen i Sverige, vanligtvis med mellan 20 och
+    70 observationer per år. Arten övervintar i sydöstra Asien (sydöstra Kina och
+    Vietnam) och återvänder till häckningsområdena under våren. Kungsfågelsångaren
+    är således främst känd som en genomflyttande höstgäst i Skandinavien och Nordeuropa,
+    då den regelbundet observeras under sin södergående migration.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q752513/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pallas's leaf warbler (Phylloscopus
+    proregulus) 2022.jpg
+  commons_filename: Pallas's leaf warbler (Phylloscopus proregulus) 2022.jpg
+- role: secondary
+  path: Q752513/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: Olivier Morel (olivier_morel)
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus proregulus from
+    iNaturalist photo 243983235.jpg
+  commons_filename: Phylloscopus proregulus from iNaturalist photo 243983235.jpg
+- role: secondary
+  path: Q752513/secondary-2.jpg
+  width: 1800
+  height: 1125
+  license: CC BY-SA 4.0
+  author: Zinogre (zinogre)
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus proregulus from
+    iNaturalist photo 464132426.jpg
+  commons_filename: Phylloscopus proregulus from iNaturalist photo 464132426.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:23:54.064748+00:00'
+sources:
+  wikipedia_sv_revision: '58506885'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

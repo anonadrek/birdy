@@ -1,0 +1,72 @@
+id: Q608313
+scientific_name: Phylloscopus humei
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Bergtajgasångare
+  en: Hume’s Leaf Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bergtajgasångare
+
+
+    Bergtajgasångaren är en mycket liten lövsångare med en slank gestalt och spetsig
+    näbb. Den är övervägande gråbrun på ovansidan och ljus på undersidan, vilket ger
+    den en diskret färgteckning som passa perfekt för sitt habitat bland vegetation.
+    Fågeln liknar tajgasångaren men är något mindre och finare till byggnaden.
+
+
+    Arten föredrar bergstrakter med buskvegetation och dvärgbjörkskog. Den är activ
+    och rörlig, ofta i små höjder då den söker föda bland blad och grenar. Bergtajgasångaren
+    är insektätare som främst är aktiv under dagljus. Dess sång är svag och osäker,
+    vilket gör fågeln svår att hitta för hörseln.
+
+
+    Arten häckar i bergsområdena och är därefter flyttfågel. Under vinterhalvåret
+    ses den i låglänta trakter från södra Asien. Mycket ovanligt dyker den upp i Europa
+    där den då ofta håller sig gömt i tät vegetation. I Sverige registreras den regelbundet
+    men sparsamt, främst under höst- och vinterperioderna.'
+  en: ''
+migration:
+  sv: '# Bergtajgasångare i Nordeuropa
+
+
+    Bergtajgasångaren är en sällsynt men regelbunden gäst i Europa. Arten häckar i
+    bergsområden i centrala och södra Asien, och under vintern flyttar den huvudsakligen
+    till områden från norra Pakistan till norra Vietnam samt delar av Mellanöstern.
+    I Sverige har fågeln noterats över 100 gånger, vilket visar på en etablerad men
+    sporadisk förekomst under migrationen. Fågeln är således inte en återkommande
+    övervintrare i Skandinavien utan förekommer främst under pass-ageperioderna när
+    den följer sina migrationsvägar mellan häcknings- och övervintringskvarteren.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:23:35.765347+00:00'
+sources:
+  wikipedia_sv_revision: '56065370'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

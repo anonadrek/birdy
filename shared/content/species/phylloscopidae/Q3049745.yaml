@@ -1,0 +1,65 @@
+id: Q3049745
+scientific_name: Phylloscopus umbrovirens
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Grönvingad sångare
+  en: Brown Woodland Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Grönvingad sångare
+
+
+    Grönvingad sångare är en lövsångare som främst förekommer i östra Afrika, med
+    utbredning även till sydvästra delen av Arabiska halvön. Arten är hemmastadd i
+    bergsskogar där den lever bland trädens lövverk.
+
+
+    Fågeln är en mindre sångare med karakteristiska gröna vingar som ger arten sitt
+    namn. Den är anpassad för ett liv högt upp i träden, där den söker föda bland
+    löven och grenarna. Som många lövsångare är den en aktiv och livlig fågel som
+    rör sig snabbt genom vegetationen.
+
+
+    Beståndet av grönvingad sångare har visat en nedåtgående trend, men arten anses
+    fortfarande ha ett livskraftigt bestånd. Den är därmed inte klassificerad som
+    hotad, trots minskningen i antal. Arten är huvudsakligen knuten till höglänta
+    bergsmiljöer där lämpliga skogstyper finns.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:21:34.230134+00:00'
+sources:
+  wikipedia_sv_revision: '56454806'
+  wikipedia_en_revision: '1314444723'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,102 @@
+id: Q330318
+scientific_name: Phylloscopus inornatus
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Tajgasångare
+  en: Yellow-browed Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Yellow-browed Warbler
+
+
+    The yellow-browed warbler is a small leaf warbler that breeds across the eastern
+    Palearctic region. It is a strongly migratory species, with populations traveling
+    vast distances between breeding and wintering grounds. The species winters primarily
+    in tropical South Asia and Southeast Asia, though small numbers occasionally reach
+    western Europe during migration, making it a rare but notable visitor to some
+    regions outside its main range.
+
+
+    This warbler is characteristic of its family, the Phylloscopidae, and shares the
+    typical features of leaf warblers: a diminutive size and an active, restless demeanor
+    as it forages among vegetation. The yellow-browed warbler was historically classified
+    within the broader Old World warbler assemblage before being reclassified within
+    its own distinct family, reflecting modern taxonomic understanding of these Asian
+    songbirds.'
+migration:
+  sv: ''
+  en: '# Yellow-browed Warbler (Tajgasångare) in Northern Europe
+
+
+    The yellow-browed warbler is a highly migratory species that breeds in the eastern
+    Palearctic and winters primarily in tropical South Asia and Southeast Asia. In
+    Scandinavia and Northern Europe, it occurs as a rare but regular passage migrant,
+    particularly during autumn migration. Small numbers occasionally overwinter in
+    western Europe, including Scandinavia, though such occurrences are uncommon. Spring
+    arrivals are typically recorded from April onwards as birds return to their breeding
+    grounds in eastern regions, while autumn passage peaks from August through October
+    as populations move southwestward to their winter quarters.'
+image_refs:
+- role: hero
+  path: Q330318/hero.jpg
+  width: 2368
+  height: 1767
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Yellow-browed warbler (Phylloscopus
+    inornatus), Parc du Slot, Woluwé-St.-Lambert, Brussels (34053989676).jpg
+  commons_filename: Yellow-browed warbler (Phylloscopus inornatus), Parc du Slot,
+    Woluwé-St.-Lambert, Brussels (34053989676).jpg
+- role: secondary
+  path: Q330318/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Yellow-browed warbler (Phylloscopus
+    inornatus), Parc du Slot, Woluwé-St.-Lambert, Brussels (27690192789).jpg
+  commons_filename: Yellow-browed warbler (Phylloscopus inornatus), Parc du Slot,
+    Woluwé-St.-Lambert, Brussels (27690192789).jpg
+- role: secondary
+  path: Q330318/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2107812">Wich’yanan
+    (Jay) Limparungpatthanakij</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus inornatus 456140817.jpg
+  commons_filename: Phylloscopus inornatus 456140817.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:23:11.589952+00:00'
+sources:
+  wikipedia_sv_revision: '56031140'
+  wikipedia_en_revision: '1315283991'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,125 @@
+id: Q720497
+scientific_name: Phylloscopus borealis
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Nordsångare
+  en: Arctic Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Nordsångare
+
+
+    Nordsångaren är en liten lövsångare som tillhör familjen Phylloscopidae. Denna
+    återhållsamma fågel förekommer från nordligaste Europa och österut genom Ryssland
+    samt i Alaska, där den häckar i boreala skogar och tundra. I Sverige utgör landet
+    dess västligaste utpost, och arten förekommer endast med några enstaka par i norr,
+    vilket gör den starkt hotad här.
+
+
+    Arten är mycket liten och diskret, med en nästan ospår yttre. Den liknar andra
+    små lövsångare men är något större än många besläktade arter. Nordsångaren är
+    en livlig och aktiv fågel som håller till i träd och buskvegetation där den söker
+    föda. Arten är känd för sin karakteristiska sång – en skarp, metallisk ramla som
+    ofta hörs från träd och buskage.
+
+
+    Nordsångaren är övergripande kategoriserad som livskraftig globalt, men dess svenska
+    bestånd är mycket litet och gör arten sårbar. Den är en långdistansflytt som överinterar
+    långt söderut.'
+  en: '# Arctic Warbler
+
+
+    The Arctic Warbler is a small leaf warbler that breeds across northern birch and
+    mixed forests near water bodies throughout Fennoscandia and the northern Palearctic,
+    with an established population in Alaska. It is strongly migratory, with the entire
+    breeding population wintering in southeast Asia—giving it one of the longest migrations
+    of any Old World insectivorous bird.
+
+
+    This warbler is a restless, active forager, typically seen gleaning insects from
+    foliage in its forest habitat. It is small and relatively plain, with greenish-brown
+    upperparts and pale underparts, featuring a thin pale eyebrow stripe. The species
+    has a distinctive thin, pointed bill adapted for picking small insects from leaves.
+
+
+    The Arctic Warbler''s call is a characteristic sharp, metallic "tsit" or "tzip,"
+    often repeated. Its song is a rapid, buzzing warble. The species is typically
+    heard more often than seen, as it tends to stay in the foliage canopy while foraging.
+    Its remarkable twice-yearly journey between breeding grounds in the far north
+    and wintering grounds in southeast Asia makes it an exceptional long-distance
+    migrant among warblers.'
+migration:
+  sv: '# Nordsångare (Phylloscopus borealis) – Migration och säsongsförekomst i Norden
+
+
+    Nordsångaren är en långdistansmigrant som uppträder i Sverige endast under häckningssäsongen.
+    Arten anländer från sina övervintringsplatser i Asien under försommaren för att
+    häcka i norr, särskilt i fjällregionerna. Endast ett fåtal par förekommer i Sverige,
+    där arten utgör dess västligaste utpost i sitt stora utbredningsområde som sträcker
+    sig från nordligaste Europa genom Ryssland och in i Alaska. Efter häckningssäsongen
+    återvänder arten till sina vinterkvartersäder.
+
+
+    *Migrationsdata för exakt ankomst- och avgångsmånader är dock begränsade i den
+    tillhandahållna texten.*'
+  en: '# Arctic Warbler (Phylloscopus borealis)
+
+
+    The Arctic Warbler is a strongly migratory species with one of the longest migrations
+    among Old World insectivorous birds. The entire Scandinavian breeding population
+    winters in Southeast Asia, undertaking an extensive annual journey between its
+    northern breeding grounds and tropical wintering grounds. Birds arrive in Fennoscandia
+    during late spring to establish territories in birch and mixed birch forests near
+    water. Following breeding season, the entire population departs in late summer
+    and autumn for Southeast Asia, leaving Scandinavia virtually unoccupied during
+    winter months. This extreme migratory pattern reflects the species'' dependence
+    on insects as food, requiring movement to regions where invertebrates remain available
+    year-round.'
+image_refs:
+- role: hero
+  path: Q720497/hero.jpg
+  width: 2400
+  height: 1985
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alpsdake" title="User:Alpsdake">Alpsdake</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus borealis s2.jpg
+  commons_filename: Phylloscopus borealis s2.jpg
+- role: secondary
+  path: Q720497/secondary-1.jpg
+  width: 1800
+  height: 1536
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alpsdake" title="User:Alpsdake">Alpsdake</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus borealis.jpg
+  commons_filename: Phylloscopus borealis.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:23:05.472071+00:00'
+sources:
+  wikipedia_sv_revision: '59221604'
+  wikipedia_en_revision: '1314216925'
+  claude_model: claude-haiku-4-5-20251001

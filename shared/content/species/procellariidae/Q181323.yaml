@@ -1,0 +1,75 @@
+id: Q181323
+scientific_name: Calonectris edwardsii
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Calonectris
+  ioc_order: Procellariiformes
+names:
+  sv: Kapverdelira
+  en: Cape Verde Shearwater
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Cape Verde Shearwater
+
+
+    The Cape Verde shearwater is a medium-large seabird belonging to the petrel family.
+    It is endemic to the Cape Verde archipelago, where it is known locally as the
+    cagarra. This shearwater is adapted for life at sea, spending most of its time
+    over the Atlantic Ocean off the coast of West Africa.
+
+
+    As a specialist ocean dweller, it feeds on fish and squid captured during its
+    flights over open water. The species exhibits typical shearwater behaviour, using
+    a distinctive flight pattern characterized by rapid wing beats interspersed with
+    gliding on stiff wings held close to the body. It nests in burrows or crevices
+    on land, returning to breeding colonies primarily at night to avoid predators.
+
+
+    The Cape Verde shearwater is relatively vocal at its breeding sites, producing
+    various calls and growling sounds during the breeding season. However, it remains
+    quiet during its time at sea. Its restricted range makes it dependent on the archipelago''s
+    islands for breeding, making it vulnerable to environmental changes and human
+    disturbance in its limited habitat.'
+migration:
+  sv: ''
+  en: '# Cape Verde Shearwater - Occurrence in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Cape Verde Shearwater is endemic to the Cape Verde archipelago and does not
+    occur in Scandinavia or Northern Europe. As a resident seabird breeding exclusively
+    in the Atlantic waters off West Africa, this species has no documented migratory
+    connection to Nordic or Northern European regions. Observers in Scandinavia would
+    not encounter this species through natural occurrence or seasonal migration patterns.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:24:09.187646+00:00'
+sources:
+  wikipedia_sv_revision: '58168090'
+  wikipedia_en_revision: '1340003294'
+  claude_model: claude-haiku-4-5-20251001

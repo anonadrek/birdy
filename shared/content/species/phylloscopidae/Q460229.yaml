@@ -1,0 +1,106 @@
+id: Q460229
+scientific_name: Phylloscopus trochiloides
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Lundsångare
+  en: Greenish Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Lundsångare
+
+
+    Lundsångaren är en liten, diskret lövsångare som häckar från Sverige österut till
+    västra Kina. Det är en grönaktig fågel som är svår att skilja från närbesläktade
+    arter. Under hösten drar den till södra och sydöstra Asien för att övervintra,
+    varefter den återvänder till häckningsområdena på våren.
+
+
+    Arten är aktiv och flyttar snabbt genom lövverket när den söker föda, främst små
+    insekter. Lundsångaren är bäst identifierad genom sitt läte – ett karakteristiskt
+    "tju-tju-tju" som ofta hörs från trädkronorna. Hannen sjunger från exponerade
+    grenar under häckningstiden för att markera sitt territorium.
+
+
+    Arten förekommer i lövskog och blandskog med frodig undervegetation, där det finns
+    gott om småinsekter. Lundsångaren är inte särskilt framträdande och är lätt att
+    missa om man inte lyssnar efter dess läte. Det är en globalt livskraftig art som
+    inte är hotad.'
+  en: '# Greenish Warbler
+
+
+    The Greenish Warbler is a small, active leaf warbler with a breeding range spanning
+    northeastern Europe and temperate to subtropical Asia. It is strongly migratory,
+    wintering in India and undertaking extensive seasonal journeys across vast distances.
+    In Western Europe, it appears regularly as a spring and early autumn vagrant,
+    with sightings occurring annually in Great Britain. During certain years, Central
+    Europe experiences influxes of vagrant birds, with occasional pairs remaining
+    to breed in countries such as Germany.
+
+
+    This warbler is characteristically small and greenish in plumage, typical of the
+    leaf warbler family. It is an energetic forager, actively gleaning insects from
+    foliage in a restless manner. The species produces a variety of calls and songs,
+    often described as somewhat loud and distinctive for its size, though details
+    vary between populations across its wide range.
+
+
+    The Greenish Warbler favors woodland and scrub habitats during both breeding and
+    migration periods. Its vagrant occurrences in Western Europe make it of particular
+    interest to birdwatchers monitoring autumn passage, when individuals may turn
+    up in coastal regions or gardens during their journey between breeding and wintering
+    grounds.'
+migration:
+  sv: '# Lundsångare i Skandinavien och Nordeuropa
+
+
+    Lundsångaren är en långflyttare som häckar sparsamt i Sverige, framför allt i
+    östra och södra delar av landet. Fågeln anländer till häckningsområdena under
+    våren, typiskt i maj månad. Under hösten drar den bort för att övervintrar i södra
+    och sydöstra Asien, där den tillbringar vintern innan den återvänder till norden
+    följande vår. I Skandinavien och övriga Nordeuropa är arten således endast närvarande
+    under häckningssäsongen, medan den helt saknas under vintermånaderna.'
+  en: '# Greenish Warbler in Northern Europe
+
+
+    The Greenish Warbler is a strongly migratory species with a breeding range in
+    northeastern Europe, making it a regular visitor to Scandinavia and northern regions
+    during spring and autumn migration periods. These birds breed across temperate
+    and subtropical continental Asia and are annual vagrants to Western Europe, including
+    Great Britain and Central Europe. In spring, they pass through northern regions
+    en route to breeding grounds, while autumn brings increased vagrant records as
+    birds move southward. The species winters entirely in India, meaning all northern
+    European populations are absent during winter months. Central Europe regularly
+    records significant numbers of vagrant birds in some years, with occasional individuals
+    remaining to breed as far west as Germany.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:22:31.901033+00:00'
+sources:
+  wikipedia_sv_revision: '59227878'
+  wikipedia_en_revision: '1350730928'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,104 @@
+id: Q208405
+scientific_name: Puffinus puffinus
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Puffinus
+  ioc_order: Procellariiformes
+names:
+  sv: Mindre lira
+  en: Manx Shearwater
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mindre lira
+
+
+    Mindre lira är en medelstor stormfågel som tillhör familjen liror. Det är en kolonihäckare
+    som förekommer i Nordatlanten, där det gräver bohålor utmed kuster och på öar
+    för sin fortplantning.
+
+
+    Fågeln är anpassad för ett liv till sjöss och tillbringar större delen av året
+    på öppet vatten. Det är en skicklig flikare som seglare över vågorna och jagar
+    ofta i flockliknande grupper. Mindre lira är framför allt aktiv under skymningen
+    och natten, vilket är typiskt för många stormfåglar.
+
+
+    Arten förekommer främst i öppna havsområden men kan ibland iakttas från land,
+    speciellt under påfågelsesäsongen när det återvänder till sina häckningskolonier.'
+  en: '# Manx Shearwater
+
+
+    The Manx shearwater is a medium-sized seabird belonging to the shearwater family.
+    It has dark upper parts and pale underparts, creating a distinctive two-toned
+    appearance visible during its characteristic fast, low flight over water. The
+    species is highly pelagic, spending much of its life at sea where it feeds on
+    fish and squid.
+
+
+    This shearwater is primarily nocturnal at breeding colonies, where it nests in
+    burrows or crevices. It produces distinctive vocal calls at night, including harsh,
+    wailing sounds used during pair interactions and territorial disputes. The species
+    is highly migratory, with populations undertaking remarkable trans-Atlantic journeys
+    between breeding and wintering grounds.
+
+
+    Manx shearwaters are typically observed far offshore, often seen in small to large
+    flocks, sometimes numbering in the thousands. They move with rapid wingbeats interspersed
+    with gliding, flying just above wave surfaces in their characteristic shearing
+    pattern. The species is best seen from coastal headlands during migration periods
+    or from boats in offshore waters where it regularly feeds.'
+migration:
+  sv: Mindre lira är en långflygare som främst förekommer i Skandinavien och Nordeuropa
+    under våren och sommaren. Arten häckar kolonist i bohålor längs kusterna och på
+    öar i Nordatlanten, där den anländer under vårmånaderna för att reproducera sig.
+    Under hösten påbörjar mindre lira sin långa migration söderut till övervintringsområdena
+    i Atlanten och längs västra Afrikas kust. Arten är således huvudsakligen en flyttfågel
+    för regionen, där den är närvarande under häckningssäsongen men helt frånvarande
+    under vinterhalvåret.
+  en: '# Manx Shearwater in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and etymological information
+    about the Manx Shearwater, with no details regarding its occurrence, migration
+    patterns, or seasonal presence in Scandinavia or Northern Europe.'
+image_refs:
+- role: hero
+  path: Q208405/hero.jpg
+  width: 2400
+  height: 1917
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Donkey_shot" title="User:Donkey
+    shot">Donkey shot</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Puffinus puffinus distribution.jpg
+  commons_filename: Puffinus puffinus distribution.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:23:57.909014+00:00'
+sources:
+  wikipedia_sv_revision: '58693310'
+  wikipedia_en_revision: '1325656414'
+  claude_model: claude-haiku-4-5-20251001

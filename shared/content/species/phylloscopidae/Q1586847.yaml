@@ -1,0 +1,99 @@
+id: Q1586847
+scientific_name: Phylloscopus neglectus
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Dvärgsångare
+  en: Plain Leaf Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dvärgsångare
+
+
+    Dvärgsångare är en mycket liten lövsångare från västra och centrala Asien. Det
+    är en diskret fågel som är svår att observera på grund av sin små storlek och
+    sitt dolt levnadssätt. Arten tillhör gruppen lövsångare och liknar många andra
+    små sångare i familjen.
+
+
+    Fågeln är hemlighetsfullt till sitt beteende och håller sig ofta gömda i tät växtlighet.
+    Det lever i sitt utbredningsområde i västra och centrala Asien, där det är relativt
+    lokalt förekommande. Beståndet av dvärgsångare anses vara livskraftigt och arten
+    ses inte som hotad.
+
+
+    Arten är av stor intresse för ornitologer på grund av en anmärkningsvärd observation
+    – en dvärgsångare har setts i Sverige, vilket representerar den enda dokumenterade
+    förekomsten av arten i Europa hittills. Denna sällsynta observation gör arten
+    särskilt intressant för fågelskådare.'
+  en: '# Plain Leaf Warbler
+
+
+    The plain leaf warbler is a small Old World warbler belonging to the Phylloscopidae
+    family. It is a diminutive species with understated plumage typical of leaf warblers,
+    featuring predominantly greenish-brown tones that provide excellent camouflage
+    among foliage. Like other members of its genus, it is an active forager, gleaning
+    insects from leaves and branches with quick, deliberate movements.
+
+
+    This warbler inhabits arid and semi-arid regions across central and southern Asia,
+    favoring areas with scattered woodland, scrubland, and gardens where it can hunt
+    among vegetation. It prefers drier habitats compared to some related species,
+    making it adapted to the challenging climates of mountain valleys and plateaus.
+
+
+    The plain leaf warbler''s call is relatively quiet and unobtrusive, consisting
+    of soft notes that can be easily overlooked in the field. Its behavior is typical
+    of leaf warblers—restless and often difficult to observe clearly due to its small
+    size and preference for dense cover. The species is generally inconspicuous, and
+    birdwatchers seeking it must listen carefully and watch patiently for movement
+    in suitable habitat.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the Plain Leaf Warbler''s
+    occurrence in Scandinavia or Northern Europe, nor does it include any details
+    about migration patterns, overwintering, or seasonal movements. The species is
+    documented only from Central Asia and the Middle East, with no mention of northern
+    European distribution. To provide accurate migration information for this species
+    in Scandinavia, additional sources with specific data on its movements would be
+    required.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:22:05.286340+00:00'
+sources:
+  wikipedia_sv_revision: '58510896'
+  wikipedia_en_revision: '1314679934'
+  claude_model: claude-haiku-4-5-20251001

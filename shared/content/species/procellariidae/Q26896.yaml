@@ -1,0 +1,123 @@
+id: Q26896
+scientific_name: Fulmarus glacialis
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Fulmar
+  ioc_order: Procellariiformes
+names:
+  sv: Stormfågel
+  en: Northern Fulmar
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stormfågel
+
+
+    Stormfågeln är en robust havsfågel tillhörande familjen liror. Fågeln häckar cirkumpolärt
+    i subarktiska och arktiska områden, men förekommer även i Västeuropa. Tillsammans
+    med sydstormfågeln utgör den släktet Fulmarus inom ordningen stormfåglar.
+
+
+    Arten är klassificerad som livskraftig enligt IUCN och utgör en väl etablerad
+    bestånd i sitt utbredningsområde. Som en típisk havsfågel är stormfågeln väl anpassad
+    för sitt livsrum på öppna haven, där den tillbringar huvuddelen av sitt liv mellan
+    häckningssäsongerna.'
+  en: '# Northern Fulmar
+
+
+    The Northern Fulmar is an abundant seabird of subarctic North Atlantic and North
+    Pacific waters, occasionally appearing far south of its normal range. It displays
+    considerable variation in plumage, with light-morph birds featuring white heads
+    and bodies with grey wings and tail, while dark-morph Arctic populations appear
+    uniformly grey. Intermediate plumages are common. Though superficially gull-like
+    in appearance, it belongs to the family Procellariidae, which encompasses petrels
+    and shearwaters, rather than the gull family.
+
+
+    The species is well-adapted to life at sea, spending much of its time in open
+    ocean habitats. It breeds in coastal colonies, returning to nesting sites with
+    strong site fidelity. Fulmars are skillful fliers, using dynamic soaring techniques
+    to traverse vast ocean expanses with minimal energy expenditure. They feed on
+    fish, squid, and other marine organisms, often scavenging behind fishing vessels.
+    The species'' population has expanded significantly over recent decades, likely
+    due to increased food availability from fisheries discards.'
+migration:
+  sv: '# Stormfågel – Förekomst i Skandinavien/Nordeuropa
+
+
+    Stormfågeln är en circumpolar art som förekommer året om i nordeuropeiska farvatten,
+    med koncentrationen större under vintermånaderna då fler individer söker sig mot
+    mindre isiga kustområden. Arten häckar på klippor och berg i arktiska och subarktiska
+    regioner, inklusive områden kring Island, Norska kusten och andra nordliga lokaler.
+    Efter häckningssäsongen vandrar stormfåglar ut på öppet hav, där de tillbringar
+    höst och vinter. Många individer övervintrarar i eller nära sitt häckningsområde,
+    särskilt om isförhållandena tillåter tillgång till öppet vatten.'
+  en: '# Northern Fulmar (Fulmarus glacialis) in Scandinavia/Northern Europe
+
+
+    The Northern Fulmar is a year-round resident in Scandinavian and northern European
+    waters, though its presence varies seasonally. These seabirds breed on cliff colonies
+    throughout the region during spring and summer months, with populations concentrated
+    along the Norwegian, Faroese, and Icelandic coasts. Outside the breeding season,
+    fulmars disperse widely across the North Atlantic, with some birds undertaking
+    extensive movements southward into temperate waters during autumn and winter.
+    However, many individuals remain in northern waters year-round, making the species
+    a characteristic feature of Scandinavian seascapes throughout the annual cycle.'
+image_refs:
+- role: hero
+  path: Q26896/hero.jpg
+  width: 2400
+  height: 1602
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Northern fulmar (Fulmarus glacialis)
+    in flight.jpg
+  commons_filename: Northern fulmar (Fulmarus glacialis) in flight.jpg
+- role: secondary
+  path: Q26896/secondary-1.jpg
+  width: 1800
+  height: 1250
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Northern Fulmar - Fulmarus glacialis
+    (52977897012).jpg
+  commons_filename: Northern Fulmar - Fulmarus glacialis (52977897012).jpg
+- role: secondary
+  path: Q26896/secondary-2.jpg
+  width: 1800
+  height: 1198
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jakubhal" title="User:Jakubhal">Jakub
+    Hałun</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fulmarus glacialis near Hvítserkur
+    Sea Stack, Northwestern Region, Iceland, 20240715 1130 1102.jpg
+  commons_filename: Fulmarus glacialis near Hvítserkur Sea Stack, Northwestern Region,
+    Iceland, 20240715 1130 1102.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:24:19.615558+00:00'
+sources:
+  wikipedia_sv_revision: '57420648'
+  wikipedia_en_revision: '1353196267'
+  claude_model: claude-haiku-4-5-20251001

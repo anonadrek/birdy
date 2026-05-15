@@ -1,0 +1,101 @@
+id: Q752489
+scientific_name: Phylloscopus bonelli
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Bergsångare
+  en: Western Bonelli’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bergsångare
+
+
+    Bergsångare är en mycket liten fågel som tillhör familjen lövsångare. Det är en
+    svåridentifierad art med diskret utseende i gråbrunt och gulgrönt. Fågeln är aktiv
+    och rörlig, ofta skuggan i träd och buskar där det gärna söker föda bland bladen.
+
+
+    Arten häckar i sydvästra Europa, från Portugal till Italien, samt i nordvästra
+    Afrika. Under vintern flyttar bergsångaren långt söderut till tropiska Västafrika.
+    Norr om sitt normala utbredningsområde är det mycket sällsynt, med endast ett
+    tjugotal säkra observationer dokumenterade under många år.
+
+
+    Bergsångaren klassificeras som livskraftig och står inte på någon röd lista. Det
+    är en art för den erfarne fågelbeskådare som behärskar identifikationen av lövsångare,
+    då den lätt kan förväxlas med närbesläktade arter inom sin familj.'
+  en: ''
+migration:
+  sv: '# Bergsångare i Skandinavien och Nordeuropa
+
+
+    Bergsångare är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten häckar
+    normalt i sydvästra Europa, från Portugal till Italien, och förekommer endast
+    sporadiskt norr om sitt huvudsakliga utbredningsområde. I Sverige har arten registrerats
+    vid ungefär 13 säkra observationstillfällen. Under vintern migrerar bergsångaren
+    till tropiska Västafrika för att överninta. De observationer som görs i nordligare
+    regioner representerar således vagabunderande individer eller möjliga överflyttningar
+    från huvudpopulationen under migrationstiden.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q752489/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Western Bonelli's warbler (Phylloscopus
+    bonelli) 2024.jpg
+  commons_filename: Western Bonelli's warbler (Phylloscopus bonelli) 2024.jpg
+- role: secondary
+  path: Q752489/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/83657186@N05">Pierre-Marie
+    Epiney</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pouillot de Bonelli Phylloscopus
+    bonelli aaDSC 1833 (51201873002).jpg
+  commons_filename: Pouillot de Bonelli Phylloscopus bonelli aaDSC 1833 (51201873002).jpg
+- role: secondary
+  path: Q752489/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: '<div class="fn value">
+
+    <a href="//commons.wikimedia.org/wiki/User:Kookaburra_81" title="User:Kookaburra
+    81">Kookaburra 81</a></div>'
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus bonelli 2.jpg
+  commons_filename: Phylloscopus bonelli 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:22:22.776082+00:00'
+sources:
+  wikipedia_sv_revision: '57352127'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

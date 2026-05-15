@@ -1,0 +1,136 @@
+id: Q27239
+scientific_name: Phylloscopus trochilus
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Lövsångare
+  en: Willow Warbler
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Lövsångare
+
+
+    Lövsångare är en liten, gröngul lövsångare som tillhör familjen Phylloscopidae.
+    Det är en av Europas talrikaste fågelarter, med uppskattningsvis 100 miljoner
+    par endast på kontinenten. Arten är en långflyttare som häckar i norra och tempererade
+    Europa och Asien under våren och sommaren, medan huvuddelen av beståndet övervintrar
+    söder om Sahara.
+
+
+    Lövsångaren är en diskret och aktiv småfågel som tillbringar mycket tid i träd
+    och buskar där det söker efter småinsekter. Det är blygt till temperamentet och
+    kan vara svårt att få bra syn på, särskilt när det håller sig högt uppe i lövverket.
+    Arten är känd för sitt distinktiva, rullande och melodiöst sång som ofta börjar
+    långsamt och sedan accelererar. Dess kallrop är ett mjukt, tvåstavigt "hu-it".
+
+
+    Även om arten fortfarande är talrik, har beståndet minskat under senare år. Lövsångaren
+    föredrar öppen lövskog, parklandskap och områden med riklig vegetation där det
+    kan hitta föda och byggbostad.'
+  en: '# Willow Warbler
+
+
+    The willow warbler is a small, delicate leaf warbler found across northern and
+    temperate regions from Ireland to eastern Siberia. It is one of Europe''s most
+    common warblers, recognizable by its olive-green upperparts and pale underside,
+    though it can be difficult to distinguish from the chiffchaff in the field. The
+    bird is notably slim and active, constantly moving through foliage as it forages
+    for insects.
+
+
+    This species is celebrated for its pleasant, melodious song—a characteristic descending
+    warble that gives the bird its English name. The call is a soft, short "hoo-it"
+    sound. The willow warbler''s behaviour is restless and energetic, rarely remaining
+    still for long as it hunts among leaves and twigs.
+
+
+    The species is strongly migratory, undertaking one of the longest journeys of
+    any European warbler. It arrives in breeding areas in spring and departs in late
+    summer, with the vast majority of the population wintering in sub-Saharan Africa.
+    During migration and breeding season, it favours open woodlands, scrubby habitats,
+    and areas with scattered trees and shrubs, where its insect prey is abundant.'
+migration:
+  sv: '# Lövsångare – Förekomst i Skandinavien och Nordeuropa
+
+
+    Lövsångaren är en långflyttare som häckar utbrett i Skandinavien och övriga Nordeuropa
+    under sommaren. Arten anländer från sitt övervintringsområde söder om Sahara på
+    våren, typiskt från april och framåt. Under häckningssäsongen är lövsångaren en
+    av regionens talrikaste fågelarter, med uppemot miljoner häckande par enbart i
+    Europa. På hösten påbörjar arten sin långa migration söderut, och merparten av
+    populationen lämnar Nordeuropa för att övervinta i Afrika. Endast enstaka individer
+    kan påträffas under vintermånaderna i norra delen av sitt utbredningsområde.'
+  en: '# Willow Warbler Migration in Scandinavia
+
+
+    The Willow Warbler is a summer breeder throughout Scandinavia and Northern Europe,
+    arriving from sub-Saharan African wintering grounds in late April through May.
+    Peak breeding occurs from June to July across boreal and temperate forests. This
+    highly migratory species is almost entirely absent during winter months, with
+    the population departing between August and September for their African wintering
+    grounds. A few stragglers may linger into October, but regular sightings cease
+    by November. Return migration begins in spring, with the first birds reappearing
+    in late April, making this species a reliable indicator of the Northern European
+    breeding season.'
+image_refs:
+- role: hero
+  path: Q27239/hero.jpg
+  width: 2400
+  height: 1696
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Willow warbler, Phylloscopus
+    trochilus, at Marakele National Park, Limpopo, South Africa (45938437674).jpg
+  commons_filename: Willow warbler, Phylloscopus trochilus, at Marakele National Park,
+    Limpopo, South Africa (45938437674).jpg
+- role: secondary
+  path: Q27239/secondary-1.jpg
+  width: 1800
+  height: 1329
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Willow Warbler. Phylloscopus
+    trochilus. - Flickr - gailhampshire.jpg
+  commons_filename: Willow Warbler. Phylloscopus trochilus. - Flickr - gailhampshire.jpg
+- role: secondary
+  path: Q27239/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Willow warbler (Phylloscopus
+    trochilus) ringed Malta.jpg
+  commons_filename: Willow warbler (Phylloscopus trochilus) ringed Malta.jpg
+review_status: approved
+review_notes: "Hero = Phylloscopus trochilus (Willow Warbler / Lövsångare); SE:s vanligaste fågel, ubikvist i lövskog och buskmark."
+generated_at: '2026-05-15T21:22:49.170681+00:00'
+sources:
+  wikipedia_sv_revision: '58703691'
+  wikipedia_en_revision: '1333176023'
+  claude_model: claude-haiku-4-5-20251001

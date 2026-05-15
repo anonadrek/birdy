@@ -1,0 +1,99 @@
+id: Q216850
+scientific_name: Calonectris diomedea
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Calonectris
+  ioc_order: Procellariiformes
+names:
+  sv: Gulnäbbad lira
+  en: Scopoli’s Shearwater
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gulnäbbad lira
+
+
+    Gulnäbbad lira är en medelstor havsfågel i familjen liror som förekommer främst
+    i Atlanten. Den är nära släkt med diomedeslira och större kapverdelira, och dessa
+    tre bildade länge ett artskomplex som gemensamt kallades gulnäbbad lira. Arten
+    är därför lätt att förväxla med sina närmaste släktingar.
+
+
+    Utanför häckningstiden kan det vara mycket svårt – ibland rentav omöjligt – att
+    skilja gulnäbbad lira från diomedeslira i fält. För en amatörfågelvårdare kräver
+    säker artbestämning ofta god erfarenhet och goda observationsförhållanden. Det
+    är därför viktigt att inte vara alltför säker på artidentifikationen utan istället
+    anteckna detaljerade iakttagelser för senare granskning.'
+  en: ''
+migration:
+  sv: '# Gulnäbbad lira - Förekomst i Nordeuropa
+
+
+    Gulnäbbad lira är en havsfågel som främst förekommer i Atlanten och är en mycket
+    sällsynt gäst i nordeuropeiska vatten. Arten häckar i södra Medelhavsregionen
+    och förekommer huvudsakligen under olika tider på öppet hav. I Skandinavien och
+    Nordeuropa registreras arten endast sporadiskt, främst under höst- och vintermånaderna
+    när några individer kan påträffas långt från sina ordinära utbredningsområden.
+    Observationer från dessa regioner är mycket ovanliga och följer inte något förutsägbart
+    mönster.
+
+
+    Migrationsdata saknas för denna art i kontexten av Skandinavien och Nordeuropa,
+    då arten inte utgör en regelbunden eller säsongsmässig förekomst i dessa områden.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q216850/hero.jpg
+  width: 2400
+  height: 1607
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Luissilveira" title="User:Luissilveira">José
+    Luís Ávila Silveira/Pedro Noronha e Costa</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cagarro - Calonectris borealis,
+    Terceira, Açores.jpg
+  commons_filename: Cagarro - Calonectris borealis, Terceira, Açores.jpg
+- role: secondary
+  path: Q216850/secondary-1.jpg
+  width: 1800
+  height: 1155
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/8439542">Karen
+    Szafrajda</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Calonectris diomedea 424179034.jpg
+  commons_filename: Calonectris diomedea 424179034.jpg
+- role: secondary
+  path: Q216850/secondary-2.jpg
+  width: 1800
+  height: 1469
+  license: CC BY-SA 4.0
+  author: Patrick Kern
+  source_url: https://commons.wikimedia.org/wiki/File:Calonectris Diomedea, Puffin
+    de Scopoli, St-Jean Cap Ferrat.jpg
+  commons_filename: Calonectris Diomedea, Puffin de Scopoli, St-Jean Cap Ferrat.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:21:27.553999+00:00'
+sources:
+  wikipedia_sv_revision: '57597621'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

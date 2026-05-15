@@ -1,0 +1,94 @@
+id: Q976787
+scientific_name: Phylloscopus ibericus
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Iberisk gransångare
+  en: Iberian Chiffchaff
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Iberisk gransångare
+
+
+    Iberisk gransångare är en liten insektsätande lövsångare som tidigare betraktades
+    som en underart till gransångaren men numera erkänns som egen art. Det är en diskret
+    fågel som kräver uppmärksam observation för att identifieras säkert.
+
+
+    Arten förekommer på Iberiska halvön, där det lever i skogshabitat och buskskogsområden.
+    Det är en aktiv liten fågel som ofta rör sig genom lövet på jakt efter små insekter.
+    Iberisk gransångare skiljer sig från närbesläktad gransångare genom subtila skillnader
+    i fjäderdräkt och röst, vilket kräver erfarenhet att särskilja under fältobservation.
+
+
+    Arten utgör en stabil population och anses ha ett livskraftigt bestånd. För den
+    intresserade fågelskådaren erbjuder Iberisk gransångare en intressant utmaning
+    när det gäller identifikation bland annat lövsångararter i sitt utbredningsområde.'
+  en: '# Iberian Chiffchaff
+
+
+    The Iberian chiffchaff is a small leaf warbler belonging to the Phylloscopidae
+    family. It breeds in southwestern Europe and northwestern Africa, then migrates
+    to winter in western Africa south of the Sahara Desert. Like other chiffchaffs,
+    it is a compact warbler with relatively subdued plumage that blends well with
+    its leafy habitat.
+
+
+    This species favors scrubland and open woodlands where it forages actively among
+    vegetation for small insects and other invertebrates. Its behaviour is typical
+    of leaf warblers—restless and energetic, often seen flicking through foliage as
+    it hunts. The call is characteristic of the chiffchaff group, though it can be
+    distinguished from closely related species by those familiar with the genus.
+
+
+    The Iberian chiffchaff is best located during its breeding season in suitable
+    Mediterranean and semi-arid habitats. As a long-distance migrant, it is absent
+    from its breeding grounds during winter months, making it a seasonal visitor to
+    its range rather than a year-round resident.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: '# Iberian Chiffchaff in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Iberian Chiffchaff is a southwestern European breeder with a winter range
+    in West Africa south of the Sahara. This species does not occur in Scandinavia
+    or Northern Europe as part of its regular migration pattern or annual cycle. Its
+    breeding and wintering distributions are confined to southwestern Europe, northwestern
+    Africa, and West Africa, making it absent from northern European regions year-round.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:24:00.010697+00:00'
+sources:
+  wikipedia_sv_revision: '57498294'
+  wikipedia_en_revision: '1314102496'
+  claude_model: claude-haiku-4-5-20251001

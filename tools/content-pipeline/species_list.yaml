@@ -3533,6 +3533,7 @@
   ioc_order: Passeriformes
   common_en: Wood Warbler
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q752489
   scientific_name: Phylloscopus bonelli
   family: Phylloscopidae
@@ -3587,6 +3588,7 @@
   ioc_order: Passeriformes
   common_en: Willow Warbler
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q3729103
   scientific_name: Phylloscopus sindianus
   family: Phylloscopidae
@@ -3611,6 +3613,7 @@
   ioc_order: Passeriformes
   common_en: Common Chiffchaff
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q3049745
   scientific_name: Phylloscopus umbrovirens
   family: Phylloscopidae

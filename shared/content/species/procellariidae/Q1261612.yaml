@@ -1,0 +1,79 @@
+id: Q1261612
+scientific_name: Pterodroma feae
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Pterodroma
+  ioc_order: Procellariiformes
+names:
+  sv: Kap Verdepetrell
+  en: Fea’s Petrel
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kapverdepetrell
+
+
+    Kapverdepetrell är en havsfågel som tillhör familjen liror. Arten är endemisk
+    och häckar endast på en mycket begränsad lokal. Det är en relativt liten stormfågel
+    som är anpassad för liv på öppet hav.
+
+
+    Arten klassificerades tidigare tillsammans med desertapetrell som en enda art
+    under namnet atlantpetrell, men betraktas nu som en separat art. Kapverdepetrell
+    är kategoriserad som nära hotad enligt IUCN, vilket indikerar att populationen
+    eller utbredningen är begränsad och kräver uppmärksamhet.
+
+
+    Som typisk havsfågel spenderar arten mycket tid över havet mellan häckningsperioderna.
+    Det är en fågel för den erfarne fågelskådaren, då den är svår att iaktta på grund
+    av sin begränsade geografiska förekomst och sitt uteliv på öppna vatten.'
+  en: ''
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: ''
+image_refs:
+- role: hero
+  path: Q1261612/hero.jpg
+  width: 2048
+  height: 1282
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pterodroma feae deserta 92954534.jpg
+  commons_filename: Pterodroma feae deserta 92954534.jpg
+- role: secondary
+  path: Q1261612/secondary-1.jpg
+  width: 1800
+  height: 1126
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pterodroma feae deserta 92954523.jpg
+  commons_filename: Pterodroma feae deserta 92954523.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:23:36.259124+00:00'
+sources:
+  wikipedia_sv_revision: '58986694'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

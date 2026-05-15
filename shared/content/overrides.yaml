@@ -768,3 +768,64 @@ species:
     description_accept_missing: [en]  # Pharaoh Eagle-Owl — sparse enwiki
   Q828255:
     description_accept_missing: [sv]  # Brown Fish Owl — sparse svwiki
+  # Phylloscopidae + Procellariidae bundle (2026-05-15)
+  Q1586847:
+    allow_missing_images: true  # Plain Leaf Warbler — no suitable Commons images
+  Q2672900:
+    allow_missing_images: true  # Green Warbler — no suitable Commons images
+  Q3049745:
+    description_accept_missing: [en]
+    allow_missing_images: true  # Brown Woodland Warbler — sparse enwiki + no images
+  Q330318:
+    description_accept_missing: [sv]  # Yellow-browed Warbler — sparse svwiki
+  Q460229:
+    allow_missing_images: true  # Greenish Warbler — no suitable Commons images
+  Q608313:
+    description_accept_missing: [en]
+    allow_missing_images: true  # Hume's Leaf Warbler — sparse enwiki + no images
+  Q752489:
+    description_accept_missing: [en]  # Western Bonelli's Warbler — sparse enwiki
+  Q752513:
+    description_accept_missing: [sv, en]  # Pallas's Leaf Warbler — sparse on both (73w sv)
+  Q805062:
+    description_accept_missing: [en]
+    allow_missing_images: true  # Eastern Bonelli's Warbler — sparse enwiki + no images
+  Q809446:
+    description_accept_missing: [en]  # Radde's Warbler — sparse enwiki
+  Q976787:
+    allow_missing_images: true  # Iberian Chiffchaff — no suitable Commons images
+  Q10416539:
+    description_accept_missing: [sv, en]
+    allow_missing_images: true  # Persian Shearwater — sparse on both + no images
+  Q1261612:
+    description_accept_missing: [en]  # Fea's Petrel — sparse enwiki
+  Q1272271:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Barolo Shearwater — sparse svwiki + no images
+  Q1272830:
+    description_accept_missing: [en]  # Zino's Petrel — sparse enwiki
+  Q129413:
+    description_accept_missing: [sv, en]  # Bulwer's Petrel — sparse on both
+  Q129550:
+    description_accept_missing: [sv, en]
+    allow_missing_images: true  # Jouanin's Petrel — sparse on both + no images
+  Q181323:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Cape Verde Shearwater — sparse svwiki + no images
+  Q216850:
+    description_accept_missing: [en]  # Scopoli's Shearwater — sparse enwiki
+  Q26896:
+    description_accept_missing: [sv]  # Northern Fulmar — sparse svwiki (72w)
+  Q27074603:
+    description_accept_missing: [sv]  # Sooty Shearwater — sparse svwiki
+  Q27074607:
+    description_accept_missing: [sv]  # Flesh-footed Shearwater — sparse svwiki
+  Q27074609:
+    description_accept_missing: [sv]  # Great Shearwater — sparse svwiki
+  Q3410601:
+    description_accept_missing: [sv, en]
+    allow_missing_images: true  # Boyd's Shearwater — sparse on both + no images
+  Q3412067:
+    allow_missing_images: true  # Desertas Petrel — no suitable Commons images
+  Q511566:
+    description_accept_missing: [sv]  # Mediterranean Shearwater — sparse svwiki

@@ -1,0 +1,72 @@
+id: Q129413
+scientific_name: Bulweria bulwerii
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Bulweria
+  ioc_order: Procellariiformes
+names:
+  sv: Spetsstjärtad petrell
+  en: Bulwer’s Petrel
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q129413/hero.jpg
+  width: 1800
+  height: 2400
+  license: CC BY 3.0
+  author: <a rel="nofollow" class="external text" href="http://www.hear.org/starr/">Forest
+    &amp; Kim Starr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Starr 080613-8840 Bulweria bulwerii.jpg
+  commons_filename: Starr 080613-8840 Bulweria bulwerii.jpg
+- role: secondary
+  path: Q129413/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC BY 3.0
+  author: <a rel="nofollow" class="external text" href="http://www.hear.org/starr/">Forest
+    &amp; Kim Starr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Starr 080613-8841 Bulweria bulwerii.jpg
+  commons_filename: Starr 080613-8841 Bulweria bulwerii.jpg
+- role: secondary
+  path: Q129413/secondary-2.jpg
+  width: 1350
+  height: 1800
+  license: CC BY 3.0
+  author: <a rel="nofollow" class="external text" href="http://www.hear.org/starr/">Forest
+    &amp; Kim Starr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Starr 080613-8842 Bulweria bulwerii.jpg
+  commons_filename: Starr 080613-8842 Bulweria bulwerii.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:23:21.749613+00:00'
+sources:
+  wikipedia_sv_revision: '55731641'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,93 @@
+id: Q2672900
+scientific_name: Phylloscopus nitidus
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Kaukasisk lundsångare
+  en: Green Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kaukasisk lundsångare
+
+
+    Kaukasisk lundsångare är en liten lövsångare som häckar i bergstrakter från Kaukasus
+    österut genom norra Iran och Centralasien till Afghanistan. Under vintern är arten
+    migrerad och återfinns huvudsakligen i Indien. Det är en mycket sällsynt gäst
+    i Europa och endast ett fynd är känt från Sverige (Öland 2003).
+
+
+    Arten behandlades tidigare som underart till lundsångare men har nu egen artstatus.
+    Arten klassificeras av IUCN som livskraftig. För den intresserade fågelskådaren
+    är arten praktiskt taget omöjlig att möta utanför sitt naturliga utbredningsområde
+    i södra och västra Asien.'
+  en: '# Green Warbler
+
+
+    The Green Warbler is a small leaf warbler belonging to the Phylloscopidae family.
+    It is found in the Caucasus Mountains in southeastern Europe, where it inhabits
+    forested regions.
+
+
+    This species is characterized by its greenish plumage, which helps it blend seamlessly
+    with vegetation. Like other leaf warblers, it is an active forager, gleaning insects
+    from foliage as it moves through trees and shrubs. Its behavior is typical of
+    the genus—restless and acrobatic, often seen hanging from branches while searching
+    for food.
+
+
+    The Green Warbler''s call and song are distinctive features useful for identification.
+    As with many warblers in this family, vocalizations are important for locating
+    the species in dense woodland habitat where visual identification can be challenging.
+    Observers should listen carefully for its characteristic sounds while watching
+    for the bird''s characteristic leaf-gleaning behavior among trees and bushes in
+    its montane range.'
+migration:
+  sv: '# Kaukasisk lundsångare – Förekomst i Skandinavien
+
+
+    Kaukasisk lundsångare är en ytterst sällsynt gäst i Skandinavien och övriga Europa.
+    Arten häckar i Kaukasus, norra Turkiet, norra Iran, Uzbekistan och Afghanistan.
+    Under vintern flyttar den huvudsakligen till Indien. I Sverige är arten endast
+    dokumenterad genom ett enda fynd på Öland år 2003, vilket understriker hur mycket
+    en vagabund denna asiatiska lövsångare är långt västerut. Arten förekommer normalt
+    inte i nordeuropeiska regioner under någon årstid.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only basic taxonomic and geographic information,
+    indicating that the Green Warbler is found in the Caucasus Mountains in southeastern
+    Europe. It does not include any information about migration patterns, seasonal
+    occurrence, overwintering behavior, or arrival/departure months in Scandinavia
+    or Northern Europe. Therefore, I cannot provide factual information about how
+    this species occurs throughout the year in the region as requested.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:21:56.774683+00:00'
+sources:
+  wikipedia_sv_revision: '56777854'
+  wikipedia_en_revision: '1314155366'
+  claude_model: claude-haiku-4-5-20251001

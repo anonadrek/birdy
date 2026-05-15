@@ -1,0 +1,123 @@
+id: Q27074601
+scientific_name: Ardenna pacifica
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Ardenna
+  ioc_order: Procellariiformes
+names:
+  sv: Kilstjärtslira
+  en: Wedge-tailed Shearwater
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kilstjärtslira
+
+
+    Kilstjärtslira är en medelstor lira som tillhör familjen stormfåglar. Arten förekommer
+    i tropiska delar av Stilla havet och Indiska oceanen, där den är anpassad till
+    öppet vatten.
+
+
+    Arten är en skicklig flygare som spenderar mycket tid över havet. Liksom andra
+    liror är kilstjärtslira en nattstöring som söker föda i mörker. Den lever av mindre
+    fiskar och kräkdjur som den plockar från vattenytan under sina nattliga förflyttningar.
+
+
+    För ett möte med denna art krävs oftast båtresor till dess havshabitat i tropiska
+    regioner.'
+  en: '# Wedge-tailed Shearwater
+
+
+    The wedge-tailed shearwater is a medium-large seabird belonging to the shearwater
+    family. It displays the characteristic streamlined body and long, narrow wings
+    typical of shearwaters, built for efficient flight over open ocean. The species
+    is dark above and lighter below, though plumage varies among populations. It is
+    sometimes called a muttonbird, a name shared with several other shearwater species
+    in the Pacific and Indian regions.
+
+
+    This oceanic bird ranges throughout tropical waters between approximately 35°N
+    and 35°S latitude. It spends much of its life at sea, where it hunts for fish
+    and squid. During breeding season, it returns to island colonies, including volcanic
+    islands and offshore locations across a vast geographic range. Like other shearwaters,
+    it is largely nocturnal at breeding colonies, coming ashore under cover of darkness
+    to reduce predation risk.
+
+
+    The wedge-tailed shearwater''s flight is characteristic of the family: low, swift
+    gliding just above the wave surface, with minimal wing-flapping. Its call at breeding
+    colonies is distinctive, featuring various guttural sounds and wailing notes.
+    The elongated tail feathers that give this species its name are particularly visible
+    in flight, aiding identification at sea.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Wedge-tailed Shearwater in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Wedge-tailed Shearwater is a tropical and subtropical seabird found throughout
+    the Pacific and Indian Oceans between approximately 35°N and 35°S latitude. Its
+    breeding range includes islands off Japan, Hawaii, the Seychelles, and Australia—regions
+    entirely outside Scandinavian and Northern European waters. This species does
+    not occur in Scandinavia or Northern Europe during any season and has no documented
+    migration pattern to these regions.'
+image_refs:
+- role: hero
+  path: Q27074601/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 3.0
+  author: <a rel="nofollow" class="external text" href="http://www.hear.org/starr/">Forest
+    &amp; Kim Starr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Starr 061017-1146 Ardenna pacifica
+    (banding).jpg
+  commons_filename: Starr 061017-1146 Ardenna pacifica (banding).jpg
+- role: secondary
+  path: Q27074601/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a rel="nofollow" class="external text" href="http://www.hear.org/starr/">Forest
+    &amp; Kim Starr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Starr 061017-1147 Ardenna pacifica
+    (banding).jpg
+  commons_filename: Starr 061017-1147 Ardenna pacifica (banding).jpg
+- role: secondary
+  path: Q27074601/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a rel="nofollow" class="external text" href="http://www.hear.org/starr/">Forest
+    &amp; Kim Starr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Starr 061017-1148 Ardenna pacifica
+    (banding).jpg
+  commons_filename: Starr 061017-1148 Ardenna pacifica (banding).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:22:19.076787+00:00'
+sources:
+  wikipedia_sv_revision: '55627406'
+  wikipedia_en_revision: '1315344829'
+  claude_model: claude-haiku-4-5-20251001

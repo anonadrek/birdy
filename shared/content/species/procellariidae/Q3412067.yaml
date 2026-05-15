@@ -1,0 +1,92 @@
+id: Q3412067
+scientific_name: Pterodroma deserta
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Pterodroma
+  ioc_order: Procellariiformes
+names:
+  sv: Desertaspetrell
+  en: Desertas Petrel
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Desertaspetrell
+
+
+    Desertaspetrell är en liten stormfågel som tillhör familjen liror. Det är en mycket
+    hotad art som endast förekommer på en enda ö i norra Atlanten och är därför starkt
+    endemisk. Arten är närmast släkt med kapverdepetrell och madeirapetrell, med vilka
+    det delar många karakteristiska drag.
+
+
+    Som medlem av stormfågelfamiljen är desertaspetrell väl anpassad för livet till
+    sjöss och tillbringar större delen av sitt liv ute på havet. Det är en relativt
+    liten och mörkfärgad petrell som är svår att iaktta på avstånd. Som många andra
+    stormfåglar är det huvudsakligen aktiv under skymningen och natten, vilket gör
+    den svår att observera.
+
+
+    Arten är klassificerad som starkt hotad på grund av sitt mycket begränsade utbredningsområde
+    och små population. Bevarande av dess enda kända häckningslokal är därför avgörande
+    för artens överlevnad.'
+  en: '# Desertas Petrel
+
+
+    The Desertas petrel is a small seabird belonging to the gadfly petrel genus within
+    the storm-petrel family. It is endemic to a very restricted range, breeding exclusively
+    on Bugio Island in the Desertas archipelago. This species represents one of the
+    world''s rarest petrels, with an extremely limited population confined to its
+    breeding island.
+
+
+    As a gadfly petrel, it is adapted to life at sea, spending much of its time over
+    ocean waters away from land. Like other members of its genus, it likely feeds
+    on small fish and squid taken from the water''s surface. The species is nocturnal
+    at its breeding colonies, coming ashore under cover of darkness to nest in burrows
+    or rock crevices.
+
+
+    Due to its tiny breeding population and restricted island habitat, the Desertas
+    petrel faces conservation challenges from introduced predators and habitat disturbance.
+    Its remote location has provided some protection, but the species remains vulnerable.
+    Little is known about its detailed behaviour and vocalizations compared to more
+    widespread petrel species, making it a poorly studied member of its family.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only basic information about the Desertas petrel''s breeding
+    location (Bugio Island in the Desertas off Madeira) but contains no details about
+    its occurrence in Scandinavia, Northern Europe, migration patterns, overwintering,
+    or seasonal presence throughout the year. Additional sources would be needed to
+    provide accurate information about this species'' migratory behavior and distribution
+    in northern regions.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:21:16.817608+00:00'
+sources:
+  wikipedia_sv_revision: '58952040'
+  wikipedia_en_revision: '1351326438'
+  claude_model: claude-haiku-4-5-20251001

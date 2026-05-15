@@ -1,0 +1,78 @@
+id: Q1272271
+scientific_name: Puffinus baroli
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Puffinus
+  ioc_order: Procellariiformes
+names:
+  sv: Makaronesisk lira
+  en: Barolo Shearwater
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Barolo Shearwater
+
+
+    The Barolo shearwater is a small member of the shearwater family, distinguished
+    by its compact size and streamlined build adapted for life at sea. It closely
+    resembles other small shearwaters but can be identified by subtle differences
+    in plumage patterns and overall proportions when seen in flight.
+
+
+    This species is primarily pelagic, spending much of its time over open ocean waters
+    where it hunts for small fish and squid. It breeds colonially on rocky islands
+    and coastal cliffs, nesting in burrows or crevices during the breeding season.
+    Like other shearwaters, it is largely nocturnal at breeding colonies, coming ashore
+    under cover of darkness to avoid predation.
+
+
+    The Barolo shearwater''s vocalizations include various calls and cries made at
+    night around breeding sites, though it remains relatively silent when at sea.
+    It inhabits the North Atlantic, with breeding populations established on remote
+    islands. Outside the breeding season, it may disperse across wider ocean areas,
+    though it remains primarily within cooler northern waters. Its distribution and
+    breeding habits make it a specialist of specific island ecosystems.'
+migration:
+  sv: ''
+  en: '# Barolo Shearwater in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Barolo Shearwater breeds exclusively in Macaronesian islands (Azores and Canaries)
+    in the subtropical North Atlantic. The provided source text contains no information
+    regarding its occurrence in Scandinavia or Northern Europe, nor details about
+    seasonal movements, overwintering locations, or arrival periods in these regions.
+    To provide accurate migration information for this species in Northern European
+    waters, additional ornithological sources specific to Nordic distribution would
+    be required.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:21:43.718803+00:00'
+sources:
+  wikipedia_sv_revision: '59224913'
+  wikipedia_en_revision: '1350984008'
+  claude_model: claude-haiku-4-5-20251001

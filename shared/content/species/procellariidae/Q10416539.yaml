@@ -1,0 +1,45 @@
+id: Q10416539
+scientific_name: Puffinus persicus
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Puffinus
+  ioc_order: Procellariiformes
+names:
+  sv: Arablira
+  en: Persian Shearwater
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:22:32.163827+00:00'
+sources:
+  wikipedia_sv_revision: '55499756'
+  wikipedia_en_revision: '1324073769'
+  claude_model: claude-haiku-4-5-20251001

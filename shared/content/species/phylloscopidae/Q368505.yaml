@@ -1,0 +1,132 @@
+id: Q368505
+scientific_name: Phylloscopus fuscatus
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Brunsångare
+  en: Dusky Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brunsångare
+
+
+    Brunsångare är en liten asiatisk tätting som tillhör familjen lövsångare. Arten
+    häckar i sanka områden i Sibirien och östra Asien. Under vintern flyttar den långväga
+    till Sydostasien för att söka föda, men under dessa långa migreringar förirlar
+    sig regelbundet individer till Europa, där de kan observeras som raritetsfynd.
+
+
+    Arten är mycket liten och diskret, med brunaktig färgtoning som förklarar dess
+    svenska namn. Som många lövsångare är det svårt att särskilja från närbesläktade
+    arter utan noggrann observation. Det är en försiktig fågel som ofta håller sig
+    gömd i tätt vegetation.
+
+
+    Beståndet av brunsångare anses vara livskraftigt utan någon oroande nedgång. För
+    europeiska fågelskådare är arten primärt intressant som en möjlig sällsynt överraskning
+    under hösten eller våren när felflygande fåglar ibland dyker upp långt från sitt
+    normala utbredningsområde.'
+  en: '# Dusky Warbler
+
+
+    The dusky warbler is a small leaf warbler belonging to the Phylloscopidae family.
+    Its scientific name, Phylloscopus fuscatus, reflects its appearance and behaviour:
+    the genus refers to its leaf-seeking habits, while "fuscatus" describes its dark
+    plumage. This species breeds across the east Palearctic region, making it a bird
+    of eastern Eurasia.
+
+
+    As a leaf warbler, it is a restless forager, actively searching through foliage
+    for insects and other small prey. The bird''s behaviour is typical of its family—constantly
+    moving through vegetation with quick, jerky movements. Its appearance is relatively
+    subdued, with dark tones that give the species its English name.
+
+
+    The dusky warbler is primarily encountered in its breeding range in eastern regions,
+    where it inhabits woodland and scrubland habitats during the breeding season.
+    Like many small warblers, it is more often heard than seen, though specific details
+    about its distinctive calls would help birders identify it in the field. Those
+    interested in observing this species should focus on appropriate habitats within
+    its range during the breeding season.'
+migration:
+  sv: '# Brunsångare i Skandinavien och Nordeuropa
+
+
+    Brunsångare är en asiatisk art som normalt inte förekommer i Skandinavien under
+    regulära förhållanden. Arten häckar i fuktiga områden i Sibirien och östra Asien,
+    och övervintra r i Sydostasien. Under höstflyttningen förekommer dock felflygande
+    individer återkommande i Europa, inklusive Skandinavien och Nordeuropa. Dessa
+    vintergäster är påfallande och registreras med viss regelbundenhet, särskilt under
+    oktober och november då flyttningen är på sin höjdpunkt. Arten är således en ovanlig
+    men återkommande besökare under höstmånaderna snarare än en etablerad migrationsresenär
+    i regionen.'
+  en: '# Dusky Warbler in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Dusky Warbler is a leaf warbler that breeds in the east Palearctic, far from
+    Scandinavia and Northern Europe. While the provided source material contains no
+    information regarding its occurrence, migration patterns, or seasonal presence
+    in Northern Europe, this species is generally considered a vagrant to western
+    regions and is not a regular part of the northern European avifauna.'
+image_refs:
+- role: hero
+  path: Q368505/hero.jpg
+  width: 2400
+  height: 1712
+  license: CC BY 2.0
+  author: blondinrikard
+  source_url: https://commons.wikimedia.org/wiki/File:Dusky warbler, Phylloscopus
+    fuscatus, Brunsångare.jpg
+  commons_filename: Dusky warbler, Phylloscopus fuscatus, Brunsångare.jpg
+- role: secondary
+  path: Q368505/secondary-1.jpg
+  width: 1800
+  height: 1535
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1822512">atheist</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus fuscatus 288806565.jpg
+  commons_filename: Phylloscopus fuscatus 288806565.jpg
+- role: secondary
+  path: Q368505/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Asmarifulanam&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Asmarifulanam (page does not exist)">Asmarifulanam</a>
+  source_url: https://commons.wikimedia.org/wiki/File:গাঢ়বাদামি পাতা-ফুটকি (Dusky
+    Warbler), Phylloscopus fuscatus রাজশাহীর পদ্মা নদীর চর, রাজশাহী, বাংলাদেশ।.jpg
+  commons_filename: গাঢ়বাদামি পাতা-ফুটকি (Dusky Warbler), Phylloscopus fuscatus রাজশাহীর
+    পদ্মা নদীর চর, রাজশাহী, বাংলাদেশ।.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:21:48.032085+00:00'
+sources:
+  wikipedia_sv_revision: '57856531'
+  wikipedia_en_revision: '1337780963'
+  claude_model: claude-haiku-4-5-20251001

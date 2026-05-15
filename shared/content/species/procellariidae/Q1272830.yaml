@@ -1,0 +1,86 @@
+id: Q1272830
+scientific_name: Pterodroma madeira
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Pterodroma
+  ioc_order: Procellariiformes
+names:
+  sv: Madeirapetrell
+  en: Zino’s Petrel
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Madeirapetrell
+
+
+    Madeirapetrell är en liten, hotad havsfågel som tillhör familjen liror. Det är
+    en endemit för Madeira och häckar högt uppe i bergsregioner på ön. Arten är mycket
+    svårstudierad på grund av sitt begränsat utbredningsområde och sin dolda livsstil.
+
+
+    Under häckningssäsongen är madeirapetrell nattaktiv vid sina bo på höga höjder.
+    Utanför denna period lever arten helt pelagiskt till havs, men forskare vet ännu
+    inte exakt var den vistas då eller vilka sökvägsmönster den följer. Denna osäkerhet
+    om dess marina habitat gör arten speciellt intressant för ornitologer.
+
+
+    Madeirapetrell räknas som hotad på grund av sitt små population och begränsade
+    utbredning. Bevarandearrangemang på Madeira är viktiga för artens överlevnad.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten anger endast att arten lever pelagiskt utanför häckningssäsongen,
+    men specifiserar inte var den förekommer eller när den migrerar. Ingen information
+    ges om förekomst i Skandinavien/Nordeuropa, ankomsttider eller övervintringsplatser.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q1272830/hero.jpg
+  width: 2048
+  height: 1281
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pterodroma madeira 92954040.jpg
+  commons_filename: Pterodroma madeira 92954040.jpg
+- role: secondary
+  path: Q1272830/secondary-1.jpg
+  width: 1800
+  height: 1125
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pterodroma madeira 92954030.jpg
+  commons_filename: Pterodroma madeira 92954030.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:23:17.338312+00:00'
+sources:
+  wikipedia_sv_revision: '58006539'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

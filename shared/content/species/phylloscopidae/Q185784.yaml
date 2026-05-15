@@ -1,0 +1,136 @@
+id: Q185784
+scientific_name: Phylloscopus collybita
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Gransångare
+  en: Common Chiffchaff
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gransångare
+
+
+    Gransångare är en mycket liten lövsångare med diskret olivbrun och gulgråaktig
+    färgteckning. Det är en obetydlig fågel både till utseende och storlek, vilket
+    kan göra den svår att identifiera i fält. Näbben är smal och spetsig, väl anpassad
+    för att plocka små insekter från löv och grenar.
+
+
+    Arten är aktiv och rörig, ständigt i rörelse medan det söker föda bland trädkronorna.
+    Gransångaren är en migrativ art som återvänder till häckningsområdena relativt
+    tidigt på våren. Det karakteristiska lätet är ett enkelt "chiff-chaff, chiff-chaff"
+    – ett monotont återkommer tvåstavigt läte som arten är döpt efter.
+
+
+    Gransångaren häckar i öppen skogsmark och lövskogar över större delen av Europa,
+    samt i delar av Asien. Det är mycket vanligt förekommande inom sitt utbredningsområde.
+    Under vinterhalvåret migrar det till södra och västra Europa, södra Asien och
+    norra Afrika för att söka föda på varmare platser.'
+  en: '# Common Chiffchaff
+
+
+    The common chiffchaff is a small leaf warbler found across northern and temperate
+    woodlands throughout Europe and the Palearctic region. It is a relatively common
+    and widespread species, favoring open woodland habitats where it hunts actively
+    among foliage.
+
+
+    This diminutive warbler is best identified by its repetitive and distinctive call,
+    which gives the species its common name—a clear "chiff-chaff" or "chiff-chaff-chiff"
+    pattern that is easy to recognize once learned. The call is diagnostic and often
+    the best way to locate it in the field.
+
+
+    In appearance, the chiffchaff is a small, drab warbler with olive-brown upperparts
+    and pale underparts, making it somewhat challenging to distinguish from similar
+    species without hearing its voice. It is an active forager, constantly moving
+    through low vegetation and picking insects from leaves. The species breeds in
+    open woodlands and is migratory in much of its range, though some populations
+    winter in temperate areas, making it sometimes visible year-round depending on
+    location.'
+migration:
+  sv: '# Gransångare - Säsongsförekomst i Skandinavien och Nordeuropa
+
+
+    Gransångaren är en flyttfågel som återkommer till Skandinavien och Nordeuropa
+    för att häcka under våren och sommaren. Arten ankommer vanligtvis från sina övervintringsområden
+    i södra och västra Europa, södra Asien och norra Afrika under april-maj. Den häckar
+    i öppen skogsmark i större delen av Europa och stannar under häckningsperioden.
+
+
+    I höst påbörjar gransångarna sin återvandring söderut från augusti-september för
+    att övervintra i sina sydligare hemområden. Under vintermånaderna är arten frånvarande
+    från de nordliga delarna av sitt utbredningsområde, men återkommer konsekvent
+    år efter år för att reproducera sig i samma häckningsmiljöer.'
+  en: '# Common Chiffchaff in Scandinavia/Northern Europe
+
+
+    The Common Chiffchaff is a migratory warbler with populations in Scandinavia showing
+    typical spring and autumn movements. Birds arrive in northern Europe from late
+    March to April, establishing territories in woodlands and scrubland. They breed
+    throughout the region during summer months before departing in August and September
+    for their wintering grounds in southern Europe, the Mediterranean, and North Africa.
+    Some individuals may occasionally overwinter in milder western areas, though this
+    remains uncommon. The species is typically absent from Scandinavia during winter
+    months, with breeding birds representing the summer population.'
+image_refs:
+- role: hero
+  path: Q185784/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common chiffchaff (Phylloscopus
+    collybita tristis) 2021.jpg
+  commons_filename: Common chiffchaff (Phylloscopus collybita tristis) 2021.jpg
+- role: secondary
+  path: Q185784/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common chiffchaff (Phylloscopus
+    collybita) 2024.jpg
+  commons_filename: Common chiffchaff (Phylloscopus collybita) 2024.jpg
+- role: secondary
+  path: Q185784/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/40181214@N06">Carlos
+    Eduardo Joos</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common Chiffchaff Phylloscopus
+    collybita (52710044082).jpg
+  commons_filename: Common Chiffchaff Phylloscopus collybita (52710044082).jpg
+review_status: approved
+review_notes: "Hero = Phylloscopus collybita (Common Chiffchaff / Gransångare); allmän i skog och buskmark i hela SE."
+generated_at: '2026-05-15T21:21:20.817469+00:00'
+sources:
+  wikipedia_sv_revision: '58317685'
+  wikipedia_en_revision: '1353214873'
+  claude_model: claude-haiku-4-5-20251001

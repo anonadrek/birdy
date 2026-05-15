@@ -1,0 +1,89 @@
+id: Q27074607
+scientific_name: Ardenna carneipes
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Ardenna
+  ioc_order: Procellariiformes
+names:
+  sv: Ljusfotad lira
+  en: Flesh-footed Shearwater
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Flesh-footed Shearwater
+
+
+    The flesh-footed shearwater is a medium-large seabird with distinctive pale plumage
+    features. Its overall colouring is dark blackish-brown, contrasting with its pale
+    pinkish feet and a notably pale bill tipped with black—features that make it relatively
+    straightforward to identify at sea. It belongs to the shearwater family and shares
+    similarities with the pink-footed shearwater, forming a closely related pair.
+
+
+    This species primarily inhabits the Indo-Pacific region, where it spends much
+    of its life at sea. Research has revealed that populations show marked differences
+    depending on their breeding location: birds from Pacific colonies display notably
+    different characteristics from those breeding in South and Western Australia.
+    These variations reflect strong site fidelity—birds returning consistently to
+    their natal colonies—combined with different feeding strategies employed during
+    the breeding season.
+
+
+    Like other shearwaters, the flesh-footed shearwater is a skilled flier, using
+    its long wings to exploit ocean winds. It feeds on fish and squid taken from the
+    water surface or caught by shallow diving. The species is migratory, with populations
+    dispersing widely across ocean basins outside the breeding season.'
+migration:
+  sv: ''
+  en: '# Flesh-footed Shearwater in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The flesh-footed shearwater is primarily an Indo-Pacific species with no documented
+    regular occurrence in Scandinavian or Northern European waters. This medium-large
+    shearwater inhabits distant ocean regions, and there is insufficient information
+    in available sources to describe any migration patterns, overwintering behavior,
+    or seasonal arrival months relevant to Scandinavia or Northern Europe. Sightings
+    in these northern regions would be exceptional vagrants rather than part of a
+    regular migratory cycle.'
+image_refs:
+- role: hero
+  path: Q27074607/hero.jpg
+  width: 2400
+  height: 1503
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Manojk" title="User:Manojk">Manoj
+    Karingamadathil</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ardenna carneipes from Ponnani
+    coast, Kerala IMG 0311.jpg
+  commons_filename: Ardenna carneipes from Ponnani coast, Kerala IMG 0311.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:23:37.685952+00:00'
+sources:
+  wikipedia_sv_revision: '55641344'
+  wikipedia_en_revision: '1317893765'
+  claude_model: claude-haiku-4-5-20251001

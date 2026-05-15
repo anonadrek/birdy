@@ -1,0 +1,101 @@
+id: Q27074603
+scientific_name: Ardenna grisea
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Ardenna
+  ioc_order: Procellariiformes
+names:
+  sv: Grålira
+  en: Sooty Shearwater
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Sooty Shearwater
+
+
+    The sooty shearwater is a medium-large seabird belonging to the shearwater family.
+    It presents a uniformly dark plumage that appears almost entirely sooty-brown
+    to blackish, with paler underwings that can be visible in flight. This coloration
+    distinguishes it from many relatives and aids identification at sea.
+
+
+    As a pelagic species, it spends much of its life over open ocean waters, where
+    it demonstrates the characteristic flight pattern of shearwaters—swift, dynamic
+    flying close to wave surfaces with minimal wingbeats, appearing to shear over
+    the water. It feeds on fish and squid, often congregating in large numbers at
+    productive feeding grounds.
+
+
+    The species is known in some regions by its Māori name, tītī. It undertakes extensive
+    migrations and has been traditionally harvested as a food source, though it remains
+    widespread across ocean habitats. Its dark appearance and streamlined silhouette
+    make it a distinctive sight for those observing seabirds in offshore environments.'
+migration:
+  sv: ''
+  en: '# Sooty Shearwater Migration in Northern Europe
+
+
+    The Sooty Shearwater is a regular but scarce visitor to Scandinavian and Northern
+    European waters during the boreal summer months. These long-distance migratory
+    seabirds breed in the Southern Hemisphere, primarily around New Zealand and southern
+    Australia, before undertaking one of the longest migrations in the animal kingdom.
+    They arrive in northern waters from June through August, dispersing widely across
+    the North Atlantic and North Sea as they feed on small fish and squid during the
+    northern summer. By autumn, they depart for their return journey south, with most
+    individuals leaving by September. The species does not overwinter in the region.'
+image_refs:
+- role: hero
+  path: Q27074603/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ardenna grisea, North Sea 10
+    km off Northumberland coast 5.jpg
+  commons_filename: Ardenna grisea, North Sea 10 km off Northumberland coast 5.jpg
+- role: secondary
+  path: Q27074603/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ardenna grisea, North Sea 10
+    km off Northumberland coast 1.jpg
+  commons_filename: Ardenna grisea, North Sea 10 km off Northumberland coast 1.jpg
+- role: secondary
+  path: Q27074603/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ardenna grisea, North Sea 10
+    km off Northumberland coast 2.jpg
+  commons_filename: Ardenna grisea, North Sea 10 km off Northumberland coast 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:22:47.661468+00:00'
+sources:
+  wikipedia_sv_revision: '57579182'
+  wikipedia_en_revision: '1326090757'
+  claude_model: claude-haiku-4-5-20251001

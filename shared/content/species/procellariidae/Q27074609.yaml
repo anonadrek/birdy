@@ -1,0 +1,107 @@
+id: Q27074609
+scientific_name: Ardenna gravis
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Ardenna
+  ioc_order: Procellariiformes
+names:
+  sv: Större lira
+  en: Great Shearwater
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Great Shearwater
+
+
+    The Great Shearwater is a substantial member of the shearwater family, characterized
+    by its robust build and distinctive flight pattern. It displays dark upper parts
+    contrasting with a lighter underside, and possesses the characteristic long, narrow
+    wings typical of shearwaters. This adaptation allows for the species'' efficient,
+    dynamic flight style—rapid wingbeats alternating with gliding—which it uses to
+    traverse vast oceanic distances.
+
+
+    During breeding season, it gathers in large colonies on rocky islands in the south
+    Atlantic, where it nests in burrows or rock crevices. Outside this period, the
+    species becomes a truly pelagic traveler, ranging extensively throughout Atlantic
+    waters in search of food. It feeds primarily on fish and squid, often following
+    fishing vessels or gathering where food concentrates.
+
+
+    The Great Shearwater is generally quiet at sea but becomes vocal at breeding colonies,
+    producing various calls during night-time activity. Its breeding biology is typical
+    of shearwaters—it raises a single chick annually, with both parents sharing incubation
+    and chick-rearing duties. The species undertakes remarkable trans-oceanic migrations,
+    making it a remarkable example of seabird adaptation to open ocean life.'
+migration:
+  sv: ''
+  en: '# Great Shearwater (Större lira) in Scandinavia/Northern Europe
+
+
+    The Great Shearwater is a migratory seabird that occurs in Northern European waters
+    primarily during the boreal summer and autumn months. After breeding in the South
+    Atlantic during the Southern Hemisphere''s breeding season, these birds undertake
+    an extensive transequatorial migration, dispersing northward into the North Atlantic
+    during the Northern Hemisphere''s summer and autumn. In Scandinavian and Northern
+    European waters, Great Shearwaters are typically observed from late spring through
+    autumn, with peak occurrence during summer months. They are absent during winter
+    when they return to their Southern Atlantic breeding grounds, making them a regular
+    seasonal visitor rather than a year-round resident.'
+image_refs:
+- role: hero
+  path: Q27074609/hero.jpg
+  width: 2400
+  height: 1487
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great shearwater (Ardenna gravis)
+    2017.jpg
+  commons_filename: Great shearwater (Ardenna gravis) 2017.jpg
+- role: secondary
+  path: Q27074609/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1733946">Ryan
+    F. Mandelbaum</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great Shearwater, Ardenna gravis.jpg
+  commons_filename: Great Shearwater, Ardenna gravis.jpg
+- role: secondary
+  path: Q27074609/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater shearwater (Ardenna
+    gravis) Sagres.jpg
+  commons_filename: Greater shearwater (Ardenna gravis) Sagres.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:23:23.330115+00:00'
+sources:
+  wikipedia_sv_revision: '55901593'
+  wikipedia_en_revision: '1337243622'
+  claude_model: claude-haiku-4-5-20251001

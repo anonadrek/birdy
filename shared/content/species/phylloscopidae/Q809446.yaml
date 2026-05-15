@@ -1,0 +1,84 @@
+id: Q809446
+scientific_name: Phylloscopus schwarzi
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Videsångare
+  en: Radde’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Videsångare
+
+
+    Videsångare är en liten asiatisk lövsångare som häckar främst på tajgan i sydöstra
+    Sibirien. Under vintermånaderna flyttar arten långt söderut till Sydostasien för
+    att söka föda. I Europa är videsångaren en sällsynt men regelbunden besökare som
+    återkommer år efter år.
+
+
+    I Sverige förekommer arten årligen under höstflyttningen, då den syns framför
+    allt i slutet av september och oktober. Som många lövsångare är videsångaren en
+    liten och ganska slät fågel som ofta håller till i buskar och låg vegetation när
+    den registreras här. Den kan då skilja sig från andra liknande lövsångare genom
+    sin karaktäristiska utseende och beteende, även om arten kräver uppmärksam iakttagelse
+    för att säkert identifieras.'
+  en: ''
+migration:
+  sv: '# Videsångare – Förekomst i Nordeuropa
+
+
+    Videsångare är en asiatisk art som förekommer i Nordeuropa främst under höstmigrationen.
+    Arten häckar på tajgan i sydöstra Sibirien och genomför regelbundna flyttningar
+    till Sydostasien för övervintering. I Sverige och övriga Europa är videsångaren
+    en sällsynt men återkommande gäst som dyker upp årligen under sen september och
+    oktober, då ungfåglar och några vuxna individer sprider sig västerut under sitt
+    höstdrag mot sina sydöstasiatiska övervintringsområden.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q809446/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/7064504">Rafael
+    Würtemberger</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus schwarzi in Germany.jpg
+  commons_filename: Phylloscopus schwarzi in Germany.jpg
+- role: secondary
+  path: Q809446/secondary-1.jpg
+  width: 1800
+  height: 1125
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1151287">Zinogre</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus schwarzi in China.jpg
+  commons_filename: Phylloscopus schwarzi in China.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:21:09.408660+00:00'
+sources:
+  wikipedia_sv_revision: '55756043'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

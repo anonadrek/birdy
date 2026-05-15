@@ -1,0 +1,121 @@
+id: Q608804
+scientific_name: Phylloscopus canariensis
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Kanariegransångare
+  en: Canary Islands Chiffchaff
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kanariegransångare
+
+
+    Kanariegransångare är en liten lövsångare som tidigare klassificerades som underart
+    till gransångaren men nu erkänns som egen art. Det är en stannfågel på Kanarieöarna,
+    där populationen är stabil och livskraftig.
+
+
+    Arten är mycket liten och påminner om sin närbesläktade gransångare, men skiljer
+    sig genom subtila skillnader i fjäderdräkt och vokalisering. Som många lövsångare
+    är det en försiktig och aktiv fågel som ofta håller sig i växtligheten. Det födosöker
+    genom att plocka småkryp från löv och kvistar.
+
+
+    Arten är endemit på Kanarieöarna och återfinns året runt på ögruppen, anpassad
+    till de lokala förhållandena.'
+  en: '# Canary Islands Chiffchaff
+
+
+    The Canary Islands chiffchaff is a small leaf warbler endemic to the Canary Islands.
+    Like other members of its family, it is a compact insectivore with subtle plumage
+    that blends into woodland vegetation. Its appearance is relatively plain, typical
+    of chiffchaffs, with olive-brown tones that provide effective camouflage in its
+    native habitat.
+
+
+    This species is an active forager, gleaning insects from foliage and branches
+    with characteristic jerky movements. It frequents scrubland and wooded areas where
+    it searches methodically through vegetation. The bird''s vocalizations are typical
+    of chiffchaffs, though detailed descriptions of its specific calls and song patterns
+    require further observation.
+
+
+    Being endemic to the Canary Islands, the Canary Islands chiffchaff is found nowhere
+    else in the world. It inhabits the islands'' native and semi-natural habitats,
+    making it of particular interest to birdwatchers visiting the region.'
+migration:
+  sv: '**Kanariegransångare – Förekomst i Skandinavien/Nordeuropa**
+
+
+    Kanariegransångaren är en stannfågel på Kanarieöarna och förekommer inte naturligt
+    i Skandinavien eller övriga Nordeuropa. Arten är endemisk för Kanarieöarna, där
+    den är bosatt året runt. Den utgör således ingen migrationsart för nordeuropeiska
+    regioner och saknar därmed relevans för migrationsstudier i detta område.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Canary Islands chiffchaff is endemic to the Canary Islands and does not occur
+    in Scandinavia or Northern Europe. The source text provides no information about
+    its presence, migration patterns, or seasonal occurrence outside its island range.'
+image_refs:
+- role: hero
+  path: Q608804/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/22009023@N03">Juan
+    Emilio</a> from Las Palmas de Gran Canaria, España
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus canariensis -Gran
+    Canaria, Canary Islands, Spain-8.jpg
+  commons_filename: Phylloscopus canariensis -Gran Canaria, Canary Islands, Spain-8.jpg
+- role: secondary
+  path: Q608804/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/22009023@N03">Juan
+    Emilio</a> from Las Palmas de Gran Canaria, España
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus canariensis -Gran
+    Canaria, Canary Islands, Spain-8 (1).jpg
+  commons_filename: Phylloscopus canariensis -Gran Canaria, Canary Islands, Spain-8
+    (1).jpg
+- role: secondary
+  path: Q608804/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/22009023@N03">Juan
+    Emilio</a> from Las Palmas de Gran Canaria, España
+  source_url: https://commons.wikimedia.org/wiki/File:Mosquitero canario, Phylloscopus
+    canariensis. (9130308378).jpg
+  commons_filename: Mosquitero canario, Phylloscopus canariensis. (9130308378).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:23:33.346388+00:00'
+sources:
+  wikipedia_sv_revision: '56851198'
+  wikipedia_en_revision: '1313850239'
+  claude_model: claude-haiku-4-5-20251001

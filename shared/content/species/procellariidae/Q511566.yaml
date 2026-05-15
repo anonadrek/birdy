@@ -1,0 +1,107 @@
+id: Q511566
+scientific_name: Puffinus yelkouan
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Puffinus
+  ioc_order: Procellariiformes
+names:
+  sv: Levantlira
+  en: Mediterranean Shearwater
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Yelkouan Shearwater
+
+
+    The Yelkouan shearwater is a small, dark seabird belonging to the shearwater family.
+    It is primarily dark grey or blackish above with a paler underside, making it
+    identifiable at sea when observed closely. It is a relatively compact shearwater
+    with narrow, pointed wings adapted for efficient flight over ocean waters.
+
+
+    This species is highly pelagic, spending most of its life at sea and returning
+    to land only to breed. It is an agile flier, using dynamic soaring techniques
+    to glide low over wave tops in search of small fish and squid. The bird is typically
+    seen in small flocks, particularly in coastal and offshore waters of its range.
+    Like other shearwaters, it is nocturnal at breeding colonies, coming ashore after
+    dark to avoid predators.
+
+
+    The Yelkouan shearwater was historically considered part of a larger polytypic
+    species but is now recognized as a distinct monotypic species. It breeds in colonies
+    on rocky islands and coastal cliffs, where it nests in burrows or crevices. The
+    species favors temperate to subtropical oceanic environments, typically encountered
+    in deeper waters beyond the continental shelf during the breeding season and in
+    more coastal regions outside the breeding period.'
+migration:
+  sv: ''
+  en: '# Yelkouan Shearwater in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic information about the classification
+    of Mediterranean shearwater species and does not include any data regarding the
+    occurrence, migration patterns, or seasonal presence of the Yelkouan shearwater
+    in Scandinavia or Northern Europe.'
+image_refs:
+- role: hero
+  path: Q511566/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mediterranean shearwater (Puffinus
+    yelkouan mauretanicus) 2020 2.jpg
+  commons_filename: Mediterranean shearwater (Puffinus yelkouan mauretanicus) 2020
+    2.jpg
+- role: secondary
+  path: Q511566/secondary-1.jpg
+  width: 1340
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mediterreanean shearwater (Puffinus
+    yelkouan) 2020.jpg
+  commons_filename: Mediterreanean shearwater (Puffinus yelkouan) 2020.jpg
+- role: secondary
+  path: Q511566/secondary-2.jpg
+  width: 1800
+  height: 1184
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mediterranean shearwater (Puffinus
+    yelkouan mauretanicus) 2020.jpg
+  commons_filename: Mediterranean shearwater (Puffinus yelkouan mauretanicus) 2020.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:21:17.469993+00:00'
+sources:
+  wikipedia_sv_revision: '57606019'
+  wikipedia_en_revision: '879193886'
+  claude_model: claude-haiku-4-5-20251001

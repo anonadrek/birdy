@@ -1,0 +1,65 @@
+id: Q805062
+scientific_name: Phylloscopus orientalis
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Balkansångare
+  en: Eastern Bonelli’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Balkansångare
+
+
+    Balkansångare är en liten lövsångare som häckar på Balkan och i västra Asien.
+    Fågeln är mycket sällsynt norr om sitt naturliga utbredningsområde och är endast
+    dokumenterad ett fåtal gånger i norden. Vintertid förlägger den sig till östra
+    Sahel i Afrika, söder om Sahara.
+
+
+    Arten tillhör en grupp små, grågröna lövsångare som kan vara svåra att särskilja
+    i fält. Det är en aktiv fågel som söker föda bland lövverket, ofta i tätare vegetation
+    vid bergssluttningar. Arten är livskraftig enligt IUCN. Fram till 1990-talet betraktades
+    den vanligtvis som en underart till bergsångare innan den erkändes som egen art.'
+  en: ''
+migration:
+  sv: '# Balkansångare (Phylloscopus orientalis) i Norden
+
+
+    Balkansångare är en mycket sällsynt gäst i Skandinavien och Norra Europa. Arten
+    häckar på Balkan och västra Asien, medan den under vinterhalvåret migrerar långt
+    söderut till Sahelzonen precis söder om Sahara i Afrika. Detta är en långdistansmigrant
+    som normalt inte förekommer naturligt i Norden. Endast ett säkert fynd har noterats
+    i Sverige, vilket visar på artens extrema sällsynthet i regionen. Observationer
+    norr om artens normala utbredningsområde på Balkan är mycket ovanliga.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:22:33.238401+00:00'
+sources:
+  wikipedia_sv_revision: '56586223'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

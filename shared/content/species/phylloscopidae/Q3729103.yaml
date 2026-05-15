@@ -1,0 +1,122 @@
+id: Q3729103
+scientific_name: Phylloscopus sindianus
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Kashmirgransångare
+  en: Mountain Chiffchaff
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Berggransångare
+
+
+    Berggransångare är en liten lövsångare som förekommer i bergstrakter på två skilda
+    platser i Asien – i Kaukasusregionen och omkring Kashmir. Det är en påfallande
+    liten fågel anpassad till höga höjder, där den trivs i de bergiga miljöerna.
+
+
+    Som många andra lövsångare är berggransångaren en diskret fågel med svåra identifikanskännetecken.
+    Det är en välutvecklad migrant som söker upp sina bergiga häckningsplatser under
+    värmen för att sedan försvinna under den kallare årstiden. Arten är närmast okänd
+    för många fågelskådare utanför sitt begränsade utbredningsområde, men för dem
+    som lyckas observera arten i sina naturliga bergsmiljöer erbjuder den en fascinerande
+    inblick i högläntas fågelvärld.'
+  en: '# Mountain Chiffchaff
+
+
+    The mountain chiffchaff is a small leaf warbler inhabiting high-altitude regions
+    in the Caucasus and Tian Shan mountains. It is an altitudinal migrant, descending
+    to lower elevations during winter months. The nominate subspecies resembles the
+    Siberian chiffchaff but can be distinguished by its finer, darker bill, browner
+    upperparts, and buff-coloured flanks. The darker subspecies lorenzii appears warmer
+    and more richly coloured than the nominate race.
+
+
+    Vocally, the mountain chiffchaff''s song is nearly identical to the common chiffchaff,
+    making field identification by song challenging. However, its call is distinctly
+    different—a weak "psew" that differs noticeably from related species. The two
+    subspecies show subtle vocal differences from each other, suggesting some degree
+    of reproductive isolation.
+
+
+    Despite overlapping with the common chiffchaff in small areas of the Western Caucasus,
+    the mountain chiffchaff maintains reproductive isolation, with interbreeding occurring
+    rarely if at all. Genetic analysis confirms it is a distinct species, differing
+    from similar taxa in vocalisations, external morphology, and DNA sequences.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text only describes the mountain chiffchaff as "an altitudinal
+    migrant, moving to lower levels in winter," but contains no specific information
+    about its occurrence in Scandinavia or Northern Europe, migration timing, arrival
+    months, or overwintering patterns in these regions. The species is documented
+    from the Caucasus and Tian Shan mountain ranges, which fall outside the Scandinavian/Northern
+    European geographic scope requested.'
+image_refs:
+- role: hero
+  path: Q3729103/hero.jpg
+  width: 1642
+  height: 2400
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Gustav_M%C3%BCtzel" class="extiw"
+    title="w:en:Gustav Mützel"><span title="German artist (1839-1893)">Gustav Mützel</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus sindianus 1889.jpg
+  commons_filename: Phylloscopus sindianus 1889.jpg
+- role: secondary
+  path: Q3729103/secondary-1.jpg
+  width: 1800
+  height: 1236
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus sindianus, Giresun
+    2018-08-16 1.jpg
+  commons_filename: Phylloscopus sindianus, Giresun 2018-08-16 1.jpg
+- role: secondary
+  path: Q3729103/secondary-2.jpg
+  width: 1800
+  height: 1182
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus sindianus, Giresun
+    2018-08-16 2.jpg
+  commons_filename: Phylloscopus sindianus, Giresun 2018-08-16 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:22:59.995256+00:00'
+sources:
+  wikipedia_sv_revision: '57613904'
+  wikipedia_en_revision: '1314998323'
+  claude_model: claude-haiku-4-5-20251001

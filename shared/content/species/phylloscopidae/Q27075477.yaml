@@ -1,0 +1,137 @@
+id: Q27075477
+scientific_name: Phylloscopus sibilatrix
+taxonomy:
+  family: Phylloscopidae
+  family_sv: Lövsångare
+  genus: Phylloscopus
+  ioc_order: Passeriformes
+names:
+  sv: Grönsångare
+  en: Wood Warbler
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Grönsångare
+
+
+    Grönsångaren är en vacker lövsångare som skiljer sig från många av sina släktingar
+    genom sin relativt ljusa färgteckning. Arten har en mossgrön ovansida, gult bröst
+    och ögonbrynsstreck samt en vit buk. Denna färgkombination gör den relativt lätt
+    att identifiera jämfört med andra lövsångare.
+
+
+    Arten är känd för sin mycket karakteristiska och iögonfallande sång, som ofta
+    beskrivs som ljudet av ett mynt som snurrar på en marmorskiva. Det är en skarp,
+    vibrerande sång som är relativt lätt att lära sig känna igen när man väl hört
+    den.
+
+
+    Grönsångaren tillhör familjen lövsångare och är en intressant art för fågelintresserade
+    att iaktta och lyssna efter under sina naturobservationer.'
+  en: '# Wood Warbler
+
+
+    The wood warbler is a small leaf warbler with greenish-yellow upperparts and a
+    distinctive pale yellow supercilium (eyebrow stripe) contrasting with darker ear-coverts.
+    Its underparts are predominantly white with yellow on the flanks and breast, creating
+    a clean, bright appearance typical of summer warblers in breeding plumage.
+
+
+    This species is highly active and energetic, typically found in mature deciduous
+    and mixed woodlands where it forages among foliage for small insects and spiders.
+    It often feeds higher in the canopy than related warblers, moving restlessly through
+    branches with acrobatic movements. The wood warbler''s song is distinctive and
+    energetic—a rapid, accelerating trill that often builds to a climax, sometimes
+    preceded by slower, clearer notes.
+
+
+    The wood warbler breeds across northern and temperate Europe and into extreme
+    western Asia, arriving in spring after wintering entirely in tropical Africa.
+    It prefers open woodlands with good canopy coverage and sparse understorey. During
+    migration periods, it may appear in parks, gardens, and scrubland habitats. It
+    is a common and widespread breeder throughout most of its range, though populations
+    have declined in some regions in recent decades. The species is typically seen
+    from late spring through early autumn in breeding areas.'
+migration:
+  sv: '# Grönsångare – Förekomst i Skandinavien/Nordeuropa
+
+
+    Grönsångare är en långdistansmigrant som anländer till Skandinavien och Nordeuropa
+    under senare delen av april och maj efter sin övervintering i Afrika. Arten häckar
+    sedan under sommarmånaderna i lövskogar och blandskog, särskilt på södra och centrala
+    delar av regionen. Under senhösten, från augusti till september, påbörjar fåglarna
+    sin återvänd söderut för att tillbringa vintern i sitt africanska vinterkvarter.
+    Arten förekommer således inte i området under vintermånaderna.
+
+
+    **Notering:** Källtexten innehåller endast information om artens utseende och
+    sång, men ingen detaljerad migrationsdata. Informationen ovan baseras på allmän
+    kunskap om grönsångarens fenologi, men är inte explicit bekräftad i den angivna
+    källan.'
+  en: '# Wood Warbler Migration in Northern Europe
+
+
+    The Wood Warbler is a summer visitor to Scandinavia and northern Europe, arriving
+    in late April and May to breed in deciduous and mixed woodlands. The species is
+    highly migratory, with the entire Scandinavian population departing in August
+    and September to winter in tropical Africa. These warblers undertake long-distance
+    migrations between their northern breeding grounds and African wintering quarters,
+    making them absent from the region during winter months. Return migration begins
+    in spring as temperatures rise and insect food sources become available.'
+image_refs:
+- role: hero
+  path: Q27075477/hero.jpg
+  width: 2400
+  height: 1568
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/44093058@N06">Blondinrikard
+    Fröberg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Wood warbler, Phylloscopus sibilatrix,
+    Grönsångare (49853695263).jpg
+  commons_filename: Wood warbler, Phylloscopus sibilatrix, Grönsångare (49853695263).jpg
+- role: secondary
+  path: Q27075477/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus sibilatrix, Lalinačka
+    slatina, Srbija (14).jpg
+  commons_filename: Phylloscopus sibilatrix, Lalinačka slatina, Srbija (14).jpg
+- role: secondary
+  path: Q27075477/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nikola_Veljkovi%C4%87&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Nikola Veljković (page does not exist)">Nikola Veljković</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Šumski zviždak (Phylloscopus
+    sibilatrix) Wood Warbler.jpg
+  commons_filename: Šumski zviždak (Phylloscopus sibilatrix) Wood Warbler.jpg
+review_status: approved
+review_notes: "Hero = Phylloscopus sibilatrix (Wood Warbler / Grönsångare); allmän i bokskog och lövskog i södra och mellersta SE."
+generated_at: '2026-05-15T21:21:56.743307+00:00'
+sources:
+  wikipedia_sv_revision: '58967077'
+  wikipedia_en_revision: '1315227310'
+  claude_model: claude-haiku-4-5-20251001

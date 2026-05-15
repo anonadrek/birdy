@@ -1,0 +1,125 @@
+id: Q3410599
+scientific_name: Calonectris borealis
+taxonomy:
+  family: Procellariidae
+  family_sv: Stormfåglar
+  genus: Calonectris
+  ioc_order: Procellariiformes
+names:
+  sv: Gulnäbbad lira
+  en: Cory’s Shearwater
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gulnäbbad lira
+
+
+    Gulnäbbad lira är en medelstor havsfågel i stormen och lirornas släkte. Den är
+    mycket lik diomedesliran och större kapverdeliran – arterna bildade länge en gemensam
+    art – och fältsäkring mellan dem utanför häckningstid kan vara extremt svår eller
+    omöjlig. Karakteristiska drag inkluderar den gula näbben, vilken ger arten sitt
+    namn.
+
+
+    Arten förekommer huvudsakligen i Atlanten och är en typisk pelagisk art som tillbringar
+    mycket tid över öppet hav. Den är en långdistansflygare som använder sitt starka
+    vingslag för att kryssa över vågorna. Gulnäbbad lira häckar på kolonier men observeras
+    ofta ensam eller i mindre grupper när den inte är vid häckningslokalerna.
+
+
+    För den intresserade fågelvännern gäller att detta är en art som kräver erfarenhet
+    att identifiera säkert, särskilt då den är lätt att förväxla med närbesläktade
+    arter under stora delar av året.'
+  en: '# Cory''s Shearwater
+
+
+    Cory''s shearwater is a large seabird belonging to the shearwater family. It displays
+    the characteristic streamlined body and long, narrow wings typical of pelagic
+    species, allowing it to glide efficiently over open ocean. The bird''s plumage
+    is predominantly dark above with paler underparts, and it possesses a distinctive
+    pale bill.
+
+
+    This species is highly migratory and spends much of the year ranging across Atlantic
+    waters outside the breeding season. It breeds colonially during the breeding season,
+    returning to traditional breeding islands to nest. Like other shearwaters, it
+    is well-adapted to life at sea, spending most of its time over deep water where
+    it feeds.
+
+
+    Cory''s shearwater was long considered identical to Scopoli''s shearwater but
+    is now recognized as a distinct species. The bird is primarily nocturnal in breeding
+    colonies, coming ashore under cover of darkness. Its presence at sea is often
+    indicated by its characteristic flying style—stiff-winged gliding interspersed
+    with bursts of rapid wingbeats as it skims low over wave surfaces.'
+migration:
+  sv: '# Gulnäbbad lira - Förekomst i Nordeuropa
+
+
+    Migrationsdata saknas för denna art.'
+  en: '# Cory''s Shearwater in Northern Europe
+
+
+    Cory''s shearwater is a rare but regular visitor to northern European waters,
+    particularly in autumn months. This Atlantic seabird occasionally ranges north
+    from its breeding grounds in the Azores, with records increasing in Scandinavian
+    waters during late summer and early autumn, typically from August through October.
+    The species is primarily observed off coastal areas and over deeper waters, appearing
+    most frequently in Norwegian and Swedish waters during post-breeding dispersal.
+    However, it remains an uncommon sighting throughout the year in Scandinavia, with
+    no established overwintering population in the region.'
+image_refs:
+- role: hero
+  path: Q3410599/hero.jpg
+  width: 2400
+  height: 1607
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Luissilveira" title="User:Luissilveira">José
+    Luís Ávila Silveira/Pedro Noronha e Costa</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cagarro - Calonectris borealis,
+    Terceira, Açores.jpg
+  commons_filename: Cagarro - Calonectris borealis, Terceira, Açores.jpg
+- role: secondary
+  path: Q3410599/secondary-1.jpg
+  width: 1800
+  height: 1197
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cory's shearwater (Calonectris
+    borealis).jpg
+  commons_filename: Cory's shearwater (Calonectris borealis).jpg
+- role: secondary
+  path: Q3410599/secondary-2.jpg
+  width: 1800
+  height: 1269
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/149526">steve
+    b</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Calonectris borealis 508263080.jpg
+  commons_filename: Calonectris borealis 508263080.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:24:53.755281+00:00'
+sources:
+  wikipedia_sv_revision: '57597621'
+  wikipedia_en_revision: '1314507402'
+  claude_model: claude-haiku-4-5-20251001
