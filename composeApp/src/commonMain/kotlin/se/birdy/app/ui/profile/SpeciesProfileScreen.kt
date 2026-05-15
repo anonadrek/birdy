@@ -56,7 +56,6 @@ import birdy_bird_scanner.composeapp.generated.resources.profile_label_descripti
 import birdy_bird_scanner.composeapp.generated.resources.profile_label_migration
 import birdy_bird_scanner.composeapp.generated.resources.profile_label_photos
 import birdy_bird_scanner.composeapp.generated.resources.profile_plate_caption
-import birdy_bird_scanner.composeapp.generated.resources.species_photo_label
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
@@ -144,7 +143,7 @@ private fun ProfileContent(
                     ) {
                         AsyncImage(
                             model = Res.getUri("files/images/${heroImage.path}"),
-                            contentDescription = stringResource(Res.string.species_photo_label, species.name),
+                            contentDescription = null,
                             modifier = Modifier.fillMaxSize(),
                             contentScale = ContentScale.Crop,
                         )
