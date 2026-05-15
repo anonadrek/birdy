@@ -1,0 +1,120 @@
+id: Q775649
+scientific_name: Amandava subflava
+taxonomy:
+  family: Estrildidae
+  family_sv: Astrilder
+  genus: Amandava
+  ioc_order: Passeriformes
+names:
+  sv: Guldbröstad tigerfink
+  en: Orange-breasted Waxbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Guldbröstad tigerfink
+
+
+    Guldbröstad tigerfink är en liten fågel i familjen astrilder. Det är en африkansk
+    art som förekommer söder om Sahara och även i västra Jemen, där arten troligen
+    introducerats av människan. IUCN klassificerar arten som livskraftig.
+
+
+    Arten är anpassad till sitt område och verkar fungera väl i sitt naturliga utbreitningsområde.
+    Det är en representant för familjen astrilder, som omfattar små, ofta färgglada
+    finkar med karakteristiska egenskaper och ofta komplext färgmönster.'
+  en: '# Orange-breasted Waxbill
+
+
+    The orange-breasted waxbill is a tiny, sparrow-like finch with distinctive features
+    that make it recognizable in the field. It displays dark olive-green plumage overall,
+    with a striking orange breast and bright red bill. The reddish iris adds to its
+    characteristic appearance. Males are noticeably more colourful than females, sporting
+    a red rump, scarlet eyebrow stripe, and dark barring on whitish flanks. Females
+    are duller and smaller, lacking the male''s prominent eyebrow marking.
+
+
+    This species is also known as the zebra waxbill, reflecting its small size and
+    refined appearance typical of waxbills. It inhabits open grasslands and savanna
+    areas where it forages for seeds. The bird is generally inconspicuous despite
+    its colourful plumage, often seen in small flocks moving through vegetation. Its
+    behaviour and preference for specific habitats make it a rewarding species for
+    patient birdwatchers to locate and observe, particularly in appropriate seasonal
+    conditions.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller ingen information om denna arts förekomst
+    i Skandinavien/Nordeuropa, migration eller säsongsförekomst. Guldbröstad tigerfink
+    är en afrikanskart som inte naturligt förekommer i Norden, varför migrationsdata
+    för denna region inte är relevant.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only morphological descriptions of the Orange-breasted
+    Waxbill (plumage, coloration, sexual dimorphism) and does not include any information
+    about migration patterns, seasonal occurrence, or distribution in Scandinavia
+    or Northern Europe. To provide accurate information about this species'' occurrence
+    in northern regions throughout the year, additional sources with relevant biogeographical
+    and migratory data would be required.'
+image_refs:
+- role: hero
+  path: Q775649/hero.jpg
+  width: 1835
+  height: 2400
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Ann_Lee_(illustrator)" class="extiw"
+    title="w:en:Ann Lee (illustrator)"><span title="British scientific illustrator,
+    botanical artist and painter (1753-1790)">Ann Lee</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Amandava subflava (Vieillot)
+    zebra waxbill - Ann Lee - 107-1973-9.jpg
+  commons_filename: Amandava subflava (Vieillot) zebra waxbill - Ann Lee - 107-1973-9.jpg
+- role: secondary
+  path: Q775649/secondary-1.jpg
+  width: 1800
+  height: 1248
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Orange breasted waxbill, Amandava
+    subflava, at Eendracht Road, Suikerbosrand Nature Reserve, Gauteng, South Africa
+    (32440671602).jpg
+  commons_filename: Orange breasted waxbill, Amandava subflava, at Eendracht Road,
+    Suikerbosrand Nature Reserve, Gauteng, South Africa (32440671602).jpg
+- role: secondary
+  path: Q775649/secondary-2.jpg
+  width: 1800
+  height: 1228
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Orange breasted waxbill, Amandava
+    subflava, at Suikerbosrand Nature Reserve, Gauteng, South Africa (25611059680).jpg
+  commons_filename: Orange breasted waxbill, Amandava subflava, at Suikerbosrand Nature
+    Reserve, Gauteng, South Africa (25611059680).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:46:57.044775+00:00'
+sources:
+  wikipedia_sv_revision: '55606466'
+  wikipedia_en_revision: '1314895056'
+  claude_model: claude-haiku-4-5-20251001

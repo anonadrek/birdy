@@ -1,0 +1,114 @@
+id: Q1084995
+scientific_name: Estrilda melpoda
+taxonomy:
+  family: Estrildidae
+  family_sv: Astrilder
+  genus: Estrilda
+  ioc_order: Passeriformes
+names:
+  sv: Orangekindad astrild
+  en: Orange-cheeked Waxbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '**Orangekindad astrild**
+
+
+    Orangekindad astrild är en liten fågel i familjen astrilder. Den förekommer naturligt
+    i Afrika söder om Sahara, men har genom mänsklig påverkan spridits till flera
+    andra länder världen över.
+
+
+    Arten är karakteriserad av sitt namn – den har distintiva orangefärgade kindpartier
+    som utgör ett slående kännetecken. Fågeln är liten och zierlig, vilket är typiskt
+    för astrilder.
+
+
+    Orangekindad astrild förekommer både i sitt naturliga utbredningsområde i Afrika
+    och i introduerade populationer på andra kontinenter.'
+  en: '# Orange-cheeked Waxbill
+
+
+    The orange-cheeked waxbill is a small estrildid finch widely distributed across
+    western and central Africa, inhabiting a vast range spanning approximately 3.6
+    million square kilometers. It is a common species throughout its natural range.
+
+
+    This diminutive finch is characterized by its distinctive orange cheeks, which
+    give it its common name. The plumage features subtle coloration typical of waxbills,
+    with a combination of warm tones that help identify it in the field. Its small
+    size and delicate build are typical of the genus.
+
+
+    The species frequents grasslands, savannas, and cultivated areas where seeds are
+    abundant. It typically occurs in pairs or small flocks, often seen foraging close
+    to the ground. Like other waxbills, it feeds primarily on small grass seeds and
+    other minute food items. The species is generally tolerant of human-modified landscapes
+    and can be encountered in agricultural zones alongside its natural habitat preferences.
+    Its abundance and adaptability make it a relatively easy species to observe throughout
+    its African range.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The Orange-cheeked Waxbill is native to western and central Africa and does not
+    occur naturally in Scandinavia or Northern Europe. This small estrildid finch
+    is a resident species throughout its African range with no migratory populations
+    documented. Therefore, there is no seasonal occurrence pattern to describe for
+    this species in Northern European regions.'
+image_refs:
+- role: hero
+  path: Q1084995/hero.jpg
+  width: 1827
+  height: 2240
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:John_Gerrard_Keulemans" class="extiw"
+    title="w:en:John Gerrard Keulemans"><span title="Dutch bird artist (1842-1912)">John
+    Gerrard Keulemans</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Estrilda melpoda 1876.jpg
+  commons_filename: Estrilda melpoda 1876.jpg
+- role: secondary
+  path: Q1084995/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/210826">James
+    M. Maley</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Estrilda melpoda 128071692.jpg
+  commons_filename: Estrilda melpoda 128071692.jpg
+- role: secondary
+  path: Q1084995/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/210826">James
+    M. Maley</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Estrilda melpoda 129793669.jpg
+  commons_filename: Estrilda melpoda 129793669.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:46:13.648608+00:00'
+sources:
+  wikipedia_sv_revision: '55678088'
+  wikipedia_en_revision: '1327802418'
+  claude_model: claude-haiku-4-5-20251001

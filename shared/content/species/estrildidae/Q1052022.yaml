@@ -1,0 +1,76 @@
+id: Q1052022
+scientific_name: Estrilda rufibarba
+taxonomy:
+  family: Estrildidae
+  family_sv: Astrilder
+  genus: Estrilda
+  ioc_order: Passeriformes
+names:
+  sv: Jemenastrild
+  en: Arabian Waxbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Arabian Waxbill
+
+
+    The Arabian waxbill is a small estrildid finch endemic to arid regions of the
+    Arabian Peninsula. This highly sociable species inhabits the sparse, dry landscapes
+    of Yemen and southwestern Saudi Arabia, where it is adapted to life in semi-desert
+    environments. The bird''s range covers an estimated 20,000–50,000 km².
+
+
+    Like other waxbills, it is a diminutive finch with delicate features characteristic
+    of the family. Its plumage displays subtle coloring typical of desert-adapted
+    species, allowing it to blend into its arid surroundings. The Arabian waxbill
+    is notably gregarious, typically found in small flocks rather than as solitary
+    individuals.
+
+
+    Little detailed information is widely available about its specific vocalizations,
+    breeding habits, and feeding preferences in the primary literature. The species
+    remains relatively poorly studied compared to other African waxbills, and much
+    of its natural history awaits further ornithological investigation. Its presence
+    is largely restricted to its native range on the Arabian Peninsula, where it occupies
+    a specialized ecological niche within desert habitats.'
+migration:
+  sv: ''
+  en: '# Arabian Waxbill – Northern European Distribution
+
+
+    Migration data unavailable for this species.
+
+
+    The Arabian Waxbill is endemic to the Arabian Peninsula, with its range restricted
+    to Yemen and south-western Saudi Arabia. This species does not naturally occur
+    in Scandinavia or Northern Europe and is not recorded as a migrant or vagrant
+    to these regions. It is a resident species within its native range in the Middle
+    East, with no documented seasonal movements to Northern European territories.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:46:09.230433+00:00'
+sources:
+  wikipedia_sv_revision: '56466657'
+  wikipedia_en_revision: '1314317454'
+  claude_model: claude-haiku-4-5-20251001

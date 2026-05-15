@@ -1,0 +1,97 @@
+id: Q560326
+scientific_name: Lagonosticta senegala
+taxonomy:
+  family: Estrildidae
+  family_sv: Astrilder
+  genus: Lagonosticta
+  ioc_order: Passeriformes
+names:
+  sv: Rödnäbbad amarant
+  en: Red-billed Firefinch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red-billed Firefinch
+
+
+    The red-billed firefinch is a small seed-eating bird belonging to the estrildid
+    family. It is a resident breeder across most of Sub-Saharan Africa, occupying
+    an extensive range spanning approximately 10 million square kilometres. The species
+    is primarily sedentary, remaining in its territories year-round.
+
+
+    Historically, attempts were made to introduce the red-billed firefinch to other
+    regions. An introduction to Egypt did not establish permanently, with that population
+    now extinct. However, a separate introduction to southern Algeria has proven more
+    successful, with the population there currently expanding northward into new territories.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Red-billed Firefinch is a resident bird throughout its Sub-Saharan African
+    range, meaning it does not undertake regular migrations. As a small estrildid
+    finch, it remains in its breeding territories year-round rather than making seasonal
+    movements between regions. The species does not occur naturally in Scandinavia
+    or Northern Europe, and therefore there is no relevant information regarding its
+    occurrence in these regions throughout the year.'
+image_refs:
+- role: hero
+  path: Q560326/hero.jpg
+  width: 2400
+  height: 1602
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Red-billed firefinch, Lagonosticta
+    senegala, female, at Pilanesberg National Park, Northwest Province, South Africa.
+    - 49340507958.jpg
+  commons_filename: Red-billed firefinch, Lagonosticta senegala, female, at Pilanesberg
+    National Park, Northwest Province, South Africa. - 49340507958.jpg
+- role: secondary
+  path: Q560326/secondary-1.jpg
+  width: 1800
+  height: 1174
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Red-billed firefinch, Lagonosticta
+    senegala, at Mapungubwe National Park, Limpopo, South Africa -- male (18426107891).jpg
+  commons_filename: Red-billed firefinch, Lagonosticta senegala, at Mapungubwe National
+    Park, Limpopo, South Africa -- male (18426107891).jpg
+- role: secondary
+  path: Q560326/secondary-2.jpg
+  width: 1202
+  height: 1800
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Red-billed firefinch, Lagonosticta
+    senegala, juvenile, at Pilanesberg National Park, Northwest Province, South Africa.jpg
+  commons_filename: Red-billed firefinch, Lagonosticta senegala, juvenile, at Pilanesberg
+    National Park, Northwest Province, South Africa.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:45:55.782903+00:00'
+sources:
+  wikipedia_sv_revision: '55717978'
+  wikipedia_en_revision: '1314943645'
+  claude_model: claude-haiku-4-5-20251001

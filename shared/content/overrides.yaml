@@ -293,3 +293,22 @@ species:
   # Emberizidae batch (2026-05-15): inga Commons-foton över MIN_DIMENSION=2048.
   Q335535:
     allow_missing_images: true  # Gyllensparv (Yellow-breasted Bunting) — CR, sparse Commons hi-res
+  # Estrildidae batch (2026-05-15): svwiki saknas/kort för afrikanska/asiatiska astrilder.
+  Q1084995:
+    description_accept_missing: [sv]  # Orangekindad astrild (Orange-cheeked Waxbill) — sv 75w under 80-tröskel
+  Q27075729:
+    description_accept_missing: [sv]  # Indisk silvernäbb (Indian Silverbill)
+  Q478632:
+    description_accept_missing: [sv]  # Trefärgad munia (Tricolored Munia) — sv 75w under tröskel
+  Q560326:
+    description_accept_missing: [sv]  # Rödnäbbad amarant (Red-billed Firefinch) — afrikansk
+  Q73741:
+    description_accept_missing: [sv]  # Röd tigerfink (Red Avadavat) — asiatisk
+  Q775649:
+    description_accept_missing: [sv]  # Guldbröstad tigerfink (Orange-breasted Waxbill) — afrikansk, sv 72w
+  Q994413:
+    description_accept_missing: [sv]  # Afrikansk silvernäbb (African Silverbill)
+  # Estrildidae batch (2026-05-15): båda språk saknar + ingen Commons hi-res.
+  Q1052022:
+    description_accept_missing: [sv]  # Jemenastrild (Arabian Waxbill) — endemic Jemen
+    allow_missing_images: true  # Commons saknar foto över MIN_DIMENSION=2048

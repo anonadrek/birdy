@@ -1,0 +1,93 @@
+id: Q994413
+scientific_name: Euodice cantans
+taxonomy:
+  family: Estrildidae
+  family_sv: Astrilder
+  genus: Euodice
+  ioc_order: Passeriformes
+names:
+  sv: Afrikansk silvernäbb
+  en: African Silverbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# African Silverbill
+
+
+    The African silverbill is a small finch belonging to the estrildid family. It
+    was formerly classified as the same species as the Asian Indian silverbill but
+    is now recognized as a distinct African species. This bird is characterized by
+    its small size and distinctive silvery bill, which gives it its common name.
+
+
+    The African silverbill is a common resident breeding bird found throughout dry
+    savanna habitats south of the Sahara Desert. It favors arid and semi-arid regions
+    where it feeds and nests. Beyond its native African range, this species has been
+    introduced to various other parts of the world, including Portugal, Qatar, and
+    the United States, where some populations have become established.
+
+
+    As a typical estrildid finch, it is a gregarious bird often found in small flocks.
+    Its adaptability to dry conditions and success in introduced ranges make it a
+    notable species in aviculture and ornithology.'
+migration:
+  sv: ''
+  en: '# African Silverbill - Occurrence in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The African Silverbill is a resident bird of dry savanna habitats south of the
+    Sahara Desert and does not naturally occur in Scandinavia or Northern Europe.
+    While the species has been introduced to some countries including Portugal, there
+    is no documented evidence of established populations or regular occurrence in
+    Scandinavian or broader Northern European regions. Any observations in these areas
+    would represent escaped captive birds rather than wild migratory populations.'
+image_refs:
+- role: hero
+  path: Q994413/hero.jpg
+  width: 2195
+  height: 1459
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Euodice cantans.jpg
+  commons_filename: Euodice cantans.jpg
+- role: secondary
+  path: Q994413/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: Johann Alexi
+  source_url: https://commons.wikimedia.org/wiki/File:Euodice cantans - Afrikanischer
+    Silberschnabel - Mutation Braun - Deutscher Kanarien- und Vogelzüchterbund (DKB)
+    - Vogelbund - Johann Alexi.jpg
+  commons_filename: Euodice cantans - Afrikanischer Silberschnabel - Mutation Braun
+    - Deutscher Kanarien- und Vogelzüchterbund (DKB) - Vogelbund - Johann Alexi.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:45:14.643396+00:00'
+sources:
+  wikipedia_sv_revision: '55485822'
+  wikipedia_en_revision: '1317909099'
+  claude_model: claude-haiku-4-5-20251001

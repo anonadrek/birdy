@@ -1,0 +1,131 @@
+id: Q583220
+scientific_name: Estrilda astrild
+taxonomy:
+  family: Estrildidae
+  family_sv: Astrilder
+  genus: Estrilda
+  ioc_order: Passeriformes
+names:
+  sv: Helenaastrild
+  en: Common Waxbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Helenaastrild
+
+
+    Helenaastrild är en liten, graciös tätting från familjen astrilder med ursprung
+    i Afrika. Arten har förvildats och etablerat sig i olika delar av världen där
+    den blomstrar väl. IUCN kategoriserar den som livskraftig, vilket talar för dess
+    anpassningsförmåga och framgång.
+
+
+    Denna lilla fågel är känd för sitt karakteristiska utseende med sin röda ansiktsmask
+    och ögonring, vilket gör den lätt igenkännlig. Kroppen är övervägande grå med
+    rostfärgade partier, och vingarna har en fin struktur. Det är en social fågel
+    som ofta ses i mindre flockar, särskilt under rastperioder då den håller sig nära
+    vattenkällor.
+
+
+    Helenaastrild föredrar öppna och halvöppna habitat med låg vegetation där den
+    kan söka frön, vilket är dess huvudsakliga föda. Den är en skicklig flygare trots
+    sin små storlek och kan observeras när den fladdrar snabbt mellan växtsamlingar.
+    Arten är relativt anspråkslös och adaptiv, vilket förklarar dess framgång vid
+    introduktioner utanför sitt ursprungliga område.'
+  en: '# Common Waxbill
+
+
+    The common waxbill is a small estrildid finch native to sub-Saharan Africa. Its
+    popularity in the aviculture trade has led to introductions across the globe,
+    and it now occurs over an estimated 10 million square kilometres worldwide.
+
+
+    This diminutive bird is characterized by its delicate appearance typical of waxbills.
+    It favours grassland and scrubland habitats where it forages for small seeds.
+    The species is notably social, often seen in small flocks that move actively through
+    vegetation with quick, jerky movements.
+
+
+    The common waxbill has proven particularly adaptable to captive conditions and
+    remains one of the most popular estrildid finches in aviculture due to its ease
+    of care and breeding. Its establishment in introduced ranges demonstrates its
+    flexibility as a species.'
+migration:
+  sv: '# Helenaastrild (Estrilda astrild)
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Helenaastrild är en ursprungligen afrikansk art som inte förekommer naturligt
+    i Skandinavien eller Nordeuropa. De förvildade populationer som finns i världen
+    utgår från undsluppna fåglar från fångenskap och är etablerade i varmare klimat
+    än vad Nordeuropa erbjuder. Arten är anpassad till permanenta territorier i Afrika
+    och har ingen naturlig migrationsbenägenhet som skulle möjliggöra övervintering
+    i svenska eller nordeuropeiska förhållanden.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Common Waxbill is a sub-Saharan African species with no established presence
+    or migration patterns in Scandinavia or Northern Europe. While it has been introduced
+    to various regions worldwide and maintains feral populations in some areas, there
+    is no documented evidence of this species occurring naturally or as an established
+    population in Scandinavian or Northern European territories. Its range remains
+    primarily confined to Africa and introduced populations in warmer climates elsewhere.'
+image_refs:
+- role: hero
+  path: Q583220/hero.jpg
+  width: 2400
+  height: 1719
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Common Waxbill. Estrilda astrild
+    - Flickr - gailhampshire (1).jpg
+  commons_filename: Common Waxbill. Estrilda astrild - Flickr - gailhampshire (1).jpg
+- role: secondary
+  path: Q583220/secondary-1.jpg
+  width: 1800
+  height: 1158
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Estrilda astrild, Pilanesberg
+    5.jpg
+  commons_filename: Estrilda astrild, Pilanesberg 5.jpg
+- role: secondary
+  path: Q583220/secondary-2.jpg
+  width: 1800
+  height: 1402
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Common Waxbills. Estrilda astrild
+    - Flickr - gailhampshire.jpg
+  commons_filename: Common Waxbills. Estrilda astrild - Flickr - gailhampshire.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:45:45.280362+00:00'
+sources:
+  wikipedia_sv_revision: '55610782'
+  wikipedia_en_revision: '1343402289'
+  claude_model: claude-haiku-4-5-20251001

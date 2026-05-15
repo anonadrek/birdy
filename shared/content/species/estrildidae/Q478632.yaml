@@ -1,0 +1,118 @@
+id: Q478632
+scientific_name: Lonchura malacca
+taxonomy:
+  family: Estrildidae
+  family_sv: Astrilder
+  genus: Lonchura
+  ioc_order: Passeriformes
+names:
+  sv: Trefärgad munia
+  en: Tricolored Munia
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Trefärgad munia
+
+
+    Trefärgad munia är en liten fågel som tillhör familjen astrilder. Den är inhemsk
+    i södra Asien, framför allt på Indiska subkontinenten, men har spridits världen
+    över genom introduktion av människan.
+
+
+    Denna lilla fågel är lätt att känna igen på sitt karakteristiska utseende med
+    sin trefärgade färgteckning. Den förekommer både i sitt naturliga utbredningsområde
+    och i introducerade populationer runt om i världen, där den ofta ses i flockar
+    i öppna och halvöppna biotoper.'
+  en: '# Tricoloured Munia
+
+
+    The tricoloured munia is a small estrildid finch with distinctive plumage. Adults
+    display a striking black head contrasting sharply with chestnut-brown upperparts
+    and white underparts. Immature birds are considerably duller, with pale brown
+    upperparts, buff-coloured underparts, and critically, they lack the dark head
+    of adults—a feature that can make them challenging to distinguish from similar
+    species like the scaly-breasted munia.
+
+
+    This species is native to the Indian subcontinent and southern China, where it
+    inhabits grasslands and cultivated areas. It has also become established in the
+    Caribbean following introduction to islands including Trinidad, Jamaica, Cuba,
+    and Puerto Rico. The tricoloured munia is a social bird, often seen in small flocks
+    foraging for grass seeds and grain on open ground. Its call is a soft, tinkling
+    song typical of munias, though relatively inconspicuous.
+
+
+    When observing this species, pay particular attention to the head pattern—the
+    black head of breeding adults is the most reliable identification feature, while
+    immatures require careful comparison with similar species to confirm identification.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (Migration data unavailable for this species.)'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides information about the tricoloured munia''s native range
+    (Bangladesh, India, Sri Lanka, Pakistan, and southern China) and its introductions
+    to the Caribbean, but contains no information regarding migration patterns, seasonal
+    movements, or occurrence in Scandinavia or Northern Europe. Therefore, specific
+    details about how this species occurs throughout the year in these regions cannot
+    be provided based on the available source material.'
+image_refs:
+- role: hero
+  path: Q478632/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tricolored Munia Lonchura malacca
+    DSCN3481 (11).jpg
+  commons_filename: Tricolored Munia Lonchura malacca DSCN3481 (11).jpg
+- role: secondary
+  path: Q478632/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tricolored Munia Lonchura malacca
+    DSCN3481 (12).jpg
+  commons_filename: Tricolored Munia Lonchura malacca DSCN3481 (12).jpg
+- role: secondary
+  path: Q478632/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tricolored Munia Lonchura malacca
+    DSCN3481 (13).jpg
+  commons_filename: Tricolored Munia Lonchura malacca DSCN3481 (13).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:45:41.700955+00:00'
+sources:
+  wikipedia_sv_revision: '55440987'
+  wikipedia_en_revision: '1345508464'
+  claude_model: claude-haiku-4-5-20251001

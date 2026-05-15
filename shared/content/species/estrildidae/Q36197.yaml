@@ -1,0 +1,133 @@
+id: Q36197
+scientific_name: Lonchura punctulata
+taxonomy:
+  family: Estrildidae
+  family_sv: Astrilder
+  genus: Lonchura
+  ioc_order: Passeriformes
+names:
+  sv: Fjällig munia
+  en: Scaly-breasted Munia
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fjällig munia
+
+
+    Fjällig munia är en liten tätting som tillhör familjen astrilder. Arten återfinns
+    i Sydasien och Sydostasien, där den är relativt vanlig i sitt utbredningsområde.
+    Tidigare gick arten under namnet muskotfink.
+
+
+    Arten är en typisk representant för astridlerfamiljen med sin lilla storlek och
+    karakteristiska utseende. Som namnet antyder har fjällig munia ett fjälligt eller
+    skaligt mönster på bröstet, vilket är ett distintivt drag för arten. Denna färgteckning
+    gör den relativt lätt att identifiera jämfört med andra muniaarter.
+
+
+    Fjällig munia förekommer ofta i flockar och är anpassad till att leva i olika
+    typer av habitat inom sitt utbredningsområde. Arten är framför allt en kornätare
+    som söker föda på marken tillsammans med andra finkliknande fåglar. Som många
+    andra muniaarter är den social till sin natur och ses ofta tillsammans med andra
+    arter.'
+  en: '# Scaly-breasted Munia
+
+
+    The scaly-breasted munia is a sparrow-sized finch native to tropical Asia. It
+    takes its name from the distinctive scale-like feather markings that pattern its
+    breast and belly, creating an intricate, patterned appearance. Adults are predominantly
+    brown on the upperparts, with a notable dark, conical bill that is characteristic
+    of seed-eating finches.
+
+
+    This species exhibits considerable variation across its range, with 11 recognized
+    subspecies that differ subtly in size and coloration. The scaly-breasted munia
+    is highly social and typically encountered in flocks, often feeding on seeds in
+    grasslands and scrubland habitats. It remains relatively common throughout tropical
+    Asian regions, making it a familiar sight where it occurs.
+
+
+    The species has become well-known in the pet trade, where it is marketed as the
+    nutmeg mannikin or spice finch due to its attractive plumage and small, manageable
+    size. Despite its popularity in captivity, it remains abundant in its native range.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller endast information om att Fjällig munia
+    förekommer i Sydasien och Sydostasien, men ger ingen information om förekomst
+    i Skandinavien/Nordeuropa eller migrationsbeteende. Arten är en tropisk art som
+    inte naturligt förekommer i norra Europa, varför migrationsdata för denna region
+    inte är relevant.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Scaly-breasted Munia is native to tropical Asia and lacks documented migration
+    patterns in Scandinavian or Northern European contexts. This species does not
+    naturally occur in these regions and is only found in captivity through the pet
+    trade, where it is sometimes called the nutmeg mannikin or spice finch. No established
+    wild populations or seasonal movements in Northern Europe have been recorded for
+    this tropical finch species.'
+image_refs:
+- role: hero
+  path: Q36197/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Scaly breasted munia or spotted
+    munia (Lonchura punctulata) (22631048765).jpg
+  commons_filename: Scaly breasted munia or spotted munia (Lonchura punctulata) (22631048765).jpg
+- role: secondary
+  path: Q36197/secondary-1.jpg
+  width: 1800
+  height: 1109
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:ImagePerson&amp;action=edit&amp;redlink=1"
+    class="new" title="User:ImagePerson (page does not exist)">ImagePerson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Scaly-breasted Munia Lonchura
+    punctulata aka nutmeg finch Kauai 2533.jpg
+  commons_filename: Scaly-breasted Munia Lonchura punctulata aka nutmeg finch Kauai
+    2533.jpg
+- role: secondary
+  path: Q36197/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Lonchura punctulata (8104644123).jpg
+  commons_filename: Lonchura punctulata (8104644123).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:45:59.894384+00:00'
+sources:
+  wikipedia_sv_revision: '58516453'
+  wikipedia_en_revision: '1334202546'
+  claude_model: claude-haiku-4-5-20251001

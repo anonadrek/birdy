@@ -1,0 +1,101 @@
+id: Q27075729
+scientific_name: Euodice malabarica
+taxonomy:
+  family: Estrildidae
+  family_sv: Astrilder
+  genus: Euodice
+  ioc_order: Passeriformes
+names:
+  sv: Indisk silvernäbb
+  en: Indian Silverbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Indian Silverbill
+
+
+    The Indian silverbill is a small estrildid finch found across the Indian subcontinent
+    and adjoining regions. It was formerly classified together with the closely related
+    African silverbill but is now recognized as a separate species. This bird is a
+    common resident breeder in drier regions, favoring grassland and scrub habitats
+    where it forages in small flocks.
+
+
+    The species has proven adaptable and has been introduced to many parts of the
+    world, becoming established in several areas beyond its native range. Its success
+    as a captive bird and hardy nature have contributed to these introductions, making
+    it one of the more widespread estrildids globally.
+
+
+    As a member of the Estrildidae family, the Indian silverbill shares characteristics
+    typical of waxbills and munias, though specific details about its appearance,
+    vocalizations, and behavior would require additional sources beyond the introductory
+    text provided.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the occurrence, migration
+    patterns, or seasonal movements of the Indian Silverbill in Scandinavia or Northern
+    Europe. The description only covers its natural range in the Indian subcontinent
+    and Middle East, plus mentions of introductions to other parts of the world without
+    specifics. To provide accurate migration information for this species in Northern
+    European regions, additional sources focusing on its distribution in that area
+    would be required.'
+image_refs:
+- role: hero
+  path: Q27075729/hero.jpg
+  width: 1638
+  height: 2048
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Euodice malabarica 235052500.jpg
+  commons_filename: Euodice malabarica 235052500.jpg
+- role: secondary
+  path: Q27075729/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mahmadanesh&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mahmadanesh (page does not exist)">Mahmadanesh</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Indian silverbill - Timbi Lake,
+    Vadodara 2021-12-31.jpg
+  commons_filename: Indian silverbill - Timbi Lake, Vadodara 2021-12-31.jpg
+- role: secondary
+  path: Q27075729/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Euodice malabarica 237172981.jpg
+  commons_filename: Euodice malabarica 237172981.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:45:16.454668+00:00'
+sources:
+  wikipedia_sv_revision: '57948559'
+  wikipedia_en_revision: '1322140817'
+  claude_model: claude-haiku-4-5-20251001

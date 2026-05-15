@@ -1,0 +1,103 @@
+id: Q73741
+scientific_name: Amandava amandava
+taxonomy:
+  family: Estrildidae
+  family_sv: Astrilder
+  genus: Amandava
+  ioc_order: Passeriformes
+names:
+  sv: Röd tigerfink
+  en: Red Avadavat
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red Avadavat
+
+
+    The red avadavat is a sparrow-sized finch of the family Estrildidae, named after
+    the city of Ahmedabad in Gujarat, from where it was historically exported into
+    the pet trade. Males display striking colourful plumage during breeding season,
+    making the species highly popular in aviculture. Females and non-breeding males
+    are considerably duller.
+
+
+    It inhabits open fields and grasslands across tropical Asia, where it feeds primarily
+    on grass seeds. The bird breeds during the monsoon season in the Indian subcontinent,
+    constructing small woven nests in grass or low vegetation. Outside the breeding
+    season, red avadavats are often found in small flocks, moving between feeding
+    areas.
+
+
+    The species produces a characteristic tinkling call and a soft, musical song.
+    Its small size, active behaviour, and preference for open habitats make it relatively
+    conspicuous in suitable terrain, though its movements are swift and restless.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Red Avadavat (Röd tigerfink) is a tropical Asian species with no established
+    occurrence in Scandinavia or Northern Europe. The source text provides no information
+    regarding its presence, migration patterns, or seasonal movements in Northern
+    European regions. This small finch is endemic to the Indian subcontinent and open
+    grasslands of tropical Asia, where it breeds during the monsoon season. It does
+    not naturally occur in Scandinavian territories.'
+image_refs:
+- role: hero
+  path: Q73741/hero.jpg
+  width: 2048
+  height: 1363
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/388564">Forest
+    Botial-Jarvis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Amandava amandava - Forest Botial-Jarvis
+    - 341735200.jpeg
+  commons_filename: Amandava amandava - Forest Botial-Jarvis - 341735200.jpeg
+- role: secondary
+  path: Q73741/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Wildmanabhijit&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Wildmanabhijit (page does not exist)">Wildmanabhijit</a>
+  source_url: https://commons.wikimedia.org/wiki/File:লাল মুনিয়া (Amandava amandava),Singur
+    West Bengal India. 01.jpg
+  commons_filename: লাল মুনিয়া (Amandava amandava),Singur West Bengal India. 01.jpg
+- role: secondary
+  path: Q73741/secondary-2.jpg
+  width: 1800
+  height: 1174
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red Munia Amandava amandava
+    Female by Dr. Raju Kasambe DSCN0832 (3).jpg
+  commons_filename: Red Munia Amandava amandava Female by Dr. Raju Kasambe DSCN0832
+    (3).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:45:28.372824+00:00'
+sources:
+  wikipedia_sv_revision: '56773215'
+  wikipedia_en_revision: '1322140719'
+  claude_model: claude-haiku-4-5-20251001
