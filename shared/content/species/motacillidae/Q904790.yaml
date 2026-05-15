@@ -1,0 +1,101 @@
+id: Q904790
+scientific_name: Anthus richardi
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Större piplärka
+  en: Richard’s Pipit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Större piplärka
+
+
+    Större piplärka är en medelstor piplärka med spenslig gestalt och långt svans.
+    Den har brun och gråvittig fjäderdräkt med mörkare streckningar på ryggen, vilket
+    ger den en välkamouflagerad utseende. Fågeln är ofta svår att särskilja från närbesläktade
+    arter.
+
+
+    Större piplärka förekommer i öppna, gräsbevuxna landskap och stäpper. Det är en
+    markhäckande fågel som ofta hittas på jorden eller på låg vegetation. Under häckningstiden
+    är den aktiv och rastlös, och flyger gärna långt när den skrämms upp.
+
+
+    Arten häckar i södra Sibirien, Mongoliet, Centralasien och Kina. Merparten av
+    populationen är flyttfågel och övervintra i söder och sydostra Asien. En mindre
+    del vandrar västerut under höstflyttningen och förekommer då sparsamt men regelbundet
+    i stora delar av Europa, inklusive nordvästra regioner. Arten klassificeras som
+    livskraftig av IUCN.'
+  en: ''
+migration:
+  sv: '# Större piplärka i Skandinavien och Nordeuropa
+
+
+    Större piplärka är en långdistansflyttare som huvudsakligen häckar i södra Sibirien,
+    Mongoliet och delar av Centralasien. Under vintern migrera de flesta populationen
+    till Syd- och Sydostasien. En mindre andel av arten tar dock en västlig väg under
+    flyttningen och når regelbundet, men sparsamt, fram till Portugal och övriga Europa.
+    I Skandinavien och Nordeuropa förekommer arten således endast irregelbundet under
+    flyttningsperioderna, primärt under höst och vår. Dessa västvandrare observeras
+    då sporadiskt men regelbundet i olika delar av Europa under sin migration mellan
+    häckningsområdena och övervintringskvarteren i söder.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q904790/hero.jpg
+  width: 2400
+  height: 1599
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:JJ_Harrison" title="User:JJ Harrison">JJ
+    Harrison</a> (<a rel="nofollow" class="external free" href="https://www.jjharrison.com.au/">https://www.jjharrison.com.au/</a>)
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus richardi - Laem Pak Bia.jpg
+  commons_filename: Anthus richardi - Laem Pak Bia.jpg
+- role: secondary
+  path: Q904790/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/49296659@N00">Charles
+    Lam</a> from Hong Kong, China
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus richardi (6036516489).jpg
+  commons_filename: Anthus richardi (6036516489).jpg
+- role: secondary
+  path: Q904790/secondary-2.jpg
+  width: 1800
+  height: 1199
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Nirmal_Dulal" title="User:Nirmal
+    Dulal">Nirmal Dulal</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Richard's pipit (Anthus richardi)
+    2024.jpg
+  commons_filename: Richard's pipit (Anthus richardi) 2024.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:16:43.770938+00:00'
+sources:
+  wikipedia_sv_revision: '55738545'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

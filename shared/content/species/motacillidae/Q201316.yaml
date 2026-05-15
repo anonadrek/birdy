@@ -1,0 +1,127 @@
+id: Q201316
+scientific_name: Motacilla cinerea
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Motacilla
+  ioc_order: Passeriformes
+names:
+  sv: Forsärla
+  en: Grey Wagtail
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Forsärla
+
+
+    Forsärla är en elegant fågel som kännetecknas av sin exceptionellt långa stjärt,
+    vilket är en utmärkande egenskap i alla dräkter. Fågeln förekommer i tempererade
+    delar av Europa och Asien samt i Nordafrika, där det är knuten till rinnande vattendrag.
+    I Sverige etablerade arten sig som häckfågel på 1900-talet och har sedan expanderat
+    kraftigt under de senaste decennierna.
+
+
+    Forsärlan är en fågel som föredrar miljöer nära vatten, särskilt vid bäckar och
+    älvar där strömmen är märkbar. Det globala beståndet anses vara livskraftigt,
+    vilket tyder på att arten mår väl trots miljöförändringar. Med sin karakteristiska
+    långa stjärt och sitt val av habitat vid vattendrag är forsärlan en relativt lätt
+    igenkänd fågel för den intresserade fågelskådaren.'
+  en: '# Grey Wagtail
+
+
+    The grey wagtail is a small wagtail, measuring around 18–19 cm in length. It resembles
+    the yellow wagtail but with more restricted yellow coloring—confined to the throat
+    and vent rather than covering much of the underside. Breeding males sport a distinctive
+    black throat, making them easier to identify during the breeding season.
+
+
+    This species is widely distributed across Eurosiberia and beyond, with many populations
+    migrating to tropical Asia and Africa outside the breeding season. It is strongly
+    associated with running water during breeding, though it will nest in man-made
+    structures near streams when natural sites are unavailable. Outside breeding season,
+    it becomes more flexible, appearing around lakes, coasts, and other wetland habitats.
+
+
+    Like other wagtails, the grey wagtail is notably active and conspicuous, constantly
+    wagging its tail and flying low with characteristic undulating movements. It has
+    a sharp, distinctive call frequently given in flight, making it recognizable even
+    when not immediately visible.'
+migration:
+  sv: '# Forsärla – Migration och förekomst i Skandinavien
+
+
+    Forsärlan är en relativt ny häckfågel i Sverige, etablerad sedan början av 1900-talet,
+    och har genomgått en kraftig expansion under de senaste decennierna. Arten är
+    kopplad till rinnande vattendrag där den häckar. I Skandinavien och Nordeuropa
+    förekommer forsärlan främst som sommarbesökare och häckfågel under värre delen
+    av året. Under hösten migrerar många populationer söderut, medan vissa individer
+    övervintra längs öppna vattendrag i norra Europa där förutsättningarna tillåter.
+    Ankomsten till häckningsområdena sker vanligtvis under våren, medan höstflyttningen
+    börjar redan under sommaren.'
+  en: '# Grey Wagtail (Motacilla cinerea) in Scandinavia/Northern Europe
+
+
+    The grey wagtail is a partial migrant in Scandinavia, with populations showing
+    variable patterns depending on location and winter severity. Birds breeding in
+    northern Scandinavia typically migrate southward to winter in tropical Asia and
+    Africa, departing in autumn (August–September). However, some populations in milder
+    southern Scandinavian regions may overwinter locally near unfrozen running water.
+    Return migration begins in spring, with breeding birds arriving back to northern
+    territories from March onwards. The species'' dependence on open water bodies
+    makes winter presence in the far north unpredictable, with populations retreating
+    to lower latitudes during harsh winters.'
+image_refs:
+- role: hero
+  path: Q201316/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29310050@N04">yamatsu</a>
+  source_url: https://commons.wikimedia.org/wiki/File:キセキレイ (黄鶺鴒) (Grey Wagtail) (Motacilla
+    cinerea) (23372565665).jpg
+  commons_filename: キセキレイ (黄鶺鴒) (Grey Wagtail) (Motacilla cinerea) (23372565665).jpg
+- role: secondary
+  path: Q201316/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29310050@N04">yamatsu</a>
+  source_url: https://commons.wikimedia.org/wiki/File:キセキレイ (黄鶺鴒) (Grey Wagtail) (Motacilla
+    cinerea) (23372575615).jpg
+  commons_filename: キセキレイ (黄鶺鴒) (Grey Wagtail) (Motacilla cinerea) (23372575615).jpg
+- role: secondary
+  path: Q201316/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Motacilla cinerea, Spomenik
+    prirode Lisine.jpg
+  commons_filename: Motacilla cinerea, Spomenik prirode Lisine.jpg
+review_status: approved
+review_notes: "Forsärla — Motacilla cinerea med lång gul stjärt; regulär SE-art längs forsande vattendrag."
+generated_at: '2026-05-15T20:16:01.040532+00:00'
+sources:
+  wikipedia_sv_revision: '58516472'
+  wikipedia_en_revision: '1323720993'
+  claude_model: claude-haiku-4-5-20251001

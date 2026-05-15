@@ -1,0 +1,128 @@
+id: Q241347
+scientific_name: Anthus cervinus
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Rödstrupig piplärka
+  en: Red-throated Pipit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödstrupig piplärka
+
+
+    Rödstrupig piplärka är en liten tätting som tillhör familjen ärlor och piplärkor.
+    Arten är en mycket nordlig häckfågel som återfinns från norra Skandinavien österut
+    genom nordligaste Asien till Alaska. Under vintern är arten migratorisk och flyttar
+    till Afrika, södra och sydöstra Asien samt till västra Nordamerika.
+
+
+    Arten är klassificerad som livskraftig enligt IUCN och uppvisar ingen oroande
+    populationstrend. Den är välanpassad för sitt högnordiska utbredningsområde och
+    följer de klassiska migrationsvägar som många nordliga fågelarter nyttjar mellan
+    sina häcknings- och övervintringsplatser.'
+  en: '# Red-throated Pipit
+
+
+    The red-throated pipit is a small passerine belonging to the pipit family. It
+    breeds across the far northern regions of Europe and the Palearctic, with populations
+    also found in northern Alaska. This species is a remarkable long-distance migrant,
+    undertaking extensive seasonal journeys to wintering grounds in Africa and South-East
+    Asia, as well as western Alaska in North America.
+
+
+    The bird is occasionally recorded as a vagrant to Western Europe, appearing outside
+    its normal range during migration periods. Like other pipits, it is likely a ground-dwelling
+    bird adapted to open, often treeless habitats characteristic of high northern
+    latitudes. Its small size and migratory behaviour are typical of many northern
+    breeding pipits that must depart before harsh winter conditions make feeding impossible.
+
+
+    Birdwatchers in Western Europe should note that sightings here represent unusual
+    occurrences rather than regular occurrences, making the species of particular
+    interest to observers keen on vagrants and rare visitors.'
+migration:
+  sv: '# Rödstrupig piplärka – förekomst i Skandinavien
+
+
+    Rödstrupig piplärka är en långdistansflyttare som häckar i norra Skandinavien
+    under sommarhalvåret. Fågeln anländer till häckningsområdena på våren och genomför
+    sin reproduktion under de korta nordiska sommarmånaderna. Under hösten påbörjas
+    en omfattande migration söderut.
+
+
+    Arten förlägger sitt övervintringskvarteri långt från Skandinavien, framför allt
+    i Afrika samt södra och sydöstra Asien. Rödstrupig piplärka är därför praktiskt
+    taget frånvarande från norra Europa under vintern, då arten migrerar till varmare
+    klimatzoner. Endast under häckningssäsongen är arten regelbundet förekommande
+    i Skandinavien.'
+  en: '# Red-throated Pipit in Scandinavia/Northern Europe
+
+
+    The Red-throated Pipit is a long-distance migrant that breeds in the far north
+    of Europe and the Palearctic during summer months. As a breeding species, it occurs
+    in northern Scandinavia and beyond. The species winters primarily in Africa and
+    Southeast Asia, undertaking extensive migrations between breeding and wintering
+    grounds. In Western Europe, including Scandinavia outside its breeding range,
+    it appears as a vagrant, making occasional appearances during migration periods.
+    Specific arrival and departure dates for Scandinavian regions are not detailed
+    in the provided source material.'
+image_refs:
+- role: hero
+  path: Q241347/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-throated pipit (Anthus cervinus)
+    2022.jpg
+  commons_filename: Red-throated pipit (Anthus cervinus) 2022.jpg
+- role: secondary
+  path: Q241347/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/49296659@N00">Charles
+    Lam</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-throated Pipit (Anthus cervinus).jpg
+  commons_filename: Red-throated Pipit (Anthus cervinus).jpg
+- role: secondary
+  path: Q241347/secondary-2.jpg
+  width: 1800
+  height: 1126
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus cervinus - Red-throated
+    Pipit, Adana 2021-03-27 01.jpg
+  commons_filename: Anthus cervinus - Red-throated Pipit, Adana 2021-03-27 01.jpg
+review_status: approved
+review_notes: "Rödstrupig piplärka — Anthus cervinus med rödbrunt strupfält; regelbunden SE-flyttfågel."
+generated_at: '2026-05-15T20:15:26.038753+00:00'
+sources:
+  wikipedia_sv_revision: '59180906'
+  wikipedia_en_revision: '1315370731'
+  claude_model: claude-haiku-4-5-20251001

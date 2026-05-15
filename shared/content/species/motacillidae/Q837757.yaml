@@ -1,0 +1,113 @@
+id: Q837757
+scientific_name: Anthus gustavi
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Tundrapiplärka
+  en: Pechora Pipit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tundrapiplärka
+
+
+    Tundrapiplärka är en liten tätting från familjen ärlor och piplärkor. Den häckar
+    på den sibiriska tundran och är en mycket sällsynt gäst i Europa under sina flyttningar.
+    Vitnertid migrerar arten långväga söderut till Sydostasien, där den tillbringar
+    vintermånaderna.
+
+
+    Som liten piplärka är tundrapiplärkan välskickad på marken och söker sin föda
+    bland vegetation och mellan stenarna. Den är återhållsam och kan vara svår att
+    få syn på, särskilt när den rasterar under flyttningen. Arten kategoriseras av
+    IUCN som livskraftig och utgör ingen naturvårdskoncer. För dem som är intresserade
+    av sällsynta fåglar är tundrapiplärkan en eftersökt observation under migrationstiderna,
+    även om träffchanserna är mycket små för de flesta observatörer.'
+  en: '# Pechora Pipit
+
+
+    The Pechora pipit is a small, inconspicuous passerine belonging to the pipit and
+    wagtail family. It breeds across the East Palearctic tundra and in densely vegetated
+    areas near river banks, with populations ranging from northeastern river systems
+    to the far eastern peninsula regions. A disjunct population inhabits northeastern
+    China and southeastern Siberia. This species is a remarkable long-distance migrant,
+    undertaking an arduous journey to winter grounds in Indonesia.
+
+
+    Identification can be challenging due to its small size and subtle plumage, typical
+    of pipits in the genus Anthus. The species is rarely encountered in western Europe,
+    appearing only occasionally during autumn migration—typically in September and
+    October—making sightings there noteworthy for birdwatchers.
+
+
+    While breeding in its remote northern range, the Pechora pipit favors open tundra
+    and bushy riverside habitats where it forages on the ground. Its breeding and
+    migratory ecology reflect adaptations to extreme seasonal changes, with birds
+    vacating their breeding grounds entirely to escape harsh Arctic winters. The species
+    was formally described by ornithologist Robert Swinhoe in 1863.'
+migration:
+  sv: '# Tundrapiplärka (Anthus gustavi) - Förekomst i Skandinavien och Nordeuropa
+
+
+    Tundrapiplärka är en mycket sällsynt gäst i Skandinavien och övriga Nordeuropa.
+    Arten häckar på sibirisk tundra och genomför långdistansmigrationer till Sydostasien
+    under vintermånaderna. Endast sporadiska observationer registreras i Europa, främst
+    under höstmigrationen när enstaka individer ibland påträffas. Det är långt från
+    regelbundna förekomster eller etablerade migrationsvagar genom regionen.
+
+
+    Arten kan teoretiskt dyka upp under hösten när den migrerar från häckningsområdena,
+    men förekomsten är så osäker och begränsad att den inte utgör någon förutsägbar
+    del av Skandinaviens fågelfauna. Varje rapporterad siktning från nordeuropa utgör
+    en notabel iakttagelse för lokala birdwatchers.'
+  en: '# Pechora Pipit in Scandinavia/Northern Europe
+
+
+    The Pechora pipit is an extremely rare vagrant to Scandinavia and Northern Europe.
+    This East Palearctic species breeds across tundra regions from the Pechora River
+    eastward to the Chukchi Peninsula and does not maintain any regular population
+    in Northern Europe. The species is a long-distance migrant that winters in Indonesia,
+    with its main migration routes lying far to the east. Sightings in western Europe,
+    including Scandinavia, occur only occasionally during autumn months (September–October)
+    as rare vagrants, representing birds that have deviated significantly from their
+    normal migration corridors. There is no established arrival period or overwintering
+    presence in the region.'
+image_refs:
+- role: hero
+  path: Q837757/hero.jpg
+  width: 2047
+  height: 2048
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2497873">Валерия
+    Ковалева</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus gustavi 146070128.jpg
+  commons_filename: Anthus gustavi 146070128.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:14:53.319421+00:00'
+sources:
+  wikipedia_sv_revision: '55751882'
+  wikipedia_en_revision: '1314900855'
+  claude_model: claude-haiku-4-5-20251001

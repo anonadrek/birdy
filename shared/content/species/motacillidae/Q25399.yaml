@@ -1,0 +1,133 @@
+id: Q25399
+scientific_name: Motacilla alba
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Motacilla
+  ioc_order: Passeriformes
+names:
+  sv: Sädesärla
+  en: White Wagtail
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sädesärla
+
+
+    Sädesärla är en liten och slank fågel med karakteristisk svartvit färgteckning
+    och en långt utdragen stjärt som den ständigt vickar på. Denna rörelse är ett
+    av de mest igenkännliga draget för arten och hjälper till att identifiera den
+    i fält. Fågeln är aktiv och rastlös till sitt temperament, ofta skuttande på marken
+    eller på låga grenar medan den söker föda.
+
+
+    Sädesärlan häckar över stor delen av Europa och Asien, samt i delar av norra afrika
+    och Alaska. I de mildaste regionerna inom sitt utbredningsområde är den en stannfågel
+    som stannar året runt, men i övriga områden är den en flyttfågel som söker sig
+    till Afrika under vintermånaderna för att övervintrar där. Arten är ofta att se
+    i öppna och halvöppna miljöer där den kan röra sig fritt på marken.'
+  en: '# White Wagtail
+
+
+    The white wagtail is a small, slender passerine with distinctive black and white
+    plumage. It typically displays a white face and underparts contrasted with a black
+    cap, back, and upper wings, though plumage patterns vary among its nine to eleven
+    subspecies. Its most characteristic feature is its long tail, which it constantly
+    bobs up and down as it walks along the ground.
+
+
+    This energetic bird is highly active and often seen on the ground or low perches,
+    where it forages for insects with quick, darting movements. Its behaviour is distinctive
+    and readily observed, making it easy to identify in the field. It produces sharp,
+    distinctive calls that are diagnostic of the species.
+
+
+    The white wagtail breeds widely throughout the Palearctic zone, including much
+    of Europe, Asia, and parts of North Africa, with a small presence in western Alaska.
+    It inhabits open and semi-open habitats, particularly near water. In milder regions
+    it remains resident year-round, while populations in colder areas migrate to Africa
+    for winter. In Ireland and Great Britain, the black-backed "pied wagtail" subspecies
+    is most common.'
+migration:
+  sv: '# Sädesärla - Förekomst i Skandinavien året runt
+
+
+    Sädesärlan är en flyttfågel som återvänder till Skandinavien och Nordeuropa på
+    våren för att häcka. Arten anländer vanligtvis mellan april och maj när temperaturen
+    stiger och insekttillgången ökar. Under sommarmånaderna häckar sädesärlan över
+    stora delar av norra Europa, inklusive Skandinavien, där den bygger sina nästen
+    nära vatten och andra fuktiga miljöer.
+
+
+    Vid höstens ankomst, från augusti till september, påbörjar sädesärlan sin långa
+    migration söderut mot Afrika för att övervintrera. I de mildaste delarna av sitt
+    utbredningsområde kan arten stanna kvar året runt som stannfågel, men populationerna
+    i Skandinavien är helt beroende av migration för att överleva de hårda vintermånaderna.
+    Arten återvänder sedan åter till norr när våren kommer.'
+  en: '# White Wagtail Migration in Scandinavia and Northern Europe
+
+
+    The white wagtail is a summer breeding visitor to Scandinavia and much of northern
+    Europe, arriving in April and May to establish breeding territories. Throughout
+    the breeding season, populations remain widespread across the region. However,
+    as autumn approaches, most Scandinavian white wagtails undertake a southward migration,
+    departing from August onwards to winter in Africa. Only small numbers remain in
+    the mildest coastal areas during winter months. Return migration begins in early
+    spring, with birds reappearing in their breeding grounds by late March and April,
+    establishing a consistent annual cycle tied to seasonal temperature and food availability
+    changes.'
+image_refs:
+- role: hero
+  path: Q25399/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:White wagtail (Motacilla alba),
+    Seltjarnarnes, Iceland.jpg
+  commons_filename: White wagtail (Motacilla alba), Seltjarnarnes, Iceland.jpg
+- role: secondary
+  path: Q25399/secondary-1.jpg
+  width: 1800
+  height: 1262
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Motacilla Alba Oulu 20140426.jpg
+  commons_filename: Motacilla Alba Oulu 20140426.jpg
+- role: secondary
+  path: Q25399/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Gon%C3%A7alo_Vila_Ferraz&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Gonçalo Vila Ferraz (page does not exist)">Gonçalo Vila
+    Ferraz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Motacilla alba alba, Douro Estuary,
+    Portugal.jpg
+  commons_filename: Motacilla alba alba, Douro Estuary, Portugal.jpg
+review_status: approved
+review_notes: "Sädesärla — Motacilla alba från Island; allmän SE-art överallt — den mest spridda fågelarten."
+generated_at: '2026-05-15T20:14:57.170710+00:00'
+sources:
+  wikipedia_sv_revision: '59211126'
+  wikipedia_en_revision: '1340919707'
+  claude_model: claude-haiku-4-5-20251001

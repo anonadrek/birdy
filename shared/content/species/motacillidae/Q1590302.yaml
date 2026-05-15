@@ -1,0 +1,102 @@
+id: Q1590302
+scientific_name: Anthus similis
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Långnäbbad piplärka
+  en: Long-billed Pipit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Long-billed Pipit
+
+
+    The long-billed pipit is a widespread passerine found across Africa, the Arabian
+    Peninsula, and South Asia. Several subspecies are recognized across its range,
+    though the taxonomy of this group remains incompletely understood. It is also
+    known as the brown rock pipit, reflecting its coloration and habitat preferences.
+
+
+    Most populations are sedentary or undertake only short-distance movements rather
+    than undertaking long migrations. This pattern allows it to remain within familiar
+    territories throughout much of the year, taking advantage of local food resources
+    and established breeding sites. The species shows considerable adaptability across
+    its extensive range, suggesting it is well-suited to various environmental conditions
+    found throughout Africa and southern Asia.'
+migration:
+  sv: ''
+  en: '# Long-billed Pipit in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Long-billed Pipit''s distribution is primarily centered in Africa, the Arabian
+    Peninsula, and South Asia. While the species is described as consisting of mostly
+    resident or short-distance migrant populations, there is no documented occurrence
+    or migration pattern in Scandinavia or Northern Europe. This species does not
+    form part of the regular avifauna of the region.'
+image_refs:
+- role: hero
+  path: Q1590302/hero.jpg
+  width: 2400
+  height: 1661
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Long-billed pipit, Anthus similis,
+    at Devon Grasslands, Gauteng, South Africa (48233267797).jpg
+  commons_filename: Long-billed pipit, Anthus similis, at Devon Grasslands, Gauteng,
+    South Africa (48233267797).jpg
+- role: secondary
+  path: Q1590302/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Long-billed pipit, Anthus similis,
+    at Devon Grasslands, Gauteng, South Africa (48233268132).jpg
+  commons_filename: Long-billed pipit, Anthus similis, at Devon Grasslands, Gauteng,
+    South Africa (48233268132).jpg
+- role: secondary
+  path: Q1590302/secondary-2.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Long-billed pipit, Anthus similis,
+    at Devon Grasslands, Gauteng, (48233193416).jpg
+  commons_filename: Long-billed pipit, Anthus similis, at Devon Grasslands, Gauteng,
+    (48233193416).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:16:03.857651+00:00'
+sources:
+  wikipedia_sv_revision: '56775763'
+  wikipedia_en_revision: '1314608683'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,93 @@
+id: Q973164
+scientific_name: Anthus godlewskii
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Mongolpiplärka
+  en: Blyth’s Pipit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mongolpiplärka
+
+
+    Mongolpiplärka är en asiatisk piplärka som häckar i bergiga områden från Altaj
+    österut till nordöstra Kina. Under vintern migrera den till Indien. I Europa är
+    arten extremt sällsynt och påträffas endast tillfälligt, med endast omkring 20
+    dokumenterade fynd i Sverige.
+
+
+    Som medlem av familjen ärlor och piplärkor är mongolpiplärkan en liten, slank
+    fågel väl anpassad för sitt livsrum i öppna berglandskap. Arten är idag klassificerad
+    som livskraftig enligt IUCN.'
+  en: ''
+migration:
+  sv: '# Mongolpiplärka – Förekomst i Skandinavien/Nordeuropa
+
+
+    Mongolpiplärka är en mycket sällsynt besökare i Skandinavien och Nordeuropa. Arten
+    häckar normalt långt bort i östra Asien och förekommer endast tillfälligt och
+    ytterst sällsynt i denna region. I Sverige finns bara ett knappt 20-tal registrerade
+    fynd. Arten påträffas här således inte regelbundet eller enligt någon förutsägbar
+    säsongsmönster, utan utgör snarare slumpmässiga vagabonder långt från sitt normale
+    utbredningsområde. För denna art finns därför ingen etablerad migrations- eller
+    övervintringsmönster i Skandinavien.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q973164/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:P_S_Aravind&amp;action=edit&amp;redlink=1"
+    class="new" title="User:P S Aravind (page does not exist)">P S Aravind</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Blyth's Pipit Anthus godlewskii.jpg
+  commons_filename: Blyth's Pipit Anthus godlewskii.jpg
+- role: secondary
+  path: Q973164/secondary-1.jpg
+  width: 1214
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Shino_jacob_koottanad" title="User:Shino
+    jacob koottanad">Shino jacob koottanad</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Blyth's pipit (Anthus godlewskii).jpg
+  commons_filename: Blyth's pipit (Anthus godlewskii).jpg
+- role: secondary
+  path: Q973164/secondary-2.jpg
+  width: 1233
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Shino_jacob_koottanad" title="User:Shino
+    jacob koottanad">Shino jacob koottanad</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Blyth's pipit (Anthus godlewskii)
+    -.jpg
+  commons_filename: Blyth's pipit (Anthus godlewskii) -.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:15:15.130405+00:00'
+sources:
+  wikipedia_sv_revision: '55660046'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

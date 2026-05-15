@@ -1,0 +1,78 @@
+id: Q530069
+scientific_name: Motacilla aguimp
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Motacilla
+  ioc_order: Passeriformes
+names:
+  sv: Brokärla
+  en: African Pied Wagtail
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q530069/hero.jpg
+  width: 2400
+  height: 1492
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:African Pied Wagtail, Motacilla
+    aguimp in Kruger National Park (20132645308).jpg
+  commons_filename: African Pied Wagtail, Motacilla aguimp in Kruger National Park
+    (20132645308).jpg
+- role: secondary
+  path: Q530069/secondary-1.jpg
+  width: 1800
+  height: 1230
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:African Pied Wagtail, Motacilla
+    aguimp in Kruger National Park (20134043299).jpg
+  commons_filename: African Pied Wagtail, Motacilla aguimp in Kruger National Park
+    (20134043299).jpg
+- role: secondary
+  path: Q530069/secondary-2.jpg
+  width: 1800
+  height: 1163
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:African Pied Wagtail, Motacilla
+    aguimp in Kruger National Park (19699745213).jpg
+  commons_filename: African Pied Wagtail, Motacilla aguimp in Kruger National Park
+    (19699745213).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:16:35.305112+00:00'
+sources:
+  wikipedia_sv_revision: '55520337'
+  wikipedia_en_revision: '1341079781'
+  claude_model: claude-haiku-4-5-20251001

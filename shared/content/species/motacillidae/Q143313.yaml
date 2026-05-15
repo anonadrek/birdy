@@ -1,0 +1,138 @@
+id: Q143313
+scientific_name: Anthus trivialis
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Trädpiplärka
+  en: Tree Pipit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Trädpiplärka
+
+
+    Trädpiplärkan är en liten, spenslig fågel som tillhör piplärksläktet. Den är grå-brun
+    på ovansidan med mörka streck och vitaktig undersida. Fågeln är ungefär 15 centimeter
+    lång och förhållandevis lätt att förväxla med andra piplärkor, men karakteriseras
+    av sitt slangeligt byggde och ständiga rörlighet.
+
+
+    Arten är väl anpassad till sitt habitat i skogsbryn och gläntor, där den ofta
+    fångas på marken medan den söker föda. Trädpiplärkan är en migratorisk art som
+    överväntrar långt söderut och återvänder till sina häckningsområden under våren.
+    Det är en mycket vanlig fågel över större delen av sitt utbredningsområde, som
+    sträcker sig från nästan hela Europa österut genom Asien till västra Kina och
+    Himalaya. I Sverige räknas den bland de allra vanligaste fågelarterna.
+
+
+    Arten är klassificerad som livskraftig av IUCN och visar ingen oroande populationstrend.
+    Tack vare sitt stora utbredningsområde och stabila bestånd är dess bevarandestatus
+    god.'
+  en: '# Tree Pipit
+
+
+    The tree pipit is a small passerine belonging to the pipit family, characterized
+    by its slender build and brownish, streaked plumage adapted to grassland and open
+    woodland habitats. It breeds across much of Europe and the Palearctic region,
+    extending as far east as the East Siberian Mountains. This species is a remarkable
+    long-distance migrant, undertaking an annual journey to winter grounds in Africa
+    and southern Asia, returning to breeding territories each spring.
+
+
+    Tree pipits inhabit open woodlands, heathlands, and grasslands where scattered
+    trees provide suitable perching and nesting sites. The bird forages on the ground
+    for insects and small invertebrates, often moving in a characteristic bounding
+    manner. It is known for its distinctive display flight, ascending from a tree
+    with accelerating song before parachuting back down on spread wings—a behavior
+    typical of the genus. The call is a thin, sharp note, while the song is a melodious,
+    accelerating warble delivered both from perches and during flight displays.
+
+
+    The tree pipit''s scientific name reflects its ecological niche: *anthus* refers
+    to a small grassland bird, while *trivialis* means "common," acknowledging its
+    widespread distribution throughout suitable habitats across its breeding range.'
+migration:
+  sv: '# Trädpiplärka - Förekomst i Norden
+
+
+    Trädpiplärkan är en sommargäst i Skandinavien och övriga Nordeuropa. Arten anländer
+    till Sverige på våren, typiskt mellan april och maj, och etablerar sig i skogsbryn,
+    gläntor och öppna skogsmarker över nästan hela landet. Under sommaren häckar arten
+    vid riklig insekt­tillgång. I augusti och september påbörjas höstflyttningen då
+    populationerna drar söderut. Fågeln övervintrar i Afrika söder om Sahara samt
+    på Indiska halvön, vilket innebär att Skandinavien är helt tomt på arten under
+    vinter­halvåret. Endast under migrations­perioderna på våren och hösten kan enstaka
+    individer observeras utanför huvudförekomstområdena.'
+  en: '# Tree Pipit Migration in Northern Europe
+
+
+    The Tree Pipit is a long-distance migrant in Scandinavia and Northern Europe,
+    breeding throughout the region during the summer months. Birds arrive in spring,
+    typically from April onwards, after wintering in Africa and southern Asia. They
+    establish territories in open woodlands, forest edges, and heathland habitats
+    across the region.
+
+
+    As autumn approaches, Tree Pipits begin their southward migration in late August
+    and September, departing Northern Europe to reach their African and Asian wintering
+    grounds. The species is entirely absent from Scandinavia during winter months,
+    making it a true trans-Saharan migrant that undertakes one of the longest annual
+    journeys of any European songbird.'
+image_refs:
+- role: hero
+  path: Q143313/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Synezis&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Synezis (page does not exist)">Synezis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus trivialis, Srbija (123).jpg
+  commons_filename: Anthus trivialis, Srbija (123).jpg
+- role: secondary
+  path: Q143313/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Sanja_%C5%A0umanovi%C4%87&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Sanja Šumanović (page does not exist)">Sanja Šumanović</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Šumska trepteljka (Anthus trivialis).jpg
+  commons_filename: Šumska trepteljka (Anthus trivialis).jpg
+- role: secondary
+  path: Q143313/secondary-2.jpg
+  width: 1800
+  height: 1199
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tree Pipit Anthus trivialis
+    by Dr. Raju Kasambe DSCN7208 (cropped).jpg
+  commons_filename: Tree Pipit Anthus trivialis by Dr. Raju Kasambe DSCN7208 (cropped).jpg
+review_status: approved
+review_notes: "Trädpiplärka — Anthus trivialis från Srbija; allmän SE-skogsmarker."
+generated_at: '2026-05-15T20:14:57.319609+00:00'
+sources:
+  wikipedia_sv_revision: '58946868'
+  wikipedia_en_revision: '1315187217'
+  claude_model: claude-haiku-4-5-20251001

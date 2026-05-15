@@ -1,0 +1,132 @@
+id: Q642685
+scientific_name: Anthus petrosus
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Skärpiplärka
+  en: European Rock Pipit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skärpiplärka
+
+
+    Skärpiplärka är en liten fågel från familjen ärlor och piplärkor. Den är anpassad
+    till liv i klippiga kustmiljöer och på skärgårdsöar i norra och västra Europa.
+    Arten häckar i dessa exponerade biotoper där få andra fåglar trivs. Nordliga populationer
+    är flyttfåglar som vänder söderut och sydväst när hösten närmar sig, medan populationerna
+    vid de brittiska öarna och i Frankrike stannar året om som stannfåglar.
+
+
+    Skärpiplärka liknar andra piplärkor men är speciellt anpassad till sin kustnära
+    livsmiljö. Den födosöker bland stenar och klippor där det finns små rymlingar
+    för små insekter och små ryggradslösa djur. Arten är relativt vanlig i sitt utbredningsområde
+    och kategoriseras av IUCN som livskraftig, vilket betyder att dess populationsstatus
+    är stabil.
+
+
+    Arten delades upp från det tidigare artkonceptet omfattande skärpiplärka, vattenpiplärka
+    och hedpiplärka i början av 1990-talet, när forskare upptäckte att det fanns större
+    skillnader mellan dem än man tidigare trodde.'
+  en: '# European Rock Pipit
+
+
+    The European rock pipit is a small, streaked passerine that inhabits rocky coastal
+    regions of western Europe. It displays greyish-brown upperparts with distinctive
+    streaking and buff-coloured underparts, making it similar to other European pipit
+    species. Two subspecies exist: the nominate form remains resident year-round,
+    whilst the Fennoscandian population is migratory, moving to sheltered shoreline
+    habitats further west and south during winter months.
+
+
+    This species is notably territorial, particularly during the breeding season,
+    with resident birds maintaining their claims throughout the year. A remarkable
+    behavioural trait involves males occasionally entering neighbouring territories
+    to assist resident birds in defending against intruders—a cooperative defence
+    mechanism seldom observed outside the animal kingdom. The rock pipit favours rocky
+    coastal habitats where it forages and breeds, displaying the typical active, ground-feeding
+    behaviour characteristic of its family. Its presence is generally restricted to
+    western European coastal zones, though migratory populations extend the species''
+    winter range considerably.'
+migration:
+  sv: '# Skärpiplärka i Skandinavien och Nordeuropa
+
+
+    Skärpiplärkan är en partiell traktfågel i Skandinavien och norra Europa. Nordliga
+    populationer, inklusive de svenska och norska, är flyttfåglar som vänder sydväst
+    på hösten, medan populationer på Brittiska öarna och i Frankrike är stannfåglar
+    som stannar året runt. De svenska häckfåglarna anländer till sina häckningsplatser
+    på steiniga kuster och skärgårdsöar under vår och återvänder eller ersätts av
+    sydvänstra populationer under vintermånaderna. På sina övervintringskvartersplatser
+    återfinns arten även på mindre kusthabitat än under häckningstiden.'
+  en: '# European Rock Pipit: Seasonal Occurrence in Northern Europe
+
+
+    The European rock pipit exhibits distinct migratory patterns across Scandinavia
+    and northern Europe. The nominate subspecies is non-migratory and resident year-round
+    in western coastal regions. However, the Fennoscandian subspecies, which breeds
+    in Scandinavia, is migratory. These northern breeding birds depart their territories
+    in autumn to winter in shoreline habitats further west and south across Europe,
+    returning to Scandinavian rocky coasts during the breeding season. This subspecies
+    is therefore absent from much of Scandinavia during winter months, with birds
+    returning to establish territories in spring.'
+image_refs:
+- role: hero
+  path: Q642685/hero.jpg
+  width: 2400
+  height: 1482
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:European rock pipit (Anthus
+    petrosus) 2020.jpg
+  commons_filename: European rock pipit (Anthus petrosus) 2020.jpg
+- role: secondary
+  path: Q642685/secondary-1.jpg
+  width: 1800
+  height: 1537
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/91677891@N07">Jacob  Spinks</a>
+    from Northamptonshire, England
+  source_url: https://commons.wikimedia.org/wiki/File:Rock Pipit - Anthus petrosus
+    (14334291183).jpg
+  commons_filename: Rock Pipit - Anthus petrosus (14334291183).jpg
+- role: secondary
+  path: Q642685/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:European rock pipit (Anthus
+    petrosus) 2021.jpg
+  commons_filename: European rock pipit (Anthus petrosus) 2021.jpg
+review_status: approved
+review_notes: "Skärpiplärka — Anthus petrosus 2020; allmän SE-kustfågel på klippstränder."
+generated_at: '2026-05-15T20:16:41.786406+00:00'
+sources:
+  wikipedia_sv_revision: '57601528'
+  wikipedia_en_revision: '1313791708'
+  claude_model: claude-haiku-4-5-20251001

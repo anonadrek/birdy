@@ -1,0 +1,127 @@
+id: Q208707
+scientific_name: Anthus spinoletta
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Vattenpiplärka
+  en: Water Pipit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vattenpiplärka
+
+
+    Vattenpiplärka är en medelstor piplärka som tillhör familjen ärlor och piplärkor.
+    Arten förekommer i bergstrakter från centrala och södra Europa österut till Kina.
+    Det som gör vattenpiplärkan särskild är att den under vintertid är en av få fågelarter
+    som faktiskt flyttar norrut – då söker den sig till isfria dammar och stränder
+    i norra Europa istället för att fly söderut som de flesta andra flyttfåglar.
+
+
+    Vattenpiplärkan är den piplärka som tillsammans med rödstrupig piplärka återfinns
+    i de blötaste miljöerna, vilket avspeglar sig i artens namn och levnadssätt. Den
+    trivs därför vid våtmarker, bäckar och vattenkanter där den söker föda.
+
+
+    Arten klassificerades tidigare tillsammans med amerikansk piplärka och stenpiplärka
+    som en del av skärpiplärkan, men utgör idag en egen art. IUCN kategoriserar vattenpiplärkan
+    som livskraftig, vilket innebär att arten inte är hotad och att populationen är
+    stabil.'
+  en: '# Water Pipit
+
+
+    The water pipit is a small passerine belonging to the pipit and wagtail family.
+    It breeds in mountainous regions across Southern Europe and the Palearctic, extending
+    eastwards to China. This species is a short-distance migrant, with populations
+    shifting to lower altitudes or wet open lowlands during winter months, rather
+    than undertaking long journeys.
+
+
+    The bird''s breeding habitat consists of rocky mountain slopes and alpine meadows
+    at higher elevations, where it finds suitable nesting and foraging grounds. In
+    winter, it moves to more accessible terrain, often seeking out wetland areas and
+    open lowland habitats where food remains available during the colder season. This
+    altitudinal migration pattern reflects the species'' adaptation to seasonal changes
+    across its range.'
+migration:
+  sv: '# Vattenpiplärka – Migration och säsongsförekomst
+
+
+    Vattenpiplärka är en bergfågel med speciell migrationsekologi. Till skillnad från
+    de flesta fågelarter flyttar vattenpiplärkan norrut på vintern, vilket är ovanligt
+    bland europeiska fåglar. Under vintermånaderna förekommer arten vid isfria dammar
+    och vattendrag i norra Europa, där den utnyttjar öppna vattenmiljöer för att söka
+    föda. Arten häckar i bergstrakter från centrala och södra Europa österut till
+    Kina, men denna nordvintring gör den till en märklig undantag bland piplärkorna.
+    Denna anpassning till isfria vattenmiljöer möjliggör övervintering långt norr
+    om artens huvudsakliga häckningsområde.'
+  en: '# Water Pipit in Scandinavia/Northern Europe
+
+
+    The water pipit is a rare vagrant to Scandinavia and Northern Europe, with only
+    occasional records during migration periods and winter months. While the species
+    breeds in southern mountain ranges and does not have an established breeding population
+    in the Nordic region, individual birds may appear during spring and autumn migration
+    or occasionally overwinter in mild winters when lower-altitude habitats remain
+    accessible. Most sightings occur in coastal areas and open wetlands where water
+    remains unfrozen, representing displaced birds from more southern populations
+    seeking winter refuge.'
+image_refs:
+- role: hero
+  path: Q208707/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus spinoletta Puy de Cacadogne
+    20190912 t173448.jpg
+  commons_filename: Anthus spinoletta Puy de Cacadogne 20190912 t173448.jpg
+- role: secondary
+  path: Q208707/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nikola_Veljkovi%C4%87&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Nikola Veljković (page does not exist)">Nikola Veljković</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Planinska trepteljka (Anthus
+    spinoletta) zimsko ruho.jpg
+  commons_filename: Planinska trepteljka (Anthus spinoletta) zimsko ruho.jpg
+- role: secondary
+  path: Q208707/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
+    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Water Pipit Anthus spinoletta.jpg
+  commons_filename: Water Pipit Anthus spinoletta.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:14:53.083839+00:00'
+sources:
+  wikipedia_sv_revision: '58994785'
+  wikipedia_en_revision: '1335490574'
+  claude_model: claude-haiku-4-5-20251001

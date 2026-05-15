@@ -1,0 +1,99 @@
+id: Q995602
+scientific_name: Anthus cinnamomeus
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Afrikansk piplärka
+  en: African Pipit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# African Pipit
+
+
+    The African pipit is a small passerine belonging to the pipit genus Anthus within
+    the Motacillidae family. Also called the grassveld or grassland pipit, it is a
+    fairly inconspicuous bird that blends readily into its preferred habitat. It was
+    formerly grouped with Richard''s, Australian, mountain, and paddyfield pipits
+    as a single species, but is now recognized as a distinct species in its own right.
+
+
+    The bird is adapted to open grassland and savanna environments, where its subtle
+    plumage provides effective camouflage. Like other pipits, it is a ground-dwelling
+    species that forages among grass and low vegetation. Its small size and cryptic
+    coloration make it easy to overlook, though patient observation in appropriate
+    habitats will reveal this characteristic member of the pipit family.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and classification information
+    about the African Pipit, with no details regarding its occurrence, migration patterns,
+    or seasonal distribution in Scandinavia or Northern Europe. To provide accurate
+    migration information for this species in northern regions, additional ornithological
+    sources would be required.'
+image_refs:
+- role: hero
+  path: Q995602/hero.jpg
+  width: 2400
+  height: 1587
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:African Pipit, Anthus cinnamomeus,
+    at Mapungubwe National Park, Limpopo, South Africa (18288750736).jpg
+  commons_filename: African Pipit, Anthus cinnamomeus, at Mapungubwe National Park,
+    Limpopo, South Africa (18288750736).jpg
+- role: secondary
+  path: Q995602/secondary-1.jpg
+  width: 1800
+  height: 1279
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:African Pipit, Anthus cinnamomeus,
+    at Mapungubwe National Park, Limpopo, South Africa (18288736366).jpg
+  commons_filename: African Pipit, Anthus cinnamomeus, at Mapungubwe National Park,
+    Limpopo, South Africa (18288736366).jpg
+- role: secondary
+  path: Q995602/secondary-2.jpg
+  width: 1800
+  height: 1326
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:African Pipit, Anthus cinnamomeus,
+    at Mapungubwe National Park, Limpopo, South Africa (18128927289).jpg
+  commons_filename: African Pipit, Anthus cinnamomeus, at Mapungubwe National Park,
+    Limpopo, South Africa (18128927289).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:16:20.672622+00:00'
+sources:
+  wikipedia_sv_revision: '57937062'
+  wikipedia_en_revision: '1349014706'
+  claude_model: claude-haiku-4-5-20251001

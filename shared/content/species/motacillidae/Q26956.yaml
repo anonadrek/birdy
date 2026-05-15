@@ -1,0 +1,132 @@
+id: Q26956
+scientific_name: Anthus pratensis
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Ängspiplärka
+  en: Meadow Pipit
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ängspiplärka
+
+
+    Ängspiplärka är en liten, spenslig fågel som tillhör piplärkornas släkte. Den
+    är smal och långhalsad med ett tunnt, spetsigt näbb anpassat för att plocka små
+    insekter. Fjäderdräkten är övervägande brunaktig med mörkare streckningar på rygg
+    och flanker, vilket ger utmärkt kamouflage i gräsmarker och på öppen mark.
+
+
+    Arten förekommer på ängsmarker, myrar och hedar från sydöstra Grönland genom Europa
+    till västra Sibirien. Ängspiplärkan är en aktiv fågel som ofta ses på marken där
+    den går omkring och söker föda. Den är känd för sitt karakteristiska ropande läte
+    och sin sångaraktivitet, särskilt under häckningssäsongen. Ofta hörs den innan
+    den ses.
+
+
+    Merparten av populationen är flyttfåglar som drar söderut på hösten mot södra
+    Europa, norra Afrika och sydvästra Asien. I västra Europas kusttrakter förekommer
+    dock stannfåglar som stannar året om. Arten återvänder till sina häckningsområden
+    på våren för att bygga bon på marken.'
+  en: '# Meadow Pipit
+
+
+    The meadow pipit is a small passerine bird with streaked brown and buff plumage
+    that provides excellent camouflage in grassland habitats. It is a slender, delicate-looking
+    species with thin legs and a fine, pointed bill adapted for picking insects from
+    vegetation and soil.
+
+
+    This highly migratory species breeds across much of the northern Palearctic, from
+    Greenland and Iceland eastward to the Urals, and southward to central France and
+    Romania, with an isolated population in the Caucasus. It is restless and active,
+    often seen running through short grass or making short, jerky flights low over
+    the ground with its characteristic weak, undulating flight pattern.
+
+
+    The meadow pipit winters in southern Europe, North Africa, and south-western Asia,
+    though populations in western Europe are largely resident, shifting to coastal
+    and lowland areas during winter months. It frequents open grassland, moorland,
+    and rough fields where it hunts for insects and small invertebrates. Its thin,
+    high-pitched call and simple song are characteristic sounds of upland and open
+    country during the breeding season.'
+migration:
+  sv: '# Ängspiplärka – Förekomst i Skandinavien och Nordeuropa
+
+
+    Ängspiplärkan är en häckfågel i Skandinavien och Nordeuropa under vår och sommar.
+    Arten anländer vanligtvis i april och stannar fram till september. Merparten av
+    populationen är flyttfågel och övervintra i södra Europa, norra Afrika och sydvästra
+    Asien. Dock förekommer stannfåglar längs västra Europas kusttrakter där klimatet
+    är mildare, vilket möjliggör ganzårsbosättning. Efter häckningen börjar huvuddelen
+    av populationen sin höstflyttning under senhösten för att undvika de hårda nordiska
+    vinterklimatens mat- och klimatbrist.'
+  en: '# Meadow Pipit (Anthus pratensis) in Northern Europe
+
+
+    The Meadow Pipit is a migratory species across most of Scandinavia and northern
+    Europe, though populations show regional variation. Birds breeding in eastern
+    and central regions migrate south in autumn, wintering in southern Europe, North
+    Africa, and southwestern Asia. However, western European populations, including
+    some Scandinavian birds, are partially resident year-round, with many shifting
+    to coastal areas and lowlands during winter months rather than undertaking long-distance
+    migration. Spring arrival typically occurs in March-April as breeding season approaches.'
+image_refs:
+- role: hero
+  path: Q26956/hero.jpg
+  width: 2400
+  height: 1601
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus pratensis (33752471506).jpg
+  commons_filename: Anthus pratensis (33752471506).jpg
+- role: secondary
+  path: Q26956/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Meadow pipit (Anthus pratensis)
+    2022.jpg
+  commons_filename: Meadow pipit (Anthus pratensis) 2022.jpg
+- role: secondary
+  path: Q26956/secondary-2.jpg
+  width: 1800
+  height: 1605
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Meadow Pipit Anthus pratensis,
+    Arran (39428840831).jpg
+  commons_filename: Meadow Pipit Anthus pratensis, Arran (39428840831).jpg
+review_status: approved
+review_notes: "Ängspiplärka — Anthus pratensis; allmän SE-art på öppna fält + myrar."
+generated_at: '2026-05-15T20:16:02.223089+00:00'
+sources:
+  wikipedia_sv_revision: '57601519'
+  wikipedia_en_revision: '1323461452'
+  claude_model: claude-haiku-4-5-20251001

@@ -4648,12 +4648,14 @@
   ioc_order: Passeriformes
   common_en: Grey Wagtail
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25984
   scientific_name: Motacilla flava
   family: Motacillidae
   ioc_order: Passeriformes
   common_en: Western Yellow Wagtail
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q206540
   scientific_name: Motacilla citreola
   family: Motacillidae
@@ -4672,6 +4674,7 @@
   ioc_order: Passeriformes
   common_en: White Wagtail
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q973164
   scientific_name: Anthus godlewskii
   family: Motacillidae
@@ -4720,6 +4723,7 @@
   ioc_order: Passeriformes
   common_en: Tree Pipit
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q726873
   scientific_name: Anthus hodgsoni
   family: Motacillidae
@@ -4732,18 +4736,21 @@
   ioc_order: Passeriformes
   common_en: Red-throated Pipit
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26956
   scientific_name: Anthus pratensis
   family: Motacillidae
   ioc_order: Passeriformes
   common_en: Meadow Pipit
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q642685
   scientific_name: Anthus petrosus
   family: Motacillidae
   ioc_order: Passeriformes
   common_en: European Rock Pipit
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q208707
   scientific_name: Anthus spinoletta
   family: Motacillidae

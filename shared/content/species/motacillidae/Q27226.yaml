@@ -1,0 +1,105 @@
+id: Q27226
+scientific_name: Anthus campestris
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Fältpiplärka
+  en: Tawny Pipit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Tawny Pipit
+
+
+    The tawny pipit is a medium-large passerine that inhabits open, arid landscapes
+    across a broad range spanning from northwest Africa through central Eurasia to
+    Inner Mongolia. It is a long-distance migrant, departing its breeding grounds
+    during winter to spend the season in tropical Africa and the Indian subcontinent,
+    returning to breed in spring and summer months.
+
+
+    This bird favors dry, sparsely vegetated habitats including steppe, semi-desert,
+    and rocky hillsides where it forages on the ground for insects and small invertebrates.
+    It is often seen walking on the ground with an upright posture, occasionally pausing
+    to feed. When disturbed, it typically runs rather than flies immediately, though
+    it will take to the air with a bounding flight pattern characteristic of pipits.
+
+
+    The tawny pipit produces a distinctive call and song that aid in identification,
+    though specific vocalizations are best learned through field experience or audio
+    guides. Its plumage is relatively uniform and pale, adapted to blend with its
+    arid surroundings, making it somewhat challenging to observe despite its preference
+    for open terrain. Patience and careful scanning of suitable habitat are essential
+    for successful sightings.'
+migration:
+  sv: ''
+  en: '# Tawny Pipit in Scandinavia/Northern Europe
+
+
+    The Tawny Pipit is a summer visitor to Scandinavia and northern Europe, arriving
+    in late spring to breed in open, dry habitats during the warmer months. Breeding
+    birds are present from approximately May through August. As a long-distance migrant,
+    the species vacates Scandinavian breeding grounds in late summer and early autumn,
+    with most individuals departing by September. The entire Scandinavian and northern
+    European population migrates south to overwinter in tropical Africa and the Indian
+    subcontinent, making it entirely absent from the region during winter months.'
+image_refs:
+- role: hero
+  path: Q27226/hero.jpg
+  width: 2400
+  height: 1805
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Duinpieper - tawny pipit - Anthus
+    campestris.tif
+  commons_filename: Duinpieper - tawny pipit - Anthus campestris.tif
+- role: secondary
+  path: Q27226/secondary-1.jpg
+  width: 1800
+  height: 1235
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Tawny Pipit. Anthus campestris
+    (1) - Flickr - gailhampshire.jpg
+  commons_filename: Tawny Pipit. Anthus campestris (1) - Flickr - gailhampshire.jpg
+- role: secondary
+  path: Q27226/secondary-2.jpg
+  width: 1800
+  height: 1349
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
+    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tawny Pipit Anthus campestris.jpg
+  commons_filename: Tawny Pipit Anthus campestris.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:15:37.574197+00:00'
+sources:
+  wikipedia_sv_revision: '59180782'
+  wikipedia_en_revision: '1328742268'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,94 @@
+id: Q1445158
+scientific_name: Anthus berthelotii
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Kanariepiplärka
+  en: Berthelot’s Pipit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kanariepiplärka
+
+
+    Kanariepiplärka är en liten tätting som är endemit för två ögrupper i Atlanten.
+    Det är en sober färgad fågel med gråbrun fjäderdräkt, vilket ger den utmärkt kamouflage
+    i den steniga, torra miljön den bebor. Fågeln är grund- och medelstor bland piplärkorna.
+
+
+    Beteendemässigt är kanariepiplärkan en typisk piplärka som gärna vistas på marken
+    och rör sig genom att gå eller springa efter föda. Det är en återhållsam fågel
+    som ofta ses i mindre grupper. Under häckningsperioden söker den föda på jordytan
+    och mellan klippor.
+
+
+    Arten förekommer uteslutande i Kanarieöarna och på Madeira, där den utgör den
+    enda häckande piplärkan. Det gör den till en betydelsefull art för dessa öar ur
+    ett ornitologiskt perspektiv. Arten är väl anpassad till de torra och steniga
+    habitaten som präglar dessa ögrupper.'
+  en: ''
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."'
+  en: ''
+image_refs:
+- role: hero
+  path: Q1445158/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104249543@N07">Rolf
+    Dietrich Brecher</a> from Germany
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus berthelotii (32217761958).jpg
+  commons_filename: Anthus berthelotii (32217761958).jpg
+- role: secondary
+  path: Q1445158/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104249543@N07">Rolf
+    Dietrich Brecher</a> from Germany
+  source_url: https://commons.wikimedia.org/wiki/File:Was guckst Du? - Anthus berthelotii
+    (46038841522).jpg
+  commons_filename: Was guckst Du? - Anthus berthelotii (46038841522).jpg
+- role: secondary
+  path: Q1445158/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/198981757@N08">Donald
+    Davesne</a> from Paris, France
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus berthelotii, Ponta de
+    São Lourenço, Madeira, Portugal (53285295850).jpg
+  commons_filename: Anthus berthelotii, Ponta de São Lourenço, Madeira, Portugal (53285295850).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:15:48.160441+00:00'
+sources:
+  wikipedia_sv_revision: '56586539'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,95 @@
+id: Q266107
+scientific_name: Dendronanthus indicus
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Dendronanthus
+  ioc_order: Passeriformes
+names:
+  sv: Trädärla
+  en: Forest Wagtail
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Trädärla
+
+
+    Trädärla är en asiatisk fågel som tillhör familjen ärlor. Den är särskilt utmärkande
+    genom sitt avvikande beteende jämfört med andra arter inom familjen. Medan de
+    flesta ärlor vippar stjärten upp och ned, rör trädärlan stjärten från sida till
+    sida – ett unikt drag som lätt identifierar arten i fält.
+
+
+    Ett annat karakteristiskt beteende är att trädärlan häckar i träd, till skillnad
+    från många andra arter inom familjen som föredrar markens närhet. Detta gör den
+    väl anpassad för ett mer arboreal liv bland grenverken.
+
+
+    Arten förekommer i asiatiska regioner där lämplig habitat med träd och öppen mark
+    finns tillgänglig. För den intresserade fadderlen är trädärlans distinktiva stjärtvippning
+    och trädhäckning lätta kännetecken att leta efter.'
+  en: '# Forest Wagtail
+
+
+    The forest wagtail is a medium-sized passerine with distinctive plumage that distinguishes
+    it from other wagtails in the Motacillidae family. Most notably, it wags its tail
+    from side to side rather than the characteristic up-and-down motion typical of
+    other wagtails—an unusual behaviour that makes it immediately recognisable in
+    the field.
+
+
+    This species is unique among wagtails for its arboreal nesting habits, being the
+    only member of its family to build nests in trees rather than on the ground. It
+    inhabits forested environments and shows a migratory pattern across Asia, breeding
+    in temperate woodlands of east Asia during the breeding season and dispersing
+    across tropical forested regions from India to Indonesia during winter months.
+
+
+    The forest wagtail''s preference for wooded habitats sets it apart from the more
+    open-country wagtails commonly seen in grasslands and wetlands. Its combination
+    of striking plumage, distinctive tail-wagging behaviour, and tree-nesting habit
+    make it a notable species for birdwatchers exploring forested regions within its
+    range.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: '# Forest Wagtail in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Forest Wagtail breeds in temperate East Asia and winters across tropical Asia,
+    with its range extending from India to Indonesia. This species does not occur
+    in Scandinavia or Northern Europe, either as a resident, migrant, or winter visitor.
+    Its distribution is entirely restricted to Asian regions, making it absent from
+    European territories throughout the year.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:16:33.025647+00:00'
+sources:
+  wikipedia_sv_revision: '56466730'
+  wikipedia_en_revision: '1344600496'
+  claude_model: claude-haiku-4-5-20251001

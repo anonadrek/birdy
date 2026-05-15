@@ -1,0 +1,130 @@
+id: Q726873
+scientific_name: Anthus hodgsoni
+taxonomy:
+  family: Motacillidae
+  family_sv: Ärlor och piplärkor
+  genus: Anthus
+  ioc_order: Passeriformes
+names:
+  sv: Sibirisk piplärka
+  en: Olive-backed Pipit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sibirisk piplärka
+
+
+    Sibirisk piplärka är en liten tätting som tillhör familjen ärlor och piplärkor.
+    Den är mycket lik trädpiplärkan och närstäld med denna art. Arten kännetecknas
+    av sitt olivbruna yttre, vilket även återspeglas i dess engelska namn Olive-backed
+    Pipit.
+
+
+    Arten häckar i Sibirien, nordöstligaste Europa samt i bergstrakter i södra och
+    västra Asien, däribland Himalaya, Kina och Japan. Under vintermånaderna är fågeln
+    flyttfågel som söker sig till södra och sydöstra Asien, från Indien till Indonesien
+    för att övervintra.
+
+
+    I Europa påträffas sibirisk piplärka endast sällsynt men regelbundet. I Sverige
+    är den en årlig gäst, främst under flyttningsperioderna. Internationella naturvårdsunionen
+    IUCN klassificerar arten som livskraftig, vilket indikerar att den inte är hotad.'
+  en: '# Olive-backed Pipit
+
+
+    The olive-backed pipit is a small passerine with distinctive plumage that sets
+    it apart from related species. Its most notable feature is an olive-toned back
+    with minimal streaking, contrasting with the browner, more heavily streaked appearance
+    of the similar tree pipit. The head pattern includes a well-marked supercilium
+    (eyebrow stripe) that is particularly prominent, giving the bird a characteristic
+    facial expression.
+
+
+    This is a long-distance migrant with a wide breeding range across southern, north-central,
+    and eastern Asia, extending into north-eastern European Russia. During winter
+    months, it relocates to southern Asia and Indonesia in search of food and suitable
+    habitat. Like other pipits, it is an active forager, typically found on the ground
+    or in low vegetation where it hunts for insects and small invertebrates.
+
+
+    The olive-backed pipit''s call and song are typical of the genus, though details
+    of its vocalizations are less distinctive than its visual characteristics. It
+    occupies open and semi-open habitats during both breeding and wintering seasons,
+    preferring areas with short grass and scattered scrub vegetation. Its migratory
+    habits and preference for lower elevations make it a seasonal visitor to many
+    regions within its range.'
+migration:
+  sv: '# Sibirisk piplärka i Norden
+
+
+    Sibirisk piplärka är en regelbunden men sällsynt gäst i Skandinavien och övriga
+    Europa. Arten häckar i Sibirien och nordöstligaste Europa, men flyttar på hösten
+    till söder. Under höstflyttningen påträffas den årligen i Sverige och andra nordeuropeiska
+    länder, där den syns företrädesvis under sensommar och höst. Arten övervintringar
+    inte i Norden utan drar vidare till södra och sydöstra Asien, från Indien till
+    Indonesien. På våren återvänder fåglarna till sina häckningsområden i öst.'
+  en: '# Olive-backed Pipit (Anthus hodgsoni) in Northern Europe
+
+
+    The Olive-backed Pipit is a rare vagrant to Scandinavia and Northern Europe rather
+    than a regular migrant. While the species breeds in northeastern European Russia
+    and is a long-distance migrant between its Asian breeding grounds and wintering
+    areas in southern Asia and Indonesia, it only occasionally reaches Scandinavian
+    regions during migration periods. Most records from Northern Europe represent
+    vagrants that have dispersed beyond their normal migration routes. When encountered
+    in the region, they typically appear during spring or autumn migration, though
+    such sightings remain uncommon.'
+image_refs:
+- role: hero
+  path: Q726873/hero.jpg
+  width: 2400
+  height: 1491
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Davidvraju" title="User:Davidvraju">Davidvraju</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Olive-backed pipit (Anthus hodgsoni).jpg
+  commons_filename: Olive-backed pipit (Anthus hodgsoni).jpg
+- role: secondary
+  path: Q726873/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%E5%A4%A7%E5%AE%B6%E5%A5%BD64"
+    title="User:大家好64">大家好64</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Olive-backed pipit (Anthus hodgsoni),
+    Hangzhou, China.jpg
+  commons_filename: Olive-backed pipit (Anthus hodgsoni), Hangzhou, China.jpg
+- role: secondary
+  path: Q726873/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Anthus hodgsoni (40950152882).jpg
+  commons_filename: Anthus hodgsoni (40950152882).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:15:28.242890+00:00'
+sources:
+  wikipedia_sv_revision: '58563234'
+  wikipedia_en_revision: '1314805940'
+  claude_model: claude-haiku-4-5-20251001

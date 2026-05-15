@@ -333,6 +333,25 @@ species:
   Q619728:
     description_accept_missing: [sv, en]  # Kanariestrandskata (Canary Islands Oystercatcher †, EX)
     allow_missing_images: true  # extinct, ingen Commons hi-res
+  # Motacillidae batch (2026-05-15): piplärkor svwiki kort/saknas.
+  Q266107:
+    allow_missing_images: true  # Forest Wagtail
+  Q1445158:
+    description_accept_missing: [en]  # Berthelot’s Pipit
+  Q1590302:
+    description_accept_missing: [sv]  # Long-billed Pipit
+  Q206540:
+    description_accept_missing: [sv, en]  # Citrine Wagtail
+  Q27226:
+    description_accept_missing: [sv]  # Tawny Pipit
+  Q530069:
+    description_accept_missing: [sv, en]  # African Pied Wagtail
+  Q904790:
+    description_accept_missing: [en]  # Richard’s Pipit
+  Q973164:
+    description_accept_missing: [sv, en]  # Blyth’s Pipit
+  Q995602:
+    description_accept_missing: [sv]  # African Pipit
   # Leiothrichidae+Locustellidae+Malaconotidae+Meropidae bundle (2026-05-15).
   Q28921354:
     description_accept_missing: [sv]  # Iraq Babbler — 68w
