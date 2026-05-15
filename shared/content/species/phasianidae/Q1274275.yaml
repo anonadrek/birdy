@@ -1,0 +1,72 @@
+id: Q1274275
+scientific_name: Ammoperdix heyi
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Ammoperdix
+  ioc_order: Galliformes
+names:
+  sv: Ökenhöna
+  en: Sand Partridge
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q1274275/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
+    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ammoperdix heyi 02.jpg
+  commons_filename: Ammoperdix heyi 02.jpg
+- role: secondary
+  path: Q1274275/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
+    title="User:מינוזיג">מינוזיג</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ammoperdix heyi, Israel.jpg
+  commons_filename: Ammoperdix heyi, Israel.jpg
+- role: secondary
+  path: Q1274275/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
+    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ammoperdix heyi 4.jpg
+  commons_filename: Ammoperdix heyi 4.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:06:15.624069+00:00'
+sources:
+  wikipedia_sv_revision: '56455199'
+  wikipedia_en_revision: '1315363481'
+  claude_model: claude-haiku-4-5-20251001

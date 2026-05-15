@@ -1,0 +1,88 @@
+id: Q285165
+scientific_name: Francolinus francolinus
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Francolinus
+  ioc_order: Galliformes
+names:
+  sv: Svart frankolin
+  en: Black Francolin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Black Francolin
+
+
+    The black francolin is a gamebird belonging to the pheasant family Phasianidae.
+    It was formerly known as the black partridge and remains an important species
+    in cultural and culinary contexts across its range.
+
+
+    This francolin is valued both as a wild bird and in traditional cuisines, where
+    it has been hunted for generations. Its status as a state bird in parts of its
+    natural range reflects its significance to local communities and wildlife heritage.
+
+
+    The species represents an interesting member of the Galliformes order, occupying
+    ecological niches similar to other gamebirds in open and semi-open habitats across
+    its distribution.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q285165/hero.jpg
+  width: 2184
+  height: 1620
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37804979@N00">Tony
+    Hisgett</a> from Birmingham, UK
+  source_url: https://commons.wikimedia.org/wiki/File:Francolinus francolinus 1.jpg
+  commons_filename: Francolinus francolinus 1.jpg
+- role: secondary
+  path: Q285165/secondary-1.jpg
+  width: 1800
+  height: 1245
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Elshad_photo" title="User:Elshad
+    photo">Elshad photo</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Francolinus francolinus, Azerbaijan.jpg
+  commons_filename: Francolinus francolinus, Azerbaijan.jpg
+- role: secondary
+  path: Q285165/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Iraqi_eco" title="User:Iraqi
+    eco">Iraqi eco</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Francolinus francolinus دراج
+    أسود (عراقي).jpg
+  commons_filename: Francolinus francolinus دراج أسود (عراقي).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:05:04.857326+00:00'
+sources:
+  wikipedia_sv_revision: '55739170'
+  wikipedia_en_revision: '1334949075'
+  claude_model: claude-haiku-4-5-20251001

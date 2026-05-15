@@ -1,0 +1,132 @@
+id: Q28358
+scientific_name: Coturnix coturnix
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Coturnix
+  ioc_order: Galliformes
+names:
+  sv: Vaktel
+  en: Common Quail
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vaktel
+
+
+    Vakteln är en liten hönsfågel som endast blir 16–18 centimeter lång. Den särskiljer
+    sig från de flesta andra hönsfåglar genom att vara en flyttfågel, vilket är ovanligt
+    för familjen. Arten är vida spridd och förekommer i tempererade delar av Europa
+    och Asien, samt i Afrika.
+
+
+    Vakteln är aktiv och boende på marken i öppna och halvöppna habitat. Arten är
+    känd för sitt karakteristiska läte – ett snabbt, rytmiskt tjippande som ofta hörs
+    på kvällen och natten under häckningsperioden. Från håll kan lätet vara utmanande
+    att särskilja från andra arter.
+
+
+    Globalt har vaktels bestånd minskat, men arten anses enligt IUCN fortfarande ha
+    en livskraftig population. Minskningen beror bland annat på förändrad jordbruksmark
+    och jakt.'
+  en: '# Common Quail
+
+
+    The common quail is a small, ground-nesting game bird belonging to the pheasant
+    family. It is a highly migratory species, breeding across the western Palearctic
+    during summer months before traveling to winter quarters in Africa and southern
+    India. This pattern of long-distance migration makes it one of the most mobile
+    gamebirds in its range.
+
+
+    As a ground-nester, the common quail favors open habitats including grasslands,
+    grain fields, and cultivated areas where it can nest among low vegetation. It
+    is primarily a terrestrial bird, preferring to walk and run rather than fly, though
+    it is capable of sustained flight during migration. The species is typically encountered
+    in agricultural landscapes and open grasslands where suitable cover exists for
+    nesting and foraging.
+
+
+    The common quail''s distinctive call is one of its most recognizable features
+    and is often used for identification. The bird remains relatively inconspicuous
+    due to its cryptic plumage and ground-dwelling habits, making visual sightings
+    challenging despite its presence in suitable habitats. Its secretive nature and
+    preference for dense vegetation mean it is often heard rather than seen by observers.'
+migration:
+  sv: '# Vaktel – Förekomst i Skandinavien/Nordeuropa
+
+
+    Vaktel är en flyttfågel som förekommer i Skandinavien och Nordeuropa under sommarmånaderna.
+    Arten anländer under våren för att häcka och återvänder söderut på hösten för
+    att övervintra i varmare klimat. Vaktel är således en sommargäst i regionen och
+    är främst närvarande under häckningssäsongen från april/maj till augusti/september.
+    Under denna period kan arten hittas på lämpliga biotoper med öppen eller halvöppen
+    mark där den kan föda sina ungar innan den migrerar söderut för att undvika de
+    kalla nordiska vintrar.'
+  en: '# Common Quail (Coturnix coturnix) in Scandinavia/Northern Europe
+
+
+    The Common Quail is a summer visitor to Scandinavia and northern Europe, arriving
+    in late spring (May-June) to breed in open grasslands and grain fields. It is
+    highly migratory, with populations breeding across the western Palearctic before
+    undertaking long-distance migrations southward. In autumn (August-September),
+    birds depart northern breeding grounds and migrate to wintering grounds in Africa
+    and southern India, making it absent from the region during winter months. The
+    species'' presence in Scandinavia is therefore seasonal and variable, dependent
+    on suitable breeding habitat and favorable conditions during spring migration.'
+image_refs:
+- role: hero
+  path: Q28358/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/tcager">tcager</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Coturnix coturnix, Chernozemelsky,
+    Kalmykia Republic, Russia 1.jpg
+  commons_filename: Coturnix coturnix, Chernozemelsky, Kalmykia Republic, Russia 1.jpg
+- role: secondary
+  path: Q28358/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common quail (Coturnix coturnix)
+    2019.jpg
+  commons_filename: Common quail (Coturnix coturnix) 2019.jpg
+- role: secondary
+  path: Q28358/secondary-2.jpg
+  width: 1800
+  height: 1151
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common quail (Coturnix coturnix)
+    2019 2.jpg
+  commons_filename: Common quail (Coturnix coturnix) 2019 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:05:05.932859+00:00'
+sources:
+  wikipedia_sv_revision: '59193385'
+  wikipedia_en_revision: '1318583407'
+  claude_model: claude-haiku-4-5-20251001

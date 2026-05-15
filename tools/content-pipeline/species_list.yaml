@@ -366,12 +366,14 @@
   ioc_order: Galliformes
   common_en: Hazel Grouse
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q205930
   scientific_name: Lagopus muta
   family: Phasianidae
   ioc_order: Galliformes
   common_en: Rock Ptarmigan
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q40655821
   scientific_name: Lagopus scotica
   family: Phasianidae
@@ -384,12 +386,14 @@
   ioc_order: Galliformes
   common_en: Willow Ptarmigan
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q129059
   scientific_name: Tetrao urogallus
   family: Phasianidae
   ioc_order: Galliformes
   common_en: Western Capercaillie
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q845408
   scientific_name: Lyrurus mlokosiewiczi
   family: Phasianidae
@@ -402,12 +406,14 @@
   ioc_order: Galliformes
   common_en: Black Grouse
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26106
   scientific_name: Perdix perdix
   family: Phasianidae
   ioc_order: Galliformes
   common_en: Grey Partridge
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q339483
   scientific_name: Syrmaticus reevesii
   family: Phasianidae
@@ -432,6 +438,7 @@
   ioc_order: Galliformes
   common_en: Common Pheasant
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q117253126
   scientific_name: Ortygornis pondicerianus
   family: Phasianidae

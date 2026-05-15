@@ -1,0 +1,140 @@
+id: Q178702
+scientific_name: Lagopus lagopus
+taxonomy:
+  family: Phasianidae
+  family_sv: Skogshöns
+  genus: Lagopus
+  ioc_order: Galliformes
+names:
+  sv: Dalripa
+  en: Willow Ptarmigan
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dalripa
+
+
+    Dalripa är en medelstor hönsfågel som förekommer över stora delar av norra halvklotet.
+    Det mest karakteristiska för arten är dess dramatiska säsongsväxling – sommartid
+    bär den brunspräcklig dräkt som ger utmärkt kamouflage bland stenar och vegetation,
+    medan det under vintern blir helt vit för att smälta in i snölandskapet. Denna
+    anpassning gör arten svårfotograferad men också spännande att iaktta under olika
+    årstider.
+
+
+    Dalripan är en återhållen fågel som föredrar att stanna på marken och drar sig
+    undan genom att springa snarare än att flyga. Den lever på öppen mark och tundra
+    där det finns låg vegetation att beta på. Under våren hörs hannarna ge ifrån sig
+    karakteristiska rop som en del av parbindningen.
+
+
+    Arten är välanpassad för nordiska förhållanden och utgör en viktig del av den
+    boreala och arktiska faunan. För den som söker denna art krävs tålamod och kunskap
+    om rätt habitat, men mötet med en dalripa i sitt naturliga element är en minnesvård
+    observation.'
+  en: '# Willow Ptarmigan
+
+
+    The willow ptarmigan is a medium-sized grouse belonging to the pheasant family.
+    It is adapted to cold northern environments, breeding across extensive territories
+    in birch forests, moorlands, and tundra regions throughout the Arctic and sub-Arctic.
+
+
+    The species undergoes dramatic seasonal plumage changes. In winter, it becomes
+    predominantly white to blend with snow, while in summer its plumage transitions
+    to mottled brown and grey tones for camouflage among vegetation. Its stocky build
+    and feathered legs provide insulation in harsh climates. Males are typically slightly
+    larger than females.
+
+
+    Behaviorally, willow ptarmigans are generally ground-dwelling birds that forage
+    on vegetation, berries, and buds. They tend to be cryptic, relying on their camouflaged
+    plumage to avoid detection. The birds are social outside the breeding season,
+    sometimes gathering in small flocks. During breeding season, males become territorial
+    and vocal, producing distinctive calls that range from croaking sounds to harsh
+    notes. The species is widely distributed across northern birch forests, tundra
+    habitats, and boreal regions, making it a characteristic bird of circumpolar Arctic
+    and sub-Arctic landscapes. It holds cultural significance as a state bird in one
+    major northern region.'
+migration:
+  sv: '# Dalripa (Lagopus lagopus)
+
+
+    Dalripa är en stationär art som förekommer året runt i Skandinavien och Nordeuropa,
+    utan någon regulär långdistansmigration. Populationen är huvudsakligen bosatt,
+    även om begränsade lokala förflyttningar kan förekomma under extrema vintrar när
+    snötäcket blir särskilt omfattande. Arten anpassar sig till säsongsväxlingen genom
+    sin färgförändring: brunspräcklig dräkt under sommar- och höstmånaderna och helt
+    vit vinterplumage från november till april.
+
+
+    Arten är väl anpassad för nordiska klimatförhållanden och utgör därför ingen långvandrare.
+    Under vintermånaderna stannar dalripa i sitt hemområde och söker föda genom att
+    plocka knoppar och växtdelar från snöfria områden och bergssidor.'
+  en: '# Willow Ptarmigan (Lagopus lagopus) in Scandinavia
+
+
+    The Willow Ptarmigan is a year-round resident throughout Scandinavia and northern
+    Europe, breeding in birch forests, moorlands, and tundra habitats. These birds
+    do not undertake long-distance migrations like many other northern species. Instead,
+    they exhibit altitudinal and local movements in response to winter snow cover,
+    shifting to lower elevations or more sheltered areas during harsh winter conditions.
+    In spring, they return to upland breeding territories as snow melts. Populations
+    remain largely sedentary within their northern range, relying on their remarkable
+    plumage changes—molting into white winter plumage for camouflage and reverting
+    to mottled brown breeding plumage in summer.'
+image_refs:
+- role: hero
+  path: Q178702/hero.jpg
+  width: 2400
+  height: 1607
+  license: Public domain
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q26235785" class="extiw" title="d:Q26235785"><span
+    title="photographer">David Menke</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Lagopus lagopus Alaska 2.jpg
+  commons_filename: Lagopus lagopus Alaska 2.jpg
+- role: secondary
+  path: Q178702/secondary-1.jpg
+  width: 1800
+  height: 1484
+  license: Public domain
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q26235785" class="extiw" title="d:Q26235785"><span
+    title="photographer">David Menke</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Lagopus lagopus Alaska 1.jpg
+  commons_filename: Lagopus lagopus Alaska 1.jpg
+- role: secondary
+  path: Q178702/secondary-2.jpg
+  width: 1800
+  height: 1259
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Willow ptarmigan (Lagopus lagopus)
+    2018 2.jpg
+  commons_filename: Willow ptarmigan (Lagopus lagopus) 2018 2.jpg
+review_status: approved
+review_notes: "Hero = Lagopus lagopus (Willow Ptarmigan / Dalripa); allmän i fjällbjörkskog och tundra i norra SE."
+generated_at: '2026-05-15T21:06:47.500532+00:00'
+sources:
+  wikipedia_sv_revision: '58684163'
+  wikipedia_en_revision: '1351295019'
+  claude_model: claude-haiku-4-5-20251001

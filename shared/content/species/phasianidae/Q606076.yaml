@@ -1,0 +1,126 @@
+id: Q606076
+scientific_name: Coturnix delegorguei
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Coturnix
+  ioc_order: Galliformes
+names:
+  sv: Harlekinvaktel
+  en: Harlequin Quail
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Harlekinvaktel
+
+
+    Harlekinvaktel är en liten fågel i familjen fasanfåglar som främst förekommer
+    i Afrika söder om Sahara, men finns även på Madagaskar och sydvästra Arabiska
+    halvön. Arten är anpassad till öppna gräsmarker där den rör sig på marken och
+    söker föda bland vegetationen.
+
+
+    Denna vaktelart har ett karakteristiskt färgmönster som inspirerat namnet – en
+    kontrasterande och mönstrad fjäderdräkt som hjälper den att smälta in i gräsmiljön.
+    Som många vaktelarter är det en relativt små fågel som föredrar att springa och
+    gömma sig snarare än att flyga.
+
+
+    Beståndet av harlekinvaktel anses vara livskraftigt och arten är inte klassificerad
+    som hotad. Den återfinns framför allt i lämpliga habitattyper med gräsmarker och
+    öppen terräng där den kan föda sig på små frön och insekter.'
+  en: '# Harlequin Quail
+
+
+    The harlequin quail is a small gamebird belonging to the pheasant family, found
+    across sub-Saharan Africa and the Arabian Peninsula. This diminutive species is
+    named after the naturalist Adolphe Delegorgue, an early collector of African birds.
+
+
+    As a ground-dwelling quail, it inhabits grasslands and open savanna regions where
+    it forages for seeds and insects among low vegetation. Like other quails, it is
+    a mobile species, moving in response to seasonal rainfall patterns and food availability.
+    The bird tends to be secretive and runs rather than flies when disturbed, though
+    it will take to the wing when pressed.
+
+
+    The harlequin quail''s plumage features distinctive markings that give it its
+    striking common name, though specific details of appearance, vocalizations, and
+    precise habitat preferences remain less documented than those of more widely studied
+    quail species. Its presence in arid and semi-arid regions makes it well-adapted
+    to variable environmental conditions across its range.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."
+
+
+    **Förklaring:** Källtexten innehåller endast information om att harlekinvaktel
+    är en huvudsakligen afrikansk fågel som förekommer i Afrika söder om Sahara, på
+    Madagaskar och sydvästra Arabiska halvön. Det finns ingen information om förekomst
+    i Skandinavien/Nordeuropa eller om migrationsmönster, vilket gör det omöjligt
+    att skriva faktabaserad information om artens säsongsmässiga förekomst i regionen.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Harlequin Quail is a sub-Saharan African and Arabian species with no documented
+    occurrence in Scandinavia or Northern Europe. Therefore, information about its
+    presence, migration patterns, or seasonal movements in these regions cannot be
+    provided.'
+image_refs:
+- role: hero
+  path: Q606076/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:NasserHalaweh" title="User:NasserHalaweh">NasserHalaweh</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phasianidae Coturnix delegorguei
+    2.jpg
+  commons_filename: Phasianidae Coturnix delegorguei 2.jpg
+- role: secondary
+  path: Q606076/secondary-1.jpg
+  width: 1800
+  height: 1019
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9765210@N03">Dominic
+    Sherony</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Harlequin Quail (Coturnix delegorguei)
+    1 (31605900087).jpg
+  commons_filename: Harlequin Quail (Coturnix delegorguei) 1 (31605900087).jpg
+- role: secondary
+  path: Q606076/secondary-2.jpg
+  width: 1800
+  height: 1543
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jutta234" class="mw-redirect"
+    title="User:Jutta234">Jutta234</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Coturnix delegorguei - Zoo Frankfurt
+    1.jpg
+  commons_filename: Coturnix delegorguei - Zoo Frankfurt 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:05:18.561846+00:00'
+sources:
+  wikipedia_sv_revision: '56454828'
+  wikipedia_en_revision: '1314963205'
+  claude_model: claude-haiku-4-5-20251001

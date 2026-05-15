@@ -1,0 +1,133 @@
+id: Q205930
+scientific_name: Lagopus muta
+taxonomy:
+  family: Phasianidae
+  family_sv: Skogshöns
+  genus: Lagopus
+  ioc_order: Galliformes
+names:
+  sv: Fjällripa
+  en: Rock Ptarmigan
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fjällripa
+
+
+    Fjällripan är en hönsfågel som lever i karga arktiska och subarktiska områden
+    runt världen, samt på isolerade högfjällen på sydligare breddgrader. Den har en
+    stor, rundad kropp och förhållandevis litet huvud, vilket gör den lik dalripan.
+    Arten når en längd på omkring 31–35 cm beroende på underart.
+
+
+    Fjällripan är en mästare på kamouflage. Dess fjäderdräkt skiftar säsongsvis för
+    att passa miljön: helt vit på vintern och gråbrunspräcklig på vår och sommar.
+    Även tarserna är fjäderklädda för värmeisolering. Under parningsleken framträder
+    den röda kam ovanför ögat, som funktion signalerande för att attrahera honor.
+
+
+    Fjällripan förekommer året om på sitt territorialsystem i högfjällens kala områden,
+    där den är väl anpassad till extrema väderförhållanden. Medan de flesta populationer
+    är stationära, visar några högarktiska populationer flyttfågelbeteende.'
+  en: '# Rock Ptarmigan
+
+
+    The rock ptarmigan is a medium-sized game bird belonging to the grouse family.
+    It undergoes a remarkable seasonal transformation: in winter, its plumage turns
+    white for camouflage against snow, while in summer it adopts mottled brown and
+    grey tones to blend with rocky terrain. Both sexes display a small red comb above
+    the eye, particularly visible during breeding season. It is stockily built with
+    feathered legs and toes adapted for movement across mountainous landscapes.
+
+
+    This bird is found in high alpine and subarctic regions across the Northern Hemisphere,
+    inhabiting rocky slopes, tundra, and moorland above the tree line. It forages
+    on the ground for vegetation, seeds, and insects, moving quietly through sparse
+    vegetation. Its call is a harsh, grating croak or chuckle, often heard during
+    territorial disputes.
+
+
+    Rock ptarmigans are relatively sedentary, remaining in their mountain habitats
+    year-round. They rely on their cryptic plumage for protection, freezing motionless
+    when threatened rather than taking flight. During winter, they develop special
+    feathering on their feet that acts like snowshoes, allowing them to walk across
+    deep snow while foraging.'
+migration:
+  sv: '# Fjällripan i Norden – Förekomst och migration
+
+
+    Fjällripan är en stannfågel eller kortstickare i de flesta av sitt utbredningsområde,
+    men ett antal högarktiska populationer är flyttfåglar. I Skandinavien och Nordeuropa
+    är arten huvudsakligen stannfågel, särskilt de bergspopulationer som förekommer
+    i fjällregionerna. Under hårda vintrar kan vissa individer från nordöstra populationer
+    visa upp nomadisk beteende och förflytta sig söderut för att finna föda. Arten
+    är närvarande året om i sitt hemområde, anpassad för det arktiska och subarktiska
+    klimatet med sin säsongsbundna fjäderdräkt – helt vit på vintern för kamouflage
+    i snö och grå-brunspräcklig under växtperioden.'
+  en: '# Rock Ptarmigan (Lagopus muta) in Northern Europe
+
+
+    The rock ptarmigan is a resident species throughout Scandinavia and northern Europe,
+    occurring year-round in alpine and arctic regions. In these areas, the species
+    is largely sedentary, remaining at high elevations even during winter months.
+    Northern populations may exhibit altitudinal movements, descending to lower elevations
+    during particularly harsh winters, though true long-distance migration is uncommon.
+    The species is well-adapted to extreme cold and snow cover, utilizing its seasonal
+    plumage changes—molting to white winter plumage and brown/grey summer plumage—as
+    camouflage throughout the year in subnival and alpine habitats.'
+image_refs:
+- role: hero
+  path: Q205930/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rock ptarmigan (Lagopus muta)
+    1.jpg
+  commons_filename: Rock ptarmigan (Lagopus muta) 1.jpg
+- role: secondary
+  path: Q205930/secondary-1.jpg
+  width: 1800
+  height: 1332
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Alpensneeuwhoen - rock ptarmigan
+    - Lagopus muta 2.jpg
+  commons_filename: Alpensneeuwhoen - rock ptarmigan - Lagopus muta 2.jpg
+- role: secondary
+  path: Q205930/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/39676602@N06">Daisuke
+    Tashiro</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lagopus muta japonica Mount
+    Tsubakuro.jpg
+  commons_filename: Lagopus muta japonica Mount Tsubakuro.jpg
+review_status: approved
+review_notes: "Hero = Lagopus muta (Rock Ptarmigan / Fjällripa); allmän i kalfjäll i norra SE."
+generated_at: '2026-05-15T21:06:04.618863+00:00'
+sources:
+  wikipedia_sv_revision: '58510669'
+  wikipedia_en_revision: '1351785131'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,73 @@
+id: Q251584
+scientific_name: Alectoris melanocephala
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Alectoris
+  ioc_order: Galliformes
+names:
+  sv: Arabrödhöna
+  en: Arabian Partridge
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Arabian Partridge
+
+
+    The Arabian partridge is a member of the pheasant family found across the southern
+    Arabian Peninsula, with two recognized subspecies. This species occasionally hybridizes
+    with both Philby''s partridge and the rock partridge, suggesting close evolutionary
+    relationships with these related birds.
+
+
+    The Arabian partridge inhabits rocky and mountainous terrain in its native range.
+    Like other partridges, it is a ground-dwelling bird adapted to arid environments.
+    Its specific appearance, behavioral patterns, and distinctive calls would help
+    distinguish it from similar partridge species in the region, particularly where
+    ranges overlap with its close relatives.
+
+
+    This species represents an important part of Arabian Peninsula avifauna, with
+    its presence in rocky upland habitats making it a specialist of arid regions.'
+migration:
+  sv: ''
+  en: '# Arabian Partridge (Arabrödhöna)
+
+
+    Migration data unavailable for this species.
+
+
+    The source text provides only basic taxonomic and geographical information about
+    the Arabian Partridge, indicating it is native to the southern Arabian Peninsula
+    with two recognized subspecies. No information regarding occurrence in Scandinavia,
+    Northern Europe, migration patterns, seasonal movements, or overwintering behavior
+    is included in the provided material. This species is not known to occur naturally
+    in Scandinavian or Northern European regions.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:05:34.593118+00:00'
+sources:
+  wikipedia_sv_revision: '58304632'
+  wikipedia_en_revision: '1316578285'
+  claude_model: claude-haiku-4-5-20251001

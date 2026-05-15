@@ -1,0 +1,88 @@
+id: Q339483
+scientific_name: Syrmaticus reevesii
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Syrmaticus
+  ioc_order: Galliformes
+names:
+  sv: Kungsfasan
+  en: Reeves’s Pheasant
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: 'Kungsfasan är en hönsfågel i familjen fasanfåglar med ursprung i Kina. Arten
+    är liten och fragmenterad i sitt naturliga utbredningsområde, vilket har lett
+    till att den klassificeras som sårbar på IUCN:s röda lista för hotade arter. Förutom
+    sin naturliga förekomst i Asien har en frilevande population etablerats i Europa,
+    notamment i Frankrike och Tjeckien.
+
+
+    Arten är anpassad till att leva i skogiga bergsmiljöer. Kungensfasan är en marksökande
+    fågel som lever mest på marken, där den söker föda. Som många fasaner inom familjen
+    fasanfåglar är arten relativt skyggt och föredrar områden med tät vegetation där
+    det kan dölja sig från predatorer.
+
+
+    Populationen kräver bevarandeinsatser för att säkerställa dess överlevnad på lång
+    sikt, både i sitt naturliga utbredningsområde och i de etablerade populationerna
+    i Europa.'
+  en: ''
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: ''
+image_refs:
+- role: hero
+  path: Q339483/hero.jpg
+  width: 2140
+  height: 1977
+  license: CC BY 2.0
+  author: James St. John
+  source_url: https://commons.wikimedia.org/wiki/File:Syrmaticus reevesii (Reeves'
+    pheasant) 2.jpg
+  commons_filename: Syrmaticus reevesii (Reeves' pheasant) 2.jpg
+- role: secondary
+  path: Q339483/secondary-1.jpg
+  width: 1800
+  height: 1348
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42834622@N00">Ernst
+    Vikne</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Syrmaticus reevesii -Norway
+    -captive-8.jpg
+  commons_filename: Syrmaticus reevesii -Norway -captive-8.jpg
+- role: secondary
+  path: Q339483/secondary-2.jpg
+  width: 1350
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:NasserHalaweh" title="User:NasserHalaweh">NasserHalaweh</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phasianidae Syrmaticus reevesii
+    1.2.jpg
+  commons_filename: Phasianidae Syrmaticus reevesii 1.2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:05:53.260542+00:00'
+sources:
+  wikipedia_sv_revision: '55629269'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

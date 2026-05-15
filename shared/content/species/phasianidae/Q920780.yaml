@@ -1,0 +1,78 @@
+id: Q920780
+scientific_name: Ammoperdix griseogularis
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Ammoperdix
+  ioc_order: Galliformes
+names:
+  sv: Visselhöna
+  en: See-see Partridge
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q920780/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D0%9C%D1%83%D1%85%D0%B0%D0%BC%D0%BC%D0%B0%D0%B4%D1%81%D0%BE%D0%BB%D0%B5%D1%85_%D0%9E%D0%B5%D0%B2&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Мухаммадсолех Оев (page does not exist)">Мухаммадсолех
+    Оев</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Пустынная куропатка - See-see
+    Partridge (Ammoperdix griseogularis).jpg
+  commons_filename: Пустынная куропатка - See-see Partridge (Ammoperdix griseogularis).jpg
+- role: secondary
+  path: Q920780/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D0%9C%D1%83%D1%85%D0%B0%D0%BC%D0%BC%D0%B0%D0%B4%D1%81%D0%BE%D0%BB%D0%B5%D1%85_%D0%9E%D0%B5%D0%B2&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Мухаммадсолех Оев (page does not exist)">Мухаммадсолех
+    Оев</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Пустынная куропатка - See-see
+    Partridge (Ammoperdix griseogularis) 1.jpg
+  commons_filename: Пустынная куропатка - See-see Partridge (Ammoperdix griseogularis)
+    1.jpg
+- role: secondary
+  path: Q920780/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29745685@N02">Tommy
+    Pedersen</a> from Dubai, United Arab Emirates
+  source_url: https://commons.wikimedia.org/wiki/File:See-see Partridge, Ammoperdix
+    griseogularis (5829563744).jpg
+  commons_filename: See-see Partridge, Ammoperdix griseogularis (5829563744).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:06:01.705652+00:00'
+sources:
+  wikipedia_sv_revision: '58594926'
+  wikipedia_en_revision: '1315272608'
+  claude_model: claude-haiku-4-5-20251001

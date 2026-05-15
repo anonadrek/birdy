@@ -1,0 +1,102 @@
+id: Q117253126
+scientific_name: Ortygornis pondicerianus
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Ortygornis
+  ioc_order: Galliformes
+names:
+  sv: null
+  en: Grey Francolin
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Grey Francolin
+
+
+    The grey francolin is a ground-dwelling bird found across the plains and drier
+    regions of the Indian subcontinent and Iran. It inhabits open cultivated lands,
+    scrub forests, and semi-arid grasslands where it spends most of its time on the
+    ground foraging and moving through low vegetation.
+
+
+    This francolin is most distinctive for its loud, repeated call—a sharp "Ka-tee-tar,
+    tee-tar"—which gives the species its local name "teetar." The call is characteristic
+    and immediately recognizable, often produced by one or more birds in sequence.
+    During breeding season, males become particularly vocal, with their calling attracting
+    rival males that engage in confrontations.
+
+
+    The grey francolin''s appearance reflects its ground-dwelling lifestyle, with
+    cryptic plumage that provides camouflage in its scrubby habitat. It is a relatively
+    compact gamebird adapted to running through grassland rather than sustained flight.
+    Its behavior and vocalizations make it easier to locate by sound than sight, particularly
+    during the breeding season when male activity peaks.'
+migration:
+  sv: ''
+  en: '# Grey Francolin in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Grey Francolin is endemic to the Indian subcontinent and Iran, with no established
+    presence or migration patterns in Scandinavia or Northern Europe. This species
+    is a resident bird in its native range, found in open cultivated lands, scrub
+    forests, and drier plains. It does not naturally occur in or migrate to Scandinavian
+    or Northern European regions, making migration information for this area not applicable.'
+image_refs:
+- role: hero
+  path: Q117253126/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ortygornis pondicerianus 157172199.jpeg
+  commons_filename: Ortygornis pondicerianus 157172199.jpeg
+- role: secondary
+  path: Q117253126/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ortygornis pondicerianus 157956046.jpeg
+  commons_filename: Ortygornis pondicerianus 157956046.jpeg
+- role: secondary
+  path: Q117253126/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ortygornis pondicerianus 211123994.jpeg
+  commons_filename: Ortygornis pondicerianus 211123994.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:04:47.890290+00:00'
+sources:
+  wikipedia_sv_revision: '55605254'
+  wikipedia_en_revision: '1324564817'
+  claude_model: claude-haiku-4-5-20251001

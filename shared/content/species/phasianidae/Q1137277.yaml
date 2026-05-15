@@ -1,0 +1,59 @@
+id: Q1137277
+scientific_name: Tetraogallus caucasicus
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Snowcock
+  ioc_order: Galliformes
+names:
+  sv: Kaukasisk snöhöna
+  en: Caucasian Snowcock
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kaukasisk snöhöna
+
+
+    Kaukasisk snöhöna är en bergslevande fågel som tillhör familjen fasanfåglar. Den
+    är anpassad för livet i höga bergsmiljöer och förekommer enbart i höga snöbetäckta
+    bergsregioner. Fågeln har ett relativt litet bestånd, men populationen anses trots
+    detta vara livskraftig.
+
+
+    Arten är väl utrustad för sitt höga bergsmiljö och är framför allt en markfågel
+    som lever på höga höjder. För en närmare beskrivning av dess utseende, beteende
+    och läten krävs mer detaljerad information än vad som finns tillgängligt i denna
+    kortare källa.'
+  en: ''
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+    en: "Migration data unavailable for this species."'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:05:33.873895+00:00'
+sources:
+  wikipedia_sv_revision: '58505357'
+  wikipedia_en_revision: '1344635903'
+  claude_model: claude-haiku-4-5-20251001

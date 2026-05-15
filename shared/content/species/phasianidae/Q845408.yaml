@@ -1,0 +1,64 @@
+id: Q845408
+scientific_name: Lyrurus mlokosiewiczi
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Lyrurus
+  ioc_order: Galliformes
+names:
+  sv: Kaukasisk orre
+  en: Caucasian Grouse
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Caucasian Grouse
+
+
+    The Caucasian grouse is a large member of the grouse family, closely related to
+    the black grouse. It inhabits mountainous regions where it favors alpine and subalpine
+    habitats with mixed vegetation, dwarf shrubs, and grassland. The species is endemic
+    to the Caucasus mountain range, making it a specialist of high-altitude terrain.
+
+
+    Like other grouse, it is predominantly dark-plumaged, though specific details
+    of its appearance and distinguishing features from its black grouse relative would
+    benefit from additional sources. The bird is primarily ground-dwelling, feeding
+    on vegetation, buds, and berries typical of alpine environments.
+
+
+    The Caucasian grouse remains poorly studied compared to more widespread European
+    grouse species, and detailed information about its calls, breeding behavior, and
+    seasonal movements is limited in general ornithological literature. Its restricted
+    range and mountain habitat make it challenging to observe, and the species warrants
+    further research to better understand its ecology and conservation requirements.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:04:48.713883+00:00'
+sources:
+  wikipedia_sv_revision: '55626896'
+  wikipedia_en_revision: '1350366667'
+  claude_model: claude-haiku-4-5-20251001

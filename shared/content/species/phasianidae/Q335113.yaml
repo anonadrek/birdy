@@ -1,0 +1,105 @@
+id: Q335113
+scientific_name: Chrysolophus pictus
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Chrysolophus
+  ioc_order: Galliformes
+names:
+  sv: Guldfasan
+  en: Golden Pheasant
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Golden Pheasant
+
+
+    The Golden Pheasant, also known as the Chinese Pheasant, is a striking gamebird
+    native to China. It is renowned for its spectacular plumage, featuring brilliant
+    golden and red coloration that makes it one of the most visually distinctive pheasant
+    species. The male displays particularly vibrant hues, while the female is more
+    subdued in appearance.
+
+
+    This species inhabits dense forest and woodland areas, where it typically forages
+    on the ground for seeds, insects, and vegetation. It is generally shy and retiring,
+    preferring to remain concealed in thick cover. When disturbed, it will flush explosively
+    with a characteristic loud, cackling call. The Golden Pheasant''s cryptic behaviour,
+    combined with its preference for dense habitat, means it can be challenging to
+    observe in the wild despite its brilliant coloration.
+
+
+    The species is primarily found in forested regions of central and western China,
+    particularly in mountainous terrain. Its range has been affected by habitat loss,
+    though it remains relatively widespread across suitable forest habitats within
+    its native range. Outside China, the Golden Pheasant is popular in aviculture
+    and has been introduced to various regions worldwide, where feral populations
+    occasionally become established.'
+migration:
+  sv: ''
+  en: '# Golden Pheasant Migration in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text provided contains only disambiguation information and does not
+    include any details about the Golden Pheasant''s occurrence, distribution, or
+    migration patterns in Scandinavia or Northern Europe. To provide accurate information
+    about this species'' seasonal movements and presence in the region, a more detailed
+    ornithological source would be required.'
+image_refs:
+- role: hero
+  path: Q335113/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/185252831@N05">HLI-Photography</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Goldfasan (Chrysolophus pictus)
+    (53669151110).jpg
+  commons_filename: Goldfasan (Chrysolophus pictus) (53669151110).jpg
+- role: secondary
+  path: Q335113/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/53270201@N04">Shawnna</a>
+    from UK
+  source_url: https://commons.wikimedia.org/wiki/File:Chrysolophus pictus -walking-8.jpg
+  commons_filename: Chrysolophus pictus -walking-8.jpg
+- role: secondary
+  path: Q335113/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Llez" title="User:Llez">H. Zell</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Centrochelys sulcata - Maroparque
+    01.jpg
+  commons_filename: Centrochelys sulcata - Maroparque 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:06:16.456469+00:00'
+sources:
+  wikipedia_sv_revision: '55606471'
+  wikipedia_en_revision: '1312202782'
+  claude_model: claude-haiku-4-5-20251001

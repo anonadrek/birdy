@@ -1,0 +1,134 @@
+id: Q129059
+scientific_name: Tetrao urogallus
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Tetrao
+  ioc_order: Galliformes
+names:
+  sv: Tjäder
+  en: Western Capercaillie
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tjäder
+
+
+    Tjädern är en stor skogsfågel som tillhör familjen fasanfåglar. Det är en kraftig
+    fågel anpassad för liv i öppna skogar över norra och mellersta Europa samt norra
+    Asien. Arten är nära besläktad med orre och kan bilda hybrider med andra hönsfåglar,
+    vilket visar att den delar evolutionär historia med sina släktingar.
+
+
+    Tjädern förekommer i främst barrskogar och öppnare skogstyper där det finns goda
+    födoförhållanden. Fågeln är tungt byggd med ett kraftigt ben och kan väga flera
+    kilogram. Under vintern lever den ofta på gran och annan växtföda högt upp i träden.
+    Arten är mest aktiv vid skymning och gryning när den söker föda på marken eller
+    i trädkronorna.'
+  en: '# Western Capercaillie
+
+
+    The western capercaillie is Europe''s largest grouse species, instantly recognizable
+    by its impressive size and extreme sexual dimorphism. Males are substantially
+    larger than females, weighing up to 4.5 kg, with dark plumage, a glossy black-green
+    breast, and distinctive lyre-shaped tail feathers. Females are considerably smaller
+    and more cryptically coloured in browns and greys, making them far less conspicuous
+    in woodland habitats. It is a ground-dwelling forest bird found across boreal
+    and temperate woodlands throughout much of Europe and the Palearctic region.
+
+
+    Renowned for its elaborate courtship display, the male produces a remarkable sequence
+    of sounds during dawn leks, including loud clicking, popping, and wing-beating
+    calls that carry considerable distances through the forest. Outside the breeding
+    season, capercaillies feed quietly on forest floor vegetation, insects, and berries.
+    It is primarily encountered in large, undisturbed coniferous and mixed forests
+    with dense understory vegetation.
+
+
+    While globally listed as "least concern," populations in central Europe face significant
+    conservation challenges, with many populations declining, fragmented, or locally
+    extirpated due to habitat loss and fragmentation. The species remains relatively
+    stable across northern and eastern parts of its range where extensive forests
+    persist.'
+migration:
+  sv: '# Tjäder – förekomst i Skandinavien och Nordeuropa
+
+
+    Tjädern är en stationär art som förekommer året runt i sitt utbredningsområde
+    i Skandinavien och övriga Nordeuropa. Den är ingen flyttfågel utan stannar i de
+    nordiska skogarna under både sommar och vinter. Arten föredrar öppna skogar och
+    högländ med glest trädbestånd, där den hittar sitt föde av kärl- och bladverk.
+    Populationerna i norra delen av sitt utbredningsområde är relativt stabila, även
+    om vintrarnas hårdhet kan påverka överlevnaden.
+
+
+    Tjädern är framför allt känd för sitt iögonfallande beteende under våren, när
+    hanarna håller till på speciella spellplatser för att attrahera honor. Arten utgör
+    en viktig del av den nordiska skogsfaunan och är beroende av orörda och varierad
+    skogshabitat för sin långsiktiga överlevnad.'
+  en: '# Western Capercaillie in Scandinavia/Northern Europe
+
+
+    The western capercaillie is a year-round resident throughout Scandinavia and northern
+    Europe, showing no true migratory behaviour. Birds remain in their territories
+    across boreal and temperate forests throughout the year, though some altitudinal
+    movement may occur in mountainous regions during winter months when individuals
+    descend to lower elevations with better foraging conditions. The species is sedentary,
+    relying on dense coniferous and mixed forests for shelter and survival during
+    harsh winters. Populations in Scandinavia and central Europe are established breeders,
+    with males displaying at traditional lek sites from spring onwards.'
+image_refs:
+- role: hero
+  path: Q129059/hero.jpg
+  width: 2400
+  height: 1602
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/23807585@N07">Tero
+    Laakso</a> from Hyvinkää, Finland
+  source_url: https://commons.wikimedia.org/wiki/File:Tetrao urogallus (mating display)
+    (27264328428).jpg
+  commons_filename: Tetrao urogallus (mating display) (27264328428).jpg
+- role: secondary
+  path: Q129059/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/23807585@N07">Tero
+    Laakso</a> from Hyvinkää, Finland
+  source_url: https://commons.wikimedia.org/wiki/File:Tetrao urogallus (mating display)
+    (27264341888).jpg
+  commons_filename: Tetrao urogallus (mating display) (27264341888).jpg
+- role: secondary
+  path: Q129059/secondary-2.jpg
+  width: 1800
+  height: 1397
+  license: CC BY 2.0
+  author: David Palmer
+  source_url: https://commons.wikimedia.org/wiki/File:Tetrao urogallus (cropped).jpg
+  commons_filename: Tetrao urogallus (cropped).jpg
+review_status: approved
+review_notes: "Hero = Tetrao urogallus (Western Capercaillie / Tjäder); allmän i orörd barrskog över hela SE."
+generated_at: '2026-05-15T21:07:13.177564+00:00'
+sources:
+  wikipedia_sv_revision: '58847745'
+  wikipedia_en_revision: '1338320740'
+  claude_model: claude-haiku-4-5-20251001

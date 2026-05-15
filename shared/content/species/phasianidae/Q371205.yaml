@@ -1,0 +1,68 @@
+id: Q371205
+scientific_name: Alectoris philbyi
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Alectoris
+  ioc_order: Galliformes
+names:
+  sv: Svartstrupig berghöna
+  en: Philby’s Partridge
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartstrupig berghöna
+
+
+    Svartstrupig berghöna är en fälthöna som är endemit för södra delen av Arabiska
+    halvön. Den är en medelstor höna med karakteristisk svart strupe, vilket också
+    återspeglas i dess namn. Fågeln är välanpassad för sitt bergiga habitat och lever
+    på höga platåer och bergssluttningar.
+
+
+    Arten är framförallt markvandare som söker föda på marken. Det är en relativt
+    sparsamt dokumenterad fågel, men tros ha liknande beteende som andra hönsarter
+    i samma familj – den föredrar att springa från fara snarare än att flyga.
+
+
+    Trots sitt mycket begränsat utbredningsområde klassificeras svartstrupig berghöna
+    inte som hotad art för närvarande. Populationen anses stabil inom sitt naturliga
+    område, vilket utgörs av specifika bergregioner på Arabiska halvön. Arten är främst
+    av intresse för specialiserade fågelskådare som söker sig till dessa bergiga områden.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller ingen information om hur arten förekommer
+    i Skandinavien eller Nordeuropa, eller om dess migrationsmönster. Svartstrupig
+    berghöna är endemit på Arabiska halvön och förekommer inte naturligt i nordeuropeiska
+    regioner.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:04:49.608733+00:00'
+sources:
+  wikipedia_sv_revision: '56455193'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

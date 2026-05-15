@@ -1,0 +1,131 @@
+id: Q155878
+scientific_name: Lyrurus tetrix
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Lyrurus
+  ioc_order: Galliformes
+names:
+  sv: Orre
+  en: Black Grouse
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Orre
+
+
+    Orren är en stor fälthöna i fasanfågelfamiljen som är en stannfågel i norra Palearktis.
+    Det är en karakteristisk fågel med svart fjäderdräkt och vita täckfjädrar under
+    vingen. Hanen är större och mer glänsande svart än honan, som är brunare och mer
+    fleckig.
+
+
+    Arten förekommer främst i hed- och myrlandskap nära skog, där det finns öppen
+    mark för föda och skogsbevuxna områden för skydd. En av orrrens mest spektakulära
+    beteenden är spelen på våren, då hanarna samlas på specifika spelplatser för att
+    imponera på honorna. Under denna tid producerar de karakteristiska ljud och displays.
+
+
+    Orren är nära släkt med den kaukasiska orren och utgör en viktig del av nordiska
+    ekosystem. Arten är väl anpassad till sitt habitat och har varit föremål för vetenskapligt
+    intresse, bland annat kartlades dess genetiska material 2014.'
+  en: '# Black Grouse
+
+
+    The black grouse is a large, striking grouse with distinctively contrasting plumage.
+    Males are predominantly black with white undertail coverts and a characteristic
+    lyre-shaped tail that gives the species its scientific name. Females are considerably
+    smaller and mottled brown, providing effective camouflage in moorland vegetation.
+    Both sexes have red wattles above the eyes.
+
+
+    This sedentary species inhabits moorland and steppe habitats during the breeding
+    season, typically near wooded areas. In winter, it retreats to dense coniferous
+    forests, where it feeds almost exclusively on conifer needles—an unusual diet
+    among grouse. The species is found across the Palearctic region, adapting its
+    habitat use seasonally to exploit available food sources and shelter.
+
+
+    Black grouse are famous for their dramatic communal display grounds, known as
+    leks, where males perform elaborate ritualistic displays during breeding season.
+    Their vocalizations during these displays are equally impressive, comprising various
+    clicking, hissing, and crooning sounds. Outside breeding season, they are generally
+    quiet and inconspicuous birds, spending much time perched in trees or moving through
+    open moorland and forest edges.'
+migration:
+  sv: Orre är en stannfågel som är bosatt året om i sitt utbredningsområde i norra
+    Palearktis. Arten förekommer permanent i hed- och myrlandskap intill skogar från
+    Skandinavien till Sibirien. Till skillnad från många andra nordiska fåglar utför
+    orre ingen långdistansmigration utan stannar kvar på sina revir även under de
+    kalla vintermånaderna. Arten är således närvarande i Skandinavien året runt, med
+    häckning som inleds tidigt på våren då hannarna återvänder till sina traditionella
+    spelplatser.
+  en: '# Black Grouse (Lyrurus tetrix) in Scandinavia/Northern Europe
+
+
+    The black grouse is a sedentary species that remains in Scandinavia and Northern
+    Europe year-round, showing no true migration patterns. During breeding season,
+    birds occupy moorland and steppe habitats, often near wooded areas across the
+    Palearctic region. In winter, they shift their habitat preference to dense forests
+    where they roost and feed almost exclusively on conifer needles, particularly
+    pine and spruce. This seasonal habitat shift from open moorland to dense forest
+    represents an adaptation to seasonal food availability and weather conditions
+    rather than long-distance migration, allowing populations to persist throughout
+    the year in their northern range.'
+image_refs:
+- role: hero
+  path: Q155878/hero.jpg
+  width: 2400
+  height: 1712
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Korhoen - black grouse - Lyrurus
+    tetrix 4.jpg
+  commons_filename: Korhoen - black grouse - Lyrurus tetrix 4.jpg
+- role: secondary
+  path: Q155878/secondary-1.jpg
+  width: 1800
+  height: 1190
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Korhoen - black grouse - Lyrurus
+    tetrix 2.jpg
+  commons_filename: Korhoen - black grouse - Lyrurus tetrix 2.jpg
+- role: secondary
+  path: Q155878/secondary-2.jpg
+  width: 1800
+  height: 1221
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Korhoen - black grouse - Lyrurus
+    tetrix 3.jpg
+  commons_filename: Korhoen - black grouse - Lyrurus tetrix 3.jpg
+review_status: approved
+review_notes: "Hero = Lyrurus tetrix (Black Grouse / Orre); allmän i skogs- och hedmark över hela SE."
+generated_at: '2026-05-15T21:05:26.810469+00:00'
+sources:
+  wikipedia_sv_revision: '59049422'
+  wikipedia_en_revision: '1350366524'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,128 @@
+id: Q182761
+scientific_name: Tetrastes bonasia
+taxonomy:
+  family: Phasianidae
+  family_sv: Skogshöns
+  genus: Testrates
+  ioc_order: Galliformes
+names:
+  sv: Järpe
+  en: Hazel Grouse
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Järpe
+
+
+    Järpen är en liten skogshöna inom familjen fasanfåglar. Den är brunspräcklig till
+    färgen och väl anpassad för sitt habitat i täta barrskogar. Fågeln är en stannfågel
+    som året om finns i sitt revir, vilket är relativt begränsat.
+
+
+    Järpen lever uteslutande i barrskog där den söker föda på marken. Den är försiktig
+    och kan vara svår att få syn på då den ofta rör sig genom tät undervegetation.
+    Vid fara flyger den upp med kraftiga, brådskande vingslag och ett karakteristiskt
+    skräckande läte.
+
+
+    Arten häckar i ett band från Skandinavien över Ryssland till Kina och Japan, och
+    förekommer också lokalt på andra håll i norra Europa. Den är välanpassad för kalla
+    klimat och är därför bunden till de nordligare och högre belägna skogsbälten.'
+  en: '# Hazel Grouse
+
+
+    The hazel grouse is one of the smallest members of the grouse family, a compact
+    woodland bird perfectly adapted to dense, damp coniferous forests. It remains
+    sedentary year-round, never undertaking long migrations. The species inhabits
+    mixed woodlands with substantial spruce coverage across the northern Palearctic,
+    from eastern and central Europe eastward to Hokkaido.
+
+
+    This elusive bird is notoriously difficult to observe in its preferred habitat
+    of thick, wet mixed forest. The hazel grouse relies on camouflage and stillness
+    as its primary defence, often remaining motionless until danger passes. Its plumage
+    provides excellent concealment among woodland vegetation, featuring subtle patterns
+    that blend seamlessly with forest surroundings.
+
+
+    The species produces distinctive calls, particularly during breeding season, that
+    alert keen birdwatchers to its presence despite the bird''s reluctance to expose
+    itself. Males establish territories in spring, with vocalizations carrying through
+    the dense woodland. Locating this secretive grouse requires patience and familiarity
+    with its preferred forest types—mature mixed woodlands with dense understory and
+    significant spruce components offer the best chances for encounter.'
+migration:
+  sv: '# Järpe (Tetrastes bonasia) - Förekomst i Norden
+
+
+    Järpen är en stannfågel som är närvarande året runt i Skandinavien och norra Europa.
+    Den häckar i ett vidsträckt bälte från Skandinavien över Ryssland till Kina och
+    Japan, och förekommer även lokalt i norra Europa. Som stannfågel genomför järpen
+    ingen regelrätten långdistansöverflyttning utan stannar kvar även under vintertid.
+    Arten är helt beroende av barrskog för sin överlevnad, där den hitta föda och
+    skydd under alla årstider.'
+  en: '# Hazel Grouse in Northern Europe
+
+
+    The Hazel Grouse is a sedentary species that remains resident throughout the year
+    in its Scandinavian and Northern European range. Unlike many grouse species, it
+    does not undertake long-distance migrations. Populations breeding in dense, damp
+    mixed coniferous woodlands—particularly those with spruce—are permanent year-round
+    inhabitants of their territories. This sedentary lifestyle means Hazel Grouse
+    are present in Scandinavian forests across all seasons, relying on winter food
+    sources within their established woodland habitats rather than migrating to milder
+    regions.'
+image_refs:
+- role: hero
+  path: Q182761/hero.jpg
+  width: 2048
+  height: 1535
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2986250">Antti
+    Latikka</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tetrastes bonasia 277462364.jpg
+  commons_filename: Tetrastes bonasia 277462364.jpg
+- role: secondary
+  path: Q182761/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%90%D0%BD%D0%B4%D1%80%D1%96%D0%B9_%D0%9C%D1%96%D1%81%D1%8C%D0%BA%D0%BE%D0%B2"
+    title="User:Андрій Міськов">Андрій Міськов</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Гніздо орябка Tetrastes bonasia.jpg
+  commons_filename: Гніздо орябка Tetrastes bonasia.jpg
+- role: secondary
+  path: Q182761/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:MichaelHaeckel&amp;action=edit&amp;redlink=1"
+    class="new" title="User:MichaelHaeckel (page does not exist)">MichaelHaeckel</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tetrastes bonasia 2.jpg
+  commons_filename: Tetrastes bonasia 2.jpg
+review_status: approved
+review_notes: "Hero = Tetrastes bonasia (Hazel Grouse / Järpe); allmän skogsfågel i barrskog över hela SE."
+generated_at: '2026-05-15T21:06:45.995220+00:00'
+sources:
+  wikipedia_sv_revision: '59227939'
+  wikipedia_en_revision: '1344501631'
+  claude_model: claude-haiku-4-5-20251001

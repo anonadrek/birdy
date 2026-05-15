@@ -1,0 +1,68 @@
+id: Q27074570
+scientific_name: Pternistis bicalcaratus
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Pternistis
+  ioc_order: Galliformes
+names:
+  sv: Marockansk sporrhöna
+  en: Double-spurred Spurfowl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Double-spurred Spurfowl
+
+
+    The double-spurred spurfowl is a gamebird belonging to the pheasant family, found
+    exclusively across Africa. As its name suggests, it possesses characteristic spurs—a
+    feature shared with related spurfowl species. This resident breeder inhabits tropical
+    regions of West Africa, where it maintains stable populations in its preferred
+    habitats.
+
+
+    A small and notably declining population exists in an isolated range, representing
+    the northernmost extent of the species'' distribution. This separated population
+    is increasingly threatened and represents a conservation concern for the species.
+    The double-spurred spurfowl remains primarily a tropical African bird, with its
+    stronghold in the western portions of the continent where suitable habitat conditions
+    persist.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Double-spurred Spurfowl is an African resident species with no regular occurrence
+    in Scandinavia or Northern Europe. Its range is restricted to tropical West Africa,
+    with only a small and declining isolated population in Morocco, which lies far
+    south of the Scandinavian region. This species does not migrate to or occur in
+    Northern Europe at any time of year, making migration data for the Scandinavian
+    region not applicable.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:05:18.973801+00:00'
+sources:
+  wikipedia_sv_revision: '56466052'
+  wikipedia_en_revision: '1306358573'
+  claude_model: claude-haiku-4-5-20251001

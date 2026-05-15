@@ -1,0 +1,140 @@
+id: Q25432
+scientific_name: Phasianus colchicus
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Phasianus
+  ioc_order: Galliformes
+names:
+  sv: Fasan
+  en: Common Pheasant
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fasan
+
+
+    Fasanen är en stor och färgglad hönsfågel som ursprungligen kommer från södra
+    Asien, men som nu finns i många delar av världen. Den har introducerats till Europa
+    och är väletablerad i Sverige, där den förekommer både i inhägnade jaktområden
+    och i villfara.
+
+
+    Hanen är särskilt slående med sin metallglänstande grön-violett hals, röda ansiktsfläckar
+    och långt, smalt stjärthölje. Hönan är mer diskret i färgerna med brunaktiga toner.
+    Arten är stor och långstjärtad, vilket gör den lätt att känna igen.
+
+
+    Fasanen hålls sig ofta på marken där den söker föda genom att plocka i vegetationen.
+    Den flyger upp brant med snabb vingslag när den blir skrämd, ofta följt av ett
+    karakteristiskt kutterande läte. Hannarna är högljudda under paringen, då de avger
+    ett skallrande rop följt av snabba vingslag. Arten förekommer i öppna landskap
+    med ljunghedar, åkermark och skogsbryn.'
+  en: '# Common Pheasant
+
+
+    The common pheasant is a large, striking gamebird belonging to the pheasant family.
+    Males are particularly conspicuous, featuring iridescent green heads, red facial
+    patches, and long, pointed tail feathers. Females are more subdued in coloration,
+    displaying mottled brown plumage that provides excellent camouflage in their habitat.
+    The species'' common name refers to the distinctive white neck ring present in
+    many males, though this marking varies among different populations.
+
+
+    Common pheasants are ground-dwelling birds that prefer open country with patches
+    of dense cover. They feed by scratching and pecking on the ground, searching for
+    seeds, grain, insects, and vegetation. When disturbed, they typically run rather
+    than fly, though they can burst into rapid, explosive flight if pressed. Their
+    take-off produces a distinctive whirring sound from their wings.
+
+
+    The male''s loud, far-carrying call is unmistakable—a sharp, two-syllable "kork-kork"
+    followed by rapid wing-beating. Females are generally quieter. Common pheasants
+    inhabit farmland, grassland, and areas with scattered woodland and hedgerows,
+    thriving in cultivated landscapes across temperate regions where they have been
+    introduced.'
+migration:
+  sv: '# Fasan (Phasianus colchicus) – Förekomst i Skandinavien
+
+
+    Fasan är en introducerad art i Sverige och övriga Skandinavien, där den inte förekommer
+    naturligt. I svenska låglandet, särskilt i landets södra och centrala delar, finns
+    estabelerade populationer som härstammar från utplanteringar. Fasanen är huvudsakligen
+    en stationär art i sitt introducerats område – den stannar året runt där den finns
+    etablerad och utför ingen regelrätt migration. Under hårdare vintrar kan lokal
+    förflyttning förekomma, men arten är i regel närvarande under alla årstider i
+    de områden där den väl etablerats.
+
+
+    Migrationsdata saknas för denna art i sitt naturliga utbreitningsområde inom Skandinavien,
+    då den är en introducerad och övervintrad population snarare än en migrerande
+    art.'
+  en: '# Common Pheasant (Phasianus colchicus) in Scandinavia/Northern Europe
+
+
+    The Common Pheasant is largely resident throughout much of Scandinavia and Northern
+    Europe, with established populations maintained through hunting and game management.
+    In the northernmost regions, pheasants show limited movement, remaining in areas
+    where winter conditions permit survival. During harsh winters, populations may
+    shift slightly southward or concentrate in sheltered valleys and reed beds where
+    food remains accessible. Spring arrival of any migratory birds occurs from March
+    onwards, though many populations are essentially year-round residents.
+
+
+    In Scandinavia, pheasants are typically more sedentary than in other regions,
+    with movements driven primarily by food availability and weather severity rather
+    than obligate migration patterns. The species depends on managed habitats and
+    supplemental feeding during winter months in these northern areas.'
+image_refs:
+- role: hero
+  path: Q25432/hero.jpg
+  width: 2400
+  height: 1492
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Tlus%C5%A5a" title="User:Tlusťa">Tlusťa</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phasianus colchicus Konopiste.jpg
+  commons_filename: Phasianus colchicus Konopiste.jpg
+- role: secondary
+  path: Q25432/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jerzystrzelecki" title="User:Jerzystrzelecki">Jerzystrzelecki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phasianus colchicus Lodz(Poland)(js)05.jpg
+  commons_filename: Phasianus colchicus Lodz(Poland)(js)05.jpg
+- role: secondary
+  path: Q25432/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/26082117@N07">Daniel
+    Jolivet</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phasianus colchicus à Thésée-la-Romaine
+    (Loir-et-Cher) (50894670667).jpg
+  commons_filename: Phasianus colchicus à Thésée-la-Romaine (Loir-et-Cher) (50894670667).jpg
+review_status: approved
+review_notes: "Hero = Phasianus colchicus (Common Pheasant / Fasan); allmän införd häckare i södra SE."
+generated_at: '2026-05-15T21:06:55.724088+00:00'
+sources:
+  wikipedia_sv_revision: '58510647'
+  wikipedia_en_revision: '1349974548'
+  claude_model: claude-haiku-4-5-20251001

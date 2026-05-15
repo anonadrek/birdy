@@ -675,3 +675,43 @@ species:
     description_accept_missing: [en]  # Temminck's Stint — sparse enwiki
   Q595162:
     description_accept_missing: [sv, en]  # Pin-tailed Snipe — sparse on both (78w sv)
+  # Phasianidae (2026-05-15)
+  Q1274275:
+    description_accept_missing: [sv, en]  # Sand Partridge — sparse on both
+  Q1274601:
+    description_accept_missing: [en]  # Caspian Snowcock — sparse enwiki
+  Q202423:
+    description_accept_missing: [sv]  # Barbary Partridge — sparse svwiki
+  Q251584:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Arabian Partridge — sparse svwiki + no images
+  Q27074570:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Double-spurred Spurfowl — sparse svwiki + no images
+  Q285165:
+    description_accept_missing: [sv]  # Black Francolin — sparse svwiki
+  Q335113:
+    description_accept_missing: [sv]  # Golden Pheasant — sparse svwiki
+  Q339483:
+    description_accept_missing: [en]  # Reeves's Pheasant — sparse enwiki
+  Q371205:
+    description_accept_missing: [en]
+    allow_missing_images: true  # Philby's Partridge — sparse enwiki + no images
+  Q385750:
+    description_accept_missing: [sv, en]  # Lady Amherst's Pheasant — sparse on both
+  Q40655821:
+    description_accept_missing: [sv]  # Red Grouse — sparse svwiki
+  Q492684:
+    description_accept_missing: [sv]  # Rock Partridge — sparse svwiki
+  Q845408:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Caucasian Grouse — sparse svwiki + no images
+  Q920780:
+    description_accept_missing: [sv, en]  # See-see Partridge — sparse on both
+  Q1137277:
+    description_accept_missing: [en]
+    allow_missing_images: true  # Caucasian Snowcock — sparse enwiki + no images
+  Q117253126:
+    description_accept_missing: [sv]  # Grey Francolin — sparse svwiki
+  Q1266683:
+    description_accept_missing: [sv, en]  # Erckel's Spurfowl — sparse on both

@@ -1,0 +1,138 @@
+id: Q26106
+scientific_name: Perdix perdix
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Perdix
+  ioc_order: Galliformes
+names:
+  sv: Rapphöna
+  en: Grey Partridge
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rapphöna
+
+
+    Rapphöna är en medelstor fågel inom familjen fasanfåglar med diskret, jordaktig
+    färgtoning som fungerar utmärkt som kamouflage i öppen miljö. Den är huvudsakligen
+    gråbrun med orangebrunt på ansiktet och karakteristiska mörka markeringar på flankerna.
+    Arten är relativt kort och tjock till växten med kraftiga ben väl anpassade för
+    att springa på marken.
+
+
+    Arten förekommer naturligt över stora delar av Europa och västra Asien, där den
+    bebor öppen jordbruksmark och liknande terräng. Den är en markfågel som sprider
+    sitt liv på jorden och föredrar att springa framför att flyga när det är möjligt.
+    Vid hotning exploderar den ofta upp från marken med bullrande vingslag.
+
+
+    Rapphönan har minskat i antal under senare decennier, främst på grund av förändringar
+    inom jordbruket och intensifiering av odlingen. Trots denna nedgång anses bestånd
+    globalt sett fortfarande vara livskraftigt. Arten har även introducerats till
+    Nordamerika för jaktändamål, där den etablerat sig som fritt levande populationer.'
+  en: '# Grey Partridge
+
+
+    The Grey Partridge is a medium-sized gallinaceous bird belonging to the pheasant
+    family. It is a stocky, terrestrial species with predominantly grey and brown
+    plumage, featuring distinctive russet-brown markings on its flanks. The bird''s
+    compact build and rounded wings make it well-adapted to its ground-dwelling lifestyle.
+
+
+    This partridge is primarily a ground feeder, foraging for seeds, insects, and
+    vegetation. It is typically observed walking through open grasslands and cultivated
+    areas, where it relies on camouflage and quick flight to escape predators. When
+    disturbed, it bursts into rapid, whirring flight before dropping back into cover.
+
+
+    The species is highly social outside the breeding season, often forming small
+    flocks known as coveys. Its call is a distinctive, loud "kirr-ick, kirr-ick" that
+    helps pairs and groups maintain contact, particularly in early morning and evening.
+    The Grey Partridge frequents open farmland, grasslands, and shrubby habitats across
+    much of its range, where it nests on the ground in simple scrape lined with vegetation.'
+migration:
+  sv: '# Rapphöna - förekomst i Skandinavien och Nordeuropa
+
+
+    Rapphöna är en stationär art som förekommer året runt i stora delar av Europa,
+    inklusive Skandinavien och Nordeuropa. Arten är inte migrerande utan stannar på
+    sina häckningsplatser även under vintern. I norra delen av sitt utbredningsområde
+    kan populationerna vara något mindre täta under kallare perioder, men arten övervintrar
+    regularitet i dessa regioner. Rapphönan föredrar öppna odlingslandskap och gräsmarker,
+    där den söker föda på marken även under snö och kyla.
+
+
+    Arten visar därmed ingen säsongsväxling vad gäller geografisk utbredning i Skandinavien
+    och Nordeuropa - samma individer återfinns på samma territorier året om, vilket
+    skiljer den från många andra fåglar i regionen.'
+  en: '# Grey Partridge (Perdix perdix) - Occurrence in Scandinavia/Northern Europe
+
+
+    The Grey Partridge is a resident species throughout much of Scandinavia and Northern
+    Europe, remaining year-round in many areas rather than undertaking long-distance
+    migrations. In northern regions where winters are severe, populations may show
+    partial migration, with some individuals moving southwestward during the coldest
+    months. Northern breeding populations are generally more migratory than southern
+    ones. The species is present throughout the year in suitable habitat, with birds
+    establishing territories in spring for breeding. Harsh winters can significantly
+    impact survival rates, particularly in Scandinavia where snow cover and food scarcity
+    pose challenges to overwintering populations.
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q26106/hero.jpg
+  width: 2400
+  height: 1602
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37180297@N08">LiCheng
+    Shih</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Syntypistis perdix perdix (32413832364).jpg
+  commons_filename: Syntypistis perdix perdix (32413832364).jpg
+- role: secondary
+  path: Q26106/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37180297@N08">LiCheng
+    Shih</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Syntypistis perdix perdix (45418591041).jpg
+  commons_filename: Syntypistis perdix perdix (45418591041).jpg
+- role: secondary
+  path: Q26106/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grey partridge (Perdix perdix)
+    2022.jpg
+  commons_filename: Grey partridge (Perdix perdix) 2022.jpg
+review_status: approved
+review_notes: "Hero = Perdix perdix (Grey Partridge / Rapphöna); allmän men minskande på odlade fält i södra SE."
+generated_at: '2026-05-15T21:05:52.309947+00:00'
+sources:
+  wikipedia_sv_revision: '59223071'
+  wikipedia_en_revision: '1350538824'
+  claude_model: claude-haiku-4-5-20251001

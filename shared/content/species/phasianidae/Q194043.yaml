@@ -1,0 +1,131 @@
+id: Q194043
+scientific_name: Alectoris chukar
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Alectoris
+  ioc_order: Galliformes
+names:
+  sv: Berghöna
+  en: Chukar Partridge
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Berghöna
+
+
+    Berghöna är en medelstor hönsfågel som tillhör fasanfågelfamiljen. Det är en robust
+    fågel med karakteristisk färgteckning – grå och brun på ovansidan med röda ben
+    och röd näbb. Den har ett distinkt mönster på halsen med svarta streck mot ljus
+    botten, vilket gör den lätt att identifiera.
+
+
+    Arten förekommer naturligt i västra Asien och allra östligaste Europa, där det
+    trivs i bergiga och steniga terränger. Det har också introducerats på flera platser
+    runt om i världen. Berghönan lever på marken och är en skicklig löpare som föredrar
+    att springa snarare än att flyga när den blir hotad. Det lever i små flockar och
+    söker föda på marken.
+
+
+    Fågeln är mest aktiv under morgon och kväll. Det är en vaksam art som är svår
+    att närma sig i sin naturliga miljö. Berghönan är väsentlig för människor på vissa
+    håll, både för jakt och som insättningsart för vildtsamfund.'
+  en: '# Chukar Partridge
+
+
+    The chukar is a stocky upland gamebird belonging to the pheasant family. It displays
+    striking plumage with bold black and white barring on the flanks, while its head
+    features a distinctive black band running from the forehead through the eye and
+    down to the neck, forming a necklace-like marking that frames a white throat.
+    This striking head pattern makes identification straightforward in the field.
+
+
+    This species favors rocky, arid hillsides and mountainous terrain across temperate
+    and Middle Eastern regions of Asia, where it forages on the ground for seeds,
+    vegetation, and invertebrates. The chukar typically moves in small flocks and
+    is adept at running quickly across steep slopes when disturbed rather than taking
+    flight. When alarmed, it produces a distinctive loud, repetitive call that sounds
+    like "chuk-chuk-chuk," from which its common name derives.
+
+
+    Originally native to Asia, the chukar has been widely introduced for sport hunting
+    and has successfully established feral populations in North America, Malta, and
+    New Zealand, where it thrives in similar arid and mountainous habitats. The species
+    remains popular among gamebird enthusiasts due to its challenging terrain preference
+    and swift, elusive behavior.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (The source text only states that the Chukar Partridge occurs in western Asia
+    and the easternmost Europe and has been introduced in various places around the
+    world, but contains no information about migration patterns, seasonal occurrence,
+    or movements in Scandinavia/Northern Europe throughout the year.)'
+  en: '# Chukar Partridge (Alectoris chukar) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains no information regarding the occurrence, migration
+    patterns, or seasonal distribution of the Chukar Partridge in Scandinavia or Northern
+    Europe. The species is described as native to Asia and the Middle East, with established
+    populations in North America, Malta, and New Zealand, but no details are given
+    about its presence or movements in Scandinavian or Northern European regions.'
+image_refs:
+- role: hero
+  path: Q194043/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aziatische steenpatrijs - Chukar
+    - Alectoris chukar 05.jpg
+  commons_filename: Aziatische steenpatrijs - Chukar - Alectoris chukar 05.jpg
+- role: secondary
+  path: Q194043/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:ImagePerson&amp;action=edit&amp;redlink=1"
+    class="new" title="User:ImagePerson (page does not exist)">ImagePerson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Chukar Partridge Alectoris chukar
+    on Maui 3262.jpg
+  commons_filename: Chukar Partridge Alectoris chukar on Maui 3262.jpg
+- role: secondary
+  path: Q194043/secondary-2.jpg
+  width: 1205
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93406569@N00">Chuck
+    Abbe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red Rock Canyon Nevada - Chukar
+    (Alectoris chukar).jpg
+  commons_filename: Red Rock Canyon Nevada - Chukar (Alectoris chukar).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:06:28.473016+00:00'
+sources:
+  wikipedia_sv_revision: '56695265'
+  wikipedia_en_revision: '1337979692'
+  claude_model: claude-haiku-4-5-20251001

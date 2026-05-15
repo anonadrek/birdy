@@ -1,0 +1,96 @@
+id: Q492684
+scientific_name: Alectoris graeca
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Alectoris
+  ioc_order: Galliformes
+names:
+  sv: Stenhöna
+  en: Rock Partridge
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Rock Partridge
+
+
+    The rock partridge is a compact gamebird belonging to the pheasant family, native
+    to southern European regions. It bears a striking resemblance to its eastern relative,
+    the chukar partridge, making the two species difficult to distinguish in the field.
+    The bird''s plumage is typically well-adapted for rocky, arid terrain, providing
+    effective camouflage in its preferred habitat.
+
+
+    This species inhabits steep, rocky hillsides and mountainous areas where sparse
+    vegetation offers both cover and feeding opportunities. Rock partridges are ground-dwelling
+    birds that prefer to run rather than fly when disturbed, relying on their swift
+    movement across rocky slopes to evade predators. They are often encountered in
+    small groups or coveys, particularly outside the breeding season.
+
+
+    The rock partridge''s call is a distinctive loud, repetitive series of notes that
+    echoes across hillsides, particularly during breeding season. This vocalization
+    helps individuals maintain contact within groups and establishes territorial boundaries.
+    The species remains relatively common throughout its range where suitable habitat
+    persists, though specific distribution varies across different southern European
+    regions.'
+migration:
+  sv: ''
+  en: '# Rock Partridge (Alectoris graeca) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Rock Partridge is a southern European species with no established presence
+    or migration patterns in Scandinavia or Northern Europe. Its range is restricted
+    to mountainous regions of southern Europe, particularly the Mediterranean and
+    Balkan regions, where it remains resident year-round. Any occurrences in Scandinavian
+    countries would be exceptional vagrants rather than part of regular migration
+    movements.'
+image_refs:
+- role: hero
+  path: Q492684/hero.jpg
+  width: 2400
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Vasilikivrlm&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Vasilikivrlm (page does not exist)">Vasilikivrlm</a>
+  source_url: https://commons.wikimedia.org/wiki/File:ALECTORIS GRAECA-ΣΟΥΝΙΟ.jpg
+  commons_filename: ALECTORIS GRAECA-ΣΟΥΝΙΟ.jpg
+- role: secondary
+  path: Q492684/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:AntyHoc&amp;action=edit&amp;redlink=1"
+    class="new" title="User:AntyHoc (page does not exist)">AntyHoc</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sounio, Alectoris graeca.jpg
+  commons_filename: Sounio, Alectoris graeca.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:06:43.409276+00:00'
+sources:
+  wikipedia_sv_revision: '55733582'
+  wikipedia_en_revision: '1325360401'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,124 @@
+id: Q754863
+scientific_name: Alectoris rufa
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Alectoris
+  ioc_order: Galliformes
+names:
+  sv: Rödhöna
+  en: Red-legged Partridge
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödhöna
+
+
+    Rödhönan är en västeuropeisk hönsfågel som tillhör familjen fasanfåglar. Det är
+    en medelstor fågel med karakteristisk röd näbb och röda ben, vilket gett arten
+    sitt namn. Kroppen är grågul med svarta streck på flanker och bröst. Den har också
+    en tydlig vit strupe omgiven av svart.
+
+
+    Rödhönan är en markfågel som främst håller till i öppna och halvöppna miljöer
+    såsom buskmark, åkermark och steniga sluttningar. Det är en mycket försiktig fågel
+    som ofta springer före flykt och föredrar att springa snarare än att flyga. Det
+    lever gärna i små flockar, särskilt utanför häckningstiden.
+
+
+    Arten var tidigare vanlig men minskar kraftigt i antal på grund av jakt och jordbrukets
+    intensifiering. Sedan 2020 är den därför klassificerad som nära hotad enligt IUCN.
+    Rödhönan förekommer naturligt i västra Europa och har även introducerats till
+    flera andra regioner världen över.'
+  en: '# Red-legged Partridge
+
+
+    The red-legged partridge is a medium-sized gamebird belonging to the pheasant
+    family. It is occasionally called the French partridge to distinguish it from
+    the related grey partridge. The bird''s scientific name derives from Ancient Greek
+    *alektoris*, meaning farmyard chicken, and the Latin *rufa*, referring to its
+    distinctive red coloring.
+
+
+    This partridge is characterized by its rufous plumage, which gives the species
+    its common English name. It inhabits open countryside and scrubland where it forages
+    on the ground for seeds and invertebrates. The species typically moves on foot
+    rather than taking flight, though it will fly when disturbed, producing rapid
+    wingbeats. Its call is a distinctive loud, repetitive series of notes that carries
+    across open terrain.
+
+
+    The red-legged partridge is found across southern Europe and has been introduced
+    to various regions as a gamebird. It prefers dry, rocky, or cultivated terrain
+    with sparse vegetation where it can remain concealed while moving through suitable
+    habitat.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: '# Red-legged Partridge: Occurrence in Northern Europe
+
+
+    The Red-legged Partridge is not a regular resident of Scandinavia or Northern
+    Europe. This Mediterranean species has its primary range in southern Europe, including
+    Spain, Portugal, southern France, and Italy. While the species is resident throughout
+    its core range, it does not occur naturally in Scandinavian countries or have
+    established migratory patterns to Northern Europe. Any sightings in the region
+    would be exceptional vagrants or escaped birds from captivity rather than part
+    of a natural migration cycle.'
+image_refs:
+- role: hero
+  path: Q754863/hero.jpg
+  width: 2400
+  height: 1596
+  license: Public domain
+  author: USFWS (US Fish and Wildlife Service)
+  source_url: https://commons.wikimedia.org/wiki/File:Alectoris-rufa-with-young.jpg
+  commons_filename: Alectoris-rufa-with-young.jpg
+- role: secondary
+  path: Q754863/secondary-1.jpg
+  width: 1800
+  height: 1197
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Benjah-bmm27" title="User:Benjah-bmm27">Benjah-bmm27</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Young-Alectoris-rufa.JPG
+  commons_filename: Young-Alectoris-rufa.JPG
+- role: secondary
+  path: Q754863/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/fieldsportschannel/">FieldsportsChannel.tv</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Alectoris rufa driven hunt,
+    Hampshire, England 01.png
+  commons_filename: Alectoris rufa driven hunt, Hampshire, England 01.png
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:06:07.476922+00:00'
+sources:
+  wikipedia_sv_revision: '56695257'
+  wikipedia_en_revision: '1319530754'
+  claude_model: claude-haiku-4-5-20251001

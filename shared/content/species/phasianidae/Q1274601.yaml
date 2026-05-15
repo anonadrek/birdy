@@ -1,0 +1,75 @@
+id: Q1274601
+scientific_name: Tetraogallus caspius
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Snowcock
+  ioc_order: Galliformes
+names:
+  sv: Kaspisk snöhöna
+  en: Caspian Snowcock
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kaspisk snöhöna
+
+
+    Kaspisk snöhöna är en bergslevande fågel inom familjen fasanfåglar som förekommer
+    i bergstrakter i västra Asien. Det är en stor och robust höna anpassad för höga
+    höjder och kallt klimat. Fågeln har ett kraftigt bygge med täta fjädrar som ger
+    den god isolering i snö och is.
+
+
+    Arten är främst aktiv på morgon och kväll då den söker föda på bergssidorna. Det
+    är en försiktig fågel som förlitar sig på sitt kamuflerande fjäderdräkt för att
+    smälta in i den steniga bergsmiljön. När faran närmar sig springer den snarare
+    än att flyga.
+
+
+    Beståndet av kaspisk snöhöna tros vara livskraftigt, men arten minskar långsamt
+    i antal. Denna utveckling förknippas troligen med förändringar i bergsmiljön och
+    människans påverkan på dess naturliga habitat. Arten är starkt bunden till sina
+    bergsområden och är känsllig för störningar i dessa högt belägna ekosystem.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q1274601/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5701712">موسی
+    مزینانیان</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tetraogallus caspius 199020352.jpg
+  commons_filename: Tetraogallus caspius 199020352.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:05:37.865913+00:00'
+sources:
+  wikipedia_sv_revision: '58453091'
+  wikipedia_en_revision: '1322431999'
+  claude_model: claude-haiku-4-5-20251001

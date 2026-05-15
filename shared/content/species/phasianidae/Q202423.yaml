@@ -1,0 +1,101 @@
+id: Q202423
+scientific_name: Alectoris barbara
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Alectoris
+  ioc_order: Galliformes
+names:
+  sv: Klipphöna
+  en: Barbary Partridge
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Barbary Partridge
+
+
+    The Barbary partridge is a gamebird belonging to the pheasant family, native to
+    North Africa where it inhabits rocky, mountainous terrain. It is a small to medium-sized
+    partridge with distinctive plumage featuring rufous and grey tones, along with
+    characteristic facial markings that aid in identification. The bird''s appearance
+    reflects its rocky habitat, providing effective camouflage among stone and scrubland.
+
+
+    This partridge is primarily terrestrial, spending much of its time foraging on
+    the ground for seeds, insects, and vegetation. It typically moves through its
+    habitat in small groups and prefers to run rather than fly when disturbed, a common
+    trait among partridges. The bird''s call is a distinctive loud, repeated series
+    of notes that can be heard echoing through mountain valleys, particularly during
+    breeding season.
+
+
+    The Barbary partridge is found in arid and semi-arid mountainous regions of North
+    Africa, where it occupies rocky slopes and sparse scrubland habitats. It remains
+    largely endemic to this region and is adapted to survive in harsh, dry conditions
+    with limited water. Birdwatchers seeking this species should focus on high-altitude
+    rocky areas and scrubland during early morning hours when it is most vocal and
+    active.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Barbary Partridge is a resident species of North Africa with no significant
+    migratory populations in Scandinavia or Northern Europe. It does not occur naturally
+    in these regions and therefore has no documented migration patterns or seasonal
+    occurrence data relevant to Scandinavian bird guides.'
+image_refs:
+- role: hero
+  path: Q202423/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/8135118@N04">Frits
+    van der Meer</a> from Utrecht, Nederland
+  source_url: https://commons.wikimedia.org/wiki/File:Alectoris barbara Tenerife.jpg
+  commons_filename: Alectoris barbara Tenerife.jpg
+- role: secondary
+  path: Q202423/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/8135118@N04">FritsM</a>
+    from Nederland
+  source_url: https://commons.wikimedia.org/wiki/File:Alectoris barbara portrait Tenerife.jpg
+  commons_filename: Alectoris barbara portrait Tenerife.jpg
+- role: secondary
+  path: Q202423/secondary-2.jpg
+  width: 1800
+  height: 1325
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/8135118@N04">Frits
+    van der Meer</a> from Utrecht, Nederland
+  source_url: https://commons.wikimedia.org/wiki/File:Alectoris barbara.jpg
+  commons_filename: Alectoris barbara.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:05:23.050662+00:00'
+sources:
+  wikipedia_sv_revision: '58505141'
+  wikipedia_en_revision: '1333874283'
+  claude_model: claude-haiku-4-5-20251001

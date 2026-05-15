@@ -1,0 +1,65 @@
+id: Q1266683
+scientific_name: Pternistis erckelii
+taxonomy:
+  family: Phasianidae
+  family_sv: Fälthöns
+  genus: Pternistis
+  ioc_order: Galliformes
+names:
+  sv: Rostkronad sporrhöna
+  en: Erckel’s Spurfowl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q1266683/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9765210@N03">Dominic
+    Sherony</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Erckel's Francolin (Pternistis
+    erckelii) (2) (26398659471).jpg
+  commons_filename: Erckel's Francolin (Pternistis erckelii) (2) (26398659471).jpg
+- role: secondary
+  path: Q1266683/secondary-1.jpg
+  width: 1800
+  height: 1127
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9765210@N03">Dominic
+    Sherony</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Erckel's Francolin (Pternistis
+    erckelii) (26464827875).jpg
+  commons_filename: Erckel's Francolin (Pternistis erckelii) (26464827875).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:05:02.155240+00:00'
+sources:
+  wikipedia_sv_revision: '55716091'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

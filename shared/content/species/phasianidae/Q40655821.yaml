@@ -1,0 +1,109 @@
+id: Q40655821
+scientific_name: Lagopus scotica
+taxonomy:
+  family: Phasianidae
+  family_sv: Skogshöns
+  genus: Lagopus
+  ioc_order: Galliformes
+names:
+  sv: Moripa
+  en: Red Grouse
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red Grouse
+
+
+    The red grouse is a medium-sized grouse species found exclusively in heather moorland
+    habitats across Great Britain and Ireland. It is a stocky, ground-dwelling bird
+    perfectly adapted to open moorland environments where heather provides both food
+    and shelter.
+
+
+    In appearance, the red grouse displays predominantly dark reddish-brown plumage
+    that helps it blend seamlessly into heather vegetation. Males are generally darker
+    and more richly colored than females, often showing a deeper russet tone. The
+    bird has a characteristic rounded body shape typical of grouse species, with feathered
+    legs extending down to the toes—an adaptation for warmth in exposed moorland conditions.
+
+
+    Red grouse are primarily terrestrial birds that spend most of their time on the
+    ground, running and hiding in heather rather than flying unless necessary. They
+    are cryptic by nature, relying on camouflage to avoid detection. When alarmed,
+    they will flush suddenly with a whirring flight pattern. The species is known
+    for its distinctive calls, particularly a loud croaking sound during breeding
+    displays. Pairs typically remain on the same moorland territories year-round,
+    making them relatively sedentary birds.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Red Grouse is a resident bird endemic to Great Britain and Ireland, with no
+    significant migratory movements. It remains on its heather moorland territories
+    year-round, making it a permanent resident throughout its limited range. Since
+    the species does not occur naturally in Scandinavia or Northern Europe beyond
+    the British Isles, detailed information about seasonal occurrence in these regions
+    is not applicable.'
+image_refs:
+- role: hero
+  path: Q40655821/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red Grouse - Lagopus lagopus
+    scotica (52515345283).jpg
+  commons_filename: Red Grouse - Lagopus lagopus scotica (52515345283).jpg
+- role: secondary
+  path: Q40655821/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.geograph.org.uk/profile/6363">Adam
+    Ward</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
+    href="//commons.wikimedia.org/wiki/File:Lagopus_lagopus_scotica_-_geograph.org.uk_-_6340386.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Lagopus lagopus scotica - geograph.org.uk
+    - 6340386.jpg
+  commons_filename: Lagopus lagopus scotica - geograph.org.uk - 6340386.jpg
+- role: secondary
+  path: Q40655821/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2014-04-21 Lagopus lagopus scotica,
+    Hawsen Burn 1.jpg
+  commons_filename: 2014-04-21 Lagopus lagopus scotica, Hawsen Burn 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:06:28.224750+00:00'
+sources:
+  wikipedia_sv_revision: '57594279'
+  wikipedia_en_revision: '1350366788'
+  claude_model: claude-haiku-4-5-20251001
