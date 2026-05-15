@@ -1,0 +1,83 @@
+id: Q27075715
+scientific_name: Gymnoris dentata
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Gymnoris
+  ioc_order: Passeriformes
+names:
+  sv: Sahelsparv
+  en: Sahel Bush Sparrow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Sahel Bush Sparrow
+
+
+    The Sahel bush sparrow is a small member of the sparrow family found across the
+    arid regions of Africa and into the southwestern Arabian Peninsula. It inhabits
+    dry savannas and tropical dry shrublands, where it is adapted to harsh, water-scarce
+    environments. The species ranges widely from Mauritania and Guinea in the west
+    to Eritrea in the east, occupying the transitional zones between desert and more
+    vegetated landscapes.
+
+
+    These sparrows are gregarious birds, often seen in small flocks as they forage
+    for seeds and insects among low vegetation and scrub. Like other sparrows, they
+    are relatively compact and sturdy birds well-suited to their arid habitat. They
+    typically remain close to ground level, moving through bushes and grassland in
+    search of food.
+
+
+    The Sahel bush sparrow is generally common throughout its range in suitable habitat,
+    though populations can fluctuate with seasonal rainfall patterns typical of semi-arid
+    regions. Birdwatchers visiting dry savanna areas in their range will likely encounter
+    these characteristically vocal and active sparrows, recognizable by their behavior
+    and calls among the sparse vegetation.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    This species is endemic to Africa and the Arabian Peninsula and does not occur
+    in Scandinavia or Northern Europe. The source text provides no information about
+    its presence, migration patterns, or seasonal occurrence in Scandinavian or Northern
+    European regions.'
+image_refs:
+- role: hero
+  path: Q27075715/hero.jpg
+  width: 2106
+  height: 1404
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Bush petronia (Gymnoris dentata
+    dentata) male.jpg
+  commons_filename: Bush petronia (Gymnoris dentata dentata) male.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:28:02.235605+00:00'
+sources:
+  wikipedia_sv_revision: '57763213'
+  wikipedia_en_revision: '1315265636'
+  claude_model: claude-haiku-4-5-20251001

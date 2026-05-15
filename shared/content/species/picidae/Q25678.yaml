@@ -1,0 +1,132 @@
+id: Q25678
+scientific_name: Jynx torquilla
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Jynx
+  ioc_order: Piciformes
+names:
+  sv: Göktyta
+  en: Eurasian Wryneck
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Göktyta
+
+
+    Göktyta är en liten hackspett som främst förekommer i tempererade regioner i Europa
+    och Asien. Det är en flyttfågel som övervintrar i tropiska Afrika och södra Asien,
+    från Iran till Indiska subkontinenten. Några populationer är dock stannfåglar
+    i nordvästra Afrika och på öar i Medelhavet.
+
+
+    Arten är känd för sitt karakteristiska utseende med spräcklig fjäderdräkt som
+    ger utmärkt kamouflage. Det har en relativt liten, rakare näbb än många andra
+    hackspettar. Göktyta är skygga och kan vara svåra att få syn på trots att de ofta
+    är närvarande.
+
+
+    Arten är mest känd för sitt egendomliga beteende när den hotas – den kan vrida
+    halsen på ett nästan ormlikt sätt, vilket är ursprunget till namnet. Det söker
+    föda främst på marken och i låga vegetation, där det letar efter myror och andra
+    små insekter.'
+  en: '# Eurasian Wryneck
+
+
+    The Eurasian wryneck is a small, cryptic member of the woodpecker family with
+    a superbly camouflaged plumage of grey and brown tones that blends seamlessly
+    into bark and lichen-covered surfaces. Unlike typical woodpeckers, it has a slender,
+    slightly curved bill and lacks the stiff tail feathers used for climbing. It is
+    a bird of open woodlands, countryside, and orchards rather than dense forests.
+
+
+    This species is highly migratory across most of its range, breeding throughout
+    temperate Europe and Asia during spring and summer, then undertaking impressive
+    journeys to winter in tropical Africa and southern Asia from Iran to the Indian
+    subcontinent. Some populations resident in northwestern Africa remain year-round.
+
+
+    The wryneck''s behaviour is notably different from other woodpeckers—it forages
+    on the ground and lower branches, hunting for ants using its long, sticky tongue.
+    Its presence is often revealed by its distinctive "pee-u, pee-u" call, a repetitive
+    nasal sound that carries well across open ground. The species'' cryptic nature
+    and preference for scattered trees make it easy to overlook despite its intriguing
+    calls and unusual wryneck-twisting posture when alarmed.'
+migration:
+  sv: '# Göktyta (Jynx torquilla) – Migration i Skandinavien
+
+
+    Göktyta är en flyttfågel som häckar i tempererade delar av Europa och Asien under
+    sommaren. I Skandinavien anländer arten på våren för att reproducera sig, medan
+    huvuddelen av populationen övervintrar i tropiska Afrika och södra Asien, från
+    Iran till Indiska subkontinenten. Under hösten återvänder göktytorna till sina
+    övervintringskvartsäer. Ett mindre antal individer är stannfåglar i nordvästra
+    Afrika och på öar i Medelhavet, men de flesta nord- och centraleuropeiska populationerna
+    är långdistansflyttare som följer ett årligt migrations- och häckningsmönster
+    mellan sitt nordliga häckningsområde och sina afrikanska eller asiatiska övervintringskvartsäer.'
+  en: '# Eurasian Wryneck in Scandinavia and Northern Europe
+
+
+    The Eurasian Wryneck is a migratory species in Scandinavia and most of Northern
+    Europe. It arrives in spring to breed in temperate woodland and open countryside
+    habitats, typically from April onwards. The breeding season is relatively short,
+    after which populations undertake a substantial southward migration in late summer
+    and autumn. Unlike some northern European birds, wrynecks do not overwinter in
+    the region; the vast majority depart for tropical Africa and southern Asia, where
+    they spend the winter months in warmer climates. This makes it a strictly seasonal
+    visitor to Scandinavian and Northern European territories, present only during
+    the breeding season.'
+image_refs:
+- role: hero
+  path: Q25678/hero.jpg
+  width: 2400
+  height: 1599
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Jynx torquilla (33693877994).jpg
+  commons_filename: Jynx torquilla (33693877994).jpg
+- role: secondary
+  path: Q25678/secondary-1.jpg
+  width: 1800
+  height: 1264
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Jynx torquilla (34375689462).jpg
+  commons_filename: Jynx torquilla (34375689462).jpg
+- role: secondary
+  path: Q25678/secondary-2.jpg
+  width: 1800
+  height: 1264
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Jynx torquilla (34495193666).jpg
+  commons_filename: Jynx torquilla (34495193666).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:29:39.238612+00:00'
+sources:
+  wikipedia_sv_revision: '59250257'
+  wikipedia_en_revision: '1349688021'
+  claude_model: claude-haiku-4-5-20251001

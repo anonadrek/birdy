@@ -1,0 +1,92 @@
+id: Q207290
+scientific_name: Dendrocopos leucotos
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Dendrocopos
+  ioc_order: Piciformes
+names:
+  sv: Vitryggig hackspett
+  en: White-backed Woodpecker
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitryggig hackspett
+
+
+    Vitryggig hackspett är en stor hackspett som är något större än större hackspett.
+    Det karakteristiska draget är den vita ryggen, som särskiljer den från andra hackspettar.
+    Arten förekommer transpalearktiskt från väster till öst över Europa och Asien,
+    med ett omfattande utbredningsområde som sträcker sig från västra regioner till
+    östra delar av kontinenten.
+
+
+    Arten är idag listad som akut hotad, främst på grund av bristen på lämpliga biotoper.
+    Vitryggig hackspett föredrar skogar med gamla träd där det finns möjlighet att
+    söka föda. För att möta artens bevarandebehov är det viktigt att bevara och utveckla
+    denna typ av naturmiljö.'
+  en: ''
+migration:
+  sv: '# Vitryggig hackspett – Förekomst i Skandinavien
+
+
+    Vitryggig hackspett är en stationär art som förekommer året runt i Skandinavien,
+    där den är bosatt i de nordligaste delarna av regionen. Arten är inte migrerande
+    och stannar kvar på sina revir även under vintermånaderna. I Sverige är arten
+    mycket sällsynt och lokalt förekommande, främst i de äldre barrskogar där den
+    hittar lämpliga biotoper för sitt leverne. Populationen är starkt minskad och
+    arten är idag klassificerad som akut hotad.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q207290/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2567886">Andrew
+    Bazdyrev</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucotos 367166775.jpg
+  commons_filename: Dendrocopos leucotos 367166775.jpg
+- role: secondary
+  path: Q207290/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2567886">Andrew
+    Bazdyrev</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucotos 367166789.jpg
+  commons_filename: Dendrocopos leucotos 367166789.jpg
+- role: secondary
+  path: Q207290/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Stolbovsky" title="User:Stolbovsky">Stolbovsky</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucotos in Valuesky.jpg
+  commons_filename: Dendrocopos leucotos in Valuesky.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:29:39.772607+00:00'
+sources:
+  wikipedia_sv_revision: '59237042'
+  wikipedia_en_revision: '1341488061'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,126 @@
+id: Q14683
+scientific_name: Passer domesticus
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Passer
+  ioc_order: Passeriformes
+names:
+  sv: Gråsparv
+  en: House Sparrow
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gråsparv
+
+
+    Gråsparven är en av världens mest spridda fågelarter och tillhör familjen sparvfinkar.
+    Det är en liten, robust fågel som har följt människan i över 10 000 år och trivs
+    väl i närheten av bebyggelse. Idag finns gråsparven på nästan alla kontinenter,
+    då människan introducerat arten långt bort från dess ursprungliga utbredningsområde
+    i Europa och Asien.
+
+
+    Arten förekommer framför allt i människans närhet – vid bostäder, gårdar och andra
+    bebyggelse. Det är en social fågel som ofta ses i flockar, särskilt vid framför
+    allt sädesmagasin, möllor och andra platser där det finns mat. Gråsparven är mycket
+    anpassningsbar och trives väl i urbana miljöer. Världspopulationen uppskattas
+    till omkring 500 miljoner individer, vilket gör det till en av de vanligaste fågelpopulationerna
+    på jorden.'
+  en: '# House Sparrow
+
+
+    The house sparrow is a small, compact bird measuring around 16 cm in length, weighing
+    between 24–39.5 grams. Sexual dimorphism is evident: males display striking black,
+    white, and brown markings, while females and juveniles are duller, with pale brown
+    and grey plumage. It belongs to the sparrow family Passeridae and is one of approximately
+    25 species in the genus Passer.
+
+
+    Originally native to most of Europe, the Mediterranean Basin, and much of Asia,
+    the house sparrow has become the world''s most widely distributed wild bird. Both
+    intentional and accidental human introductions have established populations across
+    Australasia, Africa, and the Americas. This remarkable expansion reflects the
+    species'' remarkable adaptability to human-modified landscapes and urban environments,
+    making it a familiar sight to people worldwide.'
+migration:
+  sv: '# Gråsparv – förekomst i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    **Note:** The source text provided contains only general information about the
+    House Sparrow''s global distribution and its relationship with humans. It includes
+    no specific information about migration patterns, overwintering behavior, or seasonal
+    occurrence in Scandinavia/Northern Europe. According to the instructions, when
+    source text contains no migration information, the standard phrase should be returned.'
+  en: '# House Sparrow (Passer domesticus) in Scandinavia/Northern Europe
+
+
+    The House Sparrow is a year-round resident throughout most of Scandinavia and
+    Northern Europe, showing minimal migration patterns. However, populations in the
+    northernmost regions may undertake partial migrations, with some individuals moving
+    southward during the harshest winter months, while others remain sedentary. The
+    species is highly adapted to urban and agricultural environments, where it finds
+    shelter and food sources that sustain it through winter. Breeding occurs from
+    spring through summer, with birds establishing territories and raising multiple
+    broods before the onset of winter.'
+image_refs:
+- role: hero
+  path: Q14683/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:House sparrow (Passer domesticus),
+    Amrum.jpg
+  commons_filename: House sparrow (Passer domesticus), Amrum.jpg
+- role: secondary
+  path: Q14683/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Julian_Herzog" title="User:Julian
+    Herzog">Julian Herzog</a> (<a rel="nofollow" class="external text" href="http://julianherzog.com">Website</a>)<br>
+  source_url: https://commons.wikimedia.org/wiki/File:Male House Sparrow Passer Domesticus
+    Brackley 2025 01.jpg
+  commons_filename: Male House Sparrow Passer Domesticus Brackley 2025 01.jpg
+- role: secondary
+  path: Q14683/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PierreSelim" title="User:PierreSelim">PierreSelim</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Passer domesticus - Jardins
+    du Carrousel.jpg
+  commons_filename: Passer domesticus - Jardins du Carrousel.jpg
+review_status: approved
+review_notes: "Hero = Passer domesticus (House Sparrow / Gråsparv); allmän stadsbofågel i hela SE."
+generated_at: '2026-05-15T21:27:08.807537+00:00'
+sources:
+  wikipedia_sv_revision: '57738277'
+  wikipedia_en_revision: '1345282931'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,85 @@
+id: Q901708
+scientific_name: Passer luteus
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Passer
+  ioc_order: Passeriformes
+names:
+  sv: Sudanguldsparv
+  en: Sudan Golden Sparrow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Sudan Golden Sparrow
+
+
+    The Sudan golden sparrow is a small sparrow found across sub-Saharan Africa. It
+    is highly valued in aviculture, where it is commonly known as the golden song
+    sparrow due to its attractive appearance and pleasant vocalizations. The species
+    is closely related to the Arabian golden sparrow, and the two are sometimes grouped
+    together as a single species called the "golden sparrow."
+
+
+    This bird is particularly popular in the cage bird trade, reflecting its appeal
+    to bird enthusiasts. Its popularity in captivity suggests it possesses characteristics—whether
+    visual plumage, behaviour, or song—that make it desirable as a kept bird. The
+    species'' presence across sub-Saharan Africa indicates it is well-adapted to various
+    habitats throughout this region.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Sudan Golden Sparrow is a resident bird of sub-Saharan Africa with no documented
+    migration patterns relevant to Scandinavia or Northern Europe. This species does
+    not naturally occur in these regions and is only found in captivity through the
+    aviculture trade, where it is kept as a cage bird. Therefore, information about
+    seasonal occurrence, arrival months, or overwintering in Northern European regions
+    cannot be provided.'
+image_refs:
+- role: hero
+  path: Q901708/hero.jpg
+  width: 2048
+  height: 1494
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">Mourad
+    Harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Passer luteus in Algeria 590956865.jpg
+  commons_filename: Passer luteus in Algeria 590956865.jpg
+- role: secondary
+  path: Q901708/secondary-1.jpg
+  width: 1800
+  height: 1236
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1082970">Karim
+    Haddad</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Passer luteus 262388966.jpg
+  commons_filename: Passer luteus 262388966.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:28:03.444057+00:00'
+sources:
+  wikipedia_sv_revision: '55738689'
+  wikipedia_en_revision: '1315177460'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,115 @@
+id: Q1316073
+scientific_name: Passer euchlorus
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Passer
+  ioc_order: Passeriformes
+names:
+  sv: Arabguldsparv
+  en: Arabian Golden Sparrow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Arabguldsparv
+
+
+    Arabguldsparv är en liten sparvfink som förekommer på två åtskilda områden: på
+    sydvästra Arabiska halvön och i ett litet område på Afrikas horn. Arten är anpassad
+    till de torra, varma klimaten i dessa regioner.
+
+
+    Denna lilla fågel är en medlem av sparvfinkfamiljen och tillhör ordningen tättingar.
+    Som många sparvar är det en social fågel som ofta ses i mindre flockar. Det är
+    framför allt en bofast art som återfinns i sin begränsade utbredning året runt.
+
+
+    Arabguldsparv föredrar öppna och halvöppna landskap där det finns låg vegetation.
+    Arten är mindre känd än många andra sparvar, men för den som får möjlighet att
+    studera den i sitt naturliga habitat erbjuder den intressanta inblickar i hur
+    sparvfinkar anpassat sig till extremt torra miljöer.'
+  en: '# Arabian Golden Sparrow
+
+
+    The Arabian golden sparrow is a small member of the sparrow family found in arid
+    regions of southwestern Arabia, as well as along the coasts of Somalia and Djibouti.
+    It inhabits thorn savannah and scrub habitats, where it is well-adapted to dry,
+    sparsely vegetated landscapes. The species shares similarities with the Sudan
+    golden sparrow, and taxonomists have occasionally debated whether it should be
+    classified as a separate species or subspecies.
+
+
+    This sparrow prefers open, thorny scrubland where scattered vegetation provides
+    both shelter and foraging opportunities. Like other sparrows, it is likely gregarious
+    and feeds on seeds and small invertebrates, though detailed behavioral information
+    remains limited in ornithological literature. The bird''s appearance and calls
+    would benefit from field observation to fully appreciate its characteristics,
+    as it remains relatively understudied compared to more widespread sparrow species.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only information about the Arabian Golden Sparrow''s
+    geographic range (southwest Arabia, Somalia, and Djibouti) and habitat preferences
+    (thorn savannah and scrub), with no details regarding migration patterns, seasonal
+    movements, or occurrence in Scandinavia/Northern Europe. This species is not known
+    to occur in Northern Europe, and no migration or seasonal distribution data is
+    included in the provided source material.'
+image_refs:
+- role: hero
+  path: Q1316073/hero.jpg
+  width: 2048
+  height: 1366
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Passer euchlorus 284522978.jpg
+  commons_filename: Passer euchlorus 284522978.jpg
+- role: secondary
+  path: Q1316073/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Passer euchlorus 284523003.jpg
+  commons_filename: Passer euchlorus 284523003.jpg
+- role: secondary
+  path: Q1316073/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Passer euchlorus 284523024.jpg
+  commons_filename: Passer euchlorus 284523024.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:28:28.014711+00:00'
+sources:
+  wikipedia_sv_revision: '56466721'
+  wikipedia_en_revision: '1313726897'
+  claude_model: claude-haiku-4-5-20251001

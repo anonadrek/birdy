@@ -1,0 +1,101 @@
+id: Q275591
+scientific_name: Dendrocoptes medius
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Dendrocoptes
+  ioc_order: Piciformes
+names:
+  sv: Mellanspett
+  en: Middle Spotted Woodpecker
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mellanspett
+
+
+    Mellanspett är en medelstor hackspett med begränsad utbredning i västra och södra
+    delen av Palearktis. Arten är väl anpassad för att söka föda i trädkronorna och
+    föredrar grovbarkade grenar och stamdelar, där det finns gott om insektsföda.
+    Traditionellt är mellanspetten starkt knuten till gamla ekomskogar, där den trivs
+    särskilt väl. Under senare år har arten dock påvisats i naturliga lövskogar där
+    andra trädslag dominerar, vilket visar på en viss flexibilitet i habitatval.
+
+
+    Arten är något mindre än den välbekanta större hackspetten och kan skiljas från
+    denna genom sitt utseende. Mellanspetten söker sin föda främst genom att hacka
+    och söka i bark för att nå insekter och larver. Som många hackspettar är arten
+    relativt skygg och kan vara svår att få syn på när den rör sig högt upp i trädkronorna.
+
+
+    Denna specialiserade hackspett kräver skogar med gammal trädbestånd för att trivas
+    optimalt, vilket gör arten känslig för intensiv skogsskötsel.'
+  en: ''
+migration:
+  sv: '# Mellanspett - Förekomst i Skandinavien och Nordeuropa
+
+
+    Mellanspett är en stationär art som förekommer året runt i sitt utbredningsområde,
+    vilket omfattar delar av västra och södra Europa. I Skandinavien och övriga Nordeuropa
+    är arten mycket sällsynt och oregelbunden. Den har en begränsad utbredning och
+    är huvudsakligen knuten till områden med gamla, grovbarkade träd, särskilt ekar.
+    Arten är övervintrad i sitt område och visar ingen markant migrationsaktivitet
+    som många andra hackspettar.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q275591/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:RaunoK&amp;action=edit&amp;redlink=1"
+    class="new" title="User:RaunoK (page does not exist)">RaunoK</a>
+  source_url: https://commons.wikimedia.org/wiki/File:The middle spotted woodpecker
+    (Dendrocoptes medius) - Tamme-kirjurähn.jpg
+  commons_filename: The middle spotted woodpecker (Dendrocoptes medius) - Tamme-kirjurähn.jpg
+- role: secondary
+  path: Q275591/secondary-1.jpg
+  width: 1580
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Dion_Art&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Dion Art (page does not exist)">Dion Art</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Средний пёстрый дятел (Dendrocoptes
+    medius), Битцевский лес.jpg
+  commons_filename: Средний пёстрый дятел (Dendrocoptes medius), Битцевский лес.jpg
+- role: secondary
+  path: Q275591/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Middle spotted woodpecker (Dendrocoptes
+    medius medius) male.jpg
+  commons_filename: Middle spotted woodpecker (Dendrocoptes medius medius) male.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:28:17.905308+00:00'
+sources:
+  wikipedia_sv_revision: '58946363'
+  wikipedia_en_revision: '1335506996'
+  claude_model: claude-haiku-4-5-20251001

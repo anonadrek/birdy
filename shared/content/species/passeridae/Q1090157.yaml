@@ -1,0 +1,81 @@
+id: Q1090157
+scientific_name: Passer iagoensis
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Passer
+  ioc_order: Passeriformes
+names:
+  sv: Kapverdesparv
+  en: Iago Sparrow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Iago Sparrow
+
+
+    The Iago sparrow is a small sparrow endemic to the Cape Verde archipelago, measuring
+    just 12.5–13 centimetres in length. Females and young birds display brown plumage
+    with black markings above and a dull grey underside, distinguished by a prominent,
+    pale supercilium (eyebrow stripe). Males are more striking, with a brighter underside
+    and bold black and chestnut stripes adorning their head, creating a distinctive
+    facial pattern.
+
+
+    This species is vocal, with males and females producing somewhat different variations
+    of chirps. The vocalizations are primarily chirping sounds rather than complex
+    songs, typical of many sparrows. The bird''s behaviour and ecology remain relatively
+    understudied compared to more widespread sparrow species.
+
+
+    The Iago sparrow is found exclusively within the Cape Verde archipelago in the
+    eastern Atlantic Ocean, making it a species of restricted range and particular
+    interest to birdwatchers visiting the islands.'
+migration:
+  sv: ''
+  en: '# Iago Sparrow in Northern Europe
+
+
+    The Iago sparrow does not occur in Scandinavia or Northern Europe. This species
+    is endemic to the Cape Verde archipelago, located in the eastern Atlantic Ocean
+    near western Africa, and does not migrate to northern regions. Its range is restricted
+    to these islands year-round, making it absent from Scandinavian territories entirely.
+
+
+    Migration data unavailable for this species in a Northern European context.'
+image_refs:
+- role: hero
+  path: Q1090157/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Diego7864" title="User:Diego7864">Diego7864</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Passer Iagoensis, monte verde.jpg
+  commons_filename: Passer Iagoensis, monte verde.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:29:51.673179+00:00'
+sources:
+  wikipedia_sv_revision: '59213824'
+  wikipedia_en_revision: '1314730433'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,108 @@
+id: Q5983847
+scientific_name: Picus sharpei
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Picus
+  ioc_order: Piciformes
+names:
+  sv: Iberisk gröngöling
+  en: Iberian Green Woodpecker
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Iberisk gröngöling
+
+
+    Iberisk gröngöling är en hackspett som är nära släkt med gröngölingen och förekom
+    tidigare som underart till denna. Det är en art som är begränsad till Iberiska
+    halvön, där det förekommer i lämpliga habitat.
+
+
+    Arten minskar i antal, men beståndet anses trots detta vara livskraftigt. Som
+    hackspett utgör det en integrerad del av skogekosystemen på sin utbredningsområde.
+
+
+    För mer detaljerad information om utseende, beteende, läte och specifika habitat
+    rekommenderas mer omfattande kilder, då grundinformationen är begränsad.'
+  en: '# Iberian Green Woodpecker
+
+
+    The Iberian green woodpecker is a medium-sized woodpecker found exclusively in
+    the Iberian peninsula. It closely resembles the European green woodpecker but
+    is readily distinguished by its plumage: it has minimal black markings on the
+    head and displays a dusky (rather than jet-black) ring around each eye. Like other
+    green woodpeckers, it is primarily a ground feeder, probing for ants and other
+    invertebrates in grassland and open woodland habitats.
+
+
+    Its vocalizations are distinctive and quite different from its closest relatives.
+    The bird produces sibilant, hiss-like sounds—a characteristic that sets it apart
+    acoustically. These calls are often delivered from perches or while foraging on
+    the ground.
+
+
+    The species inhabits open and semi-open landscapes, including grasslands, parkland,
+    and woodland edges where it can access suitable feeding grounds. It remains relatively
+    sedentary throughout its range, though local movements may occur seasonally.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller ingen information om migration, övervintrande,
+    ankomstmånader eller säsongsfördelning för Iberisk gröngöling. Texten behandlar
+    endast artens geografiska förekomst på Iberiska halvön, dess taxonomiska relation
+    till gröngölingen och beståndsstatus.'
+  en: '# Picus sharpei in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Iberian Green Woodpecker is endemic to the Iberian Peninsula and does not
+    occur in Scandinavia or Northern Europe. This species has a restricted range limited
+    to Spain and Portugal, making it absent from all Nordic and Northern European
+    countries throughout the year.'
+image_refs:
+- role: hero
+  path: Q5983847/hero.jpg
+  width: 1800
+  height: 2400
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Kadellar" title="User:Kadellar">Carlos
+    Delgado</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Picus sharpei, Parque de El
+    Retiro, Madrid - 01.jpg
+  commons_filename: Picus sharpei, Parque de El Retiro, Madrid - 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:29:56.663397+00:00'
+sources:
+  wikipedia_sv_revision: '55619062'
+  wikipedia_en_revision: '1346776631'
+  claude_model: claude-haiku-4-5-20251001

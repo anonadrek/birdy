@@ -1,0 +1,77 @@
+id: Q946681
+scientific_name: Dendropicos goertae
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Dendropicos
+  ioc_order: Piciformes
+names:
+  sv: Afrikansk gråspett
+  en: African Grey Woodpecker
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# African Grey Woodpecker
+
+
+    The African grey woodpecker is a widespread woodpecker species found throughout
+    much of Sub-Saharan and equatorial Africa. It inhabits forested and bushy areas,
+    where it makes its home in tree cavities, frequently selecting oil palms as nesting
+    sites. The species is a resident breeder, laying two to four eggs per clutch.
+    It remains common across its extensive range and is classified as of least concern
+    for conservation status.
+
+
+    While specific details about its appearance, vocalizations, and precise behavior
+    are limited in the available source material, the African grey woodpecker''s prevalence
+    in suitable woodland habitats makes it a relatively accessible species for birdwatchers
+    in its range. Its preference for nesting in palm trees and natural forest cavities
+    reflects its adaptation to diverse forest environments across the African continent.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The African Grey Woodpecker is a resident species throughout its Sub-Saharan and
+    equatorial African range, with no documented migration patterns to or occurrence
+    in Scandinavia or Northern Europe. This woodpecker is permanently established
+    in its forest and bush habitats across Africa and does not undertake seasonal
+    movements that would bring it to northern latitudes.'
+image_refs:
+- role: hero
+  path: Q946681/hero.jpg
+  width: 2220
+  height: 1540
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9765210@N03">Dominic
+    Sherony</a>
+  source_url: https://commons.wikimedia.org/wiki/File:African Grey Woodpecker (Dendropicos
+    goertae) (45649382145).jpg
+  commons_filename: African Grey Woodpecker (Dendropicos goertae) (45649382145).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:29:11.676066+00:00'
+sources:
+  wikipedia_sv_revision: '56592516'
+  wikipedia_en_revision: '1313852457'
+  claude_model: claude-haiku-4-5-20251001

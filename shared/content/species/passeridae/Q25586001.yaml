@@ -1,0 +1,100 @@
+id: Q25586001
+scientific_name: Gymnoris xanthocollis
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Gymnoris
+  ioc_order: Passeriformes
+names:
+  sv: Solsparv
+  en: Yellow-throated Sparrow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Yellow-throated Sparrow
+
+
+    The yellow-throated sparrow is a sparrow species found across southern Asia, primarily
+    inhabiting dry savannah environments. It forages on the ground for grain and supplements
+    its diet with berries gathered from bushes. The species is often observed perched
+    atop bare branches while calling, making it relatively conspicuous despite its
+    arid habitat preference.
+
+
+    Little detailed information is available in standard references about this species''
+    specific appearance and vocalizations, though its common names—yellow-throated
+    sparrow and chestnut-shouldered petronia—suggest distinctive markings in these
+    areas. Its habit of calling from exposed perches makes it easier to locate than
+    many ground-feeding birds, despite the open terrain it favors.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the Yellow-throated Sparrow''s
+    occurrence in Scandinavia, Northern Europe, migration patterns, seasonal movements,
+    or overwintering behavior. The available description only indicates that this
+    species is found in southern Asia and inhabits dry savannah environments. To provide
+    accurate migration information for this bird in Northern European contexts, additional
+    sources with specific data on its range and seasonal distribution would be required.'
+image_refs:
+- role: hero
+  path: Q25586001/hero.jpg
+  width: 2400
+  height: 1875
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Yellow-throated Sparrow Gymnoris
+    xanthocollis by Raju Kasambe DSCN3919.jpg
+  commons_filename: Yellow-throated Sparrow Gymnoris xanthocollis by Raju Kasambe
+    DSCN3919.jpg
+- role: secondary
+  path: Q25586001/secondary-1.jpg
+  width: 1800
+  height: 1347
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Yellow Throated Sparrow Gymnoris
+    xanthocollis by Dr. Raju Kasambe DSCN9902.jpg
+  commons_filename: Yellow Throated Sparrow Gymnoris xanthocollis by Dr. Raju Kasambe
+    DSCN9902.jpg
+- role: secondary
+  path: Q25586001/secondary-2.jpg
+  width: 1377
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Yellow Throated Sparrow Gymnoris
+    xanthocollis by Dr. Raju Kasambe DSCN0185 (1).jpg
+  commons_filename: Yellow Throated Sparrow Gymnoris xanthocollis by Dr. Raju Kasambe
+    DSCN0185 (1).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:27:45.829008+00:00'
+sources:
+  wikipedia_sv_revision: '58516467'
+  wikipedia_en_revision: '1353784101'
+  claude_model: claude-haiku-4-5-20251001

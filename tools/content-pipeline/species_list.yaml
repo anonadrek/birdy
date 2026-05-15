@@ -2650,18 +2650,21 @@
   ioc_order: Piciformes
   common_en: European Green Woodpecker
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q143284
   scientific_name: Dryocopus martius
   family: Picidae
   ioc_order: Piciformes
   common_en: Black Woodpecker
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q210418
   scientific_name: Picoides tridactylus
   family: Picidae
   ioc_order: Piciformes
   common_en: Eurasian Three-toed Woodpecker
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q275591
   scientific_name: Dendrocoptes medius
   family: Picidae
@@ -2698,6 +2701,7 @@
   ioc_order: Piciformes
   common_en: Great Spotted Woodpecker
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q1274639
   scientific_name: Dendrocopos assimilis
   family: Picidae
@@ -2716,6 +2720,7 @@
   ioc_order: Piciformes
   common_en: Lesser Spotted Woodpecker
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q229408
   scientific_name: Falco naumanni
   family: Falconidae
@@ -4612,6 +4617,7 @@
   ioc_order: Passeriformes
   common_en: Eurasian Tree Sparrow
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q634448
   scientific_name: Passer ammodendri
   family: Passeridae
@@ -4678,6 +4684,7 @@
   ioc_order: Passeriformes
   common_en: House Sparrow
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q266107
   scientific_name: Dendronanthus indicus
   family: Motacillidae

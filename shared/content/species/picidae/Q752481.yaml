@@ -1,0 +1,92 @@
+id: Q752481
+scientific_name: Dendrocopos syriacus
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Dendrocopos
+  ioc_order: Piciformes
+names:
+  sv: Balkanspett
+  en: Syrian Woodpecker
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Balkanspett
+
+
+    Balkanspett är en hackspett som liknar större hackspett men är något mindre. Den
+    har den typiska hackspettens rundade kropp med kraftigt näbb och kort, stel stjärt
+    anpassad för att hänga i trädstammar. Fjäderdräkten är huvudsakligen svart och
+    vit, med röda undertäckare under stjärten.
+
+
+    Arten förekommer i östra och sydöstra Europa samt västra Asien, där den bebor
+    löv- och blandskogs områden. Det är en aktiv fågel som speglar efter mat under
+    löst bark på träd, särskilt på döda eller försvagsnade träd. Som andra hackspettar
+    gör den även karakteristiska trumningar på träd för att markera revir och kommunicera.
+
+
+    Balkanspett hörs framför allt genom sina trummande ljud och olika läten som uttrycks
+    under häckningstiden. Arten är relativt svårsedd på större avstånd men kan upptäckas
+    genom sitt beteende högt upp i träden, där den systematiskt söker efter insekter
+    och larver.'
+  en: ''
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: ''
+image_refs:
+- role: hero
+  path: Q752481/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Syrian woodpecker (Dendrocopos
+    syriacus).jpg
+  commons_filename: Syrian woodpecker (Dendrocopos syriacus).jpg
+- role: secondary
+  path: Q752481/secondary-1.jpg
+  width: 1800
+  height: 1196
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Historianengineer&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Historianengineer (page does not exist)">Historianengineer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:A Dendrocopos syriacus in Ataköy,
+    Bakırköy.jpg
+  commons_filename: A Dendrocopos syriacus in Ataköy, Bakırköy.jpg
+- role: secondary
+  path: Q752481/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Syrian Woodpecker (Dendrocopos
+    syriacus) (14180500490).jpg
+  commons_filename: Syrian Woodpecker (Dendrocopos syriacus) (14180500490).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:28:09.079209+00:00'
+sources:
+  wikipedia_sv_revision: '57944858'
+  wikipedia_en_revision: '1344751517'
+  claude_model: claude-haiku-4-5-20251001

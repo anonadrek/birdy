@@ -1,0 +1,98 @@
+id: Q210418
+scientific_name: Picoides tridactylus
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Picoides
+  ioc_order: Piciformes
+names:
+  sv: Tretåig hackspett
+  en: Eurasian Three-toed Woodpecker
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tretåig hackspett
+
+
+    Tretåig hackspett är en hackspett som förekommer över tajgaområdet i norra delen
+    av Palearktis. Arten hittas även i ett antal isolerade bergsområden längre söderut.
+    Tidigare klassificerades den nordamerikanska vedspetten tillsammans med tretåig
+    hackspett, men den urskiljs numera oftast som egen art.
+
+
+    Arten är anpassad till de kalla skogsområden där det finns gott om tall och gran.
+    Tretåig hackspett är en specialist på att hacka i döda träd för att leta efter
+    insekter och larver under barken. Det är en mindre hackspett med karakteristisk
+    trefingad fot, vilket skiljer den från de flesta andra hackspettsarter som har
+    fyra tår.'
+  en: ''
+migration:
+  sv: '# Tretåig hackspett – Förekomst i Norden
+
+
+    Tretåig hackspett är en året runt närvarande art i Skandinavien och förekommer
+    i de nordliga skogsområdena. Den är stationär i sitt utbredningsområde och visar
+    ingen typisk migrationsmönster. Arten stannar i sina revir under höst och vinter,
+    där den söker föda i barrskogen. Under mindre hårt väder kan enskilda individer
+    röra sig kortare sträckor för att hitta lämpliga födosöksområden.
+
+
+    Migrationsdata saknas för denna art i praktisk bemärkelse, då den är icke-flyttande
+    och året runt närvarande i sitt habitat.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q210418/hero.jpg
+  width: 2192
+  height: 1461
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Picoides tridactylus, Belarus
+    1.jpg
+  commons_filename: Picoides tridactylus, Belarus 1.jpg
+- role: secondary
+  path: Q210418/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Picoides tridactylus, Belarus
+    5.jpg
+  commons_filename: Picoides tridactylus, Belarus 5.jpg
+- role: secondary
+  path: Q210418/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5801652">Шальнов
+    Кирилл</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Picoides tridactylus 377352320.jpg
+  commons_filename: Picoides tridactylus 377352320.jpg
+review_status: approved
+review_notes: "Hero = Picoides tridactylus (Eurasian Three-toed Woodpecker / Tretåig hackspett); allmän i orörd barrskog i norra SE."
+generated_at: '2026-05-15T21:27:58.733069+00:00'
+sources:
+  wikipedia_sv_revision: '58838753'
+  wikipedia_en_revision: '1313850833'
+  claude_model: claude-haiku-4-5-20251001

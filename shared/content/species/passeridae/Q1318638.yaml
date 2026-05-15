@@ -1,0 +1,75 @@
+id: Q1318638
+scientific_name: Carpospiza brachydactyla
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Carpospiza
+  ioc_order: Passeriformes
+names:
+  sv: Blek stensparv
+  en: Pale Rockfinch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Pale Rockfinch
+
+
+    The pale rockfinch is a small sparrow found across the Middle East and Central
+    Asia. It is the sole member of its genus, Carpospiza, though taxonomists have
+    debated its classification—some authorities place it within the genus Petronia,
+    while others have suggested it belongs to the finch family due to behavioural
+    and morphological similarities. However, anatomical examination of its tongue
+    reveals characteristic sparrow features, supporting its placement within the sparrow
+    family.
+
+
+    This species inhabits rocky and arid regions where it forages among stones and
+    sparse vegetation. Its small size and pale coloration make it well-suited to its
+    harsh, open habitats. Like other sparrows, it is a social bird that may form small
+    groups, particularly outside the breeding season.
+
+
+    Further information about its specific appearance, vocalizations, and detailed
+    behavioural patterns would benefit from supplementary sources, as the available
+    text focuses primarily on its taxonomic status and general distribution rather
+    than field identification features.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q1318638/hero.jpg
+  width: 2400
+  height: 1530
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Joseph_Wolf" class="extiw"
+    title="w:en:Joseph Wolf"><span title="German artist (1820-1899)">Joseph Wolf</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Carpospiza brachydactyla 1868.jpg
+  commons_filename: Carpospiza brachydactyla 1868.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:27:23.555903+00:00'
+sources:
+  wikipedia_sv_revision: '55516710'
+  wikipedia_en_revision: '1315025251'
+  claude_model: claude-haiku-4-5-20251001

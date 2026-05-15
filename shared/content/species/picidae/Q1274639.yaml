@@ -1,0 +1,68 @@
+id: Q1274639
+scientific_name: Dendrocopos assimilis
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Dendrocopos
+  ioc_order: Piciformes
+names:
+  sv: Sindspett
+  en: Sind Woodpecker
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Sind Woodpecker
+
+
+    The Sind woodpecker is a member of the Picidae family, inhabiting a limited range
+    across South Asia and the Middle East. This species is found in the Sindh region
+    of Pakistan, extending into the far western parts of India and southern Iran,
+    where it occupies its specific ecological niche.
+
+
+    As with other woodpeckers, the Sind woodpecker is adapted for life among trees
+    and woody vegetation. Like its relatives in the Picidae family, it displays the
+    characteristic behaviours typical of woodpeckers, including foraging on tree bark
+    and wood for insects and other invertebrates.
+
+
+    The species remains relatively localized within its geographic range, making it
+    of particular interest to birdwatchers and ornithologists working in South Asian
+    regions.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Sind woodpecker is endemic to the Indian subcontinent and Iran, with no natural
+    occurrence in Scandinavia or Northern Europe. Therefore, information about its
+    presence, migration patterns, or seasonal movements in Scandinavian or Northern
+    European regions cannot be provided.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:27:43.415390+00:00'
+sources:
+  wikipedia_sv_revision: '57944852'
+  wikipedia_en_revision: '1315180480'
+  claude_model: claude-haiku-4-5-20251001

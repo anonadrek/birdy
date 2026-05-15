@@ -1,0 +1,111 @@
+id: Q27074884
+scientific_name: Dendrocoptes dorae
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Dendrocoptes
+  ioc_order: Piciformes
+names:
+  sv: Arabspett
+  en: Arabian Woodpecker
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Arabspett
+
+
+    Arabspett är en hackspett som är endemisk för Arabiska halvön, vilket gör den
+    till en fågel av särskilt intresse för ornitologer i regionen. Arten tillhör familjen
+    hackspettar och är anpassad till de specifika miljöer som finns på denna geografiska
+    region.
+
+
+    Beståndet av arabspett är förhållandevis litet, och arten är klassificerad som
+    nära hotad enligt internationella naturvårdsstandarder. Detta gör arten till ett
+    fokus för bevarandeutsatser för att säkerställa att populationen inte försämras
+    ytterligare.
+
+
+    För den som är intresserad av hackspettar utgör arabspett ett intressant studiebjekt,
+    främst på grund av sin begränsade utbredning och status som hotad art.'
+  en: '# Arabian Woodpecker
+
+
+    The Arabian woodpecker is a small member of the woodpecker family endemic to high
+    mountain regions of the Arabian Peninsula. It is the only woodpecker species that
+    breeds in this region, making it a distinctive and geographically unique bird.
+
+
+    This species inhabits the mountainous terrain where it forages for insects in
+    bark and wood, like other woodpeckers. Little detailed information is widely available
+    about its specific plumage patterns, vocalizations, and detailed behavioral ecology
+    compared to more studied woodpecker species.
+
+
+    The Arabian woodpecker remains relatively little-known to general ornithologists,
+    with its distribution restricted to limited mountain ranges in its native region.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The Arabian Woodpecker is endemic to the Sarawat Mountains of Saudi Arabia and
+    Yemen and does not occur in Scandinavia or Northern Europe. The source text provides
+    no information about its movements, migration patterns, or seasonal distribution.
+    This species is restricted to its native range in the Arabian Peninsula and would
+    not be relevant for a Northern European bird guide.'
+image_refs:
+- role: hero
+  path: Q27074884/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/james_birdtourasia">James
+    Eaton</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dendrocoptes dorae by James
+    Eaton.jpg
+  commons_filename: Dendrocoptes dorae by James Eaton.jpg
+- role: secondary
+  path: Q27074884/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dendrocoptes dorae 222956296.jpg
+  commons_filename: Dendrocoptes dorae 222956296.jpg
+- role: secondary
+  path: Q27074884/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/17844">Jacky
+    Judas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dendrocoptes dorae 222956309.jpg
+  commons_filename: Dendrocoptes dorae 222956309.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:28:51.945065+00:00'
+sources:
+  wikipedia_sv_revision: '56042623'
+  wikipedia_en_revision: '1314262781'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,129 @@
+id: Q166171
+scientific_name: Picus viridis
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Picus
+  ioc_order: Piciformes
+names:
+  sv: Gröngöling
+  en: European Green Woodpecker
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gröngöling
+
+
+    Gröngöling är en medelstor hackspett med karakteristisk gröngrå fjäderdräkt. Den
+    är en av Europas vanligaste hackspettarter och är en stannfågel, vilket betyder
+    att den finns kvar året om i sitt utbreitningsområde.
+
+
+    Arten förekommer i västra och södra Asien samt i större delen av Europa, men saknas
+    på många öar och i de nordligaste regionerna. Gröngölingen tillhör släktet Picus,
+    som kännetecknas av sin gröna färgton.
+
+
+    För mer information om artens beteende, läten och specifika utseendedrag rekommenderas
+    att konsultera fältkamp eller fotografiska referenser.'
+  en: '# European Green Woodpecker
+
+
+    The European Green Woodpecker is a striking bird, easily identified by its predominantly
+    green plumage contrasted with a bright red crown and distinctive black moustache
+    markings. Males can be separated from females by the red centre of the moustache
+    stripe, which females lack entirely. This is a large woodpecker, with a robust
+    build suited to its lifestyle.
+
+
+    Despite its name, this species is surprisingly terrestrial in behaviour, spending
+    considerable time foraging on the ground for ants and other invertebrates, rather
+    than drilling into trees as many woodpeckers do. It uses its powerful bill to
+    excavate ant nests with precision. The bird''s presence is often announced by
+    its loud, distinctive call—a wild, laughing cry that has earned it the colloquial
+    name "yaffle."
+
+
+    The European Green Woodpecker is resident throughout much of Europe and the western
+    Palearctic, where it inhabits open woodlands, parks, and areas with short grassland
+    nearby. It favours places offering a mosaic of habitats: mature trees for nesting
+    and roosting, combined with open ground for foraging. In the southern parts of
+    its European range, it is replaced by the closely related Iberian Green Woodpecker.'
+migration:
+  sv: '# Gröngöling (Picus viridis) i Skandinavien och Nordeuropa
+
+
+    Gröngöling är en stannfågel som förekommer året runt i sitt utbredningsområde.
+    I Skandinavien och Nordeuropa är arten huvudsakligen begränsad till södra och
+    västra delar, där den är relativt vanlig. Som stannfågel migrerar den inte långväga
+    utan stannar i sitt territorium under hela året. Arten förekommer inte i de nordligaste
+    områdena av Skandinavien utan finns främst i västra och sydvästra Europa, där
+    klimatet är mildare och den kan finna föda under hela året.'
+  en: '# European Green Woodpecker (Picus viridis)
+
+
+    The European Green Woodpecker is primarily a resident species throughout much
+    of its European range, including Scandinavia and Northern Europe. Birds in these
+    northern regions are generally sedentary or partial migrants, remaining year-round
+    in suitable habitats with sufficient food sources. While some populations may
+    show limited seasonal movement during harsh winters, the species does not undertake
+    extensive long-distance migration like many other woodpeckers. Northern populations
+    are relatively stable, though individuals may shift locally in response to severe
+    weather conditions and food availability.'
+image_refs:
+- role: hero
+  path: Q166171/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:-jkb-" title="User:-jkb-">-jkb-</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Picus viridis in Berlin 2.jpg
+  commons_filename: Picus viridis in Berlin 2.jpg
+- role: secondary
+  path: Q166171/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Juvenile Green Woodpecker digging
+    for ants. Picus viridis - Flickr - gailhampshire (1).jpg
+  commons_filename: Juvenile Green Woodpecker digging for ants. Picus viridis - Flickr
+    - gailhampshire (1).jpg
+- role: secondary
+  path: Q166171/secondary-2.jpg
+  width: 1800
+  height: 1592
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Juvenile Green Woodpecker digging
+    for ants. Picus viridis - Flickr - gailhampshire.jpg
+  commons_filename: Juvenile Green Woodpecker digging for ants. Picus viridis - Flickr
+    - gailhampshire.jpg
+review_status: approved
+review_notes: "Hero = Picus viridis (European Green Woodpecker / Gröngöling); allmän i öppen lövskog och parker i södra och mellersta SE."
+generated_at: '2026-05-15T21:27:10.267485+00:00'
+sources:
+  wikipedia_sv_revision: '56666157'
+  wikipedia_en_revision: '1346776621'
+  claude_model: claude-haiku-4-5-20251001

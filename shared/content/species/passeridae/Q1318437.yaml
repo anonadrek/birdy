@@ -1,0 +1,94 @@
+id: Q1318437
+scientific_name: Passer moabiticus
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Passer
+  ioc_order: Passeriformes
+names:
+  sv: Tamarisksparv
+  en: Dead Sea Sparrow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tamarisksparv
+
+
+    Tamarisksparven är en liten fink som tillhör sparvfinkefamiljen. Till skillnad
+    från många andra arter inom sitt släkte Passer är tamarisksparven inte beroende
+    av människor och bosättningar för sin överlevnad.
+
+
+    Arten förekommer i torr och öppen miljö där tamarisker växer, vilket är ursprunget
+    till dess namn. Det är en anpassad art för torra klimat och växtsamhällen som
+    många andra finkarter i regionen.
+
+
+    Denna sparv är betydligt mindre känd än de människonära sparvarna, men är en intressant
+    art för den som studerar hur olika sparvfinkar har utvecklat olika levnadssätt
+    och ekologiska nischer.'
+  en: '# Dead Sea Sparrow
+
+
+    The Dead Sea sparrow is a small Old World sparrow found across an extensive range
+    in arid regions. Two subspecies are recognized: the nominate form breeds in parts
+    of western Asia, while the eastern subspecies P. m. yatii inhabits western Afghanistan
+    and eastern Iran. This latter population is occasionally treated as a separate
+    species, known as Yate''s sparrow, reflecting some debate among ornithologists
+    about taxonomic classification.
+
+
+    As a member of the Passeridae family, it shares the compact build and seed-eating
+    habits typical of Old World sparrows. The species favors arid and semi-arid habitats
+    where it can be observed foraging and nesting. Little detailed information is
+    provided in standard references about its specific appearance, voice, or behaviour,
+    making it a relatively understudied species compared to more widespread sparrows.
+
+
+    The Dead Sea sparrow''s distribution across western and central Asian arid zones
+    makes it an important subject for understanding how sparrow populations adapt
+    to dry environments, though more detailed field studies would benefit our knowledge
+    of this geographically separated species.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: '# Dead Sea Sparrow in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Dead Sea Sparrow is a resident species of arid and semi-arid regions in West
+    Asia, Afghanistan, and eastern Iran, with no established presence in Scandinavia
+    or Northern Europe. This species does not occur in these regions either as a regular
+    migrant, winter visitor, or breeding bird. Its range is confined to warm, dry
+    habitats far south of Scandinavian latitudes.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:27:31.700024+00:00'
+sources:
+  wikipedia_sv_revision: '58516464'
+  wikipedia_en_revision: '1348848507'
+  claude_model: claude-haiku-4-5-20251001

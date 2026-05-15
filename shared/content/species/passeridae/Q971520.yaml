@@ -1,0 +1,87 @@
+id: Q971520
+scientific_name: Passer simplex
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Passer
+  ioc_order: Passeriformes
+names:
+  sv: Ökensparv
+  en: Desert Sparrow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ökensparv
+
+
+    Ökensparven är en nordafrikansk fågel som tillhör familjen sparvfinkar. Arten
+    förekommer i ökenlandskap från västra till östra delen av Nordafrika. Tidigare
+    klassificerades karakumsparven, som lever i Centralasien, som en del av samma
+    art, men denna betraktas nu separat.
+
+
+    Ökensparven anpassar sig väl till torra miljöer och hålls framför allt till ökenhabitat.
+    Beståndet uppvisar en minskande trend, men bevärderas fortfarande som livskraftigt
+    enligt dagens standarder.'
+  en: '# Desert Sparrow
+
+
+    The desert sparrow is a small passerine belonging to the sparrow family, specifically
+    adapted to arid environments across the Sahara region. It closely resembles Zarudny''s
+    sparrow found in Central Asia, a species that was once considered a subspecies
+    but is now recognized as distinct due to various morphological and behavioral
+    differences.
+
+
+    This sparrow inhabits one of the world''s harshest environments, where it has
+    evolved to survive extreme heat and sparse vegetation. Like other desert-adapted
+    birds, it demonstrates the resilience necessary to thrive in areas with limited
+    water and food resources. The species maintains typical sparrow characteristics
+    while showing specialized features suited to its sandy, sparsely vegetated habitat.
+
+
+    For birdwatchers interested in African desert species, the desert sparrow represents
+    a fascinating example of avian adaptation to extreme climates. Its distinction
+    from the closely related Zarudny''s sparrow highlights the importance of careful
+    taxonomic assessment in ornithology, as populations once grouped together may
+    represent distinct evolutionary lineages requiring separate classification.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Migration Data Unavailable for This Species
+
+
+    The source text provided contains no information about the Desert Sparrow''s occurrence
+    in Scandinavia or Northern Europe, nor does it include any migration patterns
+    or seasonal presence data. The Desert Sparrow is endemic to the Sahara Desert
+    in northern Africa and does not naturally occur in Scandinavian or Northern European
+    regions.
+
+
+    **Migration data unavailable for this species.**'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:27:14.749702+00:00'
+sources:
+  wikipedia_sv_revision: '56466672'
+  wikipedia_en_revision: '1314494038'
+  claude_model: claude-haiku-4-5-20251001

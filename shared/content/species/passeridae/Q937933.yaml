@@ -1,0 +1,122 @@
+id: Q937933
+scientific_name: Passer italiae
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Passer
+  ioc_order: Passeriformes
+names:
+  sv: Italiensk sparv
+  en: Italian Sparrow
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Italiensk sparv
+
+
+    Italiensk sparv är en tätting tillhörande familjen sparvfinkar. Arten förekommer
+    främst i Italien och närliggande områden i Medelhavsregionen. Under lång tid var
+    dess taxonomiska status omtvistad, men arten är nu allmänt accepterad som en distinkt
+    art.
+
+
+    Italiensk sparv liknar andra sparvar och tillhör gruppen mindre, kompakta fåglar
+    med tjocka näbbar utformade för fröspisning. Arten är adapterad till mediterran
+    miljö och förekommer typiskt i tätbebyggda områden, odlingslandskap och öppna
+    biotoper där den söker föda på marken eller bland vegetation.
+
+
+    Som många andra sparvar är italiensk sparv gregär och ses ofta i mindre eller
+    större flockar, särskilt utanför häckningssäsongen. Den är en relativt stilig
+    och diskret fågel som delar många beteendedrag med släktingar inom sparvfamiljen,
+    inklusive matningsbeteenden och social struktur.'
+  en: '# Italian Sparrow
+
+
+    The Italian sparrow is a small passerine found across Italy and the Mediterranean
+    region. It occupies a distinctive evolutionary position, displaying characteristics
+    intermediate between its two closest relatives: the house sparrow and the Spanish
+    sparrow. This hybrid origin is reflected in its appearance, which varies geographically—birds
+    in the north show more house sparrow traits, while those in central and southern
+    Italy gradually exhibit more Spanish sparrow features. Populations in Mediterranean
+    islands like Malta and Crete display particularly mixed characteristics.
+
+
+    In behaviour and ecology, it resembles other sparrows, being adaptable to human-modified
+    landscapes. The species inhabits towns, villages, and agricultural areas throughout
+    its range. Like related sparrows, it is gregarious and vocal, though specific
+    details of its calls distinguish it from house and Spanish sparrows.
+
+
+    The Italian sparrow''s range extends from northern Italy southward through the
+    Mediterranean, with populations showing genetic evidence of ancient hybridization
+    between house and Spanish sparrows. Its existence highlights how speciation can
+    occur through introgression, making it a fascinating case study in bird evolution.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Italian Sparrow in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Italian Sparrow is primarily a resident of the Mediterranean region, with
+    its range centered in Italy and neighboring Mediterranean areas. The source material
+    provided contains no information regarding occurrence in Scandinavia or Northern
+    Europe, nor does it document any migratory patterns, seasonal movements, or presence
+    during winter months in these regions. Distribution appears limited to southern
+    Europe, particularly Italy and the Mediterranean basin.'
+image_refs:
+- role: hero
+  path: Q937933/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/22541812@N03">Dan
+    Davison</a> from Rochford, England
+  source_url: https://commons.wikimedia.org/wiki/File:Passer italiae table.jpg
+  commons_filename: Passer italiae table.jpg
+- role: secondary
+  path: Q937933/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/39415781@N06">Elliott
+    Brown</a> from Birmingham, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Passer italiae Lake Garda.jpg
+  commons_filename: Passer italiae Lake Garda.jpg
+- role: secondary
+  path: Q937933/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/39415781@N06">Elliott
+    Brown</a> from Birmingham, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Passer italiae Malcesine.jpg
+  commons_filename: Passer italiae Malcesine.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:27:05.443268+00:00'
+sources:
+  wikipedia_sv_revision: '55623738'
+  wikipedia_en_revision: '1340381773'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,100 @@
+id: Q1260842
+scientific_name: Dendrocopos leucopterus
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Dendrocopos
+  ioc_order: Piciformes
+names:
+  sv: Vitvingad hackspett
+  en: White-winged Woodpecker
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# White-winged Woodpecker
+
+
+    The white-winged woodpecker is a member of the Picidae family, characterized by
+    the pale or white wing patches that distinguish it from related woodpecker species.
+    It inhabits temperate and subtropical forests across a broad range in central
+    and western Asia, where it forages in woodland habitats typical of the region.
+
+
+    This species occupies temperate forests and subtropical or tropical moist lowland
+    forests throughout its range, preferring areas with suitable dead wood for foraging
+    and nesting. The white-winged woodpecker follows the typical woodpecker lifestyle,
+    using its specialized bill to excavate bark and wood in search of insects, and
+    creating nesting cavities in suitable trees.
+
+
+    Detailed information about its specific behaviour, vocalizations, and field identification
+    features is limited in available sources, but like other woodpeckers, it likely
+    produces diagnostic drumming sounds and calls used for communication and territorial
+    display.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only information about the White-winged Woodpecker''s
+    geographic distribution (primarily Central and South Asia) and habitat preferences,
+    with no details regarding its occurrence in Scandinavia or Northern Europe, migration
+    patterns, seasonal movements, or overwintering behavior. To provide accurate information
+    about this species'' presence and movements in the Nordic region, additional sources
+    focusing specifically on its Scandinavian/Northern European occurrence would be
+    needed.'
+image_refs:
+- role: hero
+  path: Q1260842/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/6924064">James
+    Eaton</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucopterus 390378967.jpg
+  commons_filename: Dendrocopos leucopterus 390378967.jpg
+- role: secondary
+  path: Q1260842/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2567886">Andrew
+    Bazdyrev</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucopterus 399366469.jpg
+  commons_filename: Dendrocopos leucopterus 399366469.jpg
+- role: secondary
+  path: Q1260842/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2567886">Andrew
+    Bazdyrev</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucopterus 399366471.jpg
+  commons_filename: Dendrocopos leucopterus 399366471.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:26:41.466831+00:00'
+sources:
+  wikipedia_sv_revision: '57940987'
+  wikipedia_en_revision: '1315330932'
+  claude_model: claude-haiku-4-5-20251001

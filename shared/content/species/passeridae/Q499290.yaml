@@ -1,0 +1,111 @@
+id: Q499290
+scientific_name: Montifringilla nivalis
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Montifringilla
+  ioc_order: Passeriformes
+names:
+  sv: Snöfink
+  en: White-winged Snowfinch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# White-winged Snowfinch
+
+
+    The white-winged snowfinch is a small passerine bird belonging to the sparrow
+    family, despite its misleading common name suggesting it is a finch. It is a specialist
+    of high-altitude alpine and mountain habitats, where it has adapted to harsh,
+    snowy conditions that would challenge most other bird species.
+
+
+    This snowfinch is characterized by its predominantly white and grey plumage, with
+    distinctive white patches on its wings that give it its name. It is well-suited
+    to life in mountainous terrain, where it forages on the ground for seeds and insects,
+    often searching among rocks and sparse vegetation. The bird''s behavior reflects
+    its mountain environment—it is typically seen moving in small flocks, particularly
+    during winter months when it may descend slightly to lower elevations to find
+    food.
+
+
+    The species is generally quiet, though it does produce soft calls within its social
+    groups. It is found in high mountain ranges across Europe and Asia, inhabiting
+    rocky slopes and barren terrain above the tree line where few other birds venture.
+    Its presence indicates the presence of true alpine habitat, making it a characteristic
+    species of Europe''s highest mountain ranges and similar terrain across the continent''s
+    interior.'
+migration:
+  sv: ''
+  en: '# Montifringilla nivalis - Seasonal Occurrence in Northern Europe
+
+
+    The White-winged Snowfinch is primarily a resident of high mountain regions and
+    does not typically occur in Scandinavia or Northern Europe during regular migration
+    patterns. This species is largely sedentary within its alpine habitat in southern
+    and central European mountains. When it does occur in northern regions, it is
+    generally as a vagrant or during exceptional winter movements from higher elevations
+    in response to severe snow conditions. The bird''s presence in Scandinavia would
+    be rare and irregular, with any sightings representing dispersal from its core
+    mountain range rather than established seasonal migration. Its occurrence in Northern
+    Europe is not part of a predictable annual cycle.'
+image_refs:
+- role: hero
+  path: Q499290/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a href="//www.flickr.com/people/42244964@N03" class="extiw" title="flickruser:42244964@N03">Frank
+    Vassen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Junger Schneefink (Montifringilla
+    nivalis), Fuscher Törl, Nationalpark Hohe Tauern, Salzburg, Österreich.jpg
+  commons_filename: Junger Schneefink (Montifringilla nivalis), Fuscher Törl, Nationalpark
+    Hohe Tauern, Salzburg, Österreich.jpg
+- role: secondary
+  path: Q499290/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sneeuwvink - white-winged snow
+    finch - Montifringilla nivalis 2.jpg
+  commons_filename: Sneeuwvink - white-winged snow finch - Montifringilla nivalis
+    2.jpg
+- role: secondary
+  path: Q499290/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sneeuwvink - white-winged snow
+    finch - Montifringilla nivalis.jpg
+  commons_filename: Sneeuwvink - white-winged snow finch - Montifringilla nivalis.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:26:55.469813+00:00'
+sources:
+  wikipedia_sv_revision: '56777841'
+  wikipedia_en_revision: '1337768150'
+  claude_model: claude-haiku-4-5-20251001

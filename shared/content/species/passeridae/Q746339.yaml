@@ -1,0 +1,74 @@
+id: Q746339
+scientific_name: Passer pyrrhonotus
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Passer
+  ioc_order: Passeriformes
+names:
+  sv: Sindsparv
+  en: Sind Sparrow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Sind Sparrow
+
+
+    The Sind sparrow is a small passerine of the Passeridae family, closely resembling
+    the house sparrow but distinctly smaller with unique plumage features. Males display
+    brighter colouration than females, featuring a grey crown, black markings, and
+    a distinctive chestnut stripe running down the head behind the eye. Females are
+    notably darker-headed than other sparrow species. This sexual dimorphism is consistent
+    across adults and juveniles, with young birds resembling females in appearance.
+
+
+    Behaviourally, the Sind sparrow produces soft chirping calls that breeding males
+    extend into longer, more complex songs interspersed with varied sounds. These
+    vocalisations are typical of many sparrow species, serving social and territorial
+    functions during the breeding season.
+
+
+    The species inhabits the Indus valley region in South Asia, where it occupies
+    its preferred habitat. Historically obscure—discovered around 1840 but then undetected
+    for decades—it remains relatively understudied compared to its more familiar relative,
+    the house sparrow. Despite initial assumptions about its close evolutionary relationship
+    to the house sparrow, molecular studies suggest its closest affinities may lie
+    with other sparrow lineages entirely.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Sind Sparrow is endemic to the Indus valley region in South Asia and does
+    not occur in Scandinavia or Northern Europe. The source text provides no information
+    about migration patterns, seasonal movements, or occurrence in Scandinavian regions.
+    This species is resident to South Asia and has no established presence in northern
+    European territories.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:29:33.517199+00:00'
+sources:
+  wikipedia_sv_revision: '56466659'
+  wikipedia_en_revision: '1332442348'
+  claude_model: claude-haiku-4-5-20251001

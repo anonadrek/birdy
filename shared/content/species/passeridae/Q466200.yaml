@@ -1,0 +1,126 @@
+id: Q466200
+scientific_name: Passer hispaniolensis
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Passer
+  ioc_order: Passeriformes
+names:
+  sv: Spansk sparv
+  en: Spanish Sparrow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Spansk sparv
+
+
+    Spansk sparv är en fågel inom familjen sparvfinkar som är mycket lik gråsparven
+    och förekommer kring Medelhavet samt i sydvästra och centrala Asien. De två arterna
+    liknar varandra så mycket att de ofta hybridiserar tillsammans.
+
+
+    Arten minskar i antal i sitt utbredningsområde, men världsbeståndet anses fortfarande
+    vara livskraftigt. För den som vill skilja spansk sparv från gråsparv krävs närmare
+    studier av plumagen och beteendet för att säkert identifiera arten.'
+  en: '# Spanish Sparrow
+
+
+    The Spanish sparrow is a small passerine closely related to the house sparrow,
+    with which it shares considerable physical similarity. This resemblance has led
+    to taxonomic complications in the Mediterranean region, where the two species
+    hybridize, creating a biological "mix-up" that challenges clear species identification.
+    The Spanish sparrow is found across the Mediterranean region and extends into
+    south-west and central Asia.
+
+
+    Despite their similarities, careful observation can distinguish Spanish sparrows
+    from their house sparrow cousins, though detailed field marks require attention
+    to subtle plumage differences. The species inhabits various Mediterranean and
+    Asian habitats suited to its ecological preferences, though its specific behavioural
+    traits and vocalizations require additional sources for comprehensive description.
+
+
+    The hybridization with house sparrows in overlapping ranges remains a significant
+    factor in understanding Spanish sparrow populations and distribution patterns,
+    making field identification in these contact zones particularly challenging for
+    observers.'
+migration:
+  sv: '# Spansk sparv - Förekomst i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Den tillgängliga informationen om spansk sparv anger att arten förekommer kring
+    Medelhavet samt i sydvästra och centrala Asien, men innehåller ingen information
+    om förekomst, migration eller säsongsmässig närvaro i Skandinavien eller Nordeuropa.
+    För att få korrekt information om denna arts migrationsvanor i norra Europa rekommenderas
+    att konsultera specialiserade källor om nordiska fågelpopulationer.'
+  en: '# Spanish Sparrow Occurrence in Northern Europe
+
+
+    The Spanish Sparrow is primarily a Mediterranean and southern Asian species with
+    only vagrant or accidental occurrences in Scandinavia and Northern Europe. It
+    is not a regular migrant to the Nordic region and does not have established migration
+    patterns through Northern Europe. Any sightings in Scandinavia would represent
+    rare wandering individuals outside the species'' normal range, typically during
+    spring or autumn when dispersal movements occur. This species is fundamentally
+    a resident or short-distance migrant within Mediterranean and south-western Asian
+    populations, remaining far south of the regular northern European range.'
+image_refs:
+- role: hero
+  path: Q466200/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Passer hispaniolensis (1).jpg
+  commons_filename: Passer hispaniolensis (1).jpg
+- role: secondary
+  path: Q466200/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Spanish sparrow (Passer hispaniolensis)
+    female ringed Malta.jpg
+  commons_filename: Spanish sparrow (Passer hispaniolensis) female ringed Malta.jpg
+- role: secondary
+  path: Q466200/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Spanish sparrow (Passer hispaniolensis)
+    male breeding plumage ringed Malta.jpg
+  commons_filename: Spanish sparrow (Passer hispaniolensis) male breeding plumage
+    ringed Malta.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:29:08.302008+00:00'
+sources:
+  wikipedia_sv_revision: '55731171'
+  wikipedia_en_revision: '1337389264'
+  claude_model: claude-haiku-4-5-20251001

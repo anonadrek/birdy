@@ -1,0 +1,133 @@
+id: Q25968
+scientific_name: Passer montanus
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Passer
+  ioc_order: Passeriformes
+names:
+  sv: Pilfink
+  en: Eurasian Tree Sparrow
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Pilfink
+
+
+    Pilfinken är en liten sparvfink som ofta förväxlas med den närbesläktade gråsparven.
+    Det karakteristiska utseendet består av en kastanjefärgad hjässa och nacke tillsammans
+    med en distinkt svart fläck på den vita kinden – dessa märken skiljer den från
+    gråsparven. Könen är identiska till utseendet, medan ungfåglarna har en blekare
+    och mindre kontrasterande dräkt än de vuxna fåglarna.
+
+
+    Arten häckar över större delen av Europa och Sibirien och förekommer således över
+    ett mycket stort utbredningsområde. Det är anmärkningsvärt att utseendet varierar
+    mycket lite över denna vidsträckta region, trots att flera underarter är erkända.
+    Pilfinken har introducerats till flera områden i Asien, samt till Australien och
+    Nordamerika, där den nu är etablerad.'
+  en: '# Eurasian Tree Sparrow
+
+
+    The Eurasian Tree Sparrow is a compact passerine instantly recognizable by its
+    distinctive plumage. It displays a rich chestnut crown and nape contrasting with
+    pure white cheeks marked by a characteristic black patch on each side. Both sexes
+    share similar markings, making them virtually identical in the field, while younger
+    birds show duller versions of the adult''s striking pattern. This consistent appearance
+    remains remarkably uniform across its vast geographical range, with only minor
+    variation among recognized subspecies.
+
+
+    This highly adaptable sparrow breeds throughout much of temperate Eurasia and
+    Southeast Asia, typically favoring open woodlands, cultivated areas, and human
+    settlements. It is highly social, often seen in small flocks, particularly outside
+    the breeding season. The species has proven so successful that it has been deliberately
+    introduced to various regions worldwide, including North America, where it established
+    populations.
+
+
+    The tree sparrow''s call is a characteristic sharp, metallic chirp, frequently
+    repeated. It feeds on seeds and insects, foraging both on the ground and in vegetation.
+    While widespread across its native range, it remains less familiar to many birders
+    compared to the closely related House Sparrow, yet it deserves attention for its
+    neat appearance and engaging social behavior.'
+migration:
+  sv: '# Pilfink (Passer montanus) - Förekomst i Skandinavien/Nordeuropa
+
+
+    Pilfink är en stationär art i Skandinavien och Nordeuropa, vilket innebär att
+    den är närvarande året om i sitt utbredningsområde. Arten häckar över merparten
+    av Europa, inklusive de nordiska regionerna, och många populationer är icke-migrerande
+    eller endast partiellt migrerande. Under vintermånaderna kan vissa individer från
+    nordligare populationer söka sig längre söderut, men många pilfinkar övervintar
+    i sina häckningsområden där de söker föda vid människans närheter, särskilt vid
+    fågelmatare. Återkomsten till häckningsplatserna sker vanligtvis i mars-april.'
+  en: '# Eurasian Tree Sparrow (Passer montanus) in Northern Europe
+
+
+    The Eurasian Tree Sparrow is a year-round resident throughout much of Scandinavia
+    and Northern Europe, with populations showing variable migratory behavior depending
+    on location and severity of winter conditions. Birds breeding in northern regions
+    may undertake partial migrations southward during harsh winters, while southern
+    populations often remain resident. In Scandinavia, the species is present year-round,
+    though winter populations may be supplemented by arrivals from further east. Spring
+    arrival of migratory individuals typically occurs in March-April, with breeding
+    activity commencing shortly thereafter. The species readily adapts to available
+    food sources during winter months, sometimes forming larger flocks to exploit
+    resources more effectively.'
+image_refs:
+- role: hero
+  path: Q25968/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:JFVelasquez_Floro" title="User:JFVelasquez
+    Floro">JFVelasquez Floro</a>
+  source_url: https://commons.wikimedia.org/wiki/File:9729Close-up photographs of
+    Passer montanus in the Philippines 02.jpg
+  commons_filename: 9729Close-up photographs of Passer montanus in the Philippines
+    02.jpg
+- role: secondary
+  path: Q25968/secondary-1.jpg
+  width: 1800
+  height: 1178
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/36381291@N04">Joe
+    Pell</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Passer montanus (7).jpg
+  commons_filename: Passer montanus (7).jpg
+- role: secondary
+  path: Q25968/secondary-2.jpg
+  width: 1800
+  height: 1086
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/36381291@N04">Joe
+    Pell</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Passer montanus (8), Lincolnshire.jpg
+  commons_filename: Passer montanus (8), Lincolnshire.jpg
+review_status: approved
+review_notes: "Hero = Passer montanus (Eurasian Tree Sparrow / Pilfink); allmän vid byggnader och trädgårdar i hela SE."
+generated_at: '2026-05-15T21:28:34.993877+00:00'
+sources:
+  wikipedia_sv_revision: '58649491'
+  wikipedia_en_revision: '1352694703'
+  claude_model: claude-haiku-4-5-20251001

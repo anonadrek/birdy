@@ -1,0 +1,72 @@
+id: Q757282
+scientific_name: Picus vaillantii
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Picus
+  ioc_order: Piciformes
+names:
+  sv: Atlasgröngöling
+  en: Levaillant’s Woodpecker
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q757282/hero.jpg
+  width: 1536
+  height: 2048
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2401694">William
+    Stephens</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Picus vaillantii 239307829.jpg
+  commons_filename: Picus vaillantii 239307829.jpg
+- role: secondary
+  path: Q757282/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Picus vaillantii 97480721.jpg
+  commons_filename: Picus vaillantii 97480721.jpg
+- role: secondary
+  path: Q757282/secondary-2.jpg
+  width: 1800
+  height: 1126
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Picus vaillantii 97481098.jpg
+  commons_filename: Picus vaillantii 97481098.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:29:19.872306+00:00'
+sources:
+  wikipedia_sv_revision: '58595143'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

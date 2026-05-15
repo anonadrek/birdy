@@ -1,0 +1,108 @@
+id: Q736313
+scientific_name: Petronia petronia
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Petronia
+  ioc_order: Passeriformes
+names:
+  sv: Stensparv
+  en: Rock Sparrow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Rock Sparrow
+
+
+    The rock sparrow is a small passerine in the sparrow family, distinguished by
+    its pale plumage and modest size. It inhabits barren, rocky hills across a broad
+    geographic range, from Atlantic islands through southern Europe and western North
+    Africa, extending eastward across central Asia to Mongolia and northern China.
+
+
+    This species shows interesting migration patterns depending on location. Western
+    populations remain resident year-round, while Asian birds often migrate southward
+    or descend to lower mountain altitudes during winter months. The rock sparrow
+    is well-adapted to rocky, arid terrain where vegetation is sparse, making it a
+    characteristic bird of harsh, exposed landscapes.
+
+
+    The species maintains this distinctive ecological niche across its extensive range,
+    with populations distributed from lower elevations to considerable heights in
+    mountainous regions. Its ability to thrive in challenging, rocky environments
+    demonstrates its specialized adaptation to these particular habitats across diverse
+    geographic areas.'
+migration:
+  sv: ''
+  en: '# Rock Sparrow in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Rock Sparrow''s range extends from the Iberian Peninsula and North Africa
+    through southern Europe to central Asia and China, but Scandinavia and Northern
+    Europe lie well outside its natural distribution. The species is resident in the
+    western portions of its range, while some Asian populations undertake altitudinal
+    migrations or move southward during winter. However, there are no established
+    records of Rock Sparrows occurring regularly in Scandinavian or Northern European
+    regions.'
+image_refs:
+- role: hero
+  path: Q736313/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2017-05-02 Petronia petronia,
+    Monestir d'Avellanes, Catalunya 02.jpg
+  commons_filename: 2017-05-02 Petronia petronia, Monestir d'Avellanes, Catalunya
+    02.jpg
+- role: secondary
+  path: Q736313/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2017-05-03 Petronia petronia,
+    Monestir d'Avellanes, Catalunya 01.jpg
+  commons_filename: 2017-05-03 Petronia petronia, Monestir d'Avellanes, Catalunya
+    01.jpg
+- role: secondary
+  path: Q736313/secondary-2.jpg
+  width: 1800
+  height: 1069
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/69445801@N04">Jargal
+    Lamjav</a> from Ulaanbaatar, Mongolia
+  source_url: https://commons.wikimedia.org/wiki/File:Drink time. Rock Sparrow (Petronia
+    petronia) - Хадны боршувуу (16805215495).jpg
+  commons_filename: Drink time. Rock Sparrow (Petronia petronia) - Хадны боршувуу
+    (16805215495).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:29:20.871425+00:00'
+sources:
+  wikipedia_sv_revision: '56777838'
+  wikipedia_en_revision: '1349775311'
+  claude_model: claude-haiku-4-5-20251001

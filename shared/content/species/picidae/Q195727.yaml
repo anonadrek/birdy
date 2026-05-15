@@ -1,0 +1,129 @@
+id: Q195727
+scientific_name: Picus squamatus
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Picus
+  ioc_order: Piciformes
+names:
+  sv: Fjällig gröngöling
+  en: Scaly-bellied Woodpecker
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fjällig gröngöling
+
+
+    Fjällig gröngöling är en hackspett som förekommer i bergiga regioner i Afghanistan,
+    Pakistan och norra Indien. Det är en medelstor art inom familjen hackspettar.
+
+
+    Arten är anpassad till höga bergsmiljöer och tros leva av insekter som det pickar
+    fram ur barksprickor och ved, typiskt för hackspettar. Som många andra arter i
+    familjen använder det säkerligen sitt starka näbb för att borra efter föda i träd.
+
+
+    Gränsen för denna art ligger högt i höglandet, vilket gör den relativt svår att
+    observera för de flesta fågelbeskare.'
+  en: '# Scaly-bellied Woodpecker
+
+
+    The scaly-bellied woodpecker is a member of the Picidae family found across the
+    Indian subcontinent and adjoining mountainous regions. It inhabits areas ranging
+    from arid foothills to temperate forests, typically at moderate to higher elevations
+    where suitable woodland exists.
+
+
+    This woodpecker derives its name from the distinctive scaled pattern on its underparts,
+    which sets it apart from related species. Like other woodpeckers, it is superbly
+    adapted for its specialist lifestyle, using its strong bill to excavate insects
+    from bark and wood. It forages actively on tree trunks and branches, often working
+    methodically through the available feeding opportunities.
+
+
+    The species tends to be quieter and more retiring than many woodpeckers, though
+    it produces typical woodpecker calls and the characteristic drumming sound when
+    establishing territories or communicating with mates. It is generally encountered
+    singly or in pairs rather than in flocks, moving through suitable habitat in search
+    of food and nesting sites.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."
+
+
+    ---
+
+
+    **Förklaring:** Källtexten om fjällig gröngöling innehåller endast information
+    om arten förekomst i Afghanistan, Pakistan och norra Indien. Det finns ingen information
+    om migration, övervintering eller säsongsflytningar i Skandinavien eller Nordeuropa.
+    Arten förekommer inte naturligt i dessa regioner.'
+  en: '# Scaly-bellied Woodpecker – Occurrence in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Scaly-bellied Woodpecker is not known to occur in Scandinavia or Northern
+    Europe. This species is endemic to the Indian subcontinent and adjoining regions,
+    with its range restricted to Afghanistan, Iran, India, Nepal, Pakistan, and Turkmenistan.
+    It does not migrate to or winter in Scandinavian or Northern European territories.'
+image_refs:
+- role: hero
+  path: Q195727/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Cyornis&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Cyornis (page does not exist)">Raman Kumar</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Scaly-bellied Woodpecker - Picus
+    squamatus - DSC09665.jpg
+  commons_filename: Scaly-bellied Woodpecker - Picus squamatus - DSC09665.jpg
+- role: secondary
+  path: Q195727/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Cyornis&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Cyornis (page does not exist)">Raman Kumar</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Scaly-bellied Woodpecker - Picus
+    squamatus - DSC09666.jpg
+  commons_filename: Scaly-bellied Woodpecker - Picus squamatus - DSC09666.jpg
+- role: secondary
+  path: Q195727/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Cyornis&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Cyornis (page does not exist)">Raman Kumar</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Scaly-bellied Woodpecker - Picus
+    squamatus - Apr07 368.jpg
+  commons_filename: Scaly-bellied Woodpecker - Picus squamatus - Apr07 368.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:28:28.871202+00:00'
+sources:
+  wikipedia_sv_revision: '56466562'
+  wikipedia_en_revision: '1346776676'
+  claude_model: claude-haiku-4-5-20251001

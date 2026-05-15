@@ -1,0 +1,96 @@
+id: Q634448
+scientific_name: Passer ammodendri
+taxonomy:
+  family: Passeridae
+  family_sv: Sparvfinkar
+  genus: Passer
+  ioc_order: Passeriformes
+names:
+  sv: Saxaulsparv
+  en: Saxaul Sparrow
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Saxaulsparv
+
+
+    Saxaulsparven är en centralasiatisk tätting som tillhör familjen sparvfinkar och
+    är en av de större arterna i denna grupp. Med en längd på 14–16 centimeter och
+    vikt på 25–27 gram är den en ansenlig sparv. Arten har en karakteristisk grå och
+    sandfärgad brun fjäderdräkt med ljusbrun tars som gör den relativt lätt att identifiera
+    även för dilettanten.
+
+
+    Honan har en mindre anslående färgdräkt än hanen och saknar dennes svarta huvudteckning,
+    men arten är ändå distinkt nog i samtliga dräkter för att inte lätt förväxlas
+    med andra arter. Saxaulsparven har ett jämförelsevis mjukt och musikaliskt kvittrande
+    lockläte. Övriga ljud från arten består av sång och överflygningsläte som hjälper
+    till vid identifikationen i fält.'
+  en: '# Saxaul Sparrow
+
+
+    The saxaul sparrow is a relatively large member of the sparrow family, measuring
+    14–16 centimetres and weighing 25–32 grams. Both sexes display dull grey to sandy
+    brown plumage with pale brown legs. Females are noticeably duller than males,
+    with less striking head markings and bill coloration. Males are characterized
+    by bold black stripes on the head, creating a distinctive pattern that makes this
+    species unlikely to be confused with any other sparrow.
+
+
+    The saxaul sparrow''s vocalizations are notably softer and more musical than those
+    of many sparrows, featuring a gentle chirping call, a distinct song, and a recognizable
+    flight call. It inhabits parts of Central Asia, where it is adapted to arid environments.
+    The species'' appearance, particularly the striking head markings of males, combined
+    with its musical voice, makes it a distinctive presence within its range.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the occurrence, migration
+    patterns, or seasonal distribution of the Saxaul Sparrow in Scandinavia or Northern
+    Europe. The species is described as being found in Central Asia, but no details
+    are given regarding its movements throughout the year or presence in northern
+    European regions. To provide accurate migration information for this species in
+    Scandinavia, additional sources with specific distribution and migratory data
+    would be required.'
+image_refs:
+- role: hero
+  path: Q634448/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/69445801@N04">Jargal
+    Lamjav</a> from Ulaanbaatar, Mongolia
+  source_url: https://commons.wikimedia.org/wiki/File:Saxaul Sparrow Male (Passer
+    ammodendri) - Загийн боршувуу.jpg
+  commons_filename: Saxaul Sparrow Male (Passer ammodendri) - Загийн боршувуу.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:29:06.846105+00:00'
+sources:
+  wikipedia_sv_revision: '56616798'
+  wikipedia_en_revision: '1351260236'
+  claude_model: claude-haiku-4-5-20251001

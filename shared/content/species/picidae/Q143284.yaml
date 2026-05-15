@@ -1,0 +1,132 @@
+id: Q143284
+scientific_name: Dryocopus martius
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Dryocopus
+  ioc_order: Piciformes
+names:
+  sv: Spillkråka
+  en: Black Woodpecker
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Spillkråka
+
+
+    Spillkråka är en stor, nästan helsvart fågel inom familjen hackspettar och är
+    Europas enda representant för sitt släkte. Det är en imponerande fågel som framför
+    allt kännetecknas av sin massiva storlek och nästan helt svarta färg.
+
+
+    Arten är starkt knuten till grov- och högstammig skog där den söker föda genom
+    att hacka i döda och levande träd efter larver. Spillkråkan är en skicklig flugare
+    trots sin stora kroppsvikt och rör sig ofta mellan stammar med karakteristiska
+    dykningar.
+
+
+    Arten är relativt tystlåten men ger från sig kraftiga, igenkännliga läten när
+    den hackar eller flyger. Spillkråkan är generellt skygg och föredrar täta skogar,
+    vilket gör den mindre vanlig att observera än mindre hackspettar, men dess stora
+    hackgropar och imponerande närvaro gör den omöjlig att missa när den väl ses.'
+  en: '# Black Woodpecker
+
+
+    The black woodpecker is Europe''s largest woodpecker species and one of the largest
+    in the world. It is a striking, all-black bird with a distinctive appearance that
+    makes it unmistakable in the field. This powerful woodpecker inhabits mature,
+    old-growth forests across the northern Palearctic, where it is a permanent resident
+    that does not migrate. Its range has been expanding over recent decades.
+
+
+    Black woodpeckers excavate impressively large tree cavities for nesting and roosting,
+    and these holes subsequently provide crucial homes for numerous other bird and
+    mammal species. The species feeds predominantly on carpenter ants, which it extracts
+    from deadwood using its strong bill and long tongue. It is closely related to
+    the pileated woodpecker of North America and fills an equivalent ecological role
+    in European forests.
+
+
+    The bird''s call is a loud, far-carrying drum-roll and distinctive vocalizations
+    that help it communicate across its forest habitat. Observing one requires patience
+    and access to suitable mature forest stands, where the sound of its powerful drumming
+    and occasional sightings reward dedicated birdwatchers. Its presence indicates
+    old-growth forest health and quality.'
+migration:
+  sv: '# Spillkråka i Skandinavien/Nordeuropa
+
+
+    Spillkråka är en året runt boende art i Skandinavien och övriga Nordeuropa. Den
+    är en stannfågel som inte genomför längre migrationer, utan stannar inom sitt
+    revir även under vintermånaderna. Arten förekommer ganzåret i granskog och gammal
+    barrskog där det finns tillräckligt med grova träd för hackning och bobygge. Under
+    hårdare vintrar kan lokala förflyttningar förekomma, men arten återvänder till
+    sina etablerade revir när förhållandena blir mer gynnsamma.'
+  en: '# Black Woodpecker (Dryocopus martius) in Scandinavia/Northern Europe
+
+
+    The Black Woodpecker is a non-migratory resident throughout Scandinavia and Northern
+    Europe year-round. This species does not undertake seasonal migrations and maintains
+    permanent territories in mature forest habitats across its range. Populations
+    remain stable throughout winter months in northern regions where they are established,
+    relying on their large size and ability to extract carpenter ants from trees even
+    in harsh conditions. The species'' expanding range has led to increasing populations
+    in Scandinavian countries, where it is now a permanent fixture in suitable old-growth
+    and mature forest ecosystems.'
+image_refs:
+- role: hero
+  path: Q143284/hero.jpg
+  width: 2400
+  height: 1602
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:GPSLeo" title="User:GPSLeo">Leonhard
+    Lenz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dryocopus martius in the Teufelsbruch
+    2021-02-10 01.jpg
+  commons_filename: Dryocopus martius in the Teufelsbruch 2021-02-10 01.jpg
+- role: secondary
+  path: Q143284/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:GPSLeo" title="User:GPSLeo">Leonhard
+    Lenz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dryocopus martius in the Teufelsbruch
+    2021-02-10 05.jpg
+  commons_filename: Dryocopus martius in the Teufelsbruch 2021-02-10 05.jpg
+- role: secondary
+  path: Q143284/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:GPSLeo" title="User:GPSLeo">Leonhard
+    Lenz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dryocopus martius in the Teufelsbruch
+    2021-02-10 12.jpg
+  commons_filename: Dryocopus martius in the Teufelsbruch 2021-02-10 12.jpg
+review_status: approved
+review_notes: "Hero = Dryocopus martius (Black Woodpecker / Spillkråka); SE:s största hackspett, allmän i barrskog."
+generated_at: '2026-05-15T21:27:47.172186+00:00'
+sources:
+  wikipedia_sv_revision: '59193464'
+  wikipedia_en_revision: '1337106048'
+  claude_model: claude-haiku-4-5-20251001

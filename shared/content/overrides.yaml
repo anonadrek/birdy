@@ -829,3 +829,51 @@ species:
     allow_missing_images: true  # Desertas Petrel — no suitable Commons images
   Q511566:
     description_accept_missing: [sv]  # Mediterranean Shearwater — sparse svwiki
+  # Picidae + Passeridae bundle (2026-05-15)
+  Q1090157:
+    description_accept_missing: [sv]  # Iago Sparrow — sparse svwiki
+  Q1318437:
+    allow_missing_images: true  # Dead Sea Sparrow — no suitable Commons images
+  Q1318638:
+    description_accept_missing: [sv]  # Pale Rockfinch — sparse svwiki
+  Q15731602:
+    description_accept_missing: [sv, en]  # Zarudny's Sparrow — sparse on both
+  Q25586001:
+    description_accept_missing: [sv]  # Yellow-throated Sparrow — sparse svwiki
+  Q27075715:
+    description_accept_missing: [sv]  # Sahel Bush Sparrow — sparse svwiki
+  Q466200:
+    description_accept_missing: [sv]  # Spanish Sparrow — sparse svwiki (72w)
+  Q499290:
+    description_accept_missing: [sv]  # White-winged Snowfinch — sparse svwiki
+  Q736313:
+    description_accept_missing: [sv]  # Rock Sparrow — sparse svwiki
+  Q746339:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Sind Sparrow — sparse svwiki + no images
+  Q901708:
+    description_accept_missing: [sv]  # Sudan Golden Sparrow — sparse svwiki
+  Q971520:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Desert Sparrow — sparse svwiki (66w) + no images
+  Q1260842:
+    description_accept_missing: [sv]  # White-winged Woodpecker — sparse svwiki
+  Q1274639:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Sind Woodpecker — sparse svwiki + no images
+  Q201106:
+    description_accept_missing: [sv]  # Grey-headed Woodpecker — sparse svwiki
+  Q207290:
+    description_accept_missing: [en]  # White-backed Woodpecker — sparse enwiki
+  Q210418:
+    description_accept_missing: [en]  # Eurasian Three-toed Woodpecker — sparse enwiki (allmän norra SE)
+  Q275591:
+    description_accept_missing: [en]  # Middle Spotted Woodpecker — sparse enwiki
+  Q5983847:
+    description_accept_missing: [sv]  # Iberian Green Woodpecker — sparse svwiki (79w)
+  Q752481:
+    description_accept_missing: [en]  # Syrian Woodpecker — sparse enwiki
+  Q757282:
+    description_accept_missing: [sv, en]  # Levaillant's Woodpecker — sparse on both
+  Q946681:
+    description_accept_missing: [sv]  # African Grey Woodpecker — sparse svwiki

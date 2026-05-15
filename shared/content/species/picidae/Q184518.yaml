@@ -1,0 +1,134 @@
+id: Q184518
+scientific_name: Dryobates minor
+taxonomy:
+  family: Picidae
+  family_sv: Hackspettar
+  genus: Dryobates
+  ioc_order: Piciformes
+names:
+  sv: Mindre hackspett
+  en: Lesser Spotted Woodpecker
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mindre hackspett
+
+
+    Mindre hackspett är Europas minsta hackspett och är ungefär lika stor som en gråsparv,
+    med en längd på cirka 15 cm. Den är utbredd över västra och norra Palearktis ända
+    till Asiens Stillahavskust. I Mellaneuropa förekommer den som häckfågel, men är
+    inte särskilt vanlig.
+
+
+    Arten har en karakteristisk utseende med kontrasterande svartvit teckning. Till
+    skillnad från större hackspettarter söker mindre hackspett sin föda främst i trädkronornas
+    yttre grenområde, där den lettande efter små insekter och larver. Denna specialisering
+    gör att arten ofta är svår att iaktta eftersom den vistas högt uppe i träden och
+    är mindre högljudd än många andra hackspettar.'
+  en: '# Lesser Spotted Woodpecker
+
+
+    The lesser spotted woodpecker is a small member of the woodpecker family, formerly
+    classified in the genus Dendrocopos. It remains one of the smallest woodpeckers
+    in its range, with distinctive black and white plumage featuring barred patterns
+    across the wings and back. Males typically display a red or crimson crown, while
+    females lack this colouring.
+
+
+    This species favours deciduous and mixed woodlands, particularly areas with dead
+    wood and birch trees. It often forages in the upper branches and smaller trees,
+    where it picks at bark and wood for insects and larvae. The bird''s behaviour
+    is typically quiet and unobtrusive, making it easy to overlook despite its active
+    movements.
+
+
+    The lesser spotted woodpecker produces a characteristic drumming sound and a sharp,
+    repetitive call. Its small size and preference for thinner branches distinguish
+    it from larger woodpecker species. The bird''s diet consists primarily of wood-boring
+    insects, and it plays a subtle role in woodland ecology by controlling pest populations.
+    It occurs across much of temperate and boreal regions where suitable woodland
+    habitat exists.'
+migration:
+  sv: '# Mindre hackspett – Förekomst i Skandinavien/Nordeuropa
+
+
+    Mindre hackspett är en året runt bosatt art i stora delar av Skandinavien och
+    Nordeuropa. Den utgör en spridd men inte vanlig häckfågel i regionen. Till skillnad
+    från många andra fagelfarter är mindre hackspett ingen långdistansmigrant; istället
+    förblir individerna inom sina hemområden under vintern, även om de kan göra lokala
+    förflyttningar när födotillgången förändras. Arten är således närvarande året
+    runt i lämpliga skogar med gamla träd, särskilt i områden med löv- och blandskog.'
+  en: '# Lesser Spotted Woodpecker in Scandinavia/Northern Europe
+
+
+    The Lesser Spotted Woodpecker is a resident species throughout Scandinavia and
+    Northern Europe, remaining year-round in suitable habitats. Unlike many migratory
+    woodpeckers, this small species does not undertake long-distance migrations. However,
+    northern populations may show limited movements during harsh winters, shifting
+    southward to more favorable conditions when food becomes scarce. The species inhabits
+    mixed and deciduous woodlands, particularly favoring areas with birch and aspen
+    trees where it forages for insects in dead wood.
+
+
+    In Scandinavia, the Lesser Spotted Woodpecker is present throughout the year,
+    though its numbers fluctuate seasonally. Winter survival depends heavily on adequate
+    food supplies and suitable habitat. While some individuals may wander during autumn
+    and winter months in search of resources, the species does not exhibit true migration
+    patterns like many other woodpecker species found in the region.'
+image_refs:
+- role: hero
+  path: Q184518/hero.jpg
+  width: 2400
+  height: 1602
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:RaunoK&amp;action=edit&amp;redlink=1"
+    class="new" title="User:RaunoK (page does not exist)">RaunoK</a>
+  source_url: https://commons.wikimedia.org/wiki/File:The lesser spotted woodpecker
+    (Dryobates minor) - Väike-kirjurähn.jpg
+  commons_filename: The lesser spotted woodpecker (Dryobates minor) - Väike-kirjurähn.jpg
+- role: secondary
+  path: Q184518/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser spotted woodpecker (Dryobates
+    minor) 2021.jpg
+  commons_filename: Lesser spotted woodpecker (Dryobates minor) 2021.jpg
+- role: secondary
+  path: Q184518/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Mr._Lv%C3%AD%C4%8D%C3%A1tko"
+    title="User:Mr. Lvíčátko">Mr. Lvíčátko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Strakapoud malý (Dryobates minor)
+    pair.jpg
+  commons_filename: Strakapoud malý (Dryobates minor) pair.jpg
+review_status: approved
+review_notes: "Hero = Dryobates minor (Lesser Spotted Woodpecker / Mindre hackspett); allmän men diskret i lövskog."
+generated_at: '2026-05-15T21:28:47.006741+00:00'
+sources:
+  wikipedia_sv_revision: '58945715'
+  wikipedia_en_revision: '1346181590'
+  claude_model: claude-haiku-4-5-20251001
