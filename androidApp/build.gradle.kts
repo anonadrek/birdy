@@ -44,8 +44,8 @@ android {
             libs.versions.android.targetSdk
                 .get()
                 .toInt()
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 100
+        versionName = "1.0.0-rc1"
     }
 
     buildFeatures {
