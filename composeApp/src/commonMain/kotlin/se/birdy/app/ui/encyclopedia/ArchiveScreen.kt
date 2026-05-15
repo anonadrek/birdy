@@ -14,15 +14,20 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Sort
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -51,14 +56,17 @@ import birdy_bird_scanner.composeapp.generated.resources.archive_chip_raptors
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_songbirds
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_waders
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_water
+import birdy_bird_scanner.composeapp.generated.resources.archive_error_body
+import birdy_bird_scanner.composeapp.generated.resources.archive_error_retry
+import birdy_bird_scanner.composeapp.generated.resources.archive_error_title
 import birdy_bird_scanner.composeapp.generated.resources.archive_journal_headline
 import birdy_bird_scanner.composeapp.generated.resources.archive_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.archive_journal_sub
+import birdy_bird_scanner.composeapp.generated.resources.archive_search_clear
 import birdy_bird_scanner.composeapp.generated.resources.archive_section_count
 import birdy_bird_scanner.composeapp.generated.resources.archive_sort_alpha
 import birdy_bird_scanner.composeapp.generated.resources.archive_sort_family
 import birdy_bird_scanner.composeapp.generated.resources.archive_sort_recent
-import birdy_bird_scanner.composeapp.generated.resources.loading
 import birdy_bird_scanner.composeapp.generated.resources.menu_button
 import birdy_bird_scanner.composeapp.generated.resources.premium_archive_subtitle
 import birdy_bird_scanner.composeapp.generated.resources.premium_archive_title
@@ -87,6 +95,7 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.content.SpeciesId
 import se.birdy.datastore.ArchiveSort
 
+@OptIn(ExperimentalMaterial3Api::class, androidx.compose.foundation.ExperimentalFoundationApi::class)
 @Composable
 fun ArchiveScreen(
     viewModel: ArchiveViewModel,
@@ -166,6 +175,7 @@ fun ArchiveScreen(
                 JournalSearchField(
                     value = query,
                     onValueChange = viewModel::onQueryChanged,
+                    onClear = viewModel::clearQuery,
                     placeholder = stringResource(Res.string.search_placeholder),
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
                 )
@@ -187,10 +197,8 @@ fun ArchiveScreen(
 
             when (val s = state) {
                 ArchiveUiState.Loading ->
-                    item(key = "loading") {
-                        Box(Modifier.fillMaxWidth().padding(vertical = 64.dp), Alignment.Center) {
-                            Text(stringResource(Res.string.loading))
-                        }
+                    items(8, key = { "skeleton-$it" }) {
+                        SpeciesRowSkeleton()
                     }
                 ArchiveUiState.Empty ->
                     item(key = "empty") {
@@ -198,6 +206,10 @@ fun ArchiveScreen(
                             title = stringResource(Res.string.search_empty_title),
                             body = stringResource(Res.string.search_empty_body),
                         )
+                    }
+                is ArchiveUiState.Error ->
+                    item(key = "error") {
+                        ArchiveErrorBlock(onRetry = viewModel::retry)
                     }
                 is ArchiveUiState.Loaded -> {
                     item(key = "count") {
@@ -210,13 +222,30 @@ fun ArchiveScreen(
                             modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp),
                         )
                     }
-                    items(s.rows, key = { it.summary.id.raw }) { row ->
-                        SpeciesRow(
-                            summary = row.summary,
-                            isStamped = row.isStamped,
-                            stampNumber = row.stampNumber,
-                            onClick = { onSpeciesClick(row.summary.id) },
-                        )
+                    if (s.sort == ArchiveSort.FAMILY) {
+                        val grouped = s.rows.groupBy { it.summary.family }
+                        grouped.forEach { (family, rows) ->
+                            stickyHeader(key = "family-$family") {
+                                FamilyHeader(family = family)
+                            }
+                            items(rows, key = { it.summary.id.raw }) { row ->
+                                SpeciesRow(
+                                    summary = row.summary,
+                                    isStamped = row.isStamped,
+                                    stampNumber = row.stampNumber,
+                                    onClick = { onSpeciesClick(row.summary.id) },
+                                )
+                            }
+                        }
+                    } else {
+                        items(s.rows, key = { it.summary.id.raw }) { row ->
+                            SpeciesRow(
+                                summary = row.summary,
+                                isStamped = row.isStamped,
+                                stampNumber = row.stampNumber,
+                                onClick = { onSpeciesClick(row.summary.id) },
+                            )
+                        }
                     }
                 }
             }
@@ -225,9 +254,96 @@ fun ArchiveScreen(
 }
 
 @Composable
+private fun SpeciesRowSkeleton() {
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier =
+                Modifier
+                    .size(36.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(MarginaliaInk.copy(alpha = 0.1f)),
+        )
+        Spacer(Modifier.width(12.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Box(
+                modifier =
+                    Modifier
+                        .fillMaxWidth(0.55f)
+                        .height(14.dp)
+                        .clip(RoundedCornerShape(4.dp))
+                        .background(MarginaliaInk.copy(alpha = 0.1f)),
+            )
+            Spacer(Modifier.height(6.dp))
+            Box(
+                modifier =
+                    Modifier
+                        .fillMaxWidth(0.35f)
+                        .height(10.dp)
+                        .clip(RoundedCornerShape(4.dp))
+                        .background(MarginaliaInk.copy(alpha = 0.08f)),
+            )
+        }
+    }
+}
+
+@Composable
+private fun FamilyHeader(family: String) {
+    val serif = rememberDmSerifDisplay()
+    Box(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .background(PaperBottom.copy(alpha = 0.85f))
+                .padding(horizontal = 16.dp, vertical = 6.dp),
+    ) {
+        Text(
+            text = family.uppercase(),
+            color = MarginaliaInk,
+            fontFamily = serif,
+            fontStyle = FontStyle.Italic,
+            fontSize = 12.sp,
+            letterSpacing = 0.18.em,
+        )
+    }
+}
+
+@Composable
+private fun ArchiveErrorBlock(onRetry: () -> Unit) {
+    Column(
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 48.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        val caveat = rememberCaveat()
+        val serif = rememberDmSerifDisplay()
+        Text(
+            stringResource(Res.string.archive_error_title),
+            color = TextOnCreme,
+            fontFamily = serif,
+            fontStyle = FontStyle.Italic,
+            fontSize = 18.sp,
+        )
+        Spacer(Modifier.height(8.dp))
+        Text(
+            stringResource(Res.string.archive_error_body),
+            color = MarginaliaInk,
+            fontFamily = caveat,
+            fontSize = 14.sp,
+        )
+        Spacer(Modifier.height(20.dp))
+        Button(onClick = onRetry, colors = ButtonDefaults.buttonColors(containerColor = AccentCopper)) {
+            Text(stringResource(Res.string.archive_error_retry), color = OffwhiteWarm)
+        }
+    }
+}
+
+@Composable
 private fun JournalSearchField(
     value: String,
     onValueChange: (String) -> Unit,
+    onClear: () -> Unit,
     placeholder: String,
     modifier: Modifier = Modifier,
 ) {
@@ -246,6 +362,20 @@ private fun JournalSearchField(
                 fontSize = 14.sp,
             )
         },
+        trailingIcon =
+            if (value.isNotEmpty()) {
+                {
+                    IconButton(onClick = onClear) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = stringResource(Res.string.archive_search_clear),
+                            tint = AccentCopper,
+                        )
+                    }
+                }
+            } else {
+                null
+            },
         colors =
             TextFieldDefaults.colors(
                 focusedContainerColor = Color.White.copy(alpha = 0.4f),

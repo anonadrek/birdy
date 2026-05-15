@@ -18,4 +18,6 @@ sealed interface ArchiveUiState {
         val rows: List<ArchiveRow>,
         val sort: ArchiveSort,
     ) : ArchiveUiState
+
+    data class Error(val message: String?) : ArchiveUiState
 }

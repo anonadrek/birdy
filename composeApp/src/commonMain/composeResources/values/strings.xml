@@ -381,6 +381,10 @@
     <string name="archive_sort_recent">Senast tillagd</string>
     <string name="archive_pill_stamped">STÄMPLAD</string>
     <string name="archive_section_count">%1$s arter</string>
+    <string name="archive_search_clear">Rensa sökning</string>
+    <string name="archive_error_title">Fältboken kunde inte öppnas</string>
+    <string name="archive_error_body">Något gick fel när artlistan lästes in.</string>
+    <string name="archive_error_retry">Försök igen</string>
 
     <!-- ===== Plan 7b: BadgesScreen redesign ===== -->
     <string name="badges_screen_headline">Märken.</string>

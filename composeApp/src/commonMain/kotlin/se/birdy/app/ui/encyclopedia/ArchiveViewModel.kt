@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -53,19 +54,33 @@ class ArchiveViewModel(
                     .mapValues { (_, obs) -> obs.minOf { it.stampNumber } }
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), emptyMap())
 
+    private val retryTick = MutableStateFlow(0)
+
     val uiState: StateFlow<ArchiveUiState> =
         combine(
             _query.debounce(DEBOUNCE_MS).distinctUntilChanged(),
             chip,
             sort,
             stampNumbersBySpecies,
-        ) { q, c, s, stamped -> Quad(q, c, s, stamped) }
+            retryTick,
+        ) { q, c, s, stamped, _ -> Quad(q, c, s, stamped) }
             .flatMapLatest { (q, c, s, stamped) ->
-                repo.search(q, locale, SpeciesFilter()).map { list -> toUiState(list, c, s, stamped) }
+                repo
+                    .search(q, locale, SpeciesFilter())
+                    .map<List<SpeciesSummary>, ArchiveUiState> { list -> toUiState(list, c, s, stamped) }
+                    .catch { e -> emit(ArchiveUiState.Error(e.message)) }
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), ArchiveUiState.Loading)
 
     fun onQueryChanged(q: String) {
         _query.value = q
+    }
+
+    fun clearQuery() {
+        _query.value = ""
+    }
+
+    fun retry() {
+        retryTick.value += 1
     }
 
     fun onChipSelected(c: ArchiveChip) {

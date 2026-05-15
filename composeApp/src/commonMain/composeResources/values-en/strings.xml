@@ -368,6 +368,10 @@
     <string name="archive_sort_recent">Recently added</string>
     <string name="archive_pill_stamped">STAMPED</string>
     <string name="archive_section_count">%1$s species</string>
+    <string name="archive_search_clear">Clear search</string>
+    <string name="archive_error_title">Couldn’t open the field journal</string>
+    <string name="archive_error_body">Something went wrong while loading the species list.</string>
+    <string name="archive_error_retry">Try again</string>
 
     <!-- ===== Plan 7b: BadgesScreen redesign ===== -->
     <string name="badges_screen_headline">Discoveries.</string>
