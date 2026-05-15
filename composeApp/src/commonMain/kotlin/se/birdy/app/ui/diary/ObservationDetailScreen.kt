@@ -36,6 +36,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -77,6 +78,7 @@ import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_may
 import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_nov
 import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_oct
 import birdy_bird_scanner.composeapp.generated.resources.diary_month_short_sep
+import birdy_bird_scanner.composeapp.generated.resources.diary_note_cancel
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_save
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_save_error
 import birdy_bird_scanner.composeapp.generated.resources.diary_note_save_success
@@ -160,7 +162,8 @@ private fun LoadedView(
     onBack: () -> Unit,
     onSpeciesClick: (String) -> Unit,
 ) {
-    var noteText by remember(state.observation.id) { mutableStateOf(state.observation.note) }
+    val savedNote = state.observation.note
+    var noteText by rememberSaveable(state.observation.id) { mutableStateOf(savedNote) }
     var showDeleteDialog by remember { mutableStateOf(false) }
     val unknownLabel = stringResource(Res.string.diary_detail_unknown_species)
     val speciesName = state.species?.name ?: unknownLabel
@@ -216,8 +219,10 @@ private fun LoadedView(
             NoteSection(
                 noteText = noteText,
                 onNoteChange = { noteText = it },
-                canSave = noteText != state.observation.note && !state.noteSaving,
+                isDirty = noteText != savedNote,
+                isSaving = state.noteSaving,
                 onSave = { viewModel.saveNote(noteText) },
+                onCancel = { noteText = savedNote },
             )
         }
 
@@ -274,8 +279,10 @@ private fun LoadedView(
 private fun NoteSection(
     noteText: String,
     onNoteChange: (String) -> Unit,
-    canSave: Boolean,
+    isDirty: Boolean,
+    isSaving: Boolean,
     onSave: () -> Unit,
+    onCancel: () -> Unit,
 ) {
     val caveat = rememberCaveat()
     Column(modifier = Modifier.padding(horizontal = 24.dp, vertical = 4.dp)) {
@@ -309,18 +316,34 @@ private fun NoteSection(
                 ),
             keyboardOptions = KeyboardOptions(autoCorrectEnabled = true),
         )
-        if (canSave) {
+        if (isDirty) {
             Spacer(modifier = Modifier.size(6.dp))
-            TextButton(
-                onClick = onSave,
+            Row(
                 modifier = Modifier.align(Alignment.End),
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
             ) {
-                Text(
-                    stringResource(Res.string.diary_note_save),
-                    color = AccentCopper,
-                    fontFamily = caveat,
-                    fontSize = 15.sp,
-                )
+                TextButton(
+                    onClick = onCancel,
+                    enabled = !isSaving,
+                ) {
+                    Text(
+                        stringResource(Res.string.diary_note_cancel),
+                        color = MarginaliaInk,
+                        fontFamily = caveat,
+                        fontSize = 15.sp,
+                    )
+                }
+                TextButton(
+                    onClick = onSave,
+                    enabled = !isSaving,
+                ) {
+                    Text(
+                        stringResource(Res.string.diary_note_save),
+                        color = AccentCopper,
+                        fontFamily = caveat,
+                        fontSize = 15.sp,
+                    )
+                }
             }
         }
     }

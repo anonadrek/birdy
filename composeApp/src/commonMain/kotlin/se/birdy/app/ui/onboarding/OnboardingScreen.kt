@@ -72,6 +72,7 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BodyTextWithCaveatAccents
 import se.birdy.app.ui.components.JournalHeadline
 import se.birdy.app.ui.components.JournalIntro
+import se.birdy.app.ui.components.PlatformBackHandler
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.OffwhiteWarm
@@ -100,15 +101,13 @@ fun OnboardingScreen(
         }
     }
 
+    PlatformBackHandler(enabled = state.pageIndex > 0) {
+        onPageChange(state.pageIndex - 1)
+    }
+
     Box(modifier = Modifier.fillMaxSize().paperBackground()) {
         TextButton(
-            onClick = {
-                if (state.pageIndex == PAGE_COUNT - 1) {
-                    onComplete()
-                } else {
-                    onPageChange(PAGE_COUNT - 1)
-                }
-            },
+            onClick = onComplete,
             modifier = Modifier.align(Alignment.TopEnd).padding(top = 12.dp, end = 12.dp),
         ) {
             Text(

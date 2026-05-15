@@ -119,7 +119,7 @@
     <string name="match_headline">*%1$s*</string>
     <string name="match_sub_confidence">En %1$s match.</string>
     <string name="match_marginalia_first_sighting">*NY ART*</string>
-    <string name="match_marginalia_repeat">GÅNG *%1$d* · FÖRSTA: %2$s</string>
+    <string name="match_marginalia_repeat">OBS *#%1$d* · FÖRSTA SÅGS: %2$s</string>
     <string name="match_marginalia_manual_pick">*ditt val*</string>
     <string name="match_stamp_caption_pending">väntar på din signatur</string>
     <string name="match_save_cta">Spara observation</string>
@@ -157,13 +157,19 @@
     <string name="scan_top1_searching">söker…</string>
     <string name="scan_freeze_hint">TRYCK VAR SOM HELST FÖR ATT FRYSA</string>
     <string name="scan_photo_analyze">Analysera ett foto</string>
-    <string name="scan_permission_required_body">Birdy behöver tillgång till kameran för att skanna fåglar.</string>
-    <string name="scan_permission_allow">Tillåt kamera</string>
     <string name="scan_permission_denied_body">Kameran är blockerad. Aktivera i inställningar för att skanna.</string>
     <string name="scan_permission_open_settings">Öppna inställningar</string>
     <string name="scan_error_classifier_failed">Klassificeraren misslyckades upprepade gånger</string>
-    <string name="scan_throttle_indicator">1.5 fps</string>
     <string name="demo_mode_banner">DEMO — modell saknas, fake-data visas</string>
+    <!-- Plan 6a Task 10.8: DEMO banner tap → explanatory bottom-sheet -->
+    <string name="demo_sheet_title">Demo-läge</string>
+    <string name="demo_sheet_body">Birdy kunde inte ladda fågel-modellen vid uppstart, så vi visar exempeldata. Starta om appen för att försöka igen — eller skicka oss en rapport om problemet kvarstår.</string>
+    <string name="demo_sheet_close">Stäng</string>
+    <string name="demo_sheet_report">Rapportera</string>
+    <!-- Plan 6a Task 10.9: Permission hero copy + photo-fallback -->
+    <string name="permission_hero_caveat">Birdy ser bara fåglar — inga foton sparas utan ditt val.</string>
+    <string name="permission_grant_cta">Tillåt kamera</string>
+    <string name="permission_denied_photo_fallback">Analysera ett foto i stället</string>
 
     <!-- Diary -->
     <string name="diary_title">Dagbok</string>
@@ -177,6 +183,7 @@
     <string name="diary_saved_indicator">Sparad ✓</string>
     <string name="diary_note_label">Anteckning</string>
     <string name="diary_note_save">Spara anteckning</string>
+    <string name="diary_note_cancel">Avbryt</string>
     <string name="diary_note_save_success">Anteckning sparad</string>
     <string name="diary_note_save_error">Kunde inte spara anteckningen — försök igen</string>
     <string name="diary_delete_button">Ta bort</string>
@@ -334,7 +341,7 @@
     <string name="onboarding_p3_breadcrumb">SISTA STEGET</string>
     <string name="onboarding_p3_headline">Vad ska vi kalla din *samling*?</string>
     <string name="onboarding_p3_input_placeholder">Albin</string>
-    <string name="onboarding_p3_input_helper">Du kan ändra detta senare i inställningarna.</string>
+    <string name="onboarding_p3_input_helper">Lämna tomt om du vill — vi kallar dig 'Fältornitolog'.</string>
     <string name="onboarding_p3_premium_label">PREMIUM</string>
     <string name="onboarding_p3_cta">Börja samla →</string>
     <string name="onboarding_p3_fallback_name">Min</string>

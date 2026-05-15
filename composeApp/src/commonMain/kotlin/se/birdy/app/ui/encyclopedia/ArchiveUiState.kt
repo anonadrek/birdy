@@ -19,5 +19,7 @@ sealed interface ArchiveUiState {
         val sort: ArchiveSort,
     ) : ArchiveUiState
 
-    data class Error(val message: String?) : ArchiveUiState
+    data class Error(
+        val message: String?,
+    ) : ArchiveUiState
 }

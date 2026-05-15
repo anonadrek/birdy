@@ -107,7 +107,7 @@
     <string name="match_headline">*%1$s*</string>
     <string name="match_sub_confidence">A %1$s match.</string>
     <string name="match_marginalia_first_sighting">*NEW SPECIES*</string>
-    <string name="match_marginalia_repeat">TIME *%1$d* · FIRST: %2$s</string>
+    <string name="match_marginalia_repeat">SIGHT *#%1$d* · FIRST SEEN: %2$s</string>
     <string name="match_marginalia_manual_pick">*your choice*</string>
     <string name="match_stamp_caption_pending">awaiting your signature</string>
     <string name="match_save_cta">Save observation</string>
@@ -144,13 +144,19 @@
     <string name="scan_top1_searching">searching…</string>
     <string name="scan_freeze_hint">TAP ANYWHERE TO FREEZE</string>
     <string name="scan_photo_analyze">Analyze a photo</string>
-    <string name="scan_permission_required_body">Birdy needs camera access to scan birds.</string>
-    <string name="scan_permission_allow">Allow camera</string>
     <string name="scan_permission_denied_body">Camera is blocked. Enable in settings to scan.</string>
     <string name="scan_permission_open_settings">Open settings</string>
     <string name="scan_error_classifier_failed">Classifier failed repeatedly.</string>
-    <string name="scan_throttle_indicator">1.5 fps</string>
     <string name="demo_mode_banner">DEMO — model missing, fake data shown</string>
+    <!-- Plan 6a Task 10.8: DEMO banner tap → explanatory bottom-sheet -->
+    <string name="demo_sheet_title">Demo mode</string>
+    <string name="demo_sheet_body">Birdy couldn't load the bird model at startup, so we're showing sample data. Restart the app to try again — or send us a report if it keeps happening.</string>
+    <string name="demo_sheet_close">Close</string>
+    <string name="demo_sheet_report">Report</string>
+    <!-- Plan 6a Task 10.9: Permission hero copy + photo-fallback -->
+    <string name="permission_hero_caveat">Birdy only sees birds — no photos are saved without your choice.</string>
+    <string name="permission_grant_cta">Allow camera</string>
+    <string name="permission_denied_photo_fallback">Analyze a photo instead</string>
 
     <!-- Diary -->
     <string name="diary_title">Diary</string>
@@ -164,6 +170,7 @@
     <string name="diary_saved_indicator">Saved ✓</string>
     <string name="diary_note_label">Note</string>
     <string name="diary_note_save">Save note</string>
+    <string name="diary_note_cancel">Cancel</string>
     <string name="diary_note_save_success">Note saved</string>
     <string name="diary_note_save_error">Could not save the note — try again</string>
     <string name="diary_delete_button">Delete</string>
@@ -321,7 +328,7 @@
     <string name="onboarding_p3_breadcrumb">LAST STEP</string>
     <string name="onboarding_p3_headline">What should we call your *collection*?</string>
     <string name="onboarding_p3_input_placeholder">Alex</string>
-    <string name="onboarding_p3_input_helper">You can change this later in settings.</string>
+    <string name="onboarding_p3_input_helper">Leave blank if you'd rather — we'll call you 'Field birder'.</string>
     <string name="onboarding_p3_premium_label">PREMIUM</string>
     <string name="onboarding_p3_cta">Start collecting →</string>
     <string name="onboarding_p3_fallback_name">My</string>

@@ -27,18 +27,13 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.scan_throttle_indicator
-import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.SandCreme
 
 @Composable
 fun TopChip(
     speciesName: String,
     confidencePct: Int?,
-    isThrottled: Boolean,
     modifier: Modifier = Modifier,
 ) {
     val transition = rememberInfiniteTransition(label = "top-chip-pulse")
@@ -87,10 +82,6 @@ fun TopChip(
         if (confidencePct != null) {
             Spacer(modifier = Modifier.width(4.dp))
             Text(text = "$confidencePct%", color = AccentCopper)
-        }
-        if (isThrottled) {
-            Spacer(modifier = Modifier.width(4.dp))
-            Text(text = stringResource(Res.string.scan_throttle_indicator), color = HeroMossLight)
         }
     }
 }
