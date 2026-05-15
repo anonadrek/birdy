@@ -1,0 +1,102 @@
+id: Q602084
+scientific_name: Sula dactylatra
+taxonomy:
+  family: Sulidae
+  family_sv: Sulor
+  genus: Sula
+  ioc_order: Suliformes
+names:
+  sv: Masksula
+  en: Masked Booby
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Masked Booby
+
+
+    The masked booby is the largest member of the booby family, reaching 75–85 cm
+    in length. It displays striking plumage: bright white body contrasting sharply
+    with black wings, black tail, and a distinctive dark face mask. The long, pointed
+    yellowish bill, elongated neck, and slender wings are typical features of the
+    booby family, giving it a streamlined appearance perfectly adapted for diving.
+
+
+    This seabird is found across tropical oceans worldwide, though it is absent from
+    the eastern Atlantic and eastern Pacific regions. It is a highly specialized marine
+    hunter, diving dramatically from the air to catch fish and squid. The masked booby''s
+    behaviour is typically pelagic, spending much of its time at sea, though it returns
+    to land for breeding.
+
+
+    The sexes look identical, making field identification straightforward once the
+    bird is observed. Its distinctive appearance—the dark face mask particularly striking
+    against the white head and body—makes it readily recognizable among other boobies.
+    The masked booby''s combination of size, striking coloration, and elegant proportions
+    mark it as one of the ocean''s most impressive diving seabirds.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only information about the masked booby''s physical
+    description, taxonomic classification, and general tropical ocean distribution.
+    No specific details are given regarding its occurrence in Scandinavia or Northern
+    Europe, seasonal movements, migration patterns, or overwintering behavior in this
+    region. To provide accurate migration information for this species in northern
+    European waters would require additional sources with documented data on its presence
+    and movement patterns in these areas.'
+image_refs:
+- role: hero
+  path: Q602084/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/pjd1">pjd1</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sula dactylatra tasmani, Kermadec
+    Islands, New Zealand 1.jpg
+  commons_filename: Sula dactylatra tasmani, Kermadec Islands, New Zealand 1.jpg
+- role: secondary
+  path: Q602084/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/pjd1">pjd1</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sula dactylatra tasmani, Kermadec
+    Islands, New Zealand 2.jpg
+  commons_filename: Sula dactylatra tasmani, Kermadec Islands, New Zealand 2.jpg
+- role: secondary
+  path: Q602084/secondary-2.jpg
+  width: 1350
+  height: 1800
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/pjd1">pjd1</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sula dactylatra tasmani, Kermadec
+    Islands, New Zealand 3.jpg
+  commons_filename: Sula dactylatra tasmani, Kermadec Islands, New Zealand 3.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:43:42.902790+00:00'
+sources:
+  wikipedia_sv_revision: '59202128'
+  wikipedia_en_revision: '1347343239'
+  claude_model: claude-haiku-4-5-20251001

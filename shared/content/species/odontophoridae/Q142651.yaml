@@ -1,0 +1,134 @@
+id: Q142651
+scientific_name: Colinus virginianus
+taxonomy:
+  family: Odontophoridae
+  family_sv: Tofsvaktlar
+  genus: Colinus
+  ioc_order: Galliformes
+names:
+  sv: Vitstrupig vaktel
+  en: Northern Bobwhite
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitstrupig vaktel
+
+
+    Vitstrupig vaktel är en medelstor vaktel inom familjen tofsvaktlar. Det är en
+    markfågel med kompakt byggnad, karakteristisk rostbrun och svart teckning på huvudet.
+    Hanen har en vit strupe och ögonbrynsstreck, medan honan är mer dov brunaktig.
+    Det är en väldig liten fågel som håller sig huvudsakligen på marken.
+
+
+    Arten är känd för sitt genomträngande och igenkännligt läte som låter som sitt
+    namn "bob-white" - ett tvåstavigt visselpjussel som ofta hörs under paringssäsongen.
+    Fågeln förekommer naturligt i större delar av ett stort geografiskt område, men
+    har minskat märkbart i antal och klassificeras nu som nära hotad av IUCN. Den
+    lever på öppen eller glest bevuxen mark där den söker föda på marken.
+
+
+    Arten har introducerats på flera platser utanför sitt naturliga utbredningsområde,
+    och självförsörjande populationer har etablerats på vissa lokaler. Det är en boende
+    fågel som ses året runt på lämpliga lokaliteter.'
+  en: '# Northern Bobwhite
+
+
+    The northern bobwhite is a ground-dwelling quail native to North America, with
+    its range extending from Canada through the United States and Mexico to Cuba.
+    Despite belonging to the New World quail family, it differs markedly from Old
+    World quails and pheasants. The bird''s common name derives directly from its
+    distinctive, clear whistling call—a loud "bob-white" that carries across open
+    habitats and is one of the species'' most recognizable features.
+
+
+    Though secretive by nature, the northern bobwhite remains one of the most familiar
+    quails in eastern North America, largely because it is often the only quail species
+    present in its range. It frequents grasslands, brushy areas, and open woodlands
+    where it can forage on the ground for seeds and invertebrates.
+
+
+    Unfortunately, the species has faced significant population declines over recent
+    decades. Habitat degradation and loss have caused northeastern populations to
+    drop by approximately 85% between 1966 and 2014, with this decline continuing
+    across its entire range. Conservation of open grassland habitats is critical for
+    the species'' long-term survival.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller ingen information om arten förekomst i Skandinavien/Nordeuropa,
+    migrationsmönster, övervintringar eller ankomstmånader. Texten nämner endast att
+    arten förekommer naturligt i USA och Mexiko, och att den har inplanterats i Frankrike.
+    För att skriva en faktamässigt korrekt guide om arten Migration i Norden krävs
+    information som inte finns tillgänglig i denna källa.'
+  en: '# Northern Bobwhite in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text indicates that the Northern Bobwhite is native to North America
+    and Cuba, with introduced populations in parts of Europe and Asia. However, it
+    provides no specific information regarding the species'' occurrence, migration
+    patterns, seasonal movements, or year-round presence in Scandinavia or Northern
+    Europe. To provide accurate information about this species'' phenology in the
+    region, additional sources focusing specifically on its status in Northern European
+    populations would be required.'
+image_refs:
+- role: hero
+  path: Q142651/hero.jpg
+  width: 2400
+  height: 1615
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/50838842@N06">U.S.
+    Fish and Wildlife Service Headquarters</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Colinus virginianus USFWS.jpg
+  commons_filename: Colinus virginianus USFWS.jpg
+- role: secondary
+  path: Q142651/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Missvain" title="User:Missvain">Missvain</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Colinus virginianus at the Indianapolis
+    Zoo - June 2022 - Sarah Stierch.jpg
+  commons_filename: Colinus virginianus at the Indianapolis Zoo - June 2022 - Sarah
+    Stierch.jpg
+- role: secondary
+  path: Q142651/secondary-2.jpg
+  width: 1440
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/39955531@N00">Matt
+    Tillett</a> from Cumberland, MD, USA
+  source_url: https://commons.wikimedia.org/wiki/File:Colinus virginianus Chincoteague.jpg
+  commons_filename: Colinus virginianus Chincoteague.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:44:41.518074+00:00'
+sources:
+  wikipedia_sv_revision: '55757025'
+  wikipedia_en_revision: '1353133725'
+  claude_model: claude-haiku-4-5-20251001

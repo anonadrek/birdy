@@ -1,0 +1,129 @@
+id: Q28646473
+scientific_name: Suthora webbiana
+taxonomy:
+  family: Paradoxornithidae
+  family_sv: Papegojnäbbar
+  genus: Suthora
+  ioc_order: Passeriformes
+names:
+  sv: Rosenpapegojnäbb
+  en: Vinous-throated Parrotbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rosenpapegojnäbb
+
+
+    Rosenpapegojnäbb är en liten och långstjärtad tätting som tillhör familjen papegojnäbbar.
+    Arten är naturligt utbredd i Östasien, där den återfinns i sitt naturliga habitat.
+    Intressant nog finns det också en frilevande population med okänt ursprung i italienska
+    Lombardiet, vilket tyder på att arten har introducerats till Europa.
+
+
+    Arten kännetecknas av sin lilla storlek och långstreckiga svans, vilket gör den
+    relativt lätt att identifiera. Som namnet antyder har den en rosenfärgad strupe
+    som är ett karakteristiskt drag. Med sitt papegojliknande näbb är arten väl anpassad
+    för att plocka mat från vegetation.
+
+
+    Beståndet anses för närvarande vara livskraftigt, vilket indikerar att arten inte
+    står inför några akuta hotningar. Detta gör rosenpapegojnäbb till en stabil art
+    inom sitt utbredningsområde.'
+  en: '# Vinous-throated Parrotbill
+
+
+    The vinous-throated parrotbill is a distinctive member of the parrotbill family,
+    characterized by its sturdy, curved bill—an adaptation reflecting its name and
+    feeding habits. This small songbird inhabits subtropical and tropical moist montane
+    forests across a wide range spanning eastern Asia, from Russia and Mongolia in
+    the north to Taiwan and Vietnam in the south, with populations also present in
+    China, Japan, and Korea.
+
+
+    This species favors the dense vegetation of montane forest habitats, where it
+    forages among undergrowth and foliage. The vinous-throated parrotbill is typically
+    encountered in small groups or pairs as it moves through its preferred forest
+    environment, using its robust bill to crack seeds and investigate vegetation for
+    food.
+
+
+    Little specific information about its appearance, behavior, and vocalizations
+    is widely documented in general birding literature, making field observation in
+    its natural montane habitat the best way for amateur enthusiasts to appreciate
+    this species firsthand.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller ingen information om hur Rosenpapegojnäbb
+    förekommer i Skandinavien eller Nordeuropa under året, migrations- eller övervintringsmönster.
+    Arten beskrivs endast som naturligt förekommande i Östasien med en population
+    i italienska Lombardiet, vilket ligger långt utanför Skandinaviens geografiska
+    område.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Vinous-throated Parrotbill is a resident species of East and Southeast Asia,
+    with its range extending from southern China and Taiwan through Vietnam, Korea,
+    Japan, and into far eastern Russia. It does not occur naturally in Scandinavia
+    or Northern Europe. The species inhabits subtropical and tropical moist montane
+    forests at higher elevations, remaining year-round within its established range
+    rather than undertaking long-distance migrations typical of many northern hemisphere
+    birds.'
+image_refs:
+- role: hero
+  path: Q28646473/hero.jpg
+  width: 2048
+  height: 1433
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/bloodlesshunting">bloodlesshunting</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2023-01-30 Suthora webbiana
+    webbiana, Suichang, Zhejiang, China 1.jpg
+  commons_filename: 2023-01-30 Suthora webbiana webbiana, Suichang, Zhejiang, China
+    1.jpg
+- role: secondary
+  path: Q28646473/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/wangqg">Wang.QG</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2021-03-29 Suthora webbiana
+    webbiana, Hangzhou, Zhejiang, China 1.jpg
+  commons_filename: 2021-03-29 Suthora webbiana webbiana, Hangzhou, Zhejiang, China
+    1.jpg
+- role: secondary
+  path: Q28646473/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/wangqg">Wang.QG</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2021-03-29 Suthora webbiana
+    webbiana, Hangzhou, Zhejiang, China 2.jpg
+  commons_filename: 2021-03-29 Suthora webbiana webbiana, Hangzhou, Zhejiang, China
+    2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:42:59.294565+00:00'
+sources:
+  wikipedia_sv_revision: '55851424'
+  wikipedia_en_revision: '1354128468'
+  claude_model: claude-haiku-4-5-20251001

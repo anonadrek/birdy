@@ -1,0 +1,76 @@
+id: Q607024
+scientific_name: Oceanites oceanicus
+taxonomy:
+  family: Oceanitidae
+  family_sv: Nordstormsvalor
+  genus: Oceanites
+  ioc_order: Procellariiformes
+names:
+  sv: Havslöpare
+  en: Wilson’s Storm Petrel
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Havslöpare
+
+
+    Havslöpare är en liten havsfågel som tillhör familjen havslöpare. Med en global
+    population på 12–30 miljoner individer är det en av världens talrikaste havsfåglar.
+    Arten häckar vid Antarktis och är därför främst ett vintergästande besök för många
+    håll på norra halvklotet under sommarmånaderna.
+
+
+    Arten är mycket liten och har en mörk fjäderdräkt. Det är en typisk stormsvalä
+    som är anpassad för ett liv på öppet hav, där den ofta ses glida lågt över vattenytan
+    på sin eviga jakt efter små bytesdjur. Liksom andra stormsvalor är havslöparen
+    en nattetid häckare och är mycket svår att observera då.'
+  en: ''
+migration:
+  sv: '# Havslöpare (Oceanites oceanicus)
+
+
+    Havslöparen är en antarktisk häckfågel som under sitt icke-häckningsperiod sprider
+    sig över världshaven. Under norra hemisfärens sommar (juni–september) förekommer
+    arten regelbundet i nordatlantiska vatten, inklusive vid Skandinaviens kustnära
+    områden. Fågeln utgör ett klassiskt exempel på en långdistansflyttare som utnyttjar
+    motsatta årstiders matsäkerhet på båda hemisfärerna. I nordeuropa iakttas arten
+    främst från sommaren till tidig höst, då individer från de antarktiska häckningsplatserna
+    når norra vatten under sitt årliga omöte.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q607024/hero.jpg
+  width: 2400
+  height: 1361
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9765210@N03">Dominic
+    Sherony</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Wilson's Storm-Petrel (Oceanites
+    oceanicus) (18437325104).jpg
+  commons_filename: Wilson's Storm-Petrel (Oceanites oceanicus) (18437325104).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:44:41.610112+00:00'
+sources:
+  wikipedia_sv_revision: '55792861'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

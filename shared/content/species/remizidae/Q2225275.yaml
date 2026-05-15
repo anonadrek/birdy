@@ -1,0 +1,72 @@
+id: Q2225275
+scientific_name: Remiz coronatus
+taxonomy:
+  family: Remizidae
+  family_sv: Pungmesar
+  genus: Remiz
+  ioc_order: Passeriformes
+names:
+  sv: Vitkronad pungmes
+  en: White-crowned Penduline Tit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# White-crowned Penduline Tit
+
+
+    The white-crowned penduline tit is a small songbird belonging to the penduline
+    tit family. It inhabits temperate and subtropical regions across central and eastern
+    Asia, favouring areas with suitable vegetation and water sources.
+
+
+    This species is characterized by its distinctive white crown, which contrasts
+    sharply with darker plumage on the back and wings. Like other penduline tits,
+    it is a diminutive bird with a compact build adapted for gleaning insects from
+    foliage and branches. Its behaviour is typical of the family—active and acrobatic,
+    often observed foraging among reeds, shrubs, and trees, sometimes hanging upside
+    down while searching for food.
+
+
+    The white-crowned penduline tit occurs in open woodland, scrubland, and reed beds
+    across its range, with populations found at varying elevations depending on local
+    geography and season. It prefers areas near water and vegetation-rich habitats
+    where it can hunt insects and small invertebrates. Like many penduline tits, it
+    builds a characteristic pendulous nest suspended from branches—a remarkable feat
+    of engineering that protects eggs and chicks from predators.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only information about the geographic range of the White-crowned
+    Penduline Tit across Central and South Asia, without any details regarding its
+    occurrence in Scandinavia or Northern Europe, or its migration patterns throughout
+    the year.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:43:47.660634+00:00'
+sources:
+  wikipedia_sv_revision: '56771833'
+  wikipedia_en_revision: '1315176253'
+  claude_model: claude-haiku-4-5-20251001

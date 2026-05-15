@@ -1,0 +1,104 @@
+id: Q795545
+scientific_name: Zosterops palpebrosus
+taxonomy:
+  family: Zosteropidae
+  family_sv: Glasögonfåglar
+  genus: Zosterops
+  ioc_order: Passeriformes
+names:
+  sv: Indisk glasögonfågel
+  en: Indian White-eye
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Indian White-eye
+
+
+    The Indian white-eye is a small passerine with a distinctive appearance that makes
+    identification straightforward. It features a characteristic white eye-ring that
+    gives the family its name, combined with yellowish upperparts and a compact body
+    typical of white-eyes. These birds are relatively inconspicuous despite their
+    neat markings, blending well into their favoured habitat.
+
+
+    This species is a resident breeder found in open woodland across the Indian subcontinent.
+    It is highly social, typically foraging in small, active groups as it moves through
+    vegetation. Its diet consists primarily of nectar and small insects, which it
+    gleans from flowers and foliage with characteristic quick movements. The bird''s
+    behaviour is typical of white-eyes: restless, acrobatic, and often seen hanging
+    upside-down while feeding.
+
+
+    The Indian white-eye''s range was historically more extensive, formerly extending
+    eastwards to Southeast Asia, Indonesia, and Malaysia, but taxonomic revision has
+    reclassified eastern populations as a separate species. Today, this species is
+    restricted to the Indian subcontinent, making the common name geographically accurate
+    once more.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text describes the Indian White-eye as a "resident breeder" on the
+    Indian subcontinent, indicating it does not migrate. However, no specific information
+    about its occurrence in Scandinavia or Northern Europe is provided. The species
+    is endemic to the Indian subcontinent and does not occur in these regions. Therefore,
+    detailed migration or seasonal occurrence patterns for Scandinavia/Northern Europe
+    cannot be documented.'
+image_refs:
+- role: hero
+  path: Q795545/hero.jpg
+  width: 2400
+  height: 1601
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Interaccoonale" title="User:Interaccoonale">Sun
+    Jiao (Interaccoonale)</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Zosterops palpebrosus km.jpg
+  commons_filename: Zosterops palpebrosus km.jpg
+- role: secondary
+  path: Q795545/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Interaccoonale" title="User:Interaccoonale">Sun
+    Jiao (Interaccoonale)</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Zosterops palpebrosus kunming
+    2.jpg
+  commons_filename: Zosterops palpebrosus kunming 2.jpg
+- role: secondary
+  path: Q795545/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Interaccoonale" title="User:Interaccoonale">Sun
+    Jiao (Interaccoonale)</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Zosterops palpebrosus kunming
+    crop.jpg
+  commons_filename: Zosterops palpebrosus kunming crop.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:43:17.233753+00:00'
+sources:
+  wikipedia_sv_revision: '55621375'
+  wikipedia_en_revision: '1341986503'
+  claude_model: claude-haiku-4-5-20251001

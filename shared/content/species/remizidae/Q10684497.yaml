@@ -1,0 +1,111 @@
+id: Q10684497
+scientific_name: Remiz macronyx
+taxonomy:
+  family: Remizidae
+  family_sv: Pungmesar
+  genus: Remiz
+  ioc_order: Passeriformes
+names:
+  sv: Svarthuvad pungmes
+  en: Black-headed Penduline Tit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svarthuvad pungmes
+
+
+    Svarthuvad pungmes är en liten asiatisk fågel som tillhör familjen pungmesar.
+    Den är närbesläktad med pungmesen och behandlas ibland som en underart av denna.
+    Fågeln förekommer i vass- och sävbälten i Centralasien, där den är anpassad till
+    dessa våtmarksmiljöer.
+
+
+    Arten är känd för sin karakteristiska svarta huvud­märkning, som skiljer den från
+    närbesläktade arter. Som övriga pungmesar är det en mycket liten fågel med en
+    spetsig näbb som är väl utformad för att söka föda bland vegetation.
+
+
+    Svarthuvad pungmes lever i stora vassområden och sävbälten där den söker sin föda
+    bland vass­stänglar och kärrvegetation. Den är huvudsakligen utbredd i olika delar
+    av Centralasien från västerligare områden österut.'
+  en: '# Black-headed Penduline Tit
+
+
+    The black-headed penduline tit is a small member of the penduline tit family found
+    exclusively in Central Asia. It inhabits reed beds along lakes and rivers, though
+    its distribution is fragmented across this vast region. Remarkably, it remains
+    one of the least studied birds in Central Asia, with much still unknown about
+    its behaviour, ecology, and movements.
+
+
+    Due to limited documentation, detailed accounts of its appearance and calls are
+    sparse. However, as a penduline tit, it likely shares characteristics common to
+    the genus, including small size and a preference for reed-bed habitats where it
+    constructs its distinctive suspended, pouch-like nest. The "black-headed" in its
+    name presumably refers to dark plumage on the crown, though comprehensive descriptions
+    of its field marks are not well established in available sources.
+
+
+    This species'' poorly-known status makes it a fascinating subject for ornithologists
+    and birdwatchers willing to venture into remote Central Asian wetlands. Any observations
+    of this elusive bird contribute valuable information to our understanding of this
+    cryptic and understudied species.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Migration data unavailable for this species.
+
+
+    The source text provides no information about the occurrence of the black-headed
+    penduline tit in Scandinavia or Northern Europe, nor does it contain any migration
+    data for this species. The available information only indicates that this poorly-documented
+    bird is found in Central Asian reed beds along lakes and rivers, with a fragmented
+    distribution. To provide accurate information about seasonal movements or overwintering
+    patterns in northern regions would require additional sources beyond what is presented
+    here.'
+image_refs:
+- role: hero
+  path: Q10684497/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/6924064">James
+    Eaton</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Remiz macronyx - James Eaton
+    - 351030638.jpeg
+  commons_filename: Remiz macronyx - James Eaton - 351030638.jpeg
+- role: secondary
+  path: Q10684497/secondary-1.jpg
+  width: 1800
+  height: 1180
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/6924064">James
+    Eaton</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Remiz macronyx - James Eaton
+    - 351030806.jpeg
+  commons_filename: Remiz macronyx - James Eaton - 351030806.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:44:35.319011+00:00'
+sources:
+  wikipedia_sv_revision: '59151876'
+  wikipedia_en_revision: '1348402562'
+  claude_model: claude-haiku-4-5-20251001

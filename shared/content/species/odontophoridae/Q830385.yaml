@@ -1,0 +1,130 @@
+id: Q830385
+scientific_name: Callipepla californica
+taxonomy:
+  family: Odontophoridae
+  family_sv: Tofsvaktlar
+  genus: Callipepla
+  ioc_order: Galliformes
+names:
+  sv: Kalifornientofsvaktel
+  en: California Quail
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kalifornientofsvaktel
+
+
+    Kalifornientofsvaktel är en medelstor vaktel från familjen tofsvaktlar. Den är
+    lätt igenkännlig på sin karakteristiska huvud­topp – en framåtlutande fjäderbunt
+    som framför allt är framträdande hos hannarna. Fjäderdräkten är övervägande gråbrun
+    med en distinktivy svart och vit huvudteckning. Undersidan är ljusare, ofta med
+    rostfärgade toner på sidan.
+
+
+    Arten är aktiv på marken och lever gärna i tät vegetation och busmark. Det är
+    en social fågel som ofta ses i mindre flockar, särskilt utanför häckningstiden.
+    Kalifornientofsvaktel matar sig på frön, gräs och insekter som det plockar upp
+    från marken.
+
+
+    Arten häckar naturligt i västra Nordamerika, men har introducerats och förvildats
+    på flera andra håll i världen. Den föredrar semi-öppna landskap med låg vegetation
+    och buskap.'
+  en: '# California Quail
+
+
+    The California quail is a small, plump ground-dwelling bird easily identified
+    by its distinctive forward-drooping crest of six feathers. Males are strikingly
+    marked with a dark brown cap, black face, grey-blue chest, and light brown belly,
+    while females and immatures are duller grey-brown overall. Both sexes display
+    brown flanks with white streaks. The species is closely related to Gambel''s quail,
+    which occupies more southerly regions and sports a longer, brighter crest without
+    the California quail''s characteristic scaly appearance.
+
+
+    These social birds are typically found in small groups, foraging on the ground
+    for seeds, plants, and insects. They prefer scrubby, open habitats with scattered
+    cover where they can move between feeding and roosting areas. California quails
+    are relatively sedentary, though they may move locally in response to seasonal
+    changes.
+
+
+    The species is vocal, with males producing a distinctive three-note call that
+    sounds like "chi-ca-go." This call is particularly prominent during breeding season.
+    The quail''s ground-nesting habits and preference for open country make it adaptable
+    to various habitats from coastal scrub to chaparral foothills. Its popularity
+    as both a game bird and symbol—it was designated the state bird of California
+    in 1931—reflects its cultural significance to the region.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the California Quail''s
+    occurrence, migration patterns, or seasonal distribution in Scandinavia or Northern
+    Europe. The California Quail is a North American species native to the western
+    United States and Mexico, and the source material focuses only on its taxonomy,
+    physical characteristics, and relationship to Gambel''s Quail.'
+image_refs:
+- role: hero
+  path: Q830385/hero.jpg
+  width: 2294
+  height: 2400
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/sloalan/">ALAN
+    SCHMIERER</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
+    href="//commons.wikimedia.org/wiki/File:Schopfwachtel_(Callipepla_californica),_Weibchen.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Schopfwachtel (Callipepla californica),
+    Weibchen.jpg
+  commons_filename: Schopfwachtel (Callipepla californica), Weibchen.jpg
+- role: secondary
+  path: Q830385/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Missvain" title="User:Missvain">Missvain</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Callipepla californica - June
+    2023 - Sarah Stierch.jpg
+  commons_filename: Callipepla californica - June 2023 - Sarah Stierch.jpg
+- role: secondary
+  path: Q830385/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Missvain" title="User:Missvain">Missvain</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Callipepla californica - October
+    2023 - Sarah Stierch 01.jpg
+  commons_filename: Callipepla californica - October 2023 - Sarah Stierch 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:43:41.631164+00:00'
+sources:
+  wikipedia_sv_revision: '55625882'
+  wikipedia_en_revision: '1324317905'
+  claude_model: claude-haiku-4-5-20251001

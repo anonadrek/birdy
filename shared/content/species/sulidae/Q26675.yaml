@@ -1,0 +1,125 @@
+id: Q26675
+scientific_name: Morus bassanus
+taxonomy:
+  family: Sulidae
+  family_sv: Sulor
+  genus: Morus
+  ioc_order: Suliformes
+names:
+  sv: Havssula
+  en: Northern Gannet
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Havssula
+
+
+    Havssulan är en imponerande stor havsfågel från familjen sulor. Det är en utpräglad
+    pelagisk art som tillbringar större delen av året ute på öppet hav. Endast under
+    häckningstiden söker den sig till land, där den bildar enorma kolonier med ofta
+    tusentals häckande par på båda sidor av Nordatlanten.
+
+
+    Under övriga årstiden lever havssulan främst pelagiskt på öppet vatten, vanligtvis
+    längre söderut i Atlanten. Som flyttfågel visar det en tydlig migrationsväg mellan
+    häcknings- och övervintringsområdena. Arten är väl anpassad för sitt marin liv
+    och tillbringar långt mer tid på havet än på land.'
+  en: '# Northern Gannet
+
+
+    The Northern gannet is the largest seabird in the North Atlantic, with a striking
+    appearance designed for its diving lifestyle. Adults display a pristine white
+    plumage with a long, streamlined body, elongated neck, and slender wings spanning
+    170–180 cm. The head and nape show a distinctive buff tinge, particularly pronounced
+    during breeding season, while the wing edges are marked with dark brown-black
+    feathers. Its most notable feature is the long, pointed blue-grey bill, which
+    contrasts sharply with the black, bare skin surrounding its mouth and eyes. Juveniles
+    are quite different, appearing mostly grey-brown and gradually acquiring white
+    plumage over five years as they mature.
+
+
+    These seabirds are highly specialized for pursuing fish in open ocean waters.
+    Northern gannets are known for their dramatic plunge-diving technique, dropping
+    from considerable heights to catch prey underwater. They breed in Western Europe
+    and Northeastern North America along Atlantic coasts, gathering in large colonies
+    during the breeding season. Outside breeding periods, they disperse widely across
+    the Atlantic. The species shows remarkable site fidelity, with individuals and
+    pairs returning to established breeding colonies year after year, making them
+    predictable inhabitants of certain coastal regions.'
+migration:
+  sv: '# Havssula (Morus bassanus) – Förekomst i Skandinavien/Nordeuropa
+
+
+    Havssulan är en långdistansflyttfågel som häckar under sommaren i stora kolonier
+    på båda sidor av Nordatlanten, inklusive vid skandinaviska och brittiska kusten.
+    Efter häckningssäsongen migrerar arten söderut för att tillbringa hösten och vintern
+    pelagiskt, främst i de södra delarna av Atlanten. Under våren återvänder havssulan
+    till sina häckningsplatser i nordeuropeiska vatten. Arten är således endast närvarande
+    som häckfågel under reproduktionsperioden och kan observeras i större antal under
+    genomflyttningen våren och hösten då fåglar passerar genom skandinaviska kustnära
+    områden på väg till och från sina övervintringsområden.'
+  en: '# Northern Gannet (Morus bassanus) in Scandinavia/Northern Europe
+
+
+    The Northern Gannet is a regular visitor to Scandinavian and Northern European
+    waters, particularly during the non-breeding season. Birds disperse from Atlantic
+    breeding colonies in late summer and autumn, with movements peaking from August
+    through October as juveniles and non-breeding adults spread southward and along
+    coastal regions. Many individuals remain in northern waters throughout winter,
+    depending on ice conditions and food availability, with sightings common along
+    Norwegian, Danish, and Swedish coasts. Spring return to breeding sites begins
+    in February and March, with peak arrivals at colonies from April onward as birds
+    prepare for the breeding season.'
+image_refs:
+- role: hero
+  path: Q26675/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Northern ganet (Morus bassanus),
+    Heligoland.jpg
+  commons_filename: Northern ganet (Morus bassanus), Heligoland.jpg
+- role: secondary
+  path: Q26675/secondary-1.jpg
+  width: 1800
+  height: 1197
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Morus Bassanus, Heligoland 2019.jpg
+  commons_filename: Morus Bassanus, Heligoland 2019.jpg
+- role: secondary
+  path: Q26675/secondary-2.jpg
+  width: 1800
+  height: 1198
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Morus Bassanus, prepared for
+    landing.jpg
+  commons_filename: Morus Bassanus, prepared for landing.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:43:07.263630+00:00'
+sources:
+  wikipedia_sv_revision: '55901001'
+  wikipedia_en_revision: '1353752628'
+  claude_model: claude-haiku-4-5-20251001

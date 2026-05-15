@@ -1,0 +1,129 @@
+id: Q27471
+scientific_name: Regulus ignicapilla
+taxonomy:
+  family: Regulidae
+  family_sv: Regulidae
+  genus: Regulus
+  ioc_order: Passeriformes
+names:
+  sv: Brandkronad kungsfågel
+  en: Common Firecrest
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brandkronad kungsfågel
+
+
+    Brandkronad kungsfågel är en av Europas minsta fåglar och tillhör familjen kungsfåglar.
+    Det kännetecknas av sitt orangegula hjässkott, som är omgivet av svarta streck,
+    vilket ger den sitt namn. Fågeln har en grågrön rygg och vitaktig undersida, med
+    ett distinkt vitt öga.
+
+
+    Det är en mycket aktiv fågel som ofta förflyttar sig snabbt genom barrskog och
+    blandskog, där det söker små insekter bland grenverken. Brandkronad kungsfågel
+    föredrar höga träd och är ofta svårt att få syn på på grund av sin ringa storlek
+    och snabba rörelser. Arten är främst känd för sitt höga, tunn sång.
+
+
+    Tidigare var arten primärt utbredd i södra och västra Europa samt nordvästra Afrika.
+    Under senare decennier har den dock expanderat sitt område norrut och är idag
+    etablerad som häckfågel i Sverige. Det återspeglar den långsiktiga förändringen
+    av klimat- och växtförhållandena i nordliga Europa.'
+  en: '# Common Firecrest
+
+
+    The common firecrest is one of Europe''s tiniest passerines, belonging to the
+    kinglet family. It is instantly recognizable by its distinctive appearance: a
+    diminutive body with a striking orange-red crest on the crown, bordered by black
+    lines, and a pale stripe above each eye. Its upperparts are olive-green while
+    the underparts are whitish, and it displays a characteristic dark patch on the
+    back of its neck.
+
+
+    This highly active bird frequents coniferous and mixed woodlands, where it forages
+    acrobatically among the foliage for small insects and spiders. It often hangs
+    upside down on twigs and branch tips while searching for food. The firecrest breeds
+    across most of temperate Europe and northwestern Africa, though populations vary
+    in migratory habits—birds from central Europe typically migrate southwestward
+    for winter, while some populations remain resident year-round.
+
+
+    The common firecrest''s call is a sharp, high-pitched series of notes, often delivered
+    from high in the canopy. Its song is similarly thin and wiry. The species can
+    be distinguished from its close relative, the goldcrest, by its darker plumage
+    and the conspicuous facial markings. Separate subspecies occur in the Balearic
+    Islands and North Africa, while Madeira hosts its own distinct species.'
+migration:
+  sv: '# Brandkronad kungsfågel - Förekomst i Norden
+
+
+    Brandkronad kungsfågel är en relativt ny häckfågel i Sverige och övriga Skandinavien,
+    där arten har expanderat sitt utbredningsområde under senare decennier. Som häckfågel
+    är den främst närvarande under våren och sommaren. Arten är delvis flyttfågel
+    – vissa populationer stannar året om i mildare delar av sitt utbredningsområde,
+    medan andra flyttar längre söderut under vintermånaderna. De svenska populationerna
+    anländer vanligtvis tidigt på våren och återvänder till häckningsplatserna från
+    mars–april. Under hösten återvändande fåglar kan observeras fram till oktober.
+    Arten övervintrar endast irregelbundet i Skandinavien under milda vintrar.'
+  en: '# Common Firecrest in Scandinavia/Northern Europe
+
+
+    The Common Firecrest is a partially migratory species across temperate Europe.
+    Birds breeding in central and northern parts of its range, including Scandinavia,
+    typically migrate southwestward during autumn months, vacating northern territories
+    by late autumn. Spring return migration occurs from March onwards as birds recolonize
+    their breeding grounds. However, some populations exhibit year-round residency
+    in milder regions, and occasional winter sightings occur in Scandinavia during
+    mild winters, suggesting variable migration patterns across different populations.'
+image_refs:
+- role: hero
+  path: Q27471/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:MartinThoma" title="User:MartinThoma">MartinThoma</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Regulus-ignicapilla-side-left.jpg
+  commons_filename: Regulus-ignicapilla-side-left.jpg
+- role: secondary
+  path: Q27471/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:MartinThoma" title="User:MartinThoma">MartinThoma</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Regulus-ignicapilla-side-right.jpg
+  commons_filename: Regulus-ignicapilla-side-right.jpg
+- role: secondary
+  path: Q27471/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:MartinThoma" title="User:MartinThoma">MartinThoma</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Regulus-ignicapilla-top.jpg
+  commons_filename: Regulus-ignicapilla-top.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:44:13.863523+00:00'
+sources:
+  wikipedia_sv_revision: '58515205'
+  wikipedia_en_revision: '1332285508'
+  claude_model: claude-haiku-4-5-20251001

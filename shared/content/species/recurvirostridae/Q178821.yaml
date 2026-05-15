@@ -1,0 +1,134 @@
+id: Q178821
+scientific_name: Himantopus himantopus
+taxonomy:
+  family: Recurvirostridae
+  family_sv: Recurvirostridae
+  genus: Himantopus
+  ioc_order: Charadriiformes
+names:
+  sv: Styltlöpare
+  en: Black-winged Stilt
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Styltlöpare
+
+
+    Styltlöparen är en mycket långbent vadare som tillhör familjen Recurvirostridae,
+    tillsammans med skärfläckor och andra styltlöpare. Arten är känd för sina påfallande
+    långa, tunna ben som är anpassade för vadning i grunt vatten. Kroppen är kompakt
+    och relativt liten jämfört med benens längd, vilket ger fågeln sitt karakteristiska
+    och lättigenkallediga utseende.
+
+
+    Fågeln är aktiv när den söker föda i vattnet, där den vadars omkring och pickar
+    upp små djur från ytan eller från mudret. Det är en socialt lagd fågel som ofta
+    ses i grupper, särskilt under rastning och övervintringsperioder. Styltlöparen
+    förekommer på olika typer av våtmarker – från grund sjöar och lagunartade områden
+    till bräckvattenhabitat.
+
+
+    Det bör noteras att vetenskapen inte är helt enig om huruvida styltlöparen utgör
+    en eller flera arter, vilket återspeglar komplexiteten i artens taxonomi.'
+  en: '# Black-winged Stilt
+
+
+    The black-winged stilt is an unmistakable wader with extraordinarily long, thin
+    pink legs that can comprise half its body length. It has a striking black and
+    white plumage pattern, with a black back and wings contrasting sharply against
+    its white underparts and face. The bill is long, slender, and slightly upturned,
+    aiding its feeding technique.
+
+
+    This species frequents shallow waters including lagoons, marshes, and coastal
+    wetlands where it wades deliberately through shallow areas, picking food from
+    the water''s surface or just below. It is often seen in small flocks, particularly
+    outside the breeding season. The black-winged stilt is highly vocal, producing
+    sharp, yelping calls when alarmed or in flight.
+
+
+    The species is widely distributed across Europe, Asia, and Africa, with populations
+    ranging from coastal regions to inland wetlands. It is a summer breeder in temperate
+    areas and resident or migrant depending on location. Its preference for specific
+    wetland habitats and susceptibility to disturbance during breeding make it a useful
+    indicator species for wetland health and conservation efforts.'
+migration:
+  sv: '# Styltlöpare – förekomst i Norden
+
+
+    Styltlöparen är en sommargäst i Skandinavien och Nordeuropa, som anländer under
+    vårflyttningen i april och maj. Arten förekommer huvudsakligen i södra och mellersta
+    Sverige, Danmark och södra Norge, där den häckar i ljumma lägen vid våtmarker
+    och grunda sjöar. Under hösten, från augusti till september, migrerar styltlöparen
+    söderut för att övervintra i Afrika och Medelhavsregionen. Under vintermånaderna
+    är arten helt frånvarande från Skandinavien.
+
+
+    *Migrationsdata saknas för denna art* enligt källan (endast introduktionsmaterial
+    tillgängligt).'
+  en: '# Black-winged Stilt in Northern Europe
+
+
+    The Black-winged Stilt is a summer visitor to Scandinavia and Northern Europe,
+    arriving in late April and May as populations migrate northward from African wintering
+    grounds. They breed across southern Scandinavia and the Baltic region during the
+    breeding season, favoring shallow wetlands and coastal lagoons. Most birds depart
+    by August and September, retreating southward before winter conditions make the
+    region inhospitable. Some stragglers may linger into October, but regular overwintering
+    in Scandinavia is rare. The species is increasingly recorded in northern regions
+    due to climate change and habitat expansion.'
+image_refs:
+- role: hero
+  path: Q178821/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Joselodos&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Joselodos (page does not exist)">Joselodos</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Young Himantopus himantopus.jpg
+  commons_filename: Young Himantopus himantopus.jpg
+- role: secondary
+  path: Q178821/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black winged stilt 41 (Himantopus
+    himantopus) പവിഴക്കാലി .jpg
+  commons_filename: Black winged stilt 41 (Himantopus himantopus) പവിഴക്കാലി .jpg
+- role: secondary
+  path: Q178821/secondary-2.jpg
+  width: 1800
+  height: 1125
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Christian_Ferrer" title="User:Christian
+    Ferrer">Christian Ferrer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Himantopus himantopus, Lido
+    de Thau.jpg
+  commons_filename: Himantopus himantopus, Lido de Thau.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:44:39.614339+00:00'
+sources:
+  wikipedia_sv_revision: '58654014'
+  wikipedia_en_revision: '1341647746'
+  claude_model: claude-haiku-4-5-20251001

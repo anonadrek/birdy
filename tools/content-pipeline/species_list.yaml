@@ -912,6 +912,7 @@
   ioc_order: Charadriiformes
   common_en: Pied Avocet
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q178821
   scientific_name: Himantopus himantopus
   family: Recurvirostridae
@@ -3864,6 +3865,7 @@
   ioc_order: Passeriformes
   common_en: Goldcrest
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q167230
   scientific_name: Tichodroma muraria
   family: Tichodromidae

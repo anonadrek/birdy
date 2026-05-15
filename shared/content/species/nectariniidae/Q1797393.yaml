@@ -1,0 +1,125 @@
+id: Q1797393
+scientific_name: Cinnyris asiaticus
+taxonomy:
+  family: Nectariniidae
+  family_sv: Solfåglar
+  genus: Cinnyris
+  ioc_order: Passeriformes
+names:
+  sv: Purpursolfågel
+  en: Purple Sunbird
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Purpursolfågel
+
+
+    Purpursolfågeln är en liten, glänsande fågel i solfåglarfamiljen som förekommer
+    från Arabiska halvön österut till Indokina. Arten är vida spridd över sitt utbredningsområde
+    och klassificeras av IUCN som livskraftig.
+
+
+    Denna art är en typisk solfågel anpassad för nektarsamling, med karakteristiska
+    glinsande fjädrar. Purpursolfågeln förekommer i öppna och halvöppna habitat där
+    det finns blommande växter, ofta i närhet till mänskliga bosättningar och odlingar.
+
+
+    Arten är stabil i antalet och utgör ingen bevarandehänd för närvarande.'
+  en: '# Purple Sunbird
+
+
+    The purple sunbird is a tiny member of the sunbird family found across the Arabian
+    Peninsula and South and Southeast Asia. Males display striking purple iridescence
+    on their plumage, though in harsh sunlight they may appear entirely black—the
+    iridescent sheen becomes visible only under better light conditions or on close
+    inspection. Females are more subdued, with olive upperparts and yellowish underparts.
+
+
+    This species is highly active and acrobatic, capable of hovering like a hummingbird
+    to extract nectar from flowers, though it frequently perches at flower bases to
+    feed. It forages primarily on nectar and insects, with insects becoming especially
+    important during the breeding season when feeding young. The bird''s flight is
+    fast and direct, enabling it to move rapidly between feeding sites.
+
+
+    The purple sunbird typically inhabits gardens, scrubland, and open woodland areas
+    where flowering plants provide abundant food sources. Its small size and quick,
+    darting movements can make it challenging to observe, but patient watching of
+    flowering trees and shrubs often rewards the birdwatcher with sightings of this
+    jewel-like species.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: '# Purple Sunbird (Cinnyris asiaticus) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Purple Sunbird occurs in the Arabian Peninsula and South and Southeast Asia,
+    with no established presence in Scandinavia or Northern Europe. This tropical
+    and subtropical species is not known to occur as a resident, migrant, or vagrant
+    visitor in Scandinavian or Northern European regions. Its range is restricted
+    to warmer climates considerably south of these areas, making it irrelevant for
+    Northern European bird guides.'
+image_refs:
+- role: hero
+  path: Q1797393/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Apurba_Biswas&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Apurba Biswas (page does not exist)">Apurba Biswas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Purple Sunbird (Cinnyris asiaticus)
+    2.jpg
+  commons_filename: Purple Sunbird (Cinnyris asiaticus) 2.jpg
+- role: secondary
+  path: Q1797393/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Purple Sunbird - Cinnyris asiaticus
+    (16127222404).jpg
+  commons_filename: Purple Sunbird - Cinnyris asiaticus (16127222404).jpg
+- role: secondary
+  path: Q1797393/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cinnyris asiaticus 233584215.jpg
+  commons_filename: Cinnyris asiaticus 233584215.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:44:04.441094+00:00'
+sources:
+  wikipedia_sv_revision: '56771383'
+  wikipedia_en_revision: '1350550129'
+  claude_model: claude-haiku-4-5-20251001

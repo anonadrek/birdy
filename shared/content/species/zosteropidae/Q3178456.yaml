@@ -1,0 +1,85 @@
+id: Q3178456
+scientific_name: Zosterops abyssinicus
+taxonomy:
+  family: Zosteropidae
+  family_sv: Glasögonfåglar
+  genus: Zosterops
+  ioc_order: Passeriformes
+names:
+  sv: Abessinsk glasögonfågel
+  en: Abyssinian White-eye
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Abyssinian White-eye
+
+
+    The Abyssinian white-eye is a small passerine belonging to the white-eye family,
+    characterized by the distinctive white eye-ring that gives the group its name.
+    It is native to north-eastern Africa and the southwestern Arabian foothills, where
+    it inhabits savanna regions.
+
+
+    This tiny bird is primarily found in its natural range across north-eastern Africa
+    and adjacent Arabian areas. Like other white-eyes, it is an active forager, typically
+    seen moving through vegetation in search of insects and small food items. The
+    species remains relatively common within suitable habitat, though specific details
+    about its vocalizations and detailed plumage patterns would benefit from field
+    observation.'
+migration:
+  sv: ''
+  en: '# Migration Data Unavailable for This Species
+
+
+    The Abyssinian White-eye is a small passerine bird native to north-east Africa
+    and the Southwestern Arabian foothills savanna. As this species does not naturally
+    occur in Scandinavia or Northern Europe, and the source material contains no information
+    regarding its distribution patterns, migration status, or seasonal movements,
+    migration data cannot be provided for this region.'
+image_refs:
+- role: hero
+  path: Q3178456/hero.jpg
+  width: 2400
+  height: 1920
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64565252@N00">Lip
+    Kee</a> from Singapore, Republic of Singapore
+  source_url: https://commons.wikimedia.org/wiki/File:Zosterops abyssinicus (17796758236).jpg
+  commons_filename: Zosterops abyssinicus (17796758236).jpg
+- role: secondary
+  path: Q3178456/secondary-1.jpg
+  width: 1800
+  height: 1074
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9765210@N03">Dominic
+    Sherony</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Abyssinian White-Eye (Zosterops
+    abyssinicus) (45853986594).jpg
+  commons_filename: Abyssinian White-Eye (Zosterops abyssinicus) (45853986594).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:43:27.685715+00:00'
+sources:
+  wikipedia_sv_revision: '58692591'
+  wikipedia_en_revision: '1314206800'
+  claude_model: claude-haiku-4-5-20251001

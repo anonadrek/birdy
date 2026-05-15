@@ -1,0 +1,72 @@
+id: Q28646093
+scientific_name: Suthora alphonsiana
+taxonomy:
+  family: Paradoxornithidae
+  family_sv: Papegojnäbbar
+  genus: Suthora
+  ioc_order: Passeriformes
+names:
+  sv: Gråstrupig papegojnäbb
+  en: Ashy-throated Parrotbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Ashy-throated Parrotbill
+
+
+    The ashy-throated parrotbill is a small songbird belonging to the parrotbill family,
+    not the tit family despite superficial similarities. It inhabits montane regions
+    from south-western China through to northern Vietnam, where it favours dense scrubland
+    and forest edges.
+
+
+    This species is characterized by its distinctive parrot-like bill, which it uses
+    to crack seeds and extract insects from vegetation. It typically forages in small
+    flocks, moving actively through brushy habitats with quick, jerky movements. The
+    bird''s plumage is relatively plain, with ashy-grey tones on the throat and underparts
+    contrasting with warmer brown tones on the back and wings.
+
+
+    Little is widely documented about its vocalizations and behaviour compared to
+    more extensively studied species. The ashy-throated parrotbill remains a relatively
+    inconspicuous resident of its range, often heard before it is seen. It has reportedly
+    become established in at least one location outside its native range, though such
+    populations remain rare.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Ashy-throated Parrotbill is native to south-west China and northern Vietnam,
+    regions far outside Scandinavia and Northern Europe. This species does not occur
+    in these regions and therefore has no documented migration patterns relevant to
+    Scandinavian or Northern European territories. The bird''s range is restricted
+    to East Asian mountain forests and subtropical regions.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:42:37.923444+00:00'
+sources:
+  wikipedia_sv_revision: '55851427'
+  wikipedia_en_revision: '1331237046'
+  claude_model: claude-haiku-4-5-20251001

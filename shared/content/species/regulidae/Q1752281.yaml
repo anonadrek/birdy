@@ -1,0 +1,97 @@
+id: Q1752281
+scientific_name: Regulus madeirensis
+taxonomy:
+  family: Regulidae
+  family_sv: Regulidae
+  genus: Regulus
+  ioc_order: Passeriformes
+names:
+  sv: Madeirakungsfågel
+  en: Madeira Firecrest
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Madeira Firecrest
+
+
+    The Madeira firecrest is a tiny passerine endemic to Madeira, formerly considered
+    a subspecies of the common firecrest until genetic analysis confirmed it as a
+    distinct species in 2003. It is a member of the kinglet family, a group of diminutive
+    birds.
+
+
+    This diminutive bird has green upperparts and whitish underparts with two white
+    wingbars. Its distinctive head pattern features a black eye stripe, a short white
+    supercilium, and a prominent crest. Males display an orange crest, while females
+    show a yellow one, making sexing relatively straightforward in the field.
+
+
+    The species differs from its common firecrest relative in both appearance and
+    vocalisations, though specific call details are not extensively documented in
+    available sources. As it is endemic to Madeira, it is found nowhere else in the
+    world and represents a unique evolutionary lineage within the kinglet family.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only taxonomic and morphological information about the
+    Madeira firecrest, with no details regarding its occurrence patterns, migration
+    behavior, or seasonal movements in Scandinavia or Northern Europe. As this species
+    is endemic to Madeira, it does not occur in these regions and therefore lacks
+    relevant migration data for the requested geographic area.'
+image_refs:
+- role: hero
+  path: Q1752281/hero.jpg
+  width: 2400
+  height: 1595
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Regulus madeirensis.jpg
+  commons_filename: Regulus madeirensis.jpg
+- role: secondary
+  path: Q1752281/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/198981757@N08">Donald
+    Davesne</a> from Paris, France
+  source_url: https://commons.wikimedia.org/wiki/File:Regulus madeirensis, Fanal,
+    Madeira, Portugal (53283937107).jpg
+  commons_filename: Regulus madeirensis, Fanal, Madeira, Portugal (53283937107).jpg
+- role: secondary
+  path: Q1752281/secondary-2.jpg
+  width: 1350
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Ruipa&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Ruipa (page does not exist)">Ruipa</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ave Bis Bis - Regulus madeirensis.jpg
+  commons_filename: Ave Bis Bis - Regulus madeirensis.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:43:43.161126+00:00'
+sources:
+  wikipedia_sv_revision: '56588534'
+  wikipedia_en_revision: '1318396699'
+  claude_model: claude-haiku-4-5-20251001

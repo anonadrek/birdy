@@ -1,0 +1,82 @@
+id: Q510366
+scientific_name: Hedydipna platura
+taxonomy:
+  family: Nectariniidae
+  family_sv: Solfåglar
+  genus: Hedydipna
+  ioc_order: Passeriformes
+names:
+  sv: Dvärgsolfågel
+  en: Pygmy Sunbird
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Pygmy Sunbird
+
+
+    The Pygmy Sunbird is the smallest member of the sunbird family, a diminutive nectarivore
+    perfectly adapted for feeding on small flowers. It displays the characteristic
+    iridescent plumage typical of sunbirds, with glossy green and purple markings
+    that shimmer in sunlight. Its tiny, slightly curved bill is perfectly designed
+    for probing deep into flowers to extract nectar and small insects, which form
+    its primary diet.
+
+
+    This species is highly active and restless, often seen flitting rapidly between
+    flowering plants and shrubs. It is solitary or found in pairs, and like other
+    sunbirds, it is territorial and aggressive despite its tiny size. The male''s
+    call is a thin, high-pitched series of chirps and trills that are surprisingly
+    loud for such a small bird.
+
+
+    The Pygmy Sunbird inhabits open woodlands, savanna, and cultivated areas across
+    sub-Saharan Africa. It prefers areas with scattered trees and flowering plants,
+    avoiding dense forest interiors. The species is widespread throughout its range
+    and generally common where suitable habitat exists, making it a familiar sight
+    to birdwatchers across the African continent.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Pygmy Sunbird''s range is restricted to sub-Saharan Africa, with no documented
+    occurrence in Scandinavia or Northern Europe. Therefore, information about its
+    presence, migration patterns, or seasonal occurrence in these regions cannot be
+    provided.'
+image_refs:
+- role: hero
+  path: Q510366/hero.jpg
+  width: 2048
+  height: 1279
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hedydipna platura 95506926.jpg
+  commons_filename: Hedydipna platura 95506926.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:42:36.662921+00:00'
+sources:
+  wikipedia_sv_revision: '55578962'
+  wikipedia_en_revision: '1314652763'
+  claude_model: claude-haiku-4-5-20251001

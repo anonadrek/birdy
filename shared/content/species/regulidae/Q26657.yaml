@@ -1,0 +1,137 @@
+id: Q26657
+scientific_name: Regulus regulus
+taxonomy:
+  family: Regulidae
+  family_sv: Regulidae
+  genus: Regulus
+  ioc_order: Passeriformes
+names:
+  sv: Kungsfågel
+  en: Goldcrest
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kungsfågel
+
+
+    Kungsfågeln är en av Europas minsta fåglar och tillhör familjen kungsfåglar. Dess
+    namn syftar på det karakteristiska gyllene hjässband som båda könen bär – ett
+    glittrande gult eller orange band på huvudet som är särskilt framträdande när
+    fågeln är upprörd. Kroppen är olivgrön på ovansidan och ljusare på undersidan,
+    med två vita vingstreck som är lätta att se i rätt ljus. Det är en mycket aktiv
+    och rastlös fågel som ständigt rör sig genom grenar och barrväxt.
+
+
+    Kungsfågeln är framför allt en insektätare som söker föda i små grenar och på
+    barrnålarna. Det är mycket spritter fågel med högt tempo, och söker ofta i slutna
+    formationer tillsammans med andra småfåglar under vinterhalvåret. Arten är främst
+    hemmastadd i barr- och blandskog, där det finns rikedomen på små insekter och
+    spindelägg att leva av.
+
+
+    Arten är en högljudd fågel trots sin lilla storlek. Sången är kort och tindrande,
+    medan lockropet är ett högt och återkommande "zit-zit-zit". Några populationer
+    är flyttfåglar som övervakar längre söderut på vintern, medan andra är stannfåglar,
+    dock kan dessa drabbas hårt under mycket kalla vintrar.'
+  en: '# Goldcrest
+
+
+    The goldcrest is Europe''s smallest passerine, instantly recognisable by its distinctive
+    golden-orange crest bordered by black stripes on the crown. It has olive-green
+    upperparts, pale underparts, and two pale wing bars. Despite its diminutive size,
+    it is a restless and energetic bird, constantly flitting through coniferous and
+    mixed woodlands, often hanging acrobatically from branch tips while foraging for
+    small insects and spiders. Its call is a thin, high-pitched "tsee-tsee-tsee,"
+    easily missed by the untrained ear.
+
+
+    The goldcrest breeds throughout much of northern and central Europe in coniferous
+    and mixed forests. Northern and eastern populations are migratory, moving south
+    in autumn, while western populations tend to be resident year-round. It builds
+    a tiny cup nest suspended beneath a branch, typically in spruce or fir trees.
+    The bird''s preference for evergreen woodland means it remains present in suitable
+    habitat throughout winter, making it a welcome sight during the colder months
+    despite its fragility.'
+migration:
+  sv: '# Kungsfågel – Förekomst i Skandinavien och Nordeuropa
+
+
+    Kungsfågeln förekommer året runt i Skandinavien och Nordeuropa, men med säsongsvis
+    variation beroende på underart och stränghet. De norra och östliga häckningsbestånden
+    är flyttfåglar som övervintra längre söderut, medan sydligare populationer är
+    stannfåglar som stannar året om. Under stränga vintrar minskar dock de nordliga
+    stannfåglarnas bestånd kraftigt på grund av svåra förhållanden.
+
+
+    De kungsfåglar som häckar i norra Skandinavien anländer till häckningsområdena
+    under våren och drar söderut på hösten för övervintering. Detta gör arten till
+    en delvis återkommande bredfågel i regionen, med särskilt höga siffror under mildar
+    vintrar när stannfåglarnas överlevnad är bättre.'
+  en: '# Goldcrest (Regulus regulus) in Northern Europe
+
+
+    The goldcrest is a year-round resident throughout much of Scandinavia and Northern
+    Europe, though populations show complex migration patterns. Birds breeding in
+    the northernmost and eastern parts of the species'' range migrate southward to
+    winter in more temperate regions, while populations in southern Scandinavia and
+    western areas often remain as residents or undertake only short-distance movements.
+    Spring arrival in breeding areas typically occurs in March-April, with departure
+    to wintering grounds beginning in September-October. Some northern populations
+    may shift considerably during harsh winters, moving further south into central
+    Europe.'
+image_refs:
+- role: hero
+  path: Q26657/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Calandrella" title="User:Calandrella">Calandrella</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Regulus regulus ringed by Landsort
+    Bird Observatory-1.JPG
+  commons_filename: Regulus regulus ringed by Landsort Bird Observatory-1.JPG
+- role: secondary
+  path: Q26657/secondary-1.jpg
+  width: 1800
+  height: 1675
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Goldcrest, male (Regulus regulus)
+    (25207928227).jpg
+  commons_filename: Goldcrest, male (Regulus regulus) (25207928227).jpg
+- role: secondary
+  path: Q26657/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
+    Sprinz">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Wintergoldhähnchen (Regulus
+    regulus) 03.jpg
+  commons_filename: Wintergoldhähnchen (Regulus regulus) 03.jpg
+review_status: approved
+review_notes: "Kungsfågel — Regulus regulus från Landsort Bird Observatory; allmän SE-art året runt i barrskog."
+generated_at: '2026-05-15T20:42:57.981116+00:00'
+sources:
+  wikipedia_sv_revision: '58994190'
+  wikipedia_en_revision: '1344770395'
+  claude_model: claude-haiku-4-5-20251001

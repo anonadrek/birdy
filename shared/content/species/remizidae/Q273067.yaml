@@ -1,0 +1,121 @@
+id: Q273067
+scientific_name: Remiz pendulinus
+taxonomy:
+  family: Remizidae
+  family_sv: Pungmesar
+  genus: Remiz
+  ioc_order: Passeriformes
+names:
+  sv: Pungmes
+  en: Eurasian Penduline Tit
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Pungmes
+
+
+    Pungmes är en liten fågel i familjen pungmesar som förekommer fläckvist i Europa
+    och Asien, ofta nära vattendrag och våtmarker. Det mest karakteristiska hos arten
+    är dess anmärkningsvärda bo – en pungformad konstruktion som hängs i lövträd tätt
+    intill vattnet. Boet är ett mesterverk av fågelarkitektur och används ofta bara
+    en gång innan fågeln överger det.
+
+
+    Arten är svår att observera då den ofta håller sig gömd i täta buskage och rörväxter.
+    Pungmesen är mycket liten och diskret i sitt uppträdande. Globalt sett är beståndet
+    stabilt och livskraftigt, men i Sverige är situationen allvarligare – arten är
+    sedan 2020 klassificerad som akut hotad enligt Artdatabankens röda lista. Förlusterna
+    av lämpliga våtmarksmiljöer utgör ett växande hot mot arten.'
+  en: '# Eurasian Penduline Tit
+
+
+    The Eurasian penduline tit is a small passerine found across the western Palearctic
+    region, with populations displaying interesting migratory patterns. Birds in northern
+    areas migrate seasonally, while those in southern regions remain resident year-round,
+    making their presence dependent on latitude and climate conditions.
+
+
+    This diminutive bird inhabits wetland environments, particularly reed beds and
+    riverside vegetation where it builds its distinctive hanging nest. The species
+    is adapted to life among reeds and aquatic plants, foraging for small insects
+    and seeds. Its behavior reflects its ecological niche, moving actively through
+    vegetation as it searches for food throughout the day.
+
+
+    The penduline tit''s small size and subtle coloring allow it to blend into its
+    wetland habitat, though attentive observers can spot it with patience. Its presence
+    indicates healthy reed bed ecosystems, making it a valued indicator species for
+    wetland conservation. The bird''s remarkable architectural skill—constructing
+    elaborate suspended nests—demonstrates remarkable adaptation to its specialized
+    environment.'
+migration:
+  sv: '# Pungmes (Remiz pendulinus) – Förekomst i Skandinavien
+
+
+    Migrationsdata saknas för denna art.'
+  en: '# Eurasian Penduline Tit in Scandinavia/Northern Europe
+
+
+    The Eurasian Penduline Tit is a migratory species in northern Europe, including
+    Scandinavia, where populations do not remain year-round. Birds breeding in this
+    region depart during autumn migration to overwinter in southern areas within the
+    western Palearctic. Spring arrival in Scandinavian breeding areas occurs as temperatures
+    rise and suitable reed-bed habitats become accessible. In contrast, populations
+    inhabiting southern parts of the species'' range remain resident throughout the
+    year, never undertaking significant migrations.'
+image_refs:
+- role: hero
+  path: Q273067/hero.jpg
+  width: 2400
+  height: 1590
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Nest Remiz pendulinus.JPG
+  commons_filename: Nest Remiz pendulinus.JPG
+- role: secondary
+  path: Q273067/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Chapim-de-faces-pretas (Remiz
+    pendulinus) (52712339112).jpg
+  commons_filename: Chapim-de-faces-pretas (Remiz pendulinus) (52712339112).jpg
+- role: secondary
+  path: Q273067/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Chapim-de-faces-pretas (Remiz
+    pendulinus) (52712340427).jpg
+  commons_filename: Chapim-de-faces-pretas (Remiz pendulinus) (52712340427).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:44:20.998980+00:00'
+sources:
+  wikipedia_sv_revision: '58946856'
+  wikipedia_en_revision: '1340449390'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,111 @@
+id: Q320193
+scientific_name: Sula leucogaster
+taxonomy:
+  family: Sulidae
+  family_sv: Sulor
+  genus: Sula
+  ioc_order: Suliformes
+names:
+  sv: Brunsula
+  en: Brown Booby
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Brown Booby
+
+
+    The brown booby is one of the most common and widespread seabirds in tropical
+    waters worldwide. A large member of the booby and gannet family, it is highly
+    gregarious and typically seen foraging in flocks over inshore waters at low altitude.
+    The species is an accomplished plunge-diver, dropping spectacularly from the air
+    to catch small fish, particularly when prey is driven to the surface by larger
+    predators.
+
+
+    Brown boobies have distinctive appearance with contrasting dark upperparts and
+    pale underparts. Their behavior is notably different from some relatives—they
+    commute and forage close to the water rather than far offshore, making them relatively
+    accessible for observation. Unlike other boobies, they nest exclusively on the
+    ground and prefer to roost on solid structures such as rocks, posts, or mangroves
+    rather than resting on the water surface.
+
+
+    These highly social birds are often encountered in small to large flocks, especially
+    in areas with productive fishing grounds. Their combination of accessibility,
+    communal habits, and acrobatic hunting style makes the brown booby a rewarding
+    species for seabird enthusiasts to observe and study.'
+migration:
+  sv: ''
+  en: '# Brown Booby (Sula leucogaster) in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Brown Booby has a pantropical range and does not occur naturally in Scandinavia
+    or Northern Europe. This species is a tropical and subtropical seabird found in
+    warm ocean waters around the equator and between the Tropics of Cancer and Capricorn.
+    It does not migrate to or overwinter in Scandinavian or Northern European waters,
+    as these regions fall far outside its normal geographic distribution and climatic
+    requirements.'
+image_refs:
+- role: hero
+  path: Q320193/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:AndreBiologoFloripa" title="User:AndreBiologoFloripa">André
+    Ganzarolli Martins</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Atobá (Sula leucogaster) com
+    plumagem juvenil nas ilhas Moleques do Sul, sul do Brasil.jpg
+  commons_filename: Atobá (Sula leucogaster) com plumagem juvenil nas ilhas Moleques
+    do Sul, sul do Brasil.jpg
+- role: secondary
+  path: Q320193/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:AndreBiologoFloripa" title="User:AndreBiologoFloripa">André
+    Ganzarolli Martins</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Atobá (Sula leucogaster) filhote,
+    nas ilhas Moleques do Sul, sul do Brasil.jpg
+  commons_filename: Atobá (Sula leucogaster) filhote, nas ilhas Moleques do Sul, sul
+    do Brasil.jpg
+- role: secondary
+  path: Q320193/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:AndreBiologoFloripa" title="User:AndreBiologoFloripa">André
+    Ganzarolli Martins</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Atobá (Sula leucogaster) filhote
+    trocando a plumagem entre 2 a 4 meses de idade.jpg
+  commons_filename: Atobá (Sula leucogaster) filhote trocando a plumagem entre 2 a
+    4 meses de idade.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:43:17.685363+00:00'
+sources:
+  wikipedia_sv_revision: '58515878'
+  wikipedia_en_revision: '1320315189'
+  claude_model: claude-haiku-4-5-20251001

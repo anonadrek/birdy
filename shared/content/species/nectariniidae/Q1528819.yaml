@@ -1,0 +1,121 @@
+id: Q1528819
+scientific_name: Cinnyris osea
+taxonomy:
+  family: Nectariniidae
+  family_sv: Solfåglar
+  genus: Cinnyris
+  ioc_order: Passeriformes
+names:
+  sv: Palestinasolfågel
+  en: Palestine Sunbird
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Palestinasolfågel
+
+
+    Palestinasolfågeln är en mycket liten fågel som tillhör familjen solfåglar. Det
+    är en anpassad nektarätare med karakteristisk kroppsbygnad för familjen – spetsig
+    näbb och kompakt kropp som gör det väl lämpad för att söka föda i blommor.
+
+
+    Arten förekommer primärt i Mellanöstern, men har också en utbredd population i
+    Afrika, där den är bosatt från östra delen av västra Afrika österut till Uganda
+    och Sydsudan. Det är en lokalt förekommande art inom sitt stora utbredningsområde.
+
+
+    Palestinasolfågeln klassificeras av IUCN som livskraftig, vilket indikerar att
+    populationen är stabil och arten inte står inför några större bevaringsproblem
+    för närvarande.'
+  en: '# Palestine Sunbird
+
+
+    The Palestine sunbird is a small passerine belonging to the sunbird family. It
+    inhabits parts of the Middle East and sub-Saharan Africa. The species is also
+    called the northern orange-tufted sunbird, distinguishing it from the similarly
+    named orange-tufted sunbird found further south in Africa.
+
+
+    This diminutive nectar-feeder shares the characteristic features of sunbirds:
+    a slender, slightly curved bill adapted for probing flowers, and iridescent plumage
+    that catches the light. Males display vibrant coloring with orange tufts, while
+    females are more subdued. Like other sunbirds, it is highly active and acrobatic,
+    moving rapidly between flowering plants in search of nectar and small insects.
+
+
+    The Palestine sunbird holds cultural significance, having been adopted as the
+    national bird by the Palestinian Authority in 2015. The species name *osea* derives
+    from Ancient Greek, reflecting its scientific naming heritage.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: '**Migration data unavailable for this species.**
+
+
+    The source text provided contains no information about the Palestine Sunbird''s
+    occurrence, migration patterns, or seasonal distribution in Scandinavia or Northern
+    Europe. This species is native to the Middle East and sub-Saharan Africa, and
+    there is no indication in the available text that it occurs in Northern European
+    regions at any time of year. To provide accurate migration information, additional
+    sources specifically documenting its seasonal movements and geographic range would
+    be required.'
+image_refs:
+- role: hero
+  path: Q1528819/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Palestine sunbird (Cinnyris
+    osea osea) male in flight.jpg
+  commons_filename: Palestine sunbird (Cinnyris osea osea) male in flight.jpg
+- role: secondary
+  path: Q1528819/secondary-1.jpg
+  width: 1800
+  height: 1284
+  license: CC BY-SA 4.0
+  author: Saudi press Agency (SPA)
+  source_url: https://commons.wikimedia.org/wiki/File:Arabian Sunbird (Cinnyris hellmayri),
+    Aseer, Saudi Arabia (2024).jpg
+  commons_filename: Arabian Sunbird (Cinnyris hellmayri), Aseer, Saudi Arabia (2024).jpg
+- role: secondary
+  path: Q1528819/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Yair-haklai" title="User:Yair-haklai">Yair
+    Haklai</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cinnyris osea-Ornithophily-Bignoniaceae-Jerusalem.jpg
+  commons_filename: Cinnyris osea-Ornithophily-Bignoniaceae-Jerusalem.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:43:22.858230+00:00'
+sources:
+  wikipedia_sv_revision: '56466654'
+  wikipedia_en_revision: '1348023973'
+  claude_model: claude-haiku-4-5-20251001

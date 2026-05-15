@@ -1,0 +1,110 @@
+id: Q845982
+scientific_name: Pelagodroma marina
+taxonomy:
+  family: Oceanitidae
+  family_sv: Nordstormsvalor
+  genus: Pelagodroma
+  ioc_order: Procellariiformes
+names:
+  sv: Fregattstormsvala
+  en: White-faced Storm Petrel
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fregattstormsvala
+
+
+    Fregattstormsvala är en liten stormfågel som placeras som enda art i sitt släkte
+    inom familjen havslöpare. Arten är mycket liten och anpassad för livet på öppna
+    havet.
+
+
+    Denna lilla stormfågel förekommer på oceaner i tempererade och subtropiska områden.
+    Som de flesta stormfåglar tillbringar den större delen av sitt liv till sjöss,
+    där den härjlar över vågorna på jakt efter småfisk och andra små marina organismer.
+    Under häckningstiden återvänder arten till sina kolonierna på kustnära öar.
+
+
+    Fregattstormsvalan är en diskret fågel som är svår att observera när den inte
+    är vid sitt häckningsställe. Som många andra stormfåglar är arten nattaktiv vid
+    sina häckningsplatser för att undvika rovfåglar.'
+  en: '# White-faced Storm Petrel
+
+
+    The white-faced storm petrel is a small seabird belonging to the austral storm
+    petrel family. As the sole member of its genus, it holds a distinctive taxonomic
+    position among storm petrels. The species is distinguished by its characteristic
+    pale facial markings, which contrast with its darker plumage.
+
+
+    This petrel is widely distributed across both northern and southern hemispheres,
+    favouring coastal and open ocean waters. It is particularly common around southern
+    regions in oceanic zones, where it inhabits areas far from land during much of
+    the year. Like other storm petrels, it is adapted to pelagic life, spending considerable
+    time at sea hunting for small fish and crustaceans.
+
+
+    The white-faced storm petrel typically exhibits the characteristic behaviour of
+    storm petrels, including its distinctive flight pattern involving rapid wing beats
+    and hovering movements close to the water''s surface. It is nocturnal at breeding
+    colonies and remains largely elusive at sea, making observations challenging for
+    birdwatchers. Its small size and oceanic habits mean it is encountered mainly
+    by those venturing into offshore waters or during breeding season observations
+    at island colonies.'
+migration:
+  sv: '# Fregattstormsvala (Pelagodroma marina) - Förekomst i Skandinavien
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Fregattstormsvalan är en oceanisk art som huvudsakligen förekommer i tropiska
+    och subtropiska havsområden. Den är inte känd som regelbunden förekomst i Skandinavien
+    eller Nordeuropa och registreras endast mycket undantagsvis på höststormiga dagar
+    som en möjlig vindförflyttning från södra områden.'
+  en: '# Migration data unavailable for this species.
+
+
+    The source text provides information about the White-faced Storm Petrel''s geographic
+    distribution across various ocean regions (southern Australia, New Zealand, Tristan
+    da Cunha, Cabo Verde, the Canary Islands, and the Selvagens Islands), but contains
+    no specific details regarding its occurrence in Scandinavia or Northern Europe,
+    nor any migration patterns, seasonal movements, or arrival and departure months
+    for this region. To provide accurate migration information for this species in
+    Northern European waters would require additional sources beyond the provided
+    text.'
+image_refs:
+- role: hero
+  path: Q845982/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC0
+  author: 'iNaturalist user: paloma'
+  source_url: https://commons.wikimedia.org/wiki/File:Pelagodroma marina maoriana.jpg
+  commons_filename: Pelagodroma marina maoriana.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:42:49.653656+00:00'
+sources:
+  wikipedia_sv_revision: '57216377'
+  wikipedia_en_revision: '1339803251'
+  claude_model: claude-haiku-4-5-20251001

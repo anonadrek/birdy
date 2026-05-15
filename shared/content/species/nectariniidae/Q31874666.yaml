@@ -1,0 +1,90 @@
+id: Q31874666
+scientific_name: Cinnyris hellmayri
+taxonomy:
+  family: Nectariniidae
+  family_sv: Solfåglar
+  genus: Cinnyris
+  ioc_order: Passeriformes
+names:
+  sv: Arabsolfågel
+  en: Arabian Sunbird
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Arabsolfågel
+
+
+    Arabsolfågel är en liten fågelart i familjen solfåglar som förekommer på södra
+    delen av Arabiska halvön. Arten urskiljs allt oftare som en egen art, fastän den
+    traditionellt betraktades som en del av abessinsolfågel.
+
+
+    Som medlem av solfåglarnas familj är det en anpassad nektarätare med en långslank
+    näbb utformad för att suga nektar från blommor. Arten tillhör ordningen tättingar
+    och delar många egenskaper med andra små, aktiva insektätare och nektarätare i
+    denna grupp.
+
+
+    Arten är endemisk för södra Arabiska halvön där den återfinns i sitt begränsade
+    utbredningsområde.'
+  en: ''
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."'
+  en: ''
+image_refs:
+- role: hero
+  path: Q31874666/hero.jpg
+  width: 2400
+  height: 1712
+  license: CC BY-SA 4.0
+  author: Saudi press Agency (SPA)
+  source_url: https://commons.wikimedia.org/wiki/File:Arabian Sunbird (Cinnyris hellmayri),
+    Aseer, Saudi Arabia (2024).jpg
+  commons_filename: Arabian Sunbird (Cinnyris hellmayri), Aseer, Saudi Arabia (2024).jpg
+- role: secondary
+  path: Q31874666/secondary-1.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external free" href="https://www.flickr.com/photos/28092414@N03/">https://www.flickr.com/photos/28092414@N03/</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cinnyris hellmayri, Rotana Resort,
+    Salalah, Oman 1.jpg
+  commons_filename: Cinnyris hellmayri, Rotana Resort, Salalah, Oman 1.jpg
+- role: secondary
+  path: Q31874666/secondary-2.jpg
+  width: 1800
+  height: 1198
+  license: CC BY-SA 2.0
+  author: Tore
+  source_url: https://commons.wikimedia.org/wiki/File:Cinnyris hellmayri, Rotana Resort,
+    Salalah, Oman.jpg
+  commons_filename: Cinnyris hellmayri, Rotana Resort, Salalah, Oman.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:43:34.238368+00:00'
+sources:
+  wikipedia_sv_revision: '56771375'
+  wikipedia_en_revision: '1352740982'
+  claude_model: claude-haiku-4-5-20251001

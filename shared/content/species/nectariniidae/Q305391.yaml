@@ -1,0 +1,96 @@
+id: Q305391
+scientific_name: Hedydipna metallica
+taxonomy:
+  family: Nectariniidae
+  family_sv: Solfåglar
+  genus: Hedydipna
+  ioc_order: Passeriformes
+names:
+  sv: Nilsolfågel
+  en: Nile Valley Sunbird
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Nile Valley Sunbird
+
+
+    The Nile Valley sunbird is a small nectar-feeding bird belonging to the sunbird
+    family. It inhabits arid and semi-arid regions across northeastern Africa and
+    into the Arabian Peninsula, where it forages among flowering plants and shrubs.
+    Like other sunbirds, it is highly adapted to feeding on nectar, using its long,
+    slender curved bill to extract food from flowers.
+
+
+    This species is typically found in open woodlands, acacia scrubland, and gardens
+    where suitable flowering plants are available. It tends to be an active, energetic
+    bird, often seen moving quickly between flowers. The sunbird''s small size and
+    agility make it well-suited to accessing nectar from a variety of flower types.
+
+
+    Due to limited readily available detailed information in standard references,
+    specific details about plumage coloration, sexual dimorphism, vocalizations, and
+    precise behavioral patterns would benefit from field observation or specialist
+    ornithological sources for the most accurate description.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Nile Valley Sunbird''s range is restricted to northeastern Africa and the
+    Arabian Peninsula, with no documented occurrence in Scandinavia or Northern Europe.
+    Therefore, information about its migration patterns in this region cannot be provided.'
+image_refs:
+- role: hero
+  path: Q305391/hero.jpg
+  width: 2048
+  height: 1971
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1476120">Jan
+    Ebr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hedydipna metallica 261879972.jpg
+  commons_filename: Hedydipna metallica 261879972.jpg
+- role: secondary
+  path: Q305391/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/693281">Valentin
+    Moser</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hedydipna metallica 264648434.jpg
+  commons_filename: Hedydipna metallica 264648434.jpg
+- role: secondary
+  path: Q305391/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2401694">William
+    Stephens</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hedydipna metallica 64225590.jpg
+  commons_filename: Hedydipna metallica 64225590.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:43:03.432775+00:00'
+sources:
+  wikipedia_sv_revision: '56771370'
+  wikipedia_en_revision: '1345336477'
+  claude_model: claude-haiku-4-5-20251001

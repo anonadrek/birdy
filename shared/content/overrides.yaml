@@ -333,6 +333,33 @@ species:
   Q619728:
     description_accept_missing: [sv, en]  # Kanariestrandskata (Canary Islands Oystercatcher †, EX)
     allow_missing_images: true  # extinct, ingen Commons hi-res
+  # Bundle 1 batch (2026-05-15): nectariniidae+oceanitidae+odontophoridae+paradoxornithidae+sulidae+zosteropidae m.fl.
+  Q1797393:
+    description_accept_missing: [sv]  # Purple Sunbird 75w
+  Q305391:
+    description_accept_missing: [sv]  # Nile Valley Sunbird
+  Q31874666:
+    description_accept_missing: [en]  # Arabian Sunbird
+  Q510366:
+    description_accept_missing: [sv]  # Pygmy Sunbird
+  Q607024:
+    description_accept_missing: [en]  # Wilson's Storm Petrel
+  Q28646093:
+    description_accept_missing: [sv]  # Ashy-throated Parrotbill
+    allow_missing_images: true
+  Q1752281:
+    description_accept_missing: [sv]  # Madeira Firecrest
+  Q2225275:
+    description_accept_missing: [sv]  # White-crowned Penduline Tit
+    allow_missing_images: true
+  Q320193:
+    description_accept_missing: [sv]  # Brown Booby
+  Q602084:
+    description_accept_missing: [sv]  # Masked Booby
+  Q3178456:
+    description_accept_missing: [sv]  # Abyssinian White-eye
+  Q795545:
+    description_accept_missing: [sv]  # Indian White-eye
   # Muscicapidae batch (2026-05-15): stenskvättor/flugsnappare/näktergaler svwiki/enwiki kort.
   Q12265004:
     description_accept_missing: [sv]  # Blackstart

@@ -1,0 +1,125 @@
+id: Q26147
+scientific_name: Recurvirostra avosetta
+taxonomy:
+  family: Recurvirostridae
+  family_sv: Recurvirostridae
+  genus: Recurvirostra
+  ioc_order: Charadriiformes
+names:
+  sv: Skärfläcka
+  en: Pied Avocet
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skärfläcka
+
+
+    Skärfläcka är en mycket karakteristisk vadare med svartvit dräkt, långa blågrå
+    ben och en distinkt uppåtsvängd näbb som är blågråfärgad. Denna unik näbbform
+    använder den för att sila föda från vattnet. Till skillnad från de flesta andra
+    vadare är skärfläckan en skicklig simmare och tillbringar mycket tid i vattnet.
+
+
+    Fågeln förekommer på våta områden som saltsjöar, lagunartade vatten och grund
+    strandnära miljö. Den hittas ofta i mindre eller större flockar, särskilt under
+    rastperioder under flyttningen. Skärfläckan är en elegant och iögonfallande fågel
+    som är lätt att identifiera på grund av sin karakteristiska markering och körning
+    i vattnet.'
+  en: '# Pied Avocet
+
+
+    The pied avocet is a striking wader with distinctive black-and-white plumage and
+    a notably upturned bill, the only member of its genus found in Europe. Its slender,
+    curved bill is specially adapted for feeding in shallow water, sweeping side-to-side
+    through the surface to catch small invertebrates and fish larvae.
+
+
+    This elegant bird is highly sociable and often seen in small flocks, particularly
+    in coastal lagoons, salt marshes, and shallow inland lakes. It moves gracefully
+    through water with a buoyant gait and is a strong flier, performing rapid wing
+    beats in flight. The pied avocet''s call is a distinctive, repeated "klu-it" or
+    similar sharp notes, particularly vocal when breeding or alarmed.
+
+
+    Breeding colonies are often established on low islands or specialized nesting
+    grounds, where birds nest in loose groups and actively defend territories. It
+    is migratory across much of its range, wintering in warmer regions and returning
+    to breeding grounds in spring. The species has recovered in many areas where it
+    was previously lost, making it a conservation success story in several regions.'
+migration:
+  sv: '# Skärfläcka - Förekomst i Skandinavien och Nordeuropa
+
+
+    Skärfläcka är en migrerande art som återkommer till Skandinavien och Nordeuropa
+    under våren, vanligtvis från april till maj. Arten häckar på grunt vatten och
+    brackvattenområden längs kusterna och vid inlandssjöar under sommarmånaderna.
+    Under hösten, från augusti till oktober, drar populationerna söderut för att övervintra
+    vid Medelhavet och Nordafrika. Endast ett litet antal individer kan stanna kvar
+    vid isfria områden under mild vintrarna längs sydskandinaviska kusterna. Arten
+    är således en långdistansmigrant som följer ett regelbundet årscirkulationsystem
+    mellan sina häckningsplatser i norr och övervintringsområdena i söder.'
+  en: '# Migration and Seasonal Occurrence in Scandinavia/Northern Europe
+
+
+    The Pied Avocet is a migratory species in Scandinavia and Northern Europe. Birds
+    arrive in spring, typically from March onwards, after wintering in southern regions.
+    They breed throughout the summer months in suitable wetland habitats across Scandinavia.
+    As autumn approaches, usually from August onwards, populations begin their southward
+    migration, with most birds departing by October to winter in coastal areas of
+    southern Europe, the Mediterranean, and North Africa. The species is largely absent
+    from Scandinavia during winter months, making it a summer breeding visitor to
+    the region.'
+image_refs:
+- role: hero
+  path: Q26147/hero.jpg
+  width: 2400
+  height: 1800
+  license: Public domain
+  author: LordToran
+  source_url: https://commons.wikimedia.org/wiki/File:Lto-tpbo-recurvirostra-avosetta-01.JPG
+  commons_filename: Lto-tpbo-recurvirostra-avosetta-01.JPG
+- role: secondary
+  path: Q26147/secondary-1.jpg
+  width: 1800
+  height: 1162
+  license: CC BY 2.0
+  author: blondinrikard
+  source_url: https://commons.wikimedia.org/wiki/File:Pied avocet, Recurvirostra avosetta,
+    Skärfläcka - 52265147483.jpg
+  commons_filename: Pied avocet, Recurvirostra avosetta, Skärfläcka - 52265147483.jpg
+- role: secondary
+  path: Q26147/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Alfaiate (Recurvirostra avosetta)
+    (53201284179).jpg
+  commons_filename: Alfaiate (Recurvirostra avosetta) (53201284179).jpg
+review_status: approved
+review_notes: "Skärfläcka — Recurvirostra avosetta i klassisk pose; allmän SE-kustfågel på lerslätter."
+generated_at: '2026-05-15T20:44:09.536684+00:00'
+sources:
+  wikipedia_sv_revision: '58833001'
+  wikipedia_en_revision: '1349058935'
+  claude_model: claude-haiku-4-5-20251001
