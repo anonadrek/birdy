@@ -1,0 +1,84 @@
+id: Q60895939
+scientific_name: Hydrobates jabejabe
+taxonomy:
+  family: Hydrobatidae
+  family_sv: Nordstormsvalor
+  genus: Hydrobates
+  ioc_order: Procellariiformes
+names:
+  sv: null
+  en: Cape Verde Storm Petrel
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Cape Verde Storm Petrel
+
+
+    The Cape Verde storm petrel is a small seabird belonging to the storm petrel family,
+    highly adapted to life at sea in the Atlantic Ocean. It was historically grouped
+    with the band-rumped storm petrel but is now recognized as a distinct species
+    by major ornithological authorities.
+
+
+    This oceangoing petrel inhabits waters around the Cape Verde islands, where it
+    spends much of its time far from land. Like other storm petrels, it is a diminutive,
+    dark-plumaged bird well-suited to marine environments. The species feeds on small
+    fish and crustaceans picked from the water''s surface.
+
+
+    Storm petrels are notoriously difficult to observe and identify at sea due to
+    their small size and elusive behaviour. The Cape Verde storm petrel remains relatively
+    poorly studied compared to other seabirds, and detailed information about its
+    specific calls, breeding habits, and seasonal movements is limited. Its taxonomy
+    was clarified only through modern ornithological research, demonstrating how much
+    remains to be learned about these ocean-dwelling specialists.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q60895939/hero.jpg
+  width: 2048
+  height: 1406
+  license: CC BY 4.0
+  author: Charlotte Kirchner
+  source_url: https://commons.wikimedia.org/wiki/File:Cape Verde storm petrel (Hydrobates
+    jabejabe).jpg
+  commons_filename: Cape Verde storm petrel (Hydrobates jabejabe).jpg
+- role: secondary
+  path: Q60895939/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/816774">Charlotte
+    Kirchner</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hydrobates jabejabe - Charlotte
+    Kirchner - 333452293.jpeg
+  commons_filename: Hydrobates jabejabe - Charlotte Kirchner - 333452293.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:39:57.757400+00:00'
+sources:
+  wikipedia_sv_revision: '59027288'
+  wikipedia_en_revision: '1350060793'
+  claude_model: claude-haiku-4-5-20251001

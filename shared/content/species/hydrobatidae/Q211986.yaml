@@ -1,0 +1,68 @@
+id: Q211986
+scientific_name: Hydrobates leucorhous
+taxonomy:
+  family: Hydrobatidae
+  family_sv: Nordstormsvalor
+  genus: Hydrobates
+  ioc_order: Procellariiformes
+names:
+  sv: Klykstjärtad stormsvala
+  en: Leach’s Storm Petrel
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Klykstjärtad stormsvala
+
+
+    Klykstjärtad stormsvala är en liten fågel i familjen stormsvalor som förekommer
+    i både Stilla havet och Atlanten. Arten är hotad och minskar kraftigt i antal,
+    vilket gör den utrotningshotad.
+
+
+    Denna lilla stormsvala är svårstudierad på grund av sin storlek och sitt livsätt
+    ute på öppet hav. Det är en pelagisk art som tillbringar större delen av sitt
+    liv långt från land, där det jagar små bytesdjur vid vattenytan. Arten är mest
+    aktiv under skymningen och natten, vilket försvårar observationer ytterligare.
+
+
+    För en intresserad fågelskådare är klykstjärtad stormsvala en utmanande art att
+    se, då den håller sig långt från kusten under större delen av året. Bästa möjligheten
+    är under pelagiska båtexpedititioner på mörka hav långt från land, särskilt under
+    säsonger när arten är mer aktiv.'
+  en: ''
+migration:
+  sv: '# Klykstjärtad stormsvala – Förekomst i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    En: Migration data unavailable for this species.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:40:02.813735+00:00'
+sources:
+  wikipedia_sv_revision: '57021404'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,91 @@
+id: Q28114472
+scientific_name: Hydrobates castro
+taxonomy:
+  family: Hydrobatidae
+  family_sv: Nordstormsvalor
+  genus: Hydrobates
+  ioc_order: Procellariiformes
+names:
+  sv: null
+  en: Band-rumped Storm Petrel
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Oceanstormsvala
+
+
+    Oceanstormsvalan är en liten fågel i familjen stormsvalor som förekommer över
+    öppet vatten långt från land. Den är en utpräglad havsfågel som tillbringar större
+    delen av sitt liv till sjöss och endast kommer i land för att häcka.
+
+
+    Arten häckar på olika öar utspridda över Atlanten och Stilla havet. Den är en
+    minskat i antal, men beståndet bedöms fortfarande som livskraftigt. Oceanstormsvalan
+    är en nattaktiv häckfågel som återvänder till sina boplatser under mörka timmar
+    för att undvika rovfåglar.'
+  en: '# Band-rumped Storm Petrel
+
+
+    The band-rumped storm petrel is a small seabird belonging to the storm petrel
+    family. It can be identified by its distinctive pale rump band, which contrasts
+    with its otherwise dark plumage. This feature gives the species its common name
+    and helps distinguish it from related storm petrels at sea.
+
+
+    This species is highly adapted to oceanic life, spending much of its time over
+    deep waters far from land. It feeds on small fish and marine organisms, which
+    it picks delicately from the water''s surface while in flight. The bird is typically
+    seen alone or in small scattered groups, though it may congregate where food is
+    abundant.
+
+
+    Band-rumped storm petrels are nocturnal visitors to their breeding colonies, coming
+    ashore under cover of darkness to nest in rocky crevices and burrows on offshore
+    islands. During the day, they remain at sea. Their calls at night consist of distinctive
+    purring and chittering sounds. Outside the breeding season, little is known about
+    their movements and behaviour at sea, as they are elusive and difficult to observe
+    in their oceanic habitat.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    sv: "Migrationsdata saknas för denna art."
+
+    en: "Migration data unavailable for this species."'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic information about the band-rumped
+    storm petrel (alternative names and family classification) with no details about
+    its occurrence, migration patterns, or seasonal distribution in Scandinavia or
+    Northern Europe.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:40:11.195125+00:00'
+sources:
+  wikipedia_sv_revision: '55847605'
+  wikipedia_en_revision: '1313727354'
+  claude_model: claude-haiku-4-5-20251001

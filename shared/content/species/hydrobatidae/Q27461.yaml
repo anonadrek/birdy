@@ -1,0 +1,122 @@
+id: Q27461
+scientific_name: Hydrobates pelagicus
+taxonomy:
+  family: Hydrobatidae
+  family_sv: Nordstormsvalor
+  genus: Hydrobates
+  ioc_order: Procellariiformes
+names:
+  sv: Stormsvala
+  en: European Storm Petrel
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stormsvala
+
+
+    Stormsvala är en liten havsfågel som är lätt att känna igen på sitt helsvarta
+    färgteckning. Det enda undantaget är ett brett vitt band över övergumpen och ett
+    vitt band på vingundersidan, vilket blir synligt när fågeln flyger. Stormsvalan
+    har en fyrkantig stjärt och en karakteristisk fladdrande, fladdermusaktig flygt
+    som skiljer den från många andra sjöfåglar.
+
+
+    Arten häckar huvudsakligen på öar längs Europas västkust, där det finns stora
+    kolonier på flera platser. Under häckningstiden är det möjligt att skilja olika
+    underarter åt genom sitt förekomstområde, men utanför häckningstiden är dessa
+    populationer praktiskt taget omöjliga att särskilja i fält. Stormsvalan spenderar
+    mycket tid ute på öppet vatten och ses ofta när det flyger lågt över vågorna på
+    sin karakteristiska sätt.'
+  en: '# European Storm Petrel
+
+
+    The European storm petrel is a tiny seabird, barely larger than a sparrow, making
+    it one of the smallest petrels. Its plumage is entirely black except for a distinctive
+    broad white rump patch and white markings on the underwings. The tail is notably
+    square-shaped. In flight, it appears remarkably bat-like with rapid, fluttering
+    wingbeats as it bounces low over the water surface, often appearing to patter
+    across waves with its feet.
+
+
+    This species breeds primarily on islands in northern regions, with particularly
+    large populations in certain island groups off the northern European coast. A
+    separate Mediterranean population inhabits different islands further south. The
+    birds are highly pelagic, spending most of their lives far out at sea away from
+    land, making them challenging to observe. They typically return to breeding colonies
+    only under cover of darkness.
+
+
+    The European storm petrel''s nocturnal habits and small size make it difficult
+    for most observers to encounter, even in areas where it breeds abundantly. At
+    sea, identification can be confirmed by the characteristic white rump and underwing
+    markings combined with its distinctive flight pattern. The species demonstrates
+    remarkable site fidelity, returning to the same breeding islands year after year.'
+migration:
+  sv: '# Stormsvala - Förekomst i Nordeuropa
+
+
+    Stormsvala är en pelagisk art som huvudsakligen förekommer utanför Europas kuster.
+    Den häckar på öar i Nordatlanten, framför allt på Färöarna, Storbritannien, Irland
+    och Island. Som en typisk havsfågel är stormsvalan knuten till havet under större
+    delen av året. Under häckningssäsongen, som inträffar under vår och sommar, är
+    fågeln landfast på sina häckningsöar. Efter reproduktionen genomför arten en långväga
+    migration söderut mot atlantiska farvattnen och Medelhavsregionen under höst och
+    vinter, där populationen inte har samma tydliga häckningskoncentration.'
+  en: '# European Storm Petrel in Northern Europe
+
+
+    The European storm petrel is a summer breeder throughout Scandinavia and northern
+    Europe, with major breeding populations in Iceland, the Faroe Islands, and the
+    British Isles. These small seabirds arrive at their northern breeding colonies
+    in spring, typically from May onwards, after wintering at sea in Atlantic waters.
+    They depart breeding sites in autumn, with most birds leaving by September to
+    return to their oceanic wintering grounds off the coasts of western Africa and
+    in the Atlantic. Storm petrels are highly pelagic outside the breeding season,
+    remaining at sea throughout winter.'
+image_refs:
+- role: hero
+  path: Q27461/hero.jpg
+  width: 1714
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:European storm-petrel (Hydrobates
+    pelagicus) 2021.jpg
+  commons_filename: European storm-petrel (Hydrobates pelagicus) 2021.jpg
+- role: secondary
+  path: Q27461/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:European storm petrel (Hydrobates
+    pelagicus) Sagres.jpg
+  commons_filename: European storm petrel (Hydrobates pelagicus) Sagres.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:40:09.090015+00:00'
+sources:
+  wikipedia_sv_revision: '56065156'
+  wikipedia_en_revision: '1345757206'
+  claude_model: claude-haiku-4-5-20251001

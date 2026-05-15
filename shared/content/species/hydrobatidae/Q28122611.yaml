@@ -1,0 +1,45 @@
+id: Q28122611
+scientific_name: Hydrobates monteiroi
+taxonomy:
+  family: Hydrobatidae
+  family_sv: Nordstormsvalor
+  genus: Hydrobates
+  ioc_order: Procellariiformes
+names:
+  sv: null
+  en: Monteiro’s Storm Petrel
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:39:53.083504+00:00'
+sources:
+  wikipedia_sv_revision: '55847618'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

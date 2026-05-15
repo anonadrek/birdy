@@ -333,6 +333,20 @@ species:
   Q619728:
     description_accept_missing: [sv, en]  # Kanariestrandskata (Canary Islands Oystercatcher †, EX)
     allow_missing_images: true  # extinct, ingen Commons hi-res
+  # Hydrobatidae batch (2026-05-15): pelagiska stormsvalor med sparse extracts + ingen Commons hi-res.
+  Q211986:
+    description_accept_missing: [en]  # Leach’s Storm Petrel
+    allow_missing_images: true
+  Q28114472:
+    allow_missing_images: true  # Band-rumped Storm Petrel — pelagisk
+  Q28122606:
+    description_accept_missing: [sv, en]  # Swinhoe’s Storm Petrel
+    allow_missing_images: true
+  Q28122611:
+    description_accept_missing: [sv, en]  # Monteiro’s Storm Petrel — Azor-endemic
+    allow_missing_images: true
+  Q60895939:
+    description_accept_missing: [sv]  # Cape Verde Storm Petrel
   # Hirundinidae batch (2026-05-15): centralasiatiska/afrikanska arter sparse.
   Q3113953:
     allow_missing_images: true  # Pale Crag Martin — afrikansk, ingen Commons hi-res
