@@ -329,6 +329,10 @@ species:
   # Glareolidae batch (2026-05-15): asiatisk endemic båda extracts saknas.
   Q934460:
     description_accept_missing: [sv, en]  # Mindre vadarsvala (Small Pratincole) — asien-endemic
+  # Haematopodidae batch (2026-05-15): utdöd kanarie-art.
+  Q619728:
+    description_accept_missing: [sv, en]  # Kanariestrandskata (Canary Islands Oystercatcher †, EX)
+    allow_missing_images: true  # extinct, ingen Commons hi-res
   # Fringillidae batch (2026-05-15): svwiki kort/saknas för många arter.
   Q1143180:
     description_accept_missing: [sv]  # Trumpetargimpel (Trumpeter Finch) — kort svwiki

@@ -1,0 +1,130 @@
+id: Q25928
+scientific_name: Haematopus ostralegus
+taxonomy:
+  family: Haematopodidae
+  family_sv: Strandskator
+  genus: Haematopus
+  ioc_order: Charadriiformes
+names:
+  sv: Strandskata
+  en: Eurasian Oystercatcher
+abundance: allmän
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Strandskata
+
+
+    Strandskata är en stor och kompakt vadare som är lätt att känna igen på sin karakteristiska
+    färgdräkt. Den har svart fjäderdräkt på rygg och huvud, vilket kontrasterar starkt
+    mot den vita delen på bröst och buk. Näbben är framträdande orangeröd och benen
+    är rosafärgade, vilket gör arten svår att förväxla med andra vadare.
+
+
+    Det är en moverad art som häckar längs kusterna i västra Europa, centrala Eurasien
+    och nordöstra Asien. Merparten av populationen är flyttfåglar som återvänder till
+    häckningsplatserna under våren. Arten förekommer främst i strandnära miljöer där
+    den söker föda.
+
+
+    Strandskata tillhör familjen strandskator och är den mest spridda arten inom sin
+    familj globalt. Den är en skicklig vadare som är väl anpassad för livet längs
+    vattenbrynen.'
+  en: '# Eurasian Oystercatcher
+
+
+    The Eurasian oystercatcher is an unmistakable wader with striking black and white
+    plumage, a long straight orange-red bill, and distinctive red eyes. Its relatively
+    short, dull pink legs complete the striking appearance. While the sexes look similar
+    overall, females have noticeably longer bills than males.
+
+
+    This species is a specialist feeder on molluscs, particularly mussels and oysters,
+    which it expertly opens with its powerful bill. It inhabits coastal areas and
+    is often seen singly or in small groups along rocky shores, beaches, and mudflats.
+    The bird is highly vocal, producing loud, piercing calls that carry well across
+    open terrain. Its flight is direct and swift, often displaying white wing patches
+    and white back markings in contrast to its dark upper parts.
+
+
+    Eurasian oystercatchers are found across much of coastal Europe and Asia, typically
+    favouring rocky or sandy coastlines rather than densely vegetated areas. They
+    are partly migratory, with northern populations moving south during winter months,
+    while some populations remain year-round residents in milder regions.'
+migration:
+  sv: '# Strandskata – Förekomst i Skandinavien
+
+
+    Strandskata är en flyttfågel som förekommer längs Skandinaviens och Nordeuropas
+    kuster. Arten häckar under sommaren längs västkusten och återvänder på våren,
+    vanligtvis från april och framåt. Under hösten börjar fåglarna dra söderut, ofta
+    redan från juli-augusti, för att övervinta längre söderut vid västeuropeiska kuster.
+    En del individer stannar dock år-runt i södra Skandinavien under milda vintrar.
+    Populationen är migratorisk och följer främst kustnära livsmiljöer där de söker
+    föda bland stenar och sand.'
+  en: '# Eurasian Oystercatcher Migration in Northern Europe
+
+
+    The Eurasian oystercatcher is a migratory wader across Scandinavia and Northern
+    Europe. Breeding populations arrive in spring (March-April) to establish territories
+    along coastal areas and river systems. During summer months, they breed throughout
+    much of Scandinavia and northern regions. In autumn (August-September), populations
+    begin their southward migration, with most birds departing northern areas by October
+    to overwinter in milder coastal regions of western and southern Europe, North
+    Africa, and along Mediterranean shores. Some individuals may remain in ice-free
+    coastal areas during mild winters, but the majority vacate Scandinavian regions
+    entirely during the colder months.'
+image_refs:
+- role: hero
+  path: Q25928/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian oystercatcher (Haematopus
+    ostralegus) at Amrum.jpg
+  commons_filename: Eurasian oystercatcher (Haematopus ostralegus) at Amrum.jpg
+- role: secondary
+  path: Q25928/secondary-1.jpg
+  width: 1800
+  height: 1196
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian oystercatcher (Haematopus
+    ostralegus).jpg
+  commons_filename: Eurasian oystercatcher (Haematopus ostralegus).jpg
+- role: secondary
+  path: Q25928/secondary-2.jpg
+  width: 1800
+  height: 1310
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Haematopus ostralegus Oulu Finland
+    2021-05-08.jpg
+  commons_filename: Haematopus ostralegus Oulu Finland 2021-05-08.jpg
+review_status: approved
+review_notes: "Strandskata — hero från Amrum (Tyskland), klassisk svartvit dräkt + orange näbb; allmän SE-art längs kustlinjer."
+generated_at: '2026-05-15T19:36:09.443812+00:00'
+sources:
+  wikipedia_sv_revision: '58946320'
+  wikipedia_en_revision: '1350680459'
+  claude_model: claude-haiku-4-5-20251001
