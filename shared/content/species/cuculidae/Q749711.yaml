@@ -1,0 +1,100 @@
+id: Q749711
+scientific_name: Centropus senegalensis
+taxonomy:
+  family: Cuculidae
+  family_sv: Gökar
+  genus: Q657775
+  ioc_order: Cuculiformes
+names:
+  sv: Senegalsporrgök
+  en: Senegal Coucal
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Senegal Coucal
+
+
+    The Senegal coucal is a medium-sized member of the cuckoo family, sharing its
+    order with roadrunners and anis. It inhabits lightly-wooded areas and savannah
+    regions across central and southern Africa. This distinctive bird is well-adapted
+    to its environment, favouring open woodland and grassland habitats where it can
+    hunt effectively.
+
+
+    Unlike many cuckoos, the Senegal coucal is a ground-forager, moving deliberately
+    through vegetation in search of prey. It tends to be rather skulking in behaviour,
+    preferring to stay close to cover. The species has a characterful presence when
+    observed, though it often requires patience to see well due to its habit of remaining
+    within dense vegetation.
+
+
+    The Senegal coucal produces a distinctive deep, resonant call that is often heard
+    before the bird is seen—a rolling, booming sound that echoes through its savannah
+    habitat. This vocal performance is one of the most reliable ways to locate the
+    species in the field, particularly during breeding season when calling is most
+    frequent.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Senegal coucal is a resident bird of central and southern Africa and does
+    not occur in Scandinavia or Northern Europe. The source material provides no information
+    about migration patterns or seasonal movements that would be relevant to northern
+    European distribution. This species'' range is entirely confined to sub-Saharan
+    Africa, making it absent from Scandinavian territories year-round.'
+image_refs:
+- role: hero
+  path: Q749711/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Pulcheria7" title="User:Pulcheria7">Pulcheria7</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Centropus senegalensis à la
+    maison des tortues.jpg
+  commons_filename: Centropus senegalensis à la maison des tortues.jpg
+- role: secondary
+  path: Q749711/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Senegal coucal (Centropus senegalensis
+    senegalensis).jpg
+  commons_filename: Senegal coucal (Centropus senegalensis senegalensis).jpg
+- role: secondary
+  path: Q749711/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Atamari" title="User:Atamari">Atamari</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Centropus senegalensis 0001.jpg
+  commons_filename: Centropus senegalensis 0001.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:31:41.187806+00:00'
+sources:
+  wikipedia_sv_revision: '56584572'
+  wikipedia_en_revision: '1316948841'
+  claude_model: claude-haiku-4-5-20251001

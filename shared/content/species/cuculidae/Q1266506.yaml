@@ -1,0 +1,105 @@
+id: Q1266506
+scientific_name: Cuculus optatus
+taxonomy:
+  family: Cuculidae
+  family_sv: Gökar
+  genus: Cuculus
+  ioc_order: Cuculiformes
+names:
+  sv: Tajgagök
+  en: Oriental Cuckoo
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tajgagök
+
+
+    Tajgagöken är en huvudsakligen asiatisk gökhöna som påminner mycket om den vanligare
+    göken, men särskiljer sig framför allt genom sitt karaktäristiska läte. Dess sammanträngda
+    ramsa påminner överraskande mycket om härfågelns ljud och är ett bra sätt att
+    skilja arten från de närbesläktade gökarna.
+
+
+    Arten häckar i tajgaskogarna från Uralbergen österut till Japan. Under vintern
+    är den en långdistansflyg som migrerar till Australien för att utnyttja den södra
+    hemisfärens värmare årstid. Det gör den till en extraordinär långfärdsfågel.
+
+
+    I Europa utanför Ryssland är tajgagöken extremt sällsynt. Det finns endast ett
+    säkert fynd utanför sitt normala utbredningsområde, registrerat i norra delen
+    av regionen sommaren 2015 och 2016. Även om arten tros minska något i antal över
+    tid, anses beståndet fortfarande vara i god kondition och inte akut hotad.'
+  en: '# Oriental Cuckoo
+
+
+    The Oriental Cuckoo is a medium-sized member of the cuckoo family, distinguished
+    from closely related species by subtle differences in size and plumage. It was
+    long considered a subspecies of the Himalayan Cuckoo but is now recognized as
+    a separate species based on differences in vocalization and dimensions.
+
+
+    Like other cuckoos, the Oriental Cuckoo is a brood parasite, laying its eggs in
+    the nests of other bird species rather than raising its own young. It inhabits
+    woodland and forest environments across its range, where it remains somewhat secretive
+    despite its presence. The species is migratory, moving between breeding grounds
+    and wintering areas seasonally.
+
+
+    The bird''s call is a distinctive feature that helped establish its status as
+    a separate species. Observers encountering this cuckoo are more likely to hear
+    it than see it clearly, as it tends to stay within vegetation. The Oriental Cuckoo
+    is found across parts of Asia, though precise distribution varies seasonally with
+    its migratory movements.'
+migration:
+  sv: '# Tajgagök – Förekomst i Skandinavien och Nordeuropa
+
+
+    Tajgagök är en mycket sällsynt gäst i Skandinavien och övriga Europa utanför Ryssland.
+    Arten häckar huvudsakligen i tajgaskogarna från Uralbergen österut till Japan
+    och genomför långväga flyttningar. Under vintern migrera den till Australien för
+    övervintering. I Europa finns endast ett säkert fynd utanför Ryssland – arten
+    observerades i Finland sommaren 2015 och 2016. Detta visar att tjgagöken mycket
+    sällan förekommer väster om sitt normala utbredningsområde, och uppträder då som
+    en extremt sällsynt tillfällig gäst under sommarhalvåret.'
+  en: '# Oriental Cuckoo (Cuculus optatus) in Northern Europe
+
+
+    The Oriental Cuckoo is a rare vagrant to Scandinavia and Northern Europe, with
+    no established regular occurrence in the region. Records are sporadic and exceptional,
+    representing birds that have wandered far from their normal range in Asia. This
+    species does not have a predictable migration pattern through Scandinavia or overwintering
+    population in Northern Europe. Any sightings in the region would be accidental
+    visitors, likely occurring during spring or autumn migration periods when birds
+    occasionally appear outside their typical distribution.
+
+
+    Given the lack of systematic occurrence data and the species'' Asian origins,
+    the Oriental Cuckoo should not be expected as part of the regular avifauna in
+    Scandinavian or Northern European habitats.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:31:46.705102+00:00'
+sources:
+  wikipedia_sv_revision: '55762519'
+  wikipedia_en_revision: '1332562361'
+  claude_model: claude-haiku-4-5-20251001

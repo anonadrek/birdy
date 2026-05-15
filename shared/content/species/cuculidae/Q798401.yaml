@@ -1,0 +1,103 @@
+id: Q798401
+scientific_name: Eudynamys scolopaceus
+taxonomy:
+  family: Cuculidae
+  family_sv: Gökar
+  genus: Koel
+  ioc_order: Cuculiformes
+names:
+  sv: Asiatisk koel
+  en: Asian Koel
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Asian Koel
+
+
+    The Asian koel is a sleek member of the cuckoo family found across the Indian
+    subcontinent, China, and Southeast Asia. Males are glossy black with a distinctive
+    red eye, while females are brown and heavily streaked, making them superficially
+    resemble their crow hosts. It is a brood parasite, laying eggs in the nests of
+    crows and other birds, which unknowingly raise the young koels as their own.
+
+
+    Unlike most cuckoos, adult Asian koels are largely frugivorous, feeding primarily
+    on berries and other fruit. They are most conspicuous during breeding season when
+    males produce a loud, repeated "ko-el" call—the source of the bird''s name. The
+    call often intensifies during dawn and dusk, making the otherwise elusive bird
+    relatively easy to locate by ear.
+
+
+    The Asian koel favours wooded areas, gardens, and cultivated regions where suitable
+    host birds and fruiting trees are found. Its reliance on crow species for breeding
+    and its preference for fruit-bearing plants means it occurs in both open and forested
+    habitats throughout its range, though it remains most commonly heard rather than
+    seen.'
+migration:
+  sv: ''
+  en: '# Asian Koel (Eudynamys scolopaceus) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Asian koel is native to the Indian subcontinent, China, and Southeast Asia.
+    It does not naturally occur in Scandinavia or Northern Europe, and therefore no
+    seasonal occurrence pattern exists for this region. This tropical cuckoo species
+    has no documented migration into or through Scandinavian territories.'
+image_refs:
+- role: hero
+  path: Q798401/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Sharbelle_Fernandez" title="User:Sharbelle
+    Fernandez">Sharbelle Fernandez</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Asian Koel (female) -Eudynamys
+    scolopaceus.jpg
+  commons_filename: Asian Koel (female) -Eudynamys scolopaceus.jpg
+- role: secondary
+  path: Q798401/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Chiranjivisubedi&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Chiranjivisubedi (page does not exist)">Chiranjivisubedi</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eudynamys scolopaceus.jpg
+  commons_filename: Eudynamys scolopaceus.jpg
+- role: secondary
+  path: Q798401/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Angelo_Rison&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Angelo Rison (page does not exist)">Angelo Rison</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Asian koel (Eudynamys scolopaceus).jpg
+  commons_filename: Asian koel (Eudynamys scolopaceus).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:32:13.642053+00:00'
+sources:
+  wikipedia_sv_revision: '58662284'
+  wikipedia_en_revision: '1333787041'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,110 @@
+id: Q519634
+scientific_name: Chrysococcyx caprius
+taxonomy:
+  family: Cuculidae
+  family_sv: Gökar
+  genus: Chrysococcyx
+  ioc_order: Cuculiformes
+names:
+  sv: Didrikglansgök
+  en: Diederik Cuckoo
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Diederik Cuckoo
+
+
+    The Diederik Cuckoo is a small member of the cuckoo family, distinguished by its
+    striking emerald-green and black plumage with brilliant golden spotting on the
+    wings and back. Its compact size and iridescent coloration make it unmistakable
+    in flight, particularly in good light where its metallic sheen becomes apparent.
+    The bird''s underparts are predominantly white or pale, contrasting sharply with
+    its darker upperparts.
+
+
+    Like other cuckoos, it is a brood parasite, laying its eggs in the nests of weaver
+    birds and other suitable hosts rather than raising its own young. It is generally
+    solitary or seen in pairs, moving through woodland and scrub habitats with quick,
+    darting flight. The species is active and restless, often perching openly on branches
+    where it can be surprisingly conspicuous despite its small size.
+
+
+    The Diederik Cuckoo''s call is distinctive and far-carrying—a repetitive, metallic
+    "dee-dee-dee-rik" that gives the bird its common name. This vocal nature makes
+    it easier to locate by sound than by sight. It inhabits open woodlands, thornbush,
+    and cultivated areas across much of its range, where it can be encountered during
+    the breeding season when males are most vocal.'
+migration:
+  sv: ''
+  en: '# Diederik Cuckoo in Scandinavia/Northern Europe
+
+
+    **Migration data unavailable for this species.**
+
+
+    The Diederik Cuckoo is an African species with no established occurrence in Scandinavia
+    or Northern Europe. The provided source text contains no information about this
+    species'' distribution, migration patterns, or presence in northern regions. This
+    cuckoo''s range is confined to sub-Saharan Africa, making it an extremely rare
+    vagrant if encountered at all in Scandinavian or Northern European territories.'
+image_refs:
+- role: hero
+  path: Q519634/hero.jpg
+  width: 2400
+  height: 1464
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Diederik cuckoo, Chrysococcyx
+    caprius, at Mapungubwe National Park, Limpopo, South Africa - male (29422300413).jpg
+  commons_filename: Diederik cuckoo, Chrysococcyx caprius, at Mapungubwe National
+    Park, Limpopo, South Africa - male (29422300413).jpg
+- role: secondary
+  path: Q519634/secondary-1.jpg
+  width: 1800
+  height: 1118
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Diederik cuckoo, Chrysococcyx
+    caprius, at Mapungubwe National Park, Limpopo, South Africa - male (29965810661).jpg
+  commons_filename: Diederik cuckoo, Chrysococcyx caprius, at Mapungubwe National
+    Park, Limpopo, South Africa - male (29965810661).jpg
+- role: secondary
+  path: Q519634/secondary-2.jpg
+  width: 1800
+  height: 1149
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Diederik cuckoo, Chrysococcyx
+    caprius, at Mapungubwe National Park, Limpopo, South Africa - male (29421599524).jpg
+  commons_filename: Diederik cuckoo, Chrysococcyx caprius, at Mapungubwe National
+    Park, Limpopo, South Africa - male (29421599524).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:31:57.793681+00:00'
+sources:
+  wikipedia_sv_revision: '56775292'
+  wikipedia_en_revision: '1316969165'
+  claude_model: claude-haiku-4-5-20251001

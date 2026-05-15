@@ -1,0 +1,78 @@
+id: Q1189720
+scientific_name: Chrysococcyx klaas
+taxonomy:
+  family: Cuculidae
+  family_sv: Gökar
+  genus: Chrysococcyx
+  ioc_order: Cuculiformes
+names:
+  sv: Grönglansgök
+  en: Klaas’s Cuckoo
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q1189720/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Male Klaas's cuckoo, Chrysococcyx
+    klaas, at Pilanesberg National (44363928765).jpg
+  commons_filename: Male Klaas's cuckoo, Chrysococcyx klaas, at Pilanesberg National
+    (44363928765).jpg
+- role: secondary
+  path: Q1189720/secondary-1.jpg
+  width: 1800
+  height: 1013
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Male Klaas's cuckoo, Chrysococcyx
+    klaas, at Pilanesberg National (45225761322).jpg
+  commons_filename: Male Klaas's cuckoo, Chrysococcyx klaas, at Pilanesberg National
+    (45225761322).jpg
+- role: secondary
+  path: Q1189720/secondary-2.jpg
+  width: 1800
+  height: 1132
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Male Klaas's cuckoo, Chrysococcyx
+    klaas, at Pilanesberg National (45225761102).jpg
+  commons_filename: Male Klaas's cuckoo, Chrysococcyx klaas, at Pilanesberg National
+    (45225761102).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:32:10.915652+00:00'
+sources:
+  wikipedia_sv_revision: '58330836'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

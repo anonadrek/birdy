@@ -1,0 +1,103 @@
+id: Q386116
+scientific_name: Centropus superciliosus
+taxonomy:
+  family: Cuculidae
+  family_sv: Gökar
+  genus: Q657775
+  ioc_order: Cuculiformes
+names:
+  sv: Vitbrynad sporrgök
+  en: White-browed Coucal
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# White-browed Coucal
+
+
+    The white-browed coucal is a cuckoo species found across sub-Saharan Africa. It
+    prefers densely vegetated habitats with thick undergrowth and scrub, including
+    suitable coastal areas where dense cover provides shelter and foraging opportunities.
+
+
+    This species is adapted to terrestrial life among low vegetation. It moves through
+    its preferred habitat with the characteristically deliberate movements of ground-dwelling
+    coucals, hunting for prey within the protective cover of dense scrub. The white
+    brow marking gives the species its common name and helps distinguish it from related
+    coucals in its range.
+
+
+    The white-browed coucal is occasionally difficult to observe due to its preference
+    for dense habitats, though its presence can be detected through its calls. Like
+    other coucals, it is primarily a secretive bird, spending much of its time moving
+    through undergrowth rather than in open areas.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The White-browed Coucal is a sub-Saharan African species with no documented occurrence
+    in Scandinavia or Northern Europe. The source text provides no information regarding
+    migration patterns, seasonal movements, or presence in these regions. This species''
+    range is confined to Africa, making it irrelevant for Northern European bird guides
+    focused on local avifauna.'
+image_refs:
+- role: hero
+  path: Q386116/hero.jpg
+  width: 2400
+  height: 1487
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:White-browed coucal, Centropus
+    superciliosus, at Chobe National Park, Botswana (32278707296).jpg
+  commons_filename: White-browed coucal, Centropus superciliosus, at Chobe National
+    Park, Botswana (32278707296).jpg
+- role: secondary
+  path: Q386116/secondary-1.jpg
+  width: 1800
+  height: 1068
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:White-browed coucal, Centropus
+    superciliosus, at Chobe National Park, Botswana (32278713766).jpg
+  commons_filename: White-browed coucal, Centropus superciliosus, at Chobe National
+    Park, Botswana (32278713766).jpg
+- role: secondary
+  path: Q386116/secondary-2.jpg
+  width: 1800
+  height: 1255
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:White-browed coucal, Centropus
+    superciliosus, at Chobe National Park, Botswana (32278721716).jpg
+  commons_filename: White-browed coucal, Centropus superciliosus, at Chobe National
+    Park, Botswana (32278721716).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:31:39.197133+00:00'
+sources:
+  wikipedia_sv_revision: '56889154'
+  wikipedia_en_revision: '1315367174'
+  claude_model: claude-haiku-4-5-20251001

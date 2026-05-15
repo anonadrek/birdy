@@ -260,3 +260,18 @@ species:
     description_accept_missing: [en]  # Corvus rhipidurus (Solfjäderkorp / Fan-tailed Raven) — enwiki lead för kort
   Q507383:
     description_accept_missing: [sv]  # Corvus splendens (Husskråka / House Crow) — asiatisk, ingen svwiki
+  # Cuculidae batch (2026-05-15): svwiki saknas/kort för exotiska gökar.
+  Q386116:
+    description_accept_missing: [sv]  # Vitbrynad sporrgök (White-browed Coucal) — afrikansk
+  Q519634:
+    description_accept_missing: [sv]  # Didrikglansgök (Diederik Cuckoo) — afrikansk
+  Q749711:
+    description_accept_missing: [sv]  # Senegalsporrgök (Senegal Coucal) — afrikansk
+  Q798401:
+    description_accept_missing: [sv]  # Asiatisk koel (Asian Koel)
+  # Cuculidae batch (2026-05-15): båda språk saknar/för kort.
+  Q1189720:
+    description_accept_missing: [sv, en]  # Grönglansgök (Klaas's Cuckoo) — afrikansk
+  # Cuculidae batch (2026-05-15): inga Commons-foton över MIN_DIMENSION=2048.
+  Q1266506:
+    allow_missing_images: true  # Tajgagök (Oriental Cuckoo) — asiatisk häckare, sparse Commons hi-res

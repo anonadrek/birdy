@@ -1,0 +1,123 @@
+id: Q839535
+scientific_name: Clamator jacobinus
+taxonomy:
+  family: Cuculidae
+  family_sv: Gökar
+  genus: Clamator
+  ioc_order: Cuculiformes
+names:
+  sv: Jakobinskatgök
+  en: Jacobin Cuckoo
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Jakobinskatgök
+
+
+    Jakobinskatgök är en gök som förekommer på två olika kontinenter – i södra Asien
+    och Afrika – vilket är ovanligt för en fågel. Den tillhör familjen gökar tillsammans
+    med många andra liknande arter.
+
+
+    Som gök parasiterar jakobinskatgök troligen på andra fåglar, vilket innebär att
+    honan lägger sina ägg i andra fåglarnas nästen istället för att bygga egna. Den
+    har anpassat sig till denna levnadsväg genom evolution, precis som övriga gökar.
+
+
+    Arten är mindre dokumenterad än många andra gökar när det gäller sitt exakta utseende,
+    beteende och läte för amatörbirdwatchern. För den som är intresserad av att lära
+    sig mer rekommenderas fältguider och lokala observatörer i området där arten förekommer.'
+  en: '# Jacobin Cuckoo
+
+
+    The Jacobin cuckoo is a striking member of the cuckoo family, found across Africa
+    and Asia. It is recognizable by its pied plumage—contrasting black and white markings—and
+    distinctive crested head, which gives it an unmistakable silhouette. The bird
+    is partially migratory, with populations shifting seasonally across its range.
+
+
+    This species is perhaps best known for its cultural significance in India, where
+    its arrival has traditionally been interpreted as a harbinger of the monsoon rains.
+    The timing of its appearance coincides with the onset of these crucial rains,
+    making it an important seasonal marker. It features prominently in Indian mythology
+    and poetry, associated with a legendary bird known as the chātaka.
+
+
+    Like other cuckoos, the Jacobin cuckoo is a brood parasite, relying on other bird
+    species to raise its young. It inhabits open woodlands, scrublands, and cultivated
+    areas throughout its range, where it hunts insects and other prey. Its adaptability
+    to various habitats has enabled it to thrive across its broad African and Asian
+    distribution.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."'
+  en: '# Jacobin Cuckoo in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Jacobin Cuckoo is a tropical and subtropical species found in Africa and Asia,
+    with no established occurrence in Scandinavia or Northern Europe. This partially
+    migratory species is associated with monsoon rains in India but does not naturally
+    range into the Nordic region or broader Northern Europe. Any records from these
+    areas would represent rare vagrants far outside the species'' typical distribution
+    rather than regular migratory patterns.'
+image_refs:
+- role: hero
+  path: Q839535/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Jacobin cuckoo or pied cuckoo(Clamator
+    jacobinus) കൊമ്പൻ കുയിൽ (32247118285).jpg
+  commons_filename: Jacobin cuckoo or pied cuckoo(Clamator jacobinus) കൊമ്പൻ കുയിൽ
+    (32247118285).jpg
+- role: secondary
+  path: Q839535/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Jacobin cuckoo 10 (Clamator
+    jacobinus) കൊമ്പൻ കുയിൽ .jpg
+  commons_filename: Jacobin cuckoo 10 (Clamator jacobinus) കൊമ്പൻ കുയിൽ .jpg
+- role: secondary
+  path: Q839535/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Jacobin cuckoo 13 (Clamator
+    jacobinus) കൊമ്പൻ കുയിൽ .jpg
+  commons_filename: Jacobin cuckoo 13 (Clamator jacobinus) കൊമ്പൻ കുയിൽ .jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:31:48.766576+00:00'
+sources:
+  wikipedia_sv_revision: '58078654'
+  wikipedia_en_revision: '1345857634'
+  claude_model: claude-haiku-4-5-20251001

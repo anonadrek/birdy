@@ -1,0 +1,120 @@
+id: Q665363
+scientific_name: Clamator glandarius
+taxonomy:
+  family: Cuculidae
+  family_sv: Gökar
+  genus: Clamator
+  ioc_order: Cuculiformes
+names:
+  sv: Skatgök
+  en: Great Spotted Cuckoo
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skatgök
+
+
+    Skatgök är en sydeuropeisk och afrikansk gök som tillhör familjen gökar. Det är
+    en häckningsparasit som lägger sina ägg hos andra fåglar, framför allt hos skagor.
+    Arten är betydligt större än många andra gökar och har en karakteristisk utseende
+    med grå och svart färgteckning.
+
+
+    Skatgöken är känd för sin speciella reproduktionsstrategi där honan lägger sina
+    ägg i andra fåglarnas bon. Detta gör arten helt beroende av värdarten för att
+    sina ungar ska få mat och omvårdnad. I Sverige är skatgöken en mycket sällsynt
+    gäst som observeras endast undantagsvis, främst under vårflyttningen eller i samband
+    med väderomslag.'
+  en: '# Great Spotted Cuckoo
+
+
+    The Great Spotted Cuckoo is a distinctive member of the cuckoo family, sharing
+    its order with roadrunners, anis, and coucals. It is a striking bird characterized
+    by its spotted and barred plumage, which sets it apart from many other cuckoo
+    species. The bird displays bold patterning across its wings and body, making it
+    relatively easy to identify in the field.
+
+
+    Like other cuckoos, the Great Spotted Cuckoo is a brood parasite, laying its eggs
+    in the nests of other bird species rather than building its own nest. It has a
+    characteristic loud, distinctive call that helps identify it in areas where it
+    occurs. The species is typically found in open woodlands, scrubland, and cultivated
+    landscapes where suitable host species are present.
+
+
+    The Great Spotted Cuckoo inhabits regions across southern and central areas of
+    its range, often seen perching openly on branches or in trees. It feeds primarily
+    on insects and caterpillars. The bird''s behavior, combined with its eye-catching
+    spotted plumage and vocal nature, makes it a notable and recognizable species
+    where it is present.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Great Spotted Cuckoo (Clamator glandarius) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic information about the Great Spotted
+    Cuckoo''s classification within the Cuculiformes order and does not include any
+    details regarding its occurrence, migration patterns, or seasonal distribution
+    in Scandinavia or Northern Europe. To provide accurate information about this
+    species'' presence in the region, additional sources with specific distribution
+    and migration data would be required.'
+image_refs:
+- role: hero
+  path: Q665363/hero.jpg
+  width: 2400
+  height: 1350
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Great spotted cuckoo, Clamator
+    glandarius, at Mapungubwe National Park, Limpopo, South Africa. - 51840980324.jpg
+  commons_filename: Great spotted cuckoo, Clamator glandarius, at Mapungubwe National
+    Park, Limpopo, South Africa. - 51840980324.jpg
+- role: secondary
+  path: Q665363/secondary-1.jpg
+  width: 1800
+  height: 1012
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Great spotted cuckoo, Clamator
+    glandarius, at Mapungubwe National Park, Limpopo, South Africa. - 51841355895.jpg
+  commons_filename: Great spotted cuckoo, Clamator glandarius, at Mapungubwe National
+    Park, Limpopo, South Africa. - 51841355895.jpg
+- role: secondary
+  path: Q665363/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Great spotted cuckoo, Clamator
+    glandarius, at Mapungubwe National Park, Limpopo, South Africa. - 51841354205.jpg
+  commons_filename: Great spotted cuckoo, Clamator glandarius, at Mapungubwe National
+    Park, Limpopo, South Africa. - 51841354205.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:32:18.999588+00:00'
+sources:
+  wikipedia_sv_revision: '57590728'
+  wikipedia_en_revision: '1348818603'
+  claude_model: claude-haiku-4-5-20251001

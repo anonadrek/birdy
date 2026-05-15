@@ -1,0 +1,121 @@
+id: Q18845
+scientific_name: Cuculus canorus
+taxonomy:
+  family: Cuculidae
+  family_sv: Gökar
+  genus: Cuculus
+  ioc_order: Cuculiformes
+names:
+  sv: Gök
+  en: Common Cuckoo
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gök
+
+
+    Gök är en medelstor fågel inom familjen gökar, känd för sitt karakteristiska lockläte
+    som låter som "gök-gök" – namnet kommer direkt från detta ljud. Fågeln är främst
+    brungrå till grå på ovansidan med vitaktig undersida och ofta med mörka band på
+    bröstet och buken. Det finns också en mer rostbrun variant. Gök är en skicklig
+    flugare med långsmala vingar och en ganska lång stjärt.
+
+
+    Arten är framför allt känd för sitt speciella häckningsbeteende: istället för
+    att bygga egna bon lägger gök sina ägg i andra fåglars bo, en process som kallas
+    häckningsparasitism. Ungarna växer upp omhändertagna av värdföräldrarna. Gök är
+    en långdistansflyttare som återvänder på våren med sitt ikoniska läte, som hörs
+    från april till juni.
+
+
+    Arten ses i öppna och halvöppna miljöer, ofta från exponerade pinnar och tråd
+    där den uthärdar sitt välkända "gök-gök-läte" för att markera territorium.'
+  en: '# Common Cuckoo
+
+
+    The Common Cuckoo is a sleek, grey-backed bird roughly the size of a small hawk,
+    with barred underparts and a long tail. Its appearance superficially resembles
+    a sparrowhawk, which may help deter potential predators. It is a migratory species,
+    breeding across temperate regions and wintering in Africa.
+
+
+    This species is famous for its brood-parasitic behaviour—females lay their eggs
+    in the nests of smaller host birds, leaving them to raise the young. The cuckoo''s
+    distinctive two-note call, from which its name derives, is often heard in late
+    spring and early summer, though the bird itself can be elusive and difficult to
+    spot despite its vocal presence. Males typically call from prominent perches or
+    in flight.
+
+
+    The Common Cuckoo inhabits open woodland, farmland, and scrubby areas where suitable
+    host species are abundant. It forages for insects and caterpillars while perched
+    or in flight, and is generally solitary outside the breeding season. Though widespread
+    across much of its range, it is often detected by ear rather than sight.'
+migration:
+  sv: Göken är en långdistansflyger som återvänder till Skandinavien under våren,
+    vanligtvis mellan april och maj. Den övervintringar i Afrika söder om Sahara och
+    anländer därefter till sina häckningsområden i hela Skandinavien. Under sommaren,
+    fram till juli-augusti, häckar göken genom parasitism i andra fåglarnas bon. I
+    slutet av augusti och början av september påbörjar arten sin långa återflyttning
+    söderut till sina afrikanska övervintringsområden, där den stannar under resten
+    av året fram till nästa vår.
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic classification information and
+    does not include any details about the Common Cuckoo''s migration patterns, seasonal
+    occurrence, or presence throughout the year in Scandinavia or Northern Europe.'
+image_refs:
+- role: hero
+  path: Q18845/hero.jpg
+  width: 2400
+  height: 1586
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Cuckoo. Cuculus canorus - Flickr
+    - gailhampshire.jpg
+  commons_filename: Cuckoo. Cuculus canorus - Flickr - gailhampshire.jpg
+- role: secondary
+  path: Q18845/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Drow_male" title="User:Drow male">Fernando
+    Losada Rodríguez</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cuculus canorus.010 - A Coruña.jpg
+  commons_filename: Cuculus canorus.010 - A Coruña.jpg
+- role: secondary
+  path: Q18845/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Salicyna" title="User:Salicyna">Salicyna</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cuculus canorus 2016-06-06 2456.jpg
+  commons_filename: Cuculus canorus 2016-06-06 2456.jpg
+review_status: approved
+review_notes: Hero = adult Cuculus canorus från Cradley (UK, Flickr CC BY 2.0); klassisk grå-bandad fältidentifiering, lång stjärt, hökliknande siluett. Två sekundärbilder från Coruña + Salicyna 2016. SV+EN beskrivning båda ≥80 ord, ingen hallucination. EN migration "data unavailable" — Claude honest fallback när källan saknade migration-info.
+generated_at: '2026-05-15T18:32:10.032316+00:00'
+sources:
+  wikipedia_sv_revision: '58319607'
+  wikipedia_en_revision: '1318895344'
+  claude_model: claude-haiku-4-5-20251001
