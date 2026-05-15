@@ -381,6 +381,10 @@
     <string name="badges_journal_label">DISCOVERIES · NO %1$s</string>
     <string name="badges_journal_headline">*%1$s* found.</string>
     <string name="badges_journal_sub">%1$s waiting in the field.</string>
+    <!-- Plan 6a Task 10.4: locked-badge progress bottom-sheet -->
+    <string name="badge_sheet_locked_body">Keep birding to unlock this stamp.</string>
+    <string name="badge_sheet_progress_label">%1$s of %2$s · %3$s</string>
+    <string name="badge_sheet_close">Close</string>
 
     <!-- ===== Plan 7b: LifelistScreen ===== -->
     <string name="lifelist_breadcrumb">LIFELIST</string>

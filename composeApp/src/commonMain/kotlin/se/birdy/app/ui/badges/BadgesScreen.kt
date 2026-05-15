@@ -21,13 +21,13 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,13 +42,11 @@ import birdy_bird_scanner.composeapp.generated.resources.badges_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.badges_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.badges_load_error
 import birdy_bird_scanner.composeapp.generated.resources.badges_load_error_retry
-import birdy_bird_scanner.composeapp.generated.resources.badges_locked_tooltip
 import birdy_bird_scanner.composeapp.generated.resources.badges_section_recently_unlocked
 import birdy_bird_scanner.composeapp.generated.resources.badges_section_to_discover
 import birdy_bird_scanner.composeapp.generated.resources.gear_content_description
 import birdy_bird_scanner.composeapp.generated.resources.premium_badges_cta
 import birdy_bird_scanner.composeapp.generated.resources.premium_badges_section
-import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -77,15 +75,10 @@ fun BadgesScreen(
     showPremiumTeaser: Boolean = true,
     modifier: Modifier = Modifier,
 ) {
-    val snackbarHostState = remember { SnackbarHostState() }
-    val scope = rememberCoroutineScope()
-    val lockedTooltip = stringResource(Res.string.badges_locked_tooltip)
+    var selectedLocked: LockedBadgeProgress? by remember { mutableStateOf(null) }
     val now = remember { Clock.System.now() }
 
-    JournalScaffold(
-        modifier = modifier,
-        snackbarHost = { SnackbarHost(snackbarHostState) },
-    ) { padding ->
+    JournalScaffold(modifier = modifier) { padding ->
         Box(modifier = Modifier.fillMaxSize().padding(padding)) {
             when (state) {
                 is BadgesUiState.Loading -> JournalLoading()
@@ -97,15 +90,16 @@ fun BadgesScreen(
                         zone = zone,
                         now = now,
                         onUnlockedClick = { badge, unlock -> onBadgeClick(badge, unlock) },
-                        onLockedClick = {
-                            scope.launch { snackbarHostState.showSnackbar(message = lockedTooltip) }
-                        },
+                        onLockedClick = { selectedLocked = it },
                         onSettingsClick = onSettingsClick,
                         onPremiumClick = onPremiumClick,
                         showPremiumTeaser = showPremiumTeaser,
                     )
             }
         }
+    }
+    selectedLocked?.let { progress ->
+        LockedBadgeBottomSheet(progress = progress, onDismiss = { selectedLocked = null })
     }
 }
 
@@ -116,7 +110,7 @@ private fun LoadedContent(
     zone: TimeZone,
     now: Instant,
     onUnlockedClick: (Badge, BadgeUnlock) -> Unit,
-    onLockedClick: () -> Unit,
+    onLockedClick: (LockedBadgeProgress) -> Unit,
     onSettingsClick: () -> Unit,
     onPremiumClick: () -> Unit,
     showPremiumTeaser: Boolean,
@@ -187,7 +181,7 @@ private fun LoadedContent(
         items(items = state.locked, key = { it.badge.id }) { lbp ->
             BadgeGridCell(
                 progress = lbp,
-                onClick = onLockedClick,
+                onClick = { onLockedClick(lbp) },
                 modifier = Modifier.fillMaxWidth(),
             )
         }
