@@ -1,0 +1,78 @@
+id: Q110257522
+scientific_name: Curruca balearica
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Balearisk sångare
+  en: Balearic Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Balearisk sångare
+
+
+    Balearisk sångare är en liten tätting som är endemisk för Balearerna i västra
+    Medelhavet. Den är nära släkt med sardinsk sångare och har historiskt ofta behandlats
+    som en underart till denna art. Trots sitt mycket begränsade utbredningsområde
+    klassificeras arten som livskraftig enligt IUCN.'
+  en: '# Balearic Warbler
+
+
+    The Balearic warbler is a small, compact warbler belonging to a group that includes
+    Marmora''s warbler, Tristram''s warbler, and the Dartford warbler. It is endemic
+    to specific Mediterranean islands, where it inhabits scrubby, arid terrain. Like
+    other members of its genus, it is likely a skulking species that favors dense
+    vegetation, though detailed information about its appearance and behaviour is
+    limited in standard references.
+
+
+    This warbler is a specialized island specialist, restricted to a narrow range.
+    Birdwatchers seeking this species should focus on appropriate habitat within its
+    limited distribution. As with many Curruca warblers, it is probably best located
+    by listening for its call, though specific vocalization details would require
+    specialist ornithological sources. Its restricted range makes it of particular
+    interest to birders visiting suitable habitat.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only information about the Balearic Warbler''s
+    geographic distribution (endemic to the Balearic Islands, excluding Menorca) and
+    its taxonomic classification. It includes no data regarding migration patterns,
+    seasonal movements, or occurrence throughout the year in Scandinavia or Northern
+    Europe. Without reliable sources documenting migration information, I cannot provide
+    the requested information about this species'' presence in Northern Europe.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:11:15.621651+00:00'
+sources:
+  wikipedia_sv_revision: '56586333'
+  wikipedia_en_revision: '1334213451'
+  claude_model: claude-haiku-4-5-20251001

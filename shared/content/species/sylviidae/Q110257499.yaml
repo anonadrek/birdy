@@ -1,0 +1,110 @@
+id: Q110257499
+scientific_name: Curruca crassirostris
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Mästersångare
+  en: Eastern Orphean Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mästersångare
+
+
+    Mästersångare är en medelstor sångare inom familjen sylvior. Den är en östmediterran
+    art som förekommer från Slovenien och österut till Pakistan. Arten är nära släkt
+    med herdesångaren västerut, och behandlades tidigare som samma art. Tillfälligt
+    uppträder den norr om sitt normala utbredningsområde, med dokumenterade fynd även
+    i Norge.
+
+
+    Arten är kategoriserad som livskraftig av IUCN, vilket indikerar en stabil population.
+    Som många sylvior är det en mobilare art som kan förekomma utanför sitt vanliga
+    område, särskilt under migrations- och övervintringssäsongen.
+
+
+    För mer detaljerad information om dess utseende, röst och specifika habitatval
+    rekommenderas fältstudier och specialiserad fågellitteratur.'
+  en: '# Eastern Orphean Warbler
+
+
+    The Eastern Orphean Warbler is a medium-sized Old World warbler with a robust,
+    thick bill—a distinguishing feature that sets it apart from related species. It
+    displays dark grey-brown upperparts contrasting with paler underparts, and notably
+    pale eyes that give it a distinctive appearance. This migratory species is a summer
+    visitor to regions around the Mediterranean, through the Balkans, Turkey, the
+    Caucasus, and into Central Asia, where it inhabits scrubland and woodland edges
+    during the breeding season.
+
+
+    The species is an accomplished songster, delivering rich, melodious warbling from
+    exposed perches or while moving through dense vegetation. Its vocal abilities
+    are reflected in its common name. It is an active forager, gleaning insects and
+    small invertebrates from foliage with purposeful movements.
+
+
+    As a long-distance migrant, the Eastern Orphean Warbler winters in sub-Saharan
+    Africa before returning to its breeding grounds in spring. It typically nests
+    in bushes or low trees, constructing a cup-shaped nest where it raises its young
+    during the summer months. The species is generally elusive and retiring, favouring
+    denser cover, making it more often heard than seen despite its vocal nature.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller enbart information om artens geografiska
+    utbredning (östliga Medelhavsregionen från Slovenien till Pakistan) och enstaka
+    fynd norr om sitt normala område (två fynd i Norge). Det finns ingen information
+    om migrationsmönster, övervintringsplatser eller ankomsttider till Skandinavien/Nordeuropa.
+    Arten behandlas därför enligt instruktionen om att data om migration saknas.'
+  en: '# Eastern Orphean Warbler – Scandinavian Occurrence
+
+
+    Migration data unavailable for this species.
+
+
+    The Eastern Orphean Warbler is a trans-Saharan migrant with a breeding range centered
+    on the Mediterranean, Balkans, Turkey, and Central Asia, wintering in sub-Saharan
+    Africa. This species does not occur in Scandinavia or Northern Europe as a regular
+    migrant or resident. Its range lies substantially south and east of the Nordic
+    region, making it an extremely rare vagrant to the area at best. No established
+    migration pattern through or seasonal presence in Scandinavia is documented.'
+image_refs:
+- role: hero
+  path: Q110257499/hero.jpg
+  width: 2048
+  height: 1369
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Curruca crassirostris 91619419.jpg
+  commons_filename: Curruca crassirostris 91619419.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:11:06.793640+00:00'
+sources:
+  wikipedia_sv_revision: '56626612'
+  wikipedia_en_revision: '1314222819'
+  claude_model: claude-haiku-4-5-20251001

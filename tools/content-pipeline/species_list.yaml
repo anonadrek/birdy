@@ -3663,24 +3663,28 @@
   ioc_order: Passeriformes
   common_en: Garden Warbler
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q188446
   scientific_name: Sylvia atricapilla
   family: Sylviidae
   ioc_order: Passeriformes
   common_en: Eurasian Blackcap
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q104867606
   scientific_name: Curruca nisoria
   family: Sylviidae
   ioc_order: Passeriformes
   common_en: Barred Warbler
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q110257504
   scientific_name: Curruca curruca
   family: Sylviidae
   ioc_order: Passeriformes
   common_en: Lesser Whitethroat
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q110257500
   scientific_name: Curruca buryi
   family: Sylviidae
@@ -3735,6 +3739,7 @@
   ioc_order: Passeriformes
   common_en: Common Whitethroat
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q110257518
   scientific_name: Curruca conspicillata
   family: Sylviidae

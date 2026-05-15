@@ -1,0 +1,109 @@
+id: Q110257524
+scientific_name: Curruca undata
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Provencesångare
+  en: Dartford Warbler
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Provencesångare
+
+
+    Provencesångare är en liten och mörk sångare som häckar i sydvästra Europa och
+    Nordafrika. Till skillnad från många andra sångare är den huvudsakligen stannfågel
+    och stannar året runt på sitt område. Arten förekommer från södra England och
+    Italien ned mot Iberiska halvön.
+
+
+    Det är en mycket diskret fågel som höll sig gömda i låg, tät vegetation. Den är
+    mörk på ovansidan och rödrosa på undersidan, med ett mörkare ansikte. Rösten är
+    karakteristisk – en högtonig, raspig vissling som ofta yttras från lågväxtation.
+
+
+    Provencesångare är mycket hotad och minskar relativt kraftigt i antal. IUCN kategoriserar
+    den som nära hotad på grund av habitatförlust. Tillfälligt påträffas den långt
+    norr om sitt vanliga utbredningsområde – så också i Sverige, där det registrerats
+    fynd vid några tillfällen.'
+  en: '# Dartford Warbler
+
+
+    The Dartford warbler is a small, long-tailed warbler with a distinctly thin pointed
+    bill. Males display grey-brown upperparts contrasting with dull reddish-brown
+    underparts, though a dirty white patch marks the belly centre. Light throat speckles
+    and a striking red eye-ring are characteristic features. Females are similar but
+    typically less grey above and paler below.
+
+
+    This warbler inhabits the warmer regions of western Europe and northwestern Africa.
+    It favours scrubby habitats where it forages actively among low vegetation. The
+    species is notably restless and energetic, often flicking its tail as it moves
+    through dense cover. Its call is a distinctive, sharp, tongue-like chatter, usually
+    delivered from concealed perches.
+
+
+    The Dartford warbler remains largely sedentary within its range, though northern
+    populations may show some movement in harsh winters. Its skulking behaviour and
+    preference for dense scrub make it challenging to observe, though persistence
+    in appropriate habitat often rewards the patient birdwatcher with close views
+    of this characterful little warbler.'
+migration:
+  sv: '# Provencesångare i Skandinavien/Nordeuropa
+
+
+    Provencesångaren är huvudsakligen en stannfågel som normalt förekommer i sydvästra
+    Europa. I Skandinavien och övriga Nordeuropa är arten mycket sällsynt och förekommer
+    endast tillfälligt utanför sitt ordinarie utbredningsområde. Sverige har dokumenterat
+    fyra fynd av arten, men dessa representerar undantag snarare än regelbundna förekomster.
+    Arten är således ingen regelbunden del av Nordens avifauna och har ingen etablerad
+    migrations- eller övervintringscykel i regionen.'
+  en: '# Dartford Warbler (Curruca undata) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the occurrence, migration
+    patterns, or seasonal distribution of the Dartford Warbler in Scandinavia or Northern
+    Europe. To provide accurate information about this species'' presence in these
+    regions, additional sources specifically addressing its northern range limits
+    and movements would be required.'
+image_refs:
+- role: hero
+  path: Q110257524/hero.jpg
+  width: 1735
+  height: 2259
+  license: CC BY 4.0
+  author: cazalegg
+  source_url: https://commons.wikimedia.org/wiki/File:Dartford Warbler - Curruca undata.jpg
+  commons_filename: Dartford Warbler - Curruca undata.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:11:42.946865+00:00'
+sources:
+  wikipedia_sv_revision: '55704422'
+  wikipedia_en_revision: '1313784768'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,98 @@
+id: Q99573734
+scientific_name: Curruca iberiae
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Rostsångare
+  en: Western Subalpine Warbler
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rostsångare
+
+
+    Rostsångare är en nyligen urskild fågelart som förekommer i sydvästra Europa och
+    nordvästra Afrika. Det är en kortflyttare som under vintern drar söderut till
+    området strax söder om Sahara. Arten är mycket lik sina närmare släktingar rosensångaren
+    och rödstrupig sångare, och behandlades långt fram som en och samma art som dessa.
+    Sällsynta fynd har gjorts långt norr om artens normala utbredningsområde.
+
+
+    Rostsångaren tillhör familjen sylvior inom tättingarna. För den intresserade fågelskådare
+    är det viktigt att känna igen skillnaderna mellan denna art och dess nära släktingar,
+    då de mycket lätt kan förväxlas. Arten förekommer framför allt i sitt känt utbredningsområde
+    i söder, men kan påträffas tillfälligt utanför detta.'
+  en: '# Western Subalpine Warbler
+
+
+    The Western Subalpine Warbler is a small warbler belonging to the Sylviidae family,
+    measuring just 12–13 centimeters in length. It is a compact bird with warm rufous-brown
+    upperparts and a distinctive pale throat, which contrasts with its darker face
+    mask. The underparts are typically peachy-buff, giving it a warm overall appearance
+    that helps distinguish it from closely related warbler species.
+
+
+    This species breeds in the southernmost regions of Europe and northwestern Africa,
+    favoring scrubby, arid habitats with low vegetation such as maquis and garrigue.
+    It is a summer visitor to its breeding grounds, arriving in spring to nest. The
+    bird is typically skulking in behavior, preferring to remain hidden within dense
+    brush, though it can be vocal during breeding season with a rapid, scratchy song.
+
+
+    The Western Subalpine Warbler feeds primarily on small insects gleaned from vegetation.
+    Its small size and inconspicuous habits make it challenging to observe, though
+    patient birdwatchers may spot it moving through low scrub, often flicking its
+    tail nervously. The species is generally common within its limited range, though
+    it remains little-known compared to more widespread warblers.'
+migration:
+  sv: '# Rostsångare (Curruca iberiae) i Norden
+
+
+    Rostsångaren är en kortflyttare som normalt förekommer i sydvästra Europa och
+    nordvästra Afrika. Under vintertid migerar arten söderut till ett område strax
+    söder om Sahara, från Senegal till Niger. I Skandinavien och övriga Nordeuropa
+    är arten en mycket sällsynt gäst. Det finns endast tre säkerställda fynd från
+    Sverige, vilket indikerar att nordliga avvikelser från artens normala utbredningsområde
+    är ytterst ovanliga. Arten ses således endast tillfälligt norr om sitt huvudsakliga
+    utbredningsområde.'
+  en: '# Western Subalpine Warbler (Curruca iberiae) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Western Subalpine Warbler breeds in southern Europe and north-western Africa,
+    with its range far south of Scandinavia and Northern Europe. This species does
+    not occur as a regular migrant or winter visitor in Northern European regions,
+    and therefore no established migration patterns or seasonal occurrence data exist
+    for Scandinavian countries.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:11:08.682313+00:00'
+sources:
+  wikipedia_sv_revision: '57581749'
+  wikipedia_en_revision: '1353358988'
+  claude_model: claude-haiku-4-5-20251001

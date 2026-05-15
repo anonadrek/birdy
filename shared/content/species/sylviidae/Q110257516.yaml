@@ -1,0 +1,130 @@
+id: Q110257516
+scientific_name: Curruca communis
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Törnsångare
+  en: Common Whitethroat
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Törnsångare
+
+
+    Törnsångaren är en medelstor sångfågel som tillhör familjen sylvior. Den är en
+    klassisk medlem av sitt släkte med grå ovansida, vit undersida och karakteristisk
+    röd ansiktsmask. Hanen under häckningstiden är särskilt påfallande med sin röda
+    ansikte och halsmärkning, medan honan är mer diskret färgad.
+
+
+    Denna art föredrar öppna landskap med låg vegetation, buskar och snår där den
+    jagar småinsekter. Törnsångaren är en rastlös och aktiv fågel som ofta ses hoppa
+    mellan buskarna. Under häckningstiden är hanen mycket vokal och framför en energisk,
+    något raspig sång från exponerade platser. Arten är en långdistansflyttare som
+    häckar över stora delar av sitt utbredningsområde under sommaren och återvänder
+    till tropiska Afrika för att övervintra.
+
+
+    Beståndet av törnsångare anses vara stabilt och arten ökar i antal inom mycket
+    av sitt häckningsområde. Det gör den till en relativt vanlig och välanpassad art
+    inom sitt ekologiska nisch.'
+  en: '# Common Whitethroat
+
+
+    The Common Whitethroat is a small, active warbler found breeding across temperate
+    Europe and western Asia, with populations wintering in tropical Africa, Arabia,
+    and Pakistan. It is a strongly migratory species, undertaking long-distance journeys
+    between its breeding and wintering grounds.
+
+
+    This small passerine is characterized by its distinctive appearance, featuring
+    a grey head, buff-brown upperparts, and a notably white throat that gives the
+    species its name. It is a restless, energetic bird, often seen skulking in dense
+    vegetation and scrubby habitats where it forages for insects. The Common Whitethroat
+    has a distinctive, scratchy song delivered from exposed perches or in short, fluttering
+    display flights.
+
+
+    The species prefers open woodlands, hedgerows, and scrubland with plenty of low
+    vegetation for cover and breeding. It is commonly observed in farmland and cultivated
+    areas with scattered bushes, where it nests low in dense shrubs. The Common Whitethroat''s
+    breeding season involves elaborate territorial displays and vocalizations, particularly
+    from males establishing and defending breeding territories.'
+migration:
+  sv: '# Törnsångare i Skandinavien och Nordeuropa
+
+
+    Törnsångaren är en regelbunden häckfågel i Skandinavien och återstoden av Nordeuropa
+    under sommaren. Arten anländer från sitt afrikanskt vinterkvarter under vårens
+    senare del, vanligtvis april-maj, för att häcka i öppna landskap med buskar och
+    snår. Under hösten, från augusti-september, påbörjar arten sin migration söderut
+    mot tropiska Afrika där den tillbringar vintern. Beståndet i regionen är stabilt
+    och ökar.'
+  en: '# Common Whitethroat in Northern Europe
+
+
+    The Common Whitethroat is a strongly migratory species in Scandinavia and Northern
+    Europe. Birds arrive in spring from late April through May after wintering in
+    tropical Africa, Arabia, and Pakistan. They breed throughout the region during
+    the summer months, establishing territories in open scrubland and hedgerows. In
+    late summer and early autumn, typically from July onward, they begin their southbound
+    migration, departing Scandinavia by September to return to their African and Asian
+    wintering grounds. The species is entirely absent from Northern Europe during
+    winter months.'
+image_refs:
+- role: hero
+  path: Q110257516/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93438832@N04">Paul
+    van de Velde</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grasmus - Curruca communis (52152546993).jpg
+  commons_filename: Grasmus - Curruca communis (52152546993).jpg
+- role: secondary
+  path: Q110257516/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93438832@N04">Paul
+    van de Velde</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grasmus - Curruca communis (52151530482).jpg
+  commons_filename: Grasmus - Curruca communis (52151530482).jpg
+- role: secondary
+  path: Q110257516/secondary-2.jpg
+  width: 1800
+  height: 1286
+  license: CC BY 4.0
+  author: caroline legg
+  source_url: https://commons.wikimedia.org/wiki/File:Common Whitethroat - Curruca
+    communis.jpg
+  commons_filename: Common Whitethroat - Curruca communis.jpg
+review_status: approved
+review_notes: "Hero = Curruca communis (Common Whitethroat / Törnsångare); allmän i öppen buskmark i hela SE."
+generated_at: '2026-05-15T21:10:34.799645+00:00'
+sources:
+  wikipedia_sv_revision: '56590296'
+  wikipedia_en_revision: '1340677514'
+  claude_model: claude-haiku-4-5-20251001

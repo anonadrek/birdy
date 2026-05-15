@@ -715,3 +715,33 @@ species:
     description_accept_missing: [sv]  # Grey Francolin — sparse svwiki
   Q1266683:
     description_accept_missing: [sv, en]  # Erckel's Spurfowl — sparse on both
+  # Sylviidae (2026-05-15)
+  Q109578179:
+    description_accept_missing: [sv]  # Arabian Warbler — sparse svwiki (73w)
+  Q110257493:
+    description_accept_missing: [sv, en]  # African Desert Warbler — sparse on both
+  Q110257505:
+    description_accept_missing: [en]  # Menetries's Warbler — sparse enwiki
+  Q110257506:
+    description_accept_missing: [sv]  # Cyprus Warbler — sparse svwiki (65w)
+  Q110257508:
+    allow_missing_images: true  # Eastern Subalpine Warbler — no suitable Commons images
+  Q110257513:
+    description_accept_missing: [en]
+    allow_missing_images: true  # Moltoni's Warbler — sparse enwiki + no images
+  Q110257515:
+    description_accept_missing: [en]
+    allow_missing_images: true  # Rüppell's Warbler — sparse enwiki + no images
+  Q110257518:
+    allow_missing_images: true  # Spectacled Warbler — no suitable Commons images
+  Q110257519:
+    description_accept_missing: [en]
+    allow_missing_images: true  # Marmora's Warbler — sparse enwiki + no images
+  Q110257522:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Balearic Warbler — sparse svwiki (46w) + no images
+  Q110257525:
+    description_accept_missing: [en]
+    allow_missing_images: true  # Tristram's Warbler — sparse enwiki + no images
+  Q99573734:
+    allow_missing_images: true  # Western Subalpine Warbler — no suitable Commons images

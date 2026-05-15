@@ -1,0 +1,116 @@
+id: Q110257507
+scientific_name: Curruca melanocephala
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Sammetshätta
+  en: Sardinian Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sammetshätta
+
+
+    Sammetshätta är en liten tätting från familjen sylvior och är en typisk stannfågel
+    i Medelhavsregionen. Det är en karakteristisk fågel med sitt namn efter det mörka,
+    sammetsliknande huvudet – hanen bär en svart hjässa och kind medan honan har bruntare
+    toner. Arten är liten och spenslig med en något upplyfad hållning.
+
+
+    Arten förekommer huvudsakligen i låglänta miljöer inom sitt kärnområde och trivs
+    bland täta buskage och låg vegetation. Det är en aktiv och livlig fågel som ofta
+    hörs innan den ses. Sammetshätta har en distinkt, raspig sång som låter ganska
+    högt för så liten fågel.
+
+
+    Även om arten är stannfågel i Medelhavsområdet, där den är vanligt förekommande,
+    förekommer det regelbundet enstaka fynd norr om det normala utbredningsområdet.
+    Dessa vagabunderande individer har påträffats i alla nordiska länder förutom en.
+    IUCN kategoriserar arten som livskraftig med en stabil population.'
+  en: '# Sardinian Warbler
+
+
+    The Sardinian warbler is a striking and common Mediterranean warbler with distinctive
+    sexual dimorphism. The male is instantly recognizable with its black head, grey
+    back, and white throat, while his most striking feature is the bright red eye-ring.
+    Females are considerably duller, appearing brownish above with a greyish head
+    and buff underparts. Plumage intensity varies between individuals and populations,
+    particularly in the reddish tones on the flanks and underparts.
+
+
+    This warbler is highly vocal, delivering a fast, rattling song that epitomizes
+    the Mediterranean scrubland habitat where it breeds. Its energetic, chattering
+    call is one of the region''s characteristic bird sounds. The species favors dense
+    low vegetation and scrub, where it skulks and forages actively among the bushes.
+
+
+    The Sardinian warbler is widespread and common throughout Mediterranean regions,
+    making it a reliable sighting for birders visiting suitable habitat. Its combination
+    of bold plumage, vocal activity, and preference for accessible scrubland make
+    it one of the more conspicuous and rewarding warblers to observe in its range.'
+migration:
+  sv: Sammetshätta är huvudsakligen en stannfågel i Medelhavsregionen och är därför
+    endast en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten påträffas
+    endast enstaka gånger norr om sitt ordinarie utbredningsområde och har dokumenterats
+    i alla nordiska länder utom Island. Dessa norska fynd representerar troligen individer
+    som dragit för långt norrut under utbredningen eller irrgäster. I sitt huvudsakliga
+    utbredningsområde kring Medelhavet är sammetshätten en permanent bosatt art som
+    inte genomför längre migrationszügen.
+  en: '# Sardinian Warbler in Northern Europe
+
+
+    The Sardinian Warbler is primarily a resident or short-distance migrant of the
+    Mediterranean region and does not regularly occur in Scandinavia or Northern Europe.
+    This species is essentially absent from the Nordic countries throughout the year,
+    as its range is confined to southern Mediterranean habitats. The bird is generally
+    non-migratory or exhibits only limited seasonal movements within its Mediterranean
+    breeding range, remaining in the region year-round or moving only locally between
+    suitable scrubland and maquis habitats.'
+image_refs:
+- role: hero
+  path: Q110257507/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Curruca melanocephala leucogastra.jpg
+  commons_filename: Curruca melanocephala leucogastra.jpg
+- role: secondary
+  path: Q110257507/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Toutinegra-de-cabeça-preta (Curruca
+    melanocephala) (51866958399).jpg
+  commons_filename: Toutinegra-de-cabeça-preta (Curruca melanocephala) (51866958399).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:10:43.683756+00:00'
+sources:
+  wikipedia_sv_revision: '57856800'
+  wikipedia_en_revision: '1353076805'
+  claude_model: claude-haiku-4-5-20251001

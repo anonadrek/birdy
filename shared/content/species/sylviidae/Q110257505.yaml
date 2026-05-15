@@ -1,0 +1,77 @@
+id: Q110257505
+scientific_name: Curruca mystacea
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Östlig sammetshätta
+  en: Menetries’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Östlig sammetshätta
+
+
+    Östlig sammetshätta är en liten fågel i familjen sylvior som förekommer i västra
+    Asien. Arten är klassificerad som livskraftig enligt IUCN.
+
+
+    Fågeln är känd för att förekomma i tamariskskogar och buskskogar i sitt naturliga
+    utbredningsområde. Även om arten främst är hemmahörande i västra Asien har den
+    sporadiskt påträffats långt från sitt ordinarie område – tillfälliga fynd har
+    dokumenterats i södra Europa, bland annat i Grekland och Italien.
+
+
+    För den intresserade fågelskådaren är arten svår att observera utanför sitt hemland,
+    men kännedomen om möjligheten till ovanliga fynd kan vara värdefull vid fågelskådning
+    runt Medelhavet.'
+  en: ''
+migration:
+  sv: '# Östlig sammetshätta – Förekomst i Norden
+
+
+    Östlig sammetshätta är en västasiatic art som normalt inte förekommer i Skandinavien
+    eller Nordeuropa. Arten är mycket sällan registrerad i regionen och betraktas
+    som en tillfällig gäst. Några sporadiska observationer har dokumenterats i södra
+    Europa, men arten är ytterst osannolik att påträffa i norra delen av kontinenten.
+    För denna art finns ingen etablerad migrationsmönster eller regelbunden säsongsövervakning
+    i skandinaviska länder.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q110257505/hero.jpg
+  width: 2400
+  height: 1697
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Broobas&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Broobas (page does not exist)">Broobas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Menetries's (Curruca mystacea).jpg
+  commons_filename: Menetries's (Curruca mystacea).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:12:07.912108+00:00'
+sources:
+  wikipedia_sv_revision: '58595158'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

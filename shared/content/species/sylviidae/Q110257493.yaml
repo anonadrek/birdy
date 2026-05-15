@@ -1,0 +1,94 @@
+id: Q110257493
+scientific_name: Curruca deserti
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Saharasångare
+  en: African Desert Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Saharasångare
+
+
+    Saharasångare är en liten fågel i sylviefamiljen som är hemmastad i ökenregioner
+    i nordvästra Afrika. Det är en stannfågel som stannar året runt på sitt revir
+    snarare än att migrera. Arten klassificeras som livskraftig enligt IUCN:s kategorier.
+    Tidigare ansågs saharasångaren utgöra en underart till ökensångaren, men den räknas
+    nu som egen art.
+
+
+    För mer detaljerad information om utseende, läte och beteende rekommenderas att
+    konsultera specialiserad fågellitteratur eller ornitologiska resurser, då källmaterialet
+    inte innehåller dessa detaljer.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    The source text only states that the species "breeds in deserts in northwestern
+    Africa where it is a resident bird" (häckar i öknar i nordvästra Afrika där den
+    är stannfågel). This indicates it is sedentary in its breeding range, but provides
+    no information about occurrence in Scandinavia or Northern Europe, nor any migration
+    patterns relevant to these regions. Therefore, migration data for this species
+    in the context of Scandinavian/Northern European occurrence is unavailable.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q110257493/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:YedidyaPopper&amp;action=edit&amp;redlink=1"
+    class="new" title="User:YedidyaPopper (page does not exist)">YedidyaPopper</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Twitching an African desert
+    warbler (Curruca deserti) in Israel.jpg
+  commons_filename: Twitching an African desert warbler (Curruca deserti) in Israel.jpg
+- role: secondary
+  path: Q110257493/secondary-1.jpg
+  width: 1800
+  height: 1199
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:YedidyaPopper&amp;action=edit&amp;redlink=1"
+    class="new" title="User:YedidyaPopper (page does not exist)">YedidyaPopper</a>
+  source_url: https://commons.wikimedia.org/wiki/File:African desert warbler (Curruca
+    deserti), Israel.jpg
+  commons_filename: African desert warbler (Curruca deserti), Israel.jpg
+- role: secondary
+  path: Q110257493/secondary-2.jpg
+  width: 1800
+  height: 1477
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">Mourad
+    Harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Curruca deserti 200051668.jpg
+  commons_filename: Curruca deserti 200051668.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:11:36.098366+00:00'
+sources:
+  wikipedia_sv_revision: '56591432'
+  wikipedia_en_revision: '1314195366'
+  claude_model: claude-haiku-4-5-20251001

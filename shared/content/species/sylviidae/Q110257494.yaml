@@ -1,0 +1,132 @@
+id: Q110257494
+scientific_name: Curruca nana
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Ökensångare
+  en: Asian Desert Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ökensångare
+
+
+    Ökensångare är en liten tätting som häckar i halvöken och torr stäpp i Centralasien,
+    från Kaspiska havet till Kina och Mongoliet. Under vintern flyttar arten till
+    varmare områden från nordöstra Afrika via Arabiska halvön till Indien. Det är
+    endast en sällsynt gäst i Västeuropa.
+
+
+    Arten är liten och diskret, anpassad för sitt torra habitat. Som många andra sylvior
+    är ökensångaren en försiktig fågel som föredrar att hålla till låg vegetation.
+    Den är relativt vanlig inom sitt huvudutbredningsområde och klassificeras av IUCN
+    som livskraftig.
+
+
+    Ökensångaren är en långdistansflytt som följer årliga säsongmönster mellan sin
+    häckningsområde i Centralasien och sina övervintringsplatser i södra och västra
+    Asien samt Afrika.'
+  en: '# Asian Desert Warbler
+
+
+    The Asian desert warbler is a small, drab warbler of central and western Asia,
+    breeding across arid regions and migrating to similar habitats in southwestern
+    Asia and northeastern Africa during winter. It was recently split from the closely
+    related African desert warbler, with which it shares an evolutionary history;
+    the two species remain each other''s nearest relatives, though their exact affinities
+    to other typical warblers remain unclear.
+
+
+    This warbler is cryptically plumaged in browns and buffs, making it well-suited
+    to desert environments. Females resemble richly coloured common whitethroats,
+    a potential source of confusion for observers. The species is typically inconspicuous,
+    favoring sparse scrubland and desert vegetation where it forages among low bushes
+    and on the ground.
+
+
+    Little detailed information is available on its vocalizations and behaviour, though
+    like other desert warblers it is likely elusive and difficult to observe. The
+    Asian desert warbler occupies a basal position within the genus Curruca, suggesting
+    it represents a more ancestral form compared to many other typical warblers.'
+migration:
+  sv: '# Ökensångare i Skandinavien och Nordeuropa
+
+
+    Ökensångare är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten häckar
+    i Centralasien och övervintrare i nordöstra Afrika, Arabiska halvön och Indien.
+    Som sällsynt gäst i Västeuropa förekommer den endast sporadiskt inom regionen,
+    utan något regelbundet migrationsmönster till Skandinavien. Observationer i Nord-
+    och Västeuropa är mycket ovanliga och kan inte förutsägas enligt normala migrationsmönster
+    för området.'
+  en: '# Asian Desert Warbler (Curruca nana) in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Asian Desert Warbler breeds in central and western Asia and the extreme eastern
+    edge of Europe, with populations migrating to southwestern Asia and northeastern
+    Africa for winter. However, this species does not naturally occur in Scandinavia
+    or Northern Europe during any season. Its range is confined to arid regions of
+    Asia and does not extend into Scandinavian territories, making it irrelevant for
+    a Northern European bird guide.'
+image_refs:
+- role: hero
+  path: Q110257494/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/6924064">James
+    Eaton</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Curruca nana - James Eaton -
+    338957939.jpeg
+  commons_filename: Curruca nana - James Eaton - 338957939.jpeg
+- role: secondary
+  path: Q110257494/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/628259">Kudaibergen
+    Amirekul</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Curruca nana - Kudaibergen Amirekul
+    - 562372000.jpeg
+  commons_filename: Curruca nana - Kudaibergen Amirekul - 562372000.jpeg
+- role: secondary
+  path: Q110257494/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/628259">Kudaibergen
+    Amirekul</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Curruca nana - Kudaibergen Amirekul
+    - 562372019.jpeg
+  commons_filename: Curruca nana - Kudaibergen Amirekul - 562372019.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:11:18.768793+00:00'
+sources:
+  wikipedia_sv_revision: '58626005'
+  wikipedia_en_revision: '1313912969'
+  claude_model: claude-haiku-4-5-20251001

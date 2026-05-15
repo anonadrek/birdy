@@ -1,0 +1,93 @@
+id: Q110257506
+scientific_name: Curruca melanothorax
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Cypernsångare
+  en: Cyprus Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Cypernsångare
+
+
+    Cypernsångare är en liten tätting som enbart förekommer på Cypern, där det häckar.
+    Trots sitt mycket begränsade utbredningsområde bedöms arten som livskraftig av
+    IUCN och verkar inte vara hotad. Arten tillhör familjen sylvior, som består av
+    små insektsätande fåglar.
+
+
+    För mer detaljerad information om artens utseende, beteende och läte rekommenderas
+    att konsultera specialiserad fågellitteratur eller ornitologiska källor, då tillgänglig
+    information här är begränsad.'
+  en: '# Cyprus Warbler
+
+
+    The Cyprus warbler is a small warbler endemic to Cyprus, where it breeds exclusively
+    on the island. As a short-distance migrant, it abandons its breeding grounds each
+    winter, moving south to spend the colder months in the eastern Mediterranean region,
+    particularly in Israel, Jordan, and Egypt.
+
+
+    This species belongs to the Sylviidae family, a group characterized by small,
+    active insectivorous songbirds. Like other warblers, it likely forages in vegetation
+    for insects and small invertebrates. The Cyprus warbler''s restricted breeding
+    range makes it a species of particular interest to birders visiting the island
+    during the breeding season, though sightings during migration periods may also
+    occur in wintering grounds across the eastern Mediterranean.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: The Cyprus Warbler is a short-distance migrant with a restricted breeding range
+    limited to Cyprus. This small warbler species winters in the eastern Mediterranean
+    and Middle East regions, primarily in Israel, Jordan, and Egypt. While it does
+    not naturally occur in Scandinavia or Northern Europe as a regular migrant or
+    resident, the species demonstrates typical Mediterranean migration patterns, moving
+    between its Cypriot breeding grounds and wintering territories in the Levant and
+    North Africa. Its presence in northern European regions would be considered highly
+    exceptional and accidental rather than part of its normal annual cycle.
+image_refs:
+- role: hero
+  path: Q110257506/hero.jpg
+  width: 2048
+  height: 1366
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1476120">Jan
+    Ebr &amp; Ivana Ebrová</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cyprus Warbler (Curruca melanothorax)
+    in Israel.jpg
+  commons_filename: Cyprus Warbler (Curruca melanothorax) in Israel.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:10:22.070970+00:00'
+sources:
+  wikipedia_sv_revision: '56594831'
+  wikipedia_en_revision: '1334953762'
+  claude_model: claude-haiku-4-5-20251001

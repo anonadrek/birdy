@@ -1,0 +1,97 @@
+id: Q110257508
+scientific_name: Curruca cantillans
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Rödstrupig sångare
+  en: Eastern Subalpine Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödstrupig sångare
+
+
+    Rödstrupig sångare är en liten sångfågel i sylviorfamiljen med osäkra artgränser.
+    Den är nära släkt med rosensångaren och rostsångaren. Arten häckar i södra och
+    sydöstra Europa och är en flyttfågel som övervintrarar i Sahel-zonen i Afrika,
+    söder om Sahara.
+
+
+    Under vårmigration är rödstrupig sångare en sällsynt gäst i norra Europa, där
+    den mest förekommer under maj. Som många små sångare i familjen är den en livlig
+    fågel med karakteristiska beteenden bland buskar och låg vegetation. För den intresserade
+    fågelskådaren kan arten vara en spännande fynd under vårens migrationstid, särskilt
+    på lokaler där små sångfåglar samlas.'
+  en: '# Eastern Subalpine Warbler
+
+
+    The Eastern Subalpine Warbler is a small warbler belonging to the Sylviidae family.
+    It breeds in the southernmost regions of Europe, favouring warm, dry habitats
+    typical of Mediterranean and sub-Mediterranean zones. This species was first described
+    by naturalist Peter Simon Pallas in 1764 and originally classified under the genus
+    Motacilla before being reclassified.
+
+
+    As a small warbler, the Eastern Subalpine Warbler shares the compact proportions
+    characteristic of its family. Its name derives from the Latin "cantillans," meaning
+    "warbling," which reflects its vocal nature. The species is an active singer,
+    particularly during the breeding season when males use their song to establish
+    territory and attract mates.
+
+
+    The Eastern Subalpine Warbler frequents scrubland, low vegetation, and rocky hillsides
+    in its southern European range. Like other warblers, it is primarily insectivorous,
+    gleaning small prey from vegetation. It remains relatively elusive due to its
+    preference for dense, low cover, making direct observation challenging despite
+    its vocal activity.'
+migration:
+  sv: '# Rödstrupig sångare i Skandinavien och Nordeuropa
+
+
+    Rödstrupig sångare är en mycket sällsynt fågel i Skandinavien och norra Europa.
+    Arten häckar i södra och sydöstra Europa och är endast en enstaka gäst i norr,
+    framför allt under maj månad. Under vintern flyttar arten långväga till Sahel
+    i Afrika, söder om Sahara, där den övervintraer. De få observationer som görs
+    i nordeuropa sker således under vårmigration när fåglarna drar från sina afrikanska
+    övervintringsområden mot sina häckningsrevir i söder.'
+  en: '# Eastern Subalpine Warbler - Occurrence in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Eastern Subalpine Warbler breeds in southernmost Europe and does not naturally
+    occur in Scandinavia or Northern Europe. This small warbler''s range is restricted
+    to Mediterranean and southern continental regions, making it a non-resident species
+    for the Nordic countries. Sightings in northern areas would represent exceptional
+    vagrants outside the species'' normal distribution.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:11:29.627254+00:00'
+sources:
+  wikipedia_sv_revision: '57581746'
+  wikipedia_en_revision: '1347208442'
+  claude_model: claude-haiku-4-5-20251001

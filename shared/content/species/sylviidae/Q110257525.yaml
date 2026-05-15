@@ -1,0 +1,67 @@
+id: Q110257525
+scientific_name: Curruca deserticola
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Atlassångare
+  en: Tristram’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Atlassångare
+
+
+    Atlassångare är en liten sylvia som häckar i nordvästra Afrika, framför allt i
+    bergstrakter med sparsmäkrad växtlighet. Arten är i huvudsak stannfågel och lämnar
+    sällan sitt häckningsområde.
+
+
+    Fågeln är gråbrun till brungråfärgad på ovansidan med ljusare undersida. Det är
+    en liten, diskret fågel som är lätt att förbise bland den torra markvegentationen
+    där den vistas. Atlassångare är en aktiv och dold art som ofta rör sig lågt bland
+    buskar och låg vegetation.
+
+
+    Arten är klassificerad som livskraftig av IUCN, vilket indikerar en stabil populationssituation.
+    Som stannfågel är den året runt närvarande i sitt begränsat utbredningsområde
+    i Marocko, Algeriet och Tunisien.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:11:52.019301+00:00'
+sources:
+  wikipedia_sv_revision: '57591016'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

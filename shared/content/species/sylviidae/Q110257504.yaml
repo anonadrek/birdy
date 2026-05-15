@@ -1,0 +1,136 @@
+id: Q110257504
+scientific_name: Curruca curruca
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Ärtsångare
+  en: Lesser Whitethroat
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ärtsångare
+
+
+    Ärtsångare är en liten sångfågel som häckar över stora delar av Europa samt i
+    västra och centrala Asien. Det är en flyttfågel som övervakar söder om Sahara,
+    på Arabiska halvön och i Indien under vintermånaderna.
+
+
+    Arten tillhör familjen sylvior och är vanlig inom sitt utbredningsområde. Som
+    många små sångfåglar är ärtsångaren en diskret fågel som föredrar buskmarker och
+    täta växtsamhällen. Där det återvänder efter sin långa flyttning söker det föda
+    bland löv och grenar. Under häckningstiden är arten territoriell och försvarar
+    aktivt sitt område.
+
+
+    Ärtsångarens sång är karakteristisk och hjälper till vid identifikationen. Dess
+    läte utgörs av snabba, raspiga fraser som ofta framfördes från en väl dold plats
+    i busksnåren. Trots sitt lilla format är ärtsångaren en ivrig sångare under våren
+    när den kommit tillbaka från sina övervintringskvarter.'
+  en: '# Lesser Whitethroat
+
+
+    The lesser whitethroat is a small warbler widespread across temperate Europe and
+    the western Palearctic region. It is a strongly migratory species, breeding in
+    these northern areas during summer before traveling to winter grounds in sub-Saharan
+    Africa, Arabia, and India.
+
+
+    This compact passerine is characterized by its grey-brown upperparts and white
+    underparts, with a distinctive dark face mask and grey crown. It tends to be restless
+    and active, often skulking in dense scrub and hedgerows where it forages for insects
+    and small invertebrates. The bird moves purposefully through vegetation, frequently
+    flicking its tail.
+
+
+    The lesser whitethroat''s song is a distinctive rattling or chattering sound,
+    often preceded by a quieter warbling phrase. Its call note is a sharp, hard "tack."
+    During breeding season, it inhabits scrubby woodland, thick hedgerows, and areas
+    with dense shrubby growth. It prefers more overgrown and thorny habitats than
+    the closely related garden warbler, often keeping to the lower and middle stratum
+    of vegetation where it remains relatively inconspicuous despite its vocal presence.'
+migration:
+  sv: 'Ärtsångare är en flyttfågel som återvänder till Skandinavien och Nordeuropa
+    under våren för att häcka. Arten anländer vanligtvis i maj efter sin långa vinterresa
+    från Afrika och Asien. Under häckningstiden är arten utbredd över stora delar
+    av Sverige, Norge och Danmark.
+
+
+    Efter häckningssäsongen påbörjar ärtsångaren sin höstflyttning mot söder under
+    juli och augusti. Arten övervintrar söder om Sahara, på Arabiska halvön och i
+    Indien, där den stannar fram till våren då den återvänder till sina häckningsområden
+    i Nord- och Centraleuropa.'
+  en: '# Lesser Whitethroat (Curruca curruca) in Scandinavia/Northern Europe
+
+
+    The Lesser Whitethroat is a strongly migratory species that breeds throughout
+    Scandinavia and Northern Europe during the breeding season. Birds typically arrive
+    in late April and May, establishing territories in scrubland and woodland edges.
+    The entire breeding population vacates the region in autumn, with migration occurring
+    primarily in August and September, as birds depart for their African wintering
+    grounds located south of the Sahara, as well as regions in Arabia and India. No
+    individuals overwinter in Scandinavia or Northern Europe, making this a complete
+    summer visitor to the region. Return migration begins in spring as temperatures
+    rise and food availability increases.'
+image_refs:
+- role: hero
+  path: Q110257504/hero.jpg
+  width: 2158
+  height: 1480
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser Whitethroat Curruca curruca
+    DSCN1888 (18).jpg
+  commons_filename: Lesser Whitethroat Curruca curruca DSCN1888 (18).jpg
+- role: secondary
+  path: Q110257504/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: Codrin Bucur
+  source_url: https://commons.wikimedia.org/wiki/File:Curruca curruca ssp. curruca.jpg
+  commons_filename: Curruca curruca ssp. curruca.jpg
+- role: secondary
+  path: Q110257504/secondary-2.jpg
+  width: 1800
+  height: 1139
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/145489125@N03/">peterichman</a> <span
+    class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a href="//commons.wikimedia.org/wiki/File:Klappergrasm%C3%BCcke_(Curruca_curruca)_2,_Filey,_North_Yorkshire.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Klappergrasmücke (Curruca curruca)
+    2, Filey, North Yorkshire.jpg
+  commons_filename: Klappergrasmücke (Curruca curruca) 2, Filey, North Yorkshire.jpg
+review_status: approved
+review_notes: "Hero = Curruca curruca (Lesser Whitethroat / Ärtsångare); allmän i buskmark och trädgårdar i hela SE."
+generated_at: '2026-05-15T21:13:24.522695+00:00'
+sources:
+  wikipedia_sv_revision: '59258676'
+  wikipedia_en_revision: '1351805039'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,67 @@
+id: Q110257519
+scientific_name: Curruca sarda
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Sardinsk sångare
+  en: Marmora’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sardinsk sångare
+
+
+    Sardinsk sångare är en liten sångare inom familjen sylvior. Det är en stannfågel
+    med utbredning på Sardinien, Korsika och närliggande små öar i Medelhavet. Under
+    vintern förekommer arten även i södra Italien och nordöstra Afrika.
+
+
+    Arten var tidigare klassificerad tillsammans med balearisk sångare som en gemensam
+    art, men behandlas nu som egen species. Sardinsk sångare kategoriseras av IUCN
+    som livskraftig, vilket indikerar en stabil population utan större hotande faktorer.
+
+
+    För ytterligare detaljer om fågels utseende, röst och beteende rekommenderas att
+    konsultera fältguider specifikt inriktade på mediterraneanska fågelarter, då källtexten
+    är begränsad.'
+  en: ''
+migration:
+  sv: '# Sardinsk sångare i Nordeuropa
+
+
+    Sardinsk sångare förekommer inte naturligt i Skandinavien eller Nordeuropa. Arten
+    är en stannfågel på Sardinien, Korsika och närliggande medelhavsöar, där den är
+    bosatt året runt. Under vintern sprider sig populationen något och påträffas då
+    även i södra Italien och nordöstra Afrika. Arten utgör således ingen del av den
+    nordeuropeiska fågelfaunan och har ingen migrationsmönster relevant för Skandinavien.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:10:58.914735+00:00'
+sources:
+  wikipedia_sv_revision: '56777844'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

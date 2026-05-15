@@ -1,0 +1,132 @@
+id: Q188446
+scientific_name: Sylvia atricapilla
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Sylvia
+  ioc_order: Passeriformes
+names:
+  sv: Svarthätta
+  en: Eurasian Blackcap
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svarthätta
+
+
+    Svarthätta är en medelstor sångare som tillhör familjen sylvior. Hanen är lätt
+    att känna igen på sin svarta huvud­kappe, medan honan har en rödbrun hjässa. Båda
+    könen är för övrigt gråbruna på ovansidan och ljusare på undersidan.
+
+
+    Arten är en livlig och dold fågel som håller sig gärna i tät växtlighet. Den är
+    en skicklig sångare med en vacker, mjuk melodi som hörs framför allt under häckningstiden.
+    Svarthättan födosöker genom att söka efter insekter och små frön, ofta högt upp
+    i buskage och träd.
+
+
+    Arten förekommer vanligt som häckfågel i olika typer av skogshabitat och täta
+    buskmarker. Nordliga populationer är flyttfåglar som söker sig till Medelhavsområdet
+    och Afrika söder om Sahara när vintern kommer. Fåglar från väst- och södra Europa
+    är ofta stannfåglar som finns kvar året runt. Svarthättan klassificeras som livskraftig
+    och är inte hotad.'
+  en: '# Eurasian Blackcap
+
+
+    The Eurasian blackcap is a widespread and common warbler easily identified by
+    its distinctive head cap. Males display a striking black cap contrasting with
+    olive-grey upperparts and pale grey underparts, while females show a reddish-brown
+    cap instead. The bird''s plumage is relatively uniform across its five subspecies,
+    with both sexes presenting neat, clearly defined crowns. Its closest relative,
+    the garden warbler, shares a similar song pattern but differs markedly in appearance.
+
+
+    The blackcap''s song is one of its most appealing features—a rich, musical warbling
+    that typically builds to a loud, high-pitched crescendo. In isolated areas such
+    as mountain valleys, simpler song variations are occasionally heard. The bird
+    is highly vocal during breeding season, making it conspicuous despite its preference
+    for dense vegetation.
+
+
+    It inhabits a variety of habitats across Europe, western Asia, and North Africa,
+    ranging from woodland edges and scrub to gardens and parks. The blackcap is adaptable
+    and frequently visits fruit-bearing bushes and hedgerows. While traditionally
+    migratory, some populations now overwinter in northern regions, particularly around
+    gardens where food supplements are available.'
+migration:
+  sv: '# Svarthätta i Skandinavien och Norra Europa
+
+
+    Svarthätta är en vanlig häckfågel i Skandinavien och Norra Europa under våren
+    och sommaren. Fåglarna anländer till området från april-maj och börjar häcka i
+    löv- och blandskogs. Under hösten, från augusti-september, påbörjar de nordliga
+    populationerna sin migration sydöver. Övervintringen sker huvudsakligen i Medelhavsområdet
+    och Afrika söder om Sahara, där fåglarna tillbringar vintern innan de återvänder
+    på våren. En mindre del av populationen i Väst- och Sydeuropa är stannfåglar som
+    övervintar där de häckar.'
+  en: '# Eurasian Blackcap in Northern Europe
+
+
+    The Eurasian blackcap is a summer breeding visitor to Scandinavia and Northern
+    Europe, arriving in late April and May. Populations breed across the region during
+    spring and summer before departing southward in August and September to winter
+    in sub-Saharan Africa and the Mediterranean basin. However, in recent decades,
+    an increasing number of blackcaps have begun overwintering in Central and Northern
+    Europe, particularly in milder areas, representing a significant shift in traditional
+    migration patterns. This population expansion during winter months has been linked
+    to changing climate conditions and increased availability of garden bird feeders.'
+image_refs:
+- role: hero
+  path: Q188446/hero.jpg
+  width: 2137
+  height: 1421
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sylvia atricapilla heineken.jpg
+  commons_filename: Sylvia atricapilla heineken.jpg
+- role: secondary
+  path: Q188446/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sylvia atricapilla JdP 20190405
+    t112815.jpg
+  commons_filename: Sylvia atricapilla JdP 20190405 t112815.jpg
+- role: secondary
+  path: Q188446/secondary-2.jpg
+  width: 1800
+  height: 1552
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Male Blackcap. Sylvia atricapilla
+    - Flickr - gailhampshire.jpg
+  commons_filename: Male Blackcap. Sylvia atricapilla - Flickr - gailhampshire.jpg
+review_status: approved
+review_notes: "Hero = Sylvia atricapilla (Eurasian Blackcap / Svarthätta); allmän häckare i lövskog, ökar i SE."
+generated_at: '2026-05-15T21:11:38.362243+00:00'
+sources:
+  wikipedia_sv_revision: '58946356'
+  wikipedia_en_revision: '1319219762'
+  claude_model: claude-haiku-4-5-20251001

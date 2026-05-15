@@ -1,0 +1,115 @@
+id: Q110257498
+scientific_name: Curruca hortensis
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Herdesångare
+  en: Western Orphean Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Herdesångare
+
+
+    Herdesångaren är en medelstor tätting inom familjen sylvior. Den är nära besläktad
+    med mästersångaren och de två arterna behandlades tidigare som en enda art. Arten
+    häckar i öppen skog och på soliga sluttningar i sydvästra Europa, där den föredrar
+    öppna, ljusa miljöer. Under vintertid är herdesångaren en långdistansflyttare
+    som söker sig till Afrika söder om Sahara för att övervintra.
+
+
+    Herdesångaren är ett vanligt förekommande fågel inom sitt utbredningsområde och
+    IUCN klassificerar den som livskraftig. Även om arten främst är hemmastadd i sydvästra
+    Europa, har den tillfälligt noterats betydligt längre norrut, fram till Nederländerna,
+    vilket visar att den ibland sprider sig utanför sitt normala område.'
+  en: '# Western Orphean Warbler
+
+
+    The western Orphean warbler is a Mediterranean summer visitor that belongs to
+    the Old World warbler family. It is a migratory species, breeding around the Mediterranean
+    region and western Europe, with populations also found in northwestern Africa.
+    The species winters in Sub-Saharan Africa, making it a long-distance migrant.
+    It occasionally appears as a rare vagrant to northern and northwestern Europe,
+    where sightings are noteworthy for birdwatchers.
+
+
+    This warbler favors scrubby and wooded habitats typical of Mediterranean regions.
+    Like other Curruca warblers, it is an active forager, gleaning insects from vegetation.
+    The species is generally secretive and can be challenging to observe, though it
+    may deliver its song from exposed perches during breeding season. Its call and
+    song help distinguish it from related warbler species in its range.
+
+
+    The western Orphean warbler''s presence in northern Europe remains unusual, making
+    records in these areas of particular interest to ornithologists and birdwatchers
+    monitoring range shifts and migration patterns among Mediterranean species.'
+migration:
+  sv: '# Herdesångare i Norden
+
+
+    Herdesångare är en regelbunden men sparsamt förekommande besökare i Skandinavien
+    och Norra Europa under våren och hösten under migrationen. Arten häckar primärt
+    i södra och sydvästra Europa, men enstaka individer når norr till Nederländerna
+    och mycket sällan ännu längre norrut. Under hösten påbörjas migrationerna mot
+    afrikanska övervintringsområden söder om Sahara. Arten är således endast närvarande
+    under migrationsperioderna och förekommer inte som häckfågel eller övervintrare
+    i Skandinavien.'
+  en: '# Western Orphean Warbler (Herdesångare) in Scandinavia
+
+
+    The Western Orphean Warbler is an extremely rare vagrant to Scandinavia and Northern
+    Europe. This Mediterranean summer breeder migrates to Sub-Saharan Africa for winter,
+    with its normal range centered around the Mediterranean basin and extending into
+    northwest Africa. Sightings in Scandinavia are highly irregular and exceptional,
+    occurring during migration periods or as occasional overshoots when birds stray
+    from their established migration routes. The species does not establish breeding
+    populations or regular wintering presence in Northern Europe, making it a noteworthy
+    ornithological record when encountered.'
+image_refs:
+- role: hero
+  path: Q110257498/hero.jpg
+  width: 1267
+  height: 2048
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/wizz1">Kevin</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Curruca hortensis by Kevin.jpg
+  commons_filename: Curruca hortensis by Kevin.jpg
+- role: secondary
+  path: Q110257498/secondary-1.jpg
+  width: 1800
+  height: 1095
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Western Orphean Warbler (Curruca
+    hortensis) (52613237933).jpg
+  commons_filename: Western Orphean Warbler (Curruca hortensis) (52613237933).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:10:57.753970+00:00'
+sources:
+  wikipedia_sv_revision: '56626607'
+  wikipedia_en_revision: '1349638276'
+  claude_model: claude-haiku-4-5-20251001

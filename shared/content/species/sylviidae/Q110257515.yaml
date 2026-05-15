@@ -1,0 +1,63 @@
+id: Q110257515
+scientific_name: Curruca ruppeli
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Svarthakad sångare
+  en: Rüppell’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svarthakad sångare
+
+
+    Svarthakad sångare är en liten tätting som tillhör familjen sylvior. Arten förekommer
+    i sydöstra Europa och är en sällsynt gäst längre norrut. Det är en livskraftig
+    art enligt IUCN:s bedömning.
+
+
+    Arten är anpassad till sitt ursprungliga utbredningsområde i sydöstra Europa,
+    men har dokumenterats dyka upp långt från sitt normala område, ända upp till Finland
+    och Danmark. Detta tyder på att arten ibland genomför utvandringar eller sprider
+    sig bortom sitt vanliga utbredningsområde, möjligtvis drivet av väderförhållanden
+    eller andra miljöfaktorer.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:11:53.460116+00:00'
+sources:
+  wikipedia_sv_revision: '56850742'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

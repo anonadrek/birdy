@@ -1,0 +1,93 @@
+id: Q110257518
+scientific_name: Curruca conspicillata
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Glasögonsångare
+  en: Spectacled Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Glasögonsångare
+
+
+    Glasögonsångare är en liten tätting som förekommer huvudsakligen i sydvästra Europa
+    och nordvästra Afrika, med lokala förekomster vid östra Medelhavsområdet. Det
+    är en livskraftig art enligt IUCN:s bedömning.
+
+
+    Arten är en typisk medlem av sylvior-familjen och anpassad till sitt varma, torra
+    habitat. Glasögonsångaren är aktiv och rörlig, ofta sedd i låg vegetation där
+    det söker föda. Arten är bäst känd för sitt karakteristiska utseende med markanta
+    ansiktsmärkningar som påminner om glasögon – en egenskap som även återspeglas
+    i dess namn.
+
+
+    För den som önskar studera denna art är det viktigt att söka upp lämpliga habitat
+    i dess utbredningsområde, då arten föredrar denna specifika region. Som många
+    mindre tättingar kan det vara utmanande att observera utan erfarenhet, men det
+    återbelönar uppmärksamme fågelskådare med intressanta beteenden och möjligheter
+    till närmare studier.'
+  en: '# Spectacled Warbler
+
+
+    The Spectacled Warbler is a small passerine warbler named for the distinctive
+    pale eye-rings that give it a "spectacled" appearance. This feature is its most
+    striking visual characteristic, making identification relatively straightforward
+    for observers.
+
+
+    Little detailed information is provided in the source material about its specific
+    behaviour, vocalizations, or preferred habitats. As a member of the Curruca genus
+    within the Sylviidae family, it shares characteristics typical of warblers, though
+    particular details about its call, feeding habits, and seasonal movements would
+    require additional sources for a complete description.
+
+
+    For those interested in observing this species, consulting regional bird guides
+    and local birding communities would provide more comprehensive information about
+    where and when it can be encountered.'
+migration:
+  sv: 'sv: Migrationsdata saknas för denna art.
+
+
+    en: Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and etymological information
+    about the Spectacled Warbler, with no details regarding its occurrence, migration
+    patterns, or seasonal distribution in Scandinavia or Northern Europe. To provide
+    accurate information about this species'' movements and presence throughout the
+    year in these regions, additional sources with specific biogeographical and phenological
+    data would be required.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:13:10.417295+00:00'
+sources:
+  wikipedia_sv_revision: '57874779'
+  wikipedia_en_revision: '1347207751'
+  claude_model: claude-haiku-4-5-20251001

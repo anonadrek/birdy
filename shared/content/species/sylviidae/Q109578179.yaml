@@ -1,0 +1,112 @@
+id: Q109578179
+scientific_name: Curruca leucomelaena
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Arabsångare
+  en: Arabian Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Arabsångare
+
+
+    Arabsångare är en liten fågel i sylviefamiljen som förekommer på Arabiska halvön
+    och i nordöstra Afrika. Arten tillhör ordningen tättingar och är anpassad för
+    livet i arid miljö.
+
+
+    Beståndet har minskat under senare tid, men arten betraktas fortfarande som livskraftig
+    och är inte klassificerad som hotad. Fågeln är relativt vanlig inom sitt utbredningsområde,
+    där den lever i lämpliga habitat. Trots populationsminskningen anses arten kunna
+    upprätthålla en stabil population på medellång sikt.'
+  en: '# Arabian Warbler
+
+
+    The Arabian warbler, also called the Red Sea warbler or Blandford''s warbler,
+    is a small Old World warbler belonging to the Sylviidae family. It inhabits arid
+    regions across northeastern Africa and the Arabian Peninsula, where it favours
+    dry savanna landscapes dotted with acacia patches. This species has adapted well
+    to harsh, sparsely vegetated environments where few other songbirds thrive.
+
+
+    Little detailed information is available about the Arabian warbler''s appearance
+    and behaviour in popular literature. Like other warblers in its family, it is
+    likely a small, agile bird that forages actively among vegetation for insects.
+    Its calls and songs remain poorly documented in accessible sources, though typical
+    warbler vocalizations—ranging from scratchy notes to more melodious phrases—can
+    be expected.
+
+
+    Birdwatchers seeking this species should focus on acacia scrubland and dry savanna
+    habitats during appropriate seasons. Its preference for arid environments and
+    scattered vegetation means it may be difficult to spot, requiring patience and
+    careful observation. The Arabian warbler remains relatively understudied compared
+    to European warbler species, making each sighting valuable for ornithological
+    knowledge.'
+migration:
+  sv: 'sv: Migrationsdata saknas för denna art.
+
+
+    en: Migration data unavailable for this species.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller endast information om att arten förekommer
+    på Arabiska halvön och i nordöstra Afrika, utan någon information om migration,
+    övervintringsområden eller säsongsmönster i Skandinavien eller Nordeuropa. Därför
+    kan ingen faktisk migrationsinformation tillhandahållas.'
+  en: '# Arabian Warbler - Scandinavian/Northern European Occurrence
+
+
+    Migration data unavailable for this species.
+
+
+    The Arabian Warbler is a resident species of arid regions in northeastern Africa
+    and the Arabian Peninsula, with no documented occurrence in Scandinavia or Northern
+    Europe. Its range is restricted to countries such as Saudi Arabia, Yemen, Oman,
+    Egypt, Sudan, and the Horn of Africa, where it inhabits dry savanna and acacia
+    woodland. There are no records of this species migrating to or occurring in Scandinavian
+    regions at any time of year.'
+image_refs:
+- role: hero
+  path: Q109578179/hero.jpg
+  width: 2048
+  height: 1368
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Curruca leucomelaena - Christoph
+    Moning - 91958597.jpeg
+  commons_filename: Curruca leucomelaena - Christoph Moning - 91958597.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:10:37.259073+00:00'
+sources:
+  wikipedia_sv_revision: '56842126'
+  wikipedia_en_revision: '1344529378'
+  claude_model: claude-haiku-4-5-20251001

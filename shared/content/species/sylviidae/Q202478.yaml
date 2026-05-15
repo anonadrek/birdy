@@ -1,0 +1,126 @@
+id: Q202478
+scientific_name: Sylvia borin
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Sylvia
+  ioc_order: Passeriformes
+names:
+  sv: Trädgårdssångare
+  en: Garden Warbler
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Trädgårdssångare
+
+
+    Trädgårdssångare är en liten och diskret fågel med brungröngrå fjäderdräkt som
+    lätt kan förväxlas med andra små sångare. Den saknar markanta karaktärsdrag men
+    är ändå möjlig att identifiera för den tränade ögatorn. Fågeln är talrik på sitt
+    utbredningsområde och IUCN kategoriserar arten som livskraftig.
+
+
+    Arten häckar i större delen av Europa och österut till västra Sibirien, där den
+    föredrar tätare vegetation och buskiga miljöer. Under vintern genomför trädgårdssångaren
+    en lång migrationsresa till tropiska Afrika för att söka föda. Fågeln är en aktiv
+    förare som ofta ses hoppa mellan grenar när den jagar insekter, vilket är huvuddelen
+    av dess diet.'
+  en: '# Garden Warbler
+
+
+    The garden warbler is a small, plain warbler that breeds across most of Europe
+    and into western Siberia. It is characterised by uniform brown upperparts and
+    dull white underparts, with a notably long tail and wings. Males and females look
+    identical, as do juveniles, making this species notoriously difficult to distinguish
+    from other unstreaked warblers in the field. Its two subspecies are very similar
+    and interbreed where their ranges overlap.
+
+
+    This warbler is an accomplished vocalist, producing a rich, melodic song that
+    rivals that of its closest relative, the blackcap. The two species often compete
+    for territory when breeding in the same woodland habitats. The garden warbler
+    inhabits a variety of wooded and scrubby environments, where it hunts insects
+    and forages for berries.
+
+
+    Its lack of distinctive field marks means the garden warbler is often identified
+    by process of elimination among similar species, combined with habitat and behaviour
+    observations. Despite its plain appearance, its beautiful song makes it a sought-after
+    species for birdwatchers and ornithologists studying warbler populations across
+    its extensive Palearctic range.'
+migration:
+  sv: '# Trädgårdssångare – Förekomst i Skandinavien/Nordeuropa
+
+
+    Trädgårdssångaren är en långflyttare som häckar i större delen av Europa, inklusive
+    Skandinavien och Nordeuropa. Arten anländer till sitt häckningsområde under våren,
+    typiskt från april-maj, efter sin långa övervintring i tropiska Afrika. Under
+    hösten, från augusti-september, återvänder fågeln söderut för att undvika de kalla
+    nordeuropeiska vintermånaderna. Under vintermånaderna förekommer arten inte i
+    Skandinavien utan befinner sig istället i sitt afrikanska övervintringsområde.'
+  en: '# Garden Warbler Migration in Scandinavia
+
+
+    The Garden Warbler is a summer visitor to Scandinavia and northern Europe, arriving
+    in late April and May to breed in woodland and scrubland habitats. Breeding populations
+    are widespread across the region during the spring and summer months. In autumn,
+    typically from August onwards, these warblers undertake a complete migration southward,
+    departing Scandinavia by September. They winter in sub-Saharan Africa, primarily
+    in savanna and woodland regions south of the Sahara. The species shows strong
+    philopatry and annual site fidelity, with individuals returning to similar breeding
+    territories each spring after their long-distance migration.'
+image_refs:
+- role: hero
+  path: Q202478/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/4147611">Сергей
+    Неклюдов</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sylvia borin 315567165.jpg
+  commons_filename: Sylvia borin 315567165.jpg
+- role: secondary
+  path: Q202478/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
+    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Garden Warbler Sylvia borin.jpg
+  commons_filename: Garden Warbler Sylvia borin.jpg
+- role: secondary
+  path: Q202478/secondary-2.jpg
+  width: 1350
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Sanja_%C5%A0umanovi%C4%87&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Sanja Šumanović (page does not exist)">Sanja Šumanović</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Siva grmuša (Sylvia borin) Garden
+    Warbler.jpg
+  commons_filename: Siva grmuša (Sylvia borin) Garden Warbler.jpg
+review_status: approved
+review_notes: "Hero = Sylvia borin (Garden Warbler / Trädgårdssångare); allmän häckare i lövskog och buskmark i hela SE."
+generated_at: '2026-05-15T21:12:36.859750+00:00'
+sources:
+  wikipedia_sv_revision: '58946423'
+  wikipedia_en_revision: '1338377010'
+  claude_model: claude-haiku-4-5-20251001

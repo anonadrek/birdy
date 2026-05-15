@@ -1,0 +1,69 @@
+id: Q110257513
+scientific_name: Curruca subalpina
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Moltonisångare
+  en: Moltoni’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Moltonisångare
+
+
+    Moltonisångare är en liten sångare från sydeuropa som nyligen klassificerades
+    som egen art, tidigare betraktad som underart till rödstrupig sångare. Fågeln
+    häckar på öar i västra Medelhavet samt i norra Italien. Arten är en långdistansflyktare
+    som tillbringar vintern i Afrika söder om Sahara.
+
+
+    Arten är en mycket liten och diskret sångare som främst håller sig i tätt buskigt
+    vegetation. Som många små sångare är den svår att observera då den ofta förblir
+    gömnd bland lövverket. Moltonisångare är inte särskilt välkänd bland fågelskådare
+    och ses huvudsakligen under häckningssäsongen på sina begränsade häckningsplatser.
+    IUCN kategoriserar arten som livskraftig, vilket indikerar en stabil population
+    utan större hot.'
+  en: ''
+migration:
+  sv: '# Moltonisångare i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    **sv:** Moltonisångaren är en sydeuropeisk art som inte förekommer naturligt i
+    Skandinavien eller Nordeuropa. Arten häckar på öar i västra Medelhavet och norra
+    Italien, och övervintar i Afrika söder om Sahara. Det finns ingen etablerad förekomst
+    av denna art i våra nordiska regioner, varför migrationsmönster för Skandinavien/Nordeuropa
+    inte är tillämpligt.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:10:49.850956+00:00'
+sources:
+  wikipedia_sv_revision: '59175421'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,105 @@
+id: Q104867606
+scientific_name: Curruca nisoria
+taxonomy:
+  family: Sylviidae
+  family_sv: Sylvior
+  genus: Curruca
+  ioc_order: Passeriformes
+names:
+  sv: Höksångare
+  en: Barred Warbler
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Höksångare
+
+
+    Höksängaren är en relativt stor och kraftig tätting med ett karakteristiskt gult
+    öga. Den mest påfallande känneteckningen är den hökliknande tvärbandningen på
+    undersidan, vilket har gett den dess namn. Fågeln har en kraftfull framtoning
+    jämfört med många andra sångare.
+
+
+    Arten häckar i östra Europa och västra Asien, där den föredrar igenväxande buskmarker.
+    Under vintern är den långflyttare som drar till Östafrika för att söka föda. Under
+    häckningstiden är höksångaren bosatt i täta buskbestånd där den söker föda och
+    bygger bo.
+
+
+    Enligt IUCN-klassificering är arten livskraftig på global nivå. Dock är den hotad
+    i vissa randområden av sitt utbredningsområde, där populationerna är mindre stabila
+    och mer sårbara för förändringar i habitatet.'
+  en: '# Barred Warbler
+
+
+    The Barred Warbler is a warbler species found across temperate regions of central
+    and eastern Europe and western Asia, with populations wintering in tropical eastern
+    Africa. This strongly migratory passerine undertakes considerable seasonal journeys
+    between its breeding grounds and wintering quarters.
+
+
+    Unfortunately, the provided source text offers limited information about the species''
+    appearance, behaviour, call, and specific identification features that would help
+    distinguish it from related warblers. A comprehensive guide would require additional
+    sources detailing its plumage patterns, size, vocalizations, and preferred habitats
+    within its breeding and wintering ranges.
+
+
+    To provide the full ornithological description you seek, supplementary references
+    covering field identification characteristics, ecological preferences, and behavioural
+    traits would be beneficial.'
+migration:
+  sv: '# Höksångare – Migration i Norden
+
+
+    Höksångare är en långdistansflytt som häckar i östeuropa och västra Asien. Arten
+    ankommer till häckningsområdena under våren och häckar i igenväxande buskmarker.
+    Under hösten genomför den en omfattande migration västerut och söderut för att
+    övervintra i Östafrika. I Sverige är arten hotad och förekommer endast sporadiskt
+    i vissa randområden under häckningstiden. Fågeln är således inte närvarande i
+    Skandinavien under vintermånaderna.'
+  en: The Barred Warbler is a strongly migratory species that breeds across central
+    and eastern Europe, including parts of Scandinavia. Birds arrive in spring from
+    their tropical East African wintering grounds, typically during May. They establish
+    breeding territories throughout the summer months before beginning their autumn
+    migration, which occurs from August onwards. The species completely vacates Scandinavian
+    breeding areas by September or early October as populations move south towards
+    their African wintering grounds. The Barred Warbler is therefore absent from northern
+    Europe during winter months, returning exclusively as a breeding visitor during
+    the warmer season.
+image_refs:
+- role: hero
+  path: Q104867606/hero.jpg
+  width: 2048
+  height: 1282
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Curruca nisoria 378155893.jpg
+  commons_filename: Curruca nisoria 378155893.jpg
+review_status: approved
+review_notes: "Hero = Sylvia nisoria (Barred Warbler / Höksångare); allmän i kantzoner och buskmark i södra och mellersta SE."
+generated_at: '2026-05-15T21:11:57.123791+00:00'
+sources:
+  wikipedia_sv_revision: '57963771'
+  wikipedia_en_revision: '1316770098'
+  claude_model: claude-haiku-4-5-20251001
