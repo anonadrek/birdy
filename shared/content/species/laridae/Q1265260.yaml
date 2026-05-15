@@ -1,0 +1,64 @@
+id: Q1265260
+scientific_name: Sternula saundersi
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Sternula
+  ioc_order: Charadriiformes
+names:
+  sv: Persisk småtärna
+  en: Saunders’s Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q1265260/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/hungryholobiont">hungryholobiont</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Saunders's Tern (Sternula saundersi),
+    Jeddah, Saudi Arabia.jpg
+  commons_filename: Saunders's Tern (Sternula saundersi), Jeddah, Saudi Arabia.jpg
+- role: secondary
+  path: Q1265260/secondary-1.jpg
+  width: 1800
+  height: 1171
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Lintophilip&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Lintophilip (page does not exist)">Lintophilip</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Saunders's Tern (Sternula saundersi)
+    flying, UAE.jpg
+  commons_filename: Saunders's Tern (Sternula saundersi) flying, UAE.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:02:09.854713+00:00'
+sources:
+  wikipedia_sv_revision: '55690604'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

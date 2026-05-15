@@ -1,0 +1,117 @@
+id: Q652348
+scientific_name: Chroicocephalus cirrocephalus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Chroicocephalus
+  ioc_order: Charadriiformes
+names:
+  sv: Gråhuvad mås
+  en: Grey-headed Gull
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gråhuvad mås
+
+
+    Gråhuvad mås är en måsfågel som förekommer huvudsakligen i Afrika söder om Sahara
+    och i Sydamerika. Arten är karakteriserad av sitt grå huvud, vilket ger den sitt
+    namn. Det är en relativt vanlig och livskraftig art vars bestånd är på ökningen.
+
+
+    Arten återfinns främst i sitt naturliga utbredningsområde i tropiska och subtropiska
+    regioner, även om enstaka fynd rapporteras från södra Europa. Gråhuvad mås är
+    anpassad till att leva i områden nära vatten, där den kan föda sig på fisk och
+    andra små djur típiskt för måsfåglar.'
+  en: '# Grey-headed Gull
+
+
+    The grey-headed gull is a small gull with a distinctive grey hood that covers
+    the head and upper neck, contrasting with its white body and pale grey wings.
+    It is more delicate in appearance than many larger gull species, with a relatively
+    slender bill and legs.
+
+
+    This species breeds across scattered regions in South America and Africa south
+    of the Sahara. Rather than being strictly migratory, it is dispersive, meaning
+    populations shift seasonally with greater numbers spreading into new areas during
+    winter months. It typically frequents coastal regions, estuaries, and inland waterways
+    where it feeds on small fish and other aquatic prey.
+
+
+    Notably, populations in South America and Africa may actually represent two separate
+    cryptic species that are difficult to distinguish visually. The grey-headed gull
+    occasionally appears as a rare vagrant far outside its normal range, with records
+    from the United States, Italy, and Spain. Like many gull species, it was historically
+    classified within the broad genus *Larus* before taxonomic revision placed it
+    elsewhere.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Grey-headed Gull in Northern Europe
+
+
+    The Grey-headed Gull is not a regular visitor to Scandinavia or Northern Europe.
+    This small gull species breeds in South America and Africa south of the Sahara
+    and is not truly migratory, though it is dispersive, becoming more widespread
+    during winter months within its native range. While the species has occasionally
+    occurred as a rare vagrant to southern Europe, including Italy and Spain, it remains
+    an extremely rare and accidental visitor to Northern European waters. Any sightings
+    in Scandinavian regions would be exceptional occurrences rather than part of an
+    established migration pattern or seasonal presence.'
+image_refs:
+- role: hero
+  path: Q652348/hero.jpg
+  width: 1894
+  height: 2048
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/hhulsberg">hhulsberg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus cirrocephalus,
+    Villarino, Provincia de Buenos Aires, Argentina 1.jpg
+  commons_filename: Chroicocephalus cirrocephalus, Villarino, Provincia de Buenos
+    Aires, Argentina 1.jpg
+- role: secondary
+  path: Q652348/secondary-1.jpg
+  width: 1659
+  height: 1800
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/hhulsberg">hhulsberg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus cirrocephalus,
+    General López, Santa Fe, Argentina 1.jpg
+  commons_filename: Chroicocephalus cirrocephalus, General López, Santa Fe, Argentina
+    1.jpg
+- role: secondary
+  path: Q652348/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/tutitah">tutitah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus cirrocephalus,
+    Victoria, Entre Ríos, Argentina 1.jpg
+  commons_filename: Chroicocephalus cirrocephalus, Victoria, Entre Ríos, Argentina
+    1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:02:22.628126+00:00'
+sources:
+  wikipedia_sv_revision: '55605533'
+  wikipedia_en_revision: '1315129662'
+  claude_model: claude-haiku-4-5-20251001

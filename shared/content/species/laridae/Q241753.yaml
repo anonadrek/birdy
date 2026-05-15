@@ -1,0 +1,139 @@
+id: Q241753
+scientific_name: Chlidonias leucopterus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Chlidonias
+  ioc_order: Charadriiformes
+names:
+  sv: Vitvingad tärna
+  en: White-winged Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitvingad tärna
+
+
+    Vitvingad tärna är en liten tärnart inom familjen måsfåglar och tillhör släktet
+    träsktärnor. Fågeln häckar från östra Europa och sträcker sig österut till Centralasien,
+    där den föredrar öppna vattenområden med kärrvegetation. Under vintern är den
+    en långflytt som migrerar till Afrika, södra Asien samt Australien och Nya Zeeland.
+
+
+    Under häckningstiden är vitvingad tärna lätt att identifiera med sitt mörka grå
+    och svarta fjäderdräkt på huvudet och kroppen, medan vingarna är karakteristiskt
+    vita och kontrastar starkt mot den övriga fjäderdräkten. Utanför häckningstiden
+    är den blekare och mer diskret i färgteckningen. Arten är en smidig fiskare som
+    dyker från luften för att fånga små fiskar.
+
+
+    Arten är en sällsynt men återkommande gäst norr om sitt huvudsakliga utbredningsområde
+    i Europa och har även påträffats i Nordamerika. IUCN klassificerar vitvingad tärna
+    som livskraftig.'
+  en: '# White-winged Tern
+
+
+    The white-winged tern is a small tern belonging to the gull family. As its name
+    suggests, it displays distinctive white wings that contrast with its darker plumage,
+    making it identifiable even in flight. The species inhabits freshwater environments
+    across Europe, Africa, Asia, and Australia, where it hunts for small fish and
+    aquatic insects.
+
+
+    This tern is highly aerial and graceful, often seen hovering over water before
+    plunging to catch prey. It is generally gregarious, frequently appearing in small
+    flocks, particularly during migration periods. The bird favors lakes, marshes,
+    and river systems rather than coastal areas, distinguishing it from some related
+    tern species. Its call is relatively quiet compared to other terns, though it
+    becomes more vocal during breeding season.
+
+
+    The white-winged tern is a long-distance migrant, with populations shifting seasonally
+    across continents. It nests colonially on floating vegetation or islands within
+    freshwater habitats. Outside the breeding season, it becomes more dispersed, and
+    vagrants occasionally appear in unexpected locations, making it of interest to
+    birdwatchers across its vast range.'
+migration:
+  sv: '# Vitvingad tärna i Skandinavien/Nordeuropa
+
+
+    Vitvingad tärna är en sällsynt men återkommande gäst i Skandinavien och övriga
+    Nordeuropa. Arten häckar främst i östra Europa och flyttar längre söderut under
+    vintern. De exemplar som förekommer norr om sitt normala häckningsområde är genomflyttare
+    eller enstaka besökare. Arten övervintrar i Afrika, södra Asien samt Australien
+    och Nya Zeeland, varför den helt saknas från Nordeuropa under de kalla månaderna.
+    Sightings i Skandinavien är sporadiska och förekommer huvudsakligen under våren
+    och hösten då fåglar är på väg mellan häcknings- och övervintringsområdena.'
+  en: '# White-winged Tern in Scandinavia/Northern Europe
+
+
+    The white-winged tern is a rare vagrant to Scandinavia and Northern Europe. This
+    species breeds in freshwater wetlands across southern Russia and Central Asia,
+    well south of the regular range of Northern European breeding birds. During migration
+    periods, particularly in late summer and autumn, small numbers occasionally appear
+    in Scandinavian waters as overshooting individuals or during dispersal movements.
+    Records are irregular and unpredictable, with sightings concentrated mainly in
+    coastal areas and larger inland water bodies during August and September.
+
+
+    This species does not establish regular wintering populations in Northern Europe,
+    as it migrates to African wintering grounds. Most Scandinavian observations represent
+    transient visitors rather than established populations, making the white-winged
+    tern an uncommon but noteworthy sighting for regional birdwatchers.'
+image_refs:
+- role: hero
+  path: Q241753/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:White-winged tern (Chlidonias
+    leucopterus) 2021.jpg
+  commons_filename: White-winged tern (Chlidonias leucopterus) 2021.jpg
+- role: secondary
+  path: Q241753/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Chlidonias leucopterus Biebrza
+    1.jpg
+  commons_filename: Chlidonias leucopterus Biebrza 1.jpg
+- role: secondary
+  path: Q241753/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Chlidonias leucopterus Biebrza
+    2.jpg
+  commons_filename: Chlidonias leucopterus Biebrza 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:04:32.408972+00:00'
+sources:
+  wikipedia_sv_revision: '59212080'
+  wikipedia_en_revision: '1317889453'
+  claude_model: claude-haiku-4-5-20251001

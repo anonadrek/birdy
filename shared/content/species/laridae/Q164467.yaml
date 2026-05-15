@@ -1,0 +1,125 @@
+id: Q164467
+scientific_name: Hydrocoloeus minutus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Hydrocoloeus
+  ioc_order: Charadriiformes
+names:
+  sv: Dvärgmås
+  en: Little Gull
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dvärgmås
+
+
+    Dvärgmås är världens minsta mås och är en elegantare och spädare fågel än sina
+    större släktingar inom måsfamiljen. Den kännetecknas av sitt lilla format, smala
+    vingar och lätt byggnad som gör den mycket vig i luften.
+
+
+    Arten förekommer utspritt över Europa och norra Asien, med mindre förekomster
+    även i Nordamerika. Den är en mobil art som följer sitt utbud av små fiskar och
+    kräftdjur, och kan ses både vid kuster och inlandsvatten. Arten tycks öka i antal,
+    vilket gör att beståndet bedöms som livskraftigt och inte hotat.'
+  en: '# Little Gull
+
+
+    The little gull is the world''s smallest gull species, belonging to the family
+    Laridae. It is the only member of its genus, Hydrocoloeus. This diminutive gull
+    is primarily found across the Palearctic region, with occasional small colonies
+    established in North America.
+
+
+    During breeding season, the little gull inhabits freshwater lakes and marshes,
+    where it nests in colonies. It is migratory, spending winters at sea where it
+    takes advantage of coastal and offshore feeding opportunities. The species'' small
+    size distinguishes it from all other gulls, making identification relatively straightforward
+    in the field.
+
+
+    The little gull''s breeding and wintering ecology reflects adaptation to different
+    habitats throughout the year. Its preference for freshwater breeding grounds contrasts
+    with its pelagic winter lifestyle, allowing it to exploit seasonal resources across
+    diverse environments.'
+migration:
+  sv: '# Dvärgmås - Förekomst i Nordeuropa
+
+
+    Dvärgmås är en flyttfågel som förekommer i Skandinavien främst under migration
+    och sommaren. Arten häckar spritt i norra Europa och ankommer till Nordeuropa
+    från april-maj efter sin övervintering i sydligare områden. Under hösten, från
+    augusti till oktober, drar fågeln igen söderut för att övervintring i Medelhavsregionen
+    och Nordafrika. En mindre del av populationen kan ses under vintermånaderna längs
+    mindre hårt frusnä Östersjöns kuster. Arten föredrar kustnära och inlandsvattenområden
+    under både passage och häckningsperioden.'
+  en: '# Little Gull (Hydrocoloeus minutus) in Northern Europe
+
+
+    The Little Gull is a migratory species in Scandinavia and Northern Europe, with
+    breeding populations concentrated around freshwater lakes and marshes during the
+    summer months. Birds typically arrive in breeding areas from April onwards and
+    depart again by late September or October. During winter, the species vacates
+    inland waters and moves to coastal marine environments, where flocks can be observed
+    on northern seas. Some individuals may remain in ice-free coastal areas throughout
+    milder winters, but the majority migrate southward to wintering grounds in Atlantic
+    and Mediterranean regions. The species shows strong site fidelity, with established
+    breeding colonies in Scandinavia attracting returning birds annually.'
+image_refs:
+- role: hero
+  path: Q164467/hero.jpg
+  width: 2400
+  height: 1078
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Little gull (Hydrocoloeus minutus)
+    2019.jpg
+  commons_filename: Little gull (Hydrocoloeus minutus) 2019.jpg
+- role: secondary
+  path: Q164467/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
+    C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Little Gull (Hydrocoloeus minutus)
+    (14497961287).jpg
+  commons_filename: Little Gull (Hydrocoloeus minutus) (14497961287).jpg
+- role: secondary
+  path: Q164467/secondary-2.jpg
+  width: 1800
+  height: 1080
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37949120@N07">Ekaterina
+    Chernetsova (Papchinskaya)</a> from Saint-Petersburg, Russia
+  source_url: https://commons.wikimedia.org/wiki/File:Hydrocoloeus minutus Russia
+    43.jpg
+  commons_filename: Hydrocoloeus minutus Russia 43.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:02:30.781614+00:00'
+sources:
+  wikipedia_sv_revision: '58696779'
+  wikipedia_en_revision: '1314110764'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,101 @@
+id: Q525717
+scientific_name: Anous stolidus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Anous
+  ioc_order: Charadriiformes
+names:
+  sv: Brun noddy
+  en: Brown Noddy
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Brown Noddy
+
+
+    The brown noddy is the largest member of the noddy family within the gull and
+    tern group (Laridae). It is readily distinguished from its closest relative, the
+    black noddy, by its noticeably larger size and distinctly dark brown plumage rather
+    than black. This tropical seabird enjoys a worldwide distribution across warm
+    ocean regions, occurring from the Pacific islands to the Indian Ocean and into
+    Atlantic waters.
+
+
+    Brown noddies are highly colonial birds with a preference for elevated nesting
+    sites on coastal cliffs or in low trees and shrubs, though they occasionally nest
+    on the ground. Each breeding pair typically produces a single egg per season.
+    The species is adapted to marine life and is commonly seen in tropical coastal
+    and oceanic habitats where it feeds on small fish and squid.
+
+
+    As a widespread tropical species, the brown noddy remains relatively common throughout
+    its range, though conservation efforts in certain regions help protect important
+    populations and their breeding colonies.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The brown noddy is a tropical seabird with a worldwide distribution in warm ocean
+    regions. The source text provided contains no information regarding its occurrence
+    in Scandinavia or Northern Europe, nor any details about migration patterns, seasonal
+    movements, or overwintering behavior in these regions. This species is not known
+    to occur regularly in Scandinavian or Northern European waters.'
+image_refs:
+- role: hero
+  path: Q525717/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Sabine%27s_Sunbird" title="User:Sabine's
+    Sunbird">Duncan Wright</a>, USFWS
+  source_url: https://commons.wikimedia.org/wiki/File:Anous stolidus nesting.JPG
+  commons_filename: Anous stolidus nesting.JPG
+- role: secondary
+  path: Q525717/secondary-1.jpg
+  width: 1800
+  height: 1199
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Common Noddy (Anous stolidus)
+    (8603063360).jpg
+  commons_filename: Common Noddy (Anous stolidus) (8603063360).jpg
+- role: secondary
+  path: Q525717/secondary-2.jpg
+  width: 1800
+  height: 1199
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Common Noddy (Anous stolidus)
+    (8603063808).jpg
+  commons_filename: Common Noddy (Anous stolidus) (8603063808).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:05:17.351539+00:00'
+sources:
+  wikipedia_sv_revision: '59100019'
+  wikipedia_en_revision: '1351305776'
+  claude_model: claude-haiku-4-5-20251001

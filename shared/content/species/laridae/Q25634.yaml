@@ -1,0 +1,104 @@
+id: Q25634
+scientific_name: Chroicocephalus ridibundus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Chroicocephalus
+  ioc_order: Charadriiformes
+names:
+  sv: Skrattmås
+  en: Black-headed Gull
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Black-headed Gull
+
+
+    The black-headed gull is a small, highly adaptable gull species found across much
+    of the Palearctic region, breeding from Europe through Asia and in smaller populations
+    along coastal eastern Canada. It is predominantly migratory, with most birds moving
+    southward for winter, though significant numbers remain year-round in the milder
+    climate zones of northwestern Europe. Its breeding range and wintering distributions
+    have made it one of the more widespread gull species across its geographic range.
+
+
+    This species is characterized by its relatively small size compared to other gulls.
+    During breeding season, adults display a distinctive dark brown head, which contrasts
+    sharply with their white body and pale grey wings. In non-breeding plumage, the
+    head becomes white with dark ear patches. The bill is red, as are the legs, adding
+    to its striking appearance.
+
+
+    The black-headed gull is highly gregarious and vocal, often gathering in noisy
+    flocks both at breeding colonies and at feeding sites. It readily adapts to urban
+    environments and inland habitats, not limiting itself to coastal areas. Its diet
+    varies opportunistically, ranging from small fish and invertebrates to human food
+    waste, making it a familiar sight in harbours, parks, and city centres throughout
+    its range.'
+migration:
+  sv: ''
+  en: '# Black-headed Gull (Chroicocephalus ridibundus) in Scandinavia/Northern Europe
+
+
+    The Black-headed Gull is a migratory species throughout much of Scandinavia and
+    northern Europe, with populations showing varying strategies. Most birds migrate
+    southward to winter in milder regions, departing breeding grounds in autumn. However,
+    a significant portion of the population remains year-round in the milder coastal
+    areas of northwestern Europe, including parts of Scandinavia. This species breeds
+    widely across the Palearctic region and is common in northern European breeding
+    habitats during spring and summer months.'
+image_refs:
+- role: hero
+  path: Q25634/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/22539273@N00">Guilhem
+    Vellut</a> from Annecy, France
+  source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus ridibundus (46028272474).jpg
+  commons_filename: Chroicocephalus ridibundus (46028272474).jpg
+- role: secondary
+  path: Q25634/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black-headed Gull 2025 10 18.jpg
+  commons_filename: Black-headed Gull 2025 10 18.jpg
+- role: secondary
+  path: Q25634/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus ridibundus (19544550212).jpg
+  commons_filename: Chroicocephalus ridibundus (19544550212).jpg
+review_status: approved
+review_notes: "Skrattmås — Chroicocephalus ridibundus i sommardräkt; allmän SE-art överallt vid vatten."
+generated_at: '2026-05-15T20:01:57.743435+00:00'
+sources:
+  wikipedia_sv_revision: '58974944'
+  wikipedia_en_revision: '1350037896'
+  claude_model: claude-haiku-4-5-20251001

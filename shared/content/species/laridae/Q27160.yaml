@@ -1,0 +1,128 @@
+id: Q27160
+scientific_name: Larus fuscus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Larus
+  ioc_order: Charadriiformes
+names:
+  sv: Silltrut
+  en: Lesser Black-backed Gull
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Silltrut
+
+
+    Silltrut är en smidig måsfågel med smala, spetsiga vingar och gula ben. Den vuxna
+    fågeln kännetecknas av sin mörka mantel, vilken kan vara antingen svart eller
+    grå beroende på underart. Färgen på manteln varierar mellan populationer, och
+    individer med gråare mantel kan vara svåra att säkert bestämma till art eller
+    underart. Dessa osäkert bestämbara fåglar kallas tillsammans för "ljusmantlade
+    silltrutar".
+
+
+    Silltrut häckar över hela den palearktiska regionen och tillhör det så kallade
+    gråtrutskomplexet av närbesläktade arter. Fågeln är välbyggd och kraftig, men
+    framstår ändå som relativt elegant tack vare sina särskilt utformade vingar. Arten
+    är anpassad till kustnära miljöer och är en vanlig syn längs kuststräckor och
+    på öppen vatten där den ofta ses tillsammans med andra måsfåglar.'
+  en: '# Lesser Black-backed Gull
+
+
+    The lesser black-backed gull is a large gull with dark grey-black upperparts that
+    contrast sharply with its white underparts and head. It has yellow legs and a
+    yellow orbital ring around the eye, distinguishing it from similar species. Its
+    size and powerful build make it a dominant presence among gulls.
+
+
+    This species is highly migratory across much of its range, breeding on Atlantic
+    and Arctic coasts during summer months before dispersing southward for winter.
+    Historically a scarce winter visitor to North America, it has increased dramatically
+    in recent decades and now occurs year-round in some areas, particularly along
+    eastern coasts. It winters from temperate regions south to West Africa, depending
+    on population.
+
+
+    Lesser black-backed gulls are versatile feeders and often gather in large flocks
+    at coastal sites, harbours, and urban areas. While the species remains widespread,
+    conservation concerns have emerged due to significant population declines in parts
+    of its range. The UK holds particular importance, hosting approximately 40 per
+    cent of the European population, though numbers are concentrated at very few breeding
+    colonies.'
+migration:
+  sv: '# Silltrut – Förekomst i Skandinavien/Norra Europa
+
+
+    Silltrut är en migrerande art som återkommer till Skandinavien på våren för häckning.
+    Arten anländer vanligtvis från mars till april efter övervintringar i södra Europa
+    och Medelhavsregionen. Under sommaren häckar silltruten vid kusterna och större
+    insjöar i norra delen av sitt utbredningsområde. I höst, från augusti och framåt,
+    påbörjar arten sin southwardbound migration mot varmare övervintringskvartering
+    i söder, där majoriteten av populationen tillbringar vintern. En mindre del av
+    populationen kan dock stanna kvar under mildrare vintrar.'
+  en: '# Lesser Black-backed Gull (*Larus fuscus*) in Northern Europe
+
+
+    The lesser black-backed gull is a migratory species that breeds throughout Scandinavian
+    and northern European coasts. Birds arrive at breeding sites in spring and depart
+    in autumn for wintering grounds extending from the British Isles southward to
+    West Africa. Winter presence in northern Europe varies, with some individuals
+    overwintering in milder coastal regions, particularly around the British Isles,
+    while others undertake longer migrations to African wintering grounds. The species
+    has shown increasing year-round presence in parts of its range, though specific
+    timing and proportions of overwintering populations in Scandinavia remain variable.'
+image_refs:
+- role: hero
+  path: Q27160/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser black-backed gull (Larus
+    fuscus).jpg
+  commons_filename: Lesser black-backed gull (Larus fuscus).jpg
+- role: secondary
+  path: Q27160/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Larus fuscus Reykjavik 20120623
+    03.JPG
+  commons_filename: Larus fuscus Reykjavik 20120623 03.JPG
+- role: secondary
+  path: Q27160/secondary-2.jpg
+  width: 1800
+  height: 1397
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Larus fuscus Reykjavik 20120623
+    05.JPG
+  commons_filename: Larus fuscus Reykjavik 20120623 05.JPG
+review_status: approved
+review_notes: "Silltrut — Lesser black-backed gull (Larus fuscus); allmän SE-art längs kust + skärgård."
+generated_at: '2026-05-15T20:06:04.261651+00:00'
+sources:
+  wikipedia_sv_revision: '59206157'
+  wikipedia_en_revision: '1341731741'
+  claude_model: claude-haiku-4-5-20251001

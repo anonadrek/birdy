@@ -1,0 +1,121 @@
+id: Q26612
+scientific_name: Rissa tridactyla
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Rissa
+  ioc_order: Charadriiformes
+names:
+  sv: Tretåig mås
+  en: Black-legged Kittiwake
+abundance: allmän
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tretåig mås
+
+
+    Tretåig mås är en medelstor mås som tillhör familjen måsfåglar och är mycket vanlig
+    i Nordatlanten. Den är en typisk kolonihäckare som föredrar klippiga kusthabitat
+    och öppna vatten. Arten är anpassad för livet till sjöss och ses ofta i större
+    antal långt från land.
+
+
+    Tretåig mås har vit undersida och ljusgrå rygg. Det karaktäristiska för arten
+    är dess korta ben och de tunna, smala vingar som gör den mycket manöverbar i luften.
+    Den har svart på huvudet under häckningstiden och en gul näbb med rött på spetsen.
+    Ungfåglar är mörkare märkta och utvecklar adultkläder under sitt första eller
+    andra år.
+
+
+    Arten är mycket vokal vid kolonier och har en karakteristisk skarp, högljudd rop
+    som låter som "kitti-wake" – från vilket det engelska namnet härstammar. Det är
+    en skicklig flygare som jagat små fisk och bläckfiskar från ytan. I Sverige är
+    arten begränsad till ett fåtal lokaler som häckfågel, men den är ett vanligt inslag
+    bland måsfåglar vid kusterna under olika årstider.'
+  en: '# Black-legged Kittiwake
+
+
+    The black-legged kittiwake is a seabird belonging to the gull family. It takes
+    its English name from its distinctive and shrill call—a loud ''kittee-wa-aaake,
+    kitte-wa-aaake''—which is one of the most recognizable sounds in its habitat.
+    The bird is named to distinguish it from the red-legged kittiwake, though in many
+    regions it is simply called the kittiwake.
+
+
+    The species was scientifically described by Carl Linnaeus in 1758 as *Larus tridactylus*.
+    It remains a characteristic seabird of northern waters, where its vocal presence
+    and distinctive calls make it relatively easy to identify for those familiar with
+    coastal environments.'
+migration:
+  sv: '# Tretåig mås – Förekomst i Norden
+
+
+    Tretåig mås är en nordatlantisk art med begränsad häckningsutbredning i Sverige.
+    Som häckfågel förekommer arten huvudsakligen på ön Nidingen utanför norra Halland,
+    där den första gången noterades häcka 1967. Historiskt häckade arten även vid
+    Luossajärvi i Kiruna, men denna population försvann då LKAB torrlade delen av
+    sjön. Idag observeras arten endast sporadiskt i området.
+
+
+    Migrationsdata saknas för denna art enligt den tillgängliga källtexten.'
+  en: '# Black-legged Kittiwake (Rissa tridactyla) in Northern Europe
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q26612/hero.jpg
+  width: 2400
+  height: 1601
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:L._Beck" title="User:L. Beck">Lukas
+    Beck</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Å Café lub 2025-07-22 Rissa
+    tridactyla.jpg
+  commons_filename: Å Café lub 2025-07-22 Rissa tridactyla.jpg
+- role: secondary
+  path: Q26612/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black-legged kittiwake (Rissa
+    tridactyla) 2023 2.jpg
+  commons_filename: Black-legged kittiwake (Rissa tridactyla) 2023 2.jpg
+- role: secondary
+  path: Q26612/secondary-2.jpg
+  width: 1800
+  height: 1198
+  license: CC BY 4.0
+  author: Severine Tourbot (Ifremer)
+  source_url: https://commons.wikimedia.org/wiki/File:Mouettes tridactyles (Rissa
+    tridactyla) (Ifremer 00401-51293 - 3026).jpg
+  commons_filename: Mouettes tridactyles (Rissa tridactyla) (Ifremer 00401-51293 -
+    3026).jpg
+review_status: approved
+review_notes: "Tretåig mås — Rissa tridactyla med klar art-ID; allmän SE-art längs västkustens fågelberg."
+generated_at: '2026-05-15T20:03:33.047563+00:00'
+sources:
+  wikipedia_sv_revision: '58946383'
+  wikipedia_en_revision: '1336406109'
+  claude_model: claude-haiku-4-5-20251001

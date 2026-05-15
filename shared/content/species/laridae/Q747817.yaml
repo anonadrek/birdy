@@ -1,0 +1,65 @@
+id: Q747817
+scientific_name: Rhodostethia rosea
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Rhodostethia
+  ioc_order: Charadriiformes
+names:
+  sv: Rosenmås
+  en: Ross’s Gull
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rosenmås
+
+
+    Rosenmås är en liten mås som är närmast släkt med dvärgmåsen. Den häckar i Arktis
+    och är mycket sällsynt i nordvästra Europa, där den endast påträffas sporadiskt.
+    I Sverige finns det dokumenterade omkring 25 fynd av arten.
+
+
+    Arten är klassificerad som livskraftig enligt IUCN:s bedömning, vilket innebär
+    att populationen för närvarande inte är hotad. Rosenmåsen återfinns främst i de
+    arktiska häckningsområdena men kan ibland ses långt från sitt hemområde under
+    migration eller vintern.'
+  en: ''
+migration:
+  sv: 'Rosenmås är en arktisk häckare som endast undantagsvis förekommer i Skandinavien
+    och Nordvästra Europa. Arten häckar långt norrut i Arktis och är mycket sällsynt
+    längre söderut. I Sverige har arten dokumenterats genom totalt 25 fynd, vilket
+    gör den till en extremt ovanlig gäst. Då källmaterialet inte innehåller specifik
+    information om migrationsmönster, ankomstmånader eller övervintringsvanor för
+    arten i norra Europa, kan dessa detaljer inte beskrivas utifrån tillgänglig källa.
+
+
+    Migrationsdata för rosenmås i Skandinavien och Nordvästra Europa saknas i det
+    tillhandahållna källmaterialet.'
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:02:50.204927+00:00'
+sources:
+  wikipedia_sv_revision: '55715775'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

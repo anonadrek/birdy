@@ -1,0 +1,129 @@
+id: Q321293
+scientific_name: Sterna dougallii
+taxonomy:
+  family: Laridae
+  family_sv: Tärnor
+  genus: Sterna
+  ioc_order: Charadriiformes
+names:
+  sv: Rosentärna
+  en: Roseate Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rosentärna
+
+
+    Rosentärna är en liten tärnart som är vida spridd men förekommer endast lokalt.
+    Till utseendet är den mycket lik fisktärnan och silvertärnan, vilket kan göra
+    artbestämningen utmanande. Det karakteristiska draget är den rosafärgade nyansen
+    på undersidan hos vuxna fåglar i häckningsdräkt, vilket också gett arten sitt
+    namn.
+
+
+    Rosentärnan tillhör familjen måsfåglar och är en vadare som är beroende av vatten
+    för sin näring. Arten är livskraftig enligt IUCN:s bedömning, vilket indikerar
+    att populationen för närvarande inte är hotad eller i någon större risk.'
+  en: '# Roseate Tern
+
+
+    The roseate tern is a slender, elegant tern distinguished by its pale grey upperparts
+    and white underparts. During breeding season, it displays a delicate rosy flush
+    on the breast that gives the species its name. It is notably streamlined compared
+    to other terns, with long, pointed wings and a deeply forked tail that extends
+    well beyond the wingtips in flight.
+
+
+    This species is a skilled aerial hunter, plunging into water to catch small fish
+    with precision. It is highly social, typically nesting in colonies on coastal
+    islands and rocky outcrops. The roseate tern is a migratory species, moving between
+    breeding and wintering grounds seasonally. It vocalizes with sharp, distinctive
+    calls that are higher-pitched than those of related terns.
+
+
+    The roseate tern inhabits coastal waters and islands in temperate and tropical
+    regions worldwide. It prefers shallow marine areas and estuaries where small fish
+    are abundant. This species has experienced population declines in some regions
+    due to habitat loss and human disturbance at breeding sites, making conservation
+    efforts important for its long-term survival.'
+migration:
+  sv: '# Rosentärna (Sterna dougallii) - Förekomst i Skandinavien
+
+
+    Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    **Note:** The source text provided contains only general taxonomic and identification
+    information about the Roseate Tern, with no specific details regarding its occurrence,
+    migration patterns, or seasonal presence in Scandinavia or Northern Europe. Therefore,
+    according to the instructions, the appropriate response is the specified phrase
+    indicating that migration data is unavailable for this species.'
+  en: '# Roseate Tern Migration in Northern Europe
+
+
+    The Roseate Tern is a rare summer visitor to Scandinavian and Northern European
+    waters. This migratory species arrives in spring during the breeding season, typically
+    from May onwards, and departs in autumn. The species winters in African waters,
+    particularly off West Africa, making it a long-distance trans-equatorial migrant.
+    In Northern Europe, breeding populations are extremely limited and fragmented,
+    with only small numbers occasionally recorded in coastal areas during the summer
+    months. The species has declined significantly throughout its range, and sightings
+    in Scandinavia are now uncommon and irregular compared to historical records.'
+image_refs:
+- role: hero
+  path: Q321293/hero.jpg
+  width: 2400
+  height: 1798
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Unidentified Sterna, Mission
+    Beach, Queensland (15687298970).jpg
+  commons_filename: Unidentified Sterna, Mission Beach, Queensland (15687298970).jpg
+- role: secondary
+  path: Q321293/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/rururubisco">rururubisco</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sterna dougallii bangsi, Sanxiantai,
+    Taitung, Taiwan 2.jpg
+  commons_filename: Sterna dougallii bangsi, Sanxiantai, Taitung, Taiwan 2.jpg
+- role: secondary
+  path: Q321293/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2021-07-10 Sterna dougallii,
+    St Marys Island, Northumberland 11.jpg
+  commons_filename: 2021-07-10 Sterna dougallii, St Marys Island, Northumberland 11.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:01:59.059305+00:00'
+sources:
+  wikipedia_sv_revision: '59045066'
+  wikipedia_en_revision: '1352974760'
+  claude_model: claude-haiku-4-5-20251001

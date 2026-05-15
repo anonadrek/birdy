@@ -1,0 +1,133 @@
+id: Q18875
+scientific_name: Sterna hirundo
+taxonomy:
+  family: Laridae
+  family_sv: Tärnor
+  genus: Sterna
+  ioc_order: Charadriiformes
+names:
+  sv: Fisktärna
+  en: Common Tern
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fisktärna
+
+
+    Fisktärna är en elegant havsfågel som förekommer på nästan hela världen. Under
+    häckningstiden har den en karakteristisk utseende med ljusgrå ovansida, vit till
+    mycket ljust grå undersida och en distinktiv svart hätta på huvudet. Näbben är
+    smal och spetsig, ofta orangeröd med svart näbbspets, medan benen är orangeröda.
+    Det är en långflyttare som häckar i tempererade och subarktiska regioner men övervintrar
+    långt söderut i tropiska och subtropiska kustområden.
+
+
+    Arten är mycket skicklig på att fånga sitt föda – små fiskar – genom att dyka
+    från luften ned i vattnet. Fisktärnan är känd för sitt högljudda, genomträngande
+    rop och sitt aggressiva försvar av sitt häckningsområde. Under häckningstiden
+    är den mycket aktiv och kan ses hovra över vatten innan det stöter ned för att
+    fånga sitt byte.
+
+
+    Globalt anses beståndet vara livskraftigt och arten är väl etablerad i sitt naturliga
+    utbredningsområde. Den ses ofta kolonivisa vid kusterna och på större sjöar.'
+  en: '# Common Tern
+
+
+    The common tern is a graceful seabird with a circumpolar distribution across temperate
+    and subarctic regions. It is highly migratory, breeding in northern areas during
+    summer before travelling to coastal tropical and subtropical regions for winter.
+    This pattern makes it a regular visitor across much of the globe.
+
+
+    Breeding adults are distinctive with light grey upperparts contrasting sharply
+    with white or very light grey underparts. A striking black cap crowns the head,
+    while orange-red legs and a narrow, pointed bill complete the appearance. Bill
+    colouration varies by subspecies—some populations show mostly red bills with black
+    tips, while others have entirely black bills. This variation can aid in subspecies
+    identification.
+
+
+    The common tern shares its range with the similar Arctic tern, and distinguishing
+    between them requires careful attention to plumage details, leg and bill colouration,
+    and calls. Common terns are highly vocal, producing distinctive sharp, scratchy
+    calls that help identify them in the field. They are skilled hunters, diving into
+    water to catch small fish with precise accuracy, making them a familiar sight
+    over suitable coastal and inland waterways during the breeding season.'
+migration:
+  sv: '# Fisktärna i Skandinavien och Nordeuropa
+
+
+    Fisktärna är en långflyttare som förekommer i Skandinavien och Nordeuropa under
+    häckningssäsongen. Arten anländer under våren för att häcka i tempererade och
+    subarktiska regioner, där den söker upp kustområden och inlandsvatten. Efter häckningen
+    genomför fisktärnan en lång migration söderut för att övervintra i tropiska och
+    subtropiska kustområden långt från Norden. Arten är således helt frånvarande från
+    Skandinavien under vintermånaderna, då den befinner sig i sina övervintringskvarter
+    i värmare klimatzon.'
+  en: '# Common Tern (Sterna hirundo) in Scandinavia/Northern Europe
+
+
+    The common tern is a strongly migratory species that breeds throughout Scandinavia
+    and northern Europe during the summer months. Birds arrive in spring to establish
+    breeding colonies on coastlines and islands, typically from late April onwards.
+    Following the breeding season, common terns undertake extensive migrations to
+    winter in coastal tropical and subtropical regions of Africa and beyond, departing
+    northern Europe in August and September. The species returns north each spring
+    to resume breeding, making it a characteristic summer visitor to northern European
+    waters.'
+image_refs:
+- role: hero
+  path: Q18875/hero.jpg
+  width: 2400
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common tern (Sterna hirundo),
+    Hallig Hooge.jpg
+  commons_filename: Common tern (Sterna hirundo), Hallig Hooge.jpg
+- role: secondary
+  path: Q18875/secondary-1.jpg
+  width: 1800
+  height: 1251
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Sterna hirundo, Quiberon, Brittany,
+    France (14834195197).jpg
+  commons_filename: Sterna hirundo, Quiberon, Brittany, France (14834195197).jpg
+- role: secondary
+  path: Q18875/secondary-2.jpg
+  width: 1800
+  height: 900
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
+    Nyman</a> from Vaxholm, Sweden
+  source_url: https://commons.wikimedia.org/wiki/File:Sterna hirundo EM1B2476 (43321425232).jpg
+  commons_filename: Sterna hirundo EM1B2476 (43321425232).jpg
+review_status: approved
+review_notes: "Fisktärna — Sterna hirundo från Hallig Hooge; allmän SE-art längs kust + insjöar."
+generated_at: '2026-05-15T20:04:28.733863+00:00'
+sources:
+  wikipedia_sv_revision: '59200626'
+  wikipedia_en_revision: '1350842450'
+  claude_model: claude-haiku-4-5-20251001

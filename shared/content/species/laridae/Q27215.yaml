@@ -1,0 +1,102 @@
+id: Q27215
+scientific_name: Chlidonias niger
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Chlidonias
+  ioc_order: Charadriiformes
+names:
+  sv: Svarttärna
+  en: Black Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Black Tern
+
+
+    The Black Tern is a small tern belonging to the gull family, characterized by
+    its compact size and dark plumage. During breeding season, it displays distinctive
+    black underparts and a grey back, creating a striking appearance quite different
+    from other tern species. In non-breeding plumage, it becomes considerably paler,
+    with white underparts and a grey back.
+
+
+    This species is highly aerial and acrobatic in its hunting behaviour, swooping
+    and diving over water to catch small fish and aquatic insects. It breeds in freshwater
+    inland habitats such as marshes, lakes, and river deltas across Europe, Western
+    Asia, and North America. The Black Tern is a long-distance migrant, departing
+    breeding grounds in autumn to winter along the coastal regions of Africa and South
+    America.
+
+
+    Observers encountering Black Terns should look for their characteristic rapid,
+    jerky flight style and their tendency to feed in small flocks, often working over
+    shallow water. The species is most readily identified during the breeding season
+    when its dark plumage is most prominent.'
+migration:
+  sv: ''
+  en: '# Black Tern (Chlidonias niger) – Occurrence in Scandinavia/Northern Europe
+
+
+    The Black Tern is a summer visitor to Scandinavia and Northern Europe, arriving
+    in late spring (May-June) to breed in freshwater marshes, lakes, and wetlands.
+    It is a migratory species that departs in late summer and early autumn (August-September)
+    to winter in coastal regions of West Africa. The species does not overwinter in
+    Northern Europe, making it entirely absent during winter months. Breeding populations
+    are most common in southern Scandinavia, with numbers declining northward.'
+image_refs:
+- role: hero
+  path: Q27215/hero.jpg
+  width: 1600
+  height: 2400
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/glaciernps/">GlacierNPS</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black Tern (Chlidonias niger)
+    (42737694055).jpg
+  commons_filename: Black Tern (Chlidonias niger) (42737694055).jpg
+- role: secondary
+  path: Q27215/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black tern (Chlidonias niger)
+    2021.jpg
+  commons_filename: Black tern (Chlidonias niger) 2021.jpg
+- role: secondary
+  path: Q27215/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/56054673@N08">Brian
+    Desrosiers</a> from Fort Erie, Canada
+  source_url: https://commons.wikimedia.org/wiki/File:Chlidonias niger Point Pelee.jpg
+  commons_filename: Chlidonias niger Point Pelee.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:05:12.096833+00:00'
+sources:
+  wikipedia_sv_revision: '56065110'
+  wikipedia_en_revision: '1321165390'
+  claude_model: claude-haiku-4-5-20251001

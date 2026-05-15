@@ -1,0 +1,126 @@
+id: Q27129
+scientific_name: Hydroprogne caspia
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Hydroprogne
+  ioc_order: Charadriiformes
+names:
+  sv: Skräntärna
+  en: Caspian Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skräntärna
+
+
+    Skräntärna är en stor tärna med en karaktäristisk utseende. Den har en grof, blodröd
+    näbb som är väl utvecklad för att fånga fisk. Flygningen liknar måsarnas snarare
+    än andra tärnors – den är kraftfull och mindre gärdig än hos mindre tärnar. Det
+    är en global art som häckar på alla kontinenter utom Sydamerika, ofta vid större
+    vattendrag och havsområden.
+
+
+    Arten är väl känd för sina hesa och barska läten, som skiljer den från andra tärnor.
+    Skräntärnan är en skicklig fiskare som dyker från luften för att fånga sitt byte.
+    Under häckningstiden är den mycket försvarande av sitt territorium.
+
+
+    I Europa är populationen störst vid Östersjön och Kaspiska havet, med mindre bestånd
+    vid Svarta havet och enstaka par vid Ladoga. Arten förordrar större, öppna vattenområden
+    och kan ofta ses hovra över vatten innan den dyker ned för att fånga fisk.'
+  en: '# Caspian Tern
+
+
+    The Caspian Tern is the world''s largest tern species, distinguished by its substantial
+    size compared to other terns. It displays the characteristic tern features: a
+    streamlined body built for diving, pointed wings, and a forked tail. The bird
+    typically shows a dark cap on its head, white underparts, and pale grey upper
+    wings. Its heavy, powerful bill is notably larger and more robust than those of
+    smaller tern species, reflecting its position at the top of the tern size hierarchy.
+
+
+    This species has a subcosmopolitan but scattered distribution across the globe,
+    making it a remarkable traveller despite being monotypic within its genus with
+    no recognized subspecies. The Caspian Tern is primarily a fish-eater, hunting
+    by plunge-diving into water bodies with considerable force. It favours coastal
+    and inland waters, including estuaries, large lakes, and reservoirs where suitable
+    fish populations exist. Its presence is often announced by harsh, grating calls
+    that differ markedly from the more delicate vocalizations of smaller terns.
+
+
+    The species tends to be solitary or found in small groups rather than in the large
+    colonies typical of many tern species. Its large size and powerful hunting capabilities
+    make it an impressive sight for birdwatchers across its wide-ranging habitat.'
+migration:
+  sv: Skräntärnan är en långdistansmigrant som övervintrarar i Afrika och södra Asien.
+    Arten anländer till sina häckningsplatser i Östersjöområdet under våren, typiskt
+    från april till maj. Under häckningssäsongen från maj till augusti är skräntärnan
+    bosatt i Skandinavien och övriga Östersjöregionen. Efter häckningen påbörjas höstmigrationen
+    under augusti-september när fåglarna drar söderut mot sina övervintringsområden.
+    Skräntärnan är således en kortvarig sommargäst i Norden och ses endast sporadiskt
+    under övriga årstider.
+  en: '# Caspian Tern Migration in Northern Europe
+
+
+    The Caspian Tern is a migratory species that visits Scandinavia and Northern Europe
+    primarily during the breeding season. Birds arrive in spring to establish breeding
+    colonies at suitable coastal and inland wetland sites. The population present
+    during summer months departs in autumn to overwinter in southern regions, including
+    coastal areas of Africa and the Mediterranean. In Scandinavia, the species is
+    essentially absent during winter months, with sightings during migration periods
+    (spring and autumn) being relatively uncommon compared to resident tern species.'
+image_refs:
+- role: hero
+  path: Q27129/hero.jpg
+  width: 2265
+  height: 2153
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Forestowlet" title="User:Forestowlet">Forestowlet</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hydroprogne caspia-Caspian Tern
+    01.JPG
+  commons_filename: Hydroprogne caspia-Caspian Tern 01.JPG
+- role: secondary
+  path: Q27129/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
+    C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caspian Tern (Hydroprogne caspia)
+    (19394275675).jpg
+  commons_filename: Caspian Tern (Hydroprogne caspia) (19394275675).jpg
+- role: secondary
+  path: Q27129/secondary-2.jpg
+  width: 1205
+  height: 1800
+  license: CC BY 4.0
+  author: Auckland War Memorial Museum
+  source_url: https://commons.wikimedia.org/wiki/File:Hydroprogne caspia (AM LB1898-5).jpg
+  commons_filename: Hydroprogne caspia (AM LB1898-5).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:02:53.105815+00:00'
+sources:
+  wikipedia_sv_revision: '57957301'
+  wikipedia_en_revision: '1345437882'
+  claude_model: claude-haiku-4-5-20251001

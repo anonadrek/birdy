@@ -1,0 +1,127 @@
+id: Q26427
+scientific_name: Larus canus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Larus
+  ioc_order: Charadriiformes
+names:
+  sv: Fiskmås
+  en: Common Gull
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fiskmås
+
+
+    Fiskmås är en elegant, liten måsfågel som häckar över stora delar av Europa och
+    Asien. Arten är betydligt mindre och slankare än gråtruten. En adult fiskmås i
+    sommardräkt är lätt att identifiera: grå ovansida, vit undersida, gul näbb och
+    ben, samt svarta vingspetsar prydda med vita slantar. Ungfåglar ser helt annorlunda
+    ut med spräcklig färgteckning och utvecklas gradvis genom flera ruggningar innan
+    de når adult dräkt under sitt tredje levnadsår.
+
+
+    Merparten av fiskmåsar är flyttfåglar som söker nya områden under vintern. Arten
+    är en skicklig flugare och lever ofta vid kustnära vatten där den kan jaga mindre
+    fiskar. Fiskmåsar är sociala fåglar som ofta ses i små flockar, särskilt under
+    flyttningstiderna. De häckar gärna i kolonier och visar typiska måsbeteenden som
+    när de söker föda eller förs på människans aktiviteter.'
+  en: '# Common Gull
+
+
+    The Common Gull is a medium-sized gull breeding across cool temperate regions
+    of the Northern Hemisphere, from Iceland and Scotland eastward to Kamchatka. It
+    is notably smaller and more delicate than the Herring Gull, with a rounded head,
+    yellow-green legs, and a pale yellow bill with a small red spot near the tip.
+    Adults display white plumage with pale grey backs and black wingtips marked with
+    white spots.
+
+
+    Highly adaptable, it frequents coastal areas, inland waters, and urban environments
+    where it feeds on fish, insects, crustaceans, and discarded food. It is often
+    seen singly or in small groups, though it can form large flocks in winter. The
+    species is quite vocal, producing mewing calls that inspired its common names.
+
+
+    Most populations migrate southward in autumn, reaching the Mediterranean, southern
+    Caspian, and East Asian seas. However, northwestern European populations remain
+    partly resident year-round, making them visible throughout winter in those regions.
+    The Common Gull was formerly grouped with the closely related Short-billed Gull
+    under a collective name.'
+migration:
+  sv: '# Fiskmås – Migration i Nordeuropa
+
+
+    Fiskmåsen är en flyttfågel som förekommer över stora delar av Europa och Asien.
+    I Skandinavien och Nordeuropa är arten övervintrare och sommarfågel beroende på
+    geografisk lokalisering. Huvuddelen av populationen är flyttfåglar som återvänder
+    från sydligare övervintringsområden under våren för att häcka. Arten anländer
+    till häckningsområdena under mars och april månad och återvänder till sina övervintringskvarter
+    under hösten. Vissa individer förblir på nordiska övervintringsplatser under mildrare
+    vintrar, särskilt längs kusterna.'
+  en: '# Common Gull (Larus canus) in Scandinavia/Northern Europe
+
+
+    The Common Gull is a breeding resident throughout Scandinavia, with populations
+    exhibiting varied migratory behaviour. Birds breeding in northern regions typically
+    migrate southward during winter, reaching the Mediterranean and southern Caspian
+    Sea, though northwest European populations show partial residency with some individuals
+    remaining year-round. In Scandinavia, arrival at breeding sites occurs from March
+    onwards, with breeding from April through summer. Autumn migration begins in August
+    and September as birds depart for wintering grounds, though increasing numbers
+    now winter locally in milder coastal areas.'
+image_refs:
+- role: hero
+  path: Q26427/hero.jpg
+  width: 2400
+  height: 1815
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Larus canus Oulu 20150712 03.JPG
+  commons_filename: Larus canus Oulu 20150712 03.JPG
+- role: secondary
+  path: Q26427/secondary-1.jpg
+  width: 1800
+  height: 1356
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Leo_Johannes" class="mw-redirect"
+    title="User:Leo Johannes">Leo Johannes</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Larus canus seen from Djurgårdsfärjan
+    spring 2008.JPG
+  commons_filename: Larus canus seen from Djurgårdsfärjan spring 2008.JPG
+- role: secondary
+  path: Q26427/secondary-2.jpg
+  width: 1800
+  height: 1332
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/91677891@N07">Jacob  Spinks</a>
+    from Northamptonshire, England
+  source_url: https://commons.wikimedia.org/wiki/File:Common Gull (Larus canus) (13042335164).jpg
+  commons_filename: Common Gull (Larus canus) (13042335164).jpg
+review_status: approved
+review_notes: "Fiskmås — Larus canus klassisk pose; allmän SE-art längs kust + insjöar."
+generated_at: '2026-05-15T20:02:02.455962+00:00'
+sources:
+  wikipedia_sv_revision: '59248590'
+  wikipedia_en_revision: '1342205357'
+  claude_model: claude-haiku-4-5-20251001

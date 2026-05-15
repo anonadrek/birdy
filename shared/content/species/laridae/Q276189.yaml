@@ -1,0 +1,128 @@
+id: Q276189
+scientific_name: Ichthyaetus melanocephalus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Ichthyaetus
+  ioc_order: Charadriiformes
+names:
+  sv: Svarthuvad mås
+  en: Mediterranean Gull
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svarthuvad mås
+
+
+    Svarthuvad mås är en medelstor mås som tillhör familjen måsfåglar. Arten kännetecknas
+    av sitt karakteristiska utseende med svart huvud under häckningstiden, vilket
+    ger den sitt namn. Under övriga delar av året är huvudet vitt eller delvis vit.
+
+
+    Arten häckar nästan uteslutande i Europa och förekommer vid kustnära områden och
+    inlandsvatten. Även om antalet svarthuvade måsar totalt sett har minskat, expanderar
+    arten gradvis mot norr, och häckningar har noterats i Sverige under senare år.
+    Detta utgör en intressant geografisk utökning av artens utbredning.
+
+
+    Enligt IUCN klassificeras svarthuvad mås som livskraftig, vilket innebär att arten
+    inte utgör ett större naturvårdsbekymmer för närvarande. Som typisk mås är det
+    en anpassningsbar fågel som utnyttjar både marina och terrestriska habitat för
+    föda och häckning.'
+  en: '# Mediterranean Gull
+
+
+    The Mediterranean gull is a small gull with distinctive plumage. In breeding plumage,
+    it features a black hood covering the head and upper neck, contrasting sharply
+    with white underparts and pale grey wings. Non-breeding birds show a white head
+    with dark ear patches. It has a relatively slender bill and red-orange legs, giving
+    it an elegant appearance compared to larger gull species.
+
+
+    This gull is primarily a fish-eater, as suggested by its scientific name derived
+    from the Ancient Greek words for "fish" and "eagle." It inhabits coastal regions,
+    favouring harbours, lagoons, and sandy shores where it feeds on small fish and
+    marine invertebrates. The species is often seen in small flocks, particularly
+    around fishing ports and coastal developments.
+
+
+    The Mediterranean gull''s call is characteristically higher-pitched and more melodious
+    than that of larger gulls, with a distinctive mewing quality. It breeds colonially,
+    nesting on islands, flat rooftops, and occasionally ground sites in coastal areas.'
+migration:
+  sv: '# Svarthuvad mås – förekomst i Skandinavien
+
+
+    Svarthuvad mås är en nordvandring art som under senare decennier har expanderat
+    sitt utbredningsområde norrut. Arten häckar numera regelbundet i Sverige, vilket
+    är ett relativt nytt fenomen. Under häckningstiden förekommer arten framför allt
+    vid kustnära områden och större insjöar i södra och mellersta Sverige. Efter häckningstiden
+    flyttar många individer söderut till mediterranea och atlantiska områden för övervintering,
+    medan vissa mindre populationer kan stanna i västra Europa under mildare vintrar.
+    Arten återkommer till häckningsområdena under våren, vanligtvis från april–maj.'
+  en: '# Mediterranean Gull Migration in Northern Europe
+
+
+    The Mediterranean Gull has expanded its range northward significantly since the
+    late 20th century and now occurs regularly in Scandinavia and Northern Europe,
+    particularly during breeding season and autumn migration. Birds arrive in spring
+    (April-May) to breed in scattered colonies, with populations increasing in southern
+    Scandinavia and along northern European coasts. Most individuals are migratory,
+    departing in autumn (August-October) to winter in southern regions, though some
+    remain in mild winters along ice-free coastal areas. Winter presence is irregular
+    and depends on weather conditions, with sightings becoming increasingly frequent
+    as the species continues its northward range expansion.'
+image_refs:
+- role: hero
+  path: Q276189/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5080645">Ollie
+    Davis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus melanocephalus 467454654.jpg
+  commons_filename: Ichthyaetus melanocephalus 467454654.jpg
+- role: secondary
+  path: Q276189/secondary-1.jpg
+  width: 1800
+  height: 1273
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/stonescottages">stonescottages</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus melanocephalus,
+    Fishguard, Pembrokeshire, Wales 2.jpg
+  commons_filename: Ichthyaetus melanocephalus, Fishguard, Pembrokeshire, Wales 2.jpg
+- role: secondary
+  path: Q276189/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/alexis_lours">alexis_lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus melanocephalus,
+    Gennevilliers, Paris, France 1.jpg
+  commons_filename: Ichthyaetus melanocephalus, Gennevilliers, Paris, France 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:04:11.622605+00:00'
+sources:
+  wikipedia_sv_revision: '55739453'
+  wikipedia_en_revision: '1315069134'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,126 @@
+id: Q704982
+scientific_name: Larus michahellis
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Larus
+  ioc_order: Charadriiformes
+names:
+  sv: Medelhavstrut
+  en: Yellow-legged Gull
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Medelhavstrut
+
+
+    Medelhavstrut är en stor trut som ingår i gråtrutskomplexen. Det är en opportunistisk
+    allätare som ofta häckar i kolonier tillsammans med andra individer. Arten förekommer
+    i Europa, Nordafrika och Mellanöstern, och utanför häckningstid sprider den sig
+    över ett ännu större område. Under vintermånaderna kan den påträffas långt norrut,
+    ända in i norra delen av sitt utbredningsområde.
+
+
+    Som en typisk representant för Larus-trutarna är medelhavstruten en flexibel fågel
+    när det gäller föda och är inte blyg inför människor. Den är en skicklig opportunist
+    som utnyttjar tillgängliga näringsresurser i sin miljö.'
+  en: '# Yellow-legged Gull
+
+
+    The yellow-legged gull is a large, robust gull widespread across southern Europe,
+    the Mediterranean region, and North Africa. It was only recently recognized as
+    a distinct species, having previously been classified as a subspecies of either
+    the Caspian or herring gull. Adults display white plumage with pale grey backs
+    and wings, characteristic yellow legs, and a red spot on the lower mandible. The
+    head may show fine streaking in winter.
+
+
+    This adaptable gull is highly vocal, producing loud, harsh calls and distinctive
+    laughing sequences. It frequents coastal areas, harbours, and increasingly inland
+    urban environments where it scavenges readily for food. It is gregarious, often
+    seen in flocks, particularly at roosting sites and feeding grounds.
+
+
+    The species has shown remarkable range expansion in recent decades, becoming more
+    numerous and extending further north and inland. It demonstrates aggressive feeding
+    behaviour and readily exploits human refuse, making it a common sight in towns
+    and cities near water. Its ability to thrive in human-modified landscapes has
+    contributed to its population growth and expanding distribution across its range.'
+migration:
+  sv: '# Medelhavstrut i Skandinavien och Nordeuropa
+
+
+    Medelhavstruten förekommer i Skandinavien och Nordeuropa huvudsakligen utanför
+    häckningstiden. Under denna period sprider sig arten över ett stort område som
+    sträcker sig från norra Mauretanien i söder till norra Danmark och södra Sverige
+    i norr. Detta tyder på att arten genomför betydande migrations- och spridningsrörelser
+    under höst och vinter. Under sommarhalvåret är arten främst knuten till sina häckningsområden
+    längre söderut, men kan förväntas sprida sig norrut under de kalla månaderna,
+    då den söker fram föda och övervintringshabitat i de större havsområdena och kusterna
+    längs Nordeuropa.'
+  en: '# Yellow-legged Gull in Scandinavia and Northern Europe
+
+
+    The Yellow-legged Gull has expanded its range northward in recent decades, now
+    occurring regularly in Scandinavia and Northern Europe, particularly in southern
+    regions. While primarily a Mediterranean and southern European species, increasing
+    numbers are recorded in Denmark, southern Sweden, and along the North Sea coast
+    during late summer and autumn. Some individuals overwinter in Scandinavian waters,
+    especially in milder coastal areas, though the population remains largely migratory.
+    The species typically arrives in spring and departs by winter, with peak presence
+    occurring in late summer months.'
+image_refs:
+- role: hero
+  path: Q704982/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Yellow-legged gull (Larus michahellis
+    ), Algarve.jpg
+  commons_filename: Yellow-legged gull (Larus michahellis ), Algarve.jpg
+- role: secondary
+  path: Q704982/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Western yellow-legged gull (Larus
+    michahellis), juvenile.jpg
+  commons_filename: Western yellow-legged gull (Larus michahellis), juvenile.jpg
+- role: secondary
+  path: Q704982/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Juvenile Yellow-legged Gull
+    (Larus michahellis).jpg
+  commons_filename: Juvenile Yellow-legged Gull (Larus michahellis).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:03:24.004203+00:00'
+sources:
+  wikipedia_sv_revision: '56065146'
+  wikipedia_en_revision: '1345675030'
+  claude_model: claude-haiku-4-5-20251001

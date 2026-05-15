@@ -1,0 +1,104 @@
+id: Q589869
+scientific_name: Ichthyaetus hemprichii
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Ichthyaetus
+  ioc_order: Charadriiformes
+names:
+  sv: Sotmås
+  en: Sooty Gull
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Sooty Gull
+
+
+    The sooty gull is a species within the gull family, characterized by its dark
+    plumage that distinguishes it from many lighter-colored gull species. It inhabits
+    coastal and marine regions across a broad geographic range spanning the Red Sea,
+    Arabian Gulf, Indian Ocean, and eastern African coasts. The species frequents
+    shallow waters, harbors, and coastal areas where it hunts for fish and other marine
+    prey.
+
+
+    In behavior, the sooty gull is typically gregarious, often seen in flocks, particularly
+    at feeding sites and roosting areas. Like other gulls, it is an opportunistic
+    feeder with adaptable foraging habits. The species is known for its vocal nature,
+    producing various calls that are characteristic of gulls, though specific call
+    descriptions are limited in available sources.
+
+
+    The sooty gull maintains populations across its extensive range from the Middle
+    East through to East Africa and the Indian subcontinent, showing preference for
+    warmer coastal waters. It was historically classified within the genus *Larus*
+    alongside other gulls before taxonomic revision placed it in *Ichthyaetus*. The
+    species is named after the German naturalist Wilhelm Hemprich, who contributed
+    significantly to natural history studies during his scientific expeditions in
+    the region during the early 19th century.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Sooty Gull''s distribution is restricted to the Middle East, North Africa,
+    and Indian Ocean regions. There is no documented occurrence of this species in
+    Scandinavia or Northern Europe, either as a resident, migrant, or vagrant. The
+    species is entirely absent from the Nordic region and has no relevance to Scandinavian
+    bird guides.'
+image_refs:
+- role: hero
+  path: Q589869/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/46812934@N04">logan
+    kahle</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus hemprichii Muscat,
+    Oman 1.jpg
+  commons_filename: Ichthyaetus hemprichii Muscat, Oman 1.jpg
+- role: secondary
+  path: Q589869/secondary-1.jpg
+  width: 1800
+  height: 1289
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/christoph_moning">christoph_moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus hemprichii, Qurayyat,
+    Oman 12.jpg
+  commons_filename: Ichthyaetus hemprichii, Qurayyat, Oman 12.jpg
+- role: secondary
+  path: Q589869/secondary-2.jpg
+  width: 1800
+  height: 1289
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/christoph_moning">christoph_moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus hemprichii, Salala,
+    Oman 7.jpg
+  commons_filename: Ichthyaetus hemprichii, Salala, Oman 7.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:05:31.455144+00:00'
+sources:
+  wikipedia_sv_revision: '55731059'
+  wikipedia_en_revision: '1315196519'
+  claude_model: claude-haiku-4-5-20251001

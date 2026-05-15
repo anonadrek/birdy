@@ -1,0 +1,95 @@
+id: Q476356
+scientific_name: Ichthyaetus ichthyaetus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Ichthyaetus
+  ioc_order: Charadriiformes
+names:
+  sv: Svarthuvad trut
+  en: Pallas’s Gull
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svarthuvad trut
+
+
+    Svarthuvad trut är en stor trut inom familjen måsfåglar. Den är märklig för sin
+    karakteristiska svarta huvud under häckningstiden, vilket skiljer den från många
+    andra trutar. Kroppen är kraftig och väl proportionerad, anpassad för sin livsstil
+    vid vattenförekomster.
+
+
+    Arten häckar i större kolonier vid sötvattensbiotoper, där den är beroende av
+    lämpliga växtplatser och miljöer för sitt fortplantningsarbete. Under övervintringen
+    söker den sig till kustnära områden där den lever tillsammans med andra trut-
+    och måsfågelarter.
+
+
+    Denna trut är en långflyttare som återkommande migrerar mellan sina häckningsområden
+    och övervintringsplatser. Det gör den till en påtaglig art för den som observerar
+    fågelvärlden under olika årstider, särskilt då den rör sig längs större vattendrag
+    och kustlinjer under sina säsongsbundna resor.'
+  en: ''
+migration:
+  sv: '# Svarthuvad trut
+
+
+    Svarthuvad trut är en stor asiatisk trut som primärt förekommer långt söder om
+    Skandinavien. Arten häckar vid sötvattensbiotoper i Asien och migrerar sesongsvis
+    till övervintringskvarteren vid kusterna av östra Medelhavsområdet, Arabiska halvön
+    och Indien. Då arten är stationär inom sitt asiatiska och medelhavska utbredningsområde
+    och saknar etablerad närvaro i Nordeuropa, förekommer den inte regelbundet i Skandinavien
+    under året.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q476356/hero.jpg
+  width: 2400
+  height: 1603
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Vedant_Raju_Kasambe&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Vedant Raju Kasambe (page does not exist)">Vedant Raju
+    Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pallas's or Great Black-headed
+    gull Ichthyaetus ichthyaetus by Vedant Kasambe 02.jpg
+  commons_filename: Pallas's or Great Black-headed gull Ichthyaetus ichthyaetus by
+    Vedant Kasambe 02.jpg
+- role: secondary
+  path: Q476356/secondary-1.jpg
+  width: 1800
+  height: 1223
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Vedant_Raju_Kasambe&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Vedant Raju Kasambe (page does not exist)">Vedant Raju
+    Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pallas's or Great Black-headed
+    gull Ichthyaetus ichthyaetus by Vedant Kasambe 01.jpg
+  commons_filename: Pallas's or Great Black-headed gull Ichthyaetus ichthyaetus by
+    Vedant Kasambe 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:02:49.643180+00:00'
+sources:
+  wikipedia_sv_revision: '55739485'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

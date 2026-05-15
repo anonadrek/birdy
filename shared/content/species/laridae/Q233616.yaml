@@ -1,0 +1,103 @@
+id: Q233616
+scientific_name: Chlidonias hybrida
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Chlidonias
+  ioc_order: Charadriiformes
+names:
+  sv: Skäggtärna
+  en: Whiskered Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Whiskered Tern
+
+
+    The whiskered tern is a small, elegant tern belonging to the gull family. In breeding
+    plumage, it displays a distinctive dark grey back and wings with a blackish cap
+    and face, contrasting sharply with its white cheeks and underparts—features that
+    give the species its common name. In non-breeding season, it becomes much paler
+    and greyer overall. It is notably more compact and short-winged than many tern
+    species, with a relatively short, pointed bill.
+
+
+    This tern favors freshwater and brackish wetland habitats, including lakes, marshes,
+    and river deltas where it hunts small fish and aquatic insects. It typically feeds
+    by dipping to the water surface rather than plunge-diving like some tern species,
+    and often forages in loose flocks. Its call is a distinctive harsh, chattering
+    sound.
+
+
+    The whiskered tern is migratory across much of its range, breeding in temperate
+    and subtropical regions during spring and summer before dispersing or migrating
+    to warmer areas. It nests in colonies, constructing simple nests on floating vegetation
+    or islands. The species occurs across southern Europe, Asia, and Africa, with
+    populations varying seasonally in different regions.'
+migration:
+  sv: ''
+  en: '# Whiskered Tern in Scandinavia/Northern Europe
+
+
+    The Whiskered Tern is a rare vagrant to Northern Europe and Scandinavia, with
+    only occasional records in the region. This species is primarily a summer breeder
+    across southern and central Europe, Asia, and Africa, and does not form a regular
+    migratory population through Scandinavian waters. When individuals do appear in
+    Northern European waters during summer months, they represent dispersing birds
+    or occasional overshoots from their core breeding range further south. The species
+    is not known to overwinter in Scandinavia or Northern Europe.'
+image_refs:
+- role: hero
+  path: Q233616/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Whiskered Tern (Chlidonias hybrida)
+    (38111594094).jpg
+  commons_filename: Whiskered Tern (Chlidonias hybrida) (38111594094).jpg
+- role: secondary
+  path: Q233616/secondary-1.jpg
+  width: 1800
+  height: 1265
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Whiskered tern(Chlidonias hybrida)
+    7.jpg
+  commons_filename: Whiskered tern(Chlidonias hybrida) 7.jpg
+- role: secondary
+  path: Q233616/secondary-2.jpg
+  width: 1800
+  height: 1207
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Whiskered tern(Chlidonias hybrida).jpg
+  commons_filename: Whiskered tern(Chlidonias hybrida).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:03:48.367197+00:00'
+sources:
+  wikipedia_sv_revision: '58696762'
+  wikipedia_en_revision: '1346969981'
+  claude_model: claude-haiku-4-5-20251001

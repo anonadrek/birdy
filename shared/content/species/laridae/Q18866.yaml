@@ -1,0 +1,107 @@
+id: Q18866
+scientific_name: Thalasseus bergii
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Thalasseus
+  ioc_order: Charadriiformes
+names:
+  sv: Tofstärna
+  en: Greater Crested Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Greater Crested Tern
+
+
+    The greater crested tern is a large tern with distinctive plumage that aids identification.
+    Its upperparts are a striking dark battleship-grey, contrasting with white underparts.
+    A notable feature is its white forehead, which remains visible even during breeding
+    season, setting it apart from closely related species. The bill is greenish-tinged
+    yellow, another useful identifying characteristic. In flight, this tern appears
+    powerful and streamlined, befitting its swift movements.
+
+
+    This species inhabits tropical and subtropical coastlines, nesting in dense colonies
+    on islands and coastal areas. It is highly migratory, with populations breeding
+    across the Indian Ocean and Pacific regions dispersing widely after the nesting
+    season. It hunts fish by diving into coastal and offshore waters, typically operating
+    in flocks that follow prey movements seasonally.
+
+
+    The greater crested tern''s breeding colonies are notably noisy and active, where
+    it shares space with other seabirds. Its presence indicates productive marine
+    environments. Outside the breeding season, it becomes more solitary or occurs
+    in small groups, wandering extensive distances from breeding grounds in search
+    of abundant food resources.'
+migration:
+  sv: ''
+  en: '# Greater Crested Tern in Northern Europe
+
+
+    The Greater Crested Tern is a tropical and subtropical species with no established
+    presence in Scandinavia or Northern Europe. This large tern breeds in colonies
+    across the Indian Ocean, Pacific, and around South Africa, with populations dispersing
+    widely after nesting. However, the species'' range does not extend to Northern
+    European waters, and it is not documented as a regular migrant or occasional vagrant
+    to Scandinavian regions. The bird remains confined to warmer Old World waters
+    throughout the year.
+
+
+    **Migration data unavailable for this species** (in the context of Northern Europe/Scandinavia).'
+image_refs:
+- role: hero
+  path: Q18866/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/11493299@N00">dany13</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Thalasseus bergii, French Polynesia-Rangiroa
+    Atoll 2.jpg
+  commons_filename: Thalasseus bergii, French Polynesia-Rangiroa Atoll 2.jpg
+- role: secondary
+  path: Q18866/secondary-1.jpg
+  width: 1800
+  height: 1296
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Canberra, Australia
+  source_url: https://commons.wikimedia.org/wiki/File:Thalasseus bergii Merimbula.jpg
+  commons_filename: Thalasseus bergii Merimbula.jpg
+- role: secondary
+  path: Q18866/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Calistemon" title="User:Calistemon">Calistemon</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater Crested Terns (Thalasseus
+    bergii) with chick on Penguin Island, November 2022 01.jpg
+  commons_filename: Greater Crested Terns (Thalasseus bergii) with chick on Penguin
+    Island, November 2022 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:01:57.971219+00:00'
+sources:
+  wikipedia_sv_revision: '55747424'
+  wikipedia_en_revision: '1339179698'
+  claude_model: claude-haiku-4-5-20251001

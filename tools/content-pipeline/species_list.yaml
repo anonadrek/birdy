@@ -1452,12 +1452,14 @@
   ioc_order: Charadriiformes
   common_en: Arctic Tern
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q18875
   scientific_name: Sterna hirundo
   family: Laridae
   ioc_order: Charadriiformes
   common_en: Common Tern
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q921533
   scientific_name: Sterna repressa
   family: Laridae
@@ -1488,6 +1490,7 @@
   ioc_order: Charadriiformes
   common_en: Black-legged Kittiwake
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q212047
   scientific_name: Xema sabini
   family: Laridae
@@ -1512,6 +1515,7 @@
   ioc_order: Charadriiformes
   common_en: Black-headed Gull
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q652348
   scientific_name: Chroicocephalus cirrocephalus
   family: Laridae
@@ -1554,6 +1558,7 @@
   ioc_order: Charadriiformes
   common_en: Common Gull
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q389505
   scientific_name: Larus cachinnans
   family: Laridae
@@ -1566,6 +1571,7 @@
   ioc_order: Charadriiformes
   common_en: European Herring Gull
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q704982
   scientific_name: Larus michahellis
   family: Laridae
@@ -1584,6 +1590,7 @@
   ioc_order: Charadriiformes
   common_en: Great Black-backed Gull
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q27375
   scientific_name: Larus hyperboreus
   family: Laridae
@@ -1596,6 +1603,7 @@
   ioc_order: Charadriiformes
   common_en: Lesser Black-backed Gull
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q686600
   scientific_name: Phaethon aethereus
   family: Phaethontidae

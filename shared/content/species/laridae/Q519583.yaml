@@ -1,0 +1,89 @@
+id: Q519583
+scientific_name: Ichthyaetus audouinii
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Ichthyaetus
+  ioc_order: Charadriiformes
+names:
+  sv: Rödnäbbad trut
+  en: Audouin’s Gull
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: "# Rödnäbbad trut\n\nRödnäbbad trut är en sällsynt trut som förekommer endemiskt\
+    \ kring Medelhavet. Arten är medelstor och kännetecknas av sitt markanta röda\
+    \ näbb, som är dess mest iögonenfallande karaktäristikum. Det har en slank kroppsform\
+    \ typisk för måsfåglar i familjen Laridae.\n\nArten har genomgått en turbulent\
+    \ bevarandestatus – efter en kraftig nedgång under senare delen av 1900-talet\
+    \ har den delvis återhämtat sig, men minskar åter i antal. IUCN klassificerar\
+    \ rödnäbbad trut som sårbar (VU), vilket återspeglar artens osäkra framtidsutsikter.\
+    \ \n\nTaxonomiskt skildes arten tidigare inte från andra truter i släktet Larus,\
+    \ men placeras numera tillsammans med bland annat svarthuvad trut och svarthuvad\
+    \ mås i släktet Ichthyaetus. Denna omklassificering återspeglar nya fylogenetiska\
+    \ insikter om måsfåglarnas släktskapsförhållanden."
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Rödnäbbad trut är endemisk för Medelhavsregionen och förekommer inte naturligt
+    i Skandinavien eller Nordeuropa under någon årstid. Arten häckar uteslutande kring
+    Medelhavet och saknar därför relevant migrationsmönster för nordeuropeiska förhållanden.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q519583/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Audouin's gull (Ichthyaetus
+    audouinii).jpg
+  commons_filename: Audouin's gull (Ichthyaetus audouinii).jpg
+- role: secondary
+  path: Q519583/secondary-1.jpg
+  width: 1800
+  height: 1392
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/35142635@N05">S.
+    Rae</a> from Scotland, UK
+  source_url: https://commons.wikimedia.org/wiki/File:Larus (Ichthyaetus) audouinii
+    - Flickr - S. Rae (1).jpg
+  commons_filename: Larus (Ichthyaetus) audouinii - Flickr - S. Rae (1).jpg
+- role: secondary
+  path: Q519583/secondary-2.jpg
+  width: 1800
+  height: 1500
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/35142635@N05">S.
+    Rae</a> from Scotland, UK
+  source_url: https://commons.wikimedia.org/wiki/File:Larus (Ichthyaetus) audouinii
+    - Flickr - S. Rae.jpg
+  commons_filename: Larus (Ichthyaetus) audouinii - Flickr - S. Rae.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:03:18.158646+00:00'
+sources:
+  wikipedia_sv_revision: '57767772'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

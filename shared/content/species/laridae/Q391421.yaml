@@ -1,0 +1,104 @@
+id: Q391421
+scientific_name: Chroicocephalus genei
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Chroicocephalus
+  ioc_order: Charadriiformes
+names:
+  sv: Långnäbbad mås
+  en: Slender-billed Gull
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Slender-billed Gull
+
+
+    The slender-billed gull is a mid-sized gull with a notably elongated bill that
+    distinguishes it from related species. It is primarily found breeding in scattered
+    colonies around the Mediterranean Sea and the northern Indian Ocean, where it
+    inhabits islands and coastal lagoons. Most of the population exhibits migratory
+    behaviour, moving southward during winter months to reach regions across North
+    Africa and India in search of food and suitable conditions.
+
+
+    Outside its core range, the slender-billed gull is rarely encountered, though
+    occasional vagrants have been recorded in western Europe and other distant locations.
+    Its preference for specific breeding habitats makes it a relatively localized
+    species compared to more widespread gull populations. The bird''s ecological role
+    is closely tied to coastal and marine environments, where it forages and breeds
+    in typically small, scattered groups on protected islands and lagoon systems.'
+migration:
+  sv: ''
+  en: '# Slender-billed Gull in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Slender-billed Gull is not a regular species in Scandinavia or Northern Europe.
+    This Mediterranean and Indian Ocean breeder is primarily distributed around the
+    Mediterranean basin and wintering grounds extending to North Africa and India.
+    While the source text mentions that "a few birds have wandered to western Europe,"
+    it provides no specific information about occurrences, timing, or patterns in
+    Scandinavia or Northern Europe. The species should be considered a vagrant to
+    the region at best, with no documented regular migration or overwintering in these
+    northern latitudes.'
+image_refs:
+- role: hero
+  path: Q391421/hero.jpg
+  width: 2400
+  height: 1442
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dunbekmeeuw - slender-billed
+    gull - Chroicocephalus genei.tif
+  commons_filename: Dunbekmeeuw - slender-billed gull - Chroicocephalus genei.tif
+- role: secondary
+  path: Q391421/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/78782622@N03">Jac.
+    Janssen</a> from Baarlo lb, NL
+  source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus genei (34473955465).jpg
+  commons_filename: Chroicocephalus genei (34473955465).jpg
+- role: secondary
+  path: Q391421/secondary-2.jpg
+  width: 1800
+  height: 1413
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus ridibundus &
+    Chroicocephalus genei, Parque Nacional de Doñana.jpg
+  commons_filename: Chroicocephalus ridibundus & Chroicocephalus genei, Parque Nacional
+    de Doñana.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:05:38.473726+00:00'
+sources:
+  wikipedia_sv_revision: '55644814'
+  wikipedia_en_revision: '1315196295'
+  claude_model: claude-haiku-4-5-20251001

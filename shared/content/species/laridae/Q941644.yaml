@@ -1,0 +1,117 @@
+id: Q941644
+scientific_name: Anous tenuirostris
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Anous
+  ioc_order: Charadriiformes
+names:
+  sv: Mindre noddy
+  en: Lesser Noddy
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mindre noddy
+
+
+    Mindre noddy är en brunsvart tärnliknande fågel som tillhör måsfågelfamiljen.
+    Det är en relativt liten art med karakteristisk mörk färgteckning som gör det
+    lätt att urskilja från närbesläktade arter. Fågeln är anpassad för livet på havet
+    och förekommer på tropiska öar i Indiska oceanen, där det häckar.
+
+
+    Som tärnfågel är mindre noddy en skicklig flygare som ofta ses jaga små fisk nära
+    vattenytan. Det är en social fågel som ofta observeras i små flockar. Arten förlitar
+    sig på närmare bestånd av små fiskar för sin föda och är därför knuten till områden
+    med rik tillgång på bytesdjur.
+
+
+    Beståndet av mindre noddy anses vara livskraftigt och arten utgör ingen naturvårdsbekymring
+    för närvarande. Det är främst känt från tropiska havsöar där det bygger bon och
+    reproducerar sig under året.'
+  en: '# Lesser Noddy
+
+
+    The lesser noddy, also called the sooty noddy, is a small seabird belonging to
+    the gull family. It is characterized by dark plumage, though specific details
+    about its appearance remain limited in standard references. Like other noddies,
+    it is a tern-like bird adapted to coastal marine environments.
+
+
+    This species inhabits coastal waters and islands across the Indian Ocean region,
+    being found in areas near Comoros, Kenya, India, the Maldives, Mauritius, the
+    Seychelles, Somalia, Sri Lanka, and the United Arab Emirates. It typically nests
+    in colonies on small islands and coastal outcrops within its range.
+
+
+    The lesser noddy feeds on small fish and crustaceans caught in shallow coastal
+    waters, diving from the air to capture prey. Like related noddy species, it is
+    generally quiet compared to other seabirds, though it produces calls during breeding
+    season. Its name derives from its characteristic head-nodding displays, particularly
+    during courtship and territorial interactions.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."'
+  en: 'Migration data unavailable for this species.
+
+
+    The Lesser Noddy''s range is restricted to tropical and subtropical coastlines
+    in the Indian Ocean region, including areas around the Comoros, Seychelles, Maldives,
+    and East African coast. This species does not naturally occur in Scandinavia or
+    Northern Europe, and no migration information to these regions exists in the available
+    source material.'
+image_refs:
+- role: hero
+  path: Q941644/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: Marion Schneider &amp; Christoph Aistleitner
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser Noddy - Anous tenuirostris.jpg
+  commons_filename: Lesser Noddy - Anous tenuirostris.jpg
+- role: secondary
+  path: Q941644/secondary-1.jpg
+  width: 1800
+  height: 1229
+  license: Public domain
+  author: Marion Schneider &amp; Christoph Aistleitner
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser Noddy - Anous tenuirostris
+    3.jpg
+  commons_filename: Lesser Noddy - Anous tenuirostris 3.jpg
+- role: secondary
+  path: Q941644/secondary-2.jpg
+  width: 1800
+  height: 812
+  license: Public domain
+  author: Marion Schneider &amp; Christoph Aistleitner
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser Noddy - Anous tenuirostris
+    4.jpg
+  commons_filename: Lesser Noddy - Anous tenuirostris 4.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:03:45.487896+00:00'
+sources:
+  wikipedia_sv_revision: '58089168'
+  wikipedia_en_revision: '1314917547'
+  claude_model: claude-haiku-4-5-20251001

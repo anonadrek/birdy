@@ -1,0 +1,132 @@
+id: Q12267692
+scientific_name: Sternula albifrons
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Sternula
+  ioc_order: Charadriiformes
+names:
+  sv: Småtärna
+  en: Little Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Småtärna
+
+
+    Småtärna är familjen måsfåglarnas minsta art. Den utmärks av sin lilla storlek
+    och karakteristiska häckningsdräkt med svart hjässa och vit panna. Näbben är gul
+    med svart spets, vilket gör arten lätt att identifiera. Under vintermånaderna
+    blir huvudet övervägande vitt.
+
+
+    Arten har en mycket vid utbredning och förekommer vid kusttrakter runt Afrika,
+    Europa, Asien och Australien samt på öar i Stilla havet. Det finns nära besläktade
+    arter som den amerikanska småtärnan och persiska småtärnan, vilka tidigare klassificerades
+    som underarter av småtärnan.
+
+
+    Som en liten tärnart är småtärnan väl anpassad för sitt livssätt vid kusterna,
+    där den jagar små fiskar genom att dyka från luften. Arten är känd för sin omständiga
+    häckning på öppna strander och ölänken.'
+  en: '# Little Tern
+
+
+    The little tern is a small seabird belonging to the tern family (Laridae), characterized
+    by its diminutive size relative to other tern species. Its scientific name reflects
+    its appearance: Sternula is a diminutive form of Sterna, while albifrons refers
+    to its white forehead. The species was formally described in 1764 and later reclassified
+    into the genus Sternula when larger terns were grouped separately under Sterna.
+
+
+    As one of the smallest terns, it displays the typical tern profile with a streamlined
+    body adapted for its piscivorous lifestyle. Like other terns, it likely exhibits
+    characteristic hovering and diving behavior to capture small fish from the water''s
+    surface. The little tern''s compact size and specialized hunting technique distinguish
+    it from its larger relatives.
+
+
+    The species occupies coastal and wetland habitats across its range, where it exploits
+    shallow waters for feeding. Its small stature and specific ecological niche differentiate
+    it within the diverse tern family, making it recognizable to observers familiar
+    with seabird identification.'
+migration:
+  sv: '# Småtärna - Utbredning i Skandinavien och Norra Europa
+
+
+    Småtärna är en flyttfågel som förekommer vid kusterna i Skandinavien och Norra
+    Europa under häckningssäsongen. Arten anländer under försommaren för att häcka
+    vid lämpliga lokaliteter vid havet och större inlandsvatten. Under hösten påbörjar
+    småtärnan sin långväga migration söderut för att övervintra i värmere regioner,
+    främst i Afrika. Arten är således endast närvarande under de värmare månaderna
+    och är helt frånvarande under vintermånaderna.'
+  en: '# Little Tern (Sternula albifrons) - Occurrence in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and nomenclatural information
+    about the Little Tern, with no details regarding its migration patterns, seasonal
+    occurrence, or distribution throughout the year in Scandinavia or Northern Europe.
+    To provide accurate information about this species'' movements and presence in
+    the region, additional sources documenting its seasonal occurrence and migration
+    behavior would be required.'
+image_refs:
+- role: hero
+  path: Q12267692/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/60513640@N07">Agustín
+    Povedano</a> from El Puerto de Santa María, Extremadura y Andalucía
+  source_url: https://commons.wikimedia.org/wiki/File:Charrancito Sternula albifrons
+    8.jpg
+  commons_filename: Charrancito Sternula albifrons 8.jpg
+- role: secondary
+  path: Q12267692/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/60513640@N07">Agustín
+    Povedano</a> from <a href="//commons.wikimedia.org/wiki/El_Puerto_de_Santa_Mar%C3%ADa"
+    title="El Puerto de Santa María">El Puerto de Santa María</a>, Extremadura y Andalucía
+  source_url: https://commons.wikimedia.org/wiki/File:Charrancito Sternula albifrons
+    2.jpg
+  commons_filename: Charrancito Sternula albifrons 2.jpg
+- role: secondary
+  path: Q12267692/secondary-2.jpg
+  width: 1800
+  height: 1110
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/60513640@N07">Agustín
+    Povedano</a> from El Puerto de Santa María, Extremadura y Andalucía
+  source_url: https://commons.wikimedia.org/wiki/File:Charrancito Sternula albifrons
+    9.jpg
+  commons_filename: Charrancito Sternula albifrons 9.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:05:44.224127+00:00'
+sources:
+  wikipedia_sv_revision: '59225467'
+  wikipedia_en_revision: '1349037420'
+  claude_model: claude-haiku-4-5-20251001

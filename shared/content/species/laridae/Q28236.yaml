@@ -1,0 +1,139 @@
+id: Q28236
+scientific_name: Larus argentatus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Larus
+  ioc_order: Charadriiformes
+names:
+  sv: Gråtrut
+  en: European Herring Gull
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gråtrut
+
+
+    Gråtruten är en robust havsfågel med distinktiva färgtecken. Det har vit undersida
+    och vitt huvud, medan vingarna är gråa på översidan. Näbben är gul med en karakteristisk
+    röd fläck, och benen är vanligen skära. Det är en stor måsfågel som är lätt att
+    identifiera på avstånd tack vare denna färgkombination.
+
+
+    Arten förekommer framför allt vid kusterna i norra och västra Europa, men uppträder
+    även regelbundet inlandet, särskilt i Norden. Det ses ofta på klippor, stränderna
+    och i hamnmiljöer där det söker föda. Gråtruten är en opportunistisk fågel som
+    äter allt från fisk till avfall.
+
+
+    Globalt sett är arten livskraftig, men det finns regionala variationer. I vissa
+    områden minskar beståndet bekymrande, vilket har lett till att arten klassificeras
+    som utrotningshotad på vissa platser. Tidigare ansågs många gråmantlade trutpopulationer
+    världen över tillhöra samma art, men dessa urskiljs numera vanligen som egna arter.'
+  en: '# European Herring Gull
+
+
+    The European herring gull is a large gull reaching up to 66 cm in length, making
+    it a substantial presence in coastal areas. Adults display the classic gull plumage
+    with white and grey tones, distinctive features that make them recognizable across
+    their range.
+
+
+    This species breeds along the northern and western coasts of Europe, with populations
+    showing varying degrees of migratory behaviour depending on their location. Birds
+    from colder regions typically migrate southward during winter months, whilst those
+    in more temperate areas often remain as permanent residents year-round.
+
+
+    European herring gulls are highly adaptable feeders with a diverse diet. They
+    consume fish and crustaceans when available, supplemented by plant material. Equally
+    important to their survival is their role as opportunistic scavengers, readily
+    exploiting carrion and human food waste. This dietary flexibility has enabled
+    them to thrive in modern coastal environments, though it has also contributed
+    to their reputation as bold, assertive birds around human settlements and harbours.'
+migration:
+  sv: '# Gråtrut – Förekomst i Skandinavien och Nordeuropa
+
+
+    Gråtruten är en ganzårig eller delvis stannande fågel i Nordeuropa. Den förekommer
+    året runt längs Skandinaviens kuster, där den är särskilt vanlig vid häckningsplatserna
+    under våren och sommaren. Under hösten och vintern sprider sig populationerna
+    mot söder och väster, med många individer som övervintrande vid kusterna eller
+    som kortdistansmigrerande. Fågeln anländer till häckningsområdena i Norden under
+    våren, typiskt från februari-mars. I Norden förekommer arten både vid kusten och
+    i inlandet, vilket är ovanligt jämfört med sydligare populationer.
+
+
+    Övervintringslokalerna sträcker sig från Nordsjön till Atlanterkusten, där många
+    svenska och norska gråtrutar tillbringar vintermånaderna. Arten är därmed delvis
+    stannande och delvis migrerande beroende på individ och population, med största
+    delen av den nordiska populationen närvarande året runt eller återkommande sesongsvis.'
+  en: '# European Herring Gull - Seasonal Occurrence in Scandinavia/Northern Europe
+
+
+    The European herring gull is a resident breeder throughout northern and western
+    European coasts, including Scandinavian regions. Migration patterns vary considerably
+    by population and latitude. Gulls breeding in colder inland and northern areas
+    typically migrate southward during winter months, while coastal populations often
+    remain as permanent residents year-round. Birds present in Iceland, Britain, Ireland,
+    and North Sea shores demonstrate this residential tendency. In Scandinavia specifically,
+    populations show mixed strategies: some individuals overwinter locally while others
+    disperse to milder regions. Spring return to breeding territories occurs from
+    February onwards, with full breeding populations established by April.'
+image_refs:
+- role: hero
+  path: Q28236/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Larus argentatus Tuileries 20180324
+    t144119.jpg
+  commons_filename: Larus argentatus Tuileries 20180324 t144119.jpg
+- role: secondary
+  path: Q28236/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Larus argentatus Tuileries 20180324
+    t144644.jpg
+  commons_filename: Larus argentatus Tuileries 20180324 t144644.jpg
+- role: secondary
+  path: Q28236/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Nguyen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Larus argentatus first winter
+    Tuileries 2018-03-03 n01.jpg
+  commons_filename: Larus argentatus first winter Tuileries 2018-03-03 n01.jpg
+review_status: approved
+review_notes: "Gråtrut — Larus argentatus Tuileries (Paris); allmän SE-art längs hela kusten."
+generated_at: '2026-05-15T20:02:54.325367+00:00'
+sources:
+  wikipedia_sv_revision: '59168908'
+  wikipedia_en_revision: '1347937254'
+  claude_model: claude-haiku-4-5-20251001

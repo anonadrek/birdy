@@ -333,6 +333,36 @@ species:
   Q619728:
     description_accept_missing: [sv, en]  # Kanariestrandskata (Canary Islands Oystercatcher †, EX)
     allow_missing_images: true  # extinct, ingen Commons hi-res
+  # Laridae batch (2026-05-15): trutar/tärnor svwiki kort/saknas + Ross's Gull no-images.
+  Q1265260:
+    description_accept_missing: [sv, en]  # Saunders’s Tern
+  Q18839:
+    description_accept_missing: [sv, en]  # Lesser Crested Tern
+  Q18866:
+    description_accept_missing: [sv]  # Greater Crested Tern
+  Q233616:
+    description_accept_missing: [sv]  # Whiskered Tern (Chlidonias hybrida)
+  Q25634:
+    description_accept_missing: [sv]  # Skrattmås (Black-headed Gull)
+  Q27215:
+    description_accept_missing: [sv]  # Svarttärna (Black Tern)
+  Q27375:
+    description_accept_missing: [sv]  # Vittrut (Glaucous Gull)
+  Q391421:
+    description_accept_missing: [sv]  # Slender-billed Gull
+  Q476356:
+    description_accept_missing: [en]  # Pallas’s Gull
+  Q519583:
+    description_accept_missing: [en]  # Audouin’s Gull
+  Q525717:
+    description_accept_missing: [sv]  # Brown Noddy (Anous stolidus)
+  Q589869:
+    description_accept_missing: [sv]  # Sooty Gull
+  Q747817:
+    description_accept_missing: [sv, en]  # Ross’s Gull
+    allow_missing_images: true  # arktisk vagrant, ingen Commons hi-res
+  Q921533:
+    description_accept_missing: [sv]  # White-cheeked Tern
   # Laniidae batch (2026-05-15): törnskator svwiki kort/saknas.
   Q184508:
     description_accept_missing: [sv]  # Varfågel (Great Grey Shrike) — allmän SE vinter

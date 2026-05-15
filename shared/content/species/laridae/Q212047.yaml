@@ -1,0 +1,105 @@
+id: Q212047
+scientific_name: Xema sabini
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Xema
+  ioc_order: Charadriiformes
+names:
+  sv: Tärnmås
+  en: Sabine’s Gull
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tärnmås
+
+
+    Tärnmås är en liten arktisk mås som tillhör släktet Xema. Den häckar i de nordligaste
+    delarna av Nordamerika och Eurasien, från Spetsbergen och österut. Under vintern
+    migrerar arten långt söderut till områden i norra Stilla havet och södra Atlanten
+    utanför sydvästra Afrika.
+
+
+    I Sverige påträffas tärnmås endast tillfälligt, framför allt under hösten då den
+    kan skådas i svenska vatten längs västkusten. Det är en relativt sällsynt gäst
+    för den intresserade fågelspanarens del, och observationer är ofta knutna till
+    denna årstid och dessa vatten.'
+  en: '# Sabine''s Gull
+
+
+    Sabine''s gull is a small gull with distinctive markings. It possesses a forked
+    tail—a feature unusual among gulls—and displays striking plumage patterns that
+    aid identification in its open ocean habitat.
+
+
+    The species breeds in colonies during summer months, nesting on Arctic coasts
+    and tundra. It creates simple ground nests lined with grass, where it lays two
+    or three spotted olive-brown eggs. Outside the breeding season, Sabine''s gull
+    becomes pelagic, spending most of its time at sea far from land.
+
+
+    This opportunistic feeder takes a wide variety of small animal prey, adapting
+    its diet to whatever suitable food sources are available in its marine environment.
+    It is primarily encountered on open ocean waters except during the breeding season,
+    making it a sought-after sighting for seabird enthusiasts.'
+migration:
+  sv: '# Tärnmås - Utbredning i Norden
+
+
+    Tärnmås är en arktisk flyttfågel som häckar sparsamt i nordligaste Skandinavien,
+    bland annat på Spetsbergen. Under hösten migrerar arten långväga söderut från
+    sina häckningsområden i Arktis. Tärnmåsen passerar då genom nordeuropeiska vatten
+    på väg till sina övervintringsområden i tropiska och subtropiska haven. I Sverige
+    uppträder arten främst på hösten längs Västkusten, där den kan iakttas tillfälligt
+    under augusti-oktober. Arten är en sällsynt gäst i svenska vatten och förekommer
+    aldrig här under övervintringsperioden. Vårtiden återvänder fåglarna till sina
+    arktiska häckningsplatser.'
+  en: '# Sabine''s Gull – Seasonal Occurrence in Northern Europe
+
+
+    Sabine''s Gull is a migratory Arctic breeder that occurs in Scandinavia and northern
+    Europe primarily during the breeding season. It arrives on Arctic coasts and tundra
+    regions in late spring to establish colonies for breeding through summer. Outside
+    the breeding season, this species is pelagic, meaning it spends time at sea in
+    oceanic waters rather than remaining in northern regions. The gull departs Arctic
+    breeding grounds in autumn to migrate southward to ocean waters off Africa and
+    other southern regions for overwintering, making it a trans-equatorial migrant.
+    Sightings in northern Europe are thus concentrated in the brief breeding months,
+    with presence being rare or absent during winter.'
+image_refs:
+- role: hero
+  path: Q212047/hero.jpg
+  width: 2400
+  height: 1553
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/22170893@N06">Gregory
+    "Slobirdr" Smith</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sabine's Gull (Larus sabini)
+    (Xema sabini) (10724042756).jpg
+  commons_filename: Sabine's Gull (Larus sabini) (Xema sabini) (10724042756).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:04:20.698274+00:00'
+sources:
+  wikipedia_sv_revision: '55752905'
+  wikipedia_en_revision: '1353948693'
+  claude_model: claude-haiku-4-5-20251001

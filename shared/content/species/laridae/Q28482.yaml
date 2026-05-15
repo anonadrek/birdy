@@ -1,0 +1,124 @@
+id: Q28482
+scientific_name: Onychoprion fuscatus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Onychoprion
+  ioc_order: Charadriiformes
+names:
+  sv: Sottärna
+  en: Sooty Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sottärna
+
+
+    Sottärna är en pelagisk tärnfågel som lever i subtropiska och tropiska hav runt
+    om i världen. Den är framför allt känd för sitt utpräglat pelagiskt liv – förutom
+    under häckningstiden tillbringar den mycket tid långt ute på öppna havet, långt
+    från land. Med sitt talrika bestånd räknas arten som livskraftig och är inte utsatt
+    för hotande utveckling.
+
+
+    Jämfört med många andra tärnor är sottärnan väl anpassad till livet på öppet hav.
+    Den är mycket spridd över sitt utbrett område och förekommer regelbundet i de
+    tropiska och subtropiska vattnen där den förekommer. Som medlem av måsfåglarnas
+    familj delar den flera karakteristiska drag med sina släktingar, men dess preferens
+    för pelagisk miljö skiljer den från många andra tärnor som oftare hålls till kustvattnen.'
+  en: '# Sooty Tern
+
+
+    The sooty tern is a striking seabird of tropical oceans, instantly recognizable
+    by its dark upper parts contrasting sharply with a white underside. It possesses
+    the remarkable ability to remain airborne for extended periods, sometimes for
+    years, sustaining itself by skimming the sea surface to catch small fish and squid.
+    This bird demonstrates extraordinary aerial mastery, rarely settling on water
+    and returning to land only during the breeding season.
+
+
+    It inhabits tropical and subtropical waters worldwide, nesting on islands throughout
+    the equatorial zone. The species is highly colonial, gathering in large breeding
+    colonies where it returns year after year to the same breeding grounds. When on
+    land, it produces distinctive harsh, nasal calls that echo across breeding colonies—a
+    sound quite different from its silent demeanor while hunting at sea.
+
+
+    The sooty tern''s life cycle is uniquely adapted to ocean living, with adults
+    spending the vast majority of their time in flight rather than on the water, making
+    them one of nature''s most dedicated aerial predators.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Sottärnan är en tropisk och subtropisk art som är starkt knuten till varma havsområden.
+    Källtexten innehåller ingen information om förekomst i Skandinavien eller Nordeuropa,
+    och ingen information om säsongsvandring eller övervintringsöstadort. Arten är
+    främst en pelagisk fågel i tropiska och subtropiska hav, långt från Nordens geografiska
+    område.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text describes the sooty tern as a tropical seabird that spends years
+    at sea but provides no specific information about its occurrence in Scandinavia
+    or Northern Europe, seasonal presence, migration patterns, or timing of any visits
+    to these regions. The sooty tern''s range is described as equatorial zones, which
+    indicates it does not occur in Scandinavian or Northern European waters as a regular
+    migrant or wintering bird.'
+image_refs:
+- role: hero
+  path: Q28482/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/33590535@N06">Drew
+    Avery</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Onychoprion fuscatus Ascension
+    Island 3.jpg
+  commons_filename: Onychoprion fuscatus Ascension Island 3.jpg
+- role: secondary
+  path: Q28482/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/33590535@N06">Drew
+    Avery</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Onychoprion fuscatus Ascension
+    Island 6.jpg
+  commons_filename: Onychoprion fuscatus Ascension Island 6.jpg
+- role: secondary
+  path: Q28482/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a rel="nofollow" class="external text" href="http://www.hear.org/starr/">Forest
+    &amp; Kim Starr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Starr 080605-6434 Onychoprion
+    fuscatus.jpg
+  commons_filename: Starr 080605-6434 Onychoprion fuscatus.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:04:38.788800+00:00'
+sources:
+  wikipedia_sv_revision: '56065073'
+  wikipedia_en_revision: '1315263316'
+  claude_model: claude-haiku-4-5-20251001

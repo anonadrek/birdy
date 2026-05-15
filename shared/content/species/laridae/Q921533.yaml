@@ -1,0 +1,99 @@
+id: Q921533
+scientific_name: Sterna repressa
+taxonomy:
+  family: Laridae
+  family_sv: Tärnor
+  genus: Sterna
+  ioc_order: Charadriiformes
+names:
+  sv: Vitkindad tärna
+  en: White-cheeked Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# White-cheeked Tern
+
+
+    The white-cheeked tern is a small tern belonging to the Laridae family. Its distinctive
+    white cheeks contrast sharply with its darker plumage, making it identifiable
+    among other tern species. Like other terns, it is a slender, graceful seabird
+    adapted for hunting small fish over coastal waters.
+
+
+    This species inhabits warm coastal regions around the Red Sea, extending eastward
+    along the Horn of Africa to Kenya, and across the Persian Gulf to the Iranian
+    coast, Pakistan, and western India. It favors shallow marine environments where
+    it hunts by plunging into the water to catch small fish. The white-cheeked tern
+    typically feeds in small groups or loose flocks, displaying the characteristic
+    tern behaviour of hovering above the water before diving.
+
+
+    As a tropical and subtropical species, it remains in or near its coastal range
+    year-round, rarely venturing far inland. Birdwatchers seeking this species should
+    focus on coastal areas and shallow bays within its geographic range, particularly
+    in warm months when activity levels are highest.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The White-cheeked Tern''s known range (Red Sea, Horn of Africa, Persian Gulf,
+    and Indian Ocean coasts) does not overlap with Scandinavia or Northern Europe,
+    making it irrelevant to document its occurrence in these regions. The source text
+    provides no information about migration patterns or seasonal movements that would
+    apply to Scandinavian bird watching or regional ornithology.'
+image_refs:
+- role: hero
+  path: Q921533/hero.jpg
+  width: 2048
+  height: 1366
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/christoph_moning">christoph_moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sterna repressa, Dibba, Al Fujairah,
+    UAE 1.jpg
+  commons_filename: Sterna repressa, Dibba, Al Fujairah, UAE 1.jpg
+- role: secondary
+  path: Q921533/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/christoph_moning">christoph_moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sterna repressa, Dibba, Al Fujairah,
+    UAE 2.jpg
+  commons_filename: Sterna repressa, Dibba, Al Fujairah, UAE 2.jpg
+- role: secondary
+  path: Q921533/secondary-2.jpg
+  width: 1800
+  height: 1126
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/christoph_moning">christoph_moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sterna repressa, Dibba, Al Fujairah,
+    UAE 3.jpg
+  commons_filename: Sterna repressa, Dibba, Al Fujairah, UAE 3.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:04:52.832335+00:00'
+sources:
+  wikipedia_sv_revision: '55757497'
+  wikipedia_en_revision: '1315195765'
+  claude_model: claude-haiku-4-5-20251001

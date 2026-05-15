@@ -1,0 +1,128 @@
+id: Q27547
+scientific_name: Thalasseus sandvicensis
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Thalasseus
+  ioc_order: Charadriiformes
+names:
+  sv: Kentsk tärna
+  en: Sandwich Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kentsk tärna
+
+
+    Kentsk tärna är en relativt stor tärna som kännetecknas av sitt karakteristiska
+    utseende. Under häckningstiden bär den en svart hjässa med en spretig tofs som
+    stickar upp från huvudet. Det mest slående kännemärket är näbben, som är svart
+    med en distinkt gul spets – ett unikt drag hos denna art. Denna färgkombination
+    gör arten lätt att identifiera bland andra tärnor.
+
+
+    Arten förekommer utmed kuster på flera kontinenter, från Europa och områdena kring
+    Svarta havet och Kaspiska havet till östkusten av USA, där den sträcker sig långt
+    söderut ända till Argentina. Den är därmed en långväga och mycket utspridd art.
+    Kentsk tärna är en kustnära fågel som anpassat sig till livet vid havet, där den
+    söker sitt föda i vattnet.'
+  en: '# Sandwich Tern
+
+
+    The Sandwich tern is a slender, elegant tern belonging to the gull family. It
+    is pale grey above with a white underside, and features a distinctive black cap
+    on its head with a characteristic shaggy crest at the rear. Its long, pointed
+    bill is typically yellow-orange with a black tip, and it has relatively long wings
+    adapted for buoyant flight over water.
+
+
+    This species is highly specialized for hunting small fish, which it catches by
+    hovering over water before plunging dramatically into the sea. It is highly vocal,
+    producing sharp, rasping calls, particularly around breeding colonies. The Sandwich
+    tern often nests in noisy, crowded colonies on coastal islands and beaches, sometimes
+    sharing breeding sites with other tern species.
+
+
+    The Sandwich tern breeds across the Palearctic region from Europe eastward to
+    the Caspian Sea, favoring coastal and brackish water habitats. During winter,
+    it migrates to warmer waters, found along Mediterranean coasts and the coasts
+    of Africa, India, and Sri Lanka. It is closely related to several other crested
+    terns and has been recorded interbreeding with the elegant and lesser crested
+    terns.'
+migration:
+  sv: '# Kentsk tärna – Förekomst i Skandinavien
+
+
+    Kentsk tärna är en migrerande kusttärna som förekommer i Skandinavien främst under
+    häckningstiden. Arten anländer till nordeuropeiska kusten under våren, typiskt
+    från april till maj, för att häcka vid utvalda kolonilokaler. Efter häckningen
+    under sommarens första del drar fågeln bort på hösten, vanligen från juli-augusti
+    och framåt, för att övervintring sker i väsentligt sydligare vatten – ofta längs
+    västra Afrikas kuster eller vid Medelhavet. Arten är således helt migrerande i
+    regionen och förekommer inte under vinterhalvåret i skandinaviska farvatten.'
+  en: '# Sandwich Tern in Scandinavia/Northern Europe
+
+
+    The Sandwich Tern is a migratory species in Scandinavia and Northern Europe, breeding
+    during spring and summer months in the Palearctic region. Birds arrive at northern
+    breeding sites in late April and May, establishing colonies on coastal islands
+    and sandbanks. Following successful breeding, these terns begin their autumn migration
+    in July and August, with most populations departed by September. The species winters
+    in the Mediterranean Sea and along African coasts, India, and Sri Lanka, remaining
+    absent from Scandinavian waters during the winter months. Spring return typically
+    occurs in late April.'
+image_refs:
+- role: hero
+  path: Q27547/hero.jpg
+  width: 1850
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sandwich Terns (Thalasseus sandvicensis),
+    Heligoland.jpg
+  commons_filename: Sandwich Terns (Thalasseus sandvicensis), Heligoland.jpg
+- role: secondary
+  path: Q27547/secondary-1.jpg
+  width: 1197
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Thalasseus sandvicensis (Brandseeschwalbe)
+    vor Helgoland.jpg
+  commons_filename: Thalasseus sandvicensis (Brandseeschwalbe) vor Helgoland.jpg
+- role: secondary
+  path: Q27547/secondary-2.jpg
+  width: 1198
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sandwich Tern (Thalasseus sandvicensis)
+    in flight, Cabanas de Tavira, Portugal.jpg
+  commons_filename: Sandwich Tern (Thalasseus sandvicensis) in flight, Cabanas de
+    Tavira, Portugal.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:05:45.093881+00:00'
+sources:
+  wikipedia_sv_revision: '57960286'
+  wikipedia_en_revision: '1351000915'
+  claude_model: claude-haiku-4-5-20251001

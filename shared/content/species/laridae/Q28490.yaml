@@ -1,0 +1,125 @@
+id: Q28490
+scientific_name: Onychoprion anaethetus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Onychoprion
+  ioc_order: Charadriiformes
+names:
+  sv: Tygeltärna
+  en: Bridled Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tygeltärna
+
+
+    Tygeltärna är en liten tärna som förekommer i tropiska och subtropiska hav världen
+    över. Det är en övervägande marin art som endast tillfälligt påträffas långt från
+    sitt normala utbredningsområde. I Europa är arten sällsynt, och endast två fynd
+    har registrerats i Sverige, vilket gör den till en mycket osannolik gäst i nordliga
+    vatten.
+
+
+    Arten är klassificerad som livskraftig av IUCN, vilket indikerar att populationen
+    är stabil och inte hotad. Som de flesta tärtor är det en skicklig fiskare som
+    jagar små fiskar från luften. Tygeltärnan tillhör familjen måsfåglar, som omfattar
+    måsar, tärnor och skäror.
+
+
+    För den som är intresserad av fågelskådning är arten framför allt relevant som
+    en sällsynt vagrant i norra regioner, snarare än en art att förvänta sig under
+    normala omständigheter.'
+  en: '# Bridled Tern
+
+
+    The bridled tern is a small seabird belonging to the gull family, found across
+    tropical ocean regions worldwide. Its name derives from the distinctive white
+    line running across its face, resembling a bridle, which contrasts sharply with
+    its darker plumage. Like other terns, it is a graceful flier with pointed wings
+    adapted for hunting over open water.
+
+
+    This species is primarily pelagic, spending much of its time at sea hunting small
+    fish and marine invertebrates by plunge-diving into the water. It typically nests
+    in colonies on remote islands and coastal areas, preferring rocky outcrops or
+    sandy beaches away from human disturbance. The bridled tern is generally quieter
+    than many tern species, though it produces harsh calls when defending nesting
+    territory or alarmed.
+
+
+    The bird''s slender build and streamlined profile make it perfectly adapted to
+    life over tropical and subtropical oceans, where it is most commonly encountered.
+    During breeding season, it returns to traditional nesting sites, often sharing
+    islands with other seabird species.'
+migration:
+  sv: Tygeltärna är en tropisk och subtropisk art som normalt förekommer i varma havsområden
+    långt söder om Skandinavien. Arten är mycket sällan påträffad i Nordeuropa och
+    Sverige, där den endast dokumenterats genom ett par tillfälliga fynd. Det finns
+    ingen regelbunden migration till eller genom Skandinavien, och arten kan endast
+    betraktas som en ytterst sällsynt vagrant i regionen. Observationer i norra Europa
+    är slumpmässiga och opålitliga, utan något mönster vad gäller säsong eller frekvens.
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the occurrence, migration
+    patterns, or seasonal movements of the Bridled Tern in Scandinavia or Northern
+    Europe. To provide accurate migration data for this species in that region, additional
+    sources with specific distribution and movement information would be needed.'
+image_refs:
+- role: hero
+  path: Q28490/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bridled Tern Onychoprion anaethetus
+    04.jpg
+  commons_filename: Bridled Tern Onychoprion anaethetus 04.jpg
+- role: secondary
+  path: Q28490/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bridled Tern Onychoprion anaethetus
+    05.jpg
+  commons_filename: Bridled Tern Onychoprion anaethetus 05.jpg
+- role: secondary
+  path: Q28490/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser Noddy Anous tenuirostris
+    15.jpg
+  commons_filename: Lesser Noddy Anous tenuirostris 15.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:05:20.285676+00:00'
+sources:
+  wikipedia_sv_revision: '55752339'
+  wikipedia_en_revision: '1350886069'
+  claude_model: claude-haiku-4-5-20251001

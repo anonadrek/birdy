@@ -1,0 +1,119 @@
+id: Q912041
+scientific_name: Ichthyaetus leucophthalmus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Ichthyaetus
+  ioc_order: Charadriiformes
+names:
+  sv: Vitögd mås
+  en: White-eyed Gull
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vitögd mås
+
+
+    Vitögd mås är en mås som är endemisk för kustområdena kring Röda havet. Det är
+    en närbesläktad art till sotmåsen, vilket båda arterna delar sitt utbredningsområde.
+    Arten är anpassad till dessa specifika kustzoner och förekommer där under året.
+
+
+    Vitögd måsen är en karakteristisk måsfågel som är väl anpassad till sitt marina
+    miljö. Som många måsarter lever den av fisk och andra marina födan som det kan
+    få från havet och kustlinjen. Arten ses regelbundet längs kusterna i sitt begränsat
+    utbredningsområde, där det tillsammans med andra måsarter utgör en viktig del
+    av det marina ekosystemet.'
+  en: '# White-eyed Gull
+
+
+    The white-eyed gull is a small gull species endemic to the Red Sea region. It
+    belongs to the gull family and is most closely related to the sooty gull. The
+    species takes its name from its distinctive pale eye, which contrasts with its
+    darker plumage.
+
+
+    This gull inhabits coastal waters and islands within its limited range. It shares
+    characteristics typical of gulls, though its small size distinguishes it from
+    many larger gull species. The white-eyed gull has historically been classified
+    within the genus *Larus*, though taxonomic arrangements for gulls have evolved
+    over time.
+
+
+    The species currently maintains a stable population and is classified as Least
+    Concern by the IUCN. However, it faces significant threats from human activity
+    and environmental degradation. Oil pollution poses a particular risk to this endemic
+    species, given its dependence on the marine environment and restricted geographic
+    distribution.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten anger endast att Vitögd mås är endemisk för Röda havets
+    kustområden och nämner inte något om förekomst i Skandinavien eller Nordeuropa,
+    eller någon migrationsinformation. Arten är således inte relevant för en nordeuropeisk
+    fågelbeskrivning.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only information about the White-eyed Gull''s
+    endemic range in the Red Sea, its taxonomy, and conservation status, but includes
+    no details about migration patterns, seasonal movements, or occurrence in Scandinavia
+    and Northern Europe. Additional sources would be needed to provide accurate information
+    about this species'' movements throughout the year.'
+image_refs:
+- role: hero
+  path: Q912041/hero.jpg
+  width: 2048
+  height: 1958
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/opisska">opisska</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus leucophthalmus,
+    Hurghada, Egypt 5.jpg
+  commons_filename: Ichthyaetus leucophthalmus, Hurghada, Egypt 5.jpg
+- role: secondary
+  path: Q912041/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/ch_berg">ch_berg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus leucophthalmus,
+    Hurghada, Egypt 2.jpg
+  commons_filename: Ichthyaetus leucophthalmus, Hurghada, Egypt 2.jpg
+- role: secondary
+  path: Q912041/secondary-2.jpg
+  width: 1800
+  height: 1205
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Anai171" title="User:Anai171">Anai171</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Goéland à iris blanc (Ichthyaetus
+    leucophthalmus) sur la plage de l'île Moucha, oiseau endémique de la mer Rouge,
+    Djibouti.jpg
+  commons_filename: Goéland à iris blanc (Ichthyaetus leucophthalmus) sur la plage
+    de l'île Moucha, oiseau endémique de la mer Rouge, Djibouti.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:04:55.445674+00:00'
+sources:
+  wikipedia_sv_revision: '55757897'
+  wikipedia_en_revision: '1332913121'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,138 @@
+id: Q26800
+scientific_name: Sterna paradisaea
+taxonomy:
+  family: Laridae
+  family_sv: Tärnor
+  genus: Sterna
+  ioc_order: Charadriiformes
+names:
+  sv: Silvertärna
+  en: Arctic Tern
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Silvertärna
+
+
+    Silvertärnan är en elegant havsfågel som tillhör måsfågelfamiljen. Den är en liten
+    tärnart med slank kroppsbyggnad, vit undersida och grå övre delar, med en karakteristisk
+    svart hjässa. Under häckningssäsongen har den ett distintivt utseende med upprätt
+    hållning.
+
+
+    Arten är känd för sitt extraordinära flyttbeteende och genomför världens längsta
+    djurmigration – från häckningskolonierma i arktiska och subarktiska områden i
+    Europa, Asien och Nordamerika till Antarktis och tillbaka. De populationer som
+    flyttar längst färdas årligen cirka 90 000 kilometer. Denna imponerande vandring
+    innebär att silvertärnan upplever fler soltimmar än någon annan organism på jorden.
+
+
+    Silvertärnan häckar i kolonier under nordliga somrar och är därmed närvaro i många
+    regioner under denna tid. Den jagar små fiskar genom att dyka från luften och
+    är en skicklig flugare. Under hösten försvinner arten helt från de nordliga områdena
+    för att tillbringa vinter i sydpolsregionen, innan den återkommer för nästa häckningssäsong.'
+  en: '# Arctic Tern
+
+
+    The Arctic tern is a slender seabird of the tern family, with pale grey and white
+    plumage, a black cap, and a deeply forked tail that enhances its graceful flight.
+    In breeding plumage, it has a distinctive red-orange bill and legs. It is a bird
+    of circumpolar distribution, breeding throughout Arctic and sub-Arctic regions
+    of Europe, Asia, and North America.
+
+
+    This species is renowned for undertaking the longest migration of any animal on
+    Earth. It achieves two summers annually by migrating from its northern breeding
+    grounds to the Antarctic coast and back again—a round-trip journey of between
+    48,700 and 96,000 km depending on breeding location. This extraordinary feat takes
+    approximately six months in each direction, allowing the bird to experience extended
+    periods of daylight and abundant food resources in both polar regions.
+
+
+    The Arctic tern is strongly tied to coastal and open water habitats, where it
+    hunts small fish by diving from the air. It is typically seen in breeding colonies
+    on Arctic coasts and islands, and along its migration routes over open ocean.
+    Its aerial agility and endurance make it one of nature''s most remarkable long-distance
+    travellers.'
+migration:
+  sv: '# Silvertärna i Nordeuropa
+
+
+    Silvertärnan är en extremt långdistansflyttare som häckar i kolonier i arktiska
+    och subarktiska områden över hela norra delen av världen, inklusive Skandinavien.
+    Under häckningsperioden från maj till augusti är arten talrik i nordiska kustbygder
+    och vid större sjösystem. När sommaren närmar sitt slut påbörjar silvertärnan
+    en spektakulär vandring söderut mot Antarktis, där den tillbringar vintern och
+    åtnjuter den södra halvklotet''s sommar. De populationer som häckar i Nordeuropa
+    lämnar dessa områden från augusti och september, medan återkomsten till häckningsplatserna
+    sker i maj följande år. Denna resa på cirka 90 000 kilometer årligen gör silvertärnan
+    till världens största migrant i relation till kroppsstorlek.'
+  en: '# Arctic Tern (Sterna paradisaea)
+
+
+    The Arctic Tern is a highly migratory species with a circumpolar breeding distribution
+    across the Arctic and sub-Arctic regions of Northern Europe, including Iceland,
+    Greenland, and Scandinavia. These birds experience two summers annually by undertaking
+    one of the longest migrations in the animal kingdom. They breed in northern regions
+    during the boreal summer before departing for Antarctic waters in late summer
+    and autumn, returning to their northern breeding grounds in spring (typically
+    May-June). Birds nesting in Iceland and Greenland cover approximately 70,900 km
+    annually on their round-trip migration, while individuals from more southerly
+    populations travel somewhat shorter distances. This remarkable migration allows
+    Arctic Terns to exploit extended daylight and abundant food resources in both
+    polar regions.'
+image_refs:
+- role: hero
+  path: Q26800/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Arctic tern (Sterna paradisaea)
+    2023 2.jpg
+  commons_filename: Arctic tern (Sterna paradisaea) 2023 2.jpg
+- role: secondary
+  path: Q26800/secondary-1.jpg
+  width: 1800
+  height: 1257
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37949120@N07">Ekaterina
+    Chernetsova (Papchinskaya)</a> from Saint-Petersburg, Russia
+  source_url: https://commons.wikimedia.org/wiki/File:Sterna paradisaea (40886787153).jpg
+  commons_filename: Sterna paradisaea (40886787153).jpg
+- role: secondary
+  path: Q26800/secondary-2.jpg
+  width: 1800
+  height: 1239
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/37949120@N07">Ekaterina
+    Chernetsova (Papchinskaya)</a> from Saint-Petersburg, Russia
+  source_url: https://commons.wikimedia.org/wiki/File:Sterna paradisaea (32909400627).jpg
+  commons_filename: Sterna paradisaea (32909400627).jpg
+review_status: approved
+review_notes: "Silvertärna — Sterna paradisaea hero med klassisk dräkt; allmän SE-art kustkolonier + skärgård."
+generated_at: '2026-05-15T20:03:48.688839+00:00'
+sources:
+  wikipedia_sv_revision: '58696772'
+  wikipedia_en_revision: '1352844118'
+  claude_model: claude-haiku-4-5-20251001

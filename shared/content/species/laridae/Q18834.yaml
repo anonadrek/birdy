@@ -1,0 +1,126 @@
+id: Q18834
+scientific_name: Gelochelidon nilotica
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Gelochelidon
+  ioc_order: Charadriiformes
+names:
+  sv: Sandtärna
+  en: Gull-billed Tern
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sandtärna
+
+
+    Sandtärnan är en karakteristisk tärna som avviker från sina släktingar genom sin
+    måslik näbb och breda vingar. Detta ger den ett helt annat utseende än typiska
+    tärnor. Den är en skicklig fågel som födosöker i liknande habitat som arter i
+    släktet Chlidonias, ofta över vatten och fuktiga områden där den kan fånga föda
+    i flykt.
+
+
+    Arten har en mycket bred geografisk utbredning och förekommer på nästan alla kontinenter.
+    Det enda undantaget är Antarktis och Australien, där den tidigare betraktades
+    som samma population men numera ofta skiljs ut som en separat australisk art.
+    Denna utbredning vittnar om sandtärnans förmåga att anpassa sig till olika miljöer
+    och klimatzoner runt om i världen.'
+  en: '# Gull-billed Tern
+
+
+    The Gull-billed Tern is a medium-sized tern belonging to the Laridae family, distinguished
+    by its stout, gull-like black bill—which gives the species its name. It has pale
+    grey upperparts, white underparts, and a black cap during the breeding season.
+    The bill is noticeably thicker and more robust than other tern species, reflecting
+    its different feeding habits.
+
+
+    Unlike many terns that plunge-dive into water, the Gull-billed Tern typically
+    catches its food by picking prey from the water surface or snatching insects in
+    flight. This versatile foraging strategy makes it less dependent on deep water
+    habitats. The species favors shallow lakes, lagoons, and coastal areas where it
+    can easily access small fish and aquatic insects.
+
+
+    Widely distributed across temperate and subtropical regions, the Gull-billed Tern
+    breeds in scattered colonies throughout Europe, Asia, northwest Africa, and the
+    Americas. It is highly migratory, with populations moving seasonally between breeding
+    grounds and wintering areas. The species can be recognized in flight by its pale
+    plumage and characteristic silhouette, with steady, purposeful wingbeats as it
+    quarters over water searching for food.'
+migration:
+  sv: '# Sandtärna (Gelochelidon nilotica) – Förekomst i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.'
+  en: '# Gull-billed Tern Migration in Northern Europe
+
+
+    The gull-billed tern is a rare and irregular visitor to Scandinavian waters, with
+    only scattered breeding records in the region. This species is primarily a summer
+    breeder in southern and central Europe, with northern populations breeding in
+    the Baltic region. In Scandinavia, occurrences are sporadic and typically limited
+    to coastal areas during late spring and summer months. The species shows variable
+    migration patterns depending on breeding location; those breeding in Europe generally
+    migrate southward to winter in Africa and southern Asia. Northern European records
+    are uncommon and often involve overshooting birds during spring migration or occasional
+    summer vagrants, making it an exceptional rather than regular occurrence in Scandinavian
+    bird communities.'
+image_refs:
+- role: hero
+  path: Q18834/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Gull-billed terns (Gelochelidon
+    nilotica).jpg
+  commons_filename: Gull-billed terns (Gelochelidon nilotica).jpg
+- role: secondary
+  path: Q18834/secondary-1.jpg
+  width: 1800
+  height: 1066
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Shino_jacob_koottanad" title="User:Shino
+    jacob koottanad">Shino jacob koottanad</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Gull-billed tern (Gelochelidon
+    nilotica),.jpg
+  commons_filename: Gull-billed tern (Gelochelidon nilotica),.jpg
+- role: secondary
+  path: Q18834/secondary-2.jpg
+  width: 1363
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Shino_jacob_koottanad" title="User:Shino
+    jacob koottanad">Shino jacob koottanad</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Gull-billed tern (Gelochelidon
+    nilotica).jpg
+  commons_filename: Gull-billed tern (Gelochelidon nilotica).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:03:15.808879+00:00'
+sources:
+  wikipedia_sv_revision: '59012472'
+  wikipedia_en_revision: '1350901010'
+  claude_model: claude-haiku-4-5-20251001

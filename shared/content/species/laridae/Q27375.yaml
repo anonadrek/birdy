@@ -1,0 +1,105 @@
+id: Q27375
+scientific_name: Larus hyperboreus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Larus
+  ioc_order: Charadriiformes
+names:
+  sv: Vittrut
+  en: Glaucous Gull
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Glaucous Gull
+
+
+    The glaucous gull is a massive gull species, ranking as the second-largest in
+    the world. Its name derives from Latin, with "hyperboreus" meaning "northern,"
+    reflecting its Arctic origins. The term "glaucous" refers to its distinctive grey
+    plumage coloration.
+
+
+    This large gull displays pale grey-white wings and back, with a powerful, heavy
+    bill suited to its predatory and scavenging lifestyle. It is a robust bird built
+    for harsh polar environments, with thick plumage for insulation against extreme
+    cold. Adults show the typical gull pattern of dark eyes and yellow-orange eye-rings,
+    though immatures appear paler and less distinctly marked.
+
+
+    The glaucous gull inhabits Arctic and sub-Arctic regions, favoring coastal areas,
+    ice floes, and tundra landscapes. It is highly adaptable, feeding opportunistically
+    on fish, marine mammals, eggs, and carrion. This species is a powerful flier capable
+    of covering vast distances across polar regions. It is often seen in loose flocks,
+    particularly during winter migrations when some populations move to temperate
+    coasts. The glaucous gull is generally silent outside the breeding season, though
+    it produces typical gull calls—loud, harsh cries—when breeding or defending food
+    sources.'
+migration:
+  sv: ''
+  en: '# Glaucous Gull in Scandinavia/Northern Europe
+
+
+    The Glaucous Gull is primarily an Arctic and subarctic breeder. In Scandinavia,
+    it occurs mainly as a winter visitor and passage migrant, particularly along coastal
+    areas. Northern populations breed in the high Arctic and move southward during
+    autumn, with numbers increasing along Scandinavian coasts from October through
+    March. Some birds remain year-round in northern regions, while others migrate
+    further south to more temperate European coasts when ice conditions intensify.
+    The species is irregular in occurrence, with numbers fluctuating based on food
+    availability and winter severity.'
+image_refs:
+- role: hero
+  path: Q27375/hero.jpg
+  width: 2400
+  height: 1656
+  license: Public domain
+  author: Sowls, Art
+  source_url: https://commons.wikimedia.org/wiki/File:Larus hyperboreus-USFWS.jpg
+  commons_filename: Larus hyperboreus-USFWS.jpg
+- role: secondary
+  path: Q27375/secondary-1.jpg
+  width: 1800
+  height: 1149
+  license: Public domain
+  author: Richard A. Ingebrigtsen, Department of Aquatic BioSciences, University of
+    Tromsø
+  source_url: https://commons.wikimedia.org/wiki/File:Larus hyperboreus.jpg
+  commons_filename: Larus hyperboreus.jpg
+- role: secondary
+  path: Q27375/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Glaucous Gull (Larus hyperboreus)
+    (13667579863).jpg
+  commons_filename: Glaucous Gull (Larus hyperboreus) (13667579863).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:05:17.893355+00:00'
+sources:
+  wikipedia_sv_revision: '58010101'
+  wikipedia_en_revision: '1314389847'
+  claude_model: claude-haiku-4-5-20251001

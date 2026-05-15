@@ -1,0 +1,122 @@
+id: Q389505
+scientific_name: Larus cachinnans
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Larus
+  ioc_order: Charadriiformes
+names:
+  sv: Kaspisk trut
+  en: Caspian Gull
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kaspisk trut
+
+
+    Kaspisk trut är en medelstor trut som tidigare klassificerades som en underart
+    till gråtruten, men genetiska studier visar att den är närmare besläktad med silltruten.
+    Arten återfinns från östra Europa österut till västra Kina, där den häckar framför
+    allt vid större vattendrag och sjöar.
+
+
+    Arten förekommer både på häckningsplatserna under sommaren och på olika övervintringsområden.
+    Med en populationsstatus klassificerad som livskraftig av IUCN verkar arten må
+    väl trots att den långt var mindre känd än dess närmare släktingar bland de större
+    trutarna.'
+  en: '# Caspian Gull
+
+
+    The Caspian gull is a large gull belonging to the herring and lesser black-backed
+    gull complex, a group of closely related species. Its scientific name derives
+    from Latin: *Larus* refers to gulls and large seabirds generally, while *cachinnans*
+    means "laughing," reflecting the bird''s vocal nature.
+
+
+    As a large gull, it shares characteristics with other members of its complex,
+    though specific identification can be challenging. It frequents coastal and inland
+    waterways, where it feeds and roosts alongside related species. Like other gulls,
+    it is a versatile and opportunistic feeder.
+
+
+    The Caspian gull''s vocalizations are prominent in its behaviour, with various
+    calls used for communication. Its presence and voice are often noticed in suitable
+    habitats where it congregates with other gulls and seabirds.'
+migration:
+  sv: '# Kaspisk trut – förekomst i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Den tillgängliga informationen angående kaspisk trut begränsar sig till dess utbredningsområde
+    i östra Europa och västra Asien. För en fullständig beskrivning av denna arts
+    säsongsväxling, flyttningsmönster och möjlig förekomst i Skandinavien och Nordeuropa
+    krävs ytterligare källmaterial specifikt om dess migrationsbeteende och övervintringsvanor
+    i norra regioner.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided Wikipedia source text contains only etymological information about
+    the Caspian gull''s scientific name and classification, with no details about
+    its migration patterns, seasonal distribution, or occurrence in Scandinavia and
+    Northern Europe throughout the year. To provide accurate migration information
+    for this species in northern European contexts, additional sources with specific
+    distributional and phenological data would be required.'
+image_refs:
+- role: hero
+  path: Q389505/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D7%99%D7%A2%D7%A7%D7%91&amp;action=edit&amp;redlink=1"
+    class="new" title="User:יעקב (page does not exist)">יעקב</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caspian gull (Larus cachinnans)
+    at Aci Trezza 6516.jpg
+  commons_filename: Caspian gull (Larus cachinnans) at Aci Trezza 6516.jpg
+- role: secondary
+  path: Q389505/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D7%99%D7%A2%D7%A7%D7%91&amp;action=edit&amp;redlink=1"
+    class="new" title="User:יעקב (page does not exist)">יעקב</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caspian gull (Larus cachinnans)
+    at Aci Trezza 6519.jpg
+  commons_filename: Caspian gull (Larus cachinnans) at Aci Trezza 6519.jpg
+- role: secondary
+  path: Q389505/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D7%99%D7%A2%D7%A7%D7%91&amp;action=edit&amp;redlink=1"
+    class="new" title="User:יעקב (page does not exist)">יעקב</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Caspian gull (Larus cachinnans)
+    at Aci Trezza 6520.jpg
+  commons_filename: Caspian gull (Larus cachinnans) at Aci Trezza 6520.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:02:27.251769+00:00'
+sources:
+  wikipedia_sv_revision: '58836251'
+  wikipedia_en_revision: '1334743085'
+  claude_model: claude-haiku-4-5-20251001

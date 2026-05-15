@@ -1,0 +1,124 @@
+id: Q723064
+scientific_name: Pagophila eburnea
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Pagophila
+  ioc_order: Charadriiformes
+names:
+  sv: Ismås
+  en: Ivory Gull
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ismås
+
+
+    Ismåsen är en högarktisk måsfågel som är helt vit i fjäderdräkten, vilket gör
+    den mycket distinkt. Den är en liten till medelstor måsfågel med ett kompakt utseende
+    och mörka ögon som kontrasterar mot den snövita plumagen.
+
+
+    Arten är starkt knuten till höga breddgrader och förekommer normalt långt norrut.
+    Den dyker dock upp oregelbundet söder om sitt huvudsakliga utbredningsområde,
+    vilket är en intressant aspekt av artens spridningsmönster. I sydligare regioner
+    är sådana observationer mycket ovanliga och anses noterbara för fågelskådare.
+
+
+    Ismåsen står inför omfattande populationsminskningar i delar av sitt utbredningsområde,
+    varför arten klassificeras som nära hotad enligt internationella bedömningar.
+    Denna utveckling gör arten särskilt intressant att följa för den som är engagerad
+    i fågelskydd och artövervakning.'
+  en: '# Ivory Gull
+
+
+    The ivory gull is a small, distinctive gull and the only member of its genus.
+    It inhabits the high Arctic regions with a circumpolar distribution, breeding
+    across Greenland, the northernmost parts of North America, and Eurasia. True to
+    its name, the species is predominantly white in plumage, making it well-adapted
+    to its icy habitat where it remains as a resident breeder rather than migrating
+    seasonally.
+
+
+    This arctic specialist occupies some of Earth''s most inhospitable environments,
+    where few other gulls venture. Its small size and pure white coloration distinguish
+    it from larger gull species found in more temperate regions. The ivory gull''s
+    presence in these extreme polar regions reflects its specialized adaptations to
+    life among pack ice and frozen landscapes, where it feeds and nests during the
+    breeding season.'
+migration:
+  sv: '# Ismås - Förekomst i Skandinavien
+
+
+    Ismåsen är en högarktisk art som normalt förekommer långt norr om Skandinavien.
+    I regionen uppträder arten endast tillfälligt och sporadiskt, framför allt under
+    höst och vinter när ismåsar ibland förflyttar sig söderut från sitt huvudsakliga
+    utbredningsområde. I Sverige har ismåsen noterats vid omkring 25 tillfällen, huvudsakligen
+    längs Västkusten. Dessa observationer är oregelbundna och kan inte betraktas som
+    en regelbunden migrationsmönster, utan snarare som tillfälliga utbrytningar från
+    sin normalutbredning i den höga norden.'
+  en: '# Ivory Gull in Scandinavia/Northern Europe
+
+
+    The Ivory Gull is a high Arctic specialist with a circumpolar distribution. In
+    Scandinavia and Northern Europe, it occurs primarily as a rare winter visitor
+    and vagrant. During breeding season, populations are found in the most northern
+    Arctic regions, including areas around Greenland and the northernmost parts of
+    Eurasia. In winter, some individuals disperse southward, occasionally reaching
+    Scandinavian coasts and northern European waters, though sightings remain uncommon.
+    The species is not a regular migrant through the region but appears sporadically
+    during harsh Arctic winters when food shortages may force birds to seek alternative
+    feeding areas further south.'
+image_refs:
+- role: hero
+  path: Q723064/hero.jpg
+  width: 2400
+  height: 1906
+  license: Public domain
+  author: U.S. Fish and Wildlife Service
+  source_url: https://commons.wikimedia.org/wiki/File:Pagophila eburnea-USFWS.jpg
+  commons_filename: Pagophila eburnea-USFWS.jpg
+- role: secondary
+  path: Q723064/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/22560927@N04/">wsweet321
+    on Flickr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pagophila eburnea PlymouthMA.jpg
+  commons_filename: Pagophila eburnea PlymouthMA.jpg
+- role: secondary
+  path: Q723064/secondary-2.jpg
+  width: 1800
+  height: 1127
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pagophila eburnea 101349061.jpg
+  commons_filename: Pagophila eburnea 101349061.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:04:57.656299+00:00'
+sources:
+  wikipedia_sv_revision: '57382898'
+  wikipedia_en_revision: '1332162635'
+  claude_model: claude-haiku-4-5-20251001

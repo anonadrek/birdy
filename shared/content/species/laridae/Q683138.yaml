@@ -1,0 +1,118 @@
+id: Q683138
+scientific_name: Larus armenicus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Larus
+  ioc_order: Charadriiformes
+names:
+  sv: Armenisk trut
+  en: Armenian Gull
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Armenisk trut
+
+
+    Armenisk trut är en stor trut som tidigare klassificerades som underart till gråtruten
+    innan den erkändes som egen art. Det är en fåtalig art, men dess bestånd bedöms
+    som livskraftigt och stabil.
+
+
+    Arten förekommer huvudsakligen i bergstrakter och omkring saltvattensområden i
+    Kaukasusregionen och Mellanöstern. Det är en karakteristisk stor mås som främst
+    återfinns i denna begränsade del av världen. Trots att individantalet är lågt
+    jämfört med andra måsarter, lyckas arten upprätthålla ett fungerande bestånd i
+    sitt utbredningsområde.
+
+
+    För den intresserade fågelskådaren representerar armenisk trut ett exempel på
+    hur närbesläktade arter kan ha evolution isär och bli erkända som distinkta arter
+    genom genetisk och morfologisk forskning.'
+  en: '# Armenian Gull
+
+
+    The Armenian gull is a large gull inhabiting the Caucasus region and the Middle
+    East. It was long considered a subspecies of the European herring gull before
+    being elevated to species status, though some taxonomic authorities continue to
+    group it with the yellow-legged gull, reflecting ongoing debate about its classification.
+
+
+    As a large gull, it likely shares characteristics typical of heavy-bodied gulls,
+    with the robust build and strong bill associated with its family. The species
+    inhabits specific regions within its range, typically favoring suitable aquatic
+    and coastal habitats where gulls congregate.
+
+
+    Despite its recognition as a distinct species, relatively little detailed information
+    about its specific appearance, behaviour, and vocalizations is widely documented
+    in standard references, which has contributed to taxonomic uncertainty surrounding
+    this gull.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    En: Migration data unavailable for this species.'
+  en: '# Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the occurrence, migration
+    patterns, or seasonal distribution of the Armenian Gull in Scandinavia or Northern
+    Europe. The Wikipedia excerpt only describes its general geographic range in the
+    Caucasus and Middle East, and its taxonomic classification history. To provide
+    accurate migration information for this species in Northern Europe, additional
+    sources with specific data on its movements and seasonal presence would be required.'
+image_refs:
+- role: hero
+  path: Q683138/hero.jpg
+  width: 2400
+  height: 1994
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:O%27micron" title="User:O'micron">O'micron</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Larus armenicus range map in
+    Armenia (Armenian).png
+  commons_filename: Larus armenicus range map in Armenia (Armenian).png
+- role: secondary
+  path: Q683138/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Beko" title="User:Beko">Beko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Հայկական որոր (Larus armenicus)
+    Սևանի ազգային պարկում, ՄԲ 14.jpg
+  commons_filename: Հայկական որոր (Larus armenicus) Սևանի ազգային պարկում, ՄԲ 14.jpg
+- role: secondary
+  path: Q683138/secondary-2.jpg
+  width: 1800
+  height: 1073
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Beko" title="User:Beko">Beko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Հայկական որոր (Larus armenicus)
+    Սևանի ազգային պարկում, ՄԲ 07.jpg
+  commons_filename: Հայկական որոր (Larus armenicus) Սևանի ազգային պարկում, ՄԲ 07.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:04:05.040054+00:00'
+sources:
+  wikipedia_sv_revision: '55504700'
+  wikipedia_en_revision: '1313948288'
+  claude_model: claude-haiku-4-5-20251001

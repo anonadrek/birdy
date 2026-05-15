@@ -1,0 +1,116 @@
+id: Q85814978
+scientific_name: Thalasseus albididorsalis
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Thalasseus
+  ioc_order: Charadriiformes
+names:
+  sv: Guineatärna
+  en: West African Crested Tern
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Guineatärna
+
+
+    Guineatärna är en havsfågel i familjen måsfåglar som förekommer längs Västafrikas
+    kuster. Den behandlades tidigare som underart till kungstärnan, men genetiska
+    studier har visat att den faktiskt är närmare besläktad med iltärnan.
+
+
+    Som övrig tärna är det en elegant fiskeätare som är anpassad för att jaga på havet.
+    Det söker föda genom att dyka efter små fiskar i kustnära vatten. Till utseendet
+    är det en större tärna med karakteristiska drag från måsfågelfamiljen.
+
+
+    Guineatärnan är framför allt en kustbunden art som återfinns i västafrikanska
+    havsregioner där det kan observeras både när det fiskar och när det vilar på eller
+    i närheten av vattnet.'
+  en: '# West African Crested Tern
+
+
+    The West African crested tern is a member of the gull and tern family, distinguished
+    only recently as a separate species from the New World royal tern in 2020. It
+    is a seabird adapted for coastal marine environments, sharing characteristics
+    typical of larger tern species.
+
+
+    As a crested tern, it displays the characteristic features of its genus, with
+    a streamlined body built for diving and fishing. The species inhabits coastal
+    waters where it hunts small fish by plunging from the air into the sea. Like other
+    terns, it is a graceful flier with pointed wings and a forked tail, allowing for
+    the precise aerial maneuvers needed to locate and capture prey.
+
+
+    This species is found along the West African coast, where it occupies marine and
+    coastal habitats. Its separation as a distinct species reflects regional variation
+    adapted to Atlantic waters off this region. Further details about its appearance,
+    vocalizations, and specific behavioral patterns would require additional ornithological
+    sources, as the available information focuses primarily on its recent taxonomic
+    reclassification.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic classification information and
+    does not include any data regarding the species'' occurrence, migration patterns,
+    or seasonal distribution in Scandinavia, Northern Europe, or any other region.'
+image_refs:
+- role: hero
+  path: Q85814978/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/100201615@N03">Denis
+    Carrascosa</a> from Abidjan, Côte d'Ivoire
+  source_url: https://commons.wikimedia.org/wiki/File:2015-11-21 Thalasseus albididorsalis,
+    Assinie, Côte d'Ivoire.jpg
+  commons_filename: 2015-11-21 Thalasseus albididorsalis, Assinie, Côte d'Ivoire.jpg
+- role: secondary
+  path: Q85814978/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/rangersara">rangersara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Thalasseus albididorsalis, Langue
+    de Barbarie NP, Saint-Louis Region, Senegal 02.jpg
+  commons_filename: Thalasseus albididorsalis, Langue de Barbarie NP, Saint-Louis
+    Region, Senegal 02.jpg
+- role: secondary
+  path: Q85814978/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/rangersara">rangersara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Thalasseus albididorsalis, Langue
+    de Barbarie NP, Saint-Louis Region, Senegal 03.jpg
+  commons_filename: Thalasseus albididorsalis, Langue de Barbarie NP, Saint-Louis
+    Region, Senegal 03.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:02:35.635871+00:00'
+sources:
+  wikipedia_sv_revision: '59138337'
+  wikipedia_en_revision: '1291058724'
+  claude_model: claude-haiku-4-5-20251001

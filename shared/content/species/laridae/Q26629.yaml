@@ -1,0 +1,130 @@
+id: Q26629
+scientific_name: Larus marinus
+taxonomy:
+  family: Laridae
+  family_sv: Måsfåglar
+  genus: Larus
+  ioc_order: Charadriiformes
+names:
+  sv: Havstrut
+  en: Great Black-backed Gull
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Havstrut
+
+
+    Havstrut är en av de största måsfåglarna och europas största trut. Det är en robust
+    och kraftfull fågel med mörk rygg och vita delar, vilket gör den lätt att särskilja
+    från andra trutar. Arten är endemisk för norra Atlanten och förekommer längs atlantiska
+    kuster, inklusive vid Grönland och östkusten av Nordamerika.
+
+
+    Havstrut är en allätare och skicklig predator som jagar andra fåglar, fisk och
+    mindre djur. Det är en dominant och aggressiv fågel som ofta dominerar andra måsfåglar
+    vid matkällor. Arten är opportunistisk och tar även skräp och rester från människors
+    aktiviteter.
+
+
+    Arten ses vanligen på öppet hav och längs steniga kuster där det häckar. Det är
+    en stor och påtaglig fågel som ofta ses ensamt eller i mindre grupper.'
+  en: '# Great Black-backed Gull
+
+
+    The great black-backed gull is the largest member of the gull family, unmistakable
+    in its striking appearance. Adults display a white head, neck, and underparts
+    contrasting sharply with dark blackish-grey wings and back. Its yellow bill features
+    a distinctive red spot, and its legs are bright pink. Juveniles are much darker
+    and browner, taking several years to acquire adult plumage.
+
+
+    This species is a formidable and aggressive hunter, actively pursuing other birds
+    and stealing food from smaller gulls—a behaviour known as kleptoparasitism. It
+    is also an opportunistic scavenger, feeding on fish, marine mammals, and offal.
+    Its powerful build and dominant nature make it a significant predator in coastal
+    ecosystems.
+
+
+    The great black-backed gull breeds on northern Atlantic coasts and islands, favouring
+    rocky shores and cliff ledges. Northern populations migrate southward in winter,
+    while southern birds often remain year-round. It occasionally ventures inland
+    to large lakes and reservoirs. Its loud, deep calls are characteristic of northern
+    seascapes. Despite its predatory nature, it remains a common and widespread species
+    throughout much of its range.'
+migration:
+  sv: Havstrut förekommer året runt i nordeuropeiska vatten, även om populationerna
+    är något mobila. Under vinterhalvåret, särskilt från november till mars, ses arten
+    regelbundet vid skandinaviska kuster och kustnära områden. Många individer är
+    stationära eller kortdistansflyttare och stannar i sitt häckningsområde under
+    större delen av året. Arten häckar i Skandinavien och andra nordeuropeiska områden,
+    och många fåglar är bosatta året om längs kusten. Vissa populationer visar viss
+    flyttning söderut under de hårdaste vintrarna, men betydande antal återfinns även
+    då i norra Atlanten och vid svenska, norska och brittiska kuster.
+  en: '# Great Black-backed Gull in Northern Europe
+
+
+    The great black-backed gull exhibits variable migration patterns across its northern
+    European range. Southern breeding populations are generally sedentary year-round,
+    remaining in their territories throughout winter. However, birds breeding in far
+    northern regions migrate southward during winter months, seeking open water and
+    food sources further south. Some individuals also move inland to large lakes and
+    reservoirs during winter, supplementing coastal populations. The species is present
+    year-round in Scandinavia, though winter numbers are augmented by arrivals from
+    more northern breeding areas.'
+image_refs:
+- role: hero
+  path: Q26629/hero.jpg
+  width: 2400
+  height: 1800
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Botteville" title="User:Botteville">Botteville</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Larus marinus at Sandy Point,
+    Ipswich, MA.jpg
+  commons_filename: Larus marinus at Sandy Point, Ipswich, MA.jpg
+- role: secondary
+  path: Q26629/secondary-1.jpg
+  width: 1800
+  height: 1198
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:GRDN711" title="User:GRDN711">Gordon
+    Leggett</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2024-06-01 02 Great black-backed
+    gull (Larus marinus) pair with chicks -.jpg
+  commons_filename: 2024-06-01 02 Great black-backed gull (Larus marinus) pair with
+    chicks -.jpg
+- role: secondary
+  path: Q26629/secondary-2.jpg
+  width: 1800
+  height: 1129
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great black-backed gull (Larus
+    marinus) 2020.jpg
+  commons_filename: Great black-backed gull (Larus marinus) 2020.jpg
+review_status: approved
+review_notes: "Havstrut — Larus marinus Sandy Point (Ipswich, MA); allmän SE-art längs kust + skärgård."
+generated_at: '2026-05-15T20:04:47.943235+00:00'
+sources:
+  wikipedia_sv_revision: '59210950'
+  wikipedia_en_revision: '1344126481'
+  claude_model: claude-haiku-4-5-20251001
