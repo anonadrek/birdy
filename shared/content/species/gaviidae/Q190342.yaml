@@ -1,0 +1,128 @@
+id: Q190342
+scientific_name: Gavia immer
+taxonomy:
+  family: Gaviidae
+  family_sv: Lommar
+  genus: Gavia
+  ioc_order: Gaviiformes
+names:
+  sv: Svartnäbbad islom
+  en: Common Loon
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartnäbbad islom
+
+
+    Svartnäbbad islom är en av de större lommarterna och känns igen på sitt kraftiga,
+    rakknivade näbb. Under häckningstiden bär arten en distinkt svart och vit dräkt
+    med karakteristisk svart huvud och hals samt vitfläckigt rygg. Vintertid blir
+    färgningen mer diskret med mörkare rygg och ljusare undersida.
+
+
+    Arten är en skicklig dykare och förlitar sig helt på simning för att jaga fisk
+    under vattnet. Det är en bullrig fågel under häckningstiden, känd för sitt genomträngande
+    tjutande läte som kan höras långt över vattnet. Under övriga årstider är arten
+    mer tystlåten.
+
+
+    Svartnäbbad islom är främst häckfågel runt norra Nordamerika vid större sjöar
+    och vattendrag. Under höst och vinter flyttar stora populationer långväga för
+    att söka öppna havsområden och större insjöar i tempererade zoner, där det inte
+    fryser till. Det är under vintertiden denna art kan observeras på många europeiska
+    kustvatten och större insjöar.'
+  en: '# Common Loon
+
+
+    The Common Loon is a large, robust waterbird with striking seasonal plumage changes.
+    Breeding adults display a distinctive black head and neck with iridescent green,
+    purple, or blue sheens, contrasting sharply with pure white underparts and dark
+    upperparts. Non-breeding birds are more subdued, showing brownish tones with darker
+    necks and heads, and whitish underparts. Males and females look similar, though
+    males are noticeably heavier.
+
+
+    This species inhabits freshwater lakes and waterways during the breeding season
+    in northern regions including Canada, the northern United States, and parts of
+    Greenland and Iceland, with smaller populations in Arctic areas. During winter,
+    Common Loons migrate to coastal waters, ranging from northern maritime regions
+    down to southern areas along both Atlantic and Pacific coasts, as well as inland
+    waterways. They are strong swimmers and divers, superbly adapted to aquatic life,
+    though they move awkwardly on land.
+
+
+    The Common Loon is highly vocal, particularly during breeding season, producing
+    distinctive wailing and yodeling calls that echo across breeding lakes—sounds
+    that are characteristic and easily recognized once learned.'
+migration:
+  sv: Svartnäbbad islom är en nordamerikansk art som endast förekommer i Skandinavien
+    och Nordeuropa under övervintringstiden. Arten häckar inte i regionen utan anländer
+    från sina häckningsplatser runt norra Nordamerika för att övervintrera framför
+    allt i Nordsjön och angränsande havsområden. Huvudsakligen observeras arten under
+    höst- och vinterperioden när populationer från Nordamerika sprider sig ut över
+    atlantiska och europeiska kustnära vatten. Under våren återvänder foglarna till
+    sina häckningsland långt norrut.
+  en: '# Common Loon (Gavia immer) in Northern Europe
+
+
+    The Common Loon is a migratory species in Scandinavia and northern Europe. Small
+    breeding populations occur during summer on Svalbard and sporadically in Arctic
+    Eurasia, with birds arriving to breed on northern lakes and waterways. During
+    winter, Common Loons migrate southward, with populations wintering along the Atlantic
+    coast of Europe, including areas off Scandinavia and the British Isles. Some birds
+    may remain in northern regions if water remains unfrozen, while others move to
+    coastal waters further south. The species typically departs breeding areas in
+    autumn and returns in spring, though exact migration timing varies by population
+    and location.'
+image_refs:
+- role: hero
+  path: Q190342/hero.jpg
+  width: 2400
+  height: 1601
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/yellowstonenps/">YellowstoneNPS</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common loon (Gavia immer) on
+    Grebe Lake with immature adults (53941393195).jpg
+  commons_filename: Common loon (Gavia immer) on Grebe Lake with immature adults (53941393195).jpg
+- role: secondary
+  path: Q190342/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: lwolfartist
+  source_url: https://commons.wikimedia.org/wiki/File:Gavia immer DSC 5915.jpg
+  commons_filename: Gavia immer DSC 5915.jpg
+- role: secondary
+  path: Q190342/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: lwolfartist
+  source_url: https://commons.wikimedia.org/wiki/File:Gavia immer DSC 5925.jpg
+  commons_filename: Gavia immer DSC 5925.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:31:00.809149+00:00'
+sources:
+  wikipedia_sv_revision: '57755578'
+  wikipedia_en_revision: '1352997528'
+  claude_model: claude-haiku-4-5-20251001

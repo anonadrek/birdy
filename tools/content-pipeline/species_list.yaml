@@ -1606,6 +1606,7 @@
   ioc_order: Gaviiformes
   common_en: Red-throated Loon
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q190342
   scientific_name: Gavia immer
   family: Gaviidae
@@ -1624,6 +1625,7 @@
   ioc_order: Gaviiformes
   common_en: Black-throated Loon
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q607024
   scientific_name: Oceanites oceanicus
   family: Oceanitidae

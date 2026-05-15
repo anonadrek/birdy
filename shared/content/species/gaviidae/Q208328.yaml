@@ -1,0 +1,104 @@
+id: Q208328
+scientific_name: Gavia adamsii
+taxonomy:
+  family: Gaviidae
+  family_sv: Lommar
+  genus: Gavia
+  ioc_order: Gaviiformes
+names:
+  sv: VVitnäbbad islom
+  en: Yellow-billed Loon
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Yellow-billed Loon
+
+
+    The yellow-billed loon is the largest member of the loon family, easily identified
+    by its distinctive long, straw-yellow bill with a straight culmen that gives it
+    a characteristically uptilted appearance. Breeding adults display striking plumage
+    with a black head, white underparts, and a chequered black-and-white mantle. In
+    non-breeding season, the bird becomes considerably drabber, though it retains
+    white on the chin and foreneck, making seasonal identification important.
+
+
+    As a member of the diver family, it is a highly specialized waterbird adapted
+    for diving and pursuing aquatic prey. The species favours remote northern waters
+    and is typically encountered in arctic and subarctic regions. Like other loons,
+    it is most at home in the water and rarely comes ashore except to breed. The yellow
+    bill remains the most reliable field mark for distinguishing this species from
+    other, smaller loons, particularly in distant views or non-breeding plumage when
+    other features are less pronounced.'
+migration:
+  sv: ''
+  en: '# Yellow-billed Loon (Gavia adamsii) in Northern Europe
+
+
+    The yellow-billed loon is a rare visitor to Scandinavian waters, occurring mainly
+    during winter months and migration periods. This arctic breeder is typically encountered
+    in northern Scandinavian coastal areas from November through March, when individuals
+    move south from their high-arctic breeding grounds in Russia and northern Siberia.
+    Most sightings involve non-breeding birds in winter plumage. Spring migration
+    back to breeding territories occurs from March to May, though sightings remain
+    uncommon and irregular. The species does not establish breeding populations in
+    Scandinavia and is best regarded as an occasional winter visitor to Norwegian
+    and northern Swedish coasts, with far fewer records in southern regions.'
+image_refs:
+- role: hero
+  path: Q208328/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: '<p>Ryan Askren
+
+    </p>
+
+    USGS, Alaska Science Center'
+  source_url: https://commons.wikimedia.org/wiki/File:Yellow-billed Loon Chipp South
+    8-12-13 Ryan Askren.jpg
+  commons_filename: Yellow-billed Loon Chipp South 8-12-13 Ryan Askren.jpg
+- role: secondary
+  path: Q208328/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1065381">Adam
+    Jackson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Gavia adamsii 339608190.jpg
+  commons_filename: Gavia adamsii 339608190.jpg
+- role: secondary
+  path: Q208328/secondary-2.jpg
+  width: 1800
+  height: 1354
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1610034">Anna
+    Hess</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Gavia adamsii 353681067.jpg
+  commons_filename: Gavia adamsii 353681067.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:30:47.698315+00:00'
+sources:
+  wikipedia_sv_revision: null
+  wikipedia_en_revision: '1321072298'
+  claude_model: claude-haiku-4-5-20251001

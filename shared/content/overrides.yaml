@@ -323,6 +323,9 @@ species:
   # Fregatidae batch (2026-05-15): tropisk vagrant, ingen svwiki.
   Q647512:
     description_accept_missing: [sv]  # Praktfregattfågel (Magnificent Frigatebird)
+  # Gaviidae batch (2026-05-15): högarktisk vagrant svwiki kort.
+  Q208328:
+    description_accept_missing: [sv]  # Vitnäbbad islom (Yellow-billed Loon) — arktisk vagrant
   # Fringillidae batch (2026-05-15): svwiki kort/saknas för många arter.
   Q1143180:
     description_accept_missing: [sv]  # Trumpetargimpel (Trumpeter Finch) — kort svwiki

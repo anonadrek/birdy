@@ -1,0 +1,126 @@
+id: Q26691
+scientific_name: Gavia stellata
+taxonomy:
+  family: Gaviidae
+  family_sv: Lommar
+  genus: Gavia
+  ioc_order: Gaviiformes
+names:
+  sv: Smålom
+  en: Red-throated Loon
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Smålom
+
+
+    Smålom är en vattenlevande fågel som tillhör familjen lommar och är en utpräglad
+    flyttfågel. Den är en av de mest spridda lommarna och förekommer över stora delar
+    av den norra tempererade zonen på båda sidor av Atlanten. Arten är anpassad för
+    liv i vatten och är en skicklig dykare.
+
+
+    Under häckningssäsongen är smålomen lätt att identifiera på sitt röda halsbälte,
+    som kontrasterar mot dess mörkare övre delar. Under övriga årstider blir färgningen
+    mer diskret och gråaktig. Som övrig lom är smålomen relativt stor och långsträckt
+    i kroppsformen, med placering av benen långt bak på kroppen.
+
+
+    Arten är känd för sitt karakteristiska rop, ett skallande läte som kan höras från
+    sjöar under häckningen. På sina häckningsplatser förekommer smålomen på både större
+    sjöar och mindre vattendrag i norra regioner, medan den övriga årstiden tillbringar
+    på havet eller större sötvattensystem. Som flyttfågel pendlar den mellan sitt
+    häckningsområde och sina övervintringsplatser.'
+  en: '# Red-throated Loon
+
+
+    The red-throated loon is the smallest member of the loon family, measuring 55-67
+    centimetres in length. During breeding season, it displays a distinctive reddish
+    throat patch against grey upperparts and white underparts. In winter plumage,
+    it becomes a nondescript greyish-white bird, losing the bold throat marking. This
+    migratory species breeds primarily in Arctic regions and winters in northern coastal
+    waters, making it the most widely distributed of all loons across the Northern
+    Hemisphere.
+
+
+    Red-throated loons are highly specialized fish-eaters, though they occasionally
+    consume amphibians, invertebrates, and plant material. They are monogamous birds
+    that form long-term pair bonds. Both members of a breeding pair share responsibilities
+    equally, building nests together, incubating eggs, and caring for young after
+    hatching. Their aquatic lifestyle is reflected in their streamlined bodies and
+    powerful swimming ability, adapted for pursuing fish underwater with considerable
+    agility and speed.'
+migration:
+  sv: Smålom är en utpräglad flyttfågel som återvänder till Skandinavien och Nordeuropa
+    under våren, typiskt från april till maj, för att häcka vid mindre insjöar och
+    fjällvattendrag. Under hösten påbörjar arten sin migration söderut, vanligtvis
+    från augusti-september, för att övervinta i tempererade havsområden längs Atlanten
+    och Medelhavet. Arten är därmed endast närvarande som häckfågel under sommarmånaderna
+    i norra Europa, medan den under vinterperioden finns i sydligare västra och södra
+    kustvatten.
+  en: '# Red-throated Loon in Northern Europe
+
+
+    The red-throated loon is a migratory species found throughout Scandinavia and
+    northern coastal regions. It breeds in Arctic areas during the breeding season,
+    displaying its distinctive red throat patch. In autumn, these birds migrate southward
+    to winter in northern coastal waters, including the waters around Scandinavia.
+    They return to breeding grounds in spring as ice melts and freshwater habitats
+    become available. During winter months, the birds lose their characteristic throat
+    coloring and appear predominantly grey and white. This highly migratory pattern
+    ensures the species occupies suitable habitats year-round across the Northern
+    Hemisphere.'
+image_refs:
+- role: hero
+  path: Q26691/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-throated diver (Gavia stellata),
+    Seltjarnarnes, lake Bakkatjörn, Iceland.jpg
+  commons_filename: Red-throated diver (Gavia stellata), Seltjarnarnes, lake Bakkatjörn,
+    Iceland.jpg
+- role: secondary
+  path: Q26691/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-throated diver (Gavia stellata).jpg
+  commons_filename: Red-throated diver (Gavia stellata).jpg
+- role: secondary
+  path: Q26691/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-throated diver (Gavia stellata),
+    Seltjarnarnes, Iceland.jpg
+  commons_filename: Red-throated diver (Gavia stellata), Seltjarnarnes, Iceland.jpg
+review_status: approved
+review_notes: "Smålom — hero från Island (Gavia stellata), klassisk sommardräkt med rödbrunt strupfält; allmän SE-art längs kust och i myrar."
+generated_at: '2026-05-15T19:30:56.184661+00:00'
+sources:
+  wikipedia_sv_revision: '59195281'
+  wikipedia_en_revision: '1348889127'
+  claude_model: claude-haiku-4-5-20251001

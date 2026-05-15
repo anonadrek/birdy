@@ -1,0 +1,123 @@
+id: Q184432
+scientific_name: Gavia arctica
+taxonomy:
+  family: Gaviidae
+  family_sv: Lommar
+  genus: Gavia
+  ioc_order: Gaviiformes
+names:
+  sv: Storlom
+  en: Black-throated Loon
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Storlom
+
+
+    Storlom är en stor dykkande fågel inom familjen lommar som förekommer på norra
+    halvklotet. Under våren är arten känd för sitt karakteristiska och ödsligt klingande
+    spelläte, ett klagande rop som hörs långt över vattnet. Dessa ljud är en viktig
+    del av artens beteende under häckningssäsongen.
+
+
+    Arten är en skicklig dykare som är väl anpassad för ett liv i vattnet. Storlommen
+    är mycket beroende av sjöar och större vattendrag för både näring och häckning.
+    Den är Gästriklands landskapsfågel och återfinns på sitt utbredningsområde på
+    norra halvklotet där lämpliga vattenhabitat finns.'
+  en: '# Black-throated Loon
+
+
+    The black-throated loon is a migratory aquatic bird of the Northern Hemisphere,
+    named for the distinctive dark throat patch that characterizes breeding plumage.
+    This medium-sized diver belongs to the loon family and displays the streamlined
+    body shape typical of its relatives, with legs positioned far back on the body—an
+    adaptation for diving. In winter plumage, it appears paler and less distinctively
+    marked, making field identification more challenging.
+
+
+    It breeds on freshwater lakes across northern Europe and Asia, where it spends
+    the summer months. As temperatures drop, it migrates to sheltered, ice-free coastal
+    waters of the northeast Atlantic Ocean and both the Pacific coasts, spending winter
+    in these maritime environments. The species is a powerful swimmer and diver, pursuing
+    fish underwater with remarkable agility.
+
+
+    The black-throated loon''s calls are distinctive and haunting, typical of loons,
+    though less elaborate than some relatives. Its behavior is highly aquatic; it
+    is rarely seen on land except during breeding season. Ornithologically, it has
+    been recognized as a separate species since Carl Linnaeus first described it in
+    1758, with two recognized subspecies distributed across its range.'
+migration:
+  sv: '# Storlom – Förekomst i Skandinavien året runt
+
+
+    Migrationsdata saknas för denna art.'
+  en: '# Migration Pattern of the Black-throated Loon in Scandinavia/Northern Europe
+
+
+    The Black-throated Loon is a migratory species that breeds in freshwater lakes
+    throughout northern Europe during the breeding season. As winter approaches, these
+    birds migrate to sheltered, ice-free coastal waters of the north-east Atlantic
+    Ocean, where they spend the winter months. This species follows a distinct seasonal
+    cycle, abandoning inland breeding sites once ice begins to form and returning
+    to northern breeding grounds when lakes thaw in spring. The timing of arrival
+    and departure varies depending on local ice conditions and weather patterns, with
+    spring arrival typically occurring from late April through May and autumn departure
+    from August onwards.'
+image_refs:
+- role: hero
+  path: Q184432/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Black-throated loon (Gavia arctica)
+    2022.jpg
+  commons_filename: Black-throated loon (Gavia arctica) 2022.jpg
+- role: secondary
+  path: Q184432/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/73440891@N05">Daniel
+    Thornton</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bled - polarni slapnik (Gavia
+    arctica) 1.jpg
+  commons_filename: Bled - polarni slapnik (Gavia arctica) 1.jpg
+- role: secondary
+  path: Q184432/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/73440891@N05">Daniel
+    Thornton</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bled - polarni slapnik (Gavia
+    arctica) 2.jpg
+  commons_filename: Bled - polarni slapnik (Gavia arctica) 2.jpg
+review_status: approved
+review_notes: "Storlom — hero med vit halsband + grå nacke + svart strupe; allmän SE-art i klara skogssjöar."
+generated_at: '2026-05-15T19:31:30.430502+00:00'
+sources:
+  wikipedia_sv_revision: '57937282'
+  wikipedia_en_revision: '1349131467'
+  claude_model: claude-haiku-4-5-20251001
