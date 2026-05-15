@@ -1,0 +1,123 @@
+id: Q31873711
+scientific_name: Merops viridissimus
+taxonomy:
+  family: Meropidae
+  family_sv: Biätare
+  genus: Merops
+  ioc_order: Coraciiformes
+names:
+  sv: Sahelbiätare
+  en: African Green Bee-eater
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sahelbiätare
+
+
+    Sahelbiätare är en liten fågel i familjen biätare med gräsgrön färgtoning på fjädrarna.
+    Det är en elegant insektätare som specialiserat sig på att jaga flygande insekter,
+    särskilt bin och andra småflyg. Som medlem i biätarfamiljen har arten den typiska
+    spetsiga näbb som är väl anpassad för denna jaktmetod.
+
+
+    Arten livnär sig genom att fånga insekter i luften med snabba, smidiga rörelser.
+    Det är en aktiv fågel som ofta ses från exponerade platser där det ger god överblick
+    för jakten. Sahelbiätaren förekommer i öppna och halvöppna biotoper med låg vegetation.
+
+
+    Arten urskildes tidigare från grön dvärgbiätare men anses allt oftare utgöra en
+    egen art med sitt eget utbredningsområde. Som många biätare är det en migratorisk
+    art som rör sig säsongsvis mellan olika regioner för att följa insekternas säsongsväxlingar.'
+  en: '# African Green Bee-eater
+
+
+    The African green bee-eater is a small, elegant member of the bee-eater family
+    found across the arid Sahel region of Africa. Its striking appearance features
+    predominantly green plumage that provides excellent camouflage in its semi-desert
+    habitat. Like other bee-eaters, it is specially adapted for catching insects in
+    flight, with a streamlined body and pointed wings that enable swift, agile aerial
+    maneuvers.
+
+
+    This species is highly specialized in hunting, as its name suggests, feeding primarily
+    on bees and other flying insects which it catches with impressive precision during
+    fast, darting flights. It typically hunts from exposed perches or while in flight,
+    sallying out to snatch prey from the air. The bird''s behaviour is characteristic
+    of bee-eaters: social and often seen in small groups or loose colonies.
+
+
+    The African green bee-eater''s range spans the arid grasslands and semi-desert
+    zones of the Sahel belt, where it inhabits open scrubland and sparse acacia woodland.
+    Notably, the species has expanded its range northward over recent decades, now
+    occurring in areas where it was previously absent, demonstrating adaptability
+    to changing environmental conditions in its region.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains no information about this species'' occurrence
+    in Scandinavia, Northern Europe, migration patterns, overwintering behavior, or
+    seasonal arrival months. The African Green Bee-eater is described as occurring
+    in the arid Sahel region of Africa and Egypt, with no mention of Scandinavian
+    or Northern European distribution. Additional sources would be required to provide
+    accurate migration information for this region.'
+image_refs:
+- role: hero
+  path: Q31873711/hero.jpg
+  width: 2400
+  height: 1160
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/196198470@N02">Sam
+    Thomas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:African green bee-eater (Merops
+    viridissimus) Aswan (52260525791).jpg
+  commons_filename: African green bee-eater (Merops viridissimus) Aswan (52260525791).jpg
+- role: secondary
+  path: Q31873711/secondary-1.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hatem_Moushir" title="User:Hatem
+    Moushir">Hatem Moushir</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Merops viridissimus cleopatra
+    at Elephantine Island, Aswan, Egypt 1.jpg
+  commons_filename: Merops viridissimus cleopatra at Elephantine Island, Aswan, Egypt
+    1.jpg
+- role: secondary
+  path: Q31873711/secondary-2.jpg
+  width: 1800
+  height: 1192
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hatem_Moushir" title="User:Hatem
+    Moushir">Hatem Moushir</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Merops viridissimus cleopatra
+    at Elephantine Island, Aswan, Egypt 2.jpg
+  commons_filename: Merops viridissimus cleopatra at Elephantine Island, Aswan, Egypt
+    2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:12:49.411922+00:00'
+sources:
+  wikipedia_sv_revision: '56466587'
+  wikipedia_en_revision: '1351693102'
+  claude_model: claude-haiku-4-5-20251001

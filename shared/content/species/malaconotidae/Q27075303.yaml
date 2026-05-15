@@ -1,0 +1,116 @@
+id: Q27075303
+scientific_name: Tchagra senegalus
+taxonomy:
+  family: Malaconotidae
+  family_sv: Busktörnskator
+  genus: Tchagra
+  ioc_order: Passeriformes
+names:
+  sv: Svartkronad tchagra
+  en: Black-crowned Tchagra
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartkronad tchagra
+
+
+    Svartkronad tchagra är en fågel i familjen busktörnskator och den enda arten från
+    denna familj som förekommer i Nordafrika och Asien. Det är en medelstor tätting
+    som främst uppehåller sig i buskiga och tätt växtbevuxna miljöer.
+
+
+    Arten är en stillsam fågel som ofta håller till i täta buskar och låg vegetation,
+    där det gärna söker föda bland grenverket. Det är inte särskilt framträdande i
+    sitt beteende och kan vara svårt att observera på grund av sitt val av habitat.
+    Svartkronad tchagra föredrar områden med varierad växtlighet där det kan dölja
+    sig medan det söker efter sitt foder.
+
+
+    Denna art är utbredd i sitt geografiska område och förekommer där förhållandena
+    är lämpliga för arten.'
+  en: '# Black-crowned Tchagra
+
+
+    The black-crowned tchagra is a bushshrike belonging to the family Malaconotidae,
+    which was historically classified within the shrike family Laniidae before being
+    recognized as a distinct group. This passerine bird shares evolutionary ties with
+    true shrikes but occupies its own taxonomic family.
+
+
+    Unfortunately, the available source material provides limited information about
+    this species'' specific appearance, behavior, vocalizations, and habitat preferences.
+    To offer you accurate details about the black-crowned tchagra''s distinctive field
+    marks, typical behaviors, call characteristics, and geographic distribution, more
+    comprehensive source information would be needed. I recommend consulting dedicated
+    bird field guides or ornithological references that focus specifically on African
+    bushshrikes for detailed coverage of this species'' identification features and
+    ecology.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains only taxonomic and family classification information
+    about the Black-crowned Tchagra, with no details regarding its migration patterns,
+    seasonal occurrence, or distribution in Scandinavia or Northern Europe. To provide
+    accurate information about this species'' presence throughout the year in these
+    regions, additional sources would be needed.'
+image_refs:
+- role: hero
+  path: Q27075303/hero.jpg
+  width: 2048
+  height: 2033
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/389997">Shaun
+    Swanepoel</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tchagra senegalus 282784584.jpg
+  commons_filename: Tchagra senegalus 282784584.jpg
+- role: secondary
+  path: Q27075303/secondary-1.jpg
+  width: 1800
+  height: 1198
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/531541">Andrew
+    Campbell</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tchagra senegalus orientalis
+    191100476.jpg
+  commons_filename: Tchagra senegalus orientalis 191100476.jpg
+- role: secondary
+  path: Q27075303/secondary-2.jpg
+  width: 1800
+  height: 1190
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Black-crowned Tchagra (Tchagra
+    senegalus) (45838253815).jpg
+  commons_filename: Black-crowned Tchagra (Tchagra senegalus) (45838253815).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:12:50.137660+00:00'
+sources:
+  wikipedia_sv_revision: '56772615'
+  wikipedia_en_revision: '1314193653'
+  claude_model: claude-haiku-4-5-20251001

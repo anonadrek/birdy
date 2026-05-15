@@ -1,0 +1,83 @@
+id: Q1303970
+scientific_name: Rhodophoneus cruentus
+taxonomy:
+  family: Malaconotidae
+  family_sv: Busktörnskator
+  genus: Rhodophoneus
+  ioc_order: Passeriformes
+names:
+  sv: Rosabröstad busktörnskata
+  en: Rosy-patched Bushshrike
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Rosy-patched Bushshrike
+
+
+    The rosy-patched bushshrike is the sole member of its genus within the bushshrike
+    family. This striking bird inhabits arid and semi-arid regions across northeastern
+    Africa, favoring subtropical and tropical dry shrubland environments where scattered
+    thorny vegetation provides both shelter and hunting grounds.
+
+
+    While detailed plumage descriptions are limited in available sources, the species''
+    English name hints at its distinctive rosy or pinkish patches, which likely appear
+    on the wings or underparts. Like other bushshrikes, it is presumed to be a relatively
+    robust bird adapted to harsh, dry habitats. The species typically forages in low
+    vegetation, hunting insects and small prey among the thorns.
+
+
+    The rosy-patched bushshrike remains somewhat poorly documented compared to other
+    bushshrike species, and its specific vocalizations and detailed behavioral patterns
+    are not extensively recorded in standard references. Birdwatchers seeking this
+    species in its native range should scan thorny scrubland habitats during appropriate
+    seasons, though its rarity and remote distribution mean it is encountered less
+    frequently than more widespread African bushshrikes.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The rosy-patched bushshrike is endemic to East Africa and the Horn of Africa region,
+    with its distribution centered in countries such as Ethiopia, Kenya, Somalia,
+    and Sudan. The provided source material contains no information regarding migration
+    patterns, seasonal movements, or occurrence in Scandinavia or Northern Europe.
+    This species is not known to occur in these northern regions and therefore has
+    no relevance to Nordic bird migration patterns.'
+image_refs:
+- role: hero
+  path: Q1303970/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2055527">Brian
+    Henderson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rhodophoneus cruentus 181621782.jpg
+  commons_filename: Rhodophoneus cruentus 181621782.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:12:03.437550+00:00'
+sources:
+  wikipedia_sv_revision: '57922234'
+  wikipedia_en_revision: '1323460579'
+  claude_model: claude-haiku-4-5-20251001

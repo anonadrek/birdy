@@ -1,0 +1,88 @@
+id: Q28921354
+scientific_name: Argya altirostris
+taxonomy:
+  family: Leiothrichidae
+  family_sv: Fnittertrastar
+  genus: Argya
+  ioc_order: Passeriformes
+names:
+  sv: Irakskriktrast
+  en: Iraq Babbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Irakskriktrast
+
+
+    Irakskriktrast är en medelstor tätting som tillhör familjen fnittertrastar. Arten
+    har en begränsad utbredning och förekommer endast i Mellanöstern, där den är anpassad
+    till de specifika miljöer som finns i denna region.
+
+
+    Arten anses vara livskraftig trots att populationen minskar. Irakskriktrast är
+    därför inte klassificerad som hotad enligt internationella bevaringskriterier,
+    men det är viktigt att övervaka utvecklingen för att säkerställa att arten inte
+    försämras ytterligare framöver.'
+  en: '# Iraq Babbler
+
+
+    The Iraq babbler is a member of the Leiothrichidae family, a group of small to
+    medium-sized songbirds. This species is endemic to reed bed habitats within the
+    Tigris-Euphrates Valley region, where it has adapted to life among dense aquatic
+    vegetation.
+
+
+    The bird is found across a limited geographic range that encompasses parts of
+    the Middle East, preferring the thick reed beds and marshland environments that
+    characterize its preferred habitat. Its dependence on these specific wetland ecosystems
+    makes it particularly vulnerable to habitat degradation and water management changes
+    in its region.
+
+
+    Like other babblers, the Iraq babbler is likely a social species, though detailed
+    behavioral accounts are limited in general literature. The reed bed habitat it
+    favors provides both shelter and feeding opportunities among the dense plant growth.
+    More specific information about its appearance, vocalizations, and detailed behavior
+    patterns would require consulting specialized ornithological field guides focused
+    on Middle Eastern avifauna.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only information about the Iraq Babbler''s geographic
+    range (Iraq, southwestern Iran, Syria, and southeastern Turkey) and habitat (reed
+    beds of the Tigris-Euphrates Valley), with no details regarding migration patterns,
+    seasonal movements, or occurrence in Scandinavia or Northern Europe. Additionally,
+    this species'' range does not naturally extend to Scandinavian or Northern European
+    regions, making migration information to these areas not applicable.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:12:55.903488+00:00'
+sources:
+  wikipedia_sv_revision: '55622375'
+  wikipedia_en_revision: '1314843204'
+  claude_model: claude-haiku-4-5-20251001

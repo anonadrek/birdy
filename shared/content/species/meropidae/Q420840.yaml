@@ -1,0 +1,128 @@
+id: Q420840
+scientific_name: Merops orientalis
+taxonomy:
+  family: Meropidae
+  family_sv: Biätare
+  genus: Merops
+  ioc_order: Coraciiformes
+names:
+  sv: Orientbiätare
+  en: Asian Green Bee-eater
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Orientbiätare
+
+
+    Orientbiätare är en liten fågel i biätarfamiljen som tidigare klassificerades
+    som underart till grön dvärgbiätare men betraktas nu som egen art. Det är en elegant
+    fågel anpassad för sitt insektsätande levnadssätt.
+
+
+    Orientbiätaren kännetecknas av sin gröna färgtoning och kompakta kropp, typisk
+    för biätarfamiljen. Som namnen avslöjar liknar det grön dvärgbiätaren men utgör
+    nu en separat taxon. Arten är huvudsakligen aktivt jagande, där detSnappar efter
+    insekter – framför allt bin och andra små flygande insekter – ofta från en frågställande
+    sittplats.
+
+
+    Arten förekommer framför allt i östliga delar av sitt utbredningsområde. Det är
+    en fågel som återfinns i öppnare och semiöppna habitat där insektsutbudet är tillräckligt
+    för att försörja arten. Liksom andra biätare har orientbiätaren ofta ett karakteristiskt
+    rop som kan användas för identifikation. Med sin aktiva jagarbeteende och iögonfallande
+    flygande framträder den ofta synbar för iakttagare i lämpligt habitat.'
+  en: '# Asian Green Bee-eater
+
+
+    The Asian green bee-eater is a small, slender bird with predominantly green plumage,
+    making it well-adapted to blending into vegetation. Several regional subspecies
+    exhibit subtle plumage variations, though all share the characteristic streamlined
+    body and pointed bill typical of bee-eaters. Its elegant appearance and graceful
+    movements make it a rewarding species to observe.
+
+
+    This species feeds almost exclusively on insects, particularly bees and other
+    flying arthropods, which it catches deftly in flight using swift, darting maneuvers.
+    Unlike many bee-eaters, it does not require proximity to water and is found in
+    grasslands, thin scrub, and open woodland habitats across its range. It is largely
+    resident or undertakes only short-distance seasonal movements.
+
+
+    The Asian green bee-eater is widely distributed throughout Asia, from coastal
+    southern Iran eastward across the Indian subcontinent and into Southeast Asia,
+    reaching Vietnam. Its adaptability to various open habitats within this broad
+    range makes it a relatively common species where it occurs, though it may be easily
+    overlooked due to its small size and preference for perching quietly among vegetation.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (The source text provided contains only taxonomic information about the Oriental
+    Bee-eater''s classification and does not include any information about its occurrence,
+    migration patterns, or seasonal distribution in Scandinavia or Northern Europe.)'
+  en: '# Asian Green Bee-eater in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Asian Green Bee-eater is distributed across Asia from Iran through the Indian
+    subcontinent to Vietnam, with no documented occurrence in Scandinavia or Northern
+    Europe. This species exhibits resident or short-distance seasonal movements within
+    its Asian range, but does not migrate to or occur in Northern European regions.
+    Consequently, there is no relevant information regarding its presence, migration
+    patterns, or seasonal occurrence in Scandinavian territories.'
+image_refs:
+- role: hero
+  path: Q420840/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Vengolis" title="User:Vengolis">Vengolis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Merops orientalis orientalis,
+    Chengottukavu, Kerala, India 04763-Enhanced-NR.jpg
+  commons_filename: Merops orientalis orientalis, Chengottukavu, Kerala, India 04763-Enhanced-NR.jpg
+- role: secondary
+  path: Q420840/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Vengolis" title="User:Vengolis">Vengolis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Merops orientalis ceylonicus
+    04573.tif
+  commons_filename: Merops orientalis ceylonicus 04573.tif
+- role: secondary
+  path: Q420840/secondary-2.jpg
+  width: 1472
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Vengolis" title="User:Vengolis">Vengolis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Merops orientalis orientalis,
+    Chengottukavu, Kerala, India 4726.jpg
+  commons_filename: Merops orientalis orientalis, Chengottukavu, Kerala, India 4726.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:11:38.754459+00:00'
+sources:
+  wikipedia_sv_revision: '55678720'
+  wikipedia_en_revision: '1350549474'
+  claude_model: claude-haiku-4-5-20251001

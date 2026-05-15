@@ -1,0 +1,68 @@
+id: Q321272
+scientific_name: Locustella luscinioides
+taxonomy:
+  family: Locustellidae
+  family_sv: Locustellidae
+  genus: Locustella
+  ioc_order: Passeriformes
+names:
+  sv: Vassångare
+  en: Savi’s Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: "# Vassångare\n\nVassångare är en liten, diskret gräsfågel med brunaktig fjäderdräkt\
+    \ och vit strupe. Den är svår att upptäcka i sitt naturliga habitat bland täta\
+    \ sälgbuskage och rörskogen där den håller sig gömd. Arten har en karakteristisk,\
+    \ nästan insektliknande sång som beskrivs som en långdragen drill - ett monotont\
+    \ ljud som ofta hörs under skymningen och natten.\n\nArten häckar i feuktig miljö\
+    \ med riklig vegetation, särskilt i områden med rörskogar och buskmark. Den är\
+    \ mycket återhållsam och vistas normalt lågt i växtligheten. Vassångare migrerar\
+    \ mellan Europa och västra Asien som häckningsområde och söker sig till Afrika\
+    \ för övervintering. \n\nUnder senare decennier har arten etablerat sig som häckfågel\
+    \ i sitt område, och populationen bedöms som stabil enligt IUCN. För den som vill\
+    \ få syn på denna fågel krävs tålamod och kunskap om dess föredragna biotoper."
+  en: ''
+migration:
+  sv: Vassångare är en flyttfågel som häckar i Europa och västra Asien. Arten koloniserade
+    Sverige på 1990-talet och har därefter etablerat sig som häckfågel i landet. Under
+    hösten migrerar vassångaren söderut till Afrika för att övervintra, där den finns
+    från Etiopien och Sudan och längre söderut. Arten återvänder till sina häckningsområden
+    under våren för att reproducera sig under sommarmånaderna.
+  en: ''
+image_refs:
+- role: hero
+  path: Q321272/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Medeniacus" title="User:Medeniacus">Ivan
+    Medenica</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Locustella luscinioides.jpg
+  commons_filename: Locustella luscinioides.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:11:35.695343+00:00'
+sources:
+  wikipedia_sv_revision: '59227906'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

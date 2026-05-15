@@ -1,0 +1,126 @@
+id: Q837761
+scientific_name: Locustella lanceolata
+taxonomy:
+  family: Locustellidae
+  family_sv: Locustellidae
+  genus: Locustella
+  ioc_order: Passeriformes
+names:
+  sv: Träsksångare
+  en: Lanceolated Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Träsksångare
+
+
+    Träsksångare är en liten sångare inom familjen gräsfåglar. Arten häckar i ett
+    omfattande område från nordvästra Ryssland österut till Kamtjatka och Japan. Under
+    vintermånaderna är den en flyttfågel som drar till södra och sydöstra Asien, där
+    den förekommer från Indien till Indonesien.
+
+
+    I Västeuropa är träsksångaren en sällsynt gäst och ses endast under passage. Arten
+    är relativt okänd för de flesta birdare utanför sitt regelbundna utbredningsområde.
+    IUCN kategoriserar den som livskraftig, vilket tyder på att populationen är stabil.
+
+
+    Mer detaljerad information om artens utseende, beteende och läten kräver ytterligare
+    källor, då den tillgängliga texten fokuserar på utbredning och migrationsmönster.'
+  en: '# Lanceolated Warbler
+
+
+    The lanceolated warbler is a small, streaked warbler with brownish plumage and
+    distinctive spear-shaped markings on its breast—a characteristic that gives the
+    species its name. It is compact and cryptic in appearance, designed for life among
+    dense vegetation.
+
+
+    This is a shy, elusive bird that favors reed beds, marshes, and tall grass habitats.
+    It is highly migratory, breeding across a vast range from northeastern European
+    Russia eastward through the Palearctic to northern Japan, then withdrawing to
+    Southeast Asia for winter. Like other members of its genus, the lanceolated warbler
+    produces an insect-like song reminiscent of a grasshopper''s call—indeed, the
+    genus name Locustella derives from the Latin word for grasshopper.
+
+
+    The species is best located by listening for its distinctive reeling song during
+    the breeding season. It tends to remain low in vegetation and can be difficult
+    to observe directly, preferring to skulk rather than perch openly. Birdwatchers
+    seeking this species should focus on appropriate wetland habitats where tall reeds
+    and grasses provide good cover.'
+migration:
+  sv: '# Träsksångare i Norden
+
+
+    Träsksångare är en långdistansmigrant som förekommer mycket sällan i Skandinavien
+    och Västeuropa. Arten häckar i Ryssland långt österut och övervintrar i södra
+    och sydöstra Asien, från Indien till Indonesien. De få iakttagelser som görs i
+    Sverige och övriga Västeuropa utgörs av vilsefåglar under höstmigrationen, framför
+    allt under september och oktober. Arten är således endast en sällsynt tillfällig
+    gäst i nordeuropeisk region.'
+  en: '# Lanceolated Warbler (Träsksångare)
+
+
+    The Lanceolated Warbler is a migratory species with limited occurrence in Scandinavia
+    and Northern Europe. It breeds across the Palearctic from northeastern European
+    Russia eastward to northern Japan, with populations occasionally reaching the
+    northwesternmost parts of its range. As a long-distance migrant, it winters in
+    Southeast Asia. In Scandinavian regions, this species appears only as a vagrant
+    or rare passage migrant during spring and autumn migration periods, with sightings
+    most likely in coastal areas during May and August-September. Regular breeding
+    does not occur in Northern Europe.'
+image_refs:
+- role: hero
+  path: Q837761/hero.jpg
+  width: 2048
+  height: 1375
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3160036">Александр
+    Чегодаев</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Locustella lanceolata 295726819.jpg
+  commons_filename: Locustella lanceolata 295726819.jpg
+- role: secondary
+  path: Q837761/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2840555">Ксения
+    Волянская</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Locustella lanceolata 216747576.jpg
+  commons_filename: Locustella lanceolata 216747576.jpg
+- role: secondary
+  path: Q837761/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: James M. Maley (jmaley)
+  source_url: https://commons.wikimedia.org/wiki/File:Locustella lanceolata from iNaturalist
+    photo 496612895.jpg
+  commons_filename: Locustella lanceolata from iNaturalist photo 496612895.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:11:42.152126+00:00'
+sources:
+  wikipedia_sv_revision: '58595174'
+  wikipedia_en_revision: '1314955731'
+  claude_model: claude-haiku-4-5-20251001

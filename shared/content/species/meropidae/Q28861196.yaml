@@ -1,0 +1,123 @@
+id: Q28861196
+scientific_name: Merops cyanophrys
+taxonomy:
+  family: Meropidae
+  family_sv: Biätare
+  genus: Merops
+  ioc_order: Coraciiformes
+names:
+  sv: Arabisk biätare
+  en: Arabian Green Bee-eater
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Arabisk biätare
+
+
+    Arabisk biätare är en medlem av biätarfamiljen som huvudsakligen förekommer på
+    Arabiska halvön. Det är en relativt liten fågel som tidigare klassificerades som
+    en del av grön dvärgbiätare, men utgör idag en egen art efter att det ursprungliga
+    taxonet delades upp i tre separata arter.
+
+
+    Som medlem av biätarfamiljen är arabisk biätare specialiserad på att jaga flygande
+    insekter, framför allt bin och andra små flygande djur. Det är anpassad för denna
+    jagtstil med sitt smidiga byggde och snabba flygförmåga.
+
+
+    För närmare information om utseende, beteende och läten rekommenderas att konsultera
+    mer detaljerade fältguider, då källtexten inte innehåller dessa specifika detaljer.'
+  en: '# Arabian Green Bee-eater
+
+
+    The Arabian green bee-eater is a small member of the bee-eater family found across
+    the arid regions of the Arabian Peninsula, with populations ranging from Saudi
+    Arabia southward to Yemen and eastward through Oman and the United Arab Emirates.
+    In recent decades, it has extended its range northward into the southern Levant,
+    suggesting an expanding population in this region.
+
+
+    As with other bee-eaters, this species is adapted to hunting aerial insects, particularly
+    bees and other flying prey. It inhabits arid and semi-arid environments where
+    it can be observed perched on exposed branches or wires, from which it sallies
+    forth to catch insects in flight. The bird''s patchy distribution reflects its
+    preference for suitable habitat within these dry landscapes, where it nests in
+    burrows excavated in sandy banks or level ground.
+
+
+    The species'' green coloration and characteristic bee-eater features—including
+    its pointed bill and agile flight—make it distinctive within its range. Its presence
+    in an area is often indicated by its calls and the characteristic behaviour of
+    diving and circling in pursuit of flying insects, making it relatively conspicuous
+    during active feeding periods.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The Arabian Green Bee-eater is a resident species of arid regions in the Arabian
+    Peninsula and southern Levant, with no documented regular migration patterns to
+    Scandinavia or Northern Europe. The source material provides no information regarding
+    seasonal movements, migration routes, or occurrence in northern regions. This
+    species'' distribution is restricted to the Middle East and does not extend into
+    Scandinavian or broader Northern European territories.'
+image_refs:
+- role: hero
+  path: Q28861196/hero.jpg
+  width: 2400
+  height: 1349
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/17004938@N00">Greg
+    Schechter</a> from San Francisco, USA
+  source_url: https://commons.wikimedia.org/wiki/File:Arabian Green Bee-eater (Merops
+    cyanophrys), Ramat Negev, Israel (15641437548).jpg
+  commons_filename: Arabian Green Bee-eater (Merops cyanophrys), Ramat Negev, Israel
+    (15641437548).jpg
+- role: secondary
+  path: Q28861196/secondary-1.jpg
+  width: 1800
+  height: 1017
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/17004938@N00">Greg
+    Schechter</a> from San Francisco, USA
+  source_url: https://commons.wikimedia.org/wiki/File:Arabian Green Bee-eater (Merops
+    cyanophrys), Ramat Negev, Israel (15641437438).jpg
+  commons_filename: Arabian Green Bee-eater (Merops cyanophrys), Ramat Negev, Israel
+    (15641437438).jpg
+- role: secondary
+  path: Q28861196/secondary-2.jpg
+  width: 1800
+  height: 1009
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/17004938@N00">Greg
+    Schechter</a> from San Francisco, USA
+  source_url: https://commons.wikimedia.org/wiki/File:Arabian Green Bee-eater (Merops
+    cyanophrys), Ramat Negev, Israel (15641040539).jpg
+  commons_filename: Arabian Green Bee-eater (Merops cyanophrys), Ramat Negev, Israel
+    (15641040539).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:12:25.129611+00:00'
+sources:
+  wikipedia_sv_revision: '56773496'
+  wikipedia_en_revision: '1351694755'
+  claude_model: claude-haiku-4-5-20251001

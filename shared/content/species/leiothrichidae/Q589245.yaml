@@ -1,0 +1,126 @@
+id: Q589245
+scientific_name: Leiothrix lutea
+taxonomy:
+  family: Leiothrichidae
+  family_sv: Fnittertrastar
+  genus: Leiothrix
+  ioc_order: Passeriformes
+names:
+  sv: Rödnäbbad sångtimalia
+  en: Red-billed Leiothrix
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödnäbbad sångtimalia
+
+
+    Rödnäbbad sångtimalia är en färgglad fågel i familjen fnittertrastar som naturligt
+    förekommer i Asien, från bergstrakterna i Himalaya till södra Kina. Arten är känd
+    under namnet kinesisk näktergal i burfågelsammanhang. Under senare tid har den
+    etablerat sig i flera nya områden världen över, inklusive delar av Europa, samt
+    på olika öar i väster- och Indiska oceanen.
+
+
+    Arten föredrar täta buskmiljöer och undervegetation där det finns gott om frukt
+    och insekter. Det är en aktiv och social fågel som ofta ses i mindre flockar.
+    Den är känd för sitt vokala beteende och framför allt sitt varierade sång- och
+    kallande beteende, vilket förklarar dess populära namn.
+
+
+    Beståndet tros minska något på grund av fångst för burfågelshandeln och habitatförlust,
+    men arten anses fortfarande ha ett livskraftigt bestånd överlag. Introduktionen
+    till nya områden har lett till etablerade populationer på flera platser, vilket
+    visar artens förmåga att anpassa sig till nya miljöer.'
+  en: '# Red-billed Leiothrix
+
+
+    The red-billed leiothrix is a colourful songbird native to southern China and
+    the Himalayas. It is immediately recognizable by its distinctive bright red bill
+    and dull yellow eye-ring. The bird''s back is dull olive-green, contrasting with
+    its striking bright yellow-orange throat and yellow chin. Males are noticeably
+    more vibrant than females, while juveniles can be distinguished by their black
+    bills rather than red ones.
+
+
+    This species has become popular as a cagebird in aviculture, where it is known
+    by several names including Pekin robin and Pekin nightingale. Populations of escaped
+    or released birds have established themselves in various parts of the world, with
+    small but persistent groups present in some regions since the 1980s. The species''
+    popularity in captivity reflects its attractive appearance and, presumably, its
+    engaging behaviour and vocal abilities, though detailed information about its
+    calls and natural behaviour remains limited in general sources.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Rödnäbbad sångtimalia är en asiatisk art som naturligt förekommer från Himalaya
+    till södra Kina. Även om arten har etablerat populationer i vissa europeiska områden,
+    Japan, Hawaii och Réunion, innehåller källtexten ingen information om migrationsmönster,
+    övervintring eller ankomstmånader i Skandinavien eller Nordeuropa. För att få
+    säker migrationsdata om denna art i regionen krävs ytterligare källor.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Red-billed Leiothrix is native to southern China and the Himalayas, with no
+    documented natural occurrence in Scandinavia or Northern Europe. While the species
+    has been introduced to various parts of the world, including Japan where small
+    populations of cage-bird escapees have persisted since the 1980s, there is no
+    evidence of established populations in Scandinavia or Northern Europe. Any observations
+    of this species in the Nordic region would represent escaped captive birds rather
+    than wild migrants or residents.'
+image_refs:
+- role: hero
+  path: Q589245/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/73112697@N03">Jonathan
+    Jordan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Leiothrix lutea -Chester Zoo,
+    Cheshire, England-8a.jpg
+  commons_filename: Leiothrix lutea -Chester Zoo, Cheshire, England-8a.jpg
+- role: secondary
+  path: Q589245/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/90901507@N00">frank
+    wouters</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Leiothrix lutea -London Zoo
+    -two-8a.jpg
+  commons_filename: Leiothrix lutea -London Zoo -two-8a.jpg
+- role: secondary
+  path: Q589245/secondary-2.jpg
+  width: 1800
+  height: 1197
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/8374005@N02">Jamie
+    Davies</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Leiothrix lutea -London Zoo-8a.jpg
+  commons_filename: Leiothrix lutea -London Zoo-8a.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:11:36.637020+00:00'
+sources:
+  wikipedia_sv_revision: '58900873'
+  wikipedia_en_revision: '1314655203'
+  claude_model: claude-haiku-4-5-20251001

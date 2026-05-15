@@ -1,0 +1,71 @@
+id: Q28922176
+scientific_name: Argya fulva
+taxonomy:
+  family: Leiothrichidae
+  family_sv: Fnittertrastar
+  genus: Argya
+  ioc_order: Passeriformes
+names:
+  sv: Saharaskriktrast
+  en: Fulvous Babbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Fulvous Babbler
+
+
+    The Fulvous Babbler is a warm brown bird measuring 25 cm in length with a wingspan
+    of 27–30.5 cm. Its plumage is characterized by subtle streaking on the crown and
+    back, while the throat displays a whitish tone contrasting with pale brown underparts.
+    This coloration provides effective camouflage in its arid habitat.
+
+
+    These sociable birds are highly gregarious, typically found in small flocks that
+    move actively through their environment. They are vocal birds, hence their alternative
+    name "fulvous chatterer," with members of a flock frequently calling to maintain
+    contact with one another. Their behaviour is typical of babbler species, with
+    constant movement and communication among group members.
+
+
+    The Fulvous Babbler inhabits arid and semi-arid regions across North Africa and
+    the Middle East, where it favours scrubby vegetation and open woodland. It remains
+    largely resident throughout its range, adapting well to the harsh conditions of
+    desert-edge environments where other species struggle to survive.'
+migration:
+  sv: ''
+  en: '# Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the occurrence, migration
+    patterns, or seasonal distribution of the Fulvous Babbler in Scandinavia or Northern
+    Europe. The species description focuses solely on morphological characteristics
+    (size, plumage coloration, and physical features) without addressing geographical
+    distribution or migratory behavior.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:11:56.573144+00:00'
+sources:
+  wikipedia_sv_revision: '56773252'
+  wikipedia_en_revision: '1314343108'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,132 @@
+id: Q208710
+scientific_name: Locustella naevia
+taxonomy:
+  family: Locustellidae
+  family_sv: Locustellidae
+  genus: Locustella
+  ioc_order: Passeriformes
+names:
+  sv: Gräshoppsångare
+  en: Common Grasshopper Warbler
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gräshoppsångare
+
+
+    Gräshoppsångaren är en liten, diskret fågel som tillhör familjen gräsfåglar. Den
+    är svårupptäckt på grund av sin returhållna natur och föredrar att stanna gömd
+    i tätt växtlighet. Fågeln är bäst känd för sin karakteristiska sång – en långdragen,
+    insektsliknande svirr som kan pågå i flera minuter utan avbrott. Denna säregna
+    lyd är ofta det enda som avslöjar fågelns närvaro.
+
+
+    Arten häckar i buskmarker och löst växtation, särskilt nära våtmarker eller vattendrag.
+    Den förekommer över större delen av Europa och sträcker sig österut ända till
+    Mongoliet. Under vinterhalvåret genomför den en långväga flyttning till tropiska
+    Afrika och Indien för att söka mat och bättre förhållanden.
+
+
+    Gräshoppsångaren är klassificerad som livskraftig av IUCN, vilket betyder att
+    arten inte är hotad för närvarande. Dess dolda levnadssätt och speciella habitat
+    gör den till en spännande art för den intresserade fågelbeskådaren att söka upp,
+    särskilt under häckningsperioden då sången är mest framträdande.'
+  en: '# Common Grasshopper Warbler
+
+
+    The Common Grasshopper Warbler is a small, elusive warbler belonging to the Locustellidae
+    family. It is a migratory species that breeds across temperate Europe and the
+    western Palearctic region, then travels to winter grounds in northern tropical
+    Africa, just south of the Sahara, with some populations wintering locally in India.
+
+
+    This warbler is notoriously difficult to observe in the field, as it prefers to
+    remain hidden in dense vegetation. It is perhaps best identified by its distinctive
+    call—a prolonged, mechanical reeling or buzzing sound reminiscent of an insect,
+    which gives the species its name. The call can be sustained for long periods,
+    especially during breeding season. The bird''s appearance is subtle, with streaked
+    plumage that provides excellent camouflage in grassland and scrub habitats.
+
+
+    The species favors open areas with tall grasses, reeds, and low scrubby vegetation
+    where it can forage for insects and small invertebrates. While it may be heard
+    more often than seen, patient observers listening at dawn or dusk during the breeding
+    season have the best chance of encountering this cryptic species.'
+migration:
+  sv: '# Gräshoppsångare i Skandinavien och Nordeuropa
+
+
+    Gräshoppsångaren är en långdistansflyttare som återvänder till Skandinavien och
+    Nordeuropa under häckningssäsongen på våren. Efter häckningstiden migrerar arten
+    söderut för att övervinta i tropiska Afrika och Indien under vinterhalvåret. Som
+    en insektätande sångare är arten helt beroende av tillgången på insekter, vilket
+    gör den till en säsongsflyttare. Den förekommer huvudsakligen i lämpliga biotoper
+    med buskmarker nära våtmarker och vattendrag under häckningstiden.'
+  en: '# Common Grasshopper Warbler in Scandinavia/Northern Europe
+
+
+    The Common Grasshopper Warbler is a summer breeding visitor to Scandinavia and
+    northern Europe, arriving in late spring to breed across temperate regions of
+    the Palearctic. Following the breeding season, the species undertakes a complete
+    migration southward, wintering primarily in the Sahel region of northern tropical
+    Africa, just south of the Sahara Desert, with smaller populations wintering locally
+    in India. The species does not overwinter in Scandinavia or northern Europe, making
+    it an entirely migratory population in this region. Birds typically depart breeding
+    grounds in late summer and autumn, returning northward in spring to establish
+    territories for breeding.'
+image_refs:
+- role: hero
+  path: Q208710/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/119630347@N06">keith
+    gallie</a> from Warrington, UK
+  source_url: https://commons.wikimedia.org/wiki/File:Grasshopper Warbler (Locustella
+    naevia) (34231783040).jpg
+  commons_filename: Grasshopper Warbler (Locustella naevia) (34231783040).jpg
+- role: secondary
+  path: Q208710/secondary-1.jpg
+  width: 1800
+  height: 1349
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
+    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common grasshopper warbler Locustella
+    naevia.jpg
+  commons_filename: Common grasshopper warbler Locustella naevia.jpg
+- role: secondary
+  path: Q208710/secondary-2.jpg
+  width: 1800
+  height: 1491
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common grasshopper warbler (Locustella
+    naevia) 14.jpg
+  commons_filename: Common grasshopper warbler (Locustella naevia) 14.jpg
+review_status: approved
+review_notes: "Gräshoppsångare — Locustella naevia hero med sångpose; regelbunden SE-art i fuktiga gräsmarker."
+generated_at: '2026-05-15T20:12:28.715630+00:00'
+sources:
+  wikipedia_sv_revision: '59227582'
+  wikipedia_en_revision: '1313992601'
+  claude_model: claude-haiku-4-5-20251001

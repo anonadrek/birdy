@@ -333,6 +333,23 @@ species:
   Q619728:
     description_accept_missing: [sv, en]  # Kanariestrandskata (Canary Islands Oystercatcher †, EX)
     allow_missing_images: true  # extinct, ingen Commons hi-res
+  # Leiothrichidae+Locustellidae+Malaconotidae+Meropidae bundle (2026-05-15).
+  Q28921354:
+    description_accept_missing: [sv]  # Iraq Babbler — 68w
+    allow_missing_images: true
+  Q28922092:
+    description_accept_missing: [sv]  # Arabian Babbler
+  Q28922176:
+    description_accept_missing: [sv]  # Fulvous Babbler
+    allow_missing_images: true
+  Q47489639:
+    allow_missing_images: true  # Afghan Babbler
+  Q321272:
+    description_accept_missing: [en]  # Savi’s Warbler
+  Q1303970:
+    description_accept_missing: [sv]  # Rosy-patched Bushshrike
+  Q1951359:
+    description_accept_missing: [sv]  # Blue-cheeked Bee-eater
   # Laridae batch (2026-05-15): trutar/tärnor svwiki kort/saknas + Ross's Gull no-images.
   Q1265260:
     description_accept_missing: [sv, en]  # Saunders’s Tern

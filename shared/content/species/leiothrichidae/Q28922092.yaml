@@ -1,0 +1,78 @@
+id: Q28922092
+scientific_name: Argya squamiceps
+taxonomy:
+  family: Leiothrichidae
+  family_sv: Fnittertrastar
+  genus: Argya
+  ioc_order: Passeriformes
+names:
+  sv: Arabskriktrast
+  en: Arabian Babbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Arabian Babbler
+
+
+    The Arabian babbler is a passerine bird belonging to the laughingthrush family.
+    It is a resident species of arid scrub habitats across the Middle East, where
+    it remains year-round rather than migrating.
+
+
+    This species is highly social, living in stable groups with well-defined hierarchical
+    structures. These communal groups work together to raise young, with multiple
+    birds contributing to nesting and chick-rearing duties. The rigid rank order within
+    each group influences breeding rights and resource access, making it a fascinating
+    subject for understanding avian social behavior.
+
+
+    The Arabian babbler inhabits dry, scrubby environments where it searches for food
+    among low vegetation. Its adapted lifestyle suits the harsh, arid conditions of
+    its range, and it rarely ventures far from its established group and territory.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Arabian Babbler is a resident bird of the Middle East, meaning it does not
+    undertake seasonal migrations. It remains in its arid scrub habitat year-round,
+    inhabiting the same territories throughout the year. This species does not occur
+    naturally in Scandinavia or Northern Europe, so information about its presence
+    in these regions is not applicable.'
+image_refs:
+- role: hero
+  path: Q28922092/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zvika" title="User:Zvika">Zvika
+    Ben-Haim</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Argya squamiceps.jpg
+  commons_filename: Argya squamiceps.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:12:45.013260+00:00'
+sources:
+  wikipedia_sv_revision: '55499763'
+  wikipedia_en_revision: '1314247919'
+  claude_model: claude-haiku-4-5-20251001

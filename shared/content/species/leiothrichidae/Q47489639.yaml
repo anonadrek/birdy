@@ -1,0 +1,87 @@
+id: Q47489639
+scientific_name: Argya huttoni
+taxonomy:
+  family: Leiothrichidae
+  family_sv: Fnittertrastar
+  genus: Argya
+  ioc_order: Passeriformes
+names:
+  sv: Afghanskriktrast
+  en: Afghan Babbler
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Afghanskriktrast
+
+
+    Afghanskriktrast är en asiatisk fågel som tillhör familjen fnittertrastar. Den
+    förekommer i västra Asien och har sitt utbredningsområde från Irak till Pakistan.
+    Arten är nära släkt med orientskriktrast, och vissa taxonomer behandlar den som
+    en del av den arten.
+
+
+    Denna fågel är anpassad till de torra och halvöppna habitat som karakteriserar
+    sitt utbredningsområde. Som medlem av fnittertrastarfamiljen är den socialdriven
+    och ses ofta i små grupper. Som många fåglar inom familjen är den en aktiv och
+    livlig fågel med typiska beteenden för trastar.
+
+
+    För den som är intresserad av asiatisk fågelfauna utgör afghanskriktrast ett exempel
+    på de många arter som förekommer i regionens torra områden.'
+  en: '# Afghan Babbler
+
+
+    The Afghan babbler is a member of the Leiothrichidae family, a group of Asian
+    songbirds known for their vocal abilities and social behaviour. This species was
+    historically classified as a subspecies of the common babbler before being recognized
+    as a distinct species.
+
+
+    The Afghan babbler is found across a range spanning from southeastern Iraq through
+    to southwestern Pakistan, inhabiting arid and semi-arid regions of this broad
+    geographic band. Like other babblers, it is likely a gregarious bird, typically
+    found in small flocks rather than solitary individuals. The species shares behavioural
+    characteristics typical of its family, being active and vocal birds that communicate
+    frequently within their groups.
+
+
+    Further details about its specific appearance, vocalizations, and exact habitat
+    preferences would require additional field guide sources, as the available information
+    focuses primarily on its taxonomic status and distribution range.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The Afghan Babbler is a resident species of the Middle East and South Asia, with
+    its range extending from southeastern Iraq to southwestern Pakistan. This species
+    does not occur in Scandinavia or Northern Europe under natural circumstances,
+    and therefore no seasonal migration patterns or occurrence data exist for the
+    Nordic region.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:11:59.538711+00:00'
+sources:
+  wikipedia_sv_revision: '56069711'
+  wikipedia_en_revision: '1190638674'
+  claude_model: claude-haiku-4-5-20251001

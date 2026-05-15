@@ -1,0 +1,101 @@
+id: Q1951359
+scientific_name: Merops persicus
+taxonomy:
+  family: Meropidae
+  family_sv: Biätare
+  genus: Merops
+  ioc_order: Coraciiformes
+names:
+  sv: Blåkindad biätare
+  en: Blue-cheeked Bee-eater
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Blue-cheeked Bee-eater
+
+
+    The blue-cheeked bee-eater is a striking member of the bee-eater family, recognizable
+    by its distinctive blue facial patches that give the species its name. This aerial
+    insectivore is superbly adapted for catching flying insects, including bees and
+    wasps, which it pursues with agile, darting flight.
+
+
+    This species breeds across a broad range from eastern Turkey through the Middle
+    East to Kazakhstan and India. It is highly migratory, with most populations wintering
+    in tropical Africa, though some birds remain year-round residents in the Sahel
+    region. The species occasionally appears as a rare vagrant beyond its normal range,
+    with sightings most frequently reported in southern Europe, particularly Italy
+    and Greece.'
+migration:
+  sv: ''
+  en: '# Blue-cheeked Bee-eater in Northern Europe
+
+
+    The Blue-cheeked Bee-eater is a rare vagrant to Scandinavia and Northern Europe,
+    occurring only as an occasional stray north of its regular breeding range in North
+    Africa and the Middle East. This strongly migratory species winters in tropical
+    Africa, making any appearances in northern regions highly exceptional rather than
+    part of an established migration pattern. Records in Northern Europe are exceptionally
+    uncommon, with the species being far more likely to appear as a vagrant in Mediterranean
+    regions such as Italy and Greece than in Scandinavian countries.'
+image_refs:
+- role: hero
+  path: Q1951359/hero.jpg
+  width: 2400
+  height: 1506
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Blue-cheeked bee-eater, Merops
+    persicus, Chobe National Park, Botswana (32445436676).jpg
+  commons_filename: Blue-cheeked bee-eater, Merops persicus, Chobe National Park,
+    Botswana (32445436676).jpg
+- role: secondary
+  path: Q1951359/secondary-1.jpg
+  width: 1800
+  height: 1096
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Blue-cheeked bee-eater, Merops
+    persicus, Chobe National Park, Botswana (31674610663).jpg
+  commons_filename: Blue-cheeked bee-eater, Merops persicus, Chobe National Park,
+    Botswana (31674610663).jpg
+- role: secondary
+  path: Q1951359/secondary-2.jpg
+  width: 1800
+  height: 1109
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Blue-cheeked bee-eater, Merops
+    persicus, Chobe National Park, Botswana (32486091725).jpg
+  commons_filename: Blue-cheeked bee-eater, Merops persicus, Chobe National Park,
+    Botswana (32486091725).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:11:54.384105+00:00'
+sources:
+  wikipedia_sv_revision: '57743641'
+  wikipedia_en_revision: '1327565403'
+  claude_model: claude-haiku-4-5-20251001

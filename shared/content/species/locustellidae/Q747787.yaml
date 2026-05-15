@@ -1,0 +1,112 @@
+id: Q747787
+scientific_name: Locustella fluviatilis
+taxonomy:
+  family: Locustellidae
+  family_sv: Locustellidae
+  genus: Locustella
+  ioc_order: Passeriformes
+names:
+  sv: Flodsångare
+  en: River Warbler
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Flodsångare
+
+
+    Flodsångare är en liten fågel i familjen gräsfåglar som förekommer i centrala
+    och östra Europa samt västra Asien. Den är en mycket försiktig och dold art som
+    håller sig i tät växtlighet nära vattendrag. Arten är svår att få syn på, men
+    dess karakteristiska sång är mycket utdragen och insektslik, vilket den delar
+    med sina närmaste släktingar vassångare och gräshoppsångare.
+
+
+    Under vintern är flodsångaren flyttfågel som drar söderut till Afrika för att
+    övervintra. Globalt anses beståndet vara livskraftigt och arten är därmed inte
+    hotad. För den som önskar träffa arten krävs tålamod och en vilja att lyssna på
+    sången från växtligheten, snarare än att försöka se fågeln själv.'
+  en: '# River Warbler
+
+
+    The river warbler is a small, unobtrusive warbler of eastern and central Europe.
+    It is a migratory species, breeding across its range before undertaking a remarkable
+    journey to winter in inland southern Africa, where it remains until the breeding
+    season calls it north again.
+
+
+    This species is notoriously difficult to observe, being secretive and skulking
+    in nature. It favors dense vegetation, particularly reedy marshes and wetland
+    habitats where it forages quietly for insects and small invertebrates. Its plumage
+    is drab and uniform—brownish-grey overall—which provides effective camouflage
+    among reeds and grasses, making visual identification challenging even for experienced
+    birders.
+
+
+    The river warbler is perhaps best identified by its distinctive song and call.
+    It produces a characteristic reeling or rasping trill, reminiscent of some grasshoppers
+    or cicadas, which it often delivers from deep within vegetation. This insect-like
+    vocalisation is the most reliable way to confirm its presence. Despite its lengthy
+    migration between breeding grounds and African wintering quarters, the river warbler
+    remains relatively little-known to casual bird enthusiasts, owing to its elusive
+    habits and preference for staying concealed within protective plant growth.'
+migration:
+  sv: '# Flodsångare – Utbredning och Flyttning i Nordeuropa
+
+
+    Flodsångaren är en långflyttare som inte häckar regelbundet i Skandinavien, utan
+    förekommer främst i centrala och östra Europa. Under våren anländer arten från
+    sitt afrikanskt övervintringsområde till sina häckningsplatser i Europa, där den
+    uppehåller sig i tät växtlighet vid vattendrag. Om arten uppträder i Skandinavien
+    är det vanligtvis som en sällsynt genomflyttare under våren och hösten. Arten
+    är mycket tillbakadragen och passar lätt obemärkt förbi på grund av sin beteende.
+    På hösten påbörjar den sin långa migration söderut tillbaka till Afrika för övervintering.
+    Vintertid återfinns arten således inte i norra Europa.'
+  en: '# River Warbler (Flodsångare) in Northern Europe
+
+
+    The River Warbler is a summer visitor to Scandinavia and northern Europe, arriving
+    in late May and early June to breed in eastern and central European populations.
+    This migratory species does not remain in the region during winter months. Birds
+    depart in August and September to undertake a long-distance migration southward.
+    They winter entirely in sub-Saharan Africa, specifically in inland southern regions
+    from around the Zambezi River south to the vicinity of Pretoria, South Africa.
+    The species follows a typical Afro-Palearctic migration pattern, with populations
+    being completely absent from Scandinavia and northern Europe between September
+    and May.'
+image_refs:
+- role: hero
+  path: Q747787/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Locustella fluviatilis Biebrza
+    1.jpg
+  commons_filename: Locustella fluviatilis Biebrza 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:12:23.070269+00:00'
+sources:
+  wikipedia_sv_revision: '56596672'
+  wikipedia_en_revision: '1341344139'
+  claude_model: claude-haiku-4-5-20251001

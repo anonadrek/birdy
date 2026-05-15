@@ -1,0 +1,136 @@
+id: Q170718
+scientific_name: Merops apiaster
+taxonomy:
+  family: Meropidae
+  family_sv: Biätare
+  genus: Merops
+  ioc_order: Coraciiformes
+names:
+  sv: Biätare
+  en: European Bee-eater
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Biätare
+
+
+    Biätaren är en slank och färggrann fågel som tillhör familjen biätare. Med sin
+    eleganta gestalt och lysande färger är det en påfallande vacker art. Den har karakteristiska
+    långa, spetsiga vingar och en långdragen stjärt som gör den lätt att identifiera
+    under flykten.
+
+
+    Arten är en långdistansflyttfågel som häckar i södra Europa, delar av norra Afrika
+    och västra Asien, med en separat häckpopulation i södra Afrika. Den övervintrar
+    i tropiska Afrika, vilket innebär att den försvinner helt från sina häckningsområden
+    under vintermånaderna. Biätaren förekommer i öppna och halvöppna landskap där
+    det finns lämpliga platser för kolonihäckning, ofta vid brinkar eller sandbankar.
+
+
+    Arten är framför allt känd för sitt jaktbeteende – det är en skicklig fångare
+    av flygande insekter, särskilt bin och andra småflyende arter. Denna specialism
+    för att jaga flytande insekter är anpassningen som familjen biätare är uppkallad
+    efter.'
+  en: '# European Bee-eater
+
+
+    The European bee-eater is a colourful member of the bee-eater family, renowned
+    for its aerial prowess and specialist diet. It breeds across southern and central
+    Europe, northern and southern Africa, and western Asia. Except for year-round
+    residents in southern Africa, the species is strongly migratory, travelling to
+    tropical Africa for winter. Occasionally, individuals overshoot their usual northern
+    range limits during spring migration, and rare breeding attempts occur in northern
+    Europe.
+
+
+    The bird''s striking appearance and acrobatic hunting style make it a favourite
+    among birdwatchers. It catches flying insects in mid-air with remarkable precision,
+    relying heavily on bees and wasps despite the family name''s focus on bees. Its
+    call is a distinctive liquid rippling sound, often heard as birds chase one another
+    in flight.
+
+
+    European bee-eaters favour warm, open habitats with suitable nesting sites. They
+    typically breed in sandy riverbanks and cliff faces where they excavate burrows
+    for their nests, often nesting colonially. The species is most readily encountered
+    in these breeding areas during the breeding season, particularly in regions with
+    warm summers and abundant aerial insect prey.'
+migration:
+  sv: '# Biätare – Migration och förekomst i Norden
+
+
+    Biätaren är en långdistansflyttfågel som endast förekommer i Skandinavien och
+    Nordeuropa under häckningstiden. Arten häckar i södra Europa men når norrut till
+    vissa delar av Baltikum och södra Skandinavien under våren och sommaren. Biätaren
+    anländer till Europa i mitten av april och stannar fram till augusti innan den
+    återvänder till sina övervintringsområden. Under hösten drar arten söderut till
+    tropiska Afrika, där den tillbringar höst och vinter. I Skandinavien är förekomsten
+    begränsad och arten förekommer endast som en sällsynt gäst under migrationstiderna
+    eller under mycket varma somrar.'
+  en: '# European Bee-eater in Scandinavia/Northern Europe
+
+
+    The European Bee-eater is a strongly migratory species that occasionally reaches
+    Scandinavia and northern Europe as a spring overshoot beyond its usual breeding
+    range in southern and central Europe. While the species does not regularly breed
+    in these northern regions, there are documented instances of occasional breeding
+    attempts in northern Europe. The main population winters in tropical Africa and
+    migrates northward in spring toward its breeding grounds in southern and central
+    Europe, with some individuals overshooting into Scandinavian territories during
+    this seasonal movement.'
+image_refs:
+- role: hero
+  path: Q170718/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Abelharuco (Merops apiaster)
+    (52089171513).jpg
+  commons_filename: Abelharuco (Merops apiaster) (52089171513).jpg
+- role: secondary
+  path: Q170718/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Abelharuco (Merops apiaster)
+    (52089402789).jpg
+  commons_filename: Abelharuco (Merops apiaster) (52089402789).jpg
+- role: secondary
+  path: Q170718/secondary-2.jpg
+  width: 1800
+  height: 1440
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/66020093@N03">Andy
+    Morffew</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Merops apiaster pair (Hungary).jpg
+  commons_filename: Merops apiaster pair (Hungary).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:12:36.525644+00:00'
+sources:
+  wikipedia_sv_revision: '58938261'
+  wikipedia_en_revision: '1352961219'
+  claude_model: claude-haiku-4-5-20251001
