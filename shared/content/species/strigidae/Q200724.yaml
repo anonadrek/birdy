@@ -1,0 +1,133 @@
+id: Q200724
+scientific_name: Strix nebulosa
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Strix
+  ioc_order: Strigiformes
+names:
+  sv: Lappuggla
+  en: Great Grey Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Lappuggla
+
+
+    Lappugglan är en stor uggla som nästan når berguven i storlek. Den kännetecknas
+    av sitt gråa fjäderdräkt och sitt karakteristiska utseende med stora diskformade
+    ansikten. Arten förekommer i tajgaskogar på höga nordliga breddgrader runt jorden,
+    där den är väl anpassad till skogarnas miljö och klimat.
+
+
+    Lappugglans beteende är typiskt för rovfåglar – den är aktiv främst under skymningen
+    och natten, då den jagar små däggdjur och andra byten. Arten är en skicklig jägare
+    som kan höra sitt byte under snötäcket. Dess läte är karakteristiskt med djupa
+    hootande rop.
+
+
+    Globalt anses beståndet öka och är klassificerat som livskraftigt av IUCN. I Sverige
+    är arten dock mycket fåtalig och klassificeras som sårbar. Den ses endast sporadiskt
+    i norra landskapen där tajgaskogar förekommer.'
+  en: '# Great Grey Owl
+
+
+    The Great Grey Owl is the world''s largest owl by length, though it appears deceptively
+    bulky due to its thick plumage and prominent facial disc. Its grey and white plumage
+    provides excellent camouflage in snowy and forested habitats. The species has
+    relatively small yellow eyes set within concentric circles of dark and light feathers,
+    creating its distinctive appearance. Large ear tufts are absent, distinguishing
+    it from some other owl species.
+
+
+    This formidable predator hunts primarily at dusk and dawn, targeting small mammals
+    such as voles and mice, which it locates using exceptional hearing. It often hunts
+    from a perch, dropping silently onto prey in snow or grass. The Great Grey Owl''s
+    calls include deep hooting and various other vocalizations used for territorial
+    and breeding communication.
+
+
+    Distributed across the Northern Hemisphere, the Great Grey Owl is the only Strix
+    species found in both Eastern and Western Hemispheres, occupying boreal forests,
+    taiga, and mixed woodland regions. It prefers areas with open clearings for hunting
+    adjacent to dense forest cover. The species is generally sedentary, though some
+    populations show irruptive movements during food shortages, occasionally appearing
+    in more southern regions during harsh winters.'
+migration:
+  sv: '# Lappuggla - Förekomst i Skandinavien/Nordeuropa
+
+
+    Lappugglan är en permanent bosatt art i Skandinavien och Nordeuropa, där den förekommer
+    året runt i tajgaskogarna. Arten är stationär och genomför inga längre migrationer,
+    utan stannar inom sitt revir under vintern. Under snörika vintrar kan det förekomma
+    mindre lokala förflyttningar när födan blir svårtillgänglig, då fåglarna söker
+    sig till områden med bättre jaktsförhållanden. I Sverige är arten mycket sällsynt
+    och främst förekommer i norra regioner.'
+  en: '# Strix nebulosa (Great Grey Owl) - Occurrence in Scandinavia/Northern Europe
+
+
+    The Great Grey Owl is a resident species throughout Scandinavia and northern Europe,
+    with populations that are largely non-migratory. In Scandinavia, the species is
+    a year-round inhabitant of boreal and taiga forests, though some individuals may
+    undertake irregular southward movements during winter months when food becomes
+    scarce. The owl''s presence is consistent across all seasons, with breeding occurring
+    in spring and early summer. Occasional irruptive movements can bring individuals
+    further south into central Europe during harsh winters with poor rodent availability,
+    but the core Scandinavian population remains relatively sedentary compared to
+    many other northern bird species.'
+image_refs:
+- role: hero
+  path: Q200724/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/88123769@N02">Bernard
+    Spragg. NZ</a> from Christchurch, New Zealand
+  source_url: https://commons.wikimedia.org/wiki/File:Great Grey Owl (Strix nebulosa)
+    (37310719232).jpg
+  commons_filename: Great Grey Owl (Strix nebulosa) (37310719232).jpg
+- role: secondary
+  path: Q200724/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/usfws_alaska/">USFWSAlaska</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great gray owl, Strix nebulosa
+    (51080405547).jpg
+  commons_filename: Great gray owl, Strix nebulosa (51080405547).jpg
+- role: secondary
+  path: Q200724/secondary-2.jpg
+  width: 1800
+  height: 1356
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Leo_Johannes" class="mw-redirect"
+    title="User:Leo Johannes">Leo Johannes</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Strix nebulosa at Skansen spring
+    2008-8.JPG
+  commons_filename: Strix nebulosa at Skansen spring 2008-8.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:17:06.645043+00:00'
+sources:
+  wikipedia_sv_revision: '59211313'
+  wikipedia_en_revision: '1353764935'
+  claude_model: claude-haiku-4-5-20251001

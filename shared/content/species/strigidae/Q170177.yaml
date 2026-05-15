@@ -1,0 +1,127 @@
+id: Q170177
+scientific_name: Bubo scandiacus
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Bubo
+  ioc_order: Strigiformes
+names:
+  sv: Fjälluggla
+  en: Snowy Owl
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fjälluggla
+
+
+    Fjällugglan är en stor uggla med relativt ljus fjäderdräkt där vitt dominerar.
+    Arten förekommer cirkumpolärt på tundran i polartrakterna på norra halvklotet
+    och lever främst av lämlar och andra smågnagare. Som jägare är fjällugglan välanpassad
+    för sitt subarktiska miljö, där det låga växtligheten erbjuder få gömställen för
+    predatorer.
+
+
+    Arten kategoriseras som utrotningshotad och undergår kraftiga populationsnedgångar.
+    Denna negativa utveckling beror delvis på klimatförändringar som påverkar förhållandena
+    på dess fjärran hemvist. Fjällugglan är därför ett viktigt indikatordjur för miljöförändringar
+    i de höga nordliga områdena.'
+  en: '# Snowy Owl
+
+
+    The snowy owl is one of the largest owl species and the only one with predominantly
+    white plumage. Males display purer white coloring, while females and juveniles
+    retain more extensive dark brown flecking, particularly on the wings and body.
+    The pattern and extent of brown markings, especially around the wings, provide
+    the most reliable way to determine age and sex in individual birds. Juvenile males
+    can initially resemble females before acquiring their characteristic white plumage
+    as they mature.
+
+
+    These owls are native to Arctic regions across North America and the Palearctic,
+    where they breed primarily on open tundra. They possess numerous specialized adaptations
+    suited to their harsh, frozen habitat and distinctive hunting lifestyle, which
+    set them apart from other owl species. The snowy owl''s hunting behavior and ecological
+    role differ significantly from typical forest-dwelling owls, reflecting their
+    evolution in open Arctic environments where prey and hunting opportunities present
+    unique challenges and opportunities.'
+migration:
+  sv: '**Fjälluggla i Norden genom året**
+
+
+    Fjällugglan är en irreguljär besökare i Skandinavien och övriga Nordeuropa. Under
+    normala år är arten sällsynt, men under år med högt lemingbestånd kan större invaderingar
+    förekomma, särskilt under höst och vinter. De norske fjällen utgör den södligaste
+    del av arten regelbundna utbredningsområde. Fjälluggorna som når Skandinavien
+    är vanligtvis ungfåglar och övervintrar här när födotillgången är god hemma på
+    tundran. Ankomsten varierar kraftigt mellan år beroende på populationscykler hos
+    smågnagare i polarregionerna.'
+  en: '# Snowy Owl Migration in Scandinavia
+
+
+    The snowy owl is an irregular winter visitor to Scandinavia and northern Europe,
+    with its occurrence varying considerably between years. These Arctic-breeding
+    birds inhabit the tundra of northern Russia and occasionally Greenland during
+    the breeding season. In winter, some populations migrate southward, with snowy
+    owls reaching Scandinavia and other northern European regions during autumn and
+    early winter months, typically from October onwards. Their arrival and abundance
+    depend heavily on prey availability in their breeding grounds—years with declining
+    lemming and vole populations trigger more pronounced southward movements. During
+    severe winters, they may remain in Scandinavia through March, though the timing
+    and frequency of their appearance is unpredictable, making them sought-after but
+    unreliable winter visitors in the region.'
+image_refs:
+- role: hero
+  path: Q170177/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104249543@N07">Rolf
+    Dietrich Brecher</a> from Germany
+  source_url: https://commons.wikimedia.org/wiki/File:Bubo scandiacus (31968098707).jpg
+  commons_filename: Bubo scandiacus (31968098707).jpg
+- role: secondary
+  path: Q170177/secondary-1.jpg
+  width: 1800
+  height: 1235
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Snowy Owl (Bubo scandiacus),
+    Vlieland, Netherlands (12755531383).jpg
+  commons_filename: Snowy Owl (Bubo scandiacus), Vlieland, Netherlands (12755531383).jpg
+- role: secondary
+  path: Q170177/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/104269801@N02">Andrew
+    C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Snowy Owl (Bubo scandiacus)
+    (23179229549).jpg
+  commons_filename: Snowy Owl (Bubo scandiacus) (23179229549).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:16:20.524761+00:00'
+sources:
+  wikipedia_sv_revision: '59190190'
+  wikipedia_en_revision: '1352545104'
+  claude_model: claude-haiku-4-5-20251001

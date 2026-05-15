@@ -1,0 +1,126 @@
+id: Q25756
+scientific_name: Strix aluco
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Strix
+  ioc_order: Strigiformes
+names:
+  sv: Kattuggla
+  en: Tawny Owl
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kattuggla (Strix aluco)
+
+
+    Kattugglan är en kompakt, medelstor uggla med två distinkta färgvarianter – antingen
+    brun eller grå ovansida, medan undersidan är blek med mörka strimmor. Denna färgpolymorfism
+    återfinns hos flera av dess elva erkända underarter. Det är en stannfågel som
+    är mycket territoriell och försvarar sitt revir aggressivt, särskilt när det gäller
+    skydd av bo och ungar mot potentiella predatorer.
+
+
+    Arten är vanlig i skogar över stora delar av Eurasien och förlitar sig ofta på
+    trädhålor för boplatser. Efter det att föräldrarna slutar mata ungarna är dessa
+    på eget håll, och många årsungar svälter ihjäl om de inte lyckas hitta ett ledigt
+    territorium. Denna höga dödlighet bland rekryter är karakteristisk för arten och
+    påverkas kraftigt av tillgången på lämpliga revir i befolkningen.'
+  en: '# Tawny Owl
+
+
+    The tawny owl is a stocky, medium-sized owl with distinctive plumage that varies
+    between individuals. It displays pale underparts with dark streaks, while its
+    upper body may be either brown or grey. This coloration provides excellent camouflage
+    in woodland settings, making it challenging to spot even when present.
+
+
+    The species is highly territorial and non-migratory, remaining in its chosen area
+    year-round. It nests in tree cavities, where it can effectively protect its eggs
+    and young from predators. Tawny owls are fierce defenders of their territories,
+    and this territorial nature has important consequences for young birds: those
+    unable to secure their own vacant territory after leaving the nest often struggle
+    to survive.
+
+
+    Commonly found across woodlands in Europe and western Siberia, the tawny owl is
+    well-adapted to woodland habitats where suitable nesting holes are available.
+    Its presence indicates mature woodland with sufficient hollow trees, making it
+    a valuable indicator of woodland health.'
+migration:
+  sv: '# Kattuggla (Strix aluco) - Förekomst i Skandinavien och Nordeuropa
+
+
+    Kattugglan är en stannfågel som är året om bosatt i stora delar av Skandinavien
+    och Nordeuropa. Den är mycket territoriell och återvänder till sitt revir under
+    hela året. Till skillnad från många andra ugglorarter genomför kattugglan ingen
+    regelrätt migration, utan stannar kvar även under hårda vintermånader. Populationen
+    upprätthålls genom att ungfåglarna söker nya territorier efter att föräldrarna
+    slutat mata dem, ofta med högre dödlighet hos de som inte lyckas etablera sig
+    i lediga revir.'
+  en: '# Tawny Owl (Strix aluco) in Northern Europe
+
+
+    The Tawny Owl is a year-round resident throughout Scandinavia and northern Europe,
+    being entirely non-migratory. Established pairs remain in their territories year-round,
+    defending them vigorously against intruders. Young birds disperse from the nest
+    in late summer and autumn, searching for unoccupied territories. If successful,
+    they establish themselves locally for life; if not, mortality rates can be high,
+    particularly during harsh winters. Population numbers in Scandinavia remain relatively
+    stable due to the species'' ability to adapt to various woodland habitats and
+    its efficient nocturnal hunting strategies.'
+image_refs:
+- role: hero
+  path: Q25756/hero.jpg
+  width: 1800
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Ypsilon_from_Finland" title="User:Ypsilon
+    from Finland">Ypsilon from Finland</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Strix aluco in Vantaa 1.jpg
+  commons_filename: Strix aluco in Vantaa 1.jpg
+- role: secondary
+  path: Q25756/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Loomahuviline69&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Loomahuviline69 (page does not exist)">Loomahuviline69</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tawny owl aka Strix aluco in
+    Tallinn zoo 04.jpg
+  commons_filename: Tawny owl aka Strix aluco in Tallinn zoo 04.jpg
+- role: secondary
+  path: Q25756/secondary-2.jpg
+  width: 1800
+  height: 1540
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bosuil - tawny owl - Strix aluco.tif
+  commons_filename: Bosuil - tawny owl - Strix aluco.tif
+review_status: approved
+review_notes: "Hero = Strix aluco (Tawny Owl / Kattuggla); allmän i lövskog och parker i södra och mellersta SE."
+generated_at: '2026-05-15T21:17:37.259154+00:00'
+sources:
+  wikipedia_sv_revision: '58029241'
+  wikipedia_en_revision: '1338809681'
+  claude_model: claude-haiku-4-5-20251001

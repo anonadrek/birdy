@@ -745,3 +745,26 @@ species:
     allow_missing_images: true  # Tristram's Warbler — sparse enwiki + no images
   Q99573734:
     allow_missing_images: true  # Western Subalpine Warbler — no suitable Commons images
+  # Strigidae (2026-05-15)
+  Q1267714:
+    description_accept_missing: [sv]  # Pallid Scops Owl — sparse svwiki
+  Q1272529:
+    description_accept_missing: [sv]  # Omani Owl — sparse svwiki
+  Q129958:
+    description_accept_missing: [sv]  # Little Owl — sparse svwiki
+  Q174466:
+    description_accept_missing: [sv]  # Boreal Owl (Pärluggla) — sparse svwiki (allmän SE)
+  Q20900835:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Desert Owl — sparse svwiki + no images
+  Q27074732:
+    description_accept_missing: [sv, en]  # Cyprus Scops Owl — sparse on both
+  Q40983416:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Arabian Eagle-Owl — sparse svwiki + no images
+  Q535374:
+    description_accept_missing: [en]  # Marsh Owl — sparse enwiki
+  Q584597:
+    description_accept_missing: [en]  # Pharaoh Eagle-Owl — sparse enwiki
+  Q828255:
+    description_accept_missing: [sv]  # Brown Fish Owl — sparse svwiki

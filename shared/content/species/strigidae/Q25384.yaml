@@ -1,0 +1,130 @@
+id: Q25384
+scientific_name: Asio otus
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Asio
+  ioc_order: Strigiformes
+names:
+  sv: Hornuggla
+  en: Long-eared Owl
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Hornuggla
+
+
+    Hornuggla är en medelstor uggla som tillhör familjen egentliga ugglor. Arten är
+    känd för sina karakteristiska öronliknande fjädertoppar på huvudet, vilket är
+    källan till dess namn. Den har en slank kroppsform med rostbrunt och gråtecknat
+    fjäderdräkt som ger utmärkt kamouflage i sitt naturliga miljö.
+
+
+    Hornugglan är en skicklig nattjägare som främst söker sin föda på små gnagare
+    och fåglar. Den är till största delen en flyttfågel med en anmärkningsvärt stor
+    utbredning över Europa, Asien och Nordamerika. Arten föredrar öppna och halvöppna
+    landskap där den kan jaga effektivt.
+
+
+    Globalt anses beståndet vara livskraftigt, och arten är välanpassad till sitt
+    ekologiska nisch som nattuggla. Under häckningssäsongen är hornugglan territoriumskyddande
+    och kan höras ropa sitt karakteristiska läte, särskilt under skymningen.'
+  en: '# Long-eared Owl
+
+
+    The long-eared owl is a medium-sized member of the typical owl family with a distribution
+    spanning Europe, the Palearctic region, and North America. Its name derives from
+    two distinctive feathered tufts atop its head that resemble ears, though these
+    are not functional hearing organs. It is sometimes called the cat owl, a reference
+    to its feline-like appearance.
+
+
+    This species is an accomplished nocturnal hunter, typically active during darkness
+    when it pursues small mammals and birds. In daylight, it roosts in dense cover,
+    often remaining remarkably still and elongating its body to blend with surrounding
+    vegetation. When alarmed, it adopts a distinctive upright posture that emphasizes
+    its ear-tufts, making it appear taller and thinner.
+
+
+    Long-eared owls favour open and semi-open habitats, including grasslands, heathland,
+    and woodland edges where hunting opportunities are good. It often hunts over rough
+    ground and low vegetation. The species is highly adaptable regarding breeding
+    sites, frequently using abandoned nests of other birds rather than excavating
+    its own. Its call is a distinctive series of soft hooting notes.'
+migration:
+  sv: '# Hornuggla (Asio otus) – Förekomst i Skandinavien
+
+
+    Hornuggla är en flyttfågel som återfinns i Skandinavien och Nordeuropa både under
+    häckningstid och på genomfart. Arten häckar i norra delarna och anländer till
+    häckningsplatserna under våren, vanligtvis från mars–april. Under hösten påbörjar
+    fåglarna sin migration söderut, och de flesta individer har lämnat Skandinavien
+    innan vintern sätter in helt. Vissa populationer från östligare delar av Europa
+    och Asien kan dock förekomma som gäster under vinterhalvåret.
+
+
+    Hornugglans migration följer ett väl etablerat mönster där den huvudsakligen är
+    en långdistansflyare, men antalet övervintrande individer kan variera mellan åren
+    beroende på köldperioder och tillgång på föda.'
+  en: '# Long-eared Owl in Northern Europe
+
+
+    The Long-eared Owl is a migratory species across Scandinavia and Northern Europe.
+    Birds breeding in these regions typically depart in autumn, with populations moving
+    southwestward to overwinter in Central and Southern Europe, the Mediterranean
+    region, and North Africa. Return migration occurs in spring, with birds arriving
+    back to their northern breeding territories from March onwards. Some individuals
+    may remain through winter in milder areas, but the majority of northern populations
+    are absent during the coldest months. The species shows considerable variation
+    in wintering location depending on breeding origin and winter severity.'
+image_refs:
+- role: hero
+  path: Q25384/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Janezdrilc" title="User:Janezdrilc">Janezdrilc</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Piršenbreg Asio otus 02.jpg
+  commons_filename: Piršenbreg Asio otus 02.jpg
+- role: secondary
+  path: Q25384/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Janezdrilc" title="User:Janezdrilc">Janezdrilc</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Piršenbreg Asio otus 03.jpg
+  commons_filename: Piršenbreg Asio otus 03.jpg
+- role: secondary
+  path: Q25384/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Janezdrilc" title="User:Janezdrilc">Janezdrilc</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Piršenbreg Asio otus 04.jpg
+  commons_filename: Piršenbreg Asio otus 04.jpg
+review_status: approved
+review_notes: "Hero = Asio otus (Long-eared Owl / Hornuggla); allmän nattaktiv uggla i hela SE."
+generated_at: '2026-05-15T21:18:15.029703+00:00'
+sources:
+  wikipedia_sv_revision: '59181644'
+  wikipedia_en_revision: '1353469739'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,78 @@
+id: Q535374
+scientific_name: Asio capensis
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Asio
+  ioc_order: Strigiformes
+names:
+  sv: Kapuggla
+  en: Marsh Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kapuggla
+
+
+    Kapugglan är en medelstor uggla som tillhör familjen egentliga ugglor. Arten förekommer
+    lokalt i våtmarksområden i Afrika söder om Sahara samt på Madagaskar, där den
+    är anpassad till fuktiga miljöer. En liten isolerad population finns också i nordvästra
+    Afrika.
+
+
+    Denna uggla är aktiv både dag och natt, vilket skiljer den från många andra ugglorarter.
+    Den jagar över öppna våtmarksområden och använder sin utmärkta hörsel för att
+    lokalisera byten i gräset och vegetationen. Kapugglan födosöker ofta från marken
+    eller låga utgångspunkter och är väl anpassad för att jaga gnagare och andra små
+    däggdjur som förekommer i vassrika områden.
+
+
+    Arten är svårobserverad då den föredrar täta växtligheter och är aktiv under lågt
+    ljus. För den intresserade fågelskådaren kräver det tålamod och kunskap om de
+    våtmarkshabitat där arten förekommer för att få möjlighet att se eller höra denna
+    diskreta uggla.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (The source text only mentions the species'' geographic distribution in Africa,
+    Madagascar, and Morocco, with no information about migration patterns, seasonal
+    movements, or occurrence in Scandinavia/Northern Europe.)'
+  en: ''
+image_refs:
+- role: hero
+  path: Q535374/hero.jpg
+  width: 2400
+  height: 1602
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/7587839@N07">Peter
+    Wilton</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Asio capensis, Ethiopia 1.jpg
+  commons_filename: Asio capensis, Ethiopia 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:17:15.137704+00:00'
+sources:
+  wikipedia_sv_revision: '57974489'
+  wikipedia_en_revision: '1314616311'
+  claude_model: claude-haiku-4-5-20251001

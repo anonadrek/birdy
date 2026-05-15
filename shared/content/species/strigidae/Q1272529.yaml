@@ -1,0 +1,84 @@
+id: Q1272529
+scientific_name: Strix butleri
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Strix
+  ioc_order: Strigiformes
+names:
+  sv: Klippuggla
+  en: Omani Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Omani Owl
+
+
+    The Omani owl is a recently discovered species of the genus Strix, formally identified
+    in 2013. It inhabits shrubland and rocky terrain across a limited range in the
+    Middle East, primarily in Oman, Iran, and the United Arab Emirates. As a member
+    of the Strigidae family, it shares characteristics with other owls in this group,
+    though detailed information about its specific appearance, behaviour, and vocalizations
+    remains limited due to its recent scientific discovery.
+
+
+    The species'' preference for arid, rocky landscapes suggests it may be adapted
+    to harsh desert and semi-desert environments. Like many owls, it is likely nocturnal,
+    though much about its hunting ecology and diet requires further study. Given the
+    remote and rugged terrain it occupies, the Omani owl remains poorly known to birdwatchers,
+    and sightings are uncommon. Continued research and observation in its native habitat
+    will be necessary to better understand this owl''s behaviour, calls, and ecological
+    role in Middle Eastern shrublands.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Omani Owl is endemic to the Arabian Peninsula and does not occur naturally
+    in Scandinavia or Northern Europe. The source text provides no information about
+    migration patterns or seasonal occurrence in these regions, and the species''
+    known range is confined to Oman, Iran, and the United Arab Emirates.'
+image_refs:
+- role: hero
+  path: Q1272529/hero.jpg
+  width: 1728
+  height: 2400
+  license: Public domain
+  author: American Ornithologists' Union
+  source_url: https://commons.wikimedia.org/wiki/File:Strix butleri.jpg
+  commons_filename: Strix butleri.jpg
+- role: secondary
+  path: Q1272529/secondary-1.jpg
+  width: 1380
+  height: 1800
+  license: Public domain
+  author: American Ornithologists' Union
+  source_url: https://commons.wikimedia.org/wiki/File:Strix butleri 1.jpg
+  commons_filename: Strix butleri 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:16:08.788191+00:00'
+sources:
+  wikipedia_sv_revision: null
+  wikipedia_en_revision: '1314708118'
+  claude_model: claude-haiku-4-5-20251001

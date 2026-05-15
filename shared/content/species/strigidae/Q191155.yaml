@@ -1,0 +1,133 @@
+id: Q191155
+scientific_name: Glaucidium passerinum
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Glaucidium
+  ioc_order: Strigiformes
+names:
+  sv: Sparvuggla
+  en: Eurasian Pygmy Owl
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sparvuggla
+
+
+    Sparvugglan är Europas minsta uggla och en fascinerande liten rovfågel. Den är
+    endast omkring 20 centimeter lång och väger knappt 80 gram. Trots sin bätsinta
+    storlek är den en skicklig och energisk jägare som lever på småfåglar och smågnagare.
+
+
+    Arten förekommer i barr- och blandskogar över stora delar av Europa och norra
+    Asien. Den är främst ett skogsbo som häckar i naturliga håligheter eller gamla
+    spettarhål. Sparvugglans röst är utmärkande – ett sekvens av korta, höga visslingar
+    som ofta hörs under gryning och skymning.
+
+
+    Under jaktflygten är sparvugglans beteende intenst och målmedvetet. Den kan ofta
+    ses sitta uppmärksamt på utskjutande grenar, där den spanar efter möjliga byten.
+    Arten är relativt utbredd inom sitt habitat och är klassificerad som livskraftig
+    av IUCN.'
+  en: '# Eurasian Pygmy Owl
+
+
+    The Eurasian pygmy owl is Europe''s smallest owl, easily overlooked despite its
+    bold behaviour. It has dark reddish to greyish-brown plumage with spotted sides
+    and a distinctive half-white ring marking the back of its neck. At just 16–17
+    cm in length, it is considerably smaller than other European owls, making size
+    an immediate identification feature.
+
+
+    This species inhabits boreal forests across Northern and Central Europe extending
+    eastward into Siberia. It is an active hunter both day and night, preying on small
+    birds, insects, and rodents. The pygmy owl produces a distinctive call—a clear,
+    repeated whistle that belies its diminutive size and can be surprisingly loud
+    for such a tiny bird.
+
+
+    Though widespread in suitable coniferous and mixed forest habitats, it remains
+    inconspicuous and is often detected by ear rather than sight. It nests in tree
+    cavities, frequently using old woodpecker holes. Its small size and dense forest
+    habitat mean it is encountered mainly by dedicated birdwatchers familiar with
+    its calls and preferred woodland environment.'
+migration:
+  sv: '# Sparvuggla – Förekomst i Skandinavien och Nordeuropa
+
+
+    Sparvuggla är en stannfågel som är närvarande året runt i sitt utbredningsområde
+    i Skandinavien och norra Europa. Arten är en permanent bosatt art som inte genomför
+    längre migrationsvandingar. Under hösten och vintern kan vissa individer från
+    östligare populationer förskjuta sig västerut eller söderut, särskilt under år
+    med låga smågnagarpopulationer, men detta är ingen regelbunden migration. Sparvuglan
+    är väl anpassad till nordiska vinterklimat och stannar kvar i sitt territorium
+    året om, där den jagar små fåglar och smågnagare.'
+  en: '# Eurasian Pygmy Owl in Scandinavia and Northern Europe
+
+
+    The Eurasian Pygmy Owl is a year-round resident throughout much of Scandinavia
+    and Northern Europe, with populations in boreal forests remaining largely sedentary.
+    However, northern populations may show partial migration during harsh winters,
+    with some individuals shifting southward or to lower elevations in response to
+    food availability and snow cover. In most of Scandinavia, breeding birds are present
+    year-round, though winter sightings become less frequent in the northernmost regions.
+    Arrival of potential migrants from further north may occur in autumn, while spring
+    dispersal of young birds increases sightings during March to May.'
+image_refs:
+- role: hero
+  path: Q191155/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Pygmy Owl (Glaucidium
+    passerinum), Eastern Belgium (14581626193).jpg
+  commons_filename: Eurasian Pygmy Owl (Glaucidium passerinum), Eastern Belgium (14581626193).jpg
+- role: secondary
+  path: Q191155/secondary-1.jpg
+  width: 1800
+  height: 1236
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Pygmy Owl (Glaucidium
+    passerinum) in the drizzle, 21.06.2015 (18403237513).jpg
+  commons_filename: Eurasian Pygmy Owl (Glaucidium passerinum) in the drizzle, 21.06.2015
+    (18403237513).jpg
+- role: secondary
+  path: Q191155/secondary-2.jpg
+  width: 1800
+  height: 1271
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Pygmy Owl (Glaucidium
+    passerinum) (16892444200).jpg
+  commons_filename: Eurasian Pygmy Owl (Glaucidium passerinum) (16892444200).jpg
+review_status: approved
+review_notes: "Hero = Glaucidium passerinum (Eurasian Pygmy Owl / Sparvuggla); allmän i barrskog i hela SE."
+generated_at: '2026-05-15T21:18:05.237967+00:00'
+sources:
+  wikipedia_sv_revision: '59195393'
+  wikipedia_en_revision: '1353816186'
+  claude_model: claude-haiku-4-5-20251001

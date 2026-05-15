@@ -1,0 +1,129 @@
+id: Q190083
+scientific_name: Strix uralensis
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Strix
+  ioc_order: Strigiformes
+names:
+  sv: Slaguggla
+  en: Ural Owl
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Slaguggla
+
+
+    Slagugglan är en medelstor, nattaktiv uggla som tillhör släktet Strix. Arten förekommer
+    i nio underarter utspridda över Europa och norra Asien. Den har ett gott bestånd
+    och kategoriseras globalt som livskraftigt.
+
+
+    Arten uppträder i två huvudsakliga befolkningar med olika habitatval. Den nordligare
+    populationen häckar i tajgaskogar med grovstammiga barrträd och myrar, där den
+    är anpassad till den nordiska miljön. Den mindre sydeuropeiska populationen föredrar
+    istället bok- och bergsskogar med lövträd. Detta visar arktens flexibilitet när
+    det gäller att välja lämpliga häckningshabitat över sitt stora utbredningsområde.'
+  en: '# Ural Owl
+
+
+    The Ural owl is a large nocturnal member of the true owl family, belonging to
+    the genus Strix. It possesses the characteristic round facial disc typical of
+    its genus, though specific plumage details vary across its extensive range. The
+    species occurs in multiple subspecies, with subtle variations in coloration and
+    size distributed across its vast geographic range.
+
+
+    This owl is found across a remarkably broad distribution spanning from Scandinavia
+    and montane eastern Europe eastward through the Palearctic, reaching as far as
+    Japan and Sakhalin. It occupies diverse forested habitats throughout this range,
+    though it remains relatively local in some western regions where it appears sporadically
+    in central Europe.
+
+
+    As a nocturnal hunter, the Ural owl is primarily active during darkness, hunting
+    small mammals and other prey from perches within forests. The species may include
+    up to 15 recognized subspecies, though the actual number may be slightly lower
+    when accounting for gradual variations across populations.'
+migration:
+  sv: '# Slaguggla – förekomst i Norden
+
+
+    Slaguggla är en stationär art som är närvarande i Skandinavien och Nordeuropa
+    året runt. Den norra populationen är fast bosatt i taiga-skogarna och förekommer
+    därför permanent i sitt revir. I motsats till många andra ugglor genomför slagugglan
+    ingen betydande migration. Under vintern stannar de etablerade fåglar kvar i sina
+    hemrevir, där de jagar i snön och mörker. Arten är alltså anpassad för nordiska
+    klimatförhållanden och har ingen uttalad flyttningscykel mellan säsonger.
+
+
+    Migrationsdata saknas för denna art.
+
+    Migration data unavailable for this species.'
+  en: '# Ural Owl in Scandinavia and Northern Europe
+
+
+    The Ural Owl is a resident species throughout much of Scandinavia and northern
+    Europe, where it maintains permanent populations year-round. Unlike many owl species,
+    the Ural Owl does not undertake significant seasonal migrations. Instead, it remains
+    in its territories across Scandinavia and montane eastern Europe throughout all
+    seasons, relying on its adaptability to winter conditions and its nocturnal hunting
+    prowess to survive harsh climates. This non-migratory behavior is typical for
+    large owl species in northern regions where suitable habitat and prey availability
+    support year-round residence.'
+image_refs:
+- role: hero
+  path: Q190083/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:YanaDom&amp;action=edit&amp;redlink=1"
+    class="new" title="User:YanaDom (page does not exist)">Yana Dombrovskaya</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ural owl (Strix uralensis) ringing.jpg
+  commons_filename: Ural owl (Strix uralensis) ringing.jpg
+- role: secondary
+  path: Q190083/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:YanaDom&amp;action=edit&amp;redlink=1"
+    class="new" title="User:YanaDom (page does not exist)">Yana Dombrovskaya</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ural owl (Strix uralensis) ringing
+    2.jpg
+  commons_filename: Ural owl (Strix uralensis) ringing 2.jpg
+- role: secondary
+  path: Q190083/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:YanaDom&amp;action=edit&amp;redlink=1"
+    class="new" title="User:YanaDom (page does not exist)">Yana Dombrovskaya</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ural owl (Strix uralensis) ringing
+    3.jpg
+  commons_filename: Ural owl (Strix uralensis) ringing 3.jpg
+review_status: approved
+review_notes: "Hero = Strix uralensis (Ural Owl / Slaguggla); häckande i tagasvet skog i mellersta och norra SE."
+generated_at: '2026-05-15T21:16:38.235630+00:00'
+sources:
+  wikipedia_sv_revision: '59225839'
+  wikipedia_en_revision: '1353367588'
+  claude_model: claude-haiku-4-5-20251001

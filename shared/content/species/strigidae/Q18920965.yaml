@@ -1,0 +1,94 @@
+id: Q18920965
+scientific_name: Otus pamelae
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Otus
+  ioc_order: Strigiformes
+names:
+  sv: Arabdvärguv
+  en: Arabian Scops Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Arabdvärguv
+
+
+    Arabdvärguv är en mindre uggla från familjen egentliga ugglor som nyligen erkändes
+    som egen art. Den förekommer på södra Arabiska halvön, där den tidigare klassificerades
+    som en underart till afrikansk dvärguv. Arten skiljer sig dock genetiskt från
+    sin nära släkting och uppvisar också distinkt skillnad i både dräkt och läten.
+
+
+    Arten anses inte vara hotad enligt IUCN, och populationen bedöms som livskraftig.
+    Arabdvärguv är därför en relativt väl situerad art inom sitt utbredningsområde,
+    trots sitt begränsade geografiska område.'
+  en: '# Arabian Scops Owl
+
+
+    The Arabian scops owl is a small member of the Strigidae family, endemic to the
+    Arabian Peninsula. With an estimated population of around 60,000 individuals,
+    it remains relatively stable across its restricted range, which includes Saudi
+    Arabia, Oman, and Yemen.
+
+
+    As a diminutive owl, this species shares the characteristic features typical of
+    scops owls, though detailed descriptions of its specific appearance, vocalizations,
+    and behaviour are limited in the available source material. Like other scops owls,
+    it is likely nocturnal and adapted to arid or semi-arid environments.
+
+
+    The species is found exclusively in its native Arabian range, making it of particular
+    interest to birders visiting the Middle East region who wish to observe endemic
+    wildlife.'
+migration:
+  sv: '**Migrationsdata saknas för denna art.**
+
+
+    Arabdvärguv är en art som är endemit på södra Arabiska halvön och förekommer inte
+    naturligt i Skandinavien eller Nordeuropa. Den tillgängliga informationen fokuserar
+    på artens utbredning i Arabien och dess taxonmiska status, men innehåller ingen
+    information om migrationsvanor eller säsongsförekomst i norra regioner.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Arabian Scops Owl is endemic to the Arabian Peninsula (Saudi Arabia, Oman,
+    and Yemen) and does not occur naturally in Scandinavia or Northern Europe. Therefore,
+    information about its occurrence, migration patterns, or seasonal distribution
+    in these regions cannot be provided.'
+image_refs:
+- role: hero
+  path: Q18920965/hero.jpg
+  width: 1534
+  height: 2048
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1476120">Jan
+    Ebr</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Otus pamelae 116186704.jpg
+  commons_filename: Otus pamelae 116186704.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:16:13.460006+00:00'
+sources:
+  wikipedia_sv_revision: '56775747'
+  wikipedia_en_revision: '1342814899'
+  claude_model: claude-haiku-4-5-20251001

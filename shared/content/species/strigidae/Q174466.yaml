@@ -1,0 +1,103 @@
+id: Q174466
+scientific_name: Aegolius funereus
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Aegolius
+  ioc_order: Strigiformes
+names:
+  sv: Pärluggla
+  en: Boreal Owl
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Boreal Owl
+
+
+    The boreal owl is a small member of the true owl family, distributed across the
+    northern forests of the Northern Hemisphere. It is known by different names depending
+    on region: boreal owl in North America, and Tengmalm''s owl in Europe and Asia,
+    named after Swedish naturalist Peter Gustaf Tengmalm.
+
+
+    This compact owl inhabits dense coniferous and mixed forests in boreal and subarctic
+    regions. It is primarily nocturnal and hunts small mammals, particularly voles
+    and shrews, from low perches within the forest canopy. The boreal owl is cryptic
+    and elusive, making it challenging to observe in the field.
+
+
+    Its call is a distinctive series of clear, whistled notes, often delivered at
+    night during breeding season, which helps birders locate this secretive species.
+    The owl''s small size and preference for remote forest habitats mean it remains
+    relatively inconspicuous, even where present. Its occurrence is often confirmed
+    more readily through its vocal activity than through direct sightings.'
+migration:
+  sv: ''
+  en: '# Boreal Owl (Aegolius funereus) – Occurrence in Northern Europe
+
+
+    The Boreal Owl is a resident and partial migrant throughout Scandinavia and northern
+    Europe. Populations breeding in the taiga forests of northern Scandinavia are
+    largely sedentary, though some individuals undertake irregular southward movements
+    during winter, particularly in years when rodent populations crash. Birds from
+    more eastern populations may migrate into Scandinavia during autumn and winter
+    months. In core breeding areas, Boreal Owls remain year-round, but their presence
+    at lower elevations and southern latitudes increases notably from October through
+    March as northern birds shift southward seeking prey.'
+image_refs:
+- role: hero
+  path: Q174466/hero.jpg
+  width: 2400
+  height: 1748
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/57557144@N06">Denali
+    National Park and Preserve</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Aegolius funereus Denali NP.jpg
+  commons_filename: Aegolius funereus Denali NP.jpg
+- role: secondary
+  path: Q174466/secondary-1.jpg
+  width: 1800
+  height: 1438
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/57557144@N06">Denali
+    National Park and Preserve</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Boreal Owl (Aegolius funereus)
+    (8615263478).jpg
+  commons_filename: Boreal Owl (Aegolius funereus) (8615263478).jpg
+- role: secondary
+  path: Q174466/secondary-2.jpg
+  width: 1800
+  height: 1441
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/57557144@N06">Denali
+    National Park and Preserve</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Boreal Owl (Aegolius funereus)
+    (8614178747).jpg
+  commons_filename: Boreal Owl (Aegolius funereus) (8614178747).jpg
+review_status: approved
+review_notes: "Hero = Aegolius funereus (Boreal Owl / Pärluggla); allmän i barrskog i hela SE."
+generated_at: '2026-05-15T21:17:52.432743+00:00'
+sources:
+  wikipedia_sv_revision: '59207438'
+  wikipedia_en_revision: '1337434273'
+  claude_model: claude-haiku-4-5-20251001

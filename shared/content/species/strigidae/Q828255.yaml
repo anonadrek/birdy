@@ -1,0 +1,101 @@
+id: Q828255
+scientific_name: Ketupa zeylonensis
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Ketupa
+  ioc_order: Strigiformes
+names:
+  sv: Brun fiskuv
+  en: Brown Fish Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Brown Fish Owl
+
+
+    The Brown Fish Owl is a robust owl species belonging to the family Strigidae.
+    It ranks among the most widespread and well-studied fish owls globally, with a
+    distribution spanning from Turkey across South and Southeast Asia. This extensive
+    range, covering over 7,000 kilometres, makes it the most common fish owl throughout
+    its territory and contributes to its status as Least Concern on the IUCN Red List.
+
+
+    The species inhabits forests and wooded wetlands, environments that provide suitable
+    hunting grounds and nesting sites. Its preference for water-adjacent habitats
+    reflects its specialised diet and hunting behaviour focused on aquatic prey. The
+    Brown Fish Owl''s abundance and adaptability within these wetland ecosystems have
+    made it a valuable subject for ornithological research compared to its rarer relatives.
+
+
+    As one of four living fish owl species, the Brown Fish Owl''s successful distribution
+    and population stability demonstrate its ecological resilience and hunting prowess
+    in diverse wetland environments across its vast Asian and Turkish range.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides no information about the Brown Fish Owl''s occurrence
+    in Scandinavia or Northern Europe, migration patterns, seasonal movements, or
+    overwintering behavior. The species is native to Turkey, South Asia, and Southeast
+    Asia, with no mention of Nordic or Northern European distribution. Therefore,
+    this bird does not occur in Scandinavia throughout the year.'
+image_refs:
+- role: hero
+  path: Q828255/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Drsssuresh1961&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Drsssuresh1961 (page does not exist)">Drsssuresh1961</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ketupa zeylonensis, unknown
+    location in India 00T3.jpg
+  commons_filename: Ketupa zeylonensis, unknown location in India 00T3.jpg
+- role: secondary
+  path: Q828255/secondary-1.jpg
+  width: 1800
+  height: 1440
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Brown Fish-owl (Ketupa zeylonensis)
+    (8606166564).jpg
+  commons_filename: Brown Fish-owl (Ketupa zeylonensis) (8606166564).jpg
+- role: secondary
+  path: Q828255/secondary-2.jpg
+  width: 1800
+  height: 1777
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/506512">Rejoice
+    Gassah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ketupa zeylonensis - Rejoice
+    Gassah - 562615647.jpeg
+  commons_filename: Ketupa zeylonensis - Rejoice Gassah - 562615647.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:17:10.570303+00:00'
+sources:
+  wikipedia_sv_revision: '58652207'
+  wikipedia_en_revision: '1322140791'
+  claude_model: claude-haiku-4-5-20251001

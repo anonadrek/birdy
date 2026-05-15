@@ -1,0 +1,70 @@
+id: Q27074732
+scientific_name: Otus cyprius
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Otus
+  ioc_order: Strigiformes
+names:
+  sv: Cyperndvärguv
+  en: Cyprus Scops Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q27074732/hero.jpg
+  width: 2048
+  height: 1831
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/742241">desertnaturalist</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Otus cyprius 62796570.jpg
+  commons_filename: Otus cyprius 62796570.jpg
+- role: secondary
+  path: Q27074732/secondary-1.jpg
+  width: 1481
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/742241">desertnaturalist</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Otus cyprius 62796526.jpg
+  commons_filename: Otus cyprius 62796526.jpg
+- role: secondary
+  path: Q27074732/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/175009">Julien
+    Renoult</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Otus cyprius.jpg
+  commons_filename: Otus cyprius.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:16:37.722878+00:00'
+sources:
+  wikipedia_sv_revision: '55556206'
+  wikipedia_en_revision: '1314192555'
+  claude_model: claude-haiku-4-5-20251001

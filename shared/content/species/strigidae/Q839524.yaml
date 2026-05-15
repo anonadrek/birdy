@@ -1,0 +1,123 @@
+id: Q839524
+scientific_name: Athene brama
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Athene
+  ioc_order: Strigiformes
+names:
+  sv: Brahminuggla
+  en: Spotted Owlet
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brahminuggla
+
+
+    Brahminugglan är en liten asiatisk uggla som är vanligt förekommande i öppna miljöer.
+    Arten har visat en anmärkningsvärd förmåga att anpassa sig till olika miljöer
+    och trivs även i städer och människodominerade landskap. Detta gör den till en
+    av de mer framgångsrika ugglorarterna inom sitt utbredningsområde.
+
+
+    Arten är aktiv både dag och natt, vilket skiljer den från många andra ugglorarter.
+    Brahminugglan föredrar öppna terränger som savannerartad habitat, trädgårdar och
+    odlingslandskap. Den är en duktig jägare som fångår småkryp, insekter och små
+    däggdjur under låga flygningar nära marken.
+
+
+    Arten återfinns i sitt naturliga utbredningsområde i Asien, där populationerna
+    är stabila och arten klassificeras som icke hotad.'
+  en: '# Spotted Owlet
+
+
+    The spotted owlet is a small owl inhabiting tropical regions across Asia. It readily
+    adapts to human-dominated landscapes, thriving in farmland, gardens, and urban
+    areas where it roosts communally in tree hollows, rock crevices, and building
+    cavities. This sociable species typically rests in small groups, making it relatively
+    conspicuous compared to many other owls.
+
+
+    Breeding occurs in holes within trees or buildings, where females lay 3–5 eggs.
+    The species displays considerable variation in plumage and size across its range,
+    forming a superspecies complex with the very similar little owl. This variation
+    reflects adaptation to diverse local environments throughout its extensive tropical
+    Asian range.
+
+
+    Being a common resident throughout its distribution, the spotted owlet has successfully
+    embraced life alongside human settlements, making it one of the more accessible
+    owl species for observers in suitable habitat.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    The source text provided contains only information about the species being a small
+    Asian owl common in open environments and adapted to urban areas. It includes
+    no information about migration patterns, overwintering, seasonal occurrence, or
+    arrival months in Scandinavia or Northern Europe. Therefore, I cannot provide
+    factual information about how this species occurs throughout the year in Northern
+    Europe, as requested.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Spotted Owlet is a tropical Asian species with no natural occurrence in Scandinavia
+    or Northern Europe. It is a resident breeder throughout its range in South and
+    Southeast Asia, from Pakistan to Southeast Asia, showing no migratory behavior.
+    The species is adapted to permanent residence in open habitats, farmland, and
+    urban areas where it roosts year-round in tree cavities and building crevices.'
+image_refs:
+- role: hero
+  path: Q839524/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Rohitjahnavi" title="User:Rohitjahnavi">Rohitjahnavi</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted Owlet (Athene brama)
+    Greater Rann of Kutch, Gujarat, India DSCN7789 03.jpg
+  commons_filename: Spotted Owlet (Athene brama) Greater Rann of Kutch, Gujarat, India
+    DSCN7789 03.jpg
+- role: secondary
+  path: Q839524/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/39136124@N00">Paul
+    Asman and Jill Lenoble</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted owlet Athene brama (2155234922).jpg
+  commons_filename: Spotted owlet Athene brama (2155234922).jpg
+- role: secondary
+  path: Q839524/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Athene brama 157956914.jpg
+  commons_filename: Athene brama 157956914.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:17:36.145792+00:00'
+sources:
+  wikipedia_sv_revision: '58700735'
+  wikipedia_en_revision: '1344486962'
+  claude_model: claude-haiku-4-5-20251001

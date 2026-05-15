@@ -1,0 +1,104 @@
+id: Q1267714
+scientific_name: Otus brucei
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Otus
+  ioc_order: Strigiformes
+names:
+  sv: Blek dvärguv
+  en: Pallid Scops Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Pallid Scops Owl
+
+
+    The Pallid Scops Owl is a diminutive member of the scops owl family, inhabiting
+    arid regions from the Middle East across to west and central Asia. Like other
+    scops owls, it is a small, compact bird with characteristic ear-tufts that give
+    it a distinctive silhouette. Its plumage tends toward pale, sandy tones that provide
+    effective camouflage in its dry habitat.
+
+
+    This nocturnal hunter is primarily insectivorous, feeding on moths, beetles, and
+    other invertebrates. It typically hunts from a perch, scanning for prey before
+    pouncing with surprising agility. During daylight, the Pallid Scops Owl roosts
+    in dense vegetation or tree cavities, where its cryptic coloration makes it difficult
+    to detect.
+
+
+    The species favors semi-arid woodlands, scrubland, and gardens with scattered
+    trees. It is generally a resident or short-distance migrant depending on location,
+    with breeding occurring in spring and early summer. While it can be locally common
+    in suitable habitat, its nocturnal nature and preference for concealment mean
+    it is more often heard than seen.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only basic geographic range information for the Pallid
+    Scops Owl (occurring from the Middle East to west and central Asia) but contains
+    no specific details about its occurrence in Scandinavia, Northern Europe, migration
+    patterns, overwintering behavior, or seasonal movements. To provide accurate information
+    about this species'' presence and migration in northern regions, additional sources
+    with detailed behavioral and distributional data would be required.'
+image_refs:
+- role: hero
+  path: Q1267714/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Iraqi_eco" title="User:Iraqi
+    eco">Iraqi eco</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pallid scops owl (Otus brucei)
+    ثبج مخطط أو ثبج أوراسي 01.jpg
+  commons_filename: Pallid scops owl (Otus brucei) ثبج مخطط أو ثبج أوراسي 01.jpg
+- role: secondary
+  path: Q1267714/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Iraqi_eco" title="User:Iraqi
+    eco">Iraqi eco</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pallid scops owl (Otus brucei)
+    ثبج مخطط أو ثبج أوراسي 02.jpg
+  commons_filename: Pallid scops owl (Otus brucei) ثبج مخطط أو ثبج أوراسي 02.jpg
+- role: secondary
+  path: Q1267714/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Iraqi_eco" title="User:Iraqi
+    eco">Iraqi eco</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pallid scops owl (Otus brucei)
+    ثبج مخطط أو ثبج أوراسي 03.jpg
+  commons_filename: Pallid scops owl (Otus brucei) ثبج مخطط أو ثبج أوراسي 03.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:16:57.952219+00:00'
+sources:
+  wikipedia_sv_revision: '57974485'
+  wikipedia_en_revision: '1315055624'
+  claude_model: claude-haiku-4-5-20251001

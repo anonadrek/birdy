@@ -1,0 +1,90 @@
+id: Q584597
+scientific_name: Bubo ascalaphus
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Bubo
+  ioc_order: Strigiformes
+names:
+  sv: Ökenuv
+  en: Pharaoh Eagle-Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ökenuv
+
+
+    Ökenuv är en liten uggla som tidigare klassificerades som underart till berguv.
+    Den är påfallande ljusare än sin större släkting och har en mer kompakt gestalt.
+    Fågeln är anpassad för livet i öknar och torra klimat i Nordafrika och Mellanöstern.
+
+
+    Arten förekommer huvudsakligen i ökenområden där den jagar små däggdjur och insekter
+    under mörker. Som många ugglor är den nattaktiv och använder sitt utmärkta hörselsystem
+    för att lokalisera byte i mörkret. Ökenuv är klassificerad som livskraftig av
+    IUCN, vilket innebär att världsbeståndet är stabilt och inte hotas av utrotning.'
+  en: ''
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller ingen information om ökenuven förekommer
+    i Skandinavien eller Nordeuropa, eller någon information om migration, övervintringsområden
+    eller ankomsttider. Arten beskrivs endast som förekommande i ökenområden i Nordafrika
+    och Mellanöstern, vilket ligger långt söder om Skandinavien.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q584597/hero.jpg
+  width: 2067
+  height: 2067
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/13910409@N05">TANAKA
+    Juuyoh (田中十洋)</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bubo ascalaphus -Kakegawa Kacho-en,
+    Kakegawa, Shizuoka, Japan-8a.jpg
+  commons_filename: Bubo ascalaphus -Kakegawa Kacho-en, Kakegawa, Shizuoka, Japan-8a.jpg
+- role: secondary
+  path: Q584597/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Aodh_Airam&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Aodh Airam (page does not exist)">Aodh Airam</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pharaoh Eagle-Owl (Bubo ascalaphus).jpg
+  commons_filename: Pharaoh Eagle-Owl (Bubo ascalaphus).jpg
+- role: secondary
+  path: Q584597/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/ryanvanhuyssteen">ryanvanhuyssteen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bubo ascalaphus, Baqaa, Saudi
+    Arabia 1.jpg
+  commons_filename: Bubo ascalaphus, Baqaa, Saudi Arabia 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:16:24.967252+00:00'
+sources:
+  wikipedia_sv_revision: '56596475'
+  wikipedia_en_revision: '1346592340'
+  claude_model: claude-haiku-4-5-20251001

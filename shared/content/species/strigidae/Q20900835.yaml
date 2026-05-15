@@ -1,0 +1,69 @@
+id: Q20900835
+scientific_name: Strix hadorami
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Strix
+  ioc_order: Strigiformes
+names:
+  sv: Västlig klippuggla
+  en: Desert Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Desert Owl
+
+
+    The desert owl, formerly known as Hume''s owl, is a medium-sized owl belonging
+    to the family Strigidae. It is closely related to the more widespread tawny owl
+    and shares similarities with the range-restricted Omani owl. Like other members
+    of its genus, it is adapted to arid environments and nocturnal hunting.
+
+
+    The species inhabits desert and semi-desert regions where it hunts small mammals
+    and insects under cover of darkness. It is typically a sedentary bird, remaining
+    within its territory year-round. The desert owl''s behaviour and ecology reflect
+    its specialization for life in harsh, sparsely vegetated landscapes.
+
+
+    More detailed information about the species'' specific appearance, vocalizations,
+    and precise distribution would require additional sources, as the available text
+    provides limited ornithological detail beyond its taxonomic relationships.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the occurrence of Strix
+    hadorami (Desert Owl) in Scandinavia or Northern Europe, nor does it include any
+    details about migration patterns, overwintering, or seasonal movements. To write
+    an accurate account of this species'' occurrence in the region, reliable sources
+    with specific migration and distribution data would be needed.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:16:07.121828+00:00'
+sources:
+  wikipedia_sv_revision: '58887308'
+  wikipedia_en_revision: '1314454649'
+  claude_model: claude-haiku-4-5-20251001

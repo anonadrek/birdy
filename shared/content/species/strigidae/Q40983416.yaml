@@ -1,0 +1,72 @@
+id: Q40983416
+scientific_name: Bubo milesi
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Bubo
+  ioc_order: Strigiformes
+names:
+  sv: Arabuv
+  en: Arabian Eagle-Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Arabian Eagle-Owl
+
+
+    The Arabian Eagle-Owl is a member of the true owl family found exclusively across
+    the Arabian Peninsula. This species inhabits coastal regions and areas slightly
+    inland, notably avoiding the most barren desert interiors. It favours wadis, cliffs,
+    and canyon walls as preferred habitat, also nesting in large palms and other trees
+    where available.
+
+
+    Limited information exists on this owl''s appearance, behaviour, and vocalizations
+    in readily available sources, though as an eagle-owl it likely shares characteristics
+    with related species—including large ear tufts and powerful hunting capabilities.
+    The Arabian Eagle-Owl remains relatively poorly studied compared to other regional
+    raptors.
+
+
+    The species'' preference for less arid zones and its association with rocky terrain
+    and scattered vegetation makes it distinct from truly desert-adapted birds. Observers
+    seeking this owl would have the best chances in coastal lowlands and foothills
+    rather than in the peninsula''s interior deserts.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Arabian Eagle-Owl is endemic to the Arabian Peninsula and does not occur naturally
+    in Scandinavia or Northern Europe. The provided source text contains no information
+    about migration patterns or seasonal occurrence in these regions. This species
+    is restricted to southwestern Saudi Arabia, Yemen, Oman, and the United Arab Emirates,
+    where it inhabits coastal areas, wadis, and cliff habitats year-round.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:16:52.452667+00:00'
+sources:
+  wikipedia_sv_revision: '58909951'
+  wikipedia_en_revision: '1336809081'
+  claude_model: claude-haiku-4-5-20251001

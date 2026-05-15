@@ -2154,6 +2154,7 @@
   ioc_order: Strigiformes
   common_en: Boreal Owl
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q129958
   scientific_name: Athene noctua
   family: Strigidae
@@ -2172,12 +2173,14 @@
   ioc_order: Strigiformes
   common_en: Northern Hawk-Owl
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q191155
   scientific_name: Glaucidium passerinum
   family: Strigidae
   ioc_order: Strigiformes
   common_en: Eurasian Pygmy Owl
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q18920965
   scientific_name: Otus pamelae
   family: Strigidae
@@ -2214,12 +2217,14 @@
   ioc_order: Strigiformes
   common_en: Short-eared Owl
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25384
   scientific_name: Asio otus
   family: Strigidae
   ioc_order: Strigiformes
   common_en: Long-eared Owl
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q170177
   scientific_name: Bubo scandiacus
   family: Strigidae
@@ -2238,6 +2243,7 @@
   ioc_order: Strigiformes
   common_en: Eurasian Eagle-Owl
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q40983416
   scientific_name: Bubo milesi
   family: Strigidae
@@ -2256,6 +2262,7 @@
   ioc_order: Strigiformes
   common_en: Tawny Owl
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q20900835
   scientific_name: Strix hadorami
   family: Strigidae
@@ -2274,6 +2281,7 @@
   ioc_order: Strigiformes
   common_en: Ural Owl
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q200724
   scientific_name: Strix nebulosa
   family: Strigidae

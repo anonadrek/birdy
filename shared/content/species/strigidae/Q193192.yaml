@@ -1,0 +1,129 @@
+id: Q193192
+scientific_name: Surnia ulula
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Surnia
+  ioc_order: Strigiformes
+names:
+  sv: Hökuggla
+  en: Northern Hawk-Owl
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Hökuggla
+
+
+    Hökugglan är en unik uggla som utgör den enda levande arten i släktet Surnia.
+    Det är en intressant fågel som skiljer sig från de flesta andra ugglor genom att
+    vara delvis dagaktiv, vilket gör den möjlig att observera även under dagtimmar.
+
+
+    Arten förekommer i de norra delarna av Nordamerika, Europa och Asien, där den
+    är anpassad till kalla klimat. Hökugglans diet består huvudsakligen av små gnagare
+    och mindre fåglar, vilka den jagar med skicklighet både dag och natt.
+
+
+    Enligt IUCN är hökugglans bestånd livskraftigt, vilket indikerar att arten mår
+    väl och inte är hotad för närvarande. För fågelintresserade erbjuder hökugglans
+    dagaktivitet en god möjlighet att studera denna fascinerade rovfågel i sitt naturliga
+    beteende.'
+  en: '# Northern Hawk-Owl
+
+
+    The northern hawk-owl is a medium-sized owl with a distinctive appearance and
+    unusual behaviour for its family. It features a slender build, long tail, and
+    striking facial disc, with dark upper parts contrasting against white underparts.
+    Unlike most owls, it is remarkably diurnal, often hunting in daylight hours, which
+    makes it more visible to observers than its nocturnal relatives.
+
+
+    This species inhabits the boreal forests of high northern latitudes, where it
+    remains year-round as a non-migratory resident. However, populations occasionally
+    irrupt southward during food shortages, expanding their range unpredictably. It
+    hunts small mammals and birds from exposed perches, employing swift, direct flight
+    similar to a hawk—behaviour that inspired its common name.
+
+
+    The northern hawk-owl is the sole living member of its genus, Surnia, within the
+    typical owl family. Its active daytime habits and hawk-like hunting style make
+    it a distinctive and relatively approachable owl, quite different from the secretive
+    nocturnal owls more familiar to most observers.'
+migration:
+  sv: Hökugglan förekommer året runt i norra Skandinavien och är en del-flyttfågel.
+    Arten stannar ofta kvar på sina häckningsområden under milder vintrar, men kan
+    göra omfattande söktåg sydåt när gnagarpopulationerna minskar. Under dessa invasionsår
+    påträffas hökugglor regelbundet långt söderut i Sverige och övriga Nordeuropa.
+    Arten återvänder till sina nordliga häckningsrevir under våren när förutsättningarna
+    förbättras.
+  en: '# Northern Hawk-Owl in Scandinavia/Northern Europe
+
+
+    The Northern Hawk-Owl is a non-migratory species that remains within its breeding
+    range throughout the year across northern Scandinavia and boreal regions. However,
+    it exhibits irregular irruptive movements southward during certain years, likely
+    driven by fluctuations in food availability, particularly small mammal populations.
+    These southward incursions can bring birds to central Scandinavia and occasionally
+    further south into temperate Europe, though such movements are unpredictable rather
+    than following a consistent seasonal pattern.
+
+
+    This species is resident year-round in its core range in northern Fennoscandia
+    and northern Russia, making it a permanent inhabitant of boreal forests rather
+    than a seasonal migrant. The occasional irruptions southward represent the species''
+    primary variation in distribution pattern, distinguishing it from true migratory
+    owl species.'
+image_refs:
+- role: hero
+  path: Q193192/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Northern hawk owl (Surnia ulula)
+    (Schleswig Hostein).jpg
+  commons_filename: Northern hawk owl (Surnia ulula) (Schleswig Hostein).jpg
+- role: secondary
+  path: Q193192/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Daderot" title="User:Daderot">Daderot</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Surnia ulula - Finnish Museum
+    of Natural History - DSC04619.JPG
+  commons_filename: Surnia ulula - Finnish Museum of Natural History - DSC04619.JPG
+- role: secondary
+  path: Q193192/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Northern hawk owl with pray
+    (Surnia ulula).jpg
+  commons_filename: Northern hawk owl with pray (Surnia ulula).jpg
+review_status: approved
+review_notes: "Hero = Surnia ulula (Northern Hawk-Owl / Hökuggla); dagaktiv uggla i barrskog i norra SE."
+generated_at: '2026-05-15T21:17:43.914372+00:00'
+sources:
+  wikipedia_sv_revision: '59226024'
+  wikipedia_en_revision: '1342925016'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,132 @@
+id: Q171563
+scientific_name: Otus scops
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Otus
+  ioc_order: Strigiformes
+names:
+  sv: Dvärguv
+  en: Eurasian Scops Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dvärguv
+
+
+    Dvärguv är en av världens minsta uglor och tillhör släktet Otus. Det är en buskig,
+    grå eller brunaktig fågel med påtagliga örontofsar som ger den sitt karakteristiska
+    utseende. Arten förekommer huvudsakligen i Palearktis där den häckar, och det
+    är en nattaktiv jägare som ofta är svår att upptäcka på grund av sin små storlek
+    och goda kamouflage.
+
+
+    Arten är känd för sitt karakteristiska, monotont tjutande läte som ofta hörs under
+    häckningstiden. Fågeln har en mycket specifik roll i sitt ekosystem som nattlig
+    rovfågel.
+
+
+    Även om beståndet är livskraftigt visar arten en minskande trend i många delar
+    av sitt utbredningsområde. Det är en mycket sällsynt gäst norr om sitt normala
+    område – Sverige har registrerat endast ett tiotal fynd av denna art. Observationer
+    här är alltid anmärkningsvärda för ornitologer och birdwatchere på grund av artens
+    raritet i norden.'
+  en: '# Eurasian Scops Owl
+
+
+    The Eurasian Scops Owl is a small, compact owl belonging to the typical owl family.
+    It is characterized by its diminutive size and cryptic plumage, which provides
+    excellent camouflage in its woodland and scrubland habitats. The species is highly
+    nocturnal and often heard before it is seen.
+
+
+    This is a highly migratory species across much of its range, breeding from southern
+    Europe eastwards to southern Siberia and the western Himalayas. During winter,
+    most populations migrate to Africa south of the Sahara, though some birds remain
+    year-round residents in Mediterranean regions where milder conditions permit.
+
+
+    The Eurasian Scops Owl is renowned for its distinctive tremulous, whistled call—a
+    characteristic sound of warm evenings in suitable habitat. It hunts small prey
+    such as insects, spiders, and small mammals under cover of darkness, using its
+    exceptional hearing to locate quarry.'
+migration:
+  sv: '# Dvärguv – förekomst i Skandinavien/Nordeuropa
+
+
+    Dvärguv är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten häckar
+    huvudsakligen långt söder om denna region, och endast enstaka individer når Sverige
+    och andra nordiska länder. Med endast omkring tio fynd i Sveriges historia är
+    dvärguven en stor raritet för nordiska fågelskådare. När arten förekommer så långt
+    norr om sitt vanliga utbredningsområde sker detta sporadiskt och oregelbundet,
+    ofta under höstmigrationen när yngre eller vilsekomna fåglar kan driva långt från
+    sina normala häckningsplatser i södra Europa och västra Asien.'
+  en: '# Eurasian Scops Owl in Northern Europe
+
+
+    The Eurasian Scops Owl is a migratory species with limited occurrence in Scandinavia
+    and Northern Europe. It breeds in southern Europe and does not have an established
+    breeding population in the Nordic region. However, vagrant individuals occasionally
+    appear during migration periods, particularly in spring and autumn, as birds move
+    between their Mediterranean breeding grounds and African wintering areas. Some
+    populations resident in Mediterranean Europe remain year-round, but these southern
+    populations do not extend into Scandinavia. Any sightings in Northern Europe would
+    be exceptional and represent birds outside their normal range.'
+image_refs:
+- role: hero
+  path: Q171563/hero.jpg
+  width: 1833
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Dwergooruil - scops owl - Otus
+    scops.tif
+  commons_filename: Dwergooruil - scops owl - Otus scops.tif
+- role: secondary
+  path: Q171563/secondary-1.jpg
+  width: 1800
+  height: 1244
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian Scops Owl (Otus scops),
+    Kalloni, Lesvos, Greece, 19.04.2015 (27018886079).jpg
+  commons_filename: Eurasian Scops Owl (Otus scops), Kalloni, Lesvos, Greece, 19.04.2015
+    (27018886079).jpg
+- role: secondary
+  path: Q171563/secondary-2.jpg
+  width: 1800
+  height: 1339
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Scops Owl (Otus scops), Kalloni,
+    Lesvos, Greece, 19.04.2015 (16773748434).jpg
+  commons_filename: Scops Owl (Otus scops), Kalloni, Lesvos, Greece, 19.04.2015 (16773748434).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:16:39.625759+00:00'
+sources:
+  wikipedia_sv_revision: '56065235'
+  wikipedia_en_revision: '1332675361'
+  claude_model: claude-haiku-4-5-20251001

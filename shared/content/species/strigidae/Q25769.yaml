@@ -1,0 +1,142 @@
+id: Q25769
+scientific_name: Asio flammeus
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Asio
+  ioc_order: Strigiformes
+names:
+  sv: Jorduggla
+  en: Short-eared Owl
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Jorduggla
+
+
+    Jorduggla är en medelstor uggla med karakteristisk ansiktsskiva och gula ögon.
+    Den har brun och beige fjäderdräkt som ger god kamouflage i öppna miljöer. En
+    utmärkande egenskap är de korta "öronpennorna" på huvudet, vilka ofta är svåra
+    att se. Vingarna är långa och smala, vilket ger den ett distinkt flygmönster.
+
+
+    Jordugglan är en aktiv jägare som ofta ses flyga lågt över marken även under dagen,
+    till skillnad från många andra ugglear. Den jagar små däggdjur och fåglar genom
+    att patrullera över hedar, ängar och övervuxen åkermark. Arten förekommer över
+    stora delar av norra halvklotet och häckar även på södra halvklotet. Den lägger
+    sitt bo direkt på marken, vilket är ovanligt bland ugglor.
+
+
+    Jordugglan är i allmänhet tystlåten, men under häckningstiden kan höras diverses
+    läten och skrikande ljud från fågeln.'
+  en: '# Short-eared Owl
+
+
+    The short-eared owl is a widespread grassland specialist belonging to the family
+    Strigidae. Like other members of the genus Asio, it possesses distinctive feather
+    tufts that resemble mammalian ears, though in this species the tufts are notably
+    short and usually inconspicuous. When threatened, the bird will raise these tufts
+    in a defensive display, making them briefly visible.
+
+
+    It inhabits open country and grasslands across its range, where it hunts over
+    low vegetation. The short-eared owl is a highly adaptable predator, often active
+    during daylight hours, particularly at dawn and dusk. Its hunting technique involves
+    quartering low over the ground with buoyant, moth-like flight, listening intently
+    for small mammals in the grass below.
+
+
+    This owl''s appearance reflects its grassland lifestyle, with plumage that provides
+    excellent camouflage in open habitats. Its calls include various hoots and barking
+    sounds, used during breeding displays and territorial defence. The species demonstrates
+    considerable flexibility in its choice of grassland habitats, from coastal marshes
+    to upland moorlands and agricultural areas, making it one of the more commonly
+    encountered owl species across suitable open terrain.'
+migration:
+  sv: '# Jorduggla (Asio flammeus) - Förekomst i Skandinavien/Nordeuropa
+
+
+    Jordugglan är en vandringsugglart som förekommer i Skandinavien och Nordeuropa
+    under olika årstider. Arten häckar på våren och sommaren på öppna marker, framför
+    allt på hedar och övergiven åkermark. Under hösten och vintern kan populationen
+    variera kraftigt beroende på tillgången på föda, särskilt små gnagare. Jordugglan
+    är en aktiv jägare även under dagljus och är därför lätt att observera på sina
+    jaktmarker.
+
+
+    Migrationsdata saknas för denna art i den tillhandahållna källtexten. För mer
+    detaljerad information om ankomst- och avgångsmånader i Skandinavien rekommenderas
+    konsultation av regionala fågelguidar eller observationsdatabaser.'
+  en: '# Short-eared Owl (Asio flammeus) in Scandinavia/Northern Europe
+
+
+    The Short-eared Owl is a migratory species with a complex seasonal distribution
+    across Northern Europe. Breeding populations arrive in Scandinavia from March
+    onwards, utilizing open grasslands and moorlands for nesting. During autumn migration,
+    typically beginning in August and continuing through October, many northern breeders
+    vacate their breeding grounds and move southward. However, populations in southern
+    Scandinavia may remain as year-round residents or winter visitors depending on
+    prey availability and weather conditions. Winter sightings occur irregularly,
+    with some individuals overwintering in southern regions while others migrate to
+    continental Europe or beyond. The species'' presence fluctuates significantly
+    between years, influenced by rodent population cycles that determine breeding
+    success and winter survival.'
+image_refs:
+- role: hero
+  path: Q25769/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Ssprmannheim" class="mw-redirect"
+    title="User:Ssprmannheim">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sumpfohreule (Asio flammeus)
+    auf Spiekeroog - Nationalpark niedersächsisches Wattenmeer.jpg
+  commons_filename: Sumpfohreule (Asio flammeus) auf Spiekeroog - Nationalpark niedersächsisches
+    Wattenmeer.jpg
+- role: secondary
+  path: Q25769/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Ssprmannheim" class="mw-redirect"
+    title="User:Ssprmannheim">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sumpfohreule (Asio flammeus)
+    auf Spiekeroog - Nationalpark niedersächsisches Wattenmeer (1).jpg
+  commons_filename: Sumpfohreule (Asio flammeus) auf Spiekeroog - Nationalpark niedersächsisches
+    Wattenmeer (1).jpg
+- role: secondary
+  path: Q25769/secondary-2.jpg
+  width: 1390
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Velduil - short-eared owl -
+    Asio flammeus.tif
+  commons_filename: Velduil - short-eared owl - Asio flammeus.tif
+review_status: approved
+review_notes: "Hero = Asio flammeus (Short-eared Owl / Jorduggla); allmän i öppen mark och våtmarker i SE."
+generated_at: '2026-05-15T21:17:39.029061+00:00'
+sources:
+  wikipedia_sv_revision: '57011476'
+  wikipedia_en_revision: '1337983783'
+  claude_model: claude-haiku-4-5-20251001

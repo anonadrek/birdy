@@ -1,0 +1,137 @@
+id: Q130933
+scientific_name: Bubo bubo
+taxonomy:
+  family: Strigidae
+  family_sv: Egentliga ugglor
+  genus: Bubo
+  ioc_order: Strigiformes
+names:
+  sv: Berguv
+  en: Eurasian Eagle-Owl
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Berguv
+
+
+    Berguven är Europas största uggla och en av världens största representanter av
+    familjen. Den imponerar med en kraftfull kropp och ett karakteristiskt stort huvud
+    försett med påfallande örontofsar. Ögonen är orangegula och ger arten ett intensivt
+    uttryck. Fjäderdräkten är mörkfläckig med ett ljusare bröst och buk jämfört med
+    ryggen, vilket ger utmärkt kamouflage i dess naturliga miljö.
+
+
+    Arten är en stannfågel som förekommer i större delen av Europa och Asien. Den
+    häckar främst i skogiga bergsområden och på klippöar, där dess kraftiga bygnad
+    och stora vingspann ger den fördelar för jakt i kuperad terräng. Mer sällan utnyttjar
+    den även byggnader för häckning. Berguven är en skicklig jägare som använder sitt
+    excellent hörsel och sin imponerande storlek för att överpowera sitt byte under
+    mörka timmar.'
+  en: '# Eurasian Eagle-Owl
+
+
+    The Eurasian eagle-owl is one of the largest owl species, commanding respect with
+    its powerful build and distinctive appearance. It features prominent ear tufts,
+    piercing orange-yellow eyes, and mottled grey-brown plumage that provides excellent
+    camouflage in its woodland and rocky habitats. The bird''s size and robust frame
+    make it a formidable nocturnal predator.
+
+
+    This eagle-owl is a skilled hunter of the night, preying on mammals ranging from
+    rabbits to small hares, as well as birds and other creatures. It typically hunts
+    from a perch, dropping onto unsuspecting prey with deadly accuracy. The species
+    is relatively solitary and territorial, with pairs defending established ranges
+    year-round or seasonally depending on location.
+
+
+    The Eurasian eagle-owl''s deep, resonant hooting call—a distinctive "ooh-ooh-ooh"—echoes
+    through suitable habitats, particularly during breeding season. This powerful
+    voice carries great distances and serves as a means of territorial advertisement
+    and pair communication.
+
+
+    The species is found across much of Eurasia, inhabiting diverse landscapes including
+    forests, mountains, cliffs, and open woodland. It has adapted well to various
+    environments, making it relatively widespread throughout its range, though local
+    abundance varies considerably.'
+migration:
+  sv: '# Berguv – Förekomst i Norden
+
+
+    Berguven är en stannfågel som förekommer året runt i sitt utbredningsområde. I
+    Skandinavien och Nordeuropa är arten relativt sparsamt utbredd och förekommer
+    främst i bergiga och skogsrika områden. Som stannfågel utgör berguven inte någon
+    egentlig flyttfågel och ändrar inte sitt område i någon större omfattning mellan
+    årstider. Individerna är mycket territoriella och kan förväntas på samma platser
+    året om, förutsatt att förutsättningarna för näringstillgång och boplatser förblir
+    lämpliga. Under vintermånaderna kan svåra väderförhållanden påverka deras lokalfördelning
+    tillfälligt.'
+  en: '# Eurasian Eagle-Owl (Bubo bubo) in Scandinavia/Northern Europe
+
+
+    The Eurasian Eagle-Owl is a resident species throughout much of Scandinavia and
+    Northern Europe, with populations that are largely sedentary year-round. In these
+    northern regions, individuals typically remain in their territories during winter
+    rather than undertaking long-distance migrations. However, some northern populations
+    may show limited southward movements during harsh winters when prey availability
+    becomes challenging. Breeding birds establish territories in autumn and maintain
+    them through the breeding season, which begins in late winter.
+
+
+    The species is present throughout the year in suitable habitats across Sweden,
+    Norway, and Finland, though populations remain sparse in these regions due to
+    historical persecution and habitat loss. Any apparent changes in local numbers
+    may reflect irregular winter movements of birds from more northern territories
+    seeking better hunting conditions rather than true migration patterns.'
+image_refs:
+- role: hero
+  path: Q130933/hero.jpg
+  width: 1800
+  height: 2400
+  license: Public domain
+  author: LordToran
+  source_url: https://commons.wikimedia.org/wiki/File:Lto-tpbo-bubo-bubo.JPG
+  commons_filename: Lto-tpbo-bubo-bubo.JPG
+- role: secondary
+  path: Q130933/secondary-1.jpg
+  width: 1800
+  height: 1192
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian eagle-owl (Bubo bubo).jpg
+  commons_filename: Eurasian eagle-owl (Bubo bubo).jpg
+- role: secondary
+  path: Q130933/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Cayambe" title="User:Cayambe">Cayambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Vallée de l'Eisch, Bubo bubo
+    2026a.jpg
+  commons_filename: Vallée de l'Eisch, Bubo bubo 2026a.jpg
+review_status: approved
+review_notes: "Hero = Bubo bubo (Eurasian Eagle-Owl / Berguv); SE:s största uggla, häckar på klippor och i bergsterräng."
+generated_at: '2026-05-15T21:16:46.583221+00:00'
+sources:
+  wikipedia_sv_revision: '58909839'
+  wikipedia_en_revision: '1351659486'
+  claude_model: claude-haiku-4-5-20251001
