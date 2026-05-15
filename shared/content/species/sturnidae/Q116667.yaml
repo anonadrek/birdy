@@ -1,0 +1,129 @@
+id: Q116667
+scientific_name: Acridotheres tristis
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Acridotheres
+  ioc_order: Passeriformes
+names:
+  sv: Brunmajna
+  en: Common Myna
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brunmajna
+
+
+    Brunmajna är en medelstor tätting med karakteristisk utseende. Den har mörkbrun
+    fjäderdräkt med vita vingar- och stjärtpartier som blir särskilt tydliga under
+    flykten. Arten har gult ansikte och orangefärgat näbbparti, vilket ger den ett
+    distinktivt utseende jämfört med andra starar.
+
+
+    Arten är högljudd och socialt levande, ofta förekommande i små flockar. Det är
+    en anpassningsbar fågel som ursprungligen hemmahörde i öppna skogsområden i södra
+    och sydöstra Asien, men som har visat stor förmåga att etablera sig i människodominerande
+    miljöer. Idag ses brunmajna vanligt i parker och trädgårdar där den söker föda
+    på marken eller bland träd.
+
+
+    Brunmajna har introducerats till många världsdelar och etablerat sig i frilevande
+    populationer långt bort från sitt ursprungliga utbredningsområde. Arten är känd
+    för sitt bullriga beteende och sina varierande ljud som den använder inom flockens
+    sociala interaktioner.'
+  en: '# Common Myna
+
+
+    The Common Myna is a medium-sized starling native to Asian open woodlands that
+    has become highly successful in urban settings. It is an omnivorous bird with
+    a strong territorial nature, readily adapting to human-dominated landscapes where
+    it forages on the ground and in trees for insects, fruits, and seeds.
+
+
+    The species is characterized by its brown plumage, distinctive yellow facial skin
+    patches, and yellow legs, making it relatively easy to identify. It is a bold
+    and gregarious bird, often seen in small flocks perched conspicuously on wires,
+    rooftops, and trees. The Common Myna is notably vocal, producing a variety of
+    loud, harsh calls and whistles that are characteristic of its confident, assertive
+    behavior.
+
+
+    As an adaptable generalist, the Common Myna thrives in parks, gardens, and cultivated
+    areas throughout its native range in Asia. It has become increasingly common in
+    urban and suburban environments, where it competes aggressively with other birds
+    for food and nesting sites. Its combination of distinctive appearance, bold temperament,
+    and vocal presence makes it a frequently observed garden visitor across much of
+    Asia.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller ingen information om brunmajnans förekomst
+    i Skandinavien/Nordeuropa eller någon migrationsdata. Arten beskrivs endast som
+    ursprungligen förekommande i södra och sydöstra Asien, med införda populationer
+    på andra platser världen över, men utan specifika uppgifter om nordeuropeisk förekomst
+    eller säsongsvandring.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains no information about how the Common Myna occurs
+    in Scandinavia or Northern Europe, nor does it include any details about migration
+    patterns, overwintering behavior, or seasonal arrival months. Additionally, the
+    Common Myna is native to Asia and is not established as a regular occurrence in
+    Scandinavian or Northern European ecosystems, making such information unlikely
+    to exist in ornithological records for the region.'
+image_refs:
+- role: hero
+  path: Q116667/hero.jpg
+  width: 2400
+  height: 1800
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:CT_Cooper" class="mw-redirect"
+    title="User:CT Cooper">CT Cooper</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Acridotheres tristis in the
+    grounds of the Le Royal Méridien Beach Resort and Spa in Dubai 7.jpg
+  commons_filename: Acridotheres tristis in the grounds of the Le Royal Méridien Beach
+    Resort and Spa in Dubai 7.jpg
+- role: secondary
+  path: Q116667/secondary-1.jpg
+  width: 1800
+  height: 1196
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common myna, (Acridotheres tristis).jpg
+  commons_filename: Common myna, (Acridotheres tristis).jpg
+- role: secondary
+  path: Q116667/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common myna 18 (Acridotheres
+    tristis) നാട്ടുമൈന .jpg
+  commons_filename: Common myna 18 (Acridotheres tristis) നാട്ടുമൈന .jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:35:39.254951+00:00'
+sources:
+  wikipedia_sv_revision: '58648492'
+  wikipedia_en_revision: '1334195161'
+  claude_model: claude-haiku-4-5-20251001

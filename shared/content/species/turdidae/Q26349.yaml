@@ -1,0 +1,134 @@
+id: Q26349
+scientific_name: Turdus philomelos
+taxonomy:
+  family: Turdidae
+  family_sv: Trastar
+  genus: Turdus
+  ioc_order: Passeriformes
+names:
+  sv: Taltrast
+  en: Song Thrush
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Taltrast
+
+
+    Taltrast är en medelstora trast med brun ovansida och karakteristisk gulvit eller
+    gulbrun undersida täckt av svarta prickar. Det är denna distinktiva teckoning
+    som gör arten lätt att identifiera i fält. Arten förekommer över stora delar av
+    Palearktis och är utbredd långt österut mot Bajkalsjön, där den delas upp i två
+    till fyra underarter beroende på klassificering.
+
+
+    Arten är välkänd för sin vackra, karakteristiska sång som består av upprepade
+    musikaliska fraser. Sången är mycket igenkännlig och har genom historien inspirerat
+    många poeter och skribenter. Taltrasten är aktiv och observant, ofta skyggt men
+    inte alltid svårtillgänglig för den uppmärksamme fågelskådaren.
+
+
+    Taltrasten förekommer i varierade miljöer med träd och buskar, från skogsbryn
+    till parker och trädgårdar. Det är en art som värdesätts både för sitt utseende
+    och framför allt för sin enastående sång.'
+  en: '# Song Thrush
+
+
+    The song thrush is a medium-sized thrush with warm brown upperparts and distinctive
+    cream or buff underparts heavily spotted with black. It is a relatively compact
+    bird with a rounded head and alert posture. Four recognized subspecies exist across
+    its breeding range in the West Palearctic region.
+
+
+    The bird is most notable for its remarkable song, which consists of repeated musical
+    phrases delivered from prominent perches. This distinctive vocalization has inspired
+    numerous literary references throughout history. The song thrush is generally
+    a solitary or paired bird, though it may gather in small groups during migration
+    or winter.
+
+
+    It inhabits woodlands, gardens, parks, and scrubland where there is sufficient
+    ground cover for foraging. The species feeds primarily on invertebrates, particularly
+    earthworms and snails, which it locates by hopping on the ground and listening
+    intently. It is a migratory species across much of its range, though some populations
+    remain year-round residents in milder regions.'
+migration:
+  sv: '# Taltrast - Förekomst i Skandinavien och Nordeuropa
+
+
+    Taltrast är en regelbunden flyttfågel i Skandinavien och övriga Nordeuropa. Arten
+    återvänder till häckningsområdena under april-maj efter att ha övervintrare i
+    västra och södra Europa samt Nordafrika. Under sommaren häckar taltrastar allmänt
+    i större delen av Sverige, Norge och Danmark. Innan hösten påbörjar de sin flyttning
+    mot sydväst, vanligen från augusti till september, för att tillbringa vintermånaderna
+    i mildare klimat. Mindre antal individer stannar också över vintern i södra Skandinavien
+    under gynnsamma år. Arten är således en typisk säsongsflytt med tydlig återkomst
+    på våren och avgång på hösten.'
+  en: '# Song Thrush in Northern Europe
+
+
+    The Song Thrush is a summer breeding visitor to Scandinavia and much of Northern
+    Europe, arriving in spring (typically March–April) to establish territories in
+    woodland, gardens, and hedgerows. Populations breed throughout the region during
+    the warmer months. As autumn approaches (August–September), northern breeding
+    birds migrate southwestward to winter in milder regions of western and southern
+    Europe, the Mediterranean basin, and North Africa. However, some individuals,
+    particularly from southern breeding populations, may remain year-round in sheltered
+    coastal and lowland areas. Winter presence in Scandinavia is sporadic and weather-dependent,
+    with harsh conditions often forcing birds to depart or perish.'
+image_refs:
+- role: hero
+  path: Q26349/hero.jpg
+  width: 1542
+  height: 2160
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus philomelos Oulu Finland
+    2021-05-12.jpg
+  commons_filename: Turdus philomelos Oulu Finland 2021-05-12.jpg
+- role: secondary
+  path: Q26349/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Song thrush (Turdus philomelos)
+    2021.jpg
+  commons_filename: Song thrush (Turdus philomelos) 2021.jpg
+- role: secondary
+  path: Q26349/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Tordo-comum "Turdus philomelos"
+    (52656473356).jpg
+  commons_filename: Tordo-comum "Turdus philomelos" (52656473356).jpg
+review_status: approved
+review_notes: "Hero = Turdus philomelos (Song Thrush / Taltrast); allmän i skog och trädgårdar i hela SE."
+generated_at: '2026-05-15T21:36:32.541621+00:00'
+sources:
+  wikipedia_sv_revision: '57776507'
+  wikipedia_en_revision: '1336732450'
+  claude_model: claude-haiku-4-5-20251001

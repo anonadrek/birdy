@@ -1,0 +1,105 @@
+id: Q207760
+scientific_name: Stercorarius skua
+taxonomy:
+  family: Stercorariidae
+  family_sv: Labbar
+  genus: Stercorarius
+  ioc_order: Charadriiformes
+names:
+  sv: Storlabb
+  en: Great Skua
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Great Skua
+
+
+    The great skua is a large, robust seabird comparable in size to a herring gull,
+    with dark brownish plumage and distinctive pale patches on its wings that are
+    particularly visible in flight. It possesses a powerful, hooked bill adapted for
+    its predatory lifestyle.
+
+
+    This species is primarily a hunter of fish, catching prey at the sea surface with
+    impressive agility. It also employs a remarkable hunting strategy of pursuing
+    other seabirds and forcing them to disgorge their catches—a behavior known as
+    kleptoparasitism. It is an aggressive and bold bird, particularly during the breeding
+    season when it defends its territory vigorously against intruders.
+
+
+    The great skua produces harsh, barking calls and mewing sounds, particularly when
+    nesting. It is found in offshore and coastal waters, breeding in northern regions
+    and migrating to more southerly seas during winter. It is often seen alone or
+    in small groups at sea, though it may gather in larger numbers at productive fishing
+    areas and around trawlers.'
+migration:
+  sv: ''
+  en: '# Great Skua (Storlabb) in Northern Europe
+
+
+    The Great Skua is a migratory seabird in Scandinavia and Northern Europe. Breeding
+    populations are found in Iceland, the Faroe Islands, and northern Scotland, with
+    smaller numbers in Scandinavia. Birds arrive at breeding grounds from late March
+    through April. After breeding, most populations migrate southward in late summer
+    and autumn, departing by September-October to winter in the Atlantic, primarily
+    off West Africa and the Mediterranean. Some individuals may overwinter in northern
+    waters during milder years. Return migration occurs in spring, with birds reappearing
+    at northern breeding sites from March onwards, making them a seasonal visitor
+    to most Scandinavian regions.'
+image_refs:
+- role: hero
+  path: Q207760/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great skua (Stercorarius skua),
+    Hallig Hooge.jpg
+  commons_filename: Great skua (Stercorarius skua), Hallig Hooge.jpg
+- role: secondary
+  path: Q207760/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great skua (Stercorarius skua)
+    2021.jpg
+  commons_filename: Great skua (Stercorarius skua) 2021.jpg
+- role: secondary
+  path: Q207760/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great skua (Stercorarius skua)
+    2023.jpg
+  commons_filename: Great skua (Stercorarius skua) 2023.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:32:09.064881+00:00'
+sources:
+  wikipedia_sv_revision: '55735148'
+  wikipedia_en_revision: '1348390159'
+  claude_model: claude-haiku-4-5-20251001

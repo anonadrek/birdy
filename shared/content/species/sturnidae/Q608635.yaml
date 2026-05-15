@@ -1,0 +1,123 @@
+id: Q608635
+scientific_name: Lamprotornis superbus
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Lamprotornis
+  ioc_order: Passeriformes
+names:
+  sv: Brunbukig glansstare
+  en: Superb Starling
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brunbukig glansstare
+
+
+    Brunbukig glansstare är en medelstor stare med iögonfallande utseende. Den utmärks
+    av sin metallglansande, mörkblå ovansida och karakteristiska rostfärgad undersida,
+    vilket ger arten sitt namn. Ögonen är omgivna av en distinkt orangeröd ring, och
+    näbben är gul. Arten har en robust bygnad typisk för starar.
+
+
+    Denna fågel förekommer i Östafrika och är ett välkänt inslag i sitt naturliga
+    utbredningsområde. Den är en social art som ofta ses i flockar, där den söker
+    föda på marken och i låg vegetation. Brunbukig glansstare är aktiv och rörig,
+    med ett varierande röstande som innefattar både visslingar och mer komplexa läten.
+
+
+    Arten är kategoriserad som livskraftig av IUCN, vilket indikerar en stabil population.
+    Den har stor kulturell betydelse i sitt utbredningsområde.'
+  en: '# Superb Starling
+
+
+    The superb starling is a striking member of the starling family, formerly classified
+    as *Spreo superbus*. It is a relatively long-lived species, with individuals known
+    to survive over 15 years in captivity, suggesting good longevity potential in
+    the wild as well.
+
+
+    This starling displays the characteristic iridescent plumage typical of its family,
+    with glossy feathers that catch the light. Like other starlings, it is a social
+    and vocal bird, though specific details about its calls and behavioural preferences
+    would benefit from additional observation data.
+
+
+    The species inhabits open and semi-open habitats across its range, where it can
+    be observed foraging and socializing, often in small to medium-sized flocks typical
+    of starling behaviour.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller endast information om brunbukig glansstarens
+    geografiska utbredning i Östafrika (från Sydsudan till Tanzania) och dess status
+    som Somalias nationalfågel. Det finns ingen information om förekomst i Skandinavien/Nordeuropa
+    eller någon migrationsdata för arten.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains no information about the occurrence, migration
+    patterns, or seasonal distribution of Superb Starlings in Scandinavia or Northern
+    Europe. To provide accurate guidance on this species'' presence throughout the
+    year in these regions, additional sources with specific distributional and migratory
+    data would be needed.'
+image_refs:
+- role: hero
+  path: Q608635/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/26821549@N08">Dennis
+    Irrgang</a> from Deutschland(Germany)
+  source_url: https://commons.wikimedia.org/wiki/File:Lamprotornis superbus -Wilhelma
+    Zoo, Stuttgart, Germany -adult-8b.jpg
+  commons_filename: Lamprotornis superbus -Wilhelma Zoo, Stuttgart, Germany -adult-8b.jpg
+- role: secondary
+  path: Q608635/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q28147777" class="extiw" title="d:Q28147777"><span
+    title="Spanish photographer">Diego Delso</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Estornino soberbio (Lamprotornis
+    superbus), parque nacional Serengueti, Tanzania, 2024-05-26, DD 61.jpg
+  commons_filename: Estornino soberbio (Lamprotornis superbus), parque nacional Serengueti,
+    Tanzania, 2024-05-26, DD 61.jpg
+- role: secondary
+  path: Q608635/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q28147777" class="extiw" title="d:Q28147777"><span
+    title="Spanish photographer">Diego Delso</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Estornino soberbio (Lamprotornis
+    superbus), parque nacional Serengueti, Tanzania, 2024-05-26, DD 66.jpg
+  commons_filename: Estornino soberbio (Lamprotornis superbus), parque nacional Serengueti,
+    Tanzania, 2024-05-26, DD 66.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:33:25.023752+00:00'
+sources:
+  wikipedia_sv_revision: '57470464'
+  wikipedia_en_revision: '1328384836'
+  claude_model: claude-haiku-4-5-20251001

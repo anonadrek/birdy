@@ -1,0 +1,127 @@
+id: Q780476
+scientific_name: Sitta ledanti
+taxonomy:
+  family: Sittidae
+  family_sv: Nötväckor
+  genus: Sitta
+  ioc_order: Passeriformes
+names:
+  sv: Kabylnötväcka
+  en: Algerian Nuthatch
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kabylnötväcka
+
+
+    Kabylnötväcka är en liten nötväcka som upptäcktes redan 1975 och är en av världens
+    minst kända fågelarter. Det är en påtagligt lokalt förekommande fågel som finns
+    mycket begränsat utbredd i norra Afrika.
+
+
+    Arten är en typisk nötväcka med karakteristiska draghuvud- och näbbrörelser. Som
+    övriga nötväckor är det en skicklig klättrare som söker föda på stammar och grenar.
+    Arten är mycket liten och diskret i sitt beteende, vilket förklarar varför den
+    upptäcktes så sent.
+
+
+    Kabylnötväcka förekommer endast i ett mycket begränsat område i norra Afrika,
+    där det häckar lokalt. Arten är starkt hotad på grund av sitt små utbredningsområde
+    och är därför klassificerad som sårbar.'
+  en: '# Algerian Nuthatch
+
+
+    The Algerian nuthatch is a compact member of the nuthatch family, measuring just
+    11.5–12.5 cm in length. Its upperparts are distinctly bluish-grey, providing good
+    camouflage among coniferous woodland. Males are identifiable by a striking black
+    patch on the front of the crown, while females lack this marking, making the species
+    relatively straightforward to identify in the field.
+
+
+    This sedentary species has adapted its diet to seasonal availability. During summer
+    months, it actively forages for arthropods, picking them from bark and branches
+    with characteristic nuthatch agility. As winter approaches and invertebrates become
+    scarce, it switches to feeding on seeds, allowing it to remain resident year-round
+    rather than migrate.
+
+
+    The breeding season occurs in May and June, when pairs nest in tree cavities.
+    The female lays three or four eggs and incubates them alone, while both parents
+    collaborate in feeding the developing chicks. This species is endemic to mountainous
+    regions where suitable woodland habitat exists, making it a specialist bird with
+    a restricted range found only in specific upland areas with appropriate coniferous
+    forest.'
+migration:
+  sv: 'sv: Migrationsdata saknas för denna art.
+
+
+    en: Migration data unavailable for this species.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller ingen information om förekomst i Skandinavien/Nordeuropa
+    eller om migrationsmönster. Arten är endemisk för norra Algeriet i Afrika och
+    förekommer inte naturligt i nordeuropeiska regioner. Därför kan ingen faktisk
+    migrationsinformation presenteras.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Algerian Nuthatch is a sedentary species with no regular migration patterns
+    in Scandinavia or Northern Europe. In fact, this species is endemic to North Africa,
+    specifically found in the mountainous regions of Algeria (the Kabylie region),
+    and does not naturally occur in Scandinavian or Northern European territories.
+    Its range is restricted to North African forests, where it remains year-round
+    as a permanent resident rather than a migratory visitor.'
+image_refs:
+- role: hero
+  path: Q780476/hero.jpg
+  width: 2048
+  height: 1748
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sitta ledanti 180233129.jpg
+  commons_filename: Sitta ledanti 180233129.jpg
+- role: secondary
+  path: Q780476/secondary-1.jpg
+  width: 1800
+  height: 1443
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sitta ledanti 180233164.jpg
+  commons_filename: Sitta ledanti 180233164.jpg
+- role: secondary
+  path: Q780476/secondary-2.jpg
+  width: 1800
+  height: 1433
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2628203">mourad-harzallah</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sitta ledanti 177820211.jpg
+  commons_filename: Sitta ledanti 177820211.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:36:36.699936+00:00'
+sources:
+  wikipedia_sv_revision: '57590916'
+  wikipedia_en_revision: '1322459621'
+  claude_model: claude-haiku-4-5-20251001

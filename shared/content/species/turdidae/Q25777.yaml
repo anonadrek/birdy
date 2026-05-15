@@ -1,0 +1,109 @@
+id: Q25777
+scientific_name: Turdus pilaris
+taxonomy:
+  family: Turdidae
+  family_sv: Trastar
+  genus: Turdus
+  ioc_order: Passeriformes
+names:
+  sv: Björktrast
+  en: Fieldfare
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Fieldfare
+
+
+    The fieldfare is a robust thrush with distinctive plumage: a blue-grey head and
+    rump contrast sharply with its warm chestnut back, while the underparts are buff-white
+    with heavy dark spotting on the breast and flanks. In flight, the pale rump is
+    particularly striking. It breeds across northern Europe and the Palearctic in
+    open woodlands and scrub, but is strongly migratory, with populations shifting
+    southward during winter months.
+
+
+    This active, sociable thrush feeds opportunistically depending on the season.
+    During summer breeding months, it hunts molluscs, insects, and earthworms on the
+    ground. In winter, it switches to berries, grain, and seeds, often forming loose
+    flocks that move through open landscapes searching for fruiting bushes. It is
+    characteristically noisy and alert, often drawing attention to itself.
+
+
+    The fieldfare winters in large numbers across the United Kingdom, southern Europe,
+    North Africa, and the Middle East, though it rarely breeds in the British Isles.
+    Its sudden arrivals and departures mark the changing seasons in temperate regions,
+    making it a familiar winter visitor to many observers.'
+migration:
+  sv: ''
+  en: '# Fieldfare (Turdus pilaris) in Scandinavia/Northern Europe
+
+
+    The Fieldfare is a strongly migratory thrush species throughout Scandinavia and
+    Northern Europe. It breeds widely across the region during spring and summer in
+    woodland and scrub habitats. In autumn, typically from September onwards, northern
+    populations undertake substantial southward migrations, with many birds moving
+    to the United Kingdom, Southern Europe, North Africa, and the Middle East to overwinter.
+    However, significant numbers remain in Scandinavia during winter, particularly
+    in areas with abundant berry crops. Spring return migration occurs from March
+    through May as breeding birds recolonize northern territories. The species is
+    omnivorous, feeding on insects and earthworms during the breeding season and shifting
+    to berries, grain, and seeds during winter months when invertebrate prey becomes
+    scarce.'
+image_refs:
+- role: hero
+  path: Q25777/hero.jpg
+  width: 2400
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Tsyganov_Sergey&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Tsyganov Sergey (page does not exist)">Tsyganov Sergey</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus pilaris Дрозд-рябинник
+    Птенец в Санкт-Петербурге 05.jpg
+  commons_filename: Turdus pilaris Дрозд-рябинник Птенец в Санкт-Петербурге 05.jpg
+- role: secondary
+  path: Q25777/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Tsyganov_Sergey&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Tsyganov Sergey (page does not exist)">Tsyganov Sergey</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus pilaris Дрозд-рябинник
+    Птенец в Санкт-Петербурге 02.jpg
+  commons_filename: Turdus pilaris Дрозд-рябинник Птенец в Санкт-Петербурге 02.jpg
+- role: secondary
+  path: Q25777/secondary-2.jpg
+  width: 1800
+  height: 1244
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus pilaris Oulu Finland
+    2016-05-06.jpg
+  commons_filename: Turdus pilaris Oulu Finland 2016-05-06.jpg
+review_status: approved
+review_notes: "Hero = Turdus pilaris (Fieldfare / Björktrast); allmän i hela SE, koloni-häckare."
+generated_at: '2026-05-15T21:33:22.076807+00:00'
+sources:
+  wikipedia_sv_revision: '59240095'
+  wikipedia_en_revision: '1354009057'
+  claude_model: claude-haiku-4-5-20251001

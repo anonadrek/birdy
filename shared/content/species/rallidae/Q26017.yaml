@@ -1,0 +1,132 @@
+id: Q26017
+scientific_name: Crex crex
+taxonomy:
+  family: Rallidae
+  family_sv: Rallar
+  genus: Crex
+  ioc_order: Gruiformes
+names:
+  sv: Kornknarr
+  en: Corn Crake
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kornknarr
+
+
+    Kornknarren är en medelstor rall med karakteristisk färgteckning. Ovansidan är
+    sandfärgad eller gråbrun med svarta fläckar, medan undersidan är grå med rostfärgade
+    och vita tvärgående streck på kroppssidan och undergumpen. Ett särskilt igenkänningstecken
+    är de kastanjeröda partierna på vingarna. Fågeln har en kraftig näbb och ljusgrå
+    ben. Juvenila individer liknar adulta, medan dunungarna är helt svarta, vilket
+    är typiskt för rallfamiljen.
+
+
+    Kornknarren är känd för sitt mycket högljudda häckningsläte – ett kraftfullt "krek
+    krek" som hörs långt bort och som även utgör bakgrunden till dess vetenskapliga
+    namn. Arten är flygkraftig och gömmer sig ofta i vegetation, vilket gör den svår
+    att observera trots sitt hörbara läte.
+
+
+    Arten häckar utspritt över Europa och västra Asien och genomför en lång migration
+    till Afrika för att övervintra. Under häckningstiden ses kornknarren främst i
+    öppna eller halvöppna biotoper med höga växter. Även om östliga populationer tenderar
+    att vara något ljusare i färgen, delas arten inte in i några formella underarter.'
+  en: '# Corn Crake (*Crex crex*)
+
+
+    The corn crake is a medium-sized rail with distinctive plumage that combines practical
+    camouflage with striking details. Its upperparts are brownish-black with buff
+    or grey streaking, while the wings feature prominent chestnut markings. The underparts
+    are blue-grey with rust-coloured and white barring on the flanks and undertail.
+    It has a flesh-toned bill, pale brown eye, and pale grey legs. Juveniles resemble
+    adults closely, making age determination difficult in the field.
+
+
+    The species is best identified by its loud, unmistakable call—a repetitive "krek
+    krek" from which its scientific name derives. Males deliver this distinctive call,
+    particularly during breeding season, making them more detectable by ear than by
+    sight. The corn crake is slightly larger than the African crake, its closest relative
+    with which it shares African wintering grounds, and can be distinguished from
+    that species by its paler plumage and more marked facial features.
+
+
+    This is a migratory species that breeds across Europe and Asia as far east as
+    western China, moving south to Africa for winter. It favours grassland and cultivated
+    areas where its secretive, ground-dwelling habits make it challenging to observe
+    despite its vocal presence.'
+migration:
+  sv: '# Kornknarr – Förekomst i Skandinavien och Nordeuropa
+
+
+    Kornknarren är en långdistansflyttare som anländer till Skandinavien och Nordeuropa
+    under våren för häckning. Arten häckar i Europa och västra Asien, men övervintra
+    i Afrika. Kornknarren anländer vanligen till sitt häckningsområde i maj och återvänder
+    från sitt övervintringskvarter i augusti-september. Under häckningssäsongen påträffas
+    arten framför allt på fuktiga ängar, våtmarker och gräsmarker. Som långdistansflyttare
+    är kornknarren helt frånvarande från Skandinavien under vintern, då den vistas
+    i Afrika. Arten är känd för sitt karakteristiska höga ropläte under häckningssäsongen.'
+  en: '# Corn Crake (Crex crex) in Scandinavia/Northern Europe
+
+
+    The corn crake is a long-distance migrant that breeds across much of Europe, including
+    Scandinavia, during the breeding season. It arrives in spring to establish territories
+    in grasslands and cereal fields, with populations present from late April through
+    summer. As a trans-Saharan migrant, the species departs Scandinavia in late summer
+    and autumn (typically August–September) to overwinter in sub-Saharan Africa. No
+    corn crakes remain in Northern Europe during winter, making it an entirely migratory
+    species in the region.'
+image_refs:
+- role: hero
+  path: Q26017/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Crex crex, Beachy Head 1.jpg
+  commons_filename: Crex crex, Beachy Head 1.jpg
+- role: secondary
+  path: Q26017/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Crex crex, Beachy Head 2.jpg
+  commons_filename: Crex crex, Beachy Head 2.jpg
+- role: secondary
+  path: Q26017/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Crex crex, Beachy Head 3.jpg
+  commons_filename: Crex crex, Beachy Head 3.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:33:15.848734+00:00'
+sources:
+  wikipedia_sv_revision: '59190784'
+  wikipedia_en_revision: '1350781066'
+  claude_model: claude-haiku-4-5-20251001

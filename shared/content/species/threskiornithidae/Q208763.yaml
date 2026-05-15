@@ -1,0 +1,114 @@
+id: Q208763
+scientific_name: Threskiornis aethiopicus
+taxonomy:
+  family: Threskiornithidae
+  family_sv: Ibisar
+  genus: Threskiornis
+  ioc_order: Pelecaniformes
+names:
+  sv: Helig ibis
+  en: African Sacred Ibis
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Helig ibis
+
+
+    Helig ibis är en art inom familjen ibisar och tillhör ordningen pelikanfåglar.
+    Det är en stor vadare med långt, nedåtböjt näbb och vita fjädrar på huvuddelen
+    av kroppen, med svarta fjädrar på vingarna och stjärten. Arten förekommer huvudsakligen
+    i Afrika söder om Sahara, där den hittas i våtmarker, sjöar och flodkanter.
+
+
+    Arten är gregär och uppträder ofta i flockar, särskilt under matning och på sovplatser.
+    Det födosöker genom att staka omkring i grunt vatten eller på land och söker föda
+    som små fiskar, kräftdjur, insekter och andra smådjur. Arten är anpassad till
+    olika miljöer och kan ses både i naturliga och urbana områden.
+
+
+    En betydande utveckling är att fåglar som rymt från fångenskap har etablerat frilevande
+    populationer i delar av Europa. Dessa populationer har vuxit under senare år och
+    utgör en potentiell invaderande art på vissa platser.'
+  en: '# African Sacred Ibis
+
+
+    The African sacred ibis is a wading bird belonging to the ibis family. It inhabits
+    much of Africa, with small populations also found in parts of Iraq, Iran, and
+    Kuwait. The species holds significant historical importance, having been revered
+    in ancient Egyptian religion where it was associated with the deity Thoth. Notably,
+    the species is now extirpated from Egypt itself.'
+migration:
+  sv: '# Helig ibis - Förekomst i Norden
+
+
+    Helig ibis förekommer inte naturligt i Scandinavia eller Nordeuropa. Arten är
+    hemhörig i Afrika söder om Sahara. De europeiska förekomster som finns dokumenteras
+    från rymmade fåglar från fångenskap, och dessa populationer är etablerade i södra
+    och västra Europa, långt från Skandinavien. Arten är därför inte en relevant migrant
+    eller övervintrare för nordeuropeiska fågeltäckare.'
+  en: '# African Sacred Ibis in Northern Europe
+
+
+    The African Sacred Ibis does not naturally occur in Scandinavia or Northern Europe.
+    This species is native to Africa and the Middle East, with its range limited to
+    parts of Africa, Iraq, Iran, and Kuwait. While the species has established invasive
+    populations in some parts of Europe (notably in France and Italy) through escaped
+    or released captive birds, it does not have a natural presence in Scandinavian
+    or Northern European regions and therefore does not exhibit migration patterns
+    relevant to these areas.'
+image_refs:
+- role: hero
+  path: Q208763/hero.jpg
+  width: 2400
+  height: 1599
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:African sacred ibis (Threskiornis
+    aethiopicus) in flight.jpg
+  commons_filename: African sacred ibis (Threskiornis aethiopicus) in flight.jpg
+- role: secondary
+  path: Q208763/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Vassil" title="User:Vassil">Vassil</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Threskiornis aethiopicus Ile
+    de Ré 25 04 2012.jpg
+  commons_filename: Threskiornis aethiopicus Ile de Ré 25 04 2012.jpg
+- role: secondary
+  path: Q208763/secondary-2.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:African Sacred Ibis, Threskiornis
+    aethiopicus, at Pilanesberg National Park, South Africa (45081680281).jpg
+  commons_filename: African Sacred Ibis, Threskiornis aethiopicus, at Pilanesberg
+    National Park, South Africa (45081680281).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:34:40.719429+00:00'
+sources:
+  wikipedia_sv_revision: '59201786'
+  wikipedia_en_revision: '1340263017'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,137 @@
+id: Q244319
+scientific_name: Microcarbo pygmaeus
+taxonomy:
+  family: Phalacrocoracidae
+  family_sv: Skarvar
+  genus: Microcarbo
+  ioc_order: Suliformes
+names:
+  sv: Dvärgskarv
+  en: Pygmy Cormorant
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dvärgskarv
+
+
+    Dvärgskarven är världens minsta skarvart och utgör en fascinerande raritet för
+    svenska fågelskådare. Som namnet antyder är den betydligt mindre än sina närbesläktade
+    arter, med en karakteristisk långt sträckt kropp, lång stjärt och kort näbb. Den
+    mörka fjäderdräkten och den långsträckta formen gör den relativt lätt att identifiera
+    när den väl observeras.
+
+
+    Arten är främst hemmastadd i sydöstra Europa och mellan-Asien, där den förekommer
+    vid större sjöar och floder. Den är anpassad till livet i vatten och födosöker
+    genom dykning, ofta i mindre grupper. Dvärgskarven är huvudsakligen stannfågel
+    eller flyttar endast på kort håll, och ses mycket sällan långt från sitt huvudsakliga
+    utbredningsområde.
+
+
+    För svenska birdwatchers är arten extremt sällsynt – endast två verifierade fynd
+    är dokumenterade, från 1913 respektive 2024. Detta gör varje observation av dvärgskarv
+    till en extraordinär händelse. Arten klassificeras av IUCN som livskraftig med
+    stabil befolkningstrend.'
+  en: '# Pygmy Cormorant
+
+
+    The pygmy cormorant is the smallest member of the cormorant family, a diving seabird
+    found in south-eastern Europe and south-western Asia. It is partially migratory,
+    with populations from the north moving further south during winter, though most
+    remain within their breeding range. The species is occasionally spotted as a rare
+    vagrant in western Europe, though such sightings remain uncommon.
+
+
+    Like other cormorants, it is an excellent diver adapted for pursuing fish underwater.
+    It frequents freshwater lakes, rivers, and coastal wetlands where it hunts for
+    small fish. The pygmy cormorant is generally gregarious, often seen in small groups
+    or flocks, particularly during migration and winter months.
+
+
+    Its compact size and dark plumage distinguish it from larger cormorant species.
+    Being a specialized diving predator, it spends much of its time in water, emerging
+    to rest on rocks or vegetation. Its secretive nature and preference for inland
+    waterways make it less conspicuous than some of its larger relatives, though patient
+    observers in suitable habitats may encounter breeding colonies or wintering groups.'
+migration:
+  sv: '# Dvärgskarv – förekomst i Skandinavien/Nordeuropa
+
+
+    Dvärgskarven är en extremt sällsynt gäst i Skandinavien och Nordeuropa. Arten
+    är hemma i sydöstra Europa och förekommer vanligen österna till Kazakstan. Den
+    uppträder mycket sällsynt norr om sitt normala utbredningsområde. I Sverige finns
+    endast två dokumenterade fynd – ett från 1913 och ett från 2024 – vilket visar
+    att arten är en ytterst ovanlig vagabund i våra nordiska områden. Det förekommer
+    ingen regelbunden migration till Skandinavien, utan iakttagelserna verkar vara
+    resultat av tillfälliga spridningar långt bortom artens etablerade område.'
+  en: '# Pygmy Cormorant in Northern Europe
+
+
+    The Pygmy Cormorant is extremely rare in Scandinavia and Northern Europe, occurring
+    only as a vagrant to western European waters. This species breeds primarily in
+    south-eastern Europe and south-western Asia, well outside the Nordic region. While
+    the species exhibits partial migratory behaviour, with northern breeding populations
+    moving south during winter, these movements occur within its core range in southern
+    and south-eastern Europe. There are no regular seasonal occurrences in Scandinavia
+    or Northern Europe, making this a highly exceptional sighting if encountered in
+    these regions.'
+image_refs:
+- role: hero
+  path: Q244319/hero.jpg
+  width: 2190
+  height: 1460
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Cormorant pygmée (Microcarbo
+    pygmaeus), Etang de Val Duchesse, Bruxelles (49372116488).jpg
+  commons_filename: Cormorant pygmée (Microcarbo pygmaeus), Etang de Val Duchesse,
+    Bruxelles (49372116488).jpg
+- role: secondary
+  path: Q244319/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/83657186@N05">Pierre-Marie
+    Epiney</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cormoran pygmée Microcarbo pygmaeus
+    - Pygmy Cormorant DSC 4084 (53222079885).jpg
+  commons_filename: Cormoran pygmée Microcarbo pygmaeus - Pygmy Cormorant DSC 4084
+    (53222079885).jpg
+- role: secondary
+  path: Q244319/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/83657186@N05">Pierre-Marie
+    Epiney</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Cormoran pygmée Microcarbo pygmaeus
+    - Pygmy Cormorant DSC 4104 (53220709282).jpg
+  commons_filename: Cormoran pygmée Microcarbo pygmaeus - Pygmy Cormorant DSC 4104
+    (53220709282).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:33:58.189495+00:00'
+sources:
+  wikipedia_sv_revision: '55900869'
+  wikipedia_en_revision: '1337424963'
+  claude_model: claude-haiku-4-5-20251001

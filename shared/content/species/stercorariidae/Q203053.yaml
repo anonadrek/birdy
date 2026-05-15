@@ -1,0 +1,138 @@
+id: Q203053
+scientific_name: Stercorarius parasiticus
+taxonomy:
+  family: Stercorariidae
+  family_sv: Labbar
+  genus: Stercorarius
+  ioc_order: Charadriiformes
+names:
+  sv: Kustlabb
+  en: Parasitic Jaeger
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kustlabb
+
+
+    Kustlabb är en havslevande rovfågel som tillhör familjen labbar. Den har en slank,
+    spetsvingad skepnad som påminner om en mörk fiskmås, och karakteriseras av snabb,
+    falklik flykt. Arten förekommer i två färgformer – en mörkare och en ljusare –
+    och är väl anpassad för livet på öppet hav.
+
+
+    Arten häckar cirkumpolärt på tundra och karga klippiga öar i norra delen av norra
+    halvklotet. Under vinterhalvåret migrerar den långväga för att tillbringa tiden
+    pelagiskt, framför allt på södra halvklotet. Kustlabb är känd för sitt karakteristiska
+    beteende att leva av kleptoparasitism – det vill säga att förfölja andra fåglar
+    som måsar och tärnor för att tvinga dem att släppa sitt byte eller spy upp det,
+    vilket labben sedan fångar i flykten.
+
+
+    Arten har ett mycket stort utbredningsområde och en stor global population, vilket
+    gör den globalt stabil enligt bevarandestatus (LC). Trots lokala populationsnedgångar
+    bedöms arten inte vara hotad.'
+  en: '# Parasitic Jaeger
+
+
+    The parasitic jaeger is a seabird renowned for its aggressive feeding behaviour,
+    which defines its common name. A skilled aerial pirate, it pursues other seabirds
+    relentlessly, forcing them to drop or regurgitate their freshly caught fish—a
+    hunting strategy called kleptoparasitism that becomes especially important during
+    migration and winter months. This dark, compact skua is built for speed and manoeuvrability,
+    with pointed wings and a streamlined body that enable its characteristic hunting
+    dives and chases.
+
+
+    Parasitic jaegers breed in open, northern habitats including tundra and moorland
+    during summer months, often returning to the same territories year after year.
+    They are highly migratory, wintering across the southern hemisphere where food
+    is more abundant. Their calls are harsh and gull-like, particularly during the
+    breeding season when they become increasingly territorial and aggressive around
+    their nesting sites.
+
+
+    On the water and in flight, these jaegers display a dark plumage, though some
+    individuals show paler variations. They are typically seen on open seas and coastal
+    waters, where they hunt either by pursuing other seabirds or by catching fish
+    directly from the water surface. Their presence is often announced by the commotion
+    they create among tern and gull colonies.'
+migration:
+  sv: '# Kustlabb i Skandinavien och Nordeuropa
+
+
+    Kustlabben är en långflyttare som häckar cirkumpolärt på tundra och karga klippiga
+    öar i norra delen av norra halvklotet. Under häckningssäsongen förekommer arten
+    på Skandinaviens och Nordeuropas nordligaste delar. Efter häckningen genomför
+    arten en omfattande migration söderut och tillbringar vinterhalvåret pelagiskt,
+    främst på södra halvklotet. Arten återvänder till häckningsområdena under våren
+    för att reproducera sig, vilket gör den till en klassisk långflyttare mellan de
+    två hemisfärerna.'
+  en: '# Parasitic Jaeger (Kustlabb) in Northern Europe
+
+
+    The Parasitic Jaeger is a highly migratory seabird that breeds across Northern
+    Fennoscandia, Scotland, Iceland, and Greenland during the breeding season. These
+    birds arrive at their northern breeding grounds in late spring and establish territories
+    before departing in late summer and early autumn. Following breeding, the entire
+    northern population undertakes a remarkable trans-equatorial migration, wintering
+    throughout the southern hemisphere where they exploit other seabirds for food
+    through kleptoparasitism. They return to Scandinavian and northern European breeding
+    areas in spring, typically from May onwards, completing an annual cycle that spans
+    both polar regions.'
+image_refs:
+- role: hero
+  path: Q203053/hero.jpg
+  width: 2400
+  height: 1506
+  license: Public domain
+  author: Department of the Interior. National Park Service. Alaska Region. (12/2/1980
+    - 5/1995)
+  source_url: https://commons.wikimedia.org/wiki/File:Parasitic Jaeger Stercorarius
+    parasiticus and gull (light bird) - DPLA - 7e23f173fc416b5022eb78030ec3f392.jpg
+  commons_filename: Parasitic Jaeger Stercorarius parasiticus and gull (light bird)
+    - DPLA - 7e23f173fc416b5022eb78030ec3f392.jpg
+- role: secondary
+  path: Q203053/secondary-1.jpg
+  width: 1800
+  height: 1237
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Kleine jager - parasitic jaeger
+    - Stercorarius parasiticus.jpg
+  commons_filename: Kleine jager - parasitic jaeger - Stercorarius parasiticus.jpg
+- role: secondary
+  path: Q203053/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/41502344@N02">Billy
+    Lindblom</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Arctic Skua (Stercorarius parasiticus).jpg
+  commons_filename: Arctic Skua (Stercorarius parasiticus).jpg
+review_status: approved
+review_notes: "Hero = Stercorarius parasiticus (Parasitic Jaeger / Labb); allmän kustfågel under flytt."
+generated_at: '2026-05-15T21:35:07.023891+00:00'
+sources:
+  wikipedia_sv_revision: '59225276'
+  wikipedia_en_revision: '1348759277'
+  claude_model: claude-haiku-4-5-20251001

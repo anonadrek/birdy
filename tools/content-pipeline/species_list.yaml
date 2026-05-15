@@ -571,6 +571,7 @@
   ioc_order: Podicipediformes
   common_en: Great Crested Grebe
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q185183
   scientific_name: Podiceps nigricollis
   family: Podicipedidae
@@ -835,6 +836,7 @@
   ioc_order: Gruiformes
   common_en: Water Rail
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26017
   scientific_name: Crex crex
   family: Rallidae
@@ -853,12 +855,14 @@
   ioc_order: Gruiformes
   common_en: Common Moorhen
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25376
   scientific_name: Fulica atra
   family: Rallidae
   ioc_order: Gruiformes
   common_en: Eurasian Coot
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q748033
   scientific_name: Fulica cristata
   family: Rallidae
@@ -1309,6 +1313,7 @@
   ioc_order: Charadriiformes
   common_en: Parasitic Jaeger
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q216921
   scientific_name: Stercorarius longicaudus
   family: Stercorariidae
@@ -1886,6 +1891,7 @@
   ioc_order: Suliformes
   common_en: Great Cormorant
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q632399
   scientific_name: Phalacrocorax nigrogularis
   family: Phalacrocoracidae
@@ -3944,6 +3950,7 @@
   ioc_order: Passeriformes
   common_en: Eurasian Nuthatch
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q193593
   scientific_name: Certhia familiaris
   family: Certhiidae
@@ -3963,6 +3970,7 @@
   ioc_order: Passeriformes
   common_en: Eurasian Wren
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q836833
   scientific_name: Sturnus unicolor
   family: Sturnidae
@@ -3975,6 +3983,7 @@
   ioc_order: Passeriformes
   common_en: Common Starling
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q301731
   scientific_name: Creatophora cinerea
   family: Sturnidae
@@ -4060,12 +4069,14 @@
   ioc_order: Passeriformes
   common_en: Mistle Thrush
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26349
   scientific_name: Turdus philomelos
   family: Turdidae
   ioc_order: Passeriformes
   common_en: Song Thrush
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q933567
   scientific_name: Turdus menachensis
   family: Turdidae
@@ -4078,6 +4089,7 @@
   ioc_order: Passeriformes
   common_en: Redwing
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25234
   scientific_name: Turdus merula
   family: Turdidae
@@ -4086,12 +4098,14 @@
   common_sv: Koltrast
   common_en: Common Blackbird
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q25777
   scientific_name: Turdus pilaris
   family: Turdidae
   ioc_order: Passeriformes
   common_en: Fieldfare
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q26641
   scientific_name: Turdus torquatus
   family: Turdidae

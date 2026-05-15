@@ -1,0 +1,128 @@
+id: Q25422
+scientific_name: Podiceps cristatus
+taxonomy:
+  family: Podicipedidae
+  family_sv: Doppingar
+  genus: Podiceps
+  ioc_order: Podicipediformes
+names:
+  sv: Skäggdopping
+  en: Great Crested Grebe
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skäggdopping
+
+
+    Skäggdopping är en elegant vattenlevande fågel som tillhör familjen doppingar.
+    Under häckningstiden bär hannen och honan påfallande huvudprydnader - långt svart
+    hår på huvudet och rostfärgade "öron" på sidorna av nacken. Kroppen är långsträckt
+    och silvervit undertill. Utanför häckningstiden är färgteckningen mer diskret
+    grå och vit.
+
+
+    Det är en duktig dykare som förvärvar sitt föda genom att dyka efter små fiskar.
+    På vattnet är fågeln elegant och rörlig, men på land rör det sig opraktiskt då
+    benen är placerade långt bak på kroppen. Skäggdopping håller ofta ett visst avstånd
+    till människor och är ganska försiktig.
+
+
+    Arten häckar över stora delar av Europa och Centralasien, men förekommer även
+    lokalt i Afrika, Australien och på Nya Zeeland. De flesta populationer är kortflyttande
+    och söker sig mellan olika vattenbiotoper under året.'
+  en: '# Great Crested Grebe
+
+
+    The great crested grebe is an elegant water bird distinguished by its striking
+    plumage of black, orange-brown, and white markings. During breeding season, it
+    develops distinctive head crests and ear tufts that give the species its common
+    name. The bird''s streamlined body is perfectly adapted for its aquatic lifestyle,
+    with legs positioned far back on its body for efficient diving and swimming.
+
+
+    This grebe is renowned for its elaborate courtship displays, which involve synchronised
+    dances and intricate movements performed by paired birds. These spectacular interactions
+    are central to the species'' breeding behaviour and help strengthen pair bonds.
+    The bird is primarily aquatic, spending much of its time on water hunting for
+    small fish and aquatic invertebrates.
+
+
+    The great crested grebe inhabits freshwater lakes, reservoirs, and larger ponds
+    with adequate vegetation and open water for diving and displaying. It is found
+    across temperate regions of Europe, Asia, Africa, and Oceania, with populations
+    varying seasonally as some birds migrate to coastal waters during winter months.'
+migration:
+  sv: Skäggdopping är en kortflyttande art som häckar över stora delar av Europa och
+    Centralasien. Merparten av populationen är flyttfåglar, men många individer är
+    kortflyttande och övervintrar relativt nära häckningsområdena. I Skandinavien
+    anländer skäggdoppingar vanligtvis på våren för att häcka, medan många fåglar
+    drar bort på hösten. Arten är dock känd för att en del individer kan stanna kvar
+    även under vintermånaderna på istäckta eller öppna vattendrag, särskilt längre
+    söderut i sitt utbredningsområde.
+  en: '# Great Crested Grebe Migration in Northern Europe
+
+
+    The Great Crested Grebe is a summer breeding visitor to Scandinavian lakes and
+    reservoirs, arriving in April and May as ice melts. Birds breed throughout the
+    region during summer months, constructing floating nests on larger freshwater
+    bodies. In autumn, starting from September, populations begin their southward
+    migration, with most birds departing by November to winter in coastal waters of
+    western Europe and the Mediterranean. Some individuals may remain in ice-free
+    areas of southern Scandinavia during mild winters, but the majority abandon northern
+    breeding grounds before waters freeze. Return migration peaks in March and April
+    when breeding lakes become accessible again.'
+image_refs:
+- role: hero
+  path: Q25422/hero.jpg
+  width: 2400
+  height: 1661
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mattivirtala (page does not exist)">Mattivirtala</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Podiceps cristatus Oulu Finland
+    2021-05-03.jpg
+  commons_filename: Podiceps cristatus Oulu Finland 2021-05-03.jpg
+- role: secondary
+  path: Q25422/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a href="//www.flickr.com/people/97469566@N00" class="extiw" title="flickruser:97469566@N00">Bengt
+    Nyman</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Podiceps cristatus 2 2013.jpg
+  commons_filename: Podiceps cristatus 2 2013.jpg
+- role: secondary
+  path: Q25422/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Podiceps cristatus George-Valbon.jpg
+  commons_filename: Podiceps cristatus George-Valbon.jpg
+review_status: approved
+review_notes: "Hero = Podiceps cristatus (Great Crested Grebe / Skäggdopping); allmän vid sjöar i hela SE."
+generated_at: '2026-05-15T21:37:13.410532+00:00'
+sources:
+  wikipedia_sv_revision: '56064563'
+  wikipedia_en_revision: '1344275036'
+  claude_model: claude-haiku-4-5-20251001

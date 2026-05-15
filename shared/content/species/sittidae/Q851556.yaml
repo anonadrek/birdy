@@ -1,0 +1,107 @@
+id: Q851556
+scientific_name: Sitta krueperi
+taxonomy:
+  family: Sittidae
+  family_sv: Nötväckor
+  genus: Sitta
+  ioc_order: Passeriformes
+names:
+  sv: Krüpers nötväcka
+  en: Krüper’s Nuthatch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Krüper''s Nuthatch
+
+
+    Krüper''s nuthatch is a small nuthatch, about 12.5 centimetres long, with distinctive
+    plumage. It displays blue-grey upperparts, with a black crown on the front half
+    of the head (less marked in females). A striking white stripe runs above the eye,
+    contrasting with a dark eyestripe below. The underparts are blue-grey in males
+    and buff-grey in females, with a characteristic large, crescent-shaped rufous
+    patch across the breast.
+
+
+    The species is primarily insectivorous during summer months, but shifts its diet
+    to seeds in autumn and winter, showing a particular preference for pine seeds.
+    It breeds between March and May, nesting in tree cavities. The female incubates
+    a clutch of five to seven eggs while the male provides food. Both parents cooperate
+    in feeding the fledglings once they hatch.
+
+
+    Krüper''s nuthatch inhabits coniferous and mixed forests across its range, where
+    it forages along tree trunks and branches in typical nuthatch fashion. It remains
+    relatively inconspicuous despite its striking markings, often going unnoticed
+    as it works methodically through the canopy searching for food.'
+migration:
+  sv: ''
+  en: '# Krüper''s Nuthatch in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    Krüper''s Nuthatch is not a regular resident of Scandinavia or Northern Europe.
+    The species'' breeding range is centered in the Mediterranean region and parts
+    of western Asia, with populations found in countries such as Turkey, Greece, and
+    the Levant. There are no established populations in Scandinavia or Northern Europe,
+    and the species does not occur as a migrant or vagrant in these regions during
+    any season of the year.'
+image_refs:
+- role: hero
+  path: Q851556/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turkse boomklever - Krüper's
+    Nuthatch - Sitta krueperi.jpg
+  commons_filename: Turkse boomklever - Krüper's Nuthatch - Sitta krueperi.jpg
+- role: secondary
+  path: Q851556/secondary-1.jpg
+  width: 1800
+  height: 1284
+  license: CC BY 2.0
+  author: Frank Vassen
+  source_url: https://commons.wikimedia.org/wiki/File:Krüper's Nuthatch (Sitta krueperi),
+    Achladeri Forest, Lesvos, Greece, 16.04.2015 (2).jpg
+  commons_filename: Krüper's Nuthatch (Sitta krueperi), Achladeri Forest, Lesvos,
+    Greece, 16.04.2015 (2).jpg
+- role: secondary
+  path: Q851556/secondary-2.jpg
+  width: 1800
+  height: 1320
+  license: CC BY 2.0
+  author: Frank Vassen
+  source_url: https://commons.wikimedia.org/wiki/File:Krüper's Nuthatch (Sitta krueperi),
+    Achladeri Forest, Lesvos, Greece, 16.04.2015 (1).jpg
+  commons_filename: Krüper's Nuthatch (Sitta krueperi), Achladeri Forest, Lesvos,
+    Greece, 16.04.2015 (1).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:35:46.691021+00:00'
+sources:
+  wikipedia_sv_revision: '57590769'
+  wikipedia_en_revision: '1352390499'
+  claude_model: claude-haiku-4-5-20251001

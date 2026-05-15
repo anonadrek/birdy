@@ -1,0 +1,127 @@
+id: Q27075597
+scientific_name: Gracupica contra
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Gracupica
+  ioc_order: Passeriformes
+names:
+  sv: Svartvit stare
+  en: Indian Pied Myna
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartvit stare
+
+
+    Svartvit stare är en asiatisk stare inom familjen starar. Arten förekommer huvudsakligen
+    i Sydasien, särskilt i Indien och Myanmar. Historiskt räknades östligare populationer
+    till samma art, men dessa utgör numera egna arter – thaistare och jallastare.
+    Svartvit stare har också introducerats till flera andra regioner, däribland Arabiska
+    halvön, Taiwan och Japan, där den nu är etablerad.
+
+
+    Denna stare är en fågel som är väl anpassad till både naturliga och människopåverkade
+    miljöer. Det är en gregär art som ofta ses i flockar, speciellt under utanför
+    häckningstiden. Arten är relativt allmän inom sitt naturliga utbredningsområde
+    och har visat god anpassningsförmåga till sitt införda utbredningsområde.
+
+
+    *Baserat på information från Wikipedia är detaljerna om utseende, röst och beteende
+    begränsade i källtexten.*'
+  en: '# Indian Pied Myna
+
+
+    The Indian pied myna is a starling found across the Indian subcontinent. It displays
+    striking black and white plumage that distinguishes it from related species. This
+    bird typically moves about in small flocks rather than alone, showing a preference
+    for open terrain on plains and low foothills where it forages for food.
+
+
+    The species readily adapts to human settlements and is frequently observed in
+    and around cities and villages. However, it is notably more cautious than the
+    common myna and does not venture as boldly into urban environments. It produces
+    a variety of calls characterized by liquid notes, contributing to the soundscape
+    of its habitat.
+
+
+    The Indian pied myna occupies a similar ecological niche to other mynas across
+    its range but maintains distinct behavioral differences. Its association with
+    open country and settlement edges, combined with its gregarious nature and distinctive
+    vocalizations, makes it a recognizable member of the starling family throughout
+    the Indian subcontinent.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller ingen information om hur arten förekommer
+    i Skandinavien eller Nordeuropa, eller om dess migrationsmönster. Arten beskrivs
+    endast som förekommande i Sydasien (Indien och Myanmar) och införd till andra
+    asiatiska regioner samt Arabiska halvön. Det finns ingen dokumentation om att
+    arten naturligt förekommer i eller migrerar till Skandinavien eller Nordeuropa.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides no information about the occurrence of Gracupica contra
+    in Scandinavia or Northern Europe, nor does it contain any data regarding migration
+    patterns, seasonal movements, or presence throughout the year in these regions.
+    The species is described solely as being found in the Indian subcontinent, making
+    it outside the geographic scope of Northern European bird guides.'
+image_refs:
+- role: hero
+  path: Q27075597/hero.jpg
+  width: 2400
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Faisal_Hossain_bsl&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Faisal Hossain bsl (page does not exist)">Faisal Hossain
+    bsl</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pied Myna Gracupica contra,
+    Bagerhat, Bangladesh.jpg
+  commons_filename: Pied Myna Gracupica contra, Bagerhat, Bangladesh.jpg
+- role: secondary
+  path: Q27075597/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Indian Pied Starling Gracupica
+    contra DSCN3451 (2).jpg
+  commons_filename: Indian Pied Starling Gracupica contra DSCN3451 (2).jpg
+- role: secondary
+  path: Q27075597/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Indian Pied Starling Gracupica
+    contra DSCN3451 (3).jpg
+  commons_filename: Indian Pied Starling Gracupica contra DSCN3451 (3).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:32:43.682713+00:00'
+sources:
+  wikipedia_sv_revision: '55739894'
+  wikipedia_en_revision: '1314687213'
+  claude_model: claude-haiku-4-5-20251001

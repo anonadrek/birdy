@@ -1,0 +1,70 @@
+id: Q933567
+scientific_name: Turdus menachensis
+taxonomy:
+  family: Turdidae
+  family_sv: Trastar
+  genus: Turdus
+  ioc_order: Passeriformes
+names:
+  sv: Jementrast
+  en: Yemen Thrush
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Yemen Thrush
+
+
+    The Yemen thrush is a member of the thrush family found exclusively in the Sarawat
+    Mountains of the western Arabian Peninsula. This species is adapted to mountainous
+    terrain where it inhabits highland forests and scrubland habitats.
+
+
+    Unfortunately, detailed information about the Yemen thrush''s appearance, behaviour,
+    and vocalizations remains limited in readily available sources. Like other thrushes,
+    it likely forages on the ground for invertebrates and berries, but specific feeding
+    habits and social behaviour require further study. Its call and song characteristics
+    are not well documented in popular ornithological literature.
+
+
+    The species'' range is restricted to high-altitude mountain regions, making it
+    a bird of considerable conservation interest due to its limited distribution.
+    Birdwatchers visiting appropriate highland habitats in its native range may encounter
+    this understudied species, though it remains relatively little-known compared
+    to more widespread thrush species.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Yemen Thrush is endemic to the Sarawat Mountains of the western Arabian Peninsula
+    and does not occur naturally in Scandinavia or Northern Europe. Therefore, no
+    information regarding its presence, migration patterns, or seasonal occurrence
+    in these regions can be provided.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:37:14.727370+00:00'
+sources:
+  wikipedia_sv_revision: '55624717'
+  wikipedia_en_revision: '1315335457'
+  claude_model: claude-haiku-4-5-20251001

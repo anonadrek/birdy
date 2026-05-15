@@ -1,0 +1,111 @@
+id: Q1088602
+scientific_name: Acridotheres ginginianus
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Acridotheres
+  ioc_order: Passeriformes
+names:
+  sv: Brinkmajna
+  en: Bank Myna
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brinkmajna
+
+
+    Brinkmajna är en sydasiatisk starl som har etablerat sig även i Kuwait. Fågeln
+    har fått sitt namn från sin karakteristiska häckningsvana – den bygger sina bon
+    i flodnära sandbankar, där den gräver hålor för sitt boende.
+
+
+    Arten tillhör stlarfamiljen och förekommer främst i låglänta områden nära vattendrag.
+    Brinkmajnan är anpassad för ett liv längs floder och bäckar, där den hittar både
+    föda och lämpliga häckningsplatser i sandiga sluttningar. Arten är en del av de
+    många starar som finns i sydasien och representerar en intressant exempel på en
+    fågel som är helt beroende av specifika habitattyper för sin reproduktion.'
+  en: '# Bank Myna
+
+
+    The bank myna is a small starling found across the northern plains of South Asia,
+    with its range gradually extending southwards. It closely resembles the common
+    myna but is noticeably smaller and greyer on the underside. The most distinctive
+    feature is the brick-red naked skin patch behind its eyes, contrasting sharply
+    with the yellow patch found on the common myna. It also shows a slight tuft of
+    feathers, giving it a subtle resemblance to the jungle myna.
+
+
+    Bank mynas are highly social birds, typically seen in flocks on open plains, often
+    within towns and cities where human settlements provide suitable habitats. They
+    are most famous for their remarkable nesting behaviour: they excavate burrows
+    into the earthen banks of rivers and breed together in large colonies. This colonial
+    nesting habit is the origin of their common name.
+
+
+    The species remains relatively common across its range in northern and central
+    India, making it a familiar sight to birdwatchers in suitable habitat.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (Källtexten innehåller ingen information om migration, övervintrering eller säsongsförekomst
+    i Skandinavien eller Nordeuropa. Brinkmajna är en sydasiatisk art vars utbredning
+    begränsas till Södra Asien och Kuwait, och den förekommer inte naturligt i Skandinavien
+    eller Nordeuropa.)'
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q1088602/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:PJeganathan" title="User:PJeganathan">PJeganathan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bank myna (Acridotheres ginginianus)
+    from keoladeo national park 2 JEG3182.jpg
+  commons_filename: Bank myna (Acridotheres ginginianus) from keoladeo national park
+    2 JEG3182.jpg
+- role: secondary
+  path: Q1088602/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:D_Neethidoss" title="User:D Neethidoss">D
+    Neethidoss</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bank myna Acridotheres ginginianus.jpg
+  commons_filename: Bank myna Acridotheres ginginianus.jpg
+- role: secondary
+  path: Q1088602/secondary-2.jpg
+  width: 1800
+  height: 1197
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jakubhal" title="User:Jakubhal">Jakub
+    Hałun</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20191215 Acridotheres ginginianus,
+    Pushkar 1405 8801 DxO.jpg
+  commons_filename: 20191215 Acridotheres ginginianus, Pushkar 1405 8801 DxO.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:34:29.644561+00:00'
+sources:
+  wikipedia_sv_revision: '55520208'
+  wikipedia_en_revision: '1338800118'
+  claude_model: claude-haiku-4-5-20251001

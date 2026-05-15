@@ -877,3 +877,58 @@ species:
     description_accept_missing: [sv, en]  # Levaillant's Woodpecker — sparse on both
   Q946681:
     description_accept_missing: [sv]  # African Grey Woodpecker — sparse svwiki
+  # Bundle 5 (2026-05-15): sturnidae+rallidae+turdidae+sittidae+phalacrocoracidae+podicipedidae+threskiornithidae+stercorariidae+troglodytidae
+  Q59492:
+    description_accept_missing: [sv]  # Reed Cormorant — sparse svwiki
+  Q632399:
+    allow_missing_images: true  # Socotra Cormorant — no suitable Commons images
+  Q187902:
+    description_accept_missing: [sv]  # Purple Swamphen — sparse svwiki
+  Q237670:
+    description_accept_missing: [en]  # Baillon's Crake — sparse enwiki
+  Q270680:
+    description_accept_missing: [sv]  # Little Crake — sparse svwiki
+  Q748033:
+    description_accept_missing: [sv, en]  # Red-knobbed Coot — sparse on both
+  Q862825:
+    description_accept_missing: [sv]  # White-breasted Waterhen — sparse svwiki
+  Q180051:
+    description_accept_missing: [sv]  # Corsican Nuthatch — sparse svwiki (69w)
+  Q749701:
+    description_accept_missing: [sv]  # Western Rock Nuthatch — sparse svwiki
+  Q851556:
+    description_accept_missing: [sv]  # Krüper's Nuthatch — sparse svwiki
+  Q928415:
+    description_accept_missing: [sv]  # Eastern Rock Nuthatch — sparse svwiki
+  Q207760:
+    description_accept_missing: [sv]  # Great Skua — sparse svwiki
+  Q216921:
+    description_accept_missing: [en]  # Long-tailed Jaeger — sparse enwiki
+  Q1076571:
+    description_accept_missing: [sv]  # Brahminy Starling — sparse svwiki
+  Q31874135:
+    description_accept_missing: [en]
+    allow_missing_images: true  # Vinous-breasted Myna — sparse enwiki + no images
+  Q916098:
+    description_accept_missing: [sv, en]  # Tristram's Starling — sparse on both
+  Q171360:
+    description_accept_missing: [sv]  # Eurasian Spoonbill — sparse svwiki
+  Q178811:
+    description_accept_missing: [sv]  # Glossy Ibis — sparse svwiki
+  Q208763:
+    description_accept_missing: [en]  # African Sacred Ibis — sparse enwiki (64w)
+  Q512348:
+    description_accept_missing: [sv]  # African Spoonbill — sparse svwiki
+  Q178942:
+    description_accept_missing: [sv]  # Mistle Thrush (Dubbeltrast) — sparse svwiki (allmän SE)
+  Q184825:
+    description_accept_missing: [sv]  # Redwing (Rödvingetrast) — sparse svwiki (allmän SE)
+  Q25777:
+    description_accept_missing: [sv]  # Fieldfare (Björktrast) — sparse svwiki (allmän SE)
+  Q80780:
+    description_accept_missing: [sv]  # Black-throated Thrush — sparse svwiki
+  Q933567:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Yemen Thrush — sparse svwiki + no images
+  Q949662:
+    description_accept_missing: [en]  # White's Thrush — sparse enwiki

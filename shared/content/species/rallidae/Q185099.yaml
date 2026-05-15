@@ -1,0 +1,142 @@
+id: Q185099
+scientific_name: Rallus aquaticus
+taxonomy:
+  family: Rallidae
+  family_sv: Rallar
+  genus: Rallus
+  ioc_order: Gruiformes
+names:
+  sv: Vattenrall
+  en: Water Rail
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vattenrall
+
+
+    Vattenrall är en medlem av rallfamiljen som förekommer i våtmarker över stora
+    delar av Europa, samt i västra Asien och Afrika. Fågeln är anpassad för sitt miljöbeslut
+    genom sitt långsmala körper som gör det möjligt för den att manövreras genom täta
+    vassruggar där den oftast håller sig gömd. Arten är livskraftig och trots att
+    den klassificerades tillsammans med sibirisk rall historiskt, urskiljs denna östliga
+    population numera som egen art.
+
+
+    Vattenrallen är en blygsam fågel som föredrar att hålla sig väl dold i täta växtligheter
+    kring våtmarkerna. För den som är intresserad av att observera arten krävs tålamod
+    och kunskap om dess typiska habitat. Arten är utbredd men ofta undanskymd, vilket
+    gör den svårare att upptäcka trots att den kan förekomma i många vätmarker.'
+  en: '# Water Rail
+
+
+    The water rail is a secretive rail inhabiting well-vegetated wetlands across Europe,
+    Asia and North Africa. It measures 23–28 cm long with a distinctively flattened
+    body that allows it to slip easily through dense reed beds. Adults display brown
+    upperparts contrasting with blue-grey underparts, black barring on the flanks,
+    long toes, a short tail and a long reddish bill. Immature birds resemble adults
+    but show buff colouration where blue-grey would appear. Downy chicks are entirely
+    black.
+
+
+    Northern and eastern populations migrate seasonally, whilst birds in warmer regions
+    remain year-round residents. The water rail is often heard before it is seen,
+    producing a characteristic pig-like squeal and various other harsh calls that
+    echo across wetland habitats. It forages among aquatic vegetation for invertebrates,
+    small fish and plant matter.
+
+
+    Despite inhabiting relatively open water margins, water rails remain remarkably
+    elusive due to their cryptic nature and preference for dense vegetation. Patient
+    observers near reed beds and marshes may glimpse this striking bird as it moves
+    deliberately through its preferred habitat, though it is more frequently detected
+    by its distinctive, unmistakable vocalisation.'
+migration:
+  sv: '# Vattenrall – Förekomst i Nordeuropa
+
+
+    Vattenrall är en återkommande fågel i Skandinavien och Nordeuropa, där den främst
+    förekommer under värmere perioder. Arten anländer till sina häckningsområden under
+    våren, typiskt från mars till april, när issmältningen öppnar upp våtmarkerna.
+    Under sommaren häckar vattenrallen i vassrika sjöar, bäckar och sumpskogar över
+    stora delar av Sverige, Norge och Danmark.
+
+
+    Många vattenrallar övervintar i södra Europa eller Afrika, särskilt individer
+    från nordligare populationer, medan några kan stanna över vintern i södra Skandinavien
+    om vattnen inte fryser. Höstflyttningen sker gradvis från september till november.
+    I källtexten anges ingen specifik information om dess exakta migrationsmönster
+    eller övervintringsmönster, varför detaljer om säsongsväxlingar i nordiska områden
+    är begränsade.'
+  en: '# Water Rail Migration in Northern Europe
+
+
+    The Water Rail exhibits variable migration patterns across Scandinavia and Northern
+    Europe, with populations showing distinct seasonal movements. Northern and eastern
+    populations, including those breeding in Scandinavia, are migratory and vacate
+    their breeding grounds during winter, moving southward to milder regions. Birds
+    typically depart breeding territories in autumn (September–October) and return
+    in spring (March–April) to establish territories in well-vegetated wetlands. However,
+    some individuals may overwinter in northern regions during mild winters if water
+    bodies remain partially ice-free.
+
+
+    In the warmer southern parts of Europe and North Africa, Water Rails are permanent
+    residents year-round. The timing of arrival and departure in Scandinavian wetlands
+    is influenced by ice formation and the availability of open water, making them
+    sensitive to winter severity. Spring passage occurs as temperatures rise and wetland
+    habitats become accessible again.'
+image_refs:
+- role: hero
+  path: Q185099/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Water rail (Rallus aquaticus).jpg
+  commons_filename: Water rail (Rallus aquaticus).jpg
+- role: secondary
+  path: Q185099/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/119630347@N06">keith
+    gallie</a> from Warrington, UK
+  source_url: https://commons.wikimedia.org/wiki/File:Water rail Rallus aquaticus
+    (37337411980).jpg
+  commons_filename: Water rail Rallus aquaticus (37337411980).jpg
+- role: secondary
+  path: Q185099/secondary-2.jpg
+  width: 1800
+  height: 1287
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Rallus aquaticus. Water Rail
+    (33187617930).jpg
+  commons_filename: Rallus aquaticus. Water Rail (33187617930).jpg
+review_status: approved
+review_notes: "Hero = Rallus aquaticus (Water Rail / Vattenrall); allmän i vassbälten i hela SE."
+generated_at: '2026-05-15T21:32:33.806756+00:00'
+sources:
+  wikipedia_sv_revision: '58510877'
+  wikipedia_en_revision: '1352088530'
+  claude_model: claude-haiku-4-5-20251001

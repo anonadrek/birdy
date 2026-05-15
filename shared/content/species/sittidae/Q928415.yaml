@@ -1,0 +1,92 @@
+id: Q928415
+scientific_name: Sitta tephronota
+taxonomy:
+  family: Sittidae
+  family_sv: Nötväckor
+  genus: Sitta
+  ioc_order: Passeriformes
+names:
+  sv: Östlig klippnötväcka
+  en: Eastern Rock Nuthatch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Eastern Rock Nuthatch
+
+
+    The eastern rock nuthatch is a member of the nuthatch family, distinguished by
+    the characteristic features shared across this group of small, active foragers.
+    It inhabits rocky terrain across a broad range spanning southwest and central
+    Asia, from eastern Turkey extending eastward through the Caucasus region, into
+    central Asian countries, and down toward northwestern areas of the Indian subcontinent.
+
+
+    This species is adapted to life among cliff faces and rocky outcrops, where it
+    searches for food in crevices and on stone surfaces. Like other nuthatches, it
+    is an agile climber, capable of moving along vertical rock surfaces with ease.
+    The bird is generally seen in pairs or small groups as it forages, probing into
+    gaps and cracks in rock to extract insects and other invertebrate prey.
+
+
+    The eastern rock nuthatch occupies arid and semi-arid regions with suitable rocky
+    habitat. Some ornithological sources have referred to it as the Persian nuthatch,
+    reflecting its distribution across parts of the Persian plateau and surrounding
+    regions. It remains relatively specialized in its habitat requirements, preferring
+    areas where exposed rock and cliff faces provide both foraging opportunities and
+    shelter for nesting.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only information about the geographic range of the Eastern
+    Rock Nuthatch in southwest and central Asia, with no details regarding its occurrence
+    in Scandinavia, Northern Europe, or any migration patterns throughout the year.
+    The species'' distribution is limited to regions far south and east of Scandinavia.'
+image_refs:
+- role: hero
+  path: Q928415/hero.jpg
+  width: 1536
+  height: 2048
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/32005048@N06">Arthur
+    Chapman</a> from Australia
+  source_url: https://commons.wikimedia.org/wiki/File:Eastern Rock Nuthatch nest (Sitta
+    tephronota.jpg
+  commons_filename: Eastern Rock Nuthatch nest (Sitta tephronota.jpg
+- role: secondary
+  path: Q928415/secondary-1.jpg
+  width: 1800
+  height: 1137
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:D%C3%BBrzan_c%C3%AErano" title="User:Dûrzan
+    cîrano">Dûrzan cîrano</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sitta tephronota (2).jpg
+  commons_filename: Sitta tephronota (2).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:32:44.381600+00:00'
+sources:
+  wikipedia_sv_revision: '57590993'
+  wikipedia_en_revision: '1322404944'
+  claude_model: claude-haiku-4-5-20251001

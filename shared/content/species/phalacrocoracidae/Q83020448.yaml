@@ -1,0 +1,130 @@
+id: Q83020448
+scientific_name: Gulosus aristotelis
+taxonomy:
+  family: Phalacrocoracidae
+  family_sv: Skarvar
+  genus: Gulosus
+  ioc_order: Suliformes
+names:
+  sv: null
+  en: European Shag
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Toppskarv
+
+
+    Toppskarven är en skarvart som förekommer utmed Europas och Nordafrikas kuster,
+    samt i östra Medelhavet och Svarta havet. Arten häckade tidigare endast sporadiskt
+    på den svenska västkusten, men etablerade sig senare som regelbunden häckfågel
+    där. Globalt har beståndet minskat, men anses fortfarande vara livskraftigt.
+
+
+    Denna skarvart är väl anpassad för sitt liv på havet och i kustnära områden, där
+    den söker sitt föda genom dykningar. Som övriga skarvar är toppskarven en skicklig
+    simmare och dykare som spenderar mycket tid i vattnet. Arten visar många av skarvfamiljens
+    karakteristiska beteenden och anpassningar för ett vattenbaserat liv.'
+  en: '# European Shag
+
+
+    The European shag is a medium-sized cormorant found along rocky coastlines of
+    western and southern Europe, southwestern Asia, and north Africa. It is the sole
+    member of its genus, Gulosus, whose Latin name refers to the bird''s voracious
+    appetite. Most birds remain in their breeding range year-round, though northern
+    populations migrate seasonally.
+
+
+    This sleek waterbird is predominantly dark, appearing almost black in plumage
+    with a subtle green sheen. During breeding season, it develops a distinctive crest
+    on its head. The shag has a long, slender neck and a relatively short tail compared
+    to other cormorants. Its streamlined body is an adaptation for diving and swimming
+    underwater in pursuit of fish.
+
+
+    The shag is primarily a coastal species, preferring rocky shores and cliff faces
+    where it nests in colonies. It is an accomplished diver, propelling itself underwater
+    with powerful leg strokes to hunt for small fish, particularly sand eels and pouting.
+    The bird is largely silent outside the breeding season but produces various guttural
+    calls and hisses at nesting colonies. Its scientific species name honours the
+    ancient Greek philosopher Aristotle, reflecting the bird''s historical significance
+    in European natural history.'
+migration:
+  sv: '# Toppskarv i Skandinavien och Nordeuropa
+
+
+    Toppskarven är en kustnära art som förekommer året runt längs Europas atlantiska
+    och medelhavsregioner. I Skandinavien är arten en relativt ny häckfågel på den
+    svenska västkusten, där beståndet har etablerat sig under de senaste decennierna.
+    Arten är inte en långdistansmigrant utan stannar generellt i sitt utbredningsområde
+    året om. Under häckningstiden koncentreras individerna till klippiga öar och strandområden
+    längs kusten, medan de övriga årets tid förblir i närliggande havsområden. Toppskarven
+    är därför en karakteristisk kustnär som inte genomför betydande migrationsporer
+    jämfört med många andra nordiska fåglar.'
+  en: '# European Shag Migration in Northern Europe
+
+
+    The European Shag is a resident and partial migrant across Scandinavia and Northern
+    Europe. Birds breeding in the northernmost parts of their range, particularly
+    in Norway and Iceland, typically vacate these areas during winter months, moving
+    southward to milder coastal waters. However, populations in more southern Scandinavian
+    regions and around Britain often remain year-round, with only minimal seasonal
+    movements. The species is primarily tied to rocky coastlines for both breeding
+    and wintering, showing strong site fidelity to traditional breeding colonies and
+    coastal territories.'
+image_refs:
+- role: hero
+  path: Q83020448/hero.jpg
+  width: 2400
+  height: 1629
+  license: CC BY 2.0
+  author: blondinrikard
+  source_url: https://commons.wikimedia.org/wiki/File:European shag, Gulosus aristotelis,
+    Toppskarv.jpg
+  commons_filename: European shag, Gulosus aristotelis, Toppskarv.jpg
+- role: secondary
+  path: Q83020448/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:European shag (Gulosus aristotelis
+    aristotelis) at empty nest Keflavíkurbjarg cliffs.jpg
+  commons_filename: European shag (Gulosus aristotelis aristotelis) at empty nest
+    Keflavíkurbjarg cliffs.jpg
+- role: secondary
+  path: Q83020448/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:European shags (Gulosus aristotelis
+    aristotelis) Argyll.jpg
+  commons_filename: European shags (Gulosus aristotelis aristotelis) Argyll.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:34:50.241481+00:00'
+sources:
+  wikipedia_sv_revision: '59195445'
+  wikipedia_en_revision: '1315009243'
+  claude_model: claude-haiku-4-5-20251001

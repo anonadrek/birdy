@@ -1,0 +1,122 @@
+id: Q245414
+scientific_name: Geronticus eremita
+taxonomy:
+  family: Threskiornithidae
+  family_sv: Ibisar
+  genus: Geronticus
+  ioc_order: Pelecaniformes
+names:
+  sv: Eremitibis
+  en: Northern Bald Ibis
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Eremitibis
+
+
+    Eremitibis är en starkt hotad ibiasart som kännetecknas av sin karakteristiska
+    utseende med nakna, röd ansiktshud och mörk, metallglännsande fjäderdräkt. Det
+    är en medelstor fågel med långt, nedåtbokat näbb som det använder för att söka
+    föda i marken.
+
+
+    Arten är delvis flyttfågel och förekommer endast på två häckningsplatser världen
+    över, vilket gör den till en av världens mest hotade fågelarter. Det ses ofta
+    i mindre flockgrupper och rör sig gärna tillsammans med andra individer. Eremitibis
+    är en sociala fågel som kommunicerar genom olika ljud.
+
+
+    Fågeln föredrar bergiga och klippiga områden där det kan bygga sina bon på branta
+    väggare. Det söker sin föda på öppna marker och gräsområden där det letar efter
+    insekter och småkryp. Arten är känd för sitt karakteristiska flöjtande läte som
+    det använder för att hålla kontakt med sina artfränder.'
+  en: '# Northern Bald Ibis
+
+
+    The Northern Bald Ibis is a striking 70–80 cm ibis with glossy black plumage contrasting
+    sharply with its distinctive unfeathered red face, head, and long curved red bill.
+    Unlike most ibis species, it is non-wading and forages on the ground rather than
+    in water. It inhabits open landscapes including grasslands, rocky mountains, and
+    semi-deserts, typically near running water where it can find its preferred prey
+    of lizards, insects, and small animals.
+
+
+    This migratory species is highly social and breeds colonially on cliff ledges
+    in coastal or mountainous regions. It constructs stick nests on these precipitous
+    ledges, where pairs typically lay two to three eggs. The species'' conspicuous
+    appearance and colonial nesting behaviour make it relatively easy to identify
+    when encountered in suitable habitat, though its preference for remote cliff sites
+    means sightings may be limited to specific regions during breeding season.'
+migration:
+  sv: Eremitibis är en sällsynt och starkt hotad art som endast förekommer mycket
+    begränsat i Skandinavien och Nordeuropa. Arten är en flyttfågel, men förekommer
+    inte regelbundet i regionen. De få populationer som finns världen över är mycket
+    små och hotade, och arten ses endast mycket sporadiskt som en tillfällig gäst
+    eller vildfågel utanför dess begränsade häckningsområden. Arten är huvudsakligen
+    knuten till Mellanöstern och Afrika, där den utgör både stationär och partiellt
+    flyttande populationer. För Skandinavien och övriga Nordeuropa är denna art extremt
+    sällsynt och kan inte sägas ha ett etablerat migrations- eller övervintringsmönster.
+  en: '# Northern Bald Ibis (Geronticus eremita) in Scandinavia/Northern Europe
+
+
+    The Northern Bald Ibis is not a regular occurrence in Scandinavia or Northern
+    Europe. This species is primarily found in North Africa and the Middle East, with
+    populations in Morocco and a small reintroduced population in the Alps. While
+    it is migratory in its native range, breeding in summer and migrating to wintering
+    grounds in Africa, it does not form part of the regular avifauna of Scandinavian
+    or Northern European regions. Any records from these areas would represent rare
+    vagrants rather than established seasonal movements.'
+image_refs:
+- role: hero
+  path: Q245414/hero.jpg
+  width: 2400
+  height: 1800
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Vassil" title="User:Vassil">Vassil</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Doué 21 06 2010 09 Geronticus
+    eremita 3.jpg
+  commons_filename: Doué 21 06 2010 09 Geronticus eremita 3.jpg
+- role: secondary
+  path: Q245414/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Vassil" title="User:Vassil">Vassil</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Doué 21 06 2010 09 Geronticus
+    eremita 2.jpg
+  commons_filename: Doué 21 06 2010 09 Geronticus eremita 2.jpg
+- role: secondary
+  path: Q245414/secondary-2.jpg
+  width: 1800
+  height: 1781
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1432726">Jochen
+    Essig</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Geronticus eremita 202197859.jpg
+  commons_filename: Geronticus eremita 202197859.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:32:13.026317+00:00'
+sources:
+  wikipedia_sv_revision: '57959695'
+  wikipedia_en_revision: '1338807932'
+  claude_model: claude-haiku-4-5-20251001

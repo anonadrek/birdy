@@ -1,0 +1,108 @@
+id: Q80780
+scientific_name: Turdus atrogularis
+taxonomy:
+  family: Turdidae
+  family_sv: Trastar
+  genus: Turdus
+  ioc_order: Passeriformes
+names:
+  sv: Svarthalsad trast
+  en: Black-throated Thrush
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Black-throated Thrush
+
+
+    The black-throated thrush is a medium-sized thrush with distinctive plumage that
+    sets it apart from related species. Males display a striking dark throat and breast,
+    contrasting with a lighter underside, while females and younger birds show more
+    subdued coloring. The species shares morphological similarities with the red-throated
+    thrush, leading to historical taxonomic debate about whether they represent separate
+    species or subspecies of a single "dark-throated thrush." Modern ornithological
+    treatment recognizes them as distinct species.
+
+
+    This thrush inhabits open woodlands and scrubland habitats across its range. It
+    forages on the ground and in low vegetation, feeding on insects and berries depending
+    on the season. The black-throated thrush is migratory, moving between breeding
+    and wintering grounds. It is generally solitary or found in small groups outside
+    the breeding season.
+
+
+    The species'' call and song are characteristic features, though specifics of its
+    vocalizations would benefit from detailed acoustic descriptions. The black-throated
+    thrush is considered a vagrant or rare visitor to many regions outside its primary
+    range, making sightings noteworthy for birdwatchers in areas where it occurs irregularly.'
+migration:
+  sv: ''
+  en: '# Black-throated Thrush in Scandinavia/Northern Europe
+
+
+    The black-throated thrush is a rare vagrant to Scandinavia and Northern Europe,
+    with no established regular migration pattern through the region. Records from
+    Sweden, Norway, and other Nordic countries are sporadic and primarily consist
+    of individual sightings during autumn and winter months, likely representing birds
+    that have wandered westward from their core breeding and wintering ranges in eastern
+    Asia and southeastern Europe. These occurrences are unpredictable and do not constitute
+    a typical migratory route for the species.
+
+
+    Migration data for this species'' movements through Scandinavia is minimal, as
+    it remains an exceptional visitor rather than a regular seasonal migrant to the
+    region.'
+image_refs:
+- role: hero
+  path: Q80780/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Shiv%27s_fotografia" title="User:Shiv's
+    fotografia">Shiv's fotografia</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Here are some facts about the
+    Black Throated Thrush Turdus atrogularis.jpg
+  commons_filename: Here are some facts about the Black Throated Thrush Turdus atrogularis.jpg
+- role: secondary
+  path: Q80780/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1309693">Svyatoslav
+    Knyazev</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus atrogularis 298118515.jpg
+  commons_filename: Turdus atrogularis 298118515.jpg
+- role: secondary
+  path: Q80780/secondary-2.jpg
+  width: 1800
+  height: 1286
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Carpodacus" title="User:Carpodacus">Carpodacus</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus atrogularis.jpg
+  commons_filename: Turdus atrogularis.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:35:19.520499+00:00'
+sources:
+  wikipedia_sv_revision: '58594885'
+  wikipedia_en_revision: '1314251845'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,133 @@
+id: Q185183
+scientific_name: Podiceps nigricollis
+taxonomy:
+  family: Podicipedidae
+  family_sv: Doppingar
+  genus: Podiceps
+  ioc_order: Podicipediformes
+names:
+  sv: Svarthalsad dopping
+  en: Black-necked Grebe
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svarthalsad dopping
+
+
+    Svarthalsad dopping är en liten doppingfågel som återfinns på fyra kontinenter.
+    Arten häckar i Europa, Asien, Afrika och Nordamerika, och världsbeståndet anses
+    vara stabilt. I Sverige utgör den en randpopulation och är klassificerad som starkt
+    hotad.
+
+
+    Fågeln är anpassad för livet i vattnet med en kompakt kropp och ben placerade
+    långt bak på kroppen, vilket gör den till en utmärkt dykare. Under häckningstid
+    bär den karakteristiska svarta fjädrar på halsen och huvudet, medan övriga partier
+    är gråbruna. Under vinterhalvåret blir den ljusare och mer diskret i färgen.
+
+
+    Svarthalsad dopping förekommer på sjöar och vattendrag där den födosöker genom
+    dykning. Den är en aktiv jägare under sitt aktiva häckningsperiod och visar specifika
+    beteenden knutna till parbildning och häckning vid dessa vattensamhällen.'
+  en: '# Black-necked Grebe
+
+
+    The black-necked grebe is a small water bird displaying striking seasonal plumage
+    changes. During breeding season, it presents a distinctive appearance with a black
+    head and neck contrasting sharply with ochre-coloured feathers extending behind
+    the eye and over the ear coverts. Its flanks are tawny rufous to maroon-chestnut,
+    while the abdomen remains white. In non-breeding plumage, the bird becomes more
+    subdued, with greyish-black upper parts and a characteristic vertical stripe on
+    the back of the neck, while the underparts turn white or whitish. Juveniles show
+    more brown tones in their darker areas.
+
+
+    This grebe is a water specialist, inhabiting lakes, reservoirs, and coastal waters
+    across parts of Africa, Eurasia, and the Americas. It is well-adapted to aquatic
+    life, with legs positioned far back on its body, making it an accomplished diver
+    but clumsy on land. The species breeds on shallow freshwater bodies where it constructs
+    floating nests. During winter, populations shift to coastal and larger inland
+    waters where the species can be observed in its plainer non-breeding dress. The
+    black-necked grebe is highly migratory in many regions, with populations moving
+    between breeding and wintering grounds seasonally.'
+migration:
+  sv: '# Svarthalsad dopping – Förekomst i Skandinavien
+
+
+    Svarthalsad dopping är en sällsynt häckfågel i Sverige där den utgör en randpopulation
+    och klassificeras som starkt hotad. Arten förekommer främst under häckningsperioden
+    på vissa lokaler i södra Sverige. Som en vid spridd art som häckar på flera kontinenter,
+    genomför svarthalsad dopping långdistansmigration för att utnyttja olika häcknings-
+    och övervintringsområden. Arten är migratorisk i sitt beteende, men specifika
+    ankomst- och avresemånader för Skandinavien framgår inte av tillgänglig information.
+    För att få detaljerad information om denna arts säsongsfördelning i Nordeuropa
+    rekommenderas konsultation av regionala fågelöversikter och migrationsstudier.'
+  en: '# Black-necked Grebe in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only plumage descriptions and general geographical
+    distribution information, with no specific details about the black-necked grebe''s
+    occurrence, migration patterns, or seasonal movements in Scandinavia or Northern
+    Europe.'
+image_refs:
+- role: hero
+  path: Q185183/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Podiceps nigricollis Hollogne-sur-Geer
+    1.jpg
+  commons_filename: Podiceps nigricollis Hollogne-sur-Geer 1.jpg
+- role: secondary
+  path: Q185183/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/72825507@N00">Mike
+    Baird</a> from Morro Bay, USA
+  source_url: https://commons.wikimedia.org/wiki/File:Podiceps nigricollis captures
+    and swallows a a large cold-water pipefish in Morro Bay, CA (1).jpg
+  commons_filename: Podiceps nigricollis captures and swallows a a large cold-water
+    pipefish in Morro Bay, CA (1).jpg
+- role: secondary
+  path: Q185183/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Ssprmannheim" class="mw-redirect"
+    title="User:Ssprmannheim">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Schwarzhalstaucher (Podiceps
+    nigricollis) im NSG Wagbachniederung 1.jpg
+  commons_filename: Schwarzhalstaucher (Podiceps nigricollis) im NSG Wagbachniederung
+    1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:38:11.905173+00:00'
+sources:
+  wikipedia_sv_revision: '56064566'
+  wikipedia_en_revision: '1352567358'
+  claude_model: claude-haiku-4-5-20251001

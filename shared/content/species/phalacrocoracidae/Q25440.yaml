@@ -1,0 +1,130 @@
+id: Q25440
+scientific_name: Phalacrocorax carbo
+taxonomy:
+  family: Phalacrocoracidae
+  family_sv: Skarvar
+  genus: Phalacrocorax
+  ioc_order: Suliformes
+names:
+  sv: Storskarv
+  en: Great Cormorant
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Storskarv
+
+
+    Storskarven är en stor vattenlevande fågel som tillhör skarvfamiljen. Den förekommer
+    på alla världens kontinenter utom Antarktis och Sydamerika, både vid kusten och
+    i inlandet. Arten förekommer i flera underarter, vars migrationsbeteende varierar
+    beroende på geografiska läget. De nordligaste populationerna är flyttfåglar, medan
+    andra populationer endast drar sig undan extrema väderförhållanden eller istäcke,
+    och vissa är helt stannfåglar under året.
+
+
+    Storskarven är en mästerlig dykarfågel anpassad för livet i vatten. Den skiljer
+    sig från sina släktingar – fregattfåglar, sulor och ormhalsfåglar – men delar
+    många av deras vattenöverspecialiserade egenskaper. Arten går under flera namn
+    i Svenska språket, inklusive ålkråka, havstjäder och kormoran, vilket återspeglar
+    dess långa historia i människans medvetande.'
+  en: '# Great Cormorant
+
+
+    The great cormorant is a large, dark seabird found across much of the Northern
+    Hemisphere, Australasia, and the Atlantic coast of North America. It is the most
+    widespread member of the cormorant family, with populations breeding throughout
+    the Old World in varied aquatic habitats.
+
+
+    This species is predominantly black with a sleek, streamlined body perfectly adapted
+    for diving and underwater pursuit of fish. Adults often display white patches
+    on the head and neck during breeding season, along with a distinctive pale thigh
+    patch. Its long neck, pointed bill, and characteristic hunched posture when perched
+    make it readily identifiable.
+
+
+    Great cormorants are highly aquatic birds, spending much of their time diving
+    for fish in coastal waters, estuaries, and larger inland waterways. They are often
+    seen in small to large flocks, sometimes perched with wings held open to dry their
+    feathers—a characteristic behaviour among cormorants. The species is relatively
+    silent but produces guttural calls at breeding colonies. It typically nests in
+    colonies on cliffs, in trees near water, or on rocky outcrops, demonstrating remarkable
+    adaptability to different breeding environments across its vast global range.'
+migration:
+  sv: '# Storskarv – Förekomst i Skandinavien/Nordeuropa
+
+
+    Storskarven förekommer året runt i Skandinavien och Nordeuropa, men utbredningen
+    varierar säsongsmässigt. De nordligaste populationerna är flyttfåglar som lämnar
+    området under de kallaste månaderna, medan andra populationer är mindre migratoriska
+    och endast drar sig undan då is och hårt väder gör området obeboeligt. Vissa individer
+    är stannfåglar som blir året runt. De fåglar som är på flyttning avgör sina flyttplatser
+    beroende på isläggning av vattnet och väderförhållandena, snarare än efter en
+    strikt kalenderbaserad mönster.'
+  en: '# Great Cormorant (Storskarv) in Northern Europe
+
+
+    The Great Cormorant is a migratory and resident species across Scandinavia and
+    Northern Europe. Populations breeding in northern regions migrate southward in
+    autumn, typically departing between September and November, seeking ice-free waters
+    in southern Scandinavia, the North Sea, and Atlantic coasts. Many individuals
+    overwinter in these southern areas or further south along European coasts. Spring
+    return migration occurs from February through April, with breeding populations
+    re-establishing themselves at northern colonies. Some southern populations remain
+    resident year-round. The species has shown increasing wintering populations in
+    Scandinavian coastal regions in recent decades.'
+image_refs:
+- role: hero
+  path: Q25440/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great cormorant (Phalacrocorax
+    carbo), Travemünde.jpg
+  commons_filename: Great cormorant (Phalacrocorax carbo), Travemünde.jpg
+- role: secondary
+  path: Q25440/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Great cormorant (Phalacrocorax
+    carbo) in flight, Travemünde.jpg
+  commons_filename: Great cormorant (Phalacrocorax carbo) in flight, Travemünde.jpg
+- role: secondary
+  path: Q25440/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Korinna&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Korinna (page does not exist)">Korinna</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phalacrocorax carbo or the great
+    cormorant.jpg
+  commons_filename: Phalacrocorax carbo or the great cormorant.jpg
+review_status: approved
+review_notes: "Hero = Phalacrocorax carbo (Great Cormorant / Storskarv); allmän vid kust och sjöar i SE."
+generated_at: '2026-05-15T21:36:05.615321+00:00'
+sources:
+  wikipedia_sv_revision: '58850386'
+  wikipedia_en_revision: '1339370010'
+  claude_model: claude-haiku-4-5-20251001

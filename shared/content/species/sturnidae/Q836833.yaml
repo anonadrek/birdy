@@ -1,0 +1,112 @@
+id: Q836833
+scientific_name: Sturnus unicolor
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Sturnus
+  ioc_order: Passeriformes
+names:
+  sv: Svartstare
+  en: Spotless Starling
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartstare
+
+
+    Svartstare är en fågel i familjen starar som är nära släkt med den vanligare staren.
+    Den förekommer i sydvästra Europa och nordvästra Afrika samt på flera öar i Medelhavet.
+    Fågeln är en medelstor stare med helt svart fjäderdräkt utan vita fläckar, vilket
+    särskiljer den från staren.
+
+
+    Svartstaren lever i öppna och halvöppna landskap där den ofta ses i små flockar
+    eller ensam. Den är en aktiv och livlig fågel som födosöker på marken eller i
+    låg vegetation, där den letar efter insekter och annat föda. Som många starar
+    är det en högljudd fågel med varierad sång och olika läten.'
+  en: '# Spotless Starling
+
+
+    The spotless starling is a medium-sized passerine closely related to the common
+    starling but with a distinctly more limited range. It inhabits the Iberian Peninsula,
+    northwestern Africa, southernmost France, and the Mediterranean islands of Sicily,
+    Corsica, and Sardinia. Unlike its widespread relative, the spotless starling is
+    largely non-migratory, remaining in its territories year-round.
+
+
+    As its name suggests, the spotless starling lacks the white spotting characteristic
+    of common starlings, displaying instead plumage that is predominantly glossy black.
+    This feature makes it relatively straightforward to distinguish from similar species
+    within its range. The bird shares many behavioral traits with common starlings,
+    being gregarious and adaptable to various habitats, though details of its specific
+    calls and social behaviors warrant closer observation in the field.'
+migration:
+  sv: 'sv: Migrationsdata saknas för denna art.
+
+
+    en: Migration data unavailable for this species.'
+  en: '# Spotless Starling in Northern Europe
+
+
+    The Spotless Starling is not a regular occurrence in Scandinavia or Northern Europe.
+    This species is largely non-migratory and maintains a restricted year-round range
+    in the Mediterranean region, including the Iberian Peninsula, Northwest Africa,
+    southern France, and islands such as Sicily, Corsica, and Sardinia. Any sightings
+    in Scandinavian or Northern European countries would be exceptional vagrants far
+    outside the species'' normal range. Birdwatchers in these regions should not expect
+    to encounter this species during any season.'
+image_refs:
+- role: hero
+  path: Q836833/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:WikiNinjaHamster&amp;action=edit&amp;redlink=1"
+    class="new" title="User:WikiNinjaHamster (page does not exist)">WikiNinjaHamster</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sturnus unicolor singing.jpg
+  commons_filename: Sturnus unicolor singing.jpg
+- role: secondary
+  path: Q836833/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/64119902@N02">José
+    Prego</a> from Moura, Portugal
+  source_url: https://commons.wikimedia.org/wiki/File:Estorninho-preto (Sturnus unicolor)
+    (52028335602).jpg
+  commons_filename: Estorninho-preto (Sturnus unicolor) (52028335602).jpg
+- role: secondary
+  path: Q836833/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:WikiNinjaHamster&amp;action=edit&amp;redlink=1"
+    class="new" title="User:WikiNinjaHamster (page does not exist)">WikiNinjaHamster</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Full black sturnus unicolor.jpg
+  commons_filename: Full black sturnus unicolor.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:35:44.434701+00:00'
+sources:
+  wikipedia_sv_revision: '57948422'
+  wikipedia_en_revision: '1348356457'
+  claude_model: claude-haiku-4-5-20251001

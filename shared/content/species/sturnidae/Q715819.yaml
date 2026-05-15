@@ -1,0 +1,114 @@
+id: Q715819
+scientific_name: Acridotheres cristatellus
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Acridotheres
+  ioc_order: Passeriformes
+names:
+  sv: Kinesisk majna
+  en: Crested Myna
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kinesisk majna
+
+
+    Kinesisk majna är en medelstor stare från Asien som numera finns etablerad på
+    flera platser världen över. Det är en kraftig fågel med mörk, nästan svart fjäderdräkt
+    och en karakteristisk uppräst tofs på huvudet. Vita fläckar syns på vingarna,
+    särskilt synliga då fågeln flyger. Det har gula ben och en gul ring runt ögat.
+
+
+    Arten är mycket social och ses ofta i större eller mindre flockar, framför allt
+    i bebyggelse och städer. Det är en aktiv fågel som rör sig på marken och i träd
+    där det söker föda. Kinesisk majna är högljudd och producerar en rad skrapiga
+    och olika läten.
+
+
+    Arten förekommer huvudsakligen i urbana och halvöppna miljöer där det har kunnat
+    etablera sig. Det var ursprungligen begränsat till Asien men har via transport
+    med människor spridits till flera världsdelar.'
+  en: '# Crested Myna
+
+
+    The crested myna is a starling native to southeastern China and Indochina, instantly
+    recognizable by the distinctive tuft of feathers on its forehead that gives the
+    species its name. It is also known as the Chinese starling.
+
+
+    As a member of the starling family, it shares typical starling characteristics,
+    though specific details about its plumage, size, behaviour, and vocalizations
+    are not available from the source provided. Interested observers wishing to learn
+    more about this species'' appearance, feeding habits, social behaviour, and calls
+    would benefit from consulting specialized regional bird guides or ornithological
+    references focused on Asian starlings.
+
+
+    The crested myna inhabits its native range in southeastern Asian regions where
+    it can be encountered in appropriate habitats.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides only basic taxonomic and morphological information about
+    the Crested Myna, identifying it as a starling native to southeastern China and
+    Indochina. No information is given regarding its occurrence in Scandinavia, Northern
+    Europe, migration patterns, seasonal movements, or overwintering behavior. Additionally,
+    this species is not known to naturally occur in Scandinavia or Northern Europe,
+    making migration data for the region inapplicable.'
+image_refs:
+- role: hero
+  path: Q715819/hero.jpg
+  width: 1945
+  height: 2203
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Magalh%C3%A3es" title="User:Magalhães">Magalhães</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Acridotheres cristatellus.jpg
+  commons_filename: Acridotheres cristatellus.jpg
+- role: secondary
+  path: Q715819/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/46956042@N00">Arjan
+    Haverkamp</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Acridotheres cristatellus -Artis
+    Zoo, Netherlands-8a.jpg
+  commons_filename: Acridotheres cristatellus -Artis Zoo, Netherlands-8a.jpg
+- role: secondary
+  path: Q715819/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:GerifalteDelSabana" title="User:GerifalteDelSabana">GerifalteDelSabana</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Wet Acridotheres javanicus at
+    Kuala Lumpur (4s, p1).jpg
+  commons_filename: Wet Acridotheres javanicus at Kuala Lumpur (4s, p1).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:37:34.351279+00:00'
+sources:
+  wikipedia_sv_revision: '55627492'
+  wikipedia_en_revision: '1346036014'
+  claude_model: claude-haiku-4-5-20251001

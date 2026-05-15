@@ -1,0 +1,133 @@
+id: Q25376
+scientific_name: Fulica atra
+taxonomy:
+  family: Rallidae
+  family_sv: Rallar
+  genus: Fulica
+  ioc_order: Gruiformes
+names:
+  sv: Sothöna
+  en: Eurasian Coot
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sothöna
+
+
+    Sothöna är en vattenlevande fågel med karakteristisk utseende. Den har en rundad
+    kroppsform täckt av skiffersvart fjäderdräkt. Näbben är vitaktig och saknar fjädrar
+    på pannan, där det istället finns en framträdande pannsköld. När sothönan simmar
+    nickar den stadigt med huvudet, vilket är ett typiskt beteende hos arten.
+
+
+    Arten förekommer över stora delar av världen. Populationen häckar i Nordafrika,
+    Europa och Central­asien ner till Japan, samt i södra hemisfären till Australien
+    och Nya Zeeland. Vissa populationer är stannfåglar och stannar året om på sina
+    häckningsplatser, medan individer från kallare områden migrerar söderut under
+    vintern för att undvika frusen mark och vatten.
+
+
+    Sothönan tillhör familjen rallar och delas ofta in i fyra geografiska underarter,
+    något som återspeglar dess vidsträckta utbredning över både gamla och nya världen.'
+  en: '# Eurasian Coot
+
+
+    The Eurasian coot is a distinctive waterbird easily recognized by its slaty-black
+    plumage, glossy black head, and striking white bill with a characteristic white
+    frontal shield on the forehead. Males and females look virtually identical. It
+    belongs to the rail and crake family and is a widespread species found across
+    Europe, Asia, Australia, New Zealand, and parts of North Africa.
+
+
+    This coot is commonly seen on freshwater lakes, reservoirs, and rivers where it
+    forages for aquatic vegetation and invertebrates. It is often found in small flocks,
+    particularly outside the breeding season. On water, it swims readily and dives
+    expertly to reach food sources below the surface. When alarmed, it can run across
+    the water with characteristic splashing movements to become airborne.
+
+
+    The Eurasian coot is a vocal species with a variety of calls, though it is generally
+    less noisy than some of its relatives. Its presence is a familiar feature of many
+    wetland habitats, where its dark silhouette and white shield make it one of the
+    easiest waterbirds to identify at a distance.'
+migration:
+  sv: '# Sothöna – Förekomst i Nordeuropa
+
+
+    Sothönan är en deltidsmigrant i Skandinavien och Nordeuropa. De populationer som
+    häckar i norra och centraleuropeiska områden är flyttfåglar som vanligtvis anländer
+    till häckningsområdena under vårens gång, typiskt från mars till april. Under
+    hösten drar dessa fåglar söderut för att övervintra i mildare klimat. Sydligare
+    populationer är ofta stannfåglar och stannar året runt på sina häckningsplatser.
+    I de kallaste norra delarna av sitt utbredningsområde är sothönan således endast
+    närvarande under häckningssäsongen.'
+  en: '# Eurasian Coot in Scandinavia and Northern Europe
+
+
+    The Eurasian Coot is a common resident and migratory species throughout Scandinavia
+    and Northern Europe, with populations showing variable patterns depending on latitude
+    and winter severity. Northern breeding populations migrate southward in autumn,
+    typically departing from September through November, with birds wintering in more
+    temperate regions of Europe and around the Mediterranean. Southern and central
+    Scandinavian populations are often partial migrants, with some individuals remaining
+    year-round on ice-free waters, while others undertake shorter migrations. Spring
+    return to breeding areas generally occurs from February through April as water
+    bodies thaw.
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q25376/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Bj.schoenmakers" title="User:Bj.schoenmakers">Bj.schoenmakers</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fulica atra, Coots on ice, Arnhem,
+    the Netherlands.jpg
+  commons_filename: Fulica atra, Coots on ice, Arnhem, the Netherlands.jpg
+- role: secondary
+  path: Q25376/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fulica atra 2022 03 18.jpg
+  commons_filename: Fulica atra 2022 03 18.jpg
+- role: secondary
+  path: Q25376/secondary-2.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Trougnouf" title="User:Trougnouf">Trougnouf</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Mute swan and fulica atra in
+    front of etang Tenreuken, Auderghem, Belgium (DSCF2958).jpg
+  commons_filename: Mute swan and fulica atra in front of etang Tenreuken, Auderghem,
+    Belgium (DSCF2958).jpg
+review_status: approved
+review_notes: "Hero = Fulica atra (Eurasian Coot / Sothöna); allmän vid sjöar och dammar i SE."
+generated_at: '2026-05-15T21:36:11.399782+00:00'
+sources:
+  wikipedia_sv_revision: '56064583'
+  wikipedia_en_revision: '1348814938'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,139 @@
+id: Q25469
+scientific_name: Sturnus vulgaris
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Sturnus
+  ioc_order: Passeriformes
+names:
+  sv: Stare
+  en: Common Starling
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stare (Sturnus vulgaris)
+
+
+    Staren är Europas vanligaste och mest utbredda starart. Det är en mindre fågel
+    än koltrast, med spetsiga vingar och mörk fjäderdräkt. I sommardräkt glänser fjädrarna
+    metalliskt, vilket är ett utmärkande drag. Staren kan förväxlas med koltrast,
+    men är mindre och har en helt annan kroppsform med spetsiga snarare än rundade
+    vingspetsar.
+
+
+    Det är en mycket ljudlig fågel, särskilt när den uppehåller sig i flockar. Sången
+    är omusikalisk men väldigt varierad, och staren är känd för sin utmärkta förmåga
+    att härma olika ljud från sin omgivning – en egenskap som omtalas redan i klassisk
+    litteratur.
+
+
+    Staren ses ofta öppet på gräsmattor och i samhällen och städer, där den livligt
+    söker efter föda. Den är en högst anpassningsbar fågel som trivs väl nära människan
+    och är framträdande i både lantliga och urbana miljöer.'
+  en: '# Common Starling
+
+
+    The Common Starling is a medium-sized black passerine about 20 cm long with a
+    distinctive glossy plumage that shows a metallic sheen. Its appearance changes
+    seasonally: in winter the black feathers are heavily speckled with white spots,
+    while summer birds appear more uniformly dark. The legs are pink, and the bill
+    shifts from black in winter to bright yellow in summer. Young birds are considerably
+    browner than adults, making them easy to distinguish in mixed flocks.
+
+
+    This species is renowned for its exceptional vocal abilities. It is a skilled
+    mimic, capable of imitating other bird species and various sounds from its environment—a
+    talent documented since ancient times in classical literature. Its natural calls
+    include whistles and varied chattering notes, often delivered from prominent perches
+    or in flight.
+
+
+    Common Starlings are highly social and gregarious birds, typically seen in flocks
+    that can number from small groups to massive congregations. They frequent open
+    woodlands, parks, gardens, and urban areas, feeding on the ground where they probe
+    and peck for invertebrates and seeds. The species is widespread and adaptable,
+    thriving in both natural and human-modified landscapes.'
+migration:
+  sv: '**Staren i Skandinavien och Nordeuropa**
+
+
+    Staren är en vanlig fågel i Skandinavien och Nordeuropa, men migrationsmönstret
+    varierar mellan populationer. Många stärs som häckar i norra Skandinavien är flyttfåglar
+    som överinterar längre söderut i Europa, medan populationer i södra Skandinavien
+    ofta är stannfåglar eller delvis moves. Ankomsttiden för återvändande fåglar infaller
+    vanligtvis i februari-mars, medan avflyttningen sker under augusti-september.
+    Under vintermånaderna bildas stärs ofta stora sovsamlingar, särskilt i urban miljö
+    där de utnyttjar byggnadernas värme.
+
+
+    *Notering: Källtexten innehåller begränsad migrationsinformation. Denna text baseras
+    på allmän kunskapsgrund om arten.*'
+  en: '# Common Starling Migration in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains only physical descriptions and behavioral characteristics
+    of the Common Starling, with no information about its migration patterns, seasonal
+    movements, or occurrence throughout the year in Scandinavia or Northern Europe.
+    To provide accurate information about this species'' migration timing, wintering
+    grounds, and arrival dates in the region, additional sources with specific migratory
+    data would be required.'
+image_refs:
+- role: hero
+  path: Q25469/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/52450054@N04">Judy
+    Gallagher</a>
+  source_url: https://commons.wikimedia.org/wiki/File:European Starling - Sturnus
+    vulgaris, Veteran's Park, Woodbridge, Virginia (25823769668).jpg
+  commons_filename: European Starling - Sturnus vulgaris, Veteran's Park, Woodbridge,
+    Virginia (25823769668).jpg
+- role: secondary
+  path: Q25469/secondary-1.jpg
+  width: 1800
+  height: 1434
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Starling. Sturnus vulgaris -
+    Flickr - gailhampshire.jpg
+  commons_filename: Starling. Sturnus vulgaris - Flickr - gailhampshire.jpg
+- role: secondary
+  path: Q25469/secondary-2.jpg
+  width: 1800
+  height: 1300
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/49503118795@N01">Ingrid
+    Taylar</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sturnus vulgaris -California-8.jpg
+  commons_filename: Sturnus vulgaris -California-8.jpg
+review_status: approved
+review_notes: "Hero = Sturnus vulgaris (Common Starling / Stare); allmän stadsbofågel och fältfågel i hela SE."
+generated_at: '2026-05-15T21:36:39.680960+00:00'
+sources:
+  wikipedia_sv_revision: '58946302'
+  wikipedia_en_revision: '1353778410'
+  claude_model: claude-haiku-4-5-20251001

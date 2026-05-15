@@ -1,0 +1,114 @@
+id: Q178811
+scientific_name: Plegadis falcinellus
+taxonomy:
+  family: Threskiornithidae
+  family_sv: Ibisar
+  genus: Plegadis
+  ioc_order: Pelecaniformes
+names:
+  sv: Bronsibis
+  en: Glossy Ibis
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Glossy Ibis
+
+
+    The glossy ibis is a distinctive water bird named for its curved, sickle-shaped
+    bill—a feature reflected in both its scientific and common names. It belongs to
+    the ibis and spoonbill family (Threskiornithidae). The bird''s plumage appears
+    dark and iridescent in good light, giving it a glossy appearance that sets it
+    apart from other ibis species.
+
+
+    Glossy ibises are gregarious birds, often seen in small to large flocks, particularly
+    during migration and winter months. They feed in shallow wetlands, marshes, and
+    coastal areas, using their specialized curved bills to probe into mud and water
+    for invertebrates, small fish, and other prey. The birds walk deliberately through
+    shallow water with a characteristic forward-leaning posture.
+
+
+    It is primarily a water bird found in freshwater and brackish wetlands, though
+    it readily adapts to various aquatic habitats. Its range has expanded significantly
+    in recent decades, appearing in areas where it was previously uncommon or absent.
+    The species is migratory in many regions, undertaking long-distance movements
+    between breeding and wintering grounds. Flocks in flight present a striking silhouette
+    with their extended necks and pointed bills held horizontal.'
+migration:
+  sv: ''
+  en: '# Glossy Ibis in Scandinavia/Northern Europe
+
+
+    The Glossy Ibis is a rare vagrant to Scandinavia and Northern Europe, with no
+    established breeding population in the region. Sightings are sporadic and typically
+    occur during spring and autumn migration periods, when individuals occasionally
+    wander northward from their main European breeding grounds in southern regions.
+    Winter occurrences are exceptional, as the species cannot survive prolonged freezing
+    conditions. Most northern records come from late April through September, with
+    peak observations during May and August-September. The species remains unpredictable
+    in Scandinavian waters, appearing irregularly rather than as a regular migrant.
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q178811/hero.jpg
+  width: 2400
+  height: 1563
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/52450054@N04">Judy
+    Gallagher</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Glossy Ibis - Plegadis falcinellus,
+    Merritt Island National Wildlife Refuge, Titusville, Florida, Febuary 11, 2022
+    (53050133668).jpg
+  commons_filename: Glossy Ibis - Plegadis falcinellus, Merritt Island National Wildlife
+    Refuge, Titusville, Florida, Febuary 11, 2022 (53050133668).jpg
+- role: secondary
+  path: Q178811/secondary-1.jpg
+  width: 1325
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Glossy Ibis, Plegadis falcinellus
+    at Marievale Nature Reserve, Gauteng, South Africa. Marievale is probably the
+    best place to see this bird. (20491490024).jpg
+  commons_filename: Glossy Ibis, Plegadis falcinellus at Marievale Nature Reserve,
+    Gauteng, South Africa. Marievale is probably the best place to see this bird.
+    (20491490024).jpg
+- role: secondary
+  path: Q178811/secondary-2.jpg
+  width: 1800
+  height: 1012
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/23632548@N00">sighmanb</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Plegadis falcinellus, Pêra,
+    Algarve, Portugal 1.jpg
+  commons_filename: Plegadis falcinellus, Pêra, Algarve, Portugal 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:37:40.510393+00:00'
+sources:
+  wikipedia_sv_revision: '58563218'
+  wikipedia_en_revision: '1347581152'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,109 @@
+id: Q512348
+scientific_name: Platalea alba
+taxonomy:
+  family: Threskiornithidae
+  family_sv: Ibisar
+  genus: Platalea
+  ioc_order: Pelecaniformes
+names:
+  sv: Afrikansk skedstork
+  en: African Spoonbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# African Spoonbill
+
+
+    The African spoonbill is a distinctive long-legged wading bird belonging to the
+    ibis and spoonbill family. Its most notable feature is its characteristic flattened,
+    spoon-shaped bill, which it uses to feed by sweeping through shallow water. The
+    bird has white plumage with a bare facial patch, and its legs are long and adapted
+    for wading in wetland habitats.
+
+
+    This species is found across Africa and Madagascar, frequenting shallow lakes,
+    river deltas, and coastal wetlands where it hunts for fish, crustaceans, and other
+    aquatic prey. The African spoonbill typically feeds in groups, often in the company
+    of other wading birds. It nests colonially, building stick nests in trees or reed
+    beds near water.
+
+
+    The bird is generally silent but produces occasional croaking sounds and bill-clattering
+    displays during breeding season, particularly when establishing territories or
+    interacting with mates. Its widespread distribution across the continent reflects
+    its adaptability to various wetland environments, making it a familiar sight in
+    suitable habitats throughout its range.'
+migration:
+  sv: ''
+  en: '# African Spoonbill (*Platalea alba*) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The African spoonbill is an African and Madagascan species with no established
+    occurrence in Scandinavia or Northern Europe. The source text confirms its distribution
+    is restricted to sub-Saharan Africa and Madagascar, including countries such as
+    South Africa, Botswana, Kenya, and Mozambique. There is no information regarding
+    any presence, migratory patterns, or seasonal movements in Scandinavian or Northern
+    European regions.'
+image_refs:
+- role: hero
+  path: Q512348/hero.jpg
+  width: 2400
+  height: 1472
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Platalea alba - Marievale Nature
+    Reserve (21411648098).jpg
+  commons_filename: Platalea alba - Marievale Nature Reserve (21411648098).jpg
+- role: secondary
+  path: Q512348/secondary-1.jpg
+  width: 1139
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:African Spoonbill, Platalea
+    alba at Rietvlei Nature Reserve, Gauteng, South Africa (22792959412).jpg
+  commons_filename: African Spoonbill, Platalea alba at Rietvlei Nature Reserve, Gauteng,
+    South Africa (22792959412).jpg
+- role: secondary
+  path: Q512348/secondary-2.jpg
+  width: 1800
+  height: 1187
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:African Spoonbill, Platalea
+    alba at Rietvlei Nature Reserve, Gauteng, South Africa (22806435595).jpg
+  commons_filename: African Spoonbill, Platalea alba at Rietvlei Nature Reserve, Gauteng,
+    South Africa (22806435595).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:32:53.225289+00:00'
+sources:
+  wikipedia_sv_revision: '58515707'
+  wikipedia_en_revision: '1353006148'
+  claude_model: claude-haiku-4-5-20251001

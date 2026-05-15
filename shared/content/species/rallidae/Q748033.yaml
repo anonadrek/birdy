@@ -1,0 +1,82 @@
+id: Q748033
+scientific_name: Fulica cristata
+taxonomy:
+  family: Rallidae
+  family_sv: Rallar
+  genus: Fulica
+  ioc_order: Gruiformes
+names:
+  sv: Kamsothöna
+  en: Red-knobbed Coot
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q748033/hero.jpg
+  width: 2400
+  height: 1603
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Encounter between a Red-knobbed
+    Coot, Fulica cristata and an African Spoonbill, Platalea alba, at Marievale Nature
+    Reserve, Gauteng, South Africa (44430191204).jpg
+  commons_filename: Encounter between a Red-knobbed Coot, Fulica cristata and an African
+    Spoonbill, Platalea alba, at Marievale Nature Reserve, Gauteng, South Africa (44430191204).jpg
+- role: secondary
+  path: Q748033/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Encounter between a Red-knobbed
+    Coot, Fulica cristata and an African Spoonbill, Platalea alba, at Marievale Nature
+    Reserve, Gauteng, South Africa (44430191644).jpg
+  commons_filename: Encounter between a Red-knobbed Coot, Fulica cristata and an African
+    Spoonbill, Platalea alba, at Marievale Nature Reserve, Gauteng, South Africa (44430191644).jpg
+- role: secondary
+  path: Q748033/secondary-2.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Red-knobbed Coot (or Crested
+    Coot), Fulica cristata, doing thier usual chasing of one another at Marievale
+    Nature Reserve, Gauteng, South Africa. (45176883162).jpg
+  commons_filename: Red-knobbed Coot (or Crested Coot), Fulica cristata, doing thier
+    usual chasing of one another at Marievale Nature Reserve, Gauteng, South Africa.
+    (45176883162).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:36:51.373332+00:00'
+sources:
+  wikipedia_sv_revision: '58642452'
+  wikipedia_en_revision: '1348817714'
+  claude_model: claude-haiku-4-5-20251001

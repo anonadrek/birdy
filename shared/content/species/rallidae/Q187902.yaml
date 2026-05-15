@@ -1,0 +1,107 @@
+id: Q187902
+scientific_name: Porphyrio porphyrio
+taxonomy:
+  family: Rallidae
+  family_sv: Rallar
+  genus: Porphyrio
+  ioc_order: Gruiformes
+names:
+  sv: Purpurhöna
+  en: Purple Swamphen
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Purple Swamphen
+
+
+    The purple swamphen is a large, colourful rail with striking plumage dominated
+    by deep purple and blue tones on its head, neck, and underparts, contrasting with
+    a greenish back. It has a massive red bill and red frontal shield on the face,
+    along with long red legs. The bird is unmistakable in appearance due to its vibrant
+    colouration and substantial size among rail species.
+
+
+    This species inhabits freshwater wetlands including reed beds, marshes, and swampy
+    areas with dense vegetation. It is largely terrestrial compared to many other
+    rails, often walking openly through reed beds and vegetation rather than skulking
+    in cover. The purple swamphen feeds on plants, seeds, and occasionally invertebrates
+    and small animals, foraging both on land and in shallow water.
+
+
+    The species is vocal, producing loud, distinctive calls including harsh croaks
+    and cackles that carry across wetland habitats. It has been split into several
+    regional species across Africa, Asia, Australia, and the Pacific. The western
+    swamphen occurs in southwest Europe and northwest Africa, while other populations
+    are found across sub-Saharan Africa, the Indian subcontinent, Southeast Asia,
+    and Australasia. It typically favours areas with permanent or semi-permanent water
+    and extensive wetland vegetation.'
+migration:
+  sv: ''
+  en: '# Purple Swamphen (Porphyrio porphyrio) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Purple Swamphen does not occur in Scandinavia or Northern Europe as part of
+    its natural range or migration patterns. The western subspecies (*Porphyrio porphyrio*)
+    is restricted to southwestern Europe and northwestern Africa, making it geographically
+    far removed from Scandinavian latitudes. This tropical and subtropical rail species
+    is not adapted to northern climates and would not be expected as a regular visitor
+    or vagrant to the region.'
+image_refs:
+- role: hero
+  path: Q187902/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Western swamphen (Porphyrio
+    porphyrio), Island of Mallorca, Spain.jpg
+  commons_filename: Western swamphen (Porphyrio porphyrio), Island of Mallorca, Spain.jpg
+- role: secondary
+  path: Q187902/secondary-1.jpg
+  width: 1800
+  height: 1205
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/88123769@N02">Bernard
+    Spragg. NZ</a> from Christchurch, New Zealand
+  source_url: https://commons.wikimedia.org/wiki/File:Pukeko. (Porphyrio porphyrio).
+    (12083002914).jpg
+  commons_filename: Pukeko. (Porphyrio porphyrio). (12083002914).jpg
+- role: secondary
+  path: Q187902/secondary-2.jpg
+  width: 1800
+  height: 1197
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Western swamphen (Porphyrio
+    porphyrio).jpg
+  commons_filename: Western swamphen (Porphyrio porphyrio).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:37:54.326016+00:00'
+sources:
+  wikipedia_sv_revision: '59160070'
+  wikipedia_en_revision: '1322019531'
+  claude_model: claude-haiku-4-5-20251001

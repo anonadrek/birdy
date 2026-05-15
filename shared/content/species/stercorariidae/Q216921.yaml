@@ -1,0 +1,98 @@
+id: Q216921
+scientific_name: Stercorarius longicaudus
+taxonomy:
+  family: Stercorariidae
+  family_sv: Labbar
+  genus: Stercorarius
+  ioc_order: Charadriiformes
+names:
+  sv: Fjällabb
+  en: Long-tailed Jaeger
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fjällabb
+
+
+    Fjällabb är den minsta arten inom labbfamiljen och är lätt igenkännlig på sin
+    eleganta gestalt. Den är en långflyttare som häckar cirkumpolärt i fjäll- och
+    tundraområden under sommaren. Under vintern återfinns arten på havet på södra
+    halvklotet, där den tillbringar större delen av året långt från land.
+
+
+    Arten är anpassad för liv över havet och på fjällen. Fjällabben är erkänd för
+    sitt aggressiva beteende under häckningstiden, då det vigoröst försvarar sitt
+    revir. Det jagar huvudsakligen genom att förfölja och tvinga andra fåglar att
+    släppa sitt byte – en teknik som kallas kleptoparsitism. Arten är därför ofta
+    att se i närheten av andra sjöfåglar och fiskätare.
+
+
+    Fjällabben är kategoriserad som livskraftig av IUCN, vilket betyder att arten
+    för närvarande inte är hotad. Med sin anpassning till hårt väder och stora årliga
+    migreringar visar arten en imponerande förmåga att klara livets utmaningar i både
+    arktiska miljöer och på de världsomfattande haven.'
+  en: ''
+migration:
+  sv: Fjällabb är en långflyttande art som häckar cirkumpolärt i Skandinaviens och
+    Nordens fjäll- och tundraregioner under sommaren. Arten anländer till häckningsområdena
+    under slutet av maj och juni efter sin långa vårflyttning från södra halvklotet.
+    Under hösten, typiskt från augusti till september, påbörjar fjällabben sin övergång
+    till vinterkvarter ute på öppna hav söder om ekvatorn. Under vintermånaderna är
+    arten helt frånvarande från nordiska områden och återkommer inte förrän påföljade
+    vår för att reproducera sig i arctiska tundra- och fjällmiljöer.
+  en: ''
+image_refs:
+- role: hero
+  path: Q216921/hero.jpg
+  width: 2048
+  height: 1374
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/653916">Rob
+    Wadsworth</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Stercorarius longicaudus 559417158.jpg
+  commons_filename: Stercorarius longicaudus 559417158.jpg
+- role: secondary
+  path: Q216921/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1309693">Svyatoslav
+    Knyazev</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Stercorarius longicaudus 551410178.jpg
+  commons_filename: Stercorarius longicaudus 551410178.jpg
+- role: secondary
+  path: Q216921/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:JJ_Harrison" title="User:JJ Harrison">JJ
+    Harrison</a> (<a rel="nofollow" class="external text" href="mailto:jjharrison89@facebook.com">jjharrison89@facebook.com</a>)
+  source_url: https://commons.wikimedia.org/wiki/File:Stercorarius longicaudus -South-east
+    Tasmania, Australia -immature.jpg
+  commons_filename: Stercorarius longicaudus -South-east Tasmania, Australia -immature.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:35:57.178995+00:00'
+sources:
+  wikipedia_sv_revision: '57900979'
+  wikipedia_en_revision: '1314991602'
+  claude_model: claude-haiku-4-5-20251001

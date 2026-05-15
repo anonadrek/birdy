@@ -1,0 +1,116 @@
+id: Q694756
+scientific_name: Cinnyricinclus leucogaster
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Cinnyricinclus
+  ioc_order: Passeriformes
+names:
+  sv: Ametiststare
+  en: Violet-backed Starling
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ametiststare
+
+
+    Ametiststare är en liten och färgglad medlem av starfamiljen som förekommer i
+    Afrika söder om Sahara samt på delar av Arabiska halvön. Fågeln är mycket vacker
+    med sitt distinktiva utseende.
+
+
+    Denna art är vanligt förekommande i sitt utbredningsområde och är därför inte
+    svårt att se för den som vistas rätt plats. Som medlem av starfamiljen delar den
+    många typiska drag med sina släktingar, inklusive sitt beteende och levnadssätt.
+
+
+    För den som är intresserad av att möta ametiststaren rekommenderas det att söka
+    upp lämpliga habitat inom dess kända utbredningsområde i Afrika söder om Sahara.'
+  en: '# Violet-backed Starling
+
+
+    The violet-backed starling is a small, strikingly beautiful starling measuring
+    just 17 cm. It is highly sexually dimorphic: males display a brilliant iridescent
+    violet-blue back, head, and wings, contrasting sharply with a white belly, while
+    females are more subdued with olive-brown upperparts and white underparts. It
+    is the sole member of its genus.
+
+
+    This species inhabits woodlands and savannah forest edges across mainland sub-Saharan
+    Africa. It is rarely encountered on the ground, preferring to feed and perch in
+    trees and elevated locations. The violet-backed starling is typically seen moving
+    through canopy and mid-storey levels, often in small groups or pairs.
+
+
+    Little detail is provided in the source about its call and specific behaviour
+    beyond its arboreal habits and ground avoidance, so these aspects warrant further
+    research in field guides for complete identification in the field.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Violet-backed Starling in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Violet-backed Starling is an African species found in sub-Saharan woodlands
+    and savannah forest edges. It does not occur naturally in Scandinavia or Northern
+    Europe, and therefore no migration patterns for this region can be documented.'
+image_refs:
+- role: hero
+  path: Q694756/hero.jpg
+  width: 2400
+  height: 1527
+  license: CC BY-SA 4.0
+  author: Bernard DUPONT
+  source_url: https://commons.wikimedia.org/wiki/File:Violet-backed Starling (Cinnyricinclus
+    leucogaster), male 342342.jpg
+  commons_filename: Violet-backed Starling (Cinnyricinclus leucogaster), male 342342.jpg
+- role: secondary
+  path: Q694756/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Violet-backed starling (Cinnyricinclus
+    leucogaster verreauxi) female.jpg
+  commons_filename: Violet-backed starling (Cinnyricinclus leucogaster verreauxi)
+    female.jpg
+- role: secondary
+  path: Q694756/secondary-2.jpg
+  width: 1800
+  height: 1456
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Violet-backed Starlings (Cinnyricinclus
+    leucogaster) male ... (45928227544).jpg
+  commons_filename: Violet-backed Starlings (Cinnyricinclus leucogaster) male ...
+    (45928227544).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:38:22.835952+00:00'
+sources:
+  wikipedia_sv_revision: '55408094'
+  wikipedia_en_revision: '1315277271'
+  claude_model: claude-haiku-4-5-20251001

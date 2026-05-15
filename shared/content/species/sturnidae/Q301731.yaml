@@ -1,0 +1,122 @@
+id: Q301731
+scientific_name: Creatophora cinerea
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Creatophora
+  ioc_order: Passeriformes
+names:
+  sv: Flikstare
+  en: Wattled Starling
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Flikstare
+
+
+    Flikstare är en afrikansk fågel som tillhör starfamiljen. Den är en savannbeboende
+    art som förekommer i östra och södra Afrika, men ses även regelbundet på Arabiska
+    halvön. Beståndet anses vara livskraftigt och arten är välanpassad till sitt habitat
+    på öppen savann.
+
+
+    Flikstaren är en medlem av starfamiljen, vilken kännetecknas av dessa fåglar generellt.
+    Arten förekommer främst på savannen där den lever tillsammans med andra arter
+    i samma familj. Även om denna art huvudsakligen är afrikansk, har den etablerat
+    sig på vissa områden utanför sin traditionella utbredning, vilket visar dess anpassningsförmåga.'
+  en: '# Wattled Starling
+
+
+    The Wattled Starling is a nomadic resident found across eastern and southern Africa,
+    inhabiting grasslands, open woodlands, and cultivated areas. This medium-sized
+    starling displays striking plumage with dark grey-black upperparts and pale underparts.
+    During breeding season, males develop distinctive bare facial patches and prominent
+    wattles—fleshy protrusions around the face—which give the species its name. These
+    features are less pronounced in females and non-breeding birds.
+
+
+    Wattled Starlings are highly social birds, often seen in flocks that can number
+    in the hundreds. They forage on the ground for insects and seeds, moving nomadically
+    in response to food availability and breeding conditions. The species is known
+    for its adaptability and unpredictable movements, appearing and disappearing from
+    regions seasonally.
+
+
+    Their vocalizations include chirping calls and various chattering sounds typical
+    of starlings, which become more pronounced when birds gather in groups. They nest
+    colonially, often in loose aggregations, taking advantage of suitable breeding
+    habitat when conditions permit. The species'' nomadic nature makes it a fascinating
+    subject for birdwatchers, as sightings can be sporadic and localized depending
+    on seasonal movements and food sources.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: '# Migration in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Wattled Starling is an African species with a range restricted to eastern
+    and southern Africa, and does not naturally occur in Scandinavia or Northern Europe.
+    Therefore, no information about its seasonal occurrence, migration patterns, or
+    overwintering in the Nordic region can be provided.'
+image_refs:
+- role: hero
+  path: Q301731/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Wattled Starling (Creatophora
+    cinerea) male calling ... (32541920563).jpg
+  commons_filename: Wattled Starling (Creatophora cinerea) male calling ... (32541920563).jpg
+- role: secondary
+  path: Q301731/secondary-1.jpg
+  width: 1800
+  height: 1148
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Wattled Starlings (Creatophora
+    cinerea) (16707782834).jpg
+  commons_filename: Wattled Starlings (Creatophora cinerea) (16707782834).jpg
+- role: secondary
+  path: Q301731/secondary-2.jpg
+  width: 1800
+  height: 1173
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a> from FRANCE
+  source_url: https://commons.wikimedia.org/wiki/File:Day 88 Wattled Starling (Creatophora
+    cinerea) male ... (53403477045).jpg
+  commons_filename: Day 88 Wattled Starling (Creatophora cinerea) male ... (53403477045).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:37:47.189248+00:00'
+sources:
+  wikipedia_sv_revision: '56454780'
+  wikipedia_en_revision: '1331474126'
+  claude_model: claude-haiku-4-5-20251001

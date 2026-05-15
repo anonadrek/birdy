@@ -1,0 +1,124 @@
+id: Q26641
+scientific_name: Turdus torquatus
+taxonomy:
+  family: Turdidae
+  family_sv: Trastar
+  genus: Turdus
+  ioc_order: Passeriformes
+names:
+  sv: Ringtrast
+  en: Ring Ouzel
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ringtrast
+
+
+    Ringtrast är en medelstor trast som häckar i bergstrakter i Europa och västra
+    Asien. Det är en migratorisk art som övervintrar i Medelhavsområdet. Arten är
+    klassificerad som livskraftig enligt IUCN.
+
+
+    Ringtrasten har ett karakteristiskt utseende med mörk fjäderdräkt och en vit eller
+    ljusgrå halsbindning som ger arten sitt namn. Denna ringformade markering är särskilt
+    tydlig hos hannen. Honan är något brunare än hanen men behåller den typiska halsbindningen.
+
+
+    Arten förekommer i öppen och bergig miljö, ofta på höga höjder, där den söker
+    föda bland stenar och på klippor. Som många andra trastar lever ringtrasten på
+    insekter och bär.'
+  en: '# Ring Ouzel
+
+
+    The ring ouzel is a medium-sized thrush measuring 23–24 centimetres and weighing
+    90–138 grams. Males are unmistakable, predominantly black with a striking white
+    crescent marking across the breast. Females are considerably browner and duller,
+    while young birds may lack the pale chest markings entirely. This distinctive
+    appearance makes identification straightforward in its range.
+
+
+    The ring ouzel is primarily a high-altitude breeder across much of Europe, inhabiting
+    open mountain areas with scattered trees and shrubs, particularly juniper and
+    other treeline conifers, alongside rowan, bilberry, heather, and alpenrose. It
+    is a migratory species, abandoning breeding grounds in autumn to winter in southern
+    Europe, North Africa, and Turkey, where it favours mountainous terrain with juniper.
+
+
+    Breeding pairs produce clutches of 3–6 pale blue or greenish-blue eggs with brown
+    flecks. Females incubate almost exclusively, with eggs hatching after approximately
+    13 days. The young fledge within 14 days and remain dependent on their parents
+    for a further 12 days. The species'' specialisation for mountain habitats and
+    migratory lifestyle reflect its adaptation to dramatic seasonal changes across
+    its European range.'
+migration:
+  sv: Ringtrast är en långflyttare som häckar i Skandinaviens och Norr-Europas bergstrakter
+    under sommaren. Arten anländer till häckningsområdena under vårens lopp, typiskt
+    från april till maj. Under hösten påbörjar fåglarna sin migration söderut, och
+    arten övervintrar i Medelhavsregionen från oktober till mars. Ringtrast är därmed
+    endast en säsongsbesökare i norra Europa och förekommer inte under vinterns kallaste
+    månader.
+  en: '# Ring Ouzel in Scandinavia/Northern Europe
+
+
+    The ring ouzel is a migratory thrush that breeds in mountainous regions of Scandinavia
+    and northern Europe during the breeding season. Birds arrive at their breeding
+    grounds in spring, typically from April onwards, after wintering in southern Europe,
+    North Africa, and Turkey. They occupy high-altitude mountain areas with scattered
+    trees and shrubs, particularly those featuring juniper and rowan. Following the
+    breeding season, ring ouzels depart their northern breeding grounds in autumn
+    to return to their winter quarters in the Mediterranean region and beyond. This
+    species is therefore absent from Scandinavian mountains during winter months,
+    making it a strictly seasonal visitor to the region.'
+image_refs:
+- role: hero
+  path: Q26641/hero.jpg
+  width: 2400
+  height: 1640
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/44093058@N06">Blondinrikard
+    Fröberg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ring ouzel, Turdus torquatus,
+    Ringtrast - Flickr - blondinrikard.jpg
+  commons_filename: Ring ouzel, Turdus torquatus, Ringtrast - Flickr - blondinrikard.jpg
+- role: secondary
+  path: Q26641/secondary-1.jpg
+  width: 1800
+  height: 1333
+  license: CC BY-SA 2.0
+  author: Paco Gómez
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus torquatus, Spain 1.jpg
+  commons_filename: Turdus torquatus, Spain 1.jpg
+- role: secondary
+  path: Q26641/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Goodshort" title="User:Goodshort">Goodshort</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus torquatus Chartreuse.jpg
+  commons_filename: Turdus torquatus Chartreuse.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:34:22.098835+00:00'
+sources:
+  wikipedia_sv_revision: '59101190'
+  wikipedia_en_revision: '1327612019'
+  claude_model: claude-haiku-4-5-20251001

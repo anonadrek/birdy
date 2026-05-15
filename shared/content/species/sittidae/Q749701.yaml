@@ -1,0 +1,108 @@
+id: Q749701
+scientific_name: Sitta neumayer
+taxonomy:
+  family: Sittidae
+  family_sv: Nötväckor
+  genus: Sitta
+  ioc_order: Passeriformes
+names:
+  sv: Klippnötväcka
+  en: Western Rock Nuthatch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Western Rock Nuthatch
+
+
+    The western rock nuthatch is a small passerine that inhabits rocky terrain across
+    southeastern Europe and western Asia, with its range extending from Croatia eastward
+    through Greece, Turkey, and into Iran. Unlike many migratory species, it is largely
+    resident throughout the year, though some individuals disperse after breeding
+    season.
+
+
+    This nuthatch is well-adapted to rocky habitats, spending much of its time on
+    steep cliffs and boulder-strewn slopes where it forages for insects and seeds.
+    It moves with characteristic nuthatch agility, often working down rock faces in
+    search of food. The bird is often seen in pairs or small family groups, particularly
+    during breeding season when it excavates nest holes in suitable rock crevices.
+
+
+    The western rock nuthatch is easily distinguished from other nuthatches by its
+    association with bare rock rather than trees. Its call is distinctive and penetrating—a
+    series of loud, rapid whistles that carry well across rocky valleys, making it
+    conspicuous despite its modest size. The bird''s plumage is relatively subdued,
+    with grey-blue upper parts and pale underparts, providing effective camouflage
+    against the rocky slopes it inhabits.'
+migration:
+  sv: ''
+  en: '# Western Rock Nuthatch in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Western Rock Nuthatch is a southern European and Middle Eastern species with
+    a breeding range extending from Croatia through Greece, Turkey, and into Iran.
+    It does not occur naturally in Scandinavia or Northern Europe. The species is
+    largely resident throughout its range, with only minor post-breeding dispersal
+    recorded. It should not be expected in Scandinavian bird guides as a regular visitor
+    or migrant.'
+image_refs:
+- role: hero
+  path: Q749701/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rotsklever - western rock nuthatch
+    - Sitta neumayer 06.jpg
+  commons_filename: Rotsklever - western rock nuthatch - Sitta neumayer 06.jpg
+- role: secondary
+  path: Q749701/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rotsklever - western rock nuthatch
+    - Sitta neumayer.tif
+  commons_filename: Rotsklever - western rock nuthatch - Sitta neumayer.tif
+- role: secondary
+  path: Q749701/secondary-2.jpg
+  width: 1800
+  height: 1294
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rotsklever - western rock nuthatch
+    - Sitta neumayer 02.tif
+  commons_filename: Rotsklever - western rock nuthatch - Sitta neumayer 02.tif
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:32:22.411320+00:00'
+sources:
+  wikipedia_sv_revision: '58129369'
+  wikipedia_en_revision: '1322341147'
+  claude_model: claude-haiku-4-5-20251001

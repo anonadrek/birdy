@@ -1,0 +1,105 @@
+id: Q171360
+scientific_name: Platalea leucorodia
+taxonomy:
+  family: Threskiornithidae
+  family_sv: Ibisar
+  genus: Platalea
+  ioc_order: Pelecaniformes
+names:
+  sv: Skedstork
+  en: Eurasian Spoonbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Eurasian Spoonbill
+
+
+    The Eurasian spoonbill is a distinctive wading bird instantly recognizable by
+    its unique spatulate bill—flattened and broadened at the tip like a spoon. It
+    is a large, predominantly white bird with long legs and a graceful neck, making
+    it unmistakable in wetland habitats. During breeding season, adults develop a
+    crest on the head and acquire pale yellow markings on the neck and breast.
+
+
+    This species frequents shallow waters where it feeds by sweeping its spoon-shaped
+    bill side-to-side through the water to catch small fish, crustaceans, and aquatic
+    invertebrates. It is generally quiet but may produce grunting calls and bill-clattering
+    sounds, particularly at breeding colonies. The bird is gregarious, often seen
+    in flocks, especially during migration and winter.
+
+
+    The Eurasian spoonbill is native to Europe, Africa, and Asia, with populations
+    across a wide range. Northern breeding populations are migratory, moving south
+    during winter months, while more southerly birds may be resident year-round. It
+    prefers reed beds, marshes, and coastal wetlands, where it nests colonially in
+    trees or reed stands.'
+migration:
+  sv: ''
+  en: '# Eurasian Spoonbill Migration in Scandinavia
+
+
+    The Eurasian Spoonbill is a partial migrant in Northern Europe, with populations
+    breeding in Scandinavia and other northerly regions undertaking significant southward
+    movements during winter. Birds from northern breeding areas migrate to wintering
+    grounds in southern Europe, Africa, and Asia, vacating their breeding territories
+    as water bodies freeze. Spring arrival typically occurs from March onwards as
+    conditions improve and breeding wetlands become ice-free. Northern populations
+    show stronger migratory tendencies than their more southern counterparts, which
+    may remain year-round in milder regions where water remains accessible throughout
+    winter.'
+image_refs:
+- role: hero
+  path: Q171360/hero.jpg
+  width: 1800
+  height: 2400
+  license: Public domain
+  author: LordToran
+  source_url: https://commons.wikimedia.org/wiki/File:Lto-tpbo-platalea-leucorodia.JPG
+  commons_filename: Lto-tpbo-platalea-leucorodia.JPG
+- role: secondary
+  path: Q171360/secondary-1.jpg
+  width: 1800
+  height: 1170
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian spoonbill (Platalea
+    leucorodia),bw.jpg
+  commons_filename: Eurasian spoonbill (Platalea leucorodia),bw.jpg
+- role: secondary
+  path: Q171360/secondary-2.jpg
+  width: 1800
+  height: 1196
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Gangulybiswarup" title="User:Gangulybiswarup">Biswarup
+    Ganguly</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Platalea leucorodia - Alipore
+    Zoological Garden - Kolkata 2011-05-03 2543.JPG
+  commons_filename: Platalea leucorodia - Alipore Zoological Garden - Kolkata 2011-05-03
+    2543.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:33:46.638685+00:00'
+sources:
+  wikipedia_sv_revision: '58649443'
+  wikipedia_en_revision: '1352045240'
+  claude_model: claude-haiku-4-5-20251001

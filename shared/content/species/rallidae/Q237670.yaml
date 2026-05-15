@@ -1,0 +1,92 @@
+id: Q237670
+scientific_name: Zapornia pusilla
+taxonomy:
+  family: Rallidae
+  family_sv: Rallar
+  genus: Zapornia
+  ioc_order: Gruiformes
+names:
+  sv: Dvärgsumphöna
+  en: Baillon’s Crake
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dvärgsumphöna
+
+
+    Dvärgsumphöna är en mycket liten fågel inom rallerfamiljen och är en av världens
+    minsta arter i denna grupp. Den är vida spridd och förekommer på flera kontinenter,
+    från Europa och Afrika till Asien och Australien, där den påträffas även långt
+    söderut till Nya Zeeland.
+
+
+    Arten är starkt knuten till grunda våtmarker där den lever bland vegetation. I
+    norra Europa är dvärgsumphöna en sällsynt gäst, och i Sverige finns endast ett
+    tiotal dokumenterade fynd. Den är därför en påtaglig raritet för svenska birdwatchare
+    och väcker alltid uppmärksamhet när den observeras.'
+  en: ''
+migration:
+  sv: Dvärgsumphöna är en mycket sällsynt gäst i Skandinavien och förekommer endast
+    sporadiskt i norra Europa. Arten är en långdistansmigrant som huvudsakligen är
+    hemmastadd i värmare regioner i Europa, Afrika och Asien. I Sverige finns endast
+    ett tiotal dokumenterade fynd, vilket indikerar att arten besöker regionen endast
+    mycket undantagsvis. När dvärgsumphöna förekommer i norra Europa torde det vara
+    under hösten eller våren under migrations­perioder, men arten är så sällsynt att
+    regelbundna ankomst- och avgångsmånader för Skandinavien inte kan fastställas.
+  en: ''
+image_refs:
+- role: hero
+  path: Q237670/hero.jpg
+  width: 2400
+  height: 1563
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:SVKMBFLY" title="User:SVKMBFLY">SVKMBFLY</a>
+  source_url: https://commons.wikimedia.org/wiki/File:ছোট খৈড় (Zapornia pusilla),বারুইপুর,
+    দঃ২৪ পরগনা, পশ্চিমবঙ্গ. DSC1458.jpg
+  commons_filename: ছোট খৈড় (Zapornia pusilla),বারুইপুর, দঃ২৪ পরগনা, পশ্চিমবঙ্গ.
+    DSC1458.jpg
+- role: secondary
+  path: Q237670/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Pdhang&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Pdhang (page does not exist)">Pdhang</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Baillons-crake(Zapornia pusilla))Purbasthali
+    West Bengal India.jpg
+  commons_filename: Baillons-crake(Zapornia pusilla))Purbasthali West Bengal India.jpg
+- role: secondary
+  path: Q237670/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/572037">Jacob
+    Littlejohn</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Zapornia pusilla affinis 243630954.jpg
+  commons_filename: Zapornia pusilla affinis 243630954.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:33:43.488284+00:00'
+sources:
+  wikipedia_sv_revision: '57848866'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

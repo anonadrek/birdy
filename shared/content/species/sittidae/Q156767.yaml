@@ -1,0 +1,134 @@
+id: Q156767
+scientific_name: Sitta europaea
+taxonomy:
+  family: Sittidae
+  family_sv: Nötväckor
+  genus: Sitta
+  ioc_order: Passeriformes
+names:
+  sv: Nötväcka
+  en: Eurasian Nuthatch
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Nötväcka
+
+
+    Nötväckan är en liten, kompakt fågelart med karakteristiska drag. Den har ett
+    stort huvud, kort stjärt, lång spetsig näbb och starka fötter som är väl anpassade
+    för att klättra på trädstammar. Ovansidan är blekt blågrå medan ansiktet är vitt.
+    Undersidan är ljusare, oftast vit eller orangebeige. Ett markant svart ögonbrynsstreck
+    löper över ögat, vilket ger fågeln ett distinkt utseende.
+
+
+    Nötväckan häckar över stora delar av Palearktis. Arten är förekomst i många olika
+    miljöer och är känd för sin skickliga förmåga att röra sig längs trädstammar,
+    ofta i åt båda håll. Det finns ett tjugotal underarter av nötväckan, vilka varierar
+    något beroende på geografisk placering.'
+  en: '# Eurasian Nuthatch
+
+
+    The Eurasian nuthatch is a compact passerine with distinctive plumage: blue-gray
+    upperparts, a striking black eye-stripe, and orange-buff underparts with a white
+    throat in western populations. Its short tail and long, pointed bill are characteristic
+    adaptations for its acrobatic foraging style. Eastern and Russian populations
+    show geographical variation, with some lacking the white throat marking and displaying
+    whitish rather than buff underparts.
+
+
+    This is a highly vocal species, recognizable by its repeated loud "dwip" call
+    that echoes through woodland habitats. It is an active, energetic bird, often
+    seen moving rapidly along tree trunks and branches, frequently descending headfirst—a
+    behavior few other birds perform with such agility. It feeds primarily on insects
+    and seeds, using its strong bill to extract food from bark crevices and to crack
+    open nuts.
+
+
+    The Eurasian nuthatch is found throughout the Palearctic region and across Europe,
+    inhabiting deciduous, mixed, and occasionally coniferous woodlands. Over 20 subspecies
+    exist across its extensive range, reflecting adaptation to local conditions. It
+    is generally a resident or short-distance migrant, remaining in suitable woodland
+    habitat year-round in much of its range.'
+migration:
+  sv: '# Nötväcka - Förekomst i Skandinavien och Nordeuropa
+
+
+    Nötväckan är en övervintrare och fast bosatt art i Skandinavien och Nordeuropa.
+    Den är inte en migratorisk art utan stannar året om i sitt revir, även under hårdare
+    vintrar. Nötväckan förekommer ständigt i löv- och blandskog där den söker föda
+    i trädstammar. Som övervintrare är arten beroende av att hitta insekter i sprickor
+    och under skalbark, samt frön från björk och al.
+
+
+    Arten är inte långdistansmigrant och saknar därför särskilda ankomst- eller avgångstider.
+    Individer kan visa mindre lokala rörelser mellan säsonger, men arten återkommer
+    stadigt till samma territorier. Nötväckan är således en karakteristisk invandrare
+    i nordeuropeiska skogar under alla årstider.'
+  en: '# Eurasian Nuthatch in Scandinavia/Northern Europe
+
+
+    The Eurasian nuthatch is a year-round resident throughout much of Scandinavia
+    and Northern Europe, with populations showing varying degrees of residency depending
+    on latitude and food availability. In southern Scandinavia, nuthatches are largely
+    sedentary, remaining in their territories during winter months. Northern populations
+    may undertake short-distance movements or altitudinal shifts in response to harsh
+    winters and seed crop failures, particularly in coniferous forests. The species
+    does not undertake long-distance migration but relies on stored food reserves
+    and winter feeding opportunities to survive the cold season. Peak breeding activity
+    occurs in spring, with birds occupying woodland habitats year-round where suitable
+    food sources persist.'
+image_refs:
+- role: hero
+  path: Q156767/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
+    Sprinz">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Kleiber (Sitta europaea) im
+    Garten.jpg
+  commons_filename: Kleiber (Sitta europaea) im Garten.jpg
+- role: secondary
+  path: Q156767/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Mr._Lv%C3%AD%C4%8D%C3%A1tko"
+    title="User:Mr. Lvíčátko">Mr. Lvíčátko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sitta europaea building nest.jpg
+  commons_filename: Sitta europaea building nest.jpg
+- role: secondary
+  path: Q156767/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/128941223@N02">caroline
+    legg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Nuthatch - Sitta europaea (50408619696).jpg
+  commons_filename: Nuthatch - Sitta europaea (50408619696).jpg
+review_status: approved
+review_notes: "Hero = Sitta europaea (Eurasian Nuthatch / Nötväcka); allmän i lövskog och blandskog i hela SE."
+generated_at: '2026-05-15T21:33:44.269134+00:00'
+sources:
+  wikipedia_sv_revision: '58491129'
+  wikipedia_en_revision: '1342629361'
+  claude_model: claude-haiku-4-5-20251001

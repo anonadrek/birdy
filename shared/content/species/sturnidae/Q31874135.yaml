@@ -1,0 +1,63 @@
+id: Q31874135
+scientific_name: Acridotheres leucocephalus
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Acridotheres
+  ioc_order: Passeriformes
+names:
+  sv: Acridotheres leucocephalus
+  en: Vinous-breasted Myna
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vinmajna
+
+
+    Vinmajna är en medlemi familjen starar och utgör en nyligen urskild art som tidigare
+    klassificerades som underart till Acridotheres burmannicus. Det är en medelstor
+    stare med karakteristiska drag som särskiljer det från närbesläktade arter.
+
+
+    Arten förekommer i olika habitat där det förlitar sig på sitt typiska starbeteende.
+    Som övriga majna är det en mycket social fågel som ofta ses i flockar, särskilt
+    utanför häckningssäsongen. Det är främst en boende i låglandet och förekommer
+    i varierade miljöer där det söker föda tillsammans med andra individer av samma
+    eller närbesläktade arter.
+
+
+    För den intresserade fågelbeskådaren kan vinmajna vara en spännande observation,
+    särskilt när man studerar de olika majnaarterna och deras utbredning. Artseparationen
+    från burmannusmajan är relativt ny, vilket gör denna fågel till ett viktigt exempel
+    på hur vetenskaplig förståelse för arter utvecklas över tid.'
+  en: ''
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:36:23.996947+00:00'
+sources:
+  wikipedia_sv_revision: '56773245'
+  wikipedia_en_revision: '1345842520'
+  claude_model: claude-haiku-4-5-20251001

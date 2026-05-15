@@ -1,0 +1,120 @@
+id: Q180051
+scientific_name: Sitta whiteheadi
+taxonomy:
+  family: Sittidae
+  family_sv: Nötväckor
+  genus: Sitta
+  ioc_order: Passeriformes
+names:
+  sv: Korsikansk nötväcka
+  en: Corsican Nuthatch
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Korsikansk nötväcka
+
+
+    Korsikansk nötväcka är en liten medlem av nötväckfamiljen som är starkt knuten
+    till Korsika, där den är endemit. Arten är relativt fåtalig och förekommer uteslutande
+    på denna medelhavöar.
+
+
+    Arten står på IUCN:s röda lista över hotade arter då populationen är minskande.
+    Detta gör den till en särskilt intressant och värdefull art för ornitologer och
+    fågelskådare som besöker regionen. Bevaringen av habitatet är avgörande för artens
+    överlevnad.'
+  en: '# Corsican Nuthatch
+
+
+    The Corsican nuthatch is one of Europe''s smallest nuthatches, measuring just
+    12 cm in length. It displays bluish-grey upperparts with greyish-white underparts,
+    making it relatively subtle in appearance. The most distinctive feature is the
+    male''s entirely black crown, which contrasts sharply with the female''s grey
+    crown, allowing for easy sex identification in the field.
+
+
+    This sedentary and territorial species shows little fear of observers and spends
+    considerable time foraging high in Corsican pines, where it extracts seeds from
+    cones with characteristic nuthatch precision. It supplements its diet with flying
+    insects caught on the wing. The bird is generally quiet and unobtrusive, blending
+    well with its preferred pine habitat.
+
+
+    Breeding occurs between April and May, when pairs excavate nest cavities in the
+    trunks of old pines. Females typically lay clutches of five to six eggs, with
+    chicks fledging approximately three weeks after hatching. The species remains
+    on its breeding territories year-round, making it a permanent resident of its
+    restricted range within the island''s pine forests.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    *Explanation: The provided source text contains only information about the species''
+    distribution (endemic to Corsica) and conservation status, but includes no information
+    about migration patterns, overwintering behavior, seasonal movements, or occurrence
+    in Scandinavia/Northern Europe. Since the Corsican Nuthatch is endemic to Corsica
+    and does not occur in Scandinavia or Northern Europe, migration data relevant
+    to that region is unavailable.*'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides breeding and feeding information for the Corsican Nuthatch
+    but contains no details about migration patterns, seasonal movements, or occurrence
+    throughout the year in Scandinavia or Northern Europe. The only migration-related
+    mention is that the species is described as "sedentary," indicating it does not
+    migrate, but no specific information about its presence in Scandinavian or Northern
+    European regions is provided.'
+image_refs:
+- role: hero
+  path: Q180051/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/66419243@N03">Àlex
+    Milian</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pica-soques cors (Sitta whiteheadi).jpg
+  commons_filename: Pica-soques cors (Sitta whiteheadi).jpg
+- role: secondary
+  path: Q180051/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 4.0
+  author: Christoph Moning (iNaturalist user christoph_moning)
+  source_url: https://commons.wikimedia.org/wiki/File:Sitta whiteheadi - Christoph
+    Moning - 8.jpeg
+  commons_filename: Sitta whiteheadi - Christoph Moning - 8.jpeg
+- role: secondary
+  path: Q180051/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 4.0
+  author: Christoph Moning (iNaturalist user christoph_moning)
+  source_url: https://commons.wikimedia.org/wiki/File:Sitta whiteheadi - Christoph
+    Moning - 4.jpeg
+  commons_filename: Sitta whiteheadi - Christoph Moning - 4.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:37:46.289948+00:00'
+sources:
+  wikipedia_sv_revision: '57403352'
+  wikipedia_en_revision: '1349898815'
+  claude_model: claude-haiku-4-5-20251001

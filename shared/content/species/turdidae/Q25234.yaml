@@ -102,9 +102,6 @@ migration:
     across their northern ranges by April-May. The species'' flexible migratory strategy
     allows populations to adjust their movements based on winter severity and food
     availability.'
-marginalia:
-  sv: Koltrastens kvällssång bär längre än någon annans i parken.
-  en: The blackbird's evening song carries farther than any other in the park.
 image_refs:
 - role: hero
   path: Q25234/hero.jpg
@@ -131,8 +128,8 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Turdus merula 1321.jpg
   commons_filename: Turdus merula 1321.jpg
 review_status: approved
-review_notes: ''
-generated_at: '2026-05-03T21:30:23.426529+00:00'
+review_notes: "Hero = Turdus merula (Common Blackbird / Koltrast); SE:s vanligaste trast i trädgårdar och skog."
+generated_at: '2026-05-15T21:32:14.204674+00:00'
 sources:
   wikipedia_sv_revision: '59018904'
   wikipedia_en_revision: '1350843747'

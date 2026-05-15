@@ -1,0 +1,128 @@
+id: Q20823352
+scientific_name: Pastor roseus
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Pastor
+  ioc_order: Passeriformes
+names:
+  sv: Rosenstare
+  en: Rosy Starling
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rosenstare
+
+
+    Rosenstaren är en medelstor stare som tillhör familjen starar. Fågeln är en flyttfågel
+    som normalt förekommer på stäpper och i halvöken öster om Svarta havet ner till
+    Tien Shan-bergen. Under vintermånaderna söker den sig framförallt till Indien
+    och tropiska Asien för att övervintra.
+
+
+    Arten är klassificerad som livskraftig enligt IUCN:s värdering, vilket indikerar
+    att populationen är stabil och inte hotas av utdöende. Rosenstaren är väl anpassad
+    till sitt biotopval i öppna och halvöppna landskap där det finns tillräckligt
+    med föda och häckningsplatser.'
+  en: '# Rosy Starling
+
+
+    The rosy starling is a striking passerine belonging to the starling family, distinguished
+    by its distinctive plumage that combines black and soft rose-pink coloration.
+    It was recently elevated to its own monotypic genus, Pastor, following genetic
+    studies that separated it from the genus Sturnus, though the full extent of its
+    closest relatives remains uncertain.
+
+
+    Like other starlings, the rosy starling is a gregarious and active bird, often
+    seen in small to large flocks during migration and winter. It forages on the ground
+    and in trees, feeding opportunistically on insects, seeds, and fruits depending
+    on seasonal availability. The species is generally vocal, producing a variety
+    of chattering calls and song phrases typical of starlings, though less musical
+    than some relatives.
+
+
+    The rosy starling breeds across parts of southeastern Europe and Asia, with populations
+    showing considerable year-to-year variation in breeding range and abundance. During
+    migration and winter, it ranges more widely across Asia and occasionally reaches
+    Europe. The species favours open and semi-open habitats including grasslands,
+    agricultural areas, and scrubland, where it can be encountered singly or in impressive
+    flocks alongside other starling species.'
+migration:
+  sv: '# Rosenstare – Förekomst i Skandinavien/Nordeuropa
+
+
+    Rosenstaren är en flyttfågel som normalt inte häckar i Skandinavien eller Nordeuropa,
+    utan är huvudsakligen utbredd på stäpper och i halvöken öster om Svarta havet.
+    Under hösten migrerar arten söderut för att övervintra framför allt i Indien och
+    tropiska Asien. Sporadiska observationer förekommer dock ibland i norra Europa
+    under höstmigrationen, då individer förvandrar från sitt asiatiska utbredningsområde.
+    Dessa är att betrakta som vaganter snarare än regelbundna besökare i regionen.'
+  en: '# Rosy Starling in Northern Europe
+
+
+    The Rosy Starling is an irregular vagrant to Scandinavia and Northern Europe,
+    with no established resident or regular migratory population in the region. Records
+    are sporadic and typically occur during late summer and autumn months (August–October),
+    representing birds that have wandered northwestward from their primary breeding
+    range in Central Asia and wintering grounds in the Indian subcontinent. These
+    appearances are unpredictable and may follow successful breeding seasons or periods
+    of population expansion. The species does not form a regular part of the Scandinavian
+    avifauna and should be considered a rare, occasionally recorded visitor rather
+    than a predictable migrant.'
+image_refs:
+- role: hero
+  path: Q20823352/hero.jpg
+  width: 2048
+  height: 1362
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3160036">Лариса
+    Артемьева</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pastor roseus 527037166.jpg
+  commons_filename: Pastor roseus 527037166.jpg
+- role: secondary
+  path: Q20823352/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Rosy Starling (Pastor roseus)
+    (24633858726).jpg
+  commons_filename: Rosy Starling (Pastor roseus) (24633858726).jpg
+- role: secondary
+  path: Q20823352/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Rosy Starling (Pastor roseus)
+    പന്തിക്കാളി, റോസ് മൈന. (39777650621).jpg
+  commons_filename: Rosy Starling (Pastor roseus) പന്തിക്കാളി, റോസ് മൈന. (39777650621).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:38:28.753994+00:00'
+sources:
+  wikipedia_sv_revision: '58626037'
+  wikipedia_en_revision: '1315330909'
+  claude_model: claude-haiku-4-5-20251001

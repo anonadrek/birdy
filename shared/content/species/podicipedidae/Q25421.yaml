@@ -1,0 +1,127 @@
+id: Q25421
+scientific_name: Tachybaptus ruficollis
+taxonomy:
+  family: Podicipedidae
+  family_sv: Doppingar
+  genus: Tachybaptus
+  ioc_order: Podicipediformes
+names:
+  sv: Smådopping
+  en: Little Grebe
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Smådopping
+
+
+    Smådopping är en av världens minsta doppingar med ett enormt utbredningsområde
+    som sträcker sig från Europa och Centralasien till Nya Guinea och Afrika. Arten
+    är välkänd för sin lilla, kompakta gestalt och sitt rostbruna nacke- och halskote
+    under häckningstiden, vilket ger den sitt svenska namn. Under vintermånaderna
+    blir färgningen mattare och gråare.
+
+
+    Smådoppingen är en skicklig dykare som framför allt söker föda under vattenytan,
+    där den är synnerligt hemmastadd. Den förekommer på både mindre och större vattendrag
+    såväl som på sjöar och dammar, där den smidigt manövrerar bland växtligheten.
+    Arten är känd för sitt karakteristiska ljuda, tremolande rop som ofta hörs på
+    kvällstid.
+
+
+    De populationer som häckar på vatten som fryser under vintern är flyttfåglar och
+    drar söderut när isningen börjar. Smådoppingen är globalt klassificerad som livskraftig
+    enligt IUCN, och arten är ganska vanlig inom sitt stora utbredningsområde.'
+  en: '# Little Grebe
+
+
+    The little grebe, also called the dabchick, is a small member of the grebe family,
+    a group of specialized water birds. Its scientific name, Tachybaptus ruficollis,
+    reflects its characteristics: "tachybaptus" refers to its swift diving ability
+    (from Greek words meaning "fast" and "to sink under"), while "ruficollis" describes
+    its distinctive reddish neck. This diminutive diver is perfectly adapted to aquatic
+    life, with its compact body and legs positioned far back on its body, making it
+    highly efficient in water but awkward on land. The little grebe typically inhabits
+    small freshwater bodies such as ponds, marshes, and quiet lake margins with good
+    vegetation cover. It feeds by diving to catch small fish, aquatic insects, and
+    crustaceans. When alarmed, it can sink quietly beneath the surface rather than
+    taking flight, a behaviour that contributes to its alternative common name. Its
+    distinctive call is a loud, repetitive whinnying trill, particularly audible during
+    breeding season when pairs defend territories on their chosen water bodies.'
+migration:
+  sv: '# Smådopping i Skandinavien och Nordeuropa
+
+
+    Smådoppingen är en stannfågel och delpraktikant i Skandinavien och Nordeuropa.
+    De populationer som häckar i regioner där vattnet fryser under vintern, migrerar
+    söderut för att undvika isläggning. I mildare områden längs västkusten kan vissa
+    individer stanna året om, särskilt vid öppna vatten. Fåglarna återvänder från
+    sina övervintringsplatser i södra Europa och Afrika under mars-april för att påbörja
+    häckningstiden. Under hösten, från september och framåt, påbörjas södervandringen
+    när vattnena börjar frysa till.'
+  en: '# Little Grebe (Tachybaptus ruficollis) in Scandinavia/Northern Europe
+
+
+    The Little Grebe is a migratory species in Northern Europe, with populations showing
+    variable movement patterns depending on winter conditions. In Scandinavia, breeding
+    birds typically arrive in spring (April-May) and depart in autumn (September-October).
+    Northern populations are largely migratory, moving to ice-free waters in southern
+    Scandinavia, continental Europe, or the Mediterranean region for winter. However,
+    some individuals may overwinter on ice-free freshwater lakes and coastal areas
+    if conditions permit. The species is absent from frozen waters during harsh winters
+    but returns promptly when ice melts in spring.'
+image_refs:
+- role: hero
+  path: Q25421/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Interaccoonale" title="User:Interaccoonale">Sun
+    Jiao (Interaccoonale)</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tachybaptus ruficollis-SJ 08172.jpg
+  commons_filename: Tachybaptus ruficollis-SJ 08172.jpg
+- role: secondary
+  path: Q25421/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/60513640@N07">Agustín
+    Povedano</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Zampullín chico, joven Tachybaptus
+    ruficollis 5.jpg
+  commons_filename: Zampullín chico, joven Tachybaptus ruficollis 5.jpg
+- role: secondary
+  path: Q25421/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Little grebe (Tachybaptus ruficollis)
+    2023.jpg
+  commons_filename: Little grebe (Tachybaptus ruficollis) 2023.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:37:20.434693+00:00'
+sources:
+  wikipedia_sv_revision: '59273473'
+  wikipedia_en_revision: '1353663167'
+  claude_model: claude-haiku-4-5-20251001

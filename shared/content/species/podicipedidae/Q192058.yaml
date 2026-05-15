@@ -1,0 +1,134 @@
+id: Q192058
+scientific_name: Podiceps auritus
+taxonomy:
+  family: Podicipedidae
+  family_sv: Doppingar
+  genus: Podiceps
+  ioc_order: Podicipediformes
+names:
+  sv: Svarthakedopping
+  en: Horned Grebe
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svarthakedopping
+
+
+    Svarthakedopping är en medelstor dopping med distinkt utseende under häckningssäsongen.
+    I häckningsdräkt bär den ett svart huvud med karakteristiska rödgula örontofsar,
+    en roströd hals och intensivt röda ögon som ger den ett iögonfallande uttryck.
+    Under vinterhalvåret blir fjäderdräkten mattare och mer diskret. Det är en elegant
+    och kompakt fågel som är väl anpassad för sitt vattenlevande liv.
+
+
+    Arten förekommer i sjöar på både norra och södra halvklotet – i Europa, Asien
+    och Nordamerika. Det är en dykfågel som söker sin föda under vattenytan och ägnar
+    mycket tid i vattnet. Under häckningstiden är den relativt skygga och håller sig
+    ofta på djupare vattenpartier.
+
+
+    Globalt är arten klassificerad som utrotningshotad och populations minskar drastiskt
+    i många områden. Dock är situationen i Sverige mer positiv där beståndet numera
+    är stabilt, vilket gör landet relativt viktigt för arten långsiktiga överlevnad.'
+  en: '# Horned Grebe
+
+
+    The horned grebe is a small, threatened waterbird belonging to the grebe family.
+    Two subspecies exist: one breeds across northern Eurasia from Iceland to the Russian
+    Far East, while the other inhabits most of Canada and parts of the northern United
+    States. The species is relatively compact and specialized for aquatic life.
+
+
+    In breeding plumage, the horned grebe displays distinctive golden-yellow ear tufts
+    that give it its common name, contrasting with a dark head and neck. During winter,
+    it becomes much duller, adopting grey and white plumage that makes identification
+    more challenging. Like other grebes, it is superbly adapted for diving, with legs
+    positioned far back on its body for propulsion underwater, making it awkward on
+    land.
+
+
+    The species favors freshwater lakes and ponds for breeding, preferring areas with
+    emergent vegetation. It feeds primarily on small fish and aquatic invertebrates
+    obtained through diving. Its vocalizations include various calls during the breeding
+    season, though it becomes largely silent in winter. Outside the breeding season,
+    horned grebes migrate to coastal waters and larger inland lakes, where they can
+    be spotted singly or in small groups.'
+migration:
+  sv: '# Svarthakedopping – Säsongsförekomst i Norden
+
+
+    Svarthakedopping är en flyttfågel som förekommer i Skandinavien främst under häckningstiden
+    på större sjöar och insjöar. Arten anländer till nordiska häckningsområden under
+    våren, typiskt under april och maj månad. Under hösten, vanligtvis från augusti
+    till oktober, drar fåglarna söderut för att övervintring på kustnära vatten och
+    öppna sjöar i södra Europa och Medelhavsregionen. Ett mindre antal individer kan
+    övervintra på isfria sjöar i sydligare delen av Skandinavien under milda vintrar.
+    Populationen i Sverige har stabiliserats efter tidigare kraftiga nedgångar, och
+    arten är fortsatt en regelbunden häckfågel i landet.'
+  en: '# Horned Grebe (Podiceps auritus) in Northern Europe
+
+
+    The Horned Grebe''s Eurasian subspecies (*P. a. auritus*) is widely distributed
+    across northern Europe and Asia, breeding from Iceland eastward to the Russian
+    Far East. In Scandinavia and Northern Europe, this species is a migratory breeder,
+    arriving in spring to occupy freshwater lakes and wetlands for the breeding season.
+    During winter, populations move to coastal marine waters, including the North
+    Sea and Baltic coasts, or migrate further south to ice-free waters. The species
+    is absent from most northern breeding areas during the coldest months, with migration
+    timing varying by latitude and local ice conditions.'
+image_refs:
+- role: hero
+  path: Q192058/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/glaciernps/">GlacierNPS</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Horned Grebe - Podiceps auritus
+    (19185326539).jpg
+  commons_filename: Horned Grebe - Podiceps auritus (19185326539).jpg
+- role: secondary
+  path: Q192058/secondary-1.jpg
+  width: 1800
+  height: 1303
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Podiceps auritus Oulu Finland
+    2020-05-08.jpg
+  commons_filename: Podiceps auritus Oulu Finland 2020-05-08.jpg
+- role: secondary
+  path: Q192058/secondary-2.jpg
+  width: 1800
+  height: 1273
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Tsyganov_Sergey&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Tsyganov Sergey (page does not exist)">Tsyganov Sergey</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Podiceps auritus Красношейная
+    поганка на гнезде 03.jpg
+  commons_filename: Podiceps auritus Красношейная поганка на гнезде 03.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:35:15.836679+00:00'
+sources:
+  wikipedia_sv_revision: '56064564'
+  wikipedia_en_revision: '1314864005'
+  claude_model: claude-haiku-4-5-20251001

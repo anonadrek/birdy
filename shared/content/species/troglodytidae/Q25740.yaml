@@ -1,0 +1,137 @@
+id: Q25740
+scientific_name: Troglodytes troglodytes
+taxonomy:
+  family: Troglodytidae
+  family_sv: Gärdsmygar
+  genus: Troglodytes
+  ioc_order: Passeriformes
+names:
+  sv: Gärdsmyg
+  en: Eurasian Wren
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gärdsmyg
+
+
+    Gärdsmyg är en mycket liten brun tätting som genast känns igen på sin korta, upprätta
+    stjärt. Fågeln är kompakt byggd med rynklig fjäderdräkt och lever mestadels av
+    insekter som det plockar från vegetation och bark.
+
+
+    Arten är mycket livlig och rörig i sitt beteende, med snabba, spretiga rörelser
+    när det söker föda. Gärdsmyget är en ihärdig försvarare av sitt revir och kan
+    verka överraskande aggressivt för sin storlek. Arten har en kraftfull och överraskande
+    högljudd sång för en så liten fågel, ofta levererad från väl dolda platser i tät
+    vegetation.
+
+
+    Gärdsmyget är utbrett och återfinns i många olika miljöer där det finns tät växtlighet
+    – i trädgårdar, buskskogar, heteromt terräng och nära människobygder. Det är en
+    året-runt-bosättare i många områden, även om populationerna kan variera kraftigt
+    efter hårda vintrar.'
+  en: '# Eurasian Wren
+
+
+    The Eurasian wren is a diminutive insectivorous bird and the only wren species
+    found across the Old World, inhabiting Eurasia and North Africa. It is instantly
+    recognizable by its very short, often-erect tail, short neck, and relatively long
+    thin bill. The plumage is russet-brown above with paler buff-brown underparts,
+    finely barred with darker markings throughout, and a distinctive cream-buff stripe
+    above the eye. Males and females are identical in appearance.
+
+
+    This energetic bird frequents dense vegetation, woodland edges, hedgerows, and
+    scrubland where it forages actively for insects and spiders among leaf litter
+    and undergrowth. It moves with characteristic jerky, mouse-like hops and frequently
+    cocks its tail upright. Despite its tiny size, the wren is remarkably bold and
+    pugnacious.
+
+
+    The wren''s call is striking—a loud, explosive trill that seems disproportionate
+    to its diminutive body. This penetrating song is delivered from exposed perches
+    and serves to establish territory. The species is found across much of temperate
+    and boreal regions, though populations in northern areas may migrate southward
+    during harsh winters. It remains one of Europe''s most familiar garden birds.'
+migration:
+  sv: '# Gärdsmyg – förekomst i Skandinavien året runt
+
+
+    Gärdsmyget är en året runt bosatt art i Skandinavien och övriga Nordeuropa. Även
+    om huvuddelen av populationen är stationär, förekommer viss västvandring under
+    hösten, där nordliga populationer från Skandinavien och Ryssland förflyttar sig
+    västerut. Arten är känslig för hårda vintrar, vilket kan orsaka omfattande dödelighet
+    under extrema väderförhållanden. Under våren återvänder övervintrade individer
+    gradvis till sina häckningsområden från mars till april.
+
+
+    Gärdsmyget förekommer året om i olika delar av sitt utbredningsområde, men övervintringsområdet
+    varierar mellan milder västra kuster och kallare inre delar. Den är främst aktiv
+    i tätare vegetation och buskmark där den söker skydd och föda.'
+  en: '# Eurasian Wren in Northern Europe
+
+
+    The Eurasian Wren is a resident species throughout Scandinavia and Northern Europe,
+    present year-round. Northern populations show partial migration, with some individuals
+    moving southward during harsh winters, while others remain in their territories.
+    Wrens are highly adaptable to cold climates and can survive winter by sheltering
+    in dense vegetation, hedgerows, and man-made structures. Spring arrivals and autumn
+    departures are less pronounced than in many migratory species, as populations
+    are bolstered by resident birds that do not leave. In southern Scandinavia, wrens
+    are more likely to be permanent residents, whereas northern populations may show
+    greater seasonal movement depending on weather severity.'
+image_refs:
+- role: hero
+  path: Q25740/hero.jpg
+  width: 2400
+  height: 1584
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian wren (Troglodytes troglodytes).jpg
+  commons_filename: Eurasian wren (Troglodytes troglodytes).jpg
+- role: secondary
+  path: Q25740/secondary-1.jpg
+  width: 1800
+  height: 1590
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Wren Troglodytes troglodytes
+    (51862229887).jpg
+  commons_filename: Wren Troglodytes troglodytes (51862229887).jpg
+- role: secondary
+  path: Q25740/secondary-2.jpg
+  width: 1800
+  height: 1216
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Naturgucker_Illtal" title="User:Naturgucker
+    Illtal">Simon Mannweiler</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Troglodytes troglodytes (Zaunkönig)
+    2024-03-10 (01).jpg
+  commons_filename: Troglodytes troglodytes (Zaunkönig) 2024-03-10 (01).jpg
+review_status: approved
+review_notes: "Hero = Troglodytes troglodytes (Eurasian Wren / Gärdsmyg); allmän i undervegetation i hela SE."
+generated_at: '2026-05-15T21:34:53.623220+00:00'
+sources:
+  wikipedia_sv_revision: '59138421'
+  wikipedia_en_revision: '1351375192'
+  claude_model: claude-haiku-4-5-20251001

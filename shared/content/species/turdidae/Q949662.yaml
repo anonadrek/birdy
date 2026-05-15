@@ -1,0 +1,100 @@
+id: Q949662
+scientific_name: Zoothera aurea
+taxonomy:
+  family: Turdidae
+  family_sv: Trastar
+  genus: Zoothera
+  ioc_order: Passeriformes
+names:
+  sv: Guldtrast
+  en: White’s Thrush
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Guldtrast
+
+
+    Guldtrast är en stor trast som häckar i tajgans skogar från Uralbergen österut
+    till Japan. Vintertid företar arten en långväga flyttning söderut till sydöstra
+    Asien. Utanför sitt ordinarie utbredningsområde är guldtrasten mycket sällsynt
+    i västra Europa, även om den påträffas då och då under flyttning. I Sverige är
+    arten mycket ovanlig och har endast noterats ett fåtal gånger.
+
+
+    Denna trast tillhör en artkomplex där gränserna mellan närbesläktade former ännu
+    inte är helt klarlagd. Vissa taxonomer inkluderar sydöstasiatiska bestånd inom
+    arten, medan detta är omöjligt att fastställa med säkerhet. Beståndet ses globalt
+    som livskraftigt, även om antalet individer minskar på grund av habitatförlust.
+
+
+    Guldtrasten föredrar skogliga miljöer där den söker föda på marken efter insekter
+    och andra små djur. För den intresserade observatören är arten främst relevant
+    under höstens flyttningsperiod, då sällsynta fynd kan inträffa långt västerut
+    från dess vanliga habitat.'
+  en: ''
+migration:
+  sv: '# Guldtrast – Utbredning och flyttning i Norden
+
+
+    Guldtrast är en östasiatisk art som förekommer mycket sällsynt i västra Europa,
+    inklusive Sverige där endast sex fynd är dokumenterade. Arten häckar i tajgaskogarna
+    från Uralbergen österut till Japan under sommaren. Under vintermånaderna migrerar
+    guldtrasten söderut till sydöstra Asien för att övervinta. I Skandinavien och
+    västra Europa uppträder arten endast sporadiskt som en mycket sällsynt tillfällig
+    gäst, utan ett etablerat migrations- eller övernintringsbeteende i regionen.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q949662/hero.jpg
+  width: 2400
+  height: 1590
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/131638179@N02">Chun-Chieh
+    Liao</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Zoothera aurea, Taiwan 2016.jpg
+  commons_filename: Zoothera aurea, Taiwan 2016.jpg
+- role: secondary
+  path: Q949662/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29310050@N04">yamatsu</a>
+  source_url: https://commons.wikimedia.org/wiki/File:トラツグミ(虎鶫) (Zoothera aurea),
+    Japan (5965995869).jpg
+  commons_filename: トラツグミ(虎鶫) (Zoothera aurea), Japan (5965995869).jpg
+- role: secondary
+  path: Q949662/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/89279812@N07">harum.koh</a>
+    from Kobe city, Japan
+  source_url: https://commons.wikimedia.org/wiki/File:Zoothera aurea, Kobe-shi, Japan
+    1.jpg
+  commons_filename: Zoothera aurea, Kobe-shi, Japan 1.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:34:11.714636+00:00'
+sources:
+  wikipedia_sv_revision: '59100048'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

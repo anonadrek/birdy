@@ -1,0 +1,87 @@
+id: Q632399
+scientific_name: Phalacrocorax nigrogularis
+taxonomy:
+  family: Phalacrocoracidae
+  family_sv: Skarvar
+  genus: Phalacrocorax
+  ioc_order: Suliformes
+names:
+  sv: Sokotraskarv
+  en: Socotra Cormorant
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sokotraskarv
+
+
+    Sokotraskarv är en skarv som är nästan helt begränsad till området kring Arabiska
+    halvön. Arten tillhör familjen skarvar och är starkt hotad, med en kraftigt minskande
+    population. Det är en relativt stor fågel med mörkfärgad fjäderdräkt, karakteristisk
+    för många skarvar.
+
+
+    Arten är en dykfågel som lever av att jaga fisk under vattenytan. Det förekommer
+    främst i kustområden och på havet, där det lever tillsammans med andra sjöfåglar.
+    Sokotraskarv är en kolonihäckande fågel som bildas stora samlingar under fortplantningssäsongen.
+
+
+    Populationen har minskat dramatiskt under senare årtionden, vilket gör arten till
+    en av världens mest hotade skarvar. Huvudsakliga hot mot arten är föroreningar,
+    öljekatastrofer och störning av häckningsplatser. Naturvårdsinsatser är nödvändiga
+    för att bevara arten för framtiden.'
+  en: '# Socotra Cormorant
+
+
+    The Socotra cormorant is a threatened diving seabird found exclusively in the
+    Persian Gulf and along the southeast coast of the Arabian Peninsula. It is occasionally
+    encountered as far west as the Red Sea coast, though such movements remain uncommon.
+    Breeding on the Socotra islands was confirmed relatively recently, in 2005, making
+    this species'' distribution better understood in modern times.
+
+
+    As a cormorant, it shares the family''s characteristic features: a streamlined
+    body adapted for underwater pursuit of fish, dark plumage, and excellent diving
+    ability. Like other cormorants, it spends much time in the water and on rocky
+    outcrops or islands where it rests and breeds. The species'' threatened status
+    reflects its limited range and specific habitat requirements, making it vulnerable
+    to environmental changes and human pressures in its restricted geographic area.'
+migration:
+  sv: 'sv: Migrationsdata saknas för denna art.
+
+
+    en: Migration data unavailable for this species.'
+  en: '**Migration data unavailable for this species.**
+
+
+    The Socotra Cormorant is endemic to the Persian Gulf and southeastern Arabian
+    Peninsula, with only occasional movements as far west as the Red Sea coast. This
+    species does not occur in Scandinavia or Northern Europe, and therefore migration
+    patterns relevant to these regions are not applicable. The bird''s range is restricted
+    to tropical and subtropical waters of the Arabian Sea and Persian Gulf regions.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:36:50.348960+00:00'
+sources:
+  wikipedia_sv_revision: '55729956'
+  wikipedia_en_revision: '1315354558'
+  claude_model: claude-haiku-4-5-20251001

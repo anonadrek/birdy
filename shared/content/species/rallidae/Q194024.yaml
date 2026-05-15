@@ -1,0 +1,133 @@
+id: Q194024
+scientific_name: Porzana porzana
+taxonomy:
+  family: Rallidae
+  family_sv: Rallar
+  genus: Porzana
+  ioc_order: Gruiformes
+names:
+  sv: Småfläckig sumphöna
+  en: Spotted Crake
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Småfläckig sumphöna
+
+
+    Småfläckig sumphöna är en liten rallfågel som häckar i våtmarker över stora delar
+    av Europa och västra Asien. Under vintern genomför den långväga förflyttningar
+    till södra Asien och östra Afrika för att söka föda. Globalt sett är beståndet
+    stabilt och livskraftigt, men i Sverige är arten ovanlig och antalet individer
+    minskar stadigt. På grund av denna nedgång har småfläckig sumphöna placerats på
+    Artdatabankens röda lista över hotade arter.
+
+
+    Arten är anpassad för livet bland växtligheten i våtmarker, där den lever diskret
+    och dolt. Som rallfågel är den byggd för att röra sig genom snår och gräs snarare
+    än för flygning. Svenska förekomster är begränsade, och arten är något som främst
+    intresserar den dedikerade fågelsäkrare. Artens globala status är dock långt mindre
+    kritisk än situationen i Sverige, där habitatförlust och miljöförändringar utgör
+    större hot.'
+  en: '# Spotted Crake
+
+
+    The Spotted Crake is a small, elusive waterbird belonging to the rail family.
+    It is compact and secretive, typically inhabiting dense wetland vegetation where
+    it forages among reeds and rushes. The bird is notoriously difficult to observe
+    despite being fairly common in suitable habitats, as it prefers to remain hidden
+    in thick cover rather than venture into open water.
+
+
+    This species is characterized by its diminutive size and cryptic plumage, which
+    provides excellent camouflage in its marshy environment. Its name derives from
+    the distinctive spots that mark its underparts. The Spotted Crake is largely nocturnal
+    and crepuscular, making it more often heard than seen. Its call is particularly
+    diagnostic—a distinctive, repetitive "whit-whit-whit" or similar sharp notes that
+    carry well across wetlands, especially during breeding season when males are highly
+    vocal.
+
+
+    The species inhabits shallow freshwater marshes, reed beds, and sedge-dominated
+    wetlands across its range. It breeds in temperate regions during summer months,
+    then migrates to warmer areas for winter. Due to its secretive nature and preference
+    for dense vegetation, the Spotted Crake remains one of the more challenging rails
+    for birdwatchers to observe, though patient listening at dusk often rewards the
+    dedicated birder with at least an audio encounter.'
+migration:
+  sv: '# Småfläckig sumphöna – Förekomst i Skandinavien
+
+
+    Småfläckig sumphöna är en flyttfågel som häckar i våtmarker i Europa under häcksäsongen.
+    Under vintern verlägger arten sitt utbredningsområde betydligt längre söderut
+    mot södra Asien och östra Afrika. I Sverige är arten dock ovanlig och förekommer
+    endast under häcksäsongen innan den återigen drar söderut. Beståndet i Skandinavien
+    är svagt och artens antal minskar, vilket gjort att den upptagits på den svenska
+    röda listan över hotade arter.'
+  en: '# Migration in Scandinavia/Northern Europe
+
+
+    The Spotted Crake is a summer visitor to Scandinavia and northern Europe, arriving
+    in late April and May to breed in wetland habitats. The species is migratory,
+    with populations breeding in Scandinavia departing in August and September to
+    winter in sub-Saharan Africa. During migration periods, individuals may appear
+    in various locations across northern Europe as they travel between breeding and
+    wintering grounds. The species is absent from the region during winter months,
+    with breeding birds returning the following spring to establish territories in
+    marshes, reed beds, and other suitable wetland habitats.'
+image_refs:
+- role: hero
+  path: Q194024/hero.jpg
+  width: 2400
+  height: 1164
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted crake (Porzana porzana)
+    2019.jpg
+  commons_filename: Spotted crake (Porzana porzana) 2019.jpg
+- role: secondary
+  path: Q194024/secondary-1.jpg
+  width: 1800
+  height: 948
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted crake (Porzana porzana)
+    2019 2.jpg
+  commons_filename: Spotted crake (Porzana porzana) 2019 2.jpg
+- role: secondary
+  path: Q194024/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/29237715@N05">Noel
+    Reynolds</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Spotted crake (Porzana porzana)
+    (6830876880).jpg
+  commons_filename: Spotted crake (Porzana porzana) (6830876880).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:34:17.129074+00:00'
+sources:
+  wikipedia_sv_revision: '58510832'
+  wikipedia_en_revision: '1344107664'
+  claude_model: claude-haiku-4-5-20251001

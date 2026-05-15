@@ -1,0 +1,127 @@
+id: Q212767
+scientific_name: Stercorarius pomarinus
+taxonomy:
+  family: Stercorariidae
+  family_sv: Labbar
+  genus: Stercorarius
+  ioc_order: Charadriiformes
+names:
+  sv: Bredstjärtad labb
+  en: Pomarine Jaeger
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bredstjärtad labb
+
+
+    Bredstjärtad labb är en medelstor labb som tillhör familjen labbar. Arten häckar
+    cirkumpolärt i arktiska regioner över Nordamerika, Europa och Asien. Under vintern
+    söker den sig bort från häckningsområdena och tillbringar tiden till havs på södra
+    halvklotet.
+
+
+    Arten är klassificerad som livskraftig av IUCN, vilket betyder att populationen
+    är stabil och arten inte hotas av utdöing. Som övriga labbar är det en skicklig
+    flygare som ofta observeras över öppna havsområden under sina flyttningar mellan
+    nord och söder.'
+  en: '# Pomarine Jaeger
+
+
+    The pomarine jaeger is a powerful seabird belonging to the skua family. It is
+    a migratory species that spends winters at sea in tropical ocean waters, traveling
+    between breeding and non-breeding ranges seasonally.
+
+
+    As an ambitious amateur birdwatcher, you should know that pomarine jaegers are
+    skilled hunters and pirates of the open ocean. They are notably larger and more
+    robust than some related jaeger species, with distinctive plumage patterns that
+    vary by age and season. In breeding plumage, adults display characteristic elongated
+    tail feathers that project prominently beyond the tail, a feature particularly
+    visible in flight. The species exhibits polymorphic coloring, with both lighter
+    and darker morphs occurring in populations.
+
+
+    These aggressive seabirds are known for their predatory behavior, pursuing other
+    seabirds to force them to drop or regurgitate food—a behavior called kleptoparasitism.
+    They are vocal during breeding season, producing various calls and sounds, though
+    they are generally quieter at sea. Watch for pomarine jaegers in oceanic habitats
+    during migration periods and in tropical seas during winter months, where they
+    can be spotted from ships or coastal vantage points during passage.'
+migration:
+  sv: '# Bredstjärtad labb – Förekomst i Nordeuropa
+
+
+    Bredstjärtad labb är en långdistansmigrant som häckar cirkumpolärt i arktiska
+    regioner och övervintrerar på södra halvklotet. I Skandinavien och övriga Nordeuropa
+    förekommer arten endast under våren och hösten som genomflyttande fågel när den
+    passerar mellan häckningsområdena i norra Arktis och sina övervintringsplatser
+    långt söderut på öppet hav. Arten ses därför inte regelbundet under hela året
+    i regionen utan är en säsongsbesökare begränsad till migrations­perioderna.'
+  en: '# Pomarine Jaeger in Scandinavia
+
+
+    The Pomarine Jaeger is a migratory seabird that visits northern Scandinavian waters
+    during the breeding season, typically arriving in May and June. It breeds in Arctic
+    regions, including parts of northern Scandinavia and Russia, before undertaking
+    a lengthy migration southward in late summer and autumn. The species winters at
+    sea in tropical oceans, remaining absent from Scandinavian waters from approximately
+    September through April. These skilled predatory seabirds return to their breeding
+    grounds in spring, making them a seasonal presence in northern European waters
+    rather than year-round residents.'
+image_refs:
+- role: hero
+  path: Q212767/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pomarine jaeger (Stercorarius
+    pomarinus) 2023.jpg
+  commons_filename: Pomarine jaeger (Stercorarius pomarinus) 2023.jpg
+- role: secondary
+  path: Q212767/secondary-1.jpg
+  width: 1800
+  height: 1013
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/70804987@N00">Mike
+    Prince</a> from Bangalore, India
+  source_url: https://commons.wikimedia.org/wiki/File:Pomarine Skua (Stercorarius
+    pomarinus) (5803208086).jpg
+  commons_filename: Pomarine Skua (Stercorarius pomarinus) (5803208086).jpg
+- role: secondary
+  path: Q212767/secondary-2.jpg
+  width: 1800
+  height: 988
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/145489125@N03">peterichman</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pomarine Skua ( Stercorarius
+    pomarinus ) Adult summer ... Coatham Sands , Redcar (53247051024).jpg
+  commons_filename: Pomarine Skua ( Stercorarius pomarinus ) Adult summer ... Coatham
+    Sands , Redcar (53247051024).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:37:01.395031+00:00'
+sources:
+  wikipedia_sv_revision: '55520027'
+  wikipedia_en_revision: '1326324782'
+  claude_model: claude-haiku-4-5-20251001

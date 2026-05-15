@@ -1,0 +1,104 @@
+id: Q184825
+scientific_name: Turdus iliacus
+taxonomy:
+  family: Turdidae
+  family_sv: Trastar
+  genus: Turdus
+  ioc_order: Passeriformes
+names:
+  sv: Rödvingetrast
+  en: Redwing
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Redwing
+
+
+    The redwing is a compact thrush, noticeably smaller than the song thrush, with
+    distinctive russet-red flanks and underwing coverts that give it its common name.
+    Its upper parts are warm brown, and it has a cream-coloured eyebrow stripe and
+    spotted breast. In flight, the flash of red under the wings is characteristic
+    and helps identify it even from a distance.
+
+
+    Redwings are highly social birds, often seen in flocks, particularly during migration
+    and winter. They forage on the ground for invertebrates and berries, moving with
+    a characteristic hopping gait. Their diet shifts seasonally, with insects dominating
+    in summer and autumn berries and fallen fruits becoming increasingly important
+    as winter approaches.
+
+
+    The redwing''s call is a distinctive thin, high-pitched "seep" often heard during
+    migration. Its song, heard mainly on breeding grounds, is a pleasant, varied warble.
+    The species is native to northern and eastern Europe and the wider Palearctic
+    region, with many populations undertaking significant migrations to spend winter
+    in milder areas.'
+migration:
+  sv: ''
+  en: '# Redwing (Turdus iliacus) in Northern Europe
+
+
+    The redwing is a migratory thrush species that breeds throughout Scandinavia and
+    northern Europe during the breeding season. Populations arrive in spring, typically
+    from March onwards, to establish territories in woodlands, scrublands, and gardens.
+    In autumn, redwings undertake significant southwestward migrations, departing
+    breeding areas from August through October to overwinter in western Europe, the
+    Mediterranean region, and North Africa. Some individuals remain in Scandinavia
+    during milder winters, particularly in coastal areas and regions with access to
+    unfrozen food sources. Spring return migration occurs primarily in February and
+    March as breeding birds reclaim northern territories.'
+image_refs:
+- role: hero
+  path: Q184825/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Redwing (Turdus iliacus) 2021.jpg
+  commons_filename: Redwing (Turdus iliacus) 2021.jpg
+- role: secondary
+  path: Q184825/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Redwing (Turdus iliacus) 2022.jpg
+  commons_filename: Redwing (Turdus iliacus) 2022.jpg
+- role: secondary
+  path: Q184825/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Oceancetaceen" title="User:Oceancetaceen">Oceancetaceen</a>
+    Alice Chodura
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus iliacus 02.JPG
+  commons_filename: Turdus iliacus 02.JPG
+review_status: approved
+review_notes: "Hero = Turdus iliacus (Redwing / Rödvingetrast); allmän i björkskog och blandskog i norra SE."
+generated_at: '2026-05-15T21:38:25.931702+00:00'
+sources:
+  wikipedia_sv_revision: '58648414'
+  wikipedia_en_revision: '1318090248'
+  claude_model: claude-haiku-4-5-20251001

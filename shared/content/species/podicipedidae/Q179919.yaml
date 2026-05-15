@@ -1,0 +1,128 @@
+id: Q179919
+scientific_name: Podiceps grisegena
+taxonomy:
+  family: Podicipedidae
+  family_sv: Doppingar
+  genus: Podiceps
+  ioc_order: Podicipediformes
+names:
+  sv: Gråhakedopping
+  en: Red-necked Grebe
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gråhakedopping
+
+
+    Gråhakedopping är en vattenlevande doppingfågel som förekommer i tempererade områden
+    på norra halvklotet. Arten är en flyttfågel som tillhör släktet Podiceps, doppingarnas
+    geografiskt mest spridda grupp. Det finns två underarter: den västpalearktiska
+    nominatformen och P. g. holbollii från Nordamerika och östra Sibirien, vilken
+    är något större.
+
+
+    Under häckningstiden föredrar gråhakedopping grunda vegetationsrika sötvattenmiljöer
+    som sjöar, våtmarker och dammar. Under övervintrningen söker arten sig främst
+    till lugna kustnära havsvatten, även om vissa individer kan övervintras på större
+    sjöar. Arten tillhör doppingfåglarna, där skäggdopping är dess närmsta släkting.'
+  en: '# Red-necked Grebe
+
+
+    The red-necked grebe is a distinctive aquatic bird found across temperate regions
+    of the northern hemisphere. During breeding season, it favours shallow freshwater
+    habitats including lakes, marshes, and fish-ponds. As a migratory species, it
+    shifts to coastal waters for winter, preferring calm ocean bays and sheltered
+    areas just beyond the wave zone, though some populations winter on large inland
+    lakes instead.
+
+
+    This grebe is well-adapted to aquatic life, spending most of its time on water.
+    Its appearance changes seasonally—during breeding, it displays the characteristic
+    reddish-brown neck that gives the species its common name, contrasting with a
+    darker cap and pale cheeks. In winter plumage, these colours become more subdued.
+    Like other grebes, it is an excellent swimmer and diver, using its legs positioned
+    far back on its body to propel itself underwater when hunting for fish and aquatic
+    invertebrates.
+
+
+    The red-necked grebe is generally a quiet bird, though it becomes more vocal during
+    the breeding season, producing various calls and duets with its mate. Observers
+    are most likely to encounter this species on open water, where it maintains a
+    low profile, often disappearing beneath the surface with minimal disturbance.'
+migration:
+  sv: '# Gråhakedopping – Migration och förekomst i Skandinavien/Norra Europa
+
+
+    Gråhakedopping är en flyttfågel som förekommer i tempererade regioner på norra
+    halvklotet. Under häckningssäsongen söker arten sig till grunda, vegetationsrika
+    sötvattenmiljöer som sjöar, våtmarker och dammar. Till hösten migrerar gråhakedoppingen
+    mot kusterna för övervintering. Arten övervintrar huvudsakligen i lugna havsvatten
+    längs kusterna, även om vissa individer stannar på större sjöar under vintermånaderna.
+    I Skandinavien är arten främst en sommarfågel som ankommer för att häcka under
+    våren.'
+  en: '# Red-necked Grebe in Northern Europe
+
+
+    The red-necked grebe is a migratory species in Scandinavia and northern Europe,
+    breeding on shallow freshwater lakes and marshes during spring and summer months.
+    Birds arrive at breeding grounds typically from April onwards after wintering
+    in coastal waters. Following the breeding season, populations depart for their
+    wintering grounds in autumn, usually from September onwards. During winter, red-necked
+    grebes favor calm coastal waters just beyond wave zones, though some individuals
+    may remain on large, ice-free lakes. The species shows typical northern hemisphere
+    migration patterns, vacating northern breeding areas as waters freeze while exploiting
+    temperate coastal regions for overwintering.'
+image_refs:
+- role: hero
+  path: Q179919/hero.jpg
+  width: 1905
+  height: 2400
+  license: Public domain
+  author: Dewhurst, Donna
+  source_url: https://commons.wikimedia.org/wiki/File:Podiceps grisegena holboelii,
+    Potter's Marsh, Anchorage 2.jpg
+  commons_filename: Podiceps grisegena holboelii, Potter's Marsh, Anchorage 2.jpg
+- role: secondary
+  path: Q179919/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Podiceps grisegena (33624787806).jpg
+  commons_filename: Podiceps grisegena (33624787806).jpg
+- role: secondary
+  path: Q179919/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Podiceps grisegena (33281691780).jpg
+  commons_filename: Podiceps grisegena (33281691780).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:36:11.173635+00:00'
+sources:
+  wikipedia_sv_revision: '59225149'
+  wikipedia_en_revision: '1335930766'
+  claude_model: claude-haiku-4-5-20251001

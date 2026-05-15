@@ -1,0 +1,126 @@
+id: Q18847
+scientific_name: Gallinula chloropus
+taxonomy:
+  family: Rallidae
+  family_sv: Rallar
+  genus: Gallinula
+  ioc_order: Gruiformes
+names:
+  sv: Rörhöna
+  en: Common Moorhen
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rörhöna
+
+
+    Rörhöna är en medelstor fågel i rallernas familj med huvudsakligen svart fjäderdräkt.
+    Den karakteriseras av ett rött näbb och en röd pannsköld, vilket skiljer den från
+    den närbesläktade sothönan. Under stjärten är fjädrarna vita, en detalj som är
+    väl synlig när fågeln simmar eller går i vegetation. Rörhönan är något mindre
+    än sothönan och har en mer smidig kroppsform.
+
+
+    Denna fågel förekommer i våtmarker över större delen av världen, där den trivs
+    vid vassbevuxna dammar, åar och sjöar. Rörhöna håller sig ofta gömd i vegetation,
+    men kan på vissa platser uppträda överraskande orädd mot människor. Den är en
+    skicklig simmare och matare som rör sig lätt mellan land och vatten.
+
+
+    Rörhönan är utbredd över Europa, Asien och Afrika. Arten behandlades tidigare
+    tillsammans med den amerikanska rörhönan som en och samma art, men särskiljs numera
+    som egen species på grund av genetiska och etologiska skillnader mellan populationerna.'
+  en: '# Common Moorhen
+
+
+    The common moorhen is a widespread rail found across Africa, Europe, and Asia,
+    wherever suitable wetland habitat exists. It inhabits well-vegetated marshes,
+    ponds, canals, and similar freshwater environments, though it avoids polar regions
+    and dense tropical rainforests. It is one of the most abundant rail species in
+    the Old World, often sharing its range with the Eurasian coot.
+
+
+    This adaptable bird thrives in areas with dense aquatic vegetation that provides
+    cover and nesting sites. It is particularly common in regions with temperate to
+    subtropical climates, making it a familiar sight to many birdwatchers. The species''
+    success likely stems from its ability to exploit diverse wetland habitats and
+    its flexible diet, allowing it to persist in both natural and human-modified landscapes
+    such as park ponds and agricultural wetlands.'
+migration:
+  sv: '# Rörhöna – Förekomst i Skandinavien/Nordeuropa
+
+
+    Rörhönan är en partiell migrant i Skandinavien och Nordeuropa. Populationer från
+    södra och mellersta Sverige stannar ofta kvar under vintern om vattnen inte fryser
+    till helt, medan norr ifrån kommande fåglar samt många från de nordligaste delarna
+    migrerar söderut till Medelhavsregionen och Afrika under hösten. Ankomsten till
+    häckningsområdena i Sverige sker typiskt under april-maj, då is på sjöar och våtmarker
+    börjar smälta. Under oktober-november drar de flesta fåglarna bort, även om en
+    liten andel kan övervintra på isfria vatten i södra Sverige under milda vintrar.'
+  en: '# Common Moorhen (Gallinula chloropus) in Scandinavia/Northern Europe
+
+
+    The Common Moorhen is a partial migrant in Northern Europe, with populations showing
+    variable behavior depending on winter severity. Birds breeding in Scandinavia
+    typically arrive in March-April as waters begin to thaw, establishing territories
+    in marshes and reed-beds. During autumn, from August onwards, northern populations
+    gradually move southward, with most birds departing by November to overwinter
+    in milder regions of southern Europe and North Africa. In years with mild winters,
+    some individuals may remain in southern Scandinavia, but sustained freezing conditions
+    usually force complete departure. Return migration intensifies in early spring
+    as temperatures rise and water bodies become ice-free.'
+image_refs:
+- role: hero
+  path: Q18847/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common moorhen (Gallinula chloropus).jpg
+  commons_filename: Common moorhen (Gallinula chloropus).jpg
+- role: secondary
+  path: Q18847/secondary-1.jpg
+  width: 1800
+  height: 1267
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Alexis_Lours" title="User:Alexis
+    Lours">Alexis Lours</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common moorhen (Gallinula chloropus)
+    France.jpg
+  commons_filename: Common moorhen (Gallinula chloropus) France.jpg
+- role: secondary
+  path: Q18847/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Sunny365days" title="User:Sunny365days">Sunny365days</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Gallinula chloropus IMG 7013
+    01.jpg
+  commons_filename: Gallinula chloropus IMG 7013 01.jpg
+review_status: approved
+review_notes: "Hero = Gallinula chloropus (Common Moorhen / Rörhöna); allmän vid sötvatten i södra och mellersta SE."
+generated_at: '2026-05-15T21:35:09.927926+00:00'
+sources:
+  wikipedia_sv_revision: '58627825'
+  wikipedia_en_revision: '1354022730'
+  claude_model: claude-haiku-4-5-20251001

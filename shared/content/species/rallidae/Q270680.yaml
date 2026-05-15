@@ -1,0 +1,98 @@
+id: Q270680
+scientific_name: Zapornia parva
+taxonomy:
+  family: Rallidae
+  family_sv: Rallar
+  genus: Zapornia
+  ioc_order: Gruiformes
+names:
+  sv: Mindre sumphöna
+  en: Little Crake
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Little Crake
+
+
+    The Little Crake is a diminutive waterbird belonging to the rail family, with
+    "parva" reflecting its Latin name meaning "small." It represents one of the tiniest
+    members of the Rallidae family, making it easily overlooked in wetland habitats.
+
+
+    Little Crakes are secretive and elusive birds, preferring to remain hidden among
+    dense vegetation in marshes, reed beds, and shallow wetlands. They are skilled
+    swimmers and divers despite their small size, moving quietly through aquatic plants.
+    The species was historically classified within the genus Porzana before taxonomic
+    revision placed it in its current genus.
+
+
+    The bird''s behaviour emphasizes stealth and concealment rather than conspicuous
+    display. Little Crakes typically forage in shallow water and mud, hunting for
+    small invertebrates, seeds, and plant matter. Their cryptic nature means they
+    are more often heard than seen, particularly during breeding season when they
+    become more vocal. Due to their preference for dense cover and retiring habits,
+    observation requires patience and knowledge of their preferred wetland environments.'
+migration:
+  sv: ''
+  en: '# Little Crake (Zapornia parva) - Occurrence in Scandinavia/Northern Europe
+
+
+    The Little Crake is a rare summer visitor to Scandinavia and Northern Europe,
+    with breeding records concentrated in southern regions. Birds typically arrive
+    in late April or May after wintering in Africa, with the breeding season extending
+    through June and July. The species favors freshwater wetlands, reed beds, and
+    marshes with dense vegetation for nesting and feeding.
+
+
+    Autumn migration begins in August and September as breeding birds depart northward
+    populations, with most individuals returning to African wintering grounds by October.
+    The Little Crake is an uncommon but regular passage migrant in some areas, though
+    sightings remain unpredictable. Winter records in Scandinavia are exceptional,
+    as the species is almost entirely migratory in the region.'
+image_refs:
+- role: hero
+  path: Q270680/hero.jpg
+  width: 2400
+  height: 1137
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Little crake (Zapornia parva)
+    2019.jpg
+  commons_filename: Little crake (Zapornia parva) 2019.jpg
+- role: secondary
+  path: Q270680/secondary-1.jpg
+  width: 1800
+  height: 1502
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external autonumber" href="https://www.inaturalist.org/people/mourad-harzallah">[2]</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Female little crake (Zapornia
+    parva) in Algeria.jpg
+  commons_filename: Female little crake (Zapornia parva) in Algeria.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:33:01.290139+00:00'
+sources:
+  wikipedia_sv_revision: '58642456'
+  wikipedia_en_revision: '1350719002'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,103 @@
+id: Q178942
+scientific_name: Turdus viscivorus
+taxonomy:
+  family: Turdidae
+  family_sv: Trastar
+  genus: Turdus
+  ioc_order: Passeriformes
+names:
+  sv: Dubbeltrast
+  en: Mistle Thrush
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Mistle Thrush
+
+
+    The mistle thrush is a large, stocky thrush with distinctive pale grey-brown upperparts
+    contrasting with its greyish-white chin and throat. Its underparts are pale yellow
+    to off-white, heavily marked with black spots. Sexes are similar in appearance,
+    making identification straightforward. The bird is notably larger and paler than
+    related thrush species, with a robust build suited to its foraging behaviour.
+
+
+    Known for its remarkably loud and far-carrying song, the mistle thrush is celebrated
+    for singing persistently even in poor weather—a trait that earned it the old name
+    "stormcock." This bold, emphatic song is one of the best ways to locate the species,
+    particularly during breeding season. The bird is generally confident and territorial,
+    though it can be wary when approached on the ground.
+
+
+    The mistle thrush is widespread across much of Europe, temperate Asia, and North
+    Africa. It is a year-round resident across much of its range, but birds from northern
+    and eastern populations migrate southward in winter, sometimes traveling in small
+    flocks. It frequents open woodlands, parks, and cultivated areas where mistletoe
+    and berries provide food sources throughout the year.'
+migration:
+  sv: ''
+  en: '# Mistle Thrush (Turdus viscivorus) in Scandinavia and Northern Europe
+
+
+    The Mistle Thrush is a year-round resident throughout much of Scandinavia and
+    Northern Europe, though populations show distinct migration patterns. Northern
+    and eastern populations migrate southward during winter months, often traveling
+    in small flocks to escape harsh conditions. Birds from southern and western regions
+    typically remain as residents year-round. Spring arrival occurs in March-April
+    as migratory birds return to breeding territories, while autumn departures take
+    place from September through November as northern populations head toward wintering
+    grounds in more temperate regions.'
+image_refs:
+- role: hero
+  path: Q178942/hero.jpg
+  width: 1711
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jamshid_Nurkulov" title="User:Jamshid
+    Nurkulov">Jamshid Nurkulov</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus viscivorus 10.jpg
+  commons_filename: Turdus viscivorus 10.jpg
+- role: secondary
+  path: Q178942/secondary-1.jpg
+  width: 1800
+  height: 1259
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/92163630@N00">David
+    Friel</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus viscivorus juv.jpg
+  commons_filename: Turdus viscivorus juv.jpg
+- role: secondary
+  path: Q178942/secondary-2.jpg
+  width: 1800
+  height: 1215
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jamshid_Nurkulov" title="User:Jamshid
+    Nurkulov">Jamshid Nurkulov</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turdus viscivorus 04.jpg
+  commons_filename: Turdus viscivorus 04.jpg
+review_status: approved
+review_notes: "Hero = Turdus viscivorus (Mistle Thrush / Dubbeltrast); allmän i öppen skog och kulturlandskap."
+generated_at: '2026-05-15T21:35:34.126270+00:00'
+sources:
+  wikipedia_sv_revision: '58946873'
+  wikipedia_en_revision: '1353963972'
+  claude_model: claude-haiku-4-5-20251001

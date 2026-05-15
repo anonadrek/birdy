@@ -1,0 +1,73 @@
+id: Q916098
+scientific_name: Onychognathus tristramii
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Onychognathus
+  ioc_order: Passeriformes
+names:
+  sv: Sinaiglansstare
+  en: Tristram’s Starling
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q916098/hero.jpg
+  width: 1596
+  height: 2400
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Tristram's starling (Onychognathus
+    tristramii), Oman.jpg
+  commons_filename: Tristram's starling (Onychognathus tristramii), Oman.jpg
+- role: secondary
+  path: Q916098/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Eitan_f" title="User:Eitan f">Eitan
+    Ferman</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Onychognathus tristramii - female.JPG
+  commons_filename: Onychognathus tristramii - female.JPG
+- role: secondary
+  path: Q916098/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/86124626@N00">Shanthanu
+    Bhardwaj</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Onychognathus tristramii -Israel
+    -female-8.jpg
+  commons_filename: Onychognathus tristramii -Israel -female-8.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:32:33.426914+00:00'
+sources:
+  wikipedia_sv_revision: '59113363'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

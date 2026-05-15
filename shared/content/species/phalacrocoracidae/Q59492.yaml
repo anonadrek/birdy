@@ -1,0 +1,110 @@
+id: Q59492
+scientific_name: Microcarbo africanus
+taxonomy:
+  family: Phalacrocoracidae
+  family_sv: Skarvar
+  genus: Microcarbo
+  ioc_order: Suliformes
+names:
+  sv: Långstjärtad skarv
+  en: Reed Cormorant
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Reed Cormorant
+
+
+    The reed cormorant, alternatively called the long-tailed cormorant, is a small
+    member of the cormorant family found across sub-Saharan Africa and Madagascar.
+    It is a resident species, remaining within its range year-round, though it undertakes
+    seasonal movements in response to water levels and food availability. The bird''s
+    name reflects its notably elongated tail, which distinguishes it from larger cormorant
+    species.
+
+
+    As a cormorant, it shares the family''s characteristic adaptations for diving
+    and underwater pursuit of fish. Like other members of its family, it has dark
+    plumage and the typical cormorant body shape—sleek and streamlined for aquatic
+    hunting. The reed cormorant inhabits freshwater environments including lakes,
+    rivers, and wetlands where reed beds and vegetation provide suitable habitat for
+    breeding and foraging.
+
+
+    This species is typically found in small groups or solitary birds in shallow water
+    habitats, where it hunts by diving beneath the surface. Its presence indicates
+    healthy freshwater ecosystems with adequate fish populations to support these
+    specialized waterbirds.'
+migration:
+  sv: ''
+  en: '# Reed Cormorant in Northern Europe
+
+
+    The reed cormorant does not naturally occur in Scandinavia or Northern Europe.
+    This species is endemic to Africa south of the Sahara and Madagascar, where it
+    is largely resident year-round. While the species undertakes some seasonal movements
+    within its African range, these are localized movements in response to water availability
+    and breeding cycles. The reed cormorant''s range is confined to tropical and subtropical
+    Africa and has no established presence in northern European regions, making it
+    irrelevant to the avifauna of Scandinavia throughout the year.'
+image_refs:
+- role: hero
+  path: Q59492/hero.jpg
+  width: 1611
+  height: 2275
+  license: Public domain
+  author: Justin.Lu1977
+  source_url: https://commons.wikimedia.org/wiki/File:Microcarbo africanus juvenile
+    at Blue Nile.jpg
+  commons_filename: Microcarbo africanus juvenile at Blue Nile.jpg
+- role: secondary
+  path: Q59492/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/flowcomm/">flowcomm</a> <span
+    class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a href="//commons.wikimedia.org/wiki/File:Riedscharbe_(Microcarbo_africanus),_nicht_br%C3%BCtender_Adultvogel.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Riedscharbe (Microcarbo africanus),
+    nicht brütender Adultvogel.jpg
+  commons_filename: Riedscharbe (Microcarbo africanus), nicht brütender Adultvogel.jpg
+- role: secondary
+  path: Q59492/secondary-2.jpg
+  width: 1800
+  height: 1201
+  license: CC BY 3.0
+  author: '<div class="fn value">
+
+    <a rel="nofollow" class="external text" href="https://500px.com/aufgang">Daniel
+    Aufgang</a></div>'
+  source_url: https://commons.wikimedia.org/wiki/File:Microcarbo africanus (181092197).jpg
+  commons_filename: Microcarbo africanus (181092197).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:32:54.152214+00:00'
+sources:
+  wikipedia_sv_revision: '56594903'
+  wikipedia_en_revision: '1352682658'
+  claude_model: claude-haiku-4-5-20251001

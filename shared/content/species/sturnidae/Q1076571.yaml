@@ -1,0 +1,100 @@
+id: Q1076571
+scientific_name: Sturnia pagodarum
+taxonomy:
+  family: Sturnidae
+  family_sv: Starar
+  genus: Sturnia
+  ioc_order: Passeriformes
+names:
+  sv: Pagodstare
+  en: Brahminy Starling
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Brahminy Starling
+
+
+    The Brahminy Starling is a member of the starling family found across the Indian
+    subcontinent. It typically occurs in open habitats on plains, where it is usually
+    observed in pairs or small flocks rather than solitary individuals or large groups.
+
+
+    This starling prefers relatively open terrain where it can forage on the ground
+    and in low vegetation. Its social behaviour of staying in small groups makes it
+    moderately conspicuous in its preferred habitats, though it is not as gregarious
+    as some other starling species.
+
+
+    Unfortunately, the available source material provides limited detail on the bird''s
+    appearance, vocalizations, and specific behavioral characteristics beyond its
+    habitat preference and social grouping. For a more complete guide including plumage
+    details, call descriptions, and feeding habits, consultation of additional field
+    guides would be recommended.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the occurrence, migration
+    patterns, or seasonal movements of Sturnia pagodarum in Scandinavia or Northern
+    Europe. The Brahminy Starling is endemic to the Indian subcontinent and is not
+    known to occur in Northern European regions. To provide accurate migration information
+    for this species in Scandinavian contexts would require inventing data, which
+    contradicts the instruction to remain strictly factual.'
+image_refs:
+- role: hero
+  path: Q1076571/hero.jpg
+  width: 2400
+  height: 1807
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Kaushlendrapathe" title="User:Kaushlendrapathe">Kaushlendrapathe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Brahminy starling (Sturnia pagodarum)
+    sitting on a pipe.jpg
+  commons_filename: Brahminy starling (Sturnia pagodarum) sitting on a pipe.jpg
+- role: secondary
+  path: Q1076571/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Brahminy Starling (Sturnia Pagodarum)
+    കരിന്തലച്ചിക്കാളി. (25036803417).jpg
+  commons_filename: Brahminy Starling (Sturnia Pagodarum) കരിന്തലച്ചിക്കാളി. (25036803417).jpg
+- role: secondary
+  path: Q1076571/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Brahminy Starling (Sturnia Pagodarum)
+    കരിന്തലച്ചിക്കാളി. (26034935708).jpg
+  commons_filename: Brahminy Starling (Sturnia Pagodarum) കരിന്തലച്ചിക്കാളി. (26034935708).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T21:33:19.305318+00:00'
+sources:
+  wikipedia_sv_revision: '59043922'
+  wikipedia_en_revision: '1313898629'
+  claude_model: claude-haiku-4-5-20251001
