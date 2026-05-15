@@ -1,0 +1,82 @@
+id: Q40995958
+scientific_name: Fringilla maderensis
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Fringilla
+  ioc_order: Passeriformes
+names:
+  sv: Madeirabofink
+  en: Madeira Chaffinch
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Madeira Chaffinch
+
+
+    The Madeira chaffinch is a small finch endemic to the island of Madeira in the
+    North Atlantic. Once considered merely a subspecies of the Eurasian chaffinch,
+    genetic and morphological analysis in 2021 elevated it to full species status.
+    This distinction reflects subtle but meaningful differences that set it apart
+    from its close relative.
+
+
+    As a small passerine, the Madeira chaffinch shares the typical finch body plan
+    and feeding habits characteristic of the family Fringillidae. While specifics
+    of its plumage, behaviour, and vocalizations are not detailed in the available
+    source material, it displays the characteristics expected of a chaffinch adapted
+    to island life.
+
+
+    The species is confined to its native island habitat, making it a notable example
+    of Macaronesian endemism. Its local name, tentilhão, reflects the cultural presence
+    of this bird among island residents.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic and distribution information,
+    confirming that the Madeira Chaffinch is endemic to the Portuguese island of Madeira.
+    No information about migration patterns, seasonal movements, or occurrence throughout
+    the year in Scandinavia or Northern Europe is present in the source material.
+    As this species is restricted to Madeira in the North Atlantic, it would not be
+    expected to occur in Scandinavian or Northern European regions.'
+image_refs:
+- role: hero
+  path: Q40995958/hero.jpg
+  width: 2400
+  height: 1595
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/198981757@N08">Donald
+    Davesne</a> from Paris, France
+  source_url: https://commons.wikimedia.org/wiki/File:Fringilla maderensis, Fanal,
+    Madeira, Portugal (53283953752).jpg
+  commons_filename: Fringilla maderensis, Fanal, Madeira, Portugal (53283953752).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:11:49.669201+00:00'
+sources:
+  wikipedia_sv_revision: '55646020'
+  wikipedia_en_revision: '1313961044'
+  claude_model: claude-haiku-4-5-20251001

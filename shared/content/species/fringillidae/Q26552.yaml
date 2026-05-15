@@ -1,0 +1,140 @@
+id: Q26552
+scientific_name: Loxia curvirostra
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Loxia
+  ioc_order: Passeriformes
+names:
+  sv: Mindre korsnäbb
+  en: Red Crossbill
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mindre korsnäbb
+
+
+    Mindre korsnäbb är en fågel i finkfamiljen som häckar över stora delar av barrskogsbältet
+    på norra halvklotet. Den är inte en flyttfågel men genomför oregelbundna vandringar,
+    särskilt under år då den förekommer långt söder om sitt normala utbredningsområde.
+
+
+    Arten kännetecknas av ett proportionellt stort huvud och en helt unik näbb med
+    korsande näbbspetsar – en perfekt anpassning för att plocka ut frön från tallkottar
+    och granfrukter. De adulta fåglarna har kraftfullt färgad fjäderdräkt: hanarna
+    är orange- till tegelröda medan honorna är gulgröna. Det förekommer dock stor
+    variation i färg, näbbform och läte mellan olika populationer, vilket länge har
+    väckt diskussioner om artindelningen.
+
+
+    Denna specialiserade näbbteknik gör mindre korsnäbb till en säregen och intressant
+    art för naturintresserade att söka upp i barrskogar, inte minst under år då vandrande
+    individer dyker upp på nya platser.'
+  en: '# Red Crossbill
+
+
+    The red crossbill is a small finch with one of nature''s most distinctive features:
+    crossed mandibles that overlap at the tip. This specialized bill is perfectly
+    adapted for extracting seeds from conifer cones, its primary food source. Males
+    display bright red or orange plumage, while females are duller yellow-green. Both
+    sexes show darker wings and tail in contrast to their body coloring.
+
+
+    These highly social birds are often found in flocks, particularly outside the
+    breeding season. They are remarkably agile acrobats, using their unique bill to
+    pry open cone scales with impressive precision. Their erratic movements through
+    conifer forests can make them challenging to spot, though they often announce
+    their presence with frequent calls.
+
+
+    The red crossbill''s call is characteristic and distinctive—a sharp, staccato
+    "jip-jip-jip" or "chit-chit-chit" that helps identify it in its preferred habitat
+    of coniferous forests. It frequents areas dominated by spruce, pine, and fir trees,
+    where food supplies are abundant. Their distribution and breeding timing are closely
+    tied to cone crop availability, making them somewhat nomadic across their range.'
+migration:
+  sv: '# Mindre korsnäbb – Förekomst i Skandinavien och Nordeuropa
+
+
+    Mindre korsnäbb är inte en klassisk flyttfågel, utan är överlag stationär eller
+    genomför oregelbundna vandringar inom sitt utbredningsområde. Arten häckar över
+    stora delar av barrskogsbältet på norra halvklotet, inklusive Skandinavien. Under
+    vissa år, särskilt när frötillgången i hemregionerna är dålig, kan arten vandra
+    långt söder om sitt normala utbredningsområde och förekomma långt ned i Europa.
+    Dessa irruptioner är oregelbundna och kan variera kraftigt mellan åren beroende
+    på frötillgången i norra skogarna.'
+  en: '# Red Crossbill (Loxia curvirostra) in Scandinavia/Northern Europe
+
+
+    The Red Crossbill is a year-round resident throughout much of Scandinavia and
+    Northern Europe, though its presence and numbers fluctuate seasonally depending
+    on food availability. Populations are largely sedentary, with birds remaining
+    in coniferous forests where spruce and pine seeds are abundant. However, irregular
+    irruptions occur when cone crops fail in core breeding areas, leading to unexpected
+    influxes of crossbills into southern regions during autumn and winter months.
+    Spring arrivals of breeding birds typically occur from March onwards, while some
+    individuals from northern populations may move southward in September and October.
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q26552/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/usfwsmidwest/">USFWS
+    Midwest Region</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
+    href="//commons.wikimedia.org/wiki/File:Fichtenkreuzschnabel_(Loxia_curvirostra),_m%C3%A4nnlich_im_St._Louis_County_(Minnesota).jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Fichtenkreuzschnabel (Loxia
+    curvirostra), männlich im St. Louis County (Minnesota).jpg
+  commons_filename: Fichtenkreuzschnabel (Loxia curvirostra), männlich im St. Louis
+    County (Minnesota).jpg
+- role: secondary
+  path: Q26552/secondary-1.jpg
+  width: 1800
+  height: 1349
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:VezeIvan&amp;action=edit&amp;redlink=1"
+    class="new" title="User:VezeIvan (page does not exist)">Иван Везенковић</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red Crossbill (Phantom or type
+    D) Loxia curvirostra.jpg
+  commons_filename: Red Crossbill (Phantom or type D) Loxia curvirostra.jpg
+- role: secondary
+  path: Q26552/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/59161444@N05">xulescu_g</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Loxia curvirostra (12559525625).jpg
+  commons_filename: Loxia curvirostra (12559525625).jpg
+review_status: approved
+review_notes: "Gulhämpling — hero godkänd."
+generated_at: '2026-05-15T19:15:53.302385+00:00'
+sources:
+  wikipedia_sv_revision: '58672750'
+  wikipedia_en_revision: '1348551212'
+  claude_model: claude-haiku-4-5-20251001

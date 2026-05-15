@@ -1,0 +1,134 @@
+id: Q174088
+scientific_name: Coccothraustes coccothraustes
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Coccothraustes
+  ioc_order: Passeriformes
+names:
+  sv: Stenknäck
+  en: Hawfinch
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stenknäck
+
+
+    Stenknäck är en stor fink som framför allt utmärks av sin extraordinärt kraftiga
+    och massiv näbb – en anpassning för att knäcka hårda frön. Arten är robust byggd
+    med en relativt kort svans. Fjäderdräkten är huvudsakligen brun och beige med
+    svarta markerings på vingar och huvud, vilket ger den ett karakteristiskt utseende.
+
+
+    Stenknäcken förekommer i lövskogsområden över större delen av Europa och i de
+    tempererade delarna av Asien. De nordligare populationerna är flyttfåglar som
+    kan observeras på genomfart under vår- och höstmigration. På senare år har arten
+    ökat betydligt i antal och utökat sitt utbredningsområde, vilket resulterat i
+    att den är klassificerad som livskraftig enligt IUCN.
+
+
+    Arten är ofta att se på marken eller i träd där den söker efter frön, särskilt
+    från träd som bär hårda nötter och kärnor som endast denna fink kan knäcka med
+    sin unika näbb.'
+  en: '# Hawfinch
+
+
+    The hawfinch is a stocky finch with a distinctive appearance that makes it recognizable
+    even at a distance. It features a massive, powerful bill—disproportionately large
+    for its body size—which it uses to crack open hard seeds and stones. The plumage
+    is predominantly warm buff and chestnut-brown, with striking black and white markings
+    on the wings and back, creating a bold patterned look.
+
+
+    Behaviorally, the hawfinch is often solitary or found in small groups, particularly
+    during winter when it becomes more visible in gardens and parks. It tends to be
+    wary and alert, spending much time in treetops where it feeds on seeds from various
+    trees. Its call is a distinctive, hard "tick" or "cit" sound, often given in flight,
+    which helps identify the species even when it remains out of sight.
+
+
+    The hawfinch is found across temperate regions of the Northern Hemisphere, showing
+    a preference for open woodlands and mixed forests. It undertakes irregular migrations,
+    with populations moving southward in harsh winters, making it an unpredictable
+    winter visitor to gardens. Its closest relatives are finches found in East and
+    North America, reflecting its wide geographic distribution.'
+migration:
+  sv: '**Stenknäck i Skandinavien och Nordeuropa**
+
+
+    Stenknäcken är en flyttfågel i norra delen av sitt utbredningsområde. De nordliga
+    populationerna genomför årlig migration, vilket innebär att arten inte är stationär
+    året om i Skandinavien och Nordeuropa. Fågeln häckar i lövskogsområden under sommaren
+    och återvänder till dessa områden under häckningssäsongen. Som följd av artens
+    ökade antal och utvidgade utbredningsområde på senare tid förekommer arten allt
+    oftare i högre latituder, men de specifika ankomst- och avresemånaderna framgår
+    inte av tillgänglig källa.'
+  en: '# Hawfinch Migration in Scandinavia and Northern Europe
+
+
+    The hawfinch is an irregular migrant and winter visitor to Scandinavia and Northern
+    Europe. Populations breeding in eastern regions migrate westward during autumn,
+    typically arriving in November and December, with numbers varying considerably
+    year to year. Some birds may overwinter in southern Scandinavia and northern Europe,
+    particularly during mild winters when food remains available, while others continue
+    southward to Mediterranean regions. Spring departure occurs gradually from February
+    through April, as birds return to their breeding grounds in eastern Europe and
+    Asia. The species is most reliably seen during winter months, especially in areas
+    with abundant seed-bearing trees like hornbeam and rowan.'
+image_refs:
+- role: hero
+  path: Q174088/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Hawfinch (Coccothraustes coccothraustes)
+    juvenile.jpg
+  commons_filename: Hawfinch (Coccothraustes coccothraustes) juvenile.jpg
+- role: secondary
+  path: Q174088/secondary-1.jpg
+  width: 1800
+  height: 1196
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Nppgrandmeadow&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Nppgrandmeadow (page does not exist)">Бусел В.А.</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Coccothraustes coccothraustes
+    костогриз.jpg
+  commons_filename: Coccothraustes coccothraustes костогриз.jpg
+- role: secondary
+  path: Q174088/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Hawfinch (Coccothraustes coccothraustes)
+    juvenile 2.jpg
+  commons_filename: Hawfinch (Coccothraustes coccothraustes) juvenile 2.jpg
+review_status: approved
+review_notes: "Stenknäck — hero med kraftig näbb, classic identifikation."
+generated_at: '2026-05-15T19:14:09.573878+00:00'
+sources:
+  wikipedia_sv_revision: '57103251'
+  wikipedia_en_revision: '1314683928'
+  claude_model: claude-haiku-4-5-20251001

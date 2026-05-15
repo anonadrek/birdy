@@ -1,0 +1,124 @@
+id: Q559883
+scientific_name: Bucanetes githagineus
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Bucanetes
+  ioc_order: Passeriformes
+names:
+  sv: Ökentrumpetare
+  en: Trumpeter Finch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: "# Ökentrumpetare\n\nÖkentrumpetare är en liten tätting med rosafärgad näbb\
+    \ och ansikte. Det är en diskret fågel som huvudsakligen förekommer i torra, öppna\
+    \ områden i norra Afrika, Mellanöstern och Centralasien, samt i ett begränsat\
+    \ område i sydöstra Spanien. Arten är mycket sällsynt norr om sitt normala utbredningsområde\
+    \ och har endast påträffats vid elva tillfällen i Sverige.\n\nArten har fått sitt\
+    \ namn från sitt karakteristiska läte, som ofta beskrivs som klangande och metalliskt\
+    \ – påminnande om en leksakstrumpet. Denna distinktiva röst är en bra igenkänningstecken\
+    \ när arten hörs. \n\nGlobalt anses ökentrumpetaren vara livskraftig enligt IUCN,\
+    \ men den mycket små europeiska populationen klassificeras som hotad och kräver\
+    \ uppmärksamhet för att säkra artens framtida närvaro i Europa."
+  en: '# Trumpeter Finch
+
+
+    The trumpeter finch is a small finch inhabiting arid and desert regions across
+    North Africa, Spain, and southern Asia. It is a compact bird well-adapted to harsh,
+    open environments. This species is primarily sedentary within its range, though
+    occasionally individuals wander northward beyond their usual breeding areas.
+
+
+    The trumpeter finch''s name derives from its distinctive call—a loud, resonant
+    trumpet-like sound quite unusual for such a small bird. This vocalization is a
+    key identifying feature when spotting the species in its desert habitat. The bird
+    typically forages on the ground for seeds and other food items suitable to its
+    sparse environment.
+
+
+    It favors rocky desert areas, semi-arid scrubland, and mountainous terrain where
+    vegetation is sparse. The trumpeter finch is most often encountered in small flocks,
+    particularly outside the breeding season, moving across open ground in search
+    of food. Its preference for inhospitable terrain means it is less frequently observed
+    than many other finch species, making it a specialist desert inhabitant rather
+    than a common garden visitor.'
+migration:
+  sv: '# Ökentrumpetare i Skandinavien
+
+
+    Ökentrumpetaren är en mycket sällsynt gäst i Skandinavien och Nordeuropa. Arten
+    häckar främst i Nord-Afrika, Mellanöstern och Centralasien, och förekommer normalt
+    inte i våra regioner. Mycket sporadiska observationer har gjorts långt norr om
+    dess huvudsakliga utbredningsområde. I Sverige har arten endast noterats vid elva
+    tillfällen, vilket visar på hur ovanlig den är här. Dessa observationer tycks
+    vara resultado av irrgång snarare än regelbundna migrationsmönster. Den lilla
+    europeiska populationen i sydöstra Spanien är hotad, medan arten globalt klassificeras
+    som livskraftig.'
+  en: '# Trumpeter Finch in Scandinavia/Northern Europe
+
+
+    The Trumpeter Finch is not a regular occurrence in Scandinavian or Northern European
+    regions. This desert species, primarily distributed across North Africa, Spain,
+    and southern Asia, only appears as an occasional vagrant north of its established
+    breeding range. Any sightings in Scandinavia would represent exceptional records
+    outside the species'' normal distribution. There is no established migration pattern
+    linking this bird to Northern Europe, and it should not be expected as a seasonal
+    visitor to the region.'
+image_refs:
+- role: hero
+  path: Q559883/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Woestijnvink - trumpeter finch
+    - Bucanetes githagineus 2.jpg
+  commons_filename: Woestijnvink - trumpeter finch - Bucanetes githagineus 2.jpg
+- role: secondary
+  path: Q559883/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Woestijnvink - trumpeter finch
+    - Bucanetes githagineus 3.jpg
+  commons_filename: Woestijnvink - trumpeter finch - Bucanetes githagineus 3.jpg
+- role: secondary
+  path: Q559883/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Woestijnvink - trumpeter finch
+    - Bucanetes githagineus 4.jpg
+  commons_filename: Woestijnvink - trumpeter finch - Bucanetes githagineus 4.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:11:58.564452+00:00'
+sources:
+  wikipedia_sv_revision: '57382854'
+  wikipedia_en_revision: '1315196990'
+  claude_model: claude-haiku-4-5-20251001

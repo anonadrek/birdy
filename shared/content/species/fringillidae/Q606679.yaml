@@ -1,0 +1,100 @@
+id: Q606679
+scientific_name: Carduelis caniceps
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Carduelis
+  ioc_order: Passeriformes
+names:
+  sv: Carduelis caniceps
+  en: Grey-crowned Goldfinch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Grå steglits
+
+
+    Grå steglits är en centralasiatisk finkart som nyligen skilts ut som egen art,
+    tidigare betraktad som en del av den vanliga steglitsen. Arten tillhör familjen
+    finkar och återfinns inom ordningen tättingar.
+
+
+    Denna lilla fink kännetecknas av sitt gråa huvud, vilket utgör artens mest karakteristiska
+    drag. Som övriga stegiltsar har den färgglada vingar med distinktiva markeringar
+    som blir synliga under flykten. Arten liknar steglitsen i många avseenden men
+    skiljer sig genom sina gråa huvuddrag.
+
+
+    Grå steglits förekommer i Centralasien där den är anpassad till sitt naturliga
+    utbredningsområde. Som typisk fink lever arten på frön från ogräs och växter,
+    och den söker föda på liknande sätt som andra arter inom samma familj. Arten är
+    ännu relativt lite studerad jämfört med sina närmare släktingar, men anses vara
+    en självständig och väl avgränsad art inom finkfamiljen.'
+  en: '# Grey-crowned Goldfinch
+
+
+    The grey-crowned goldfinch is a small finch distributed throughout Central Asia
+    and the Himalayas. It shares the characteristic finch traits of its family, though
+    specific details about its appearance beyond the suggestive name—which indicates
+    a grey crown—are limited in the available source material.
+
+
+    Like other goldfinches, it likely feeds on small seeds and may frequent areas
+    with teasels, thistles, and similar seed-bearing plants. Its behaviour and vocalizations
+    are typical of the finch family, though detailed information is sparse.
+
+
+    The species inhabits mountainous regions across a broad range in Central and southern
+    Asia, making it a bird of high-altitude environments. Amateur birdwatchers in
+    appropriate geographic regions may encounter it in suitable habitat, though dedicated
+    effort and knowledge of its preferred areas would be required for reliable sightings.'
+migration:
+  sv: 'sv: "Migrationsdata saknas för denna art."
+
+
+    en: "Migration data unavailable for this species."'
+  en: 'Migration data unavailable for this species.
+
+
+    The grey-crowned goldfinch is a Central Asian and Himalayan species with no documented
+    occurrence in Scandinavia or Northern Europe. The source text provides no information
+    about its migration patterns, seasonal movements, or presence in Northern European
+    regions. This species'' range is confined to mountainous areas of Central Asia
+    and the Himalayas, far outside the geographic scope of Scandinavian bird distribution.'
+image_refs:
+- role: hero
+  path: Q606679/hero.jpg
+  width: 2400
+  height: 1741
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:DrAmjad_Hussain&amp;action=edit&amp;redlink=1"
+    class="new" title="User:DrAmjad Hussain (page does not exist)">DrAmjad Hussain</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Carduelis caniceps, Kargil,
+    Ladakh, India.jpg
+  commons_filename: Carduelis caniceps, Kargil, Ladakh, India.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:12:46.469598+00:00'
+sources:
+  wikipedia_sv_revision: '59160072'
+  wikipedia_en_revision: '1353506961'
+  claude_model: claude-haiku-4-5-20251001

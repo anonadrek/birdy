@@ -1,0 +1,104 @@
+id: Q900715
+scientific_name: Rhodospiza obsoleta
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Rhodopechys
+  ioc_order: Passeriformes
+names:
+  sv: Ökenfink
+  en: Desert Finch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Ökenfink
+
+
+    Ökenfink är en liten fink som förekommer i bergiga ökenregioner från Turkiet österut
+    till Pakistan och norra Kina. Arten är väl anpassad till torra bergsmiljöer på
+    höga höjder där få andra fåglar trivs.
+
+
+    Det är en liten, buskig fink med en kraftig näbb som är särskilt väl utvecklad
+    för att knäcka hårt frön. Fjäderdräkten är övervägande sandfärgad till grå, vilket
+    ger utmärkt kamouflage i stenig bergsterräng. Under flykten visar arten ofta vita
+    eller ljusa vingar.
+
+
+    Arten förekommer i små flockar, särskilt under vintern, och söker föda på marken
+    eller på låga buskväxter. Den är väl anpassad till de hårda klimatförhållandena
+    i sitt habitat och kan trotsa både torka och extrem kyla.'
+  en: '# Desert Finch (*Rhodospiza obsoleta*)
+
+
+    The desert finch is a large brown finch inhabiting arid regions across southern
+    Eurasia. It belongs to the true finch family and has a somewhat complicated taxonomic
+    history, having been reclassified multiple times among different genera including
+    *Fringilla*, *Bucanetes*, *Carduelis*, and *Rhodopechys*, which reflects ongoing
+    uncertainty about its closest relatives.
+
+
+    This species is adapted to harsh, desert environments where it feeds on seeds
+    from sparse vegetation. It is typically found in open, barren landscapes with
+    minimal cover. The desert finch''s large size distinguishes it among desert-dwelling
+    finches, making it relatively conspicuous despite its predominantly brown plumage
+    that provides camouflage in its arid habitat.
+
+
+    Little specific detail is readily available about its vocalizations and detailed
+    behavioral patterns in widely accessible sources, though like other finches, it
+    likely employs calls suited to communication across open terrain.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (The source text only mentions the species'' geographic range in mountain regions
+    from Turkey to Pakistan and northern China, with no information about migration
+    patterns, seasonal movements, or occurrence in Scandinavia/Northern Europe.)'
+  en: '# Desert Finch Migration in Northern Europe
+
+
+    The Desert Finch is not a regular occurrence in Scandinavia or Northern Europe.
+    This species is primarily found in southern Eurasia, inhabiting arid and semi-arid
+    regions. There are no established migration patterns or seasonal occurrences documented
+    for this bird in Scandinavian or Northern European territories. Any sightings
+    in these regions would constitute rare vagrants outside the species'' normal range.
+
+
+    **Migration data unavailable for this species.**'
+image_refs:
+- role: hero
+  path: Q900715/hero.jpg
+  width: 2048
+  height: 1367
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/628259">Kudaibergen
+    Amirekul</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rhodospiza obsoleta 268195788.jpg
+  commons_filename: Rhodospiza obsoleta 268195788.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:12:20.991260+00:00'
+sources:
+  wikipedia_sv_revision: '55781092'
+  wikipedia_en_revision: '1347480315'
+  claude_model: claude-haiku-4-5-20251001

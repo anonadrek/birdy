@@ -1,0 +1,91 @@
+id: Q120964666
+scientific_name: Fringilla spodiogenys
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Fringilla
+  ioc_order: Passeriformes
+names:
+  sv: Afrikansk bofink
+  en: African Chaffinch
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# African Chaffinch
+
+
+    The African chaffinch is a small passerine finch belonging to the genus *Fringilla*.
+    It inhabits deciduous forests and lowland areas across its range, which extends
+    from southern Morocco through northwestern Libya, with an isolated population
+    in the northeastern part of that country. The species also occurs on Mediterranean
+    islands, making it the only *Fringilla* species found naturally in Europe.
+
+
+    Outside the breeding season, the African chaffinch becomes more flexible in its
+    habitat use, venturing into open landscapes such as weedy fields and olive groves.
+    This seasonal shift in habitat preference reflects its adaptability to different
+    food sources throughout the year. The species was historically considered to be
+    African subspecies of the Common chaffinch, but is now recognized as a distinct
+    species.
+
+
+    Information about the bird''s specific appearance, vocalizations, and detailed
+    behaviour is limited in the available source material.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides information about the African Chaffinch''s geographic
+    distribution in North Africa and Mediterranean islands, but contains no specific
+    details about migration patterns, seasonal movements, or occurrence in Scandinavia
+    and Northern Europe. Therefore, reliable migration information cannot be provided
+    based on the available source material.'
+image_refs:
+- role: hero
+  path: Q120964666/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:African Chaffinch (Fringilla
+    spodiogenys) male Morocco.jpg
+  commons_filename: African Chaffinch (Fringilla spodiogenys) male Morocco.jpg
+- role: secondary
+  path: Q120964666/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:African Chaffinch (Fringilla
+    spodiogenys) female Sfax.jpg
+  commons_filename: African Chaffinch (Fringilla spodiogenys) female Sfax.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:15:16.924262+00:00'
+sources:
+  wikipedia_sv_revision: '55485765'
+  wikipedia_en_revision: '1345175581'
+  claude_model: claude-haiku-4-5-20251001

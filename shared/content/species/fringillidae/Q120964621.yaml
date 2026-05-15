@@ -1,0 +1,87 @@
+id: Q120964621
+scientific_name: Fringilla canariensis
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Fringilla
+  ioc_order: Passeriformes
+names:
+  sv: Kanariebofink
+  en: Canary Islands Chaffinch
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Canary Islands Chaffinch
+
+
+    The Canary Islands chaffinch is a finch species recently recognized as distinct
+    from the widespread Eurasian chaffinch following genetic analysis in 2021. It
+    is endemic to the Canary Islands, where it is largely resident year-round.
+
+
+    The species shares similarities with its close relative, the Eurasian chaffinch,
+    though morphological differences distinguish it as a separate species. Like other
+    finches in the family Fringillidae, it is a relatively small songbird adapted
+    to life in its island habitat.
+
+
+    This chaffinch is thought to remain within its distribution throughout the year
+    rather than undertaking long migrations. As an endemic species confined to the
+    Canary Islands, it represents an interesting example of island speciation within
+    the finch family.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Canary Islands chaffinch is endemic to the Canary Islands and does not occur
+    naturally in Scandinavia or Northern Europe. The available source material indicates
+    the species is largely resident within its island distribution, but provides no
+    information regarding any movements within or outside the Canary Islands archipelago.
+    No migration patterns relevant to Northern Europe can be documented for this species.'
+image_refs:
+- role: hero
+  path: Q120964621/hero.jpg
+  width: 2400
+  height: 1556
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Llez" title="User:Llez">H. Zell</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fringilla coelebs canariensis
+    02.jpg
+  commons_filename: Fringilla coelebs canariensis 02.jpg
+- role: secondary
+  path: Q120964621/secondary-1.jpg
+  width: 1800
+  height: 1199
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Llez" title="User:Llez">H. Zell</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fringilla coelebs canariensis
+    01.jpg
+  commons_filename: Fringilla coelebs canariensis 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:12:24.798242+00:00'
+sources:
+  wikipedia_sv_revision: '56099409'
+  wikipedia_en_revision: '1353212294'
+  claude_model: claude-haiku-4-5-20251001

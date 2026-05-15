@@ -1,0 +1,88 @@
+id: Q1143180
+scientific_name: Loxia scotica
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Loxia
+  ioc_order: Passeriformes
+names:
+  sv: Skotsk korsnäbb
+  en: Scottish Crossbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Scottish Crossbill
+
+
+    The Scottish crossbill is a small finch endemic to the ancient Caledonian Forests,
+    making it one of only two land vertebrate species found nowhere else in the United
+    Kingdom. It belongs to the finch family and shares the characteristic crossed
+    mandibles of other crossbills, an adaptation perfectly suited to extracting seeds
+    from conifer cones.
+
+
+    This compact bird is adapted for life among evergreen trees, where it spends much
+    of its time foraging. Like other crossbills, it has a distinctive bill structure
+    where the upper and lower mandibles cross over one another, allowing it to prise
+    open cone scales with remarkable efficiency. The bird''s plumage and overall appearance
+    reflect its specialization in coniferous forests.
+
+
+    The Scottish crossbill''s call and song are distinctive features that help identify
+    it in the field, though details of its vocalizations require careful observation
+    to distinguish from closely related crossbill species. It remains a sought-after
+    species for birdwatchers interested in endemic birds and forest specialists, though
+    finding it requires visiting its restricted habitat in suitable coniferous woodland
+    during the right season.'
+migration:
+  sv: ''
+  en: '# Scottish Crossbill (Skotsk korsnäbb) – Occurrence in Scandinavia/Northern
+    Europe
+
+
+    The Scottish Crossbill is endemic to Scotland''s Caledonian Forests and does not
+    naturally occur in Scandinavia or Northern Europe. Being restricted to the United
+    Kingdom, it is not part of the regular avifauna of Nordic or continental European
+    countries. Therefore, migration patterns or seasonal occurrence in Northern Europe
+    are not applicable to this species.
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q1143180/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2602076">Simone
+    Littledale</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Loxia scotica - Simone Littledale
+    - 562388281.jpeg
+  commons_filename: Loxia scotica - Simone Littledale - 562388281.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:14:50.263799+00:00'
+sources:
+  wikipedia_sv_revision: '58642477'
+  wikipedia_en_revision: '1349339062'
+  claude_model: claude-haiku-4-5-20251001

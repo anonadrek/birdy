@@ -1,0 +1,114 @@
+id: Q206550
+scientific_name: Carduelis citrinella
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Carduelis
+  ioc_order: Passeriformes
+names:
+  sv: Citronsiska
+  en: Citril Finch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Citronsiska
+
+
+    Citronsiska är en liten fink som hör till familjen finkar. Den förekommer i bergstrakter
+    i sydvästra Europa och är klassificerad som livskraftig enligt IUCN. Arten förväxlades
+    tidigare med korsikansk siska, som numera erkänns som en separat art.
+
+
+    Arten är väl anpassad för bergsmiljöer där den hittas i sitt naturliga habitat.
+    Som många andra finkar är citronsiska en mindre fågel med karakteristiska drag
+    som är typiska för släktet. Arten är stabil i sina populationer och utgör ingen
+    naturvårdskonflikt.'
+  en: '# Citril Finch
+
+
+    The citril finch is a small songbird belonging to the true finch family. It is
+    a delicate species adapted to mountain environments, where it forages among seed-bearing
+    plants and conifers. The bird''s plumage displays subtle coloration that provides
+    effective camouflage in its alpine habitat.
+
+
+    This finch is primarily a seed-eater, with a preference for small seeds from thistles
+    and other low vegetation. It often feeds in small flocks, particularly outside
+    the breeding season. The citril finch is acrobatic in flight, moving nimbly through
+    trees and shrubs as it searches for food.
+
+
+    The species is found in mountainous regions where suitable vegetation and altitude
+    conditions exist. It typically inhabits areas with scattered conifers and alpine
+    meadows, moving to lower elevations during winter months.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Citril Finch Migration in Northern Europe
+
+
+    The Citril Finch is primarily a resident and short-distance migrant in southern
+    and central European mountains, with limited occurrence in Scandinavia and Northern
+    Europe. In these northern regions, the species is rare and irregular, appearing
+    mainly as a vagrant during migration periods or winter months. When present, individuals
+    are typically found in late autumn and winter, having moved downslope or northward
+    from Alpine breeding populations in response to harsh mountain conditions. The
+    species does not establish regular populations in Scandinavia, making sightings
+    exceptional rather than predictable. Any northern occurrences are generally associated
+    with irruptive movements or unusual weather patterns that displace mountain populations.'
+image_refs:
+- role: hero
+  path: Q206550/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/83657186@N05">Pierre-Marie
+    Epiney</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Venturon montagnard Carduelis
+    citrinella aDSC 8571 (51825701322).jpg
+  commons_filename: Venturon montagnard Carduelis citrinella aDSC 8571 (51825701322).jpg
+- role: secondary
+  path: Q206550/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/83657186@N05">Pierre-Marie
+    Epiney</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Venturon montagnard Carduelis
+    citrinella aDSC 8574 (51827373090).jpg
+  commons_filename: Venturon montagnard Carduelis citrinella aDSC 8574 (51827373090).jpg
+- role: secondary
+  path: Q206550/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/83657186@N05">Pierre-Marie
+    Epiney</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Venturon montagnard Carduelis
+    citrinella aDSC 8581 (51826755168).jpg
+  commons_filename: Venturon montagnard Carduelis citrinella aDSC 8581 (51826755168).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:11:51.318196+00:00'
+sources:
+  wikipedia_sv_revision: '55541951'
+  wikipedia_en_revision: '1338504839'
+  claude_model: claude-haiku-4-5-20251001

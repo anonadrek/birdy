@@ -1,0 +1,140 @@
+id: Q25382
+scientific_name: Pyrrhula pyrrhula
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Pyrrhula
+  ioc_order: Passeriformes
+names:
+  sv: Domherre
+  en: Eurasian Bullfinch
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Domherre
+
+
+    Domherren är en stor och kraftig fink med karakteristisk utseende. Den har en
+    svart mössa och ansiktsmask, vita kindlädrar och en framträdande röd bröst- och
+    bukparti. Vingarnas svarta fjädrar kontrasterar vackert mot det vita på kroppen.
+    Det är en robust fågel med kraftig näbb, väl anpassad för att knäcka frön.
+
+
+    Arten förekommer i Europa och Asien och föredrar barrskog från låga till höga
+    höjder, särskilt granplanteringar. Den trivs också i gles blandskog med små barrträd
+    och tät undervegetation, liksom i parker och trädgårdar. Domherren är en lugn
+    och diskret fågel som ofta ses i små grupper eller par.
+
+
+    Födan består främst av frön, bär och knoppar, och arten är känd för att ofta besöka
+    knoppar på träd under höst och vinter. Domherren har en mjuk, vind sång och ger
+    ifrån sig en karakteristisk dubbelstavad lockrop. Arten är inte hotad och har
+    en stabil population.'
+  en: '# Eurasian Bullfinch
+
+
+    The Eurasian bullfinch is a compact finch with distinctive plumage that makes
+    it easy to identify. It features a striking black cap and face mask contrasting
+    sharply with white cheeks and a pale underside. The back is grey, and it displays
+    a bright white rump patch particularly visible in flight. Its stubby, stout bill
+    is perfectly adapted for extracting seeds from fruits and buds.
+
+
+    This species tends to be rather quiet and unobtrusive, often seen in pairs or
+    small groups moving methodically through trees and bushes. It feeds primarily
+    on seeds and buds, especially from fruit trees, and can become a pest in orchards
+    during winter. The bullfinch is remarkably sedentary, with individuals often remaining
+    in the same territory year-round or making only short-distance movements.
+
+
+    The call is a soft, subdued whistle—quite unlike the cheerful songs of many other
+    finches—making it easy to overlook. It prefers woodland edges, parks, gardens,
+    and areas with scattered trees and hedgerows. The Eurasian bullfinch''s combination
+    of elegant appearance and quiet, unobtrusive behaviour makes it a rewarding species
+    for patient observers.'
+migration:
+  sv: '# Domherre (Pyrrhula pyrrhula) – Förekomst i Skandinavien och Nordeuropa
+
+
+    Domherren är en året runt förekommande art i Skandinavien och Nordeuropa, även
+    om populationerna varierar säsongsvis. Under vintermånaderna ankommer nordiska
+    och ryska populationer till södra Skandinavien och övriga Nordeuropa för att övervintra,
+    vilket resulterar i en märkbar ökning av arten i dessa regioner. Lokala populationer
+    är ofta stationära ellerMove bara begränsade sträckor. Arten återvänder till sina
+    nordliga häckningsområden under våren, vanligtvis från mars till april. Domherren
+    förekommer därmed i området året om, med tydligast närvaro under vintermånaderna
+    när migration från nordöst intensifieras.'
+  en: '# Eurasian Bullfinch (Domherre) – Scandinavian Occurrence
+
+
+    The Eurasian bullfinch is a resident or partial migrant throughout Scandinavia
+    and Northern Europe, with populations showing considerable variation in migratory
+    behavior depending on weather severity and food availability. Northern populations
+    tend to be more migratory, moving southwestward during harsh winters, while southern
+    Scandinavian birds are often year-round residents. Birds typically return to breeding
+    territories in March–April and may undertake local movements in autumn and winter,
+    particularly in response to seed crop failures that force populations to seek
+    food elsewhere in the region.
+
+
+    The species'' presence in Scandinavia varies seasonally; winter months see influxes
+    from eastern populations supplementing resident birds, creating noticeable population
+    increases. This irruptive migration pattern is driven by climatic conditions and
+    the availability of seeds from rowan, hawthorn, and fruit buds—key winter food
+    sources in the Nordic region.'
+image_refs:
+- role: hero
+  path: Q25382/hero.jpg
+  width: 2300
+  height: 2092
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pyrrhula Pyrrhula Kittilä 20170408
+    01.jpg
+  commons_filename: Pyrrhula Pyrrhula Kittilä 20170408 01.jpg
+- role: secondary
+  path: Q25382/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Eurasian bullfinch (Pyrrhula
+    pyrrhula) 2022.jpg
+  commons_filename: Eurasian bullfinch (Pyrrhula pyrrhula) 2022.jpg
+- role: secondary
+  path: Q25382/secondary-2.jpg
+  width: 1800
+  height: 1432
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Bullfinches Pyrrhula pyrrhula
+    (24208777577).jpg
+  commons_filename: Bullfinches Pyrrhula pyrrhula (24208777577).jpg
+review_status: approved
+review_notes: "Bergfink — hero med klar art-ID, allmän SE-fågel."
+generated_at: '2026-05-15T19:13:47.794760+00:00'
+sources:
+  wikipedia_sv_revision: '55576523'
+  wikipedia_en_revision: '1341101569'
+  claude_model: claude-haiku-4-5-20251001

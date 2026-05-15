@@ -1,0 +1,99 @@
+id: Q786784
+scientific_name: Pyrrhula murina
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Pyrrhula
+  ioc_order: Passeriformes
+names:
+  sv: Azordomherre
+  en: Azores Bullfinch
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Azordomherre
+
+
+    Azordomherre är en liten finkkäft som är endemisk för en enskild ö i Azorerna,
+    vilket gör den till en sällsynt och begränsad art. Arten är klassificerad som
+    sårbar enligt IUCN på grund av sitt mycket begränsade utbredningsområde.
+
+
+    Denna tätting tillhör familjen finkar och har anpassat sig till den specifika
+    miljön på sin hemö. Som många andra endemiska arter på isolerade öar är den känslig
+    för miljöförändringar och habitatförlust. Arten är av stor betydelse för naturvården
+    och utgör ett exempel på vikten av att bevara små och isolerade populationer av
+    fåglar.'
+  en: '# Azores Bullfinch
+
+
+    The Azores bullfinch is a threatened finch species found exclusively on São Miguel
+    Island in the Azores archipelago. This small passerine belongs to the true finch
+    family and is locally known by the Portuguese name "priolo."
+
+
+    Due to limited source information, specific details about its appearance, behaviour,
+    and call are not available from the provided text. However, as a member of the
+    bullfinch genus Pyrrhula, it likely shares characteristics typical of bullfinches,
+    including a robust bill and compact body shape. The species inhabits a restricted
+    range on a single island, which contributes to its conservation status as a threatened
+    bird.
+
+
+    The Azores bullfinch represents an important example of island endemism, where
+    species evolve in isolation on small landmasses. Its threatened status highlights
+    the vulnerability of island birds to habitat loss and other environmental pressures.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (Azordomherre är endemisk för Azorerna, vilket ligger långt söder om Skandinavien
+    och Nordeuropa. Arten förekommer inte naturligt i dessa regioner, varför ingen
+    information om migration i Skandinavien/Nordeuropa kan tillhandahållas.)'
+  en: '# Azores Bullfinch - Occurrence in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Azores Bullfinch is endemic to São Miguel Island in the Azores archipelago
+    and does not occur in Scandinavia or Northern Europe. This species has an extremely
+    restricted range, being found exclusively on one island in the North Atlantic.
+    Therefore, information about its occurrence, migration patterns, or seasonal presence
+    in Scandinavian or Northern European regions is not applicable.'
+image_refs:
+- role: hero
+  path: Q786784/hero.jpg
+  width: 1799
+  height: 2400
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Joseph_Wolf" class="extiw"
+    title="w:en:Joseph Wolf"><span title="German artist (1820-1899)">Joseph Wolf</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Pyrrhula murina 2.jpg
+  commons_filename: Pyrrhula murina 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:12:58.785805+00:00'
+sources:
+  wikipedia_sv_revision: '59100066'
+  wikipedia_en_revision: '1314295561'
+  claude_model: claude-haiku-4-5-20251001

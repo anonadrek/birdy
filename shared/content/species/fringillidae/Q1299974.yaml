@@ -1,0 +1,98 @@
+id: Q1299974
+scientific_name: Carduelis corsicana
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Carduelis
+  ioc_order: Passeriformes
+names:
+  sv: Korsikansk siska
+  en: Corsican Finch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Corsican Finch
+
+
+    The Corsican finch is a small passerine belonging to the finch family, endemic
+    to Corsica, Sardinia, and nearby Mediterranean islands. This species is closely
+    related to other citril finches and occupies a distinct ecological niche within
+    its limited range.
+
+
+    Little detailed information is available from the provided source regarding the
+    bird''s specific appearance, behaviour, vocalizations, or preferred habitats.
+    To provide accurate guidance on identifying this species—including plumage patterns,
+    size, call characteristics, and the types of terrain where it is typically encountered—additional
+    sources beyond the introductory text would be needed.
+
+
+    For birdwatchers interested in observing the Corsican finch, consulting detailed
+    field guides specific to Mediterranean birds or recent ornithological studies
+    would provide essential information on field identification, seasonal movements,
+    and preferred feeding and breeding sites.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Corsican finch is endemic to Corsica, Sardinia, and nearby Mediterranean islands,
+    with no documented occurrence in Scandinavia or Northern Europe. The source text
+    provides no information regarding migration patterns, seasonal movements, or distribution
+    outside its Mediterranean island range. Therefore, it does not occur in Scandinavia
+    or Northern Europe throughout the year.'
+image_refs:
+- role: hero
+  path: Q1299974/hero.jpg
+  width: 2048
+  height: 1282
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Carduelis corsicana 218496978.jpg
+  commons_filename: Carduelis corsicana 218496978.jpg
+- role: secondary
+  path: Q1299974/secondary-1.jpg
+  width: 1800
+  height: 1127
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Carduelis corsicana 218497240.jpg
+  commons_filename: Carduelis corsicana 218497240.jpg
+- role: secondary
+  path: Q1299974/secondary-2.jpg
+  width: 1800
+  height: 1126
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Carduelis corsicana 218493924.jpg
+  commons_filename: Carduelis corsicana 218493924.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:12:06.313432+00:00'
+sources:
+  wikipedia_sv_revision: '56596643'
+  wikipedia_en_revision: '1346644891'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,45 @@
+id: Q848192
+scientific_name: Mycerobas carnipes
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Mycerobas
+  ioc_order: Passeriformes
+names:
+  sv: Tujastenknäck
+  en: White-winged Grosbeak
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:13:08.895429+00:00'
+sources:
+  wikipedia_sv_revision: '59162160'
+  wikipedia_en_revision: '1315192078'
+  claude_model: claude-haiku-4-5-20251001

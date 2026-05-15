@@ -1,0 +1,92 @@
+id: Q27075828
+scientific_name: Crithagra menachensis
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Crithagra
+  ioc_order: Passeriformes
+names:
+  sv: Jemensiska
+  en: Yemen Serin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Jemensiska
+
+
+    Jemensiska är en liten fink som förekommer i ett begränsat område på sydvästra
+    Arabiska halvön. Det är en diskret fågel som är anpassad till de torra, bergiga
+    miljöer där den lever.
+
+
+    Arten är knuten till sitt begränsade utbredningsområde och ses huvudsakligen i
+    höglänta regioner. Som andra finkar i familjen lever jemensiska av frön och småväxter.
+    Det är en mindre känd art jämfört med många andra finkar, och detaljerad information
+    om dess beteende och ljud är begränsad inom allmän litteratur.
+
+
+    För den som är intresserad av finkfaunan i Arabiska halvön är jemensiska en specialistfågel
+    som kräver kunskap om dess specifika habitat för att observeras.'
+  en: '# Yemen Serin
+
+
+    The Yemen serin is a small finch belonging to the family Fringillidae. This species
+    is endemic to the Arabian Peninsula, where it inhabits arid and semi-arid regions.
+    Its range is restricted to mountainous areas in Oman, Saudi Arabia, and Yemen,
+    making it a specialist of harsh, rocky terrain.
+
+
+    Like other serins, the Yemen serin is a compact finch with a relatively short,
+    pointed bill adapted for extracting seeds from small plants and grasses. The bird
+    tends to be inconspicuous, often found singly or in small groups foraging among
+    scrub vegetation and rocky slopes. It shares the typical finch behavior of acrobatic
+    feeding, sometimes hanging from seed heads while extracting food.
+
+
+    The species is relatively little-studied compared to more widespread finches,
+    and detailed information about its vocalizations and specific breeding behavior
+    remains limited. It is generally considered relatively common within its restricted
+    range, though like many desert-dwelling birds, its populations may fluctuate with
+    local rainfall and food availability.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    (This species'' distribution is restricted to southwestern Arabian Peninsula,
+    and the source text contains no information about its occurrence in Scandinavia/Northern
+    Europe or migration patterns.)'
+  en: 'Migration data unavailable for this species.
+
+
+    The Yemen Serin is a resident finch of the Arabian Peninsula with no documented
+    occurrence in Scandinavia or Northern Europe. Its range is restricted to Oman,
+    Saudi Arabia, and Yemen, making it geographically isolated from northern European
+    regions. Therefore, no seasonal migration patterns, overwintering behavior, or
+    arrival data relevant to Scandinavia can be provided for this species.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:15:00.598228+00:00'
+sources:
+  wikipedia_sv_revision: '55422570'
+  wikipedia_en_revision: '1315359660'
+  claude_model: claude-haiku-4-5-20251001

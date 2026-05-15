@@ -1,0 +1,73 @@
+id: Q27075814
+scientific_name: Crithagra rothschildi
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Crithagra
+  ioc_order: Passeriformes
+names:
+  sv: Arabsiska
+  en: Arabian Serin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Arabian Serin
+
+
+    The Arabian serin is a small finch native to mountainous regions of the Arabian
+    Peninsula. It inhabits subtropical and tropical dry forests and shrublands, preferring
+    elevations in arid terrain. This finch is relatively uncommon and localized in
+    distribution.
+
+
+    As a small finch, the Arabian serin displays the typical compact body shape characteristic
+    of the genus Crithagra. Its plumage features olive tones, particularly on the
+    rump, which gives it one of its common names. Like many serins, it likely shows
+    streaking on the wings and underparts, though specific plumage details are subtle
+    and require close observation.
+
+
+    The species feeds on small seeds from grasses and low vegetation, typical of finches
+    in arid environments. Its call and song are characteristic of serins—thin, high-pitched
+    vocalizations—though detailed descriptions of its voice remain limited in popular
+    literature. The Arabian serin remains poorly studied compared to more widespread
+    finch species, making it of particular interest to birdwatchers visiting its native
+    range who wish to observe endemic Arabian Peninsula birds.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Arabian Serin is native to the Sarawak Mountains of western Saudi Arabia and
+    Yemen, occurring in subtropical and tropical dry forest and shrubland habitats.
+    This species has a restricted range in the Arabian Peninsula and does not occur
+    in Scandinavia or Northern Europe. Therefore, no information about its presence,
+    migration patterns, or seasonal occurrence in these regions can be provided.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:14:27.767431+00:00'
+sources:
+  wikipedia_sv_revision: '55790503'
+  wikipedia_en_revision: '1313766171'
+  claude_model: claude-haiku-4-5-20251001

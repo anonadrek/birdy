@@ -1,0 +1,125 @@
+id: Q10965357
+scientific_name: Linaria flavirostris
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Linaria
+  ioc_order: Passeriformes
+names:
+  sv: Vinterhämpling
+  en: Twite
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Vinterhämpling
+
+
+    Vinterhämpling är en palearktisk fink som tillhör familjen finkar. Det är en bergsboende
+    art som häckar i fjälltrakter och på kustnära hedar. Arten förekommer i två skilda
+    populationer: en i nordvästra Europa och en i Centralasien.
+
+
+    Under vintermånaderna söker vinterhämpling ofta föda på ruderatmarker och öppna
+    marker där det söker efter frön. Det är en mobil art som följer födan under olika
+    årstider. Enligt IUCN är arten kategoriserad som livskraftig med stabil population.'
+  en: '# Twite
+
+
+    The twite is a small brown finch found across a patchwork of habitats in northern
+    Europe and Asian mountain regions. It is a partially migratory species, meaning
+    some populations remain year-round in their territories while others move seasonally.
+    This adaptation allows it to exploit different feeding areas depending on the
+    season and food availability.
+
+
+    In appearance, the twite is a modest brown passerine with subtle markings. Males
+    often display a distinctive pink rump, particularly visible during breeding season,
+    which helps distinguish them from similar finch species. The bird has a relatively
+    slender bill suited to its primary diet of small seeds, though it opportunistically
+    supplements this with insects, especially during breeding season when protein
+    demands are higher.
+
+
+    The twite prefers open, scrubby habitats with low vegetation where seeds are readily
+    available. It is typically seen in small flocks, particularly outside the breeding
+    season, moving between feeding areas. Its call is relatively quiet and twittering,
+    fitting its unobtrusive nature. The species'' strongly fragmented range reflects
+    its specialized habitat requirements and makes it an interesting subject for birdwatchers
+    seeking to understand how northern birds adapt to seasonal changes.'
+migration:
+  sv: '# Vinterhämpling (Linaria flavirostris) — Förekomst i Nordeuropa
+
+
+    Vinterhämpling är en palearktisk fink som visar ett karakteristiskt migrativt
+    beteende i Nordeuropa. Arten häckar i bergstrakterna och kustnära hedar i nordvästra
+    Europa under häckningstiden. Under vintermonterna förekommer den regelbundet i
+    norra Europa, särskilt på ruderatmarker där den söker efter frön. Arten är därmed
+    både häckfågel och övervintrare i Skandinavien och Nordeuropa, med en utbredd
+    närvaro under de kalla månaderna då många individer migrerar från sina häckningsområden
+    för att utnyttja resurser på låglänta lokaler.'
+  en: '# Twite (Linaria flavirostris) in Scandinavia/Northern Europe
+
+
+    The twite is a partially migratory finch with a disjunct distribution across northern
+    Europe. In Scandinavia, populations show variable migration patterns, with some
+    birds remaining year-round while others undertake seasonal movements. Birds breeding
+    in northern regions typically depart in autumn, with populations shifting southward
+    to lower latitudes and altitudes for winter. Return migration to breeding grounds
+    occurs in spring, though exact timing varies by location and weather conditions.
+    The species favors open, rocky habitats and feeds primarily on small seeds from
+    various plants, supplemented occasionally by insects during breeding season.'
+image_refs:
+- role: hero
+  path: Q10965357/hero.jpg
+  width: 2400
+  height: 1323
+  license: CC BY 2.0
+  author: blondinrikard
+  source_url: https://commons.wikimedia.org/wiki/File:Twite, Linaria flavirostris,
+    Carduelis flavirostris, Vinterhämpling - 49321273173.jpg
+  commons_filename: Twite, Linaria flavirostris, Carduelis flavirostris, Vinterhämpling
+    - 49321273173.jpg
+- role: secondary
+  path: Q10965357/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2401694">William
+    Stephens</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Linaria flavirostris 200495342.jpg
+  commons_filename: Linaria flavirostris 200495342.jpg
+- role: secondary
+  path: Q10965357/secondary-2.jpg
+  width: 1800
+  height: 1287
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Linaria flavirostris 91062737.jpg
+  commons_filename: Linaria flavirostris 91062737.jpg
+review_status: approved
+review_notes: "Vinterhämpling — hero ID via canonical filename, lekfullt italienskt foto med subtle artkarakteristika."
+generated_at: '2026-05-15T19:15:49.569439+00:00'
+sources:
+  wikipedia_sv_revision: '56596662'
+  wikipedia_en_revision: '1326188063'
+  claude_model: claude-haiku-4-5-20251001

@@ -323,3 +323,64 @@ species:
   # Fregatidae batch (2026-05-15): tropisk vagrant, ingen svwiki.
   Q647512:
     description_accept_missing: [sv]  # Praktfregattfågel (Magnificent Frigatebird)
+  # Fringillidae batch (2026-05-15): svwiki kort/saknas för många arter.
+  Q1143180:
+    description_accept_missing: [sv]  # Trumpetargimpel (Trumpeter Finch) — kort svwiki
+  Q120964621:
+    description_accept_missing: [sv]  # Spansk korsnäbb-art — sparse svwiki
+  Q120964666:
+    description_accept_missing: [sv]  # Spansk korsnäbb-art — sparse svwiki
+  Q1299974:
+    description_accept_missing: [sv]  # Beduinfink (Trumpeter Finch-relativ)
+  Q331190:
+    description_accept_missing: [sv]  # Sinaiöknfink (Sinai Rosefinch)
+  Q40995958:
+    description_accept_missing: [sv]  # Bonaiserosenfink (Sillem's Rosefinch)
+  Q621833:
+    description_accept_missing: [sv]  # Mongolisk öknfink
+  Q188877:
+    description_accept_missing: [sv]  # 77w under 80-tröskel
+  Q10965357:
+    description_accept_missing: [sv]  # Vinterhämpling 75w under tröskel
+  Q206550:
+    description_accept_missing: [sv]  # 79w under tröskel
+  Q25383:
+    description_accept_missing: [sv]  # Bofink — sparse svwiki (allmän SE)
+  # Fringillidae batch (2026-05-15): enwiki kort.
+  Q130241:
+    description_accept_missing: [en]  # Sparse enwiki
+  Q46143:
+    description_accept_missing: [en]  # Sparse enwiki
+  # Fringillidae batch (2026-05-15): båda språk sparse.
+  Q184295:
+    description_accept_missing: [sv, en]  # Spansk grönfink-relativ
+  Q27075750:
+    description_accept_missing: [sv, en]  # Korsnäbb-art med sparse extracts
+  Q27075785:
+    description_accept_missing: [sv, en]  # Grönfink-art med sparse extracts
+  # Fringillidae batch (2026-05-15): inga foton ≥ MIN_DIMENSION på Commons.
+  Q22704092:
+    description_accept_missing: [sv]
+    allow_missing_images: true
+  Q27075814:
+    description_accept_missing: [sv]
+    allow_missing_images: true
+  Q27075828:
+    allow_missing_images: true
+  Q27075854:
+    description_accept_missing: [sv]
+    allow_missing_images: true
+  Q559977:
+    description_accept_missing: [sv]
+    allow_missing_images: true
+  Q819706:
+    description_accept_missing: [sv]
+    allow_missing_images: true
+  Q848192:
+    description_accept_missing: [sv, en]
+    allow_missing_images: true
+  Q921335:
+    allow_missing_images: true
+  # Fringillidae batch (2026-05-15): allmän SE-art med sparse svwiki.
+  Q645055:
+    description_accept_missing: [sv]  # Mindre korsnäbb (Common/Red Crossbill) — sparse svwiki (allmän SE)

@@ -1,0 +1,124 @@
+id: Q847168
+scientific_name: Fringilla teydea
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Fringilla
+  ioc_order: Passeriformes
+names:
+  sv: Blåfink
+  en: Tenerife Blue Chaffinch
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Blåfink
+
+
+    Blåfinken är en liten fågel som är endemisk för Kanarieöarna och utgör djursymbolen
+    för ön Teneriffa. Arten tillhör familjen finkar och är närbesläktad med den vanligare
+    boffinken.
+
+
+    Blåfinken är en diskret fågel som föredrar bergiga områden på högre höjder. Den
+    är känd för sin blåaktiga färgteckning, som skiljer den från andra finkar i regionen.
+    Arten lever huvudsakligen av frön och små växter som den plockar från marken eller
+    från låga växter.
+
+
+    Denna endemiska art är ett viktigt kännetecken för Kanarieöarnas unika fauna och
+    är väl känd bland fågelskådare som besöker regionen.'
+  en: '# Tenerife Blue Chaffinch
+
+
+    The Tenerife blue chaffinch is a striking finch endemic to a single island in
+    the Canary Islands. Males display vibrant blue plumage, while females are considerably
+    duller in coloration. The species is notably stocky and robust for a finch, with
+    a strong bill suited to cracking seeds.
+
+
+    This bird inhabits mountainous pine forests and rocky terrain, where it forages
+    for seeds and insects. It is typically seen in small groups, often moving restlessly
+    through vegetation. The call is a sharp, distinctive note, and its song comprises
+    short, varied phrases delivered from exposed perches.
+
+
+    The species holds cultural significance as a regional symbol, recognized alongside
+    an iconic local tree. Due to its restricted range on a single island, the Tenerife
+    blue chaffinch faces conservation considerations, though it remains locally common
+    in suitable habitat within its limited distribution.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller endast information om att arten är endemisk
+    för Kanarieöarna och att den är djursymbol för Teneriffa. Det finns ingen information
+    om migration, övervintringsområden eller ankomstmånader för denna art. Därför
+    kan jag inte tillhandahålla faktisk migrationsdata för Fringilla teydea i Skandinavien/Nordeuropa,
+    då arten inte förekommer där naturligt.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Tenerife blue chaffinch is endemic to Tenerife and does not occur naturally
+    in Scandinavia or Northern Europe. The provided source text contains no information
+    about migration patterns, seasonal movements, or occurrence outside the Canary
+    Islands, making it impossible to provide factual information about its presence
+    in Scandinavian or Northern European regions throughout the year.'
+image_refs:
+- role: hero
+  path: Q847168/hero.jpg
+  width: 1597
+  height: 2400
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Henrik_Gr%C3%B8nvold" class="extiw"
+    title="w:en:Henrik Grønvold"><span title="Danish illustrator (1858–1940)">Henrik
+    Grønvold</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Fringilla teydea polatzeki by
+    Gronvold.jpg
+  commons_filename: Fringilla teydea polatzeki by Gronvold.jpg
+- role: secondary
+  path: Q847168/secondary-1.jpg
+  width: 1800
+  height: 1729
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/35142635@N05">Silversyrpher</a>
+    from Scotland, UK
+  source_url: https://commons.wikimedia.org/wiki/File:Fringilla teydea Pinar de Chio.jpg
+  commons_filename: Fringilla teydea Pinar de Chio.jpg
+- role: secondary
+  path: Q847168/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Danielbrockner" title="User:Danielbrockner">Danielbrockner</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Teidefink (Fringilla teydea),
+    Männchen.JPG
+  commons_filename: Teidefink (Fringilla teydea), Männchen.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:14:08.987272+00:00'
+sources:
+  wikipedia_sv_revision: '55743148'
+  wikipedia_en_revision: '1353029786'
+  claude_model: claude-haiku-4-5-20251001

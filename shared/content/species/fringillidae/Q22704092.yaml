@@ -1,0 +1,79 @@
+id: Q22704092
+scientific_name: Fringilla polatzeki
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Fringilla
+  ioc_order: Passeriformes
+names:
+  sv: Fringilla polatzeki
+  en: Gran Canaria Blue Chaffinch
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Grancanariablåfink
+
+
+    Grancanariablåfink är en nyligen erkänd och mycket hotad tätting som enbart förekommer
+    på en specifik kanarieö. Det tillhör familjen finkar och är en sällsynt art med
+    begränsad utbredning.
+
+
+    Arten är anpassad till bergiga miljöer och förekommer i höglänta områden på sin
+    hemö. Som medlem av finkfamiljen har det ett kraftigt näbb lämpat för frösömning.
+    Grancanariablåfinken är en mycket hotad art med en liten population, vilket gör
+    den till föremål för naturvårdsintresse och övervakning.'
+  en: '# Gran Canaria Blue Chaffinch
+
+
+    The Gran Canaria blue chaffinch is a striking finch endemic to the Canary Islands.
+    Males display vibrant blue plumage on the head, back, and wings, while females
+    and juveniles are more subdued with greenish-grey tones. It shares the characteristic
+    robust, conical bill typical of finches, adapted for cracking seeds.
+
+
+    This species inhabits the pine forests and scrublands of its island home, where
+    it forages on the ground and in trees for seeds and small insects. It often feeds
+    in small flocks, particularly outside the breeding season. The bird is typically
+    active and acrobatic, moving nimbly among branches and vegetation.
+
+
+    Little detailed information is available in accessible sources regarding its specific
+    vocalizations and call repertoire. Like other chaffinches, it likely produces
+    various calls during social interactions and breeding displays, though the exact
+    characteristics remain less documented in popular literature.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    This species is endemic to Gran Canaria in the Canary Islands and does not occur
+    naturally in Scandinavia or Northern Europe. Therefore, migration patterns relevant
+    to the Nordic region cannot be described.'
+  en: Migration data unavailable for this species.
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:14:39.238439+00:00'
+sources:
+  wikipedia_sv_revision: '55884233'
+  wikipedia_en_revision: '1314216815'
+  claude_model: claude-haiku-4-5-20251001

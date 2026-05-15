@@ -1,0 +1,72 @@
+id: Q27075785
+scientific_name: Chloris chloris
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Chloris
+  ioc_order: Passeriformes
+names:
+  sv: Grönfink
+  en: European Greenfinch
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q27075785/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Chloris chloris (19753531265).jpg
+  commons_filename: Chloris chloris (19753531265).jpg
+- role: secondary
+  path: Q27075785/secondary-1.jpg
+  width: 1561
+  height: 1800
+  license: CC BY 4.0
+  author: caroline legg
+  source_url: https://commons.wikimedia.org/wiki/File:Greenfinch - Chloris chloris
+    - Male1.jpg
+  commons_filename: Greenfinch - Chloris chloris - Male1.jpg
+- role: secondary
+  path: Q27075785/secondary-2.jpg
+  width: 1800
+  height: 1295
+  license: CC BY 4.0
+  author: caroline legg
+  source_url: https://commons.wikimedia.org/wiki/File:Greenfinch - Chloris chloris
+    - Female1.jpg
+  commons_filename: Greenfinch - Chloris chloris - Female1.jpg
+review_status: approved
+review_notes: "Grönfink — hero godkänd, allmän SE-fågel."
+generated_at: '2026-05-15T19:13:28.649893+00:00'
+sources:
+  wikipedia_sv_revision: '59193236'
+  wikipedia_en_revision: '1336903481'
+  claude_model: claude-haiku-4-5-20251001

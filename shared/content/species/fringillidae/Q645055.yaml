@@ -1,0 +1,103 @@
+id: Q645055
+scientific_name: Loxia pytyopsittacus
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Loxia
+  ioc_order: Passeriformes
+names:
+  sv: Större korsnäbb
+  en: Parrot Crossbill
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Parrot Crossbill
+
+
+    The parrot crossbill is a small finch with a distinctively robust build and powerful
+    bill that crosses at the tips—an adaptation perfectly suited to extracting seeds
+    from conifer cones. It is larger and heavier-billed than its close relative, the
+    red crossbill, with males displaying warm reddish plumage and females showing
+    greenish-yellow tones. The crossed mandibles are particularly prominent and give
+    the species its characteristic appearance.
+
+
+    This specialized feeder inhabits pine forests across northern and northeastern
+    regions, where it moves nomadically in search of productive cone crops. It often
+    feeds acrobatically while clinging to cones, using its powerful bill with remarkable
+    precision. The parrot crossbill''s call is a distinctive, harsh "chup-chup" that
+    differs from related crossbill species, helping observers distinguish it in the
+    field.
+
+
+    Though primarily a forest dweller, it occasionally ventures to lower elevations
+    or more southerly areas during years of poor seed production. Its movements are
+    largely determined by food availability rather than strict seasonal migration,
+    making sightings unpredictable outside its core breeding range.'
+migration:
+  sv: ''
+  en: The Parrot Crossbill is a resident and irruptive species in Scandinavia and
+    northern Europe, with populations that breed in pine forests throughout the region.
+    These birds are largely sedentary, remaining in their breeding areas year-round
+    where food supplies permit. However, they are prone to irregular eruptions, particularly
+    in autumn and winter, when seed crop failures in their northern breeding grounds
+    force substantial populations to move southward into continental Europe and occasionally
+    into southern Scandinavia. Such invasions are unpredictable and can vary greatly
+    in magnitude between years, depending on cone availability in boreal pine forests.
+    During favorable seed production years, most individuals remain resident throughout
+    the winter months.
+image_refs:
+- role: hero
+  path: Q645055/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Loxia pytyopsittacus, Budby
+    Common 1.jpg
+  commons_filename: Loxia pytyopsittacus, Budby Common 1.jpg
+- role: secondary
+  path: Q645055/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Loxia pytyopsittacus, Budby
+    Common 3.jpg
+  commons_filename: Loxia pytyopsittacus, Budby Common 3.jpg
+- role: secondary
+  path: Q645055/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:MPF" title="User:MPF">MPF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Loxia pytyopsittacus, Budby
+    Common 4.jpg
+  commons_filename: Loxia pytyopsittacus, Budby Common 4.jpg
+review_status: approved
+review_notes: "Mindre korsnäbb — hero godkänd, allmän SE-fågel."
+generated_at: '2026-05-15T19:14:14.826438+00:00'
+sources:
+  wikipedia_sv_revision: '56596635'
+  wikipedia_en_revision: '1349104999'
+  claude_model: claude-haiku-4-5-20251001

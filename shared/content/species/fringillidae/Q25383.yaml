@@ -1,0 +1,103 @@
+id: Q25383
+scientific_name: Fringilla coelebs
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Fringilla
+  ioc_order: Passeriformes
+names:
+  sv: Bofink
+  en: Eurasian Chaffinch
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Eurasian Chaffinch
+
+
+    The Eurasian chaffinch is a common and widespread small finch easily identified
+    by its distinctive markings. Males are particularly striking, featuring a blue-grey
+    cap, rust-red breast and underparts, with bold white wing bars and white outer
+    tail feathers. Females are more subtly coloured but share the same white wing
+    and tail markings, making them recognizable even without the male''s vibrant plumage.
+
+
+    This species is highly vocal, with males singing from prominent, exposed perches—a
+    behaviour linked to territorial defence and mate attraction. The song is a distinctive,
+    energetic phrase, and the bird also produces characteristic calls. It is a familiar
+    garden and woodland visitor across much of its range, often seen foraging on the
+    ground or visiting feeders.
+
+
+    The chaffinch is adaptable and occurs in diverse habitats including gardens, parks,
+    farmland, and open woodland edges. Its combination of colourful plumage, vocal
+    activity, and comfortable presence near human habitation makes it one of the most
+    recognizable finches for amateur birdwatchers.'
+migration:
+  sv: ''
+  en: '# Eurasian Chaffinch in Northern Europe
+
+
+    The Eurasian chaffinch is a year-round resident in Scandinavia and Northern Europe,
+    though populations fluctuate seasonally. Resident birds remain throughout the
+    year, but they are supplemented by migratory populations from further north and
+    east during autumn and winter months. Northern breeding populations migrate southwestward
+    in September and October, seeking milder conditions. Spring return migration occurs
+    from March to May, with males typically arriving before females to establish territories.
+    Winter numbers in Scandinavia can be substantial, particularly in southern regions
+    where food remains more accessible. These birds favor mixed woodlands and gardens
+    where seeds and insects provide sustenance year-round.'
+image_refs:
+- role: hero
+  path: Q25383/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Chaffinch of the subspecies
+    Fringilla coelebs canariensis.jpg
+  commons_filename: Chaffinch of the subspecies Fringilla coelebs canariensis.jpg
+- role: secondary
+  path: Q25383/secondary-1.jpg
+  width: 1800
+  height: 1193
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Madeiran chaffinch (Fringilla
+    coelebs maderensis).jpg
+  commons_filename: Madeiran chaffinch (Fringilla coelebs maderensis).jpg
+- role: secondary
+  path: Q25383/secondary-2.jpg
+  width: 1800
+  height: 1204
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Tadaa3x&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Tadaa3x (page does not exist)">Martin Kunz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fringilla coelebs on branch.jpg
+  commons_filename: Fringilla coelebs on branch.jpg
+review_status: approved
+review_notes: "Bofink — hero godkänd trots subspecies canariensis-typ; svwiki kort men accepterat (sparse)."
+generated_at: '2026-05-15T19:16:28.294998+00:00'
+sources:
+  wikipedia_sv_revision: '57441555'
+  wikipedia_en_revision: '1348835702'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,130 @@
+id: Q188877
+scientific_name: Fringilla montifringilla
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Fringilla
+  ioc_order: Passeriformes
+names:
+  sv: Bergfink
+  en: Brambling
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Bergfink
+
+
+    Bergfinken är en liten fågel som tillhör finkfamiljen och är nära släkt med bofinken.
+    Den har en nordlig utbredning och häckar över hela tajgaområdet från väster till
+    öster. Huvudsakligen övervintrar arten i väst- och mellaneuropa samt i södra och
+    mellersta Asien.
+
+
+    Arten besöker många områden under sin flyttning och är en känd vintrare som kan
+    ses vid fågelmat och på oljeväxter under kallare årstider. Bergfinken återvänder
+    regelbundet till sina häckningsområden i norr när våren kommer.'
+  en: '# Brambling
+
+
+    The brambling is a small finch with striking seasonal plumage. In breeding plumage,
+    males display jet-black heads, backs, and wings contrasting with warm buff-orange
+    shoulders and breast. Females and non-breeding birds are duller, with greyish-brown
+    heads and less vivid orange markings. All birds show a distinctive white rump
+    patch and spotted flanks.
+
+
+    This highly migratory species is renowned for forming vast, sometimes spectacular
+    flocks, particularly during winter movements. It often associates with other finches,
+    especially goldfinches and siskins, visiting seed-bearing trees and feeding on
+    the ground. The brambling''s call is a distinctive, nasal "churr" note, while
+    its song is a simple, repetitive trill.
+
+
+    The species breeds in northern forests with birch and conifers, then migrates
+    southward for winter, appearing in varied habitats including parks, gardens, and
+    open woodlands across much of the temperate and subtropical regions. Large influxes
+    can occur irregularly in some areas during harsh northern winters, making it a
+    keenly awaited visitor for birdwatchers.'
+migration:
+  sv: '# Bergfink – Förekomst i Skandinavien och Nordeuropa
+
+
+    Bergfinken är en regelbunden genomfågel och vintergäst i Skandinavien och övriga
+    Nordeuropa. Arten häckar långt upp i norr, från norska fjällen till Kamtjatka
+    i Sibirien. Under hösten, från september till november, passerar stora svärmar
+    genom Skandinavien på väg söderut. Huvuddelen överväntrar i Väst- och Mellaneuropa,
+    men mindre antal stannar kvar i södra Skandinavien under milda vintrar. Våren
+    från mars till maj återvänder bergfinkarna norr- och österut för att häcka. Arten
+    är således en typisk långdistansmigrant som helt saknar häckande population i
+    Skandinavien, men är en väl känd och talrik besökare under migrations- och övervintringsperioderna.'
+  en: '# Brambling Migration in Northern Europe
+
+
+    The brambling is a highly migratory species across Scandinavia and Northern Europe,
+    with populations showing marked seasonal movements. Birds breed in northern boreal
+    forests from Scandinavia eastward, departing for winter grounds typically from
+    September onwards. Large flocks arrive in southern Scandinavia and Central Europe
+    during autumn migration, with peak numbers occurring October through November.
+    Wintering birds are highly nomadic, moving in response to food availability, particularly
+    beech mast crops. Return migration to breeding grounds begins in March-April,
+    with arrival in Scandinavian breeding territories occurring April-May. Some individuals
+    occasionally overwinter in southern Scandinavia during mild winters, but the species
+    is predominantly a long-distance migrant.'
+image_refs:
+- role: hero
+  path: Q188877/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Brambling (Fringilla montifringilla)
+    2021.jpg
+  commons_filename: Brambling (Fringilla montifringilla) 2021.jpg
+- role: secondary
+  path: Q188877/secondary-1.jpg
+  width: 1800
+  height: 1217
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25553993@N02">Kev
+    Chapman</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fringilla montifringilla -England
+    -male-8 (3).jpg
+  commons_filename: Fringilla montifringilla -England -male-8 (3).jpg
+- role: secondary
+  path: Q188877/secondary-2.jpg
+  width: 1800
+  height: 1478
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://flickr.com/people/ferdinand23/">Gérard
+    Meyer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bergfink (Fringilla montifringilla)
+    in Frankreich (51876944624) (cropped).jpg
+  commons_filename: Bergfink (Fringilla montifringilla) in Frankreich (51876944624)
+    (cropped).jpg
+review_status: approved
+review_notes: "Mindre korsnäbb-relativ — hero godkänd."
+generated_at: '2026-05-15T19:15:39.789509+00:00'
+sources:
+  wikipedia_sv_revision: '58844582'
+  wikipedia_en_revision: '1351961399'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,108 @@
+id: Q331190
+scientific_name: Loxia leucoptera
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Loxia
+  ioc_order: Passeriformes
+names:
+  sv: Bändelkorsnäbb
+  en: Two-barred Crossbill
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Two-barred Crossbill
+
+
+    The two-barred crossbill is a small finch inhabiting coniferous forests across
+    North America and the Palearctic region. It is distinguished by its unique crossed
+    mandibles, an adaptation perfectly suited for extracting seeds from pine and spruce
+    cones. Males display bright red or yellow plumage, while females are duller, appearing
+    greenish-gray with streaking.
+
+
+    This species has a preference for coniferous woodlands where it feeds primarily
+    on seeds from conifer cones. It often moves in flocks, sometimes undertaking irregular
+    movements or invasions into new territories when food becomes scarce in its breeding
+    grounds. The two-barred crossbill is a relatively quiet bird, though it occasionally
+    produces soft calls and simple songs.
+
+
+    Identifying features include the characteristic crossed bill and prominent white
+    wing bars that give the species its common name, visible on both males and females.
+    These contrasting wing markings distinguish it from the closely related red crossbill,
+    which lacks such prominent white markings. The two-barred crossbill is typically
+    found in northern and montane coniferous forests, where it can often be observed
+    hanging acrobatically from cone-laden branches while feeding.'
+migration:
+  sv: ''
+  en: '# Two-barred Crossbill in Scandinavia/Northern Europe
+
+
+    The two-barred crossbill is an irregular winter visitor to Scandinavia and northern
+    Europe, with occurrence highly dependent on food availability in their breeding
+    range. These birds breed in coniferous forests across the Palearctic, including
+    parts of northern Scandinavia. During years when cone crops fail in their primary
+    breeding areas, larger numbers irrupt southwestward into Scandinavia, typically
+    arriving in autumn and winter months (October–March). In years of abundant food
+    sources, few or no birds may venture into the region. This species is therefore
+    considered an unpredictable vagrant rather than a regular migrant, with populations
+    fluctuating considerably from year to year based on cone production cycles.'
+image_refs:
+- role: hero
+  path: Q331190/hero.jpg
+  width: 2127
+  height: 2400
+  license: Public domain
+  author: Scan by NYPL
+  source_url: https://commons.wikimedia.org/wiki/File:144. The American Crossbill
+    (Loxia americana). 145. The White-winged Crossbill (Loxia leucoptera) (NYPL b14505696-113605).tiff
+  commons_filename: 144. The American Crossbill (Loxia americana). 145. The White-winged
+    Crossbill (Loxia leucoptera) (NYPL b14505696-113605).tiff
+- role: secondary
+  path: Q331190/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Two-barred crossbill (Loxia
+    leucoptera) 2023 2.jpg
+  commons_filename: Two-barred crossbill (Loxia leucoptera) 2023 2.jpg
+- role: secondary
+  path: Q331190/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Two-barred crossbill (Loxia
+    leucoptera) 2023 01.jpg
+  commons_filename: Two-barred crossbill (Loxia leucoptera) 2023 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:13:43.671629+00:00'
+sources:
+  wikipedia_sv_revision: '58602958'
+  wikipedia_en_revision: '1348773819'
+  claude_model: claude-haiku-4-5-20251001

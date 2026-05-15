@@ -1,0 +1,108 @@
+id: Q621833
+scientific_name: Serinus pusillus
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Serinus
+  ioc_order: Passeriformes
+names:
+  sv: Rödpannad gulhämpling
+  en: Red-fronted Serin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red-fronted Serin
+
+
+    The red-fronted serin is a tiny finch, measuring just 11–12 cm in length, making
+    it one of the smaller members of its family. It inhabits high mountain regions,
+    where it is well-adapted to challenging alpine environments. Its compact size
+    and mountain preference distinguish it from many lowland finch species.
+
+
+    This small passerine is characterized by its distinctive red forehead, which gives
+    the species its common name. Like other serins, it likely feeds on small seeds
+    and has the typical finch bill suited to extracting food from seed heads. Its
+    behaviour and vocalizations are typical of alpine finches, though detailed information
+    about its specific calls and habits requires further observation in its native
+    high-altitude habitat.
+
+
+    The species is found in mountainous terrain where vegetation is sparse and hardy
+    plants dominate. Its preference for elevation means it occupies a specialized
+    ecological niche, quite different from the lowland and woodland finches more commonly
+    encountered at sea level.'
+migration:
+  sv: ''
+  en: '# Red-fronted Serin in Northern Europe
+
+
+    The Red-fronted Serin is an extremely rare vagrant to Northern Europe and Scandinavia,
+    with no established migration pattern or regular occurrence in the region. This
+    small finch species is primarily resident in high mountain regions of southern
+    Europe and Asia Minor, far south of Scandinavian latitudes. Any sightings in Northern
+    Europe would represent highly exceptional occurrences outside the species'' normal
+    range, and the bird should not be expected as a regular migrant or winter visitor
+    to this region.
+
+
+    **Migration data unavailable for this species** in a Scandinavian context, as
+    it does not form part of the region''s regular avifauna.'
+image_refs:
+- role: hero
+  path: Q621833/hero.jpg
+  width: 2400
+  height: 1699
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Serinus pusillus - Red-fronted
+    serin 07.jpg
+  commons_filename: Serinus pusillus - Red-fronted serin 07.jpg
+- role: secondary
+  path: Q621833/secondary-1.jpg
+  width: 1800
+  height: 1252
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Serinus pusillus - Red-fronted
+    serin 05.jpg
+  commons_filename: Serinus pusillus - Red-fronted serin 05.jpg
+- role: secondary
+  path: Q621833/secondary-2.jpg
+  width: 1800
+  height: 1210
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Serinus pusillus - Red-fronted
+    serin 08.jpg
+  commons_filename: Serinus pusillus - Red-fronted serin 08.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:15:25.073682+00:00'
+sources:
+  wikipedia_sv_revision: '56588512'
+  wikipedia_en_revision: '1334948253'
+  claude_model: claude-haiku-4-5-20251001

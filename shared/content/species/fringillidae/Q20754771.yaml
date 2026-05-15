@@ -1,0 +1,138 @@
+id: Q20754771
+scientific_name: Acanthis flammea
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Acanthis
+  ioc_order: Passeriformes
+names:
+  sv: Gråsiska
+  en: Redpoll
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gråsiska
+
+
+    Gråsiska är en liten siska inom finkfamiljen med karakteristisk röd pannfläck
+    och svart haka. Fjäderdräkten är gråbrun med fina streckningar, och många individer
+    uppvisar rödaktiga toner på bröstet och på vingarna. Storleken varierar något
+    mellan olika populationer, och det finns flera erkända underarter eller närbesläktade
+    former som snösiska och brunsiska, vilka numera ofta behandlas som delar av gråsiskan.
+
+
+    Arten är till karaktären mycket social och ses ofta i flockar, framför allt under
+    vintern när större grupper kan ses vid foderplatser eller i björksnår där de söker
+    frön. Gråsikan är en aktiv, rastlös fågel som frequently växlar mellan grenar.
+    Arten är känd för sitt högt ljud, metalliska rop som ofta hörs när fåglarna flyger.
+
+
+    Gråsiska häckar cirkumpolärt på norra halvklotet i tempererat och subarktiskt
+    klimat, främst i björk- och lärkskogar. Under vintern sprider den sig söderut
+    och kan då träffas på många olika lokaler där det finns växtätande möjligheter,
+    inklusive stadsmiljöer med foderplatser.'
+  en: '# Redpoll
+
+
+    The redpoll is a small finch inhabiting Arctic and northern temperate regions
+    across the Holarctic, where it breeds in tundra and taiga habitats. This delicate
+    passerine was historically classified into three separate species—the common or
+    mealy redpoll, the arctic or hoary redpoll, and the lesser redpoll—but is now
+    recognized as a single species within its genus.
+
+
+    As a member of the finch family, the redpoll shares the typical characteristics
+    of its relatives, though specific details on its appearance, behaviour, and vocalizations
+    would require additional sources. Its affinity for northern breeding grounds makes
+    it a species of particular interest to birdwatchers in high-latitude regions,
+    where seasonal movements may bring it to lower elevations during winter months.
+
+
+    The redpoll represents an interesting case in avian taxonomy, where genetic and
+    morphological research has consolidated what were once considered distinct taxa
+    into a unified species classification.'
+migration:
+  sv: '# Gråsiska – förekomst i Norden
+
+
+    Gråsikan häckar cirkumpolärt på norra halvklotet och är en vanlig övervintrare
+    i Skandinavien och Nordeuropa. Arten ses framför allt under höst och vinter när
+    nordliga populationer flyttar söderut för att söka föda, särskilt på björk- och
+    alfrön. Större delen av året förekommer arten i olika antal beroende på årlig
+    variation i frötillgång. Under sommaren är gråsikan främst etablerad i sitt cirkumpolära
+    häckningsområde i subarktiska och tempererade zoner.
+
+
+    Ankomsten till södra Sverige och Skandinavien sker vanligen från september-oktober,
+    med toppar ofta före julhelgen. Arten stannar så länge födan räcker, ofta till
+    mars-april när den gradvis återvänder till häckningsområdena. Stora populationsvariationer
+    förekommer mellan åren, vilket återspeglar naturliga fluktuationer i nordisk frötillgång
+    och klimatiska förhållanden.'
+  en: '# Redpoll (Acanthis flammea) in Scandinavia/Northern Europe
+
+
+    The redpoll is an irregular migrant and winter visitor throughout Scandinavia
+    and Northern Europe. Breeding populations are found in Arctic and subarctic regions,
+    with movements southward in autumn varying considerably between years depending
+    on food availability. Birds typically arrive in southern Scandinavia from September
+    onwards, with peak numbers occurring during winter months (November–February).
+    Some populations are resident year-round in northern areas, while others undertake
+    partial migrations. Spring departure occurs gradually from February through April,
+    with most birds returning to breeding grounds by May. Winter presence is closely
+    linked to seed crop availability, particularly from birch and alder trees, creating
+    substantial annual variation in numbers and distribution patterns.'
+image_refs:
+- role: hero
+  path: Q20754771/hero.jpg
+  width: 1648
+  height: 2200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Acanthis flammea Oulu 20120507
+    02.jpg
+  commons_filename: Acanthis flammea Oulu 20120507 02.jpg
+- role: secondary
+  path: Q20754771/secondary-1.jpg
+  width: 1284
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Mattivirtala&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Mattivirtala (page does not exist)">Matti Virtala</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Acanthis flammea Oulu Finland
+    2020-09-25.jpg
+  commons_filename: Acanthis flammea Oulu Finland 2020-09-25.jpg
+- role: secondary
+  path: Q20754771/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Cephas" title="User:Cephas">Cephas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Acanthis flammea Spinus tristis
+    UL 03.jpg
+  commons_filename: Acanthis flammea Spinus tristis UL 03.jpg
+review_status: approved
+review_notes: "Stensparv-finkrelativ — hero godkänd."
+generated_at: '2026-05-15T19:13:10.226193+00:00'
+sources:
+  wikipedia_sv_revision: '58942312'
+  wikipedia_en_revision: '1315349490'
+  claude_model: claude-haiku-4-5-20251001

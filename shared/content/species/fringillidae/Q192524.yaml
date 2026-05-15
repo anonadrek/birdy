@@ -1,0 +1,116 @@
+id: Q192524
+scientific_name: Serinus canaria
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Serinus
+  ioc_order: Passeriformes
+names:
+  sv: Kanariesiska
+  en: Atlantic Canary
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kanariesiska
+
+
+    Kanariesiska är en fink som tillhör samma släkte som gulhämpling. Fågeln har fått
+    sitt namn från Kanarieöarna, där den ursprungligen härstammar. I sitt vilda tillstånd
+    är kanariesiskan en mindre fink med karakteristisk gul och grön färgteckning,
+    vilket gör den lätt att känna igen i sitt naturliga habitat.
+
+
+    Arten är framför allt känd som burfågel, där den i domesticerat tillstånd kallas
+    kanariefågel och är en populär sångfågel. Som vild fågel lever kanariesiskan på
+    öppna terränger och bergiga områden där det finns gles vegetation. Den är en aktiv
+    och rörlig fågel som ofta ses i mindre flockar, särskilt utanför häckningstiden.
+    Arten är välkänd för sin behagliga, trillrande sång som hörs under hela året.'
+  en: '# Atlantic Canary
+
+
+    The Atlantic canary is a small finch native to volcanic island archipelagos off
+    northwestern Africa. Wild birds display predominantly yellow-green plumage with
+    distinctive brownish streaking across the back, creating effective camouflage
+    in scrubby habitats. In captivity, selective breeding has produced numerous colour
+    varieties, ranging from bright yellow to orange and even white forms.
+
+
+    This sociable finch frequents open woodlands, scrubland, and cultivated areas,
+    often seen in small flocks. It feeds mainly on seeds from grasses and weeds. The
+    Atlantic canary''s pleasant, trilling song is one of its most appealing features,
+    with males singing from exposed perches to establish territories. The call is
+    a soft, liquid note often given in flight.
+
+
+    The species'' popularity as a cage bird stems from its hardy nature, attractive
+    appearance, and engaging song. However, wild populations remain common throughout
+    their native island ranges, where they have adapted well to human-modified landscapes.
+    Distinguishing wild birds from feral escaped cage birds can occasionally prove
+    challenging in some regions.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Atlantic Canary (Serinus canaria) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Atlantic canary is native to the Canary Islands, Azores, and Madeira in the
+    Atlantic, and does not naturally occur in Scandinavia or Northern Europe. While
+    the species is extremely popular in captivity worldwide, including in Scandinavian
+    countries, wild populations are restricted to their subtropical island habitats
+    in the eastern Atlantic. Any canaries encountered in Northern Europe are escapees
+    or releases from captive populations and do not represent established migratory
+    populations or overwintering groups.'
+image_refs:
+- role: hero
+  path: Q192524/hero.jpg
+  width: 2400
+  height: 1800
+  license: Public domain
+  author: Rob Hille
+  source_url: https://commons.wikimedia.org/wiki/File:Serinus canaria C.jpg
+  commons_filename: Serinus canaria C.jpg
+- role: secondary
+  path: Q192524/secondary-1.jpg
+  width: 1800
+  height: 1197
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Atlantic canary (Serinus canaria).jpg
+  commons_filename: Atlantic canary (Serinus canaria).jpg
+- role: secondary
+  path: Q192524/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/149526">steve
+    b</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Serinus canaria 369321643.jpg
+  commons_filename: Serinus canaria 369321643.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:14:20.072639+00:00'
+sources:
+  wikipedia_sv_revision: '57836495'
+  wikipedia_en_revision: '1324247294'
+  claude_model: claude-haiku-4-5-20251001

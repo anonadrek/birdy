@@ -1,0 +1,116 @@
+id: Q126618
+scientific_name: Carpodacus synoicus
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Carpodacus
+  ioc_order: Passeriformes
+names:
+  sv: Sinairosenfink
+  en: Sinai Rosefinch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sinairosenfink
+
+
+    Sinairosenfink är en finkkärlingu som tillhör familjen finkar och förekommer i
+    ett begränsat område i Mellanöstern. Arten är nationalfågel i Jordanien, vilket
+    vittnar om dess betydelse för regionen.
+
+
+    Arten kännetecknas av sin karakteristiska rosafärgade fjäderdräkt, särskilt på
+    bröstet och huvudet. Hanarna är mer intensivt färgade än honorna, som har mer
+    dämpade färgtoner. Det är en relativt liten fink med kraftig näbb anpassad för
+    att äta frön.
+
+
+    Sinairosenfink lever i bergiga och öppna miljöer med sparsam vegetation. Den håller
+    sig ofta i smågrupper och ses därför gärna söka föda på marken eller i låga buskar.
+    Arten är anpassad till torra förhållanden och är relativt vanlig inom sitt begränsade
+    utbredningsområde i Mellanöstern.'
+  en: '# Sinai Rosefinch
+
+
+    The Sinai rosefinch is a small finch with striking sexual dimorphism. Males display
+    a distinctive pink face and breast contrasting with a whitish forehead and crown,
+    while females are considerably duller, showing pale gray-brown plumage overall
+    with a whitish belly. This coloration helps the species blend into its arid surroundings.
+
+
+    The species inhabits hot desert regions, where it is adapted to harsh, sparsely
+    vegetated terrain. It feeds on seeds and small plant matter typical of desert
+    flora. The Sinai rosefinch prefers areas with scattered shrubs and rocky outcrops
+    that provide shelter and foraging opportunities in its arid habitat.
+
+
+    This finch is found across the Sinai Peninsula and the Negev region of the Middle
+    East. It holds cultural significance as the national bird of Jordan. The pale
+    rosefinch is sometimes treated as a subspecies rather than a separate species,
+    though taxonomic opinions vary. The Sinai rosefinch''s adaptation to extreme desert
+    conditions makes it a notable inhabitant of one of the world''s most challenging
+    environments.'
+migration:
+  sv: 'sv: Migrationsdata saknas för denna art.
+
+
+    en: Migration data unavailable for this species.'
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q126618/hero.jpg
+  width: 2048
+  height: 1366
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Sinai Rosefinch (Carpodacus
+    synoicus) in Israel.jpg
+  commons_filename: Sinai Rosefinch (Carpodacus synoicus) in Israel.jpg
+- role: secondary
+  path: Q126618/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 3.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q28147777" class="extiw" title="d:Q28147777"><span
+    title="Spanish photographer">Diego Delso</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Camachuelo del Sinaí - Pale
+    Rosefinch (Carpodacus synoicus), Petra, Jordan2.jpg
+  commons_filename: Camachuelo del Sinaí - Pale Rosefinch (Carpodacus synoicus), Petra,
+    Jordan2.jpg
+- role: secondary
+  path: Q126618/secondary-2.jpg
+  width: 1800
+  height: 1279
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/60678622@N04">Len
+    Worthington</a>
+  source_url: https://commons.wikimedia.org/wiki/File:SINAI ROSEFINCH Carpodacus synoicus
+    synoicus (8468692214).jpg
+  commons_filename: SINAI ROSEFINCH Carpodacus synoicus synoicus (8468692214).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:15:20.892822+00:00'
+sources:
+  wikipedia_sv_revision: '56466662'
+  wikipedia_en_revision: '1339801114'
+  claude_model: claude-haiku-4-5-20251001

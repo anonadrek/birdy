@@ -1,0 +1,61 @@
+id: Q27075854
+scientific_name: Linaria yemenensis
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Linaria
+  ioc_order: Passeriformes
+names:
+  sv: Jemenhämpling
+  en: Yemen Linnet
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Yemen Linnet
+
+
+    The Yemen linnet is a small finch belonging to the Fringillidae family. It inhabits
+    subtropical and tropical dry shrublands in the southwestern Arabian region, where
+    it has adapted to arid conditions and sparse vegetation.
+
+
+    This species remains relatively understudied compared to other finches, and detailed
+    information about its specific appearance, vocalizations, and behavior is limited
+    in available sources. Like many linnets, it likely feeds on small seeds from grasses
+    and shrubs found in its native habitat.
+
+
+    The Yemen linnet represents a specialized adaptation to harsh desert environments,
+    though comprehensive field guides and behavioral studies of this species remain
+    scarce among birding literature.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:12:07.492594+00:00'
+sources:
+  wikipedia_sv_revision: '56432347'
+  wikipedia_en_revision: '1345736040'
+  claude_model: claude-haiku-4-5-20251001

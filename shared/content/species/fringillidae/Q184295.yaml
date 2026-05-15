@@ -1,0 +1,54 @@
+id: Q184295
+scientific_name: Serinus syriacus
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Serinus
+  ioc_order: Passeriformes
+names:
+  sv: Levantsiska
+  en: Syrian Serin
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q184295/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Serinus syriacus 93094713.jpg
+  commons_filename: Serinus syriacus 93094713.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:16:00.370595+00:00'
+sources:
+  wikipedia_sv_revision: '55638804'
+  wikipedia_en_revision: '1353011824'
+  claude_model: claude-haiku-4-5-20251001

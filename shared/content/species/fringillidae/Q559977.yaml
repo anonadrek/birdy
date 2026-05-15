@@ -1,0 +1,72 @@
+id: Q559977
+scientific_name: Rhodopechys sanguineus
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Rhodopechys
+  ioc_order: Passeriformes
+names:
+  sv: Bergsökenfink
+  en: Crimson-winged Finch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Crimson-winged Finch
+
+
+    The Crimson-winged Finch is a stocky, pale-colored finch distinguished by its
+    notably heavy, dull yellowish bill. It is the sole member of its genus, Rhodopechys.
+    The species exhibits subtle plumage variation across its range, which has led
+    some authorities to recognize two distinct populations: the African and Asian
+    forms, though it is typically treated as a single species.
+
+
+    The finch inhabits rocky, semi-arid regions across North Africa and a broad swathe
+    of Asia, extending from Turkey through to northeast Pakistan. It frequents arid
+    and mountainous terrain where sparse vegetation provides foraging opportunities.
+    Like other finches, it is social and often seen in small flocks, particularly
+    outside the breeding season.
+
+
+    The species'' heavy bill is specifically adapted for extracting seeds from tough
+    plant material, a key aspect of its feeding behavior in harsh desert and montane
+    environments.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only information about the species'' general
+    appearance, taxonomic classification, and geographic distribution across North
+    Africa and Asia. It includes no details regarding migration patterns, seasonal
+    movements, or occurrence in Scandinavia or Northern Europe. To provide accurate
+    migration information for the Crimson-winged Finch in Scandinavian/Northern European
+    contexts, additional sources with specific phenological data would be required.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:14:28.577985+00:00'
+sources:
+  wikipedia_sv_revision: '56942678'
+  wikipedia_en_revision: '1351741436'
+  claude_model: claude-haiku-4-5-20251001

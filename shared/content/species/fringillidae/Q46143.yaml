@@ -1,0 +1,96 @@
+id: Q46143
+scientific_name: Carpodacus erythrinus
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Carpodacus
+  ioc_order: Passeriformes
+names:
+  sv: Rosenfink
+  en: Common Rosefinch
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rosenfink
+
+
+    Rosenfink är en medelstor fink med ett karakteristiskt utseende som skiljer sig
+    mellan könen och åldrar. Den adulta hanen är mycket iögonfallande med sin karmosinröda
+    färg på bröstet och huvudet, medan honor och unga hanar har en mycket mer diskret
+    olivbrun färgteckning med streckningar. Denna färgskillnad mellan könen gör arten
+    lätt att identifiera när de ses tillsammans.
+
+
+    Arten är känd för sin karakteristiska sång som påminner om en busvissling och
+    är en viktig igenkänningsmarkör i fält. Rosenfinken hör till familjen finkar och
+    har sitt största utbredningsområde i Sibirien och Centralasien, men har på senare
+    tid koloniserat nya områden. Under de senaste decennierna har arten successivt
+    spridit sig västerut till Östeuropa, Centraleuropa och Skandinavien, vilket gör
+    den till en intressant art för observatörer i nordligare regioner.'
+  en: ''
+migration:
+  sv: '# Rosenfink (Carpodacus erythrinus) – Förekomst i Skandinavien
+
+
+    Rosenfink är en relativt nyanlländ art i Skandinavien som främst förekommer som
+    sommargäst. Arten har under de senaste decennierna utökat sitt utbredningsområde
+    västerut från Sibirien och Östeuropa. I Skandinavien anländer rosenfinkar typiskt
+    sett under maj månad och stannar genom sommaren för häckning, innan de återvänder
+    till sina övervintringsområden i Afrika och södra Asien under augusti-september.
+    Arten är således en långdistansmigrant som ses endast under säsongen för häckning
+    i våra nordiska regioner.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q46143/hero.jpg
+  width: 2400
+  height: 1786
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Carpodacus erythrinus Haukipudas
+    20120519 05.JPG
+  commons_filename: Carpodacus erythrinus Haukipudas 20120519 05.JPG
+- role: secondary
+  path: Q46143/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2663182">Нурхайдарова
+    Татьяна</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Carpodacus erythrinus 285729924.jpg
+  commons_filename: Carpodacus erythrinus 285729924.jpg
+- role: secondary
+  path: Q46143/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5801652">Шальнов
+    Кирилл</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Carpodacus erythrinus 305390872.jpg
+  commons_filename: Carpodacus erythrinus 305390872.jpg
+review_status: approved
+review_notes: "Tallbit (Pine Grosbeak) — hero godkänd."
+generated_at: '2026-05-15T19:14:39.749086+00:00'
+sources:
+  wikipedia_sv_revision: '58946388'
+  wikipedia_en_revision: '1336838624'
+  claude_model: claude-haiku-4-5-20251001

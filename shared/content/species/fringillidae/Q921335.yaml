@@ -1,0 +1,80 @@
+id: Q921335
+scientific_name: Bucanetes mongolicus
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Bucanetes
+  ioc_order: Passeriformes
+names:
+  sv: Mongolfink
+  en: Mongolian Finch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Mongolfink
+
+
+    Mongolfink är en fågel i familjen finkar som förekommer i bergstrakter i sydvästra
+    och centrala Asien, från Turkiet till Mongoliet. Arten har ett stabilt bestånd
+    och klassificeras av IUCN som livskraftig.
+
+
+    Mongolfink är en mindre fink anpassad till höga, karga bergsmiljöer där den födosöker
+    bland stenar och låg vegetation. Den är en relativt ovanlig art inom sitt utbredningsområde.
+    Under normala förhållanden är arten starkt knuten till sitt asiatiska hemland,
+    men enstaka individer har påträffats långt västerut i Europa, vilket visar på
+    arten potentiella förmåga att genomföra långväga vandringar.'
+  en: '# Mongolian Finch
+
+
+    The Mongolian finch, also called the Mongolian trumpeter finch, is a small passerine
+    bird belonging to the finch family. It is a compact species adapted to arid and
+    semi-arid environments across central Asian regions.
+
+
+    This finch typically displays pale, subdued plumage with subtle markings characteristic
+    of desert-dwelling species. Its relatively short, stout bill is well-suited to
+    cracking small seeds, its primary food source. The bird''s call is distinctive
+    and gives rise to its alternative name—a sharp, trumpet-like sound that carries
+    across open terrain.
+
+
+    The Mongolian finch is generally seen in sparse, rocky grasslands and desert scrub,
+    often in small flocks, particularly outside the breeding season. It tends to remain
+    nomadic or partially migratory, moving in response to seed availability and water
+    sources. The species is well-adapted to harsh continental climates with extreme
+    temperature fluctuations and limited rainfall, making it resilient in environments
+    where other songbirds struggle to survive.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: Migration data unavailable for this species.
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:15:00.976279+00:00'
+sources:
+  wikipedia_sv_revision: '55660027'
+  wikipedia_en_revision: '1314991482'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,132 @@
+id: Q271807
+scientific_name: Serinus serinus
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Serinus
+  ioc_order: Passeriformes
+names:
+  sv: Gulhämpling
+  en: European Serin
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Gulhämpling
+
+
+    Gulhämpling är en liten tätting som tillhör familjen finkar och kännetecknas av
+    sin gula färgteckning. Det är en elegant liten fågel med karakteristisk näbb och
+    kompakt kroppsbygnad typisk för finkar.
+
+
+    Arten förekommer huvudsakligen i Europa och är hemhörd från område kring Medelhavet,
+    men har under senare århundraden gradvis expanderat norrut och etablerat sig i
+    nya regioner. Detta är en expansiv art som kontinuerligt utökar sitt utbredningsområde.
+
+
+    IUCN klassificerar gulhämpling som livskraftig globalt, vilket innebär att arten
+    inte är hotad. Det tyder på en stabil eller växande population över tiden.'
+  en: '# European Serin
+
+
+    The European serin is the smallest finch species and shares a close relationship
+    with the Atlantic canary. It is a delicate, compact bird with predominantly yellow
+    and green plumage, featuring characteristic streaking on the back and wings. The
+    male displays brighter yellow coloring, particularly on the face and breast, while
+    females appear more subdued in tone.
+
+
+    This species is highly active and acrobatic, often seen feeding in small flocks.
+    Its diet consists mainly of buds and seeds, which it extracts from plants with
+    precision. The serin has a pleasant, tinkling song and produces various chirping
+    calls, particularly during breeding season when males become more vocal.
+
+
+    The European serin frequents open woodlands, gardens, parks, and scrubby areas
+    with scattered trees and shrubs. It is found across southern and central regions,
+    with populations expanding northward in recent decades. During breeding season
+    it becomes more territorial and vocal, while outside this period it remains social
+    and gregarious. Its small size and active, restless behavior make it a challenging
+    but rewarding species to observe.'
+migration:
+  sv: '# Gulhämpling - Förekomst i Skandinavien
+
+
+    Gulhämpling är en expansiv art som under de senaste två århundradena gradvis utbrett
+    sitt utbredningsområde norrut från Medelhavet. Arten förekommer nu regelbundet
+    i södra Skandinavien, särskilt i Danmark och södra Sverige. Arten är huvudsakligen
+    en sommargäst i dessa nordligaste delar av sitt utbredningsområde, där den anländer
+    på våren för att häcka under sommarmånaderna. På hösten drar gulhämplingen i regel
+    tillbaka söderut för att övervintra i sitt kärnområde kring Medelhavet och i södra
+    Europa. I milder vintrar kan enstaka individer dock förbli i södra Skandinavien
+    året runt.'
+  en: '# European Serin (Serinus serinus) - Seasonal Occurrence in Northern Europe
+
+
+    The European Serin''s presence in Scandinavia and Northern Europe is primarily
+    during the breeding season. This small finch has expanded its range northward
+    over recent decades, with increasing numbers now reaching southern Scandinavia,
+    particularly Denmark and southern Sweden, during spring and summer months. Birds
+    typically arrive in April-May and depart by September-October. The species breeds
+    in open, sunny habitats with scattered vegetation. Most populations that reach
+    northern regions are summer visitors, withdrawing southward to overwinter in southern
+    Europe and North Africa. In harsh winters, sightings in Scandinavia become rare,
+    though occasional individuals may linger in sheltered locations with food availability.'
+image_refs:
+- role: hero
+  path: Q271807/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Serinus serinus (8719229323).jpg
+  commons_filename: Serinus serinus (8719229323).jpg
+- role: secondary
+  path: Q271807/secondary-1.jpg
+  width: 1800
+  height: 1620
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:European Serin. Male. (Serinus
+    serinus) - Flickr - gailhampshire (2).jpg
+  commons_filename: European Serin. Male. (Serinus serinus) - Flickr - gailhampshire
+    (2).jpg
+- role: secondary
+  path: Q271807/secondary-2.jpg
+  width: 1800
+  height: 1613
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:European Serin. Male. (Serinus
+    serinus) - Flickr - gailhampshire (1).jpg
+  commons_filename: European Serin. Male. (Serinus serinus) - Flickr - gailhampshire
+    (1).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:15:01.183109+00:00'
+sources:
+  wikipedia_sv_revision: '59225314'
+  wikipedia_en_revision: '1314008650'
+  claude_model: claude-haiku-4-5-20251001

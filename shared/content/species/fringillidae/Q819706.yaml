@@ -1,0 +1,74 @@
+id: Q819706
+scientific_name: Carpodacus rubicilla
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Carpodacus
+  ioc_order: Passeriformes
+names:
+  sv: Större rosenfink
+  en: Great Rosefinch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Great Rosefinch
+
+
+    The great rosefinch is a medium-sized finch with distinctive rosy-red plumage,
+    particularly visible on the head, breast, and rump. Males display more vibrant
+    colouration than females, which are duller with brownish tones. It is a stocky
+    finch with a relatively strong bill adapted for seed-cracking.
+
+
+    This species inhabits high-altitude tundra and temperate grassland regions across
+    a vast range spanning central Asia, from the Caucasus eastward through the Himalayas
+    to China. It is typically found in open, barren terrain and rocky slopes where
+    sparse vegetation provides seeds for feeding.
+
+
+    The great rosefinch is generally quiet but utters soft, chirping calls and a simple
+    warbling song during breeding season. It often feeds on the ground in small flocks,
+    moving methodically through grassland searching for seeds. In winter, it may descend
+    to lower elevations in search of food, sometimes appearing in more sheltered valleys.'
+migration:
+  sv: ''
+  en: '# Great Rosefinch (Större rosenfink) - Scandinavian Occurrence
+
+
+    Migration data unavailable for this species.
+
+
+    The Great Rosefinch''s natural range spans Central Asia, the Caucasus, and parts
+    of Mongolia and China, with no documented regular occurrence in Scandinavia or
+    Northern Europe. While vagrant individuals occasionally appear in Europe during
+    winter dispersals, there is no established migration pattern or seasonal presence
+    in Scandinavian regions. This species remains an extremely rare accidental visitor
+    to Northern Europe rather than a regular migrant or winter resident.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:15:49.233767+00:00'
+sources:
+  wikipedia_sv_revision: '58516457'
+  wikipedia_en_revision: '1339982335'
+  claude_model: claude-haiku-4-5-20251001

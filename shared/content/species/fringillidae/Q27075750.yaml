@@ -1,0 +1,96 @@
+id: Q27075750
+scientific_name: Carpodacus sibiricus
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Carpodacus
+  ioc_order: Passeriformes
+names:
+  sv: Långstjärtad rosenfink
+  en: Long-tailed Rosefinch
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Långstjärtad rosenfink
+
+
+    Långstjärtad rosenfink är en östasiatisk finke med karakteristisk långt utdragen
+    stjärt. Den tillhör gruppen rosenfinkar och är relaterad till andra arter i släktet
+    Carpodacus.
+
+
+    Arten häckar i södra Sibirien, Kina, Nordkorea och norra Japan. I Europa förekommer
+    den endast tillfälligt, och de flesta observationerna antas utgöra förrymda burfåglar
+    snarare än naturligt förekommande individer.
+
+
+    Långstjärtad rosenfink klassificerades tidigare som ensam art i sitt eget släkte,
+    Uragus, men inkluderas numera tillsammans med andra rosenfinkar inom släktet Carpodacus.'
+  en: ''
+migration:
+  sv: '# Långstjärtad rosenfink i Norden
+
+
+    Långstjärtad rosenfink är en östasiatisk art som normalt förekommer i södra Sibirien,
+    Kina, Nordkorea och norra Japan. Arten är mycket sällsynt i Europa och Skandinavien.
+    De få fynd som gjorts i Europa anses huvudsakligen utgöra förrymda burfåglar snarare
+    än naturliga migranter. Det finns således ingen etablerad migrationsmönster för
+    denna art i Nordeuropa eller Skandinavien.
+
+
+    Migrationsdata för naturlig förekomst i norra Europa saknas för denna art.'
+  en: ''
+image_refs:
+- role: hero
+  path: Q27075750/hero.jpg
+  width: 2048
+  height: 1367
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/3160036">Александр
+    Чегодаев</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Carpodacus sibiricus 331155988.jpg
+  commons_filename: Carpodacus sibiricus 331155988.jpg
+- role: secondary
+  path: Q27075750/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 4.0
+  author: ITÔ, Hiroki (hirokiit)
+  source_url: https://commons.wikimedia.org/wiki/File:Carpodacus sibiricus from iNaturalist
+    photo 475505438.jpg
+  commons_filename: Carpodacus sibiricus from iNaturalist photo 475505438.jpg
+- role: secondary
+  path: Q27075750/secondary-2.jpg
+  width: 1799
+  height: 1800
+  license: CC BY 4.0
+  author: Fedotova Elena (fedotova_elena)
+  source_url: https://commons.wikimedia.org/wiki/File:Carpodacus sibiricus from iNaturalist
+    photo 241751677.jpg
+  commons_filename: Carpodacus sibiricus from iNaturalist photo 241751677.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:16:27.389816+00:00'
+sources:
+  wikipedia_sv_revision: '57660408'
+  wikipedia_en_revision: '1315378107'
+  claude_model: claude-haiku-4-5-20251001

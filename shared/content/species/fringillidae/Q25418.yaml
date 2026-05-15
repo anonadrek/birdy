@@ -1,0 +1,129 @@
+id: Q25418
+scientific_name: Carduelis carduelis
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Carduelis
+  ioc_order: Passeriformes
+names:
+  sv: Steglits
+  en: European Goldfinch
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Steglits
+
+
+    Steglits är en liten och särskilt färggrann fågel som tillhör familjen finkar.
+    Den kännetecknas av sitt iögonenfallande utseende med röd ansiktsmask, svart och
+    vitt huvud samt gul vingbård som blir synlig under flykt. Kroppen är brun och
+    vit, vilket gör arten lätt att identifiera även på avstånd.
+
+
+    Arten är en vanlig häckfågel över stora delar av sitt utbredningsområde, som sträcker
+    sig från norra afrika, genom europa och österut till södra Sibirien. Steglits
+    förekommer framför allt i öppna, trädrika landskap, trädgårdar och fruktodlingar
+    där det finns tillräckligt med föda. Fågeln är social och ofta att se i små flockar,
+    särskilt under hösten och vintern då den söker föda tillsammans med andra arter.'
+  en: '# European Goldfinch
+
+
+    The European goldfinch is a striking small finch instantly recognizable by its
+    brilliant red face mask contrasting sharply with black and white head markings.
+    Its back is warm buff-brown, while the wings display distinctive broad bands of
+    bright yellow with black feathering, making it unmistakable in flight. It is a
+    delicate, elegant bird with a slender pointed bill adapted for extracting seeds
+    from teasels and thistles.
+
+
+    This highly social species is often seen in small flocks, particularly when feeding.
+    It has a light, tinkling call and a cheerful, twittering song. The bird is acrobatic
+    in its foraging behaviour, frequently hanging from seed heads while feeding. It
+    prefers open habitats with scattered vegetation, orchards, gardens, and areas
+    rich in seeding plants.
+
+
+    Native to the Palearctic region of Europe, northern Africa, and western Asia,
+    the European goldfinch has expanded its range considerably and is now found in
+    many introduced locations worldwide, including Australia, New Zealand, Uruguay,
+    and the United States. Its popularity in aviculture has contributed to its global
+    spread. The species remains common across much of its native range and continues
+    to adapt to human-modified landscapes.'
+migration:
+  sv: '# Steglits (Carduelis carduelis) i Skandinavien
+
+
+    Steglitsen är en partiell flyttfågel i Norden. Den förekommer som häckfågel under
+    sommarmånaderna, främst från april till september. I södra Skandinavien är arten
+    mer stationär och vissa individer övervintar, särskilt om tillgången på frön från
+    tistelväxter och andra växter är god. Huvuddelen av populationen drar dock söderut
+    på hösten för att övervintra i södra Europa och Nordafrika. Vårtillströmningen
+    börjar redan i mars när de första individerna återvänder från sina övervintringskvarter.
+    Arten är mest talrik i öppna, trädrika miljöer, trädgårdar och odlingslandskap
+    där det finns gott om föda.'
+  en: '# European Goldfinch in Scandinavia and Northern Europe
+
+
+    The European goldfinch is a partially migratory species in Northern Europe, with
+    population movements varying by region. In Scandinavia, breeding birds arrive
+    from late March through April, establishing themselves in open woodlands and gardens.
+    During autumn, from August onwards, populations shift southward and westward,
+    with most Scandinavian breeders departing by October. However, increasing numbers
+    now overwinter in Northern Europe, particularly in milder coastal areas and urban
+    gardens with adequate food sources like teasels and thistle seeds. Winter residents
+    in Scandinavia tend to concentrate in southern regions, while northern populations
+    migrate to southern Europe and the Mediterranean basin.'
+image_refs:
+- role: hero
+  path: Q25418/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Isiwal" title="User:Isiwal">Isiwal</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Stieglitz Carduelis carduelis-8189.jpg
+  commons_filename: Stieglitz Carduelis carduelis-8189.jpg
+- role: secondary
+  path: Q25418/secondary-1.jpg
+  width: 1800
+  height: 1516
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Gzen92" title="User:Gzen92">Gzen92</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Carduelis carduelis (Chardonneret
+    élégant) (4).jpg
+  commons_filename: Carduelis carduelis (Chardonneret élégant) (4).jpg
+- role: secondary
+  path: Q25418/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
+    title="User:מינוזיג">מינוזיג - MinoZig</a>
+  source_url: https://commons.wikimedia.org/wiki/File:European goldfinch (Carduelis
+    carduelis), Israel 04.jpg
+  commons_filename: European goldfinch (Carduelis carduelis), Israel 04.jpg
+review_status: approved
+review_notes: "Steglits — hero med röd ansiktsmask, klassisk identifikation."
+generated_at: '2026-05-15T19:13:35.354930+00:00'
+sources:
+  wikipedia_sv_revision: '59246403'
+  wikipedia_en_revision: '1346081174'
+  claude_model: claude-haiku-4-5-20251001

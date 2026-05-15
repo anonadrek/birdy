@@ -1,0 +1,132 @@
+id: Q214571
+scientific_name: Pinicola enucleator
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Pinicola
+  ioc_order: Passeriformes
+names:
+  sv: Tallbit
+  en: Pine Grosbeak
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tallbit
+
+
+    Tallbiten är en stor fink som lever i de nordligaste delarna av både Europa, Asien
+    och Nordamerika. Arten kännetecknas av sitt robusta näbb och färgskillnader mellan
+    könen – hannen är mestadels rosenröd medan honan är grågul. Färgtonen varierar
+    betydligt beroende på ålder och kön, något som är gemensamt för flera finkar.
+
+
+    Under häckningstiden vistas tallbiten i avlägsen och långsamt växande gammalskog,
+    där den är svår att få syn på. Vintertid kan arten dock överraska genom att dyka
+    upp helt orädd i bebyggda områden för att äta rönnbär. Denna plötsliga framfart
+    beror på att utbudet av naturlig föda varierar från år till år. Tallbiten är närmast
+    släkt med domherrarna.
+
+
+    Enligt senaste uppgifter minskar populationen, men nedgången är ännu inte så markant
+    att arten klassificeras som globalt hotad.'
+  en: '# Pine Grosbeak
+
+
+    The pine grosbeak is the largest member of the true finch family, distinguished
+    by its robust build and thick bill. Males display brilliant red or rose-red plumage,
+    while females are duller with yellow and grey tones. It inhabits coniferous forests
+    across the northern hemisphere, from Alaska and western North American mountains
+    through Canada, Fennoscandia, and Siberia.
+
+
+    This species is primarily a frugivore, particularly in winter, with rowan berries
+    and other small fruits forming the bulk of its diet. The pine grosbeak exhibits
+    irruptive behavior—in years when fruit crops fail, it undertakes long-distance
+    movements southward and downslope in search of food. These irregular eruptions
+    can bring birds far beyond their typical range, making sightings unpredictable
+    but exciting for observers in more southern regions.
+
+
+    The pine grosbeak''s call is a distinctive warbling, often delivered from coniferous
+    perches. It tends to be relatively tame and approachable, foraging deliberately
+    among branches and feeding in small flocks. Its presence often indicates a response
+    to food scarcity in northern regions, making it a key indicator of ecological
+    conditions in subarctic forests.'
+migration:
+  sv: '# Tallbit i Skandinavien och Nordeuropa
+
+
+    Tallbit är en nordlig art som förekommer året runt i Skandinavien och norra Europa,
+    men dess förekomst varierar kraftigt mellan åren. Under häckningstiden finns arten
+    framför allt i avlägsen gammalskog i de nordligaste delarna. Vintertid är arten
+    irrerande och kan dyka upp långt söderut, särskilt under år då födan i norr är
+    dålig. Under sådana år ses talibitar ofta i större antal i södra Skandinavien
+    och mellersta Europa, där de söker föda på rönnbär och andra frön. Denna oregelbundna
+    vintertid-invasion gör arten oberäknelig och svår att förutsäga.'
+  en: '# Pine Grosbeak in Northern Europe
+
+
+    The Pine Grosbeak is a resident species in subarctic Fennoscandia and across the
+    Palearctic, with populations exhibiting irruptive behavior driven by fruit availability.
+    In years with poor local fruit crops, birds undertake irregular southward movements,
+    sometimes traveling considerable distances into temperate regions of Scandinavia
+    and beyond. These irruptions can bring them significantly farther south than in
+    typical years, making winter sightings unpredictable. In years with abundant fruit
+    supplies, populations remain relatively sedentary within their northern range.
+    The species favors small fruits such rowan berries throughout the year, making
+    food availability a key factor determining their winter distribution and movement
+    patterns across Northern Europe.'
+image_refs:
+- role: hero
+  path: Q214571/hero.jpg
+  width: 2400
+  height: 1739
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pinicola Enucleator Oulu 20150105
+    02.JPG
+  commons_filename: Pinicola Enucleator Oulu 20150105 02.JPG
+- role: secondary
+  path: Q214571/secondary-1.jpg
+  width: 1800
+  height: 1347
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pinicola Enucleator Oulu 20150105
+    01.JPG
+  commons_filename: Pinicola Enucleator Oulu 20150105 01.JPG
+- role: secondary
+  path: Q214571/secondary-2.jpg
+  width: 1351
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Estormiz" title="User:Estormiz">Estormiz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pinicola enucleator Kittilä
+    20220310 01.jpg
+  commons_filename: Pinicola enucleator Kittilä 20220310 01.jpg
+review_status: approved
+review_notes: "Gråsiska — hero godkänd, klassisk vinterart i Sverige."
+generated_at: '2026-05-15T19:12:40.209734+00:00'
+sources:
+  wikipedia_sv_revision: '59224079'
+  wikipedia_en_revision: '1340858269'
+  claude_model: claude-haiku-4-5-20251001

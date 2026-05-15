@@ -1,0 +1,130 @@
+id: Q27075864
+scientific_name: Spinus spinus
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Spinus
+  ioc_order: Passeriformes
+names:
+  sv: Grönsiska
+  en: Eurasian Siskin
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Grönsiska
+
+
+    Grönsiska är en liten fågel i finkfamiljen med karakteristisk utseende – gul och
+    svart färgteckning på vingar och stjärt gör den lätt att känna igen, särskilt
+    när den flyger. Huvudet är svart med gula markeringar. Under häckningstiden förekommer
+    arten främst i högstammig barrskog i norra Europa och Asien.
+
+
+    Grönsiskan är en social fågel som ofta ses i stora flockar, särskilt under vintermånaderna
+    när den födosker i alar och andra träd. Den är mycket mobil och kan dyka upp på
+    oväntade platser då den söker efter frön. Arten är känd för sitt höga, melodiskt
+    glissando-liknande läte som ofta hörs från flygande flockar.
+
+
+    Denna talrika och livskraftig art är väl anpassad till sitt klimat och visar ingen
+    tecken på populationsminskning. Grönsiskan är en välbekant syn för de flesta fågelvänner
+    i sitt utbredningsområde och är särskilt märkbar vintertid när den samlas i större
+    grupper.'
+  en: '# Eurasian Siskin
+
+
+    The Eurasian siskin is a small finch with striking plumage: males display bright
+    yellow and black markings, while females are duller with greenish tones and less
+    defined black patterning. Its small, pointed bill is perfectly adapted for extracting
+    seeds from delicate plant structures, particularly alder and conifer cones.
+
+
+    This active, acrobatic bird is highly social and often seen in flocks, especially
+    during winter months. It feeds primarily on seeds from alder trees and conifers,
+    hanging and twisting amongst branches with characteristic agility. The species
+    is restless and energetic, frequently making short flights between feeding sites
+    with a bouncing, undulating pattern.
+
+
+    The Eurasian siskin''s call is distinctive—a rapid, twittering "dzee-dzee-dzee"
+    and a melodious, tinkling song with varied phrases. It inhabits coniferous and
+    mixed woodlands throughout much of Europe and Eurosiberia, showing a preference
+    for areas with abundant seed-bearing trees. The species is very common across
+    its range and often visits gardens and parks where suitable food sources are available.'
+migration:
+  sv: '# Grönsiska - Förekomst i Norden
+
+
+    Grönsiska är en regelbunden flyttfågel i Skandinavien och Nordeuropa. Arten häckar
+    under sommaren i barrskogar från maj till juli, med huvudsaklig utbredning i norra
+    regioner. Under hösten, från september, börjar grönsiskan att dra söderut mot
+    sina övervintringsområden i Central- och Södeuropa. Under vintermånaderna förekommer
+    arten sparsamt i södra Skandinavien, ofta sedda i små eller större flockar vid
+    matningskällor och i alar. Arten återvänder till häckningsområdena under april
+    och maj. Flyttningen är påverkad av matillgången, särskilt frötillgången i alar,
+    vilket kan resultera i större eller mindre antal vintergäster från år till år.'
+  en: '# Eurasian Siskin in Northern Europe
+
+
+    The Eurasian Siskin exhibits complex migratory patterns across Scandinavia and
+    Northern Europe, with movements varying by region and population. Northern populations
+    are predominantly migratory, vacating breeding areas in autumn and moving southwestward
+    to winter in milder regions of Europe. Conversely, southern Scandinavian and Central
+    European populations are largely resident or partial migrants, with some individuals
+    remaining year-round. Spring arrival in breeding territories typically occurs
+    from March onwards, with birds returning to northern forests to breed. In winter,
+    Scandinavian populations may disperse irregularly, with irruptive movements driven
+    by seed availability in alder and conifer forests across the continent.'
+image_refs:
+- role: hero
+  path: Q27075864/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/73714450@N08">Rory</a>
+    from Glasgow, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Spinus spinus (40065447562).jpg
+  commons_filename: Spinus spinus (40065447562).jpg
+- role: secondary
+  path: Q27075864/secondary-1.jpg
+  width: 1800
+  height: 1305
+  license: CC BY 4.0
+  author: cazalegg
+  source_url: https://commons.wikimedia.org/wiki/File:Siskin - Female - Spinus spinus.jpg
+  commons_filename: Siskin - Female - Spinus spinus.jpg
+- role: secondary
+  path: Q27075864/secondary-2.jpg
+  width: 1800
+  height: 1141
+  license: CC BY 2.0
+  author: blondinrikard
+  source_url: https://commons.wikimedia.org/wiki/File:Grönsiska, Spinus spinus, Eurasian
+    siskin.jpg
+  commons_filename: Grönsiska, Spinus spinus, Eurasian siskin.jpg
+review_status: approved
+review_notes: "Grönsiska — hero godkänd."
+generated_at: '2026-05-15T19:12:22.736155+00:00'
+sources:
+  wikipedia_sv_revision: '56936873'
+  wikipedia_en_revision: '1347137132'
+  claude_model: claude-haiku-4-5-20251001

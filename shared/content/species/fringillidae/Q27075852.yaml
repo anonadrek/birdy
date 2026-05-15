@@ -1,0 +1,133 @@
+id: Q27075852
+scientific_name: Linaria cannabina
+taxonomy:
+  family: Fringillidae
+  family_sv: Finkar
+  genus: Linaria
+  ioc_order: Passeriformes
+names:
+  sv: Hämpling
+  en: Common Linnet
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Hämpling
+
+
+    Hämpling är en fågel inom familjen finkar och tillhör de mindre finkarterna. Den
+    är sprallig och rörelserik och ses ofta i små flockar, särskilt under flyttningstiden.
+    Hämlingen föredrar torrt och buskigt kulturlandskap, där den söker föda bland
+    ogräs och växter.
+
+
+    Arten har ett distinkt utseende med röd panna och röda partier på bröstet och
+    undertäckarna hos hanen, medan honan är mer diskret brun. Röstandet är livligt
+    och musikaliskt, ofta framfört under flygning. Hämlingen förekommer över större
+    delen av Europa, västra Asien och Nordafrika, där den häckar. Nordliga och östliga
+    populationer är flyttfåglar som drar västerut och söderut vintertid.
+
+
+    Även om arten minskar i antal anses beståndet fortfarande livskraftigt. Hämlingen
+    gynnas av en mosaikartad landsbygd med öppna arealer och växtmaterial som tärnekryddor
+    och tistel – viktig föda både för arten själv och dess ungar.'
+  en: '# Common Linnet
+
+
+    The common linnet is a small finch with a distinctive appearance that varies between
+    sexes. Males display a striking red forehead and breast, particularly during breeding
+    season, while females and non-breeding males are more subdued in coloration with
+    streaked plumage. It is a sociable bird, often seen in small flocks, especially
+    outside the breeding season when it may gather in larger groups.
+
+
+    This species derives its name from its preference for hemp and flax seeds, which
+    it seeks out in weedy areas and on seed heads. It has a characteristic rapid,
+    twittering call and produces a pleasant, warbling song during breeding season.
+    The linnet''s flight is bouncy and undulating, typical of finches.
+
+
+    The common linnet inhabits open and semi-open country, favoring scrubland, heathland,
+    farmland edges, and areas with scattered vegetation where seed-bearing plants
+    are abundant. It is found across a wide geographical range and is a common sight
+    in suitable habitats, though populations may shift seasonally with some birds
+    migrating while others remain resident year-round.'
+migration:
+  sv: '# Hämpling – Migration och förekomst i Skandinavien
+
+
+    Hämpling är en partiell migrant som förekommer i Skandinavien huvudsakligen under
+    häckningssäsongen. De nordliga och östliga populationerna, inklusive de skandinaviska,
+    är flyttfåglar som trekker mot väst och sydväst under vintern. Arten ankommer
+    till sina häckningsområden i Skandinavien under våren, vanligtvis från april-maj,
+    och återvänder till sina övervintringsområden i västra Europa och Medelhavsregionen
+    på hösten. Mindre antal kan dock övervintrar i södra Skandinavien under milda
+    vintrar. Beståndet har minskat under de senaste decennierna, men anses fortfarande
+    livskraftigt.'
+  en: '# Common Linnet (Linaria cannabina) in Scandinavia/Northern Europe
+
+
+    The Common Linnet is a summer breeding visitor to Scandinavia and northern Europe,
+    arriving in late April and May to establish breeding territories. Populations
+    breed across open habitats including heathland, wasteland, and cultivated areas
+    throughout the region. During autumn, from August onwards, birds gradually depart
+    southwestward, with most having left by October. The species is largely absent
+    during winter months, though occasional overwintering individuals may occur in
+    milder coastal areas of southern Scandinavia.
+
+
+    Migration data unavailable for this species.'
+image_refs:
+- role: hero
+  path: Q27075852/hero.jpg
+  width: 2400
+  height: 2029
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Linnet Linaria cannabina, juvenile,
+    Prees Heath, Shropshire 1.jpg
+  commons_filename: Linnet Linaria cannabina, juvenile, Prees Heath, Shropshire 1.jpg
+- role: secondary
+  path: Q27075852/secondary-1.jpg
+  width: 1800
+  height: 1571
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Linnet Linaria cannabina, juvenile,
+    Prees Heath, Shropshire 2.jpg
+  commons_filename: Linnet Linaria cannabina, juvenile, Prees Heath, Shropshire 2.jpg
+- role: secondary
+  path: Q27075852/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jerzystrzelecki" title="User:Jerzystrzelecki">Jerzystrzelecki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Linaria cannabina Lodz(Poland)(js)01.jpg
+  commons_filename: Linaria cannabina Lodz(Poland)(js)01.jpg
+review_status: approved
+review_notes: "Hämpling — juvenile-hero accepterad (visar fältidentifikation)."
+generated_at: '2026-05-15T19:11:56.865630+00:00'
+sources:
+  wikipedia_sv_revision: '56055603'
+  wikipedia_en_revision: '1351693235'
+  claude_model: claude-haiku-4-5-20251001
