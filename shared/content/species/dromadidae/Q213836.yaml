@@ -1,0 +1,95 @@
+id: Q213836
+scientific_name: Dromas ardeola
+taxonomy:
+  family: Dromadidae
+  family_sv: Dromadidae
+  genus: Dromassrun
+  ioc_order: Charadriiformes
+names:
+  sv: Hägerpipare
+  en: Crab-plover
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Crab-plover
+
+
+    The crab-plover is a distinctive coastal wader occupying its own genus and family,
+    making it a remarkable bird from a taxonomic perspective. It stands apart from
+    typical waders by being more closely related to gulls and auks than to plovers
+    and sandpipers, despite its common name. This unusual classification reflects
+    unique characteristics that set it apart in the shorebird world.
+
+
+    One of the most fascinating aspects of the crab-plover''s biology is its reproductive
+    strategy. Unlike most other waders, it employs geothermal energy to incubate its
+    eggs, utilizing ground warmth rather than relying solely on parental body heat.
+    This adaptation suggests the species has evolved specialized breeding behaviors
+    suited to its coastal habitat.
+
+
+    As a coastal specialist, the crab-plover frequents shorelines and tidal areas
+    where it forages for food. While detailed descriptions of its appearance and vocalizations
+    would benefit from additional sources, its monotypic status—being the sole member
+    of both its genus and family—underscores its evolutionary significance and distinct
+    ecological niche among the world''s waders.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q213836/hero.jpg
+  width: 2400
+  height: 1695
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Crab Plover. Dromas ardeola
+    - Flickr - gailhampshire (1).jpg
+  commons_filename: Crab Plover. Dromas ardeola - Flickr - gailhampshire (1).jpg
+- role: secondary
+  path: Q213836/secondary-1.jpg
+  width: 1800
+  height: 1357
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Crab Plover. Dromas ardeola
+    - Flickr - gailhampshire (2).jpg
+  commons_filename: Crab Plover. Dromas ardeola - Flickr - gailhampshire (2).jpg
+- role: secondary
+  path: Q213836/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:AL_BADUSH&amp;action=edit&amp;redlink=1"
+    class="new" title="User:AL BADUSH (page does not exist)">AL BADUSH</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Crab Plover (Dromas ardeola).jpg
+  commons_filename: Crab Plover (Dromas ardeola).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T18:36:30.723352+00:00'
+sources:
+  wikipedia_sv_revision: '56775744'
+  wikipedia_en_revision: '1313736253'
+  claude_model: claude-haiku-4-5-20251001

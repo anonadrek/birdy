@@ -275,3 +275,6 @@ species:
   # Cuculidae batch (2026-05-15): inga Commons-foton över MIN_DIMENSION=2048.
   Q1266506:
     allow_missing_images: true  # Tajgagök (Oriental Cuckoo) — asiatisk häckare, sparse Commons hi-res
+  # Dromadidae batch (2026-05-15): single-species exotic, ingen svwiki.
+  Q213836:
+    description_accept_missing: [sv]  # Hägerpipare (Crab-plover) — Indiska havet, ingen svwiki
