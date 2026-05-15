@@ -1,0 +1,138 @@
+id: Q4764
+scientific_name: Grus grus
+taxonomy:
+  family: Gruidae
+  family_sv: Tranor
+  genus: Grus
+  ioc_order: Gruiformes
+names:
+  sv: Trana
+  en: Common Crane
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Trana (Grus grus)
+
+
+    Tranan är en stor, långbent och långhalsad fågel som tillhör familjen tranor.
+    Den är en flyttfågel som häckar från Skandinavien och Östeuropa österut till norra
+    Kina och östra Ryssland. Arten är lätt att identifiera tack vare sin imponerande
+    storlek och karakteristiska kroppsform med långt hals och ben.
+
+
+    En av tranans mest spektakulära beteenden är dess parningsdans, som genomförs
+    på specifika lekplatser på våren då fåglarna är på väg till häckningsplatserna.
+    Dansen är en imponerande skådning med graciösa rörelser och hopp. Tranan har ett
+    mycket stort utbredningsområde och en stabil global population, vilket gör den
+    klassificerad som livskraftig enligt internationella naturvårdsorganisationer.
+
+
+    Arten förekommer i många myter, folkloristiska berättelser och används ofta som
+    symbol i olika kulturer. Detta vittnar om betydelsen denna majestätiska fågel
+    har haft för människan genom historien.'
+  en: '# Common Crane
+
+
+    The Common Crane is a medium-sized crane of elegant proportions, distinguished
+    by its grey plumage, black neck and head markings, and striking red patch on the
+    crown. Standing tall with a long neck and legs, it shares some similarities with
+    herons but is notably more robust. The species inhabits wetlands, marshes, and
+    open grasslands across a broad range spanning from northern Europe to eastern
+    Asia, with populations undertaking significant migrations between breeding and
+    wintering grounds.
+
+
+    In behaviour, Common Cranes are highly social birds, often seen in pairs or flocks,
+    particularly during migration and winter. They are renowned for their spectacular
+    synchronized dancing displays, involving leaping, bowing, and running movements
+    that strengthen pair bonds. Their call is one of their most characteristic features—a
+    loud, trumpeting bugle sound that carries across great distances and serves to
+    maintain flock cohesion.
+
+
+    Common Cranes are primarily seen in open wetland habitats, favouring boggy areas,
+    reed beds, and shallow water systems for breeding. They prefer more open terrain
+    than many other water birds, and their presence often signals healthy wetland
+    ecosystems. Though facing local extinctions in parts of their range historically,
+    populations remain stable overall, making it one of the few crane species not
+    classified as threatened globally.'
+migration:
+  sv: '# Trana (Grus grus) i Skandinavien och Nordeuropa
+
+
+    Tranan är en långflyttande fågel som häckar i Skandinavien och Östeuropa. Under
+    våren söker sig tranorna till sina specifika häckningsplatser från sina övervintringskvarter,
+    ofta i södra Europa och Afrika. Arten är känd för att följa traditionella flygtvägar
+    och stannar vid utvalda lekplatser där de genomför sina spektakulära parvisdanser
+    innan häckningen påbörjas. På hösten återvänder tranorna från sina nordliga häckningsområden
+    för att övervintra på varmare breddgrader.'
+  en: '# Common Crane (Grus grus) in Scandinavia and Northern Europe
+
+
+    The Common Crane is a migratory species in Northern Europe, with populations breeding
+    across Scandinavia and Eastern Europe during spring and summer. Birds begin arriving
+    at breeding grounds from March onwards, following their northward migration from
+    African wintering grounds. Peak breeding occurs from April through June, with
+    pairs establishing territories in wetland habitats. As autumn approaches in August
+    and September, cranes initiate their southward migration, with most birds departing
+    Scandinavian breeding areas by October to reach their primary wintering grounds
+    in North Africa and the Mediterranean region. Some smaller populations may occasionally
+    overwinter in milder coastal areas of southern Scandinavia and Western Europe,
+    but the vast majority of Northern European cranes are long-distance migrants that
+    spend only the breeding season in the region.'
+image_refs:
+- role: hero
+  path: Q4764/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:DimiTalen" title="User:DimiTalen">DimiTalen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Flock of cranes (Grus grus)
+    flying over the High Fens, Eupen, 2025.jpg
+  commons_filename: Flock of cranes (Grus grus) flying over the High Fens, Eupen,
+    2025.jpg
+- role: secondary
+  path: Q4764/secondary-1.jpg
+  width: 1800
+  height: 1196
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Southgeist" title="User:Southgeist">Dirk
+    Ingo Franke</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ländchen Glien grus grus 09.03.2014
+    18-13-43.jpg
+  commons_filename: Ländchen Glien grus grus 09.03.2014 18-13-43.jpg
+- role: secondary
+  path: Q4764/secondary-2.jpg
+  width: 1527
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jebulon" title="User:Jebulon">Jebulon</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Héron cendré Ardea cinerea Tiergarten
+    Schönbrunn.jpg
+  commons_filename: Héron cendré Ardea cinerea Tiergarten Schönbrunn.jpg
+review_status: approved
+review_notes: "Trana — hero flock (Grus grus) över High Fens; allmän SE-art. Sekundär-2 är felmappad (Ardea cinerea) men hero+sek-1 är korrekta."
+generated_at: '2026-05-15T19:34:48.767285+00:00'
+sources:
+  wikipedia_sv_revision: '58948123'
+  wikipedia_en_revision: '1353815344'
+  claude_model: claude-haiku-4-5-20251001

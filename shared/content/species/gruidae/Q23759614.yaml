@@ -1,0 +1,118 @@
+id: Q23759614
+scientific_name: Grus virgo
+taxonomy:
+  family: Gruidae
+  family_sv: Tranor
+  genus: Grus
+  ioc_order: Gruiformes
+names:
+  sv: Jungfrutrana
+  en: Demoiselle Crane
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Jungfrutrana
+
+
+    Jungfrutrana är familjen tranors minsta art. Den kännetecknas av sin eleganta
+    silhuett och grå fjäderdräkt med mörkare vingar. Typiska drag är den vita halsen
+    och ansiktet samt de karakteristiska vita fjädertöftarna vid örat, som ger fågeln
+    sitt svenska namn.
+
+
+    Arten häckar över ett stort område från Svarta havet österut till Mongoliet och
+    nordöstra Kina. Vintertid är den en långflyttare som drar till områden kring Indien
+    och Afrika söder om Sahara. I Sverige är jungfrutrana en mycket sällsynt tillfällig
+    gäst som endast noterats ett tjugotunn exemplar gånger. I Europa förekommer den
+    endast sporadiskt utanför sitt normala utbredningsområde.
+
+
+    Fågeln livnär sig genom att beta på växtmaterial och insekter i öppna, gräsbevuxna
+    landskap. Som all tranor är den en social fågel som ofta ses i flockar under flyttningen.'
+  en: '# Demoiselle Crane
+
+
+    The demoiselle crane is a migratory species found across central Eurasia, with
+    populations ranging from the Black Sea eastward to Mongolia and northeastern China,
+    plus a small breeding group in Turkey. Western populations winter in Africa, while
+    Asian birds migrate to the Indian subcontinent for the season.
+
+
+    This crane holds symbolic importance in Indian culture, where it is traditionally
+    known as koonj or kurjaa. The species is notable for its long-distance migrations,
+    undertaking substantial journeys between breeding and wintering grounds each year.
+    Its presence across such vast territories and its cultural significance make it
+    an important species throughout its range.'
+migration:
+  sv: '# Jungfrutrana – Förekomst i Norden
+
+
+    Jungfrutrana är en mycket sällsynt besökare i Skandinavien och Nordeuropa. Arten
+    häckar långt österut från Svarta havet till Mongoliet och nordöstra Kina, och
+    flyttar sedan till övervintringsområden vid Indien och Afrika söder om Sahara.
+    I Sverige har arten endast noterats vid 14 tillfällen, vilket bekräftar att den
+    är en helt tillfällig gäst i vår region. Jungfrutrana förekommer dock regelbundet
+    långt söder om Norden och når sällan så långt norrut som till Skandinavien.'
+  en: '# Demoiselle Crane in Northern Europe
+
+
+    The Demoiselle Crane is not a regular species in Scandinavia or Northern Europe.
+    This species is primarily found in central Eurasia, ranging from the Black Sea
+    through Mongolia to Northeast China, with a small breeding population in Turkey.
+    While migratory, the species winters in Africa (western populations) or the Indian
+    subcontinent (Asian populations), and its migration routes do not typically include
+    Northern Europe. Any sightings in Scandinavia would be extremely rare vagrants
+    outside the species'' normal range.'
+image_refs:
+- role: hero
+  path: Q23759614/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:0x010C" title="User:0x010C">0x010C</a>
+  source_url: https://commons.wikimedia.org/wiki/File:2016-09 zoo sauvage de Saint-Félicien
+    - Grus virgo 03.jpg
+  commons_filename: 2016-09 zoo sauvage de Saint-Félicien - Grus virgo 03.jpg
+- role: secondary
+  path: Q23759614/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FakirNL" title="User:FakirNL">FakirNL</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grus virgo in Dierenpark Zie-ZOO.jpg
+  commons_filename: Grus virgo in Dierenpark Zie-ZOO.jpg
+- role: secondary
+  path: Q23759614/secondary-2.jpg
+  width: 1800
+  height: 1301
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Llez" title="User:Llez">H. Zell</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grus virgo - Vogelpark Steinen
+    01.jpg
+  commons_filename: Grus virgo - Vogelpark Steinen 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:34:48.279601+00:00'
+sources:
+  wikipedia_sv_revision: '55625297'
+  wikipedia_en_revision: '1352254118'
+  claude_model: claude-haiku-4-5-20251001

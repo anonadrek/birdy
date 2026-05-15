@@ -1,0 +1,112 @@
+id: Q21949185
+scientific_name: Leucogeranus leucogeranus
+taxonomy:
+  family: Gruidae
+  family_sv: Tranor
+  genus: Leucogeranus
+  ioc_order: Gruiformes
+names:
+  sv: Snötrana
+  en: Siberian Crane
+abundance: ovanlig
+iucn_status: CR
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Snötrana
+
+
+    Snötrana är en av världens mest utrotningshotade tranor och är klassificerad som
+    akut hotad av IUCN. Arten tillhör familjen tranor och förekommer i Sibirien, där
+    den häckar i kärvtundrorna under sommarmånaderna. Under vintern migrerar snötranan
+    långt söderut för att söka övervintringsplatser.
+
+
+    Snötranan är en stor fågel med vitkropp, vilket gör den lätt att identifiera.
+    Den har karakteristiska röda partier i ansiktet, särskilt omkring ögonen och på
+    pannans övre del. Som övriga tranor är snötranan en elegant fågel med lång hals
+    och långa ben.
+
+
+    Arten är mycket sällsynt och populationerna är starkt fragmenterade. Hotet mot
+    snötranan beror främst på förstöring av våtmarker och häckningsmiljöer, samt påverkan
+    på migrationsvägar och övervintringsplatser. Endast några hundra individer beräknas
+    finnas kvar i vilt tillstånd. Internationella bevarandeinsatser är kritiska för
+    att förhindra artens utdöende.'
+  en: '# Siberian Crane
+
+
+    The Siberian crane is one of the world''s most striking cranes, with plumage that
+    is almost entirely snowy white. Its most distinctive feature is the contrast between
+    this white body and black primary feathers, which become particularly visible
+    when the bird is in flight. Adults are unmistakable among other crane species
+    due to this striking coloration.
+
+
+    This species has two separate breeding populations, both located in the Arctic
+    tundra regions of Russia. The populations differ significantly in their winter
+    migrations: eastern birds travel to China for the winter months, while western
+    populations historically wintered in India and currently winter in Iran. These
+    long-distance migrations make the Siberian crane one of the most mobile crane
+    species.
+
+
+    The Siberian crane is classified within the crane family Gruidae and remains one
+    of the rarest cranes globally. Its dependence on specific breeding grounds in
+    remote Arctic regions and vulnerable migration routes means it faces significant
+    conservation challenges. Habitat loss and changes along its migration corridor
+    continue to threaten this elegant species.'
+migration:
+  sv: '# Snötrana - Förekomst i Skandinavien/Nordeuropa
+
+
+    Snötrana är en ostasiatisk art som inte regelbundet förekommer i Skandinavien
+    eller Nordeuropa. Arten är en långdistansflyttare som huvudsakligen överintrar
+    i våtmarker i Iran och Kina, medan den häckar i det fjärran nordöstra Sibirien.
+    Sporadiska observationer kan förekomma under flyttningsperioden, men arten utgör
+    ingen etablerad del av nordeuropeisk fågelfauna och registreras endast mycket
+    sällant väster om sitt normala utbredningsområde.'
+  en: '# Siberian Crane Migration in Northern Europe
+
+
+    The Siberian Crane is an extremely rare vagrant to Scandinavia and Northern Europe.
+    This species breeds in the Arctic tundra of Russia and is not a regular occurrence
+    in the Nordic region. The eastern populations migrate southward to China for winter,
+    while the western population winters in Iran. Any sightings in Scandinavian countries
+    would represent exceptional occurrences, well outside the species'' normal range.
+    The bird is highly threatened, with populations severely depleted, making northern
+    European records exceptionally unusual and noteworthy for ornithologists.'
+image_refs:
+- role: hero
+  path: Q21949185/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Vorlod" title="User:Vorlod">Vorlod</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Grue de Sibérie - Leucogeranus
+    leucogeranus.jpg
+  commons_filename: Grue de Sibérie - Leucogeranus leucogeranus.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:34:41.894199+00:00'
+sources:
+  wikipedia_sv_revision: '55985179'
+  wikipedia_en_revision: '1345585321'
+  claude_model: claude-haiku-4-5-20251001
