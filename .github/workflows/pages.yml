@@ -1,0 +1,91 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/play-store/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+
+      - name: Build static site
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          STYLE='<style>
+            body { font-family: Georgia, "Times New Roman", serif; max-width: 38rem; margin: 3rem auto; padding: 0 1rem; color: #2A3525; background: #EFE7D6; line-height: 1.55; }
+            h1, h2, h3 { font-family: "DM Serif Display", Georgia, serif; }
+            h1 { font-style: italic; }
+            a { color: #A8552D; }
+            hr { border: none; border-top: 1px dashed #4A3F2A; margin: 2rem 0; }
+          </style>'
+          render() {
+            local src=$1 dst=$2 title=$3
+            pandoc --from gfm --to html5 \
+              --metadata pagetitle="${title} — Birdy" \
+              -H <(echo "${STYLE}") \
+              "${src}" -o "_site/${dst}"
+          }
+          render docs/play-store/privacy-policy.md privacy.html        "Privacy Policy"
+          render docs/play-store/terms.md          terms.html          "Terms of Use"
+          render docs/play-store/store-listing-en.md store-listing-en.html "Store Listing (EN)"
+          render docs/play-store/store-listing-sv.md store-listing-sv.html "Store Listing (SV)"
+          render docs/play-store/data-safety-form.md data-safety.html  "Data Safety"
+
+          # Index page
+          cat > _site/index.html <<EOF
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>Birdy</title>
+            ${STYLE}
+          </head>
+          <body>
+            <h1>Birdy</h1>
+            <p><em>A field birder's digital companion.</em></p>
+            <ul>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Use</a></li>
+              <li><a href="store-listing-en.html">Store Listing (EN)</a></li>
+              <li><a href="store-listing-sv.html">Store Listing (SV)</a></li>
+              <li><a href="data-safety.html">Data Safety</a></li>
+            </ul>
+            <hr>
+            <p>Contact: <a href="mailto:feedback@birdy.app">feedback@birdy.app</a></p>
+          </body>
+          </html>
+          EOF
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
