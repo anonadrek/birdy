@@ -1,0 +1,82 @@
+id: Q80832
+scientific_name: Pterocles senegallus
+taxonomy:
+  family: Pteroclidae
+  family_sv: Flyghöns
+  genus: Pterocles
+  ioc_order: Pterocliformes
+names:
+  sv: Ökenflyghöna
+  en: Spotted Sandgrouse
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Spotted Sandgrouse
+
+
+    The spotted sandgrouse is a ground-dwelling bird of arid regions across northern
+    and eastern Africa, the Middle East, and parts of Asia extending to northwest
+    India. It is a compact, swift-flying bird perfectly adapted to sparse, stony landscapes
+    where it forages in small flocks for seeds and other plant matter. Its plumage
+    provides excellent camouflage against rocky terrain.
+
+
+    This gregarious, daytime-active species exhibits a distinctive daily routine:
+    flocks spend mornings and afternoons feeding on the ground before flying to waterholes
+    once daily to drink. During breeding season, pairs nest independently, laying
+    eggs in simple depressions on stony ground. The chicks are precocial, leaving
+    the nest shortly after hatching and immediately eating dry seeds. A remarkable
+    adaptation ensures chick survival in arid conditions—the male saturates its belly
+    feathers with water at the waterhole and returns to feed this moisture to the
+    young, providing essential hydration when free water is unavailable.
+
+
+    The species is currently listed as "least concern" by conservation authorities,
+    indicating stable populations across its range.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides information about the spotted sandgrouse''s habitat,
+    behavior, breeding, and conservation status, but contains no information about
+    migration patterns, seasonal movements, or occurrence in Scandinavia or Northern
+    Europe. This species is found in arid regions of Africa, the Middle East, and
+    Asia, which are outside the geographic scope of Northern European bird migration.'
+image_refs:
+- role: hero
+  path: Q80832/hero.jpg
+  width: 2048
+  height: 1364
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2533480">Christoph
+    Moning</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pterocles senegallus 91410347.jpg
+  commons_filename: Pterocles senegallus 91410347.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:44.516990+00:00'
+sources:
+  wikipedia_sv_revision: '56773473'
+  wikipedia_en_revision: '1315182392'
+  claude_model: claude-haiku-4-5-20251001

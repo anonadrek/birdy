@@ -1,0 +1,76 @@
+id: Q753741
+scientific_name: Pterocles alchata
+taxonomy:
+  family: Pteroclidae
+  family_sv: Flyghöns
+  genus: Pterocles
+  ioc_order: Pterocliformes
+names:
+  sv: Vitbukig flyghöna
+  en: Pin-tailed Sandgrouse
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Pin-tailed Sandgrouse
+
+
+    The pin-tailed sandgrouse is a medium-large bird with a distinctive silhouette.
+    It possesses a small, pigeon-like head and neck contrasting with a sturdy, compact
+    body. Its most striking features are long, pointed wings with white undersides,
+    a notably elongated tail, and a swift, direct flight pattern that makes it easily
+    recognizable in flight.
+
+
+    This highly gregarious species is adapted to arid environments, breeding on dry,
+    open, treeless plains and similar barren habitats. It displays fascinating behavior
+    at dawn, when flocks gather to fly to watering holes—a critical daily ritual in
+    its desert lifestyle. Its loud, repetitive call—a distinctive "kattar-kattar"—helps
+    maintain group cohesion during these flights.
+
+
+    Breeding pairs nest on the ground, creating simple scrapes where they lay two
+    or three cream-colored eggs bearing cryptic markings for camouflage. Both males
+    and females share incubation duties, an unusual cooperative behavior among sandgrouse.
+    This species exemplifies remarkable adaptation to harsh, arid landscapes where
+    water and vegetation are scarce.'
+migration:
+  sv: ''
+  en: '# Pin-tailed Sandgrouse (Pterocles alchata) in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains no information regarding the occurrence, migration
+    patterns, or seasonal presence of pin-tailed sandgrouse in Scandinavia or Northern
+    Europe. To provide accurate information about this species'' presence in these
+    regions throughout the year would require additional sources beyond what is available
+    here.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:51:50.023131+00:00'
+sources:
+  wikipedia_sv_revision: '55757246'
+  wikipedia_en_revision: '1351436466'
+  claude_model: claude-haiku-4-5-20251001

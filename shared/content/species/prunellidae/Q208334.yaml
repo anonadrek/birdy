@@ -1,0 +1,128 @@
+id: Q208334
+scientific_name: Prunella collaris
+taxonomy:
+  family: Prunellidae
+  family_sv: Järnsparvar
+  genus: Prunella
+  ioc_order: Passeriformes
+names:
+  sv: Alpjärnsparv
+  en: Alpine Accentor
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Alpjärnsparv
+
+
+    Alpjärnsparven är en medelstor fågel i järnsparfamiljen som tillhör högalpina
+    bergsmiljöer. Den har en gråbrun grundfärg med rostfärgade flanker och karakteristiska
+    gula ben. På huvudet syns en diskret grålila färgton, och strupen är vit med mörka
+    fläckar som ger den ett distinkt utseende.
+
+
+    Arten förekommer primärt i bergstrakter på höga höjder där den söker föda på klippiga
+    områden och låg vegetation. Den är huvudsakligen stannfågel men drar sig till
+    något lägre höjder under vintermånaderna för att hitta föda. Alpjärnsparven är
+    ofta försiktig och kan vara svår att observera, men när den väl är lokaliserad
+    kan den följas ganska väl.
+
+
+    Arten förekommer naturligt i södra och centrala Europa, nordvästra Afrika samt
+    genom Asien österut till Japan och Taiwan. Endast mycket sällan förekommer den
+    norr om sitt huvudsakliga utbredningsområde, med endast ett fåtal fynd dokumenterade
+    i Sverige. IUCN klassificerar arten som livskraftig.'
+  en: '# Alpine Accentor
+
+
+    The Alpine Accentor is a small passerine belonging to the Prunellidae family,
+    found across Eurasia and North Africa. This unassuming bird inhabits high-altitude
+    rocky slopes and scree, typically above the tree line where vegetation is sparse.
+    It tends to remain inconspicuous, spending much of its time on the ground foraging
+    for insects and seeds among stones.
+
+
+    Though diminutive in size, the Alpine Accentor has subtle plumage details worth
+    noting. It displays a streaked appearance that provides excellent camouflage in
+    its rocky habitat, helping it blend seamlessly with its surroundings. The bird''s
+    behavior is characteristically cautious and methodical as it picks through debris.
+
+
+    The Alpine Accentor''s call is thin and quiet, fitting its shy disposition and
+    alpine environment. During breeding season, males become somewhat more vocal,
+    though they never develop the conspicuous song of some other songbirds. This species
+    is best located by patient observation in mountainous terrain, where attentive
+    birders may spot it moving deliberately across bare ground or among low alpine
+    vegetation, occasionally pausing to investigate potential food sources.'
+migration:
+  sv: '# Alpjärnsparv i Nordeuropa
+
+
+    Alpjärnsparv är huvudsakligen stannfågel i sitt bergiga utbredningsområde i södra
+    och centrala Europa, Nordafrika och Asien. Under vintertiden drar arten sig till
+    lägre höjder för att undvika hårdare väderförhållanden i höglanden. I Skandinavien
+    och övriga Nordeuropa är arten mycket sällsynt och förekommer endast sporadiskt
+    som utöver sitt normala utbredningsområde. I Sverige har arten påträffats vid
+    endast ett tjugoital tillfällen, vilket gör den till en ovanlig gäst långt från
+    sitt huvudsakliga levnadsomr'
+  en: '# Alpine Accentor Migration in Scandinavia/Northern Europe
+
+
+    The Alpine Accentor is not a regular occurrence in Scandinavia and Northern Europe.
+    This species is primarily a resident of high alpine and subalpine regions of southern
+    and central Europe, and does not form part of the typical avifauna of Scandinavian
+    countries. While extremely rare vagrants or winter visitors might occasionally
+    appear in northern regions during severe weather conditions or unusual migration
+    patterns, the Alpine Accentor is not an established migrant through or regular
+    winter visitor to Scandinavia. Any sightings in this region would constitute exceptional
+    records rather than predictable seasonal occurrences.'
+image_refs:
+- role: hero
+  path: Q208334/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/748413">yijie</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Prunella collaris 234140777.jpg
+  commons_filename: Prunella collaris 234140777.jpg
+- role: secondary
+  path: Q208334/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/748413">yijie</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Prunella collaris 234140903.jpg
+  commons_filename: Prunella collaris 234140903.jpg
+- role: secondary
+  path: Q208334/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/748413">yijie</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Prunella collaris 234141065.jpg
+  commons_filename: Prunella collaris 234141065.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:51:26.252815+00:00'
+sources:
+  wikipedia_sv_revision: '56586547'
+  wikipedia_en_revision: '1353815445'
+  claude_model: claude-haiku-4-5-20251001

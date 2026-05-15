@@ -1,0 +1,121 @@
+id: Q1070620
+scientific_name: Pycnonotus xanthopygos
+taxonomy:
+  family: Pycnonotidae
+  family_sv: Bulbyler
+  genus: Pycnonotus
+  ioc_order: Passeriformes
+names:
+  sv: Levantbulbyl
+  en: White-spectacled Bulbul
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Levantbulbyl
+
+
+    Levantbulbylen är en fågel i familjen bulbyler som förekommer i delar av Mellanöstern.
+    Den är närbesläktad med trädgårdsbulbylen i Afrika och tillhör ordningen tättingar.
+
+
+    Arten är känd för att öka i antal i sitt utbredningsområde. Som många andra bulbyler
+    är det en social fågel som ofta ses i mindre flockar. Den är anpassad till området
+    där den lever och återfinns i varierande habitat inom sin utbredning.'
+  en: '# White-spectacled Bulbul
+
+
+    The white-spectacled bulbul is a compact member of the bulbul family, measuring
+    20–25 cm in length with a similarly sized wingspan. It is named for the distinctive
+    pale eye-ring that marks its face, giving it a characteristic spectacled appearance
+    that aids identification in the field.
+
+
+    This species is highly adaptable to human-modified landscapes, thriving in fruit
+    plantations, gardens, and urban areas. It represents the most common bulbul throughout
+    its range in the eastern Mediterranean region and Middle East, where it is a familiar
+    garden visitor. The species occupies a wide geographic range extending from southern
+    and central Turkey southward through the Levantine coast and Arabian Peninsula.
+
+
+    White-spectacled bulbuls are gregarious birds, often seen in small flocks, particularly
+    outside the breeding season. They are active foragers, gleaning fruit and insects
+    from vegetation. While the source text does not detail the species'' calls or
+    specific behavioural characteristics beyond habitat preference, its abundance
+    and familiarity in gardens make it a rewarding species for observers interested
+    in Middle Eastern avifauna.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: '# White-spectacled Bulbul in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The White-spectacled Bulbul is a resident species of the eastern Mediterranean
+    and Middle Eastern regions, with breeding populations ranging from Turkey through
+    the Levant to Arabia. This species does not occur naturally in Scandinavia or
+    Northern Europe, as its range is restricted to warmer, more southerly climates
+    where it inhabits fruit plantations, gardens, and urban areas.'
+image_refs:
+- role: hero
+  path: Q1070620/hero.jpg
+  width: 2400
+  height: 1660
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Fledgling - Pycnonotus xanthopygos
+    01.jpg
+  commons_filename: Fledgling - Pycnonotus xanthopygos 01.jpg
+- role: secondary
+  path: Q1070620/secondary-1.jpg
+  width: 1800
+  height: 1244
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Zcebeci" title="User:Zcebeci">Zeynel
+    Cebeci</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus xanthopygos - Yellow-vented
+    Bulbul, Adana 2016-12-25 03-5.jpg
+  commons_filename: Pycnonotus xanthopygos - Yellow-vented Bulbul, Adana 2016-12-25
+    03-5.jpg
+- role: secondary
+  path: Q1070620/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 3.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:%D9%85%D8%AD%D9%85%D8%AF_%D8%A7%D9%84%D9%81%D9%84%D8%B3%D8%B7%D9%8A%D9%86%D9%8A&amp;action=edit&amp;redlink=1"
+    class="new" title="User:محمد الفلسطيني (page does not exist)">محمد الفلسطيني</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus xanthopygos.JPG
+  commons_filename: Pycnonotus xanthopygos.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:54:11.143140+00:00'
+sources:
+  wikipedia_sv_revision: '56454802'
+  wikipedia_en_revision: '1346687835'
+  claude_model: claude-haiku-4-5-20251001

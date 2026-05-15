@@ -1,0 +1,96 @@
+id: Q790596
+scientific_name: Pycnonotus barbatus
+taxonomy:
+  family: Pycnonotidae
+  family_sv: Bulbyler
+  genus: Pycnonotus
+  ioc_order: Passeriformes
+names:
+  sv: Trädgårdsbulbyl
+  en: Common Bulbul
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Common Bulbul
+
+
+    The common bulbul is a widespread African passerine belonging to the bulbul family.
+    It is found throughout most of the continent, avoiding only the driest regions,
+    and has recently established breeding populations in the southernmost parts of
+    Europe. Ten subspecies are currently recognized, reflecting variation in plumage
+    across the bird''s range. Some subspecies were once classified as separate species,
+    including Dodson''s bulbul, the Somali bulbul, and the dark-capped bulbul.
+
+
+    This adaptable bird demonstrates remarkable range expansion, now occupying territories
+    well beyond its traditional African strongholds. The plumage variation across
+    subspecies makes identification in the field challenging, as different populations
+    display distinct markings and coloration. The common bulbul''s success in colonizing
+    new regions suggests it is a resilient species capable of thriving in diverse
+    habitats beyond its native range.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the occurrence, migration
+    patterns, or seasonal movements of the Common Bulbul in Scandinavia or Northern
+    Europe. The text only describes the species'' geographic distribution in Africa
+    and recent colonization of southernmost Spain, with no details regarding migration
+    timing, overwintering, or arrival months in northern regions.'
+image_refs:
+- role: hero
+  path: Q790596/hero.jpg
+  width: 2400
+  height: 1597
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/196198470@N02">Sam
+    Thomas</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Common Bulbul (Pycnonotus barbatus)
+    Cairo (52259556627).jpg
+  commons_filename: Common Bulbul (Pycnonotus barbatus) Cairo (52259556627).jpg
+- role: secondary
+  path: Q790596/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus barbatus (14392739850).jpg
+  commons_filename: Pycnonotus barbatus (14392739850).jpg
+- role: secondary
+  path: Q790596/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/25401497@N02">Donald
+    Hobern</a> from Copenhagen, Denmark
+  source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus barbatus (14392740730).jpg
+  commons_filename: Pycnonotus barbatus (14392740730).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:51:28.438876+00:00'
+sources:
+  wikipedia_sv_revision: '57974028'
+  wikipedia_en_revision: '1346137401'
+  claude_model: claude-haiku-4-5-20251001

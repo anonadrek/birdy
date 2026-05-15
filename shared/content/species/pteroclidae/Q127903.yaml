@@ -1,0 +1,118 @@
+id: Q127903
+scientific_name: Pterocles exustus
+taxonomy:
+  family: Pteroclidae
+  family_sv: Flyghöns
+  genus: Pterocles
+  ioc_order: Pterocliformes
+names:
+  sv: Brunbukig flyghöna
+  en: Chestnut-bellied Sandgrouse
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Brunbukig flyghöna
+
+
+    Brunbukig flyghöna är en fågel från familjen flyghöns som förekommer i både Afrika
+    och Asien. Arten är anpassad till livsförhållandena i halvöken och trivs ofta
+    intill odlade fält där den kan söka föda på marken.
+
+
+    Fågeln är väl utrustad för sitt torra levnadsmiljö och har utvecklat effektiva
+    sätt att överleva i dessa klimat. Beståndet av brunbukig flyghöna anses vara livskraftigt
+    och arten utgör ingen naturvårdsbekymring för närvarande.'
+  en: '# Chestnut-bellied Sandgrouse
+
+
+    The chestnut-bellied sandgrouse is a medium-sized member of the sandgrouse family,
+    characterized by its distinctive warm chestnut underparts that give it its common
+    name. Its plumage is predominantly sandy and mottled, providing excellent camouflage
+    in arid environments. The species has the typical sandgrouse profile: streamlined
+    body, pointed wings, and a small head.
+
+
+    This bird is well-adapted to dry, open habitats across northern and central Africa,
+    extending eastward into western and southern Asia. It exhibits both sedentary
+    and nomadic behavior, meaning some populations remain year-round in their territories
+    while others move seasonally in response to water and food availability. Like
+    other sandgrouse species, it is highly dependent on access to water sources for
+    drinking, often gathering at waterholes during dawn and dusk.
+
+
+    Six recognized subspecies occur throughout its wide range, showing subtle variations
+    in plumage coloration across different regions. The chestnut-bellied sandgrouse
+    is typically found in semi-arid scrubland, desert edges, and grasslands where
+    sparse vegetation dominates the landscape.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Brunbukig flyghöna är en afrikansk och asiatisk art som inte förekommer naturligt
+    i Skandinavien eller Nordeuropa. Arten är hemma i halvöken och vid odlade områden
+    i Afrika och Asien, och det finns ingen dokumenterad förekomst eller migration
+    till nordeuropeiska regioner. För denna art saknas därför relevant migrationsdata
+    avseende skandinavisk förekomst under året.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides no specific information about how Pterocles exustus occurs
+    in Scandinavia or Northern Europe throughout the year, migration patterns, overwintering
+    behavior, or arrival months. The species is described as sedentary and nomadic
+    across northern and central Africa and western to southern Asia, but these regions
+    do not include Scandinavian or Northern European territories. Therefore, reliable
+    migration data for this species in the requested geographic area cannot be provided.'
+image_refs:
+- role: hero
+  path: Q127903/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Chestnut-bellied sandgrouse
+    (Pterocles exustus), Kenya.jpg
+  commons_filename: Chestnut-bellied sandgrouse (Pterocles exustus), Kenya.jpg
+- role: secondary
+  path: Q127903/secondary-1.jpg
+  width: 1800
+  height: 1203
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/474164">Henggang
+    Cui</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pterocles exustus 313966463.jpg
+  commons_filename: Pterocles exustus 313966463.jpg
+- role: secondary
+  path: Q127903/secondary-2.jpg
+  width: 1800
+  height: 1203
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pterocles exustus 156506640.jpg
+  commons_filename: Pterocles exustus 156506640.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:13.810230+00:00'
+sources:
+  wikipedia_sv_revision: '55520912'
+  wikipedia_en_revision: '1337759187'
+  claude_model: claude-haiku-4-5-20251001

@@ -595,3 +595,68 @@ species:
   # Fringillidae batch (2026-05-15): allmän SE-art med sparse svwiki.
   Q645055:
     description_accept_missing: [sv]  # Mindre korsnäbb (Common/Red Crossbill) — sparse svwiki (allmän SE)
+  # Bundle 2 (2026-05-15): otididae+pelecanidae+phoenicopteridae+ploceidae+prunellidae+psittacidae+psittaculidae+pteroclidae+pycnonotidae
+  Q1262382:
+    description_accept_missing: [sv]  # Asian Houbara — sparse svwiki
+  Q188601:
+    description_accept_missing: [sv]  # Little Bustard — sparse svwiki
+  Q290871:
+    description_accept_missing: [sv]  # African Houbara — sparse svwiki
+  Q623791:
+    allow_missing_images: true  # Arabian Bustard — no Commons-licensed images of sufficient size
+  Q199427:
+    description_accept_missing: [sv]  # Great White Pelican — sparse svwiki
+  Q527830:
+    description_accept_missing: [sv]  # Pink-backed Pelican — sparse svwiki
+  Q179863:
+    description_accept_missing: [sv]  # Greater Flamingo — sparse svwiki
+  Q242369:
+    description_accept_missing: [sv]  # Lesser Flamingo — sparse svwiki
+  Q1300963:
+    description_accept_missing: [sv]  # Yellow-crowned Bishop — sparse svwiki
+  Q1306610:
+    description_accept_missing: [sv]  # Streaked Weaver — sparse svwiki
+  Q241529:
+    description_accept_missing: [sv]  # Golden-backed Weaver — sparse svwiki
+  Q659005:
+    description_accept_missing: [sv, en]  # Rüppell's Weaver — sparse on both wikis
+  Q998572:
+    allow_missing_images: true  # Black-headed Weaver — no suitable Commons images
+  Q1049121:
+    description_accept_missing: [sv, en]
+    allow_missing_images: true  # Radde's Accentor — sparse text + no images
+  Q163049:
+    description_accept_missing: [sv]  # Siberian Accentor — sparse svwiki (77w)
+  Q387783:
+    allow_missing_images: true  # Black-throated Accentor — no suitable Commons images
+  Q27074973:
+    description_accept_missing: [sv]  # Nanday Parakeet — sparse svwiki
+  Q27074980:
+    description_accept_missing: [sv]  # Blue-crowned Parakeet — sparse svwiki
+  Q27074997:
+    description_accept_missing: [sv]  # Mitred Parakeet — sparse svwiki
+  Q27074999:
+    description_accept_missing: [sv]  # Red-masked Parakeet — sparse svwiki
+  Q753746:
+    description_accept_missing: [sv]  # Alexandrine Parakeet — sparse svwiki
+  Q127886:
+    allow_missing_images: true  # Crowned Sandgrouse — no suitable Commons images
+  Q127895:
+    description_accept_missing: [sv, en]  # Lichtenstein's Sandgrouse — sparse on both
+  Q127903:
+    description_accept_missing: [sv]  # Chestnut-bellied Sandgrouse — sparse svwiki
+  Q128002:
+    description_accept_missing: [sv, en]  # Pallas's Sandgrouse — sparse on both
+  Q383182:
+    description_accept_missing: [en]  # Black-bellied Sandgrouse — sparse enwiki
+  Q753741:
+    description_accept_missing: [sv]
+    allow_missing_images: true  # Pin-tailed Sandgrouse — sparse svwiki + no images
+  Q80832:
+    description_accept_missing: [sv]  # Spotted Sandgrouse — sparse svwiki
+  Q1070620:
+    description_accept_missing: [sv]  # White-spectacled Bulbul — sparse svwiki
+  Q790596:
+    description_accept_missing: [sv]  # Common Bulbul — sparse svwiki
+  Q997298:
+    description_accept_missing: [sv]  # White-eared Bulbul — sparse svwiki

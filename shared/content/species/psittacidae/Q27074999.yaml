@@ -1,0 +1,80 @@
+id: Q27074999
+scientific_name: Psittacara erythrogenys
+taxonomy:
+  family: Psittacidae
+  family_sv: Papegojor
+  genus: Psittacara
+  ioc_order: Psittaciformes
+names:
+  sv: Rödmaskparakit
+  en: Red-masked Parakeet
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red-masked Parakeet
+
+
+    The red-masked parakeet is a medium-sized parrot native to Ecuador and Peru. It
+    is immediately recognizable by its striking red facial mask and head, which contrasts
+    with its predominantly green plumage on the body and wings. This distinctive coloring
+    makes it one of the most visually striking conures.
+
+
+    Known for its vocal abilities, the red-masked parakeet is considered the best
+    talker among all conures, making it particularly popular in aviculture. It is
+    highly social and intelligent, traits that contribute to its reputation as a capable
+    mimicker of human speech and sounds. The species is energetic and playful, requiring
+    considerable mental stimulation and social interaction.
+
+
+    Due to its appealing appearance, intelligence, and talking ability, the red-masked
+    parakeet has become widely popular as a pet throughout the world. However, potential
+    owners should be aware that it requires significant commitment, as it is long-lived
+    and demands substantial daily interaction and enrichment to thrive in captivity.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Red-masked Parakeet is a native species of Ecuador and Peru in South America
+    and does not naturally occur in Scandinavia or Northern Europe. The source text
+    provides no information about migration patterns or seasonal occurrence in these
+    regions. This species is primarily known from its native range and through its
+    presence in captivity as a popular pet bird in aviculture.'
+image_refs:
+- role: hero
+  path: Q27074999/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Frank_Schulenburg" title="User:Frank
+    Schulenburg">Frank Schulenburg</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Psittacara erythrogenys, Presidio.jpg
+  commons_filename: Psittacara erythrogenys, Presidio.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:51:30.313332+00:00'
+sources:
+  wikipedia_sv_revision: '55717945'
+  wikipedia_en_revision: '1332673272'
+  claude_model: claude-haiku-4-5-20251001

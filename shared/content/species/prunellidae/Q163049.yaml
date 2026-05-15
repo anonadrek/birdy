@@ -1,0 +1,103 @@
+id: Q163049
+scientific_name: Prunella montanella
+taxonomy:
+  family: Prunellidae
+  family_sv: Järnsparvar
+  genus: Prunella
+  ioc_order: Passeriformes
+names:
+  sv: Sibirisk järnsparv
+  en: Siberian Accentor
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sibirisk järnsparv
+
+
+    Sibirisk järnsparv är en palearktisk järnsparv som häckar i Ryssland och Mongoliet.
+    Under vintern drar den till ett begränsat område i nordöstra Kina och Korea. I
+    Europa är arten mycket sällsynt, men år 2016 inträffade ett anmärkningsvärt inflöde
+    då många exemplar registrerades långt västerut. I Sverige sågs exempelvis 68 individer
+    samma år, vilket skulle vara mer än nio tidigare fynd tillsammans.
+
+
+    Arten klassificeras av IUCN som livskraftig och verkar således bibehålla en stabil
+    beståndsstatus.'
+  en: '# Siberian Accentor
+
+
+    The Siberian accentor is a small, brownish passerine with subtle plumage patterns
+    typical of its family. It shares the characteristic restless, shuffling behaviour
+    of accentors, foraging actively on the ground and in low vegetation, often flicking
+    its wings. The bird''s call is a sharp, distinctive note that helps distinguish
+    it from related species, though detailed descriptions of its full repertoire are
+    limited in general literature.
+
+
+    This migratory species breeds across northern Russia and Siberia, inhabiting subarctic
+    deciduous forests, open coniferous woodland, and spruce taiga, particularly near
+    water. During winter, it retreats to Korea and eastern China, where it frequents
+    bushes, shrubs, and grassland habitats often close to streams. The species is
+    a rare vagrant to western Europe and northwestern North America, making sightings
+    there noteworthy for birdwatchers. Its preference for shrubby, vegetated areas—both
+    breeding and wintering grounds—reflects its adaptations to northern latitudes
+    and its ground-feeding ecology.'
+migration:
+  sv: '# Sibirisk järnsparv i Norra Europa
+
+
+    Sibirisk järnsparv är en mycket sällsynt besökare i Skandinavien och övriga Europa.
+    Arten häckar i Ryssland och Mongoliet och övervintrar huvudsakligen i nordöstra
+    Kina och Korea. Normalt är arten extremt ovanlig i Europa, men året 2016 inträffade
+    ett exceptionellt inflöde då hela 68 individer observerades i Sverige – en dramatisk
+    ökning jämfört med endast nio fynd sammanlagt före detta år. Dessa enstaka observationer
+    sker under höst och vinter när arter från öster ibland vandrar långt västerut.'
+  en: '# Siberian Accentor in Scandinavia/Northern Europe
+
+
+    The Siberian Accentor is primarily a rare vagrant to Scandinavia and northern
+    Europe, with no established breeding population in the region. This species breeds
+    across Siberia and migrates southward to winter in Korea and eastern China. Occasional
+    individuals appear in western Europe during migration periods or winter, representing
+    rare occurrences rather than regular visitors. When present, these vagrants are
+    typically observed in late autumn or winter months as part of their irregular
+    western movements, though such sightings remain exceptional throughout Scandinavia
+    and the wider Nordic region.'
+image_refs:
+- role: hero
+  path: Q163049/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/69445801@N04">Jargal
+    Lamjav</a> from Ulaanbaatar, Mongolia
+  source_url: https://commons.wikimedia.org/wiki/File:Siberian Accentor (Prunella
+    montanella) - Сибирийн хайруулдай (16435139700).jpg
+  commons_filename: Siberian Accentor (Prunella montanella) - Сибирийн хайруулдай
+    (16435139700).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:53:32.222566+00:00'
+sources:
+  wikipedia_sv_revision: '57973454'
+  wikipedia_en_revision: '1254520719'
+  claude_model: claude-haiku-4-5-20251001

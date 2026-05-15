@@ -1,0 +1,107 @@
+id: Q179863
+scientific_name: Phoenicopterus roseus
+taxonomy:
+  family: Phoenicopteridae
+  family_sv: Flamingoer
+  genus: Phoenicopterus
+  ioc_order: Phoenicopteriformes
+names:
+  sv: Större flamingo
+  en: Greater Flamingo
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Greater Flamingo
+
+
+    The greater flamingo is the largest and most widespread member of the flamingo
+    family. It displays the characteristic bright pink plumage associated with flamingos,
+    along with a distinctive downward-curved bill adapted for filter-feeding. Its
+    long, thin legs and elegant neck make it instantly recognizable in its natural
+    habitat.
+
+
+    These highly social birds are found throughout the Old World, inhabiting shallow
+    coastal waters, lagoons, and salt lakes across a broad range spanning Northern
+    and Sub-Saharan Africa, the Indian subcontinent, the Middle East, and Southern
+    Europe. They are gregarious by nature, often gathering in large flocks that can
+    number in the thousands.
+
+
+    Greater flamingos feed by filtering algae, diatoms, and small crustaceans from
+    shallow water using their specialized bills. The pink coloration comes from carotenoid
+    pigments in their diet. It is a vocal species, producing various honking and cackling
+    calls used to maintain flock cohesion and during courtship displays. The species
+    is relatively common throughout its range and is well-adapted to life in saline
+    and brackish environments where few other birds can thrive.'
+migration:
+  sv: ''
+  en: '# Greater Flamingo in Northern Europe
+
+
+    The Greater Flamingo is an extremely rare vagrant to Scandinavia and Northern
+    Europe, with no established migratory population or regular occurrence in these
+    regions. While the species is widespread across Southern Europe, the Mediterranean,
+    and Africa, sightings in Scandinavia are exceptional and unpredictable. Any records
+    from Nordic countries would represent wind-assisted vagrants from southern populations,
+    typically occurring irregularly outside the species'' normal range. The species
+    does not have a consistent migration pattern through Northern Europe and should
+    not be expected as a seasonal visitor to Scandinavian waters or coasts.'
+image_refs:
+- role: hero
+  path: Q179863/hero.jpg
+  width: 2400
+  height: 1500
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Christian_Ferrer" title="User:Christian
+    Ferrer">Christian Ferrer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phoenicopterus roseus - Lido
+    de Thau 01.jpg
+  commons_filename: Phoenicopterus roseus - Lido de Thau 01.jpg
+- role: secondary
+  path: Q179863/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Christian_Ferrer" title="User:Christian
+    Ferrer">Christian Ferrer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phoenicopterus roseus - Lido
+    de Thau 04.jpg
+  commons_filename: Phoenicopterus roseus - Lido de Thau 04.jpg
+- role: secondary
+  path: Q179863/secondary-2.jpg
+  width: 1800
+  height: 1125
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Christian_Ferrer" title="User:Christian
+    Ferrer">Christian Ferrer</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phoenicopterus roseus - Lido
+    de Thau 03.jpg
+  commons_filename: Phoenicopterus roseus - Lido de Thau 03.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:54:10.503313+00:00'
+sources:
+  wikipedia_sv_revision: '57918454'
+  wikipedia_en_revision: '1351299260'
+  claude_model: claude-haiku-4-5-20251001

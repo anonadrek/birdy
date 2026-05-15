@@ -1,0 +1,72 @@
+id: Q128002
+scientific_name: Syrrhaptes paradoxus
+taxonomy:
+  family: Pteroclidae
+  family_sv: Flyghöns
+  genus: Syrrhaptes
+  ioc_order: Pterocliformes
+names:
+  sv: Stäppflyghöna
+  en: Pallas’s Sandgrouse
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q128002/hero.jpg
+  width: 1936
+  height: 2400
+  license: Public domain
+  author: Adolf Bernhard Meyer (1840-1911)
+  source_url: https://commons.wikimedia.org/wiki/File:Syrrhaptes paradoxus 128.jpg
+  commons_filename: Syrrhaptes paradoxus 128.jpg
+- role: secondary
+  path: Q128002/secondary-1.jpg
+  width: 1800
+  height: 1533
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Alfred_Newton" class="extiw"
+    title="w:en:Alfred Newton"><span title="English zoologist and ornithologist (1829-1907)">Alfred
+    Newton</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Map illustrating the irruption
+    of Syrrhaptes paradoxus in 1863.jpg
+  commons_filename: Map illustrating the irruption of Syrrhaptes paradoxus in 1863.jpg
+- role: secondary
+  path: Q128002/secondary-2.jpg
+  width: 1800
+  height: 1359
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Bogomolov.PL" title="User:Bogomolov.PL">Bogomolov.PL</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Syrrhaptes paradoxus 1.JPG
+  commons_filename: Syrrhaptes paradoxus 1.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:51:14.643335+00:00'
+sources:
+  wikipedia_sv_revision: '56466637'
+  wikipedia_en_revision: '1314698915'
+  claude_model: claude-haiku-4-5-20251001

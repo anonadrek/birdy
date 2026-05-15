@@ -1,0 +1,45 @@
+id: Q1049121
+scientific_name: Prunella ocularis
+taxonomy:
+  family: Prunellidae
+  family_sv: Järnsparvar
+  genus: Prunella
+  ioc_order: Passeriformes
+names:
+  sv: Svartkronad järnsparv
+  en: Radde’s Accentor
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:12.241631+00:00'
+sources:
+  wikipedia_sv_revision: '58836140'
+  wikipedia_en_revision: null
+  claude_model: claude-haiku-4-5-20251001

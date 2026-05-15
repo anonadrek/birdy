@@ -1,0 +1,95 @@
+id: Q387783
+scientific_name: Prunella atrogularis
+taxonomy:
+  family: Prunellidae
+  family_sv: Järnsparvar
+  genus: Prunella
+  ioc_order: Passeriformes
+names:
+  sv: Svartstrupig järnsparv
+  en: Black-throated Accentor
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartstrupig järnsparv
+
+
+    Svartstrupig järnsparv är en medlem av järnsparvarnas familj och häckar i bergiga
+    områden i Asien, där den förekommer i både norra bergskedjor. Arten är relativt
+    liten och obeskedlig, vilket är typiskt för järnsparvar. De nordliga populationerna
+    är flyttfåglar som under vintern drar långt söderut, ända till Indien på jakt
+    efter föda.
+
+
+    I västra Europa är arten mycket sällsynt och förekommer endast sporadiskt som
+    gäst. Sverige och Finland är bland de länder där den ses mycket utanför sitt ordinarie
+    utbreitningsområde. IUCN klassificerar arten som livskraftig, vilket tyder på
+    en stabil población globalt sett.'
+  en: '# Black-throated Accentor
+
+
+    The black-throated accentor is a small passerine belonging to the accentor family.
+    It inhabits high-altitude mountain regions, breeding in rocky terrain during the
+    warmer months. This species is migratory, with populations wintering in lower
+    elevations across Afghanistan and neighboring countries to the south.
+
+
+    The bird is characterized by its compact size and subtle plumage typical of accentors.
+    Its most distinctive feature is the dark throat that gives it its common name,
+    contrasting with paler underparts. Like other accentors, it has a fine, pointed
+    bill adapted for foraging among rocky ground and sparse vegetation.
+
+
+    Black-throated accentors are generally inconspicuous birds, skulking among rocks
+    and low vegetation where they search for insects and seeds. They are rare vagrants
+    to western Europe, appearing only occasionally far from their regular range. Observations
+    outside their core Asian mountain habitat are noteworthy for birdwatchers, making
+    any sighting of this elusive species a rewarding encounter for those familiar
+    with its preferred mountain environment.'
+migration:
+  sv: '# Svartstrupig järnsparv - Förekomst i Nordeuropa
+
+
+    Svartstrupig järnsparv är en mycket sällsynt gäst i Skandinavien och övriga Västeuropa.
+    Arten häckar främst i bergstrakter i Asien, särskilt i Ural- och Altajbergen.
+    De nordliga populationerna är flyttfåglar som migrerar långt söderut under vintern,
+    ofta helt fram till Indien. I Sverige och Finland förekommer arten endast som
+    en mycket sporadisk tillfällig gäst, utan någon regelbunden eller säsongsbunden
+    förekomst. Observationerna är få och oregelbundna.'
+  en: '# Black-throated Accentor - Occurrence in Scandinavia/Northern Europe
+
+
+    The black-throated accentor is a rare vagrant to Scandinavia and northern Europe,
+    with no established breeding population or regular migration pattern through the
+    region. This species breeds in eastern mountain ranges (Ural, Tian Shan, and Altai
+    Mountains) and winters in Afghanistan and adjacent areas, far south of Scandinavian
+    latitudes. Occasional sightings in western Europe represent vagrants that have
+    strayed significantly from their normal migratory routes, making regular occurrence
+    in Scandinavia highly unpredictable and exceptional.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:03.102191+00:00'
+sources:
+  wikipedia_sv_revision: '58602970'
+  wikipedia_en_revision: '1313998243'
+  claude_model: claude-haiku-4-5-20251001

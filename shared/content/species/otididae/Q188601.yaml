@@ -1,0 +1,112 @@
+id: Q188601
+scientific_name: Tetrax tetrax
+taxonomy:
+  family: Otididae
+  family_sv: Trappar
+  genus: Tetrax
+  ioc_order: Otidiformes
+names:
+  sv: Småtrapp
+  en: Little Bustard
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Småtrapp
+
+
+    Småtrappen är en stor fågel som utgör den enda arten inom sitt släkte Tetrax inom
+    familjen trappar. Den är en kraftig mardfågel med karakteristisk byggnad och impressive
+    flygförmåga trots sin storlek.
+
+
+    Arten förekommer fläckvist i Europa och Asien, med utbredning som sträcker sig
+    österut till nordvästra Kina. Småtrappen är en påtaglig flyttfågel som söker upp
+    öppna landskap som steppar och gräsängar för sin föda och häckning.'
+  en: '# Little Bustard
+
+
+    The little bustard is a distinctive member of the bustard family and the sole
+    species in its genus. It inhabits open grasslands and semi-arid plains across
+    Southern Europe and Western to Central Asia, favoring areas with sparse vegetation
+    where it can move easily on the ground.
+
+
+    This compact bustard is notably smaller than its relatives, with a stocky build
+    adapted for terrestrial life. During breeding season, males display striking plumage
+    patterns that aid in territorial and courtship displays. The species is predominantly
+    ground-dwelling, relying on camouflage and running rather than flight to evade
+    predators, though it is capable of sustained flight when necessary.
+
+
+    Little bustards communicate through various vocalizations, including low booming
+    calls during the breeding season that carry across open habitats. They are largely
+    herbivorous, feeding on seeds, vegetation, and insects. The species exhibits seasonal
+    movements, with northern populations migrating to warmer regions during winter
+    months.'
+migration:
+  sv: Småtrapp är en flyttfågel som förekommer mycket sparsamt i Skandinavien och
+    Nordeuropa. Arten är främst en sommargäst i södra och mellersta Europa, där den
+    anländer under våren för att reproducera sig. I norra delen av sitt utbredningsområde,
+    inklusive gränsregionerna mot Skandinavien, är småtrappen mycket sällsynt och
+    ses huvudsakligen under migrationstiderna. Övervintrande individer är ovanliga
+    i norra Europa, då arten föredrar att dra söderut till sina övervintringskväarter
+    i södra Europa, Nordafrika och Asien. Svenska och norska iakttagelser är mycket
+    få och sammanhänger ofta med spring- eller höstmigrationen.
+  en: '# Little Bustard (Tetrax tetrax) in Northern Europe
+
+
+    The Little Bustard is an extremely rare vagrant to Scandinavia and Northern Europe,
+    with only occasional records. This species breeds in Southern Europe and Western
+    and Central Asia, well south of the Nordic region. While individuals have been
+    recorded in Scandinavian countries, these represent exceptional occurrences rather
+    than regular migration patterns. The species does not establish breeding populations
+    or predictable overwintering populations in Northern Europe. Any sightings in
+    Scandinavia are best considered accidental wanderers from their core southern
+    and eastern range.'
+image_refs:
+- role: hero
+  path: Q188601/hero.jpg
+  width: 2400
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Little Bustard (Tetrax tetrax)
+    (8520158525).jpg
+  commons_filename: Little Bustard (Tetrax tetrax) (8520158525).jpg
+- role: secondary
+  path: Q188601/secondary-1.jpg
+  width: 1800
+  height: 1183
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:TRinaud&amp;action=edit&amp;redlink=1"
+    class="new" title="User:TRinaud (page does not exist)">TRinaud</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Little bustard (Tetrax tetrax)
+    2016.jpg
+  commons_filename: Little bustard (Tetrax tetrax) 2016.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:50:51.033691+00:00'
+sources:
+  wikipedia_sv_revision: '55437473'
+  wikipedia_en_revision: '1314738276'
+  claude_model: claude-haiku-4-5-20251001

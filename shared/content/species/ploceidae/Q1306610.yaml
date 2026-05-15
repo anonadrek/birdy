@@ -1,0 +1,105 @@
+id: Q1306610
+scientific_name: Ploceus manyar
+taxonomy:
+  family: Ploceidae
+  family_sv: Vävare
+  genus: Ploceus
+  ioc_order: Passeriformes
+names:
+  sv: Streckig vävare
+  en: Streaked Weaver
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Streaked Weaver
+
+
+    The streaked weaver is a weaver bird distributed across South and Southeast Asia,
+    inhabiting countries from Bangladesh and Nepal westward to Pakistan, and eastward
+    through Myanmar, Thailand, and Vietnam to Indonesia. It has also been introduced
+    to Qatar and the United Arab Emirates. This species is less commonly encountered
+    than the closely related baya weaver, with which it shares similar overall appearance.
+
+
+    The key distinguishing feature of the streaked weaver is its streaked underparts,
+    which differentiate it from the baya weaver. Like other members of the weaver
+    family, it is an accomplished builder of intricate woven nests. The species typically
+    favors reed beds, wetland margins, and cultivated areas where suitable vegetation
+    provides both feeding and nesting opportunities. It often occurs in small to moderate-sized
+    flocks, particularly outside the breeding season.
+
+
+    Despite its wide distribution across Asian wetlands and agricultural regions,
+    the streaked weaver remains relatively inconspicuous and less frequently observed
+    than several other weaver species in its range. Its preference for dense reed
+    growth and marshy habitats means it may be easily overlooked by casual birdwatchers,
+    though patient observation in suitable wetland areas can yield rewarding sightings.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Streaked Weaver is a resident bird of South and Southeast Asia, with no established
+    occurrence or migration patterns documented for Scandinavia or Northern Europe.
+    This species is endemic to regions including India, Bangladesh, Thailand, Vietnam,
+    and other Asian countries, remaining far outside the natural range of Northern
+    European birds. There are no records of this weaver appearing in Scandinavian
+    territories during any season.'
+image_refs:
+- role: hero
+  path: Q1306610/hero.jpg
+  width: 1600
+  height: 2400
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/95103422@N04">Rison
+    Thumboor</a> from Thrissur, India
+  source_url: https://commons.wikimedia.org/wiki/File:Streaked weaver (Ploceus manyar)male
+    - കായലാറ്റ. (31966699943).jpg
+  commons_filename: Streaked weaver (Ploceus manyar)male - കായലാറ്റ. (31966699943).jpg
+- role: secondary
+  path: Q1306610/secondary-1.jpg
+  width: 1303
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Shino_jacob_koottanad" title="User:Shino
+    jacob koottanad">Shino jacob koottanad</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Streaked weaver (Ploceus manyar)
+    ( image).jpg
+  commons_filename: Streaked weaver (Ploceus manyar) ( image).jpg
+- role: secondary
+  path: Q1306610/secondary-2.jpg
+  width: 1167
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Shino_jacob_koottanad" title="User:Shino
+    jacob koottanad">Shino jacob koottanad</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Streaked weaver (Ploceus manyar)
+    flight.jpg
+  commons_filename: Streaked weaver (Ploceus manyar) flight.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:50:10.559819+00:00'
+sources:
+  wikipedia_sv_revision: '56773219'
+  wikipedia_en_revision: '1315240312'
+  claude_model: claude-haiku-4-5-20251001

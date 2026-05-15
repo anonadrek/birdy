@@ -1,0 +1,99 @@
+id: Q27074973
+scientific_name: Aratinga nenday
+taxonomy:
+  family: Psittacidae
+  family_sv: Papegojor
+  genus: Aratinga
+  ioc_order: Psittaciformes
+names:
+  sv: Nandayparakit
+  en: Nanday Parakeet
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Nanday Parakeet
+
+
+    The nanday parakeet is a medium-small parrot with predominantly green plumage
+    that immediately catches the eye with its distinctive black hood covering the
+    head and upper neck. Its name derives directly from this striking black facial
+    marking. The bird displays bright red feathers on its thighs and under-tail coverts,
+    creating a vivid contrast against the green body. It is native to continental
+    South America, inhabiting open woodlands, grasslands with scattered trees, and
+    cultivated areas.
+
+
+    In behaviour, it is a highly social and gregarious species, typically seen in
+    flocks that can be quite vocal and energetic. The nanday parakeet is active and
+    acrobatic, spending much of its time foraging in trees for seeds, fruits, and
+    vegetation. Its call is loud and characteristic—a distinctive series of screeches
+    and chattering sounds that often announce its presence before it is seen.
+
+
+    These parakeets are adaptable birds found in various habitats across their range,
+    from humid lowlands to drier regions. They have become established as feral populations
+    in some temperate areas outside their native range, testament to their hardiness
+    and ability to thrive in diverse environments. Flocks can be observed flying swiftly
+    through open country, their green bodies silhouetted against the sky.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q27074973/hero.jpg
+  width: 1554
+  height: 2400
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/52450054@N04">Judy
+    Gallagher</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Nanday Parakeet - Aratinga nenday,
+    Boynton Beach, Florida, December 12, 2023 (53480585076).jpg
+  commons_filename: Nanday Parakeet - Aratinga nenday, Boynton Beach, Florida, December
+    12, 2023 (53480585076).jpg
+- role: secondary
+  path: Q27074973/secondary-1.jpg
+  width: 1800
+  height: 1159
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Nanday Parakeets (Aratinga nenday)
+    on nest ... - 48199003066.jpg
+  commons_filename: Nanday Parakeets (Aratinga nenday) on nest ... - 48199003066.jpg
+- role: secondary
+  path: Q27074973/secondary-2.jpg
+  width: 1800
+  height: 1726
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/65695019@N07">Bernard
+    DUPONT</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Nanday Parakeets (Aratinga nenday)
+    on nest.jpg
+  commons_filename: Nanday Parakeets (Aratinga nenday) on nest.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:50:04.922229+00:00'
+sources:
+  wikipedia_sv_revision: '55663787'
+  wikipedia_en_revision: '1353903044'
+  claude_model: claude-haiku-4-5-20251001

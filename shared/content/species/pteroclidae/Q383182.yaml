@@ -1,0 +1,90 @@
+id: Q383182
+scientific_name: Pterocles orientalis
+taxonomy:
+  family: Pteroclidae
+  family_sv: Flyghöns
+  genus: Pterocles
+  ioc_order: Pterocliformes
+names:
+  sv: Svartbukig flyghöna
+  en: Black-bellied Sandgrouse
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartbukig flyghöna
+
+
+    Svartbukig flyghöna är en medlem av flyghönsfamiljen och utgör en av endast två
+    arter inom denna grupp som förekommer i Europa. Fågeln är en anpassad ökenbo som
+    trivs i torra, öppna landskap med sparsam vegetation.
+
+
+    Arten kännetecknas av sitt karakteristiska utseende med mörk, nästan svart undersida
+    – en markant egenskap som inspirerat dess namn. Som andra flyghöns är det en snabb
+    flugare med strömlinjeformad kropp, väl anpassad för att rörelserna genom öppna
+    terränger.
+
+
+    Arten har traditionellt haft ett livskraftigt bestånd, även om det har noterats
+    en nedgång under senare tid. Trots denna minskning anses beståndet fortfarande
+    vara stabilt och väl etablerat inom sitt huvudsakliga utbredningsområde i Sydeuropa
+    och Västasien.'
+  en: ''
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: ''
+image_refs:
+- role: hero
+  path: Q383182/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="http://photo-natur.de">Andreas
+    Trepte</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pterocles orientalis in flight.jpg
+  commons_filename: Pterocles orientalis in flight.jpg
+- role: secondary
+  path: Q383182/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/628259">Kudaibergen
+    Amirekul</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pterocles orientalis 160906512.jpg
+  commons_filename: Pterocles orientalis 160906512.jpg
+- role: secondary
+  path: Q383182/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/628259">Kudaibergen
+    Amirekul</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pterocles orientalis arenarius
+    304552958.jpg
+  commons_filename: Pterocles orientalis arenarius 304552958.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:53:13.725236+00:00'
+sources:
+  wikipedia_sv_revision: '55739334'
+  wikipedia_en_revision: '1350840621'
+  claude_model: claude-haiku-4-5-20251001

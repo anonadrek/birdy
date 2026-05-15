@@ -1,0 +1,83 @@
+id: Q127886
+scientific_name: Pterocles coronatus
+taxonomy:
+  family: Pteroclidae
+  family_sv: Flyghöns
+  genus: Pterocles
+  ioc_order: Pterocliformes
+names:
+  sv: Kronflyghöna
+  en: Crowned Sandgrouse
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kronflyghöna
+
+
+    Kronflyghöna är en fågel i familjen flyghöns som lever i öppna, torra miljöer.
+    Arten förekommer i öknar och halvöknar från Sahara över till Indien, där den är
+    väl anpassad till de hårda förhållandena. Beståndet bedöms som livskraftigt.
+
+
+    Arten är utpräglad för sina speciella anpassningar till ökenlivet, där den söker
+    föda på marken bland gles vegetation. Som många andra flyghöns är den mobil och
+    kan förflytta sig över större områden för att hitta mat och vatten. Arten återfinns
+    i dessa torra biotoper där få andra större fåglar klarar sig.'
+  en: '# Crowned Sandgrouse
+
+
+    The crowned sandgrouse is a compact, ground-dwelling bird belonging to the sandgrouse
+    family, found across North Africa and the Middle East. This species is adapted
+    to arid environments, with plumage that provides excellent camouflage in desert
+    and semi-desert habitats.
+
+
+    Like other sandgrouse, it is a swift flier, capable of covering considerable distances,
+    particularly to reach water sources. The bird is typically seen on the ground,
+    where it blends effectively with sandy and rocky terrain. It often moves in small
+    groups or flocks, especially when traveling to and from water holes.
+
+
+    Unfortunately, the provided source text is limited, restricting detailed information
+    about its specific appearance, distinctive vocalizations, and precise behavioral
+    patterns. For more comprehensive guidance on identification features such as plumage
+    markings, call characteristics, and seasonal movements, additional field guide
+    references would be beneficial.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Migration Data Unavailable for This Species
+
+
+    The Crowned Sandgrouse is a resident species of North Africa and the Middle East,
+    with no documented occurrence in Scandinavia or Northern Europe. Therefore, migration
+    or overwintering information relevant to these regions cannot be provided. This
+    species remains confined to arid and semi-arid habitats of its native range in
+    Africa and western Asia throughout the year, making it absent from Scandinavian
+    territories.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:50:06.307386+00:00'
+sources:
+  wikipedia_sv_revision: '56455211'
+  wikipedia_en_revision: '1314440839'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,99 @@
+id: Q997298
+scientific_name: Pycnonotus leucotis
+taxonomy:
+  family: Pycnonotidae
+  family_sv: Bulbyler
+  genus: Pycnonotus
+  ioc_order: Passeriformes
+names:
+  sv: Vitkindad bulbyl
+  en: White-eared Bulbul
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# White-eared Bulbul
+
+
+    The white-eared bulbul is a member of the bulbul family found across south-western
+    Asia, ranging from the Indian subcontinent to the Arabian Peninsula. This species
+    is characterized by distinctive white ear-coverts that stand out against its darker
+    plumage, providing the basis for its common name.
+
+
+    While the provided source material is limited, the white-eared bulbul, like other
+    bulbuls, is typically an active and social bird. It inhabits scrubby woodland
+    and gardens within its range, where it forages for insects and fruits. The species
+    is often encountered in small groups, moving restlessly through vegetation with
+    characteristic bulbul behaviour—quick, darting movements and frequent vocalizations.
+
+
+    The bird''s calls are typical of bulbuls: a series of energetic, chattering notes
+    that can be quite loud and distinctive. Its presence is often announced by these
+    vocal outbursts before the bird itself is spotted.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The White-eared Bulbul is native to south-western Asia, with its range extending
+    from India to the Arabian peninsula. This species does not naturally occur in
+    Scandinavia or Northern Europe, and therefore no migration information relevant
+    to these regions can be provided.'
+image_refs:
+- role: hero
+  path: Q997298/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/27409143@N00">Kaushal
+    Vaidya</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus leucotis -Doha, Qatar
+    -two-8.jpg
+  commons_filename: Pycnonotus leucotis -Doha, Qatar -two-8.jpg
+- role: secondary
+  path: Q997298/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/27409143@N00">Kaushal
+    Vaidya</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus leucotis -Doha, Qatar
+    -two-8 (1).jpg
+  commons_filename: Pycnonotus leucotis -Doha, Qatar -two-8 (1).jpg
+- role: secondary
+  path: Q997298/secondary-2.jpg
+  width: 1800
+  height: 1199
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/27409143@N00">Kaushal
+    Vaidya</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus leucotis -Doha, Qatar
+    -two-8 (2).jpg
+  commons_filename: Pycnonotus leucotis -Doha, Qatar -two-8 (2).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:50:30.856549+00:00'
+sources:
+  wikipedia_sv_revision: '57856788'
+  wikipedia_en_revision: '1340074141'
+  claude_model: claude-haiku-4-5-20251001

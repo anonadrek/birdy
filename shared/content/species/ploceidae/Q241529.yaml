@@ -1,0 +1,78 @@
+id: Q241529
+scientific_name: Ploceus jacksoni
+taxonomy:
+  family: Ploceidae
+  family_sv: Vävare
+  genus: Ploceus
+  ioc_order: Passeriformes
+names:
+  sv: Gulryggig vävare
+  en: Golden-backed Weaver
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Golden-backed Weaver
+
+
+    The Golden-backed Weaver is a member of the weaver family, renowned for their
+    intricate nest-building skills. This species constructs distinctive teardrop-shaped
+    nests woven from grasses and plant stems, which hang suspended from trees and
+    other elevated structures. The bird displays bright coloration, though it is frequently
+    confused with related weaver species.
+
+
+    Little detailed information is available about this species'' specific behaviour,
+    calls, and appearance beyond its striking plumage. The Golden-backed Weaver inhabits
+    various regions across Africa and Asia, though precise distribution and habitat
+    preferences require further documentation. Like other weavers, it relies on vegetation
+    for both food and nesting materials.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q241529/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:JNguyenFlohic&amp;action=edit&amp;redlink=1"
+    class="new" title="User:JNguyenFlohic (page does not exist)">JNguyenFlohic</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Ploceus jacksoni zoo wuppertal.jpg
+  commons_filename: Ploceus jacksoni zoo wuppertal.jpg
+- role: secondary
+  path: Q241529/secondary-1.jpg
+  width: 1800
+  height: 988
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9765210@N03">Dominic
+    Sherony</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Golden-backed Weaver (Ploceus
+    jacksoni) (44768533690).jpg
+  commons_filename: Golden-backed Weaver (Ploceus jacksoni) (44768533690).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:53:00.540662+00:00'
+sources:
+  wikipedia_sv_revision: '55606853'
+  wikipedia_en_revision: '1314066973'
+  claude_model: claude-haiku-4-5-20251001

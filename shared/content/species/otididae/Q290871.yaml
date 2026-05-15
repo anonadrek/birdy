@@ -1,0 +1,103 @@
+id: Q290871
+scientific_name: Chlamydotis undulata
+taxonomy:
+  family: Otididae
+  family_sv: Trappar
+  genus: Chlamydotis
+  ioc_order: Otidiformes
+names:
+  sv: Ökentrapp
+  en: African Houbara
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# African Houbara
+
+
+    The African houbara is a relatively small bustard inhabiting arid regions across
+    North Africa. It belongs to the bustard family, a group of large terrestrial birds
+    adapted to open landscapes. This species has experienced population declines,
+    with its global status listed as Vulnerable by the IUCN since 2014. A distinct
+    population in the Canary Islands, once assessed as Near Threatened, has also been
+    reclassified as Vulnerable, reflecting broader conservation concerns for the species.
+
+
+    The houbara prefers desert and semi-arid habitats where sparse vegetation provides
+    both food and minimal cover. Like other bustards, it is primarily terrestrial,
+    spending most of its time on the ground where it forages for insects, small reptiles,
+    and plant matter. It is a wary bird, relying on camouflage and alertness to detect
+    approaching threats.
+
+
+    More detailed information about its specific appearance, vocalizations, and behavioral
+    characteristics would require additional sources, as the provided text focuses
+    primarily on its distribution and conservation status.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The African Houbara is a North African species resident in arid habitats, with
+    no established occurrence pattern in Scandinavia or Northern Europe. The provided
+    source text contains no information regarding migration, seasonal movements, or
+    any presence in northern European regions. This species is endemic to North Africa
+    and the Canary Islands, making it outside the typical range of birds documented
+    in Scandinavian ornithological guides.'
+image_refs:
+- role: hero
+  path: Q290871/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Chlamydotis undulata -Lanzarote,
+    Canary Islands, Spain-8.jpg
+  commons_filename: Chlamydotis undulata -Lanzarote, Canary Islands, Spain-8.jpg
+- role: secondary
+  path: Q290871/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Chlamydotis undulata displaying
+    2.jpg
+  commons_filename: Chlamydotis undulata displaying 2.jpg
+- role: secondary
+  path: Q290871/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Chlamydotis undulata -Tao, Lanzarote,
+    Canary Islands, Spain-8.jpg
+  commons_filename: Chlamydotis undulata -Tao, Lanzarote, Canary Islands, Spain-8.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:50:22.013231+00:00'
+sources:
+  wikipedia_sv_revision: '55443831'
+  wikipedia_en_revision: '1335790003'
+  claude_model: claude-haiku-4-5-20251001

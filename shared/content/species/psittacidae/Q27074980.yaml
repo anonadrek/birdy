@@ -1,0 +1,101 @@
+id: Q27074980
+scientific_name: Thectocercus acuticaudatus
+taxonomy:
+  family: Psittacidae
+  family_sv: Papegojor
+  genus: Thectocercus
+  ioc_order: Psittaciformes
+names:
+  sv: Blåkronad parakit
+  en: Blue-crowned Parakeet
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Blue-crowned Parakeet
+
+
+    The Blue-crowned Parakeet is a small parrot with predominantly green plumage and
+    a distinctive bright blue crown, complemented by a pale beak. It measures approximately
+    23 centimetres in length, making it a compact member of the parrot family.
+
+
+    This species favors open and semi-open habitats, including savannas, woodlands,
+    and forest margins. It deliberately avoids dense humid forests, preferring environments
+    with scattered trees and more open canopy structure. The Blue-crowned Parakeet
+    is highly social, typically found in pairs or small flocks that move actively
+    through its chosen habitat while feeding and roosting.
+
+
+    The species is widespread across much of northern and central South America, with
+    populations established across a considerable geographic range. It feeds primarily
+    on seeds, fruits, and vegetation, and like other parakeets, it is vocal and active
+    during daylight hours. Its calls are characteristic sharp, screeching notes typical
+    of conures. The Blue-crowned Parakeet remains relatively common throughout much
+    of its natural range, where suitable open woodland habitat persists.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Blue-crowned Parakeet is a Neotropical species native to South America and
+    does not occur naturally in Scandinavia or Northern Europe. The source text provides
+    no information about migration patterns in Northern Europe, as this species''
+    range is restricted to South America, from eastern Colombia through various regions
+    to northern Argentina, with populations also found in Curacao in the southern
+    Caribbean. There is no documented occurrence or seasonal movement of this species
+    in Scandinavian or Northern European territories.'
+image_refs:
+- role: hero
+  path: Q27074980/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1065381">Adam
+    Jackson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Thectocercus acuticaudatus 505478395.jpg
+  commons_filename: Thectocercus acuticaudatus 505478395.jpg
+- role: secondary
+  path: Q27074980/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/912605">Dan
+    Vickers</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Thectocercus acuticaudatus 465902258.jpg
+  commons_filename: Thectocercus acuticaudatus 465902258.jpg
+- role: secondary
+  path: Q27074980/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/438241">Sol
+    Quipildor</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Thectocercus acuticaudatus 452047394.jpg
+  commons_filename: Thectocercus acuticaudatus 452047394.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:50:33.721966+00:00'
+sources:
+  wikipedia_sv_revision: '58518199'
+  wikipedia_en_revision: '1349775410'
+  claude_model: claude-haiku-4-5-20251001

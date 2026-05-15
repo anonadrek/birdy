@@ -1,0 +1,103 @@
+id: Q242369
+scientific_name: Phoeniconaias minor
+taxonomy:
+  family: Phoenicopteridae
+  family_sv: Flamingoer
+  genus: Phoeniconaias
+  ioc_order: Phoenicopteriformes
+names:
+  sv: Mindre flamingo
+  en: Lesser Flamingo
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Lesser Flamingo
+
+
+    The lesser flamingo is the smallest flamingo species, distinguishable by its compact
+    size and deep crimson plumage, which intensifies during breeding season. It has
+    the characteristic flamingo bill with a distinctive black tip and pale base, adapted
+    for filter-feeding on algae and small organisms in shallow waters.
+
+
+    This highly social species occurs in large flocks across sub-Saharan Africa and
+    western India, frequenting shallow alkaline and saline lakes where food is abundant.
+    Lesser flamingos are gregarious birds, often gathering in enormous numbers that
+    can number in the hundreds of thousands. Their vocalizations include various honking
+    and nasal calls used for communication within flocks.
+
+
+    Occasionally, individual birds are reported outside the species'' regular range,
+    though these are typically considered vagrant individuals rather than established
+    populations. The lesser flamingo''s preference for specific alkaline lake habitats
+    makes it dependent on particular wetland environments for survival.'
+migration:
+  sv: ''
+  en: '# Migration in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Lesser Flamingo is a sub-Saharan African and Indian species with no established
+    presence in Scandinavia or Northern Europe. While occasional birds are reported
+    north of their core range, these are considered vagrants rather than regular migrants.
+    There is no documented pattern of seasonal occurrence, overwintering, or predictable
+    arrival in Northern European regions.'
+image_refs:
+- role: hero
+  path: Q242369/hero.jpg
+  width: 2336
+  height: 2006
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jebulon" title="User:Jebulon">Jebulon</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phoenicopterus ruber Tiergarten
+    Schönbrunn.jpg
+  commons_filename: Phoenicopterus ruber Tiergarten Schönbrunn.jpg
+- role: secondary
+  path: Q242369/secondary-1.jpg
+  width: 1800
+  height: 1203
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phoeniconaias minor 231910073.jpg
+  commons_filename: Phoeniconaias minor 231910073.jpg
+- role: secondary
+  path: Q242369/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Phoeniconaias minor and Phoenicopterus
+    roseus, Kachchh, Gujarat, India 157955869.jpg
+  commons_filename: Phoeniconaias minor and Phoenicopterus roseus, Kachchh, Gujarat,
+    India 157955869.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:56.952936+00:00'
+sources:
+  wikipedia_sv_revision: '55426019'
+  wikipedia_en_revision: '1334984424'
+  claude_model: claude-haiku-4-5-20251001

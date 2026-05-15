@@ -1,0 +1,130 @@
+id: Q724987
+scientific_name: Myiopsitta monachus
+taxonomy:
+  family: Psittacidae
+  family_sv: Papegojor
+  genus: Myiopsitta
+  ioc_order: Psittaciformes
+names:
+  sv: Munkparakit
+  en: Monk Parakeet
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Munkparakit
+
+
+    Munkparakit är en liten papegoja med gråvit ansikte och grön rygg som gör den
+    lätt igenkännlig. Fågeln är betydligt mindre än många andra papegojor och har
+    en karakteristisk utseende med sin kontrastrika färgteckning. Den är social och
+    håller sig ofta i flockar.
+
+
+    Munkparakiten härstammar från Sydamerika där den lever vilt, men har under de
+    senaste decennierna etablerats som häckfågel på flera andra platser i världen.
+    Dessa populationer har sitt ursprung i förrymda burfåglar som släpptes eller rymt
+    från fångenskap. Arten är högljudd och säger ifrån sig gärna med skrikiga läten.
+    Den är aktiv och rörig, ofta synlig när den söker föda eller flyger i grupp.
+
+
+    Munkparakiten är anpassningsbar och trivs både i urbana och rurala miljöer. Den
+    föredrar träd där den kan bygga sina karakteristiska stora bosamhällen av kvistar,
+    något som gör fågeln ganska påträngande på vissa platser där den introducerats.'
+  en: '# Monk Parakeet
+
+
+    The monk parakeet is a small to medium parrot with distinctive plumage: bright
+    green upperparts contrasting with a greyish breast and greenish-yellow underparts.
+    It originates from the temperate to subtropical regions of South America, where
+    it inhabits open woodlands and grasslands. The species is highly social and typically
+    seen in flocks, often perching conspicuously in trees or on utility structures.
+    It has a loud, distinctive call that is easily recognizable once learned.
+
+
+    In recent decades, monk parakeets have established self-sustaining feral populations
+    in many temperate regions, particularly in North America and Europe, where escaped
+    or released birds have adapted remarkably well to urban and suburban environments.
+    These introduced populations are particularly successful in areas with climates
+    similar to their native range. In both native and introduced ranges, the species
+    is known for constructing large communal stick nests in trees, a behavior unusual
+    among parrots. With a typical lifespan of around 15 years, the monk parakeet is
+    becoming an increasingly familiar sight in towns and cities outside its original
+    range, though it remains a common bird throughout South America.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten behandlar enbart munkparakitens naturliga utbredning
+    i Sydamerika och dess etablering från flyktade burfåglar världen över. Det finns
+    ingen information om migrationsvanor, övervintringsområden eller ankomsttider
+    för Skandinavien eller Nordeuropa. Munkparakiten är en tropisk art som inte naturligt
+    förekommer i norra Europa, och eventuella förekomster här är baserade på undflydda
+    fåglar utan regelbundna migrationsvanor.'
+  en: '# Monk Parakeet in Northern Europe
+
+
+    The Monk Parakeet is not a naturally occurring species in Scandinavia or Northern
+    Europe. However, self-sustaining feral populations have become established in
+    several European locations, including parts of southern Europe and some urban
+    areas further north. These populations originate from escaped or released cage
+    birds. In Northern Europe, any sightings would represent vagrants or individuals
+    from nearby feral populations rather than regular migrants. The species is native
+    to South America and shows no natural migration pattern to Scandinavian regions.
+    Its presence in Europe depends entirely on human-mediated populations that have
+    escaped captivity.'
+image_refs:
+- role: hero
+  path: Q724987/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Raf24~commonswiki&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Raf24~commonswiki (page does not exist)">Raf24~commonswiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Myiopsitta monachus, Barcelona.jpg
+  commons_filename: Myiopsitta monachus, Barcelona.jpg
+- role: secondary
+  path: Q724987/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/25897810@N00">David
+    Berkowitz</a> from New York, NY, USA
+  source_url: https://commons.wikimedia.org/wiki/File:Myiopsitta monachus -Santiago,
+    Chile -nest-8 (2).jpg
+  commons_filename: Myiopsitta monachus -Santiago, Chile -nest-8 (2).jpg
+- role: secondary
+  path: Q724987/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Patriziastrippoli&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Patriziastrippoli (page does not exist)">Patrizia Strippoli</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Myiopsitta monachus, feral,
+    Italy.jpg
+  commons_filename: Myiopsitta monachus, feral, Italy.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:38.795846+00:00'
+sources:
+  wikipedia_sv_revision: '58208254'
+  wikipedia_en_revision: '1350714825'
+  claude_model: claude-haiku-4-5-20251001

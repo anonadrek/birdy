@@ -1,0 +1,123 @@
+id: Q509455
+scientific_name: Pycnonotus cafer
+taxonomy:
+  family: Pycnonotidae
+  family_sv: Bulbyler
+  genus: Pycnonotus
+  ioc_order: Passeriformes
+names:
+  sv: Rödgumpad bulbyl
+  en: Red-vented Bulbul
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödgumpad bulbyl
+
+
+    Rödgumpad bulbyl är en asiatisk tätting som tillhör familjen bulbyler. Arten härstammar
+    från västra Pakistan och förekommer naturligt från Indien och Sri Lanka till sydvästra
+    Kina och Burma. Denna framgångsrik art har även introducerats till olika delar
+    av världen.
+
+
+    Beståndet av rödgumpad bulbyl är livskraftigt och arten ökar i antal både inom
+    sitt naturliga utbredningsområde och på introduceringslokaler. Det är en adaptiv
+    art som trivs väl i olika miljöer och har visat sig kunna etablera sig framgångsrikt
+    på nya håll.'
+  en: '# Red-vented Bulbul
+
+
+    The red-vented bulbul is a common bulbul found across South Asia and extending
+    into Burma. It is a resident breeder in these regions, maintaining populations
+    year-round. The species is characterized by its distinctive red vent—the feathers
+    beneath the tail—which gives it its common name. It displays typical bulbul features
+    with a medium-sized, compact body and alert posture.
+
+
+    This bulbul is highly adaptable and social, often seen in small groups or flocks.
+    It is an active forager, gleaning insects and fruits from vegetation and lower
+    canopy levels. The species produces loud, distinctive calls that are characteristic
+    of bulbuls, contributing to its presence in gardens and cultivated areas where
+    it thrives.
+
+
+    Unfortunately, the red-vented bulbul is one of the world''s most invasive bird
+    species, having established populations far beyond its native range, including
+    in Argentina, Fiji, Tonga, and parts of the Pacific Islands. This invasive success
+    reflects its adaptability to varied habitats and generalist feeding ecology, making
+    it a conservation concern in regions where it has been introduced. The species
+    demonstrates the capacity of certain passerines to become problematic when introduced
+    to new environments.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.'
+  en: '# Red-vented Bulbul in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Red-vented Bulbul is a resident breeder native to South Asia and does not
+    naturally occur in Scandinavia or Northern Europe. While the species has successfully
+    established populations in various parts of the world through human introduction,
+    including Argentina, Fiji, and the USA, there is no documented evidence of its
+    occurrence in Northern European regions. Therefore, no migration patterns or seasonal
+    occurrence data exist for this species in Scandinavia.'
+image_refs:
+- role: hero
+  path: Q509455/hero.jpg
+  width: 2400
+  height: 1656
+  license: CC BY 2.0
+  author: yimhafiz
+  source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus cafer young.jpg
+  commons_filename: Pycnonotus cafer young.jpg
+- role: secondary
+  path: Q509455/secondary-1.jpg
+  width: 1800
+  height: 1256
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Farhannabilfn&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Farhannabilfn (page does not exist)">Farhannabilfn</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-vented bulbul (Pycnonotus
+    cafer), Bogura (8500744810819233572).jpg
+  commons_filename: Red-vented bulbul (Pycnonotus cafer), Bogura (8500744810819233572).jpg
+- role: secondary
+  path: Q509455/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Senthiaathavan&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Senthiaathavan (page does not exist)">Senthi Aathavan
+    Senthilverl</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-vented bulbul (Pycnonotus
+    cafer) 01.jpg
+  commons_filename: Red-vented bulbul (Pycnonotus cafer) 01.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:50:14.445136+00:00'
+sources:
+  wikipedia_sv_revision: '55885218'
+  wikipedia_en_revision: '1330584617'
+  claude_model: claude-haiku-4-5-20251001

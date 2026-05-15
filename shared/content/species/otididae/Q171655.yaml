@@ -1,0 +1,135 @@
+id: Q171655
+scientific_name: Otis tarda
+taxonomy:
+  family: Otididae
+  family_sv: Trappar
+  genus: Otis
+  ioc_order: Otidiformes
+names:
+  sv: Stortrapp
+  en: Great Bustard
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Stortrapp
+
+
+    Stortrappen är Europas tyngsta naturligt frilevande fågel och en av världens tyngsta
+    flygande fågelarter. Det är en stor, robust fågel som tillhör familjen trappar.
+    Hanen är betydligt större än honan och kan väga upp till 16 kilogram, medan honan
+    är mindre och lättare.
+
+
+    Stortrappen är en markfågel som föredrar öppna, gräsbevuxna landskap såsom stäpper
+    och jordbruksmark. Det är en försiktig och skygg fågel som helst håller sig på
+    marken, där det söker föda bestående av växter, insekter och små djur. Under häckningssäsongen
+    utför hanen imponerande baltsvisningar för att attrahera honor.
+
+
+    Idag är stortrappen utbredd över stora delar av Europa och Asien, men bestånden
+    har minskat betydligt på grund av habitatförlust och människans påverkan. Arten
+    är känd för sitt diskreta uppförande och kan vara svår att observera i sitt naturliga
+    habitat, särskilt då det föredrar att stanna på marken snarare än att ta till
+    vingarna.'
+  en: '# Great Bustard
+
+
+    The Great Bustard is the sole living member of its genus and belongs to the bustard
+    family. It is a large, heavily built bird with a distinctive appearance marked
+    by contrasting plumage. Males are notably larger than females and display impressive
+    courtship behaviours on open ground, fanning their tail feathers and inflating
+    their throat pouches in elaborate displays to attract mates.
+
+
+    This species inhabits open grasslands and farmland environments where it can move
+    freely across expansive terrain. It forages on the ground for plant matter and
+    invertebrates. The bird''s call is typically low and booming, particularly during
+    breeding season. European populations are largely resident year-round, while Asian
+    populations undertake seasonal migrations southward during winter months.
+
+
+    The Great Bustard is listed as Endangered, with conservation status having been
+    classified as Vulnerable since 1996. The species breeds across a wide range extending
+    from northern Morocco through South and Central Europe into temperate Central
+    and East Asia. Habitat loss and agricultural intensification have significantly
+    impacted populations, making protection of remaining grassland and open farmland
+    crucial for the species'' survival.'
+migration:
+  sv: 'Stortrappen är huvudsakligen en stationär art i Skandinavien och Nordeuropa,
+    även om populationerna är mycket utspridda och begränsade. Arten övervintrar i
+    sitt utbredningsområde och saknar omfattande migrationsvanor jämfört med många
+    andra fågelarter. Där stortrappen förekommer året runt, som i vissa delar av Centraleuropa,
+    stannar individerna relativt stationärt. I Skandinavien är arten mycket sällsynt
+    eller frånvarande idag, men historiskt kunde den förekomma under särskilt gynnsamma
+    förhållanden.
+
+
+    Migrationsdata saknas för denna art när det gäller regelbundna säsongsvandringarna
+    i Skandinavien, då populationerna här är mycket små eller praktiskt taget frånvarande.
+    Arten är beroende av öppna stäppliknande landskap, vilket gör att den saknar större
+    betydelse för nordeuropeisk fågelmigration.'
+  en: '# Great Bustard in Scandinavia/Northern Europe
+
+
+    The Great Bustard is essentially absent from Scandinavia and Northern Europe as
+    a regular occurrence. The species'' European range is primarily centered in South
+    and Central Europe, with populations extending eastward into temperate Central
+    and East Asia. European populations of Great Bustards are largely resident, meaning
+    they do not undertake significant seasonal migrations. However, Asian populations
+    migrate southward during winter months. The species has never established itself
+    as a breeding or wintering population in Scandinavian regions, making it an extremely
+    rare vagrant to Northern Europe, if encountered at all in this geographic area.'
+image_refs:
+- role: hero
+  path: Q171655/hero.jpg
+  width: 2400
+  height: 1443
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Otis tarda 01.jpg
+  commons_filename: Otis tarda 01.jpg
+- role: secondary
+  path: Q171655/secondary-1.jpg
+  width: 1800
+  height: 636
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Otis tarda flight.jpg
+  commons_filename: Otis tarda flight.jpg
+- role: secondary
+  path: Q171655/secondary-2.jpg
+  width: 1800
+  height: 1166
+  license: CC0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Henderl&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Henderl (page does not exist)">Nicolas Weghaupt</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Otis tarda 02.jpg
+  commons_filename: Otis tarda 02.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:30.444459+00:00'
+sources:
+  wikipedia_sv_revision: '56064575'
+  wikipedia_en_revision: '1344469296'
+  claude_model: claude-haiku-4-5-20251001

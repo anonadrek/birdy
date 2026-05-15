@@ -1,0 +1,122 @@
+id: Q1060466
+scientific_name: Foudia madagascariensis
+taxonomy:
+  family: Ploceidae
+  family_sv: Vävare
+  genus: Foudia
+  ioc_order: Passeriformes
+names:
+  sv: Rödfody
+  en: Red Fody
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödfody
+
+
+    Rödfody är en liten tätting som tillhör familjen vävare. Arten är ursprunglig
+    från Madagaskar men har introducerats till många olika områden världen över och
+    är nu etablerad på flera platser.
+
+
+    Hanen är karakteristisk med sin glödande röda fjäderdräkt, särskilt under häckningstiden.
+    Honan är däremot mycket mindre färgglad och har en gråbrun färgtoning. Rödfody
+    är en aktiv och social fågel som ofta ses i mindre flockar. Den födosöker på marken
+    eller i låg växtlighet och äter huvudsakligen frön och insekter.
+
+
+    Arten trivs väl i öppna och halvöppna habitat med spridd växtlighet. Den är anpassningsbar
+    och kan förekomma i både naturliga och människoskapade miljöer.'
+  en: '# Red Fody
+
+
+    The red fody is a small weaver native to Madagascar and now found on various islands
+    across the Indian Ocean following human introductions. It remains abundant throughout
+    its range and faces no conservation concerns.
+
+
+    This compact bird displays striking red plumage, particularly in males, which
+    makes it easily identifiable in its habitat. Females are more subdued in coloration.
+    The species is highly social and often seen in flocks, particularly outside the
+    breeding season. It forages actively for seeds and insects, moving restlessly
+    through vegetation with characteristic jerky movements typical of weavers.
+
+
+    The red fody''s call is a series of sharp, chirping notes, often delivered from
+    exposed perches or in flight. Its breeding behaviour includes the construction
+    of distinctive woven nests, a hallmark of the weaver family. The species adapts
+    well to human-modified landscapes and gardens, contributing to its success and
+    widespread distribution beyond its native range.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Red Fody är en ursprunglig madagaskisk art som inte naturligt förekommer i Skandinavien
+    eller Nordeuropa. Den källtext som tillhandahölls innehåller ingen information
+    om migration eller säsongsförekomst i vår region. Arten är en stationär invånare
+    på Madagaskar och förekommer endast i andra världsdelar där den introducerats
+    av människan, men inte i naturliga populationer i Skandinavien eller Nordeuropa.'
+  en: '# Red Fody (Foudia madagascariensis) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Red Fody is native to Madagascar and has been introduced to various islands
+    in the Indian Ocean. There is no documented occurrence or established population
+    of this species in Scandinavia or Northern Europe. As a tropical bird with a restricted
+    range limited to Madagascar and certain Indian Ocean islands, it does not migrate
+    to or occur in northern European regions during any season.'
+image_refs:
+- role: hero
+  path: Q1060466/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: Marion Schneider &amp; Christoph Aistleitner
+  source_url: https://commons.wikimedia.org/wiki/File:Madagascar Fody - Foudia madagascariensis.jpg
+  commons_filename: Madagascar Fody - Foudia madagascariensis.jpg
+- role: secondary
+  path: Q1060466/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: Public domain
+  author: Marion Schneider &amp; Christoph Aistleitner
+  source_url: https://commons.wikimedia.org/wiki/File:Madagascar Fody - Foudia madagascariensis
+    (Weibchen).jpg
+  commons_filename: Madagascar Fody - Foudia madagascariensis (Weibchen).jpg
+- role: secondary
+  path: Q1060466/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: Public domain
+  author: Marion Schneider &amp; Christoph Aistleitner
+  source_url: https://commons.wikimedia.org/wiki/File:Madagascar Fody - Foudia madagascariensis
+    3.jpg
+  commons_filename: Madagascar Fody - Foudia madagascariensis 3.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:50:36.340771+00:00'
+sources:
+  wikipedia_sv_revision: '55717753'
+  wikipedia_en_revision: '1314588824'
+  claude_model: claude-haiku-4-5-20251001

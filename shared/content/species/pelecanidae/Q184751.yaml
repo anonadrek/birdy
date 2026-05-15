@@ -1,0 +1,128 @@
+id: Q184751
+scientific_name: Pelecanus crispus
+taxonomy:
+  family: Pelecanidae
+  family_sv: Pelikaner
+  genus: pelican
+  ioc_order: Pelecaniformes
+names:
+  sv: Krushuvad pelikan
+  en: Dalmatian Pelican
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Krushuvad pelikan
+
+
+    Krushuvad pelikan är en stor vattenlevande fågel som tillhör familjen pelikaner.
+    Det är en av världens största pelikanarter med en imponerande vingspännvidd. Fågeln
+    har vit eller gråvit fjäderdräkt och karakteriseras av sin stora, långsträckta
+    näbb med en stor hakvåt under, vilket är typiskt för pelikaner. Under häckningssäsongen
+    kan det utveckla en karakteristisk krusning på huvudet och övre halsen, från vilket
+    namnet kommer.
+
+
+    Krushuvad pelikan förekommer främst i större vattendrag, sjöar och kustnära områden
+    från östra Medelhavsregionen österut till Kina. Det är en fågel som lever i mindre
+    kolonier och är starkt beroende av områden med rik fisktillgång. Under flygning
+    framstår det som en imponerande silhuett med sitt stora näbb och vida vingar.
+    Arten är ofta social och ses ofta i grupper, särskilt vid födosökning där det
+    förlitar sig på att dyka och fånga fisk tillsammans med andra pelikaner.
+
+
+    Krushuvad pelikan är relativt sällsynt inom sitt utbredningsområde och är klassificerad
+    som sårbar på grund av habitatverlust och förlust av fiskbestånd.'
+  en: '# Dalmatian Pelican
+
+
+    The Dalmatian pelican is the largest member of the pelican family and among the
+    heaviest flying birds in the world. It boasts an impressive wingspan of 2.7 to
+    3.2 metres, making it one of the largest soaring birds. Despite its considerable
+    size, it demonstrates graceful, buoyant flight and typically travels in synchronised
+    flocks, often moving in coordinated patterns across the sky.
+
+
+    This species inhabits a vast range across Central Eurasia, extending from the
+    eastern Mediterranean westward to the Taiwan Strait in the east, and from the
+    Persian Gulf southward to Siberia in the north. It is a short-to-medium-distance
+    migrant, moving between breeding grounds and overwintering areas with seasonal
+    changes. The pelican''s large range encompasses diverse aquatic habitats, including
+    coastal waters, large lakes, and river deltas where it hunts for fish.
+
+
+    The plumage is predominantly white with pale grey markings on the wings. It shares
+    the characteristic large bill and throat pouch typical of pelicans, which it uses
+    to catch fish while diving or surface-feeding. The species is generally silent,
+    though it occasionally produces guttural sounds at breeding colonies.'
+migration:
+  sv: '**Migrationsdata saknas för denna art.**
+
+
+    En: Migration data unavailable for this species.'
+  en: '# Dalmatian Pelican in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Dalmatian Pelican''s range spans Central Eurasia from the eastern Mediterranean
+    to the Taiwan Strait, but this distribution does not include Scandinavia or Northern
+    Europe. While the species is a short-to-medium-distance migrant between breeding
+    and overwintering areas, the provided source text contains no specific information
+    about occurrence in Scandinavian or Northern European regions. Therefore, detailed
+    migration patterns for this area cannot be documented.'
+image_refs:
+- role: hero
+  path: Q184751/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: Marion Schneider &amp; Christoph Aistleitner    Contact:<a href="//commons.wikimedia.org/wiki/User:Mediocrity"
+    title="User:Mediocrity">Mediocrity</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pelecanus crispus Herberstein.jpg
+  commons_filename: Pelecanus crispus Herberstein.jpg
+- role: secondary
+  path: Q184751/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: Public domain
+  author: Marion Schneider &amp; Christoph Aistleitner    Contact:<a href="//commons.wikimedia.org/wiki/User:Mediocrity"
+    title="User:Mediocrity">Mediocrity</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pelecanus crispus Herberstein
+    2.jpg
+  commons_filename: Pelecanus crispus Herberstein 2.jpg
+- role: secondary
+  path: Q184751/secondary-2.jpg
+  width: 1800
+  height: 1243
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jebulon" title="User:Jebulon">Jebulon</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pelecanus crispus mating tiergarten
+    Schönbrunn.jpg
+  commons_filename: Pelecanus crispus mating tiergarten Schönbrunn.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:08.722103+00:00'
+sources:
+  wikipedia_sv_revision: '58698687'
+  wikipedia_en_revision: '1348391787'
+  claude_model: claude-haiku-4-5-20251001

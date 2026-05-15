@@ -1,0 +1,96 @@
+id: Q1300963
+scientific_name: Euplectes afer
+taxonomy:
+  family: Ploceidae
+  family_sv: Vävare
+  genus: Euplectes
+  ioc_order: Passeriformes
+names:
+  sv: Gulkronad eldvävare
+  en: Yellow-crowned Bishop
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Yellow-crowned Bishop
+
+
+    The Yellow-crowned Bishop is a striking African weaver with dramatic seasonal
+    plumage changes. During breeding season, males display a distinctive appearance
+    with bright yellow and black plumage, while females retain predominantly brown
+    coloration year-round. This sexual dimorphism is particularly pronounced in breeding
+    males, making them unmistakable during this period. Outside the breeding season,
+    males become less vibrant, resembling females more closely.
+
+
+    These birds are found across Africa south of the Sahara in suitable habitats,
+    typically in grasslands and reed beds. They are social birds often seen in small
+    groups, particularly when feeding. Four subspecies are recognized, distributed
+    across different regions of the African continent, each showing slight variations
+    in plumage intensity and distribution patterns.
+
+
+    The species'' striking breeding plumage and distinctive appearance make it a notable
+    sight for birdwatchers during the appropriate season. Their association with wetland
+    and grassland habitats means they are most readily observed in these environments,
+    where their seasonal transformations can be particularly dramatic and visible.'
+migration:
+  sv: ''
+  en: Migration data unavailable for this species.
+image_refs:
+- role: hero
+  path: Q1300963/hero.jpg
+  width: 2400
+  height: 1535
+  license: Public domain
+  author: <bdi><a href="https://en.wikipedia.org/wiki/en:Ann_Lee_(illustrator)" class="extiw"
+    title="w:en:Ann Lee (illustrator)"><span title="British scientific illustrator,
+    botanical artist and painter (1753-1790)">Ann Lee</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Euplectes afer (Gmelin) yellow-crowned
+    bishop and Phonipara canora (Gmelin) Cuban grassquit - Ann Lee - 107-1973-10.jpg
+  commons_filename: Euplectes afer (Gmelin) yellow-crowned bishop and Phonipara canora
+    (Gmelin) Cuban grassquit - Ann Lee - 107-1973-10.jpg
+- role: secondary
+  path: Q1300963/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Gzen92" title="User:Gzen92">Gzen92</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Travailleur à tête jaune (Euplectes
+    afer).jpg
+  commons_filename: Travailleur à tête jaune (Euplectes afer).jpg
+- role: secondary
+  path: Q1300963/secondary-2.jpg
+  width: 1800
+  height: 1383
+  license: CC BY-SA 2.0
+  author: Bernard DUPONT
+  source_url: https://commons.wikimedia.org/wiki/File:Yellow-crowned Bishop (Euplectes
+    afer) male.jpg
+  commons_filename: Yellow-crowned Bishop (Euplectes afer) male.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:51:07.408448+00:00'
+sources:
+  wikipedia_sv_revision: '58684712'
+  wikipedia_en_revision: '1334397832'
+  claude_model: claude-haiku-4-5-20251001

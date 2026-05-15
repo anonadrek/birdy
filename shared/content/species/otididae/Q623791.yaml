@@ -1,0 +1,102 @@
+id: Q623791
+scientific_name: Ardeotis arabs
+taxonomy:
+  family: Otididae
+  family_sv: Trappar
+  genus: Ardeotis
+  ioc_order: Otidiformes
+names:
+  sv: Arabtrapp
+  en: Arabian Bustard
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Arabtrapp
+
+
+    Arabtrapp är en större fågel i trappfamiljen som förekommer i ett band söder om
+    Sahara, från Mauretanien till Somalia, samt på Arabiska halvön i Jemen. Arten
+    är huvudsakligen afrikansko, men dess förekomst sträcker sig även till Mellanöstern.
+
+
+    Arten karakteriseras av sin imponerande storlek och kraftiga bygnad typisk för
+    trappar. Som många trappar är den anpassad för livet i öppna, halvöppen terräng
+    där den kan röra sig på marken med långsamma, måtfulla steg.
+
+
+    Arabtrappen står inför utmaningar i sitt bestånd. IUCN listar arten som nära hotad
+    eftersom den minskar i antal på grund av två huvudsakliga hot: jakt och habitatförstörelse.
+    Dessa faktorer påverkar populationen negativt över dess utbredningsområde och
+    utgör ett växande naturvårdsproblem för arten.'
+  en: '# Arabian Bustard
+
+
+    The Arabian bustard is a large, robust bustard belonging to the genus Ardeotis,
+    characterized by the substantial body size typical of this group. It exhibits
+    the typical bustard morphology, with a heavily built frame suited to its terrestrial
+    lifestyle.
+
+
+    This species inhabits semi-arid and arid regions, favoring open grasslands and
+    sparse scrubland where it can move easily on the ground. It is found across the
+    Sahel region of Africa and in southwestern Arabia, where it ranges through suitable
+    habitat. The Arabian bustard remains relatively little studied, and many details
+    of its behavior and vocalizations are not widely documented. Like other bustards,
+    it is primarily terrestrial, spending most of its time on the ground rather than
+    in flight.
+
+
+    The species appears to be fairly typical within its genus in terms of ecology
+    and general behavior patterns, though comprehensive information about its specific
+    call characteristics and detailed behavioral displays remains limited in popular
+    literature. It represents an interesting member of the bustard family, adapted
+    to the harsh, open environments it inhabits.'
+migration:
+  sv: '# Arabtrapp - Förekomst i Skandinavien/Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Arabtrappen är en huvudsakligen afrikansk fågel som naturligt förekommer söder
+    om Sahara från Mauretanien till Somalia, samt på Arabiska halvön i Jemen. Arten
+    förekommer inte som regel i Skandinavien eller Nordeuropa och finns därför inga
+    etablerade migrationsdata för denna region.'
+  en: '# Arabian Bustard (Ardeotis arabs) – Migration and Occurrence in Scandinavia/Northern
+    Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Arabian bustard is a resident species of the Sahel region in Africa and southwestern
+    Arabia, with no documented occurrence in Scandinavia or Northern Europe. This
+    species does not migrate to or through Scandinavian territories and has no established
+    presence in the region throughout the year.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:55.060707+00:00'
+sources:
+  wikipedia_sv_revision: '55499772'
+  wikipedia_en_revision: '1352950213'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,129 @@
+id: Q208060
+scientific_name: Psittacula krameri
+taxonomy:
+  family: Psittaculidae
+  family_sv: Östpapegojor
+  genus: Psittacula
+  ioc_order: Psittaciformes
+names:
+  sv: Halsbandsparakit
+  en: Rose-ringed Parakeet
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Halsbandsparakit
+
+
+    Halsbandsparakit är en medelstor papegoja med grön grundfärg och en karakteristisk
+    svart och rosa halsband hos hannen, medan honan saknar eller bara har svag halsbandsteckning.
+    Det är en vacker och iögonfallande fågel som ofta ses i mindre eller större flockar.
+
+
+    Arten förekommer naturligt i Afrika och Asien, men har genom människans försorg
+    etablerat sig i många europeiska länder samt på andra platser världen över. Den
+    är framför allt aktiv under tidig morgon och sen eftermiddag, då den fladdrar
+    mellan matplatser och sovplatser med karakteristisk vingslag. Fågeln är högljudd
+    och ger ifrån sig skrikiga, metalliska läten som hörs långt bort.
+
+
+    Halsbandsparakiten är en flexibel art som trivs väl i urbana miljöer och kan äta
+    både naturlig mat från träd och frukter från odlingar. Den bygger bo i håligheter
+    i träd eller byggnader och är allt oftare en etablerad del av stadsekosystemen
+    på många platser.'
+  en: '# Rose-ringed Parakeet
+
+
+    The rose-ringed parakeet is a medium-sized parrot recognizable by its distinctive
+    appearance. Males display a striking black and rose-pink ring around the neck,
+    while females lack this prominent marking, making them slightly more subtle in
+    appearance. The bird''s predominantly green plumage provides excellent camouflage
+    in foliage.
+
+
+    Originally native to tropical regions of northern Africa and the Indian subcontinent,
+    the rose-ringed parakeet has become established far beyond its natural range.
+    Escaped and released pet birds have founded feral populations across numerous
+    regions worldwide, making it one of the most successful introduced parrot species.
+    These adaptable birds thrive in both urban and rural environments.
+
+
+    The species is highly vocal and social, often seen in noisy flocks, particularly
+    during dawn and dusk. It feeds on fruits, seeds, and vegetation. Its loud, distinctive
+    calls—a combination of screeches and harsh notes—make it conspicuous even when
+    hidden in trees. The parakeet''s success as an introduced species reflects its
+    intelligence, adaptability, and ability to exploit diverse food sources and habitats.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller ingen information om förekomst, migration
+    eller övervintring i Skandinavien eller Nordeuropa. Texten nämner endast att arten
+    har ett naturligt utbredningsområde i Afrika och Asien, samt att den introducerats
+    till olika länder, men ger inga specifika uppgifter om säsongsväxlingar eller
+    migrationsmönster för regionen.'
+  en: '# Rose-ringed Parakeet in Scandinavia/Northern Europe
+
+
+    The rose-ringed parakeet is not a naturally occurring species in Scandinavia or
+    Northern Europe. However, feral populations derived from escaped or released cage
+    birds have become established in parts of Western and Central Europe, particularly
+    in urban areas. In Scandinavia, sightings remain extremely rare and irregular,
+    with occasional vagrants or escaped individuals reported, but no established breeding
+    populations. These birds require warm climates and are poorly adapted to the cold
+    winters of Northern Europe, making permanent colonization unlikely in this region.'
+image_refs:
+- role: hero
+  path: Q208060/hero.jpg
+  width: 1800
+  height: 2400
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rose ringed parakeet(Psittacula
+    krameri) 9.jpg
+  commons_filename: Rose ringed parakeet(Psittacula krameri) 9.jpg
+- role: secondary
+  path: Q208060/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Afsarnayakkan" title="User:Afsarnayakkan">Afsarnayakkan</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rose ringed parakeet ( Psittacula
+    krameri) മോതിര തത്ത , നാട്ടു തത്ത 5.jpg
+  commons_filename: Rose ringed parakeet ( Psittacula krameri) മോതിര തത്ത , നാട്ടു
+    തത്ത 5.jpg
+- role: secondary
+  path: Q208060/secondary-2.jpg
+  width: 1350
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Stephan_Sprinz" title="User:Stephan
+    Sprinz">Stephan Sprinz</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Halsbandsittich (Psittacula
+    krameri) im Garten.jpg
+  commons_filename: Halsbandsittich (Psittacula krameri) im Garten.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:40.524641+00:00'
+sources:
+  wikipedia_sv_revision: '56773283'
+  wikipedia_en_revision: '1350115575'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,96 @@
+id: Q998572
+scientific_name: Ploceus melanocephalus
+taxonomy:
+  family: Ploceidae
+  family_sv: Vävare
+  genus: Ploceus
+  ioc_order: Passeriformes
+names:
+  sv: Svarthuvad vävare
+  en: Black-headed Weaver
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svarthuvad vävare
+
+
+    Svarthuvad vävare är en tätting som tillhör familjen vävare och förekommer naturligt
+    i Afrika söder om Sahara. Arten har även introducerats till södra Portugal, där
+    en etablerad frilevande population nu finns.
+
+
+    Arten är en mindre fågel med karakteristiska färgteckning. Det är en medlem av
+    vävarfamiljen, som är känd för sin skickliga nästvävning. Svarthuvad vävare är
+    framför allt en afriansk art, men dess närvaro i Portugal visar hur vissa fågelarter
+    kan etablera sig långt utanför sitt ursprungliga utbredningsområde när de kommer
+    till nya miljöer.
+
+
+    Arten är anpassad till sitt naturliga habitat i Afrika söder om Sahara, där den
+    förmodligen förekommer i olika typer av vegetationsmiljöer typiska för vävare.
+    Som många medlemmar av vävarfamiljen är det en social fågel som ofta förekommer
+    i mindre eller större grupper.'
+  en: '# Black-headed Weaver
+
+
+    The black-headed weaver is a small weaver species found in damp tropical habitats
+    across Africa. It is a resident breeder, meaning populations remain year-round
+    in their territories rather than migrating. The species is also known as the yellow-backed
+    weaver, a reference to the coloring visible on its back.
+
+
+    This weaver frequents wetland areas and other damp environments where it can find
+    suitable nesting sites and food. Like other members of the weaver family, it is
+    known for constructing intricate woven nests, though specific details about its
+    appearance, vocalizations, and detailed behavior patterns would benefit from field
+    observation or more specialized ornithological sources.
+
+
+    The species represents one of Africa''s diverse weaver populations adapted to
+    tropical wetland ecosystems.'
+migration:
+  sv: '# Svarthuvad vävare - Förekomst i Nordeuropa
+
+
+    Migrationsdata saknas för denna art.
+
+
+    Svarthuvad vävare är en afrikansk art som inte naturligt förekommer i Skandinavien
+    eller övriga Nordeuropa. Den förekommer enbart i Afrika söder om Sahara, med undantag
+    för en införd population i södra Portugal. Det finns ingen etablerad migration
+    till eller genom nordeuropeiska regioner, och arten uppträder inte som regelbunden
+    flyttfågel i området.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides no information about this bird''s occurrence in Scandinavia
+    or Northern Europe, nor does it contain any migration details. The Black-headed
+    Weaver is described only as a resident breeder in tropical Africa, with no mention
+    of movements, seasonal occurrence, or presence outside its African range.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:36.010816+00:00'
+sources:
+  wikipedia_sv_revision: '55739493'
+  wikipedia_en_revision: '1315114157'
+  claude_model: claude-haiku-4-5-20251001

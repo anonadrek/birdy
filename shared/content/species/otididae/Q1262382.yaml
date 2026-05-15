@@ -1,0 +1,120 @@
+id: Q1262382
+scientific_name: Chlamydotis macqueenii
+taxonomy:
+  family: Otididae
+  family_sv: Trappar
+  genus: Chlamydotis
+  ioc_order: Otidiformes
+names:
+  sv: Kragtrapp
+  en: Asian Houbara
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Kragtrapp
+
+
+    Kragtrappen är en stor trappart från västra Asien som förekommer från Egypten
+    österut till Kina. Arten tillhör familjen trappar och är närmast släkt med ökentrappen,
+    som tidigare betraktades som samma art.
+
+
+    Arten är klassificerad som sårbar enligt IUCN på grund av kraftigt minskande populationer.
+    Minskningen orsakas framför allt av förföljelse och förstöring av habitatet. Detta
+    gör kragtrappen till en allvarligt hotad fågel som kräver bevarandebemödanden
+    för att säkra överlevnaden.'
+  en: '# Asian Houbara
+
+
+    The Asian houbara is a large bustard inhabiting desert and steppe regions across
+    Asia, from the Sinai Peninsula through Iran to Kazakhstan and Mongolia. It is
+    a partial latitudinal migrant, moving seasonally within its range. Historically,
+    vagrants occasionally wandered as far west as Great Britain, though this remains
+    rare.
+
+
+    This species shares the bustard family''s characteristic robust build and ground-dwelling
+    habits. It resembles its African cousin, the African houbara, with which it forms
+    the genus Chlamydotis. The two species were once considered subspecies of a single
+    bird but are now recognized as distinct.
+
+
+    Conservation concerns have grown significantly, with populations declining 20–50%
+    between 1984 and 2004. Hunting and habitat loss from changing land-use practices
+    have been the primary drivers of this decline. The Asian houbara remains vulnerable
+    to these ongoing pressures across its arid range.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Kragtrapp är en art som förekommer i västra Asien från Egypten till Kina, och
+    det tillhandahållna källmaterialet innehåller ingen information om denna arts
+    migrations- eller övervintringsmönster i Skandinavien eller Nordeuropa. Arten
+    är inte känd som regelbunden förekomst i dessa regioner.'
+  en: '# Asian Houbara in Northern Europe
+
+
+    The Asian houbara is not a regular occurrence in Scandinavia or Northern Europe.
+    This large bustard species is native to desert and steppe regions of Asia, from
+    the Sinai Peninsula eastward through Iran, Kazakhstan, and Mongolia. While the
+    species is described as a partial latitudinal migrant, its range does not extend
+    into Scandinavia or Northern Europe under normal circumstances. Historical records
+    indicate that vagrants were occasionally found as far west as Great Britain during
+    the 19th century, but such sightings would be extremely rare exceptional occurrences
+    rather than regular migratory movements.'
+image_refs:
+- role: hero
+  path: Q1262382/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: Saudi press Agency (SPA)
+  source_url: https://commons.wikimedia.org/wiki/File:Houbara Bustard (Chlamydotis
+    macqueenii), Saudi Arabia (2023).jpg
+  commons_filename: Houbara Bustard (Chlamydotis macqueenii), Saudi Arabia (2023).jpg
+- role: secondary
+  path: Q1262382/secondary-1.jpg
+  width: 1800
+  height: 1014
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Cedricguppy" title="User:Cedricguppy">Cedricguppy</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Chlamydotis macqueenii - Outarde
+    de Macqueen - Outarde houbara d-asie - cedric loury - wiki1.JPG
+  commons_filename: Chlamydotis macqueenii - Outarde de Macqueen - Outarde houbara
+    d-asie - cedric loury - wiki1.JPG
+- role: secondary
+  path: Q1262382/secondary-2.jpg
+  width: 1800
+  height: 1014
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Cedricguppy" title="User:Cedricguppy">Cedricguppy</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Chlamydotis macqueenii - Outarde
+    de Macqueen - Outarde houbara d-asie - cedric loury - wiki12.JPG
+  commons_filename: Chlamydotis macqueenii - Outarde de Macqueen - Outarde houbara
+    d-asie - cedric loury - wiki12.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:53:39.718410+00:00'
+sources:
+  wikipedia_sv_revision: '55628905'
+  wikipedia_en_revision: '1354263777'
+  claude_model: claude-haiku-4-5-20251001

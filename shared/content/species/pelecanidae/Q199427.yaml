@@ -1,0 +1,107 @@
+id: Q199427
+scientific_name: Pelecanus onocrotalus
+taxonomy:
+  family: Pelecanidae
+  family_sv: Pelikaner
+  genus: pelican
+  ioc_order: Pelecaniformes
+names:
+  sv: Vit pelikan
+  en: Great White Pelican
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Great White Pelican
+
+
+    The great white pelican is one of the largest pelican species, featuring predominantly
+    white plumage with black flight feathers visible when the wings are spread. During
+    breeding season, adults develop subtle peachy or rosy tinges on their plumage,
+    particularly around the head and neck. The bird''s most distinctive feature is
+    its enormous pale bill with a large expandable pouch beneath, used for scooping
+    fish from the water.
+
+
+    These pelicans are highly social birds, often seen in flocks both on the water
+    and in flight. They are strong, buoyant fliers that ride thermal currents with
+    minimal effort. They breed colonially in swamps and shallow lakes across southeastern
+    Europe, Asia, and Africa, nesting on the ground or in trees depending on the habitat.
+    During breeding season, they gather in large congregations where they perform
+    synchronized displays and communal fishing behaviours.
+
+
+    The great white pelican is relatively quiet compared to other water birds, though
+    it produces occasional croaks and grunts, particularly during breeding activities.
+    Outside the breeding season, birds disperse to coastal and inland waterways where
+    fish are abundant, making them fairly nomadic in their distribution patterns.'
+migration:
+  sv: ''
+  en: '# Great White Pelican (Pelecanus onocrotalus) - Occurrence in Scandinavia/Northern
+    Europe
+
+
+    The Great White Pelican is an extremely rare vagrant to Scandinavia and Northern
+    Europe. This species breeds in southeastern Europe, Asia, and Africa, far south
+    of the region''s typical range. While occasional individuals have been recorded
+    in northern European countries during migration periods, these are exceptional
+    sightings rather than regular occurrences. The species does not establish breeding
+    populations or regular wintering grounds in Scandinavian waters. Any observations
+    in the region represent significant ornithological records and are typically documented
+    as rare wanderings during spring or autumn migration, when birds may disperse
+    northward from their core breeding and wintering areas.'
+image_refs:
+- role: hero
+  path: Q199427/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:MartinThoma" title="User:MartinThoma">MartinThoma</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pelecanus-onocrotalus-5.jpg
+  commons_filename: Pelecanus-onocrotalus-5.jpg
+- role: secondary
+  path: Q199427/secondary-1.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20190906 Pelecanus onocrotalus
+    04.jpg
+  commons_filename: 20190906 Pelecanus onocrotalus 04.jpg
+- role: secondary
+  path: Q199427/secondary-2.jpg
+  width: 1800
+  height: 1202
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:FlocciNivis" title="User:FlocciNivis">Flocci
+    Nivis</a>
+  source_url: https://commons.wikimedia.org/wiki/File:20190906 Pelecanus onocrotalus
+    05.jpg
+  commons_filename: 20190906 Pelecanus onocrotalus 05.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:51:23.708387+00:00'
+sources:
+  wikipedia_sv_revision: '55442538'
+  wikipedia_en_revision: '1345133175'
+  claude_model: claude-haiku-4-5-20251001

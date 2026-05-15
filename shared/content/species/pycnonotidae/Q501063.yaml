@@ -1,0 +1,129 @@
+id: Q501063
+scientific_name: Pycnonotus jocosus
+taxonomy:
+  family: Pycnonotidae
+  family_sv: Bulbyler
+  genus: Pycnonotus
+  ioc_order: Passeriformes
+names:
+  sv: Rödörad bulbyl
+  en: Red-whiskered Bulbul
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödörad bulbyl
+
+
+    Rödörad bulbyl är en vanlig asiatisk tätting som tillhör familjen bulbyler. Arten
+    är vida spridd över sin hemregion och har även etablerat sig i frilevande populationer
+    på andra håll i världen.
+
+
+    Arten är känd för sitt livliga temperament och sin högljudda närvaro. Det är en
+    social fågel som ofta ses i mindre grupper bland täta buskar och trädkronor där
+    det söker föda bland löv och frukter. Rödörad bulbyl är aktiv och rörig, med ett
+    utpräglat beteende där den ofta hörs innan den ses.
+
+
+    Fågeln är anpassad till olika typer av växtlighet och trivs väl i både naturliga
+    och urbana miljöer, vilket förklarar dess framgångsrika spridning utanför sitt
+    ursprungliga utbredningsområde.'
+  en: '# Red-whiskered Bulbul
+
+
+    The red-whiskered bulbul is a distinctive passerine with a prominent crest and
+    striking red face patches that give it its name. It is a medium-sized bird that
+    perches conspicuously in open positions on trees and branches, making it relatively
+    easy to observe. Its appearance and bold behaviour make it stand out in its habitat.
+
+
+    This species is a frugivore that feeds primarily on fruits, supplemented with
+    small insects. It has a loud, distinctive call consisting of three or four notes
+    that can be heard distinctly across short to medium distances. The bird is notably
+    vocal and active, drawing attention through both its appearance and sound.
+
+
+    Native to tropical Asia where it is a year-round resident, the red-whiskered bulbul
+    thrives in hill forests and urban gardens. It has proven highly adaptable and
+    has been successfully introduced to many tropical regions worldwide, where established
+    populations have become common. This adaptability makes it one of the more widespread
+    and recognizable bulbul species in introduced ranges as well as its native habitat.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    The source text provides no information about migration patterns, seasonal occurrence,
+    or arrival/departure months for this species in Scandinavia or Northern Europe.
+    Only a general statement about it being a widespread Asian songbird with established
+    feral populations elsewhere is provided, which does not constitute migration data
+    suitable for a bird guide focusing on Scandinavian/Northern European occurrence
+    patterns.'
+  en: '# Red-whiskered Bulbul in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Red-whiskered Bulbul is native to tropical Asia and does not occur naturally
+    in Scandinavia or Northern Europe. While it has been introduced to various tropical
+    regions worldwide, there are no established populations in the Nordic countries
+    or broader Northern European region. This species is a resident bird in its native
+    Asian range and tropical introduced populations, but it has no documented occurrence
+    or migration patterns in Scandinavian or Northern European territories.'
+image_refs:
+- role: hero
+  path: Q501063/hero.jpg
+  width: 2048
+  height: 1152
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1698881">Tiago
+    Lubiana</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus jocosus - Tiago Lubiana
+    - 358404397.jpeg
+  commons_filename: Pycnonotus jocosus - Tiago Lubiana - 358404397.jpeg
+- role: secondary
+  path: Q501063/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/27717684@N00">Prashanth
+    dotcompals</a> from Tattamangalam, India
+  source_url: https://commons.wikimedia.org/wiki/File:The red-whiskered bulbul (Pycnonotus
+    jocosus) (51294622854).jpg
+  commons_filename: The red-whiskered bulbul (Pycnonotus jocosus) (51294622854).jpg
+- role: secondary
+  path: Q501063/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/27717684@N00">Prashanth
+    dotcompals</a> from Tattamangalam, India
+  source_url: https://commons.wikimedia.org/wiki/File:The red-whiskered bulbul (Pycnonotus
+    jocosus) G 4574 (51294623159).jpg
+  commons_filename: The red-whiskered bulbul (Pycnonotus jocosus) G 4574 (51294623159).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:53:21.894973+00:00'
+sources:
+  wikipedia_sv_revision: '56773257'
+  wikipedia_en_revision: '1336541614'
+  claude_model: claude-haiku-4-5-20251001

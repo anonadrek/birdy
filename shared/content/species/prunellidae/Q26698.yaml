@@ -1,0 +1,157 @@
+id: Q26698
+scientific_name: Prunella modularis
+taxonomy:
+  family: Prunellidae
+  family_sv: Järnsparvar
+  genus: Prunella
+  ioc_order: Passeriformes
+names:
+  sv: Järnsparv
+  en: Dunnock
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Järnsparv
+
+
+    Järnsparven är en liten tätting med brunaktig fjäderdräkt och distinkt järngrått
+    huvud. Den skiljer sig från andra små fåglar genom sin tunna, insektsätande näbb.
+    Arten förekommer i tempererade områden i Europa och Asien, där den häckar upp
+    till trädgränsen i skogsmarker och tät buskvegetation.
+
+
+    Denna art är väl anpassad för liv bland täta snår, där den ofta håller sig dold.
+    Det är framför allt under sångtillfällena som järnsparven blir mer synlig. Sången
+    är karakteristisk – monoton och silvrig med höga frekvenser som skiljer den från
+    många andra små fåglar.
+
+
+    Järnsparven är alätare som födosöker på insekter, spindlar och daggmaskar under
+    växtsäsongen. På vintern kompletteras födan med bär och frön. Intressant är att
+    arten uppvisar ett ovanligt parningssystem där honan parar sig med flera hanar.
+    Arten är inte hotad och uppskattas som livskraftig.'
+  en: '# Dunnock
+
+
+    The dunnock is a small, unobtrusive passerine found throughout temperate Europe
+    and into Asian Russia, with established populations in New Zealand following introduction.
+    It represents the most widespread member of the accentor family, unlike most of
+    its relatives which inhabit mountain regions.
+
+
+    This compact bird presents subtle plumage featuring grey-brown tones that blend
+    easily into hedgerows and garden settings. Its understated appearance—lacking
+    bold markings or vibrant colours—contributes to its often-overlooked status despite
+    being relatively common across its range.
+
+
+    Dunnocks typically favour scrubby habitats, particularly hedgerows, gardens, and
+    bramble patches, where they forage quietly on the ground for insects and seeds.
+    They remain relatively inconspicuous in behaviour, moving methodically through
+    low vegetation with a characteristic jerky gait. The dunnock''s song is a short,
+    cheerful warble delivered from low perches, providing one of the more reliable
+    ways to locate this otherwise elusive species. Despite their modest appearance
+    and retiring nature, dunnocks are remarkably successful birds, adapting well to
+    human-modified landscapes and maintaining stable populations across much of their
+    range.'
+migration:
+  sv: '# Järnsparv – Säsongsförekomst i Norden
+
+
+    Järnsparven är en delvis flyttfågel i Skandinavien och Nordeuropa. Arten häckar
+    i regionen under våren och sommaren, där den anländer från mars till april. Under
+    vintermånaderna utgör järnsparven en mindre övervintrare i södra delen av sitt
+    utbredningsområde, medan större delen av populationen drar bort sydvästut till
+    Medelhavsregionen och Södra Europa. Många individer påträffas dock året runt i
+    mildare delar av Skandinavien, särskilt vid kusten och i städer där födan är tillgänglig.
+    Från september och framåt börjar höstflyttningen, och säsongen är över senast
+    i oktober.'
+  en: '# Dunnock (Järnsparv) in Scandinavia
+
+
+    Migration data unavailable for this species.
+
+
+    The provided source text contains no information about the dunnock''s occurrence,
+    migration patterns, or seasonal presence in Scandinavia and Northern Europe. To
+    write an accurate account of this species'' annual cycle in the region, additional
+    sources documenting its migration behavior, overwintering status, and arrival/departure
+    dates would be required.'
+image_refs:
+- role: hero
+  path: Q26698/hero.jpg
+  width: 2400
+  height: 1596
+  license: CC0
+  author: '<p><a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+
+    </p>
+
+    <table class="toccolours layouttemplate commons-file-information-table" style="width:
+    100%;" dir="ltr" lang="en">
+
+    <tbody><tr><th class="type fileinfo-paramfield">Camera location</th><td style="border:none;"><span
+    class="plainlinks"><span class="plainlinksneverexpand"><a class="external text"
+    href="https://geohack.toolforge.org/geohack.php?pagename=File:The_dunnock_(Prunella_modularis).jpg&amp;params=051.178700_N_0007.006570_E_globe:Earth_type:camera__&amp;language=en">51° 10′ 43.32″ N,
+    7° 00′ 23.65″ E</a></span></span> <a class="mw-kartographer-maplink no-icon" data-mw-kartographer="maplink"
+    data-style="osm-intl" href="//commons.wikimedia.org/wiki/Special:Map/13/51.1787/7.00657/en"
+    data-zoom="13" data-lat="51.1787" data-lon="7.00657" data-overlays=''["_7a33b01bdec44aca3fcd607aca58b88a919ef378"]''><span
+    typeof="mw:File"><span title="Kartographer map based on OpenStreetMap."><img alt="Kartographer
+    map based on OpenStreetMap." src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/20px-Openstreetmap_logo.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
+    decoding="async" width="20" height="20" class="mw-file-element" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/40px-Openstreetmap_logo.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail
+    2x" data-file-width="256" data-file-height="256"></span></span></a></td><td style="border:none;">View
+    this and other nearby images on: <a class="external text" href="https://wikimap.toolforge.org/?wp=false&amp;cluster=false&amp;zoom=16&amp;lat=051.178700&amp;lon=0007.006570">OpenStreetMap</a></td><td
+    style="border:none;"><span class="skin-invert" typeof="mw:File"><a href="//commons.wikimedia.org/wiki/Commons:Geocoding"
+    title="Commons:Geocoding"><img alt="info" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/OOjs_UI_icon_help.svg/20px-OOjs_UI_icon_help.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
+    decoding="async" width="18" height="18" class="mw-file-element" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/OOjs_UI_icon_help.svg/40px-OOjs_UI_icon_help.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail
+    2x" data-file-width="24" data-file-height="24"></a></span><span class="geo" style="display:none">
+    51.178700;    7.006570</span></td></tr>
+
+    </tbody></table>'
+  source_url: https://commons.wikimedia.org/wiki/File:The dunnock (Prunella modularis).jpg
+  commons_filename: The dunnock (Prunella modularis).jpg
+- role: secondary
+  path: Q26698/secondary-1.jpg
+  width: 1800
+  height: 1192
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/26082117@N07">Daniel
+    Jolivet</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Prunella modularis à Thésée-la-Romaine
+    (Loir-et-Cher) (24790246305).jpg
+  commons_filename: Prunella modularis à Thésée-la-Romaine (Loir-et-Cher) (24790246305).jpg
+- role: secondary
+  path: Q26698/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: Alexis LOURS
+  source_url: https://commons.wikimedia.org/wiki/File:Prunella modularis on a fence
+    post.jpg
+  commons_filename: Prunella modularis on a fence post.jpg
+review_status: approved
+review_notes: "Hero = Prunella modularis (Hobbyfotowiki CC0); klassisk fältidentifiering med grå hals/bröst + brun streckad rygg. SV+EN beskrivning båda ≥80 ord. Allmän häckfågel i hela Sverige."
+generated_at: '2026-05-15T20:53:11.746940+00:00'
+sources:
+  wikipedia_sv_revision: '59225230'
+  wikipedia_en_revision: '1349989123'
+  claude_model: claude-haiku-4-5-20251001

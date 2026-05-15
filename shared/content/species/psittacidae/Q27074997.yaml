@@ -1,0 +1,101 @@
+id: Q27074997
+scientific_name: Psittacara mitratus
+taxonomy:
+  family: Psittacidae
+  family_sv: Papegojor
+  genus: Psittacara
+  ioc_order: Psittaciformes
+names:
+  sv: Rödfläckig parakit
+  en: Mitred Parakeet
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Mitred Parakeet
+
+
+    The mitred parakeet is a medium-sized parrot native to South American mountain
+    forests, where it inhabits regions in Argentina, Bolivia, and Peru. It has also
+    established populations in Uruguay and, through introduction, in parts of the
+    United States including California, Florida, and Hawaii.
+
+
+    This social bird is highly gregarious, often seen in flocks that can be quite
+    vocal and conspicuous in flight. It displays characteristic parakeet behaviour,
+    moving rapidly through forest canopy and open woodlands while foraging for seeds,
+    fruits, and vegetation. The species is active and energetic, with a preference
+    for higher elevations in its native range.
+
+
+    Like many parakeets, it produces loud, harsh calls that are distinctive in its
+    habitats. Its adaptability to various environments has enabled it to thrive outside
+    its native range, making it one of the more successful parrot introductions in
+    temperate regions. The bird remains relatively common throughout its range, both
+    native and introduced.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Mitred Parakeet is native to South America (Argentina, Bolivia, and Peru)
+    and does not naturally occur in Scandinavia or Northern Europe. While the species
+    has established populations in parts of the United States and Uruguay through
+    human introduction, there is no documented evidence of this species occurring
+    in Scandinavian or Northern European regions, whether as a migrant, vagrant, or
+    established population. Therefore, information about its occurrence throughout
+    the year in this region cannot be provided.'
+image_refs:
+- role: hero
+  path: Q27074997/hero.jpg
+  width: 2048
+  height: 1365
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1065381">Adam
+    Jackson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Psittacara mitratus 339606908.jpg
+  commons_filename: Psittacara mitratus 339606908.jpg
+- role: secondary
+  path: Q27074997/secondary-1.jpg
+  width: 1350
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:NasserHalaweh" title="User:NasserHalaweh">NasserHalaweh</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Psittacidae Psittacara mitratus
+    1.jpg
+  commons_filename: Psittacidae Psittacara mitratus 1.jpg
+- role: secondary
+  path: Q27074997/secondary-2.jpg
+  width: 1800
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/7766529">Gary
+    T. Leavens</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Psittacara mitratus 364406988.jpg
+  commons_filename: Psittacara mitratus 364406988.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:50:57.441037+00:00'
+sources:
+  wikipedia_sv_revision: '55717750'
+  wikipedia_en_revision: '1322479126'
+  claude_model: claude-haiku-4-5-20251001

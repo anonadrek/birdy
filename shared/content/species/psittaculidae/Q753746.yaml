@@ -1,0 +1,106 @@
+id: Q753746
+scientific_name: Psittacula eupatria
+taxonomy:
+  family: Psittaculidae
+  family_sv: Östpapegojor
+  genus: Psittacula
+  ioc_order: Psittaciformes
+names:
+  sv: Alexanderparakit
+  en: Alexandrine Parakeet
+abundance: ovanlig
+iucn_status: NE
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Alexandrine Parakeet
+
+
+    The Alexandrine parakeet is a medium-sized parrot native to South Asia and Southeast
+    Asia. It is the largest member of its genus and takes its name from Alexander
+    the Great, who famously transported these birds from Punjab to Europe and the
+    Mediterranean, where they became prized possessions of royalty and nobility.
+
+
+    These parakeets are striking birds with predominantly green plumage, featuring
+    a characteristic pink breast and neck patch in males. They have a powerful curved
+    bill adapted for cracking seeds and nuts, and a long tail that aids balance while
+    moving through trees. The species is highly social and typically found in small
+    flocks, though larger groups may gather at feeding sites. It feeds on fruits,
+    seeds, and vegetation, often visiting cultivated areas.
+
+
+    The Alexandrine parakeet is quite vocal, producing loud, harsh calls and screeching
+    sounds that carry well through their forested habitat. These birds are intelligent
+    and active, spending much of the day foraging and interacting with flock members.
+    They inhabit open woodlands, scrub forests, and cultivated regions where suitable
+    food is available, showing considerable adaptability to human-modified landscapes.'
+migration:
+  sv: ''
+  en: '# Alexandrine Parakeet in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Alexandrine Parakeet is native to South Asia and Southeast Asia and does not
+    naturally occur in Scandinavia or Northern Europe. While the species has historical
+    significance in European culture due to Alexander the Great''s role in transporting
+    birds westward, there is no documented wild population or regular migration pattern
+    involving this species in Scandinavian or Northern European regions.'
+image_refs:
+- role: hero
+  path: Q753746/hero.jpg
+  width: 2400
+  height: 1800
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Rudolph.A.furtado&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Rudolph.A.furtado (page does not exist)">Rudolph.A.furtado</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Psittacula eupatria -pet in
+    Mumbai-4c.jpg
+  commons_filename: Psittacula eupatria -pet in Mumbai-4c.jpg
+- role: secondary
+  path: Q753746/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: Public domain
+  author: Rudolph.A.Furtado
+  source_url: https://commons.wikimedia.org/wiki/File:Psittacula eupatria -pet with
+    Rudolph A. Furtado-4a.jpg
+  commons_filename: Psittacula eupatria -pet with Rudolph A. Furtado-4a.jpg
+- role: secondary
+  path: Q753746/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: Public domain
+  author: <a href="https://en.wikipedia.org/wiki/User:Akeeq" class="extiw" title="wikipedia:User:Akeeq">Akeeq</a>
+    at <a href="https://en.wikipedia.org/wiki/" class="extiw" title="wikipedia:">English
+    Wikipedia</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Psittacula eupatria - 1 year
+    old 2.jpg
+  commons_filename: Psittacula eupatria - 1 year old 2.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:52:02.954037+00:00'
+sources:
+  wikipedia_sv_revision: '58646707'
+  wikipedia_en_revision: '1346632927'
+  claude_model: claude-haiku-4-5-20251001

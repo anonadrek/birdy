@@ -1,0 +1,99 @@
+id: Q527830
+scientific_name: Pelecanus rufescens
+taxonomy:
+  family: Pelecanidae
+  family_sv: Pelikaner
+  genus: pelican
+  ioc_order: Pelecaniformes
+names:
+  sv: Rosaryggig pelikan
+  en: Pink-backed Pelican
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Pink-backed Pelican
+
+
+    The pink-backed pelican is a large waterbird belonging to the pelican family.
+    It inhabits swamps and shallow lakes across Africa and southern Arabia, where
+    it is a permanent resident and breeds in these wetland environments. The species
+    was formerly present in Madagascar but is now extinct there.
+
+
+    Like other pelicans, it is a substantial bird with the characteristic large bill
+    and throat pouch used for catching fish. The plumage displays soft pink and white
+    tones, particularly on the back, which gives the species its distinctive common
+    name. It is a gregarious bird, often seen in flocks on open water where it hunts
+    cooperatively with other pelicans.
+
+
+    The pink-backed pelican feeds primarily on fish, which it catches by diving or
+    dabbling at the water''s surface. It prefers shallow waterways where prey is abundant
+    and accessible. These pelicans are social breeders, typically nesting in large
+    colonies in trees or on islands within their wetland habitats. The species remains
+    fairly common throughout much of its African range, though specific population
+    trends vary by region.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The Pink-backed Pelican is an African and southern Arabian species with no established
+    presence or migration patterns in Scandinavia or Northern Europe. It is a resident
+    breeder in African wetlands and does not occur in northern European regions throughout
+    the year.'
+image_refs:
+- role: hero
+  path: Q527830/hero.jpg
+  width: 2092
+  height: 1303
+  license: Public domain
+  author: No machine-readable author provided. <a href="//commons.wikimedia.org/wiki/User:Magalh%C3%A3es"
+    title="User:Magalhães">Magalhães</a> assumed (based on copyright claims).
+  source_url: https://commons.wikimedia.org/wiki/File:Pelecanus rufescens.jpg
+  commons_filename: Pelecanus rufescens.jpg
+- role: secondary
+  path: Q527830/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external free" href="https://www.flickr.com/people/flowcomm/">https://www.flickr.com/people/flowcomm/</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Rötelpelikan (Pelecanus rufescens),
+    ruhend.jpg
+  commons_filename: Rötelpelikan (Pelecanus rufescens), ruhend.jpg
+- role: secondary
+  path: Q527830/secondary-2.jpg
+  width: 1800
+  height: 1354
+  license: CC BY 4.0
+  author: (c) Matt Muir, some rights reserved (CC BY)
+  source_url: https://commons.wikimedia.org/wiki/File:Pelecanus rufescens in Rwanda
+    5679243.jpg
+  commons_filename: Pelecanus rufescens in Rwanda 5679243.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T20:51:43.907258+00:00'
+sources:
+  wikipedia_sv_revision: '57590882'
+  wikipedia_en_revision: '1317742312'
+  claude_model: claude-haiku-4-5-20251001
