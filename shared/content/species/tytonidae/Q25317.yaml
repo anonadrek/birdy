@@ -1,0 +1,124 @@
+id: Q25317
+scientific_name: Tyto alba
+taxonomy:
+  family: Tytonidae
+  family_sv: Tornugglor
+  genus: Tyto
+  ioc_order: Strigiformes
+names:
+  sv: Tornuggla
+  en: Western Barn Owl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Tornuggla (Tyto alba)
+
+
+    Tornugglan är en vida spridd uggla som förekommer i västra Asien, Europa och Afrika.
+    Arten tillhör familjen tornugglor och kännetecknas av sitt karakteristiska utseende
+    med en vit, hjärtformad ansiktsskiva och mörka ögon. Kroppen är gyllene till rustfärgad
+    på ovansidan och vitaktig på undersidan.
+
+
+    Tornugglan är en nattaktiv jägare som söker föda över öppna marker och jordbruksmark.
+    Den flyger ofta lågt och ljudlöst medan den spanar efter möss och andra smågnagare.
+    Arten är känd för sitt karakteristiska skrik – ett långt, skärande ljud som ofta
+    hörs på natten.
+
+
+    Denna uggla föredrar varierade habitat från odlingslandskap till halvöppen terräng.
+    Den använder ofta gamla lador och kyrktorn som boplatser, vilket har gjort den
+    till en bekant fågel i många områden.'
+  en: '# Western Barn Owl
+
+
+    The Western Barn Owl is a distinctive nocturnal predator found across Europe,
+    southwestern Asia, and Africa. It belongs to the barn owl family, characterized
+    by its heart-shaped facial disc and large forward-facing eyes adapted for hunting
+    in low light. The species has pale, often whitish plumage on the face and underparts,
+    contrasting with darker upperparts that vary from golden-buff to grey depending
+    on individual variation.
+
+
+    This owl is primarily a hunter of small mammals, particularly rodents, which it
+    locates using its exceptional hearing rather than vision alone. It hunts by quartering
+    over open ground and grassland habitats, flying low and deliberately in search
+    of prey. The Western Barn Owl produces a distinctive rasping screech and hissing
+    sounds, quite unlike the hooting calls of many other owl species.
+
+
+    The species favors open and semi-open landscapes with suitable nesting sites,
+    including old buildings, cliffs, and tree cavities. It was previously grouped
+    with barn owls from other regions but is now recognized as a distinct species.
+    The Western Barn Owl remains relatively common throughout much of its range, though
+    local populations can fluctuate based on rodent availability and habitat preservation.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: '# Western Barn Owl (Tyto alba) in Scandinavia/Northern Europe
+
+
+    The Western Barn Owl is a rare vagrant and occasional winter visitor to Scandinavia
+    and Northern Europe, with no established resident population. Sightings are sporadic
+    and unpredictable, primarily occurring during autumn and winter months when individuals
+    may wander northward from their core European range. These owls are largely sedentary
+    in their primary habitats further south, but cold weather conditions can trigger
+    irruptive movements, bringing occasional birds to Scandinavian regions. Most Northern
+    European records represent birds seeking hunting opportunities during harsh winters,
+    though established breeding is absent from the region. Their presence remains
+    exceptional rather than regular, making them notable sightings for local ornithologists.'
+image_refs:
+- role: hero
+  path: Q25317/hero.jpg
+  width: 2400
+  height: 1201
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://pixabay.com/users/dannymoore1973-1813225/">Dannymoore1973</a><br><small>Minor
+    edits made by <a href="//commons.wikimedia.org/wiki/User:Subsidiary_account" title="User:Subsidiary
+    account">Subsidiary account</a></small>
+  source_url: https://commons.wikimedia.org/wiki/File:Front view of a barn owl - Tyto
+    alba - in flight.jpg
+  commons_filename: Front view of a barn owl - Tyto alba - in flight.jpg
+- role: secondary
+  path: Q25317/secondary-1.jpg
+  width: 1800
+  height: 1285
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/100915417@N07">Charlie
+    Marshall</a> from Bristol UK, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Tyto alba - in flight.jpg
+  commons_filename: Tyto alba - in flight.jpg
+- role: secondary
+  path: Q25317/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 3.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jean-Pol_GRANDMONT" title="User:Jean-Pol
+    GRANDMONT">Jean-Pol GRANDMONT</a>
+  source_url: https://commons.wikimedia.org/wiki/File:0 Chouette effraie - Tyto alba.JPG
+  commons_filename: 0 Chouette effraie - Tyto alba.JPG
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:45:20.727966+00:00'
+sources:
+  wikipedia_sv_revision: '59182052'
+  wikipedia_en_revision: '1338302886'
+  claude_model: claude-haiku-4-5-20251001

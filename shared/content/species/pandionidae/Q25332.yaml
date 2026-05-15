@@ -1,0 +1,135 @@
+id: Q25332
+scientific_name: Pandion haliaetus
+taxonomy:
+  family: Pandionidae
+  family_sv: Fiskgjusar
+  genus: Pandion
+  ioc_order: Accipitriformes
+names:
+  sv: Fiskgjuse
+  en: Osprey
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Fiskgjuse
+
+
+    Fiskgjusen är en hökfågel som är en av världens mest spridda arter inom sin familj.
+    Den är speciellt anpassad för fiske och lever uteslutande av fisk som den tar
+    från vattenytan med sina kraftiga klor. Fiskgjusen har utvecklat unika anpassningar
+    för att kunna dyka och gripa sitt byte direkt från vattnet.
+
+
+    Fiskgjusen är en stor rovfågel med imponerande flygförmåga. Det är en långvingad
+    fågel som ofta ses kretsa högt över vatten på jakt. När det upptäcker ett lämpligt
+    byte dyker det snabbt ned mot vattenytan för att fånga fisken.
+
+
+    Beståndet av fiskgjusen anses livskraftigt och tros öka i antal. Arten ses främst
+    i närheten av större vatten där det finns gott om fisk, såsom sjöar, älvar och
+    kustområden.'
+  en: '# Osprey
+
+
+    The osprey is a large, distinctive bird of prey found across the world. Reaching
+    over 60 centimetres in length with a wingspan approaching two metres, it is unmistakable
+    in flight. It displays brown upperparts contrasting with a predominantly greyish
+    head and underparts, making it recognizable at considerable distances.
+
+
+    Highly specialized for its diet, the osprey is an expert fish-hunter. It hunts
+    by diving from considerable heights into water bodies, plunging feet-first to
+    snatch fish from the surface with its specialized talons. It is a diurnal hunter,
+    active during daylight hours and often seen hovering over water before diving.
+    The osprey typically nests near water bodies, building large stick nests that
+    it may use and maintain for many years.
+
+
+    The osprey''s vocalizations include high-pitched calls, particularly around the
+    nest site during breeding season. When alarmed or defending territory, it produces
+    sharp, distinctive whistles that carry well over water. Its diet consists almost
+    exclusively of live fish, which it hunts in shallow waters and larger water bodies
+    throughout its range.'
+migration:
+  sv: '# Fiskgjuse (Pandion haliaetus)
+
+
+    Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    The provided source text only describes the osprey''s classification, diet, and
+    conservation status, but contains no information about its migration patterns,
+    seasonal occurrence, or movements throughout the year in Scandinavia/Northern
+    Europe. Therefore, I cannot provide the requested migration information based
+    on this source material.'
+  en: '# Osprey (Pandion haliaetus) in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source text provided contains only morphological and taxonomic information
+    about the osprey, with no details regarding its occurrence, migration patterns,
+    or seasonal distribution in Scandinavia or Northern Europe. To provide accurate
+    information about osprey migration timing, wintering grounds, and arrival periods
+    in this region, additional sources focusing specifically on the species'' biogeography
+    and movement patterns would be required.'
+image_refs:
+- role: hero
+  path: Q25332/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/80223459@N05">Yellowstone
+    National Park</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Osprey (Pandion haliaetus) perched
+    along the Gardner River (29132705308).jpg
+  commons_filename: Osprey (Pandion haliaetus) perched along the Gardner River (29132705308).jpg
+- role: secondary
+  path: Q25332/secondary-1.jpg
+  width: 1800
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/97469566@N00">Bengt
+    Nyman</a> from Vaxholm, Sweden
+  source_url: https://commons.wikimedia.org/wiki/File:Pandion haliaetus 5950 (16704998543).jpg
+  commons_filename: Pandion haliaetus 5950 (16704998543).jpg
+- role: secondary
+  path: Q25332/secondary-2.jpg
+  width: 1800
+  height: 1382
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/33466410@N00">Jerry
+    Kirkhart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Pandion haliaetus -Belize -two
+    on nest-8.jpg
+  commons_filename: Pandion haliaetus -Belize -two on nest-8.jpg
+review_status: approved
+review_notes: "Fiskgjuse — hero Osprey längs Gardner River; karakteristisk vit underside + svart ögonband; allmän SE-art över sjöar och kust."
+generated_at: '2026-05-15T19:46:04.868825+00:00'
+sources:
+  wikipedia_sv_revision: '59170397'
+  wikipedia_en_revision: '1349399659'
+  claude_model: claude-haiku-4-5-20251001

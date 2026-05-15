@@ -1,0 +1,131 @@
+id: Q17592
+scientific_name: Struthio camelus
+taxonomy:
+  family: Struthionidae
+  family_sv: Struthionidae
+  genus: Struthio
+  ioc_order: Struthioniformes
+names:
+  sv: Struts
+  en: Common Ostrich
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Struts
+
+
+    Strutsen är världens största levande fågel och karakteriseras av sin massiva kropp,
+    långa ben och långe hals. Den är oförmögen att flyga trots att den är en fågel.
+    Strutsen lägger också de största äggen bland alla levande fåglar. Arten är helt
+    anpassad för ett liv på marken.
+
+
+    Strutsen är känd för sin imponerande löphastighet och kan springa i hastigheter
+    upp till 70 kilometer i timmen. Med sina långa, kraftiga ben är den utmärkt anpassad
+    för att korsa öppna landskap. Arten förekommer naturligt i Afrika och är ofta
+    solitär eller förekommer i små grupper.
+
+
+    Strutsen är känd för sitt relativt lilla hjärna, som väger endast omkring 40 gram.
+    Trots detta har arten överlevt i miljöer där den möter både predatorer och utmaningar
+    från sin omgivning.'
+  en: '# Common Ostrich
+
+
+    The common ostrich is the world''s largest living bird species and is native to
+    Africa. It belongs to the ratite family, a group of flightless birds, and shares
+    this family with only one other species—the Somali ostrich, which was recognized
+    as distinct relatively recently.
+
+
+    Standing considerably taller and heavier than any other bird, the ostrich is unmistakably
+    imposing in appearance. Its long, powerful legs are built for running rather than
+    flying, and it can reach impressive speeds across open terrain. The bird''s long
+    neck and relatively small head are characteristic features, with males typically
+    displaying darker plumage than females.
+
+
+    Ostriches inhabit various African environments and are highly adapted to their
+    habitats. They are terrestrial birds that spend most of their time on the ground,
+    where they feed on vegetation and small animals. Their calls and vocalizations,
+    though not extensively documented in popular literature, are distinctive low-frequency
+    sounds. These remarkable birds represent a unique branch of avian evolution, having
+    lost the ability to fly while developing exceptional running abilities and physical
+    strength that make them instantly recognizable wherever they are encountered in
+    the wild.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Strutsen är en африkansk art som är permanent bosatt på den afrikanska kontinenten.
+    Den förekommer inte naturligt i Skandinavien eller Nordeuropa och har därför ingen
+    migration till eller från dessa regioner. Arten är stationär inom sitt afrikanskt
+    utbredningsområde året om.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Common Ostrich is native to Africa and does not naturally occur in Scandinavia
+    or Northern Europe. As a large, flightless bird restricted to African savannas
+    and arid regions, it has no established migration patterns to or within Northern
+    Europe and would not be encountered in the wild in these regions outside of captive
+    settings.'
+image_refs:
+- role: hero
+  path: Q17592/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Wilfredor" class="mw-redirect"
+    title="User:Wilfredor">Wilfredor</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Struthio camelus (captive) in
+    Jardim Zoológico de Curitiba.jpg
+  commons_filename: Struthio camelus (captive) in Jardim Zoológico de Curitiba.jpg
+- role: secondary
+  path: Q17592/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Wilfredor" class="mw-redirect"
+    title="User:Wilfredor">Wilfredor</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Struthio camelus sleeping in
+    Jardim Zoológico de Curitiba.jpg
+  commons_filename: Struthio camelus sleeping in Jardim Zoológico de Curitiba.jpg
+- role: secondary
+  path: Q17592/secondary-2.jpg
+  width: 1227
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Wilfredor" class="mw-redirect"
+    title="User:Wilfredor">Wilfredor</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Struthio camelus in Jardim Zoológico
+    de Curitiba.jpg
+  commons_filename: Struthio camelus in Jardim Zoológico de Curitiba.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:46:34.127750+00:00'
+sources:
+  wikipedia_sv_revision: '58648578'
+  wikipedia_en_revision: '1354166444'
+  claude_model: claude-haiku-4-5-20251001

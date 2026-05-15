@@ -333,6 +333,15 @@ species:
   Q619728:
     description_accept_missing: [sv, en]  # Kanariestrandskata (Canary Islands Oystercatcher †, EX)
     allow_missing_images: true  # extinct, ingen Commons hi-res
+  # Mono-family batch (2026-05-15): 16 single-species familjer.
+  Q18861:
+    description_accept_missing: [sv]  # Pheasant-tailed Jacana (Jacanidae) — asiatisk vagrant
+  Q25388:
+    allow_missing_images: true  # Sommargylling (Oriolus oriolus) — ingen Commons hi-res ?MIN_DIMENSION
+  Q686600:
+    description_accept_missing: [sv]  # Red-billed Tropicbird (Phaethontidae) — pelagisk
+  Q652151:
+    description_accept_missing: [sv]  # Hammerkop (Scopidae) — afrikansk
   # Hydrobatidae batch (2026-05-15): pelagiska stormsvalor med sparse extracts + ingen Commons hi-res.
   Q211986:
     description_accept_missing: [en]  # Leach’s Storm Petrel

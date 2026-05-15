@@ -1,0 +1,136 @@
+id: Q192817
+scientific_name: Panurus biarmicus
+taxonomy:
+  family: Panuridae
+  family_sv: Panuridae
+  genus: Panurus
+  ioc_order: Passeriformes
+names:
+  sv: Skäggmes
+  en: Bearded Reedling
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Skäggmes
+
+
+    Skäggmes är en säregen och lättkänd fågel som trots sitt namn inte är närmare
+    släkt med mesarna utan snarare med lärkor. Det är en medelstor fågel med karakteristisk
+    utseende: hannen har en grå huvud- och ryggfärgning med vita kinder och ett påfallande
+    svart "mustaschband" under ögat, vilket ger arten sitt namn. Honan är mer diskret
+    brunaktig. Arten förekommer i vassrika våtmarker och är bunden till täta vassbestånd
+    där den födosöker och häckar.
+
+
+    Skäggmesen är en rörig och lika ofta hörbar som sedd fågel. Det utter ett karakteristiskt
+    "tsching" eller "tschak" som hörs långt ut över vassbeltet. Under häckningstiden
+    är hannen mycket aktiv och ses ofta sitta exponerat på vassknopparna.
+
+
+    Arten påträffas i Europa och österut till Östkina, men har som svensk häckfågel
+    en ganska begränsad utbredning med starkast fästen i vissa stora våtmarkskomplex.
+    Sedan 1960-talet har den etablerat sig allt bättre som häckfågel i Sverige. Globalt
+    anses beståndet vara stabilt och livskraftigt.'
+  en: '# Bearded Reedling
+
+
+    The bearded reedling is a distinctive small passerine with a notably long tail
+    and striking appearance. Males display a striking black "moustache" marking on
+    the face, while females and immatures are duller in coloration. Its compact body
+    and proportionally elongated tail give it a characteristic silhouette as it moves
+    through reed beds.
+
+
+    This species inhabits reed beds near water across the temperate regions of Eurasia,
+    where it forages for insects and reed seeds. It is an active, acrobatic feeder,
+    often clinging to reed stems in small flocks, particularly outside the breeding
+    season. The bearded reedling is relatively sedentary, though populations in northern
+    areas may undertake seasonal movements.
+
+
+    The bird''s call is distinctive and easily recognized—a sharp, diagnostic "ping"
+    or metallic contact call that is frequently heard before the bird is seen. During
+    breeding season, males produce a quiet, rambling song. Unique among small passerines,
+    the bearded reedling is the sole member of its family, Panuridae, lacking close
+    relationships to tits or parrotbills despite historical taxonomic associations
+    with these groups.'
+migration:
+  sv: '# Skäggmes i Skandinavien och Nordeuropa
+
+
+    Skäggmes är en vassbunden fågel som sedan 1960-talet etablerat sig som häckfågel
+    i Sverige, framför allt vid större våtmarker som Tåkern. Arten är övervintrad
+    och flyttfågel i regionen, där populationen påverkas kraftigt av vintrarnas stränghet.
+    Under milda vintrar kan betydande antal stanna kvar, medan stränga vintrar orsakar
+    omfattande flyttningar söderut. Huvudhäckningsperioden är under sommarmånaderna,
+    då arten återvänder till sina vassrika biotoper.
+
+
+    Arten förekommer också som genomflyttare och tillfällig gäst på andra platser
+    i Skandinavien under höst- och vårmigrationerna. Den fortsatta etableringen av
+    skäggmesen i Nordeuropa har varit en positiv utveckling för arten regionalt, trots
+    att den globalt betraktas som mindre känslig för beståndsnedgångar.'
+  en: '# Bearded Reedling in Scandinavia/Northern Europe
+
+
+    The Bearded Reedling is a rare and irregular visitor to Scandinavia and Northern
+    Europe, with occurrence highly dependent on winter severity and reed bed availability.
+    In milder winters, small numbers may overwinter in southern Scandinavian reed
+    beds, particularly in Denmark and southern Sweden. However, the species is primarily
+    associated with temperate Eurasian reed beds and is not a regular resident. Autumn
+    immigration occasionally occurs as birds disperse from continental breeding areas,
+    especially during population increases. Spring sightings are uncommon in the region,
+    with any breeding attempts being sporadic and localized.'
+image_refs:
+- role: hero
+  path: Q192817/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bearded reedling (Panurus biarmicus).jpg
+  commons_filename: Bearded reedling (Panurus biarmicus).jpg
+- role: secondary
+  path: Q192817/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bearded reedling 2 (Panurus
+    biarmicus).jpg
+  commons_filename: Bearded reedling 2 (Panurus biarmicus).jpg
+- role: secondary
+  path: Q192817/secondary-2.jpg
+  width: 1800
+  height: 1566
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Jaana_Siitonen&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Jaana Siitonen (page does not exist)">Jaana Siitonen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Panurus biarmicus DSCN8931-02.jpg
+  commons_filename: Panurus biarmicus DSCN8931-02.jpg
+review_status: approved
+review_notes: "Skäggmes — hero Bearded reedling med mustaschstreck; allmän SE-art i vassmarker."
+generated_at: '2026-05-15T19:46:56.895372+00:00'
+sources:
+  wikipedia_sv_revision: '56819669'
+  wikipedia_en_revision: '1315202040'
+  claude_model: claude-haiku-4-5-20251001

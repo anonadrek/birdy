@@ -1,0 +1,104 @@
+id: Q25388
+scientific_name: Oriolus oriolus
+taxonomy:
+  family: Oriolidae
+  family_sv: Gyllingar
+  genus: Oriolus
+  ioc_order: Passeriformes
+names:
+  sv: Sommargylling
+  en: Eurasian Golden Oriole
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Sommargylling
+
+
+    Sommargylling är en färgglad fågel som tillhör familjen gyllingar. Hanen är praktfullt
+    kläddat i gult och svart, medan honan är mer diskret grönkluven med gula inslag.
+    Fågeln är medelstor och har en karakteristisk silhuett med rätt lång stjärt.
+
+
+    Det är en flyttfågel som återvänder till sina häckningsområden under våren. Sommargyllingen
+    är ensam art i sin familj som häckar i Europa, och dess utbredning sträcker sig
+    från västra Palearktis till östra Sibirien. Under vintertiden drar fågeln bort
+    till Afrika och norra Indien för att söka föda.
+
+
+    Sommargyllingen trivs i lövskog och parkliknande miljöer där den förekommer ofta
+    högt upp i trädkronorna. Det är en diskret fågel trots sin färgprakt, och ses
+    ofta endast när den är i rörelse mellan träden. Arten förekommer huvudsakligen
+    på västeuropa fram till Skandinavien under häckningstiden.'
+  en: '# Eurasian Golden Oriole
+
+
+    The Eurasian golden oriole is a striking summer visitor to temperate regions across
+    Europe and the Palearctic. It is the only Old World oriole that breeds in these
+    northern areas, making it a notable seasonal arrival. The species is instantly
+    recognizable by its brilliant golden-yellow plumage contrasted with black wings
+    and tail—a combination that makes it unmistakable when seen in good light. Despite
+    its vibrant appearance, it can be surprisingly elusive among dense foliage, where
+    it often forages for insects and fruit in tall trees.
+
+
+    The bird''s behaviour is characteristically active and acrobatic. It moves restlessly
+    through the canopy, sometimes hanging beneath branches while feeding. Its vocalizations
+    are striking: a loud, fluent whistling song and various calls that carry well
+    through woodland. The bird is most vocal during the breeding season, when males
+    establish territories.
+
+
+    A true long-distance migrant, the Eurasian golden oriole spends just the breeding
+    season in Europe before departing for central and southern Africa for winter.
+    It favours open woodlands, parks, and areas with scattered trees, where it can
+    hunt and nest away from dense forest. Its arrival in spring is eagerly anticipated
+    by birdwatchers seeking this golden gem.'
+migration:
+  sv: '# Sommargylling – Förekomst i Skandinavien/Nordeuropa
+
+
+    Sommargyllingen är en långdistansflyttfågel som endast förekommer i Skandinavien
+    och Nordeuropa under häckningssäsongen. Arten anländer från sitt afrikanskt-indiska
+    övervintringsområde på våren, typiskt från april till maj, för att häcka från
+    västra Palearktis till östra Sibirien. Under hösten, från juli till september,
+    påbörjar arten sin långa bortflyttning tillbaka till Afrika och norra Indien,
+    där den tillbringar vintern. Sommargyllingen är således helt frånvarande från
+    Skandinavien under vintermånaderna. Som ensam europeisk hämtningsart i sin familj
+    är den begränsad till värmeberoende växtsamhällen under häckningsperioden.'
+  en: '# Eurasian Golden Oriole – Seasonal Occurrence in Northern Europe
+
+
+    The Eurasian Golden Oriole is a summer breeder throughout Scandinavia and Northern
+    Europe, arriving in late spring typically from May onwards. This species is a
+    long-distance migrant, wintering in central and southern Africa and returning
+    north to breed during the warmer months. In autumn, birds depart Northern Europe
+    from August through September to reach their African wintering grounds. The species
+    is absent from Scandinavia during winter, making it a strictly seasonal visitor
+    dependent on insect availability and warm weather conditions for breeding.'
+image_refs: []
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:46:20.380531+00:00'
+sources:
+  wikipedia_sv_revision: '58844207'
+  wikipedia_en_revision: '1333644729'
+  claude_model: claude-haiku-4-5-20251001

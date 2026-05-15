@@ -1,0 +1,129 @@
+id: Q31617
+scientific_name: Rostratula benghalensis
+taxonomy:
+  family: Rostratulidae
+  family_sv: Rallbeckasiner
+  genus: Rostratula
+  ioc_order: Charadriiformes
+names:
+  sv: Rallbeckasin
+  en: Greater Painted-snipe
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rallbeckasin
+
+
+    Rallbeckasin är en liten vadarfågel med karakteristisk utseende. Honan är märkbar
+    genom sin praktfulla färgteckning med metallic grönglans på rygg och vingar, medan
+    hanen är mer diskret färgad. Den korta, nedåtböjda näbben är en viktig igenkänningspunkt
+    för arten.
+
+
+    Arten har en unik beteendemässig särhet bland fåglar: den praktfulla honan uppvaktar
+    hanen, som sedan ansvarar för alla ruggningsuppgifter. Detta är ett omvänt könsrollsmönster
+    som förekommer hos bara ett fåtal fågelarter. Rallbeckasinen är activ på marken
+    och letar föda bland fuktiga miljöer.
+
+
+    Arten förekommer i fuktiga områden som sjöstränder och våtmarker med tät vegetation.
+    Den är en diskret fågel som ofta håller sig dold i gräs och undervegetation, vilket
+    gör den svår att observera trots sin iögonenfallande färgteckning hos hona.'
+  en: '# Greater Painted-snipe
+
+
+    The greater painted-snipe is a small wader with striking plumage, particularly
+    in females, which are larger and more richly coloured than males. It inhabits
+    wetland environments across Africa and southern Asia, favouring swamps and the
+    margins of lakes and rivers where it can forage among shallow waters and vegetation.
+
+
+    This species exhibits an unusual breeding system where females are polyandrous,
+    mating with multiple males. The males take on the responsibility of incubating
+    eggs and rearing chicks, while females focus on territory defence and reproduction.
+    This role reversal is rare among waders and makes the greater painted-snipe particularly
+    interesting to observe during breeding season.
+
+
+    The bird''s compact size and cryptic colouration when at rest make it challenging
+    to spot, despite its bold markings. Its preference for dense wetland habitats
+    means it is often heard rather than seen, though patient observation in suitable
+    locations can reward the keen birdwatcher with sightings of this unusual and fascinating
+    species.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller endast information om rallbeckasinens könsroller
+    och familjetillhörighet, men ingen information om dess förekomst i Skandinavien/Nordeuropa
+    eller migrationsmönster under året.'
+  en: '# Greater Painted-snipe in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The source material provided contains no information regarding the occurrence,
+    migration patterns, or seasonal presence of the greater painted-snipe in Scandinavia
+    or Northern Europe. The species is described as widely distributed across Africa
+    and southern Asia in wetland habitats, but specific details about its movements
+    in northern regions are not included in the available text.'
+image_refs:
+- role: hero
+  path: Q31617/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater Painted Snipe Rostratula
+    benghalensis Female DSCN5302 (21).jpg
+  commons_filename: Greater Painted Snipe Rostratula benghalensis Female DSCN5302
+    (21).jpg
+- role: secondary
+  path: Q31617/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater Painted Snipe Rostratula
+    benghalensis Female DSCN5302 (22).jpg
+  commons_filename: Greater Painted Snipe Rostratula benghalensis Female DSCN5302
+    (22).jpg
+- role: secondary
+  path: Q31617/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Greater Painted Snipe Rostratula
+    benghalensis male DSCN5302 (10).jpg
+  commons_filename: Greater Painted Snipe Rostratula benghalensis male DSCN5302 (10).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:45:20.093874+00:00'
+sources:
+  wikipedia_sv_revision: '57927447'
+  wikipedia_en_revision: '1352412070'
+  claude_model: claude-haiku-4-5-20251001

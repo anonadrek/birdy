@@ -1,0 +1,124 @@
+id: Q18836
+scientific_name: Turnix sylvaticus
+taxonomy:
+  family: Turnicidae
+  family_sv: Springhöns
+  genus: Turnix
+  ioc_order: Charadriiformes
+names:
+  sv: Springhöna
+  en: Common Buttonquail
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Springhöna
+
+
+    Springhöna är den mest utbredda arten inom familjen springhöns. Denna lilla fågel
+    tillhör ordningen vadarfåglar trots sitt likartade utseende med hönsfåglar, vilket
+    längre tid var oklart. Arten är möjligen utdöd i Europa och förekommer huvudsakligen
+    i värmare regioner.
+
+
+    Springhöna är en mycket liten och väl dold fågel som föredrar öppna, grässatta
+    biotoper och tidiga snår. Det är en mycket krypande fågel som sällan flyger på
+    längre sträckor och föredrar att springa undan när det hotas. Arten är främst
+    aktiv på natten och tidig morgon när den söker föda bestående av frön och små
+    ryggradslösa djur.'
+  en: '# Common Buttonquail
+
+
+    The common buttonquail is a small, quail-like bird belonging to the buttonquail
+    family, though it is not closely related to true quails despite their similar
+    appearance. It is also known by the names Kurrichane buttonquail and Andalusian
+    hemipode, reflecting its distribution across different regions.
+
+
+    This diminutive bird is cryptic and difficult to observe in the field. It inhabits
+    grasslands and scrubby areas, preferring dense vegetation where it can move about
+    on the ground with ease. The species is primarily terrestrial, spending most of
+    its time foraging among grasses and low vegetation rather than taking to flight.
+
+
+    The common buttonquail is more often heard than seen. Its distinctive call is
+    a characteristic feature that aids identification, particularly during breeding
+    season. The bird''s secretive nature and preference for remaining hidden in vegetation
+    make it a challenging species for birdwatchers to locate, even in areas where
+    it is relatively common. Its small size and cryptic plumage provide excellent
+    camouflage in its preferred habitat.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    Migration data unavailable for this species.
+
+
+    ---
+
+
+    **Förklaring:** Källtexten innehåller ingen information om springhönans migration,
+    övervintring eller förekomst i Skandinavien/Nordeuropa under året. Texten nämner
+    endast att arten är möjligen utdöd i Europa, vilket gör att migrationsdata inte
+    är relevant för denna region.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains only taxonomic and nomenclatural information
+    about the Common Buttonquail, with no details regarding its occurrence in Scandinavia,
+    Northern Europe, migration patterns, overwintering behavior, or seasonal presence.
+    To provide accurate information about this species'' movements throughout the
+    year in northern regions, additional sources with specific biogeographical and
+    phenological data would be required.'
+image_refs:
+- role: hero
+  path: Q18836/hero.jpg
+  width: 2048
+  height: 1536
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2401694">William
+    Stephens</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turnix sylvaticus 64607517.jpg
+  commons_filename: Turnix sylvaticus 64607517.jpg
+- role: secondary
+  path: Q18836/secondary-1.jpg
+  width: 1800
+  height: 1205
+  license: CC BY-SA 2.0
+  author: node worx
+  source_url: https://commons.wikimedia.org/wiki/File:Turnix sylvaticus 1.jpg
+  commons_filename: Turnix sylvaticus 1.jpg
+- role: secondary
+  path: Q18836/secondary-2.jpg
+  width: 1800
+  height: 1429
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D0%A1%D1%82%D0%B5%D1%84%D0%B0%D0%BD%D0%BA%D0%BE1982"
+    title="User:Стефанко1982">Стефанко1982</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Turnix sylvaticus dist.png
+  commons_filename: Turnix sylvaticus dist.png
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:45:41.248322+00:00'
+sources:
+  wikipedia_sv_revision: '58617069'
+  wikipedia_en_revision: '1324612519'
+  claude_model: claude-haiku-4-5-20251001

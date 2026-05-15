@@ -2262,6 +2262,7 @@
   ioc_order: Accipitriformes
   common_en: Osprey
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q27227
   scientific_name: Elanus caeruleus
   family: Accipitridae
@@ -3091,6 +3092,7 @@
   ioc_order: Passeriformes
   common_en: Bearded Reedling
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q899345
   scientific_name: Alaemon alaudipes
   family: Alaudidae

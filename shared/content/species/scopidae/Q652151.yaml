@@ -1,0 +1,102 @@
+id: Q652151
+scientific_name: Scopus umbretta
+taxonomy:
+  family: Scopidae
+  family_sv: Scopidae
+  genus: Scopus
+  ioc_order: Pelecaniformes
+names:
+  sv: Skuggstork
+  en: Hamerkop
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Hamerkop
+
+
+    The hamerkop is a distinctive medium-sized waterbird with brown plumage and an
+    unmistakable silhouette. Its most striking feature is its large head, which bears
+    a prominent crest and long, heavy bill that combine to create a hammer-like profile—the
+    origin of its name. It is the only living member of the family Scopidae, and genetic
+    research has revealed it is most closely related to pelicans and the shoebill,
+    rather than to storks as previously thought.
+
+
+    Hamerkops are highly adaptable waterbirds, inhabiting diverse wetland environments
+    including estuaries, lakesides, fish ponds, riverbanks, and rocky coasts. They
+    are generally sedentary, though they undertake local movements in response to
+    water availability. The species is found across mainland Africa, Madagascar, and
+    parts of Arabia, making it relatively widespread throughout its range.
+
+
+    Little is detailed about their specific behaviours and vocalizations in the source
+    material, though they are known to be solitary or found in pairs rather than in
+    flocks. Their presence is often betrayed by their distinctive appearance and preference
+    for shallow waters where they forage.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The hamerkop is primarily found in Africa, Madagascar, and Arabia, and there is
+    no information in the provided source text about its occurrence in Scandinavia
+    or Northern Europe. The species is described as sedentary with only local movements,
+    but no specific migration patterns related to northern European regions are documented
+    in this source material.'
+image_refs:
+- role: hero
+  path: Q652151/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hamerkop (Scopus umbretta),
+    Kenya.jpg
+  commons_filename: Hamerkop (Scopus umbretta), Kenya.jpg
+- role: secondary
+  path: Q652151/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/41601691@N02">Tim
+    Strater</a> from Rotterdam, Nederland
+  source_url: https://commons.wikimedia.org/wiki/File:Scopus umbretta -Diergaarde
+    Blijdorp, Rotterdam, Netherlands-8a.jpg
+  commons_filename: Scopus umbretta -Diergaarde Blijdorp, Rotterdam, Netherlands-8a.jpg
+- role: secondary
+  path: Q652151/secondary-2.jpg
+  width: 1800
+  height: 1318
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/7997249@N06">hyper7pro</a>
+    from Secunda, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Scopus umbretta -Kruger National
+    Park, South Africa-8a.jpg
+  commons_filename: Scopus umbretta -Kruger National Park, South Africa-8a.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:45:40.533242+00:00'
+sources:
+  wikipedia_sv_revision: '58604981'
+  wikipedia_en_revision: '1350055873'
+  claude_model: claude-haiku-4-5-20251001

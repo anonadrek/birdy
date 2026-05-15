@@ -1,0 +1,101 @@
+id: Q686600
+scientific_name: Phaethon aethereus
+taxonomy:
+  family: Phaethontidae
+  family_sv: Tropikfåglar
+  genus: Phaethon
+  ioc_order: Phaethontiformes
+names:
+  sv: Rödnäbbad tropikfågel
+  en: Red-billed Tropicbird
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red-billed Tropicbird
+
+
+    The red-billed tropicbird is an elegant seabird of tropical oceans, instantly
+    recognizable by its mostly white plumage contrasted with black markings on the
+    wings and back, a distinctive black mask, and a bright red bill. Its most striking
+    feature is the pair of extremely long tail streamers, which typically extend about
+    twice the bird''s body length—notably longer in males than females. Three subspecies
+    are recognized: the nominate form found in the southern Atlantic; *indicus*, smaller
+    with a more restricted mask and orange-tinted bill, inhabiting waters off the
+    Middle East and Indian Ocean; and *mesonauta*, displaying a rosy tinge to fresh
+    plumage, occurring in eastern Atlantic and Pacific waters and the Caribbean.
+
+
+    Though superficially resembling a tern, the red-billed tropicbird is a distinctive
+    tropical seabird adapted to life far from land. It ranges widely across tropical
+    Atlantic, eastern Pacific, and Indian Ocean waters. The species has been documented
+    since at least 1758, when Carl Linnaeus described it in his seminal work. With
+    its combination of elegant white plumage, dramatic tail streamers, and vibrant
+    red bill, it remains one of the most visually striking seabirds of warm waters.'
+migration:
+  sv: ''
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provides distribution information for the Red-billed Tropicbird
+    across tropical oceans (Atlantic, Pacific, and Indian), but contains no information
+    about migration patterns, seasonal movements, or occurrence in Scandinavia/Northern
+    Europe. This species is restricted to tropical waters and does not naturally occur
+    in or migrate through Northern European regions.'
+image_refs:
+- role: hero
+  path: Q686600/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-billed tropicbird (Phaethon
+    aethereus mesonauta) with chick.jpg
+  commons_filename: Red-billed tropicbird (Phaethon aethereus mesonauta) with chick.jpg
+- role: secondary
+  path: Q686600/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-billed tropicbird (Phaethon
+    aethereus mesonauta) chick.jpg
+  commons_filename: Red-billed tropicbird (Phaethon aethereus mesonauta) chick.jpg
+- role: secondary
+  path: Q686600/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-billed tropicbird (Phaethon
+    aethereus mesonauta) nesting.jpg
+  commons_filename: Red-billed tropicbird (Phaethon aethereus mesonauta) nesting.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:46:27.196492+00:00'
+sources:
+  wikipedia_sv_revision: '55718014'
+  wikipedia_en_revision: '1342112487'
+  claude_model: claude-haiku-4-5-20251001

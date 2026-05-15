@@ -1,0 +1,132 @@
+id: Q25247
+scientific_name: Upupa epops
+taxonomy:
+  family: Upupidae
+  family_sv: Upupidae
+  genus: Upupa
+  ioc_order: Bucerotiformes
+names:
+  sv: Härfågel
+  en: Common Hoopoe
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Härfågel (Upupa epops)
+
+
+    Härfågeln är en mycket iögonfallande fågel med karakteristisk färgteckning i svart,
+    vitt och orange. Det mest utmärkande draget är den spektakulär fjäderplym på huvudet
+    som det reser upp när det blir upphetsad eller hotad. Huvudet, bröstet och undersidan
+    är orange-röda, medan vingarna och ryggen är svart-vita med ett nästan schackrutigt
+    mönster. Det har också en lång, något nedåtkrökt näbb.
+
+
+    Härfågeln är känd för sitt distinkt och vittljudande läte – namnet härfågel kommer
+    från dess karakteristiska "hup-hup-hup"-rop. Det söker födan på marken genom att
+    sticka näbben ner i jorden och gräs efter insekter, larver och andra invertebrat.
+    Fågeln förflyttar sig på marken med en något skakig gång.
+
+
+    Arten återfinns spritt över stora delar av Europa, Asien och Afrika, ofta i öppna
+    och halvöppna miljöer med måttlig växtlighet. Det föredrar varmare områden och
+    ses vanligtvis under värre årstider.'
+  en: '# Common Hoopoe
+
+
+    The Common Hoopoe is a striking, colourful bird instantly recognizable by its
+    distinctive crown of feathers, which it raises and lowers at will. This dramatic
+    feature, along with its warm buff and black plumage, makes it unmistakable in
+    the field. The bird is found across Europe, Asia, and Africa, occupying a wide
+    range that spans these continents.
+
+
+    Common Hoopoes are generally common throughout their range and maintain a large
+    population, resulting in a Least Concern conservation status. However, numbers
+    have been declining in Western Europe in recent years, though populations remain
+    stable or are even increasing in other regions. The species shows varying patterns
+    of residency depending on location, with some populations remaining year-round
+    in their territories while others are migratory.
+
+
+    The hoopoe''s appearance and behaviour make it a favourite among birdwatchers.
+    It typically feeds on the ground, probing for insects, and its distinctive crown
+    serves both as a recognition signal and in territorial displays. The bird''s presence
+    adds character to open and semi-open habitats where it can be encountered across
+    its broad geographic range.'
+migration:
+  sv: '# Härfågel - Förekomst i Skandinavien och Nordeuropa
+
+
+    Härfågeln är en flyttfågel som förekommer oregelbundet i Skandinavien och Nordeuropa.
+    Den är framför allt en sommarbesökare som ankommer under våren, huvudsakligen
+    från april till maj, för att häcka i södra och mellersta delarna av regionen.
+    Under hösten drar härfåglar söderut för att övervintring i Afrika och södra Europa.
+    Arten har visat tendenser till att utöka sitt utbredningsområde norrut på senare
+    år, men den är fortfarande en relativt ovanlig fågel i denna del av världen. Övervintrare
+    är mycket sällsynta i området.'
+  en: '# Common Hoopoe in Scandinavia/Northern Europe
+
+
+    The Common Hoopoe is a summer visitor to Scandinavia and Northern Europe, arriving
+    in spring to breed during the warmer months before departing southward in autumn.
+    While the species has expanded its range northward in recent decades, it remains
+    a scarce and irregular visitor to the Nordic region. Birds typically arrive in
+    late April or May and depart by September, with occasional sightings extending
+    into early autumn. The hoopoe does not overwinter in Scandinavia, as it requires
+    open ground for foraging and cannot sustain itself during harsh winters. Population
+    numbers in Western Europe have shown overall decline, though the species remains
+    common across much of southern and central Europe.'
+image_refs:
+- role: hero
+  path: Q25247/hero.jpg
+  width: 2400
+  height: 1800
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/124103604@N02">cotterillmike</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Upupa epops senegalensis, Ethiopia
+    (26528065293).jpg
+  commons_filename: Upupa epops senegalensis, Ethiopia (26528065293).jpg
+- role: secondary
+  path: Q25247/secondary-1.jpg
+  width: 1800
+  height: 1216
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Hoopoe. Upupa epops (32742451400).jpg
+  commons_filename: Hoopoe. Upupa epops (32742451400).jpg
+- role: secondary
+  path: Q25247/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:%D7%9E%D7%99%D7%A0%D7%95%D7%96%D7%99%D7%92"
+    title="User:מינוזיג">מינוזיג</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Upupa epops, SandBath.jpg
+  commons_filename: Upupa epops, SandBath.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:45:18.879629+00:00'
+sources:
+  wikipedia_sv_revision: '59197758'
+  wikipedia_en_revision: '1350762486'
+  claude_model: claude-haiku-4-5-20251001

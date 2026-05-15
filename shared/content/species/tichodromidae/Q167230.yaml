@@ -1,0 +1,134 @@
+id: Q167230
+scientific_name: Tichodroma muraria
+taxonomy:
+  family: Tichodromidae
+  family_sv: Tichodromidae
+  genus: Tichodroma
+  ioc_order: Passeriformes
+names:
+  sv: Murkrypare
+  en: Wallcreeper
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Murkrypare
+
+
+    Murkrypare är en liten och karakteristisk fågel som är ensamstående art i sitt
+    släkte. Den återfinns på höga höjder i bergstrakter över hela Eurasien, där den
+    är anpassad till extrema miljöer.
+
+
+    Denna lilla tätting är känd för sitt spektakulära utseende när den flyger – vingarna
+    visar då en slående röd färg som kontrasterar mot den gråa huvudkroppen. På marken
+    och när den vilar är färgerna mer diskreta. Fågeln är mycket specialiserad på
+    att söka föda i bergstäder och sprickor, där den söker insekter och spindlar med
+    sin spetsiga näbb.
+
+
+    Murkrypare är en skicklig klättrare som gärna rör sig på bergväggar och klippor,
+    vilket även namnet antyder. Familjetillhörigheten diskuteras fortfarande bland
+    ornitologer, men fågeln utgör sin egen familj Tichodromidae. Den är en anpassad
+    bergsfågel som bäst ses i höga alpina och subalpina bergstrakter där klimatet
+    är hårt och biotopen begränsad.'
+  en: '# Wallcreeper
+
+
+    The wallcreeper is a distinctive small bird of high mountain regions across the
+    Palearctic, from southern Europe eastward to central China. It is the sole living
+    member of its genus and family, making it a unique species without close relatives.
+
+
+    This striking bird features predominantly grey plumage with a contrasting black
+    throat and bright crimson-red wings that become particularly conspicuous in flight.
+    Its thin, slightly curved bill is adapted for probing into rock crevices. The
+    wallcreeper displays acrobatic behaviour, creeping along steep cliff faces and
+    rock walls with jerky, deliberate movements, rather like an insect. It uses its
+    wing pattern extensively in displays, fluttering them to reveal the vivid red
+    coloring.
+
+
+    The wallcreeper''s call is a clear, piping whistle that echoes across mountain
+    slopes. It inhabits rocky alpine and subalpine areas, preferring steep cliffs,
+    gorges, and rocky outcrops where it forages for insects and spiders hidden in
+    crevices. In winter, some populations descend to lower altitudes, occasionally
+    appearing on stone buildings and quarries. The species is generally solitary and
+    territorial, remaining largely inconspicuous except when its striking wing pattern
+    flashes during display or flight.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: '# Wallcreeper (Tichodroma muraria) in Northern Europe
+
+
+    The wallcreeper is an extremely rare visitor to Scandinavia and Northern Europe,
+    with no established resident or regular migrant population in the region. This
+    high-mountain specialist is primarily found in southern European alpine zones
+    and typically does not occur north of the Alps during the breeding season. Occasional
+    winter wanderers or vagrants have been recorded in northern areas during harsh
+    weather conditions, when some individuals may descend to lower elevations and
+    disperse northward from their core mountain ranges. Such occurrences remain highly
+    irregular and unpredictable, making the species an exceptional sighting rather
+    than a seasonal visitor to Scandinavia.'
+image_refs:
+- role: hero
+  path: Q167230/hero.jpg
+  width: 2400
+  height: 2387
+  license: CC BY-SA 4.0
+  author: <bdi><a href="https://www.wikidata.org/wiki/Q54800218" class="extiw" title="d:Q54800218"><span
+    title="Scottish wildlife photographer">Charles J. Sharp</span></a></bdi>
+  source_url: https://commons.wikimedia.org/wiki/File:Wallcreeper (Tichodroma muraria)
+    female composite Piatra Craiului.jpg
+  commons_filename: Wallcreeper (Tichodroma muraria) female composite Piatra Craiului.jpg
+- role: secondary
+  path: Q167230/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Cyornis&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Cyornis (page does not exist)">Raman Kumar</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Wallcreeper - Tichodroma muraria
+    - P1050326.jpg
+  commons_filename: Wallcreeper - Tichodroma muraria - P1050326.jpg
+- role: secondary
+  path: Q167230/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Cyornis&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Cyornis (page does not exist)">Raman Kumar</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Wallcreeper - Tichodroma muraria
+    - P1050384.jpg
+  commons_filename: Wallcreeper - Tichodroma muraria - P1050384.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:46:38.909670+00:00'
+sources:
+  wikipedia_sv_revision: '59077517'
+  wikipedia_en_revision: '1353440172'
+  claude_model: claude-haiku-4-5-20251001

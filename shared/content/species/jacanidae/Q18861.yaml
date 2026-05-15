@@ -1,0 +1,105 @@
+id: Q18861
+scientific_name: Hydrophasianus chirurgus
+taxonomy:
+  family: Jacanidae
+  family_sv: Jacanor
+  genus: Hydrophasianus
+  ioc_order: Charadriiformes
+names:
+  sv: Fasanjaçana
+  en: Pheasant-tailed Jacana
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Pheasant-tailed Jacana
+
+
+    The pheasant-tailed jacana is a distinctive wader with exceptionally long toes
+    and nails that allow it to walk effortlessly across floating vegetation in shallow
+    lakes and wetlands. During breeding season, it displays elegant plumage with a
+    dark body, white neck, and notably long tail feathers that give the species its
+    name. In non-breeding plumage, it appears considerably duller. This species is
+    unique among jacanas for undertaking long-distance seasonal migrations across
+    tropical Asia, from Yemen eastward to the Philippines.
+
+
+    It forages by walking delicately on aquatic plants or swimming while searching
+    for invertebrate prey. The pheasant-tailed jacana exhibits unusual breeding behaviour:
+    females are noticeably larger than males and are polyandrous, meaning they mate
+    with multiple males. Each male within a female''s territory incubates and raises
+    separate clutches of eggs, a remarkable division of parental duties that reduces
+    the female''s burden.
+
+
+    This jacana inhabits shallow wetlands, rice paddies, and lakes with abundant floating
+    vegetation throughout tropical Asian regions. Its seasonal movements make it an
+    unpredictable visitor in parts of its range, though it may be locally common during
+    appropriate seasons in suitable habitat.'
+migration:
+  sv: ''
+  en: '# Pheasant-tailed Jacana in Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The pheasant-tailed jacana is a tropical Asian species found from Yemen to the
+    Philippines, with no established presence in Scandinavia or Northern Europe. While
+    the species is noted for undertaking seasonal movements and long-distance migrations
+    within its tropical range, it does not naturally occur in Northern European waters
+    or habitats.'
+image_refs:
+- role: hero
+  path: Q18861/hero.jpg
+  width: 1536
+  height: 2048
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/leaf0605">leaf0605</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hydrophasianus chirurgus, Meinonghu
+    Park, Taiwan 2.jpg
+  commons_filename: Hydrophasianus chirurgus, Meinonghu Park, Taiwan 2.jpg
+- role: secondary
+  path: Q18861/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/leaf0605">leaf0605</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hydrophasianus chirurgus, Meinonghu
+    Park, Taiwan 6.jpg
+  commons_filename: Hydrophasianus chirurgus, Meinonghu Park, Taiwan 6.jpg
+- role: secondary
+  path: Q18861/secondary-2.jpg
+  width: 1800
+  height: 1350
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/leaf0605">leaf0605</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hydrophasianus chirurgus, Meinonghu
+    Park, Taiwan 8.jpg
+  commons_filename: Hydrophasianus chirurgus, Meinonghu Park, Taiwan 8.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:46:12.319361+00:00'
+sources:
+  wikipedia_sv_revision: '56949429'
+  wikipedia_en_revision: '1314598896'
+  claude_model: claude-haiku-4-5-20251001

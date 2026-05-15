@@ -1,0 +1,117 @@
+id: Q727891
+scientific_name: Hypocolius ampelinus
+taxonomy:
+  family: Hypocoliidae
+  family_sv: Hypocoliidae
+  genus: Hypocolius
+  ioc_order: Passeriformes
+names:
+  sv: Hypokolius
+  en: Grey Hypocolius
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Hypokolius (Grey Hypocolius)
+
+
+    Hypokolius är en fascinerande fågel som utgör en egen familj inom tättsläktet
+    och är nära släkt med sidensvansar. Det är en medelstor fågel med elegant utseende
+    och grå fjäderdräkt. Arten förekommer i delar av Mellanöstern, där den återfinns
+    i täta buskage och träd.
+
+
+    Fågeln är till sitt väsen ganska diskret och livnär sig på frön och bär. Det rör
+    sig ofta i smågrupper eller små flockar, särskilt under vintermånaderna. Hypokolius
+    är en lugn och försiktig fågel som inte lätt uppmärksammar sig själv.
+
+
+    Arten är relativt okänd för de flesta fågelskådare utanför sitt naturliga utbredningsområde,
+    men för den intresserade amatören erbjuder den en spännande möjlighet att få se
+    en av världens mest enskilda fågelfamiljer.'
+  en: '# Grey Hypocolius
+
+
+    The grey hypocolius is a distinctive small passerine with a notably slender build
+    and long tail. It represents the sole member of its own family, Hypocoliidae,
+    making it taxonomically unique. The bird''s appearance is characterized by elegant,
+    understated plumage suited to arid environments.
+
+
+    This species inhabits dry semi-desert regions across northern Africa, the Arabian
+    Peninsula, Afghanistan, Pakistan, and western India. It is highly social, typically
+    seen in flocks that move together through its range. The hypocolius is primarily
+    frugivorous, foraging extensively on fruit, though it supplements its diet with
+    insects. During winter months, it undertakes southward migrations in search of
+    better food availability. While migrating, flocks are frequently observed feeding
+    on the fruit of *Salvadora persica*, a drought-resistant tree common throughout
+    its range.
+
+
+    The hypocolius exemplifies adaptation to arid environments through its gregarious
+    behavior and flexible diet, allowing it to exploit seasonal fruit availability
+    across semi-desert landscapes.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    The source text only provides information about the bird''s taxonomic classification
+    and general geographic range (parts of the Middle East), but contains no specific
+    information about occurrence in Scandinavia/Northern Europe or migration patterns
+    throughout the year.'
+  en: '# Grey Hypocolius - Scandinavian Occurrence
+
+
+    Migration data unavailable for this species.
+
+
+    The Grey Hypocolius is a resident of dry semi-desert regions in northern Africa,
+    Arabia, Afghanistan, Pakistan, and western India. It does not occur naturally
+    in Scandinavia or Northern Europe. While the species is known to undertake seasonal
+    migrations within its native range, moving southward during winter months, it
+    has no documented occurrence in Scandinavian territories at any time of year.'
+image_refs:
+- role: hero
+  path: Q727891/hero.jpg
+  width: 2048
+  height: 1244
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/people/spint">spint</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hypocolius ampelinus, Al Jahra,
+    Kuwait 448001931.jpg
+  commons_filename: Hypocolius ampelinus, Al Jahra, Kuwait 448001931.jpg
+- role: secondary
+  path: Q727891/secondary-1.jpg
+  width: 1800
+  height: 1013
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/1188725">Nishant
+    Purushottam Berde</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Hypocolius ampelinus in Rann
+    of Kutch, Gujarat, India.jpg
+  commons_filename: Hypocolius ampelinus in Rann of Kutch, Gujarat, India.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:45:41.475604+00:00'
+sources:
+  wikipedia_sv_revision: '58558708'
+  wikipedia_en_revision: '1350438357'
+  claude_model: claude-haiku-4-5-20251001

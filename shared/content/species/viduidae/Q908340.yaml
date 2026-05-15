@@ -1,0 +1,124 @@
+id: Q908340
+scientific_name: Vidua macroura
+taxonomy:
+  family: Viduidae
+  family_sv: Änkor
+  genus: Vidua
+  ioc_order: Passeriformes
+names:
+  sv: Dominikaneränka
+  en: Pin-tailed Whydah
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Dominikaneränka
+
+
+    Dominikaneränka är en iögonfallande svartvit fågel där hanen är särskilt anmärkningsvärd
+    för sina dramatiskt förlängda stjärtfjädrar. Denna fågel tillhör familjen änkor
+    och är en av många arter inom denna grupp som är boparasiter – det vill säga att
+    arten lägger sina ägg i andra fågels bon för att få dem att ta hand om ungarna.
+
+
+    Arten förekommer naturligt i Afrika, men människan har introducerat den i flera
+    andra världsdelar där den nu är etablerad. Dominikaneränkan är en medlem av ordningen
+    tättingar och håller sig ofta i öppna och halvöppna habitat. De långa stjärtfjädrarna
+    hos hanen spelar en viktig roll under parningen och görs väl synliga under flykt
+    och baltsande.
+
+
+    Som boparasit är dominikaneränkan helt beroende av värdarters villiga acceptans
+    för att föröka sig, ett fascinerade exempel på hur vissa fåglar utvecklats för
+    att utnyttja andra arternas föräldravård.'
+  en: '# Pin-tailed Whydah
+
+
+    The pin-tailed whydah is a small African songbird instantly recognizable by its
+    extraordinary breeding plumage. Males in breeding condition display a dramatic
+    long, needle-like tail that streams behind them in flight, creating a distinctive
+    silhouette. The body is predominantly black and white, with the contrasting plumage
+    making breeding males unmistakable. Non-breeding males and females lack the elongated
+    tail and appear much more subdued in coloration.
+
+
+    This species is found across much of Africa south of the Sahara, where it inhabits
+    open grasslands and savanna regions. It is primarily a resident breeder throughout
+    its range, remaining in suitable habitat year-round. The pin-tailed whydah is
+    often observed in small flocks, particularly outside the breeding season, and
+    it forages on the ground for seeds and insects.
+
+
+    Like other whydahs, it is a brood parasite, laying its eggs in the nests of other
+    bird species, primarily estrildid finches. The males are known for their conspicuous
+    courtship displays, where they fly low over grassland with exaggerated wingbeats,
+    showcasing their remarkable tail feathers to attract females.'
+migration:
+  sv: Migrationsdata saknas för denna art.
+  en: 'Migration data unavailable for this species.
+
+
+    The source text indicates that the pin-tailed whydah is a resident breeding bird
+    in most of Africa south of the Sahara Desert, with no information provided about
+    its occurrence in Scandinavia or Northern Europe. This species is not part of
+    the regular avifauna of these regions and therefore lacks documented migration
+    patterns relevant to the Nordic countries.'
+image_refs:
+- role: hero
+  path: Q908340/hero.jpg
+  width: 2400
+  height: 1463
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Pin-tailed whydah, Vidua macroura,
+    at Pilanesberg National Park, Northwest Province, South Africa (male) (16372473053).jpg
+  commons_filename: Pin-tailed whydah, Vidua macroura, at Pilanesberg National Park,
+    Northwest Province, South Africa (male) (16372473053).jpg
+- role: secondary
+  path: Q908340/secondary-1.jpg
+  width: 1259
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Pin-tailed whydah, Vidua macroura,
+    at Pilanesberg National Park, Northwest Province, South Africa (male) (16966637496).jpg
+  commons_filename: Pin-tailed whydah, Vidua macroura, at Pilanesberg National Park,
+    Northwest Province, South Africa (male) (16966637496).jpg
+- role: secondary
+  path: Q908340/secondary-2.jpg
+  width: 1242
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/93242958@N00">Derek
+    Keats</a> from Johannesburg, South Africa
+  source_url: https://commons.wikimedia.org/wiki/File:Pin-tailed whydah, Vidua macroura,
+    at Pilanesberg National Park, Northwest Province, South Africa (male) (16992580755).jpg
+  commons_filename: Pin-tailed whydah, Vidua macroura, at Pilanesberg National Park,
+    Northwest Province, South Africa (male) (16992580755).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:45:53.885231+00:00'
+sources:
+  wikipedia_sv_revision: '55576527'
+  wikipedia_en_revision: '1329363288'
+  claude_model: claude-haiku-4-5-20251001

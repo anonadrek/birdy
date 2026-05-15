@@ -1,0 +1,120 @@
+id: Q541440
+scientific_name: Terpsiphone viridis
+taxonomy:
+  family: Monarchidae
+  family_sv: Monarker
+  genus: Terpsiphone
+  ioc_order: Passeriformes
+names:
+  sv: Afrikansk paradismonark
+  en: African Paradise Flycatcher
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Afrikansk paradismonark
+
+
+    Afrikansk paradismonark är en liten fågel i familjen monarker som förekommer i
+    Afrika söder om Sahara och på södra Arabiska halvön. Det är en elegant insektätare
+    med karakteristisk utseende – honan är främst grå och vit medan hanen uppvisar
+    mer dramatisk färgprakt med kastanjebrunt på huvudet och vita delar kombinerat
+    med mörkare fjäderdräkt. Arten är känd för sitt aktiva jaktbeteende då den snabbt
+    navigerar genom vegetationen på jakt efter små insekter i luften.
+
+
+    Afrikansk paradismonark är en framträdande medlem av monarkfamiljen och anpassad
+    för liv i träden och busktäta miljöer. Arten ses ofta högt upp i kronorna där
+    den rör sig rastlöst mellan grenar. Arten är känd för sitt karakteristiska rop
+    som ofta hörs före fågeln själv blir synlig bland lövverket.'
+  en: '# African Paradise Flycatcher
+
+
+    The African Paradise Flycatcher is a striking medium-sized flycatcher immediately
+    recognizable by its extraordinary tail streamers in males, which commonly extend
+    more than twice the bird''s body length. Males display bold chestnut and rusty
+    upper parts contrasting with grey to blue-grey underparts and head. The mature
+    male''s head is particularly distinctive—glossy black with greenish highlights—while
+    the beak and bare facial wattle ring match the surrounding plumage. Females are
+    similar but noticeably less showy, with paler heads and more modest tail feathers
+    lacking the male''s dramatic streamers.
+
+
+    This bird is primarily an insectivore, foraging actively through woodland and
+    forest canopy. It exhibits characteristic flycatcher behaviour, sallying out to
+    catch prey in flight with agility that belies its impressive tail ornamentation.
+    The species occurs across sub-Saharan Africa in suitable woodland and forest habitats,
+    though specific range and call characteristics would benefit from additional sources
+    for complete guide coverage.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    ---
+
+
+    Migration data unavailable for this species.'
+  en: 'Migration data unavailable for this species.
+
+
+    The source text provided contains only morphological and plumage descriptions
+    of the African Paradise Flycatcher. It includes no information about occurrence
+    in Scandinavia/Northern Europe, migration patterns, overwintering behavior, or
+    seasonal arrival months. To provide accurate migration information for this species
+    in Northern Europe, additional sources would be required.'
+image_refs:
+- role: hero
+  path: Q541440/hero.jpg
+  width: 2048
+  height: 1366
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5121587">Kelly
+    Abram</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Terpsiphone viridis plumbeiceps
+    - Kelly Abram - 175484353.jpeg
+  commons_filename: Terpsiphone viridis plumbeiceps - Kelly Abram - 175484353.jpeg
+- role: secondary
+  path: Q541440/secondary-1.jpg
+  width: 1800
+  height: 1201
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5121587">Kelly
+    Abram</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Terpsiphone viridis plumbeiceps
+    - Kelly Abram - 175484419.jpeg
+  commons_filename: Terpsiphone viridis plumbeiceps - Kelly Abram - 175484419.jpeg
+- role: secondary
+  path: Q541440/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/5121587">Kelly
+    Abram</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Terpsiphone viridis plumbeiceps
+    - Kelly Abram - 175484243.jpeg
+  commons_filename: Terpsiphone viridis plumbeiceps - Kelly Abram - 175484243.jpeg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:45:22.174798+00:00'
+sources:
+  wikipedia_sv_revision: '56771817'
+  wikipedia_en_revision: '1316261143'
+  claude_model: claude-haiku-4-5-20251001

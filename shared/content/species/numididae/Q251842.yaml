@@ -1,0 +1,127 @@
+id: Q251842
+scientific_name: Numida meleagris
+taxonomy:
+  family: Numididae
+  family_sv: Pärlhöns
+  genus: Numida
+  ioc_order: Galliformes
+names:
+  sv: Hjälmpärlhöna
+  en: Helmeted Guineafowl
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Hjälmpärlhöna
+
+
+    Hjälmpärlhöna är en karakteristisk flocklevande hönsfågel som förekommer vilt
+    över stora delar av Afrika söder om Sahara. Arten är också etablerad som domesticerad
+    fågel i många delar av världen, särskilt i Frankrike och andra västerländska länder.
+
+
+    Hjälmpärlhönan är en medelstor hönsfågel med en distinktiv utseende. Kroppen är
+    överväxd med små vita prickar på mörk botten, vilket ger den ett karakteristiskt
+    pärlaktigt utseende. Huvudet är relativt litet och naket, med en välvd hjälmliknande
+    utväxt på hjässan – därav namnet.
+
+
+    Som flocklevande fågel rör sig hjälmpärlhönan gärna tillsammans med andra individer
+    och föredrar att söka föda på marken. Det är en aktiv fågel som ofta går och pickar
+    efter olika födan. Arten är känd för sitt högljudda beteende – både vilda och
+    domesticerade individer producerar karakteristiska, högljudda ljud som kan höras
+    från större avstånd.'
+  en: '# Helmeted Guineafowl
+
+
+    The Helmeted Guineafowl is the most recognizable member of the guinea fowl family
+    and the sole species in its genus. It is native to Africa, primarily in regions
+    south of the Sahara Desert. The bird has been extensively introduced worldwide
+    as a domesticated species, now found in the West Indies, North America, Colombia,
+    Brazil, Australia, and Europe.
+
+
+    The species is notable for its distinctive bare head topped with a prominent bony
+    helmet-like casque, which gives it its common name. Its plumage is dark with white
+    spots covering most of the body, creating a characteristic speckled appearance.
+    These medium-sized birds are highly social and often seen in small flocks moving
+    across open and semi-open habitats.
+
+
+    Helmeted Guineafowl are known for their loud, distinctive calls—a harsh, repetitive
+    cackling that carries across considerable distances. They are ground-feeders,
+    foraging for seeds, insects, and vegetation. While native to African savannas
+    and grasslands, introduced populations have adapted to various environments, often
+    becoming established in farmland and open woodland areas where they roost in trees
+    at night for protection.'
+migration:
+  sv: 'Migrationsdata saknas för denna art.
+
+
+    **Förklaring:** Källtexten innehåller ingen information om förekomst i Skandinavien/Nordeuropa
+    eller migrationsmönster. Hjälmpärlhönan är en afrikan art som är domesticerad
+    i västvärlden, men utan specifika uppgifter om förekomst och migration i Skandinavien
+    kan ingen faktabaserad beskrivning skrivas.'
+  en: 'Migration data unavailable for this species.
+
+
+    The Helmeted Guineafowl is native to sub-Saharan Africa and does not naturally
+    occur in Scandinavia or Northern Europe. While the species has been introduced
+    to various regions worldwide as a domesticated bird, the provided source text
+    contains no information regarding its occurrence, migration patterns, or seasonal
+    movements in Scandinavia or Northern Europe specifically.'
+image_refs:
+- role: hero
+  path: Q251842/hero.jpg
+  width: 2400
+  height: 1807
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:Leo_Johannes" class="mw-redirect"
+    title="User:Leo Johannes">Leo Johannes</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Numida meleagris at Skansen
+    spring 2008-3.JPG
+  commons_filename: Numida meleagris at Skansen spring 2008-3.JPG
+- role: secondary
+  path: Q251842/secondary-1.jpg
+  width: 1200
+  height: 1800
+  license: CC0
+  author: <a href="//commons.wikimedia.org/wiki/User:Hobbyfotowiki" title="User:Hobbyfotowiki">Hobbyfotowiki</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Helmeted guineafowl (Numida
+    meleagris), Kenya.jpg
+  commons_filename: Helmeted guineafowl (Numida meleagris), Kenya.jpg
+- role: secondary
+  path: Q251842/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/19731486@N07">Brian
+    Gratwicke</a> from DC, USA
+  source_url: https://commons.wikimedia.org/wiki/File:Numida meleagris -Cape Town,
+    South Africa -chick-8.jpg
+  commons_filename: Numida meleagris -Cape Town, South Africa -chick-8.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:46:06.823601+00:00'
+sources:
+  wikipedia_sv_revision: '55614136'
+  wikipedia_en_revision: '1351756957'
+  claude_model: claude-haiku-4-5-20251001
