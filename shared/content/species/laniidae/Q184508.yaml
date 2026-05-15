@@ -1,0 +1,109 @@
+id: Q184508
+scientific_name: Lanius excubitor
+taxonomy:
+  family: Laniidae
+  family_sv: Törnskator
+  genus: Lanius
+  ioc_order: Passeriformes
+names:
+  sv: Varfågel
+  en: Great Grey Shrike
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Great Grey Shrike
+
+
+    The great grey shrike is a large, predatory songbird with striking plumage that
+    makes it easily recognisable. Both males and females display pearly grey upperparts
+    contrasted with pure white underparts, and a distinctive black eye-mask that runs
+    across the face. This bold facial pattern, combined with its robust build, gives
+    it a formidable appearance befitting its predatory nature.
+
+
+    A skilled hunter, the great grey shrike hunts small birds, rodents, and large
+    insects from open perches, often impaling its prey on thorns or barbed wire—a
+    characteristic behaviour of shrikes. It tends to be rather solitary and perches
+    conspicuously while scanning for food, making it relatively easy to spot when
+    present. The species is typically found in open or semi-open habitats with scattered
+    trees and bushes, where it can maintain clear sight lines for hunting.
+
+
+    The great grey shrike forms a superspecies with several related southern populations,
+    including the Iberian grey shrike, Chinese grey shrike, and American loggerhead
+    shrike. Its call is described as harsh and varied, though details of its vocalisation
+    are less prominent than those of more vocal songbirds. Overall, it remains a distinctive
+    and impressive predator of open landscapes.'
+migration:
+  sv: ''
+  en: '# Great Grey Shrike in Scandinavia
+
+
+    The Great Grey Shrike is a winter visitor and passage migrant to Scandinavia,
+    arriving from eastern European and Asian breeding grounds in autumn. Birds begin
+    appearing in September and October, with populations peaking during winter months.
+    Some individuals remain through the coldest periods, particularly in southern
+    Scandinavia, while others move further south or continue to milder regions. Spring
+    departure occurs from March through May as birds return to breeding territories.
+    The species prefers open habitats with scattered trees and bushes, where it hunts
+    small birds and rodents from prominent perches.
+
+
+    Migration data in the provided source text is insufficient to provide complete
+    details about specific arrival and departure timing or the full extent of movements
+    throughout the annual cycle in Northern Europe.'
+image_refs:
+- role: hero
+  path: Q184508/hero.jpg
+  width: 2400
+  height: 1600
+  license: Public domain
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/alaskanps/">AlaskaNPS</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Northern Shrike Juvenile - Lanius
+    excubitor (20862911824).jpg
+  commons_filename: Northern Shrike Juvenile - Lanius excubitor (20862911824).jpg
+- role: secondary
+  path: Q184508/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Jaana_Siitonen&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Jaana Siitonen (page does not exist)">Jaana Siitonen</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lanius excubitor DSCN7720-01.jpg
+  commons_filename: Lanius excubitor DSCN7720-01.jpg
+- role: secondary
+  path: Q184508/secondary-2.jpg
+  width: 1800
+  height: 1309
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:KGF&amp;action=edit&amp;redlink=1"
+    class="new" title="User:KGF (page does not exist)">KGF</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lanius excubitor koenigi, Fuerteventura.jpg
+  commons_filename: Lanius excubitor koenigi, Fuerteventura.jpg
+review_status: approved
+review_notes: "Varfågel — juvenile Northern Shrike-hero; allmän SE vintergäst med svart ögonband + svart-vita vingar."
+generated_at: '2026-05-15T19:48:38.797571+00:00'
+sources:
+  wikipedia_sv_revision: '58478974'
+  wikipedia_en_revision: '1349410360'
+  claude_model: claude-haiku-4-5-20251001

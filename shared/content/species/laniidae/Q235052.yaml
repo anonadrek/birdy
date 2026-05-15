@@ -1,0 +1,133 @@
+id: Q235052
+scientific_name: Lanius senator
+taxonomy:
+  family: Laniidae
+  family_sv: Törnskator
+  genus: Lanius
+  ioc_order: Passeriformes
+names:
+  sv: Rödhuvad törnskata
+  en: Woodchat Shrike
+abundance: ovanlig
+iucn_status: NT
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Rödhuvad törnskata
+
+
+    Rödhuvad törnskata är en palearktisk tätting från familjen törnskator. Den är
+    en elegant rovfågel med karakteristisk färgteckning: svart och vitt på vingar
+    och rygg, samt en rostfärgad till röd hjässa och nacke som gett arten sitt namn.
+    Det är en medelstor törnskata med kraftig krok på näbben, vilket är typiskt för
+    familjen.
+
+
+    Arten häckar främst kring Medelhavet och västerut in i västra Asien, där den föredrar
+    öppna, glesa landskap med låg växtlighet. Under vintern söker den sig till Afrika
+    söder om Sahara. I norra Europa förekommer rödhuvad törnskata endast som tillfällig
+    gäst, och även i Sverige är den en sällsynt fågel med omkring 100 observerade
+    fynd totalt.
+
+
+    Rödhuvad törnskata är en rovfågel som jagar insekter och mindre djur från upphöjda
+    utsigtspunkter. Arten minskar kraftigt i antal, vilket har lett till att IUCN
+    klassificerar den som nära hotad.'
+  en: '# Woodchat Shrike
+
+
+    The woodchat shrike is easily identified by its distinctive red-brown crown and
+    nape, which contrasts with its darker back and wings. This medium-sized shrike
+    belongs to the Laniidae family and shares the characteristic hooked bill typical
+    of shrikes, an adaptation for its carnivorous lifestyle.
+
+
+    Primarily insectivorous, the woodchat shrike hunts from exposed perches in open
+    wooded habitats. It favours orchards, parkland, and scattered tree areas with
+    bare or sandy ground, where it can spot prey movement easily. Like other shrikes,
+    it may impale larger insects on thorns or twigs—a behaviour known as "lardering."
+
+
+    The species breeds across southern regions, including Europe, the Middle East,
+    and northwest Africa during spring and summer. As a long-distance migrant, it
+    undertakes impressive journeys to winter in tropical Africa, returning to breeding
+    grounds each year. Its preference for warm, open landscapes with good visibility
+    makes it a characteristic sight in Mediterranean and semi-arid environments during
+    the breeding season.'
+migration:
+  sv: '# Rödhuvad törnskata – Utbredning och migration i Nordeuropa
+
+
+    Rödhuvad törnskata är en sällsynt tillfällig gäst i Sverige och Nordeuropa. Arten
+    häckar huvudsakligen runt Medelhavet och västra Asien, medan den vintrar i Afrika
+    söder om Sahara. Under sin migration mellan häcknings- och övervintringsområdena
+    förekommer den sporadiskt i norra Europa, inklusive Sverige, där den registrerats
+    drygt 100 gånger. Som långdistansflyktare är observationer i Skandinavien begränsade
+    till migrationsperioderna, främst under våren och hösten, då enskilda individer
+    påträffas under sin förflyttning mellan Afrika och Medelhavsregionen.'
+  en: '# Woodchat Shrike (Rödhuvad törnskata) in Scandinavia/Northern Europe
+
+
+    The Woodchat Shrike is a scarce vagrant to Scandinavia and Northern Europe, with
+    no regular breeding population in the region. This species breeds in southern
+    Europe, the Middle East, and northwest Africa, wintering in tropical Africa. Occasional
+    individuals are recorded in southern Scandinavia during spring and autumn migration
+    periods, typically in May and August-September, representing overshoots from their
+    normal Mediterranean breeding range. The species does not establish established
+    migratory populations in Northern Europe and is not considered a regular seasonal
+    visitor to the region.'
+image_refs:
+- role: hero
+  path: Q235052/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Roodkopklauwier - woodchat shrike
+    - Lanius senator 2.jpg
+  commons_filename: Roodkopklauwier - woodchat shrike - Lanius senator 2.jpg
+- role: secondary
+  path: Q235052/secondary-1.jpg
+  width: 1800
+  height: 1557
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Woodchat Shrike. Lanius senator
+    - Flickr - gailhampshire (1).jpg
+  commons_filename: Woodchat Shrike. Lanius senator - Flickr - gailhampshire (1).jpg
+- role: secondary
+  path: Q235052/secondary-2.jpg
+  width: 1800
+  height: 1568
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/43272765@N04">gailhampshire</a>
+    from Cradley, Malvern, U.K
+  source_url: https://commons.wikimedia.org/wiki/File:Woodchat Shrike. Lanius senator
+    - Flickr - gailhampshire.jpg
+  commons_filename: Woodchat Shrike. Lanius senator - Flickr - gailhampshire.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:49:10.851381+00:00'
+sources:
+  wikipedia_sv_revision: '58984844'
+  wikipedia_en_revision: '1334400215'
+  claude_model: claude-haiku-4-5-20251001

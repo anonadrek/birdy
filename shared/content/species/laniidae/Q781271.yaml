@@ -1,0 +1,76 @@
+id: Q781271
+scientific_name: Lanius vittatus
+taxonomy:
+  family: Laniidae
+  family_sv: Törnskator
+  genus: Lanius
+  ioc_order: Passeriformes
+names:
+  sv: Indisk törnskata
+  en: Bay-backed Shrike
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: ''
+migration:
+  sv: ''
+  en: ''
+image_refs:
+- role: hero
+  path: Q781271/hero.jpg
+  width: 2400
+  height: 1920
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/9919745@N03">Ron
+    Knight</a> from Seaford, East Sussex, United Kingdom
+  source_url: https://commons.wikimedia.org/wiki/File:Bay-backed Shrike (Lanius vittatus)
+    (8605066417).jpg
+  commons_filename: Bay-backed Shrike (Lanius vittatus) (8605066417).jpg
+- role: secondary
+  path: Q781271/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bay-backed Shrike Lanius vittatus
+    courtship display DSCN3629.jpg
+  commons_filename: Bay-backed Shrike Lanius vittatus courtship display DSCN3629.jpg
+- role: secondary
+  path: Q781271/secondary-2.jpg
+  width: 1800
+  height: 1280
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Bay-backed Shrike Lanius vittatus
+    Saifei Uttar Pradesh DSCN8753 (2).jpg
+  commons_filename: Bay-backed Shrike Lanius vittatus Saifei Uttar Pradesh DSCN8753
+    (2).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:48:45.644113+00:00'
+sources:
+  wikipedia_sv_revision: '56416057'
+  wikipedia_en_revision: '1346801839'
+  claude_model: claude-haiku-4-5-20251001

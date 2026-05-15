@@ -1,0 +1,122 @@
+id: Q239393
+scientific_name: Lanius minor
+taxonomy:
+  family: Laniidae
+  family_sv: Törnskator
+  genus: Lanius
+  ioc_order: Passeriformes
+names:
+  sv: Svartpannad törnskata
+  en: Lesser Grey Shrike
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Svartpannad törnskata
+
+
+    Svartpannad törnskata är en medlem av törnska­torfamiljen och häckar i östra Europa,
+    västra Asien och på Iberiska halvön. Under vintern är arten en långdistansflyttare
+    som söker sig till södra Afrika. Beståndet anses vara livskraftigt, även om arten
+    visar en nedåtgående trend i antal.
+
+
+    Den svartpannande törnska­tan är en rovfågel med typiska törnska­toegenskaper.
+    Som många medlemmar av familjen lever den på mindre fåglar, insekter och små däggdjur.
+    Under häckningssäsongen är arten territorial och försvarar sitt revir aktivt.'
+  en: '# Lesser Grey Shrike
+
+
+    The lesser grey shrike is a medium-sized passerine with striking black and white
+    plumage. It features a distinctive black mask across the eyes, contrasting with
+    white underparts and pale grey upperparts. Its relatively short tail and stocky
+    build are characteristic of the shrike family, adapted for its predatory lifestyle.
+
+
+    This species is an active hunter, typically perching conspicuously on exposed
+    branches where it watches for prey with characteristic shrike behaviour—pouncing
+    on insects, small birds, and rodents from prominent vantage points. It often impales
+    larger prey on thorns or barbed wire, a behaviour typical of shrikes.
+
+
+    The lesser grey shrike breeds across south and central Europe and western Asia
+    during spring and summer, occupying open and semi-open habitats including grasslands
+    and cultivated areas. It is a long-distance migrant, departing for southern African
+    wintering grounds in early autumn and returning in spring. Birdwatchers in western
+    Europe may occasionally encounter individuals as spring or autumn vagrants, though
+    sightings remain uncommon. The species'' preference for open perching makes it
+    relatively easy to identify when present, though vagrant birds are rarely encountered
+    outside its established range.'
+migration:
+  sv: Svartpannad törnskata är en långdistansflyktare som endast förekommer i Skandinavien
+    och Nordeuropa under häckningstiden. Arten anländer till sina häckningsområden
+    i östra Europa under våren och börjar sin långa migration söderut när hösten nalkas.
+    Vintertid är arten helt frånvarande från norra Europa, då den flyttar till södra
+    Afrika för att övervintra. Populationen visar en nedåtgående trend, men arten
+    anses fortfarande ha ett livskraftigt bestånd över sitt stora utbredningsområde.
+  en: '# Lesser Grey Shrike in Northern Europe
+
+
+    The Lesser Grey Shrike is a scarce vagrant to Scandinavia and Northern Europe,
+    occurring primarily during spring and autumn migration periods. This species breeds
+    in Central and South Europe and western Asia, migrating to southern Africa for
+    winter. When appearing in Northern Europe, it typically arrives in spring or autumn
+    as an erratic vagrant, making sightings unpredictable and relatively uncommon.
+    The species does not establish breeding populations in Scandinavia and is not
+    a regular winter resident in the region.'
+image_refs:
+- role: hero
+  path: Q239393/hero.jpg
+  width: 2400
+  height: 1350
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser grey shrike (Lanius minor),
+    Kruger National Park, South Africa. - 52804244786.jpg
+  commons_filename: Lesser grey shrike (Lanius minor), Kruger National Park, South
+    Africa. - 52804244786.jpg
+- role: secondary
+  path: Q239393/secondary-1.jpg
+  width: 1800
+  height: 1013
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser grey shrike (Lanius minor),
+    Kruger National Park, South Africa.jpg
+  commons_filename: Lesser grey shrike (Lanius minor), Kruger National Park, South
+    Africa.jpg
+- role: secondary
+  path: Q239393/secondary-2.jpg
+  width: 1800
+  height: 1012
+  license: CC BY 2.0
+  author: Derek Keats
+  source_url: https://commons.wikimedia.org/wiki/File:Lesser grey shrike (Lanius minor),
+    Kruger National Park, South Africa. - 52804244971.jpg
+  commons_filename: Lesser grey shrike (Lanius minor), Kruger National Park, South
+    Africa. - 52804244971.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:48:45.045842+00:00'
+sources:
+  wikipedia_sv_revision: '58563203'
+  wikipedia_en_revision: '1349666256'
+  claude_model: claude-haiku-4-5-20251001

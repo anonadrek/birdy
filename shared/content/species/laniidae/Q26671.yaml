@@ -1,0 +1,105 @@
+id: Q26671
+scientific_name: Lanius collurio
+taxonomy:
+  family: Laniidae
+  family_sv: Törnskator
+  genus: Lanius
+  ioc_order: Passeriformes
+names:
+  sv: Törnskata
+  en: Red-backed Shrike
+abundance: allmän
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Red-backed Shrike
+
+
+    The red-backed shrike is a striking carnivorous passerine belonging to the shrike
+    family. Males display a distinctive appearance with a bright rufous-red back,
+    grey head, and black face mask, while females are duller with brownish tones.
+    It is a medium-sized bird with a notably hooked bill adapted for hunting small
+    prey.
+
+
+    This species is highly predatory, hunting insects, small birds, and rodents from
+    prominent perches. It often impales its prey on thorns or barbed wire—a characteristic
+    behaviour of shrikes—creating a "larder" for later consumption. The red-backed
+    shrike typically perches conspicuously on bushes and low trees, making quick sorties
+    to catch passing prey.
+
+
+    The bird is migratory, breeding across a broad range from western Europe eastwards
+    to central Russia. It favours open and semi-open habitats with scattered vegetation
+    and thorny bushes. After breeding, it winters in eastern and southern Africa,
+    undertaking a remarkable long-distance migration. During the breeding season,
+    it produces a pleasant warbling song, though it also utters harsh, scolding calls
+    when alarmed or defending territory.'
+migration:
+  sv: ''
+  en: '# Red-backed Shrike in Scandinavia/Northern Europe
+
+
+    The Red-backed Shrike is a summer visitor to Scandinavia and Northern Europe,
+    arriving in late May and early June to breed. It winters in tropical and southern
+    Africa, making it a long-distance migrant. Breeding pairs establish territories
+    in open and semi-open habitats across southern Scandinavia and central Europe.
+    The species departs breeding grounds in late August and September, undertaking
+    a substantial southbound migration to African wintering grounds. No Red-backed
+    Shrikes overwinter in the Nordic region.'
+image_refs:
+- role: hero
+  path: Q26671/hero.jpg
+  width: 2400
+  height: 1800
+  license: Public domain
+  author: <a href="//commons.wikimedia.org/wiki/User:AndreyA" title="User:AndreyA">user:AndreyA</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lanius collurio in Aleksandria
+    Garden 2.jpg
+  commons_filename: Lanius collurio in Aleksandria Garden 2.jpg
+- role: secondary
+  path: Q26671/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/w/index.php?title=User:Zerocool.marko&amp;action=edit&amp;redlink=1"
+    class="new" title="User:Zerocool.marko (page does not exist)">Zerocool.marko</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lanius collurio, mužjak, Spomenik
+    prirode Lisine (3).jpg
+  commons_filename: Lanius collurio, mužjak, Spomenik prirode Lisine (3).jpg
+- role: secondary
+  path: Q26671/secondary-2.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Jastrow" title="User:Jastrow">Marie-Lan
+    Taÿ Pamart</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lanius collurio female Gran
+    Paradiso 20190908 t103029.jpg
+  commons_filename: Lanius collurio female Gran Paradiso 20190908 t103029.jpg
+review_status: approved
+review_notes: "Törnskata — Lanius collurio från Aleksandria Garden; klassisk hane med rödbrun rygg + svart mask; allmän SE sommarfågel."
+generated_at: '2026-05-15T19:48:55.680078+00:00'
+sources:
+  wikipedia_sv_revision: '56627306'
+  wikipedia_en_revision: '1352773377'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,131 @@
+id: Q752678
+scientific_name: Lanius isabellinus
+taxonomy:
+  family: Laniidae
+  family_sv: Törnskator
+  genus: Lanius
+  ioc_order: Passeriformes
+names:
+  sv: Isabellatörnskata
+  en: Isabelline Shrike
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Isabellatörnskata
+
+
+    Isabellatörnskata är en medelstor törnskata med karakteristisk ljus, gulbeige
+    färgton över hela kroppen. Arten tillhör familjen törnskator och är mycket nära
+    släkt med andra asiatiska tårnekator samt den europeiska törnskatan.
+
+
+    Arten är en långdistansflyktare som häckar på höglandet under sommaren. Där jagar
+    den små fåglar, insekter och andra ryggradslösa djur från öppen, buskrik terräng.
+    Under vintermånaderna söker den sig söderut till fuktigare klimatzoner. Som många
+    törnskator är även denna art känd för sitt rovljusbeteende och förmåga att spetta
+    sitt byte på taggar och törnbuskar.
+
+
+    Isabellatörnskata påträffas bara undantagsvis i västra Europa, främst under höst-
+    och vinterperioderna, men globalt anses beståndet vara stabilt och livskraftigt.'
+  en: '# Isabelline Shrike
+
+
+    The isabelline shrike is a member of the shrike family, a group of predatory songbirds
+    known for their hooked bills and hunting prowess. Until recently, it was classified
+    as the same species as the red-backed shrike and red-tailed shrike, but is now
+    recognized as distinct.
+
+
+    It inhabits an extensive range across central Asia, from regions near the Caspian
+    Sea eastward through to north and central China, extending southward to the Qaidam
+    Basin. The species is migratory, breeding in its Asian range during summer months
+    before undertaking a substantial southward migration. It overwinters in Africa
+    and the Arabian Peninsula, making it a long-distance traveler between continents.
+
+
+    Like other shrikes, it is an active hunter, using its distinctive hooked bill
+    to capture prey. The species favors open and semi-open habitats where it can hunt
+    effectively. Further details about its specific appearance, vocalizations, and
+    behavior patterns would benefit from additional field guide sources, as the available
+    information focuses primarily on its taxonomy and geographic distribution.'
+migration:
+  sv: '# Isabellatörnskata i Skandinavien/Nordeuropa
+
+
+    Isabellatörnskata är en mycket sällsynt gäst i Skandinavien och övriga Nordeuropa.
+    Arten häckar i Mongoliet och västra Kinas högslätter och övervintra i södra Asien
+    och östra Afrika. Den påträffas endast tillfälligt i västra Europa, främst under
+    höstmigrationen. I Skandinavien förekommer arten sporadiskt under hösten som en
+    vagrant eller feltrasserande individ. Det finns ingen regelbunden migration till
+    eller genom området, utan observationer utgör undantag snarare än regel.'
+  en: '# Isabelline Shrike Migration in Northern Europe
+
+
+    The Isabelline Shrike is not a regular occurrence in Scandinavia or Northern Europe.
+    This species breeds in central Asia, between the Caspian Sea and north-central
+    China, and migrates south to overwinter in Africa and Arabia. While vagrant individuals
+    occasionally reach Europe during migration or winter dispersal, the species does
+    not have an established migratory route through or regular presence in Northern
+    Europe. Any sightings in Scandinavia would represent rare vagrants far outside
+    their normal range rather than part of a regular seasonal pattern.'
+image_refs:
+- role: hero
+  path: Q752678/hero.jpg
+  width: 2400
+  height: 1739
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Isabelline Shrike Lanius isabellinus
+    by Dr. Raju Kasambe DSCN1543 (9).jpg
+  commons_filename: Isabelline Shrike Lanius isabellinus by Dr. Raju Kasambe DSCN1543
+    (9).jpg
+- role: secondary
+  path: Q752678/secondary-1.jpg
+  width: 1565
+  height: 1800
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Isabelline Shrike Lanius isabellinus
+    by Dr. Raju Kasambe DSCN1543 (10).jpg
+  commons_filename: Isabelline Shrike Lanius isabellinus by Dr. Raju Kasambe DSCN1543
+    (10).jpg
+- role: secondary
+  path: Q752678/secondary-2.jpg
+  width: 1800
+  height: 1281
+  license: CC BY-SA 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:Dr._Raju_Kasambe" title="User:Dr.
+    Raju Kasambe">Dr. Raju Kasambe</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Isabelline Shrike Lanius isabellinus
+    by Dr. Raju Kasambe DSCN1543 (8).jpg
+  commons_filename: Isabelline Shrike Lanius isabellinus by Dr. Raju Kasambe DSCN1543
+    (8).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:49:14.862225+00:00'
+sources:
+  wikipedia_sv_revision: '55622821'
+  wikipedia_en_revision: '1314728241'
+  claude_model: claude-haiku-4-5-20251001

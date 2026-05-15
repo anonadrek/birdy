@@ -1,0 +1,109 @@
+id: Q705505
+scientific_name: Lanius meridionalis
+taxonomy:
+  family: Laniidae
+  family_sv: Törnskator
+  genus: Lanius
+  ioc_order: Passeriformes
+names:
+  sv: Iberisk varfågel
+  en: Iberian Grey Shrike
+abundance: ovanlig
+iucn_status: VU
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Iberian Grey Shrike
+
+
+    The Iberian grey shrike is a member of the shrike family, closely related to the
+    great grey shrike. Its plumage is generally similar to that species, though with
+    some distinguishing features. Despite their resemblance and shared range in some
+    areas, the two species maintain separate identities—they do not interbreed and
+    occupy different habitats where they occur together.
+
+
+    Like other shrikes, the Iberian grey shrike is a predatory songbird adapted to
+    hunting smaller birds and large insects. It shares the typical shrike build and
+    aggressive hunting behaviour of its family. Where the two related species overlap
+    geographically, habitat preferences keep them apart, with the Iberian grey shrike
+    favouring particular terrain suited to its specific ecological needs.
+
+
+    The species remains relatively understudied compared to its more widespread relative,
+    but birdwatchers in suitable regions may encounter it in appropriate habitats.
+    Its separation from the great grey shrike is a useful reminder of how closely
+    related bird species can coexist while maintaining distinct evolutionary paths.'
+migration:
+  sv: ''
+  en: '# Iberian Grey Shrike (Lanius meridionalis) – Occurrence in Scandinavia/Northern
+    Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Iberian grey shrike is a southern European species with a restricted range
+    centered on the Iberian Peninsula and parts of the Mediterranean region. It does
+    not occur in Scandinavia or Northern Europe as a regular resident or migrant.
+    This species is sedentary or shows only local movements within its Mediterranean
+    and southern Iberian habitat, remaining absent from northern European regions
+    throughout the year.'
+image_refs:
+- role: hero
+  path: Q705505/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Iberische klapekster - Iberian
+    grey shrike - Lanius meridionalis.jpg
+  commons_filename: Iberische klapekster - Iberian grey shrike - Lanius meridionalis.jpg
+- role: secondary
+  path: Q705505/secondary-1.jpg
+  width: 1800
+  height: 1084
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Juvenile Southern Grey Shrikes
+    (Lanius meridionalis koenigii), "El Jable" plains near Tao, Lanzarote (24513392094).jpg
+  commons_filename: Juvenile Southern Grey Shrikes (Lanius meridionalis koenigii),
+    "El Jable" plains near Tao, Lanzarote (24513392094).jpg
+- role: secondary
+  path: Q705505/secondary-2.jpg
+  width: 1800
+  height: 1229
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/42244964@N03">Frank
+    Vassen</a> from Brussels, Belgium
+  source_url: https://commons.wikimedia.org/wiki/File:Canarian Southern Grey Shrike
+    (Lanius meridionalis koenigii), Playa Blanca, Lanzarote (33148555683).jpg
+  commons_filename: Canarian Southern Grey Shrike (Lanius meridionalis koenigii),
+    Playa Blanca, Lanzarote (33148555683).jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:48:27.761011+00:00'
+sources:
+  wikipedia_sv_revision: '55619063'
+  wikipedia_en_revision: '1338307171'
+  claude_model: claude-haiku-4-5-20251001

@@ -1,0 +1,138 @@
+id: Q731085
+scientific_name: Lanius nubicus
+taxonomy:
+  family: Laniidae
+  family_sv: Törnskator
+  genus: Lanius
+  ioc_order: Passeriformes
+names:
+  sv: Masktörnskata
+  en: Masked Shrike
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Masktörnskata
+
+
+    Masktörnskata är den minsta arten inom släktet Lanius och är en vacker liten rovfågel
+    med karaktäristisk svart och vit teckning. Det framträder med en markant svart
+    "mask" över ögonen och vita områden på ansiktet, vilket ger arten sitt namn. Kroppen
+    är huvudsakligen grå med vita partier under, och vingarna uppvisar vita fläckar.
+
+
+    Arten är en kortflyttare som häckar i sydöstra Europa och området öster om Medelhavet,
+    med en separat population i östra Irak och västra Iran. Under hösten migrera det
+    huvudsakligen till nordöstra Afrika för att övervintrar. Trots sin status som
+    kortflyttare dyker den ofta upp utanför sitt normala utbredningsområde, speciellt
+    i norra och västra Europa.
+
+
+    Masktörnskata är en aktiv och rörig små rovfågel med typiska börnskattebeteenden.
+    Det jagar främst små insekter och lill reptiler från exponerade sittplatser, där
+    det spejare efter byte. Arten är högljudd och utför diverse kulturella displays
+    för att markera sitt territorium.'
+  en: '# Masked Shrike
+
+
+    The masked shrike is the smallest member of its genus, distinguished by its striking
+    plumage and characteristic hooked bill. Males display mainly black upperparts
+    contrasted with white on the crown, forehead, and supercilium, along with prominent
+    white shoulder and wing patches. The underparts are predominantly white, with
+    distinctive orange flanks and breast. Females are noticeably duller, with brownish-black
+    upperparts and greyish or buff tones across the shoulders and underparts. Juveniles
+    show grey-brown upperparts with paler foreheads, head-to-rump barring, and barred
+    off-white underparts.
+
+
+    This species is migratory, breeding in southeastern Europe and the eastern Mediterranean
+    region, with a separate population in eastern Iraq and western Iran. It winters
+    primarily in northeast Africa. Though typically a short-range migrant, occasional
+    vagrants have been recorded across northern and western Europe, making sightings
+    outside its regular range possible.
+
+
+    The masked shrike''s calls are notably short and grating in character, though
+    its song incorporates melodic, warbler-like components. With its long tail, hooked
+    bill, and compact frame, it is readily identifiable among shrike species. Its
+    combination of striking black-and-white male plumage and vocal characteristics
+    make it distinctive once encountered in suitable habitat.'
+migration:
+  sv: '# Masktörnskata – Förekomst i Skandinavien/Nordeuropa
+
+
+    Masktörnskata är en sällsynt gäst i Skandinavien och övriga Nordeuropa. Arten
+    häckar i sydöstra Europa och övervintrar huvudsakligen i nordöstra Afrika, vilket
+    gör den till en kortflyttare. Under flyttperioderna, särskilt under höstmigrationen
+    och våren, uppträder arten regelbundet utanför sitt normala utbredningsområde
+    och kan då påträffas i norra och västra Europa, inklusive Skandinavien. Observationerna
+    är dock tillfälliga och oregelbundna, då arten inte är etablerad häckfågel eller
+    regelbunden övervintrare i regionen.'
+  en: '# Masked Shrike - Occurrence in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    While the Masked Shrike is documented as a migratory species that breeds in southeastern
+    Europe and winters primarily in northeast Africa, the source text provides no
+    specific information about its occurrence, migration patterns, or timing in Scandinavia
+    or Northern Europe. Although vagrants have reportedly occurred in northern and
+    western Europe, no details are given regarding which regions, seasonal patterns,
+    or frequency of such occurrences.'
+image_refs:
+- role: hero
+  path: Q731085/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Maskerklauwier - Masked Shrike
+    - Lanius nubicus.jpg
+  commons_filename: Maskerklauwier - Masked Shrike - Lanius nubicus.jpg
+- role: secondary
+  path: Q731085/secondary-1.jpg
+  width: 1800
+  height: 1200
+  license: CC BY 4.0
+  author: <a href="//commons.wikimedia.org/wiki/User:BouketenCate" title="User:BouketenCate">Bouke
+    ten Cate</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Maskerklauwier - Masked Shrike
+    - Lanius nubicus 02.jpg
+  commons_filename: Maskerklauwier - Masked Shrike - Lanius nubicus 02.jpg
+- role: secondary
+  path: Q731085/secondary-2.jpg
+  width: 1577
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/people/26053600@N03">Miltos
+    Gikas</a> from Lutsa, Attiki, Greece
+  source_url: https://commons.wikimedia.org/wiki/File:Lanius nubicus, juvenile, Lake
+    Kerkini, Greece.jpg
+  commons_filename: Lanius nubicus, juvenile, Lake Kerkini, Greece.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:49:09.214391+00:00'
+sources:
+  wikipedia_sv_revision: '58034122'
+  wikipedia_en_revision: '1352543798'
+  claude_model: claude-haiku-4-5-20251001

@@ -2834,6 +2834,7 @@
   ioc_order: Passeriformes
   common_en: Great Grey Shrike
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q705505
   scientific_name: Lanius meridionalis
   family: Laniidae
@@ -2876,6 +2877,7 @@
   ioc_order: Passeriformes
   common_en: Red-backed Shrike
   vp_status: H
+  abundance: allmän
 - wikidata_id: Q15055407
   scientific_name: Lanius phoenicuroides
   family: Laniidae

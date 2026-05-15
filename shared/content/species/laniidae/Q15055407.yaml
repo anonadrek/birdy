@@ -1,0 +1,128 @@
+id: Q15055407
+scientific_name: Lanius phoenicuroides
+taxonomy:
+  family: Laniidae
+  family_sv: Törnskator
+  genus: Lanius
+  ioc_order: Passeriformes
+names:
+  sv: Turkestantörnskata
+  en: Red-tailed Shrike
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: '# Turkestantörnskata
+
+
+    Turkestantörnskata är en medelstor törnskata från Centralasien. Den är nära släkt
+    med flera andra törnskator och liknar isabellatörnskata, men är en egen art. Fågeln
+    häckar i Centralasien under sommaren och övervintrar huvudsakligen i östra Afrika.
+    Mycket sällan påträffas den i Europa, främst under höstmånaderna när den strova
+    omkring på migration.
+
+
+    Som andra törnskator är det en rovfågel som jagade på mindre fåglar och insekter.
+    Den är aktiv och observant, ofta sittande på exponerade platser där den spejare
+    efter byte. Turkestantörnskan förekommer i öppna och halvöppna habitat där den
+    kan följa sina bytesdjur från höga utgångspunkter.
+
+
+    I Europa är arten så pass ovanlig att den betraktas som en randföreteelse, men
+    återkommer återkommande under höstflyttningen. För den nyfikne fågelbeskådare
+    utgör varje iakttagelse av denna centralasiatisk gäst en märkvärd observation.'
+  en: '# Red-tailed Shrike
+
+
+    The red-tailed shrike is a member of the shrike family, a group of predatory songbirds
+    known for their hooked bills and hunting prowess. It was previously classified
+    as the same species as both the isabelline shrike and the red-backed shrike but
+    is now recognized as a distinct species.
+
+
+    Unfortunately, the available source material provides limited information about
+    this species'' appearance, behaviour, vocalizations, and distribution. To provide
+    accurate details about its plumage, hunting methods, calls, and preferred habitats,
+    additional reliable sources would be needed. Interested birders seeking comprehensive
+    information about the red-tailed shrike''s identification features and where it
+    can be encountered are encouraged to consult specialized ornithological references
+    or regional bird guides.'
+migration:
+  sv: '# Turkestantörnskata i Skandinavien/Nordeuropa
+
+
+    Turkestantörnskata är en mycket sällsynt gäst i Skandinavien och övriga Nordeuropa.
+    Arten häckar i Centralasien och övervintrar huvudsakligen i östra Afrika. Endast
+    mycket tillfälliga observationer förekommer i Europa, framför allt under höstmigration
+    när enstaka individer sporadiskt dyker upp. Det finns ingen regelbunden förekomst
+    eller etablerad migrationsmönster genom Nordeuropa, utan all förekomst här är
+    att betrakta som vagrant eller felnavigerad. Arten är således ingen regelbunden
+    årstidspåfågel i regionen.'
+  en: 'Migration data unavailable for this species.
+
+
+    The provided source text contains only taxonomic classification information and
+    does not include any data regarding the occurrence, migration patterns, or seasonal
+    distribution of the Red-tailed Shrike in Scandinavia or Northern Europe. To provide
+    accurate migration information for this species in the region, more detailed ornithological
+    sources would be required.'
+image_refs:
+- role: hero
+  path: Q15055407/hero.jpg
+  width: 2048
+  height: 1366
+  license: CC0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/139364">Andy
+    Wilson</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lanius phoenicuroides 221320163.jpg
+  commons_filename: Lanius phoenicuroides 221320163.jpg
+- role: secondary
+  path: Q15055407/secondary-1.jpg
+  width: 1439
+  height: 1800
+  license: CC BY 4.0
+  author: <a rel="nofollow" class="external text" href="https://www.inaturalist.org/users/2630936">Parth
+    Kansara</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Lanius phoenicuroides 233992158.jpg
+  commons_filename: Lanius phoenicuroides 233992158.jpg
+- role: secondary
+  path: Q15055407/secondary-2.jpg
+  width: 1800
+  height: 1417
+  license: CC BY-SA 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.geograph.org.uk/profile/3176">Hugh
+    Venables</a> <span class="mw-valign-text-top noprint" typeof="mw:File/Frameless"><a
+    href="//commons.wikimedia.org/wiki/File:Red-tailed_Shrike_(Lanius_phoenicuroides),_Dunwich_Heath_-_geograph.org.uk_-_8186469.jpg#P170"
+    title="Edit this at Structured Data on Commons"><img alt="Edit this at Structured
+    Data on Commons" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"
+    decoding="async" width="10" height="10" class="mw-file-element" data-file-width="20"
+    data-file-height="20"></a></span>
+  source_url: https://commons.wikimedia.org/wiki/File:Red-tailed Shrike (Lanius phoenicuroides),
+    Dunwich Heath - geograph.org.uk - 8186469.jpg
+  commons_filename: Red-tailed Shrike (Lanius phoenicuroides), Dunwich Heath - geograph.org.uk
+    - 8186469.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:48:33.627720+00:00'
+sources:
+  wikipedia_sv_revision: '56416063'
+  wikipedia_en_revision: '1315361111'
+  claude_model: claude-haiku-4-5-20251001

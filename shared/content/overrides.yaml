@@ -333,6 +333,17 @@ species:
   Q619728:
     description_accept_missing: [sv, en]  # Kanariestrandskata (Canary Islands Oystercatcher †, EX)
     allow_missing_images: true  # extinct, ingen Commons hi-res
+  # Laniidae batch (2026-05-15): törnskator svwiki kort/saknas.
+  Q184508:
+    description_accept_missing: [sv]  # Varfågel (Great Grey Shrike) — allmän SE vinter
+  Q239393:
+    description_accept_missing: [sv]  # Mindre törnskata (Lesser Grey Shrike) — sv 79w
+  Q26671:
+    description_accept_missing: [sv]  # Törnskata (Red-backed Shrike) — allmän SE
+  Q705505:
+    description_accept_missing: [sv]  # Sydlig varfågel (Southern Grey Shrike)
+  Q781271:
+    description_accept_missing: [sv, en]  # Lanius vittatus (Bay-backed Shrike) — asiatisk
   # Mono-family batch (2026-05-15): 16 single-species familjer.
   Q18861:
     description_accept_missing: [sv]  # Pheasant-tailed Jacana (Jacanidae) — asiatisk vagrant
