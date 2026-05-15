@@ -49,16 +49,21 @@ class RecalculateBadgesUseCase(
         speciesByQid: Map<SpeciesId, Species>,
     ): Int =
         when (rule) {
-            is BadgeRule.CountUniqueSpecies -> observations.map { it.speciesId }.toSet().size
+            is BadgeRule.CountUniqueSpecies ->
+                observations.mapNotNull { it.speciesId }.toSet().size
             is BadgeRule.WeeklyStreak -> longestWeeklyStreak(observations.map { it.capturedAt }, zone)
             is BadgeRule.MonthlyStreak -> longestMonthlyStreak(observations.map { it.capturedAt }, zone)
             is BadgeRule.ObservedInSeason ->
                 observations.count { seasonOf(it.capturedAt, zone) == rule.season }
             is BadgeRule.ObservedInFamily ->
-                observations.count { speciesByQid[SpeciesId(it.speciesId)]?.taxonomy?.family == rule.family }
+                observations.count { o ->
+                    val qid = o.speciesId ?: return@count false
+                    speciesByQid[SpeciesId(qid)]?.taxonomy?.family == rule.family
+                }
             is BadgeRule.ObservedWithAbundance ->
-                observations.count {
-                    speciesByQid[SpeciesId(it.speciesId)]?.abundance?.let(::mapAbundance) == rule.abundance
+                observations.count { o ->
+                    val qid = o.speciesId ?: return@count false
+                    speciesByQid[SpeciesId(qid)]?.abundance?.let(::mapAbundance) == rule.abundance
                 }
         }
 

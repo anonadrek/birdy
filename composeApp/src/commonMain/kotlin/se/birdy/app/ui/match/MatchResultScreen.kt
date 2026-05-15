@@ -49,12 +49,16 @@ fun MatchResultScreen(
                 DisambigView(
                     state = s,
                     onPick = { speciesId -> viewModel.pickFromDisambig(speciesId) },
+                    onSaveAsUnknown = {
+                        viewModel.saveAsUnknown()
+                        onBack()
+                    },
                     onCancel = onBack,
                 )
             is MatchResultUiState.Match ->
                 MatchView(
                     state = s,
-                    onSave = { viewModel.saveToDiary() },
+                    onSave = { note -> viewModel.saveToDiary(note) },
                     onCancel = onBack,
                     onDismissUnlock = { viewModel.dismissUnlock() },
                     locale = locale,

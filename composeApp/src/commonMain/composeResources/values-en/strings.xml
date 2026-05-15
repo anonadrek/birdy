@@ -133,6 +133,13 @@
     <string name="nobird_tip_light">*more light*</string>
     <string name="nobird_retry_cta">Try again</string>
     <string name="nobird_date_format">%1$d %2$s %3$d</string>
+    <!-- Plan 6a Task 10.5: NoBird actionable sub-tips + top-1 guess hint -->
+    <string name="nobird_tip_closer_sub">~3 m usually works</string>
+    <string name="nobird_tip_center_sub">Centre the frame</string>
+    <string name="nobird_tip_light_sub">Avoid backlight</string>
+    <string name="nobird_top_guess_hint">the model thought it saw a *possible %1$s* (%2$s) — get closer?</string>
+    <!-- Plan 6a Task 10.7: Match inline note field -->
+    <string name="match_note_label">Add a note</string>
 
     <string name="scan_top1_searching">searching…</string>
     <string name="scan_freeze_hint">TAP ANYWHERE TO FREEZE</string>
@@ -417,6 +424,9 @@
     <string name="lifelist_empty_stamp_name">First sighting</string>
     <string name="lifelist_empty_marginalia">Your field journal is empty — \nscan to write the first page.</string>
     <string name="lifelist_month_header">%1$s · %2$s entries</string>
+    <!-- Plan 6a Task 10.6: Disambig "Save as unknown" -->
+    <string name="unknown_species_label">Unidentified</string>
+    <string name="disambig_save_unknown">Save as unknown</string>
 
     <!-- ===== Plan 6a Task 5: Bootstrap ===== -->
     <string name="bootstrap_loading">Preparing the field journal…</string>

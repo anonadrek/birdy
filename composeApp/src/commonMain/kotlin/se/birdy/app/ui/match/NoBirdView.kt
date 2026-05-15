@@ -34,12 +34,17 @@ import birdy_bird_scanner.composeapp.generated.resources.nobird_headline
 import birdy_bird_scanner.composeapp.generated.resources.nobird_retry_cta
 import birdy_bird_scanner.composeapp.generated.resources.nobird_sub
 import birdy_bird_scanner.composeapp.generated.resources.nobird_tip_center
+import birdy_bird_scanner.composeapp.generated.resources.nobird_tip_center_sub
 import birdy_bird_scanner.composeapp.generated.resources.nobird_tip_closer
+import birdy_bird_scanner.composeapp.generated.resources.nobird_tip_closer_sub
 import birdy_bird_scanner.composeapp.generated.resources.nobird_tip_light
+import birdy_bird_scanner.composeapp.generated.resources.nobird_tip_light_sub
+import birdy_bird_scanner.composeapp.generated.resources.nobird_top_guess_hint
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BodyTextWithCaveatAccents
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
@@ -89,6 +94,16 @@ internal fun NoBirdView(
                 }
 
                 MarginaliaTipsBlock()
+                state.topPrediction?.let { p ->
+                    Spacer(Modifier.height(12.dp))
+                    val pct = (p.confidence * 100).toInt()
+                    BodyTextWithCaveatAccents(
+                        text = stringResource(Res.string.nobird_top_guess_hint, p.species.name, "$pct%"),
+                        accentColor = AccentCopper,
+                        plainColor = MarginaliaInk,
+                        fontSize = 14.sp,
+                    )
+                }
                 Spacer(Modifier.height(24.dp))
 
                 Button(
@@ -111,22 +126,24 @@ internal fun NoBirdView(
 
 @Composable
 private fun MarginaliaTipsBlock() {
-    val caveat = rememberCaveat()
     Column(modifier = Modifier.fillMaxWidth()) {
         TipLine(
             text = stringResource(Res.string.nobird_tip_closer).removeSurrounding("*"),
+            subText = stringResource(Res.string.nobird_tip_closer_sub),
             rotationDeg = -2f,
             alignmentEndDp = 0,
         )
         Spacer(Modifier.height(8.dp))
         TipLine(
             text = stringResource(Res.string.nobird_tip_center).removeSurrounding("*"),
+            subText = stringResource(Res.string.nobird_tip_center_sub),
             rotationDeg = 3f,
             alignmentEndDp = 48,
         )
         Spacer(Modifier.height(8.dp))
         TipLine(
             text = stringResource(Res.string.nobird_tip_light).removeSurrounding("*"),
+            subText = stringResource(Res.string.nobird_tip_light_sub),
             rotationDeg = -4f,
             alignmentEndDp = 16,
         )
@@ -136,6 +153,7 @@ private fun MarginaliaTipsBlock() {
 @Composable
 private fun TipLine(
     text: String,
+    subText: String,
     rotationDeg: Float,
     alignmentEndDp: Int,
 ) {
@@ -143,7 +161,14 @@ private fun TipLine(
     Row(
         modifier = Modifier.fillMaxWidth().padding(end = alignmentEndDp.dp),
         horizontalArrangement = Arrangement.End,
+        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
     ) {
+        Text(
+            text = subText,
+            color = MarginaliaInk.copy(alpha = 0.7f),
+            fontSize = 11.sp,
+        )
+        Spacer(Modifier.size(8.dp))
         Text(
             text = text,
             color = MarginaliaInk,

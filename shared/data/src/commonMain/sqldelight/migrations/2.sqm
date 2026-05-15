@@ -1,0 +1,37 @@
+-- Plan 6a Task 10.6 (A6) — drop NOT NULL on species_id so users can save
+-- a sighting as "unknown" from the Disambig screen. SQLite doesn't support
+-- ALTER COLUMN, so we recreate the table with the new schema.
+
+ALTER TABLE observation RENAME TO observation_old;
+
+CREATE TABLE observation (
+    id              TEXT NOT NULL PRIMARY KEY,
+    species_id      TEXT,
+    captured_at_ms  INTEGER NOT NULL,
+    saved_at_ms     INTEGER NOT NULL,
+    photo_path      TEXT NOT NULL,
+    note            TEXT NOT NULL DEFAULT '',
+    confidence      REAL NOT NULL,
+    latitude        REAL,
+    longitude       REAL,
+    location_label  TEXT,
+    stamp_number    INTEGER NOT NULL DEFAULT 0
+);
+
+INSERT INTO observation (
+    id, species_id, captured_at_ms, saved_at_ms,
+    photo_path, note, confidence,
+    latitude, longitude, location_label,
+    stamp_number
+)
+SELECT id, species_id, captured_at_ms, saved_at_ms,
+    photo_path, note, confidence,
+    latitude, longitude, location_label,
+    stamp_number
+FROM observation_old;
+
+DROP TABLE observation_old;
+
+CREATE INDEX IF NOT EXISTS observation_captured_at_idx ON observation(captured_at_ms DESC);
+CREATE INDEX IF NOT EXISTS observation_stamp_number_idx ON observation(stamp_number DESC);
+CREATE INDEX IF NOT EXISTS observation_species_id_idx ON observation(species_id);

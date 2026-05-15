@@ -225,11 +225,12 @@ private fun LoadedView(
             DetailsSection(state = state)
         }
 
-        if (state.species != null) {
+        val speciesId = state.observation.speciesId
+        if (state.species != null && speciesId != null) {
             item {
                 ProfileLink(
                     scientificName = state.species.scientificName,
-                    onClick = { onSpeciesClick(state.observation.speciesId) },
+                    onClick = { onSpeciesClick(speciesId) },
                 )
             }
         }

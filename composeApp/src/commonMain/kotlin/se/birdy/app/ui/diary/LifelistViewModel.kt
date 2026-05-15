@@ -85,14 +85,14 @@ class LifelistViewModel(
                 .map { o ->
                     LifelistRow(
                         observation = o,
-                        species = byQid[SpeciesId(o.speciesId)],
+                        species = o.speciesId?.let { byQid[SpeciesId(it)] },
                     )
                 }.let { list ->
                     when (sort) {
                         LifelistSort.RECENT -> list.sortedByDescending { it.observation.savedAt }
                         LifelistSort.STAMP_NUMBER -> list.sortedByDescending { it.observation.stampNumber }
                         LifelistSort.SPECIES ->
-                            list.sortedWith(compareBy { it.species?.name ?: it.observation.speciesId })
+                            list.sortedWith(compareBy { it.species?.name ?: it.observation.speciesId ?: "" })
                     }
                 }
         val daysActive =
@@ -102,7 +102,7 @@ class LifelistViewModel(
                 .size
         return LifelistUiState.Loaded(
             userName = name,
-            speciesCount = obs.map { it.speciesId }.toSet().size,
+            speciesCount = obs.mapNotNull { it.speciesId }.toSet().size,
             stampsCount = obs.size,
             daysActive = daysActive,
             stat3 = computeStat3(obs, stat3),

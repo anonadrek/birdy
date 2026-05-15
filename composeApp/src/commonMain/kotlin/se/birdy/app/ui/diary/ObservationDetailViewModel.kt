@@ -47,11 +47,16 @@ class ObservationDetailViewModel(
                         flowOf<ObservationDetailUiState>(ObservationDetailUiState.NotFound)
                     } else {
                         flow {
+                            val qid = obs.speciesId
                             val species =
-                                runCatching {
-                                    speciesRepo.getById(SpeciesId(obs.speciesId), locale).first()
-                                }.onFailure { if (it is CancellationException) throw it }
-                                    .getOrNull()
+                                if (qid != null) {
+                                    runCatching {
+                                        speciesRepo.getById(SpeciesId(qid), locale).first()
+                                    }.onFailure { if (it is CancellationException) throw it }
+                                        .getOrNull()
+                                } else {
+                                    null
+                                }
                             emit(ObservationDetailUiState.Loaded(obs, species))
                         }
                     }

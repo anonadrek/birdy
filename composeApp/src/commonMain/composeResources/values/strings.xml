@@ -145,6 +145,13 @@
     <string name="nobird_tip_light">*mer ljus*</string>
     <string name="nobird_retry_cta">Försök igen</string>
     <string name="nobird_date_format">%1$d %2$s %3$d</string>
+    <!-- Plan 6a Task 10.5: NoBird actionable sub-tips + top-1 guess hint -->
+    <string name="nobird_tip_closer_sub">~3 m räcker oftast</string>
+    <string name="nobird_tip_center_sub">Mitt i bildrutan</string>
+    <string name="nobird_tip_light_sub">Undvik motljus</string>
+    <string name="nobird_top_guess_hint">modellen tyckte den såg en *möjlig %1$s* (%2$s) — kom närmare?</string>
+    <!-- Plan 6a Task 10.7: Match inline note field -->
+    <string name="match_note_label">Lägg till en anteckning</string>
 
     <!-- Scan screen -->
     <string name="scan_top1_searching">söker…</string>
@@ -430,6 +437,9 @@
     <string name="lifelist_empty_stamp_name">Första fyndet</string>
     <string name="lifelist_empty_marginalia">Din fältbok är tom — \nskanna för att skriva första sidan.</string>
     <string name="lifelist_month_header">%1$s · %2$s fynd</string>
+    <!-- Plan 6a Task 10.6: Disambig "Save as unknown" -->
+    <string name="unknown_species_label">Obestämd art</string>
+    <string name="disambig_save_unknown">Spara som okänd</string>
 
     <!-- ===== Plan 6a Task 5: Bootstrap ===== -->
     <string name="bootstrap_loading">Förbereder fältboken…</string>

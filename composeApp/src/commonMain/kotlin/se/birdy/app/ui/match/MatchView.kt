@@ -15,9 +15,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -25,7 +29,10 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -34,6 +41,7 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
@@ -48,6 +56,7 @@ import birdy_bird_scanner.composeapp.generated.resources.match_headline
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_first_sighting
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_manual_pick
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_repeat
+import birdy_bird_scanner.composeapp.generated.resources.match_note_label
 import birdy_bird_scanner.composeapp.generated.resources.match_save_cta
 import birdy_bird_scanner.composeapp.generated.resources.match_saved_text
 import birdy_bird_scanner.composeapp.generated.resources.match_stamp_caption_pending
@@ -72,13 +81,15 @@ import se.birdy.content.Locale
 @Composable
 internal fun MatchView(
     state: MatchResultUiState.Match,
-    onSave: () -> Unit,
+    onSave: (String) -> Unit,
     onCancel: () -> Unit,
     onDismissUnlock: () -> Unit,
     locale: Locale,
     zone: TimeZone,
 ) {
     val snackbarHost = remember { SnackbarHostState() }
+    var note by rememberSaveable { mutableStateOf("") }
+    val caveatFamily = rememberCaveat()
     val successLabel = stringResource(Res.string.diary_save_success)
     val errorPhotoLabel = stringResource(Res.string.diary_save_error_photo)
     val errorStorageLabel = stringResource(Res.string.diary_save_error_storage)
@@ -156,8 +167,29 @@ internal fun MatchView(
                         modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
                     )
                 } else {
+                    OutlinedTextField(
+                        value = note,
+                        onValueChange = { note = it },
+                        label = {
+                            Text(
+                                text = stringResource(Res.string.match_note_label),
+                                fontFamily = caveatFamily,
+                            )
+                        },
+                        singleLine = true,
+                        enabled = !isSaving,
+                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                        keyboardActions = KeyboardActions(onDone = { onSave(note.trim()) }),
+                        colors =
+                            OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = AccentCopper,
+                                cursorColor = AccentCopper,
+                            ),
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    Spacer(Modifier.height(12.dp))
                     Button(
-                        onClick = onSave,
+                        onClick = { onSave(note.trim()) },
                         enabled = !isSaving && !isSaved && state.unlockQueueSize == 0,
                         colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm),
                         shape = RoundedCornerShape(12.dp),

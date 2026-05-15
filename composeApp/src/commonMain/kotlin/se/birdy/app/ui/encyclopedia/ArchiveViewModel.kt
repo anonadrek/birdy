@@ -49,8 +49,8 @@ class ArchiveViewModel(
             .observeAll()
             .map { observations ->
                 observations
-                    .filter { it.stampNumber > 0 }
-                    .groupBy { it.speciesId }
+                    .filter { it.stampNumber > 0 && it.speciesId != null }
+                    .groupBy { it.speciesId!! }
                     .mapValues { (_, obs) -> obs.minOf { it.stampNumber } }
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), emptyMap())
 

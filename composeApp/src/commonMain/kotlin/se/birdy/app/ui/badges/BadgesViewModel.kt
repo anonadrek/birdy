@@ -60,7 +60,7 @@ class BadgesViewModel(
         totalSpecies: Int,
         speciesMap: Map<SpeciesId, Species>,
     ): BadgesUiState.Loaded {
-        val seenSpecies = observations.map { it.speciesId }.toSet().size
+        val seenSpecies = observations.mapNotNull { it.speciesId }.toSet().size
         val unlockedIds = unlocks.map { it.badgeId }.toSet()
         val capturedInstants = observations.map { it.capturedAt }
         val stampNumbersById = catalog.badges.withIndex().associate { (i, b) -> b.id to (i + 1) }

@@ -63,6 +63,7 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_badge
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_cta
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_preview_caption
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_title
+import birdy_bird_scanner.composeapp.generated.resources.unknown_species_label
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -438,8 +439,9 @@ private fun LifelistRowComposable(
         MiniStamp(number = row.observation.stampNumber)
         Spacer(Modifier.width(12.dp))
         Column(modifier = Modifier.weight(1f)) {
+            val unknownLabel = stringResource(Res.string.unknown_species_label)
             Text(
-                text = row.species?.name ?: row.observation.speciesId,
+                text = row.species?.name ?: row.observation.speciesId ?: unknownLabel,
                 color = TextOnCreme,
                 fontFamily = serif,
                 fontStyle = FontStyle.Italic,

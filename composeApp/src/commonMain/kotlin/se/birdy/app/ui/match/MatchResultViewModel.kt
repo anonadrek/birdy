@@ -109,6 +109,7 @@ class MatchResultViewModel(
                     MatchResultUiState.NoBird(
                         frameJpegPath = frameJpegPath,
                         capturedAtMs = capturedAtMs,
+                        topPrediction = top1.takeIf { it.confidence >= 0.15f },
                     )
             }
     }
@@ -148,7 +149,7 @@ class MatchResultViewModel(
         }
     }
 
-    fun saveToDiary() {
+    fun saveToDiary(note: String = "") {
         val current = _state.value as? MatchResultUiState.Match ?: return
         if (current.saveStatus is MatchResultUiState.SaveStatus.Saving ||
             current.saveStatus is MatchResultUiState.SaveStatus.Saved
@@ -176,7 +177,7 @@ class MatchResultViewModel(
                         capturedAt = Instant.fromEpochMilliseconds(current.capturedAtMs),
                         confidence = current.confidence,
                         rawJpegBytes = bytes,
-                        note = "",
+                        note = note,
                     )
                 }.onFailure { if (it is CancellationException) throw it }
             val status: MatchResultUiState.SaveStatus =
@@ -208,4 +209,27 @@ class MatchResultViewModel(
     }
 
     fun dismissUnlock() = unlockQueue.pop()
+
+    /**
+     * Save the current frame as an unidentified observation (species_id = null).
+     * Used from Disambig when the user can't pick a candidate but still wants to
+     * archive the sighting. Confidence is recorded as 0f and badge-recalc is
+     * skipped (no species → no rule matches).
+     */
+    fun saveAsUnknown() {
+        val current = _state.value as? MatchResultUiState.Disambig ?: return
+        val path = current.frameJpegPath ?: return
+        viewModelScope.launch {
+            runCatching {
+                val bytes = withContext(Dispatchers.IO) { File(path).readBytes() }
+                saveUseCase.save(
+                    speciesId = null,
+                    capturedAt = Instant.fromEpochMilliseconds(current.capturedAtMs),
+                    confidence = 0f,
+                    rawJpegBytes = bytes,
+                    note = "",
+                )
+            }.onFailure { if (it is CancellationException) throw it }
+        }
+    }
 }

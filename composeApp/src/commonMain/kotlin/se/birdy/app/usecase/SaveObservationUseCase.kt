@@ -26,7 +26,7 @@ class SaveObservationUseCase(
 ) {
     @OptIn(ExperimentalUuidApi::class)
     suspend fun save(
-        speciesId: String,
+        speciesId: String?,
         capturedAt: Instant,
         confidence: Float,
         rawJpegBytes: ByteArray,

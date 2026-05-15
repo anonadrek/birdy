@@ -17,6 +17,7 @@ sealed interface MatchResultUiState {
     data class NoBird(
         val frameJpegPath: String?,
         val capturedAtMs: Long,
+        val topPrediction: ResolvedPrediction? = null,
     ) : MatchResultUiState
 
     /** Top-1 i 0.35–0.50-bandet. Användaren får välja bland 2-3 kandidater. */

@@ -1,6 +1,6 @@
 CREATE TABLE observation (
     id              TEXT NOT NULL PRIMARY KEY,
-    species_id      TEXT NOT NULL,
+    species_id      TEXT,
     captured_at_ms  INTEGER NOT NULL,
     saved_at_ms     INTEGER NOT NULL,
     photo_path      TEXT NOT NULL,

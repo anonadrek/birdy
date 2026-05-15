@@ -34,6 +34,7 @@ import birdy_bird_scanner.composeapp.generated.resources.disambig_eyebrow_two
 import birdy_bird_scanner.composeapp.generated.resources.disambig_frame_caption
 import birdy_bird_scanner.composeapp.generated.resources.disambig_headline
 import birdy_bird_scanner.composeapp.generated.resources.disambig_pick_hint
+import birdy_bird_scanner.composeapp.generated.resources.disambig_save_unknown
 import birdy_bird_scanner.composeapp.generated.resources.disambig_sub
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.JournalIntro
@@ -48,6 +49,7 @@ import se.birdy.content.SpeciesId
 internal fun DisambigView(
     state: MatchResultUiState.Disambig,
     onPick: (SpeciesId) -> Unit,
+    onSaveAsUnknown: () -> Unit,
     onCancel: () -> Unit,
 ) {
     val eyebrowRes =
@@ -107,6 +109,17 @@ internal fun DisambigView(
                     fontSize = 12.sp,
                     modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
                 )
+                TextButton(
+                    onClick = onSaveAsUnknown,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(
+                        text = stringResource(Res.string.disambig_save_unknown),
+                        color = AccentCopper,
+                        fontWeight = FontWeight.W600,
+                        fontSize = 14.sp,
+                    )
+                }
                 TextButton(
                     onClick = onCancel,
                     modifier = Modifier.fillMaxWidth(),
