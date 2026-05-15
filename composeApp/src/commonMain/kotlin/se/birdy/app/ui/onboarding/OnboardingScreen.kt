@@ -11,8 +11,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -105,19 +107,7 @@ fun OnboardingScreen(
         onPageChange(state.pageIndex - 1)
     }
 
-    Box(modifier = Modifier.fillMaxSize().paperBackground()) {
-        TextButton(
-            onClick = onComplete,
-            modifier = Modifier.align(Alignment.TopEnd).padding(top = 12.dp, end = 12.dp),
-        ) {
-            Text(
-                text = stringResource(Res.string.onboarding_skip),
-                color = MarginaliaInk.copy(alpha = 0.7f),
-                fontStyle = FontStyle.Italic,
-                fontSize = 13.sp,
-            )
-        }
-
+    Box(modifier = Modifier.fillMaxSize().paperBackground().statusBarsPadding()) {
         HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { page ->
             when (page) {
                 0 -> Page1Brand()
@@ -131,12 +121,28 @@ fun OnboardingScreen(
             }
         }
 
+        TextButton(
+            onClick = onComplete,
+            modifier =
+                Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(top = 12.dp, end = 12.dp),
+        ) {
+            Text(
+                text = stringResource(Res.string.onboarding_skip),
+                color = MarginaliaInk.copy(alpha = 0.7f),
+                fontStyle = FontStyle.Italic,
+                fontSize = 13.sp,
+            )
+        }
+
         PagerDots(
             currentPage = pagerState.currentPage,
             pageCount = PAGE_COUNT,
             modifier =
                 Modifier
                     .align(Alignment.BottomCenter)
+                    .navigationBarsPadding()
                     .padding(bottom = if (pagerState.currentPage == PAGE_COUNT - 1) 148.dp else 28.dp),
         )
     }
