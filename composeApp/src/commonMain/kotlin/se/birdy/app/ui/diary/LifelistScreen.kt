@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -35,11 +36,14 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_caveat_cta
+import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_marginalia
+import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_stamp_name
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline_anonymous
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_sub_empty
+import birdy_bird_scanner.composeapp.generated.resources.lifelist_month_header
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_relative_days
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_relative_hours
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_relative_just_now
@@ -54,19 +58,26 @@ import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_species
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_stamps
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_streak
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_year
+import birdy_bird_scanner.composeapp.generated.resources.months_short_uppercase
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_badge
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_cta
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_preview_caption
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_title
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+import org.jetbrains.compose.resources.stringArrayResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.JournalHeadline
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
+import se.birdy.app.ui.components.JournalSubLine
 import se.birdy.app.ui.components.LockedStatsPreview
 import se.birdy.app.ui.components.MiniStamp
+import se.birdy.app.ui.components.StampSeal
+import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.MatchHigh
@@ -112,13 +123,31 @@ fun LifelistScreen(
 
 @Composable
 private fun EmptyLifelist(onScanCtaClick: () -> Unit) {
+    val caveat = rememberCaveat()
     Column(modifier = Modifier.fillMaxSize()) {
         JournalIntro(
             label = stringResource(Res.string.lifelist_journal_label),
             headline = stringResource(Res.string.lifelist_journal_headline_anonymous),
             sub = stringResource(Res.string.lifelist_journal_sub_empty),
         )
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Column(
+            modifier = Modifier.fillMaxSize().padding(horizontal = 32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+        ) {
+            StampSeal(
+                state = StampSealState.Locked(name = stringResource(Res.string.lifelist_empty_stamp_name)),
+                size = 88.dp,
+            )
+            Spacer(Modifier.height(20.dp))
+            Text(
+                text = stringResource(Res.string.lifelist_empty_marginalia),
+                color = MarginaliaInk,
+                fontFamily = caveat,
+                fontSize = 16.sp,
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+            )
+            Spacer(Modifier.height(32.dp))
             Button(
                 onClick = onScanCtaClick,
                 colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm),
@@ -137,6 +166,7 @@ private fun EmptyLifelist(onScanCtaClick: () -> Unit) {
 
 // ─── Loaded state ─────────────────────────────────────────────────────────────
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun LoadedLifelist(
     state: LifelistUiState.Loaded,
@@ -150,6 +180,20 @@ private fun LoadedLifelist(
     val labelStat1 = stringResource(Res.string.lifelist_stat_species)
     val labelStat2 = stringResource(Res.string.lifelist_stat_stamps)
     val labelStat3 = labelForStat3(state.stat3.kind)
+    val months = stringArrayResource(Res.array.months_short_uppercase)
+    val headerFmt = stringResource(Res.string.lifelist_month_header)
+    val zone = remember { TimeZone.currentSystemDefault() }
+    val grouped =
+        remember(state.rows, state.sort) {
+            if (state.sort != LifelistSort.RECENT) {
+                emptyMap()
+            } else {
+                state.rows.groupBy { row ->
+                    val date = row.observation.savedAt.toLocalDateTime(zone).date
+                    date.year to date.monthNumber
+                }
+            }
+        }
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item {
@@ -194,12 +238,34 @@ private fun LoadedLifelist(
             }
         }
 
-        items(state.rows, key = { it.observation.id }) { row ->
-            LifelistRowComposable(
-                row = row,
-                now = now,
-                onClick = { onObservationClick(row.observation.id) },
-            )
+        if (state.sort == LifelistSort.RECENT) {
+            grouped.forEach { (yearMonth, rows) ->
+                val (year, month) = yearMonth
+                val monthLabel = months.getOrNull(month - 1) ?: month.toString()
+                stickyHeader(key = "month-$year-$month") {
+                    MonthHeader(
+                        text =
+                            headerFmt
+                                .replace("%1\$s", "$monthLabel $year")
+                                .replace("%2\$s", rows.size.toString()),
+                    )
+                }
+                items(rows, key = { it.observation.id }) { row ->
+                    LifelistRowComposable(
+                        row = row,
+                        now = now,
+                        onClick = { onObservationClick(row.observation.id) },
+                    )
+                }
+            }
+        } else {
+            items(state.rows, key = { it.observation.id }) { row ->
+                LifelistRowComposable(
+                    row = row,
+                    now = now,
+                    onClick = { onObservationClick(row.observation.id) },
+                )
+            }
         }
 
         if (showPremiumTeaser) {
@@ -225,6 +291,19 @@ private fun LoadedLifelist(
         }
 
         item { Spacer(Modifier.height(16.dp)) }
+    }
+}
+
+@Composable
+private fun MonthHeader(text: String) {
+    Box(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .background(PaperBottom.copy(alpha = 0.85f))
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+    ) {
+        JournalSubLine(text = text)
     }
 }
 

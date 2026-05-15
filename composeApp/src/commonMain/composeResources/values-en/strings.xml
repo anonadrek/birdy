@@ -409,6 +409,10 @@
     <string name="lifelist_journal_headline_anonymous">*My* collection.</string>
     <string name="lifelist_journal_sub_empty">An empty page, for now.</string>
     <string name="lifelist_empty_caveat_cta">*Scan* first bird</string>
+    <!-- Plan 6a Task 10.3: Diary empty-state redesign -->
+    <string name="lifelist_empty_stamp_name">First sighting</string>
+    <string name="lifelist_empty_marginalia">Your field journal is empty — \nscan to write the first page.</string>
+    <string name="lifelist_month_header">%1$s · %2$s entries</string>
 
     <!-- ===== Plan 6a Task 5: Bootstrap ===== -->
     <string name="bootstrap_loading">Preparing the field journal…</string>

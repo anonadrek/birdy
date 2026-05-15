@@ -47,12 +47,15 @@ class LifelistViewModel(
 
     fun onStat3Toggle() {
         viewModelScope.launch {
+            // Plan 6a Task 10.3: hide SPECIES_THIS_YEAR/MONTH cycles — fake time-window stats.
+            // Real values land in Plan 6c. Cycle only between STREAK and LONGEST_STREAK.
             val next =
                 when (prefs.lifelistStat3.first()) {
-                    LifelistStat3Choice.STREAK -> LifelistStat3Choice.SPECIES_THIS_YEAR
-                    LifelistStat3Choice.SPECIES_THIS_YEAR -> LifelistStat3Choice.SPECIES_THIS_MONTH
-                    LifelistStat3Choice.SPECIES_THIS_MONTH -> LifelistStat3Choice.LONGEST_STREAK
+                    LifelistStat3Choice.STREAK -> LifelistStat3Choice.LONGEST_STREAK
                     LifelistStat3Choice.LONGEST_STREAK -> LifelistStat3Choice.STREAK
+                    LifelistStat3Choice.SPECIES_THIS_YEAR,
+                    LifelistStat3Choice.SPECIES_THIS_MONTH,
+                    -> LifelistStat3Choice.STREAK
                 }
             prefs.setLifelistStat3(next)
         }
@@ -112,23 +115,16 @@ class LifelistViewModel(
         obs: List<Observation>,
         choice: LifelistStat3Choice,
     ): Stat3Value {
-        // TODO(plan-7c): wire real time-window filtering for SPECIES_THIS_YEAR / SPECIES_THIS_MONTH.
-        // For Plan 7b, all distinct species count is acceptable placeholder.
+        // Plan 6a Task 10.3: SPECIES_THIS_YEAR/MONTH are hidden until 6c delivers real
+        // time-window filtering. Coerce stale persisted values to STREAK.
         return when (choice) {
-            LifelistStat3Choice.STREAK ->
+            LifelistStat3Choice.STREAK,
+            LifelistStat3Choice.SPECIES_THIS_YEAR,
+            LifelistStat3Choice.SPECIES_THIS_MONTH,
+            ->
                 Stat3Value(
                     kind = LifelistStat3Choice.STREAK,
                     value = longestWeeklyStreak(obs.map { it.capturedAt }, zone),
-                )
-            LifelistStat3Choice.SPECIES_THIS_YEAR ->
-                Stat3Value(
-                    kind = LifelistStat3Choice.SPECIES_THIS_YEAR,
-                    value = obs.distinctBy { it.speciesId }.size,
-                )
-            LifelistStat3Choice.SPECIES_THIS_MONTH ->
-                Stat3Value(
-                    kind = LifelistStat3Choice.SPECIES_THIS_MONTH,
-                    value = obs.distinctBy { it.speciesId }.size,
                 )
             LifelistStat3Choice.LONGEST_STREAK ->
                 Stat3Value(

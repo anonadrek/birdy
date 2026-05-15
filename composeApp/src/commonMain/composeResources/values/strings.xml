@@ -422,6 +422,10 @@
     <string name="lifelist_journal_headline_anonymous">*Min* samling.</string>
     <string name="lifelist_journal_sub_empty">En tom sida, för nu.</string>
     <string name="lifelist_empty_caveat_cta">*Skanna* första fågeln</string>
+    <!-- Plan 6a Task 10.3: Diary empty-state redesign -->
+    <string name="lifelist_empty_stamp_name">Första fyndet</string>
+    <string name="lifelist_empty_marginalia">Din fältbok är tom — \nskanna för att skriva första sidan.</string>
+    <string name="lifelist_month_header">%1$s · %2$s fynd</string>
 
     <!-- ===== Plan 6a Task 5: Bootstrap ===== -->
     <string name="bootstrap_loading">Förbereder fältboken…</string>
