@@ -55,6 +55,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.settings_back
+import birdy_bird_scanner.composeapp.generated.resources.settings_feedback_subject
 import birdy_bird_scanner.composeapp.generated.resources.settings_footer
 import birdy_bird_scanner.composeapp.generated.resources.settings_hero_accent
 import birdy_bird_scanner.composeapp.generated.resources.settings_hero_plain
@@ -76,6 +77,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_row_terms
 import birdy_bird_scanner.composeapp.generated.resources.settings_section_about_birdy
 import birdy_bird_scanner.composeapp.generated.resources.settings_section_account
 import birdy_bird_scanner.composeapp.generated.resources.settings_section_legal
+import birdy_bird_scanner.composeapp.generated.resources.settings_share_copy
 import birdy_bird_scanner.composeapp.generated.resources.settings_title
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
@@ -91,31 +93,31 @@ import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.datastore.AppLanguage
 
-enum class SettingsAction {
-    RateApp,
-    ShareApp,
-    SendFeedback,
-    OpenAbout,
-    OpenPrivacy,
-    OpenTerms,
-}
-
 @Composable
 fun SettingsScreen(
     viewModel: SettingsViewModel,
     onBack: () -> Unit,
     onPremiumClick: () -> Unit,
-    onRowClick: (SettingsAction) -> Unit,
+    onNavigateToAbout: () -> Unit,
+    versionName: String,
 ) {
     val state by viewModel.state.collectAsState()
     var showNameDialog by rememberSaveable { mutableStateOf(false) }
     var showLanguageDialog by rememberSaveable { mutableStateOf(false) }
 
+    val shareText = stringResource(Res.string.settings_share_copy)
+    val feedbackSubject = stringResource(Res.string.settings_feedback_subject, versionName)
+
     LaunchedEffect(Unit) {
         viewModel.effects.collect { effect ->
             when (effect) {
                 is SettingsEffect.RestartForLocale -> applyLocale(effect.tag)
-                else -> Unit // other effects wired in T13
+                SettingsEffect.OpenPrivacyUrl -> openExternalUrl("https://anonadrek.github.io/birdy/privacy.html")
+                SettingsEffect.OpenTermsUrl -> openExternalUrl("https://anonadrek.github.io/birdy/terms.html")
+                SettingsEffect.RateOnPlayStore -> openPlayStoreListing("se.birdy.android")
+                SettingsEffect.ShareApp -> shareApp(shareText)
+                SettingsEffect.SendFeedback -> openMailto("feedback@birdy.app", feedbackSubject)
+                SettingsEffect.OpenAbout -> onNavigateToAbout()
             }
         }
     }
@@ -163,28 +165,28 @@ fun SettingsScreen(
                         icon = Icons.Outlined.Star,
                         label = stringResource(Res.string.settings_row_rate),
                         value = null,
-                        onClick = { onRowClick(SettingsAction.RateApp) },
+                        onClick = { viewModel.rateOnPlayStore() },
                     )
                     DashedDivider()
                     SettingsRow(
                         icon = Icons.Outlined.Share,
                         label = stringResource(Res.string.settings_row_share),
                         value = null,
-                        onClick = { onRowClick(SettingsAction.ShareApp) },
+                        onClick = { viewModel.shareApp() },
                     )
                     DashedDivider()
                     SettingsRow(
                         icon = Icons.Outlined.MailOutline,
                         label = stringResource(Res.string.settings_row_feedback),
                         value = null,
-                        onClick = { onRowClick(SettingsAction.SendFeedback) },
+                        onClick = { viewModel.sendFeedback() },
                     )
                     DashedDivider()
                     SettingsRow(
                         icon = Icons.Outlined.Info,
                         label = stringResource(Res.string.settings_label_about),
-                        value = "v0.7.0e",
-                        onClick = { onRowClick(SettingsAction.OpenAbout) },
+                        value = "v$versionName",
+                        onClick = { viewModel.openAbout() },
                     )
                 }
             }
@@ -195,14 +197,14 @@ fun SettingsScreen(
                         icon = Icons.Outlined.VerifiedUser,
                         label = stringResource(Res.string.settings_row_privacy),
                         value = null,
-                        onClick = { onRowClick(SettingsAction.OpenPrivacy) },
+                        onClick = { viewModel.openPrivacy() },
                     )
                     DashedDivider()
                     SettingsRow(
                         icon = Icons.Outlined.VerifiedUser,
                         label = stringResource(Res.string.settings_row_terms),
                         value = null,
-                        onClick = { onRowClick(SettingsAction.OpenTerms) },
+                        onClick = { viewModel.openTerms() },
                     )
                 }
             }

@@ -198,7 +198,14 @@ fun AppScaffold(graph: AppGraph) {
                     viewModel = remember(graph) { graph.settingsViewModel() },
                     onBack = { navController.popBackStack() },
                     onPremiumClick = { navController.navigate(AppRoute.Premium) },
-                    onRowClick = { /* TODO: wire row-actions in Plan 6 (Rate/Share/Feedback/About/Privacy/Terms) */ },
+                    onNavigateToAbout = { navController.navigate(AppRoute.About) },
+                    versionName = graph.versionName,
+                )
+            }
+            composable<AppRoute.About> {
+                se.birdy.app.ui.settings.AboutScreen(
+                    onBack = { navController.popBackStack() },
+                    version = graph.versionName,
                 )
             }
             composable<AppRoute.Premium> {

@@ -20,6 +20,7 @@ import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.app.ui.settings.AppLocaleApplier
+import se.birdy.app.ui.settings.SettingsLauncherSetup
 import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
@@ -65,6 +66,7 @@ class MainActivity : ComponentActivity() {
         SpeciesRepositoryProvider.init(applicationContext)
         PhotoStorageProvider.init(applicationContext)
         AppLocaleApplier.init(applicationContext)
+        SettingsLauncherSetup.init(applicationContext)
         // Build graph before setContent so recomposition cannot orphan
         // ClassifierBootstrap or leak the TFLite Interpreter.
         appGraph = buildAppGraph()
@@ -113,6 +115,7 @@ class MainActivity : ComponentActivity() {
             userPreferences = userPreferences,
             premiumRepository = premiumRepository,
             premiumOverride = premiumOverride,
+            versionName = BuildConfig.VERSION_NAME,
             defaultLocale = resolvedLocale,
             benchmarkScreen = buildBenchmarkScreen(classifierBootstrap),
         )

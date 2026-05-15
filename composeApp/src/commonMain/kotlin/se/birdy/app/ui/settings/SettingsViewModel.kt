@@ -52,4 +52,28 @@ class SettingsViewModel(
             _effects.send(SettingsEffect.RestartForLocale(value.toLocaleTagOrEmpty()))
         }
     }
+
+    fun openPrivacy() {
+        viewModelScope.launch { _effects.send(SettingsEffect.OpenPrivacyUrl) }
+    }
+
+    fun openTerms() {
+        viewModelScope.launch { _effects.send(SettingsEffect.OpenTermsUrl) }
+    }
+
+    fun rateOnPlayStore() {
+        viewModelScope.launch { _effects.send(SettingsEffect.RateOnPlayStore) }
+    }
+
+    fun shareApp() {
+        viewModelScope.launch { _effects.send(SettingsEffect.ShareApp) }
+    }
+
+    fun sendFeedback() {
+        viewModelScope.launch { _effects.send(SettingsEffect.SendFeedback) }
+    }
+
+    fun openAbout() {
+        viewModelScope.launch { _effects.send(SettingsEffect.OpenAbout) }
+    }
 }

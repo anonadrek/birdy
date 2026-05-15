@@ -513,4 +513,21 @@
     <string name="stamp_locked_label">%1$s, låst märke. Tryck för mer info.</string>
     <string name="stamp_in_progress_label">%1$s, %2$s klart.</string>
     <string name="stamp_unlocked_label">%1$s, upplåst märke.</string>
+
+    <!-- About screen (Plan 6a Task 13) -->
+    <string name="about_eyebrow">OM</string>
+    <string name="about_headline_plain_1">Birdy —</string>
+    <string name="about_headline_accent_1">fältornitologens</string>
+    <string name="about_headline_plain_2">digitala bok.</string>
+    <string name="about_subline">En lokal följeslagare för fynd.</string>
+    <string name="about_version_prefix">Version</string>
+    <string name="about_credits_label">INNEHÅLL &amp; DATA</string>
+    <string name="about_credits_body">Fågeldata från Wikidata och Wikipedia under CC BY-SA. Foton från Wikimedia Commons. ML-modell: AIY Birds V1 (Google).</string>
+    <string name="about_licenses_label">OPEN SOURCE</string>
+    <string name="about_licenses_body">Kotlin, Compose Multiplatform — Apache 2.0\nSQLDelight — Apache 2.0\nCoil — Apache 2.0\nAndroidX — Apache 2.0\nkaml — Apache 2.0\nTensorFlow Lite (AIY Birds V1) — Apache 2.0\nDM Serif Display Italic — SIL Open Font License 1.1\nCaveat — SIL Open Font License 1.1</string>
+    <string name="about_back">Tillbaka</string>
+
+    <!-- Settings row effects (Plan 6a Task 13) -->
+    <string name="settings_share_copy">Birdy — fältornitologens digitala bok. Hämta den på Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
+    <string name="settings_feedback_subject">Birdy v%1$s — feedback</string>
 </resources>

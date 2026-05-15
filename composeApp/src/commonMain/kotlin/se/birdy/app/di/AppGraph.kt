@@ -47,6 +47,7 @@ class AppGraph(
     val userPreferences: UserPreferences,
     val premiumRepository: PremiumRepository,
     val premiumOverride: PremiumState? = null,
+    val versionName: String = "0.0.0",
     val clock: Clock = Clock.System,
     val timeZone: TimeZone = TimeZone.currentSystemDefault(),
     val defaultLocale: Locale = Locale.SV,
