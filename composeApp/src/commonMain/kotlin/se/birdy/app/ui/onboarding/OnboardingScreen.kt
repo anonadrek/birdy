@@ -42,6 +42,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
@@ -49,9 +50,6 @@ import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p1_body1
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p1_body2
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p1_headline
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p1_label
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p1_sub
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p2_headline
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p2_label
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_journal_p2_sub
@@ -70,6 +68,8 @@ import birdy_bird_scanner.composeapp.generated.resources.onboarding_p2_listen_na
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_input_helper
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_input_placeholder
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_skip
+import coil3.compose.AsyncImage
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BodyTextWithCaveatAccents
 import se.birdy.app.ui.components.JournalHeadline
@@ -148,19 +148,23 @@ fun OnboardingScreen(
     }
 }
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun Page1Brand() {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
     ) {
-        JournalIntro(
-            label = stringResource(Res.string.onboarding_journal_p1_label),
-            headline = stringResource(Res.string.onboarding_journal_p1_headline),
-            sub = stringResource(Res.string.onboarding_journal_p1_sub),
-            headlineFontSize = 56.sp,
+        AsyncImage(
+            model = Res.getUri("files/branding/wordmark.png"),
+            contentDescription = "Birdy",
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 32.dp),
+            contentScale = ContentScale.Fit,
         )
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(32.dp))
         BodyTextWithCaveatAccents(
             text = stringResource(Res.string.onboarding_journal_p1_body1),
             modifier = Modifier.padding(horizontal = 24.dp),

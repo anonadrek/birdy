@@ -29,9 +29,6 @@
     <string name="result_journal_sub">A %1$s match.</string>
 
     <!-- Plan 7c: Onboarding Field Journal -->
-    <string name="onboarding_journal_p1_label">WELCOME · NO 1</string>
-    <string name="onboarding_journal_p1_headline">*Birdy.*</string>
-    <string name="onboarding_journal_p1_sub">A field journal for finds.</string>
     <string name="onboarding_journal_p1_body1">Point your camera, snap a photo, or upload from your gallery. *Birdy* identifies the bird on-device — no internet needed in the field — and stamps it in your journal.</string>
     <string name="onboarding_journal_p1_body2">Each find unlocks a new page. Watch your *collection* grow over the seasons. Your journal stays on this device unless you choose to share it.</string>
     <string name="onboarding_journal_p2_label">HOW IT WORKS · NO 2</string>

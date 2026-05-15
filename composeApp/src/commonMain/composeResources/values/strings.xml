@@ -32,9 +32,6 @@
     <string name="result_journal_sub">%1$s säkerhet.</string>
 
     <!-- Plan 7c: Onboarding Field Journal -->
-    <string name="onboarding_journal_p1_label">VÄLKOMMEN · NO 1</string>
-    <string name="onboarding_journal_p1_headline">*Birdy.*</string>
-    <string name="onboarding_journal_p1_sub">En fältdagbok för fynd.</string>
     <string name="onboarding_journal_p1_body1">Rikta kameran, ta ett foto, eller välj från galleriet. *Birdy* identifierar fågeln på enheten — utan internet i fält — och stämplar den i din dagbok.</string>
     <string name="onboarding_journal_p1_body2">Varje fynd låser upp en ny sida. Se din *samling* växa över årstiderna. Dagboken stannar på enheten om du inte väljer att dela den.</string>
     <string name="onboarding_journal_p2_label">SÅ FUNGERAR DET · NO 2</string>
