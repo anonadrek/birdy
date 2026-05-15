@@ -320,3 +320,6 @@ species:
   # Falconidae batch (2026-05-15): enwiki kort.
   Q212243:
     description_accept_missing: [en]  # Eleonorafalk (Eleonora's Falcon) — medelhavsklippor
+  # Fregatidae batch (2026-05-15): tropisk vagrant, ingen svwiki.
+  Q647512:
+    description_accept_missing: [sv]  # Praktfregattfågel (Magnificent Frigatebird)

@@ -1,0 +1,109 @@
+id: Q647512
+scientific_name: Fregata magnificens
+taxonomy:
+  family: Fregatidae
+  family_sv: Fregattfåglar
+  genus: Fregata
+  ioc_order: Suliformes
+names:
+  sv: Praktfregattfågel
+  en: Magnificent Frigatebird
+abundance: ovanlig
+iucn_status: LC
+season:
+  jan: present
+  feb: present
+  mar: present
+  apr: present
+  may: present
+  jun: present
+  jul: present
+  aug: present
+  sep: present
+  oct: present
+  nov: present
+  dec: present
+regions:
+- SE
+- 'NO'
+- FI
+- DK
+- DE
+description:
+  sv: ''
+  en: '# Magnificent Frigatebird
+
+
+    The magnificent frigatebird is the largest member of the frigatebird family, measuring
+    89–114 centimetres in length with an impressive wingspan of 2.17–2.44 metres.
+    Males are entirely black with a distinctive inflatable red throat pouch used during
+    courtship displays, while females are larger with white underparts contrasting
+    with their dark upperparts. It is one of the fastest birds in the world, capable
+    of flying at speeds up to 153 kilometres per hour.
+
+
+    This seabird is supremely adapted to aerial life, with long, angled wings and
+    a deeply forked tail that make it extraordinarily manoeuvrable. It hunts by diving
+    swiftly to snatch fish and squid from the water''s surface, and is also notorious
+    for harassing other seabirds to force them to drop their catches—a behaviour called
+    kleptoparasitism. The species is highly social and often seen in flocks.
+
+
+    The magnificent frigatebird occurs over tropical and subtropical waters of the
+    Americas, ranging from northern Mexico to Peru on the Pacific coast and from Florida
+    to southern Brazil in the Atlantic. Populations also inhabit remote island groups
+    in both oceans. It typically remains at sea but visits coastal areas and islands
+    for breeding and roosting.'
+migration:
+  sv: ''
+  en: '# Magnificent Frigatebird in Scandinavia/Northern Europe
+
+
+    Migration data unavailable for this species.
+
+
+    The Magnificent Frigatebird is a tropical and subtropical seabird occurring primarily
+    along American coasts and island populations in the Atlantic and Pacific. It does
+    not naturally occur in Scandinavia or Northern Europe, as its range is restricted
+    to warmer waters between Mexico and Brazil, and around the Galápagos and Cape
+    Verde islands. There is no established migration pattern involving Northern European
+    waters or seasonal occurrence in this region.'
+image_refs:
+- role: hero
+  path: Q647512/hero.jpg
+  width: 2400
+  height: 1600
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/52450054@N04/">Judy
+    Gallagher</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Magnificent Frigatebird - Fregata
+    magnificens, Bahia Honda State Park, Big Pine Key, Florida.jpg
+  commons_filename: Magnificent Frigatebird - Fregata magnificens, Bahia Honda State
+    Park, Big Pine Key, Florida.jpg
+- role: secondary
+  path: Q647512/secondary-1.jpg
+  width: 1800
+  height: 1350
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/21532476@N00">John
+    Picken</a> from Chicago, USA
+  source_url: https://commons.wikimedia.org/wiki/File:Fregata magnificens -Puerto
+    Vallarta, Mexico -female-8.jpg
+  commons_filename: Fregata magnificens -Puerto Vallarta, Mexico -female-8.jpg
+- role: secondary
+  path: Q647512/secondary-2.jpg
+  width: 1200
+  height: 1800
+  license: CC BY 2.0
+  author: <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/26616866@N00">The
+    Lilac Breasted Roller</a>
+  source_url: https://commons.wikimedia.org/wiki/File:Magnificent Frigatebird (Fregata
+    magnificens) -chick in nest.jpg
+  commons_filename: Magnificent Frigatebird (Fregata magnificens) -chick in nest.jpg
+review_status: auto
+review_notes: ''
+generated_at: '2026-05-15T19:10:13.641655+00:00'
+sources:
+  wikipedia_sv_revision: '59233982'
+  wikipedia_en_revision: '1351287438'
+  claude_model: claude-haiku-4-5-20251001
