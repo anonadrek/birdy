@@ -104,6 +104,8 @@ fun ArchiveScreen(
     showPremiumTeaser: Boolean = true,
     showDebugMenu: Boolean = false,
     onDebugBenchmarkClick: () -> Unit = {},
+    showDebugDiagnostics: Boolean = false,
+    onDebugDiagnosticsClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -152,6 +154,15 @@ fun ArchiveScreen(
                                         menuExpanded = false
                                     },
                                 )
+                                if (showDebugDiagnostics) {
+                                    DropdownMenuItem(
+                                        text = { Text("ML diagnos") },
+                                        onClick = {
+                                            onDebugDiagnosticsClick()
+                                            menuExpanded = false
+                                        },
+                                    )
+                                }
                             }
                         }
                     }

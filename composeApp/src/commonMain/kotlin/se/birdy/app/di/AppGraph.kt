@@ -57,6 +57,12 @@ class AppGraph(
      * The composable lambda is androidMain-only; defined in MainActivity.
      */
     val benchmarkScreen: (@Composable () -> Unit)? = null,
+    /**
+     * DEBUG-only ML preprocessing diagnostics screen (Plan 6b1 T2).
+     * Non-null = adds "ML diagnos" entry to Archive overflow menu.
+     * Null = release builds, screen + route not registered.
+     */
+    val diagnosticsScreen: (@Composable () -> Unit)? = null,
 ) {
     val classifier: BirdClassifier
         get() =

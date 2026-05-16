@@ -39,4 +39,6 @@ sealed interface AppRoute {
     @Serializable data object Premium : AppRoute
 
     @Serializable data object DebugBenchmark : AppRoute
+
+    @Serializable data object DebugDiagnostics : AppRoute
 }

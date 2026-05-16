@@ -145,8 +145,10 @@ fun AppScaffold(graph: AppGraph) {
                         onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
                         onPremiumClick = { navController.navigate(AppRoute.Premium) },
                         showPremiumTeaser = showPremiumTeaser,
-                        showDebugMenu = graph.benchmarkScreen != null,
+                        showDebugMenu = graph.benchmarkScreen != null || graph.diagnosticsScreen != null,
                         onDebugBenchmarkClick = { navController.navigate(AppRoute.DebugBenchmark) },
+                        showDebugDiagnostics = graph.diagnosticsScreen != null,
+                        onDebugDiagnosticsClick = { navController.navigate(AppRoute.DebugDiagnostics) },
                         onSettingsClick = { navController.navigate(AppRoute.Settings) },
                     )
                 }
@@ -223,6 +225,9 @@ fun AppScaffold(graph: AppGraph) {
             }
             graph.benchmarkScreen?.let { benchmarkContent ->
                 composable<AppRoute.DebugBenchmark> { benchmarkContent() }
+            }
+            graph.diagnosticsScreen?.let { diagnosticsContent ->
+                composable<AppRoute.DebugDiagnostics> { diagnosticsContent() }
             }
         }
     }

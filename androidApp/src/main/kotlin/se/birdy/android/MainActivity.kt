@@ -19,6 +19,8 @@ import se.birdy.app.di.AppGraph
 import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.photo.PhotoStorageProvider
+import se.birdy.app.ui.debug.DiagnosticsRunner
+import se.birdy.app.ui.debug.DiagnosticsScreen
 import se.birdy.app.ui.settings.AppLocaleApplier
 import se.birdy.app.ui.settings.SettingsLauncherSetup
 import se.birdy.data.DatabaseFactory
@@ -118,6 +120,7 @@ class MainActivity : ComponentActivity() {
             versionName = BuildConfig.VERSION_NAME,
             defaultLocale = resolvedLocale,
             benchmarkScreen = buildBenchmarkScreen(classifierBootstrap),
+            diagnosticsScreen = buildDiagnosticsScreen(classifierBootstrap),
         )
     }
 
@@ -131,6 +134,23 @@ class MainActivity : ComponentActivity() {
                         classifier = ready.classifier,
                         modelVersion = version,
                     )
+                }
+            }
+        } else {
+            null
+        }
+
+    private fun buildDiagnosticsScreen(bootstrap: ClassifierBootstrap): (@Composable () -> Unit)? =
+        if (BuildConfig.DEBUG) {
+            @Composable {
+                val ready = bootstrap.state.collectAsState().value as? ClassifierBootstrapState.Ready
+                if (ready != null) {
+                    val classifier = ready.classifier
+                    val runner =
+                        androidx.compose.runtime.remember(classifier) {
+                            DiagnosticsRunner(context = applicationContext, classifier = classifier)
+                        }
+                    DiagnosticsScreen(runDiagnostic = { runner.run() })
                 }
             }
         } else {
