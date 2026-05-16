@@ -88,9 +88,18 @@ Expected: BUILD SUCCESSFUL.
 
 This task happens entirely in Play Console + email. No code touched. Track progress externally.
 
-- [ ] **Step T0.1: Create AB-tied Play Console account if not done**
+- [ ] **Step T0.1: Create personal Play Console developer account TODAY**
 
-Per memory `project_release_v1.md`: AB-bolagsbildning pending. If still pending, use existing personal account but plan migration after AB is registered.
+**Decision locked 2026-05-16 (see `project_dev_account_decision.md`):** Personal account NOW (not org/AB) — AB-bolagsbildning is pending and D-U-N-S/Bolagsverket-route would miss the 2026-05-18 Closed Testing deadline.
+
+User actions (must be done by user, not Claude):
+1. Sign up at https://play.google.com/console/signup as **personal** developer.
+2. Pay $25 one-time fee.
+3. Complete ID verification (passport scan + selfie via Google's flow).
+4. Wait for approval email (24-48h typical, max 7d).
+5. While waiting → recruit 12 testers for T0.4 in parallel.
+
+Post-launch migration to AB: Google Play Account Transfer ($25 + 1-2v handläggning) flyttar app + IAP-historik, men nollställer recensioner/betyg — gör transferen tidigt efter launch.
 
 - [ ] **Step T0.2: Generate signed AAB from current v0.8.0-rc1 main**
 
