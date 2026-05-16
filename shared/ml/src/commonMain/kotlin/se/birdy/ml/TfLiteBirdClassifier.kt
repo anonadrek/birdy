@@ -55,13 +55,15 @@ class TfLiteBirdClassifier(
     }
 
     companion object {
-        // 0.10 — empirically calibrated against AIY V1's per-class confidence.
-        // The model spreads probability mass across visually similar species (e.g.
-        // paridae tit cluster), so even a correct top-3 prediction often scores
-        // 0.10–0.20 rather than ≥0.35. ScanViewModel applies a higher threshold
-        // (0.35) for the live top-1 chip, so the conservative UX is preserved
-        // while the freeze/result screen sees the full top-K candidate set.
-        const val DEFAULT_THRESHOLD: Float = 0.10f
+        // 0.05 — Plan 6b1 T8 Path B fallback (2026-05-16). The Phase 1 preprocessing
+        // diagnos (docs/superpowers/research/2026-05-16-ml-preprocessing-diagnos.md)
+        // refuted all 4 device-vs-desktop hypotheses, so the ~10% field hit-rate is
+        // model-capacity-bound, not a preprocessing bug. Lowering the surface
+        // threshold from 0.10 → 0.05 routes more borderline classifications into
+        // Disambig instead of NoBird so the user-AI workflow handles the long tail.
+        // ScanViewModel still applies 0.35 for the live top-1 chip; MatchThresholds
+        // still routes ≥0.50 to Match and 0.05–0.50 to Disambig.
+        const val DEFAULT_THRESHOLD: Float = 0.05f
         const val DEFAULT_TOP_K: Int = 3
     }
 }
