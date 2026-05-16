@@ -17,7 +17,8 @@ class FakeUserPreferences : UserPreferences {
     private val _archiveChip = MutableStateFlow("ALL")
     private val _archiveSort = MutableStateFlow(ArchiveSort.ALPHA)
     private val _lifelistSort = MutableStateFlow(LifelistSort.RECENT)
-    private val _premiumModalLastShown = MutableStateFlow<String?>(null)
+    private val _firstInstallTimestamp = MutableStateFlow<Long?>(null)
+    private val _premiumModalLastShownAt = MutableStateFlow<Long?>(null)
 
     val archiveChipWrites = mutableListOf<String>()
     var archiveSortValue: ArchiveSort
@@ -48,7 +49,8 @@ class FakeUserPreferences : UserPreferences {
     override val archiveChip: Flow<String> = _archiveChip.asStateFlow()
     override val archiveSort: Flow<ArchiveSort> = _archiveSort.asStateFlow()
     override val lifelistSort: Flow<LifelistSort> = _lifelistSort.asStateFlow()
-    override val premiumModalLastShown: Flow<String?> = _premiumModalLastShown.asStateFlow()
+    override val firstInstallTimestamp: Flow<Long?> = _firstInstallTimestamp.asStateFlow()
+    override val premiumModalLastShownAt: Flow<Long?> = _premiumModalLastShownAt.asStateFlow()
 
     override suspend fun setUserName(name: String) {
         _userName.value = name
@@ -79,7 +81,11 @@ class FakeUserPreferences : UserPreferences {
         _lifelistSort.value = value
     }
 
-    override suspend fun setPremiumModalLastShown(isoDate: String) {
-        _premiumModalLastShown.value = isoDate
+    override suspend fun setFirstInstallTimestamp(ms: Long) {
+        _firstInstallTimestamp.value = ms
+    }
+
+    override suspend fun setPremiumModalLastShownAt(ms: Long) {
+        _premiumModalLastShownAt.value = ms
     }
 }

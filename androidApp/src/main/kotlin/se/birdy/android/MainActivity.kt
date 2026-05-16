@@ -94,6 +94,23 @@ class MainActivity : ComponentActivity() {
         val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         val badgeVersionStore = SharedPrefsBadgeVersionStore(applicationContext)
         val userPreferences = UserPreferencesStore(applicationContext).preferences()
+        // One-shot migration: record firstInstallTimestamp if not yet set.
+        // Existing v0.8.0-rc1 users (hasSeenOnboarding=true) get backdated to now-8d
+        // so the 7d grace has already elapsed; the 3d throttle governs the next show.
+        // Fresh installs get now → full 7d grace before any modal can appear.
+        runBlocking {
+            val existingInstall = userPreferences.firstInstallTimestamp.first()
+            if (existingInstall == null) {
+                val isUpgrade = userPreferences.hasSeenOnboarding.first()
+                val installMs =
+                    if (isUpgrade) {
+                        System.currentTimeMillis() - 8L * 24 * 3600 * 1000
+                    } else {
+                        System.currentTimeMillis()
+                    }
+                userPreferences.setFirstInstallTimestamp(installMs)
+            }
+        }
         billingClient =
             se.birdy.app.data.premium.PremiumBillingClient(
                 context = applicationContext,

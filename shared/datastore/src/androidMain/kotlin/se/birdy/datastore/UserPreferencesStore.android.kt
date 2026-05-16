@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -41,7 +42,8 @@ private class AndroidUserPreferences(
         val ARCHIVE_CHIP = stringPreferencesKey("archive_chip")
         val ARCHIVE_SORT = stringPreferencesKey("archive_sort")
         val LIFELIST_SORT = stringPreferencesKey("lifelist_sort")
-        val PREMIUM_MODAL_LAST_SHOWN = stringPreferencesKey("premium_modal_last_shown_date")
+        val FIRST_INSTALL_TIMESTAMP = longPreferencesKey("first_install_timestamp")
+        val PREMIUM_MODAL_LAST_SHOWN_AT = longPreferencesKey("premium_modal_last_shown_at_ms")
     }
 
     override val userName: Flow<String> = safeData.map { it[Keys.USER_NAME] ?: "" }
@@ -65,8 +67,10 @@ private class AndroidUserPreferences(
         safeData.map { prefs ->
             LifelistSort.entries.firstOrNull { it.name == prefs[Keys.LIFELIST_SORT] } ?: LifelistSort.RECENT
         }
-    override val premiumModalLastShown: Flow<String?> =
-        safeData.map { it[Keys.PREMIUM_MODAL_LAST_SHOWN] }
+    override val firstInstallTimestamp: Flow<Long?> =
+        safeData.map { it[Keys.FIRST_INSTALL_TIMESTAMP]?.takeIf { ms -> ms > 0L } }
+    override val premiumModalLastShownAt: Flow<Long?> =
+        safeData.map { it[Keys.PREMIUM_MODAL_LAST_SHOWN_AT]?.takeIf { ms -> ms > 0L } }
 
     override suspend fun setUserName(name: String) {
         store.edit { it[Keys.USER_NAME] = name }
@@ -96,7 +100,11 @@ private class AndroidUserPreferences(
         store.edit { it[Keys.LIFELIST_SORT] = value.name }
     }
 
-    override suspend fun setPremiumModalLastShown(isoDate: String) {
-        store.edit { it[Keys.PREMIUM_MODAL_LAST_SHOWN] = isoDate }
+    override suspend fun setFirstInstallTimestamp(ms: Long) {
+        store.edit { it[Keys.FIRST_INSTALL_TIMESTAMP] = ms }
+    }
+
+    override suspend fun setPremiumModalLastShownAt(ms: Long) {
+        store.edit { it[Keys.PREMIUM_MODAL_LAST_SHOWN_AT] = ms }
     }
 }

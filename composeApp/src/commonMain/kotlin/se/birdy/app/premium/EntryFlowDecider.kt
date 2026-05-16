@@ -1,24 +1,33 @@
 package se.birdy.app.premium
 
-import kotlinx.datetime.LocalDate
+import kotlinx.datetime.Instant
 import se.birdy.domain.premium.PremiumState
 
 object EntryFlowDecider {
+    private const val GRACE_DAYS = 7L
+    private const val THROTTLE_DAYS = 3L
+    private const val DAY_MS = 24L * 3600L * 1000L
+
     /**
-     * Returns true iff all three are true:
-     *  1. Onboarding has been completed.
-     *  2. Premium is not active.
-     *  3. The modal has not been shown today.
+     * Show the cold-start premium modal iff all conditions hold:
+     *  1. Onboarding completed
+     *  2. Premium is Free (not Active)
+     *  3. `firstInstallAt` is set (DataStore migration ran)
+     *  4. ≥ 7 days since first install
+     *  5. ≥ 3 days since last shown (null counts as "never shown")
      */
     fun shouldShowPremiumModal(
-        today: LocalDate,
-        lastShown: LocalDate?,
+        now: Instant,
+        firstInstallAt: Instant?,
+        lastShownAt: Instant?,
         state: PremiumState,
         onboardingComplete: Boolean,
     ): Boolean {
         if (!onboardingComplete) return false
         if (state !is PremiumState.Free) return false
-        if (lastShown == today) return false
+        if (firstInstallAt == null) return false
+        if ((now - firstInstallAt).inWholeMilliseconds < GRACE_DAYS * DAY_MS) return false
+        if (lastShownAt != null && (now - lastShownAt).inWholeMilliseconds < THROTTLE_DAYS * DAY_MS) return false
         return true
     }
 }

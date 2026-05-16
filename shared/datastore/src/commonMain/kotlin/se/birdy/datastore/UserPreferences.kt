@@ -24,8 +24,11 @@ interface UserPreferences {
     val archiveSort: Flow<ArchiveSort>
     val lifelistSort: Flow<LifelistSort>
 
-    /** ISO LocalDate-sträng eller null om aldrig visad. Null tolkas som "show nu om andra villkor stämmer". */
-    val premiumModalLastShown: Flow<String?>
+    /** Wall-clock epoch ms when the first install was recorded, null = not yet migrated. */
+    val firstInstallTimestamp: Flow<Long?>
+
+    /** Wall-clock epoch ms when modal was last shown, null = never shown. */
+    val premiumModalLastShownAt: Flow<Long?>
 
     suspend fun setUserName(name: String)
 
@@ -41,5 +44,7 @@ interface UserPreferences {
 
     suspend fun setLifelistSort(value: LifelistSort)
 
-    suspend fun setPremiumModalLastShown(isoDate: String)
+    suspend fun setFirstInstallTimestamp(ms: Long)
+
+    suspend fun setPremiumModalLastShownAt(ms: Long)
 }

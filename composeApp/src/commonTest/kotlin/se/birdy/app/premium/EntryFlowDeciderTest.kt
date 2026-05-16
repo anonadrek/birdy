@@ -1,67 +1,96 @@
 package se.birdy.app.premium
 
 import kotlinx.datetime.Instant
-import kotlinx.datetime.LocalDate
 import se.birdy.domain.premium.PremiumState
-import se.birdy.domain.premium.PremiumTier
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class EntryFlowDeciderTest {
-    private val today = LocalDate(2026, 5, 12)
-    private val yesterday = LocalDate(2026, 5, 11)
-    private val activeYearly = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(1L))
+    private val now = Instant.fromEpochMilliseconds(1_700_000_000_000)
+    private val day = 24L * 3600L * 1000L
 
-    @Test
-    fun `show when onboarding done, premium free, never shown`() {
-        assertTrue(EntryFlowDecider.shouldShowPremiumModal(today, lastShown = null, state = PremiumState.Free, onboardingComplete = true))
-    }
-
-    @Test
-    fun `show when last shown was yesterday`() {
-        assertTrue(
-            EntryFlowDecider.shouldShowPremiumModal(today, lastShown = yesterday, state = PremiumState.Free, onboardingComplete = true),
-        )
-    }
-
-    @Test
-    fun `skip when last shown is today`() {
-        assertFalse(EntryFlowDecider.shouldShowPremiumModal(today, lastShown = today, state = PremiumState.Free, onboardingComplete = true))
-    }
-
-    @Test
-    fun `skip when premium is active`() {
-        assertFalse(EntryFlowDecider.shouldShowPremiumModal(today, lastShown = null, state = activeYearly, onboardingComplete = true))
-    }
-
-    @Test
-    fun `skip when onboarding not complete`() {
-        assertFalse(EntryFlowDecider.shouldShowPremiumModal(today, lastShown = null, state = PremiumState.Free, onboardingComplete = false))
-    }
-
-    @Test
-    fun `skip when premium active even if last shown was long ago`() {
-        assertFalse(
+    @Test fun `returns false if onboarding incomplete`() {
+        val r =
             EntryFlowDecider.shouldShowPremiumModal(
-                today,
-                lastShown = LocalDate(2020, 1, 1),
-                state = activeYearly,
+                now = now,
+                firstInstallAt = Instant.fromEpochMilliseconds(now.toEpochMilliseconds() - 30 * day),
+                lastShownAt = null,
+                state = PremiumState.Free,
+                onboardingComplete = false,
+            )
+        assertFalse(r)
+    }
+
+    @Test fun `returns false if premium active`() {
+        val r =
+            EntryFlowDecider.shouldShowPremiumModal(
+                now = now,
+                firstInstallAt = Instant.fromEpochMilliseconds(now.toEpochMilliseconds() - 30 * day),
+                lastShownAt = null,
+                state = PremiumState.Active(se.birdy.domain.premium.PremiumTier.YEARLY, now),
                 onboardingComplete = true,
-            ),
-        )
+            )
+        assertFalse(r)
     }
 
-    @Test
-    fun `show when both onboarding done and free and last shown was 2 days ago`() {
-        val twoDaysAgo = LocalDate(2026, 5, 10)
-        assertTrue(
-            EntryFlowDecider.shouldShowPremiumModal(today, lastShown = twoDaysAgo, state = PremiumState.Free, onboardingComplete = true),
-        )
+    @Test fun `returns false if firstInstall is null`() {
+        val r =
+            EntryFlowDecider.shouldShowPremiumModal(
+                now = now,
+                firstInstallAt = null,
+                lastShownAt = null,
+                state = PremiumState.Free,
+                onboardingComplete = true,
+            )
+        assertFalse(r)
     }
 
-    @Test
-    fun `skip when onboarding incomplete and last shown is null and free`() {
-        assertFalse(EntryFlowDecider.shouldShowPremiumModal(today, lastShown = null, state = PremiumState.Free, onboardingComplete = false))
+    @Test fun `returns false inside 7-day grace period`() {
+        val r =
+            EntryFlowDecider.shouldShowPremiumModal(
+                now = now,
+                firstInstallAt = Instant.fromEpochMilliseconds(now.toEpochMilliseconds() - 5 * day),
+                lastShownAt = null,
+                state = PremiumState.Free,
+                onboardingComplete = true,
+            )
+        assertFalse(r)
+    }
+
+    @Test fun `returns true after 7-day grace + never shown`() {
+        val r =
+            EntryFlowDecider.shouldShowPremiumModal(
+                now = now,
+                firstInstallAt = Instant.fromEpochMilliseconds(now.toEpochMilliseconds() - 8 * day),
+                lastShownAt = null,
+                state = PremiumState.Free,
+                onboardingComplete = true,
+            )
+        assertTrue(r)
+    }
+
+    @Test fun `returns false within 3-day throttle`() {
+        val r =
+            EntryFlowDecider.shouldShowPremiumModal(
+                now = now,
+                firstInstallAt = Instant.fromEpochMilliseconds(now.toEpochMilliseconds() - 30 * day),
+                lastShownAt = Instant.fromEpochMilliseconds(now.toEpochMilliseconds() - 2 * day),
+                state = PremiumState.Free,
+                onboardingComplete = true,
+            )
+        assertFalse(r)
+    }
+
+    @Test fun `returns true after 3-day throttle expires`() {
+        val r =
+            EntryFlowDecider.shouldShowPremiumModal(
+                now = now,
+                firstInstallAt = Instant.fromEpochMilliseconds(now.toEpochMilliseconds() - 30 * day),
+                lastShownAt = Instant.fromEpochMilliseconds(now.toEpochMilliseconds() - 4 * day),
+                state = PremiumState.Free,
+                onboardingComplete = true,
+            )
+        assertTrue(r)
     }
 }

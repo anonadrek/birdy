@@ -23,8 +23,7 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_welcome_toast
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
 import se.birdy.app.premium.EntryFlowDecider
@@ -56,23 +55,20 @@ fun AppScaffold(graph: AppGraph) {
     }
     val showPremiumTeaser = !effectivePremiumActive
     LaunchedEffect(Unit) {
-        val today =
-            graph.clock
-                .now()
-                .toLocalDateTime(graph.timeZone)
-                .date
-        val lastShownRaw = graph.userPreferences.premiumModalLastShown.first()
-        val lastShown = lastShownRaw?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
+        val now = graph.clock.now()
+        val firstInstallMs = graph.userPreferences.firstInstallTimestamp.first()
+        val lastShownMs = graph.userPreferences.premiumModalLastShownAt.first()
         val premiumState = graph.premiumOverride ?: graph.premiumRepository.state.value
         val shouldShow =
             EntryFlowDecider.shouldShowPremiumModal(
-                today = today,
-                lastShown = lastShown,
+                now = now,
+                firstInstallAt = firstInstallMs?.let { Instant.fromEpochMilliseconds(it) },
+                lastShownAt = lastShownMs?.let { Instant.fromEpochMilliseconds(it) },
                 state = premiumState,
                 onboardingComplete = true,
             )
         if (shouldShow) {
-            graph.userPreferences.setPremiumModalLastShown(today.toString())
+            graph.userPreferences.setPremiumModalLastShownAt(now.toEpochMilliseconds())
             navController.navigate(AppRoute.Premium)
         }
     }
