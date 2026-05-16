@@ -122,6 +122,27 @@ actual class PremiumBillingClient(
     }
 
     private suspend fun queryProducts() {
+        // Billing v8 requires same product type per query, so issue two separate calls.
+        yearlyDetails = querySingleProduct(YEARLY_PRODUCT_ID, BillingClient.ProductType.SUBS)
+        lifetimeDetails = querySingleProduct(LIFETIME_PRODUCT_ID, BillingClient.ProductType.INAPP)
+        _formattedPrices.value =
+            FormattedPrices(
+                yearly =
+                    yearlyDetails
+                        ?.subscriptionOfferDetails
+                        ?.firstOrNull()
+                        ?.pricingPhases
+                        ?.pricingPhaseList
+                        ?.firstOrNull()
+                        ?.formattedPrice,
+                lifetime = lifetimeDetails?.oneTimePurchaseOfferDetails?.formattedPrice,
+            )
+    }
+
+    private suspend fun querySingleProduct(
+        productId: String,
+        productType: String,
+    ): ProductDetails? {
         val params =
             QueryProductDetailsParams
                 .newBuilder()
@@ -129,13 +150,8 @@ actual class PremiumBillingClient(
                     listOf(
                         QueryProductDetailsParams.Product
                             .newBuilder()
-                            .setProductId(YEARLY_PRODUCT_ID)
-                            .setProductType(BillingClient.ProductType.SUBS)
-                            .build(),
-                        QueryProductDetailsParams.Product
-                            .newBuilder()
-                            .setProductId(LIFETIME_PRODUCT_ID)
-                            .setProductType(BillingClient.ProductType.INAPP)
+                            .setProductId(productId)
+                            .setProductType(productType)
                             .build(),
                     ),
                 ).build()
@@ -145,24 +161,11 @@ actual class PremiumBillingClient(
                     if (cont.isActive) cont.resume(r to qr)
                 }
             }
-        if (result.responseCode == BillingClient.BillingResponseCode.OK) {
-            val details = queryResult.productDetailsList.orEmpty()
-            yearlyDetails = details.firstOrNull { it.productId == YEARLY_PRODUCT_ID }
-            lifetimeDetails = details.firstOrNull { it.productId == LIFETIME_PRODUCT_ID }
-            _formattedPrices.value =
-                FormattedPrices(
-                    yearly =
-                        yearlyDetails
-                            ?.subscriptionOfferDetails
-                            ?.firstOrNull()
-                            ?.pricingPhases
-                            ?.pricingPhaseList
-                            ?.firstOrNull()
-                            ?.formattedPrice,
-                    lifetime = lifetimeDetails?.oneTimePurchaseOfferDetails?.formattedPrice,
-                )
+        return if (result.responseCode == BillingClient.BillingResponseCode.OK) {
+            queryResult.productDetailsList.orEmpty().firstOrNull { it.productId == productId }
         } else {
-            Log.w(TAG, "queryProductDetails failed: ${result.debugMessage}")
+            Log.w(TAG, "queryProductDetails($productId) failed: ${result.debugMessage}")
+            null
         }
     }
 
