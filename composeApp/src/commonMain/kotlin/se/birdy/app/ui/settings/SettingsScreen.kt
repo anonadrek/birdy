@@ -9,12 +9,15 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -73,8 +76,6 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_ca
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_save
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_title
 import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases
-import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_empty
-import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_success
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_feedback
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_privacy
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_rate
@@ -86,6 +87,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_section_legal
 import birdy_bird_scanner.composeapp.generated.resources.settings_share_copy
 import birdy_bird_scanner.composeapp.generated.resources.settings_title
 import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.OrnamentRule
 import se.birdy.app.ui.components.PremiumHeroCard
@@ -114,21 +116,14 @@ fun SettingsScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val shareText = stringResource(Res.string.settings_share_copy)
     val feedbackSubject = stringResource(Res.string.settings_feedback_subject, versionName)
-    val restoreSuccessText = stringResource(Res.string.settings_restore_purchases_success)
-    val restoreEmptyText = stringResource(Res.string.settings_restore_purchases_empty)
 
     LaunchedEffect(Unit) {
         viewModel.effects.collect { effect ->
             when (effect) {
                 is SettingsEffect.RestartForLocale -> applyLocale(effect.tag)
                 is SettingsEffect.ShowToast -> {
-                    val text =
-                        when (effect.text) {
-                            Res.string.settings_restore_purchases_success -> restoreSuccessText
-                            Res.string.settings_restore_purchases_empty -> restoreEmptyText
-                            else -> ""
-                        }
-                    if (text.isNotEmpty()) snackbarHostState.showSnackbar(text)
+                    val text = getString(effect.text)
+                    snackbarHostState.showSnackbar(text)
                 }
                 SettingsEffect.OpenPrivacyUrl -> openExternalUrl("https://anonadrek.github.io/birdy/privacy.html")
                 SettingsEffect.OpenTermsUrl -> openExternalUrl("https://anonadrek.github.io/birdy/terms.html")
@@ -249,7 +244,11 @@ fun SettingsScreen(
         }
         SnackbarHost(
             hostState = snackbarHostState,
-            modifier = Modifier.align(Alignment.BottomCenter).padding(16.dp),
+            modifier =
+                Modifier
+                    .align(Alignment.BottomCenter)
+                    .windowInsetsPadding(WindowInsets.navigationBars)
+                    .padding(16.dp),
         )
     }
 

@@ -80,17 +80,26 @@ class SettingsViewModel(
         viewModelScope.launch { _effects.send(SettingsEffect.OpenAbout) }
     }
 
+    private var restoreInFlight = false
+
     fun restorePurchases() {
+        if (restoreInFlight) return
+        restoreInFlight = true
         viewModelScope.launch {
-            premiumRepository.restore()
-            val state = premiumRepository.state.value
-            val message =
-                if (state is PremiumState.Active) {
-                    Res.string.settings_restore_purchases_success
-                } else {
-                    Res.string.settings_restore_purchases_empty
-                }
-            _effects.send(SettingsEffect.ShowToast(message))
+            try {
+                runCatching { premiumRepository.restore() }
+                    .onFailure { /* swallow; state.value still reflects last-known premium status */ }
+                val currentPremium = premiumRepository.state.value
+                val message =
+                    if (currentPremium is PremiumState.Active) {
+                        Res.string.settings_restore_purchases_success
+                    } else {
+                        Res.string.settings_restore_purchases_empty
+                    }
+                _effects.send(SettingsEffect.ShowToast(message))
+            } finally {
+                restoreInFlight = false
+            }
         }
     }
 }
