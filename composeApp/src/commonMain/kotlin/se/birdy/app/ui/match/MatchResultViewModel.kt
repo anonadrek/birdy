@@ -31,6 +31,7 @@ class MatchResultViewModel(
     private val frameJpegPath: String?,
     private val capturedAtMs: Long,
     private val locale: Locale,
+    private val matchOverrideReader: (() -> MatchOverride?)? = null,
 ) : ViewModel() {
     private val _state = MutableStateFlow<MatchResultUiState>(MatchResultUiState.Loading)
     val state: StateFlow<MatchResultUiState> = _state.asStateFlow()
@@ -75,7 +76,23 @@ class MatchResultViewModel(
             _state.value = MatchResultUiState.Error(MatchResultUiState.Error.Kind.ParseFailed)
             return
         }
-        val top1 = resolved.first()
+        val override = matchOverrideReader?.invoke()
+        val effective: List<ResolvedPrediction> =
+            if (override != null) {
+                val species =
+                    runCatching { repository.getById(SpeciesId(override.qid), locale).first() }
+                        .onFailure { if (it is CancellationException) throw it }
+                        .getOrNull()
+                if (species != null) {
+                    listOf(ResolvedPrediction(species, override.confidence)) +
+                        resolved.drop(1).take(2)
+                } else {
+                    resolved
+                }
+            } else {
+                resolved
+            }
+        val top1 = effective.first()
         val stampNumber = observationRepo.nextStampNumber()
         _state.value =
             when (MatchThresholds.routeFor(top1.confidence)) {
@@ -98,7 +115,7 @@ class MatchResultViewModel(
                 MatchRoute.DISAMBIG ->
                     MatchResultUiState.Disambig(
                         candidates =
-                            resolved
+                            effective
                                 .filter { it.confidence >= MatchThresholds.DISAMBIG_CONFIDENCE }
                                 .take(3),
                         stampNumber = stampNumber,

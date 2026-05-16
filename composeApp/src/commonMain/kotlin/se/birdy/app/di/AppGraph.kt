@@ -12,6 +12,7 @@ import se.birdy.app.ui.diary.LifelistViewModel
 import se.birdy.app.ui.diary.ObservationDetailViewModel
 import se.birdy.app.ui.encyclopedia.ArchiveViewModel
 import se.birdy.app.ui.listen.ListenLauncherViewModel
+import se.birdy.app.ui.match.MatchOverride
 import se.birdy.app.ui.match.MatchResultViewModel
 import se.birdy.app.ui.onboarding.OnboardingViewModel
 import se.birdy.app.ui.photoanalyze.PhotoAnalyzeViewModel
@@ -63,6 +64,12 @@ class AppGraph(
      * Null = release builds, screen + route not registered.
      */
     val diagnosticsScreen: (@Composable () -> Unit)? = null,
+    /**
+     * DEBUG-only hook for deterministic Match/Disambig/NoBird testing.
+     * Reads files/match_override.txt; null on release builds.
+     * See Plan 6b1 T3 + docs/superpowers/runbooks/2026-05-16-test-image-infra.md.
+     */
+    val matchOverrideReader: (() -> MatchOverride?)? = null,
 ) {
     val classifier: BirdClassifier
         get() =
@@ -130,6 +137,7 @@ class AppGraph(
             frameJpegPath = frameJpegPath,
             capturedAtMs = capturedAtMs,
             locale = defaultLocale,
+            matchOverrideReader = matchOverrideReader,
         )
 
     fun badgesViewModel(): BadgesViewModel =

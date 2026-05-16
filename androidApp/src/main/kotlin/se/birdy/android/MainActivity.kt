@@ -121,6 +121,7 @@ class MainActivity : ComponentActivity() {
             defaultLocale = resolvedLocale,
             benchmarkScreen = buildBenchmarkScreen(classifierBootstrap),
             diagnosticsScreen = buildDiagnosticsScreen(classifierBootstrap),
+            matchOverrideReader = buildMatchOverrideReader(),
         )
     }
 
@@ -151,6 +152,23 @@ class MainActivity : ComponentActivity() {
                             DiagnosticsRunner(context = applicationContext, classifier = classifier)
                         }
                     DiagnosticsScreen(runDiagnostic = { runner.run() })
+                }
+            }
+        } else {
+            null
+        }
+
+    private fun buildMatchOverrideReader(): (() -> se.birdy.app.ui.match.MatchOverride?)? =
+        if (BuildConfig.DEBUG) {
+            {
+                val f = File(filesDir, "match_override.txt")
+                if (f.exists()) {
+                    runCatching {
+                        se.birdy.app.ui.match
+                            .parseMatchOverride(f.readText())
+                    }.getOrNull()
+                } else {
+                    null
                 }
             }
         } else {
