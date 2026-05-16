@@ -485,6 +485,9 @@
     <string name="settings_row_feedback">Feedback</string>
     <string name="settings_row_privacy">Integritetspolicy</string>
     <string name="settings_row_terms">Användarvillkor</string>
+    <string name="settings_restore_purchases">Återställ köp</string>
+    <string name="settings_restore_purchases_success">Köpet är återställt.</string>
+    <string name="settings_restore_purchases_empty">Inget köp att återställa.</string>
     <string name="settings_footer">— Birdy är ett fält-prospekt. —</string>
     <!-- Gear -->
     <string name="gear_content_description">Inställningar</string>

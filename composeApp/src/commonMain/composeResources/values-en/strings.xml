@@ -472,6 +472,9 @@
     <string name="settings_row_feedback">Feedback</string>
     <string name="settings_row_privacy">Privacy policy</string>
     <string name="settings_row_terms">Terms of use</string>
+    <string name="settings_restore_purchases">Restore purchases</string>
+    <string name="settings_restore_purchases_success">Purchase restored.</string>
+    <string name="settings_restore_purchases_empty">Nothing to restore.</string>
     <string name="settings_footer">— Birdy is a field prospectus. —</string>
     <!-- Gear -->
     <string name="gear_content_description">Settings</string>

@@ -2,6 +2,9 @@ package se.birdy.app.ui.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_empty
+import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_success
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -75,5 +78,19 @@ class SettingsViewModel(
 
     fun openAbout() {
         viewModelScope.launch { _effects.send(SettingsEffect.OpenAbout) }
+    }
+
+    fun restorePurchases() {
+        viewModelScope.launch {
+            premiumRepository.restore()
+            val state = premiumRepository.state.value
+            val message =
+                if (state is PremiumState.Active) {
+                    Res.string.settings_restore_purchases_success
+                } else {
+                    Res.string.settings_restore_purchases_empty
+                }
+            _effects.send(SettingsEffect.ShowToast(message))
+        }
     }
 }

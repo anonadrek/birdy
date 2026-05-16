@@ -24,6 +24,7 @@ import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.MailOutline
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Public
+import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.icons.outlined.VerifiedUser
@@ -32,6 +33,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -69,6 +72,9 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_language_syste
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_cancel
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_save
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_title
+import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases
+import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_empty
+import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_success
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_feedback
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_privacy
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_rate
@@ -105,13 +111,25 @@ fun SettingsScreen(
     var showNameDialog by rememberSaveable { mutableStateOf(false) }
     var showLanguageDialog by rememberSaveable { mutableStateOf(false) }
 
+    val snackbarHostState = remember { SnackbarHostState() }
     val shareText = stringResource(Res.string.settings_share_copy)
     val feedbackSubject = stringResource(Res.string.settings_feedback_subject, versionName)
+    val restoreSuccessText = stringResource(Res.string.settings_restore_purchases_success)
+    val restoreEmptyText = stringResource(Res.string.settings_restore_purchases_empty)
 
     LaunchedEffect(Unit) {
         viewModel.effects.collect { effect ->
             when (effect) {
                 is SettingsEffect.RestartForLocale -> applyLocale(effect.tag)
+                is SettingsEffect.ShowToast -> {
+                    val text =
+                        when (effect.text) {
+                            Res.string.settings_restore_purchases_success -> restoreSuccessText
+                            Res.string.settings_restore_purchases_empty -> restoreEmptyText
+                            else -> ""
+                        }
+                    if (text.isNotEmpty()) snackbarHostState.showSnackbar(text)
+                }
                 SettingsEffect.OpenPrivacyUrl -> openExternalUrl("https://anonadrek.github.io/birdy/privacy.html")
                 SettingsEffect.OpenTermsUrl -> openExternalUrl("https://anonadrek.github.io/birdy/terms.html")
                 SettingsEffect.RateOnPlayStore -> openPlayStoreListing("se.birdy.android")
@@ -188,6 +206,13 @@ fun SettingsScreen(
                         value = "v$versionName",
                         onClick = { viewModel.openAbout() },
                     )
+                    DashedDivider()
+                    SettingsRow(
+                        icon = Icons.Outlined.Refresh,
+                        label = stringResource(Res.string.settings_restore_purchases),
+                        value = null,
+                        onClick = { viewModel.restorePurchases() },
+                    )
                 }
             }
             item { SectionHeader(stringResource(Res.string.settings_section_legal)) }
@@ -222,6 +247,10 @@ fun SettingsScreen(
                 )
             }
         }
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier.align(Alignment.BottomCenter).padding(16.dp),
+        )
     }
 
     if (showNameDialog) {
