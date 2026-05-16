@@ -41,6 +41,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.premium_auto_renew_disclosure
 import birdy_bird_scanner.composeapp.generated.resources.premium_cta_primary
 import birdy_bird_scanner.composeapp.generated.resources.premium_cta_subtext
 import birdy_bird_scanner.composeapp.generated.resources.premium_feature_audio
@@ -55,7 +56,6 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_subline
 import birdy_bird_scanner.composeapp.generated.resources.premium_tier_lifetime_price
 import birdy_bird_scanner.composeapp.generated.resources.premium_tier_lifetime_title
 import birdy_bird_scanner.composeapp.generated.resources.premium_tier_yearly_price
-import birdy_bird_scanner.composeapp.generated.resources.premium_tier_yearly_stamp
 import birdy_bird_scanner.composeapp.generated.resources.premium_tier_yearly_sub
 import birdy_bird_scanner.composeapp.generated.resources.premium_tier_yearly_title
 import coil3.compose.AsyncImage
@@ -107,17 +107,32 @@ fun PremiumScreen(
             item {
                 TierCard(
                     title = stringResource(Res.string.premium_tier_yearly_title),
-                    price = stringResource(Res.string.premium_tier_yearly_price),
+                    price = state.formattedYearlyPrice ?: stringResource(Res.string.premium_tier_yearly_price),
                     sub = stringResource(Res.string.premium_tier_yearly_sub),
                     selected = state.selectedTier == PremiumTier.YEARLY,
-                    stampLabel = stringResource(Res.string.premium_tier_yearly_stamp),
+                    stampLabel = null,
                     onClick = { viewModel.selectTier(PremiumTier.YEARLY) },
                 )
             }
             item {
+                if (state.selectedTier == PremiumTier.YEARLY) {
+                    Text(
+                        text = stringResource(Res.string.premium_auto_renew_disclosure),
+                        fontFamily = rememberCaveat(),
+                        fontSize = 13.sp,
+                        color = MarginaliaInk,
+                        textAlign = TextAlign.Center,
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 24.dp, vertical = 2.dp),
+                    )
+                }
+            }
+            item {
                 TierCard(
                     title = stringResource(Res.string.premium_tier_lifetime_title),
-                    price = stringResource(Res.string.premium_tier_lifetime_price),
+                    price = state.formattedLifetimePrice ?: stringResource(Res.string.premium_tier_lifetime_price),
                     sub = null,
                     selected = state.selectedTier == PremiumTier.LIFETIME,
                     stampLabel = null,

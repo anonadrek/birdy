@@ -449,11 +449,11 @@
     <string name="premium_feature_stats">Seasonal statistics &amp; yearly overview</string>
     <string name="premium_feature_badges">Field marks (10 premium stamps)</string>
     <string name="premium_tier_yearly_title">1 year</string>
-    <string name="premium_tier_yearly_price">199 kr / year</string>
-    <string name="premium_tier_yearly_sub">Save 60% · ~17 kr / mo</string>
-    <string name="premium_tier_yearly_stamp">save 60%</string>
+    <string name="premium_tier_yearly_price">199 SEK / year</string>
+    <string name="premium_tier_yearly_sub">~17 SEK / mo</string>
     <string name="premium_tier_lifetime_title">Lifetime</string>
-    <string name="premium_tier_lifetime_price">499 kr · one-time</string>
+    <string name="premium_tier_lifetime_price">499 SEK · one-time</string>
+    <string name="premium_auto_renew_disclosure">Auto-renews yearly at 199 SEK · Cancel anytime.</string>
     <string name="premium_cta_primary">Continue</string>
     <string name="premium_cta_subtext">Cancel anytime.</string>
     <string name="premium_attribution_format">Photo: Wikimedia / %1$s · %2$s</string>
