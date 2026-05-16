@@ -54,6 +54,7 @@ kotlin {
             implementation(libs.androidx.camera.view)
             implementation(libs.androidx.exifinterface)
             implementation(libs.androidx.appcompat)
+            implementation("com.android.billingclient:billing-ktx:8.0.0")
         }
     }
 }
@@ -86,8 +87,11 @@ android {
                 .get()
                 .toInt()
     }
+    buildFeatures {
+        buildConfig = true
+    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 }

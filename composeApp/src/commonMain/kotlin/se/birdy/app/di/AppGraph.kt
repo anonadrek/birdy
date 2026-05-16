@@ -1,11 +1,13 @@
 package se.birdy.app.di
 
 import androidx.compose.runtime.Composable
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
 import se.birdy.app.bootstrap.BadgeVersionStore
+import se.birdy.app.data.premium.FormattedPrices
 import se.birdy.app.photo.PhotoStorage
 import se.birdy.app.ui.badges.BadgesViewModel
 import se.birdy.app.ui.diary.LifelistViewModel
@@ -30,6 +32,7 @@ import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.observation.ObservationRepository
 import se.birdy.domain.premium.PremiumRepository
 import se.birdy.domain.premium.PremiumState
+import se.birdy.domain.premium.PremiumTier
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.CameraSource
 import se.birdy.ml.ClassifierBootstrap
@@ -70,6 +73,17 @@ class AppGraph(
      * See Plan 6b1 T3 + docs/superpowers/runbooks/2026-05-16-test-image-infra.md.
      */
     val matchOverrideReader: (() -> MatchOverride?)? = null,
+    /**
+     * Real Google Play Billing purchase launcher (Plan 6b1 T4).
+     * Null = fall back to repository.markPurchased (legacy stub / tests).
+     * Android actual: billingClient.launchPurchase(activity, tier).
+     */
+    val launchPurchase: (suspend (PremiumTier) -> Unit)? = null,
+    /**
+     * Live formatted prices from ProductDetails (Plan 6b1 T4).
+     * Null = no live prices; PremiumUiState keeps null price fields.
+     */
+    val formattedPricesFlow: kotlinx.coroutines.flow.StateFlow<FormattedPrices>? = null,
 ) {
     val classifier: BirdClassifier
         get() =
@@ -172,7 +186,12 @@ class AppGraph(
 
     fun settingsViewModel(): SettingsViewModel = SettingsViewModel(userPreferences, premiumRepository)
 
-    fun premiumViewModel(): PremiumViewModel = PremiumViewModel(premiumRepository)
+    fun premiumViewModel(): PremiumViewModel =
+        PremiumViewModel(
+            repository = premiumRepository,
+            launchPurchase = launchPurchase ?: { premiumRepository.markPurchased(it) },
+            formattedPricesFlow = formattedPricesFlow ?: MutableStateFlow(FormattedPrices()),
+        )
 
     fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel()
 

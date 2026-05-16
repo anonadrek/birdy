@@ -1,0 +1,3 @@
+# Google Play Billing v8 — paste from Play Console → Monetization Setup → Licensing public key
+# Local-only; never commit actual key value.
+BIRDY_PLAY_LICENSE_KEY=

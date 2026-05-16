@@ -46,6 +46,11 @@ android {
                 .toInt()
         versionCode = 100
         versionName = "1.0.0-rc1"
+        buildConfigField(
+            "String",
+            "PLAY_LICENSE_KEY",
+            "\"${project.findProperty("BIRDY_PLAY_LICENSE_KEY") ?: ""}\"",
+        )
     }
 
     buildFeatures {

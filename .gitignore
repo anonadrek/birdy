@@ -53,3 +53,6 @@ keystore/
 *.jks
 *.keystore
 /keystore.properties
+
+# Local secrets — never commit (see gradle.properties.example)
+gradle.properties

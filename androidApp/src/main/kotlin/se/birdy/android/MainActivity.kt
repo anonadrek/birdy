@@ -8,7 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Clock
 import se.birdy.app.App
@@ -27,7 +29,6 @@ import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
 import se.birdy.data.observation.SqlDelightObservationRepository
-import se.birdy.datastore.PremiumStateStore
 import se.birdy.datastore.UserPreferencesStore
 import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
@@ -49,6 +50,7 @@ import android.graphics.Color as AndroidColor
 
 class MainActivity : ComponentActivity() {
     private lateinit var appGraph: AppGraph
+    private lateinit var billingClient: se.birdy.app.data.premium.PremiumBillingClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -81,6 +83,7 @@ class MainActivity : ComponentActivity() {
         // Rotation destroys+recreates Activity so the classifier re-loads
         // (~14ms p95); singleton-lift to Application scope is a follow-up.
         appGraph.classifierBootstrap.close()
+        billingClient.dispose()
     }
 
     private fun buildAppGraph(): AppGraph {
@@ -91,7 +94,21 @@ class MainActivity : ComponentActivity() {
         val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         val badgeVersionStore = SharedPrefsBadgeVersionStore(applicationContext)
         val userPreferences = UserPreferencesStore(applicationContext).preferences()
-        val premiumRepository = PremiumStateStore(applicationContext).repository()
+        billingClient =
+            se.birdy.app.data.premium.PremiumBillingClient(
+                context = applicationContext,
+                licensePublicKeyBase64 = BuildConfig.PLAY_LICENSE_KEY,
+            )
+        val premiumRepository =
+            se.birdy.app.data.premium.BillingPremiumRepository(
+                state = billingClient.state,
+                queryPurchases = { billingClient.queryPurchases() },
+            )
+        // Connect + cold-start query in parallel with classifier bootstrap
+        lifecycleScope.launch {
+            billingClient.connect()
+            billingClient.queryPurchases()
+        }
         val classifierBootstrap = ClassifierBootstrap(buildClassifier = { buildClassifier() })
         val premiumOverride: PremiumState? =
             if (BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE) {
@@ -122,6 +139,11 @@ class MainActivity : ComponentActivity() {
             benchmarkScreen = buildBenchmarkScreen(classifierBootstrap),
             diagnosticsScreen = buildDiagnosticsScreen(classifierBootstrap),
             matchOverrideReader = buildMatchOverrideReader(),
+            launchPurchase = { tier ->
+                billingClient.launchPurchase(this@MainActivity, tier)
+                Unit
+            },
+            formattedPricesFlow = billingClient.formattedPrices,
         )
     }
 
