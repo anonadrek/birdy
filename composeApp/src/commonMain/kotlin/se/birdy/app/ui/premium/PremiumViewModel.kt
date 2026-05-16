@@ -13,7 +13,9 @@ import se.birdy.domain.premium.PremiumTier
 
 class PremiumViewModel(
     private val repository: PremiumRepository,
-    private val launchPurchase: suspend (PremiumTier) -> Unit = { repository.markPurchased(it) },
+    private val launchPurchase: suspend (PremiumTier) -> Unit = {
+        error("launchPurchase not wired — provide via AppGraph.launchPurchase or test stub")
+    },
     private val formattedPricesFlow: StateFlow<FormattedPrices> = MutableStateFlow(FormattedPrices()),
 ) : ViewModel() {
     private val _state = MutableStateFlow(PremiumUiState(backendState = repository.state.value))

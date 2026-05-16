@@ -42,10 +42,11 @@ class PremiumViewModelTest {
         }
 
     @Test
-    fun `purchase emits Active state via repo`() =
+    fun `purchase emits Active state via explicit launchPurchase stub`() =
         runTest {
             val repo = FakePremiumRepository()
-            val vm = PremiumViewModel(repo)
+            // Must provide an explicit stub — default throws to prevent silent no-ops in tests.
+            val vm = PremiumViewModel(repo, launchPurchase = { tier -> repo.markPurchased(tier) })
             vm.selectTier(PremiumTier.LIFETIME)
             vm.purchase()
             val s = repo.state.first()

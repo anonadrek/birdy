@@ -56,6 +56,9 @@ kotlin {
             implementation(libs.androidx.appcompat)
             implementation("com.android.billingclient:billing-ktx:8.0.0")
         }
+        androidUnitTest.dependencies {
+            implementation("junit:junit:4.13.2")
+        }
     }
 }
 

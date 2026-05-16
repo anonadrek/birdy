@@ -2,7 +2,6 @@ package se.birdy.app.data.premium
 
 import android.app.Activity
 import android.content.Context
-import android.util.Base64
 import android.util.Log
 import com.android.billingclient.api.AcknowledgePurchaseParams
 import com.android.billingclient.api.BillingClient
@@ -29,15 +28,58 @@ import java.security.PublicKey
 import java.security.Signature
 import java.security.spec.X509EncodedKeySpec
 import kotlin.coroutines.resume
+import java.util.Base64 as JvmBase64
 
 private const val TAG = "PremiumBilling"
 private const val YEARLY_PRODUCT_ID = "premium_yearly_v1"
 private const val LIFETIME_PRODUCT_ID = "premium_lifetime_v1"
 
+/**
+ * Pure-JVM signature verification — extracted for unit testability.
+ *
+ * No Android dependencies (uses [java.util.Base64], no android.util.Log) so
+ * this function is exercisable in JVM unit tests without Robolectric.
+ *
+ * Only reachable in DEBUG with a blank [licensePublicKeyBase64];
+ * [PremiumBillingClient.init] enforces the key is present in release builds.
+ */
+internal fun verifyPlaySignature(
+    originalJson: String,
+    signatureBase64: String,
+    licensePublicKeyBase64: String,
+): Boolean {
+    if (signatureBase64.isEmpty() || originalJson.isEmpty()) return false
+    if (licensePublicKeyBase64.isBlank()) {
+        // Only reachable in DEBUG builds (PremiumBillingClient.init enforces this).
+        return true
+    }
+    return try {
+        val keyBytes = JvmBase64.getDecoder().decode(licensePublicKeyBase64)
+        val publicKey: PublicKey =
+            KeyFactory
+                .getInstance("RSA")
+                .generatePublic(X509EncodedKeySpec(keyBytes))
+        val sig = Signature.getInstance("SHA1withRSA")
+        sig.initVerify(publicKey)
+        sig.update(originalJson.toByteArray())
+        val sigBytes = JvmBase64.getDecoder().decode(signatureBase64)
+        sig.verify(sigBytes)
+    } catch (t: Throwable) {
+        false
+    }
+}
+
 actual class PremiumBillingClient(
     private val context: Context,
     private val licensePublicKeyBase64: String,
 ) {
+    init {
+        check(BuildConfig.DEBUG || licensePublicKeyBase64.isNotBlank()) {
+            "PLAY_LICENSE_KEY missing in release build — billing cannot operate. " +
+                "Set BIRDY_PLAY_LICENSE_KEY in gradle.properties."
+        }
+    }
+
     private val _state = MutableStateFlow<PremiumState>(PremiumState.Free)
     actual val state: StateFlow<PremiumState> = _state.asStateFlow()
 
@@ -177,6 +219,9 @@ actual class PremiumBillingClient(
                     ),
                 ).build()
 
+        if (purchaseDeferred != null) {
+            return PurchaseResult.Error("Purchase already in flight")
+        }
         val deferred = CompletableDeferred<PurchaseResult>()
         purchaseDeferred = deferred
         val launchResult = client.launchBillingFlow(activityContext as Activity, flowParams)
@@ -192,7 +237,6 @@ actual class PremiumBillingClient(
         purchases: List<Purchase>?,
     ) {
         val deferred = purchaseDeferred
-        purchaseDeferred = null
         when (result.responseCode) {
             BillingClient.BillingResponseCode.OK -> {
                 val list = purchases.orEmpty()
@@ -201,6 +245,7 @@ actual class PremiumBillingClient(
                         it.purchaseState == Purchase.PurchaseState.PURCHASED && verifySignature(it)
                     }
                 if (verified != null) {
+                    // Always update state when we observe a verified purchase (even server-pushed).
                     if (!verified.isAcknowledged) {
                         acknowledge(verified) { ackResult ->
                             if (ackResult.responseCode == BillingClient.BillingResponseCode.OK) {
@@ -209,20 +254,25 @@ actual class PremiumBillingClient(
                             } else {
                                 deferred?.complete(PurchaseResult.Error("ack failed: ${ackResult.debugMessage}"))
                             }
+                            if (deferred != null) purchaseDeferred = null
                         }
                     } else {
                         _state.value = verified.toPremiumState()
                         deferred?.complete(PurchaseResult.Success)
+                        if (deferred != null) purchaseDeferred = null
                     }
                 } else {
                     deferred?.complete(PurchaseResult.Error("No verified purchase in callback"))
+                    if (deferred != null) purchaseDeferred = null
                 }
             }
             BillingClient.BillingResponseCode.USER_CANCELED -> {
                 deferred?.complete(PurchaseResult.UserCancelled)
+                if (deferred != null) purchaseDeferred = null
             }
             else -> {
                 deferred?.complete(PurchaseResult.Error(result.debugMessage))
+                if (deferred != null) purchaseDeferred = null
             }
         }
     }
@@ -241,24 +291,13 @@ actual class PremiumBillingClient(
 
     private fun verifySignature(purchase: Purchase): Boolean {
         if (licensePublicKeyBase64.isBlank()) {
-            Log.w(TAG, "PLAY_LICENSE_KEY missing; skipping signature verification (debug only)")
-            return BuildConfig.DEBUG
+            Log.w(TAG, "PLAY_LICENSE_KEY blank — DEBUG-only signature bypass")
         }
-        return try {
-            val keyBytes = Base64.decode(licensePublicKeyBase64, Base64.DEFAULT)
-            val publicKey: PublicKey =
-                KeyFactory
-                    .getInstance("RSA")
-                    .generatePublic(X509EncodedKeySpec(keyBytes))
-            val sig = Signature.getInstance("SHA1withRSA")
-            sig.initVerify(publicKey)
-            sig.update(purchase.originalJson.toByteArray())
-            val sigBytes = Base64.decode(purchase.signature, Base64.DEFAULT)
-            sig.verify(sigBytes)
-        } catch (t: Throwable) {
-            Log.e(TAG, "Signature verification failed", t)
-            false
+        val result = verifyPlaySignature(purchase.originalJson, purchase.signature, licensePublicKeyBase64)
+        if (!result && licensePublicKeyBase64.isNotBlank()) {
+            Log.e(TAG, "Signature verification failed for purchase ${purchase.orderId}")
         }
+        return result
     }
 
     private fun Purchase.toPremiumState(): PremiumState {
