@@ -57,6 +57,25 @@ class DiagnosticsRunner(
                 }
                 sb.appendLine("bitmap=${bitmap.width}x${bitmap.height} config=${bitmap.config}")
 
+                // Sample 4 corner pixels (catches letterboxing/padding at image edges).
+                fun fmtArgb(argb: Int): String {
+                    val a = (argb ushr 24) and 0xFF
+                    val r = (argb ushr 16) and 0xFF
+                    val g = (argb ushr 8) and 0xFF
+                    val b = argb and 0xFF
+                    return "A=$a,R=$r,G=$g,B=$b"
+                }
+                val w = bitmap.width
+                val h = bitmap.height
+                val tlArgb = bitmap.getPixel(0, 0)
+                val trArgb = bitmap.getPixel(w - 1, 0)
+                val blArgb = bitmap.getPixel(0, h - 1)
+                val brArgb = bitmap.getPixel(w - 1, h - 1)
+                sb.appendLine(
+                    "corner_argb TL=[${fmtArgb(tlArgb)}] TR=[${fmtArgb(trArgb)}]" +
+                        " BL=[${fmtArgb(blArgb)}] BR=[${fmtArgb(brArgb)}]",
+                )
+
                 // Sample mid-row ARGB at 8 evenly-spaced x positions.
                 val midY = bitmap.height / 2
                 val samples =
