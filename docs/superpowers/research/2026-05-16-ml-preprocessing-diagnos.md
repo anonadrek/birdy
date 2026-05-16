@@ -28,9 +28,18 @@ through the live `BirdClassifier` + `ImagePreprocessor` pipeline and dumps:
 2. Mid-row ARGB pixel samples at 8 evenly-spaced x positions (A/R/G/B per channel).
 3. Top-5 predictions sorted by confidence (3-decimal precision).
 
-The same three images are then run through `tools/ml-eval/` on the desktop with a
-matching dump format (TODO: add `--dump-mid-row` flag to the eval script before
-the device run so the two outputs can be diffed line-by-line).
+The same three images are then run through `tools/ml-eval/` on the desktop via
+the `dump-mid-row` subcommand (added 2026-05-16), which emits a line-by-line
+diffable report in the same format as `DiagnosticsRunner`:
+
+```bash
+cd tools/ml-eval
+uv run python -m birdy_eval dump-mid-row \
+  --model ../../shared/ml/src/commonMain/composeResources/files/ml/aiy_birds_v1.tflite \
+  --mapping ../../shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json \
+  --photos-dir ../../composeApp/src/androidMain/assets/benchmark/ \
+  --out ../../docs/superpowers/research/2026-05-16-desktop-dump.txt
+```
 
 **Corpus images** (committed in `composeApp/src/androidMain/assets/benchmark/`):
 
@@ -141,7 +150,7 @@ Decision frame:
    navigate Archive → overflow → "ML diagnos" → Run diagnostic; wait ~5s; back-out.
 2. **Pull dump:** `adb shell run-as se.birdy.android cat
    files/preprocess_dump_*.txt > diagnos_device.txt`.
-3. **Add `--dump-mid-row` flag** to `tools/ml-eval/eval.py` that prints the same
-   format for the same three images.
+3. ~~**Add `--dump-mid-row` flag** to `tools/ml-eval/eval.py`~~ **DONE 2026-05-16**
+   — see Method section for the exact `uv run python -m birdy_eval dump-mid-row` command.
 4. **Paste both dumps** into Results section above + run the diff table.
 5. **Make T8 gate-decision** based on Recommendation logic.
