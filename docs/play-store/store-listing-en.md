@@ -49,12 +49,15 @@ private folder on your phone — uninstall removes everything.
 beginners who want to learn, and anyone who thinks a songbird in a
 tree deserves a moment of attention.
 
-## What's new (v0.8.0-rc1)
+## What's new (v0.9.0a-billing — Closed Testing)
 - First Play Store release
-- Scan ~700 European bird species on-device
+- Scan ~700 European bird species on-device (AIY Birds V1)
 - Encyclopedia + field journal + 25 achievement stamps
 - English + Swedish
 - Fully offline
+- Premium available via Google Play Billing (Yearly 199 SEK/year or Lifetime 499 SEK) — unlocks PDF export, seasonal statistics, premium stamps (audio ID ships in a later release)
+- Restore Purchases in Settings → Restore purchases
+- Tuned match sensitivity (lower threshold = more hits in difficult lighting)
 
 ## Keywords (for ASO copy)
 bird, bird scanner, bird id, bird guide, bird AI, nature app,

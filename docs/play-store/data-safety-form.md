@@ -3,7 +3,7 @@
 This document captures the answers we will provide in the Google Play
 Console **Data Safety** section. Keep in sync with code reality.
 
-_Last reviewed: 2026-05-15 (Plan 6a v0.8.0-rc1)_
+_Last reviewed: 2026-05-17 (Plan 6b1 v0.9.0a-billing) — Billing v8 integration adds no new data collection (Google's SDK handles purchase tokens; we receive only entitlement state)_
 
 ## Data collection and security
 
@@ -90,3 +90,8 @@ features, provide:
 
 - **2026-05-15** — initial form drafted alongside v0.8.0-rc1 prep.
   Status: app makes zero network calls, collects zero data.
+- **2026-05-17** — re-reviewed for v0.9.0a-billing (Plan 6b1 T4 Google
+  Play Billing v8 integration). No form changes needed: billing traffic
+  is handled by Google's BillingClient SDK, not by Birdy — purchase
+  tokens never reach our code (we only see acknowledged-entitlement
+  state). No new permissions, no new data types, no new sharing.

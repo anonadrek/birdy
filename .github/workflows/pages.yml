@@ -49,6 +49,7 @@ jobs:
           render docs/play-store/store-listing-en.md store-listing-en.html "Store Listing (EN)"
           render docs/play-store/store-listing-sv.md store-listing-sv.html "Store Listing (SV)"
           render docs/play-store/data-safety-form.md data-safety.html  "Data Safety"
+          render docs/play-store/closed-testing-tester-instructions.md tester-instructions.html "Closed Testing Instructions"
 
           # Index page
           cat > _site/index.html <<EOF
@@ -68,6 +69,7 @@ jobs:
               <li><a href="store-listing-en.html">Store Listing (EN)</a></li>
               <li><a href="store-listing-sv.html">Store Listing (SV)</a></li>
               <li><a href="data-safety.html">Data Safety</a></li>
+              <li><a href="tester-instructions.html">Closed Testing Instructions</a></li>
             </ul>
             <hr>
             <p>Contact: <a href="mailto:feedback@birdy.app">feedback@birdy.app</a></p>

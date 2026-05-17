@@ -49,12 +49,15 @@ telefonen — uninstall raderar allt.
 nybörjare som vill lära sig, och alla som tycker en sångfågel i ett
 träd förtjänar en stund av uppmärksamhet.
 
-## What's new (v0.8.0-rc1)
+## What's new (v0.9.0a-billing — Closed Testing)
 - Första Play Store-versionen
-- Skanna ~700 europeiska fågelarter on-device
+- Skanna ~700 europeiska fågelarter on-device (AIY Birds V1)
 - Encyclopedia + fältdagbok + 25 stämplar
 - SV + EN
 - Helt offline-funktion
+- Premium tillgängligt via Google Play Billing (Årlig 199 kr/år eller Engångsköp 499 kr) — låser upp PDF-export, säsongsstatistik och premium-stämplar (audio-ID kommer i kommande release)
+- Återställ köp via Inställningar → Återställ köp
+- Justerad match-känslighet (lägre tröskel = fler träffar i bilder med tuff belysning)
 
 ## Nyckelord (för ASO-text)
 fågel, fågelskanner, fågelguide, fågelid, fågel-AI, naturapp,
