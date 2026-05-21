@@ -115,10 +115,12 @@ class AndroidWaveformRenderer : WaveformRendererApi {
             val muxer = MediaMuxer(outPath, MediaMuxer.OutputFormat.MUXER_OUTPUT_OGG)
 
             val pcmBytes =
-                ByteBuffer.allocate(pcm.size * 2).apply {
-                    order(ByteOrder.LITTLE_ENDIAN)
-                    pcm.forEach { putShort(it) }
-                }.array()
+                ByteBuffer
+                    .allocate(pcm.size * 2)
+                    .apply {
+                        order(ByteOrder.LITTLE_ENDIAN)
+                        pcm.forEach { putShort(it) }
+                    }.array()
 
             var trackIdx = -1
             var muxerStarted = false

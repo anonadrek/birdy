@@ -7,7 +7,10 @@ import kotlinx.datetime.Instant
  * Returned by [ObservationRepository.delete] so callers can clean up
  * both the photo and audio files associated with the observation.
  */
-data class FileCleanupRequest(val photoPath: String?, val audioPath: String?)
+data class FileCleanupRequest(
+    val photoPath: String?,
+    val audioPath: String?,
+)
 
 interface ObservationRepository {
     fun observeAll(): Flow<List<Observation>>

@@ -58,6 +58,7 @@ import birdy_bird_scanner.composeapp.generated.resources.scan_permission_denied_
 import birdy_bird_scanner.composeapp.generated.resources.scan_permission_open_settings
 import birdy_bird_scanner.composeapp.generated.resources.scan_photo_analyze
 import birdy_bird_scanner.composeapp.generated.resources.scan_top1_searching
+import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.JournalHeadline
 import se.birdy.app.ui.theme.AccentCopper
@@ -68,7 +69,6 @@ import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberCaveat
-import kotlinx.serialization.json.Json
 import se.birdy.ml.CameraSource
 import se.birdy.ml.Classification
 import se.birdy.ml.ClassificationResult

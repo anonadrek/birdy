@@ -91,8 +91,16 @@ class ObservationDetailViewModel(
                     if (it is CancellationException) throw it
                     _effects.trySend(DetailEffect.DeleteFailed)
                 }.onSuccess { cleanup ->
-                    cleanup.photoPath?.let { runCatching { photoStorage.delete(it) }.onFailure { t -> if (t is CancellationException) throw t } }
-                    cleanup.audioPath?.let { runCatching { photoStorage.delete(it) }.onFailure { t -> if (t is CancellationException) throw t } }
+                    cleanup.photoPath?.let {
+                        runCatching { photoStorage.delete(it) }.onFailure { t ->
+                            if (t is CancellationException) throw t
+                        }
+                    }
+                    cleanup.audioPath?.let {
+                        runCatching { photoStorage.delete(it) }.onFailure { t ->
+                            if (t is CancellationException) throw t
+                        }
+                    }
                     _effects.trySend(DetailEffect.Deleted)
                 }
         }

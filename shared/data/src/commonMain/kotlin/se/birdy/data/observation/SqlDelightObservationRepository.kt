@@ -107,9 +107,10 @@ class SqlDelightObservationRepository(
             locationLabel = location_label,
             stampNumber = stamp_number.toInt(),
             audioPath = audio_path,
-            sourceType = when (source) {
-                "audio" -> ObservationSource.Audio
-                else -> ObservationSource.Photo
-            },
+            sourceType =
+                when (source) {
+                    "audio" -> ObservationSource.Audio
+                    else -> ObservationSource.Photo
+                },
         )
 }

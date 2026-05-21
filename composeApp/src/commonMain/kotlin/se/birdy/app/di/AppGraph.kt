@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
+import kotlinx.serialization.json.Json
 import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
 import se.birdy.app.bootstrap.BadgeVersionStore
@@ -17,11 +18,8 @@ import se.birdy.app.ui.diary.LifelistViewModel
 import se.birdy.app.ui.diary.ObservationDetailViewModel
 import se.birdy.app.ui.encyclopedia.ArchiveViewModel
 import se.birdy.app.ui.listen.ListenLauncherViewModel
-import kotlinx.serialization.json.Json
 import se.birdy.app.ui.match.MatchOverride
 import se.birdy.app.ui.match.MatchResultViewModel
-import se.birdy.ml.ScanSourceSerialization
-import se.birdy.ml.toScanSource
 import se.birdy.app.ui.onboarding.OnboardingViewModel
 import se.birdy.app.ui.photoanalyze.PhotoAnalyzeViewModel
 import se.birdy.app.ui.premium.PremiumViewModel
@@ -46,6 +44,8 @@ import se.birdy.ml.CameraSource
 import se.birdy.ml.ClassifierBootstrap
 import se.birdy.ml.ClassifierBootstrapState
 import se.birdy.ml.ClassifierMode
+import se.birdy.ml.ScanSourceSerialization
+import se.birdy.ml.toScanSource
 
 class AppGraph(
     val repository: SpeciesRepository,
