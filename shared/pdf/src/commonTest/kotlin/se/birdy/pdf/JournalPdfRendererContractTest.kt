@@ -6,7 +6,7 @@ import kotlin.test.assertTrue
 
 class JournalPdfRendererContractTest {
     @Test
-    fun renderer_returns_failure_when_observations_empty() = runTest {
+    fun renderer_returns_empty_when_observations_empty() = runTest {
         val renderer = JournalPdfRenderer()
         val emptyInput = JournalPdfInput(
             displayName = "Albin",
