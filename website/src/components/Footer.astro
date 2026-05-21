@@ -1,0 +1,53 @@
+---
+import Wordmark from './ui/Wordmark.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = getCopy(locale);
+---
+
+<footer class="footer">
+  <Wordmark size="32px" alt={t.alt.wordmark} />
+  <ul class="links" role="list">
+    {t.footer.links.map((link) => (
+      <li><a href={link.href}>{link.label}</a></li>
+    ))}
+  </ul>
+  <p class="credit">{t.footer.credit}</p>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-paper-edge);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-marginalia-ink);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .links a:hover { color: var(--color-copper); }
+  .credit {
+    font-family: var(--font-script);
+    font-size: 0.9375rem;
+    color: var(--color-marginalia-ink);
+    margin: 0;
+  }
+</style>
