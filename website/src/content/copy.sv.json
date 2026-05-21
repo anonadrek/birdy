@@ -82,8 +82,9 @@
   },
   "footer": {
     "links": [
-      { "label": "Integritet", "href": "/privacy.html" },
-      { "label": "Villkor", "href": "/terms.html" },
+      { "label": "Juridik", "href": "/legal/" },
+      { "label": "Integritet", "href": "/legal/privacy/" },
+      { "label": "Villkor", "href": "/legal/terms/" },
       { "label": "E-post", "href": "mailto:feedback@birdy.app" },
       { "label": "EN", "href": "/" }
     ],

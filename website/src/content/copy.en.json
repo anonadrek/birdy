@@ -82,8 +82,9 @@
   },
   "footer": {
     "links": [
-      { "label": "Privacy", "href": "/privacy.html" },
-      { "label": "Terms", "href": "/terms.html" },
+      { "label": "Legal", "href": "/legal/" },
+      { "label": "Privacy", "href": "/legal/privacy/" },
+      { "label": "Terms", "href": "/legal/terms/" },
       { "label": "Email", "href": "mailto:feedback@birdy.app" },
       { "label": "SV", "href": "/sv/" }
     ],
