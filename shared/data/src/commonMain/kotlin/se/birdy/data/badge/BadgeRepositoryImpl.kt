@@ -43,6 +43,9 @@ class BadgeRepositoryImpl(
     }
 
     override suspend fun unlockManualBadge(badgeId: String, unlockedAt: Instant): Boolean =
+        // Mutex serializes the check-then-insert pair so at most one caller returns
+        // `true` per badge within this instance. `INSERT OR IGNORE` already protects
+        // the DB from duplicates; this Mutex only protects the boolean return value.
         manualUnlockMutex.withLock {
             val existing = queries.selectOne(badgeId).executeAsOneOrNull()
             if (existing != null) return@withLock false
