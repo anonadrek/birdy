@@ -1,0 +1,53 @@
+---
+import CornerBrackets from './ui/CornerBrackets.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import PlayStoreBadge from './ui/PlayStoreBadge.astro';
+import WingLogo from './ui/WingLogo.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = getCopy(locale);
+const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
+---
+
+<section class="final-cta">
+  <CornerBrackets />
+  <div class="content">
+    <WingLogo alt={t.alt.wingLogo} size="72px" />
+    <JournalHeadline
+      text={t.finalCta.headline}
+      level="h2"
+      size="clamp(2.5rem, 6vw, 4.5rem)"
+    />
+    <p class="sub">{t.finalCta.sub}</p>
+    <div class="cta">
+      <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="large" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta {
+    position: relative;
+    padding: calc(var(--section-padding-y) * 1.5) 1.5rem;
+    text-align: center;
+  }
+  .content {
+    max-width: 42rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .sub {
+    font-family: var(--font-script);
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    color: var(--color-copper);
+    margin: 0.25rem 0;
+  }
+  .cta { margin-top: 1rem; }
+</style>
