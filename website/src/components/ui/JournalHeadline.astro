@@ -1,0 +1,55 @@
+---
+import { parseHeadline } from '../../lib/headline';
+
+interface Props {
+  text: string;
+  level?: 'h1' | 'h2' | 'h3';
+  size?: string;
+  align?: 'left' | 'center';
+  class?: string;
+}
+
+const {
+  text,
+  level = 'h2',
+  size = 'clamp(2rem, 5vw, 3.5rem)',
+  align = 'center',
+  class: cls = '',
+} = Astro.props;
+
+const tokens = parseHeadline(text);
+const Tag = level;
+---
+
+<Tag class={`journal-headline ${cls}`} style={`--size:${size};text-align:${align}`}>
+  {tokens.map((t) =>
+    t.kind === 'plain' ? (
+      <span class="plain">{t.text}</span>
+    ) : (
+      <span class="accent">{t.text}</span>
+    ),
+  )}
+</Tag>
+
+<style>
+  .journal-headline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--size);
+    line-height: 1.05;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+  .plain { font-family: var(--font-serif); font-style: italic; }
+  .accent {
+    font-family: var(--font-script);
+    font-style: italic;
+    font-weight: 700;
+    color: var(--color-copper);
+    display: inline-block;
+    transform: rotate(-3deg);
+    margin: 0 0.15em;
+    line-height: 0.95;
+  }
+</style>
