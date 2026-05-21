@@ -1,0 +1,36 @@
+---
+import EyebrowLabel from './ui/EyebrowLabel.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import FaqItem from './ui/FaqItem.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = getCopy(locale);
+---
+
+<section id="faq" class="faq">
+  <div class="head">
+    <EyebrowLabel text={t.faq.eyebrow} />
+    <JournalHeadline text={t.faq.headline} level="h2" />
+  </div>
+  <div class="list">
+    {t.faq.items.map((item) => (
+      <FaqItem question={item.q} answer={item.a} />
+    ))}
+  </div>
+</section>
+
+<style>
+  .faq {
+    padding: var(--section-padding-y) 1.5rem;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+  .head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin-bottom: 2rem; }
+  .list {
+    border-top: 1px solid rgba(63, 79, 48, 0.18);
+  }
+</style>
