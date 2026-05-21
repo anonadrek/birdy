@@ -120,6 +120,29 @@ tasks.named("check") {
     dependsOn(validateModelMapping)
 }
 
+val birdNetMappingFile =
+    project(":composeApp").file("src/commonMain/composeResources/files/birdnet_lite_to_qid.json")
+val birdNetSpeciesListYaml = rootProject.file("tools/content-pipeline/species_list.yaml")
+
+val validateBirdNetMapping by tasks.registering(JavaExec::class) {
+    group = "verification"
+    description = "Validate birdnet_lite_to_qid.json against species_list.yaml (Plan 6b2 Task T1)."
+    dependsOn("jvmJar")
+    classpath =
+        files(tasks.named("jvmJar")) +
+        configurations.getByName("jvmRuntimeClasspath")
+    mainClass.set("se.birdy.content.build.ValidateBirdNetMappingMain")
+    args = listOf(birdNetMappingFile.absolutePath, birdNetSpeciesListYaml.absolutePath)
+    inputs.file(birdNetMappingFile)
+    inputs.file(birdNetSpeciesListYaml)
+    val bothExist = birdNetMappingFile.exists() && birdNetSpeciesListYaml.exists()
+    onlyIf("birdnet_lite_to_qid.json + species_list.yaml exist") { bothExist }
+}
+
+tasks.named("check") {
+    dependsOn(validateBirdNetMapping)
+}
+
 val badgesYamlFile =
     project(":composeApp").file("src/commonMain/composeResources/files/badges.yaml")
 val badgeStringsSv =

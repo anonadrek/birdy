@@ -56,3 +56,6 @@ keystore/
 
 # Local secrets — never commit (see gradle.properties.example)
 gradle.properties
+
+# BirdNET labels source file — large, reproducible, not committed
+tools/birdnet_labels.txt
