@@ -11,7 +11,7 @@ const t = getCopy(locale);
 const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
 ---
 
-<nav class="nav" aria-label="Primary">
+<nav id="site-nav" class="nav" aria-label="Primary">
   <a href={locale === 'sv' ? '/sv/' : '/'} class="brand" aria-label="Birdy">
     <Wordmark size="36px" alt={t.alt.wordmark} />
   </a>
@@ -80,10 +80,13 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
   @media (max-width: 768px) {
     .links { display: none; }
   }
+  @media (prefers-reduced-motion: reduce) {
+    .nav { transition: none; }
+  }
 </style>
 
 <script>
-  const nav = document.querySelector('.nav');
+  const nav = document.getElementById('site-nav');
   if (nav) {
     const onScroll = () => {
       if (window.scrollY > 80) nav.classList.add('scrolled');
