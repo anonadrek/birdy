@@ -51,3 +51,48 @@ test.describe('SV landing /sv/', () => {
     expect(consoleErrors, `Console errors: ${consoleErrors.join('\n')}`).toEqual([]);
   });
 });
+
+test.describe('Legal section', () => {
+  test('/legal/ index returns 200 + links to 3 docs', async ({ page }) => {
+    const consoleErrors: string[] = [];
+    page.on('pageerror', (e) => consoleErrors.push(e.message));
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') consoleErrors.push(msg.text());
+    });
+
+    const response = await page.goto('/legal/');
+    expect(response?.status()).toBe(200);
+
+    await expect(page.locator('h1')).toContainText('fine print');
+
+    for (const slug of ['privacy', 'terms', 'data-safety']) {
+      const link = page.locator(`a[href="/legal/${slug}/"]`);
+      expect(await link.count()).toBeGreaterThan(0);
+    }
+
+    expect(consoleErrors, `Console errors: ${consoleErrors.join('\n')}`).toEqual([]);
+  });
+
+  test('/legal/privacy/ renders markdown body + cross-links', async ({ page }) => {
+    const response = await page.goto('/legal/privacy/');
+    expect(response?.status()).toBe(200);
+
+    await expect(page.locator('h1')).toContainText('Privacy');
+    expect(await page.locator('.legal-prose h2').count()).toBeGreaterThan(0);
+
+    const termsLink = page.locator('aside.more a[href="/legal/terms/"]');
+    expect(await termsLink.count()).toBe(1);
+  });
+
+  test('/legal/terms/ renders', async ({ page }) => {
+    const response = await page.goto('/legal/terms/');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('h1')).toContainText('Terms');
+  });
+
+  test('/legal/data-safety/ renders', async ({ page }) => {
+    const response = await page.goto('/legal/data-safety/');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('h1')).toContainText('Data Safety');
+  });
+});
