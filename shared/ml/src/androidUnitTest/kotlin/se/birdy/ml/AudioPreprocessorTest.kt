@@ -8,7 +8,7 @@ class AudioPreprocessorTest {
     fun normalize_dividesBy32768() {
         val input = shortArrayOf(32_767, 0, -32_768, 16_384)
         val out = normalize(input)
-        assertEquals(0.999969f, out[0], 0.0001f)
+        assertEquals(32767f / 32768f, out[0], 0.0001f)
         assertEquals(0f, out[1])
         assertEquals(-1f, out[2])
         assertEquals(0.5f, out[3], 0.0001f)

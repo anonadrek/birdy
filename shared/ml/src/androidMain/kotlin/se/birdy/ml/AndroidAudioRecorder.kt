@@ -5,9 +5,18 @@ import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.coroutineContext
 import kotlin.math.sqrt
 
+/**
+ * Captures 3 seconds of 48 kHz mono PCM_16BIT audio for ML classification.
+ *
+ * Caller MUST hold the `android.permission.RECORD_AUDIO` permission before invoking
+ * [record3s] — this class does NOT prompt the user. See [AudioPermissionController]
+ * (T5) for the standard permission flow on Android.
+ */
 class AndroidAudioRecorder(
     val sampleRate: Int = 48_000,
     val durationMs: Int = 3_000,
@@ -25,19 +34,16 @@ class AndroidAudioRecorder(
                 )
             require(minBuf > 0) { "AudioRecord.getMinBufferSize returned $minBuf" }
 
-            val source = pickAudioSource()
-            val recorder =
-                AudioRecord(
-                    source,
-                    sampleRate,
-                    AudioFormat.CHANNEL_IN_MONO,
-                    AudioFormat.ENCODING_PCM_16BIT,
-                    maxOf(minBuf, expectedSamples * 2),
-                )
+            val bufBytes = maxOf(minBuf, expectedSamples * 2)
 
+            var recorder = buildRecorder(MediaRecorder.AudioSource.UNPROCESSED, bufBytes)
             if (recorder.state != AudioRecord.STATE_INITIALIZED) {
                 recorder.release()
-                error("AudioRecord failed to initialize (state=${recorder.state})")
+                recorder = buildRecorder(MediaRecorder.AudioSource.VOICE_RECOGNITION, bufBytes)
+            }
+            if (recorder.state != AudioRecord.STATE_INITIALIZED) {
+                recorder.release()
+                error("AudioRecord failed to initialize with either UNPROCESSED or VOICE_RECOGNITION")
             }
 
             try {
@@ -47,6 +53,7 @@ class AndroidAudioRecorder(
                 val chunkSize = sampleRate / 30 // ~30 Hz RMS callback
 
                 while (totalRead < expectedSamples) {
+                    coroutineContext.ensureActive()
                     val toRead = minOf(chunkSize, expectedSamples - totalRead)
                     val read = recorder.read(buffer, totalRead, toRead)
                     if (read <= 0) error("AudioRecord.read returned $read")
@@ -62,14 +69,17 @@ class AndroidAudioRecorder(
             }
         }
 
-    private fun pickAudioSource(): Int {
-        // UNPROCESSED gives cleanest signal for ML on supported devices; fallback to VOICE_RECOGNITION
-        return try {
-            MediaRecorder.AudioSource.UNPROCESSED
-        } catch (_: Throwable) {
-            MediaRecorder.AudioSource.VOICE_RECOGNITION
-        }
-    }
+    private fun buildRecorder(
+        source: Int,
+        bufBytes: Int,
+    ): AudioRecord =
+        AudioRecord(
+            source,
+            sampleRate,
+            AudioFormat.CHANNEL_IN_MONO,
+            AudioFormat.ENCODING_PCM_16BIT,
+            bufBytes,
+        )
 
     private fun computeRms(
         buffer: ShortArray,
