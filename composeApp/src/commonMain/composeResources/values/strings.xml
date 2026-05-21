@@ -358,7 +358,7 @@
     <string name="listen_journal_headline">Tre sätt att *fånga.*</string>
     <string name="listen_journal_sub">En stämpel väntar i varje.</string>
     <string name="listen_card_audio_title">Lyssna</string>
-    <string name="listen_card_audio_body">Identifiera via läte — kommer snart.</string>
+    <string name="listen_card_audio_body">Identifiera via 3 sekunders läte.</string>
     <string name="listen_card_camera_title">Kika</string>
     <string name="listen_card_camera_body">Realtidsskanning via kameran.</string>
     <string name="listen_card_photo_title">Leta upp</string>

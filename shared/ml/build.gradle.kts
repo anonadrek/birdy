@@ -32,6 +32,10 @@ kotlin {
             implementation(libs.androidx.camera.view)
             implementation("org.tensorflow:tensorflow-lite:2.16.1")
             implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+            // BirdNET-Lite uses FlexRFFT (TF Select op) for on-graph spectrogram
+            // computation. Without this dep the audio model fails to prepare
+            // node 29 with "Select TensorFlow op(s) not supported".
+            implementation("org.tensorflow:tensorflow-lite-select-tf-ops:2.16.1")
         }
         androidUnitTest.dependencies {
             implementation("org.robolectric:robolectric:4.13")

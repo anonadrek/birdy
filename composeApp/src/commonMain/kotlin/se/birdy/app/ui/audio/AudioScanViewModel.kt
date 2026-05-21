@@ -67,7 +67,10 @@ class AudioScanViewModel(
                 }
             PermissionState.Denied -> _state.value = AudioScanState.PermissionNeeded(canRequest = true)
             PermissionState.PermanentlyDenied -> _state.value = AudioScanState.Error.PermanentlyDenied
-            PermissionState.Unknown -> _state.value = AudioScanState.Preparing
+            // First launch (never asked) is treated like Denied so the user sees the
+            // journal-style "Birdy needs your microphone" prompt with a Grant button
+            // instead of being stuck on the "…" Preparing placeholder.
+            PermissionState.Unknown -> _state.value = AudioScanState.PermissionNeeded(canRequest = true)
         }
     }
 
@@ -106,7 +109,10 @@ class AudioScanViewModel(
     fun cancelRecording() {
         recordingJob?.cancel()
         recordingJob = null
-        if (_state.value !is AudioScanState.Error) _state.value = AudioScanState.Idle
+        val current = _state.value
+        if (current is AudioScanState.Recording || current is AudioScanState.Error) {
+            _state.value = AudioScanState.Idle
+        }
     }
 
     private suspend fun analyzeAndNavigate(pcm: ShortArray) {
