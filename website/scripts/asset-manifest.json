@@ -1,0 +1,21 @@
+{
+  "_comment": "Source paths use Windows-bash format. Sync script normalizes per OS.",
+  "sources": {
+    "playStoreSlidesEn": "C:/Users/abbea/Desktop/Birdy AB/Birdy Play Store/Play Store English",
+    "playStoreSlidesSv": "C:/Users/abbea/Desktop/Birdy AB/Birdy Play Store/Play Store Svenska",
+    "brandAssets": "C:/Users/abbea/Desktop/Birdy AB/Birdy Play Store/Birdy Play store English"
+  },
+  "files": [
+    { "from": "brandAssets/birdy-og-card-1200x630.png", "to": "public/og.png" },
+    { "from": "brandAssets/birdy-logo-paper.svg", "to": "public/favicon.svg" },
+    { "from": "brandAssets/birdy-logo-paper.svg", "to": "src/assets/wing-logo-paper.svg" },
+    { "from": "brandAssets/birdy-logo-transparent.svg", "to": "src/assets/wing-logo-transparent.svg" },
+    { "from": "brandAssets/birdy-wordmark-2048-transparent.png", "to": "src/assets/wordmark-2048.png" },
+    { "from": "brandAssets/birdy-square-1024-paper.png", "to": "public/apple-touch-icon-src.png" },
+    { "from": "playStoreSlidesEn/birdy-screenshot-01-hook-EN.png", "to": "src/assets/slides/slide-01-en.png" },
+    { "from": "playStoreSlidesEn/birdy-screenshot-02-scan-EN.png", "to": "src/assets/slides/slide-02-en.png" },
+    { "from": "playStoreSlidesEn/birdy-screenshot-03-match-EN.png", "to": "src/assets/slides/slide-03-en.png" },
+    { "from": "playStoreSlidesEn/birdy-screenshot-04-journal-EN.png", "to": "src/assets/slides/slide-04-en.png" },
+    { "from": "playStoreSlidesEn/birdy-screenshot-05-offline-EN.png", "to": "src/assets/slides/slide-05-en.png" }
+  ]
+}
