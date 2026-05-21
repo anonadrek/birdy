@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 56" role="img" aria-label="Get it on Google Play">
+  <rect width="180" height="56" rx="8" fill="#000"/>
+  <g transform="translate(14,11)">
+    <path fill="#fff" d="M3 0v34l17-17z" opacity=".9"/>
+    <path fill="#ea4335" d="M20 17l-9-9v18z" opacity=".95"/>
+    <path fill="#4285f4" d="M3 0l17 17-9 9z" opacity=".9"/>
+    <path fill="#fbbc05" d="M11 8l9 9-9 9z" opacity=".9"/>
+  </g>
+  <text x="50" y="22" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="9" letter-spacing="1">GET IT ON</text>
+  <text x="50" y="42" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600">Google Play</text>
+</svg>

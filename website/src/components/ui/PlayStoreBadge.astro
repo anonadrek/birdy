@@ -1,0 +1,29 @@
+---
+import { type Locale } from '../../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  href: string;
+  alt: string;
+  size?: 'small' | 'large';
+  class?: string;
+}
+const { locale, href, alt, size = 'large', class: cls = '' } = Astro.props;
+const src = locale === 'sv' ? '/play-badge-sv.svg' : '/play-badge-en.svg';
+const w = size === 'large' ? 220 : 160;
+const h = size === 'large' ? 68 : 50;
+---
+
+<a href={href} class={`badge ${cls}`} rel="noopener" target="_blank">
+  <img src={src} alt={alt} width={w} height={h} loading="lazy" decoding="async" />
+</a>
+
+<style>
+  .badge {
+    display: inline-block;
+    line-height: 0;
+    transition: transform 0.2s var(--ease-paper);
+  }
+  .badge:hover { transform: translateY(-2px); }
+  .badge img { display: block; }
+</style>
