@@ -1,0 +1,108 @@
+---
+import EyebrowLabel from './ui/EyebrowLabel.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import OrnamentRule from './ui/OrnamentRule.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = getCopy(locale);
+---
+
+<section id="loop" class="loop">
+  <div class="head">
+    <EyebrowLabel text={t.loop.eyebrow} />
+    <JournalHeadline text={t.loop.headline} level="h2" />
+    <p class="sub">{t.loop.sub}</p>
+    <OrnamentRule />
+  </div>
+
+  <ol class="cards" role="list">
+    {t.loop.cards.map((card, i) => (
+      <li class="card">
+        <div class="num">0{i + 1}</div>
+        <h3 class="title">{card.title}</h3>
+        <p class="body">{card.body}</p>
+        {i < t.loop.cards.length - 1 && (
+          <span class="arrow" aria-hidden="true">→</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .loop {
+    padding: var(--section-padding-y) 1.5rem;
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+  .sub {
+    font-family: var(--font-script);
+    font-size: 1.25rem;
+    color: var(--color-copper);
+    margin: 0;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    position: relative;
+  }
+  .card {
+    position: relative;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--color-copper);
+    line-height: 1;
+  }
+  .title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.75rem;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+  .body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    margin: 0;
+    max-width: 22ch;
+  }
+  .arrow {
+    position: absolute;
+    right: -1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-copper);
+    opacity: 0.5;
+  }
+  @media (max-width: 1024px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .card:nth-child(2) .arrow,
+    .card:nth-child(4) .arrow { display: none; }
+  }
+  @media (max-width: 640px) {
+    .cards { grid-template-columns: 1fr; }
+    .arrow { display: none; }
+  }
+</style>
