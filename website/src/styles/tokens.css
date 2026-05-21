@@ -1,0 +1,44 @@
+:root {
+  /* Paper backgrounds */
+  --color-paper-bg: #E8E2D2;
+  --color-paper-edge: #E5DCC7;
+  --color-paper-top: #EFE7D6;
+
+  /* Moss greens */
+  --color-moss-mid: #5C6E48;
+  --color-moss-deep: #3F4F30;
+  --color-moss-shadow: #2A3520;
+
+  /* Copper (accent / CTA) */
+  --color-copper: #A8552D;
+  --color-copper-warm: #C9842F;
+
+  /* Text */
+  --color-text-primary: #2A3525;
+  --color-text-on-hero: #F0EAD8;
+  --color-marginalia-ink: #3F4F30;
+
+  /* Stamps */
+  --color-stamp-navy: #1F3A5F;
+
+  /* Typography */
+  --font-serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --font-script: 'Caveat', 'Brush Script MT', cursive;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing rhythm */
+  --section-padding-y: clamp(4rem, 8vw, 8rem);
+  --container-max: 72rem;
+
+  /* Animation */
+  --ease-paper: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
