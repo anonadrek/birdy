@@ -3,6 +3,7 @@ package se.birdy.app.testing
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.datetime.Instant
 import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.badge.BadgeUnlock
 
@@ -20,6 +21,13 @@ class FakeBadgeRepository : BadgeRepository {
 
     override suspend fun deleteAll() {
         _unlocks.value = emptyList()
+    }
+
+    override suspend fun unlockManualBadge(badgeId: String, unlockedAt: Instant): Boolean {
+        val alreadyUnlocked = _unlocks.value.any { it.badgeId == badgeId }
+        if (alreadyUnlocked) return false
+        _unlocks.value = _unlocks.value + BadgeUnlock(badgeId, unlockedAt)
+        return true
     }
 
     fun seedUnlocks(unlocks: List<BadgeUnlock>) {

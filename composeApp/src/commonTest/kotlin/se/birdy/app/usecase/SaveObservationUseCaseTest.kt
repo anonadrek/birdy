@@ -248,6 +248,8 @@ class SaveObservationUseCaseTest {
                     override suspend fun persist(unlocks: List<BadgeUnlock>) = error("simulated DB failure")
 
                     override suspend fun deleteAll() = Unit
+
+                    override suspend fun unlockManualBadge(badgeId: String, unlockedAt: Instant): Boolean = false
                 }
             val catalog =
                 BadgeCatalog(
