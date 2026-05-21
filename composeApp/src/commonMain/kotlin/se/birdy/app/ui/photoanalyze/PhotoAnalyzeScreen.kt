@@ -29,26 +29,39 @@ import birdy_bird_scanner.composeapp.generated.resources.photo_loaded_navigating
 import birdy_bird_scanner.composeapp.generated.resources.photo_pick_from_gallery
 import birdy_bird_scanner.composeapp.generated.resources.photo_retry
 import birdy_bird_scanner.composeapp.generated.resources.photo_take_photo
+import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.OffwhiteWarm
+import se.birdy.ml.Classification
+import se.birdy.ml.ClassificationResult
+import se.birdy.ml.ScanSource
+import se.birdy.ml.ScanSourceSerialization
+import se.birdy.ml.toSerial
 
 @Composable
 fun PhotoAnalyzeScreen(
     viewModel: PhotoAnalyzeViewModel,
     onPickFromGallery: () -> Unit,
     onTakePhoto: () -> Unit,
-    onLoaded: (predictionsCsv: String, frameJpegPath: String) -> Unit,
+    onLoaded: (sourceJson: String) -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
     LaunchedEffect(state) {
         val s = state
         if (s is PhotoAnalyzeUiState.Loaded) {
-            val csv =
-                s.predictions.joinToString(",") { p ->
-                    p.speciesId + ":" + (p.confidence * 100).toInt() + "/100"
-                }
-            onLoaded(csv, s.frameJpegPath)
+            val classification =
+                Classification(
+                    results = s.predictions.map { ClassificationResult(it.speciesId, it.confidence) },
+                )
+            val scanSource =
+                ScanSource.Image(
+                    frameJpegPath = s.frameJpegPath,
+                    classification = classification,
+                )
+            val sourceJson =
+                Json.encodeToString(ScanSourceSerialization.serializer(), scanSource.toSerial())
+            onLoaded(sourceJson)
             viewModel.reset()
         }
     }

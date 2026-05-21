@@ -19,6 +19,8 @@ import se.birdy.content.SpeciesId
 import se.birdy.content.SpeciesRepository
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.observation.ObservationRepository
+import se.birdy.domain.observation.ObservationSource
+import se.birdy.ml.ScanSource
 import java.io.File
 import java.io.IOException
 
@@ -27,8 +29,7 @@ class MatchResultViewModel(
     private val observationRepo: ObservationRepository,
     private val saveUseCase: SaveObservationUseCase,
     private val catalog: BadgeCatalog,
-    private val predictionsCsv: String,
-    private val frameJpegPath: String?,
+    val source: ScanSource,
     private val capturedAtMs: Long,
     private val locale: Locale,
     private val matchOverrideReader: (() -> MatchOverride?)? = null,
@@ -59,7 +60,8 @@ class MatchResultViewModel(
     }
 
     private suspend fun resolve() {
-        val parsed = parseCsv(predictionsCsv)
+        // Read classification results from ScanSource (replaces parseCsv)
+        val parsed = source.classification.results.map { it.speciesId to it.confidence }
         if (parsed.isEmpty()) {
             _state.value = MatchResultUiState.Error(MatchResultUiState.Error.Kind.NoPredictions)
             return
@@ -93,6 +95,7 @@ class MatchResultViewModel(
                 resolved
             }
         val top1 = effective.first()
+        val frameJpegPath = source.frameJpegPath.ifBlank { null }
         val stampNumber = observationRepo.nextStampNumber()
         _state.value =
             when (MatchThresholds.routeFor(top1.confidence)) {
@@ -110,6 +113,7 @@ class MatchResultViewModel(
                         stampNumber = stampNumber,
                         frameJpegPath = frameJpegPath,
                         capturedAtMs = capturedAtMs,
+                        source = source,
                     )
                 }
                 MatchRoute.DISAMBIG ->
@@ -121,29 +125,17 @@ class MatchResultViewModel(
                         stampNumber = stampNumber,
                         frameJpegPath = frameJpegPath,
                         capturedAtMs = capturedAtMs,
+                        source = source,
                     )
                 MatchRoute.NOBIRD ->
                     MatchResultUiState.NoBird(
                         frameJpegPath = frameJpegPath,
                         capturedAtMs = capturedAtMs,
+                        source = source,
                         topPrediction = top1.takeIf { it.confidence >= 0.15f },
                     )
             }
     }
-
-    private fun parseCsv(csv: String): List<Pair<String, Float>> =
-        csv.split(",").mapNotNull { entry ->
-            val parts = entry.split(":")
-            if (parts.size != 2) return@mapNotNull null
-            val id = parts[0].trim()
-            val confParts = parts[1].split("/")
-            val numerator = confParts.getOrNull(0)?.toIntOrNull() ?: return@mapNotNull null
-            val denominator = confParts.getOrNull(1)?.toIntOrNull() ?: 100
-            if (id.isBlank()) return@mapNotNull null
-            if (denominator <= 0 || numerator < 0) return@mapNotNull null
-            val conf = (numerator.toFloat() / denominator.toFloat()).coerceIn(0f, 1f)
-            id to conf
-        }
 
     fun pickFromDisambig(speciesId: SpeciesId) {
         val current = _state.value as? MatchResultUiState.Disambig ?: return
@@ -162,6 +154,7 @@ class MatchResultViewModel(
                     stampNumber = current.stampNumber,
                     frameJpegPath = current.frameJpegPath,
                     capturedAtMs = current.capturedAtMs,
+                    source = current.source,
                 )
         }
     }
@@ -184,6 +177,9 @@ class MatchResultViewModel(
                 )
             return
         }
+        val audioPath = (current.source as? ScanSource.Audio)?.audioWavPath
+        val sourceType =
+            if (current.source is ScanSource.Audio) ObservationSource.Audio else ObservationSource.Photo
         _state.value = current.copy(saveStatus = MatchResultUiState.SaveStatus.Saving)
         viewModelScope.launch {
             val outcome =
@@ -195,6 +191,8 @@ class MatchResultViewModel(
                         confidence = current.confidence,
                         rawJpegBytes = bytes,
                         note = note,
+                        audioPath = audioPath,
+                        sourceType = sourceType,
                     )
                 }.onFailure { if (it is CancellationException) throw it }
             val status: MatchResultUiState.SaveStatus =
@@ -236,6 +234,9 @@ class MatchResultViewModel(
     fun saveAsUnknown() {
         val current = _state.value as? MatchResultUiState.Disambig ?: return
         val path = current.frameJpegPath ?: return
+        val audioPath = (current.source as? ScanSource.Audio)?.audioWavPath
+        val sourceType =
+            if (current.source is ScanSource.Audio) ObservationSource.Audio else ObservationSource.Photo
         viewModelScope.launch {
             runCatching {
                 val bytes = withContext(Dispatchers.IO) { File(path).readBytes() }
@@ -245,6 +246,8 @@ class MatchResultViewModel(
                     confidence = 0f,
                     rawJpegBytes = bytes,
                     note = "",
+                    audioPath = audioPath,
+                    sourceType = sourceType,
                 )
             }.onFailure { if (it is CancellationException) throw it }
         }

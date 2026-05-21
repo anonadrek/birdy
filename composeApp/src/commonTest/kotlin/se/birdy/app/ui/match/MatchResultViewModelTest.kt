@@ -21,6 +21,9 @@ import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeCategory
 import se.birdy.domain.badge.BadgeRule
+import se.birdy.ml.Classification
+import se.birdy.ml.ClassificationResult
+import se.birdy.ml.ScanSource
 import java.io.File
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
@@ -52,17 +55,43 @@ class MatchResultViewModelTest {
             speciesByQid = { speciesRepo.allByQid() },
         )
 
+    /**
+     * Converts a legacy CSV string like "Q25485:87/100,Q25234:8/100" into a
+     * [ScanSource.Image] so existing test scenarios continue to work without change.
+     */
+    private fun csvToScanSource(
+        predictionsCsv: String,
+        frameJpegPath: String = "/cache/scan-frames/x.jpg",
+    ): ScanSource {
+        val results =
+            predictionsCsv.split(",").mapNotNull { entry ->
+                val parts = entry.split(":")
+                if (parts.size != 2) return@mapNotNull null
+                val id = parts[0].trim()
+                val confParts = parts[1].split("/")
+                val numerator = confParts.getOrNull(0)?.toIntOrNull() ?: return@mapNotNull null
+                val denominator = confParts.getOrNull(1)?.toIntOrNull() ?: 100
+                if (id.isBlank() || denominator <= 0 || numerator < 0) return@mapNotNull null
+                val conf = (numerator.toFloat() / denominator.toFloat()).coerceIn(0f, 1f)
+                ClassificationResult(id, conf)
+            }
+        return ScanSource.Image(
+            frameJpegPath = frameJpegPath,
+            classification = Classification(results = results),
+        )
+    }
+
     private fun makeVm(
         predictionsCsv: String,
         obsRepo: FakeObservationRepository = FakeObservationRepository(),
         speciesRepo: FakeSpeciesRepository = FakeSpeciesRepository.withDefaults(),
+        frameJpegPath: String = "/cache/scan-frames/x.jpg",
     ) = MatchResultViewModel(
         repository = speciesRepo,
         observationRepo = obsRepo,
         saveUseCase = makeSaveUseCase(obsRepo, speciesRepo),
         catalog = emptyCatalog(),
-        predictionsCsv = predictionsCsv,
-        frameJpegPath = "/cache/scan-frames/x.jpg",
+        source = csvToScanSource(predictionsCsv, frameJpegPath),
         capturedAtMs = capturedAtMs,
         locale = Locale.SV,
     )
@@ -270,8 +299,7 @@ class MatchResultViewModelTest {
                     observationRepo = obsRepo,
                     saveUseCase = saveUseCase,
                     catalog = catalog,
-                    predictionsCsv = "Q25485:87/100",
-                    frameJpegPath = tmpFile.absolutePath,
+                    source = csvToScanSource("Q25485:87/100", tmpFile.absolutePath),
                     capturedAtMs = capturedAtMs,
                     locale = Locale.SV,
                 )
@@ -321,14 +349,14 @@ class MatchResultViewModelTest {
         runTest(dispatcher) {
             val obsRepo = FakeObservationRepository()
             val speciesRepo = FakeSpeciesRepository.withDefaults()
+            // Use empty frameJpegPath to trigger FrameUnavailable (blank string → null in VM)
             val vm =
                 MatchResultViewModel(
                     repository = speciesRepo,
                     observationRepo = obsRepo,
                     saveUseCase = makeSaveUseCase(obsRepo, speciesRepo),
                     catalog = emptyCatalog(),
-                    predictionsCsv = "Q25485:87/100",
-                    frameJpegPath = null,
+                    source = csvToScanSource("Q25485:87/100", ""),
                     capturedAtMs = capturedAtMs,
                     locale = Locale.SV,
                 )

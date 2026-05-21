@@ -6,5 +6,5 @@ import se.birdy.app.di.AppGraph
 @Composable
 expect fun PhotoAnalyzeHost(
     graph: AppGraph,
-    onLoaded: (predictionsCsv: String, frameJpegPath: String) -> Unit,
+    onLoaded: (sourceJson: String) -> Unit,
 )

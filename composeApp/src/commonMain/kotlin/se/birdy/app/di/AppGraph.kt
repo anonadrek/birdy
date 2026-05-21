@@ -17,8 +17,11 @@ import se.birdy.app.ui.diary.LifelistViewModel
 import se.birdy.app.ui.diary.ObservationDetailViewModel
 import se.birdy.app.ui.encyclopedia.ArchiveViewModel
 import se.birdy.app.ui.listen.ListenLauncherViewModel
+import kotlinx.serialization.json.Json
 import se.birdy.app.ui.match.MatchOverride
 import se.birdy.app.ui.match.MatchResultViewModel
+import se.birdy.ml.ScanSourceSerialization
+import se.birdy.ml.toScanSource
 import se.birdy.app.ui.onboarding.OnboardingViewModel
 import se.birdy.app.ui.photoanalyze.PhotoAnalyzeViewModel
 import se.birdy.app.ui.premium.PremiumViewModel
@@ -179,21 +182,21 @@ class AppGraph(
         PhotoAnalyzeViewModel(classifier = classifier, persist = persist)
 
     fun matchResultViewModel(
-        predictionsCsv: String,
-        frameJpegPath: String?,
+        sourceJson: String,
         capturedAtMs: Long,
-    ): MatchResultViewModel =
-        MatchResultViewModel(
+    ): MatchResultViewModel {
+        val source = Json.decodeFromString<ScanSourceSerialization>(sourceJson).toScanSource()
+        return MatchResultViewModel(
             repository = repository,
             observationRepo = observationRepository,
             saveUseCase = saveObservationUseCase,
             catalog = badgeCatalog,
-            predictionsCsv = predictionsCsv,
-            frameJpegPath = frameJpegPath,
+            source = source,
             capturedAtMs = capturedAtMs,
             locale = defaultLocale,
             matchOverrideReader = matchOverrideReader,
         )
+    }
 
     fun badgesViewModel(): BadgesViewModel =
         BadgesViewModel(

@@ -68,15 +68,21 @@ import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberCaveat
+import kotlinx.serialization.json.Json
 import se.birdy.ml.CameraSource
+import se.birdy.ml.Classification
+import se.birdy.ml.ClassificationResult
 import se.birdy.ml.ClassifierMode
+import se.birdy.ml.ScanSource
+import se.birdy.ml.ScanSourceSerialization
+import se.birdy.ml.toSerial
 
 @Composable
 fun ScanScreen(
     viewModel: ScanViewModel,
     cameraSource: CameraSource,
     onPhotoAnalyzeClick: () -> Unit,
-    onFrozen: (predictionsCsv: String, frameJpegPath: String, capturedAtMs: Long) -> Unit,
+    onFrozen: (sourceJson: String, capturedAtMs: Long) -> Unit,
     onPermissionRequest: () -> Unit,
     onOpenSettings: () -> Unit,
     onCaptureJpeg: () -> ByteArray,
@@ -87,11 +93,19 @@ fun ScanScreen(
     LaunchedEffect(state) {
         val s = state
         if (s is ScanUiState.FrozenAt) {
-            val csv =
-                s.predictions.joinToString(",") { p ->
-                    p.speciesId + ":" + (p.confidence * 100).toInt() + "/100"
-                }
-            onFrozen(csv, s.frameJpegPath, s.timestampMillis)
+            val classification =
+                Classification(
+                    results = s.predictions.map { ClassificationResult(it.speciesId, it.confidence) },
+                    frameTimestampMillis = s.timestampMillis,
+                )
+            val scanSource =
+                ScanSource.Image(
+                    frameJpegPath = s.frameJpegPath,
+                    classification = classification,
+                )
+            val sourceJson =
+                Json.encodeToString(ScanSourceSerialization.serializer(), scanSource.toSerial())
+            onFrozen(sourceJson, s.timestampMillis)
             viewModel.onResumeAfterFreeze()
         }
     }

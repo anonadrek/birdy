@@ -133,7 +133,8 @@ class BadgesViewModelTest {
                         note: String,
                     ) {}
 
-                    override suspend fun delete(id: String) {}
+                    override suspend fun delete(id: String): se.birdy.domain.observation.FileCleanupRequest =
+                        se.birdy.domain.observation.FileCleanupRequest(null, null)
 
                     override suspend fun nextStampNumber(): Int = 1
 

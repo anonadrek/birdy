@@ -4,6 +4,7 @@ import kotlinx.datetime.Instant
 import se.birdy.content.model.Species
 import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeUnlock
+import se.birdy.ml.ScanSource
 
 data class ResolvedPrediction(
     val species: Species,
@@ -17,6 +18,7 @@ sealed interface MatchResultUiState {
     data class NoBird(
         val frameJpegPath: String?,
         val capturedAtMs: Long,
+        val source: ScanSource,
         val topPrediction: ResolvedPrediction? = null,
     ) : MatchResultUiState
 
@@ -26,6 +28,7 @@ sealed interface MatchResultUiState {
         val stampNumber: Int,
         val frameJpegPath: String?,
         val capturedAtMs: Long,
+        val source: ScanSource,
     ) : MatchResultUiState
 
     /** Top-1 ≥ 0.50 ELLER användaren just pickade från Disambig. */
@@ -39,6 +42,7 @@ sealed interface MatchResultUiState {
         val stampNumber: Int,
         val frameJpegPath: String?,
         val capturedAtMs: Long,
+        val source: ScanSource,
         val saveStatus: SaveStatus = SaveStatus.NotSaved,
         val pendingUnlock: BadgeUnlock? = null,
         val pendingBadge: Badge? = null,

@@ -27,7 +27,7 @@ import java.util.UUID
 @Composable
 actual fun PhotoAnalyzeHost(
     graph: AppGraph,
-    onLoaded: (predictionsCsv: String, frameJpegPath: String) -> Unit,
+    onLoaded: (sourceJson: String) -> Unit,
 ) {
     val context = LocalContext.current
     val photoCacheDir =

@@ -10,9 +10,12 @@ sealed interface AppRoute {
 
     @Serializable data object PhotoAnalyze : AppRoute
 
+    /**
+     * Plan 6b2 T6: sourceJson is a JSON-encoded [ScanSourceSerialization];
+     * replaces the old predictionsCsv + frameJpegPath params.
+     */
     @Serializable data class MatchResult(
-        val predictionsCsv: String,
-        val frameJpegPath: String?,
+        val sourceJson: String,
         val capturedAtMs: Long,
     ) : AppRoute
 

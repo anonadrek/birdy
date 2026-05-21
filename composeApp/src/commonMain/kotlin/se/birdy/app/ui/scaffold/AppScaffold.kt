@@ -106,17 +106,17 @@ fun AppScaffold(graph: AppGraph) {
                 ScanScreenHost(
                     graph = graph,
                     onPhotoAnalyzeClick = { navController.navigate(AppRoute.PhotoAnalyze) },
-                    onFrozen = { csv, path, capturedAtMs ->
-                        navController.navigate(AppRoute.MatchResult(csv, path, capturedAtMs))
+                    onFrozen = { sourceJson, capturedAtMs ->
+                        navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs))
                     },
                 )
             }
             composable<AppRoute.PhotoAnalyze> {
                 se.birdy.app.ui.photoanalyze.PhotoAnalyzeHost(
                     graph = graph,
-                    onLoaded = { csv, path ->
+                    onLoaded = { sourceJson ->
                         val ts = Clock.System.now().toEpochMilliseconds()
-                        navController.navigate(AppRoute.MatchResult(csv, path, ts)) {
+                        navController.navigate(AppRoute.MatchResult(sourceJson, ts)) {
                             popUpTo(AppRoute.Scan) { inclusive = false }
                         }
                     },
@@ -126,7 +126,7 @@ fun AppScaffold(graph: AppGraph) {
                 val route = entry.toRoute<AppRoute.MatchResult>()
                 val vm =
                     remember(graph, route) {
-                        graph.matchResultViewModel(route.predictionsCsv, route.frameJpegPath, route.capturedAtMs)
+                        graph.matchResultViewModel(route.sourceJson, route.capturedAtMs)
                     }
                 MatchResultScreen(
                     viewModel = vm,
@@ -226,15 +226,14 @@ fun AppScaffold(graph: AppGraph) {
             graph.diagnosticsScreen?.let { diagnosticsContent ->
                 composable<AppRoute.DebugDiagnostics> { diagnosticsContent() }
             }
-            // Plan 6b2 T5: AudioScan route registered.
-            // onNavigateToMatch is a no-op stub — T6 refactors AppRoute.MatchResult
-            // to accept ScanSource JSON and wires real navigation here.
             composable<AppRoute.AudioScan> {
                 AudioScanScreenHost(
                     graph = graph,
-                    onNavigateToMatch = { _sourceJson ->
-                        // TODO Plan 6b2 T6: refactor MatchResult route to accept ScanSource JSON.
-                        // For now AudioScan-flow terminates here; T6 wires the actual navigation.
+                    onNavigateToMatch = { sourceJson ->
+                        val ts = Clock.System.now().toEpochMilliseconds()
+                        navController.navigate(AppRoute.MatchResult(sourceJson, ts)) {
+                            popUpTo(AppRoute.Listen) { inclusive = false }
+                        }
                     },
                     onBack = { navController.popBackStack() },
                 )
