@@ -4,9 +4,43 @@
 
 ## Vad är detta?
 
-AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + uppslagsverk över 839 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till dagbok, gamification, karta, push, community, iOS.
+AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + audio-ID + uppslagsverk över 839 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till karta, push, community, iOS.
 
-**Status (2026-05-21):** Plan 1 ✅ (`v0.1.0-foundation`). Plan 2a ✅ (`v0.2.0a-pipeline`). **Plan 2b ✅ KLAR — taggad `v0.2.0-content` (839/839 arter, alla i `species_list.yaml` har YAMLs).** Plan 3 ✅ (`v0.3.0-encyclopedia`). Plan 4a ✅ (`v0.4.0a-camera-ui`). Plan 4b (Real TFLite) ✅ (`v0.4.0b-real-tflite`). Plan 5a (Diary) ✅ (`v0.5.0a-diary`). Plan 5b (Gamification) ✅ (`v0.5.0b-gamification`). Plan 7a–e ✅ (foundation/screens/field-journal/match-flow/premium — alla taggade `v0.7.0a..e`). **Plan 6a (Foundation = UX-polish + release-mekanik) ✅ KLAR — taggad `v0.8.0-rc1` (versionCode 100, versionName 1.0.0-rc1). T15 device-verify pass på SM-S918B (API 35) med signed release-AAB byggd via `:androidApp:bundleRelease` (1m32s green) + installed via bundletool 1.18.1; cold-start ≤ 1.5s, locale-switch SV↔EN utan kill, alla 4 flikar navigerbara, ingen R8/TFLite-crash i logcat (process pid stabil); 12 device-screenshots committade i `docs/superpowers/screenshots/2026-05-15-v0.8.0-rc1/` (canonical 01-07/10-12 + bonus 13/14). 08-match-with-inline-note + 09-disambig-save-as-unknown skipped (kräver deterministisk camera/match-flow ej driveable via ADB — Plan 6b kan adressa via test-image-infra). T11 onboarding back/skip device-verifierad i tidigare session (`fe4598a`). **Tidigare i Plan 6a (HEAD pre-T15 `59b644c`):** T10 (UX bumps A1–A13) shipped in 6 commits (`233e020` Encyclopedia skeleton + clear + sticky family, `b27403b` Diary empty redesign + month grouping, `786c4bf` Badges locked-tap progress bottom-sheet, `279e0cf` Match NoBird hints + Disambig save-as-unknown + Match inline-note, `cdaa06f` Scan DEMO recovery sheet + tap-to-freeze fix + paper-bg permission hero + Onboarding back/skip + copy fixes); `PlatformBackHandler` expect/actual added för cross-platform BackHandler. T12 (`746d86a`) manifest: `<queries>` för camera/mailto/https intents + `data_extraction_rules.xml` + `backup_rules.xml` + `usesCleartextTraffic=false`. T13 (`8e44552`) Settings rows + AboutScreen: `SettingsLauncher` expect/actual för `openExternalUrl`/`openMailto`/`shareApp`/`openPlayStoreListing` (Android-actuals via `SettingsLauncherSetup` singleton init'd från `MainActivity` — samma mönster som `AppLocaleApplier`); VM-metoder emittar `SettingsEffect` → `SettingsScreen.LaunchedEffect` dispatchar; `AppRoute.About` + `AboutScreen` (JournalIntro + version + credits + open-source-licenses); `AppGraph.versionName = BuildConfig.VERSION_NAME` threadat. T14 (`59b644c`) Play Store-artefakter: `docs/play-store/{privacy-policy,terms,store-listing-sv,store-listing-en,data-safety-form}.md` + `.github/workflows/pages.yml` (pandoc GFM→HTML5 emit `privacy.html`/`terms.html` så de matchar T13 Intent-URL:er). **Tidigare i Plan 6a:** T1 R8/ProGuard, T2 signing config + upload-keystore, T3 icon-koncept (användaren gjorde eget Field Journal-set i `docs/superpowers/icon-concepts/final/`), T4 adaptive launcher + Splash API 31+ + AccentCopper-token retintad `#8C5A3C` → `#A8552D`, T5 cold-start TFLite-flytt → `ClassifierBootstrap` + `AppGate` state-gating + `MainActivity.onDestroy.close()`, T6 Locale-handling: `LocaleResolver` + `months_short_uppercase` string-array + `<plurals>`, device-verifierat EN↔SV på SM-S918B. **T8 Shared components klar: `JournalLoading` (paper-bg + AccentCopper CircularProgressIndicator + Caveat 18.sp + MarginaliaInk + default label från `journal_loading_default`), `JournalDialog` (Material3 AlertDialog med DM Serif Italic title + Caveat body + AccentCopper confirm + PaperTop containerColor; `onDismiss = {}` default + KDoc dokumenterar att `dismissLabel == null` låser back-press/outside-tap via `DialogProperties`), `JournalScaffold` (Material3 Scaffold med `paperBackground()` + `containerColor=Transparent` + `snackbarHost` slot), `EmptyState` (utökad med `action: (@Composable () -> Unit)? = null`). 7 skärmar migrerade: ArchiveScreen, BadgesScreen, LifelistScreen, ObservationDetailScreen, SpeciesProfileScreen, MatchResultScreen, ListenLauncherScreen. Två call-sites för `JournalDialog`: `AppGate.BootstrapFailedView` (non-dismissable — `dismissLabel = null`) + `ObservationDetailScreen` (delete-confirm med explicit `onDismiss`). Code-quality review approved efter I1+I2-fix (`f604ce2`): I1 = `onDismiss = onConfirm` default footgun → `= {}`; I2 = `TextUnit(18f, TextUnitType.Sp)` → `18.sp`. Device-verified på SM-S918B (API 35): Listen (paper-bg + JournalScaffold + Caveat-toast i snackbarHost), Archive (encyclopedia browse), Lifelist empty (JournalScaffold + EmptyState `action`-slot med "Scan first bird" CTA), Badges (paper-bg + 5×5 stamp-grid), SpeciesProfile (PlateFrame + paper-bg) — alla renderar utan regressioner. **T9 A11y bumps klar (`4937ea2`): (1) `MarginaliaInk` token bumpat `#5C6E48` → `#3F4F30` för WCAG AA-kontrast (~6.7:1 vs paper-bg, upp från ~3.8:1) — matchar `HeroMossMid` hex men behåller token-separation. (2) `StampSeal` får `.semantics(mergeDescendants = true) { contentDescription = ...; role = Role.Button if onClick != null }` med state-aware label från tre nya strängar `stamp_locked_label` / `stamp_in_progress_label` / `stamp_unlocked_label` (sv + en); progressLabel är pre-formatterad "N/M"-sträng så använder `%2$s` inte `%2$d`. (3) `PlateFrame` får `.semantics(mergeDescendants = true) {}` (utan explicit contentDescription för att låta caption Text annonsera sig själv via merge — explicit parent cd hade suprimerat child semantics). (4) `JournalHeadline` FlowRow + `JournalSubLine` Text får `mergeDescendants = true` för att slå ihop multi-Text accent-segment. (5) `BottomNavBar` TabCell Column får `mergeDescendants = true`; Icon `contentDescription = null` (Text-label sköter annonsering). (6) AsyncImage `contentDescription` populeras: SpeciesProfile (`species_photo_label` "Foto av X" / "Photo of X"), ArchiveScreen thumbnail, PremiumHeroCard (`premium_hero_photo_label`). **Post-quality-review fix (`9242c0b`):** PlateFrame-interna AsyncImages i SpeciesProfileScreen + ObservationDetailScreen fick `contentDescription = null` för att undvika dubbel-annonsering (image cd + caption Text läses båda när PlateFrame mergar children). **Cleanup (`4937ea2`):** `observation_photo_label` borttagen från sv + en strings.xml efter att ha blivit orphaned. `HeroImage` + `CircularThumb` fick optional `contentDescription` parameter (future-ready, ingen call-site använder ännu). Device-verified på SM-S918B (API 35): Listen launcher renderar med `Settings` content-desc på gear-button (uiautomator dump bekräftar); Scan-skärm renderar utan regressioner (camera-feed + copper Q-chip + bottom-nav). Build green via `:composeApp:assembleDebug` + `:androidApp:installDebug`.** **Plan 6b1 (Billing v8 + launch-prep) ✅ KLAR — taggad `v0.9.0a-billing` 2026-05-20** (versionCode 110, versionName 1.0.0-rc2). Code-tasks shipped i 12 commits: T2 ML diagnos (`d59bd2b` + `4cdacae`), T3 match_override (`a00287b`), T4 Billing v8 (`280e6b7` + `08fa3cf` + `cbdb7bb`) — `PremiumBillingClient` expect/actual med RSA SHA1-signature-verification via Play Licensing public key embeddad i BuildConfig, T5 Restore Purchases (`716c061` + `e5f5ef8`), T6 Premium-screen UI fixes (`58b71c5` — "spara 60%"-stämpel borttagen för EU Omnibus + dark-pattern-policy, EN-valuta-bug fix, priser 199 kr/år + 499 kr Lifetime locked), T7 cold-start-modal-throttle (`ac31cba` — 1×/3d + 7d first-install-grace), T8 ML threshold Path B (`6ab9d66` — NoBird 0.10 → 0.05), T9 TalkBack walkthrough PASS (`90d9fbf`), T10.1 versionCode/versionName bump (`76baef1`), T10.2 smoke-test signed AAB v1.0.0-rc2 (`0ae9076` — release-build crash från `PremiumBillingClient.init` blank-key-check fixad efter `BIRDY_PLAY_LICENSE_KEY` fetched från Play Console → embed via gradle.properties → BuildConfig; Listen-launcher renderar utan IllegalStateException). **Google Play developer account APPROVED 2026-05-20 (personligt konto)** — AB-flytt deferred till post-launch via Account Transfer. **Strategiskt beslut 2026-05-20:** finish ALL sprintar (6b1 + 6b2 + 6b3) före Closed Testing 14-dagars-klocka — testers ser full v1.0-upplevelse, inte rc2. Billing v8 IPC runtime-verify (purchase-flow + Restore Purchases + Active(YEARLY/LIFETIME)-state-flip) **deferred till Internal Testing post-6b3** (kräver app entry + in-app products + license testers i Play Console). Plan 6b1 spec: `docs/superpowers/plans/2026-05-16-v1-06b1-billing-launch-prep.md`. Runbook: `docs/superpowers/runbooks/2026-05-16-v0.9.0a-billing-device-verify.md`. **Plan 6b2 (Audio-ID via BirdNET-Lite) ✅ KLAR — taggad `v0.9.0b-audio` 2026-05-21.** End-to-end audio scan funkar på SM-S918B: long-press mic → 3s rec (48kHz mono PCM_16 via UNPROCESSED→VOICE_RECOGNITION fallback) → frozen waveform + "Analyzing…" → BirdNET-Lite v2 inference (FlexRFFT TF Select op via `tensorflow-lite-select-tf-ops:2.16.1` — utan denna dep fail:ar node 29 "Failed to prepare") → 627 Wikidata-QID-mappning → NoBird/Match-routing via threshold. T1 modell-prep (~57 MB i AAB, 6362 → 627 QID-mapped klasser), T2 `BirdAudioClassifier` + `AudioClassifierFactory` (REAL/DEMO fallback via `AudioSessionFailureGuard` 3-strike), T3 `AndroidTfliteAudioRunner` (Mutex-serialiserad + direct ByteBuffer + nativeOrder), T4 `AndroidAudioRecorder` (144000 samples = 48k×3s + UNPROCESSED→VOICE_RECOGNITION graceful), T5 `AudioScanScreen` + `AudioScanViewModel` state machine (Preparing → PermissionNeeded/Idle → Recording → Analyzing → NavigateToMatch / Error.*), T6 `AndroidWaveformRenderer` (PNG 600×200 Mossbädd-färger + Opus encode via MediaCodec→MediaMuxer ~32 kbps OGG), T7 `ListenLauncher` 3-card carousel (Look/Find/Listen) + 3-layer Premium-gate (Visual `LaunchCardVariant.Locked` + Routing Effect + Screen-init `popBackStack`), T8 Python ML-eval-scripts via xeno-canto API v3 (key-gated, eval pending). **Device-verify bug-fixes shipped:** (1) FlexRFFT crash root cause (silent IllegalArgumentException swallowed av `catch (t: Throwable)` → diagnostic logging surfaced "Node 29 (FlexRFFT) failed to prepare" → fixed via select-tf-ops dep), (2) `AudioScanViewModel.onPermissionState()` Unknown → PermissionNeeded(canRequest=true) (var Preparing = dead-end "…"-screen first launch), (3) `cancelRecording()` Error → Idle (var: Try again no-op pga `!is Error`-guard). **Copy fix:** `listen_card_audio_body` "Identify by call — coming soon" / "kommer snart" → "Identify a 3-second song." / "Identifiera via 3 sekunders läte." 10 canonical device-screenshots committade (00-onboarding, 01-listen-locked, 02-premium, 03-listen-active, 04-permission-needed, 05-permission-system-dialog, 06-idle-ready, 07-recording, 08-analyzing, 09-no-bird). Strategiskt beslut 2026-05-20 kvar: finish ALL sprintar (6b2 ✅ + 6b3) före Closed Testing 14-dagars-klocka. Plan 6b2 spec: `docs/superpowers/plans/2026-05-20-v1-06b2-audio-id.md`. Audio accuracy eval pending xeno-canto API v3 key: `tools/ml-eval/audio_accuracy_report_2026-05-21.md` (pipeline ready, model verified, key blocking). Nästa = **Plan 6b3 (Premium content: PDF-export + season-statistics + 10 fält-märken)** mot `v0.9.0c-premium-content` → `v1.0.0` — brainstorm + writing-plans behövs (spec/plan finns INTE ännu). Strategisk roadmap + research: `docs/superpowers/research/2026-05-15-play-store-launch/00-launch-roadmap.md` + auto-memory `project_play_store_launch_research.md`.
+## Status (2026-05-22)
+
+- **Android-app:** All kod-scope för v1.0 utom Plan 6b3 är klar. Senaste tag: `v0.9.0b-audio` (Plan 6b2 audio-ID). VersionCode 110, versionName 1.0.0-rc2. Nästa = **Plan 6b3** (Premium content: PDF-export + season-stats + 10 fält-märken) → tag `v0.9.0c-premium-content` → `v1.0.0`. Brainstorm + writing-plans behövs (spec/plan finns ej ännu). Strategi: finish ALL sprintar innan Closed Testing 14-dagarsklockan startas, så testers ser full v1.0.
+- **Marketing-website:** Live på `https://birdy.community` via Vercel (Astro 5 + Tailwind v4 + i18n EN/SV). Inkluderar `/legal/{privacy,terms,data-safety}/`. Gammal GitHub Pages-deploy (birdy.app via `pages.yml`) är avskaffad. Senaste deploy fungerar; setup-gotcha = Vercel **Root Directory måste vara `website`** (annars ENOENT på package.json).
+- **Google Play:** Developer account approved 2026-05-20 (personligt konto). AB-flytt deferred till post-launch via Account Transfer. Billing v8 IPC-verify deferred till Internal Testing (kräver app entry + license testers i Play Console).
+- **Ej-pushade lokala commits:** Plan 6b3 har 4 dev-commits ahead of origin (parallell agent jobbar autonomt). Lämna i fred.
+
+Full per-plan historik: se "Avslutade planer (referens)" nedan + auto-memory.
+
+## Plan-of-plans (v1)
+
+| # | Plan | Status |
+|---|---|---|
+| 1 | Foundation — KMP-bootstrap, Compose, CI | ✅ `v0.1.0-foundation` |
+| 2a | Content pipeline + walking skeleton (5 arter) | ✅ `v0.2.0a-pipeline` |
+| 2b | Content backfill (5 → 839 arter) | ✅ `v0.2.0-content` |
+| 3 | Encyclopedia (browse + species profile) | ✅ `v0.3.0-encyclopedia` |
+| 4a | ML & Camera UI (FakeClassifier + 3 fps CameraX) | ✅ `v0.4.0a-camera-ui` |
+| 4b | Real TFLite (AIY Birds V1, 965 klasser, ~14ms) | ✅ `v0.4.0b-real-tflite` |
+| 5a | Diary (browse + detail + save flow) | ✅ `v0.5.0a-diary` |
+| 5b | Gamification (25 badges, streaks, unlock-queue) | ✅ `v0.5.0b-gamification` |
+| 7a | Redesign Foundation — tokens, DataStore, Onboarding, Settings | ✅ `v0.7.0a-foundation` |
+| 7b | Redesign Skärmar — Listen/Archive/Lifelist/Badges | ✅ `v0.7.0b-screens` |
+| 7c | Field Journal redesign — DM Serif + Caveat + paper-bg + StampSeal | ✅ `v0.7.0c-field-journal` |
+| 7d | Match-flow — threshold-logik, Match/Disambig/NoBird-screens | ✅ `v0.7.0d-match-flow` |
+| 7e | Premium tier — PremiumScreen + per-tab teasers + cold-start modal | ✅ `v0.7.0e-premium` |
+| 6a | Foundation — UX-polish + release-mekanik (R8, signing, icon, a11y) | ✅ `v0.8.0-rc1` |
+| 6b1 | Billing v8 + launch-prep (PremiumBillingClient + Restore Purchases) | ✅ `v0.9.0a-billing` |
+| 6b2 | Audio-ID via BirdNET-Lite (3s rec + FlexRFFT TF Select op) | ✅ `v0.9.0b-audio` |
+| 6b3 | Premium content (PDF-export + season-statistics + 10 fält-märken) | ⏳ pågår → `v0.9.0c-premium-content` → `v1.0.0` |
+| W | Marketing-website (Astro + Vercel + birdy.community + /legal/) | ✅ Live |
+
+**Föreslagen ordning:** Plan 6b3 → tag v1.0 → Internal Testing → Closed Testing (14d) → Play Store-launch.
+
+Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew build` ska gå grönt.
 
 ## Var hittar du saker
 
@@ -16,35 +50,11 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 | Implementationsplaner | `docs/superpowers/plans/YYYY-MM-DD-v1-NN-<phase>.md` |
 | Skärmdumpar per milstolpe | `docs/superpowers/screenshots/` |
 | Milstolpe-review-runbook | `docs/superpowers/runbooks/milstolpe-review.md` |
-| Plan 2b family-by-family-runbook | `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md` |
-| Visuellt språk (Mossbädd) | sammanfattat nedan + auto-memory `visual_language_birdy_v1.md` |
+| Play Store-artefakter (markdown) | `docs/play-store/{privacy-policy,terms,store-listing-{sv,en},data-safety-form}.md` |
+| Website källkod | `website/` (Astro 5 + Tailwind v4 + Playwright) |
+| Visuellt språk (Mossbädd + Field Journal) | sammanfattat nedan + auto-memories `visual_language_birdy_v1.md`, `project_plan_7c_status.md` |
 | Auto-memory (lokalt, inte i repo) | `~/.claude/projects/C--Users-abbea-dev-birdy-bird-scanner/memory/` |
-
-## Plan-of-plans (v1)
-
-| # | Plan | Status |
-|---|---|---|
-| 1 | Foundation — KMP-bootstrap, Compose, CI, Mossbädd-tema | ✅ `v0.1.0-foundation` |
-| 2a | Content pipeline + walking skeleton (5 arter) | ✅ `v0.2.0a-pipeline` |
-| 2b | Content backfill family-by-family (5 → 839 arter) | ✅ `v0.2.0-content` |
-| 3 | Encyclopedia (browse + species profile) | ✅ `v0.3.0-encyclopedia` |
-| 4a | ML & Camera UI (FakeClassifier + UI + CameraX 3 fps) | ✅ `v0.4.0a-camera-ui` |
-| 4b | Real TFLite-modell (AIY Birds V1) | ✅ `v0.4.0b-real-tflite` |
-| 5a | Diary (browse + detail + save flow) | ✅ `v0.5.0a-diary` |
-| 5b | Gamification (badges, streaks, unlock-queue) | ✅ `v0.5.0b-gamification` |
-| 7a | Redesign Foundation — tokens, ItalicMixed, HeroZone, DataStore, Onboarding, Settings, bottom-bar-rename | ✅ `v0.7.0a-foundation` |
-| 7b | Redesign Skärmar — Listen-launcher, Archive, Lifelist, Badges, polish | ✅ `v0.7.0b-screens` |
-| 7c | Field Journal redesign — DM Serif Italic + Caveat fonttema, paper-bg, stamp-collector, marginalia | ✅ `v0.7.0c-field-journal` |
-| 7d | Match-flow — threshold-logik, Match-skärm, Disambig (i Field Journal-stil) | ✅ `v0.7.0d-match-flow` |
-| 7e | Premium tier — Premium-skärm, Settings-rewrite, per-tab-markers, cold-start-modal, DataStore-state | ✅ `v0.7.0e-premium` |
-| 6a | Foundation — UX-polish + release-mekanik (R8, signing, icon, splash, locale, a11y) | ✅ `v0.8.0-rc1` |
-| 6b1 | Billing v8 + launch-prep (PremiumBillingClient, Restore Purchases, cold-start-throttle, ML Phase B threshold-fix, license-key prereq, signed AAB) | ✅ `v0.9.0a-billing` |
-| 6b2 | Audio-ID via BirdNET-Lite (TFLite-modell, audio-permission, audio-stream-pipeline, ScanScreen audio-mode) | ✅ `v0.9.0b-audio` |
-| 6b3 | Premium content (PDF-export, season-statistics, 10 fält-märken) | ⏸ mål `v0.9.0c-premium-content` → `v1.0.0` |
-
-**Föreslagen ordning för utförande:** Plan 6a → tag rc1 → Plan 6b1 → tag billing → Plan 6b2 → tag audio → Plan 6b3 → tag v1.0 → Internal Testing → Closed Testing (14d) → Play Store-launch.
-
-Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew build` ska gå grönt.
+| Launch-research | `docs/superpowers/research/2026-05-15-play-store-launch/` + `2026-05-20-play-store-audit.md` |
 
 ## Hur vi jobbar
 
@@ -68,33 +78,37 @@ Tumregeln: större än ett samtal eller kräver disciplin (TDD, plan-tracking) �
 
 Vid avbrott: all progress är committad i git. Nästa session fortsätter från senaste commit utan tappad kontext.
 
-## Visuellt språk (Mossbädd)
+## Visuellt språk
 
-Färgpalett (locked 2026-04-30):
+**Field Journal-tema (Plan 7c, locked 2026-05-10) är canonical app-wide.** Mossbädd-paletten under är legacy-tokens som fortfarande används punktvis (HeroMoss-gradient, AccentCopper).
+
+**Field Journal tokens** (i `composeApp/.../ui/theme/Color.kt`):
 
 | Token | Hex | Roll |
 |---|---|---|
-| Background | `#E8E2D2` | Pale moss-creme |
-| Hero top / deep / shadow | `#5C6E48` / `#3F4F30` / `#2A3520` | Mossgrön gradient |
-| Accent | `#A8552D` | Koppar (CTA, aktiv flik, stat-siffror) |
-| Stat surface | `#D8D0BC` | Sand-creme |
-| Text primary | `#2A3525` | Djup skog |
-| Text on hero/accent | `#F0EAD8` | Varm offwhite |
+| PaperBg / PaperEdge | `#EFE7D6` / `#E5DCC7` | Pappersbakgrund + texture |
+| MarginaliaInk | `#3F4F30` | Caveat-text, sub-lines (WCAG AA-bumpad i Plan 6a T9) |
+| AccentCopper | `#A8552D` | CTA, aktiv tab, stat-siffror, copper-pills |
+| StampNavy | `#1F3A5F` | StampSeal-states |
+| HeroMossMid / Deep / Shadow | `#5C6E48` / `#3F4F30` / `#2A3520` | Mossgrön gradient (Listen/Premium hero) |
 
-**Typografi:** Crimson Pro (serif) för rubriker/siffror; system sans för UI. UPPERCASE-etiketter med spärr.
+**Typografi:** `DM Serif Display Italic` för rubriker (`JournalHeadline` parsar `*ord*` → Caveat-italic accent-segment med rotation), `Caveat` för marginalia/sub-lines, `Inter` (system sans) för body. Fonts bundlade via `compose-resources` (`rememberDmSerifDisplay()` / `rememberCaveat()` i `Type.kt`).
 
-**Layout:** hero är en *zon* (vertikal gradient mot bg), inte ett kort. CTA i koppar ekas i siffror + aktiv flik. Bottom-bar 72dp, ikon + textetikett per flik. Tema-tokens i `composeApp/.../ui/theme/Color.kt` + `Type.kt`.
+**Layout-element:** `Modifier.paperBackground()` med dot-texture som default-bas; `JournalIntro` (eyebrow + JournalHeadline + ornament + sub-line); `StampSeal` (locked/in-progress/unlocked-states); `PlateFrame` (naturalist-foto-frame); `OrnamentRule` (❦ + horisontellt streck).
 
-## Tekniska val (en rad var)
+## Tekniska val
 
-- **Stack:** KMP + Compose Multiplatform (Android första, iOS-skelett)
+- **Android-stack:** KMP + Compose Multiplatform (Android primär, iOS-skelett)
 - **DB:** SQLDelight 2.x med Flow-baserade queries
-- **ML:** TensorFlow Lite (on-device); 4a använder `FakeBirdClassifier` bakom `BirdClassifier`-interface
-- **Kamera:** CameraX (Android), 3 fps streaming, confidence threshold 0.35, auto-throttle till 1.5 fps vid p95-latens > 333ms
-- **Språk:** SV + EN, Sverige först; alla UI-strängar via compose-resources
-- **Distribution:** Play Asset Delivery för stora bundles
-- **CI:** GitHub Actions (ktlint, detekt, unit tests, assembleDebug, APK-artefakt)
-- **Statisk analys:** ktlint 12.1.2 + detekt 1.23.7
+- **ML (foto):** TensorFlow Lite + AIY Birds V1 (uint8-quantized MobileNetV2, ~14ms/inference)
+- **ML (audio):** BirdNET-Lite v2 + `tensorflow-lite-select-tf-ops:2.16.1` (FlexRFFT TF Select op — utan denna failar node 29)
+- **Kamera:** CameraX 3 fps `ImageAnalysis` + auto-throttle till 1.5 fps vid p95 > 333ms
+- **Audio:** 48kHz mono PCM_16 via UNPROCESSED → VOICE_RECOGNITION graceful fallback, 3s rec → OGG/Opus
+- **Billing:** Google Play Billing v8 (`PremiumBillingClient` expect/actual) + RSA SHA1-signature-verify via Play Licensing public key embeddad i BuildConfig
+- **Språk:** SV + EN, Sverige först; alla UI-strängar via `compose-resources`
+- **Distribution:** AAB via Play Asset Delivery
+- **CI:** GitHub Actions (ktlint 12.1.2, detekt 1.23.7, unit tests, assembleDebug)
+- **Website:** Astro 5 + Tailwind v4 + `@astrojs/sitemap` + `marked` + Playwright smoke tests, hostat på Vercel (auto-deploy från `main`, root dir = `website`)
 
 ## Lokal utvecklingsmiljö (Windows + Galaxy S23 Ultra)
 
@@ -103,7 +117,7 @@ Färgpalett (locked 2026-04-30):
 | JDK 21 (Temurin) | `C:\Java\OpenJDK21U-jdk_x64_windows_hotspot_21.0.11_10\jdk-21.0.11+10\` |
 | Android SDK | `C:\Users\abbea\AppData\Local\Android\Sdk` |
 | ADB | `C:\Users\abbea\AppData\Local\Android\Sdk\platform-tools\adb.exe` |
-| Telefon | SM-S918B (Galaxy S23 Ultra), USB-felsökning på, RSA-auktoriserad |
+| Telefon | SM-S918B (Galaxy S23 Ultra, API 35), USB-felsökning på, RSA-auktoriserad |
 
 **Standard-prefix för bash-`./gradlew`-kommandon** (annars hittar Gradle inte Java):
 
@@ -115,59 +129,99 @@ export PATH="$JAVA_HOME/bin:$PATH"
 ## Vanliga kommandon
 
 ```bash
-# Bygga + installera + starta på ansluten enhet
+# Android: bygga + installera + starta på ansluten enhet
 ./gradlew :androidApp:installDebug
 "/c/Users/abbea/AppData/Local/Android/Sdk/platform-tools/adb.exe" shell am start -n se.birdy.android/.MainActivity
 
-# Snabba unit-tests (delade moduler på JVM)
+# Android: snabba unit-tests (delade moduler på JVM)
 ./gradlew :shared:domain:jvmTest :shared:ml:jvmTest :composeApp:testDebugUnitTest
 
-# Lint + statisk analys
+# Android: lint + statisk analys
 ./gradlew ktlintCheck detekt
 ./gradlew ktlintFormat   # autofix
+
+# Android: signed release-AAB
+./gradlew :androidApp:bundleRelease
+
+# Website (kör från website/)
+cd website && npm run build
+cd website && npm run test:smoke   # Playwright (7 tester)
+cd website && npm run test:i18n    # SV/EN parity check
 ```
 
-## Repo
+## Repo & deploy
 
-GitHub: https://github.com/anonadrek/birdy. Branch: `main` är default; plan-arbete sker på `main` med små commits per task; tagga milstolpar (`v0.1.0-foundation` osv).
+- **GitHub:** https://github.com/anonadrek/birdy. Branch `main` är default. Plan-arbete sker på `main` med små commits per task; tagga milstolpar (`v0.1.0-foundation` osv).
+- **Website:** Auto-deploy till `birdy.community` via Vercel vid push till `main`. **Root Directory MÅSTE vara `website`** i Vercel project settings — annars failar `npm install` med ENOENT på `/vercel/path0/package.json`.
+- **Play Console:** Personligt konto (Albin), approved 2026-05-20. App entry + in-app products + license testers behövs innan Billing v8 IPC kan runtime-verifieras.
 
 ## Beslut & ramar
 
-- **Scope:** v1 = "Skanna & lär" + uppslagsverk. Inget mer (dagbok, mål osv kommer i Plan 5+).
-- **Geografi:** Norden/Europa, ~700 arter.
+- **Scope v1.0:** Skanna (foto + audio) + uppslagsverk + dagbok + gamification + premium tier. Map/cloud sync = v1.5.
+- **Geografi:** Norden/Europa, 839 arter.
 - **Användare:** Bred två-lager (nybörjare som vill lära sig + entusiaster i fält).
 - **AI:** On-device, ingen backend för inference. Migrationsdata + sannolikhet är art-nivå statisk i v1.
 - **Solo-utvecklare:** användaren bygger via Claude Code; granskning sker av användaren mellan tasks.
+- **Privacy-löfte:** "Almost nothing collected, data stays on phone" — verifierat i 2026-05-20 fältrevision. INTE bryt detta utan diskussion.
 
 ## Frågor + autonomi
 
 - Otydlig task eller spec-motsägelse? **Stoppa och fråga / lyft upp** istället för att gissa.
-- Annars: **"Don't ask me for permission to run anything"** — kör commits, push, gradle, file-edits enligt plan utan bekräftelse. Vid scope-creep i review: fixa autonomt (soft-reset + re-commit). Det inkluderar INTE blockerare som kräver fysisk åtkomst (telefon, emulator) eller tredjepartsbeslut (CI-resultat) — där rapporterar man status. Det inkluderar INTE heller att hoppa över granskning — två-stegs-review (spec → kvalitet) körs alltid mellan tasks.
+- Annars: **"Don't ask me for permission to run anything"** — kör commits, push, gradle, file-edits enligt plan utan bekräftelse. Vid scope-creep i review: fixa autonomt (soft-reset + re-commit). Undantag: blockerare som kräver fysisk åtkomst (telefon, emulator) eller tredjepartsbeslut (Play Console, Vercel UI) — där rapporterar man status. Två-stegs-review (spec → kvalitet) körs alltid mellan tasks.
 
-## Plan 2b status (KLAR)
+## Pending follow-ups (post-launch)
 
-**Slutförd 2026-05-15, taggad `v0.2.0-content`. Alla 839 arter i `species_list.yaml` har YAMLs + valideras grönt.** Runbook (full per-familj-historik + lärdomar): `docs/superpowers/runbooks/2026-05-02-plan-2b-content-backfill.md`. Auto-memory: `project_plan_2b_status.md`.
-
-Slutfas 2026-05-15 (565 → 839, +274 arter på en session över 9 bundles): bundle1 nectariniidae+8 (`9632243`), bundle2 otididae+8 (`28e55ff`), scolopacidae (`26b5c41`), phasianidae (`b56af31`), sylviidae (`3ff1535`), strigidae (`4f58abc`), bundle3 phylloscopidae+procellariidae (`b1e0d5a`), bundle4 picidae+passeridae (`529247f`), bundle5 9 small families (`fc3675f`).
+1. **URL-migration:** `SettingsScreen.kt` rad ~128–129 + Play Console store listing pekar fortfarande på `https://anonadrek.github.io/birdy/{privacy,terms}.html`. Uppdatera till `https://birdy.community/legal/{privacy,terms}/` i nästa Android release-cykel. Gamla URL:erna fungerar tills GH Pages slås av (steg 2).
+2. **GitHub Pages teardown:** I repo Settings → Pages, sätt Source till "None". `pages.yml` är redan borttagen (Plan W T2).
+3. **Email migration:** `feedback@birdy.app` → `feedback@birdy.community` när MX sätts upp på birdy.community. Touchar `website/src/content/copy.{en,sv}.json` (FAQ + footer) + alla 5 markdown-filer i `docs/play-store/`.
+4. **Billing v8 IPC runtime-verify** (deferred från 6b1): purchase-flow + Restore Purchases + Active(YEARLY/LIFETIME)-state-flip. Kräver Internal Testing-app entry + in-app products + license testers i Play Console.
+5. **Audio accuracy eval** (deferred från 6b2): kräver xeno-canto API v3 key. Pipeline klar i `tools/ml-eval/audio_accuracy_report_2026-05-21.md`.
+6. **AB-flytt:** Account Transfer av Play Console till AB-bolaget när det är registrerat (post-launch).
+7. **SV legal-översättningar:** Om Sverige-trafik växer, mirror `/sv/legal/...` med översatta markdown-filer. Idag cross-linkar SV-footer till EN-only `/legal/`-routes (intentionellt — Nordics/EU first launch).
+8. **Plan 6a T8/T9 device-screenshots saknas:** `08-match-with-inline-note` + `09-disambig-save-as-unknown` (kräver deterministisk match-flow ej driveable via ADB — kan adresseras via test-image-infra i framtida sprint).
 
 ## Roadmap post-v1.0 (referens)
 
 Tagits in från v1-design-spec så vi inte tappar bort dem. Inget byggs här innan v1.0 är ute.
 
-- **v1.5 — "Karta & moln":** Konton, molnsynk av dagboken, karta med fynd från publika datakällor, push-notiser om sällsynta arter nära användaren. **Plan 5a-koppling:** `Observation`-schemat har nullable kolumner `latitude` / `longitude` / `location_label` från start så v1.5 bara fyller i nya rader (ingen migration behövs).
+- **v1.5 — "Karta & moln":** Konton, molnsynk av dagboken, karta med fynd från publika datakällor, push-notiser om sällsynta arter nära användaren. `Observation`-schemat har nullable `latitude` / `longitude` / `location_label` från Plan 5a så v1.5 bara fyller i nya rader (ingen migration behövs).
 - **v2 — "Community":** Delning av fynd, kommentarer, flöde, moderering.
-- **v2.x:** Quiz/utbildningsläge, ljud-ID, fullt offline-läge för längre exkursioner.
+- **v2.x:** Quiz/utbildningsläge, fullt offline-läge för längre exkursioner, iOS.
 
 ## Avslutade planer (referens)
 
-- **Plan 1 (Foundation, `v0.1.0-foundation`):** KMP-bootstrap, Compose, CI, Mossbädd-tema. Plan: `docs/superpowers/plans/` (sök 01-foundation).
-- **Plan 2a (Pipeline + walking skeleton, `v0.2.0a-pipeline`):** Python-baserad content-pipeline (Wikidata + Wikipedia + Claude + Commons → YAML → SQLDelight); 5 arter committade som walking skeleton. Plan: `2026-05-02-v1-02a-content-pipeline.md`. Pipeline-mönster: constructor-injection + content-hash i cache-nyckel + atomic-write + mypy strict + ruff (detaljer i `project_plan_2b_status.md`).
-- **Plan 3 (Encyclopedia, `v0.3.0-encyclopedia`):** Browse-lista (sök + filter-bottom-sheet) + species-profile (collapsing toolbar + sparse-data-fallbacks + Coil + hero-image-toolbar). Plan: `2026-05-04-v1-03-encyclopedia.md`. Återanvändbara mönster + post-tag bug-fixar i auto-memory `project_plan_3_strategy.md`. 6/7 device-screenshots committade — saknar `profile-sparse` (tas vid nästa device-session).
-- **Plan 5a (Diary, `v0.5.0a-diary`, 2026-05-06):** SQLDelight `Observation`-tabell (med nullable lat/long/location_label för v1.5 cloud-sync) + `SqlDelightObservationRepository` (Flow-baserade queries) + DiaryViewModel/Screen (månadsgrupperad LazyColumn, empty-state CTA) + ObservationDetailViewModel/Screen (collapsing toolbar, edit-note, delete-confirm) + Save-flow från ClassificationResultScreen (snackbar overlay i Box, AccentCopper Save CTA). Plan: `2026-05-05-v1-05a-diary.md`. 7 device-screenshots committade. **Bug-fix-lärdomar från Task 12 device-verify (commit `785dc99`):** (1) `:androidApp` saknar transitiva deps eftersom composeApp använder `implementation()` inte `api()` — varje ny shared/library-referens från `:composeApp` måste få egen `implementation()` i `:androidApp/build.gradle.kts`; (2) compose-resources unescape:ar **inte** Android-style `\'` — använd raw `'` i strings.xml; (3) compose-resources processar **inte** `%%` som `%`-escape — format-strängar med procenttecken måste använda `%1$s` och call-sites passar pre-formatterad `"${value}%"` från Kotlin; (4) `ImageProxy.imageInfo.timestamp` returnerar nanos sedan device-boot, **inte** Unix-epoch — använd `System.currentTimeMillis()` i CameraX-analyzer för wall-clock observation-timestamps. **Process-lärdom:** quality-review:n för Task 11 missade alla fyra eftersom den bara körde `:composeApp:assembleDebug`, inte `:androidApp:installDebug`, och inte testade på fysisk enhet — framtida quality-reviews för Android-screens måste kräva båda.
-- **Plan 5b (Gamification, `v0.5.0b-gamification`, 2026-05-07):** 25 badges (3 progression + 4 weekly streaks + 3 monthly streaks + 4 season + 8 family + 3 rare) i `composeApp/src/commonMain/composeResources/files/badges.yaml` + i18n via `compose-resources` (sv + en) + `BadgeCatalog` runtime-modell + `BadgeRule` evaluator (`BadgeEvaluator`) + SQLDelight `badge_unlock`-tabell + `BadgeRepositoryImpl` (Flow-queries) + `SaveObservationUseCase.save()` returnerar `SaveResult(observation, newUnlocks)` efter recalc + `UnlockQueue` (FIFO med `pop()`) + `UnlockBottomSheet` (M3 ModalBottomSheet, glow-animation) + `BadgesViewModel`/`BadgesScreen` (hero med `species_seen / total` + `badges_unlocked / total`, "RECENTLY DISCOVERED" carousel, "TO DISCOVER · N LEFT" 5×5-grid) + `BadgeBackfillOnAppStart` (kör recalc över alla observationer om YAML-version > stored). Plan: `2026-05-06-v1-05b-gamification.md`. 6 device-screenshots committade (badges-empty, badges-loaded, locked-detail, save-with-unlock, unlock-bottomsheet, unlocked-detail). **Återanvändbara mönster:** Build-time YAML-validators som `JavaExec`-tasks i `:shared:content` (`validateBadgesYaml` + `validateBadgeStrings`) modellerade efter `validateSpeciesData` — `kaml`-baserad parsing + early-exit på alla samlade fel; `ClassificationResultViewModel.unlockQueue.queue.collect { list -> ... }` med Loaded-guard så Error/Loading-states inte muteras (collector emittar emptyList vid subscription före `resolve()` hinner sätta Loaded); deterministisk device-verify-hack via `File(filesDir, "test_species.txt")` som påverkar `FakeBirdClassifier(cycle = ...)`-init i `MainActivity` (filsystemsignalering är säkrare än timing-baserad ADB-driving för Save × 5 × unika arter); UnlockQueue-serialisering via `MutableStateFlow<List<BadgeUnlock>>` + `pop()` som tar bort head ger naturlig back-to-back bottom-sheet-presentation när ett save triggar flera unlocks (verifierat i device: Novice + Spring birder cyklar correct). **Post-tag pending follow-ups (Plan 6 kan adressa):** streak grown-screenshot kräver tidsmanipulation (skip — kostnad/värde-balans dålig); locked-badge-snackbar overlap med bottom-sheet inte testad i UI (visat i isolation, inte under unlock-flow); BadgesScreen scroll-position lost vid `restoreState`-navigation från Diary tillbaka till Badges (`saveState`-mönster fungerar för andra flikar; BadgesScreen LazyColumn `key = { ... }` redan på plats men test saknas).
-- **Plan 4b (Real TFLite, `v0.4.0b-real-tflite`, 2026-05-08):** AIY Birds V1 (965 klasser, MobileNetV2 uint8-quantized, 3.5 MB) bundlad i AAB; `:shared:ml` med `BirdClassifierModelInfoLoader` + `AiyLabelMapper` (964→Q-ID via `aiy_to_qid.json`, bg-class droppad) + `ImagePreprocessor` (expect/actual; YUV→NV21→Bitmap→224×224 uint8) + `TfLiteBirdClassifier` (Mutex-serialiserad, top-3) + `AndroidTfliteRunner` (direct ByteBuffer + nativeOrder + roundToInt-quant + idempotent close); `BirdClassifierFactory` med `SessionFailureGuard` (init-fallback + 3-strikes-degradering till FakeBirdClassifier) + `ClassifierMode { REAL, DEMO }`; `validateModelMapping` Gradle-task (version + coverage + duplikat); `AppGraph(modelVersion, classifierMode, benchmarkScreen?)` wirad från `MainActivity.runBlocking { buildClassifier() }: Triple<...>`; DEMO-banner i `ScanScreen` (sv/en); DEBUG-only `BenchmarkScreen` (3 photos × 100 iter + 5 warmup → JSON i `filesDir/benchmark_${ts}.json`) gated via `AppGraph.benchmarkScreen` lambda + `AppRoute.DebugBenchmark` + EncyclopediaScreen overflow-meny. Python `tools/ml-eval/` (uv-managed, `ai-edge-litert` runtime) + `build_corpus.py` (round-robin över Wikimedia hero-photos från content-pipeline) + `accuracy_report_2026-05-08.md` (top-1=52%, top-3=72%, ≥70%-spec MET, 25 bilder över 13 familjer). Device-verify på SM-S918B (Galaxy S23 Ultra): REAL-läget loadar (`Model: aiy_birds_v1` på Benchmark-skärm), ingen DEMO-banner, ~14 ms per inference (talgoxe/koltrast p95=14ms, blames p95=18ms — långt under 333ms-throttle). 6 device-screenshots + benchmark JSON committade. Plan: `2026-05-07-v1-04b-real-tflite.md`. **Återanvändbara mönster** (auto-memory `project_plan_4b_status.md`): build-time JSON-validators (samma shape som `validateBadgesYaml`); kvantiserad TFLite-wrapping (direct ByteBuffer + nativeOrder + roundToInt + buffers-before-Interpreter); 3-strikes failure-guard (Mutex + onDegrade-once + try/finally close); init-fallback factory (Pair<BirdClassifier, ClassifierMode>); DEBUG-only screen-plumbing via `AppGraph` lambda (undviker expect/actual för one-off debug-skärmar); `MainActivity.runBlocking` för synkron classifier-init; eval-corpus från content-pipeline (deterministisk round-robin, ej beroende av användar-foton). **Plan-doc-trap-katalog** (10+ kända fel — `Classification`-fält, atomicfu, `ScanUiState.Loaded`, `:androidApp` transitiva deps, `Navigation.kt`-path, `appGraph.modelVersion`, `buildConfig=true`-JVM-target-twist, AIY V1 input-dtype uint8, nested `aiy_to_qid.json`-shape, `tensorflow-cpu` Python 3.12-bug). **Post-tag pending follow-ups (Plan 6 kan adressa när det berör):** ersätt 3 placeholder-JPEG i `composeApp/src/androidMain/assets/benchmark/` med riktiga foton från `tools/ml-eval/corpus/` (snabb fix); live-bird scan + classification screenshots i fält (visuell verifikation att riktiga arter klassas korrekt — tekniskt verifierat via Benchmark men aldrig sett en faktisk fågel-klassning på device); `BenchmarkScreen` saknar export-via-Share-Sheet (just nu pulls JSON via `adb run-as`); `ScanScreen` snackbar saknas vid initial DEMO-fallback (banner finns men inget toast som varnar att model-load failade — bara permanent banner).
-- **Plan 7e (Premium tier, `v0.7.0e-premium`, 2026-05-12):** `PremiumScreen` (full-width great-tit hero med viewfinder L-bracket-corners + gradient-fade till paper-bg + Caveat-italic close-X i vit cirkel; stacked headline "A *field birder's* / year." på EN och "Hela året som / *fältornitolog.*" på SV via `premium_headline_suffix`-strängen; ornament + sub-line; 4 stamp-bullets — 26dp ring + Caveat-✓ — för audio/PDF/stats/badges; två `TierCard`-rader med radio-button + DM-Serif-Italic-titel + monospace pris-sub + roterad "spara 60%"/"save 60%" pill-stamp på selected; copper "Continue/Fortsätt" CTA + "Cancel anytime/Avbryt när som helst." Caveat-sub) + `PremiumViewModel` med `selectTier` + `purchase` + `PremiumTier.YEARLY/LIFETIME`. `SettingsScreen` (paper-bg + back-arrow + Caveat-rubrik "Settings" + `PremiumHeroCard` 16:9 great-tit-foto-kort med dark gradient + "Become a field member" + "Premium →" pill — bara renderat när `!state.premiumActive`; ACCOUNT-grupp: Name + Language; ABOUT BIRDY-grupp: Rate / Share / Feedback / About / Privacy / Terms) — Language-pickern är placeholder (TODO Plan 6), per-app locale fungerar via `adb shell cmd locale set-app-locales` för screenshot-verifiering. Per-tab PremiumTeasers (`PremiumTeaserCard` i Archive med "Export & back up" + Caveat "→ Unlock"; `LockedStatsPreview` i Lifelist; PremiumTeaserCard i SpeciesProfile; `PremiumBadgesRow` i Badges-bottom med "Field marks · PREMIUM" + 5 ghost stamps + "Unlock 10 field marks →" copper-CTA). `GearButton` i Listen-launcher (top-right circle 56dp) + Badges. `EntryFlowDecider.shouldShowPremiumModal()` cold-start-logik (visa max 1×/dag, ej om premiumActive) wirad i AppScaffold `LaunchedEffect(Unit)`; `userPreferences.premiumModalLastShown` persisterar dato. `✕-dismiss → CaveatToast("Find it in Settings →")` snackbar; `welcome_toast("Welcome, field member.")` post-purchase. `PREMIUM_DEBUG_FORCE_ACTIVE` BuildConfig-flag + `graph.premiumOverride: PremiumState?` (null → använd backendState, else override) appliceras i AppScaffold `effectivePremiumActive`-derivedState. `premium_badges.yaml` placeholder (10 stämplar för Plan 6-content). Plan: `docs/superpowers/plans/2026-05-12-v1-07e-premium-tier.md`. 6 canonical device-screenshots committade på SM-S918B + 5 supplementary (premium-en/sv, settings, listen-with-gear, archive-premium, badges-premium-row + onboarding 1-3, cold-start modal, lifelist-empty). **Återanvändbara mönster:** stacked-headline + suffix-string ger samma `PremiumHeadline`-composable cover båda locale-layouts (EN: plain + accent på rad 1, suffix på rad 2 / SV: plain på rad 1, accent på rad 2 — accent alltid Caveat-italic + rotate -3deg); `BoxScope.CornerBracket(align: Alignment)` med 28dp L-shape kan återanvändas för andra "framing" UIs; `Brush.verticalGradient(0f to Transparent, 0.55f to Transparent, 0.85f to PaperTop.copy(0.55f), 1f to PaperTop)` ger smooth photo-to-bg-fade; debug-only state-override via `graph: AppGraph`-flag (BuildConfig-gating) — undviker prod-only `if (BuildConfig.DEBUG)`-runtime-checks. **Bug-fix-lärdomar:** compose-resources unescape:ar fortfarande inte Android-style `\'` (sett återigen i Plan 5a-lärdom — i `premium_headline_accent`, `premium_species_title`); använd Unicode `’` (U+2019 RIGHT SINGLE QUOTATION MARK) direkt i strings.xml. Hardcoded localized strings (t.ex. `stampLabel = "spara 60%"`) bryter EN-läget — alltid `stringResource(Res.string.premium_tier_yearly_stamp)`. **Process-lärdom:** ADB-tap på upper screen region (y < 300) kan trigga notification-drawer pull-down istället för UI-element — använd `KEYCODE_BACK` för recovery + `uiautomator dump` för exact bounds när screenshots-pipeline körs. Per-app locale-change kräver `adb shell cmd locale set-app-locales se.birdy.android --locales sv-SE` + `am force-stop` + relaunch — Settings-pickern är placeholder. **Post-tag pending follow-ups (Plan 6 kan adressa):** Language-pickern i SettingsScreen.kt är bara en placeholder — implementera via `AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(...))` med callback från SettingsViewModel; Settings övriga rader (Rate Birdy / Share the app / Feedback / About / Privacy / Terms) är `TODO: wire row-actions in Plan 6`-stubs; cold-start premium-modal triggrades inte i sista device-session (notification-drawer accident interfererade med LaunchedEffect — verifierat i tidigare session, screenshot `04-premium-modal-cold-start.png`); real billing-integration (Google Play Billing v6) deferred till Plan 6 — just nu är `purchase()` en mock som flippar `PremiumState.Active` lokalt.
-- **Plan 7d (Match-flow, `v0.7.0d-match-flow`, 2026-05-12):** Threshold-routing (`<0.35` NoBird / `0.35–0.50` Disambig / `≥0.50` Match) i `MatchResultViewModel.resolve()` + `pickFromDisambig()` (Disambig→Match-mutation) + first-vs-repeat sighting-detection via nya `ObservationRepository.countByQid()` + `firstByQid()`. Tre nya Field Journal-screens i `composeApp/.../ui/match/`: `MatchView` (StampSeal ghost→solid-animation, marginalia "NY ART" / "GÅNG N · första: DATUM" / "ditt val"), `DisambigView` (2-3 candidate-cards, hela kortet klickbart), `NoBirdView` (tilted thumbnail + tre Caveat-italic marginalia-tips + retry-CTA). Gamla `ui/result/`-mappen borttagen — VM/State/Screen migrerade till `ui/match/` med nya namn (`MatchResultViewModel` etc). `AppRoute.ClassificationResult` → `AppRoute.MatchResult`. Plan: `docs/superpowers/plans/2026-05-12-v1-07d-match-flow.md`. 6/8 device-screenshots committade på SM-S918B (Match auto first-sighting, scrolled Save CTA, Match saved-with-unlock, Cancel CTA, force-quit resilience, launcher). **Saknas (kräver test-image-infra för deterministisk trigger):** Disambig 3-cand + Disambig→Match manual pick + NoBird + Match-repeat — real TFLite ger inte 0.35–0.50-band utan riktade test-foton; Plan 5b `test_species.txt`-hacket är inte wirad till confidence-override här. **Återanvändbara mönster:** threshold-routing via `enum class MatchRoute` + `MatchThresholds.routeFor(conf)` (testbar isolerat); pre-resolved sighting-context i UiState (VM gör count + firstObservedAt i `resolve()`; UI hämtar bara från state); sealed UiState där save bara opererar på Match-state (precondition `as? Match`); stamp-animation via `animateFloatAsState` på wrapping Box runt StampSeal (StampSeal exponerar inte alpha-prop i v1). **Bug-fix-lärdom:** `%%` percent-escape-buggen från Plan 5a kom tillbaka i `match_sub_confidence` + `disambig_candidate_confidence` — fix: byt till `%1$s` och passa pre-formatterad `"${pct}%"` från Kotlin-call-site (commit `0c48e17`). **Process-lärdom:** Disambig + NoBird + Match-repeat går **inte** att auto-driva via ADB utan deterministisk classifier-hook — framtida `ui/match`-features bör inkludera en debug-only `MATCH_CONFIDENCE_OVERRIDE`-mekanism (test_species.txt-style) för att kunna ta full screenshot-set på en device-session.
-- **Plan 7c (Field Journal redesign, `v0.7.0c-field-journal`, 2026-05-10):** App-bred redesign från Mossbädd-tema till Field Journal-tema. Bundlade fonts (`DM Serif Display Italic` + `Caveat`) via `compose-resources` + `rememberDmSerifDisplay()` / `rememberCaveat()` i `Type.kt`; Field Journal color tokens (`PaperBg #EFE7D6`, `PaperEdge #E5DCC7`, `MarginaliaInk #4A3F2A`, `StampNavy #1F3A5F`, m.fl.) i `Color.kt`; `Modifier.paperBackground()` med dot-texture; nya komponenter i `ui/components/`: `MicroLabel` (uppercase serif eyebrow), `OrnamentRule` (❦ + horisontellt streck), `JournalHeadline` (parsar `*ord*`-syntax → `HeadlineSegment.Plain` / `Accent` med Caveat-italic-rotation), `JournalSubLine` + `JournalIntro`-wrapper, `StampSeal` (locked/in-progress/unlocked-state med glow), `MiniStamp` + `StampTrack` (inline + Badges-hero), `PlateFrame` (naturalist-photo-frame med ornament + stamp-number), `BodyTextWithCaveatAccents` (FlowRow med `*ord*`-stöd för body-text). SQLDelight `species_text(species_id, locale, kind, text)`-tabell + `kind = "marginalia"`-rader för Species Profile. Restylade skärmar: Listen-launcher (paper-bg + JournalIntro + circle-icon-cards), Archive (paper-bg + JournalIntro + Caveat-search + serif-chips), Lifelist (loaded + empty med MiniStamp-rader + serif-stats), Badges (JournalIntro + StampTrack + StampSeal-grid), Species Profile (PlateFrame + drop-cap + marginalia-fält), Observation Detail (paper-bg + JournalIntro + PlateFrame), Onboarding (3 sidor: paper-bg + JournalIntro + Inter-body), ClassificationResult (Match-intro), BottomNavBar (paper-toned bg + AccentCopper-pill för aktiv), AppGate SplashLoading (paper-bg). Cleanup: `HeroZone.kt` borttagen (Plan 7a-artefakt), `StampNumberBadge` uppdaterad till DM Serif Italic. Plan: `2026-05-09-v1-07c-field-journal.md`. 8/9 device-screenshots committade på SM-S918B (saknar `lifelist-empty.png` — tas vid nästa device-session). **Återanvändbara mönster** (auto-memory `project_plan_7c_status.md`): `*word*`-parsing-konvention för accent-segment (delad av JournalHeadline + BodyTextWithCaveatAccents); `paperBackground()` som default `Modifier.fillMaxSize()`-bas på alla skärmar (ersätter MaterialTheme.colorScheme.background); ktlint-regel filename-must-match-class — sealed `interface HeadlineSegment` måste bo i `HeadlineSegment.kt` inte `JournalHeadlineParser.kt` (auto-rename via `git mv` när reglens första bryter mot fil-strukturen från plan-doc). **Lessons från device-verify:** Skip-link tap via ADB är opålitlig på Galaxy S23 Ultra — alternativ swipe-through-onboarding (`input swipe 900 1500 100 1500 250` ×2 + tap CTA); bottom-nav y=2150 (system-gesture-overlap kräver inte y=2200); ADB-kommandon till `screencap` måste forward-slasha sökvägar (`exec-out screencap -p > "C:/path/to.png"`); efter `pm clear` + relaunch, vänta minst 6 s innan screencap (annars riskerar man fånga annan app — privacy-incident i tidigare session).
+Detaljerade lärdomar + återanvändbara mönster finns i auto-memory (`project_plan_<NN>_status.md`). Här bara one-liners + tagg + spec-pointer.
 
-- **Plan 4a (ML & Camera UI, `v0.4.0a-camera-ui`, 2026-05-06):** FakeBirdClassifier bakom `BirdClassifier`-interface + CameraX 3 fps `ImageAnalysis` + auto-throttle till 1.5 fps (p95 > 333ms) + ScanScreen variant C (top-chip + crosshair + tap-to-freeze) + PhotoAnalyzeScreen (galleri + systemkamera) + ClassificationResultScreen variant A (top-3 + freeze-frame). Plan: `2026-05-05-v1-04a-camera-ui.md`. 9/10 screenshots committade (skip #5 livescan-throttled — FakeClassifier latency p95 stannar under tröskeln). **Återanvändbara mönster (full version i auto-memory `project_plan_4a_status.md`):** `MutableSharedFlow(replay=0, extraBufferCapacity=1, DROP_OLDEST)` + `MutableStateFlow<Long>`-period + `flatMapLatest { period -> sink.sample(period) }` för dynamisk re-sampling (Channel(CONFLATED) fungerade inte över flatMapLatest-restarts); `onCleared`-cleanup via `GlobalScope.launch(Dispatchers.Default + NonCancellable)` eftersom `viewModelScope` är cancellerad; `@Composable expect fun X()` + actual-i-androidMain-mönster för Android-only Composables; `ActivityCompat.shouldShowRequestPermissionRationale` + `LifecycleEventObserver(ON_RESUME)` för permission Denied-vs-NotAsked + Settings-recheck; CameraX gate-on-StateFlow (`AndroidCameraSource` håller `ImageAnalysis` i `MutableStateFlow<ImageAnalysis?>` så `frames()`-callbackFlow kan suspenda på `filterNotNull().first()` istället för att race:a mot `ProcessCameraProvider.getInstance(...)`); single-CameraSource-ownership (VM äger native-resursen, host läser `viewModel.cameraSource`); pre-VM IO-pipeline (`LaunchedEffect(pendingDecodeUri.value) { markAnalyzing(); withContext(IO) { decode } ; analyze() / decodeFailed() }` med `rememberSaveable(uriSaver())` för config-change-survival); CSV nav-arg parsing (parse-and-validate i ViewModel `init`, `runCatching { ... }.onFailure { if (it is CancellationException) throw it }` för structured-concurrency, cap runners-up i VM inte UI). **Post-tag pending follow-ups (Plan 5+ kan adressa när det berör):** Task 6 — Minor #3 "Analysera ett foto"-knapp kan trigga tap-overlay simultant (overlay använder `awaitPointerEvent()` utan `isConsumed`-check — ändra till `detectTapGestures` eller filter `!isConsumed`); Task 8 — Minor #2 Bytes→ImageInput-pipeline untested (refactor till commonMain helper); Task 8 — Minor #4 `<queries>` saknas i manifest (låg prio för API 30+ + PickVisualMedia); Task 8 — Minor #5 `@Composable expect`-konsistens (ScanScreenHost vs PhotoAnalyzeHost); Task 9 — Minor #2 `frameJpegPath`-banner placeholder utan Coil/AsyncImage; Task 9 — Minor #3 `Loaded`-Column saknar `verticalScroll`; Task 9 — Minor #4 "kunde inte resolveras" anglicism + EN-pluralhantering; Task 9 — Minor #9 `CircularProgressIndicator` saknar token-färg; Plan 4a navigation-footgun: `LaunchedEffect(state)` i ScanScreen/PhotoAnalyzeScreen för terminal-state nav — säkrare med `Channel<Effect>`/`SharedFlow<Effect>` om det biter i praktiken.
+| Plan | Tag | Plan-doc | Auto-memory |
+|---|---|---|---|
+| 1 Foundation | `v0.1.0-foundation` | `2026-04-30-v1-01-foundation.md` | — |
+| 2a Pipeline | `v0.2.0a-pipeline` | `2026-05-02-v1-02a-content-pipeline.md` | `project_plan_2b_status.md` (delad) |
+| 2b Content backfill | `v0.2.0-content` | runbook `2026-05-02-plan-2b-content-backfill.md` | `project_plan_2b_status.md` |
+| 3 Encyclopedia | `v0.3.0-encyclopedia` | `2026-05-04-v1-03-encyclopedia.md` | `project_plan_3_strategy.md` |
+| 4a Camera UI | `v0.4.0a-camera-ui` | `2026-05-05-v1-04a-camera-ui.md` | `project_plan_4a_status.md` |
+| 4b Real TFLite | `v0.4.0b-real-tflite` | `2026-05-07-v1-04b-real-tflite.md` | `project_plan_4b_status.md` |
+| 5a Diary | `v0.5.0a-diary` | `2026-05-05-v1-05a-diary.md` | `project_plan_5a_status.md` |
+| 5b Gamification | `v0.5.0b-gamification` | `2026-05-06-v1-05b-gamification.md` | `project_plan_5b_status.md` |
+| 7a Redesign Foundation | `v0.7.0a-foundation` | `2026-05-08-v1-07a-redesign-foundation.md` | `project_plan_7a_status.md` |
+| 7b Redesign Skärmar | `v0.7.0b-screens` | `2026-05-09-v1-07b-redesign-screens.md` | — |
+| 7c Field Journal | `v0.7.0c-field-journal` | `2026-05-09-v1-07c-field-journal.md` | `project_plan_7c_status.md` |
+| 7d Match-flow | `v0.7.0d-match-flow` | `2026-05-12-v1-07d-match-flow.md` | `project_plan_7d_status.md` |
+| 7e Premium tier | `v0.7.0e-premium` | `2026-05-12-v1-07e-premium-tier.md` | `project_plan_7e_status.md` |
+| 6a Release foundation | `v0.8.0-rc1` | `2026-05-13-v1-06a-foundation.md` | `project_plan_6a_status.md` |
+| 6b1 Billing + launch-prep | `v0.9.0a-billing` | `2026-05-16-v1-06b1-billing-launch-prep.md` | `project_plan_6b1_status.md` |
+| 6b2 Audio-ID | `v0.9.0b-audio` | `2026-05-20-v1-06b2-audio-id.md` | `project_plan_6b2_status.md` |
+| W Website (Vercel + /legal/) | — (live) | `2026-05-21-website-vercel-legal.md` | — |
+
+## Trap-katalog (vanliga repeterande buggar)
+
+Saker som har bitit oss mer än en gång — kolla först här om något konstigt händer:
+
+- **`:androidApp` saknar transitiva deps från `:composeApp`** (Plan 5a T12) — composeApp använder `implementation()` inte `api()`, så varje ny shared/library-referens måste få egen `implementation()` i `:androidApp/build.gradle.kts`.
+- **compose-resources unescape:ar inte Android `\'`** — använd raw `'` eller Unicode `’` (U+2019) direkt i strings.xml.
+- **compose-resources processar inte `%%` som `%`-escape** — använd `%1$s` och passa pre-formatterad `"${value}%"` från Kotlin-call-site. Regression i Plan 5a → 7d.
+- **`ImageProxy.imageInfo.timestamp` returnerar nanos sedan boot, inte Unix-epoch** — använd `System.currentTimeMillis()` i CameraX-analyzer för wall-clock timestamps.
+- **Hardcoded localized strings bryter andra locale** — alltid `stringResource(Res.string.xxx)`, aldrig `"spara 60%"` direkt i Kotlin.
+- **ADB-tap y < 300 kan trigga notification-drawer** i stället för UI-element — använd `KEYCODE_BACK` för recovery + `uiautomator dump` för exact bounds.
+- **Quality-review måste köra `:androidApp:installDebug` + device-test** (Plan 5a process-lärdom) — `:composeApp:assembleDebug` ensam missar manifest/dep-trap för Android-screens.
+- **FlexRFFT-crash i TFLite-audio** — kräver `tensorflow-lite-select-tf-ops:2.16.1` dep, annars failar node 29 "Failed to prepare". Diagnostisk logging > catch-all `Throwable`-swallow.
+- **Vercel `npm install` ENOENT** — Root Directory måste vara `website` i project settings (inte `/website`, inte tomt).
