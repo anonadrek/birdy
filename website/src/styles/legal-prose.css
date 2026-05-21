@@ -1,0 +1,47 @@
+.legal-prose {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-text-primary);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+.legal-prose h2 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 2.5rem 0 0.75rem;
+  color: var(--color-text-primary);
+}
+.legal-prose h3 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.125rem;
+  margin: 2rem 0 0.5rem;
+}
+.legal-prose p { margin: 0 0 1rem; }
+.legal-prose ul, .legal-prose ol { margin: 0 0 1rem 1.5rem; padding: 0; }
+.legal-prose li { margin: 0.25rem 0; }
+.legal-prose a {
+  color: var(--color-copper);
+  text-decoration: underline;
+  text-decoration-color: rgba(168, 85, 45, 0.4);
+  text-underline-offset: 3px;
+}
+.legal-prose a:hover { text-decoration-color: var(--color-copper); }
+.legal-prose strong { font-weight: 600; }
+.legal-prose hr {
+  border: none;
+  border-top: 1px dashed var(--color-marginalia-ink);
+  margin: 2.5rem 0;
+  opacity: 0.5;
+}
+.legal-prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  background: var(--color-paper-edge);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}

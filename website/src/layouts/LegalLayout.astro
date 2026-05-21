@@ -1,0 +1,103 @@
+---
+import Layout from './Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import EyebrowLabel from '../components/ui/EyebrowLabel.astro';
+import JournalHeadline from '../components/ui/JournalHeadline.astro';
+import { LEGAL_DOCS, type LegalDoc } from '../lib/markdown';
+import '../styles/legal-prose.css';
+
+interface Props {
+  doc: LegalDoc;
+  pathname: string;
+  bodyHtml: string;
+}
+
+const { doc, pathname, bodyHtml } = Astro.props;
+const others = LEGAL_DOCS.filter((d) => d.slug !== doc.slug);
+---
+
+<Layout locale="en" pathname={pathname}>
+  <Nav locale="en" />
+  <main class="legal-page">
+    <header class="hero">
+      <EyebrowLabel text="LEGAL" />
+      <JournalHeadline text={doc.title} level="h1" size="clamp(2.5rem, 6vw, 4rem)" />
+      <p class="meta">Last updated {doc.lastUpdated}</p>
+    </header>
+
+    <article class="legal-prose" set:html={bodyHtml} />
+
+    <aside class="more">
+      <p class="more-label">More legal documents</p>
+      <ul role="list">
+        {others.map((o) => (
+          <li>
+            <a href={`/legal/${o.slug}/`}>{o.title}</a>
+            <span class="dash"> — </span>
+            <span class="desc">{o.description}</span>
+          </li>
+        ))}
+        <li>
+          <a href="/legal/">All legal documents</a>
+        </li>
+      </ul>
+    </aside>
+  </main>
+  <Footer locale="en" />
+</Layout>
+
+<style>
+  .legal-page {
+    padding: 4rem 1.5rem 2rem;
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+  .hero {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .meta {
+    font-family: var(--font-script);
+    font-size: 1rem;
+    color: var(--color-marginalia-ink);
+    margin: 0;
+  }
+  .more {
+    max-width: 60ch;
+    margin: 4rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--color-marginalia-ink);
+  }
+  .more-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-marginalia-ink);
+    margin: 0 0 1rem;
+  }
+  .more ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .more a {
+    color: var(--color-copper);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.125rem;
+  }
+  .more .dash, .more .desc {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+  }
+</style>
