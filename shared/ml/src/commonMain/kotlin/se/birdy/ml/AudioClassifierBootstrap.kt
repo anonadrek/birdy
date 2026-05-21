@@ -3,6 +3,7 @@ package se.birdy.ml
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.getAndUpdate
 
 /**
  * Possible states of the audio classifier lifecycle.
@@ -83,9 +84,14 @@ class AudioClassifierBootstrap(
      * Releases the classifier if ready and resets state to [AudioClassifierBootstrapState.Idle].
      * Called by [MainActivity.onTrimMemory] (level >= TRIM_MEMORY_BACKGROUND) to free
      * the 57 MB TFLite native handle when the app moves to background.
+     *
+     * Uses [getAndUpdate] for atomicity: the state is swapped to [AudioClassifierBootstrapState.Idle]
+     * in a single CAS operation, so a concurrent [ensureReady] cannot observe a half-released
+     * state (Fix #6). [release] is currently unwired in production — kept for T5/T6 to
+     * consume after this commit. Tests pin its contract.
      */
     fun release() {
-        (_state.value as? AudioClassifierBootstrapState.Ready)?.classifier?.close()
-        _state.value = AudioClassifierBootstrapState.Idle
+        val previous = _state.getAndUpdate { AudioClassifierBootstrapState.Idle }
+        (previous as? AudioClassifierBootstrapState.Ready)?.classifier?.close()
     }
 }

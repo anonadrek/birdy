@@ -20,6 +20,10 @@ import java.nio.channels.FileChannel
  * Inference is Mutex-serialized to prevent concurrent TFLite state corruption. The
  * [close] method is idempotent and safe to call multiple times.
  *
+ * Input/output [ByteBuffer]s are allocated once at construction time and reused across
+ * [classify] calls (mirroring [AndroidTfliteRunner]) to avoid ~600 KB direct-memory
+ * allocation per inference.
+ *
  * Built via [AndroidTfliteAudioRunner.load] which must be called from a suspend context
  * (IO dispatcher recommended). The [Context] is only used during loading to open the
  * asset file descriptor — it is NOT retained by the runner.
@@ -34,6 +38,18 @@ class AndroidTfliteAudioRunner private constructor(
     private val mutex = Mutex()
     private var closed = false
 
+    // Allocated once and reused across classify() calls (Fix #3 — sister-pattern parity with
+    // AndroidTfliteRunner). rewind() is called at the top of each classify() invocation.
+    private val inputBuf: ByteBuffer =
+        ByteBuffer
+            .allocateDirect(expectedSamples * Float.SIZE_BYTES)
+            .order(ByteOrder.nativeOrder())
+    private val outputClasses: Int = info.outputShape.last()
+    private val outputBuf: ByteBuffer =
+        ByteBuffer
+            .allocateDirect(outputClasses * Float.SIZE_BYTES)
+            .order(ByteOrder.nativeOrder())
+
     override suspend fun classify(input: AudioInput): AudioClassification =
         mutex.withLock {
             check(!closed) { "AndroidTfliteAudioRunner closed" }
@@ -41,18 +57,10 @@ class AndroidTfliteAudioRunner private constructor(
                 "Expected $expectedSamples samples (from model inputShape), got ${input.waveform.size}"
             }
 
-            val inputBuf =
-                ByteBuffer
-                    .allocateDirect(expectedSamples * Float.SIZE_BYTES)
-                    .order(ByteOrder.nativeOrder())
+            inputBuf.rewind()
             input.waveform.forEach { inputBuf.putFloat(it) }
             inputBuf.rewind()
-
-            val outputClasses = info.outputShape.last()
-            val outputBuf =
-                ByteBuffer
-                    .allocateDirect(outputClasses * Float.SIZE_BYTES)
-                    .order(ByteOrder.nativeOrder())
+            outputBuf.rewind()
 
             val t0 = System.currentTimeMillis()
             interpreter.run(inputBuf, outputBuf)
@@ -98,37 +106,44 @@ class AndroidTfliteAudioRunner private constructor(
         ): AndroidTfliteAudioRunner {
             val model = loadModelFile(context, modelAssetPath)
             val options = Interpreter.Options().apply { numThreads = 4 }
+            // Fix #1: wrap post-construction steps in try/catch so the native TFLite
+            // handle is always closed if anything throws before ownership transfers.
             val interpreter = Interpreter(model, options)
+            try {
+                val inputShape = interpreter.getInputTensor(0).shape().toList()
+                val outputShape = interpreter.getOutputTensor(0).shape().toList()
 
-            val inputShape = interpreter.getInputTensor(0).shape().toList()
-            val outputShape = interpreter.getOutputTensor(0).shape().toList()
+                check(inputShape.size == 2 && inputShape[0] == 1) {
+                    "Unexpected inputShape $inputShape — expected [1, N] waveform tensor. " +
+                        "This may indicate the wrong model file was bundled (T1 regression)."
+                }
+                val expectedSamples = inputShape.last()
 
-            check(inputShape.size == 2 && inputShape[0] == 1) {
-                "Unexpected inputShape $inputShape — expected [1, N] waveform tensor. " +
-                    "This may indicate the wrong model file was bundled (T1 regression)."
+                val mapper = loadBirdNetLabelMapper()
+                val info =
+                    AudioModelInfo(
+                        modelVersion = mapper.modelVersion,
+                        inputShape = inputShape,
+                        outputShape = outputShape,
+                        coveragePct = mapper.coveragePct,
+                    )
+                return AndroidTfliteAudioRunner(interpreter, mapper, info, expectedSamples)
+            } catch (t: Throwable) {
+                runCatching { interpreter.close() }
+                throw t
             }
-            val expectedSamples = inputShape.last()
-
-            val mapper = loadBirdNetLabelMapper()
-            val info =
-                AudioModelInfo(
-                    modelVersion = mapper.modelVersion,
-                    inputShape = inputShape,
-                    outputShape = outputShape,
-                    coveragePct = mapper.coveragePct,
-                )
-            return AndroidTfliteAudioRunner(interpreter, mapper, info, expectedSamples)
         }
 
+        // Fix #7: wrap AssetFileDescriptor in .use { } so the fd is closed even if
+        // FileInputStream construction or channel.map() throws.
         private fun loadModelFile(
             context: Context,
             assetPath: String,
-        ): MappedByteBuffer {
-            val fd = context.assets.openFd(assetPath)
-            FileInputStream(fd.fileDescriptor).use { stream ->
-                val channel = stream.channel
-                return channel.map(FileChannel.MapMode.READ_ONLY, fd.startOffset, fd.declaredLength)
+        ): MappedByteBuffer =
+            context.assets.openFd(assetPath).use { afd ->
+                FileInputStream(afd.fileDescriptor).use { stream ->
+                    stream.channel.map(FileChannel.MapMode.READ_ONLY, afd.startOffset, afd.declaredLength)
+                }
             }
-        }
     }
 }

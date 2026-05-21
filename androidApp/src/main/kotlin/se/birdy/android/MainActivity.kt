@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -66,41 +67,59 @@ class MainActivity : ComponentActivity() {
     /**
      * Caches the in-flight or completed audio-classifier [Deferred] so the 57 MB TFLite
      * model is loaded at most once per session. [AtomicReference] + CAS ensures only one
-     * coroutine wins the load race; losers cancel their own [Deferred] and await the winner.
+     * coroutine wins the load race; losers use [CoroutineStart.LAZY] so their Deferred
+     * body never runs and no native handle is created (Fix #2).
      *
      * Reset to null in [onTrimMemory] (level >= TRIM_MEMORY_BACKGROUND) to free the
      * native TFLite handle when the app moves to background.
      */
-    private val audioBootstrapCache = AtomicReference<Deferred<BirdAudioClassifier>?>(null)
+    private val audioBootstrapCache =
+        AtomicReference<Deferred<Pair<BirdAudioClassifier, AudioClassifierMode>>?>(null)
 
     /**
      * Suspend lambda passed to [AppGraph.audioClassifierProvider].
      *
-     * On first call: launches a [Deferred] on [Dispatchers.IO], attempts CAS into
-     * [audioBootstrapCache]. The winner awaits its own [Deferred]; losers cancel theirs
-     * and await the winner instead.
+     * Returns a [Pair] of classifier + mode so the UI can show a DEMO banner when
+     * the real model failed to load (Fix #4).
      *
-     * On subsequent calls (cache already populated): returns immediately by awaiting
-     * the cached [Deferred].
+     * Fix #2: Uses [CoroutineStart.LAZY] so the losing branch's Deferred body never
+     * executes — no interpreter is constructed, no native handle can leak.
+     *
+     * Fix #5: Retry loop re-checks the cache reference after [Deferred.await] returns.
+     * If [onTrimMemory] cleared the cache and closed the classifier while we were
+     * suspended, we loop to build a fresh instance rather than returning a closed one.
      */
-    private val audioProvider: suspend () -> BirdAudioClassifier = {
-        val cached = audioBootstrapCache.get()
-        if (cached != null) {
-            cached.await()
-        } else {
-            val deferred =
-                lifecycleScope.async(Dispatchers.IO) {
-                    val (clf, _) = buildAudioClassifier()
-                    clf
+    private val audioProvider: suspend () -> Pair<BirdAudioClassifier, AudioClassifierMode> =
+        audioProvider@{
+            while (true) {
+                val cached = audioBootstrapCache.get()
+                val deferred: Deferred<Pair<BirdAudioClassifier, AudioClassifierMode>> =
+                    if (cached != null) {
+                        cached
+                    } else {
+                        val newDeferred =
+                            lifecycleScope.async(Dispatchers.IO, start = CoroutineStart.LAZY) {
+                                buildAudioClassifier()
+                            }
+                        if (audioBootstrapCache.compareAndSet(null, newDeferred)) {
+                            newDeferred
+                        } else {
+                            // Lost CAS race. LAZY means our newDeferred body never started —
+                            // no native handle to leak. Use the winner's Deferred instead.
+                            audioBootstrapCache.get() ?: continue
+                        }
+                    }
+                val result = deferred.await()
+                // Re-check: if onTrimMemory cleared the cache while we awaited, the
+                // classifier was closed. Loop to build a fresh one (Fix #5).
+                if (audioBootstrapCache.get() === deferred) {
+                    return@audioProvider result
                 }
-            if (audioBootstrapCache.compareAndSet(null, deferred)) {
-                deferred.await()
-            } else {
-                deferred.cancel()
-                audioBootstrapCache.get()!!.await()
+                // Cache was cleared — classifier is closed. Loop.
             }
+            @Suppress("UNREACHABLE_CODE")
+            error("audioProvider loop exited unexpectedly")
         }
-    }
 
     /**
      * Builds the audio classifier via [AudioClassifierFactory]. Extracted from [audioProvider]
@@ -242,7 +261,7 @@ class MainActivity : ComponentActivity() {
             val cached = audioBootstrapCache.getAndSet(null)
             cached?.let { def ->
                 GlobalScope.launch(Dispatchers.IO + NonCancellable) {
-                    runCatching { def.await().close() }
+                    runCatching { def.await().first.close() }
                 }
             }
         }
