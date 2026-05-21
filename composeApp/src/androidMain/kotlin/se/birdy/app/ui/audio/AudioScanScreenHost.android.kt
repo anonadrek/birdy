@@ -20,7 +20,7 @@ import se.birdy.app.di.AppGraph
 @Composable
 actual fun AudioScanScreenHost(
     graph: AppGraph,
-    onNavigateToMatch: (String) -> Unit,
+    onNavigateToMatch: (sourceJson: String, capturedAtMs: Long) -> Unit,
     onBack: () -> Unit,
 ) {
     val activity = LocalContext.current as ComponentActivity
