@@ -1,0 +1,64 @@
+---
+import EyebrowLabel from './ui/EyebrowLabel.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = getCopy(locale);
+---
+
+<section id="premium" class="premium">
+  <div class="card">
+    <EyebrowLabel text={t.premium.eyebrow} />
+    <JournalHeadline text={t.premium.headline} level="h2" size="clamp(2rem, 4.5vw, 3rem)" />
+    <p class="sub">{t.premium.sub}</p>
+    <p class="body">{t.premium.body}</p>
+    <a href={t.premium.ctaHref} class="cta" rel="noopener" target="_blank">{t.premium.cta}</a>
+  </div>
+</section>
+
+<style>
+  .premium {
+    padding: var(--section-padding-y) 1.5rem;
+    max-width: 60rem;
+    margin: 0 auto;
+  }
+  .card {
+    background: var(--color-paper-edge);
+    border: 1px solid rgba(63, 79, 48, 0.1);
+    border-radius: 12px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .sub {
+    font-family: var(--font-script);
+    font-size: 1.375rem;
+    color: var(--color-copper);
+    margin: 0;
+  }
+  .body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 38rem;
+    margin: 0;
+  }
+  .cta {
+    margin-top: 1rem;
+    font-family: var(--font-script);
+    font-size: 1.25rem;
+    color: var(--color-copper);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(168, 85, 45, 0.35);
+  }
+  .cta:hover { text-decoration-color: var(--color-copper); }
+</style>
