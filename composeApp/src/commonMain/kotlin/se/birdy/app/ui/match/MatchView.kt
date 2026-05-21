@@ -54,6 +54,8 @@ import birdy_bird_scanner.composeapp.generated.resources.diary_save_success
 import birdy_bird_scanner.composeapp.generated.resources.match_cancel_cta
 import birdy_bird_scanner.composeapp.generated.resources.match_eyebrow
 import birdy_bird_scanner.composeapp.generated.resources.match_headline
+import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_captured_audio
+import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_captured_photo
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_first_sighting
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_manual_pick
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_repeat
@@ -80,6 +82,7 @@ import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.content.Locale
+import se.birdy.ml.ScanSource
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -328,7 +331,20 @@ private fun MatchMarginalia(
     zone: TimeZone,
 ) {
     val caveat = rememberCaveat()
+    val capturedLabel =
+        when (state.source) {
+            is ScanSource.Audio -> stringResource(Res.string.match_marginalia_captured_audio)
+            is ScanSource.Image -> stringResource(Res.string.match_marginalia_captured_photo)
+        }
     Column(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = capturedLabel,
+            fontFamily = caveat,
+            color = MarginaliaInk,
+            fontStyle = FontStyle.Italic,
+            fontSize = 12.sp,
+            modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
+        )
         if (state.isFirstSighting) {
             BodyTextWithCaveatAccents(
                 text = stringResource(Res.string.match_marginalia_first_sighting),

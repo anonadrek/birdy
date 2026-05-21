@@ -118,6 +118,9 @@
     <string name="match_marginalia_first_sighting">*NY ART*</string>
     <string name="match_marginalia_repeat">OBS *#%1$d* · FÖRSTA SÅGS: %2$s</string>
     <string name="match_marginalia_manual_pick">*ditt val*</string>
+    <!-- Plan 6b2 T6: source-aware marginalia (foto vs ljud) -->
+    <string name="match_marginalia_captured_photo">fångad på bild</string>
+    <string name="match_marginalia_captured_audio">fångad i sång</string>
     <string name="match_stamp_caption_pending">väntar på din signatur</string>
     <string name="match_save_cta">Spara observation</string>
     <string name="match_cancel_cta">Avbryt</string>
@@ -147,6 +150,10 @@
     <string name="nobird_tip_center_sub">Mitt i bildrutan</string>
     <string name="nobird_tip_light_sub">Undvik motljus</string>
     <string name="nobird_top_guess_hint">modellen tyckte den såg en *möjlig %1$s* (%2$s) — kom närmare?</string>
+    <!-- Plan 6b2 T6: NoBird audio-specifika hints -->
+    <string name="audio_no_bird_hint_1">prova en lugnare plats</string>
+    <string name="audio_no_bird_hint_2">vänd mikrofonen mot fågeln</string>
+    <string name="audio_no_bird_hint_3">spela in i 3 sekunder</string>
     <!-- Plan 6a Task 10.7: Match inline note field -->
     <string name="match_note_label">Lägg till en anteckning</string>
 

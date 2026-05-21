@@ -28,6 +28,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.audio_no_bird_hint_1
+import birdy_bird_scanner.composeapp.generated.resources.audio_no_bird_hint_2
+import birdy_bird_scanner.composeapp.generated.resources.audio_no_bird_hint_3
 import birdy_bird_scanner.composeapp.generated.resources.nobird_date_format
 import birdy_bird_scanner.composeapp.generated.resources.nobird_eyebrow
 import birdy_bird_scanner.composeapp.generated.resources.nobird_headline
@@ -50,6 +53,7 @@ import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.rememberCaveat
+import se.birdy.ml.ScanSource
 
 @Composable
 internal fun NoBirdView(
@@ -93,7 +97,11 @@ internal fun NoBirdView(
                     Spacer(Modifier.height(24.dp))
                 }
 
-                MarginaliaTipsBlock()
+                if (state.source is ScanSource.Audio) {
+                    AudioMarginaliaTipsBlock()
+                } else {
+                    MarginaliaTipsBlock()
+                }
                 state.topPrediction?.let { p ->
                     Spacer(Modifier.height(12.dp))
                     val pct = (p.confidence * 100).toInt()
@@ -121,6 +129,32 @@ internal fun NoBirdView(
                 Spacer(Modifier.height(24.dp))
             }
         }
+    }
+}
+
+@Composable
+private fun AudioMarginaliaTipsBlock() {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        TipLine(
+            text = stringResource(Res.string.audio_no_bird_hint_1),
+            subText = "",
+            rotationDeg = -2f,
+            alignmentEndDp = 0,
+        )
+        Spacer(Modifier.height(8.dp))
+        TipLine(
+            text = stringResource(Res.string.audio_no_bird_hint_2),
+            subText = "",
+            rotationDeg = 3f,
+            alignmentEndDp = 48,
+        )
+        Spacer(Modifier.height(8.dp))
+        TipLine(
+            text = stringResource(Res.string.audio_no_bird_hint_3),
+            subText = "",
+            rotationDeg = -4f,
+            alignmentEndDp = 16,
+        )
     }
 }
 

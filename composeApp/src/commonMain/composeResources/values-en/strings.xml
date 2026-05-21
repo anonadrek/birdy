@@ -106,6 +106,9 @@
     <string name="match_marginalia_first_sighting">*NEW SPECIES*</string>
     <string name="match_marginalia_repeat">SIGHT *#%1$d* · FIRST SEEN: %2$s</string>
     <string name="match_marginalia_manual_pick">*your choice*</string>
+    <!-- Plan 6b2 T6: source-aware marginalia (photo vs audio) -->
+    <string name="match_marginalia_captured_photo">captured on camera</string>
+    <string name="match_marginalia_captured_audio">captured in song</string>
     <string name="match_stamp_caption_pending">awaiting your signature</string>
     <string name="match_save_cta">Save observation</string>
     <string name="match_cancel_cta">Cancel</string>
@@ -135,6 +138,10 @@
     <string name="nobird_tip_center_sub">Centre the frame</string>
     <string name="nobird_tip_light_sub">Avoid backlight</string>
     <string name="nobird_top_guess_hint">the model thought it saw a *possible %1$s* (%2$s) — get closer?</string>
+    <!-- Plan 6b2 T6: NoBird audio-specific hints -->
+    <string name="audio_no_bird_hint_1">try a quieter spot</string>
+    <string name="audio_no_bird_hint_2">point the mic at the bird</string>
+    <string name="audio_no_bird_hint_3">capture a 3-second clip</string>
     <!-- Plan 6a Task 10.7: Match inline note field -->
     <string name="match_note_label">Add a note</string>
 
