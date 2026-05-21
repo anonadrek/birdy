@@ -237,7 +237,13 @@ class AppGraph(
             formattedPricesFlow = formattedPricesFlow ?: MutableStateFlow(FormattedPrices()),
         )
 
-    fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel()
+    fun listenLauncherViewModel(): ListenLauncherViewModel =
+        ListenLauncherViewModel(
+            premiumStateFlow =
+                premiumOverride
+                    ?.let { MutableStateFlow<PremiumState>(it) }
+                    ?: premiumRepository.state,
+        )
 
     fun onboardingViewModel(fallbackName: String): OnboardingViewModel =
         OnboardingViewModel(prefs = userPreferences, defaultFallbackName = fallbackName)

@@ -21,12 +21,11 @@ import androidx.compose.material.icons.filled.PhotoCamera
 import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,7 +38,6 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.gear_content_description
-import birdy_bird_scanner.composeapp.generated.resources.listen_audio_locked_snackbar
 import birdy_bird_scanner.composeapp.generated.resources.listen_card_audio_body
 import birdy_bird_scanner.composeapp.generated.resources.listen_card_audio_title
 import birdy_bird_scanner.composeapp.generated.resources.listen_card_camera_body
@@ -65,19 +63,21 @@ fun ListenLauncherScreen(
     onCameraClick: () -> Unit,
     onPhotoClick: () -> Unit,
     onSettingsClick: () -> Unit,
+    onNavigateToAudioScan: () -> Unit,
+    onNavigateToPremium: () -> Unit,
 ) {
-    val snackbar = remember { SnackbarHostState() }
-    val audioLockedMsg = stringResource(Res.string.listen_audio_locked_snackbar)
+    val premiumActive by viewModel.premiumActive.collectAsState()
+
     LaunchedEffect(Unit) {
-        viewModel.events.collect { e ->
-            when (e) {
-                ListenLauncherEvent.AudioLockedSnackbar -> snackbar.showSnackbar(audioLockedMsg)
+        viewModel.effects.collect { effect ->
+            when (effect) {
+                ListenLauncherEffect.NavigateToAudioScan -> onNavigateToAudioScan()
+                ListenLauncherEffect.NavigateToPremium -> onNavigateToPremium()
             }
         }
     }
-    JournalScaffold(
-        snackbarHost = { SnackbarHost(snackbar) },
-    ) { padding ->
+
+    JournalScaffold { padding ->
         Column(
             modifier =
                 Modifier
@@ -124,8 +124,8 @@ fun ListenLauncherScreen(
                     icon = Icons.Filled.Hearing,
                     title = stringResource(Res.string.listen_card_audio_title),
                     body = stringResource(Res.string.listen_card_audio_body),
-                    variant = LaunchCardVariant.Locked,
-                    onClick = viewModel::onAudioLockedTap,
+                    variant = if (premiumActive) LaunchCardVariant.Secondary else LaunchCardVariant.Locked,
+                    onClick = viewModel::onAudioCardTap,
                 )
             }
         }

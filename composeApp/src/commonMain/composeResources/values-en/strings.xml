@@ -351,7 +351,6 @@
     <string name="listen_card_photo_title">Find</string>
     <string name="listen_card_photo_body">Pick from gallery or take new.</string>
     <string name="listen_premium_label">PREMIUM</string>
-    <string name="listen_audio_locked_snackbar">Audio coming soon</string>
 
     <!-- ===== Plan 7a: Settings ===== -->
     <string name="settings_title">Settings</string>
