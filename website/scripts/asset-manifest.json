@@ -11,7 +11,7 @@
     { "from": "brandAssets/birdy-logo-paper.svg", "to": "src/assets/wing-logo-paper.svg" },
     { "from": "brandAssets/birdy-logo-transparent.svg", "to": "src/assets/wing-logo-transparent.svg" },
     { "from": "brandAssets/birdy-wordmark-2048-transparent.png", "to": "src/assets/wordmark-2048.png" },
-    { "from": "brandAssets/birdy-square-1024-paper.png", "to": "public/apple-touch-icon-src.png" },
+    { "from": "brandAssets/birdy-square-1024-paper.png", "to": "public/apple-touch-icon.png" },
     { "from": "playStoreSlidesEn/birdy-screenshot-01-hook-EN.png", "to": "src/assets/slides/slide-01-en.png" },
     { "from": "playStoreSlidesEn/birdy-screenshot-02-scan-EN.png", "to": "src/assets/slides/slide-02-en.png" },
     { "from": "playStoreSlidesEn/birdy-screenshot-03-match-EN.png", "to": "src/assets/slides/slide-03-en.png" },
