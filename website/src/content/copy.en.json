@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "title": "Birdy — A field journal for birds",
+    "description": "Identify European birds with your phone camera or mic. 839 species. Offline AI. No accounts.",
+    "ogLocale": "en_US",
+    "htmlLang": "en"
+  },
+  "nav": {
+    "howItWorks": "How it works",
+    "inside": "Inside",
+    "privacy": "Privacy",
+    "faq": "FAQ",
+    "switchLang": "SV",
+    "switchLangHref": "/sv/",
+    "getApp": "Get the app"
+  },
+  "hero": {
+    "eyebrow": "A BIRDY APP · 2026",
+    "headline": "A *field journal* that looks like a field journal",
+    "sub": "Identify birds with your camera. Keep what you see. Earn the stamps.",
+    "scrollCue": "See how it works ↓"
+  },
+  "loop": {
+    "eyebrow": "HOW IT WORKS",
+    "headline": "One *loop.*",
+    "sub": "Four steps. Every sighting closes the circle.",
+    "cards": [
+      { "title": "Point", "body": "Open the camera. Aim. The AI guesses three times a second." },
+      { "title": "Match", "body": "When the confidence locks, the stamp appears." },
+      { "title": "Stamp", "body": "Your journal gets a new page. Same paper, new species." },
+      { "title": "Browse", "body": "Flip back any time. Or search 839 European species." }
+    ]
+  },
+  "listen": {
+    "eyebrow": "OR HOLD THE MIC · ON-DEVICE",
+    "headline": "Hear it. *Name* it.",
+    "sub": "Three seconds. The bird names itself.",
+    "body": "Hold the record button for 3 seconds. The same on-device AI listens for the bird. Same loop. Same journal. No internet needed."
+  },
+  "inside": {
+    "eyebrow": "INSIDE THE APP",
+    "headline": "An *archive* in your pocket.",
+    "sub": "every european bird, every stamp, every streak",
+    "stats": [
+      { "value": "839", "label": "species", "caption": "from common to rare" },
+      { "value": "25", "label": "stamps", "caption": "earn them by finding" },
+      { "value": "365", "label": "daily streak", "caption": "keep the journal alive" }
+    ]
+  },
+  "premium": {
+    "eyebrow": "FIELD MEMBER · OPTIONAL",
+    "headline": "*Free* first.",
+    "sub": "Premium goes deeper — for the curious few.",
+    "body": "The app is free. Always will be the core experience. Premium adds PDF-export, seasonal statistics, and 10 field marks for the obsessive collectors.",
+    "cta": "See what's inside →",
+    "ctaHref": "https://play.google.com/store/apps/details?id=se.birdy.android"
+  },
+  "privacy": {
+    "eyebrow": "PRIVACY · NO PHOTOS LEAVE YOUR PHONE",
+    "headline": "Fully *offline.*",
+    "sub": "the AI lives in your phone",
+    "body": "No cloud. No tracking. No accounts. Just you and the birds.",
+    "wordmarkLabel": "AVAILABLE ON GOOGLE PLAY"
+  },
+  "faq": {
+    "eyebrow": "QUESTIONS · ANSWERED",
+    "headline": "Before you *download.*",
+    "items": [
+      { "q": "Does it really work offline?", "a": "Yes. The AI runs entirely on your phone — both for camera and audio. No data leaves the device." },
+      { "q": "Do I need an account?", "a": "No. Open the app, point the camera, you're scanning. Your journal lives on the phone." },
+      { "q": "Where are my photos stored?", "a": "On your device. Birdy never uploads photos to a server. There is no server." },
+      { "q": "How accurate is the AI?", "a": "Top-3 accuracy ~72% on European species. Field-verified on a Galaxy S23 Ultra. Confidence shown for every match." },
+      { "q": "What's covered?", "a": "839 European birds — every species in the EBBA2 atlas plus close relatives, with descriptions, photos and range information." },
+      { "q": "Is there an iOS version?", "a": "Not yet. Android first. iOS comes after launch if there is demand." },
+      { "q": "What about audio?", "a": "Hold the mic button for 3 seconds. BirdNET-Lite runs on-device, same offline guarantee." },
+      { "q": "Other questions?", "a": "Email feedback@birdy.app — I read every one." }
+    ]
+  },
+  "finalCta": {
+    "headline": "Get it on *Google Play.*",
+    "sub": "free · no account · offline"
+  },
+  "footer": {
+    "links": [
+      { "label": "Privacy", "href": "/privacy.html" },
+      { "label": "Terms", "href": "/terms.html" },
+      { "label": "Email", "href": "mailto:feedback@birdy.app" },
+      { "label": "SV", "href": "/sv/" }
+    ],
+    "credit": "Made by Albin · Sweden · 2026 · v1.0.0"
+  },
+  "alt": {
+    "wingLogo": "Birdy wing logo",
+    "wordmark": "Birdy wordmark",
+    "playStoreBadge": "Get it on Google Play",
+    "scanScreen": "Birdy scan screen showing a live camera identifying a bird",
+    "matchScreen": "Birdy match screen showing a confirmed species with stamp",
+    "observationDetail": "Birdy observation detail page in field-journal style",
+    "archiveScreen": "Birdy archive screen browsing European species",
+    "audioScan": "Birdy audio scan screen with waveform",
+    "badgesGrid": "Birdy badges page with 5x5 stamp grid"
+  }
+}

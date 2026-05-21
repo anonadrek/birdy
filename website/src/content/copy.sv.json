@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "title": "Birdy — En fältdagbok för fåglar",
+    "description": "Identifiera europeiska fåglar med kamera eller mikrofon. 839 arter. Offline-AI. Inga konton.",
+    "ogLocale": "sv_SE",
+    "htmlLang": "sv"
+  },
+  "nav": {
+    "howItWorks": "Så fungerar det",
+    "inside": "Innehåll",
+    "privacy": "Integritet",
+    "faq": "FAQ",
+    "switchLang": "EN",
+    "switchLangHref": "/",
+    "getApp": "Hämta appen"
+  },
+  "hero": {
+    "eyebrow": "EN BIRDY-APP · 2026",
+    "headline": "En *fältdagbok* som ser ut som en fältdagbok",
+    "sub": "Identifiera fåglar med kameran. Spara det du ser. Samla stämplarna.",
+    "scrollCue": "Så fungerar det ↓"
+  },
+  "loop": {
+    "eyebrow": "SÅ FUNGERAR DET",
+    "headline": "En *loop.*",
+    "sub": "Fyra steg. Varje fynd sluter cirkeln.",
+    "cards": [
+      { "title": "Sikta", "body": "Öppna kameran. Sikta. AI:n gissar tre gånger per sekund." },
+      { "title": "Träff", "body": "När säkerheten låser sig dyker stämpeln upp." },
+      { "title": "Stämpla", "body": "Din dagbok får en ny sida. Samma papper, ny art." },
+      { "title": "Bläddra", "body": "Gå tillbaka när du vill. Eller sök bland 839 europeiska arter." }
+    ]
+  },
+  "listen": {
+    "eyebrow": "ELLER HÅLL NER MIKEN · PÅ ENHETEN",
+    "headline": "Hör den. *Namnge* den.",
+    "sub": "Tre sekunder. Fågeln namnger sig själv.",
+    "body": "Håll inspelningsknappen i 3 sekunder. Samma AI på enheten lyssnar efter fågeln. Samma loop. Samma dagbok. Inget internet behövs."
+  },
+  "inside": {
+    "eyebrow": "INUTI APPEN",
+    "headline": "Ett *arkiv* i fickan.",
+    "sub": "varje europeisk fågel, varje stämpel, varje serie",
+    "stats": [
+      { "value": "839", "label": "arter", "caption": "från vanliga till sällsynta" },
+      { "value": "25", "label": "stämplar", "caption": "tjänas in genom fynd" },
+      { "value": "365", "label": "daglig serie", "caption": "håll dagboken levande" }
+    ]
+  },
+  "premium": {
+    "eyebrow": "FÄLTMEDLEM · VALFRITT",
+    "headline": "*Gratis* först.",
+    "sub": "Premium går djupare — för dom mest nyfikna.",
+    "body": "Appen är gratis. Kärnupplevelsen kommer alltid att vara det. Premium lägger till PDF-export, säsongsstatistik och 10 fältmärken för obsessiva samlare.",
+    "cta": "Se vad som finns →",
+    "ctaHref": "https://play.google.com/store/apps/details?id=se.birdy.android"
+  },
+  "privacy": {
+    "eyebrow": "INTEGRITET · INGA FOTON LÄMNAR DIN TELEFON",
+    "headline": "Helt *offline.*",
+    "sub": "AI:n bor i din telefon",
+    "body": "Inget moln. Ingen spårning. Inga konton. Bara du och fåglarna.",
+    "wordmarkLabel": "FINNS PÅ GOOGLE PLAY"
+  },
+  "faq": {
+    "eyebrow": "FRÅGOR · BESVARADE",
+    "headline": "Innan du *laddar ner.*",
+    "items": [
+      { "q": "Funkar den verkligen offline?", "a": "Ja. AI:n körs helt på din telefon — både för kamera och ljud. Ingen data lämnar enheten." },
+      { "q": "Behöver jag ett konto?", "a": "Nej. Öppna appen, rikta kameran, du skannar. Din dagbok bor på telefonen." },
+      { "q": "Var lagras mina foton?", "a": "På din enhet. Birdy laddar aldrig upp foton till en server. Det finns ingen server." },
+      { "q": "Hur exakt är AI:n?", "a": "Top-3-träffsäkerhet ~72% på europeiska arter. Fältverifierat på en Galaxy S23 Ultra. Säkerhet visas för varje träff." },
+      { "q": "Vad ingår?", "a": "839 europeiska fåglar — varje art i EBBA2-atlasen plus nära släktingar, med beskrivningar, foton och utbredningsinformation." },
+      { "q": "Finns en iOS-version?", "a": "Inte än. Android först. iOS kommer efter lansering om det finns efterfrågan." },
+      { "q": "Hur funkar ljudet?", "a": "Håll mikrofonknappen i 3 sekunder. BirdNET-Lite körs på enheten, samma offline-garanti." },
+      { "q": "Andra frågor?", "a": "Mejla feedback@birdy.app — jag läser varje meddelande." }
+    ]
+  },
+  "finalCta": {
+    "headline": "Hämta den på *Google Play.*",
+    "sub": "gratis · inget konto · offline"
+  },
+  "footer": {
+    "links": [
+      { "label": "Integritet", "href": "/privacy.html" },
+      { "label": "Villkor", "href": "/terms.html" },
+      { "label": "E-post", "href": "mailto:feedback@birdy.app" },
+      { "label": "EN", "href": "/" }
+    ],
+    "credit": "Skapad av Albin · Sverige · 2026 · v1.0.0"
+  },
+  "alt": {
+    "wingLogo": "Birdys vinge-logo",
+    "wordmark": "Birdy-ordmärke",
+    "playStoreBadge": "Hämta den på Google Play",
+    "scanScreen": "Birdys scan-skärm med en live kamera som identifierar en fågel",
+    "matchScreen": "Birdys träff-skärm med en bekräftad art och stämpel",
+    "observationDetail": "Birdys observationsdetaljsida i fältdagbok-stil",
+    "archiveScreen": "Birdys arkiv-skärm med europeiska arter",
+    "audioScan": "Birdys ljudscan-skärm med vågform",
+    "badgesGrid": "Birdys märkessida med 5x5 stämpel-rutnät"
+  }
+}
