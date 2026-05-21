@@ -10,8 +10,8 @@ interface Props {
   loading?: 'lazy' | 'eager';
 }
 const { locale, href, alt, size = 'large', class: cls = '', loading = 'lazy' } = Astro.props;
-const src = locale === 'sv' ? '/play-badge-sv.svg' : '/play-badge-en.svg';
-const w = size === 'large' ? 220 : 160;
+const src = locale === 'sv' ? '/play-badge-sv.png' : '/play-badge-en.png';
+const w = size === 'large' ? 176 : 130;
 const h = size === 'large' ? 68 : 50;
 ---
 
