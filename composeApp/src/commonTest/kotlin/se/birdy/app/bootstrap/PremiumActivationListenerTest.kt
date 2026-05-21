@@ -1,6 +1,7 @@
 package se.birdy.app.bootstrap
 
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.Clock
@@ -38,12 +39,15 @@ class PremiumActivationListenerTest {
             assertEquals("premium_field_member", repo.manualCalls.single().badgeId)
             assertEquals(listOf("premium_field_member"), queue.queue.value.map { it.badgeId })
 
-            // Toggle off then on again — no extra unlock (repo returns false; queue stays at size 1)
+            // Toggle off then on again — defense-in-depth: listener fires on every true emission,
+            // but the repo's idempotency guard makes the second call return false so the queue
+            // stays at size 1.
             premiumActive.value = false
             advanceUntilIdle()
+            assertEquals(1, repo.manualCalls.size, "false emission must not call repo")
             premiumActive.value = true
             advanceUntilIdle()
-            assertEquals(2, repo.manualCalls.size, "repo called both times; second returns false")
+            assertEquals(2, repo.manualCalls.size, "second true flip calls repo; idempotency lives in repo")
             assertEquals(1, queue.queue.value.size, "queue only got one item (first unlock)")
 
             job.cancel()
@@ -57,7 +61,7 @@ private class FakeBadgeRepository : BadgeRepository {
     val manualCalls = mutableListOf<ManualCall>()
     private val unlocked = mutableSetOf<String>()
 
-    override fun observeUnlocks() = kotlinx.coroutines.flow.flowOf(emptyList<BadgeUnlock>())
+    override fun observeUnlocks() = flowOf(emptyList<BadgeUnlock>())
 
     override suspend fun persist(unlocks: List<BadgeUnlock>) {}
 
