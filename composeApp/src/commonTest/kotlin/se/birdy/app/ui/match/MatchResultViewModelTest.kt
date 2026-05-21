@@ -193,6 +193,36 @@ class MatchResultViewModelTest {
         }
 
     @Test
+    fun resolve_audio_source_empty_results_returns_nobird_not_error() =
+        runTest(dispatcher) {
+            val audioSource =
+                ScanSource.Audio(
+                    frameJpegPath = "/cache/audio/1234.png",
+                    classification = Classification(results = emptyList(), frameTimestampMillis = 1234L),
+                    audioWavPath = "/cache/audio/1234.opus",
+                )
+            val vm =
+                MatchResultViewModel(
+                    repository = FakeSpeciesRepository.withDefaults(),
+                    observationRepo = FakeObservationRepository(),
+                    saveUseCase = makeSaveUseCase(),
+                    catalog = emptyCatalog(),
+                    source = audioSource,
+                    capturedAtMs = capturedAtMs,
+                    locale = Locale.SV,
+                )
+            vm.state.test {
+                assertIs<MatchResultUiState.Loading>(awaitItem())
+                val nobird = awaitItem()
+                assertIs<MatchResultUiState.NoBird>(nobird)
+                assertEquals("/cache/audio/1234.png", nobird.frameJpegPath)
+                assertEquals(capturedAtMs, nobird.capturedAtMs)
+                assertNull(nobird.topPrediction)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
     fun resolve_all_unresolved_returns_error_parse_failed() =
         runTest(dispatcher) {
             val vm = makeVm("Q_BOGUS1:87/100,Q_BOGUS2:5/100")

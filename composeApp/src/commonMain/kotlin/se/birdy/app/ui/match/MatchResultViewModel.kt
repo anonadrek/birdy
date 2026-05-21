@@ -63,7 +63,20 @@ class MatchResultViewModel(
         // Read classification results from ScanSource (replaces parseCsv)
         val parsed = source.classification.results.map { it.speciesId to it.confidence }
         if (parsed.isEmpty()) {
-            _state.value = MatchResultUiState.Error(MatchResultUiState.Error.Kind.NoPredictions)
+            // Audio empty results = no bird detected; route to NoBird for appropriate UI.
+            // Photo/Image empty results = classifier returned nothing; route to Error.
+            val newState =
+                if (source is ScanSource.Audio) {
+                    MatchResultUiState.NoBird(
+                        frameJpegPath = source.frameJpegPath.ifBlank { null },
+                        capturedAtMs = capturedAtMs,
+                        source = source,
+                        topPrediction = null,
+                    )
+                } else {
+                    MatchResultUiState.Error(MatchResultUiState.Error.Kind.NoPredictions)
+                }
+            _state.value = newState
             return
         }
         val resolved = mutableListOf<ResolvedPrediction>()
