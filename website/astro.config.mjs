@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://birdy.app',
+  site: 'https://birdy.community',
   trailingSlash: 'ignore',
   i18n: {
     defaultLocale: 'en',
