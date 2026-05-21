@@ -53,13 +53,17 @@ test.describe('SV landing /sv/', () => {
 });
 
 test.describe('Legal section', () => {
-  test('/legal/ index returns 200 + links to 3 docs', async ({ page }) => {
-    const consoleErrors: string[] = [];
+  let consoleErrors: string[];
+
+  test.beforeEach(({ page }) => {
+    consoleErrors = [];
     page.on('pageerror', (e) => consoleErrors.push(e.message));
     page.on('console', (msg) => {
       if (msg.type() === 'error') consoleErrors.push(msg.text());
     });
+  });
 
+  test('/legal/ index returns 200 + links to 3 docs', async ({ page }) => {
     const response = await page.goto('/legal/');
     expect(response?.status()).toBe(200);
 
@@ -82,17 +86,21 @@ test.describe('Legal section', () => {
 
     const termsLink = page.locator('aside.more a[href="/legal/terms/"]');
     expect(await termsLink.count()).toBe(1);
+
+    expect(consoleErrors, `Console errors: ${consoleErrors.join('\n')}`).toEqual([]);
   });
 
   test('/legal/terms/ renders', async ({ page }) => {
     const response = await page.goto('/legal/terms/');
     expect(response?.status()).toBe(200);
     await expect(page.locator('h1')).toContainText('Terms');
+    expect(consoleErrors, `Console errors: ${consoleErrors.join('\n')}`).toEqual([]);
   });
 
   test('/legal/data-safety/ renders', async ({ page }) => {
     const response = await page.goto('/legal/data-safety/');
     expect(response?.status()).toBe(200);
     await expect(page.locator('h1')).toContainText('Data Safety');
+    expect(consoleErrors, `Console errors: ${consoleErrors.join('\n')}`).toEqual([]);
   });
 });
