@@ -84,4 +84,21 @@ class BadgeRepositoryImplTest {
                 cancelAndIgnoreRemainingEvents()
             }
         }
+
+    @Test
+    fun `unlockManualBadge returns true first time and false when already unlocked`() =
+        runTest {
+            val firstAt = Instant.fromEpochMilliseconds(1_000_000)
+            val secondAt = Instant.fromEpochMilliseconds(2_000_000)
+
+            assertEquals(true, repo.unlockManualBadge("premium_field_member", firstAt))
+            assertEquals(false, repo.unlockManualBadge("premium_field_member", secondAt))
+
+            repo.observeUnlocks().test {
+                val emitted = awaitItem()
+                val pfm = emitted.first { it.badgeId == "premium_field_member" }
+                assertEquals(firstAt, pfm.unlockedAt) // first-write wins
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
 }

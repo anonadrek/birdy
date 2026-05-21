@@ -13,3 +13,9 @@ INSERT OR REPLACE INTO badge_unlock(badge_id, unlocked_at_ms) VALUES (?, ?);
 
 deleteAll:
 DELETE FROM badge_unlock;
+
+selectOne:
+SELECT * FROM badge_unlock WHERE badge_id = ?;
+
+insertIfMissing:
+INSERT OR IGNORE INTO badge_unlock(badge_id, unlocked_at_ms) VALUES (?, ?);
