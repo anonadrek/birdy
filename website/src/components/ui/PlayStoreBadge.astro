@@ -7,15 +7,16 @@ interface Props {
   alt: string;
   size?: 'small' | 'large';
   class?: string;
+  loading?: 'lazy' | 'eager';
 }
-const { locale, href, alt, size = 'large', class: cls = '' } = Astro.props;
+const { locale, href, alt, size = 'large', class: cls = '', loading = 'lazy' } = Astro.props;
 const src = locale === 'sv' ? '/play-badge-sv.svg' : '/play-badge-en.svg';
 const w = size === 'large' ? 220 : 160;
 const h = size === 'large' ? 68 : 50;
 ---
 
 <a href={href} class={`badge ${cls}`} rel="noopener noreferrer" target="_blank">
-  <img src={src} alt={alt} width={w} height={h} loading="lazy" decoding="async" />
+  <img src={src} alt={alt} width={w} height={h} loading={loading} decoding="async" />
 </a>
 
 <style>
