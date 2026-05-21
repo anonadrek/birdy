@@ -17,7 +17,7 @@ const { doc, pathname, bodyHtml } = Astro.props;
 const others = LEGAL_DOCS.filter((d) => d.slug !== doc.slug);
 ---
 
-<Layout locale="en" pathname={pathname}>
+<Layout locale="en" pathname={pathname} noAlternateLocale>
   <Nav locale="en" />
   <main class="legal-page">
     <header class="hero">

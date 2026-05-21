@@ -5,9 +5,10 @@ import { getCopy, alternateHref, type Locale } from '../lib/i18n';
 interface Props {
   locale: Locale;
   pathname: string;
+  noAlternateLocale?: boolean;
 }
 
-const { locale, pathname } = Astro.props;
+const { locale, pathname, noAlternateLocale = false } = Astro.props;
 const copy = getCopy(locale);
 const altLocale: Locale = locale === 'en' ? 'sv' : 'en';
 const altPath = alternateHref(locale, pathname);
@@ -39,11 +40,13 @@ const jsonLd = {
 
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang={locale} href={canonical} />
-    <link
-      rel="alternate"
-      hreflang={altLocale}
-      href={new URL(altPath, Astro.site).toString()}
-    />
+    {!noAlternateLocale && (
+      <link
+        rel="alternate"
+        hreflang={altLocale}
+        href={new URL(altPath, Astro.site).toString()}
+      />
+    )}
     <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site).toString()} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
