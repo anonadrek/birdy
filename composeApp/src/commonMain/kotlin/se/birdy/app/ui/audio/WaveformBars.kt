@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,7 +32,7 @@ fun WaveformBars(
     modifier: Modifier = Modifier,
     barCount: Int = 12,
 ) {
-    val target = remember(rms) { rms.coerceIn(0f, 1f) }
+    val target = rms.coerceIn(0f, 1f)
     val animated by animateFloatAsState(
         targetValue = target,
         animationSpec = tween(durationMillis = if (frozen) 600 else 120),

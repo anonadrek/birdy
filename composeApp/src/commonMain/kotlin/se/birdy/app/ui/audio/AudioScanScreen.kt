@@ -47,7 +47,6 @@ fun AudioScanScreen(
     state: AudioScanState,
     permissionState: PermissionState,
     onStartHold: () -> Unit,
-    onReleaseHold: () -> Unit,
     onCancel: () -> Unit,
     onRequestPermission: () -> Unit,
     onOpenSettings: () -> Unit,
@@ -81,7 +80,7 @@ fun AudioScanScreen(
                 is AudioScanState.Error.PermanentlyDenied ->
                     PermissionPrompt(onClick = onOpenSettings, openSettingsMode = true)
                 is AudioScanState.Idle ->
-                    IdleMic(onStartHold = onStartHold, onReleaseHold = onReleaseHold)
+                    IdleMic(onStartHold = onStartHold)
                 is AudioScanState.Recording ->
                     RecordingView(state = state, onCancel = onCancel)
                 is AudioScanState.Analyzing ->
@@ -102,10 +101,7 @@ fun AudioScanScreen(
 }
 
 @Composable
-private fun IdleMic(
-    onStartHold: () -> Unit,
-    onReleaseHold: () -> Unit,
-) {
+private fun IdleMic(onStartHold: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Box(
             modifier =
@@ -117,7 +113,6 @@ private fun IdleMic(
                             onPress = {
                                 onStartHold()
                                 tryAwaitRelease()
-                                onReleaseHold()
                             },
                         )
                     },

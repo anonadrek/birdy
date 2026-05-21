@@ -43,6 +43,28 @@ fun ScanSource.toSerial(): ScanSourceSerialization =
             )
     }
 
+fun ScanSourceSerialization.toScanSource(): ScanSource =
+    when (type) {
+        "image" ->
+            ScanSource.Image(
+                frameJpegPath = frameJpegPath,
+                classification = classification.toClassification(),
+            )
+        "audio" ->
+            ScanSource.Audio(
+                frameJpegPath = frameJpegPath,
+                classification = classification.toClassification(),
+                audioWavPath = audioWavPath ?: error("Audio variant missing audioWavPath"),
+            )
+        else -> error("Unknown ScanSource type: $type")
+    }
+
+private fun ClassificationSerialization.toClassification(): Classification =
+    Classification(
+        results = results.map { ClassificationResult(it.speciesId, it.confidence) },
+        frameTimestampMillis = frameTimestampMillis,
+    )
+
 private fun Classification.toSerial(): ClassificationSerialization =
     ClassificationSerialization(
         results = results.map { ClassificationResultSerialization(it.speciesId, it.confidence) },

@@ -2,11 +2,14 @@ package se.birdy.app.ui.audio
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
@@ -19,6 +22,7 @@ import se.birdy.ml.ScanSource
 import se.birdy.ml.ScanSourceSerialization
 import se.birdy.ml.normalize
 import se.birdy.ml.toSerial
+import kotlin.coroutines.coroutineContext
 
 /**
  * Orchestrates the audio-scan flow:
@@ -68,8 +72,9 @@ class AudioScanViewModel(
     }
 
     fun startRecording() {
-        if (_state.value !is AudioScanState.Idle) return
-        _state.value = AudioScanState.Recording(rms = 0f, elapsedMs = 0L)
+        val initial = AudioScanState.Recording(rms = 0f, elapsedMs = 0L)
+        if (!_state.compareAndSet(AudioScanState.Idle, initial)) return
+        recordingJob?.cancel()
         val t0 = clock()
         recordingJob =
             viewModelScope.launch {
@@ -78,15 +83,20 @@ class AudioScanViewModel(
                         recorder.record3s(
                             onLevel = { rms ->
                                 val elapsed = clock() - t0
-                                val s = _state.value
-                                if (s is AudioScanState.Recording) {
-                                    _state.value = AudioScanState.Recording(rms, elapsed)
+                                _state.update { s ->
+                                    if (s is AudioScanState.Recording) {
+                                        AudioScanState.Recording(rms, elapsed)
+                                    } else {
+                                        s
+                                    }
                                 }
                             },
                         )
                     val frozen = (_state.value as? AudioScanState.Recording)?.rms ?: 0f
                     _state.value = AudioScanState.Analyzing(rmsFrozen = frozen)
                     analyzeAndNavigate(pcm)
+                } catch (t: CancellationException) {
+                    throw t
                 } catch (t: Throwable) {
                     _state.value = AudioScanState.Error.RecordingFailed
                 }
@@ -100,23 +110,31 @@ class AudioScanViewModel(
     }
 
     private suspend fun analyzeAndNavigate(pcm: ShortArray) {
-        val pair =
-            runCatching { classifierProvider() }.getOrElse {
-                _state.value = AudioScanState.Error.BootstrapFailed(it.message ?: "bootstrap failed")
-                return
-            }
-        val classifier = pair.first
-        classifierMode = pair.second
+        coroutineContext.ensureActive()
+        val classifier =
+            runCatching { classifierProvider() }
+                .getOrElse { throwable ->
+                    coroutineContext.ensureActive()
+                    val message = throwable.message ?: "bootstrap failed"
+                    _state.update { s ->
+                        if (s is AudioScanState.Analyzing) AudioScanState.Error.BootstrapFailed(message) else s
+                    }
+                    return
+                }.also { pair -> classifierMode = pair.second }
+                .first
 
+        coroutineContext.ensureActive()
         val ts = clock()
         val pngPath =
             withContext(ioDispatcher) {
                 waveformRenderer.renderWaveformPng(pcm, "${audioStorageDir()}/$ts.png")
             }
+        coroutineContext.ensureActive()
         val audioPath =
             withContext(ioDispatcher) {
                 waveformRenderer.encodeOpus(pcm, "${audioStorageDir()}/$ts.opus")
             }
+        coroutineContext.ensureActive()
         val waveform = normalizer(pcm)
         val audioClassification = classifier.classify(AudioInput(waveform, 48_000, 3_000, rawPcm = pcm))
 
@@ -140,8 +158,11 @@ class AudioScanViewModel(
                 )
             }
 
+        coroutineContext.ensureActive()
         val json = Json.encodeToString(ScanSourceSerialization.serializer(), source.toSerial())
-        _state.value = AudioScanState.NavigateToMatch(json)
+        _state.update { current ->
+            if (current is AudioScanState.Analyzing) AudioScanState.NavigateToMatch(json) else current
+        }
     }
 }
 

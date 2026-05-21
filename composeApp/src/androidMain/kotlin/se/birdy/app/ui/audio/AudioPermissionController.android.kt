@@ -1,17 +1,13 @@
 package se.birdy.app.ui.audio
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.Settings
-import androidx.activity.ComponentActivity
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -25,46 +21,28 @@ actual interface AudioPermissionController {
     actual fun recheck()
 }
 
+/**
+ * Android implementation of [AudioPermissionController].
+ *
+ * Unlike the previous design this class does NOT call
+ * `registerForActivityResult` in its constructor — that must happen before
+ * the Activity reaches STARTED. Instead the host composable uses
+ * `rememberLauncherForActivityResult` (correct timing) and passes a
+ * [launchRequest] lambda here. The host is also responsible for lifecycle
+ * observation via `DisposableEffect` so there is no lifecycle-observer leak.
+ */
 class AndroidAudioPermissionController(
-    private val activity: ComponentActivity,
-) : AudioPermissionController,
-    DefaultLifecycleObserver {
+    private val activity: Activity,
+    private val launchRequest: () -> Unit,
+) : AudioPermissionController {
     private val _state = MutableStateFlow(PermissionState.Unknown)
     override val state: StateFlow<PermissionState> = _state
 
-    private val launcher: ActivityResultLauncher<String> =
-        activity.registerForActivityResult(
-            ActivityResultContracts.RequestPermission(),
-        ) { granted ->
-            _state.value =
-                if (granted) {
-                    PermissionState.Granted
-                } else {
-                    if (
-                        ActivityCompat.shouldShowRequestPermissionRationale(
-                            activity,
-                            Manifest.permission.RECORD_AUDIO,
-                        )
-                    ) {
-                        PermissionState.Denied
-                    } else {
-                        PermissionState.PermanentlyDenied
-                    }
-                }
-        }
-
     init {
-        activity.lifecycle.addObserver(this)
         recheck()
     }
 
-    override fun onResume(owner: LifecycleOwner) {
-        recheck()
-    }
-
-    override fun request() {
-        launcher.launch(Manifest.permission.RECORD_AUDIO)
-    }
+    override fun request() = launchRequest()
 
     override fun openSettings() {
         val intent =
@@ -86,6 +64,19 @@ class AndroidAudioPermissionController(
                     Manifest.permission.RECORD_AUDIO,
                 ) -> PermissionState.Denied
                 _state.value == PermissionState.Unknown -> PermissionState.Unknown
+                else -> PermissionState.PermanentlyDenied
+            }
+    }
+
+    /** Called by the host after the `ActivityResult` callback fires. */
+    fun onResult(granted: Boolean) {
+        _state.value =
+            when {
+                granted -> PermissionState.Granted
+                ActivityCompat.shouldShowRequestPermissionRationale(
+                    activity,
+                    Manifest.permission.RECORD_AUDIO,
+                ) -> PermissionState.Denied
                 else -> PermissionState.PermanentlyDenied
             }
     }

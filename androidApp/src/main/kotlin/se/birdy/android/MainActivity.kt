@@ -27,6 +27,8 @@ import se.birdy.app.di.AppGraph
 import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.photo.PhotoStorageProvider
+import se.birdy.app.ui.audio.AndroidAudioRecorderAdapter
+import se.birdy.app.ui.audio.AndroidWaveformRendererStub
 import se.birdy.app.ui.debug.DiagnosticsRunner
 import se.birdy.app.ui.debug.DiagnosticsScreen
 import se.birdy.app.ui.settings.AppLocaleApplier
@@ -54,8 +56,6 @@ import se.birdy.ml.ImagePreprocessor
 import se.birdy.ml.ModelArtifactProvider
 import se.birdy.ml.TfLiteBirdClassifier
 import se.birdy.ml.camera.AndroidCameraSource
-import se.birdy.app.ui.audio.AndroidAudioRecorderAdapter
-import se.birdy.app.ui.audio.AndroidWaveformRendererStub
 import se.birdy.ml.loadAiyLabelMapper
 import se.birdy.ml.loadModelMetadata
 import java.io.File

@@ -1,13 +1,13 @@
 package se.birdy.app.ui.audio
 
 sealed interface AudioScanState {
-    object Preparing : AudioScanState
+    data object Preparing : AudioScanState
 
     data class PermissionNeeded(
         val canRequest: Boolean,
     ) : AudioScanState
 
-    object Idle : AudioScanState
+    data object Idle : AudioScanState
 
     data class Recording(
         val rms: Float,
@@ -23,9 +23,9 @@ sealed interface AudioScanState {
     ) : AudioScanState
 
     sealed interface Error : AudioScanState {
-        object PermanentlyDenied : Error
+        data object PermanentlyDenied : Error
 
-        object RecordingFailed : Error
+        data object RecordingFailed : Error
 
         data class BootstrapFailed(
             val cause: String,
