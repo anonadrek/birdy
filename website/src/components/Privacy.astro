@@ -1,0 +1,79 @@
+---
+import CornerBrackets from './ui/CornerBrackets.astro';
+import EyebrowLabel from './ui/EyebrowLabel.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import OrnamentRule from './ui/OrnamentRule.astro';
+import WingLogo from './ui/WingLogo.astro';
+import Wordmark from './ui/Wordmark.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = getCopy(locale);
+---
+
+<section id="privacy" class="privacy">
+  <CornerBrackets />
+  <div class="content">
+    <WingLogo alt={t.alt.wingLogo} size="56px" />
+    <EyebrowLabel text={t.privacy.eyebrow} />
+    <JournalHeadline
+      text={t.privacy.headline}
+      level="h2"
+      size="clamp(3rem, 8vw, 6rem)"
+    />
+    <p class="sub">{t.privacy.sub}</p>
+    <OrnamentRule />
+    <p class="body">{t.privacy.body}</p>
+    <div class="brand-line">
+      <Wordmark size="44px" alt={t.alt.wordmark} />
+      <span class="micro">{t.privacy.wordmarkLabel}</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .privacy {
+    position: relative;
+    padding: calc(var(--section-padding-y) * 1.5) 1.5rem;
+    text-align: center;
+  }
+  .content {
+    max-width: 48rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .sub {
+    font-family: var(--font-script);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    color: var(--color-copper);
+    margin: 0;
+  }
+  .body {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    max-width: 36rem;
+    margin: 0;
+  }
+  .brand-line {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .micro {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-copper);
+  }
+</style>
