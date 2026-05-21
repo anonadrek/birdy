@@ -35,4 +35,5 @@ include(
     ":shared:datastore",
     ":shared:ml",
     ":shared:content",
+    ":shared:pdf",
 )
