@@ -85,12 +85,14 @@ class SqlDelightObservationRepository(
 
     override suspend fun delete(id: String): FileCleanupRequest =
         withContext(Dispatchers.IO) {
-            val row = queries.selectById(id).executeAsOneOrNull()
-            queries.deleteById(id)
-            FileCleanupRequest(
-                photoPath = row?.photo_path,
-                audioPath = row?.audio_path,
-            )
+            queries.transactionWithResult {
+                val row = queries.selectById(id).executeAsOneOrNull()
+                queries.deleteById(id)
+                FileCleanupRequest(
+                    photoPath = row?.photo_path,
+                    audioPath = row?.audio_path,
+                )
+            }
         }
 
     private fun ObservationRow.toDomain(): Observation =
