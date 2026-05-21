@@ -1,0 +1,86 @@
+---
+import EyebrowLabel from './ui/EyebrowLabel.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import OrnamentRule from './ui/OrnamentRule.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = getCopy(locale);
+---
+
+<section id="inside" class="inside">
+  <div class="head">
+    <EyebrowLabel text={t.inside.eyebrow} />
+    <JournalHeadline text={t.inside.headline} level="h2" />
+    <p class="sub">{t.inside.sub}</p>
+    <OrnamentRule />
+  </div>
+
+  <ul class="stats" role="list">
+    {t.inside.stats.map((stat) => (
+      <li class="stat">
+        <span class="value">{stat.value}</span>
+        <span class="label">{stat.label}</span>
+        <span class="caption">{stat.caption}</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .inside {
+    padding: var(--section-padding-y) 1.5rem;
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+  .sub {
+    font-family: var(--font-script);
+    font-size: 1.25rem;
+    color: var(--color-marginalia-ink);
+    margin: 0;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin: 2rem auto 0;
+    max-width: 56rem;
+    list-style: none;
+    padding: 0;
+  }
+  .stat {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .value {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--color-copper);
+    line-height: 1;
+  }
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-primary);
+    margin-top: 0.25rem;
+  }
+  .caption {
+    font-family: var(--font-script);
+    font-size: 1.125rem;
+    color: var(--color-marginalia-ink);
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 640px) {
+    .stats { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>
