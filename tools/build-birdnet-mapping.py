@@ -5,7 +5,7 @@ Reads:
   shared/content/species_list.yaml (839 species with scientific_name + qid)
 
 Writes:
-  composeApp/src/commonMain/composeResources/files/birdnet_lite_to_qid.json
+  shared/ml/src/commonMain/composeResources/files/ml/birdnet_lite_to_qid.json
 
 Format:
   {
@@ -33,7 +33,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 LABELS = ROOT / "tools" / "birdnet_labels.txt"
 SPECIES_LIST = ROOT / "tools" / "content-pipeline" / "species_list.yaml"
-OUT = ROOT / "composeApp" / "src" / "commonMain" / "composeResources" / "files" / "birdnet_lite_to_qid.json"
+OUT = ROOT / "shared" / "ml" / "src" / "commonMain" / "composeResources" / "files" / "ml" / "birdnet_lite_to_qid.json"
 
 
 def main() -> int:

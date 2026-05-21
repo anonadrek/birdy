@@ -121,7 +121,7 @@ tasks.named("check") {
 }
 
 val birdNetMappingFile =
-    project(":composeApp").file("src/commonMain/composeResources/files/birdnet_lite_to_qid.json")
+    project(":shared:ml").file("src/commonMain/composeResources/files/ml/birdnet_lite_to_qid.json")
 val birdNetSpeciesListYaml = rootProject.file("tools/content-pipeline/species_list.yaml")
 
 val validateBirdNetMapping by tasks.registering(JavaExec::class) {
