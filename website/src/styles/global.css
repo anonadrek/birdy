@@ -15,9 +15,9 @@
   --color-marginalia-ink: #3F4F30;
   --color-stamp-navy: #1F3A5F;
 
-  --font-serif: 'DM Serif Display', Georgia, serif;
-  --font-script: 'Caveat', cursive;
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --font-script: 'Caveat', 'Brush Script MT', cursive;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --breakpoint-xs: 24rem;
 }
@@ -42,7 +42,7 @@
 .accent-rotate {
   font-family: var(--font-script);
   font-style: italic;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-copper);
   display: inline-block;
   transform: rotate(-3deg);
@@ -65,3 +65,12 @@ h1, h2, h3 {
 }
 
 a { color: inherit; text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

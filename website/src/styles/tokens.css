@@ -33,12 +33,3 @@
   /* Animation */
   --ease-paper: cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
