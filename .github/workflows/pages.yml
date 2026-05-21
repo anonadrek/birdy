@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'docs/play-store/**'
+      - 'website/**'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -26,10 +27,10 @@ jobs:
       - name: Install pandoc
         run: sudo apt-get update && sudo apt-get install -y pandoc
 
-      - name: Build static site
+      - name: Build legal + listing pages (pandoc)
         run: |
           set -euo pipefail
-          mkdir -p _site
+          mkdir -p _legal
           STYLE='<style>
             body { font-family: Georgia, "Times New Roman", serif; max-width: 38rem; margin: 3rem auto; padding: 0 1rem; color: #2A3525; background: #EFE7D6; line-height: 1.55; }
             h1, h2, h3 { font-family: "DM Serif Display", Georgia, serif; }
@@ -42,40 +43,39 @@ jobs:
             pandoc --from gfm --to html5 \
               --metadata pagetitle="${title} — Birdy" \
               -H <(echo "${STYLE}") \
-              "${src}" -o "_site/${dst}"
+              "${src}" -o "_legal/${dst}"
           }
-          render docs/play-store/privacy-policy.md privacy.html        "Privacy Policy"
-          render docs/play-store/terms.md          terms.html          "Terms of Use"
+          render docs/play-store/privacy-policy.md privacy.html "Privacy Policy"
+          render docs/play-store/terms.md          terms.html   "Terms of Use"
           render docs/play-store/store-listing-en.md store-listing-en.html "Store Listing (EN)"
           render docs/play-store/store-listing-sv.md store-listing-sv.html "Store Listing (SV)"
-          render docs/play-store/data-safety-form.md data-safety.html  "Data Safety"
+          render docs/play-store/data-safety-form.md data-safety.html "Data Safety"
           render docs/play-store/closed-testing-tester-instructions.md tester-instructions.html "Closed Testing Instructions"
 
-          # Index page
-          cat > _site/index.html <<EOF
-          <!doctype html>
-          <html lang="en">
-          <head>
-            <meta charset="utf-8">
-            <title>Birdy</title>
-            ${STYLE}
-          </head>
-          <body>
-            <h1>Birdy</h1>
-            <p><em>A field birder's digital companion.</em></p>
-            <ul>
-              <li><a href="privacy.html">Privacy Policy</a></li>
-              <li><a href="terms.html">Terms of Use</a></li>
-              <li><a href="store-listing-en.html">Store Listing (EN)</a></li>
-              <li><a href="store-listing-sv.html">Store Listing (SV)</a></li>
-              <li><a href="data-safety.html">Data Safety</a></li>
-              <li><a href="tester-instructions.html">Closed Testing Instructions</a></li>
-            </ul>
-            <hr>
-            <p>Contact: <a href="mailto:feedback@birdy.app">feedback@birdy.app</a></p>
-          </body>
-          </html>
-          EOF
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install website deps
+        working-directory: website
+        run: npm ci
+
+      - name: i18n parity check
+        working-directory: website
+        run: npm run test:i18n
+
+      - name: Build website (Astro)
+        working-directory: website
+        run: npm run build
+
+      - name: Assemble _site (Astro + legal pages)
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          cp -r website/dist/. _site/
+          cp _legal/*.html _site/
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
