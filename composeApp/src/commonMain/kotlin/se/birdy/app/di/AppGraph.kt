@@ -33,6 +33,7 @@ import se.birdy.domain.observation.ObservationRepository
 import se.birdy.domain.premium.PremiumRepository
 import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
+import se.birdy.ml.BirdAudioClassifier
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.CameraSource
 import se.birdy.ml.ClassifierBootstrap
@@ -84,6 +85,18 @@ class AppGraph(
      * Null = no live prices; PremiumUiState keeps null price fields.
      */
     val formattedPricesFlow: kotlinx.coroutines.flow.StateFlow<FormattedPrices>? = null,
+    /**
+     * Lazy audio classifier provider — only invoked on first audio-scan entry (Plan 6b2 T3).
+     *
+     * The lambda is called by the audio pipeline when the user first requests audio-ID.
+     * The Android actual caches the result via `AtomicReference<Deferred<BirdAudioClassifier>?>`
+     * + CAS in [MainActivity] so concurrent callers get the same instance and the 57 MB
+     * TFLite model is loaded at most once per session.
+     *
+     * Null in tests / non-Android targets — UI must gate audio-scan entry behind a
+     * premium check AND a non-null provider check.
+     */
+    val audioClassifierProvider: (suspend () -> BirdAudioClassifier)? = null,
 ) {
     val classifier: BirdClassifier
         get() =

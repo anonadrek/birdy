@@ -9,6 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -32,7 +37,13 @@ import se.birdy.data.observation.SqlDelightObservationRepository
 import se.birdy.datastore.UserPreferencesStore
 import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
+import se.birdy.ml.AndroidTfliteAudioRunner
 import se.birdy.ml.AndroidTfliteRunner
+import se.birdy.ml.AudioClassification
+import se.birdy.ml.AudioClassifierFactory
+import se.birdy.ml.AudioInput
+import se.birdy.ml.AudioModelInfo
+import se.birdy.ml.BirdAudioClassifier
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.BirdClassifierFactory
 import se.birdy.ml.ClassifierBootstrap
@@ -46,11 +57,79 @@ import se.birdy.ml.camera.AndroidCameraSource
 import se.birdy.ml.loadAiyLabelMapper
 import se.birdy.ml.loadModelMetadata
 import java.io.File
+import java.util.concurrent.atomic.AtomicReference
 import android.graphics.Color as AndroidColor
 
 class MainActivity : ComponentActivity() {
     private lateinit var appGraph: AppGraph
     private lateinit var billingClient: se.birdy.app.data.premium.PremiumBillingClient
+
+    /**
+     * Caches the in-flight or completed audio-classifier [Deferred] so the 57 MB TFLite
+     * model is loaded at most once per session. [AtomicReference] + CAS ensures only one
+     * coroutine wins the load race; losers cancel their own [Deferred] and await the winner.
+     *
+     * Reset to null in [onTrimMemory] (level >= TRIM_MEMORY_BACKGROUND) to free the
+     * native TFLite handle when the app moves to background.
+     */
+    private val audioBootstrapCache = AtomicReference<Deferred<BirdAudioClassifier>?>(null)
+
+    /**
+     * Suspend lambda passed to [AppGraph.audioClassifierProvider].
+     *
+     * On first call: launches a [Deferred] on [Dispatchers.IO], attempts CAS into
+     * [audioBootstrapCache]. The winner awaits its own [Deferred]; losers cancel theirs
+     * and await the winner instead.
+     *
+     * On subsequent calls (cache already populated): returns immediately by awaiting
+     * the cached [Deferred].
+     */
+    private val audioProvider: suspend () -> BirdAudioClassifier = {
+        val cached = audioBootstrapCache.get()
+        if (cached != null) {
+            cached.await()
+        } else {
+            val deferred =
+                lifecycleScope.async(Dispatchers.IO) {
+                    val (clf, _) = buildAudioClassifier()
+                    clf
+                }
+            if (audioBootstrapCache.compareAndSet(null, deferred)) {
+                deferred.await()
+            } else {
+                deferred.cancel()
+                audioBootstrapCache.get()!!.await()
+            }
+        }
+    }
+
+    /**
+     * Builds the audio classifier via [AudioClassifierFactory]. Extracted from [audioProvider]
+     * to keep the lambda readable. On failure, falls back to a no-op classifier and logs a warning;
+     * Crashlytics integration is deferred to Plan 6b3.
+     */
+    private suspend fun buildAudioClassifier(): Pair<BirdAudioClassifier, AudioClassifierMode> {
+        val fallback =
+            object : BirdAudioClassifier {
+                override val info =
+                    AudioModelInfo(
+                        modelVersion = FAKE_AUDIO_MODEL_VERSION,
+                        inputShape = listOf(1, FAKE_AUDIO_INPUT_SAMPLES),
+                        outputShape = listOf(1, FAKE_AUDIO_OUTPUT_CLASSES),
+                        coveragePct = FAKE_AUDIO_COVERAGE_PCT,
+                    )
+
+                override suspend fun classify(input: AudioInput): AudioClassification =
+                    AudioClassification(results = emptyList(), inferenceMs = 0L, modelVersion = info.modelVersion)
+
+                override fun close() = Unit
+            }
+        return AudioClassifierFactory(
+            createReal = { AndroidTfliteAudioRunner.load(applicationContext) },
+            createFallback = { fallback },
+            onDegrade = { t -> android.util.Log.w("Birdy", "Audio TFLite init failed, falling back to Fake", t) },
+        ).create()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -161,7 +240,29 @@ class MainActivity : ComponentActivity() {
                 Unit
             },
             formattedPricesFlow = billingClient.formattedPrices,
+            audioClassifierProvider = audioProvider,
         )
+    }
+
+    /**
+     * Releases the cached audio classifier when the system signals memory pressure at or
+     * above [TRIM_MEMORY_BACKGROUND]. The AtomicReference is reset to null so the next
+     * audio-scan entry re-loads the model fresh.
+     *
+     * [GlobalScope] + [NonCancellable] mirrors the pattern used for image-classifier
+     * cleanup in [buildClassifier] (see Plan 4b): [lifecycleScope] may already be
+     * cancelled at this point on some Android versions.
+     */
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        if (level >= TRIM_MEMORY_BACKGROUND) {
+            val cached = audioBootstrapCache.getAndSet(null)
+            cached?.let { def ->
+                GlobalScope.launch(Dispatchers.IO + NonCancellable) {
+                    runCatching { def.await().close() }
+                }
+            }
+        }
     }
 
     private fun buildBenchmarkScreen(bootstrap: ClassifierBootstrap): (@Composable () -> Unit)? =
@@ -266,5 +367,11 @@ class MainActivity : ComponentActivity() {
 
     private companion object {
         private const val ONE_HOUR_MS = 60L * 60L * 1000L
+
+        // Fallback audio classifier constants — used when AndroidTfliteAudioRunner fails to load.
+        private const val FAKE_AUDIO_MODEL_VERSION = "fake_audio_v1"
+        private const val FAKE_AUDIO_INPUT_SAMPLES = 144_000
+        private const val FAKE_AUDIO_OUTPUT_CLASSES = 6_362
+        private const val FAKE_AUDIO_COVERAGE_PCT = 100.0
     }
 }
