@@ -14,7 +14,7 @@ const pathname = '/legal/';
   <Nav locale="en" />
   <main class="legal-index">
     <header class="hero">
-      <WingLogo size="48px" />
+      <WingLogo size="48px" alt="" />
       <EyebrowLabel text="LEGAL" />
       <JournalHeadline
         text="Field journal *fine print*"
@@ -77,9 +77,14 @@ const pathname = '/legal/';
     text-decoration: none;
     transition: transform 0.2s var(--ease-paper), box-shadow 0.2s var(--ease-paper);
   }
-  .doc-link:hover {
+  .doc-link:hover,
+  .doc-link:focus-visible {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(63, 79, 48, 0.08);
+  }
+  .doc-link:focus-visible {
+    outline: 2px solid var(--color-copper);
+    outline-offset: 2px;
   }
   .doc-title {
     font-family: var(--font-serif);
