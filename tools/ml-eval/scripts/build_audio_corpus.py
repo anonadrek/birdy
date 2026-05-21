@@ -1,7 +1,14 @@
 """build_audio_corpus.py — fetch CC-licensed xeno-canto recordings for audio eval.
 
-Fetches up to 3 recordings per species from xeno-canto using their public API v2.
+Fetches up to 3 recordings per species from xeno-canto using their public API v3.
 Only recordings with CC-BY, CC0, or public-domain licences are downloaded.
+
+API v3 requires a free API key:
+  1. Register at https://xeno-canto.org/
+  2. Retrieve your key at https://xeno-canto.org/account
+  3. Export it before running this script:
+       export XC_API_KEY=<your-key>
+     (or write to tools/ml-eval/.xc_key — a one-line text file with the key)
 
 Each audio file is:
   1. Downloaded as MP3 (xeno-canto only provides MP3).
@@ -25,6 +32,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import shutil
 import struct
 import subprocess
@@ -100,10 +108,31 @@ TARGET_SCI_NAMES: list[str] = [
     "Alcedo atthis",
 ]
 
-XENO_API = "https://xeno-canto.org/api/2/recordings"
+XENO_API = "https://xeno-canto.org/api/3/recordings"
+XC_KEY_FILE = EVAL_DIR / ".xc_key"
 
 # Licences considered CC/public-domain
 CC_PREFIXES = ("//creativecommons.org/licenses/by", "//creativecommons.org/publicdomain")
+
+
+def load_xc_api_key() -> str:
+    """Return the xeno-canto API key from env or .xc_key file. Exit with message if missing."""
+    env_key = os.environ.get("XC_API_KEY", "").strip()
+    if env_key:
+        return env_key
+    if XC_KEY_FILE.exists():
+        file_key = XC_KEY_FILE.read_text(encoding="utf-8").strip()
+        if file_key:
+            return file_key
+    raise SystemExit(
+        "ERROR: xeno-canto API key not found.\n"
+        "xeno-canto API v3 requires a free API key. To obtain one:\n"
+        "  1. Register at https://xeno-canto.org/\n"
+        "  2. Retrieve your key at https://xeno-canto.org/account\n"
+        "  3. Either:\n"
+        f"       export XC_API_KEY=<your-key>   (in this shell)\n"
+        f"       echo <your-key> > {XC_KEY_FILE}   (persist locally)\n"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -163,10 +192,14 @@ def is_cc_licensed(lic_url: str) -> bool:
     return any(prefix in url_lower for prefix in CC_PREFIXES)
 
 
-def xeno_query(sci_name: str, page: int = 1) -> dict:  # type: ignore[type-arg]
-    """Query xeno-canto API v2 for recordings of *sci_name*. Returns parsed JSON."""
-    params = urllib.parse.urlencode({"query": f'"{sci_name}" q:A q:B'})
-    url = f"{XENO_API}?{params}&page={page}"
+def xeno_query(sci_name: str, api_key: str, page: int = 1) -> dict:  # type: ignore[type-arg]
+    """Query xeno-canto API v3 for recordings of *sci_name*. Returns parsed JSON."""
+    params = urllib.parse.urlencode({
+        "query": f'"{sci_name}" q:A q:B',
+        "key": api_key,
+        "page": str(page),
+    })
+    url = f"{XENO_API}?{params}"
     ua = "birdy-eval/1.0 (github.com/anonadrek/birdy)"
     req = urllib.request.Request(url, headers={"User-Agent": ua})
     try:
@@ -280,6 +313,8 @@ def write_wav(samples: list[int], path: Path) -> None:
 
 def main() -> None:
     check_ffmpeg()
+    api_key = load_xc_api_key()
+    print(f"Using xeno-canto API key (length={len(api_key)}) for v3 endpoint")
 
     print("Loading birdnet_lite_to_qid.json …")
     qid_to_idx = load_birdnet_mapping()
@@ -317,7 +352,7 @@ def main() -> None:
         sci_slug = sci.replace(" ", "_")
 
         try:
-            result = xeno_query(sci)
+            result = xeno_query(sci, api_key)
         except Exception as exc:
             print(f"  ERROR querying xeno-canto: {exc} — skipping species")
             continue

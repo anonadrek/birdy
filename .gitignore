@@ -60,6 +60,10 @@ gradle.properties
 # BirdNET labels source file — large, reproducible, not committed
 tools/birdnet_labels.txt
 
+# xeno-canto API v3 key — never commit (per-user secret)
+tools/ml-eval/.xc_key
+tools/ml-eval/corpus_audio/
+
 # Website (Astro landing page)
 website/node_modules/
 website/dist/

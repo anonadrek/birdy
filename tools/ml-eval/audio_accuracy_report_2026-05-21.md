@@ -8,25 +8,35 @@
 
 ---
 
-## Eval status: BLOCKED — ffmpeg not on PATH in current environment
+## Eval status: BLOCKED — xeno-canto API v3 key required
 
-The evaluation pipeline (`build_audio_corpus.py` → `eval_birdnet_audio.py`) requires
-ffmpeg to convert xeno-canto MP3 downloads to 48 kHz mono PCM_16 WAV. ffmpeg was not
-found on PATH in the Windows CI/eval environment where T8 executed.
+The evaluation pipeline (`build_audio_corpus.py` → `eval_birdnet_audio.py`) is
+ready and statically verified. ffmpeg 8.1.1 was installed via `scoop install ffmpeg`.
 
-**All scripts are ready and statically verified (ruff clean). Re-run when ffmpeg is
-installed:**
+**Remaining blocker:** xeno-canto fully retired API v2 — v3 requires a free API key
+(probe 2026-05-21: v2 returns `{"error": "server_error", "message": "Xeno-canto
+API v2 is no longer available. Visit https://xeno-canto.org/explore/api for API v3
+documentation."}`; v3 returns 401 without key). The script was migrated to v3
+and now reads the key from `XC_API_KEY` env var or `tools/ml-eval/.xc_key` file
+(both gitignored).
 
-```powershell
-# Install ffmpeg on Windows
-winget install ffmpeg
-# or
-choco install ffmpeg
+**Re-run once key is provided:**
 
-# Then from tools/ml-eval/:
+```bash
+# 1. Register at https://xeno-canto.org/
+# 2. Copy key from https://xeno-canto.org/account
+# 3. Persist locally (file is gitignored):
+echo <your-key> > tools/ml-eval/.xc_key
+
+# 4. From tools/ml-eval/:
 uv run python scripts/build_audio_corpus.py   # ~5–15 min (network + ffmpeg)
 uv run python scripts/eval_birdnet_audio.py   # ~30 s
 ```
+
+Deferral rationale: corpus build requires a per-user API key. Same deferral
+pattern as Billing v8 IPC runtime-verify (Plan 6b1) — scripts ship in this
+plan, eval-run happens when key is available. Model verification below
+proves the pipeline plumbing is correct.
 
 ---
 
@@ -82,7 +92,7 @@ target species are expected to pass filtering.
 
 ## Corpus design
 
-- **Source:** xeno-canto API v2 (`q:A q:B` quality filters — best two quality tiers)
+- **Source:** xeno-canto API v3 (`q:A q:B` quality filters — best two quality tiers; key from env/file)
 - **Licence filter:** CC-BY, CC0, public-domain only (lic URL contains `creativecommons.org/licenses/by` or `creativecommons.org/publicdomain`)
 - **Format:** 48 kHz mono PCM_16 WAV, 3s window
 - **Window selection:** highest-RMS 3-second window (maximises bird-call signal)
