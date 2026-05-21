@@ -10,6 +10,7 @@ sealed interface PhotoAnalyzeUiState {
     data class Loaded(
         val predictions: List<ClassificationResult>,
         val frameJpegPath: String,
+        val capturedAtMs: Long,
     ) : PhotoAnalyzeUiState
 
     data class Error(

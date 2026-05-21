@@ -22,7 +22,6 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_dismiss_toast
 import birdy_bird_scanner.composeapp.generated.resources.premium_welcome_toast
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
@@ -114,9 +113,8 @@ fun AppScaffold(graph: AppGraph) {
             composable<AppRoute.PhotoAnalyze> {
                 se.birdy.app.ui.photoanalyze.PhotoAnalyzeHost(
                     graph = graph,
-                    onLoaded = { sourceJson ->
-                        val ts = Clock.System.now().toEpochMilliseconds()
-                        navController.navigate(AppRoute.MatchResult(sourceJson, ts)) {
+                    onLoaded = { sourceJson, capturedAtMs ->
+                        navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs)) {
                             popUpTo(AppRoute.Scan) { inclusive = false }
                         }
                     },
@@ -229,9 +227,8 @@ fun AppScaffold(graph: AppGraph) {
             composable<AppRoute.AudioScan> {
                 AudioScanScreenHost(
                     graph = graph,
-                    onNavigateToMatch = { sourceJson ->
-                        val ts = Clock.System.now().toEpochMilliseconds()
-                        navController.navigate(AppRoute.MatchResult(sourceJson, ts)) {
+                    onNavigateToMatch = { sourceJson, capturedAtMs ->
+                        navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs)) {
                             popUpTo(AppRoute.Listen) { inclusive = false }
                         }
                     },

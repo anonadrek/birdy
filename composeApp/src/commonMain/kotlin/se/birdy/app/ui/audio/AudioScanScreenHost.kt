@@ -6,6 +6,6 @@ import se.birdy.app.di.AppGraph
 @Composable
 expect fun AudioScanScreenHost(
     graph: AppGraph,
-    onNavigateToMatch: (String) -> Unit,
+    onNavigateToMatch: (sourceJson: String, capturedAtMs: Long) -> Unit,
     onBack: () -> Unit,
 )

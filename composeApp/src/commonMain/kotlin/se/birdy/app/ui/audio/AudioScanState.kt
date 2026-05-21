@@ -20,6 +20,7 @@ sealed interface AudioScanState {
 
     data class NavigateToMatch(
         val sourceJson: String,
+        val capturedAtMs: Long,
     ) : AudioScanState
 
     sealed interface Error : AudioScanState {

@@ -44,7 +44,7 @@ fun PhotoAnalyzeScreen(
     viewModel: PhotoAnalyzeViewModel,
     onPickFromGallery: () -> Unit,
     onTakePhoto: () -> Unit,
-    onLoaded: (sourceJson: String) -> Unit,
+    onLoaded: (sourceJson: String, capturedAtMs: Long) -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
     LaunchedEffect(state) {
@@ -53,6 +53,7 @@ fun PhotoAnalyzeScreen(
             val classification =
                 Classification(
                     results = s.predictions.map { ClassificationResult(it.speciesId, it.confidence) },
+                    frameTimestampMillis = s.capturedAtMs,
                 )
             val scanSource =
                 ScanSource.Image(
@@ -61,7 +62,7 @@ fun PhotoAnalyzeScreen(
                 )
             val sourceJson =
                 Json.encodeToString(ScanSourceSerialization.serializer(), scanSource.toSerial())
-            onLoaded(sourceJson)
+            onLoaded(sourceJson, s.capturedAtMs)
             viewModel.reset()
         }
     }

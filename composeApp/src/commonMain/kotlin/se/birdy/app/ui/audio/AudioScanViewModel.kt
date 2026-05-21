@@ -161,7 +161,7 @@ class AudioScanViewModel(
         coroutineContext.ensureActive()
         val json = Json.encodeToString(ScanSourceSerialization.serializer(), source.toSerial())
         _state.update { current ->
-            if (current is AudioScanState.Analyzing) AudioScanState.NavigateToMatch(json) else current
+            if (current is AudioScanState.Analyzing) AudioScanState.NavigateToMatch(json, ts) else current
         }
     }
 }

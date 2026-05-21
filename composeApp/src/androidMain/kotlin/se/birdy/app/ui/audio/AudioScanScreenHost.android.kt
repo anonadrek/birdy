@@ -68,7 +68,7 @@ actual fun AudioScanScreenHost(
 
     LaunchedEffect(state) {
         val s = state
-        if (s is AudioScanState.NavigateToMatch) onNavigateToMatch(s.sourceJson)
+        if (s is AudioScanState.NavigateToMatch) onNavigateToMatch(s.sourceJson, s.capturedAtMs)
     }
 
     AudioScanScreen(
