@@ -2,6 +2,8 @@ package se.birdy.domain.observation
 
 import kotlinx.datetime.Instant
 
+enum class ObservationSource { Photo, Audio }
+
 data class Observation(
     val id: String,
     val speciesId: String?,
@@ -14,4 +16,6 @@ data class Observation(
     val longitude: Double?,
     val locationLabel: String?,
     val stampNumber: Int = 0,
+    val audioPath: String? = null,
+    val sourceType: ObservationSource = ObservationSource.Photo,
 )

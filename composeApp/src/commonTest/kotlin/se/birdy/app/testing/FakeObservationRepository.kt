@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.datetime.Instant
+import se.birdy.domain.observation.FileCleanupRequest
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationRepository
 
@@ -45,9 +46,14 @@ class FakeObservationRepository : ObservationRepository {
         _rows.value = _rows.value.map { if (it.id == id) it.copy(note = note) else it }
     }
 
-    override suspend fun delete(id: String) {
+    override suspend fun delete(id: String): FileCleanupRequest {
         failOnDelete?.let { throw it }
+        val row = _rows.value.firstOrNull { it.id == id }
         _rows.value = _rows.value.filter { it.id != id }
+        return FileCleanupRequest(
+            photoPath = row?.photoPath,
+            audioPath = row?.audioPath,
+        )
     }
 
     override suspend fun nextStampNumber(): Int = (_rows.value.maxOfOrNull { it.stampNumber } ?: 0) + 1

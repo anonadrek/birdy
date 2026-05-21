@@ -12,6 +12,7 @@ import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationRepository
+import se.birdy.domain.observation.ObservationSource
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 
@@ -25,12 +26,15 @@ class SaveObservationUseCase(
     private val speciesByQid: suspend () -> Map<SpeciesId, Species>,
 ) {
     @OptIn(ExperimentalUuidApi::class)
+    @Suppress("LongParameterList")
     suspend fun save(
         speciesId: String?,
         capturedAt: Instant,
         confidence: Float,
         rawJpegBytes: ByteArray,
         note: String,
+        audioPath: String? = null,
+        sourceType: ObservationSource = ObservationSource.Photo,
     ): SaveResult {
         val id = Uuid.random().toString()
         val nextStamp = repo.nextStampNumber()
@@ -49,6 +53,8 @@ class SaveObservationUseCase(
                     longitude = null,
                     locationLabel = null,
                     stampNumber = nextStamp,
+                    audioPath = audioPath,
+                    sourceType = sourceType,
                 ),
             )
         } catch (t: Throwable) {

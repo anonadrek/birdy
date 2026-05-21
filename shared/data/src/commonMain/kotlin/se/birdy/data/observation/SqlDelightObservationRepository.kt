@@ -9,8 +9,10 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.Instant
 import se.birdy.data.db.ObservationQueries
+import se.birdy.domain.observation.FileCleanupRequest
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationRepository
+import se.birdy.domain.observation.ObservationSource
 import se.birdy.data.db.Observation as ObservationRow
 
 class SqlDelightObservationRepository(
@@ -66,6 +68,8 @@ class SqlDelightObservationRepository(
                 longitude = observation.longitude,
                 location_label = observation.locationLabel,
                 stamp_number = observation.stampNumber.toLong(),
+                audio_path = observation.audioPath,
+                source = observation.sourceType.name.lowercase(),
             )
         }
     }
@@ -79,11 +83,15 @@ class SqlDelightObservationRepository(
         }
     }
 
-    override suspend fun delete(id: String) {
+    override suspend fun delete(id: String): FileCleanupRequest =
         withContext(Dispatchers.IO) {
+            val row = queries.selectById(id).executeAsOneOrNull()
             queries.deleteById(id)
+            FileCleanupRequest(
+                photoPath = row?.photo_path,
+                audioPath = row?.audio_path,
+            )
         }
-    }
 
     private fun ObservationRow.toDomain(): Observation =
         Observation(
@@ -98,5 +106,10 @@ class SqlDelightObservationRepository(
             longitude = longitude,
             locationLabel = location_label,
             stampNumber = stamp_number.toInt(),
+            audioPath = audio_path,
+            sourceType = when (source) {
+                "audio" -> ObservationSource.Audio
+                else -> ObservationSource.Photo
+            },
         )
 }

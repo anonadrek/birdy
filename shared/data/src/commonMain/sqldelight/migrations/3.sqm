@@ -1,0 +1,5 @@
+-- Plan 6b2 T6: add audio_path + source columns for audio-ID observations.
+-- SQLite supports ADD COLUMN so no table recreation needed.
+
+ALTER TABLE observation ADD COLUMN audio_path TEXT DEFAULT NULL;
+ALTER TABLE observation ADD COLUMN source TEXT NOT NULL DEFAULT 'photo';

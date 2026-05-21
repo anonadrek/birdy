@@ -87,7 +87,8 @@ class StampNumberMigrationTest {
                 bindLong(2, captured)
             }
         }
-        BirdyData.Schema.migrate(driver, oldVersion = 1, newVersion = 2)
+        // Migrate from v1 all the way to current schema version (v4)
+        BirdyData.Schema.migrate(driver, oldVersion = 1, newVersion = BirdyData.Schema.version)
 
         // Now use the SQLDelight-generated insert via the BirdyData wrapper
         val db = BirdyData(driver)
@@ -103,6 +104,8 @@ class StampNumberMigrationTest {
             longitude = null,
             location_label = null,
             stamp_number = db.observationQueries.nextStampNumber().executeAsOne(),
+            audio_path = null,
+            source = "photo",
         )
 
         val newStamp =

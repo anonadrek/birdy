@@ -86,14 +86,13 @@ class ObservationDetailViewModel(
 
     fun delete() {
         viewModelScope.launch {
-            val current = obsRepo.observeById(id).first() ?: return@launch
             runCatching { obsRepo.delete(id) }
                 .onFailure {
                     if (it is CancellationException) throw it
                     _effects.trySend(DetailEffect.DeleteFailed)
-                }.onSuccess {
-                    runCatching { photoStorage.delete(current.photoPath) }
-                        .onFailure { if (it is CancellationException) throw it }
+                }.onSuccess { cleanup ->
+                    cleanup.photoPath?.let { runCatching { photoStorage.delete(it) }.onFailure { t -> if (t is CancellationException) throw t } }
+                    cleanup.audioPath?.let { runCatching { photoStorage.delete(it) }.onFailure { t -> if (t is CancellationException) throw t } }
                     _effects.trySend(DetailEffect.Deleted)
                 }
         }

@@ -9,7 +9,9 @@ CREATE TABLE observation (
     latitude        REAL,
     longitude       REAL,
     location_label  TEXT,
-    stamp_number    INTEGER NOT NULL DEFAULT 0
+    stamp_number    INTEGER NOT NULL DEFAULT 0,
+    audio_path      TEXT DEFAULT NULL,
+    source          TEXT NOT NULL DEFAULT 'photo'
 );
 
 CREATE INDEX observation_captured_at_idx ON observation(captured_at_ms DESC);
@@ -45,8 +47,8 @@ INSERT INTO observation(
     id, species_id, captured_at_ms, saved_at_ms,
     photo_path, note, confidence,
     latitude, longitude, location_label,
-    stamp_number
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    stamp_number, audio_path, source
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 updateNote:
 UPDATE observation SET note = ? WHERE id = ?;

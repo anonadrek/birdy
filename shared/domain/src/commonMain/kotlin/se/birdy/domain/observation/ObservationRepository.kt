@@ -3,6 +3,12 @@ package se.birdy.domain.observation
 import kotlinx.coroutines.flow.Flow
 import kotlinx.datetime.Instant
 
+/**
+ * Returned by [ObservationRepository.delete] so callers can clean up
+ * both the photo and audio files associated with the observation.
+ */
+data class FileCleanupRequest(val photoPath: String?, val audioPath: String?)
+
 interface ObservationRepository {
     fun observeAll(): Flow<List<Observation>>
 
@@ -17,7 +23,7 @@ interface ObservationRepository {
         note: String,
     )
 
-    suspend fun delete(id: String)
+    suspend fun delete(id: String): FileCleanupRequest
 
     suspend fun nextStampNumber(): Int
 
