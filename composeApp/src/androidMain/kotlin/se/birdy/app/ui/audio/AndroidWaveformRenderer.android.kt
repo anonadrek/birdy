@@ -8,6 +8,8 @@ import android.media.MediaCodec
 import android.media.MediaFormat
 import android.media.MediaMuxer
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
@@ -58,40 +60,43 @@ class AndroidWaveformRenderer : WaveformRendererApi {
                 }
 
             val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-            val canvas = Canvas(bitmap)
-            canvas.drawColor(Color.parseColor("#EFE7D6")) // PaperBg
+            try {
+                val canvas = Canvas(bitmap)
+                canvas.drawColor(Color.parseColor("#EFE7D6")) // PaperBg
 
-            val barPaint =
-                Paint().apply {
-                    color = Color.parseColor("#3F4F30") // MarginaliaInk
-                    style = Paint.Style.FILL
-                    isAntiAlias = true
+                val barPaint =
+                    Paint().apply {
+                        color = Color.parseColor("#3F4F30") // MarginaliaInk
+                        style = Paint.Style.FILL
+                        isAntiAlias = true
+                    }
+                val underlinePaint =
+                    Paint().apply {
+                        color = Color.parseColor("#A8552D") // AccentCopper
+                        style = Paint.Style.STROKE
+                        strokeWidth = 2f
+                        isAntiAlias = true
+                    }
+
+                val barWidth = width.toFloat() / buckets
+                val centerY = height / 2f
+                val maxHalfHeight = height * 0.4f
+                smoothed.forEachIndexed { i, level ->
+                    val h = (maxHalfHeight * level).coerceAtLeast(2f)
+                    val x = i * barWidth
+                    canvas.drawRect(x + 1f, centerY - h, x + barWidth - 1f, centerY + h, barPaint)
                 }
-            val underlinePaint =
-                Paint().apply {
-                    color = Color.parseColor("#A8552D") // AccentCopper
-                    style = Paint.Style.STROKE
-                    strokeWidth = 2f
-                    isAntiAlias = true
+                canvas.drawLine(0f, height - 6f, width.toFloat(), height - 6f, underlinePaint)
+
+                val file = File(outPath)
+                file.parentFile?.mkdirs()
+                FileOutputStream(file).use { out ->
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
                 }
-
-            val barWidth = width.toFloat() / buckets
-            val centerY = height / 2f
-            val maxHalfHeight = height * 0.4f
-            smoothed.forEachIndexed { i, level ->
-                val h = (maxHalfHeight * level).coerceAtLeast(2f)
-                val x = i * barWidth
-                canvas.drawRect(x + 1f, centerY - h, x + barWidth - 1f, centerY + h, barPaint)
+                outPath
+            } finally {
+                bitmap.recycle()
             }
-            canvas.drawLine(0f, height - 6f, width.toFloat(), height - 6f, underlinePaint)
-
-            val file = File(outPath)
-            file.parentFile?.mkdirs()
-            FileOutputStream(file).use { out ->
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
-            }
-            bitmap.recycle()
-            outPath
         }
 
     override suspend fun encodeOpus(
@@ -113,62 +118,63 @@ class AndroidWaveformRenderer : WaveformRendererApi {
                     start()
                 }
             val muxer = MediaMuxer(outPath, MediaMuxer.OutputFormat.MUXER_OUTPUT_OGG)
-
-            val pcmBytes =
-                ByteBuffer
-                    .allocate(pcm.size * 2)
-                    .apply {
-                        order(ByteOrder.LITTLE_ENDIAN)
-                        pcm.forEach { putShort(it) }
-                    }.array()
-
-            var trackIdx = -1
             var muxerStarted = false
-            var inputOffset = 0
-            var sawEos = false
-            val bufferInfo = MediaCodec.BufferInfo()
+            try {
+                val pcmBytes =
+                    ByteBuffer
+                        .allocate(pcm.size * 2)
+                        .apply {
+                            order(ByteOrder.LITTLE_ENDIAN)
+                            pcm.forEach { putShort(it) }
+                        }.array()
 
-            while (!sawEos) {
-                val inIdx = codec.dequeueInputBuffer(10_000)
-                if (inIdx >= 0) {
-                    val inputBuf = codec.getInputBuffer(inIdx)!!
-                    inputBuf.clear()
-                    val remaining = pcmBytes.size - inputOffset
-                    if (remaining <= 0) {
-                        codec.queueInputBuffer(inIdx, 0, 0, 0, MediaCodec.BUFFER_FLAG_END_OF_STREAM)
-                    } else {
-                        val chunk = remaining.coerceAtMost(inputBuf.capacity())
-                        inputBuf.put(pcmBytes, inputOffset, chunk)
-                        val presUs = inputOffset.toLong() * 1_000_000L / 2L / sampleRate
-                        codec.queueInputBuffer(inIdx, 0, chunk, presUs, 0)
-                        inputOffset += chunk
+                var trackIdx = -1
+                var inputOffset = 0
+                var sawEos = false
+                val bufferInfo = MediaCodec.BufferInfo()
+
+                while (!sawEos) {
+                    currentCoroutineContext().ensureActive()
+                    val inIdx = codec.dequeueInputBuffer(10_000)
+                    if (inIdx >= 0) {
+                        val inputBuf = codec.getInputBuffer(inIdx)!!
+                        inputBuf.clear()
+                        val remaining = pcmBytes.size - inputOffset
+                        if (remaining <= 0) {
+                            codec.queueInputBuffer(inIdx, 0, 0, 0, MediaCodec.BUFFER_FLAG_END_OF_STREAM)
+                        } else {
+                            val chunk = remaining.coerceAtMost(inputBuf.capacity())
+                            inputBuf.put(pcmBytes, inputOffset, chunk)
+                            val presUs = inputOffset.toLong() * 1_000_000L / 2L / sampleRate
+                            codec.queueInputBuffer(inIdx, 0, chunk, presUs, 0)
+                            inputOffset += chunk
+                        }
+                    }
+                    val outIdx = codec.dequeueOutputBuffer(bufferInfo, 10_000)
+                    when {
+                        outIdx == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED -> {
+                            trackIdx = muxer.addTrack(codec.outputFormat)
+                            muxer.start()
+                            muxerStarted = true
+                        }
+                        outIdx >= 0 -> {
+                            val out = codec.getOutputBuffer(outIdx)!!
+                            if (muxerStarted && bufferInfo.size > 0) {
+                                muxer.writeSampleData(trackIdx, out, bufferInfo)
+                            }
+                            if ((bufferInfo.flags and MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
+                                sawEos = true
+                            }
+                            codec.releaseOutputBuffer(outIdx, false)
+                        }
                     }
                 }
-                val outIdx = codec.dequeueOutputBuffer(bufferInfo, 10_000)
-                when {
-                    outIdx == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED -> {
-                        trackIdx = muxer.addTrack(codec.outputFormat)
-                        muxer.start()
-                        muxerStarted = true
-                    }
-                    outIdx >= 0 -> {
-                        val out = codec.getOutputBuffer(outIdx)!!
-                        if (muxerStarted && bufferInfo.size > 0) {
-                            muxer.writeSampleData(trackIdx, out, bufferInfo)
-                        }
-                        if ((bufferInfo.flags and MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
-                            sawEos = true
-                        }
-                        codec.releaseOutputBuffer(outIdx, false)
-                    }
-                }
+                outPath
+            } finally {
+                runCatching { codec.stop() }
+                runCatching { codec.release() }
+                if (muxerStarted) runCatching { muxer.stop() }
+                runCatching { muxer.release() }
             }
-            runCatching { codec.stop() }
-            codec.release()
-            if (muxerStarted) {
-                runCatching { muxer.stop() }
-            }
-            muxer.release()
-            outPath
         }
 }
