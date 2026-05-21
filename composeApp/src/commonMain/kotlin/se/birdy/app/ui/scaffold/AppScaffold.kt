@@ -27,6 +27,7 @@ import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
 import se.birdy.app.premium.EntryFlowDecider
+import se.birdy.app.ui.audio.AudioScanScreenHost
 import se.birdy.app.ui.components.CaveatToast
 import se.birdy.app.ui.diary.LifelistScreen
 import se.birdy.app.ui.diary.ObservationDetailScreen
@@ -224,6 +225,19 @@ fun AppScaffold(graph: AppGraph) {
             }
             graph.diagnosticsScreen?.let { diagnosticsContent ->
                 composable<AppRoute.DebugDiagnostics> { diagnosticsContent() }
+            }
+            // Plan 6b2 T5: AudioScan route registered.
+            // onNavigateToMatch is a no-op stub — T6 refactors AppRoute.MatchResult
+            // to accept ScanSource JSON and wires real navigation here.
+            composable<AppRoute.AudioScan> {
+                AudioScanScreenHost(
+                    graph = graph,
+                    onNavigateToMatch = { _sourceJson ->
+                        // TODO Plan 6b2 T6: refactor MatchResult route to accept ScanSource JSON.
+                        // For now AudioScan-flow terminates here; T6 wires the actual navigation.
+                    },
+                    onBack = { navController.popBackStack() },
+                )
             }
         }
     }

@@ -517,4 +517,25 @@
     <!-- Settings row effects (Plan 6a Task 13) -->
     <string name="settings_share_copy">Birdy — a field birder’s digital companion. Get it on Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
     <string name="settings_feedback_subject">Birdy v%1$s — feedback</string>
+
+    <!-- ===== Plan 6b2 T5: Audio-scan strings ===== -->
+    <string name="audio_scan_headline">*Listen* for a song</string>
+    <string name="audio_scan_journal_label">AUDIO · IDENTIFICATION</string>
+    <string name="audio_scan_journal_sub">Hold to record a bird song</string>
+    <string name="audio_scan_marginalia_top">— a song, captured —</string>
+    <string name="audio_scan_cta_hold">hold for 3 seconds</string>
+    <string name="audio_scan_cta_release">release after 3s</string>
+    <string name="audio_scan_listening">Listening…</string>
+    <string name="audio_scan_analyzing">Analyzing…</string>
+    <string name="audio_scan_cancel">Cancel</string>
+    <string name="audio_scan_too_short">Hold for 3 seconds.</string>
+    <string name="audio_scan_permission_title">Listen for a song</string>
+    <string name="audio_scan_permission_body">Birdy needs your microphone to identify bird songs — audio stays only on your phone.</string>
+    <string name="audio_scan_permission_grant">Grant permission</string>
+    <string name="audio_scan_permission_open_settings">Open settings</string>
+    <string name="audio_scan_recording_failed">Microphone failed to start.</string>
+    <string name="audio_scan_retry">Try again</string>
+    <string name="audio_noBird_hint1">Move closer to the bird.</string>
+    <string name="audio_noBird_hint2">Reduce wind noise behind you.</string>
+    <string name="audio_noBird_hint3">Record while the bird is actually singing.</string>
 </resources>

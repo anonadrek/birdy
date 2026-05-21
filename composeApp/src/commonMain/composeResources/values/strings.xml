@@ -530,4 +530,25 @@
     <!-- Settings row effects (Plan 6a Task 13) -->
     <string name="settings_share_copy">Birdy — fältornitologens digitala bok. Hämta den på Google Play: https://play.google.com/store/apps/details?id=se.birdy.android</string>
     <string name="settings_feedback_subject">Birdy v%1$s — feedback</string>
+
+    <!-- ===== Plan 6b2 T5: Audio-scan strings ===== -->
+    <string name="audio_scan_headline">*Lyssna* efter sång</string>
+    <string name="audio_scan_journal_label">LJUD · IDENTIFIERING</string>
+    <string name="audio_scan_journal_sub">Håll för att spela in fågelsång</string>
+    <string name="audio_scan_marginalia_top">— en sång, fångad —</string>
+    <string name="audio_scan_cta_hold">håll i 3 sekunder</string>
+    <string name="audio_scan_cta_release">släpp efter 3s</string>
+    <string name="audio_scan_listening">Lyssnar…</string>
+    <string name="audio_scan_analyzing">Analyserar…</string>
+    <string name="audio_scan_cancel">Avbryt</string>
+    <string name="audio_scan_too_short">Håll i 3 sekunder.</string>
+    <string name="audio_scan_permission_title">Lyssna efter sång</string>
+    <string name="audio_scan_permission_body">Birdy behöver mikrofonen för att identifiera fågelsång — ljudet sparas bara lokalt på din telefon.</string>
+    <string name="audio_scan_permission_grant">Ge tillstånd</string>
+    <string name="audio_scan_permission_open_settings">Öppna inställningar</string>
+    <string name="audio_scan_recording_failed">Mikrofonen kunde inte startas.</string>
+    <string name="audio_scan_retry">Försök igen</string>
+    <string name="audio_noBird_hint1">Kom närmare fågeln.</string>
+    <string name="audio_noBird_hint2">Sänk vindbruset bakom dig.</string>
+    <string name="audio_noBird_hint3">Spela in när fågeln faktiskt sjunger.</string>
 </resources>

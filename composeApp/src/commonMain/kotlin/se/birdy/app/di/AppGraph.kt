@@ -9,6 +9,9 @@ import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.data.premium.FormattedPrices
 import se.birdy.app.photo.PhotoStorage
+import se.birdy.app.ui.audio.AudioRecorderApi
+import se.birdy.app.ui.audio.AudioScanViewModel
+import se.birdy.app.ui.audio.WaveformRendererApi
 import se.birdy.app.ui.badges.BadgesViewModel
 import se.birdy.app.ui.diary.LifelistViewModel
 import se.birdy.app.ui.diary.ObservationDetailViewModel
@@ -103,6 +106,25 @@ class AppGraph(
      * premium check AND a non-null provider check.
      */
     val audioClassifierProvider: (suspend () -> Pair<BirdAudioClassifier, AudioClassifierMode>)? = null,
+    /**
+     * Returns the absolute path to the directory where audio recordings are stored.
+     * Must be callable from any thread; the caller ensures [mkdirs] is invoked before
+     * returning. Wired from [MainActivity] as `{ File(filesDir, "audio").also { it.mkdirs() }.absolutePath }`.
+     *
+     * Null in tests — [audioScanViewModel] will error if called without this wired.
+     */
+    val audioStorageDir: (() -> String)? = null,
+    /**
+     * Factory for [AudioRecorderApi]. Android actual returns [AndroidAudioRecorderAdapter].
+     * Null in tests / non-Android targets — [audioScanViewModel] will error if null.
+     */
+    val audioRecorderFactory: (() -> AudioRecorderApi)? = null,
+    /**
+     * Factory for [WaveformRendererApi]. T5 returns [AndroidWaveformRendererStub];
+     * T6 upgrades to the real PNG + Opus renderer.
+     * Null in tests / non-Android targets — [audioScanViewModel] will error if null.
+     */
+    val waveformRendererFactory: (() -> WaveformRendererApi)? = null,
 ) {
     val classifier: BirdClassifier
         get() =
@@ -216,4 +238,33 @@ class AppGraph(
 
     fun onboardingViewModel(fallbackName: String): OnboardingViewModel =
         OnboardingViewModel(prefs = userPreferences, defaultFallbackName = fallbackName)
+
+    /**
+     * Factory for [AudioScanViewModel].
+     *
+     * Requires [audioClassifierProvider], [audioStorageDir], [audioRecorderFactory],
+     * and [waveformRendererFactory] to be non-null. On Android all four are injected
+     * from [se.birdy.android.MainActivity]; in tests construct [AudioScanViewModel]
+     * directly with fake collaborators instead.
+     */
+    fun audioScanViewModel(): AudioScanViewModel {
+        val provider =
+            audioClassifierProvider
+                ?: error("audioClassifierProvider not wired — Plan 6b2 T3 must inject from MainActivity")
+        val dir =
+            audioStorageDir
+                ?: error("audioStorageDir not wired — MainActivity must pass filesDir-derived path")
+        val recorder =
+            audioRecorderFactory?.invoke()
+                ?: error("audioRecorderFactory not wired — MainActivity must inject AndroidAudioRecorderAdapter")
+        val renderer =
+            waveformRendererFactory?.invoke()
+                ?: error("waveformRendererFactory not wired — MainActivity must inject AndroidWaveformRendererStub")
+        return AudioScanViewModel(
+            classifierProvider = provider,
+            recorder = recorder,
+            waveformRenderer = renderer,
+            audioStorageDir = dir,
+        )
+    }
 }

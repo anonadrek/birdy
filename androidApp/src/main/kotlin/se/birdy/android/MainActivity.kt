@@ -54,6 +54,8 @@ import se.birdy.ml.ImagePreprocessor
 import se.birdy.ml.ModelArtifactProvider
 import se.birdy.ml.TfLiteBirdClassifier
 import se.birdy.ml.camera.AndroidCameraSource
+import se.birdy.app.ui.audio.AndroidAudioRecorderAdapter
+import se.birdy.app.ui.audio.AndroidWaveformRendererStub
 import se.birdy.ml.loadAiyLabelMapper
 import se.birdy.ml.loadModelMetadata
 import java.io.File
@@ -243,6 +245,13 @@ class MainActivity : ComponentActivity() {
             },
             formattedPricesFlow = billingClient.formattedPrices,
             audioClassifierProvider = audioProvider,
+            audioStorageDir = {
+                val dir = File(filesDir, "audio")
+                dir.mkdirs()
+                dir.absolutePath
+            },
+            audioRecorderFactory = { AndroidAudioRecorderAdapter() },
+            waveformRendererFactory = { AndroidWaveformRendererStub() },
         )
     }
 
