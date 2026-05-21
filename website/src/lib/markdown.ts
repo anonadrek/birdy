@@ -30,7 +30,7 @@ export const LEGAL_DOCS: readonly LegalDoc[] = [
     slug: 'data-safety',
     filename: 'data-safety-form.md',
     title: 'Data Safety',
-    description: 'The full Google Play Data Safety declarations.',
+    description: 'A complete record of what data Birdy collects, why, and how it is protected.',
     lastUpdated: '2026-05-17',
   },
 ] as const;
