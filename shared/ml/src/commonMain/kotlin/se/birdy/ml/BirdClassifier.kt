@@ -44,8 +44,8 @@ data class Classification(
     fun sortedByConfidenceDescending(): List<ClassificationResult> = results.sortedByDescending { it.confidence }
 }
 
-interface BirdClassifier {
+interface BirdClassifier : AutoCloseable {
     suspend fun classify(image: ImageInput): Classification
 
-    fun close() {}
+    override fun close() {}
 }
