@@ -1,0 +1,25 @@
+---
+interface Props {
+  size?: string;
+  color?: string;
+  alt: string;
+  class?: string;
+}
+const { size = '120px', color = 'var(--color-copper)', alt, class: cls = '' } = Astro.props;
+---
+
+<span class={`wordmark ${cls}`} style={`--w:${size};--c:${color}`} aria-label={alt}>
+  Birdy<span class="dot">.</span>
+</span>
+
+<style>
+  .wordmark {
+    font-family: var(--font-script);
+    font-weight: 700;
+    color: var(--c);
+    font-size: var(--w);
+    line-height: 1;
+    display: inline-block;
+  }
+  .dot { color: var(--c); }
+</style>

@@ -1,0 +1,21 @@
+---
+interface Props {
+  variant?: 'paper' | 'transparent';
+  size?: string;
+  alt: string;
+  class?: string;
+}
+const { variant = 'paper', size = '48px', alt, class: cls = '' } = Astro.props;
+const src = variant === 'paper' ? '/favicon.svg' : '/favicon.svg';
+---
+
+<img
+  src={src}
+  alt={alt}
+  width={size.replace('px', '')}
+  height={size.replace('px', '')}
+  style={`width:${size};height:${size}`}
+  class={cls}
+  loading="lazy"
+  decoding="async"
+/>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  color?: string;
+  size?: string;
+}
+const { color = 'var(--color-copper)', size = '28px' } = Astro.props;
+---
+
+<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+  <span class="bracket bracket-tl" style={`--c:${color};--s:${size}`}></span>
+  <span class="bracket bracket-tr" style={`--c:${color};--s:${size}`}></span>
+  <span class="bracket bracket-bl" style={`--c:${color};--s:${size}`}></span>
+  <span class="bracket bracket-br" style={`--c:${color};--s:${size}`}></span>
+</div>
+
+<style>
+  .bracket {
+    position: absolute;
+    width: var(--s);
+    height: var(--s);
+  }
+  .bracket-tl { top: 24px; left: 24px; border-top: 2px solid var(--c); border-left: 2px solid var(--c); }
+  .bracket-tr { top: 24px; right: 24px; border-top: 2px solid var(--c); border-right: 2px solid var(--c); }
+  .bracket-bl { bottom: 24px; left: 24px; border-bottom: 2px solid var(--c); border-left: 2px solid var(--c); }
+  .bracket-br { bottom: 24px; right: 24px; border-bottom: 2px solid var(--c); border-right: 2px solid var(--c); }
+</style>

@@ -1,0 +1,34 @@
+---
+interface Props {
+  width?: string;
+}
+const { width = '180px' } = Astro.props;
+---
+
+<div class="ornament" style={`--w:${width}`} aria-hidden="true">
+  <span class="line"></span>
+  <span class="glyph">❦</span>
+  <span class="line"></span>
+</div>
+
+<style>
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--color-marginalia-ink);
+    margin: 1rem auto;
+  }
+  .line {
+    height: 1px;
+    width: var(--w);
+    background: var(--color-marginalia-ink);
+    opacity: 0.4;
+  }
+  .glyph {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    opacity: 0.6;
+  }
+</style>

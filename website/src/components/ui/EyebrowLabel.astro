@@ -1,0 +1,22 @@
+---
+interface Props {
+  text: string;
+  color?: string;
+}
+const { text, color = 'var(--color-copper)' } = Astro.props;
+---
+
+<div class="eyebrow" style={`--c:${color}`}>
+  {text}
+</div>
+
+<style>
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--c);
+    font-weight: 600;
+  }
+</style>
