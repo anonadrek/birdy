@@ -27,9 +27,9 @@ class FakeAudioClassifier(
             throwOnNext = null
             throw it
         }
-        val top = cycle[call % cycle.size]
+        val results = cycle[call % cycle.size]
         call++
-        return AudioClassification(top = top, inferenceMs = 5L, modelVersion = info.modelVersion)
+        return AudioClassification(results = results, inferenceMs = 5L, modelVersion = info.modelVersion)
     }
 
     override fun close() {

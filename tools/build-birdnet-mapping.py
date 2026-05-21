@@ -2,7 +2,7 @@
 
 Reads:
   tools/birdnet_labels.txt        (one "Scientific_name_Common name" per line, ~6 000 lines)
-  shared/content/species_list.yaml (839 species with scientific_name + qid)
+  tools/content-pipeline/species_list.yaml (839 species with scientific_name + qid)
 
 Writes:
   shared/ml/src/commonMain/composeResources/files/ml/birdnet_lite_to_qid.json

@@ -29,14 +29,32 @@ class AudioSessionFailureGuardTest {
     @Test
     fun resets_failure_count_on_successful_call() =
         runTest {
-            val real = FlakyAudioClassifier(failuresBeforeSuccess = 2)
+            // FakeAudioClassifier lets us inject failures on demand via throwOnNext,
+            // so we can interleave failures and successes on the same guard instance.
+            val real = FakeAudioClassifier()
             val fake = MarkingAudioClassifier {}
             val guard = AudioSessionFailureGuard(real = real, fallback = fake, threshold = 3)
-            runCatching { guard.classify(fakeInput()) } // 1 fail
-            runCatching { guard.classify(fakeInput()) } // 2 fail
-            guard.classify(fakeInput()) // success → reset
-            runCatching { guard.classify(fakeInput()) } // 1 fail again — under threshold
+
+            // First partial degrade cycle: 2 failures then a success → counter resets to 0.
+            real.throwOnNext = RuntimeException("fail 1")
+            runCatching { guard.classify(fakeInput()) } // failures = 1
+            real.throwOnNext = RuntimeException("fail 2")
+            runCatching { guard.classify(fakeInput()) } // failures = 2
+            guard.classify(fakeInput()) // success → failures = 0
             assertEquals(AudioClassifierMode.REAL, guard.mode)
+
+            // Second full degrade cycle on the same guard — proves counter is really 0,
+            // not 1 (if it were 1, only 3 more failures would be needed instead of 4).
+            real.throwOnNext = RuntimeException("fail A")
+            runCatching { guard.classify(fakeInput()) } // failures = 1
+            real.throwOnNext = RuntimeException("fail B")
+            runCatching { guard.classify(fakeInput()) } // failures = 2
+            real.throwOnNext = RuntimeException("fail C")
+            runCatching { guard.classify(fakeInput()) } // failures = 3 — still REAL (3 not > 3)
+            assertEquals(AudioClassifierMode.REAL, guard.mode)
+            real.throwOnNext = RuntimeException("fail D")
+            guard.classify(fakeInput()) // failures = 4 → crosses threshold, degrades
+            assertEquals(AudioClassifierMode.DEMO, guard.mode)
         }
 
     @Test
@@ -66,23 +84,7 @@ private class MarkingAudioClassifier(
 
     override suspend fun classify(input: AudioInput): AudioClassification {
         onClassify()
-        return AudioClassification(top = emptyList(), inferenceMs = 1L, modelVersion = info.modelVersion)
-    }
-
-    override fun close() {}
-}
-
-private class FlakyAudioClassifier(
-    private var failuresBeforeSuccess: Int,
-) : BirdAudioClassifier {
-    override val info: AudioModelInfo = AudioModelInfo("flaky_v0", listOf(1, 144_000), listOf(1, 6_362), 0.0)
-
-    override suspend fun classify(input: AudioInput): AudioClassification {
-        if (failuresBeforeSuccess > 0) {
-            failuresBeforeSuccess--
-            error("flaky")
-        }
-        return AudioClassification(top = emptyList(), inferenceMs = 1L, modelVersion = info.modelVersion)
+        return AudioClassification(results = emptyList(), inferenceMs = 1L, modelVersion = info.modelVersion)
     }
 
     override fun close() {}

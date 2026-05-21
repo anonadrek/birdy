@@ -4,6 +4,11 @@ data class AudioInput(
     val waveform: FloatArray,
     val sampleRate: Int,
     val durationMs: Int,
+    /**
+     * Optional unprocessed PCM samples kept for diagnostic export/debug snapshots.
+     * NOT consumed by `classify()` — the classifier only reads `waveform`.
+     * Populated by [AndroidAudioRecorder] in T4 when raw-PCM capture is requested.
+     */
     val rawPcm: ShortArray? = null,
 ) {
     init {

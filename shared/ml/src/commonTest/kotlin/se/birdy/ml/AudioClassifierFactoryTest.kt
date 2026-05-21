@@ -12,7 +12,7 @@ class AudioClassifierFactoryTest {
                 AudioClassifierFactory(
                     createReal = { FakeAudioClassifier() },
                     createFallback = { FakeAudioClassifier() },
-                    onCrashlytics = {},
+                    onDegrade = {},
                 )
             val (_, mode) = factory.create()
             assertEquals(AudioClassifierMode.REAL, mode)
@@ -26,7 +26,7 @@ class AudioClassifierFactoryTest {
                 AudioClassifierFactory(
                     createReal = { error("model missing") },
                     createFallback = { FakeAudioClassifier() },
-                    onCrashlytics = { crashlyticsCalled = it },
+                    onDegrade = { crashlyticsCalled = it },
                 )
             val (_, mode) = factory.create()
             assertEquals(AudioClassifierMode.DEMO, mode)
@@ -40,7 +40,7 @@ class AudioClassifierFactoryTest {
                 AudioClassifierFactory(
                     createReal = { FakeAudioClassifier() },
                     createFallback = { FakeAudioClassifier() },
-                    onCrashlytics = {},
+                    onDegrade = {},
                 )
             val (clf, _) = factory.create()
             // Should not throw

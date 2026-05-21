@@ -11,12 +11,12 @@ enum class AudioClassifierMode { REAL, DEMO }
  *   real model with [AudioClassifierMode.REAL].
  * - If [createReal] throws (model missing, corrupt, native-lib failure) the factory
  *   falls back to [createFallback] with [AudioClassifierMode.DEMO] and notifies
- *   [onCrashlytics] so the failure is visible in production monitoring.
+ *   [onDegrade] so the failure is visible in production monitoring (e.g. Crashlytics).
  */
 class AudioClassifierFactory(
     private val createReal: suspend () -> BirdAudioClassifier,
     private val createFallback: () -> BirdAudioClassifier,
-    private val onCrashlytics: (Throwable) -> Unit,
+    private val onDegrade: (Throwable) -> Unit,
     private val sessionFailureThreshold: Int = 3,
 ) {
     suspend fun create(): Pair<BirdAudioClassifier, AudioClassifierMode> {
@@ -25,7 +25,7 @@ class AudioClassifierFactory(
                 createReal()
             } catch (t: Throwable) {
                 if (t is CancellationException) throw t
-                onCrashlytics(t)
+                onDegrade(t)
                 return createFallback() to AudioClassifierMode.DEMO
             }
 
@@ -42,7 +42,7 @@ class AudioClassifierFactory(
             real = real,
             fallback = fallback,
             threshold = sessionFailureThreshold,
-            onCrashlytics = onCrashlytics,
+            onDegrade = onDegrade,
         ) to AudioClassifierMode.REAL
     }
 }
