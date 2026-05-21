@@ -1,5 +1,17 @@
 package se.birdy.ml
 
+/**
+ * In-memory [BirdAudioClassifier] used in two roles:
+ *
+ * 1. **DEMO fallback** — returned by [AudioClassifierFactory] when the real BirdNET-Lite
+ *    TFLite runner fails to initialise on a device (mirrors how [FakeBirdClassifier] acts
+ *    as the image-pipeline DEMO fallback).
+ * 2. **Test double** — injected in unit tests to exercise [AudioClassifierFactory],
+ *    [AudioSessionFailureGuard], and downstream consumers without a real TFLite model.
+ *
+ * The [cycle] parameter lets callers supply a deterministic sequence of results; the
+ * classifier loops over it indefinitely. [throwOnNext] lets tests inject failures.
+ */
 class FakeAudioClassifier(
     private val cycle: List<List<ClassificationResult>> =
         listOf(

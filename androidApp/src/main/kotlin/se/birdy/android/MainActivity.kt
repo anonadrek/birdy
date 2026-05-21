@@ -39,16 +39,15 @@ import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
 import se.birdy.ml.AndroidTfliteAudioRunner
 import se.birdy.ml.AndroidTfliteRunner
-import se.birdy.ml.AudioClassification
 import se.birdy.ml.AudioClassifierFactory
-import se.birdy.ml.AudioInput
-import se.birdy.ml.AudioModelInfo
+import se.birdy.ml.AudioClassifierMode
 import se.birdy.ml.BirdAudioClassifier
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.BirdClassifierFactory
 import se.birdy.ml.ClassifierBootstrap
 import se.birdy.ml.ClassifierBootstrapState
 import se.birdy.ml.ClassifierMode
+import se.birdy.ml.FakeAudioClassifier
 import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.ImagePreprocessor
 import se.birdy.ml.ModelArtifactProvider
@@ -108,28 +107,12 @@ class MainActivity : ComponentActivity() {
      * to keep the lambda readable. On failure, falls back to a no-op classifier and logs a warning;
      * Crashlytics integration is deferred to Plan 6b3.
      */
-    private suspend fun buildAudioClassifier(): Pair<BirdAudioClassifier, AudioClassifierMode> {
-        val fallback =
-            object : BirdAudioClassifier {
-                override val info =
-                    AudioModelInfo(
-                        modelVersion = FAKE_AUDIO_MODEL_VERSION,
-                        inputShape = listOf(1, FAKE_AUDIO_INPUT_SAMPLES),
-                        outputShape = listOf(1, FAKE_AUDIO_OUTPUT_CLASSES),
-                        coveragePct = FAKE_AUDIO_COVERAGE_PCT,
-                    )
-
-                override suspend fun classify(input: AudioInput): AudioClassification =
-                    AudioClassification(results = emptyList(), inferenceMs = 0L, modelVersion = info.modelVersion)
-
-                override fun close() = Unit
-            }
-        return AudioClassifierFactory(
+    private suspend fun buildAudioClassifier(): Pair<BirdAudioClassifier, AudioClassifierMode> =
+        AudioClassifierFactory(
             createReal = { AndroidTfliteAudioRunner.load(applicationContext) },
-            createFallback = { fallback },
+            createFallback = { FakeAudioClassifier() },
             onDegrade = { t -> android.util.Log.w("Birdy", "Audio TFLite init failed, falling back to Fake", t) },
         ).create()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -367,11 +350,5 @@ class MainActivity : ComponentActivity() {
 
     private companion object {
         private const val ONE_HOUR_MS = 60L * 60L * 1000L
-
-        // Fallback audio classifier constants — used when AndroidTfliteAudioRunner fails to load.
-        private const val FAKE_AUDIO_MODEL_VERSION = "fake_audio_v1"
-        private const val FAKE_AUDIO_INPUT_SAMPLES = 144_000
-        private const val FAKE_AUDIO_OUTPUT_CLASSES = 6_362
-        private const val FAKE_AUDIO_COVERAGE_PCT = 100.0
     }
 }
