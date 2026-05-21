@@ -48,12 +48,12 @@ def main() -> int:
     raw_labels = LABELS.read_text(encoding="utf-8").splitlines()
     mapping: dict[str, str] = {}
     for idx, line in enumerate(raw_labels):
-        line = line.strip()
-        if not line:
+        stripped = line.strip()
+        if not stripped:
             continue
-        if "_" not in line:
+        if "_" not in stripped:
             continue
-        sci, _common = line.split("_", 1)
+        sci, _common = stripped.split("_", 1)
         sci = sci.strip()
         if sci in by_sci:
             mapping[str(idx)] = by_sci[sci]
