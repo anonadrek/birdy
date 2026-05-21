@@ -1,6 +1,5 @@
 plugins {
     id("birdy.kmp-android-lib")
-    alias(libs.plugins.kotlin.serialization)
 }
 
 tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.BaseKtLintCheckTask>().configureEach {
@@ -18,16 +17,9 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
-        androidUnitTest.dependencies {
-            implementation("org.robolectric:robolectric:4.13")
-            implementation("junit:junit:4.13.2")
-        }
     }
 }
 
 android {
     namespace = "se.birdy.pdf"
-    testOptions {
-        unitTests.isIncludeAndroidResources = true
-    }
 }
