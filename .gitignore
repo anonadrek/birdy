@@ -59,3 +59,10 @@ gradle.properties
 
 # BirdNET labels source file — large, reproducible, not committed
 tools/birdnet_labels.txt
+
+# Website (Astro landing page)
+website/node_modules/
+website/dist/
+website/.astro/
+website/playwright-report/
+website/test-results/
