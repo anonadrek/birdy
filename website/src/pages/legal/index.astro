@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import EyebrowLabel from '../../components/ui/EyebrowLabel.astro';
+import JournalHeadline from '../../components/ui/JournalHeadline.astro';
+import WingLogo from '../../components/ui/WingLogo.astro';
+import { LEGAL_DOCS } from '../../lib/markdown';
+
+const pathname = '/legal/';
+---
+
+<Layout locale="en" pathname={pathname} noAlternateLocale>
+  <Nav locale="en" />
+  <main class="legal-index">
+    <header class="hero">
+      <WingLogo size="48px" />
+      <EyebrowLabel text="LEGAL" />
+      <JournalHeadline
+        text="Field journal *fine print*"
+        level="h1"
+        size="clamp(2.5rem, 6vw, 4rem)"
+      />
+      <p class="sub">Everything Google asks for. In plain English.</p>
+    </header>
+
+    <ul class="docs" role="list">
+      {LEGAL_DOCS.map((d) => (
+        <li class="doc">
+          <a href={`/legal/${d.slug}/`} class="doc-link">
+            <h2 class="doc-title">{d.title}</h2>
+            <p class="doc-desc">{d.description}</p>
+            <span class="doc-cta">Read →</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </main>
+  <Footer locale="en" />
+</Layout>
+
+<style>
+  .legal-index {
+    padding: 4rem 1.5rem 2rem;
+    max-width: 60rem;
+    margin: 0 auto;
+  }
+  .hero {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .sub {
+    font-family: var(--font-script);
+    font-size: 1.25rem;
+    color: var(--color-marginalia-ink);
+    margin: 0;
+  }
+  .docs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+  .doc-link {
+    display: block;
+    padding: 2rem;
+    background: var(--color-paper-edge);
+    border: 1px solid rgba(63, 79, 48, 0.1);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.2s var(--ease-paper), box-shadow 0.2s var(--ease-paper);
+  }
+  .doc-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(63, 79, 48, 0.08);
+  }
+  .doc-title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.75rem;
+    color: var(--color-text-primary);
+    margin: 0 0 0.5rem;
+  }
+  .doc-desc {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    margin: 0 0 1rem;
+  }
+  .doc-cta {
+    font-family: var(--font-script);
+    font-size: 1.125rem;
+    color: var(--color-copper);
+    font-weight: 700;
+  }
+</style>
