@@ -36,4 +36,27 @@ class BadgeBackfillOnAppStart(
             // Log warning — on next app-start or Save the recalc will run again.
         }
     }
+
+    /**
+     * Plan 6b3 T18: re-runs the badge recalc when Premium just flipped on so any
+     * premium-only badges the user already qualifies for unlock immediately.
+     * `newUnlocks` is idempotent against `existingUnlocks`, so this is safe to
+     * call any time.
+     */
+    suspend fun runIfPremiumNewlyActive() {
+        runCatching {
+            val obs = obsRepo.observeAll().first()
+            val species = speciesByQid()
+            val existing =
+                badgeRepo
+                    .observeUnlocks()
+                    .first()
+                    .map { it.badgeId }
+                    .toSet()
+            val newUnlocks = recalc.newUnlocks(obs, species, catalog, existing)
+            if (newUnlocks.isNotEmpty()) badgeRepo.persist(newUnlocks)
+        }.onFailure {
+            if (it is CancellationException) throw it
+        }
+    }
 }
