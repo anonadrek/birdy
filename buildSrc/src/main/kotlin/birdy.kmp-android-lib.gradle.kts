@@ -14,7 +14,10 @@ android {
         minSdk = 24
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        // Plan 6b3 T20: align with :composeApp / :androidApp (both VERSION_21) since the
+        // project's JDK is 21 across the board — keeps shared android-lib bytecode and the
+        // app bytecode on the same target.
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 }

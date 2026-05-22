@@ -44,3 +44,8 @@
 -keep class se.birdy.domain.** { *; }
 -keep class se.birdy.content.** { *; }
 -keep class se.birdy.ml.** { *; }
+
+# Google Play Billing v8 — IPC + Proxy.newProxyInstance kräver reflection-säkra klasser.
+-keep class com.android.billingclient.api.** { *; }
+-keep class com.android.vending.billing.** { *; }
+-dontwarn com.android.billingclient.api.**
