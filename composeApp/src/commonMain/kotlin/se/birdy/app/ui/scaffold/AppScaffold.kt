@@ -240,11 +240,6 @@ fun AppScaffold(graph: AppGraph) {
                 composable<AppRoute.DebugDiagnostics> { diagnosticsContent() }
             }
             composable<AppRoute.AudioScan> {
-                LaunchedEffect(effectivePremiumActive) {
-                    if (!effectivePremiumActive) {
-                        navController.popBackStack()
-                    }
-                }
                 AudioScanScreenHost(
                     graph = graph,
                     onNavigateToMatch = { sourceJson, capturedAtMs ->
