@@ -223,8 +223,13 @@ class MainActivity : ComponentActivity() {
         // 57 KB typeface load out of the first export's critical path.
         PdfFontProvider.init(applicationContext)
         val journalRenderer = JournalPdfRenderer()
+        // PREMIUM_OPEN_FOR_LAUNCH (defaultConfig=true) forces every user to Active(LIFETIME)
+        // through the closed-testing + initial production window. Toggle off in
+        // androidApp/build.gradle.kts when Billing v8 monetization goes live.
         val premiumOverride: PremiumState? =
-            if (BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE) {
+            if (BuildConfig.PREMIUM_OPEN_FOR_LAUNCH) {
+                PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now())
+            } else if (BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE) {
                 PremiumState.Active(PremiumTier.YEARLY, Clock.System.now())
             } else {
                 null

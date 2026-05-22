@@ -55,6 +55,12 @@ android {
             "PLAY_LICENSE_KEY",
             "\"${project.findProperty("BIRDY_PLAY_LICENSE_KEY") ?: ""}\"",
         )
+        // Launch-period flag: while true, MainActivity forces premiumOverride = Active(LIFETIME)
+        // so closed-testing + initial production users get every Premium feature for free
+        // (BirdNET audio-ID is already free per CC BY-NC-SA license; this opens PDF + season
+        // stats + 10 field marks too). Flip to "false" + bump versionCode when Billing v8
+        // monetization is enabled in a future release.
+        buildConfigField("Boolean", "PREMIUM_OPEN_FOR_LAUNCH", "true")
     }
 
     buildFeatures {
