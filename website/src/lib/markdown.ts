@@ -42,6 +42,6 @@ export function getLegalDoc(slug: string): LegalDoc | undefined {
 export function renderLegalDoc(filename: string): string {
   const path = new URL(filename, PLAY_STORE_DIR);
   const md = readFileSync(path, 'utf-8');
-  const stripped = md.trimStart().replace(/^#\s+.*\n+/, '');
+  const stripped = md.trimStart().replace(/^#\s+.*(?:\r?\n)+/, '');
   return marked.parse(stripped, { async: false }) as string;
 }
