@@ -70,3 +70,6 @@ website/dist/
 website/.astro/
 website/playwright-report/
 website/test-results/
+
+# Git worktrees (local feature branches)
+.worktrees/
