@@ -2,6 +2,7 @@ package se.birdy.app.badges
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
 import se.birdy.domain.badge.BadgeAbundance
@@ -12,6 +13,7 @@ import se.birdy.domain.badge.longestMonthlyStreak
 import se.birdy.domain.badge.longestWeeklyStreak
 import se.birdy.domain.badge.seasonOf
 import se.birdy.domain.observation.Observation
+import se.birdy.domain.observation.ObservationSource
 import se.birdy.content.Abundance as ContentAbundance
 
 class RecalculateBadgesUseCase(
@@ -65,11 +67,24 @@ class RecalculateBadgesUseCase(
                     val qid = o.speciesId ?: return@count false
                     speciesByQid[SpeciesId(qid)]?.abundance?.let(::mapAbundance) == rule.abundance
                 }
-            is BadgeRule.ObservedBeforeHour -> 0
-            is BadgeRule.SpeciesAcrossSeasons -> 0
-            is BadgeRule.AudioObservationCount -> 0
-            is BadgeRule.ObservationsWithNote -> 0
-            is BadgeRule.ObservedInAllSeasons -> 0
+            is BadgeRule.ObservedBeforeHour ->
+                observations.count { o ->
+                    o.capturedAt.toLocalDateTime(zone).hour < rule.hour
+                }
+            is BadgeRule.SpeciesAcrossSeasons ->
+                observations
+                    .filter { it.speciesId != null }
+                    .groupBy { it.speciesId!! }
+                    .values
+                    .count { perSpecies ->
+                        perSpecies.map { seasonOf(it.capturedAt, zone) }.toSet().size >= rule.seasons
+                    }
+            is BadgeRule.AudioObservationCount ->
+                observations.count { it.sourceType == ObservationSource.Audio }
+            is BadgeRule.ObservationsWithNote ->
+                observations.count { it.note.length >= rule.minLength }
+            is BadgeRule.ObservedInAllSeasons ->
+                if (observations.map { seasonOf(it.capturedAt, zone) }.toSet().size >= 4) 1 else 0
         }
 
     private fun mapAbundance(content: ContentAbundance): BadgeAbundance =

@@ -16,6 +16,7 @@ import se.birdy.domain.badge.BadgeRule
 import se.birdy.domain.badge.BadgeSeason
 import se.birdy.domain.badge.BadgeUnlock
 import se.birdy.domain.observation.Observation
+import se.birdy.domain.observation.ObservationSource
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -200,6 +201,140 @@ class RecalculateBadgesUseCaseTest {
         assertTrue(recalc.newUnlocks(emptyList(), emptyMap(), catalog, emptySet()).isEmpty())
     }
 
+    // ===== T14: 5 new premium rules =====
+
+    @Test
+    fun `observed_before_hour — counts only obs whose local hour is lt threshold`() {
+        val sthlm = TimeZone.of("Europe/Stockholm")
+        val obs =
+            listOf(
+                obsAt("Q1", Instant.parse("2026-05-22T05:30:00Z")), // 07:30 CEST — skip
+                obsAt("Q1", Instant.parse("2026-05-22T05:00:00Z")), // 07:00 CEST — skip
+                obsAt("Q2", Instant.parse("2026-05-22T03:30:00Z")), // 05:30 CEST — qualifies
+            )
+        val rule = BadgeRule.ObservedBeforeHour(hour = 6, target = 1)
+        val uc = RecalculateBadgesUseCase(zone = sthlm, clock = clock)
+        val unlocks = uc.newUnlocks(obs, emptyMap(), catalogOf(badge("dawn", rule)), emptySet())
+        assertEquals(listOf("dawn"), unlocks.map { it.badgeId })
+    }
+
+    @Test
+    fun `observed_before_hour — target not met returns no unlock`() {
+        val sthlm = TimeZone.of("Europe/Stockholm")
+        val obs = listOf(obsAt("Q1", Instant.parse("2026-05-22T05:30:00Z"))) // 07:30 CEST
+        val rule = BadgeRule.ObservedBeforeHour(hour = 6, target = 1)
+        val uc = RecalculateBadgesUseCase(zone = sthlm, clock = clock)
+        assertEquals(emptyList(), uc.newUnlocks(obs, emptyMap(), catalogOf(badge("dawn", rule)), emptySet()))
+    }
+
+    @Test
+    fun `audio_observation_count — only Audio-source obs count`() {
+        val obs =
+            listOf(
+                obs("Q1", day = 1).copy(sourceType = ObservationSource.Photo),
+                obs("Q1", day = 2).copy(sourceType = ObservationSource.Audio),
+                obs("Q2", day = 3).copy(sourceType = ObservationSource.Audio),
+            )
+        val rule = BadgeRule.AudioObservationCount(target = 2)
+        val unlocks = recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("audio2", rule)), emptySet())
+        assertEquals(listOf("audio2"), unlocks.map { it.badgeId })
+    }
+
+    @Test
+    fun `audio_observation_count — target not met`() {
+        val obs =
+            listOf(
+                obs("Q1", day = 1).copy(sourceType = ObservationSource.Audio),
+                obs("Q2", day = 2).copy(sourceType = ObservationSource.Photo),
+            )
+        val rule = BadgeRule.AudioObservationCount(target = 2)
+        assertEquals(emptyList(), recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("audio2", rule)), emptySet()))
+    }
+
+    @Test
+    fun `species_across_seasons — same qid in 4 distinct seasons unlocks`() {
+        val obs =
+            listOf(
+                obs("Q1", 2026, 4, 1), // spring
+                obs("Q1", 2026, 7, 1), // summer
+                obs("Q1", 2026, 10, 1), // autumn
+                obs("Q1", 2026, 12, 15), // winter
+            )
+        val rule = BadgeRule.SpeciesAcrossSeasons(seasons = 4, target = 1)
+        val unlocks = recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("all4s", rule)), emptySet())
+        assertEquals(listOf("all4s"), unlocks.map { it.badgeId })
+    }
+
+    @Test
+    fun `species_across_seasons — different species per season does not count`() {
+        val obs =
+            listOf(
+                obs("Q1", 2026, 4, 1), // spring
+                obs("Q2", 2026, 7, 1), // summer
+                obs("Q3", 2026, 10, 1), // autumn
+                obs("Q4", 2026, 12, 15), // winter
+            )
+        val rule = BadgeRule.SpeciesAcrossSeasons(seasons = 4, target = 1)
+        assertEquals(emptyList(), recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("all4s", rule)), emptySet()))
+    }
+
+    @Test
+    fun `species_across_seasons — null speciesId ignored`() {
+        val obs =
+            listOf(
+                obs("Q1", 2026, 4, 1).copy(speciesId = null),
+                obs("Q1", 2026, 7, 1).copy(speciesId = null),
+            )
+        val rule = BadgeRule.SpeciesAcrossSeasons(seasons = 2, target = 1)
+        assertEquals(emptyList(), recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("any2s", rule)), emptySet()))
+    }
+
+    @Test
+    fun `observations_with_note — counts obs whose note length is gte minLength`() {
+        val obs =
+            listOf(
+                obs("Q1", day = 1).copy(note = "a".repeat(5)),
+                obs("Q2", day = 2).copy(note = "a".repeat(20)),
+                obs("Q3", day = 3).copy(note = "a".repeat(50)),
+            )
+        val rule = BadgeRule.ObservationsWithNote(minLength = 20, target = 2)
+        val unlocks = recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("noter2", rule)), emptySet())
+        assertEquals(listOf("noter2"), unlocks.map { it.badgeId })
+    }
+
+    @Test
+    fun `observations_with_note — empty notes never qualify`() {
+        val obs = listOf(obs("Q1", day = 1), obs("Q2", day = 2))
+        val rule = BadgeRule.ObservationsWithNote(minLength = 1, target = 1)
+        assertEquals(emptyList(), recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("noter1", rule)), emptySet()))
+    }
+
+    @Test
+    fun `observed_in_all_seasons — all 4 seasons unlocks`() {
+        val obs =
+            listOf(
+                obs("Q1", 2026, 1, 15), // winter
+                obs("Q2", 2026, 4, 1), // spring
+                obs("Q3", 2026, 7, 1), // summer
+                obs("Q4", 2026, 10, 1), // autumn
+            )
+        val rule = BadgeRule.ObservedInAllSeasons(target = 1)
+        val unlocks = recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("seasonal", rule)), emptySet())
+        assertEquals(listOf("seasonal"), unlocks.map { it.badgeId })
+    }
+
+    @Test
+    fun `observed_in_all_seasons — only 3 seasons does not unlock`() {
+        val obs =
+            listOf(
+                obs("Q1", 2026, 1, 15), // winter
+                obs("Q2", 2026, 4, 1), // spring
+                obs("Q3", 2026, 7, 1), // summer
+            )
+        val rule = BadgeRule.ObservedInAllSeasons(target = 1)
+        assertEquals(emptyList(), recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("seasonal", rule)), emptySet()))
+    }
+
     // ===== helpers =====
 
     private fun obs(
@@ -227,6 +362,23 @@ class RecalculateBadgesUseCaseTest {
         speciesId: String,
         day: Int,
     ): Observation = obs(speciesId, 2026, 5, day)
+
+    private fun obsAt(
+        speciesId: String,
+        instant: Instant,
+    ): Observation =
+        Observation(
+            id = "obs-$speciesId-${instant.toEpochMilliseconds()}",
+            speciesId = speciesId,
+            capturedAt = instant,
+            savedAt = instant,
+            photoPath = "/tmp/photo.jpg",
+            note = "",
+            confidence = 0.9f,
+            latitude = null,
+            longitude = null,
+            locationLabel = null,
+        )
 
     private fun badge(
         id: String,
