@@ -18,9 +18,16 @@ kotlin {
             implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
         }
+        androidUnitTest.dependencies {
+            implementation("org.robolectric:robolectric:4.13")
+            implementation("junit:junit:4.13.2")
+        }
     }
 }
 
 android {
     namespace = "se.birdy.pdf"
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
 }

@@ -18,14 +18,23 @@ expect class JournalPdfRenderer() {
      *   [JournalPdfInput.observations] is empty (no file written), or
      *   [JournalPdfRenderResult.Failed] on render errors.
      */
-    suspend fun render(input: JournalPdfInput, outputPath: String): JournalPdfRenderResult
+    suspend fun render(
+        input: JournalPdfInput,
+        outputPath: String,
+    ): JournalPdfRenderResult
 }
 
 sealed interface JournalPdfRenderResult {
-    data class Success(val pageCount: Int, val sizeBytes: Long) : JournalPdfRenderResult
+    data class Success(
+        val pageCount: Int,
+        val sizeBytes: Long,
+    ) : JournalPdfRenderResult
 
     /** No observations to render — no file is written. */
     data object Empty : JournalPdfRenderResult
 
-    data class Failed(val message: String, val cause: Throwable? = null) : JournalPdfRenderResult
+    data class Failed(
+        val message: String,
+        val cause: Throwable? = null,
+    ) : JournalPdfRenderResult
 }
