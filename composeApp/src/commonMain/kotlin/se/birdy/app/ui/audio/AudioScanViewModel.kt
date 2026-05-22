@@ -78,23 +78,15 @@ class AudioScanViewModel(
         val initial = AudioScanState.Recording(rms = 0f, elapsedMs = 0L)
         if (!_state.compareAndSet(AudioScanState.Idle, initial)) return
         recordingJob?.cancel()
+        @Suppress("UNUSED_VARIABLE")
         val t0 = clock()
         recordingJob =
             viewModelScope.launch {
                 try {
-                    val pcm =
-                        recorder.record3s(
-                            onLevel = { rms ->
-                                val elapsed = clock() - t0
-                                _state.update { s ->
-                                    if (s is AudioScanState.Recording) {
-                                        AudioScanState.Recording(rms, elapsed)
-                                    } else {
-                                        s
-                                    }
-                                }
-                            },
-                        )
+                    // TODO(listen/t3): replace with streaming recorder.start() + sliding-window
+                    //   classification. This body is rewritten entirely in Task 3.
+                    @Suppress("UNREACHABLE_CODE")
+                    val pcm: ShortArray = TODO("streaming startRecording implemented in Task 3")
                     val frozen = (_state.value as? AudioScanState.Recording)?.rms ?: 0f
                     _state.value = AudioScanState.Analyzing(rmsFrozen = frozen)
                     analyzeAndNavigate(pcm)
@@ -173,7 +165,30 @@ class AudioScanViewModel(
 }
 
 interface AudioRecorderApi {
-    suspend fun record3s(onLevel: (Float) -> Unit): ShortArray
+    /**
+     * Open-ended capture. Returns a handle as soon as AudioRecord is initialised.
+     * Emits PCM chunks via [onChunk] until [RecorderHandle.stopAndFlush] is called
+     * or [maxDurationMs] elapses (in which case [onCapReached] fires).
+     *
+     * - [onChunk] runs on the recorder's IO dispatcher; consumer MUST be cheap
+     *   (append to buffer, update rms) — heavy work (ML inference) belongs in
+     *   the ViewModel on its own dispatcher.
+     * - All callbacks fire BEFORE [start] returns the handle is OK; consumer
+     *   stores incoming chunks in a thread-safe way.
+     */
+    fun start(
+        onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -> Unit,
+        onCapReached: () -> Unit,
+        maxDurationMs: Long = 60_000L,
+    ): RecorderHandle
+}
+
+interface RecorderHandle {
+    /** Stop recorder, flush remaining buffered chunks, and return the full captured PCM. Idempotent. */
+    suspend fun stopAndFlush(): ShortArray
+
+    /** Cancel and discard all captured PCM. Idempotent. */
+    fun cancel()
 }
 
 interface WaveformRendererApi {

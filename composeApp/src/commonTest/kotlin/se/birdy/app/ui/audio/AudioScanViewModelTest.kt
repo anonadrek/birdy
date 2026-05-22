@@ -20,6 +20,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
+/* TODO(listen/t3): FakeRecorder rewritten in Task 3 to use FakeStreamingRecorder.
 private class FakeRecorder(
     private val pcm: ShortArray = ShortArray(144_000),
 ) : AudioRecorderApi {
@@ -31,6 +32,7 @@ private class FakeRecorder(
         return pcm
     }
 }
+*/
 
 private class FakeWaveformRenderer : WaveformRendererApi {
     override suspend fun renderWaveformPng(
@@ -88,7 +90,7 @@ class AudioScanViewModelTest {
     private fun makeVm(clock: () -> Long = { System.currentTimeMillis() }) =
         AudioScanViewModel(
             classifierProvider = { Pair(FakeAudioClf(), AudioClassifierMode.REAL) },
-            recorder = FakeRecorder(),
+            recorder = FakeStreamingRecorder(), // TODO(listen/t3): replaced with real streaming recorder test-double
             waveformRenderer = FakeWaveformRenderer(),
             audioStorageDir = { "/tmp/audio" },
             clock = clock,
