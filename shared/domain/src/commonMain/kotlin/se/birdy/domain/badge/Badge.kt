@@ -4,4 +4,5 @@ data class Badge(
     val id: String,
     val category: BadgeCategory,
     val rule: BadgeRule,
+    val isPremium: Boolean = false,
 )

@@ -29,4 +29,27 @@ sealed interface BadgeRule {
         val abundance: BadgeAbundance,
         override val target: Int,
     ) : BadgeRule
+
+    data class ObservedBeforeHour(
+        val hour: Int,
+        override val target: Int,
+    ) : BadgeRule
+
+    data class SpeciesAcrossSeasons(
+        val seasons: Int,
+        override val target: Int,
+    ) : BadgeRule
+
+    data class AudioObservationCount(
+        override val target: Int,
+    ) : BadgeRule
+
+    data class ObservationsWithNote(
+        val minLength: Int,
+        override val target: Int,
+    ) : BadgeRule
+
+    data class ObservedInAllSeasons(
+        override val target: Int,
+    ) : BadgeRule
 }

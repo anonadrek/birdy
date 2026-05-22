@@ -65,6 +65,11 @@ class RecalculateBadgesUseCase(
                     val qid = o.speciesId ?: return@count false
                     speciesByQid[SpeciesId(qid)]?.abundance?.let(::mapAbundance) == rule.abundance
                 }
+            is BadgeRule.ObservedBeforeHour -> 0
+            is BadgeRule.SpeciesAcrossSeasons -> 0
+            is BadgeRule.AudioObservationCount -> 0
+            is BadgeRule.ObservationsWithNote -> 0
+            is BadgeRule.ObservedInAllSeasons -> 0
         }
 
     private fun mapAbundance(content: ContentAbundance): BadgeAbundance =
