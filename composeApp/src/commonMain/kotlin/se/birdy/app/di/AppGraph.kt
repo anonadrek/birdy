@@ -26,6 +26,7 @@ import se.birdy.app.ui.premium.PremiumViewModel
 import se.birdy.app.ui.profile.SpeciesProfileViewModel
 import se.birdy.app.ui.scan.ScanViewModel
 import se.birdy.app.ui.settings.SettingsViewModel
+import se.birdy.app.usecase.JournalExportResult
 import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
@@ -128,6 +129,15 @@ class AppGraph(
      * Null in tests / non-Android targets — [audioScanViewModel] will error if null.
      */
     val waveformRendererFactory: (() -> WaveformRendererApi)? = null,
+    /**
+     * Plan 6b3 T7: assembles the journal PDF on-demand and returns the result.
+     *
+     * Android actual delegates to [se.birdy.app.usecase.ExportJournalUseCase] wired in
+     * [se.birdy.android.MainActivity]; the UI layer triggers [JournalPdfShareLauncher]
+     * after a [JournalExportResult.Success]. Null in tests / non-Android targets — the
+     * Settings entry-point falls back to "PDF export not available" snackbar.
+     */
+    val journalExport: (suspend () -> JournalExportResult)? = null,
 ) {
     val classifier: BirdClassifier
         get() =

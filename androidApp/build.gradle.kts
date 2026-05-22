@@ -15,6 +15,10 @@ kotlin {
             implementation(project(":shared:data"))
             implementation(project(":shared:ml"))
             implementation(project(":shared:datastore"))
+            implementation(project(":shared:pdf"))
+            // Plan 6b3 T7: MainActivity calls getString(StringResource) to localize
+            // premium-badge names for the PDF renderer via BadgeStringMap.
+            implementation(compose.components.resources)
             implementation(libs.kotlinx.datetime)
             implementation(libs.androidx.core.ktx)
             implementation("androidx.activity:activity-compose:1.9.3")

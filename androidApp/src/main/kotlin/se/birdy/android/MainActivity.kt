@@ -29,10 +29,12 @@ import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.app.ui.audio.AndroidAudioRecorderAdapter
 import se.birdy.app.ui.audio.AndroidWaveformRenderer
+import se.birdy.app.ui.badges.BadgeStringMap
 import se.birdy.app.ui.debug.DiagnosticsRunner
 import se.birdy.app.ui.debug.DiagnosticsScreen
 import se.birdy.app.ui.settings.AppLocaleApplier
 import se.birdy.app.ui.settings.SettingsLauncherSetup
+import se.birdy.app.usecase.ExportJournalUseCase
 import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
@@ -58,6 +60,8 @@ import se.birdy.ml.TfLiteBirdClassifier
 import se.birdy.ml.camera.AndroidCameraSource
 import se.birdy.ml.loadAiyLabelMapper
 import se.birdy.ml.loadModelMetadata
+import se.birdy.pdf.JournalPdfRenderer
+import se.birdy.pdf.PdfFontProvider
 import java.io.File
 import java.util.concurrent.atomic.AtomicReference
 import android.graphics.Color as AndroidColor
@@ -210,6 +214,11 @@ class MainActivity : ComponentActivity() {
             billingClient.queryPurchases()
         }
         val classifierBootstrap = ClassifierBootstrap(buildClassifier = { buildClassifier() })
+        // Plan 6b3 T7: build the PDF export use case. PdfFontProvider must be
+        // initialised before the first render() call; doing it here keeps the
+        // 57 KB typeface load out of the first export's critical path.
+        PdfFontProvider.init(applicationContext)
+        val journalRenderer = JournalPdfRenderer()
         val premiumOverride: PremiumState? =
             if (BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE) {
                 PremiumState.Active(PremiumTier.YEARLY, Clock.System.now())
@@ -221,6 +230,26 @@ class MainActivity : ComponentActivity() {
             LocaleResolver.resolve(
                 override = overrideTag,
                 systemTag = resources.configuration.locales[0].toLanguageTag(),
+            )
+        val exportJournalUseCase =
+            ExportJournalUseCase(
+                observationRepo = observationRepo,
+                speciesRepo = SpeciesRepositoryProvider.get(),
+                badgeRepo = badgeRepo,
+                catalog = badgeCatalog,
+                render = { input, path -> journalRenderer.render(input, path) },
+                userPreferences = userPreferences,
+                outputPathFactory = { ms ->
+                    val dir = File(cacheDir, "journal_exports").apply { mkdirs() }
+                    File(dir, "birdy_field_journal_$ms.pdf").absolutePath
+                },
+                clock = Clock.System,
+                timeZone = kotlinx.datetime.TimeZone.currentSystemDefault(),
+                locale = resolvedLocale,
+                // BadgeStringMap throws for badges it doesn't yet know (premium_field_member
+                // strings land in Plan 6b3 T15/T16). Until then, fall back to a humanised ID.
+                badgeNameResolver = { id -> resolveBadgeString(id) { BadgeStringMap.nameFor(id) } },
+                badgeDescriptionResolver = { id -> resolveBadgeString(id) { BadgeStringMap.descriptionFor(id) } },
             )
         return AppGraph(
             repository = SpeciesRepositoryProvider.get(),
@@ -252,8 +281,26 @@ class MainActivity : ComponentActivity() {
             },
             audioRecorderFactory = { AndroidAudioRecorderAdapter() },
             waveformRendererFactory = { AndroidWaveformRenderer() },
+            journalExport = { exportJournalUseCase.run() },
         )
     }
+
+    private suspend fun resolveBadgeString(
+        badgeId: String,
+        resourceFor: () -> org.jetbrains.compose.resources.StringResource,
+    ): String =
+        runCatching {
+            org.jetbrains.compose.resources
+                .getString(resourceFor())
+        }.getOrElse { humanizeBadgeId(badgeId) }
+
+    private fun humanizeBadgeId(badgeId: String): String =
+        badgeId
+            .removePrefix("premium_")
+            .split('_')
+            .joinToString(" ") { part ->
+                part.replaceFirstChar { ch -> if (ch.isLowerCase()) ch.titlecase() else ch.toString() }
+            }
 
     /**
      * Releases the cached audio classifier when the system signals memory pressure at or
