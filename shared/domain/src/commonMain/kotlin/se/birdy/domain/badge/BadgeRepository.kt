@@ -18,5 +18,8 @@ interface BadgeRepository {
      * already existed for [badgeId] (subsequent toggles are no-ops).
      * First-write wins: the [unlockedAt] of subsequent calls is discarded.
      */
-    suspend fun unlockManualBadge(badgeId: String, unlockedAt: Instant): Boolean
+    suspend fun unlockManualBadge(
+        badgeId: String,
+        unlockedAt: Instant,
+    ): Boolean
 }

@@ -66,6 +66,9 @@ import java.io.File
 import java.util.concurrent.atomic.AtomicReference
 import android.graphics.Color as AndroidColor
 
+private const val UPGRADE_INSTALL_BACKDATE_MS = 8L * 24 * 60 * 60 * 1000
+
+@Suppress("TooManyFunctions")
 class MainActivity : ComponentActivity() {
     private lateinit var appGraph: AppGraph
     private lateinit var billingClient: se.birdy.app.data.premium.PremiumBillingClient
@@ -173,6 +176,7 @@ class MainActivity : ComponentActivity() {
         billingClient.dispose()
     }
 
+    @Suppress("LongMethod")
     private fun buildAppGraph(): AppGraph {
         val birdyData = BirdyData(DatabaseFactory(applicationContext).createDriver())
         val observationRepo = SqlDelightObservationRepository(birdyData.observationQueries)
@@ -191,7 +195,7 @@ class MainActivity : ComponentActivity() {
                 val isUpgrade = userPreferences.hasSeenOnboarding.first()
                 val installMs =
                     if (isUpgrade) {
-                        System.currentTimeMillis() - 8L * 24 * 3600 * 1000
+                        System.currentTimeMillis() - UPGRADE_INSTALL_BACKDATE_MS
                     } else {
                         System.currentTimeMillis()
                     }

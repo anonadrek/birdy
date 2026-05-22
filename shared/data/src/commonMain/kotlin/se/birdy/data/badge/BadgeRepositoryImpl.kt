@@ -16,7 +16,6 @@ import se.birdy.data.db.Badge_unlock as DbBadgeUnlock
 class BadgeRepositoryImpl(
     private val queries: BadgeUnlockQueries,
 ) : BadgeRepository {
-
     private val manualUnlockMutex = Mutex()
 
     override fun observeUnlocks(): Flow<List<BadgeUnlock>> =
@@ -42,7 +41,10 @@ class BadgeRepositoryImpl(
         queries.deleteAll()
     }
 
-    override suspend fun unlockManualBadge(badgeId: String, unlockedAt: Instant): Boolean =
+    override suspend fun unlockManualBadge(
+        badgeId: String,
+        unlockedAt: Instant,
+    ): Boolean =
         // Mutex serializes the check-then-insert pair so at most one caller returns
         // `true` per badge within this instance. `INSERT OR IGNORE` already protects
         // the DB from duplicates; this Mutex only protects the boolean return value.
