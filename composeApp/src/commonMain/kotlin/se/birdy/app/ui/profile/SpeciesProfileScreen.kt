@@ -189,7 +189,7 @@ private fun ProfileContent(
                         subtitle = stringResource(Res.string.premium_species_subtitle),
                         cornerLabel = stringResource(Res.string.premium_teaser_corner),
                         ctaLabel = stringResource(Res.string.premium_teaser_cta),
-                        onClick = onPremiumClick,
+                        onUnlock = onPremiumClick,
                         modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
                     )
                 }

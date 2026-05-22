@@ -31,12 +31,15 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -72,12 +75,17 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_archive_subtitl
 import birdy_bird_scanner.composeapp.generated.resources.premium_archive_title
 import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_corner
 import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_cta
+import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_export_active
+import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_export_busy
+import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_export_empty
+import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_export_failed
 import birdy_bird_scanner.composeapp.generated.resources.search_empty_body
 import birdy_bird_scanner.composeapp.generated.resources.search_empty_title
 import birdy_bird_scanner.composeapp.generated.resources.search_placeholder
 import birdy_bird_scanner.composeapp.generated.resources.settings_menu_item
 import birdy_bird_scanner.composeapp.generated.resources.species_photo_label
 import coil3.compose.AsyncImage
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.EmptyState
@@ -85,6 +93,7 @@ import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.MiniStamp
 import se.birdy.app.ui.components.PremiumTeaserCard
+import se.birdy.app.ui.settings.shareJournalPdf
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.OffwhiteWarm
@@ -92,6 +101,7 @@ import se.birdy.app.ui.theme.PaperBottom
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
+import se.birdy.app.usecase.JournalExportResult
 import se.birdy.content.SpeciesId
 import se.birdy.datastore.ArchiveSort
 
@@ -101,6 +111,8 @@ fun ArchiveScreen(
     viewModel: ArchiveViewModel,
     onSpeciesClick: (SpeciesId) -> Unit,
     onPremiumClick: () -> Unit,
+    onJournalExport: (suspend () -> JournalExportResult)? = null,
+    onSharePdf: (String) -> Unit = ::shareJournalPdf,
     showPremiumTeaser: Boolean = true,
     showDebugMenu: Boolean = false,
     onDebugBenchmarkClick: () -> Unit = {},
@@ -112,9 +124,17 @@ fun ArchiveScreen(
     val query by viewModel.query.collectAsStateWithLifecycle()
     val chip by viewModel.chip.collectAsStateWithLifecycle()
     val sort by viewModel.sort.collectAsStateWithLifecycle()
+    val premiumActive by viewModel.premiumActive.collectAsStateWithLifecycle()
     var menuExpanded by remember { mutableStateOf(false) }
+    var isExporting by remember { mutableStateOf(false) }
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
+    val exportActiveLabel = stringResource(Res.string.premium_teaser_export_active)
+    val exportBusyLabel = stringResource(Res.string.premium_teaser_export_busy)
+    val exportEmptyMsg = stringResource(Res.string.premium_teaser_export_empty)
+    val exportFailedMsg = stringResource(Res.string.premium_teaser_export_failed)
 
-    JournalScaffold { padding ->
+    JournalScaffold(snackbarHost = { SnackbarHost(snackbarHostState) }) { padding ->
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(padding),
             verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -176,7 +196,30 @@ fun ArchiveScreen(
                         subtitle = stringResource(Res.string.premium_archive_subtitle),
                         cornerLabel = stringResource(Res.string.premium_teaser_corner),
                         ctaLabel = stringResource(Res.string.premium_teaser_cta),
-                        onClick = onPremiumClick,
+                        onUnlock = onPremiumClick,
+                        premiumActive = premiumActive,
+                        isExporting = isExporting,
+                        exportLabel = onJournalExport?.let { exportActiveLabel },
+                        exportBusyLabel = exportBusyLabel,
+                        onExport = {
+                            val exportFn = onJournalExport ?: return@PremiumTeaserCard
+                            if (isExporting) return@PremiumTeaserCard
+                            isExporting = true
+                            scope.launch {
+                                val result =
+                                    runCatching { exportFn() }.getOrElse {
+                                        JournalExportResult.Failed(it.message ?: "Unknown error")
+                                    }
+                                isExporting = false
+                                when (result) {
+                                    is JournalExportResult.Success -> onSharePdf(result.pdfPath)
+                                    JournalExportResult.NothingToExport ->
+                                        snackbarHostState.showSnackbar(exportEmptyMsg)
+                                    is JournalExportResult.Failed ->
+                                        snackbarHostState.showSnackbar(exportFailedMsg)
+                                }
+                            }
+                        },
                         modifier = Modifier.padding(horizontal = 16.dp),
                     )
                 }

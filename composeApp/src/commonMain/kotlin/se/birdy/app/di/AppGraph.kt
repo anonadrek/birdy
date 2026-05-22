@@ -133,9 +133,10 @@ class AppGraph(
      * Plan 6b3 T7: assembles the journal PDF on-demand and returns the result.
      *
      * Android actual delegates to [se.birdy.app.usecase.ExportJournalUseCase] wired in
-     * [se.birdy.android.MainActivity]; the UI layer triggers [JournalPdfShareLauncher]
-     * after a [JournalExportResult.Success]. Null in tests / non-Android targets — the
-     * Settings entry-point falls back to "PDF export not available" snackbar.
+     * [se.birdy.android.MainActivity]; the UI layer hands the resulting path to the
+     * platform share-sheet via [se.birdy.app.ui.settings.shareJournalPdf]. Null in
+     * tests / non-Android targets — the UI gates the export CTA on null and shows a
+     * "not available" message instead.
      */
     val journalExport: (suspend () -> JournalExportResult)? = null,
 ) {
@@ -176,7 +177,8 @@ class AppGraph(
             speciesByQid = { repository.allByQid() },
         )
 
-    fun archiveViewModel(): ArchiveViewModel = ArchiveViewModel(repository, observationRepository, userPreferences, defaultLocale)
+    fun archiveViewModel(): ArchiveViewModel =
+        ArchiveViewModel(repository, observationRepository, userPreferences, defaultLocale, premiumRepository)
 
     fun speciesProfileViewModel(speciesId: SpeciesId): SpeciesProfileViewModel =
         SpeciesProfileViewModel(repository, speciesId, defaultLocale)

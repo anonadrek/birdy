@@ -39,6 +39,5 @@ class PremiumActivationListener(
                 if (firstUnlock) {
                     unlockQueue.enqueue(listOf(BadgeUnlock(FIELD_MEMBER_BADGE_ID, now)))
                 }
-            }
-            .launchIn(scope)
+            }.launchIn(scope)
 }

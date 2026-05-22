@@ -56,7 +56,10 @@ class PremiumActivationListenerTest {
 
 /** In-memory fake: first call returns true, subsequent calls for same id return false. */
 private class FakeBadgeRepository : BadgeRepository {
-    data class ManualCall(val badgeId: String, val at: Instant)
+    data class ManualCall(
+        val badgeId: String,
+        val at: Instant,
+    )
 
     val manualCalls = mutableListOf<ManualCall>()
     private val unlocked = mutableSetOf<String>()

@@ -145,6 +145,7 @@ fun AppScaffold(graph: AppGraph) {
                         viewModel = remember(graph) { graph.archiveViewModel() },
                         onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
                         onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                        onJournalExport = graph.journalExport,
                         showPremiumTeaser = showPremiumTeaser,
                         showDebugMenu = graph.benchmarkScreen != null || graph.diagnosticsScreen != null,
                         onDebugBenchmarkClick = { navController.navigate(AppRoute.DebugBenchmark) },

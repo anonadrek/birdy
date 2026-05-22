@@ -35,6 +35,12 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
  * Paper-edge-card med corner-flag + Caveat-italic CTA-rad. Återanvänds på
  * Arkiv-, Species Profile- och (eventuellt) Settings-sidorna för att teasa
  * Premium-features. Konsekvent visuellt språk över hela appen.
+ *
+ * Plan 6b3 T8: when [premiumActive] is true AND [exportLabel] is non-null the
+ * card swaps the "Unlock" CTA for an "Export Field Journal" action that invokes
+ * [onExport]. While [isExporting] the CTA renders the busy label and ignores
+ * clicks. Without [exportLabel] the card always renders the unlock CTA (used by
+ * non-export teasers like the species-profile insights card).
  */
 @Composable
 fun PremiumTeaserCard(
@@ -42,9 +48,27 @@ fun PremiumTeaserCard(
     subtitle: String,
     cornerLabel: String,
     ctaLabel: String,
-    onClick: () -> Unit,
+    onUnlock: () -> Unit,
     modifier: Modifier = Modifier,
+    premiumActive: Boolean = false,
+    isExporting: Boolean = false,
+    exportLabel: String? = null,
+    exportBusyLabel: String? = null,
+    onExport: () -> Unit = {},
 ) {
+    val showExportCta = premiumActive && exportLabel != null
+    val effectiveCta =
+        when {
+            showExportCta && isExporting -> exportBusyLabel ?: exportLabel ?: ctaLabel
+            showExportCta -> exportLabel ?: ctaLabel
+            else -> ctaLabel
+        }
+    val onCardClick: () -> Unit =
+        when {
+            showExportCta && isExporting -> ({})
+            showExportCta -> onExport
+            else -> onUnlock
+        }
     Box(modifier = modifier.fillMaxWidth()) {
         Column(
             modifier =
@@ -54,7 +78,7 @@ fun PremiumTeaserCard(
                     .clip(RoundedCornerShape(14.dp))
                     .background(SandCreme)
                     .border(1.dp, AccentCopper.copy(alpha = 0.55f), RoundedCornerShape(14.dp))
-                    .clickable(onClick = onClick)
+                    .clickable(enabled = !(showExportCta && isExporting), onClick = onCardClick)
                     .padding(14.dp),
         ) {
             Text(
@@ -78,11 +102,11 @@ fun PremiumTeaserCard(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    text = ctaLabel,
+                    text = effectiveCta,
                     fontFamily = rememberCaveat(),
                     fontWeight = FontWeight.W600,
                     fontSize = 16.sp,
-                    color = AccentCopper,
+                    color = if (showExportCta && isExporting) AccentCopper.copy(alpha = 0.55f) else AccentCopper,
                 )
                 Text("›", color = AccentCopper, fontSize = 20.sp, fontWeight = FontWeight.W600)
             }

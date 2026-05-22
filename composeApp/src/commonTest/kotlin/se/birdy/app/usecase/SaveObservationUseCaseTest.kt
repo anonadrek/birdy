@@ -249,7 +249,10 @@ class SaveObservationUseCaseTest {
 
                     override suspend fun deleteAll() = Unit
 
-                    override suspend fun unlockManualBadge(badgeId: String, unlockedAt: Instant): Boolean = false
+                    override suspend fun unlockManualBadge(
+                        badgeId: String,
+                        unlockedAt: Instant,
+                    ): Boolean = false
                 }
             val catalog =
                 BadgeCatalog(

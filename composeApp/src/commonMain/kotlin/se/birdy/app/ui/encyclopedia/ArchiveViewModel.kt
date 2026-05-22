@@ -24,6 +24,8 @@ import se.birdy.content.model.SpeciesSummary
 import se.birdy.datastore.ArchiveSort
 import se.birdy.datastore.UserPreferences
 import se.birdy.domain.observation.ObservationRepository
+import se.birdy.domain.premium.PremiumRepository
+import se.birdy.domain.premium.PremiumState
 
 @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
 class ArchiveViewModel(
@@ -31,7 +33,13 @@ class ArchiveViewModel(
     private val observationRepo: ObservationRepository,
     private val prefs: UserPreferences,
     private val locale: Locale,
+    premiumRepo: PremiumRepository,
 ) : ViewModel() {
+    val premiumActive: StateFlow<Boolean> =
+        premiumRepo.state
+            .map { it is PremiumState.Active }
+            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), false)
+
     private val _query = MutableStateFlow("")
     val query: StateFlow<String> = _query.asStateFlow()
 

@@ -497,6 +497,11 @@
     <string name="premium_species_subtitle">Migration map · songs · deeper field notes</string>
     <string name="premium_teaser_corner">PREMIUM</string>
     <string name="premium_teaser_cta">→ Unlock</string>
+    <!-- Plan 6b3 T8: Export CTA states when premium is active -->
+    <string name="premium_teaser_export_active">Export Field Journal</string>
+    <string name="premium_teaser_export_busy">Preparing PDF…</string>
+    <string name="premium_teaser_export_empty">No observations yet</string>
+    <string name="premium_teaser_export_failed">Couldn’t make the PDF — try again</string>
 
     <!-- ===== Plan 6a Task 9: A11y strings ===== -->
     <!-- AsyncImage contentDescription -->

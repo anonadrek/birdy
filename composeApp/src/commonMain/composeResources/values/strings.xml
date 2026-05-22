@@ -510,6 +510,11 @@
     <string name="premium_species_subtitle">Migrationskarta · läten · djupare fält-anteckningar</string>
     <string name="premium_teaser_corner">PREMIUM</string>
     <string name="premium_teaser_cta">→ Lås upp</string>
+    <!-- Plan 6b3 T8: Export CTA states when premium is active -->
+    <string name="premium_teaser_export_active">Exportera fältdagbok</string>
+    <string name="premium_teaser_export_busy">Förbereder PDF…</string>
+    <string name="premium_teaser_export_empty">Inga observationer ännu</string>
+    <string name="premium_teaser_export_failed">Kunde inte skapa PDF — försök igen</string>
 
     <!-- ===== Plan 6a Task 9: A11y strings ===== -->
     <!-- AsyncImage contentDescription -->

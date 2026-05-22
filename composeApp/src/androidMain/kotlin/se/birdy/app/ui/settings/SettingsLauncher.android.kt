@@ -3,6 +3,8 @@ package se.birdy.app.ui.settings
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.core.content.FileProvider
+import java.io.File
 
 object SettingsLauncherSetup {
     @Volatile private var appContext: Context? = null
@@ -52,5 +54,22 @@ actual fun openPlayStoreListing(packageName: String) {
     if (result.isFailure) {
         val web = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName"))
         runCatching { ctx.startNewTaskActivity(web) }
+    }
+}
+
+actual fun shareJournalPdf(pdfPath: String) {
+    val ctx = SettingsLauncherSetup.context() ?: return
+    runCatching {
+        val file = File(pdfPath)
+        val authority = "${ctx.packageName}.fileprovider"
+        val uri = FileProvider.getUriForFile(ctx, authority, file)
+        val sendIntent =
+            Intent(Intent.ACTION_SEND).apply {
+                type = "application/pdf"
+                putExtra(Intent.EXTRA_STREAM, uri)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+        val chooser = Intent.createChooser(sendIntent, null).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        ctx.startActivity(chooser)
     }
 }

@@ -23,7 +23,10 @@ class FakeBadgeRepository : BadgeRepository {
         _unlocks.value = emptyList()
     }
 
-    override suspend fun unlockManualBadge(badgeId: String, unlockedAt: Instant): Boolean {
+    override suspend fun unlockManualBadge(
+        badgeId: String,
+        unlockedAt: Instant,
+    ): Boolean {
         val alreadyUnlocked = _unlocks.value.any { it.badgeId == badgeId }
         if (alreadyUnlocked) return false
         _unlocks.value = _unlocks.value + BadgeUnlock(badgeId, unlockedAt)
