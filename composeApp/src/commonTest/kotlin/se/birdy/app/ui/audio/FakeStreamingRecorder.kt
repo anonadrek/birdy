@@ -43,7 +43,8 @@ class FakeStreamingRecorder(
     /**
      * Drives the recorder synchronously: emits [count] chunks of [chunkSize]
      * samples each, calling onChunk with monotonically increasing totalSamples.
-     * Stops early if [stopOrCancel] has been called.
+     * Stops early if [RecorderHandle.stopAndFlush] or [RecorderHandle.cancel]
+     * has been called.
      */
     suspend fun emitChunks(count: Int) {
         repeat(count) {

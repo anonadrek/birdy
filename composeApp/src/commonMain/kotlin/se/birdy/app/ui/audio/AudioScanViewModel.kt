@@ -173,8 +173,9 @@ interface AudioRecorderApi {
      * - [onChunk] runs on the recorder's IO dispatcher; consumer MUST be cheap
      *   (append to buffer, update rms) — heavy work (ML inference) belongs in
      *   the ViewModel on its own dispatcher.
-     * - All callbacks fire BEFORE [start] returns the handle is OK; consumer
-     *   stores incoming chunks in a thread-safe way.
+     * - Callbacks fire on the recorder's IO thread, NOT the caller's thread,
+     *   and may arrive after [start] has returned the handle. The consumer
+     *   must store incoming chunks in a thread-safe way.
      */
     fun start(
         onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -> Unit,
@@ -184,10 +185,18 @@ interface AudioRecorderApi {
 }
 
 interface RecorderHandle {
-    /** Stop recorder, flush remaining buffered chunks, and return the full captured PCM. Idempotent. */
+    /**
+     * Stop recorder, flush remaining buffered chunks, and return the full captured PCM.
+     * Idempotent: subsequent calls return the same ShortArray instance. If [cancel]
+     * was called first, returns an empty ShortArray.
+     */
     suspend fun stopAndFlush(): ShortArray
 
-    /** Cancel and discard all captured PCM. Idempotent. */
+    /**
+     * Cancel and discard all captured PCM. Idempotent.
+     * No-op if [stopAndFlush] has already returned — the flushed array stays valid
+     * (we cannot retroactively un-flush) but no further chunks will be delivered.
+     */
     fun cancel()
 }
 
