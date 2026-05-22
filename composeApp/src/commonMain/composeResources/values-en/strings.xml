@@ -305,6 +305,28 @@
     <string name="badge_name_rare_10">Master birder</string>
     <string name="badge_desc_rare_10">Ten rare species — impressive.</string>
 
+    <!-- ===== Plan 6b3: Premium field badges (10) ===== -->
+    <string name="badge_premium_dawn_chorus_name">Dawn chorus</string>
+    <string name="badge_premium_dawn_chorus_desc">Spot 5 birds before 6 a.m.</string>
+    <string name="badge_premium_winter_wanderer_name">Winter wanderer</string>
+    <string name="badge_premium_winter_wanderer_desc">Save 10 winter observations.</string>
+    <string name="badge_premium_migration_mapper_name">Migration mapper</string>
+    <string name="badge_premium_migration_mapper_desc">See one species across all four seasons.</string>
+    <string name="badge_premium_song_scholar_name">Song scholar</string>
+    <string name="badge_premium_song_scholar_desc">Identify 5 birds by sound.</string>
+    <string name="badge_premium_field_journalist_name">Field journalist</string>
+    <string name="badge_premium_field_journalist_desc">Write 25 notes of at least 30 characters.</string>
+    <string name="badge_premium_archive_curator_name">Archive curator</string>
+    <string name="badge_premium_archive_curator_desc">Reach 100 unique species.</string>
+    <string name="badge_premium_seasonal_steward_name">Seasonal steward</string>
+    <string name="badge_premium_seasonal_steward_desc">Save at least one bird in every season.</string>
+    <string name="badge_premium_lifelist_legend_name">Lifelist legend</string>
+    <string name="badge_premium_lifelist_legend_desc">Reach 250 unique species.</string>
+    <string name="badge_premium_rare_seeker_name">Rarity seeker</string>
+    <string name="badge_premium_rare_seeker_desc">Spot 3 rare species.</string>
+    <string name="badge_premium_field_member_name">Field member</string>
+    <string name="badge_premium_field_member_desc">Welcome to Birdy Premium.</string>
+
     <!-- ===== Plan 7a: Onboarding ===== -->
     <string name="onboarding_skip">Skip</string>
 

@@ -51,6 +51,26 @@ import birdy_bird_scanner.composeapp.generated.resources.badge_name_weekly_strea
 import birdy_bird_scanner.composeapp.generated.resources.badge_name_weekly_streak_26
 import birdy_bird_scanner.composeapp.generated.resources.badge_name_weekly_streak_4
 import birdy_bird_scanner.composeapp.generated.resources.badge_name_weekly_streak_52
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_archive_curator_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_archive_curator_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_dawn_chorus_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_dawn_chorus_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_field_journalist_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_field_journalist_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_field_member_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_field_member_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_lifelist_legend_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_lifelist_legend_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_migration_mapper_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_migration_mapper_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_rare_seeker_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_rare_seeker_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_seasonal_steward_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_seasonal_steward_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_song_scholar_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_song_scholar_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_winter_wanderer_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_winter_wanderer_name
 import org.jetbrains.compose.resources.StringResource
 
 object BadgeStringMap {
@@ -81,6 +101,16 @@ object BadgeStringMap {
             "rare_first" -> Res.string.badge_name_rare_first
             "rare_5" -> Res.string.badge_name_rare_5
             "rare_10" -> Res.string.badge_name_rare_10
+            "premium_dawn_chorus" -> Res.string.badge_premium_dawn_chorus_name
+            "premium_winter_wanderer" -> Res.string.badge_premium_winter_wanderer_name
+            "premium_migration_mapper" -> Res.string.badge_premium_migration_mapper_name
+            "premium_song_scholar" -> Res.string.badge_premium_song_scholar_name
+            "premium_field_journalist" -> Res.string.badge_premium_field_journalist_name
+            "premium_archive_curator" -> Res.string.badge_premium_archive_curator_name
+            "premium_seasonal_steward" -> Res.string.badge_premium_seasonal_steward_name
+            "premium_lifelist_legend" -> Res.string.badge_premium_lifelist_legend_name
+            "premium_rare_seeker" -> Res.string.badge_premium_rare_seeker_name
+            "premium_field_member" -> Res.string.badge_premium_field_member_name
             else -> error("No name resource for badgeId=$badgeId")
         }
 
@@ -111,6 +141,16 @@ object BadgeStringMap {
             "rare_first" -> Res.string.badge_desc_rare_first
             "rare_5" -> Res.string.badge_desc_rare_5
             "rare_10" -> Res.string.badge_desc_rare_10
+            "premium_dawn_chorus" -> Res.string.badge_premium_dawn_chorus_desc
+            "premium_winter_wanderer" -> Res.string.badge_premium_winter_wanderer_desc
+            "premium_migration_mapper" -> Res.string.badge_premium_migration_mapper_desc
+            "premium_song_scholar" -> Res.string.badge_premium_song_scholar_desc
+            "premium_field_journalist" -> Res.string.badge_premium_field_journalist_desc
+            "premium_archive_curator" -> Res.string.badge_premium_archive_curator_desc
+            "premium_seasonal_steward" -> Res.string.badge_premium_seasonal_steward_desc
+            "premium_lifelist_legend" -> Res.string.badge_premium_lifelist_legend_desc
+            "premium_rare_seeker" -> Res.string.badge_premium_rare_seeker_desc
+            "premium_field_member" -> Res.string.badge_premium_field_member_desc
             else -> error("No description resource for badgeId=$badgeId")
         }
 }

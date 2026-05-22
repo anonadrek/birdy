@@ -318,6 +318,28 @@
     <string name="badge_name_rare_10">Mästar-skådare</string>
     <string name="badge_desc_rare_10">Tio sällsynta arter — imponerande.</string>
 
+    <!-- ===== Plan 6b3: Premium fält-märken (10 st) ===== -->
+    <string name="badge_premium_dawn_chorus_name">Gryningskör</string>
+    <string name="badge_premium_dawn_chorus_desc">Hitta 5 fåglar före kl 6 på morgonen.</string>
+    <string name="badge_premium_winter_wanderer_name">Vintervandrare</string>
+    <string name="badge_premium_winter_wanderer_desc">Spara 10 vinter-observationer.</string>
+    <string name="badge_premium_migration_mapper_name">Flyttkartograf</string>
+    <string name="badge_premium_migration_mapper_desc">Se en art under alla fyra årstider.</string>
+    <string name="badge_premium_song_scholar_name">Sång-lärd</string>
+    <string name="badge_premium_song_scholar_desc">Identifiera 5 fåglar via ljud.</string>
+    <string name="badge_premium_field_journalist_name">Fältjournalist</string>
+    <string name="badge_premium_field_journalist_desc">Skriv 25 anteckningar på minst 30 tecken.</string>
+    <string name="badge_premium_archive_curator_name">Arkivkurator</string>
+    <string name="badge_premium_archive_curator_desc">Nå 100 unika arter.</string>
+    <string name="badge_premium_seasonal_steward_name">Säsongs-väktare</string>
+    <string name="badge_premium_seasonal_steward_desc">Spara minst en fågel varje årstid.</string>
+    <string name="badge_premium_lifelist_legend_name">Lifelist-legend</string>
+    <string name="badge_premium_lifelist_legend_desc">Nå 250 unika arter.</string>
+    <string name="badge_premium_rare_seeker_name">Sällsynt-sökare</string>
+    <string name="badge_premium_rare_seeker_desc">Hitta 3 sällsynta arter.</string>
+    <string name="badge_premium_field_member_name">Fältmedlem</string>
+    <string name="badge_premium_field_member_desc">Välkommen till Birdy Premium.</string>
+
     <!-- ===== Plan 7a: Onboarding ===== -->
     <string name="onboarding_skip">Hoppa över</string>
 
