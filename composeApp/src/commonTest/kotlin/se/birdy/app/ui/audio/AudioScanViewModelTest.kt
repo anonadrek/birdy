@@ -2,6 +2,7 @@ package se.birdy.app.ui.audio
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
@@ -23,7 +24,10 @@ private class FakeRecorder(
     private val pcm: ShortArray = ShortArray(144_000),
 ) : AudioRecorderApi {
     override suspend fun record3s(onLevel: (Float) -> Unit): ShortArray {
-        repeat(3) { onLevel(0.5f) }
+        repeat(3) {
+            onLevel(0.5f)
+            delay(1_000L)
+        }
         return pcm
     }
 }
