@@ -99,6 +99,8 @@ fun LifelistScreen(
     onScanCtaClick: () -> Unit,
     onPremiumClick: () -> Unit,
     showPremiumTeaser: Boolean = true,
+    livePreviewState: se.birdy.app.ui.stats.SeasonStatsUiState.Loaded? = null,
+    onSeasonStatsClick: () -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     JournalScaffold { padding ->
@@ -114,6 +116,8 @@ fun LifelistScreen(
                         onSortToggle = viewModel::onSortToggle,
                         onPremiumClick = onPremiumClick,
                         showPremiumTeaser = showPremiumTeaser,
+                        livePreviewState = livePreviewState,
+                        onSeasonStatsClick = onSeasonStatsClick,
                     )
             }
         }
@@ -176,6 +180,8 @@ private fun LoadedLifelist(
     onSortToggle: () -> Unit,
     onPremiumClick: () -> Unit,
     showPremiumTeaser: Boolean,
+    livePreviewState: se.birdy.app.ui.stats.SeasonStatsUiState.Loaded? = null,
+    onSeasonStatsClick: () -> Unit = {},
 ) {
     val now = remember { Clock.System.now() }
     val labelStat1 = stringResource(Res.string.lifelist_stat_species)
@@ -289,6 +295,24 @@ private fun LoadedLifelist(
                     overlayCta = stringResource(Res.string.premium_lifelist_cta),
                     overlayBadge = stringResource(Res.string.premium_lifelist_badge),
                     onClick = onPremiumClick,
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                )
+            }
+        } else if (livePreviewState != null) {
+            item {
+                Spacer(Modifier.height(20.dp))
+                Text(
+                    text = stringResource(Res.string.premium_lifelist_title),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.W600,
+                    letterSpacing = 0.16.em,
+                    color = MarginaliaInk,
+                    modifier = Modifier.padding(horizontal = 24.dp, vertical = 6.dp),
+                )
+                Spacer(Modifier.height(8.dp))
+                se.birdy.app.ui.stats.LiveStatsPreview(
+                    state = livePreviewState,
+                    onOpen = onSeasonStatsClick,
                     modifier = Modifier.padding(horizontal = 16.dp),
                 )
             }

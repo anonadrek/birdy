@@ -102,9 +102,6 @@ fun AppScaffold(graph: AppGraph) {
                     onNavigateToAudioScan = {
                         navController.navigate(AppRoute.AudioScan) { launchSingleTop = true }
                     },
-                    onNavigateToPremium = {
-                        navController.navigate(AppRoute.Premium) { launchSingleTop = true }
-                    },
                 )
             }
             composable<AppRoute.Scan> {
@@ -168,6 +165,15 @@ fun AppScaffold(graph: AppGraph) {
                 }
             }
             composable<AppRoute.Lifelist> {
+                val livePreviewState =
+                    if (effectivePremiumActive) {
+                        val seasonStatsVm = remember(graph) { graph.seasonStatsViewModel() }
+                        LaunchedEffect(seasonStatsVm) { seasonStatsVm.onEnter() }
+                        val state by seasonStatsVm.state.collectAsState()
+                        state as? se.birdy.app.ui.stats.SeasonStatsUiState.Loaded
+                    } else {
+                        null
+                    }
                 LifelistScreen(
                     viewModel = remember(graph) { graph.lifelistViewModel() },
                     onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
@@ -179,6 +185,8 @@ fun AppScaffold(graph: AppGraph) {
                     },
                     onPremiumClick = { navController.navigate(AppRoute.Premium) },
                     showPremiumTeaser = showPremiumTeaser,
+                    livePreviewState = livePreviewState,
+                    onSeasonStatsClick = { navController.navigate(AppRoute.SeasonStats) },
                 )
             }
             composable<AppRoute.ObservationDetail> { entry ->
@@ -244,6 +252,17 @@ fun AppScaffold(graph: AppGraph) {
                             popUpTo(AppRoute.Listen) { inclusive = false }
                         }
                     },
+                    onBack = { navController.popBackStack() },
+                )
+            }
+            composable<AppRoute.SeasonStats> {
+                LaunchedEffect(effectivePremiumActive) {
+                    if (!effectivePremiumActive) {
+                        navController.popBackStack()
+                    }
+                }
+                se.birdy.app.ui.stats.SeasonStatsScreen(
+                    viewModel = remember(graph) { graph.seasonStatsViewModel() },
                     onBack = { navController.popBackStack() },
                 )
             }

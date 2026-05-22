@@ -51,4 +51,10 @@ sealed interface AppRoute {
      * deferred to T6 which refactors AppRoute.MatchResult to accept ScanSource JSON.
      */
     @Serializable data object AudioScan : AppRoute
+
+    /**
+     * Plan 6b3 T12: Season Statistics page (premium-gated). Entered from the
+     * Lifelist `LiveStatsPreview` block when premium is active.
+     */
+    @Serializable data object SeasonStats : AppRoute
 }

@@ -26,6 +26,7 @@ import se.birdy.app.ui.premium.PremiumViewModel
 import se.birdy.app.ui.profile.SpeciesProfileViewModel
 import se.birdy.app.ui.scan.ScanViewModel
 import se.birdy.app.ui.settings.SettingsViewModel
+import se.birdy.app.ui.stats.SeasonStatsViewModel
 import se.birdy.app.usecase.JournalExportResult
 import se.birdy.app.usecase.SaveObservationUseCase
 import se.birdy.content.Locale
@@ -240,6 +241,15 @@ class AppGraph(
             locale = defaultLocale,
         )
 
+    fun seasonStatsViewModel(): SeasonStatsViewModel =
+        SeasonStatsViewModel(
+            observationRepo = observationRepository,
+            speciesRepo = repository,
+            clock = clock,
+            zone = timeZone,
+            locale = defaultLocale,
+        )
+
     fun settingsViewModel(): SettingsViewModel = SettingsViewModel(userPreferences, premiumRepository)
 
     fun premiumViewModel(): PremiumViewModel =
@@ -249,13 +259,7 @@ class AppGraph(
             formattedPricesFlow = formattedPricesFlow ?: MutableStateFlow(FormattedPrices()),
         )
 
-    fun listenLauncherViewModel(): ListenLauncherViewModel =
-        ListenLauncherViewModel(
-            premiumStateFlow =
-                premiumOverride
-                    ?.let { MutableStateFlow<PremiumState>(it) }
-                    ?: premiumRepository.state,
-        )
+    fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel()
 
     fun onboardingViewModel(fallbackName: String): OnboardingViewModel =
         OnboardingViewModel(prefs = userPreferences, defaultFallbackName = fallbackName)
