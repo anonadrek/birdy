@@ -1,6 +1,6 @@
 # Birdy — Terms of Use
 
-_Last updated: 2026-05-15_
+_Last updated: 2026-05-22_
 
 These terms govern your use of the **Birdy** Android application
 ("the App") provided by **Albin Viktor Lindblom** ("we", "us").
@@ -23,27 +23,40 @@ your personal, non-commercial use. You may not:
 
 ## 3. AI classification is approximate
 
-Birdy uses a machine-learning classifier to suggest bird species from
-images. **Classifications are approximate and may be wrong.** Birdy is
-an educational and field-journaling tool, **not** a substitute for a
-trained ornithologist, a published field guide, or expert
-identification when accurate identification matters (e.g., legal
-hunting, sensitive surveys, conservation work).
+Birdy uses machine-learning classifiers to suggest bird species from
+images and audio. **Classifications are approximate and may be wrong.**
+Birdy is an educational and field-journaling tool, **not** a
+substitute for a trained ornithologist, a published field guide, or
+expert identification when accurate identification matters (e.g.,
+legal hunting, sensitive surveys, conservation work).
 
 ## 4. Content sources
 
 Encyclopedia text and reference photos are derived from **Wikidata**,
 **Wikipedia**, and **Wikimedia Commons** under Creative Commons
-Attribution-ShareAlike (CC BY-SA) licenses. Attribution is preserved in
-the app's About screen. The AIY Birds V1 model is from Google under
-Apache 2.0.
+Attribution-ShareAlike (CC BY-SA) licenses. Attribution is preserved
+in the app's About screen.
 
-## 5. Premium subscriptions
+Machine-learning models bundled with the app:
 
-Premium features are sold via Google Play Billing. Subscriptions
-auto-renew unless cancelled at least 24 hours before the end of the
-current period, per Google Play's standard terms. Refunds follow
-Google Play's refund policy.
+- **AIY Birds V1** (image classifier) — Google, Apache 2.0.
+- **BirdNET-Lite v2** (audio classifier) — Cornell Lab of Ornithology.
+  Source code under MIT; model weights under **CC BY-NC-SA 4.0**
+  (NonCommercial). Audio identification is provided as a free
+  feature for all users in compliance with the model's license.
+
+## 5. Premium purchases
+
+Premium features (PDF export, season statistics, premium field
+badges) are sold via Google Play Billing as either:
+
+- An **annual subscription**, which auto-renews unless cancelled at
+  least 24 hours before the end of the current period, per Google
+  Play's standard terms.
+- A **lifetime one-time purchase**, which is non-recurring.
+
+Refunds follow Google Play's refund policy. Audio-identification is
+**not** behind a paywall and remains free for all users.
 
 ## 6. No warranty
 
@@ -80,4 +93,4 @@ current version.
 
 ## 11. Contact
 
-Questions? Email **feedback@birdy.app**.
+Questions? Email **albin@abrahamssons.se**.

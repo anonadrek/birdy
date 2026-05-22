@@ -129,7 +129,7 @@ fun SettingsScreen(
                 SettingsEffect.OpenTermsUrl -> openExternalUrl("https://anonadrek.github.io/birdy/terms.html")
                 SettingsEffect.RateOnPlayStore -> openPlayStoreListing("se.birdy.android")
                 SettingsEffect.ShareApp -> shareApp(shareText)
-                SettingsEffect.SendFeedback -> openMailto("feedback@birdy.app", feedbackSubject)
+                SettingsEffect.SendFeedback -> openMailto("albin@abrahamssons.se", feedbackSubject)
                 SettingsEffect.OpenAbout -> onNavigateToAbout()
             }
         }

@@ -73,7 +73,7 @@
       { "q": "Vad ingår?", "a": "839 europeiska fåglar — varje art i EBBA2-atlasen plus nära släktingar, med beskrivningar, foton och utbredningsinformation." },
       { "q": "Finns en iOS-version?", "a": "Inte än. Android först. iOS kommer efter lansering om det finns efterfrågan." },
       { "q": "Hur funkar ljudet?", "a": "Håll mikrofonknappen i 3 sekunder. BirdNET-Lite körs på enheten, samma offline-garanti." },
-      { "q": "Andra frågor?", "a": "Mejla feedback@birdy.app — jag läser varje meddelande." }
+      { "q": "Andra frågor?", "a": "Mejla albin@abrahamssons.se — jag läser varje meddelande." }
     ]
   },
   "finalCta": {
@@ -85,7 +85,7 @@
       { "label": "Juridik", "href": "/legal/" },
       { "label": "Integritet", "href": "/legal/privacy/" },
       { "label": "Villkor", "href": "/legal/terms/" },
-      { "label": "E-post", "href": "mailto:feedback@birdy.app" },
+      { "label": "E-post", "href": "mailto:albin@abrahamssons.se" },
       { "label": "EN", "href": "/" }
     ],
     "credit": "Skapad av Albin · Sverige · 2026 · v1.0.0"

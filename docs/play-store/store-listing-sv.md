@@ -70,6 +70,6 @@ Utbildning / Naturvetenskap
 Alla åldrar (13+)
 
 ## Kontakt
-- E-post: feedback@birdy.app
+- E-post: albin@abrahamssons.se
 - Webbplats: https://anonadrek.github.io/birdy/
 - Integritetspolicy: https://anonadrek.github.io/birdy/privacy.html

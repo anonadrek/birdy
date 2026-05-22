@@ -73,7 +73,7 @@
       { "q": "What's covered?", "a": "839 European birds — every species in the EBBA2 atlas plus close relatives, with descriptions, photos and range information." },
       { "q": "Is there an iOS version?", "a": "Not yet. Android first. iOS comes after launch if there is demand." },
       { "q": "What about audio?", "a": "Hold the mic button for 3 seconds. BirdNET-Lite runs on-device, same offline guarantee." },
-      { "q": "Other questions?", "a": "Email feedback@birdy.app — I read every one." }
+      { "q": "Other questions?", "a": "Email albin@abrahamssons.se — I read every one." }
     ]
   },
   "finalCta": {
@@ -85,7 +85,7 @@
       { "label": "Legal", "href": "/legal/" },
       { "label": "Privacy", "href": "/legal/privacy/" },
       { "label": "Terms", "href": "/legal/terms/" },
-      { "label": "Email", "href": "mailto:feedback@birdy.app" },
+      { "label": "Email", "href": "mailto:albin@abrahamssons.se" },
       { "label": "SV", "href": "/sv/" }
     ],
     "credit": "Made by Albin · Sweden · 2026 · v1.0.0"

@@ -70,6 +70,6 @@ Education / Nature
 Everyone (13+)
 
 ## Contact
-- Email: feedback@birdy.app
+- Email: albin@abrahamssons.se
 - Website: https://anonadrek.github.io/birdy/
 - Privacy policy: https://anonadrek.github.io/birdy/privacy.html

@@ -69,7 +69,7 @@ that are most likely to break.
 
 ## How to report a bug
 
-Use **Settings → Feedback** (opens mailto: to feedback@birdy.app).
+Use **Settings → Feedback** (opens mailto: to albin@abrahamssons.se).
 Include:
 - What you were doing
 - What you expected to happen

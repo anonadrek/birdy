@@ -9,6 +9,7 @@ AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + fo
 ## Status (2026-05-22)
 
 - **Android-app:** All kod-scope för v1.0 utom Plan 6b3 är klar. Senaste tag: `v0.9.0b-audio` (Plan 6b2 audio-ID). VersionCode 110, versionName 1.0.0-rc2. Nästa = **Plan 6b3** (Premium content: PDF-export + season-stats + 10 fält-märken) → tag `v0.9.0c-premium-content` → `v1.0.0`. Brainstorm + writing-plans behövs (spec/plan finns ej ännu). Strategi: finish ALL sprintar innan Closed Testing 14-dagarsklockan startas, så testers ser full v1.0.
+- **BirdNET-licensbeslut (2026-05-22):** BirdNET-Lite-modellen är **CC BY-NC-SA 4.0 (NonCommercial)** — får inte gate:as bakom Premium. **Option A vald:** audio-ID är gratis för alla. PremiumGate i `ListenLauncher` rivs innan testare bjuds in. Premium-tier intäktsmodell står på Plan 6b3-features (PDF, stats, badges) som vi byggt själva. Detaljer i memory `project_birdnet_license_decision.md`.
 - **Marketing-website:** Live på `https://birdy.community` via Vercel (Astro 5 + Tailwind v4 + i18n EN/SV). Inkluderar `/legal/{privacy,terms,data-safety}/`. Gammal GitHub Pages-deploy (birdy.app via `pages.yml`) är avskaffad. Senaste deploy fungerar; setup-gotcha = Vercel **Root Directory måste vara `website`** (annars ENOENT på package.json).
 - **Google Play:** Developer account approved 2026-05-20 (personligt konto). AB-flytt deferred till post-launch via Account Transfer. Billing v8 IPC-verify deferred till Internal Testing (kräver app entry + license testers i Play Console).
 - **Ej-pushade lokala commits:** Plan 6b3 har 4 dev-commits ahead of origin (parallell agent jobbar autonomt). Lämna i fred.
@@ -34,7 +35,7 @@ Full per-plan historik: se "Avslutade planer (referens)" nedan + auto-memory.
 | 7e | Premium tier — PremiumScreen + per-tab teasers + cold-start modal | ✅ `v0.7.0e-premium` |
 | 6a | Foundation — UX-polish + release-mekanik (R8, signing, icon, a11y) | ✅ `v0.8.0-rc1` |
 | 6b1 | Billing v8 + launch-prep (PremiumBillingClient + Restore Purchases) | ✅ `v0.9.0a-billing` |
-| 6b2 | Audio-ID via BirdNET-Lite (3s rec + FlexRFFT TF Select op) | ✅ `v0.9.0b-audio` |
+| 6b2 | Audio-ID via BirdNET-Lite (3s rec + FlexRFFT TF Select op) — **free-tier** | ✅ `v0.9.0b-audio` (PremiumGate rivet 2026-05-22) |
 | 6b3 | Premium content (PDF-export + season-statistics + 10 fält-märken) | ⏳ pågår → `v0.9.0c-premium-content` → `v1.0.0` |
 | W | Marketing-website (Astro + Vercel + birdy.community + /legal/) | ✅ Live |
 
@@ -173,7 +174,7 @@ cd website && npm run test:i18n    # SV/EN parity check
 
 1. **URL-migration:** `SettingsScreen.kt` rad ~128–129 + Play Console store listing pekar fortfarande på `https://anonadrek.github.io/birdy/{privacy,terms}.html`. Uppdatera till `https://birdy.community/legal/{privacy,terms}/` i nästa Android release-cykel. Gamla URL:erna fungerar tills GH Pages slås av (steg 2).
 2. **GitHub Pages teardown:** I repo Settings → Pages, sätt Source till "None". `pages.yml` är redan borttagen (Plan W T2).
-3. **Email migration:** `feedback@birdy.app` → `feedback@birdy.community` när MX sätts upp på birdy.community. Touchar `website/src/content/copy.{en,sv}.json` (FAQ + footer) + alla 5 markdown-filer i `docs/play-store/`.
+3. **Email migration:** Sätt upp `feedback@birdy.community` (Cloudflare Email Routing eller Resend Inbound) under closed testing. **Bridge nu = `albin@abrahamssons.se`** — bytt in i alla legal-docs 2026-05-22. När birdy.community-mailen är live: byt tillbaka i `website/src/content/copy.{en,sv}.json` (FAQ + footer) + alla markdown-filer i `docs/play-store/`.
 4. **Billing v8 IPC runtime-verify** (deferred från 6b1): purchase-flow + Restore Purchases + Active(YEARLY/LIFETIME)-state-flip. Kräver Internal Testing-app entry + in-app products + license testers i Play Console.
 5. **Audio accuracy eval** (deferred från 6b2): kräver xeno-canto API v3 key. Pipeline klar i `tools/ml-eval/audio_accuracy_report_2026-05-21.md`.
 6. **AB-flytt:** Account Transfer av Play Console till AB-bolaget när det är registrerat (post-launch).
@@ -225,3 +226,4 @@ Saker som har bitit oss mer än en gång — kolla först här om något konstig
 - **Quality-review måste köra `:androidApp:installDebug` + device-test** (Plan 5a process-lärdom) — `:composeApp:assembleDebug` ensam missar manifest/dep-trap för Android-screens.
 - **FlexRFFT-crash i TFLite-audio** — kräver `tensorflow-lite-select-tf-ops:2.16.1` dep, annars failar node 29 "Failed to prepare". Diagnostisk logging > catch-all `Throwable`-swallow.
 - **Vercel `npm install` ENOENT** — Root Directory måste vara `website` i project settings (inte `/website`, inte tomt).
+- **BirdNET-Lite-modellen är CC BY-NC-SA (NonCommercial)** — får INTE gate:as bakom Premium. Audio-ID är gratis-feature i v1.0. Om vi någonsin lägger något bakom Premium som rör BirdNET → licensbrott. Premium = endast Plan 6b3-features (PDF/stats/badges) som vi byggt själva.

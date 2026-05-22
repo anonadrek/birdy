@@ -3,7 +3,7 @@
 This document captures the answers we will provide in the Google Play
 Console **Data Safety** section. Keep in sync with code reality.
 
-_Last reviewed: 2026-05-17 (Plan 6b1 v0.9.0a-billing) — Billing v8 integration adds no new data collection (Google's SDK handles purchase tokens; we receive only entitlement state)_
+_Last reviewed: 2026-05-22 (Plan 6b2 v0.9.0b-audio + BirdNET license decision) — audio-ID shipped as free feature; RECORD_AUDIO permission added; no new data collection — recordings stay on-device_
 
 ## Data collection and security
 
@@ -11,11 +11,12 @@ _Last reviewed: 2026-05-17 (Plan 6b1 v0.9.0a-billing) — Billing v8 integration
 **No.**
 
 Birdy stores user data only on the device (SQLDelight database in the
-app's private files dir, DataStore preferences, and photos in
-`filesDir/observations/`). The app makes no network requests in v1 —
-neither for analytics, nor for image-classification (the AIY Birds V1
-TFLite model runs entirely on-device), nor for content fetches
-(encyclopedia text + photos are bundled at build time).
+app's private files dir, DataStore preferences, photos and audio
+recordings in `filesDir/observations/`). The app makes no network
+requests in v1 — neither for analytics, nor for image- or
+audio-classification (the AIY Birds V1 + BirdNET-Lite TFLite models run
+entirely on-device), nor for content fetches (encyclopedia text +
+photos are bundled at build time).
 
 The only data that ever leaves the device is via:
 - Google Play Billing (purchase token; handled entirely by Google's
@@ -47,7 +48,9 @@ in the form:
 - Messages: **No**
 - Photos and videos: **No** (user-supplied photos stay in app-private
   storage; not "collected" per Play Console definition)
-- Audio files: **No**
+- Audio files: **No** (user-recorded 3-second audio clips stay in
+  app-private storage when attached to an observation; otherwise
+  discarded after on-device classification; never transmitted)
 - Files and docs: **No**
 - Calendar: **No**
 - Contacts: **No**
@@ -70,12 +73,15 @@ in the form:
 
 - `android.permission.CAMERA` (foreground only) — used for
   on-device bird ID; frames discarded after classification.
+- `android.permission.RECORD_AUDIO` (foreground only) — used for
+  on-device bird-call ID (BirdNET-Lite, 3-second clips); audio is
+  saved to your observation only if you tap save, otherwise discarded
+  after classification. Never uploaded.
 
 We do **not** declare:
 - Photos permission (`READ_MEDIA_IMAGES` / `READ_EXTERNAL_STORAGE`):
   we use Android 13+'s `PickVisualMedia` which requires no permission
 - Location permission: location_label is a text field, not GPS
-- Microphone permission: deferred to a future audio-ID release
 - Network permission: not declared because we don't make network calls
 
 ## App access
@@ -95,3 +101,11 @@ features, provide:
   is handled by Google's BillingClient SDK, not by Birdy — purchase
   tokens never reach our code (we only see acknowledged-entitlement
   state). No new permissions, no new data types, no new sharing.
+- **2026-05-22** — re-reviewed for v0.9.0b-audio (Plan 6b2 audio-ID via
+  BirdNET-Lite) + Option-A BirdNET-license decision. Added
+  `RECORD_AUDIO` permission disclosure. Audio recordings are
+  3-second clips classified on-device by BirdNET-Lite (CC BY-NC-SA
+  4.0); saved to app-private storage only when user attaches to an
+  observation, otherwise discarded. Zero network calls remain.
+  Audio-ID ships as a free feature for all users, not Premium-gated
+  (the BirdNET license forbids commercial gating of the model).
