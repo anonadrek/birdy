@@ -1,7 +1,12 @@
 package se.birdy.app.di
 
 import androidx.compose.runtime.Composable
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.serialization.json.Json
@@ -156,6 +161,16 @@ class AppGraph(
 
     private val recalculateBadges = RecalculateBadgesUseCase(clock = clock, zone = timeZone)
 
+    val effectivePremiumActive: StateFlow<Boolean> by lazy {
+        premiumRepository.state
+            .map { backend -> (premiumOverride ?: backend) is PremiumState.Active }
+            .stateIn(
+                MainScope(),
+                SharingStarted.Eagerly,
+                (premiumOverride ?: premiumRepository.state.value) is PremiumState.Active,
+            )
+    }
+
     val badgeBackfill: BadgeBackfillOnAppStart by lazy {
         BadgeBackfillOnAppStart(
             recalc = recalculateBadges,
@@ -221,6 +236,7 @@ class AppGraph(
             recalc = recalculateBadges,
             zone = timeZone,
             locale = defaultLocale,
+            premiumActiveFlow = effectivePremiumActive,
         )
 
     fun lifelistViewModel(): LifelistViewModel =

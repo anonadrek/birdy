@@ -55,6 +55,8 @@ import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
+import se.birdy.app.ui.components.StampSeal
+import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.components.StampTrack
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
@@ -185,16 +187,38 @@ private fun LoadedContent(
                 modifier = Modifier.fillMaxWidth(),
             )
         }
-        if (showPremiumTeaser) {
+        if (showPremiumTeaser || state.premiumActive) {
             item(span = { GridItemSpan(maxLineSpan) }) {
-                PremiumBadgesRow(onPremiumClick = onPremiumClick)
+                PremiumBadgesSection(
+                    premiumActive = state.premiumActive,
+                    badges = state.premiumBadges,
+                    onPremiumClick = onPremiumClick,
+                    onUnlockedClick = { p ->
+                        p.unlock?.let { onUnlockedClick(p.badge, it) }
+                    },
+                    onLockedClick = { p ->
+                        onLockedClick(
+                            LockedBadgeProgress(
+                                badge = p.badge,
+                                state = p.state,
+                                stampNumber = p.stampNumber,
+                            ),
+                        )
+                    },
+                )
             }
         }
     }
 }
 
 @Composable
-private fun PremiumBadgesRow(onPremiumClick: () -> Unit) {
+private fun PremiumBadgesSection(
+    premiumActive: Boolean,
+    badges: List<PremiumBadgeProgress>,
+    onPremiumClick: () -> Unit,
+    onUnlockedClick: (PremiumBadgeProgress) -> Unit,
+    onLockedClick: (PremiumBadgeProgress) -> Unit,
+) {
     Column(modifier = Modifier.fillMaxWidth().padding(top = 24.dp)) {
         Text(
             text = stringResource(Res.string.premium_badges_section),
@@ -204,45 +228,121 @@ private fun PremiumBadgesRow(onPremiumClick: () -> Unit) {
             color = MarginaliaInk,
             modifier = Modifier.padding(start = 8.dp, bottom = 8.dp),
         )
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            repeat(5) {
-                Box(
-                    modifier =
-                        Modifier
-                            .weight(1f)
-                            .height(44.dp)
-                            .clip(CircleShape)
-                            .background(Color.Transparent)
-                            .border(1.5.dp, AccentCopper.copy(alpha = 0.5f), CircleShape),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text("★", color = AccentCopper.copy(alpha = 0.7f), fontSize = 16.sp)
+        if (premiumActive) {
+            PremiumBadgesActiveGrid(
+                badges = badges,
+                onUnlockedClick = onUnlockedClick,
+                onLockedClick = onLockedClick,
+            )
+        } else {
+            PremiumBadgesTeaserRow(onPremiumClick = onPremiumClick)
+        }
+        Spacer(Modifier.height(24.dp))
+    }
+}
+
+@Composable
+private fun PremiumBadgeCell(
+    progress: PremiumBadgeProgress,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val nameRes = BadgeStringMap.nameFor(progress.badge.id)
+    val name = stringResource(nameRes)
+    val state =
+        when {
+            progress.unlock != null ->
+                StampSealState.Unlocked(
+                    number = progress.stampNumber,
+                    glyph = null,
+                    name = name,
+                )
+            progress.state is BadgeGridState.InProgress ->
+                StampSealState.InProgress(
+                    number = progress.stampNumber,
+                    name = name,
+                    progressLabel = "${progress.state.current}/${progress.state.target}",
+                )
+            else -> StampSealState.Locked(name = name)
+        }
+    StampSeal(
+        state = state,
+        modifier = modifier,
+        onClick = onClick,
+    )
+}
+
+@Composable
+private fun PremiumBadgesActiveGrid(
+    badges: List<PremiumBadgeProgress>,
+    onUnlockedClick: (PremiumBadgeProgress) -> Unit,
+    onLockedClick: (PremiumBadgeProgress) -> Unit,
+) {
+    val rows = badges.chunked(5)
+    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        rows.forEach { row ->
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                row.forEach { bp ->
+                    Box(modifier = Modifier.weight(1f)) {
+                        PremiumBadgeCell(
+                            progress = bp,
+                            onClick = {
+                                if (bp.unlock != null) onUnlockedClick(bp) else onLockedClick(bp)
+                            },
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
+                }
+                repeat(5 - row.size) {
+                    Spacer(Modifier.weight(1f))
                 }
             }
         }
-        Spacer(Modifier.height(14.dp))
-        Box(
-            modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(999.dp))
-                    .background(AccentCopper)
-                    .clickable(onClick = onPremiumClick)
-                    .padding(vertical = 10.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = stringResource(Res.string.premium_badges_cta),
-                color = Color.White,
-                fontFamily = rememberCaveat(),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.W600,
-            )
+    }
+}
+
+@Composable
+private fun PremiumBadgesTeaserRow(onPremiumClick: () -> Unit) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        repeat(5) {
+            Box(
+                modifier =
+                    Modifier
+                        .weight(1f)
+                        .height(44.dp)
+                        .clip(CircleShape)
+                        .background(Color.Transparent)
+                        .border(1.5.dp, AccentCopper.copy(alpha = 0.5f), CircleShape),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text("★", color = AccentCopper.copy(alpha = 0.7f), fontSize = 16.sp)
+            }
         }
-        Spacer(Modifier.height(24.dp))
+    }
+    Spacer(Modifier.height(14.dp))
+    Box(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(999.dp))
+                .background(AccentCopper)
+                .clickable(onClick = onPremiumClick)
+                .padding(vertical = 10.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = stringResource(Res.string.premium_badges_cta),
+            color = Color.White,
+            fontFamily = rememberCaveat(),
+            fontSize = 16.sp,
+            fontWeight = FontWeight.W600,
+        )
     }
 }
 

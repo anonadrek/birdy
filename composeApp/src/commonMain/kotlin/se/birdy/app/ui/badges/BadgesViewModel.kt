@@ -35,17 +35,19 @@ class BadgesViewModel(
     // TODO Plan 5b Task 12: passed through for badge title/description rendering.
     @Suppress("UnusedPrivateMember")
     private val locale: Locale,
+    private val premiumActiveFlow: Flow<Boolean> = kotlinx.coroutines.flow.flowOf(false),
 ) : ViewModel() {
     val state: StateFlow<BadgesUiState> =
         combine(
             obsRepo.observeAll(),
             badgeRepo.observeUnlocks(),
             speciesTotalCount,
-        ) { observations, unlocks, totalSpecies ->
+            premiumActiveFlow,
+        ) { observations, unlocks, totalSpecies, premiumActive ->
             // speciesByQid() runs per upstream emission (so per save / unlock change). The
             // backing SqlDelightSpeciesRepository does 6 SELECTs ~once per visit; cheap for ~700 rows.
             val species = speciesByQid()
-            buildLoaded(observations, unlocks, totalSpecies, species) as BadgesUiState
+            buildLoaded(observations, unlocks, totalSpecies, species, premiumActive) as BadgesUiState
         }.onStart { emit(BadgesUiState.Loading) }
             .catch { emit(BadgesUiState.Error(BadgeErrorKind.LoadFailed)) }
             .stateIn(
@@ -54,16 +56,22 @@ class BadgesViewModel(
                 BadgesUiState.Loading,
             )
 
+    @Suppress("LongParameterList")
     private fun buildLoaded(
         observations: List<Observation>,
         unlocks: List<BadgeUnlock>,
         totalSpecies: Int,
         speciesMap: Map<SpeciesId, Species>,
+        premiumActive: Boolean,
     ): BadgesUiState.Loaded {
         val seenSpecies = observations.mapNotNull { it.speciesId }.toSet().size
         val unlockedIds = unlocks.map { it.badgeId }.toSet()
+        val unlocksById = unlocks.associateBy { it.badgeId }
         val capturedInstants = observations.map { it.capturedAt }
         val stampNumbersById = catalog.badges.withIndex().associate { (i, b) -> b.id to (i + 1) }
+
+        val regularBadges = catalog.badges.filter { !it.isPremium }
+        val premiumBadgeDefs = catalog.badges.filter { it.isPremium }
 
         val recentlyUnlocked =
             unlocks
@@ -76,7 +84,7 @@ class BadgesViewModel(
                 }
 
         val locked =
-            catalog.badges
+            regularBadges
                 .filter { it.id !in unlockedIds }
                 .map { b ->
                     LockedBadgeProgress(
@@ -85,6 +93,21 @@ class BadgesViewModel(
                         stampNumber = stampNumbersById[b.id] ?: 0,
                     )
                 }.sortedWith(compareBy({ it.badge.category.order }, { it.badge.rule.target }))
+
+        val premiumBadges =
+            premiumBadgeDefs.map { b ->
+                PremiumBadgeProgress(
+                    badge = b,
+                    unlock = unlocksById[b.id],
+                    state =
+                        if (b.id in unlockedIds) {
+                            BadgeGridState.Locked // ignored when unlock != null
+                        } else {
+                            computeLockedState(b, observations, speciesMap)
+                        },
+                    stampNumber = stampNumbersById[b.id] ?: 0,
+                )
+            }
 
         val weeklyStreak = longestWeeklyStreak(capturedInstants, zone).takeIf { it >= 2 }
         val monthlyStreak = longestMonthlyStreak(capturedInstants, zone).takeIf { it >= 2 }
@@ -97,6 +120,8 @@ class BadgesViewModel(
             monthlyStreak = monthlyStreak,
             recentlyUnlocked = recentlyUnlocked,
             locked = locked,
+            premiumBadges = premiumBadges,
+            premiumActive = premiumActive,
         )
     }
 
