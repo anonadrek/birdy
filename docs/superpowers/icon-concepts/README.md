@@ -64,3 +64,19 @@ Färgpaletten har en lätt drift mot varmare/mer mättat koppar jämfört med ap
 - Adaptive icon XML (`mipmap-anydpi-v26/ic_launcher.xml`)
 - Eventuell uppdatering av in-app `AccentCopper`-token för palett-konsistens
 
+## Refresh (2026-05-22)
+
+Användaren har designat om launcher-ikonen externt — ny flat fågel-i-flykt-silhuett i koppar
+`#A8552D` på paper `#EFE7D6`. Källan ligger i `final/ic_launcher_512.png` (512×512 PNG).
+SVG-källan (`ic_launcher_512.svg` / `ic_launcher_monochrome.svg` / `feature_graphic.svg`) speglar
+**inte längre** den faktiska launcher-ikonen som finns på enheten — PNG:n är canonical source.
+
+Pipeline för regenerering (`tools/update-launcher-icon.py`):
+- Legacy mipmap-* PNGs (mdpi 48 / hdpi 72 / xhdpi 96 / xxhdpi 144 / xxxhdpi 192) — composed (bg+bird) som-är.
+- Adaptive foreground (`drawable-nodpi/ic_launcher_foreground.png` 432×432) — bird-only på transparent, ~78% av canvas (i safe zone).
+- Adaptive monochrome (`drawable-nodpi/ic_launcher_monochrome.png` 432×432) — vit silhuett på transparent (Android tintar via system theme).
+- Adaptive background — `colors.xml` → `ic_launcher_background = #EFE7D6` (samma som `paper_bg`).
+- Play Store hi-res — `docs/play-store/ic_launcher_512.png` (composed 512×512 PNG).
+
+Splash screen använder samma `ic_launcher_foreground` så den får nya fågeln automatiskt.
+
