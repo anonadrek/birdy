@@ -182,6 +182,20 @@ class AppGraph(
         )
     }
 
+    val unlockQueue: se.birdy.app.ui.badges.UnlockQueue by lazy {
+        se.birdy.app.ui.badges
+            .UnlockQueue()
+    }
+
+    val premiumActivationListener: se.birdy.app.bootstrap.PremiumActivationListener by lazy {
+        se.birdy.app.bootstrap.PremiumActivationListener(
+            premiumActiveFlow = effectivePremiumActive,
+            badgeRepo = badgeRepository,
+            unlockQueue = unlockQueue,
+            clock = clock,
+        )
+    }
+
     private val saveObservationUseCase: SaveObservationUseCase =
         SaveObservationUseCase(
             repo = observationRepository,

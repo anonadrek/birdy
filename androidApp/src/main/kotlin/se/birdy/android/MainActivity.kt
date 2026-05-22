@@ -164,6 +164,9 @@ class MainActivity : ComponentActivity() {
         // Build graph before setContent so recomposition cannot orphan
         // ClassifierBootstrap or leak the TFLite Interpreter.
         appGraph = buildAppGraph()
+        // Plan 6b3 T19: unlock premium_field_member badge + welcome-sheet
+        // enqueue whenever effectivePremiumActive flips false→true (cancelled with lifecycleScope).
+        appGraph.premiumActivationListener.start(lifecycleScope)
         setContent { App(appGraph) }
     }
 
