@@ -1,10 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import CornerBrackets from './ui/CornerBrackets.astro';
 import EyebrowLabel from './ui/EyebrowLabel.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
-import WingLogo from './ui/WingLogo.astro';
-import Wordmark from './ui/Wordmark.astro';
+import birdyIcon from '../assets/birdy-icon.png';
 import { type Locale, getCopy } from '../lib/i18n';
 
 interface Props {
@@ -31,8 +31,16 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
     <a href="#loop" class="scroll-cue">{t.hero.scrollCue}</a>
   </div>
   <div class="brand-foot">
-    <WingLogo alt={t.alt.wingLogo} size="40px" />
-    <Wordmark size="44px" alt={t.alt.wordmark} />
+    <Image
+      src={birdyIcon}
+      alt={t.alt.wingLogo}
+      widths={[72, 144, 216]}
+      sizes="72px"
+      quality={88}
+      loading="eager"
+      decoding="async"
+      class="bird-mark"
+    />
   </div>
 </section>
 
@@ -79,6 +87,41 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+  }
+  /*
+   * Bird mark fades + drifts up after the rest of the hero has settled.
+   * Delay gives the eye time to read the headline/CTA first; the mark
+   * arrives like a small wing-beat once you've landed.
+   */
+  .brand-foot :global(.bird-mark) {
+    width: 72px;
+    height: 72px;
+    display: block;
+    opacity: 0;
+    transform: translateY(10px) scale(0.94);
+    animation: bird-mark-rise 1.1s 0.45s var(--ease-paper) forwards;
+    will-change: opacity, transform;
+  }
+  @keyframes bird-mark-rise {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.94);
+    }
+    60% {
+      opacity: 1;
+      transform: translateY(-2px) scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .brand-foot :global(.bird-mark) {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
   }
 </style>
