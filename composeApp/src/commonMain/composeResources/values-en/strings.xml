@@ -503,6 +503,26 @@
     <string name="premium_teaser_export_empty">No observations yet</string>
     <string name="premium_teaser_export_failed">Couldn’t make the PDF — try again</string>
 
+    <!-- Plan 6b3 T11: Season Statistics screen -->
+    <string name="stats_title">Season Statistics</string>
+    <string name="stats_intro_eyebrow">SEASON</string>
+    <string name="stats_intro_headline">A *year* in the field.</string>
+    <string name="stats_intro_sub">Patterns from your observations.</string>
+    <string name="stats_section_months">Observations by month</string>
+    <string name="stats_section_seasons">By season</string>
+    <string name="stats_section_top">Most-seen species</string>
+    <string name="stats_section_cumulative">New species over time</string>
+    <string name="stats_empty_eyebrow">SEASON</string>
+    <string name="stats_empty_headline">Nothing to *chart* yet.</string>
+    <string name="stats_empty_sub">Save a few observations to unlock your year.</string>
+    <string name="stats_back">Back</string>
+    <string name="stats_count_format">%1$d obs</string>
+    <string name="stats_winter">Winter</string>
+    <string name="stats_spring">Spring</string>
+    <string name="stats_summer">Summer</string>
+    <string name="stats_autumn">Autumn</string>
+    <string name="stats_open_link">Open stats →</string>
+
     <!-- ===== Plan 6a Task 9: A11y strings ===== -->
     <!-- AsyncImage contentDescription -->
     <string name="species_photo_label">Photo of %1$s</string>

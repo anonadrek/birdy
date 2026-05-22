@@ -516,6 +516,26 @@
     <string name="premium_teaser_export_empty">Inga observationer ännu</string>
     <string name="premium_teaser_export_failed">Kunde inte skapa PDF — försök igen</string>
 
+    <!-- Plan 6b3 T11: Season Statistics screen -->
+    <string name="stats_title">Säsongsstatistik</string>
+    <string name="stats_intro_eyebrow">SÄSONG</string>
+    <string name="stats_intro_headline">Ett *år* i fält.</string>
+    <string name="stats_intro_sub">Mönster från dina observationer.</string>
+    <string name="stats_section_months">Observationer per månad</string>
+    <string name="stats_section_seasons">Per säsong</string>
+    <string name="stats_section_top">Mest sedda arter</string>
+    <string name="stats_section_cumulative">Nya arter över tid</string>
+    <string name="stats_empty_eyebrow">SÄSONG</string>
+    <string name="stats_empty_headline">Inget att *kartlägga* ännu.</string>
+    <string name="stats_empty_sub">Spara några observationer för att låsa upp ditt år.</string>
+    <string name="stats_back">Tillbaka</string>
+    <string name="stats_count_format">%1$d obs</string>
+    <string name="stats_winter">Vinter</string>
+    <string name="stats_spring">Vår</string>
+    <string name="stats_summer">Sommar</string>
+    <string name="stats_autumn">Höst</string>
+    <string name="stats_open_link">Öppna statistik →</string>
+
     <!-- ===== Plan 6a Task 9: A11y strings ===== -->
     <!-- AsyncImage contentDescription -->
     <string name="species_photo_label">Foto av %1$s</string>
