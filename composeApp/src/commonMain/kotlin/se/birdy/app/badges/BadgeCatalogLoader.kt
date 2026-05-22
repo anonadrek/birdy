@@ -18,7 +18,14 @@ class BadgeCatalogException(
 ) : RuntimeException(message, cause)
 
 object BadgeCatalogLoader {
-    fun parse(yamlText: String): BadgeCatalog {
+    fun parse(yamlText: String): BadgeCatalog = decode(yamlText, premium = false)
+
+    fun parsePremium(yamlText: String): BadgeCatalog = decode(yamlText, premium = true)
+
+    private fun decode(
+        yamlText: String,
+        premium: Boolean,
+    ): BadgeCatalog {
         val raw =
             try {
                 Yaml.default.decodeFromString(RawCatalog.serializer(), yamlText)
@@ -38,6 +45,7 @@ object BadgeCatalogLoader {
                     id = rb.id,
                     category = parseCategory(rb.category),
                     rule = parseRule(rb.id, rb.rule),
+                    isPremium = premium,
                 )
             }
         return BadgeCatalog(version = raw.version, badges = badges)
@@ -45,8 +53,18 @@ object BadgeCatalogLoader {
 
     @OptIn(ExperimentalResourceApi::class)
     suspend fun loadFromResources(): BadgeCatalog {
-        val bytes = Res.readBytes("files/badges.yaml")
-        return parse(bytes.decodeToString())
+        val regular = parse(Res.readBytes("files/badges.yaml").decodeToString())
+        val premium = parsePremium(Res.readBytes("files/premium_badges.yaml").decodeToString())
+        val mergedIds = mutableSetOf<String>()
+        (regular.badges + premium.badges).forEach { b ->
+            if (!mergedIds.add(b.id)) {
+                throw BadgeCatalogException("Duplicate badge id across regular+premium: ${b.id}")
+            }
+        }
+        return BadgeCatalog(
+            version = regular.version * 100 + premium.version,
+            badges = regular.badges + premium.badges,
+        )
     }
 
     private fun parseCategory(raw: String): BadgeCategory =
@@ -83,6 +101,30 @@ object BadgeCatalogLoader {
                     abundance = parseAbundance(raw.abundance ?: missing(badgeId, "abundance")),
                     target = raw.target ?: missing(badgeId, "target"),
                 )
+            "observed_before_hour" ->
+                BadgeRule.ObservedBeforeHour(
+                    hour = raw.hour ?: missing(badgeId, "hour"),
+                    target = raw.target ?: missing(badgeId, "target"),
+                )
+            "species_across_seasons" ->
+                BadgeRule.SpeciesAcrossSeasons(
+                    seasons = raw.seasons ?: missing(badgeId, "seasons"),
+                    target = raw.target ?: missing(badgeId, "target"),
+                )
+            "audio_observation_count" ->
+                BadgeRule.AudioObservationCount(
+                    target = raw.target ?: missing(badgeId, "target"),
+                )
+            "observations_with_note" ->
+                BadgeRule.ObservationsWithNote(
+                    minLength = raw.minLength ?: missing(badgeId, "minLength"),
+                    target = raw.target ?: missing(badgeId, "target"),
+                )
+            "observed_in_all_seasons" ->
+                BadgeRule.ObservedInAllSeasons(
+                    target = raw.target ?: missing(badgeId, "target"),
+                )
+            "manual" -> BadgeRule.Manual
             else -> throw BadgeCatalogException("Unknown rule type for $badgeId: ${raw.type}")
         }
 
@@ -129,5 +171,8 @@ object BadgeCatalogLoader {
         val season: String? = null,
         val family: String? = null,
         val abundance: String? = null,
+        val hour: Int? = null,
+        val seasons: Int? = null,
+        val minLength: Int? = null,
     )
 }

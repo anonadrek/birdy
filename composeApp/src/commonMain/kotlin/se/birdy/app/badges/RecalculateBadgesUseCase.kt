@@ -29,6 +29,7 @@ class RecalculateBadgesUseCase(
         val now = clock.now()
         return catalog.badges
             .filter { it.id !in existingUnlocks }
+            .filter { it.rule !is BadgeRule.Manual }
             .filter { evaluate(it.rule, observations, speciesByQid) }
             .map { BadgeUnlock(it.id, now) }
     }
@@ -85,6 +86,7 @@ class RecalculateBadgesUseCase(
                 observations.count { it.note.length >= rule.minLength }
             is BadgeRule.ObservedInAllSeasons ->
                 if (observations.map { seasonOf(it.capturedAt, zone) }.toSet().size >= 4) 1 else 0
+            BadgeRule.Manual -> 0
         }
 
     private fun mapAbundance(content: ContentAbundance): BadgeAbundance =

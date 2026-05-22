@@ -52,4 +52,8 @@ sealed interface BadgeRule {
     data class ObservedInAllSeasons(
         override val target: Int,
     ) : BadgeRule
+
+    data object Manual : BadgeRule {
+        override val target: Int = 1
+    }
 }

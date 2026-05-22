@@ -7,6 +7,7 @@ import se.birdy.domain.badge.BadgeSeason
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
 
 class BadgeCatalogLoaderTest {
     @Test
@@ -101,6 +102,71 @@ class BadgeCatalogLoaderTest {
     fun `parse fails on syntax error`() {
         val yaml = "not: valid: yaml: ::"
         assertFailsWith<BadgeCatalogException> { BadgeCatalogLoader.parse(yaml) }
+    }
+
+    @Test
+    fun `parsePremium parses v2 yaml with new rule types and sets isPremium=true`() {
+        val yaml =
+            """
+            version: 2
+            badges:
+              - id: premium_dawn_chorus
+                category: rare
+                rule: { type: observed_before_hour, hour: 6, target: 5 }
+              - id: premium_migration_mapper
+                category: rare
+                rule: { type: species_across_seasons, seasons: 4, target: 1 }
+              - id: premium_song_scholar
+                category: rare
+                rule: { type: audio_observation_count, target: 5 }
+              - id: premium_field_journalist
+                category: rare
+                rule: { type: observations_with_note, minLength: 30, target: 25 }
+              - id: premium_seasonal_steward
+                category: season
+                rule: { type: observed_in_all_seasons, target: 1 }
+              - id: premium_field_member
+                category: rare
+                rule: { type: manual, target: 1 }
+            """.trimIndent()
+
+        val catalog = BadgeCatalogLoader.parsePremium(yaml)
+
+        assertEquals(2, catalog.version)
+        assertEquals(6, catalog.badges.size)
+        catalog.badges.forEach { assertTrue(it.isPremium, "${it.id} should be premium") }
+
+        assertEquals(
+            BadgeRule.ObservedBeforeHour(hour = 6, target = 5),
+            catalog.findById("premium_dawn_chorus")!!.rule,
+        )
+        assertEquals(
+            BadgeRule.SpeciesAcrossSeasons(seasons = 4, target = 1),
+            catalog.findById("premium_migration_mapper")!!.rule,
+        )
+        assertEquals(
+            BadgeRule.AudioObservationCount(target = 5),
+            catalog.findById("premium_song_scholar")!!.rule,
+        )
+        assertEquals(
+            BadgeRule.ObservationsWithNote(minLength = 30, target = 25),
+            catalog.findById("premium_field_journalist")!!.rule,
+        )
+        assertEquals(
+            BadgeRule.ObservedInAllSeasons(target = 1),
+            catalog.findById("premium_seasonal_steward")!!.rule,
+        )
+        assertEquals(
+            BadgeRule.Manual,
+            catalog.findById("premium_field_member")!!.rule,
+        )
+    }
+
+    @Test
+    fun `parse without parsePremium leaves isPremium=false`() {
+        val yaml = validYaml()
+        val catalog = BadgeCatalogLoader.parse(yaml)
+        catalog.badges.forEach { assertEquals(false, it.isPremium, "${it.id} should NOT be premium") }
     }
 
     private fun validYaml(): String =

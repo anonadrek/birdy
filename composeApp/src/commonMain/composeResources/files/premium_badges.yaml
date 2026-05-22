@@ -1,45 +1,61 @@
-# Premium-only badges. Rendered as locked-dashed in BadgesScreen "Field Marks"-row.
-# Unlock-logic intentionally missing in v1 — these are visual placeholders gated
-# behind the premium paywall.
-version: 1
+# Premium-only badges. Schema v2 = adds category + rule per badge (icons + names
+# resolved via BadgeStringMap). IDs 1-9 evaluate via BadgeEvaluator;
+# premium_field_member unlocks manually via PremiumActivationListener
+# (rule: type=manual is a sentinel — RecalculateBadgesUseCase skips it).
+version: 2
 badges:
   - id: premium_dawn_chorus
-    icon: "🌅"
-    nameSv: "Gryningskör"
-    nameEn: "Dawn chorus"
+    category: rare
+    rule:
+      type: observed_before_hour
+      hour: 6
+      target: 5
   - id: premium_winter_wanderer
-    icon: "❄"
-    nameSv: "Vintervandrare"
-    nameEn: "Winter wanderer"
+    category: season
+    rule:
+      type: observed_in_season
+      season: winter
+      target: 10
   - id: premium_migration_mapper
-    icon: "🗺"
-    nameSv: "Flyttkartograf"
-    nameEn: "Migration mapper"
+    category: rare
+    rule:
+      type: species_across_seasons
+      seasons: 4
+      target: 1
   - id: premium_song_scholar
-    icon: "♪"
-    nameSv: "Sång-lärd"
-    nameEn: "Song scholar"
+    category: rare
+    rule:
+      type: audio_observation_count
+      target: 5
   - id: premium_field_journalist
-    icon: "✒"
-    nameSv: "Fältjournalist"
-    nameEn: "Field journalist"
+    category: rare
+    rule:
+      type: observations_with_note
+      minLength: 30
+      target: 25
   - id: premium_archive_curator
-    icon: "📚"
-    nameSv: "Arkivkurator"
-    nameEn: "Archive curator"
+    category: progression
+    rule:
+      type: count_unique_species
+      target: 100
   - id: premium_seasonal_steward
-    icon: "🍂"
-    nameSv: "Säsongs-väktare"
-    nameEn: "Seasonal steward"
+    category: season
+    rule:
+      type: observed_in_all_seasons
+      target: 1
   - id: premium_lifelist_legend
-    icon: "★"
-    nameSv: "Lifelist-legend"
-    nameEn: "Lifelist legend"
+    category: progression
+    rule:
+      type: count_unique_species
+      target: 250
   - id: premium_rare_seeker
-    icon: "✦"
-    nameSv: "Sällsynt-sökare"
-    nameEn: "Rare seeker"
+    category: rare
+    rule:
+      type: observed_with_abundance
+      abundance: sällsynt
+      target: 3
   - id: premium_field_member
-    icon: "❦"
-    nameSv: "Fältmedlem"
-    nameEn: "Field member"
+    category: rare
+    rule:
+      type: manual
+      target: 1
