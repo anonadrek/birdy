@@ -40,7 +40,7 @@ class LifelistViewModel(
             if (obs.isEmpty()) {
                 LifelistUiState.Empty
             } else {
-                val byQid = speciesRepo.allByQid()
+                val byQid = speciesRepo.allByQid(locale)
                 buildLoaded(obs, byQid, name.ifEmpty { defaultName() }, stat3, sort)
             }
         }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), LifelistUiState.Loading)

@@ -176,7 +176,7 @@ class SqlDelightSpeciesRepository(
             .mapToOne(Dispatchers.Default)
             .map { it.toInt() }
 
-    override suspend fun allByQid(): Map<SpeciesId, Species> =
+    override suspend fun allByQid(locale: Locale): Map<SpeciesId, Species> =
         withContext(Dispatchers.Default) {
             // Bulk-fetch: 6 queries total regardless of species count (vs N×6 previously)
             val allSpecies = db.speciesQueries.selectAll().executeAsList()
@@ -221,12 +221,12 @@ class SqlDelightSpeciesRepository(
                     val images = imagesBySpecies[row.id].orEmpty()
 
                     val name =
-                        names.firstOrNull { it.locale == Locale.SV.code }?.name
+                        names.firstOrNull { it.locale == locale.code }?.name
                             ?: names.firstOrNull { it.locale == Locale.EN.code }?.name
                             ?: row.scientific_name
-                    val description = pickText(texts, Locale.SV, "description")
-                    val migration = pickText(texts, Locale.SV, "migration")
-                    val marginalia = pickText(texts, Locale.SV, "marginalia")
+                    val description = pickText(texts, locale, "description")
+                    val migration = pickText(texts, locale, "migration")
+                    val marginalia = pickText(texts, locale, "marginalia")
 
                     SpeciesId(row.id) to
                         Species(

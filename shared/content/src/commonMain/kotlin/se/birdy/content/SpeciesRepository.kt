@@ -27,8 +27,12 @@ interface SpeciesRepository {
     fun observeTotalCount(): Flow<Int>
 
     /**
-     * Engångs-snapshot av hela katalogen för rule-engine-evaluering.
-     * Locale påverkar inte resultaten — [Species.taxonomy] och [Species.abundance] är språkneutrala.
+     * Engångs-snapshot av hela katalogen.
+     *
+     * [Species.taxonomy] och [Species.abundance] är språkneutrala (används av rule-engine),
+     * men [Species.name] / [Species.description] / [Species.marginalia] respekterar [locale]
+     * — annars visas svenska artnamn för engelskspråkiga användare i Lifelist / Season Stats /
+     * Field Journal PDF (alla konsumenter läser `species.name` direkt från denna map).
      */
-    suspend fun allByQid(): Map<SpeciesId, Species>
+    suspend fun allByQid(locale: Locale): Map<SpeciesId, Species>
 }

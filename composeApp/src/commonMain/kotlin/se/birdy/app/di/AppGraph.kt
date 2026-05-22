@@ -175,7 +175,7 @@ class AppGraph(
         BadgeBackfillOnAppStart(
             recalc = recalculateBadges,
             obsRepo = observationRepository,
-            speciesByQid = { repository.allByQid() },
+            speciesByQid = { repository.allByQid(defaultLocale) },
             badgeRepo = badgeRepository,
             catalog = badgeCatalog,
             versionStore = badgeVersionStore,
@@ -204,11 +204,17 @@ class AppGraph(
             clock = clock,
             catalog = badgeCatalog,
             recalculate = recalculateBadges,
-            speciesByQid = { repository.allByQid() },
+            speciesByQid = { repository.allByQid(defaultLocale) },
         )
 
     fun archiveViewModel(): ArchiveViewModel =
-        ArchiveViewModel(repository, observationRepository, userPreferences, defaultLocale, premiumRepository)
+        ArchiveViewModel(
+            repo = repository,
+            observationRepo = observationRepository,
+            prefs = userPreferences,
+            locale = defaultLocale,
+            premiumActiveFlow = effectivePremiumActive,
+        )
 
     fun speciesProfileViewModel(speciesId: SpeciesId): SpeciesProfileViewModel =
         SpeciesProfileViewModel(repository, speciesId, defaultLocale)
@@ -244,7 +250,7 @@ class AppGraph(
         BadgesViewModel(
             obsRepo = observationRepository,
             badgeRepo = badgeRepository,
-            speciesByQid = { repository.allByQid() },
+            speciesByQid = { repository.allByQid(defaultLocale) },
             speciesTotalCount = repository.observeTotalCount(),
             catalog = badgeCatalog,
             recalc = recalculateBadges,

@@ -49,7 +49,7 @@ class ExportJournalUseCase(
         val observations = observationRepo.observeAll().first()
         if (observations.isEmpty()) return JournalExportResult.NothingToExport
 
-        val speciesByQid = speciesRepo.allByQid()
+        val speciesByQid = speciesRepo.allByQid(locale)
         val now = clock.now()
         val currentYear = now.toLocalDateTime(timeZone).year
 

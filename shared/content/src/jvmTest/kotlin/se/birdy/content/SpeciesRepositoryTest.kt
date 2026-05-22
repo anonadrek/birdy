@@ -184,13 +184,29 @@ class SpeciesRepositoryTest {
     ) = runTest {
         val driver = newDriverWithFixtures(tempDir)
         val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
-        val map = repo.allByQid()
+        val map = repo.allByQid(Locale.SV)
         assertEquals(1, map.size)
         val talgoxe = map[SpeciesId("Q25485")]
         assertNotNull(talgoxe)
         assertEquals("Talgoxe", talgoxe?.name)
         assertEquals("Paridae", talgoxe?.taxonomy?.family)
         assertEquals(Abundance.ALLMÄN, talgoxe?.abundance)
+        driver.close()
+    }
+
+    @Test
+    fun `allByQid returns localized names per requested locale`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithFixtures(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+
+        val sv = repo.allByQid(Locale.SV)
+        assertEquals("Talgoxe", sv[SpeciesId("Q25485")]?.name)
+
+        val en = repo.allByQid(Locale.EN)
+        assertEquals("Great Tit", en[SpeciesId("Q25485")]?.name)
+
         driver.close()
     }
 }

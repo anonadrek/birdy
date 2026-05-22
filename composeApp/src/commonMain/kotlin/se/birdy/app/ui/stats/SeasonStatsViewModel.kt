@@ -47,7 +47,7 @@ class SeasonStatsViewModel(
                 _state.value = SeasonStatsUiState.Empty
                 return@launch
             }
-            val speciesByQid = speciesRepo.allByQid()
+            val speciesByQid = speciesRepo.allByQid(locale)
             val currentMonth = clock.now().toLocalDateTime(zone).monthNumber
             _state.value = buildLoaded(thisYear, speciesByQid, currentMonth)
         }

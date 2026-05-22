@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -14,6 +15,7 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -24,8 +26,6 @@ import se.birdy.content.model.SpeciesSummary
 import se.birdy.datastore.ArchiveSort
 import se.birdy.datastore.UserPreferences
 import se.birdy.domain.observation.ObservationRepository
-import se.birdy.domain.premium.PremiumRepository
-import se.birdy.domain.premium.PremiumState
 
 @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
 class ArchiveViewModel(
@@ -33,12 +33,13 @@ class ArchiveViewModel(
     private val observationRepo: ObservationRepository,
     private val prefs: UserPreferences,
     private val locale: Locale,
-    premiumRepo: PremiumRepository,
+    premiumActiveFlow: Flow<Boolean> = flowOf(false),
 ) : ViewModel() {
+    // Plan 6b3 T21 fix: source-of-truth is AppGraph.effectivePremiumActive (override
+    // OR backend), not PremiumRepository.state alone — otherwise PREMIUM_OPEN_FOR_LAUNCH
+    // never opens the "Export Field Journal" CTA on Archive.
     val premiumActive: StateFlow<Boolean> =
-        premiumRepo.state
-            .map { it is PremiumState.Active }
-            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), false)
+        premiumActiveFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), false)
 
     private val _query = MutableStateFlow("")
     val query: StateFlow<String> = _query.asStateFlow()

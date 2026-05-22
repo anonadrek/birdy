@@ -7,7 +7,6 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import se.birdy.app.testing.FakeObservationRepository
-import se.birdy.app.testing.FakePremiumRepository
 import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.testing.FakeUserPreferences
 import se.birdy.content.Locale
@@ -36,7 +35,7 @@ class ArchiveViewModelTest {
                     observationRepo = FakeObservationRepository(),
                     prefs = prefs,
                     locale = Locale.SV,
-                    premiumRepo = FakePremiumRepository(),
+                    premiumActiveFlow = kotlinx.coroutines.flow.flowOf(false),
                 )
             vm.onChipSelected(ArchiveChip.OWLS)
             assertTrue(prefs.archiveChipWrites.contains(ArchiveChip.OWLS.name))
@@ -52,7 +51,7 @@ class ArchiveViewModelTest {
                     observationRepo = FakeObservationRepository(),
                     prefs = prefs,
                     locale = Locale.SV,
-                    premiumRepo = FakePremiumRepository(),
+                    premiumActiveFlow = kotlinx.coroutines.flow.flowOf(false),
                 )
             vm.onSortToggle()
             assertEquals(ArchiveSort.FAMILY, prefs.archiveSortValue)

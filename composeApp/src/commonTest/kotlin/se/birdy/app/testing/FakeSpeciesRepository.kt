@@ -46,7 +46,7 @@ class FakeSpeciesRepository : SpeciesRepository {
 
     override fun observeTotalCount(): Flow<Int> = byId.map { it.size }
 
-    override suspend fun allByQid(): Map<SpeciesId, Species> = byId.value.filterValues { it != null }.mapValues { it.value!! }
+    override suspend fun allByQid(locale: Locale): Map<SpeciesId, Species> = byId.value.filterValues { it != null }.mapValues { it.value!! }
 
     companion object {
         private val allMonths =

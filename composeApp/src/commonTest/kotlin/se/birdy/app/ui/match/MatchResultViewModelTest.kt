@@ -52,7 +52,7 @@ class MatchResultViewModelTest {
             clock = clock,
             catalog = emptyCatalog(),
             recalculate = RecalculateBadgesUseCase(zone = TimeZone.UTC, clock = clock),
-            speciesByQid = { speciesRepo.allByQid() },
+            speciesByQid = { speciesRepo.allByQid(Locale.SV) },
         )
 
     /**
@@ -317,7 +317,7 @@ class MatchResultViewModelTest {
                     clock = clock,
                     catalog = catalog,
                     recalculate = RecalculateBadgesUseCase(zone = TimeZone.UTC, clock = clock),
-                    speciesByQid = { speciesRepo.allByQid() },
+                    speciesByQid = { speciesRepo.allByQid(Locale.SV) },
                 )
 
             val tmpFile = File.createTempFile("birdy-test-frame", ".jpg")

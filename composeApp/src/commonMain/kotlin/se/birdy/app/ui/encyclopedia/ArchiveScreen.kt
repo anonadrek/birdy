@@ -189,7 +189,11 @@ fun ArchiveScreen(
                 }
             }
 
-            if (showPremiumTeaser) {
+            // Plan 6b3 T21 fix: render teaser-card when EITHER we want to upsell
+            // (!premium → unlock CTA) OR premium is active AND we have an export
+            // lambda (→ "Export Field Journal" CTA). Previously the card was only
+            // shown to non-premium users, hiding the export flow entirely after T8.
+            if (showPremiumTeaser || (premiumActive && onJournalExport != null)) {
                 item(key = "premium") {
                     PremiumTeaserCard(
                         title = stringResource(Res.string.premium_archive_title),
