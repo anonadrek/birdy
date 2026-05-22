@@ -125,8 +125,8 @@ fun SettingsScreen(
                     val text = getString(effect.text)
                     snackbarHostState.showSnackbar(text)
                 }
-                SettingsEffect.OpenPrivacyUrl -> openExternalUrl("https://anonadrek.github.io/birdy/privacy.html")
-                SettingsEffect.OpenTermsUrl -> openExternalUrl("https://anonadrek.github.io/birdy/terms.html")
+                SettingsEffect.OpenPrivacyUrl -> openExternalUrl("https://birdy.community/legal/privacy/")
+                SettingsEffect.OpenTermsUrl -> openExternalUrl("https://birdy.community/legal/terms/")
                 SettingsEffect.RateOnPlayStore -> openPlayStoreListing("se.birdy.android")
                 SettingsEffect.ShareApp -> shareApp(shareText)
                 SettingsEffect.SendFeedback -> openMailto("albin@abrahamssons.se", feedbackSubject)
