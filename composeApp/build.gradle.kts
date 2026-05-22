@@ -28,6 +28,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(project(":shared:domain"))
             implementation(project(":shared:data"))
+            implementation(project(":shared:pdf"))
             api(project(":shared:ml"))
             api(project(":shared:content"))
             implementation(libs.sqldelight.coroutines)
