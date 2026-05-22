@@ -31,6 +31,11 @@
       { "title": "Browse", "body": "Flip back any time. Or search 839 European species." }
     ]
   },
+  "glimpse": {
+    "eyebrow": "GLIMPSE · INSIDE",
+    "headline": "A few *pages* from the journal.",
+    "sub": "what it actually looks like, on your phone."
+  },
   "listen": {
     "eyebrow": "OR HOLD THE MIC · ON-DEVICE",
     "headline": "Hear it. *Name* it.",
@@ -99,6 +104,7 @@
     "observationDetail": "Birdy observation detail page in field-journal style",
     "archiveScreen": "Birdy archive screen browsing European species",
     "audioScan": "Birdy audio scan screen with waveform",
-    "badgesGrid": "Birdy badges page with 5x5 stamp grid"
+    "badgesGrid": "Birdy badges page with 5x5 stamp grid",
+    "glimpseHero": "Birdy intro screen — A field journal for finds"
   }
 }

@@ -31,6 +31,11 @@
       { "title": "Bläddra", "body": "Gå tillbaka när du vill. Eller sök bland 839 europeiska arter." }
     ]
   },
+  "glimpse": {
+    "eyebrow": "EN TITT · INUTI",
+    "headline": "Några *sidor* ur dagboken.",
+    "sub": "hur det faktiskt ser ut, i din telefon."
+  },
   "listen": {
     "eyebrow": "ELLER HÅLL NER MIKEN · PÅ ENHETEN",
     "headline": "Hör den. *Namnge* den.",
@@ -99,6 +104,7 @@
     "observationDetail": "Birdys observationsdetaljsida i fältdagbok-stil",
     "archiveScreen": "Birdys arkiv-skärm med europeiska arter",
     "audioScan": "Birdys ljudscan-skärm med vågform",
-    "badgesGrid": "Birdys märkessida med 5x5 stämpel-rutnät"
+    "badgesGrid": "Birdys märkessida med 5x5 stämpel-rutnät",
+    "glimpseHero": "Birdys intro-skärm — En fältdagbok för fynd"
   }
 }

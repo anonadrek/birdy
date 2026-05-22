@@ -1,0 +1,294 @@
+---
+import { Image } from 'astro:assets';
+import EyebrowLabel from './ui/EyebrowLabel.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import OrnamentRule from './ui/OrnamentRule.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+import hero from '../assets/screens/birdy_04_hero_en.png';
+import match from '../assets/screens/birdy_01_match_en.png';
+import journal from '../assets/screens/birdy_02_journal_en.png';
+import archive from '../assets/screens/birdy_06_archive_en.png';
+import badge from '../assets/screens/birdy_03_badge_en.png';
+import listen from '../assets/screens/birdy_05_listen_en.png';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = getCopy(locale);
+
+const shots = [
+  { src: hero, alt: t.alt.glimpseHero },
+  { src: match, alt: t.alt.matchScreen },
+  { src: journal, alt: t.alt.observationDetail },
+  { src: archive, alt: t.alt.archiveScreen },
+  { src: badge, alt: t.alt.badgesGrid },
+  { src: listen, alt: t.alt.audioScan },
+];
+---
+
+<section id="glimpse" class="glimpse">
+  <div class="head">
+    <EyebrowLabel text={t.glimpse.eyebrow} />
+    <JournalHeadline text={t.glimpse.headline} level="h2" />
+    <p class="sub">{t.glimpse.sub}</p>
+    <OrnamentRule />
+  </div>
+
+  <div class="strip-wrap" role="region" aria-label={t.glimpse.eyebrow}>
+    <ul class="strip" role="list" data-glimpse>
+      {shots.map((s, i) => (
+        <li class={`card${i === 0 ? ' is-focus' : ''}`}>
+          <Image
+            src={s.src}
+            alt={s.alt}
+            widths={[360, 540, 720]}
+            sizes="(max-width: 640px) 70vw, (max-width: 1024px) 32vw, 22vw"
+            quality={82}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+        </li>
+      ))}
+    </ul>
+    <ol class="dots" role="tablist" aria-label={t.glimpse.eyebrow} data-glimpse-dots>
+      {shots.map((_, i) => (
+        <li>
+          <button
+            type="button"
+            class={`dot${i === 0 ? ' is-focus' : ''}`}
+            data-idx={i}
+            aria-label={`${i + 1} / ${shots.length}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+          ></button>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<script>
+  // Mark the card closest to the strip's horizontal center as "is-focus"
+  // so CSS can dim its neighbors. Works everywhere (no view-timeline dep).
+  // Also syncs the dot-indicators below and makes them clickable.
+  const strips = document.querySelectorAll<HTMLElement>('[data-glimpse]');
+  strips.forEach((strip) => {
+    const cards = Array.from(strip.querySelectorAll<HTMLElement>('.card'));
+    if (cards.length === 0) return;
+    const wrap = strip.parentElement;
+    const dotsRoot = wrap?.querySelector<HTMLElement>('[data-glimpse-dots]');
+    const dots = dotsRoot
+      ? Array.from(dotsRoot.querySelectorAll<HTMLButtonElement>('.dot'))
+      : [];
+    strip.dataset.jsActive = '';
+
+    function updateFocus() {
+      const sr = strip.getBoundingClientRect();
+      const centerX = sr.left + sr.width / 2;
+      let bestIdx = 0;
+      let bestDist = Infinity;
+      cards.forEach((card, idx) => {
+        const r = card.getBoundingClientRect();
+        const cc = r.left + r.width / 2;
+        const d = Math.abs(cc - centerX);
+        if (d < bestDist) {
+          bestDist = d;
+          bestIdx = idx;
+        }
+      });
+      cards.forEach((card, idx) => {
+        card.classList.toggle('is-focus', idx === bestIdx);
+      });
+      dots.forEach((dot, idx) => {
+        const on = idx === bestIdx;
+        dot.classList.toggle('is-focus', on);
+        dot.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+
+    let raf = 0;
+    function schedule() {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        updateFocus();
+      });
+    }
+    strip.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    // After fonts/images shift the layout, recompute once.
+    window.addEventListener('load', schedule);
+
+    // Clicking a dot scroll-snaps to that card.
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        const target = cards[idx];
+        if (!target) return;
+        const sr = strip.getBoundingClientRect();
+        const tr = target.getBoundingClientRect();
+        const delta = tr.left + tr.width / 2 - (sr.left + sr.width / 2);
+        strip.scrollBy({ left: delta, behavior: 'smooth' });
+      });
+    });
+
+    updateFocus();
+  });
+</script>
+
+<style>
+  .glimpse {
+    padding: var(--section-padding-y) 0;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .head {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1.5rem;
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .sub {
+    font-family: var(--font-script);
+    font-size: 1.25rem;
+    color: var(--color-marginalia-ink);
+    margin: 0;
+  }
+  /*
+   * Carousel sizing — one card centered, peeks of the next/prev card on
+   * either side. The card width is the same on every viewport, but the
+   * inline-padding on the strip is "viewport center minus half-card", so
+   * the first and last snap-positions still center perfectly.
+   */
+  .strip-wrap {
+    --card-w: clamp(220px, 72vw, 300px);
+    --side-pad: max(1.25rem, calc(50% - var(--card-w) / 2));
+    position: relative;
+    margin-top: 2.5rem;
+  }
+  /* Soft fades on the sides so peek cards melt into the paper bg */
+  .strip-wrap::before,
+  .strip-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: clamp(2rem, 8vw, 6rem);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .strip-wrap::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--color-paper-bg) 0%, rgba(239, 231, 214, 0) 100%);
+  }
+  .strip-wrap::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--color-paper-bg) 0%, rgba(239, 231, 214, 0) 100%);
+  }
+  .strip {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-padding-inline: var(--side-pad);
+    padding: 1rem var(--side-pad) 1.25rem;
+    list-style: none;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+    /* Hide the native scrollbar — dot-indicators below show position instead */
+    scrollbar-width: none;
+  }
+  .strip::-webkit-scrollbar { display: none; }
+  /*
+   * Cards start fully opaque + actual size. The focus class (set by the
+   * inline script) keeps the centered card prominent while neighbors are
+   * dimmed slightly and pushed back a hair — no blur, just gentle depth.
+   */
+  .card {
+    flex: 0 0 var(--card-w);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+      0 1px 2px rgba(31, 26, 19, 0.06),
+      0 10px 24px -14px rgba(31, 26, 19, 0.22);
+    background: var(--color-paper-edge);
+    opacity: 1;
+    transform: scale(0.94);
+    transform-origin: center bottom;
+    transition: opacity 0.4s var(--ease-paper), transform 0.4s var(--ease-paper),
+      box-shadow 0.4s var(--ease-paper);
+  }
+  /* JS active: dim everything that's NOT the centered card */
+  .strip[data-js-active] .card:not(.is-focus) {
+    opacity: 0.7;
+  }
+  .strip[data-js-active] .card.is-focus {
+    transform: scale(1);
+    box-shadow:
+      0 2px 4px rgba(31, 26, 19, 0.08),
+      0 28px 56px -22px rgba(31, 26, 19, 0.36);
+  }
+  /* No-JS fallback: everything full-sized so the strip still reads clean */
+  .strip:not([data-js-active]) .card {
+    opacity: 1;
+    transform: none;
+  }
+  .card :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+  }
+
+  /* Dot indicators — replace the scrollbar */
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.625rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .dots li { display: block; }
+  .dot {
+    appearance: none;
+    border: none;
+    padding: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(63, 79, 48, 0.22);
+    cursor: pointer;
+    transition: background 0.25s var(--ease-paper),
+      transform 0.25s var(--ease-paper),
+      width 0.25s var(--ease-paper);
+  }
+  .dot:hover { background: rgba(63, 79, 48, 0.4); }
+  .dot:focus-visible {
+    outline: 2px solid var(--color-copper);
+    outline-offset: 3px;
+  }
+  .dot.is-focus {
+    background: var(--color-copper);
+    width: 22px;
+    border-radius: 999px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .strip { scroll-behavior: auto; }
+    .card,
+    .dot {
+      transition: none;
+    }
+    .strip[data-js-active] .card:not(.is-focus) { opacity: 1; }
+    .card { transform: none; }
+  }
+</style>
