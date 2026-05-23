@@ -2,7 +2,6 @@ package se.birdy.app.ui.audio
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
@@ -18,118 +17,201 @@ import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
-/* TODO(listen/t3): FakeRecorder rewritten in Task 3 to use FakeStreamingRecorder.
-private class FakeRecorder(
-    private val pcm: ShortArray = ShortArray(144_000),
-) : AudioRecorderApi {
-    override suspend fun record3s(onLevel: (Float) -> Unit): ShortArray {
-        repeat(3) {
-            onLevel(0.5f)
-            delay(1_000L)
-        }
-        return pcm
-    }
-}
-*/
-
 private class FakeWaveformRenderer : WaveformRendererApi {
-    override suspend fun renderWaveformPng(
-        pcm: ShortArray,
-        outPath: String,
-    ) = outPath
-
-    override suspend fun encodeOpus(
-        pcm: ShortArray,
-        outPath: String,
-    ) = outPath
+    override suspend fun renderWaveformPng(pcm: ShortArray, outPath: String) = outPath
+    override suspend fun encodeOpus(pcm: ShortArray, outPath: String) = outPath
 }
 
-private class FakeAudioClf : BirdAudioClassifier {
-    override val info =
-        AudioModelInfo(
-            modelVersion = "fake_v1",
-            inputShape = listOf(1, 144_000),
-            outputShape = listOf(1, 6_522),
-            coveragePct = 100.0,
-        )
+/**
+ * Configurable classifier that returns a confidence-per-call sequence
+ * and records every input slice it saw.
+ */
+private class ScriptedClassifier(
+    val confidencesPerCall: List<Float>,
+    val speciesId: String = "Q25334",
+) : BirdAudioClassifier {
+    override val info = AudioModelInfo(
+        modelVersion = "scripted",
+        inputShape = listOf(1, 144_000),
+        outputShape = listOf(1, 1),
+        coveragePct = 100.0,
+    )
 
-    override suspend fun classify(input: AudioInput) =
-        AudioClassification(
-            results = listOf(ClassificationResult("Q25334", 0.9f)),
+    val callInputs = mutableListOf<AudioInput>()
+    private var idx = 0
+
+    override suspend fun classify(input: AudioInput): AudioClassification {
+        callInputs.add(input)
+        val confidence = confidencesPerCall.getOrNull(idx) ?: 0f
+        idx++
+        return AudioClassification(
+            results = listOf(ClassificationResult(speciesId, confidence)),
             inferenceMs = 5L,
-            modelVersion = "fake_v1",
+            modelVersion = "scripted",
         )
+    }
 
     override fun close() {}
 }
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class AudioScanViewModelTest {
-    /** Stub normalizer that avoids the JVM-only [se.birdy.ml.normalize] platform function. */
     private val stubNormalizer: (ShortArray) -> FloatArray = { FloatArray(it.size) }
-
     private val testDispatcher = UnconfinedTestDispatcher()
 
     @BeforeTest
-    fun setUp() {
-        Dispatchers.setMain(testDispatcher)
-    }
+    fun setUp() { Dispatchers.setMain(testDispatcher) }
 
     @AfterTest
-    fun tearDown() {
-        Dispatchers.resetMain()
-    }
+    fun tearDown() { Dispatchers.resetMain() }
 
-    /**
-     * Creates a VM with all test-safe dependencies injected.
-     * [ioDispatcher] uses [Dispatchers.Unconfined] so [withContext] calls
-     * in [AudioScanViewModel.analyzeAndNavigate] don't block virtual time.
-     */
-    private fun makeVm(clock: () -> Long = { System.currentTimeMillis() }) =
+    private fun makeVm(
+        classifier: BirdAudioClassifier = ScriptedClassifier(listOf(0f)),
+        recorder: AudioRecorderApi = FakeStreamingRecorder(),
+        clock: () -> Long = { 0L },
+    ) = Pair(
         AudioScanViewModel(
-            classifierProvider = { Pair(FakeAudioClf(), AudioClassifierMode.REAL) },
-            recorder = FakeStreamingRecorder(), // TODO(listen/t3): replaced with real streaming recorder test-double
+            classifierProvider = { Pair(classifier, AudioClassifierMode.REAL) },
+            recorder = recorder,
             waveformRenderer = FakeWaveformRenderer(),
             audioStorageDir = { "/tmp/audio" },
             clock = clock,
             normalizer = stubNormalizer,
             ioDispatcher = Dispatchers.Unconfined,
+            inferenceDispatcher = Dispatchers.Unconfined,
+        ),
+        recorder,
+    )
+
+    @Test
+    fun autoStops_whenConfidenceReachesThreshold_after3s() = runTest {
+        val classifier = ScriptedClassifier(confidencesPerCall = listOf(0.40f, 0.75f))
+        val recorder = FakeStreamingRecorder()
+        val (vm, _) = makeVm(classifier = classifier, recorder = recorder)
+        vm.onPermissionState(PermissionState.Granted)
+
+        vm.startRecording()
+        recorder.emitChunks(120)
+        advanceUntilIdle()
+
+        assertTrue(
+            vm.state.value is AudioScanState.NavigateToMatch ||
+                vm.state.value is AudioScanState.Analyzing,
+            "expected Analyzing/NavigateToMatch, got ${vm.state.value}",
         )
+        assertTrue(classifier.callInputs.size >= 2, "classifier called ${classifier.callInputs.size} times")
+    }
 
     @Test
-    fun startRecording_transitionsThroughRecordingAndAnalyzingToNavigate() =
-        runTest {
-            val vm = makeVm(clock = { 1_000L })
-            vm.onPermissionState(PermissionState.Granted)
-            assertEquals(AudioScanState.Idle, vm.state.value)
+    fun doesNotAutoStop_beforeFirstFullWindowAvailable() = runTest {
+        val classifier = ScriptedClassifier(confidencesPerCall = listOf(0.99f))
+        val recorder = FakeStreamingRecorder()
+        val (vm, _) = makeVm(classifier = classifier, recorder = recorder)
+        vm.onPermissionState(PermissionState.Granted)
 
-            vm.startRecording()
-            advanceUntilIdle()
-            assertTrue(vm.state.value is AudioScanState.NavigateToMatch, "got ${vm.state.value}")
-        }
+        vm.startRecording()
+        recorder.emitChunks(60)
+        advanceUntilIdle()
+
+        assertTrue(vm.state.value is AudioScanState.Recording, "got ${vm.state.value}")
+        assertEquals(0, classifier.callInputs.size)
+    }
 
     @Test
-    fun cancelRecording_returnsToIdle() =
-        runTest {
-            val vm = makeVm()
-            vm.onPermissionState(PermissionState.Granted)
-            vm.startRecording()
-            vm.cancelRecording()
-            assertEquals(AudioScanState.Idle, vm.state.value)
-        }
+    fun manualStop_runsFinalClassifyAndNavigates() = runTest {
+        val classifier = ScriptedClassifier(confidencesPerCall = listOf(0.45f, 0.50f))
+        val recorder = FakeStreamingRecorder()
+        val (vm, _) = makeVm(classifier = classifier, recorder = recorder)
+        vm.onPermissionState(PermissionState.Granted)
+
+        vm.startRecording()
+        recorder.emitChunks(150)
+        advanceUntilIdle()
+        vm.stopRecording()
+        advanceUntilIdle()
+
+        assertTrue(vm.state.value is AudioScanState.NavigateToMatch, "got ${vm.state.value}")
+    }
+
+    @Test
+    fun manualStop_beforeAnyWindowProcessed_fallsBackToLast3s() = runTest {
+        val classifier = ScriptedClassifier(confidencesPerCall = listOf(0f, 0f, 0f, 0.42f))
+        val recorder = FakeStreamingRecorder()
+        val (vm, _) = makeVm(classifier = classifier, recorder = recorder)
+        vm.onPermissionState(PermissionState.Granted)
+
+        vm.startRecording()
+        recorder.emitChunks(120)
+        advanceUntilIdle()
+        vm.stopRecording()
+        advanceUntilIdle()
+
+        assertTrue(vm.state.value is AudioScanState.NavigateToMatch, "got ${vm.state.value}")
+        assertNotNull(classifier.callInputs.lastOrNull())
+    }
+
+    @Test
+    fun capReached_runsFinalClassifyAndNavigates() = runTest {
+        val classifier = ScriptedClassifier(confidencesPerCall = List(70) { 0.30f })
+        val recorder = FakeStreamingRecorder(maxBufferSamples = 60 * 48_000)
+        val (vm, _) = makeVm(classifier = classifier, recorder = recorder)
+        vm.onPermissionState(PermissionState.Granted)
+
+        vm.startRecording()
+        recorder.emitChunks(1800)
+        advanceUntilIdle()
+
+        assertTrue(vm.state.value is AudioScanState.NavigateToMatch, "got ${vm.state.value}")
+    }
+
+    @Test
+    fun cancelRecording_returnsToIdle_andDoesNotCallClassifier() = runTest {
+        val classifier = ScriptedClassifier(confidencesPerCall = listOf(0.99f))
+        val recorder = FakeStreamingRecorder()
+        val (vm, _) = makeVm(classifier = classifier, recorder = recorder)
+        vm.onPermissionState(PermissionState.Granted)
+
+        vm.startRecording()
+        recorder.emitChunks(30)
+        vm.cancelRecording()
+        advanceUntilIdle()
+
+        assertEquals(AudioScanState.Idle, vm.state.value)
+        assertEquals(0, classifier.callInputs.size)
+    }
+
+    @Test
+    fun bestSoFar_tracksHighestConfidenceAcrossWindows() = runTest {
+        val classifier = ScriptedClassifier(confidencesPerCall = listOf(0.30f, 0.50f, 0.40f, 0.55f))
+        val recorder = FakeStreamingRecorder()
+        val (vm, _) = makeVm(classifier = classifier, recorder = recorder)
+        vm.onPermissionState(PermissionState.Granted)
+
+        vm.startRecording()
+        recorder.emitChunks(200)
+        advanceUntilIdle()
+        vm.stopRecording()
+        advanceUntilIdle()
+
+        assertTrue(
+            classifier.callInputs.size >= 3,
+            "expected ≥3 classify calls (3 streaming + 1 final), got ${classifier.callInputs.size}",
+        )
+    }
 
     @Test
     fun permissionDenied_emitsPermissionNeeded() {
-        val vm = makeVm()
+        val (vm, _) = makeVm()
         vm.onPermissionState(PermissionState.Denied)
         assertEquals(AudioScanState.PermissionNeeded(canRequest = true), vm.state.value)
     }
 
     @Test
     fun permissionPermanentlyDenied_emitsError() {
-        val vm = makeVm()
+        val (vm, _) = makeVm()
         vm.onPermissionState(PermissionState.PermanentlyDenied)
         assertEquals(AudioScanState.Error.PermanentlyDenied, vm.state.value)
     }
