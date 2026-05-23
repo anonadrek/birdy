@@ -108,9 +108,8 @@ class ExportJournalUseCase(
     ): Int =
         observations
             .asSequence()
-            .filter { it.speciesId != null }
             .filter { it.capturedAt.toLocalDateTime(timeZone).year == year }
-            .map { it.speciesId!! }
+            .mapNotNull { it.speciesId }
             .toSet()
             .size
 
@@ -126,8 +125,8 @@ class ExportJournalUseCase(
     ): List<Pair<String, Int>> =
         observations
             .asSequence()
-            .filter { !it.speciesId.isNullOrBlank() }
-            .groupBy { it.speciesId!! }
+            .mapNotNull { obs -> obs.speciesId?.takeIf { it.isNotBlank() }?.let { it to obs } }
+            .groupBy({ it.first }, { it.second })
             .map { (qid, list) ->
                 val name = speciesByQid[se.birdy.content.SpeciesId(qid)]?.name ?: qid
                 name to list.size

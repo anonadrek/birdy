@@ -140,9 +140,11 @@ class ScanViewModel(
     }
 
     override fun onCleared() {
-        classifier.close()
-        // viewModelScope is already cancelled when onCleared runs — any launch on it
-        // is a no-op. Use GlobalScope + NonCancellable for this fire-and-forget teardown.
+        // classifier.close() is non-suspend so we run it first; if the process is killed
+        // before the GlobalScope job lands, at least the TFLite interpreter releases.
+        // cameraSource.stop() is suspend (CameraX bind/unbind goes via the camera-executor)
+        // so we have to dispatch it; viewModelScope is already cancelled at this point.
+        runCatching { classifier.close() }
         @Suppress("OPT_IN_USAGE")
         GlobalScope.launch(kotlinx.coroutines.Dispatchers.Default + NonCancellable) {
             runCatching { cameraSource.stop() }

@@ -19,22 +19,26 @@ class BadgeBackfillOnAppStart(
 ) {
     suspend fun runIfNeeded() {
         if (versionStore.lastSeen >= catalog.version) return
+        // Split read-side and write-side so a persist failure leaves lastSeen unchanged
+        // (next app-start retries). Read-side failures (DB unavailable) are best-effort —
+        // the same code runs every Save via RecalculateBadgesUseCase.
+        val backfill =
+            runCatching {
+                val obs = obsRepo.observeAll().first()
+                val species = speciesByQid()
+                val existing =
+                    badgeRepo
+                        .observeUnlocks()
+                        .first()
+                        .map { it.badgeId }
+                        .toSet()
+                recalc.newUnlocks(obs, species, catalog, existing)
+            }.onFailure { if (it is CancellationException) throw it }
+                .getOrNull() ?: return
         runCatching {
-            val obs = obsRepo.observeAll().first()
-            val species = speciesByQid()
-            val existing =
-                badgeRepo
-                    .observeUnlocks()
-                    .first()
-                    .map { it.badgeId }
-                    .toSet()
-            val backfill = recalc.newUnlocks(obs, species, catalog, existing)
             badgeRepo.persist(backfill)
             versionStore.lastSeen = catalog.version
-        }.onFailure {
-            if (it is CancellationException) throw it
-            // Log warning — on next app-start or Save the recalc will run again.
-        }
+        }.onFailure { if (it is CancellationException) throw it }
     }
 
     /**

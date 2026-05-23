@@ -58,9 +58,11 @@ class ArchiveViewModel(
             .observeAll()
             .map { observations ->
                 observations
-                    .filter { it.stampNumber > 0 && it.speciesId != null }
-                    .groupBy { it.speciesId!! }
-                    .mapValues { (_, obs) -> obs.minOf { it.stampNumber } }
+                    .asSequence()
+                    .filter { it.stampNumber > 0 }
+                    .mapNotNull { obs -> obs.speciesId?.let { it to obs.stampNumber } }
+                    .groupBy({ it.first }, { it.second })
+                    .mapValues { (_, stamps) -> stamps.min() }
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), emptyMap())
 
     private val retryTick = MutableStateFlow(0)

@@ -74,8 +74,8 @@ class RecalculateBadgesUseCase(
                 }
             is BadgeRule.SpeciesAcrossSeasons ->
                 observations
-                    .filter { it.speciesId != null }
-                    .groupBy { it.speciesId!! }
+                    .mapNotNull { obs -> obs.speciesId?.let { it to obs } }
+                    .groupBy({ it.first }, { it.second })
                     .values
                     .count { perSpecies ->
                         perSpecies.map { seasonOf(it.capturedAt, zone) }.toSet().size >= rule.seasons

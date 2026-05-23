@@ -109,13 +109,23 @@ class MatchResultViewModel(
             }
         val top1 = effective.first()
         val frameJpegPath = source.frameJpegPath.ifBlank { null }
-        val stampNumber = observationRepo.nextStampNumber()
+        val dbLookup =
+            runCatching {
+                val stamp = observationRepo.nextStampNumber()
+                val qid = top1.species.id.raw
+                val priorCount = observationRepo.countByQid(qid)
+                val prev = if (priorCount > 0) observationRepo.firstByQid(qid) else null
+                Triple(stamp, priorCount, prev)
+            }.onFailure { if (it is CancellationException) throw it }
+                .getOrNull()
+        if (dbLookup == null) {
+            _state.value = MatchResultUiState.Error(MatchResultUiState.Error.Kind.ParseFailed)
+            return
+        }
+        val (stampNumber, priorCount, prev) = dbLookup
         _state.value =
             when (MatchThresholds.routeFor(top1.confidence)) {
                 MatchRoute.MATCH -> {
-                    val qid = top1.species.id.raw
-                    val priorCount = observationRepo.countByQid(qid)
-                    val prev = if (priorCount > 0) observationRepo.firstByQid(qid) else null
                     MatchResultUiState.Match(
                         species = top1.species,
                         confidence = top1.confidence,
@@ -154,8 +164,14 @@ class MatchResultViewModel(
         val current = _state.value as? MatchResultUiState.Disambig ?: return
         val picked = current.candidates.firstOrNull { it.species.id == speciesId } ?: return
         viewModelScope.launch {
-            val count = observationRepo.countByQid(speciesId.raw)
-            val prev = if (count > 0) observationRepo.firstByQid(speciesId.raw) else null
+            val lookup =
+                runCatching {
+                    val c = observationRepo.countByQid(speciesId.raw)
+                    val p: Instant? = if (c > 0) observationRepo.firstByQid(speciesId.raw) else null
+                    c to p
+                }.onFailure { if (it is CancellationException) throw it }
+                    .getOrNull() ?: (0 to null as Instant?)
+            val (count, prev) = lookup
             _state.value =
                 MatchResultUiState.Match(
                     species = picked.species,

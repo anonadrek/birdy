@@ -227,9 +227,12 @@ actual class PremiumBillingClient(
         if (purchaseDeferred != null) {
             return PurchaseResult.Error("Purchase already in flight")
         }
+        val activity =
+            activityContext as? Activity
+                ?: return PurchaseResult.Error("launchPurchase requires Activity context")
         val deferred = CompletableDeferred<PurchaseResult>()
         purchaseDeferred = deferred
-        val launchResult = client.launchBillingFlow(activityContext as Activity, flowParams)
+        val launchResult = client.launchBillingFlow(activity, flowParams)
         if (launchResult.responseCode != BillingClient.BillingResponseCode.OK) {
             purchaseDeferred = null
             return PurchaseResult.Error("launchBillingFlow failed: ${launchResult.debugMessage}")
