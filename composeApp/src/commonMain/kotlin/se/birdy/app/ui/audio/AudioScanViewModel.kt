@@ -53,26 +53,32 @@ class AudioScanViewModel(
     private var classifierMode: AudioClassifierMode? = null
 
     private var sessionJob: Job? = null
+    private var inferenceJob: Job? = null
     private var handle: RecorderHandle? = null
 
     // Streaming-state, owned by sessionJob coroutine
-    private var fullBuffer = ShortArray(0)
-    private var bufferEnd = 0
-    private var bestSoFar: Top1? = null
-    private var lastClassifiedAtSamples = 0
-    private var inflight = false
+    @Volatile private var fullBuffer = ShortArray(0)
+
+    @Volatile private var bufferEnd = 0
+
+    @Volatile private var bestSoFar: Top1? = null
+
+    @Volatile private var lastClassifiedAtSamples = 0
+
+    @Volatile private var inflight = false
 
     @Volatile private var sessionStartMs: Long = 0L
+
     @Volatile private var classifierInstance: BirdAudioClassifier? = null
 
     companion object {
         const val SAMPLE_RATE = 48_000
-        const val WINDOW_SAMPLES = SAMPLE_RATE * 3   // 144_000
-        const val STRIDE_SAMPLES = SAMPLE_RATE       // 48_000 → 1s
+        const val WINDOW_SAMPLES = SAMPLE_RATE * 3 // 144_000
+        const val STRIDE_SAMPLES = SAMPLE_RATE // 48_000 → 1s
         const val AUTO_STOP_THRESHOLD = 0.60f
         const val MIN_RECORD_MS = 3_000L
         const val MAX_RECORD_MS = 60_000L
-        const val MAX_BUFFER_SAMPLES = SAMPLE_RATE * 60   // 60s
+        const val MAX_BUFFER_SAMPLES = SAMPLE_RATE * 60 // 60s
     }
 
     fun onPermissionState(p: PermissionState) {
@@ -91,6 +97,8 @@ class AudioScanViewModel(
         val initial = AudioScanState.Recording(rms = 0f, elapsedMs = 0L)
         if (!_state.compareAndSet(AudioScanState.Idle, initial)) return
         sessionJob?.cancel()
+        inferenceJob?.cancel()
+        inferenceJob = Job(viewModelScope.coroutineContext[Job])
 
         fullBuffer = ShortArray(MAX_BUFFER_SAMPLES)
         bufferEnd = 0
@@ -99,35 +107,42 @@ class AudioScanViewModel(
         inflight = false
         sessionStartMs = clock()
 
-        sessionJob = viewModelScope.launch {
-            try {
-                classifierInstance = runCatching { classifierProvider() }
-                    .getOrElse { throwable ->
-                        coroutineContext.ensureActive()
-                        _state.value = AudioScanState.Error.BootstrapFailed(throwable.message ?: "bootstrap failed")
-                        return@launch
-                    }.also { classifierMode = it.second }
-                    .first
+        sessionJob =
+            viewModelScope.launch {
+                try {
+                    classifierInstance =
+                        runCatching { classifierProvider() }
+                            .getOrElse { throwable ->
+                                coroutineContext.ensureActive()
+                                _state.value = AudioScanState.Error.BootstrapFailed(throwable.message ?: "bootstrap failed")
+                                return@launch
+                            }.also { classifierMode = it.second }
+                            .first
 
-                handle = recorder.start(
-                    onChunk = { samples, rms, totalSoFar ->
-                        onChunkReceived(samples, rms, totalSoFar)
-                    },
-                    onCapReached = {
-                        viewModelScope.launch { finalizeAndNavigate(reason = StopReason.CAP) }
-                    },
-                    maxDurationMs = MAX_RECORD_MS,
-                )
-            } catch (t: CancellationException) {
-                throw t
-            } catch (t: Throwable) {
-                coroutineContext.ensureActive()
-                _state.value = AudioScanState.Error.RecordingFailed
+                    handle =
+                        recorder.start(
+                            onChunk = { samples, rms, totalSoFar ->
+                                onChunkReceived(samples, rms, totalSoFar)
+                            },
+                            onCapReached = {
+                                viewModelScope.launch { finalizeAndNavigate(reason = StopReason.CAP) }
+                            },
+                            maxDurationMs = MAX_RECORD_MS,
+                        )
+                } catch (t: CancellationException) {
+                    throw t
+                } catch (t: Throwable) {
+                    coroutineContext.ensureActive()
+                    _state.value = AudioScanState.Error.RecordingFailed
+                }
             }
-        }
     }
 
-    private fun onChunkReceived(samples: ShortArray, rms: Float, totalSoFar: Int) {
+    private fun onChunkReceived(
+        samples: ShortArray,
+        rms: Float,
+        totalSoFar: Int,
+    ) {
         val toCopy = minOf(samples.size, fullBuffer.size - bufferEnd)
         if (toCopy > 0) {
             samples.copyInto(fullBuffer, destinationOffset = bufferEnd, startIndex = 0, endIndex = toCopy)
@@ -138,7 +153,9 @@ class AudioScanViewModel(
         _state.update { s ->
             if (s is AudioScanState.Recording) {
                 AudioScanState.Recording(rms = rms, elapsedMs = elapsed, bestSoFar = bestSoFar)
-            } else s
+            } else {
+                s
+            }
         }
 
         maybeSubmitInference()
@@ -155,7 +172,8 @@ class AudioScanViewModel(
         lastClassifiedAtSamples = bufferEnd
         inflight = true
 
-        viewModelScope.launch(inferenceDispatcher) {
+        val parent = inferenceJob?.takeIf { it.isActive } ?: return
+        viewModelScope.launch(parent + inferenceDispatcher) {
             try {
                 val clf = classifierInstance ?: return@launch
                 val waveform = normalizer(window)
@@ -190,13 +208,13 @@ class AudioScanViewModel(
     }
 
     private suspend fun finalizeAndNavigate(reason: StopReason) {
-        val current = _state.value
-        if (current !is AudioScanState.Recording) return
-        val rmsAtStop = current.rms
-        _state.value = AudioScanState.Analyzing(rmsFrozen = rmsAtStop)
+        val current = _state.value as? AudioScanState.Recording ?: return
+        val analyzing = AudioScanState.Analyzing(rmsFrozen = current.rms)
+        if (!_state.compareAndSet(current, analyzing)) return
 
-        val fullPcm = runCatching { handle?.stopAndFlush() ?: ShortArray(bufferEnd) }
-            .getOrElse { fullBuffer.copyOf(bufferEnd) }
+        val fullPcm =
+            runCatching { handle?.stopAndFlush() ?: ShortArray(bufferEnd) }
+                .getOrElse { fullBuffer.copyOf(bufferEnd) }
 
         val best = bestSoFar
         val windowStart: Int
@@ -213,42 +231,50 @@ class AudioScanViewModel(
         analyzeAndNavigate(fullPcm = fullPcm, window = window)
     }
 
-    private suspend fun analyzeAndNavigate(fullPcm: ShortArray, window: ShortArray) {
+    private suspend fun analyzeAndNavigate(
+        fullPcm: ShortArray,
+        window: ShortArray,
+    ) {
         coroutineContext.ensureActive()
-        val classifier = classifierInstance ?: run {
-            _state.value = AudioScanState.Error.BootstrapFailed("classifier unavailable")
-            return
-        }
+        val classifier =
+            classifierInstance ?: run {
+                _state.value = AudioScanState.Error.BootstrapFailed("classifier unavailable")
+                return
+            }
 
         val ts = clock()
-        val pngPath = withContext(ioDispatcher) {
-            waveformRenderer.renderWaveformPng(fullPcm, "${audioStorageDir()}/$ts.png")
-        }
+        val pngPath =
+            withContext(ioDispatcher) {
+                waveformRenderer.renderWaveformPng(fullPcm, "${audioStorageDir()}/$ts.png")
+            }
         coroutineContext.ensureActive()
-        val audioPath = withContext(ioDispatcher) {
-            waveformRenderer.encodeOpus(fullPcm, "${audioStorageDir()}/$ts.opus")
-        }
+        val audioPath =
+            withContext(ioDispatcher) {
+                waveformRenderer.encodeOpus(fullPcm, "${audioStorageDir()}/$ts.opus")
+            }
         coroutineContext.ensureActive()
         val waveform = normalizer(window)
         val classification = classifier.classify(AudioInput(waveform, SAMPLE_RATE, 3_000, rawPcm = window))
 
-        val source = if (classification.results.isEmpty()) {
-            ScanSource.Audio(
-                frameJpegPath = pngPath,
-                classification = Classification(results = emptyList(), frameTimestampMillis = ts),
-                audioWavPath = audioPath,
-            )
-        } else {
-            val top = classification.results.first()
-            ScanSource.Audio(
-                frameJpegPath = pngPath,
-                classification = Classification(
-                    results = listOf(ClassificationResult(top.speciesId, top.confidence)),
-                    frameTimestampMillis = ts,
-                ),
-                audioWavPath = audioPath,
-            )
-        }
+        val source =
+            if (classification.results.isEmpty()) {
+                ScanSource.Audio(
+                    frameJpegPath = pngPath,
+                    classification = Classification(results = emptyList(), frameTimestampMillis = ts),
+                    audioWavPath = audioPath,
+                )
+            } else {
+                val top = classification.results.first()
+                ScanSource.Audio(
+                    frameJpegPath = pngPath,
+                    classification =
+                        Classification(
+                            results = listOf(ClassificationResult(top.speciesId, top.confidence)),
+                            frameTimestampMillis = ts,
+                        ),
+                    audioWavPath = audioPath,
+                )
+            }
 
         val json = Json.encodeToString(ScanSourceSerialization.serializer(), source.toSerial())
         _state.update { s ->
@@ -259,10 +285,14 @@ class AudioScanViewModel(
     fun cancelRecording() {
         sessionJob?.cancel()
         sessionJob = null
+        inferenceJob?.cancel()
+        inferenceJob = null
         handle?.cancel()
         handle = null
         bestSoFar = null
         bufferEnd = 0
+        inflight = false
+        lastClassifiedAtSamples = 0
         if (_state.value is AudioScanState.Recording || _state.value is AudioScanState.Error) {
             _state.value = AudioScanState.Idle
         }
@@ -308,6 +338,13 @@ interface RecorderHandle {
 }
 
 interface WaveformRendererApi {
-    suspend fun renderWaveformPng(pcm: ShortArray, outPath: String): String
-    suspend fun encodeOpus(pcm: ShortArray, outPath: String): String
+    suspend fun renderWaveformPng(
+        pcm: ShortArray,
+        outPath: String,
+    ): String
+
+    suspend fun encodeOpus(
+        pcm: ShortArray,
+        outPath: String,
+    ): String
 }

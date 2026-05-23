@@ -10,7 +10,7 @@ import kotlin.math.min
  * [chunkSize] samples and advances [totalSamples].
  */
 class FakeStreamingRecorder(
-    val chunkSize: Int = 1_600,           // ~33ms @ 48kHz
+    val chunkSize: Int = 1_600, // ~33ms @ 48kHz
     val chunkRms: Float = 0.5f,
     val maxBufferSamples: Int = 60 * 48_000,
 ) : AudioRecorderApi {
@@ -59,7 +59,7 @@ class FakeStreamingRecorder(
             // Leave buffer at default zeros — silence; tests don't read amplitude.
             totalSamples = sliceEnd
             onChunk?.invoke(ShortArray(len), chunkRms, totalSamples)
-            delay(33)  // ~realtime cadence; test scheduler advances virtually
+            delay(33) // ~realtime cadence; test scheduler advances virtually
             if (totalSamples == maxBufferSamples) {
                 onCap?.invoke()
                 return
