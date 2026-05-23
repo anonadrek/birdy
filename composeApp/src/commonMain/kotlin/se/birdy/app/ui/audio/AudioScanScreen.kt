@@ -21,6 +21,9 @@ import birdy_bird_scanner.composeapp.generated.resources.audio_scan_headline
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_marginalia_top
+import birdy_bird_scanner.composeapp.generated.resources.audio_scan_mic_cd_analyzing
+import birdy_bird_scanner.composeapp.generated.resources.audio_scan_mic_cd_idle
+import birdy_bird_scanner.composeapp.generated.resources.audio_scan_mic_cd_recording
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_permission_body
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_permission_grant
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_permission_open_settings
@@ -98,7 +101,11 @@ private fun IdleView(onStart: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         WaveformBars(rms = 0f, frozen = false)
         Spacer(Modifier.height(24.dp))
-        RecordingMicButton(state = MicButtonState.Idle, onClick = onStart)
+        RecordingMicButton(
+            state = MicButtonState.Idle,
+            onClick = onStart,
+            contentDescription = stringResource(Res.string.audio_scan_mic_cd_idle),
+        )
         Spacer(Modifier.height(20.dp))
         Text(
             text = stringResource(Res.string.audio_scan_cta_idle),
@@ -124,7 +131,11 @@ private fun RecordingView(
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         WaveformBars(rms = state.rms, frozen = false)
         Spacer(Modifier.height(24.dp))
-        RecordingMicButton(state = micState, onClick = onStop)
+        RecordingMicButton(
+            state = micState,
+            onClick = onStop,
+            contentDescription = stringResource(Res.string.audio_scan_mic_cd_recording),
+        )
         Spacer(Modifier.height(12.dp))
         RecordingTimer(elapsedMs = state.elapsedMs)
         Spacer(Modifier.height(8.dp))
@@ -142,7 +153,11 @@ private fun AnalyzingView(state: AudioScanState.Analyzing) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         WaveformBars(rms = state.rmsFrozen, frozen = true)
         Spacer(Modifier.height(24.dp))
-        RecordingMicButton(state = MicButtonState.Analyzing, onClick = {})
+        RecordingMicButton(
+            state = MicButtonState.Analyzing,
+            onClick = {},
+            contentDescription = stringResource(Res.string.audio_scan_mic_cd_analyzing),
+        )
         Spacer(Modifier.height(20.dp))
         Text(
             text = stringResource(Res.string.audio_scan_analyzing),

@@ -20,6 +20,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import se.birdy.app.ui.theme.AccentCopper
@@ -37,6 +42,7 @@ import se.birdy.app.ui.theme.AccentCopper
 fun RecordingMicButton(
     state: MicButtonState,
     onClick: () -> Unit,
+    contentDescription: String,
     modifier: Modifier = Modifier,
 ) {
     val glyph =
@@ -73,6 +79,7 @@ fun RecordingMicButton(
 
     val clickEnabled = state == MicButtonState.Idle || state == MicButtonState.Recording
 
+    val cd = contentDescription
     Box(
         modifier =
             modifier
@@ -86,10 +93,21 @@ fun RecordingMicButton(
                 ).clip(CircleShape)
                 .background(AccentCopper)
                 .alpha(alpha)
-                .then(if (clickEnabled) Modifier.clickable(onClick = onClick) else Modifier),
+                .then(if (clickEnabled) Modifier.clickable(onClick = onClick) else Modifier)
+                .semantics(mergeDescendants = true) {
+                    this.contentDescription = cd
+                    role = Role.Button
+                },
         contentAlignment = Alignment.Center,
     ) {
-        Text(text = glyph, color = Color.White, fontSize = 20.sp)
+        // Glyph is decorative — TalkBack reads the state-driven contentDescription
+        // on the outer Box instead of announcing "circle"/"black square".
+        Text(
+            text = glyph,
+            color = Color.White,
+            fontSize = 20.sp,
+            modifier = Modifier.clearAndSetSemantics {},
+        )
     }
 }
 
