@@ -18,7 +18,7 @@ identifierar arten direkt på enheten med hjälp av en lokal AI-modell
 (Google AIY Birds V1) — du behöver inget internet i fält.
 
 **LÄR — uppslagsverket växer med dig**
-Bläddra bland ~700 europeiska arter med text från Wikipedia, foton
+Bläddra bland 839 europeiska arter med text från Wikipedia, foton
 från Wikimedia Commons och korta marginalanteckningar för fältkännemärken.
 Sök, filtrera på familj, eller bara ströv runt.
 
@@ -49,15 +49,13 @@ telefonen — uninstall raderar allt.
 nybörjare som vill lära sig, och alla som tycker en sångfågel i ett
 träd förtjänar en stund av uppmärksamhet.
 
-## What's new (v0.9.0a-billing — Closed Testing)
-- Första Play Store-versionen
-- Skanna ~700 europeiska fågelarter on-device (AIY Birds V1)
-- Encyclopedia + fältdagbok + 25 stämplar
-- SV + EN
-- Helt offline-funktion
-- Premium tillgängligt via Google Play Billing (Årlig 199 kr/år eller Engångsköp 499 kr) — låser upp PDF-export, säsongsstatistik och premium-stämplar (audio-ID kommer i kommande release)
-- Återställ köp via Inställningar → Återställ köp
-- Justerad match-känslighet (lägre tröskel = fler träffar i bilder med tuff belysning)
+## Nyheter (v1.0.0)
+- v1.0-launch — första produktionsversionen
+- Foto- och audio-skanning: 839 europeiska fågelarter, allt on-device
+- Uppslagsverk, fältdagbok, 35 stämplar (25 bas + 10 premium)
+- SV + EN, helt offline (inget konto, inget moln)
+- Premium via Google Play Billing (Årlig 199 kr eller Engångsköp 499 kr) — PDF-export, säsongsstatistik, premium-stämplar
+- Återställ köp via Inställningar
 
 ## Nyckelord (för ASO-text)
 fågel, fågelskanner, fågelguide, fågelid, fågel-AI, naturapp,

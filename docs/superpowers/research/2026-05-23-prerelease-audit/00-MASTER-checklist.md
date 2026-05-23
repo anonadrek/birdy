@@ -41,12 +41,15 @@ Sorterade trivialast→tyngst. Varje fix kan committas separat med liten message
 - [x] Klar (2026-05-23)
 
 ### B3. Uppdatera "What's new"-section i store-listings till v1.0.0
-- **Filer:** `docs/play-store/store-listing-en.md:52` + samma i SV
-- **Nu:** "What's new (v0.9.0a-billing — Closed Testing)"
-- **Fix:** Bytt till v1.0.0-narrativ (foto-ID + audio-ID + 839 arter + premium content)
-- **ETA:** ~10 min (skriv båda språk)
+- **Filer:** `docs/play-store/store-listing-en.md:21,52` + samma i SV
+- **Fix gjort:**
+  - "What's new (v0.9.0a-billing — Closed Testing)" → "What's new (v1.0.0)" + ny 6-bullets-narrativ (audio-ID gratis, 839 arter, 35 stämplar, premium-features)
+  - Body-text "~700 European species" → "839 European species"
+  - SV-rubrik: "What's new" → "Nyheter" (korrekt översättning)
+- **Säkerhetscheck:** `rg 'v0\.9|0\.9\.0|Closed Testing|~700' docs/play-store/` — kvarvarande träffar är i closed-testing-tester-instructions.md (B4) och data-safety-form.md (M3); inga i store-listings
+- **Verifierat badge-count:** 25 base (badges.yaml) + 10 premium (premium_badges.yaml) = 35 totalt (audit-rapport 05 sa 30+10=40, fel)
 - **Källor:** `02-play-store-compliance.md`
-- [ ] Klar
+- [x] Klar (2026-05-23)
 
 ### B4. Uppdatera closed-testing tester-instruktioner till versionCode 112
 - **Fil:** `docs/play-store/closed-testing-tester-instructions.md:3`
