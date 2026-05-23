@@ -52,7 +52,7 @@ android {
             libs.versions.android.targetSdk
                 .get()
                 .toInt()
-        versionCode = 112
+        versionCode = 113
         versionName = "1.0.0"
         buildConfigField(
             "String",

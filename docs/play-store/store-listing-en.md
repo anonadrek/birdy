@@ -13,9 +13,11 @@ want to **learn** to recognise birds in the wild, **collect** their
 sightings, and **grow** as field birders.
 
 **SCAN — properly simple**
-Point your camera at the bird or pick a photo from your gallery. Birdy
-identifies the species on-device using a local AI model
-(Google AIY Birds V1) — no internet needed in the field.
+Point your camera at the bird, pick a photo from your gallery, or
+record a 3-second song clip. Birdy identifies the species on-device
+using local AI (Google AIY Birds V1 for images, BirdNET-Lite for
+audio) — no internet needed, no accounts. Photo and audio ID are
+free, always.
 
 **LEARN — an encyclopedia that grows with you**
 Browse 839 European species with text from Wikipedia, photos from
@@ -32,9 +34,10 @@ tracking, no ads. Your journal is yours.
 Something to come home with after a good day in the woods.
 
 **PREMIUM (optional)**
-Unlock audio features (when the audio model ships), PDF export of your
-field journal, seasonal statistics, and premium stamps. One-time
-purchase or yearly subscription via Google Play Billing.
+PDF export of your field journal, seasonal statistics, and 10 extra
+achievement stamps. One-time purchase or yearly subscription via
+Google Play Billing. The core scanning experience (photo + audio)
+stays free.
 
 **WORKS OFFLINE**
 The model, the encyclopedia, and the journal all live on your device.

@@ -44,7 +44,6 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.premium_auto_renew_disclosure
 import birdy_bird_scanner.composeapp.generated.resources.premium_cta_primary
 import birdy_bird_scanner.composeapp.generated.resources.premium_cta_subtext
-import birdy_bird_scanner.composeapp.generated.resources.premium_feature_audio
 import birdy_bird_scanner.composeapp.generated.resources.premium_feature_badges
 import birdy_bird_scanner.composeapp.generated.resources.premium_feature_export
 import birdy_bird_scanner.composeapp.generated.resources.premium_feature_stats
@@ -81,7 +80,6 @@ fun PremiumScreen(
     val state by viewModel.state.collectAsState()
     val features =
         listOf(
-            stringResource(Res.string.premium_feature_audio),
             stringResource(Res.string.premium_feature_export),
             stringResource(Res.string.premium_feature_stats),
             stringResource(Res.string.premium_feature_badges),

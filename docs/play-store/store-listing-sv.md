@@ -13,9 +13,10 @@ vill **lära dig** känna igen fåglar i fält, **samla** dina fynd, och
 **växa** som fältornitolog.
 
 **SKANNA — riktigt enkelt**
-Rikta kameran mot fågeln eller välj ett foto från galleriet. Birdy
-identifierar arten direkt på enheten med hjälp av en lokal AI-modell
-(Google AIY Birds V1) — du behöver inget internet i fält.
+Rikta kameran mot fågeln, välj ett foto från galleriet eller spela in
+ett 3-sekunders ljudklipp. Birdy identifierar arten direkt på enheten
+med lokal AI (Google AIY Birds V1 för bild, BirdNET-Lite för ljud) —
+inget internet behövs, inga konton. Foto- och ljud-ID är alltid gratis.
 
 **LÄR — uppslagsverket växer med dig**
 Bläddra bland 839 europeiska arter med text från Wikipedia, foton
@@ -32,9 +33,9 @@ Dagboken är din.
 familjer. Något att gå hem med efter en lyckad dag i skogen.
 
 **PREMIUM (valfritt)**
-Lås upp ljudfunktioner (när ljudmodellen är klar), PDF-export av
-fältdagboken, säsongsstatistik, och premium-stämplar. Engångsköp eller
-abonnemang via Google Play Billing.
+PDF-export av fältdagboken, säsongsstatistik och 10 extra
+prestationsmärken. Engångsköp eller abonnemang via Google Play
+Billing. Själva skanningen (foto + ljud) är alltid gratis.
 
 **FUNGERAR OFFLINE**
 Modellen, encyclopedin och dagboken är på enheten. Du behöver inte
