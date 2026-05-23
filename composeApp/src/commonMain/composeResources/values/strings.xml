@@ -586,14 +586,12 @@
     <!-- ===== Plan 6b2 T5: Audio-scan strings ===== -->
     <string name="audio_scan_headline">*Lyssna* efter sång</string>
     <string name="audio_scan_journal_label">LJUD · IDENTIFIERING</string>
-    <string name="audio_scan_journal_sub">Håll för att spela in fågelsång</string>
-    <string name="audio_scan_marginalia_top">— en sång, fångad —</string>
-    <string name="audio_scan_cta_hold">håll i 3 sekunder</string>
-    <string name="audio_scan_cta_release">släpp efter 3s</string>
-    <string name="audio_scan_listening">Lyssnar…</string>
+    <string name="audio_scan_journal_sub">Tryck för att lyssna</string>
+    <string name="audio_scan_marginalia_top">Håll telefonen stilla och *låt den sjunga*</string>
+    <string name="audio_scan_cta_idle">Tryck för att lyssna</string>
+    <string name="audio_scan_cta_recording">Lyssnar — tryck för att stoppa</string>
     <string name="audio_scan_analyzing">Analyserar…</string>
     <string name="audio_scan_cancel">Avbryt</string>
-    <string name="audio_scan_too_short">Håll i 3 sekunder.</string>
     <string name="audio_scan_permission_title">Lyssna efter sång</string>
     <string name="audio_scan_permission_body">Birdy behöver mikrofonen för att identifiera fågelsång — ljudet sparas bara lokalt på din telefon.</string>
     <string name="audio_scan_permission_grant">Ge tillstånd</string>

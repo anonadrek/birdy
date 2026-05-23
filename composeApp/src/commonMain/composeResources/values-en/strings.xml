@@ -573,14 +573,12 @@
     <!-- ===== Plan 6b2 T5: Audio-scan strings ===== -->
     <string name="audio_scan_headline">*Listen* for a song</string>
     <string name="audio_scan_journal_label">AUDIO · IDENTIFICATION</string>
-    <string name="audio_scan_journal_sub">Hold to record a bird song</string>
-    <string name="audio_scan_marginalia_top">— a song, captured —</string>
-    <string name="audio_scan_cta_hold">hold for 3 seconds</string>
-    <string name="audio_scan_cta_release">release after 3s</string>
-    <string name="audio_scan_listening">Listening…</string>
+    <string name="audio_scan_journal_sub">Tap to listen</string>
+    <string name="audio_scan_marginalia_top">Hold your phone still and *let it sing*</string>
+    <string name="audio_scan_cta_idle">Tap to listen</string>
+    <string name="audio_scan_cta_recording">Listening — tap to stop</string>
     <string name="audio_scan_analyzing">Analyzing…</string>
     <string name="audio_scan_cancel">Cancel</string>
-    <string name="audio_scan_too_short">Hold for 3 seconds.</string>
     <string name="audio_scan_permission_title">Listen for a song</string>
     <string name="audio_scan_permission_body">Birdy needs your microphone to identify bird songs — audio stays only on your phone.</string>
     <string name="audio_scan_permission_grant">Grant permission</string>
