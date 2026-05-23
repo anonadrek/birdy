@@ -4,70 +4,96 @@ import android.annotation.SuppressLint
 import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.coroutines.coroutineContext
 import kotlin.math.sqrt
 
 /**
- * Captures 3 seconds of 48 kHz mono PCM_16BIT audio for ML classification.
+ * Captures open-ended 48 kHz mono PCM_16BIT audio via AudioRecord.
  *
- * Caller MUST hold the `android.permission.RECORD_AUDIO` permission before invoking
- * [record3s] — this class does NOT prompt the user. See [AudioPermissionController]
- * (T5) for the standard permission flow on Android.
+ * Caller MUST hold the `android.permission.RECORD_AUDIO` permission before
+ * invoking [start] — this class does NOT prompt the user.
+ *
+ * Capture stops when either:
+ * - [AndroidRecorderHandle.stopAndFlush] is called by consumer
+ * - [AndroidRecorderHandle.cancel] is called
+ * - `maxDurationMs` elapses (then `onCapReached` fires and capture stops)
  */
 class AndroidAudioRecorder(
     val sampleRate: Int = 48_000,
-    val durationMs: Int = 3_000,
 ) {
-    val expectedSamples: Int = sampleRate * durationMs / 1000
-
     @SuppressLint("MissingPermission")
-    suspend fun record3s(onLevel: (rms: Float) -> Unit): ShortArray =
-        withContext(Dispatchers.IO) {
-            val minBuf =
-                AudioRecord.getMinBufferSize(
-                    sampleRate,
-                    AudioFormat.CHANNEL_IN_MONO,
-                    AudioFormat.ENCODING_PCM_16BIT,
-                )
-            require(minBuf > 0) { "AudioRecord.getMinBufferSize returned $minBuf" }
+    fun start(
+        onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -> Unit,
+        onCapReached: () -> Unit,
+        maxDurationMs: Long = 60_000L,
+    ): AndroidRecorderHandle {
+        val maxSamples = (sampleRate * maxDurationMs / 1000L).toInt()
+        val minBuf =
+            AudioRecord.getMinBufferSize(
+                sampleRate,
+                AudioFormat.CHANNEL_IN_MONO,
+                AudioFormat.ENCODING_PCM_16BIT,
+            )
+        require(minBuf > 0) { "AudioRecord.getMinBufferSize returned $minBuf" }
 
-            val bufBytes = maxOf(minBuf, expectedSamples * 2)
-
-            var recorder = buildRecorder(MediaRecorder.AudioSource.UNPROCESSED, bufBytes)
-            if (recorder.state != AudioRecord.STATE_INITIALIZED) {
-                recorder.release()
-                recorder = buildRecorder(MediaRecorder.AudioSource.VOICE_RECOGNITION, bufBytes)
-            }
-            if (recorder.state != AudioRecord.STATE_INITIALIZED) {
-                recorder.release()
-                error("AudioRecord failed to initialize with either UNPROCESSED or VOICE_RECOGNITION")
-            }
-
-            try {
-                recorder.startRecording()
-                val buffer = ShortArray(expectedSamples)
-                var totalRead = 0
-                val chunkSize = sampleRate / 30 // ~30 Hz RMS callback
-
-                while (totalRead < expectedSamples) {
-                    coroutineContext.ensureActive()
-                    val toRead = minOf(chunkSize, expectedSamples - totalRead)
-                    val read = recorder.read(buffer, totalRead, toRead)
-                    if (read <= 0) error("AudioRecord.read returned $read")
-
-                    val rms = computeRms(buffer, totalRead, read)
-                    onLevel(rms)
-                    totalRead += read
-                }
-                buffer
-            } finally {
-                runCatching { recorder.stop() }
-                recorder.release()
-            }
+        var recorder = buildRecorder(MediaRecorder.AudioSource.UNPROCESSED, minBuf)
+        if (recorder.state != AudioRecord.STATE_INITIALIZED) {
+            recorder.release()
+            recorder = buildRecorder(MediaRecorder.AudioSource.VOICE_RECOGNITION, minBuf)
         }
+        if (recorder.state != AudioRecord.STATE_INITIALIZED) {
+            recorder.release()
+            error("AudioRecord failed to initialize with either UNPROCESSED or VOICE_RECOGNITION")
+        }
+
+        val captured = ShortArray(maxSamples)
+        var total = 0
+
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+        val stopRequested = CompletableDeferred<Unit>()
+        val cancelRequested = CompletableDeferred<Unit>()
+
+        val job: Job =
+            scope.launch {
+                try {
+                    recorder.startRecording()
+                    val chunkSize = sampleRate / 30 // ~33ms
+                    val chunkBuf = ShortArray(chunkSize)
+                    while (total < maxSamples && !stopRequested.isCompleted && !cancelRequested.isCompleted) {
+                        val toRead = minOf(chunkSize, maxSamples - total)
+                        val read = recorder.read(chunkBuf, 0, toRead)
+                        if (read <= 0) break
+                        chunkBuf.copyInto(captured, destinationOffset = total, startIndex = 0, endIndex = read)
+                        val rms = computeRms(chunkBuf, 0, read)
+                        total += read
+                        if (!cancelRequested.isCompleted) {
+                            onChunk(chunkBuf.copyOf(read), rms, total)
+                        }
+                    }
+                    if (total >= maxSamples && !stopRequested.isCompleted && !cancelRequested.isCompleted) {
+                        onCapReached()
+                    }
+                } finally {
+                    runCatching { recorder.stop() }
+                    recorder.release()
+                }
+            }
+
+        return AndroidRecorderHandle(
+            stopRequested = stopRequested,
+            cancelRequested = cancelRequested,
+            job = job,
+            scope = scope,
+            getCaptured = { captured.copyOf(total) },
+        )
+    }
 
     private fun buildRecorder(
         source: Int,
@@ -93,5 +119,26 @@ class AndroidAudioRecorder(
             sum += s * s
         }
         return sqrt(sum / length).toFloat().coerceIn(0f, 1f)
+    }
+}
+
+class AndroidRecorderHandle internal constructor(
+    private val stopRequested: CompletableDeferred<Unit>,
+    private val cancelRequested: CompletableDeferred<Unit>,
+    private val job: Job,
+    private val scope: CoroutineScope,
+    private val getCaptured: () -> ShortArray,
+) {
+    suspend fun stopAndFlush(): ShortArray =
+        withContext(Dispatchers.IO) {
+            stopRequested.complete(Unit)
+            job.join()
+            scope.cancel()
+            getCaptured()
+        }
+
+    fun cancel() {
+        cancelRequested.complete(Unit)
+        scope.cancel()
     }
 }
