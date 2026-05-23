@@ -1,32 +1,25 @@
 package se.birdy.app.ui.audio
 
-import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_analyzing
-import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cancel
-import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cta_hold
+import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cta_idle
+import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cta_recording
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_headline
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_journal_sub
-import birdy_bird_scanner.composeapp.generated.resources.audio_scan_listening
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_marginalia_top
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_permission_body
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_permission_grant
@@ -46,7 +39,8 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
 fun AudioScanScreen(
     state: AudioScanState,
     permissionState: PermissionState,
-    onStartHold: () -> Unit,
+    onStartRecording: () -> Unit,
+    onStopRecording: () -> Unit,
     onCancel: () -> Unit,
     onRequestPermission: () -> Unit,
     onOpenSettings: () -> Unit,
@@ -80,9 +74,9 @@ fun AudioScanScreen(
                 is AudioScanState.Error.PermanentlyDenied ->
                     PermissionPrompt(onClick = onOpenSettings, openSettingsMode = true)
                 is AudioScanState.Idle ->
-                    IdleMic(onStartHold = onStartHold)
+                    IdleView(onStart = onStartRecording)
                 is AudioScanState.Recording ->
-                    RecordingView(state = state, onCancel = onCancel)
+                    RecordingView(state = state, onStop = onStopRecording)
                 is AudioScanState.Analyzing ->
                     AnalyzingView(state = state)
                 is AudioScanState.Error.RecordingFailed ->
@@ -101,34 +95,17 @@ fun AudioScanScreen(
 }
 
 @Composable
-private fun IdleMic(onStartHold: () -> Unit) {
+private fun IdleView(onStart: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Box(
-            modifier =
-                Modifier
-                    .size(92.dp)
-                    .clip(CircleShape)
-                    .pointerInput(Unit) {
-                        detectTapGestures(
-                            onPress = {
-                                onStartHold()
-                                tryAwaitRelease()
-                            },
-                        )
-                    },
-        ) {
-            // 🎙 mic emoji as tap-target placeholder — T7 replaces with an icon
-            Text(
-                text = "🎙",
-                modifier = Modifier.align(Alignment.Center),
-                fontFamily = rememberDmSerifDisplay(),
-            )
-        }
-        Spacer(Modifier.height(16.dp))
+        WaveformBars(rms = 0f, frozen = false)
+        Spacer(Modifier.height(24.dp))
+        RecordingMicButton(state = MicButtonState.Idle, onClick = onStart)
+        Spacer(Modifier.height(20.dp))
         Text(
-            text = stringResource(Res.string.audio_scan_cta_hold),
+            text = stringResource(Res.string.audio_scan_cta_idle),
             color = AccentCopper,
             fontFamily = rememberCaveat(),
+            fontSize = 16.sp,
         )
     }
 }
@@ -136,29 +113,28 @@ private fun IdleMic(onStartHold: () -> Unit) {
 @Composable
 private fun RecordingView(
     state: AudioScanState.Recording,
-    onCancel: () -> Unit,
+    onStop: () -> Unit,
 ) {
+    val micState =
+        if (state.elapsedMs < AudioScanViewModel.MIN_RECORD_MS) {
+            MicButtonState.RecordingDisabled
+        } else {
+            MicButtonState.Recording
+        }
+
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         WaveformBars(rms = state.rms, frozen = false)
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = stringResource(Res.string.audio_scan_listening),
-            fontFamily = rememberDmSerifDisplay(),
-            fontStyle = FontStyle.Italic,
-        )
-        val remaining = (3000 - state.elapsedMs).coerceAtLeast(0) / 1000.0
-        Text(
-            text = "%.1f".format(remaining) + "s",
-            fontFamily = rememberCaveat(),
-            color = MarginaliaInk,
-        )
         Spacer(Modifier.height(24.dp))
-        TextButton(onClick = onCancel) {
-            Text(
-                text = stringResource(Res.string.audio_scan_cancel),
-                fontFamily = rememberCaveat(),
-            )
-        }
+        RecordingMicButton(state = micState, onClick = onStop)
+        Spacer(Modifier.height(12.dp))
+        RecordingTimer(elapsedMs = state.elapsedMs)
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = stringResource(Res.string.audio_scan_cta_recording),
+            color = AccentCopper,
+            fontFamily = rememberCaveat(),
+            fontSize = 16.sp,
+        )
     }
 }
 
@@ -166,13 +142,28 @@ private fun RecordingView(
 private fun AnalyzingView(state: AudioScanState.Analyzing) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         WaveformBars(rms = state.rmsFrozen, frozen = true)
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(24.dp))
+        RecordingMicButton(state = MicButtonState.Analyzing, onClick = {})
+        Spacer(Modifier.height(20.dp))
         Text(
             text = stringResource(Res.string.audio_scan_analyzing),
             fontFamily = rememberDmSerifDisplay(),
             fontStyle = FontStyle.Italic,
         )
     }
+}
+
+@Composable
+private fun RecordingTimer(elapsedMs: Long) {
+    val seconds = (elapsedMs / 1000L).toInt()
+    val mm = seconds / 60
+    val ss = seconds % 60
+    Text(
+        text = "$mm:${ss.toString().padStart(2, '0')}",
+        fontFamily = rememberCaveat(),
+        color = MarginaliaInk,
+        fontSize = 14.sp,
+    )
 }
 
 @Composable
@@ -216,8 +207,6 @@ private fun ErrorRetry(
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = message, fontFamily = rememberCaveat(), color = MarginaliaInk)
         Spacer(Modifier.height(16.dp))
-        Button(onClick = onRetry) {
-            Text(text = stringResource(Res.string.audio_scan_retry))
-        }
+        Button(onClick = onRetry) { Text(text = stringResource(Res.string.audio_scan_retry)) }
     }
 }
