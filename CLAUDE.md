@@ -6,14 +6,15 @@
 
 AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + audio-ID + uppslagsverk över 839 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till karta, push, community, iOS.
 
-## Status (2026-05-22)
+## Status (2026-05-23)
 
-- **Android-app:** All kod-scope för v1.0 utom Plan 6b3 är klar. Senaste tag: `v0.9.0b-audio` (Plan 6b2 audio-ID). VersionCode 110, versionName 1.0.0-rc2. Nästa = **Plan 6b3** (Premium content: PDF-export + season-stats + 10 fält-märken) → tag `v0.9.0c-premium-content` → `v1.0.0`. Brainstorm + writing-plans behövs (spec/plan finns ej ännu). Strategi: finish ALL sprintar innan Closed Testing 14-dagarsklockan startas, så testers ser full v1.0.
-- **BirdNET-licensbeslut (2026-05-22):** BirdNET-Lite-modellen är **CC BY-NC-SA 4.0 (NonCommercial)** — får inte gate:as bakom Premium. **Option A vald:** audio-ID är gratis för alla. PremiumGate i `ListenLauncher` rivs innan testare bjuds in. Premium-tier intäktsmodell står på Plan 6b3-features (PDF, stats, badges) som vi byggt själva. Detaljer i memory `project_birdnet_license_decision.md`.
+- **Android-app:** **v1.0.0 taggad 2026-05-23** (versionCode 112, versionName 1.0.0). All v1-scope inne. Senaste tags: `v1.0.0` + `v0.9.0c-premium-content` (Plan 6b3 — Premium content). Nästa = **Internal Testing-upload** till Play Console enligt runbook `docs/superpowers/runbooks/2026-05-22-v1.0.0-internal-testing.md` → Closed Testing (14d) → Production. Branch `main` är clean och pushad.
+- **Plan 6b3 (Premium content) — DONE:** PDF-export av fältdagbok (`JournalPdfRenderer` med title/stats/species/badges/colophon-sidor + share-sheet), Season Statistics-skärm (Canvas-baserade bar/line/donut-chartar, 0 deps), 10 nya premium-badges + manuell rule + `BadgeStringMap` (40 strängar SV+EN). T19 wire:ade `PremiumActivationListener` + `effectivePremiumActive` på AppGraph. T22 reducerade base APK från ~300 MB till **136 MB** via WebP-migration av plate-foton + `:asset-pack` install-time-modul för TFLite-vikterna. T21 device-verify på SM-S918B + 10 skärmdumpar. T25 internal-testing hand-off runbook.
+- **Brand refresh (2026-05-22):** Ny launcher-ikon + custom Compose splash med wordmark (commit `0c76113`). Webbplats hero bytte brand-foot wordmark mot fågel-app-ikon med fade-up + ny Glimpse-carousel-sektion med 6 Play Store-skärmdumpar + transparenta multi-size favicons (`.ico` + apple-touch). Settings: webbplats-länk i OM BIRDY + Language-ikonbyte + privacy/terms-länkar migrerade till `birdy.community/legal/`.
+- **BirdNET-licensbeslut (2026-05-22):** BirdNET-Lite-modellen är **CC BY-NC-SA 4.0 (NonCommercial)** — får inte gate:as bakom Premium. **Option A vald:** audio-ID är gratis för alla. PremiumGate i `ListenLauncher` rivet. Premium-tier intäktsmodell står på Plan 6b3-features (PDF, stats, badges) som vi byggt själva. Detaljer i memory `project_birdnet_license_decision.md`.
 - **Launch-period premium-öppen (2026-05-22):** För closed testing (14d) + initial production-launch är `PREMIUM_OPEN_FOR_LAUNCH=true` i `androidApp/build.gradle.kts`. Det gör att `MainActivity` hardcodar `premiumOverride = Active(LIFETIME)` för alla användare. Anledning: testarna ska få komplett v1.0-upplevelse, Billing v8 IPC är inte verify:ad än (defer:ad till Internal Testing). Stängs manuellt när Billing-flow är runtime-verifierad och vi vill flippa på monetization (se follow-up #4).
 - **Marketing-website:** Live på `https://birdy.community` via Vercel (Astro 5 + Tailwind v4 + i18n EN/SV). Inkluderar `/legal/{privacy,terms,data-safety}/`. Gammal GitHub Pages-deploy (birdy.app via `pages.yml`) är avskaffad. Senaste deploy fungerar; setup-gotcha = Vercel **Root Directory måste vara `website`** (annars ENOENT på package.json).
 - **Google Play:** Developer account approved 2026-05-20 (personligt konto). AB-flytt deferred till post-launch via Account Transfer. Billing v8 IPC-verify deferred till Internal Testing (kräver app entry + license testers i Play Console).
-- **Ej-pushade lokala commits:** Plan 6b3 har 4 dev-commits ahead of origin (parallell agent jobbar autonomt). Lämna i fred.
 
 Full per-plan historik: se "Avslutade planer (referens)" nedan + auto-memory.
 
@@ -37,10 +38,10 @@ Full per-plan historik: se "Avslutade planer (referens)" nedan + auto-memory.
 | 6a | Foundation — UX-polish + release-mekanik (R8, signing, icon, a11y) | ✅ `v0.8.0-rc1` |
 | 6b1 | Billing v8 + launch-prep (PremiumBillingClient + Restore Purchases) | ✅ `v0.9.0a-billing` |
 | 6b2 | Audio-ID via BirdNET-Lite (3s rec + FlexRFFT TF Select op) — **free-tier** | ✅ `v0.9.0b-audio` (PremiumGate rivet 2026-05-22) |
-| 6b3 | Premium content (PDF-export + season-statistics + 10 fält-märken) | ⏳ pågår → `v0.9.0c-premium-content` → `v1.0.0` |
+| 6b3 | Premium content (PDF-export + season-statistics + 10 fält-märken) | ✅ `v0.9.0c-premium-content` + `v1.0.0` |
 | W | Marketing-website (Astro + Vercel + birdy.community + /legal/) | ✅ Live |
 
-**Föreslagen ordning:** Plan 6b3 → tag v1.0 → Internal Testing → Closed Testing (14d) → Play Store-launch.
+**Föreslagen ordning:** ~~Plan 6b3 → tag v1.0~~ ✅ → **Internal Testing** → Closed Testing (14d) → Play Store-launch.
 
 Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew build` ska gå grönt.
 
@@ -52,6 +53,7 @@ Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew 
 | Implementationsplaner | `docs/superpowers/plans/YYYY-MM-DD-v1-NN-<phase>.md` |
 | Skärmdumpar per milstolpe | `docs/superpowers/screenshots/` |
 | Milstolpe-review-runbook | `docs/superpowers/runbooks/milstolpe-review.md` |
+| Internal Testing hand-off runbook | `docs/superpowers/runbooks/2026-05-22-v1.0.0-internal-testing.md` |
 | Play Store-artefakter (markdown) | `docs/play-store/{privacy-policy,terms,store-listing-{sv,en},data-safety-form}.md` |
 | Website källkod | `website/` (Astro 5 + Tailwind v4 + Playwright) |
 | Visuellt språk (Mossbädd + Field Journal) | sammanfattat nedan + auto-memories `visual_language_birdy_v1.md`, `project_plan_7c_status.md` |
@@ -212,6 +214,7 @@ Detaljerade lärdomar + återanvändbara mönster finns i auto-memory (`project_
 | 6a Release foundation | `v0.8.0-rc1` | `2026-05-13-v1-06a-foundation.md` | `project_plan_6a_status.md` |
 | 6b1 Billing + launch-prep | `v0.9.0a-billing` | `2026-05-16-v1-06b1-billing-launch-prep.md` | `project_plan_6b1_status.md` |
 | 6b2 Audio-ID | `v0.9.0b-audio` | `2026-05-20-v1-06b2-audio-id.md` | `project_plan_6b2_status.md` |
+| 6b3 Premium content | `v0.9.0c-premium-content` + `v1.0.0` | `2026-05-21-v1-06b3-premium-content.md` | `feedback_plan_6b3_doc_traps.md` |
 | W Website (Vercel + /legal/) | — (live) | `2026-05-21-website-vercel-legal.md` | — |
 
 ## Trap-katalog (vanliga repeterande buggar)
