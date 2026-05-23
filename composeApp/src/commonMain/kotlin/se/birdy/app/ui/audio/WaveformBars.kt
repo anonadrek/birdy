@@ -1,6 +1,11 @@
 package se.birdy.app.ui.audio
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,14 +22,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import se.birdy.app.ui.theme.AccentCopper
+import kotlin.math.PI
 import kotlin.math.sin
 
 /**
  * Copper-accent waveform bars matching the marketing site (`Listen.astro`).
- * 48 bars by default; live RMS modulates height for a more organic pulse than
- * the website's faked sin-wave animation.
  *
- * When [frozen] is true (Analyzing state) the animation slows to settle.
+ * Two layers:
+ * - Idle pulse: always-running sin-wave per bar so the waveform feels alive
+ *   even when the mic hears silence (rms ≈ 0). Matches the website's faked
+ *   CSS `scaleY` pulse.
+ * - RMS modulation: live mic energy boosted ×4 (raw RMS is 0.02-0.15 for
+ *   typical conversational sound) drives extra amplitude on top of the pulse.
+ *
+ * When [frozen] is true (Analyzing state) the idle pulse stops and bars settle
+ * to a static silhouette based on the last RMS value.
  */
 @Composable
 fun WaveformBars(
@@ -33,9 +45,23 @@ fun WaveformBars(
     modifier: Modifier = Modifier,
     barCount: Int = 48,
 ) {
-    val target = rms.coerceIn(0f, 1f)
-    val animated by animateFloatAsState(
-        targetValue = target,
+    val infinite = rememberInfiniteTransition(label = "wave-pulse")
+    val pulsePhase by infinite.animateFloat(
+        initialValue = 0f,
+        targetValue = 1f,
+        animationSpec =
+            infiniteRepeatable(
+                animation = tween(durationMillis = 1800, easing = LinearEasing),
+                repeatMode = RepeatMode.Restart,
+            ),
+        label = "wave-pulse-phase",
+    )
+
+    // Raw mic RMS sits in 0.02-0.15 for typical sound — boost so a normal
+    // bird call drives bars to near-full amplitude.
+    val boostedRms = (rms * 4f).coerceIn(0f, 1f)
+    val animatedRms by animateFloatAsState(
+        targetValue = boostedRms,
         animationSpec = tween(durationMillis = if (frozen) 600 else 120),
         label = "wave-rms",
     )
@@ -46,8 +72,16 @@ fun WaveformBars(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         repeat(barCount) { i ->
-            val phase = (sin((i * 1.3f) + (animated * 6f)) + 1f) / 2f
-            val heightFraction = (0.2f + 0.8f * phase * animated).coerceIn(0.1f, 1f)
+            val barPhase = i * 0.35f
+            val pulseSin =
+                if (frozen) {
+                    (sin(i * 1.3f) + 1f) / 2f
+                } else {
+                    (sin((pulsePhase * 2f * PI + barPhase).toFloat()) + 1f) / 2f
+                }
+            val baseAmp = 0.2f + 0.25f * pulseSin
+            val rmsBoost = animatedRms * (0.3f + 0.5f * pulseSin)
+            val heightFraction = (baseAmp + rmsBoost).coerceIn(0.1f, 1f)
             Box(
                 modifier =
                     Modifier
