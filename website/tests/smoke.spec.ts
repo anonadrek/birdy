@@ -14,7 +14,7 @@ test.describe('EN landing /', () => {
     await expect(page.locator('h1')).toContainText('field journal');
 
     const playLink = page.locator(
-      'a[href*="play.google.com/store/apps/details?id=se.birdy.android"]',
+      'a[href*="play.google.com/apps/testing/se.birdy.android"]',
     );
     expect(await playLink.count()).toBeGreaterThan(0);
 
@@ -44,7 +44,7 @@ test.describe('SV landing /sv/', () => {
     await expect(page.locator('h1')).toContainText('fältdagbok');
 
     const playLink = page.locator(
-      'a[href*="play.google.com/store/apps/details?id=se.birdy.android"]',
+      'a[href*="play.google.com/apps/testing/se.birdy.android"]',
     );
     expect(await playLink.count()).toBeGreaterThan(0);
 
