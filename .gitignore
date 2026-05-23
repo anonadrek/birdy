@@ -78,3 +78,6 @@ website/test-results/
 
 # Marketing-material (skärmdumpar, social posts) — bor lokalt, inte i repo
 Birdy AB/
+
+# bundletool — laddas ner per användare; inte versionerad
+tools/bundletool.jar
