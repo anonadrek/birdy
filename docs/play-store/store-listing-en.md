@@ -18,7 +18,7 @@ identifies the species on-device using a local AI model
 (Google AIY Birds V1) — no internet needed in the field.
 
 **LEARN — an encyclopedia that grows with you**
-Browse ~700 European species with text from Wikipedia, photos from
+Browse 839 European species with text from Wikipedia, photos from
 Wikimedia Commons, and short marginalia for field marks. Search,
 filter by family, or just wander.
 
@@ -49,15 +49,13 @@ private folder on your phone — uninstall removes everything.
 beginners who want to learn, and anyone who thinks a songbird in a
 tree deserves a moment of attention.
 
-## What's new (v0.9.0a-billing — Closed Testing)
-- First Play Store release
-- Scan ~700 European bird species on-device (AIY Birds V1)
-- Encyclopedia + field journal + 25 achievement stamps
-- English + Swedish
-- Fully offline
-- Premium available via Google Play Billing (Yearly 199 SEK/year or Lifetime 499 SEK) — unlocks PDF export, seasonal statistics, premium stamps (audio ID ships in a later release)
-- Restore Purchases in Settings → Restore purchases
-- Tuned match sensitivity (lower threshold = more hits in difficult lighting)
+## What's new (v1.0.0)
+- v1.0 launch — first production release
+- Photo + audio scan: 839 European bird species, all on-device
+- Encyclopedia, field journal, 35 achievement stamps (25 base + 10 premium)
+- English + Swedish, fully offline (no account, no cloud)
+- Premium via Google Play Billing (Yearly 199 SEK or Lifetime 499 SEK) — PDF export, seasonal statistics, premium stamps
+- Restore Purchases in Settings
 
 ## Keywords (for ASO copy)
 bird, bird scanner, bird id, bird guide, bird AI, nature app,
@@ -71,5 +69,5 @@ Everyone (13+)
 
 ## Contact
 - Email: albin@abrahamssons.se
-- Website: https://anonadrek.github.io/birdy/
-- Privacy policy: https://anonadrek.github.io/birdy/privacy.html
+- Website: https://birdy.community/
+- Privacy policy: https://birdy.community/legal/privacy/

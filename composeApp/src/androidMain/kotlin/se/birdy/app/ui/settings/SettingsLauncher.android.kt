@@ -22,7 +22,7 @@ private fun Context.startNewTaskActivity(intent: Intent) {
 
 actual fun openExternalUrl(url: String) {
     val ctx = SettingsLauncherSetup.context() ?: return
-    ctx.startNewTaskActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    runCatching { ctx.startNewTaskActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
 }
 
 actual fun openMailto(

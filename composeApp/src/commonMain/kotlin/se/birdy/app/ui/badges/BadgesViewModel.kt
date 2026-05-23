@@ -32,7 +32,9 @@ class BadgesViewModel(
     private val catalog: BadgeCatalog,
     private val recalc: RecalculateBadgesUseCase,
     private val zone: TimeZone,
-    // TODO Plan 5b Task 12: passed through for badge title/description rendering.
+    // Locale is wired through every VM uniformly via AppGraph. Badge titles/descriptions
+    // are resolved in the Composable layer via BadgeStringMap + stringResource, so the
+    // field is not read here today; kept for symmetry and future locale-aware logic.
     @Suppress("UnusedPrivateMember")
     private val locale: Locale,
     private val premiumActiveFlow: Flow<Boolean> = kotlinx.coroutines.flow.flowOf(false),
@@ -47,6 +49,8 @@ class BadgesViewModel(
             // speciesByQid() runs per upstream emission (so per save / unlock change). The
             // backing SqlDelightSpeciesRepository does 6 SELECTs ~once per visit; cheap for ~700 rows.
             val species = speciesByQid()
+            // Upcast Loaded → BadgesUiState so onStart/catch can emit sibling subtypes
+            // (Loading/Error). This is a safe widening — not a downcast.
             buildLoaded(observations, unlocks, totalSpecies, species, premiumActive) as BadgesUiState
         }.onStart { emit(BadgesUiState.Loading) }
             .catch { emit(BadgesUiState.Error(BadgeErrorKind.LoadFailed)) }
