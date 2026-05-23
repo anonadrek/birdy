@@ -3,7 +3,7 @@
 This document captures the answers we will provide in the Google Play
 Console **Data Safety** section. Keep in sync with code reality.
 
-_Last reviewed: 2026-05-22 (Plan 6b2 v0.9.0b-audio + BirdNET license decision) — audio-ID shipped as free feature; RECORD_AUDIO permission added; no new data collection — recordings stay on-device_
+_Last reviewed: 2026-05-23 (v1.0.0, versionCode 112) — Plan 6b3 Premium content (PDF export, season stats, 10 new badges) added on top of free audio-ID; PDF stays on-device until user explicitly shares via system share-sheet; no new data collection_
 
 ## Data collection and security
 

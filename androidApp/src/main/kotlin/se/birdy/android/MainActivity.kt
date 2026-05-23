@@ -232,7 +232,7 @@ class MainActivity : ComponentActivity() {
         val premiumOverride: PremiumState? =
             if (BuildConfig.PREMIUM_OPEN_FOR_LAUNCH) {
                 PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now())
-            } else if (BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE) {
+            } else if (BuildConfig.DEBUG && BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE) {
                 PremiumState.Active(PremiumTier.YEARLY, Clock.System.now())
             } else {
                 null

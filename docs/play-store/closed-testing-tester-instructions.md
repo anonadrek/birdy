@@ -1,6 +1,6 @@
 # Birdy — Closed Testing Instructions
 
-**Build:** v0.9.0a-billing (versionCode 110, versionName 1.0.0-rc2)
+**Build:** v1.0.0 (versionCode 112, versionName 1.0.0)
 **Track:** Closed Testing — "Birdy launch testing"
 **Testing window:** 14 days (Google requirement before production)
 
