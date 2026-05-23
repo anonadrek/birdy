@@ -68,7 +68,7 @@ migration:
     where seeds and insects provide sustenance year-round.'
 image_refs:
 - role: hero
-  path: Q25383/hero.jpg
+  path: Q25383/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -77,7 +77,7 @@ image_refs:
     Fringilla coelebs canariensis.jpg
   commons_filename: Chaffinch of the subspecies Fringilla coelebs canariensis.jpg
 - role: secondary
-  path: Q25383/secondary-1.jpg
+  path: Q25383/secondary-1.webp
   width: 1800
   height: 1193
   license: CC0
@@ -86,7 +86,7 @@ image_refs:
     coelebs maderensis).jpg
   commons_filename: Madeiran chaffinch (Fringilla coelebs maderensis).jpg
 - role: secondary
-  path: Q25383/secondary-2.jpg
+  path: Q25383/secondary-2.webp
   width: 1800
   height: 1204
   license: CC BY 3.0

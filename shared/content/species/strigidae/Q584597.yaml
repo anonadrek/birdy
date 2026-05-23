@@ -54,7 +54,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q584597/hero.jpg
+  path: Q584597/hero.webp
   width: 2067
   height: 2067
   license: CC BY 2.0
@@ -64,7 +64,7 @@ image_refs:
     Kakegawa, Shizuoka, Japan-8a.jpg
   commons_filename: Bubo ascalaphus -Kakegawa Kacho-en, Kakegawa, Shizuoka, Japan-8a.jpg
 - role: secondary
-  path: Q584597/secondary-1.jpg
+  path: Q584597/secondary-1.webp
   width: 1350
   height: 1800
   license: CC BY-SA 4.0
@@ -73,7 +73,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pharaoh Eagle-Owl (Bubo ascalaphus).jpg
   commons_filename: Pharaoh Eagle-Owl (Bubo ascalaphus).jpg
 - role: secondary
-  path: Q584597/secondary-2.jpg
+  path: Q584597/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

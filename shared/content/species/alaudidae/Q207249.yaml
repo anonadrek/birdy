@@ -110,7 +110,7 @@ migration:
     areas with minimal snow cover.'
 image_refs:
 - role: hero
-  path: Q207249/hero.jpg
+  path: Q207249/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -120,7 +120,7 @@ image_refs:
     flava), Helgoland 2021.jpg
   commons_filename: Shore Lark (Eremophila alpestris flava), Helgoland 2021.jpg
 - role: secondary
-  path: Q207249/secondary-1.jpg
+  path: Q207249/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -129,7 +129,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Eremophila alpestris (26611497328).jpg
   commons_filename: Eremophila alpestris (26611497328).jpg
 - role: secondary
-  path: Q207249/secondary-2.jpg
+  path: Q207249/secondary-2.webp
   width: 1800
   height: 1440
   license: CC BY 4.0

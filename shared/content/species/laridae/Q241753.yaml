@@ -101,7 +101,7 @@ migration:
     tern an uncommon but noteworthy sighting for regional birdwatchers.'
 image_refs:
 - role: hero
-  path: Q241753/hero.jpg
+  path: Q241753/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -111,7 +111,7 @@ image_refs:
     leucopterus) 2021.jpg
   commons_filename: White-winged tern (Chlidonias leucopterus) 2021.jpg
 - role: secondary
-  path: Q241753/secondary-1.jpg
+  path: Q241753/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -121,7 +121,7 @@ image_refs:
     1.jpg
   commons_filename: Chlidonias leucopterus Biebrza 1.jpg
 - role: secondary
-  path: Q241753/secondary-2.jpg
+  path: Q241753/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

@@ -65,7 +65,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q210954/hero.jpg
+  path: Q210954/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -75,7 +75,7 @@ image_refs:
     stelleri) (13667593713).jpg
   commons_filename: Steller's Eider (Polysticta stelleri) (13667593713).jpg
 - role: secondary
-  path: Q210954/secondary-1.jpg
+  path: Q210954/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -85,7 +85,7 @@ image_refs:
     stelleri) (13667627635).jpg
   commons_filename: Steller's Eider (Polysticta stelleri) (13667627635).jpg
 - role: secondary
-  path: Q210954/secondary-2.jpg
+  path: Q210954/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

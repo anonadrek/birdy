@@ -80,7 +80,7 @@ migration:
     included in the provided source material.'
 image_refs:
 - role: hero
-  path: Q1316073/hero.jpg
+  path: Q1316073/hero.webp
   width: 2048
   height: 1366
   license: CC BY 4.0
@@ -89,7 +89,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Passer euchlorus 284522978.jpg
   commons_filename: Passer euchlorus 284522978.jpg
 - role: secondary
-  path: Q1316073/secondary-1.jpg
+  path: Q1316073/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY 4.0
@@ -98,7 +98,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Passer euchlorus 284523003.jpg
   commons_filename: Passer euchlorus 284523003.jpg
 - role: secondary
-  path: Q1316073/secondary-2.jpg
+  path: Q1316073/secondary-2.webp
   width: 1800
   height: 1201
   license: CC BY 4.0

@@ -70,7 +70,7 @@ migration:
     sheltered forests provide sufficient foraging opportunities.'
 image_refs:
 - role: hero
-  path: Q193593/hero.jpg
+  path: Q193593/hero.webp
   width: 1623
   height: 2400
   license: CC0
@@ -78,7 +78,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Certhia familiaris Rome 20130304.jpg
   commons_filename: Certhia familiaris Rome 20130304.jpg
 - role: secondary
-  path: Q193593/secondary-1.jpg
+  path: Q193593/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -88,7 +88,7 @@ image_refs:
     mangeoire 20250220 n02.jpg
   commons_filename: Certhia familiaris ringing SPOL mangeoire 20250220 n02.jpg
 - role: secondary
-  path: Q193593/secondary-2.jpg
+  path: Q193593/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

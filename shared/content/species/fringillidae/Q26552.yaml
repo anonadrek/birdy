@@ -98,7 +98,7 @@ migration:
     Migration data unavailable for this species.'
 image_refs:
 - role: hero
-  path: Q26552/hero.jpg
+  path: Q26552/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -114,7 +114,7 @@ image_refs:
   commons_filename: Fichtenkreuzschnabel (Loxia curvirostra), männlich im St. Louis
     County (Minnesota).jpg
 - role: secondary
-  path: Q26552/secondary-1.jpg
+  path: Q26552/secondary-1.webp
   width: 1800
   height: 1349
   license: CC BY-SA 4.0
@@ -124,7 +124,7 @@ image_refs:
     D) Loxia curvirostra.jpg
   commons_filename: Red Crossbill (Phantom or type D) Loxia curvirostra.jpg
 - role: secondary
-  path: Q26552/secondary-2.jpg
+  path: Q26552/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 2.0

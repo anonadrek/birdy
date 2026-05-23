@@ -102,7 +102,7 @@ migration:
     success and winter survival.'
 image_refs:
 - role: hero
-  path: Q25769/hero.jpg
+  path: Q25769/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -113,7 +113,7 @@ image_refs:
   commons_filename: Sumpfohreule (Asio flammeus) auf Spiekeroog - Nationalpark niedersächsisches
     Wattenmeer.jpg
 - role: secondary
-  path: Q25769/secondary-1.jpg
+  path: Q25769/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -124,7 +124,7 @@ image_refs:
   commons_filename: Sumpfohreule (Asio flammeus) auf Spiekeroog - Nationalpark niedersächsisches
     Wattenmeer (1).jpg
 - role: secondary
-  path: Q25769/secondary-2.jpg
+  path: Q25769/secondary-2.webp
   width: 1390
   height: 1800
   license: CC BY 4.0

@@ -77,7 +77,7 @@ migration:
     relevant to these areas.'
 image_refs:
 - role: hero
-  path: Q208763/hero.jpg
+  path: Q208763/hero.webp
   width: 2400
   height: 1599
   license: CC0
@@ -86,7 +86,7 @@ image_refs:
     aethiopicus) in flight.jpg
   commons_filename: African sacred ibis (Threskiornis aethiopicus) in flight.jpg
 - role: secondary
-  path: Q208763/secondary-1.jpg
+  path: Q208763/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -95,7 +95,7 @@ image_refs:
     de Ré 25 04 2012.jpg
   commons_filename: Threskiornis aethiopicus Ile de Ré 25 04 2012.jpg
 - role: secondary
-  path: Q208763/secondary-2.jpg
+  path: Q208763/secondary-2.webp
   width: 1800
   height: 1202
   license: CC BY 2.0

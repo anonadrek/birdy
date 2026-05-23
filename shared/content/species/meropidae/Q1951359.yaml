@@ -60,7 +60,7 @@ migration:
     regions such as Italy and Greece than in Scandinavian countries.'
 image_refs:
 - role: hero
-  path: Q1951359/hero.jpg
+  path: Q1951359/hero.webp
   width: 2400
   height: 1506
   license: CC BY 2.0
@@ -71,7 +71,7 @@ image_refs:
   commons_filename: Blue-cheeked bee-eater, Merops persicus, Chobe National Park,
     Botswana (32445436676).jpg
 - role: secondary
-  path: Q1951359/secondary-1.jpg
+  path: Q1951359/secondary-1.webp
   width: 1800
   height: 1096
   license: CC BY 2.0
@@ -82,7 +82,7 @@ image_refs:
   commons_filename: Blue-cheeked bee-eater, Merops persicus, Chobe National Park,
     Botswana (31674610663).jpg
 - role: secondary
-  path: Q1951359/secondary-2.jpg
+  path: Q1951359/secondary-2.webp
   width: 1800
   height: 1109
   license: CC BY 2.0

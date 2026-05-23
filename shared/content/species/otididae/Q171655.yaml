@@ -100,7 +100,7 @@ migration:
     rare vagrant to Northern Europe, if encountered at all in this geographic area.'
 image_refs:
 - role: hero
-  path: Q171655/hero.jpg
+  path: Q171655/hero.webp
   width: 2400
   height: 1443
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Otis tarda 01.jpg
   commons_filename: Otis tarda 01.jpg
 - role: secondary
-  path: Q171655/secondary-1.jpg
+  path: Q171655/secondary-1.webp
   width: 1800
   height: 636
   license: CC0
@@ -118,7 +118,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Otis tarda flight.jpg
   commons_filename: Otis tarda flight.jpg
 - role: secondary
-  path: Q171655/secondary-2.jpg
+  path: Q171655/secondary-2.webp
   width: 1800
   height: 1166
   license: CC0

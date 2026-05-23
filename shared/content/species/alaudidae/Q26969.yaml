@@ -88,7 +88,7 @@ migration:
     journeys to distant wintering grounds.'
 image_refs:
 - role: hero
-  path: Q26969/hero.jpg
+  path: Q26969/hero.webp
   width: 2400
   height: 1751
   license: CC BY 2.0
@@ -98,7 +98,7 @@ image_refs:
     1.jpg
   commons_filename: Lullula arborea, Alconocales 1.jpg
 - role: secondary
-  path: Q26969/secondary-1.jpg
+  path: Q26969/secondary-1.webp
   width: 1800
   height: 1011
   license: CC BY 4.0
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Lullula arborea 85227474.jpg
   commons_filename: Lullula arborea 85227474.jpg
 - role: secondary
-  path: Q26969/secondary-2.jpg
+  path: Q26969/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

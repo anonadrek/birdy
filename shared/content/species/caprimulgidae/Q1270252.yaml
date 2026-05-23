@@ -72,7 +72,7 @@ migration:
     European avifauna or seasonal occurrence patterns.'
 image_refs:
 - role: hero
-  path: Q1270252/hero.jpg
+  path: Q1270252/hero.webp
   width: 2048
   height: 1536
   license: CC BY 4.0
@@ -80,7 +80,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus inornatus 128478334.jpg
   commons_filename: Caprimulgus inornatus 128478334.jpg
 - role: secondary
-  path: Q1270252/secondary-1.jpg
+  path: Q1270252/secondary-1.webp
   width: 1800
   height: 1069
   license: CC BY 4.0

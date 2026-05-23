@@ -85,7 +85,7 @@ migration:
     a characteristic feature of Scandinavian seascapes throughout the annual cycle.'
 image_refs:
 - role: hero
-  path: Q26896/hero.jpg
+  path: Q26896/hero.webp
   width: 2400
   height: 1602
   license: CC0
@@ -94,7 +94,7 @@ image_refs:
     in flight.jpg
   commons_filename: Northern fulmar (Fulmarus glacialis) in flight.jpg
 - role: secondary
-  path: Q26896/secondary-1.jpg
+  path: Q26896/secondary-1.webp
   width: 1800
   height: 1250
   license: CC BY 2.0
@@ -104,7 +104,7 @@ image_refs:
     (52977897012).jpg
   commons_filename: Northern Fulmar - Fulmarus glacialis (52977897012).jpg
 - role: secondary
-  path: Q26896/secondary-2.jpg
+  path: Q26896/secondary-2.webp
   width: 1800
   height: 1198
   license: CC BY 4.0

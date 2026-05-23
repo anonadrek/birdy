@@ -59,7 +59,7 @@ migration:
     sources with specific data on its range and seasonal distribution would be required.'
 image_refs:
 - role: hero
-  path: Q25586001/hero.jpg
+  path: Q25586001/hero.webp
   width: 2400
   height: 1875
   license: CC BY-SA 4.0
@@ -70,7 +70,7 @@ image_refs:
   commons_filename: Yellow-throated Sparrow Gymnoris xanthocollis by Raju Kasambe
     DSCN3919.jpg
 - role: secondary
-  path: Q25586001/secondary-1.jpg
+  path: Q25586001/secondary-1.webp
   width: 1800
   height: 1347
   license: CC BY-SA 4.0
@@ -81,7 +81,7 @@ image_refs:
   commons_filename: Yellow Throated Sparrow Gymnoris xanthocollis by Dr. Raju Kasambe
     DSCN9902.jpg
 - role: secondary
-  path: Q25586001/secondary-2.jpg
+  path: Q25586001/secondary-2.webp
   width: 1377
   height: 1800
   license: CC BY-SA 4.0

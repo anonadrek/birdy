@@ -57,7 +57,7 @@ migration:
     content.'
 image_refs:
 - role: hero
-  path: Q131918/hero.jpg
+  path: Q131918/hero.webp
   width: 1597
   height: 2400
   license: Public domain
@@ -65,7 +65,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Falco columbarius FWS 14007.jpg
   commons_filename: Falco columbarius FWS 14007.jpg
 - role: secondary
-  path: Q131918/secondary-1.jpg
+  path: Q131918/secondary-1.webp
   width: 1800
   height: 1421
   license: CC BY 2.0
@@ -74,7 +74,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Falco columbarius Auburn NY.jpg
   commons_filename: Falco columbarius Auburn NY.jpg
 - role: secondary
-  path: Q131918/secondary-2.jpg
+  path: Q131918/secondary-2.webp
   width: 1176
   height: 1800
   license: CC BY 2.0

@@ -64,7 +64,7 @@ migration:
     range would be needed.'
 image_refs:
 - role: hero
-  path: Q890990/hero.jpg
+  path: Q890990/hero.webp
   width: 2400
   height: 1802
   license: CC BY-SA 2.0

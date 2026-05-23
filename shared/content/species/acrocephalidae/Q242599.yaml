@@ -98,7 +98,7 @@ migration:
     breeder.'
 image_refs:
 - role: hero
-  path: Q242599/hero.jpg
+  path: Q242599/hero.webp
   width: 2400
   height: 1607
   license: CC BY 3.0
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Acrocephalus paludicola 5 by-dpc.jpg
   commons_filename: Acrocephalus paludicola 5 by-dpc.jpg
 - role: secondary
-  path: Q242599/secondary-1.jpg
+  path: Q242599/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

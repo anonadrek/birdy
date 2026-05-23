@@ -96,7 +96,7 @@ migration:
     by seed availability in alder and conifer forests across the continent.'
 image_refs:
 - role: hero
-  path: Q27075864/hero.jpg
+  path: Q27075864/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -105,7 +105,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Spinus spinus (40065447562).jpg
   commons_filename: Spinus spinus (40065447562).jpg
 - role: secondary
-  path: Q27075864/secondary-1.jpg
+  path: Q27075864/secondary-1.webp
   width: 1800
   height: 1305
   license: CC BY 4.0
@@ -113,7 +113,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Siskin - Female - Spinus spinus.jpg
   commons_filename: Siskin - Female - Spinus spinus.jpg
 - role: secondary
-  path: Q27075864/secondary-2.jpg
+  path: Q27075864/secondary-2.webp
   width: 1800
   height: 1141
   license: CC BY 2.0

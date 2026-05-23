@@ -94,7 +94,7 @@ migration:
     populations in Scandinavian countries.'
 image_refs:
 - role: hero
-  path: Q18856/hero.jpg
+  path: Q18856/hero.webp
   width: 2400
   height: 1611
   license: CC BY 2.0
@@ -103,7 +103,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Xenus cinereus (34099320884).jpg
   commons_filename: Xenus cinereus (34099320884).jpg
 - role: secondary
-  path: Q18856/secondary-1.jpg
+  path: Q18856/secondary-1.webp
   width: 1800
   height: 1182
   license: CC BY 2.0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Xenus cinereus (34852062152).jpg
   commons_filename: Xenus cinereus (34852062152).jpg
 - role: secondary
-  path: Q18856/secondary-2.jpg
+  path: Q18856/secondary-2.webp
   width: 1800
   height: 1140
   license: CC BY 2.0

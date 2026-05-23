@@ -82,7 +82,7 @@ migration:
     its presence, migration patterns, or seasonal occurrence outside its island range.'
 image_refs:
 - role: hero
-  path: Q608804/hero.jpg
+  path: Q608804/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 2.0
@@ -92,7 +92,7 @@ image_refs:
     Canaria, Canary Islands, Spain-8.jpg
   commons_filename: Phylloscopus canariensis -Gran Canaria, Canary Islands, Spain-8.jpg
 - role: secondary
-  path: Q608804/secondary-1.jpg
+  path: Q608804/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 2.0
@@ -103,7 +103,7 @@ image_refs:
   commons_filename: Phylloscopus canariensis -Gran Canaria, Canary Islands, Spain-8
     (1).jpg
 - role: secondary
-  path: Q608804/secondary-2.jpg
+  path: Q608804/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 2.0

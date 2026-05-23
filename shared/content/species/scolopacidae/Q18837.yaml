@@ -87,7 +87,7 @@ migration:
     as they move between breeding and wintering grounds.'
 image_refs:
 - role: hero
-  path: Q18837/hero.jpg
+  path: Q18837/hero.webp
   width: 1600
   height: 2400
   license: CC BY 2.0
@@ -97,7 +97,7 @@ image_refs:
     പുള്ളിക്കാടക്കൊക്ക്. (32089301224).jpg
   commons_filename: Wood sandpiper (Tringa glareola) പുള്ളിക്കാടക്കൊക്ക്. (32089301224).jpg
 - role: secondary
-  path: Q18837/secondary-1.jpg
+  path: Q18837/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 3.0
@@ -106,7 +106,7 @@ image_refs:
     പുള്ളിക്കാടക്കൊക്ക് 22.jpg
   commons_filename: Wood sandpiper (Tringa glareola) പുള്ളിക്കാടക്കൊക്ക് 22.jpg
 - role: secondary
-  path: Q18837/secondary-2.jpg
+  path: Q18837/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 3.0

@@ -60,7 +60,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q27074973/hero.jpg
+  path: Q27074973/hero.webp
   width: 1554
   height: 2400
   license: CC BY 2.0
@@ -71,7 +71,7 @@ image_refs:
   commons_filename: Nanday Parakeet - Aratinga nenday, Boynton Beach, Florida, December
     12, 2023 (53480585076).jpg
 - role: secondary
-  path: Q27074973/secondary-1.jpg
+  path: Q27074973/secondary-1.webp
   width: 1800
   height: 1159
   license: CC BY-SA 2.0
@@ -81,7 +81,7 @@ image_refs:
     on nest ... - 48199003066.jpg
   commons_filename: Nanday Parakeets (Aratinga nenday) on nest ... - 48199003066.jpg
 - role: secondary
-  path: Q27074973/secondary-2.jpg
+  path: Q27074973/secondary-2.webp
   width: 1800
   height: 1726
   license: CC BY-SA 2.0

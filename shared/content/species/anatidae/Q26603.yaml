@@ -58,7 +58,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q26603/hero.jpg
+  path: Q26603/hero.webp
   width: 1600
   height: 2400
   license: Public domain
@@ -67,7 +67,7 @@ image_refs:
     (32651054017).jpg
   commons_filename: Tundra Swans (Cygnus columbianus) (32651054017).jpg
 - role: secondary
-  path: Q26603/secondary-1.jpg
+  path: Q26603/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -76,7 +76,7 @@ image_refs:
     columbianus DSC 5174.jpg
   commons_filename: Anas carolinensis and Cygnus columbianus DSC 5174.jpg
 - role: secondary
-  path: Q26603/secondary-2.jpg
+  path: Q26603/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

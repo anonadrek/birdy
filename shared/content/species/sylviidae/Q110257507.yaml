@@ -90,7 +90,7 @@ migration:
     suitable scrubland and maquis habitats.'
 image_refs:
 - role: hero
-  path: Q110257507/hero.jpg
+  path: Q110257507/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -98,7 +98,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Curruca melanocephala leucogastra.jpg
   commons_filename: Curruca melanocephala leucogastra.jpg
 - role: secondary
-  path: Q110257507/secondary-1.jpg
+  path: Q110257507/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

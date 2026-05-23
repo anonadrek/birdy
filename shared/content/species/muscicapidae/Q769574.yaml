@@ -60,7 +60,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q769574/hero.jpg
+  path: Q769574/hero.webp
   width: 2048
   height: 1538
   license: CC BY 4.0
@@ -69,7 +69,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe albonigra 46176684.jpg
   commons_filename: Oenanthe albonigra 46176684.jpg
 - role: secondary
-  path: Q769574/secondary-1.jpg
+  path: Q769574/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -78,7 +78,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe albonigra 103721244.jpg
   commons_filename: Oenanthe albonigra 103721244.jpg
 - role: secondary
-  path: Q769574/secondary-2.jpg
+  path: Q769574/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

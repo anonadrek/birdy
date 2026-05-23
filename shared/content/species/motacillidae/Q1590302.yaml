@@ -61,7 +61,7 @@ migration:
     form part of the regular avifauna of the region.'
 image_refs:
 - role: hero
-  path: Q1590302/hero.jpg
+  path: Q1590302/hero.webp
   width: 2400
   height: 1661
   license: CC BY 2.0
@@ -72,7 +72,7 @@ image_refs:
   commons_filename: Long-billed pipit, Anthus similis, at Devon Grasslands, Gauteng,
     South Africa (48233267797).jpg
 - role: secondary
-  path: Q1590302/secondary-1.jpg
+  path: Q1590302/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 2.0
@@ -83,7 +83,7 @@ image_refs:
   commons_filename: Long-billed pipit, Anthus similis, at Devon Grasslands, Gauteng,
     South Africa (48233268132).jpg
 - role: secondary
-  path: Q1590302/secondary-2.jpg
+  path: Q1590302/secondary-2.webp
   width: 1800
   height: 1202
   license: CC BY 2.0

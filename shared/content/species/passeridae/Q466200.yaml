@@ -88,7 +88,7 @@ migration:
     populations, remaining far south of the regular northern European range.'
 image_refs:
 - role: hero
-  path: Q466200/hero.jpg
+  path: Q466200/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -97,7 +97,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Passer hispaniolensis (1).jpg
   commons_filename: Passer hispaniolensis (1).jpg
 - role: secondary
-  path: Q466200/secondary-1.jpg
+  path: Q466200/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -107,7 +107,7 @@ image_refs:
     female ringed Malta.jpg
   commons_filename: Spanish sparrow (Passer hispaniolensis) female ringed Malta.jpg
 - role: secondary
-  path: Q466200/secondary-2.jpg
+  path: Q466200/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

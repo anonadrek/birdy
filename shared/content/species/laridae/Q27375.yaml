@@ -70,7 +70,7 @@ migration:
     availability and winter severity.'
 image_refs:
 - role: hero
-  path: Q27375/hero.jpg
+  path: Q27375/hero.webp
   width: 2400
   height: 1656
   license: Public domain
@@ -78,7 +78,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Larus hyperboreus-USFWS.jpg
   commons_filename: Larus hyperboreus-USFWS.jpg
 - role: secondary
-  path: Q27375/secondary-1.jpg
+  path: Q27375/secondary-1.webp
   width: 1800
   height: 1149
   license: Public domain
@@ -87,7 +87,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Larus hyperboreus.jpg
   commons_filename: Larus hyperboreus.jpg
 - role: secondary
-  path: Q27375/secondary-2.jpg
+  path: Q27375/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

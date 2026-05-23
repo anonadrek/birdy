@@ -84,7 +84,7 @@ migration:
     and the wider Nordic region.'
 image_refs:
 - role: hero
-  path: Q163049/hero.jpg
+  path: Q163049/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0

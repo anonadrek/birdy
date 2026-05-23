@@ -69,7 +69,7 @@ migration:
     any season of the year.'
 image_refs:
 - role: hero
-  path: Q851556/hero.jpg
+  path: Q851556/hero.webp
   width: 1600
   height: 2400
   license: CC BY 4.0
@@ -79,7 +79,7 @@ image_refs:
     Nuthatch - Sitta krueperi.jpg
   commons_filename: Turkse boomklever - Krüper's Nuthatch - Sitta krueperi.jpg
 - role: secondary
-  path: Q851556/secondary-1.jpg
+  path: Q851556/secondary-1.webp
   width: 1800
   height: 1284
   license: CC BY 2.0
@@ -89,7 +89,7 @@ image_refs:
   commons_filename: Krüper's Nuthatch (Sitta krueperi), Achladeri Forest, Lesvos,
     Greece, 16.04.2015 (2).jpg
 - role: secondary
-  path: Q851556/secondary-2.jpg
+  path: Q851556/secondary-2.webp
   width: 1800
   height: 1320
   license: CC BY 2.0

@@ -52,7 +52,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q339483/hero.jpg
+  path: Q339483/hero.webp
   width: 2140
   height: 1977
   license: CC BY 2.0
@@ -61,7 +61,7 @@ image_refs:
     pheasant) 2.jpg
   commons_filename: Syrmaticus reevesii (Reeves' pheasant) 2.jpg
 - role: secondary
-  path: Q339483/secondary-1.jpg
+  path: Q339483/secondary-1.webp
   width: 1800
   height: 1348
   license: CC BY-SA 2.0
@@ -71,7 +71,7 @@ image_refs:
     -captive-8.jpg
   commons_filename: Syrmaticus reevesii -Norway -captive-8.jpg
 - role: secondary
-  path: Q339483/secondary-2.jpg
+  path: Q339483/secondary-2.webp
   width: 1350
   height: 1800
   license: CC BY-SA 4.0

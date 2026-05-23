@@ -24,6 +24,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.MailOutline
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Public
@@ -81,6 +82,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_row_privacy
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_rate
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_share
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_terms
+import birdy_bird_scanner.composeapp.generated.resources.settings_row_website
 import birdy_bird_scanner.composeapp.generated.resources.settings_section_about_birdy
 import birdy_bird_scanner.composeapp.generated.resources.settings_section_account
 import birdy_bird_scanner.composeapp.generated.resources.settings_section_legal
@@ -125,8 +127,9 @@ fun SettingsScreen(
                     val text = getString(effect.text)
                     snackbarHostState.showSnackbar(text)
                 }
-                SettingsEffect.OpenPrivacyUrl -> openExternalUrl("https://anonadrek.github.io/birdy/privacy.html")
-                SettingsEffect.OpenTermsUrl -> openExternalUrl("https://anonadrek.github.io/birdy/terms.html")
+                SettingsEffect.OpenPrivacyUrl -> openExternalUrl("https://birdy.community/legal/privacy/")
+                SettingsEffect.OpenTermsUrl -> openExternalUrl("https://birdy.community/legal/terms/")
+                SettingsEffect.OpenWebsiteUrl -> openExternalUrl("https://birdy.community/")
                 SettingsEffect.RateOnPlayStore -> openPlayStoreListing("se.birdy.android")
                 SettingsEffect.ShareApp -> shareApp(shareText)
                 SettingsEffect.SendFeedback -> openMailto("albin@abrahamssons.se", feedbackSubject)
@@ -164,7 +167,7 @@ fun SettingsScreen(
                     )
                     DashedDivider()
                     SettingsRow(
-                        icon = Icons.Outlined.Public,
+                        icon = Icons.Outlined.Language,
                         label = stringResource(Res.string.settings_label_language),
                         value = stringResource(state.language.labelRes()),
                         onClick = { showLanguageDialog = true },
@@ -174,6 +177,13 @@ fun SettingsScreen(
             item { SectionHeader(stringResource(Res.string.settings_section_about_birdy)) }
             item {
                 PaperCard {
+                    SettingsRow(
+                        icon = Icons.Outlined.Public,
+                        label = stringResource(Res.string.settings_row_website),
+                        value = null,
+                        onClick = { viewModel.openWebsite() },
+                    )
+                    DashedDivider()
                     SettingsRow(
                         icon = Icons.Outlined.Star,
                         label = stringResource(Res.string.settings_row_rate),

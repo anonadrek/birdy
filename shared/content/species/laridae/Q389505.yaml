@@ -84,7 +84,7 @@ migration:
     distributional and phenological data would be required.'
 image_refs:
 - role: hero
-  path: Q389505/hero.jpg
+  path: Q389505/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -94,7 +94,7 @@ image_refs:
     at Aci Trezza 6516.jpg
   commons_filename: Caspian gull (Larus cachinnans) at Aci Trezza 6516.jpg
 - role: secondary
-  path: Q389505/secondary-1.jpg
+  path: Q389505/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
     at Aci Trezza 6519.jpg
   commons_filename: Caspian gull (Larus cachinnans) at Aci Trezza 6519.jpg
 - role: secondary
-  path: Q389505/secondary-2.jpg
+  path: Q389505/secondary-2.webp
   width: 1800
   height: 1350
   license: CC0

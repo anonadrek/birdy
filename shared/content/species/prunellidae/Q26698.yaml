@@ -98,7 +98,7 @@ migration:
     dates would be required.'
 image_refs:
 - role: hero
-  path: Q26698/hero.jpg
+  path: Q26698/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -130,7 +130,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:The dunnock (Prunella modularis).jpg
   commons_filename: The dunnock (Prunella modularis).jpg
 - role: secondary
-  path: Q26698/secondary-1.jpg
+  path: Q26698/secondary-1.webp
   width: 1800
   height: 1192
   license: CC BY 2.0
@@ -140,7 +140,7 @@ image_refs:
     (Loir-et-Cher) (24790246305).jpg
   commons_filename: Prunella modularis à Thésée-la-Romaine (Loir-et-Cher) (24790246305).jpg
 - role: secondary
-  path: Q26698/secondary-2.jpg
+  path: Q26698/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

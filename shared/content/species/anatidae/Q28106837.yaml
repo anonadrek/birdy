@@ -101,7 +101,7 @@ migration:
     to breeding grounds.'
 image_refs:
 - role: hero
-  path: Q28106837/hero.jpg
+  path: Q28106837/hero.webp
   width: 2400
   height: 1802
   license: CC0
@@ -110,7 +110,7 @@ image_refs:
     02.jpg
   commons_filename: Mareca penelope Oulu 20110515 02.jpg
 - role: secondary
-  path: Q28106837/secondary-1.jpg
+  path: Q28106837/secondary-1.webp
   width: 1800
   height: 1353
   license: CC0
@@ -119,7 +119,7 @@ image_refs:
     01.jpg
   commons_filename: Mareca penelope Oulu 20110515 01.jpg
 - role: secondary
-  path: Q28106837/secondary-2.jpg
+  path: Q28106837/secondary-2.webp
   width: 1800
   height: 1271
   license: CC0

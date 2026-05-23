@@ -95,7 +95,7 @@ migration:
     grounds.'
 image_refs:
 - role: hero
-  path: Q244350/hero.jpg
+  path: Q244350/hero.webp
   width: 2400
   height: 1856
   license: CC BY 2.0
@@ -105,7 +105,7 @@ image_refs:
     London, England -duckling-8.jpg
   commons_filename: Netta rufina -St James's Park, London, England -duckling-8.jpg
 - role: secondary
-  path: Q244350/secondary-1.jpg
+  path: Q244350/secondary-1.webp
   width: 1800
   height: 1512
   license: CC BY 2.0
@@ -115,7 +115,7 @@ image_refs:
     netta rufina.jpg
   commons_filename: Red-Crested Pochard (Female) netta rufina.jpg
 - role: secondary
-  path: Q244350/secondary-2.jpg
+  path: Q244350/secondary-2.webp
   width: 1800
   height: 1299
   license: CC BY-SA 4.0

@@ -494,6 +494,7 @@
     <string name="settings_section_account">ACCOUNT</string>
     <string name="settings_section_about_birdy">ABOUT BIRDY</string>
     <string name="settings_section_legal">LEGAL</string>
+    <string name="settings_row_website">Website</string>
     <string name="settings_row_rate">Rate Birdy</string>
     <string name="settings_row_share">Share the app</string>
     <string name="settings_row_feedback">Feedback</string>

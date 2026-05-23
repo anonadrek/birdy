@@ -84,7 +84,7 @@ migration:
     a regular winter resident in the region.'
 image_refs:
 - role: hero
-  path: Q239393/hero.jpg
+  path: Q239393/hero.webp
   width: 2400
   height: 1350
   license: CC BY 2.0
@@ -94,7 +94,7 @@ image_refs:
   commons_filename: Lesser grey shrike (Lanius minor), Kruger National Park, South
     Africa. - 52804244786.jpg
 - role: secondary
-  path: Q239393/secondary-1.jpg
+  path: Q239393/secondary-1.webp
   width: 1800
   height: 1013
   license: CC BY 2.0
@@ -104,7 +104,7 @@ image_refs:
   commons_filename: Lesser grey shrike (Lanius minor), Kruger National Park, South
     Africa.jpg
 - role: secondary
-  path: Q239393/secondary-2.jpg
+  path: Q239393/secondary-2.webp
   width: 1800
   height: 1012
   license: CC BY 2.0

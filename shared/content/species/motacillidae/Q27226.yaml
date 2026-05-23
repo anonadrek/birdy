@@ -68,7 +68,7 @@ migration:
     subcontinent, making it entirely absent from the region during winter months.'
 image_refs:
 - role: hero
-  path: Q27226/hero.jpg
+  path: Q27226/hero.webp
   width: 2400
   height: 1805
   license: CC BY 4.0
@@ -78,7 +78,7 @@ image_refs:
     campestris.tif
   commons_filename: Duinpieper - tawny pipit - Anthus campestris.tif
 - role: secondary
-  path: Q27226/secondary-1.jpg
+  path: Q27226/secondary-1.webp
   width: 1800
   height: 1235
   license: CC BY 2.0
@@ -88,7 +88,7 @@ image_refs:
     (1) - Flickr - gailhampshire.jpg
   commons_filename: Tawny Pipit. Anthus campestris (1) - Flickr - gailhampshire.jpg
 - role: secondary
-  path: Q27226/secondary-2.jpg
+  path: Q27226/secondary-2.webp
   width: 1800
   height: 1349
   license: CC BY-SA 4.0

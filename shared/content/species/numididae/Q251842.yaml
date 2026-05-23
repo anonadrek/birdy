@@ -90,7 +90,7 @@ migration:
     movements in Scandinavia or Northern Europe specifically.'
 image_refs:
 - role: hero
-  path: Q251842/hero.jpg
+  path: Q251842/hero.webp
   width: 2400
   height: 1807
   license: Public domain
@@ -100,7 +100,7 @@ image_refs:
     spring 2008-3.JPG
   commons_filename: Numida meleagris at Skansen spring 2008-3.JPG
 - role: secondary
-  path: Q251842/secondary-1.jpg
+  path: Q251842/secondary-1.webp
   width: 1200
   height: 1800
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
     meleagris), Kenya.jpg
   commons_filename: Helmeted guineafowl (Numida meleagris), Kenya.jpg
 - role: secondary
-  path: Q251842/secondary-2.jpg
+  path: Q251842/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

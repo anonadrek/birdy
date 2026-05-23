@@ -71,7 +71,7 @@ migration:
     or vagrant to the region.'
 image_refs:
 - role: hero
-  path: Q187902/hero.jpg
+  path: Q187902/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -80,7 +80,7 @@ image_refs:
     porphyrio), Island of Mallorca, Spain.jpg
   commons_filename: Western swamphen (Porphyrio porphyrio), Island of Mallorca, Spain.jpg
 - role: secondary
-  path: Q187902/secondary-1.jpg
+  path: Q187902/secondary-1.webp
   width: 1800
   height: 1205
   license: CC0
@@ -90,7 +90,7 @@ image_refs:
     (12083002914).jpg
   commons_filename: Pukeko. (Porphyrio porphyrio). (12083002914).jpg
 - role: secondary
-  path: Q187902/secondary-2.jpg
+  path: Q187902/secondary-2.webp
   width: 1800
   height: 1197
   license: CC0

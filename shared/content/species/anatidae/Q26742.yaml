@@ -100,7 +100,7 @@ migration:
     in early spring as ice melts and water bodies become accessible again.'
 image_refs:
 - role: hero
-  path: Q26742/hero.jpg
+  path: Q26742/hero.webp
   width: 2400
   height: 1480
   license: CC BY 2.0
@@ -110,7 +110,7 @@ image_refs:
     Brunand (50829034922).jpg
   commons_filename: Common pochard, Aythya ferina, Brunand (50829034922).jpg
 - role: secondary
-  path: Q26742/secondary-1.jpg
+  path: Q26742/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -119,7 +119,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Aythya ferina Finsbury 1.jpg
   commons_filename: Aythya ferina Finsbury 1.jpg
 - role: secondary
-  path: Q26742/secondary-2.jpg
+  path: Q26742/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

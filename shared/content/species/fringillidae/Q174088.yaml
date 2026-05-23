@@ -96,7 +96,7 @@ migration:
     with abundant seed-bearing trees like hornbeam and rowan.'
 image_refs:
 - role: hero
-  path: Q174088/hero.jpg
+  path: Q174088/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -106,7 +106,7 @@ image_refs:
     juvenile.jpg
   commons_filename: Hawfinch (Coccothraustes coccothraustes) juvenile.jpg
 - role: secondary
-  path: Q174088/secondary-1.jpg
+  path: Q174088/secondary-1.webp
   width: 1800
   height: 1196
   license: CC BY-SA 4.0
@@ -116,7 +116,7 @@ image_refs:
     костогриз.jpg
   commons_filename: Coccothraustes coccothraustes костогриз.jpg
 - role: secondary
-  path: Q174088/secondary-2.jpg
+  path: Q174088/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

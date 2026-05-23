@@ -90,7 +90,7 @@ migration:
     feeding areas further south.'
 image_refs:
 - role: hero
-  path: Q723064/hero.jpg
+  path: Q723064/hero.webp
   width: 2400
   height: 1906
   license: Public domain
@@ -98,7 +98,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pagophila eburnea-USFWS.jpg
   commons_filename: Pagophila eburnea-USFWS.jpg
 - role: secondary
-  path: Q723064/secondary-1.jpg
+  path: Q723064/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pagophila eburnea PlymouthMA.jpg
   commons_filename: Pagophila eburnea PlymouthMA.jpg
 - role: secondary
-  path: Q723064/secondary-2.jpg
+  path: Q723064/secondary-2.webp
   width: 1800
   height: 1127
   license: CC BY 4.0

@@ -93,7 +93,7 @@ migration:
     weather conditions and food availability.'
 image_refs:
 - role: hero
-  path: Q26205/hero.jpg
+  path: Q26205/hero.webp
   width: 2400
   height: 1800
   license: CC BY 4.0
@@ -102,7 +102,7 @@ image_refs:
     01.jpg
   commons_filename: Emberiza citrinella IMG 4214 01.jpg
 - role: secondary
-  path: Q26205/secondary-1.jpg
+  path: Q26205/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -111,7 +111,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Emberiza citrinella (19678972820).jpg
   commons_filename: Emberiza citrinella (19678972820).jpg
 - role: secondary
-  path: Q26205/secondary-2.jpg
+  path: Q26205/secondary-2.webp
   width: 1303
   height: 1800
   license: CC BY 4.0

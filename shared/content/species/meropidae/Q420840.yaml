@@ -93,7 +93,7 @@ migration:
     patterns, or seasonal occurrence in Scandinavian territories.'
 image_refs:
 - role: hero
-  path: Q420840/hero.jpg
+  path: Q420840/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -102,7 +102,7 @@ image_refs:
     Chengottukavu, Kerala, India 04763-Enhanced-NR.jpg
   commons_filename: Merops orientalis orientalis, Chengottukavu, Kerala, India 04763-Enhanced-NR.jpg
 - role: secondary
-  path: Q420840/secondary-1.jpg
+  path: Q420840/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -111,7 +111,7 @@ image_refs:
     04573.tif
   commons_filename: Merops orientalis ceylonicus 04573.tif
 - role: secondary
-  path: Q420840/secondary-2.jpg
+  path: Q420840/secondary-2.webp
   width: 1472
   height: 1800
   license: CC BY 4.0

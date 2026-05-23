@@ -72,7 +72,7 @@ migration:
     Migration data unavailable for this species.'
 image_refs:
 - role: hero
-  path: Q178811/hero.jpg
+  path: Q178811/hero.webp
   width: 2400
   height: 1563
   license: CC BY 2.0
@@ -84,7 +84,7 @@ image_refs:
   commons_filename: Glossy Ibis - Plegadis falcinellus, Merritt Island National Wildlife
     Refuge, Titusville, Florida, Febuary 11, 2022 (53050133668).jpg
 - role: secondary
-  path: Q178811/secondary-1.jpg
+  path: Q178811/secondary-1.webp
   width: 1325
   height: 1800
   license: CC BY 2.0
@@ -97,7 +97,7 @@ image_refs:
     Gauteng, South Africa. Marievale is probably the best place to see this bird.
     (20491490024).jpg
 - role: secondary
-  path: Q178811/secondary-2.jpg
+  path: Q178811/secondary-2.webp
   width: 1800
   height: 1012
   license: CC BY 2.0

@@ -99,7 +99,7 @@ marginalia:
   en: Found only in the Canary Islands — a blue tit that forgot winter.
 image_refs:
 - role: hero
-  path: Q10546857/hero.jpg
+  path: Q10546857/hero.webp
   width: 2048
   height: 1281
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
     184052669.jpg
   commons_filename: Cyanistes teneriffae teneriffae 184052669.jpg
 - role: secondary
-  path: Q10546857/secondary-1.jpg
+  path: Q10546857/secondary-1.webp
   width: 1800
   height: 1125
   license: CC BY 4.0
@@ -119,7 +119,7 @@ image_refs:
     184052632.jpg
   commons_filename: Cyanistes teneriffae teneriffae 184052632.jpg
 - role: secondary
-  path: Q10546857/secondary-2.jpg
+  path: Q10546857/secondary-2.webp
   width: 1800
   height: 1513
   license: CC BY-SA 3.0

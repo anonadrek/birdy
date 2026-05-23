@@ -83,7 +83,7 @@ migration:
     or Northern Europe.'
 image_refs:
 - role: hero
-  path: Q232523/hero.jpg
+  path: Q232523/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -93,7 +93,7 @@ image_refs:
     pomarina) 2020.jpg
   commons_filename: Lesser spotted eagle (Clanga pomarina) 2020.jpg
 - role: secondary
-  path: Q232523/secondary-1.jpg
+  path: Q232523/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -102,7 +102,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Clanga pomarina, Belarus 1.jpg
   commons_filename: Clanga pomarina, Belarus 1.jpg
 - role: secondary
-  path: Q232523/secondary-2.jpg
+  path: Q232523/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

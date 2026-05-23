@@ -95,7 +95,7 @@ migration:
     migration. Spring arrival typically occurs in March-April as breeding season approaches.'
 image_refs:
 - role: hero
-  path: Q26956/hero.jpg
+  path: Q26956/hero.webp
   width: 2400
   height: 1601
   license: CC BY 2.0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Anthus pratensis (33752471506).jpg
   commons_filename: Anthus pratensis (33752471506).jpg
 - role: secondary
-  path: Q26956/secondary-1.jpg
+  path: Q26956/secondary-1.webp
   width: 1200
   height: 1800
   license: CC BY 4.0
@@ -114,7 +114,7 @@ image_refs:
     2022.jpg
   commons_filename: Meadow pipit (Anthus pratensis) 2022.jpg
 - role: secondary
-  path: Q26956/secondary-2.jpg
+  path: Q26956/secondary-2.webp
   width: 1800
   height: 1605
   license: CC BY 2.0

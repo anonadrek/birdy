@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q27074732/hero.jpg
+  path: Q27074732/hero.webp
   width: 2048
   height: 1831
   license: CC BY 4.0
@@ -45,7 +45,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Otus cyprius 62796570.jpg
   commons_filename: Otus cyprius 62796570.jpg
 - role: secondary
-  path: Q27074732/secondary-1.jpg
+  path: Q27074732/secondary-1.webp
   width: 1481
   height: 1800
   license: CC BY 4.0
@@ -53,7 +53,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Otus cyprius 62796526.jpg
   commons_filename: Otus cyprius 62796526.jpg
 - role: secondary
-  path: Q27074732/secondary-2.jpg
+  path: Q27074732/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

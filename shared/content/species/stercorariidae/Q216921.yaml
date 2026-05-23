@@ -62,7 +62,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q216921/hero.jpg
+  path: Q216921/hero.webp
   width: 2048
   height: 1374
   license: CC BY 4.0
@@ -71,7 +71,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Stercorarius longicaudus 559417158.jpg
   commons_filename: Stercorarius longicaudus 559417158.jpg
 - role: secondary
-  path: Q216921/secondary-1.jpg
+  path: Q216921/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -80,7 +80,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Stercorarius longicaudus 551410178.jpg
   commons_filename: Stercorarius longicaudus 551410178.jpg
 - role: secondary
-  path: Q216921/secondary-2.jpg
+  path: Q216921/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 3.0

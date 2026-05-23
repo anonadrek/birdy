@@ -59,7 +59,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q837753/hero.jpg
+  path: Q837753/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -70,7 +70,7 @@ image_refs:
   commons_filename: Cretzschmar's Bunting (Emberiza caesia), Lesvos, Greece, 17.04.2015
     (17330404772).jpg
 - role: secondary
-  path: Q837753/secondary-1.jpg
+  path: Q837753/secondary-1.webp
   width: 1800
   height: 1340
   license: CC BY 2.0
@@ -81,7 +81,7 @@ image_refs:
   commons_filename: Cretzschmar's Bunting (Emberiza caesia) Mt. Olympus, Lesvos, Greece,
     14.04.2015 (17294601805).jpg
 - role: secondary
-  path: Q837753/secondary-2.jpg
+  path: Q837753/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

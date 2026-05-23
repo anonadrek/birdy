@@ -68,7 +68,7 @@ migration:
     regular seasonal visitor.'
 image_refs:
 - role: hero
-  path: Q126216/hero.jpg
+  path: Q126216/hero.webp
   width: 1600
   height: 2400
   license: Public domain
@@ -77,7 +77,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Nycticorax nycticorax FWS.jpg
   commons_filename: Nycticorax nycticorax FWS.jpg
 - role: secondary
-  path: Q126216/secondary-1.jpg
+  path: Q126216/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -86,7 +86,7 @@ image_refs:
     nycticorax)-幼鳥(ホシゴイ) (7254286006).jpg
   commons_filename: ゴイサギ(五位鷺)(Nycticorax nycticorax nycticorax)-幼鳥(ホシゴイ) (7254286006).jpg
 - role: secondary
-  path: Q126216/secondary-2.jpg
+  path: Q126216/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

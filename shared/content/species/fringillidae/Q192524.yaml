@@ -83,7 +83,7 @@ migration:
     populations or overwintering groups.'
 image_refs:
 - role: hero
-  path: Q192524/hero.jpg
+  path: Q192524/hero.webp
   width: 2400
   height: 1800
   license: Public domain
@@ -91,7 +91,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Serinus canaria C.jpg
   commons_filename: Serinus canaria C.jpg
 - role: secondary
-  path: Q192524/secondary-1.jpg
+  path: Q192524/secondary-1.webp
   width: 1800
   height: 1197
   license: CC0
@@ -99,7 +99,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Atlantic canary (Serinus canaria).jpg
   commons_filename: Atlantic canary (Serinus canaria).jpg
 - role: secondary
-  path: Q192524/secondary-2.jpg
+  path: Q192524/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

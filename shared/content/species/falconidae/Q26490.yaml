@@ -94,7 +94,7 @@ migration:
     depending on local food resources and climate conditions.'
 image_refs:
 - role: hero
-  path: Q26490/hero.jpg
+  path: Q26490/hero.webp
   width: 2400
   height: 1602
   license: CC BY 4.0
@@ -103,7 +103,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:20210930 Falco tinnunculus.jpg
   commons_filename: 20210930 Falco tinnunculus.jpg
 - role: secondary
-  path: Q26490/secondary-1.jpg
+  path: Q26490/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Falco tinnunculus 2022 04 17.jpg
   commons_filename: Falco tinnunculus 2022 04 17.jpg
 - role: secondary
-  path: Q26490/secondary-2.jpg
+  path: Q26490/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY 4.0

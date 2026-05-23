@@ -82,7 +82,7 @@ migration:
     tendencies.'
 image_refs:
 - role: hero
-  path: Q4967039/hero.jpg
+  path: Q4967039/hero.webp
   width: 2048
   height: 1365
   license: CC0

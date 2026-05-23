@@ -70,7 +70,7 @@ migration:
     cannot be provided.'
 image_refs:
 - role: hero
-  path: Q74100/hero.jpg
+  path: Q74100/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -80,7 +80,7 @@ image_refs:
     stentoreus) കൈതക്കള്ളൻ (30890370543).jpg
   commons_filename: Clamorous Reed Warbler (Acrocephalus stentoreus) കൈതക്കള്ളൻ (30890370543).jpg
 - role: secondary
-  path: Q74100/secondary-1.jpg
+  path: Q74100/secondary-1.webp
   width: 1800
   height: 1336
   license: CC BY-SA 4.0
@@ -90,7 +90,7 @@ image_refs:
     stentoreus).JPG
   commons_filename: Clamorous reed warbler (Acrocephalus stentoreus).JPG
 - role: secondary
-  path: Q74100/secondary-2.jpg
+  path: Q74100/secondary-2.webp
   width: 1351
   height: 1800
   license: CC BY-SA 4.0

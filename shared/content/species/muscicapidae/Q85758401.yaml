@@ -60,7 +60,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q85758401/hero.jpg
+  path: Q85758401/hero.webp
   width: 2400
   height: 1436
   license: CC BY 4.0
@@ -70,7 +70,7 @@ image_refs:
     (Oenanthe melanoleuca) 2019 2.jpg
   commons_filename: Eastern black-eared wheatear (Oenanthe melanoleuca) 2019 2.jpg
 - role: secondary
-  path: Q85758401/secondary-1.jpg
+  path: Q85758401/secondary-1.webp
   width: 1800
   height: 1105
   license: CC BY 4.0
@@ -80,7 +80,7 @@ image_refs:
     (Oenanthe melanoleuca) 2019.jpg
   commons_filename: Eastern black-eared wheatear (Oenanthe melanoleuca) 2019.jpg
 - role: secondary
-  path: Q85758401/secondary-2.jpg
+  path: Q85758401/secondary-2.webp
   width: 1800
   height: 1228
   license: CC BY 2.0

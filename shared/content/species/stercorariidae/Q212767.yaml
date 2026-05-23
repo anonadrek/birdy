@@ -89,7 +89,7 @@ migration:
     rather than year-round residents.'
 image_refs:
 - role: hero
-  path: Q212767/hero.jpg
+  path: Q212767/hero.webp
   width: 1600
   height: 2400
   license: CC BY 4.0
@@ -99,7 +99,7 @@ image_refs:
     pomarinus) 2023.jpg
   commons_filename: Pomarine jaeger (Stercorarius pomarinus) 2023.jpg
 - role: secondary
-  path: Q212767/secondary-1.jpg
+  path: Q212767/secondary-1.webp
   width: 1800
   height: 1013
   license: CC BY 2.0
@@ -109,7 +109,7 @@ image_refs:
     pomarinus) (5803208086).jpg
   commons_filename: Pomarine Skua (Stercorarius pomarinus) (5803208086).jpg
 - role: secondary
-  path: Q212767/secondary-2.jpg
+  path: Q212767/secondary-2.webp
   width: 1800
   height: 988
   license: CC BY-SA 2.0

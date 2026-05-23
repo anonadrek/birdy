@@ -95,7 +95,7 @@ migration:
     and location.'
 image_refs:
 - role: hero
-  path: Q190342/hero.jpg
+  path: Q190342/hero.webp
   width: 2400
   height: 1601
   license: Public domain
@@ -104,7 +104,7 @@ image_refs:
     Grebe Lake with immature adults (53941393195).jpg
   commons_filename: Common loon (Gavia immer) on Grebe Lake with immature adults (53941393195).jpg
 - role: secondary
-  path: Q190342/secondary-1.jpg
+  path: Q190342/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Gavia immer DSC 5915.jpg
   commons_filename: Gavia immer DSC 5915.jpg
 - role: secondary
-  path: Q190342/secondary-2.jpg
+  path: Q190342/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

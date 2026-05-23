@@ -84,7 +84,7 @@ migration:
     and would not be relevant for a Northern European bird guide.'
 image_refs:
 - role: hero
-  path: Q1034950/hero.jpg
+  path: Q1034950/hero.webp
   width: 2400
   height: 1530
   license: CC BY 2.0
@@ -95,7 +95,7 @@ image_refs:
   commons_filename: Cinnamon-breasted bunting, Emberiza tahapisi, at Pilanesberg National
     Park, Northwest Province, South Africa (28486796805).jpg
 - role: secondary
-  path: Q1034950/secondary-1.jpg
+  path: Q1034950/secondary-1.webp
   width: 1800
   height: 1234
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
   commons_filename: Cinnamon-breasted bunting, Emberiza tahapisi, at Pilanesberg National
     Park, Northwest Province, South Africa (28381650062).jpg
 - role: secondary
-  path: Q1034950/secondary-2.jpg
+  path: Q1034950/secondary-2.webp
   width: 1800
   height: 1092
   license: CC BY 2.0

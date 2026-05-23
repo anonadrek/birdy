@@ -52,7 +52,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q519583/hero.jpg
+  path: Q519583/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -61,7 +61,7 @@ image_refs:
     audouinii).jpg
   commons_filename: Audouin's gull (Ichthyaetus audouinii).jpg
 - role: secondary
-  path: Q519583/secondary-1.jpg
+  path: Q519583/secondary-1.webp
   width: 1800
   height: 1392
   license: CC BY 2.0
@@ -71,7 +71,7 @@ image_refs:
     - Flickr - S. Rae (1).jpg
   commons_filename: Larus (Ichthyaetus) audouinii - Flickr - S. Rae (1).jpg
 - role: secondary
-  path: Q519583/secondary-2.jpg
+  path: Q519583/secondary-2.webp
   width: 1800
   height: 1500
   license: CC BY 2.0

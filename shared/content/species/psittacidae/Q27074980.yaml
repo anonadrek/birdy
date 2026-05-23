@@ -66,7 +66,7 @@ migration:
     in Scandinavian or Northern European territories.'
 image_refs:
 - role: hero
-  path: Q27074980/hero.jpg
+  path: Q27074980/hero.webp
   width: 2048
   height: 1365
   license: CC0
@@ -75,7 +75,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Thectocercus acuticaudatus 505478395.jpg
   commons_filename: Thectocercus acuticaudatus 505478395.jpg
 - role: secondary
-  path: Q27074980/secondary-1.jpg
+  path: Q27074980/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY 4.0
@@ -84,7 +84,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Thectocercus acuticaudatus 465902258.jpg
   commons_filename: Thectocercus acuticaudatus 465902258.jpg
 - role: secondary
-  path: Q27074980/secondary-2.jpg
+  path: Q27074980/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

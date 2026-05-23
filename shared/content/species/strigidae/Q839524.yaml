@@ -87,7 +87,7 @@ migration:
     urban areas where it roosts year-round in tree cavities and building crevices.'
 image_refs:
 - role: hero
-  path: Q839524/hero.jpg
+  path: Q839524/hero.webp
   width: 2400
   height: 1800
   license: CC BY 4.0
@@ -97,7 +97,7 @@ image_refs:
   commons_filename: Spotted Owlet (Athene brama) Greater Rann of Kutch, Gujarat, India
     DSCN7789 03.jpg
 - role: secondary
-  path: Q839524/secondary-1.jpg
+  path: Q839524/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Spotted owlet Athene brama (2155234922).jpg
   commons_filename: Spotted owlet Athene brama (2155234922).jpg
 - role: secondary
-  path: Q839524/secondary-2.jpg
+  path: Q839524/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

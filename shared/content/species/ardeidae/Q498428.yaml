@@ -84,7 +84,7 @@ migration:
     about this species'' seasonal occurrence in Northern Europe.'
 image_refs:
 - role: hero
-  path: Q498428/hero.jpg
+  path: Q498428/hero.webp
   width: 1787
   height: 2400
   license: CC BY 4.0
@@ -92,7 +92,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ardeola grayii 04726-Enhanced-NR-2.jpg
   commons_filename: Ardeola grayii 04726-Enhanced-NR-2.jpg
 - role: secondary
-  path: Q498428/secondary-1.jpg
+  path: Q498428/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -102,7 +102,7 @@ image_refs:
     (51326779697).jpg
   commons_filename: Indian Pond Heron Ardeola grayii (51326779697).jpg
 - role: secondary
-  path: Q498428/secondary-2.jpg
+  path: Q498428/secondary-2.webp
   width: 1350
   height: 1800
   license: CC BY 3.0

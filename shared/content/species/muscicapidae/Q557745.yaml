@@ -87,7 +87,7 @@ migration:
     vagrants rather than regular seasonal visitors.'
 image_refs:
 - role: hero
-  path: Q557745/hero.jpg
+  path: Q557745/hero.webp
   width: 2048
   height: 1536
   license: CC BY 4.0

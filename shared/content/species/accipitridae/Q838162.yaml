@@ -62,7 +62,7 @@ migration:
     with specific biogeographical data would be required.'
 image_refs:
 - role: hero
-  path: Q838162/hero.jpg
+  path: Q838162/hero.webp
   width: 1603
   height: 2400
   license: CC BY 2.0
@@ -72,7 +72,7 @@ image_refs:
   commons_filename: Lappet-faced vulture, Torgos tracheliotos, at Kruger National
     Park, South Africa.jpg
 - role: secondary
-  path: Q838162/secondary-1.jpg
+  path: Q838162/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 2.0
@@ -82,7 +82,7 @@ image_refs:
   commons_filename: Lappet-faced vulture, Torgos tracheliotos, at Kruger National
     Park, South Africa. - 49182403938.jpg
 - role: secondary
-  path: Q838162/secondary-2.jpg
+  path: Q838162/secondary-2.webp
   width: 1800
   height: 1198
   license: CC BY 4.0

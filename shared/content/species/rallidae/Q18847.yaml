@@ -90,7 +90,7 @@ migration:
     as temperatures rise and water bodies become ice-free.'
 image_refs:
 - role: hero
-  path: Q18847/hero.jpg
+  path: Q18847/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -99,7 +99,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Common moorhen (Gallinula chloropus).jpg
   commons_filename: Common moorhen (Gallinula chloropus).jpg
 - role: secondary
-  path: Q18847/secondary-1.jpg
+  path: Q18847/secondary-1.webp
   width: 1800
   height: 1267
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
     France.jpg
   commons_filename: Common moorhen (Gallinula chloropus) France.jpg
 - role: secondary
-  path: Q18847/secondary-2.jpg
+  path: Q18847/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

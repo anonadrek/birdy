@@ -66,7 +66,7 @@ migration:
     is not mentioned in the provided text.'
 image_refs:
 - role: hero
-  path: Q374141/hero.jpg
+  path: Q374141/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -74,7 +74,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Tawny eagle (Aquila rapax).jpg
   commons_filename: Tawny eagle (Aquila rapax).jpg
 - role: secondary
-  path: Q374141/secondary-1.jpg
+  path: Q374141/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -84,7 +84,7 @@ image_refs:
     (40634036312).jpg
   commons_filename: Aquila rapax on a tree, sunset (40634036312).jpg
 - role: secondary
-  path: Q374141/secondary-2.jpg
+  path: Q374141/secondary-2.webp
   width: 1366
   height: 1800
   license: CC BY 2.0

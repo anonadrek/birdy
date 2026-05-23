@@ -101,7 +101,7 @@ migration:
     with most populations absent during winter months.'
 image_refs:
 - role: hero
-  path: Q18854/hero.jpg
+  path: Q18854/hero.webp
   width: 2400
   height: 1774
   license: CC0
@@ -111,7 +111,7 @@ image_refs:
     2020-05-22.jpg
   commons_filename: Numenius arquata Liminka Finland 2020-05-22.jpg
 - role: secondary
-  path: Q18854/secondary-1.jpg
+  path: Q18854/secondary-1.webp
   width: 1800
   height: 1295
   license: CC0
@@ -119,7 +119,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Numenius Arquata Simo 20110715.JPG
   commons_filename: Numenius Arquata Simo 20110715.JPG
 - role: secondary
-  path: Q18854/secondary-2.jpg
+  path: Q18854/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY 2.0

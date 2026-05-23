@@ -84,7 +84,7 @@ migration:
     or migratory behavior.'
 image_refs:
 - role: hero
-  path: Q770308/hero.jpg
+  path: Q770308/hero.webp
   width: 2048
   height: 1365
   license: CC0
@@ -92,7 +92,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Columba trocaz 525000647.jpg
   commons_filename: Columba trocaz 525000647.jpg
 - role: secondary
-  path: Q770308/secondary-1.jpg
+  path: Q770308/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -101,7 +101,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Columba trocaz 482834173.jpg
   commons_filename: Columba trocaz 482834173.jpg
 - role: secondary
-  path: Q770308/secondary-2.jpg
+  path: Q770308/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

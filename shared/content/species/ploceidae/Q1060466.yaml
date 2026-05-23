@@ -88,7 +88,7 @@ migration:
     to or occur in northern European regions during any season.'
 image_refs:
 - role: hero
-  path: Q1060466/hero.jpg
+  path: Q1060466/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -96,7 +96,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Madagascar Fody - Foudia madagascariensis.jpg
   commons_filename: Madagascar Fody - Foudia madagascariensis.jpg
 - role: secondary
-  path: Q1060466/secondary-1.jpg
+  path: Q1060466/secondary-1.webp
   width: 1800
   height: 1200
   license: Public domain
@@ -105,7 +105,7 @@ image_refs:
     (Weibchen).jpg
   commons_filename: Madagascar Fody - Foudia madagascariensis (Weibchen).jpg
 - role: secondary
-  path: Q1060466/secondary-2.jpg
+  path: Q1060466/secondary-2.webp
   width: 1800
   height: 1200
   license: Public domain

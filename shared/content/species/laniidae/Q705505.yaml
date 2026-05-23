@@ -69,7 +69,7 @@ migration:
     throughout the year.'
 image_refs:
 - role: hero
-  path: Q705505/hero.jpg
+  path: Q705505/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -79,7 +79,7 @@ image_refs:
     grey shrike - Lanius meridionalis.jpg
   commons_filename: Iberische klapekster - Iberian grey shrike - Lanius meridionalis.jpg
 - role: secondary
-  path: Q705505/secondary-1.jpg
+  path: Q705505/secondary-1.webp
   width: 1800
   height: 1084
   license: CC BY 2.0
@@ -90,7 +90,7 @@ image_refs:
   commons_filename: Juvenile Southern Grey Shrikes (Lanius meridionalis koenigii),
     "El Jable" plains near Tao, Lanzarote (24513392094).jpg
 - role: secondary
-  path: Q705505/secondary-2.jpg
+  path: Q705505/secondary-2.webp
   width: 1800
   height: 1229
   license: CC BY 2.0

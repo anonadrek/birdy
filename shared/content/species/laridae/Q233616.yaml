@@ -68,7 +68,7 @@ migration:
     is not known to overwinter in Scandinavia or Northern Europe.'
 image_refs:
 - role: hero
-  path: Q233616/hero.jpg
+  path: Q233616/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -78,7 +78,7 @@ image_refs:
     (38111594094).jpg
   commons_filename: Whiskered Tern (Chlidonias hybrida) (38111594094).jpg
 - role: secondary
-  path: Q233616/secondary-1.jpg
+  path: Q233616/secondary-1.webp
   width: 1800
   height: 1265
   license: CC BY 4.0
@@ -87,7 +87,7 @@ image_refs:
     7.jpg
   commons_filename: Whiskered tern(Chlidonias hybrida) 7.jpg
 - role: secondary
-  path: Q233616/secondary-2.jpg
+  path: Q233616/secondary-2.webp
   width: 1800
   height: 1207
   license: CC BY 4.0

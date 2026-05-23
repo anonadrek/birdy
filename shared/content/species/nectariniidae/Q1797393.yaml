@@ -88,7 +88,7 @@ migration:
     Northern European bird guides.'
 image_refs:
 - role: hero
-  path: Q1797393/hero.jpg
+  path: Q1797393/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -98,7 +98,7 @@ image_refs:
     2.jpg
   commons_filename: Purple Sunbird (Cinnyris asiaticus) 2.jpg
 - role: secondary
-  path: Q1797393/secondary-1.jpg
+  path: Q1797393/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -108,7 +108,7 @@ image_refs:
     (16127222404).jpg
   commons_filename: Purple Sunbird - Cinnyris asiaticus (16127222404).jpg
 - role: secondary
-  path: Q1797393/secondary-2.jpg
+  path: Q1797393/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

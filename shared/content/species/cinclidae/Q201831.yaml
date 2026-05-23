@@ -89,7 +89,7 @@ migration:
     March or April depending on latitude and weather conditions.'
 image_refs:
 - role: hero
-  path: Q201831/hero.jpg
+  path: Q201831/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -100,7 +100,7 @@ image_refs:
   commons_filename: Cinclus cinclus u prirodnom staništu, Spomenik prirode Lisine
     (2).jpg
 - role: secondary
-  path: Q201831/secondary-1.jpg
+  path: Q201831/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -111,7 +111,7 @@ image_refs:
   commons_filename: Cinclus cinclus u prirodnom staništu, Spomenik prirode Lisine
     (5).jpg
 - role: secondary
-  path: Q201831/secondary-2.jpg
+  path: Q201831/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

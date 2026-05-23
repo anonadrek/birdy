@@ -86,7 +86,7 @@ migration:
     sources would be required.'
 image_refs:
 - role: hero
-  path: Q15055407/hero.jpg
+  path: Q15055407/hero.webp
   width: 2048
   height: 1366
   license: CC0
@@ -95,7 +95,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Lanius phoenicuroides 221320163.jpg
   commons_filename: Lanius phoenicuroides 221320163.jpg
 - role: secondary
-  path: Q15055407/secondary-1.jpg
+  path: Q15055407/secondary-1.webp
   width: 1439
   height: 1800
   license: CC BY 4.0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Lanius phoenicuroides 233992158.jpg
   commons_filename: Lanius phoenicuroides 233992158.jpg
 - role: secondary
-  path: Q15055407/secondary-2.jpg
+  path: Q15055407/secondary-2.webp
   width: 1800
   height: 1417
   license: CC BY-SA 2.0

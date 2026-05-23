@@ -96,7 +96,7 @@ migration:
     making it one of Europe''s most long-distance migratory duck species.'
 image_refs:
 - role: hero
-  path: Q25450/hero.jpg
+  path: Q25450/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -105,7 +105,7 @@ image_refs:
     (Anas acuta).jpg
   commons_filename: Flock Of Northern Pintail Ducks (Anas acuta).jpg
 - role: secondary
-  path: Q25450/secondary-1.jpg
+  path: Q25450/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -115,7 +115,7 @@ image_refs:
     2023 01.jpg
   commons_filename: Northern pintail (Anas acuta) 2023 01.jpg
 - role: secondary
-  path: Q25450/secondary-2.jpg
+  path: Q25450/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

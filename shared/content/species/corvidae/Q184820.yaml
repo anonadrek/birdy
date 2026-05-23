@@ -77,7 +77,7 @@ migration:
     keep populations concentrated in eastern strongholds.'
 image_refs:
 - role: hero
-  path: Q184820/hero.jpg
+  path: Q184820/hero.webp
   width: 2048
   height: 1365
   license: CC BY 4.0
@@ -87,7 +87,7 @@ image_refs:
   commons_filename: Nucifraga caryocatactes macrorhynchos, Khanty-Mansiysk, Khanty-Mansi
     Autonomous Okrug, Russia 1.jpg
 - role: secondary
-  path: Q184820/secondary-1.jpg
+  path: Q184820/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY-SA 2.0
@@ -97,7 +97,7 @@ image_refs:
     caryocatactes DSC 6800 (53018322450).jpg
   commons_filename: Cassenoix moucheté Nucifraga caryocatactes DSC 6800 (53018322450).jpg
 - role: secondary
-  path: Q184820/secondary-2.jpg
+  path: Q184820/secondary-2.webp
   width: 1800
   height: 1199
   license: CC BY-SA 2.0

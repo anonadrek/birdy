@@ -65,7 +65,7 @@ migration:
     Migration data unavailable for this species in a Northern European context.'
 image_refs:
 - role: hero
-  path: Q1090157/hero.jpg
+  path: Q1090157/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0

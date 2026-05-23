@@ -100,7 +100,7 @@ migration:
     would be required.'
 image_refs:
 - role: hero
-  path: Q647461/hero.jpg
+  path: Q647461/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -110,7 +110,7 @@ image_refs:
     on Floating Island Lake (28055882327).jpg
   commons_filename: Ruddy ducks (Oxyura jamaicensis) on Floating Island Lake (28055882327).jpg
 - role: secondary
-  path: Q647461/secondary-1.jpg
+  path: Q647461/secondary-1.webp
   width: 1800
   height: 1200
   license: Public domain
@@ -119,7 +119,7 @@ image_refs:
     on Floating Island Lake (461672f1-72e6-4ca5-aab7-7b64eb71cc16).jpg
   commons_filename: Ruddy ducks (Oxyura jamaicensis) on Floating Island Lake (461672f1-72e6-4ca5-aab7-7b64eb71cc16).jpg
 - role: secondary
-  path: Q647461/secondary-2.jpg
+  path: Q647461/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

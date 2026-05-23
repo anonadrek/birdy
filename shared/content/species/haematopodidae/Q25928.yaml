@@ -94,7 +94,7 @@ migration:
     entirely during the colder months.'
 image_refs:
 - role: hero
-  path: Q25928/hero.jpg
+  path: Q25928/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     ostralegus) at Amrum.jpg
   commons_filename: Eurasian oystercatcher (Haematopus ostralegus) at Amrum.jpg
 - role: secondary
-  path: Q25928/secondary-1.jpg
+  path: Q25928/secondary-1.webp
   width: 1800
   height: 1196
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
     ostralegus).jpg
   commons_filename: Eurasian oystercatcher (Haematopus ostralegus).jpg
 - role: secondary
-  path: Q25928/secondary-2.jpg
+  path: Q25928/secondary-2.webp
   width: 1800
   height: 1310
   license: CC0

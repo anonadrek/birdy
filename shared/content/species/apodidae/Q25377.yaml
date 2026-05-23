@@ -93,7 +93,7 @@ migration:
     the earliest of any European migrant species.'
 image_refs:
 - role: hero
-  path: Q25377/hero.jpg
+  path: Q25377/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -103,7 +103,7 @@ image_refs:
     3.jpg
   commons_filename: Common swift (Apus apus) 2024 3.jpg
 - role: secondary
-  path: Q25377/secondary-1.jpg
+  path: Q25377/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Common swift (Apus apus) 2024.jpg
   commons_filename: Common swift (Apus apus) 2024.jpg
 - role: secondary
-  path: Q25377/secondary-2.jpg
+  path: Q25377/secondary-2.webp
   width: 1800
   height: 1376
   license: CC BY 4.0

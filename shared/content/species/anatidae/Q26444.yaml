@@ -90,7 +90,7 @@ migration:
     in the north while maintaining populations year-round in suitable northern habitats.'
 image_refs:
 - role: hero
-  path: Q26444/hero.jpg
+  path: Q26444/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -100,7 +100,7 @@ image_refs:
     pair.jpg
   commons_filename: Tufted duck (Aythya fuligula) pair.jpg
 - role: secondary
-  path: Q26444/secondary-1.jpg
+  path: Q26444/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -110,7 +110,7 @@ image_refs:
     03 20.jpg
   commons_filename: Aythya fuligula (male) 2022 03 20.jpg
 - role: secondary
-  path: Q26444/secondary-2.jpg
+  path: Q26444/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

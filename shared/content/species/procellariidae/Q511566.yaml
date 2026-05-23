@@ -68,7 +68,7 @@ migration:
     in Scandinavia or Northern Europe.'
 image_refs:
 - role: hero
-  path: Q511566/hero.jpg
+  path: Q511566/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -79,7 +79,7 @@ image_refs:
   commons_filename: Mediterranean shearwater (Puffinus yelkouan mauretanicus) 2020
     2.jpg
 - role: secondary
-  path: Q511566/secondary-1.jpg
+  path: Q511566/secondary-1.webp
   width: 1340
   height: 1800
   license: CC BY 4.0
@@ -89,7 +89,7 @@ image_refs:
     yelkouan) 2020.jpg
   commons_filename: Mediterreanean shearwater (Puffinus yelkouan) 2020.jpg
 - role: secondary
-  path: Q511566/secondary-2.jpg
+  path: Q511566/secondary-2.webp
   width: 1800
   height: 1184
   license: CC BY 4.0

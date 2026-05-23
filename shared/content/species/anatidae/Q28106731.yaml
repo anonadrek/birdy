@@ -103,7 +103,7 @@ migration:
     become ice-free.'
 image_refs:
 - role: hero
-  path: Q28106731/hero.jpg
+  path: Q28106731/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -112,7 +112,7 @@ image_refs:
     male and female (51164997189).jpg
   commons_filename: Northern shoveler (Spatula clypeata) male and female (51164997189).jpg
 - role: secondary
-  path: Q28106731/secondary-1.jpg
+  path: Q28106731/secondary-1.webp
   width: 1800
   height: 1245
   license: CC0
@@ -122,7 +122,7 @@ image_refs:
     2016-05-07.jpg
   commons_filename: Spatula clypeata Oulu Finland 2016-05-07.jpg
 - role: secondary
-  path: Q28106731/secondary-2.jpg
+  path: Q28106731/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

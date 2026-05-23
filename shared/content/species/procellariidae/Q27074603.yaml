@@ -66,7 +66,7 @@ migration:
     individuals leaving by September. The species does not overwinter in the region.'
 image_refs:
 - role: hero
-  path: Q27074603/hero.jpg
+  path: Q27074603/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -75,7 +75,7 @@ image_refs:
     km off Northumberland coast 5.jpg
   commons_filename: Ardenna grisea, North Sea 10 km off Northumberland coast 5.jpg
 - role: secondary
-  path: Q27074603/secondary-1.jpg
+  path: Q27074603/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -84,7 +84,7 @@ image_refs:
     km off Northumberland coast 1.jpg
   commons_filename: Ardenna grisea, North Sea 10 km off Northumberland coast 1.jpg
 - role: secondary
-  path: Q27074603/secondary-2.jpg
+  path: Q27074603/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

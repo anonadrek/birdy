@@ -70,7 +70,7 @@ migration:
     seasonal visitor rather than a year-round resident.'
 image_refs:
 - role: hero
-  path: Q27074609/hero.jpg
+  path: Q27074609/hero.webp
   width: 2400
   height: 1487
   license: CC BY 4.0
@@ -80,7 +80,7 @@ image_refs:
     2017.jpg
   commons_filename: Great shearwater (Ardenna gravis) 2017.jpg
 - role: secondary
-  path: Q27074609/secondary-1.jpg
+  path: Q27074609/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -89,7 +89,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Great Shearwater, Ardenna gravis.jpg
   commons_filename: Great Shearwater, Ardenna gravis.jpg
 - role: secondary
-  path: Q27074609/secondary-2.jpg
+  path: Q27074609/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

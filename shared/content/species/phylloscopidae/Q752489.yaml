@@ -62,7 +62,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q752489/hero.jpg
+  path: Q752489/hero.webp
   width: 1600
   height: 2400
   license: CC BY 4.0
@@ -72,7 +72,7 @@ image_refs:
     bonelli) 2024.jpg
   commons_filename: Western Bonelli's warbler (Phylloscopus bonelli) 2024.jpg
 - role: secondary
-  path: Q752489/secondary-1.jpg
+  path: Q752489/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY-SA 2.0
@@ -82,7 +82,7 @@ image_refs:
     bonelli aaDSC 1833 (51201873002).jpg
   commons_filename: Pouillot de Bonelli Phylloscopus bonelli aaDSC 1833 (51201873002).jpg
 - role: secondary
-  path: Q752489/secondary-2.jpg
+  path: Q752489/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

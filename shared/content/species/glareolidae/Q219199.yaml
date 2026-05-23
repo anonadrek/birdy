@@ -91,7 +91,7 @@ migration:
     or winter resident in the Nordic countries.'
 image_refs:
 - role: hero
-  path: Q219199/hero.jpg
+  path: Q219199/hero.webp
   width: 2048
   height: 1349
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
     cursor), Abu Simbel, Egypt 2.jpg
   commons_filename: Cream-coloured Courser (Cursorius cursor), Abu Simbel, Egypt 2.jpg
 - role: secondary
-  path: Q219199/secondary-1.jpg
+  path: Q219199/secondary-1.webp
   width: 1800
   height: 1103
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
     cursor), Abu Simbel, Egypt 1.jpg
   commons_filename: Cream-coloured Courser (Cursorius cursor), Abu Simbel, Egypt 1.jpg
 - role: secondary
-  path: Q219199/secondary-2.jpg
+  path: Q219199/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

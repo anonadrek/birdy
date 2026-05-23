@@ -82,7 +82,7 @@ migration:
     in Northern Europe, additional sources would be required.'
 image_refs:
 - role: hero
-  path: Q541440/hero.jpg
+  path: Q541440/hero.webp
   width: 2048
   height: 1366
   license: CC0
@@ -92,7 +92,7 @@ image_refs:
     - Kelly Abram - 175484353.jpeg
   commons_filename: Terpsiphone viridis plumbeiceps - Kelly Abram - 175484353.jpeg
 - role: secondary
-  path: Q541440/secondary-1.jpg
+  path: Q541440/secondary-1.webp
   width: 1800
   height: 1201
   license: CC0
@@ -102,7 +102,7 @@ image_refs:
     - Kelly Abram - 175484419.jpeg
   commons_filename: Terpsiphone viridis plumbeiceps - Kelly Abram - 175484419.jpeg
 - role: secondary
-  path: Q541440/secondary-2.jpg
+  path: Q541440/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

@@ -66,7 +66,7 @@ migration:
     no relevance to Nordic bird migration patterns.'
 image_refs:
 - role: hero
-  path: Q1303970/hero.jpg
+  path: Q1303970/hero.webp
   width: 2048
   height: 1365
   license: CC BY 4.0

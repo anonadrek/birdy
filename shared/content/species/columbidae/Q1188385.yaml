@@ -48,7 +48,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q1188385/hero.jpg
+  path: Q1188385/hero.webp
   width: 2048
   height: 1281
   license: CC BY 4.0
@@ -57,7 +57,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Treron waalia 95507055.jpg
   commons_filename: Treron waalia 95507055.jpg
 - role: secondary
-  path: Q1188385/secondary-1.jpg
+  path: Q1188385/secondary-1.webp
   width: 1800
   height: 1126
   license: CC BY 4.0
@@ -66,7 +66,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Treron waalia 95590450.jpg
   commons_filename: Treron waalia 95590450.jpg
 - role: secondary
-  path: Q1188385/secondary-2.jpg
+  path: Q1188385/secondary-2.webp
   width: 1386
   height: 1800
   license: CC BY-SA 4.0

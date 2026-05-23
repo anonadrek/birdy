@@ -63,7 +63,7 @@ migration:
     or Northern Europe throughout the year.'
 image_refs:
 - role: hero
-  path: Q1299974/hero.jpg
+  path: Q1299974/hero.webp
   width: 2048
   height: 1282
   license: CC BY 4.0
@@ -72,7 +72,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Carduelis corsicana 218496978.jpg
   commons_filename: Carduelis corsicana 218496978.jpg
 - role: secondary
-  path: Q1299974/secondary-1.jpg
+  path: Q1299974/secondary-1.webp
   width: 1800
   height: 1127
   license: CC BY 4.0
@@ -81,7 +81,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Carduelis corsicana 218497240.jpg
   commons_filename: Carduelis corsicana 218497240.jpg
 - role: secondary
-  path: Q1299974/secondary-2.jpg
+  path: Q1299974/secondary-2.webp
   width: 1800
   height: 1126
   license: CC BY 4.0

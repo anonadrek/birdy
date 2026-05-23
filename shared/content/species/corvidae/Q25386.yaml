@@ -62,7 +62,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q25386/hero.jpg
+  path: Q25386/hero.webp
   width: 2400
   height: 1800
   license: Public domain
@@ -70,7 +70,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Corvus frugilegus 001.jpg
   commons_filename: Corvus frugilegus 001.jpg
 - role: secondary
-  path: Q25386/secondary-1.jpg
+  path: Q25386/secondary-1.webp
   width: 2400
   height: 1350
   license: CC0
@@ -79,7 +79,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Corvus frugilegus nestling.jpg
   commons_filename: Corvus frugilegus nestling.jpg
 - role: secondary
-  path: Q25386/secondary-2.jpg
+  path: Q25386/secondary-2.webp
   width: 1483
   height: 1800
   license: CC0

@@ -67,7 +67,7 @@ migration:
     This species is not a regular visitor to these regions.'
 image_refs:
 - role: hero
-  path: Q118608/hero.jpg
+  path: Q118608/hero.webp
   width: 2400
   height: 1603
   license: CC BY 2.0
@@ -78,7 +78,7 @@ image_refs:
   commons_filename: Goliath Heron, Ardea goliath at Marievale Nature Reserve, Gauteng,
     South Africa (43682833130).jpg
 - role: secondary
-  path: Q118608/secondary-1.jpg
+  path: Q118608/secondary-1.webp
   width: 1496
   height: 1800
   license: CC BY 2.0
@@ -89,7 +89,7 @@ image_refs:
   commons_filename: Goliath Heron, Ardea goliath at Marievale Nature Reserve, Gauteng,
     South Africa (30559502317).jpg
 - role: secondary
-  path: Q118608/secondary-2.jpg
+  path: Q118608/secondary-2.webp
   width: 1302
   height: 1800
   license: CC BY 2.0

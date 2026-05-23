@@ -90,7 +90,7 @@ migration:
     unreliable winter visitors in the region.'
 image_refs:
 - role: hero
-  path: Q170177/hero.jpg
+  path: Q170177/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -99,7 +99,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Bubo scandiacus (31968098707).jpg
   commons_filename: Bubo scandiacus (31968098707).jpg
 - role: secondary
-  path: Q170177/secondary-1.jpg
+  path: Q170177/secondary-1.webp
   width: 1800
   height: 1235
   license: CC BY 2.0
@@ -109,7 +109,7 @@ image_refs:
     Vlieland, Netherlands (12755531383).jpg
   commons_filename: Snowy Owl (Bubo scandiacus), Vlieland, Netherlands (12755531383).jpg
 - role: secondary
-  path: Q170177/secondary-2.jpg
+  path: Q170177/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

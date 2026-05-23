@@ -98,7 +98,7 @@ migration:
     Migration data unavailable for this species.'
 image_refs:
 - role: hero
-  path: Q25405/hero.jpg
+  path: Q25405/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Corvus cornix Vienna.JPG
   commons_filename: Corvus cornix Vienna.JPG
 - role: secondary
-  path: Q25405/secondary-1.jpg
+  path: Q25405/secondary-1.webp
   width: 1800
   height: 1292
   license: CC0
@@ -115,7 +115,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Corvus cornix Oulu 20160130.JPG
   commons_filename: Corvus cornix Oulu 20160130.JPG
 - role: secondary
-  path: Q25405/secondary-2.jpg
+  path: Q25405/secondary-2.webp
   width: 1225
   height: 1800
   license: CC0

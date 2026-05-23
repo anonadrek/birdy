@@ -98,7 +98,7 @@ migration:
     through winter in milder areas.'
 image_refs:
 - role: hero
-  path: Q54696/hero.jpg
+  path: Q54696/hero.webp
   width: 969
   height: 2048
   license: CC0
@@ -107,7 +107,7 @@ image_refs:
     Yuma, Arizona.jpg
   commons_filename: Streptopelia decaocto, feral, Yuma, Arizona.jpg
 - role: secondary
-  path: Q54696/secondary-1.jpg
+  path: Q54696/secondary-1.webp
   width: 1800
   height: 1125
   license: CC BY 4.0
@@ -117,7 +117,7 @@ image_refs:
     02.jpg
   commons_filename: Streptopelia decaocto, Sète 02.jpg
 - role: secondary
-  path: Q54696/secondary-2.jpg
+  path: Q54696/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

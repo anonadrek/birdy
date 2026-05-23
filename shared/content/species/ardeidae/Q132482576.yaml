@@ -67,7 +67,7 @@ migration:
     zones.'
 image_refs:
 - role: hero
-  path: Q132482576/hero.jpg
+  path: Q132482576/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -78,7 +78,7 @@ image_refs:
   commons_filename: Little heron (Butorides atricapilla javanica) immature in flight
     Taal Lake.jpg
 - role: secondary
-  path: Q132482576/secondary-1.jpg
+  path: Q132482576/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

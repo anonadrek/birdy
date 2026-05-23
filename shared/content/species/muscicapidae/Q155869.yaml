@@ -92,7 +92,7 @@ migration:
     management and climatic conditions affecting both breeding and wintering areas.'
 image_refs:
 - role: hero
-  path: Q155869/hero.jpg
+  path: Q155869/hero.webp
   width: 2400
   height: 1740
   license: CC0
@@ -102,7 +102,7 @@ image_refs:
     2020-07-19.jpg
   commons_filename: Saxicola rubetra Oulu Finland 2020-07-19.jpg
 - role: secondary
-  path: Q155869/secondary-1.jpg
+  path: Q155869/secondary-1.webp
   width: 1800
   height: 1256
   license: CC BY 2.0
@@ -113,7 +113,7 @@ image_refs:
   commons_filename: Braunkehlchen (Saxicola rubetra), Warchetal bei Hünningen, Ostbelgien
     (19134054681).jpg
 - role: secondary
-  path: Q155869/secondary-2.jpg
+  path: Q155869/secondary-2.webp
   width: 1800
   height: 1517
   license: CC BY 2.0

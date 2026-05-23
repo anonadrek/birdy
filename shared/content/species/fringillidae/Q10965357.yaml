@@ -89,7 +89,7 @@ migration:
     various plants, supplemented occasionally by insects during breeding season.'
 image_refs:
 - role: hero
-  path: Q10965357/hero.jpg
+  path: Q10965357/hero.webp
   width: 2400
   height: 1323
   license: CC BY 2.0
@@ -99,7 +99,7 @@ image_refs:
   commons_filename: Twite, Linaria flavirostris, Carduelis flavirostris, Vinterhämpling
     - 49321273173.jpg
 - role: secondary
-  path: Q10965357/secondary-1.jpg
+  path: Q10965357/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -108,7 +108,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Linaria flavirostris 200495342.jpg
   commons_filename: Linaria flavirostris 200495342.jpg
 - role: secondary
-  path: Q10965357/secondary-2.jpg
+  path: Q10965357/secondary-2.webp
   width: 1800
   height: 1287
   license: CC BY 4.0

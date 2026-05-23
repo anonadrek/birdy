@@ -64,7 +64,7 @@ migration:
     expected to occur in Scandinavian or Northern European regions.'
 image_refs:
 - role: hero
-  path: Q40995958/hero.jpg
+  path: Q40995958/hero.webp
   width: 2400
   height: 1595
   license: CC BY 2.0

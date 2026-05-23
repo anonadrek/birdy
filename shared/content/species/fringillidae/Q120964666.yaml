@@ -63,7 +63,7 @@ migration:
     based on the available source material.'
 image_refs:
 - role: hero
-  path: Q120964666/hero.jpg
+  path: Q120964666/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -73,7 +73,7 @@ image_refs:
     spodiogenys) male Morocco.jpg
   commons_filename: African Chaffinch (Fringilla spodiogenys) male Morocco.jpg
 - role: secondary
-  path: Q120964666/secondary-1.jpg
+  path: Q120964666/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

@@ -105,7 +105,7 @@ migration:
     recommended.'
 image_refs:
 - role: hero
-  path: Q26431/hero.jpg
+  path: Q26431/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -114,7 +114,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Eja močvarica (Circus aeruginosus).jpg
   commons_filename: Eja močvarica (Circus aeruginosus).jpg
 - role: secondary
-  path: Q26431/secondary-1.jpg
+  path: Q26431/secondary-1.webp
   width: 1800
   height: 1095
   license: CC BY-SA 4.0
@@ -124,7 +124,7 @@ image_refs:
     Marsh Harrier 2021-03-27.jpg
   commons_filename: Circus aeruginosus - Western Marsh Harrier 2021-03-27.jpg
 - role: secondary
-  path: Q26431/secondary-2.jpg
+  path: Q26431/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

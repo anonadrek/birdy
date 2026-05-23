@@ -89,7 +89,7 @@ migration:
     Migration data unavailable for this species.'
 image_refs:
 - role: hero
-  path: Q512840/hero.jpg
+  path: Q512840/hero.webp
   width: 2048
   height: 1536
   license: CC BY 4.0
@@ -98,7 +98,7 @@ image_refs:
     South Africa 2.jpg
   commons_filename: Columba arquatrix, Cape Winelands, South Africa 2.jpg
 - role: secondary
-  path: Q512840/secondary-1.jpg
+  path: Q512840/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -107,7 +107,7 @@ image_refs:
     South Africa 3.jpg
   commons_filename: Columba arquatrix, Cape Winelands, South Africa 3.jpg
 - role: secondary
-  path: Q512840/secondary-2.jpg
+  path: Q512840/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

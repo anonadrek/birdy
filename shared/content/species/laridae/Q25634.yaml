@@ -69,7 +69,7 @@ migration:
     habitats during spring and summer months.'
 image_refs:
 - role: hero
-  path: Q25634/hero.jpg
+  path: Q25634/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -78,7 +78,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Chroicocephalus ridibundus (46028272474).jpg
   commons_filename: Chroicocephalus ridibundus (46028272474).jpg
 - role: secondary
-  path: Q25634/secondary-1.jpg
+  path: Q25634/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -87,7 +87,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Black-headed Gull 2025 10 18.jpg
   commons_filename: Black-headed Gull 2025 10 18.jpg
 - role: secondary
-  path: Q25634/secondary-2.jpg
+  path: Q25634/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

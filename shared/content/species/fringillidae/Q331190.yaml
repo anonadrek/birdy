@@ -70,7 +70,7 @@ migration:
     fluctuating considerably from year to year based on cone production cycles.'
 image_refs:
 - role: hero
-  path: Q331190/hero.jpg
+  path: Q331190/hero.webp
   width: 2127
   height: 2400
   license: Public domain
@@ -80,7 +80,7 @@ image_refs:
   commons_filename: 144. The American Crossbill (Loxia americana). 145. The White-winged
     Crossbill (Loxia leucoptera) (NYPL b14505696-113605).tiff
 - role: secondary
-  path: Q331190/secondary-1.jpg
+  path: Q331190/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -90,7 +90,7 @@ image_refs:
     leucoptera) 2023 2.jpg
   commons_filename: Two-barred crossbill (Loxia leucoptera) 2023 2.jpg
 - role: secondary
-  path: Q331190/secondary-2.jpg
+  path: Q331190/secondary-2.webp
   width: 1200
   height: 1800
   license: CC BY 4.0

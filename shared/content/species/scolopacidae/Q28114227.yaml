@@ -92,7 +92,7 @@ migration:
     Migration data unavailable for this species.'
 image_refs:
 - role: hero
-  path: Q28114227/hero.jpg
+  path: Q28114227/hero.webp
   width: 2400
   height: 1670
   license: CC BY-SA 4.0
@@ -102,7 +102,7 @@ image_refs:
     falcinellus DSCN8335 (2).jpg
   commons_filename: Broad-billed Sandpiper Calidris falcinellus DSCN8335 (2).jpg
 - role: secondary
-  path: Q28114227/secondary-1.jpg
+  path: Q28114227/secondary-1.webp
   width: 1800
   height: 1169
   license: CC BY-SA 4.0

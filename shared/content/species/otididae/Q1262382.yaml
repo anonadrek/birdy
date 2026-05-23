@@ -83,7 +83,7 @@ migration:
     rather than regular migratory movements.'
 image_refs:
 - role: hero
-  path: Q1262382/hero.jpg
+  path: Q1262382/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -92,7 +92,7 @@ image_refs:
     macqueenii), Saudi Arabia (2023).jpg
   commons_filename: Houbara Bustard (Chlamydotis macqueenii), Saudi Arabia (2023).jpg
 - role: secondary
-  path: Q1262382/secondary-1.jpg
+  path: Q1262382/secondary-1.webp
   width: 1800
   height: 1014
   license: CC BY-SA 4.0
@@ -102,7 +102,7 @@ image_refs:
   commons_filename: Chlamydotis macqueenii - Outarde de Macqueen - Outarde houbara
     d-asie - cedric loury - wiki1.JPG
 - role: secondary
-  path: Q1262382/secondary-2.jpg
+  path: Q1262382/secondary-2.webp
   width: 1800
   height: 1014
   license: CC BY-SA 4.0

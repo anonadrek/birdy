@@ -94,7 +94,7 @@ migration:
     due to agricultural intensification.'
 image_refs:
 - role: hero
-  path: Q27220/hero.jpg
+  path: Q27220/hero.webp
   width: 2400
   height: 1549
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Emberiza calandra singing.jpg
   commons_filename: Emberiza calandra singing.jpg
 - role: secondary
-  path: Q27220/secondary-1.jpg
+  path: Q27220/secondary-1.webp
   width: 1800
   height: 1197
   license: CC0
@@ -111,7 +111,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Corn bunting (Emberiza calandra).jpg
   commons_filename: Corn bunting (Emberiza calandra).jpg
 - role: secondary
-  path: Q27220/secondary-2.jpg
+  path: Q27220/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

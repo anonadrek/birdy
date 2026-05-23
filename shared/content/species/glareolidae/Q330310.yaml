@@ -95,7 +95,7 @@ migration:
     migration movements.'
 image_refs:
 - role: hero
-  path: Q330310/hero.jpg
+  path: Q330310/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Glareola pratincola (34303629902).jpg
   commons_filename: Glareola pratincola (34303629902).jpg
 - role: secondary
-  path: Q330310/secondary-1.jpg
+  path: Q330310/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY-SA 3.0
@@ -114,7 +114,7 @@ image_refs:
     National Park kenya.jpg
   commons_filename: Glareola pratincola in Ambosélie National Park kenya.jpg
 - role: secondary
-  path: Q330310/secondary-2.jpg
+  path: Q330310/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

@@ -66,7 +66,7 @@ migration:
     about its occurrence in Scandinavia throughout the year cannot be provided.'
 image_refs:
 - role: hero
-  path: Q1002588/hero.jpg
+  path: Q1002588/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 2.0
@@ -77,7 +77,7 @@ image_refs:
   commons_filename: Spotted Thick-knee (Burhinus capensis) cooling down by panting
     ... (32236049388).jpg
 - role: secondary
-  path: Q1002588/secondary-1.jpg
+  path: Q1002588/secondary-1.webp
   width: 1800
   height: 1123
   license: CC BY-SA 2.0
@@ -88,7 +88,7 @@ image_refs:
   commons_filename: Spotted Thick-knee (Burhinus capensis) couple with hidden chick
     (bottom left) ... (40116383053).jpg
 - role: secondary
-  path: Q1002588/secondary-2.jpg
+  path: Q1002588/secondary-2.webp
   width: 1422
   height: 1800
   license: CC BY-SA 2.0

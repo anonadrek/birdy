@@ -87,7 +87,7 @@ migration:
     sources with specific distribution and movement information would be needed.'
 image_refs:
 - role: hero
-  path: Q28490/hero.jpg
+  path: Q28490/hero.webp
   width: 2400
   height: 1800
   license: CC BY 4.0
@@ -97,7 +97,7 @@ image_refs:
     04.jpg
   commons_filename: Bridled Tern Onychoprion anaethetus 04.jpg
 - role: secondary
-  path: Q28490/secondary-1.jpg
+  path: Q28490/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -107,7 +107,7 @@ image_refs:
     05.jpg
   commons_filename: Bridled Tern Onychoprion anaethetus 05.jpg
 - role: secondary
-  path: Q28490/secondary-2.jpg
+  path: Q28490/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

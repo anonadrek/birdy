@@ -92,7 +92,7 @@ migration:
     birds departing wintering grounds to recolonize their northern breeding territories.'
 image_refs:
 - role: hero
-  path: Q189609/hero.jpg
+  path: Q189609/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -100,7 +100,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Mergus serrator DSC 5939.jpg
   commons_filename: Mergus serrator DSC 5939.jpg
 - role: secondary
-  path: Q189609/secondary-1.jpg
+  path: Q189609/secondary-1.webp
   width: 1800
   height: 1400
   license: CC BY 2.0
@@ -108,7 +108,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Mergus serrator in water 02.jpg
   commons_filename: Mergus serrator in water 02.jpg
 - role: secondary
-  path: Q189609/secondary-2.jpg
+  path: Q189609/secondary-2.webp
   width: 1800
   height: 1341
   license: CC BY 2.0

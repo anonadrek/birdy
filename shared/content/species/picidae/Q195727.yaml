@@ -91,7 +91,7 @@ migration:
     It does not migrate to or winter in Scandinavian or Northern European territories.'
 image_refs:
 - role: hero
-  path: Q195727/hero.jpg
+  path: Q195727/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -101,7 +101,7 @@ image_refs:
     squamatus - DSC09665.jpg
   commons_filename: Scaly-bellied Woodpecker - Picus squamatus - DSC09665.jpg
 - role: secondary
-  path: Q195727/secondary-1.jpg
+  path: Q195727/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -111,7 +111,7 @@ image_refs:
     squamatus - DSC09666.jpg
   commons_filename: Scaly-bellied Woodpecker - Picus squamatus - DSC09666.jpg
 - role: secondary
-  path: Q195727/secondary-2.jpg
+  path: Q195727/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

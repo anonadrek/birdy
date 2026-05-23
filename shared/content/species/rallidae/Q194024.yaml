@@ -95,7 +95,7 @@ migration:
     marshes, reed beds, and other suitable wetland habitats.'
 image_refs:
 - role: hero
-  path: Q194024/hero.jpg
+  path: Q194024/hero.webp
   width: 2400
   height: 1164
   license: CC BY 4.0
@@ -105,7 +105,7 @@ image_refs:
     2019.jpg
   commons_filename: Spotted crake (Porzana porzana) 2019.jpg
 - role: secondary
-  path: Q194024/secondary-1.jpg
+  path: Q194024/secondary-1.webp
   width: 1800
   height: 948
   license: CC BY 4.0
@@ -115,7 +115,7 @@ image_refs:
     2019 2.jpg
   commons_filename: Spotted crake (Porzana porzana) 2019 2.jpg
 - role: secondary
-  path: Q194024/secondary-2.jpg
+  path: Q194024/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

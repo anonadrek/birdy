@@ -64,7 +64,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q212243/hero.jpg
+  path: Q212243/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -74,7 +74,7 @@ image_refs:
     in flight composite.jpg
   commons_filename: Eleonora's falcon (Falco eleonorae) in flight composite.jpg
 - role: secondary
-  path: Q212243/secondary-1.jpg
+  path: Q212243/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0
@@ -84,7 +84,7 @@ image_refs:
     in flight 1.jpg
   commons_filename: Eleonora's falcon (Falco eleonorae) in flight 1.jpg
 - role: secondary
-  path: Q212243/secondary-2.jpg
+  path: Q212243/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0

@@ -89,7 +89,7 @@ migration:
     draws them back to traditional breeding sites.'
 image_refs:
 - role: hero
-  path: Q21062/hero.jpg
+  path: Q21062/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -97,7 +97,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Common guillemot (Uria aalge).jpg
   commons_filename: Common guillemot (Uria aalge).jpg
 - role: secondary
-  path: Q21062/secondary-1.jpg
+  path: Q21062/secondary-1.webp
   width: 1800
   height: 1197
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     Heligoland.jpg
   commons_filename: Common guillemot (Uria aalge), Heligoland.jpg
 - role: secondary
-  path: Q21062/secondary-2.jpg
+  path: Q21062/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

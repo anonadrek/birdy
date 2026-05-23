@@ -86,7 +86,7 @@ migration:
     not be expected in this region during any season.'
 image_refs:
 - role: hero
-  path: Q33554/hero.jpg
+  path: Q33554/hero.webp
   width: 2400
   height: 1439
   license: CC BY 2.0
@@ -97,7 +97,7 @@ image_refs:
   commons_filename: Lanner falcon, Falco biarmicus, at Kgalagadi Transfrontier Park,
     Northern Cape, South Africa (34447024561).jpg
 - role: secondary
-  path: Q33554/secondary-1.jpg
+  path: Q33554/secondary-1.webp
   width: 1800
   height: 1012
   license: CC BY 2.0
@@ -108,7 +108,7 @@ image_refs:
   commons_filename: Lanner falcon, Falco biarmicus, at Kgalagadi Transfrontier Park,
     Northern Cape, South Africa (33767245233).jpg
 - role: secondary
-  path: Q33554/secondary-2.jpg
+  path: Q33554/secondary-2.webp
   width: 1800
   height: 1012
   license: CC BY 2.0

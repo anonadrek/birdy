@@ -96,7 +96,7 @@ migration:
     these regions.'
 image_refs:
 - role: hero
-  path: Q244319/hero.jpg
+  path: Q244319/hero.webp
   width: 2190
   height: 1460
   license: CC BY 2.0
@@ -107,7 +107,7 @@ image_refs:
   commons_filename: Cormorant pygmée (Microcarbo pygmaeus), Etang de Val Duchesse,
     Bruxelles (49372116488).jpg
 - role: secondary
-  path: Q244319/secondary-1.jpg
+  path: Q244319/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 2.0
@@ -118,7 +118,7 @@ image_refs:
   commons_filename: Cormoran pygmée Microcarbo pygmaeus - Pygmy Cormorant DSC 4084
     (53222079885).jpg
 - role: secondary
-  path: Q244319/secondary-2.jpg
+  path: Q244319/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 2.0

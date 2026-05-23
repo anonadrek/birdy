@@ -94,7 +94,7 @@ migration:
     sources with specific migration and overwintering data would be required.'
 image_refs:
 - role: hero
-  path: Q30535/hero.jpg
+  path: Q30535/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -103,7 +103,7 @@ image_refs:
     and four chicks (ed4d091b-79a4-4752-be96-589ad25c39c7).jpg
   commons_filename: Peregrine falcon (Falco peregrinus) and four chicks (ed4d091b-79a4-4752-be96-589ad25c39c7).jpg
 - role: secondary
-  path: Q30535/secondary-1.jpg
+  path: Q30535/secondary-1.webp
   width: 1800
   height: 1491
   license: Public domain
@@ -111,7 +111,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Falco peregrinus nest USFWS.jpg
   commons_filename: Falco peregrinus nest USFWS.jpg
 - role: secondary
-  path: Q30535/secondary-2.jpg
+  path: Q30535/secondary-2.webp
   width: 1457
   height: 1800
   license: Public domain

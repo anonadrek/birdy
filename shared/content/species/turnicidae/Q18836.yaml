@@ -90,7 +90,7 @@ migration:
     phenological data would be required.'
 image_refs:
 - role: hero
-  path: Q18836/hero.jpg
+  path: Q18836/hero.webp
   width: 2048
   height: 1536
   license: CC BY 4.0
@@ -99,7 +99,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Turnix sylvaticus 64607517.jpg
   commons_filename: Turnix sylvaticus 64607517.jpg
 - role: secondary
-  path: Q18836/secondary-1.jpg
+  path: Q18836/secondary-1.webp
   width: 1800
   height: 1205
   license: CC BY-SA 2.0
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Turnix sylvaticus 1.jpg
   commons_filename: Turnix sylvaticus 1.jpg
 - role: secondary
-  path: Q18836/secondary-2.jpg
+  path: Q18836/secondary-2.webp
   width: 1800
   height: 1429
   license: CC BY-SA 4.0

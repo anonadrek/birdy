@@ -97,7 +97,7 @@ migration:
     May.'
 image_refs:
 - role: hero
-  path: Q62359/hero.jpg
+  path: Q62359/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     Wangerooge.jpg
   commons_filename: Calidris maritima, Island of Wangerooge.jpg
 - role: secondary
-  path: Q62359/secondary-1.jpg
+  path: Q62359/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -115,7 +115,7 @@ image_refs:
     bathing.jpg
   commons_filename: Purple sandpiper (Calidris maritima), bathing.jpg
 - role: secondary
-  path: Q62359/secondary-2.jpg
+  path: Q62359/secondary-2.webp
   width: 1800
   height: 1608
   license: CC0

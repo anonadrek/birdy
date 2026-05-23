@@ -67,7 +67,7 @@ migration:
     the year.'
 image_refs:
 - role: hero
-  path: Q369767/hero.jpg
+  path: Q369767/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -78,7 +78,7 @@ image_refs:
   commons_filename: A male and female Barrow's goldeneye (Bucephala islandica) floating
     on an ephemeral pond (47767552352).jpg
 - role: secondary
-  path: Q369767/secondary-1.jpg
+  path: Q369767/secondary-1.webp
   width: 1800
   height: 1201
   license: Public domain
@@ -87,7 +87,7 @@ image_refs:
     islandica) on Yellowstone Lake (52945443341).jpg
   commons_filename: Barrow's goldeneye (Bucephala islandica) on Yellowstone Lake (52945443341).jpg
 - role: secondary
-  path: Q369767/secondary-2.jpg
+  path: Q369767/secondary-2.webp
   width: 1800
   height: 1201
   license: Public domain

@@ -99,7 +99,7 @@ migration:
     occurring from June through July before the return migration begins in late summer.'
 image_refs:
 - role: hero
-  path: Q26620/hero.jpg
+  path: Q26620/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -108,7 +108,7 @@ image_refs:
     phoenicurus, juvenile).jpg
   commons_filename: Common Redstart - (Phoenicurus phoenicurus, juvenile).jpg
 - role: secondary
-  path: Q26620/secondary-1.jpg
+  path: Q26620/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -118,7 +118,7 @@ image_refs:
     phoenicurus, juvenile) (26767090208).jpg
   commons_filename: Common redstart (Phoenicurus phoenicurus, juvenile) (26767090208).jpg
 - role: secondary
-  path: Q26620/secondary-2.jpg
+  path: Q26620/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

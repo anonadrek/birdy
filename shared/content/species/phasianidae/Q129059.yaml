@@ -98,7 +98,7 @@ migration:
     with males displaying at traditional lek sites from spring onwards.'
 image_refs:
 - role: hero
-  path: Q129059/hero.jpg
+  path: Q129059/hero.webp
   width: 2400
   height: 1602
   license: CC BY 2.0
@@ -108,7 +108,7 @@ image_refs:
     (27264328428).jpg
   commons_filename: Tetrao urogallus (mating display) (27264328428).jpg
 - role: secondary
-  path: Q129059/secondary-1.jpg
+  path: Q129059/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 2.0
@@ -118,7 +118,7 @@ image_refs:
     (27264341888).jpg
   commons_filename: Tetrao urogallus (mating display) (27264341888).jpg
 - role: secondary
-  path: Q129059/secondary-2.jpg
+  path: Q129059/secondary-2.webp
   width: 1800
   height: 1397
   license: CC BY 2.0

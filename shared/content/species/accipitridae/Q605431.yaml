@@ -57,7 +57,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q605431/hero.jpg
+  path: Q605431/hero.webp
   width: 2102
   height: 2400
   license: CC BY-SA 4.0
@@ -66,7 +66,7 @@ image_refs:
     ptilorhynchus) 7.jpg
   commons_filename: Crested honey buzzard (Pernis ptilorhynchus) 7.jpg
 - role: secondary
-  path: Q605431/secondary-1.jpg
+  path: Q605431/secondary-1.webp
   width: 1797
   height: 1800
   license: CC BY-SA 4.0
@@ -75,7 +75,7 @@ image_refs:
     ptilorhynchus) 16.jpg
   commons_filename: Crested honey buzzard (Pernis ptilorhynchus) 16.jpg
 - role: secondary
-  path: Q605431/secondary-2.jpg
+  path: Q605431/secondary-2.webp
   width: 1392
   height: 1800
   license: CC BY-SA 4.0

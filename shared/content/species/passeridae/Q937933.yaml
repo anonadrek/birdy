@@ -87,7 +87,7 @@ migration:
     Europe, particularly Italy and the Mediterranean basin.'
 image_refs:
 - role: hero
-  path: Q937933/hero.jpg
+  path: Q937933/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -96,7 +96,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Passer italiae table.jpg
   commons_filename: Passer italiae table.jpg
 - role: secondary
-  path: Q937933/secondary-1.jpg
+  path: Q937933/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -105,7 +105,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Passer italiae Lake Garda.jpg
   commons_filename: Passer italiae Lake Garda.jpg
 - role: secondary
-  path: Q937933/secondary-2.jpg
+  path: Q937933/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

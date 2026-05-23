@@ -84,7 +84,7 @@ migration:
     records.'
 image_refs:
 - role: hero
-  path: Q763538/hero.jpg
+  path: Q763538/hero.webp
   width: 2278
   height: 1385
   license: CC BY-SA 2.0

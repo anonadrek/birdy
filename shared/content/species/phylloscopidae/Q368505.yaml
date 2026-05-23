@@ -96,7 +96,7 @@ migration:
     regions and is not a regular part of the northern European avifauna.'
 image_refs:
 - role: hero
-  path: Q368505/hero.jpg
+  path: Q368505/hero.webp
   width: 2400
   height: 1712
   license: CC BY 2.0
@@ -105,7 +105,7 @@ image_refs:
     fuscatus, Brunsångare.jpg
   commons_filename: Dusky warbler, Phylloscopus fuscatus, Brunsångare.jpg
 - role: secondary
-  path: Q368505/secondary-1.jpg
+  path: Q368505/secondary-1.webp
   width: 1800
   height: 1535
   license: CC BY 4.0
@@ -113,7 +113,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus fuscatus 288806565.jpg
   commons_filename: Phylloscopus fuscatus 288806565.jpg
 - role: secondary
-  path: Q368505/secondary-2.jpg
+  path: Q368505/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

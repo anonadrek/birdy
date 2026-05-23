@@ -77,7 +77,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q126618/hero.jpg
+  path: Q126618/hero.webp
   width: 2048
   height: 1366
   license: CC BY 4.0
@@ -87,7 +87,7 @@ image_refs:
     synoicus) in Israel.jpg
   commons_filename: Sinai Rosefinch (Carpodacus synoicus) in Israel.jpg
 - role: secondary
-  path: Q126618/secondary-1.jpg
+  path: Q126618/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 3.0
@@ -98,7 +98,7 @@ image_refs:
   commons_filename: Camachuelo del Sinaí - Pale Rosefinch (Carpodacus synoicus), Petra,
     Jordan2.jpg
 - role: secondary
-  path: Q126618/secondary-2.jpg
+  path: Q126618/secondary-2.webp
   width: 1800
   height: 1279
   license: CC BY-SA 2.0

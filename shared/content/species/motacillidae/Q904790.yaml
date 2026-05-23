@@ -65,7 +65,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q904790/hero.jpg
+  path: Q904790/hero.webp
   width: 2400
   height: 1599
   license: CC BY 3.0
@@ -74,7 +74,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Anthus richardi - Laem Pak Bia.jpg
   commons_filename: Anthus richardi - Laem Pak Bia.jpg
 - role: secondary
-  path: Q904790/secondary-1.jpg
+  path: Q904790/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 2.0
@@ -83,7 +83,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Anthus richardi (6036516489).jpg
   commons_filename: Anthus richardi (6036516489).jpg
 - role: secondary
-  path: Q904790/secondary-2.jpg
+  path: Q904790/secondary-2.webp
   width: 1800
   height: 1199
   license: CC BY-SA 4.0

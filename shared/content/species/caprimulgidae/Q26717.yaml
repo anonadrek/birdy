@@ -90,7 +90,7 @@ migration:
     sensitive to cool weather patterns during their breeding season in northern regions.'
 image_refs:
 - role: hero
-  path: Q26717/hero.jpg
+  path: Q26717/hero.webp
   width: 2048
   height: 1461
   license: CC BY 4.0
@@ -99,7 +99,7 @@ image_refs:
     europaeus) in Algeria.jpg
   commons_filename: Eurasian nightjar (Caprimulgus europaeus) in Algeria.jpg
 - role: secondary
-  path: Q26717/secondary-1.jpg
+  path: Q26717/secondary-1.webp
   width: 1800
   height: 1273
   license: CC BY 4.0
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Caprimulgus europaeus by thomas--.jpg
   commons_filename: Caprimulgus europaeus by thomas--.jpg
 - role: secondary
-  path: Q26717/secondary-2.jpg
+  path: Q26717/secondary-2.webp
   width: 1800
   height: 1192
   license: CC BY 4.0

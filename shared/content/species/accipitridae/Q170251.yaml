@@ -67,7 +67,7 @@ migration:
     waters by October. They do not overwinter in the region.'
 image_refs:
 - role: hero
-  path: Q170251/hero.jpg
+  path: Q170251/hero.webp
   width: 1600
   height: 2400
   license: CC0
@@ -76,7 +76,7 @@ image_refs:
     gallicus), Potokaki Wetland.jpg
   commons_filename: Short-toed snake eagle (Circaetus gallicus), Potokaki Wetland.jpg
 - role: secondary
-  path: Q170251/secondary-1.jpg
+  path: Q170251/secondary-1.webp
   width: 1800
   height: 1476
   license: CC BY-SA 4.0
@@ -86,7 +86,7 @@ image_refs:
     pectoralis).jpg
   commons_filename: Black-chested snake-eagle (Circaetus pectoralis).jpg
 - role: secondary
-  path: Q170251/secondary-2.jpg
+  path: Q170251/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

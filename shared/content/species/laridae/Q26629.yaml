@@ -92,7 +92,7 @@ migration:
     more northern breeding areas.'
 image_refs:
 - role: hero
-  path: Q26629/hero.jpg
+  path: Q26629/hero.webp
   width: 2400
   height: 1800
   license: Public domain
@@ -101,7 +101,7 @@ image_refs:
     Ipswich, MA.jpg
   commons_filename: Larus marinus at Sandy Point, Ipswich, MA.jpg
 - role: secondary
-  path: Q26629/secondary-1.jpg
+  path: Q26629/secondary-1.webp
   width: 1800
   height: 1198
   license: CC BY 4.0
@@ -112,7 +112,7 @@ image_refs:
   commons_filename: 2024-06-01 02 Great black-backed gull (Larus marinus) pair with
     chicks -.jpg
 - role: secondary
-  path: Q26629/secondary-2.jpg
+  path: Q26629/secondary-2.webp
   width: 1800
   height: 1129
   license: CC BY 4.0

@@ -103,7 +103,7 @@ migration:
     sources in the Nordic region.'
 image_refs:
 - role: hero
-  path: Q25382/hero.jpg
+  path: Q25382/hero.webp
   width: 2300
   height: 2092
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
     01.jpg
   commons_filename: Pyrrhula Pyrrhula Kittilä 20170408 01.jpg
 - role: secondary
-  path: Q25382/secondary-1.jpg
+  path: Q25382/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -122,7 +122,7 @@ image_refs:
     pyrrhula) 2022.jpg
   commons_filename: Eurasian bullfinch (Pyrrhula pyrrhula) 2022.jpg
 - role: secondary
-  path: Q25382/secondary-2.jpg
+  path: Q25382/secondary-2.webp
   width: 1800
   height: 1432
   license: CC BY 2.0

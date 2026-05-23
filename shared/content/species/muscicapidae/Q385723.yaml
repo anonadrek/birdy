@@ -68,7 +68,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q385723/hero.jpg
+  path: Q385723/hero.webp
   width: 2400
   height: 1970
   license: CC BY 4.0
@@ -79,7 +79,7 @@ image_refs:
   commons_filename: Westelijke blonde tapuit - western black-eared wheatear - Oenanthe
     hispanica.tif
 - role: secondary
-  path: Q385723/secondary-1.jpg
+  path: Q385723/secondary-1.webp
   width: 1800
   height: 1352
   license: CC BY 4.0
@@ -88,7 +88,7 @@ image_refs:
     Algeria 1.jpg
   commons_filename: Oenanthe hispanica, El Achir, Algeria 1.jpg
 - role: secondary
-  path: Q385723/secondary-2.jpg
+  path: Q385723/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

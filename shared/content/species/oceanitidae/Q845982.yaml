@@ -94,7 +94,7 @@ migration:
     text.'
 image_refs:
 - role: hero
-  path: Q845982/hero.jpg
+  path: Q845982/hero.webp
   width: 2048
   height: 1536
   license: CC0

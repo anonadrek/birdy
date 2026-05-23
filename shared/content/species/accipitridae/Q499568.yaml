@@ -70,7 +70,7 @@ migration:
     overwintering in Scandinavian territories can be provided.'
 image_refs:
 - role: hero
-  path: Q499568/hero.jpg
+  path: Q499568/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -79,7 +79,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Aquila adalberti.001 - Avifauna.jpg
   commons_filename: Aquila adalberti.001 - Avifauna.jpg
 - role: secondary
-  path: Q499568/secondary-1.jpg
+  path: Q499568/secondary-1.webp
   width: 1800
   height: 1012
   license: CC BY-SA 3.0

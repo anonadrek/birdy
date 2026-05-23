@@ -96,7 +96,7 @@ migration:
     and suitable nesting habitat becomes available.'
 image_refs:
 - role: hero
-  path: Q26696/hero.jpg
+  path: Q26696/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Common eider (Somateria mollissima).jpg
   commons_filename: Common eider (Somateria mollissima).jpg
 - role: secondary
-  path: Q26696/secondary-1.jpg
+  path: Q26696/secondary-1.webp
   width: 1800
   height: 1197
   license: CC0
@@ -113,7 +113,7 @@ image_refs:
     on the dune, Heligoland.jpg
   commons_filename: Somateria mollissima (female) on the dune, Heligoland.jpg
 - role: secondary
-  path: Q26696/secondary-2.jpg
+  path: Q26696/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

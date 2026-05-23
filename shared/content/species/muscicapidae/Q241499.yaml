@@ -89,7 +89,7 @@ migration:
     Europe makes it a notable migrant in the region during seasonal movements.'
 image_refs:
 - role: hero
-  path: Q241499/hero.jpg
+  path: Q241499/hero.webp
   width: 2048
   height: 1540
   license: CC0
@@ -99,7 +99,7 @@ image_refs:
     128458411.jpg
   commons_filename: Ficedula parva - Zwergschnäpper 128458411.jpg
 - role: secondary
-  path: Q241499/secondary-1.jpg
+  path: Q241499/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY 4.0
@@ -108,7 +108,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ficedula parva 233716274.jpg
   commons_filename: Ficedula parva 233716274.jpg
 - role: secondary
-  path: Q241499/secondary-2.jpg
+  path: Q241499/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

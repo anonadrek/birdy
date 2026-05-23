@@ -64,7 +64,7 @@ migration:
     migration patterns, or seasonal presence in Scandinavia or Northern Europe.'
 image_refs:
 - role: hero
-  path: Q28106778/hero.jpg
+  path: Q28106778/hero.webp
   width: 2400
   height: 1601
   license: Public domain
@@ -73,7 +73,7 @@ image_refs:
     on Alum Creek (52944847602).jpg
   commons_filename: Blue-winged teal (Spatula discors) on Alum Creek (52944847602).jpg
 - role: secondary
-  path: Q28106778/secondary-1.jpg
+  path: Q28106778/secondary-1.webp
   width: 1800
   height: 1098
   license: CC BY-SA 3.0
@@ -83,7 +83,7 @@ image_refs:
     Park Toronto.jpg
   commons_filename: Spatula discors m Sam Smith Park Toronto.jpg
 - role: secondary
-  path: Q28106778/secondary-2.jpg
+  path: Q28106778/secondary-2.webp
   width: 1800
   height: 1085
   license: CC BY-SA 2.0

@@ -92,7 +92,7 @@ migration:
     winters of Northern Europe, making permanent colonization unlikely in this region.'
 image_refs:
 - role: hero
-  path: Q208060/hero.jpg
+  path: Q208060/hero.webp
   width: 1800
   height: 2400
   license: CC BY 4.0
@@ -101,7 +101,7 @@ image_refs:
     krameri) 9.jpg
   commons_filename: Rose ringed parakeet(Psittacula krameri) 9.jpg
 - role: secondary
-  path: Q208060/secondary-1.jpg
+  path: Q208060/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 3.0
@@ -111,7 +111,7 @@ image_refs:
   commons_filename: Rose ringed parakeet ( Psittacula krameri) മോതിര തത്ത , നാട്ടു
     തത്ത 5.jpg
 - role: secondary
-  path: Q208060/secondary-2.jpg
+  path: Q208060/secondary-2.webp
   width: 1350
   height: 1800
   license: CC BY 4.0

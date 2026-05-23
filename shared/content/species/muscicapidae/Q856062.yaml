@@ -77,7 +77,7 @@ migration:
     of the year.'
 image_refs:
 - role: hero
-  path: Q856062/hero.jpg
+  path: Q856062/hero.webp
   width: 2400
   height: 1589
   license: CC BY 4.0
@@ -87,7 +87,7 @@ image_refs:
     - Oenanthe leucura.tif
   commons_filename: Zwarte tapuit - black wheatear - Oenanthe leucura.tif
 - role: secondary
-  path: Q856062/secondary-1.jpg
+  path: Q856062/secondary-1.webp
   width: 1800
   height: 1437
   license: CC BY 2.0
@@ -97,7 +97,7 @@ image_refs:
     - Flickr - gailhampshire.jpg
   commons_filename: Black Wheatear. Oenanthe leucura - Flickr - gailhampshire.jpg
 - role: secondary
-  path: Q856062/secondary-2.jpg
+  path: Q856062/secondary-2.webp
   width: 1350
   height: 1800
   license: CC BY 4.0

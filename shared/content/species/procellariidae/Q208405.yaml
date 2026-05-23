@@ -87,7 +87,7 @@ migration:
     patterns, or seasonal presence in Scandinavia or Northern Europe.'
 image_refs:
 - role: hero
-  path: Q208405/hero.jpg
+  path: Q208405/hero.webp
   width: 2400
   height: 1917
   license: CC BY-SA 4.0

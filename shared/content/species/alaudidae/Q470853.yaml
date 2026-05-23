@@ -90,7 +90,7 @@ migration:
     exceptional rather than seasonal occurrences.'
 image_refs:
 - role: hero
-  path: Q470853/hero.jpg
+  path: Q470853/hero.webp
   width: 2400
   height: 1663
   license: CC BY 4.0

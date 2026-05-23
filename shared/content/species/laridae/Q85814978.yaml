@@ -78,7 +78,7 @@ migration:
     or seasonal distribution in Scandinavia, Northern Europe, or any other region.'
 image_refs:
 - role: hero
-  path: Q85814978/hero.jpg
+  path: Q85814978/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -88,7 +88,7 @@ image_refs:
     Assinie, Côte d'Ivoire.jpg
   commons_filename: 2015-11-21 Thalasseus albididorsalis, Assinie, Côte d'Ivoire.jpg
 - role: secondary
-  path: Q85814978/secondary-1.jpg
+  path: Q85814978/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -98,7 +98,7 @@ image_refs:
   commons_filename: Thalasseus albididorsalis, Langue de Barbarie NP, Saint-Louis
     Region, Senegal 02.jpg
 - role: secondary
-  path: Q85814978/secondary-2.jpg
+  path: Q85814978/secondary-2.webp
   width: 1800
   height: 1350
   license: CC0

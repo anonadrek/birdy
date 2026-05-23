@@ -63,7 +63,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q216850/hero.jpg
+  path: Q216850/hero.webp
   width: 2400
   height: 1607
   license: Public domain
@@ -73,7 +73,7 @@ image_refs:
     Terceira, Açores.jpg
   commons_filename: Cagarro - Calonectris borealis, Terceira, Açores.jpg
 - role: secondary
-  path: Q216850/secondary-1.jpg
+  path: Q216850/secondary-1.webp
   width: 1800
   height: 1155
   license: CC BY 4.0
@@ -82,7 +82,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Calonectris diomedea 424179034.jpg
   commons_filename: Calonectris diomedea 424179034.jpg
 - role: secondary
-  path: Q216850/secondary-2.jpg
+  path: Q216850/secondary-2.webp
   width: 1800
   height: 1469
   license: CC BY-SA 4.0

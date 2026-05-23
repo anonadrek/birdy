@@ -86,7 +86,7 @@ migration:
     occurrence, or presence throughout the year in Scandinavia or Northern Europe.'
 image_refs:
 - role: hero
-  path: Q18845/hero.jpg
+  path: Q18845/hero.webp
   width: 2400
   height: 1586
   license: CC BY 2.0
@@ -96,7 +96,7 @@ image_refs:
     - gailhampshire.jpg
   commons_filename: Cuckoo. Cuculus canorus - Flickr - gailhampshire.jpg
 - role: secondary
-  path: Q18845/secondary-1.jpg
+  path: Q18845/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -105,7 +105,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Cuculus canorus.010 - A Coruña.jpg
   commons_filename: Cuculus canorus.010 - A Coruña.jpg
 - role: secondary
-  path: Q18845/secondary-2.jpg
+  path: Q18845/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

@@ -94,7 +94,7 @@ migration:
     migrate to southern Europe and the Mediterranean basin.'
 image_refs:
 - role: hero
-  path: Q25418/hero.jpg
+  path: Q25418/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -102,7 +102,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Stieglitz Carduelis carduelis-8189.jpg
   commons_filename: Stieglitz Carduelis carduelis-8189.jpg
 - role: secondary
-  path: Q25418/secondary-1.jpg
+  path: Q25418/secondary-1.webp
   width: 1800
   height: 1516
   license: CC BY-SA 4.0
@@ -111,7 +111,7 @@ image_refs:
     élégant) (4).jpg
   commons_filename: Carduelis carduelis (Chardonneret élégant) (4).jpg
 - role: secondary
-  path: Q25418/secondary-2.jpg
+  path: Q25418/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

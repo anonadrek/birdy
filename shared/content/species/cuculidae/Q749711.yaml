@@ -65,7 +65,7 @@ migration:
     Africa, making it absent from Scandinavian territories year-round.'
 image_refs:
 - role: hero
-  path: Q749711/hero.jpg
+  path: Q749711/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -74,7 +74,7 @@ image_refs:
     maison des tortues.jpg
   commons_filename: Centropus senegalensis à la maison des tortues.jpg
 - role: secondary
-  path: Q749711/secondary-1.jpg
+  path: Q749711/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0
@@ -84,7 +84,7 @@ image_refs:
     senegalensis).jpg
   commons_filename: Senegal coucal (Centropus senegalensis senegalensis).jpg
 - role: secondary
-  path: Q749711/secondary-2.jpg
+  path: Q749711/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 3.0

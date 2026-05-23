@@ -68,7 +68,7 @@ migration:
     October and March.'
 image_refs:
 - role: hero
-  path: Q207838/hero.jpg
+  path: Q207838/hero.webp
   width: 2011
   height: 2400
   license: CC BY 2.0
@@ -77,7 +77,7 @@ image_refs:
     Entita.jpg
   commons_filename: Marsh tit, Poecile palustris, Entita.jpg
 - role: secondary
-  path: Q207838/secondary-1.jpg
+  path: Q207838/secondary-1.webp
   width: 1800
   height: 1448
   license: CC BY 2.0
@@ -86,7 +86,7 @@ image_refs:
     (51977059969).jpg
   commons_filename: Marsh Tit Poecile palustris (51977059969).jpg
 - role: secondary
-  path: Q207838/secondary-2.jpg
+  path: Q207838/secondary-2.webp
   width: 1800
   height: 1389
   license: CC BY 2.0

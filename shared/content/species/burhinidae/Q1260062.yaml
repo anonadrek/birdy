@@ -64,7 +64,7 @@ migration:
     migration patterns relevant to these regions.'
 image_refs:
 - role: hero
-  path: Q1260062/hero.jpg
+  path: Q1260062/hero.webp
   width: 2400
   height: 1590
   license: CC BY 4.0
@@ -74,7 +74,7 @@ image_refs:
   commons_filename: Great thick-knee (Esacus recurvirostris) from Ranganathittu Bird
     Sanctuary JEG4078.jpg
 - role: secondary
-  path: Q1260062/secondary-1.jpg
+  path: Q1260062/secondary-1.webp
   width: 1800
   height: 1192
   license: CC BY 4.0
@@ -84,7 +84,7 @@ image_refs:
   commons_filename: Great thick-knee (Esacus recurvirostris) from Ranganathittu Bird
     Sanctuary JEG4108.jpg
 - role: secondary
-  path: Q1260062/secondary-2.jpg
+  path: Q1260062/secondary-2.webp
   width: 1800
   height: 1192
   license: CC BY-SA 3.0

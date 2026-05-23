@@ -63,7 +63,7 @@ migration:
     or Northern Europe.'
 image_refs:
 - role: hero
-  path: Q1265442/hero.jpg
+  path: Q1265442/hero.webp
   width: 2048
   height: 1536
   license: CC BY 4.0
@@ -73,7 +73,7 @@ image_refs:
     Tanzania 3089114.jpg
   commons_filename: Caprimulgus poliocephalus in Tanzania 3089114.jpg
 - role: secondary
-  path: Q1265442/secondary-1.jpg
+  path: Q1265442/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

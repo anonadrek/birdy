@@ -81,7 +81,7 @@ migration:
     as a regular migrant or winter visitor to Northern Europe.'
 image_refs:
 - role: hero
-  path: Q27075424/hero.jpg
+  path: Q27075424/hero.webp
   width: 2048
   height: 1555
   license: CC BY 4.0
@@ -89,7 +89,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Alaudala rufescens 77058327.jpg
   commons_filename: Alaudala rufescens 77058327.jpg
 - role: secondary
-  path: Q27075424/secondary-1.jpg
+  path: Q27075424/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

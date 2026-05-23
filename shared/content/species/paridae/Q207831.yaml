@@ -103,7 +103,7 @@ migration:
     winter bird communities.'
 image_refs:
 - role: hero
-  path: Q207831/hero.jpg
+  path: Q207831/hero.webp
   width: 1600
   height: 2400
   license: CC BY 4.0
@@ -114,7 +114,7 @@ image_refs:
     Biológico de Gaia, Porto.jpg
   commons_filename: Lophophanes cristatus, Parque Biológico de Gaia, Porto.jpg
 - role: secondary
-  path: Q207831/secondary-1.jpg
+  path: Q207831/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -124,7 +124,7 @@ image_refs:
     20190908.jpg
   commons_filename: Lophophanes cristatus Gran Paradiso 20190908.jpg
 - role: secondary
-  path: Q207831/secondary-2.jpg
+  path: Q207831/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

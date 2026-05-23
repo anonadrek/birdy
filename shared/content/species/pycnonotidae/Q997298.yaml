@@ -61,7 +61,7 @@ migration:
     to these regions can be provided.'
 image_refs:
 - role: hero
-  path: Q997298/hero.jpg
+  path: Q997298/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -71,7 +71,7 @@ image_refs:
     -two-8.jpg
   commons_filename: Pycnonotus leucotis -Doha, Qatar -two-8.jpg
 - role: secondary
-  path: Q997298/secondary-1.jpg
+  path: Q997298/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -81,7 +81,7 @@ image_refs:
     -two-8 (1).jpg
   commons_filename: Pycnonotus leucotis -Doha, Qatar -two-8 (1).jpg
 - role: secondary
-  path: Q997298/secondary-2.jpg
+  path: Q997298/secondary-2.webp
   width: 1800
   height: 1199
   license: CC BY 2.0

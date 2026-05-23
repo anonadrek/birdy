@@ -85,7 +85,7 @@ migration:
     Scandinavia or Northern Europe.'
 image_refs:
 - role: hero
-  path: Q151851/hero.jpg
+  path: Q151851/hero.webp
   width: 2400
   height: 1592
   license: CC BY 2.0
@@ -96,7 +96,7 @@ image_refs:
   commons_filename: Namaqua dove, Oena capensis, at Mapungubwe National Park, Limpopo,
     South Africa (18085767542).jpg
 - role: secondary
-  path: Q151851/secondary-1.jpg
+  path: Q151851/secondary-1.webp
   width: 1800
   height: 1078
   license: CC BY 2.0
@@ -107,7 +107,7 @@ image_refs:
   commons_filename: Namaqua dove, Oena capensis, at Mapungubwe National Park, Limpopo,
     South Africa (18089217755).jpg
 - role: secondary
-  path: Q151851/secondary-2.jpg
+  path: Q151851/secondary-2.webp
   width: 1800
   height: 1224
   license: CC BY 2.0

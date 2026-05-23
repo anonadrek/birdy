@@ -96,7 +96,7 @@ migration:
     areas during winter months, particularly in southern Scandinavia.'
 image_refs:
 - role: hero
-  path: Q27124/hero.jpg
+  path: Q27124/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -106,7 +106,7 @@ image_refs:
     Naturschutzgebiet Wallnau (Fehmarn).jpg
   commons_filename: Knutt (Calidris canutus) im Naturschutzgebiet Wallnau (Fehmarn).jpg
 - role: secondary
-  path: Q27124/secondary-1.jpg
+  path: Q27124/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -116,7 +116,7 @@ image_refs:
     (29663230761).jpg
   commons_filename: Red Knot (Calidris canutus) (29663230761).jpg
 - role: secondary
-  path: Q27124/secondary-2.jpg
+  path: Q27124/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

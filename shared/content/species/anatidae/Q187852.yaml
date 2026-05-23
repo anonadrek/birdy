@@ -96,7 +96,7 @@ migration:
     normal migration routes.'
 image_refs:
 - role: hero
-  path: Q187852/hero.jpg
+  path: Q187852/hero.webp
   width: 2399
   height: 2400
   license: CC0
@@ -105,7 +105,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Branta-ruficollis-London2014.JPG
   commons_filename: Branta-ruficollis-London2014.JPG
 - role: secondary
-  path: Q187852/secondary-1.jpg
+  path: Q187852/secondary-1.webp
   width: 1219
   height: 1800
   license: CC0
@@ -115,7 +115,7 @@ image_refs:
   commons_filename: Roodhalsgans (Branta ruficollis) Anas Brasiliana (titel op object),
     RP-T-BR-2017-1-5-76.jpg
 - role: secondary
-  path: Q187852/secondary-2.jpg
+  path: Q187852/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

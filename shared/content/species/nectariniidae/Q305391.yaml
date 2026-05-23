@@ -61,7 +61,7 @@ migration:
     Therefore, information about its migration patterns in this region cannot be provided.'
 image_refs:
 - role: hero
-  path: Q305391/hero.jpg
+  path: Q305391/hero.webp
   width: 2048
   height: 1971
   license: CC BY 4.0
@@ -70,7 +70,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Hedydipna metallica 261879972.jpg
   commons_filename: Hedydipna metallica 261879972.jpg
 - role: secondary
-  path: Q305391/secondary-1.jpg
+  path: Q305391/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -79,7 +79,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Hedydipna metallica 264648434.jpg
   commons_filename: Hedydipna metallica 264648434.jpg
 - role: secondary
-  path: Q305391/secondary-2.jpg
+  path: Q305391/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

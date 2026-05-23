@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q387379/hero.jpg
+  path: Q387379/hero.webp
   width: 1800
   height: 2400
   license: CC0
@@ -47,7 +47,7 @@ image_refs:
   commons_filename: Anhinga rufa (African Darter or snakebird), Burgers zoo, Arnhem,
     the Netherlands.JPG
 - role: secondary
-  path: Q387379/secondary-1.jpg
+  path: Q387379/secondary-1.webp
   width: 1800
   height: 1062
   license: CC BY 2.0
@@ -58,7 +58,7 @@ image_refs:
   commons_filename: African Darter, Anhinga rufa at Marievale Nature Reserve, Gauteng,
     South Africa (20995427758).jpg
 - role: secondary
-  path: Q387379/secondary-2.jpg
+  path: Q387379/secondary-2.webp
   width: 1301
   height: 1800
   license: CC BY 2.0

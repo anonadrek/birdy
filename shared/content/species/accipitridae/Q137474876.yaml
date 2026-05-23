@@ -92,7 +92,7 @@ migration:
     local movements occur in response to prey availability and weather conditions.'
 image_refs:
 - role: hero
-  path: Q137474876/hero.jpg
+  path: Q137474876/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -102,7 +102,7 @@ image_refs:
     Park, Riga, Latvia.jpg
   commons_filename: Accipiter gentilis, Kronvalda Park, Riga, Latvia.jpg
 - role: secondary
-  path: Q137474876/secondary-1.jpg
+  path: Q137474876/secondary-1.webp
   width: 1563
   height: 1800
   license: CC BY 4.0
@@ -111,7 +111,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Accipiter gentilis 250245803.jpg
   commons_filename: Accipiter gentilis 250245803.jpg
 - role: secondary
-  path: Q137474876/secondary-2.jpg
+  path: Q137474876/secondary-2.webp
   width: 1440
   height: 1800
   license: CC BY 4.0

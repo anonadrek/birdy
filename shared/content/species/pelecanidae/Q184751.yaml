@@ -92,7 +92,7 @@ migration:
     migration patterns for this area cannot be documented.'
 image_refs:
 - role: hero
-  path: Q184751/hero.jpg
+  path: Q184751/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -101,7 +101,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pelecanus crispus Herberstein.jpg
   commons_filename: Pelecanus crispus Herberstein.jpg
 - role: secondary
-  path: Q184751/secondary-1.jpg
+  path: Q184751/secondary-1.webp
   width: 1200
   height: 1800
   license: Public domain
@@ -111,7 +111,7 @@ image_refs:
     2.jpg
   commons_filename: Pelecanus crispus Herberstein 2.jpg
 - role: secondary
-  path: Q184751/secondary-2.jpg
+  path: Q184751/secondary-2.webp
   width: 1800
   height: 1243
   license: CC0

@@ -97,7 +97,7 @@ migration:
     Scandinavian regions are not documented in the provided text.'
 image_refs:
 - role: hero
-  path: Q25700/hero.jpg
+  path: Q25700/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -105,7 +105,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian teal (Anas crecca).jpg
   commons_filename: Eurasian teal (Anas crecca).jpg
 - role: secondary
-  path: Q25700/secondary-1.jpg
+  path: Q25700/secondary-1.webp
   width: 1800
   height: 1297
   license: CC BY 2.0
@@ -115,7 +115,7 @@ image_refs:
     RSPB Titchwell, Norfolk (33587386401).jpg
   commons_filename: Eurasian Teal Anas crecca, male, RSPB Titchwell, Norfolk (33587386401).jpg
 - role: secondary
-  path: Q25700/secondary-2.jpg
+  path: Q25700/secondary-2.webp
   width: 1800
   height: 1319
   license: CC BY 2.0

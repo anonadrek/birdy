@@ -90,7 +90,7 @@ migration:
     Scandinavia and Russia.'
 image_refs:
 - role: hero
-  path: Q208703/hero.jpg
+  path: Q208703/hero.webp
   width: 2400
   height: 1655
   license: Public domain
@@ -99,7 +99,7 @@ image_refs:
     lapponicus).jpg
   commons_filename: Lapland Longspur (Calcarius lapponicus).jpg
 - role: secondary
-  path: Q208703/secondary-1.jpg
+  path: Q208703/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
     lapponicus) 2023 4.jpg
   commons_filename: Lapland longspur (Calcarius lapponicus) 2023 4.jpg
 - role: secondary
-  path: Q208703/secondary-2.jpg
+  path: Q208703/secondary-2.webp
   width: 1200
   height: 1800
   license: CC BY 4.0

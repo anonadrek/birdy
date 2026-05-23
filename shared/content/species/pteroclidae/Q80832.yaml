@@ -65,7 +65,7 @@ migration:
     Asia, which are outside the geographic scope of Northern European bird migration.'
 image_refs:
 - role: hero
-  path: Q80832/hero.jpg
+  path: Q80832/hero.webp
   width: 2048
   height: 1364
   license: CC BY 4.0

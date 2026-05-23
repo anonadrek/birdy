@@ -64,7 +64,7 @@ migration:
     these regions.'
 image_refs:
 - role: hero
-  path: Q1072609/hero.jpg
+  path: Q1072609/hero.webp
   width: 2400
   height: 1520
   license: CC BY 2.0
@@ -75,7 +75,7 @@ image_refs:
   commons_filename: Red-eyed Dove Streptopelia semitorquata at Marievale Nature Reserve,
     Gauteng, South Africa (32558626764).jpg
 - role: secondary
-  path: Q1072609/secondary-1.jpg
+  path: Q1072609/secondary-1.webp
   width: 1800
   height: 1123
   license: CC BY 2.0
@@ -86,7 +86,7 @@ image_refs:
   commons_filename: Red-eyed Dove Streptopelia semitorquata at Marievale Nature Reserve,
     Gauteng, South Africa (32587266553).jpg
 - role: secondary
-  path: Q1072609/secondary-2.jpg
+  path: Q1072609/secondary-2.webp
   width: 1327
   height: 1800
   license: CC BY 2.0

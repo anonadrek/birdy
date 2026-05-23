@@ -61,7 +61,7 @@ migration:
     No migration patterns relevant to Northern Europe can be documented for this species.'
 image_refs:
 - role: hero
-  path: Q120964621/hero.jpg
+  path: Q120964621/hero.webp
   width: 2400
   height: 1556
   license: CC BY-SA 3.0
@@ -70,7 +70,7 @@ image_refs:
     02.jpg
   commons_filename: Fringilla coelebs canariensis 02.jpg
 - role: secondary
-  path: Q120964621/secondary-1.jpg
+  path: Q120964621/secondary-1.webp
   width: 1800
   height: 1199
   license: CC BY-SA 3.0

@@ -75,7 +75,7 @@ migration:
     regions, but detailed seasonal movement data are not available from reliable sources.'
 image_refs:
 - role: hero
-  path: Q189193/hero.jpg
+  path: Q189193/hero.webp
   width: 1601
   height: 2400
   license: CC BY-SA 4.0
@@ -83,7 +83,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ma - Pinguinus impennis - 2.jpg
   commons_filename: Ma - Pinguinus impennis - 2.jpg
 - role: secondary
-  path: Q189193/secondary-1.jpg
+  path: Q189193/secondary-1.webp
   width: 1350
   height: 1800
   license: CC BY-SA 4.0
@@ -92,7 +92,7 @@ image_refs:
     Bird Exhibition - 1.jpg
   commons_filename: Pinguinus impennis model in Bird Exhibition - 1.jpg
 - role: secondary
-  path: Q189193/secondary-2.jpg
+  path: Q189193/secondary-2.webp
   width: 1350
   height: 1800
   license: CC BY-SA 4.0

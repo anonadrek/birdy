@@ -71,7 +71,7 @@ migration:
     migratory or resident population.'
 image_refs:
 - role: hero
-  path: Q507383/hero.jpg
+  path: Q507383/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -80,7 +80,7 @@ image_refs:
     (4s, p7).jpg
   commons_filename: Corvus splendens @ Kuala Lumpur (4s, p7).jpg
 - role: secondary
-  path: Q507383/secondary-1.jpg
+  path: Q507383/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -89,7 +89,7 @@ image_refs:
     Kuala Lumpur.jpg
   commons_filename: Corvus splendens insolens @ Kuala Lumpur.jpg
 - role: secondary
-  path: Q507383/secondary-2.jpg
+  path: Q507383/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

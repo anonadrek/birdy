@@ -58,7 +58,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q1193299/hero.jpg
+  path: Q1193299/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -68,7 +68,7 @@ image_refs:
     bilopha) Kebili.jpg
   commons_filename: Temminck's lark (Eremophila bilopha) Kebili.jpg
 - role: secondary
-  path: Q1193299/secondary-1.jpg
+  path: Q1193299/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -78,7 +78,7 @@ image_refs:
     bilopha.jpg
   commons_filename: A tiny juvenile bird of Eremophila bilopha.jpg
 - role: secondary
-  path: Q1193299/secondary-2.jpg
+  path: Q1193299/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0

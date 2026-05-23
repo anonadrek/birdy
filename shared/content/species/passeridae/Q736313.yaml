@@ -69,7 +69,7 @@ migration:
     regions.'
 image_refs:
 - role: hero
-  path: Q736313/hero.jpg
+  path: Q736313/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -79,7 +79,7 @@ image_refs:
   commons_filename: 2017-05-02 Petronia petronia, Monestir d'Avellanes, Catalunya
     02.jpg
 - role: secondary
-  path: Q736313/secondary-1.jpg
+  path: Q736313/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -89,7 +89,7 @@ image_refs:
   commons_filename: 2017-05-03 Petronia petronia, Monestir d'Avellanes, Catalunya
     01.jpg
 - role: secondary
-  path: Q736313/secondary-2.jpg
+  path: Q736313/secondary-2.webp
   width: 1800
   height: 1069
   license: CC BY-SA 2.0

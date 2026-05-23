@@ -102,7 +102,7 @@ migration:
     Migration data unavailable for this species.'
 image_refs:
 - role: hero
-  path: Q26106/hero.jpg
+  path: Q26106/hero.webp
   width: 2400
   height: 1602
   license: CC BY 2.0
@@ -111,7 +111,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Syntypistis perdix perdix (32413832364).jpg
   commons_filename: Syntypistis perdix perdix (32413832364).jpg
 - role: secondary
-  path: Q26106/secondary-1.jpg
+  path: Q26106/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 2.0
@@ -120,7 +120,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Syntypistis perdix perdix (45418591041).jpg
   commons_filename: Syntypistis perdix perdix (45418591041).jpg
 - role: secondary
-  path: Q26106/secondary-2.jpg
+  path: Q26106/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

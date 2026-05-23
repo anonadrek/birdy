@@ -86,7 +86,7 @@ migration:
     European bird communities.'
 image_refs:
 - role: hero
-  path: Q819885/hero.jpg
+  path: Q819885/hero.webp
   width: 2048
   height: 1858
   license: CC BY 4.0
@@ -95,7 +95,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Melanocorypha bimaculata 117209398.jpg
   commons_filename: Melanocorypha bimaculata 117209398.jpg
 - role: secondary
-  path: Q819885/secondary-1.jpg
+  path: Q819885/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY-SA 4.0
@@ -104,7 +104,7 @@ image_refs:
     iNaturalist photo 504864727.jpg
   commons_filename: Melanocorypha bimaculata from iNaturalist photo 504864727.jpg
 - role: secondary
-  path: Q819885/secondary-2.jpg
+  path: Q819885/secondary-2.webp
   width: 1800
   height: 1201
   license: CC BY-SA 4.0

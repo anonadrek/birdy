@@ -66,7 +66,7 @@ migration:
     March as northern birds shift southward seeking prey.'
 image_refs:
 - role: hero
-  path: Q174466/hero.jpg
+  path: Q174466/hero.webp
   width: 2400
   height: 1748
   license: Public domain
@@ -75,7 +75,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Aegolius funereus Denali NP.jpg
   commons_filename: Aegolius funereus Denali NP.jpg
 - role: secondary
-  path: Q174466/secondary-1.jpg
+  path: Q174466/secondary-1.webp
   width: 1800
   height: 1438
   license: Public domain
@@ -85,7 +85,7 @@ image_refs:
     (8615263478).jpg
   commons_filename: Boreal Owl (Aegolius funereus) (8615263478).jpg
 - role: secondary
-  path: Q174466/secondary-2.jpg
+  path: Q174466/secondary-2.webp
   width: 1800
   height: 1441
   license: Public domain

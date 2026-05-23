@@ -83,7 +83,7 @@ migration:
     to establish territories and breed.'
 image_refs:
 - role: hero
-  path: Q25961/hero.jpg
+  path: Q25961/hero.webp
   width: 2106
   height: 2400
   license: CC BY-SA 4.0
@@ -92,7 +92,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Alauda arvensis Ehedydd.jpg
   commons_filename: Alauda arvensis Ehedydd.jpg
 - role: secondary
-  path: Q25961/secondary-1.jpg
+  path: Q25961/secondary-1.webp
   width: 1800
   height: 1235
   license: CC BY-SA 4.0
@@ -102,7 +102,7 @@ image_refs:
     Tarlakuşu 02.jpg
   commons_filename: Alauda arvensis - Skylark - Tarlakuşu 02.jpg
 - role: secondary
-  path: Q25961/secondary-2.jpg
+  path: Q25961/secondary-2.webp
   width: 1800
   height: 1181
   license: CC BY-SA 4.0

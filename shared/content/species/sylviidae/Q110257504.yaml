@@ -96,7 +96,7 @@ migration:
     rise and food availability increases.'
 image_refs:
 - role: hero
-  path: Q110257504/hero.jpg
+  path: Q110257504/hero.webp
   width: 2158
   height: 1480
   license: CC BY 4.0
@@ -106,7 +106,7 @@ image_refs:
     DSCN1888 (18).jpg
   commons_filename: Lesser Whitethroat Curruca curruca DSCN1888 (18).jpg
 - role: secondary
-  path: Q110257504/secondary-1.jpg
+  path: Q110257504/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -114,7 +114,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Curruca curruca ssp. curruca.jpg
   commons_filename: Curruca curruca ssp. curruca.jpg
 - role: secondary
-  path: Q110257504/secondary-2.jpg
+  path: Q110257504/secondary-2.webp
   width: 1800
   height: 1139
   license: CC BY-SA 2.0

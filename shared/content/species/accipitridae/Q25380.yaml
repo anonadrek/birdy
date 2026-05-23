@@ -86,7 +86,7 @@ migration:
     and Northern Europe.'
 image_refs:
 - role: hero
-  path: Q25380/hero.jpg
+  path: Q25380/hero.webp
   width: 2400
   height: 1729
   license: CC BY 4.0
@@ -95,7 +95,7 @@ image_refs:
     2.jpg
   commons_filename: Sparrowhawk - Accipiter nisus 2.jpg
 - role: secondary
-  path: Q25380/secondary-1.jpg
+  path: Q25380/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -105,7 +105,7 @@ image_refs:
     nisus nisus) male.jpg
   commons_filename: Eurasian sparrowhawk (Accipiter nisus nisus) male.jpg
 - role: secondary
-  path: Q25380/secondary-2.jpg
+  path: Q25380/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

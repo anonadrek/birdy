@@ -58,7 +58,7 @@ migration:
     sources would be required.'
 image_refs:
 - role: hero
-  path: Q995602/hero.jpg
+  path: Q995602/hero.webp
   width: 2400
   height: 1587
   license: CC BY 2.0
@@ -69,7 +69,7 @@ image_refs:
   commons_filename: African Pipit, Anthus cinnamomeus, at Mapungubwe National Park,
     Limpopo, South Africa (18288750736).jpg
 - role: secondary
-  path: Q995602/secondary-1.jpg
+  path: Q995602/secondary-1.webp
   width: 1800
   height: 1279
   license: CC BY 2.0
@@ -80,7 +80,7 @@ image_refs:
   commons_filename: African Pipit, Anthus cinnamomeus, at Mapungubwe National Park,
     Limpopo, South Africa (18288736366).jpg
 - role: secondary
-  path: Q995602/secondary-2.jpg
+  path: Q995602/secondary-2.webp
   width: 1800
   height: 1326
   license: CC BY 2.0

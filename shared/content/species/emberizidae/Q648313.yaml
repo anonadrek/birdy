@@ -82,7 +82,7 @@ migration:
     does not have a predictable seasonal presence in the Nordic region.'
 image_refs:
 - role: hero
-  path: Q648313/hero.jpg
+  path: Q648313/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -91,7 +91,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Emberiza buchanani (22883202923).jpg
   commons_filename: Emberiza buchanani (22883202923).jpg
 - role: secondary
-  path: Q648313/secondary-1.jpg
+  path: Q648313/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -101,7 +101,7 @@ image_refs:
     buchanani) (23384996356).jpg
   commons_filename: Grey-necked Bunting (Emberiza buchanani) (23384996356).jpg
 - role: secondary
-  path: Q648313/secondary-2.jpg
+  path: Q648313/secondary-2.webp
   width: 1320
   height: 1800
   license: CC BY-SA 4.0

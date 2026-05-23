@@ -86,7 +86,7 @@ migration:
     seasonal occurrence to document for this part of the world.'
 image_refs:
 - role: hero
-  path: Q27074615/hero.jpg
+  path: Q27074615/hero.webp
   width: 2400
   height: 1596
   license: Public domain
@@ -95,7 +95,7 @@ image_refs:
     Tokyo 20080914-01.jpg
   commons_filename: Ardea intermedia, Katsushika, Tokyo 20080914-01.jpg
 - role: secondary
-  path: Q27074615/secondary-1.jpg
+  path: Q27074615/secondary-1.webp
   width: 1800
   height: 1197
   license: Public domain
@@ -104,7 +104,7 @@ image_refs:
     Tokyo 20080914-02.jpg
   commons_filename: Ardea intermedia, Katsushika, Tokyo 20080914-02.jpg
 - role: secondary
-  path: Q27074615/secondary-2.jpg
+  path: Q27074615/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

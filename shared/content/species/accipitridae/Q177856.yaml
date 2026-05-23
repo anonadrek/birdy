@@ -96,7 +96,7 @@ migration:
     and unpredictable occurrences rather than part of a regular seasonal movement.'
 image_refs:
 - role: hero
-  path: Q177856/hero.jpg
+  path: Q177856/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -105,7 +105,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Griffon vulture (Gyps fulvus).jpg
   commons_filename: Griffon vulture (Gyps fulvus).jpg
 - role: secondary
-  path: Q177856/secondary-1.jpg
+  path: Q177856/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -113,7 +113,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Gyps fulvus Riegersburg 02.jpg
   commons_filename: Gyps fulvus Riegersburg 02.jpg
 - role: secondary
-  path: Q177856/secondary-2.jpg
+  path: Q177856/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 3.0

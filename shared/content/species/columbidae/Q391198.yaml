@@ -96,7 +96,7 @@ migration:
     patterns.'
 image_refs:
 - role: hero
-  path: Q391198/hero.jpg
+  path: Q391198/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
   commons_filename: Spilopelia senegalensis In Iran-Qom-2011-Photographs by mostafa
     meraji 04.jpg
 - role: secondary
-  path: Q391198/secondary-1.jpg
+  path: Q391198/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -116,7 +116,7 @@ image_refs:
   commons_filename: Spilopelia senegalensis In Iran-Qom-2011-Photographs by mostafa
     meraji 06.jpg
 - role: secondary
-  path: Q391198/secondary-2.jpg
+  path: Q391198/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

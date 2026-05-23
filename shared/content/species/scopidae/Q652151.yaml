@@ -65,7 +65,7 @@ migration:
     in this source material.'
 image_refs:
 - role: hero
-  path: Q652151/hero.jpg
+  path: Q652151/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -74,7 +74,7 @@ image_refs:
     Kenya.jpg
   commons_filename: Hamerkop (Scopus umbretta), Kenya.jpg
 - role: secondary
-  path: Q652151/secondary-1.jpg
+  path: Q652151/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -84,7 +84,7 @@ image_refs:
     Blijdorp, Rotterdam, Netherlands-8a.jpg
   commons_filename: Scopus umbretta -Diergaarde Blijdorp, Rotterdam, Netherlands-8a.jpg
 - role: secondary
-  path: Q652151/secondary-2.jpg
+  path: Q652151/secondary-2.webp
   width: 1800
   height: 1318
   license: CC BY 2.0

@@ -95,7 +95,7 @@ migration:
     from the annual avifauna cycle of Northern Europe.'
 image_refs:
 - role: hero
-  path: Q611324/hero.jpg
+  path: Q611324/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Apus affinis (15073004179).jpg
   commons_filename: Apus affinis (15073004179).jpg
 - role: secondary
-  path: Q611324/secondary-1.jpg
+  path: Q611324/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -113,7 +113,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Apus affinis (15073193648).jpg
   commons_filename: Apus affinis (15073193648).jpg
 - role: secondary
-  path: Q611324/secondary-2.jpg
+  path: Q611324/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

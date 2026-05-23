@@ -60,7 +60,7 @@ migration:
     known range is confined to Oman, Iran, and the United Arab Emirates.'
 image_refs:
 - role: hero
-  path: Q1272529/hero.jpg
+  path: Q1272529/hero.webp
   width: 1728
   height: 2400
   license: Public domain
@@ -68,7 +68,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Strix butleri.jpg
   commons_filename: Strix butleri.jpg
 - role: secondary
-  path: Q1272529/secondary-1.jpg
+  path: Q1272529/secondary-1.webp
   width: 1380
   height: 1800
   license: Public domain

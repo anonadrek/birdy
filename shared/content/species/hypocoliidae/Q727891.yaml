@@ -90,7 +90,7 @@ migration:
     has no documented occurrence in Scandinavian territories at any time of year.'
 image_refs:
 - role: hero
-  path: Q727891/hero.jpg
+  path: Q727891/hero.webp
   width: 2048
   height: 1244
   license: CC BY 4.0
@@ -99,7 +99,7 @@ image_refs:
     Kuwait 448001931.jpg
   commons_filename: Hypocolius ampelinus, Al Jahra, Kuwait 448001931.jpg
 - role: secondary
-  path: Q727891/secondary-1.jpg
+  path: Q727891/secondary-1.webp
   width: 1800
   height: 1013
   license: CC BY 4.0

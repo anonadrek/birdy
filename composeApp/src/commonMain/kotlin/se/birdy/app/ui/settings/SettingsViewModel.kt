@@ -64,6 +64,10 @@ class SettingsViewModel(
         viewModelScope.launch { _effects.send(SettingsEffect.OpenTermsUrl) }
     }
 
+    fun openWebsite() {
+        viewModelScope.launch { _effects.send(SettingsEffect.OpenWebsiteUrl) }
+    }
+
     fun rateOnPlayStore() {
         viewModelScope.launch { _effects.send(SettingsEffect.RateOnPlayStore) }
     }

@@ -58,7 +58,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q1300963/hero.jpg
+  path: Q1300963/hero.webp
   width: 2400
   height: 1535
   license: Public domain
@@ -70,7 +70,7 @@ image_refs:
   commons_filename: Euplectes afer (Gmelin) yellow-crowned bishop and Phonipara canora
     (Gmelin) Cuban grassquit - Ann Lee - 107-1973-10.jpg
 - role: secondary
-  path: Q1300963/secondary-1.jpg
+  path: Q1300963/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -79,7 +79,7 @@ image_refs:
     afer).jpg
   commons_filename: Travailleur à tête jaune (Euplectes afer).jpg
 - role: secondary
-  path: Q1300963/secondary-2.jpg
+  path: Q1300963/secondary-2.webp
   width: 1800
   height: 1383
   license: CC BY-SA 2.0

@@ -85,7 +85,7 @@ migration:
     European geographic scope requested.'
 image_refs:
 - role: hero
-  path: Q3729103/hero.jpg
+  path: Q3729103/hero.webp
   width: 1642
   height: 2400
   license: Public domain
@@ -94,7 +94,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus sindianus 1889.jpg
   commons_filename: Phylloscopus sindianus 1889.jpg
 - role: secondary
-  path: Q3729103/secondary-1.jpg
+  path: Q3729103/secondary-1.webp
   width: 1800
   height: 1236
   license: CC BY-SA 4.0
@@ -104,7 +104,7 @@ image_refs:
     2018-08-16 1.jpg
   commons_filename: Phylloscopus sindianus, Giresun 2018-08-16 1.jpg
 - role: secondary
-  path: Q3729103/secondary-2.jpg
+  path: Q3729103/secondary-2.webp
   width: 1800
   height: 1182
   license: CC BY-SA 4.0

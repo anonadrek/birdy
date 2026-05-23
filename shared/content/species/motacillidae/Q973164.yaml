@@ -57,7 +57,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q973164/hero.jpg
+  path: Q973164/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -66,7 +66,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Blyth's Pipit Anthus godlewskii.jpg
   commons_filename: Blyth's Pipit Anthus godlewskii.jpg
 - role: secondary
-  path: Q973164/secondary-1.jpg
+  path: Q973164/secondary-1.webp
   width: 1214
   height: 1800
   license: CC BY-SA 4.0
@@ -75,7 +75,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Blyth's pipit (Anthus godlewskii).jpg
   commons_filename: Blyth's pipit (Anthus godlewskii).jpg
 - role: secondary
-  path: Q973164/secondary-2.jpg
+  path: Q973164/secondary-2.webp
   width: 1233
   height: 1800
   license: CC BY-SA 4.0

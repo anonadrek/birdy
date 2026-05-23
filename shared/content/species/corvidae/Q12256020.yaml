@@ -82,7 +82,7 @@ migration:
     would be required.'
 image_refs:
 - role: hero
-  path: Q12256020/hero.jpg
+  path: Q12256020/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -92,7 +92,7 @@ image_refs:
     (50989853202).jpg
   commons_filename: Pega-azul (Cyanopica cooki) (50989853202).jpg
 - role: secondary
-  path: Q12256020/secondary-1.jpg
+  path: Q12256020/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -102,7 +102,7 @@ image_refs:
     Cooki ) (49870213008).jpg
   commons_filename: Pega azul ou Charneco ( Cyanopica Cooki ) (49870213008).jpg
 - role: secondary
-  path: Q12256020/secondary-2.jpg
+  path: Q12256020/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

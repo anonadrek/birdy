@@ -95,7 +95,7 @@ migration:
     the species has no established presence or migration pattern in Scandinavia.'
 image_refs:
 - role: hero
-  path: Q191125/hero.jpg
+  path: Q191125/hero.webp
   width: 2400
   height: 1667
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Anser indicus (captive).jpg
   commons_filename: Anser indicus (captive).jpg
 - role: secondary
-  path: Q191125/secondary-1.jpg
+  path: Q191125/secondary-1.webp
   width: 1200
   height: 1800
   license: CC BY 2.0
@@ -113,7 +113,7 @@ image_refs:
     England-8a.jpg
   commons_filename: Anser indicus -Beale Park, Berkshire, England-8a.jpg
 - role: secondary
-  path: Q191125/secondary-2.jpg
+  path: Q191125/secondary-2.webp
   width: 1200
   height: 1800
   license: CC BY 2.0

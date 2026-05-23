@@ -69,7 +69,7 @@ migration:
     in Scandinavia or Northern Europe.'
 image_refs:
 - role: hero
-  path: Q12265004/hero.jpg
+  path: Q12265004/hero.webp
   width: 2261
   height: 2340
   license: Public domain
@@ -82,7 +82,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe melanura 1838.jpg
   commons_filename: Oenanthe melanura 1838.jpg
 - role: secondary
-  path: Q12265004/secondary-1.jpg
+  path: Q12265004/secondary-1.webp
   width: 1800
   height: 1246
   license: CC BY 2.0
@@ -91,7 +91,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe melanura -Israel-8.jpg
   commons_filename: Oenanthe melanura -Israel-8.jpg
 - role: secondary
-  path: Q12265004/secondary-2.jpg
+  path: Q12265004/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

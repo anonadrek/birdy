@@ -80,7 +80,7 @@ migration:
     only occasional individuals reaching northern latitudes during migration periods.'
 image_refs:
 - role: hero
-  path: Q165923/hero.jpg
+  path: Q165923/hero.webp
   width: 2400
   height: 1597
   license: CC BY 2.0
@@ -90,7 +90,7 @@ image_refs:
     Gibraltar.jpg
   commons_filename: Apus pallidus, Convent Square, Gibraltar.jpg
 - role: secondary
-  path: Q165923/secondary-1.jpg
+  path: Q165923/secondary-1.webp
   width: 1200
   height: 1800
   license: CC BY 4.0
@@ -100,7 +100,7 @@ image_refs:
     2022.jpg
   commons_filename: Pallid swift (Apus pallidus) 2022.jpg
 - role: secondary
-  path: Q165923/secondary-2.jpg
+  path: Q165923/secondary-2.webp
   width: 1200
   height: 1800
   license: CC BY 4.0

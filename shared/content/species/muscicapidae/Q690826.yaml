@@ -93,7 +93,7 @@ migration:
     wintering grounds.'
 image_refs:
 - role: hero
-  path: Q690826/hero.jpg
+  path: Q690826/hero.webp
   width: 1800
   height: 2400
   license: CC BY 4.0
@@ -103,7 +103,7 @@ image_refs:
     albicollis) 01.jpg
   commons_filename: Мухоло́вка білоши́я (Ficedula albicollis) 01.jpg
 - role: secondary
-  path: Q690826/secondary-1.jpg
+  path: Q690826/secondary-1.webp
   width: 1350
   height: 1800
   license: CC BY 4.0
@@ -113,7 +113,7 @@ image_refs:
     albicollis) 02.jpg
   commons_filename: Мухоло́вка білоши́я (Ficedula albicollis) 02.jpg
 - role: secondary
-  path: Q690826/secondary-2.jpg
+  path: Q690826/secondary-2.webp
   width: 1800
   height: 1276
   license: CC BY 2.0

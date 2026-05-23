@@ -70,7 +70,7 @@ migration:
     northern regions, additional ornithological sources would be required.'
 image_refs:
 - role: hero
-  path: Q265701/hero.jpg
+  path: Q265701/hero.webp
   width: 2400
   height: 1698
   license: CC BY 2.0
@@ -81,7 +81,7 @@ image_refs:
   commons_filename: Cinereous Bunting (Emberiza cineracea), Lesvos, Greece, 17.04.2015
     (17284201896).jpg
 - role: secondary
-  path: Q265701/secondary-1.jpg
+  path: Q265701/secondary-1.webp
   width: 1800
   height: 1273
   license: CC BY 2.0

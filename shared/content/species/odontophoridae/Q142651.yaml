@@ -98,7 +98,7 @@ migration:
     populations would be required.'
 image_refs:
 - role: hero
-  path: Q142651/hero.jpg
+  path: Q142651/hero.webp
   width: 2400
   height: 1615
   license: Public domain
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Colinus virginianus USFWS.jpg
   commons_filename: Colinus virginianus USFWS.jpg
 - role: secondary
-  path: Q142651/secondary-1.jpg
+  path: Q142651/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -117,7 +117,7 @@ image_refs:
   commons_filename: Colinus virginianus at the Indianapolis Zoo - June 2022 - Sarah
     Stierch.jpg
 - role: secondary
-  path: Q142651/secondary-2.jpg
+  path: Q142651/secondary-2.webp
   width: 1440
   height: 1800
   license: CC BY 2.0

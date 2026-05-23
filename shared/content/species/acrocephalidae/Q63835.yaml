@@ -78,7 +78,7 @@ migration:
     represent vagrant individuals far outside their normal range and breeding distribution.'
 image_refs:
 - role: hero
-  path: Q63835/hero.jpg
+  path: Q63835/hero.webp
   width: 2400
   height: 1606
   license: CC BY 2.0
@@ -89,7 +89,7 @@ image_refs:
   commons_filename: Olive-tree warbler, Hippolais olivetorum, at Elephant Sands Lodge,
     Botswana (32248894256).jpg
 - role: secondary
-  path: Q63835/secondary-1.jpg
+  path: Q63835/secondary-1.webp
   width: 1800
   height: 1194
   license: CC BY 2.0
@@ -100,7 +100,7 @@ image_refs:
   commons_filename: Olive-tree warbler, Hippolais olivetorum, at Zaagkuildrift Road
     near Kgomo Kgomo, Limpopo, South Africa (33565742845).jpg
 - role: secondary
-  path: Q63835/secondary-2.jpg
+  path: Q63835/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY 2.0

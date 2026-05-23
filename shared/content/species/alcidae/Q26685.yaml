@@ -101,7 +101,7 @@ migration:
     range, though they remain relatively abundant in Iceland and the Faroe Islands.'
 image_refs:
 - role: hero
-  path: Q26685/hero.jpg
+  path: Q26685/hero.webp
   width: 2400
   height: 1597
   license: CC BY 4.0
@@ -112,7 +112,7 @@ image_refs:
   commons_filename: Fratercula arctica, Borgarfjörður eystri, Iceland, 20240717 1210
     1991.jpg
 - role: secondary
-  path: Q26685/secondary-1.jpg
+  path: Q26685/secondary-1.webp
   width: 1800
   height: 1198
   license: CC BY 4.0
@@ -123,7 +123,7 @@ image_refs:
   commons_filename: Fratercula arctica, Borgarfjörður eystri, Iceland, 20240717 1025
     1430.jpg
 - role: secondary
-  path: Q26685/secondary-2.jpg
+  path: Q26685/secondary-2.webp
   width: 1800
   height: 1198
   license: CC BY 4.0

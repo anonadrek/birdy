@@ -89,7 +89,7 @@ migration:
     ornithological record when encountered.'
 image_refs:
 - role: hero
-  path: Q110257498/hero.jpg
+  path: Q110257498/hero.webp
   width: 1267
   height: 2048
   license: CC0
@@ -97,7 +97,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Curruca hortensis by Kevin.jpg
   commons_filename: Curruca hortensis by Kevin.jpg
 - role: secondary
-  path: Q110257498/secondary-1.jpg
+  path: Q110257498/secondary-1.webp
   width: 1800
   height: 1095
   license: CC BY-SA 2.0

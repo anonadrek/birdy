@@ -97,7 +97,7 @@ migration:
     Migration data unavailable for this species.'
 image_refs:
 - role: hero
-  path: Q25376/hero.jpg
+  path: Q25376/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     the Netherlands.jpg
   commons_filename: Fulica atra, Coots on ice, Arnhem, the Netherlands.jpg
 - role: secondary
-  path: Q25376/secondary-1.jpg
+  path: Q25376/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -115,7 +115,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Fulica atra 2022 03 18.jpg
   commons_filename: Fulica atra 2022 03 18.jpg
 - role: secondary
-  path: Q25376/secondary-2.jpg
+  path: Q25376/secondary-2.webp
   width: 1800
   height: 1202
   license: CC BY 4.0

@@ -83,7 +83,7 @@ migration:
     here.'
 image_refs:
 - role: hero
-  path: Q10684497/hero.jpg
+  path: Q10684497/hero.webp
   width: 2048
   height: 1365
   license: CC0
@@ -93,7 +93,7 @@ image_refs:
     - 351030638.jpeg
   commons_filename: Remiz macronyx - James Eaton - 351030638.jpeg
 - role: secondary
-  path: Q10684497/secondary-1.jpg
+  path: Q10684497/secondary-1.webp
   width: 1800
   height: 1180
   license: CC0

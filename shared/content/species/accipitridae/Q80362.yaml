@@ -84,7 +84,7 @@ migration:
     Africa.'
 image_refs:
 - role: hero
-  path: Q80362/hero.jpg
+  path: Q80362/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -93,7 +93,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Milvus migrans head.jpg
   commons_filename: Milvus migrans head.jpg
 - role: secondary
-  path: Q80362/secondary-1.jpg
+  path: Q80362/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -103,7 +103,7 @@ image_refs:
     Kochi Prefecture 71.jpg
   commons_filename: Milvus migrans in flight in Kochi Prefecture 71.jpg
 - role: secondary
-  path: Q80362/secondary-2.jpg
+  path: Q80362/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

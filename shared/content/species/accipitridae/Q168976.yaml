@@ -85,7 +85,7 @@ migration:
     making this species of limited significance for Northern European bird guides.'
 image_refs:
 - role: hero
-  path: Q168976/hero.jpg
+  path: Q168976/hero.webp
   width: 2400
   height: 1590
   license: CC BY-SA 4.0
@@ -95,7 +95,7 @@ image_refs:
   commons_filename: Eastern Imperial Eagle Aquila heliaca from Desert National Park,
     Rajasthan JEG7346.jpg
 - role: secondary
-  path: Q168976/secondary-1.jpg
+  path: Q168976/secondary-1.webp
   width: 1800
   height: 1192
   license: CC BY-SA 4.0
@@ -105,7 +105,7 @@ image_refs:
   commons_filename: Imperial Eagle Aquila heliaca and cattle egrets in flight Bikaner
     Jorbeed JEG5174.jpg
 - role: secondary
-  path: Q168976/secondary-2.jpg
+  path: Q168976/secondary-2.webp
   width: 1800
   height: 1192
   license: CC BY-SA 4.0

@@ -64,7 +64,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q318893/hero.jpg
+  path: Q318893/hero.webp
   width: 2048
   height: 1367
   license: CC BY-SA 4.0
@@ -72,7 +72,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Melanocorypha yeltoniensis 354566740.jpg
   commons_filename: Melanocorypha yeltoniensis 354566740.jpg
 - role: secondary
-  path: Q318893/secondary-1.jpg
+  path: Q318893/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY-SA 4.0

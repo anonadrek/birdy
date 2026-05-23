@@ -81,7 +81,7 @@ migration:
     not be expected during any season in Northern European waters.'
 image_refs:
 - role: hero
-  path: Q131044/hero.jpg
+  path: Q131044/hero.webp
   width: 2400
   height: 1581
   license: CC0
@@ -91,7 +91,7 @@ image_refs:
     (33064803230).jpg
   commons_filename: The black swan (Cygnus atratus) (33064803230).jpg
 - role: secondary
-  path: Q131044/secondary-1.jpg
+  path: Q131044/secondary-1.webp
   width: 1800
   height: 1206
   license: Public domain
@@ -99,7 +99,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Cygnus atratus in flight-2.jpg
   commons_filename: Cygnus atratus in flight-2.jpg
 - role: secondary
-  path: Q131044/secondary-2.jpg
+  path: Q131044/secondary-2.webp
   width: 1800
   height: 1350
   license: Public domain

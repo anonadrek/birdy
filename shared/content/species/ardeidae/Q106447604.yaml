@@ -96,7 +96,7 @@ migration:
     from populations in southern Europe or further south during periods of range expansion.'
 image_refs:
 - role: hero
-  path: Q106447604/hero.jpg
+  path: Q106447604/hero.webp
   width: 2400
   height: 1602
   license: CC0
@@ -105,7 +105,7 @@ image_refs:
     ibis) - Morocco.jpg
   commons_filename: Western Cattle-Egret (Ardea ibis) - Morocco.jpg
 - role: secondary
-  path: Q106447604/secondary-1.jpg
+  path: Q106447604/secondary-1.webp
   width: 1200
   height: 1800
   license: CC BY 4.0
@@ -115,7 +115,7 @@ image_refs:
     ibis) 2023.jpg
   commons_filename: Western cattle egret (Ardea ibis) 2023.jpg
 - role: secondary
-  path: Q106447604/secondary-2.jpg
+  path: Q106447604/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

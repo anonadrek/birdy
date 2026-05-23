@@ -193,7 +193,11 @@ tasks.named("check") {
 val composeAppFilesDir =
     project(":composeApp").file("src/commonMain/composeResources/files")
 val targetDb = composeAppFilesDir.resolve("species.db")
-val targetImages = composeAppFilesDir.resolve("images")
+// Plan 6b3 T22b: species hero/secondary images live in the :asset-pack install-time
+// pack (instead of bundled compose-resources) so the base APK stays under the
+// Play Store 150 MB limit. species.db still lives in composeApp resources.
+val targetImages =
+    project(":asset-pack").file("src/main/assets/images")
 
 val buildSpeciesDb by tasks.registering(JavaExec::class) {
     group = "build"

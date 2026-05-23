@@ -61,7 +61,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q27075750/hero.jpg
+  path: Q27075750/hero.webp
   width: 2048
   height: 1367
   license: CC0
@@ -70,7 +70,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Carpodacus sibiricus 331155988.jpg
   commons_filename: Carpodacus sibiricus 331155988.jpg
 - role: secondary
-  path: Q27075750/secondary-1.jpg
+  path: Q27075750/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY 4.0
@@ -79,7 +79,7 @@ image_refs:
     photo 475505438.jpg
   commons_filename: Carpodacus sibiricus from iNaturalist photo 475505438.jpg
 - role: secondary
-  path: Q27075750/secondary-2.jpg
+  path: Q27075750/secondary-2.webp
   width: 1799
   height: 1800
   license: CC BY 4.0

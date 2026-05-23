@@ -96,7 +96,7 @@ migration:
     records rather than predictable seasonal occurrences.'
 image_refs:
 - role: hero
-  path: Q208334/hero.jpg
+  path: Q208334/hero.webp
   width: 2048
   height: 1536
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Prunella collaris 234140777.jpg
   commons_filename: Prunella collaris 234140777.jpg
 - role: secondary
-  path: Q208334/secondary-1.jpg
+  path: Q208334/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Prunella collaris 234140903.jpg
   commons_filename: Prunella collaris 234140903.jpg
 - role: secondary
-  path: Q208334/secondary-2.jpg
+  path: Q208334/secondary-2.webp
   width: 1800
   height: 1350
   license: CC0

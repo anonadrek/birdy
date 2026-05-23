@@ -59,7 +59,7 @@ migration:
     cannot be provided.'
 image_refs:
 - role: hero
-  path: Q901708/hero.jpg
+  path: Q901708/hero.webp
   width: 2048
   height: 1494
   license: CC BY 4.0
@@ -68,7 +68,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Passer luteus in Algeria 590956865.jpg
   commons_filename: Passer luteus in Algeria 590956865.jpg
 - role: secondary
-  path: Q901708/secondary-1.jpg
+  path: Q901708/secondary-1.webp
   width: 1800
   height: 1236
   license: CC BY 4.0

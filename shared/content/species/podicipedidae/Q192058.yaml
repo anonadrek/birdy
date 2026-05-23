@@ -97,7 +97,7 @@ migration:
     timing varying by latitude and local ice conditions.'
 image_refs:
 - role: hero
-  path: Q192058/hero.jpg
+  path: Q192058/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -106,7 +106,7 @@ image_refs:
     (19185326539).jpg
   commons_filename: Horned Grebe - Podiceps auritus (19185326539).jpg
 - role: secondary
-  path: Q192058/secondary-1.jpg
+  path: Q192058/secondary-1.webp
   width: 1800
   height: 1303
   license: CC0
@@ -116,7 +116,7 @@ image_refs:
     2020-05-08.jpg
   commons_filename: Podiceps auritus Oulu Finland 2020-05-08.jpg
 - role: secondary
-  path: Q192058/secondary-2.jpg
+  path: Q192058/secondary-2.webp
   width: 1800
   height: 1273
   license: CC0

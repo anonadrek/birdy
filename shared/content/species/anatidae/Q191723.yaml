@@ -83,7 +83,7 @@ migration:
     a consistent seasonal visitor to the region.'
 image_refs:
 - role: hero
-  path: Q191723/hero.jpg
+  path: Q191723/hero.webp
   width: 2400
   height: 1541
   license: CC BY 4.0
@@ -93,7 +93,7 @@ image_refs:
     03.jpg
   commons_filename: Aythya nyroca Georges-Valbon 03.jpg
 - role: secondary
-  path: Q191723/secondary-1.jpg
+  path: Q191723/secondary-1.webp
   width: 1800
   height: 1124
   license: CC BY 4.0
@@ -103,7 +103,7 @@ image_refs:
     05.jpg
   commons_filename: Aythya nyroca Georges-Valbon 05.jpg
 - role: secondary
-  path: Q191723/secondary-2.jpg
+  path: Q191723/secondary-2.webp
   width: 1800
   height: 1099
   license: CC BY 4.0

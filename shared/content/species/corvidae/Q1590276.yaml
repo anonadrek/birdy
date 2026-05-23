@@ -64,7 +64,7 @@ migration:
     European bird guide context.'
 image_refs:
 - role: hero
-  path: Q1590276/hero.jpg
+  path: Q1590276/hero.webp
   width: 2048
   height: 1536
   license: CC BY 4.0
@@ -73,7 +73,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Podoces pleskei 199125839.jpg
   commons_filename: Podoces pleskei 199125839.jpg
 - role: secondary
-  path: Q1590276/secondary-1.jpg
+  path: Q1590276/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -82,7 +82,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Podoces pleskei 199125884.jpg
   commons_filename: Podoces pleskei 199125884.jpg
 - role: secondary
-  path: Q1590276/secondary-2.jpg
+  path: Q1590276/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

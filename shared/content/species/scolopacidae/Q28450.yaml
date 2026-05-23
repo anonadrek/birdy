@@ -59,7 +59,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q28450/hero.jpg
+  path: Q28450/hero.webp
   width: 1697
   height: 2400
   license: CC BY 2.0
@@ -68,7 +68,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Tringa ochropus Norfolk 1.jpg
   commons_filename: Tringa ochropus Norfolk 1.jpg
 - role: secondary
-  path: Q28450/secondary-1.jpg
+  path: Q28450/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -77,7 +77,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Tringa ochropus Srbija (16).jpg
   commons_filename: Tringa ochropus Srbija (16).jpg
 - role: secondary
-  path: Q28450/secondary-2.jpg
+  path: Q28450/secondary-2.webp
   width: 1800
   height: 1209
   license: CC BY-SA 4.0

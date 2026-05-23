@@ -73,7 +73,7 @@ migration:
     region.'
 image_refs:
 - role: hero
-  path: Q80780/hero.jpg
+  path: Q80780/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -83,7 +83,7 @@ image_refs:
     Black Throated Thrush Turdus atrogularis.jpg
   commons_filename: Here are some facts about the Black Throated Thrush Turdus atrogularis.jpg
 - role: secondary
-  path: Q80780/secondary-1.jpg
+  path: Q80780/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -92,7 +92,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Turdus atrogularis 298118515.jpg
   commons_filename: Turdus atrogularis 298118515.jpg
 - role: secondary
-  path: Q80780/secondary-2.jpg
+  path: Q80780/secondary-2.webp
   width: 1800
   height: 1286
   license: CC BY-SA 4.0

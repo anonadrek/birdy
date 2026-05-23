@@ -61,7 +61,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q210418/hero.jpg
+  path: Q210418/hero.webp
   width: 2192
   height: 1461
   license: CC BY 2.0
@@ -71,7 +71,7 @@ image_refs:
     1.jpg
   commons_filename: Picoides tridactylus, Belarus 1.jpg
 - role: secondary
-  path: Q210418/secondary-1.jpg
+  path: Q210418/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -81,7 +81,7 @@ image_refs:
     5.jpg
   commons_filename: Picoides tridactylus, Belarus 5.jpg
 - role: secondary
-  path: Q210418/secondary-2.jpg
+  path: Q210418/secondary-2.webp
   width: 1200
   height: 1800
   license: CC BY 4.0

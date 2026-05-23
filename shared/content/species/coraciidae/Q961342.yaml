@@ -69,7 +69,7 @@ migration:
     the year.'
 image_refs:
 - role: hero
-  path: Q961342/hero.jpg
+  path: Q961342/hero.webp
   width: 2400
   height: 1592
   license: CC BY-SA 2.0
@@ -84,7 +84,7 @@ image_refs:
     Ansitz.jpg
   commons_filename: Senegalracke (Coracias abyssinicus), Ansitz.jpg
 - role: secondary
-  path: Q961342/secondary-1.jpg
+  path: Q961342/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 2.0
@@ -99,7 +99,7 @@ image_refs:
     im Kidepo Valley Nationalpark.jpg
   commons_filename: Senegalracke (Coracias abyssinicus) im Kidepo Valley Nationalpark.jpg
 - role: secondary
-  path: Q961342/secondary-2.jpg
+  path: Q961342/secondary-2.webp
   width: 1800
   height: 1186
   license: CC BY-SA 2.0

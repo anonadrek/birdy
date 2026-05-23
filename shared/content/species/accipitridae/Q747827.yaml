@@ -64,7 +64,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q747827/hero.jpg
+  path: Q747827/hero.webp
   width: 2400
   height: 1427
   license: CC BY 2.0
@@ -76,7 +76,7 @@ image_refs:
   commons_filename: Verreaux's Eagle (Black Eagle), Aquila verreauxii, at Walter Sisulu
     National Botanical Garden, Gauteng, South Africa (28822888714).jpg
 - role: secondary
-  path: Q747827/secondary-1.jpg
+  path: Q747827/secondary-1.webp
   width: 1800
   height: 1018
   license: CC BY 2.0
@@ -88,7 +88,7 @@ image_refs:
   commons_filename: Verreaux's Eagle. Black Eagle, Aquila verreauxii, at Walter Sisulu
     National Botanical Garden, Gauteng, South Africa (18987033114).jpg
 - role: secondary
-  path: Q747827/secondary-2.jpg
+  path: Q747827/secondary-2.webp
   width: 1800
   height: 1208
   license: CC BY 2.0

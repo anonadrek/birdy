@@ -91,7 +91,7 @@ migration:
     than part of a normal migration cycle.'
 image_refs:
 - role: hero
-  path: Q749126/hero.jpg
+  path: Q749126/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -101,7 +101,7 @@ image_refs:
     - Vanellus spinosus.jpg
   commons_filename: Sporenkievit - Spur-winged Lapwing - Vanellus spinosus.jpg
 - role: secondary
-  path: Q749126/secondary-1.jpg
+  path: Q749126/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -111,7 +111,7 @@ image_refs:
     - Vanellus spinosus 02.jpg
   commons_filename: Sporenkievit - Spur-winged Lapwing - Vanellus spinosus 02.jpg
 - role: secondary
-  path: Q749126/secondary-2.jpg
+  path: Q749126/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

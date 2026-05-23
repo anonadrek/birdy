@@ -98,7 +98,7 @@ migration:
     May.'
 image_refs:
 - role: hero
-  path: Q26650/hero.jpg
+  path: Q26650/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -107,7 +107,7 @@ image_refs:
     Iceland.jpg
   commons_filename: Dunlin (Calidris alpina), Seltjarnarnes, Iceland.jpg
 - role: secondary
-  path: Q26650/secondary-1.jpg
+  path: Q26650/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -140,7 +140,7 @@ image_refs:
     Seltjarnarnes, Iceland.jpg
   commons_filename: Dunlin (Calidris alpina), sleeping, Seltjarnarnes, Iceland.jpg
 - role: secondary
-  path: Q26650/secondary-2.jpg
+  path: Q26650/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

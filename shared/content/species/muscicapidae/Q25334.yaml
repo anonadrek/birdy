@@ -97,7 +97,7 @@ migration:
     depending on local weather conditions and individual population dynamics.'
 image_refs:
 - role: hero
-  path: Q25334/hero.jpg
+  path: Q25334/hero.webp
   width: 2400
   height: 1800
   license: Public domain
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Robin - Erithacus rubecula 1.jpg
   commons_filename: Robin - Erithacus rubecula 1.jpg
 - role: secondary
-  path: Q25334/secondary-1.jpg
+  path: Q25334/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -117,7 +117,7 @@ image_refs:
     2024.jpg
   commons_filename: European robin (Erithacus rubecula) 2024.jpg
 - role: secondary
-  path: Q25334/secondary-2.jpg
+  path: Q25334/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

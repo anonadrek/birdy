@@ -90,7 +90,7 @@ migration:
     countries throughout the year.'
 image_refs:
 - role: hero
-  path: Q5983847/hero.jpg
+  path: Q5983847/hero.webp
   width: 1800
   height: 2400
   license: CC BY-SA 4.0

@@ -94,7 +94,7 @@ migration:
     Russia.'
 image_refs:
 - role: hero
-  path: Q27050/hero.jpg
+  path: Q27050/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     taking off.jpg
   commons_filename: Brent goose (Branta bernicla) taking off.jpg
 - role: secondary
-  path: Q27050/secondary-1.jpg
+  path: Q27050/secondary-1.webp
   width: 1800
   height: 1197
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
     in flight 2.jpg
   commons_filename: Brent goose (Branta bernicla) in flight 2.jpg
 - role: secondary
-  path: Q27050/secondary-2.jpg
+  path: Q27050/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

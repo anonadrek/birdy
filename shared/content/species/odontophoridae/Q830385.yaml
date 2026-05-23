@@ -89,7 +89,7 @@ migration:
     physical characteristics, and relationship to Gambel''s Quail.'
 image_refs:
 - role: hero
-  path: Q830385/hero.jpg
+  path: Q830385/hero.webp
   width: 2294
   height: 2400
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
     Weibchen.jpg
   commons_filename: Schopfwachtel (Callipepla californica), Weibchen.jpg
 - role: secondary
-  path: Q830385/secondary-1.jpg
+  path: Q830385/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -113,7 +113,7 @@ image_refs:
     2023 - Sarah Stierch.jpg
   commons_filename: Callipepla californica - June 2023 - Sarah Stierch.jpg
 - role: secondary
-  path: Q830385/secondary-2.jpg
+  path: Q830385/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

@@ -93,7 +93,7 @@ migration:
     as ice threatens their habitats.'
 image_refs:
 - role: hero
-  path: Q25402/hero.jpg
+  path: Q25402/hero.webp
   width: 2400
   height: 2400
   license: CC BY-SA 4.0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Cygnus olor MHNT.ZOO.2010.11.11.2.jpg
   commons_filename: Cygnus olor MHNT.ZOO.2010.11.11.2.jpg
 - role: secondary
-  path: Q25402/secondary-1.jpg
+  path: Q25402/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -113,7 +113,7 @@ image_refs:
     - tête (2).jpg
   commons_filename: Cygne tuberculé (Cygnus olor) - tête (2).jpg
 - role: secondary
-  path: Q25402/secondary-2.jpg
+  path: Q25402/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

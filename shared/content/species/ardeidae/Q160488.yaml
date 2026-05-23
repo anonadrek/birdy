@@ -88,7 +88,7 @@ migration:
     season, with sightings becoming rarer further north.'
 image_refs:
 - role: hero
-  path: Q160488/hero.jpg
+  path: Q160488/hero.webp
   width: 2400
   height: 1350
   license: CC BY 2.0
@@ -99,7 +99,7 @@ image_refs:
   commons_filename: Purple Heron, Ardea purpurea, at Waterfall Estate, Gauteng, South
     Africa (35295449423).jpg
 - role: secondary
-  path: Q160488/secondary-1.jpg
+  path: Q160488/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -109,7 +109,7 @@ image_refs:
     (53082635918).jpg
   commons_filename: Garça-vermelha (Ardea purpurea) (53082635918).jpg
 - role: secondary
-  path: Q160488/secondary-2.jpg
+  path: Q160488/secondary-2.webp
   width: 1800
   height: 1410
   license: CC BY 4.0

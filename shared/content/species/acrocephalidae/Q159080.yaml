@@ -98,7 +98,7 @@ migration:
     routes.'
 image_refs:
 - role: hero
-  path: Q159080/hero.jpg
+  path: Q159080/hero.webp
   width: 2044
   height: 2189
   license: CC0
@@ -107,7 +107,7 @@ image_refs:
     scirpaceus).jpg
   commons_filename: Common Reed Warbler (Acrocephalus scirpaceus).jpg
 - role: secondary
-  path: Q159080/secondary-1.jpg
+  path: Q159080/secondary-1.webp
   width: 1800
   height: 1444
   license: CC BY 2.0
@@ -117,7 +117,7 @@ image_refs:
     - Flickr - gailhampshire.jpg
   commons_filename: Reed Warbler. Acrocephalus scirpaceus - Flickr - gailhampshire.jpg
 - role: secondary
-  path: Q159080/secondary-2.jpg
+  path: Q159080/secondary-2.webp
   width: 1286
   height: 1800
   license: CC BY 4.0

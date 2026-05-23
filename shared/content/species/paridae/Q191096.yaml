@@ -94,7 +94,7 @@ migration:
     periods of food scarcity.'
 image_refs:
 - role: hero
-  path: Q191096/hero.jpg
+  path: Q191096/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     Bird Observatory-10.JPG
   commons_filename: Periparus ater ringed by Landsort Bird Observatory-10.JPG
 - role: secondary
-  path: Q191096/secondary-1.jpg
+  path: Q191096/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
     Bird Observatory-6.JPG
   commons_filename: Periparus ater ringed by Landsort Bird Observatory-6.JPG
 - role: secondary
-  path: Q191096/secondary-2.jpg
+  path: Q191096/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY 2.0

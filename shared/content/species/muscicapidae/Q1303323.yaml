@@ -76,7 +76,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q1303323/hero.jpg
+  path: Q1303323/hero.webp
   width: 2400
   height: 1654
   license: CC BY-SA 4.0
@@ -86,7 +86,7 @@ image_refs:
     Wheatear, Osmaniye, Turkey 05.jpg
   commons_filename: Oenanthe xanthoprymna - Kurdish Wheatear, Osmaniye, Turkey 05.jpg
 - role: secondary
-  path: Q1303323/secondary-1.jpg
+  path: Q1303323/secondary-1.webp
   width: 1800
   height: 1270
   license: CC BY-SA 4.0
@@ -96,7 +96,7 @@ image_refs:
     Wheatear, Osmaniye, Turkey 04.jpg
   commons_filename: Oenanthe xanthoprymna - Kurdish Wheatear, Osmaniye, Turkey 04.jpg
 - role: secondary
-  path: Q1303323/secondary-2.jpg
+  path: Q1303323/secondary-2.webp
   width: 1800
   height: 1259
   license: CC BY-SA 4.0

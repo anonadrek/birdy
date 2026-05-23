@@ -92,7 +92,7 @@ migration:
     their southbound migration to African wintering grounds.'
 image_refs:
 - role: hero
-  path: Q179625/hero.jpg
+  path: Q179625/hero.webp
   width: 2400
   height: 1375
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Falco vespertinus on a cable.png
   commons_filename: Falco vespertinus on a cable.png
 - role: secondary
-  path: Q179625/secondary-1.jpg
+  path: Q179625/secondary-1.webp
   width: 1800
   height: 1068
   license: CC BY 4.0
@@ -110,7 +110,7 @@ image_refs:
     2020.jpg
   commons_filename: Red-footed falcon (Falco vespertinus) 2020.jpg
 - role: secondary
-  path: Q179625/secondary-2.jpg
+  path: Q179625/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

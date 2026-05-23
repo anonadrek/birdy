@@ -65,7 +65,7 @@ migration:
     it irrelevant for ornithological study in Scandinavian contexts.'
 image_refs:
 - role: hero
-  path: Q1587242/hero.jpg
+  path: Q1587242/hero.webp
   width: 2042
   height: 2126
   license: CC0
@@ -74,7 +74,7 @@ image_refs:
     dacotiae).jpg
   commons_filename: Canary Islands stonechat (Saxicola dacotiae).jpg
 - role: secondary
-  path: Q1587242/secondary-1.jpg
+  path: Q1587242/secondary-1.webp
   width: 1800
   height: 1222
   license: CC BY 4.0
@@ -84,7 +84,7 @@ image_refs:
     dacotiae-Kanarenschmaetzer-2015-gje.jpg
   commons_filename: Fuerteventura-Morro Jable-Natur-04-Saxicola dacotiae-Kanarenschmaetzer-2015-gje.jpg
 - role: secondary
-  path: Q1587242/secondary-2.jpg
+  path: Q1587242/secondary-2.webp
   width: 1800
   height: 1462
   license: CC BY 4.0

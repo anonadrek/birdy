@@ -96,7 +96,7 @@ migration:
     many other northern bird species.'
 image_refs:
 - role: hero
-  path: Q200724/hero.jpg
+  path: Q200724/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     (37310719232).jpg
   commons_filename: Great Grey Owl (Strix nebulosa) (37310719232).jpg
 - role: secondary
-  path: Q200724/secondary-1.jpg
+  path: Q200724/secondary-1.webp
   width: 1800
   height: 1201
   license: Public domain
@@ -115,7 +115,7 @@ image_refs:
     (51080405547).jpg
   commons_filename: Great gray owl, Strix nebulosa (51080405547).jpg
 - role: secondary
-  path: Q200724/secondary-2.jpg
+  path: Q200724/secondary-2.webp
   width: 1800
   height: 1356
   license: Public domain

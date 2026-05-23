@@ -94,7 +94,7 @@ migration:
     the breeding months when suitable wetland habitats provide adequate food resources.'
 image_refs:
 - role: hero
-  path: Q26578/hero.jpg
+  path: Q26578/hero.webp
   width: 2400
   height: 1647
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     02.jpg
   commons_filename: Luscinia svecica Oulu 20180907 02.jpg
 - role: secondary
-  path: Q26578/secondary-1.jpg
+  path: Q26578/secondary-1.webp
   width: 1800
   height: 1246
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
     01.jpg
   commons_filename: Luscinia svecica Oulu 20180907 01.jpg
 - role: secondary
-  path: Q26578/secondary-2.jpg
+  path: Q26578/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

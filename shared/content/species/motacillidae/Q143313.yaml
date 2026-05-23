@@ -102,7 +102,7 @@ migration:
     journeys of any European songbird.'
 image_refs:
 - role: hero
-  path: Q143313/hero.jpg
+  path: Q143313/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -111,7 +111,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Anthus trivialis, Srbija (123).jpg
   commons_filename: Anthus trivialis, Srbija (123).jpg
 - role: secondary
-  path: Q143313/secondary-1.jpg
+  path: Q143313/secondary-1.webp
   width: 1350
   height: 1800
   license: CC BY-SA 4.0
@@ -120,7 +120,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Šumska trepteljka (Anthus trivialis).jpg
   commons_filename: Šumska trepteljka (Anthus trivialis).jpg
 - role: secondary
-  path: Q143313/secondary-2.jpg
+  path: Q143313/secondary-2.webp
   width: 1800
   height: 1199
   license: CC BY-SA 4.0

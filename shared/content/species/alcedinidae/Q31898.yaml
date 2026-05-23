@@ -79,7 +79,7 @@ migration:
     geographic area cannot be provided based on the available source material.'
 image_refs:
 - role: hero
-  path: Q31898/hero.jpg
+  path: Q31898/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -89,7 +89,7 @@ image_refs:
     chloris) (7319838026).jpg
   commons_filename: Collared Kingfisher (Todiramphus chloris) (7319838026).jpg
 - role: secondary
-  path: Q31898/secondary-1.jpg
+  path: Q31898/secondary-1.webp
   width: 1800
   height: 1214
   license: CC BY-SA 4.0
@@ -98,7 +98,7 @@ image_refs:
     chloris).jpg
   commons_filename: White Collared Kingfisher (Todiramphus chloris).jpg
 - role: secondary
-  path: Q31898/secondary-2.jpg
+  path: Q31898/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

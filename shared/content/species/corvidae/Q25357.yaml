@@ -96,7 +96,7 @@ migration:
     migratory habits or seasonal presence in northern European regions.'
 image_refs:
 - role: hero
-  path: Q25357/hero.jpg
+  path: Q25357/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -106,7 +106,7 @@ image_refs:
     20230506.jpg
   commons_filename: Corvus corax massif du Sancy 20230506.jpg
 - role: secondary
-  path: Q25357/secondary-1.jpg
+  path: Q25357/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -116,7 +116,7 @@ image_refs:
     Canary Islands, Spain-8.jpg
   commons_filename: Corvus corax -Tefia, Lanzarote, Canary Islands, Spain-8.jpg
 - role: secondary
-  path: Q25357/secondary-2.jpg
+  path: Q25357/secondary-2.webp
   width: 1800
   height: 1192
   license: CC BY 3.0

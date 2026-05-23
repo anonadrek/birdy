@@ -63,7 +63,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q851570/hero.jpg
+  path: Q851570/hero.webp
   width: 2400
   height: 1778
   license: CC BY 4.0
@@ -73,7 +73,7 @@ image_refs:
     - Galerida theklae.tif
   commons_filename: Theklaleeuwerik - Thekla's lark - Galerida theklae.tif
 - role: secondary
-  path: Q851570/secondary-1.jpg
+  path: Q851570/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0
@@ -83,7 +83,7 @@ image_refs:
     (Galerida theklae carolinae) Kebili.jpg
   commons_filename: North African Thekla's lark (Galerida theklae carolinae) Kebili.jpg
 - role: secondary
-  path: Q851570/secondary-2.jpg
+  path: Q851570/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

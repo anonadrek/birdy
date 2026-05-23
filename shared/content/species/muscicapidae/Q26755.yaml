@@ -67,7 +67,7 @@ migration:
     depending on local weather conditions and food availability.'
 image_refs:
 - role: hero
-  path: Q26755/hero.jpg
+  path: Q26755/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -78,7 +78,7 @@ image_refs:
   commons_filename: Black redstart (Phoenicurus ochruros) fledgling in Krupanj, Western
     Serbia.jpg
 - role: secondary
-  path: Q26755/secondary-1.jpg
+  path: Q26755/secondary-1.webp
   width: 1800
   height: 1440
   license: CC BY 4.0
@@ -88,7 +88,7 @@ image_refs:
     ochruros) 01.jpg
   commons_filename: Juveniler Hausrotschwanz (Phoenicurus ochruros) 01.jpg
 - role: secondary
-  path: Q26755/secondary-2.jpg
+  path: Q26755/secondary-2.webp
   width: 1573
   height: 1800
   license: CC BY 4.0

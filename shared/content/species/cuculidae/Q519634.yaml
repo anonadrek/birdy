@@ -69,7 +69,7 @@ migration:
     vagrant if encountered at all in Scandinavian or Northern European territories.'
 image_refs:
 - role: hero
-  path: Q519634/hero.jpg
+  path: Q519634/hero.webp
   width: 2400
   height: 1464
   license: CC BY 2.0
@@ -80,7 +80,7 @@ image_refs:
   commons_filename: Diederik cuckoo, Chrysococcyx caprius, at Mapungubwe National
     Park, Limpopo, South Africa - male (29422300413).jpg
 - role: secondary
-  path: Q519634/secondary-1.jpg
+  path: Q519634/secondary-1.webp
   width: 1800
   height: 1118
   license: CC BY 2.0
@@ -91,7 +91,7 @@ image_refs:
   commons_filename: Diederik cuckoo, Chrysococcyx caprius, at Mapungubwe National
     Park, Limpopo, South Africa - male (29965810661).jpg
 - role: secondary
-  path: Q519634/secondary-2.jpg
+  path: Q519634/secondary-2.webp
   width: 1800
   height: 1149
   license: CC BY 2.0

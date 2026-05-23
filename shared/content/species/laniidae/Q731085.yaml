@@ -100,7 +100,7 @@ migration:
     or frequency of such occurrences.'
 image_refs:
 - role: hero
-  path: Q731085/hero.jpg
+  path: Q731085/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -110,7 +110,7 @@ image_refs:
     - Lanius nubicus.jpg
   commons_filename: Maskerklauwier - Masked Shrike - Lanius nubicus.jpg
 - role: secondary
-  path: Q731085/secondary-1.jpg
+  path: Q731085/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -120,7 +120,7 @@ image_refs:
     - Lanius nubicus 02.jpg
   commons_filename: Maskerklauwier - Masked Shrike - Lanius nubicus 02.jpg
 - role: secondary
-  path: Q731085/secondary-2.jpg
+  path: Q731085/secondary-2.webp
   width: 1577
   height: 1800
   license: CC BY 2.0

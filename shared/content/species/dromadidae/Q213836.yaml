@@ -58,7 +58,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q213836/hero.jpg
+  path: Q213836/hero.webp
   width: 2400
   height: 1695
   license: CC BY 2.0
@@ -68,7 +68,7 @@ image_refs:
     - Flickr - gailhampshire (1).jpg
   commons_filename: Crab Plover. Dromas ardeola - Flickr - gailhampshire (1).jpg
 - role: secondary
-  path: Q213836/secondary-1.jpg
+  path: Q213836/secondary-1.webp
   width: 1800
   height: 1357
   license: CC BY 2.0
@@ -78,7 +78,7 @@ image_refs:
     - Flickr - gailhampshire (2).jpg
   commons_filename: Crab Plover. Dromas ardeola - Flickr - gailhampshire (2).jpg
 - role: secondary
-  path: Q213836/secondary-2.jpg
+  path: Q213836/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

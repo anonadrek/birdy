@@ -90,7 +90,7 @@ migration:
     year-round.'
 image_refs:
 - role: hero
-  path: Q114843683/hero.jpg
+  path: Q114843683/hero.webp
   width: 2400
   height: 1800
   license: CC BY 4.0
@@ -100,7 +100,7 @@ image_refs:
     atrifrons DSCN4277 01.jpg
   commons_filename: Tibetan Sand Plover Anarhynchus atrifrons DSCN4277 01.jpg
 - role: secondary
-  path: Q114843683/secondary-1.jpg
+  path: Q114843683/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -110,7 +110,7 @@ image_refs:
     atrifrons DSCN4277 02.jpg
   commons_filename: Tibetan Sand Plover Anarhynchus atrifrons DSCN4277 02.jpg
 - role: secondary
-  path: Q114843683/secondary-2.jpg
+  path: Q114843683/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

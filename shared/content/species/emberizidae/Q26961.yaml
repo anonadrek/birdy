@@ -95,7 +95,7 @@ migration:
     southward movement than their western counterparts.'
 image_refs:
 - role: hero
-  path: Q26961/hero.jpg
+  path: Q26961/hero.webp
   width: 1469
   height: 2400
   license: CC BY 4.0
@@ -105,7 +105,7 @@ image_refs:
     schoeniclus) 2021.jpg
   commons_filename: Common reed bunting (Emberiza schoeniclus) 2021.jpg
 - role: secondary
-  path: Q26961/secondary-1.jpg
+  path: Q26961/secondary-1.webp
   width: 1200
   height: 1800
   license: CC BY 2.0
@@ -115,7 +115,7 @@ image_refs:
     schoeniclus (50968939411).jpg
   commons_filename: Reed Bunting (Male) - Emberiza schoeniclus (50968939411).jpg
 - role: secondary
-  path: Q26961/secondary-2.jpg
+  path: Q26961/secondary-2.webp
   width: 1800
   height: 1412
   license: CC BY 2.0

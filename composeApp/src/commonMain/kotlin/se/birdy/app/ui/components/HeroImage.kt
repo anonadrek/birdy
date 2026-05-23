@@ -14,14 +14,12 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import birdy_bird_scanner.composeapp.generated.resources.Res
 import coil3.compose.AsyncImage
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.HeroMossMid
+import se.birdy.app.util.speciesImageUri
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun HeroImage(
     imagePath: String?,
@@ -40,7 +38,7 @@ fun HeroImage(
     ) {
         if (imagePath != null) {
             AsyncImage(
-                model = Res.getUri("files/images/$imagePath"),
+                model = speciesImageUri(imagePath),
                 contentDescription = contentDescription,
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop,

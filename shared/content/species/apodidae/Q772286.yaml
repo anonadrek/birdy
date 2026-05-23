@@ -58,7 +58,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q772286/hero.jpg
+  path: Q772286/hero.webp
   width: 2400
   height: 1350
   license: CC BY 2.0
@@ -68,7 +68,7 @@ image_refs:
   commons_filename: African palm swifts (Cypsiurus parvus) showing them around their
     palm )(Hyphaene petersiana) habitat. - 52735566701.jpg
 - role: secondary
-  path: Q772286/secondary-1.jpg
+  path: Q772286/secondary-1.webp
   width: 1800
   height: 1012
   license: CC BY 2.0
@@ -77,7 +77,7 @@ image_refs:
     parvus) showing them around their.jpg
   commons_filename: African palm swifts (Cypsiurus parvus) showing them around their.jpg
 - role: secondary
-  path: Q772286/secondary-2.jpg
+  path: Q772286/secondary-2.webp
   width: 1201
   height: 1800
   license: CC BY 2.0

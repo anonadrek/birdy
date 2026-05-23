@@ -75,7 +75,7 @@ migration:
     not be relevant for a Northern European bird guide.'
 image_refs:
 - role: hero
-  path: Q27074884/hero.jpg
+  path: Q27074884/hero.webp
   width: 2048
   height: 1536
   license: CC0
@@ -85,7 +85,7 @@ image_refs:
     Eaton.jpg
   commons_filename: Dendrocoptes dorae by James Eaton.jpg
 - role: secondary
-  path: Q27074884/secondary-1.jpg
+  path: Q27074884/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -94,7 +94,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocoptes dorae 222956296.jpg
   commons_filename: Dendrocoptes dorae 222956296.jpg
 - role: secondary
-  path: Q27074884/secondary-2.jpg
+  path: Q27074884/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

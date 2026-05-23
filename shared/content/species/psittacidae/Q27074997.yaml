@@ -66,7 +66,7 @@ migration:
     the year in this region cannot be provided.'
 image_refs:
 - role: hero
-  path: Q27074997/hero.jpg
+  path: Q27074997/hero.webp
   width: 2048
   height: 1365
   license: CC0
@@ -75,7 +75,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Psittacara mitratus 339606908.jpg
   commons_filename: Psittacara mitratus 339606908.jpg
 - role: secondary
-  path: Q27074997/secondary-1.jpg
+  path: Q27074997/secondary-1.webp
   width: 1350
   height: 1800
   license: CC BY-SA 4.0
@@ -84,7 +84,7 @@ image_refs:
     1.jpg
   commons_filename: Psittacidae Psittacara mitratus 1.jpg
 - role: secondary
-  path: Q27074997/secondary-2.jpg
+  path: Q27074997/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0

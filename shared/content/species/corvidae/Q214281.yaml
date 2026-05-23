@@ -89,7 +89,7 @@ migration:
     relatively fixed territories year-round.'
 image_refs:
 - role: hero
-  path: Q214281/hero.jpg
+  path: Q214281/hero.webp
   width: 2400
   height: 1803
   license: CC0
@@ -98,7 +98,7 @@ image_refs:
     20260408 01.jpg
   commons_filename: Perisoreus infaustus Kittilä 20260408 01.jpg
 - role: secondary
-  path: Q214281/secondary-1.jpg
+  path: Q214281/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -107,7 +107,7 @@ image_refs:
     20260408 04.jpg
   commons_filename: Perisoreus infaustus Kittilä 20260408 04.jpg
 - role: secondary
-  path: Q214281/secondary-2.jpg
+  path: Q214281/secondary-2.webp
   width: 1347
   height: 1800
   license: CC0

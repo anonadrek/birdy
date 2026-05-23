@@ -91,7 +91,7 @@ migration:
     than a predictable migrant.'
 image_refs:
 - role: hero
-  path: Q20823352/hero.jpg
+  path: Q20823352/hero.webp
   width: 2048
   height: 1362
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pastor roseus 527037166.jpg
   commons_filename: Pastor roseus 527037166.jpg
 - role: secondary
-  path: Q20823352/secondary-1.jpg
+  path: Q20823352/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -110,7 +110,7 @@ image_refs:
     (24633858726).jpg
   commons_filename: Rosy Starling (Pastor roseus) (24633858726).jpg
 - role: secondary
-  path: Q20823352/secondary-2.jpg
+  path: Q20823352/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

@@ -80,7 +80,7 @@ migration:
     be provided based on the available source material.'
 image_refs:
 - role: hero
-  path: Q478632/hero.jpg
+  path: Q478632/hero.webp
   width: 2400
   height: 1800
   license: CC BY 4.0
@@ -90,7 +90,7 @@ image_refs:
     DSCN3481 (11).jpg
   commons_filename: Tricolored Munia Lonchura malacca DSCN3481 (11).jpg
 - role: secondary
-  path: Q478632/secondary-1.jpg
+  path: Q478632/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -100,7 +100,7 @@ image_refs:
     DSCN3481 (12).jpg
   commons_filename: Tricolored Munia Lonchura malacca DSCN3481 (12).jpg
 - role: secondary
-  path: Q478632/secondary-2.jpg
+  path: Q478632/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

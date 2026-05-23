@@ -82,7 +82,7 @@ migration:
     and migration data would be required.'
 image_refs:
 - role: hero
-  path: Q665363/hero.jpg
+  path: Q665363/hero.webp
   width: 2400
   height: 1350
   license: CC BY 2.0
@@ -92,7 +92,7 @@ image_refs:
   commons_filename: Great spotted cuckoo, Clamator glandarius, at Mapungubwe National
     Park, Limpopo, South Africa. - 51840980324.jpg
 - role: secondary
-  path: Q665363/secondary-1.jpg
+  path: Q665363/secondary-1.webp
   width: 1800
   height: 1012
   license: CC BY 2.0
@@ -102,7 +102,7 @@ image_refs:
   commons_filename: Great spotted cuckoo, Clamator glandarius, at Mapungubwe National
     Park, Limpopo, South Africa. - 51841355895.jpg
 - role: secondary
-  path: Q665363/secondary-2.jpg
+  path: Q665363/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY 2.0

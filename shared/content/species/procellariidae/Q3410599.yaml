@@ -89,7 +89,7 @@ migration:
     no established overwintering population in the region.'
 image_refs:
 - role: hero
-  path: Q3410599/hero.jpg
+  path: Q3410599/hero.webp
   width: 2400
   height: 1607
   license: Public domain
@@ -99,7 +99,7 @@ image_refs:
     Terceira, Açores.jpg
   commons_filename: Cagarro - Calonectris borealis, Terceira, Açores.jpg
 - role: secondary
-  path: Q3410599/secondary-1.jpg
+  path: Q3410599/secondary-1.webp
   width: 1800
   height: 1197
   license: CC0
@@ -108,7 +108,7 @@ image_refs:
     borealis).jpg
   commons_filename: Cory's shearwater (Calonectris borealis).jpg
 - role: secondary
-  path: Q3410599/secondary-2.jpg
+  path: Q3410599/secondary-2.webp
   width: 1800
   height: 1269
   license: CC0

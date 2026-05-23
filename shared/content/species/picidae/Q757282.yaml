@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q757282/hero.jpg
+  path: Q757282/hero.webp
   width: 1536
   height: 2048
   license: CC BY 4.0
@@ -46,7 +46,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Picus vaillantii 239307829.jpg
   commons_filename: Picus vaillantii 239307829.jpg
 - role: secondary
-  path: Q757282/secondary-1.jpg
+  path: Q757282/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY 4.0
@@ -55,7 +55,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Picus vaillantii 97480721.jpg
   commons_filename: Picus vaillantii 97480721.jpg
 - role: secondary
-  path: Q757282/secondary-2.jpg
+  path: Q757282/secondary-2.webp
   width: 1800
   height: 1126
   license: CC BY 4.0

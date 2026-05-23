@@ -94,7 +94,7 @@ migration:
     in April and May as ice melts and northern habitats become accessible again.'
 image_refs:
 - role: hero
-  path: Q201300/hero.jpg
+  path: Q201300/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -103,7 +103,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Melanitta fusca (25611570907).jpg
   commons_filename: Melanitta fusca (25611570907).jpg
 - role: secondary
-  path: Q201300/secondary-1.jpg
+  path: Q201300/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Melanitta fusca (26611461158).jpg
   commons_filename: Melanitta fusca (26611461158).jpg
 - role: secondary
-  path: Q201300/secondary-2.jpg
+  path: Q201300/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

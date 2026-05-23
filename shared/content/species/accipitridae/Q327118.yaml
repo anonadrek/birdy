@@ -91,7 +91,7 @@ migration:
     months in Northern European regions is included.'
 image_refs:
 - role: hero
-  path: Q327118/hero.jpg
+  path: Q327118/hero.webp
   width: 1604
   height: 2400
   license: CC BY-SA 4.0
@@ -101,7 +101,7 @@ image_refs:
     (cropped).jpg
   commons_filename: Gyps bengalensis by Ravi Sangeetha (cropped).jpg
 - role: secondary
-  path: Q327118/secondary-1.jpg
+  path: Q327118/secondary-1.webp
   width: 1800
   height: 1182
   license: CC BY-SA 2.0
@@ -112,7 +112,7 @@ image_refs:
   commons_filename: Me and Indian White-backed Vultures (Gyps bengalensis) - you can
     get very close when they eat ... (20012612580).jpg
 - role: secondary
-  path: Q327118/secondary-2.jpg
+  path: Q327118/secondary-2.webp
   width: 1800
   height: 1235
   license: CC BY-SA 2.0

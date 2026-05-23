@@ -98,7 +98,7 @@ migration:
     winter conditions.'
 image_refs:
 - role: hero
-  path: Q170831/hero.jpg
+  path: Q170831/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Parks.Range.Aegithalos.caudatus.caudatus.jpg
   commons_filename: Parks.Range.Aegithalos.caudatus.caudatus.jpg
 - role: secondary
-  path: Q170831/secondary-1.jpg
+  path: Q170831/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -117,7 +117,7 @@ image_refs:
     caudatus) on a twig.jpg
   commons_filename: Long-tailed tit (Aegithalos caudatus) on a twig.jpg
 - role: secondary
-  path: Q170831/secondary-2.jpg
+  path: Q170831/secondary-2.webp
   width: 1800
   height: 861
   license: CC BY 2.0

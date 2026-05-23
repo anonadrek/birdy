@@ -91,7 +91,7 @@ migration:
     to lower latitudes during harsh winters.'
 image_refs:
 - role: hero
-  path: Q201316/hero.jpg
+  path: Q201316/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
     cinerea) (23372565665).jpg
   commons_filename: キセキレイ (黄鶺鴒) (Grey Wagtail) (Motacilla cinerea) (23372565665).jpg
 - role: secondary
-  path: Q201316/secondary-1.jpg
+  path: Q201316/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
     cinerea) (23372575615).jpg
   commons_filename: キセキレイ (黄鶺鴒) (Grey Wagtail) (Motacilla cinerea) (23372575615).jpg
 - role: secondary
-  path: Q201316/secondary-2.jpg
+  path: Q201316/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

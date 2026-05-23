@@ -72,7 +72,7 @@ migration:
     compared to migratory populations.'
 image_refs:
 - role: hero
-  path: Q25438/hero.jpg
+  path: Q25438/hero.webp
   width: 2400
   height: 1468
   license: CC BY-SA 4.0
@@ -83,7 +83,7 @@ image_refs:
   commons_filename: Adult white-tailed eagle (Haliaeetus albicilla) of central Poland
     in flight (2).jpg
 - role: secondary
-  path: Q25438/secondary-1.jpg
+  path: Q25438/secondary-1.webp
   width: 1800
   height: 1013
   license: CC BY-SA 4.0
@@ -94,7 +94,7 @@ image_refs:
   commons_filename: An adult white-tailed eagle (Haliaeetus albicilla) defending its
     prey.jpg
 - role: secondary
-  path: Q25438/secondary-2.jpg
+  path: Q25438/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

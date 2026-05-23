@@ -94,7 +94,7 @@ migration:
     and mature forest ecosystems.'
 image_refs:
 - role: hero
-  path: Q143284/hero.jpg
+  path: Q143284/hero.webp
   width: 2400
   height: 1602
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
     2021-02-10 01.jpg
   commons_filename: Dryocopus martius in the Teufelsbruch 2021-02-10 01.jpg
 - role: secondary
-  path: Q143284/secondary-1.jpg
+  path: Q143284/secondary-1.webp
   width: 1800
   height: 1201
   license: CC0
@@ -114,7 +114,7 @@ image_refs:
     2021-02-10 05.jpg
   commons_filename: Dryocopus martius in the Teufelsbruch 2021-02-10 05.jpg
 - role: secondary
-  path: Q143284/secondary-2.jpg
+  path: Q143284/secondary-2.webp
   width: 1800
   height: 1201
   license: CC0

@@ -88,7 +88,7 @@ migration:
     occupy woodlands and parkland across the region.'
 image_refs:
 - role: hero
-  path: Q26140/hero.jpg
+  path: Q26140/hero.webp
   width: 2016
   height: 2400
   license: CC BY 2.0
@@ -99,7 +99,7 @@ image_refs:
   commons_filename: Couple de Pigeons colombin (Columba oenas), Parc de Woluwe, Bruxelles
     (51978316920).jpg
 - role: secondary
-  path: Q26140/secondary-1.jpg
+  path: Q26140/secondary-1.webp
   width: 1800
   height: 1278
   license: CC BY 2.0
@@ -109,7 +109,7 @@ image_refs:
     Parc de Woluwe, Bruxelles (52843953909).jpg
   commons_filename: Pigeon colombin (Columba oenas), Parc de Woluwe, Bruxelles (52843953909).jpg
 - role: secondary
-  path: Q26140/secondary-2.jpg
+  path: Q26140/secondary-2.webp
   width: 1138
   height: 1800
   license: CC BY 4.0

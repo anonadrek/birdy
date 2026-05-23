@@ -101,7 +101,7 @@ migration:
     migration to this region highly unlikely.'
 image_refs:
 - role: hero
-  path: Q126167/hero.jpg
+  path: Q126167/hero.webp
   width: 2400
   height: 1714
   license: CC BY 2.0
@@ -112,7 +112,7 @@ image_refs:
   commons_filename: Bearded vulture, Gypaetus barbatus, also known as the Lämmergeier,
     Giant's Castle, KwaZulu-Natal, South Africa. (44080366295).jpg
 - role: secondary
-  path: Q126167/secondary-1.jpg
+  path: Q126167/secondary-1.webp
   width: 1800
   height: 1013
   license: CC BY 4.0
@@ -121,7 +121,7 @@ image_refs:
     (3).jpg
   commons_filename: Gypaetus barbatus in Vanoise (3).jpg
 - role: secondary
-  path: Q126167/secondary-2.jpg
+  path: Q126167/secondary-2.webp
   width: 1350
   height: 1800
   license: CC BY 4.0

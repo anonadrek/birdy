@@ -95,7 +95,7 @@ migration:
     harsh winters forcing more extensive southward movements.'
 image_refs:
 - role: hero
-  path: Q29865/hero.jpg
+  path: Q29865/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -105,7 +105,7 @@ image_refs:
     (34375185890).jpg
   commons_filename: Bucephala clangula EM1B9784 (34375185890).jpg
 - role: secondary
-  path: Q29865/secondary-1.jpg
+  path: Q29865/secondary-1.webp
   width: 1800
   height: 900
   license: CC BY 2.0
@@ -115,7 +115,7 @@ image_refs:
     (33952163073).jpg
   commons_filename: Bucephala clangula EM1B9540 (33952163073).jpg
 - role: secondary
-  path: Q29865/secondary-2.jpg
+  path: Q29865/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

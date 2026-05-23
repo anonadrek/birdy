@@ -67,7 +67,7 @@ migration:
     the garganey from more resident dabbling duck species in the region.'
 image_refs:
 - role: hero
-  path: Q28106902/hero.jpg
+  path: Q28106902/hero.webp
   width: 2048
   height: 1437
   license: CC BY 4.0
@@ -76,7 +76,7 @@ image_refs:
     in Algeria.jpg
   commons_filename: Female garganey (Spatula querquedula) in Algeria.jpg
 - role: secondary
-  path: Q28106902/secondary-1.jpg
+  path: Q28106902/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -85,7 +85,7 @@ image_refs:
     Coimbatore DSCN2951.jpg
   commons_filename: Garganey (Spatula querquedula) Coimbatore DSCN2951.jpg
 - role: secondary
-  path: Q28106902/secondary-2.jpg
+  path: Q28106902/secondary-2.webp
   width: 1800
   height: 1346
   license: CC BY-SA 4.0

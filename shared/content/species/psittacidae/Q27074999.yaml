@@ -63,7 +63,7 @@ migration:
     presence in captivity as a popular pet bird in aviculture.'
 image_refs:
 - role: hero
-  path: Q27074999/hero.jpg
+  path: Q27074999/hero.webp
   width: 1600
   height: 2400
   license: CC BY-SA 4.0

@@ -96,7 +96,7 @@ migration:
     and success.'
 image_refs:
 - role: hero
-  path: Q25709/hero.jpg
+  path: Q25709/hero.webp
   width: 2400
   height: 1664
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
     (52911849783).jpg
   commons_filename: Bittern (M) - Botaurus stellaris (52911849783).jpg
 - role: secondary
-  path: Q25709/secondary-1.jpg
+  path: Q25709/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 2.0
@@ -116,7 +116,7 @@ image_refs:
     RSPB reserve, Suffolk, England-8.jpg
   commons_filename: Botaurus stellaris -Minsmere RSPB reserve, Suffolk, England-8.jpg
 - role: secondary
-  path: Q25709/secondary-2.jpg
+  path: Q25709/secondary-2.webp
   width: 1285
   height: 1800
   license: CC BY 2.0

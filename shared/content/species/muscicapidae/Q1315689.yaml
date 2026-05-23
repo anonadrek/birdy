@@ -68,7 +68,7 @@ migration:
     patterns in Scandinavian territories can be provided.'
 image_refs:
 - role: hero
-  path: Q1315689/hero.jpg
+  path: Q1315689/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -78,7 +78,7 @@ image_refs:
     twig.jpg
   commons_filename: Saxicola torquatus on a green twig.jpg
 - role: secondary
-  path: Q1315689/secondary-1.jpg
+  path: Q1315689/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY 4.0
@@ -88,7 +88,7 @@ image_refs:
     Lange - 466318311.jpeg
   commons_filename: Saxicola torquatus - Henry de Lange - 466318311.jpeg
 - role: secondary
-  path: Q1315689/secondary-2.jpg
+  path: Q1315689/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY 4.0

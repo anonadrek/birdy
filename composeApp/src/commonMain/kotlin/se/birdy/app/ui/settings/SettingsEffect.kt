@@ -15,6 +15,8 @@ sealed interface SettingsEffect {
 
     data object OpenTermsUrl : SettingsEffect
 
+    data object OpenWebsiteUrl : SettingsEffect
+
     data object RateOnPlayStore : SettingsEffect
 
     data object ShareApp : SettingsEffect

@@ -95,7 +95,7 @@ migration:
     variable movements influenced by food availability.'
 image_refs:
 - role: hero
-  path: Q26209/hero.jpg
+  path: Q26209/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos major (feeding).jpg
   commons_filename: Dendrocopos major (feeding).jpg
 - role: secondary
-  path: Q26209/secondary-1.jpg
+  path: Q26209/secondary-1.webp
   width: 1800
   height: 595
   license: Public domain
@@ -112,7 +112,7 @@ image_refs:
     pig.jpg
   commons_filename: Dendrocopos major with dead pig.jpg
 - role: secondary
-  path: Q26209/secondary-2.jpg
+  path: Q26209/secondary-2.webp
   width: 1800
   height: 1067
   license: Public domain

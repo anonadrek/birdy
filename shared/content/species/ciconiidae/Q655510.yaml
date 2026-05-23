@@ -65,7 +65,7 @@ migration:
     migration patterns relevant to Northern Europe cannot be documented for this species.'
 image_refs:
 - role: hero
-  path: Q655510/hero.jpg
+  path: Q655510/hero.webp
   width: 1600
   height: 2400
   license: CC0
@@ -74,7 +74,7 @@ image_refs:
     ibis).jpg
   commons_filename: Yellow-billed stork (Mycteria ibis).jpg
 - role: secondary
-  path: Q655510/secondary-1.jpg
+  path: Q655510/secondary-1.webp
   width: 1800
   height: 1192
   license: CC BY 2.0
@@ -85,7 +85,7 @@ image_refs:
   commons_filename: Mycteria ibis -near Kwara Camp, North-West District, Botswana
     -flying-8.jpg
 - role: secondary
-  path: Q655510/secondary-2.jpg
+  path: Q655510/secondary-2.webp
   width: 1800
   height: 1196
   license: CC BY 3.0

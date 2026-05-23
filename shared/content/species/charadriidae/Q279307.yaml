@@ -99,7 +99,7 @@ migration:
     when birds occasionally deviate from their primary migration corridors.'
 image_refs:
 - role: hero
-  path: Q279307/hero.jpg
+  path: Q279307/hero.webp
   width: 2400
   height: 1625
   license: CC BY-SA 4.0
@@ -109,7 +109,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Sociable Lapwing(Vanellus gregarius).jpg
   commons_filename: Sociable Lapwing(Vanellus gregarius).jpg
 - role: secondary
-  path: Q279307/secondary-1.jpg
+  path: Q279307/secondary-1.webp
   width: 1800
   height: 1189
   license: CC BY-SA 4.0
@@ -120,7 +120,7 @@ image_refs:
     2.png
   commons_filename: Vanellus gregarius range map 2.png
 - role: secondary
-  path: Q279307/secondary-2.jpg
+  path: Q279307/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

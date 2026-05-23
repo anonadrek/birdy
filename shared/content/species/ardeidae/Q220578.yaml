@@ -90,7 +90,7 @@ migration:
     area would represent extreme vagrants far outside the species'' normal range.'
 image_refs:
 - role: hero
-  path: Q220578/hero.jpg
+  path: Q220578/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
   commons_filename: Black-headed Heron (Ardea melanocephala) in Serengeti National
     Park, Tanzania.jpg
 - role: secondary
-  path: Q220578/secondary-1.jpg
+  path: Q220578/secondary-1.webp
   width: 1800
   height: 1202
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
     Kenya.jpg
   commons_filename: Black-headed heron (Ardea melanocephala), Kenya.jpg
 - role: secondary
-  path: Q220578/secondary-2.jpg
+  path: Q220578/secondary-2.webp
   width: 1800
   height: 1058
   license: CC0

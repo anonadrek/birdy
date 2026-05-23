@@ -93,7 +93,7 @@ migration:
     the species a characteristic year-round presence in Scandinavian rocky shore habitats.'
 image_refs:
 - role: hero
-  path: Q212055/hero.jpg
+  path: Q212055/hero.webp
   width: 2400
   height: 1728
   license: CC BY 2.0
@@ -103,7 +103,7 @@ image_refs:
     1.jpg
   commons_filename: Cepphus grylle, Oban Harbour 1.jpg
 - role: secondary
-  path: Q212055/secondary-1.jpg
+  path: Q212055/secondary-1.webp
   width: 1800
   height: 1299
   license: CC BY 2.0
@@ -113,7 +113,7 @@ image_refs:
     (24146121487).jpg
   commons_filename: Black Guillemots Cepphus grylle (24146121487).jpg
 - role: secondary
-  path: Q212055/secondary-2.jpg
+  path: Q212055/secondary-2.webp
   width: 1800
   height: 1284
   license: CC BY 2.0

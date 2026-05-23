@@ -89,7 +89,7 @@ migration:
     than wild migrants or residents.'
 image_refs:
 - role: hero
-  path: Q589245/hero.jpg
+  path: Q589245/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -99,7 +99,7 @@ image_refs:
     Cheshire, England-8a.jpg
   commons_filename: Leiothrix lutea -Chester Zoo, Cheshire, England-8a.jpg
 - role: secondary
-  path: Q589245/secondary-1.jpg
+  path: Q589245/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -109,7 +109,7 @@ image_refs:
     -two-8a.jpg
   commons_filename: Leiothrix lutea -London Zoo -two-8a.jpg
 - role: secondary
-  path: Q589245/secondary-2.jpg
+  path: Q589245/secondary-2.webp
   width: 1800
   height: 1197
   license: CC BY 2.0

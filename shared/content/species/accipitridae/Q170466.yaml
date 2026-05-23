@@ -97,7 +97,7 @@ migration:
     season.'
 image_refs:
 - role: hero
-  path: Q170466/hero.jpg
+  path: Q170466/hero.webp
   width: 1601
   height: 2400
   license: CC0
@@ -107,7 +107,7 @@ image_refs:
     fair 2025-12-20, Pernis apivorus.jpg
   commons_filename: Moscow, Beloboka-2025 fundraiser fair 2025-12-20, Pernis apivorus.jpg
 - role: secondary
-  path: Q170466/secondary-1.jpg
+  path: Q170466/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -117,7 +117,7 @@ image_refs:
     slatina.jpg
   commons_filename: Pernis apivorus, Bresničićka slatina.jpg
 - role: secondary
-  path: Q170466/secondary-2.jpg
+  path: Q170466/secondary-2.webp
   width: 1800
   height: 1197
   license: CC BY 3.0

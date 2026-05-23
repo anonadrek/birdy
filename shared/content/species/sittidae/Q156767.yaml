@@ -98,7 +98,7 @@ migration:
     food sources persist.'
 image_refs:
 - role: hero
-  path: Q156767/hero.jpg
+  path: Q156767/hero.webp
   width: 2400
   height: 1800
   license: CC BY 4.0
@@ -108,7 +108,7 @@ image_refs:
     Garten.jpg
   commons_filename: Kleiber (Sitta europaea) im Garten.jpg
 - role: secondary
-  path: Q156767/secondary-1.jpg
+  path: Q156767/secondary-1.webp
   width: 1350
   height: 1800
   license: CC BY 4.0
@@ -117,7 +117,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Sitta europaea building nest.jpg
   commons_filename: Sitta europaea building nest.jpg
 - role: secondary
-  path: Q156767/secondary-2.jpg
+  path: Q156767/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

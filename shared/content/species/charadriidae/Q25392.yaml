@@ -98,7 +98,7 @@ migration:
     in February and March as weather improves.'
 image_refs:
 - role: hero
-  path: Q25392/hero.jpg
+  path: Q25392/hero.webp
   width: 2400
   height: 1601
   license: CC BY 2.0
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Vanellus vanellus CR5 9288 (51191855686).jpg
   commons_filename: Vanellus vanellus CR5 9288 (51191855686).jpg
 - role: secondary
-  path: Q25392/secondary-1.jpg
+  path: Q25392/secondary-1.webp
   width: 1800
   height: 1286
   license: CC BY 2.0
@@ -117,7 +117,7 @@ image_refs:
     (52227600256).jpg
   commons_filename: Lapwing - Vanellus vanellus (52227600256).jpg
 - role: secondary
-  path: Q25392/secondary-2.jpg
+  path: Q25392/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

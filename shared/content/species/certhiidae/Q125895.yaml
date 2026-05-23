@@ -91,7 +91,7 @@ migration:
     a regular winter visitor or migrant through the Nordic region.'
 image_refs:
 - role: hero
-  path: Q125895/hero.jpg
+  path: Q125895/hero.webp
   width: 1480
   height: 2226
   license: CC BY 2.0
@@ -101,7 +101,7 @@ image_refs:
     France 1.jpg
   commons_filename: Certhia brachydactyla, Toulouse, France 1.jpg
 - role: secondary
-  path: Q125895/secondary-1.jpg
+  path: Q125895/secondary-1.webp
   width: 1200
   height: 1800
   license: CC BY-SA 4.0
@@ -111,7 +111,7 @@ image_refs:
     brachydactyla dorotheae).jpg
   commons_filename: Cyprus treecreeper (Certhia brachydactyla dorotheae).jpg
 - role: secondary
-  path: Q125895/secondary-2.jpg
+  path: Q125895/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0

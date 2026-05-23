@@ -64,7 +64,7 @@ migration:
     to occur regularly in Scandinavian or Northern European waters.'
 image_refs:
 - role: hero
-  path: Q525717/hero.jpg
+  path: Q525717/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -73,7 +73,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Anous stolidus nesting.JPG
   commons_filename: Anous stolidus nesting.JPG
 - role: secondary
-  path: Q525717/secondary-1.jpg
+  path: Q525717/secondary-1.webp
   width: 1800
   height: 1199
   license: CC BY 2.0
@@ -83,7 +83,7 @@ image_refs:
     (8603063360).jpg
   commons_filename: Common Noddy (Anous stolidus) (8603063360).jpg
 - role: secondary
-  path: Q525717/secondary-2.jpg
+  path: Q525717/secondary-2.webp
   width: 1800
   height: 1199
   license: CC BY 2.0

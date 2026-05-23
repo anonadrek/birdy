@@ -83,7 +83,7 @@ migration:
     accurate migration information for this region.'
 image_refs:
 - role: hero
-  path: Q31873711/hero.jpg
+  path: Q31873711/hero.webp
   width: 2400
   height: 1160
   license: CC BY 2.0
@@ -93,7 +93,7 @@ image_refs:
     viridissimus) Aswan (52260525791).jpg
   commons_filename: African green bee-eater (Merops viridissimus) Aswan (52260525791).jpg
 - role: secondary
-  path: Q31873711/secondary-1.jpg
+  path: Q31873711/secondary-1.webp
   width: 1800
   height: 1192
   license: CC BY-SA 4.0
@@ -104,7 +104,7 @@ image_refs:
   commons_filename: Merops viridissimus cleopatra at Elephantine Island, Aswan, Egypt
     1.jpg
 - role: secondary
-  path: Q31873711/secondary-2.jpg
+  path: Q31873711/secondary-2.webp
   width: 1800
   height: 1192
   license: CC BY-SA 4.0

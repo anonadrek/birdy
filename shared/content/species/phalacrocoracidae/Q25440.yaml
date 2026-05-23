@@ -94,7 +94,7 @@ migration:
     Scandinavian coastal regions in recent decades.'
 image_refs:
 - role: hero
-  path: Q25440/hero.jpg
+  path: Q25440/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     carbo), Travemünde.jpg
   commons_filename: Great cormorant (Phalacrocorax carbo), Travemünde.jpg
 - role: secondary
-  path: Q25440/secondary-1.jpg
+  path: Q25440/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
     carbo) in flight, Travemünde.jpg
   commons_filename: Great cormorant (Phalacrocorax carbo) in flight, Travemünde.jpg
 - role: secondary
-  path: Q25440/secondary-2.jpg
+  path: Q25440/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

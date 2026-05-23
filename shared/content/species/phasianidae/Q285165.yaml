@@ -52,7 +52,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q285165/hero.jpg
+  path: Q285165/hero.webp
   width: 2184
   height: 1620
   license: CC BY 2.0
@@ -61,7 +61,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Francolinus francolinus 1.jpg
   commons_filename: Francolinus francolinus 1.jpg
 - role: secondary
-  path: Q285165/secondary-1.jpg
+  path: Q285165/secondary-1.webp
   width: 1800
   height: 1245
   license: CC BY-SA 4.0
@@ -70,7 +70,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Francolinus francolinus, Azerbaijan.jpg
   commons_filename: Francolinus francolinus, Azerbaijan.jpg
 - role: secondary
-  path: Q285165/secondary-2.jpg
+  path: Q285165/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

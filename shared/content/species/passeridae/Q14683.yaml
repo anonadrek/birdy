@@ -90,7 +90,7 @@ migration:
     broods before the onset of winter.'
 image_refs:
 - role: hero
-  path: Q14683/hero.jpg
+  path: Q14683/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -99,7 +99,7 @@ image_refs:
     Amrum.jpg
   commons_filename: House sparrow (Passer domesticus), Amrum.jpg
 - role: secondary
-  path: Q14683/secondary-1.jpg
+  path: Q14683/secondary-1.webp
   width: 1350
   height: 1800
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
     Brackley 2025 01.jpg
   commons_filename: Male House Sparrow Passer Domesticus Brackley 2025 01.jpg
 - role: secondary
-  path: Q14683/secondary-2.jpg
+  path: Q14683/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 3.0

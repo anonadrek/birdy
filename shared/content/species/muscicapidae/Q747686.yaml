@@ -94,7 +94,7 @@ migration:
     and east of northern Europe during both breeding and wintering periods.'
 image_refs:
 - role: hero
-  path: Q747686/hero.jpg
+  path: Q747686/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 3.0
@@ -103,7 +103,7 @@ image_refs:
     01.jpg
   commons_filename: Oenanthe isabellina in Baikonur 01.jpg
 - role: secondary
-  path: Q747686/secondary-1.jpg
+  path: Q747686/secondary-1.webp
   width: 1800
   height: 1240
   license: CC BY-SA 4.0
@@ -113,7 +113,7 @@ image_refs:
     wheatear 02.jpg
   commons_filename: Oenanthe isabellina - Isabelline wheatear 02.jpg
 - role: secondary
-  path: Q747686/secondary-2.jpg
+  path: Q747686/secondary-2.webp
   width: 1800
   height: 1253
   license: CC BY-SA 4.0

@@ -93,7 +93,7 @@ migration:
     to exist in ornithological records for the region.'
 image_refs:
 - role: hero
-  path: Q116667/hero.jpg
+  path: Q116667/hero.webp
   width: 2400
   height: 1800
   license: Public domain
@@ -104,7 +104,7 @@ image_refs:
   commons_filename: Acridotheres tristis in the grounds of the Le Royal Méridien Beach
     Resort and Spa in Dubai 7.jpg
 - role: secondary
-  path: Q116667/secondary-1.jpg
+  path: Q116667/secondary-1.webp
   width: 1800
   height: 1196
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Common myna, (Acridotheres tristis).jpg
   commons_filename: Common myna, (Acridotheres tristis).jpg
 - role: secondary
-  path: Q116667/secondary-2.jpg
+  path: Q116667/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 3.0

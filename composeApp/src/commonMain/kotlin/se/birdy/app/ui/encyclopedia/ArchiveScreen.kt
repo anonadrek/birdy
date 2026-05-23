@@ -102,6 +102,7 @@ import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.app.usecase.JournalExportResult
+import se.birdy.app.util.speciesImageUri
 import se.birdy.content.SpeciesId
 import se.birdy.datastore.ArchiveSort
 
@@ -543,9 +544,10 @@ private fun SpeciesRow(
                 .size(36.dp)
                 .clip(RoundedCornerShape(8.dp))
                 .background(MarginaliaInk.copy(alpha = 0.1f))
-        if (summary.heroImagePath != null) {
+        val heroImagePath = summary.heroImagePath
+        if (heroImagePath != null) {
             AsyncImage(
-                model = Res.getUri("files/images/${summary.heroImagePath}"),
+                model = speciesImageUri(heroImagePath),
                 contentDescription = stringResource(Res.string.species_photo_label, summary.name),
                 contentScale = ContentScale.Crop,
                 modifier = thumbModifier,

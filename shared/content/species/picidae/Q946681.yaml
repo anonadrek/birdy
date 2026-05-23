@@ -59,7 +59,7 @@ migration:
     movements that would bring it to northern latitudes.'
 image_refs:
 - role: hero
-  path: Q946681/hero.jpg
+  path: Q946681/hero.webp
   width: 2220
   height: 1540
   license: CC BY-SA 2.0

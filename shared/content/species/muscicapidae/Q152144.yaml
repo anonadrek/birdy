@@ -85,7 +85,7 @@ migration:
     region.'
 image_refs:
 - role: hero
-  path: Q152144/hero.jpg
+  path: Q152144/hero.webp
   width: 2400
   height: 1583
   license: CC BY 4.0
@@ -96,7 +96,7 @@ image_refs:
   commons_filename: Blauwe rotslijster - blue rock thrush - Monticola solitarius -
     Forum Romanum 2.jpg
 - role: secondary
-  path: Q152144/secondary-1.jpg
+  path: Q152144/secondary-1.webp
   width: 1800
   height: 1147
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
     solitarius. female (32904370331).jpg
   commons_filename: Blue Rock Thrush. Monticola solitarius. female (32904370331).jpg
 - role: secondary
-  path: Q152144/secondary-2.jpg
+  path: Q152144/secondary-2.webp
   width: 1800
   height: 1192
   license: CC BY-SA 4.0

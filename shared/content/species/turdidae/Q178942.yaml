@@ -68,7 +68,7 @@ migration:
     grounds in more temperate regions.'
 image_refs:
 - role: hero
-  path: Q178942/hero.jpg
+  path: Q178942/hero.webp
   width: 1711
   height: 2400
   license: CC BY 4.0
@@ -77,7 +77,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Turdus viscivorus 10.jpg
   commons_filename: Turdus viscivorus 10.jpg
 - role: secondary
-  path: Q178942/secondary-1.jpg
+  path: Q178942/secondary-1.webp
   width: 1800
   height: 1259
   license: CC BY 2.0
@@ -86,7 +86,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Turdus viscivorus juv.jpg
   commons_filename: Turdus viscivorus juv.jpg
 - role: secondary
-  path: Q178942/secondary-2.jpg
+  path: Q178942/secondary-2.webp
   width: 1800
   height: 1215
   license: CC BY 4.0

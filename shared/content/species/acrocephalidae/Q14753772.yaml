@@ -93,7 +93,7 @@ migration:
     in Northern Europe.'
 image_refs:
 - role: hero
-  path: Q14753772/hero.jpg
+  path: Q14753772/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -101,7 +101,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Iduna pallida - sivi voljić.jpg
   commons_filename: Iduna pallida - sivi voljić.jpg
 - role: secondary
-  path: Q14753772/secondary-1.jpg
+  path: Q14753772/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

@@ -71,7 +71,7 @@ migration:
     Europe is not part of a predictable annual cycle.'
 image_refs:
 - role: hero
-  path: Q499290/hero.jpg
+  path: Q499290/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -82,7 +82,7 @@ image_refs:
   commons_filename: Junger Schneefink (Montifringilla nivalis), Fuscher Törl, Nationalpark
     Hohe Tauern, Salzburg, Österreich.jpg
 - role: secondary
-  path: Q499290/secondary-1.jpg
+  path: Q499290/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -93,7 +93,7 @@ image_refs:
   commons_filename: Sneeuwvink - white-winged snow finch - Montifringilla nivalis
     2.jpg
 - role: secondary
-  path: Q499290/secondary-2.jpg
+  path: Q499290/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

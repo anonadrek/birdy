@@ -90,7 +90,7 @@ migration:
     along coastal mudflats and saltpans during migration periods.'
 image_refs:
 - role: hero
-  path: Q62345/hero.jpg
+  path: Q62345/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -100,7 +100,7 @@ image_refs:
     ferruginea (24044997444).jpg
   commons_filename: Calidris tenuirostris and Calidris ferruginea (24044997444).jpg
 - role: secondary
-  path: Q62345/secondary-1.jpg
+  path: Q62345/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -110,7 +110,7 @@ image_refs:
     DSCN4064 02.jpg
   commons_filename: Curlew Sandpiper Calidris ferruginea DSCN4064 02.jpg
 - role: secondary
-  path: Q62345/secondary-2.jpg
+  path: Q62345/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

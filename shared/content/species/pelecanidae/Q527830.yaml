@@ -64,7 +64,7 @@ migration:
     the year.'
 image_refs:
 - role: hero
-  path: Q527830/hero.jpg
+  path: Q527830/hero.webp
   width: 2092
   height: 1303
   license: Public domain
@@ -73,7 +73,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pelecanus rufescens.jpg
   commons_filename: Pelecanus rufescens.jpg
 - role: secondary
-  path: Q527830/secondary-1.jpg
+  path: Q527830/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -82,7 +82,7 @@ image_refs:
     ruhend.jpg
   commons_filename: Rötelpelikan (Pelecanus rufescens), ruhend.jpg
 - role: secondary
-  path: Q527830/secondary-2.jpg
+  path: Q527830/secondary-2.webp
   width: 1800
   height: 1354
   license: CC BY 4.0

@@ -94,7 +94,7 @@ migration:
     does not extend into these northern regions during any season.'
 image_refs:
 - role: hero
-  path: Q385273/hero.jpg
+  path: Q385273/hero.webp
   width: 2400
   height: 1788
   license: CC BY-SA 4.0

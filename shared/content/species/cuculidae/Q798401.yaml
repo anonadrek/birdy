@@ -67,7 +67,7 @@ migration:
     has no documented migration into or through Scandinavian territories.'
 image_refs:
 - role: hero
-  path: Q798401/hero.jpg
+  path: Q798401/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -77,7 +77,7 @@ image_refs:
     scolopaceus.jpg
   commons_filename: Asian Koel (female) -Eudynamys scolopaceus.jpg
 - role: secondary
-  path: Q798401/secondary-1.jpg
+  path: Q798401/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -86,7 +86,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Eudynamys scolopaceus.jpg
   commons_filename: Eudynamys scolopaceus.jpg
 - role: secondary
-  path: Q798401/secondary-2.jpg
+  path: Q798401/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

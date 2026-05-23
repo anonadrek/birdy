@@ -91,7 +91,7 @@ migration:
     for this species.**'
 image_refs:
 - role: hero
-  path: Q742468/hero.jpg
+  path: Q742468/hero.webp
   width: 2400
   height: 1648
   license: Public domain
@@ -107,7 +107,7 @@ image_refs:
   commons_filename: Brillenente (Melanitta perspicillata), weiblich nahe Westport,
     Washington, Vereinigte Staaten.jpg
 - role: secondary
-  path: Q742468/secondary-1.jpg
+  path: Q742468/secondary-1.webp
   width: 1800
   height: 1350
   license: Public domain
@@ -116,7 +116,7 @@ image_refs:
     Oregon.jpg
   commons_filename: Melanitta perspicillata pair Oregon.jpg
 - role: secondary
-  path: Q742468/secondary-2.jpg
+  path: Q742468/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

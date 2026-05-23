@@ -96,7 +96,7 @@ migration:
     where food remains accessible.'
 image_refs:
 - role: hero
-  path: Q838665/hero.jpg
+  path: Q838665/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -105,7 +105,7 @@ image_refs:
     rubicola), Algarve.jpg
   commons_filename: European stonechat (Saxicola rubicola), Algarve.jpg
 - role: secondary
-  path: Q838665/secondary-1.jpg
+  path: Q838665/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -114,7 +114,7 @@ image_refs:
     rubicola).jpg
   commons_filename: European stonechat (Saxicola rubicola).jpg
 - role: secondary
-  path: Q838665/secondary-2.jpg
+  path: Q838665/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

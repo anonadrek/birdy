@@ -65,7 +65,7 @@ migration:
     Northern European bird guides as a regular or vagrant occurrence.'
 image_refs:
 - role: hero
-  path: Q933542/hero.jpg
+  path: Q933542/hero.webp
   width: 2048
   height: 1279
   license: CC BY 4.0
@@ -74,7 +74,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Columba junoniae 185005927.jpg
   commons_filename: Columba junoniae 185005927.jpg
 - role: secondary
-  path: Q933542/secondary-1.jpg
+  path: Q933542/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

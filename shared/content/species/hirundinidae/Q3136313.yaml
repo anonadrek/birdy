@@ -60,7 +60,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q3136313/hero.jpg
+  path: Q3136313/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -70,7 +70,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pale Martin (Riparia diluta).jpg
   commons_filename: Pale Martin (Riparia diluta).jpg
 - role: secondary
-  path: Q3136313/secondary-1.jpg
+  path: Q3136313/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q28106966/hero.jpg
+  path: Q28106966/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -46,7 +46,7 @@ image_refs:
     Pelican Creek (50402249032).jpg
   commons_filename: Gadwalls (Mareca strepera) on Pelican Creek (50402249032).jpg
 - role: secondary
-  path: Q28106966/secondary-1.jpg
+  path: Q28106966/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY 2.0
@@ -56,7 +56,7 @@ image_refs:
     strepera CR5 5187 (50968941648).jpg
   commons_filename: Snatterand, Gadwall, Mareca strepera CR5 5187 (50968941648).jpg
 - role: secondary
-  path: Q28106966/secondary-2.jpg
+  path: Q28106966/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

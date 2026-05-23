@@ -84,7 +84,7 @@ migration:
     established range.'
 image_refs:
 - role: hero
-  path: Q229408/hero.jpg
+  path: Q229408/hero.webp
   width: 2086
   height: 2400
   license: CC BY 2.0
@@ -100,7 +100,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Falco naumanni back crop.jpg
   commons_filename: Falco naumanni back crop.jpg
 - role: secondary
-  path: Q229408/secondary-1.jpg
+  path: Q229408/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Falco naumanni 91766371.jpg
   commons_filename: Falco naumanni 91766371.jpg
 - role: secondary
-  path: Q229408/secondary-2.jpg
+  path: Q229408/secondary-2.webp
   width: 1800
   height: 1201
   license: CC BY 4.0

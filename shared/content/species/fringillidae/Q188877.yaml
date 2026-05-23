@@ -91,7 +91,7 @@ migration:
     is predominantly a long-distance migrant.'
 image_refs:
 - role: hero
-  path: Q188877/hero.jpg
+  path: Q188877/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -101,7 +101,7 @@ image_refs:
     2021.jpg
   commons_filename: Brambling (Fringilla montifringilla) 2021.jpg
 - role: secondary
-  path: Q188877/secondary-1.jpg
+  path: Q188877/secondary-1.webp
   width: 1800
   height: 1217
   license: CC BY 2.0
@@ -111,7 +111,7 @@ image_refs:
     -male-8 (3).jpg
   commons_filename: Fringilla montifringilla -England -male-8 (3).jpg
 - role: secondary
-  path: Q188877/secondary-2.jpg
+  path: Q188877/secondary-2.webp
   width: 1800
   height: 1478
   license: CC BY 2.0

@@ -64,7 +64,7 @@ migration:
     apply to Scandinavian bird watching or regional ornithology.'
 image_refs:
 - role: hero
-  path: Q921533/hero.jpg
+  path: Q921533/hero.webp
   width: 2048
   height: 1366
   license: CC BY 4.0
@@ -73,7 +73,7 @@ image_refs:
     UAE 1.jpg
   commons_filename: Sterna repressa, Dibba, Al Fujairah, UAE 1.jpg
 - role: secondary
-  path: Q921533/secondary-1.jpg
+  path: Q921533/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY 4.0
@@ -82,7 +82,7 @@ image_refs:
     UAE 2.jpg
   commons_filename: Sterna repressa, Dibba, Al Fujairah, UAE 2.jpg
 - role: secondary
-  path: Q921533/secondary-2.jpg
+  path: Q921533/secondary-2.webp
   width: 1800
   height: 1126
   license: CC BY 4.0

@@ -102,7 +102,7 @@ marginalia:
   en: The blue tit will hang upside-down from a twig without hesitation.
 image_refs:
 - role: hero
-  path: Q25404/hero.jpg
+  path: Q25404/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -111,7 +111,7 @@ image_refs:
     on bird feeder 06.jpg
   commons_filename: Blue Tit (Cyanistes caeruleus) on bird feeder 06.jpg
 - role: secondary
-  path: Q25404/secondary-1.jpg
+  path: Q25404/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -121,7 +121,7 @@ image_refs:
     SPOL mangeoire 20250220 n03.jpg
   commons_filename: Cyanistes caeruleus ringing SPOL mangeoire 20250220 n03.jpg
 - role: secondary
-  path: Q25404/secondary-2.jpg
+  path: Q25404/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

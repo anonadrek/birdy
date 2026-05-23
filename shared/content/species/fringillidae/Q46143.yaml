@@ -61,7 +61,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q46143/hero.jpg
+  path: Q46143/hero.webp
   width: 2400
   height: 1786
   license: CC0
@@ -70,7 +70,7 @@ image_refs:
     20120519 05.JPG
   commons_filename: Carpodacus erythrinus Haukipudas 20120519 05.JPG
 - role: secondary
-  path: Q46143/secondary-1.jpg
+  path: Q46143/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -79,7 +79,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Carpodacus erythrinus 285729924.jpg
   commons_filename: Carpodacus erythrinus 285729924.jpg
 - role: secondary
-  path: Q46143/secondary-2.jpg
+  path: Q46143/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

@@ -68,7 +68,7 @@ migration:
     activity commences.'
 image_refs:
 - role: hero
-  path: Q129958/hero.jpg
+  path: Q129958/hero.webp
   width: 1600
   height: 2400
   license: CC0
@@ -78,7 +78,7 @@ image_refs:
   commons_filename: Little owl (Athene noctua) during guided walk with owls, Buggenhout,
     2025.jpg
 - role: secondary
-  path: Q129958/secondary-1.jpg
+  path: Q129958/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -86,7 +86,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Little owl (Athene noctua),.jpg
   commons_filename: Little owl (Athene noctua),.jpg
 - role: secondary
-  path: Q129958/secondary-2.jpg
+  path: Q129958/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

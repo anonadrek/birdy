@@ -103,7 +103,7 @@ migration:
     would represent exceptional vagrants rather than regular seasonal movements.'
 image_refs:
 - role: hero
-  path: Q389691/hero.jpg
+  path: Q389691/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -114,7 +114,7 @@ image_refs:
   commons_filename: Spotted sandpiper (Actitis macularius) looking for food along
     the Yellowstone River (41114085810).jpg
 - role: secondary
-  path: Q389691/secondary-1.jpg
+  path: Q389691/secondary-1.webp
   width: 1800
   height: 1200
   license: Public domain
@@ -124,7 +124,7 @@ image_refs:
     nest (28202030197).jpg
   commons_filename: Spotted sandpiper (Actitis macularius) nest (28202030197).jpg
 - role: secondary
-  path: Q389691/secondary-2.jpg
+  path: Q389691/secondary-2.webp
   width: 1800
   height: 1201
   license: CC0

@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q55111925/hero.jpg
+  path: Q55111925/hero.webp
   width: 2048
   height: 1365
   license: CC BY 4.0
@@ -46,7 +46,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Gyps rueppelli rueppelli 95505358.jpg
   commons_filename: Gyps rueppelli rueppelli 95505358.jpg
 - role: secondary
-  path: Q55111925/secondary-1.jpg
+  path: Q55111925/secondary-1.webp
   width: 1800
   height: 1124
   license: CC BY 4.0
@@ -55,7 +55,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Gyps rueppelli 95505669.jpg
   commons_filename: Gyps rueppelli 95505669.jpg
 - role: secondary
-  path: Q55111925/secondary-2.jpg
+  path: Q55111925/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q748033/hero.jpg
+  path: Q748033/hero.webp
   width: 2400
   height: 1603
   license: CC BY 2.0
@@ -49,7 +49,7 @@ image_refs:
   commons_filename: Encounter between a Red-knobbed Coot, Fulica cristata and an African
     Spoonbill, Platalea alba, at Marievale Nature Reserve, Gauteng, South Africa (44430191204).jpg
 - role: secondary
-  path: Q748033/secondary-1.jpg
+  path: Q748033/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 2.0
@@ -61,7 +61,7 @@ image_refs:
   commons_filename: Encounter between a Red-knobbed Coot, Fulica cristata and an African
     Spoonbill, Platalea alba, at Marievale Nature Reserve, Gauteng, South Africa (44430191644).jpg
 - role: secondary
-  path: Q748033/secondary-2.jpg
+  path: Q748033/secondary-2.webp
   width: 1800
   height: 1202
   license: CC BY 2.0

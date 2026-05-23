@@ -86,7 +86,7 @@ migration:
     accidental visitor to this region.'
 image_refs:
 - role: hero
-  path: Q191394/hero.jpg
+  path: Q191394/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -96,7 +96,7 @@ image_refs:
     dimorpha (22194228345).jpg
   commons_filename: Ardeola ralloides and Egretta dimorpha (22194228345).jpg
 - role: secondary
-  path: Q191394/secondary-1.jpg
+  path: Q191394/secondary-1.webp
   width: 1800
   height: 1198
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
     Aswan (52260545878).jpg
   commons_filename: Squacco Heron (Ardeola ralloides) Aswan (52260545878).jpg
 - role: secondary
-  path: Q191394/secondary-2.jpg
+  path: Q191394/secondary-2.webp
   width: 1800
   height: 1182
   license: CC BY 2.0

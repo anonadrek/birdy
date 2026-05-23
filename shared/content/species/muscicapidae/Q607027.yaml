@@ -68,7 +68,7 @@ migration:
     northern Europe.'
 image_refs:
 - role: hero
-  path: Q607027/hero.jpg
+  path: Q607027/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -78,7 +78,7 @@ image_refs:
     galactotes.jpg
   commons_filename: 2015-07-10 08.03.53 Cercotrichas galactotes.jpg
 - role: secondary
-  path: Q607027/secondary-1.jpg
+  path: Q607027/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -89,7 +89,7 @@ image_refs:
   commons_filename: (Cercotrichas galactotes) in Iraq دخلة حمراء (شوّالة) في العراق
     01.jpg
 - role: secondary
-  path: Q607027/secondary-2.jpg
+  path: Q607027/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

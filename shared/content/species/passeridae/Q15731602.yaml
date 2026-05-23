@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q15731602/hero.jpg
+  path: Q15731602/hero.webp
   width: 2048
   height: 1536
   license: CC0

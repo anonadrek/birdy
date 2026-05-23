@@ -96,7 +96,7 @@ migration:
     forcing additional birds to relocate temporarily.'
 image_refs:
 - role: hero
-  path: Q79915/hero.jpg
+  path: Q79915/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
     നീലപ്പൊന്മാന്‍. (25114264257).jpg
   commons_filename: Common Kingfisher (Alcedo atthis) നീലപ്പൊന്മാന്‍. (25114264257).jpg
 - role: secondary
-  path: Q79915/secondary-1.jpg
+  path: Q79915/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -116,7 +116,7 @@ image_refs:
     - Alcedo atthis 6.jpg
   commons_filename: IJsvogel - common kingfisher - Alcedo atthis 6.jpg
 - role: secondary
-  path: Q79915/secondary-2.jpg
+  path: Q79915/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

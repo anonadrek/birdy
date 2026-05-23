@@ -62,7 +62,7 @@ migration:
     focused on local avifauna.'
 image_refs:
 - role: hero
-  path: Q386116/hero.jpg
+  path: Q386116/hero.webp
   width: 2400
   height: 1487
   license: CC BY 2.0
@@ -73,7 +73,7 @@ image_refs:
   commons_filename: White-browed coucal, Centropus superciliosus, at Chobe National
     Park, Botswana (32278707296).jpg
 - role: secondary
-  path: Q386116/secondary-1.jpg
+  path: Q386116/secondary-1.webp
   width: 1800
   height: 1068
   license: CC BY 2.0
@@ -84,7 +84,7 @@ image_refs:
   commons_filename: White-browed coucal, Centropus superciliosus, at Chobe National
     Park, Botswana (32278713766).jpg
 - role: secondary
-  path: Q386116/secondary-2.jpg
+  path: Q386116/secondary-2.webp
   width: 1800
   height: 1255
   license: CC BY 2.0

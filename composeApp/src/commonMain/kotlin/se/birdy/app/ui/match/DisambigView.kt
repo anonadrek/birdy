@@ -46,6 +46,7 @@ import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
+import se.birdy.app.util.speciesImageUri
 import se.birdy.content.SpeciesId
 
 @Composable
@@ -176,7 +177,7 @@ private fun CandidateCard(
         ) {
             if (heroImage != null) {
                 AsyncImage(
-                    model = Res.getUri("files/images/${heroImage.path}"),
+                    model = speciesImageUri(heroImage.path),
                     contentDescription = null,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop,

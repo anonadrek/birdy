@@ -96,7 +96,7 @@ migration:
     hares, rabbits, and ground squirrels even during harsh winters.'
 image_refs:
 - role: hero
-  path: Q41181/hero.jpg
+  path: Q41181/hero.webp
   width: 2400
   height: 1693
   license: CC BY 3.0
@@ -106,7 +106,7 @@ image_refs:
     1758).jpg
   commons_filename: Aquila chrysaetos (Linnaeus 1758).jpg
 - role: secondary
-  path: Q41181/secondary-1.jpg
+  path: Q41181/secondary-1.webp
   width: 1800
   height: 1231
   license: CC BY-SA 4.0
@@ -117,7 +117,7 @@ image_refs:
   commons_filename: Busardo mixto (Parabuteo unicinctus), Arcos de la Frontera, Cádiz,
     España, 2015-12-08, DD 06.jpg
 - role: secondary
-  path: Q41181/secondary-2.jpg
+  path: Q41181/secondary-2.webp
   width: 1800
   height: 1597
   license: CC BY-SA 3.0

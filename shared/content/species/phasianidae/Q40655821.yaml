@@ -67,7 +67,7 @@ migration:
     is not applicable.'
 image_refs:
 - role: hero
-  path: Q40655821/hero.jpg
+  path: Q40655821/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -77,7 +77,7 @@ image_refs:
     scotica (52515345283).jpg
   commons_filename: Red Grouse - Lagopus lagopus scotica (52515345283).jpg
 - role: secondary
-  path: Q40655821/secondary-1.jpg
+  path: Q40655821/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 2.0
@@ -92,7 +92,7 @@ image_refs:
     - 6340386.jpg
   commons_filename: Lagopus lagopus scotica - geograph.org.uk - 6340386.jpg
 - role: secondary
-  path: Q40655821/secondary-2.jpg
+  path: Q40655821/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 3.0

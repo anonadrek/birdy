@@ -88,7 +88,7 @@ migration:
     the warmer season.
 image_refs:
 - role: hero
-  path: Q104867606/hero.jpg
+  path: Q104867606/hero.webp
   width: 2048
   height: 1282
   license: CC BY 4.0

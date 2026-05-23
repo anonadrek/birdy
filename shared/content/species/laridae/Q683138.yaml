@@ -83,7 +83,7 @@ migration:
     sources with specific data on its movements and seasonal presence would be required.'
 image_refs:
 - role: hero
-  path: Q683138/hero.jpg
+  path: Q683138/hero.webp
   width: 2400
   height: 1994
   license: CC BY-SA 4.0
@@ -92,7 +92,7 @@ image_refs:
     Armenia (Armenian).png
   commons_filename: Larus armenicus range map in Armenia (Armenian).png
 - role: secondary
-  path: Q683138/secondary-1.jpg
+  path: Q683138/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -101,7 +101,7 @@ image_refs:
     Սևանի ազգային պարկում, ՄԲ 14.jpg
   commons_filename: Հայկական որոր (Larus armenicus) Սևանի ազգային պարկում, ՄԲ 14.jpg
 - role: secondary
-  path: Q683138/secondary-2.jpg
+  path: Q683138/secondary-2.webp
   width: 1800
   height: 1073
   license: CC BY-SA 4.0

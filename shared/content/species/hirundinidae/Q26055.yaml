@@ -95,7 +95,7 @@ migration:
     absent during the harsh winter months when food is unavailable.'
 image_refs:
 - role: hero
-  path: Q26055/hero.jpg
+  path: Q26055/hero.webp
   width: 2400
   height: 1696
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
     07.JPG
   commons_filename: Delichon urbicum Oulu 20120527 07.JPG
 - role: secondary
-  path: Q26055/secondary-1.jpg
+  path: Q26055/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -113,7 +113,7 @@ image_refs:
     Wunder 6 August 2016 DSC04743.jpg
   commons_filename: Delichon urbicum from Blaues Wunder 6 August 2016 DSC04743.jpg
 - role: secondary
-  path: Q26055/secondary-2.jpg
+  path: Q26055/secondary-2.webp
   width: 1800
   height: 1350
   license: CC0
