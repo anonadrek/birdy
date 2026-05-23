@@ -507,6 +507,7 @@
     <string name="settings_section_account">KONTO</string>
     <string name="settings_section_about_birdy">OM BIRDY</string>
     <string name="settings_section_legal">JURIDISKT</string>
+    <string name="settings_row_website">Webbplats</string>
     <string name="settings_row_rate">Betygsätt Birdy</string>
     <string name="settings_row_share">Dela appen</string>
     <string name="settings_row_feedback">Feedback</string>
