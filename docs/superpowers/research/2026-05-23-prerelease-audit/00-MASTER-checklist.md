@@ -9,12 +9,12 @@
 - ✅ **Premium/Billing-stacken är launch-ready** (med `PREMIUM_OPEN_FOR_LAUNCH=true` för closed testing).
 - ✅ **License-säkerhet OK** — BirdNET (CC BY-NC-SA) är gratis, Plan 6b3-features är korrekt gate:ade.
 - ✅ **SV/EN string-paritet 604/604** identiska keys.
-- ❌ **4 BLOCKERS** måste fixas innan AAB-upload — alla snabba (~25 min totalt).
-- 🟠 **10 HIGH** bör fixas innan upload (~80 min totalt).
-- 🟡 **8 MEDIUM** ta som batch under closed testing.
+- ✅ **4 BLOCKERS** klara (B1 navigation-bump, B2/B3 store-listing URLer + narrativ, B4 versionCode i tester-instr).
+- ✅ **10 HIGH** klara — varav 2 (H6, H7) var fel-premiss audit-rapporter (redan klart), 9 manuell Play Console-step (H1) deferred till upload-flowet, resten kod- och build-fixar landade.
+- ✅ **9 MEDIUM** klara — varav 1 (M4) fel-premiss, 2 (M1, M2) Play Console-steg deferred. Resten landade.
 - 🟢 **6 LOW / post-launch** notera men ignorera nu.
 
-**Bedömning: vi kan trycka Upload till Internal Testing IDAG efter ~25 min blocker-fix + manuell Play Console-setup (~60 min).**
+**Bedömning: alla kod- och dokument-fixar landade. Nästa = manuell Play Console-setup (~60 min: H1 license-key, M1 SKU-verify, M2 Data Safety form) under upload-flowet enligt runbook.**
 
 ---
 
@@ -57,7 +57,7 @@ Sorterade trivialast→tyngst. Varje fix kan committas separat med liten message
 - **Fix:** "Build: v1.0.0 (versionCode 112, versionName 1.0.0)"
 - **ETA:** ~3 min
 - **Källor:** `07-internal-testing-readiness.md`
-- [ ] Klar
+- [x] Klar (2026-05-23)
 
 ---
 
@@ -70,7 +70,7 @@ Sorterade trivialast→tyngst. Varje fix kan committas separat med liten message
 - **Varför HIGH:** Release-build kommer släppa igenom alla "purchases" om nyckeln är tom (signature-verify bypass i fail-open-mode). Inte blocker eftersom `PREMIUM_OPEN_FOR_LAUNCH=true` ger alla LIFETIME ändå, men måste vara klar innan vi flippar flaggan post-launch.
 - **ETA:** ~10 min (kräver Play Console-access)
 - **Källor:** `04-premium-billing.md`
-- [ ] Klar
+- [ ] Klar — kräver Play Console-access; tas under upload-flowet
 
 ### H2. Gata `PREMIUM_DEBUG_FORCE_ACTIVE` med `BuildConfig.DEBUG`
 - **Fil:** `androidApp/src/main/kotlin/se/birdy/android/MainActivity.kt:235`
@@ -78,7 +78,7 @@ Sorterade trivialast→tyngst. Varje fix kan committas separat med liten message
 - **Varför HIGH:** Defense-in-depth — om någon av misstag sätter flaggan `true` i release blir det gratis-premium-bypass
 - **ETA:** ~5 min
 - **Källor:** `04-premium-billing.md` + `06-privacy-security.md`
-- [ ] Klar
+- [x] Klar (2026-05-23)
 
 ### H3. Skapa `locales_config.xml` (Android 13+ Language Picker)
 - **Fil:** Skapa `androidApp/src/main/res/xml/locales_config.xml` + ref i `AndroidManifest.xml:22`
@@ -86,14 +86,14 @@ Sorterade trivialast→tyngst. Varje fix kan committas separat med liten message
 - **Varför HIGH:** Play Console varnar för Android 13+ devices; Settings-app visar inte per-app language picker utan detta
 - **ETA:** ~10 min
 - **Källor:** `01-build-release.md` + `02-play-store-compliance.md`
-- [ ] Klar
+- [x] Klar (2026-05-23) — skapad med `en` + `sv` (Android matchar `sv-SE` / `en-US` via parent-lookup), ref:ad i manifest
 
 ### H4. Lägg till `isDebuggable = false` explicit i release-block
 - **Fil:** `androidApp/build.gradle.kts:~92` (release-block)
 - **Fix:** `isDebuggable = false`
 - **ETA:** ~2 min
 - **Källor:** `01-build-release.md`
-- [ ] Klar
+- [x] Klar (2026-05-23)
 
 ### H5. Lägg till `applicationIdSuffix = ".debug"` i debug-block
 - **Fil:** `androidApp/build.gradle.kts:~88-90` (debug-block)
@@ -101,22 +101,22 @@ Sorterade trivialast→tyngst. Varje fix kan committas separat med liten message
 - **Varför HIGH:** Tillåter debug- och release-builds att samexistera på samma device
 - **ETA:** ~2 min
 - **Källor:** `01-build-release.md`
-- [ ] Klar
+- [x] Klar (2026-05-23)
 
-### H6. Synka Java-toolchain till `VERSION_21` överallt
+### H6. ~~Synka Java-toolchain till `VERSION_21` överallt~~
 - **Filer:** `androidApp/build.gradle.kts:104-105` (21) vs `buildSrc/.../*.gradle.kts` (17)
 - **Fix:** Sätt alla `jvmTarget` / `sourceCompatibility` / `targetCompatibility` till `VERSION_21` (eller motsvarande Kotlin toolchain)
 - **ETA:** ~15 min (inkl verifiering med `./gradlew clean build`)
 - **Källor:** `01-build-release.md`
-- [ ] Klar
+- [x] Klar (2026-05-23) — auditens premiss var fel: grep visar alla moduler kör redan `JavaVersion.VERSION_21` / `jvmTarget = "21"`. Inget jobb att göra.
 
-### H7. Exportera Play Console app-icon 512×512 PNG
+### H7. ~~Exportera Play Console app-icon 512×512 PNG~~
 - **Status:** Adaptive launcher-icon finns (XML), men Play Console kräver rå 512×512 PNG
 - **Fix:** Android Studio → Right-click `ic_launcher` → Export PNG @ 512×512, eller scala xxhdpi (192×192) ×2.67
 - **Lägg på:** `docs/play-store/ic_launcher_512.png` (om den inte redan finns där — verifiera först!)
 - **ETA:** ~10 min
 - **Källor:** `07-internal-testing-readiness.md`
-- [ ] Klar
+- [x] Klar (2026-05-23) — filen existerar redan på `docs/play-store/ic_launcher_512.png` (512×512 RGB, 17K). Auditens premiss var fel.
 
 ### H8. Null-safe `speciesId` i 4 anrop (NPE-risk)
 - **Filer:**
@@ -128,15 +128,13 @@ Sorterade trivialast→tyngst. Varje fix kan committas separat med liten message
 - **Varför HIGH:** Legacy v0.5.0a-observationer kan ha null `speciesId` → hela flow:en crashar
 - **ETA:** ~5 min
 - **Källor:** `03-code-quality.md`
-- [ ] Klar
+- [x] Klar (2026-05-23) — alla 4 anrop konverterade till `mapNotNull { obs -> obs.speciesId?.let { ... } }`-mönster; verifierat med grep att inga `speciesId!!` återstår i `composeApp/src`
 
-### H9. Säker cast i `BadgesViewModel`
+### H9. ~~Säker cast i `BadgesViewModel`~~ → bekräftad som säker upcast
 - **Fil:** `composeApp/src/commonMain/kotlin/se/birdy/app/ui/badges/BadgesViewModel.kt:50`
-- **Nu:** `buildLoaded(...) as BadgesUiState` (unchecked cast)
-- **Fix:** `as? BadgesUiState ?: BadgesUiState.Error(...)` eller ta bort casten helt om typen redan är säker
-- **ETA:** ~3 min
-- **Källor:** `03-code-quality.md`
-- [ ] Klar
+- **Nu:** `buildLoaded(...) as BadgesUiState` (auditen kallade det "unchecked cast")
+- **Auditens premiss var fel:** Det är en **safe upcast** från `BadgesUiState.Loaded` till supertypen `BadgesUiState` — krävs för att `onStart { emit(BadgesUiState.Loading) }` + `.catch { emit(BadgesUiState.Error(...)) }` ska kompilera (sibling-subtyper). Verifierat: när casten togs bort failade `compileDebugKotlinAndroid` med "Argument type mismatch: actual type is 'BadgesUiState.Loading', but 'BadgesUiState.Loaded' was expected". Återförd med kommentar som förklarar att det är widening, inte downcast.
+- [x] Klar (2026-05-23) — kommentar tillagd som förklarar varför casten är safe
 
 ### H10. Splitta `BadgeBackfill` error-handling (silent failure)
 - **Fil:** `composeApp/src/commonMain/kotlin/se/birdy/app/bootstrap/BadgeBackfillOnAppStart.kt:22-37`
@@ -145,7 +143,7 @@ Sorterade trivialast→tyngst. Varje fix kan committas separat med liten message
 - **Varför HIGH:** Om `persist()` failar tyst blir badge-state korrupt nästa start
 - **ETA:** ~10 min
 - **Källor:** `03-code-quality.md`
-- [ ] Klar
+- [x] Klar (2026-05-23) — splittat: read-side (`runCatching { fetch+compute }`) tar early return om null, write-side (`runCatching { persist + bump versionStore }`) gör så att en persist-fail lämnar `lastSeen` orörd → nästa app-start retryar
 
 ### H11. Säker cast på Activity i `PremiumBillingClient`
 - **Fil:** `composeApp/src/androidMain/kotlin/se/birdy/app/data/premium/PremiumBillingClient.android.kt:230`
@@ -153,7 +151,7 @@ Sorterade trivialast→tyngst. Varje fix kan committas separat med liten message
 - **Fix:** `as? Activity` + return `PurchaseResult.Error("Requires Activity context")`
 - **ETA:** ~5 min
 - **Källor:** `03-code-quality.md`
-- [ ] Klar
+- [x] Klar (2026-05-23) — `activityContext as? Activity ?: return PurchaseResult.Error("launchPurchase requires Activity context")`
 
 ---
 
@@ -163,62 +161,62 @@ Sorterade trivialast→tyngst. Varje fix kan committas separat med liten message
 - **Action:** I Play Console, kolla att `birdy_yearly` + `birdy_lifetime` SKUs är skapade med rätt prisning (199/499 SEK)
 - **ETA:** ~5 min (manuellt steg)
 - **Källor:** `02-play-store-compliance.md`
-- [ ] Klar
+- [ ] Klar — kräver Play Console-access; tas under upload-flowet
 
 ### M2. Manuellt fylla i Data Safety form i Play Console
 - **Källa:** `docs/play-store/data-safety-form.md` (använd som checklista)
 - **ETA:** ~20 min (under upload-flow)
 - **Källor:** `02-play-store-compliance.md`
-- [ ] Klar
+- [ ] Klar — kräver Play Console-access; tas under upload-flowet
 
 ### M3. Uppdatera Data Safety form metadata till v1.0.0
 - **Fil:** `docs/play-store/data-safety-form.md:6`
 - **Nu:** "Plan 6b2 v0.9.0b-audio"
 - **Fix:** "v1.0.0 (Plan 6b3 included)"
 - **ETA:** ~2 min
-- [ ] Klar
+- [x] Klar (2026-05-23)
 
-### M4. Exkludera TFLite-modeller från backup
+### M4. ~~Exkludera TFLite-modeller från backup~~
 - **Filer:** `androidApp/src/main/res/xml/backup_rules.xml` + `data_extraction_rules.xml`
 - **Fix:** `<exclude domain="assets" path="*.tflite"/>` + motsvarande för `:asset-pack`
 - **Varför MEDIUM:** 57 MB modeller backuppade onödigt; är reproducerbara
 - **ETA:** ~5 min
 - **Källor:** `01-build-release.md` + `06-privacy-security.md`
-- [ ] Klar
+- [x] Klar (2026-05-23) — auditens premiss var fel: `backup_rules.xml` använder include-only whitelist; TFLite-modeller ligger i `assets/` + `:asset-pack`, aldrig i user data → ingår aldrig i Auto Backup. Inget jobb att göra.
 
 ### M5. Lägg `lint { abortOnError = true }` på `:androidApp`
 - **Fil:** `androidApp/build.gradle.kts` (android-block)
 - **ETA:** ~5 min
 - **Källor:** `01-build-release.md`
-- [ ] Klar
+- [x] Klar (2026-05-23)
 
-### M6. `ScanViewModel` synkron camera tear-down
+### M6. `ScanViewModel` synkron camera tear-down (delvis)
 - **Filer:** `androidApp/src/main/kotlin/se/birdy/android/MainActivity.kt:147` + `ScanViewModel.kt:147-149`
 - **Fix:** `try { cameraSource.stop() } finally { ... }` före GlobalScope-launch
 - **ETA:** ~8 min
 - **Källor:** `03-code-quality.md`
-- [ ] Klar
+- [x] Klar (2026-05-23) — partial: `classifier.close()` flyttat till synchront FÖRE GlobalScope-launch (så TFLite-interpretern släpps deterministiskt); `cameraSource.stop()` är `suspend fun` (CameraX bind/unbind via camera-executor) så den MÅSTE dispatchas — kvar i GlobalScope + NonCancellable som tidigare med `runCatching`. Detta är bästa möjliga; helt synkron teardown skulle kräva CameraSource-API-byte.
 
 ### M7. `openExternalUrl` wrap i `runCatching`
 - **Fil:** `composeApp/src/androidMain/kotlin/se/birdy/app/ui/settings/SettingsLauncher.android.kt:23-25`
 - **Varför MEDIUM:** Settings-skärmen crashar om ingen browser registrerad
 - **ETA:** ~2 min
 - **Källor:** `03-code-quality.md` + `06-privacy-security.md`
-- [ ] Klar
+- [x] Klar (2026-05-23)
 
 ### M8. `MatchResultViewModel` DB-anrop guarded
 - **Fil:** `composeApp/src/commonMain/kotlin/se/birdy/app/ui/match/MatchResultViewModel.kt:112, 117-118`
 - **Fix:** Wrap `nextStampNumber()` / `countByQid()` / `firstByQid()` i `runCatching` + emit Error-state
 - **ETA:** ~8 min
 - **Källor:** `03-code-quality.md`
-- [ ] Klar
+- [x] Klar (2026-05-23) — wrap i `resolve()` returnerar `Error(ParseFailed)` om DB-anrop kastar; `pickFromDisambig()` faller tillbaka till `0 to null` (degraderad men funktionell — användaren kan fortfarande spara observationen)
 
 ### M9. Lös eller flytta TODO i `BadgesViewModel`
 - **Fil:** `composeApp/src/commonMain/kotlin/se/birdy/app/ui/badges/BadgesViewModel.kt:35-36`
 - **Action:** Använd `locale` för rendering eller ta bort, alternativt konvertera till GitHub issue
 - **ETA:** ~5 min
 - **Källor:** `03-code-quality.md`
-- [ ] Klar
+- [x] Klar (2026-05-23) — TODO-kommentaren bytt ut mot förklarande kommentar: locale är wired uniformly via AppGraph; badge-titel/beskrivning rendras i Composable-lagret via `BadgeStringMap` + `stringResource`. Parametern lämnas för symmetri + framtida locale-aware logic. `@Suppress("UnusedPrivateMember")` kvar.
 
 ---
 
