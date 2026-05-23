@@ -75,7 +75,7 @@ class AudioScanViewModel(
         const val SAMPLE_RATE = 48_000
         const val WINDOW_SAMPLES = SAMPLE_RATE * 3 // 144_000
         const val STRIDE_SAMPLES = SAMPLE_RATE // 48_000 → 1s
-        const val AUTO_STOP_THRESHOLD = 0.60f
+        const val AUTO_STOP_THRESHOLD = 0.65f
         const val MIN_RECORD_MS = 3_000L
         const val MAX_RECORD_MS = 60_000L
         const val MAX_BUFFER_SAMPLES = SAMPLE_RATE * 60 // 60s

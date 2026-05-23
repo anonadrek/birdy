@@ -200,9 +200,13 @@ def main() -> None:
         # Dequantize if output is uint8
         if output_dtype == np.uint8:
             scale, zero_point = output_details["quantization"]
-            scores: np.ndarray = (raw_scores.astype(np.float32) - zero_point) * scale  # type: ignore[assignment]
+            logits: np.ndarray = (raw_scores.astype(np.float32) - zero_point) * scale  # type: ignore[assignment]
         else:
-            scores = raw_scores.astype(np.float32)
+            logits = raw_scores.astype(np.float32)
+        # BirdNET-Lite emits pre-sigmoid logits — mirror BirdNET-Analyzer's flat_sigmoid
+        # post-processing so confidences land in [0, 1]. Matches `flatSigmoid` in
+        # AndroidTfliteAudioRunner.kt.
+        scores = 1.0 / (1.0 + np.exp(-np.clip(logits, -15.0, 15.0)))
 
         top_indices = np.argsort(scores)[::-1][:3]
         top3_qids = [idx_to_qid.get(int(i)) for i in top_indices]
