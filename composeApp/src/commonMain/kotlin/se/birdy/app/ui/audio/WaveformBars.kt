@@ -16,13 +16,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.AccentCopper
 import kotlin.math.sin
 
 /**
- * 12-bar waveform visualization driven by RMS energy.
+ * Copper-accent waveform bars matching the marketing site (`Listen.astro`).
+ * 48 bars by default; live RMS modulates height for a more organic pulse than
+ * the website's faked sin-wave animation.
  *
- * Each bar height is phase-shifted by [sin] to give organic movement.
  * When [frozen] is true (Analyzing state) the animation slows to settle.
  */
 @Composable
@@ -30,7 +31,7 @@ fun WaveformBars(
     rms: Float,
     frozen: Boolean,
     modifier: Modifier = Modifier,
-    barCount: Int = 12,
+    barCount: Int = 48,
 ) {
     val target = rms.coerceIn(0f, 1f)
     val animated by animateFloatAsState(
@@ -40,11 +41,8 @@ fun WaveformBars(
     )
 
     Row(
-        modifier =
-            modifier
-                .height(60.dp)
-                .fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(5.dp),
+        modifier = modifier.height(80.dp).fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(3.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         repeat(barCount) { i ->
@@ -56,7 +54,7 @@ fun WaveformBars(
                         .weight(1f)
                         .fillMaxHeight(heightFraction)
                         .clip(RoundedCornerShape(2.dp))
-                        .background(MarginaliaInk),
+                        .background(AccentCopper.copy(alpha = 0.85f)),
             )
         }
     }
