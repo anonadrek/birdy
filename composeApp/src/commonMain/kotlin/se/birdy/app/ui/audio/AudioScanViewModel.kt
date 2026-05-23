@@ -166,13 +166,16 @@ class AudioScanViewModel(
         if (bufferEnd < WINDOW_SAMPLES) return
         if (bufferEnd - lastClassifiedAtSamples < STRIDE_SAMPLES && lastClassifiedAtSamples > 0) return
 
+        // Check parent job BEFORE mutating state so an inactive parent doesn't
+        // leave inflight=true stuck (only cleared by cancelRecording otherwise).
+        val parent = inferenceJob?.takeIf { it.isActive } ?: return
+
         val windowEnd = bufferEnd
         val windowStart = windowEnd - WINDOW_SAMPLES
         val window = fullBuffer.copyOfRange(windowStart, windowEnd)
         lastClassifiedAtSamples = bufferEnd
         inflight = true
 
-        val parent = inferenceJob?.takeIf { it.isActive } ?: return
         viewModelScope.launch(parent + inferenceDispatcher) {
             try {
                 val clf = classifierInstance ?: return@launch
@@ -211,6 +214,10 @@ class AudioScanViewModel(
         val current = _state.value as? AudioScanState.Recording ?: return
         val analyzing = AudioScanState.Analyzing(rmsFrozen = current.rms)
         if (!_state.compareAndSet(current, analyzing)) return
+
+        // Cancel any in-flight streaming inference — bestSoFar is captured below
+        // and further writes would be wasted work past the Analyzing transition.
+        inferenceJob?.cancel()
 
         val fullPcm =
             runCatching { handle?.stopAndFlush() ?: ShortArray(bufferEnd) }
@@ -324,8 +331,9 @@ interface AudioRecorderApi {
 interface RecorderHandle {
     /**
      * Stop recorder, flush remaining buffered chunks, and return the full captured PCM.
-     * Idempotent: subsequent calls return the same ShortArray instance. If [cancel]
-     * was called first, returns an empty ShortArray.
+     * Idempotent: subsequent calls return content-equal arrays of the captured PCM
+     * (implementations MAY allocate fresh copies — callers must not rely on identity).
+     * If [cancel] was called first, returns an empty ShortArray.
      */
     suspend fun stopAndFlush(): ShortArray
 
