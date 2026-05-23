@@ -4,7 +4,7 @@
 Birdy — Bird Scanner
 
 ## Short description (max 80 chars)
-Scan birds with your camera, learn about them, collect them in your field journal.
+Identify birds by camera, learn about them, collect them in your journal.
 
 ## Long description (max 4000 chars)
 
