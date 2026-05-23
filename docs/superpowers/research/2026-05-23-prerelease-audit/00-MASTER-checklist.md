@@ -33,12 +33,12 @@ Sorterade trivialast→tyngst. Varje fix kan committas separat med liten message
 
 ### B2. Uppdatera Play Store-listing URLer (SV + EN)
 - **Filer:** `docs/play-store/store-listing-en.md:74-75` + `docs/play-store/store-listing-sv.md:74-75`
-- **Nu:** `https://anonadrek.github.io/birdy/{privacy,terms}.html` + `https://anonadrek.github.io/birdy/`
-- **Fix:** Byt till `https://birdy.community/`, `https://birdy.community/legal/privacy/`, `https://birdy.community/legal/terms/`
-- **Varför blocker:** Play Console linkar till döda GH Pages-sidor; bryter mot privacy-policy-konformitet
-- **ETA:** ~5 min (sed-replace i båda filer)
+- **Före:** `https://anonadrek.github.io/birdy/` + `https://anonadrek.github.io/birdy/privacy.html`
+- **Efter:** `https://birdy.community/` + `https://birdy.community/legal/privacy/`
+- **Not:** Terms-rad lades inte till (var inte med i original-listing); kan adresseras separat om Play Console kräver det
+- **Säkerhetscheck:** `rg anonadrek.github.io docs/play-store/` → noll träffar
 - **Källor:** `02-play-store-compliance.md` + `07-internal-testing-readiness.md`
-- [ ] Klar
+- [x] Klar (2026-05-23)
 
 ### B3. Uppdatera "What's new"-section i store-listings till v1.0.0
 - **Filer:** `docs/play-store/store-listing-en.md:52` + samma i SV

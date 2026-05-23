@@ -71,5 +71,5 @@ Everyone (13+)
 
 ## Contact
 - Email: albin@abrahamssons.se
-- Website: https://anonadrek.github.io/birdy/
-- Privacy policy: https://anonadrek.github.io/birdy/privacy.html
+- Website: https://birdy.community/
+- Privacy policy: https://birdy.community/legal/privacy/

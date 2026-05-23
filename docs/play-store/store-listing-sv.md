@@ -71,5 +71,5 @@ Alla åldrar (13+)
 
 ## Kontakt
 - E-post: albin@abrahamssons.se
-- Webbplats: https://anonadrek.github.io/birdy/
-- Integritetspolicy: https://anonadrek.github.io/birdy/privacy.html
+- Webbplats: https://birdy.community/
+- Integritetspolicy: https://birdy.community/legal/privacy/
