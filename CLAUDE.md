@@ -193,7 +193,7 @@ Tagits in från v1-design-spec så vi inte tappar bort dem. Inget byggs här inn
 ML-modellerna är redan globalt tränade (AIY V1 ≈ 965 klasser, BirdNET-Lite ≈ 6000) — vi har bara filtrerat till EU. Expansionsjobbet sitter i **content-pipeline** (en YAML + plate-foto per art), **regional migrations-/säsongsdata**, **on-demand asset packs** (APK växer snabbt — bortom v1.0:s 136 MB-base) och **fler språk**.
 
 - **v1.0 — Norden/Europa (839 arter)** ← current
-- **v2 — "Asien + hela Europa":** Utöka content till delar av Asien (lämpligen Östasien/Indien först). Webb: ny `/regions/`-sida med coverage-status (✅ supportat / 🟡 snart / ⬜ planerat) — byggs först när v2-arbetet faktiskt är igång, annars står den tom.
+- **v2 — "Asien + hela Europa" + iOS-launch:** Utöka content till delar av Asien (lämpligen Östasien/Indien först) **och** släpp samtidigt på App Store. KMP-skelettet finns redan — iOS-arbetet blir Compose Multiplatform-iOS-target + SwiftUI-shim för plattforms-API:er (kamera, audio, billing → StoreKit istället för Play Billing, share-sheet, file-export). Webb: ny `/regions/`-sida med coverage-status (✅ supportat / 🟡 snart / ⬜ planerat) — byggs först när v2-arbetet faktiskt är igång, annars står den tom.
 - **v3 — "Hela världen":** Alla återstående kontinenter; full content-skalning + språkstöd.
 
 ### Parallella feature-spår (inte version-bundna)
@@ -202,7 +202,7 @@ Kan landa när som helst längs geografi-tracken; placering bestäms när vi nä
 
 - **"Karta & moln":** Konton, molnsynk av dagboken, karta med fynd från publika datakällor, push-notiser om sällsynta arter nära användaren. `Observation`-schemat har nullable `latitude` / `longitude` / `location_label` från Plan 5a så vi bara fyller i nya rader (ingen migration behövs).
 - **"Community":** Delning av fynd, kommentarer, flöde, moderering.
-- **Övrigt:** Quiz/utbildningsläge, fullt offline-läge för längre exkursioner, iOS.
+- **Övrigt:** Quiz/utbildningsläge, fullt offline-läge för längre exkursioner.
 
 ## Avslutade planer (referens)
 
