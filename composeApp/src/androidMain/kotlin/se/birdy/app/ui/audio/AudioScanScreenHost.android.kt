@@ -76,7 +76,6 @@ actual fun AudioScanScreenHost(
         permissionState = permissionState,
         onStartRecording = vm::startRecording,
         onStopRecording = vm::stopRecording,
-        onCancel = vm::cancelRecording,
         onRequestPermission = permissionController::request,
         onOpenSettings = permissionController::openSettings,
         onRetry = vm::cancelRecording,

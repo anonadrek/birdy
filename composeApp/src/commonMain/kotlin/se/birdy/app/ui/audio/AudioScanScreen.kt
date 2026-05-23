@@ -41,7 +41,6 @@ fun AudioScanScreen(
     permissionState: PermissionState,
     onStartRecording: () -> Unit,
     onStopRecording: () -> Unit,
-    onCancel: () -> Unit,
     onRequestPermission: () -> Unit,
     onOpenSettings: () -> Unit,
     onRetry: () -> Unit,
