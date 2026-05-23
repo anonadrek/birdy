@@ -37,10 +37,11 @@
     "sub": "hur det faktiskt ser ut, i din telefon."
   },
   "listen": {
-    "eyebrow": "ELLER HÅLL NER MIKEN · PÅ ENHETEN",
+    "eyebrow": "ELLER TRYCK PÅ MIKEN · PÅ ENHETEN",
     "headline": "Hör den. *Namnge* den.",
-    "sub": "Tre sekunder. Fågeln namnger sig själv.",
-    "body": "Håll inspelningsknappen i 3 sekunder. Samma AI på enheten lyssnar efter fågeln. Samma loop. Samma dagbok. Inget internet behövs."
+    "sub": "Tryck. Lyssna. Fågeln namnger sig själv.",
+    "body": "Tryck på inspelningsknappen. Samma AI på enheten lyssnar tills den känner igen fågeln — eller tills du trycker stopp. Inget internet behövs.",
+    "hint": "tryck för att lyssna"
   },
   "inside": {
     "eyebrow": "INUTI APPEN",

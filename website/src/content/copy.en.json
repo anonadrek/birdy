@@ -37,10 +37,11 @@
     "sub": "what it actually looks like, on your phone."
   },
   "listen": {
-    "eyebrow": "OR HOLD THE MIC · ON-DEVICE",
+    "eyebrow": "OR TAP THE MIC · ON-DEVICE",
     "headline": "Hear it. *Name* it.",
-    "sub": "Three seconds. The bird names itself.",
-    "body": "Hold the record button for 3 seconds. The same on-device AI listens for the bird. Same loop. Same journal. No internet needed."
+    "sub": "Tap. Listen. The bird names itself.",
+    "body": "Tap the record button. The same on-device AI listens until it recognises the bird — or until you tap stop. No internet needed.",
+    "hint": "tap to listen"
   },
   "inside": {
     "eyebrow": "INSIDE THE APP",
