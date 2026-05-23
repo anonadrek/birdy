@@ -103,7 +103,7 @@ migration:
     Migration data unavailable for this species.'
 image_refs:
 - role: hero
-  path: Q24843/hero.jpg
+  path: Q24843/hero.webp
   width: 2400
   height: 2400
   license: CC BY-SA 4.0
@@ -114,7 +114,7 @@ image_refs:
   commons_filename: Greater short-toed lark (Calandrella brachydactyla) rescued Malta
     2.jpg
 - role: secondary
-  path: Q24843/secondary-1.jpg
+  path: Q24843/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0
@@ -124,7 +124,7 @@ image_refs:
     brachydactyla) rescued Malta.jpg
   commons_filename: Greater short-toed lark (Calandrella brachydactyla) rescued Malta.jpg
 - role: secondary
-  path: Q24843/secondary-2.jpg
+  path: Q24843/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

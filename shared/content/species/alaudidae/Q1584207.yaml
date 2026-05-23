@@ -90,7 +90,7 @@ migration:
     be provided.'
 image_refs:
 - role: hero
-  path: Q1584207/hero.jpg
+  path: Q1584207/hero.webp
   width: 2048
   height: 1282
   license: CC BY 4.0
@@ -99,7 +99,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ammomanes cinctura 97497203.jpg
   commons_filename: Ammomanes cinctura 97497203.jpg
 - role: secondary
-  path: Q1584207/secondary-1.jpg
+  path: Q1584207/secondary-1.webp
   width: 1800
   height: 1126
   license: CC BY 4.0
@@ -108,7 +108,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ammomanes cinctura 93093047.jpg
   commons_filename: Ammomanes cinctura 93093047.jpg
 - role: secondary
-  path: Q1584207/secondary-2.jpg
+  path: Q1584207/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

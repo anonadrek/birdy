@@ -97,7 +97,7 @@ migration:
     waters.'
 image_refs:
 - role: hero
-  path: Q18875/hero.jpg
+  path: Q18875/hero.webp
   width: 2400
   height: 1350
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     Hallig Hooge.jpg
   commons_filename: Common tern (Sterna hirundo), Hallig Hooge.jpg
 - role: secondary
-  path: Q18875/secondary-1.jpg
+  path: Q18875/secondary-1.webp
   width: 1800
   height: 1251
   license: CC BY 2.0
@@ -116,7 +116,7 @@ image_refs:
     France (14834195197).jpg
   commons_filename: Sterna hirundo, Quiberon, Brittany, France (14834195197).jpg
 - role: secondary
-  path: Q18875/secondary-2.jpg
+  path: Q18875/secondary-2.webp
   width: 1800
   height: 900
   license: CC BY 2.0

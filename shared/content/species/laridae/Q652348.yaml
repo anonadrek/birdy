@@ -79,7 +79,7 @@ migration:
     established migration pattern or seasonal presence.'
 image_refs:
 - role: hero
-  path: Q652348/hero.jpg
+  path: Q652348/hero.webp
   width: 1894
   height: 2048
   license: CC0
@@ -89,7 +89,7 @@ image_refs:
   commons_filename: Chroicocephalus cirrocephalus, Villarino, Provincia de Buenos
     Aires, Argentina 1.jpg
 - role: secondary
-  path: Q652348/secondary-1.jpg
+  path: Q652348/secondary-1.webp
   width: 1659
   height: 1800
   license: CC0
@@ -99,7 +99,7 @@ image_refs:
   commons_filename: Chroicocephalus cirrocephalus, General López, Santa Fe, Argentina
     1.jpg
 - role: secondary
-  path: Q652348/secondary-2.jpg
+  path: Q652348/secondary-2.webp
   width: 1800
   height: 1350
   license: CC0

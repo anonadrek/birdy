@@ -93,7 +93,7 @@ migration:
     primarily confined to Africa and introduced populations in warmer climates elsewhere.'
 image_refs:
 - role: hero
-  path: Q583220/hero.jpg
+  path: Q583220/hero.webp
   width: 2400
   height: 1719
   license: CC BY 2.0
@@ -103,7 +103,7 @@ image_refs:
     - Flickr - gailhampshire (1).jpg
   commons_filename: Common Waxbill. Estrilda astrild - Flickr - gailhampshire (1).jpg
 - role: secondary
-  path: Q583220/secondary-1.jpg
+  path: Q583220/secondary-1.webp
   width: 1800
   height: 1158
   license: CC BY 2.0
@@ -113,7 +113,7 @@ image_refs:
     5.jpg
   commons_filename: Estrilda astrild, Pilanesberg 5.jpg
 - role: secondary
-  path: Q583220/secondary-2.jpg
+  path: Q583220/secondary-2.webp
   width: 1800
   height: 1402
   license: CC BY 2.0

@@ -92,7 +92,7 @@ migration:
     support year-round residence.'
 image_refs:
 - role: hero
-  path: Q190083/hero.jpg
+  path: Q190083/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -101,7 +101,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ural owl (Strix uralensis) ringing.jpg
   commons_filename: Ural owl (Strix uralensis) ringing.jpg
 - role: secondary
-  path: Q190083/secondary-1.jpg
+  path: Q190083/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -111,7 +111,7 @@ image_refs:
     2.jpg
   commons_filename: Ural owl (Strix uralensis) ringing 2.jpg
 - role: secondary
-  path: Q190083/secondary-2.jpg
+  path: Q190083/secondary-2.webp
   width: 1200
   height: 1800
   license: CC BY 4.0

@@ -90,7 +90,7 @@ migration:
     their normal range rather than part of a regular seasonal pattern.'
 image_refs:
 - role: hero
-  path: Q752678/hero.jpg
+  path: Q752678/hero.webp
   width: 2400
   height: 1739
   license: CC BY-SA 4.0
@@ -101,7 +101,7 @@ image_refs:
   commons_filename: Isabelline Shrike Lanius isabellinus by Dr. Raju Kasambe DSCN1543
     (9).jpg
 - role: secondary
-  path: Q752678/secondary-1.jpg
+  path: Q752678/secondary-1.webp
   width: 1565
   height: 1800
   license: CC BY-SA 4.0
@@ -112,7 +112,7 @@ image_refs:
   commons_filename: Isabelline Shrike Lanius isabellinus by Dr. Raju Kasambe DSCN1543
     (10).jpg
 - role: secondary
-  path: Q752678/secondary-2.jpg
+  path: Q752678/secondary-2.webp
   width: 1800
   height: 1281
   license: CC BY-SA 4.0

@@ -62,7 +62,7 @@ migration:
     sources with specific migration and distribution data would be required.'
 image_refs:
 - role: hero
-  path: Q1586903/hero.jpg
+  path: Q1586903/hero.webp
   width: 2400
   height: 1704
   license: CC BY 2.0
@@ -72,7 +72,7 @@ image_refs:
     1.jpg
   commons_filename: Oenanthe lugens Petra, Jordan 1.jpg
 - role: secondary
-  path: Q1586903/secondary-1.jpg
+  path: Q1586903/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -81,7 +81,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe lugens 2.jpg
   commons_filename: Oenanthe lugens 2.jpg
 - role: secondary
-  path: Q1586903/secondary-2.jpg
+  path: Q1586903/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

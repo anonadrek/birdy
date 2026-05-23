@@ -90,7 +90,7 @@ migration:
     breeding grounds to Indian wintering grounds.'
 image_refs:
 - role: hero
-  path: Q334183/hero.jpg
+  path: Q334183/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -101,7 +101,7 @@ image_refs:
   commons_filename: Carduelis carduelis & Emberiza melanocephala, Peštersko Polјe,
     Serbia 140.jpg
 - role: secondary
-  path: Q334183/secondary-1.jpg
+  path: Q334183/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -110,7 +110,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Emberiza melanocephala 237307853.jpg
   commons_filename: Emberiza melanocephala 237307853.jpg
 - role: secondary
-  path: Q334183/secondary-2.jpg
+  path: Q334183/secondary-2.webp
   width: 1440
   height: 1800
   license: CC BY-SA 4.0

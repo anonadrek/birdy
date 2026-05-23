@@ -65,7 +65,7 @@ migration:
     in Scandinavian ornithological guides.'
 image_refs:
 - role: hero
-  path: Q290871/hero.jpg
+  path: Q290871/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -75,7 +75,7 @@ image_refs:
     Canary Islands, Spain-8.jpg
   commons_filename: Chlamydotis undulata -Lanzarote, Canary Islands, Spain-8.jpg
 - role: secondary
-  path: Q290871/secondary-1.jpg
+  path: Q290871/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -85,7 +85,7 @@ image_refs:
     2.jpg
   commons_filename: Chlamydotis undulata displaying 2.jpg
 - role: secondary
-  path: Q290871/secondary-2.jpg
+  path: Q290871/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

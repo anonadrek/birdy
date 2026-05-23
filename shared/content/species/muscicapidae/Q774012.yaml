@@ -51,7 +51,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q774012/hero.jpg
+  path: Q774012/hero.webp
   width: 2048
   height: 1617
   license: CC BY 4.0
@@ -59,7 +59,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Phoenicurus moussieri 198655586.jpg
   commons_filename: Phoenicurus moussieri 198655586.jpg
 - role: secondary
-  path: Q774012/secondary-1.jpg
+  path: Q774012/secondary-1.webp
   width: 1351
   height: 1800
   license: CC BY 4.0
@@ -68,7 +68,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Phoenicurus moussieri 239292380.jpg
   commons_filename: Phoenicurus moussieri 239292380.jpg
 - role: secondary
-  path: Q774012/secondary-2.jpg
+  path: Q774012/secondary-2.webp
   width: 1800
   height: 1349
   license: CC BY 4.0

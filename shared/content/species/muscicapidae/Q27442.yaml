@@ -101,7 +101,7 @@ migration:
     synchronized with the availability of arthropod prey in northern breeding habitats.'
 image_refs:
 - role: hero
-  path: Q27442/hero.jpg
+  path: Q27442/hero.webp
   width: 2400
   height: 1714
   license: CC BY 2.0
@@ -110,7 +110,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ficedula hypoleuca Sussex 2.jpg
   commons_filename: Ficedula hypoleuca Sussex 2.jpg
 - role: secondary
-  path: Q27442/secondary-1.jpg
+  path: Q27442/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -120,7 +120,7 @@ image_refs:
     - Male (51220779018).jpg
   commons_filename: Pied Flycatcher - Ficedula hypoleuca - Male (51220779018).jpg
 - role: secondary
-  path: Q27442/secondary-2.jpg
+  path: Q27442/secondary-2.webp
   width: 1305
   height: 1800
   license: CC BY 2.0

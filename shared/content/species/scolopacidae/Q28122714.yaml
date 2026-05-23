@@ -59,7 +59,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q28122714/hero.jpg
+  path: Q28122714/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -69,7 +69,7 @@ image_refs:
     2.jpg
   commons_filename: Ruff (Calidris pugnax) 2021 2.jpg
 - role: secondary
-  path: Q28122714/secondary-1.jpg
+  path: Q28122714/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -79,7 +79,7 @@ image_refs:
     Mumbai DSCN0762 (1).jpg
   commons_filename: Ruff Calidris pugnax female Mumbai DSCN0762 (1).jpg
 - role: secondary
-  path: Q28122714/secondary-2.jpg
+  path: Q28122714/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

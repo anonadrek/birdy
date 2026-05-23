@@ -70,7 +70,7 @@ migration:
     sporadic and unpredictable.'
 image_refs:
 - role: hero
-  path: Q704987/hero.jpg
+  path: Q704987/hero.webp
   width: 2400
   height: 1350
   license: CC0
@@ -80,7 +80,7 @@ image_refs:
     Namsan Park.jpg
   commons_filename: Streptopelia orientalis in Seoul, Namsan Park.jpg
 - role: secondary
-  path: Q704987/secondary-1.jpg
+  path: Q704987/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -89,7 +89,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Streptopelia orientalis -Japan-8.jpg
   commons_filename: Streptopelia orientalis -Japan-8.jpg
 - role: secondary
-  path: Q704987/secondary-2.jpg
+  path: Q704987/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 3.0

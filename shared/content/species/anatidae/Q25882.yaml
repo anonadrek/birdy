@@ -101,7 +101,7 @@ migration:
     harsh winter conditions.'
 image_refs:
 - role: hero
-  path: Q25882/hero.jpg
+  path: Q25882/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Greylag goose (Anser anser).jpg
   commons_filename: Greylag goose (Anser anser).jpg
 - role: secondary
-  path: Q25882/secondary-1.jpg
+  path: Q25882/secondary-1.webp
   width: 1800
   height: 1196
   license: CC0
@@ -118,7 +118,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Anser anser domesticus 2.jpg
   commons_filename: Anser anser domesticus 2.jpg
 - role: secondary
-  path: Q25882/secondary-2.jpg
+  path: Q25882/secondary-2.webp
   width: 1800
   height: 1196
   license: Public domain

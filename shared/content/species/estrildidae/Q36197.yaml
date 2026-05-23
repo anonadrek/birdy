@@ -95,7 +95,7 @@ migration:
     this tropical finch species.'
 image_refs:
 - role: hero
-  path: Q36197/hero.jpg
+  path: Q36197/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -105,7 +105,7 @@ image_refs:
     munia (Lonchura punctulata) (22631048765).jpg
   commons_filename: Scaly breasted munia or spotted munia (Lonchura punctulata) (22631048765).jpg
 - role: secondary
-  path: Q36197/secondary-1.jpg
+  path: Q36197/secondary-1.webp
   width: 1800
   height: 1109
   license: CC BY 4.0
@@ -116,7 +116,7 @@ image_refs:
   commons_filename: Scaly-breasted Munia Lonchura punctulata aka nutmeg finch Kauai
     2533.jpg
 - role: secondary
-  path: Q36197/secondary-2.jpg
+  path: Q36197/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

@@ -90,7 +90,7 @@ migration:
     territories each spring after their long-distance migration.'
 image_refs:
 - role: hero
-  path: Q202478/hero.jpg
+  path: Q202478/hero.webp
   width: 2048
   height: 1536
   license: CC BY 4.0
@@ -99,7 +99,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Sylvia borin 315567165.jpg
   commons_filename: Sylvia borin 315567165.jpg
 - role: secondary
-  path: Q202478/secondary-1.jpg
+  path: Q202478/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -108,7 +108,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Garden Warbler Sylvia borin.jpg
   commons_filename: Garden Warbler Sylvia borin.jpg
 - role: secondary
-  path: Q202478/secondary-2.jpg
+  path: Q202478/secondary-2.webp
   width: 1350
   height: 1800
   license: CC BY-SA 4.0

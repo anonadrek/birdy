@@ -98,7 +98,7 @@ migration:
     movements.'
 image_refs:
 - role: hero
-  path: Q148583/hero.jpg
+  path: Q148583/hero.webp
   width: 2400
   height: 1596
   license: CC BY 2.0
@@ -108,7 +108,7 @@ image_refs:
     Guidel, Brittany, France (19811048488).jpg
   commons_filename: Emberiza cirlus, Le Petit Loc'h, Guidel, Brittany, France (19811048488).jpg
 - role: secondary
-  path: Q148583/secondary-1.jpg
+  path: Q148583/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -118,7 +118,7 @@ image_refs:
     cirlus). Cirl Bunting.jpg
   commons_filename: Crnogrla strnadica (Emberiza cirlus). Cirl Bunting.jpg
 - role: secondary
-  path: Q148583/secondary-2.jpg
+  path: Q148583/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 2.0

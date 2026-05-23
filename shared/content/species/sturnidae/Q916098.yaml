@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q916098/hero.jpg
+  path: Q916098/hero.webp
   width: 1596
   height: 2400
   license: CC0
@@ -46,7 +46,7 @@ image_refs:
     tristramii), Oman.jpg
   commons_filename: Tristram's starling (Onychognathus tristramii), Oman.jpg
 - role: secondary
-  path: Q916098/secondary-1.jpg
+  path: Q916098/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -55,7 +55,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Onychognathus tristramii - female.JPG
   commons_filename: Onychognathus tristramii - female.JPG
 - role: secondary
-  path: Q916098/secondary-2.jpg
+  path: Q916098/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 2.0

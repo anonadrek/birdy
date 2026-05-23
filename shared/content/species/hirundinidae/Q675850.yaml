@@ -68,7 +68,7 @@ migration:
     endemic to Africa year-round.'
 image_refs:
 - role: hero
-  path: Q675850/hero.jpg
+  path: Q675850/hero.webp
   width: 2048
   height: 1536
   license: CC0
@@ -77,7 +77,7 @@ image_refs:
     photo 78705413.jpg
   commons_filename: Riparia chinensis from iNaturalist photo 78705413.jpg
 - role: secondary
-  path: Q675850/secondary-1.jpg
+  path: Q675850/secondary-1.webp
   width: 1800
   height: 1156
   license: CC BY 2.0
@@ -88,7 +88,7 @@ image_refs:
   commons_filename: Brown-throated martin, Riparia paludicola, at Marievale Nature
     Reserve, Gauteng, South Africa. (22695083881).jpg
 - role: secondary
-  path: Q675850/secondary-2.jpg
+  path: Q675850/secondary-2.webp
   width: 1800
   height: 1197
   license: CC BY 2.0

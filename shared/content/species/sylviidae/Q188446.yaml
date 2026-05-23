@@ -96,7 +96,7 @@ migration:
     to changing climate conditions and increased availability of garden bird feeders.'
 image_refs:
 - role: hero
-  path: Q188446/hero.jpg
+  path: Q188446/hero.webp
   width: 2137
   height: 1421
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Sylvia atricapilla heineken.jpg
   commons_filename: Sylvia atricapilla heineken.jpg
 - role: secondary
-  path: Q188446/secondary-1.jpg
+  path: Q188446/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -114,7 +114,7 @@ image_refs:
     t112815.jpg
   commons_filename: Sylvia atricapilla JdP 20190405 t112815.jpg
 - role: secondary
-  path: Q188446/secondary-2.jpg
+  path: Q188446/secondary-2.webp
   width: 1800
   height: 1552
   license: CC BY 2.0

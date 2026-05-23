@@ -91,7 +91,7 @@ migration:
     does not occur in Northern Europe.'
 image_refs:
 - role: hero
-  path: Q837761/hero.jpg
+  path: Q837761/hero.webp
   width: 2048
   height: 1375
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Locustella lanceolata 295726819.jpg
   commons_filename: Locustella lanceolata 295726819.jpg
 - role: secondary
-  path: Q837761/secondary-1.jpg
+  path: Q837761/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Locustella lanceolata 216747576.jpg
   commons_filename: Locustella lanceolata 216747576.jpg
 - role: secondary
-  path: Q837761/secondary-2.jpg
+  path: Q837761/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

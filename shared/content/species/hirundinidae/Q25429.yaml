@@ -88,7 +88,7 @@ migration:
     dates depending on spring weather conditions and geographic location within Scandinavia.'
 image_refs:
 - role: hero
-  path: Q25429/hero.jpg
+  path: Q25429/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -97,7 +97,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Hirundo rustica Zazymya3.JPG
   commons_filename: Hirundo rustica Zazymya3.JPG
 - role: secondary
-  path: Q25429/secondary-1.jpg
+  path: Q25429/secondary-1.webp
   width: 1800
   height: 1349
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     20140614 01.JPG
   commons_filename: Hirundo rustica nest Kuivaniemi 20140614 01.JPG
 - role: secondary
-  path: Q25429/secondary-2.jpg
+  path: Q25429/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

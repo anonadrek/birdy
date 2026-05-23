@@ -67,7 +67,7 @@ migration:
     territories during any season.'
 image_refs:
 - role: hero
-  path: Q1306610/hero.jpg
+  path: Q1306610/hero.webp
   width: 1600
   height: 2400
   license: CC BY 2.0
@@ -77,7 +77,7 @@ image_refs:
     - കായലാറ്റ. (31966699943).jpg
   commons_filename: Streaked weaver (Ploceus manyar)male - കായലാറ്റ. (31966699943).jpg
 - role: secondary
-  path: Q1306610/secondary-1.jpg
+  path: Q1306610/secondary-1.webp
   width: 1303
   height: 1800
   license: CC BY-SA 4.0
@@ -87,7 +87,7 @@ image_refs:
     ( image).jpg
   commons_filename: Streaked weaver (Ploceus manyar) ( image).jpg
 - role: secondary
-  path: Q1306610/secondary-2.jpg
+  path: Q1306610/secondary-2.webp
   width: 1167
   height: 1800
   license: CC BY-SA 4.0

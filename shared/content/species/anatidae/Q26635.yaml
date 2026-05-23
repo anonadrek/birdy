@@ -95,7 +95,7 @@ migration:
     to break up on northern freshwater systems.'
 image_refs:
 - role: hero
-  path: Q26635/hero.jpg
+  path: Q26635/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
   commons_filename: Greater Scaup - Aythya marila, Delaware Seashore State Park, Indian
     River Inlet, Delaware (40045051162).jpg
 - role: secondary
-  path: Q26635/secondary-1.jpg
+  path: Q26635/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -116,7 +116,7 @@ image_refs:
     (12141905363).jpg
   commons_filename: Greater Scaup (Aythya marila) (12141905363).jpg
 - role: secondary
-  path: Q26635/secondary-2.jpg
+  path: Q26635/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

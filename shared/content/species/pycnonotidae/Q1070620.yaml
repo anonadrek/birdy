@@ -83,7 +83,7 @@ migration:
     where it inhabits fruit plantations, gardens, and urban areas.'
 image_refs:
 - role: hero
-  path: Q1070620/hero.jpg
+  path: Q1070620/hero.webp
   width: 2400
   height: 1660
   license: CC BY-SA 4.0
@@ -93,7 +93,7 @@ image_refs:
     01.jpg
   commons_filename: Fledgling - Pycnonotus xanthopygos 01.jpg
 - role: secondary
-  path: Q1070620/secondary-1.jpg
+  path: Q1070620/secondary-1.webp
   width: 1800
   height: 1244
   license: CC BY-SA 4.0
@@ -104,7 +104,7 @@ image_refs:
   commons_filename: Pycnonotus xanthopygos - Yellow-vented Bulbul, Adana 2016-12-25
     03-5.jpg
 - role: secondary
-  path: Q1070620/secondary-2.jpg
+  path: Q1070620/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 3.0

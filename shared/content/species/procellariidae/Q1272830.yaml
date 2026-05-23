@@ -60,7 +60,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q1272830/hero.jpg
+  path: Q1272830/hero.webp
   width: 2048
   height: 1281
   license: CC BY 4.0
@@ -69,7 +69,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pterodroma madeira 92954040.jpg
   commons_filename: Pterodroma madeira 92954040.jpg
 - role: secondary
-  path: Q1272830/secondary-1.jpg
+  path: Q1272830/secondary-1.webp
   width: 1800
   height: 1125
   license: CC BY 4.0

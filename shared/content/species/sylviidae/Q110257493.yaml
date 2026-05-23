@@ -57,7 +57,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q110257493/hero.jpg
+  path: Q110257493/hero.webp
   width: 2400
   height: 1800
   license: CC BY 4.0
@@ -67,7 +67,7 @@ image_refs:
     warbler (Curruca deserti) in Israel.jpg
   commons_filename: Twitching an African desert warbler (Curruca deserti) in Israel.jpg
 - role: secondary
-  path: Q110257493/secondary-1.jpg
+  path: Q110257493/secondary-1.webp
   width: 1800
   height: 1199
   license: CC BY 4.0
@@ -77,7 +77,7 @@ image_refs:
     deserti), Israel.jpg
   commons_filename: African desert warbler (Curruca deserti), Israel.jpg
 - role: secondary
-  path: Q110257493/secondary-2.jpg
+  path: Q110257493/secondary-2.webp
   width: 1800
   height: 1477
   license: CC BY 4.0

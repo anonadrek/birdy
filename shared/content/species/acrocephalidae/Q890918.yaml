@@ -63,7 +63,7 @@ migration:
     no accurate migration account can be provided.'
 image_refs:
 - role: hero
-  path: Q890918/hero.jpg
+  path: Q890918/hero.webp
   width: 2400
   height: 1735
   license: CC BY-SA 4.0

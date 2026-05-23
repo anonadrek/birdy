@@ -71,7 +71,7 @@ migration:
     as the species is almost entirely migratory in the region.'
 image_refs:
 - role: hero
-  path: Q270680/hero.jpg
+  path: Q270680/hero.webp
   width: 2400
   height: 1137
   license: CC BY 4.0
@@ -81,7 +81,7 @@ image_refs:
     2019.jpg
   commons_filename: Little crake (Zapornia parva) 2019.jpg
 - role: secondary
-  path: Q270680/secondary-1.jpg
+  path: Q270680/secondary-1.webp
   width: 1800
   height: 1502
   license: CC BY 4.0

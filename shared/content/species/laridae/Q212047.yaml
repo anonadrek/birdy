@@ -87,7 +87,7 @@ migration:
     with presence being rare or absent during winter.'
 image_refs:
 - role: hero
-  path: Q212047/hero.jpg
+  path: Q212047/hero.webp
   width: 2400
   height: 1553
   license: CC BY-SA 2.0

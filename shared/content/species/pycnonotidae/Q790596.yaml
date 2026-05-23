@@ -60,7 +60,7 @@ migration:
     timing, overwintering, or arrival months in northern regions.'
 image_refs:
 - role: hero
-  path: Q790596/hero.jpg
+  path: Q790596/hero.webp
   width: 2400
   height: 1597
   license: CC BY 2.0
@@ -70,7 +70,7 @@ image_refs:
     Cairo (52259556627).jpg
   commons_filename: Common Bulbul (Pycnonotus barbatus) Cairo (52259556627).jpg
 - role: secondary
-  path: Q790596/secondary-1.jpg
+  path: Q790596/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -79,7 +79,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pycnonotus barbatus (14392739850).jpg
   commons_filename: Pycnonotus barbatus (14392739850).jpg
 - role: secondary
-  path: Q790596/secondary-2.jpg
+  path: Q790596/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

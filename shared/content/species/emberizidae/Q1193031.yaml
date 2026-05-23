@@ -84,7 +84,7 @@ migration:
     would be required.'
 image_refs:
 - role: hero
-  path: Q1193031/hero.jpg
+  path: Q1193031/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -93,7 +93,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Tibibt (Emberiza sahari), Marrakesh.jpg
   commons_filename: Tibibt (Emberiza sahari), Marrakesh.jpg
 - role: secondary
-  path: Q1193031/secondary-1.jpg
+  path: Q1193031/secondary-1.webp
   width: 1800
   height: 1069
   license: CC BY-SA 2.0

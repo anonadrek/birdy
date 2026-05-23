@@ -91,7 +91,7 @@ migration:
     and concentrated to the brief arctic summer.'
 image_refs:
 - role: hero
-  path: Q25677554/hero.jpg
+  path: Q25677554/hero.webp
   width: 2400
   height: 1351
   license: CC BY-SA 4.0
@@ -100,7 +100,7 @@ image_refs:
     morinellus' 01.jpg
   commons_filename: Txirri lepokoduna, 'Eudromias morinellus' 01.jpg
 - role: secondary
-  path: Q25677554/secondary-1.jpg
+  path: Q25677554/secondary-1.webp
   width: 1800
   height: 1013
   license: CC BY-SA 4.0
@@ -109,7 +109,7 @@ image_refs:
     morinellus' 02.jpg
   commons_filename: Txirri lepokoduna, 'Eudromias morinellus' 02.jpg
 - role: secondary
-  path: Q25677554/secondary-2.jpg
+  path: Q25677554/secondary-2.webp
   width: 1800
   height: 1013
   license: CC BY-SA 4.0

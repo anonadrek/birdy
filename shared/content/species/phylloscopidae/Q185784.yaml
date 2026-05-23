@@ -98,7 +98,7 @@ migration:
     months, with breeding birds representing the summer population.'
 image_refs:
 - role: hero
-  path: Q185784/hero.jpg
+  path: Q185784/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -108,7 +108,7 @@ image_refs:
     collybita tristis) 2021.jpg
   commons_filename: Common chiffchaff (Phylloscopus collybita tristis) 2021.jpg
 - role: secondary
-  path: Q185784/secondary-1.jpg
+  path: Q185784/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -118,7 +118,7 @@ image_refs:
     collybita) 2024.jpg
   commons_filename: Common chiffchaff (Phylloscopus collybita) 2024.jpg
 - role: secondary
-  path: Q185784/secondary-2.jpg
+  path: Q185784/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

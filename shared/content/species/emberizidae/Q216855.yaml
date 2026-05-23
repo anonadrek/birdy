@@ -50,7 +50,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q216855/hero.jpg
+  path: Q216855/hero.webp
   width: 2400
   height: 1786
   license: CC BY 4.0
@@ -59,7 +59,7 @@ image_refs:
     Figure 5.jpg
   commons_filename: Emberiza pusilla (10.3897-BDJ.12.e133721) Figure 5.jpg
 - role: secondary
-  path: Q216855/secondary-1.jpg
+  path: Q216855/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -68,7 +68,7 @@ image_refs:
     DSC 7473.jpg
   commons_filename: Little Bunting (Emberiza pusilla) DSC 7473.jpg
 - role: secondary
-  path: Q216855/secondary-2.jpg
+  path: Q216855/secondary-2.webp
   width: 1800
   height: 1399
   license: CC BY-SA 3.0

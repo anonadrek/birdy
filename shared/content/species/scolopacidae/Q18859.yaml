@@ -64,7 +64,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q18859/hero.jpg
+  path: Q18859/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -72,7 +72,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Redshank (Tringa totanus).jpg
   commons_filename: Redshank (Tringa totanus).jpg
 - role: secondary
-  path: Q18859/secondary-1.jpg
+  path: Q18859/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -81,7 +81,7 @@ image_refs:
     (53633851007).jpg
   commons_filename: Rotschenkel (Tringa totanus) (53633851007).jpg
 - role: secondary
-  path: Q18859/secondary-2.jpg
+  path: Q18859/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 3.0

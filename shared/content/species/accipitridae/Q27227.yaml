@@ -91,7 +91,7 @@ migration:
     events rather than established migratory patterns typical of the region''s raptors.'
 image_refs:
 - role: hero
-  path: Q27227/hero.jpg
+  path: Q27227/hero.webp
   width: 2400
   height: 1869
   license: CC BY 2.0
@@ -100,7 +100,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Elanus caeruleus Annamalaichery.jpg
   commons_filename: Elanus caeruleus Annamalaichery.jpg
 - role: secondary
-  path: Q27227/secondary-1.jpg
+  path: Q27227/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Elanus caeruleus-Weifang 06.jpg
   commons_filename: Elanus caeruleus-Weifang 06.jpg
 - role: secondary
-  path: Q27227/secondary-2.jpg
+  path: Q27227/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

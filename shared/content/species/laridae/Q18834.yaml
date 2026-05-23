@@ -88,7 +88,7 @@ migration:
     bird communities.'
 image_refs:
 - role: hero
-  path: Q18834/hero.jpg
+  path: Q18834/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -98,7 +98,7 @@ image_refs:
     nilotica).jpg
   commons_filename: Gull-billed terns (Gelochelidon nilotica).jpg
 - role: secondary
-  path: Q18834/secondary-1.jpg
+  path: Q18834/secondary-1.webp
   width: 1800
   height: 1066
   license: CC BY-SA 4.0
@@ -108,7 +108,7 @@ image_refs:
     nilotica),.jpg
   commons_filename: Gull-billed tern (Gelochelidon nilotica),.jpg
 - role: secondary
-  path: Q18834/secondary-2.jpg
+  path: Q18834/secondary-2.webp
   width: 1363
   height: 1800
   license: CC BY-SA 4.0

@@ -91,7 +91,7 @@ migration:
     long-distance migration typical of many seabird species.'
 image_refs:
 - role: hero
-  path: Q728682/hero.jpg
+  path: Q728682/hero.webp
   width: 2400
   height: 1714
   license: CC BY 2.0
@@ -101,7 +101,7 @@ image_refs:
     (13668126124).jpg
   commons_filename: Thick-billed Murre (Uria lomvia) (13668126124).jpg
 - role: secondary
-  path: Q728682/secondary-1.jpg
+  path: Q728682/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -111,7 +111,7 @@ image_refs:
     (13667798953).jpg
   commons_filename: Thick-billed Murre (Uria lomvia) (13667798953).jpg
 - role: secondary
-  path: Q728682/secondary-2.jpg
+  path: Q728682/secondary-2.webp
   width: 1800
   height: 1184
   license: CC BY-SA 3.0

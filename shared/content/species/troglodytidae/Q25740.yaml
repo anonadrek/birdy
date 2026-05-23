@@ -101,7 +101,7 @@ migration:
     greater seasonal movement depending on weather severity.'
 image_refs:
 - role: hero
-  path: Q25740/hero.jpg
+  path: Q25740/hero.webp
   width: 2400
   height: 1584
   license: CC BY 4.0
@@ -110,7 +110,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian wren (Troglodytes troglodytes).jpg
   commons_filename: Eurasian wren (Troglodytes troglodytes).jpg
 - role: secondary
-  path: Q25740/secondary-1.jpg
+  path: Q25740/secondary-1.webp
   width: 1800
   height: 1590
   license: CC BY 2.0
@@ -119,7 +119,7 @@ image_refs:
     (51862229887).jpg
   commons_filename: Wren Troglodytes troglodytes (51862229887).jpg
 - role: secondary
-  path: Q25740/secondary-2.jpg
+  path: Q25740/secondary-2.webp
   width: 1800
   height: 1216
   license: CC BY-SA 4.0

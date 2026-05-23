@@ -77,7 +77,7 @@ migration:
     Europe, and therefore no migration patterns for this region can be documented.'
 image_refs:
 - role: hero
-  path: Q694756/hero.jpg
+  path: Q694756/hero.webp
   width: 2400
   height: 1527
   license: CC BY-SA 4.0
@@ -86,7 +86,7 @@ image_refs:
     leucogaster), male 342342.jpg
   commons_filename: Violet-backed Starling (Cinnyricinclus leucogaster), male 342342.jpg
 - role: secondary
-  path: Q694756/secondary-1.jpg
+  path: Q694756/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -97,7 +97,7 @@ image_refs:
   commons_filename: Violet-backed starling (Cinnyricinclus leucogaster verreauxi)
     female.jpg
 - role: secondary
-  path: Q694756/secondary-2.jpg
+  path: Q694756/secondary-2.webp
   width: 1800
   height: 1456
   license: CC BY-SA 2.0

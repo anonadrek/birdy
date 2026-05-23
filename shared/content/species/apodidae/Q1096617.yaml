@@ -63,7 +63,7 @@ migration:
     required.'
 image_refs:
 - role: hero
-  path: Q1096617/hero.jpg
+  path: Q1096617/hero.webp
   width: 1457
   height: 2400
   license: CC BY-SA 4.0

@@ -85,7 +85,7 @@ migration:
     behavior that would be relevant to Nordic bird guides.'
 image_refs:
 - role: hero
-  path: Q899345/hero.jpg
+  path: Q899345/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -95,7 +95,7 @@ image_refs:
     ) posing for the camera.jpg
   commons_filename: A beautiful bird ( Alaemon alaudipes ) posing for the camera.jpg
 - role: secondary
-  path: Q899345/secondary-1.jpg
+  path: Q899345/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -106,7 +106,7 @@ image_refs:
   commons_filename: Cursorius cursor ( bird in the right ) saying to Alaemon alaudipes
     ( bird in the left ) get the hell out of here.jpg
 - role: secondary
-  path: Q899345/secondary-2.jpg
+  path: Q899345/secondary-2.webp
   width: 1800
   height: 1304
   license: CC BY-SA 4.0

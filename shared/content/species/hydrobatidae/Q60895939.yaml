@@ -57,7 +57,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q60895939/hero.jpg
+  path: Q60895939/hero.webp
   width: 2048
   height: 1406
   license: CC BY 4.0
@@ -66,7 +66,7 @@ image_refs:
     jabejabe).jpg
   commons_filename: Cape Verde storm petrel (Hydrobates jabejabe).jpg
 - role: secondary
-  path: Q60895939/secondary-1.jpg
+  path: Q60895939/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

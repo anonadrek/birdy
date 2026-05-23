@@ -84,7 +84,7 @@ migration:
     year, never undertaking significant migrations.'
 image_refs:
 - role: hero
-  path: Q273067/hero.jpg
+  path: Q273067/hero.webp
   width: 2400
   height: 1590
   license: CC0
@@ -93,7 +93,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Nest Remiz pendulinus.JPG
   commons_filename: Nest Remiz pendulinus.JPG
 - role: secondary
-  path: Q273067/secondary-1.jpg
+  path: Q273067/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -103,7 +103,7 @@ image_refs:
     pendulinus) (52712339112).jpg
   commons_filename: Chapim-de-faces-pretas (Remiz pendulinus) (52712339112).jpg
 - role: secondary
-  path: Q273067/secondary-2.jpg
+  path: Q273067/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

@@ -90,7 +90,7 @@ migration:
     it absent from Scandinavia during the winter months.'
 image_refs:
 - role: hero
-  path: Q27674/hero.jpg
+  path: Q27674/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0

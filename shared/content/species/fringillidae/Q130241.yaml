@@ -61,7 +61,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q130241/hero.jpg
+  path: Q130241/hero.webp
   width: 2375
   height: 1926
   license: Public domain

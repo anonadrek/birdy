@@ -93,7 +93,7 @@ migration:
     the year in their northern range.'
 image_refs:
 - role: hero
-  path: Q155878/hero.jpg
+  path: Q155878/hero.webp
   width: 2400
   height: 1712
   license: CC BY 4.0
@@ -103,7 +103,7 @@ image_refs:
     tetrix 4.jpg
   commons_filename: Korhoen - black grouse - Lyrurus tetrix 4.jpg
 - role: secondary
-  path: Q155878/secondary-1.jpg
+  path: Q155878/secondary-1.webp
   width: 1800
   height: 1190
   license: CC BY 4.0
@@ -113,7 +113,7 @@ image_refs:
     tetrix 2.jpg
   commons_filename: Korhoen - black grouse - Lyrurus tetrix 2.jpg
 - role: secondary
-  path: Q155878/secondary-2.jpg
+  path: Q155878/secondary-2.webp
   width: 1800
   height: 1221
   license: CC BY 4.0

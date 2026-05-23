@@ -97,7 +97,7 @@ migration:
     mild winters, suggesting variable migration patterns across different populations.'
 image_refs:
 - role: hero
-  path: Q27471/hero.jpg
+  path: Q27471/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -105,7 +105,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Regulus-ignicapilla-side-left.jpg
   commons_filename: Regulus-ignicapilla-side-left.jpg
 - role: secondary
-  path: Q27471/secondary-1.jpg
+  path: Q27471/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -113,7 +113,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Regulus-ignicapilla-side-right.jpg
   commons_filename: Regulus-ignicapilla-side-right.jpg
 - role: secondary
-  path: Q27471/secondary-2.jpg
+  path: Q27471/secondary-2.webp
   width: 1800
   height: 1350
   license: CC0

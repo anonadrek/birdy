@@ -92,7 +92,7 @@ migration:
     or Northern Europe.'
 image_refs:
 - role: hero
-  path: Q912081/hero.jpg
+  path: Q912081/hero.webp
   width: 2048
   height: 1546
   license: CC BY 4.0
@@ -100,7 +100,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe leucopyga 207461319.jpg
   commons_filename: Oenanthe leucopyga 207461319.jpg
 - role: secondary
-  path: Q912081/secondary-1.jpg
+  path: Q912081/secondary-1.webp
   width: 1800
   height: 1267
   license: CC BY 4.0
@@ -108,7 +108,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe leucopyga 194759365.jpg
   commons_filename: Oenanthe leucopyga 194759365.jpg
 - role: secondary
-  path: Q912081/secondary-2.jpg
+  path: Q912081/secondary-2.webp
   width: 1800
   height: 1265
   license: CC BY 4.0

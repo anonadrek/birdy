@@ -64,7 +64,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q949662/hero.jpg
+  path: Q949662/hero.webp
   width: 2400
   height: 1590
   license: CC0
@@ -73,7 +73,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Zoothera aurea, Taiwan 2016.jpg
   commons_filename: Zoothera aurea, Taiwan 2016.jpg
 - role: secondary
-  path: Q949662/secondary-1.jpg
+  path: Q949662/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -82,7 +82,7 @@ image_refs:
     Japan (5965995869).jpg
   commons_filename: トラツグミ(虎鶫) (Zoothera aurea), Japan (5965995869).jpg
 - role: secondary
-  path: Q949662/secondary-2.jpg
+  path: Q949662/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 2.0

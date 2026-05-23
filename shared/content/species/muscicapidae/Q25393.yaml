@@ -93,7 +93,7 @@ migration:
     two species occasionally producing hybrids where their distributions meet.'
 image_refs:
 - role: hero
-  path: Q25393/hero.jpg
+  path: Q25393/hero.webp
   width: 2048
   height: 1532
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     Cecere.jpg
   commons_filename: Luscinia megarhynchos by Francesco Cecere.jpg
 - role: secondary
-  path: Q25393/secondary-1.jpg
+  path: Q25393/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -113,7 +113,7 @@ image_refs:
     20250506.jpg
   commons_filename: Luscinia megarhynchos Moëze-Oléron 20250506.jpg
 - role: secondary
-  path: Q25393/secondary-2.jpg
+  path: Q25393/secondary-2.webp
   width: 1800
   height: 1300
   license: CC BY 2.0

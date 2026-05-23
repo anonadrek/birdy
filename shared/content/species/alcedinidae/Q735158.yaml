@@ -69,7 +69,7 @@ migration:
     occurrence in these regions.'
 image_refs:
 - role: hero
-  path: Q735158/hero.jpg
+  path: Q735158/hero.webp
   width: 2400
   height: 1750
   license: CC BY 3.0
@@ -79,7 +79,7 @@ image_refs:
   commons_filename: White throeted kingfisher 2 ( Halcyon smyrnensis)മീൻകൊതിച്ചാത്തൻ
     .jpg
 - role: secondary
-  path: Q735158/secondary-1.jpg
+  path: Q735158/secondary-1.webp
   width: 1200
   height: 1800
   license: CC BY 2.0
@@ -89,7 +89,7 @@ image_refs:
     Sri Lanka-8.jpg
   commons_filename: Halcyon smyrnensis -Dharga Town, Sri Lanka-8.jpg
 - role: secondary
-  path: Q735158/secondary-2.jpg
+  path: Q735158/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

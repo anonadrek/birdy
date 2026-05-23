@@ -100,7 +100,7 @@ migration:
     and earlier departees compared to many other waterfowl species in northern Europe.'
 image_refs:
 - role: hero
-  path: Q25612/hero.jpg
+  path: Q25612/hero.webp
   width: 2400
   height: 2184
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
     04.JPG
   commons_filename: Cygnus cygnus Reykjavik 20120623 04.JPG
 - role: secondary
-  path: Q25612/secondary-1.jpg
+  path: Q25612/secondary-1.webp
   width: 1378
   height: 1800
   license: CC0
@@ -118,7 +118,7 @@ image_refs:
     02.jpg
   commons_filename: Cygnus cygnus Oulu 20170417 02.jpg
 - role: secondary
-  path: Q25612/secondary-2.jpg
+  path: Q25612/secondary-2.webp
   width: 1800
   height: 1273
   license: CC0

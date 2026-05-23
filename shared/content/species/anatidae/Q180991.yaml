@@ -91,7 +91,7 @@ migration:
     for foraging and nesting.'
 image_refs:
 - role: hero
-  path: Q180991/hero.jpg
+  path: Q180991/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
     merganser).jpg
   commons_filename: Goosander (Eurasian) (Mergus merganser).jpg
 - role: secondary
-  path: Q180991/secondary-1.jpg
+  path: Q180991/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -110,7 +110,7 @@ image_refs:
     Sweden.jpg
   commons_filename: Mergus merganser, female, Vaxholm, Sweden.jpg
 - role: secondary
-  path: Q180991/secondary-2.jpg
+  path: Q180991/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

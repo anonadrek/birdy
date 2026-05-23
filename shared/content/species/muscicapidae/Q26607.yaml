@@ -95,7 +95,7 @@ migration:
     year-round residence in the north impossible.'
 image_refs:
 - role: hero
-  path: Q26607/hero.jpg
+  path: Q26607/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Muscicapa striata (8752019704).jpg
   commons_filename: Muscicapa striata (8752019704).jpg
 - role: secondary
-  path: Q26607/secondary-1.jpg
+  path: Q26607/secondary-1.webp
   width: 1800
   height: 1065
   license: CC BY 2.0
@@ -113,7 +113,7 @@ image_refs:
     striata, Grå flugsnappare.jpg
   commons_filename: Spotted flycatcher, Muscicapa striata, Grå flugsnappare.jpg
 - role: secondary
-  path: Q26607/secondary-2.jpg
+  path: Q26607/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

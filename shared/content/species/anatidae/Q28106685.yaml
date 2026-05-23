@@ -79,7 +79,7 @@ migration:
     overwintering, or seasonal arrival months in that region.'
 image_refs:
 - role: hero
-  path: Q28106685/hero.jpg
+  path: Q28106685/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -88,7 +88,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Mareca americana (31542877912).jpg
   commons_filename: Mareca americana (31542877912).jpg
 - role: secondary
-  path: Q28106685/secondary-1.jpg
+  path: Q28106685/secondary-1.webp
   width: 1800
   height: 1163
   license: CC BY 2.0
@@ -99,7 +99,7 @@ image_refs:
   commons_filename: American Wigeon - Mareca americana, Cambridge, Maryland, January
     2, 2024 (53536171838).jpg
 - role: secondary
-  path: Q28106685/secondary-2.jpg
+  path: Q28106685/secondary-2.webp
   width: 1800
   height: 1268
   license: CC BY 2.0

@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q659005/hero.jpg
+  path: Q659005/hero.webp
   width: 2081
   height: 1383
   license: CC0
@@ -46,7 +46,7 @@ image_refs:
     Oman.jpg
   commons_filename: Rüppell's weaver (Ploceus galbula), Oman.jpg
 - role: secondary
-  path: Q659005/secondary-1.jpg
+  path: Q659005/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -57,7 +57,7 @@ image_refs:
   commons_filename: Dhofar, Jabal Samhan, nido a capanna pensile, forse di Ploceus
     galbula 01.jpg
 - role: secondary
-  path: Q659005/secondary-2.jpg
+  path: Q659005/secondary-2.webp
   width: 1219
   height: 1800
   license: CC BY-SA 4.0

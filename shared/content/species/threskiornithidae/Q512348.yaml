@@ -69,7 +69,7 @@ migration:
     European regions.'
 image_refs:
 - role: hero
-  path: Q512348/hero.jpg
+  path: Q512348/hero.webp
   width: 2400
   height: 1472
   license: CC BY 2.0
@@ -79,7 +79,7 @@ image_refs:
     Reserve (21411648098).jpg
   commons_filename: Platalea alba - Marievale Nature Reserve (21411648098).jpg
 - role: secondary
-  path: Q512348/secondary-1.jpg
+  path: Q512348/secondary-1.webp
   width: 1139
   height: 1800
   license: CC BY 2.0
@@ -90,7 +90,7 @@ image_refs:
   commons_filename: African Spoonbill, Platalea alba at Rietvlei Nature Reserve, Gauteng,
     South Africa (22792959412).jpg
 - role: secondary
-  path: Q512348/secondary-2.jpg
+  path: Q512348/secondary-2.webp
   width: 1800
   height: 1187
   license: CC BY 2.0

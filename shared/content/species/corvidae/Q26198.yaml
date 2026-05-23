@@ -95,7 +95,7 @@ migration:
     mild winters while others seek more temperate regions.'
 image_refs:
 - role: hero
-  path: Q26198/hero.jpg
+  path: Q26198/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -105,7 +105,7 @@ image_refs:
     n02.jpg
   commons_filename: Corvus corone anting JdP 20250607 n02.jpg
 - role: secondary
-  path: Q26198/secondary-1.jpg
+  path: Q26198/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -114,7 +114,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Corvus corone 2023 10 28 07.jpg
   commons_filename: Corvus corone 2023 10 28 07.jpg
 - role: secondary
-  path: Q26198/secondary-2.jpg
+  path: Q26198/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

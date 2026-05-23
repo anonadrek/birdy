@@ -65,7 +65,7 @@ migration:
     The species'' distribution is limited to regions far south and east of Scandinavia.'
 image_refs:
 - role: hero
-  path: Q928415/hero.jpg
+  path: Q928415/hero.webp
   width: 1536
   height: 2048
   license: CC BY 2.0
@@ -75,7 +75,7 @@ image_refs:
     tephronota.jpg
   commons_filename: Eastern Rock Nuthatch nest (Sitta tephronota.jpg
 - role: secondary
-  path: Q928415/secondary-1.jpg
+  path: Q928415/secondary-1.webp
   width: 1800
   height: 1137
   license: CC BY-SA 3.0

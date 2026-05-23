@@ -96,7 +96,7 @@ migration:
     a year-round resident.'
 image_refs:
 - role: hero
-  path: Q26470/hero.jpg
+  path: Q26470/hero.webp
   width: 1697
   height: 2400
   license: Public domain
@@ -105,7 +105,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:An Alle, Alle! Heft 1, 1919.jpg
   commons_filename: An Alle, Alle! Heft 1, 1919.jpg
 - role: secondary
-  path: Q26470/secondary-1.jpg
+  path: Q26470/secondary-1.webp
   width: 963
   height: 1800
   license: Public domain
@@ -114,7 +114,7 @@ image_refs:
     b 19.jpg
   commons_filename: An Alle, Alle! Heft 1, 1919 b 19.jpg
 - role: secondary
-  path: Q26470/secondary-2.jpg
+  path: Q26470/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

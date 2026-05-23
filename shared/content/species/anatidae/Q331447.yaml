@@ -70,7 +70,7 @@ migration:
     a predictable seasonal visitor to northern European waters.'
 image_refs:
 - role: hero
-  path: Q331447/hero.jpg
+  path: Q331447/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -79,7 +79,7 @@ image_refs:
     1.jpg
   commons_filename: Marmaronetta angustirostris 1.jpg
 - role: secondary
-  path: Q331447/secondary-1.jpg
+  path: Q331447/secondary-1.webp
   width: 1800
   height: 1368
   license: CC BY 4.0
@@ -88,7 +88,7 @@ image_refs:
     in Algeria.jpg
   commons_filename: Marbled duck (Marmaronetta angustirostris) in Algeria.jpg
 - role: secondary
-  path: Q331447/secondary-2.jpg
+  path: Q331447/secondary-2.webp
   width: 1800
   height: 1127
   license: CC BY 2.0

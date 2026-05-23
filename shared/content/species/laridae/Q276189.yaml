@@ -93,7 +93,7 @@ migration:
     as the species continues its northward range expansion.'
 image_refs:
 - role: hero
-  path: Q276189/hero.jpg
+  path: Q276189/hero.webp
   width: 2048
   height: 1536
   license: CC BY 4.0
@@ -102,7 +102,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ichthyaetus melanocephalus 467454654.jpg
   commons_filename: Ichthyaetus melanocephalus 467454654.jpg
 - role: secondary
-  path: Q276189/secondary-1.jpg
+  path: Q276189/secondary-1.webp
   width: 1800
   height: 1273
   license: CC BY 4.0
@@ -111,7 +111,7 @@ image_refs:
     Fishguard, Pembrokeshire, Wales 2.jpg
   commons_filename: Ichthyaetus melanocephalus, Fishguard, Pembrokeshire, Wales 2.jpg
 - role: secondary
-  path: Q276189/secondary-2.jpg
+  path: Q276189/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

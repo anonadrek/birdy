@@ -69,7 +69,7 @@ migration:
     March as breeding birds reclaim northern territories.'
 image_refs:
 - role: hero
-  path: Q184825/hero.jpg
+  path: Q184825/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -78,7 +78,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Redwing (Turdus iliacus) 2021.jpg
   commons_filename: Redwing (Turdus iliacus) 2021.jpg
 - role: secondary
-  path: Q184825/secondary-1.jpg
+  path: Q184825/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -87,7 +87,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Redwing (Turdus iliacus) 2022.jpg
   commons_filename: Redwing (Turdus iliacus) 2022.jpg
 - role: secondary
-  path: Q184825/secondary-2.jpg
+  path: Q184825/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 3.0

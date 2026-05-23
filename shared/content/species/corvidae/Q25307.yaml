@@ -90,7 +90,7 @@ migration:
     landscape year-round.'
 image_refs:
 - role: hero
-  path: Q25307/hero.jpg
+  path: Q25307/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -100,7 +100,7 @@ image_refs:
     2025 01.jpg
   commons_filename: Eurasian Magpie Pica Pica Brackley 2025 01.jpg
 - role: secondary
-  path: Q25307/secondary-1.jpg
+  path: Q25307/secondary-1.webp
   width: 1200
   height: 1800
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian magpie (Pica pica).jpg
   commons_filename: Eurasian magpie (Pica pica).jpg
 - role: secondary
-  path: Q25307/secondary-2.jpg
+  path: Q25307/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

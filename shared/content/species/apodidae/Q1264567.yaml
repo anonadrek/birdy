@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q1264567/hero.jpg
+  path: Q1264567/hero.webp
   width: 2048
   height: 1368
   license: CC BY 4.0
@@ -46,7 +46,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Apus berliozi 92256738.jpg
   commons_filename: Apus berliozi 92256738.jpg
 - role: secondary
-  path: Q1264567/secondary-1.jpg
+  path: Q1264567/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 4.0
@@ -55,7 +55,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Apus berliozi 92256742.jpg
   commons_filename: Apus berliozi 92256742.jpg
 - role: secondary
-  path: Q1264567/secondary-2.jpg
+  path: Q1264567/secondary-2.webp
   width: 1800
   height: 1199
   license: CC BY 4.0

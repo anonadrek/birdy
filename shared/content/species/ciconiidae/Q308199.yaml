@@ -57,7 +57,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q308199/hero.jpg
+  path: Q308199/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -65,7 +65,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Abdim's stork (Ciconia abdimii).jpg
   commons_filename: Abdim's stork (Ciconia abdimii).jpg
 - role: secondary
-  path: Q308199/secondary-1.jpg
+  path: Q308199/secondary-1.webp
   width: 1800
   height: 1286
   license: CC BY 2.0
@@ -75,7 +75,7 @@ image_refs:
     Route from Grootkolk 045.jpg
   commons_filename: Ciconia abdimii Kalahara En Route from Grootkolk 045.jpg
 - role: secondary
-  path: Q308199/secondary-2.jpg
+  path: Q308199/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 3.0

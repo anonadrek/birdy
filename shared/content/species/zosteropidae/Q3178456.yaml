@@ -58,7 +58,7 @@ migration:
     migration data cannot be provided for this region.'
 image_refs:
 - role: hero
-  path: Q3178456/hero.jpg
+  path: Q3178456/hero.webp
   width: 2400
   height: 1920
   license: CC BY-SA 2.0
@@ -67,7 +67,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Zosterops abyssinicus (17796758236).jpg
   commons_filename: Zosterops abyssinicus (17796758236).jpg
 - role: secondary
-  path: Q3178456/secondary-1.jpg
+  path: Q3178456/secondary-1.webp
   width: 1800
   height: 1074
   license: CC BY-SA 2.0

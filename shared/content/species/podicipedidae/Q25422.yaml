@@ -92,7 +92,7 @@ migration:
     when breeding lakes become accessible again.'
 image_refs:
 - role: hero
-  path: Q25422/hero.jpg
+  path: Q25422/hero.webp
   width: 2400
   height: 1661
   license: CC0
@@ -102,7 +102,7 @@ image_refs:
     2021-05-03.jpg
   commons_filename: Podiceps cristatus Oulu Finland 2021-05-03.jpg
 - role: secondary
-  path: Q25422/secondary-1.jpg
+  path: Q25422/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -111,7 +111,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Podiceps cristatus 2 2013.jpg
   commons_filename: Podiceps cristatus 2 2013.jpg
 - role: secondary
-  path: Q25422/secondary-2.jpg
+  path: Q25422/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

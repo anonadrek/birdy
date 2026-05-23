@@ -67,7 +67,7 @@ migration:
     cannot be documented.'
 image_refs:
 - role: hero
-  path: Q795545/hero.jpg
+  path: Q795545/hero.webp
   width: 2400
   height: 1601
   license: CC BY 4.0
@@ -76,7 +76,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Zosterops palpebrosus km.jpg
   commons_filename: Zosterops palpebrosus km.jpg
 - role: secondary
-  path: Q795545/secondary-1.jpg
+  path: Q795545/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY 4.0
@@ -86,7 +86,7 @@ image_refs:
     2.jpg
   commons_filename: Zosterops palpebrosus kunming 2.jpg
 - role: secondary
-  path: Q795545/secondary-2.jpg
+  path: Q795545/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

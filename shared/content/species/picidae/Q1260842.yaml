@@ -65,7 +65,7 @@ migration:
     needed.'
 image_refs:
 - role: hero
-  path: Q1260842/hero.jpg
+  path: Q1260842/hero.webp
   width: 2048
   height: 1536
   license: CC0
@@ -74,7 +74,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucopterus 390378967.jpg
   commons_filename: Dendrocopos leucopterus 390378967.jpg
 - role: secondary
-  path: Q1260842/secondary-1.jpg
+  path: Q1260842/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -83,7 +83,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Dendrocopos leucopterus 399366469.jpg
   commons_filename: Dendrocopos leucopterus 399366469.jpg
 - role: secondary
-  path: Q1260842/secondary-2.jpg
+  path: Q1260842/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

@@ -95,7 +95,7 @@ migration:
     typical of many other Eurasian larks.'
 image_refs:
 - role: hero
-  path: Q26982/hero.jpg
+  path: Q26982/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
     Oman.jpg
   commons_filename: Crested Lark (Galerida cristata), Oman.jpg
 - role: secondary
-  path: Q26982/secondary-1.jpg
+  path: Q26982/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0
@@ -114,7 +114,7 @@ image_refs:
     cristata) Hungary.jpg
   commons_filename: Crested lark (Galerida cristata cristata) Hungary.jpg
 - role: secondary
-  path: Q26982/secondary-2.jpg
+  path: Q26982/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

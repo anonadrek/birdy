@@ -84,7 +84,7 @@ migration:
     and eastern range.'
 image_refs:
 - role: hero
-  path: Q188601/hero.jpg
+  path: Q188601/hero.webp
   width: 2400
   height: 1200
   license: CC BY 2.0
@@ -94,7 +94,7 @@ image_refs:
     (8520158525).jpg
   commons_filename: Little Bustard (Tetrax tetrax) (8520158525).jpg
 - role: secondary
-  path: Q188601/secondary-1.jpg
+  path: Q188601/secondary-1.webp
   width: 1800
   height: 1183
   license: CC BY 4.0

@@ -97,7 +97,7 @@ migration:
     common across much of southern and central Europe.'
 image_refs:
 - role: hero
-  path: Q25247/hero.jpg
+  path: Q25247/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     (26528065293).jpg
   commons_filename: Upupa epops senegalensis, Ethiopia (26528065293).jpg
 - role: secondary
-  path: Q25247/secondary-1.jpg
+  path: Q25247/secondary-1.webp
   width: 1800
   height: 1216
   license: CC BY 2.0
@@ -115,7 +115,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Hoopoe. Upupa epops (32742451400).jpg
   commons_filename: Hoopoe. Upupa epops (32742451400).jpg
 - role: secondary
-  path: Q25247/secondary-2.jpg
+  path: Q25247/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

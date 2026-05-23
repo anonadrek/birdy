@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q18839/hero.jpg
+  path: Q18839/hero.webp
   width: 2048
   height: 1367
   license: CC BY 4.0
@@ -46,7 +46,7 @@ image_refs:
     Sénégal 1.jpg
   commons_filename: Thalasseus bengalensis, Foundiougne, Sénégal 1.jpg
 - role: secondary
-  path: Q18839/secondary-1.jpg
+  path: Q18839/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -57,7 +57,7 @@ image_refs:
   commons_filename: Lesser crested tern (Thalasseus bengalensis torresii) in flight
     Michaelmas Cay 2.jpg
 - role: secondary
-  path: Q18839/secondary-2.jpg
+  path: Q18839/secondary-2.webp
   width: 1800
   height: 1039
   license: CC BY-SA 4.0

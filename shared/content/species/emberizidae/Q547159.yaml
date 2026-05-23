@@ -58,7 +58,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q547159/hero.jpg
+  path: Q547159/hero.webp
   width: 2048
   height: 1365
   license: CC BY 4.0
@@ -66,7 +66,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Emberiza bruniceps 515937518.jpg
   commons_filename: Emberiza bruniceps 515937518.jpg
 - role: secondary
-  path: Q547159/secondary-1.jpg
+  path: Q547159/secondary-1.webp
   width: 1335
   height: 1800
   license: CC BY-SA 4.0
@@ -77,7 +77,7 @@ image_refs:
   commons_filename: Red-headed Bunting Emberiza bruniceps Female in Jowar crop by
     Dr. Raju Kasambe DSC 4546.jpg
 - role: secondary
-  path: Q547159/secondary-2.jpg
+  path: Q547159/secondary-2.webp
   width: 1437
   height: 1800
   license: CC BY-SA 4.0

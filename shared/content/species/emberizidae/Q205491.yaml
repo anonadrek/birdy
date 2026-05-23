@@ -68,7 +68,7 @@ migration:
     migrant that winters in Africa before returning north in spring.'
 image_refs:
 - role: hero
-  path: Q205491/hero.jpg
+  path: Q205491/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -77,7 +77,7 @@ image_refs:
     Cochem.jpg
   commons_filename: Rock Bunting (Emberiza cia), Cochem.jpg
 - role: secondary
-  path: Q205491/secondary-1.jpg
+  path: Q205491/secondary-1.webp
   width: 1800
   height: 1426
   license: CC BY 2.0
@@ -87,7 +87,7 @@ image_refs:
     Flickr - gailhampshire.jpg
   commons_filename: Rock Bunting. Emberiza cia - Flickr - gailhampshire.jpg
 - role: secondary
-  path: Q205491/secondary-2.jpg
+  path: Q205491/secondary-2.webp
   width: 1800
   height: 1298
   license: CC BY 4.0

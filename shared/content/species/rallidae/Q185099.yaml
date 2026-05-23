@@ -106,7 +106,7 @@ migration:
     habitats become accessible again.'
 image_refs:
 - role: hero
-  path: Q185099/hero.jpg
+  path: Q185099/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -114,7 +114,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Water rail (Rallus aquaticus).jpg
   commons_filename: Water rail (Rallus aquaticus).jpg
 - role: secondary
-  path: Q185099/secondary-1.jpg
+  path: Q185099/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -124,7 +124,7 @@ image_refs:
     (37337411980).jpg
   commons_filename: Water rail Rallus aquaticus (37337411980).jpg
 - role: secondary
-  path: Q185099/secondary-2.jpg
+  path: Q185099/secondary-2.webp
   width: 1800
   height: 1287
   license: CC BY 2.0

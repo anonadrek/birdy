@@ -86,7 +86,7 @@ migration:
     grounds in warmer regions.'
 image_refs:
 - role: hero
-  path: Q58958/hero.jpg
+  path: Q58958/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -94,7 +94,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Calidris alba - Island of Wangerooge.jpg
   commons_filename: Calidris alba - Island of Wangerooge.jpg
 - role: secondary
-  path: Q58958/secondary-1.jpg
+  path: Q58958/secondary-1.webp
   width: 1800
   height: 1196
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Calidris alba on Margarita island.jpg
   commons_filename: Calidris alba on Margarita island.jpg
 - role: secondary
-  path: Q58958/secondary-2.jpg
+  path: Q58958/secondary-2.webp
   width: 1800
   height: 1328
   license: CC0

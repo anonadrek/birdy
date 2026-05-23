@@ -87,7 +87,7 @@ migration:
     to distant tropical and subtropical wintering areas.'
 image_refs:
 - role: hero
-  path: Q260716/hero.jpg
+  path: Q260716/hero.webp
   width: 2400
   height: 1727
   license: Public domain
@@ -103,7 +103,7 @@ image_refs:
   commons_filename: Graubruststrandläufer (Calidris melanotos), nahrungssuchend im
     Willapa National Wildlife Refuge.jpg
 - role: secondary
-  path: Q260716/secondary-1.jpg
+  path: Q260716/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -113,7 +113,7 @@ image_refs:
     melanotos) (29119997223).jpg
   commons_filename: Pectoral Sandpiper (Calidris melanotos) (29119997223).jpg
 - role: secondary
-  path: Q260716/secondary-2.jpg
+  path: Q260716/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

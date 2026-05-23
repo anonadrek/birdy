@@ -71,7 +71,7 @@ migration:
     **Migration data unavailable for this species** (in the context of Northern Europe/Scandinavia).'
 image_refs:
 - role: hero
-  path: Q18866/hero.jpg
+  path: Q18866/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -80,7 +80,7 @@ image_refs:
     Atoll 2.jpg
   commons_filename: Thalasseus bergii, French Polynesia-Rangiroa Atoll 2.jpg
 - role: secondary
-  path: Q18866/secondary-1.jpg
+  path: Q18866/secondary-1.webp
   width: 1800
   height: 1296
   license: CC BY 2.0
@@ -89,7 +89,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Thalasseus bergii Merimbula.jpg
   commons_filename: Thalasseus bergii Merimbula.jpg
 - role: secondary
-  path: Q18866/secondary-2.jpg
+  path: Q18866/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

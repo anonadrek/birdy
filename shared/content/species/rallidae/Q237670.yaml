@@ -55,7 +55,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q237670/hero.jpg
+  path: Q237670/hero.webp
   width: 2400
   height: 1563
   license: CC BY-SA 4.0
@@ -65,7 +65,7 @@ image_refs:
   commons_filename: ছোট খৈড় (Zapornia pusilla),বারুইপুর, দঃ২৪ পরগনা, পশ্চিমবঙ্গ.
     DSC1458.jpg
 - role: secondary
-  path: Q237670/secondary-1.jpg
+  path: Q237670/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -75,7 +75,7 @@ image_refs:
     West Bengal India.jpg
   commons_filename: Baillons-crake(Zapornia pusilla))Purbasthali West Bengal India.jpg
 - role: secondary
-  path: Q237670/secondary-2.jpg
+  path: Q237670/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

@@ -85,7 +85,7 @@ migration:
     species is outside the normal range of northern European bird populations.'
 image_refs:
 - role: hero
-  path: Q615437/hero.jpg
+  path: Q615437/hero.webp
   width: 2400
   height: 1805
   license: CC BY-SA 3.0

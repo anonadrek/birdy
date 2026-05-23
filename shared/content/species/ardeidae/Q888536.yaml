@@ -65,7 +65,7 @@ migration:
     like Alaska.'
 image_refs:
 - role: hero
-  path: Q888536/hero.jpg
+  path: Q888536/hero.webp
   width: 2400
   height: 1601
   license: CC BY-SA 4.0

@@ -88,7 +88,7 @@ migration:
     their breeding territories throughout all seasons.'
 image_refs:
 - role: hero
-  path: Q574447/hero.jpg
+  path: Q574447/hero.webp
   width: 2400
   height: 1857
   license: CC0
@@ -96,7 +96,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Poecile Cinctus Kittila 20120307.JPG
   commons_filename: Poecile Cinctus Kittila 20120307.JPG
 - role: secondary
-  path: Q574447/secondary-1.jpg
+  path: Q574447/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
     (13667826373).jpg
   commons_filename: Siberian Tit (Poecile cinctus) (13667826373).jpg
 - role: secondary
-  path: Q574447/secondary-2.jpg
+  path: Q574447/secondary-2.webp
   width: 1800
   height: 1127
   license: CC BY 4.0

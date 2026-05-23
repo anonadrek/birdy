@@ -86,7 +86,7 @@ migration:
     European waterfowl.'
 image_refs:
 - role: hero
-  path: Q274179/hero.jpg
+  path: Q274179/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -96,7 +96,7 @@ image_refs:
     03.jpg
   commons_filename: 20180505 Alopochen aegyptiaca 03.jpg
 - role: secondary
-  path: Q274179/secondary-1.jpg
+  path: Q274179/secondary-1.webp
   width: 1800
   height: 1140
   license: CC BY 4.0
@@ -106,7 +106,7 @@ image_refs:
     taking off.jpg
   commons_filename: Egyptian goose (Alopochen aegyptiaca) taking off.jpg
 - role: secondary
-  path: Q274179/secondary-2.jpg
+  path: Q274179/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

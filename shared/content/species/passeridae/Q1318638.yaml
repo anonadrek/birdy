@@ -58,7 +58,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q1318638/hero.jpg
+  path: Q1318638/hero.webp
   width: 2400
   height: 1530
   license: Public domain

@@ -91,7 +91,7 @@ migration:
     seasonal occurrence, or movements specific to Northern Europe.'
 image_refs:
 - role: hero
-  path: Q33504/hero.jpg
+  path: Q33504/hero.webp
   width: 2048
   height: 1739
   license: CC BY 4.0
@@ -101,7 +101,7 @@ image_refs:
   commons_filename: Egyptian Vulture (Neophron percnopterus), Kukës District, Albania
     2.jpg
 - role: secondary
-  path: Q33504/secondary-1.jpg
+  path: Q33504/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -112,7 +112,7 @@ image_refs:
   commons_filename: Neophron percnopterus -Indira Gandhi Zoological Park, Visakhapatnam,
     India-8.jpg
 - role: secondary
-  path: Q33504/secondary-2.jpg
+  path: Q33504/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 3.0

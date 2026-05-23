@@ -96,7 +96,7 @@ migration:
     camouflage throughout the year in subnival and alpine habitats.'
 image_refs:
 - role: hero
-  path: Q205930/hero.jpg
+  path: Q205930/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -105,7 +105,7 @@ image_refs:
     1.jpg
   commons_filename: Rock ptarmigan (Lagopus muta) 1.jpg
 - role: secondary
-  path: Q205930/secondary-1.jpg
+  path: Q205930/secondary-1.webp
   width: 1800
   height: 1332
   license: CC BY 4.0
@@ -115,7 +115,7 @@ image_refs:
     - Lagopus muta 2.jpg
   commons_filename: Alpensneeuwhoen - rock ptarmigan - Lagopus muta 2.jpg
 - role: secondary
-  path: Q205930/secondary-2.jpg
+  path: Q205930/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 2.0

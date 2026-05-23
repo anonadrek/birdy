@@ -74,7 +74,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q1088602/hero.jpg
+  path: Q1088602/hero.webp
   width: 1600
   height: 2400
   license: CC BY-SA 4.0
@@ -84,7 +84,7 @@ image_refs:
   commons_filename: Bank myna (Acridotheres ginginianus) from keoladeo national park
     2 JEG3182.jpg
 - role: secondary
-  path: Q1088602/secondary-1.jpg
+  path: Q1088602/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -93,7 +93,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Bank myna Acridotheres ginginianus.jpg
   commons_filename: Bank myna Acridotheres ginginianus.jpg
 - role: secondary
-  path: Q1088602/secondary-2.jpg
+  path: Q1088602/secondary-2.webp
   width: 1800
   height: 1197
   license: CC BY-SA 4.0

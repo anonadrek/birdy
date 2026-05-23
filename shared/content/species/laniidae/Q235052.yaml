@@ -95,7 +95,7 @@ migration:
     visitor to the region.'
 image_refs:
 - role: hero
-  path: Q235052/hero.jpg
+  path: Q235052/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -105,7 +105,7 @@ image_refs:
     - Lanius senator 2.jpg
   commons_filename: Roodkopklauwier - woodchat shrike - Lanius senator 2.jpg
 - role: secondary
-  path: Q235052/secondary-1.jpg
+  path: Q235052/secondary-1.webp
   width: 1800
   height: 1557
   license: CC BY 2.0
@@ -115,7 +115,7 @@ image_refs:
     - Flickr - gailhampshire (1).jpg
   commons_filename: Woodchat Shrike. Lanius senator - Flickr - gailhampshire (1).jpg
 - role: secondary
-  path: Q235052/secondary-2.jpg
+  path: Q235052/secondary-2.webp
   width: 1800
   height: 1568
   license: CC BY 2.0

@@ -84,7 +84,7 @@ migration:
     documentation of Scandinavian occurrences is not detailed in available sources.'
 image_refs:
 - role: hero
-  path: Q76411/hero.jpg
+  path: Q76411/hero.webp
   width: 2400
   height: 2400
   license: CC BY-SA 4.0

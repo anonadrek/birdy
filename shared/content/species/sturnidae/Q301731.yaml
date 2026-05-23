@@ -84,7 +84,7 @@ migration:
     overwintering in the Nordic region can be provided.'
 image_refs:
 - role: hero
-  path: Q301731/hero.jpg
+  path: Q301731/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 2.0
@@ -94,7 +94,7 @@ image_refs:
     cinerea) male calling ... (32541920563).jpg
   commons_filename: Wattled Starling (Creatophora cinerea) male calling ... (32541920563).jpg
 - role: secondary
-  path: Q301731/secondary-1.jpg
+  path: Q301731/secondary-1.webp
   width: 1800
   height: 1148
   license: CC BY-SA 2.0
@@ -104,7 +104,7 @@ image_refs:
     cinerea) (16707782834).jpg
   commons_filename: Wattled Starlings (Creatophora cinerea) (16707782834).jpg
 - role: secondary
-  path: Q301731/secondary-2.jpg
+  path: Q301731/secondary-2.webp
   width: 1800
   height: 1173
   license: CC BY-SA 2.0

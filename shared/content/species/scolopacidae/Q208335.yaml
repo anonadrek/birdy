@@ -70,7 +70,7 @@ migration:
     absent from Scandinavian regions during winter months.'
 image_refs:
 - role: hero
-  path: Q208335/hero.jpg
+  path: Q208335/hero.webp
   width: 2142
   height: 2400
   license: Public domain
@@ -80,7 +80,7 @@ image_refs:
   commons_filename: 232. The Red Phalarope (Phalaropus fulicarius). 233. The American
     Coot (Fulica americana) (NYPL b14505696-113646).tiff
 - role: secondary
-  path: Q208335/secondary-1.jpg
+  path: Q208335/secondary-1.webp
   width: 1800
   height: 1183
   license: Public domain
@@ -88,7 +88,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Phalaropus fulicarius.jpg
   commons_filename: Phalaropus fulicarius.jpg
 - role: secondary
-  path: Q208335/secondary-2.jpg
+  path: Q208335/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

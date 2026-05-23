@@ -89,7 +89,7 @@ migration:
     of the Nordic region.'
 image_refs:
 - role: hero
-  path: Q213216/hero.jpg
+  path: Q213216/hero.webp
   width: 2048
   height: 1536
   license: CC BY 4.0
@@ -98,7 +98,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ptyonoprogne rupestris 241864842.jpg
   commons_filename: Ptyonoprogne rupestris 241864842.jpg
 - role: secondary
-  path: Q213216/secondary-1.jpg
+  path: Q213216/secondary-1.webp
   width: 1800
   height: 1331
   license: CC BY-SA 4.0
@@ -108,7 +108,7 @@ image_refs:
     rupestris.jpg
   commons_filename: Hirondelle de rochers Ptyonoprogne rupestris.jpg
 - role: secondary
-  path: Q213216/secondary-2.jpg
+  path: Q213216/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

@@ -68,7 +68,7 @@ migration:
     local movements rather than long-distance migration.'
 image_refs:
 - role: hero
-  path: Q643836/hero.jpg
+  path: Q643836/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -77,7 +77,7 @@ image_refs:
     pyrrhocorax), Algarve.jpg
   commons_filename: Red-billed chough (Pyrrhocorax pyrrhocorax), Algarve.jpg
 - role: secondary
-  path: Q643836/secondary-1.jpg
+  path: Q643836/secondary-1.webp
   width: 1800
   height: 1196
   license: CC0
@@ -86,7 +86,7 @@ image_refs:
     pyrrhocorax).jpg
   commons_filename: Red-billed chough (Pyrrhocorax pyrrhocorax).jpg
 - role: secondary
-  path: Q643836/secondary-2.jpg
+  path: Q643836/secondary-2.webp
   width: 1800
   height: 1196
   license: CC BY 2.0

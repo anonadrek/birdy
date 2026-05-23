@@ -67,7 +67,7 @@ migration:
     would be required.'
 image_refs:
 - role: hero
-  path: Q27074540/hero.jpg
+  path: Q27074540/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -76,7 +76,7 @@ image_refs:
     white morph.jpg
   commons_filename: IMGP5370Snow goose (Anser caerulescens), white morph.jpg
 - role: secondary
-  path: Q27074540/secondary-1.jpg
+  path: Q27074540/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -85,7 +85,7 @@ image_refs:
     blue morph.jpg
   commons_filename: Snow goose (Anser caerulescens), blue morph.jpg
 - role: secondary
-  path: Q27074540/secondary-2.jpg
+  path: Q27074540/secondary-2.webp
   width: 1800
   height: 1092
   license: CC BY 2.0

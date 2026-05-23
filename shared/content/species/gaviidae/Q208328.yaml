@@ -65,7 +65,7 @@ migration:
     and northern Swedish coasts, with far fewer records in southern regions.'
 image_refs:
 - role: hero
-  path: Q208328/hero.jpg
+  path: Q208328/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -78,7 +78,7 @@ image_refs:
     8-12-13 Ryan Askren.jpg
   commons_filename: Yellow-billed Loon Chipp South 8-12-13 Ryan Askren.jpg
 - role: secondary
-  path: Q208328/secondary-1.jpg
+  path: Q208328/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -87,7 +87,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Gavia adamsii 339608190.jpg
   commons_filename: Gavia adamsii 339608190.jpg
 - role: secondary
-  path: Q208328/secondary-2.jpg
+  path: Q208328/secondary-2.webp
   width: 1800
   height: 1354
   license: CC BY 4.0

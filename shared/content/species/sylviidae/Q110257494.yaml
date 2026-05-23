@@ -94,7 +94,7 @@ migration:
     a Northern European bird guide.'
 image_refs:
 - role: hero
-  path: Q110257494/hero.jpg
+  path: Q110257494/hero.webp
   width: 2048
   height: 1536
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
     338957939.jpeg
   commons_filename: Curruca nana - James Eaton - 338957939.jpeg
 - role: secondary
-  path: Q110257494/secondary-1.jpg
+  path: Q110257494/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY-SA 4.0
@@ -114,7 +114,7 @@ image_refs:
     - 562372000.jpeg
   commons_filename: Curruca nana - Kudaibergen Amirekul - 562372000.jpeg
 - role: secondary
-  path: Q110257494/secondary-2.jpg
+  path: Q110257494/secondary-2.webp
   width: 1800
   height: 1201
   license: CC BY-SA 4.0

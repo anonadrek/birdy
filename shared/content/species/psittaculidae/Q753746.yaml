@@ -68,7 +68,7 @@ migration:
     involving this species in Scandinavian or Northern European regions.'
 image_refs:
 - role: hero
-  path: Q753746/hero.jpg
+  path: Q753746/hero.webp
   width: 2400
   height: 1800
   license: Public domain
@@ -78,7 +78,7 @@ image_refs:
     Mumbai-4c.jpg
   commons_filename: Psittacula eupatria -pet in Mumbai-4c.jpg
 - role: secondary
-  path: Q753746/secondary-1.jpg
+  path: Q753746/secondary-1.webp
   width: 1800
   height: 1350
   license: Public domain
@@ -87,7 +87,7 @@ image_refs:
     Rudolph A. Furtado-4a.jpg
   commons_filename: Psittacula eupatria -pet with Rudolph A. Furtado-4a.jpg
 - role: secondary
-  path: Q753746/secondary-2.jpg
+  path: Q753746/secondary-2.webp
   width: 1800
   height: 1350
   license: Public domain

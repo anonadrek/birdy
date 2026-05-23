@@ -93,7 +93,7 @@ migration:
     following patterns similar to native European goose species.'
 image_refs:
 - role: hero
-  path: Q26733/hero.jpg
+  path: Q26733/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -102,7 +102,7 @@ image_refs:
     grass at Campbell Park.jpg
   commons_filename: Branta canadensis gosling on grass at Campbell Park.jpg
 - role: secondary
-  path: Q26733/secondary-1.jpg
+  path: Q26733/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -111,7 +111,7 @@ image_refs:
     grass at Campbell Park 2.jpg
   commons_filename: Branta canadensis gosling on grass at Campbell Park 2.jpg
 - role: secondary
-  path: Q26733/secondary-2.jpg
+  path: Q26733/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

@@ -86,7 +86,7 @@ migration:
     areas.'
 image_refs:
 - role: hero
-  path: Q26026/hero.jpg
+  path: Q26026/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -95,7 +95,7 @@ image_refs:
     Hannover Germany.jpg
   commons_filename: Ringeltaube Columba palumbus Hannover Germany.jpg
 - role: secondary
-  path: Q26026/secondary-1.jpg
+  path: Q26026/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Columba palumbus Moczydło.jpg
   commons_filename: Columba palumbus Moczydło.jpg
 - role: secondary
-  path: Q26026/secondary-2.jpg
+  path: Q26026/secondary-2.webp
   width: 1800
   height: 1350
   license: Public domain

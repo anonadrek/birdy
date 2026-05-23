@@ -91,7 +91,7 @@ migration:
     in the provided source material.'
 image_refs:
 - role: hero
-  path: Q241347/hero.jpg
+  path: Q241347/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -101,7 +101,7 @@ image_refs:
     2022.jpg
   commons_filename: Red-throated pipit (Anthus cervinus) 2022.jpg
 - role: secondary
-  path: Q241347/secondary-1.jpg
+  path: Q241347/secondary-1.webp
   width: 1350
   height: 1800
   license: CC BY-SA 2.0
@@ -110,7 +110,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Red-throated Pipit (Anthus cervinus).jpg
   commons_filename: Red-throated Pipit (Anthus cervinus).jpg
 - role: secondary
-  path: Q241347/secondary-2.jpg
+  path: Q241347/secondary-2.webp
   width: 1800
   height: 1126
   license: CC BY-SA 4.0

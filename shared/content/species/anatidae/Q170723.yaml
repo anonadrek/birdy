@@ -93,7 +93,7 @@ migration:
     waters.'
 image_refs:
 - role: hero
-  path: Q170723/hero.jpg
+  path: Q170723/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     ferruginea).jpg
   commons_filename: DSCN8147 - Rostgans (Tadorna ferruginea).jpg
 - role: secondary
-  path: Q170723/secondary-1.jpg
+  path: Q170723/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -113,7 +113,7 @@ image_refs:
     ferruginea).jpg
   commons_filename: DSCN8148 - Rostgans (Tadorna ferruginea).jpg
 - role: secondary
-  path: Q170723/secondary-2.jpg
+  path: Q170723/secondary-2.webp
   width: 1800
   height: 1350
   license: CC0

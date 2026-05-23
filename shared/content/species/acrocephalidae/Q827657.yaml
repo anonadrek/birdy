@@ -96,7 +96,7 @@ migration:
     the regular avifauna of Northern Europe.'
 image_refs:
 - role: hero
-  path: Q827657/hero.jpg
+  path: Q827657/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
     agricola) പാടക്കുരുവി. (31869889503).jpg
   commons_filename: Paddyfield Warbler (Acrocephalus agricola) പാടക്കുരുവി. (31869889503).jpg
 - role: secondary
-  path: Q827657/secondary-1.jpg
+  path: Q827657/secondary-1.webp
   width: 1800
   height: 1177
   license: CC BY-SA 4.0
@@ -117,7 +117,7 @@ image_refs:
   commons_filename: Paddyfield Warbler Acrocephalus agricola by Dr. Raju Kasambe DSCN8336
     (10).jpg
 - role: secondary
-  path: Q827657/secondary-2.jpg
+  path: Q827657/secondary-2.webp
   width: 1800
   height: 1215
   license: CC BY-SA 4.0

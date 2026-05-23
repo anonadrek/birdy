@@ -51,7 +51,7 @@ migration:
   en: Migration data unavailable for this species.
 image_refs:
 - role: hero
-  path: Q241529/hero.jpg
+  path: Q241529/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -60,7 +60,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ploceus jacksoni zoo wuppertal.jpg
   commons_filename: Ploceus jacksoni zoo wuppertal.jpg
 - role: secondary
-  path: Q241529/secondary-1.jpg
+  path: Q241529/secondary-1.webp
   width: 1800
   height: 988
   license: CC BY-SA 2.0

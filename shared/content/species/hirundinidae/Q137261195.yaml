@@ -94,7 +94,7 @@ migration:
     periods.'
 image_refs:
 - role: hero
-  path: Q137261195/hero.jpg
+  path: Q137261195/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Cecropis rufula, Serbia 101.jpg
   commons_filename: Cecropis rufula, Serbia 101.jpg
 - role: secondary
-  path: Q137261195/secondary-1.jpg
+  path: Q137261195/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Cecropis rufula, Serbia 001.jpg
   commons_filename: Cecropis rufula, Serbia 001.jpg
 - role: secondary
-  path: Q137261195/secondary-2.jpg
+  path: Q137261195/secondary-2.webp
   width: 1800
   height: 1205
   license: CC BY 4.0

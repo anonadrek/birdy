@@ -97,7 +97,7 @@ migration:
     the breeding season.'
 image_refs:
 - role: hero
-  path: Q25678/hero.jpg
+  path: Q25678/hero.webp
   width: 2400
   height: 1599
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Jynx torquilla (33693877994).jpg
   commons_filename: Jynx torquilla (33693877994).jpg
 - role: secondary
-  path: Q25678/secondary-1.jpg
+  path: Q25678/secondary-1.webp
   width: 1800
   height: 1264
   license: CC BY 2.0
@@ -115,7 +115,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Jynx torquilla (34375689462).jpg
   commons_filename: Jynx torquilla (34375689462).jpg
 - role: secondary
-  path: Q25678/secondary-2.jpg
+  path: Q25678/secondary-2.webp
   width: 1800
   height: 1264
   license: CC BY 2.0

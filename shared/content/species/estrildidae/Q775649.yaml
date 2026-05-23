@@ -78,7 +78,7 @@ migration:
     and migratory data would be required.'
 image_refs:
 - role: hero
-  path: Q775649/hero.jpg
+  path: Q775649/hero.webp
   width: 1835
   height: 2400
   license: Public domain
@@ -89,7 +89,7 @@ image_refs:
     zebra waxbill - Ann Lee - 107-1973-9.jpg
   commons_filename: Amandava subflava (Vieillot) zebra waxbill - Ann Lee - 107-1973-9.jpg
 - role: secondary
-  path: Q775649/secondary-1.jpg
+  path: Q775649/secondary-1.webp
   width: 1800
   height: 1248
   license: CC BY 2.0
@@ -101,7 +101,7 @@ image_refs:
   commons_filename: Orange breasted waxbill, Amandava subflava, at Eendracht Road,
     Suikerbosrand Nature Reserve, Gauteng, South Africa (32440671602).jpg
 - role: secondary
-  path: Q775649/secondary-2.jpg
+  path: Q775649/secondary-2.webp
   width: 1800
   height: 1228
   license: CC BY 2.0

@@ -65,7 +65,7 @@ migration:
     would be required.'
 image_refs:
 - role: hero
-  path: Q27075729/hero.jpg
+  path: Q27075729/hero.webp
   width: 1638
   height: 2048
   license: CC BY 4.0
@@ -74,7 +74,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Euodice malabarica 235052500.jpg
   commons_filename: Euodice malabarica 235052500.jpg
 - role: secondary
-  path: Q27075729/secondary-1.jpg
+  path: Q27075729/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -84,7 +84,7 @@ image_refs:
     Vadodara 2021-12-31.jpg
   commons_filename: Indian silverbill - Timbi Lake, Vadodara 2021-12-31.jpg
 - role: secondary
-  path: Q27075729/secondary-2.jpg
+  path: Q27075729/secondary-2.webp
   width: 1800
   height: 1201
   license: CC BY 4.0

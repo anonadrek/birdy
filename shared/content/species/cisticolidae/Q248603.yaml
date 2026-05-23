@@ -93,7 +93,7 @@ migration:
     or Northern Europe at any time of year, whether as a migrant or winter visitor.'
 image_refs:
 - role: hero
-  path: Q248603/hero.jpg
+  path: Q248603/hero.webp
   width: 2400
   height: 1590
   license: CC BY-SA 3.0
@@ -103,7 +103,7 @@ image_refs:
     Hatem Moushir 4.JPG
   commons_filename: Prinia gracilis at Abassa by Hatem Moushir 4.JPG
 - role: secondary
-  path: Q248603/secondary-1.jpg
+  path: Q248603/secondary-1.webp
   width: 1800
   height: 1192
   license: CC BY-SA 3.0
@@ -113,7 +113,7 @@ image_refs:
     Hatem Moushir 1.JPG
   commons_filename: Prinia gracilis at Fayoum by Hatem Moushir 1.JPG
 - role: secondary
-  path: Q248603/secondary-2.jpg
+  path: Q248603/secondary-2.webp
   width: 1800
   height: 1192
   license: CC BY-SA 3.0

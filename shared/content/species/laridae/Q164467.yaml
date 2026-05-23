@@ -87,7 +87,7 @@ migration:
     breeding colonies in Scandinavia attracting returning birds annually.'
 image_refs:
 - role: hero
-  path: Q164467/hero.jpg
+  path: Q164467/hero.webp
   width: 2400
   height: 1078
   license: CC BY 4.0
@@ -97,7 +97,7 @@ image_refs:
     2019.jpg
   commons_filename: Little gull (Hydrocoloeus minutus) 2019.jpg
 - role: secondary
-  path: Q164467/secondary-1.jpg
+  path: Q164467/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -107,7 +107,7 @@ image_refs:
     (14497961287).jpg
   commons_filename: Little Gull (Hydrocoloeus minutus) (14497961287).jpg
 - role: secondary
-  path: Q164467/secondary-2.jpg
+  path: Q164467/secondary-2.webp
   width: 1800
   height: 1080
   license: CC BY 2.0

@@ -83,7 +83,7 @@ migration:
     source material.'
 image_refs:
 - role: hero
-  path: Q941644/hero.jpg
+  path: Q941644/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -91,7 +91,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Lesser Noddy - Anous tenuirostris.jpg
   commons_filename: Lesser Noddy - Anous tenuirostris.jpg
 - role: secondary
-  path: Q941644/secondary-1.jpg
+  path: Q941644/secondary-1.webp
   width: 1800
   height: 1229
   license: Public domain
@@ -100,7 +100,7 @@ image_refs:
     3.jpg
   commons_filename: Lesser Noddy - Anous tenuirostris 3.jpg
 - role: secondary
-  path: Q941644/secondary-2.jpg
+  path: Q941644/secondary-2.webp
   width: 1800
   height: 812
   license: Public domain

@@ -69,7 +69,7 @@ migration:
     not be expected as a seasonal visitor to Scandinavian waters or coasts.'
 image_refs:
 - role: hero
-  path: Q179863/hero.jpg
+  path: Q179863/hero.webp
   width: 2400
   height: 1500
   license: CC BY 4.0
@@ -79,7 +79,7 @@ image_refs:
     de Thau 01.jpg
   commons_filename: Phoenicopterus roseus - Lido de Thau 01.jpg
 - role: secondary
-  path: Q179863/secondary-1.jpg
+  path: Q179863/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY 4.0
@@ -89,7 +89,7 @@ image_refs:
     de Thau 04.jpg
   commons_filename: Phoenicopterus roseus - Lido de Thau 04.jpg
 - role: secondary
-  path: Q179863/secondary-2.jpg
+  path: Q179863/secondary-2.webp
   width: 1800
   height: 1125
   license: CC BY 4.0

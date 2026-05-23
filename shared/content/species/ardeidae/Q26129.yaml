@@ -102,7 +102,7 @@ migration:
     resident.'
 image_refs:
 - role: hero
-  path: Q26129/hero.jpg
+  path: Q26129/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0

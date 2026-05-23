@@ -57,7 +57,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q752513/hero.jpg
+  path: Q752513/hero.webp
   width: 1600
   height: 2400
   license: CC BY 4.0
@@ -67,7 +67,7 @@ image_refs:
     proregulus) 2022.jpg
   commons_filename: Pallas's leaf warbler (Phylloscopus proregulus) 2022.jpg
 - role: secondary
-  path: Q752513/secondary-1.jpg
+  path: Q752513/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -76,7 +76,7 @@ image_refs:
     iNaturalist photo 243983235.jpg
   commons_filename: Phylloscopus proregulus from iNaturalist photo 243983235.jpg
 - role: secondary
-  path: Q752513/secondary-2.jpg
+  path: Q752513/secondary-2.webp
   width: 1800
   height: 1125
   license: CC BY-SA 4.0

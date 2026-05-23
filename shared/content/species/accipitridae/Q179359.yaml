@@ -66,7 +66,7 @@ migration:
     region and does not overwinter in Scandinavia.'
 image_refs:
 - role: hero
-  path: Q179359/hero.jpg
+  path: Q179359/hero.webp
   width: 2048
   height: 1365
   license: CC BY 4.0
@@ -75,7 +75,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Aquila nipalensis 156507147.jpg
   commons_filename: Aquila nipalensis 156507147.jpg
 - role: secondary
-  path: Q179359/secondary-1.jpg
+  path: Q179359/secondary-1.webp
   width: 1800
   height: 1165
   license: CC BY-SA 4.0
@@ -85,7 +85,7 @@ image_refs:
     - 68.jpg
   commons_filename: The steppe eagle (Aquila nipalensis) - 68.jpg
 - role: secondary
-  path: Q179359/secondary-2.jpg
+  path: Q179359/secondary-2.webp
   width: 1800
   height: 1142
   license: CC BY-SA 4.0

@@ -95,7 +95,7 @@ migration:
     such sightings remain uncommon.'
 image_refs:
 - role: hero
-  path: Q726873/hero.jpg
+  path: Q726873/hero.webp
   width: 2400
   height: 1491
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Olive-backed pipit (Anthus hodgsoni).jpg
   commons_filename: Olive-backed pipit (Anthus hodgsoni).jpg
 - role: secondary
-  path: Q726873/secondary-1.jpg
+  path: Q726873/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -113,7 +113,7 @@ image_refs:
     Hangzhou, China.jpg
   commons_filename: Olive-backed pipit (Anthus hodgsoni), Hangzhou, China.jpg
 - role: secondary
-  path: Q726873/secondary-2.jpg
+  path: Q726873/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

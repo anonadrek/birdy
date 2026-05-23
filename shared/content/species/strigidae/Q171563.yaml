@@ -93,7 +93,7 @@ migration:
     be exceptional and represent birds outside their normal range.'
 image_refs:
 - role: hero
-  path: Q171563/hero.jpg
+  path: Q171563/hero.webp
   width: 1833
   height: 2400
   license: CC BY 4.0
@@ -103,7 +103,7 @@ image_refs:
     scops.tif
   commons_filename: Dwergooruil - scops owl - Otus scops.tif
 - role: secondary
-  path: Q171563/secondary-1.jpg
+  path: Q171563/secondary-1.webp
   width: 1800
   height: 1244
   license: CC BY 2.0
@@ -114,7 +114,7 @@ image_refs:
   commons_filename: Eurasian Scops Owl (Otus scops), Kalloni, Lesvos, Greece, 19.04.2015
     (27018886079).jpg
 - role: secondary
-  path: Q171563/secondary-2.jpg
+  path: Q171563/secondary-2.webp
   width: 1800
   height: 1339
   license: CC BY 2.0

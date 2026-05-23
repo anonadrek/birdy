@@ -96,7 +96,7 @@ migration:
     spring, with most birds having left by May as they return to Arctic breeding territories.'
 image_refs:
 - role: hero
-  path: Q209419/hero.jpg
+  path: Q209419/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -106,7 +106,7 @@ image_refs:
     Zülowgrabenniederung 11.05.25.jpg
   commons_filename: Anser brachyrhynchus Naturschutzgebiet Zülowgrabenniederung 11.05.25.jpg
 - role: secondary
-  path: Q209419/secondary-1.jpg
+  path: Q209419/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -116,7 +116,7 @@ image_refs:
     (51446836402).jpg
   commons_filename: Pink-Footed Goose - Anser brachyrhynchus (51446836402).jpg
 - role: secondary
-  path: Q209419/secondary-2.jpg
+  path: Q209419/secondary-2.webp
   width: 1800
   height: 1016
   license: CC BY 2.0

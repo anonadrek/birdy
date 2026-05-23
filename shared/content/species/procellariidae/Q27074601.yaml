@@ -85,7 +85,7 @@ migration:
     migration pattern to these regions.'
 image_refs:
 - role: hero
-  path: Q27074601/hero.jpg
+  path: Q27074601/hero.webp
   width: 2400
   height: 1800
   license: CC BY 3.0
@@ -95,7 +95,7 @@ image_refs:
     (banding).jpg
   commons_filename: Starr 061017-1146 Ardenna pacifica (banding).jpg
 - role: secondary
-  path: Q27074601/secondary-1.jpg
+  path: Q27074601/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 3.0
@@ -105,7 +105,7 @@ image_refs:
     (banding).jpg
   commons_filename: Starr 061017-1147 Ardenna pacifica (banding).jpg
 - role: secondary
-  path: Q27074601/secondary-2.jpg
+  path: Q27074601/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 3.0

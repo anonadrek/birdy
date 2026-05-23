@@ -71,7 +71,7 @@ migration:
     regular migratory cycle.'
 image_refs:
 - role: hero
-  path: Q27074607/hero.jpg
+  path: Q27074607/hero.webp
   width: 2400
   height: 1503
   license: CC BY-SA 4.0

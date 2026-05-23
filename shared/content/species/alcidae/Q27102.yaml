@@ -93,7 +93,7 @@ migration:
     may force additional southward movement.'
 image_refs:
 - role: hero
-  path: Q27102/hero.jpg
+  path: Q27102/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -101,7 +101,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Alca torda DSC 5788.jpg
   commons_filename: Alca torda DSC 5788.jpg
 - role: secondary
-  path: Q27102/secondary-1.jpg
+  path: Q27102/secondary-1.webp
   width: 1800
   height: 1178
   license: CC BY 3.0
@@ -111,7 +111,7 @@ image_refs:
     & Uria aalge 02.jpg
   commons_filename: Skellig Michael - Alca torda & Uria aalge 02.jpg
 - role: secondary
-  path: Q27102/secondary-2.jpg
+  path: Q27102/secondary-2.webp
   width: 1800
   height: 1183
   license: CC BY 3.0

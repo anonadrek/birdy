@@ -62,7 +62,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q312779/hero.jpg
+  path: Q312779/hero.webp
   width: 2233
   height: 1489
   license: CC BY 2.0
@@ -72,7 +72,7 @@ image_refs:
     dumetorum (35176687152).jpg
   commons_filename: Blyth's reed warbler, Acrocephalus dumetorum (35176687152).jpg
 - role: secondary
-  path: Q312779/secondary-1.jpg
+  path: Q312779/secondary-1.webp
   width: 1800
   height: 1217
   license: CC BY-SA 4.0
@@ -83,7 +83,7 @@ image_refs:
   commons_filename: Blyth's Reed Warbler Acrocephalus dumetorum by Dr. Raju Kasambe
     DSC 6510 (3).jpg
 - role: secondary
-  path: Q312779/secondary-2.jpg
+  path: Q312779/secondary-2.webp
   width: 1488
   height: 1800
   license: CC BY-SA 4.0

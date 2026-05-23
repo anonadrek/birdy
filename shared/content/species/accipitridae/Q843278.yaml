@@ -65,7 +65,7 @@ migration:
     regions cannot be documented.'
 image_refs:
 - role: hero
-  path: Q843278/hero.jpg
+  path: Q843278/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -76,7 +76,7 @@ image_refs:
     Pendjari National Park, Benin.jpg
   commons_filename: Melierax metabates (juvenile), Pendjari National Park, Benin.jpg
 - role: secondary
-  path: Q843278/secondary-1.jpg
+  path: Q843278/secondary-1.webp
   width: 1407
   height: 1800
   license: CC BY-SA 2.0
@@ -86,7 +86,7 @@ image_refs:
     metabates) (52959591513).jpg
   commons_filename: Dark Chanting-Goshawk (Melierax metabates) (52959591513).jpg
 - role: secondary
-  path: Q843278/secondary-2.jpg
+  path: Q843278/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 2.0

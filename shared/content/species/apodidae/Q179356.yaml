@@ -89,7 +89,7 @@ migration:
     sources with specific distributional and migratory data would be required.'
 image_refs:
 - role: hero
-  path: Q179356/hero.jpg
+  path: Q179356/hero.webp
   width: 2400
   height: 1573
   license: CC BY 2.0
@@ -100,7 +100,7 @@ image_refs:
   commons_filename: White-rumped swift, Apus caffer, at Suikerbosrand Nature Reserve,
     Gauteng, South Africa (30424858271).jpg
 - role: secondary
-  path: Q179356/secondary-1.jpg
+  path: Q179356/secondary-1.webp
   width: 1800
   height: 1121
   license: CC BY 2.0
@@ -111,7 +111,7 @@ image_refs:
   commons_filename: White-rumped swift, Apus caffer, at Suikerbosrand Nature Reserve,
     Gauteng, South Africa (30511369955).jpg
 - role: secondary
-  path: Q179356/secondary-2.jpg
+  path: Q179356/secondary-2.webp
   width: 1340
   height: 1800
   license: CC BY 2.0

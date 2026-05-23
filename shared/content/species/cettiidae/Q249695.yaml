@@ -68,7 +68,7 @@ migration:
     it has no relevance to Northern European bird guides.'
 image_refs:
 - role: hero
-  path: Q249695/hero.jpg
+  path: Q249695/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -77,7 +77,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Scotocerca inquieta, Israel.jpg
   commons_filename: Scotocerca inquieta, Israel.jpg
 - role: secondary
-  path: Q249695/secondary-1.jpg
+  path: Q249695/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -86,7 +86,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Scotocerca inquieta. Israel.jpg
   commons_filename: Scotocerca inquieta. Israel.jpg
 - role: secondary
-  path: Q249695/secondary-2.jpg
+  path: Q249695/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

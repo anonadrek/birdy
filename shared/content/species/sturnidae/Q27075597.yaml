@@ -88,7 +88,7 @@ migration:
     it outside the geographic scope of Northern European bird guides.'
 image_refs:
 - role: hero
-  path: Q27075597/hero.jpg
+  path: Q27075597/hero.webp
   width: 2400
   height: 1350
   license: CC BY 4.0
@@ -99,7 +99,7 @@ image_refs:
     Bagerhat, Bangladesh.jpg
   commons_filename: Pied Myna Gracupica contra, Bagerhat, Bangladesh.jpg
 - role: secondary
-  path: Q27075597/secondary-1.jpg
+  path: Q27075597/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
     contra DSCN3451 (2).jpg
   commons_filename: Indian Pied Starling Gracupica contra DSCN3451 (2).jpg
 - role: secondary
-  path: Q27075597/secondary-2.jpg
+  path: Q27075597/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

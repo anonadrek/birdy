@@ -98,7 +98,7 @@ migration:
     in wintering location depending on breeding origin and winter severity.'
 image_refs:
 - role: hero
-  path: Q25384/hero.jpg
+  path: Q25384/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Piršenbreg Asio otus 02.jpg
   commons_filename: Piršenbreg Asio otus 02.jpg
 - role: secondary
-  path: Q25384/secondary-1.jpg
+  path: Q25384/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -114,7 +114,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Piršenbreg Asio otus 03.jpg
   commons_filename: Piršenbreg Asio otus 03.jpg
 - role: secondary
-  path: Q25384/secondary-2.jpg
+  path: Q25384/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

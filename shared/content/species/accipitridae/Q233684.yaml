@@ -69,7 +69,7 @@ migration:
     in the available source material.'
 image_refs:
 - role: hero
-  path: Q233684/hero.jpg
+  path: Q233684/hero.webp
   width: 1639
   height: 2048
   license: CC BY 4.0
@@ -78,7 +78,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Buteo rufinus 233696919.jpg
   commons_filename: Buteo rufinus 233696919.jpg
 - role: secondary
-  path: Q233684/secondary-1.jpg
+  path: Q233684/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -87,7 +87,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Buteo rufinus in Kazakhstan2.jpg
   commons_filename: Buteo rufinus in Kazakhstan2.jpg
 - role: secondary
-  path: Q233684/secondary-2.jpg
+  path: Q233684/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 3.0

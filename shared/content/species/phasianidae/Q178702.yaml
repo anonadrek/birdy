@@ -104,7 +104,7 @@ migration:
     to mottled brown breeding plumage in summer.'
 image_refs:
 - role: hero
-  path: Q178702/hero.jpg
+  path: Q178702/hero.webp
   width: 2400
   height: 1607
   license: Public domain
@@ -113,7 +113,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Lagopus lagopus Alaska 2.jpg
   commons_filename: Lagopus lagopus Alaska 2.jpg
 - role: secondary
-  path: Q178702/secondary-1.jpg
+  path: Q178702/secondary-1.webp
   width: 1800
   height: 1484
   license: Public domain
@@ -122,7 +122,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Lagopus lagopus Alaska 1.jpg
   commons_filename: Lagopus lagopus Alaska 1.jpg
 - role: secondary
-  path: Q178702/secondary-2.jpg
+  path: Q178702/secondary-2.webp
   width: 1800
   height: 1259
   license: CC BY 4.0

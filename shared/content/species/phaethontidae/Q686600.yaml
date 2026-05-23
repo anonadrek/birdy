@@ -63,7 +63,7 @@ migration:
     in or migrate through Northern European regions.'
 image_refs:
 - role: hero
-  path: Q686600/hero.jpg
+  path: Q686600/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -73,7 +73,7 @@ image_refs:
     aethereus mesonauta) with chick.jpg
   commons_filename: Red-billed tropicbird (Phaethon aethereus mesonauta) with chick.jpg
 - role: secondary
-  path: Q686600/secondary-1.jpg
+  path: Q686600/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -83,7 +83,7 @@ image_refs:
     aethereus mesonauta) chick.jpg
   commons_filename: Red-billed tropicbird (Phaethon aethereus mesonauta) chick.jpg
 - role: secondary
-  path: Q686600/secondary-2.jpg
+  path: Q686600/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

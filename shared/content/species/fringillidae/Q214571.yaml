@@ -97,7 +97,7 @@ migration:
     patterns across Northern Europe.'
 image_refs:
 - role: hero
-  path: Q214571/hero.jpg
+  path: Q214571/hero.webp
   width: 2400
   height: 1739
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     02.JPG
   commons_filename: Pinicola Enucleator Oulu 20150105 02.JPG
 - role: secondary
-  path: Q214571/secondary-1.jpg
+  path: Q214571/secondary-1.webp
   width: 1800
   height: 1347
   license: CC0
@@ -115,7 +115,7 @@ image_refs:
     01.JPG
   commons_filename: Pinicola Enucleator Oulu 20150105 01.JPG
 - role: secondary
-  path: Q214571/secondary-2.jpg
+  path: Q214571/secondary-2.webp
   width: 1351
   height: 1800
   license: CC0

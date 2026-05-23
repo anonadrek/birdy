@@ -104,7 +104,7 @@ migration:
     seeking better hunting conditions rather than true migration patterns.'
 image_refs:
 - role: hero
-  path: Q130933/hero.jpg
+  path: Q130933/hero.webp
   width: 1800
   height: 2400
   license: Public domain
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Lto-tpbo-bubo-bubo.JPG
   commons_filename: Lto-tpbo-bubo-bubo.JPG
 - role: secondary
-  path: Q130933/secondary-1.jpg
+  path: Q130933/secondary-1.webp
   width: 1800
   height: 1192
   license: CC0
@@ -120,7 +120,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Eurasian eagle-owl (Bubo bubo).jpg
   commons_filename: Eurasian eagle-owl (Bubo bubo).jpg
 - role: secondary
-  path: Q130933/secondary-2.jpg
+  path: Q130933/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

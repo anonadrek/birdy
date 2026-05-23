@@ -90,7 +90,7 @@ migration:
     the region.'
 image_refs:
 - role: hero
-  path: Q26147/hero.jpg
+  path: Q26147/hero.webp
   width: 2400
   height: 1800
   license: Public domain
@@ -98,7 +98,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Lto-tpbo-recurvirostra-avosetta-01.JPG
   commons_filename: Lto-tpbo-recurvirostra-avosetta-01.JPG
 - role: secondary
-  path: Q26147/secondary-1.jpg
+  path: Q26147/secondary-1.webp
   width: 1800
   height: 1162
   license: CC BY 2.0
@@ -107,7 +107,7 @@ image_refs:
     Skärfläcka - 52265147483.jpg
   commons_filename: Pied avocet, Recurvirostra avosetta, Skärfläcka - 52265147483.jpg
 - role: secondary
-  path: Q26147/secondary-2.jpg
+  path: Q26147/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

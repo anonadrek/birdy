@@ -100,7 +100,7 @@ migration:
     both polar regions.'
 image_refs:
 - role: hero
-  path: Q203053/hero.jpg
+  path: Q203053/hero.webp
   width: 2400
   height: 1506
   license: Public domain
@@ -111,7 +111,7 @@ image_refs:
   commons_filename: Parasitic Jaeger Stercorarius parasiticus and gull (light bird)
     - DPLA - 7e23f173fc416b5022eb78030ec3f392.jpg
 - role: secondary
-  path: Q203053/secondary-1.jpg
+  path: Q203053/secondary-1.webp
   width: 1800
   height: 1237
   license: CC BY 4.0
@@ -121,7 +121,7 @@ image_refs:
     - Stercorarius parasiticus.jpg
   commons_filename: Kleine jager - parasitic jaeger - Stercorarius parasiticus.jpg
 - role: secondary
-  path: Q203053/secondary-2.jpg
+  path: Q203053/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

@@ -79,7 +79,7 @@ migration:
     making migration data for the region inapplicable.'
 image_refs:
 - role: hero
-  path: Q715819/hero.jpg
+  path: Q715819/hero.webp
   width: 1945
   height: 2203
   license: Public domain
@@ -87,7 +87,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Acridotheres cristatellus.jpg
   commons_filename: Acridotheres cristatellus.jpg
 - role: secondary
-  path: Q715819/secondary-1.jpg
+  path: Q715819/secondary-1.webp
   width: 1200
   height: 1800
   license: CC BY 2.0
@@ -97,7 +97,7 @@ image_refs:
     Zoo, Netherlands-8a.jpg
   commons_filename: Acridotheres cristatellus -Artis Zoo, Netherlands-8a.jpg
 - role: secondary
-  path: Q715819/secondary-2.jpg
+  path: Q715819/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

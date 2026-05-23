@@ -57,7 +57,7 @@ migration:
     occurrence in these regions throughout the year.'
 image_refs:
 - role: hero
-  path: Q560326/hero.jpg
+  path: Q560326/hero.webp
   width: 2400
   height: 1602
   license: CC BY 2.0
@@ -68,7 +68,7 @@ image_refs:
   commons_filename: Red-billed firefinch, Lagonosticta senegala, female, at Pilanesberg
     National Park, Northwest Province, South Africa. - 49340507958.jpg
 - role: secondary
-  path: Q560326/secondary-1.jpg
+  path: Q560326/secondary-1.webp
   width: 1800
   height: 1174
   license: CC BY 2.0
@@ -79,7 +79,7 @@ image_refs:
   commons_filename: Red-billed firefinch, Lagonosticta senegala, at Mapungubwe National
     Park, Limpopo, South Africa -- male (18426107891).jpg
 - role: secondary
-  path: Q560326/secondary-2.jpg
+  path: Q560326/secondary-2.webp
   width: 1202
   height: 1800
   license: CC BY 2.0

@@ -93,7 +93,7 @@ migration:
     timing and proportions of overwintering populations in Scandinavia remain variable.'
 image_refs:
 - role: hero
-  path: Q27160/hero.jpg
+  path: Q27160/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -102,7 +102,7 @@ image_refs:
     fuscus).jpg
   commons_filename: Lesser black-backed gull (Larus fuscus).jpg
 - role: secondary
-  path: Q27160/secondary-1.jpg
+  path: Q27160/secondary-1.webp
   width: 1800
   height: 1201
   license: CC0
@@ -111,7 +111,7 @@ image_refs:
     03.JPG
   commons_filename: Larus fuscus Reykjavik 20120623 03.JPG
 - role: secondary
-  path: Q27160/secondary-2.jpg
+  path: Q27160/secondary-2.webp
   width: 1800
   height: 1397
   license: CC0

@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q1266683/hero.jpg
+  path: Q1266683/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 2.0
@@ -47,7 +47,7 @@ image_refs:
     erckelii) (2) (26398659471).jpg
   commons_filename: Erckel's Francolin (Pternistis erckelii) (2) (26398659471).jpg
 - role: secondary
-  path: Q1266683/secondary-1.jpg
+  path: Q1266683/secondary-1.webp
   width: 1800
   height: 1127
   license: CC BY-SA 2.0

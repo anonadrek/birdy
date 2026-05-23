@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q27075785/hero.jpg
+  path: Q27075785/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -46,7 +46,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Chloris chloris (19753531265).jpg
   commons_filename: Chloris chloris (19753531265).jpg
 - role: secondary
-  path: Q27075785/secondary-1.jpg
+  path: Q27075785/secondary-1.webp
   width: 1561
   height: 1800
   license: CC BY 4.0
@@ -55,7 +55,7 @@ image_refs:
     - Male1.jpg
   commons_filename: Greenfinch - Chloris chloris - Male1.jpg
 - role: secondary
-  path: Q27075785/secondary-2.jpg
+  path: Q27075785/secondary-2.webp
   width: 1800
   height: 1295
   license: CC BY 4.0

@@ -93,7 +93,7 @@ migration:
     though occasional individuals may linger in sheltered locations with food availability.'
 image_refs:
 - role: hero
-  path: Q271807/hero.jpg
+  path: Q271807/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -102,7 +102,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Serinus serinus (8719229323).jpg
   commons_filename: Serinus serinus (8719229323).jpg
 - role: secondary
-  path: Q271807/secondary-1.jpg
+  path: Q271807/secondary-1.webp
   width: 1800
   height: 1620
   license: CC BY 2.0
@@ -113,7 +113,7 @@ image_refs:
   commons_filename: European Serin. Male. (Serinus serinus) - Flickr - gailhampshire
     (2).jpg
 - role: secondary
-  path: Q271807/secondary-2.jpg
+  path: Q271807/secondary-2.webp
   width: 1800
   height: 1613
   license: CC BY 2.0

@@ -90,7 +90,7 @@ migration:
     trans-Saharan migrant that does not overwinter in the region.'
 image_refs:
 - role: hero
-  path: Q180835/hero.jpg
+  path: Q180835/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -99,7 +99,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Acrocephalus arundinaceus.jpg
   commons_filename: Acrocephalus arundinaceus.jpg
 - role: secondary
-  path: Q180835/secondary-1.jpg
+  path: Q180835/secondary-1.webp
   width: 1681
   height: 1800
   license: CC0
@@ -108,7 +108,7 @@ image_refs:
     scirpaceus).jpg
   commons_filename: Common Reed Warbler (Acrocephalus scirpaceus).jpg
 - role: secondary
-  path: Q180835/secondary-2.jpg
+  path: Q180835/secondary-2.webp
   width: 1800
   height: 1285
   license: CC BY 2.0

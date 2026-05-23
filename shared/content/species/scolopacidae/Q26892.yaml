@@ -64,7 +64,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q26892/hero.jpg
+  path: Q26892/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -73,7 +73,7 @@ image_refs:
     Seltjarnarnes, Iceland.jpg
   commons_filename: Ruddy turnstone (Arenaria interpres), Seltjarnarnes, Iceland.jpg
 - role: secondary
-  path: Q26892/secondary-1.jpg
+  path: Q26892/secondary-1.webp
   width: 1800
   height: 1350
   license: Public domain
@@ -81,7 +81,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Arenaria interpres (Capbreton).jpg
   commons_filename: Arenaria interpres (Capbreton).jpg
 - role: secondary
-  path: Q26892/secondary-2.jpg
+  path: Q26892/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

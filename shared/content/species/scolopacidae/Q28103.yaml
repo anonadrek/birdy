@@ -95,7 +95,7 @@ migration:
     typical migration routes.'
 image_refs:
 - role: hero
-  path: Q28103/hero.jpg
+  path: Q28103/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Tringa erythropus (34304271882).jpg
   commons_filename: Tringa erythropus (34304271882).jpg
 - role: secondary
-  path: Q28103/secondary-1.jpg
+  path: Q28103/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -113,7 +113,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Tringa erythropus (34079135840).jpg
   commons_filename: Tringa erythropus (34079135840).jpg
 - role: secondary
-  path: Q28103/secondary-2.jpg
+  path: Q28103/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 3.0

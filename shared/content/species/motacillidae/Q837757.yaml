@@ -96,7 +96,7 @@ migration:
     presence in the region.'
 image_refs:
 - role: hero
-  path: Q837757/hero.jpg
+  path: Q837757/hero.webp
   width: 2047
   height: 2048
   license: CC BY 4.0

@@ -68,7 +68,7 @@ migration:
     the winter months.
 image_refs:
 - role: hero
-  path: Q645055/hero.jpg
+  path: Q645055/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 3.0
@@ -77,7 +77,7 @@ image_refs:
     Common 1.jpg
   commons_filename: Loxia pytyopsittacus, Budby Common 1.jpg
 - role: secondary
-  path: Q645055/secondary-1.jpg
+  path: Q645055/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 3.0
@@ -86,7 +86,7 @@ image_refs:
     Common 3.jpg
   commons_filename: Loxia pytyopsittacus, Budby Common 3.jpg
 - role: secondary
-  path: Q645055/secondary-2.jpg
+  path: Q645055/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 3.0

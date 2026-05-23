@@ -82,7 +82,7 @@ migration:
     Scandinavian or broader Northern European territories.'
 image_refs:
 - role: hero
-  path: Q28861196/hero.jpg
+  path: Q28861196/hero.webp
   width: 2400
   height: 1349
   license: CC BY 2.0
@@ -93,7 +93,7 @@ image_refs:
   commons_filename: Arabian Green Bee-eater (Merops cyanophrys), Ramat Negev, Israel
     (15641437548).jpg
 - role: secondary
-  path: Q28861196/secondary-1.jpg
+  path: Q28861196/secondary-1.webp
   width: 1800
   height: 1017
   license: CC BY 2.0
@@ -104,7 +104,7 @@ image_refs:
   commons_filename: Arabian Green Bee-eater (Merops cyanophrys), Ramat Negev, Israel
     (15641437438).jpg
 - role: secondary
-  path: Q28861196/secondary-2.jpg
+  path: Q28861196/secondary-2.webp
   width: 1800
   height: 1009
   license: CC BY 2.0

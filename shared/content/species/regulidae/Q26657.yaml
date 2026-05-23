@@ -100,7 +100,7 @@ migration:
     Europe.'
 image_refs:
 - role: hero
-  path: Q26657/hero.jpg
+  path: Q26657/hero.webp
   width: 2400
   height: 1800
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
     Bird Observatory-1.JPG
   commons_filename: Regulus regulus ringed by Landsort Bird Observatory-1.JPG
 - role: secondary
-  path: Q26657/secondary-1.jpg
+  path: Q26657/secondary-1.webp
   width: 1800
   height: 1675
   license: CC BY 2.0
@@ -119,7 +119,7 @@ image_refs:
     (25207928227).jpg
   commons_filename: Goldcrest, male (Regulus regulus) (25207928227).jpg
 - role: secondary
-  path: Q26657/secondary-2.jpg
+  path: Q26657/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

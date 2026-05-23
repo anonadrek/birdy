@@ -85,7 +85,7 @@ migration:
     migration carries birds southward again toward their African wintering grounds.'
 image_refs:
 - role: hero
-  path: Q235057/hero.jpg
+  path: Q235057/hero.webp
   width: 2400
   height: 1764
   license: CC BY 4.0
@@ -96,7 +96,7 @@ image_refs:
   commons_filename: Rode rotslijster - rufous-tailed rock thrush - Monticola saxatilis
     02.tif
 - role: secondary
-  path: Q235057/secondary-1.jpg
+  path: Q235057/secondary-1.webp
   width: 1800
   height: 1425
   license: CC BY 4.0
@@ -107,7 +107,7 @@ image_refs:
   commons_filename: Rode rotslijster - rufous-tailed rock thrush - Monticola saxatilis
     01.tif
 - role: secondary
-  path: Q235057/secondary-2.jpg
+  path: Q235057/secondary-2.webp
   width: 1200
   height: 1800
   license: CC BY 4.0

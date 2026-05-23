@@ -81,7 +81,7 @@ migration:
     year in northern Europe.'
 image_refs:
 - role: hero
-  path: Q1584260/hero.jpg
+  path: Q1584260/hero.webp
   width: 2400
   height: 2400
   license: CC BY-SA 4.0
@@ -91,7 +91,7 @@ image_refs:
     moesta) Kebili.jpg
   commons_filename: Red-rumped wheatear (Oenanthe moesta) Kebili.jpg
 - role: secondary
-  path: Q1584260/secondary-1.jpg
+  path: Q1584260/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -101,7 +101,7 @@ image_refs:
     moesta moesta) male Kebili.jpg
   commons_filename: Red-rumped wheatear (Oenanthe moesta moesta) male Kebili.jpg
 - role: secondary
-  path: Q1584260/secondary-2.jpg
+  path: Q1584260/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

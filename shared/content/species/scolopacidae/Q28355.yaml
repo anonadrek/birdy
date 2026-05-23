@@ -95,7 +95,7 @@ migration:
     find for birdwatchers in the region.'
 image_refs:
 - role: hero
-  path: Q28355/hero.jpg
+  path: Q28355/hero.webp
   width: 2400
   height: 1761
   license: CC BY 4.0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Teichwasserläufer (Tringa stagnatilis).jpg
   commons_filename: Teichwasserläufer (Tringa stagnatilis).jpg
 - role: secondary
-  path: Q28355/secondary-1.jpg
+  path: Q28355/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 2.0
@@ -115,7 +115,7 @@ image_refs:
   commons_filename: Marsh Sandpiper, Tringa stagnatilis, at Marievale Nature Reserve,
     Gauteng, South Africa (31665103988).jpg
 - role: secondary
-  path: Q28355/secondary-2.jpg
+  path: Q28355/secondary-2.webp
   width: 1800
   height: 1202
   license: CC BY 2.0

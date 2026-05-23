@@ -72,7 +72,7 @@ migration:
     patterns, or seasonal occurrence in Scandinavian regions.'
 image_refs:
 - role: hero
-  path: Q864832/hero.jpg
+  path: Q864832/hero.webp
   width: 2048
   height: 1536
   license: CC0

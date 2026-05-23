@@ -87,7 +87,7 @@ migration:
     characteristic of other wheatear species found in northern regions.'
 image_refs:
 - role: hero
-  path: Q646917/hero.jpg
+  path: Q646917/hero.webp
   width: 2048
   height: 1282
   license: CC BY 4.0
@@ -96,7 +96,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Oenanthe cypriaca 104211274.jpg
   commons_filename: Oenanthe cypriaca 104211274.jpg
 - role: secondary
-  path: Q646917/secondary-1.jpg
+  path: Q646917/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -106,7 +106,7 @@ image_refs:
     01.jpg
   commons_filename: Cyprus Wheatear (Oenanthe cypriaca) 01.jpg
 - role: secondary
-  path: Q646917/secondary-2.jpg
+  path: Q646917/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

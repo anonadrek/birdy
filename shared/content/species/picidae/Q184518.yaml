@@ -96,7 +96,7 @@ migration:
     patterns like many other woodpecker species found in the region.'
 image_refs:
 - role: hero
-  path: Q184518/hero.jpg
+  path: Q184518/hero.webp
   width: 2400
   height: 1602
   license: CC BY 4.0
@@ -106,7 +106,7 @@ image_refs:
     (Dryobates minor) - Väike-kirjurähn.jpg
   commons_filename: The lesser spotted woodpecker (Dryobates minor) - Väike-kirjurähn.jpg
 - role: secondary
-  path: Q184518/secondary-1.jpg
+  path: Q184518/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -116,7 +116,7 @@ image_refs:
     minor) 2021.jpg
   commons_filename: Lesser spotted woodpecker (Dryobates minor) 2021.jpg
 - role: secondary
-  path: Q184518/secondary-2.jpg
+  path: Q184518/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

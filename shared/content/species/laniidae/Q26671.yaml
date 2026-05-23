@@ -68,7 +68,7 @@ migration:
     Shrikes overwinter in the Nordic region.'
 image_refs:
 - role: hero
-  path: Q26671/hero.jpg
+  path: Q26671/hero.webp
   width: 2400
   height: 1800
   license: Public domain
@@ -77,7 +77,7 @@ image_refs:
     Garden 2.jpg
   commons_filename: Lanius collurio in Aleksandria Garden 2.jpg
 - role: secondary
-  path: Q26671/secondary-1.jpg
+  path: Q26671/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -87,7 +87,7 @@ image_refs:
     prirode Lisine (3).jpg
   commons_filename: Lanius collurio, mužjak, Spomenik prirode Lisine (3).jpg
 - role: secondary
-  path: Q26671/secondary-2.jpg
+  path: Q26671/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

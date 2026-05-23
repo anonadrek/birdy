@@ -98,7 +98,7 @@ migration:
     late autumn and winter months.'
 image_refs:
 - role: hero
-  path: Q177688/hero.jpg
+  path: Q177688/hero.webp
   width: 1536
   height: 2048
   license: Public domain
@@ -106,7 +106,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Falco rusticolus in Spain.jpg
   commons_filename: Falco rusticolus in Spain.jpg
 - role: secondary
-  path: Q177688/secondary-1.jpg
+  path: Q177688/secondary-1.webp
   width: 1205
   height: 1800
   license: CC BY 2.0
@@ -115,7 +115,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Falco rusticolus 1.jpg
   commons_filename: Falco rusticolus 1.jpg
 - role: secondary
-  path: Q177688/secondary-2.jpg
+  path: Q177688/secondary-2.webp
   width: 1308
   height: 1800
   license: CC BY-SA 4.0

@@ -96,7 +96,7 @@ migration:
     wintering grounds and European breeding habitats.'
 image_refs:
 - role: hero
-  path: Q25398/hero.jpg
+  path: Q25398/hero.webp
   width: 1595
   height: 2400
   license: CC0
@@ -105,7 +105,7 @@ image_refs:
     in flight.jpg
   commons_filename: Black stork (Ciconia nigra) in flight.jpg
 - role: secondary
-  path: Q25398/secondary-1.jpg
+  path: Q25398/secondary-1.webp
   width: 1800
   height: 1468
   license: CC BY 2.0
@@ -115,7 +115,7 @@ image_refs:
     Flickr - gailhampshire.jpg
   commons_filename: Black Stork. Ciconia nigra - Flickr - gailhampshire.jpg
 - role: secondary
-  path: Q25398/secondary-2.jpg
+  path: Q25398/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

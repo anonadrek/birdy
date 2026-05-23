@@ -83,7 +83,7 @@ migration:
     This warbler does not form part of the regular avifauna of these regions.'
 image_refs:
 - role: hero
-  path: Q752539/hero.jpg
+  path: Q752539/hero.webp
   width: 2400
   height: 1477
   license: CC BY 2.0
@@ -94,7 +94,7 @@ image_refs:
   commons_filename: Melodious Warbler (Hippolais polyglotta), Le Petit Loc'h, Guidel,
     Brittany, France (19958749471).jpg
 - role: secondary
-  path: Q752539/secondary-1.jpg
+  path: Q752539/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -104,7 +104,7 @@ image_refs:
     polyglotta) 2024.jpg
   commons_filename: Melodious warbler (Hippolais polyglotta) 2024.jpg
 - role: secondary
-  path: Q752539/secondary-2.jpg
+  path: Q752539/secondary-2.webp
   width: 1800
   height: 1258
   license: CC BY 2.0

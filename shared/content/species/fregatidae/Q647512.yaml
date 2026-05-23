@@ -70,7 +70,7 @@ migration:
     waters or seasonal occurrence in this region.'
 image_refs:
 - role: hero
-  path: Q647512/hero.jpg
+  path: Q647512/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -81,7 +81,7 @@ image_refs:
   commons_filename: Magnificent Frigatebird - Fregata magnificens, Bahia Honda State
     Park, Big Pine Key, Florida.jpg
 - role: secondary
-  path: Q647512/secondary-1.jpg
+  path: Q647512/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -91,7 +91,7 @@ image_refs:
     Vallarta, Mexico -female-8.jpg
   commons_filename: Fregata magnificens -Puerto Vallarta, Mexico -female-8.jpg
 - role: secondary
-  path: Q647512/secondary-2.jpg
+  path: Q647512/secondary-2.webp
   width: 1200
   height: 1800
   license: CC BY 2.0

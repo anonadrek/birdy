@@ -66,7 +66,7 @@ migration:
     patterns or seasonal movements relevant to this region.'
 image_refs:
 - role: hero
-  path: Q1588780/hero.jpg
+  path: Q1588780/hero.webp
   width: 2048
   height: 1366
   license: CC BY 4.0
@@ -75,7 +75,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Monticola rufocinereus 284522556.jpg
   commons_filename: Monticola rufocinereus 284522556.jpg
 - role: secondary
-  path: Q1588780/secondary-1.jpg
+  path: Q1588780/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY 4.0
@@ -84,7 +84,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Monticola rufocinereus 556032233.jpg
   commons_filename: Monticola rufocinereus 556032233.jpg
 - role: secondary
-  path: Q1588780/secondary-2.jpg
+  path: Q1588780/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

@@ -65,7 +65,7 @@ migration:
     European regions.'
 image_refs:
 - role: hero
-  path: Q27075715/hero.jpg
+  path: Q27075715/hero.webp
   width: 2106
   height: 1404
   license: CC BY-SA 4.0

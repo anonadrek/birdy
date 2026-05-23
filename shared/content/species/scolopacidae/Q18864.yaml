@@ -97,7 +97,7 @@ migration:
     departure in August-September.'
 image_refs:
 - role: hero
-  path: Q18864/hero.jpg
+  path: Q18864/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     godwit), Heligoland.jpg
   commons_filename: Limosa lapponica (Bar-tailed godwit), Heligoland.jpg
 - role: secondary
-  path: Q18864/secondary-1.jpg
+  path: Q18864/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -117,7 +117,7 @@ image_refs:
   commons_filename: Calidris tenuirostris, Calidris ferruginea, and Limosa lapponica
     (24579574951).jpg
 - role: secondary
-  path: Q18864/secondary-2.jpg
+  path: Q18864/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

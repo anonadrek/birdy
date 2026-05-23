@@ -93,7 +93,7 @@ migration:
     in Scandinavia are now uncommon and irregular compared to historical records.'
 image_refs:
 - role: hero
-  path: Q321293/hero.jpg
+  path: Q321293/hero.webp
   width: 2400
   height: 1798
   license: CC BY 2.0
@@ -103,7 +103,7 @@ image_refs:
     Beach, Queensland (15687298970).jpg
   commons_filename: Unidentified Sterna, Mission Beach, Queensland (15687298970).jpg
 - role: secondary
-  path: Q321293/secondary-1.jpg
+  path: Q321293/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -112,7 +112,7 @@ image_refs:
     Taitung, Taiwan 2.jpg
   commons_filename: Sterna dougallii bangsi, Sanxiantai, Taitung, Taiwan 2.jpg
 - role: secondary
-  path: Q321293/secondary-2.jpg
+  path: Q321293/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

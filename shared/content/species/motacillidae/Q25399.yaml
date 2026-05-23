@@ -97,7 +97,7 @@ migration:
     changes.'
 image_refs:
 - role: hero
-  path: Q25399/hero.jpg
+  path: Q25399/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     Seltjarnarnes, Iceland.jpg
   commons_filename: White wagtail (Motacilla alba), Seltjarnarnes, Iceland.jpg
 - role: secondary
-  path: Q25399/secondary-1.jpg
+  path: Q25399/secondary-1.webp
   width: 1800
   height: 1262
   license: CC0
@@ -114,7 +114,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Motacilla Alba Oulu 20140426.jpg
   commons_filename: Motacilla Alba Oulu 20140426.jpg
 - role: secondary
-  path: Q25399/secondary-2.jpg
+  path: Q25399/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

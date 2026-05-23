@@ -69,7 +69,7 @@ migration:
     relative to body size.'
 image_refs:
 - role: hero
-  path: Q26420/hero.jpg
+  path: Q26420/hero.webp
   width: 2400
   height: 1929
   license: CC BY 2.0
@@ -79,7 +79,7 @@ image_refs:
     oenanthe, female (28185169449).jpg
   commons_filename: Northern Wheatear, Oenanthe oenanthe, female (28185169449).jpg
 - role: secondary
-  path: Q26420/secondary-1.jpg
+  path: Q26420/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -90,7 +90,7 @@ image_refs:
   commons_filename: Farbberingter Steinschmätzer (Oenanthe oenanthe) auf Norderney
     02.jpg
 - role: secondary
-  path: Q26420/secondary-2.jpg
+  path: Q26420/secondary-2.webp
   width: 1713
   height: 1800
   license: CC BY-SA 4.0

@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q127895/hero.jpg
+  path: Q127895/hero.webp
   width: 2048
   height: 1461
   license: CC BY 4.0
@@ -45,7 +45,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pterocles lichtensteinii 63545595.jpg
   commons_filename: Pterocles lichtensteinii 63545595.jpg
 - role: secondary
-  path: Q127895/secondary-1.jpg
+  path: Q127895/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

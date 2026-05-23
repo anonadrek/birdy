@@ -93,7 +93,7 @@ migration:
     escaped captivity.'
 image_refs:
 - role: hero
-  path: Q724987/hero.jpg
+  path: Q724987/hero.webp
   width: 2400
   height: 1800
   license: CC BY 4.0
@@ -102,7 +102,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Myiopsitta monachus, Barcelona.jpg
   commons_filename: Myiopsitta monachus, Barcelona.jpg
 - role: secondary
-  path: Q724987/secondary-1.jpg
+  path: Q724987/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -112,7 +112,7 @@ image_refs:
     Chile -nest-8 (2).jpg
   commons_filename: Myiopsitta monachus -Santiago, Chile -nest-8 (2).jpg
 - role: secondary
-  path: Q724987/secondary-2.jpg
+  path: Q724987/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

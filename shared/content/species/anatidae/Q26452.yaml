@@ -97,7 +97,7 @@ migration:
     They return northward in spring to resume breeding on their taiga breeding grounds.'
 image_refs:
 - role: hero
-  path: Q26452/hero.jpg
+  path: Q26452/hero.webp
   width: 2400
   height: 1597
   license: CC0
@@ -107,7 +107,7 @@ image_refs:
   commons_filename: Anser fabalis fabalis (Taiga Bean Goose), Naturschutzgebiet Schellbruch,
     Lübeck, Germany.jpg
 - role: secondary
-  path: Q26452/secondary-1.jpg
+  path: Q26452/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -116,7 +116,7 @@ image_refs:
     Izunuma, Miyagi, Japan 1.jpg
   commons_filename: Anser fabalis middendorffii, Izunuma, Miyagi, Japan 1.jpg
 - role: secondary
-  path: Q26452/secondary-2.jpg
+  path: Q26452/secondary-2.webp
   width: 1800
   height: 1350
   license: CC0

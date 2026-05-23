@@ -93,7 +93,7 @@ migration:
     behavior would be required.'
 image_refs:
 - role: hero
-  path: Q12267692/hero.jpg
+  path: Q12267692/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -103,7 +103,7 @@ image_refs:
     8.jpg
   commons_filename: Charrancito Sternula albifrons 8.jpg
 - role: secondary
-  path: Q12267692/secondary-1.jpg
+  path: Q12267692/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -114,7 +114,7 @@ image_refs:
     2.jpg
   commons_filename: Charrancito Sternula albifrons 2.jpg
 - role: secondary
-  path: Q12267692/secondary-2.jpg
+  path: Q12267692/secondary-2.webp
   width: 1800
   height: 1110
   license: CC BY 2.0

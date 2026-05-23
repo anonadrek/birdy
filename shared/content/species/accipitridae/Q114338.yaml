@@ -63,7 +63,7 @@ migration:
     Migration data unavailable for this species.'
 image_refs:
 - role: hero
-  path: Q114338/hero.jpg
+  path: Q114338/hero.webp
   width: 1788
   height: 2048
   license: CC BY 4.0
@@ -73,7 +73,7 @@ image_refs:
     Nayakkan - 449110324.jpeg
   commons_filename: Tachyspiza brevipes - Afsar Nayakkan - 449110324.jpeg
 - role: secondary
-  path: Q114338/secondary-1.jpg
+  path: Q114338/secondary-1.webp
   width: 1572
   height: 1800
   license: CC BY-SA 4.0

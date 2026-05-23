@@ -58,7 +58,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q1030039/hero.jpg
+  path: Q1030039/hero.webp
   width: 2048
   height: 1536
   license: CC BY 4.0

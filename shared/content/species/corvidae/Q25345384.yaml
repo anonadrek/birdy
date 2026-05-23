@@ -93,7 +93,7 @@ migration:
     far north showing more consistent southward movement than those in temperate zones.'
 image_refs:
 - role: hero
-  path: Q25345384/hero.jpg
+  path: Q25345384/hero.webp
   width: 1800
   height: 2400
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     5080 Emines 01.jpg
   commons_filename: Choucas (Coloeus monedula) à 5080 Emines 01.jpg
 - role: secondary
-  path: Q25345384/secondary-1.jpg
+  path: Q25345384/secondary-1.webp
   width: 1800
   height: 1800
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
     02.jpg
   commons_filename: Coloeus monedula Oulu 20250503 02.jpg
 - role: secondary
-  path: Q25345384/secondary-2.jpg
+  path: Q25345384/secondary-2.webp
   width: 1800
   height: 1349
   license: CC0

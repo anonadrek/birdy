@@ -91,7 +91,7 @@ migration:
     Scandinavia, though this remains uncommon.'
 image_refs:
 - role: hero
-  path: Q18850/hero.jpg
+  path: Q18850/hero.webp
   width: 2400
   height: 1518
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
     01.JPG
   commons_filename: Actitis hypoleucos Oulu 20140623 01.JPG
 - role: secondary
-  path: Q18850/secondary-1.jpg
+  path: Q18850/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 2.0
@@ -109,7 +109,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Actitis hypoleucos (25574447361).jpg
   commons_filename: Actitis hypoleucos (25574447361).jpg
 - role: secondary
-  path: Q18850/secondary-2.jpg
+  path: Q18850/secondary-2.webp
   width: 1800
   height: 1168
   license: CC BY 2.0

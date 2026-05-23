@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q1265260/hero.jpg
+  path: Q1265260/hero.webp
   width: 2048
   height: 1365
   license: CC BY 4.0
@@ -46,7 +46,7 @@ image_refs:
     Jeddah, Saudi Arabia.jpg
   commons_filename: Saunders's Tern (Sternula saundersi), Jeddah, Saudi Arabia.jpg
 - role: secondary
-  path: Q1265260/secondary-1.jpg
+  path: Q1265260/secondary-1.webp
   width: 1800
   height: 1171
   license: CC BY-SA 4.0

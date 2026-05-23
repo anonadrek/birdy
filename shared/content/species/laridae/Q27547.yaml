@@ -92,7 +92,7 @@ migration:
     occurs in late April.'
 image_refs:
 - role: hero
-  path: Q27547/hero.jpg
+  path: Q27547/hero.webp
   width: 1850
   height: 2400
   license: CC0
@@ -101,7 +101,7 @@ image_refs:
     Heligoland.jpg
   commons_filename: Sandwich Terns (Thalasseus sandvicensis), Heligoland.jpg
 - role: secondary
-  path: Q27547/secondary-1.jpg
+  path: Q27547/secondary-1.webp
   width: 1197
   height: 1800
   license: CC0
@@ -110,7 +110,7 @@ image_refs:
     vor Helgoland.jpg
   commons_filename: Thalasseus sandvicensis (Brandseeschwalbe) vor Helgoland.jpg
 - role: secondary
-  path: Q27547/secondary-2.jpg
+  path: Q27547/secondary-2.webp
   width: 1198
   height: 1800
   license: CC0

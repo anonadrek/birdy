@@ -98,7 +98,7 @@ migration:
     and movement patterns would be required.'
 image_refs:
 - role: hero
-  path: Q25332/hero.jpg
+  path: Q25332/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -108,7 +108,7 @@ image_refs:
     along the Gardner River (29132705308).jpg
   commons_filename: Osprey (Pandion haliaetus) perched along the Gardner River (29132705308).jpg
 - role: secondary
-  path: Q25332/secondary-1.jpg
+  path: Q25332/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY 2.0
@@ -117,7 +117,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pandion haliaetus 5950 (16704998543).jpg
   commons_filename: Pandion haliaetus 5950 (16704998543).jpg
 - role: secondary
-  path: Q25332/secondary-2.jpg
+  path: Q25332/secondary-2.webp
   width: 1800
   height: 1382
   license: CC BY 2.0

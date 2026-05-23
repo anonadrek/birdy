@@ -70,7 +70,7 @@ migration:
     or habitats.'
 image_refs:
 - role: hero
-  path: Q18861/hero.jpg
+  path: Q18861/hero.webp
   width: 1536
   height: 2048
   license: CC0
@@ -79,7 +79,7 @@ image_refs:
     Park, Taiwan 2.jpg
   commons_filename: Hydrophasianus chirurgus, Meinonghu Park, Taiwan 2.jpg
 - role: secondary
-  path: Q18861/secondary-1.jpg
+  path: Q18861/secondary-1.webp
   width: 1800
   height: 1350
   license: CC0
@@ -88,7 +88,7 @@ image_refs:
     Park, Taiwan 6.jpg
   commons_filename: Hydrophasianus chirurgus, Meinonghu Park, Taiwan 6.jpg
 - role: secondary
-  path: Q18861/secondary-2.jpg
+  path: Q18861/secondary-2.webp
   width: 1800
   height: 1350
   license: CC0

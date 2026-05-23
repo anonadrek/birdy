@@ -84,7 +84,7 @@ migration:
     visitor to Scandinavian habitats.'
 image_refs:
 - role: hero
-  path: Q1589281/hero.jpg
+  path: Q1589281/hero.webp
   width: 2400
   height: 1800
   license: CC BY 4.0
@@ -93,7 +93,7 @@ image_refs:
     maurus)1.jpg
   commons_filename: Siberian stonechat (Saxicola maurus)1.jpg
 - role: secondary
-  path: Q1589281/secondary-1.jpg
+  path: Q1589281/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 3.0
@@ -102,7 +102,7 @@ image_refs:
     maurus) ചരൽക്കുരുവി .jpg
   commons_filename: Siberian stonechat (Saxicola maurus) ചരൽക്കുരുവി .jpg
 - role: secondary
-  path: Q1589281/secondary-2.jpg
+  path: Q1589281/secondary-2.webp
   width: 1800
   height: 1111
   license: CC BY 3.0

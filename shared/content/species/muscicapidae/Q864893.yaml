@@ -89,7 +89,7 @@ migration:
     to/from that region.'
 image_refs:
 - role: hero
-  path: Q864893/hero.jpg
+  path: Q864893/hero.webp
   width: 2400
   height: 1800
   license: CC BY 3.0
@@ -98,7 +98,7 @@ image_refs:
     ചുറ്റീന്തൽക്കിളി 15.jpg
   commons_filename: Pied bush chat (Saxicola caprata) ചുറ്റീന്തൽക്കിളി 15.jpg
 - role: secondary
-  path: Q864893/secondary-1.jpg
+  path: Q864893/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 3.0
@@ -107,7 +107,7 @@ image_refs:
     ചുറ്റീന്തൽക്കിളി 4.jpg
   commons_filename: Pied bush chat (Saxicola caprata) ചുറ്റീന്തൽക്കിളി 4.jpg
 - role: secondary
-  path: Q864893/secondary-2.jpg
+  path: Q864893/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 3.0

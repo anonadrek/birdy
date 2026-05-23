@@ -85,7 +85,7 @@ migration:
     be required.'
 image_refs:
 - role: hero
-  path: Q1528819/hero.jpg
+  path: Q1528819/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -95,7 +95,7 @@ image_refs:
     osea osea) male in flight.jpg
   commons_filename: Palestine sunbird (Cinnyris osea osea) male in flight.jpg
 - role: secondary
-  path: Q1528819/secondary-1.jpg
+  path: Q1528819/secondary-1.webp
   width: 1800
   height: 1284
   license: CC BY-SA 4.0
@@ -104,7 +104,7 @@ image_refs:
     Aseer, Saudi Arabia (2024).jpg
   commons_filename: Arabian Sunbird (Cinnyris hellmayri), Aseer, Saudi Arabia (2024).jpg
 - role: secondary
-  path: Q1528819/secondary-2.jpg
+  path: Q1528819/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 3.0

@@ -55,7 +55,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q2742585/hero.jpg
+  path: Q2742585/hero.webp
   width: 1566
   height: 2106
   license: Public domain
@@ -65,7 +65,7 @@ image_refs:
     Sahari (Algeria).jpg
   commons_filename: Malurus nimudicus + Emberiza Sahari (Algeria).jpg
 - role: secondary
-  path: Q2742585/secondary-1.jpg
+  path: Q2742585/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -74,7 +74,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Tibibt (Emberiza sahari), Marrakesh.jpg
   commons_filename: Tibibt (Emberiza sahari), Marrakesh.jpg
 - role: secondary
-  path: Q2742585/secondary-2.jpg
+  path: Q2742585/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 3.0

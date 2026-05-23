@@ -85,7 +85,7 @@ migration:
     occurring only as a transient visitor during migration corridors.'
 image_refs:
 - role: hero
-  path: Q21090684/hero.jpg
+  path: Q21090684/hero.webp
   width: 2048
   height: 1465
   license: CC BY 4.0
@@ -94,7 +94,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Clanga clanga 91594689.jpg
   commons_filename: Clanga clanga 91594689.jpg
 - role: secondary
-  path: Q21090684/secondary-1.jpg
+  path: Q21090684/secondary-1.webp
   width: 1800
   height: 1287
   license: CC BY 4.0
@@ -103,7 +103,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Clanga clanga 91218543.jpg
   commons_filename: Clanga clanga 91218543.jpg
 - role: secondary
-  path: Q21090684/secondary-2.jpg
+  path: Q21090684/secondary-2.webp
   width: 1800
   height: 1286
   license: CC BY 4.0

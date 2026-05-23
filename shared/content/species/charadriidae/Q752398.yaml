@@ -62,7 +62,7 @@ migration:
     specificity relevant to Northern Europe.'
 image_refs:
 - role: hero
-  path: Q752398/hero.jpg
+  path: Q752398/hero.webp
   width: 2114
   height: 1315
   license: CC0
@@ -71,7 +71,7 @@ image_refs:
     indicus.jpg
   commons_filename: Red-wattled Lapwing - Vanellus indicus.jpg
 - role: secondary
-  path: Q752398/secondary-1.jpg
+  path: Q752398/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -81,7 +81,7 @@ image_refs:
     indicus Juvenile DSCN7305 (11).jpg
   commons_filename: Red-wattled Lapwing Vanellus indicus Juvenile DSCN7305 (11).jpg
 - role: secondary
-  path: Q752398/secondary-2.jpg
+  path: Q752398/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

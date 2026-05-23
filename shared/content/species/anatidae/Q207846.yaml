@@ -97,7 +97,7 @@ migration:
     occurs in the region as a breeding visitor rather than a permanent or winter resident.'
 image_refs:
 - role: hero
-  path: Q207846/hero.jpg
+  path: Q207846/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -107,7 +107,7 @@ image_refs:
     (13667676513).jpg
   commons_filename: King Eider (Somateria spectabilis) (13667676513).jpg
 - role: secondary
-  path: Q207846/secondary-1.jpg
+  path: Q207846/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -117,7 +117,7 @@ image_refs:
     (13667952664).jpg
   commons_filename: King Eider (Somateria spectabilis) (13667952664).jpg
 - role: secondary
-  path: Q207846/secondary-2.jpg
+  path: Q207846/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

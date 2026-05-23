@@ -89,7 +89,7 @@ migration:
     provided.'
 image_refs:
 - role: hero
-  path: Q606076/hero.jpg
+  path: Q606076/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -98,7 +98,7 @@ image_refs:
     2.jpg
   commons_filename: Phasianidae Coturnix delegorguei 2.jpg
 - role: secondary
-  path: Q606076/secondary-1.jpg
+  path: Q606076/secondary-1.webp
   width: 1800
   height: 1019
   license: CC BY-SA 2.0
@@ -108,7 +108,7 @@ image_refs:
     1 (31605900087).jpg
   commons_filename: Harlequin Quail (Coturnix delegorguei) 1 (31605900087).jpg
 - role: secondary
-  path: Q606076/secondary-2.jpg
+  path: Q606076/secondary-2.webp
   width: 1800
   height: 1543
   license: CC BY-SA 3.0

@@ -90,7 +90,7 @@ migration:
     but returns promptly when ice melts in spring.'
 image_refs:
 - role: hero
-  path: Q25421/hero.jpg
+  path: Q25421/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -99,7 +99,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Tachybaptus ruficollis-SJ 08172.jpg
   commons_filename: Tachybaptus ruficollis-SJ 08172.jpg
 - role: secondary
-  path: Q25421/secondary-1.jpg
+  path: Q25421/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -109,7 +109,7 @@ image_refs:
     ruficollis 5.jpg
   commons_filename: Zampullín chico, joven Tachybaptus ruficollis 5.jpg
 - role: secondary
-  path: Q25421/secondary-2.jpg
+  path: Q25421/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

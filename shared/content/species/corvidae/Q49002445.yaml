@@ -65,7 +65,7 @@ migration:
     irrelevant to a guide on Scandinavian and Northern European birds.'
 image_refs:
 - role: hero
-  path: Q49002445/hero.jpg
+  path: Q49002445/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -74,7 +74,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Maghreb magpie (Pica mauritanica).jpg
   commons_filename: Maghreb magpie (Pica mauritanica).jpg
 - role: secondary
-  path: Q49002445/secondary-1.jpg
+  path: Q49002445/secondary-1.webp
   width: 1800
   height: 1156
   license: CC BY-SA 2.0
@@ -83,7 +83,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pica mauritanica, Agadir 1.jpg
   commons_filename: Pica mauritanica, Agadir 1.jpg
 - role: secondary
-  path: Q49002445/secondary-2.jpg
+  path: Q49002445/secondary-2.webp
   width: 1625
   height: 1800
   license: CC BY-SA 2.0

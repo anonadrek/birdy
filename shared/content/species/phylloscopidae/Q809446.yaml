@@ -59,7 +59,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q809446/hero.jpg
+  path: Q809446/hero.webp
   width: 2048
   height: 1365
   license: CC BY 4.0
@@ -68,7 +68,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus schwarzi in Germany.jpg
   commons_filename: Phylloscopus schwarzi in Germany.jpg
 - role: secondary
-  path: Q809446/secondary-1.jpg
+  path: Q809446/secondary-1.webp
   width: 1800
   height: 1125
   license: CC BY-SA 4.0

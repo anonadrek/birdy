@@ -92,7 +92,7 @@ migration:
     coastal territories.'
 image_refs:
 - role: hero
-  path: Q83020448/hero.jpg
+  path: Q83020448/hero.webp
   width: 2400
   height: 1629
   license: CC BY 2.0
@@ -101,7 +101,7 @@ image_refs:
     Toppskarv.jpg
   commons_filename: European shag, Gulosus aristotelis, Toppskarv.jpg
 - role: secondary
-  path: Q83020448/secondary-1.jpg
+  path: Q83020448/secondary-1.webp
   width: 1200
   height: 1800
   license: CC BY-SA 4.0
@@ -112,7 +112,7 @@ image_refs:
   commons_filename: European shag (Gulosus aristotelis aristotelis) at empty nest
     Keflavíkurbjarg cliffs.jpg
 - role: secondary
-  path: Q83020448/secondary-2.jpg
+  path: Q83020448/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

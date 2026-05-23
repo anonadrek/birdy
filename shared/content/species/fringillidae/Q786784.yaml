@@ -82,7 +82,7 @@ migration:
     in Scandinavian or Northern European regions is not applicable.'
 image_refs:
 - role: hero
-  path: Q786784/hero.jpg
+  path: Q786784/hero.webp
   width: 1799
   height: 2400
   license: Public domain

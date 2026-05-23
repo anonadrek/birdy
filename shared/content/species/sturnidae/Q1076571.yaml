@@ -63,7 +63,7 @@ migration:
     contradicts the instruction to remain strictly factual.'
 image_refs:
 - role: hero
-  path: Q1076571/hero.jpg
+  path: Q1076571/hero.webp
   width: 2400
   height: 1807
   license: CC0
@@ -72,7 +72,7 @@ image_refs:
     sitting on a pipe.jpg
   commons_filename: Brahminy starling (Sturnia pagodarum) sitting on a pipe.jpg
 - role: secondary
-  path: Q1076571/secondary-1.jpg
+  path: Q1076571/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -82,7 +82,7 @@ image_refs:
     കരിന്തലച്ചിക്കാളി. (25036803417).jpg
   commons_filename: Brahminy Starling (Sturnia Pagodarum) കരിന്തലച്ചിക്കാളി. (25036803417).jpg
 - role: secondary
-  path: Q1076571/secondary-2.jpg
+  path: Q1076571/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

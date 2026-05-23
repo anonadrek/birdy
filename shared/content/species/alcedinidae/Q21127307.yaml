@@ -63,7 +63,7 @@ migration:
     occur in these regions as a regular migrant or resident.'
 image_refs:
 - role: hero
-  path: Q21127307/hero.jpg
+  path: Q21127307/hero.webp
   width: 2400
   height: 1682
   license: CC BY-SA 2.0
@@ -73,7 +73,7 @@ image_refs:
     cristatus) (32063261832).jpg
   commons_filename: Malachite Kingfisher (Corythornis cristatus) (32063261832).jpg
 - role: secondary
-  path: Q21127307/secondary-1.jpg
+  path: Q21127307/secondary-1.webp
   width: 1800
   height: 1240
   license: CC BY-SA 2.0
@@ -83,7 +83,7 @@ image_refs:
     cristatus) (52746880154).jpg
   commons_filename: Malachite Kingfisher (Corythornis cristatus) (52746880154).jpg
 - role: secondary
-  path: Q21127307/secondary-2.jpg
+  path: Q21127307/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0

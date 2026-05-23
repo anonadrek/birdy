@@ -95,7 +95,7 @@ migration:
     nocturnal song.'
 image_refs:
 - role: hero
-  path: Q206130/hero.jpg
+  path: Q206130/hero.webp
   width: 2164
   height: 2400
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Luscinia luscinia Muromets2.JPG
   commons_filename: Luscinia luscinia Muromets2.JPG
 - role: secondary
-  path: Q206130/secondary-1.jpg
+  path: Q206130/secondary-1.webp
   width: 1800
   height: 1404
   license: CC0
@@ -113,7 +113,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Luscinia luscinia Bobrovnya1.JPG
   commons_filename: Luscinia luscinia Bobrovnya1.JPG
 - role: secondary
-  path: Q206130/secondary-2.jpg
+  path: Q206130/secondary-2.webp
   width: 1800
   height: 1350
   license: CC0

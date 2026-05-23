@@ -70,7 +70,7 @@ migration:
     ornithological source would be required.'
 image_refs:
 - role: hero
-  path: Q335113/hero.jpg
+  path: Q335113/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -79,7 +79,7 @@ image_refs:
     (53669151110).jpg
   commons_filename: Goldfasan (Chrysolophus pictus) (53669151110).jpg
 - role: secondary
-  path: Q335113/secondary-1.jpg
+  path: Q335113/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY 2.0
@@ -88,7 +88,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Chrysolophus pictus -walking-8.jpg
   commons_filename: Chrysolophus pictus -walking-8.jpg
 - role: secondary
-  path: Q335113/secondary-2.jpg
+  path: Q335113/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 3.0

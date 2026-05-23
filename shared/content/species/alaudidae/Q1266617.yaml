@@ -59,7 +59,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q1266617/hero.jpg
+  path: Q1266617/hero.webp
   width: 2048
   height: 1536
   license: CC0
@@ -67,7 +67,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Chersophilus duponti 1837961.jpg
   commons_filename: Chersophilus duponti 1837961.jpg
 - role: secondary
-  path: Q1266617/secondary-1.jpg
+  path: Q1266617/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

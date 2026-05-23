@@ -70,7 +70,7 @@ migration:
     movements.'
 image_refs:
 - role: hero
-  path: Q492684/hero.jpg
+  path: Q492684/hero.webp
   width: 2400
   height: 1350
   license: CC BY-SA 4.0
@@ -79,7 +79,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:ALECTORIS GRAECA-ΣΟΥΝΙΟ.jpg
   commons_filename: ALECTORIS GRAECA-ΣΟΥΝΙΟ.jpg
 - role: secondary
-  path: Q492684/secondary-1.jpg
+  path: Q492684/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

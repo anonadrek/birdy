@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q128002/hero.jpg
+  path: Q128002/hero.webp
   width: 1936
   height: 2400
   license: Public domain
@@ -45,7 +45,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Syrrhaptes paradoxus 128.jpg
   commons_filename: Syrrhaptes paradoxus 128.jpg
 - role: secondary
-  path: Q128002/secondary-1.jpg
+  path: Q128002/secondary-1.webp
   width: 1800
   height: 1533
   license: Public domain
@@ -56,7 +56,7 @@ image_refs:
     of Syrrhaptes paradoxus in 1863.jpg
   commons_filename: Map illustrating the irruption of Syrrhaptes paradoxus in 1863.jpg
 - role: secondary
-  path: Q128002/secondary-2.jpg
+  path: Q128002/secondary-2.webp
   width: 1800
   height: 1359
   license: Public domain

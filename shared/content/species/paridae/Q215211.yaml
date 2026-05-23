@@ -86,7 +86,7 @@ migration:
     throughout the year.'
 image_refs:
 - role: hero
-  path: Q215211/hero.jpg
+  path: Q215211/hero.webp
   width: 1739
   height: 2400
   license: Public domain
@@ -98,7 +98,7 @@ image_refs:
   commons_filename: Poecile montanus songarus & Poecile montanus affinis & Poecile
     superciliosus 1889.jpg
 - role: secondary
-  path: Q215211/secondary-1.jpg
+  path: Q215211/secondary-1.webp
   width: 1800
   height: 1180
   license: Public domain
@@ -108,7 +108,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Poecile montanus affinis 1889.jpg
   commons_filename: Poecile montanus affinis 1889.jpg
 - role: secondary
-  path: Q215211/secondary-2.jpg
+  path: Q215211/secondary-2.webp
   width: 1800
   height: 1352
   license: CC0

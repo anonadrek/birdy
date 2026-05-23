@@ -74,7 +74,7 @@ migration:
     throughout the annual cycle in Northern Europe.'
 image_refs:
 - role: hero
-  path: Q184508/hero.jpg
+  path: Q184508/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -83,7 +83,7 @@ image_refs:
     excubitor (20862911824).jpg
   commons_filename: Northern Shrike Juvenile - Lanius excubitor (20862911824).jpg
 - role: secondary
-  path: Q184508/secondary-1.jpg
+  path: Q184508/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -92,7 +92,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Lanius excubitor DSCN7720-01.jpg
   commons_filename: Lanius excubitor DSCN7720-01.jpg
 - role: secondary
-  path: Q184508/secondary-2.jpg
+  path: Q184508/secondary-2.webp
   width: 1800
   height: 1309
   license: CC BY 4.0

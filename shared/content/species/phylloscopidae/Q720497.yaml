@@ -101,7 +101,7 @@ migration:
     year-round.'
 image_refs:
 - role: hero
-  path: Q720497/hero.jpg
+  path: Q720497/hero.webp
   width: 2400
   height: 1985
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Phylloscopus borealis s2.jpg
   commons_filename: Phylloscopus borealis s2.jpg
 - role: secondary
-  path: Q720497/secondary-1.jpg
+  path: Q720497/secondary-1.webp
   width: 1800
   height: 1536
   license: CC BY-SA 4.0

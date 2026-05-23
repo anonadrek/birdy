@@ -89,7 +89,7 @@ migration:
     regularly present throughout the year in Northern Europe.'
 image_refs:
 - role: hero
-  path: Q25348/hero.jpg
+  path: Q25348/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -99,7 +99,7 @@ image_refs:
     male head.jpg
   commons_filename: Mallard (Anas platyrhynchos) male head.jpg
 - role: secondary
-  path: Q25348/secondary-1.jpg
+  path: Q25348/secondary-1.webp
   width: 1800
   height: 983
   license: CC BY 3.0
@@ -108,7 +108,7 @@ image_refs:
     02.jpg
   commons_filename: Anas platyrhynchos Vikmanshyttan 02.jpg
 - role: secondary
-  path: Q25348/secondary-2.jpg
+  path: Q25348/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

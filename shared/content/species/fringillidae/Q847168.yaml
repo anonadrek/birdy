@@ -87,7 +87,7 @@ migration:
     in Scandinavian or Northern European regions throughout the year.'
 image_refs:
 - role: hero
-  path: Q847168/hero.jpg
+  path: Q847168/hero.webp
   width: 1597
   height: 2400
   license: Public domain
@@ -98,7 +98,7 @@ image_refs:
     Gronvold.jpg
   commons_filename: Fringilla teydea polatzeki by Gronvold.jpg
 - role: secondary
-  path: Q847168/secondary-1.jpg
+  path: Q847168/secondary-1.webp
   width: 1800
   height: 1729
   license: CC BY 2.0
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Fringilla teydea Pinar de Chio.jpg
   commons_filename: Fringilla teydea Pinar de Chio.jpg
 - role: secondary
-  path: Q847168/secondary-2.jpg
+  path: Q847168/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 3.0

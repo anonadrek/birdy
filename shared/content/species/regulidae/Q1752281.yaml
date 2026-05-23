@@ -62,7 +62,7 @@ migration:
     relevant migration data for the requested geographic area.'
 image_refs:
 - role: hero
-  path: Q1752281/hero.jpg
+  path: Q1752281/hero.webp
   width: 2400
   height: 1595
   license: CC0
@@ -70,7 +70,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Regulus madeirensis.jpg
   commons_filename: Regulus madeirensis.jpg
 - role: secondary
-  path: Q1752281/secondary-1.jpg
+  path: Q1752281/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -80,7 +80,7 @@ image_refs:
     Madeira, Portugal (53283937107).jpg
   commons_filename: Regulus madeirensis, Fanal, Madeira, Portugal (53283937107).jpg
 - role: secondary
-  path: Q1752281/secondary-2.jpg
+  path: Q1752281/secondary-2.webp
   width: 1350
   height: 1800
   license: CC BY-SA 4.0

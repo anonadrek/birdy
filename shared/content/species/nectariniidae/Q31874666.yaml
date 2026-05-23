@@ -55,7 +55,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q31874666/hero.jpg
+  path: Q31874666/hero.webp
   width: 2400
   height: 1712
   license: CC BY-SA 4.0
@@ -64,7 +64,7 @@ image_refs:
     Aseer, Saudi Arabia (2024).jpg
   commons_filename: Arabian Sunbird (Cinnyris hellmayri), Aseer, Saudi Arabia (2024).jpg
 - role: secondary
-  path: Q31874666/secondary-1.jpg
+  path: Q31874666/secondary-1.webp
   width: 1800
   height: 1192
   license: CC BY-SA 2.0
@@ -73,7 +73,7 @@ image_refs:
     Salalah, Oman 1.jpg
   commons_filename: Cinnyris hellmayri, Rotana Resort, Salalah, Oman 1.jpg
 - role: secondary
-  path: Q31874666/secondary-2.jpg
+  path: Q31874666/secondary-2.webp
   width: 1800
   height: 1198
   license: CC BY-SA 2.0

@@ -90,7 +90,7 @@ migration:
     seeking winter refuge.'
 image_refs:
 - role: hero
-  path: Q208707/hero.jpg
+  path: Q208707/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -100,7 +100,7 @@ image_refs:
     20190912 t173448.jpg
   commons_filename: Anthus spinoletta Puy de Cacadogne 20190912 t173448.jpg
 - role: secondary
-  path: Q208707/secondary-1.jpg
+  path: Q208707/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -110,7 +110,7 @@ image_refs:
     spinoletta) zimsko ruho.jpg
   commons_filename: Planinska trepteljka (Anthus spinoletta) zimsko ruho.jpg
 - role: secondary
-  path: Q208707/secondary-2.jpg
+  path: Q208707/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

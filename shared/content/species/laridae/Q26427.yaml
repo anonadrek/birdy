@@ -92,7 +92,7 @@ migration:
     now winter locally in milder coastal areas.'
 image_refs:
 - role: hero
-  path: Q26427/hero.jpg
+  path: Q26427/hero.webp
   width: 2400
   height: 1815
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Larus canus Oulu 20150712 03.JPG
   commons_filename: Larus canus Oulu 20150712 03.JPG
 - role: secondary
-  path: Q26427/secondary-1.jpg
+  path: Q26427/secondary-1.webp
   width: 1800
   height: 1356
   license: Public domain
@@ -110,7 +110,7 @@ image_refs:
     spring 2008.JPG
   commons_filename: Larus canus seen from Djurgårdsfärjan spring 2008.JPG
 - role: secondary
-  path: Q26427/secondary-2.jpg
+  path: Q26427/secondary-2.webp
   width: 1800
   height: 1332
   license: CC BY 2.0

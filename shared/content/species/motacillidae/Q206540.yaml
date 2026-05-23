@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q206540/hero.jpg
+  path: Q206540/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -47,7 +47,7 @@ image_refs:
     citreola - P1030409.jpg
   commons_filename: Citrine Wagtail - Motacilla citreola - P1030409.jpg
 - role: secondary
-  path: Q206540/secondary-1.jpg
+  path: Q206540/secondary-1.webp
   width: 1800
   height: 1259
   license: CC BY-SA 4.0
@@ -58,7 +58,7 @@ image_refs:
   commons_filename: Citrine Wagtail Motacilla citreola by Dr. Raju Kasambe DSCN5340
     (44).jpg
 - role: secondary
-  path: Q206540/secondary-2.jpg
+  path: Q206540/secondary-2.webp
   width: 1800
   height: 1321
   license: CC BY-SA 4.0

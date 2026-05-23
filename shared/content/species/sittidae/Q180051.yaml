@@ -85,7 +85,7 @@ migration:
     European regions is provided.'
 image_refs:
 - role: hero
-  path: Q180051/hero.jpg
+  path: Q180051/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -94,7 +94,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pica-soques cors (Sitta whiteheadi).jpg
   commons_filename: Pica-soques cors (Sitta whiteheadi).jpg
 - role: secondary
-  path: Q180051/secondary-1.jpg
+  path: Q180051/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 4.0
@@ -103,7 +103,7 @@ image_refs:
     Moning - 8.jpeg
   commons_filename: Sitta whiteheadi - Christoph Moning - 8.jpeg
 - role: secondary
-  path: Q180051/secondary-2.jpg
+  path: Q180051/secondary-2.webp
   width: 1800
   height: 1201
   license: CC BY 4.0

@@ -55,7 +55,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q752481/hero.jpg
+  path: Q752481/hero.webp
   width: 2400
   height: 1596
   license: CC0
@@ -64,7 +64,7 @@ image_refs:
     syriacus).jpg
   commons_filename: Syrian woodpecker (Dendrocopos syriacus).jpg
 - role: secondary
-  path: Q752481/secondary-1.jpg
+  path: Q752481/secondary-1.webp
   width: 1800
   height: 1196
   license: CC0
@@ -74,7 +74,7 @@ image_refs:
     Bakırköy.jpg
   commons_filename: A Dendrocopos syriacus in Ataköy, Bakırköy.jpg
 - role: secondary
-  path: Q752481/secondary-2.jpg
+  path: Q752481/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

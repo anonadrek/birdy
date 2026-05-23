@@ -87,7 +87,7 @@ migration:
     exceptional rather than regular, making them notable sightings for local ornithologists.'
 image_refs:
 - role: hero
-  path: Q25317/hero.jpg
+  path: Q25317/hero.webp
   width: 2400
   height: 1201
   license: CC0
@@ -98,7 +98,7 @@ image_refs:
     alba - in flight.jpg
   commons_filename: Front view of a barn owl - Tyto alba - in flight.jpg
 - role: secondary
-  path: Q25317/secondary-1.jpg
+  path: Q25317/secondary-1.webp
   width: 1800
   height: 1285
   license: CC BY 2.0
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Tyto alba - in flight.jpg
   commons_filename: Tyto alba - in flight.jpg
 - role: secondary
-  path: Q25317/secondary-2.jpg
+  path: Q25317/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 3.0

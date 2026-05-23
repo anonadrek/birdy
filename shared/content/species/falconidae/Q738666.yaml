@@ -100,7 +100,7 @@ migration:
     as a migrant, vagrant, or winter visitor to Scandinavian territories.'
 image_refs:
 - role: hero
-  path: Q738666/hero.jpg
+  path: Q738666/hero.webp
   width: 2400
   height: 1350
   license: CC BY 2.0
@@ -111,7 +111,7 @@ image_refs:
   commons_filename: Red-necked falcon, Falco chicquera, at Kgalagadi Transfrontier
     Park, Northern Cape, South Africa. (33672070294).jpg
 - role: secondary
-  path: Q738666/secondary-1.jpg
+  path: Q738666/secondary-1.webp
   width: 1800
   height: 1012
   license: CC BY 2.0
@@ -122,7 +122,7 @@ image_refs:
   commons_filename: Red-necked falcon, Falco chicquera, at Kgalagadi Transfrontier
     Park, Northern Cape, South Africa. (34384230271).jpg
 - role: secondary
-  path: Q738666/secondary-2.jpg
+  path: Q738666/secondary-2.webp
   width: 1202
   height: 1800
   license: CC BY 2.0

@@ -97,7 +97,7 @@ migration:
     with specific distributional and phenological data would be needed.'
 image_refs:
 - role: hero
-  path: Q216836/hero.jpg
+  path: Q216836/hero.webp
   width: 2048
   height: 1365
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pluvialis dominica 228355544.jpg
   commons_filename: Pluvialis dominica 228355544.jpg
 - role: secondary
-  path: Q216836/secondary-1.jpg
+  path: Q216836/secondary-1.webp
   width: 1800
   height: 1199
   license: CC0
@@ -115,7 +115,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pluvialis dominica 231830137.jpg
   commons_filename: Pluvialis dominica 231830137.jpg
 - role: secondary
-  path: Q216836/secondary-2.jpg
+  path: Q216836/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

@@ -90,7 +90,7 @@ migration:
     absent from Northern Europe during the winter months.
 image_refs:
 - role: hero
-  path: Q210422/hero.jpg
+  path: Q210422/hero.webp
   width: 2400
   height: 1804
   license: CC BY-SA 4.0

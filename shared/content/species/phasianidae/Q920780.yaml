@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q920780/hero.jpg
+  path: Q920780/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -48,7 +48,7 @@ image_refs:
     Partridge (Ammoperdix griseogularis).jpg
   commons_filename: Пустынная куропатка - See-see Partridge (Ammoperdix griseogularis).jpg
 - role: secondary
-  path: Q920780/secondary-1.jpg
+  path: Q920780/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -60,7 +60,7 @@ image_refs:
   commons_filename: Пустынная куропатка - See-see Partridge (Ammoperdix griseogularis)
     1.jpg
 - role: secondary
-  path: Q920780/secondary-2.jpg
+  path: Q920780/secondary-2.webp
   width: 1800
   height: 1201
   license: CC BY-SA 2.0

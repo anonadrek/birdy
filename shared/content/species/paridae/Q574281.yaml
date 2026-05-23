@@ -92,7 +92,7 @@ marginalia:
   en: Wears its sooty-grey cap like a sailor's hat.
 image_refs:
 - role: hero
-  path: Q574281/hero.jpg
+  path: Q574281/hero.webp
   width: 2400
   height: 1800
   license: CC BY-SA 4.0
@@ -103,7 +103,7 @@ image_refs:
   commons_filename: Poecile lugubris, Vlasinska visoravan i Vlasinsko jezero, Srbija
     (147).jpg
 - role: secondary
-  path: Q574281/secondary-1.jpg
+  path: Q574281/secondary-1.webp
   width: 1800
   height: 1336
   license: CC BY-SA 4.0

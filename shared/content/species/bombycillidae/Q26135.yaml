@@ -99,7 +99,7 @@ migration:
     northward again by spring, typically March-April, returning to breeding territories.'
 image_refs:
 - role: hero
-  path: Q26135/hero.jpg
+  path: Q26135/hero.webp
   width: 2400
   height: 2237
   license: CC0
@@ -108,7 +108,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Bombycilla garrulus Kiev1.jpg
   commons_filename: Bombycilla garrulus Kiev1.jpg
 - role: secondary
-  path: Q26135/secondary-1.jpg
+  path: Q26135/secondary-1.webp
   width: 1800
   height: 1348
   license: CC0
@@ -117,7 +117,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Bombycilla garrulus Kiev3.jpg
   commons_filename: Bombycilla garrulus Kiev3.jpg
 - role: secondary
-  path: Q26135/secondary-2.jpg
+  path: Q26135/secondary-2.webp
   width: 1800
   height: 1448
   license: CC0

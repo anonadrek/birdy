@@ -85,7 +85,7 @@ migration:
     Most sightings occur along coastal areas during passage periods.'
 image_refs:
 - role: hero
-  path: Q599749/hero.jpg
+  path: Q599749/hero.webp
   width: 2400
   height: 1398
   license: CC BY 4.0
@@ -96,7 +96,7 @@ image_refs:
   commons_filename: Semipalmated plovers Charadrius semipalmatus, white-rumped sandpiper
     Calidris fuscicollis.jpg
 - role: secondary
-  path: Q599749/secondary-1.jpg
+  path: Q599749/secondary-1.webp
   width: 1800
   height: 1122
   license: CC BY 4.0
@@ -106,7 +106,7 @@ image_refs:
     fuscicollis Mingan Islands 7025.jpg
   commons_filename: White-rumped sandpipers Calidris fuscicollis Mingan Islands 7025.jpg
 - role: secondary
-  path: Q599749/secondary-2.jpg
+  path: Q599749/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

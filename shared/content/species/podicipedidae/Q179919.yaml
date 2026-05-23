@@ -93,7 +93,7 @@ migration:
     temperate coastal regions for overwintering.'
 image_refs:
 - role: hero
-  path: Q179919/hero.jpg
+  path: Q179919/hero.webp
   width: 1905
   height: 2400
   license: Public domain
@@ -102,7 +102,7 @@ image_refs:
     Potter's Marsh, Anchorage 2.jpg
   commons_filename: Podiceps grisegena holboelii, Potter's Marsh, Anchorage 2.jpg
 - role: secondary
-  path: Q179919/secondary-1.jpg
+  path: Q179919/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -111,7 +111,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Podiceps grisegena (33624787806).jpg
   commons_filename: Podiceps grisegena (33624787806).jpg
 - role: secondary
-  path: Q179919/secondary-2.jpg
+  path: Q179919/secondary-2.webp
   width: 1800
   height: 1201
   license: CC BY 2.0

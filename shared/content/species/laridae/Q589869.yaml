@@ -68,7 +68,7 @@ migration:
     bird guides.'
 image_refs:
 - role: hero
-  path: Q589869/hero.jpg
+  path: Q589869/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -78,7 +78,7 @@ image_refs:
     Oman 1.jpg
   commons_filename: Ichthyaetus hemprichii Muscat, Oman 1.jpg
 - role: secondary
-  path: Q589869/secondary-1.jpg
+  path: Q589869/secondary-1.webp
   width: 1800
   height: 1289
   license: CC BY 4.0
@@ -87,7 +87,7 @@ image_refs:
     Oman 12.jpg
   commons_filename: Ichthyaetus hemprichii, Qurayyat, Oman 12.jpg
 - role: secondary
-  path: Q589869/secondary-2.jpg
+  path: Q589869/secondary-2.webp
   width: 1800
   height: 1289
   license: CC BY 4.0

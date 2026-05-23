@@ -96,7 +96,7 @@ migration:
     entirely.'
 image_refs:
 - role: hero
-  path: Q129219/hero.jpg
+  path: Q129219/hero.webp
   width: 2400
   height: 1920
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
     Chiang Mai, Thailand.jpg
   commons_filename: Tarsiger cyanurus, Doi Lang, Chiang Mai, Thailand.jpg
 - role: secondary
-  path: Q129219/secondary-1.jpg
+  path: Q129219/secondary-1.webp
   width: 1800
   height: 1169
   license: CC BY 2.0
@@ -116,7 +116,7 @@ image_refs:
     Montzen, Ostbelgien (24817597527).jpg
   commons_filename: Blauschwanz (Tarsiger cyanurus), Montzen, Ostbelgien (24817597527).jpg
 - role: secondary
-  path: Q129219/secondary-2.jpg
+  path: Q129219/secondary-2.webp
   width: 1800
   height: 1148
   license: CC BY 2.0

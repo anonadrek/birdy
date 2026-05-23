@@ -104,7 +104,7 @@ migration:
     availability.'
 image_refs:
 - role: hero
-  path: Q25234/hero.jpg
+  path: Q25234/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Turdus merula 1294.jpg
   commons_filename: Turdus merula 1294.jpg
 - role: secondary
-  path: Q25234/secondary-1.jpg
+  path: Q25234/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -120,7 +120,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Turdus merula 1308.jpg
   commons_filename: Turdus merula 1308.jpg
 - role: secondary
-  path: Q25234/secondary-2.jpg
+  path: Q25234/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

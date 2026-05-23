@@ -98,7 +98,7 @@ migration:
     due to climate change and habitat expansion.'
 image_refs:
 - role: hero
-  path: Q178821/hero.jpg
+  path: Q178821/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Young Himantopus himantopus.jpg
   commons_filename: Young Himantopus himantopus.jpg
 - role: secondary
-  path: Q178821/secondary-1.jpg
+  path: Q178821/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 3.0
@@ -116,7 +116,7 @@ image_refs:
     himantopus) പവിഴക്കാലി .jpg
   commons_filename: Black winged stilt 41 (Himantopus himantopus) പവിഴക്കാലി .jpg
 - role: secondary
-  path: Q178821/secondary-2.jpg
+  path: Q178821/secondary-2.webp
   width: 1800
   height: 1125
   license: CC BY 4.0

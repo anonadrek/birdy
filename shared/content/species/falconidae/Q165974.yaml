@@ -89,7 +89,7 @@ migration:
     in southern regions during migration periods.'
 image_refs:
 - role: hero
-  path: Q165974/hero.jpg
+  path: Q165974/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -98,7 +98,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Falco cherrug aka Sakervalk.jpg
   commons_filename: Falco cherrug aka Sakervalk.jpg
 - role: secondary
-  path: Q165974/secondary-1.jpg
+  path: Q165974/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -108,7 +108,7 @@ image_refs:
     image.jpg
   commons_filename: Saker Falcon (Falco cherrug) image.jpg
 - role: secondary
-  path: Q165974/secondary-2.jpg
+  path: Q165974/secondary-2.webp
   width: 1281
   height: 1800
   license: CC BY 2.0

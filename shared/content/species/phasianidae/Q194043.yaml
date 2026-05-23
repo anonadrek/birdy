@@ -93,7 +93,7 @@ migration:
     about its presence or movements in Scandinavian or Northern European regions.'
 image_refs:
 - role: hero
-  path: Q194043/hero.jpg
+  path: Q194043/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -103,7 +103,7 @@ image_refs:
     - Alectoris chukar 05.jpg
   commons_filename: Aziatische steenpatrijs - Chukar - Alectoris chukar 05.jpg
 - role: secondary
-  path: Q194043/secondary-1.jpg
+  path: Q194043/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 4.0
@@ -113,7 +113,7 @@ image_refs:
     on Maui 3262.jpg
   commons_filename: Chukar Partridge Alectoris chukar on Maui 3262.jpg
 - role: secondary
-  path: Q194043/secondary-2.jpg
+  path: Q194043/secondary-2.webp
   width: 1205
   height: 1800
   license: CC BY 2.0

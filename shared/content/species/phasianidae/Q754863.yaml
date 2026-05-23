@@ -91,7 +91,7 @@ migration:
     of a natural migration cycle.'
 image_refs:
 - role: hero
-  path: Q754863/hero.jpg
+  path: Q754863/hero.webp
   width: 2400
   height: 1596
   license: Public domain
@@ -99,7 +99,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Alectoris-rufa-with-young.jpg
   commons_filename: Alectoris-rufa-with-young.jpg
 - role: secondary
-  path: Q754863/secondary-1.jpg
+  path: Q754863/secondary-1.webp
   width: 1800
   height: 1197
   license: Public domain
@@ -107,7 +107,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Young-Alectoris-rufa.JPG
   commons_filename: Young-Alectoris-rufa.JPG
 - role: secondary
-  path: Q754863/secondary-2.jpg
+  path: Q754863/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

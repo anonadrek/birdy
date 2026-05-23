@@ -95,7 +95,7 @@ migration:
     on suitable breeding habitat and favorable conditions during spring migration.'
 image_refs:
 - role: hero
-  path: Q28358/hero.jpg
+  path: Q28358/hero.webp
   width: 2048
   height: 1365
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
     Kalmykia Republic, Russia 1.jpg
   commons_filename: Coturnix coturnix, Chernozemelsky, Kalmykia Republic, Russia 1.jpg
 - role: secondary
-  path: Q28358/secondary-1.jpg
+  path: Q28358/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -114,7 +114,7 @@ image_refs:
     2019.jpg
   commons_filename: Common quail (Coturnix coturnix) 2019.jpg
 - role: secondary
-  path: Q28358/secondary-2.jpg
+  path: Q28358/secondary-2.webp
   width: 1800
   height: 1151
   license: CC BY 4.0

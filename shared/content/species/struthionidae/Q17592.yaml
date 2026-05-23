@@ -93,7 +93,7 @@ migration:
     settings.'
 image_refs:
 - role: hero
-  path: Q17592/hero.jpg
+  path: Q17592/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     Jardim Zoológico de Curitiba.jpg
   commons_filename: Struthio camelus (captive) in Jardim Zoológico de Curitiba.jpg
 - role: secondary
-  path: Q17592/secondary-1.jpg
+  path: Q17592/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -113,7 +113,7 @@ image_refs:
     Jardim Zoológico de Curitiba.jpg
   commons_filename: Struthio camelus sleeping in Jardim Zoológico de Curitiba.jpg
 - role: secondary
-  path: Q17592/secondary-2.jpg
+  path: Q17592/secondary-2.webp
   width: 1227
   height: 1800
   license: CC0

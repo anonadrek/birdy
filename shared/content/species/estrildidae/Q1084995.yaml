@@ -78,7 +78,7 @@ migration:
     this species in Northern European regions.'
 image_refs:
 - role: hero
-  path: Q1084995/hero.jpg
+  path: Q1084995/hero.webp
   width: 1827
   height: 2240
   license: Public domain
@@ -88,7 +88,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Estrilda melpoda 1876.jpg
   commons_filename: Estrilda melpoda 1876.jpg
 - role: secondary
-  path: Q1084995/secondary-1.jpg
+  path: Q1084995/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -97,7 +97,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Estrilda melpoda 128071692.jpg
   commons_filename: Estrilda melpoda 128071692.jpg
 - role: secondary
-  path: Q1084995/secondary-2.jpg
+  path: Q1084995/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

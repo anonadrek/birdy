@@ -90,7 +90,7 @@ migration:
     occurring in late summer months.'
 image_refs:
 - role: hero
-  path: Q704982/hero.jpg
+  path: Q704982/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -99,7 +99,7 @@ image_refs:
     ), Algarve.jpg
   commons_filename: Yellow-legged gull (Larus michahellis ), Algarve.jpg
 - role: secondary
-  path: Q704982/secondary-1.jpg
+  path: Q704982/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -108,7 +108,7 @@ image_refs:
     michahellis), juvenile.jpg
   commons_filename: Western yellow-legged gull (Larus michahellis), juvenile.jpg
 - role: secondary
-  path: Q704982/secondary-2.jpg
+  path: Q704982/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

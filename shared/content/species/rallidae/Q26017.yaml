@@ -97,7 +97,7 @@ migration:
     species in the region.'
 image_refs:
 - role: hero
-  path: Q26017/hero.jpg
+  path: Q26017/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Crex crex, Beachy Head 1.jpg
   commons_filename: Crex crex, Beachy Head 1.jpg
 - role: secondary
-  path: Q26017/secondary-1.jpg
+  path: Q26017/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -115,7 +115,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Crex crex, Beachy Head 2.jpg
   commons_filename: Crex crex, Beachy Head 2.jpg
 - role: secondary
-  path: Q26017/secondary-2.jpg
+  path: Q26017/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

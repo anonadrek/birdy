@@ -86,7 +86,7 @@ migration:
     in milder coastal areas and wetlands where open water remains available.'
 image_refs:
 - role: hero
-  path: Q172093/hero.jpg
+  path: Q172093/hero.webp
   width: 1600
   height: 2400
   license: CC0
@@ -95,7 +95,7 @@ image_refs:
     (Anser albifrons).jpg
   commons_filename: Greater white-fronted goose (Anser albifrons).jpg
 - role: secondary
-  path: Q172093/secondary-1.jpg
+  path: Q172093/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 2.0
@@ -104,7 +104,7 @@ image_refs:
     Shengang, Changhua 2022-11-19.jpg
   commons_filename: Anser albifrons frontalis at Shengang, Changhua 2022-11-19.jpg
 - role: secondary
-  path: Q172093/secondary-2.jpg
+  path: Q172093/secondary-2.webp
   width: 1800
   height: 1185
   license: CC BY 4.0

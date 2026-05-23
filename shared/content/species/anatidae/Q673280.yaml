@@ -93,7 +93,7 @@ migration:
     movements.'
 image_refs:
 - role: hero
-  path: Q673280/hero.jpg
+  path: Q673280/hero.webp
   width: 2368
   height: 1760
   license: CC BY 2.0
@@ -103,7 +103,7 @@ image_refs:
     Vastra Gotaland, Sweden 4.jpg
   commons_filename: Anser serrirostris, Billdal, Vastra Gotaland, Sweden 4.jpg
 - role: secondary
-  path: Q673280/secondary-1.jpg
+  path: Q673280/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -113,7 +113,7 @@ image_refs:
     Wu - 604435511.jpeg
   commons_filename: Anser serrirostris - Mickey Wu - 604435511.jpeg
 - role: secondary
-  path: Q673280/secondary-2.jpg
+  path: Q673280/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

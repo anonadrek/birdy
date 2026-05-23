@@ -86,7 +86,7 @@ migration:
     any season.'
 image_refs:
 - role: hero
-  path: Q191386/hero.jpg
+  path: Q191386/hero.webp
   width: 2400
   height: 1590
   license: CC0
@@ -95,7 +95,7 @@ image_refs:
     Montets 15072015.jpg
   commons_filename: Pyrrhocorax graculus Les Grands Montets 15072015.jpg
 - role: secondary
-  path: Q191386/secondary-1.jpg
+  path: Q191386/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pyrrhocorax graculus (3).JPG
   commons_filename: Pyrrhocorax graculus (3).JPG
 - role: secondary
-  path: Q191386/secondary-2.jpg
+  path: Q191386/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

@@ -91,7 +91,7 @@ migration:
     are long-distance migrants, completely absent during the winter months.'
 image_refs:
 - role: hero
-  path: Q18841/hero.jpg
+  path: Q18841/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
     (Limosa limosa islandica).jpg
   commons_filename: Icelandic black-tailed godwit (Limosa limosa islandica).jpg
 - role: secondary
-  path: Q18841/secondary-1.jpg
+  path: Q18841/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
     (Limosa limosa islandica), Iceland.jpg
   commons_filename: Icelandic black-tailed godwit (Limosa limosa islandica), Iceland.jpg
 - role: secondary
-  path: Q18841/secondary-2.jpg
+  path: Q18841/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

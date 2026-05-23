@@ -94,7 +94,7 @@ migration:
     areas.'
 image_refs:
 - role: hero
-  path: Q27434/hero.jpg
+  path: Q27434/hero.webp
   width: 1601
   height: 2400
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     RP-T-BR-2017-1-5-84.jpg
   commons_filename: Zwarte zee-eend (Melanitta nigra), RP-T-BR-2017-1-5-84.jpg
 - role: secondary
-  path: Q27434/secondary-1.jpg
+  path: Q27434/secondary-1.webp
   width: 1200
   height: 1800
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
     RP-T-BR-2017-1-5-85.jpg
   commons_filename: Zwarte zee-eend (Melanitta nigra), RP-T-BR-2017-1-5-85.jpg
 - role: secondary
-  path: Q27434/secondary-2.jpg
+  path: Q27434/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 2.0

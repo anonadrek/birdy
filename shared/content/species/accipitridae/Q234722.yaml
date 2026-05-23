@@ -58,7 +58,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q234722/hero.jpg
+  path: Q234722/hero.webp
   width: 2048
   height: 1405
   license: CC BY 3.0
@@ -69,7 +69,7 @@ image_refs:
     (106032339).jpg
   commons_filename: Aquila fasciata taking flight (106032339).jpg
 - role: secondary
-  path: Q234722/secondary-1.jpg
+  path: Q234722/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -79,7 +79,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Aquila fasciata.JPG
   commons_filename: Aquila fasciata.JPG
 - role: secondary
-  path: Q234722/secondary-2.jpg
+  path: Q234722/secondary-2.webp
   width: 1800
   height: 673
   license: CC BY-SA 4.0

@@ -91,7 +91,7 @@ migration:
     Europe.'
 image_refs:
 - role: hero
-  path: Q191628/hero.jpg
+  path: Q191628/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
     one leg).jpg
   commons_filename: Anser erythropus (standing on one leg).jpg
 - role: secondary
-  path: Q191628/secondary-1.jpg
+  path: Q191628/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
     Deutschland 425987939.jpg
   commons_filename: Unidentified hybrid goose, München, Deutschland 425987939.jpg
 - role: secondary
-  path: Q191628/secondary-2.jpg
+  path: Q191628/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

@@ -67,7 +67,7 @@ migration:
     and movement patterns in these areas.'
 image_refs:
 - role: hero
-  path: Q602084/hero.jpg
+  path: Q602084/hero.webp
   width: 2048
   height: 1536
   license: CC0
@@ -76,7 +76,7 @@ image_refs:
     Islands, New Zealand 1.jpg
   commons_filename: Sula dactylatra tasmani, Kermadec Islands, New Zealand 1.jpg
 - role: secondary
-  path: Q602084/secondary-1.jpg
+  path: Q602084/secondary-1.webp
   width: 1350
   height: 1800
   license: CC0
@@ -85,7 +85,7 @@ image_refs:
     Islands, New Zealand 2.jpg
   commons_filename: Sula dactylatra tasmani, Kermadec Islands, New Zealand 2.jpg
 - role: secondary
-  path: Q602084/secondary-2.jpg
+  path: Q602084/secondary-2.webp
   width: 1350
   height: 1800
   license: CC0

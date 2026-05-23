@@ -88,7 +88,7 @@ migration:
     data would be required.'
 image_refs:
 - role: hero
-  path: Q827245/hero.jpg
+  path: Q827245/hero.webp
   width: 2400
   height: 1920
   license: CC BY 2.0
@@ -98,7 +98,7 @@ image_refs:
     leucurus (8605045409).jpg
   commons_filename: White-tailed Lapwing (Vanellus leucurus (8605045409).jpg
 - role: secondary
-  path: Q827245/secondary-1.jpg
+  path: Q827245/secondary-1.webp
   width: 1800
   height: 1440
   license: CC BY 2.0
@@ -108,7 +108,7 @@ image_refs:
     leucurus (8606149906).jpg
   commons_filename: White-tailed Lapwing (Vanellus leucurus (8606149906).jpg
 - role: secondary
-  path: Q827245/secondary-2.jpg
+  path: Q827245/secondary-2.webp
   width: 1800
   height: 1440
   license: CC BY 2.0

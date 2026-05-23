@@ -95,7 +95,7 @@ migration:
     territories for breeding.'
 image_refs:
 - role: hero
-  path: Q208710/hero.jpg
+  path: Q208710/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -105,7 +105,7 @@ image_refs:
     naevia) (34231783040).jpg
   commons_filename: Grasshopper Warbler (Locustella naevia) (34231783040).jpg
 - role: secondary
-  path: Q208710/secondary-1.jpg
+  path: Q208710/secondary-1.webp
   width: 1800
   height: 1349
   license: CC BY-SA 4.0
@@ -115,7 +115,7 @@ image_refs:
     naevia.jpg
   commons_filename: Common grasshopper warbler Locustella naevia.jpg
 - role: secondary
-  path: Q208710/secondary-2.jpg
+  path: Q208710/secondary-2.webp
   width: 1800
   height: 1491
   license: CC BY-SA 4.0

@@ -95,7 +95,7 @@ migration:
     them southward.'
 image_refs:
 - role: hero
-  path: Q331179/hero.jpg
+  path: Q331179/hero.webp
   width: 2400
   height: 1600
   license: Public domain
@@ -106,7 +106,7 @@ image_refs:
   commons_filename: Harlequin duck (Histrionicus histrionicus) resting on a rock in
     Le Hardy Rapids (42879550752).jpg
 - role: secondary
-  path: Q331179/secondary-1.jpg
+  path: Q331179/secondary-1.webp
   width: 1800
   height: 1201
   license: Public domain
@@ -116,7 +116,7 @@ image_refs:
   commons_filename: Harlequin duck (Histrionicus histrionicus) pair in Soda Butte
     Creek (2) (52887592971).jpg
 - role: secondary
-  path: Q331179/secondary-2.jpg
+  path: Q331179/secondary-2.webp
   width: 1800
   height: 1201
   license: Public domain

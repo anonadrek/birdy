@@ -91,7 +91,7 @@ migration:
     and insects in flight during the breeding season.'
 image_refs:
 - role: hero
-  path: Q25876/hero.jpg
+  path: Q25876/hero.webp
   width: 2400
   height: 1504
   license: CC BY 4.0
@@ -101,7 +101,7 @@ image_refs:
     2020.jpg
   commons_filename: Eurasian hobby (Falco subbuteo) 2020.jpg
 - role: secondary
-  path: Q25876/secondary-1.jpg
+  path: Q25876/secondary-1.webp
   width: 1198
   height: 1800
   license: CC BY 2.0
@@ -110,7 +110,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ógea - Falco subbuteo.jpg
   commons_filename: Ógea - Falco subbuteo.jpg
 - role: secondary
-  path: Q25876/secondary-2.jpg
+  path: Q25876/secondary-2.webp
   width: 1800
   height: 1439
   license: CC BY 2.0

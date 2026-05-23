@@ -64,7 +64,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q26574/hero.jpg
+  path: Q26574/hero.webp
   width: 2400
   height: 1826
   license: CC BY 4.0
@@ -74,7 +74,7 @@ image_refs:
     harrier - Circus pygargus 5.tif
   commons_filename: Grauwe kiekendief - Montagu's harrier - Circus pygargus 5.tif
 - role: secondary
-  path: Q26574/secondary-1.jpg
+  path: Q26574/secondary-1.webp
   width: 1800
   height: 1208
   license: CC BY 4.0
@@ -84,7 +84,7 @@ image_refs:
     harrier - Circus pygargus 3.tif
   commons_filename: Grauwe kiekendief - Montagu's harrier - Circus pygargus 3.tif
 - role: secondary
-  path: Q26574/secondary-2.jpg
+  path: Q26574/secondary-2.webp
   width: 1800
   height: 1197
   license: CC BY 4.0

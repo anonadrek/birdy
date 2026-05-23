@@ -63,7 +63,7 @@ migration:
     in northern European regions.'
 image_refs:
 - role: hero
-  path: Q1270808/hero.jpg
+  path: Q1270808/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -74,7 +74,7 @@ image_refs:
   commons_filename: Grey-headed kingfisher, Halcyon leucocephala, at Kruger National
     Park, South Africa (51755302302).jpg
 - role: secondary
-  path: Q1270808/secondary-1.jpg
+  path: Q1270808/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -84,7 +84,7 @@ image_refs:
   commons_filename: Grey-headed kingfisher, Halcyon leucocephala, at Kruger National
     Park, South Africa - 51756375123.jpg
 - role: secondary
-  path: Q1270808/secondary-2.jpg
+  path: Q1270808/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

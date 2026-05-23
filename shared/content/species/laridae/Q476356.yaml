@@ -63,7 +63,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q476356/hero.jpg
+  path: Q476356/hero.webp
   width: 2400
   height: 1603
   license: CC BY-SA 4.0
@@ -75,7 +75,7 @@ image_refs:
   commons_filename: Pallas's or Great Black-headed gull Ichthyaetus ichthyaetus by
     Vedant Kasambe 02.jpg
 - role: secondary
-  path: Q476356/secondary-1.jpg
+  path: Q476356/secondary-1.webp
   width: 1800
   height: 1223
   license: CC BY-SA 4.0

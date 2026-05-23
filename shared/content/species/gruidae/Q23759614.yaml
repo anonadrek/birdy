@@ -84,7 +84,7 @@ migration:
     outside the species'' normal range.'
 image_refs:
 - role: hero
-  path: Q23759614/hero.jpg
+  path: Q23759614/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -93,7 +93,7 @@ image_refs:
     - Grus virgo 03.jpg
   commons_filename: 2016-09 zoo sauvage de Saint-Félicien - Grus virgo 03.jpg
 - role: secondary
-  path: Q23759614/secondary-1.jpg
+  path: Q23759614/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -101,7 +101,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Grus virgo in Dierenpark Zie-ZOO.jpg
   commons_filename: Grus virgo in Dierenpark Zie-ZOO.jpg
 - role: secondary
-  path: Q23759614/secondary-2.jpg
+  path: Q23759614/secondary-2.webp
   width: 1800
   height: 1301
   license: CC BY-SA 3.0

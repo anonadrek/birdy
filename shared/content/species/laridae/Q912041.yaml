@@ -82,7 +82,7 @@ migration:
     about this species'' movements throughout the year.'
 image_refs:
 - role: hero
-  path: Q912041/hero.jpg
+  path: Q912041/hero.webp
   width: 2048
   height: 1958
   license: CC BY 4.0
@@ -91,7 +91,7 @@ image_refs:
     Hurghada, Egypt 5.jpg
   commons_filename: Ichthyaetus leucophthalmus, Hurghada, Egypt 5.jpg
 - role: secondary
-  path: Q912041/secondary-1.jpg
+  path: Q912041/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -100,7 +100,7 @@ image_refs:
     Hurghada, Egypt 2.jpg
   commons_filename: Ichthyaetus leucophthalmus, Hurghada, Egypt 2.jpg
 - role: secondary
-  path: Q912041/secondary-2.jpg
+  path: Q912041/secondary-2.webp
   width: 1800
   height: 1205
   license: CC BY-SA 4.0

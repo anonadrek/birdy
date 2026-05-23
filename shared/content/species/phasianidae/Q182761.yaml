@@ -93,7 +93,7 @@ migration:
     regions.'
 image_refs:
 - role: hero
-  path: Q182761/hero.jpg
+  path: Q182761/hero.webp
   width: 2048
   height: 1535
   license: CC0
@@ -102,7 +102,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Tetrastes bonasia 277462364.jpg
   commons_filename: Tetrastes bonasia 277462364.jpg
 - role: secondary
-  path: Q182761/secondary-1.jpg
+  path: Q182761/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -111,7 +111,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Гніздо орябка Tetrastes bonasia.jpg
   commons_filename: Гніздо орябка Tetrastes bonasia.jpg
 - role: secondary
-  path: Q182761/secondary-2.jpg
+  path: Q182761/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 3.0

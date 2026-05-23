@@ -67,7 +67,7 @@ migration:
     or Northern European regions, making migration information for this area not applicable.'
 image_refs:
 - role: hero
-  path: Q117253126/hero.jpg
+  path: Q117253126/hero.webp
   width: 2048
   height: 1365
   license: CC BY 4.0
@@ -76,7 +76,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ortygornis pondicerianus 157172199.jpeg
   commons_filename: Ortygornis pondicerianus 157172199.jpeg
 - role: secondary
-  path: Q117253126/secondary-1.jpg
+  path: Q117253126/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -85,7 +85,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ortygornis pondicerianus 157956046.jpeg
   commons_filename: Ortygornis pondicerianus 157956046.jpeg
 - role: secondary
-  path: Q117253126/secondary-2.jpg
+  path: Q117253126/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

@@ -70,7 +70,7 @@ migration:
     it does not form part of the region''s regular avifauna.'
 image_refs:
 - role: hero
-  path: Q621833/hero.jpg
+  path: Q621833/hero.webp
   width: 2400
   height: 1699
   license: CC BY-SA 4.0
@@ -80,7 +80,7 @@ image_refs:
     serin 07.jpg
   commons_filename: Serinus pusillus - Red-fronted serin 07.jpg
 - role: secondary
-  path: Q621833/secondary-1.jpg
+  path: Q621833/secondary-1.webp
   width: 1800
   height: 1252
   license: CC BY-SA 4.0
@@ -90,7 +90,7 @@ image_refs:
     serin 05.jpg
   commons_filename: Serinus pusillus - Red-fronted serin 05.jpg
 - role: secondary
-  path: Q621833/secondary-2.jpg
+  path: Q621833/secondary-2.webp
   width: 1800
   height: 1210
   license: CC BY-SA 4.0

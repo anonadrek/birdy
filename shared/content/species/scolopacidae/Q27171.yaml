@@ -88,7 +88,7 @@ migration:
     the breeding season.'
 image_refs:
 - role: hero
-  path: Q27171/hero.jpg
+  path: Q27171/hero.webp
   width: 2048
   height: 1365
   license: CC BY 4.0
@@ -96,7 +96,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Gallinago media 57850158.jpg
   commons_filename: Gallinago media 57850158.jpg
 - role: secondary
-  path: Q27171/secondary-1.jpg
+  path: Q27171/secondary-1.webp
   width: 1800
   height: 1126
   license: CC BY 4.0

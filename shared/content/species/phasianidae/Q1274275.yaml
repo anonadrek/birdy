@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q1274275/hero.jpg
+  path: Q1274275/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -46,7 +46,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ammoperdix heyi 02.jpg
   commons_filename: Ammoperdix heyi 02.jpg
 - role: secondary
-  path: Q1274275/secondary-1.jpg
+  path: Q1274275/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -55,7 +55,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ammoperdix heyi, Israel.jpg
   commons_filename: Ammoperdix heyi, Israel.jpg
 - role: secondary
-  path: Q1274275/secondary-2.jpg
+  path: Q1274275/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

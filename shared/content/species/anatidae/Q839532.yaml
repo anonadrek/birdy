@@ -85,7 +85,7 @@ migration:
     territories.'
 image_refs:
 - role: hero
-  path: Q839532/hero.jpg
+  path: Q839532/hero.webp
   width: 2048
   height: 1536
   license: Public domain
@@ -93,7 +93,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Nettapus coromandelianus.jpg
   commons_filename: Nettapus coromandelianus.jpg
 - role: secondary
-  path: Q839532/secondary-1.jpg
+  path: Q839532/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY 4.0
@@ -102,7 +102,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Nettapus coromandelianus 339126403.jpg
   commons_filename: Nettapus coromandelianus 339126403.jpg
 - role: secondary
-  path: Q839532/secondary-2.jpg
+  path: Q839532/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 3.0

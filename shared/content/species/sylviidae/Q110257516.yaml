@@ -95,7 +95,7 @@ migration:
     winter months.'
 image_refs:
 - role: hero
-  path: Q110257516/hero.jpg
+  path: Q110257516/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -104,7 +104,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Grasmus - Curruca communis (52152546993).jpg
   commons_filename: Grasmus - Curruca communis (52152546993).jpg
 - role: secondary
-  path: Q110257516/secondary-1.jpg
+  path: Q110257516/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -113,7 +113,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Grasmus - Curruca communis (52151530482).jpg
   commons_filename: Grasmus - Curruca communis (52151530482).jpg
 - role: secondary
-  path: Q110257516/secondary-2.jpg
+  path: Q110257516/secondary-2.webp
   width: 1800
   height: 1286
   license: CC BY 4.0

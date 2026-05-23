@@ -97,7 +97,7 @@ migration:
     colder months.'
 image_refs:
 - role: hero
-  path: Q42326/hero.jpg
+  path: Q42326/hero.webp
   width: 2400
   height: 1602
   license: CC BY 4.0
@@ -106,7 +106,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:20220926 Columba livia.jpg
   commons_filename: 20220926 Columba livia.jpg
 - role: secondary
-  path: Q42326/secondary-1.jpg
+  path: Q42326/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 4.0
@@ -116,7 +116,7 @@ image_refs:
     Bürgerpark Saarbrücken 06.jpg
   commons_filename: 20200115 Columba livia domestica Bürgerpark Saarbrücken 06.jpg
 - role: secondary
-  path: Q42326/secondary-2.jpg
+  path: Q42326/secondary-2.webp
   width: 1800
   height: 1202
   license: CC BY 4.0

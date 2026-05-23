@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q530069/hero.jpg
+  path: Q530069/hero.webp
   width: 2400
   height: 1492
   license: CC BY 2.0
@@ -48,7 +48,7 @@ image_refs:
   commons_filename: African Pied Wagtail, Motacilla aguimp in Kruger National Park
     (20132645308).jpg
 - role: secondary
-  path: Q530069/secondary-1.jpg
+  path: Q530069/secondary-1.webp
   width: 1800
   height: 1230
   license: CC BY 2.0
@@ -59,7 +59,7 @@ image_refs:
   commons_filename: African Pied Wagtail, Motacilla aguimp in Kruger National Park
     (20134043299).jpg
 - role: secondary
-  path: Q530069/secondary-2.jpg
+  path: Q530069/secondary-2.webp
   width: 1800
   height: 1163
   license: CC BY 2.0

@@ -91,7 +91,7 @@ migration:
     to their circumpolar Arctic breeding grounds.'
 image_refs:
 - role: hero
-  path: Q26416/hero.jpg
+  path: Q26416/hero.webp
   width: 2400
   height: 1791
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
     03.JPG
   commons_filename: Plectrophenax nivalis Oulu 20140406 03.JPG
 - role: secondary
-  path: Q26416/secondary-1.jpg
+  path: Q26416/secondary-1.webp
   width: 1800
   height: 1344
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
     01.JPG
   commons_filename: Plectrophenax nivalis Oulu 20140406 01.JPG
 - role: secondary
-  path: Q26416/secondary-2.jpg
+  path: Q26416/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

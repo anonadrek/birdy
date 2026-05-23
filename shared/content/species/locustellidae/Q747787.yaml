@@ -94,7 +94,7 @@ migration:
     and May.'
 image_refs:
 - role: hero
-  path: Q747787/hero.jpg
+  path: Q747787/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0

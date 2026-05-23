@@ -70,7 +70,7 @@ migration:
     requirements.'
 image_refs:
 - role: hero
-  path: Q320193/hero.jpg
+  path: Q320193/hero.webp
   width: 1600
   height: 2400
   license: CC BY 4.0
@@ -81,7 +81,7 @@ image_refs:
   commons_filename: Atobá (Sula leucogaster) com plumagem juvenil nas ilhas Moleques
     do Sul, sul do Brasil.jpg
 - role: secondary
-  path: Q320193/secondary-1.jpg
+  path: Q320193/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -92,7 +92,7 @@ image_refs:
   commons_filename: Atobá (Sula leucogaster) filhote, nas ilhas Moleques do Sul, sul
     do Brasil.jpg
 - role: secondary
-  path: Q320193/secondary-2.jpg
+  path: Q320193/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

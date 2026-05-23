@@ -86,7 +86,7 @@ migration:
     off the west coast of Africa.'
 image_refs:
 - role: hero
-  path: Q1029778/hero.jpg
+  path: Q1029778/hero.webp
   width: 2048
   height: 1390
   license: CC0

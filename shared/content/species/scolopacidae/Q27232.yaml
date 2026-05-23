@@ -92,7 +92,7 @@ migration:
     vagrant records to the region during migration periods.'
 image_refs:
 - role: hero
-  path: Q27232/hero.jpg
+  path: Q27232/hero.webp
   width: 2400
   height: 1603
   license: CC BY 2.0
@@ -103,7 +103,7 @@ image_refs:
   commons_filename: Little stint, Calidris minuta (Erolia minuta), at Marievale Nature
     Reserve, Gauteng, South Africa (45489023512).jpg
 - role: secondary
-  path: Q27232/secondary-1.jpg
+  path: Q27232/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -113,7 +113,7 @@ image_refs:
     (51403695993).jpg
   commons_filename: Pilrito-pequeno Calidris minuta (51403695993).jpg
 - role: secondary
-  path: Q27232/secondary-2.jpg
+  path: Q27232/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

@@ -86,7 +86,7 @@ migration:
     regular seasonal visitor to the region.'
 image_refs:
 - role: hero
-  path: Q757116/hero.jpg
+  path: Q757116/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -96,7 +96,7 @@ image_refs:
     ചിന്നൻ ഭേരി. (32641228266).jpg
   commons_filename: Booted Warbler (Iduna caligata) ചിന്നൻ ഭേരി. (32641228266).jpg
 - role: secondary
-  path: Q757116/secondary-1.jpg
+  path: Q757116/secondary-1.webp
   width: 1800
   height: 1186
   license: CC BY-SA 4.0
@@ -106,7 +106,7 @@ image_refs:
     by Dr. Raju Kasambe DSCN3173 (2).jpg
   commons_filename: Booted Warbler Iduna caligata by Dr. Raju Kasambe DSCN3173 (2).jpg
 - role: secondary
-  path: Q757116/secondary-2.jpg
+  path: Q757116/secondary-2.webp
   width: 1800
   height: 1478
   license: CC BY-SA 4.0

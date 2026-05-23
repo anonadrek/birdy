@@ -102,7 +102,7 @@ migration:
     polar regions.'
 image_refs:
 - role: hero
-  path: Q26800/hero.jpg
+  path: Q26800/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -112,7 +112,7 @@ image_refs:
     2023 2.jpg
   commons_filename: Arctic tern (Sterna paradisaea) 2023 2.jpg
 - role: secondary
-  path: Q26800/secondary-1.jpg
+  path: Q26800/secondary-1.webp
   width: 1800
   height: 1257
   license: CC BY 2.0
@@ -121,7 +121,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Sterna paradisaea (40886787153).jpg
   commons_filename: Sterna paradisaea (40886787153).jpg
 - role: secondary
-  path: Q26800/secondary-2.jpg
+  path: Q26800/secondary-2.webp
   width: 1800
   height: 1239
   license: CC BY 2.0

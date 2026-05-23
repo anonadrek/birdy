@@ -91,7 +91,7 @@ migration:
     seasonal movements would be required.'
 image_refs:
 - role: hero
-  path: Q137156829/hero.jpg
+  path: Q137156829/hero.webp
   width: 2181
   height: 1440
   license: CC BY 4.0
@@ -101,7 +101,7 @@ image_refs:
     - Anarhynchus alexandrinus.jpg
   commons_filename: Strandplevier - Kentish plover - Anarhynchus alexandrinus.jpg
 - role: secondary
-  path: Q137156829/secondary-1.jpg
+  path: Q137156829/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

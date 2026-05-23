@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q781271/hero.jpg
+  path: Q781271/hero.webp
   width: 2400
   height: 1920
   license: CC BY 2.0
@@ -47,7 +47,7 @@ image_refs:
     (8605066417).jpg
   commons_filename: Bay-backed Shrike (Lanius vittatus) (8605066417).jpg
 - role: secondary
-  path: Q781271/secondary-1.jpg
+  path: Q781271/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0
@@ -57,7 +57,7 @@ image_refs:
     courtship display DSCN3629.jpg
   commons_filename: Bay-backed Shrike Lanius vittatus courtship display DSCN3629.jpg
 - role: secondary
-  path: Q781271/secondary-2.jpg
+  path: Q781271/secondary-2.webp
   width: 1800
   height: 1280
   license: CC BY-SA 4.0

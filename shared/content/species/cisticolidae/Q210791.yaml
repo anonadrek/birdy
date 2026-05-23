@@ -97,7 +97,7 @@ migration:
     of any consistent annual cycle in these regions.'
 image_refs:
 - role: hero
-  path: Q210791/hero.jpg
+  path: Q210791/hero.webp
   width: 1598
   height: 2400
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     juncidis), Cabanas de Tavira, Portugal.jpg
   commons_filename: Zitting cisticola 2 (Cisticola juncidis), Cabanas de Tavira, Portugal.jpg
 - role: secondary
-  path: Q210791/secondary-1.jpg
+  path: Q210791/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -115,7 +115,7 @@ image_refs:
     juncidis), Cabanas de Tavira, Portugal.jpg
   commons_filename: Zitting cisticola (Cisticola juncidis), Cabanas de Tavira, Portugal.jpg
 - role: secondary
-  path: Q210791/secondary-2.jpg
+  path: Q210791/secondary-2.webp
   width: 1200
   height: 1800
   license: CC BY 2.0

@@ -38,6 +38,10 @@ android {
             .get()
             .toInt()
 
+    // Plan 6b3 T22b: Install-time asset pack carrying ~320 MB of WebP species images.
+    // Without this the base APK download exceeds the 150 MB Play Store limit.
+    assetPacks += listOf(":asset-pack")
+
     defaultConfig {
         applicationId = "se.birdy.android"
         minSdk =

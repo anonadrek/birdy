@@ -86,7 +86,7 @@ migration:
     migrant or wintering bird.'
 image_refs:
 - role: hero
-  path: Q28482/hero.jpg
+  path: Q28482/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -96,7 +96,7 @@ image_refs:
     Island 3.jpg
   commons_filename: Onychoprion fuscatus Ascension Island 3.jpg
 - role: secondary
-  path: Q28482/secondary-1.jpg
+  path: Q28482/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 2.0
@@ -106,7 +106,7 @@ image_refs:
     Island 6.jpg
   commons_filename: Onychoprion fuscatus Ascension Island 6.jpg
 - role: secondary
-  path: Q28482/secondary-2.jpg
+  path: Q28482/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 3.0

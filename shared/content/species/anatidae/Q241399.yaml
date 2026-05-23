@@ -68,7 +68,7 @@ migration:
     or exhibits limited movements within its core range in warmer regions.'
 image_refs:
 - role: hero
-  path: Q241399/hero.jpg
+  path: Q241399/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -78,7 +78,7 @@ image_refs:
     - Oxyura leucocephala.jpg
   commons_filename: Witkopeend - white-headed duck - Oxyura leucocephala.jpg
 - role: secondary
-  path: Q241399/secondary-1.jpg
+  path: Q241399/secondary-1.webp
   width: 1800
   height: 1034
   license: CC BY 4.0
@@ -88,7 +88,7 @@ image_refs:
     - Oxyura leucocephala 3.tif
   commons_filename: Witkopeend - white-headed duck - Oxyura leucocephala 3.tif
 - role: secondary
-  path: Q241399/secondary-2.jpg
+  path: Q241399/secondary-2.webp
   width: 1800
   height: 1351
   license: CC BY 2.0

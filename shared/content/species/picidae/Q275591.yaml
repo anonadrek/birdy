@@ -63,7 +63,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q275591/hero.jpg
+  path: Q275591/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -73,7 +73,7 @@ image_refs:
     (Dendrocoptes medius) - Tamme-kirjurähn.jpg
   commons_filename: The middle spotted woodpecker (Dendrocoptes medius) - Tamme-kirjurähn.jpg
 - role: secondary
-  path: Q275591/secondary-1.jpg
+  path: Q275591/secondary-1.webp
   width: 1580
   height: 1800
   license: CC BY-SA 4.0
@@ -83,7 +83,7 @@ image_refs:
     medius), Битцевский лес.jpg
   commons_filename: Средний пёстрый дятел (Dendrocoptes medius), Битцевский лес.jpg
 - role: secondary
-  path: Q275591/secondary-2.jpg
+  path: Q275591/secondary-2.webp
   width: 1200
   height: 1800
   license: CC BY-SA 4.0

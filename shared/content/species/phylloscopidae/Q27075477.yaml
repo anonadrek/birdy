@@ -99,7 +99,7 @@ migration:
     in spring as temperatures rise and insect food sources become available.'
 image_refs:
 - role: hero
-  path: Q27075477/hero.jpg
+  path: Q27075477/hero.webp
   width: 2400
   height: 1568
   license: CC BY 2.0
@@ -109,7 +109,7 @@ image_refs:
     Grönsångare (49853695263).jpg
   commons_filename: Wood warbler, Phylloscopus sibilatrix, Grönsångare (49853695263).jpg
 - role: secondary
-  path: Q27075477/secondary-1.jpg
+  path: Q27075477/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -119,7 +119,7 @@ image_refs:
     slatina, Srbija (14).jpg
   commons_filename: Phylloscopus sibilatrix, Lalinačka slatina, Srbija (14).jpg
 - role: secondary
-  path: Q27075477/secondary-2.jpg
+  path: Q27075477/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY-SA 4.0

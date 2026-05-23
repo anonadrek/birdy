@@ -99,7 +99,7 @@ migration:
     this seasonal movement.'
 image_refs:
 - role: hero
-  path: Q170718/hero.jpg
+  path: Q170718/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -109,7 +109,7 @@ image_refs:
     (52089171513).jpg
   commons_filename: Abelharuco (Merops apiaster) (52089171513).jpg
 - role: secondary
-  path: Q170718/secondary-1.jpg
+  path: Q170718/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -119,7 +119,7 @@ image_refs:
     (52089402789).jpg
   commons_filename: Abelharuco (Merops apiaster) (52089402789).jpg
 - role: secondary
-  path: Q170718/secondary-2.jpg
+  path: Q170718/secondary-2.webp
   width: 1800
   height: 1440
   license: CC BY 2.0

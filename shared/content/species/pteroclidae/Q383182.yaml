@@ -54,7 +54,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q383182/hero.jpg
+  path: Q383182/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -63,7 +63,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pterocles orientalis in flight.jpg
   commons_filename: Pterocles orientalis in flight.jpg
 - role: secondary
-  path: Q383182/secondary-1.jpg
+  path: Q383182/secondary-1.webp
   width: 1800
   height: 1201
   license: CC BY-SA 4.0
@@ -72,7 +72,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pterocles orientalis 160906512.jpg
   commons_filename: Pterocles orientalis 160906512.jpg
 - role: secondary
-  path: Q383182/secondary-2.jpg
+  path: Q383182/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

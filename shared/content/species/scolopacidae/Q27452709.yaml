@@ -91,7 +91,7 @@ migration:
     migratory data would be required.'
 image_refs:
 - role: hero
-  path: Q27452709/hero.jpg
+  path: Q27452709/hero.webp
   width: 2400
   height: 1710
   license: Public domain
@@ -107,7 +107,7 @@ image_refs:
   commons_filename: Grasläufer (Calidris subruficollis) am Strand im Willapa National
     Wildlife Refuge.jpg
 - role: secondary
-  path: Q27452709/secondary-1.jpg
+  path: Q27452709/secondary-1.webp
   width: 1800
   height: 1281
   license: Public domain
@@ -117,7 +117,7 @@ image_refs:
   commons_filename: Grasläufer (Calidris subruficollis) am Strand im Willapa National
     Wildlife Refuge (cropped).jpg
 - role: secondary
-  path: Q27452709/secondary-2.jpg
+  path: Q27452709/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

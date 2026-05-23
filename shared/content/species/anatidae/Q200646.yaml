@@ -94,7 +94,7 @@ migration:
     Scandinavia, though rare breeding records exist in northern Sweden and Finland.'
 image_refs:
 - role: hero
-  path: Q200646/hero.jpg
+  path: Q200646/hero.webp
   width: 2400
   height: 1590
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Mergellus-albellus-London.JPG
   commons_filename: Mergellus-albellus-London.JPG
 - role: secondary
-  path: Q200646/secondary-1.jpg
+  path: Q200646/secondary-1.webp
   width: 1800
   height: 1192
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Mergellus-albellus.JPG
   commons_filename: Mergellus-albellus.JPG
 - role: secondary
-  path: Q200646/secondary-2.jpg
+  path: Q200646/secondary-2.webp
   width: 1800
   height: 1192
   license: CC0

@@ -69,7 +69,7 @@ migration:
     returning to southern regions or Africa during winter months.'
 image_refs:
 - role: hero
-  path: Q130730/hero.jpg
+  path: Q130730/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -78,7 +78,7 @@ image_refs:
     Federsee.jpg
   commons_filename: Great egret 3 (Ardea alba) at Federsee.jpg
 - role: secondary
-  path: Q130730/secondary-1.jpg
+  path: Q130730/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -88,7 +88,7 @@ image_refs:
   commons_filename: Great egret (great egret (Ardea alba) at Federsee, Germany) at
     Federsee.jpg
 - role: secondary
-  path: Q130730/secondary-2.jpg
+  path: Q130730/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

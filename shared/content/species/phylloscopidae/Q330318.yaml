@@ -63,7 +63,7 @@ migration:
     as populations move southwestward to their winter quarters.'
 image_refs:
 - role: hero
-  path: Q330318/hero.jpg
+  path: Q330318/hero.webp
   width: 2368
   height: 1767
   license: CC BY 2.0
@@ -74,7 +74,7 @@ image_refs:
   commons_filename: Yellow-browed warbler (Phylloscopus inornatus), Parc du Slot,
     Woluwé-St.-Lambert, Brussels (34053989676).jpg
 - role: secondary
-  path: Q330318/secondary-1.jpg
+  path: Q330318/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 2.0
@@ -85,7 +85,7 @@ image_refs:
   commons_filename: Yellow-browed warbler (Phylloscopus inornatus), Parc du Slot,
     Woluwé-St.-Lambert, Brussels (27690192789).jpg
 - role: secondary
-  path: Q330318/secondary-2.jpg
+  path: Q330318/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

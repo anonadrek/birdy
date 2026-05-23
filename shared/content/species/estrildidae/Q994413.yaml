@@ -66,7 +66,7 @@ migration:
     would represent escaped captive birds rather than wild migratory populations.'
 image_refs:
 - role: hero
-  path: Q994413/hero.jpg
+  path: Q994413/hero.webp
   width: 2195
   height: 1459
   license: CC0
@@ -74,7 +74,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Euodice cantans.jpg
   commons_filename: Euodice cantans.jpg
 - role: secondary
-  path: Q994413/secondary-1.jpg
+  path: Q994413/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0

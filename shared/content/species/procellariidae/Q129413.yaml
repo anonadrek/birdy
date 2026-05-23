@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q129413/hero.jpg
+  path: Q129413/hero.webp
   width: 1800
   height: 2400
   license: CC BY 3.0
@@ -46,7 +46,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Starr 080613-8840 Bulweria bulwerii.jpg
   commons_filename: Starr 080613-8840 Bulweria bulwerii.jpg
 - role: secondary
-  path: Q129413/secondary-1.jpg
+  path: Q129413/secondary-1.webp
   width: 1350
   height: 1800
   license: CC BY 3.0
@@ -55,7 +55,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Starr 080613-8841 Bulweria bulwerii.jpg
   commons_filename: Starr 080613-8841 Bulweria bulwerii.jpg
 - role: secondary
-  path: Q129413/secondary-2.jpg
+  path: Q129413/secondary-2.webp
   width: 1350
   height: 1800
   license: CC BY 3.0

@@ -68,7 +68,7 @@ migration:
     irrelevant to the avifauna of Scandinavia throughout the year.'
 image_refs:
 - role: hero
-  path: Q59492/hero.jpg
+  path: Q59492/hero.webp
   width: 1611
   height: 2275
   license: Public domain
@@ -77,7 +77,7 @@ image_refs:
     at Blue Nile.jpg
   commons_filename: Microcarbo africanus juvenile at Blue Nile.jpg
 - role: secondary
-  path: Q59492/secondary-1.jpg
+  path: Q59492/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -91,7 +91,7 @@ image_refs:
     nicht brütender Adultvogel.jpg
   commons_filename: Riedscharbe (Microcarbo africanus), nicht brütender Adultvogel.jpg
 - role: secondary
-  path: Q59492/secondary-2.jpg
+  path: Q59492/secondary-2.webp
   width: 1800
   height: 1201
   license: CC BY 3.0

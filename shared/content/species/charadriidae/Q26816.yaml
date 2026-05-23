@@ -92,7 +92,7 @@ migration:
     are absent during winter months.'
 image_refs:
 - role: hero
-  path: Q26816/hero.jpg
+  path: Q26816/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -100,7 +100,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Ringed plover (Charadrius hiaticula).jpg
   commons_filename: Ringed plover (Charadrius hiaticula).jpg
 - role: secondary
-  path: Q26816/secondary-1.jpg
+  path: Q26816/secondary-1.webp
   width: 1800
   height: 1201
   license: CC0
@@ -109,7 +109,7 @@ image_refs:
     hiaticula), Seltjarnarnes, Iceland.jpg
   commons_filename: Common ringed plover (Charadrius hiaticula), Seltjarnarnes, Iceland.jpg
 - role: secondary
-  path: Q26816/secondary-2.jpg
+  path: Q26816/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

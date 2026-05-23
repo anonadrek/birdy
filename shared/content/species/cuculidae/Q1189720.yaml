@@ -37,7 +37,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q1189720/hero.jpg
+  path: Q1189720/hero.webp
   width: 2400
   height: 1596
   license: CC BY 2.0
@@ -48,7 +48,7 @@ image_refs:
   commons_filename: Male Klaas's cuckoo, Chrysococcyx klaas, at Pilanesberg National
     (44363928765).jpg
 - role: secondary
-  path: Q1189720/secondary-1.jpg
+  path: Q1189720/secondary-1.webp
   width: 1800
   height: 1013
   license: CC BY 2.0
@@ -59,7 +59,7 @@ image_refs:
   commons_filename: Male Klaas's cuckoo, Chrysococcyx klaas, at Pilanesberg National
     (45225761322).jpg
 - role: secondary
-  path: Q1189720/secondary-2.jpg
+  path: Q1189720/secondary-2.webp
   width: 1800
   height: 1132
   license: CC BY 2.0

@@ -93,7 +93,7 @@ migration:
     Europe.'
 image_refs:
 - role: hero
-  path: Q185183/hero.jpg
+  path: Q185183/hero.webp
   width: 2400
   height: 1800
   license: CC BY 2.0
@@ -103,7 +103,7 @@ image_refs:
     1.jpg
   commons_filename: Podiceps nigricollis Hollogne-sur-Geer 1.jpg
 - role: secondary
-  path: Q185183/secondary-1.jpg
+  path: Q185183/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -114,7 +114,7 @@ image_refs:
   commons_filename: Podiceps nigricollis captures and swallows a a large cold-water
     pipefish in Morro Bay, CA (1).jpg
 - role: secondary
-  path: Q185183/secondary-2.jpg
+  path: Q185183/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

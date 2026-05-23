@@ -90,7 +90,7 @@ migration:
     its efficient nocturnal hunting strategies.'
 image_refs:
 - role: hero
-  path: Q25756/hero.jpg
+  path: Q25756/hero.webp
   width: 1800
   height: 2400
   license: CC0
@@ -99,7 +99,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Strix aluco in Vantaa 1.jpg
   commons_filename: Strix aluco in Vantaa 1.jpg
 - role: secondary
-  path: Q25756/secondary-1.jpg
+  path: Q25756/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
     Tallinn zoo 04.jpg
   commons_filename: Tawny owl aka Strix aluco in Tallinn zoo 04.jpg
 - role: secondary
-  path: Q25756/secondary-2.jpg
+  path: Q25756/secondary-2.webp
   width: 1800
   height: 1540
   license: CC BY 4.0

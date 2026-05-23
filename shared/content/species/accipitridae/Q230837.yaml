@@ -69,7 +69,7 @@ migration:
     Europe would constitute noteworthy sightings for local bird communities.'
 image_refs:
 - role: hero
-  path: Q230837/hero.jpg
+  path: Q230837/hero.webp
   width: 2400
   height: 1600
   license: CC BY 4.0
@@ -79,7 +79,7 @@ image_refs:
     2024.jpg
   commons_filename: Pallid harrier (Circus macrourus) 2024.jpg
 - role: secondary
-  path: Q230837/secondary-1.jpg
+  path: Q230837/secondary-1.webp
   width: 1800
   height: 1173
   license: CC BY-SA 4.0
@@ -90,7 +90,7 @@ image_refs:
     macrourus).jpg
   commons_filename: Pallid harrier female (Circus macrourus).jpg
 - role: secondary
-  path: Q230837/secondary-2.jpg
+  path: Q230837/secondary-2.webp
   width: 1800
   height: 1246
   license: CC BY-SA 3.0

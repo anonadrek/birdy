@@ -90,7 +90,7 @@ migration:
     during April-May and August-September, coinciding with broader migration windows.'
 image_refs:
 - role: hero
-  path: Q182971/hero.jpg
+  path: Q182971/hero.webp
   width: 1995
   height: 2400
   license: CC BY 2.0
@@ -100,7 +100,7 @@ image_refs:
     at Kgalagadi 001 (32334023978).jpg
   commons_filename: Booted eagle, Hieraaetus pennatus, at Kgalagadi 001 (32334023978).jpg
 - role: secondary
-  path: Q182971/secondary-1.jpg
+  path: Q182971/secondary-1.webp
   width: 1800
   height: 1382
   license: CC BY-SA 4.0

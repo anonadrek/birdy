@@ -90,7 +90,7 @@ migration:
     making it a strictly seasonal visitor to the region.'
 image_refs:
 - role: hero
-  path: Q26641/hero.jpg
+  path: Q26641/hero.webp
   width: 2400
   height: 1640
   license: CC BY 2.0
@@ -100,7 +100,7 @@ image_refs:
     Ringtrast - Flickr - blondinrikard.jpg
   commons_filename: Ring ouzel, Turdus torquatus, Ringtrast - Flickr - blondinrikard.jpg
 - role: secondary
-  path: Q26641/secondary-1.jpg
+  path: Q26641/secondary-1.webp
   width: 1800
   height: 1333
   license: CC BY-SA 2.0
@@ -108,7 +108,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Turdus torquatus, Spain 1.jpg
   commons_filename: Turdus torquatus, Spain 1.jpg
 - role: secondary
-  path: Q26641/secondary-2.jpg
+  path: Q26641/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 3.0

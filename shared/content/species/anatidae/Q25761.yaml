@@ -92,7 +92,7 @@ migration:
     additional sources with detailed phenological data would be needed.'
 image_refs:
 - role: hero
-  path: Q25761/hero.jpg
+  path: Q25761/hero.webp
   width: 2400
   height: 1350
   license: CC0
@@ -102,7 +102,7 @@ image_refs:
     Пеганка в Санкт-Петербурге 03.jpg
   commons_filename: Tadorna tadorna Common Shellduck Пеганка в Санкт-Петербурге 03.jpg
 - role: secondary
-  path: Q25761/secondary-1.jpg
+  path: Q25761/secondary-1.webp
   width: 1800
   height: 1263
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
     2017-05-03 (2).jpg
   commons_filename: Tadorna tadorna Oulu Finland 2017-05-03 (2).jpg
 - role: secondary
-  path: Q25761/secondary-2.jpg
+  path: Q25761/secondary-2.webp
   width: 1800
   height: 1013
   license: CC0

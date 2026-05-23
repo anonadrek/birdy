@@ -101,7 +101,7 @@ migration:
     spend only the breeding season in the region.'
 image_refs:
 - role: hero
-  path: Q4764/hero.jpg
+  path: Q4764/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -111,7 +111,7 @@ image_refs:
   commons_filename: Flock of cranes (Grus grus) flying over the High Fens, Eupen,
     2025.jpg
 - role: secondary
-  path: Q4764/secondary-1.jpg
+  path: Q4764/secondary-1.webp
   width: 1800
   height: 1196
   license: CC0
@@ -121,7 +121,7 @@ image_refs:
     18-13-43.jpg
   commons_filename: Ländchen Glien grus grus 09.03.2014 18-13-43.jpg
 - role: secondary
-  path: Q4764/secondary-2.jpg
+  path: Q4764/secondary-2.webp
   width: 1527
   height: 1800
   license: CC0

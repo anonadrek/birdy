@@ -76,7 +76,7 @@ migration:
     with irruptive movements or unusual weather patterns that displace mountain populations.'
 image_refs:
 - role: hero
-  path: Q206550/hero.jpg
+  path: Q206550/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 2.0
@@ -86,7 +86,7 @@ image_refs:
     citrinella aDSC 8571 (51825701322).jpg
   commons_filename: Venturon montagnard Carduelis citrinella aDSC 8571 (51825701322).jpg
 - role: secondary
-  path: Q206550/secondary-1.jpg
+  path: Q206550/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 2.0
@@ -96,7 +96,7 @@ image_refs:
     citrinella aDSC 8574 (51827373090).jpg
   commons_filename: Venturon montagnard Carduelis citrinella aDSC 8574 (51827373090).jpg
 - role: secondary
-  path: Q206550/secondary-2.jpg
+  path: Q206550/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY-SA 2.0

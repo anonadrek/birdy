@@ -73,6 +73,7 @@ import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.paperBackground
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
+import se.birdy.app.util.speciesImageUri
 import se.birdy.content.Abundance
 import se.birdy.content.model.Species
 
@@ -142,7 +143,7 @@ private fun ProfileContent(
                         captionLine = "${species.name}, $captionPart",
                     ) {
                         AsyncImage(
-                            model = Res.getUri("files/images/${heroImage.path}"),
+                            model = speciesImageUri(heroImage.path),
                             contentDescription = null,
                             modifier = Modifier.fillMaxSize(),
                             contentScale = ContentScale.Crop,

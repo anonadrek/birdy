@@ -90,7 +90,7 @@ migration:
     in the available text.'
 image_refs:
 - role: hero
-  path: Q601055/hero.jpg
+  path: Q601055/hero.webp
   width: 2400
   height: 1601
   license: CC BY 4.0
@@ -100,7 +100,7 @@ image_refs:
     Minimes 20190120 t142727.jpg
   commons_filename: Aythya collaris male Lac des Minimes 20190120 t142727.jpg
 - role: secondary
-  path: Q601055/secondary-1.jpg
+  path: Q601055/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -110,7 +110,7 @@ image_refs:
     Minimes 20190120 t142947.jpg
   commons_filename: Aythya collaris male Lac des Minimes 20190120 t142947.jpg
 - role: secondary
-  path: Q601055/secondary-2.jpg
+  path: Q601055/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 4.0

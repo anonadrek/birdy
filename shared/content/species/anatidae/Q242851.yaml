@@ -94,7 +94,7 @@ migration:
     migration pattern.'
 image_refs:
 - role: hero
-  path: Q242851/hero.jpg
+  path: Q242851/hero.webp
   width: 2400
   height: 1452
   license: CC0
@@ -104,7 +104,7 @@ image_refs:
     head.jpg
   commons_filename: Cairina moschata momelanotus head.jpg
 - role: secondary
-  path: Q242851/secondary-1.jpg
+  path: Q242851/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 3.0
@@ -113,7 +113,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:紅面鴨 Cairina moschata - panoramio.jpg
   commons_filename: 紅面鴨 Cairina moschata - panoramio.jpg
 - role: secondary
-  path: Q242851/secondary-2.jpg
+  path: Q242851/secondary-2.webp
   width: 1800
   height: 1352
   license: CC BY 4.0

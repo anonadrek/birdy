@@ -64,7 +64,7 @@ migration:
     not naturally occur in Scandinavian territories.'
 image_refs:
 - role: hero
-  path: Q73741/hero.jpg
+  path: Q73741/hero.webp
   width: 2048
   height: 1363
   license: CC BY 4.0
@@ -74,7 +74,7 @@ image_refs:
     - 341735200.jpeg
   commons_filename: Amandava amandava - Forest Botial-Jarvis - 341735200.jpeg
 - role: secondary
-  path: Q73741/secondary-1.jpg
+  path: Q73741/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY-SA 4.0
@@ -84,7 +84,7 @@ image_refs:
     West Bengal India. 01.jpg
   commons_filename: লাল মুনিয়া (Amandava amandava),Singur West Bengal India. 01.jpg
 - role: secondary
-  path: Q73741/secondary-2.jpg
+  path: Q73741/secondary-2.webp
   width: 1800
   height: 1174
   license: CC BY-SA 4.0

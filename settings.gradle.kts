@@ -30,6 +30,7 @@ dependencyResolutionManagement {
 include(
     ":composeApp",
     ":androidApp",
+    ":asset-pack",
     ":shared:domain",
     ":shared:data",
     ":shared:datastore",

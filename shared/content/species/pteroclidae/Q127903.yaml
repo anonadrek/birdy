@@ -83,7 +83,7 @@ migration:
     migration data for this species in the requested geographic area cannot be provided.'
 image_refs:
 - role: hero
-  path: Q127903/hero.jpg
+  path: Q127903/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -92,7 +92,7 @@ image_refs:
     (Pterocles exustus), Kenya.jpg
   commons_filename: Chestnut-bellied sandgrouse (Pterocles exustus), Kenya.jpg
 - role: secondary
-  path: Q127903/secondary-1.jpg
+  path: Q127903/secondary-1.webp
   width: 1800
   height: 1203
   license: CC0
@@ -101,7 +101,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Pterocles exustus 313966463.jpg
   commons_filename: Pterocles exustus 313966463.jpg
 - role: secondary
-  path: Q127903/secondary-2.jpg
+  path: Q127903/secondary-2.webp
   width: 1800
   height: 1203
   license: CC BY 4.0

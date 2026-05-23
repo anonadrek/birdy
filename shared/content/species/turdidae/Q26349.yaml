@@ -96,7 +96,7 @@ migration:
     with harsh conditions often forcing birds to depart or perish.'
 image_refs:
 - role: hero
-  path: Q26349/hero.jpg
+  path: Q26349/hero.webp
   width: 1542
   height: 2160
   license: CC0
@@ -106,7 +106,7 @@ image_refs:
     2021-05-12.jpg
   commons_filename: Turdus philomelos Oulu Finland 2021-05-12.jpg
 - role: secondary
-  path: Q26349/secondary-1.jpg
+  path: Q26349/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 4.0
@@ -116,7 +116,7 @@ image_refs:
     2021.jpg
   commons_filename: Song thrush (Turdus philomelos) 2021.jpg
 - role: secondary
-  path: Q26349/secondary-2.jpg
+  path: Q26349/secondary-2.webp
   width: 1800
   height: 1200
   license: CC BY 2.0

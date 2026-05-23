@@ -89,7 +89,7 @@ migration:
     This species is not relevant to a Scandinavian bird guide.'
 image_refs:
 - role: hero
-  path: Q137397344/hero.jpg
+  path: Q137397344/hero.webp
   width: 2400
   height: 1800
   license: CC BY 4.0
@@ -99,7 +99,7 @@ image_refs:
   commons_filename: Shikra (Tachyspiza badia) in Little Rann of Kutch, Gujarat, India
     DSCN8550 01.jpg
 - role: secondary
-  path: Q137397344/secondary-1.jpg
+  path: Q137397344/secondary-1.webp
   width: 1800
   height: 1350
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
   commons_filename: Shikra (Tachyspiza badia) in Little Rann of Kutch, Gujarat, India
     DSCN8550 02.jpg
 - role: secondary
-  path: Q137397344/secondary-2.jpg
+  path: Q137397344/secondary-2.webp
   width: 1800
   height: 1350
   license: CC BY 4.0

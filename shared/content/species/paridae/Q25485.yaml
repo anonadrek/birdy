@@ -94,7 +94,7 @@ marginalia:
   en: The great tit forages among pine needles deep in winter.
 image_refs:
 - role: hero
-  path: Q25485/hero.jpg
+  path: Q25485/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     Rhine-Westphalia.jpg
   commons_filename: Great tit (Parus major), North Rhine-Westphalia.jpg
 - role: secondary
-  path: Q25485/secondary-1.jpg
+  path: Q25485/secondary-1.webp
   width: 1800
   height: 1200
   license: CC BY 2.0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Parus major, Omsk, Russia.jpg
   commons_filename: Parus major, Omsk, Russia.jpg
 - role: secondary
-  path: Q25485/secondary-2.jpg
+  path: Q25485/secondary-2.webp
   width: 1800
   height: 1771
   license: CC BY-SA 3.0

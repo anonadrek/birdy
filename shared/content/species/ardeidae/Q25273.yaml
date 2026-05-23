@@ -94,7 +94,7 @@ migration:
     making this species an irregular migrant in the northernmost regions of its range.'
 image_refs:
 - role: hero
-  path: Q25273/hero.jpg
+  path: Q25273/hero.webp
   width: 2009
   height: 2368
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     Schönbrunn.jpg
   commons_filename: Héron cendré Ardea cinerea Tiergarten Schönbrunn.jpg
 - role: secondary
-  path: Q25273/secondary-1.jpg
+  path: Q25273/secondary-1.webp
   width: 1800
   height: 1202
   license: CC BY 4.0
@@ -112,7 +112,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:20200720 Ardea cinerea 02.jpg
   commons_filename: 20200720 Ardea cinerea 02.jpg
 - role: secondary
-  path: Q25273/secondary-2.jpg
+  path: Q25273/secondary-2.webp
   width: 1200
   height: 1800
   license: CC BY 4.0

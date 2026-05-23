@@ -64,7 +64,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q650114/hero.jpg
+  path: Q650114/hero.webp
   width: 2400
   height: 1701
   license: CC0
@@ -73,7 +73,7 @@ image_refs:
     en Salburua.jpg
   commons_filename: Cetia ruiseñor (Cettia cetti) en Salburua.jpg
 - role: secondary
-  path: Q650114/secondary-1.jpg
+  path: Q650114/secondary-1.webp
   width: 1800
   height: 1200
   license: CC0
@@ -82,7 +82,7 @@ image_refs:
     Leighton Moss, Lancashire 2.jpg
   commons_filename: Cetti's Warbler (Cettia cetti), Leighton Moss, Lancashire 2.jpg
 - role: secondary
-  path: Q650114/secondary-2.jpg
+  path: Q650114/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

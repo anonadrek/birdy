@@ -56,7 +56,7 @@ migration:
   en: ''
 image_refs:
 - role: hero
-  path: Q1590574/hero.jpg
+  path: Q1590574/hero.webp
   width: 2048
   height: 1538
   license: CC BY 4.0
@@ -65,7 +65,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Hippolais languida 121276391.jpg
   commons_filename: Hippolais languida 121276391.jpg
 - role: secondary
-  path: Q1590574/secondary-1.jpg
+  path: Q1590574/secondary-1.webp
   width: 1800
   height: 1352
   license: CC BY 4.0

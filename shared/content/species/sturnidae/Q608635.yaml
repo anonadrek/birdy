@@ -83,7 +83,7 @@ migration:
     data would be needed.'
 image_refs:
 - role: hero
-  path: Q608635/hero.jpg
+  path: Q608635/hero.webp
   width: 2400
   height: 1600
   license: CC BY 2.0
@@ -93,7 +93,7 @@ image_refs:
     Zoo, Stuttgart, Germany -adult-8b.jpg
   commons_filename: Lamprotornis superbus -Wilhelma Zoo, Stuttgart, Germany -adult-8b.jpg
 - role: secondary
-  path: Q608635/secondary-1.jpg
+  path: Q608635/secondary-1.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0
@@ -104,7 +104,7 @@ image_refs:
   commons_filename: Estornino soberbio (Lamprotornis superbus), parque nacional Serengueti,
     Tanzania, 2024-05-26, DD 61.jpg
 - role: secondary
-  path: Q608635/secondary-2.jpg
+  path: Q608635/secondary-2.webp
   width: 1800
   height: 1800
   license: CC BY-SA 4.0

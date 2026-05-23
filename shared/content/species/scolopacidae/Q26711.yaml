@@ -89,7 +89,7 @@ migration:
     than a permanent resident.'
 image_refs:
 - role: hero
-  path: Q26711/hero.jpg
+  path: Q26711/hero.webp
   width: 1536
   height: 2048
   license: CC0
@@ -99,7 +99,7 @@ image_refs:
     - 139895612.jpeg
   commons_filename: Lymnocryptes minimus - Esa Aalto - 139895612.jpeg
 - role: secondary
-  path: Q26711/secondary-1.jpg
+  path: Q26711/secondary-1.webp
   width: 1200
   height: 1800
   license: CC BY 4.0
@@ -109,7 +109,7 @@ image_refs:
     2022.jpg
   commons_filename: Jack snipe (Lymnocryptes minimus) 2022.jpg
 - role: secondary
-  path: Q26711/secondary-2.jpg
+  path: Q26711/secondary-2.webp
   width: 1800
   height: 1192
   license: CC BY-SA 4.0

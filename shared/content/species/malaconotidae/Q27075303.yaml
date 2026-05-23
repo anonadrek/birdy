@@ -79,7 +79,7 @@ migration:
     regions, additional sources would be needed.'
 image_refs:
 - role: hero
-  path: Q27075303/hero.jpg
+  path: Q27075303/hero.webp
   width: 2048
   height: 2033
   license: CC BY 4.0
@@ -88,7 +88,7 @@ image_refs:
   source_url: https://commons.wikimedia.org/wiki/File:Tchagra senegalus 282784584.jpg
   commons_filename: Tchagra senegalus 282784584.jpg
 - role: secondary
-  path: Q27075303/secondary-1.jpg
+  path: Q27075303/secondary-1.webp
   width: 1800
   height: 1198
   license: CC BY 4.0
@@ -98,7 +98,7 @@ image_refs:
     191100476.jpg
   commons_filename: Tchagra senegalus orientalis 191100476.jpg
 - role: secondary
-  path: Q27075303/secondary-2.jpg
+  path: Q27075303/secondary-2.webp
   width: 1800
   height: 1190
   license: CC BY-SA 2.0

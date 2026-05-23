@@ -94,7 +94,7 @@ migration:
     owl species.'
 image_refs:
 - role: hero
-  path: Q193192/hero.jpg
+  path: Q193192/hero.webp
   width: 1600
   height: 2400
   license: CC0
@@ -103,7 +103,7 @@ image_refs:
     (Schleswig Hostein).jpg
   commons_filename: Northern hawk owl (Surnia ulula) (Schleswig Hostein).jpg
 - role: secondary
-  path: Q193192/secondary-1.jpg
+  path: Q193192/secondary-1.webp
   width: 1350
   height: 1800
   license: CC0
@@ -112,7 +112,7 @@ image_refs:
     of Natural History - DSC04619.JPG
   commons_filename: Surnia ulula - Finnish Museum of Natural History - DSC04619.JPG
 - role: secondary
-  path: Q193192/secondary-2.jpg
+  path: Q193192/secondary-2.webp
   width: 1800
   height: 1200
   license: CC0

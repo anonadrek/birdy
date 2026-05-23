@@ -63,7 +63,7 @@ migration:
     this bird does not occur in Scandinavia throughout the year.'
 image_refs:
 - role: hero
-  path: Q828255/hero.jpg
+  path: Q828255/hero.webp
   width: 2400
   height: 1600
   license: CC0
@@ -73,7 +73,7 @@ image_refs:
     location in India 00T3.jpg
   commons_filename: Ketupa zeylonensis, unknown location in India 00T3.jpg
 - role: secondary
-  path: Q828255/secondary-1.jpg
+  path: Q828255/secondary-1.webp
   width: 1800
   height: 1440
   license: CC BY 2.0
@@ -83,7 +83,7 @@ image_refs:
     (8606166564).jpg
   commons_filename: Brown Fish-owl (Ketupa zeylonensis) (8606166564).jpg
 - role: secondary
-  path: Q828255/secondary-2.jpg
+  path: Q828255/secondary-2.webp
   width: 1800
   height: 1777
   license: CC BY 4.0

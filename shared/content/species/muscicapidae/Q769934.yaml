@@ -89,7 +89,7 @@ migration:
     migration patterns through the region.'
 image_refs:
 - role: hero
-  path: Q769934/hero.jpg
+  path: Q769934/hero.webp
   width: 2400
   height: 1600
   license: CC BY-SA 4.0
@@ -99,7 +99,7 @@ image_refs:
     by Dr. Raju Kasambe DSCN9433.jpg
   commons_filename: Desert Wheatear Oenanthe deserti by Dr. Raju Kasambe DSCN9433.jpg
 - role: secondary
-  path: Q769934/secondary-1.jpg
+  path: Q769934/secondary-1.webp
   width: 1800
   height: 1190
   license: CC BY-SA 4.0
@@ -110,7 +110,7 @@ image_refs:
   commons_filename: Desert Wheatear Oenanthe deserti by Dr. Raju Kasambe DSCN9430
     (2).jpg
 - role: secondary
-  path: Q769934/secondary-2.jpg
+  path: Q769934/secondary-2.webp
   width: 1800
   height: 1228
   license: CC BY-SA 4.0
