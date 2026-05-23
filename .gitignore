@@ -75,3 +75,6 @@ website/test-results/
 
 # Git worktrees (local feature branches)
 .worktrees/
+
+# Marketing-material (skärmdumpar, social posts) — bor lokalt, inte i repo
+Birdy AB/
