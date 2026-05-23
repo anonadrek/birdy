@@ -1,5 +1,6 @@
 package se.birdy.app.data.premium
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.util.Log
@@ -43,6 +44,7 @@ private const val LIFETIME_PRODUCT_ID = "premium_lifetime_v1"
  * Only reachable in DEBUG with a blank [licensePublicKeyBase64];
  * [PremiumBillingClient.init] enforces the key is present in release builds.
  */
+@SuppressLint("NewApi")
 internal fun verifyPlaySignature(
     originalJson: String,
     signatureBase64: String,

@@ -95,6 +95,7 @@ class AndroidAudioRecorder(
         )
     }
 
+    @SuppressLint("MissingPermission")
     private fun buildRecorder(
         source: Int,
         bufBytes: Int,
