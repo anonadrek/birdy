@@ -4,6 +4,7 @@
 # Claude Code per-user-state
 .claude/settings.local.json
 .claude/cache/
+**/.claude/settings.local.json
 
 # Gradle / Kotlin Multiplatform
 .gradle/
@@ -32,6 +33,7 @@ Pods/
 
 # Build-artefakter
 *.apk
+*.apks
 *.aab
 *.aar
 *.ipa
