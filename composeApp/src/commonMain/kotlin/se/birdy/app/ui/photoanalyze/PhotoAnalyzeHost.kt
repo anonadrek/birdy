@@ -7,4 +7,5 @@ import se.birdy.app.di.AppGraph
 expect fun PhotoAnalyzeHost(
     graph: AppGraph,
     onLoaded: (sourceJson: String, capturedAtMs: Long) -> Unit,
+    onBack: () -> Unit,
 )

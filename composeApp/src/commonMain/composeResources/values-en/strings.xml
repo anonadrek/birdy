@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="tab_listen">Listen</string>
+    <string name="tab_listen">Identify</string>
     <string name="tab_archive">Archive</string>
     <string name="tab_lifelist">Lifelist</string>
     <string name="tab_badges">Badges</string>

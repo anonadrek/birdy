@@ -15,7 +15,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.LibraryBooks
-import androidx.compose.material.icons.filled.Hearing
+import androidx.compose.material.icons.filled.CenterFocusStrong
 import androidx.compose.material.icons.filled.Stars
 import androidx.compose.material.icons.outlined.CollectionsBookmark
 import androidx.compose.material3.Icon
@@ -59,12 +59,13 @@ private val tabs =
         TabSpec(
             route = AppRoute.Listen,
             label = Res.string.tab_listen,
-            icon = Icons.Filled.Hearing,
+            icon = Icons.Filled.CenterFocusStrong,
             ownedRoutes =
                 setOf(
                     AppRoute.Listen::class,
                     AppRoute.Scan::class,
                     AppRoute.PhotoAnalyze::class,
+                    AppRoute.AudioScan::class,
                     AppRoute.MatchResult::class,
                 ),
         ),
@@ -96,10 +97,19 @@ fun BottomNavBar(navController: NavHostController) {
                 tab = tab,
                 selected = selected,
                 onClick = {
-                    navController.navigate(tab.route) {
-                        popUpTo(navController.graph.startDestinationId) { saveState = true }
-                        launchSingleTop = true
-                        restoreState = true
+                    // If already inside this tab but on a sub-screen, pop back to the tab root
+                    // so tapping the Identify tab from Scan/PhotoAnalyze/AudioScan returns to
+                    // the launcher hub. Otherwise navigate cross-tab as usual.
+                    val onTabRoot =
+                        backStackEntry?.destination?.hasRoute(tab.route::class) == true
+                    if (selected && !onTabRoot) {
+                        navController.popBackStack(tab.route, inclusive = false)
+                    } else {
+                        navController.navigate(tab.route) {
+                            popUpTo(navController.graph.startDestinationId) { saveState = true }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
                     }
                 },
                 modifier = Modifier.weight(1f),

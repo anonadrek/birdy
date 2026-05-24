@@ -9,11 +9,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -52,6 +55,7 @@ import birdy_bird_scanner.composeapp.generated.resources.demo_sheet_title
 import birdy_bird_scanner.composeapp.generated.resources.permission_denied_photo_fallback
 import birdy_bird_scanner.composeapp.generated.resources.permission_grant_cta
 import birdy_bird_scanner.composeapp.generated.resources.permission_hero_caveat
+import birdy_bird_scanner.composeapp.generated.resources.profile_back
 import birdy_bird_scanner.composeapp.generated.resources.scan_error_classifier_failed
 import birdy_bird_scanner.composeapp.generated.resources.scan_freeze_hint
 import birdy_bird_scanner.composeapp.generated.resources.scan_permission_denied_body
@@ -60,6 +64,8 @@ import birdy_bird_scanner.composeapp.generated.resources.scan_photo_analyze
 import birdy_bird_scanner.composeapp.generated.resources.scan_top1_searching
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackButton
+import se.birdy.app.ui.components.BackButtonVariant
 import se.birdy.app.ui.components.JournalHeadline
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
@@ -83,6 +89,7 @@ fun ScanScreen(
     cameraSource: CameraSource,
     onPhotoAnalyzeClick: () -> Unit,
     onFrozen: (sourceJson: String, capturedAtMs: Long) -> Unit,
+    onBack: () -> Unit,
     onPermissionRequest: () -> Unit,
     onOpenSettings: () -> Unit,
     onCaptureJpeg: () -> ByteArray,
@@ -174,6 +181,18 @@ fun ScanScreen(
                         .padding(top = 8.dp),
             )
         }
+        // Back-arrow top-left across every state — last in stack so it sits above the
+        // full-screen tap-detector and remains clickable.
+        BackButton(
+            onClick = onBack,
+            contentDescription = stringResource(Res.string.profile_back),
+            variant = BackButtonVariant.OnDark,
+            modifier =
+                Modifier
+                    .align(Alignment.TopStart)
+                    .windowInsetsPadding(WindowInsets.statusBars)
+                    .padding(start = 12.dp, top = 8.dp),
+        )
     }
     if (showDemoSheet) {
         DemoModeBottomSheet(onDismiss = { showDemoSheet = false })

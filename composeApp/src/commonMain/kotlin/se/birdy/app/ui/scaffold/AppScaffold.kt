@@ -111,6 +111,9 @@ fun AppScaffold(graph: AppGraph) {
                     onFrozen = { sourceJson, capturedAtMs ->
                         navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs))
                     },
+                    onBack = {
+                        navController.popBackStack(AppRoute.Listen, inclusive = false)
+                    },
                 )
             }
             composable<AppRoute.PhotoAnalyze> {
@@ -120,6 +123,9 @@ fun AppScaffold(graph: AppGraph) {
                         navController.navigate(AppRoute.MatchResult(sourceJson, capturedAtMs)) {
                             popUpTo(AppRoute.Scan) { inclusive = false }
                         }
+                    },
+                    onBack = {
+                        navController.popBackStack(AppRoute.Listen, inclusive = false)
                     },
                 )
             }
@@ -247,7 +253,9 @@ fun AppScaffold(graph: AppGraph) {
                             popUpTo(AppRoute.Listen) { inclusive = false }
                         }
                     },
-                    onBack = { navController.popBackStack() },
+                    onBack = {
+                        navController.popBackStack(AppRoute.Listen, inclusive = false)
+                    },
                 )
             }
             composable<AppRoute.SeasonStats> {

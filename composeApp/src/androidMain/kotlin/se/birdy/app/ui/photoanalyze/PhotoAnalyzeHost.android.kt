@@ -28,6 +28,7 @@ import java.util.UUID
 actual fun PhotoAnalyzeHost(
     graph: AppGraph,
     onLoaded: (sourceJson: String, capturedAtMs: Long) -> Unit,
+    onBack: () -> Unit,
 ) {
     val context = LocalContext.current
     val photoCacheDir =
@@ -102,6 +103,7 @@ actual fun PhotoAnalyzeHost(
             takePhotoLauncher.launch(uri)
         },
         onLoaded = onLoaded,
+        onBack = onBack,
     )
 }
 

@@ -1,10 +1,14 @@
 package se.birdy.app.ui.audio
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,7 +34,9 @@ import birdy_bird_scanner.composeapp.generated.resources.audio_scan_permission_o
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_permission_title
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_recording_failed
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_retry
+import birdy_bird_scanner.composeapp.generated.resources.profile_back
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.theme.AccentCopper
@@ -50,48 +56,59 @@ fun AudioScanScreen(
     onBack: () -> Unit,
 ) {
     JournalScaffold { _ ->
-        Column(
-            modifier = Modifier.fillMaxSize().padding(24.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            JournalIntro(
-                label = stringResource(Res.string.audio_scan_journal_label),
-                headline = stringResource(Res.string.audio_scan_headline),
-                sub = stringResource(Res.string.audio_scan_journal_sub),
-            )
-            Spacer(Modifier.height(8.dp))
-            Text(
-                text = stringResource(Res.string.audio_scan_marginalia_top),
-                fontFamily = rememberCaveat(),
-                fontStyle = FontStyle.Italic,
-                color = MarginaliaInk,
-            )
-            Spacer(Modifier.height(32.dp))
+        Box(modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier.fillMaxSize().padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                JournalIntro(
+                    label = stringResource(Res.string.audio_scan_journal_label),
+                    headline = stringResource(Res.string.audio_scan_headline),
+                    sub = stringResource(Res.string.audio_scan_journal_sub),
+                )
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    text = stringResource(Res.string.audio_scan_marginalia_top),
+                    fontFamily = rememberCaveat(),
+                    fontStyle = FontStyle.Italic,
+                    color = MarginaliaInk,
+                )
+                Spacer(Modifier.height(32.dp))
 
-            when (state) {
-                is AudioScanState.Preparing ->
-                    Text("…", fontFamily = rememberDmSerifDisplay(), fontStyle = FontStyle.Italic)
-                is AudioScanState.PermissionNeeded ->
-                    PermissionPrompt(onClick = onRequestPermission, openSettingsMode = false)
-                is AudioScanState.Error.PermanentlyDenied ->
-                    PermissionPrompt(onClick = onOpenSettings, openSettingsMode = true)
-                is AudioScanState.Idle ->
-                    IdleView(onStart = onStartRecording)
-                is AudioScanState.Recording ->
-                    RecordingView(state = state, onStop = onStopRecording)
-                is AudioScanState.Analyzing ->
-                    AnalyzingView(state = state)
-                is AudioScanState.Error.RecordingFailed ->
-                    ErrorRetry(
-                        message = stringResource(Res.string.audio_scan_recording_failed),
-                        onRetry = onRetry,
-                    )
-                is AudioScanState.Error.BootstrapFailed ->
-                    ErrorRetry(message = state.cause, onRetry = onRetry)
-                is AudioScanState.NavigateToMatch -> {
-                    // handled by host LaunchedEffect
+                when (state) {
+                    is AudioScanState.Preparing ->
+                        Text("…", fontFamily = rememberDmSerifDisplay(), fontStyle = FontStyle.Italic)
+                    is AudioScanState.PermissionNeeded ->
+                        PermissionPrompt(onClick = onRequestPermission, openSettingsMode = false)
+                    is AudioScanState.Error.PermanentlyDenied ->
+                        PermissionPrompt(onClick = onOpenSettings, openSettingsMode = true)
+                    is AudioScanState.Idle ->
+                        IdleView(onStart = onStartRecording)
+                    is AudioScanState.Recording ->
+                        RecordingView(state = state, onStop = onStopRecording)
+                    is AudioScanState.Analyzing ->
+                        AnalyzingView(state = state)
+                    is AudioScanState.Error.RecordingFailed ->
+                        ErrorRetry(
+                            message = stringResource(Res.string.audio_scan_recording_failed),
+                            onRetry = onRetry,
+                        )
+                    is AudioScanState.Error.BootstrapFailed ->
+                        ErrorRetry(message = state.cause, onRetry = onRetry)
+                    is AudioScanState.NavigateToMatch -> {
+                        // handled by host LaunchedEffect
+                    }
                 }
             }
+            BackButton(
+                onClick = onBack,
+                contentDescription = stringResource(Res.string.profile_back),
+                modifier =
+                    Modifier
+                        .align(Alignment.TopStart)
+                        .windowInsetsPadding(WindowInsets.statusBars)
+                        .padding(start = 12.dp, top = 8.dp),
+            )
         }
     }
 }

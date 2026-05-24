@@ -8,4 +8,5 @@ expect fun ScanScreenHost(
     graph: AppGraph,
     onPhotoAnalyzeClick: () -> Unit,
     onFrozen: (sourceJson: String, capturedAtMs: Long) -> Unit,
+    onBack: () -> Unit,
 )

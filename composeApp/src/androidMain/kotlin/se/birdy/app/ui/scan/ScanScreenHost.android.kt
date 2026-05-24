@@ -17,6 +17,7 @@ actual fun ScanScreenHost(
     graph: AppGraph,
     onPhotoAnalyzeClick: () -> Unit,
     onFrozen: (sourceJson: String, capturedAtMs: Long) -> Unit,
+    onBack: () -> Unit,
 ) {
     val context = LocalContext.current
     val permission = rememberCameraPermissionState(context)
@@ -38,6 +39,7 @@ actual fun ScanScreenHost(
         cameraSource = cameraSource,
         onPhotoAnalyzeClick = onPhotoAnalyzeClick,
         onFrozen = onFrozen,
+        onBack = onBack,
         onPermissionRequest = { permission.launchRequest() },
         onOpenSettings = { permission.openAppSettings() },
         onCaptureJpeg = {
