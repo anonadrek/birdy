@@ -176,14 +176,13 @@ cd website && npm run test:i18n    # SV/EN parity check
 
 ## Pending follow-ups (post-launch)
 
-1. **URL-migration:** `SettingsScreen.kt` rad ~128–129 + Play Console store listing pekar fortfarande på `https://anonadrek.github.io/birdy/{privacy,terms}.html`. Uppdatera till `https://birdy.community/legal/{privacy,terms}/` i nästa Android release-cykel. Gamla URL:erna fungerar tills GH Pages slås av (steg 2).
-2. **GitHub Pages teardown:** I repo Settings → Pages, sätt Source till "None". `pages.yml` är redan borttagen (Plan W T2).
-3. **Email migration:** Sätt upp `feedback@birdy.community` (Cloudflare Email Routing eller Resend Inbound) under closed testing. **Bridge nu = `albin@abrahamssons.se`** — bytt in i alla legal-docs 2026-05-22. När birdy.community-mailen är live: byt tillbaka i `website/src/content/copy.{en,sv}.json` (FAQ + footer) + alla markdown-filer i `docs/play-store/`.
-4. **Billing v8 IPC runtime-verify** (deferred från 6b1): purchase-flow + Restore Purchases + Active(YEARLY/LIFETIME)-state-flip. Kräver Internal Testing-app entry + in-app products + license testers i Play Console. **OBS:** detta blockerar inte launch — `PREMIUM_OPEN_FOR_LAUNCH=true` (defaultConfig i `androidApp/build.gradle.kts`) ger alla användare LIFETIME-premium under closed testing + initial production. När Billing-verify är klar och vi vill aktivera monetization: flippa `PREMIUM_OPEN_FOR_LAUNCH=false`, bumpa versionCode och pusha en ny release.
-5. **Audio accuracy eval** (deferred från 6b2): kräver xeno-canto API v3 key. Pipeline klar i `tools/ml-eval/audio_accuracy_report_2026-05-21.md`.
-6. **AB-flytt:** Account Transfer av Play Console till AB-bolaget när det är registrerat (post-launch).
-7. **SV legal-översättningar:** Om Sverige-trafik växer, mirror `/sv/legal/...` med översatta markdown-filer. Idag cross-linkar SV-footer till EN-only `/legal/`-routes (intentionellt — Nordics/EU first launch).
-8. **Plan 6a T8/T9 device-screenshots saknas:** `08-match-with-inline-note` + `09-disambig-save-as-unknown` (kräver deterministisk match-flow ej driveable via ADB — kan adresseras via test-image-infra i framtida sprint).
+1. **GitHub Pages teardown:** I repo Settings → Pages, sätt Source till "None". `pages.yml` är redan borttagen (Plan W T2). **OBS:** in-app + store-listing URL:er är redan migrerade till `birdy.community/legal/` (verifierat 2026-05-24); enda kvar är att bekräfta Play Console-UI:ns Privacy/Terms-fält pekar på samma — manuell Console-grej när nästa AAB laddas upp.
+2. **Email migration:** Sätt upp `feedback@birdy.community` (Cloudflare Email Routing eller Resend Inbound) under closed testing. **Bridge nu = `albin@abrahamssons.se`** — bytt in i alla legal-docs 2026-05-22. När birdy.community-mailen är live: byt tillbaka i `website/src/content/copy.{en,sv}.json` (FAQ + footer) + alla markdown-filer i `docs/play-store/`.
+3. **Billing v8 IPC runtime-verify** (deferred från 6b1): purchase-flow + Restore Purchases + Active(YEARLY/LIFETIME)-state-flip. Kräver Internal Testing-app entry + in-app products + license testers i Play Console. **OBS:** detta blockerar inte launch — `PREMIUM_OPEN_FOR_LAUNCH=true` (defaultConfig i `androidApp/build.gradle.kts`) ger alla användare LIFETIME-premium under closed testing + initial production. När Billing-verify är klar och vi vill aktivera monetization: flippa `PREMIUM_OPEN_FOR_LAUNCH=false`, bumpa versionCode och pusha en ny release.
+4. **Audio accuracy eval** (deferred från 6b2): kräver xeno-canto API v3 key. Pipeline klar i `tools/ml-eval/audio_accuracy_report_2026-05-21.md`.
+5. **AB-flytt:** Account Transfer av Play Console till AB-bolaget när det är registrerat (post-launch).
+6. **SV legal-översättningar:** Om Sverige-trafik växer, mirror `/sv/legal/...` med översatta markdown-filer. Idag cross-linkar SV-footer till EN-only `/legal/`-routes (intentionellt — Nordics/EU first launch).
+7. **Plan 6a T8/T9 device-screenshots saknas:** `08-match-with-inline-note` + `09-disambig-save-as-unknown` (kräver deterministisk match-flow ej driveable via ADB — kan adresseras via test-image-infra i framtida sprint).
 
 ## Roadmap post-v1.0 (referens)
 
