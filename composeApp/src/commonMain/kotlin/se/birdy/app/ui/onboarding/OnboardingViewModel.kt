@@ -11,6 +11,7 @@ import se.birdy.datastore.UserPreferences
 class OnboardingViewModel(
     private val prefs: UserPreferences,
     private val defaultFallbackName: String,
+    private val isReplay: Boolean = false,
 ) : ViewModel() {
     private val _state =
         MutableStateFlow<OnboardingUiState>(
@@ -38,13 +39,15 @@ class OnboardingViewModel(
         val trimmed = current.nameInput.trim()
         val resolvedName = trimmed.ifEmpty { defaultFallbackName }
         viewModelScope.launch {
-            prefs.setUserName(resolvedName)
-            prefs.setHasSeenOnboarding(true)
+            if (!isReplay) {
+                prefs.setUserName(resolvedName)
+                prefs.setHasSeenOnboarding(true)
+            }
             _state.value = OnboardingUiState.Done
         }
     }
 
     private companion object {
-        const val MAX_PAGE_INDEX = 2 // 3 pages: 0, 1, 2
+        const val MAX_PAGE_INDEX = 6 // 7 pages: 0, 1, 2, 3, 4, 5, 6
     }
 }

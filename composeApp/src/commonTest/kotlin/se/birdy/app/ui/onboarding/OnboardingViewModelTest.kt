@@ -78,4 +78,52 @@ class OnboardingViewModelTest {
             vm.complete()
             prefs.userName.test { assertEquals("Albin", awaitItem()) }
         }
+
+    @Test
+    fun `setPageIndex moves to page 6`() =
+        runTest {
+            val vm = OnboardingViewModel(InMemoryUserPreferences(), "Min")
+            vm.setPageIndex(6)
+            vm.state.test {
+                val s = awaitItem()
+                assertTrue(s is OnboardingUiState.Visible)
+                assertEquals(6, s.pageIndex)
+            }
+        }
+
+    @Test
+    fun `setPageIndex coerces 7 to 6 (MAX_PAGE_INDEX)`() =
+        runTest {
+            val vm = OnboardingViewModel(InMemoryUserPreferences(), "Min")
+            vm.setPageIndex(7)
+            vm.state.test {
+                val s = awaitItem()
+                assertTrue(s is OnboardingUiState.Visible)
+                assertEquals(6, s.pageIndex)
+            }
+        }
+
+    @Test
+    fun `replay mode does not write hasSeenOnboarding on complete`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            // simulate user has already seen onboarding before replay
+            prefs.setHasSeenOnboarding(true)
+            prefs.setUserName("Albin")
+            val vm = OnboardingViewModel(prefs, defaultFallbackName = "Min", isReplay = true)
+            vm.onNameChange("Ignored")
+            vm.complete()
+            prefs.userName.test { assertEquals("Albin", awaitItem()) } // unchanged
+            prefs.hasSeenOnboarding.test { assertEquals(true, awaitItem()) }
+        }
+
+    @Test
+    fun `replay mode still transitions state to Done`() =
+        runTest {
+            val vm = OnboardingViewModel(InMemoryUserPreferences(), "Min", isReplay = true)
+            vm.complete()
+            vm.state.test {
+                assertEquals(OnboardingUiState.Done, awaitItem())
+            }
+        }
 }
