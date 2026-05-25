@@ -1,16 +1,21 @@
 CREATE TABLE daily_bird_history (
-    date        TEXT NOT NULL PRIMARY KEY,
-    species_id  TEXT NOT NULL
+    date TEXT NOT NULL PRIMARY KEY,
+    species_id TEXT NOT NULL,
+    matched INTEGER NOT NULL DEFAULT 0
 );
 
 selectByDate:
 SELECT * FROM daily_bird_history WHERE date = ?;
 
-upsert:
-INSERT OR REPLACE INTO daily_bird_history(date, species_id) VALUES (?, ?);
+upsertCandidate:
+INSERT OR IGNORE INTO daily_bird_history(date, species_id, matched)
+VALUES (?, ?, 0);
 
-countDistinctDates:
-SELECT COUNT(*) FROM daily_bird_history;
+markMatched:
+UPDATE daily_bird_history SET matched = 1 WHERE date = ? AND species_id = ? AND matched = 0;
+
+countMatched:
+SELECT COUNT(*) FROM daily_bird_history WHERE matched = 1;
 
 deleteAll:
 DELETE FROM daily_bird_history;
