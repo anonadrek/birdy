@@ -31,16 +31,6 @@
     <string name="result_journal_headline">*%1$s*?</string>
     <string name="result_journal_sub">%1$s säkerhet.</string>
 
-    <!-- Plan 7c: Onboarding Field Journal -->
-    <string name="onboarding_journal_p1_body1">Rikta kameran, ta ett foto, eller välj från galleriet. *Birdy* identifierar fågeln på enheten — utan internet i fält — och stämplar den i din dagbok.</string>
-    <string name="onboarding_journal_p1_body2">Varje fynd låser upp en ny sida. Se din *samling* växa över årstiderna. Dagboken stannar på enheten om du inte väljer att dela den.</string>
-    <string name="onboarding_journal_p2_label">SÅ FUNGERAR DET · NO 2</string>
-    <string name="onboarding_journal_p2_headline">*Tre* delar.</string>
-    <string name="onboarding_journal_p2_sub">Att leta. Att lära. Att samla.</string>
-    <string name="onboarding_journal_p3_label">DITT NAMN · NO 3</string>
-    <string name="onboarding_journal_p3_headline">*Vem* skriver?</string>
-    <string name="onboarding_journal_p3_sub">Namnet visas i dagboken.</string>
-    <string name="onboarding_journal_p3_cta">*Börja* dagboken</string>
 
     <!-- Filter -->
     <string name="filter_title">Filter</string>
@@ -342,35 +332,47 @@
 
     <!-- ===== Plan 7a: Onboarding ===== -->
     <string name="onboarding_skip">Hoppa över</string>
-
-    <!-- Page 1 (Brand) -->
-    <string name="onboarding_p1_breadcrumb">VÄLKOMMEN</string>
-    <string name="onboarding_p1_headline">Birdy.</string>
-    <string name="onboarding_p1_body">Lyssna, känn igen, *samla*.</string>
-    <string name="onboarding_p1_sub">En fält-följeslagare bland fåglar — en stämpel i taget.</string>
-    <string name="onboarding_p1_cta">Visa hur</string>
-
-    <!-- Page 2 (Overview) -->
-    <string name="onboarding_p2_breadcrumb">ÖVERBLICK</string>
-    <string name="onboarding_p2_headline">Fyra ställen att *vara* på.</string>
-    <string name="onboarding_p2_listen_name">Listen</string>
-    <string name="onboarding_p2_listen_desc">*Lyssna och fånga* — kamera, ljud eller foto.</string>
-    <string name="onboarding_p2_archive_name">Archive</string>
-    <string name="onboarding_p2_archive_desc">*Bläddra och utforska* tusentals fåglar.</string>
-    <string name="onboarding_p2_lifelist_name">Lifelist</string>
-    <string name="onboarding_p2_lifelist_desc">*Samla* stämplar — din lista växer för varje fynd.</string>
-    <string name="onboarding_p2_badges_name">Badges</string>
-    <string name="onboarding_p2_badges_desc">*Förtjäna märken*, håll sviter levande.</string>
-    <string name="onboarding_p2_cta">Nästan klar</string>
-
-    <!-- Page 3 (Name) -->
-    <string name="onboarding_p3_breadcrumb">SISTA STEGET</string>
-    <string name="onboarding_p3_headline">Vad ska vi kalla din *samling*?</string>
-    <string name="onboarding_p3_input_placeholder">Albin</string>
-    <string name="onboarding_p3_input_helper">Lämna tomt om du vill — vi kallar dig 'Fältornitolog'.</string>
-    <string name="onboarding_p3_premium_label">PREMIUM</string>
-    <string name="onboarding_p3_cta">Börja samla →</string>
     <string name="onboarding_p3_fallback_name">Min</string>
+
+    <!-- Onboarding v2 (Plan 2026-05-25 onboarding-scroll-story) -->
+    <string name="onboarding_s1_eyebrow">FÄLT-FÖLJESLAGARE · NO 1</string>
+    <string name="onboarding_s1_headline">*Birdy.*</string>
+    <string name="onboarding_s1_sub">Identifiera fåglar i fält — foto eller ljud, på enheten, utan internet.</string>
+
+    <string name="onboarding_s2_eyebrow">FOTO · NO 2</string>
+    <string name="onboarding_s2_headline">*Rikta*. Tryck. Stämpla.</string>
+    <string name="onboarding_s2_sub">On-device-AI känner igen 839 europeiska arter på sekunder.</string>
+    <string name="onboarding_s2_match_pill">MATCH</string>
+    <string name="onboarding_s2_species_demo">Talgoxe</string>
+
+    <string name="onboarding_s3_eyebrow">LJUD · NO 3</string>
+    <string name="onboarding_s3_headline">Eller — *lyssna*.</string>
+    <string name="onboarding_s3_sub">3 sekunders inspelning. Identifiera sången. Gratis, alltid.</string>
+    <string name="onboarding_s3_free_pill">GRATIS</string>
+    <string name="onboarding_s3_species_demo">Talgoxe — 94%</string>
+
+    <string name="onboarding_s4_eyebrow">FÄLTBOKEN · NO 4</string>
+    <string name="onboarding_s4_headline">Varje fynd — *en sida*.</string>
+    <string name="onboarding_s4_sub">Din samling växer med varje fågel. PDF-export när du vill.</string>
+    <string name="onboarding_s4_marginalia">16 maj · Norra Djurgården</string>
+
+    <string name="onboarding_s5_eyebrow">MÄRKEN · NO 5</string>
+    <string name="onboarding_s5_headline">*Förtjäna* märken.</string>
+    <string name="onboarding_s5_sub">Mängder av milstolpar att jaga. Håll svit levande.</string>
+
+    <string name="onboarding_s6_eyebrow">PRIVATLIV · NO 6</string>
+    <string name="onboarding_s6_headline">*Stannar* på enheten.</string>
+    <string name="onboarding_s6_sub">Inga konton. Ingen molnsynk. Dagboken är din.</string>
+
+    <string name="onboarding_s7_eyebrow">DITT NAMN · NO 7</string>
+    <string name="onboarding_s7_headline">*Vem* skriver?</string>
+    <string name="onboarding_s7_sub">Namnet visas i dagboken.</string>
+    <string name="onboarding_s7_input_placeholder">Albin</string>
+    <string name="onboarding_s7_input_helper">Lämna tomt om du vill — vi kallar dig &#8217;Fältornitolog&#8217;.</string>
+    <string name="onboarding_s7_cta">*Börja* dagboken</string>
+
+    <string name="onboarding_close_replay">Stäng</string>
+    <string name="settings_show_intro_again">Visa introduktion igen</string>
 
     <!-- ===== Plan 7b: ListenLauncherScreen ===== -->
     <string name="listen_breadcrumb">LYSSNA</string>

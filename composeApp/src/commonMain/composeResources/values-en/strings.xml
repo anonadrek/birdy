@@ -28,16 +28,6 @@
     <string name="result_journal_headline">*%1$s*?</string>
     <string name="result_journal_sub">A %1$s match.</string>
 
-    <!-- Plan 7c: Onboarding Field Journal -->
-    <string name="onboarding_journal_p1_body1">Point your camera, snap a photo, or upload from your gallery. *Birdy* identifies the bird on-device — no internet needed in the field — and stamps it in your journal.</string>
-    <string name="onboarding_journal_p1_body2">Each find unlocks a new page. Watch your *collection* grow over the seasons. Your journal stays on this device unless you choose to share it.</string>
-    <string name="onboarding_journal_p2_label">HOW IT WORKS · NO 2</string>
-    <string name="onboarding_journal_p2_headline">*Three* parts.</string>
-    <string name="onboarding_journal_p2_sub">To search. To learn. To collect.</string>
-    <string name="onboarding_journal_p3_label">YOUR NAME · NO 3</string>
-    <string name="onboarding_journal_p3_headline">*Who* writes?</string>
-    <string name="onboarding_journal_p3_sub">Shown in your journal.</string>
-    <string name="onboarding_journal_p3_cta">*Begin* the journal</string>
 
     <string name="filter_title">Filter</string>
     <string name="filter_button">⚙ Filter</string>
@@ -329,35 +319,47 @@
 
     <!-- ===== Plan 7a: Onboarding ===== -->
     <string name="onboarding_skip">Skip</string>
-
-    <!-- Page 1 (Brand) -->
-    <string name="onboarding_p1_breadcrumb">WELCOME</string>
-    <string name="onboarding_p1_headline">Birdy.</string>
-    <string name="onboarding_p1_body">Listen, recognize, *collect*.</string>
-    <string name="onboarding_p1_sub">A field companion among birds — one stamp at a time.</string>
-    <string name="onboarding_p1_cta">Show me how</string>
-
-    <!-- Page 2 (Overview) -->
-    <string name="onboarding_p2_breadcrumb">OVERVIEW</string>
-    <string name="onboarding_p2_headline">Four places to *be*.</string>
-    <string name="onboarding_p2_listen_name">Listen</string>
-    <string name="onboarding_p2_listen_desc">*Listen and capture* — camera, audio or photo.</string>
-    <string name="onboarding_p2_archive_name">Archive</string>
-    <string name="onboarding_p2_archive_desc">*Browse and explore* thousands of birds.</string>
-    <string name="onboarding_p2_lifelist_name">Lifelist</string>
-    <string name="onboarding_p2_lifelist_desc">*Collect* stamps — your list grows with every find.</string>
-    <string name="onboarding_p2_badges_name">Badges</string>
-    <string name="onboarding_p2_badges_desc">*Earn discoveries*, keep your streaks alive.</string>
-    <string name="onboarding_p2_cta">Almost there</string>
-
-    <!-- Page 3 (Name) -->
-    <string name="onboarding_p3_breadcrumb">LAST STEP</string>
-    <string name="onboarding_p3_headline">What should we call your *collection*?</string>
-    <string name="onboarding_p3_input_placeholder">Alex</string>
-    <string name="onboarding_p3_input_helper">Leave blank if you'd rather — we'll call you 'Field birder'.</string>
-    <string name="onboarding_p3_premium_label">PREMIUM</string>
-    <string name="onboarding_p3_cta">Start collecting →</string>
     <string name="onboarding_p3_fallback_name">My</string>
+
+    <!-- Onboarding v2 (Plan 2026-05-25 onboarding-scroll-story) -->
+    <string name="onboarding_s1_eyebrow">FIELD COMPANION · NO 1</string>
+    <string name="onboarding_s1_headline">*Birdy.*</string>
+    <string name="onboarding_s1_sub">Identify birds in the field — photo or sound, on-device, no internet.</string>
+
+    <string name="onboarding_s2_eyebrow">PHOTO · NO 2</string>
+    <string name="onboarding_s2_headline">*Aim*. Tap. Stamp.</string>
+    <string name="onboarding_s2_sub">On-device AI recognizes 839 European species in seconds.</string>
+    <string name="onboarding_s2_match_pill">MATCH</string>
+    <string name="onboarding_s2_species_demo">Great Tit</string>
+
+    <string name="onboarding_s3_eyebrow">SOUND · NO 3</string>
+    <string name="onboarding_s3_headline">Or — *listen*.</string>
+    <string name="onboarding_s3_sub">3 seconds of recording. ID the song. Free, always.</string>
+    <string name="onboarding_s3_free_pill">FREE</string>
+    <string name="onboarding_s3_species_demo">Great Tit — 94%</string>
+
+    <string name="onboarding_s4_eyebrow">THE JOURNAL · NO 4</string>
+    <string name="onboarding_s4_headline">Every find — *a page*.</string>
+    <string name="onboarding_s4_sub">Your collection grows with every bird. PDF export when you want.</string>
+    <string name="onboarding_s4_marginalia">May 16 · Stockholm</string>
+
+    <string name="onboarding_s5_eyebrow">BADGES · NO 5</string>
+    <string name="onboarding_s5_headline">*Earn* badges.</string>
+    <string name="onboarding_s5_sub">Plenty of milestones to chase. Keep your streak alive.</string>
+
+    <string name="onboarding_s6_eyebrow">PRIVACY · NO 6</string>
+    <string name="onboarding_s6_headline">*Stays* on your device.</string>
+    <string name="onboarding_s6_sub">No accounts. No cloud sync. The journal is yours.</string>
+
+    <string name="onboarding_s7_eyebrow">YOUR NAME · NO 7</string>
+    <string name="onboarding_s7_headline">*Who* writes?</string>
+    <string name="onboarding_s7_sub">Shown in your journal.</string>
+    <string name="onboarding_s7_input_placeholder">Alex</string>
+    <string name="onboarding_s7_input_helper">Leave blank if you&#8217;d rather — we&#8217;ll call you &#8216;Field birder&#8217;.</string>
+    <string name="onboarding_s7_cta">*Begin* the journal</string>
+
+    <string name="onboarding_close_replay">Close</string>
+    <string name="settings_show_intro_again">Show intro again</string>
 
     <!-- ===== Plan 7b: ListenLauncherScreen ===== -->
     <string name="listen_breadcrumb">LISTEN</string>
