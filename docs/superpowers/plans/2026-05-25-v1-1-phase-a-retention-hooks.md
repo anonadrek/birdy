@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-> **⚠ DO NOT START IMPLEMENTATION DIRECTLY AFTER THIS PLAN.** Albin granskar BÅDE detta plan-dokument OCH Phase B-spec/plan (skrivs härnäst) innan implementation startar. Wait for explicit "kör implementation" från Albin.
+> **Status (2026-05-26):** Albin har godkänt start av Phase A-implementation. Phase B-spec defereras till efter Phase A landar (se `~/.claude/projects/.../memory/project_v1_2_phase_b_hooks.md`). Kör tasks 1–31 i ordning.
 
 **Goal:** Bygg "Dagens fågel"-kort på Identifiera-tab, 2 push-notiser (08:00 daglig + söndag 18:00 streak-risk), och 3 nya premium-badges — för att adressera "låg återbesöks-pull" + "tunt premium-value-prop" från 12-testar-feedbacken. Target: nästa Closed Testing-AAB efter v1.0.2.
 
