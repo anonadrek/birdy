@@ -1,0 +1,16 @@
+CREATE TABLE daily_bird_history (
+    date        TEXT NOT NULL PRIMARY KEY,
+    species_id  TEXT NOT NULL
+);
+
+selectByDate:
+SELECT * FROM daily_bird_history WHERE date = ?;
+
+upsert:
+INSERT OR REPLACE INTO daily_bird_history(date, species_id) VALUES (?, ?);
+
+countDistinctDates:
+SELECT COUNT(*) FROM daily_bird_history;
+
+deleteAll:
+DELETE FROM daily_bird_history;
