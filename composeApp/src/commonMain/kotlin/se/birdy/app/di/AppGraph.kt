@@ -297,8 +297,8 @@ class AppGraph(
 
     fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel()
 
-    fun onboardingViewModel(fallbackName: String): OnboardingViewModel =
-        OnboardingViewModel(prefs = userPreferences, defaultFallbackName = fallbackName)
+    fun onboardingViewModel(fallbackName: String, isReplay: Boolean = false): OnboardingViewModel =
+        OnboardingViewModel(prefs = userPreferences, defaultFallbackName = fallbackName, isReplay = isReplay)
 
     /**
      * Factory for [AudioScanViewModel].
