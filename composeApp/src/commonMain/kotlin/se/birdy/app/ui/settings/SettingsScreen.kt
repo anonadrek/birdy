@@ -29,6 +29,7 @@ import androidx.compose.material.icons.outlined.MailOutline
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Public
 import androidx.compose.material.icons.outlined.Refresh
+import androidx.compose.material.icons.outlined.Replay
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.icons.outlined.VerifiedUser
@@ -87,6 +88,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_section_about_
 import birdy_bird_scanner.composeapp.generated.resources.settings_section_account
 import birdy_bird_scanner.composeapp.generated.resources.settings_section_legal
 import birdy_bird_scanner.composeapp.generated.resources.settings_share_copy
+import birdy_bird_scanner.composeapp.generated.resources.settings_show_intro_again
 import birdy_bird_scanner.composeapp.generated.resources.settings_title
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
@@ -109,6 +111,7 @@ fun SettingsScreen(
     onBack: () -> Unit,
     onPremiumClick: () -> Unit,
     onNavigateToAbout: () -> Unit,
+    onShowIntroAgain: () -> Unit,
     versionName: String,
 ) {
     val state by viewModel.state.collectAsState()
@@ -210,6 +213,13 @@ fun SettingsScreen(
                         label = stringResource(Res.string.settings_label_about),
                         value = "v$versionName",
                         onClick = { viewModel.openAbout() },
+                    )
+                    DashedDivider()
+                    SettingsRow(
+                        icon = Icons.Outlined.Replay,
+                        label = stringResource(Res.string.settings_show_intro_again),
+                        value = null,
+                        onClick = onShowIntroAgain,
                     )
                     DashedDivider()
                     SettingsRow(

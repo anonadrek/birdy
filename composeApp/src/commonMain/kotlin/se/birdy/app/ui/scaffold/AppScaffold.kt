@@ -218,6 +218,7 @@ fun AppScaffold(graph: AppGraph) {
                     onBack = { navController.popBackStack() },
                     onPremiumClick = { navController.navigate(AppRoute.Premium) },
                     onNavigateToAbout = { navController.navigate(AppRoute.About) },
+                    onShowIntroAgain = { navController.navigate(AppRoute.OnboardingReplay) },
                     versionName = graph.versionName,
                 )
             }
