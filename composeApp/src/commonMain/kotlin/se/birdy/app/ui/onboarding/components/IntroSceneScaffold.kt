@@ -44,15 +44,13 @@ fun IntroSceneScaffold(
                 .fillMaxSize()
                 .semantics(mergeDescendants = true) {
                     contentDescription = "$eyebrow. $headline. $sub."
-                }
-                .alpha(visibility)
+                }.alpha(visibility)
                 .layout { measurable, constraints ->
                     val placeable = measurable.measure(constraints)
                     layout(placeable.width, placeable.height) {
                         placeable.placeRelative(0, parallaxPx.toInt())
                     }
-                }
-                .padding(horizontal = 0.dp, vertical = 0.dp),
+                }.padding(horizontal = 0.dp, vertical = 0.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {

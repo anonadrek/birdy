@@ -26,30 +26,43 @@ fun OfflineShield(
         val radius = minOf(w, h) * 0.42f
 
         // Shield-shape: rounded top, tapered bottom point
-        val path = Path().apply {
-            moveTo(cx, cy - radius)
-            cubicTo(
-                cx + radius * 0.9f, cy - radius,
-                cx + radius * 1.1f, cy - radius * 0.2f,
-                cx + radius * 0.85f, cy + radius * 0.3f,
-            )
-            cubicTo(
-                cx + radius * 0.5f, cy + radius * 0.95f,
-                cx, cy + radius,
-                cx, cy + radius,
-            )
-            cubicTo(
-                cx, cy + radius,
-                cx - radius * 0.5f, cy + radius * 0.95f,
-                cx - radius * 0.85f, cy + radius * 0.3f,
-            )
-            cubicTo(
-                cx - radius * 1.1f, cy - radius * 0.2f,
-                cx - radius * 0.9f, cy - radius,
-                cx, cy - radius,
-            )
-            close()
-        }
+        val path =
+            Path().apply {
+                moveTo(cx, cy - radius)
+                cubicTo(
+                    cx + radius * 0.9f,
+                    cy - radius,
+                    cx + radius * 1.1f,
+                    cy - radius * 0.2f,
+                    cx + radius * 0.85f,
+                    cy + radius * 0.3f,
+                )
+                cubicTo(
+                    cx + radius * 0.5f,
+                    cy + radius * 0.95f,
+                    cx,
+                    cy + radius,
+                    cx,
+                    cy + radius,
+                )
+                cubicTo(
+                    cx,
+                    cy + radius,
+                    cx - radius * 0.5f,
+                    cy + radius * 0.95f,
+                    cx - radius * 0.85f,
+                    cy + radius * 0.3f,
+                )
+                cubicTo(
+                    cx - radius * 1.1f,
+                    cy - radius * 0.2f,
+                    cx - radius * 0.9f,
+                    cy - radius,
+                    cx,
+                    cy - radius,
+                )
+                close()
+            }
 
         val measure = PathMeasure().apply { setPath(path, false) }
         val totalLen = measure.length

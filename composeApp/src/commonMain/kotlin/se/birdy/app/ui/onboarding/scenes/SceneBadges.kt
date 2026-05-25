@@ -25,7 +25,10 @@ import se.birdy.app.ui.onboarding.components.IntroSceneScaffold
 import se.birdy.app.ui.onboarding.components.StreakCounter
 
 @Composable
-fun SceneBadges(pageOffset: Float, isActive: Boolean) {
+fun SceneBadges(
+    pageOffset: Float,
+    isActive: Boolean,
+) {
     val flipDegrees = remember { Animatable(0f) }
     val counterTrigger = remember { Animatable(0f) }
 

@@ -35,7 +35,10 @@ import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.util.speciesImageUri
 
 @Composable
-fun ScenePhoto(pageOffset: Float, isActive: Boolean) {
+fun ScenePhoto(
+    pageOffset: Float,
+    isActive: Boolean,
+) {
     val photoAlpha = remember { Animatable(0f) }
     val stampScale = remember { Animatable(0f) }
     val stampRotation = remember { Animatable(-8f) }

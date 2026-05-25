@@ -39,7 +39,10 @@ import se.birdy.app.ui.theme.PaperTop
 import se.birdy.app.ui.theme.rememberCaveat
 
 @Composable
-fun SceneJournal(pageOffset: Float, isActive: Boolean) {
+fun SceneJournal(
+    pageOffset: Float,
+    isActive: Boolean,
+) {
     val pageAlpha = remember { Animatable(0f) }
     val pageOffsetY = remember { Animatable(32f) }
     val existingStamp1Alpha = remember { Animatable(0f) }

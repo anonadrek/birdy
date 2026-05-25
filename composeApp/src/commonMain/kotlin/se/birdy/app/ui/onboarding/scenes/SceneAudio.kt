@@ -46,7 +46,10 @@ import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.TextOnCreme
 
 @Composable
-fun SceneAudio(pageOffset: Float, isActive: Boolean) {
+fun SceneAudio(
+    pageOffset: Float,
+    isActive: Boolean,
+) {
     val micScale = remember { Animatable(0f) }
     val ringSweep = remember { Animatable(0f) }
     val labelAlpha = remember { Animatable(0f) }

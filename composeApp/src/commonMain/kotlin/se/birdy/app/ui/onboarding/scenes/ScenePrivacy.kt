@@ -38,7 +38,10 @@ import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 
 @Composable
-fun ScenePrivacy(pageOffset: Float, isActive: Boolean) {
+fun ScenePrivacy(
+    pageOffset: Float,
+    isActive: Boolean,
+) {
     val deviceAlpha = remember { Animatable(0f) }
     val lockScale = remember { Animatable(0f) }
     val shieldProgress = remember { Animatable(0f) }
