@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s2_eyebrow
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s2_headline
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_s2_match_pill
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s2_species_demo
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s2_sub
 import coil3.compose.AsyncImage
@@ -62,7 +61,6 @@ fun ScenePhoto(
     }
 
     val speciesName = stringResource(Res.string.onboarding_s2_species_demo)
-    val matchPill = stringResource(Res.string.onboarding_s2_match_pill)
 
     IntroSceneScaffold(
         eyebrow = stringResource(Res.string.onboarding_s2_eyebrow),
@@ -74,56 +72,64 @@ fun ScenePhoto(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
             contentAlignment = Alignment.Center,
         ) {
-            // Plate-foto
-            Box(modifier = Modifier.alpha(photoAlpha.value)) {
-                PlateFrame(
-                    plateLabel = "I",
-                    captionLine = "$speciesName, in nature",
-                    image = {
+            PlateFrame(
+                plateLabel = "I",
+                captionLine = "$speciesName, in nature",
+                image = {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        // Bird photo (fade-in)
                         AsyncImage(
                             model = speciesImageUri("Q25485/hero.webp"),
                             contentDescription = null,
-                            modifier = Modifier.fillMaxSize(),
+                            modifier = Modifier.fillMaxSize().alpha(photoAlpha.value),
                             contentScale = ContentScale.Crop,
                         )
-                    },
-                )
-            }
-            // Camera-frame brackets overlay
-            Canvas(modifier = Modifier.fillMaxSize().padding(28.dp)) {
-                val s = 18.dp.toPx()
-                val sw = 2.5.dp.toPx()
-                val w = size.width
-                val h = size.height
-                val c = AccentCopper
-                // 4 corner brackets
-                drawLine(c, Offset(0f, 0f), Offset(s, 0f), sw)
-                drawLine(c, Offset(0f, 0f), Offset(0f, s), sw)
-                drawLine(c, Offset(w, 0f), Offset(w - s, 0f), sw)
-                drawLine(c, Offset(w, 0f), Offset(w, s), sw)
-                drawLine(c, Offset(0f, h), Offset(s, h), sw)
-                drawLine(c, Offset(0f, h), Offset(0f, h - s), sw)
-                drawLine(c, Offset(w, h), Offset(w - s, h), sw)
-                drawLine(c, Offset(w, h), Offset(w, h - s), sw)
-                // Crosshair circle in middle
-                drawCircle(
-                    color = c,
-                    radius = 12.dp.toPx(),
-                    center = Offset(w / 2f, h / 2f),
-                    style = Stroke(width = 1.5.dp.toPx()),
-                )
-            }
-            // Slam stamp
-            Box(
-                modifier =
-                    Modifier
-                        .scale(stampScale.value)
-                        .rotate(stampRotation.value),
-            ) {
-                StampSeal(
-                    state = StampSealState.Unlocked(number = 1, glyph = null, name = matchPill),
-                )
-            }
+                        // Camera-frame brackets + crosshair around the image area
+                        Canvas(modifier = Modifier.fillMaxSize().padding(12.dp)) {
+                            val s = 18.dp.toPx()
+                            val sw = 2.5.dp.toPx()
+                            val w = size.width
+                            val h = size.height
+                            val c = AccentCopper
+                            drawLine(c, Offset(0f, 0f), Offset(s, 0f), sw)
+                            drawLine(c, Offset(0f, 0f), Offset(0f, s), sw)
+                            drawLine(c, Offset(w, 0f), Offset(w - s, 0f), sw)
+                            drawLine(c, Offset(w, 0f), Offset(w, s), sw)
+                            drawLine(c, Offset(0f, h), Offset(s, h), sw)
+                            drawLine(c, Offset(0f, h), Offset(0f, h - s), sw)
+                            drawLine(c, Offset(w, h), Offset(w - s, h), sw)
+                            drawLine(c, Offset(w, h), Offset(w, h - s), sw)
+                            drawCircle(
+                                color = c,
+                                radius = 12.dp.toPx(),
+                                center = Offset(w / 2f, h / 2f),
+                                style = Stroke(width = 1.5.dp.toPx()),
+                            )
+                        }
+                        // Slam stamp centered on the image area (name = null so the
+                        // circle's geometric center aligns with the crosshair — otherwise
+                        // the Column = circle + spacer + name shifts the circle 9dp up).
+                        Box(
+                            modifier =
+                                Modifier
+                                    .scale(stampScale.value)
+                                    .rotate(stampRotation.value),
+                        ) {
+                            StampSeal(
+                                state =
+                                    StampSealState.Unlocked(
+                                        number = 1,
+                                        glyph = null,
+                                        name = null,
+                                    ),
+                            )
+                        }
+                    }
+                },
+            )
         }
     }
 }
