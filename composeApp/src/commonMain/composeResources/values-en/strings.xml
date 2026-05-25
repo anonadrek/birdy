@@ -28,7 +28,6 @@
     <string name="result_journal_headline">*%1$s*?</string>
     <string name="result_journal_sub">A %1$s match.</string>
 
-
     <string name="filter_title">Filter</string>
     <string name="filter_button">⚙ Filter</string>
     <string name="filter_label_abundance">ABUNDANCE</string>

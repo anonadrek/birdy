@@ -31,7 +31,6 @@
     <string name="result_journal_headline">*%1$s*?</string>
     <string name="result_journal_sub">%1$s säkerhet.</string>
 
-
     <!-- Filter -->
     <string name="filter_title">Filter</string>
     <string name="filter_button">⚙ Filter</string>
@@ -368,7 +367,7 @@
     <string name="onboarding_s7_headline">*Vem* skriver?</string>
     <string name="onboarding_s7_sub">Namnet visas i dagboken.</string>
     <string name="onboarding_s7_input_placeholder">Albin</string>
-    <string name="onboarding_s7_input_helper">Lämna tomt om du vill — vi kallar dig &#8217;Fältornitolog&#8217;.</string>
+    <string name="onboarding_s7_input_helper">Lämna tomt om du vill — vi kallar dig &#8216;Fältornitolog&#8217;.</string>
     <string name="onboarding_s7_cta">*Börja* dagboken</string>
 
     <string name="onboarding_close_replay">Stäng</string>
