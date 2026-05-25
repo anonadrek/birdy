@@ -39,6 +39,8 @@ sealed interface AppRoute {
 
     @Serializable data object About : AppRoute
 
+    @Serializable data object OnboardingReplay : AppRoute
+
     @Serializable data object Premium : AppRoute
 
     @Serializable data object DebugBenchmark : AppRoute

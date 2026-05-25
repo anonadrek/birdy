@@ -18,6 +18,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_fallback_name
 import birdy_bird_scanner.composeapp.generated.resources.premium_dismiss_toast
 import birdy_bird_scanner.composeapp.generated.resources.premium_welcome_toast
 import kotlinx.coroutines.flow.first
@@ -225,6 +226,25 @@ fun AppScaffold(graph: AppGraph) {
                     onBack = { navController.popBackStack() },
                     version = graph.versionName,
                 )
+            }
+            composable<AppRoute.OnboardingReplay> {
+                val fallback = stringResource(Res.string.onboarding_p3_fallback_name)
+                val vm = remember(graph) { graph.onboardingViewModel(fallback, isReplay = true) }
+                val state by vm.state.collectAsState()
+                when (val s = state) {
+                    is se.birdy.app.ui.onboarding.OnboardingUiState.Visible ->
+                        se.birdy.app.ui.onboarding.OnboardingScreen(
+                            state = s,
+                            onPageChange = vm::setPageIndex,
+                            onNameChange = vm::onNameChange,
+                            onComplete = { navController.popBackStack() },
+                            isReplay = true,
+                        )
+                    se.birdy.app.ui.onboarding.OnboardingUiState.Done -> {
+                        LaunchedEffect(Unit) { navController.popBackStack() }
+                    }
+                    se.birdy.app.ui.onboarding.OnboardingUiState.Loading -> Unit
+                }
             }
             composable<AppRoute.Premium> {
                 PremiumScreen(
