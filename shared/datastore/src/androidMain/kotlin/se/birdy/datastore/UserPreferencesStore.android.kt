@@ -44,6 +44,9 @@ private class AndroidUserPreferences(
         val LIFELIST_SORT = stringPreferencesKey("lifelist_sort")
         val FIRST_INSTALL_TIMESTAMP = longPreferencesKey("first_install_timestamp")
         val PREMIUM_MODAL_LAST_SHOWN_AT = longPreferencesKey("premium_modal_last_shown_at_ms")
+        val PUSH_PERMISSION_ASKED = booleanPreferencesKey("push_permission_asked")
+        val DAILY_BIRD_PUSH_ENABLED = booleanPreferencesKey("daily_bird_push_enabled")
+        val STREAK_RISK_PUSH_ENABLED = booleanPreferencesKey("streak_risk_push_enabled")
     }
 
     override val userName: Flow<String> = safeData.map { it[Keys.USER_NAME] ?: "" }
@@ -71,6 +74,12 @@ private class AndroidUserPreferences(
         safeData.map { it[Keys.FIRST_INSTALL_TIMESTAMP]?.takeIf { ms -> ms > 0L } }
     override val premiumModalLastShownAt: Flow<Long?> =
         safeData.map { it[Keys.PREMIUM_MODAL_LAST_SHOWN_AT]?.takeIf { ms -> ms > 0L } }
+    override val pushPermissionAsked: Flow<Boolean> =
+        safeData.map { it[Keys.PUSH_PERMISSION_ASKED] ?: false }
+    override val dailyBirdPushEnabled: Flow<Boolean> =
+        safeData.map { it[Keys.DAILY_BIRD_PUSH_ENABLED] ?: true }
+    override val streakRiskPushEnabled: Flow<Boolean> =
+        safeData.map { it[Keys.STREAK_RISK_PUSH_ENABLED] ?: true }
 
     override suspend fun setUserName(name: String) {
         store.edit { it[Keys.USER_NAME] = name }
@@ -106,5 +115,17 @@ private class AndroidUserPreferences(
 
     override suspend fun setPremiumModalLastShownAt(ms: Long) {
         store.edit { it[Keys.PREMIUM_MODAL_LAST_SHOWN_AT] = ms }
+    }
+
+    override suspend fun setPushPermissionAsked(value: Boolean) {
+        store.edit { it[Keys.PUSH_PERMISSION_ASKED] = value }
+    }
+
+    override suspend fun setDailyBirdPushEnabled(value: Boolean) {
+        store.edit { it[Keys.DAILY_BIRD_PUSH_ENABLED] = value }
+    }
+
+    override suspend fun setStreakRiskPushEnabled(value: Boolean) {
+        store.edit { it[Keys.STREAK_RISK_PUSH_ENABLED] = value }
     }
 }

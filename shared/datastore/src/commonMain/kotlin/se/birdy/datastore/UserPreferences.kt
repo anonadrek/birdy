@@ -30,6 +30,10 @@ interface UserPreferences {
     /** Wall-clock epoch ms when modal was last shown, null = never shown. */
     val premiumModalLastShownAt: Flow<Long?>
 
+    val pushPermissionAsked: Flow<Boolean>
+    val dailyBirdPushEnabled: Flow<Boolean>
+    val streakRiskPushEnabled: Flow<Boolean>
+
     suspend fun setUserName(name: String)
 
     suspend fun setHasSeenOnboarding(value: Boolean)
@@ -47,4 +51,10 @@ interface UserPreferences {
     suspend fun setFirstInstallTimestamp(ms: Long)
 
     suspend fun setPremiumModalLastShownAt(ms: Long)
+
+    suspend fun setPushPermissionAsked(value: Boolean)
+
+    suspend fun setDailyBirdPushEnabled(value: Boolean)
+
+    suspend fun setStreakRiskPushEnabled(value: Boolean)
 }
