@@ -13,6 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import se.birdy.app.ui.components.JournalIntro
@@ -40,6 +42,9 @@ fun IntroSceneScaffold(
         modifier =
             modifier
                 .fillMaxSize()
+                .semantics(mergeDescendants = true) {
+                    contentDescription = "$eyebrow. $headline. $sub."
+                }
                 .alpha(visibility)
                 .layout { measurable, constraints ->
                     val placeable = measurable.measure(constraints)
