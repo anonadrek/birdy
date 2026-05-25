@@ -1,13 +1,25 @@
 package se.birdy.app.ui.onboarding.scenes
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.dp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s1_eyebrow
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s1_headline
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s1_sub
+import coil3.compose.AsyncImage
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.onboarding.components.IntroSceneScaffold
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun SceneHero(pageOffset: Float) {
     IntroSceneScaffold(
@@ -16,6 +28,11 @@ fun SceneHero(pageOffset: Float) {
         sub = stringResource(Res.string.onboarding_s1_sub),
         pageOffset = pageOffset,
     ) {
-        // Placeholder — Task 6 fyller in wordmark + fade-up
+        AsyncImage(
+            model = Res.getUri("files/branding/wordmark.png"),
+            contentDescription = "Birdy",
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 64.dp),
+            contentScale = ContentScale.Fit,
+        )
     }
 }
