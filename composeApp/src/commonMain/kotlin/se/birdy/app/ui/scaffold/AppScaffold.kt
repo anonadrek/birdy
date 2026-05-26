@@ -9,8 +9,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -92,6 +94,37 @@ fun AppScaffold(graph: AppGraph) {
                 }
             }
         }
+    }
+    var showPermissionSheet by remember { mutableStateOf(false) }
+    val notifApi = graph.platformNotificationsApi
+    val requestPerm = graph.requestPostNotificationsPermission
+    if (notifApi != null && requestPerm != null) {
+        LaunchedEffect(Unit) {
+            if (!notifApi.needsRuntimePermission()) return@LaunchedEffect
+            if (graph.userPreferences.pushPermissionAsked.first()) return@LaunchedEffect
+            if (notifApi.areNotificationsEnabled()) {
+                // System already grants it — record asked = true and bail.
+                graph.userPreferences.setPushPermissionAsked(true)
+                return@LaunchedEffect
+            }
+            graph.observationRepository.observeAll()
+                .first { it.isNotEmpty() }
+            showPermissionSheet = true
+        }
+    }
+    if (showPermissionSheet) {
+        se.birdy.app.ui.components.PermissionPromptSheet(
+            onTurnOn = {
+                requestPerm?.invoke()
+                showPermissionSheet = false
+            },
+            onDismiss = {
+                scope.launch {
+                    graph.userPreferences.setPushPermissionAsked(true)
+                }
+                showPermissionSheet = false
+            },
+        )
     }
     Scaffold(
         bottomBar = { BottomNavBar(navController) },

@@ -167,6 +167,14 @@ class AppGraph(
      */
     val platformNotificationsApi: se.birdy.app.notifications.PlatformNotificationsApi? = null,
     /**
+     * Launches the Android 13+ POST_NOTIFICATIONS system permission dialog via the
+     * Activity's registered ActivityResultContract. The Activity owns the result
+     * callback — on grant it schedules workers and on either outcome it persists
+     * pushPermissionAsked = true so the sheet doesn't reappear. Null in non-Android
+     * targets or tests.
+     */
+    val requestPostNotificationsPermission: (() -> Unit)? = null,
+    /**
      * Emits `birdy://` deep-link URIs from MainActivity.onCreate/onNewIntent.
      * AppScaffold collects this flow and dispatches navigation.
      * Null in non-Android targets or tests.

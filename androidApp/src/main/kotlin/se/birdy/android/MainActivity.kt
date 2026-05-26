@@ -1,11 +1,15 @@
 package se.birdy.android
 
+import android.Manifest
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.NotificationManagerCompat
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -79,6 +83,30 @@ class MainActivity : ComponentActivity() {
             replay = 1,
             extraBufferCapacity = 4,
         )
+
+    private val requestPermLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            lifecycleScope.launch {
+                appGraph.userPreferences.setPushPermissionAsked(true)
+                if (granted) {
+                    appGraph.notificationScheduler?.scheduleDailyBird()
+                    appGraph.notificationScheduler?.scheduleStreakRiskCheck()
+                }
+            }
+        }
+
+    private fun requestPostNotificationsPermission() {
+        if (Build.VERSION.SDK_INT >= 33) {
+            requestPermLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        } else {
+            // Older Android grants at install time. Just persist + schedule.
+            lifecycleScope.launch {
+                appGraph.userPreferences.setPushPermissionAsked(true)
+                appGraph.notificationScheduler?.scheduleDailyBird()
+                appGraph.notificationScheduler?.scheduleStreakRiskCheck()
+            }
+        }
+    }
 
     /**
      * Caches the in-flight or completed audio-classifier [Deferred] so the 57 MB TFLite
@@ -177,6 +205,19 @@ class MainActivity : ComponentActivity() {
         appGraph.premiumActivationListener.start(lifecycleScope)
         setContent { App(appGraph) }
         intent?.let { handleDeepLink(it) }
+        lifecycleScope.launch {
+            val prefs = appGraph.userPreferences
+            val notificationsOn =
+                NotificationManagerCompat.from(this@MainActivity).areNotificationsEnabled()
+            if (notificationsOn) {
+                if (prefs.dailyBirdPushEnabled.first()) {
+                    appGraph.notificationScheduler?.scheduleDailyBird()
+                }
+                if (prefs.streakRiskPushEnabled.first()) {
+                    appGraph.notificationScheduler?.scheduleStreakRiskCheck()
+                }
+            }
+        }
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -326,6 +367,7 @@ class MainActivity : ComponentActivity() {
             notificationScheduler = notificationScheduler,
             dailyBirdHistory = dailyBirdHistory,
             platformNotificationsApi = platformNotificationsApi,
+            requestPostNotificationsPermission = { requestPostNotificationsPermission() },
             deepLinkFlow = deepLinkFlow,
         )
     }

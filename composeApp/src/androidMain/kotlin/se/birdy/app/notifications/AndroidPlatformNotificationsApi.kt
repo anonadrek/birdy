@@ -9,6 +9,9 @@ class AndroidPlatformNotificationsApi(private val context: Context) : PlatformNo
     override fun areNotificationsEnabled(): Boolean =
         NotificationManagerCompat.from(context).areNotificationsEnabled()
 
+    override fun needsRuntimePermission(): Boolean =
+        android.os.Build.VERSION.SDK_INT >= 33
+
     override fun openAppNotificationSettings() {
         val intent =
             Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
