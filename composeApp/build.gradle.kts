@@ -55,6 +55,7 @@ kotlin {
             implementation(libs.androidx.camera.view)
             implementation(libs.androidx.exifinterface)
             implementation(libs.androidx.appcompat)
+            implementation(libs.androidx.work.runtime.ktx)
             implementation("com.android.billingclient:billing-ktx:8.0.0")
         }
         androidUnitTest.dependencies {
