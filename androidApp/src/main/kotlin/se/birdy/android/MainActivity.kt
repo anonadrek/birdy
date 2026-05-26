@@ -164,6 +164,7 @@ class MainActivity : ComponentActivity() {
         // Build graph before setContent so recomposition cannot orphan
         // ClassifierBootstrap or leak the TFLite Interpreter.
         appGraph = buildAppGraph()
+        se.birdy.app.AndroidAppGraphHolder.set(appGraph)
         // Plan 6b3 T19: unlock premium_field_member badge + welcome-sheet
         // enqueue whenever effectivePremiumActive flips false→true (cancelled with lifecycleScope).
         appGraph.premiumActivationListener.start(lifecycleScope)
@@ -172,6 +173,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        se.birdy.app.AndroidAppGraphHolder.clear()
         // Cancel in-flight init coroutine and free TFLite native handle.
         // Rotation destroys+recreates Activity so the classifier re-loads
         // (~14ms p95); singleton-lift to Application scope is a follow-up.
@@ -263,6 +265,11 @@ class MainActivity : ComponentActivity() {
                 badgeNameResolver = { id -> resolveBadgeString(id) { BadgeStringMap.nameFor(id) } },
                 badgeDescriptionResolver = { id -> resolveBadgeString(id) { BadgeStringMap.descriptionFor(id) } },
             )
+        val dailyBirdHistory = se.birdy.data.dailybird.DailyBirdHistoryRepositoryImpl(birdyData)
+        val dailyBirdSelector = se.birdy.domain.dailybird.DailyBirdSelector(
+            speciesProvider = { SpeciesRepositoryProvider.get().allByQid(resolvedLocale) },
+        )
+        val notificationScheduler = se.birdy.app.notifications.NotificationSchedulerImpl(applicationContext)
         return AppGraph(
             repository = SpeciesRepositoryProvider.get(),
             classifierBootstrap = classifierBootstrap,
@@ -294,6 +301,9 @@ class MainActivity : ComponentActivity() {
             audioRecorderFactory = { AndroidAudioRecorderAdapter() },
             waveformRendererFactory = { AndroidWaveformRenderer() },
             journalExport = { exportJournalUseCase.run() },
+            selectDailyBird = { date -> dailyBirdSelector.selectFor(date) },
+            notificationScheduler = notificationScheduler,
+            dailyBirdHistory = dailyBirdHistory,
         )
     }
 
