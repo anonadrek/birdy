@@ -592,4 +592,42 @@
     <string name="audio_noBird_hint1">Move closer to the bird.</string>
     <string name="audio_noBird_hint2">Reduce wind noise behind you.</string>
     <string name="audio_noBird_hint3">Record while the bird is actually singing.</string>
+
+    <!-- ===== v1.1 Phase A: Daily Bird + Streak Risk + 3 badges ===== -->
+
+    <!-- Daily Bird card -->
+    <string name="daily_bird_card_eyebrow">BIRD OF THE DAY</string>
+    <string name="daily_bird_eyebrow_breeding">Breeding in Sweden now</string>
+    <string name="daily_bird_eyebrow_present">Here right now</string>
+    <string name="daily_bird_eyebrow_migrating">On migration</string>
+    <string name="daily_bird_card_a11y">Bird of the day: %1$s. %2$s. Tap to read more.</string>
+
+    <!-- Permission prompt sheet -->
+    <string name="permission_prompt_eyebrow">NOTIFICATIONS</string>
+    <string name="permission_prompt_headline">Want a *reminder* when there\'s a bird worth meeting?</string>
+    <string name="permission_prompt_sub">Max one nudge a day. Turn off anytime.</string>
+    <string name="permission_prompt_cta_yes">Turn on</string>
+    <string name="permission_prompt_cta_no">Not now</string>
+
+    <!-- Settings — Notifications -->
+    <string name="settings_section_notifications">NOTIFICATIONS</string>
+    <string name="settings_toggle_daily_bird">Bird of the day — daily reminder</string>
+    <string name="settings_toggle_streak_risk">Streak risk — Sunday evening</string>
+    <string name="settings_notifications_disabled_helpline">Notifications disabled in Android system settings →</string>
+
+    <!-- Notifications -->
+    <string name="notification_daily_bird_title_fmt">Bird of the day: %1$s</string>
+    <string name="notification_daily_bird_body_breeding">Breeding in Sweden right now.</string>
+    <string name="notification_daily_bird_body_present">Here right now.</string>
+    <string name="notification_daily_bird_body_migrating">Migrating right now.</string>
+    <string name="notification_streak_risk_title">Tonight\'s your last chance</string>
+    <string name="notification_streak_risk_body">A great tit in the park is enough — keep your streak.</string>
+
+    <!-- Badges -->
+    <string name="badge_premium_early_pilgrim_name">Early Pilgrim</string>
+    <string name="badge_premium_early_pilgrim_desc">Save an observation between 05:00 and 07:00.</string>
+    <string name="badge_premium_sunday_birder_name">Sunday Birder</string>
+    <string name="badge_premium_sunday_birder_desc">Observe on 4 consecutive Sundays.</string>
+    <string name="badge_premium_daily_bird_hunter_name">Daily Bird Hunter</string>
+    <string name="badge_premium_daily_bird_hunter_desc">Save today\'s curated bird on 3 different days.</string>
 </resources>

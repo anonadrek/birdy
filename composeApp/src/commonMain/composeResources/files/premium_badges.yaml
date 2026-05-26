@@ -2,7 +2,7 @@
 # resolved via BadgeStringMap). IDs 1-9 evaluate via BadgeEvaluator;
 # premium_field_member unlocks manually via PremiumActivationListener
 # (rule: type=manual is a sentinel — RecalculateBadgesUseCase skips it).
-version: 2
+version: 3
 badges:
   - id: premium_dawn_chorus
     category: rare
@@ -59,3 +59,20 @@ badges:
     rule:
       type: manual
       target: 1
+  - id: premium_early_pilgrim
+    category: rare
+    rule:
+      type: observed_in_hour_range
+      startHour: 5
+      endHourExclusive: 7
+      target: 1
+  - id: premium_sunday_birder
+    category: streak_weekly
+    rule:
+      type: sunday_streak
+      target: 4
+  - id: premium_daily_bird_hunter
+    category: progression
+    rule:
+      type: daily_bird_matches
+      target: 3

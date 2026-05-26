@@ -57,8 +57,14 @@ import birdy_bird_scanner.composeapp.generated.resources.badge_premium_dawn_chor
 import birdy_bird_scanner.composeapp.generated.resources.badge_premium_dawn_chorus_name
 import birdy_bird_scanner.composeapp.generated.resources.badge_premium_field_journalist_desc
 import birdy_bird_scanner.composeapp.generated.resources.badge_premium_field_journalist_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_daily_bird_hunter_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_daily_bird_hunter_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_early_pilgrim_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_early_pilgrim_name
 import birdy_bird_scanner.composeapp.generated.resources.badge_premium_field_member_desc
 import birdy_bird_scanner.composeapp.generated.resources.badge_premium_field_member_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_sunday_birder_desc
+import birdy_bird_scanner.composeapp.generated.resources.badge_premium_sunday_birder_name
 import birdy_bird_scanner.composeapp.generated.resources.badge_premium_lifelist_legend_desc
 import birdy_bird_scanner.composeapp.generated.resources.badge_premium_lifelist_legend_name
 import birdy_bird_scanner.composeapp.generated.resources.badge_premium_migration_mapper_desc
@@ -111,6 +117,9 @@ object BadgeStringMap {
             "premium_lifelist_legend" -> Res.string.badge_premium_lifelist_legend_name
             "premium_rare_seeker" -> Res.string.badge_premium_rare_seeker_name
             "premium_field_member" -> Res.string.badge_premium_field_member_name
+            "premium_early_pilgrim" -> Res.string.badge_premium_early_pilgrim_name
+            "premium_sunday_birder" -> Res.string.badge_premium_sunday_birder_name
+            "premium_daily_bird_hunter" -> Res.string.badge_premium_daily_bird_hunter_name
             else -> error("No name resource for badgeId=$badgeId")
         }
 
@@ -151,6 +160,9 @@ object BadgeStringMap {
             "premium_lifelist_legend" -> Res.string.badge_premium_lifelist_legend_desc
             "premium_rare_seeker" -> Res.string.badge_premium_rare_seeker_desc
             "premium_field_member" -> Res.string.badge_premium_field_member_desc
+            "premium_early_pilgrim" -> Res.string.badge_premium_early_pilgrim_desc
+            "premium_sunday_birder" -> Res.string.badge_premium_sunday_birder_desc
+            "premium_daily_bird_hunter" -> Res.string.badge_premium_daily_bird_hunter_desc
             else -> error("No description resource for badgeId=$badgeId")
         }
 }
