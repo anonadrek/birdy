@@ -120,4 +120,9 @@ android {
         manifest.srcFile("src/main/AndroidManifest.xml")
         res.srcDirs("src/main/res")
     }
+
+    // Debug-only: include asset-pack images directly so device-verify on debug-APK
+    // shows bird photos. Install-time asset packs only ship with AAB, so debug builds
+    // installed via `installDebug` otherwise serve empty `/android_asset/images/*` paths.
+    sourceSets["debug"].assets.srcDirs("../asset-pack/src/main/assets")
 }

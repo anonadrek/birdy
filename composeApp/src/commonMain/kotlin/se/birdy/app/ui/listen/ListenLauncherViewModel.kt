@@ -23,6 +23,7 @@ sealed interface ListenLauncherEffect {
 class ListenLauncherViewModel(
     private val selectDailyBird: (suspend (kotlinx.datetime.LocalDate) -> DailyBird?)? = null,
     private val getSpeciesName: (suspend (String) -> String?)? = null,
+    private val getSpeciesHeroPath: (suspend (String) -> String?)? = null,
     private val recordDailyBirdShown: (suspend (kotlinx.datetime.LocalDate, String) -> Unit)? = null,
 ) : ViewModel() {
     private val _effects =
@@ -37,6 +38,7 @@ class ListenLauncherViewModel(
         val speciesId: String,
         val name: String,
         val seasonTag: SeasonTag,
+        val heroImagePath: String?,
     )
 
     private val _dailyBird = MutableStateFlow<DailyBirdUi?>(null)
@@ -51,7 +53,8 @@ class ListenLauncherViewModel(
                     .date
             val bird = selectDailyBird?.invoke(today) ?: return@launch
             val name = getSpeciesName?.invoke(bird.speciesId) ?: return@launch
-            _dailyBird.value = DailyBirdUi(bird.speciesId, name, bird.seasonTag)
+            val heroPath = getSpeciesHeroPath?.invoke(bird.speciesId)
+            _dailyBird.value = DailyBirdUi(bird.speciesId, name, bird.seasonTag, heroPath)
             recordDailyBirdShown?.invoke(today, bird.speciesId)
         }
     }

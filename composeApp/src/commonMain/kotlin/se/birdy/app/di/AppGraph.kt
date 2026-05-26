@@ -371,6 +371,9 @@ class AppGraph(
         ListenLauncherViewModel(
             selectDailyBird = selectDailyBird,
             getSpeciesName = { qid -> repository.getById(SpeciesId(qid), defaultLocale).first()?.name },
+            getSpeciesHeroPath = { qid ->
+                repository.getById(SpeciesId(qid), defaultLocale).first()?.images?.firstOrNull { it.role == "hero" }?.path
+            },
             recordDailyBirdShown =
                 dailyBirdHistory?.let { history ->
                     { date, sid -> history.recordToday(date, sid) }

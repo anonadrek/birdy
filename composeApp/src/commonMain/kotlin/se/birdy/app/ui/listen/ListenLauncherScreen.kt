@@ -106,6 +106,7 @@ fun ListenLauncherScreen(
                             seasonTag = ui.seasonTag,
                         ),
                     name = ui.name,
+                    heroImagePath = ui.heroImagePath,
                     onClick = { onSpeciesProfileClick(ui.speciesId) },
                 )
             }
