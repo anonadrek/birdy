@@ -12,12 +12,17 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
+private val MONTH_KEYS =
+    listOf("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec")
+
+private fun monthKey(monthNumber: Int): String = MONTH_KEYS[monthNumber - 1]
+
 class DailyBirdSelectorTest {
     private fun species(
         id: String,
         abundance: Abundance = Abundance.ALLMÄN,
         regions: List<String> = listOf("SE"),
-        seasonByMonth: Map<String, String> = (1..12).associate { it.toString() to "present" },
+        seasonByMonth: Map<String, String> = (1..12).associate { monthKey(it) to "present" },
     ): Pair<SpeciesId, Species> =
         SpeciesId(id) to
             Species(
@@ -70,8 +75,8 @@ class DailyBirdSelectorTest {
     @Test
     fun `selectFor filters out species absent in current month`() =
         runTest {
-            val mayMap = (1..12).associate { it.toString() to if (it == 5) "absent" else "present" }
-            val alwaysMap = (1..12).associate { it.toString() to "present" }
+            val mayMap = (1..12).associate { monthKey(it) to if (it == 5) "absent" else "present" }
+            val alwaysMap = (1..12).associate { monthKey(it) to "present" }
             val pool =
                 mapOf(
                     species("Q_ABSENT_MAY", seasonByMonth = mayMap),
@@ -108,8 +113,8 @@ class DailyBirdSelectorTest {
     @Test
     fun `selectFor maps season tags correctly`() =
         runTest {
-            val breedingMap = (1..12).associate { it.toString() to if (it == 5) "breeding" else "absent" }
-            val migratingMap = (1..12).associate { it.toString() to if (it == 5) "migrating" else "absent" }
+            val breedingMap = (1..12).associate { monthKey(it) to if (it == 5) "breeding" else "absent" }
+            val migratingMap = (1..12).associate { monthKey(it) to if (it == 5) "migrating" else "absent" }
             val pool =
                 mapOf(
                     species("Q_BREED", seasonByMonth = breedingMap),

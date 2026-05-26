@@ -13,7 +13,7 @@ class DailyBirdSelector(
 ) {
     suspend fun selectFor(date: LocalDate): DailyBird? {
         val all = speciesProvider()
-        val monthKey = date.monthNumber.toString()
+        val monthKey = date.month.name.take(3).lowercase()
         val candidates =
             all.values
                 .mapNotNull { species ->
