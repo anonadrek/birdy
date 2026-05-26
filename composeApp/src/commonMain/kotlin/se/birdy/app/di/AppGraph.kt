@@ -166,6 +166,13 @@ class AppGraph(
      * Null in non-Android targets or tests.
      */
     val platformNotificationsApi: se.birdy.app.notifications.PlatformNotificationsApi? = null,
+    /**
+     * Emits `birdy://` deep-link URIs from MainActivity.onCreate/onNewIntent.
+     * AppScaffold collects this flow and dispatches navigation.
+     * Null in non-Android targets or tests.
+     * replay = 1 so launches that emit before AppScaffold subscribes still get routed.
+     */
+    val deepLinkFlow: kotlinx.coroutines.flow.MutableSharedFlow<String>? = null,
 ) {
     val classifier: BirdClassifier
         get() =

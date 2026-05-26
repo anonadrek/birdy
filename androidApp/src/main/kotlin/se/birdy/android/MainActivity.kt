@@ -1,5 +1,6 @@
 package se.birdy.android
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
@@ -72,6 +73,12 @@ private const val UPGRADE_INSTALL_BACKDATE_MS = 8L * 24 * 60 * 60 * 1000
 class MainActivity : ComponentActivity() {
     private lateinit var appGraph: AppGraph
     private lateinit var billingClient: se.birdy.app.data.premium.PremiumBillingClient
+
+    private val deepLinkFlow =
+        kotlinx.coroutines.flow.MutableSharedFlow<String>(
+            replay = 1,
+            extraBufferCapacity = 4,
+        )
 
     /**
      * Caches the in-flight or completed audio-classifier [Deferred] so the 57 MB TFLite
@@ -169,6 +176,19 @@ class MainActivity : ComponentActivity() {
         // enqueue whenever effectivePremiumActive flips false→true (cancelled with lifecycleScope).
         appGraph.premiumActivationListener.start(lifecycleScope)
         setContent { App(appGraph) }
+        intent?.let { handleDeepLink(it) }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handleDeepLink(intent)
+    }
+
+    private fun handleDeepLink(intent: Intent) {
+        val uri = intent.data ?: return
+        if (uri.scheme != "birdy") return
+        deepLinkFlow.tryEmit(uri.toString())
     }
 
     override fun onDestroy() {
@@ -306,6 +326,7 @@ class MainActivity : ComponentActivity() {
             notificationScheduler = notificationScheduler,
             dailyBirdHistory = dailyBirdHistory,
             platformNotificationsApi = platformNotificationsApi,
+            deepLinkFlow = deepLinkFlow,
         )
     }
 

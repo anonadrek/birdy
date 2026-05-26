@@ -73,6 +73,26 @@ fun AppScaffold(graph: AppGraph) {
             navController.navigate(AppRoute.Premium)
         }
     }
+    graph.deepLinkFlow?.let { flow ->
+        LaunchedEffect(navController) {
+            flow.collect { uriString ->
+                val parts = uriString.removePrefix("birdy://").split("/", limit = 2)
+                val host = parts.getOrNull(0) ?: return@collect
+                val pathSegment = parts.getOrNull(1)?.substringBefore("?")?.takeIf { it.isNotBlank() }
+                when (host) {
+                    "species" -> {
+                        val qid = pathSegment ?: return@collect
+                        navController.navigate(AppRoute.SpeciesProfile(qid)) {
+                            launchSingleTop = true
+                        }
+                    }
+                    "identify" -> {
+                        navController.popBackStack(AppRoute.Listen, inclusive = false)
+                    }
+                }
+            }
+        }
+    }
     Scaffold(
         bottomBar = { BottomNavBar(navController) },
         snackbarHost = { SnackbarHost(snackbarHostState) { data -> CaveatToast(data) } },
