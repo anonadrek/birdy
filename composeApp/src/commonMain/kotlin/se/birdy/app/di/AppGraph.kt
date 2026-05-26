@@ -145,6 +145,20 @@ class AppGraph(
      * "not available" message instead.
      */
     val journalExport: (suspend () -> JournalExportResult)? = null,
+    /**
+     * Selects the daily bird for a given local date. Null = no candidates available.
+     * Wired in MainActivity.buildAppGraph() via DailyBirdSelector.
+     */
+    val selectDailyBird: (suspend (kotlinx.datetime.LocalDate) -> se.birdy.domain.dailybird.DailyBird?)? = null,
+    /**
+     * Schedules push notifications via WorkManager + Android 13+ permission.
+     * Null in non-Android targets.
+     */
+    val notificationScheduler: se.birdy.domain.notification.NotificationScheduler? = null,
+    /**
+     * Tracks which "Daily Bird" suggestions the user has matched (for daily_bird_hunter badge).
+     */
+    val dailyBirdHistory: se.birdy.data.dailybird.DailyBirdHistoryRepository? = null,
 ) {
     val classifier: BirdClassifier
         get() =
