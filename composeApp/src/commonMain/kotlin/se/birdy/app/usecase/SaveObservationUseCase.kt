@@ -24,6 +24,8 @@ class SaveObservationUseCase(
     private val catalog: BadgeCatalog,
     private val recalculate: RecalculateBadgesUseCase,
     private val speciesByQid: suspend () -> Map<SpeciesId, Species>,
+    private val onObservationSaved: (suspend (Observation) -> Unit)? = null,
+    private val dailyBirdMatchCount: suspend () -> Int = { 0 },
 ) {
     @OptIn(ExperimentalUuidApi::class)
     @Suppress("LongParameterList")
@@ -63,6 +65,24 @@ class SaveObservationUseCase(
             throw t
         }
 
+        onObservationSaved?.invoke(
+            Observation(
+                id = id,
+                speciesId = speciesId,
+                capturedAt = capturedAt,
+                savedAt = clock.now(),
+                photoPath = photoPath,
+                note = note,
+                confidence = confidence,
+                latitude = null,
+                longitude = null,
+                locationLabel = null,
+                stampNumber = nextStamp,
+                audioPath = audioPath,
+                sourceType = sourceType,
+            ),
+        )
+
         val newUnlocks =
             runCatching {
                 val allObs = repo.observeAll().first()
@@ -73,7 +93,8 @@ class SaveObservationUseCase(
                         .first()
                         .map { it.badgeId }
                         .toSet()
-                val computed = recalculate.newUnlocks(allObs, species, catalog, existing)
+                val matchCount = runCatching { dailyBirdMatchCount() }.getOrDefault(0)
+                val computed = recalculate.newUnlocks(allObs, species, catalog, existing, dailyBirdMatchCount = matchCount)
                 badgeRepo.persist(computed)
                 computed
             }.onFailure {

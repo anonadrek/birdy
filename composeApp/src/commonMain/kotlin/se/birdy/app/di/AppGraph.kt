@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.json.Json
 import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
@@ -219,6 +220,21 @@ class AppGraph(
             catalog = badgeCatalog,
             recalculate = recalculateBadges,
             speciesByQid = { repository.allByQid(defaultLocale) },
+            onObservationSaved = dailyBirdHistory?.let { history ->
+                { obs ->
+                    val speciesId = obs.speciesId
+                    if (speciesId != null) {
+                        val today = Clock.System.now()
+                            .toLocalDateTime(TimeZone.currentSystemDefault())
+                            .date
+                        val todayBird = history.speciesIdForDate(today)
+                        if (todayBird == speciesId) {
+                            history.markMatch(today, speciesId)
+                        }
+                    }
+                }
+            },
+            dailyBirdMatchCount = { dailyBirdHistory?.totalMatchCount() ?: 0 },
         )
 
     fun archiveViewModel(): ArchiveViewModel =
