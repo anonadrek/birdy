@@ -24,7 +24,6 @@ afterEvaluate {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":shared:domain"))
             implementation(libs.sqldelight.runtime)
             implementation(libs.sqldelight.coroutines)
             implementation(libs.kotlinx.serialization.core)
