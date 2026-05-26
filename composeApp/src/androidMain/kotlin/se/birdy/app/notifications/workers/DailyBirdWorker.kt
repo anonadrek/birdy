@@ -19,8 +19,8 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.getString
-import se.birdy.app.R
 import se.birdy.app.AndroidAppGraphHolder
+import se.birdy.app.R
 import se.birdy.app.notifications.NotificationChannels
 import se.birdy.content.SpeciesId
 import se.birdy.domain.dailybird.SeasonTag
@@ -35,36 +35,45 @@ class DailyBirdWorker(
             if (!graph.userPreferences.dailyBirdPushEnabled.first()) return Result.success()
 
             val selector = graph.selectDailyBird ?: return Result.success()
-            val today = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
+            val today =
+                Clock.System
+                    .now()
+                    .toLocalDateTime(TimeZone.currentSystemDefault())
+                    .date
             val bird = selector(today) ?: return Result.success()
 
             NotificationChannels.ensureCreated(applicationContext)
 
-            val species = graph.repository
-                .getById(SpeciesId(bird.speciesId), graph.defaultLocale)
-                .first()
+            val species =
+                graph.repository
+                    .getById(SpeciesId(bird.speciesId), graph.defaultLocale)
+                    .first()
             val displayName = species?.name ?: bird.speciesId
 
             val title = getString(Res.string.notification_daily_bird_title_fmt, displayName)
             val body = getString(seasonBodyRes(bird.seasonTag))
 
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("birdy://species/${bird.speciesId}"))
-                .setPackage(applicationContext.packageName)
-            val pi = PendingIntent.getActivity(
-                applicationContext,
-                NOTIF_ID_DAILY_BIRD,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
-            )
+            val intent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("birdy://species/${bird.speciesId}"))
+                    .setPackage(applicationContext.packageName)
+            val pi =
+                PendingIntent.getActivity(
+                    applicationContext,
+                    NOTIF_ID_DAILY_BIRD,
+                    intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+                )
 
-            val notif = NotificationCompat.Builder(applicationContext, NotificationChannels.DAILY_BIRD)
-                .setSmallIcon(R.drawable.ic_launcher_monochrome)
-                .setContentTitle(title)
-                .setContentText(body)
-                .setContentIntent(pi)
-                .setAutoCancel(true)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .build()
+            val notif =
+                NotificationCompat
+                    .Builder(applicationContext, NotificationChannels.DAILY_BIRD)
+                    .setSmallIcon(R.drawable.ic_launcher_monochrome)
+                    .setContentTitle(title)
+                    .setContentText(body)
+                    .setContentIntent(pi)
+                    .setAutoCancel(true)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .build()
 
             if (NotificationManagerCompat.from(applicationContext).areNotificationsEnabled()) {
                 NotificationManagerCompat.from(applicationContext).notify(NOTIF_ID_DAILY_BIRD, notif)
@@ -76,11 +85,12 @@ class DailyBirdWorker(
         }
     }
 
-    private fun seasonBodyRes(tag: SeasonTag) = when (tag) {
-        SeasonTag.BREEDING -> Res.string.notification_daily_bird_body_breeding
-        SeasonTag.PRESENT -> Res.string.notification_daily_bird_body_present
-        SeasonTag.MIGRATING -> Res.string.notification_daily_bird_body_migrating
-    }
+    private fun seasonBodyRes(tag: SeasonTag) =
+        when (tag) {
+            SeasonTag.BREEDING -> Res.string.notification_daily_bird_body_breeding
+            SeasonTag.PRESENT -> Res.string.notification_daily_bird_body_present
+            SeasonTag.MIGRATING -> Res.string.notification_daily_bird_body_migrating
+        }
 
     companion object {
         const val NOTIF_ID_DAILY_BIRD = 1001

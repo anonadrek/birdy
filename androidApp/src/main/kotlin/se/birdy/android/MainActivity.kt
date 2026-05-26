@@ -9,9 +9,9 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.NotificationManagerCompat
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.CoroutineStart
@@ -96,7 +96,7 @@ class MainActivity : ComponentActivity() {
         }
 
     private fun requestPostNotificationsPermission() {
-        if (Build.VERSION.SDK_INT >= 33) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             requestPermLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         } else {
             // Older Android grants at install time. Just persist + schedule.
@@ -199,7 +199,8 @@ class MainActivity : ComponentActivity() {
         // Build graph before setContent so recomposition cannot orphan
         // ClassifierBootstrap or leak the TFLite Interpreter.
         appGraph = buildAppGraph()
-        se.birdy.app.AndroidAppGraphHolder.set(appGraph)
+        se.birdy.app.AndroidAppGraphHolder
+            .set(appGraph)
         // Plan 6b3 T19: unlock premium_field_member badge + welcome-sheet
         // enqueue whenever effectivePremiumActive flips false→true (cancelled with lifecycleScope).
         appGraph.premiumActivationListener.start(lifecycleScope)
@@ -234,7 +235,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        se.birdy.app.AndroidAppGraphHolder.clear()
+        se.birdy.app.AndroidAppGraphHolder
+            .clear()
         // Cancel in-flight init coroutine and free TFLite native handle.
         // Rotation destroys+recreates Activity so the classifier re-loads
         // (~14ms p95); singleton-lift to Application scope is a follow-up.
@@ -326,12 +328,19 @@ class MainActivity : ComponentActivity() {
                 badgeNameResolver = { id -> resolveBadgeString(id) { BadgeStringMap.nameFor(id) } },
                 badgeDescriptionResolver = { id -> resolveBadgeString(id) { BadgeStringMap.descriptionFor(id) } },
             )
-        val dailyBirdHistory = se.birdy.data.dailybird.DailyBirdHistoryRepositoryImpl(birdyData)
-        val dailyBirdSelector = se.birdy.domain.dailybird.DailyBirdSelector(
-            speciesProvider = { SpeciesRepositoryProvider.get().allByQid(resolvedLocale) },
-        )
-        val notificationScheduler = se.birdy.app.notifications.NotificationSchedulerImpl(applicationContext)
-        val platformNotificationsApi = se.birdy.app.notifications.AndroidPlatformNotificationsApi(applicationContext)
+        val dailyBirdHistory =
+            se.birdy.data.dailybird
+                .DailyBirdHistoryRepositoryImpl(birdyData)
+        val dailyBirdSelector =
+            se.birdy.domain.dailybird.DailyBirdSelector(
+                speciesProvider = { SpeciesRepositoryProvider.get().allByQid(resolvedLocale) },
+            )
+        val notificationScheduler =
+            se.birdy.app.notifications
+                .NotificationSchedulerImpl(applicationContext)
+        val platformNotificationsApi =
+            se.birdy.app.notifications
+                .AndroidPlatformNotificationsApi(applicationContext)
         return AppGraph(
             repository = SpeciesRepositoryProvider.get(),
             classifierBootstrap = classifierBootstrap,
@@ -368,28 +377,34 @@ class MainActivity : ComponentActivity() {
             dailyBirdHistory = dailyBirdHistory,
             platformNotificationsApi = platformNotificationsApi,
             requestPostNotificationsPermission = { requestPostNotificationsPermission() },
-            devTriggerDailyBird = if (BuildConfig.DEBUG) {
-                {
-                    androidx.work.WorkManager.getInstance(applicationContext).enqueue(
-                        androidx.work.OneTimeWorkRequestBuilder<
-                            se.birdy.app.notifications.workers.DailyBirdWorker
-                        >().build()
-                    )
-                }
-            } else {
-                null
-            },
-            devTriggerStreakRisk = if (BuildConfig.DEBUG) {
-                {
-                    androidx.work.WorkManager.getInstance(applicationContext).enqueue(
-                        androidx.work.OneTimeWorkRequestBuilder<
-                            se.birdy.app.notifications.workers.StreakRiskWorker
-                        >().build()
-                    )
-                }
-            } else {
-                null
-            },
+            devTriggerDailyBird =
+                if (BuildConfig.DEBUG) {
+                    {
+                        androidx.work.WorkManager.getInstance(applicationContext).enqueue(
+                            androidx.work
+                                .OneTimeWorkRequestBuilder<
+                                    se.birdy.app.notifications.workers.DailyBirdWorker,
+                                >()
+                                .build(),
+                        )
+                    }
+                } else {
+                    null
+                },
+            devTriggerStreakRisk =
+                if (BuildConfig.DEBUG) {
+                    {
+                        androidx.work.WorkManager.getInstance(applicationContext).enqueue(
+                            androidx.work
+                                .OneTimeWorkRequestBuilder<
+                                    se.birdy.app.notifications.workers.StreakRiskWorker,
+                                >()
+                                .build(),
+                        )
+                    }
+                } else {
+                    null
+                },
             deepLinkFlow = deepLinkFlow,
         )
     }

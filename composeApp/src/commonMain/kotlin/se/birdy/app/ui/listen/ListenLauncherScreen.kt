@@ -49,11 +49,11 @@ import se.birdy.app.ui.components.DailyBirdCard
 import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalScaffold
-import se.birdy.domain.dailybird.DailyBird
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
+import se.birdy.domain.dailybird.DailyBird
 
 @Composable
 fun ListenLauncherScreen(
@@ -100,10 +100,11 @@ fun ListenLauncherScreen(
             val dailyBirdState by viewModel.dailyBird.collectAsState()
             dailyBirdState?.let { ui ->
                 DailyBirdCard(
-                    bird = DailyBird(
-                        speciesId = ui.speciesId,
-                        seasonTag = ui.seasonTag,
-                    ),
+                    bird =
+                        DailyBird(
+                            speciesId = ui.speciesId,
+                            seasonTag = ui.seasonTag,
+                        ),
                     name = ui.name,
                     onClick = { onSpeciesProfileClick(ui.speciesId) },
                 )

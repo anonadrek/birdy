@@ -107,7 +107,8 @@ fun AppScaffold(graph: AppGraph) {
                 graph.userPreferences.setPushPermissionAsked(true)
                 return@LaunchedEffect
             }
-            graph.observationRepository.observeAll()
+            graph.observationRepository
+                .observeAll()
                 .first { it.isNotEmpty() }
             showPermissionSheet = true
         }

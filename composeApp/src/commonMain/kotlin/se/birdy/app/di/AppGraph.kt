@@ -251,20 +251,23 @@ class AppGraph(
             catalog = badgeCatalog,
             recalculate = recalculateBadges,
             speciesByQid = { repository.allByQid(defaultLocale) },
-            onObservationSaved = dailyBirdHistory?.let { history ->
-                { obs ->
-                    val speciesId = obs.speciesId
-                    if (speciesId != null) {
-                        val today = Clock.System.now()
-                            .toLocalDateTime(TimeZone.currentSystemDefault())
-                            .date
-                        val todayBird = history.speciesIdForDate(today)
-                        if (todayBird == speciesId) {
-                            history.markMatch(today, speciesId)
+            onObservationSaved =
+                dailyBirdHistory?.let { history ->
+                    { obs ->
+                        val speciesId = obs.speciesId
+                        if (speciesId != null) {
+                            val today =
+                                Clock.System
+                                    .now()
+                                    .toLocalDateTime(TimeZone.currentSystemDefault())
+                                    .date
+                            val todayBird = history.speciesIdForDate(today)
+                            if (todayBird == speciesId) {
+                                history.markMatch(today, speciesId)
+                            }
                         }
                     }
-                }
-            },
+                },
             dailyBirdMatchCount = { dailyBirdHistory?.totalMatchCount() ?: 0 },
         )
 
@@ -364,13 +367,15 @@ class AppGraph(
             formattedPricesFlow = formattedPricesFlow ?: MutableStateFlow(FormattedPrices()),
         )
 
-    fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel(
-        selectDailyBird = selectDailyBird,
-        getSpeciesName = { qid -> repository.getById(SpeciesId(qid), defaultLocale).first()?.name },
-        recordDailyBirdShown = dailyBirdHistory?.let { history ->
-            { date, sid -> history.recordToday(date, sid) }
-        },
-    )
+    fun listenLauncherViewModel(): ListenLauncherViewModel =
+        ListenLauncherViewModel(
+            selectDailyBird = selectDailyBird,
+            getSpeciesName = { qid -> repository.getById(SpeciesId(qid), defaultLocale).first()?.name },
+            recordDailyBirdShown =
+                dailyBirdHistory?.let { history ->
+                    { date, sid -> history.recordToday(date, sid) }
+                },
+        )
 
     fun onboardingViewModel(
         fallbackName: String,

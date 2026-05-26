@@ -48,23 +48,27 @@ class StreakRiskWorker(
             val title = getString(Res.string.notification_streak_risk_title)
             val body = getString(Res.string.notification_streak_risk_body)
 
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("birdy://identify"))
-                .setPackage(applicationContext.packageName)
-            val pi = PendingIntent.getActivity(
-                applicationContext,
-                NOTIF_ID_STREAK_RISK,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
-            )
+            val intent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("birdy://identify"))
+                    .setPackage(applicationContext.packageName)
+            val pi =
+                PendingIntent.getActivity(
+                    applicationContext,
+                    NOTIF_ID_STREAK_RISK,
+                    intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+                )
 
-            val notif = NotificationCompat.Builder(applicationContext, NotificationChannels.STREAK_RISK)
-                .setSmallIcon(R.drawable.ic_launcher_monochrome)
-                .setContentTitle(title)
-                .setContentText(body)
-                .setContentIntent(pi)
-                .setAutoCancel(true)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .build()
+            val notif =
+                NotificationCompat
+                    .Builder(applicationContext, NotificationChannels.STREAK_RISK)
+                    .setSmallIcon(R.drawable.ic_launcher_monochrome)
+                    .setContentTitle(title)
+                    .setContentText(body)
+                    .setContentIntent(pi)
+                    .setAutoCancel(true)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .build()
 
             if (NotificationManagerCompat.from(applicationContext).areNotificationsEnabled()) {
                 NotificationManagerCompat.from(applicationContext).notify(NOTIF_ID_STREAK_RISK, notif)

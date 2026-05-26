@@ -112,8 +112,7 @@ class SettingsViewModel(
         }
     }
 
-    fun areNotificationsEnabled(): Boolean =
-        platformNotificationsApi?.areNotificationsEnabled() ?: true
+    fun areNotificationsEnabled(): Boolean = platformNotificationsApi?.areNotificationsEnabled() ?: true
 
     fun openAppNotificationSettings() {
         platformNotificationsApi?.openAppNotificationSettings()

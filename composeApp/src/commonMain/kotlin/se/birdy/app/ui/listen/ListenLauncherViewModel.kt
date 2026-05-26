@@ -44,8 +44,11 @@ class ListenLauncherViewModel(
 
     init {
         viewModelScope.launch {
-            val today = Clock.System.now()
-                .toLocalDateTime(TimeZone.currentSystemDefault()).date
+            val today =
+                Clock.System
+                    .now()
+                    .toLocalDateTime(TimeZone.currentSystemDefault())
+                    .date
             val bird = selectDailyBird?.invoke(today) ?: return@launch
             val name = getSpeciesName?.invoke(bird.speciesId) ?: return@launch
             _dailyBird.value = DailyBirdUi(bird.speciesId, name, bird.seasonTag)

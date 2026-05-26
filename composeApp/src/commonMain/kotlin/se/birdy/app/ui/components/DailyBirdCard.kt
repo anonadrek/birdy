@@ -46,33 +46,36 @@ fun DailyBirdCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val eyebrowText = stringResource(
-        when (bird.seasonTag) {
-            SeasonTag.BREEDING -> Res.string.daily_bird_eyebrow_breeding
-            SeasonTag.PRESENT -> Res.string.daily_bird_eyebrow_present
-            SeasonTag.MIGRATING -> Res.string.daily_bird_eyebrow_migrating
-        }
-    )
+    val eyebrowText =
+        stringResource(
+            when (bird.seasonTag) {
+                SeasonTag.BREEDING -> Res.string.daily_bird_eyebrow_breeding
+                SeasonTag.PRESENT -> Res.string.daily_bird_eyebrow_present
+                SeasonTag.MIGRATING -> Res.string.daily_bird_eyebrow_migrating
+            },
+        )
     val sectionLabel = stringResource(Res.string.daily_bird_card_eyebrow)
     val a11y = stringResource(Res.string.daily_bird_card_a11y, name, eyebrowText)
 
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .clip(RoundedCornerShape(14.dp))
-            .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
-            .clickable(onClick = onClick)
-            .padding(horizontal = 14.dp, vertical = 12.dp)
-            .semantics { contentDescription = a11y },
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .clip(RoundedCornerShape(14.dp))
+                .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
+                .clickable(onClick = onClick)
+                .padding(horizontal = 14.dp, vertical = 12.dp)
+                .semantics { contentDescription = a11y },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Box(
-            modifier = Modifier
-                .size(40.dp)
-                .clip(RoundedCornerShape(20.dp))
-                .background(AccentCopper.copy(alpha = 0.18f)),
+            modifier =
+                Modifier
+                    .size(40.dp)
+                    .clip(RoundedCornerShape(20.dp))
+                    .background(AccentCopper.copy(alpha = 0.18f)),
             contentAlignment = Alignment.Center,
         ) {
             Text(

@@ -10,6 +10,8 @@ import java.util.concurrent.atomic.AtomicReference
 object AndroidAppGraphHolder {
     private val ref = AtomicReference<AppGraph?>(null)
     val current: AppGraph? get() = ref.get()
+
     fun set(graph: AppGraph) = ref.set(graph)
+
     fun clear() = ref.set(null)
 }
