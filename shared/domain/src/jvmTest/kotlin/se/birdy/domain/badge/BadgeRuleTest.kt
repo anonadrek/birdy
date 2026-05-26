@@ -40,6 +40,26 @@ class BadgeRuleTest {
     }
 
     @Test
+    fun `ObservedInHourRange carries startHour endHourExclusive and target`() {
+        val rule = BadgeRule.ObservedInHourRange(startHour = 4, endHourExclusive = 7, target = 5)
+        assertEquals(4, rule.startHour)
+        assertEquals(7, rule.endHourExclusive)
+        assertEquals(5, rule.target)
+    }
+
+    @Test
+    fun `SundayStreak carries target`() {
+        val rule = BadgeRule.SundayStreak(target = 4)
+        assertEquals(4, rule.target)
+    }
+
+    @Test
+    fun `DailyBirdMatches carries target`() {
+        val rule = BadgeRule.DailyBirdMatches(target = 10)
+        assertEquals(10, rule.target)
+    }
+
+    @Test
     fun `Badge defaults isPremium to false`() {
         val b =
             Badge(

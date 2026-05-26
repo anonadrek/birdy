@@ -35,6 +35,23 @@ sealed interface BadgeRule {
         override val target: Int,
     ) : BadgeRule
 
+    /** Observation captured locally within [startHour, endHourExclusive). */
+    data class ObservedInHourRange(
+        val startHour: Int,
+        val endHourExclusive: Int,
+        override val target: Int,
+    ) : BadgeRule
+
+    /** N consecutive Sundays with at least one observation each. */
+    data class SundayStreak(
+        override val target: Int,
+    ) : BadgeRule
+
+    /** N distinct dates where the saved observation matched that day's Daily Bird. */
+    data class DailyBirdMatches(
+        override val target: Int,
+    ) : BadgeRule
+
     data class SpeciesAcrossSeasons(
         val seasons: Int,
         override val target: Int,
