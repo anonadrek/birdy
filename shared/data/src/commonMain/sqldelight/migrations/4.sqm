@@ -1,0 +1,8 @@
+-- v1.1 Phase A: daily_bird_history table for "Dagens fågel" retention hook.
+-- Mirrors DailyBirdHistory.sq schema so v1.0.x upgrades pick up the new table.
+
+CREATE TABLE daily_bird_history (
+    date TEXT NOT NULL PRIMARY KEY,
+    species_id TEXT NOT NULL,
+    matched INTEGER NOT NULL DEFAULT 0
+);
