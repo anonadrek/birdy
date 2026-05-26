@@ -5,6 +5,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.datetime.Clock
@@ -325,7 +326,13 @@ class AppGraph(
             formattedPricesFlow = formattedPricesFlow ?: MutableStateFlow(FormattedPrices()),
         )
 
-    fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel()
+    fun listenLauncherViewModel(): ListenLauncherViewModel = ListenLauncherViewModel(
+        selectDailyBird = selectDailyBird,
+        getSpeciesName = { qid -> repository.getById(SpeciesId(qid), defaultLocale).first()?.name },
+        recordDailyBirdShown = dailyBirdHistory?.let { history ->
+            { date, sid -> history.recordToday(date, sid) }
+        },
+    )
 
     fun onboardingViewModel(
         fallbackName: String,

@@ -22,6 +22,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -43,9 +45,11 @@ import birdy_bird_scanner.composeapp.generated.resources.listen_journal_headline
 import birdy_bird_scanner.composeapp.generated.resources.listen_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.listen_journal_sub
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.DailyBirdCard
 import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalScaffold
+import se.birdy.domain.dailybird.DailyBird
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.TextOnCreme
@@ -58,6 +62,7 @@ fun ListenLauncherScreen(
     onPhotoClick: () -> Unit,
     onSettingsClick: () -> Unit,
     onNavigateToAudioScan: () -> Unit,
+    onSpeciesProfileClick: (String) -> Unit,
 ) {
     LaunchedEffect(Unit) {
         viewModel.effects.collect { effect ->
@@ -92,6 +97,17 @@ fun ListenLauncherScreen(
                 headline = stringResource(Res.string.listen_journal_headline),
                 sub = stringResource(Res.string.listen_journal_sub),
             )
+            val dailyBirdState by viewModel.dailyBird.collectAsState()
+            dailyBirdState?.let { ui ->
+                DailyBirdCard(
+                    bird = DailyBird(
+                        speciesId = ui.speciesId,
+                        seasonTag = ui.seasonTag,
+                    ),
+                    name = ui.name,
+                    onClick = { onSpeciesProfileClick(ui.speciesId) },
+                )
+            }
             Column(
                 modifier = Modifier.padding(horizontal = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),

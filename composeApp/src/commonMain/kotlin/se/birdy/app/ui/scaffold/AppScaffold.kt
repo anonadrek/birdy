@@ -103,6 +103,11 @@ fun AppScaffold(graph: AppGraph) {
                     onNavigateToAudioScan = {
                         navController.navigate(AppRoute.AudioScan) { launchSingleTop = true }
                     },
+                    onSpeciesProfileClick = { speciesId ->
+                        navController.navigate(AppRoute.SpeciesProfile(speciesId)) {
+                            launchSingleTop = true
+                        }
+                    },
                 )
             }
             composable<AppRoute.Scan> {
