@@ -215,6 +215,26 @@ fun SettingsScreen(
                     }
                 }
             }
+            if (viewModel.devToolsAvailable) {
+                item { SectionHeader("DEV TOOLS") }
+                item {
+                    PaperCard {
+                        SettingsRow(
+                            icon = Icons.Outlined.Notifications,
+                            label = "DEV: Trigger Daily Bird push",
+                            value = null,
+                            onClick = { viewModel.devTriggerDailyBirdPush() },
+                        )
+                        DashedDivider()
+                        SettingsRow(
+                            icon = Icons.Outlined.Notifications,
+                            label = "DEV: Trigger Streak Risk push",
+                            value = null,
+                            onClick = { viewModel.devTriggerStreakRiskPush() },
+                        )
+                    }
+                }
+            }
             item { SectionHeader(stringResource(Res.string.settings_section_about_birdy)) }
             item {
                 PaperCard {

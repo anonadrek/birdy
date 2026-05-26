@@ -28,6 +28,8 @@ class SettingsViewModel(
     private val premiumRepository: PremiumRepository,
     private val notificationScheduler: NotificationScheduler? = null,
     private val platformNotificationsApi: PlatformNotificationsApi? = null,
+    private val devTriggerDailyBird: (() -> Unit)? = null,
+    private val devTriggerStreakRisk: (() -> Unit)? = null,
 ) : ViewModel() {
     private val _state = MutableStateFlow(SettingsUiState())
     val state: StateFlow<SettingsUiState> = _state.asStateFlow()
@@ -115,6 +117,17 @@ class SettingsViewModel(
 
     fun openAppNotificationSettings() {
         platformNotificationsApi?.openAppNotificationSettings()
+    }
+
+    val devToolsAvailable: Boolean
+        get() = devTriggerDailyBird != null || devTriggerStreakRisk != null
+
+    fun devTriggerDailyBirdPush() {
+        devTriggerDailyBird?.invoke()
+    }
+
+    fun devTriggerStreakRiskPush() {
+        devTriggerStreakRisk?.invoke()
     }
 
     private var restoreInFlight = false

@@ -368,6 +368,28 @@ class MainActivity : ComponentActivity() {
             dailyBirdHistory = dailyBirdHistory,
             platformNotificationsApi = platformNotificationsApi,
             requestPostNotificationsPermission = { requestPostNotificationsPermission() },
+            devTriggerDailyBird = if (BuildConfig.DEBUG) {
+                {
+                    androidx.work.WorkManager.getInstance(applicationContext).enqueue(
+                        androidx.work.OneTimeWorkRequestBuilder<
+                            se.birdy.app.notifications.workers.DailyBirdWorker
+                        >().build()
+                    )
+                }
+            } else {
+                null
+            },
+            devTriggerStreakRisk = if (BuildConfig.DEBUG) {
+                {
+                    androidx.work.WorkManager.getInstance(applicationContext).enqueue(
+                        androidx.work.OneTimeWorkRequestBuilder<
+                            se.birdy.app.notifications.workers.StreakRiskWorker
+                        >().build()
+                    )
+                }
+            } else {
+                null
+            },
             deepLinkFlow = deepLinkFlow,
         )
     }
