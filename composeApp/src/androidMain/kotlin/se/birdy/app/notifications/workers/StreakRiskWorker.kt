@@ -29,19 +29,21 @@ class StreakRiskWorker(
     override suspend fun doWork(): Result {
         return try {
             val graph = AndroidAppGraphHolder.current ?: return Result.success()
-            if (!graph.userPreferences.streakRiskPushEnabled.first()) return Result.success()
+            val forceForDev = inputData.getBoolean(KEY_FORCE_FOR_DEV, false)
+            if (!forceForDev && !graph.userPreferences.streakRiskPushEnabled.first()) return Result.success()
 
             val now = Clock.System.now()
             val zone = TimeZone.currentSystemDefault()
 
-            val observations = graph.observationRepository.observeAll().first()
+            if (!forceForDev) {
+                val observations = graph.observationRepository.observeAll().first()
+                val nowKey = weekKey(now, zone)
+                val alreadyObservedThisWeek = observations.any { weekKey(it.savedAt, zone) == nowKey }
+                if (alreadyObservedThisWeek) return Result.success()
 
-            val nowKey = weekKey(now, zone)
-            val alreadyObservedThisWeek = observations.any { weekKey(it.savedAt, zone) == nowKey }
-            if (alreadyObservedThisWeek) return Result.success()
-
-            val streak = longestWeeklyStreak(observations.map { it.savedAt }, zone)
-            if (streak < 2) return Result.success()
+                val streak = longestWeeklyStreak(observations.map { it.savedAt }, zone)
+                if (streak < 2) return Result.success()
+            }
 
             NotificationChannels.ensureCreated(applicationContext)
 
@@ -82,5 +84,6 @@ class StreakRiskWorker(
 
     companion object {
         const val NOTIF_ID_STREAK_RISK = 1002
+        const val KEY_FORCE_FOR_DEV = "force_for_dev"
     }
 }

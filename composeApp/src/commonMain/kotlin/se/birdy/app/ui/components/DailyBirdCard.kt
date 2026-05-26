@@ -70,6 +70,7 @@ fun DailyBirdCard(
                 .clip(RoundedCornerShape(14.dp))
                 .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
                 .clickable(onClick = onClick)
+                .shimmerSweep()
                 .semantics { contentDescription = a11y },
     ) {
         if (heroImagePath != null) {
@@ -79,7 +80,7 @@ fun DailyBirdCard(
                 modifier =
                     Modifier
                         .matchParentSize()
-                        .blur(radius = 10.dp),
+                        .blur(radius = 6.dp),
                 contentScale = ContentScale.Crop,
             )
             Box(

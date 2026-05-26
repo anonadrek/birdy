@@ -399,7 +399,11 @@ class MainActivity : ComponentActivity() {
                                 .OneTimeWorkRequestBuilder<
                                     se.birdy.app.notifications.workers.StreakRiskWorker,
                                 >()
-                                .build(),
+                                .setInputData(
+                                    androidx.work.workDataOf(
+                                        se.birdy.app.notifications.workers.StreakRiskWorker.KEY_FORCE_FOR_DEV to true,
+                                    ),
+                                ).build(),
                         )
                     }
                 } else {
