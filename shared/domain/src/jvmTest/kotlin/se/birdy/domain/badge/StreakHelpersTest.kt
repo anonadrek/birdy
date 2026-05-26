@@ -1,6 +1,7 @@
 package se.birdy.domain.badge
 
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
@@ -175,5 +176,34 @@ class StreakHelpersTest {
     @Test
     fun `isoWeeksInYear — 2025 has 52 weeks`() {
         assertEquals(52, isoWeeksInYear(2025))
+    }
+
+    @Test
+    fun `consecutiveSundaysWithObservations — empty returns 0`() {
+        assertEquals(0, consecutiveSundaysWithObservations(emptyList(), utc))
+    }
+
+    @Test
+    fun `consecutiveSundaysWithObservations — 3 consecutive Sundays returns 3`() {
+        // 2026-05-24 is a Sunday
+        val base = LocalDate(2026, 5, 24)
+        val instants =
+            listOf(0, 7, 14).map { offset ->
+                val d = LocalDate.fromEpochDays(base.toEpochDays() + offset)
+                LocalDateTime(d.year, d.monthNumber, d.dayOfMonth, 8, 0).toInstant(utc)
+            }
+        assertEquals(3, consecutiveSundaysWithObservations(instants, utc))
+    }
+
+    @Test
+    fun `consecutiveSundaysWithObservations — gap breaks streak`() {
+        // 2026-05-24, 2026-05-31, then skip to 2026-06-21 (3 weeks gap)
+        val base = LocalDate(2026, 5, 24)
+        val instants =
+            listOf(0, 7, 28).map { offset ->
+                val d = LocalDate.fromEpochDays(base.toEpochDays() + offset)
+                LocalDateTime(d.year, d.monthNumber, d.dayOfMonth, 8, 0).toInstant(utc)
+            }
+        assertEquals(2, consecutiveSundaysWithObservations(instants, utc))
     }
 }

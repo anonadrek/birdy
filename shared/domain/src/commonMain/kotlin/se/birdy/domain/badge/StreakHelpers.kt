@@ -119,6 +119,35 @@ fun longestMonthlyStreak(
     return longestConsecutive(keys) { it.next() }
 }
 
+/**
+ * Counts the longest run of consecutive Sundays (by local date) that each have at least one observation.
+ * Sundays are determined by ISO weekday == DayOfWeek.SUNDAY.
+ */
+fun consecutiveSundaysWithObservations(
+    instants: List<Instant>,
+    zone: TimeZone,
+): Int {
+    val sundays =
+        instants
+            .map { it.toLocalDateTime(zone).date }
+            .filter { it.dayOfWeek == DayOfWeek.SUNDAY }
+            .toSortedSet()
+    if (sundays.isEmpty()) return 0
+    var best = 1
+    var current = 1
+    val list = sundays.toList()
+    for (i in 1 until list.size) {
+        val gap = list[i].toEpochDays() - list[i - 1].toEpochDays()
+        if (gap == 7) {
+            current++
+            best = maxOf(best, current)
+        } else {
+            current = 1
+        }
+    }
+    return best
+}
+
 // ===== Internal helpers =====
 
 internal fun LocalDate.weekStartMonday(): LocalDate {

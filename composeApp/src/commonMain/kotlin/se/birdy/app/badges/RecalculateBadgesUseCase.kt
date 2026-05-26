@@ -9,6 +9,7 @@ import se.birdy.domain.badge.BadgeAbundance
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeRule
 import se.birdy.domain.badge.BadgeUnlock
+import se.birdy.domain.badge.consecutiveSundaysWithObservations
 import se.birdy.domain.badge.longestMonthlyStreak
 import se.birdy.domain.badge.longestWeeklyStreak
 import se.birdy.domain.badge.seasonOf
@@ -25,12 +26,13 @@ class RecalculateBadgesUseCase(
         speciesByQid: Map<SpeciesId, Species>,
         catalog: BadgeCatalog,
         existingUnlocks: Set<String>,
+        dailyBirdMatchCount: Int = 0,
     ): List<BadgeUnlock> {
         val now = clock.now()
         return catalog.badges
             .filter { it.id !in existingUnlocks }
             .filter { it.rule !is BadgeRule.Manual }
-            .filter { evaluate(it.rule, observations, speciesByQid) }
+            .filter { evaluate(it.rule, observations, speciesByQid, dailyBirdMatchCount) }
             .map { BadgeUnlock(it.id, now) }
     }
 
@@ -38,18 +40,21 @@ class RecalculateBadgesUseCase(
         rule: BadgeRule,
         observations: List<Observation>,
         speciesByQid: Map<SpeciesId, Species>,
-    ): Int = rawValue(rule, observations, speciesByQid).coerceAtMost(rule.target)
+        dailyBirdMatchCount: Int = 0,
+    ): Int = rawValue(rule, observations, speciesByQid, dailyBirdMatchCount).coerceAtMost(rule.target)
 
     private fun evaluate(
         rule: BadgeRule,
         observations: List<Observation>,
         speciesByQid: Map<SpeciesId, Species>,
-    ): Boolean = rawValue(rule, observations, speciesByQid) >= rule.target
+        dailyBirdMatchCount: Int = 0,
+    ): Boolean = rawValue(rule, observations, speciesByQid, dailyBirdMatchCount) >= rule.target
 
     private fun rawValue(
         rule: BadgeRule,
         observations: List<Observation>,
         speciesByQid: Map<SpeciesId, Species>,
+        dailyBirdMatchCount: Int = 0,
     ): Int =
         when (rule) {
             is BadgeRule.CountUniqueSpecies ->
@@ -72,6 +77,14 @@ class RecalculateBadgesUseCase(
                 observations.count { o ->
                     o.capturedAt.toLocalDateTime(zone).hour < rule.hour
                 }
+            is BadgeRule.ObservedInHourRange ->
+                observations.count { o ->
+                    val h = o.capturedAt.toLocalDateTime(zone).hour
+                    h >= rule.startHour && h < rule.endHourExclusive
+                }
+            is BadgeRule.SundayStreak ->
+                consecutiveSundaysWithObservations(observations.map { it.capturedAt }, zone)
+            is BadgeRule.DailyBirdMatches -> dailyBirdMatchCount
             is BadgeRule.SpeciesAcrossSeasons ->
                 observations
                     .mapNotNull { obs -> obs.speciesId?.let { it to obs } }

@@ -1,6 +1,7 @@
 package se.birdy.app.badges
 
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
@@ -333,6 +334,60 @@ class RecalculateBadgesUseCaseTest {
             )
         val rule = BadgeRule.ObservedInAllSeasons(target = 1)
         assertEquals(emptyList(), recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("seasonal", rule)), emptySet()))
+    }
+
+    // ===== Phase A (v1.1): new retention rules =====
+
+    @Test
+    fun `observed_in_hour_range — counts captures in window`() {
+        val obs =
+            listOf(
+                obsAt("Q1", LocalDateTime(2026, 5, 25, 4, 0).toInstant(utc)), // before — out
+                obsAt("Q1", LocalDateTime(2026, 5, 25, 5, 0).toInstant(utc)), // in
+                obsAt("Q2", LocalDateTime(2026, 5, 25, 6, 0).toInstant(utc)), // in
+                obsAt("Q3", LocalDateTime(2026, 5, 25, 7, 0).toInstant(utc)), // out (exclusive)
+            )
+        val rule = BadgeRule.ObservedInHourRange(startHour = 5, endHourExclusive = 7, target = 2)
+        assertEquals(2, recalc.currentValue(rule, obs, emptyMap()))
+    }
+
+    @Test
+    fun `sunday_streak — 3 consecutive Sundays unlocks`() {
+        val baseSunday = LocalDate(2026, 5, 24) // Sunday
+        val obs =
+            listOf(0, 7, 14).map { dayOffset ->
+                val date = LocalDate.fromEpochDays(baseSunday.toEpochDays() + dayOffset)
+                obsAt("Q1", LocalDateTime(date.year, date.monthNumber, date.dayOfMonth, 12, 0).toInstant(utc))
+            }
+        val rule = BadgeRule.SundayStreak(target = 3)
+        val unlocks = recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("sun3", rule)), emptySet())
+        assertEquals(listOf("sun3"), unlocks.map { it.badgeId })
+    }
+
+    @Test
+    fun `sunday_streak — gap breaks streak`() {
+        val baseSunday = LocalDate(2026, 5, 24)
+        val obs =
+            listOf(0, 7, 28).map { dayOffset ->
+                val date = LocalDate.fromEpochDays(baseSunday.toEpochDays() + dayOffset)
+                obsAt("Q1", LocalDateTime(date.year, date.monthNumber, date.dayOfMonth, 12, 0).toInstant(utc))
+            }
+        val rule = BadgeRule.SundayStreak(target = 3)
+        assertEquals(emptyList(), recalc.newUnlocks(obs, emptyMap(), catalogOf(badge("sun3", rule)), emptySet()))
+    }
+
+    @Test
+    fun `daily_bird_matches — reads external counter`() {
+        val rule = BadgeRule.DailyBirdMatches(target = 3)
+        assertEquals(2, recalc.currentValue(rule, emptyList(), emptyMap(), dailyBirdMatchCount = 2))
+        assertEquals(3, recalc.currentValue(rule, emptyList(), emptyMap(), dailyBirdMatchCount = 5))
+    }
+
+    @Test
+    fun `daily_bird_matches — target met triggers unlock`() {
+        val rule = BadgeRule.DailyBirdMatches(target = 3)
+        val unlocks = recalc.newUnlocks(emptyList(), emptyMap(), catalogOf(badge("dbm3", rule)), emptySet(), dailyBirdMatchCount = 3)
+        assertEquals(listOf("dbm3"), unlocks.map { it.badgeId })
     }
 
     // ===== helpers =====
