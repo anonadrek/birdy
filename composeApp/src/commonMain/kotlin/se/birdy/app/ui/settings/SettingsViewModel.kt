@@ -8,26 +8,38 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purcha
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import se.birdy.app.i18n.toLocaleTagOrEmpty
+import se.birdy.app.notifications.PlatformNotificationsApi
 import se.birdy.datastore.AppLanguage
 import se.birdy.datastore.UserPreferences
+import se.birdy.domain.notification.NotificationScheduler
 import se.birdy.domain.premium.PremiumRepository
 import se.birdy.domain.premium.PremiumState
 
 class SettingsViewModel(
     private val prefs: UserPreferences,
     private val premiumRepository: PremiumRepository,
+    private val notificationScheduler: NotificationScheduler? = null,
+    private val platformNotificationsApi: PlatformNotificationsApi? = null,
 ) : ViewModel() {
     private val _state = MutableStateFlow(SettingsUiState())
     val state: StateFlow<SettingsUiState> = _state.asStateFlow()
 
     private val _effects = Channel<SettingsEffect>(capacity = Channel.UNLIMITED)
     val effects: Flow<SettingsEffect> = _effects.receiveAsFlow()
+
+    val dailyBirdPushEnabled: StateFlow<Boolean> =
+        prefs.dailyBirdPushEnabled.stateIn(viewModelScope, SharingStarted.Eagerly, true)
+
+    val streakRiskPushEnabled: StateFlow<Boolean> =
+        prefs.streakRiskPushEnabled.stateIn(viewModelScope, SharingStarted.Eagerly, true)
 
     init {
         viewModelScope.launch {
@@ -82,6 +94,27 @@ class SettingsViewModel(
 
     fun openAbout() {
         viewModelScope.launch { _effects.send(SettingsEffect.OpenAbout) }
+    }
+
+    fun setDailyBirdPushEnabled(value: Boolean) {
+        viewModelScope.launch {
+            prefs.setDailyBirdPushEnabled(value)
+            if (value) notificationScheduler?.scheduleDailyBird() else notificationScheduler?.cancelDailyBird()
+        }
+    }
+
+    fun setStreakRiskPushEnabled(value: Boolean) {
+        viewModelScope.launch {
+            prefs.setStreakRiskPushEnabled(value)
+            if (value) notificationScheduler?.scheduleStreakRiskCheck() else notificationScheduler?.cancelStreakRiskCheck()
+        }
+    }
+
+    fun areNotificationsEnabled(): Boolean =
+        platformNotificationsApi?.areNotificationsEnabled() ?: true
+
+    fun openAppNotificationSettings() {
+        platformNotificationsApi?.openAppNotificationSettings()
     }
 
     private var restoreInFlight = false

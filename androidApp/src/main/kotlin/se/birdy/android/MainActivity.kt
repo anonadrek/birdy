@@ -270,6 +270,7 @@ class MainActivity : ComponentActivity() {
             speciesProvider = { SpeciesRepositoryProvider.get().allByQid(resolvedLocale) },
         )
         val notificationScheduler = se.birdy.app.notifications.NotificationSchedulerImpl(applicationContext)
+        val platformNotificationsApi = se.birdy.app.notifications.AndroidPlatformNotificationsApi(applicationContext)
         return AppGraph(
             repository = SpeciesRepositoryProvider.get(),
             classifierBootstrap = classifierBootstrap,
@@ -304,6 +305,7 @@ class MainActivity : ComponentActivity() {
             selectDailyBird = { date -> dailyBirdSelector.selectFor(date) },
             notificationScheduler = notificationScheduler,
             dailyBirdHistory = dailyBirdHistory,
+            platformNotificationsApi = platformNotificationsApi,
         )
     }
 

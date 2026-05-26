@@ -161,6 +161,11 @@ class AppGraph(
      * Tracks which "Daily Bird" suggestions the user has matched (for daily_bird_hunter badge).
      */
     val dailyBirdHistory: se.birdy.data.dailybird.DailyBirdHistoryRepository? = null,
+    /**
+     * Platform-specific API for querying and opening system notification settings.
+     * Null in non-Android targets or tests.
+     */
+    val platformNotificationsApi: se.birdy.app.notifications.PlatformNotificationsApi? = null,
 ) {
     val classifier: BirdClassifier
         get() =
@@ -317,7 +322,13 @@ class AppGraph(
             locale = defaultLocale,
         )
 
-    fun settingsViewModel(): SettingsViewModel = SettingsViewModel(userPreferences, premiumRepository)
+    fun settingsViewModel(): SettingsViewModel =
+        SettingsViewModel(
+            prefs = userPreferences,
+            premiumRepository = premiumRepository,
+            notificationScheduler = notificationScheduler,
+            platformNotificationsApi = platformNotificationsApi,
+        )
 
     fun premiumViewModel(): PremiumViewModel =
         PremiumViewModel(

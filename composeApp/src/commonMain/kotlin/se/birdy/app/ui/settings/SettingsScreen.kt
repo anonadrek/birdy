@@ -26,6 +26,7 @@ import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.MailOutline
+import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Public
 import androidx.compose.material.icons.outlined.Refresh
@@ -40,6 +41,8 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -84,9 +87,13 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_row_rate
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_share
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_terms
 import birdy_bird_scanner.composeapp.generated.resources.settings_row_website
+import birdy_bird_scanner.composeapp.generated.resources.settings_notifications_disabled_helpline
 import birdy_bird_scanner.composeapp.generated.resources.settings_section_about_birdy
 import birdy_bird_scanner.composeapp.generated.resources.settings_section_account
 import birdy_bird_scanner.composeapp.generated.resources.settings_section_legal
+import birdy_bird_scanner.composeapp.generated.resources.settings_section_notifications
+import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_daily_bird
+import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_streak_risk
 import birdy_bird_scanner.composeapp.generated.resources.settings_share_copy
 import birdy_bird_scanner.composeapp.generated.resources.settings_show_intro_again
 import birdy_bird_scanner.composeapp.generated.resources.settings_title
@@ -175,6 +182,37 @@ fun SettingsScreen(
                         value = stringResource(state.language.labelRes()),
                         onClick = { showLanguageDialog = true },
                     )
+                }
+            }
+            item { SectionHeader(stringResource(Res.string.settings_section_notifications)) }
+            item {
+                val dailyBirdEnabled by viewModel.dailyBirdPushEnabled.collectAsState()
+                val streakRiskEnabled by viewModel.streakRiskPushEnabled.collectAsState()
+                val systemNotifEnabled = viewModel.areNotificationsEnabled()
+
+                PaperCard {
+                    ToggleRow(
+                        icon = Icons.Outlined.Notifications,
+                        label = stringResource(Res.string.settings_toggle_daily_bird),
+                        checked = dailyBirdEnabled,
+                        onCheckedChange = viewModel::setDailyBirdPushEnabled,
+                    )
+                    DashedDivider()
+                    ToggleRow(
+                        icon = Icons.Outlined.Notifications,
+                        label = stringResource(Res.string.settings_toggle_streak_risk),
+                        checked = streakRiskEnabled,
+                        onCheckedChange = viewModel::setStreakRiskPushEnabled,
+                    )
+                    if (!systemNotifEnabled) {
+                        DashedDivider()
+                        SettingsRow(
+                            icon = Icons.Outlined.Notifications,
+                            label = stringResource(Res.string.settings_notifications_disabled_helpline),
+                            value = null,
+                            onClick = { viewModel.openAppNotificationSettings() },
+                        )
+                    }
                 }
             }
             item { SectionHeader(stringResource(Res.string.settings_section_about_birdy)) }
@@ -407,6 +445,56 @@ private fun DashedDivider() {
                 .height(1.dp)
                 .background(MarginaliaInk.copy(alpha = 0.18f)),
     )
+}
+
+@Composable
+private fun ToggleRow(
+    icon: ImageVector,
+    label: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+) {
+    Row(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .height(56.dp)
+                .clickable { onCheckedChange(!checked) }
+                .padding(horizontal = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier =
+                Modifier
+                    .size(32.dp)
+                    .clip(CircleShape)
+                    .background(Color.Transparent)
+                    .border(1.5.dp, AccentCopper, CircleShape),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(icon, contentDescription = null, tint = AccentCopper, modifier = Modifier.size(16.dp))
+        }
+        Spacer(Modifier.size(12.dp))
+        Text(
+            text = label,
+            color = TextOnCreme,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.W500,
+            modifier = Modifier.weight(1f),
+        )
+        Switch(
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+            colors =
+                SwitchDefaults.colors(
+                    checkedThumbColor = Color.White,
+                    checkedTrackColor = AccentCopper,
+                    uncheckedThumbColor = MarginaliaInk.copy(alpha = 0.6f),
+                    uncheckedTrackColor = MarginaliaInk.copy(alpha = 0.18f),
+                    uncheckedBorderColor = MarginaliaInk.copy(alpha = 0.3f),
+                ),
+        )
+    }
 }
 
 @Composable
