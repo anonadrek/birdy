@@ -169,6 +169,64 @@ class BadgeCatalogLoaderTest {
         catalog.badges.forEach { assertEquals(false, it.isPremium, "${it.id} should NOT be premium") }
     }
 
+    @Test
+    fun `parse observed_in_hour_range rule`() {
+        val yaml =
+            """
+            version: 1
+            badges:
+              - id: early_pilgrim
+                category: progression
+                rule: { type: observed_in_hour_range, startHour: 4, endHourExclusive: 7, target: 5 }
+            """.trimIndent()
+        val catalog = BadgeCatalogLoader.parse(yaml)
+        assertEquals(
+            BadgeRule.ObservedInHourRange(startHour = 4, endHourExclusive = 7, target = 5),
+            catalog.findById("early_pilgrim")!!.rule,
+        )
+    }
+
+    @Test
+    fun `parse sunday_streak rule`() {
+        val yaml =
+            """
+            version: 1
+            badges:
+              - id: sunday_birder
+                category: progression
+                rule: { type: sunday_streak, target: 4 }
+            """.trimIndent()
+        val catalog = BadgeCatalogLoader.parse(yaml)
+        assertEquals(BadgeRule.SundayStreak(target = 4), catalog.findById("sunday_birder")!!.rule)
+    }
+
+    @Test
+    fun `parse daily_bird_matches rule`() {
+        val yaml =
+            """
+            version: 1
+            badges:
+              - id: daily_bird_hunter
+                category: progression
+                rule: { type: daily_bird_matches, target: 10 }
+            """.trimIndent()
+        val catalog = BadgeCatalogLoader.parse(yaml)
+        assertEquals(BadgeRule.DailyBirdMatches(target = 10), catalog.findById("daily_bird_hunter")!!.rule)
+    }
+
+    @Test
+    fun `observed_in_hour_range without startHour throws BadgeCatalogException`() {
+        val yaml =
+            """
+            version: 1
+            badges:
+              - id: bad
+                category: progression
+                rule: { type: observed_in_hour_range, endHourExclusive: 7, target: 1 }
+            """.trimIndent()
+        assertFailsWith<BadgeCatalogException> { BadgeCatalogLoader.parse(yaml) }
+    }
+
     private fun validYaml(): String =
         """
         version: 1

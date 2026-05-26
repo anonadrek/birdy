@@ -106,6 +106,16 @@ object BadgeCatalogLoader {
                     hour = raw.hour ?: missing(badgeId, "hour"),
                     target = raw.target ?: missing(badgeId, "target"),
                 )
+            "observed_in_hour_range" ->
+                BadgeRule.ObservedInHourRange(
+                    startHour = raw.startHour ?: missing(badgeId, "startHour"),
+                    endHourExclusive = raw.endHourExclusive ?: missing(badgeId, "endHourExclusive"),
+                    target = raw.target ?: missing(badgeId, "target"),
+                )
+            "sunday_streak" ->
+                BadgeRule.SundayStreak(target = raw.target ?: missing(badgeId, "target"))
+            "daily_bird_matches" ->
+                BadgeRule.DailyBirdMatches(target = raw.target ?: missing(badgeId, "target"))
             "species_across_seasons" ->
                 BadgeRule.SpeciesAcrossSeasons(
                     seasons = raw.seasons ?: missing(badgeId, "seasons"),
@@ -174,5 +184,7 @@ object BadgeCatalogLoader {
         val hour: Int? = null,
         val seasons: Int? = null,
         val minLength: Int? = null,
+        val startHour: Int? = null,
+        val endHourExclusive: Int? = null,
     )
 }
