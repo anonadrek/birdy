@@ -115,6 +115,9 @@ class SpeciesDbBuilder {
         }
     }
 
+    private fun contentHash(items: List<Pair<Path, SpeciesYaml>>): Int =
+        contentFingerprint(items, SCHEMA_REV)
+
     /**
      * Stable content fingerprint stamped into the SQLite file header at byte
      * 68-71 (PRAGMA application_id). The Android repository compares this 4-byte
@@ -122,13 +125,19 @@ class SpeciesDbBuilder {
      * launch, and re-copies the bundled DB when they differ. This is what makes
      * new species data take effect on app upgrade without an app-data wipe.
      *
-     * Hashed input: each species' id + generated_at, sorted by id. Sorting makes
-     * the hash insensitive to YAML file ordering; generated_at ensures any
-     * pipeline `refresh` of an existing species also flips the fingerprint.
+     * Hashed input: prefixed with `schema=<schemaRev>` so the fingerprint also
+     * flips whenever the DB schema changes (bump SCHEMA_REV on any Species*.sq
+     * change), even if all YAMLs are unchanged. After the prefix, each species'
+     * id + generated_at is appended, sorted by id. Sorting makes the hash
+     * insensitive to YAML file ordering; generated_at ensures any pipeline
+     * `refresh` of an existing species also flips the fingerprint.
      */
-    private fun contentHash(items: List<Pair<Path, SpeciesYaml>>): Int {
+    internal fun contentFingerprint(
+        items: List<Pair<Path, SpeciesYaml>>,
+        schemaRev: Int,
+    ): Int {
         val signature =
-            "schema=$SCHEMA_REV\n" +
+            "schema=$schemaRev\n" +
                 items
                     .map { (_, y) -> "${y.id}:${y.generated_at}" }
                     .sorted()

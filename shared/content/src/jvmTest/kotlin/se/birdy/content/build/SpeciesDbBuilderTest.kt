@@ -90,6 +90,28 @@ class SpeciesDbBuilderTest {
         assertNotEquals(readApplicationId(dbA), readApplicationId(dbC), "changed generated_at → new application_id")
     }
 
+    @Test
+    fun `schema rev change flips fingerprint`() {
+        val items =
+            parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+        val builder = SpeciesDbBuilder()
+        assertNotEquals(
+            builder.contentFingerprint(items, 1),
+            builder.contentFingerprint(items, 2),
+        )
+    }
+
+    @Test
+    fun `fingerprint stable for same content and schema rev`() {
+        val items =
+            parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+        val builder = SpeciesDbBuilder()
+        assertEquals(
+            builder.contentFingerprint(items, 2),
+            builder.contentFingerprint(items, 2),
+        )
+    }
+
     private fun readApplicationId(db: Path): Int {
         val header = db.toFile().inputStream().use { it.readNBytes(100) }
         return ((header[68].toInt() and 0xFF) shl 24) or
