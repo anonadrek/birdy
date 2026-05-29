@@ -270,8 +270,9 @@ class SpeciesRepositoryTest {
             en = "Eleonora’s Falcon",
         )
         val repo = SqlDelightSpeciesRepository(db)
-        // Query matches EN name — result should show SV display name for SV locale
-        val hits = repo.search("Eleonora’s Falcon", Locale.SV, SpeciesFilter()).first()
+        // Query uses plain ASCII apostrophe (exercises normalization too) and matches the
+        // EN name cross-locale — result should still show the SV display name.
+        val hits = repo.search("Eleonora's Falcon", Locale.SV, SpeciesFilter()).first()
         assertEquals(1, hits.size)
         assertEquals("Eleonorafalk", hits.first().name) // display name in user's (SV) locale
     }
@@ -297,7 +298,9 @@ class SpeciesRepositoryTest {
             en = "Eleonora’s Falcon",
         )
         val repo = SqlDelightSpeciesRepository(db)
-        // "falcon" matches "Falconidae" in the search_text blob
-        assertEquals(1, repo.search("falcon", Locale.EN, SpeciesFilter()).first().size)
+        // "falconidae" appears ONLY in the family token of the blob (not in the display
+        // name "Eleonora's Falcon" nor the scientific name "Falco eleonorae") — so this
+        // genuinely isolates family-blob matching.
+        assertEquals(1, repo.search("falconidae", Locale.EN, SpeciesFilter()).first().size)
     }
 }
