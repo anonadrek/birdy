@@ -2,13 +2,14 @@
 
 AI-driven Android-app för fågelidentifiering — realtidsskanning via kamera, foto-upload, audio-ID via mikrofon, och ett rikt uppslagsverk över 839 europeiska arter.
 
-> **Status (2026-05-22):** v1.0 nästan klar. Senaste tag är `v0.9.0b-audio` (Plan 6b2 audio-ID via BirdNET-Lite). Enda planen som återstår innan v1.0 är **Plan 6b3 — Premium content** (PDF-export + säsongs-statistik + 10 fält-märken). Marketing-website live på [birdy.community](https://birdy.community) (Astro + Vercel).
+> **Status (2026-05-30):** v1.0 släppt (`v1.0.0`, 2026-05-23) följt av onboarding-omarbetning (`v1.0.2` — 7-scens scroll-story). v1.1 Phase A (retention-hooks: Dagens fågel + streak-notis) taggad `v1.1.0-rc1`. Pågående: en v1.x-respons på feedback från en erfaren testare — **DP A (robust sök: apostrof-/diakrit-/språk-okänsligt + familj-/genus-sök) är mergad till `main`**; DP B–E (positionering, kategori-fix, märken, ekologisk grupp-axel) planeras var för sig. Marketing-website live på [birdy.community](https://birdy.community) (Astro + Vercel).
 
 ## Vad du kan göra i appen idag
 
 - **Skanna foto** via kamera (CameraX 3 fps, TFLite + AIY Birds V1, ~14 ms/inference på S23 Ultra) eller upload från galleri.
 - **Identifiera via ljud** — push-to-record, 3 sek, BirdNET-Lite v2 med FlexRFFT TF Select op.
 - **Uppslagsverk** över 839 nordiska/europeiska arter med foto, ljud, beskrivning, migration och säsongs-sannolikhet.
+- **Robust sök** i uppslagsverket — på art, vetenskapligt namn, familj och genus; okänsligt för apostroftyp (`'`/`’`), diakriter (`ü`→`u`) och aktivt språk (cross-locale).
 - **Dagbok (Field Journal)** med pappers-look, DM Serif Italic + Caveat-typografi, stampseals och plate-frames.
 - **Gamification** — 25 badges, streaks, life-list, unlock-queue.
 - **Premium-tier** — månatlig/årlig/livstid via Google Play Billing v8, med Restore Purchases och RSA-signature-verify.
@@ -92,10 +93,19 @@ cd website && npm run test:i18n      # SV/EN parity check
 | 6a | Foundation — UX-polish + release-mekanik (R8, signing, a11y) | ✅ `v0.8.0-rc1` |
 | 6b1 | Billing v8 + launch-prep (Restore Purchases) | ✅ `v0.9.0a-billing` |
 | 6b2 | Audio-ID via BirdNET-Lite | ✅ `v0.9.0b-audio` |
-| 6b3 | Premium content (PDF-export + säsongs-stats + 10 fält-märken) | ⏳ pågår → `v0.9.0c-premium-content` → `v1.0.0` |
+| 6b3 | Premium content (PDF-export + säsongs-stats + 10 fält-märken) | ✅ `v0.9.0c-premium-content` → `v1.0.0` |
 | W | Marketing-website (Astro + Vercel + birdy.community + /legal/) | ✅ Live |
 
-**Nästa steg:** klar Plan 6b3 → tag `v1.0.0` → Internal Testing → Closed Testing (14d) → Play Store-launch.
+**v1.0 är levererad** (`v1.0.0`, 2026-05-23). Vägen framåt: Internal Testing → Closed Testing (14d) → Play Store-launch. Billing v8 IPC-runtime-verify + go-live-flippen (`PREMIUM_OPEN_FOR_LAUNCH`) är kvar innan produktions-monetisering — se `docs/superpowers/runbooks/2026-05-26-billing-verify-and-go-live.md`.
+
+### Efter v1.0 (pågående)
+
+| Spår | Innehåll | Status |
+|---|---|---|
+| v1.0.2 | Onboarding-omarbetning (7-scens scroll-story) | ✅ taggad |
+| v1.1 Phase A | Retention-hooks — Dagens fågel + söndags streak-notis + deep-links | ✅ `v1.1.0-rc1` |
+| v1.x feedback-respons | Testar-feedback i 5 delprojekt (DP A–E): **DP A sök-fix ✅ mergad**, DP B–E planerade | 🔧 pågår |
+| v1.2 Phase B | Weekly Recap ("Veckans uppslag") — adaptiv söndagsskärm + enad push | 📋 spec + plan klara |
 
 ## Roadmap post-v1.0
 
