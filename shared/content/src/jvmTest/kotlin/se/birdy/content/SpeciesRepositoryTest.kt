@@ -236,71 +236,95 @@ class SpeciesRepositoryTest {
         speciesQueries.insert(id, sci, abundance, "LC", "2026-01-01", "approved", null, null, null)
         speciesTaxonomyQueries.insert(id, family, familySv, genus, "Falconiformes")
         speciesNameQueries.insert(
-            id, "sv", sv,
+            id,
+            "sv",
+            sv,
             normalizeSearch("$sv $sci $family $familySv $genus"),
         )
         speciesNameQueries.insert(
-            id, "en", en,
+            id,
+            "en",
+            en,
             normalizeSearch("$en $sci $family $familySv $genus"),
         )
     }
 
     @Test
-    fun `finds Eleonora with plain apostrophe against U2019 data`() = runTest {
-        // EN name stored with U+2019 RIGHT SINGLE QUOTATION MARK: "Eleonora’s Falcon"
-        val db = newInMemoryDb()
-        db.seedSpecies(
-            "Q212243", "Falco eleonorae", "Falconidae", "falkfåglar", "Falco",
-            sv = "Eleonorafalk",
-            en = "Eleonora’s Falcon", // U+2019, as stored in YAML data
-        )
-        val repo = SqlDelightSpeciesRepository(db)
-        // Query with plain ASCII apostrophe — normalizeSearch strips both to same token
-        val hits = repo.search("Eleonora's Falcon", Locale.EN, SpeciesFilter()).first()
-        assertEquals(1, hits.size)
-        assertEquals("Q212243", hits.first().id.raw)
-    }
+    fun `finds Eleonora with plain apostrophe against U2019 data`() =
+        runTest {
+            // EN name stored with U+2019 RIGHT SINGLE QUOTATION MARK: "Eleonora’s Falcon"
+            val db = newInMemoryDb()
+            db.seedSpecies(
+                "Q212243",
+                "Falco eleonorae",
+                "Falconidae",
+                "falkfåglar",
+                "Falco",
+                sv = "Eleonorafalk",
+                en = "Eleonora’s Falcon", // U+2019, as stored in YAML data
+            )
+            val repo = SqlDelightSpeciesRepository(db)
+            // Query with plain ASCII apostrophe — normalizeSearch strips both to same token
+            val hits = repo.search("Eleonora's Falcon", Locale.EN, SpeciesFilter()).first()
+            assertEquals(1, hits.size)
+            assertEquals("Q212243", hits.first().id.raw)
+        }
 
     @Test
-    fun `cross-locale finds english name while in SV locale`() = runTest {
-        val db = newInMemoryDb()
-        db.seedSpecies(
-            "Q212243", "Falco eleonorae", "Falconidae", "falkfåglar", "Falco",
-            sv = "Eleonorafalk",
-            en = "Eleonora’s Falcon",
-        )
-        val repo = SqlDelightSpeciesRepository(db)
-        // Query uses plain ASCII apostrophe (exercises normalization too) and matches the
-        // EN name cross-locale — result should still show the SV display name.
-        val hits = repo.search("Eleonora's Falcon", Locale.SV, SpeciesFilter()).first()
-        assertEquals(1, hits.size)
-        assertEquals("Eleonorafalk", hits.first().name) // display name in user's (SV) locale
-    }
+    fun `cross-locale finds english name while in SV locale`() =
+        runTest {
+            val db = newInMemoryDb()
+            db.seedSpecies(
+                "Q212243",
+                "Falco eleonorae",
+                "Falconidae",
+                "falkfåglar",
+                "Falco",
+                sv = "Eleonorafalk",
+                en = "Eleonora’s Falcon",
+            )
+            val repo = SqlDelightSpeciesRepository(db)
+            // Query uses plain ASCII apostrophe (exercises normalization too) and matches the
+            // EN name cross-locale — result should still show the SV display name.
+            val hits = repo.search("Eleonora's Falcon", Locale.SV, SpeciesFilter()).first()
+            assertEquals(1, hits.size)
+            assertEquals("Eleonorafalk", hits.first().name) // display name in user's (SV) locale
+        }
 
     @Test
-    fun `diacritic-insensitive`() = runTest {
-        val db = newInMemoryDb()
-        db.seedSpecies(
-            "Q1", "Gyps rueppellii", "Accipitridae", "hökartade rovfåglar", "Gyps",
-            sv = "Rüppellgam",
-            en = "Rüppell’s Vulture",
-        )
-        val repo = SqlDelightSpeciesRepository(db)
-        assertEquals(1, repo.search("ruppell", Locale.EN, SpeciesFilter()).first().size)
-    }
+    fun `diacritic-insensitive`() =
+        runTest {
+            val db = newInMemoryDb()
+            db.seedSpecies(
+                "Q1",
+                "Gyps rueppellii",
+                "Accipitridae",
+                "hökartade rovfåglar",
+                "Gyps",
+                sv = "Rüppellgam",
+                en = "Rüppell’s Vulture",
+            )
+            val repo = SqlDelightSpeciesRepository(db)
+            assertEquals(1, repo.search("ruppell", Locale.EN, SpeciesFilter()).first().size)
+        }
 
     @Test
-    fun `family search returns family members`() = runTest {
-        val db = newInMemoryDb()
-        db.seedSpecies(
-            "Q212243", "Falco eleonorae", "Falconidae", "falkfåglar", "Falco",
-            sv = "Eleonorafalk",
-            en = "Eleonora’s Falcon",
-        )
-        val repo = SqlDelightSpeciesRepository(db)
-        // "falconidae" appears ONLY in the family token of the blob (not in the display
-        // name "Eleonora's Falcon" nor the scientific name "Falco eleonorae") — so this
-        // genuinely isolates family-blob matching.
-        assertEquals(1, repo.search("falconidae", Locale.EN, SpeciesFilter()).first().size)
-    }
+    fun `family search returns family members`() =
+        runTest {
+            val db = newInMemoryDb()
+            db.seedSpecies(
+                "Q212243",
+                "Falco eleonorae",
+                "Falconidae",
+                "falkfåglar",
+                "Falco",
+                sv = "Eleonorafalk",
+                en = "Eleonora’s Falcon",
+            )
+            val repo = SqlDelightSpeciesRepository(db)
+            // "falconidae" appears ONLY in the family token of the blob (not in the display
+            // name "Eleonora's Falcon" nor the scientific name "Falco eleonorae") — so this
+            // genuinely isolates family-blob matching.
+            assertEquals(1, repo.search("falconidae", Locale.EN, SpeciesFilter()).first().size)
+        }
 }

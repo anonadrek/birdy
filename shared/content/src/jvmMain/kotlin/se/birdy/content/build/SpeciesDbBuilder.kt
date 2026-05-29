@@ -115,8 +115,7 @@ class SpeciesDbBuilder {
         }
     }
 
-    private fun contentHash(items: List<Pair<Path, SpeciesYaml>>): Int =
-        contentFingerprint(items, SCHEMA_REV)
+    private fun contentHash(items: List<Pair<Path, SpeciesYaml>>): Int = contentFingerprint(items, SCHEMA_REV)
 
     /**
      * Stable content fingerprint stamped into the SQLite file header at byte
