@@ -13,6 +13,7 @@ import se.birdy.content.model.Species
 import se.birdy.content.model.SpeciesImage
 import se.birdy.content.model.SpeciesSummary
 import se.birdy.content.model.SpeciesTaxonomy
+import se.birdy.content.search.normalizeSearch
 
 @Suppress("LongMethod")
 class SqlDelightSpeciesRepository(
@@ -96,16 +97,16 @@ class SqlDelightSpeciesRepository(
         filters: SpeciesFilter,
     ): Flow<List<SpeciesSummary>> =
         db.speciesNameQueries
-            .searchByNameOrScientific(locale = locale.code, query = query, max = Long.MAX_VALUE)
+            .searchByNameOrScientific(query = normalizeSearch(query), max = Long.MAX_VALUE)
             .asFlow()
             .mapToList(Dispatchers.Default)
             .map { rows ->
                 rows
                     .distinctBy { it.species_id }
-                    .mapNotNull { name ->
+                    .mapNotNull { row ->
                         val sp =
                             db.speciesQueries
-                                .selectById(name.species_id)
+                                .selectById(row.species_id)
                                 .executeAsOneOrNull() ?: return@mapNotNull null
                         val abundance =
                             Abundance.fromCode(sp.abundance) ?: Abundance.OVANLIG
@@ -134,9 +135,14 @@ class SqlDelightSpeciesRepository(
                             db.speciesTaxonomyQueries
                                 .selectBySpecies(sp.id)
                                 .executeAsOneOrNull()
+                        val nameRows = db.speciesNameQueries.selectBySpecies(sp.id).executeAsList()
+                        val displayName =
+                            nameRows.firstOrNull { it.locale == locale.code }?.name
+                                ?: nameRows.firstOrNull()?.name
+                                ?: sp.scientific_name
                         SpeciesSummary(
                             id = SpeciesId(sp.id),
-                            name = name.name,
+                            name = displayName,
                             scientificName = sp.scientific_name,
                             abundance = abundance,
                             heroImagePath =

@@ -11,6 +11,7 @@ import org.junit.jupiter.api.io.TempDir
 import se.birdy.content.build.SpeciesDbBuilder
 import se.birdy.content.build.SpeciesYamlParser
 import se.birdy.content.db.BirdyContent
+import se.birdy.content.search.normalizeSearch
 import java.nio.file.Path
 
 class SpeciesRepositoryTest {
@@ -208,5 +209,95 @@ class SpeciesRepositoryTest {
         assertEquals("Great Tit", en[SpeciesId("Q25485")]?.name)
 
         driver.close()
+    }
+
+    // --- In-memory helpers for cross-locale / normalization regression tests ---
+
+    private fun newInMemoryDb(): BirdyContent {
+        val driver = JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY)
+        BirdyContent.Schema.create(driver)
+        return BirdyContent(driver)
+    }
+
+    /**
+     * Seeds Species + SpeciesTaxonomy + both SpeciesName rows (with normalized search_text).
+     * Column order mirrors the generated insert() queries in the .sq files.
+     */
+    private fun BirdyContent.seedSpecies(
+        id: String,
+        sci: String,
+        family: String,
+        familySv: String,
+        genus: String,
+        sv: String,
+        en: String,
+        abundance: String = "ovanlig",
+    ) {
+        speciesQueries.insert(id, sci, abundance, "LC", "2026-01-01", "approved", null, null, null)
+        speciesTaxonomyQueries.insert(id, family, familySv, genus, "Falconiformes")
+        speciesNameQueries.insert(
+            id, "sv", sv,
+            normalizeSearch("$sv $sci $family $familySv $genus"),
+        )
+        speciesNameQueries.insert(
+            id, "en", en,
+            normalizeSearch("$en $sci $family $familySv $genus"),
+        )
+    }
+
+    @Test
+    fun `finds Eleonora with plain apostrophe against U2019 data`() = runTest {
+        // EN name stored with U+2019 RIGHT SINGLE QUOTATION MARK: "Eleonora’s Falcon"
+        val db = newInMemoryDb()
+        db.seedSpecies(
+            "Q212243", "Falco eleonorae", "Falconidae", "falkfåglar", "Falco",
+            sv = "Eleonorafalk",
+            en = "Eleonora’s Falcon", // U+2019, as stored in YAML data
+        )
+        val repo = SqlDelightSpeciesRepository(db)
+        // Query with plain ASCII apostrophe — normalizeSearch strips both to same token
+        val hits = repo.search("Eleonora's Falcon", Locale.EN, SpeciesFilter()).first()
+        assertEquals(1, hits.size)
+        assertEquals("Q212243", hits.first().id.raw)
+    }
+
+    @Test
+    fun `cross-locale finds english name while in SV locale`() = runTest {
+        val db = newInMemoryDb()
+        db.seedSpecies(
+            "Q212243", "Falco eleonorae", "Falconidae", "falkfåglar", "Falco",
+            sv = "Eleonorafalk",
+            en = "Eleonora’s Falcon",
+        )
+        val repo = SqlDelightSpeciesRepository(db)
+        // Query matches EN name — result should show SV display name for SV locale
+        val hits = repo.search("Eleonora’s Falcon", Locale.SV, SpeciesFilter()).first()
+        assertEquals(1, hits.size)
+        assertEquals("Eleonorafalk", hits.first().name) // display name in user's (SV) locale
+    }
+
+    @Test
+    fun `diacritic-insensitive`() = runTest {
+        val db = newInMemoryDb()
+        db.seedSpecies(
+            "Q1", "Gyps rueppellii", "Accipitridae", "hökartade rovfåglar", "Gyps",
+            sv = "Rüppellgam",
+            en = "Rüppell’s Vulture",
+        )
+        val repo = SqlDelightSpeciesRepository(db)
+        assertEquals(1, repo.search("ruppell", Locale.EN, SpeciesFilter()).first().size)
+    }
+
+    @Test
+    fun `family search returns family members`() = runTest {
+        val db = newInMemoryDb()
+        db.seedSpecies(
+            "Q212243", "Falco eleonorae", "Falconidae", "falkfåglar", "Falco",
+            sv = "Eleonorafalk",
+            en = "Eleonora’s Falcon",
+        )
+        val repo = SqlDelightSpeciesRepository(db)
+        // "falcon" matches "Falconidae" in the search_text blob
+        assertEquals(1, repo.search("falcon", Locale.EN, SpeciesFilter()).first().size)
     }
 }
