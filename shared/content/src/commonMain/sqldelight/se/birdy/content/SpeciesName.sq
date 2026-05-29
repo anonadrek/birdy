@@ -2,11 +2,13 @@ CREATE TABLE SpeciesName (
     species_id TEXT NOT NULL,
     locale TEXT NOT NULL,
     name TEXT NOT NULL,
+    search_text TEXT NOT NULL DEFAULT '',
     PRIMARY KEY (species_id, locale),
     FOREIGN KEY (species_id) REFERENCES Species(id) ON DELETE CASCADE
 );
 
 CREATE INDEX species_name_locale_name ON SpeciesName(locale, name);
+CREATE INDEX species_name_search ON SpeciesName(search_text);
 
 selectByLocale:
 SELECT * FROM SpeciesName WHERE locale = ?;
@@ -29,4 +31,4 @@ selectAll:
 SELECT * FROM SpeciesName;
 
 insert:
-INSERT INTO SpeciesName(species_id, locale, name) VALUES (?, ?, ?);
+INSERT INTO SpeciesName(species_id, locale, name, search_text) VALUES (?, ?, ?, ?);

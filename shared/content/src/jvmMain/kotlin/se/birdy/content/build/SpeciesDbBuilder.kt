@@ -2,10 +2,14 @@ package se.birdy.content.build
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import se.birdy.content.db.BirdyContent
+import se.birdy.content.search.normalizeSearch
 import java.nio.file.Files
 import java.nio.file.Path
 import java.security.MessageDigest
 import kotlin.io.path.copyTo
+
+// Bumpa vid VARJE schema-ändring i Species*.sq → flippar application_id → tvingar DB-replace på uppgradering.
+private const val SCHEMA_REV = 2
 
 class SpeciesDbBuilder {
     fun build(
@@ -67,10 +71,16 @@ class SpeciesDbBuilder {
             genus = yaml.taxonomy.genus,
             ioc_order = yaml.taxonomy.ioc_order,
         )
+        val sci = yaml.scientific_name
+        val fam = yaml.taxonomy.family
+        val famSv = yaml.taxonomy.family_sv ?: ""
+        val genus = yaml.taxonomy.genus
         if (!yaml.names.sv.isNullOrBlank()) {
-            db.speciesNameQueries.insert(yaml.id, "sv", yaml.names.sv!!)
+            val sv = yaml.names.sv!!
+            db.speciesNameQueries.insert(yaml.id, "sv", sv, normalizeSearch("$sv $sci $fam $famSv $genus"))
         }
-        db.speciesNameQueries.insert(yaml.id, "en", yaml.names.en)
+        val en = yaml.names.en
+        db.speciesNameQueries.insert(yaml.id, "en", en, normalizeSearch("$en $sci $fam $famSv $genus"))
 
         for ((lang, text) in yaml.description) {
             if (text.isNullOrBlank() || text == "[accept_missing]") continue
@@ -118,10 +128,11 @@ class SpeciesDbBuilder {
      */
     private fun contentHash(items: List<Pair<Path, SpeciesYaml>>): Int {
         val signature =
-            items
-                .map { (_, y) -> "${y.id}:${y.generated_at}" }
-                .sorted()
-                .joinToString("\n")
+            "schema=$SCHEMA_REV\n" +
+                items
+                    .map { (_, y) -> "${y.id}:${y.generated_at}" }
+                    .sorted()
+                    .joinToString("\n")
         val digest = MessageDigest.getInstance("SHA-256").digest(signature.toByteArray())
         return ((digest[0].toInt() and 0xFF) shl 24) or
             ((digest[1].toInt() and 0xFF) shl 16) or
