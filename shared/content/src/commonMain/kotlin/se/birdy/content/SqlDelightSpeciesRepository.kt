@@ -135,10 +135,12 @@ class SqlDelightSpeciesRepository(
                             db.speciesTaxonomyQueries
                                 .selectBySpecies(sp.id)
                                 .executeAsOneOrNull()
+                        // Search rows only carry the matched locale; fetch all to resolve the
+                        // display name in the user's locale (EN fallback matches getById/summaryFor).
                         val nameRows = db.speciesNameQueries.selectBySpecies(sp.id).executeAsList()
                         val displayName =
                             nameRows.firstOrNull { it.locale == locale.code }?.name
-                                ?: nameRows.firstOrNull()?.name
+                                ?: nameRows.firstOrNull { it.locale == Locale.EN.code }?.name
                                 ?: sp.scientific_name
                         SpeciesSummary(
                             id = SpeciesId(sp.id),
