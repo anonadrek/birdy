@@ -24,7 +24,7 @@ Hämtade ur trap-katalogen + research-docen — varje DP-plan måste hålla dem:
 1. **Alla UI-strängar via `compose-resources` i BÅDA `strings.xml`** (`values/` SV-default + `values-en/`). Aldrig hårdkoda lokaliserad text. `%`-escape: passa förformaterade strängar från Kotlin (inte `%%`); använd raw `'`/`’` (inte `\'`).
 2. **Kommunicera ALDRIG accuracy-siffror** (72 % top-3) i copy/store/website.
 3. **Inget audio-relaterat bakom Premium** (BirdNET CC BY-NC-SA). Gäller särskilt DP D (märken) — `premium_song_scholar` (`audio_observation_count`) ska flyttas till gratis om audio-märken byggs ut.
-4. **Content-DB-schemaändring MÅSTE flippa fingeravtrycket.** `SpeciesDbBuilder.contentHash` hashar bara `id+generated_at` → en ren schemaändring uppdaterar inte `application_id` → uppgraderade enheter behåller gammal DB utan ny kolumn → **krasch**. Lös genom att baka in `BirdyContent.Schema.version` i freshness-checken (`SpeciesRepositoryProvider.android.kt`). Gäller DP A och DP E.
+4. **Content-DB-schemaändring MÅSTE flippa fingeravtrycket.** `SpeciesDbBuilder.contentHash` hashar bara `id+generated_at` → en ren schemaändring uppdaterar inte `application_id` → uppgraderade enheter behåller gammal DB utan ny kolumn → **krasch**. (VERIFIERAT 2026-05-29: `BirdyContent.Schema.version` är hårdkodad `1` — ingen migrations-katalog/`deriveSchemaFromMigrations` — så user_version-strategin fungerar INTE.) Lös genom att folda en manuell `SCHEMA_REV`-konstant in i `contentHash` så `application_id` flippar; befintliga `needsCopy` (`SpeciesRepositoryProvider.android.kt`) jämför redan `application_id` → ingen provider-ändring. Gäller DP A och DP E.
 5. **`:androidApp` saknar transitiva deps** — varje ny shared/library-referens kräver egen `implementation()` i `androidApp/build.gradle.kts`.
 6. **Verifiera audit-påståenden mot koden innan fix** (research-docen är grund, men fil:rad kan ha drivit). Default-värden på nya summary-/modellfält så test-fixturer inte bryts.
 
@@ -47,19 +47,19 @@ Söket ska hitta arter oavsett apostroftyp, diakriter och aktivt språk; dessuto
 | 2 | **Normaliserad `search_text`-kolumn** på `SpeciesName`, beräknad vid DB-build. Sök matchar `search_text LIKE %normalize(query)%`. Löser A + C. |
 | 3 | **Cross-locale:** släpp `sn.locale = :locale` ur WHERE; sök båda språkens namn; dedupa på `species_id` (`distinctBy`); visningsnamn via befintligt locale-fallback. Löser B. |
 | 4 | **Plus extras:** sök även familj (latin + `family_sv`) + genus → "falk"/"falcon" ger familjeträffar. Prefix-boost i `ORDER BY` (`CASE WHEN search_text LIKE :q||'%' THEN 0 ELSE 1 END`). |
-| 5 | **Fingeravtryck-fix:** baka in `BirdyContent.Schema.version` i freshness-checken så schemaändringen tvingar DB-rebuild på uppgradering (cross-cutting #4). |
+| 5 | **Fingeravtryck-fix:** folda en manuell `SCHEMA_REV`-konstant in i `contentHash` (i `SpeciesDbBuilder`) så `application_id` flippar vid schemaändring → befintliga `needsCopy` ersätter cachad DB på uppgradering. (Schema.version är hårdkodad 1 → user_version duger inte; verifierat 2026-05-29.) Ingen provider-ändring. |
 
 ### Komponenter (filer)
 - `shared/content/.../sqldelight/.../SpeciesName.sq` — ny kolumn `search_text TEXT NOT NULL`, index, uppdaterad `INSERT`, omskriven `searchByNameOrScientific` (matcha `search_text`/`scientific_name`/familj/genus, ta bort locale-filter, prefix-boost-`ORDER BY`).
 - `shared/content/.../build/SpeciesDbBuilder.kt` (jvmMain) — beräkna `search_text = normalizeSearch(name)` vid insert. (Fingeravtryck-fixen görs i providern, se nedan — inte här.)
-- `shared/content/.../SpeciesRepositoryProvider.android.kt` — inkludera `BirdyContent.Schema.version` i freshness-jämförelsen.
+- `shared/content/.../build/SpeciesDbBuilder.kt` — `SCHEMA_REV`-konstant foldad in i `contentHash` (provider `SpeciesRepositoryProvider.android.kt` orörd — `needsCopy` jämför redan `application_id`).
 - `shared/content/.../normalize/SearchNormalize.kt` — `expect fun normalizeSearch(input: String): String` (commonMain) + `actual` (androidMain, `java.text.Normalizer`). jvmMain-build återanvänder samma actual eller en delad jvm-impl.
 - `SqlDelightSpeciesRepository.kt` — normalisera query med `normalizeSearch()` före `LIKE`; dedupa cross-locale-träffar.
 
 ### Tester
 - `SpeciesRepositoryTest.kt`: "eleonora's" (rak apostrof) mot U+2019-fixtur → träff; cross-locale (engelskt namn i `Locale.SV`) → träff; "ruppell" → "Rüppell's"; familj-sök ("falk" → Falconidae-arter); prefix-boost-ordning (exakt prefix först).
 - `SpeciesDbBuilderTest.kt`: `search_text` normaliseras korrekt vid build (apostrof + diakrit strippade, lowercase).
-- Fingeravtrycks-test: schema-version-ändring flippar freshness (annars stale DB).
+- Fingeravtrycks-test: `SCHEMA_REV`-ändring flippar `application_id` (regressionsskydd så stale DB inte behålls på uppgradering).
 
 ### Edge cases
 - Tom query → alla arter (befintligt beteende, behåll).

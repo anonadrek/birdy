@@ -4,7 +4,7 @@
 
 **Goal:** Söket hittar arter oavsett apostroftyp, diakriter och aktivt språk, plus familj-/genus-sök och prefix-boost.
 
-**Architecture:** En normaliserad `search_text`-kolumn på `SpeciesName` (byggd vid DB-build via `expect/actual normalizeSearch` med `java.text.Normalizer`) som konkatenerar `name + scientific_name + family + family_sv + genus`. Söket matchar enbart mot `search_text` (query normaliseras med samma funktion), utan locale-filter (cross-locale + dedup). Content-DB-fingeravtrycket utökas med schema-version så schemaändringen tvingar DB-replace på uppgradering.
+**Architecture:** En normaliserad `search_text`-kolumn på `SpeciesName` (byggd vid DB-build via `expect/actual normalizeSearch` med `java.text.Normalizer`) som konkatenerar `name + scientific_name + family + family_sv + genus`. Söket matchar enbart mot `search_text` (query normaliseras med samma funktion), utan locale-filter (cross-locale + dedup). Content-DB-fingeravtrycket (`application_id`) flippas via en manuell `SCHEMA_REV`-konstant i `contentHash` så schemaändringen tvingar DB-replace på uppgradering (befintliga `needsCopy` jämför redan `application_id`).
 
 **Tech Stack:** Kotlin Multiplatform (commonMain/jvmMain/androidMain), SQLDelight, `java.text.Normalizer`, kotlin.test, JdbcSqliteDriver (jvmTest).
 
@@ -31,7 +31,7 @@ export PATH="$JAVA_HOME/bin:$PATH"
 - `shared/content/src/jvmMain/kotlin/se/birdy/content/build/SpeciesDbBuilder.kt` — beräkna `search_text` per namn-insert
 - `shared/content/src/commonMain/kotlin/se/birdy/content/SqlDelightSpeciesRepository.kt` — normalisera query, cross-locale-dedup, visningsnamn i användarens locale
 - `shared/content/src/jvmTest/kotlin/se/birdy/content/SpeciesRepositoryTest.kt` — regressionstester
-- `composeApp/src/androidMain/kotlin/se/birdy/app/SpeciesRepositoryProvider.android.kt` — `user_version`-jämförelse i `needsCopy`
+- (Provider `SpeciesRepositoryProvider.android.kt` ÄNDRAS INTE — `needsCopy` jämför redan `application_id` som SCHEMA_REV flippar. Task 4 = regressionstest i `SpeciesDbBuilderTest.kt`.)
 
 ---
 
@@ -171,21 +171,32 @@ INSERT INTO SpeciesName(species_id, locale, name, search_text) VALUES (?, ?, ?, 
 ```
 (Lämna `searchByName`, `searchByNameOrScientific`, `selectByLocale`, `selectBySpecies`, `selectAll` oförändrade i denna task.)
 
-- [ ] **Step 2: Bumpa schema-versionen**
+- [ ] **Step 2: Folda `SCHEMA_REV` in i `contentHash` (upgrade-säkerhet)**
 
-SQLDelight härleder `BirdyContent.Schema.version` från antalet `.sqm`-migrationsfiler + 1. **Skapa en tom migrations-fil** så versionen ökar (krävs för fingeravtryck-fixen i Task 4). Sök först befintliga migrationer:
-```bash
-ls shared/content/src/commonMain/sqldelight/migrations/ 2>/dev/null || ls shared/content/src/commonMain/sqldelight/se/birdy/content/migrations/ 2>/dev/null || echo "(ingen migrations-mapp)"
-```
-Skapa nästa migrationsfil i samma mapp som ev. befintliga (annars `shared/content/src/commonMain/sqldelight/migrations/`), filnamn = `<N>.sqm` där N = (antal befintliga + 1):
-```sql
--- Adds SpeciesName.search_text (normaliserad sökkolumn). Den faktiska populeringen
--- sker genom att den nybyggda bundlade species.db ersätter cachen (fingeravtryck-bump),
--- inte via denna migration (SQLite saknar normaliseringsfunktion).
-ALTER TABLE SpeciesName ADD COLUMN search_text TEXT NOT NULL DEFAULT '';
-```
+**VERIFIERAT 2026-05-29:** `shared/content` har INGEN migrations-katalog och INTE `deriveSchemaFromMigrations` → `BirdyContent.Schema.version` är hårdkodad `1` och ändras INTE av schema-ändringar. Dessutom hashar `contentHash` bara `id+generated_at`, så en ombyggd `species.db` med oförändrade YAML får IDENTISKT `application_id` → cachad gammal DB (utan `search_text`) behålls på uppgradering → **KRASCH**. Fix: folda en manuell schema-revision in i `contentHash` så `application_id` flippar. Befintliga `needsCopy` jämför redan `application_id` → ersätter DB:n. **Ingen migration, ingen provider-ändring** (Task 4 blir därför ett regressionstest, inte en provider-fix).
 
-> Om SQLDelight redan kör schema från `.sq` (ingen migrations-katalog finns), verifiera hur `Schema.version` höjs i detta projekt (`grep -rn "Schema.version\|verifyMigrations\|deriveSchemaFromMigrations" shared/content/build.gradle.kts`). Målet: `BirdyContent.Schema.version` MÅSTE öka av denna ändring. Bekräfta efter Step 4 att versionen ökat.
+I `SpeciesDbBuilder.kt`: lägg en konstant i fil-/klass-scope och inkludera den i den hashade signaturen:
+```kotlin
+// Bumpa vid VARJE schema-ändring i Species*.sq → flippar application_id → tvingar DB-replace på uppgradering.
+private const val SCHEMA_REV = 2
+```
+Ändra `contentHash` så signaturen prefixas med schema-revisionen:
+```kotlin
+private fun contentHash(items: List<Pair<Path, SpeciesYaml>>): Int {
+    val signature =
+        "schema=$SCHEMA_REV\n" +
+            items
+                .map { (_, y) -> "${y.id}:${y.generated_at}" }
+                .sorted()
+                .joinToString("\n")
+    val digest = MessageDigest.getInstance("SHA-256").digest(signature.toByteArray())
+    return ((digest[0].toInt() and 0xFF) shl 24) or
+        ((digest[1].toInt() and 0xFF) shl 16) or
+        ((digest[2].toInt() and 0xFF) shl 8) or
+        (digest[3].toInt() and 0xFF)
+}
+```
+(Lämna `PRAGMA user_version`-raden orörd — ofarlig.)
 
 - [ ] **Step 3: Populera search_text i builder**
 
@@ -204,20 +215,19 @@ db.speciesNameQueries.insert(yaml.id, "en", en, normalizeSearch("$en $sci $fam $
 ```
 Lägg import: `import se.birdy.content.search.normalizeSearch`.
 
-- [ ] **Step 4: Verifiera kompilering + att schema-versionen ökat**
+- [ ] **Step 4: Verifiera kompilering**
 
 Run:
 ```bash
 ./gradlew :shared:content:compileKotlinJvm
-grep -rn "version" shared/content/build/generated/sqldelight/**/BirdyContent* 2>/dev/null | grep -i "version" | head
 ```
-Expected: BUILD SUCCESSFUL. (Generated `BirdyContent.Schema.version` ska vara > tidigare värde.)
+Expected: BUILD SUCCESSFUL.
 
 - [ ] **Step 5: Commit**
 
 ```bash
 git add shared/content/src/commonMain/sqldelight/ shared/content/src/jvmMain/kotlin/se/birdy/content/build/SpeciesDbBuilder.kt
-git commit -m "feat(search): SpeciesName.search_text-kolumn + builder-population + schema-bump"
+git commit -m "feat(search): SpeciesName.search_text-kolumn + builder-population + SCHEMA_REV-bump"
 ```
 
 ---
@@ -396,68 +406,79 @@ git commit -m "feat(search): cross-locale + normaliserad search_text-query + pre
 
 ---
 
-## Task 4: Fingeravtryck-fix i Android-providern
+## Task 4: Regressionstest för SCHEMA_REV-fingeravtrycket
 
 **Files:**
-- Modify: `composeApp/src/androidMain/kotlin/se/birdy/app/SpeciesRepositoryProvider.android.kt`
+- Modify: `shared/content/src/jvmMain/kotlin/se/birdy/content/build/SpeciesDbBuilder.kt` (extrahera testbar fingerprint-funktion)
+- Modify: `shared/content/src/jvmTest/kotlin/se/birdy/content/build/SpeciesDbBuilderTest.kt`
 
-> Problem: `needsCopy` jämför bara `application_id` (offset 68 = `contentHash` av id+generated_at). Schemaändringen (search_text) flippar INTE den → cachad DB utan kolumnen behålls på uppgradering → krasch. Fix: jämför även `user_version` (offset 60 = `Schema.version`, som ökade i Task 2). Skiljer de sig → kopiera om den nybyggda bundlade DB:n (som har search_text populerad).
+> **Ingen provider-ändring behövs.** `SpeciesRepositoryProvider.android.kt:needsCopy` jämför redan `application_id` (offset 68) bundlad-vs-cachad och kopierar om vid skillnad. Upgrade-säkerheten hänger nu på att `SCHEMA_REV` (Task 2) flippar `application_id`. Den här tasken låser mekaniken med ett test så en framtida refaktor inte tyst tar bort `SCHEMA_REV` ur hashen.
 
-- [ ] **Step 1: Lägg till user_version-jämförelse**
+- [ ] **Step 1: Extrahera testbar fingerprint-funktion**
 
-Ersätt konstanterna + `needsCopy` + `readApplicationId` med:
+I `SpeciesDbBuilder.kt`, refaktorera `contentHash` så schema-revisionen är en parameter och funktionen är `internal` (åtkomlig från jvmTest i samma modul):
 ```kotlin
-private const val SQLITE_HEADER_BYTES = 100
-private const val USER_VERSION_OFFSET = 60
-private const val APPLICATION_ID_OFFSET = 68
+private fun contentHash(items: List<Pair<Path, SpeciesYaml>>): Int =
+    contentFingerprint(items, SCHEMA_REV)
 
-// ... i objektet:
-
-private fun needsCopy(dbFile: File): Boolean {
-    if (!dbFile.exists()) return true
-    val bundled =
-        runCatching {
-            appContext.assets.open(SPECIES_DB_ASSET_PATH).use { readFingerprint(it) }
-        }.getOrNull() ?: return false
-    val cached =
-        runCatching {
-            dbFile.inputStream().use { readFingerprint(it) }
-        }.getOrNull() ?: return true
-    return bundled != cached
-}
-
-/** (application_id @68, user_version @60) — content-fingeravtryck + schema-version. */
-private fun readFingerprint(stream: InputStream): Pair<Int, Int> {
-    val header = ByteArray(SQLITE_HEADER_BYTES)
-    var read = 0
-    while (read < SQLITE_HEADER_BYTES) {
-        val n = stream.read(header, read, SQLITE_HEADER_BYTES - read)
-        if (n < 0) error("species.db is shorter than SQLite header")
-        read += n
-    }
-    fun int32(o: Int): Int =
-        ((header[o].toInt() and 0xFF) shl 24) or
-            ((header[o + 1].toInt() and 0xFF) shl 16) or
-            ((header[o + 2].toInt() and 0xFF) shl 8) or
-            (header[o + 3].toInt() and 0xFF)
-    return int32(APPLICATION_ID_OFFSET) to int32(USER_VERSION_OFFSET)
+internal fun contentFingerprint(
+    items: List<Pair<Path, SpeciesYaml>>,
+    schemaRev: Int,
+): Int {
+    val signature =
+        "schema=$schemaRev\n" +
+            items
+                .map { (_, y) -> "${y.id}:${y.generated_at}" }
+                .sorted()
+                .joinToString("\n")
+    val digest = MessageDigest.getInstance("SHA-256").digest(signature.toByteArray())
+    return ((digest[0].toInt() and 0xFF) shl 24) or
+        ((digest[1].toInt() and 0xFF) shl 16) or
+        ((digest[2].toInt() and 0xFF) shl 8) or
+        (digest[3].toInt() and 0xFF)
 }
 ```
-(Ta bort gamla `readApplicationId` om den inte används någon annanstans — `grep` först.)
 
-- [ ] **Step 2: Verifiera kompilering**
+- [ ] **Step 2: Skriv testet**
+
+> Återanvänd den befintliga YAML-fixturen i `SpeciesDbBuilderTest.kt` (testet `application_id is stable ... when generated_at changes` på ~rad 68/85 konstruerar redan `SpeciesYaml` + `yaml.copy(...)`). Spegla hur den bygger sin `items: List<Pair<Path, SpeciesYaml>>`.
+
+```kotlin
+@Test
+fun `schema rev change flips fingerprint`() {
+    val builder = SpeciesDbBuilder()
+    val items = listOf(samplePath to sampleYaml()) // använd testfilens befintliga fixtur-helpers
+    assertNotEquals(
+        builder.contentFingerprint(items, 1),
+        builder.contentFingerprint(items, 2),
+    )
+}
+
+@Test
+fun `fingerprint stable for same content and schema rev`() {
+    val builder = SpeciesDbBuilder()
+    val items = listOf(samplePath to sampleYaml())
+    assertEquals(
+        builder.contentFingerprint(items, 2),
+        builder.contentFingerprint(items, 2),
+    )
+}
+```
+(`samplePath`/`sampleYaml()` = testfilens befintliga fixtur — använd de namn som redan finns där. Import `kotlin.test.assertNotEquals`.)
+
+- [ ] **Step 3: Kör testet, verifiera PASS**
 
 Run:
 ```bash
-./gradlew :composeApp:compileDebugKotlinAndroid
+./gradlew :shared:content:jvmTest --tests "se.birdy.content.build.SpeciesDbBuilderTest"
 ```
-Expected: BUILD SUCCESSFUL.
+Expected: PASS (de två nya + befintliga builder-tester).
 
-- [ ] **Step 3: Commit**
+- [ ] **Step 4: Commit**
 
 ```bash
-git add composeApp/src/androidMain/kotlin/se/birdy/app/SpeciesRepositoryProvider.android.kt
-git commit -m "fix(search): jämför user_version i needsCopy → schemaändring tvingar DB-replace"
+git add shared/content/src/jvmMain/kotlin/se/birdy/content/build/SpeciesDbBuilder.kt shared/content/src/jvmTest/kotlin/se/birdy/content/build/SpeciesDbBuilderTest.kt
+git commit -m "test(search): lås SCHEMA_REV-fingeravtrycket (schema-rev flippar application_id)"
 ```
 
 ---
@@ -472,7 +493,7 @@ Run:
 ```bash
 ./gradlew :shared:content:buildSpeciesDb
 ```
-Expected: BUILD SUCCESSFUL. Den nya `species.db` (i composeApp composeResources/files) har nu `search_text`-kolumnen populerad + förhöjd `user_version`.
+Expected: BUILD SUCCESSFUL. Den nya `species.db` (i composeApp composeResources/files) har nu `search_text`-kolumnen populerad + nytt `application_id` (p.g.a. SCHEMA_REV).
 
 - [ ] **Step 2: Kör hela testsviten + lint**
 
@@ -511,7 +532,7 @@ git commit -m "chore(search): bygg om species.db med search_text + grön svit" |
 ./gradlew :androidApp:installDebug
 "/c/Users/abbea/AppData/Local/Android/Sdk/platform-tools/adb.exe" shell am start -n se.birdy.android.debug/se.birdy.android.MainActivity
 ```
-Verifiera: ingen krasch vid start (DB-replace skedde). Om krasch → fingeravtryck-fixen tog inte; kontrollera user_version-bump.
+Verifiera: ingen krasch vid start (DB-replace skedde). Om krasch → fingeravtryck-fixen tog inte; kontrollera att SCHEMA_REV bumpades + att `species.db` byggdes om (nytt application_id).
 
 - [ ] **Step 2: Verifiera sök i Uppslagsverk/Archive**
 
@@ -537,10 +558,10 @@ git commit -m "docs(screenshots): DP A sök-fix device-verify på SM-S918B"
 - Beslut 2 (search_text-kolumn) → Task 2. ✓
 - Beslut 3 (cross-locale, droppa locale-filter, dedup) → Task 3 (query + `distinctBy` + user-locale display name). ✓
 - Beslut 4 (familj/genus via search_text-blob + prefix-boost) → Task 2 (blob) + Task 3 (ORDER BY). ✓ (genus täcks även av scientific_name i blobben.)
-- Beslut 5 (fingeravtryck Schema.version) → Task 2 (schema-bump) + Task 4 (user_version-jämförelse). ✓
+- Beslut 5 (fingeravtryck) → Task 2 (SCHEMA_REV i contentHash flippar application_id) + Task 4 (regressionstest). Provider `needsCopy` jämför redan application_id → ingen provider-ändring. (REVIDERAT: Schema.version är hårdkodad 1 i detta projekt, så user_version-strategin från spec §4.5 byttes mot SCHEMA_REV.) ✓
 - Tester (apostrof/cross-locale/diakrit/familj/prefix) → Task 1 + Task 3. Build-normalisering → Task 2/5. Fingeravtryck → Task 4 + device-verify Task 6. ✓
 - Edge cases: tom query → `normalizeSearch("")=""` → `LIKE %%` matchar alla (Task 3). scientific_name-sök → ingår i search_text-blobben. ✓
 
-**Placeholder-scan:** Inga "TBD". Tre medvetna verifieringspunkter mot exakt kod (migrations-mappens plats/Schema.version-mekanik i Task 2; in-memory-DB-helperns namn i SpeciesRepositoryTest Task 3; ev. gammal readApplicationId-användning Task 4) — faktisk kod ges i varje fall; noteringen är var man bekräftar exakt placering.
+**Placeholder-scan:** Inga "TBD". Två medvetna verifieringspunkter mot exakt kod (in-memory-DB-helperns namn i SpeciesRepositoryTest Task 3; befintlig YAML-fixtur i SpeciesDbBuilderTest Task 4) — faktisk kod ges i varje fall; noteringen är var man speglar befintliga fixtur-namn.
 
-**Typ-konsistens:** `normalizeSearch(String): String` (Task 1) anropas identiskt i builder (Task 2) + repo (Task 3). `searchByNameOrScientific(query, max)` (Task 3, locale borttagen) matchar repo-anropet. `search_text`-kolumn (Task 2) matchas i query (Task 3). `readFingerprint` returnerar `(application_id, user_version)` konsekvent (Task 4). Konsekvent.
+**Typ-konsistens:** `normalizeSearch(String): String` (Task 1) anropas identiskt i builder (Task 2) + repo (Task 3). `searchByNameOrScientific(query, max)` (Task 3, locale borttagen) matchar repo-anropet. `search_text`-kolumn (Task 2) matchas i query (Task 3). `SCHEMA_REV` (Task 2) + `contentFingerprint(items, schemaRev)` (Task 4) konsekvent. Konsekvent.
