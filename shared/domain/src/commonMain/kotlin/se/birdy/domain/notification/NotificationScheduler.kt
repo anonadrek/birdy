@@ -5,7 +5,11 @@ interface NotificationScheduler {
 
     fun scheduleStreakRiskCheck()
 
+    fun scheduleWeeklyRecap()
+
     fun cancelDailyBird()
 
     fun cancelStreakRiskCheck()
+
+    fun cancelWeeklyRecap()
 }
