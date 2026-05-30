@@ -7,9 +7,9 @@ import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -93,7 +93,11 @@ fun CropAdjustScreen(
                                                 applyCorner(rect, m.handle, dxSrc, dySrc, bitmap)
                                             DragMode.Move ->
                                                 CropGeometry.move(
-                                                    rect, dxSrc, dySrc, bitmap.width, bitmap.height,
+                                                    rect,
+                                                    dxSrc,
+                                                    dySrc,
+                                                    bitmap.width,
+                                                    bitmap.height,
                                                 )
                                             DragMode.None -> rect
                                         }
@@ -192,7 +196,9 @@ private sealed interface DragMode {
 
     data object Move : DragMode
 
-    data class Corner(val handle: CropHandle) : DragMode
+    data class Corner(
+        val handle: CropHandle,
+    ) : DragMode
 }
 
 private fun pickDragMode(

@@ -13,10 +13,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlin.math.abs
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.ml.ZoomState
 import se.birdy.ml.zoomPresets
+import kotlin.math.abs
 
 /**
  * Rad med zoom-preset-chips ovanpå live-kameran. Aktivt chip = det vars värde
@@ -52,8 +52,7 @@ fun ZoomChips(
                         .background(
                             color = if (isActive) AccentCopper else Color.Black.copy(alpha = 0.45f),
                             shape = RoundedCornerShape(50),
-                        )
-                        .padding(horizontal = 14.dp, vertical = 8.dp),
+                        ).padding(horizontal = 14.dp, vertical = 8.dp),
             )
         }
     }

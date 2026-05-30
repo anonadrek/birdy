@@ -384,13 +384,13 @@
     <string name="listen_sub">En stämpel väntar i varje.</string>
     <string name="listen_journal_label">FÅNGA · NO 0</string>
     <string name="listen_journal_headline">Tre sätt att *fånga.*</string>
-    <string name="listen_journal_sub">En stämpel väntar i varje.</string>
+    <string name="listen_journal_sub">Kamera, foto eller läte — arten dyker upp i din fältbok.</string>
     <string name="listen_card_audio_title">Lyssna</string>
     <string name="listen_card_audio_body">Identifiera via 3 sekunders läte.</string>
     <string name="listen_card_camera_title">Kika</string>
-    <string name="listen_card_camera_body">Realtidsskanning via kameran.</string>
+    <string name="listen_card_camera_body">Identifiera live genom kameran.</string>
     <string name="listen_card_photo_title">Leta upp</string>
-    <string name="listen_card_photo_body">Välj foto från galleri eller ta nytt.</string>
+    <string name="listen_card_photo_body">Identifiera från ett foto i galleriet.</string>
 
     <!-- ===== Plan 7a: Settings ===== -->
     <string name="settings_title">Inställningar</string>

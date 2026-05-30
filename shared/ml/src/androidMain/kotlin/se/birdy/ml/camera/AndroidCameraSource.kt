@@ -91,7 +91,9 @@ class AndroidCameraSource(
         val boundCamera =
             provider.bindToLifecycle(lifecycleOwner, selector, previewUseCase, analysis)
         camera = boundCamera
-        val max = boundCamera.cameraInfo.zoomState.value?.maxZoomRatio ?: 1f
+        val max =
+            boundCamera.cameraInfo.zoomState.value
+                ?.maxZoomRatio ?: 1f
         _zoom.value = ZoomState(ratio = 1f, minRatio = 1f, maxRatio = max)
         boundCamera.cameraControl.setZoomRatio(1f)
         cameraProvider = provider

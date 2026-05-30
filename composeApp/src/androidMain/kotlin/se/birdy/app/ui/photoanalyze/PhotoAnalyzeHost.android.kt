@@ -199,7 +199,8 @@ private suspend fun decodeForCrop(
         val ls = maxOf(rotated.width, rotated.height)
         if (ls > CROP_WORKING_MAX_PX) {
             val s = CROP_WORKING_MAX_PX.toFloat() / ls
-            Bitmap.createScaledBitmap(rotated, (rotated.width * s).toInt(), (rotated.height * s).toInt(), true)
+            Bitmap
+                .createScaledBitmap(rotated, (rotated.width * s).toInt(), (rotated.height * s).toInt(), true)
                 .also { if (it !== rotated) rotated.recycle() }
         } else {
             rotated
