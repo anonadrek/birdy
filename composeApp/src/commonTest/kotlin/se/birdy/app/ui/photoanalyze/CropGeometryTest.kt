@@ -72,4 +72,38 @@ class CropGeometryTest {
         val out = CropGeometry.move(rect, dx = 50, dy = 30, width = 1000, height = 1000)
         assertEquals(CropRect(50, 30, 250, 230), out)
     }
+
+    @Test
+    fun resize_top_right_respects_min_side() {
+        // Dra TOP_RIGHT inåt nedre-vänster → höger- och topp-kanten stoppas av minSide=224.
+        val rect = CropRect(0, 0, 1000, 1000)
+        val out =
+            CropGeometry.resizeToCorner(
+                rect = rect,
+                handle = CropHandle.TOP_RIGHT,
+                x = 5,
+                y = 995,
+                width = 1000,
+                height = 1000,
+                minSide = 224,
+            )
+        assertEquals(CropRect(0, 776, 224, 1000), out)
+    }
+
+    @Test
+    fun resize_bottom_left_respects_min_side() {
+        // Dra BOTTOM_LEFT inåt övre-höger → vänster- och botten-kanten stoppas av minSide=224.
+        val rect = CropRect(0, 0, 1000, 1000)
+        val out =
+            CropGeometry.resizeToCorner(
+                rect = rect,
+                handle = CropHandle.BOTTOM_LEFT,
+                x = 995,
+                y = 5,
+                width = 1000,
+                height = 1000,
+                minSide = 224,
+            )
+        assertEquals(CropRect(776, 0, 1000, 224), out)
+    }
 }

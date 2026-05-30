@@ -23,6 +23,12 @@ object CropGeometry {
     /**
      * Flytta ett hörn till (x, y) i käll-px, klampat så hörnet stannar inom bilden
      * och varje sida förblir >= minSide.
+     *
+     * Förutsätter att [rect] redan har varje sida >= [minSide]. Callers garanterar
+     * detta: crop-skärmen startar alltid från [fullRect] på en arbetsbild vars kortsida
+     * är >= minSide, och host:en hoppar över crop helt för bilder < minSide. Anropas
+     * funktionen ändå med en rect mindre än minSide kan den returnera koordinater
+     * utanför [0, width]×[0, height].
      */
     fun resizeToCorner(
         rect: CropRect,
