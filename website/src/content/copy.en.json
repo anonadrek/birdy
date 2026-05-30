@@ -72,10 +72,11 @@
     "eyebrow": "QUESTIONS · ANSWERED",
     "headline": "Before you *download.*",
     "items": [
+      { "q": "How is this different from Merlin?", "a": "Merlin is brilliant at identifying birds — use it, it's great. Birdy is about what happens after: keeping each find in a field journal that's yours, offline, with no account. Many birders use both." },
       { "q": "Does it really work offline?", "a": "Yes. The AI runs entirely on your phone — both for camera and audio. No data leaves the device." },
       { "q": "Do I need an account?", "a": "No. Open the app, point the camera, you're scanning. Your journal lives on the phone." },
       { "q": "Where are my photos stored?", "a": "On your device. Birdy never uploads photos to a server. There is no server." },
-      { "q": "How accurate is the AI?", "a": "Top-3 accuracy ~72% on European species. Field-verified on a Galaxy S23 Ultra. Confidence shown for every match." },
+      { "q": "How accurate is the AI?", "a": "Good enough to learn from, honest when it's unsure. Every match shows a confidence level, and you always confirm before it's saved." },
       { "q": "What's covered?", "a": "839 European birds — every species in the EBBA2 atlas plus close relatives, with descriptions, photos and range information." },
       { "q": "Is there an iOS version?", "a": "Not yet. Android first. iOS comes after launch if there is demand." },
       { "q": "What about audio?", "a": "Hold the mic button for 3 seconds. BirdNET-Lite runs on-device, same offline guarantee." },

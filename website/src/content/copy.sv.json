@@ -72,10 +72,11 @@
     "eyebrow": "FRÅGOR · BESVARADE",
     "headline": "Innan du *laddar ner.*",
     "items": [
+      { "q": "Hur skiljer sig Birdy från Merlin?", "a": "Merlin är fantastiskt på att identifiera fåglar — använd det, det är bra. Birdy handlar om vad som händer efter: att behålla varje fynd i en fältdagbok som är din, offline, utan konto. Många skådare använder båda." },
       { "q": "Funkar den verkligen offline?", "a": "Ja. AI:n körs helt på din telefon — både för kamera och ljud. Ingen data lämnar enheten." },
       { "q": "Behöver jag ett konto?", "a": "Nej. Öppna appen, rikta kameran, du skannar. Din dagbok bor på telefonen." },
       { "q": "Var lagras mina foton?", "a": "På din enhet. Birdy laddar aldrig upp foton till en server. Det finns ingen server." },
-      { "q": "Hur exakt är AI:n?", "a": "Top-3-träffsäkerhet ~72% på europeiska arter. Fältverifierat på en Galaxy S23 Ultra. Säkerhet visas för varje träff." },
+      { "q": "Hur exakt är AI:n?", "a": "Tillräckligt bra för att lära sig av, ärlig när den är osäker. Varje träff visar en säkerhetsnivå, och du bekräftar alltid innan något sparas." },
       { "q": "Vad ingår?", "a": "839 europeiska fåglar — varje art i EBBA2-atlasen plus nära släktingar, med beskrivningar, foton och utbredningsinformation." },
       { "q": "Finns en iOS-version?", "a": "Inte än. Android först. iOS kommer efter lansering om det finns efterfrågan." },
       { "q": "Hur funkar ljudet?", "a": "Håll mikrofonknappen i 3 sekunder. BirdNET-Lite körs på enheten, samma offline-garanti." },

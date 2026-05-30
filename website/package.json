@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "test:i18n": "node scripts/check-i18n-parity.mjs",
+    "test:no-accuracy": "node scripts/check-no-accuracy.mjs",
     "test:smoke": "playwright test"
   },
   "dependencies": {
