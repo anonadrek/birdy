@@ -4,13 +4,13 @@
 Birdy — Bird Scanner
 
 ## Short description (max 80 chars)
-Identify birds by camera, learn about them, collect them in your journal.
+Identify birds by camera & sound. Keep every find in a field book that's yours.
 
 ## Long description (max 4000 chars)
 
-Birdy is an AI-powered field journal for birders — built for people who
-want to **learn** to recognise birds in the wild, **collect** their
-sightings, and **grow** as field birders.
+Birdy is the beautiful, private field journal for birders. Identify
+birds with your camera or sound — offline, no account — and keep every
+find as a page you own and want to flip back to.
 
 **SCAN — properly simple**
 Point your camera at the bird, pick a photo from your gallery, or

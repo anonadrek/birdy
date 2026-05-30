@@ -4,13 +4,13 @@
 Birdy — Fågelskanner
 
 ## Kort beskrivning (max 80 tecken)
-Skanna fåglar med kameran, lär dig om dem, samla i din fältbok.
+Identifiera fåglar med kamera & ljud. Behåll varje fynd i en fältbok som är din.
 
 ## Lång beskrivning (max 4000 tecken)
 
-Birdy är en AI-driven fältbok för fågelskådare — gjord för dig som
-vill **lära dig** känna igen fåglar i fält, **samla** dina fynd, och
-**växa** som fältornitolog.
+Birdy är den vackra, privata fältdagboken för fågelskådare.
+Identifiera fåglar med kamera eller ljud — offline, utan konto — och
+behåll varje fynd som ett uppslag du äger och vill bläddra tillbaka till.
 
 **SKANNA — riktigt enkelt**
 Rikta kameran mot fågeln, välj ett foto från galleriet eller spela in
