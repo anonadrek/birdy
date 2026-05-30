@@ -677,7 +677,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.weight
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
@@ -1045,11 +1044,14 @@ actual fun PhotoAnalyzeHost(
         CropAdjustScreen(
             bitmap = bmp,
             onRotate = {
+                // Recycla INTE current synkront: CropAdjustScreen håller en ImageBitmap som
+                // aliasar samma native-buffer, och recomposition är async → en frame skulle
+                // kunna rita en recyclad bitmap (krasch). De mellanliggande roterade
+                // bitmapparna är bounded (<=2048px) och GC:as av runtime; den slutliga
+                // recyclas i onConfirm efter finalize.
                 val current = cropBitmap
                 if (current != null) {
-                    val rotated = rotate90(current)
-                    cropBitmap = rotated
-                    current.recycle()
+                    cropBitmap = rotate90(current)
                 }
             },
             onConfirm = { rect ->
@@ -1063,7 +1065,8 @@ actual fun PhotoAnalyzeHost(
                 }
             },
             onCancel = {
-                cropBitmap?.recycle()
+                // Sätt null först (lämnar CropAdjustScreen); recycla inte synkront — samma
+                // alias-skäl som onRotate, bitmappen GC:as.
                 cropBitmap = null
                 viewModel.reset()
             },
