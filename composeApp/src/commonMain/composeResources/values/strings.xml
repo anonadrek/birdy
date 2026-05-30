@@ -91,6 +91,11 @@
     <string name="photo_error_io">Kunde inte spara bilden.</string>
     <string name="photo_retry">Försök igen</string>
 
+    <!-- Crop / adjust screen -->
+    <string name="crop_rotate">Rotera</string>
+    <string name="crop_confirm">Analysera</string>
+    <string name="crop_cancel">Avbryt</string>
+
     <!-- Result screen -->
     <string name="result_your_scan">din skan</string>
     <string name="result_unresolved_count">%1$d förslag kunde inte matchas</string>

@@ -79,6 +79,11 @@
     <string name="photo_error_io">Could not save the image.</string>
     <string name="photo_retry">Try again</string>
 
+    <!-- Crop / adjust screen -->
+    <string name="crop_rotate">Rotate</string>
+    <string name="crop_confirm">Analyse</string>
+    <string name="crop_cancel">Cancel</string>
+
     <!-- Result screen -->
     <string name="result_your_scan">your scan</string>
     <string name="result_unresolved_count">%1$d suggestions could not be matched</string>
