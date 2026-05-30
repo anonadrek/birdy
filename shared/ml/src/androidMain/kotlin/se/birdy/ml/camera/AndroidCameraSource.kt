@@ -1,6 +1,7 @@
 package se.birdy.ml.camera
 
 import android.content.Context
+import androidx.camera.core.Camera
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
@@ -12,6 +13,8 @@ import com.google.common.util.concurrent.ListenableFuture
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
@@ -19,6 +22,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import se.birdy.ml.CameraSource
 import se.birdy.ml.FrameFormat
 import se.birdy.ml.ImageInput
+import se.birdy.ml.ZoomState
 import java.util.concurrent.Executors
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -29,6 +33,9 @@ class AndroidCameraSource(
 ) : CameraSource {
     private val executor = Executors.newSingleThreadExecutor()
     private var cameraProvider: ProcessCameraProvider? = null
+    private var camera: Camera? = null
+    private val _zoom = MutableStateFlow(ZoomState.NONE)
+    override val zoom: StateFlow<ZoomState> = _zoom.asStateFlow()
     private val analysisFlow = MutableStateFlow<ImageAnalysis?>(null)
     private val lastJpeg = MutableStateFlow<ByteArray?>(null)
     val previewUseCase: Preview = Preview.Builder().build()
@@ -77,7 +84,12 @@ class AndroidCameraSource(
         analysisFlow.value = analysis
         val selector = CameraSelector.DEFAULT_BACK_CAMERA
         provider.unbindAll()
-        provider.bindToLifecycle(lifecycleOwner, selector, previewUseCase, analysis)
+        val boundCamera =
+            provider.bindToLifecycle(lifecycleOwner, selector, previewUseCase, analysis)
+        camera = boundCamera
+        val max = boundCamera.cameraInfo.zoomState.value?.maxZoomRatio ?: 1f
+        _zoom.value = ZoomState(ratio = 1f, minRatio = 1f, maxRatio = max)
+        boundCamera.cameraControl.setZoomRatio(1f)
         cameraProvider = provider
     }
 
@@ -85,6 +97,15 @@ class AndroidCameraSource(
         cameraProvider?.unbindAll()
         analysisFlow.value?.clearAnalyzer()
         analysisFlow.value = null
+        camera = null
+        _zoom.value = ZoomState.NONE
+    }
+
+    override fun setZoomRatio(ratio: Float) {
+        val current = _zoom.value
+        val clamped = ratio.coerceIn(current.minRatio, current.maxRatio)
+        camera?.cameraControl?.setZoomRatio(clamped)
+        _zoom.value = current.copy(ratio = clamped)
     }
 
     private suspend fun awaitProvider(): ProcessCameraProvider =
