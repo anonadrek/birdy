@@ -26,9 +26,9 @@ fun SceneHero(pageOffset: Float) {
         pageOffset = pageOffset,
     ) {
         AsyncImage(
-            model = Res.getUri("files/branding/wordmark.png"),
+            model = Res.getUri("files/branding/hero_bird.png"),
             contentDescription = "Birdy",
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 64.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 96.dp),
             contentScale = ContentScale.Fit,
         )
     }
