@@ -2,7 +2,7 @@
 
 AI-driven Android-app för fågelidentifiering — realtidsskanning via kamera, foto-upload, audio-ID via mikrofon, och ett rikt uppslagsverk över 839 europeiska arter.
 
-> **Status (2026-05-30):** v1.0 släppt (`v1.0.0`, 2026-05-23) följt av onboarding-omarbetning (`v1.0.2` — 7-scens scroll-story). v1.1 Phase A (retention-hooks: Dagens fågel + streak-notis) taggad `v1.1.0-rc1`. Pågående: en v1.x-respons på feedback från en erfaren testare — **DP A (robust sök: apostrof-/diakrit-/språk-okänsligt + familj-/genus-sök) är mergad till `main`**; DP B–E (positionering, kategori-fix, märken, ekologisk grupp-axel) planeras var för sig. Marketing-website live på [birdy.community](https://birdy.community) (Astro + Vercel).
+> **Status (2026-05-30):** v1.0 släppt (`v1.0.0`, 2026-05-23) följt av onboarding-omarbetning (`v1.0.2` — 7-scens scroll-story). v1.1 Phase A (retention-hooks: Dagens fågel + streak-notis) taggad `v1.1.0-rc1`, följt av kamera-zoom + crop/rotera (`v1.1.0-rc2`). Pågående: en v1.x-respons på feedback från en erfaren testare — **DP A (robust sök) och DP B (positionering & copy: "behåll fyndet, inte bara ID:a det") är mergade till `main`**; DP C (kategori-hotfix) påbörjad, DP D–E (märken, ekologisk grupp-axel) planeras var för sig. Marketing-website live på [birdy.community](https://birdy.community) (Astro + Vercel).
 
 ## Vad du kan göra i appen idag
 
@@ -104,7 +104,8 @@ cd website && npm run test:i18n      # SV/EN parity check
 |---|---|---|
 | v1.0.2 | Onboarding-omarbetning (7-scens scroll-story) | ✅ taggad |
 | v1.1 Phase A | Retention-hooks — Dagens fågel + söndags streak-notis + deep-links | ✅ `v1.1.0-rc1` |
-| v1.x feedback-respons | Testar-feedback i 5 delprojekt (DP A–E): **DP A sök-fix ✅ mergad**, DP B–E planerade | 🔧 pågår |
+| v1.1 zoom + crop | Kamera-zoom 1–10× + crop/rotera av uppladdade bilder | ✅ `v1.1.0-rc2` |
+| v1.x feedback-respons | Testar-feedback i 5 delprojekt (DP A–E): **DP A sök-fix ✅, DP B positionering & copy ✅ mergade**; DP C kategori-hotfix påbörjad; DP D–E planerade | 🔧 pågår |
 | v1.2 Phase B | Weekly Recap ("Veckans uppslag") — adaptiv söndagsskärm + enad push | 📋 spec + plan klara |
 
 ## Roadmap post-v1.0
