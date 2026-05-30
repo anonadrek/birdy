@@ -43,6 +43,13 @@ import se.birdy.app.ui.theme.paperBackground
 
 private const val SCENE_COUNT = 7
 
+/**
+ * Höjden på det reserverade bandet längst ner där sid-prickarna bor. Pager-innehållet
+ * får detta som bottenpadding så att de vertikalt centrerade scenerna aldrig sträcker
+ * sig ner i prick-zonen och "smetas ihop" med indikatorn.
+ */
+private val DOTS_BAND_HEIGHT = 56.dp
+
 @Composable
 fun OnboardingScreen(
     state: OnboardingUiState.Visible,
@@ -68,7 +75,14 @@ fun OnboardingScreen(
     }
 
     Box(modifier = Modifier.fillMaxSize().paperBackground().statusBarsPadding()) {
-        VerticalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { page ->
+        VerticalPager(
+            state = pagerState,
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .navigationBarsPadding()
+                    .padding(bottom = DOTS_BAND_HEIGHT),
+        ) { page ->
             val pageOffset =
                 (pagerState.currentPage - page).toFloat() + pagerState.currentPageOffsetFraction
             when (page) {
@@ -112,9 +126,7 @@ fun OnboardingScreen(
                 Modifier
                     .align(Alignment.BottomCenter)
                     .navigationBarsPadding()
-                    .padding(
-                        bottom = if (pagerState.currentPage == SCENE_COUNT - 1) 148.dp else 28.dp,
-                    ),
+                    .padding(bottom = 4.dp),
         )
     }
 }
