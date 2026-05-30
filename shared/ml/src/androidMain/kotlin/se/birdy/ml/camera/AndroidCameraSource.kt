@@ -33,6 +33,10 @@ class AndroidCameraSource(
 ) : CameraSource {
     private val executor = Executors.newSingleThreadExecutor()
     private var cameraProvider: ProcessCameraProvider? = null
+
+    // Läses från UI-tråden (setZoomRatio) men skrivs i start()/stop() på coroutine-/
+    // kamera-executor-trådar → @Volatile för synlighet (set-once-on-bind / null-on-stop).
+    @Volatile
     private var camera: Camera? = null
     private val _zoom = MutableStateFlow(ZoomState.NONE)
     override val zoom: StateFlow<ZoomState> = _zoom.asStateFlow()
