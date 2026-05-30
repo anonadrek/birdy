@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.datetime.Clock
@@ -29,8 +30,11 @@ class RecapViewModel(
 
     val state: StateFlow<RecapUiState> =
         combine(obsRepo.observeAll(), badgeRepo.observeUnlocks()) { obs, unlocks ->
-            buildState(obs, unlocks)
-        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), RecapUiState.Loading)
+            // Upcast Loaded → RecapUiState so catch can emit sibling subtypes (Error).
+            // This is a safe widening — not a downcast.
+            buildState(obs, unlocks) as RecapUiState
+        }.catch { emit(RecapUiState.Error(RecapErrorKind.LoadFailed)) }
+            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), RecapUiState.Loading)
 
     private suspend fun buildState(
         obs: List<Observation>,

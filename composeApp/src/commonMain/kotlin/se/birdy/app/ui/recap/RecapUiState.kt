@@ -10,4 +10,10 @@ sealed interface RecapUiState {
         val heroSpeciesName: String?,
         val newBadgeNames: List<String>,
     ) : RecapUiState
+
+    data class Error(
+        val kind: RecapErrorKind,
+    ) : RecapUiState
 }
+
+enum class RecapErrorKind { LoadFailed }
