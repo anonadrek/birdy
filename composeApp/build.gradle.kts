@@ -98,5 +98,13 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
+        // kotlinx.datetime (LocalDateTime/DayOfWeek) är java.time-backat på Android och
+        // kräver core library desugaring på minSdk 24 (annars NewApi-lint + runtime-krasch
+        // på API 24/25). Phase-B-notiskoden använder DayOfWeek.SUNDAY som triggade det.
+        isCoreLibraryDesugaringEnabled = true
     }
+}
+
+dependencies {
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
 }

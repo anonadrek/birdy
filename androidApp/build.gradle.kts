@@ -108,6 +108,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
+        // Krävs på APK-nivå så kotlinx.datetime/java.time desugaras för minSdk 24.
+        isCoreLibraryDesugaringEnabled = true
     }
 
     lint {
@@ -125,4 +127,8 @@ android {
     // shows bird photos. Install-time asset packs only ship with AAB, so debug builds
     // installed via `installDebug` otherwise serve empty `/android_asset/images/*` paths.
     sourceSets["debug"].assets.srcDirs("../asset-pack/src/main/assets")
+}
+
+dependencies {
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
 }
