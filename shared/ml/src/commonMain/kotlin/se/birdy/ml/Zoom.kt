@@ -18,13 +18,13 @@ private val BASE_PRESETS = listOf(1f, 2f, 5f, 10f)
 
 /**
  * Vilka zoom-chips som ska visas givet enhetens maxRatio.
- * - Tar baspresets (1/2/5/10) som är < maxRatio.
- * - Lägger till min(10, maxRatio) som översta chip (taket), om det inte redan finns.
+ * - Taket är min(10, maxRatio): UI-taket 10x, eller enhetens max om det är lägre.
+ * - Tar baspresets (1/2/5/10) som är < taket och lägger till taket som översta chip.
  * - Returnerar tom lista om kameran saknar zoom (maxRatio <= 1).
  */
 fun zoomPresets(maxRatio: Float): List<Float> {
     if (maxRatio <= 1f) return emptyList()
     val top = minOf(10f, maxRatio)
     val below = BASE_PRESETS.filter { it < top }
-    return if (below.lastOrNull() == top) below else below + top
+    return below + top
 }
