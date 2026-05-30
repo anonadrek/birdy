@@ -649,4 +649,30 @@
     <string name="badge_premium_sunday_birder_desc">Skåda 4 söndagar i rad.</string>
     <string name="badge_premium_daily_bird_hunter_name">Dagens fågel-jägare</string>
     <string name="badge_premium_daily_bird_hunter_desc">Spara dagens kuraterade fågel på 3 olika dagar.</string>
+
+    <!-- ===== v1.2 Phase B: Weekly Recap ===== -->
+    <string name="recap_eyebrow_fmt">Fältrapport · Vecka %1$s</string>
+    <string name="recap_headline_active">En vecka i *fält*.</string>
+    <string name="recap_headline_quiet">En *lugn* vecka.</string>
+    <string name="recap_plate_caption_fmt">Pl. — %1$s</string>
+    <string name="recap_summary_active_fmt">%1$s fynd den här veckan.</string>
+    <string name="recap_summary_active_new">%1$s fynd den här veckan — och en ny bekantskap.</string>
+    <string name="recap_stats_fmt">%1$s fynd · %2$s ny art · %3$s v streak</string>
+    <string name="recap_new_badge_fmt">Ny stämpel: %1$s</string>
+    <string name="recap_delta_fmt">vs förra veckan: %1$s fynd</string>
+    <string name="recap_empty_plate">Sidan är tom — inga fynd ännu.</string>
+    <string name="recap_quiet_encouragement">Ingen brådska. Tio minuter i parken räcker för veckans första rad.</string>
+    <string name="recap_streak_label">Din streak</string>
+    <string name="recap_streak_nudge_fmt">%1$s veckor i rad — håll den vid liv innan söndagen är slut. En talgoxe i parken räcker.</string>
+    <string name="recap_cta_open_camera">Öppna kameran →</string>
+    <string name="recap_lifelist_entry_title">Veckans uppslag</string>
+    <string name="recap_lifelist_entry_active_fmt">Vecka %1$s · %2$s fynd</string>
+    <string name="recap_lifelist_entry_quiet">En lugn vecka hittills</string>
+    <string name="recap_a11y_fmt">Veckans uppslag, vecka %1$s</string>
+    <string name="notification_recap_active_title">Veckan i fält</string>
+    <string name="notification_recap_active_body_fmt">%1$s fynd, %2$s ny art — se veckans uppslag.</string>
+    <string name="notification_recap_streak_title">Bara kvällen kvar</string>
+    <string name="notification_recap_streak_body">En talgoxe i parken räcker — fortsätt din streak.</string>
+    <string name="settings_toggle_weekly_recap">Veckans recap — söndag kväll</string>
+    <string name="settings_dev_trigger_recap">DEV: Trigga veckans recap-push</string>
 </resources>

@@ -636,4 +636,30 @@
     <string name="badge_premium_sunday_birder_desc">Observe on 4 consecutive Sundays.</string>
     <string name="badge_premium_daily_bird_hunter_name">Daily Bird Hunter</string>
     <string name="badge_premium_daily_bird_hunter_desc">Save today\'s curated bird on 3 different days.</string>
+
+    <!-- ===== v1.2 Phase B: Weekly Recap ===== -->
+    <string name="recap_eyebrow_fmt">Field report · Week %1$s</string>
+    <string name="recap_headline_active">A week in the *field*.</string>
+    <string name="recap_headline_quiet">A *quiet* week.</string>
+    <string name="recap_plate_caption_fmt">Pl. — %1$s</string>
+    <string name="recap_summary_active_fmt">%1$s sightings this week.</string>
+    <string name="recap_summary_active_new">%1$s sightings this week — and a new acquaintance.</string>
+    <string name="recap_stats_fmt">%1$s sightings · %2$s new · %3$s wk streak</string>
+    <string name="recap_new_badge_fmt">New stamp: %1$s</string>
+    <string name="recap_delta_fmt">vs last week: %1$s sightings</string>
+    <string name="recap_empty_plate">The page is blank — no sightings yet.</string>
+    <string name="recap_quiet_encouragement">No rush. Ten minutes in the park is enough for the week's first line.</string>
+    <string name="recap_streak_label">Your streak</string>
+    <string name="recap_streak_nudge_fmt">%1$s weeks running — keep it alive before Sunday ends. A great tit in the park is enough.</string>
+    <string name="recap_cta_open_camera">Open the camera →</string>
+    <string name="recap_lifelist_entry_title">This week's page</string>
+    <string name="recap_lifelist_entry_active_fmt">Week %1$s · %2$s sightings</string>
+    <string name="recap_lifelist_entry_quiet">A quiet week so far</string>
+    <string name="recap_a11y_fmt">This week's page, week %1$s</string>
+    <string name="notification_recap_active_title">Your week in the field</string>
+    <string name="notification_recap_active_body_fmt">%1$s sightings, %2$s new — see this week's page.</string>
+    <string name="notification_recap_streak_title">Only the evening left</string>
+    <string name="notification_recap_streak_body">A great tit in the park is enough — keep your streak going.</string>
+    <string name="settings_toggle_weekly_recap">Weekly recap — Sunday evening</string>
+    <string name="settings_dev_trigger_recap">DEV: Trigger weekly recap push</string>
 </resources>
