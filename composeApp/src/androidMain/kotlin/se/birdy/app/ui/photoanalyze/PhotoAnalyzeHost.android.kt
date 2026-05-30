@@ -120,6 +120,10 @@ actual fun PhotoAnalyzeHost(
                 val toFinalize = cropBitmap ?: return@CropAdjustScreen
                 cropBitmap = null
                 viewModel.markAnalyzing()
+                // Avsiktligt på composable-scope, inte viewModelScope: backar användaren ut
+                // under det korta finalize-fönstret avbryts crop→analys (önskvärt — annars
+                // skulle MatchResult-navigeringen rycka tillbaka dem efter att de lämnat).
+                // Källbitmappen GC:as om jobbet avbryts; den recyclas annars efter finalize.
                 scope.launch {
                     val input = withContext(Dispatchers.IO) { finalizeCrop(toFinalize, rect) }
                     toFinalize.recycle()
@@ -209,13 +213,14 @@ private fun finalizeCrop(
 ): ImageInput {
     val cropped = Bitmap.createBitmap(src, rect.left, rect.top, rect.width, rect.height)
     val (w, h) = scaleToLongSide(cropped.width, cropped.height, target = ANALYZE_LONG_SIDE_PX)
-    val scaled =
-        Bitmap.createScaledBitmap(cropped, w, h, true).also {
-            if (it !== cropped) cropped.recycle()
-        }
+    val scaled = Bitmap.createScaledBitmap(cropped, w, h, true)
     val baos = ByteArrayOutputStream()
     scaled.compress(Bitmap.CompressFormat.JPEG, 90, baos)
-    scaled.recycle()
+    // Recycla bara genuint nya intermediär-bitmaps — aldrig src (callern äger och recyclar
+    // src). createBitmap/createScaledBitmap kan returnera src oförändrad när crop = hela
+    // bilden utan skalning, så jämför identitet före recycle (annars dubbel-recycle av src).
+    if (scaled !== src && scaled !== cropped) scaled.recycle()
+    if (cropped !== src) cropped.recycle()
     return ImageInput(
         bytes = baos.toByteArray(),
         widthPx = w,
