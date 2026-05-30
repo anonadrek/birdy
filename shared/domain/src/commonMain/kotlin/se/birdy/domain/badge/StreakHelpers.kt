@@ -25,6 +25,13 @@ data class WeekKey(
             WeekKey(isoYear, isoWeek + 1)
         }
     }
+
+    fun prev(): WeekKey =
+        if (isoWeek > 1) {
+            WeekKey(isoYear, isoWeek - 1)
+        } else {
+            WeekKey(isoYear - 1, isoWeeksInYear(isoYear - 1))
+        }
 }
 
 data class MonthKey(
@@ -120,6 +127,33 @@ fun longestMonthlyStreak(
 }
 
 /**
+ * Nuvarande sammanhängande veckostreak: antal ISO-veckor i rad (bakåt) med minst en observation,
+ * räknat från innevarande vecka om den har obs, annars från förra veckan om DEN har obs
+ * (streaken lever men är "i fara"), annars 0.
+ */
+fun currentWeeklyStreak(
+    instants: List<Instant>,
+    zone: TimeZone,
+    now: Instant,
+): Int {
+    if (instants.isEmpty()) return 0
+    val weeks = instants.map { weekKey(it, zone) }.toSet()
+    val current = weekKey(now, zone)
+    var anchor =
+        when {
+            weeks.contains(current) -> current
+            weeks.contains(current.prev()) -> current.prev()
+            else -> return 0
+        }
+    var count = 0
+    while (weeks.contains(anchor)) {
+        count++
+        anchor = anchor.prev()
+    }
+    return count
+}
+
+/**
  * Counts the longest run of consecutive Sundays (by local date) that each have at least one observation.
  * Sundays are determined by ISO weekday == DayOfWeek.SUNDAY.
  */
@@ -178,7 +212,7 @@ internal val DayOfWeek.isoDayNumber: Int
  * Antal ISO-veckor i ett år: 52 normalt, 53 när 1 jan är torsdag, eller om skottår med 1 jan onsdag.
  */
 @Suppress("MagicNumber")
-internal fun isoWeeksInYear(year: Int): Int {
+fun isoWeeksInYear(year: Int): Int {
     val jan1 = LocalDate(year, 1, 1).dayOfWeek
     val isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)
     val long = jan1 == DayOfWeek.THURSDAY || (isLeap && jan1 == DayOfWeek.WEDNESDAY)
