@@ -251,7 +251,7 @@ with:
 
 In `values-en/strings.xml`, replace:
 ```xml
-    <string name="onboarding_s5_sub">Plenty of milestones to chase. Keep the streak alive.</string>
+    <string name="onboarding_s5_sub">Plenty of milestones to chase. Keep your streak alive.</string>
 ```
 with:
 ```xml
@@ -429,13 +429,13 @@ with:
 Identifiera fåglar med kamera & ljud. Behåll varje fynd i en fältbok som är din.
 ```
 
-- [ ] **Step 2: Verify SV short ≤ 80 chars**
+- [ ] **Step 2: Verify SV short ≤ 80 chars (code-point count, not bytes)**
 
-Run:
+`wc -m` miscounts here (it counts UTF-8 bytes for å/ä/ö/— in a non-UTF-8 shell). Use code-point counting, which is what Play Console measures:
 ```bash
-printf '%s' "Identifiera fåglar med kamera & ljud. Behåll varje fynd i en fältbok som är din." | wc -m
+node -e "console.log([...'Identifiera fåglar med kamera & ljud. Behåll varje fynd i en fältbok som är din.'].length)"
 ```
-Expected: `80`. (Exactly at the Play limit. If Play Console later rejects it, fall back to `Identifiera fåglar med kamera & ljud. Behåll dina fynd i en fältbok som är din.` = 79 chars.)
+Expected: `80` (exactly at the Play limit). If Play Console later rejects it, fall back to `Identifiera fåglar med kamera & ljud. Behåll dina fynd i en fältbok som är din.` = 79 code points.
 
 - [ ] **Step 3: SV long description first paragraph**
 
@@ -545,36 +545,52 @@ The i18n-parity test compares key structure (including array indices), so the ne
 **Files:**
 - Modify: `website/src/content/copy.en.json`
 - Modify: `website/src/content/copy.sv.json`
-- Create: `website/tests/no-accuracy-number.spec.ts`
+- Create: `website/scripts/check-no-accuracy.mjs`
+- Modify: `website/package.json` (add `test:no-accuracy` script)
 
-- [ ] **Step 1: Write the failing guard test**
+> Why a node script, not a Playwright spec: Playwright's config boots a `preview` webServer (needs a prior `npm run build`), so a `.spec.ts` would hang on server startup mid-task. A standalone node script matches the existing `check-i18n-parity.mjs` convention — fast, no server, just reads the JSON.
 
-Create `website/tests/no-accuracy-number.spec.ts`:
-```ts
-import { test, expect } from "@playwright/test";
-import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+- [ ] **Step 1: Write the failing guard script**
 
-/**
- * Cross-cutting rule (DP B): never communicate accuracy numbers.
- * Guards both copy decks against the "~72%" regression.
- */
-const root = fileURLToPath(new URL("../src/content/", import.meta.url));
+Create `website/scripts/check-no-accuracy.mjs`:
+```js
+#!/usr/bin/env node
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
 
-for (const lang of ["en", "sv"]) {
-  test(`${lang} copy deck states no accuracy number`, () => {
-    const raw = readFileSync(`${root}copy.${lang}.json`, "utf-8");
-    expect(raw).not.toMatch(/\b72\b/);
-    expect(raw.toLowerCase()).not.toContain("accuracy");
-    expect(raw.toLowerCase()).not.toContain("träffsäker");
-  });
+// Cross-cutting rule (DP B): never communicate accuracy numbers.
+// Guards both copy decks against the "~72%" regression.
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const root = resolve(__dirname, '..');
+const banned = [/\b72\b/, /accuracy/i, /träffsäker/i];
+
+let failed = false;
+for (const lang of ['en', 'sv']) {
+  const raw = readFileSync(resolve(root, `src/content/copy.${lang}.json`), 'utf8');
+  for (const re of banned) {
+    if (re.test(raw)) {
+      console.error(`accuracy-guard FAILED: copy.${lang}.json matches ${re}`);
+      failed = true;
+    }
+  }
 }
+if (failed) process.exit(1);
+console.log('accuracy-guard OK (no accuracy number in either deck)');
 ```
 
-- [ ] **Step 2: Run it — expect FAIL (leak still present)**
+- [ ] **Step 2: Add the npm script**
 
-Run: `cd website && npx playwright test no-accuracy-number`
-Expected: FAIL on both decks (matches "72" / "accuracy" / "träffsäker").
+In `website/package.json`, in `"scripts"`, add after the `"test:i18n"` line:
+```json
+    "test:no-accuracy": "node scripts/check-no-accuracy.mjs",
+```
+(Remember to add the trailing comma to the previous line if needed so the JSON stays valid.)
+
+- [ ] **Step 3: Run it — expect FAIL (leak still present)**
+
+Run: `cd website && npm run test:no-accuracy`
+Expected: exit 1, `accuracy-guard FAILED` for both decks (matches "72" / "accuracy" / "träffsäker").
 
 - [ ] **Step 3: Fix EN accuracy answer**
 
@@ -598,10 +614,10 @@ with:
       { "q": "Hur exakt är AI:n?", "a": "Tillräckligt bra för att lära sig av, ärlig när den är osäker. Varje träff visar en säkerhetsnivå, och du bekräftar alltid innan något sparas." },
 ```
 
-- [ ] **Step 5: Run guard test — expect PASS**
+- [ ] **Step 5: Run guard — expect PASS**
 
-Run: `cd website && npx playwright test no-accuracy-number`
-Expected: PASS (both decks).
+Run: `cd website && npm run test:no-accuracy`
+Expected: `accuracy-guard OK` (exit 0).
 
 - [ ] **Step 6: Add vs-Merlin item as first FAQ item — EN**
 
@@ -623,14 +639,14 @@ In `copy.sv.json`, insert the new first item so it reads:
 
 - [ ] **Step 8: Run i18n parity + guard together**
 
-Run: `cd website && npx playwright test i18n-parity no-accuracy-number`
-Expected: PASS (key structure identical between decks; no accuracy number).
+Run: `cd website && npm run test:i18n && npm run test:no-accuracy`
+Expected: `i18n parity OK (N keys)` then `accuracy-guard OK`. Parity holds because the new FAQ item was added to **both** decks, so `faq.items[len=…]` matches.
 
 - [ ] **Step 9: Commit**
 
 ```bash
-git add website/src/content/copy.en.json website/src/content/copy.sv.json website/tests/no-accuracy-number.spec.ts
-git commit -m "feat(website): DP B — vs-Merlin-FAQ + ta bort accuracy-siffra + guard-test (EN+SV)"
+git add website/src/content/copy.en.json website/src/content/copy.sv.json website/scripts/check-no-accuracy.mjs website/package.json
+git commit -m "feat(website): DP B — vs-Merlin-FAQ + ta bort accuracy-siffra + guard-script (EN+SV)"
 ```
 
 ---
@@ -687,12 +703,12 @@ Expected: PASS.
 - [ ] **Step 3: Smoke tests**
 
 Run: `cd website && npm run test:smoke`
-Expected: PASS (7 tests).
+Expected: PASS (7 tests). (Boots a `preview` server — Step 1's build must have run first.)
 
 - [ ] **Step 4: Accuracy guard**
 
-Run: `cd website && npx playwright test no-accuracy-number`
-Expected: PASS.
+Run: `cd website && npm run test:no-accuracy`
+Expected: `accuracy-guard OK`.
 
 - [ ] **Step 5: Final repo-wide accuracy sweep**
 
@@ -723,4 +739,6 @@ After all tasks: use superpowers:finishing-a-development-branch to decide merge/
 
 **Placeholder scan:** No TBD/TODO; every edit shows exact before/after strings.
 
-**Consistency:** Asset name `hero_bird.png` used identically in Task 3 steps 1, 2, 3, 4 and the "files touched" list. String keys match the spec and the verified current file contents. The vs-Merlin FAQ is added to both decks (i18n parity preserved). The accuracy guard test (`no-accuracy-number.spec.ts`) is written before the fix (TDD red→green).
+**Consistency:** Asset name `hero_bird.png` used identically in Task 3 steps 1, 2, 3, 4 and the "files touched" list. String keys match the spec and the verified current file contents. The vs-Merlin FAQ is added to both decks (i18n parity preserved). The accuracy guard (`scripts/check-no-accuracy.mjs`, a node script matching the existing `check-i18n-parity.mjs` convention — not a Playwright spec, which would boot a preview server) is written before the fix (TDD red→green).
+
+**Grounding corrections (vs first draft):** EN scene-5 sub current value is "Keep **your** streak alive" (not "the"); SV short-description verified at 80 code points via `node`, not `wc -m` (which counts bytes); `test:i18n` is a node script, accuracy guard is now also a node script (not Playwright). All exact-match strings re-verified against working tree at commit `958374c`.
