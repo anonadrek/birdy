@@ -96,8 +96,8 @@ Språk-separationen är redan automatisk (Android väljer `values/` vs `values-e
 
 | | Ny |
 |---|---|
-| SV | `Identifiera fåglar med kamera & ljud. Behåll varje fynd i en fältbok som är din.` (79) |
-| EN | `Identify birds by camera & sound. Keep every find in a field book that's yours.` (78) |
+| SV | `Identifiera fåglar med kamera & ljud. Behåll varje fynd i en fältbok som är din.` (80 — exakt på gränsen) |
+| EN | `Identify birds by camera & sound. Keep every find in a field book that's yours.` (79) |
 
 **Lång beskrivning — första stycket** (resten av SKANNA/LÄR/SAMLA-sektionerna oförändrade):
 
@@ -135,11 +135,11 @@ FAQ:n läcker idag siffran "Top-3 accuracy ~72%" / "Top-3-träffsäkerhet ~72%" 
 
 ### 2e. Website premium-body (`copy.sv.json` → `premium.body`)
 
-"obsessiva samlare" skaver på svenska. Byt ordvalet (EN `premium.body` "obsessive collectors" oförändrad):
+"obsessiva samlare" skaver på svenska (klingar negativt). Byt ordvalet till "hängivna samlare" (EN `premium.body` "obsessive collectors" oförändrad):
 
 | | premium.body slut |
 |---|---|
-| SV | `…säsongsstatistik och 10 fältmärken för de mest hängivna.` |
+| SV | `…säsongsstatistik och 10 fältmärken för hängivna samlare.` |
 
 ---
 
