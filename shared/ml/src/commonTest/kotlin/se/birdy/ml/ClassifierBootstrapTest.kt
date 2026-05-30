@@ -3,6 +3,7 @@ package se.birdy.ml
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -12,9 +13,12 @@ class ClassifierBootstrapTest {
     @Test
     fun emits_initializing_then_ready_on_success() =
         runTest {
+            val dispatcher = StandardTestDispatcher(testScheduler)
             val bootstrap =
                 ClassifierBootstrap(
                     buildClassifier = { Triple(FakeBirdClassifier(), ClassifierMode.REAL, "v1.0") },
+                    scope = backgroundScope,
+                    buildContext = dispatcher,
                 )
             val states = bootstrap.state.take(2).toList()
             assertTrue(states[0] is ClassifierBootstrapState.Initializing)
@@ -26,9 +30,12 @@ class ClassifierBootstrapTest {
     @Test
     fun emits_failed_when_build_throws() =
         runTest {
+            val dispatcher = StandardTestDispatcher(testScheduler)
             val bootstrap =
                 ClassifierBootstrap(
                     buildClassifier = { throw RuntimeException("boom") },
+                    scope = backgroundScope,
+                    buildContext = dispatcher,
                 )
             val states = bootstrap.state.take(2).toList()
             val failed = states[1] as ClassifierBootstrapState.Failed
@@ -38,9 +45,12 @@ class ClassifierBootstrapTest {
     @Test
     fun retry_is_noop_when_not_failed() =
         runTest {
+            val dispatcher = StandardTestDispatcher(testScheduler)
             val bootstrap =
                 ClassifierBootstrap(
                     buildClassifier = { Triple(FakeBirdClassifier(), ClassifierMode.REAL, "v1.0") },
+                    scope = backgroundScope,
+                    buildContext = dispatcher,
                 )
             // Wait until Ready
             val readyState = bootstrap.state.first { it is ClassifierBootstrapState.Ready }
