@@ -339,7 +339,7 @@
     <string name="onboarding_p3_fallback_name">Min</string>
 
     <!-- Onboarding v2 (Plan 2026-05-25 onboarding-scroll-story) -->
-    <string name="onboarding_s1_eyebrow">FÄLT-FÖLJESLAGARE · NO 1</string>
+    <string name="onboarding_s1_eyebrow">FÅGEL-ID + FÄLTDAGBOK · NO 1</string>
     <string name="onboarding_s1_headline">*Birdy.*</string>
     <string name="onboarding_s1_sub">Identifiera fåglar i fält — foto eller ljud, på enheten, utan internet.</string>
 

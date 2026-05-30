@@ -326,7 +326,7 @@
     <string name="onboarding_p3_fallback_name">My</string>
 
     <!-- Onboarding v2 (Plan 2026-05-25 onboarding-scroll-story) -->
-    <string name="onboarding_s1_eyebrow">FIELD COMPANION · NO 1</string>
+    <string name="onboarding_s1_eyebrow">BIRD ID + FIELD JOURNAL · NO 1</string>
     <string name="onboarding_s1_headline">*Birdy.*</string>
     <string name="onboarding_s1_sub">Identify birds in the field — photo or sound, on-device, no internet.</string>
 
