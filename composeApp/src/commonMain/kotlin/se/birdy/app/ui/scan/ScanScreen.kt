@@ -155,6 +155,7 @@ fun ScanScreen(
                                 .padding(top = 60.dp, end = 14.dp),
                     )
                 }
+                val zoomState by cameraSource.zoom.collectAsState()
                 Column(
                     modifier =
                         Modifier
@@ -163,6 +164,10 @@ fun ScanScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
+                    ZoomChips(
+                        zoom = zoomState,
+                        onSelect = { cameraSource.setZoomRatio(it) },
+                    )
                     Text(text = stringResource(Res.string.scan_freeze_hint), color = TextOnHero)
                     OutlinedButton(onClick = onPhotoAnalyzeClick) {
                         Text(stringResource(Res.string.scan_photo_analyze))
