@@ -2,9 +2,9 @@
 <resources>
     <!-- Bottom-nav -->
     <string name="tab_listen">Identifiera</string>
-    <string name="tab_archive">Archive</string>
-    <string name="tab_lifelist">Lifelist</string>
-    <string name="tab_badges">Badges</string>
+    <string name="tab_archive">Uppslagsverk</string>
+    <string name="tab_lifelist">Mina arter</string>
+    <string name="tab_badges">Märken</string>
 
     <!-- Top-bar titles -->
     <string name="title_encyclopedia">UPPSLAGSVERK</string>
@@ -408,7 +408,7 @@
     <string name="menu_button">Meny</string>
 
     <!-- ===== Plan 7b: ArchiveScreen ===== -->
-    <string name="archive_breadcrumb">ARCHIVE</string>
+    <string name="archive_breadcrumb">UPPSLAGSVERK</string>
     <string name="archive_headline">Birds.</string>
     <string name="archive_sub">Sök, filtrera, *lär.*</string>
     <string name="archive_journal_label">ARKIV · 700 ARTER</string>
@@ -444,7 +444,7 @@
     <string name="badge_sheet_close">Stäng</string>
 
     <!-- ===== Plan 7b: LifelistScreen ===== -->
-    <string name="lifelist_breadcrumb">LIFELIST</string>
+    <string name="lifelist_breadcrumb">MINA ARTER</string>
     <string name="lifelist_headline_format">*%1$s*s samling.</string>
     <string name="lifelist_headline_fallback">Min samling.</string>
     <string name="lifelist_stat_species">ARTER</string>
