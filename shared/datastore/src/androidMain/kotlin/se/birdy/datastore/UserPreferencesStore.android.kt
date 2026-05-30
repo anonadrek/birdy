@@ -47,6 +47,7 @@ private class AndroidUserPreferences(
         val PUSH_PERMISSION_ASKED = booleanPreferencesKey("push_permission_asked")
         val DAILY_BIRD_PUSH_ENABLED = booleanPreferencesKey("daily_bird_push_enabled")
         val STREAK_RISK_PUSH_ENABLED = booleanPreferencesKey("streak_risk_push_enabled")
+        val WEEKLY_RECAP_PUSH_ENABLED = booleanPreferencesKey("weekly_recap_push_enabled")
     }
 
     override val userName: Flow<String> = safeData.map { it[Keys.USER_NAME] ?: "" }
@@ -80,6 +81,8 @@ private class AndroidUserPreferences(
         safeData.map { it[Keys.DAILY_BIRD_PUSH_ENABLED] ?: true }
     override val streakRiskPushEnabled: Flow<Boolean> =
         safeData.map { it[Keys.STREAK_RISK_PUSH_ENABLED] ?: true }
+    override val weeklyRecapPushEnabled: Flow<Boolean> =
+        safeData.map { it[Keys.WEEKLY_RECAP_PUSH_ENABLED] ?: true }
 
     override suspend fun setUserName(name: String) {
         store.edit { it[Keys.USER_NAME] = name }
@@ -127,5 +130,9 @@ private class AndroidUserPreferences(
 
     override suspend fun setStreakRiskPushEnabled(value: Boolean) {
         store.edit { it[Keys.STREAK_RISK_PUSH_ENABLED] = value }
+    }
+
+    override suspend fun setWeeklyRecapPushEnabled(value: Boolean) {
+        store.edit { it[Keys.WEEKLY_RECAP_PUSH_ENABLED] = value }
     }
 }
