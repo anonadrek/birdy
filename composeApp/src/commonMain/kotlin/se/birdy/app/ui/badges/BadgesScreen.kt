@@ -42,8 +42,9 @@ import birdy_bird_scanner.composeapp.generated.resources.badges_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.badges_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.badges_load_error
 import birdy_bird_scanner.composeapp.generated.resources.badges_load_error_retry
+import birdy_bird_scanner.composeapp.generated.resources.badges_section_habits
+import birdy_bird_scanner.composeapp.generated.resources.badges_section_milestones
 import birdy_bird_scanner.composeapp.generated.resources.badges_section_recently_unlocked
-import birdy_bird_scanner.composeapp.generated.resources.badges_section_to_discover
 import birdy_bird_scanner.composeapp.generated.resources.gear_content_description
 import birdy_bird_scanner.composeapp.generated.resources.premium_badges_cta
 import birdy_bird_scanner.composeapp.generated.resources.premium_badges_section
@@ -63,6 +64,7 @@ import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.content.Locale
 import se.birdy.domain.badge.Badge
+import se.birdy.domain.badge.BadgeTier
 import se.birdy.domain.badge.BadgeUnlock
 
 @Composable
@@ -117,6 +119,9 @@ private fun LoadedContent(
     onPremiumClick: () -> Unit,
     showPremiumTeaser: Boolean,
 ) {
+    val milestones = state.locked.filter { it.badge.category.tier == BadgeTier.MILESTONE }
+    val habits = state.locked.filter { it.badge.category.tier == BadgeTier.HABIT }
+
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
         modifier = Modifier.fillMaxSize(),
@@ -176,16 +181,29 @@ private fun LoadedContent(
             }
         }
 
-        item(span = { GridItemSpan(maxLineSpan) }) {
-            Column { SectionLabel(stringResource(Res.string.badges_section_to_discover, state.locked.size)) }
+        if (milestones.isNotEmpty()) {
+            item(span = { GridItemSpan(maxLineSpan) }) {
+                SectionLabel(stringResource(Res.string.badges_section_milestones))
+            }
+            items(items = milestones, key = { it.badge.id }) { lbp ->
+                BadgeGridCell(
+                    progress = lbp,
+                    onClick = { onLockedClick(lbp) },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
         }
-
-        items(items = state.locked, key = { it.badge.id }) { lbp ->
-            BadgeGridCell(
-                progress = lbp,
-                onClick = { onLockedClick(lbp) },
-                modifier = Modifier.fillMaxWidth(),
-            )
+        if (habits.isNotEmpty()) {
+            item(span = { GridItemSpan(maxLineSpan) }) {
+                SectionLabel(stringResource(Res.string.badges_section_habits))
+            }
+            items(items = habits, key = { it.badge.id }) { lbp ->
+                BadgeGridCell(
+                    progress = lbp,
+                    onClick = { onLockedClick(lbp) },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
         }
         if (showPremiumTeaser || state.premiumActive) {
             item(span = { GridItemSpan(maxLineSpan) }) {
