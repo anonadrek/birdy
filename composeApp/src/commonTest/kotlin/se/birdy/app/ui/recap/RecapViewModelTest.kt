@@ -38,7 +38,7 @@ class RecapViewModelTest {
         obs: FakeObservationRepository = FakeObservationRepository(),
         badges: FakeBadgeRepository = FakeBadgeRepository(),
         speciesByQid: suspend () -> Map<SpeciesId, SpeciesSummary> = { emptyMap() },
-        badgeNameFor: (String) -> String = { it },
+        badgeNameFor: suspend (String) -> String = { it },
     ) = RecapViewModel(
         obsRepo = obs,
         badgeRepo = badges,

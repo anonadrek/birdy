@@ -58,5 +58,6 @@ interface UserPreferences {
     suspend fun setDailyBirdPushEnabled(value: Boolean)
 
     suspend fun setStreakRiskPushEnabled(value: Boolean)
+
     suspend fun setWeeklyRecapPushEnabled(value: Boolean)
 }

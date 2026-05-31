@@ -22,7 +22,7 @@ class RecapViewModel(
     private val obsRepo: ObservationRepository,
     private val badgeRepo: BadgeRepository,
     private val speciesByQid: suspend () -> Map<SpeciesId, SpeciesSummary>,
-    private val badgeNameFor: (String) -> String,
+    private val badgeNameFor: suspend (String) -> String,
     private val zone: TimeZone,
     private val now: () -> Instant = { Clock.System.now() },
 ) : ViewModel() {
@@ -43,7 +43,7 @@ class RecapViewModel(
         val species = speciesByQid()
         val recap = builder.build(obs, species, unlocks, now())
         val heroName = recap.hero?.speciesId?.let { species[SpeciesId(it)]?.name }
-        val badgeNames = recap.summary.newBadgeIds.map(badgeNameFor)
+        val badgeNames = buildList { for (id in recap.summary.newBadgeIds) add(badgeNameFor(id)) }
         return RecapUiState.Loaded(recap, heroName, badgeNames)
     }
 }
