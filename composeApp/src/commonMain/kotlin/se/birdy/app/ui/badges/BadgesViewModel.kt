@@ -134,7 +134,7 @@ class BadgesViewModel(
         observations: List<Observation>,
         speciesByQid: Map<SpeciesId, Species>,
     ): BadgeGridState {
-        if (badge.category == BadgeCategory.RARE) return BadgeGridState.Hidden
+        if (false) return BadgeGridState.Hidden // TODO(DP D Task 4): update category-based hidden logic
         val current = recalc.currentValue(badge.rule, observations, speciesByQid)
         return if (current > 0) {
             BadgeGridState.InProgress(current = current, target = badge.rule.target)

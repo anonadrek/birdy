@@ -10,7 +10,6 @@ import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
 import se.birdy.content.model.SpeciesTaxonomy
 import se.birdy.domain.badge.Badge
-import se.birdy.domain.badge.BadgeAbundance
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeCategory
 import se.birdy.domain.badge.BadgeRule
@@ -150,22 +149,6 @@ class RecalculateBadgesUseCaseTest {
         val obs = listOf(obs("Q-unknown", 2026, 5, 4))
         val catalog = catalogOf(badge("fam_paridae", BadgeRule.ObservedInFamily("paridae", 1)))
         assertEquals(emptyList(), recalc.newUnlocks(obs, emptyMap(), catalog, emptySet()))
-    }
-
-    @Test
-    fun `observed_with_abundance — sällsynt 1 match`() {
-        val species = mapOf(SpeciesId("Q1") to fakeSpecies("Q1", abundance = BadgeAbundance.SÄLLSYNT))
-        val obs = listOf(obs("Q1", 2026, 5, 4))
-        val catalog = catalogOf(badge("rare1", BadgeRule.ObservedWithAbundance(BadgeAbundance.SÄLLSYNT, 1)))
-        assertEquals(listOf("rare1"), recalc.newUnlocks(obs, species, catalog, emptySet()).map { it.badgeId })
-    }
-
-    @Test
-    fun `observed_with_abundance — non-matching abundance does not count`() {
-        val species = mapOf(SpeciesId("Q1") to fakeSpecies("Q1", abundance = BadgeAbundance.OVANLIG))
-        val obs = listOf(obs("Q1", 2026, 5, 4))
-        val catalog = catalogOf(badge("rare1", BadgeRule.ObservedWithAbundance(BadgeAbundance.SÄLLSYNT, 1)))
-        assertEquals(emptyList(), recalc.newUnlocks(obs, species, catalog, emptySet()))
     }
 
     @Test
@@ -390,6 +373,69 @@ class RecalculateBadgesUseCaseTest {
         assertEquals(listOf("dbm3"), unlocks.map { it.badgeId })
     }
 
+    // ===== DP D: evaluator distinct-family + new rules =====
+
+    @Test
+    fun `observed_in_family — counts distinct species not observations`() {
+        val species = mapOf(
+            SpeciesId("Q1") to fakeSpecies("Q1", family = "paridae"),
+            SpeciesId("Q2") to fakeSpecies("Q2", family = "paridae"),
+        )
+        val obs = listOf(obs("Q1", day = 1), obs("Q1", day = 2), obs("Q2", day = 3))
+        val catalog = catalogOf(badge("fam", BadgeRule.ObservedInFamily("paridae", 3)))
+        assertEquals(2, recalc.currentValue(BadgeRule.ObservedInFamily("paridae", 3), obs, species))
+        assertEquals(emptyList(), recalc.newUnlocks(obs, species, catalog, emptySet()))
+    }
+
+    @Test
+    fun `observed_in_family_group — distinct species across the family set`() {
+        val species = mapOf(
+            SpeciesId("Q1") to fakeSpecies("Q1", family = "phylloscopidae"),
+            SpeciesId("Q2") to fakeSpecies("Q2", family = "sylviidae"),
+            SpeciesId("Q3") to fakeSpecies("Q3", family = "corvidae"),
+        )
+        val obs = listOf(obs("Q1", day = 1), obs("Q2", day = 2), obs("Q3", day = 3))
+        val rule = BadgeRule.ObservedInFamilyGroup(setOf("phylloscopidae", "sylviidae", "acrocephalidae"), target = 2)
+        assertEquals(2, recalc.currentValue(rule, obs, species))
+        assertEquals(listOf("warblers"), recalc.newUnlocks(obs, species, catalogOf(badge("warblers", rule)), emptySet()).map { it.badgeId })
+    }
+
+    @Test
+    fun `count_distinct_families — counts unique families`() {
+        val species = mapOf(
+            SpeciesId("Q1") to fakeSpecies("Q1", family = "paridae"),
+            SpeciesId("Q2") to fakeSpecies("Q2", family = "corvidae"),
+            SpeciesId("Q3") to fakeSpecies("Q3", family = "corvidae"),
+        )
+        val obs = listOf(obs("Q1", day = 1), obs("Q2", day = 2), obs("Q3", day = 3))
+        assertEquals(2, recalc.currentValue(BadgeRule.CountDistinctFamilies(3), obs, species))
+    }
+
+    @Test
+    fun `count_distinct_orders — counts unique orders`() {
+        val species = mapOf(
+            SpeciesId("Q1") to fakeSpecies("Q1", iocOrder = "Passeriformes"),
+            SpeciesId("Q2") to fakeSpecies("Q2", iocOrder = "Anseriformes"),
+            SpeciesId("Q3") to fakeSpecies("Q3", iocOrder = "Passeriformes"),
+        )
+        val obs = listOf(obs("Q1", day = 1), obs("Q2", day = 2), obs("Q3", day = 3))
+        assertEquals(2, recalc.currentValue(BadgeRule.CountDistinctOrders(5), obs, species))
+    }
+
+    @Test
+    fun `observed_red_listed — counts distinct NT VU CR species, ignores LC`() {
+        val species = mapOf(
+            SpeciesId("Q1") to fakeSpecies("Q1", iucnStatus = "VU"),
+            SpeciesId("Q2") to fakeSpecies("Q2", iucnStatus = "CR"),
+            SpeciesId("Q3") to fakeSpecies("Q3", iucnStatus = "LC"),
+            SpeciesId("Q4") to fakeSpecies("Q4", iucnStatus = "NT"),
+        )
+        val obs = listOf(obs("Q1", day = 1), obs("Q2", day = 2), obs("Q3", day = 3), obs("Q4", day = 4))
+        val rule = BadgeRule.ObservedRedListed(target = 3)
+        assertEquals(3, recalc.currentValue(rule, obs, species))
+        assertEquals(listOf("rl"), recalc.newUnlocks(obs, species, catalogOf(badge("rl", rule)), emptySet()).map { it.badgeId })
+    }
+
     // ===== helpers =====
 
     private fun obs(
@@ -445,27 +491,20 @@ class RecalculateBadgesUseCaseTest {
     private fun fakeSpecies(
         qid: String,
         family: String = "unknown",
-        abundance: BadgeAbundance = BadgeAbundance.OVANLIG,
-    ): Species {
-        val contentAbundance =
-            when (abundance) {
-                BadgeAbundance.ALLMÄN -> ContentAbundance.ALLMÄN
-                BadgeAbundance.MINDRE_ALLMÄN -> ContentAbundance.MINDRE_ALLMÄN
-                BadgeAbundance.OVANLIG -> ContentAbundance.OVANLIG
-                BadgeAbundance.SÄLLSYNT -> ContentAbundance.SÄLLSYNT
-            }
-        return Species(
+        iocOrder: String = "Fakeiformes",
+        iucnStatus: String = "LC",
+    ): Species =
+        Species(
             id = SpeciesId(qid),
             scientificName = "Fakeus speciesius",
-            taxonomy = SpeciesTaxonomy(family = family, familySv = null, genus = "Fakeus", iocOrder = "Fakeiformes"),
+            taxonomy = SpeciesTaxonomy(family = family, familySv = null, genus = "Fakeus", iocOrder = iocOrder),
             name = qid,
-            abundance = contentAbundance,
-            iucnStatus = "LC",
+            abundance = ContentAbundance.OVANLIG,
+            iucnStatus = iucnStatus,
             regions = emptyList(),
             season = emptyMap(),
             description = null,
             migration = null,
             images = emptyList(),
         )
-    }
 }

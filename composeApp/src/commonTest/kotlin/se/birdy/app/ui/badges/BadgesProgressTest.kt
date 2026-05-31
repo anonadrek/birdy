@@ -81,7 +81,7 @@ class BadgesProgressTest {
             }
         }
 
-    @Test fun `rare badge is always Hidden`() =
+    @Test fun `redlisted badge is visible (not hidden)`() =
         runTest {
             val obs = listOf(observation("Q1"))
             val vm =
@@ -92,13 +92,13 @@ class BadgesProgressTest {
                             version = 1,
                             badges =
                                 listOf(
-                                    Badge("rare-finder", BadgeCategory.RARE, BadgeRule.CountUniqueSpecies(1)),
+                                    Badge("rl-finder", BadgeCategory.REDLISTED, BadgeRule.CountUniqueSpecies(5)),
                                 ),
                         ),
                 )
             vm.state.test {
                 val loaded = drainToLoaded()
-                assertTrue(loaded.locked.any { it.state is BadgeGridState.Hidden })
+                assertTrue(loaded.locked.none { it.state is BadgeGridState.Hidden })
                 cancelAndIgnoreRemainingEvents()
             }
         }

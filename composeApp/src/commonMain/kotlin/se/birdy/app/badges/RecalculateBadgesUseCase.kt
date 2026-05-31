@@ -5,7 +5,6 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
-import se.birdy.domain.badge.BadgeAbundance
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeRule
 import se.birdy.domain.badge.BadgeUnlock
@@ -15,7 +14,8 @@ import se.birdy.domain.badge.longestWeeklyStreak
 import se.birdy.domain.badge.seasonOf
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationSource
-import se.birdy.content.Abundance as ContentAbundance
+
+private val RED_LISTED = setOf("NT", "VU", "CR")
 
 class RecalculateBadgesUseCase(
     private val zone: TimeZone = TimeZone.currentSystemDefault(),
@@ -64,14 +64,25 @@ class RecalculateBadgesUseCase(
             is BadgeRule.ObservedInSeason ->
                 observations.count { seasonOf(it.capturedAt, zone) == rule.season }
             is BadgeRule.ObservedInFamily ->
-                observations.count { o ->
-                    val qid = o.speciesId ?: return@count false
+                observations.mapNotNull { it.speciesId }.distinct().count { qid ->
                     speciesByQid[SpeciesId(qid)]?.taxonomy?.family == rule.family
                 }
-            is BadgeRule.ObservedWithAbundance ->
-                observations.count { o ->
-                    val qid = o.speciesId ?: return@count false
-                    speciesByQid[SpeciesId(qid)]?.abundance?.let(::mapAbundance) == rule.abundance
+            is BadgeRule.ObservedWithAbundance -> 0
+            is BadgeRule.ObservedInFamilyGroup ->
+                observations.mapNotNull { it.speciesId }.distinct().count { qid ->
+                    speciesByQid[SpeciesId(qid)]?.taxonomy?.family in rule.families
+                }
+            is BadgeRule.CountDistinctFamilies ->
+                observations.mapNotNull { it.speciesId }
+                    .mapNotNull { speciesByQid[SpeciesId(it)]?.taxonomy?.family }
+                    .distinct().size
+            is BadgeRule.CountDistinctOrders ->
+                observations.mapNotNull { it.speciesId }
+                    .mapNotNull { speciesByQid[SpeciesId(it)]?.taxonomy?.iocOrder }
+                    .distinct().size
+            is BadgeRule.ObservedRedListed ->
+                observations.mapNotNull { it.speciesId }.distinct().count { qid ->
+                    speciesByQid[SpeciesId(qid)]?.iucnStatus in RED_LISTED
                 }
             is BadgeRule.ObservedBeforeHour ->
                 observations.count { o ->
@@ -102,11 +113,4 @@ class RecalculateBadgesUseCase(
             BadgeRule.Manual -> 0
         }
 
-    private fun mapAbundance(content: ContentAbundance): BadgeAbundance =
-        when (content) {
-            ContentAbundance.ALLMÄN -> BadgeAbundance.ALLMÄN
-            ContentAbundance.MINDRE_ALLMÄN -> BadgeAbundance.MINDRE_ALLMÄN
-            ContentAbundance.OVANLIG -> BadgeAbundance.OVANLIG
-            ContentAbundance.SÄLLSYNT -> BadgeAbundance.SÄLLSYNT
-        }
 }

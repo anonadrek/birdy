@@ -74,7 +74,7 @@ object BadgeCatalogLoader {
             "streak_monthly" -> BadgeCategory.STREAK_MONTHLY
             "season" -> BadgeCategory.SEASON
             "family" -> BadgeCategory.FAMILY
-            "rare" -> BadgeCategory.RARE
+            "rare" -> BadgeCategory.REDLISTED
             else -> throw BadgeCatalogException("Unknown category: $raw")
         }
 
