@@ -107,6 +107,8 @@
     "archiveScreen": "Birdys arkiv-skärm med europeiska arter",
     "audioScan": "Birdys ljudscan-skärm med vågform",
     "badgesGrid": "Birdys märkessida med 5x5 stämpel-rutnät",
-    "glimpseHero": "Birdys intro-skärm — En fältdagbok för fynd"
+    "glimpseHero": "Birdys intro-skärm — En fältdagbok för fynd",
+    "speciesScreen": "Birdys art-sida — läs på om varje europeisk fågel",
+    "panorama": "Birdys app-skärmar — identifiera en fågel, lär dig arten och behåll varje fynd"
   }
 }
