@@ -1,78 +1,26 @@
-# Premium-only badges. Schema v2 = adds category + rule per badge (icons + names
-# resolved via BadgeStringMap). IDs 1-9 evaluate via BadgeEvaluator;
-# premium_field_member unlocks manually via PremiumActivationListener
-# (rule: type=manual is a sentinel — RecalculateBadgesUseCase skips it).
-version: 3
+# Premium-only badges (flair/hängivenhet). All progression & samling är GRATIS.
+# Inget audio här (BirdNET CC BY-NC-SA). premium_field_member låses upp manuellt
+# via PremiumActivationListener (rule: type=manual).
+version: 4
 badges:
+  - id: premium_field_member
+    category: progression
+    rule: { type: manual, target: 1 }
   - id: premium_dawn_chorus
-    category: rare
-    rule:
-      type: observed_before_hour
-      hour: 6
-      target: 5
+    category: season
+    rule: { type: observed_before_hour, hour: 6, target: 5 }
+  - id: premium_early_pilgrim
+    category: season
+    rule: { type: observed_in_hour_range, startHour: 5, endHourExclusive: 7, target: 1 }
+  - id: premium_field_journalist
+    category: progression
+    rule: { type: observations_with_note, minLength: 30, target: 25 }
   - id: premium_winter_wanderer
     category: season
-    rule:
-      type: observed_in_season
-      season: winter
-      target: 10
-  - id: premium_migration_mapper
-    category: rare
-    rule:
-      type: species_across_seasons
-      seasons: 4
-      target: 1
-  - id: premium_song_scholar
-    category: rare
-    rule:
-      type: audio_observation_count
-      target: 5
-  - id: premium_field_journalist
-    category: rare
-    rule:
-      type: observations_with_note
-      minLength: 30
-      target: 25
-  - id: premium_archive_curator
-    category: progression
-    rule:
-      type: count_unique_species
-      target: 100
-  - id: premium_seasonal_steward
-    category: season
-    rule:
-      type: observed_in_all_seasons
-      target: 1
-  - id: premium_lifelist_legend
-    category: progression
-    rule:
-      type: count_unique_species
-      target: 250
-  - id: premium_rare_seeker
-    category: rare
-    rule:
-      type: observed_with_abundance
-      abundance: sällsynt
-      target: 3
-  - id: premium_field_member
-    category: rare
-    rule:
-      type: manual
-      target: 1
-  - id: premium_early_pilgrim
-    category: rare
-    rule:
-      type: observed_in_hour_range
-      startHour: 5
-      endHourExclusive: 7
-      target: 1
+    rule: { type: observed_in_season, season: winter, target: 10 }
   - id: premium_sunday_birder
     category: streak_weekly
-    rule:
-      type: sunday_streak
-      target: 4
+    rule: { type: sunday_streak, target: 4 }
   - id: premium_daily_bird_hunter
     category: progression
-    rule:
-      type: daily_bird_matches
-      target: 3
+    rule: { type: daily_bird_matches, target: 3 }
