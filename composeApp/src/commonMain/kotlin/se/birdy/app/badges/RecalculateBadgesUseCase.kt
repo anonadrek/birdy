@@ -67,7 +67,6 @@ class RecalculateBadgesUseCase(
                 observations.mapNotNull { it.speciesId }.distinct().count { qid ->
                     speciesByQid[SpeciesId(qid)]?.taxonomy?.family == rule.family
                 }
-            is BadgeRule.ObservedWithAbundance -> 0
             is BadgeRule.ObservedInFamilyGroup ->
                 observations.mapNotNull { it.speciesId }.distinct().count { qid ->
                     speciesByQid[SpeciesId(qid)]?.taxonomy?.family in rule.families

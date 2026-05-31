@@ -1,6 +1,5 @@
 package se.birdy.app.badges
 
-import se.birdy.domain.badge.BadgeAbundance
 import se.birdy.domain.badge.BadgeCategory
 import se.birdy.domain.badge.BadgeRule
 import se.birdy.domain.badge.BadgeSeason
@@ -11,18 +10,18 @@ import kotlin.test.assertTrue
 
 class BadgeCatalogLoaderTest {
     @Test
-    fun `parse valid yaml returns 25 badges with version 1`() {
+    fun `parse valid yaml returns 22 badges with version 1`() {
         val yaml = validYaml()
         val catalog = BadgeCatalogLoader.parse(yaml)
         assertEquals(1, catalog.version)
-        assertEquals(25, catalog.badges.size)
+        assertEquals(22, catalog.badges.size)
         val novice = catalog.findById("novice")!!
         assertEquals(BadgeCategory.PROGRESSION, novice.category)
         assertEquals(BadgeRule.CountUniqueSpecies(5), novice.rule)
     }
 
     @Test
-    fun `parse maps all 6 rule types correctly`() {
+    fun `parse maps rule types correctly`() {
         val yaml = validYaml()
         val catalog = BadgeCatalogLoader.parse(yaml)
 
@@ -36,10 +35,6 @@ class BadgeCatalogLoaderTest {
         assertEquals(
             BadgeRule.ObservedInFamily("anatidae", 1),
             catalog.findById("family_anatidae")!!.rule,
-        )
-        assertEquals(
-            BadgeRule.ObservedWithAbundance(BadgeAbundance.SÄLLSYNT, 1),
-            catalog.findById("rare_first")!!.rule,
         )
     }
 
@@ -111,22 +106,22 @@ class BadgeCatalogLoaderTest {
             version: 2
             badges:
               - id: premium_dawn_chorus
-                category: rare
+                category: redlisted
                 rule: { type: observed_before_hour, hour: 6, target: 5 }
               - id: premium_migration_mapper
-                category: rare
+                category: redlisted
                 rule: { type: species_across_seasons, seasons: 4, target: 1 }
               - id: premium_song_scholar
-                category: rare
+                category: audio
                 rule: { type: audio_observation_count, target: 5 }
               - id: premium_field_journalist
-                category: rare
+                category: redlisted
                 rule: { type: observations_with_note, minLength: 30, target: 25 }
               - id: premium_seasonal_steward
                 category: season
                 rule: { type: observed_in_all_seasons, target: 1 }
               - id: premium_field_member
-                category: rare
+                category: redlisted
                 rule: { type: manual, target: 1 }
             """.trimIndent()
 
@@ -227,6 +222,52 @@ class BadgeCatalogLoaderTest {
         assertFailsWith<BadgeCatalogException> { BadgeCatalogLoader.parse(yaml) }
     }
 
+    @Test
+    fun `parses observed_in_family_group with families list`() {
+        val yaml =
+            """
+            version: 2
+            badges:
+              - id: warblers
+                category: family
+                rule:
+                  type: observed_in_family_group
+                  families: [phylloscopidae, sylviidae]
+                  target: 15
+            """.trimIndent()
+        val cat = BadgeCatalogLoader.parse(yaml)
+        val rule = cat.badges.single().rule
+        assertTrue(rule is BadgeRule.ObservedInFamilyGroup)
+        assertEquals(setOf("phylloscopidae", "sylviidae"), (rule as BadgeRule.ObservedInFamilyGroup).families)
+        assertEquals(15, rule.target)
+    }
+
+    @Test
+    fun `parses breadth and redlisted and audio categories`() {
+        val yaml =
+            """
+            version: 2
+            badges:
+              - id: bf
+                category: breadth
+                rule: { type: count_distinct_families, target: 20 }
+              - id: bo
+                category: breadth
+                rule: { type: count_distinct_orders, target: 20 }
+              - id: rl
+                category: redlisted
+                rule: { type: observed_red_listed, target: 5 }
+              - id: au
+                category: audio
+                rule: { type: audio_observation_count, target: 5 }
+            """.trimIndent()
+        val cat = BadgeCatalogLoader.parse(yaml)
+        assertEquals(BadgeCategory.BREADTH, cat.findById("bf")!!.category)
+        assertEquals(BadgeCategory.REDLISTED, cat.findById("rl")!!.category)
+        assertEquals(BadgeCategory.AUDIO, cat.findById("au")!!.category)
+        assertTrue(cat.findById("bo")!!.rule is BadgeRule.CountDistinctOrders)
+    }
+
     private fun validYaml(): String =
         """
         version: 1
@@ -297,14 +338,5 @@ class BadgeCatalogLoaderTest {
           - id: family_picidae
             category: family
             rule: { type: observed_in_family, family: picidae, target: 1 }
-          - id: rare_first
-            category: rare
-            rule: { type: observed_with_abundance, abundance: sällsynt, target: 1 }
-          - id: rare_5
-            category: rare
-            rule: { type: observed_with_abundance, abundance: sällsynt, target: 5 }
-          - id: rare_10
-            category: rare
-            rule: { type: observed_with_abundance, abundance: sällsynt, target: 10 }
         """.trimIndent()
 }

@@ -25,12 +25,6 @@ sealed interface BadgeRule {
         override val target: Int,
     ) : BadgeRule
 
-    // TODO(DP D): remove after Task 4
-    data class ObservedWithAbundance(
-        val abundance: BadgeAbundance,
-        override val target: Int,
-    ) : BadgeRule
-
     data class ObservedBeforeHour(
         val hour: Int,
         override val target: Int,
