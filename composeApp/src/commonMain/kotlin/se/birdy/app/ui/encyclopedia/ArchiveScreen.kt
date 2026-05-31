@@ -54,11 +54,17 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_all
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_gamebirds
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_grebes_divers
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_gulls
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_herons
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_other
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_owls
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_raptors
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_seabirds
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_songbirds
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_waders
-import birdy_bird_scanner.composeapp.generated.resources.archive_chip_water
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_waterfowl
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_body
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_retry
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_title
@@ -454,10 +460,16 @@ private fun ChipBar(
         listOf(
             ArchiveChip.ALL to stringResource(Res.string.archive_chip_all),
             ArchiveChip.SONGBIRDS to stringResource(Res.string.archive_chip_songbirds),
-            ArchiveChip.WATER to stringResource(Res.string.archive_chip_water),
             ArchiveChip.RAPTORS to stringResource(Res.string.archive_chip_raptors),
             ArchiveChip.OWLS to stringResource(Res.string.archive_chip_owls),
+            ArchiveChip.GAMEBIRDS to stringResource(Res.string.archive_chip_gamebirds),
+            ArchiveChip.WATERFOWL to stringResource(Res.string.archive_chip_waterfowl),
+            ArchiveChip.GREBES_DIVERS to stringResource(Res.string.archive_chip_grebes_divers),
+            ArchiveChip.HERONS to stringResource(Res.string.archive_chip_herons),
             ArchiveChip.WADERS to stringResource(Res.string.archive_chip_waders),
+            ArchiveChip.GULLS to stringResource(Res.string.archive_chip_gulls),
+            ArchiveChip.SEABIRDS to stringResource(Res.string.archive_chip_seabirds),
+            ArchiveChip.OTHER to stringResource(Res.string.archive_chip_other),
         )
     val serif = rememberDmSerifDisplay()
     LazyRow(

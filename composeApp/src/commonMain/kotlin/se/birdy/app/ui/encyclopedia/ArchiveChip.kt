@@ -3,7 +3,6 @@ package se.birdy.app.ui.encyclopedia
 enum class ArchiveChip {
     ALL,
     SONGBIRDS,
-    WATER, // legacy — tas bort i Task 4 när ChipBar inte längre refererar den
     RAPTORS,
     OWLS,
     WADERS,
