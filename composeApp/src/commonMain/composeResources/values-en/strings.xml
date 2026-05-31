@@ -653,8 +653,6 @@
     <string name="recap_cta_open_camera">Open the camera →</string>
     <string name="recap_load_error">Couldn't open this week’s page. Try again later.</string>
     <string name="recap_lifelist_entry_title">This week's page</string>
-    <string name="recap_lifelist_entry_active_fmt">Week %1$s · %2$s sightings</string>
-    <string name="recap_lifelist_entry_quiet">A quiet week so far</string>
     <string name="recap_a11y_fmt">This week's page, week %1$s</string>
     <string name="notification_recap_active_title">Your week in the field</string>
     <string name="notification_recap_active_body_fmt">%1$s sightings, %2$s new — see this week's page.</string>

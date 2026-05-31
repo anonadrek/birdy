@@ -666,8 +666,6 @@
     <string name="recap_cta_open_camera">Öppna kameran →</string>
     <string name="recap_load_error">Kunde inte öppna veckans uppslag. Försök igen senare.</string>
     <string name="recap_lifelist_entry_title">Veckans uppslag</string>
-    <string name="recap_lifelist_entry_active_fmt">Vecka %1$s · %2$s fynd</string>
-    <string name="recap_lifelist_entry_quiet">En lugn vecka hittills</string>
     <string name="recap_a11y_fmt">Veckans uppslag, vecka %1$s</string>
     <string name="notification_recap_active_title">Veckan i fält</string>
     <string name="notification_recap_active_body_fmt">%1$s fynd, %2$s ny art — se veckans uppslag.</string>
