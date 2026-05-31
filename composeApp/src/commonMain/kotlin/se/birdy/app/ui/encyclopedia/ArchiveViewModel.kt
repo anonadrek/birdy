@@ -117,13 +117,7 @@ class ArchiveViewModel(
         s: ArchiveSort,
         stamped: Map<String, Int>,
     ): ArchiveUiState {
-        val filtered =
-            if (c == ArchiveChip.ALL) {
-                list
-            } else {
-                val orders = ArchiveChip.orderSets[c].orEmpty()
-                list.filter { it.iocOrder in orders }
-            }
+        val filtered = list.filter { c.matches(it.family, it.iocOrder) }
         if (filtered.isEmpty()) return ArchiveUiState.Empty
         val sorted =
             when (s) {

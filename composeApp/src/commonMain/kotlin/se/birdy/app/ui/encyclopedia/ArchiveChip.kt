@@ -25,17 +25,6 @@ enum class ArchiveChip {
     companion object {
         const val PASSERINE_ORDER = "Passeriformes"
 
-        // Legacy order-baserade set — tas bort i Task 2 när ArchiveViewModel bytt till matches().
-        val orderSets: Map<ArchiveChip, Set<String>> =
-            mapOf(
-                ALL to emptySet(),
-                SONGBIRDS to setOf("Passeriformes"),
-                WATER to setOf("Anseriformes", "Suliformes", "Pelecaniformes", "Podicipediformes", "Gaviiformes"),
-                RAPTORS to setOf("Accipitriformes", "Falconiformes"),
-                OWLS to setOf("Strigiformes"),
-                WADERS to setOf("Charadriiformes"),
-            )
-
         /** Ekologiska chips → latinska familjer (matchar SpeciesSummary.family). SONGBIRDS via ordning; OTHER = komplement. */
         val familySets: Map<ArchiveChip, Set<String>> =
             mapOf(
