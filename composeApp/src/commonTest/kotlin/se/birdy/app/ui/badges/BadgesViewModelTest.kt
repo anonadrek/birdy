@@ -17,6 +17,9 @@ import kotlinx.datetime.toInstant
 import se.birdy.app.testing.FakeBadgeRepository
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.content.Locale
+import se.birdy.content.SpeciesId
+import se.birdy.content.model.Species
+import se.birdy.content.model.SpeciesTaxonomy
 import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeCategory
@@ -28,6 +31,7 @@ import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
@@ -189,6 +193,73 @@ class BadgesViewModelTest {
         )
     }
 
+    @Test
+    fun `redlisted badges show progress instead of hidden`() =
+        runTest {
+            val redlistedBadge = Badge("redlisted_1", BadgeCategory.REDLISTED, BadgeRule.ObservedRedListed(5))
+            val catalog = BadgeCatalog(version = 1, badges = listOf(redlistedBadge))
+            // One observation of a VU species — so current=1, target=5 → InProgress, not Hidden
+            val vuSpeciesId = "Q99001"
+            val vuSpecies = Species(
+                id = SpeciesId(vuSpeciesId),
+                scientificName = "Acanthis cabaret",
+                taxonomy = SpeciesTaxonomy(family = "Fringillidae", familySv = null, genus = "Acanthis", iocOrder = "Passeriformes"),
+                name = "Lesser Redpoll",
+                abundance = se.birdy.content.Abundance.OVANLIG,
+                iucnStatus = "VU",
+                regions = emptyList(),
+                season = emptyMap(),
+                description = null,
+                migration = null,
+                images = emptyList(),
+            )
+            val obs = listOf(observation(vuSpeciesId, 2026, 5, 10))
+            val vm = makeVmWithSpecies(
+                observations = obs,
+                unlocks = emptyList(),
+                totalSpecies = 700,
+                catalog = catalog,
+                speciesMap = mapOf(SpeciesId(vuSpeciesId) to vuSpecies),
+            )
+
+            vm.state.test {
+                var item = awaitItem()
+                while (item is BadgesUiState.Loading) item = awaitItem()
+                val loaded = item as BadgesUiState.Loaded
+                val entry = loaded.locked.firstOrNull { it.badge.id == "redlisted_1" }
+                assertTrue(entry != null, "redlisted_1 must appear in locked list")
+                assertFalse(
+                    entry!!.state == BadgeGridState.Hidden,
+                    "redlisted badge state must not be Hidden, was ${entry.state}",
+                )
+                // target=5, 1 observed → InProgress(1, 5)
+                assertEquals(BadgeGridState.InProgress(current = 1, target = 5), entry.state)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun `unlockedCount ignores unlocks not in catalog`() =
+        runTest {
+            val realBadge = Badge("novice", BadgeCategory.PROGRESSION, BadgeRule.CountUniqueSpecies(5))
+            val catalog = BadgeCatalog(version = 1, badges = listOf(realBadge))
+            val unlocks = listOf(
+                BadgeUnlock("novice", Instant.fromEpochMilliseconds(1_000L)),       // in catalog
+                BadgeUnlock("rare_first", Instant.fromEpochMilliseconds(2_000L)),   // NOT in catalog (ghost)
+                BadgeUnlock("ghost_badge", Instant.fromEpochMilliseconds(3_000L)), // NOT in catalog (ghost)
+            )
+            val vm = makeVm(observations = emptyList(), unlocks = unlocks, totalSpecies = 700, catalog = catalog)
+
+            vm.state.test {
+                var item = awaitItem()
+                while (item is BadgesUiState.Loading) item = awaitItem()
+                val loaded = item as BadgesUiState.Loaded
+                // Only "novice" is in the catalog → count must be 1, not 3
+                assertEquals(1, loaded.unlockedCount)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
     private fun makeVm(
         observations: List<Observation>,
         unlocks: List<BadgeUnlock>,
@@ -212,6 +283,30 @@ class BadgesViewModelTest {
             obsRepo = obsRepo,
             badgeRepo = badgeRepo,
             speciesByQid = { emptyMap() },
+            speciesTotalCount = flowOf(totalSpecies),
+            catalog = catalog,
+            recalc = recalc,
+            zone = TimeZone.UTC,
+            locale = Locale.SV,
+        )
+    }
+
+    private fun makeVmWithSpecies(
+        observations: List<Observation>,
+        unlocks: List<BadgeUnlock>,
+        totalSpecies: Int,
+        catalog: BadgeCatalog,
+        speciesMap: Map<SpeciesId, Species>,
+    ): BadgesViewModel {
+        val obsRepo = FakeObservationRepository().apply { observations.forEach(::seedDirect) }
+        val badgeRepo = FakeBadgeRepository().apply { seedUnlocks(unlocks) }
+        val recalc =
+            se.birdy.app.badges
+                .RecalculateBadgesUseCase(zone = TimeZone.UTC)
+        return BadgesViewModel(
+            obsRepo = obsRepo,
+            badgeRepo = badgeRepo,
+            speciesByQid = { speciesMap },
             speciesTotalCount = flowOf(totalSpecies),
             catalog = catalog,
             recalc = recalc,

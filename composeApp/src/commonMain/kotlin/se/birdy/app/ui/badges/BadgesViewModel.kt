@@ -116,9 +116,11 @@ class BadgesViewModel(
         val weeklyStreak = longestWeeklyStreak(capturedInstants, zone).takeIf { it >= 2 }
         val monthlyStreak = longestMonthlyStreak(capturedInstants, zone).takeIf { it >= 2 }
 
+        val unlockedInCatalog = unlocks.count { catalog.findById(it.badgeId) != null }
+
         return BadgesUiState.Loaded(
             speciesProgress = SpeciesProgress(seen = seenSpecies, total = totalSpecies),
-            unlockedCount = unlocks.size,
+            unlockedCount = unlockedInCatalog,
             totalBadges = catalog.badges.size,
             weeklyStreak = weeklyStreak,
             monthlyStreak = monthlyStreak,
@@ -134,7 +136,6 @@ class BadgesViewModel(
         observations: List<Observation>,
         speciesByQid: Map<SpeciesId, Species>,
     ): BadgeGridState {
-        if (false) return BadgeGridState.Hidden // TODO(DP D Task 4): update category-based hidden logic
         val current = recalc.currentValue(badge.rule, observations, speciesByQid)
         return if (current > 0) {
             BadgeGridState.InProgress(current = current, target = badge.rule.target)
