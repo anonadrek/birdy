@@ -180,10 +180,10 @@ class AppGraph(
      */
     val devTriggerDailyBird: (() -> Unit)? = null,
     /**
-     * Debug-only: enqueues a OneTimeWorkRequest for StreakRiskWorker. Wired only
+     * Debug-only: enqueues a OneTimeWorkRequest for WeeklyRecapWorker. Wired only
      * when BuildConfig.DEBUG is true; null in release and on non-Android targets.
      */
-    val devTriggerStreakRisk: (() -> Unit)? = null,
+    val devTriggerWeeklyRecap: (() -> Unit)? = null,
     /**
      * Emits `birdy://` deep-link URIs from MainActivity.onCreate/onNewIntent.
      * AppScaffold collects this flow and dispatches navigation.
@@ -357,7 +357,7 @@ class AppGraph(
             notificationScheduler = notificationScheduler,
             platformNotificationsApi = platformNotificationsApi,
             devTriggerDailyBird = devTriggerDailyBird,
-            devTriggerStreakRisk = devTriggerStreakRisk,
+            devTriggerWeeklyRecap = devTriggerWeeklyRecap,
         )
 
     fun premiumViewModel(): PremiumViewModel =
@@ -398,6 +398,22 @@ class AppGraph(
      * from [se.birdy.android.MainActivity]; in tests construct [AudioScanViewModel]
      * directly with fake collaborators instead.
      */
+    fun weeklyRecapViewModel(): se.birdy.app.ui.recap.RecapViewModel =
+        se.birdy.app.ui.recap.RecapViewModel(
+            obsRepo = observationRepository,
+            badgeRepo = badgeRepository,
+            speciesByQid = { repository.all(defaultLocale).first().associateBy { it.id } },
+            badgeNameFor = { id ->
+                runCatching {
+                    org.jetbrains.compose.resources.getString(
+                        se.birdy.app.ui.badges.BadgeStringMap
+                            .nameFor(id),
+                    )
+                }.getOrElse { id }
+            },
+            zone = timeZone,
+        )
+
     fun audioScanViewModel(): AudioScanViewModel {
         val provider =
             audioClassifierProvider

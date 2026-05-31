@@ -13,10 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.ArrowBack
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -49,6 +45,7 @@ import birdy_bird_scanner.composeapp.generated.resources.stats_title
 import birdy_bird_scanner.composeapp.generated.resources.stats_winter
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
@@ -95,17 +92,14 @@ fun SeasonStatsScreen(
 @Composable
 private fun SeasonStatsTopBar(onBack: () -> Unit) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(start = 4.dp, top = 8.dp, end = 16.dp),
+        modifier = Modifier.fillMaxWidth().padding(start = 12.dp, top = 8.dp, end = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconButton(onClick = onBack) {
-            Icon(
-                Icons.AutoMirrored.Outlined.ArrowBack,
-                contentDescription = stringResource(Res.string.stats_back),
-                tint = AccentCopper,
-            )
-        }
-        Spacer(Modifier.size(4.dp))
+        BackButton(
+            onClick = onBack,
+            contentDescription = stringResource(Res.string.stats_back),
+        )
+        Spacer(Modifier.size(8.dp))
         Text(
             text = stringResource(Res.string.stats_title),
             fontFamily = rememberDmSerifDisplay(),

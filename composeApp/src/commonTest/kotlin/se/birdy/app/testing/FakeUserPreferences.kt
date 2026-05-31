@@ -22,6 +22,7 @@ class FakeUserPreferences : UserPreferences {
     private val _pushPermissionAsked = MutableStateFlow(false)
     private val _dailyBirdPushEnabled = MutableStateFlow(false)
     private val _streakRiskPushEnabled = MutableStateFlow(false)
+    private val _weeklyRecapPushEnabled = MutableStateFlow(true)
 
     val archiveChipWrites = mutableListOf<String>()
     var archiveSortValue: ArchiveSort
@@ -57,6 +58,7 @@ class FakeUserPreferences : UserPreferences {
     override val pushPermissionAsked: Flow<Boolean> = _pushPermissionAsked.asStateFlow()
     override val dailyBirdPushEnabled: Flow<Boolean> = _dailyBirdPushEnabled.asStateFlow()
     override val streakRiskPushEnabled: Flow<Boolean> = _streakRiskPushEnabled.asStateFlow()
+    override val weeklyRecapPushEnabled: Flow<Boolean> = _weeklyRecapPushEnabled.asStateFlow()
 
     override suspend fun setUserName(name: String) {
         _userName.value = name
@@ -105,5 +107,9 @@ class FakeUserPreferences : UserPreferences {
 
     override suspend fun setStreakRiskPushEnabled(value: Boolean) {
         _streakRiskPushEnabled.value = value
+    }
+
+    override suspend fun setWeeklyRecapPushEnabled(value: Boolean) {
+        _weeklyRecapPushEnabled.value = value
     }
 }

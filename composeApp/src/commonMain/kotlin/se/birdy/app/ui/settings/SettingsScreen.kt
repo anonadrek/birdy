@@ -22,7 +22,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.MailOutline
@@ -36,7 +35,6 @@ import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.icons.outlined.VerifiedUser
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.SnackbarHost
@@ -66,6 +64,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.settings_back
+import birdy_bird_scanner.composeapp.generated.resources.settings_dev_trigger_recap
 import birdy_bird_scanner.composeapp.generated.resources.settings_feedback_subject
 import birdy_bird_scanner.composeapp.generated.resources.settings_footer
 import birdy_bird_scanner.composeapp.generated.resources.settings_hero_accent
@@ -96,10 +95,11 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_share_copy
 import birdy_bird_scanner.composeapp.generated.resources.settings_show_intro_again
 import birdy_bird_scanner.composeapp.generated.resources.settings_title
 import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_daily_bird
-import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_streak_risk
+import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_weekly_recap
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.components.OrnamentRule
 import se.birdy.app.ui.components.PremiumHeroCard
 import se.birdy.app.ui.theme.AccentCopper
@@ -187,7 +187,7 @@ fun SettingsScreen(
             item { SectionHeader(stringResource(Res.string.settings_section_notifications)) }
             item {
                 val dailyBirdEnabled by viewModel.dailyBirdPushEnabled.collectAsState()
-                val streakRiskEnabled by viewModel.streakRiskPushEnabled.collectAsState()
+                val weeklyRecapEnabled by viewModel.weeklyRecapPushEnabled.collectAsState()
                 val systemNotifEnabled = viewModel.areNotificationsEnabled()
 
                 PaperCard {
@@ -200,9 +200,9 @@ fun SettingsScreen(
                     DashedDivider()
                     ToggleRow(
                         icon = Icons.Outlined.Notifications,
-                        label = stringResource(Res.string.settings_toggle_streak_risk),
-                        checked = streakRiskEnabled,
-                        onCheckedChange = viewModel::setStreakRiskPushEnabled,
+                        label = stringResource(Res.string.settings_toggle_weekly_recap),
+                        checked = weeklyRecapEnabled,
+                        onCheckedChange = viewModel::setWeeklyRecapPushEnabled,
                     )
                     if (!systemNotifEnabled) {
                         DashedDivider()
@@ -228,9 +228,9 @@ fun SettingsScreen(
                         DashedDivider()
                         SettingsRow(
                             icon = Icons.Outlined.Notifications,
-                            label = "DEV: Trigger Streak Risk push",
+                            label = stringResource(Res.string.settings_dev_trigger_recap),
                             value = null,
-                            onClick = { viewModel.devTriggerStreakRiskPush() },
+                            onClick = { viewModel.devTriggerWeeklyRecapPush() },
                         )
                     }
                 }
@@ -362,17 +362,14 @@ private fun AppLanguage.labelRes(): StringResource =
 @Composable
 private fun TopBar(onBack: () -> Unit) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(start = 4.dp, top = 8.dp, end = 16.dp),
+        modifier = Modifier.fillMaxWidth().padding(start = 12.dp, top = 8.dp, end = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconButton(onClick = onBack) {
-            Icon(
-                Icons.AutoMirrored.Outlined.ArrowBack,
-                contentDescription = stringResource(Res.string.settings_back),
-                tint = AccentCopper,
-            )
-        }
-        Spacer(Modifier.size(4.dp))
+        BackButton(
+            onClick = onBack,
+            contentDescription = stringResource(Res.string.settings_back),
+        )
+        Spacer(Modifier.size(8.dp))
         Text(
             text = stringResource(Res.string.settings_title),
             fontFamily = rememberDmSerifDisplay(),

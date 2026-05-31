@@ -15,6 +15,7 @@ import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 import se.birdy.app.notifications.workers.DailyBirdWorker
 import se.birdy.app.notifications.workers.StreakRiskWorker
+import se.birdy.app.notifications.workers.WeeklyRecapWorker
 import se.birdy.domain.notification.NotificationScheduler
 import java.util.concurrent.TimeUnit
 
@@ -41,12 +42,24 @@ class NotificationSchedulerImpl(
         workManager.enqueueUniquePeriodicWork(UNIQUE_STREAK_RISK, ExistingPeriodicWorkPolicy.KEEP, request)
     }
 
+    override fun scheduleWeeklyRecap() {
+        val request =
+            PeriodicWorkRequestBuilder<WeeklyRecapWorker>(7, TimeUnit.DAYS)
+                .setInitialDelay(millisUntilNextSunday(hour = 18, minute = 0), TimeUnit.MILLISECONDS)
+                .build()
+        workManager.enqueueUniquePeriodicWork(UNIQUE_WEEKLY_RECAP, ExistingPeriodicWorkPolicy.KEEP, request)
+    }
+
     override fun cancelDailyBird() {
         workManager.cancelUniqueWork(UNIQUE_DAILY_BIRD)
     }
 
     override fun cancelStreakRiskCheck() {
         workManager.cancelUniqueWork(UNIQUE_STREAK_RISK)
+    }
+
+    override fun cancelWeeklyRecap() {
+        workManager.cancelUniqueWork(UNIQUE_WEEKLY_RECAP)
     }
 
     private fun millisUntilNext(
@@ -84,5 +97,6 @@ class NotificationSchedulerImpl(
     companion object {
         const val UNIQUE_DAILY_BIRD = "birdy_daily_bird_worker"
         const val UNIQUE_STREAK_RISK = "birdy_streak_risk_worker"
+        const val UNIQUE_WEEKLY_RECAP = "birdy_weekly_recap_worker"
     }
 }

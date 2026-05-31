@@ -11,15 +11,18 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.OffwhiteWarm
 
 /**
- * 32dp ⊙-cirkel med copper-outline och en tillbaka-pil. Variant.OnPaper passar
- * Field Journal-bakgrund; Variant.OnDark läggs ovanpå mörk kamera-bakgrund och
- * får en off-white fyllning för kontrast.
+ * Universell tillbaka-pil — samma utseende på ALLA del-skärmar (papper som mörk
+ * kamera-bakgrund). En 40dp ⊙-bricka med solid off-white fyllning + copper-ring
+ * + copper-pil. Den fyllda behållaren bryter av mot pappersbakgrunden så pilen
+ * läser som en knapp i stället för att smälta in i Field Journal-ornamentiken.
+ *
+ * [variant] behålls för API-stabilitet men renderar identiskt i båda lägen efter
+ * fyllnings-låset 2026-05-31 (off-white fungerar på både papper och mörk bakgrund).
  */
 @Composable
 fun BackButton(
@@ -28,25 +31,22 @@ fun BackButton(
     modifier: Modifier = Modifier,
     variant: BackButtonVariant = BackButtonVariant.OnPaper,
 ) {
-    val background =
-        when (variant) {
-            BackButtonVariant.OnPaper -> Color.Transparent
-            BackButtonVariant.OnDark -> OffwhiteWarm
-        }
+    // [variant] påverkar inte längre utseendet (off-white fungerar på alla bakgrunder)
+    // men behålls i signaturen för call-site-kompatibilitet.
     IconButton(
         onClick = onClick,
         modifier =
             modifier
-                .size(26.dp)
+                .size(40.dp)
                 .clip(CircleShape)
-                .background(background)
-                .border(1.25.dp, AccentCopper, CircleShape),
+                .background(OffwhiteWarm)
+                .border(1.5.dp, AccentCopper, CircleShape),
     ) {
         Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
             contentDescription = contentDescription,
             tint = AccentCopper,
-            modifier = Modifier.size(14.dp),
+            modifier = Modifier.size(20.dp),
         )
     }
 }

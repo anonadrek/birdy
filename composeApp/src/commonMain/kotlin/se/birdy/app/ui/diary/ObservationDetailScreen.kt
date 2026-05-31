@@ -16,12 +16,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -93,6 +89,7 @@ import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.components.JournalDialog
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalLoading
@@ -185,19 +182,14 @@ private fun LoadedView(
                     sub = capturedSub,
                     headlineFontSize = 32.sp,
                 )
-                IconButton(
+                BackButton(
                     onClick = onBack,
+                    contentDescription = stringResource(Res.string.diary_detail_back),
                     modifier =
                         Modifier
                             .align(Alignment.TopStart)
                             .padding(top = 24.dp, start = 12.dp),
-                ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = stringResource(Res.string.diary_detail_back),
-                        tint = AccentCopper,
-                    )
-                }
+                )
             }
         }
 

@@ -9,6 +9,7 @@ import androidx.core.content.getSystemService
 object NotificationChannels {
     const val DAILY_BIRD = "daily_bird"
     const val STREAK_RISK = "streak_risk"
+    const val WEEKLY_RECAP = "weekly_recap"
 
     fun ensureCreated(context: Context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
@@ -29,6 +30,15 @@ object NotificationChannels {
                     "Streak-risk",
                     NotificationManager.IMPORTANCE_DEFAULT,
                 ).apply { description = "Sunday evening nudge when your streak is at risk." },
+            )
+        }
+        if (mgr.getNotificationChannel(WEEKLY_RECAP) == null) {
+            mgr.createNotificationChannel(
+                NotificationChannel(
+                    WEEKLY_RECAP,
+                    "Veckans recap",
+                    NotificationManager.IMPORTANCE_DEFAULT,
+                ).apply { description = "Sunday-evening recap of your week." },
             )
         }
     }
