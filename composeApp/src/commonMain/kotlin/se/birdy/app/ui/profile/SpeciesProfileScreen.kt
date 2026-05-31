@@ -14,10 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -59,6 +55,7 @@ import birdy_bird_scanner.composeapp.generated.resources.profile_plate_caption
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.HeroImage
 import se.birdy.app.ui.components.JournalIntro
@@ -119,19 +116,14 @@ private fun ProfileContent(
                         sub = stringResource(Res.string.profile_journal_sub, species.scientificName, familyLabel),
                         headlineFontSize = 36.sp,
                     )
-                    IconButton(
+                    BackButton(
                         onClick = onBack,
+                        contentDescription = stringResource(Res.string.profile_back),
                         modifier =
                             Modifier
                                 .align(Alignment.TopStart)
                                 .padding(top = 24.dp, start = 12.dp),
-                    ) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(Res.string.profile_back),
-                            tint = AccentCopper,
-                        )
-                    }
+                    )
                 }
             }
 
