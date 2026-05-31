@@ -10,7 +10,12 @@
 
 **Spec:** `docs/superpowers/specs/2026-05-30-v1-x-dp-d-badges-rework-design.md`
 
-**Branch:** Körs i fräsch session på egen branch från `main`: `git switch main && git pull && git switch -c feat/dp-d-badges-rework`. (Specen ligger committad på Phase B-branchen; cherry-picka in den om main saknar den: `git checkout feat/v1.2-phase-b-weekly-recap -- docs/superpowers/specs/2026-05-30-v1-x-dp-d-badges-rework-design.md`.)
+**Branch:** Körs i fräsch session på egen branch från `main`:
+```bash
+git switch main && git pull
+git switch -c feat/dp-d-badges-rework
+```
+Spec + plan (inkl. **§15 märkeskort-uppgradering**, tasks **T12–T16**) är synkade till `main` 2026-05-31 — inga cherry-picks behövs. Verifiera att du har senaste planen: `git grep -n "Task 16: Full verifiering" docs/superpowers/plans/2026-05-30-v1-x-dp-d-badges-rework.md` ska ge träff.
 
 **Bivillkor (håll i ALLA tasks):** alla UI-strängar i BÅDA `strings.xml` (SV `values/` + EN `values-en/`); aldrig accuracy-siffror; inget audio bakom premium (löses här); ingen schemaändring; raw `'`/`’` (ej `\'`); inga `%%`.
 
