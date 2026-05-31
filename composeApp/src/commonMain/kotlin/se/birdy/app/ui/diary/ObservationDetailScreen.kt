@@ -181,6 +181,9 @@ private fun LoadedView(
                     headline = stringResource(Res.string.profile_journal_headline, speciesName),
                     sub = capturedSub,
                     headlineFontSize = 32.sp,
+                    // Lämna plats överst åt den fyllda bakåtbrickan (overlay) så den
+                    // inte täcker eyebrow/rubrik. Top-only — inte topPadding (symmetrisk).
+                    modifier = Modifier.padding(top = 48.dp),
                 )
                 BackButton(
                     onClick = onBack,

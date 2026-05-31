@@ -115,6 +115,9 @@ private fun ProfileContent(
                         headline = stringResource(Res.string.profile_journal_headline, species.name),
                         sub = stringResource(Res.string.profile_journal_sub, species.scientificName, familyLabel),
                         headlineFontSize = 36.sp,
+                        // Lämna plats överst åt den fyllda bakåtbrickan (overlay) så den
+                        // inte täcker eyebrow/rubrik. Top-only — inte topPadding (symmetrisk).
+                        modifier = Modifier.padding(top = 48.dp),
                     )
                     BackButton(
                         onClick = onBack,
