@@ -408,6 +408,13 @@
     <string name="archive_chip_raptors">Raptors</string>
     <string name="archive_chip_owls">Owls</string>
     <string name="archive_chip_waders">Waders</string>
+    <string name="archive_chip_waterfowl">Ducks &amp; geese</string>
+    <string name="archive_chip_gulls">Gulls, terns &amp; auks</string>
+    <string name="archive_chip_seabirds">Seabirds</string>
+    <string name="archive_chip_herons">Herons &amp; storks</string>
+    <string name="archive_chip_grebes_divers">Grebes &amp; divers</string>
+    <string name="archive_chip_gamebirds">Gamebirds</string>
+    <string name="archive_chip_other">Other</string>
     <string name="archive_sort_alpha">A–Z</string>
     <string name="archive_sort_family">Family</string>
     <string name="archive_sort_recent">Recently added</string>
