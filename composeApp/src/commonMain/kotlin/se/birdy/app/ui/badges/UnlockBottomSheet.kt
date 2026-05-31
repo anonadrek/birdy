@@ -147,7 +147,7 @@ fun UnlockBottomSheet(
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
-                        text = if (stampNumber != null) "№$stampNumber" else "❖",
+                        text = if (stampNumber != null) "№$stampNumber" else "✦",
                         color = PaperTop,
                         fontFamily = serif,
                         fontStyle = FontStyle.Italic,
