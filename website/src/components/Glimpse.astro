@@ -4,12 +4,11 @@ import EyebrowLabel from './ui/EyebrowLabel.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import OrnamentRule from './ui/OrnamentRule.astro';
 import { type Locale, getCopy } from '../lib/i18n';
-import hero from '../assets/screens/birdy_04_hero_en.png';
-import match from '../assets/screens/birdy_01_match_en.png';
-import journal from '../assets/screens/birdy_02_journal_en.png';
-import archive from '../assets/screens/birdy_06_archive_en.png';
-import badge from '../assets/screens/birdy_03_badge_en.png';
-import listen from '../assets/screens/birdy_05_listen_en.png';
+import intro from '../assets/screens/redesign_journal_intro.png';
+import identify from '../assets/screens/redesign_identify.png';
+import species from '../assets/screens/redesign_species.png';
+import journal from '../assets/screens/redesign_journal.png';
+import listen from '../assets/screens/store_listen.png';
 
 interface Props {
   locale: Locale;
@@ -18,11 +17,10 @@ const { locale } = Astro.props;
 const t = getCopy(locale);
 
 const shots = [
-  { src: hero, alt: t.alt.glimpseHero },
-  { src: match, alt: t.alt.matchScreen },
+  { src: intro, alt: t.alt.glimpseHero },
+  { src: identify, alt: t.alt.matchScreen },
+  { src: species, alt: t.alt.speciesScreen },
   { src: journal, alt: t.alt.observationDetail },
-  { src: archive, alt: t.alt.archiveScreen },
-  { src: badge, alt: t.alt.badgesGrid },
   { src: listen, alt: t.alt.audioScan },
 ];
 ---
