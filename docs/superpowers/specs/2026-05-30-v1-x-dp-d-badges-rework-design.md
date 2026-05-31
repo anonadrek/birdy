@@ -196,6 +196,65 @@ Lägg till **`tier: BadgeTier`** (`MILESTONE` / `HABIT`) på `BadgeCategory` så
 - Behåll enum-namnet `RARE` (semantik=rödlistad) vs döp om till `REDLISTED` (renare; kräver att hitta alla referenser).
 - Exakt copy för nya namn/beskrivningar (skådar-ton, inte Duolingo).
 
-## 15. Release
+## 15. Märkeskort-uppgradering (informationskortet) — tillägg 2026-05-31
+
+> Brainstormat 2026-05-31 (visuell companion, riktning A vald). Adresserar samma testar-kritik ("I can't see the point of the badges") på den plats där poängen faktiskt kan kommuniceras: kortet som öppnas när man trycker på ett märke. Idag finns **två** kort — `UnlockBottomSheet` (olåst) + `LockedBadgeBottomSheet` (låst/pågående) — som båda bara visar namn + (ev.) bar + en description-rad med svag skådar-ton.
+
+### 15.1 Beslut
+
+| # | Beslut |
+|---|---|
+| A | **Riktning A — förfinad bottom-sheet.** Behåll de två befintliga ModalBottomSheet-korten; strukturera om innehållet. Ingen kort-sammanslagning (låst/olåst förblir två composables), ingen ny ikonografi-pipeline, ingen fullskärms-detaljvy. |
+| B | **Innehållsfokus:** kortet ska (1) **förklara poängen** med märket och (2) visa **konkret progress + nästa steg**. Inte rikare belöning/grafik (medvetet bortvalt). |
+| C | **Nästa steg = enkelt:** siffra + skådar-ton-mening. Ingen länk till uppslagsverket, ingen inline-artförhandsvisning. All data finns redan i `BadgesViewModel`. |
+| D | **Stege-märken** (Livslista ×5, Familjespanare ×2, Rödlistad ×3) får en diskret "Nästa nivå"-not på olåst-kortet. Märken utan stege → ingen not. |
+
+### 15.2 Innehållsmodell (vad korten visar)
+
+| Element | Låst / pågående | Upplåst |
+|---|---|---|
+| Stämpel | Tom koppar-ring med `№` (befintlig StampSeal-känsla) | Fylld koppar med stämpelnummer |
+| Kategori-eyebrow | "Familj · Skådar-milstolpe" — härlett ur `badge.category` (tier + kategori) | samma |
+| Namn (DM Serif Italic) | namn, eller `???` för Hidden | namn |
+| Poäng-mening (Caveat) | *varför* märket betyder något (repurpose av `description`) | samma |
+| Konkret progress | "X av Y {enhet}" + koppar-bar | — |
+| Datum | — | "Upplåst {datum}" |
+| Nästa nivå-not | — | endast stege-märken: nästa nivåns namn + "{kvar} kvar" |
+| Hidden | bara `badges_locked_tooltip` ("???"), ingen poäng/progress | (ej tillämpligt) |
+
+**Enhet ({enhet})** = substantiv per kategori: `arter` (PROGRESSION/BREADTH-arter), familje-specifikt (`vadare`, `änder`…), `familjer` (CountDistinctFamilies), `ordningar` (CountDistinctOrders), `rödlistade arter` (REDLISTED). Levereras som strängresurs per märke/kategori.
+
+### 15.3 Data / wiring
+
+- `BadgesViewModel` bygger en liten **kortmodell** (poäng-res, kategori-label-res, enhet-res, current/target, unlockedAt, ev. `nextTier`). VM:n har redan all indata: progress för låsta märken (`LockedBadgeProgress`) och hela katalogen för stege-beräkning. Finalisering i plan: utöka `LockedBadgeProgress`/exponera en `BadgeCardModel` vs minimal param-utökning.
+- **Next-tier-beräkning:** för ett upplåst stege-märke, hitta nästa icke-upplåsta nivå i samma kategori-stege och dess `target`; `kvar = target − användarens nuvarande råvärde` (samma `rawValue` som progress-beräkningen). Sista nivån → ingen not.
+- De två composables (`UnlockBottomSheet`, `LockedBadgeBottomSheet`) behålls men renderar från modellen. Route i `BadgesRoute.kt` matar in modellen.
+
+### 15.4 Strängar (compose-resources, BÅDA `strings.xml`)
+
+- Per-märke **poäng-beskrivningar** (skådar-ton, ej Duolingo) SV+EN — återanvänd/uppgradera befintliga `badge_*_desc`-nycklar via `BadgeStringMap.descriptionFor`.
+- Enhets-substantiv per märke/kategori.
+- Kategori-eyebrow-labels (tier + kategori), t.ex. `badge_cat_family_milestone`.
+- Två templade strängar: `badge_progress_counted` ("%1$s av %2$s %3$s") och `badge_next_tier_label` + `badge_next_tier_value` ("%1$s — %2$s kvar"). Förformatera tal i Kotlin (ingen `%%`); raw `'`/`’`.
+
+### 15.5 Komponenter (filer)
+
+- `composeApp/.../ui/badges/UnlockBottomSheet.kt` — bygg om enligt A (olåst).
+- `composeApp/.../ui/badges/LockedBadgeBottomSheet.kt` — bygg om enligt A (låst/pågående).
+- `composeApp/.../ui/badges/BadgesViewModel.kt` (+ `BadgesUiState.kt`) — kortmodell + next-tier-beräkning + enhet/kategori-label.
+- `composeApp/.../ui/scaffold/BadgesRoute.kt` — mata in kortmodellen.
+- `composeApp/.../ui/badges/BadgeStringMap.kt` — poäng/enhet/kategori-label-mappning.
+- `composeApp/.../composeResources/values/strings.xml` + `values-en/strings.xml`.
+
+### 15.6 Tester
+
+- **ViewModel/kortmodell:** rätt enhet per kategori; next-tier-beräkning ger rätt namn + `kvar`; sista stege-nivån → ingen not; upplåst icke-stege-märke → ingen not; Hidden → "???" utan poäng/progress; in-progress → rätt current/target.
+- **Device-verify (SM-S918B):** pågående-kort (poäng + "X av Y {enhet}" + bar), upplåst-kort (fylld stämpel + datum + **rak** etikett), stege-not på upplåst Livslista, Hidden-kort. Screenshots enligt [[feedback_personal_device_verify]].
+
+### 15.7 Beroende & ordning
+
+Bygger på §7 (tier/kategori-struktur) och §5–6 (nya kategorier/regler) → körs **efter** dessa DP D-tasks. Läggs in som nya tasks sist i DP D-planen.
+
+## 16. Release
 
 Egen versionCode-bump; shippbar v1.x-feedback-respons (DP D). Ingen DB-rebuild. Device-verify på SM-S918B. Batchas in i closed-testing-lyftet enligt [[project_v1_1_phase_a_ready]] release-strategi. Uppdatera program-spec:en med pekare till DP D:s plan.
