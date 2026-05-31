@@ -631,7 +631,7 @@
     <string name="badge_premium_sunday_birder_name">Sunday Birder</string>
     <string name="badge_premium_sunday_birder_desc">Observe on 4 consecutive Sundays.</string>
     <string name="badge_premium_daily_bird_hunter_name">Daily Bird Hunter</string>
-    <string name="badge_premium_daily_bird_hunter_desc">Save today\'s curated bird on 3 different days.</string>
+    <string name="badge_premium_daily_bird_hunter_desc">Save today’s curated bird on 3 different days.</string>
 
     <!-- ===== v1.2 Phase B: Weekly Recap ===== -->
     <string name="recap_eyebrow_fmt">Field report · Week %1$s</string>
