@@ -67,7 +67,29 @@ import birdy_bird_scanner.composeapp.generated.resources.badge_premium_sunday_bi
 import birdy_bird_scanner.composeapp.generated.resources.badge_premium_sunday_birder_name
 import birdy_bird_scanner.composeapp.generated.resources.badge_premium_winter_wanderer_desc
 import birdy_bird_scanner.composeapp.generated.resources.badge_premium_winter_wanderer_name
+import birdy_bird_scanner.composeapp.generated.resources.badge_cat_audio
+import birdy_bird_scanner.composeapp.generated.resources.badge_cat_breadth
+import birdy_bird_scanner.composeapp.generated.resources.badge_cat_family
+import birdy_bird_scanner.composeapp.generated.resources.badge_cat_progression
+import birdy_bird_scanner.composeapp.generated.resources.badge_cat_redlisted
+import birdy_bird_scanner.composeapp.generated.resources.badge_cat_season
+import birdy_bird_scanner.composeapp.generated.resources.badge_cat_streak_monthly
+import birdy_bird_scanner.composeapp.generated.resources.badge_cat_streak_weekly
+import birdy_bird_scanner.composeapp.generated.resources.badge_unit_families
+import birdy_bird_scanner.composeapp.generated.resources.badge_unit_finches
+import birdy_bird_scanner.composeapp.generated.resources.badge_unit_orders
+import birdy_bird_scanner.composeapp.generated.resources.badge_unit_owls
+import birdy_bird_scanner.composeapp.generated.resources.badge_unit_raptors
+import birdy_bird_scanner.composeapp.generated.resources.badge_unit_redlisted
+import birdy_bird_scanner.composeapp.generated.resources.badge_unit_species
+import birdy_bird_scanner.composeapp.generated.resources.badge_unit_tits
+import birdy_bird_scanner.composeapp.generated.resources.badge_unit_waders
+import birdy_bird_scanner.composeapp.generated.resources.badge_unit_warblers
+import birdy_bird_scanner.composeapp.generated.resources.badge_unit_wildfowl
 import org.jetbrains.compose.resources.StringResource
+import se.birdy.domain.badge.Badge
+import se.birdy.domain.badge.BadgeCategory
+import se.birdy.domain.badge.BadgeRule
 
 object BadgeStringMap {
     fun nameFor(badgeId: String): StringResource =
@@ -144,5 +166,38 @@ object BadgeStringMap {
             "premium_sunday_birder" -> Res.string.badge_premium_sunday_birder_desc
             "premium_daily_bird_hunter" -> Res.string.badge_premium_daily_bird_hunter_desc
             else -> error("No description resource for badgeId=$badgeId")
+        }
+
+    fun categoryLabelFor(category: BadgeCategory): StringResource =
+        when (category) {
+            BadgeCategory.PROGRESSION -> Res.string.badge_cat_progression
+            BadgeCategory.FAMILY -> Res.string.badge_cat_family
+            BadgeCategory.BREADTH -> Res.string.badge_cat_breadth
+            BadgeCategory.REDLISTED -> Res.string.badge_cat_redlisted
+            BadgeCategory.SEASON -> Res.string.badge_cat_season
+            BadgeCategory.AUDIO -> Res.string.badge_cat_audio
+            BadgeCategory.STREAK_WEEKLY -> Res.string.badge_cat_streak_weekly
+            BadgeCategory.STREAK_MONTHLY -> Res.string.badge_cat_streak_monthly
+        }
+
+    /** Noun for the "X of Y <unit>" progress line; null = binary/habit badge (no count line). */
+    fun unitFor(badge: Badge): StringResource? =
+        when (val r = badge.rule) {
+            is BadgeRule.CountUniqueSpecies, is BadgeRule.AudioObservationCount -> Res.string.badge_unit_species
+            is BadgeRule.CountDistinctFamilies -> Res.string.badge_unit_families
+            is BadgeRule.CountDistinctOrders -> Res.string.badge_unit_orders
+            is BadgeRule.ObservedRedListed -> Res.string.badge_unit_redlisted
+            is BadgeRule.ObservedInFamilyGroup -> Res.string.badge_unit_warblers
+            is BadgeRule.ObservedInFamily ->
+                when (r.family) {
+                    "anatidae" -> Res.string.badge_unit_wildfowl
+                    "scolopacidae" -> Res.string.badge_unit_waders
+                    "accipitridae" -> Res.string.badge_unit_raptors
+                    "fringillidae" -> Res.string.badge_unit_finches
+                    "paridae" -> Res.string.badge_unit_tits
+                    "strigidae" -> Res.string.badge_unit_owls
+                    else -> Res.string.badge_unit_species
+                }
+            else -> null
         }
 }

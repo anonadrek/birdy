@@ -670,4 +670,30 @@
     <string name="notification_recap_streak_body">En talgoxe i parken räcker — fortsätt din streak.</string>
     <string name="settings_toggle_weekly_recap">Veckans recap — söndag kväll</string>
     <string name="settings_dev_trigger_recap">DEV: Trigga veckans recap-push</string>
+    <!-- DP D kort: kategori-eyebrow -->
+    <string name="badge_cat_progression">Progression</string>
+    <string name="badge_cat_family">Familj</string>
+    <string name="badge_cat_breadth">Bredd</string>
+    <string name="badge_cat_redlisted">Rödlistat</string>
+    <string name="badge_cat_season">Säsong</string>
+    <string name="badge_cat_audio">Ljud</string>
+    <string name="badge_cat_streak_weekly">Vecko-vana</string>
+    <string name="badge_cat_streak_monthly">Månads-vana</string>
+    <string name="badge_tier_milestone">Skådar-milstolpe</string>
+    <!-- DP D kort: enheter -->
+    <string name="badge_unit_species">arter</string>
+    <string name="badge_unit_families">familjer</string>
+    <string name="badge_unit_orders">ordningar</string>
+    <string name="badge_unit_redlisted">rödlistade arter</string>
+    <string name="badge_unit_wildfowl">andfåglar</string>
+    <string name="badge_unit_waders">vadare</string>
+    <string name="badge_unit_raptors">rovfåglar</string>
+    <string name="badge_unit_finches">finkar</string>
+    <string name="badge_unit_tits">mesar</string>
+    <string name="badge_unit_owls">ugglor</string>
+    <string name="badge_unit_warblers">sångare</string>
+    <!-- DP D kort: mallar (förformatera tal i Kotlin, ej %%) -->
+    <string name="badge_progress_counted">%1$s av %2$s %3$s</string>
+    <string name="badge_next_tier_label">Nästa nivå</string>
+    <string name="badge_next_tier_value">%1$s — %2$s kvar</string>
 </resources>

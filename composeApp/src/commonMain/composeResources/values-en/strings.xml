@@ -656,4 +656,30 @@
     <string name="notification_recap_streak_body">A great tit in the park is enough — keep your streak going.</string>
     <string name="settings_toggle_weekly_recap">Weekly recap — Sunday evening</string>
     <string name="settings_dev_trigger_recap">DEV: Trigger weekly recap push</string>
+    <!-- DP D card: category eyebrow -->
+    <string name="badge_cat_progression">Progression</string>
+    <string name="badge_cat_family">Family</string>
+    <string name="badge_cat_breadth">Breadth</string>
+    <string name="badge_cat_redlisted">Red-listed</string>
+    <string name="badge_cat_season">Season</string>
+    <string name="badge_cat_audio">Sound</string>
+    <string name="badge_cat_streak_weekly">Weekly habit</string>
+    <string name="badge_cat_streak_monthly">Monthly habit</string>
+    <string name="badge_tier_milestone">Birding milestone</string>
+    <!-- DP D card: units -->
+    <string name="badge_unit_species">species</string>
+    <string name="badge_unit_families">families</string>
+    <string name="badge_unit_orders">orders</string>
+    <string name="badge_unit_redlisted">red-listed species</string>
+    <string name="badge_unit_wildfowl">wildfowl</string>
+    <string name="badge_unit_waders">waders</string>
+    <string name="badge_unit_raptors">raptors</string>
+    <string name="badge_unit_finches">finches</string>
+    <string name="badge_unit_tits">tits</string>
+    <string name="badge_unit_owls">owls</string>
+    <string name="badge_unit_warblers">warblers</string>
+    <!-- DP D card: templates (pre-format numbers in Kotlin, no %%) -->
+    <string name="badge_progress_counted">%1$s of %2$s %3$s</string>
+    <string name="badge_next_tier_label">Next level</string>
+    <string name="badge_next_tier_value">%1$s — %2$s to go</string>
 </resources>

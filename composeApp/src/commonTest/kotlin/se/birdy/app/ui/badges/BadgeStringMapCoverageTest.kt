@@ -1,5 +1,8 @@
 package se.birdy.app.ui.badges
 
+import se.birdy.domain.badge.Badge
+import se.birdy.domain.badge.BadgeCategory
+import se.birdy.domain.badge.BadgeRule
 import kotlin.test.Test
 
 class BadgeStringMapCoverageTest {
@@ -21,5 +24,22 @@ class BadgeStringMapCoverageTest {
             BadgeStringMap.nameFor(id)        // throws error(...) if missing
             BadgeStringMap.descriptionFor(id)
         }
+    }
+
+    @Test
+    fun `count-based milestone badges expose a progress unit`() {
+        fun badgeOf(id: String, rule: BadgeRule) =
+            Badge(id = id, category = BadgeCategory.PROGRESSION, rule = rule)
+
+        val countBased = listOf(
+            badgeOf("novice", BadgeRule.CountUniqueSpecies(5)),
+            badgeOf("breadth_families_20", BadgeRule.CountDistinctFamilies(20)),
+            badgeOf("breadth_orders_20", BadgeRule.CountDistinctOrders(20)),
+            badgeOf("redlisted_1", BadgeRule.ObservedRedListed(1)),
+            badgeOf("family_anatidae", BadgeRule.ObservedInFamily("anatidae", 15)),
+            badgeOf("family_songbirds", BadgeRule.ObservedInFamilyGroup(setOf("phylloscopidae"), 15)),
+            badgeOf("audio_scholar", BadgeRule.AudioObservationCount(5)),
+        )
+        countBased.forEach { kotlin.test.assertNotNull(BadgeStringMap.unitFor(it), "saknar enhet: ${it.id}") }
     }
 }
