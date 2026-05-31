@@ -59,4 +59,10 @@ sealed interface AppRoute {
      * Lifelist `LiveStatsPreview` block when premium is active.
      */
     @Serializable data object SeasonStats : AppRoute
+
+    /**
+     * v1.2 Phase B: Weekly Recap screen. Reachable from Lifelist (Task 12),
+     * Settings, and via the `birdy://recap` deep-link emitted by WeeklyRecapWorker.
+     */
+    @Serializable data object WeeklyRecap : AppRoute
 }

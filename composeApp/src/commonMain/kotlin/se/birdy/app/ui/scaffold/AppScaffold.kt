@@ -91,6 +91,9 @@ fun AppScaffold(graph: AppGraph) {
                     "identify" -> {
                         navController.popBackStack(AppRoute.Listen, inclusive = false)
                     }
+                    "recap" -> {
+                        navController.navigate(AppRoute.WeeklyRecap) { launchSingleTop = true }
+                    }
                 }
             }
         }
@@ -347,6 +350,14 @@ fun AppScaffold(graph: AppGraph) {
                 se.birdy.app.ui.stats.SeasonStatsScreen(
                     viewModel = remember(graph) { graph.seasonStatsViewModel() },
                     onBack = { navController.popBackStack() },
+                )
+            }
+            composable<AppRoute.WeeklyRecap> {
+                se.birdy.app.ui.recap.RecapScreen(
+                    viewModel = remember(graph) { graph.weeklyRecapViewModel() },
+                    onOpenCamera = {
+                        navController.navigate(AppRoute.Scan) { launchSingleTop = true }
+                    },
                 )
             }
         }

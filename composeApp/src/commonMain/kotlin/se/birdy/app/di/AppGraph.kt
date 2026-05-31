@@ -398,6 +398,18 @@ class AppGraph(
      * from [se.birdy.android.MainActivity]; in tests construct [AudioScanViewModel]
      * directly with fake collaborators instead.
      */
+    fun weeklyRecapViewModel(): se.birdy.app.ui.recap.RecapViewModel =
+        se.birdy.app.ui.recap.RecapViewModel(
+            obsRepo = observationRepository,
+            badgeRepo = badgeRepository,
+            speciesByQid = { repository.all(defaultLocale).first().associateBy { it.id } },
+            // BadgeStringMap.nameFor returns a StringResource (needs suspend getString),
+            // so it cannot be called from a plain lambda here. Fall back to the raw
+            // badge ID — the recap screen uses these strings only in the summary line.
+            badgeNameFor = { id -> id },
+            zone = timeZone,
+        )
+
     fun audioScanViewModel(): AudioScanViewModel {
         val provider =
             audioClassifierProvider

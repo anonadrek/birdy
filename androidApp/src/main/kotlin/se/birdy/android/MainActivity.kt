@@ -90,7 +90,8 @@ class MainActivity : ComponentActivity() {
                 appGraph.userPreferences.setPushPermissionAsked(true)
                 if (granted) {
                     appGraph.notificationScheduler?.scheduleDailyBird()
-                    appGraph.notificationScheduler?.scheduleStreakRiskCheck()
+                    appGraph.notificationScheduler?.scheduleWeeklyRecap()
+                    appGraph.notificationScheduler?.cancelStreakRiskCheck()
                 }
             }
         }
@@ -103,7 +104,8 @@ class MainActivity : ComponentActivity() {
             lifecycleScope.launch {
                 appGraph.userPreferences.setPushPermissionAsked(true)
                 appGraph.notificationScheduler?.scheduleDailyBird()
-                appGraph.notificationScheduler?.scheduleStreakRiskCheck()
+                appGraph.notificationScheduler?.scheduleWeeklyRecap()
+                appGraph.notificationScheduler?.cancelStreakRiskCheck()
             }
         }
     }
@@ -214,9 +216,8 @@ class MainActivity : ComponentActivity() {
                 if (prefs.dailyBirdPushEnabled.first()) {
                     appGraph.notificationScheduler?.scheduleDailyBird()
                 }
-                if (prefs.streakRiskPushEnabled.first()) {
-                    appGraph.notificationScheduler?.scheduleStreakRiskCheck()
-                }
+                appGraph.notificationScheduler?.scheduleWeeklyRecap()
+                appGraph.notificationScheduler?.cancelStreakRiskCheck()
             }
         }
     }
