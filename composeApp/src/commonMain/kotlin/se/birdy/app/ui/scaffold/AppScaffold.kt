@@ -256,6 +256,7 @@ fun AppScaffold(graph: AppGraph) {
                     showPremiumTeaser = showPremiumTeaser,
                     livePreviewState = livePreviewState,
                     onSeasonStatsClick = { navController.navigate(AppRoute.SeasonStats) },
+                    onRecapClick = { navController.navigate(AppRoute.WeeklyRecap) { launchSingleTop = true } },
                 )
             }
             composable<AppRoute.ObservationDetail> { entry ->

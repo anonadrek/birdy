@@ -63,6 +63,7 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_badge
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_cta
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_preview_caption
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_title
+import birdy_bird_scanner.composeapp.generated.resources.recap_lifelist_entry_title
 import birdy_bird_scanner.composeapp.generated.resources.unknown_species_label
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
@@ -101,6 +102,7 @@ fun LifelistScreen(
     showPremiumTeaser: Boolean = true,
     livePreviewState: se.birdy.app.ui.stats.SeasonStatsUiState.Loaded? = null,
     onSeasonStatsClick: () -> Unit = {},
+    onRecapClick: () -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     JournalScaffold { padding ->
@@ -118,6 +120,7 @@ fun LifelistScreen(
                         showPremiumTeaser = showPremiumTeaser,
                         livePreviewState = livePreviewState,
                         onSeasonStatsClick = onSeasonStatsClick,
+                        onRecapClick = onRecapClick,
                     )
             }
         }
@@ -182,6 +185,7 @@ private fun LoadedLifelist(
     showPremiumTeaser: Boolean,
     livePreviewState: se.birdy.app.ui.stats.SeasonStatsUiState.Loaded? = null,
     onSeasonStatsClick: () -> Unit = {},
+    onRecapClick: () -> Unit = {},
 ) {
     val now = remember { Clock.System.now() }
     val labelStat1 = stringResource(Res.string.lifelist_stat_species)
@@ -229,6 +233,10 @@ private fun LoadedLifelist(
                     onStat3Click = onStat3Toggle,
                 )
             }
+        }
+
+        item {
+            RecapEntryCard(onClick = onRecapClick)
         }
 
         item {
@@ -319,6 +327,42 @@ private fun LoadedLifelist(
         }
 
         item { Spacer(Modifier.height(16.dp)) }
+    }
+}
+
+// ─── Recap entry card ─────────────────────────────────────────────────────────
+
+@Composable
+private fun RecapEntryCard(onClick: () -> Unit) {
+    val serif = rememberDmSerifDisplay()
+    Row(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 6.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(Color.White.copy(alpha = 0.4f))
+                .border(1.dp, AccentCopper.copy(alpha = 0.18f), RoundedCornerShape(12.dp))
+                .clickable(onClick = onClick)
+                .padding(horizontal = 12.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = stringResource(Res.string.recap_lifelist_entry_title),
+                color = AccentCopper,
+                fontFamily = serif,
+                fontStyle = FontStyle.Italic,
+                fontSize = 18.sp,
+            )
+        }
+        Text(
+            text = "›",
+            color = AccentCopper,
+            fontFamily = serif,
+            fontStyle = FontStyle.Italic,
+            fontSize = 22.sp,
+        )
     }
 }
 
