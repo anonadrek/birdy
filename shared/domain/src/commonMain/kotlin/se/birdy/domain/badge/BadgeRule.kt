@@ -25,6 +25,7 @@ sealed interface BadgeRule {
         override val target: Int,
     ) : BadgeRule
 
+    // TODO(DP D): remove after Task 4
     data class ObservedWithAbundance(
         val abundance: BadgeAbundance,
         override val target: Int,
@@ -67,6 +68,27 @@ sealed interface BadgeRule {
     ) : BadgeRule
 
     data class ObservedInAllSeasons(
+        override val target: Int,
+    ) : BadgeRule
+
+    /** Distinct species observed whose taxonomy.family is in [families]. */
+    data class ObservedInFamilyGroup(
+        val families: Set<String>,
+        override val target: Int,
+    ) : BadgeRule
+
+    /** Number of distinct taxonomy.family among observed species. */
+    data class CountDistinctFamilies(
+        override val target: Int,
+    ) : BadgeRule
+
+    /** Number of distinct taxonomy.iocOrder among observed species. */
+    data class CountDistinctOrders(
+        override val target: Int,
+    ) : BadgeRule
+
+    /** Distinct species observed whose iucnStatus is red-listed (NT/VU/CR). */
+    data class ObservedRedListed(
         override val target: Int,
     ) : BadgeRule
 
