@@ -654,7 +654,6 @@
     <string name="recap_eyebrow_fmt">Fältrapport · Vecka %1$s</string>
     <string name="recap_headline_active">En vecka i *fält*.</string>
     <string name="recap_headline_quiet">En *lugn* vecka.</string>
-    <string name="recap_plate_caption_fmt">Pl. — %1$s</string>
     <string name="recap_summary_active_fmt">%1$s fynd den här veckan.</string>
     <string name="recap_summary_active_new">%1$s fynd den här veckan — och en ny bekantskap.</string>
     <string name="recap_stats_fmt">%1$s fynd · %2$s ny art · %3$s v streak</string>
@@ -665,6 +664,7 @@
     <string name="recap_streak_label">Din streak</string>
     <string name="recap_streak_nudge_fmt">%1$s veckor i rad — håll den vid liv innan söndagen är slut. En talgoxe i parken räcker.</string>
     <string name="recap_cta_open_camera">Öppna kameran →</string>
+    <string name="recap_load_error">Kunde inte öppna veckans uppslag. Försök igen senare.</string>
     <string name="recap_lifelist_entry_title">Veckans uppslag</string>
     <string name="recap_lifelist_entry_active_fmt">Vecka %1$s · %2$s fynd</string>
     <string name="recap_lifelist_entry_quiet">En lugn vecka hittills</string>

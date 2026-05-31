@@ -641,7 +641,6 @@
     <string name="recap_eyebrow_fmt">Field report · Week %1$s</string>
     <string name="recap_headline_active">A week in the *field*.</string>
     <string name="recap_headline_quiet">A *quiet* week.</string>
-    <string name="recap_plate_caption_fmt">Pl. — %1$s</string>
     <string name="recap_summary_active_fmt">%1$s sightings this week.</string>
     <string name="recap_summary_active_new">%1$s sightings this week — and a new acquaintance.</string>
     <string name="recap_stats_fmt">%1$s sightings · %2$s new · %3$s wk streak</string>
@@ -652,6 +651,7 @@
     <string name="recap_streak_label">Your streak</string>
     <string name="recap_streak_nudge_fmt">%1$s weeks running — keep it alive before Sunday ends. A great tit in the park is enough.</string>
     <string name="recap_cta_open_camera">Open the camera →</string>
+    <string name="recap_load_error">Couldn't open this week’s page. Try again later.</string>
     <string name="recap_lifelist_entry_title">This week's page</string>
     <string name="recap_lifelist_entry_active_fmt">Week %1$s · %2$s sightings</string>
     <string name="recap_lifelist_entry_quiet">A quiet week so far</string>
