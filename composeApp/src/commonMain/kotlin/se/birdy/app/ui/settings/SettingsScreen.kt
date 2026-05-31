@@ -66,6 +66,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.settings_back
+import birdy_bird_scanner.composeapp.generated.resources.settings_dev_trigger_recap
 import birdy_bird_scanner.composeapp.generated.resources.settings_feedback_subject
 import birdy_bird_scanner.composeapp.generated.resources.settings_footer
 import birdy_bird_scanner.composeapp.generated.resources.settings_hero_accent
@@ -96,7 +97,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_share_copy
 import birdy_bird_scanner.composeapp.generated.resources.settings_show_intro_again
 import birdy_bird_scanner.composeapp.generated.resources.settings_title
 import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_daily_bird
-import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_streak_risk
+import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_weekly_recap
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
@@ -187,7 +188,7 @@ fun SettingsScreen(
             item { SectionHeader(stringResource(Res.string.settings_section_notifications)) }
             item {
                 val dailyBirdEnabled by viewModel.dailyBirdPushEnabled.collectAsState()
-                val streakRiskEnabled by viewModel.streakRiskPushEnabled.collectAsState()
+                val weeklyRecapEnabled by viewModel.weeklyRecapPushEnabled.collectAsState()
                 val systemNotifEnabled = viewModel.areNotificationsEnabled()
 
                 PaperCard {
@@ -200,9 +201,9 @@ fun SettingsScreen(
                     DashedDivider()
                     ToggleRow(
                         icon = Icons.Outlined.Notifications,
-                        label = stringResource(Res.string.settings_toggle_streak_risk),
-                        checked = streakRiskEnabled,
-                        onCheckedChange = viewModel::setStreakRiskPushEnabled,
+                        label = stringResource(Res.string.settings_toggle_weekly_recap),
+                        checked = weeklyRecapEnabled,
+                        onCheckedChange = viewModel::setWeeklyRecapPushEnabled,
                     )
                     if (!systemNotifEnabled) {
                         DashedDivider()
@@ -228,9 +229,9 @@ fun SettingsScreen(
                         DashedDivider()
                         SettingsRow(
                             icon = Icons.Outlined.Notifications,
-                            label = "DEV: Trigger Streak Risk push",
+                            label = stringResource(Res.string.settings_dev_trigger_recap),
                             value = null,
-                            onClick = { viewModel.devTriggerStreakRiskPush() },
+                            onClick = { viewModel.devTriggerWeeklyRecapPush() },
                         )
                     }
                 }

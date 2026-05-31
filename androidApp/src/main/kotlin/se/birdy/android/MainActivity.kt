@@ -392,17 +392,17 @@ class MainActivity : ComponentActivity() {
                 } else {
                     null
                 },
-            devTriggerStreakRisk =
+            devTriggerWeeklyRecap =
                 if (BuildConfig.DEBUG) {
                     {
                         androidx.work.WorkManager.getInstance(applicationContext).enqueue(
                             androidx.work
                                 .OneTimeWorkRequestBuilder<
-                                    se.birdy.app.notifications.workers.StreakRiskWorker,
+                                    se.birdy.app.notifications.workers.WeeklyRecapWorker,
                                 >()
                                 .setInputData(
                                     androidx.work.workDataOf(
-                                        se.birdy.app.notifications.workers.StreakRiskWorker.KEY_FORCE_FOR_DEV to true,
+                                        se.birdy.app.notifications.workers.WeeklyRecapWorker.KEY_FORCE_FOR_DEV to true,
                                     ),
                                 ).build(),
                         )

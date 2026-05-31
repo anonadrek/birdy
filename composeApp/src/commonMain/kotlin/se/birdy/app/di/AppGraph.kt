@@ -180,10 +180,10 @@ class AppGraph(
      */
     val devTriggerDailyBird: (() -> Unit)? = null,
     /**
-     * Debug-only: enqueues a OneTimeWorkRequest for StreakRiskWorker. Wired only
+     * Debug-only: enqueues a OneTimeWorkRequest for WeeklyRecapWorker. Wired only
      * when BuildConfig.DEBUG is true; null in release and on non-Android targets.
      */
-    val devTriggerStreakRisk: (() -> Unit)? = null,
+    val devTriggerWeeklyRecap: (() -> Unit)? = null,
     /**
      * Emits `birdy://` deep-link URIs from MainActivity.onCreate/onNewIntent.
      * AppScaffold collects this flow and dispatches navigation.
@@ -357,7 +357,7 @@ class AppGraph(
             notificationScheduler = notificationScheduler,
             platformNotificationsApi = platformNotificationsApi,
             devTriggerDailyBird = devTriggerDailyBird,
-            devTriggerStreakRisk = devTriggerStreakRisk,
+            devTriggerWeeklyRecap = devTriggerWeeklyRecap,
         )
 
     fun premiumViewModel(): PremiumViewModel =

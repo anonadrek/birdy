@@ -29,7 +29,7 @@ class SettingsViewModel(
     private val notificationScheduler: NotificationScheduler? = null,
     private val platformNotificationsApi: PlatformNotificationsApi? = null,
     private val devTriggerDailyBird: (() -> Unit)? = null,
-    private val devTriggerStreakRisk: (() -> Unit)? = null,
+    private val devTriggerWeeklyRecap: (() -> Unit)? = null,
 ) : ViewModel() {
     private val _state = MutableStateFlow(SettingsUiState())
     val state: StateFlow<SettingsUiState> = _state.asStateFlow()
@@ -40,8 +40,8 @@ class SettingsViewModel(
     val dailyBirdPushEnabled: StateFlow<Boolean> =
         prefs.dailyBirdPushEnabled.stateIn(viewModelScope, SharingStarted.Eagerly, true)
 
-    val streakRiskPushEnabled: StateFlow<Boolean> =
-        prefs.streakRiskPushEnabled.stateIn(viewModelScope, SharingStarted.Eagerly, true)
+    val weeklyRecapPushEnabled: StateFlow<Boolean> =
+        prefs.weeklyRecapPushEnabled.stateIn(viewModelScope, SharingStarted.Eagerly, true)
 
     init {
         viewModelScope.launch {
@@ -105,10 +105,10 @@ class SettingsViewModel(
         }
     }
 
-    fun setStreakRiskPushEnabled(value: Boolean) {
+    fun setWeeklyRecapPushEnabled(value: Boolean) {
         viewModelScope.launch {
-            prefs.setStreakRiskPushEnabled(value)
-            if (value) notificationScheduler?.scheduleStreakRiskCheck() else notificationScheduler?.cancelStreakRiskCheck()
+            prefs.setWeeklyRecapPushEnabled(value)
+            if (value) notificationScheduler?.scheduleWeeklyRecap() else notificationScheduler?.cancelWeeklyRecap()
         }
     }
 
@@ -119,14 +119,14 @@ class SettingsViewModel(
     }
 
     val devToolsAvailable: Boolean
-        get() = devTriggerDailyBird != null || devTriggerStreakRisk != null
+        get() = devTriggerDailyBird != null || devTriggerWeeklyRecap != null
 
     fun devTriggerDailyBirdPush() {
         devTriggerDailyBird?.invoke()
     }
 
-    fun devTriggerStreakRiskPush() {
-        devTriggerStreakRisk?.invoke()
+    fun devTriggerWeeklyRecapPush() {
+        devTriggerWeeklyRecap?.invoke()
     }
 
     private var restoreInFlight = false
