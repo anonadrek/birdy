@@ -200,27 +200,29 @@ class BadgesViewModelTest {
             val catalog = BadgeCatalog(version = 1, badges = listOf(redlistedBadge))
             // One observation of a VU species — so current=1, target=5 → InProgress, not Hidden
             val vuSpeciesId = "Q99001"
-            val vuSpecies = Species(
-                id = SpeciesId(vuSpeciesId),
-                scientificName = "Acanthis cabaret",
-                taxonomy = SpeciesTaxonomy(family = "Fringillidae", familySv = null, genus = "Acanthis", iocOrder = "Passeriformes"),
-                name = "Lesser Redpoll",
-                abundance = se.birdy.content.Abundance.OVANLIG,
-                iucnStatus = "VU",
-                regions = emptyList(),
-                season = emptyMap(),
-                description = null,
-                migration = null,
-                images = emptyList(),
-            )
+            val vuSpecies =
+                Species(
+                    id = SpeciesId(vuSpeciesId),
+                    scientificName = "Acanthis cabaret",
+                    taxonomy = SpeciesTaxonomy(family = "Fringillidae", familySv = null, genus = "Acanthis", iocOrder = "Passeriformes"),
+                    name = "Lesser Redpoll",
+                    abundance = se.birdy.content.Abundance.OVANLIG,
+                    iucnStatus = "VU",
+                    regions = emptyList(),
+                    season = emptyMap(),
+                    description = null,
+                    migration = null,
+                    images = emptyList(),
+                )
             val obs = listOf(observation(vuSpeciesId, 2026, 5, 10))
-            val vm = makeVmWithSpecies(
-                observations = obs,
-                unlocks = emptyList(),
-                totalSpecies = 700,
-                catalog = catalog,
-                speciesMap = mapOf(SpeciesId(vuSpeciesId) to vuSpecies),
-            )
+            val vm =
+                makeVmWithSpecies(
+                    observations = obs,
+                    unlocks = emptyList(),
+                    totalSpecies = 700,
+                    catalog = catalog,
+                    speciesMap = mapOf(SpeciesId(vuSpeciesId) to vuSpecies),
+                )
 
             vm.state.test {
                 var item = awaitItem()
@@ -243,11 +245,12 @@ class BadgesViewModelTest {
         runTest {
             val realBadge = Badge("novice", BadgeCategory.PROGRESSION, BadgeRule.CountUniqueSpecies(5))
             val catalog = BadgeCatalog(version = 1, badges = listOf(realBadge))
-            val unlocks = listOf(
-                BadgeUnlock("novice", Instant.fromEpochMilliseconds(1_000L)),       // in catalog
-                BadgeUnlock("rare_first", Instant.fromEpochMilliseconds(2_000L)),   // NOT in catalog (ghost)
-                BadgeUnlock("ghost_badge", Instant.fromEpochMilliseconds(3_000L)), // NOT in catalog (ghost)
-            )
+            val unlocks =
+                listOf(
+                    BadgeUnlock("novice", Instant.fromEpochMilliseconds(1_000L)), // in catalog
+                    BadgeUnlock("rare_first", Instant.fromEpochMilliseconds(2_000L)), // NOT in catalog (ghost)
+                    BadgeUnlock("ghost_badge", Instant.fromEpochMilliseconds(3_000L)), // NOT in catalog (ghost)
+                )
             val vm = makeVm(observations = emptyList(), unlocks = unlocks, totalSpecies = 700, catalog = catalog)
 
             vm.state.test {

@@ -7,7 +7,8 @@ import com.charleskorn.kaml.YamlScalar
 import java.nio.file.Path
 
 object ValidateBadgesYamlMain {
-    private val validCategories = setOf("progression", "family", "breadth", "redlisted", "season", "audio", "streak_weekly", "streak_monthly")
+    private val validCategories =
+        setOf("progression", "family", "breadth", "redlisted", "season", "audio", "streak_weekly", "streak_monthly")
     private val validRuleTypes =
         setOf(
             "count_unique_species",

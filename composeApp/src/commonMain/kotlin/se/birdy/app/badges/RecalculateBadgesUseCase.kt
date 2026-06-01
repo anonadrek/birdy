@@ -72,13 +72,17 @@ class RecalculateBadgesUseCase(
                     speciesByQid[SpeciesId(qid)]?.taxonomy?.family in rule.families
                 }
             is BadgeRule.CountDistinctFamilies ->
-                observations.mapNotNull { it.speciesId }
+                observations
+                    .mapNotNull { it.speciesId }
                     .mapNotNull { speciesByQid[SpeciesId(it)]?.taxonomy?.family }
-                    .distinct().size
+                    .distinct()
+                    .size
             is BadgeRule.CountDistinctOrders ->
-                observations.mapNotNull { it.speciesId }
+                observations
+                    .mapNotNull { it.speciesId }
                     .mapNotNull { speciesByQid[SpeciesId(it)]?.taxonomy?.iocOrder }
-                    .distinct().size
+                    .distinct()
+                    .size
             is BadgeRule.ObservedRedListed ->
                 observations.mapNotNull { it.speciesId }.distinct().count { qid ->
                     speciesByQid[SpeciesId(qid)]?.iucnStatus in RED_LISTED
@@ -111,5 +115,4 @@ class RecalculateBadgesUseCase(
                 if (observations.map { seasonOf(it.capturedAt, zone) }.toSet().size >= 4) 1 else 0
             BadgeRule.Manual -> 0
         }
-
 }

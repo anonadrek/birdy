@@ -26,7 +26,10 @@ object BadgeLadder {
      * Next un-earned tier in [unlocked]'s ladder among [locked], or null if [unlocked] is the
      * top tier / not laddered. remaining = next target − current progress (≥ 0).
      */
-    fun nextTier(unlocked: Badge, locked: List<LockedBadgeProgress>): NextTier? {
+    fun nextTier(
+        unlocked: Badge,
+        locked: List<LockedBadgeProgress>,
+    ): NextTier? {
         val key = ladderKey(unlocked.rule) ?: return null
         val next =
             locked

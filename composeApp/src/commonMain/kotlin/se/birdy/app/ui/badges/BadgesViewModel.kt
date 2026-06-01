@@ -16,7 +16,6 @@ import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
 import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeCatalog
-import se.birdy.domain.badge.BadgeCategory
 import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.badge.BadgeUnlock
 import se.birdy.domain.badge.longestMonthlyStreak
