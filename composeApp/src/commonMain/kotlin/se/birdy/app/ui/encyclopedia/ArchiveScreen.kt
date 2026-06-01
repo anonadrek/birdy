@@ -465,9 +465,9 @@ private fun ChipBar(
             ArchiveChip.GAMEBIRDS to stringResource(Res.string.archive_chip_gamebirds),
             ArchiveChip.WATERFOWL to stringResource(Res.string.archive_chip_waterfowl),
             ArchiveChip.GREBES_DIVERS to stringResource(Res.string.archive_chip_grebes_divers),
-            ArchiveChip.HERONS to stringResource(Res.string.archive_chip_herons),
+            ArchiveChip.HERONS_STORKS to stringResource(Res.string.archive_chip_herons),
             ArchiveChip.WADERS to stringResource(Res.string.archive_chip_waders),
-            ArchiveChip.GULLS to stringResource(Res.string.archive_chip_gulls),
+            ArchiveChip.GULLS_TERNS to stringResource(Res.string.archive_chip_gulls),
             ArchiveChip.SEABIRDS to stringResource(Res.string.archive_chip_seabirds),
             ArchiveChip.OTHER to stringResource(Res.string.archive_chip_other),
         )
