@@ -65,6 +65,7 @@ class SqlDelightSpeciesRepository(
                             familySv = taxonomy.family_sv,
                             genus = taxonomy.genus,
                             iocOrder = taxonomy.ioc_order,
+                            group = taxonomy.group_id,
                         ),
                     name = name,
                     abundance =
@@ -155,6 +156,8 @@ class SqlDelightSpeciesRepository(
                                     ?.path,
                             iocOrder = taxonomy?.ioc_order ?: "",
                             family = taxonomy?.family ?: "",
+                            familySv = taxonomy?.family_sv ?: "",
+                            group = taxonomy?.group_id ?: "",
                         )
                     }
             }
@@ -246,6 +249,7 @@ class SqlDelightSpeciesRepository(
                                     familySv = taxonomy.family_sv,
                                     genus = taxonomy.genus,
                                     iocOrder = taxonomy.ioc_order,
+                                    group = taxonomy.group_id,
                                 ),
                             name = name,
                             abundance = Abundance.fromCode(row.abundance) ?: Abundance.OVANLIG,
@@ -296,6 +300,8 @@ class SqlDelightSpeciesRepository(
             heroImagePath = hero,
             iocOrder = taxonomy?.ioc_order ?: "",
             family = taxonomy?.family ?: "",
+            familySv = taxonomy?.family_sv ?: "",
+            group = taxonomy?.group_id ?: "",
         )
     }
 

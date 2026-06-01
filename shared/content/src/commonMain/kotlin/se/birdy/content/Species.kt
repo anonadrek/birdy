@@ -23,6 +23,7 @@ data class SpeciesTaxonomy(
     val familySv: String?,
     val genus: String,
     val iocOrder: String,
+    val group: String = "",
 )
 
 data class SpeciesImage(
@@ -43,4 +44,6 @@ data class SpeciesSummary(
     val heroImagePath: String?,
     val iocOrder: String = "",
     val family: String = "",
+    val familySv: String = "",
+    val group: String = "",
 )

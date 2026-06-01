@@ -309,6 +309,21 @@ class SpeciesRepositoryTest {
         }
 
     @Test
+    fun `search carries ecological group and family_sv`(
+        @TempDir tempDir: Path,
+    ) = runTest {
+        val driver = newDriverWithFixtures(tempDir)
+        val repo = SqlDelightSpeciesRepository(BirdyContent(driver))
+
+        val results = repo.search(query = "Talg", locale = Locale.SV, filters = SpeciesFilter()).first()
+        val talgoxe = results.first { it.id == SpeciesId("Q25485") }
+        assertEquals("songbirds", talgoxe.group)
+        assertEquals("Mesar", talgoxe.familySv) // fixturens family_sv för Paridae
+
+        driver.close()
+    }
+
+    @Test
     fun `family search returns family members`() =
         runTest {
             val db = newInMemoryDb()
