@@ -17,6 +17,7 @@ sealed interface BadgesUiState {
         val locked: List<LockedBadgeProgress>, // alla låsta, sorterade (regular only)
         val premiumBadges: List<PremiumBadgeProgress> = emptyList(), // 10 premium, locked + unlocked blandat
         val premiumActive: Boolean = false,
+        val trophyShowcase: TrophyShowcase = TrophyShowcase(null, emptyList(), emptyList(), emptyList()),
     ) : BadgesUiState
 
     data class Error(

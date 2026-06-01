@@ -263,6 +263,34 @@ class BadgesViewModelTest {
             }
         }
 
+    @Test
+    fun `trophyShowcase hero is latest unlock and rareFinds keeps REDLISTED`() =
+        runTest {
+            val unlocks =
+                listOf(
+                    BadgeUnlock("novice", Instant.fromEpochMilliseconds(1_000L)),
+                    BadgeUnlock("redlisted_1", Instant.fromEpochMilliseconds(2_000L)),
+                )
+            val catalog =
+                BadgeCatalog(
+                    version = 1,
+                    badges =
+                        listOf(
+                            Badge("novice", BadgeCategory.PROGRESSION, BadgeRule.CountUniqueSpecies(5)),
+                            Badge("redlisted_1", BadgeCategory.REDLISTED, BadgeRule.ObservedRedListed(1)),
+                        ),
+                )
+            val vm = makeVm(observations = emptyList(), unlocks = unlocks, totalSpecies = 700, catalog = catalog)
+            vm.state.test {
+                var item = awaitItem()
+                while (item is BadgesUiState.Loading) item = awaitItem()
+                val loaded = item as BadgesUiState.Loaded
+                assertEquals("redlisted_1", loaded.trophyShowcase.hero?.badge?.id)
+                assertEquals(listOf("redlisted_1"), loaded.trophyShowcase.rareFinds.map { it.badge.id })
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
     private fun makeVm(
         observations: List<Observation>,
         unlocks: List<BadgeUnlock>,
