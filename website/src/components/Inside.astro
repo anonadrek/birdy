@@ -12,7 +12,7 @@ const t = getCopy(locale);
 ---
 
 <section id="inside" class="inside">
-  <div class="head">
+  <div class="head" data-reveal>
     <EyebrowLabel text={t.inside.eyebrow} />
     <JournalHeadline text={t.inside.headline} level="h2" />
     <p class="sub">{t.inside.sub}</p>
@@ -20,8 +20,8 @@ const t = getCopy(locale);
   </div>
 
   <ul class="stats" role="list">
-    {t.inside.stats.map((stat) => (
-      <li class="stat">
+    {t.inside.stats.map((stat, i) => (
+      <li class="stat" data-reveal style={`--rd:${i * 120}ms`}>
         <span class="value">{stat.value}</span>
         <span class="label">{stat.label}</span>
         <span class="caption">{stat.caption}</span>
