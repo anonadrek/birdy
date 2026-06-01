@@ -239,11 +239,11 @@
     <!-- ===== Badge names + descriptions ===== -->
     <!-- Progression -->
     <string name="badge_name_novice">Novice</string>
-    <string name="badge_desc_novice">You have spotted your first 5 bird species.</string>
+    <string name="badge_desc_novice">The foundation it all rests on — the first species you learn to know.</string>
     <string name="badge_name_birder_bronze">Birder</string>
-    <string name="badge_desc_birder_bronze">25 species seen — bronze field-birding tier.</string>
+    <string name="badge_desc_birder_bronze">You&#8217;re starting to see patterns, not just individual birds.</string>
     <string name="badge_name_birder_silver">Experienced birder</string>
-    <string name="badge_desc_birder_silver">100 species seen — you are getting skilled.</string>
+    <string name="badge_desc_birder_silver">Now you recognise more than you need to look up.</string>
 
     <!-- Streaks weekly -->
     <string name="badge_name_weekly_streak_4">Monthly rhythm</string>
@@ -261,43 +261,43 @@
 
     <!-- Family -->
     <string name="badge_name_family_anatidae">Wildfowler</string>
-    <string name="badge_desc_family_anatidae">15 different wildfowl seen.</string>
+    <string name="badge_desc_family_anatidae">Ducks and geese — the field&#8217;s first lesson in patience.</string>
     <string name="badge_name_family_paridae">Tit collector</string>
-    <string name="badge_desc_family_paridae">6 different tits seen.</string>
+    <string name="badge_desc_family_paridae">Tits are your window into the woodland&#8217;s small birds.</string>
     <string name="badge_name_family_accipitridae">Raptor watcher</string>
-    <string name="badge_desc_family_accipitridae">12 different raptors seen.</string>
+    <string name="badge_desc_family_accipitridae">Raptors are read by silhouette and wingbeat, rarely up close.</string>
     <string name="badge_name_family_fringillidae">Finch collector</string>
-    <string name="badge_desc_family_fringillidae">12 different finches seen.</string>
+    <string name="badge_desc_family_fringillidae">Finches teach you to listen — the flight call gives them away.</string>
     <string name="badge_name_family_scolopacidae">Wader watcher</string>
-    <string name="badge_desc_family_scolopacidae">12 different waders seen.</string>
+    <string name="badge_desc_family_scolopacidae">Waders separate the birder from the onlooker.</string>
     <string name="badge_name_family_strigidae">Owl watcher</string>
-    <string name="badge_desc_family_strigidae">8 different owls seen.</string>
+    <string name="badge_desc_family_strigidae">Owls are seldom seen, more often heard — a hunt at dusk.</string>
     <string name="badge_name_family_songbirds">Warbler collector</string>
-    <string name="badge_desc_family_songbirds">15 different warblers seen.</string>
+    <string name="badge_desc_family_songbirds">Warblers hide in the masses — telling them apart is real skill.</string>
 
     <!-- DP D: new/updated badges -->
     <string name="badge_name_birder_gold">Seasoned birder</string>
-    <string name="badge_desc_birder_gold">250 species on your life list.</string>
+    <string name="badge_desc_birder_gold">This is no longer beginner country.</string>
     <string name="badge_name_birder_legend">Master birder</string>
-    <string name="badge_desc_birder_legend">500 species — a life&#8217;s work.</string>
+    <string name="badge_desc_birder_legend">Few birders ever get this far — a life&#8217;s work.</string>
     <string name="badge_name_breadth_families_20">Family spanner</string>
-    <string name="badge_desc_breadth_families_20">Species from 20 different families.</string>
+    <string name="badge_desc_breadth_families_20">Breadth, not just depth — you range across the whole field.</string>
     <string name="badge_name_breadth_families_50">Family connoisseur</string>
-    <string name="badge_desc_breadth_families_50">Species from 50 different families.</string>
+    <string name="badge_desc_breadth_families_50">Few birders range across so many families.</string>
     <string name="badge_name_breadth_orders_20">Order traveller</string>
-    <string name="badge_desc_breadth_orders_20">Species from 20 different orders.</string>
+    <string name="badge_desc_breadth_orders_20">From seabirds to passerines — you cover the breadth of bird life.</string>
     <string name="badge_name_redlisted_1">Red-listed</string>
-    <string name="badge_desc_redlisted_1">Your first red-listed species.</string>
+    <string name="badge_desc_redlisted_1">Red-listed species are the ones birders travel for.</string>
     <string name="badge_name_redlisted_5">Rarity hunter</string>
-    <string name="badge_desc_redlisted_5">5 red-listed species seen.</string>
+    <string name="badge_desc_redlisted_5">Every threatened bird you see is a meeting that grows rarer.</string>
     <string name="badge_name_redlisted_15">Red-list master</string>
-    <string name="badge_desc_redlisted_15">15 red-listed species seen.</string>
+    <string name="badge_desc_redlisted_15">You seek the ones at risk of vanishing — and find them.</string>
     <string name="badge_name_season_all_year">Year-round</string>
-    <string name="badge_desc_season_all_year">Finds in all four seasons.</string>
+    <string name="badge_desc_season_all_year">The birding year has four faces — you&#8217;ve seen them all.</string>
     <string name="badge_name_season_faithful">Faithful companion</string>
-    <string name="badge_desc_season_faithful">The same species in all four seasons.</string>
+    <string name="badge_desc_season_faithful">Following one species through the year is how you truly come to know it.</string>
     <string name="badge_name_audio_scholar">Sound birder</string>
-    <string name="badge_desc_audio_scholar">5 species identified by song.</string>
+    <string name="badge_desc_audio_scholar">Knowing a bird by its call is the birder&#8217;s second pair of eyes.</string>
     <string name="badges_section_milestones">BIRDING MILESTONES</string>
     <string name="badges_section_habits">HABITS</string>
 

@@ -195,7 +195,7 @@ private fun LoadedContent(
         }
         if (habits.isNotEmpty()) {
             item(span = { GridItemSpan(maxLineSpan) }) {
-                SectionLabel(stringResource(Res.string.badges_section_habits))
+                SectionLabel(stringResource(Res.string.badges_section_habits), dim = true)
             }
             items(items = habits, key = { it.badge.id }) { lbp ->
                 BadgeGridCell(
@@ -365,10 +365,13 @@ private fun PremiumBadgesTeaserRow(onPremiumClick: () -> Unit) {
 }
 
 @Composable
-private fun SectionLabel(text: String) {
+private fun SectionLabel(
+    text: String,
+    dim: Boolean = false,
+) {
     Text(
         text = text.uppercase(),
-        color = MarginaliaInk,
+        color = if (dim) MarginaliaInk.copy(alpha = 0.55f) else MarginaliaInk,
         fontSize = 9.sp,
         fontWeight = FontWeight.W700,
         letterSpacing = 0.22.em,
