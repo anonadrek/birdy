@@ -242,7 +242,7 @@
     <string name="badge_desc_novice">You have spotted your first 5 bird species.</string>
     <string name="badge_name_birder_bronze">Birder</string>
     <string name="badge_desc_birder_bronze">25 species seen — bronze field-birding tier.</string>
-    <string name="badge_name_birder_silver">Seasoned birder</string>
+    <string name="badge_name_birder_silver">Experienced birder</string>
     <string name="badge_desc_birder_silver">100 species seen — you are getting skilled.</string>
 
     <!-- Streaks weekly -->
