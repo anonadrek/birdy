@@ -76,6 +76,7 @@ fun BadgesScreen(
     onRetry: () -> Unit,
     onSettingsClick: () -> Unit,
     onPremiumClick: () -> Unit,
+    onOpenTrophyRoom: () -> Unit,
     showPremiumTeaser: Boolean = true,
     modifier: Modifier = Modifier,
 ) {
@@ -97,6 +98,7 @@ fun BadgesScreen(
                         onLockedClick = { selectedLocked = it },
                         onSettingsClick = onSettingsClick,
                         onPremiumClick = onPremiumClick,
+                        onOpenTrophyRoom = onOpenTrophyRoom,
                         showPremiumTeaser = showPremiumTeaser,
                     )
             }
@@ -117,6 +119,7 @@ private fun LoadedContent(
     onLockedClick: (LockedBadgeProgress) -> Unit,
     onSettingsClick: () -> Unit,
     onPremiumClick: () -> Unit,
+    onOpenTrophyRoom: () -> Unit,
     showPremiumTeaser: Boolean,
 ) {
     val milestones = state.locked.filter { it.badge.category.tier == BadgeTier.MILESTONE }
@@ -155,6 +158,13 @@ private fun LoadedContent(
                     modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
                 )
             }
+        }
+        item(span = { GridItemSpan(maxLineSpan) }) {
+            TrophyRoomEntryCard(
+                hero = state.trophyShowcase.hero,
+                unlockedCount = state.unlockedCount,
+                onClick = onOpenTrophyRoom,
+            )
         }
 
         if (state.recentlyUnlocked.isNotEmpty()) {
