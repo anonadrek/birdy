@@ -26,9 +26,21 @@ class ArchiveChipTest {
     fun `chip keys match the locked content group ids and are unique`() {
         val expected =
             setOf(
-                "songbirds", "waterfowl", "waders", "gulls_terns", "auks", "seabirds",
-                "grebes_divers", "herons_storks", "raptors", "owls", "gamebirds",
-                "doves", "woodpeckers", "cranes_rails", "other",
+                "songbirds",
+                "waterfowl",
+                "waders",
+                "gulls_terns",
+                "auks",
+                "seabirds",
+                "grebes_divers",
+                "herons_storks",
+                "raptors",
+                "owls",
+                "gamebirds",
+                "doves",
+                "woodpeckers",
+                "cranes_rails",
+                "other",
             )
         val keys = ArchiveChip.entries.filter { it != ArchiveChip.ALL }.map { it.key }
         assertEquals(expected.size, keys.size, "dubbletter eller saknade chip-nycklar")

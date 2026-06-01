@@ -15,9 +15,21 @@ class FamilyGroupsTest {
     fun `order list matches the locked 15 group ids`() {
         val expected =
             listOf(
-                "songbirds", "waterfowl", "waders", "gulls_terns", "auks", "seabirds",
-                "grebes_divers", "herons_storks", "raptors", "owls", "gamebirds",
-                "doves", "woodpeckers", "cranes_rails", "other",
+                "songbirds",
+                "waterfowl",
+                "waders",
+                "gulls_terns",
+                "auks",
+                "seabirds",
+                "grebes_divers",
+                "herons_storks",
+                "raptors",
+                "owls",
+                "gamebirds",
+                "doves",
+                "woodpeckers",
+                "cranes_rails",
+                "other",
             )
         assertEquals(expected, groups.groupIds)
     }
