@@ -185,6 +185,7 @@ cd website && npm run test:i18n    # SV/EN parity check
 5. **AB-flytt:** Account Transfer av Play Console till AB-bolaget när det är registrerat (post-launch).
 6. **SV legal-översättningar:** Om Sverige-trafik växer, mirror `/sv/legal/...` med översatta markdown-filer. Idag cross-linkar SV-footer till EN-only `/legal/`-routes (intentionellt — Nordics/EU first launch).
 7. **Plan 6a T8/T9 device-screenshots saknas:** `08-match-with-inline-note` + `09-disambig-save-as-unknown` (kräver deterministisk match-flow ej driveable via ADB — kan adresseras via test-image-infra i framtida sprint).
+8. **Store-listning + release-notes vid nästa AAB-upload (v1.1, vC120/rc5+):** När v1.1-bundlen laddas upp till Play Console MÅSTE den publika store-listningen + "What's new"/release-notes uppdateras så de speglar v1.1-batchens ändringar — **DP A** (sök hittar apostrof/diakrit-arter), **DP C** (ekologiska uppslagsverks-kategorier), **DP D** (omgjorda märken: rödlistat-spår, livslista 500, audio/säsong gratis), **Phase B** (Veckans uppslag-notis) + **DP B**-positionering ("keep it, not just ID it"). DP B har redan utkast-copy i `docs/play-store/store-listing-{sv,en}.md` — Console-texten är den manuella biten. Detaljerad batch-state i auto-memory `project_v1_1_release_train.md`.
 
 ## Roadmap post-v1.0 (referens)
 
