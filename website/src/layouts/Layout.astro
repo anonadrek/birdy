@@ -35,6 +35,10 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+
     <title>{copy.meta.title}</title>
     <meta name="description" content={copy.meta.description} />
 
@@ -81,5 +85,28 @@ const jsonLd = {
   </head>
   <body class="paper-bg">
     <slot />
+    <script>
+      // Reveal-on-scroll for any [data-reveal] element. Progressive
+      // enhancement: without JS the .js gate in CSS keeps everything visible.
+      const els = Array.from(document.querySelectorAll('[data-reveal]'));
+      if (els.length) {
+        if (!('IntersectionObserver' in window)) {
+          els.forEach((el) => el.classList.add('is-revealed'));
+        } else {
+          const io = new IntersectionObserver(
+            (entries, obs) => {
+              for (const entry of entries) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-revealed');
+                  obs.unobserve(entry.target);
+                }
+              }
+            },
+            { rootMargin: '0px 0px -8% 0px', threshold: 0.12 },
+          );
+          els.forEach((el) => io.observe(el));
+        }
+      }
+    </script>
   </body>
 </html>

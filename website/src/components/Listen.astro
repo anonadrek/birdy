@@ -19,13 +19,13 @@ const bars = Array.from({ length: barCount }).map((_, i) => {
 
 <section id="listen" class="listen">
   <div class="grid">
-    <div class="text">
+    <div class="text" data-reveal>
       <EyebrowLabel text={t.listen.eyebrow} />
       <JournalHeadline text={t.listen.headline} level="h2" align="left" />
       <p class="sub">{t.listen.sub}</p>
       <p class="body">{t.listen.body}</p>
     </div>
-    <div class="visual">
+    <div class="visual" data-reveal style="--rd:160ms">
       <DeviceFrame caption="audio scan (placeholder)">
         <div class="audio-screen">
           <div class="waveform" aria-label={t.alt.audioScan}>

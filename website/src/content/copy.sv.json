@@ -25,7 +25,7 @@
     "headline": "En *loop.*",
     "sub": "Fyra steg. Varje fynd sluter cirkeln.",
     "cards": [
-      { "title": "Sikta", "body": "Öppna kameran. Sikta. AI:n gissar tre gånger per sekund." },
+      { "title": "Sikta eller spela in", "body": "Öppna kameran. Sikta. AI:n gissar tre gånger per sekund." },
       { "title": "Träff", "body": "När säkerheten låser sig dyker stämpeln upp." },
       { "title": "Stämpla", "body": "Din dagbok får en ny sida. Samma papper, ny art." },
       { "title": "Bläddra", "body": "Gå tillbaka när du vill. Eller sök bland 839 europeiska arter." }

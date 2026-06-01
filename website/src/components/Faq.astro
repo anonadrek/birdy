@@ -12,11 +12,11 @@ const t = getCopy(locale);
 ---
 
 <section id="faq" class="faq">
-  <div class="head">
+  <div class="head" data-reveal>
     <EyebrowLabel text={t.faq.eyebrow} />
     <JournalHeadline text={t.faq.headline} level="h2" />
   </div>
-  <div class="list">
+  <div class="list" data-reveal style="--rd:120ms">
     {t.faq.items.map((item) => (
       <FaqItem question={item.q} answer={item.a} />
     ))}
