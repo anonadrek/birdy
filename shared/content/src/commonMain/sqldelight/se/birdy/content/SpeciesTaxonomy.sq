@@ -4,10 +4,13 @@ CREATE TABLE SpeciesTaxonomy (
     family_sv TEXT,
     genus TEXT NOT NULL,
     ioc_order TEXT NOT NULL,
+    group_id TEXT NOT NULL,
     FOREIGN KEY (species_id) REFERENCES Species(id) ON DELETE CASCADE
 );
 
 CREATE INDEX species_taxonomy_family ON SpeciesTaxonomy(family);
+
+CREATE INDEX species_taxonomy_group ON SpeciesTaxonomy(group_id);
 
 selectBySpecies:
 SELECT * FROM SpeciesTaxonomy WHERE species_id = ?;
@@ -19,4 +22,4 @@ selectAll:
 SELECT * FROM SpeciesTaxonomy;
 
 insert:
-INSERT INTO SpeciesTaxonomy(species_id, family, family_sv, genus, ioc_order) VALUES (?, ?, ?, ?, ?);
+INSERT INTO SpeciesTaxonomy(species_id, family, family_sv, genus, ioc_order, group_id) VALUES (?, ?, ?, ?, ?, ?);

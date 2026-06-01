@@ -234,7 +234,7 @@ class SpeciesRepositoryTest {
         abundance: String = "ovanlig",
     ) {
         speciesQueries.insert(id, sci, abundance, "LC", "2026-01-01", "approved", null, null, null)
-        speciesTaxonomyQueries.insert(id, family, familySv, genus, "Falconiformes")
+        speciesTaxonomyQueries.insert(id, family, familySv, genus, "Falconiformes", "other")
         speciesNameQueries.insert(
             id,
             "sv",

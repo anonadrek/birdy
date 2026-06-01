@@ -9,9 +9,11 @@ import java.security.MessageDigest
 import kotlin.io.path.copyTo
 
 // Bumpa vid VARJE schema-ändring i Species*.sq → flippar application_id → tvingar DB-replace på uppgradering.
-private const val SCHEMA_REV = 2
+private const val SCHEMA_REV = 3
 
-class SpeciesDbBuilder {
+class SpeciesDbBuilder(
+    private val familyGroups: FamilyGroups = FamilyGroups.loadDefault(),
+) {
     fun build(
         items: List<Pair<Path, SpeciesYaml>>,
         sourceImageRoot: Path,
@@ -64,12 +66,19 @@ class SpeciesDbBuilder {
             wikipedia_en_revision = yaml.sources.wikipedia_en_revision,
             claude_model = yaml.sources.claude_model,
         )
+        val group = familyGroups.groupFor(yaml.taxonomy.family, yaml.taxonomy.ioc_order)
+        if (!familyGroups.isExplicitlyMapped(yaml.taxonomy.family, yaml.taxonomy.ioc_order)) {
+            System.err.println(
+                "WARN: familjen '${yaml.taxonomy.family}' saknas i family_groups.yaml → '$group' (lägg till den)",
+            )
+        }
         db.speciesTaxonomyQueries.insert(
             species_id = yaml.id,
             family = yaml.taxonomy.family,
             family_sv = yaml.taxonomy.family_sv,
             genus = yaml.taxonomy.genus,
             ioc_order = yaml.taxonomy.ioc_order,
+            group_id = group,
         )
         val sci = yaml.scientific_name
         val fam = yaml.taxonomy.family
