@@ -686,4 +686,20 @@
     <string name="badge_progress_counted">%1$s of %2$s %3$s</string>
     <string name="badge_next_tier_label">Next level</string>
     <string name="badge_next_tier_value">%1$s — %2$s to go</string>
+    <!-- ===== Badges v2: Trophy room ===== -->
+    <string name="trophy_room_intro_eyebrow">Birder profile</string>
+    <string name="trophy_room_headline">Your *trophy room*.</string>
+    <string name="trophy_room_sub">%1$s of %2$s · %3$s waiting in the field</string>
+    <string name="trophy_room_title">Your trophy room</string>
+    <string name="trophy_room_back">Back</string>
+    <string name="trophy_room_entry_eyebrow">Your trophy room</string>
+    <string name="trophy_room_entry_count">%1$s trophies</string>
+    <string name="trophy_room_entry_empty">Your trophy room awaits</string>
+    <string name="trophy_room_entry_a11y">Open your trophy room, %1$s trophies</string>
+    <string name="trophy_hero_recent_label">Most recent</string>
+    <string name="trophy_hero_empty_name">your first stamp awaits</string>
+    <string name="trophy_section_recent">Recently unlocked</string>
+    <string name="trophy_section_rare">Rare finds</string>
+    <string name="trophy_section_close">Close to unlocking</string>
+    <string name="trophy_close_remaining">%1$s to go</string>
 </resources>
