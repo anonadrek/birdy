@@ -252,11 +252,11 @@
     <!-- ===== Badge names + descriptions ===== -->
     <!-- Progression -->
     <string name="badge_name_novice">Nybörjare</string>
-    <string name="badge_desc_novice">Du har sett dina första 5 fågelarter.</string>
+    <string name="badge_desc_novice">Grunden allt vilar på — de första arterna du lär dig känna igen.</string>
     <string name="badge_name_birder_bronze">Skådare</string>
-    <string name="badge_desc_birder_bronze">25 olika arter sedda — fältbiologi-brons.</string>
+    <string name="badge_desc_birder_bronze">Du börjar se mönster, inte bara enskilda fåglar.</string>
     <string name="badge_name_birder_silver">Erfaren skådare</string>
-    <string name="badge_desc_birder_silver">100 olika arter sedda — du börjar bli kunnig.</string>
+    <string name="badge_desc_birder_silver">Nu känner du igen fler än du behöver slå upp.</string>
 
     <!-- Streaks veckor -->
     <string name="badge_name_weekly_streak_4">Månads-rytm</string>
@@ -274,43 +274,43 @@
 
     <!-- Familjer -->
     <string name="badge_name_family_anatidae">Andsamlare</string>
-    <string name="badge_desc_family_anatidae">15 olika andfåglar sedda.</string>
+    <string name="badge_desc_family_anatidae">Änder och gäss — fältets första lektion i tålamod.</string>
     <string name="badge_name_family_paridae">Messamlare</string>
-    <string name="badge_desc_family_paridae">6 olika mesar sedda.</string>
+    <string name="badge_desc_family_paridae">Mesarna är fönstret in i skogens småfåglar.</string>
     <string name="badge_name_family_accipitridae">Rovfågelskådare</string>
-    <string name="badge_desc_family_accipitridae">12 olika rovfåglar sedda.</string>
+    <string name="badge_desc_family_accipitridae">Rovfåglar läses på silhuett och vingslag, sällan på nära håll.</string>
     <string name="badge_name_family_fringillidae">Finksamlare</string>
-    <string name="badge_desc_family_fringillidae">12 olika finkar sedda.</string>
+    <string name="badge_desc_family_fringillidae">Finkarna lär dig lyssna — flyktlätet avslöjar dem.</string>
     <string name="badge_name_family_scolopacidae">Vadarvän</string>
-    <string name="badge_desc_family_scolopacidae">12 olika vadare sedda.</string>
+    <string name="badge_desc_family_scolopacidae">Vadare skiljer skådaren från betraktaren.</string>
     <string name="badge_name_family_strigidae">Uggleskådare</string>
-    <string name="badge_desc_family_strigidae">8 olika ugglor sedda.</string>
+    <string name="badge_desc_family_strigidae">Ugglor ses sällan, hörs oftare — en jakt i skymningen.</string>
     <string name="badge_name_family_songbirds">Sångarsamlare</string>
-    <string name="badge_desc_family_songbirds">15 olika sångare sedda.</string>
+    <string name="badge_desc_family_songbirds">Sångarna göms i massan — den som skiljer dem kan sin sak.</string>
 
     <!-- DP D: nya/ändrade märken -->
     <string name="badge_name_birder_gold">Rutinerad skådare</string>
-    <string name="badge_desc_birder_gold">250 arter i livslistan.</string>
+    <string name="badge_desc_birder_gold">Det här är inte längre nybörjarland.</string>
     <string name="badge_name_birder_legend">Mästarskådare</string>
-    <string name="badge_desc_birder_legend">500 arter — en livsgärning.</string>
+    <string name="badge_desc_birder_legend">Få skådare når så långt — en livsgärning.</string>
     <string name="badge_name_breadth_families_20">Familjespanare</string>
-    <string name="badge_desc_breadth_families_20">Arter ur 20 olika familjer.</string>
+    <string name="badge_desc_breadth_families_20">Bredd, inte bara djup — du rör dig över hela fältet.</string>
     <string name="badge_name_breadth_families_50">Familjekännare</string>
-    <string name="badge_desc_breadth_families_50">Arter ur 50 olika familjer.</string>
+    <string name="badge_desc_breadth_families_50">Få skådare rör sig över så många familjer.</string>
     <string name="badge_name_breadth_orders_20">Ordningsresenär</string>
-    <string name="badge_desc_breadth_orders_20">Arter ur 20 olika ordningar.</string>
+    <string name="badge_desc_breadth_orders_20">Från sjöfågel till tätting — du täcker fågelvärldens bredd.</string>
     <string name="badge_name_redlisted_1">Rödlistad</string>
-    <string name="badge_desc_redlisted_1">Din första rödlistade art.</string>
+    <string name="badge_desc_redlisted_1">Rödlistade arter är dem skådare reser för.</string>
     <string name="badge_name_redlisted_5">Raritetsjägare</string>
-    <string name="badge_desc_redlisted_5">5 rödlistade arter sedda.</string>
+    <string name="badge_desc_redlisted_5">Varje hotad art du ser är ett möte som blir ovanligare.</string>
     <string name="badge_name_redlisted_15">Rödlistemästare</string>
-    <string name="badge_desc_redlisted_15">15 rödlistade arter sedda.</string>
+    <string name="badge_desc_redlisted_15">Du jagar dem som riskerar att försvinna — och hittar dem.</string>
     <string name="badge_name_season_all_year">Året runt</string>
-    <string name="badge_desc_season_all_year">Fynd i alla fyra årstider.</string>
+    <string name="badge_desc_season_all_year">Fågelåret har fyra ansikten — du har sett dem alla.</string>
     <string name="badge_name_season_faithful">Trogen följeslagare</string>
-    <string name="badge_desc_season_faithful">Samma art i alla fyra årstider.</string>
+    <string name="badge_desc_season_faithful">Att följa en art genom året är att verkligen lära känna den.</string>
     <string name="badge_name_audio_scholar">Ljudskådare</string>
-    <string name="badge_desc_audio_scholar">5 arter identifierade på läte.</string>
+    <string name="badge_desc_audio_scholar">Att känna en fågel på lätet är skådarens andra par ögon.</string>
     <!-- DP D: sektionsrubriker -->
     <string name="badges_section_milestones">SKÅDAR-MILSTOLPAR</string>
     <string name="badges_section_habits">VANOR</string>

@@ -54,8 +54,8 @@ android {
             libs.versions.android.targetSdk
                 .get()
                 .toInt()
-        versionCode = 119
-        versionName = "1.1.0-rc4"
+        versionCode = 120
+        versionName = "1.1.0-rc5"
         buildConfigField(
             "String",
             "PLAY_LICENSE_KEY",
