@@ -117,7 +117,7 @@ class ArchiveViewModel(
         s: ArchiveSort,
         stamped: Map<String, Int>,
     ): ArchiveUiState {
-        val filtered = list.filter { c.matches(it.family, it.iocOrder) }
+        val filtered = list.filter { c.matches(it.group) }
         if (filtered.isEmpty()) return ArchiveUiState.Empty
         val sorted =
             when (s) {

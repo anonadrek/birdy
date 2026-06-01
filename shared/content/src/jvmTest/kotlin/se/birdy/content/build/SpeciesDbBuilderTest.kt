@@ -112,6 +112,28 @@ class SpeciesDbBuilderTest {
         )
     }
 
+    @Test
+    fun `stamps ecological group_id on taxonomy`(
+        @TempDir tempDir: Path,
+    ) {
+        val items =
+            parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+        val outDb = tempDir.resolve("species.db")
+        SpeciesDbBuilder().build(
+            items = items,
+            sourceImageRoot = Path.of("src/jvmTest/resources/fixtures/images"),
+            targetDb = outDb,
+            targetImageRoot = tempDir.resolve("images"),
+        )
+
+        val driver = JdbcSqliteDriver("jdbc:sqlite:${outDb.toAbsolutePath()}")
+        val db = BirdyContent(driver)
+        // Fixturen Q25485 = Paridae / Passeriformes → songbirds.
+        val taxonomy = db.speciesTaxonomyQueries.selectBySpecies("Q25485").executeAsOne()
+        assertEquals("songbirds", taxonomy.group_id)
+        driver.close()
+    }
+
     private fun readApplicationId(db: Path): Int {
         val header = db.toFile().inputStream().use { it.readNBytes(100) }
         return ((header[68].toInt() and 0xFF) shl 24) or

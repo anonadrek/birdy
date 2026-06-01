@@ -54,10 +54,13 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_all
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_auks
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_cranes_rails
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_doves
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_gamebirds
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_grebes_divers
-import birdy_bird_scanner.composeapp.generated.resources.archive_chip_gulls
-import birdy_bird_scanner.composeapp.generated.resources.archive_chip_herons
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_gulls_terns
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_herons_storks
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_other
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_owls
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_raptors
@@ -65,6 +68,7 @@ import birdy_bird_scanner.composeapp.generated.resources.archive_chip_seabirds
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_songbirds
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_waders
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_waterfowl
+import birdy_bird_scanner.composeapp.generated.resources.archive_chip_woodpeckers
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_body
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_retry
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_title
@@ -291,7 +295,7 @@ fun ArchiveScreen(
                         val grouped = s.rows.groupBy { it.summary.family }
                         grouped.forEach { (family, rows) ->
                             stickyHeader(key = "family-$family") {
-                                FamilyHeader(family = family)
+                                FamilyHeader(family = family, familySv = rows.first().summary.familySv)
                             }
                             items(rows, key = { it.summary.id.raw }) { row ->
                                 SpeciesRow(
@@ -355,8 +359,12 @@ private fun SpeciesRowSkeleton() {
 }
 
 @Composable
-private fun FamilyHeader(family: String) {
+private fun FamilyHeader(
+    family: String,
+    familySv: String,
+) {
     val serif = rememberDmSerifDisplay()
+    val label = familySv.ifBlank { family } // svenska där det finns; latin annars (t.ex. EN-locale)
     Box(
         modifier =
             Modifier
@@ -365,7 +373,7 @@ private fun FamilyHeader(family: String) {
                 .padding(horizontal = 16.dp, vertical = 6.dp),
     ) {
         Text(
-            text = family.uppercase(),
+            text = label.uppercase(),
             color = MarginaliaInk,
             fontFamily = serif,
             fontStyle = FontStyle.Italic,
@@ -460,15 +468,19 @@ private fun ChipBar(
         listOf(
             ArchiveChip.ALL to stringResource(Res.string.archive_chip_all),
             ArchiveChip.SONGBIRDS to stringResource(Res.string.archive_chip_songbirds),
+            ArchiveChip.WATERFOWL to stringResource(Res.string.archive_chip_waterfowl),
+            ArchiveChip.WADERS to stringResource(Res.string.archive_chip_waders),
+            ArchiveChip.GULLS_TERNS to stringResource(Res.string.archive_chip_gulls_terns),
+            ArchiveChip.AUKS to stringResource(Res.string.archive_chip_auks),
+            ArchiveChip.SEABIRDS to stringResource(Res.string.archive_chip_seabirds),
+            ArchiveChip.GREBES_DIVERS to stringResource(Res.string.archive_chip_grebes_divers),
+            ArchiveChip.HERONS_STORKS to stringResource(Res.string.archive_chip_herons_storks),
             ArchiveChip.RAPTORS to stringResource(Res.string.archive_chip_raptors),
             ArchiveChip.OWLS to stringResource(Res.string.archive_chip_owls),
             ArchiveChip.GAMEBIRDS to stringResource(Res.string.archive_chip_gamebirds),
-            ArchiveChip.WATERFOWL to stringResource(Res.string.archive_chip_waterfowl),
-            ArchiveChip.GREBES_DIVERS to stringResource(Res.string.archive_chip_grebes_divers),
-            ArchiveChip.HERONS to stringResource(Res.string.archive_chip_herons),
-            ArchiveChip.WADERS to stringResource(Res.string.archive_chip_waders),
-            ArchiveChip.GULLS to stringResource(Res.string.archive_chip_gulls),
-            ArchiveChip.SEABIRDS to stringResource(Res.string.archive_chip_seabirds),
+            ArchiveChip.DOVES to stringResource(Res.string.archive_chip_doves),
+            ArchiveChip.WOODPECKERS to stringResource(Res.string.archive_chip_woodpeckers),
+            ArchiveChip.CRANES_RAILS to stringResource(Res.string.archive_chip_cranes_rails),
             ArchiveChip.OTHER to stringResource(Res.string.archive_chip_other),
         )
     val serif = rememberDmSerifDisplay()

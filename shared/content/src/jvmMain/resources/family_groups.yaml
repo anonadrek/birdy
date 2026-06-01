@@ -1,0 +1,52 @@
+# DP E — ekologisk grupp-axel. ENDA sanningskällan för family → group.
+# songbirds keyas på ioc_order==Passeriformes (täcker alla passerinfamiljer
+# robust). Övriga 14 grupper keyas på latinsk familj (matchar taxonomy.family).
+# Okänd familj faller tillbaka till "other" (builder loggar en varning).
+order:
+  - songbirds
+  - waterfowl
+  - waders
+  - gulls_terns
+  - auks
+  - seabirds
+  - grebes_divers
+  - herons_storks
+  - raptors
+  - owls
+  - gamebirds
+  - doves
+  - woodpeckers
+  - cranes_rails
+  - other
+groups:
+  songbirds:
+    keyed_by: order
+    ioc_order: Passeriformes
+  waterfowl:
+    families: [Anatidae]
+  waders:
+    families: [Scolopacidae, Charadriidae, Glareolidae, Burhinidae, Recurvirostridae, Haematopodidae, Rostratulidae, Jacanidae, Dromadidae]
+  gulls_terns:
+    families: [Laridae, Stercorariidae]
+  auks:
+    families: [Alcidae]
+  seabirds:
+    families: [Procellariidae, Hydrobatidae, Oceanitidae, Sulidae, Phalacrocoracidae, Anhingidae, Fregatidae, Phaethontidae]
+  grebes_divers:
+    families: [Podicipedidae, Gaviidae]
+  herons_storks:
+    families: [Ardeidae, Ciconiidae, Threskiornithidae, Pelecanidae, Phoenicopteridae, Scopidae]
+  raptors:
+    families: [Accipitridae, Falconidae, Pandionidae]
+  owls:
+    families: [Strigidae, Tytonidae]
+  gamebirds:
+    families: [Phasianidae, Odontophoridae, Numididae]
+  doves:
+    families: [Columbidae]
+  woodpeckers:
+    families: [Picidae]
+  cranes_rails:
+    families: [Rallidae, Gruidae]
+  other:
+    families: [Cuculidae, Apodidae, Caprimulgidae, Pteroclidae, Alcedinidae, Psittacidae, Otididae, Meropidae, Coraciidae, Psittaculidae, Turnicidae, Upupidae, Struthionidae, Bucerotidae]
