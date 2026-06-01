@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -21,8 +22,8 @@ import birdy_bird_scanner.composeapp.generated.resources.onboarding_s5_sub
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
+import se.birdy.app.ui.components.StampTrack
 import se.birdy.app.ui.onboarding.components.IntroSceneScaffold
-import se.birdy.app.ui.onboarding.components.StreakCounter
 
 @Composable
 fun SceneBadges(
@@ -30,18 +31,14 @@ fun SceneBadges(
     isActive: Boolean,
 ) {
     val flipDegrees = remember { Animatable(0f) }
-    val counterTrigger = remember { Animatable(0f) }
 
     LaunchedEffect(isActive) {
         if (isActive) {
             flipDegrees.snapTo(0f)
-            counterTrigger.snapTo(0f)
             kotlinx.coroutines.delay(300) // suspense
             flipDegrees.animateTo(180f, tween(500))
-            counterTrigger.animateTo(1f, tween(50))
         } else {
             flipDegrees.snapTo(0f)
-            counterTrigger.snapTo(0f)
         }
     }
 
@@ -71,7 +68,11 @@ fun SceneBadges(
                     }
                 }
             }
-            StreakCounter(target = 7, trigger = counterTrigger.value > 0.5f)
+            StampTrack(
+                filled = 5,
+                total = 12,
+                modifier = Modifier.fillMaxWidth(),
+            )
             Spacer(Modifier.height(8.dp))
         }
     }

@@ -16,7 +16,6 @@ import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
 import se.birdy.domain.badge.Badge
 import se.birdy.domain.badge.BadgeCatalog
-import se.birdy.domain.badge.BadgeCategory
 import se.birdy.domain.badge.BadgeRepository
 import se.birdy.domain.badge.BadgeUnlock
 import se.birdy.domain.badge.longestMonthlyStreak
@@ -116,9 +115,11 @@ class BadgesViewModel(
         val weeklyStreak = longestWeeklyStreak(capturedInstants, zone).takeIf { it >= 2 }
         val monthlyStreak = longestMonthlyStreak(capturedInstants, zone).takeIf { it >= 2 }
 
+        val unlockedInCatalog = unlocks.count { catalog.findById(it.badgeId) != null }
+
         return BadgesUiState.Loaded(
             speciesProgress = SpeciesProgress(seen = seenSpecies, total = totalSpecies),
-            unlockedCount = unlocks.size,
+            unlockedCount = unlockedInCatalog,
             totalBadges = catalog.badges.size,
             weeklyStreak = weeklyStreak,
             monthlyStreak = monthlyStreak,
@@ -134,7 +135,6 @@ class BadgesViewModel(
         observations: List<Observation>,
         speciesByQid: Map<SpeciesId, Species>,
     ): BadgeGridState {
-        if (badge.category == BadgeCategory.RARE) return BadgeGridState.Hidden
         val current = recalc.currentValue(badge.rule, observations, speciesByQid)
         return if (current > 0) {
             BadgeGridState.InProgress(current = current, target = badge.rule.target)

@@ -6,7 +6,6 @@ import com.charleskorn.kaml.YamlException
 import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import se.birdy.domain.badge.Badge
-import se.birdy.domain.badge.BadgeAbundance
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.badge.BadgeCategory
 import se.birdy.domain.badge.BadgeRule
@@ -74,7 +73,9 @@ object BadgeCatalogLoader {
             "streak_monthly" -> BadgeCategory.STREAK_MONTHLY
             "season" -> BadgeCategory.SEASON
             "family" -> BadgeCategory.FAMILY
-            "rare" -> BadgeCategory.RARE
+            "breadth" -> BadgeCategory.BREADTH
+            "redlisted" -> BadgeCategory.REDLISTED
+            "audio" -> BadgeCategory.AUDIO
             else -> throw BadgeCatalogException("Unknown category: $raw")
         }
 
@@ -96,11 +97,17 @@ object BadgeCatalogLoader {
                     family = raw.family ?: missing(badgeId, "family"),
                     target = raw.target ?: missing(badgeId, "target"),
                 )
-            "observed_with_abundance" ->
-                BadgeRule.ObservedWithAbundance(
-                    abundance = parseAbundance(raw.abundance ?: missing(badgeId, "abundance")),
+            "observed_in_family_group" ->
+                BadgeRule.ObservedInFamilyGroup(
+                    families = (raw.families ?: missing(badgeId, "families")).toSet(),
                     target = raw.target ?: missing(badgeId, "target"),
                 )
+            "count_distinct_families" ->
+                BadgeRule.CountDistinctFamilies(raw.target ?: missing(badgeId, "target"))
+            "count_distinct_orders" ->
+                BadgeRule.CountDistinctOrders(raw.target ?: missing(badgeId, "target"))
+            "observed_red_listed" ->
+                BadgeRule.ObservedRedListed(raw.target ?: missing(badgeId, "target"))
             "observed_before_hour" ->
                 BadgeRule.ObservedBeforeHour(
                     hour = raw.hour ?: missing(badgeId, "hour"),
@@ -147,15 +154,6 @@ object BadgeCatalogLoader {
             else -> throw BadgeCatalogException("Unknown season: $raw")
         }
 
-    private fun parseAbundance(raw: String): BadgeAbundance =
-        when (raw.lowercase()) {
-            "allmän" -> BadgeAbundance.ALLMÄN
-            "mindre_allmän" -> BadgeAbundance.MINDRE_ALLMÄN
-            "ovanlig" -> BadgeAbundance.OVANLIG
-            "sällsynt" -> BadgeAbundance.SÄLLSYNT
-            else -> throw BadgeCatalogException("Unknown abundance: $raw")
-        }
-
     private fun missing(
         badgeId: String,
         field: String,
@@ -180,7 +178,7 @@ object BadgeCatalogLoader {
         val target: Int? = null,
         val season: String? = null,
         val family: String? = null,
-        val abundance: String? = null,
+        val families: List<String>? = null,
         val hour: Int? = null,
         val seasons: Int? = null,
         val minLength: Int? = null,

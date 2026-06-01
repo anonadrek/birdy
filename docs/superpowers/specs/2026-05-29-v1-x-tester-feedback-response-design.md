@@ -13,7 +13,7 @@ En erfaren skådare (extern testare) gav brutal, korrekt feedback: kategorierna 
 | **A** | Sök-fix | Problem 2 (Prio 1) | DB/sök | **Detaljerad här → impl-plan nu** |
 | **B** | Positionering & copy | Problem 4 (Prio 2 + 5) | Copy (app/onboarding/store/website/nav) | Design-nivå; egen brainstorm sen |
 | **C** | Kategori-hotfix | Problem 1 Option B (Prio 3) | Encyclopedia-chips | Design-nivå; egen brainstorm sen |
-| **D** | Märken-omarbetning | Problem 3 (Prio 4) | Badges | Design-nivå; egen brainstorm sen |
+| **D** | Märken-omarbetning | Problem 3 (Prio 4) | Badges | ✅ **DONE** — spec `2026-05-30-v1-x-dp-d-badges-rework-design.md` + plan `2026-05-30-v1-x-dp-d-badges-rework.md`; 16 TDD-tasks, device-verifierad SM-S918B (vC119/rc4) |
 | **E** | Kategori `group`-axel | Problem 1 Option A (Prio 6) | Content-pipeline + schema | Design-nivå; content-spår, sist |
 
 **Sekvens:** A → B → C → D → E. Varje DP är oberoende shippbar (egen versionCode-bump). A+B ger störst trovärdighetseffekt mot recensent-entusiasten; E är ett långsiktigt content-spår som ersätter C:s provisoriska chips.

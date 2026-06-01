@@ -124,7 +124,6 @@ fun StampSeal(
     Column(
         modifier =
             modifier
-                .rotate(state.rotationDegrees())
                 .semantics(mergeDescendants = true) {
                     contentDescription = semanticsLabel
                     if (onClick != null) role = Role.Button
@@ -133,6 +132,7 @@ fun StampSeal(
     ) {
         val sealModifier =
             Modifier
+                .rotate(state.rotationDegrees())
                 .size(size)
                 .clip(CircleShape)
                 .background(bg)

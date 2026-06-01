@@ -1,6 +1,6 @@
-version: 1
+version: 2
 badges:
-  # ===== Progression (3) =====
+  # ===== Livslista / Progression (5) =====
   - id: novice
     category: progression
     rule: { type: count_unique_species, target: 5 }
@@ -10,79 +10,87 @@ badges:
   - id: birder_silver
     category: progression
     rule: { type: count_unique_species, target: 100 }
+  - id: birder_gold
+    category: progression
+    rule: { type: count_unique_species, target: 250 }
+  - id: birder_legend
+    category: progression
+    rule: { type: count_unique_species, target: 500 }
 
-  # ===== Streaks veckor (4) =====
+  # ===== Familje-mästare (7) — distinkta arter =====
+  - id: family_anatidae
+    category: family
+    rule: { type: observed_in_family, family: anatidae, target: 15 }
+  - id: family_scolopacidae
+    category: family
+    rule: { type: observed_in_family, family: scolopacidae, target: 12 }
+  - id: family_accipitridae
+    category: family
+    rule: { type: observed_in_family, family: accipitridae, target: 12 }
+  - id: family_fringillidae
+    category: family
+    rule: { type: observed_in_family, family: fringillidae, target: 12 }
+  - id: family_paridae
+    category: family
+    rule: { type: observed_in_family, family: paridae, target: 6 }
+  - id: family_strigidae
+    category: family
+    rule: { type: observed_in_family, family: strigidae, target: 8 }
+  - id: family_songbirds
+    category: family
+    rule:
+      type: observed_in_family_group
+      families: [phylloscopidae, acrocephalidae, sylviidae, cettiidae, locustellidae, cisticolidae]
+      target: 15
+
+  # ===== Taxonomisk bredd (3) =====
+  - id: breadth_families_20
+    category: breadth
+    rule: { type: count_distinct_families, target: 20 }
+  - id: breadth_families_50
+    category: breadth
+    rule: { type: count_distinct_families, target: 50 }
+  - id: breadth_orders_20
+    category: breadth
+    rule: { type: count_distinct_orders, target: 20 }
+
+  # ===== Rödlistade (3) — IUCN NT/VU/CR =====
+  - id: redlisted_1
+    category: redlisted
+    rule: { type: observed_red_listed, target: 1 }
+  - id: redlisted_5
+    category: redlisted
+    rule: { type: observed_red_listed, target: 5 }
+  - id: redlisted_15
+    category: redlisted
+    rule: { type: observed_red_listed, target: 15 }
+
+  # ===== Säsong (2) =====
+  - id: season_all_year
+    category: season
+    rule: { type: observed_in_all_seasons, target: 1 }
+  - id: season_faithful
+    category: season
+    rule: { type: species_across_seasons, seasons: 4, target: 1 }
+
+  # ===== Ljud (1) =====
+  - id: audio_scholar
+    category: audio
+    rule: { type: audio_observation_count, target: 5 }
+
+  # ===== Vanor — streaks (5) =====
   - id: weekly_streak_4
     category: streak_weekly
     rule: { type: weekly_streak, target: 4 }
   - id: weekly_streak_12
     category: streak_weekly
     rule: { type: weekly_streak, target: 12 }
-  - id: weekly_streak_26
-    category: streak_weekly
-    rule: { type: weekly_streak, target: 26 }
   - id: weekly_streak_52
     category: streak_weekly
     rule: { type: weekly_streak, target: 52 }
-
-  # ===== Streaks månader (3) =====
   - id: monthly_streak_3
     category: streak_monthly
     rule: { type: monthly_streak, target: 3 }
-  - id: monthly_streak_6
-    category: streak_monthly
-    rule: { type: monthly_streak, target: 6 }
   - id: monthly_streak_12
     category: streak_monthly
     rule: { type: monthly_streak, target: 12 }
-
-  # ===== Säsong (4) =====
-  - id: season_winter
-    category: season
-    rule: { type: observed_in_season, season: winter, target: 10 }
-  - id: season_spring
-    category: season
-    rule: { type: observed_in_season, season: spring, target: 5 }
-  - id: season_summer
-    category: season
-    rule: { type: observed_in_season, season: summer, target: 5 }
-  - id: season_autumn
-    category: season
-    rule: { type: observed_in_season, season: autumn, target: 5 }
-
-  # ===== Familjer (8) =====
-  - id: family_anatidae
-    category: family
-    rule: { type: observed_in_family, family: anatidae, target: 1 }
-  - id: family_paridae
-    category: family
-    rule: { type: observed_in_family, family: paridae, target: 1 }
-  - id: family_accipitridae
-    category: family
-    rule: { type: observed_in_family, family: accipitridae, target: 1 }
-  - id: family_corvidae
-    category: family
-    rule: { type: observed_in_family, family: corvidae, target: 1 }
-  - id: family_fringillidae
-    category: family
-    rule: { type: observed_in_family, family: fringillidae, target: 1 }
-  - id: family_turdidae
-    category: family
-    rule: { type: observed_in_family, family: turdidae, target: 1 }
-  - id: family_sylviidae
-    category: family
-    rule: { type: observed_in_family, family: sylviidae, target: 1 }
-  - id: family_picidae
-    category: family
-    rule: { type: observed_in_family, family: picidae, target: 1 }
-
-  # ===== Sällsynt (3) =====
-  - id: rare_first
-    category: rare
-    rule: { type: observed_with_abundance, abundance: sällsynt, target: 1 }
-  - id: rare_5
-    category: rare
-    rule: { type: observed_with_abundance, abundance: sällsynt, target: 5 }
-  - id: rare_10
-    category: rare
-    rule: { type: observed_with_abundance, abundance: sällsynt, target: 10 }

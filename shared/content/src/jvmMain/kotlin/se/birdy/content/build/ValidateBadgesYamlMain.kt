@@ -7,18 +7,22 @@ import com.charleskorn.kaml.YamlScalar
 import java.nio.file.Path
 
 object ValidateBadgesYamlMain {
-    private val validCategories = setOf("progression", "streak_weekly", "streak_monthly", "season", "family", "rare")
+    private val validCategories =
+        setOf("progression", "family", "breadth", "redlisted", "season", "audio", "streak_weekly", "streak_monthly")
     private val validRuleTypes =
         setOf(
             "count_unique_species",
             "weekly_streak",
             "monthly_streak",
-            "observed_in_season",
             "observed_in_family",
-            "observed_with_abundance",
+            "observed_in_family_group",
+            "count_distinct_families",
+            "count_distinct_orders",
+            "observed_red_listed",
+            "observed_in_all_seasons",
+            "species_across_seasons",
+            "audio_observation_count",
         )
-    private val validSeasons = setOf("winter", "spring", "summer", "autumn")
-    private val validAbundance = setOf("allmän", "mindre_allmän", "ovanlig", "sällsynt")
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -61,22 +65,16 @@ object ValidateBadgesYamlMain {
                             errors += "$id: missing or non-positive integer 'target' (got '${rule.scalarValue("target")}')"
                         }
                         when (type) {
-                            "observed_in_season" -> {
-                                val season = rule.scalarValue("season")
-                                if (season !in validSeasons) {
-                                    errors += "$id: invalid season '$season' (allowed: $validSeasons)"
-                                }
-                            }
-                            "observed_with_abundance" -> {
-                                val abu = rule.scalarValue("abundance")
-                                if (abu !in validAbundance) {
-                                    errors += "$id: invalid abundance '$abu' (allowed: $validAbundance)"
-                                }
-                            }
                             "observed_in_family" -> {
                                 val family = rule.scalarValue("family")
                                 if (family.isNullOrBlank()) {
                                     errors += "$id: missing or blank family"
+                                }
+                            }
+                            "observed_in_family_group" -> {
+                                val families = rule.listValue("families")
+                                if (families == null || families.items.isEmpty()) {
+                                    errors += "$id: observed_in_family_group requires a non-empty families list"
                                 }
                             }
                         }
