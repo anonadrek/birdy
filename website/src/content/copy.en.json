@@ -25,7 +25,7 @@
     "headline": "One *loop.*",
     "sub": "Four steps. Every sighting closes the circle.",
     "cards": [
-      { "title": "Point", "body": "Open the camera. Aim. The AI guesses three times a second." },
+      { "title": "Point or tap record", "body": "Open the camera. Aim. The AI guesses three times a second." },
       { "title": "Match", "body": "When the confidence locks, the stamp appears." },
       { "title": "Stamp", "body": "Your journal gets a new page. Same paper, new species." },
       { "title": "Browse", "body": "Flip back any time. Or search 839 European species." }

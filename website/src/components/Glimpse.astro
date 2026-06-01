@@ -4,11 +4,11 @@ import EyebrowLabel from './ui/EyebrowLabel.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import OrnamentRule from './ui/OrnamentRule.astro';
 import { type Locale, getCopy } from '../lib/i18n';
-import intro from '../assets/screens/redesign_journal_intro.png';
-import identify from '../assets/screens/redesign_identify.png';
-import species from '../assets/screens/redesign_species.png';
-import journal from '../assets/screens/redesign_journal.png';
-import listen from '../assets/screens/store_listen.png';
+import devMatch from '../assets/screens/dev_match.png';
+import devJournal from '../assets/screens/dev_journal.png';
+import devArchive from '../assets/screens/dev_archive.png';
+import devBadge from '../assets/screens/dev_badge.png';
+import devListen from '../assets/screens/dev_listen.png';
 
 interface Props {
   locale: Locale;
@@ -16,17 +16,19 @@ interface Props {
 const { locale } = Astro.props;
 const t = getCopy(locale);
 
+// Background-free, upright device cut-outs (the phone only) — one consistent
+// handset across the journey: identify, journal, browse, collect, listen.
 const shots = [
-  { src: intro, alt: t.alt.glimpseHero },
-  { src: identify, alt: t.alt.matchScreen },
-  { src: species, alt: t.alt.speciesScreen },
-  { src: journal, alt: t.alt.observationDetail },
-  { src: listen, alt: t.alt.audioScan },
+  { src: devMatch, alt: t.alt.matchScreen },
+  { src: devJournal, alt: t.alt.observationDetail },
+  { src: devArchive, alt: t.alt.archiveScreen },
+  { src: devBadge, alt: t.alt.badgesGrid },
+  { src: devListen, alt: t.alt.audioScan },
 ];
 ---
 
 <section id="glimpse" class="glimpse">
-  <div class="head">
+  <div class="head" data-reveal>
     <EyebrowLabel text={t.glimpse.eyebrow} />
     <JournalHeadline text={t.glimpse.headline} level="h2" />
     <p class="sub">{t.glimpse.sub}</p>
@@ -36,13 +38,19 @@ const shots = [
   <div class="strip-wrap" role="region" aria-label={t.glimpse.eyebrow}>
     <ul class="strip" role="list" data-glimpse>
       {shots.map((s, i) => (
-        <li class={`card${i === 0 ? ' is-focus' : ''}`}>
+        <li
+          class={`card${i === 0 ? ' is-focus' : ''}`}
+          data-idx={i}
+          tabindex="0"
+          role="button"
+          aria-label={s.alt}
+        >
           <Image
             src={s.src}
             alt={s.alt}
-            widths={[360, 540, 720]}
-            sizes="(max-width: 640px) 70vw, (max-width: 1024px) 32vw, 22vw"
-            quality={82}
+            widths={[360, 560, 760, 880]}
+            sizes="(max-width: 640px) 56vw, 330px"
+            quality={86}
             loading={i === 0 ? 'eager' : 'lazy'}
             decoding="async"
           />
@@ -67,8 +75,8 @@ const shots = [
 
 <script>
   // Mark the card closest to the strip's horizontal center as "is-focus"
-  // so CSS can dim its neighbors. Works everywhere (no view-timeline dep).
-  // Also syncs the dot-indicators below and makes them clickable.
+  // so CSS can dim its neighbors. Clicking any card (or dot) snaps it to the
+  // centre. Works everywhere (no view-timeline dependency).
   const strips = document.querySelectorAll<HTMLElement>('[data-glimpse]');
   strips.forEach((strip) => {
     const cards = Array.from(strip.querySelectorAll<HTMLElement>('.card'));
@@ -79,6 +87,12 @@ const shots = [
       ? Array.from(dotsRoot.querySelectorAll<HTMLButtonElement>('.dot'))
       : [];
     strip.dataset.jsActive = '';
+
+    function centerCard(idx: number) {
+      // scrollIntoView(inline:center) cooperates with scroll-snap mandatory;
+      // a manual scrollBy gets snapped straight back to the current card.
+      cards[idx]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
 
     function updateFocus() {
       const sr = strip.getBoundingClientRect();
@@ -114,19 +128,21 @@ const shots = [
     }
     strip.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule, { passive: true });
-    // After fonts/images shift the layout, recompute once.
     window.addEventListener('load', schedule);
 
-    // Clicking a dot scroll-snaps to that card.
-    dots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => {
-        const target = cards[idx];
-        if (!target) return;
-        const sr = strip.getBoundingClientRect();
-        const tr = target.getBoundingClientRect();
-        const delta = tr.left + tr.width / 2 - (sr.left + sr.width / 2);
-        strip.scrollBy({ left: delta, behavior: 'smooth' });
+    // Click / keyboard-activate any card to bring it to centre.
+    cards.forEach((card, idx) => {
+      card.addEventListener('click', () => centerCard(idx));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          centerCard(idx);
+        }
       });
+    });
+    // Dots snap too.
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => centerCard(idx));
     });
 
     updateFocus();
@@ -156,18 +172,17 @@ const shots = [
     margin: 0;
   }
   /*
-   * Carousel sizing — one card centered, peeks of the next/prev card on
-   * either side. The card width is the same on every viewport, but the
-   * inline-padding on the strip is "viewport center minus half-card", so
-   * the first and last snap-positions still center perfectly.
+   * Device strip — one upright handset centered with peeks of the neighbours.
+   * Cards are sized by HEIGHT (auto width). Every device shares the same
+   * aspect, so the row stays tidy. Any card can be clicked to centre it.
    */
   .strip-wrap {
-    --card-w: clamp(220px, 72vw, 300px);
+    --card-w: clamp(180px, 52vw, 300px);
     --side-pad: max(1.25rem, calc(50% - var(--card-w) / 2));
     position: relative;
     margin-top: 2.5rem;
   }
-  /* Soft fades on the sides so peek cards melt into the paper bg */
+  /* Soft fades on the sides so peek devices melt into the paper bg */
   .strip-wrap::before,
   .strip-wrap::after {
     content: '';
@@ -180,70 +195,75 @@ const shots = [
   }
   .strip-wrap::before {
     left: 0;
-    background: linear-gradient(90deg, var(--color-paper-bg) 0%, rgba(239, 231, 214, 0) 100%);
+    background: linear-gradient(90deg, var(--color-paper-bg) 0%, rgba(232, 226, 210, 0) 100%);
   }
   .strip-wrap::after {
     right: 0;
-    background: linear-gradient(270deg, var(--color-paper-bg) 0%, rgba(239, 231, 214, 0) 100%);
+    background: linear-gradient(270deg, var(--color-paper-bg) 0%, rgba(232, 226, 210, 0) 100%);
   }
   .strip {
     display: flex;
-    gap: 1.5rem;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2.25rem);
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scroll-padding-inline: var(--side-pad);
-    padding: 1rem var(--side-pad) 1.25rem;
+    padding: 1.5rem var(--side-pad) 2rem;
     list-style: none;
     margin: 0;
     -webkit-overflow-scrolling: touch;
-    /* Hide the native scrollbar — dot-indicators below show position instead */
     scrollbar-width: none;
   }
   .strip::-webkit-scrollbar { display: none; }
   /*
-   * Cards start fully opaque + actual size. The focus class (set by the
-   * inline script) keeps the centered card prominent while neighbors are
-   * dimmed slightly and pushed back a hair — no blur, just gentle depth.
+   * Transparent device cut-outs (no card frame). The focused handset stands
+   * full-height; neighbours shrink and fade back a touch for depth. Cards are
+   * clickable, so the peeks get a pointer cursor + a small hover lift.
    */
   .card {
-    flex: 0 0 var(--card-w);
+    flex: 0 0 auto;
+    height: clamp(360px, 56vh, 540px);
     scroll-snap-align: center;
     scroll-snap-stop: always;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow:
-      0 1px 2px rgba(31, 26, 19, 0.06),
-      0 10px 24px -14px rgba(31, 26, 19, 0.22);
-    background: var(--color-paper-edge);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
     opacity: 1;
-    transform: scale(0.94);
+    transform: scale(0.88);
     transform-origin: center bottom;
-    transition: opacity 0.4s var(--ease-paper), transform 0.4s var(--ease-paper),
-      box-shadow 0.4s var(--ease-paper);
+    transition:
+      opacity 0.45s var(--ease-paper),
+      transform 0.45s var(--ease-paper);
   }
-  /* JS active: dim everything that's NOT the centered card */
+  .card:focus-visible {
+    outline: 2px solid var(--color-copper);
+    outline-offset: 6px;
+    border-radius: 12px;
+  }
   .strip[data-js-active] .card:not(.is-focus) {
-    opacity: 0.7;
+    opacity: 0.5;
+  }
+  .strip[data-js-active] .card:not(.is-focus):hover {
+    opacity: 0.78;
+    transform: scale(0.91);
   }
   .strip[data-js-active] .card.is-focus {
     transform: scale(1);
-    box-shadow:
-      0 2px 4px rgba(31, 26, 19, 0.08),
-      0 28px 56px -22px rgba(31, 26, 19, 0.36);
+    cursor: default;
   }
-  /* No-JS fallback: everything full-sized so the strip still reads clean */
   .strip:not([data-js-active]) .card {
     opacity: 1;
     transform: none;
   }
   .card :global(img) {
     display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 9 / 16;
-    object-fit: cover;
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 26px 34px rgba(42, 53, 37, 0.3));
+    pointer-events: none;
   }
 
   /* Dot indicators — replace the scrollbar */
@@ -265,7 +285,8 @@ const shots = [
     border-radius: 50%;
     background: rgba(63, 79, 48, 0.22);
     cursor: pointer;
-    transition: background 0.25s var(--ease-paper),
+    transition:
+      background 0.25s var(--ease-paper),
       transform 0.25s var(--ease-paper),
       width 0.25s var(--ease-paper);
   }
@@ -282,11 +303,9 @@ const shots = [
 
   @media (prefers-reduced-motion: reduce) {
     .strip { scroll-behavior: auto; }
-    .card,
-    .dot {
-      transition: none;
-    }
+    .card { transition: none; transform: none; }
+    .dot { transition: none; }
     .strip[data-js-active] .card:not(.is-focus) { opacity: 1; }
-    .card { transform: none; }
+    .strip[data-js-active] .card.is-focus { transform: none; }
   }
 </style>

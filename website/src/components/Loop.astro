@@ -9,28 +9,54 @@ interface Props {
 }
 const { locale } = Astro.props;
 const t = getCopy(locale);
+
+// Fan the four step-cards like cards dealt onto a journal page. Reading the
+// row left-to-right the lean goes "höger › mitten › vänster": the leftmost
+// tips right (+deg), the middle pair sits near-upright, the rightmost tips
+// left (−deg). The outer two also sit a hair lower for a hand-dealt feel.
+const fan = [
+  { tilt: 5, lift: 14 },
+  { tilt: 1.8, lift: 0 },
+  { tilt: -1.8, lift: 0 },
+  { tilt: -5, lift: 14 },
+];
 ---
 
 <section id="loop" class="loop">
-  <div class="head">
+  <div class="head" data-reveal>
     <EyebrowLabel text={t.loop.eyebrow} />
     <JournalHeadline text={t.loop.headline} level="h2" />
     <p class="sub">{t.loop.sub}</p>
     <OrnamentRule />
   </div>
 
-  <ol class="cards" role="list">
-    {t.loop.cards.map((card, i) => (
-      <li class="card">
-        <div class="num">0{i + 1}</div>
-        <h3 class="title">{card.title}</h3>
-        <p class="body">{card.body}</p>
-        {i < t.loop.cards.length - 1 && (
-          <span class="arrow" aria-hidden="true">→</span>
-        )}
-      </li>
-    ))}
-  </ol>
+  <div class="stage">
+    <div class="cards-zone" data-reveal style="--rd:120ms">
+      <!-- A dashed loop-track behind the cards: every sighting closes the circle -->
+      <svg
+        class="track"
+        viewBox="0 0 1000 200"
+        fill="none"
+        preserveAspectRatio="xMidYMid meet"
+        aria-hidden="true"
+      >
+        <path
+          class="track-path"
+          d="M110 46 H890 A54 54 0 0 1 890 154 H110 A54 54 0 0 1 110 46 Z"
+        ></path>
+      </svg>
+
+      <ol class="cards" role="list">
+        {t.loop.cards.map((card, i) => (
+          <li class="card" style={`--tilt:${fan[i].tilt}deg; --lift:${fan[i].lift}px`}>
+            <span class="num">0{i + 1}</span>
+            <h3 class="title">{card.title}</h3>
+            <p class="body">{card.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
 </section>
 
 <style>
@@ -39,70 +65,137 @@ const t = getCopy(locale);
     max-width: var(--container-max);
     margin: 0 auto;
   }
-  .head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
-  .sub {
-    font-family: var(--font-script);
-    font-size: 1.25rem;
-    color: var(--color-copper);
-    margin: 0;
-  }
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0 0;
-    position: relative;
-  }
-  .card {
-    position: relative;
-    padding: 1.5rem 1rem;
+  .head {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
   }
-  .num {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 2rem;
+  .sub {
+    font-family: var(--font-script);
+    font-size: 1.25rem;
     color: var(--color-copper);
-    line-height: 1;
+    margin: 0;
+  }
+
+  /* ── Stage: fanned step-cards over a dashed loop-track ── */
+  .stage {
+    max-width: 64rem;
+    margin: 2.75rem auto 0;
+  }
+  .cards-zone {
+    position: relative;
+  }
+  .track {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+    width: min(96%, 56rem);
+    height: auto;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .track-path {
+    fill: none;
+    stroke: var(--color-copper);
+    stroke-width: 2;
+    stroke-dasharray: 2 11;
+    stroke-linecap: round;
+    opacity: 0.26;
+  }
+
+  .cards {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(0.35rem, 1.4vw, 1.1rem);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .card {
+    flex: 0 1 15.5rem;
+    max-width: 15.5rem;
+    background: linear-gradient(176deg, var(--color-paper-top), var(--color-paper-edge));
+    border: 1px solid rgba(168, 85, 45, 0.16);
+    border-radius: 16px;
+    padding: 1.75rem 1.25rem 1.6rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    box-shadow:
+      0 1px 2px rgba(42, 53, 37, 0.06),
+      0 20px 34px -24px rgba(42, 53, 37, 0.55);
+    transform: rotate(var(--tilt)) translateY(var(--lift));
+    transform-origin: center bottom;
+    transition:
+      transform 0.55s var(--ease-paper),
+      box-shadow 0.55s var(--ease-paper);
+  }
+  .card:hover,
+  .card:focus-within {
+    transform: rotate(0deg) translateY(-10px);
+    box-shadow:
+      0 2px 6px rgba(42, 53, 37, 0.1),
+      0 34px 60px -28px rgba(42, 53, 37, 0.65);
+    z-index: 4;
+  }
+  /* Hand-written page number in the birdy script font */
+  .num {
+    font-family: var(--font-script);
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 0.9;
+    color: var(--color-copper);
+    transform: rotate(-3deg);
   }
   .title {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1.75rem;
+    font-size: 1.6rem;
     color: var(--color-text-primary);
     margin: 0;
   }
   .body {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--color-text-primary);
+    font-family: var(--font-script);
+    font-size: 1.2rem;
+    line-height: 1.32;
+    color: var(--color-marginalia-ink);
     margin: 0;
-    max-width: 22ch;
   }
-  .arrow {
-    position: absolute;
-    right: -1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    color: var(--color-copper);
-    opacity: 0.5;
+
+  /* Tablet: let the four cards breathe a little tighter */
+  @media (max-width: 1100px) and (min-width: 861px) {
+    .card {
+      flex-basis: 13rem;
+      padding: 1.4rem 1rem 1.3rem;
+    }
+    .title {
+      font-size: 1.4rem;
+    }
   }
-  @media (max-width: 1024px) {
-    .cards { grid-template-columns: repeat(2, 1fr); }
-    .card:nth-child(2) .arrow,
-    .card:nth-child(4) .arrow { display: none; }
-  }
-  @media (max-width: 640px) {
-    .cards { grid-template-columns: 1fr; }
-    .arrow { display: none; }
+
+  /* Phone: drop the fan, stack the cards */
+  @media (max-width: 860px) {
+    .track {
+      display: none;
+    }
+    .cards {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .card {
+      transform: none;
+      flex-basis: auto;
+      width: 100%;
+      max-width: 22rem;
+    }
   }
 </style>
