@@ -582,9 +582,9 @@
     <string name="about_subline">En lokal följeslagare för fynd.</string>
     <string name="about_version_prefix">Version</string>
     <string name="about_credits_label">INNEHÅLL &amp; DATA</string>
-    <string name="about_credits_body">Fågeldata från Wikidata och Wikipedia under CC BY-SA. Foton från Wikimedia Commons. ML-modell: AIY Birds V1 (Google).</string>
+    <string name="about_credits_body">Fågeldata från Wikidata och Wikipedia under CC BY-SA. Foton från Wikimedia Commons. ML-modeller: AIY Birds V1 (Google, foto) och BirdNET-Lite v2 (Cornell Lab of Ornithology, ljud).</string>
     <string name="about_licenses_label">OPEN SOURCE</string>
-    <string name="about_licenses_body">Kotlin, Compose Multiplatform — Apache 2.0\nSQLDelight — Apache 2.0\nCoil — Apache 2.0\nAndroidX — Apache 2.0\nkaml — Apache 2.0\nTensorFlow Lite (AIY Birds V1) — Apache 2.0\nDM Serif Display Italic — SIL Open Font License 1.1\nCaveat — SIL Open Font License 1.1</string>
+    <string name="about_licenses_body">Kotlin, Compose Multiplatform — Apache 2.0\nSQLDelight — Apache 2.0\nCoil — Apache 2.0\nAndroidX — Apache 2.0\nkaml — Apache 2.0\nTensorFlow Lite (AIY Birds V1) — Apache 2.0\nBirdNET-Lite v2 (Cornell Lab of Ornithology) — CC BY-NC-SA 4.0\nDM Serif Display Italic — SIL Open Font License 1.1\nCaveat — SIL Open Font License 1.1</string>
     <string name="about_back">Tillbaka</string>
 
     <!-- Settings row effects (Plan 6a Task 13) -->
