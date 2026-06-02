@@ -44,7 +44,9 @@ fun TrophyRoomRoute(
         val stampNumber =
             loaded?.let { l ->
                 l.recentlyUnlocked.firstOrNull { it.badge.id == badge.id }?.stampNumber
-                    ?: l.trophyShowcase.rareFinds.firstOrNull { it.badge.id == badge.id }?.stampNumber
+                    ?: l.trophyShowcase.rareFinds
+                        .firstOrNull { it.badge.id == badge.id }
+                        ?.stampNumber
             }
         val nextTier = loaded?.let { BadgeLadder.nextTier(badge, it.locked) }
         UnlockBottomSheet(

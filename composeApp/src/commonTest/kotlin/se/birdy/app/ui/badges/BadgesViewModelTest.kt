@@ -285,7 +285,12 @@ class BadgesViewModelTest {
                 var item = awaitItem()
                 while (item is BadgesUiState.Loading) item = awaitItem()
                 val loaded = item as BadgesUiState.Loaded
-                assertEquals("redlisted_1", loaded.trophyShowcase.hero?.badge?.id)
+                assertEquals(
+                    "redlisted_1",
+                    loaded.trophyShowcase.hero
+                        ?.badge
+                        ?.id,
+                )
                 assertEquals(listOf("redlisted_1"), loaded.trophyShowcase.rareFinds.map { it.badge.id })
                 cancelAndIgnoreRemainingEvents()
             }
