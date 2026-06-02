@@ -10,35 +10,33 @@ import kotlinx.datetime.Instant
 import se.birdy.app.di.AppGraph
 import se.birdy.app.ui.badges.BadgeLadder
 import se.birdy.app.ui.badges.BadgeStringMap
-import se.birdy.app.ui.badges.BadgesScreen
+import se.birdy.app.ui.badges.BadgeWithUnlock
 import se.birdy.app.ui.badges.BadgesUiState
+import se.birdy.app.ui.badges.TrophyRoomScreen
 import se.birdy.app.ui.badges.UnlockBottomSheet
 import se.birdy.domain.badge.Badge
 
 @Composable
-fun BadgesRoute(
+fun TrophyRoomRoute(
     graph: AppGraph,
-    onSettingsClick: () -> Unit,
-    onPremiumClick: () -> Unit,
-    onOpenTrophyRoom: () -> Unit,
-    showPremiumTeaser: Boolean = true,
+    onBack: () -> Unit,
 ) {
     val viewModel = remember(graph) { graph.badgesViewModel() }
     val state by viewModel.state.collectAsState()
     var bottomSheetUnlock by remember { mutableStateOf<Pair<Badge, Instant>?>(null) }
 
-    BadgesScreen(
+    val openDetail: (BadgeWithUnlock) -> Unit = { bwu ->
+        bottomSheetUnlock = bwu.badge to bwu.unlockedAt
+    }
+
+    TrophyRoomScreen(
         state = state,
         locale = graph.defaultLocale,
         zone = graph.timeZone,
-        onBadgeClick = { badge, unlock ->
-            unlock?.let { bottomSheetUnlock = badge to it.unlockedAt }
-        },
-        onRetry = { /* state is a hot Flow — no manual retry needed */ },
-        onSettingsClick = onSettingsClick,
-        onPremiumClick = onPremiumClick,
-        onOpenTrophyRoom = onOpenTrophyRoom,
-        showPremiumTeaser = showPremiumTeaser,
+        onHeroClick = openDetail,
+        onStampClick = openDetail,
+        onBack = onBack,
+        onRetry = { /* hot Flow — ingen manuell retry */ },
     )
 
     bottomSheetUnlock?.let { (badge, unlockedAt) ->
@@ -46,7 +44,9 @@ fun BadgesRoute(
         val stampNumber =
             loaded?.let { l ->
                 l.recentlyUnlocked.firstOrNull { it.badge.id == badge.id }?.stampNumber
-                    ?: l.premiumBadges.firstOrNull { it.badge.id == badge.id }?.stampNumber
+                    ?: l.trophyShowcase.rareFinds
+                        .firstOrNull { it.badge.id == badge.id }
+                        ?.stampNumber
             }
         val nextTier = loaded?.let { BadgeLadder.nextTier(badge, it.locked) }
         UnlockBottomSheet(

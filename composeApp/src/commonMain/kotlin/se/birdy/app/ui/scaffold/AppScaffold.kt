@@ -272,7 +272,14 @@ fun AppScaffold(graph: AppGraph) {
                     graph = graph,
                     onSettingsClick = { navController.navigate(AppRoute.Settings) { launchSingleTop = true } },
                     onPremiumClick = { navController.navigate(AppRoute.Premium) },
+                    onOpenTrophyRoom = { navController.navigate(AppRoute.TrophyRoom) { launchSingleTop = true } },
                     showPremiumTeaser = showPremiumTeaser,
+                )
+            }
+            composable<AppRoute.TrophyRoom> {
+                TrophyRoomRoute(
+                    graph = graph,
+                    onBack = { navController.popBackStack() },
                 )
             }
             composable<AppRoute.Settings> {

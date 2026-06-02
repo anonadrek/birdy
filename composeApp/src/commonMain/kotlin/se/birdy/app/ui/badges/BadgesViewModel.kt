@@ -76,15 +76,15 @@ class BadgesViewModel(
         val regularBadges = catalog.badges.filter { !it.isPremium }
         val premiumBadgeDefs = catalog.badges.filter { it.isPremium }
 
-        val recentlyUnlocked =
+        val allUnlocked =
             unlocks
                 .sortedByDescending { it.unlockedAt }
-                .take(5)
                 .mapNotNull { u ->
                     catalog.findById(u.badgeId)?.let { b ->
                         BadgeWithUnlock(b, u.unlockedAt, stampNumbersById[b.id] ?: 0)
                     }
                 }
+        val recentlyUnlocked = allUnlocked.take(5)
 
         val locked =
             regularBadges
@@ -117,6 +117,8 @@ class BadgesViewModel(
 
         val unlockedInCatalog = unlocks.count { catalog.findById(it.badgeId) != null }
 
+        val trophyShowcase = buildTrophyShowcase(recentlyUnlocked, allUnlocked, locked)
+
         return BadgesUiState.Loaded(
             speciesProgress = SpeciesProgress(seen = seenSpecies, total = totalSpecies),
             unlockedCount = unlockedInCatalog,
@@ -127,6 +129,7 @@ class BadgesViewModel(
             locked = locked,
             premiumBadges = premiumBadges,
             premiumActive = premiumActive,
+            trophyShowcase = trophyShowcase,
         )
     }
 

@@ -71,7 +71,12 @@ private val tabs =
         ),
         TabSpec(AppRoute.Archive, Res.string.tab_archive, Icons.AutoMirrored.Filled.LibraryBooks),
         TabSpec(AppRoute.Lifelist, Res.string.tab_lifelist, Icons.Outlined.CollectionsBookmark),
-        TabSpec(AppRoute.Badges, Res.string.tab_badges, Icons.Filled.Stars),
+        TabSpec(
+            route = AppRoute.Badges,
+            label = Res.string.tab_badges,
+            icon = Icons.Filled.Stars,
+            ownedRoutes = setOf(AppRoute.Badges::class, AppRoute.TrophyRoom::class),
+        ),
     )
 
 @Composable

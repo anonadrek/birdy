@@ -700,4 +700,20 @@
     <string name="badge_progress_counted">%1$s av %2$s %3$s</string>
     <string name="badge_next_tier_label">Nästa nivå</string>
     <string name="badge_next_tier_value">%1$s — %2$s kvar</string>
+    <!-- ===== Badges v2: Troférummet ===== -->
+    <string name="trophy_room_intro_eyebrow">Skådar-profil</string>
+    <string name="trophy_room_headline">Ditt *troférum*.</string>
+    <string name="trophy_room_sub">%1$s av %2$s · %3$s väntar i fält</string>
+    <string name="trophy_room_title">Ditt troférum</string>
+    <string name="trophy_room_back">Tillbaka</string>
+    <string name="trophy_room_entry_eyebrow">Ditt troférum</string>
+    <string name="trophy_room_entry_count">%1$s troféer</string>
+    <string name="trophy_room_entry_empty">Ditt troférum väntar</string>
+    <string name="trophy_room_entry_a11y">Öppna ditt troférum, %1$s troféer</string>
+    <string name="trophy_hero_recent_label">Senast vunnen</string>
+    <string name="trophy_hero_empty_name">din första stämpel väntar</string>
+    <string name="trophy_section_recent">Senast upplåsta</string>
+    <string name="trophy_section_rare">Sällsynta fynd</string>
+    <string name="trophy_section_close">Nära att låsa upp</string>
+    <string name="trophy_close_remaining">%1$s kvar</string>
 </resources>

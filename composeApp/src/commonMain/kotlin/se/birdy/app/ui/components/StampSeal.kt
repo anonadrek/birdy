@@ -88,6 +88,7 @@ fun StampSeal(
     state: StampSealState,
     modifier: Modifier = Modifier,
     size: Dp = 88.dp,
+    accentColor: Color = AccentCopper,
     onClick: (() -> Unit)? = null,
 ) {
     val serif = rememberDmSerifDisplay()
@@ -95,8 +96,8 @@ fun StampSeal(
     val borderColor =
         when (state) {
             is StampSealState.Locked -> StampLocked
-            is StampSealState.InProgress -> AccentCopper.copy(alpha = 0.6f)
-            is StampSealState.Unlocked -> AccentCopper
+            is StampSealState.InProgress -> accentColor.copy(alpha = 0.6f)
+            is StampSealState.Unlocked -> accentColor
         }
     val bg =
         when (state) {
@@ -162,7 +163,7 @@ fun StampSeal(
                     is StampSealState.InProgress -> {
                         Text(
                             text = "№${state.number}",
-                            color = AccentCopper,
+                            color = accentColor,
                             fontFamily = caveat,
                             fontWeight = FontWeight.Bold,
                             fontSize = (size.value * 0.16f).sp,
@@ -170,7 +171,7 @@ fun StampSeal(
                         if (state.progressLabel != null) {
                             Text(
                                 text = state.progressLabel,
-                                color = AccentCopper,
+                                color = accentColor,
                                 fontFamily = caveat,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = (size.value * 0.14f).sp,
@@ -180,7 +181,7 @@ fun StampSeal(
                     is StampSealState.Unlocked -> {
                         Text(
                             text = "№${state.number}",
-                            color = AccentCopper,
+                            color = accentColor,
                             fontFamily = caveat,
                             fontWeight = FontWeight.Bold,
                             fontSize = (size.value * 0.16f).sp,

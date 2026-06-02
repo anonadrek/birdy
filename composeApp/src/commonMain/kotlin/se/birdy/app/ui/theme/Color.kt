@@ -59,6 +59,9 @@ val StampLocked = Color(0x66A8552D) // 40% AccentCopper for dashed border on loc
 val StampLockedBg = Color(0x99E8E2D2) // 60% MossCreme for locked stamp interior
 val StampUnlockedBg = Color(0x1FA8552D) // 12% AccentCopper for unlocked stamp interior
 
+// Navy-variant av stämpeln — sällsynta/rödlistade troféer i troférummet (Field Journal "StampNavy").
+val StampNavy = Color(0xFF1F3A5F)
+
 // Marginalia — left border and text color for handwritten citations
 // Bumped from 0xFF5C6E48 (HeroMossLight) to 0xFF3F4F30 (HeroMossMid) for WCAG AA ~6.7:1 on PaperTop (Plan 6a T9)
 val MarginaliaInk = Color(0xFF3F4F30)

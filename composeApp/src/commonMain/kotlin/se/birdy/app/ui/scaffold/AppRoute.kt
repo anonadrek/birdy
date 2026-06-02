@@ -35,6 +35,12 @@ sealed interface AppRoute {
 
     @Serializable data object Badges : AppRoute
 
+    /**
+     * Badges v2: Troférummet — egen vy nådd via entrékortet på Märken-fliken.
+     * Ägs av Märken-tabben (se BottomNavBar.ownedRoutes) så fliken förblir markerad.
+     */
+    @Serializable data object TrophyRoom : AppRoute
+
     @Serializable data object Settings : AppRoute
 
     @Serializable data object About : AppRoute
