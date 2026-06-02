@@ -144,6 +144,13 @@ private fun LoadedContent(
             }
         }
         item(span = { GridItemSpan(maxLineSpan) }) {
+            TrophyRoomEntryCard(
+                hero = state.trophyShowcase.hero,
+                unlockedCount = state.unlockedCount,
+                onClick = onOpenTrophyRoom,
+            )
+        }
+        item(span = { GridItemSpan(maxLineSpan) }) {
             Column {
                 JournalIntro(
                     label = stringResource(Res.string.badges_journal_label, state.unlockedCount.toString()),
@@ -158,13 +165,6 @@ private fun LoadedContent(
                     modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
                 )
             }
-        }
-        item(span = { GridItemSpan(maxLineSpan) }) {
-            TrophyRoomEntryCard(
-                hero = state.trophyShowcase.hero,
-                unlockedCount = state.unlockedCount,
-                onClick = onOpenTrophyRoom,
-            )
         }
 
         if (state.recentlyUnlocked.isNotEmpty()) {
