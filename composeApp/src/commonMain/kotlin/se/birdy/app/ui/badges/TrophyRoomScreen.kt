@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
@@ -17,9 +16,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.badges_load_error
 import birdy_bird_scanner.composeapp.generated.resources.badges_load_error_retry
@@ -28,7 +25,6 @@ import birdy_bird_scanner.composeapp.generated.resources.trophy_room_back
 import birdy_bird_scanner.composeapp.generated.resources.trophy_room_headline
 import birdy_bird_scanner.composeapp.generated.resources.trophy_room_intro_eyebrow
 import birdy_bird_scanner.composeapp.generated.resources.trophy_room_sub
-import birdy_bird_scanner.composeapp.generated.resources.trophy_room_title
 import birdy_bird_scanner.composeapp.generated.resources.trophy_section_close
 import birdy_bird_scanner.composeapp.generated.resources.trophy_section_rare
 import birdy_bird_scanner.composeapp.generated.resources.trophy_section_recent
@@ -40,8 +36,6 @@ import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.theme.StampNavy
-import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.content.Locale
 
 @Composable
@@ -91,14 +85,6 @@ private fun TrophyTopBar(onBack: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         BackButton(onClick = onBack, contentDescription = stringResource(Res.string.trophy_room_back))
-        Spacer(Modifier.size(8.dp))
-        Text(
-            text = stringResource(Res.string.trophy_room_title),
-            fontFamily = rememberDmSerifDisplay(),
-            fontStyle = FontStyle.Italic,
-            fontSize = 20.sp,
-            color = TextOnCreme,
-        )
     }
 }
 
