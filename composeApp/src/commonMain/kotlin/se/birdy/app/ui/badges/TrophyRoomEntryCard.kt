@@ -15,9 +15,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
@@ -30,6 +32,8 @@ import birdy_bird_scanner.composeapp.generated.resources.trophy_room_entry_a11y
 import birdy_bird_scanner.composeapp.generated.resources.trophy_room_entry_count
 import birdy_bird_scanner.composeapp.generated.resources.trophy_room_entry_empty
 import birdy_bird_scanner.composeapp.generated.resources.trophy_room_entry_eyebrow
+import coil3.compose.AsyncImage
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.shimmerSweep
 import se.birdy.app.ui.theme.AccentCopper
@@ -39,6 +43,7 @@ import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun TrophyRoomEntryCard(
     hero: BadgeWithUnlock?,
@@ -62,13 +67,35 @@ fun TrophyRoomEntryCard(
         modifier =
             modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .padding(vertical = 8.dp)
                 .clip(RoundedCornerShape(14.dp))
                 .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
                 .clickable(onClick = onClick)
                 .shimmerSweep(durationMillis = 6000, alpha = 0.20f)
                 .semantics { contentDescription = a11y },
     ) {
+        AsyncImage(
+            model = Res.getUri("files/branding/trophy_hero.webp"),
+            contentDescription = null,
+            modifier =
+                Modifier
+                    .matchParentSize()
+                    .blur(radius = 6.dp),
+            contentScale = ContentScale.Crop,
+        )
+        Box(
+            modifier =
+                Modifier
+                    .matchParentSize()
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(
+                                Color.Black.copy(alpha = 0.35f),
+                                Color.Black.copy(alpha = 0.55f),
+                            ),
+                        ),
+                    ),
+        )
         Row(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
