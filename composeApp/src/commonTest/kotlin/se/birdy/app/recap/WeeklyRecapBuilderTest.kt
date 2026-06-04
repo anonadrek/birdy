@@ -102,7 +102,7 @@ class WeeklyRecapBuilderTest {
         assertTrue(s.streakAtRisk)
     }
 
-    // ── selectHero helpers ──────────────────────────────────────────────────
+    // ── selectFinds helpers ─────────────────────────────────────────────────
 
     private fun species(
         qid: String,
@@ -117,52 +117,68 @@ class WeeklyRecapBuilderTest {
             heroImagePath = hero,
         )
 
-    // ── selectHero tests ────────────────────────────────────────────────────
+    // ── selectFinds tests ───────────────────────────────────────────────────
 
     @Test
-    fun `hero prefers new lifelist species`() {
+    fun `selectFinds returns only current week, newest first`() {
         val list =
             listOf(
-                obs("old", "Q1", daysAgo(40)), // Q1 ej ny
+                obs("b", "Q2", daysAgo(2)), // mån, denna vecka
+                obs("a", "Q1", daysAgo(1)), // tis, denna vecka (nyare)
+                obs("old", "Q3", daysAgo(9)), // tidigare vecka
+            )
+        val sp =
+            mapOf(
+                SpeciesId("Q1") to species("Q1", Abundance.ALLMÄN),
+                SpeciesId("Q2") to species("Q2", Abundance.ALLMÄN),
+                SpeciesId("Q3") to species("Q3", Abundance.ALLMÄN),
+            )
+        val finds = builder.selectFinds(list, sp, now)
+        assertEquals(listOf("a", "b"), finds.map { it.observationId }) // nyaste först
+    }
+
+    @Test
+    fun `selectFinds flags new species`() {
+        val list =
+            listOf(
+                obs("old", "Q1", daysAgo(40)), // Q1 sedd tidigare → ej ny
                 obs("c1", "Q1", daysAgo(1)),
                 obs("c2", "Q2", daysAgo(2)), // Q2 ny denna vecka
             )
-        val sp = mapOf(SpeciesId("Q1") to species("Q1", Abundance.SÄLLSYNT), SpeciesId("Q2") to species("Q2", Abundance.ALLMÄN))
-        val hero = builder.selectHero(list, sp, now)!!
-        assertEquals("c2", hero.observationId)
-        assertTrue(hero.isNewSpecies)
-    }
-
-    @Test
-    fun `hero falls back to rarest when no new species`() {
-        val list =
-            listOf(
-                obs("a", "Q1", daysAgo(40)),
-                obs("a2", "Q1", daysAgo(1)), // Q1 ej ny, allmän
-                obs("b", "Q2", daysAgo(40)),
-                obs("b2", "Q2", daysAgo(2)), // Q2 ej ny, sällsynt
+        val sp =
+            mapOf(
+                SpeciesId("Q1") to species("Q1", Abundance.ALLMÄN),
+                SpeciesId("Q2") to species("Q2", Abundance.ALLMÄN),
             )
-        val sp = mapOf(SpeciesId("Q1") to species("Q1", Abundance.ALLMÄN), SpeciesId("Q2") to species("Q2", Abundance.SÄLLSYNT))
-        val hero = builder.selectHero(list, sp, now)!!
-        assertEquals("b2", hero.observationId) // Q2 sällsynt
-        assertFalse(hero.isNewSpecies)
+        val finds = builder.selectFinds(list, sp, now).associateBy { it.observationId }
+        assertFalse(finds.getValue("c1").isNewSpecies)
+        assertTrue(finds.getValue("c2").isNewSpecies)
     }
 
     @Test
-    fun `audio-only hero uses species heroImagePath fallback`() {
+    fun `selectFinds uses species heroImagePath for audio-only find`() {
         val list =
             listOf(
-                obs("au", "Q2", daysAgo(40)),
-                obs("au2", "Q2", daysAgo(1), photoPath = "", source = ObservationSource.Audio, audioPath = "/a/au2.ogg"),
+                obs("au", "Q2", daysAgo(1), photoPath = "", source = ObservationSource.Audio, audioPath = "/a/au.ogg"),
             )
         val sp = mapOf(SpeciesId("Q2") to species("Q2", Abundance.SÄLLSYNT, hero = "Q2/hero.webp"))
-        val hero = builder.selectHero(list, sp, now)!!
-        assertEquals("", hero.photoPath)
-        assertEquals("Q2/hero.webp", hero.heroImagePath)
+        val find = builder.selectFinds(list, sp, now).single()
+        assertEquals("", find.photoPath)
+        assertEquals("Q2/hero.webp", find.heroImagePath)
     }
 
     @Test
-    fun `no hero on quiet week`() {
-        assertEquals(null, builder.selectHero(emptyList(), emptyMap(), now))
+    fun `selectFinds includes unidentified observations`() {
+        val list = listOf(obs("u", null, daysAgo(1), photoPath = "/p/u.jpg"))
+        val find = builder.selectFinds(list, emptyMap(), now).single()
+        assertEquals("u", find.observationId)
+        assertEquals(null, find.speciesId)
+        assertFalse(find.isNewSpecies)
+        assertEquals(null, find.heroImagePath)
+    }
+
+    @Test
+    fun `selectFinds returns empty on quiet week`() {
+        assertTrue(builder.selectFinds(emptyList(), emptyMap(), now).isEmpty())
     }
 }

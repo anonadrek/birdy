@@ -366,6 +366,7 @@ fun AppScaffold(graph: AppGraph) {
                     onOpenCamera = {
                         navController.navigate(AppRoute.Scan) { launchSingleTop = true }
                     },
+                    onObservationClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
                 )
             }
         }

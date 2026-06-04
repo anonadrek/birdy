@@ -47,40 +47,31 @@ class WeeklyRecapBuilder(
         )
     }
 
-    fun selectHero(
+    /** Veckans alla fynd, nyaste först. Tom lista vid tyst vecka. */
+    fun selectFinds(
         observations: List<Observation>,
         speciesByQid: Map<SpeciesId, SpeciesSummary>,
         now: Instant,
-    ): HeroFind? {
+    ): List<HeroFind> {
         val current = weekKey(now, zone)
-        val thisWeek = observations.filter { weekKey(it.capturedAt, zone) == current }
-        if (thisWeek.isEmpty()) return null
-
         val firstBySpeciesId = firstSightingBySpeciesId(observations)
 
         fun isNew(o: Observation): Boolean =
             o.speciesId != null && firstBySpeciesId[o.speciesId]?.let { weekKey(it, zone) == current } == true
 
-        val chosen =
-            thisWeek.filter { isNew(it) }.maxByOrNull { it.capturedAt }
-                ?: thisWeek
-                    .filter { it.speciesId != null }
-                    .maxWithOrNull(
-                        compareBy<Observation> {
-                            speciesByQid[SpeciesId(it.speciesId!!)]?.abundance?.ordinal ?: -1
-                        }.thenBy { it.capturedAt },
-                    )
-                ?: thisWeek.maxByOrNull { it.capturedAt }
-                ?: return null
-
-        val summary = chosen.speciesId?.let { speciesByQid[SpeciesId(it)] }
-        return HeroFind(
-            observationId = chosen.id,
-            speciesId = chosen.speciesId,
-            photoPath = chosen.photoPath,
-            heroImagePath = summary?.heroImagePath,
-            isNewSpecies = isNew(chosen),
-        )
+        return observations
+            .filter { weekKey(it.capturedAt, zone) == current }
+            .sortedByDescending { it.capturedAt }
+            .map { o ->
+                val summary = o.speciesId?.let { speciesByQid[SpeciesId(it)] }
+                HeroFind(
+                    observationId = o.id,
+                    speciesId = o.speciesId,
+                    photoPath = o.photoPath,
+                    heroImagePath = summary?.heroImagePath,
+                    isNewSpecies = isNew(o),
+                )
+            }
     }
 
     fun build(
@@ -91,6 +82,6 @@ class WeeklyRecapBuilder(
     ): WeeklyRecap =
         WeeklyRecap(
             summary = summarize(observations, unlocks, now),
-            hero = selectHero(observations, speciesByQid, now),
+            finds = selectFinds(observations, speciesByQid, now),
         )
 }

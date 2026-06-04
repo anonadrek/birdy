@@ -1,5 +1,6 @@
 package se.birdy.app.ui.recap
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,14 +18,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.diary_detail_unknown_species
 import birdy_bird_scanner.composeapp.generated.resources.recap_a11y_fmt
 import birdy_bird_scanner.composeapp.generated.resources.recap_cta_open_camera
 import birdy_bird_scanner.composeapp.generated.resources.recap_delta_fmt
@@ -34,6 +38,7 @@ import birdy_bird_scanner.composeapp.generated.resources.recap_headline_active
 import birdy_bird_scanner.composeapp.generated.resources.recap_headline_quiet
 import birdy_bird_scanner.composeapp.generated.resources.recap_load_error
 import birdy_bird_scanner.composeapp.generated.resources.recap_new_badge_fmt
+import birdy_bird_scanner.composeapp.generated.resources.recap_new_species_tag
 import birdy_bird_scanner.composeapp.generated.resources.recap_quiet_encouragement
 import birdy_bird_scanner.composeapp.generated.resources.recap_stats_fmt
 import birdy_bird_scanner.composeapp.generated.resources.recap_streak_label
@@ -55,12 +60,13 @@ import se.birdy.app.util.speciesImageUri
 fun RecapScreen(
     viewModel: RecapViewModel,
     onOpenCamera: () -> Unit,
+    onObservationClick: (String) -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     Box(modifier = Modifier.fillMaxSize().paperBackground()) {
         when (val s = state) {
             RecapUiState.Loading -> Unit
-            is RecapUiState.Loaded -> RecapContent(s, onOpenCamera)
+            is RecapUiState.Loaded -> RecapContent(s, onOpenCamera, onObservationClick)
             is RecapUiState.Error -> RecapError()
         }
     }
@@ -87,6 +93,7 @@ private fun RecapError() {
 private fun RecapContent(
     state: RecapUiState.Loaded,
     onOpenCamera: () -> Unit,
+    onObservationClick: (String) -> Unit,
 ) {
     val summary = state.recap.summary
     val a11yLabel = stringResource(Res.string.recap_a11y_fmt, summary.week.isoWeek.toString())
@@ -117,41 +124,19 @@ private fun RecapContent(
         if (summary.isQuiet) {
             QuietBody(state, onOpenCamera)
         } else {
-            ActiveBody(state)
+            ActiveBody(state, onObservationClick)
         }
     }
 }
 
 @Composable
-private fun ActiveBody(state: RecapUiState.Loaded) {
+private fun ActiveBody(
+    state: RecapUiState.Loaded,
+    onObservationClick: (String) -> Unit,
+) {
     val s = state.recap.summary
-    val hero = state.recap.hero
     val caveat = rememberCaveat()
 
-    if (hero != null) {
-        val photoPath = hero.photoPath
-        val model: String? =
-            if (photoPath.isNotBlank()) {
-                "file://$photoPath"
-            } else {
-                hero.heroImagePath?.let { speciesImageUri(it) }
-            }
-        // PlateFrame already renders the "Pl. — " prefix, so the caption is just the species name.
-        PlateFrame(
-            plateLabel = "",
-            captionLine = state.heroSpeciesName ?: "",
-        ) {
-            if (model != null) {
-                AsyncImage(
-                    model = model,
-                    contentDescription = state.heroSpeciesName,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize(),
-                )
-            }
-        }
-    }
-    Spacer(modifier = Modifier.height(12.dp))
     Text(
         if (s.newSpeciesCount > 0) {
             stringResource(Res.string.recap_summary_active_new, s.observationCount.toString())
@@ -196,6 +181,66 @@ private fun ActiveBody(state: RecapUiState.Loaded) {
         fontSize = 16.sp,
         modifier = Modifier.padding(top = 10.dp),
     )
+
+    // Veckans alla fynd, nyaste först — staplade plåtar.
+    Spacer(modifier = Modifier.height(20.dp))
+    state.finds.forEach { find ->
+        FindPlate(find = find, onObservationClick = onObservationClick)
+        Spacer(modifier = Modifier.height(12.dp))
+    }
+}
+
+@Composable
+private fun FindPlate(
+    find: RecapFindItem,
+    onObservationClick: (String) -> Unit,
+) {
+    val caption = find.speciesName ?: stringResource(Res.string.diary_detail_unknown_species)
+    val model: String? =
+        if (find.photoPath.isNotBlank()) {
+            "file://${find.photoPath}"
+        } else {
+            find.heroImagePath?.let { speciesImageUri(it) }
+        }
+    PlateFrame(
+        plateLabel = "",
+        captionLine = caption,
+        modifier = Modifier.clickable { onObservationClick(find.observationId) },
+    ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            if (model != null) {
+                AsyncImage(
+                    model = model,
+                    contentDescription = caption,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize(),
+                )
+            } else {
+                Text(
+                    text = "❦",
+                    color = MarginaliaInk.copy(alpha = 0.35f),
+                    fontSize = 48.sp,
+                    modifier = Modifier.align(Alignment.Center),
+                )
+            }
+            if (find.isNewSpecies) {
+                Text(
+                    text = stringResource(Res.string.recap_new_species_tag).uppercase(),
+                    color = Color.White,
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.W700,
+                    letterSpacing = 1.2.sp,
+                    modifier =
+                        Modifier
+                            .align(Alignment.TopStart)
+                            .padding(8.dp)
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(AccentCopper)
+                            .padding(horizontal = 6.dp, vertical = 3.dp),
+                )
+            }
+        }
+    }
 }
 
 @Composable

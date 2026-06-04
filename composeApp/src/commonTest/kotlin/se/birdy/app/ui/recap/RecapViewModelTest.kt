@@ -61,7 +61,7 @@ class RecapViewModelTest {
         }
 
     @Test
-    fun `hero species name resolved from this week observation`() =
+    fun `species name resolved for this week find`() =
         runTest {
             val obsRepo = FakeObservationRepository()
             // fixedNow is 2026-05-30 (Saturday, ISO week 22 of 2026) — seed obs in the same week
@@ -87,7 +87,7 @@ class RecapViewModelTest {
                 var item = awaitItem()
                 while (item is RecapUiState.Loading) item = awaitItem()
                 val loaded = item as RecapUiState.Loaded
-                assertEquals("Talgoxe", loaded.heroSpeciesName)
+                assertEquals("Talgoxe", loaded.finds.single().speciesName)
                 assertTrue(loaded.recap.summary.observationCount >= 1)
             }
         }

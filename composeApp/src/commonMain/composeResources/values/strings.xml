@@ -661,6 +661,7 @@
     <string name="recap_new_badge_fmt">Ny stämpel: %1$s</string>
     <string name="recap_delta_fmt">vs förra veckan: %1$s fynd</string>
     <string name="recap_empty_plate">Sidan är tom — inga fynd ännu.</string>
+    <string name="recap_new_species_tag">Ny art</string>
     <string name="recap_quiet_encouragement">Ingen brådska. Tio minuter i parken räcker för veckans första rad.</string>
     <string name="recap_streak_label">Din streak</string>
     <string name="recap_streak_nudge_fmt">%1$s veckor i rad — håll den vid liv innan söndagen är slut. En talgoxe i parken räcker.</string>

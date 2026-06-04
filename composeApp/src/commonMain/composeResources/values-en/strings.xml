@@ -647,6 +647,7 @@
     <string name="recap_new_badge_fmt">New stamp: %1$s</string>
     <string name="recap_delta_fmt">vs last week: %1$s sightings</string>
     <string name="recap_empty_plate">The page is blank — no sightings yet.</string>
+    <string name="recap_new_species_tag">New</string>
     <string name="recap_quiet_encouragement">No rush. Ten minutes in the park is enough for the week's first line.</string>
     <string name="recap_streak_label">Your streak</string>
     <string name="recap_streak_nudge_fmt">%1$s weeks running — keep it alive before Sunday ends. A great tit in the park is enough.</string>

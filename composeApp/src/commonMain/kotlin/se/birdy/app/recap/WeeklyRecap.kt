@@ -15,7 +15,7 @@ data class WeeklyRecapSummary(
     val isQuiet: Boolean get() = observationCount == 0
 }
 
-/** Veckans fynd — hjälte i PlateFrame. */
+/** Ett enskilt fynd i veckan — renderas som en PlateFrame. */
 data class HeroFind(
     val observationId: String,
     val speciesId: String?,
@@ -24,8 +24,8 @@ data class HeroFind(
     val isNewSpecies: Boolean,
 )
 
-/** Full recap för skärmen. */
+/** Full recap för skärmen. `finds` = veckans alla fynd, nyaste först (tom vid tyst vecka). */
 data class WeeklyRecap(
     val summary: WeeklyRecapSummary,
-    val hero: HeroFind?,
+    val finds: List<HeroFind>,
 )

@@ -42,8 +42,17 @@ class RecapViewModel(
     ): RecapUiState {
         val species = speciesByQid()
         val recap = builder.build(obs, species, unlocks, now())
-        val heroName = recap.hero?.speciesId?.let { species[SpeciesId(it)]?.name }
+        val finds =
+            recap.finds.map { f ->
+                RecapFindItem(
+                    observationId = f.observationId,
+                    speciesName = f.speciesId?.let { species[SpeciesId(it)]?.name },
+                    photoPath = f.photoPath,
+                    heroImagePath = f.heroImagePath,
+                    isNewSpecies = f.isNewSpecies,
+                )
+            }
         val badgeNames = buildList { for (id in recap.summary.newBadgeIds) add(badgeNameFor(id)) }
-        return RecapUiState.Loaded(recap, heroName, badgeNames)
+        return RecapUiState.Loaded(recap, finds, badgeNames)
     }
 }
