@@ -54,7 +54,13 @@ class SaveObservationLocationTest {
             val provider = FakeLocationProvider(next = LatLng(59.3, 18.0))
             useCase(repo, provider, enabled = true)
                 .save("Q1", capturedAt, 0.9f, ByteArray(4), "", attachLocation = false)
-            assertNull(repo.observeAll().first().single().latitude)
+            assertNull(
+                repo
+                    .observeAll()
+                    .first()
+                    .single()
+                    .latitude,
+            )
             assertEquals(0, provider.currentCalls)
         }
 
@@ -65,6 +71,12 @@ class SaveObservationLocationTest {
             val provider = FakeLocationProvider(next = LatLng(59.3, 18.0))
             useCase(repo, provider, enabled = false)
                 .save("Q1", capturedAt, 0.9f, ByteArray(4), "", attachLocation = true)
-            assertNull(repo.observeAll().first().single().latitude)
+            assertNull(
+                repo
+                    .observeAll()
+                    .first()
+                    .single()
+                    .latitude,
+            )
         }
 }
