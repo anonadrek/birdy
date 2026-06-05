@@ -363,6 +363,10 @@ class AppGraph(
             locale = defaultLocale,
         )
 
+    fun mapViewModel(): se.birdy.app.ui.map.MapViewModel =
+        se.birdy.app.ui.map
+            .MapViewModel(observationRepo = observationRepository)
+
     fun settingsViewModel(): SettingsViewModel =
         SettingsViewModel(
             prefs = userPreferences,
