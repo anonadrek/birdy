@@ -66,6 +66,7 @@ fun PhotoAnalyzeScreen(
                 ScanSource.Image(
                     frameJpegPath = s.frameJpegPath,
                     classification = classification,
+                    live = false,
                 )
             val sourceJson =
                 Json.encodeToString(ScanSourceSerialization.serializer(), scanSource.toSerial())
