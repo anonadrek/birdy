@@ -3,9 +3,15 @@ package se.birdy.app.usecase
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.location.LatLng
+import se.birdy.app.testing.FakeBadgeRepository
+import se.birdy.app.testing.FakeClock
 import se.birdy.app.testing.FakeLocationProvider
 import se.birdy.app.testing.FakeObservationRepository
+import se.birdy.app.testing.FakePhotoStorage
+import se.birdy.domain.badge.BadgeCatalog
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -19,11 +25,11 @@ class SaveObservationLocationTest {
         enabled: Boolean,
     ) = SaveObservationUseCase(
         repo = repo,
-        badgeRepo = NoopBadgeRepository(),
-        photoStorage = RecordingPhotoStorage(),
-        clock = FixedClock(capturedAt),
-        catalog = emptyBadgeCatalog(),
-        recalculate = noopRecalculate(),
+        badgeRepo = FakeBadgeRepository(),
+        photoStorage = FakePhotoStorage(),
+        clock = FakeClock(capturedAt),
+        catalog = BadgeCatalog(version = 1, badges = emptyList()),
+        recalculate = RecalculateBadgesUseCase(zone = TimeZone.UTC, clock = FakeClock(capturedAt)),
         speciesByQid = { emptyMap() },
         locationProvider = provider,
         locationEnabled = { enabled },
