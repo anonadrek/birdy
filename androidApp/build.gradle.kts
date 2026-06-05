@@ -29,6 +29,7 @@ kotlin {
             implementation(libs.androidx.appcompat)
             // WorkManager needed for debug-only dev-trigger lambdas in MainActivity.
             implementation(libs.androidx.work.runtime.ktx)
+            implementation(libs.osmdroid.android)
         }
     }
 }

@@ -57,6 +57,7 @@ kotlin {
             implementation(libs.androidx.appcompat)
             implementation(libs.androidx.work.runtime.ktx)
             implementation("com.android.billingclient:billing-ktx:8.0.0")
+            implementation(libs.osmdroid.android)
         }
         androidUnitTest.dependencies {
             implementation("junit:junit:4.13.2")
@@ -91,6 +92,11 @@ android {
             libs.versions.android.minSdk
                 .get()
                 .toInt()
+        buildConfigField(
+            "String",
+            "MAPTILER_API_KEY",
+            "\"${project.findProperty("MAPTILER_API_KEY") ?: ""}\"",
+        )
     }
     buildFeatures {
         buildConfig = true
