@@ -707,4 +707,14 @@
     <string name="trophy_section_rare">Rare finds</string>
     <string name="trophy_section_close">Close to unlocking</string>
     <string name="trophy_close_remaining">%1$s to go</string>
+
+    <!-- ===== Personal finds map ===== -->
+    <string name="map_title">Map</string>
+    <string name="map_empty">No located finds yet. Turn on location in Settings and save a find out in the field.</string>
+    <string name="map_attribution">© OpenStreetMap · © MapTiler</string>
+    <string name="map_teaser_title">Your bird map</string>
+    <string name="map_teaser_caption">See where you spotted your birds.</string>
+    <string name="map_teaser_count">%1$s located finds waiting on the map</string>
+    <string name="map_teaser_cta">Unlock with Premium</string>
+    <string name="map_teaser_badge">Premium</string>
 </resources>
