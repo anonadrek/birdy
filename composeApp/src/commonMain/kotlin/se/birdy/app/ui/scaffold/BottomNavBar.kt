@@ -18,6 +18,7 @@ import androidx.compose.material.icons.automirrored.filled.LibraryBooks
 import androidx.compose.material.icons.filled.CenterFocusStrong
 import androidx.compose.material.icons.filled.Stars
 import androidx.compose.material.icons.outlined.CollectionsBookmark
+import androidx.compose.material.icons.outlined.Map
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -40,6 +41,7 @@ import birdy_bird_scanner.composeapp.generated.resources.tab_archive
 import birdy_bird_scanner.composeapp.generated.resources.tab_badges
 import birdy_bird_scanner.composeapp.generated.resources.tab_lifelist
 import birdy_bird_scanner.composeapp.generated.resources.tab_listen
+import birdy_bird_scanner.composeapp.generated.resources.tab_map
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
@@ -77,6 +79,7 @@ private val tabs =
             icon = Icons.Filled.Stars,
             ownedRoutes = setOf(AppRoute.Badges::class, AppRoute.TrophyRoom::class),
         ),
+        TabSpec(AppRoute.Map, Res.string.tab_map, Icons.Outlined.Map),
     )
 
 @Composable
