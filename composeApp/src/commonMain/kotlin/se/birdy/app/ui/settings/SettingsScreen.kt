@@ -27,6 +27,7 @@ import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.MailOutline
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Public
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.Replay
@@ -76,6 +77,8 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_label_name
 import birdy_bird_scanner.composeapp.generated.resources.settings_language_en
 import birdy_bird_scanner.composeapp.generated.resources.settings_language_sv
 import birdy_bird_scanner.composeapp.generated.resources.settings_language_system
+import birdy_bird_scanner.composeapp.generated.resources.settings_location_caption
+import birdy_bird_scanner.composeapp.generated.resources.settings_location_section
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_cancel
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_save
 import birdy_bird_scanner.composeapp.generated.resources.settings_name_dialog_title
@@ -95,6 +98,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_share_copy
 import birdy_bird_scanner.composeapp.generated.resources.settings_show_intro_again
 import birdy_bird_scanner.composeapp.generated.resources.settings_title
 import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_daily_bird
+import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_location
 import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_weekly_recap
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
@@ -120,6 +124,7 @@ fun SettingsScreen(
     onNavigateToAbout: () -> Unit,
     onShowIntroAgain: () -> Unit,
     versionName: String,
+    onRequestLocationPermission: () -> Unit = {},
 ) {
     val state by viewModel.state.collectAsState()
     var showNameDialog by rememberSaveable { mutableStateOf(false) }
@@ -214,6 +219,27 @@ fun SettingsScreen(
                         )
                     }
                 }
+            }
+            item { SectionHeader(stringResource(Res.string.settings_location_section)) }
+            item {
+                val locationEnabled by viewModel.locationCaptureEnabled.collectAsState()
+                PaperCard {
+                    ToggleRow(
+                        icon = Icons.Outlined.Place,
+                        label = stringResource(Res.string.settings_toggle_location),
+                        checked = locationEnabled,
+                        onCheckedChange = { enabled ->
+                            viewModel.setLocationCaptureEnabled(enabled)
+                            if (enabled) onRequestLocationPermission()
+                        },
+                    )
+                }
+                Text(
+                    text = stringResource(Res.string.settings_location_caption),
+                    color = MarginaliaInk,
+                    fontSize = 12.sp,
+                    modifier = Modifier.padding(horizontal = 14.dp, vertical = 2.dp),
+                )
             }
             if (viewModel.devToolsAvailable) {
                 item { SectionHeader("DEV TOOLS") }

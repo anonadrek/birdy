@@ -674,6 +674,9 @@
     <string name="notification_recap_streak_title">Bara kvällen kvar</string>
     <string name="notification_recap_streak_body">En talgoxe i parken räcker — fortsätt din streak.</string>
     <string name="settings_toggle_weekly_recap">Veckans recap — söndag kväll</string>
+    <string name="settings_location_section">Plats</string>
+    <string name="settings_toggle_location">Spara plats med mina fynd</string>
+    <string name="settings_location_caption">Lagras bara på din telefon. Behövs för kartan.</string>
     <string name="settings_dev_trigger_recap">DEV: Trigga veckans recap-push</string>
     <!-- DP D kort: kategori-eyebrow -->
     <string name="badge_cat_progression">Progression</string>

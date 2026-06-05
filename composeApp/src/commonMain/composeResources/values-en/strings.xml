@@ -660,6 +660,9 @@
     <string name="notification_recap_streak_title">Only the evening left</string>
     <string name="notification_recap_streak_body">A great tit in the park is enough — keep your streak going.</string>
     <string name="settings_toggle_weekly_recap">Weekly recap — Sunday evening</string>
+    <string name="settings_location_section">Location</string>
+    <string name="settings_toggle_location">Save location with my finds</string>
+    <string name="settings_location_caption">Stored only on your phone. Needed for the map.</string>
     <string name="settings_dev_trigger_recap">DEV: Trigger weekly recap push</string>
     <!-- DP D card: category eyebrow -->
     <string name="badge_cat_progression">Progression</string>

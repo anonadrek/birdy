@@ -43,6 +43,9 @@ class SettingsViewModel(
     val weeklyRecapPushEnabled: StateFlow<Boolean> =
         prefs.weeklyRecapPushEnabled.stateIn(viewModelScope, SharingStarted.Eagerly, true)
 
+    val locationCaptureEnabled: StateFlow<Boolean> =
+        prefs.locationCaptureEnabled.stateIn(viewModelScope, SharingStarted.Eagerly, false)
+
     init {
         viewModelScope.launch {
             combine(
@@ -110,6 +113,10 @@ class SettingsViewModel(
             prefs.setWeeklyRecapPushEnabled(value)
             if (value) notificationScheduler?.scheduleWeeklyRecap() else notificationScheduler?.cancelWeeklyRecap()
         }
+    }
+
+    fun setLocationCaptureEnabled(value: Boolean) {
+        viewModelScope.launch { prefs.setLocationCaptureEnabled(value) }
     }
 
     fun areNotificationsEnabled(): Boolean = platformNotificationsApi?.areNotificationsEnabled() ?: true

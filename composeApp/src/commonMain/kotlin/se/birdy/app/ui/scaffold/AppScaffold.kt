@@ -290,6 +290,7 @@ fun AppScaffold(graph: AppGraph) {
                     onNavigateToAbout = { navController.navigate(AppRoute.About) },
                     onShowIntroAgain = { navController.navigate(AppRoute.OnboardingReplay) },
                     versionName = graph.versionName,
+                    onRequestLocationPermission = { graph.requestLocationPermission?.invoke() },
                 )
             }
             composable<AppRoute.About> {
