@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import se.birdy.app.badges.RecalculateBadgesUseCase
+import se.birdy.app.location.LatLng
+import se.birdy.app.location.LocationProvider
 import se.birdy.app.photo.PhotoStorage
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
@@ -26,6 +28,8 @@ class SaveObservationUseCase(
     private val speciesByQid: suspend () -> Map<SpeciesId, Species>,
     private val onObservationSaved: (suspend (Observation) -> Unit)? = null,
     private val dailyBirdMatchCount: suspend () -> Int = { 0 },
+    private val locationProvider: LocationProvider? = null,
+    private val locationEnabled: suspend () -> Boolean = { false },
 ) {
     @OptIn(ExperimentalUuidApi::class)
     @Suppress("LongParameterList")
@@ -37,35 +41,20 @@ class SaveObservationUseCase(
         note: String,
         audioPath: String? = null,
         sourceType: ObservationSource = ObservationSource.Photo,
+        attachLocation: Boolean = false,
     ): SaveResult {
         val id = Uuid.random().toString()
         val nextStamp = repo.nextStampNumber()
         val photoPath = photoStorage.persistJpeg(rawJpegBytes)
-        try {
-            repo.insert(
-                Observation(
-                    id = id,
-                    speciesId = speciesId,
-                    capturedAt = capturedAt,
-                    savedAt = clock.now(),
-                    photoPath = photoPath,
-                    note = note,
-                    confidence = confidence,
-                    latitude = null,
-                    longitude = null,
-                    locationLabel = null,
-                    stampNumber = nextStamp,
-                    audioPath = audioPath,
-                    sourceType = sourceType,
-                ),
-            )
-        } catch (t: Throwable) {
-            if (t is CancellationException) throw t
-            runCatching { photoStorage.delete(photoPath) }
-            throw t
-        }
 
-        onObservationSaved?.invoke(
+        val latLng: LatLng? =
+            if (attachLocation && locationEnabled()) {
+                runCatching { locationProvider?.current() }.getOrNull()
+            } else {
+                null
+            }
+
+        val observation =
             Observation(
                 id = id,
                 speciesId = speciesId,
@@ -74,14 +63,23 @@ class SaveObservationUseCase(
                 photoPath = photoPath,
                 note = note,
                 confidence = confidence,
-                latitude = null,
-                longitude = null,
+                latitude = latLng?.latitude,
+                longitude = latLng?.longitude,
                 locationLabel = null,
                 stampNumber = nextStamp,
                 audioPath = audioPath,
                 sourceType = sourceType,
-            ),
-        )
+            )
+
+        try {
+            repo.insert(observation)
+        } catch (t: Throwable) {
+            if (t is CancellationException) throw t
+            runCatching { photoStorage.delete(photoPath) }
+            throw t
+        }
+
+        onObservationSaved?.invoke(observation)
 
         val newUnlocks =
             runCatching {
