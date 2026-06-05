@@ -49,7 +49,7 @@
     "sub": "varje europeisk fågel, varje stämpel, varje serie",
     "stats": [
       { "value": "839", "label": "arter", "caption": "från vanliga till sällsynta" },
-      { "value": "25", "label": "stämplar", "caption": "tjänas in genom att hitta fåglar" },
+      { "value": "33", "label": "stämplar", "caption": "tjänas in genom att hitta fåglar" },
       { "value": "365", "label": "daglig serie", "caption": "håll dagboken levande" }
     ]
   },
@@ -95,7 +95,7 @@
       { "label": "E-post", "href": "mailto:albin@abrahamssons.se" },
       { "label": "EN", "href": "/" }
     ],
-    "credit": "Skapad av Albin · Sverige · 2026 · v1.0.0"
+    "credit": "Skapad av Albin · Sverige · 2026 · v1.1.0"
   },
   "alt": {
     "wingLogo": "Birdys vinge-logo",
@@ -106,7 +106,7 @@
     "observationDetail": "Birdys observationsdetaljsida i fältdagbok-stil",
     "archiveScreen": "Birdys arkiv-skärm med europeiska arter",
     "audioScan": "Birdys ljudscan-skärm med vågform",
-    "badgesGrid": "Birdys märkessida med 5x5 stämpel-rutnät",
+    "badgesGrid": "Birdys märkessida med stämpel-rutnätet",
     "glimpseHero": "Birdys intro-skärm — En fältdagbok för fynd",
     "speciesScreen": "Birdys art-sida — läs på om varje europeisk fågel",
     "panorama": "Birdys app-skärmar — identifiera en fågel, lär dig arten och behåll varje fynd"

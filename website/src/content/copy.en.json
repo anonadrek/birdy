@@ -49,7 +49,7 @@
     "sub": "every european bird, every stamp, every streak",
     "stats": [
       { "value": "839", "label": "species", "caption": "from common to rare" },
-      { "value": "25", "label": "stamps", "caption": "earned by finding birds" },
+      { "value": "33", "label": "stamps", "caption": "earned by finding birds" },
       { "value": "365", "label": "daily streak", "caption": "keep the journal alive" }
     ]
   },
@@ -95,7 +95,7 @@
       { "label": "Email", "href": "mailto:albin@abrahamssons.se" },
       { "label": "SV", "href": "/sv/" }
     ],
-    "credit": "Made by Albin · Sweden · 2026 · v1.0.0"
+    "credit": "Made by Albin · Sweden · 2026 · v1.1.0"
   },
   "alt": {
     "wingLogo": "Birdy wing logo",
@@ -106,7 +106,7 @@
     "observationDetail": "Birdy observation detail page in field-journal style",
     "archiveScreen": "Birdy archive screen browsing European species",
     "audioScan": "Birdy audio scan screen with waveform",
-    "badgesGrid": "Birdy badges page with 5x5 stamp grid",
+    "badgesGrid": "Birdy badges page with the stamp grid",
     "glimpseHero": "Birdy intro screen — A field journal for finds",
     "speciesScreen": "Birdy species page — read up on every European bird",
     "panorama": "Birdy app screens — identify a bird, learn the species, and keep every find"
