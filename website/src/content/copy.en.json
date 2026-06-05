@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Birdy — A field journal for birds",
-    "description": "Identify European birds with your phone camera or mic. 839 species. Offline AI. No accounts.",
+    "description": "Identify European birds with your camera or mic, then keep every find in a journal that's yours. 839 species, fully offline, no account.",
     "ogLocale": "en_US",
     "htmlLang": "en"
   },
@@ -17,30 +17,30 @@
   "hero": {
     "eyebrow": "A BIRDY APP · 2026",
     "headline": "A *field journal* that looks like a field journal",
-    "sub": "Identify birds with your camera or mic. Keep every find in a journal that's yours.",
+    "sub": "Photograph or record a bird and Birdy names it. Everything you find is saved in your own journal.",
     "scrollCue": "See how it works ↓"
   },
   "loop": {
     "eyebrow": "HOW IT WORKS",
-    "headline": "One *loop.*",
-    "sub": "Four steps. Every sighting closes the circle.",
+    "headline": "It's a *loop.*",
+    "sub": "Point, match, stamp, browse — then back to the start for the next bird.",
     "cards": [
-      { "title": "Point or tap record", "body": "Open the camera. Aim. The AI guesses three times a second." },
-      { "title": "Match", "body": "When the confidence locks, the stamp appears." },
-      { "title": "Stamp", "body": "Your journal gets a new page. Same paper, new species." },
-      { "title": "Browse", "body": "Flip back any time. Or search 839 European species." }
+      { "title": "Point or tap record", "body": "Open the camera and aim, or tap to record a song. Birdy checks a few times a second." },
+      { "title": "Match", "body": "When Birdy is sure enough, you get a match." },
+      { "title": "Stamp", "body": "A new page lands in your journal — one stamp for each species." },
+      { "title": "Browse", "body": "Look back whenever you like, or search all 839 European species." }
     ]
   },
   "glimpse": {
-    "eyebrow": "GLIMPSE · INSIDE",
+    "eyebrow": "A LOOK INSIDE",
     "headline": "A few *pages* from the journal.",
     "sub": "what it actually looks like, on your phone."
   },
   "listen": {
-    "eyebrow": "OR TAP THE MIC · ON-DEVICE",
-    "headline": "Hear it. *Name* it.",
-    "sub": "Tap. Listen. The bird names itself.",
-    "body": "Tap the record button. The same on-device AI listens until it recognises the bird — or until you tap stop. No internet needed.",
+    "eyebrow": "OR USE THE MIC · ON YOUR PHONE",
+    "headline": "Name it by *ear.*",
+    "sub": "Hold the button and let the bird sing. Birdy listens and names it.",
+    "body": "Hold the record button. The same AI on your phone listens until it recognises the song — or until you let go. No internet, nothing uploaded.",
     "hint": "tap to listen"
   },
   "inside": {
@@ -49,15 +49,15 @@
     "sub": "every european bird, every stamp, every streak",
     "stats": [
       { "value": "839", "label": "species", "caption": "from common to rare" },
-      { "value": "25", "label": "stamps", "caption": "earn them by finding" },
+      { "value": "25", "label": "stamps", "caption": "earned by finding birds" },
       { "value": "365", "label": "daily streak", "caption": "keep the journal alive" }
     ]
   },
   "premium": {
-    "eyebrow": "FIELD MEMBER · OPTIONAL",
+    "eyebrow": "OPTIONAL · PREMIUM",
     "headline": "*Free* first.",
-    "sub": "Premium goes deeper — for the curious few.",
-    "body": "The app is free. Always will be the core experience. Premium adds PDF-export, seasonal statistics, and 10 field marks for the obsessive collectors.",
+    "sub": "Premium adds a few extras if you want to go deeper.",
+    "body": "The core app is free, and always will be. Premium adds PDF export, seasonal stats and a handful of extra stamps — nice to have, never needed.",
     "cta": "See what's inside →",
     "ctaHref": "https://play.google.com/apps/testing/se.birdy.android"
   },
@@ -65,7 +65,7 @@
     "eyebrow": "PRIVACY · NO PHOTOS LEAVE YOUR PHONE",
     "headline": "Fully *offline.*",
     "sub": "the AI lives in your phone",
-    "body": "No cloud. No tracking. No accounts. Just you and the birds.",
+    "body": "No cloud, no tracking, no accounts — just you and the birds.",
     "wordmarkLabel": "AVAILABLE ON GOOGLE PLAY"
   },
   "faq": {
