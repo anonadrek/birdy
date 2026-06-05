@@ -14,7 +14,6 @@ import kotlinx.datetime.plus
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 import se.birdy.app.notifications.workers.DailyBirdWorker
-import se.birdy.app.notifications.workers.StreakRiskWorker
 import se.birdy.app.notifications.workers.WeeklyRecapWorker
 import se.birdy.domain.notification.NotificationScheduler
 import java.util.concurrent.TimeUnit
@@ -32,14 +31,6 @@ class NotificationSchedulerImpl(
                 .setInitialDelay(millisUntilNext(hour = 8, minute = 0), TimeUnit.MILLISECONDS)
                 .build()
         workManager.enqueueUniquePeriodicWork(UNIQUE_DAILY_BIRD, ExistingPeriodicWorkPolicy.KEEP, request)
-    }
-
-    override fun scheduleStreakRiskCheck() {
-        val request =
-            PeriodicWorkRequestBuilder<StreakRiskWorker>(7, TimeUnit.DAYS)
-                .setInitialDelay(millisUntilNextSunday(hour = 18, minute = 0), TimeUnit.MILLISECONDS)
-                .build()
-        workManager.enqueueUniquePeriodicWork(UNIQUE_STREAK_RISK, ExistingPeriodicWorkPolicy.KEEP, request)
     }
 
     override fun scheduleWeeklyRecap() {

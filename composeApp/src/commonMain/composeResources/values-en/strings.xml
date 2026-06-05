@@ -618,7 +618,6 @@
     <!-- Settings — Notifications -->
     <string name="settings_section_notifications">NOTIFICATIONS</string>
     <string name="settings_toggle_daily_bird">Bird of the day — daily reminder</string>
-    <string name="settings_toggle_streak_risk">Streak risk — Sunday evening</string>
     <string name="settings_notifications_disabled_helpline">Notifications disabled in Android system settings →</string>
 
     <!-- Notifications -->
@@ -626,8 +625,6 @@
     <string name="notification_daily_bird_body_breeding">Breeding in Sweden right now.</string>
     <string name="notification_daily_bird_body_present">Here right now.</string>
     <string name="notification_daily_bird_body_migrating">Migrating right now.</string>
-    <string name="notification_streak_risk_title">Tonight\'s your last chance</string>
-    <string name="notification_streak_risk_body">A great tit in the park is enough — keep your streak.</string>
 
     <!-- Badges -->
     <string name="badge_premium_early_pilgrim_name">Early Pilgrim</string>
