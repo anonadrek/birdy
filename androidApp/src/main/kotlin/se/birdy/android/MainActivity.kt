@@ -96,6 +96,9 @@ class MainActivity : ComponentActivity() {
             }
         }
 
+    private val requestLocationPermLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* granted: capture stays graceful either way */ }
+
     private fun requestPostNotificationsPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             requestPermLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
@@ -346,6 +349,12 @@ class MainActivity : ComponentActivity() {
             repository = SpeciesRepositoryProvider.get(),
             classifierBootstrap = classifierBootstrap,
             cameraSourceFactory = { AndroidCameraSource(applicationContext, this@MainActivity) },
+            locationProvider =
+                se.birdy.app.location
+                    .AndroidLocationProvider(applicationContext),
+            requestLocationPermission = {
+                requestLocationPermLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
+            },
             observationRepository = observationRepo,
             photoStorage = PhotoStorageProvider.get(),
             badgeRepository = badgeRepo,
