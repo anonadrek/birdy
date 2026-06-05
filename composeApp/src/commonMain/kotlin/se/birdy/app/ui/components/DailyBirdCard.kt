@@ -71,7 +71,7 @@ fun DailyBirdCard(
         modifier =
             modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .padding(horizontal = 16.dp, vertical = 6.dp)
                 .clip(RoundedCornerShape(14.dp))
                 .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
                 .clickable(onClick = onClick)
@@ -106,7 +106,7 @@ fun DailyBirdCard(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 14.dp, vertical = 12.dp),
+                    .padding(horizontal = 14.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
@@ -137,7 +137,7 @@ fun DailyBirdCard(
                 Text(
                     name,
                     color = Color.White,
-                    fontSize = 22.sp,
+                    fontSize = 20.sp,
                     fontFamily = rememberDmSerifDisplay(),
                     fontStyle = FontStyle.Italic,
                     maxLines = 1,

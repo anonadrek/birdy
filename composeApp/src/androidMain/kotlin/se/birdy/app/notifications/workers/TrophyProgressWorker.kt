@@ -54,7 +54,11 @@ class TrophyProgressWorker(
                 }
             val summary = TrophyProgress.summarize(items)
             // Quiet if there's nothing in progress to nudge toward (spec: stay silent).
-            val closest = summary.closest ?: return Result.success()
+            // In dev-force mode, fall back to any locked badge so the push is demoable.
+            val closest =
+                summary.closest
+                    ?: (if (forceForDev) items.firstOrNull { !it.unlocked } else null)
+                    ?: return Result.success()
 
             NotificationChannels.ensureCreated(applicationContext)
             val closestName = getString(BadgeStringMap.nameFor(closest.badgeId))

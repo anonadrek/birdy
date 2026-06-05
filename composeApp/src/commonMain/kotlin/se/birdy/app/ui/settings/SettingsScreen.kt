@@ -241,6 +241,13 @@ fun SettingsScreen(
                             value = null,
                             onClick = { viewModel.devTriggerWeeklyRecapPush() },
                         )
+                        DashedDivider()
+                        SettingsRow(
+                            icon = Icons.Outlined.Notifications,
+                            label = "DEV: Trigger Trophy progress push",
+                            value = null,
+                            onClick = { viewModel.devTriggerTrophyProgressPush() },
+                        )
                     }
                 }
             }

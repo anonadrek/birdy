@@ -30,6 +30,7 @@ class SettingsViewModel(
     private val platformNotificationsApi: PlatformNotificationsApi? = null,
     private val devTriggerDailyBird: (() -> Unit)? = null,
     private val devTriggerWeeklyRecap: (() -> Unit)? = null,
+    private val devTriggerTrophyProgress: (() -> Unit)? = null,
 ) : ViewModel() {
     private val _state = MutableStateFlow(SettingsUiState())
     val state: StateFlow<SettingsUiState> = _state.asStateFlow()
@@ -129,7 +130,7 @@ class SettingsViewModel(
     }
 
     val devToolsAvailable: Boolean
-        get() = devTriggerDailyBird != null || devTriggerWeeklyRecap != null
+        get() = devTriggerDailyBird != null || devTriggerWeeklyRecap != null || devTriggerTrophyProgress != null
 
     fun devTriggerDailyBirdPush() {
         devTriggerDailyBird?.invoke()
@@ -137,6 +138,10 @@ class SettingsViewModel(
 
     fun devTriggerWeeklyRecapPush() {
         devTriggerWeeklyRecap?.invoke()
+    }
+
+    fun devTriggerTrophyProgressPush() {
+        devTriggerTrophyProgress?.invoke()
     }
 
     private var restoreInFlight = false

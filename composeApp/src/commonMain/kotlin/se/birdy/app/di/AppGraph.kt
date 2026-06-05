@@ -185,6 +185,11 @@ class AppGraph(
      */
     val devTriggerWeeklyRecap: (() -> Unit)? = null,
     /**
+     * Debug-only: enqueues a OneTimeWorkRequest for TrophyProgressWorker. Wired only
+     * when BuildConfig.DEBUG is true; null in release and on non-Android targets.
+     */
+    val devTriggerTrophyProgress: (() -> Unit)? = null,
+    /**
      * Emits `birdy://` deep-link URIs from MainActivity.onCreate/onNewIntent.
      * AppScaffold collects this flow and dispatches navigation.
      * Null in non-Android targets or tests.
@@ -358,6 +363,7 @@ class AppGraph(
             platformNotificationsApi = platformNotificationsApi,
             devTriggerDailyBird = devTriggerDailyBird,
             devTriggerWeeklyRecap = devTriggerWeeklyRecap,
+            devTriggerTrophyProgress = devTriggerTrophyProgress,
         )
 
     fun premiumViewModel(): PremiumViewModel =

@@ -39,7 +39,7 @@ class WeeklyRecapWorker(
 
             val (title, body) =
                 when {
-                    !summary.isQuiet ->
+                    !summary.isQuiet || forceForDev ->
                         getString(Res.string.notification_recap_active_title) to
                             getString(
                                 Res.string.notification_recap_active_body_fmt,
