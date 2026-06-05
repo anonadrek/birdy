@@ -23,6 +23,7 @@ class InMemoryUserPreferences : UserPreferences {
     private val _dailyBirdPushEnabled = MutableStateFlow(true)
     private val _streakRiskPushEnabled = MutableStateFlow(true)
     private val _weeklyRecapPushEnabled = MutableStateFlow(true)
+    private val _locationCaptureEnabled = MutableStateFlow(false)
 
     override val userName: Flow<String> = _userName.asStateFlow()
     override val hasSeenOnboarding: Flow<Boolean> = _hasSeenOnboarding.asStateFlow()
@@ -37,6 +38,7 @@ class InMemoryUserPreferences : UserPreferences {
     override val dailyBirdPushEnabled: Flow<Boolean> = _dailyBirdPushEnabled.asStateFlow()
     override val streakRiskPushEnabled: Flow<Boolean> = _streakRiskPushEnabled.asStateFlow()
     override val weeklyRecapPushEnabled: Flow<Boolean> = _weeklyRecapPushEnabled.asStateFlow()
+    override val locationCaptureEnabled: Flow<Boolean> = _locationCaptureEnabled.asStateFlow()
 
     override suspend fun setUserName(name: String) {
         _userName.value = name
@@ -88,5 +90,9 @@ class InMemoryUserPreferences : UserPreferences {
 
     override suspend fun setWeeklyRecapPushEnabled(value: Boolean) {
         _weeklyRecapPushEnabled.value = value
+    }
+
+    override suspend fun setLocationCaptureEnabled(value: Boolean) {
+        _locationCaptureEnabled.value = value
     }
 }
