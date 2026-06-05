@@ -108,6 +108,9 @@ fun ListenLauncherScreen(
                     name = ui.name,
                     heroImagePath = ui.heroImagePath,
                     onClick = { onSpeciesProfileClick(ui.speciesId) },
+                    caughtToday = ui.caughtToday,
+                    matchCount = ui.matchCount,
+                    huntTarget = ui.huntTarget,
                 )
             }
             Column(

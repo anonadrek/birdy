@@ -17,5 +17,8 @@ UPDATE daily_bird_history SET matched = 1 WHERE date = ? AND species_id = ? AND 
 countMatched:
 SELECT COUNT(*) FROM daily_bird_history WHERE matched = 1;
 
+isMatchedForDate:
+SELECT matched FROM daily_bird_history WHERE date = ?;
+
 deleteAll:
 DELETE FROM daily_bird_history;

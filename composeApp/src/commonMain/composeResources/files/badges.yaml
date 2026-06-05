@@ -17,6 +17,11 @@ badges:
     category: progression
     rule: { type: count_unique_species, target: 500 }
 
+  # ===== Dagens fågel (1) =====
+  - id: daily_bird_first
+    category: progression
+    rule: { type: daily_bird_matches, target: 1 }
+
   # ===== Familje-mästare (7) — distinkta arter =====
   - id: family_anatidae
     category: family

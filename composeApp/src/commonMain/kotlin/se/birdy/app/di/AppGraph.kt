@@ -383,6 +383,9 @@ class AppGraph(
                 dailyBirdHistory?.let { history ->
                     { date, sid -> history.recordToday(date, sid) }
                 },
+            dailyBirdMatchCount = { dailyBirdHistory?.totalMatchCount() ?: 0 },
+            isDailyBirdCaught = { date -> dailyBirdHistory?.isMatched(date) ?: false },
+            huntTarget = 3, // premium_daily_bird_hunter target
         )
 
     fun onboardingViewModel(

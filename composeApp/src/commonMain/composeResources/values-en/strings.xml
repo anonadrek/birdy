@@ -625,6 +625,8 @@
     <string name="notification_daily_bird_body_breeding">Breeding in Sweden right now.</string>
     <string name="notification_daily_bird_body_present">Here right now.</string>
     <string name="notification_daily_bird_body_migrating">Migrating right now.</string>
+    <string name="daily_bird_caught_today">Caught today ✓</string>
+    <string name="daily_bird_not_caught">Not caught yet</string>
 
     <!-- Badges -->
     <string name="badge_premium_early_pilgrim_name">Early Pilgrim</string>
@@ -633,6 +635,8 @@
     <string name="badge_premium_sunday_birder_desc">Observe on 4 consecutive Sundays.</string>
     <string name="badge_premium_daily_bird_hunter_name">Daily Bird Hunter</string>
     <string name="badge_premium_daily_bird_hunter_desc">Save today’s curated bird on 3 different days.</string>
+    <string name="badge_name_daily_bird_first">First Daily Bird</string>
+    <string name="badge_desc_daily_bird_first">Save today’s curated bird for the first time.</string>
 
     <!-- ===== v1.2 Phase B: Weekly Recap ===== -->
     <string name="recap_eyebrow_fmt">Field report · Week %1$s</string>

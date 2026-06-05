@@ -639,6 +639,8 @@
     <string name="notification_daily_bird_body_breeding">Häckar nu i Sverige.</string>
     <string name="notification_daily_bird_body_present">Här just nu.</string>
     <string name="notification_daily_bird_body_migrating">På sträck just nu.</string>
+    <string name="daily_bird_caught_today">Fångad idag ✓</string>
+    <string name="daily_bird_not_caught">Inte fångad än</string>
 
     <!-- Badges -->
     <string name="badge_premium_early_pilgrim_name">Tidig pilgrim</string>
@@ -647,6 +649,8 @@
     <string name="badge_premium_sunday_birder_desc">Skåda 4 söndagar i rad.</string>
     <string name="badge_premium_daily_bird_hunter_name">Dagens fågel-jägare</string>
     <string name="badge_premium_daily_bird_hunter_desc">Spara dagens kuraterade fågel på 3 olika dagar.</string>
+    <string name="badge_name_daily_bird_first">Första dagsfågeln</string>
+    <string name="badge_desc_daily_bird_first">Spara dagens kuraterade fågel för första gången.</string>
 
     <!-- ===== v1.2 Phase B: Weekly Recap ===== -->
     <string name="recap_eyebrow_fmt">Fältrapport · Vecka %1$s</string>

@@ -29,9 +29,11 @@ import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_card_a11y
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_card_eyebrow
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_caught_today
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_eyebrow_breeding
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_eyebrow_migrating
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_eyebrow_present
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_not_caught
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
@@ -50,6 +52,9 @@ fun DailyBirdCard(
     heroImagePath: String?,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    caughtToday: Boolean = false,
+    matchCount: Int = 0,
+    huntTarget: Int = 3,
 ) {
     val eyebrowText =
         stringResource(
@@ -146,7 +151,42 @@ fun DailyBirdCard(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )
+                DailyBirdHuntRow(caughtToday = caughtToday, matchCount = matchCount, huntTarget = huntTarget)
             }
         }
+    }
+}
+
+@Composable
+private fun DailyBirdHuntRow(
+    caughtToday: Boolean,
+    matchCount: Int,
+    huntTarget: Int,
+) {
+    val caveat = rememberCaveat()
+    val pips = buildString { repeat(huntTarget) { i -> append(if (i < matchCount) "●" else "○") } }
+    Row(
+        modifier = Modifier.padding(top = 3.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        Text(
+            text =
+                if (caughtToday) {
+                    stringResource(Res.string.daily_bird_caught_today)
+                } else {
+                    stringResource(Res.string.daily_bird_not_caught)
+                },
+            color = if (caughtToday) AccentCopper else Color.White.copy(alpha = 0.9f),
+            fontSize = 12.sp,
+            fontFamily = caveat,
+            fontWeight = FontWeight.SemiBold,
+        )
+        Text(
+            text = "$pips $matchCount/$huntTarget",
+            color = Color.White.copy(alpha = 0.85f),
+            fontSize = 11.sp,
+            fontFamily = caveat,
+        )
     }
 }

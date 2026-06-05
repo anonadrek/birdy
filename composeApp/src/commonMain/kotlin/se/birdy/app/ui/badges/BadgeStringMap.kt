@@ -17,6 +17,7 @@ import birdy_bird_scanner.composeapp.generated.resources.badge_desc_birder_silve
 import birdy_bird_scanner.composeapp.generated.resources.badge_desc_breadth_families_20
 import birdy_bird_scanner.composeapp.generated.resources.badge_desc_breadth_families_50
 import birdy_bird_scanner.composeapp.generated.resources.badge_desc_breadth_orders_20
+import birdy_bird_scanner.composeapp.generated.resources.badge_desc_daily_bird_first
 import birdy_bird_scanner.composeapp.generated.resources.badge_desc_family_accipitridae
 import birdy_bird_scanner.composeapp.generated.resources.badge_desc_family_anatidae
 import birdy_bird_scanner.composeapp.generated.resources.badge_desc_family_fringillidae
@@ -43,6 +44,7 @@ import birdy_bird_scanner.composeapp.generated.resources.badge_name_birder_silve
 import birdy_bird_scanner.composeapp.generated.resources.badge_name_breadth_families_20
 import birdy_bird_scanner.composeapp.generated.resources.badge_name_breadth_families_50
 import birdy_bird_scanner.composeapp.generated.resources.badge_name_breadth_orders_20
+import birdy_bird_scanner.composeapp.generated.resources.badge_name_daily_bird_first
 import birdy_bird_scanner.composeapp.generated.resources.badge_name_family_accipitridae
 import birdy_bird_scanner.composeapp.generated.resources.badge_name_family_anatidae
 import birdy_bird_scanner.composeapp.generated.resources.badge_name_family_fringillidae
@@ -99,6 +101,7 @@ object BadgeStringMap {
             "birder_silver" -> Res.string.badge_name_birder_silver
             "birder_gold" -> Res.string.badge_name_birder_gold
             "birder_legend" -> Res.string.badge_name_birder_legend
+            "daily_bird_first" -> Res.string.badge_name_daily_bird_first
             "family_anatidae" -> Res.string.badge_name_family_anatidae
             "family_scolopacidae" -> Res.string.badge_name_family_scolopacidae
             "family_accipitridae" -> Res.string.badge_name_family_accipitridae
@@ -137,6 +140,7 @@ object BadgeStringMap {
             "birder_silver" -> Res.string.badge_desc_birder_silver
             "birder_gold" -> Res.string.badge_desc_birder_gold
             "birder_legend" -> Res.string.badge_desc_birder_legend
+            "daily_bird_first" -> Res.string.badge_desc_daily_bird_first
             "family_anatidae" -> Res.string.badge_desc_family_anatidae
             "family_scolopacidae" -> Res.string.badge_desc_family_scolopacidae
             "family_accipitridae" -> Res.string.badge_desc_family_accipitridae

@@ -25,6 +25,9 @@ class ListenLauncherViewModel(
     private val getSpeciesName: (suspend (String) -> String?)? = null,
     private val getSpeciesHeroPath: (suspend (String) -> String?)? = null,
     private val recordDailyBirdShown: (suspend (kotlinx.datetime.LocalDate, String) -> Unit)? = null,
+    private val dailyBirdMatchCount: (suspend () -> Int)? = null,
+    private val isDailyBirdCaught: (suspend (kotlinx.datetime.LocalDate) -> Boolean)? = null,
+    private val huntTarget: Int = 3,
 ) : ViewModel() {
     private val _effects =
         MutableSharedFlow<ListenLauncherEffect>(
@@ -39,6 +42,9 @@ class ListenLauncherViewModel(
         val name: String,
         val seasonTag: SeasonTag,
         val heroImagePath: String?,
+        val caughtToday: Boolean = false,
+        val matchCount: Int = 0,
+        val huntTarget: Int = 3,
     )
 
     private val _dailyBird = MutableStateFlow<DailyBirdUi?>(null)
@@ -54,8 +60,19 @@ class ListenLauncherViewModel(
             val bird = selectDailyBird?.invoke(today) ?: return@launch
             val name = getSpeciesName?.invoke(bird.speciesId) ?: return@launch
             val heroPath = getSpeciesHeroPath?.invoke(bird.speciesId)
-            _dailyBird.value = DailyBirdUi(bird.speciesId, name, bird.seasonTag, heroPath)
             recordDailyBirdShown?.invoke(today, bird.speciesId)
+            val caught = isDailyBirdCaught?.invoke(today) ?: false
+            val matches = dailyBirdMatchCount?.invoke() ?: 0
+            _dailyBird.value =
+                DailyBirdUi(
+                    speciesId = bird.speciesId,
+                    name = name,
+                    seasonTag = bird.seasonTag,
+                    heroImagePath = heroPath,
+                    caughtToday = caught,
+                    matchCount = matches,
+                    huntTarget = huntTarget,
+                )
         }
     }
 
