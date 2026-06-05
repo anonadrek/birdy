@@ -641,6 +641,9 @@
     <string name="notification_daily_bird_body_migrating">På sträck just nu.</string>
     <string name="daily_bird_caught_today">Fångad idag ✓</string>
     <string name="daily_bird_not_caught">Inte fångad än</string>
+    <string name="settings_toggle_trophy">Märkesprogression — veckovis</string>
+    <string name="notification_trophy_title">Mot nästa märke</string>
+    <string name="notification_trophy_body_fmt">%1$s av %2$s märken upplåsta. Närmast: %3$s (%4$s/%5$s).</string>
 
     <!-- Badges -->
     <string name="badge_premium_early_pilgrim_name">Tidig pilgrim</string>

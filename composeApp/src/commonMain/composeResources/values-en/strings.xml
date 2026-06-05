@@ -627,6 +627,9 @@
     <string name="notification_daily_bird_body_migrating">Migrating right now.</string>
     <string name="daily_bird_caught_today">Caught today ✓</string>
     <string name="daily_bird_not_caught">Not caught yet</string>
+    <string name="settings_toggle_trophy">Badge progress — weekly</string>
+    <string name="notification_trophy_title">Toward your next badge</string>
+    <string name="notification_trophy_body_fmt">%1$s of %2$s badges unlocked. Closest: %3$s (%4$s/%5$s).</string>
 
     <!-- Badges -->
     <string name="badge_premium_early_pilgrim_name">Early Pilgrim</string>

@@ -34,6 +34,7 @@ interface UserPreferences {
     val dailyBirdPushEnabled: Flow<Boolean>
     val streakRiskPushEnabled: Flow<Boolean>
     val weeklyRecapPushEnabled: Flow<Boolean>
+    val weeklyTrophyPushEnabled: Flow<Boolean>
 
     suspend fun setUserName(name: String)
 
@@ -60,4 +61,6 @@ interface UserPreferences {
     suspend fun setStreakRiskPushEnabled(value: Boolean)
 
     suspend fun setWeeklyRecapPushEnabled(value: Boolean)
+
+    suspend fun setWeeklyTrophyPushEnabled(value: Boolean)
 }
