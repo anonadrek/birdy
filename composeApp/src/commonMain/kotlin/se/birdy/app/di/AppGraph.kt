@@ -16,6 +16,7 @@ import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.data.premium.FormattedPrices
+import se.birdy.app.location.LocationProvider
 import se.birdy.app.photo.PhotoStorage
 import se.birdy.app.ui.audio.AudioRecorderApi
 import se.birdy.app.ui.audio.AudioScanViewModel
@@ -191,6 +192,16 @@ class AppGraph(
      * replay = 1 so launches that emit before AppScaffold subscribes still get routed.
      */
     val deepLinkFlow: kotlinx.coroutines.flow.MutableSharedFlow<String>? = null,
+    /**
+     * Platform location provider for capture-at-save. Null in tests / non-Android targets.
+     * Wired from MainActivity.buildAppGraph(); see Task 9.
+     */
+    val locationProvider: LocationProvider? = null,
+    /**
+     * Requests ACCESS_FINE_LOCATION via an Activity launcher; null on tests/non-Android.
+     * Wired from MainActivity; see Task 9.
+     */
+    val requestLocationPermission: (() -> Unit)? = null,
 ) {
     val classifier: BirdClassifier
         get() =
@@ -269,6 +280,8 @@ class AppGraph(
                     }
                 },
             dailyBirdMatchCount = { dailyBirdHistory?.totalMatchCount() ?: 0 },
+            locationProvider = locationProvider,
+            locationEnabled = { userPreferences.locationCaptureEnabled.first() },
         )
 
     fun archiveViewModel(): ArchiveViewModel =
