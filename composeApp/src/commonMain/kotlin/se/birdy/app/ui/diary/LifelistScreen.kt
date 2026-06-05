@@ -601,7 +601,7 @@ private fun LifelistRowComposable(
                 .padding(horizontal = 12.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        MiniStamp(number = row.observation.stampNumber)
+        MiniStamp(number = row.observation.stampNumber, photoPath = row.observation.photoPath)
         Spacer(Modifier.width(12.dp))
         Column(modifier = Modifier.weight(1f)) {
             val unknownLabel = stringResource(Res.string.unknown_species_label)
