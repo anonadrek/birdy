@@ -22,11 +22,11 @@ fun BirdySplash(modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
     ) {
         AsyncImage(
-            model = Res.getUri("files/branding/wordmark.png"),
+            model = Res.getUri("files/branding/hero_bird.png"),
             contentDescription = "Birdy",
             modifier =
                 Modifier
-                    .fillMaxWidth(0.72f)
+                    .fillMaxWidth(0.5f)
                     .padding(horizontal = 24.dp),
             contentScale = ContentScale.Fit,
         )
