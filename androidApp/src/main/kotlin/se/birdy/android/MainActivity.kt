@@ -96,8 +96,9 @@ class MainActivity : ComponentActivity() {
             }
         }
 
+    // Location capture stays graceful whether or not permission is granted, so no result handling is needed.
     private val requestLocationPermLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* granted: capture stays graceful either way */ }
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { }
 
     private fun requestPostNotificationsPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
