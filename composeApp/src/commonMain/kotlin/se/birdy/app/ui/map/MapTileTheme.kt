@@ -36,11 +36,12 @@ object MapTileTheme {
         val dg = (pg - ig) / 255f
         val db = (pb - ib) / 255f
 
-        return floatArrayOf(
-            lr * dr, lg * dr, lb * dr, 0f, ir.toFloat(),
-            lr * dg, lg * dg, lb * dg, 0f, ig.toFloat(),
-            lr * db, lg * db, lb * db, 0f, ib.toFloat(),
-            0f, 0f, 0f, 1f, 0f,
-        )
+        // One matrix row per line — [luma->R, luma->G, luma->B, alpha, offset]. Assembled
+        // row-wise (each floatArrayOf on a single line) so ktlint's argument-list-wrapping
+        // rule is satisfied while the 4x5 shape stays readable.
+        return floatArrayOf(lr * dr, lg * dr, lb * dr, 0f, ir.toFloat()) +
+            floatArrayOf(lr * dg, lg * dg, lb * dg, 0f, ig.toFloat()) +
+            floatArrayOf(lr * db, lg * db, lb * db, 0f, ib.toFloat()) +
+            floatArrayOf(0f, 0f, 0f, 1f, 0f)
     }
 }

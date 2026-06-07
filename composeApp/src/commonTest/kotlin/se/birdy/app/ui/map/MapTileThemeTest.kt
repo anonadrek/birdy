@@ -14,7 +14,8 @@ class MapTileThemeTest {
     ): Triple<Int, Int, Int> {
         fun ch(o: Int) =
             (m[o] * r + m[o + 1] * g + m[o + 2] * b + m[o + 3] * 255 + m[o + 4])
-                .roundToInt().coerceIn(0, 255)
+                .roundToInt()
+                .coerceIn(0, 255)
         return Triple(ch(0), ch(5), ch(10))
     }
 
