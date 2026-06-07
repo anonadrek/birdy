@@ -1,16 +1,25 @@
 package se.birdy.app.ui.map
 
+import android.graphics.BitmapFactory
 import android.graphics.ColorMatrixColorFilter
+import android.graphics.drawable.BitmapDrawable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase
 import org.osmdroid.tileprovider.tilesource.XYTileSource
@@ -76,6 +85,17 @@ actual fun MapScreenHost(
             }
         }
 
+    var sealIcon by remember { mutableStateOf<BitmapDrawable?>(null) }
+    @OptIn(ExperimentalResourceApi::class)
+    LaunchedEffect(Unit) {
+        sealIcon =
+            withContext(Dispatchers.Default) {
+                val bytes = Res.readBytes("files/branding/hero_bird.png")
+                val bird = BitmapFactory.decodeByteArray(bytes, 0, bytes.size) ?: return@withContext null
+                buildBirdySealMarker(context.resources, bird)
+            }
+    }
+
     DisposableEffect(lifecycleOwner) {
         val observer =
             LifecycleEventObserver { _, event ->
@@ -92,8 +112,9 @@ actual fun MapScreenHost(
         }
     }
 
-    LaunchedEffect(pins) {
+    LaunchedEffect(pins, sealIcon) {
         mapView.overlays.clear()
+        val icon = sealIcon
         val geoPoints =
             pins.map { pin ->
                 val point = GeoPoint(pin.latitude, pin.longitude)
@@ -102,6 +123,7 @@ actual fun MapScreenHost(
                         position = point
                         setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
                         title = "#${pin.stampNumber}"
+                        if (icon != null) this.icon = icon
                         setOnMarkerClickListener { _, _ ->
                             onPinClick(pin.observationId)
                             true
