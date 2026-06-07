@@ -29,9 +29,11 @@ import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_card_a11y
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_card_eyebrow
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_caught_today
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_eyebrow_breeding
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_eyebrow_migrating
 import birdy_bird_scanner.composeapp.generated.resources.daily_bird_eyebrow_present
+import birdy_bird_scanner.composeapp.generated.resources.daily_bird_not_caught
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
@@ -50,6 +52,9 @@ fun DailyBirdCard(
     heroImagePath: String?,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    caughtToday: Boolean = false,
+    matchCount: Int = 0,
+    huntTarget: Int = 3,
 ) {
     val eyebrowText =
         stringResource(
@@ -66,7 +71,7 @@ fun DailyBirdCard(
         modifier =
             modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .padding(horizontal = 16.dp, vertical = 6.dp)
                 .clip(RoundedCornerShape(14.dp))
                 .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
                 .clickable(onClick = onClick)
@@ -101,7 +106,7 @@ fun DailyBirdCard(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 14.dp, vertical = 12.dp),
+                    .padding(horizontal = 14.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
@@ -132,7 +137,7 @@ fun DailyBirdCard(
                 Text(
                     name,
                     color = Color.White,
-                    fontSize = 22.sp,
+                    fontSize = 20.sp,
                     fontFamily = rememberDmSerifDisplay(),
                     fontStyle = FontStyle.Italic,
                     maxLines = 1,
@@ -146,7 +151,42 @@ fun DailyBirdCard(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )
+                DailyBirdHuntRow(caughtToday = caughtToday, matchCount = matchCount, huntTarget = huntTarget)
             }
         }
+    }
+}
+
+@Composable
+private fun DailyBirdHuntRow(
+    caughtToday: Boolean,
+    matchCount: Int,
+    huntTarget: Int,
+) {
+    val caveat = rememberCaveat()
+    val pips = buildString { repeat(huntTarget) { i -> append(if (i < matchCount) "●" else "○") } }
+    Row(
+        modifier = Modifier.padding(top = 3.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        Text(
+            text =
+                if (caughtToday) {
+                    stringResource(Res.string.daily_bird_caught_today)
+                } else {
+                    stringResource(Res.string.daily_bird_not_caught)
+                },
+            color = if (caughtToday) AccentCopper else Color.White.copy(alpha = 0.9f),
+            fontSize = 12.sp,
+            fontFamily = caveat,
+            fontWeight = FontWeight.SemiBold,
+        )
+        Text(
+            text = "$pips $matchCount/$huntTarget",
+            color = Color.White.copy(alpha = 0.85f),
+            fontSize = 11.sp,
+            fontFamily = caveat,
+        )
     }
 }

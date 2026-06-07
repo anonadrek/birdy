@@ -633,7 +633,6 @@
     <!-- Settings — Aviseringar -->
     <string name="settings_section_notifications">AVISERINGAR</string>
     <string name="settings_toggle_daily_bird">Dagens fågel — daglig påminnelse</string>
-    <string name="settings_toggle_streak_risk">Streak-risk — söndag kväll</string>
     <string name="settings_notifications_disabled_helpline">Aviseringar avstängda i Androids systeminställningar →</string>
 
     <!-- Notifications -->
@@ -641,8 +640,11 @@
     <string name="notification_daily_bird_body_breeding">Häckar nu i Sverige.</string>
     <string name="notification_daily_bird_body_present">Här just nu.</string>
     <string name="notification_daily_bird_body_migrating">På sträck just nu.</string>
-    <string name="notification_streak_risk_title">Bara kvällen kvar</string>
-    <string name="notification_streak_risk_body">En talgoxe i parken räcker — fortsätt din streak.</string>
+    <string name="daily_bird_caught_today">Fångad idag ✓</string>
+    <string name="daily_bird_not_caught">Inte fångad än</string>
+    <string name="settings_toggle_trophy">Märkesprogression — veckovis</string>
+    <string name="notification_trophy_title">Mot nästa märke</string>
+    <string name="notification_trophy_body_fmt">%1$s av %2$s märken upplåsta. Närmast: %3$s (%4$s/%5$s).</string>
 
     <!-- Badges -->
     <string name="badge_premium_early_pilgrim_name">Tidig pilgrim</string>
@@ -651,6 +653,8 @@
     <string name="badge_premium_sunday_birder_desc">Skåda 4 söndagar i rad.</string>
     <string name="badge_premium_daily_bird_hunter_name">Dagens fågel-jägare</string>
     <string name="badge_premium_daily_bird_hunter_desc">Spara dagens kuraterade fågel på 3 olika dagar.</string>
+    <string name="badge_name_daily_bird_first">Första dagsfågeln</string>
+    <string name="badge_desc_daily_bird_first">Spara dagens kuraterade fågel för första gången.</string>
 
     <!-- ===== v1.2 Phase B: Weekly Recap ===== -->
     <string name="recap_eyebrow_fmt">Fältrapport · Vecka %1$s</string>

@@ -33,4 +33,9 @@ class DailyBirdHistoryRepositoryImpl(
         withContext(Dispatchers.Default) {
             queries.countMatched().executeAsOne().toInt()
         }
+
+    override suspend fun isMatched(date: LocalDate): Boolean =
+        withContext(Dispatchers.Default) {
+            queries.isMatchedForDate(date.toString()).executeAsOneOrNull() == 1L
+        }
 }

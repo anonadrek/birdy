@@ -8,8 +8,8 @@ import androidx.core.content.getSystemService
 
 object NotificationChannels {
     const val DAILY_BIRD = "daily_bird"
-    const val STREAK_RISK = "streak_risk"
     const val WEEKLY_RECAP = "weekly_recap"
+    const val TROPHY_PROGRESS = "trophy_progress"
 
     fun ensureCreated(context: Context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
@@ -23,15 +23,6 @@ object NotificationChannels {
                 ).apply { description = "Daily curated bird suggestion." },
             )
         }
-        if (mgr.getNotificationChannel(STREAK_RISK) == null) {
-            mgr.createNotificationChannel(
-                NotificationChannel(
-                    STREAK_RISK,
-                    "Streak-risk",
-                    NotificationManager.IMPORTANCE_DEFAULT,
-                ).apply { description = "Sunday evening nudge when your streak is at risk." },
-            )
-        }
         if (mgr.getNotificationChannel(WEEKLY_RECAP) == null) {
             mgr.createNotificationChannel(
                 NotificationChannel(
@@ -39,6 +30,15 @@ object NotificationChannels {
                     "Veckans recap",
                     NotificationManager.IMPORTANCE_DEFAULT,
                 ).apply { description = "Sunday-evening recap of your week." },
+            )
+        }
+        if (mgr.getNotificationChannel(TROPHY_PROGRESS) == null) {
+            mgr.createNotificationChannel(
+                NotificationChannel(
+                    TROPHY_PROGRESS,
+                    "Märkesprogression",
+                    NotificationManager.IMPORTANCE_DEFAULT,
+                ).apply { description = "Weekly nudge toward your next badge." },
             )
         }
     }

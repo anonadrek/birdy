@@ -49,6 +49,7 @@ private class AndroidUserPreferences(
         val STREAK_RISK_PUSH_ENABLED = booleanPreferencesKey("streak_risk_push_enabled")
         val WEEKLY_RECAP_PUSH_ENABLED = booleanPreferencesKey("weekly_recap_push_enabled")
         val LOCATION_CAPTURE_ENABLED = booleanPreferencesKey("location_capture_enabled")
+        val WEEKLY_TROPHY_PUSH_ENABLED = booleanPreferencesKey("weekly_trophy_push_enabled")
     }
 
     override val userName: Flow<String> = safeData.map { it[Keys.USER_NAME] ?: "" }
@@ -86,6 +87,8 @@ private class AndroidUserPreferences(
         safeData.map { it[Keys.WEEKLY_RECAP_PUSH_ENABLED] ?: true }
     override val locationCaptureEnabled: Flow<Boolean> =
         safeData.map { it[Keys.LOCATION_CAPTURE_ENABLED] ?: false }
+    override val weeklyTrophyPushEnabled: Flow<Boolean> =
+        safeData.map { it[Keys.WEEKLY_TROPHY_PUSH_ENABLED] ?: true }
 
     override suspend fun setUserName(name: String) {
         store.edit { it[Keys.USER_NAME] = name }
@@ -133,6 +136,10 @@ private class AndroidUserPreferences(
 
     override suspend fun setStreakRiskPushEnabled(value: Boolean) {
         store.edit { it[Keys.STREAK_RISK_PUSH_ENABLED] = value }
+    }
+
+    override suspend fun setWeeklyTrophyPushEnabled(value: Boolean) {
+        store.edit { it[Keys.WEEKLY_TROPHY_PUSH_ENABLED] = value }
     }
 
     override suspend fun setWeeklyRecapPushEnabled(value: Boolean) {

@@ -91,6 +91,7 @@ class MainActivity : ComponentActivity() {
                 if (granted) {
                     appGraph.notificationScheduler?.scheduleDailyBird()
                     appGraph.notificationScheduler?.scheduleWeeklyRecap()
+                    appGraph.notificationScheduler?.scheduleTrophyProgress()
                     appGraph.notificationScheduler?.cancelStreakRiskCheck()
                 }
             }
@@ -109,6 +110,7 @@ class MainActivity : ComponentActivity() {
                 appGraph.userPreferences.setPushPermissionAsked(true)
                 appGraph.notificationScheduler?.scheduleDailyBird()
                 appGraph.notificationScheduler?.scheduleWeeklyRecap()
+                appGraph.notificationScheduler?.scheduleTrophyProgress()
                 appGraph.notificationScheduler?.cancelStreakRiskCheck()
             }
         }
@@ -221,6 +223,7 @@ class MainActivity : ComponentActivity() {
                     appGraph.notificationScheduler?.scheduleDailyBird()
                 }
                 appGraph.notificationScheduler?.scheduleWeeklyRecap()
+                appGraph.notificationScheduler?.scheduleTrophyProgress()
                 appGraph.notificationScheduler?.cancelStreakRiskCheck()
             }
         }
@@ -413,6 +416,24 @@ class MainActivity : ComponentActivity() {
                                 .setInputData(
                                     androidx.work.workDataOf(
                                         se.birdy.app.notifications.workers.WeeklyRecapWorker.KEY_FORCE_FOR_DEV to true,
+                                    ),
+                                ).build(),
+                        )
+                    }
+                } else {
+                    null
+                },
+            devTriggerTrophyProgress =
+                if (BuildConfig.DEBUG) {
+                    {
+                        androidx.work.WorkManager.getInstance(applicationContext).enqueue(
+                            androidx.work
+                                .OneTimeWorkRequestBuilder<
+                                    se.birdy.app.notifications.workers.TrophyProgressWorker,
+                                >()
+                                .setInputData(
+                                    androidx.work.workDataOf(
+                                        se.birdy.app.notifications.workers.TrophyProgressWorker.KEY_FORCE_FOR_DEV to true,
                                     ),
                                 ).build(),
                         )

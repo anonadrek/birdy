@@ -59,4 +59,15 @@ class DailyBirdHistoryRepositoryTest {
             repo.markMatch(LocalDate(2026, 5, 27), "Q99999") // species mismatch — no-op
             assertEquals(2, repo.totalMatchCount())
         }
+
+    @Test
+    fun `isMatched reflects the matched flag for the date`() =
+        runTest {
+            val date = LocalDate(2026, 5, 25)
+            repo.recordToday(date, "Q25485")
+            assertEquals(false, repo.isMatched(date)) // recorded but not yet matched
+            repo.markMatch(date, "Q25485")
+            assertEquals(true, repo.isMatched(date))
+            assertEquals(false, repo.isMatched(LocalDate(2026, 5, 26))) // no row
+        }
 }

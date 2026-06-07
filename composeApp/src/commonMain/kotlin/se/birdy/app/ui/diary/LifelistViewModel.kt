@@ -9,6 +9,8 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import se.birdy.content.Locale
@@ -19,6 +21,7 @@ import se.birdy.datastore.LifelistSort
 import se.birdy.datastore.LifelistStat3Choice
 import se.birdy.datastore.UserPreferences
 import se.birdy.domain.badge.longestWeeklyStreak
+import se.birdy.domain.badge.weekKey
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationRepository
 
@@ -29,6 +32,7 @@ class LifelistViewModel(
     private val prefs: UserPreferences,
     private val zone: TimeZone = TimeZone.currentSystemDefault(),
     private val locale: Locale = Locale.SV,
+    private val now: () -> Instant = { Clock.System.now() },
 ) : ViewModel() {
     val uiState: StateFlow<LifelistUiState> =
         combine(
@@ -108,6 +112,20 @@ class LifelistViewModel(
             stat3 = computeStat3(obs, stat3),
             sort = sort,
             rows = rows,
+            recapPreview = buildRecapPreview(obs),
+        )
+    }
+
+    private fun buildRecapPreview(obs: List<Observation>): RecapPreview {
+        val current = weekKey(now(), zone)
+        val thisWeek =
+            obs
+                .filter { weekKey(it.capturedAt, zone) == current }
+                .sortedByDescending { it.capturedAt }
+        return RecapPreview(
+            isoWeek = current.isoWeek,
+            findCount = thisWeek.size,
+            findPhotoPaths = thisWeek.map { it.photoPath }.filter { it.isNotBlank() }.take(8),
         )
     }
 

@@ -1,5 +1,7 @@
 package se.birdy.app.ui.diary
 
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -13,20 +15,28 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -63,8 +73,12 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_badge
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_cta
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_preview_caption
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_title
+import birdy_bird_scanner.composeapp.generated.resources.recap_eyebrow_fmt
 import birdy_bird_scanner.composeapp.generated.resources.recap_lifelist_entry_title
+import birdy_bird_scanner.composeapp.generated.resources.recap_summary_active_fmt
 import birdy_bird_scanner.composeapp.generated.resources.unknown_species_label
+import coil3.compose.AsyncImage
+import kotlinx.coroutines.delay
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -80,7 +94,10 @@ import se.birdy.app.ui.components.LockedStatsPreview
 import se.birdy.app.ui.components.MiniStamp
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
+import se.birdy.app.ui.components.shimmerBorder
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.HeroMossLight
+import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.MatchHigh
 import se.birdy.app.ui.theme.MatchLow
@@ -236,7 +253,7 @@ private fun LoadedLifelist(
         }
 
         item {
-            RecapEntryCard(onClick = onRecapClick)
+            RecapEntryCard(preview = state.recapPreview, onClick = onRecapClick)
         }
 
         item {
@@ -333,36 +350,113 @@ private fun LoadedLifelist(
 // ─── Recap entry card ─────────────────────────────────────────────────────────
 
 @Composable
-private fun RecapEntryCard(onClick: () -> Unit) {
+private fun RecapEntryCard(
+    preview: RecapPreview,
+    onClick: () -> Unit,
+) {
     val serif = rememberDmSerifDisplay()
-    Row(
+    val caveat = rememberCaveat()
+    val photos = preview.findPhotoPaths
+    var index by remember(photos) { mutableStateOf(0) }
+    if (photos.size > 1) {
+        LaunchedEffect(photos) {
+            while (true) {
+                delay(3500)
+                index = (index + 1) % photos.size
+            }
+        }
+    }
+    Box(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 6.dp)
-                .clip(RoundedCornerShape(12.dp))
-                .background(Color.White.copy(alpha = 0.4f))
-                .border(1.dp, AccentCopper.copy(alpha = 0.18f), RoundedCornerShape(12.dp))
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .clip(RoundedCornerShape(14.dp))
+                .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
                 .clickable(onClick = onClick)
-                .padding(horizontal = 12.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
+                .shimmerBorder(durationMillis = 7000, cornerRadius = 14.dp, strokeWidth = 3.dp, alpha = 0.85f, bandFraction = 0.3f),
     ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = stringResource(Res.string.recap_lifelist_entry_title),
-                color = AccentCopper,
-                fontFamily = serif,
-                fontStyle = FontStyle.Italic,
-                fontSize = 18.sp,
+        if (photos.isNotEmpty()) {
+            Crossfade(
+                targetState = index.coerceIn(0, photos.lastIndex),
+                animationSpec = tween(900),
+                modifier = Modifier.matchParentSize(),
+                label = "recapBg",
+            ) { i ->
+                AsyncImage(
+                    model = "file://${photos[i]}",
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize().blur(6.dp),
+                )
+            }
+            Box(
+                modifier =
+                    Modifier
+                        .matchParentSize()
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(
+                                    Color.Black.copy(alpha = 0.35f),
+                                    Color.Black.copy(alpha = 0.55f),
+                                ),
+                            ),
+                        ),
             )
         }
-        Text(
-            text = "›",
-            color = AccentCopper,
-            fontFamily = serif,
-            fontStyle = FontStyle.Italic,
-            fontSize = 22.sp,
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Box(
+                modifier =
+                    Modifier
+                        .size(44.dp)
+                        .clip(CircleShape)
+                        .background(AccentCopper),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = preview.isoWeek.toString(),
+                    color = Color.White,
+                    fontFamily = caveat,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,
+                )
+            }
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(Res.string.recap_eyebrow_fmt, preview.isoWeek.toString()).uppercase(),
+                    color = AccentCopper,
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.W700,
+                    letterSpacing = 1.6.sp,
+                )
+                Text(
+                    text = stringResource(Res.string.recap_lifelist_entry_title),
+                    color = Color.White,
+                    fontFamily = serif,
+                    fontStyle = FontStyle.Italic,
+                    fontSize = 20.sp,
+                )
+                if (preview.findCount > 0) {
+                    Text(
+                        text = stringResource(Res.string.recap_summary_active_fmt, preview.findCount.toString()),
+                        color = Color.White.copy(alpha = 0.85f),
+                        fontFamily = caveat,
+                        fontSize = 14.sp,
+                    )
+                }
+            }
+            Text(
+                text = "›",
+                color = Color.White,
+                fontFamily = serif,
+                fontStyle = FontStyle.Italic,
+                fontSize = 22.sp,
+            )
+        }
     }
 }
 
@@ -507,7 +601,7 @@ private fun LifelistRowComposable(
                 .padding(horizontal = 12.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        MiniStamp(number = row.observation.stampNumber)
+        MiniStamp(number = row.observation.stampNumber, photoPath = row.observation.photoPath)
         Spacer(Modifier.width(12.dp))
         Column(modifier = Modifier.weight(1f)) {
             val unknownLabel = stringResource(Res.string.unknown_species_label)

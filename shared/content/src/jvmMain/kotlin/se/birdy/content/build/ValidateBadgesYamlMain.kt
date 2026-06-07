@@ -22,6 +22,7 @@ object ValidateBadgesYamlMain {
             "observed_in_all_seasons",
             "species_across_seasons",
             "audio_observation_count",
+            "daily_bird_matches",
         )
 
     @JvmStatic

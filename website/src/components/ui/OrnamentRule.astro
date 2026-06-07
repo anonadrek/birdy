@@ -19,10 +19,14 @@ const { width = '180px' } = Astro.props;
     gap: 12px;
     color: var(--color-marginalia-ink);
     margin: 1rem auto;
+    max-width: 100%;
   }
   .line {
     height: 1px;
-    width: var(--w);
+    /* Cap to viewport on phones so the fixed-width rule can't force
+       horizontal overflow; stays the full --w (180px) at >=600px. */
+    width: min(var(--w), 30vw);
+    min-width: 0;
     background: var(--color-marginalia-ink);
     opacity: 0.4;
   }

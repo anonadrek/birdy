@@ -15,6 +15,13 @@ data class LifelistRow(
     val species: Species?,
 )
 
+/** Förhandsvy för "Veckans uppslag"-kortet: innevarande veckas fynd. */
+data class RecapPreview(
+    val isoWeek: Int,
+    val findCount: Int,
+    val findPhotoPaths: List<String>,
+)
+
 sealed interface LifelistUiState {
     data object Loading : LifelistUiState
 
@@ -28,5 +35,6 @@ sealed interface LifelistUiState {
         val stat3: Stat3Value,
         val sort: LifelistSort,
         val rows: List<LifelistRow>,
+        val recapPreview: RecapPreview,
     ) : LifelistUiState
 }

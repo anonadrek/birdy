@@ -14,7 +14,7 @@ import kotlinx.datetime.plus
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 import se.birdy.app.notifications.workers.DailyBirdWorker
-import se.birdy.app.notifications.workers.StreakRiskWorker
+import se.birdy.app.notifications.workers.TrophyProgressWorker
 import se.birdy.app.notifications.workers.WeeklyRecapWorker
 import se.birdy.domain.notification.NotificationScheduler
 import java.util.concurrent.TimeUnit
@@ -34,20 +34,20 @@ class NotificationSchedulerImpl(
         workManager.enqueueUniquePeriodicWork(UNIQUE_DAILY_BIRD, ExistingPeriodicWorkPolicy.KEEP, request)
     }
 
-    override fun scheduleStreakRiskCheck() {
-        val request =
-            PeriodicWorkRequestBuilder<StreakRiskWorker>(7, TimeUnit.DAYS)
-                .setInitialDelay(millisUntilNextSunday(hour = 18, minute = 0), TimeUnit.MILLISECONDS)
-                .build()
-        workManager.enqueueUniquePeriodicWork(UNIQUE_STREAK_RISK, ExistingPeriodicWorkPolicy.KEEP, request)
-    }
-
     override fun scheduleWeeklyRecap() {
         val request =
             PeriodicWorkRequestBuilder<WeeklyRecapWorker>(7, TimeUnit.DAYS)
                 .setInitialDelay(millisUntilNextSunday(hour = 18, minute = 0), TimeUnit.MILLISECONDS)
                 .build()
         workManager.enqueueUniquePeriodicWork(UNIQUE_WEEKLY_RECAP, ExistingPeriodicWorkPolicy.KEEP, request)
+    }
+
+    override fun scheduleTrophyProgress() {
+        val request =
+            PeriodicWorkRequestBuilder<TrophyProgressWorker>(7, TimeUnit.DAYS)
+                .setInitialDelay(millisUntilNextDayOfWeek(DayOfWeek.WEDNESDAY, hour = 9, minute = 0), TimeUnit.MILLISECONDS)
+                .build()
+        workManager.enqueueUniquePeriodicWork(UNIQUE_TROPHY_PROGRESS, ExistingPeriodicWorkPolicy.KEEP, request)
     }
 
     override fun cancelDailyBird() {
@@ -60,6 +60,10 @@ class NotificationSchedulerImpl(
 
     override fun cancelWeeklyRecap() {
         workManager.cancelUniqueWork(UNIQUE_WEEKLY_RECAP)
+    }
+
+    override fun cancelTrophyProgress() {
+        workManager.cancelUniqueWork(UNIQUE_TROPHY_PROGRESS)
     }
 
     private fun millisUntilNext(
@@ -94,9 +98,26 @@ class NotificationSchedulerImpl(
         return (targetInstant - now).inWholeMilliseconds
     }
 
+    private fun millisUntilNextDayOfWeek(
+        day: DayOfWeek,
+        hour: Int,
+        minute: Int,
+    ): Long {
+        val now = clock.now()
+        val local = now.toLocalDateTime(zone)
+        val rawDays = (day.isoDayNumber - local.dayOfWeek.isoDayNumber + 7) % 7
+        val daysTo =
+            if (rawDays == 0 && (local.hour > hour || (local.hour == hour && local.minute >= minute))) 7 else rawDays
+        val targetDate = local.date.plus(daysTo, DateTimeUnit.DAY)
+        val targetInstant =
+            LocalDateTime(targetDate.year, targetDate.monthNumber, targetDate.dayOfMonth, hour, minute).toInstant(zone)
+        return (targetInstant - now).inWholeMilliseconds
+    }
+
     companion object {
         const val UNIQUE_DAILY_BIRD = "birdy_daily_bird_worker"
         const val UNIQUE_STREAK_RISK = "birdy_streak_risk_worker"
         const val UNIQUE_WEEKLY_RECAP = "birdy_weekly_recap_worker"
+        const val UNIQUE_TROPHY_PROGRESS = "birdy_trophy_progress_worker"
     }
 }

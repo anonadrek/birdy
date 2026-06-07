@@ -16,4 +16,7 @@ interface DailyBirdHistoryRepository {
     )
 
     suspend fun totalMatchCount(): Int
+
+    /** Whether the daily bird for [date] has been caught (matched). */
+    suspend fun isMatched(date: LocalDate): Boolean
 }

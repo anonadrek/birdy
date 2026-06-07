@@ -99,6 +99,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_show_intro_aga
 import birdy_bird_scanner.composeapp.generated.resources.settings_title
 import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_daily_bird
 import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_location
+import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_trophy
 import birdy_bird_scanner.composeapp.generated.resources.settings_toggle_weekly_recap
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
@@ -193,6 +194,7 @@ fun SettingsScreen(
             item {
                 val dailyBirdEnabled by viewModel.dailyBirdPushEnabled.collectAsState()
                 val weeklyRecapEnabled by viewModel.weeklyRecapPushEnabled.collectAsState()
+                val trophyEnabled by viewModel.weeklyTrophyPushEnabled.collectAsState()
                 val systemNotifEnabled = viewModel.areNotificationsEnabled()
 
                 PaperCard {
@@ -208,6 +210,13 @@ fun SettingsScreen(
                         label = stringResource(Res.string.settings_toggle_weekly_recap),
                         checked = weeklyRecapEnabled,
                         onCheckedChange = viewModel::setWeeklyRecapPushEnabled,
+                    )
+                    DashedDivider()
+                    ToggleRow(
+                        icon = Icons.Outlined.Notifications,
+                        label = stringResource(Res.string.settings_toggle_trophy),
+                        checked = trophyEnabled,
+                        onCheckedChange = viewModel::setWeeklyTrophyPushEnabled,
                     )
                     if (!systemNotifEnabled) {
                         DashedDivider()
@@ -257,6 +266,13 @@ fun SettingsScreen(
                             label = stringResource(Res.string.settings_dev_trigger_recap),
                             value = null,
                             onClick = { viewModel.devTriggerWeeklyRecapPush() },
+                        )
+                        DashedDivider()
+                        SettingsRow(
+                            icon = Icons.Outlined.Notifications,
+                            label = "DEV: Trigger Trophy progress push",
+                            value = null,
+                            onClick = { viewModel.devTriggerTrophyProgressPush() },
                         )
                     }
                 }

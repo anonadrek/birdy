@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Birdy — En fältdagbok för fåglar",
-    "description": "Identifiera europeiska fåglar med kamera eller mikrofon. 839 arter. Offline-AI. Inga konton.",
+    "description": "Identifiera europeiska fåglar med kamera eller mikrofon, och behåll varje fynd i en dagbok som är din. 839 arter, helt offline, inget konto.",
     "ogLocale": "sv_SE",
     "htmlLang": "sv"
   },
@@ -17,30 +17,30 @@
   "hero": {
     "eyebrow": "EN BIRDY-APP · 2026",
     "headline": "En *fältdagbok* som ser ut som en fältdagbok",
-    "sub": "Identifiera fåglar med kamera eller ljud. Behåll varje fynd i en dagbok som är din.",
+    "sub": "Fota eller spela in en fågel, så namnger Birdy den. Allt du hittar sparas i din egen dagbok.",
     "scrollCue": "Så fungerar det ↓"
   },
   "loop": {
     "eyebrow": "SÅ FUNGERAR DET",
-    "headline": "En *loop.*",
-    "sub": "Fyra steg. Varje fynd sluter cirkeln.",
+    "headline": "Det är en *loop.*",
+    "sub": "Sikta, träffa, stämpla, bläddra — sen tillbaka till början för nästa fågel.",
     "cards": [
-      { "title": "Sikta eller spela in", "body": "Öppna kameran. Sikta. AI:n gissar tre gånger per sekund." },
-      { "title": "Träff", "body": "När säkerheten låser sig dyker stämpeln upp." },
-      { "title": "Stämpla", "body": "Din dagbok får en ny sida. Samma papper, ny art." },
-      { "title": "Bläddra", "body": "Gå tillbaka när du vill. Eller sök bland 839 europeiska arter." }
+      { "title": "Sikta eller spela in", "body": "Öppna kameran och sikta, eller tryck för att spela in en sång. Birdy kollar några gånger i sekunden." },
+      { "title": "Träff", "body": "När Birdy är säker nog får du en träff." },
+      { "title": "Stämpla", "body": "En ny sida hamnar i din dagbok — en stämpel för varje art." },
+      { "title": "Bläddra", "body": "Titta tillbaka när du vill, eller sök bland alla 839 europeiska arter." }
     ]
   },
   "glimpse": {
-    "eyebrow": "EN TITT · INUTI",
+    "eyebrow": "EN TITT INUTI",
     "headline": "Några *sidor* ur dagboken.",
     "sub": "hur det faktiskt ser ut, i din telefon."
   },
   "listen": {
-    "eyebrow": "ELLER TRYCK PÅ MIKEN · PÅ ENHETEN",
-    "headline": "Hör den. *Namnge* den.",
-    "sub": "Tryck. Lyssna. Fågeln namnger sig själv.",
-    "body": "Tryck på inspelningsknappen. Samma AI på enheten lyssnar tills den känner igen fågeln — eller tills du trycker stopp. Inget internet behövs.",
+    "eyebrow": "ELLER ANVÄND MIKEN · PÅ TELEFONEN",
+    "headline": "Namnge den på *gehör.*",
+    "sub": "Håll inne knappen och låt fågeln sjunga. Birdy lyssnar och namnger den.",
+    "body": "Håll inne inspelningsknappen. Samma AI på din telefon lyssnar tills den känner igen sången — eller tills du släpper. Inget internet, inget laddas upp.",
     "hint": "tryck för att lyssna"
   },
   "inside": {
@@ -49,15 +49,15 @@
     "sub": "varje europeisk fågel, varje stämpel, varje serie",
     "stats": [
       { "value": "839", "label": "arter", "caption": "från vanliga till sällsynta" },
-      { "value": "25", "label": "stämplar", "caption": "tjänas in genom fynd" },
+      { "value": "33", "label": "stämplar", "caption": "tjänas in genom att hitta fåglar" },
       { "value": "365", "label": "daglig serie", "caption": "håll dagboken levande" }
     ]
   },
   "premium": {
-    "eyebrow": "FÄLTMEDLEM · VALFRITT",
+    "eyebrow": "VALFRITT · PREMIUM",
     "headline": "*Gratis* först.",
-    "sub": "Premium går djupare — för dom mest nyfikna.",
-    "body": "Appen är gratis. Kärnupplevelsen kommer alltid att vara det. Premium lägger till PDF-export, säsongsstatistik och 10 fältmärken för hängivna samlare.",
+    "sub": "Premium lägger till några extrasaker om du vill gå djupare.",
+    "body": "Själva appen är gratis, och kommer alltid att vara det. Premium lägger till PDF-export, säsongsstatistik och en handfull extra stämplar — kul att ha, aldrig nödvändigt.",
     "cta": "Se vad som finns →",
     "ctaHref": "https://play.google.com/apps/testing/se.birdy.android"
   },
@@ -65,7 +65,7 @@
     "eyebrow": "INTEGRITET · INGA FOTON LÄMNAR DIN TELEFON",
     "headline": "Helt *offline.*",
     "sub": "AI:n bor i din telefon",
-    "body": "Inget moln. Ingen spårning. Inga konton. Bara du och fåglarna.",
+    "body": "Inget moln, ingen spårning, inga konton — bara du och fåglarna.",
     "wordmarkLabel": "FINNS PÅ GOOGLE PLAY"
   },
   "faq": {
@@ -95,7 +95,7 @@
       { "label": "E-post", "href": "mailto:albin@abrahamssons.se" },
       { "label": "EN", "href": "/" }
     ],
-    "credit": "Skapad av Albin · Sverige · 2026 · v1.0.0"
+    "credit": "Skapad av Albin · Sverige · 2026 · v1.1.0"
   },
   "alt": {
     "wingLogo": "Birdys vinge-logo",
@@ -106,7 +106,7 @@
     "observationDetail": "Birdys observationsdetaljsida i fältdagbok-stil",
     "archiveScreen": "Birdys arkiv-skärm med europeiska arter",
     "audioScan": "Birdys ljudscan-skärm med vågform",
-    "badgesGrid": "Birdys märkessida med 5x5 stämpel-rutnät",
+    "badgesGrid": "Birdys märkessida med stämpel-rutnätet",
     "glimpseHero": "Birdys intro-skärm — En fältdagbok för fynd",
     "speciesScreen": "Birdys art-sida — läs på om varje europeisk fågel",
     "panorama": "Birdys app-skärmar — identifiera en fågel, lär dig arten och behåll varje fynd"

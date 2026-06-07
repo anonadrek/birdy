@@ -96,6 +96,7 @@ fun ListenLauncherScreen(
                 label = stringResource(Res.string.listen_journal_label),
                 headline = stringResource(Res.string.listen_journal_headline),
                 sub = stringResource(Res.string.listen_journal_sub),
+                topPadding = 12,
             )
             val dailyBirdState by viewModel.dailyBird.collectAsState()
             dailyBirdState?.let { ui ->
@@ -108,11 +109,14 @@ fun ListenLauncherScreen(
                     name = ui.name,
                     heroImagePath = ui.heroImagePath,
                     onClick = { onSpeciesProfileClick(ui.speciesId) },
+                    caughtToday = ui.caughtToday,
+                    matchCount = ui.matchCount,
+                    huntTarget = ui.huntTarget,
                 )
             }
             Column(
                 modifier = Modifier.padding(horizontal = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 LaunchCard(
                     icon = Icons.Filled.PhotoCamera,

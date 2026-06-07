@@ -619,7 +619,6 @@
     <!-- Settings — Notifications -->
     <string name="settings_section_notifications">NOTIFICATIONS</string>
     <string name="settings_toggle_daily_bird">Bird of the day — daily reminder</string>
-    <string name="settings_toggle_streak_risk">Streak risk — Sunday evening</string>
     <string name="settings_notifications_disabled_helpline">Notifications disabled in Android system settings →</string>
 
     <!-- Notifications -->
@@ -627,8 +626,11 @@
     <string name="notification_daily_bird_body_breeding">Breeding in Sweden right now.</string>
     <string name="notification_daily_bird_body_present">Here right now.</string>
     <string name="notification_daily_bird_body_migrating">Migrating right now.</string>
-    <string name="notification_streak_risk_title">Tonight\'s your last chance</string>
-    <string name="notification_streak_risk_body">A great tit in the park is enough — keep your streak.</string>
+    <string name="daily_bird_caught_today">Caught today ✓</string>
+    <string name="daily_bird_not_caught">Not caught yet</string>
+    <string name="settings_toggle_trophy">Badge progress — weekly</string>
+    <string name="notification_trophy_title">Toward your next badge</string>
+    <string name="notification_trophy_body_fmt">%1$s of %2$s badges unlocked. Closest: %3$s (%4$s/%5$s).</string>
 
     <!-- Badges -->
     <string name="badge_premium_early_pilgrim_name">Early Pilgrim</string>
@@ -637,6 +639,8 @@
     <string name="badge_premium_sunday_birder_desc">Observe on 4 consecutive Sundays.</string>
     <string name="badge_premium_daily_bird_hunter_name">Daily Bird Hunter</string>
     <string name="badge_premium_daily_bird_hunter_desc">Save today’s curated bird on 3 different days.</string>
+    <string name="badge_name_daily_bird_first">First Daily Bird</string>
+    <string name="badge_desc_daily_bird_first">Save today’s curated bird for the first time.</string>
 
     <!-- ===== v1.2 Phase B: Weekly Recap ===== -->
     <string name="recap_eyebrow_fmt">Field report · Week %1$s</string>
