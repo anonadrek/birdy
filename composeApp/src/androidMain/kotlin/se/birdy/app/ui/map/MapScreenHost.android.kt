@@ -1,5 +1,6 @@
 package se.birdy.app.ui.map
 
+import android.graphics.ColorMatrixColorFilter
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -22,20 +23,20 @@ import se.birdy.app.BuildConfig
 import java.io.File
 
 // 512px @2x ("retina") tiles render crisp on high-DPI phones and cut the tile
-// count ~4× vs 256px (each tile covers 4× the screen area), so the map is sharper
-// AND fills faster. MapTiler exposes HiDPI via the "@2x.png" suffix (the "/512/"
-// path form returns 404 for outdoor-v2). Source name is suffixed so the on-disk
-// tile cache doesn't reuse stale, blurry 256px tiles from the previous build.
+// count ~4× vs 256px, so the map is sharper AND fills faster. MapTiler exposes
+// HiDPI via the "@2x.png" suffix. Base style is "toner-v2" (grayscale ink) which
+// the duotone ColorMatrix (see the setColorFilter call below) tints to paper+sepia.
+// Source name is suffixed so the on-disk cache doesn't mix toner with old tiles.
 private const val MAPTILER_TILE_SIZE = 512
 
 private fun mapTilerSource(apiKey: String): OnlineTileSourceBase =
     object : XYTileSource(
-        "MapTiler-Outdoor-Retina",
+        "MapTiler-Toner-Retina",
         0,
         20,
         MAPTILER_TILE_SIZE,
         "@2x.png",
-        arrayOf("https://api.maptiler.com/maps/outdoor-v2/"),
+        arrayOf("https://api.maptiler.com/maps/toner-v2/"),
         "© MapTiler © OpenStreetMap contributors",
     ) {
         override fun getTileURLString(pMapTileIndex: Long): String =
@@ -67,6 +68,11 @@ actual fun MapScreenHost(
                 setTileSource(mapTilerSource(BuildConfig.MAPTILER_API_KEY))
                 setMultiTouchControls(true)
                 setUseDataConnection(true)
+                overlayManager.tilesOverlay.setColorFilter(
+                    ColorMatrixColorFilter(
+                        MapTileTheme.duotoneMatrix(MapTileTheme.INK, MapTileTheme.PAPER),
+                    ),
+                )
             }
         }
 
