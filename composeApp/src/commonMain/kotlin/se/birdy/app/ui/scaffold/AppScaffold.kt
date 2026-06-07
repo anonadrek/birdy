@@ -259,6 +259,20 @@ fun AppScaffold(graph: AppGraph) {
                     onRecapClick = { navController.navigate(AppRoute.WeeklyRecap) { launchSingleTop = true } },
                 )
             }
+            composable<AppRoute.Map> {
+                val mapVm = remember(graph) { graph.mapViewModel() }
+                if (effectivePremiumActive) {
+                    se.birdy.app.ui.map.MapScreen(
+                        viewModel = mapVm,
+                        onPinClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
+                    )
+                } else {
+                    se.birdy.app.ui.map.MapPremiumTeaser(
+                        viewModel = mapVm,
+                        onUpgrade = { navController.navigate(AppRoute.Premium) },
+                    )
+                }
+            }
             composable<AppRoute.ObservationDetail> { entry ->
                 val route = entry.toRoute<AppRoute.ObservationDetail>()
                 ObservationDetailScreen(
@@ -290,6 +304,7 @@ fun AppScaffold(graph: AppGraph) {
                     onNavigateToAbout = { navController.navigate(AppRoute.About) },
                     onShowIntroAgain = { navController.navigate(AppRoute.OnboardingReplay) },
                     versionName = graph.versionName,
+                    onRequestLocationPermission = { graph.requestLocationPermission?.invoke() },
                 )
             }
             composable<AppRoute.About> {

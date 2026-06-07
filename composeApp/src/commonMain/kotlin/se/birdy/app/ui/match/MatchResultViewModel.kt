@@ -24,6 +24,13 @@ import se.birdy.ml.ScanSource
 import java.io.File
 import java.io.IOException
 
+/** Audio + live camera captures attach location; gallery uploads never do. */
+fun shouldAttachLocation(source: ScanSource): Boolean =
+    when (source) {
+        is ScanSource.Audio -> true
+        is ScanSource.Image -> source.live
+    }
+
 class MatchResultViewModel(
     private val repository: SpeciesRepository,
     private val observationRepo: ObservationRepository,
@@ -222,6 +229,7 @@ class MatchResultViewModel(
                         note = note,
                         audioPath = audioPath,
                         sourceType = sourceType,
+                        attachLocation = shouldAttachLocation(current.source),
                     )
                 }.onFailure { if (it is CancellationException) throw it }
             val status: MatchResultUiState.SaveStatus =
@@ -277,6 +285,7 @@ class MatchResultViewModel(
                     note = "",
                     audioPath = audioPath,
                     sourceType = sourceType,
+                    attachLocation = shouldAttachLocation(current.source),
                 )
             }.onFailure { if (it is CancellationException) throw it }
         }

@@ -4,6 +4,7 @@
     <string name="tab_archive">Archive</string>
     <string name="tab_lifelist">Lifelist</string>
     <string name="tab_badges">Badges</string>
+    <string name="tab_map">Map</string>
 
     <string name="title_encyclopedia">ENCYCLOPEDIA</string>
 
@@ -664,6 +665,9 @@
     <string name="notification_recap_streak_title">Only the evening left</string>
     <string name="notification_recap_streak_body">A great tit in the park is enough — keep your streak going.</string>
     <string name="settings_toggle_weekly_recap">Weekly recap — Sunday evening</string>
+    <string name="settings_location_section">Location</string>
+    <string name="settings_toggle_location">Save location with my finds</string>
+    <string name="settings_location_caption">Stored only on your phone. Needed for the map.</string>
     <string name="settings_dev_trigger_recap">DEV: Trigger weekly recap push</string>
     <!-- DP D card: category eyebrow -->
     <string name="badge_cat_progression">Progression</string>
@@ -707,4 +711,12 @@
     <string name="trophy_section_rare">Rare finds</string>
     <string name="trophy_section_close">Close to unlocking</string>
     <string name="trophy_close_remaining">%1$s to go</string>
+
+    <!-- ===== Personal finds map ===== -->
+    <string name="map_empty">No located finds yet. Turn on location in Settings and save a find out in the field.</string>
+    <string name="map_attribution">© OpenStreetMap · © MapTiler</string>
+    <string name="map_teaser_title">Your bird map</string>
+    <string name="map_teaser_caption">See where you spotted your birds.</string>
+    <string name="map_teaser_count">%1$s located finds waiting on the map</string>
+    <string name="map_teaser_cta">Unlock with Premium</string>
 </resources>

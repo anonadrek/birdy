@@ -21,6 +21,8 @@ sealed interface AppRoute {
 
     @Serializable data object Archive : AppRoute
 
+    @Serializable data object Map : AppRoute
+
     @Serializable data object ArchiveList : AppRoute
 
     @Serializable data class SpeciesProfile(

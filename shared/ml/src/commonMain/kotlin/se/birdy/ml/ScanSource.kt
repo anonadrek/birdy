@@ -11,6 +11,7 @@ sealed interface ScanSource {
     data class Image(
         override val frameJpegPath: String,
         override val classification: Classification,
+        val live: Boolean = true,
     ) : ScanSource
 
     data class Audio(

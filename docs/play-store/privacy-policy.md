@@ -1,6 +1,6 @@
 # Birdy — Privacy Policy
 
-_Last updated: 2026-05-22_
+_Last updated: 2026-06-06_
 
 Birdy is built and operated by **Albin Viktor Lindblom** (Sweden). This
 policy explains what data the app handles and how. Birdy is designed to
@@ -12,7 +12,8 @@ Birdy stores the following data **locally on your device**:
 
 - **Bird observations** you save: species, timestamp, optional photo,
   optional audio recording, optional handwritten note, optional location
-  label.
+  label, and — if you have enabled "Save location with my finds" —
+  optional GPS coordinates (see section 2a below).
 - **Photos** you choose to associate with an observation. Stored in the
   app's private files directory (`filesDir/observations/`).
 - **Audio recordings** (3-second clips) captured for bird-call ID.
@@ -43,6 +44,33 @@ This data **never leaves your device** unless:
   classification. No audio is uploaded.
 - **Photo picker** (Android 13+ `PickVisualMedia`) — no permission
   required; you choose which photo to share with Birdy per pick.
+- **Location** (`ACCESS_FINE_LOCATION` + `ACCESS_COARSE_LOCATION`) —
+  used **only** when you have enabled "Save location with my finds"
+  in Settings (this toggle is **off by default**). When on, Birdy
+  records your device's GPS coordinates at the moment you save a field
+  observation, so you can see it on your personal finds map. Location
+  is stored only in the device-local database. It is never transmitted,
+  synced to a server, or shared with anyone.
+- **Internet** (`INTERNET` + `ACCESS_NETWORK_STATE`) — used to fetch
+  map tile imagery from MapTiler when you view the personal finds map.
+  See section 2a.
+
+## 2a. Location and the personal finds map
+
+If you turn on **"Save location with my finds"** (off by default),
+Birdy records the GPS location of observations you make in the field
+and stores it only on your device. This lets you see your finds on
+your personal map. The location data never leaves your phone.
+
+When you view the map, the map imagery (tiles) is loaded from
+**MapTiler** over a secure HTTPS connection. Only the area of the map
+you are viewing is sent to MapTiler in order to fetch the correct
+tiles — your bird finds and their coordinates are never included in
+these requests and are never transmitted anywhere. MapTiler's own
+privacy policy applies to these tile requests.
+
+If you keep "Save location with my finds" off (the default), no
+location data is ever captured, stored, or requested.
 
 ## 3. AI / machine learning
 
@@ -66,6 +94,13 @@ reporting, or tracking. We do not have a backend.
 Wikipedia and Wikimedia Commons are listed as content sources for
 encyclopedia text and reference photos. These are bundled with the app
 at build time; the app does not fetch from them at runtime.
+
+**MapTiler** — when the personal finds map is displayed, map tile
+imagery is fetched from MapTiler over HTTPS. MapTiler receives the
+map viewport (the geographic area being displayed) in order to serve
+the correct tiles. Your bird finds and their coordinates are never
+sent. See [MapTiler's Privacy Policy](https://www.maptiler.com/privacy-policy/)
+for details on how MapTiler handles tile requests.
 
 ## 5. Premium purchases
 

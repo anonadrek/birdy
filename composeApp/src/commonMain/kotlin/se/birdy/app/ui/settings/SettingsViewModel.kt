@@ -44,6 +44,9 @@ class SettingsViewModel(
     val weeklyRecapPushEnabled: StateFlow<Boolean> =
         prefs.weeklyRecapPushEnabled.stateIn(viewModelScope, SharingStarted.Eagerly, true)
 
+    val locationCaptureEnabled: StateFlow<Boolean> =
+        prefs.locationCaptureEnabled.stateIn(viewModelScope, SharingStarted.Eagerly, false)
+
     val weeklyTrophyPushEnabled: StateFlow<Boolean> =
         prefs.weeklyTrophyPushEnabled.stateIn(viewModelScope, SharingStarted.Eagerly, true)
 
@@ -114,6 +117,10 @@ class SettingsViewModel(
             prefs.setWeeklyRecapPushEnabled(value)
             if (value) notificationScheduler?.scheduleWeeklyRecap() else notificationScheduler?.cancelWeeklyRecap()
         }
+    }
+
+    fun setLocationCaptureEnabled(value: Boolean) {
+        viewModelScope.launch { prefs.setLocationCaptureEnabled(value) }
     }
 
     fun setWeeklyTrophyPushEnabled(value: Boolean) {
