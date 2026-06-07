@@ -21,14 +21,21 @@ import org.osmdroid.views.overlay.Marker
 import se.birdy.app.BuildConfig
 import java.io.File
 
+// 512px @2x ("retina") tiles render crisp on high-DPI phones and cut the tile
+// count ~4× vs 256px (each tile covers 4× the screen area), so the map is sharper
+// AND fills faster. MapTiler exposes HiDPI via the "@2x.png" suffix (the "/512/"
+// path form returns 404 for outdoor-v2). Source name is suffixed so the on-disk
+// tile cache doesn't reuse stale, blurry 256px tiles from the previous build.
+private const val MAPTILER_TILE_SIZE = 512
+
 private fun mapTilerSource(apiKey: String): OnlineTileSourceBase =
     object : XYTileSource(
-        "MapTiler-Outdoor",
+        "MapTiler-Outdoor-Retina",
         0,
         20,
-        256,
-        ".png",
-        arrayOf("https://api.maptiler.com/maps/outdoor-v2/256/"),
+        MAPTILER_TILE_SIZE,
+        "@2x.png",
+        arrayOf("https://api.maptiler.com/maps/outdoor-v2/"),
         "© MapTiler © OpenStreetMap contributors",
     ) {
         override fun getTileURLString(pMapTileIndex: Long): String =
@@ -54,6 +61,7 @@ actual fun MapScreenHost(
                 userAgentValue = context.packageName // REQUIRED or tile servers return 403
                 osmdroidBasePath = File(context.cacheDir, "osmdroid")
                 osmdroidTileCache = File(osmdroidBasePath, "tiles")
+                tileDownloadThreads = 8 // default 2 — parallel fetch for faster cold-cache fill
             }
             MapView(context).apply {
                 setTileSource(mapTilerSource(BuildConfig.MAPTILER_API_KEY))
