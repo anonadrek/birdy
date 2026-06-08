@@ -54,7 +54,7 @@ private folder on your phone — uninstall removes everything.
 beginners who want to learn, and anyone who thinks a songbird in a
 tree deserves a moment of attention.
 
-## What's new (v1.1)
+## What's new (v1.2)
 - NEW — Map: see your finds on a private, on-device map (Premium). Opt-in location capture is free and never leaves your phone.
 - Reworked achievement stamps: a red-listed track, a life list up to 500 species, audio + seasonal stamps now free (34 total: 27 free + 7 premium).
 - Encyclopedia reorganised by ecological group (auks, woodpeckers, doves, cranes & rails, and more).
