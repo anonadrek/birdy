@@ -87,8 +87,13 @@ class SaveObservationLocationTest {
             val provider = FakeLocationProvider(next = LatLng(59.3, 18.0))
             useCase(repo, provider, enabled = true)
                 .save(
-                    "Q1", capturedAt, 0.9f, ByteArray(4), "",
-                    attachLocation = false, presetLocation = LatLng(40.0, -3.0),
+                    "Q1",
+                    capturedAt,
+                    0.9f,
+                    ByteArray(4),
+                    "",
+                    attachLocation = false,
+                    presetLocation = LatLng(40.0, -3.0),
                 )
             val row = repo.observeAll().first().single()
             assertEquals(40.0, row.latitude)
@@ -103,10 +108,21 @@ class SaveObservationLocationTest {
             val provider = FakeLocationProvider(next = LatLng(59.3, 18.0))
             useCase(repo, provider, enabled = false)
                 .save(
-                    "Q1", capturedAt, 0.9f, ByteArray(4), "",
-                    attachLocation = false, presetLocation = LatLng(40.0, -3.0),
+                    "Q1",
+                    capturedAt,
+                    0.9f,
+                    ByteArray(4),
+                    "",
+                    attachLocation = false,
+                    presetLocation = LatLng(40.0, -3.0),
                 )
-            assertNull(repo.observeAll().first().single().latitude)
+            assertNull(
+                repo
+                    .observeAll()
+                    .first()
+                    .single()
+                    .latitude,
+            )
         }
 
     @Test
@@ -116,8 +132,13 @@ class SaveObservationLocationTest {
             val provider = FakeLocationProvider(next = LatLng(59.3, 18.0))
             useCase(repo, provider, enabled = true)
                 .save(
-                    "Q1", capturedAt, 0.9f, ByteArray(4), "",
-                    attachLocation = true, presetLocation = LatLng(40.0, -3.0),
+                    "Q1",
+                    capturedAt,
+                    0.9f,
+                    ByteArray(4),
+                    "",
+                    attachLocation = true,
+                    presetLocation = LatLng(40.0, -3.0),
                 )
             val row = repo.observeAll().first().single()
             assertEquals(40.0, row.latitude)

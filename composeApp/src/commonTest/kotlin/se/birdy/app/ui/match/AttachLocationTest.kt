@@ -10,8 +10,7 @@ class AttachLocationTest {
     private val cls = Classification(results = emptyList())
 
     @Test
-    fun liveImageAttaches() =
-        assertEquals(true, shouldAttachLocation(ScanSource.Image("/f.jpg", cls, origin = ImageOrigin.LiveScan)))
+    fun liveImageAttaches() = assertEquals(true, shouldAttachLocation(ScanSource.Image("/f.jpg", cls, origin = ImageOrigin.LiveScan)))
 
     @Test
     fun cameraCaptureAttaches() =
