@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.Instant
+import se.birdy.app.location.LatLng
 import se.birdy.app.photo.FrameUnavailableException
 import se.birdy.app.ui.badges.UnlockQueue
 import se.birdy.app.usecase.SaveObservationUseCase
@@ -30,6 +31,14 @@ fun shouldAttachLocation(source: ScanSource): Boolean =
     when (source) {
         is ScanSource.Audio -> true
         is ScanSource.Image -> source.origin != ImageOrigin.Gallery
+    }
+
+/** Pre-resolved EXIF coordinates for a gallery image, else null (live/camera/audio use current()). */
+fun presetLocationFor(source: ScanSource): LatLng? =
+    (source as? ScanSource.Image)?.let { img ->
+        val lat = img.exifLatitude
+        val lng = img.exifLongitude
+        if (lat != null && lng != null) LatLng(lat, lng) else null
     }
 
 class MatchResultViewModel(
@@ -231,6 +240,7 @@ class MatchResultViewModel(
                         audioPath = audioPath,
                         sourceType = sourceType,
                         attachLocation = shouldAttachLocation(current.source),
+                        presetLocation = presetLocationFor(current.source),
                     )
                 }.onFailure { if (it is CancellationException) throw it }
             val status: MatchResultUiState.SaveStatus =
@@ -287,6 +297,7 @@ class MatchResultViewModel(
                     audioPath = audioPath,
                     sourceType = sourceType,
                     attachLocation = shouldAttachLocation(current.source),
+                    presetLocation = presetLocationFor(current.source),
                 )
             }.onFailure { if (it is CancellationException) throw it }
         }

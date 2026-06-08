@@ -3,6 +3,7 @@ package se.birdy.app.ui.match
 import app.cash.turbine.test
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
@@ -10,8 +11,10 @@ import kotlinx.coroutines.test.setMain
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import se.birdy.app.badges.RecalculateBadgesUseCase
+import se.birdy.app.location.LatLng
 import se.birdy.app.testing.FakeBadgeRepository
 import se.birdy.app.testing.FakeClock
+import se.birdy.app.testing.FakeLocationProvider
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakePhotoStorage
 import se.birdy.app.testing.FakeSpeciesRepository
@@ -23,6 +26,7 @@ import se.birdy.domain.badge.BadgeCategory
 import se.birdy.domain.badge.BadgeRule
 import se.birdy.ml.Classification
 import se.birdy.ml.ClassificationResult
+import se.birdy.ml.ImageOrigin
 import se.birdy.ml.ScanSource
 import java.io.File
 import kotlin.test.AfterTest
@@ -294,6 +298,67 @@ class MatchResultViewModelTest {
                 expectNoEvents()
                 cancelAndIgnoreRemainingEvents()
             }
+        }
+
+    @Test
+    fun saveToDiary_gallery_source_uses_exif_preset_location() =
+        runTest(dispatcher) {
+            val obsRepo = FakeObservationRepository()
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            val clock = FakeClock(now = Instant.parse("2026-05-12T10:00:00Z"))
+            val provider = FakeLocationProvider(next = LatLng(59.3, 18.0))
+            val saveUseCase =
+                SaveObservationUseCase(
+                    repo = obsRepo,
+                    badgeRepo = FakeBadgeRepository(),
+                    photoStorage = FakePhotoStorage(),
+                    clock = clock,
+                    catalog = emptyCatalog(),
+                    recalculate = RecalculateBadgesUseCase(zone = TimeZone.UTC, clock = clock),
+                    speciesByQid = { speciesRepo.allByQid(Locale.SV) },
+                    locationProvider = provider,
+                    locationEnabled = { true },
+                )
+
+            val tmpFile = File.createTempFile("birdy-test-frame", ".jpg")
+            tmpFile.writeBytes(byteArrayOf(0xFF.toByte(), 0xD8.toByte(), 0x01))
+
+            val gallerySource =
+                ScanSource.Image(
+                    frameJpegPath = tmpFile.absolutePath,
+                    classification = Classification(results = listOf(ClassificationResult("Q25485", 0.87f))),
+                    origin = ImageOrigin.Gallery,
+                    exifLatitude = 40.0,
+                    exifLongitude = -3.0,
+                )
+            val vm =
+                MatchResultViewModel(
+                    repository = speciesRepo,
+                    observationRepo = obsRepo,
+                    saveUseCase = saveUseCase,
+                    catalog = emptyCatalog(),
+                    source = gallerySource,
+                    capturedAtMs = capturedAtMs,
+                    locale = Locale.SV,
+                )
+
+            vm.state.test {
+                var item = awaitItem()
+                while (item is MatchResultUiState.Loading) item = awaitItem()
+                assertIs<MatchResultUiState.Match>(item)
+                vm.saveToDiary()
+                while (true) {
+                    val n = awaitItem() as? MatchResultUiState.Match ?: continue
+                    if (n.saveStatus == MatchResultUiState.SaveStatus.Saved) break
+                }
+                cancelAndIgnoreRemainingEvents()
+            }
+
+            val row = obsRepo.observeAll().first().single()
+            assertEquals(40.0, row.latitude)
+            assertEquals(-3.0, row.longitude)
+            assertEquals(0, provider.currentCalls)
+            tmpFile.delete()
         }
 
     @Test
