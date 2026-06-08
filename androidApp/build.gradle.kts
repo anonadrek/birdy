@@ -133,3 +133,14 @@ android {
 dependencies {
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 }
+
+// :shared:content:buildSpeciesDb writes the species image set into
+// :asset-pack/src/main/assets/images, which the asset-pack pre-bundle tasks consume.
+// Without a declared dependency, `bundleRelease` hits Gradle's implicit-dependency
+// validation and fails whenever species.db needs (re)building. Declare it explicitly so
+// the images are always fresh before they're packed.
+tasks
+    .matching { it.name.startsWith("assetPack") && it.name.endsWith("PreBundleTask") }
+    .configureEach {
+        dependsOn(":shared:content:buildSpeciesDb")
+    }
