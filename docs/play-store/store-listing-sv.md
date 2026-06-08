@@ -21,21 +21,24 @@ inget internet behövs, inga konton. Foto- och ljud-ID är alltid gratis.
 **LÄR — uppslagsverket växer med dig**
 Bläddra bland 839 europeiska arter med text från Wikipedia, foton
 från Wikimedia Commons och korta marginalanteckningar för fältkännemärken.
-Sök, filtrera på familj, eller bara ströv runt.
+Sök, filtrera på ekologisk grupp, eller bara ströv runt.
 
 **SAMLA — fältdagboken är din egen**
-Spara fynd med foto, plats och en handskriven notering i marginalen.
-Allt sparas lokalt — inga molnkonton, ingen tracking, ingen reklam.
-Dagboken är din.
+Spara fynd med foto, en handskriven notering i marginalen och — om du
+vill — var fyndet gjordes. Med Premium ser du dem alla på en privat
+karta över dina fynd. Allt sparas lokalt — inga molnkonton, ingen
+tracking, ingen reklam. Dagboken är din.
 
 **STÄMPLA — märken att jaga**
-25 prestationsmärken: först gångers fynd, säsongs-streaks, hela
-familjer. Något att gå hem med efter en lyckad dag i skogen.
+27 gratis prestationsmärken: först gångers fynd, säsongs-streaks, hela
+familjer, en livslista upp till 500 arter, till och med ett
+rödlistat-spår. Något att gå hem med efter en lyckad dag i skogen.
 
 **PREMIUM (valfritt)**
-PDF-export av fältdagboken, säsongsstatistik och 10 extra
-prestationsmärken. Engångsköp eller abonnemang via Google Play
-Billing. Själva skanningen (foto + ljud) är alltid gratis.
+En privat karta över varje plats där du sett en fågel, PDF-export av
+fältdagboken, säsongsstatistik och 7 extra prestationsmärken. Engångsköp
+eller abonnemang via Google Play Billing. Själva skanningen (foto + ljud)
+är alltid gratis.
 
 **FUNGERAR OFFLINE**
 Modellen, encyclopedin och dagboken är på enheten. Du behöver inte
@@ -50,13 +53,12 @@ telefonen — uninstall raderar allt.
 nybörjare som vill lära sig, och alla som tycker en sångfågel i ett
 träd förtjänar en stund av uppmärksamhet.
 
-## Nyheter (v1.0.0)
-- v1.0-launch — första produktionsversionen
-- Foto- och audio-skanning: 839 europeiska fågelarter, allt on-device
-- Uppslagsverk, fältdagbok, 35 stämplar (25 bas + 10 premium)
-- SV + EN, helt offline (inget konto, inget moln)
-- Premium via Google Play Billing (Årlig 199 kr eller Engångsköp 499 kr) — PDF-export, säsongsstatistik, premium-stämplar
-- Återställ köp via Inställningar
+## Nyheter (v1.1)
+- NYTT — Karta: se dina fynd på en privat karta som lever på enheten (Premium). Att fånga platsen är gratis och lämnar aldrig telefonen.
+- Omgjorda prestationsmärken: ett rödlistat-spår, en livslista upp till 500 arter, ljud- + säsongsmärken nu gratis (34 totalt: 27 gratis + 7 premium).
+- Uppslagsverket omorganiserat i ekologiska grupper (alkor, hackspettar, duvor, tranor & rallar, m.fl.).
+- Veckans uppslag visar veckans alla fynd; jaga Dagens fågel för ett gratis märke; veckovis märkesprogression-notis.
+- Sök hittar nu arter med apostrofer och diakriter. Skarpare app-ikon, en-fågels-splash, mjukare kort.
 
 ## Nyckelord (för ASO-text)
 fågel, fågelskanner, fågelguide, fågelid, fågel-AI, naturapp,

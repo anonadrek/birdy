@@ -22,22 +22,24 @@ free, always.
 **LEARN — an encyclopedia that grows with you**
 Browse 839 European species with text from Wikipedia, photos from
 Wikimedia Commons, and short marginalia for field marks. Search,
-filter by family, or just wander.
+filter by ecological group, or just wander.
 
 **COLLECT — your field journal stays yours**
-Save sightings with a photo, location, and a handwritten note in the
-margin. Everything is stored locally — no cloud accounts, no
-tracking, no ads. Your journal is yours.
+Save sightings with a photo, a handwritten note in the margin, and —
+if you opt in — where each find happened. With Premium, see them all
+on a private map of your sightings. Everything is stored locally — no
+cloud accounts, no tracking, no ads. Your journal is yours.
 
 **STAMP — badges to chase**
-25 achievement stamps: firsts, seasonal streaks, whole bird families.
+27 free achievement stamps: firsts, seasonal streaks, whole bird
+families, a life list up to 500 species, even a red-listed track.
 Something to come home with after a good day in the woods.
 
 **PREMIUM (optional)**
-PDF export of your field journal, seasonal statistics, and 10 extra
-achievement stamps. One-time purchase or yearly subscription via
-Google Play Billing. The core scanning experience (photo + audio)
-stays free.
+A private map of every place you've found a bird, PDF export of your
+field journal, seasonal statistics, and 7 more achievement stamps.
+One-time purchase or yearly subscription via Google Play Billing. The
+core scanning experience (photo + audio) stays free.
 
 **WORKS OFFLINE**
 The model, the encyclopedia, and the journal all live on your device.
@@ -52,13 +54,12 @@ private folder on your phone — uninstall removes everything.
 beginners who want to learn, and anyone who thinks a songbird in a
 tree deserves a moment of attention.
 
-## What's new (v1.0.0)
-- v1.0 launch — first production release
-- Photo + audio scan: 839 European bird species, all on-device
-- Encyclopedia, field journal, 35 achievement stamps (25 base + 10 premium)
-- English + Swedish, fully offline (no account, no cloud)
-- Premium via Google Play Billing (Yearly 199 SEK or Lifetime 499 SEK) — PDF export, seasonal statistics, premium stamps
-- Restore Purchases in Settings
+## What's new (v1.1)
+- NEW — Map: see your finds on a private, on-device map (Premium). Opt-in location capture is free and never leaves your phone.
+- Reworked achievement stamps: a red-listed track, a life list up to 500 species, audio + seasonal stamps now free (34 total: 27 free + 7 premium).
+- Encyclopedia reorganised by ecological group (auks, woodpeckers, doves, cranes & rails, and more).
+- Weekly Recap shows every find of the week; chase the Bird of the Day for a free stamp; weekly badge-progress reminder.
+- Search now finds species with apostrophes and accents. Sharper app icon, single-bird splash, smoother cards.
 
 ## Keywords (for ASO copy)
 bird, bird scanner, bird id, bird guide, bird AI, nature app,
