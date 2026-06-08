@@ -1,6 +1,18 @@
 # Geotag non-live captures — design (map-polish-v2 item 4)
 
-> **Status:** approved by Albin 2026-06-08. Part of `feat/map-polish-v2` (items 1+2 already done + device-verified). Backlog: `docs/superpowers/plans/2026-06-07-map-polish-v2-backlog.md` §4. Personal finds map: spec `2026-06-05-personal-finds-map-design.md`.
+> **⚠️ REVISED 2026-06-08 — EXIF approach abandoned; shipped with current-location instead.**
+> Device-verify revealed that the Android photo picker **strips GPS EXIF** from returned images
+> unless the app holds `ACCESS_MEDIA_LOCATION` (a dangerous permission + Play Console data-safety
+> disclosure). So the "read the photo's EXIF GPS" design below cannot read coordinates without a
+> new permission. Per product decision (Albin, 2026-06-08), **gallery + take-photo uploads now use
+> the device's CURRENT location** (gated by the opt-in toggle), exactly like live scans — no new
+> permission. The origin-enum / EXIF-coords / presetLocation machinery described below was built,
+> found null on device, and reverted; the shipped change is simply: `shouldAttachLocation` returns
+> true for every capture. Implemented + device-verified in commit `459e6038`. The EXIF design is
+> retained below for the record. **4a (take-photo → current location) survived unchanged; only 4b
+> (gallery) changed from EXIF to current-location.**
+>
+> **Status:** approved by Albin 2026-06-08 (original EXIF design); revised + shipped same day. Part of `feat/map-polish-v2` (items 1+2 already done + device-verified). Backlog: `docs/superpowers/plans/2026-06-07-map-polish-v2-backlog.md` §4. Personal finds map: spec `2026-06-05-personal-finds-map-design.md`.
 
 ## Problem
 

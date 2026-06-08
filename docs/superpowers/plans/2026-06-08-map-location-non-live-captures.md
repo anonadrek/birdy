@@ -1,5 +1,12 @@
 # Geotag Non-Live Captures Implementation Plan
 
+> **⚠️ SUPERSEDED 2026-06-08.** This plan implemented the EXIF approach (Tasks 1–4 below), but
+> device-verify found the Android photo picker strips GPS EXIF without `ACCESS_MEDIA_LOCATION`.
+> Per product decision the feature shipped with **current-location for gallery + take-photo**
+> (not EXIF) — see the spec's "REVISED" banner and commit `459e6038`. The EXIF Tasks below were
+> built then reverted; the shipped change is a one-liner (`shouldAttachLocation` → true for all
+> captures) plus removal of the now-dead `live` field. Kept for the record.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Geotag in-app take-photo finds with the current device location (4a) and gallery finds with the photo's EXIF GPS (4b), both gated by the existing opt-in location toggle.
