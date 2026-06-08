@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.ImageInput
-import se.birdy.ml.ImageOrigin
 
 class PhotoAnalyzeViewModel(
     private val classifier: BirdClassifier,
@@ -20,12 +19,7 @@ class PhotoAnalyzeViewModel(
     private val _state = MutableStateFlow<PhotoAnalyzeUiState>(PhotoAnalyzeUiState.Idle)
     val state: StateFlow<PhotoAnalyzeUiState> = _state.asStateFlow()
 
-    fun analyze(
-        frame: ImageInput,
-        origin: ImageOrigin = ImageOrigin.Gallery,
-        exifLatitude: Double? = null,
-        exifLongitude: Double? = null,
-    ) {
+    fun analyze(frame: ImageInput) {
         val shortSide = minOf(frame.widthPx, frame.heightPx)
         if (shortSide < minShortSide) {
             _state.value = PhotoAnalyzeUiState.Error(PhotoAnalyzeUiState.Error.Kind.TooSmall)
@@ -59,9 +53,6 @@ class PhotoAnalyzeViewModel(
                     predictions = classification.sortedByConfidenceDescending(),
                     frameJpegPath = path,
                     capturedAtMs = capturedAtMs,
-                    origin = origin,
-                    exifLatitude = exifLatitude,
-                    exifLongitude = exifLongitude,
                 )
         }
     }

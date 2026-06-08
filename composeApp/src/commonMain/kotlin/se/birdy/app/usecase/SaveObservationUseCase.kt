@@ -42,17 +42,16 @@ class SaveObservationUseCase(
         audioPath: String? = null,
         sourceType: ObservationSource = ObservationSource.Photo,
         attachLocation: Boolean = false,
-        presetLocation: LatLng? = null,
     ): SaveResult {
         val id = Uuid.random().toString()
         val nextStamp = repo.nextStampNumber()
         val photoPath = photoStorage.persistJpeg(rawJpegBytes)
 
         val latLng: LatLng? =
-            when {
-                presetLocation != null && locationEnabled() -> presetLocation
-                attachLocation && locationEnabled() -> runCatching { locationProvider?.current() }.getOrNull()
-                else -> null
+            if (attachLocation && locationEnabled()) {
+                runCatching { locationProvider?.current() }.getOrNull()
+            } else {
+                null
             }
 
         val observation =

@@ -7,21 +7,15 @@ import kotlin.test.assertTrue
 
 class ScanSourceLiveSerializationTest {
     @Test
-    fun imageOriginAndExifSurviveRoundTrip() {
+    fun imageSurvivesRoundTrip() {
         val original =
             ScanSource.Image(
                 frameJpegPath = "/f.jpg",
                 classification = Classification(results = emptyList()),
-                origin = ImageOrigin.Gallery,
-                exifLatitude = 59.3293,
-                exifLongitude = 18.0686,
             )
         val json = Json.encodeToString(ScanSourceSerialization.serializer(), original.toSerial())
         val restored = Json.decodeFromString<ScanSourceSerialization>(json).toScanSource()
         assertTrue(restored is ScanSource.Image)
-        restored as ScanSource.Image
-        assertEquals(ImageOrigin.Gallery, restored.origin)
-        assertEquals(59.3293, restored.exifLatitude)
-        assertEquals(18.0686, restored.exifLongitude)
+        assertEquals("/f.jpg", (restored as ScanSource.Image).frameJpegPath)
     }
 }

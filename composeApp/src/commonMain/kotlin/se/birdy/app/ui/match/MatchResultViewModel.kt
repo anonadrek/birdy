@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.Instant
-import se.birdy.app.location.LatLng
 import se.birdy.app.photo.FrameUnavailableException
 import se.birdy.app.ui.badges.UnlockQueue
 import se.birdy.app.usecase.SaveObservationUseCase
@@ -21,24 +20,20 @@ import se.birdy.content.SpeciesRepository
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.observation.ObservationRepository
 import se.birdy.domain.observation.ObservationSource
-import se.birdy.ml.ImageOrigin
 import se.birdy.ml.ScanSource
 import java.io.File
 import java.io.IOException
 
-/** Audio + live/camera captures attach the current location; gallery uploads use EXIF instead. */
+/**
+ * Every capture attaches the current device location, gated by the opt-in location toggle.
+ * Photo uploads (gallery + take-photo) use the current location like live scans: the Android
+ * photo picker strips GPS EXIF without ACCESS_MEDIA_LOCATION, so "where the photo was taken"
+ * isn't reliably available, and "here, now" is the sensible location for an actively-logged find.
+ */
 fun shouldAttachLocation(source: ScanSource): Boolean =
     when (source) {
         is ScanSource.Audio -> true
-        is ScanSource.Image -> source.origin != ImageOrigin.Gallery
-    }
-
-/** Pre-resolved EXIF coordinates for a gallery image, else null (live/camera/audio use current()). */
-fun presetLocationFor(source: ScanSource): LatLng? =
-    (source as? ScanSource.Image)?.let { img ->
-        val lat = img.exifLatitude
-        val lng = img.exifLongitude
-        if (lat != null && lng != null) LatLng(lat, lng) else null
+        is ScanSource.Image -> true
     }
 
 class MatchResultViewModel(
@@ -240,7 +235,6 @@ class MatchResultViewModel(
                         audioPath = audioPath,
                         sourceType = sourceType,
                         attachLocation = shouldAttachLocation(current.source),
-                        presetLocation = presetLocationFor(current.source),
                     )
                 }.onFailure { if (it is CancellationException) throw it }
             val status: MatchResultUiState.SaveStatus =
@@ -297,7 +291,6 @@ class MatchResultViewModel(
                     audioPath = audioPath,
                     sourceType = sourceType,
                     attachLocation = shouldAttachLocation(current.source),
-                    presetLocation = presetLocationFor(current.source),
                 )
             }.onFailure { if (it is CancellationException) throw it }
         }

@@ -26,7 +26,6 @@ import kotlinx.coroutines.withContext
 import se.birdy.app.di.AppGraph
 import se.birdy.ml.FrameFormat
 import se.birdy.ml.ImageInput
-import se.birdy.ml.ImageOrigin
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.util.UUID
@@ -64,14 +63,6 @@ actual fun PhotoAnalyzeHost(
         remember {
             mutableStateOf<Uri?>(null)
         }
-    // Vilket ursprung den väntande URI:n har (galleri vs in-app-kamera) → styr platsfångst.
-    val pendingOrigin =
-        remember {
-            mutableStateOf(ImageOrigin.Gallery)
-        }
-    // EXIF-GPS upplöst för galleribilder (null för kamera/utan GPS); överlever crop-skärmen.
-    var captureLat by remember { mutableStateOf<Double?>(null) }
-    var captureLng by remember { mutableStateOf<Double?>(null) }
     // Arbets-bitmap som crop-skärmen visar (null = visa picker).
     var cropBitmap by remember { mutableStateOf<Bitmap?>(null) }
 
@@ -79,15 +70,6 @@ actual fun PhotoAnalyzeHost(
     LaunchedEffect(pendingDecodeUri.value) {
         val uri = pendingDecodeUri.value ?: return@LaunchedEffect
         viewModel.markAnalyzing()
-        val origin = pendingOrigin.value
-        if (origin == ImageOrigin.Gallery) {
-            val latLng = readExifLatLng(context, uri)
-            captureLat = latLng?.first
-            captureLng = latLng?.second
-        } else {
-            captureLat = null
-            captureLng = null
-        }
         val bmp = decodeForCrop(context, uri)
         pendingDecodeUri.value = null
         if (bmp == null) {
@@ -98,7 +80,7 @@ actual fun PhotoAnalyzeHost(
             // För liten för meningsfull crop → analysera hela (TooSmall fångar).
             val input = withContext(Dispatchers.IO) { finalizeCrop(bmp, CropGeometry.fullRect(bmp.width, bmp.height)) }
             bmp.recycle()
-            viewModel.analyze(input, origin, captureLat, captureLng)
+            viewModel.analyze(input)
             return@LaunchedEffect
         }
         viewModel.reset() // dölj "Analyzing" medan crop-skärmen visas
@@ -109,20 +91,14 @@ actual fun PhotoAnalyzeHost(
         rememberLauncherForActivityResult(
             contract = ActivityResultContracts.PickVisualMedia(),
         ) { uri ->
-            if (uri != null) {
-                pendingOrigin.value = ImageOrigin.Gallery
-                pendingDecodeUri.value = uri
-            }
+            if (uri != null) pendingDecodeUri.value = uri
         }
     val takePhotoLauncher =
         rememberLauncherForActivityResult(
             contract = ActivityResultContracts.TakePicture(),
         ) { success ->
             val uri = pendingTakeUri.value
-            if (success && uri != null) {
-                pendingOrigin.value = ImageOrigin.CameraCapture
-                pendingDecodeUri.value = uri
-            }
+            if (success && uri != null) pendingDecodeUri.value = uri
         }
 
     val bmp = cropBitmap
@@ -151,7 +127,7 @@ actual fun PhotoAnalyzeHost(
                 scope.launch {
                     val input = withContext(Dispatchers.IO) { finalizeCrop(toFinalize, rect) }
                     toFinalize.recycle()
-                    viewModel.analyze(input, pendingOrigin.value, captureLat, captureLng)
+                    viewModel.analyze(input)
                 }
             },
             onCancel = {
@@ -258,19 +234,6 @@ private fun rotate90(src: Bitmap): Bitmap {
     val m = Matrix().apply { postRotate(90f) }
     return Bitmap.createBitmap(src, 0, 0, src.width, src.height, m, true)
 }
-
-/** Reads decimal lat/lng from the image's EXIF GPS tags; null when absent or unreadable. */
-private suspend fun readExifLatLng(
-    context: Context,
-    uri: Uri,
-): Pair<Double, Double>? =
-    withContext(Dispatchers.IO) {
-        runCatching {
-            context.contentResolver.openInputStream(uri)?.use { stream ->
-                ExifInterface(stream).latLong?.let { it[0] to it[1] }
-            }
-        }.getOrNull()
-    }
 
 private fun readExifRotation(
     context: Context,
