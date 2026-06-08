@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro';
 import { getCopy, alternateHref, type Locale } from '../lib/i18n';
 
 interface Props {
@@ -108,5 +109,6 @@ const jsonLd = {
         }
       }
     </script>
+    <Analytics />
   </body>
 </html>

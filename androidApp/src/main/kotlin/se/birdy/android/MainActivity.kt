@@ -31,6 +31,7 @@ import se.birdy.app.bootstrap.SharedPrefsBadgeVersionStore
 import se.birdy.app.di.AppGraph
 import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
+import se.birdy.app.notifications.workers.TrophyProgressWorker
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.app.ui.audio.AndroidAudioRecorderAdapter
 import se.birdy.app.ui.audio.AndroidWaveformRenderer
@@ -429,11 +430,11 @@ class MainActivity : ComponentActivity() {
                         androidx.work.WorkManager.getInstance(applicationContext).enqueue(
                             androidx.work
                                 .OneTimeWorkRequestBuilder<
-                                    se.birdy.app.notifications.workers.TrophyProgressWorker,
+                                    TrophyProgressWorker,
                                 >()
                                 .setInputData(
                                     androidx.work.workDataOf(
-                                        se.birdy.app.notifications.workers.TrophyProgressWorker.KEY_FORCE_FOR_DEV to true,
+                                        TrophyProgressWorker.KEY_FORCE_FOR_DEV to true,
                                     ),
                                 ).build(),
                         )

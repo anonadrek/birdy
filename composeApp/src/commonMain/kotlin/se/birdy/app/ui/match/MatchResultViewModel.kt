@@ -24,11 +24,16 @@ import se.birdy.ml.ScanSource
 import java.io.File
 import java.io.IOException
 
-/** Audio + live camera captures attach location; gallery uploads never do. */
+/**
+ * Every capture attaches the current device location, gated by the opt-in location toggle.
+ * Photo uploads (gallery + take-photo) use the current location like live scans: the Android
+ * photo picker strips GPS EXIF without ACCESS_MEDIA_LOCATION, so "where the photo was taken"
+ * isn't reliably available, and "here, now" is the sensible location for an actively-logged find.
+ */
 fun shouldAttachLocation(source: ScanSource): Boolean =
     when (source) {
         is ScanSource.Audio -> true
-        is ScanSource.Image -> source.live
+        is ScanSource.Image -> true
     }
 
 class MatchResultViewModel(

@@ -109,7 +109,6 @@ fun ScanScreen(
                 ScanSource.Image(
                     frameJpegPath = s.frameJpegPath,
                     classification = classification,
-                    live = true,
                 )
             val sourceJson =
                 Json.encodeToString(ScanSourceSerialization.serializer(), scanSource.toSerial())
