@@ -11,6 +11,7 @@ import se.birdy.ml.BirdClassifier
 import se.birdy.ml.Classification
 import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.ImageInput
+import se.birdy.ml.ImageOrigin
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -49,6 +50,27 @@ class PhotoAnalyzeViewModelTest {
                 assertIs<PhotoAnalyzeUiState.Loaded>(loaded)
                 assertEquals("Q25485", loaded.predictions.first().speciesId)
                 assertEquals("/cache/photo-input/abc.jpg", loaded.frameJpegPath)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun analyze_carries_origin_and_exif_into_loaded() =
+        runTest(dispatcher) {
+            val vm =
+                PhotoAnalyzeViewModel(
+                    classifier = FakeBirdClassifier(),
+                    persist = { _ -> "/cache/photo-input/abc.jpg" },
+                )
+            vm.state.test {
+                assertEquals(PhotoAnalyzeUiState.Idle, awaitItem())
+                vm.analyze(acceptableFrame, origin = ImageOrigin.Gallery, exifLatitude = 59.3, exifLongitude = 18.0)
+                assertEquals(PhotoAnalyzeUiState.Analyzing, awaitItem())
+                val loaded = awaitItem()
+                assertIs<PhotoAnalyzeUiState.Loaded>(loaded)
+                assertEquals(ImageOrigin.Gallery, loaded.origin)
+                assertEquals(59.3, loaded.exifLatitude)
+                assertEquals(18.0, loaded.exifLongitude)
                 cancelAndIgnoreRemainingEvents()
             }
         }

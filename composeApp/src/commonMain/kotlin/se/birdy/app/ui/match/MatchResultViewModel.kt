@@ -20,15 +20,16 @@ import se.birdy.content.SpeciesRepository
 import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.observation.ObservationRepository
 import se.birdy.domain.observation.ObservationSource
+import se.birdy.ml.ImageOrigin
 import se.birdy.ml.ScanSource
 import java.io.File
 import java.io.IOException
 
-/** Audio + live camera captures attach location; gallery uploads never do. */
+/** Audio + live/camera captures attach the current location; gallery uploads use EXIF instead. */
 fun shouldAttachLocation(source: ScanSource): Boolean =
     when (source) {
         is ScanSource.Audio -> true
-        is ScanSource.Image -> source.live
+        is ScanSource.Image -> source.origin != ImageOrigin.Gallery
     }
 
 class MatchResultViewModel(

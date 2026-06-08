@@ -12,7 +12,9 @@ data class ScanSourceSerialization(
     val frameJpegPath: String,
     val classification: ClassificationSerialization,
     val audioWavPath: String? = null,
-    val live: Boolean = true,
+    val origin: String = "LiveScan",
+    val exifLatitude: Double? = null,
+    val exifLongitude: Double? = null,
 )
 
 @Serializable
@@ -34,7 +36,9 @@ fun ScanSource.toSerial(): ScanSourceSerialization =
                 type = "image",
                 frameJpegPath = frameJpegPath,
                 classification = classification.toSerial(),
-                live = live,
+                origin = origin.name,
+                exifLatitude = exifLatitude,
+                exifLongitude = exifLongitude,
             )
         is ScanSource.Audio ->
             ScanSourceSerialization(
@@ -51,7 +55,9 @@ fun ScanSourceSerialization.toScanSource(): ScanSource =
             ScanSource.Image(
                 frameJpegPath = frameJpegPath,
                 classification = classification.toClassification(),
-                live = live,
+                origin = runCatching { ImageOrigin.valueOf(origin) }.getOrDefault(ImageOrigin.LiveScan),
+                exifLatitude = exifLatitude,
+                exifLongitude = exifLongitude,
             )
         "audio" ->
             ScanSource.Audio(

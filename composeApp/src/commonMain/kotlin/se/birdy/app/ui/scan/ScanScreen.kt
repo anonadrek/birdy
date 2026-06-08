@@ -79,6 +79,7 @@ import se.birdy.ml.CameraSource
 import se.birdy.ml.Classification
 import se.birdy.ml.ClassificationResult
 import se.birdy.ml.ClassifierMode
+import se.birdy.ml.ImageOrigin
 import se.birdy.ml.ScanSource
 import se.birdy.ml.ScanSourceSerialization
 import se.birdy.ml.toSerial
@@ -109,7 +110,7 @@ fun ScanScreen(
                 ScanSource.Image(
                     frameJpegPath = s.frameJpegPath,
                     classification = classification,
-                    live = true,
+                    origin = ImageOrigin.LiveScan,
                 )
             val sourceJson =
                 Json.encodeToString(ScanSourceSerialization.serializer(), scanSource.toSerial())
