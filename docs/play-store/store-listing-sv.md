@@ -53,7 +53,7 @@ telefonen — uninstall raderar allt.
 nybörjare som vill lära sig, och alla som tycker en sångfågel i ett
 träd förtjänar en stund av uppmärksamhet.
 
-## Nyheter (v1.1)
+## Nyheter (v1.2)
 - NYTT — Karta: se dina fynd på en privat karta som lever på enheten (Premium). Att fånga platsen är gratis och lämnar aldrig telefonen.
 - Omgjorda prestationsmärken: ett rödlistat-spår, en livslista upp till 500 arter, ljud- + säsongsmärken nu gratis (34 totalt: 27 gratis + 7 premium).
 - Uppslagsverket omorganiserat i ekologiska grupper (alkor, hackspettar, duvor, tranor & rallar, m.fl.).

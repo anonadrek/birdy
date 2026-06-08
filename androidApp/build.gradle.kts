@@ -56,7 +56,7 @@ android {
                 .get()
                 .toInt()
         versionCode = 123
-        versionName = "1.1.0-rc8"
+        versionName = "1.2.0-rc1"
         buildConfigField(
             "String",
             "PLAY_LICENSE_KEY",
