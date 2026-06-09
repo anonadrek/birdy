@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -44,9 +45,20 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.premium_auto_renew_disclosure
 import birdy_bird_scanner.composeapp.generated.resources.premium_cta_primary
 import birdy_bird_scanner.composeapp.generated.resources.premium_cta_subtext
-import birdy_bird_scanner.composeapp.generated.resources.premium_feature_badges
-import birdy_bird_scanner.composeapp.generated.resources.premium_feature_export
-import birdy_bird_scanner.composeapp.generated.resources.premium_feature_stats
+import birdy_bird_scanner.composeapp.generated.resources.premium_divider
+import birdy_bird_scanner.composeapp.generated.resources.premium_feature_badges_sub
+import birdy_bird_scanner.composeapp.generated.resources.premium_feature_badges_title
+import birdy_bird_scanner.composeapp.generated.resources.premium_feature_export_sub
+import birdy_bird_scanner.composeapp.generated.resources.premium_feature_export_title
+import birdy_bird_scanner.composeapp.generated.resources.premium_feature_map_sub
+import birdy_bird_scanner.composeapp.generated.resources.premium_feature_map_title
+import birdy_bird_scanner.composeapp.generated.resources.premium_feature_stats_sub
+import birdy_bird_scanner.composeapp.generated.resources.premium_feature_stats_title
+import birdy_bird_scanner.composeapp.generated.resources.premium_free_badges
+import birdy_bird_scanner.composeapp.generated.resources.premium_free_encyclopedia
+import birdy_bird_scanner.composeapp.generated.resources.premium_free_eyebrow
+import birdy_bird_scanner.composeapp.generated.resources.premium_free_save
+import birdy_bird_scanner.composeapp.generated.resources.premium_free_scan
 import birdy_bird_scanner.composeapp.generated.resources.premium_headline_accent
 import birdy_bird_scanner.composeapp.generated.resources.premium_headline_plain
 import birdy_bird_scanner.composeapp.generated.resources.premium_headline_suffix
@@ -59,6 +71,7 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_tier_yearly_sub
 import birdy_bird_scanner.composeapp.generated.resources.premium_tier_yearly_title
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.OrnamentRule
 import se.birdy.app.ui.theme.AccentCopper
@@ -78,12 +91,6 @@ fun PremiumScreen(
     onPurchaseComplete: () -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
-    val features =
-        listOf(
-            stringResource(Res.string.premium_feature_export),
-            stringResource(Res.string.premium_feature_stats),
-            stringResource(Res.string.premium_feature_badges),
-        )
 
     Box(
         modifier =
@@ -99,9 +106,19 @@ fun PremiumScreen(
             item { OrnamentRule() }
             item { PremiumHeadline() }
             item { PremiumSubline() }
-            item { Spacer(Modifier.height(6.dp)) }
-            items(features) { feature -> FeatureRow(feature) }
+            item { Spacer(Modifier.height(10.dp)) }
+            item { FreeSummarySection() }
             item { Spacer(Modifier.height(8.dp)) }
+            item { PremiumDivider() }
+            item { Spacer(Modifier.height(2.dp)) }
+            items(premiumFeatures) { f ->
+                FeatureRowC(
+                    icon = f.icon,
+                    title = stringResource(f.title),
+                    sub = stringResource(f.sub),
+                )
+            }
+            item { Spacer(Modifier.height(10.dp)) }
             item {
                 TierCard(
                     title = stringResource(Res.string.premium_tier_yearly_title),
@@ -318,42 +335,112 @@ private fun PremiumSubline() {
 }
 
 @Composable
-private fun FeatureRow(feature: String) {
-    Row(
-        modifier =
-            Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 32.dp, vertical = 2.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        StampBullet()
-        Spacer(Modifier.size(12.dp))
+private fun FreeSummarySection() {
+    Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp)) {
         Text(
-            text = feature,
-            fontSize = 14.sp,
-            color = TextOnCreme,
+            text = stringResource(Res.string.premium_free_eyebrow),
+            fontFamily = rememberCaveat(),
+            fontWeight = FontWeight.W600,
+            fontSize = 15.sp,
+            color = MarginaliaInk,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp),
         )
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(MarginaliaInk.copy(alpha = 0.05f))
+                    .border(1.dp, MarginaliaInk.copy(alpha = 0.28f), RoundedCornerShape(12.dp))
+                    .padding(horizontal = 12.dp, vertical = 10.dp),
+            verticalArrangement = Arrangement.spacedBy(7.dp),
+        ) {
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                FreeItem(stringResource(Res.string.premium_free_scan), Modifier.weight(1f))
+                FreeItem(stringResource(Res.string.premium_free_save), Modifier.weight(1f))
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                FreeItem(stringResource(Res.string.premium_free_encyclopedia), Modifier.weight(1f))
+                FreeItem(stringResource(Res.string.premium_free_badges), Modifier.weight(1f))
+            }
+        }
     }
 }
 
 @Composable
-private fun StampBullet() {
-    Box(
-        modifier =
-            Modifier
-                .size(26.dp)
-                .clip(CircleShape)
-                .background(AccentCopper.copy(alpha = 0.08f))
-                .border(1.5.dp, AccentCopper, CircleShape),
-        contentAlignment = Alignment.Center,
+private fun RowScope.FreeItem(
+    text: String,
+    modifier: Modifier = Modifier,
+) {
+    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
+        Box(
+            modifier = Modifier.size(16.dp).clip(CircleShape).background(MarginaliaInk),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text("✓", color = PaperTop, fontSize = 10.sp)
+        }
+        Spacer(Modifier.size(7.dp))
+        Text(text, fontSize = 11.sp, color = MarginaliaInk, lineHeight = 13.sp)
+    }
+}
+
+@Composable
+private fun PremiumDivider() {
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
     ) {
+        Box(Modifier.weight(1f).height(1.dp).background(AccentCopper.copy(alpha = 0.4f)))
         Text(
-            text = "✓",
+            text = stringResource(Res.string.premium_divider),
             fontFamily = rememberCaveat(),
-            fontWeight = FontWeight.W600,
-            fontSize = 16.sp,
+            fontWeight = FontWeight.W700,
+            fontSize = 15.sp,
             color = AccentCopper,
         )
+        Box(Modifier.weight(1f).height(1.dp).background(AccentCopper.copy(alpha = 0.4f)))
+    }
+}
+
+@Composable
+private fun FeatureRowC(
+    icon: PremiumFeatureIcon,
+    title: String,
+    sub: String,
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 6.dp),
+        verticalAlignment = Alignment.Top,
+    ) {
+        Box(
+            modifier =
+                Modifier
+                    .size(34.dp)
+                    .clip(RoundedCornerShape(9.dp))
+                    .background(AccentCopper.copy(alpha = 0.08f))
+                    .border(1.3.dp, AccentCopper.copy(alpha = 0.5f), RoundedCornerShape(9.dp)),
+            contentAlignment = Alignment.Center,
+        ) {
+            PremiumFeatureGlyph(icon, modifier = Modifier.size(18.dp))
+        }
+        Spacer(Modifier.size(12.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = title,
+                fontFamily = rememberDmSerifDisplay(),
+                fontStyle = FontStyle.Italic,
+                fontSize = 15.sp,
+                color = TextOnCreme,
+            )
+            Text(
+                text = sub,
+                fontSize = 11.sp,
+                color = MarginaliaInk,
+                modifier = Modifier.padding(top = 1.dp),
+            )
+        }
     }
 }
 
@@ -469,3 +556,17 @@ private fun PrimaryCta(
         )
     }
 }
+
+private data class PremiumFeatureItem(
+    val icon: PremiumFeatureIcon,
+    val title: StringResource,
+    val sub: StringResource,
+)
+
+private val premiumFeatures =
+    listOf(
+        PremiumFeatureItem(PremiumFeatureIcon.MAP, Res.string.premium_feature_map_title, Res.string.premium_feature_map_sub),
+        PremiumFeatureItem(PremiumFeatureIcon.EXPORT, Res.string.premium_feature_export_title, Res.string.premium_feature_export_sub),
+        PremiumFeatureItem(PremiumFeatureIcon.STATS, Res.string.premium_feature_stats_title, Res.string.premium_feature_stats_sub),
+        PremiumFeatureItem(PremiumFeatureIcon.BADGE, Res.string.premium_feature_badges_title, Res.string.premium_feature_badges_sub),
+    )
