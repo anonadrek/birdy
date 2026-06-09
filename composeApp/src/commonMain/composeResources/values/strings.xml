@@ -728,7 +728,8 @@
 
     <!-- ===== Personal finds map ===== -->
     <string name="map_empty">Inga fynd med plats än. Slå på platsfångst i Inställningar och spara ett fynd ute i fält.</string>
-    <string name="map_attribution">© OpenStreetMap · © MapTiler</string>
+    <string name="map_attribution_maptiler">© MapTiler</string>
+    <string name="map_attribution_osm">© OpenStreetMap contributors</string>
     <string name="map_teaser_title">Din fågelkarta</string>
     <string name="map_teaser_caption">Se var du har sett dina fåglar.</string>
     <string name="map_teaser_count">%1$s fynd med plats väntar på kartan</string>

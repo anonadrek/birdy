@@ -714,7 +714,8 @@
 
     <!-- ===== Personal finds map ===== -->
     <string name="map_empty">No located finds yet. Turn on location in Settings and save a find out in the field.</string>
-    <string name="map_attribution">© OpenStreetMap · © MapTiler</string>
+    <string name="map_attribution_maptiler">© MapTiler</string>
+    <string name="map_attribution_osm">© OpenStreetMap contributors</string>
     <string name="map_teaser_title">Your bird map</string>
     <string name="map_teaser_caption">See where you spotted your birds.</string>
     <string name="map_teaser_count">%1$s located finds waiting on the map</string>
