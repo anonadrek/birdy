@@ -19,6 +19,7 @@ class InMemoryUserPreferences : UserPreferences {
     private val _lifelistSort = MutableStateFlow(LifelistSort.RECENT)
     private val _firstInstallTimestamp = MutableStateFlow<Long?>(null)
     private val _premiumModalLastShownAt = MutableStateFlow<Long?>(null)
+    private val _postOnboardingPremiumShown = MutableStateFlow(false)
     private val _pushPermissionAsked = MutableStateFlow(false)
     private val _dailyBirdPushEnabled = MutableStateFlow(true)
     private val _streakRiskPushEnabled = MutableStateFlow(true)
@@ -35,6 +36,7 @@ class InMemoryUserPreferences : UserPreferences {
     override val lifelistSort: Flow<LifelistSort> = _lifelistSort.asStateFlow()
     override val firstInstallTimestamp: Flow<Long?> = _firstInstallTimestamp.asStateFlow()
     override val premiumModalLastShownAt: Flow<Long?> = _premiumModalLastShownAt.asStateFlow()
+    override val postOnboardingPremiumShown: Flow<Boolean> = _postOnboardingPremiumShown.asStateFlow()
     override val pushPermissionAsked: Flow<Boolean> = _pushPermissionAsked.asStateFlow()
     override val dailyBirdPushEnabled: Flow<Boolean> = _dailyBirdPushEnabled.asStateFlow()
     override val streakRiskPushEnabled: Flow<Boolean> = _streakRiskPushEnabled.asStateFlow()
@@ -76,6 +78,10 @@ class InMemoryUserPreferences : UserPreferences {
 
     override suspend fun setPremiumModalLastShownAt(ms: Long) {
         _premiumModalLastShownAt.value = ms
+    }
+
+    override suspend fun setPostOnboardingPremiumShown(value: Boolean) {
+        _postOnboardingPremiumShown.value = value
     }
 
     override suspend fun setPushPermissionAsked(value: Boolean) {

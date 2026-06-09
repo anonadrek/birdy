@@ -1,4 +1,4 @@
-# Play Console — copy-paste text for v1.2 (vC123 / 1.2.0-rc1)
+# Play Console — copy-paste text for v1.2 (vC124 / 1.2.0-rc2)
 
 Plain-text, paste-ready per Console field. (The canonical copy lives in
 `store-listing-en.md` / `store-listing-sv.md`, but those use markdown `**bold**`
@@ -55,6 +55,7 @@ NEW — Map: see your finds on a private, on-device map (Premium); opt-in locati
 Reworked stamps: red-listed track, life list to 500, audio + seasonal now free (34 total).
 Encyclopedia grouped by ecological family (auks, woodpeckers, doves…).
 Weekly Recap shows every find of the week; chase the Bird of the Day for a free stamp.
+Clearer Premium screen — see what's free vs. what Premium adds.
 Search handles apostrophes & accents. Sharper icon, smoother cards.
 ```
 
@@ -106,5 +107,6 @@ NYTT — Karta: se dina fynd på en privat karta som lever på enheten (Premium)
 Omgjorda märken: rödlistat-spår, livslista till 500, ljud + säsong nu gratis (34 totalt).
 Uppslagsverket grupperat i ekologiska familjer (alkor, hackspettar, duvor…).
 Veckans uppslag visar veckans alla fynd; jaga Dagens fågel för ett gratis märke.
+Tydligare Premium-skärm — se vad som är gratis och vad Premium ger.
 Sök klarar apostrofer & diakriter. Skarpare ikon, mjukare kort.
 ```

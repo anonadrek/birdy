@@ -30,4 +30,24 @@ object EntryFlowDecider {
         if (lastShownAt != null && (now - lastShownAt).inWholeMilliseconds < THROTTLE_DAYS * DAY_MS) return false
         return true
     }
+
+    /**
+     * Show the premium screen once, immediately after onboarding, iff:
+     *  1. Onboarding completed
+     *  2. Not shown before
+     *  3. Premium is Free (not Active)
+     *
+     * No grace/throttle — this is the day-0 introduction, distinct from the
+     * 7-day cold-start modal above.
+     */
+    fun shouldShowPostOnboardingPremium(
+        onboardingComplete: Boolean,
+        alreadyShown: Boolean,
+        state: PremiumState,
+    ): Boolean {
+        if (!onboardingComplete) return false
+        if (alreadyShown) return false
+        if (state !is PremiumState.Free) return false
+        return true
+    }
 }

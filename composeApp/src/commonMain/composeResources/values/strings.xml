@@ -493,9 +493,21 @@
     <string name="premium_headline_accent">fältornitolog.</string>
     <string name="premium_headline_suffix"></string>
     <string name="premium_subline">— Stöd Birdy och få fler verktyg i fält. —</string>
-    <string name="premium_feature_export">Exportera fältdagbok som PDF</string>
-    <string name="premium_feature_stats">Säsongs-statistik &amp; årsöversikt</string>
-    <string name="premium_feature_badges">Fältmärken (10 premium-stämplar)</string>
+    <!-- Premium-skärm v2: gratis-summering + 4 feature-rader -->
+    <string name="premium_free_eyebrow">Allt det här är gratis — alltid</string>
+    <string name="premium_free_scan">Skanna foto &amp; ljud</string>
+    <string name="premium_free_save">Spara fynd i fältdagboken</string>
+    <string name="premium_free_encyclopedia">Uppslagsverk · 839 arter</string>
+    <string name="premium_free_badges">27 fältmärken &amp; Troférum</string>
+    <string name="premium_divider">Med Premium dessutom</string>
+    <string name="premium_feature_map_title">Fynd-kartan</string>
+    <string name="premium_feature_map_sub">Se var du har sett dina fåglar</string>
+    <string name="premium_feature_export_title">Exportera fältdagbok</string>
+    <string name="premium_feature_export_sub">Hela dagboken som delbar PDF</string>
+    <string name="premium_feature_stats_title">Säsongsstatistik</string>
+    <string name="premium_feature_stats_sub">Mönster &amp; årsöversikt från dina fynd</string>
+    <string name="premium_feature_badges_title">7 premium-fältmärken</string>
+    <string name="premium_feature_badges_sub">Exklusiva stämplar att jaga</string>
     <string name="premium_tier_yearly_title">1 år</string>
     <string name="premium_tier_yearly_price">199 kr / år</string>
     <string name="premium_tier_yearly_sub">~17 kr / mån</string>
@@ -535,7 +547,7 @@
     <string name="premium_lifelist_badge">PREMIUM</string>
     <string name="premium_lifelist_preview_caption">Vår 2026 · 23 nya arter</string>
     <string name="premium_badges_section">Fältmärken · PREMIUM</string>
-    <string name="premium_badges_cta">Lås upp 10 fältmärken →</string>
+    <string name="premium_badges_cta">Lås upp 7 fältmärken →</string>
     <string name="premium_species_title">Fältobservatörens insikter</string>
     <string name="premium_species_subtitle">Migrationskarta · läten · djupare fält-anteckningar</string>
     <string name="premium_teaser_corner">PREMIUM</string>
