@@ -69,20 +69,13 @@ fun LockedBadgeBottomSheet(
                         .border(3.dp, AccentCopper, CircleShape),
                 contentAlignment = Alignment.Center,
             ) {
-                Text("№", color = AccentCopper, fontFamily = serif, fontStyle = FontStyle.Italic, fontSize = 30.sp)
+                val stampText = if (progress.stampNumber > 0) "№${progress.stampNumber}" else "№"
+                Text(stampText, color = AccentCopper, fontFamily = serif, fontStyle = FontStyle.Italic, fontSize = 30.sp)
             }
             Spacer(Modifier.height(14.dp))
             Text(displayName, color = TextOnCreme, fontFamily = serif, fontStyle = FontStyle.Italic, fontSize = 26.sp)
 
-            if (hidden) {
-                Spacer(Modifier.height(12.dp))
-                Text(
-                    stringResource(Res.string.badges_locked_tooltip),
-                    color = MarginaliaInk,
-                    fontFamily = caveat,
-                    fontSize = 18.sp,
-                )
-            } else {
+            if (!hidden) {
                 Spacer(Modifier.height(4.dp))
                 val cat = stringResource(BadgeStringMap.categoryLabelFor(badge.category))
                 val eyebrow =

@@ -40,6 +40,12 @@ import birdy_bird_scanner.composeapp.generated.resources.badge_uncommon
 import birdy_bird_scanner.composeapp.generated.resources.empty_description
 import birdy_bird_scanner.composeapp.generated.resources.empty_migration
 import birdy_bird_scanner.composeapp.generated.resources.empty_photos
+import birdy_bird_scanner.composeapp.generated.resources.iucn_cr
+import birdy_bird_scanner.composeapp.generated.resources.iucn_dd
+import birdy_bird_scanner.composeapp.generated.resources.iucn_en
+import birdy_bird_scanner.composeapp.generated.resources.iucn_lc
+import birdy_bird_scanner.composeapp.generated.resources.iucn_nt
+import birdy_bird_scanner.composeapp.generated.resources.iucn_vu
 import birdy_bird_scanner.composeapp.generated.resources.not_found_body
 import birdy_bird_scanner.composeapp.generated.resources.not_found_title
 import birdy_bird_scanner.composeapp.generated.resources.premium_species_subtitle
@@ -159,9 +165,19 @@ private fun ProfileContent(
                             Abundance.ALLMÄN -> stringResource(Res.string.badge_common)
                             else -> stringResource(Res.string.badge_uncommon)
                         }
+                    val iucnLabel =
+                        when (species.iucnStatus.uppercase()) {
+                            "LC" -> stringResource(Res.string.iucn_lc)
+                            "NT" -> stringResource(Res.string.iucn_nt)
+                            "VU" -> stringResource(Res.string.iucn_vu)
+                            "EN" -> stringResource(Res.string.iucn_en)
+                            "CR" -> stringResource(Res.string.iucn_cr)
+                            "DD" -> stringResource(Res.string.iucn_dd)
+                            else -> species.iucnStatus
+                        }
                     JournalPill(text = abundanceLabel, isFilled = true)
                     JournalPill(text = familyLabel, isFilled = false)
-                    JournalPill(text = species.iucnStatus, isFilled = false)
+                    if (iucnLabel.isNotBlank()) JournalPill(text = iucnLabel, isFilled = false)
                 }
             }
 

@@ -40,6 +40,14 @@
     <string name="a11y_crop_hint">Drag the corners to crop the image</string>
     <string name="onboarding_hero_image_cd">Birdy — the app's bird mascot</string>
 
+    <!-- IUCN red-list status labels -->
+    <string name="iucn_lc">Least concern</string>
+    <string name="iucn_nt">Near threatened</string>
+    <string name="iucn_vu">Vulnerable</string>
+    <string name="iucn_en">Endangered</string>
+    <string name="iucn_cr">Critically endangered</string>
+    <string name="iucn_dd">Data deficient</string>
+
     <string name="search_placeholder">Search species, genus or family…</string>
     <string name="search_empty_title">No species match</string>
     <string name="search_empty_body">Try other filters or search by scientific name.</string>
@@ -342,6 +350,7 @@
     <string name="settings_name_dialog_title">Change name</string>
     <string name="settings_name_dialog_save">Save</string>
     <string name="settings_name_dialog_cancel">Cancel</string>
+    <string name="settings_language_dialog_done">Done</string>
     <string name="settings_back">Back</string>
     <string name="menu_button">Menu</string>
 
@@ -506,7 +515,7 @@
     <string name="stats_total_observations">Observations</string>
     <string name="stats_empty_eyebrow">SEASON</string>
     <string name="stats_empty_headline">Nothing to *chart* yet.</string>
-    <string name="stats_empty_sub">Save a few observations to unlock your year.</string>
+    <string name="stats_empty_sub">No finds yet this year — save one to unlock your yearly overview.</string>
     <string name="stats_back">Back</string>
     <string name="stats_count_format">%1$d obs</string>
     <string name="stats_winter">Winter</string>

@@ -23,6 +23,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Close
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -554,13 +555,21 @@ private fun PrimaryCta(
                 .padding(vertical = 14.dp),
         contentAlignment = Alignment.Center,
     ) {
-        Text(
-            text = text,
-            color = SandCreme,
-            fontFamily = rememberDmSerifDisplay(),
-            fontStyle = FontStyle.Italic,
-            fontSize = 18.sp,
-        )
+        if (inFlight) {
+            CircularProgressIndicator(
+                color = SandCreme,
+                strokeWidth = 2.dp,
+                modifier = Modifier.size(20.dp),
+            )
+        } else {
+            Text(
+                text = text,
+                color = SandCreme,
+                fontFamily = rememberDmSerifDisplay(),
+                fontStyle = FontStyle.Italic,
+                fontSize = 18.sp,
+            )
+        }
     }
 }
 

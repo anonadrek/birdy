@@ -77,6 +77,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_hero_subline
 import birdy_bird_scanner.composeapp.generated.resources.settings_label_about
 import birdy_bird_scanner.composeapp.generated.resources.settings_label_language
 import birdy_bird_scanner.composeapp.generated.resources.settings_label_name
+import birdy_bird_scanner.composeapp.generated.resources.settings_language_dialog_done
 import birdy_bird_scanner.composeapp.generated.resources.settings_language_en
 import birdy_bird_scanner.composeapp.generated.resources.settings_language_sv
 import birdy_bird_scanner.composeapp.generated.resources.settings_language_system
@@ -628,7 +629,7 @@ private fun LanguagePickerDialog(
         },
         confirmButton = {
             TextButton(onClick = onDismiss) {
-                Text(stringResource(Res.string.settings_name_dialog_cancel))
+                Text(stringResource(Res.string.settings_language_dialog_done))
             }
         },
         containerColor = PaperTop,
