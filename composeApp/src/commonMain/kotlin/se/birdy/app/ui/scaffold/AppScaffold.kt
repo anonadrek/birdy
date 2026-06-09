@@ -59,9 +59,24 @@ fun AppScaffold(graph: AppGraph) {
     val showPremiumTeaser = !effectivePremiumActive
     LaunchedEffect(Unit) {
         val now = graph.clock.now()
+        val premiumState = graph.premiumOverride ?: graph.premiumRepository.state.value
+
+        // Day-0: show the premium screen once right after onboarding (non-premium only).
+        val postOnboardingShown = graph.userPreferences.postOnboardingPremiumShown.first()
+        if (EntryFlowDecider.shouldShowPostOnboardingPremium(
+                onboardingComplete = true,
+                alreadyShown = postOnboardingShown,
+                state = premiumState,
+            )
+        ) {
+            graph.userPreferences.setPostOnboardingPremiumShown(true)
+            navController.navigate(AppRoute.Premium)
+            return@LaunchedEffect
+        }
+
+        // Otherwise: the 7-day cold-start re-engagement modal.
         val firstInstallMs = graph.userPreferences.firstInstallTimestamp.first()
         val lastShownMs = graph.userPreferences.premiumModalLastShownAt.first()
-        val premiumState = graph.premiumOverride ?: graph.premiumRepository.state.value
         val shouldShow =
             EntryFlowDecider.shouldShowPremiumModal(
                 now = now,
