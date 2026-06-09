@@ -482,6 +482,21 @@
     <string name="premium_feature_export">Export field journal as PDF</string>
     <string name="premium_feature_stats">Seasonal statistics &amp; yearly overview</string>
     <string name="premium_feature_badges">Field marks (10 premium stamps)</string>
+    <!-- Premium screen v2: free summary + 4 feature rows -->
+    <string name="premium_free_eyebrow">All of this is free — always</string>
+    <string name="premium_free_scan">Scan photo &amp; sound</string>
+    <string name="premium_free_save">Save finds to your journal</string>
+    <string name="premium_free_encyclopedia">Encyclopedia · 839 species</string>
+    <string name="premium_free_badges">27 field marks &amp; Trophy Room</string>
+    <string name="premium_divider">With Premium, also</string>
+    <string name="premium_feature_map_title">Your finds map</string>
+    <string name="premium_feature_map_sub">See where you&#8217;ve spotted your birds</string>
+    <string name="premium_feature_export_title">Export field journal</string>
+    <string name="premium_feature_export_sub">Your whole journal as a shareable PDF</string>
+    <string name="premium_feature_stats_title">Seasonal statistics</string>
+    <string name="premium_feature_stats_sub">Patterns &amp; yearly overview from your finds</string>
+    <string name="premium_feature_badges_title">7 premium field marks</string>
+    <string name="premium_feature_badges_sub">Exclusive stamps to chase</string>
     <string name="premium_tier_yearly_title">1 year</string>
     <string name="premium_tier_yearly_price">199 SEK / year</string>
     <string name="premium_tier_yearly_sub">~17 SEK / mo</string>
@@ -521,7 +536,7 @@
     <string name="premium_lifelist_badge">PREMIUM</string>
     <string name="premium_lifelist_preview_caption">Spring 2026 · 23 new species</string>
     <string name="premium_badges_section">Field marks · PREMIUM</string>
-    <string name="premium_badges_cta">Unlock 10 field marks →</string>
+    <string name="premium_badges_cta">Unlock 7 field marks →</string>
     <string name="premium_species_title">Field observer’s insights</string>
     <string name="premium_species_subtitle">Migration map · songs · deeper field notes</string>
     <string name="premium_teaser_corner">PREMIUM</string>
