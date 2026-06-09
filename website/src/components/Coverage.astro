@@ -75,3 +75,63 @@ const t = getCopy(locale);
   /* MapLibre injects a canvas as a child of .map; let it cover the fallback */
   .map :global(.maplibregl-canvas) { position: absolute; inset: 0; }
 </style>
+
+<script>
+  import 'maplibre-gl/dist/maplibre-gl.css';
+
+  const KEY = import.meta.env.PUBLIC_MAPTILER_KEY as string | undefined;
+  const PAPER = '#EFE7D6', INK = '#2E2417', WATER = '#DACFB2', COPPER = '#A8552D', NAVY = '#1F3A5F';
+
+  const container = document.querySelector<HTMLElement>('[data-coverage-map]');
+  if (container && KEY) {
+    const io = new IntersectionObserver((entries, obs) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { obs.disconnect(); initMap(container, KEY); }
+      }
+    }, { rootMargin: '200px' });
+    io.observe(container);
+  }
+
+  async function initMap(el: HTMLElement, key: string) {
+    const maplibregl = (await import('maplibre-gl')).default;
+    const map = new maplibregl.Map({
+      container: el,
+      attributionControl: false,
+      center: [12, 40], zoom: 2.1, minZoom: 1.1, maxZoom: 8,
+      dragRotate: false, pitchWithRotate: false, touchPitch: false,
+      cooperativeGestures: true,
+      style: `https://api.maptiler.com/maps/dataviz-light/style.json?key=${key}`,
+    });
+    map.touchZoomRotate.disableRotation();
+
+    // the .map box gets its height from aspect-ratio after layout — keep the
+    // canvas in sync or markers/projection drift.
+    const fit = () => { try { map.resize(); } catch {} };
+    requestAnimationFrame(fit);
+    new ResizeObserver(fit).observe(el);
+
+    map.on('load', () => {
+      fit();
+      recolour(map);
+    });
+
+    (window as any).__coverageMap = map; // handy for manual debugging
+  }
+
+  function recolour(map: any) {
+    for (const l of map.getStyle().layers) {
+      try {
+        if (l.type === 'background') map.setPaintProperty(l.id, 'background-color', PAPER);
+        else if (l.type === 'fill') {
+          if (/water|sea|ocean|lake|river|bath/i.test(l.id)) map.setPaintProperty(l.id, 'fill-color', WATER);
+          else { map.setPaintProperty(l.id, 'fill-color', PAPER); map.setPaintProperty(l.id, 'fill-opacity', 1); }
+        } else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', INK);
+        else if (l.type === 'symbol') {
+          map.setPaintProperty(l.id, 'text-color', INK);
+          map.setPaintProperty(l.id, 'text-halo-color', PAPER);
+          map.setPaintProperty(l.id, 'text-halo-width', 1.4);
+        }
+      } catch {}
+    }
+  }
+</script>
