@@ -493,9 +493,6 @@
     <string name="premium_headline_accent">fältornitolog.</string>
     <string name="premium_headline_suffix"></string>
     <string name="premium_subline">— Stöd Birdy och få fler verktyg i fält. —</string>
-    <string name="premium_feature_export">Exportera fältdagbok som PDF</string>
-    <string name="premium_feature_stats">Säsongs-statistik &amp; årsöversikt</string>
-    <string name="premium_feature_badges">Fältmärken (10 premium-stämplar)</string>
     <!-- Premium-skärm v2: gratis-summering + 4 feature-rader -->
     <string name="premium_free_eyebrow">Allt det här är gratis — alltid</string>
     <string name="premium_free_scan">Skanna foto &amp; ljud</string>
