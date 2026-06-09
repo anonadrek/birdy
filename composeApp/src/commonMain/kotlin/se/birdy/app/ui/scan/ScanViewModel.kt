@@ -32,9 +32,23 @@ class ScanViewModel(
     private val confidenceThreshold: Float = 0.35f,
     private val frameThrottling: Boolean = true,
     private val nowMillis: () -> Long = { Clock.System.now().toEpochMilliseconds() },
+    // Maps speciesId (raw Wikidata Q-id) -> locale-resolved display name. Loaded once at
+    // init from the species catalog so the live chip never shows a raw Q-id. Default empty
+    // keeps tests and previews independent of the content layer.
+    private val loadNames: suspend () -> Map<String, String> = { emptyMap() },
 ) : ViewModel() {
     private val _state = MutableStateFlow<ScanUiState>(ScanUiState.PermissionRequired)
     val state: StateFlow<ScanUiState> = _state.asStateFlow()
+
+    // Cached id->name map; populated asynchronously at init. Reads are cheap and happen
+    // on every frame, so we resolve in-memory rather than hitting the DB per detection.
+    private var nameByQid: Map<String, String> = emptyMap()
+
+    init {
+        viewModelScope.launch {
+            nameByQid = runCatching { loadNames() }.getOrElse { emptyMap() }
+        }
+    }
 
     // Single source instance owned by the VM and exposed to the UI so PreviewView
     // and the camera bind to the same CameraSource.
@@ -117,6 +131,7 @@ class ScanViewModel(
         _state.value =
             ScanUiState.Scanning(
                 top1 = top1,
+                displayName = top1?.speciesId?.let { nameByQid[it] },
                 isThrottled = periodFlowMs.value == 666L,
             )
     }

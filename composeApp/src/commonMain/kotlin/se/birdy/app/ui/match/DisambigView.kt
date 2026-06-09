@@ -85,7 +85,14 @@ internal fun DisambigView(
                                         color = AccentCopper.copy(alpha = 0.3f),
                                         shape = RoundedCornerShape(10.dp),
                                     ),
-                        )
+                        ) {
+                            AsyncImage(
+                                model = "file://${state.frameJpegPath}",
+                                contentDescription = null,
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.Crop,
+                            )
+                        }
                         Spacer(Modifier.size(12.dp))
                         Text(
                             text = stringResource(Res.string.disambig_frame_caption).removeSurrounding("*"),

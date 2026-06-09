@@ -58,6 +58,8 @@
     <string name="search_placeholder">Sök art, släkte eller familj…</string>
     <string name="search_empty_title">Ingen art matchar</string>
     <string name="search_empty_body">Prova andra filter eller sök på vetenskapligt namn.</string>
+    <string name="archive_empty_group_title">Inga arter i den här gruppen</string>
+    <string name="archive_empty_group_body">Välj en annan grupp ovan för att fortsätta bläddra.</string>
 
     <!-- Sparse-data empty states -->
     <string name="empty_description">Beskrivning kommer i en framtida uppdatering.</string>
@@ -567,6 +569,8 @@
     <string name="stats_section_seasons">Per säsong</string>
     <string name="stats_section_top">Mest sedda arter</string>
     <string name="stats_section_cumulative">Nya arter över tid</string>
+    <string name="stats_total_species">Arter</string>
+    <string name="stats_total_observations">Observationer</string>
     <string name="stats_empty_eyebrow">SÄSONG</string>
     <string name="stats_empty_headline">Inget att *kartlägga* ännu.</string>
     <string name="stats_empty_sub">Spara några observationer för att låsa upp ditt år.</string>

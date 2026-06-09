@@ -69,6 +69,8 @@ import birdy_bird_scanner.composeapp.generated.resources.archive_chip_songbirds
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_waders
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_waterfowl
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_woodpeckers
+import birdy_bird_scanner.composeapp.generated.resources.archive_empty_group_body
+import birdy_bird_scanner.composeapp.generated.resources.archive_empty_group_title
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_body
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_retry
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_title
@@ -271,10 +273,19 @@ fun ArchiveScreen(
                     }
                 ArchiveUiState.Empty ->
                     item(key = "empty") {
-                        EmptyState(
-                            title = stringResource(Res.string.search_empty_title),
-                            body = stringResource(Res.string.search_empty_body),
-                        )
+                        // A blank query with no rows means a group chip filtered everything out —
+                        // the "search by scientific name" hint would be nonsensical there.
+                        if (query.isBlank()) {
+                            EmptyState(
+                                title = stringResource(Res.string.archive_empty_group_title),
+                                body = stringResource(Res.string.archive_empty_group_body),
+                            )
+                        } else {
+                            EmptyState(
+                                title = stringResource(Res.string.search_empty_title),
+                                body = stringResource(Res.string.search_empty_body),
+                            )
+                        }
                     }
                 is ArchiveUiState.Error ->
                     item(key = "error") {

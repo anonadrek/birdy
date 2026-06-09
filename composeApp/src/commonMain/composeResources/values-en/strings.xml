@@ -52,6 +52,8 @@
     <string name="search_placeholder">Search species, genus or family…</string>
     <string name="search_empty_title">No species match</string>
     <string name="search_empty_body">Try other filters or search by scientific name.</string>
+    <string name="archive_empty_group_title">No species in this group</string>
+    <string name="archive_empty_group_body">Pick another group above to keep browsing.</string>
 
     <string name="empty_description">A description will be added in a future update.</string>
     <string name="empty_migration">No migration data available for this species.</string>
@@ -553,6 +555,8 @@
     <string name="stats_section_seasons">By season</string>
     <string name="stats_section_top">Most-seen species</string>
     <string name="stats_section_cumulative">New species over time</string>
+    <string name="stats_total_species">Species</string>
+    <string name="stats_total_observations">Observations</string>
     <string name="stats_empty_eyebrow">SEASON</string>
     <string name="stats_empty_headline">Nothing to *chart* yet.</string>
     <string name="stats_empty_sub">Save a few observations to unlock your year.</string>
@@ -623,7 +627,7 @@
 
     <!-- Permission prompt sheet -->
     <string name="permission_prompt_eyebrow">NOTIFICATIONS</string>
-    <string name="permission_prompt_headline">Want a *reminder* when there\'s a bird worth meeting?</string>
+    <string name="permission_prompt_headline">Want a *reminder* when there's a bird worth meeting?</string>
     <string name="permission_prompt_sub">Max one nudge a day. Turn off anytime.</string>
     <string name="permission_prompt_cta_yes">Turn on</string>
     <string name="permission_prompt_cta_no">Not now</string>

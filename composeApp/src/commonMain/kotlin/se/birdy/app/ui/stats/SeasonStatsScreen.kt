@@ -42,6 +42,8 @@ import birdy_bird_scanner.composeapp.generated.resources.stats_section_top
 import birdy_bird_scanner.composeapp.generated.resources.stats_spring
 import birdy_bird_scanner.composeapp.generated.resources.stats_summer
 import birdy_bird_scanner.composeapp.generated.resources.stats_title
+import birdy_bird_scanner.composeapp.generated.resources.stats_total_observations
+import birdy_bird_scanner.composeapp.generated.resources.stats_total_species
 import birdy_bird_scanner.composeapp.generated.resources.stats_winter
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
@@ -190,8 +192,8 @@ private fun TotalsRow(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(24.dp),
     ) {
-        TotalCell(value = totalSpecies, labelRes = Res.string.stats_section_top)
-        TotalCell(value = totalObservations, labelRes = Res.string.stats_section_months)
+        TotalCell(value = totalSpecies, labelRes = Res.string.stats_total_species)
+        TotalCell(value = totalObservations, labelRes = Res.string.stats_total_observations)
     }
 }
 

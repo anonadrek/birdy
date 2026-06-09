@@ -144,10 +144,13 @@ fun ScanScreen(
                             },
                 )
                 if (s is ScanUiState.Scanning) {
-                    val pct = s.top1?.confidence?.let { (it * 100).toInt() }
-                    val name = s.top1?.speciesId ?: stringResource(Res.string.scan_top1_searching)
+                    // Show the resolved name (never the raw Q-id). Until the name resolves
+                    // (or for non-catalog detections) fall back to "searching" with no pct.
+                    val resolvedName = s.displayName
+                    val pct =
+                        if (resolvedName != null) s.top1?.confidence?.let { (it * 100).toInt() } else null
                     TopChip(
-                        speciesName = name,
+                        speciesName = resolvedName ?: stringResource(Res.string.scan_top1_searching),
                         confidencePct = pct,
                         modifier =
                             Modifier
