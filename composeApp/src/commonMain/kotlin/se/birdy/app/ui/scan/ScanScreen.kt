@@ -367,10 +367,10 @@ private fun ErrorView(kind: ScanErrorKind) {
             ScanErrorKind.ClassifierFailed -> stringResource(Res.string.scan_error_classifier_failed)
         }
     Column(
-        modifier = Modifier.fillMaxSize().padding(24.dp),
+        modifier = Modifier.fillMaxSize().paperBackground().padding(24.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(message, color = TextOnHero)
+        Text(message, color = TextOnCreme)
     }
 }

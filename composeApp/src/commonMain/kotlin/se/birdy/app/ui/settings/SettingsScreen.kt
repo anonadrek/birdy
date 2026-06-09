@@ -22,6 +22,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.List
+import androidx.compose.material.icons.outlined.CalendarToday
+import androidx.compose.material.icons.outlined.EmojiEvents
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.MailOutline
@@ -199,21 +202,21 @@ fun SettingsScreen(
 
                 PaperCard {
                     ToggleRow(
-                        icon = Icons.Outlined.Notifications,
+                        icon = Icons.Outlined.CalendarToday,
                         label = stringResource(Res.string.settings_toggle_daily_bird),
                         checked = dailyBirdEnabled,
                         onCheckedChange = viewModel::setDailyBirdPushEnabled,
                     )
                     DashedDivider()
                     ToggleRow(
-                        icon = Icons.Outlined.Notifications,
+                        icon = Icons.AutoMirrored.Outlined.List,
                         label = stringResource(Res.string.settings_toggle_weekly_recap),
                         checked = weeklyRecapEnabled,
                         onCheckedChange = viewModel::setWeeklyRecapPushEnabled,
                     )
                     DashedDivider()
                     ToggleRow(
-                        icon = Icons.Outlined.Notifications,
+                        icon = Icons.Outlined.EmojiEvents,
                         label = stringResource(Res.string.settings_toggle_trophy),
                         checked = trophyEnabled,
                         onCheckedChange = viewModel::setWeeklyTrophyPushEnabled,

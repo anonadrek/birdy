@@ -59,11 +59,10 @@ import se.birdy.app.ui.stats.charts.JournalLineChart
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.StampNavy
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
-
-private val WinterLegendColor = Color(0xFF1F3A5F)
 
 /**
  * Plan 6b3 T11: Premium-tier Season Statistics page. Shows a snapshot of the
@@ -242,7 +241,7 @@ private fun SeasonLegend(breakdown: SeasonStatsUiState.SeasonBreakdown) {
         modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
-        LegendRow(stringResource(Res.string.stats_winter), breakdown.winter, WinterLegendColor)
+        LegendRow(stringResource(Res.string.stats_winter), breakdown.winter, StampNavy)
         LegendRow(stringResource(Res.string.stats_spring), breakdown.spring, HeroMossMid)
         LegendRow(stringResource(Res.string.stats_summer), breakdown.summer, AccentCopper)
         LegendRow(stringResource(Res.string.stats_autumn), breakdown.autumn, MarginaliaInk)

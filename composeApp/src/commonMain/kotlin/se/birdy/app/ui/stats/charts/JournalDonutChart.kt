@@ -15,9 +15,8 @@ import se.birdy.app.ui.stats.SeasonStatsUiState
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.StampNavy
 import kotlin.math.min
-
-private val WinterNavy = Color(0xFF1F3A5F)
 
 /**
  * Plan 6b3 T10: meteorological-season donut. 4 stroked arcs (winter / spring /
@@ -30,7 +29,7 @@ private val WinterNavy = Color(0xFF1F3A5F)
 fun JournalDonutChart(
     breakdown: SeasonStatsUiState.SeasonBreakdown,
     modifier: Modifier = Modifier,
-    winterColor: Color = WinterNavy,
+    winterColor: Color = StampNavy,
     springColor: Color = HeroMossMid,
     summerColor: Color = AccentCopper,
     autumnColor: Color = MarginaliaInk,

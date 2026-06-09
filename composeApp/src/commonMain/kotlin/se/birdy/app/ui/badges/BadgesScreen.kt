@@ -306,7 +306,7 @@ private fun PremiumBadgesActiveGrid(
     onUnlockedClick: (PremiumBadgeProgress) -> Unit,
     onLockedClick: (PremiumBadgeProgress) -> Unit,
 ) {
-    val rows = badges.chunked(5)
+    val rows = badges.chunked(3)
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         rows.forEach { row ->
             Row(
