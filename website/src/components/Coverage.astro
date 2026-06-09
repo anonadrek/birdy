@@ -1,0 +1,77 @@
+---
+import EyebrowLabel from './ui/EyebrowLabel.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import OrnamentRule from './ui/OrnamentRule.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = getCopy(locale);
+---
+
+<section id="coverage" class="coverage">
+  <div class="head" data-reveal>
+    <EyebrowLabel text={t.coverage.eyebrow} />
+    <JournalHeadline text={t.coverage.headline} level="h2" />
+    <p class="sub">{t.coverage.sub}</p>
+    <OrnamentRule />
+  </div>
+
+  <figure class="map-frame" data-reveal>
+    <div class="map" data-coverage-map>
+      <img
+        class="fallback"
+        src="/coverage/coverage-fallback.webp"
+        alt={t.coverage.fallbackAlt}
+        width="1600"
+        height="900"
+        loading="lazy"
+        decoding="async"
+      />
+      <span class="attrib">{t.coverage.attribution}</span>
+    </div>
+    <figcaption class="caption">{t.coverage.caption}</figcaption>
+  </figure>
+</section>
+
+<style>
+  .coverage {
+    padding: var(--section-padding-y) 1.5rem;
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+  .sub {
+    font-family: var(--font-script);
+    font-size: 1.25rem;
+    color: var(--color-marginalia-ink);
+    margin: 0;
+  }
+  .map-frame { margin: 2rem auto 0; max-width: 56rem; }
+  .map {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid var(--color-paper-edge, #d8cdb4);
+    box-shadow: 0 10px 34px rgba(42, 53, 32, 0.22);
+    background: #efe7d6;
+    cursor: grab;
+  }
+  .map:active { cursor: grabbing; }
+  .fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .attrib {
+    position: absolute; left: 9px; bottom: 7px; z-index: 3;
+    font-family: var(--font-sans); font-size: 0.625rem;
+    color: var(--color-marginalia-ink); opacity: 0.85;
+  }
+  .caption {
+    text-align: center; margin-top: 0.75rem;
+    font-family: var(--font-script); font-size: 1.125rem;
+    color: var(--color-marginalia-ink);
+  }
+  /* MapLibre injects a canvas as a child of .map; let it cover the fallback */
+  .map :global(.maplibregl-canvas) { position: absolute; inset: 0; }
+</style>
