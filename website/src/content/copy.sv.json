@@ -53,6 +53,14 @@
       { "value": "365", "label": "daglig serie", "caption": "håll dagboken levande" }
     ]
   },
+  "coverage": {
+    "eyebrow": "Täckning",
+    "headline": "Där Birdy *funkar*",
+    "sub": "Europa idag — resten av världen är på väg.",
+    "caption": "839 arter i Europa. Dra i kartan för att utforska.",
+    "fallbackAlt": "Karta över Europa ifylld i koppar, markerar var Birdy funkar idag",
+    "attribution": "© MapTiler © OpenStreetMap contributors"
+  },
   "premium": {
     "eyebrow": "VALFRITT · PREMIUM",
     "headline": "*Gratis* först.",
@@ -95,7 +103,7 @@
       { "label": "E-post", "href": "mailto:albin@abrahamssons.se" },
       { "label": "EN", "href": "/" }
     ],
-    "credit": "Skapad av Albin · Sverige · 2026 · v1.1.0"
+    "credit": "Skapad av Albin · Sverige · 2026 · v1.2.0"
   },
   "alt": {
     "wingLogo": "Birdys vinge-logo",

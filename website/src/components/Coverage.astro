@@ -1,0 +1,200 @@
+---
+import EyebrowLabel from './ui/EyebrowLabel.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import OrnamentRule from './ui/OrnamentRule.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = getCopy(locale);
+---
+
+<section id="coverage" class="coverage">
+  <div class="head" data-reveal>
+    <EyebrowLabel text={t.coverage.eyebrow} />
+    <JournalHeadline text={t.coverage.headline} level="h2" />
+    <p class="sub">{t.coverage.sub}</p>
+    <OrnamentRule />
+  </div>
+
+  <figure class="map-frame" data-reveal>
+    <div class="map" data-coverage-map role="img" aria-label={t.coverage.fallbackAlt}>
+      <img
+        class="fallback"
+        src="/coverage/coverage-fallback.webp"
+        alt={t.coverage.fallbackAlt}
+        width="1600"
+        height="900"
+        loading="lazy"
+        decoding="async"
+      />
+      <span class="attrib">{t.coverage.attribution}</span>
+    </div>
+    <figcaption class="caption">{t.coverage.caption}</figcaption>
+  </figure>
+</section>
+
+<style>
+  .coverage {
+    padding: var(--section-padding-y) 1.5rem;
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+  .sub {
+    font-family: var(--font-script);
+    font-size: 1.25rem;
+    color: var(--color-marginalia-ink);
+    margin: 0;
+  }
+  .map-frame { margin: 2rem auto 0; max-width: 56rem; }
+  .map {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid var(--color-paper-edge, #d8cdb4);
+    box-shadow: 0 10px 34px rgba(42, 53, 32, 0.22);
+    background: #efe7d6;
+    cursor: grab;
+  }
+  .map:active { cursor: grabbing; }
+  .fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .attrib {
+    position: absolute; left: 9px; bottom: 7px; z-index: 3;
+    font-family: var(--font-sans); font-size: 0.625rem;
+    color: var(--color-marginalia-ink); opacity: 0.85;
+  }
+  .caption {
+    text-align: center; margin-top: 0.75rem;
+    font-family: var(--font-script); font-size: 1.125rem;
+    color: var(--color-marginalia-ink);
+  }
+  /* MapLibre injects a canvas as a child of .map; let it cover the fallback */
+  .map :global(.maplibregl-canvas) { position: absolute; inset: 0; }
+</style>
+
+<script>
+  import 'maplibre-gl/dist/maplibre-gl.css';
+
+  const KEY = import.meta.env.PUBLIC_MAPTILER_KEY as string | undefined;
+  const PAPER = '#EFE7D6', INK = '#2E2417', WATER = '#DACFB2', COPPER = '#A8552D', NAVY = '#1F3A5F';
+
+  const container = document.querySelector<HTMLElement>('[data-coverage-map]');
+  if (container && KEY) {
+    const io = new IntersectionObserver((entries, obs) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { obs.disconnect(); initMap(container, KEY); }
+      }
+    }, { rootMargin: '200px' });
+    io.observe(container);
+  }
+
+  async function initMap(el: HTMLElement, key: string) {
+    const maplibregl = (await import('maplibre-gl')).default;
+    // localise MapLibre's built-in cooperative-gesture hint on /sv/
+    const localeOverride = document.documentElement.lang === 'sv' ? {
+      'CooperativeGesturesHandler.WindowsHelpText': 'Använd Ctrl + scroll för att zooma kartan',
+      'CooperativeGesturesHandler.MacHelpText': 'Använd ⌘ + scroll för att zooma kartan',
+      'CooperativeGesturesHandler.MobileHelpText': 'Använd två fingrar för att flytta kartan',
+    } : undefined;
+    const map = new maplibregl.Map({
+      container: el,
+      attributionControl: false,
+      center: [12, 40], zoom: 2.1, minZoom: 1.1, maxZoom: 8,
+      dragRotate: false, pitchWithRotate: false, touchPitch: false,
+      cooperativeGestures: true,
+      locale: localeOverride,
+      style: `https://api.maptiler.com/maps/dataviz-light/style.json?key=${key}`,
+    });
+    map.touchZoomRotate.disableRotation();
+
+    // the .map box gets its height from aspect-ratio after layout — keep the
+    // canvas in sync or markers/projection drift.
+    const fit = () => { try { map.resize(); } catch {} };
+    requestAnimationFrame(fit);
+    new ResizeObserver(fit).observe(el);
+
+    map.on('load', () => {
+      fit();
+      recolour(map);
+
+      let firstSymbol: string | undefined;
+      for (const l of map.getStyle().layers) { if (l.type === 'symbol') { firstSymbol = l.id; break; } }
+
+      fetch('/coverage/coverage-europe.geojson')
+        .then((r) => r.json())
+        .then((gj) => {
+          map.addSource('coverage', { type: 'geojson', data: gj });
+          map.addLayer({ id: 'coverage-fill', type: 'fill', source: 'coverage',
+            paint: { 'fill-color': COPPER, 'fill-opacity': 0.42 } }, firstSymbol);
+          map.addLayer({ id: 'coverage-line', type: 'line', source: 'coverage',
+            paint: { 'line-color': '#8f4422', 'line-width': 1, 'line-opacity': 0.9 } }, firstSymbol);
+        })
+        .catch((err) => console.warn('coverage fill failed to load', err));
+
+      const bird = new Image();
+      bird.onload = () => {
+        const data = buildSeal(bird);
+        if (data && !map.hasImage('seal')) map.addImage('seal', data, { pixelRatio: 2 });
+        // decorative sample pins (NOT real user finds): Stockholm, Berlin, Paris, Rome, Madrid
+        const PIN_LNGLAT = [[18.07, 59.33], [13.40, 52.52], [2.35, 48.85], [12.49, 41.90], [-3.70, 40.42]];
+        map.addSource('finds', { type: 'geojson', data: {
+          type: 'FeatureCollection',
+          features: PIN_LNGLAT.map((c) => ({ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: c } })),
+        } });
+        map.addLayer({ id: 'finds', type: 'symbol', source: 'finds',
+          layout: { 'icon-image': 'seal', 'icon-anchor': 'bottom', 'icon-allow-overlap': true, 'icon-size': 0.55 } });
+      };
+      bird.src = '/coverage/seal-bird.png';
+    });
+
+    if (import.meta.env.DEV) (window as any).__coverageMap = map; // dev-only debug handle
+  }
+
+  function buildSeal(birdImg: HTMLImageElement) {
+    const S = 2, R = 40, ring = 6, pt = 18, pad = 6;       // logical px
+    const w = 2 * (R + pad), h = 2 * (R + pad) + pt;
+    const cvs = document.createElement('canvas');
+    cvs.width = w * S; cvs.height = h * S;
+    const ctx = cvs.getContext('2d');
+    if (!ctx) return null;
+    ctx.scale(S, S);
+    const cx = w / 2, cy = R + pad, r = R;
+    ctx.fillStyle = COPPER;                                   // downward point
+    ctx.beginPath(); ctx.moveTo(cx - 7, cy + r - 2); ctx.lineTo(cx + 7, cy + r - 2); ctx.lineTo(cx, cy + r + pt); ctx.closePath(); ctx.fill();
+    const grad = ctx.createRadialGradient(cx - r * 0.25, cy - r * 0.3, r * 0.2, cx, cy, r * 1.25); // cream disc
+    grad.addColorStop(0, '#F4EDDC'); grad.addColorStop(1, '#E5DBC4');
+    ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 7); ctx.fill();
+    ctx.lineWidth = ring; ctx.strokeStyle = COPPER; ctx.beginPath(); ctx.arc(cx, cy, r - ring / 2, 0, 7); ctx.stroke(); // copper ring
+    const tint = document.createElement('canvas'); tint.width = birdImg.width; tint.height = birdImg.height; // navy bird
+    const tintCtx = tint.getContext('2d');
+    if (tintCtx) {
+      tintCtx.drawImage(birdImg, 0, 0);
+      tintCtx.globalCompositeOperation = 'source-in';
+      tintCtx.fillStyle = NAVY; tintCtx.fillRect(0, 0, tint.width, tint.height);
+      const bw = r * 1.25, bh = bw * (birdImg.height / birdImg.width);
+      ctx.drawImage(tint, cx - bw / 2, cy - bh / 2, bw, bh);
+    }
+    return ctx.getImageData(0, 0, cvs.width, cvs.height);
+  }
+
+  function recolour(map: any) {
+    for (const l of map.getStyle().layers) {
+      try {
+        if (l.type === 'background') map.setPaintProperty(l.id, 'background-color', PAPER);
+        else if (l.type === 'fill') {
+          if (/water|sea|ocean|lake|river|bath/i.test(l.id)) map.setPaintProperty(l.id, 'fill-color', WATER);
+          else { map.setPaintProperty(l.id, 'fill-color', PAPER); map.setPaintProperty(l.id, 'fill-opacity', 1); }
+        } else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', INK);
+        else if (l.type === 'symbol') {
+          map.setPaintProperty(l.id, 'text-color', INK);
+          map.setPaintProperty(l.id, 'text-halo-color', PAPER);
+          map.setPaintProperty(l.id, 'text-halo-width', 1.4);
+        }
+      } catch {}
+    }
+  }
+</script>

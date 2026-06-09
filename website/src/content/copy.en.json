@@ -53,6 +53,14 @@
       { "value": "365", "label": "daily streak", "caption": "keep the journal alive" }
     ]
   },
+  "coverage": {
+    "eyebrow": "Coverage",
+    "headline": "Where Birdy *works*",
+    "sub": "Europe today — the rest of the world is on its way.",
+    "caption": "839 species across Europe. Drag the map to explore.",
+    "fallbackAlt": "Map of Europe filled in copper, marking where Birdy works today",
+    "attribution": "© MapTiler © OpenStreetMap contributors"
+  },
   "premium": {
     "eyebrow": "OPTIONAL · PREMIUM",
     "headline": "*Free* first.",
@@ -95,7 +103,7 @@
       { "label": "Email", "href": "mailto:albin@abrahamssons.se" },
       { "label": "SV", "href": "/sv/" }
     ],
-    "credit": "Made by Albin · Sweden · 2026 · v1.1.0"
+    "credit": "Made by Albin · Sweden · 2026 · v1.2.0"
   },
   "alt": {
     "wingLogo": "Birdy wing logo",
