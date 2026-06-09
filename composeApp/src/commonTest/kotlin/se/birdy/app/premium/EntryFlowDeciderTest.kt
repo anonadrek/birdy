@@ -93,4 +93,44 @@ class EntryFlowDeciderTest {
             )
         assertTrue(r)
     }
+
+    @Test fun `post-onboarding false when onboarding incomplete`() {
+        assertFalse(
+            EntryFlowDecider.shouldShowPostOnboardingPremium(
+                onboardingComplete = false,
+                alreadyShown = false,
+                state = PremiumState.Free,
+            ),
+        )
+    }
+
+    @Test fun `post-onboarding false when already shown`() {
+        assertFalse(
+            EntryFlowDecider.shouldShowPostOnboardingPremium(
+                onboardingComplete = true,
+                alreadyShown = true,
+                state = PremiumState.Free,
+            ),
+        )
+    }
+
+    @Test fun `post-onboarding false when premium active`() {
+        assertFalse(
+            EntryFlowDecider.shouldShowPostOnboardingPremium(
+                onboardingComplete = true,
+                alreadyShown = false,
+                state = PremiumState.Active(se.birdy.domain.premium.PremiumTier.LIFETIME, now),
+            ),
+        )
+    }
+
+    @Test fun `post-onboarding true when complete, not shown, free`() {
+        assertTrue(
+            EntryFlowDecider.shouldShowPostOnboardingPremium(
+                onboardingComplete = true,
+                alreadyShown = false,
+                state = PremiumState.Free,
+            ),
+        )
+    }
 }
