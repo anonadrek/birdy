@@ -1,12 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { trackConsoleErrors } from './test-helpers';
 
 test.describe('EN landing /', () => {
   test('returns 200 + correct h1 + Play Store link', async ({ page }) => {
-    const consoleErrors: string[] = [];
-    page.on('pageerror', (e) => consoleErrors.push(e.message));
-    page.on('console', (msg) => {
-      if (msg.type() === 'error') consoleErrors.push(msg.text());
-    });
+    const consoleErrors = trackConsoleErrors(page);
 
     const response = await page.goto('/');
     expect(response?.status()).toBe(200);
@@ -32,11 +29,7 @@ test.describe('EN landing /', () => {
 
 test.describe('SV landing /sv/', () => {
   test('returns 200 + correct h1 + Play Store link', async ({ page }) => {
-    const consoleErrors: string[] = [];
-    page.on('pageerror', (e) => consoleErrors.push(e.message));
-    page.on('console', (msg) => {
-      if (msg.type() === 'error') consoleErrors.push(msg.text());
-    });
+    const consoleErrors = trackConsoleErrors(page);
 
     const response = await page.goto('/sv/');
     expect(response?.status()).toBe(200);
@@ -56,11 +49,7 @@ test.describe('Legal section', () => {
   let consoleErrors: string[];
 
   test.beforeEach(({ page }) => {
-    consoleErrors = [];
-    page.on('pageerror', (e) => consoleErrors.push(e.message));
-    page.on('console', (msg) => {
-      if (msg.type() === 'error') consoleErrors.push(msg.text());
-    });
+    consoleErrors = trackConsoleErrors(page);
   });
 
   test('/legal/ index returns 200 + links to 3 docs', async ({ page }) => {
