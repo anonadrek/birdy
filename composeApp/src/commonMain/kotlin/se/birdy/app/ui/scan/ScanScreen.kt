@@ -42,6 +42,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -132,6 +137,7 @@ fun ScanScreen(
                 Crosshair(
                     modifier = Modifier.align(Alignment.Center),
                 )
+                val freezeHint = stringResource(Res.string.scan_freeze_hint)
                 Box(
                     modifier =
                         Modifier
@@ -139,6 +145,13 @@ fun ScanScreen(
                             .pointerInput(Unit) {
                                 detectTapGestures {
                                     viewModel.onFreeze(onCaptureJpeg(), persistFrame)
+                                }
+                            }.semantics {
+                                contentDescription = freezeHint
+                                role = Role.Button
+                                onClick {
+                                    viewModel.onFreeze(onCaptureJpeg(), persistFrame)
+                                    true
                                 }
                             },
                 )

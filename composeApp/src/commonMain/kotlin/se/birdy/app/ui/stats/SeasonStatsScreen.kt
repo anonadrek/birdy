@@ -149,6 +149,7 @@ private fun LoadedContent(
             JournalBarChart(
                 bars = s.monthBars,
                 modifier = Modifier.padding(horizontal = 24.dp),
+                contentDescription = stringResource(Res.string.stats_section_months),
             )
         }
         item { MonthLabelsRow(s.monthBars) }
@@ -158,6 +159,7 @@ private fun LoadedContent(
             JournalDonutChart(
                 breakdown = s.seasonDonut,
                 modifier = Modifier.padding(horizontal = 24.dp),
+                contentDescription = stringResource(Res.string.stats_section_seasons),
             )
         }
         item { SeasonLegend(s.seasonDonut) }
@@ -170,6 +172,7 @@ private fun LoadedContent(
             JournalLineChart(
                 points = s.cumulativeLine,
                 modifier = Modifier.padding(horizontal = 24.dp),
+                contentDescription = stringResource(Res.string.stats_section_cumulative),
             )
         }
     }

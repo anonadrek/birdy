@@ -18,11 +18,16 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.a11y_stamp_track
+import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.StampLocked
@@ -42,8 +47,9 @@ fun StampTrack(
 ) {
     val caveat = rememberCaveat()
     val rows = (total + columns - 1) / columns
+    val trackCd = stringResource(Res.string.a11y_stamp_track, filled, total)
     Column(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth().semantics(mergeDescendants = true) { contentDescription = trackCd },
         verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
         for (row in 0 until rows) {

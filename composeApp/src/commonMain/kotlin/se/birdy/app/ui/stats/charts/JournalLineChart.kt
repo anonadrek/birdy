@@ -10,6 +10,8 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import se.birdy.app.ui.stats.SeasonStatsUiState
@@ -30,9 +32,12 @@ fun JournalLineChart(
     lineColor: Color = AccentCopper,
     dotColor: Color = MarginaliaInk,
     height: Dp = 140.dp,
+    contentDescription: String? = null,
 ) {
     if (points.isEmpty()) return
-    Canvas(modifier = modifier.fillMaxWidth().height(height)) {
+    val semanticsModifier =
+        contentDescription?.let { cd -> Modifier.semantics { this.contentDescription = cd } } ?: Modifier
+    Canvas(modifier = modifier.fillMaxWidth().height(height).then(semanticsModifier)) {
         val maxValue = (points.maxOf { it.uniqueSpeciesByEndOfMonth }).coerceAtLeast(1)
         val stepX = size.width / (points.size - 1).coerceAtLeast(1)
         val coords =

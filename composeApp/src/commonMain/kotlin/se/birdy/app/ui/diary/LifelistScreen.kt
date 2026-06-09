@@ -37,6 +37,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -508,7 +511,12 @@ private fun StatColumn(
 ) {
     val serif = rememberDmSerifDisplay()
     Column(
-        modifier = if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier,
+        modifier =
+            if (onClick != null) {
+                Modifier.clickable(onClick = onClick).semantics(mergeDescendants = true) { role = Role.Button }
+            } else {
+                Modifier
+            },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(

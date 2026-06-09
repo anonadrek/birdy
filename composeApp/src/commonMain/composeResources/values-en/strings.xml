@@ -34,6 +34,12 @@
     <string name="badge_common">COMMON</string>
     <string name="badge_uncommon">UNCOMMON</string>
 
+    <!-- Accessibility (TalkBack) -->
+    <string name="a11y_stamp_number">Badge number %1$d</string>
+    <string name="a11y_stamp_track">%1$d of %2$d badges earned</string>
+    <string name="a11y_crop_hint">Drag the corners to crop the image</string>
+    <string name="onboarding_hero_image_cd">Birdy — the app's bird mascot</string>
+
     <string name="search_placeholder">Search species, genus or family…</string>
     <string name="search_empty_title">No species match</string>
     <string name="search_empty_body">Try other filters or search by scientific name.</string>

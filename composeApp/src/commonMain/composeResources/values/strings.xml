@@ -38,6 +38,12 @@
     <string name="badge_common">ALLMÄN</string>
     <string name="badge_uncommon">OVANLIG</string>
 
+    <!-- Accessibility (TalkBack) -->
+    <string name="a11y_stamp_number">Märke nummer %1$d</string>
+    <string name="a11y_stamp_track">%1$d av %2$d märken intjänade</string>
+    <string name="a11y_crop_hint">Dra i hörnen för att beskära bilden</string>
+    <string name="onboarding_hero_image_cd">Birdy — appens fågelmaskot</string>
+
     <!-- Search -->
     <string name="search_placeholder">Sök art, släkte eller familj…</string>
     <string name="search_empty_title">Ingen art matchar</string>

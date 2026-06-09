@@ -30,10 +30,13 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.a11y_crop_hint
 import birdy_bird_scanner.composeapp.generated.resources.crop_cancel
 import birdy_bird_scanner.composeapp.generated.resources.crop_confirm
 import birdy_bird_scanner.composeapp.generated.resources.crop_rotate
@@ -71,10 +74,12 @@ fun CropAdjustScreen(
             contentAlignment = Alignment.Center,
         ) {
             val image = remember(bitmap) { bitmap.asImageBitmap() }
+            val cropHint = stringResource(Res.string.a11y_crop_hint)
             Canvas(
                 modifier =
                     Modifier
                         .fillMaxSize()
+                        .semantics { contentDescription = cropHint }
                         .onSizeChanged { boxSize = it }
                         .pointerInput(bitmap, boxSize) {
                             val fit = fitMapping(boxSize, bitmap.width, bitmap.height)

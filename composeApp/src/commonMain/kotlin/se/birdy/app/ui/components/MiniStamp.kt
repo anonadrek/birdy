@@ -15,12 +15,17 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.a11y_stamp_number
 import coil3.compose.AsyncImage
+import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.StampUnlockedBg
 import se.birdy.app.ui.theme.rememberCaveat
@@ -39,6 +44,7 @@ fun MiniStamp(
 ) {
     val caveat = rememberCaveat()
     val hasPhoto = !photoPath.isNullOrBlank()
+    val stampCd = stringResource(Res.string.a11y_stamp_number, number)
     Box(
         modifier =
             modifier
@@ -46,7 +52,8 @@ fun MiniStamp(
                 .rotate(-4f)
                 .clip(CircleShape)
                 .background(StampUnlockedBg)
-                .border(width = 2.dp, color = AccentCopper, shape = CircleShape),
+                .border(width = 2.dp, color = AccentCopper, shape = CircleShape)
+                .clearAndSetSemantics { contentDescription = stampCd },
         contentAlignment = Alignment.Center,
     ) {
         if (hasPhoto) {

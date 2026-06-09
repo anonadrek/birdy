@@ -36,6 +36,10 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -463,7 +467,10 @@ private fun TierCard(
                 .background(if (selected) AccentCopper.copy(alpha = 0.08f) else Color.White.copy(alpha = 0.35f))
                 .border(border, RoundedCornerShape(12.dp))
                 .clickable(onClick = onClick)
-                .padding(horizontal = 14.dp, vertical = 12.dp),
+                .semantics(mergeDescendants = true) {
+                    this.selected = selected
+                    role = Role.RadioButton
+                }.padding(horizontal = 14.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         // Radio button
