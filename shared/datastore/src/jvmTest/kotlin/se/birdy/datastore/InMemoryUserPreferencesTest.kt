@@ -41,6 +41,17 @@ class InMemoryUserPreferencesTest {
         }
 
     @Test
+    fun `postOnboardingPremiumShown starts false and updates`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            prefs.postOnboardingPremiumShown.test {
+                assertEquals(false, awaitItem())
+                prefs.setPostOnboardingPremiumShown(true)
+                assertEquals(true, awaitItem())
+            }
+        }
+
+    @Test
     fun `all enum-backed prefs round-trip`() =
         runTest {
             val prefs = InMemoryUserPreferences()

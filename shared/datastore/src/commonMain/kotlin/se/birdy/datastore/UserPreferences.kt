@@ -30,6 +30,9 @@ interface UserPreferences {
     /** Wall-clock epoch ms when modal was last shown, null = never shown. */
     val premiumModalLastShownAt: Flow<Long?>
 
+    /** True när post-onboarding-premium-skärmen visats en gång (visa aldrig igen). */
+    val postOnboardingPremiumShown: Flow<Boolean>
+
     val pushPermissionAsked: Flow<Boolean>
     val dailyBirdPushEnabled: Flow<Boolean>
     val streakRiskPushEnabled: Flow<Boolean>
@@ -54,6 +57,8 @@ interface UserPreferences {
     suspend fun setFirstInstallTimestamp(ms: Long)
 
     suspend fun setPremiumModalLastShownAt(ms: Long)
+
+    suspend fun setPostOnboardingPremiumShown(value: Boolean)
 
     suspend fun setPushPermissionAsked(value: Boolean)
 

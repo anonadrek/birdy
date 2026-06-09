@@ -44,6 +44,7 @@ private class AndroidUserPreferences(
         val LIFELIST_SORT = stringPreferencesKey("lifelist_sort")
         val FIRST_INSTALL_TIMESTAMP = longPreferencesKey("first_install_timestamp")
         val PREMIUM_MODAL_LAST_SHOWN_AT = longPreferencesKey("premium_modal_last_shown_at_ms")
+        val POST_ONBOARDING_PREMIUM_SHOWN = booleanPreferencesKey("post_onboarding_premium_shown")
         val PUSH_PERMISSION_ASKED = booleanPreferencesKey("push_permission_asked")
         val DAILY_BIRD_PUSH_ENABLED = booleanPreferencesKey("daily_bird_push_enabled")
         val STREAK_RISK_PUSH_ENABLED = booleanPreferencesKey("streak_risk_push_enabled")
@@ -77,6 +78,8 @@ private class AndroidUserPreferences(
         safeData.map { it[Keys.FIRST_INSTALL_TIMESTAMP]?.takeIf { ms -> ms > 0L } }
     override val premiumModalLastShownAt: Flow<Long?> =
         safeData.map { it[Keys.PREMIUM_MODAL_LAST_SHOWN_AT]?.takeIf { ms -> ms > 0L } }
+    override val postOnboardingPremiumShown: Flow<Boolean> =
+        safeData.map { it[Keys.POST_ONBOARDING_PREMIUM_SHOWN] ?: false }
     override val pushPermissionAsked: Flow<Boolean> =
         safeData.map { it[Keys.PUSH_PERMISSION_ASKED] ?: false }
     override val dailyBirdPushEnabled: Flow<Boolean> =
@@ -124,6 +127,10 @@ private class AndroidUserPreferences(
 
     override suspend fun setPremiumModalLastShownAt(ms: Long) {
         store.edit { it[Keys.PREMIUM_MODAL_LAST_SHOWN_AT] = ms }
+    }
+
+    override suspend fun setPostOnboardingPremiumShown(value: Boolean) {
+        store.edit { it[Keys.POST_ONBOARDING_PREMIUM_SHOWN] = value }
     }
 
     override suspend fun setPushPermissionAsked(value: Boolean) {
