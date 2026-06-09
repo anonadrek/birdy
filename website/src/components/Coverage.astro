@@ -114,7 +114,7 @@ const t = getCopy(locale);
       fit();
       recolour(map);
 
-      let firstSymbol;
+      let firstSymbol: string | undefined;
       for (const l of map.getStyle().layers) { if (l.type === 'symbol') { firstSymbol = l.id; break; } }
 
       fetch('/coverage/coverage-europe.geojson')
@@ -127,9 +127,50 @@ const t = getCopy(locale);
             paint: { 'line-color': '#8f4422', 'line-width': 1, 'line-opacity': 0.9 } }, firstSymbol);
         })
         .catch(() => {});
+
+      const bird = new Image();
+      bird.onload = () => {
+        const data = buildSeal(bird);
+        if (data && !map.hasImage('seal')) map.addImage('seal', data, { pixelRatio: 2 });
+        map.addSource('finds', { type: 'geojson', data: {
+          type: 'FeatureCollection',
+          features: [[18.07, 59.33], [13.40, 52.52], [2.35, 48.85], [12.49, 41.90], [-3.70, 40.42]]
+            .map((c) => ({ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: c } })),
+        } });
+        map.addLayer({ id: 'finds', type: 'symbol', source: 'finds',
+          layout: { 'icon-image': 'seal', 'icon-anchor': 'bottom', 'icon-allow-overlap': true, 'icon-size': 0.55 } });
+      };
+      bird.src = '/coverage/seal-bird.png';
     });
 
     (window as any).__coverageMap = map; // handy for manual debugging
+  }
+
+  function buildSeal(birdImg: HTMLImageElement) {
+    const S = 2, R = 40, ring = 6, pt = 18, pad = 6;       // logical px
+    const w = 2 * (R + pad), h = 2 * (R + pad) + pt;
+    const cvs = document.createElement('canvas');
+    cvs.width = w * S; cvs.height = h * S;
+    const x = cvs.getContext('2d');
+    if (!x) return null;
+    x.scale(S, S);
+    const cx = w / 2, cy = R + pad, r = R;
+    x.fillStyle = COPPER;                                   // downward point
+    x.beginPath(); x.moveTo(cx - 7, cy + r - 2); x.lineTo(cx + 7, cy + r - 2); x.lineTo(cx, cy + r + pt); x.closePath(); x.fill();
+    const g = x.createRadialGradient(cx - r * 0.25, cy - r * 0.3, r * 0.2, cx, cy, r * 1.25); // cream disc
+    g.addColorStop(0, '#F4EDDC'); g.addColorStop(1, '#E5DBC4');
+    x.fillStyle = g; x.beginPath(); x.arc(cx, cy, r, 0, 7); x.fill();
+    x.lineWidth = ring; x.strokeStyle = COPPER; x.beginPath(); x.arc(cx, cy, r - ring / 2, 0, 7); x.stroke(); // copper ring
+    const t = document.createElement('canvas'); t.width = birdImg.width; t.height = birdImg.height; // navy bird
+    const tx = t.getContext('2d');
+    if (tx) {
+      tx.drawImage(birdImg, 0, 0);
+      tx.globalCompositeOperation = 'source-in';
+      tx.fillStyle = NAVY; tx.fillRect(0, 0, t.width, t.height);
+      const bw = r * 1.25, bh = bw * (birdImg.height / birdImg.width);
+      x.drawImage(t, cx - bw / 2, cy - bh / 2, bw, bh);
+    }
+    return x.getImageData(0, 0, cvs.width, cvs.height);
   }
 
   function recolour(map: any) {
