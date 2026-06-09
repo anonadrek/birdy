@@ -65,7 +65,6 @@ import birdy_bird_scanner.composeapp.generated.resources.scan_top1_searching
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackButton
-import se.birdy.app.ui.components.BackButtonVariant
 import se.birdy.app.ui.components.JournalHeadline
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
@@ -194,7 +193,6 @@ fun ScanScreen(
         BackButton(
             onClick = onBack,
             contentDescription = stringResource(Res.string.profile_back),
-            variant = BackButtonVariant.OnDark,
             modifier =
                 Modifier
                     .align(Alignment.TopStart)

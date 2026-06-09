@@ -20,19 +20,13 @@ import se.birdy.app.ui.theme.OffwhiteWarm
  * kamera-bakgrund). En 40dp ⊙-bricka med solid off-white fyllning + copper-ring
  * + copper-pil. Den fyllda behållaren bryter av mot pappersbakgrunden så pilen
  * läser som en knapp i stället för att smälta in i Field Journal-ornamentiken.
- *
- * [variant] behålls för API-stabilitet men renderar identiskt i båda lägen efter
- * fyllnings-låset 2026-05-31 (off-white fungerar på både papper och mörk bakgrund).
  */
 @Composable
 fun BackButton(
     onClick: () -> Unit,
     contentDescription: String,
     modifier: Modifier = Modifier,
-    variant: BackButtonVariant = BackButtonVariant.OnPaper,
 ) {
-    // [variant] påverkar inte längre utseendet (off-white fungerar på alla bakgrunder)
-    // men behålls i signaturen för call-site-kompatibilitet.
     IconButton(
         onClick = onClick,
         modifier =
@@ -50,5 +44,3 @@ fun BackButton(
         )
     }
 }
-
-enum class BackButtonVariant { OnPaper, OnDark }

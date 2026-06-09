@@ -95,7 +95,7 @@ internal fun DisambigView(
                         }
                         Spacer(Modifier.size(12.dp))
                         Text(
-                            text = stringResource(Res.string.disambig_frame_caption).removeSurrounding("*"),
+                            text = stringResource(Res.string.disambig_frame_caption),
                             color = MarginaliaInk,
                             fontStyle = FontStyle.Italic,
                             fontSize = 13.sp,

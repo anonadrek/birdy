@@ -25,7 +25,7 @@ private const val BAR_COUNT = 16
  * via rememberInfiniteTransition; när false står de stilla på minimi-amplitud.
  */
 @Composable
-fun WaveformBars(
+fun OnboardingWaveformBars(
     active: Boolean,
     modifier: Modifier = Modifier,
 ) {

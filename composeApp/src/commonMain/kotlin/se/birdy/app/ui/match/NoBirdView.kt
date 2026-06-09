@@ -171,21 +171,21 @@ private fun AudioMarginaliaTipsBlock() {
 private fun MarginaliaTipsBlock() {
     Column(modifier = Modifier.fillMaxWidth()) {
         TipLine(
-            text = stringResource(Res.string.nobird_tip_closer).removeSurrounding("*"),
+            text = stringResource(Res.string.nobird_tip_closer),
             subText = stringResource(Res.string.nobird_tip_closer_sub),
             rotationDeg = -2f,
             alignmentEndDp = 0,
         )
         Spacer(Modifier.height(8.dp))
         TipLine(
-            text = stringResource(Res.string.nobird_tip_center).removeSurrounding("*"),
+            text = stringResource(Res.string.nobird_tip_center),
             subText = stringResource(Res.string.nobird_tip_center_sub),
             rotationDeg = 3f,
             alignmentEndDp = 48,
         )
         Spacer(Modifier.height(8.dp))
         TipLine(
-            text = stringResource(Res.string.nobird_tip_light).removeSurrounding("*"),
+            text = stringResource(Res.string.nobird_tip_light),
             subText = stringResource(Res.string.nobird_tip_light_sub),
             rotationDeg = -4f,
             alignmentEndDp = 16,
