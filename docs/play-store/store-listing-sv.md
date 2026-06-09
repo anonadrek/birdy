@@ -58,6 +58,7 @@ träd förtjänar en stund av uppmärksamhet.
 - Omgjorda prestationsmärken: ett rödlistat-spår, en livslista upp till 500 arter, ljud- + säsongsmärken nu gratis (34 totalt: 27 gratis + 7 premium).
 - Uppslagsverket omorganiserat i ekologiska grupper (alkor, hackspettar, duvor, tranor & rallar, m.fl.).
 - Veckans uppslag visar veckans alla fynd; jaga Dagens fågel för ett gratis märke; veckovis märkesprogression-notis.
+- Omgjord Premium-skärm: en tydlig gratis-vs-Premium-översikt, plus en titt på vad Premium erbjuder direkt efter introduktionen.
 - Sök hittar nu arter med apostrofer och diakriter. Skarpare app-ikon, en-fågels-splash, mjukare kort.
 
 ## Nyckelord (för ASO-text)

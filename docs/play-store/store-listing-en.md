@@ -59,6 +59,7 @@ tree deserves a moment of attention.
 - Reworked achievement stamps: a red-listed track, a life list up to 500 species, audio + seasonal stamps now free (34 total: 27 free + 7 premium).
 - Encyclopedia reorganised by ecological group (auks, woodpeckers, doves, cranes & rails, and more).
 - Weekly Recap shows every find of the week; chase the Bird of the Day for a free stamp; weekly badge-progress reminder.
+- Redesigned Premium screen: a clear free-vs-Premium breakdown, plus a one-time look at what Premium offers right after onboarding.
 - Search now finds species with apostrophes and accents. Sharper app icon, single-bird splash, smoother cards.
 
 ## Keywords (for ASO copy)
