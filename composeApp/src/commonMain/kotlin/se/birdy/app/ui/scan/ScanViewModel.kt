@@ -142,16 +142,44 @@ class ScanViewModel(
     ) {
         val classification = lastClassification ?: return
         val path = runCatching { persist(jpegBytes) }.getOrNull() ?: return
+        // A freeze must match what the user sees NOW. If the camera stalled (observed on
+        // device 2026-06-10: indicator off while ScanScreen was still visible) the last
+        // classification can be minutes old — routing on it produced "random species"
+        // matches. Anything older than the freshness window is surfaced as no-detection,
+        // which MatchResultViewModel routes to NoBird.
+        val isStale = nowMillis() - classification.frameTimestampMillis > FREEZE_FRESHNESS_MS
         _state.value =
-            ScanUiState.FrozenAt(
-                predictions = classification.sortedByConfidenceDescending(),
-                frameJpegPath = path,
-                timestampMillis = classification.frameTimestampMillis,
-            )
+            if (isStale) {
+                ScanUiState.FrozenAt(
+                    predictions = emptyList(),
+                    frameJpegPath = path,
+                    timestampMillis = nowMillis(),
+                )
+            } else {
+                ScanUiState.FrozenAt(
+                    predictions = classification.sortedByConfidenceDescending(),
+                    frameJpegPath = path,
+                    timestampMillis = classification.frameTimestampMillis,
+                )
+            }
     }
 
     fun onResumeAfterFreeze() {
-        if (_state.value is ScanUiState.FrozenAt) _state.value = ScanUiState.Idle
+        if (_state.value is ScanUiState.FrozenAt) {
+            // The old classification belongs to the finished freeze cycle; the pipeline
+            // repopulates within one sample period (333/666ms) once frames flow again.
+            lastClassification = null
+            _state.value = ScanUiState.Idle
+        }
+    }
+
+    companion object {
+        /**
+         * Max age for [lastClassification] at freeze time. A healthy pipeline classifies
+         * every 333/666ms, so 2s of silence means the camera stalled and the stored
+         * classification no longer describes the visible frame.
+         */
+        const val FREEZE_FRESHNESS_MS = 2_000L
     }
 
     override fun onCleared() {

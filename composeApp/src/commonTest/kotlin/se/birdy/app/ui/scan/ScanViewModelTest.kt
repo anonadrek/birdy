@@ -116,6 +116,8 @@ class ScanViewModelTest {
                     classifier = FakeBirdClassifier(),
                     cameraSourceFactory = { cameraSource },
                     frameThrottling = false,
+                    // Fixed clock 100ms after the frame so the freshness guard sees a live frame.
+                    nowMillis = { 142L },
                 )
             vm.onPermissionResult(granted = true)
             vm.state.test {
@@ -128,6 +130,71 @@ class ScanViewModelTest {
                 assertIs<ScanUiState.FrozenAt>(frozen)
                 assertEquals("/cache/scan-frames/test.jpg", frozen.frameJpegPath)
                 assertEquals("Q25485", frozen.predictions.firstOrNull()?.speciesId)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun freeze_with_stale_classification_emits_empty_predictions() =
+        runTest(dispatcher) {
+            val cameraSource = FakeCameraSource()
+            // Mutable clock: frame classified at t=1000, freeze tapped at t=6000 (camera
+            // stalled for 5s). Routing on the stale classification produced "random species"
+            // matches on device (2026-06-10) — stale must surface as no-detection instead.
+            var fakeNow = 1_000L
+            val vm =
+                ScanViewModel(
+                    classifier = FakeBirdClassifier(),
+                    cameraSourceFactory = { cameraSource },
+                    frameThrottling = false,
+                    nowMillis = { fakeNow },
+                )
+            vm.onPermissionResult(granted = true)
+            vm.state.test {
+                assertEquals(ScanUiState.Idle, awaitItem())
+                cameraSource.emit(timestampMillis = 1_000L)
+                assertIs<ScanUiState.Scanning>(awaitItem())
+
+                fakeNow = 6_000L
+                vm.onFreeze(jpegBytes = byteArrayOf(1)) { _ -> "/cache/scan-frames/stale.jpg" }
+                val frozen = awaitItem()
+                assertIs<ScanUiState.FrozenAt>(frozen)
+                assertTrue(
+                    frozen.predictions.isEmpty(),
+                    "stale classification must not surface predictions",
+                )
+                assertEquals("/cache/scan-frames/stale.jpg", frozen.frameJpegPath)
+                assertEquals(6_000L, frozen.timestampMillis, "capture time must be now, not the stale frame time")
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun resume_after_freeze_clears_last_classification() =
+        runTest(dispatcher) {
+            val cameraSource = FakeCameraSource()
+            val vm =
+                ScanViewModel(
+                    classifier = FakeBirdClassifier(),
+                    cameraSourceFactory = { cameraSource },
+                    frameThrottling = false,
+                    nowMillis = { 142L },
+                )
+            vm.onPermissionResult(granted = true)
+            vm.state.test {
+                assertEquals(ScanUiState.Idle, awaitItem())
+                cameraSource.emit(timestampMillis = 42L)
+                assertIs<ScanUiState.Scanning>(awaitItem())
+                vm.onFreeze(jpegBytes = byteArrayOf(1)) { _ -> "/cache/scan-frames/a.jpg" }
+                assertIs<ScanUiState.FrozenAt>(awaitItem())
+
+                vm.onResumeAfterFreeze()
+                assertEquals(ScanUiState.Idle, awaitItem())
+
+                // No new frame since resume → freezing again must not re-route the old
+                // classification (it belongs to the previous freeze cycle).
+                vm.onFreeze(jpegBytes = byteArrayOf(2)) { _ -> "/cache/scan-frames/b.jpg" }
+                expectNoEvents()
                 cancelAndIgnoreRemainingEvents()
             }
         }
