@@ -13,7 +13,20 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // The site ships EN at `/` and SV at `/sv/`. Emitting hreflang
+      // alternates lets crawlers treat them as language variants of the
+      // same page instead of duplicate content.
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          sv: 'sv',
+        },
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
