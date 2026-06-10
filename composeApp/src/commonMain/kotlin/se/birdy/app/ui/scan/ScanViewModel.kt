@@ -54,7 +54,16 @@ class ScanViewModel(
     // and the camera bind to the same CameraSource.
     val cameraSource: CameraSource = cameraSourceFactory()
     private var pipelineStarted: Boolean = false
-    private var lastClassification: Classification? = null
+
+    // The last COMPLETED classification paired with the exact frame it describes. The live
+    // chip renders this result, so freezing on the pair guarantees the user gets what they
+    // saw: chip text, routed predictions and persisted photo all describe the same frame.
+    // Two designs failed on device before this one (both 2026-06-10): routing on a rolling
+    // classification while persisting a separately captured JPEG let a transient frame's
+    // result attach to a different photo ("random species" for non-bird scenes), and
+    // re-classifying the newest raw frame at freeze time routed on a frame one sample
+    // period NEWER than the chip ("chip said Blue Tit 91%, match said Kestrel 68%").
+    private var lastClassified: ClassifiedFrame? = null
     private var consecutiveErrors: Int = 0
 
     // MutableStateFlow drives dynamic re-sampling: emitting a new period rebuilds
@@ -115,7 +124,7 @@ class ScanViewModel(
             return
         }
         if (result == null) return
-        lastClassification = result
+        lastClassified = ClassifiedFrame(frame, result)
 
         val latency = nowMillis() - started
         latencies.addLast(latency)
@@ -136,18 +145,16 @@ class ScanViewModel(
             )
     }
 
-    fun onFreeze(
-        jpegBytes: ByteArray,
-        persist: (ByteArray) -> String,
-    ) {
-        val classification = lastClassification ?: return
-        val path = runCatching { persist(jpegBytes) }.getOrNull() ?: return
+    fun onFreeze(persist: (ByteArray) -> String) {
+        if (_state.value is ScanUiState.FrozenAt) return
+        val snap = lastClassified ?: return
+        val path = runCatching { persist(snap.frame.bytes) }.getOrNull() ?: return
         // A freeze must match what the user sees NOW. If the camera stalled (observed on
         // device 2026-06-10: indicator off while ScanScreen was still visible) the last
-        // classification can be minutes old — routing on it produced "random species"
-        // matches. Anything older than the freshness window is surfaced as no-detection,
-        // which MatchResultViewModel routes to NoBird.
-        val isStale = nowMillis() - classification.frameTimestampMillis > FREEZE_FRESHNESS_MS
+        // pair can be minutes old — surface it as no-detection, which MatchResultViewModel
+        // routes to NoBird. The stale photo is still persisted: it is the only frame we
+        // have, and NoBird's framing ("a blur, a flicker of wings") absorbs it.
+        val isStale = nowMillis() - snap.classification.frameTimestampMillis > FREEZE_FRESHNESS_MS
         _state.value =
             if (isStale) {
                 ScanUiState.FrozenAt(
@@ -157,30 +164,36 @@ class ScanViewModel(
                 )
             } else {
                 ScanUiState.FrozenAt(
-                    predictions = classification.sortedByConfidenceDescending(),
+                    predictions = snap.classification.sortedByConfidenceDescending(),
                     frameJpegPath = path,
-                    timestampMillis = classification.frameTimestampMillis,
+                    timestampMillis = snap.classification.frameTimestampMillis,
                 )
             }
     }
 
     fun onResumeAfterFreeze() {
         if (_state.value is ScanUiState.FrozenAt) {
-            // The old classification belongs to the finished freeze cycle; the pipeline
+            // The frozen pair belongs to the finished freeze cycle; the pipeline
             // repopulates within one sample period (333/666ms) once frames flow again.
-            lastClassification = null
+            lastClassified = null
             _state.value = ScanUiState.Idle
         }
     }
 
     companion object {
         /**
-         * Max age for [lastClassification] at freeze time. A healthy pipeline classifies
+         * Max age for [lastClassified] at freeze time. A healthy pipeline classifies
          * every 333/666ms, so 2s of silence means the camera stalled and the stored
-         * classification no longer describes the visible frame.
+         * pair no longer describes the visible frame.
          */
         const val FREEZE_FRESHNESS_MS = 2_000L
     }
+
+    /** A camera frame and the classification produced from exactly that frame. */
+    private data class ClassifiedFrame(
+        val frame: ImageInput,
+        val classification: Classification,
+    )
 
     override fun onCleared() {
         // classifier.close() is non-suspend so we run it first; if the process is killed

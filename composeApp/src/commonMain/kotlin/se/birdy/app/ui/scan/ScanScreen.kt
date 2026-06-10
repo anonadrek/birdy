@@ -96,7 +96,6 @@ fun ScanScreen(
     onBack: () -> Unit,
     onPermissionRequest: () -> Unit,
     onOpenSettings: () -> Unit,
-    onCaptureJpeg: () -> ByteArray,
     persistFrame: (ByteArray) -> String,
 ) {
     val state by viewModel.state.collectAsState()
@@ -144,13 +143,13 @@ fun ScanScreen(
                             .fillMaxSize()
                             .pointerInput(Unit) {
                                 detectTapGestures {
-                                    viewModel.onFreeze(onCaptureJpeg(), persistFrame)
+                                    viewModel.onFreeze(persistFrame)
                                 }
                             }.semantics {
                                 contentDescription = freezeHint
                                 role = Role.Button
                                 onClick {
-                                    viewModel.onFreeze(onCaptureJpeg(), persistFrame)
+                                    viewModel.onFreeze(persistFrame)
                                     true
                                 }
                             },

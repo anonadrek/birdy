@@ -41,10 +41,7 @@ class AndroidCameraSource(
     private val _zoom = MutableStateFlow(ZoomState.NONE)
     override val zoom: StateFlow<ZoomState> = _zoom.asStateFlow()
     private val analysisFlow = MutableStateFlow<ImageAnalysis?>(null)
-    private val lastJpeg = MutableStateFlow<ByteArray?>(null)
     val previewUseCase: Preview = Preview.Builder().build()
-
-    fun lastJpegBytes(): ByteArray = lastJpeg.value ?: byteArrayOf()
 
     fun bindPreview(view: PreviewView) {
         previewUseCase.setSurfaceProvider(view.surfaceProvider)
@@ -56,7 +53,6 @@ class AndroidCameraSource(
                 ImageAnalysis.Analyzer { proxy: ImageProxy ->
                     try {
                         val jpeg = proxy.toJpegBytes()
-                        lastJpeg.value = jpeg
                         trySend(
                             ImageInput(
                                 bytes = jpeg,
