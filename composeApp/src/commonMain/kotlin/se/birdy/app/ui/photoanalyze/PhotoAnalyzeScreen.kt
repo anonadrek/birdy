@@ -39,6 +39,7 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.OffwhiteWarm
+import se.birdy.app.ui.theme.paperBackground
 import se.birdy.ml.Classification
 import se.birdy.ml.ClassificationResult
 import se.birdy.ml.ScanSource
@@ -74,7 +75,7 @@ fun PhotoAnalyzeScreen(
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize().paperBackground()) {
         Column(
             modifier = Modifier.fillMaxSize().padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,

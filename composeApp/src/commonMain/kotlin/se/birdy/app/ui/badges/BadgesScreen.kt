@@ -32,6 +32,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -306,7 +309,7 @@ private fun PremiumBadgesActiveGrid(
     onUnlockedClick: (PremiumBadgeProgress) -> Unit,
     onLockedClick: (PremiumBadgeProgress) -> Unit,
 ) {
-    val rows = badges.chunked(5)
+    val rows = badges.chunked(3)
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         rows.forEach { row ->
             Row(
@@ -361,6 +364,7 @@ private fun PremiumBadgesTeaserRow(onPremiumClick: () -> Unit) {
                 .clip(RoundedCornerShape(999.dp))
                 .background(AccentCopper)
                 .clickable(onClick = onPremiumClick)
+                .semantics(mergeDescendants = true) { role = Role.Button }
                 .padding(vertical = 10.dp),
         contentAlignment = Alignment.Center,
     ) {

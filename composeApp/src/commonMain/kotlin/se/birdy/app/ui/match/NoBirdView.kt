@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -43,6 +44,7 @@ import birdy_bird_scanner.composeapp.generated.resources.nobird_tip_closer_sub
 import birdy_bird_scanner.composeapp.generated.resources.nobird_tip_light
 import birdy_bird_scanner.composeapp.generated.resources.nobird_tip_light_sub
 import birdy_bird_scanner.composeapp.generated.resources.nobird_top_guess_hint
+import coil3.compose.AsyncImage
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -92,7 +94,14 @@ internal fun NoBirdView(
                                         color = AccentCopper.copy(alpha = 0.3f),
                                         shape = RoundedCornerShape(8.dp),
                                     ),
-                        )
+                        ) {
+                            AsyncImage(
+                                model = "file://${state.frameJpegPath}",
+                                contentDescription = null,
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.Crop,
+                            )
+                        }
                     }
                     Spacer(Modifier.height(24.dp))
                 }
@@ -162,21 +171,21 @@ private fun AudioMarginaliaTipsBlock() {
 private fun MarginaliaTipsBlock() {
     Column(modifier = Modifier.fillMaxWidth()) {
         TipLine(
-            text = stringResource(Res.string.nobird_tip_closer).removeSurrounding("*"),
+            text = stringResource(Res.string.nobird_tip_closer),
             subText = stringResource(Res.string.nobird_tip_closer_sub),
             rotationDeg = -2f,
             alignmentEndDp = 0,
         )
         Spacer(Modifier.height(8.dp))
         TipLine(
-            text = stringResource(Res.string.nobird_tip_center).removeSurrounding("*"),
+            text = stringResource(Res.string.nobird_tip_center),
             subText = stringResource(Res.string.nobird_tip_center_sub),
             rotationDeg = 3f,
             alignmentEndDp = 48,
         )
         Spacer(Modifier.height(8.dp))
         TipLine(
-            text = stringResource(Res.string.nobird_tip_light).removeSurrounding("*"),
+            text = stringResource(Res.string.nobird_tip_light),
             subText = stringResource(Res.string.nobird_tip_light_sub),
             rotationDeg = -4f,
             alignmentEndDp = 16,

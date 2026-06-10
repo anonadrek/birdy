@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -58,7 +59,7 @@ fun LiveStatsPreview(
                 fontSize = 26.sp,
                 color = AccentCopper,
             )
-            Spacer(Modifier.padding(horizontal = 4.dp))
+            Spacer(Modifier.width(4.dp))
             Text(
                 text = stringResource(Res.string.stats_section_top),
                 fontFamily = rememberCaveat(),

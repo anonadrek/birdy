@@ -9,15 +9,16 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import se.birdy.app.ui.stats.SeasonStatsUiState
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.StampNavy
 import kotlin.math.min
-
-private val WinterNavy = Color(0xFF1F3A5F)
 
 /**
  * Plan 6b3 T10: meteorological-season donut. 4 stroked arcs (winter / spring /
@@ -30,14 +31,17 @@ private val WinterNavy = Color(0xFF1F3A5F)
 fun JournalDonutChart(
     breakdown: SeasonStatsUiState.SeasonBreakdown,
     modifier: Modifier = Modifier,
-    winterColor: Color = WinterNavy,
+    winterColor: Color = StampNavy,
     springColor: Color = HeroMossMid,
     summerColor: Color = AccentCopper,
     autumnColor: Color = MarginaliaInk,
     height: Dp = 160.dp,
     strokeWidth: Dp = 22.dp,
+    contentDescription: String? = null,
 ) {
-    Canvas(modifier = modifier.fillMaxWidth().height(height)) {
+    val semanticsModifier =
+        contentDescription?.let { cd -> Modifier.semantics { this.contentDescription = cd } } ?: Modifier
+    Canvas(modifier = modifier.fillMaxWidth().height(height).then(semanticsModifier)) {
         val stroke = strokeWidth.toPx()
         val ringSize = min(size.width, size.height) - stroke
         val topLeft =

@@ -8,7 +8,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import se.birdy.app.di.AppGraph
 import se.birdy.app.permissions.CameraPermissionStatus
 import se.birdy.app.permissions.rememberCameraPermissionState
-import se.birdy.ml.camera.AndroidCameraSource
 import java.io.File
 import java.util.UUID
 
@@ -42,10 +41,6 @@ actual fun ScanScreenHost(
         onBack = onBack,
         onPermissionRequest = { permission.launchRequest() },
         onOpenSettings = { permission.openAppSettings() },
-        onCaptureJpeg = {
-            val androidSource = cameraSource as? AndroidCameraSource
-            androidSource?.lastJpegBytes() ?: byteArrayOf()
-        },
         persistFrame = { bytes ->
             val file = File(cacheDir, UUID.randomUUID().toString() + ".jpg")
             file.outputStream().use { it.write(bytes) }

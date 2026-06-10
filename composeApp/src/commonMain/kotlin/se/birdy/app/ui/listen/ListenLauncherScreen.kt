@@ -78,7 +78,6 @@ fun ListenLauncherScreen(
                 Modifier
                     .fillMaxSize()
                     .padding(padding),
-            verticalArrangement = Arrangement.spacedBy(0.dp),
         ) {
             Row(
                 modifier =

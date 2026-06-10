@@ -42,6 +42,8 @@ import birdy_bird_scanner.composeapp.generated.resources.stats_section_top
 import birdy_bird_scanner.composeapp.generated.resources.stats_spring
 import birdy_bird_scanner.composeapp.generated.resources.stats_summer
 import birdy_bird_scanner.composeapp.generated.resources.stats_title
+import birdy_bird_scanner.composeapp.generated.resources.stats_total_observations
+import birdy_bird_scanner.composeapp.generated.resources.stats_total_species
 import birdy_bird_scanner.composeapp.generated.resources.stats_winter
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
@@ -57,11 +59,10 @@ import se.birdy.app.ui.stats.charts.JournalLineChart
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.StampNavy
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
-
-private val WinterLegendColor = Color(0xFF1F3A5F)
 
 /**
  * Plan 6b3 T11: Premium-tier Season Statistics page. Shows a snapshot of the
@@ -148,6 +149,7 @@ private fun LoadedContent(
             JournalBarChart(
                 bars = s.monthBars,
                 modifier = Modifier.padding(horizontal = 24.dp),
+                contentDescription = stringResource(Res.string.stats_section_months),
             )
         }
         item { MonthLabelsRow(s.monthBars) }
@@ -157,6 +159,7 @@ private fun LoadedContent(
             JournalDonutChart(
                 breakdown = s.seasonDonut,
                 modifier = Modifier.padding(horizontal = 24.dp),
+                contentDescription = stringResource(Res.string.stats_section_seasons),
             )
         }
         item { SeasonLegend(s.seasonDonut) }
@@ -169,6 +172,7 @@ private fun LoadedContent(
             JournalLineChart(
                 points = s.cumulativeLine,
                 modifier = Modifier.padding(horizontal = 24.dp),
+                contentDescription = stringResource(Res.string.stats_section_cumulative),
             )
         }
     }
@@ -190,8 +194,8 @@ private fun TotalsRow(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(24.dp),
     ) {
-        TotalCell(value = totalSpecies, labelRes = Res.string.stats_section_top)
-        TotalCell(value = totalObservations, labelRes = Res.string.stats_section_months)
+        TotalCell(value = totalSpecies, labelRes = Res.string.stats_total_species)
+        TotalCell(value = totalObservations, labelRes = Res.string.stats_total_observations)
     }
 }
 
@@ -240,7 +244,7 @@ private fun SeasonLegend(breakdown: SeasonStatsUiState.SeasonBreakdown) {
         modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
-        LegendRow(stringResource(Res.string.stats_winter), breakdown.winter, WinterLegendColor)
+        LegendRow(stringResource(Res.string.stats_winter), breakdown.winter, StampNavy)
         LegendRow(stringResource(Res.string.stats_spring), breakdown.spring, HeroMossMid)
         LegendRow(stringResource(Res.string.stats_summer), breakdown.summer, AccentCopper)
         LegendRow(stringResource(Res.string.stats_autumn), breakdown.autumn, MarginaliaInk)

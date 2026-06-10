@@ -48,6 +48,7 @@ import birdy_bird_scanner.composeapp.generated.resources.recap_summary_active_ne
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.JournalHeadline
+import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.OrnamentRule
 import se.birdy.app.ui.components.PlateFrame
 import se.birdy.app.ui.theme.AccentCopper
@@ -65,7 +66,7 @@ fun RecapScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     Box(modifier = Modifier.fillMaxSize().paperBackground()) {
         when (val s = state) {
-            RecapUiState.Loading -> Unit
+            RecapUiState.Loading -> JournalLoading()
             is RecapUiState.Loaded -> RecapContent(s, onOpenCamera, onObservationClick)
             is RecapUiState.Error -> RecapError()
         }

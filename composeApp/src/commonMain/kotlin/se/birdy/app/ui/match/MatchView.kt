@@ -36,7 +36,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -262,27 +261,10 @@ internal fun MatchView(
 private fun StampWithAnimation(state: MatchResultUiState.Match) {
     val isSaved = state.saveStatus == MatchResultUiState.SaveStatus.Saved
     val captionPending = stringResource(Res.string.match_stamp_caption_pending)
-    val scale by animateFloatAsState(
-        targetValue = if (isSaved) 1f else 1f,
-        animationSpec = tween(durationMillis = 320),
-        label = "stamp-scale",
-    )
     val rotation by animateFloatAsState(
         targetValue = if (isSaved && state.isFirstSighting) -4f else 0f,
         animationSpec = tween(durationMillis = 320),
         label = "stamp-rotation",
-    )
-    val alpha by animateFloatAsState(
-        targetValue =
-            if (isSaved) {
-                1f
-            } else if (state.isFirstSighting) {
-                0.4f
-            } else {
-                0.85f
-            },
-        animationSpec = tween(durationMillis = 320),
-        label = "stamp-alpha",
     )
 
     val stampState: StampSealState =
@@ -303,15 +285,12 @@ private fun StampWithAnimation(state: MatchResultUiState.Match) {
                 )
         }
 
-    Box(modifier = Modifier.scale(scale).rotate(rotation)) {
+    Box(modifier = Modifier.rotate(rotation)) {
         StampSeal(
             state = stampState,
             size = 110.dp,
-            modifier = Modifier.scale(1f).rotate(0f),
         )
     }
-    // Note: alpha used inline by StampSeal-color choice; LinearProgressIndicator wraps
-    // it during Saving state below.
     if (state.saveStatus == MatchResultUiState.SaveStatus.Saving) {
         CircularProgressIndicator(
             color = AccentCopper,
@@ -319,11 +298,6 @@ private fun StampWithAnimation(state: MatchResultUiState.Match) {
             modifier = Modifier.size(40.dp),
         )
     }
-    // alpha gate is implicit through StampSealState choice (Locked→dashed/ghost,
-    // Unlocked→solid). The animated `alpha` value documents intent for future tweaks
-    // when StampSeal exposes an opacity hook.
-    @Suppress("UnusedVariable")
-    val unused = alpha
 }
 
 @Composable
@@ -377,7 +351,7 @@ private fun MatchMarginalia(
                 horizontalArrangement = Arrangement.End,
             ) {
                 Text(
-                    text = stringResource(Res.string.match_marginalia_manual_pick).removeSurrounding("*"),
+                    text = stringResource(Res.string.match_marginalia_manual_pick),
                     color = AccentCopper,
                     fontFamily = caveat,
                     fontStyle = FontStyle.Italic,

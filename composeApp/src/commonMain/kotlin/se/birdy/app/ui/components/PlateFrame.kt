@@ -59,7 +59,7 @@ fun PlateFrame(
         }
         Spacer(Modifier.height(6.dp))
         Text(
-            text = "Pl. $plateLabel — $captionLine",
+            text = if (plateLabel.isNotEmpty()) "Pl. $plateLabel — $captionLine" else captionLine,
             color = MarginaliaInk,
             fontFamily = caveat,
             fontWeight = FontWeight.Normal,

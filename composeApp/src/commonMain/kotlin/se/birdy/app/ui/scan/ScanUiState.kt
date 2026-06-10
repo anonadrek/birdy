@@ -11,6 +11,9 @@ sealed interface ScanUiState {
 
     data class Scanning(
         val top1: ClassificationResult?,
+        // Human-readable, locale-resolved species name for top1; null until resolved or
+        // when top1 maps to a non-catalog species. The UI shows this, never the raw speciesId.
+        val displayName: String?,
         val isThrottled: Boolean,
     ) : ScanUiState
 

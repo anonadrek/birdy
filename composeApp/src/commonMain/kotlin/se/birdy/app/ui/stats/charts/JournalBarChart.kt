@@ -8,6 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import se.birdy.app.ui.stats.SeasonStatsUiState
@@ -26,9 +28,12 @@ fun JournalBarChart(
     barColor: Color = AccentCopper,
     currentMonthColor: Color = MarginaliaInk,
     height: Dp = 140.dp,
+    contentDescription: String? = null,
 ) {
     if (bars.isEmpty()) return
-    Canvas(modifier = modifier.fillMaxWidth().height(height)) {
+    val semanticsModifier =
+        contentDescription?.let { cd -> Modifier.semantics { this.contentDescription = cd } } ?: Modifier
+    Canvas(modifier = modifier.fillMaxWidth().height(height).then(semanticsModifier)) {
         val maxCount = (bars.maxOfOrNull { it.observationCount } ?: 1).coerceAtLeast(1)
         val slot = size.width / bars.size
         val barWidth = slot * 0.62f

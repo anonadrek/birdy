@@ -225,7 +225,7 @@ class AudioScanViewModelTest {
     fun permissionDenied_emitsPermissionNeeded() {
         val (vm, _) = makeVm()
         vm.onPermissionState(PermissionState.Denied)
-        assertEquals(AudioScanState.PermissionNeeded(canRequest = true), vm.state.value)
+        assertEquals(AudioScanState.PermissionNeeded, vm.state.value)
     }
 
     @Test

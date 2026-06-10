@@ -42,6 +42,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -65,7 +70,6 @@ import birdy_bird_scanner.composeapp.generated.resources.scan_top1_searching
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackButton
-import se.birdy.app.ui.components.BackButtonVariant
 import se.birdy.app.ui.components.JournalHeadline
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
@@ -92,7 +96,6 @@ fun ScanScreen(
     onBack: () -> Unit,
     onPermissionRequest: () -> Unit,
     onOpenSettings: () -> Unit,
-    onCaptureJpeg: () -> ByteArray,
     persistFrame: (ByteArray) -> String,
 ) {
     val state by viewModel.state.collectAsState()
@@ -133,21 +136,32 @@ fun ScanScreen(
                 Crosshair(
                     modifier = Modifier.align(Alignment.Center),
                 )
+                val freezeHint = stringResource(Res.string.scan_freeze_hint)
                 Box(
                     modifier =
                         Modifier
                             .fillMaxSize()
                             .pointerInput(Unit) {
                                 detectTapGestures {
-                                    viewModel.onFreeze(onCaptureJpeg(), persistFrame)
+                                    viewModel.onFreeze(persistFrame)
+                                }
+                            }.semantics {
+                                contentDescription = freezeHint
+                                role = Role.Button
+                                onClick {
+                                    viewModel.onFreeze(persistFrame)
+                                    true
                                 }
                             },
                 )
                 if (s is ScanUiState.Scanning) {
-                    val pct = s.top1?.confidence?.let { (it * 100).toInt() }
-                    val name = s.top1?.speciesId ?: stringResource(Res.string.scan_top1_searching)
+                    // Show the resolved name (never the raw Q-id). Until the name resolves
+                    // (or for non-catalog detections) fall back to "searching" with no pct.
+                    val resolvedName = s.displayName
+                    val pct =
+                        if (resolvedName != null) s.top1?.confidence?.let { (it * 100).toInt() } else null
                     TopChip(
-                        speciesName = name,
+                        speciesName = resolvedName ?: stringResource(Res.string.scan_top1_searching),
                         confidencePct = pct,
                         modifier =
                             Modifier
@@ -191,7 +205,6 @@ fun ScanScreen(
         BackButton(
             onClick = onBack,
             contentDescription = stringResource(Res.string.profile_back),
-            variant = BackButtonVariant.OnDark,
             modifier =
                 Modifier
                     .align(Alignment.TopStart)
@@ -366,10 +379,10 @@ private fun ErrorView(kind: ScanErrorKind) {
             ScanErrorKind.ClassifierFailed -> stringResource(Res.string.scan_error_classifier_failed)
         }
     Column(
-        modifier = Modifier.fillMaxSize().padding(24.dp),
+        modifier = Modifier.fillMaxSize().paperBackground().padding(24.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(message, color = TextOnHero)
+        Text(message, color = TextOnCreme)
     }
 }

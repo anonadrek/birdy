@@ -20,6 +20,7 @@ import se.birdy.content.model.Species
 import se.birdy.datastore.LifelistSort
 import se.birdy.datastore.LifelistStat3Choice
 import se.birdy.datastore.UserPreferences
+import se.birdy.domain.badge.currentWeeklyStreak
 import se.birdy.domain.badge.longestWeeklyStreak
 import se.birdy.domain.badge.weekKey
 import se.birdy.domain.observation.Observation
@@ -142,7 +143,7 @@ class LifelistViewModel(
             ->
                 Stat3Value(
                     kind = LifelistStat3Choice.STREAK,
-                    value = longestWeeklyStreak(obs.map { it.capturedAt }, zone),
+                    value = currentWeeklyStreak(obs.map { it.capturedAt }, zone, now()),
                 )
             LifelistStat3Choice.LONGEST_STREAK ->
                 Stat3Value(

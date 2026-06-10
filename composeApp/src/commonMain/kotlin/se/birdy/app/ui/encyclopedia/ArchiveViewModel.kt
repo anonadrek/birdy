@@ -123,7 +123,14 @@ class ArchiveViewModel(
             when (s) {
                 ArchiveSort.ALPHA -> filtered.sortedBy { it.name.lowercase() }
                 ArchiveSort.FAMILY -> filtered.sortedWith(compareBy({ it.family }, { it.name.lowercase() }))
-                ArchiveSort.RECENT -> filtered
+                // "Recently added" = species most recently added to the user's collection first.
+                // stamped[qid] holds the first stamp number for a species; higher = newer addition.
+                // Unstamped species (not yet in the collection) sort last, alphabetically.
+                ArchiveSort.RECENT ->
+                    filtered.sortedWith(
+                        compareByDescending<SpeciesSummary> { stamped[it.id.raw] ?: Int.MIN_VALUE }
+                            .thenBy { it.name.lowercase() },
+                    )
             }
         val rows =
             sorted.map {

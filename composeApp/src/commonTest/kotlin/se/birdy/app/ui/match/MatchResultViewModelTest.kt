@@ -180,14 +180,17 @@ class MatchResultViewModelTest {
         }
 
     @Test
-    fun resolve_empty_predictions_returns_error() =
+    fun resolve_image_source_empty_results_returns_nobird_not_error() =
         runTest(dispatcher) {
+            // Empty results = nothing above the classifier threshold = no bird detected.
+            // A garbage photo (model → background) must land on NoBird, not an error screen.
             val vm = makeVm("")
             vm.state.test {
                 assertIs<MatchResultUiState.Loading>(awaitItem())
-                val err = awaitItem()
-                assertIs<MatchResultUiState.Error>(err)
-                assertEquals(MatchResultUiState.Error.Kind.NoPredictions, err.kind)
+                val nobird = awaitItem()
+                assertIs<MatchResultUiState.NoBird>(nobird)
+                assertEquals("/cache/scan-frames/x.jpg", nobird.frameJpegPath)
+                assertEquals(null, nobird.topPrediction)
                 cancelAndIgnoreRemainingEvents()
             }
         }

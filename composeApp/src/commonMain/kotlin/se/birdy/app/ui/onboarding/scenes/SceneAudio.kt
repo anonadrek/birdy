@@ -40,7 +40,7 @@ import birdy_bird_scanner.composeapp.generated.resources.onboarding_s3_species_d
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s3_sub
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.onboarding.components.IntroSceneScaffold
-import se.birdy.app.ui.onboarding.components.WaveformBars
+import se.birdy.app.ui.onboarding.components.OnboardingWaveformBars
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.TextOnCreme
@@ -115,7 +115,7 @@ fun SceneAudio(
                 }
             }
             // Waveform
-            WaveformBars(active = isActive, modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp))
+            OnboardingWaveformBars(active = isActive, modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp))
             // Species name
             Text(
                 text = stringResource(Res.string.onboarding_s3_species_demo),

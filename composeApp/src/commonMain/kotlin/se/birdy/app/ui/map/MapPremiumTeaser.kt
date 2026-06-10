@@ -11,9 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.map_teaser_caption
@@ -23,7 +24,10 @@ import birdy_bird_scanner.composeapp.generated.resources.map_teaser_title
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.OffwhiteWarm
+import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.paperBackground
+import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
 @Composable
 fun MapPremiumTeaser(
@@ -37,7 +41,14 @@ fun MapPremiumTeaser(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Text(stringResource(Res.string.map_teaser_title), textAlign = TextAlign.Center)
+        Text(
+            stringResource(Res.string.map_teaser_title),
+            textAlign = TextAlign.Center,
+            fontFamily = rememberDmSerifDisplay(),
+            fontStyle = FontStyle.Italic,
+            fontSize = 26.sp,
+            color = TextOnCreme,
+        )
         Text(
             stringResource(Res.string.map_teaser_caption),
             color = MarginaliaInk,
@@ -52,7 +63,7 @@ fun MapPremiumTeaser(
         )
         Button(
             onClick = onUpgrade,
-            colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = Color.White),
+            colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm),
         ) { Text(stringResource(Res.string.map_teaser_cta)) }
     }
 }

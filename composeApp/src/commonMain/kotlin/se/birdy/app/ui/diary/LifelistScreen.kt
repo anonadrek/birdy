@@ -28,6 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -37,6 +38,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -204,7 +208,15 @@ private fun LoadedLifelist(
     onSeasonStatsClick: () -> Unit = {},
     onRecapClick: () -> Unit = {},
 ) {
-    val now = remember { Clock.System.now() }
+    // Refresh every minute so relative timestamps ("just now" → "2 min ago") don't
+    // freeze if the Lifelist is left open in the foreground.
+    val now =
+        produceState(initialValue = Clock.System.now()) {
+            while (true) {
+                kotlinx.coroutines.delay(60_000)
+                value = Clock.System.now()
+            }
+        }.value
     val labelStat1 = stringResource(Res.string.lifelist_stat_species)
     val labelStat2 = stringResource(Res.string.lifelist_stat_stamps)
     val labelStat3 = labelForStat3(state.stat3.kind)
@@ -508,7 +520,12 @@ private fun StatColumn(
 ) {
     val serif = rememberDmSerifDisplay()
     Column(
-        modifier = if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier,
+        modifier =
+            if (onClick != null) {
+                Modifier.clickable(onClick = onClick).semantics(mergeDescendants = true) { role = Role.Button }
+            } else {
+                Modifier
+            },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(

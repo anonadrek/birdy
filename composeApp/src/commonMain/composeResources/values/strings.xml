@@ -8,7 +8,6 @@
     <string name="tab_map">Karta</string>
 
     <!-- Top-bar titles -->
-    <string name="title_encyclopedia">UPPSLAGSVERK</string>
 
     <!-- Profile -->
     <string name="profile_label_description">BESKRIVNING</string>
@@ -28,21 +27,6 @@
     <string name="observation_visit_profile">visa artprofil</string>
 
     <!-- Plan 7c: ClassificationResult Field Journal -->
-    <string name="result_journal_label">MATCHNING · NO %1$s</string>
-    <string name="result_journal_headline">*%1$s*?</string>
-    <string name="result_journal_sub">%1$s säkerhet.</string>
-
-    <!-- Filter -->
-    <string name="filter_title">Filter</string>
-    <string name="filter_button">⚙ Filter</string>
-    <string name="filter_label_abundance">FÖREKOMST</string>
-    <string name="filter_label_region">REGION</string>
-    <string name="filter_label_month">MÅNAD</string>
-    <plurals name="filter_apply">
-        <item quantity="one">Visa %1$d art</item>
-        <item quantity="other">Visa %1$d arter</item>
-    </plurals>
-    <string name="filter_reset">Återställ</string>
 
     <string-array name="months_short_uppercase">
         <item>JAN</item><item>FEB</item><item>MAR</item><item>APR</item>
@@ -54,10 +38,30 @@
     <string name="badge_common">ALLMÄN</string>
     <string name="badge_uncommon">OVANLIG</string>
 
+    <!-- Accessibility (TalkBack) -->
+    <string name="a11y_stamp_number">Märke nummer %1$d</string>
+    <string name="a11y_stamp_track">%1$d av %2$d märken intjänade</string>
+    <string name="a11y_crop_hint">Dra i hörnen för att beskära bilden</string>
+    <string name="onboarding_hero_image_cd">Birdy — appens fågelmaskot</string>
+
+    <!-- IUCN red-list status labels -->
+    <string name="iucn_lc">Livskraftig</string>
+    <string name="iucn_nt">Nära hotad</string>
+    <string name="iucn_vu">Sårbar</string>
+    <string name="iucn_en">Starkt hotad</string>
+    <string name="iucn_cr">Akut hotad</string>
+    <string name="iucn_dd">Kunskapsbrist</string>
+
+    <!-- Onboarding extracted literals -->
+    <string name="onboarding_s2_plate_caption">%1$s, i naturen</string>
+    <string name="onboarding_s4_scientific_name">Apus apus</string>
+
     <!-- Search -->
     <string name="search_placeholder">Sök art, släkte eller familj…</string>
     <string name="search_empty_title">Ingen art matchar</string>
     <string name="search_empty_body">Prova andra filter eller sök på vetenskapligt namn.</string>
+    <string name="archive_empty_group_title">Inga arter i den här gruppen</string>
+    <string name="archive_empty_group_body">Välj en annan grupp ovan för att fortsätta bläddra.</string>
 
     <!-- Sparse-data empty states -->
     <string name="empty_description">Beskrivning kommer i en framtida uppdatering.</string>
@@ -69,13 +73,8 @@
     <string name="not_found_body">Tryck tillbaka för att gå till listan.</string>
 
     <!-- Stub screens -->
-    <string name="stub_badges_title">Märken</string>
-    <string name="stub_badges_body">Den här funktionen kommer i Plan 5 — Gamification.</string>
 
     <!-- Sections -->
-    <string name="section_common_se">Allmänna i Sverige</string>
-    <string name="section_common_generic">Allmänna</string>
-    <string name="section_others">Övriga</string>
 
     <!-- Loading -->
     <string name="loading">Laddar…</string>
@@ -98,10 +97,6 @@
     <string name="crop_cancel">Avbryt</string>
 
     <!-- Result screen -->
-    <string name="result_your_scan">din skan</string>
-    <string name="result_unresolved_count">%1$d förslag kunde inte matchas</string>
-    <string name="result_save_observation">Spara som observation</string>
-    <string name="result_save_hint">Sparas lokalt på din enhet</string>
     <string name="result_no_predictions">Inga förslag att visa.</string>
     <string name="result_no_matches">Inga arter kunde matchas mot databasen.</string>
 
@@ -112,7 +107,7 @@
     <string name="match_sub_confidence">En %1$s match.</string>
     <string name="match_marginalia_first_sighting">*NY ART*</string>
     <string name="match_marginalia_repeat">OBS *#%1$d* · FÖRSTA SÅGS: %2$s</string>
-    <string name="match_marginalia_manual_pick">*ditt val*</string>
+    <string name="match_marginalia_manual_pick">ditt val</string>
     <!-- Plan 6b2 T6: source-aware marginalia (foto vs ljud) -->
     <string name="match_marginalia_captured_photo">fångad på bild</string>
     <string name="match_marginalia_captured_audio">fångad i sång</string>
@@ -126,7 +121,7 @@
     <string name="disambig_eyebrow_two">TVÅ KANDIDATER · NO %1$d</string>
     <string name="disambig_headline">*Vilken matchar?*</string>
     <string name="disambig_sub">Modellen är inte säker.</string>
-    <string name="disambig_frame_caption">*vad du såg*</string>
+    <string name="disambig_frame_caption">vad du såg</string>
     <string name="disambig_candidate_confidence">%1$s · %2$s match</string>
     <string name="disambig_pick_hint">Tryck för att välja</string>
     <string name="disambig_cancel_cta">Avbryt</string>
@@ -135,9 +130,9 @@
     <string name="nobird_eyebrow">INGEN MATCH · NO %1$s</string>
     <string name="nobird_headline">*Ingen art kunde tecknas*</string>
     <string name="nobird_sub">En obestämd skugga, en vingfladder.</string>
-    <string name="nobird_tip_closer">*kom närmare*</string>
-    <string name="nobird_tip_center">*centrera fågeln*</string>
-    <string name="nobird_tip_light">*mer ljus*</string>
+    <string name="nobird_tip_closer">kom närmare</string>
+    <string name="nobird_tip_center">centrera fågeln</string>
+    <string name="nobird_tip_light">mer ljus</string>
     <string name="nobird_retry_cta">Försök igen</string>
     <string name="nobird_date_format">%1$d %2$s %3$d</string>
     <!-- Plan 6a Task 10.5: NoBird actionable sub-tips + top-1 guess hint -->
@@ -203,18 +198,6 @@
     <string name="diary_relative_yesterday">Igår, %1$s</string>
     <string name="diary_relative_date_full">%1$d %2$s, %3$s</string>
     <string name="diary_full_date_format">%1$d %2$s %3$d, %4$s</string>
-    <string name="diary_month_jan">JAN</string>
-    <string name="diary_month_feb">FEB</string>
-    <string name="diary_month_mar">MAR</string>
-    <string name="diary_month_apr">APR</string>
-    <string name="diary_month_may">MAJ</string>
-    <string name="diary_month_jun">JUN</string>
-    <string name="diary_month_jul">JUL</string>
-    <string name="diary_month_aug">AUG</string>
-    <string name="diary_month_sep">SEP</string>
-    <string name="diary_month_oct">OKT</string>
-    <string name="diary_month_nov">NOV</string>
-    <string name="diary_month_dec">DEC</string>
     <string name="diary_month_short_jan">jan</string>
     <string name="diary_month_short_feb">feb</string>
     <string name="diary_month_short_mar">mar</string>
@@ -231,20 +214,10 @@
     <string name="diary_confidence_format">%1$s säkerhet vid skanning</string>
 
     <!-- ===== Plan 5b: Badges UI ===== -->
-    <string name="badges_title">Märken</string>
-    <string name="badges_label_species_seen">Arter sedda</string>
-    <string name="badges_label_badges">Märken</string>
-    <string name="badges_label_weekly_streak">V-streak</string>
-    <string name="badges_label_monthly_streak">M-streak</string>
-    <string name="badges_weekly_streak_value">%1$d v</string>
-    <string name="badges_monthly_streak_value">%1$d m</string>
     <string name="badges_section_recently_unlocked">Senast upptäckta</string>
-    <string name="badges_section_to_discover">Att upptäcka · %1$d kvar</string>
     <string name="badges_locked_tooltip">Hemligt — fortsätt skåda</string>
-    <string name="badges_progress_format">%1$d / %2$d</string>
     <string name="badges_load_error">Kunde inte ladda märken — försök igen</string>
     <string name="badges_load_error_retry">Försök igen</string>
-    <string name="badges_catalog_error">Märken kunde inte laddas — installera om appen</string>
 
     <string name="unlock_label">Nytt *märke*!</string>
     <string name="unlock_button_dismiss">Härligt</string>
@@ -372,9 +345,6 @@
     <string name="settings_show_intro_again">Visa introduktion igen</string>
 
     <!-- ===== Plan 7b: ListenLauncherScreen ===== -->
-    <string name="listen_breadcrumb">LYSSNA</string>
-    <string name="listen_headline">Tre sätt att *fånga.*</string>
-    <string name="listen_sub">En stämpel väntar i varje.</string>
     <string name="listen_journal_label">FÅNGA · NO 0</string>
     <string name="listen_journal_headline">Tre sätt att *fånga.*</string>
     <string name="listen_journal_sub">Kamera, foto eller läte — arten dyker upp i din fältbok.</string>
@@ -397,13 +367,11 @@
     <string name="settings_name_dialog_title">Ändra namn</string>
     <string name="settings_name_dialog_save">Spara</string>
     <string name="settings_name_dialog_cancel">Avbryt</string>
+    <string name="settings_language_dialog_done">Klar</string>
     <string name="settings_back">Tillbaka</string>
     <string name="menu_button">Meny</string>
 
     <!-- ===== Plan 7b: ArchiveScreen ===== -->
-    <string name="archive_breadcrumb">UPPSLAGSVERK</string>
-    <string name="archive_headline">Birds.</string>
-    <string name="archive_sub">Sök, filtrera, *lär.*</string>
     <string name="archive_journal_label">ARKIV · 839 ARTER</string>
     <string name="archive_journal_headline">*Fåglar.*</string>
     <string name="archive_journal_sub">Sök, filtrera, lär.</string>
@@ -434,21 +402,14 @@
     <string name="archive_error_retry">Försök igen</string>
 
     <!-- ===== Plan 7b: BadgesScreen redesign ===== -->
-    <string name="badges_screen_headline">Märken.</string>
-    <string name="badges_screen_progress_label">UPPLÅSTA MÄRKEN</string>
-    <string name="badges_grid_hidden">???</string>
-    <string name="badges_in_progress_pill">%1$s/%2$s</string>
     <string name="badges_journal_label">UPPTÄCKTER · NO %1$s</string>
     <string name="badges_journal_headline">*%1$s* funna.</string>
     <string name="badges_journal_sub">%1$s väntar därute.</string>
     <!-- Plan 6a Task 10.4: locked-badge progress bottom-sheet -->
-    <string name="badge_sheet_locked_body">Fortsätt skåda för att låsa upp.</string>
-    <string name="badge_sheet_progress_label">%1$s av %2$s · %3$s</string>
     <string name="badge_sheet_close">Stäng</string>
 
     <!-- ===== Plan 7b: LifelistScreen ===== -->
     <string name="lifelist_breadcrumb">MINA ARTER</string>
-    <string name="lifelist_headline_format">*%1$s*s samling.</string>
     <string name="lifelist_headline_fallback">Min samling.</string>
     <string name="lifelist_stat_species">ARTER</string>
     <string name="lifelist_stat_stamps">STÄMPLAR</string>
@@ -567,9 +528,11 @@
     <string name="stats_section_seasons">Per säsong</string>
     <string name="stats_section_top">Mest sedda arter</string>
     <string name="stats_section_cumulative">Nya arter över tid</string>
+    <string name="stats_total_species">Arter</string>
+    <string name="stats_total_observations">Observationer</string>
     <string name="stats_empty_eyebrow">SÄSONG</string>
     <string name="stats_empty_headline">Inget att *kartlägga* ännu.</string>
-    <string name="stats_empty_sub">Spara några observationer för att låsa upp ditt år.</string>
+    <string name="stats_empty_sub">Inga fynd i år ännu — spara ett så låses din årsöversikt upp.</string>
     <string name="stats_back">Tillbaka</string>
     <string name="stats_count_format">%1$d obs</string>
     <string name="stats_winter">Vinter</string>
@@ -612,7 +575,6 @@
     <string name="audio_scan_cta_idle">Tryck för att lyssna</string>
     <string name="audio_scan_cta_recording">Lyssnar — tryck för att stoppa</string>
     <string name="audio_scan_analyzing">Analyserar…</string>
-    <string name="audio_scan_cancel">Avbryt</string>
     <string name="audio_scan_permission_title">Lyssna efter sång</string>
     <string name="audio_scan_permission_body">Birdy behöver mikrofonen för att identifiera fågelsång — ljudet sparas bara lokalt på din telefon.</string>
     <string name="audio_scan_permission_grant">Ge tillstånd</string>
@@ -725,7 +687,6 @@
     <string name="trophy_room_intro_eyebrow">Skådar-profil</string>
     <string name="trophy_room_headline">Ditt *troférum*.</string>
     <string name="trophy_room_sub">%1$s av %2$s · %3$s väntar i fält</string>
-    <string name="trophy_room_title">Ditt troférum</string>
     <string name="trophy_room_back">Tillbaka</string>
     <string name="trophy_room_entry_eyebrow">Ditt troférum</string>
     <string name="trophy_room_entry_count">%1$s troféer</string>

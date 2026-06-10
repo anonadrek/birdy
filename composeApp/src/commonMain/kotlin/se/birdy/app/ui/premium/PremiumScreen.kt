@@ -23,6 +23,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Close
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -36,6 +37,10 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -125,7 +130,6 @@ fun PremiumScreen(
                     price = state.formattedYearlyPrice ?: stringResource(Res.string.premium_tier_yearly_price),
                     sub = stringResource(Res.string.premium_tier_yearly_sub),
                     selected = state.selectedTier == PremiumTier.YEARLY,
-                    stampLabel = null,
                     onClick = { viewModel.selectTier(PremiumTier.YEARLY) },
                 )
             }
@@ -150,7 +154,6 @@ fun PremiumScreen(
                     price = state.formattedLifetimePrice ?: stringResource(Res.string.premium_tier_lifetime_price),
                     sub = null,
                     selected = state.selectedTier == PremiumTier.LIFETIME,
-                    stampLabel = null,
                     onClick = { viewModel.selectTier(PremiumTier.LIFETIME) },
                 )
             }
@@ -450,7 +453,6 @@ private fun TierCard(
     price: String,
     sub: String?,
     selected: Boolean,
-    stampLabel: String?,
     onClick: () -> Unit,
 ) {
     val border = if (selected) BorderStroke(1.8.dp, AccentCopper) else BorderStroke(1.dp, AccentCopper.copy(alpha = 0.3f))
@@ -463,7 +465,10 @@ private fun TierCard(
                 .background(if (selected) AccentCopper.copy(alpha = 0.08f) else Color.White.copy(alpha = 0.35f))
                 .border(border, RoundedCornerShape(12.dp))
                 .clickable(onClick = onClick)
-                .padding(horizontal = 14.dp, vertical = 12.dp),
+                .semantics(mergeDescendants = true) {
+                    this.selected = selected
+                    role = Role.RadioButton
+                }.padding(horizontal = 14.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         // Radio button
@@ -501,32 +506,13 @@ private fun TierCard(
                 modifier = Modifier.padding(top = 2.dp),
             )
         }
-        if (stampLabel != null) {
-            Box(
-                modifier =
-                    Modifier
-                        .rotate(2f)
-                        .clip(RoundedCornerShape(999.dp))
-                        .border(1.2.dp, AccentCopper, RoundedCornerShape(999.dp))
-                        .padding(horizontal = 10.dp, vertical = 3.dp),
-            ) {
-                Text(
-                    text = stampLabel,
-                    fontFamily = rememberCaveat(),
-                    fontWeight = FontWeight.W600,
-                    fontSize = 13.sp,
-                    color = AccentCopper,
-                )
-            }
-        } else {
-            Text(
-                text = price,
-                fontFamily = rememberCaveat(),
-                fontWeight = FontWeight.W600,
-                fontSize = 14.sp,
-                color = AccentCopper,
-            )
-        }
+        Text(
+            text = price,
+            fontFamily = rememberCaveat(),
+            fontWeight = FontWeight.W600,
+            fontSize = 14.sp,
+            color = AccentCopper,
+        )
     }
 }
 
@@ -547,13 +533,21 @@ private fun PrimaryCta(
                 .padding(vertical = 14.dp),
         contentAlignment = Alignment.Center,
     ) {
-        Text(
-            text = text,
-            color = SandCreme,
-            fontFamily = rememberDmSerifDisplay(),
-            fontStyle = FontStyle.Italic,
-            fontSize = 18.sp,
-        )
+        if (inFlight) {
+            CircularProgressIndicator(
+                color = SandCreme,
+                strokeWidth = 2.dp,
+                modifier = Modifier.size(20.dp),
+            )
+        } else {
+            Text(
+                text = text,
+                color = SandCreme,
+                fontFamily = rememberDmSerifDisplay(),
+                fontStyle = FontStyle.Italic,
+                fontSize = 18.sp,
+            )
+        }
     }
 }
 

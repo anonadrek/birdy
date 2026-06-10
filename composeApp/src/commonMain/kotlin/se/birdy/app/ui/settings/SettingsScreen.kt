@@ -22,6 +22,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.List
+import androidx.compose.material.icons.outlined.CalendarToday
+import androidx.compose.material.icons.outlined.EmojiEvents
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.MailOutline
@@ -74,6 +77,7 @@ import birdy_bird_scanner.composeapp.generated.resources.settings_hero_subline
 import birdy_bird_scanner.composeapp.generated.resources.settings_label_about
 import birdy_bird_scanner.composeapp.generated.resources.settings_label_language
 import birdy_bird_scanner.composeapp.generated.resources.settings_label_name
+import birdy_bird_scanner.composeapp.generated.resources.settings_language_dialog_done
 import birdy_bird_scanner.composeapp.generated.resources.settings_language_en
 import birdy_bird_scanner.composeapp.generated.resources.settings_language_sv
 import birdy_bird_scanner.composeapp.generated.resources.settings_language_system
@@ -199,21 +203,21 @@ fun SettingsScreen(
 
                 PaperCard {
                     ToggleRow(
-                        icon = Icons.Outlined.Notifications,
+                        icon = Icons.Outlined.CalendarToday,
                         label = stringResource(Res.string.settings_toggle_daily_bird),
                         checked = dailyBirdEnabled,
                         onCheckedChange = viewModel::setDailyBirdPushEnabled,
                     )
                     DashedDivider()
                     ToggleRow(
-                        icon = Icons.Outlined.Notifications,
+                        icon = Icons.AutoMirrored.Outlined.List,
                         label = stringResource(Res.string.settings_toggle_weekly_recap),
                         checked = weeklyRecapEnabled,
                         onCheckedChange = viewModel::setWeeklyRecapPushEnabled,
                     )
                     DashedDivider()
                     ToggleRow(
-                        icon = Icons.Outlined.Notifications,
+                        icon = Icons.Outlined.EmojiEvents,
                         label = stringResource(Res.string.settings_toggle_trophy),
                         checked = trophyEnabled,
                         onCheckedChange = viewModel::setWeeklyTrophyPushEnabled,
@@ -251,6 +255,8 @@ fun SettingsScreen(
                 )
             }
             if (viewModel.devToolsAvailable) {
+                // DEV-only tools (debug builds, gated by devToolsAvailable). Labels are
+                // intentionally English and not localized — never shown to real users.
                 item { SectionHeader("DEV TOOLS") }
                 item {
                     PaperCard {
@@ -625,7 +631,7 @@ private fun LanguagePickerDialog(
         },
         confirmButton = {
             TextButton(onClick = onDismiss) {
-                Text(stringResource(Res.string.settings_name_dialog_cancel))
+                Text(stringResource(Res.string.settings_language_dialog_done))
             }
         },
         containerColor = PaperTop,

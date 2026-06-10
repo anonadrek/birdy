@@ -3,9 +3,7 @@ package se.birdy.app.ui.audio
 sealed interface AudioScanState {
     data object Preparing : AudioScanState
 
-    data class PermissionNeeded(
-        val canRequest: Boolean,
-    ) : AudioScanState
+    data object PermissionNeeded : AudioScanState
 
     data object Idle : AudioScanState
 

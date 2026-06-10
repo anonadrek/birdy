@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,6 +42,7 @@ import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
@@ -215,7 +217,10 @@ private fun PermissionPrompt(
             color = MarginaliaInk,
         )
         Spacer(Modifier.height(16.dp))
-        Button(onClick = onClick) {
+        Button(
+            onClick = onClick,
+            colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm),
+        ) {
             Text(
                 text =
                     stringResource(
@@ -238,6 +243,9 @@ private fun ErrorRetry(
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = message, fontFamily = rememberCaveat(), color = MarginaliaInk)
         Spacer(Modifier.height(16.dp))
-        Button(onClick = onRetry) { Text(text = stringResource(Res.string.audio_scan_retry)) }
+        Button(
+            onClick = onRetry,
+            colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm),
+        ) { Text(text = stringResource(Res.string.audio_scan_retry)) }
     }
 }

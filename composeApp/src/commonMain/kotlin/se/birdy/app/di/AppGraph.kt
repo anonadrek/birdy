@@ -306,6 +306,12 @@ class AppGraph(
             classifier = classifier,
             cameraSourceFactory = cameraSourceFactory,
             classifierMode = classifierMode,
+            loadNames = {
+                repository
+                    .allByQid(defaultLocale)
+                    .entries
+                    .associate { (id, species) -> id.raw to species.name }
+            },
         )
 
     fun photoAnalyzeViewModel(persist: (ByteArray) -> String): PhotoAnalyzeViewModel =

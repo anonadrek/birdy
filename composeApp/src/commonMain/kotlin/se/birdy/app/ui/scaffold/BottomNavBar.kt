@@ -28,6 +28,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -141,7 +144,10 @@ private fun TabCell(
                 .background(if (selected) AccentCopper.copy(alpha = 0.12f) else Color.Transparent)
                 .clickable(onClick = onClick)
                 .padding(vertical = 6.dp)
-                .semantics(mergeDescendants = true) {},
+                .semantics(mergeDescendants = true) {
+                    this.selected = selected
+                    role = Role.Tab
+                },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         // contentDescription = null: the Text label below is merged via mergeDescendants

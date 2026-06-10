@@ -25,6 +25,10 @@ import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -54,7 +58,11 @@ fun LockedStatsPreview(
                 .fillMaxWidth()
                 .height(140.dp)
                 .clip(RoundedCornerShape(12.dp))
-                .clickable(onClick = onClick),
+                .clickable(onClick = onClick)
+                .semantics(mergeDescendants = true) {
+                    contentDescription = overlayCta
+                    role = Role.Button
+                },
     ) {
         Column(
             modifier =

@@ -19,6 +19,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.MoreVert
@@ -46,8 +48,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -69,6 +77,8 @@ import birdy_bird_scanner.composeapp.generated.resources.archive_chip_songbirds
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_waders
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_waterfowl
 import birdy_bird_scanner.composeapp.generated.resources.archive_chip_woodpeckers
+import birdy_bird_scanner.composeapp.generated.resources.archive_empty_group_body
+import birdy_bird_scanner.composeapp.generated.resources.archive_empty_group_title
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_body
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_retry
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_title
@@ -178,6 +188,7 @@ fun ArchiveScreen(
                                 },
                             )
                             if (showDebugMenu) {
+                                // Debug-only menu items, intentionally English (not user-facing).
                                 DropdownMenuItem(
                                     text = { Text("Run benchmark") },
                                     onClick = {
@@ -271,10 +282,19 @@ fun ArchiveScreen(
                     }
                 ArchiveUiState.Empty ->
                     item(key = "empty") {
-                        EmptyState(
-                            title = stringResource(Res.string.search_empty_title),
-                            body = stringResource(Res.string.search_empty_body),
-                        )
+                        // A blank query with no rows means a group chip filtered everything out —
+                        // the "search by scientific name" hint would be nonsensical there.
+                        if (query.isBlank()) {
+                            EmptyState(
+                                title = stringResource(Res.string.archive_empty_group_title),
+                                body = stringResource(Res.string.archive_empty_group_body),
+                            )
+                        } else {
+                            EmptyState(
+                                title = stringResource(Res.string.search_empty_title),
+                                body = stringResource(Res.string.search_empty_body),
+                            )
+                        }
                     }
                 is ArchiveUiState.Error ->
                     item(key = "error") {
@@ -421,11 +441,14 @@ private fun JournalSearchField(
     modifier: Modifier = Modifier,
 ) {
     val caveat = rememberCaveat()
+    val keyboardController = LocalSoftwareKeyboardController.current
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         modifier = modifier,
         singleLine = true,
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+        keyboardActions = KeyboardActions(onSearch = { keyboardController?.hide() }),
         shape = RoundedCornerShape(24.dp),
         placeholder = {
             Text(
@@ -500,7 +523,10 @@ private fun ChipBar(
                             color = AccentCopper.copy(alpha = if (isSelected) 0f else 0.5f),
                             shape = RoundedCornerShape(50),
                         ).clickable { onSelect(chipValue) }
-                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                        .semantics(mergeDescendants = true) {
+                            this.selected = isSelected
+                            role = Role.Button
+                        }.padding(horizontal = 12.dp, vertical = 6.dp),
             ) {
                 Text(
                     text = label,
@@ -532,6 +558,7 @@ private fun SortChip(
                 .clip(RoundedCornerShape(50))
                 .background(PaperBottom.copy(alpha = 0.6f))
                 .clickable(onClick = onClick)
+                .semantics(mergeDescendants = true) { role = Role.Button }
                 .padding(horizontal = 12.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {

@@ -6,7 +6,6 @@
     <string name="tab_badges">Badges</string>
     <string name="tab_map">Map</string>
 
-    <string name="title_encyclopedia">ENCYCLOPEDIA</string>
 
     <string name="profile_label_description">DESCRIPTION</string>
     <string name="profile_label_migration">MIGRATION</string>
@@ -25,20 +24,6 @@
     <string name="observation_visit_profile">visit profile</string>
 
     <!-- Plan 7c: ClassificationResult Field Journal -->
-    <string name="result_journal_label">MATCH · NO %1$s</string>
-    <string name="result_journal_headline">*%1$s*?</string>
-    <string name="result_journal_sub">A %1$s match.</string>
-
-    <string name="filter_title">Filter</string>
-    <string name="filter_button">⚙ Filter</string>
-    <string name="filter_label_abundance">ABUNDANCE</string>
-    <string name="filter_label_region">REGION</string>
-    <string name="filter_label_month">MONTH</string>
-    <plurals name="filter_apply">
-        <item quantity="one">Show %1$d species</item>
-        <item quantity="other">Show %1$d species</item>
-    </plurals>
-    <string name="filter_reset">Reset</string>
 
     <string-array name="months_short_uppercase">
         <item>JAN</item><item>FEB</item><item>MAR</item><item>APR</item>
@@ -49,9 +34,29 @@
     <string name="badge_common">COMMON</string>
     <string name="badge_uncommon">UNCOMMON</string>
 
+    <!-- Accessibility (TalkBack) -->
+    <string name="a11y_stamp_number">Badge number %1$d</string>
+    <string name="a11y_stamp_track">%1$d of %2$d badges earned</string>
+    <string name="a11y_crop_hint">Drag the corners to crop the image</string>
+    <string name="onboarding_hero_image_cd">Birdy — the app's bird mascot</string>
+
+    <!-- IUCN red-list status labels -->
+    <string name="iucn_lc">Least concern</string>
+    <string name="iucn_nt">Near threatened</string>
+    <string name="iucn_vu">Vulnerable</string>
+    <string name="iucn_en">Endangered</string>
+    <string name="iucn_cr">Critically endangered</string>
+    <string name="iucn_dd">Data deficient</string>
+
+    <!-- Onboarding extracted literals -->
+    <string name="onboarding_s2_plate_caption">%1$s, in nature</string>
+    <string name="onboarding_s4_scientific_name">Apus apus</string>
+
     <string name="search_placeholder">Search species, genus or family…</string>
     <string name="search_empty_title">No species match</string>
     <string name="search_empty_body">Try other filters or search by scientific name.</string>
+    <string name="archive_empty_group_title">No species in this group</string>
+    <string name="archive_empty_group_body">Pick another group above to keep browsing.</string>
 
     <string name="empty_description">A description will be added in a future update.</string>
     <string name="empty_migration">No migration data available for this species.</string>
@@ -60,12 +65,7 @@
     <string name="not_found_title">Species not found.</string>
     <string name="not_found_body">Press back to return to the list.</string>
 
-    <string name="stub_badges_title">Badges</string>
-    <string name="stub_badges_body">This feature is coming in Plan 5 — Gamification.</string>
 
-    <string name="section_common_se">Common in Sweden</string>
-    <string name="section_common_generic">Common</string>
-    <string name="section_others">Others</string>
 
     <string name="loading">Loading…</string>
     <string name="journal_loading_default">Browsing the field journal…</string>
@@ -86,10 +86,6 @@
     <string name="crop_cancel">Cancel</string>
 
     <!-- Result screen -->
-    <string name="result_your_scan">your scan</string>
-    <string name="result_unresolved_count">%1$d suggestions could not be matched</string>
-    <string name="result_save_observation">Save as observation</string>
-    <string name="result_save_hint">Saved locally on your device</string>
     <string name="result_no_predictions">No predictions to show.</string>
     <string name="result_no_matches">No species matched the database.</string>
 
@@ -100,7 +96,7 @@
     <string name="match_sub_confidence">A %1$s match.</string>
     <string name="match_marginalia_first_sighting">*NEW SPECIES*</string>
     <string name="match_marginalia_repeat">SIGHT *#%1$d* · FIRST SEEN: %2$s</string>
-    <string name="match_marginalia_manual_pick">*your choice*</string>
+    <string name="match_marginalia_manual_pick">your choice</string>
     <!-- Plan 6b2 T6: source-aware marginalia (photo vs audio) -->
     <string name="match_marginalia_captured_photo">captured on camera</string>
     <string name="match_marginalia_captured_audio">captured in song</string>
@@ -114,7 +110,7 @@
     <string name="disambig_eyebrow_two">TWO CANDIDATES · NO %1$d</string>
     <string name="disambig_headline">*Which one matches?*</string>
     <string name="disambig_sub">The model is uncertain.</string>
-    <string name="disambig_frame_caption">*what you saw*</string>
+    <string name="disambig_frame_caption">what you saw</string>
     <string name="disambig_candidate_confidence">%1$s · %2$s match</string>
     <string name="disambig_pick_hint">Tap to choose</string>
     <string name="disambig_cancel_cta">Cancel</string>
@@ -123,9 +119,9 @@
     <string name="nobird_eyebrow">NO MATCH · NO %1$s</string>
     <string name="nobird_headline">*No species could be sketched*</string>
     <string name="nobird_sub">A blur, a flicker of wings.</string>
-    <string name="nobird_tip_closer">*get closer*</string>
-    <string name="nobird_tip_center">*center the bird*</string>
-    <string name="nobird_tip_light">*more light*</string>
+    <string name="nobird_tip_closer">get closer</string>
+    <string name="nobird_tip_center">center the bird</string>
+    <string name="nobird_tip_light">more light</string>
     <string name="nobird_retry_cta">Try again</string>
     <string name="nobird_date_format">%1$d %2$s %3$d</string>
     <!-- Plan 6a Task 10.5: NoBird actionable sub-tips + top-1 guess hint -->
@@ -189,19 +185,7 @@
     <string name="diary_relative_today">Today, %1$s</string>
     <string name="diary_relative_yesterday">Yesterday, %1$s</string>
     <string name="diary_relative_date_full">%2$s %1$d, %3$s</string>
-    <string name="diary_full_date_format">%2$s %1$d, %3$d, %4$s</string>
-    <string name="diary_month_jan">JAN</string>
-    <string name="diary_month_feb">FEB</string>
-    <string name="diary_month_mar">MAR</string>
-    <string name="diary_month_apr">APR</string>
-    <string name="diary_month_may">MAY</string>
-    <string name="diary_month_jun">JUN</string>
-    <string name="diary_month_jul">JUL</string>
-    <string name="diary_month_aug">AUG</string>
-    <string name="diary_month_sep">SEP</string>
-    <string name="diary_month_oct">OCT</string>
-    <string name="diary_month_nov">NOV</string>
-    <string name="diary_month_dec">DEC</string>
+    <string name="diary_full_date_format">%2$s %1$d, %3$d · %4$s</string>
     <string name="diary_month_short_jan">Jan</string>
     <string name="diary_month_short_feb">Feb</string>
     <string name="diary_month_short_mar">Mar</string>
@@ -218,20 +202,10 @@
     <string name="diary_confidence_format">%1$s confidence when scanned</string>
 
     <!-- ===== Plan 5b: Badges UI ===== -->
-    <string name="badges_title">Badges</string>
-    <string name="badges_label_species_seen">Species seen</string>
-    <string name="badges_label_badges">Badges</string>
-    <string name="badges_label_weekly_streak">W-streak</string>
-    <string name="badges_label_monthly_streak">M-streak</string>
-    <string name="badges_weekly_streak_value">%1$d w</string>
-    <string name="badges_monthly_streak_value">%1$d m</string>
     <string name="badges_section_recently_unlocked">Recently discovered</string>
-    <string name="badges_section_to_discover">To discover · %1$d left</string>
     <string name="badges_locked_tooltip">Secret — keep birding</string>
-    <string name="badges_progress_format">%1$d / %2$d</string>
     <string name="badges_load_error">Could not load badges — try again</string>
     <string name="badges_load_error_retry">Try again</string>
-    <string name="badges_catalog_error">Badges could not load — reinstall the app</string>
 
     <string name="unlock_label">New *badge*!</string>
     <string name="unlock_button_dismiss">Wonderful</string>
@@ -336,7 +310,7 @@
     <string name="onboarding_s4_eyebrow">THE JOURNAL · NO 4</string>
     <string name="onboarding_s4_headline">Every find — *a page*.</string>
     <string name="onboarding_s4_sub">Your collection grows with every bird. PDF export when you want.</string>
-    <string name="onboarding_s4_marginalia">May 16 · Stockholm</string>
+    <string name="onboarding_s4_marginalia">May 16 · Hyde Park</string>
     <string name="onboarding_s4_species">Common Swift</string>
 
     <string name="onboarding_s5_eyebrow">BADGES · NO 5</string>
@@ -358,9 +332,6 @@
     <string name="settings_show_intro_again">Show intro again</string>
 
     <!-- ===== Plan 7b: ListenLauncherScreen ===== -->
-    <string name="listen_breadcrumb">LISTEN</string>
-    <string name="listen_headline">Three ways to *catch.*</string>
-    <string name="listen_sub">A stamp waits in each.</string>
     <string name="listen_journal_label">CATCH · NO 0</string>
     <string name="listen_journal_headline">Three ways to *catch.*</string>
     <string name="listen_journal_sub">Camera, photo or call — the bird turns up in your field book.</string>
@@ -383,13 +354,11 @@
     <string name="settings_name_dialog_title">Change name</string>
     <string name="settings_name_dialog_save">Save</string>
     <string name="settings_name_dialog_cancel">Cancel</string>
+    <string name="settings_language_dialog_done">Done</string>
     <string name="settings_back">Back</string>
     <string name="menu_button">Menu</string>
 
     <!-- ===== Plan 7b: ArchiveScreen ===== -->
-    <string name="archive_breadcrumb">ARCHIVE</string>
-    <string name="archive_headline">Birds.</string>
-    <string name="archive_sub">Search, filter, *learn.*</string>
     <string name="archive_journal_label">ARCHIVE · 839 SPECIES</string>
     <string name="archive_journal_headline">*Birds.*</string>
     <string name="archive_journal_sub">Search, filter, learn.</string>
@@ -420,21 +389,14 @@
     <string name="archive_error_retry">Try again</string>
 
     <!-- ===== Plan 7b: BadgesScreen redesign ===== -->
-    <string name="badges_screen_headline">Discoveries.</string>
-    <string name="badges_screen_progress_label">BADGES UNLOCKED</string>
-    <string name="badges_grid_hidden">???</string>
-    <string name="badges_in_progress_pill">%1$s/%2$s</string>
     <string name="badges_journal_label">DISCOVERIES · NO %1$s</string>
     <string name="badges_journal_headline">*%1$s* found.</string>
     <string name="badges_journal_sub">%1$s waiting in the field.</string>
     <!-- Plan 6a Task 10.4: locked-badge progress bottom-sheet -->
-    <string name="badge_sheet_locked_body">Keep birding to unlock this stamp.</string>
-    <string name="badge_sheet_progress_label">%1$s of %2$s · %3$s</string>
     <string name="badge_sheet_close">Close</string>
 
     <!-- ===== Plan 7b: LifelistScreen ===== -->
     <string name="lifelist_breadcrumb">LIFELIST</string>
-    <string name="lifelist_headline_format">*%1$s*'s collection.</string>
     <string name="lifelist_headline_fallback">My collection.</string>
     <string name="lifelist_stat_species">SPECIES</string>
     <string name="lifelist_stat_stamps">STAMPS</string>
@@ -553,9 +515,11 @@
     <string name="stats_section_seasons">By season</string>
     <string name="stats_section_top">Most-seen species</string>
     <string name="stats_section_cumulative">New species over time</string>
+    <string name="stats_total_species">Species</string>
+    <string name="stats_total_observations">Observations</string>
     <string name="stats_empty_eyebrow">SEASON</string>
     <string name="stats_empty_headline">Nothing to *chart* yet.</string>
-    <string name="stats_empty_sub">Save a few observations to unlock your year.</string>
+    <string name="stats_empty_sub">No finds yet this year — save one to unlock your yearly overview.</string>
     <string name="stats_back">Back</string>
     <string name="stats_count_format">%1$d obs</string>
     <string name="stats_winter">Winter</string>
@@ -598,7 +562,6 @@
     <string name="audio_scan_cta_idle">Tap to listen</string>
     <string name="audio_scan_cta_recording">Listening — tap to stop</string>
     <string name="audio_scan_analyzing">Analyzing…</string>
-    <string name="audio_scan_cancel">Cancel</string>
     <string name="audio_scan_permission_title">Listen for a song</string>
     <string name="audio_scan_permission_body">Birdy needs your microphone to identify bird songs — audio stays only on your phone.</string>
     <string name="audio_scan_permission_grant">Grant permission</string>
@@ -623,7 +586,7 @@
 
     <!-- Permission prompt sheet -->
     <string name="permission_prompt_eyebrow">NOTIFICATIONS</string>
-    <string name="permission_prompt_headline">Want a *reminder* when there\'s a bird worth meeting?</string>
+    <string name="permission_prompt_headline">Want a *reminder* when there's a bird worth meeting?</string>
     <string name="permission_prompt_sub">Max one nudge a day. Turn off anytime.</string>
     <string name="permission_prompt_cta_yes">Turn on</string>
     <string name="permission_prompt_cta_no">Not now</string>
@@ -664,7 +627,7 @@
     <string name="recap_new_badge_fmt">New stamp: %1$s</string>
     <string name="recap_delta_fmt">vs last week: %1$s sightings</string>
     <string name="recap_empty_plate">The page is blank — no sightings yet.</string>
-    <string name="recap_new_species_tag">New</string>
+    <string name="recap_new_species_tag">New species</string>
     <string name="recap_quiet_encouragement">No rush. Ten minutes in the park is enough for the week's first line.</string>
     <string name="recap_streak_label">Your streak</string>
     <string name="recap_streak_nudge_fmt">%1$s weeks running — keep it alive before Sunday ends. A great tit in the park is enough.</string>
@@ -711,7 +674,6 @@
     <string name="trophy_room_intro_eyebrow">Birder profile</string>
     <string name="trophy_room_headline">Your *trophy room*.</string>
     <string name="trophy_room_sub">%1$s of %2$s · %3$s waiting in the field</string>
-    <string name="trophy_room_title">Your trophy room</string>
     <string name="trophy_room_back">Back</string>
     <string name="trophy_room_entry_eyebrow">Your trophy room</string>
     <string name="trophy_room_entry_count">%1$s trophies</string>
