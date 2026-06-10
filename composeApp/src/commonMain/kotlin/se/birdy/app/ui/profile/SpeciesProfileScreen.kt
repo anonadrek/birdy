@@ -269,10 +269,6 @@ private fun DescriptionWithDropCap(
     text: String,
     serif: FontFamily,
 ) {
-    if (text.isEmpty()) {
-        Text(text = "", style = MaterialTheme.typography.bodyMedium)
-        return
-    }
     val firstChar = text.first().toString()
     val rest = text.drop(1)
     val annotated =

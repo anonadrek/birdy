@@ -188,6 +188,7 @@ fun ArchiveScreen(
                                 },
                             )
                             if (showDebugMenu) {
+                                // Debug-only menu items, intentionally English (not user-facing).
                                 DropdownMenuItem(
                                     text = { Text("Run benchmark") },
                                     onClick = {

@@ -49,9 +49,6 @@ class AudioScanViewModel(
     private val _state = MutableStateFlow<AudioScanState>(AudioScanState.Preparing)
     val state: StateFlow<AudioScanState> = _state
 
-    @Suppress("UnusedPrivateMember")
-    private var classifierMode: AudioClassifierMode? = null
-
     private var sessionJob: Job? = null
     private var inferenceJob: Job? = null
     private var handle: RecorderHandle? = null
@@ -87,9 +84,9 @@ class AudioScanViewModel(
                 if (_state.value !is AudioScanState.Recording) {
                     _state.value = AudioScanState.Idle
                 }
-            PermissionState.Denied -> _state.value = AudioScanState.PermissionNeeded(canRequest = true)
+            PermissionState.Denied -> _state.value = AudioScanState.PermissionNeeded
             PermissionState.PermanentlyDenied -> _state.value = AudioScanState.Error.PermanentlyDenied
-            PermissionState.Unknown -> _state.value = AudioScanState.PermissionNeeded(canRequest = true)
+            PermissionState.Unknown -> _state.value = AudioScanState.PermissionNeeded
         }
     }
 
@@ -116,8 +113,7 @@ class AudioScanViewModel(
                                 coroutineContext.ensureActive()
                                 _state.value = AudioScanState.Error.BootstrapFailed(throwable.message ?: "bootstrap failed")
                                 return@launch
-                            }.also { classifierMode = it.second }
-                            .first
+                            }.first
 
                     handle =
                         recorder.start(

@@ -52,6 +52,10 @@
     <string name="iucn_cr">Akut hotad</string>
     <string name="iucn_dd">Kunskapsbrist</string>
 
+    <!-- Onboarding extracted literals -->
+    <string name="onboarding_s2_plate_caption">%1$s, i naturen</string>
+    <string name="onboarding_s4_scientific_name">Apus apus</string>
+
     <!-- Search -->
     <string name="search_placeholder">Sök art, släkte eller familj…</string>
     <string name="search_empty_title">Ingen art matchar</string>

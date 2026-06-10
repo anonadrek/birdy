@@ -130,7 +130,6 @@ fun PremiumScreen(
                     price = state.formattedYearlyPrice ?: stringResource(Res.string.premium_tier_yearly_price),
                     sub = stringResource(Res.string.premium_tier_yearly_sub),
                     selected = state.selectedTier == PremiumTier.YEARLY,
-                    stampLabel = null,
                     onClick = { viewModel.selectTier(PremiumTier.YEARLY) },
                 )
             }
@@ -155,7 +154,6 @@ fun PremiumScreen(
                     price = state.formattedLifetimePrice ?: stringResource(Res.string.premium_tier_lifetime_price),
                     sub = null,
                     selected = state.selectedTier == PremiumTier.LIFETIME,
-                    stampLabel = null,
                     onClick = { viewModel.selectTier(PremiumTier.LIFETIME) },
                 )
             }
@@ -455,7 +453,6 @@ private fun TierCard(
     price: String,
     sub: String?,
     selected: Boolean,
-    stampLabel: String?,
     onClick: () -> Unit,
 ) {
     val border = if (selected) BorderStroke(1.8.dp, AccentCopper) else BorderStroke(1.dp, AccentCopper.copy(alpha = 0.3f))
@@ -509,32 +506,13 @@ private fun TierCard(
                 modifier = Modifier.padding(top = 2.dp),
             )
         }
-        if (stampLabel != null) {
-            Box(
-                modifier =
-                    Modifier
-                        .rotate(2f)
-                        .clip(RoundedCornerShape(999.dp))
-                        .border(1.2.dp, AccentCopper, RoundedCornerShape(999.dp))
-                        .padding(horizontal = 10.dp, vertical = 3.dp),
-            ) {
-                Text(
-                    text = stampLabel,
-                    fontFamily = rememberCaveat(),
-                    fontWeight = FontWeight.W600,
-                    fontSize = 13.sp,
-                    color = AccentCopper,
-                )
-            }
-        } else {
-            Text(
-                text = price,
-                fontFamily = rememberCaveat(),
-                fontWeight = FontWeight.W600,
-                fontSize = 14.sp,
-                color = AccentCopper,
-            )
-        }
+        Text(
+            text = price,
+            fontFamily = rememberCaveat(),
+            fontWeight = FontWeight.W600,
+            fontSize = 14.sp,
+            color = AccentCopper,
+        )
     }
 }
 

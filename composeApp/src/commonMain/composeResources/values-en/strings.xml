@@ -48,6 +48,10 @@
     <string name="iucn_cr">Critically endangered</string>
     <string name="iucn_dd">Data deficient</string>
 
+    <!-- Onboarding extracted literals -->
+    <string name="onboarding_s2_plate_caption">%1$s, in nature</string>
+    <string name="onboarding_s4_scientific_name">Apus apus</string>
+
     <string name="search_placeholder">Search species, genus or family…</string>
     <string name="search_empty_title">No species match</string>
     <string name="search_empty_body">Try other filters or search by scientific name.</string>
@@ -306,7 +310,7 @@
     <string name="onboarding_s4_eyebrow">THE JOURNAL · NO 4</string>
     <string name="onboarding_s4_headline">Every find — *a page*.</string>
     <string name="onboarding_s4_sub">Your collection grows with every bird. PDF export when you want.</string>
-    <string name="onboarding_s4_marginalia">May 16 · Stockholm</string>
+    <string name="onboarding_s4_marginalia">May 16 · Hyde Park</string>
     <string name="onboarding_s4_species">Common Swift</string>
 
     <string name="onboarding_s5_eyebrow">BADGES · NO 5</string>
@@ -623,7 +627,7 @@
     <string name="recap_new_badge_fmt">New stamp: %1$s</string>
     <string name="recap_delta_fmt">vs last week: %1$s sightings</string>
     <string name="recap_empty_plate">The page is blank — no sightings yet.</string>
-    <string name="recap_new_species_tag">New</string>
+    <string name="recap_new_species_tag">New species</string>
     <string name="recap_quiet_encouragement">No rush. Ten minutes in the park is enough for the week's first line.</string>
     <string name="recap_streak_label">Your streak</string>
     <string name="recap_streak_nudge_fmt">%1$s weeks running — keep it alive before Sunday ends. A great tit in the park is enough.</string>

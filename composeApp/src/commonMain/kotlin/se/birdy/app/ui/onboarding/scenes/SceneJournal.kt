@@ -36,6 +36,7 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s4_eyebrow
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s4_headline
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s4_marginalia
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_s4_scientific_name
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s4_species
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s4_sub
 import coil3.compose.AsyncImage
@@ -149,7 +150,7 @@ fun SceneJournal(
                         verticalArrangement = Arrangement.spacedBy(9.dp),
                     ) {
                         Text(
-                            text = "Apus apus",
+                            text = stringResource(Res.string.onboarding_s4_scientific_name),
                             color = MarginaliaInk.copy(alpha = 0.8f),
                             fontFamily = caveat,
                             fontStyle = FontStyle.Italic,
@@ -202,10 +203,11 @@ fun SceneJournal(
             ) {
                 Box(modifier = Modifier.width(2.dp).height(20.dp).background(AccentCopper))
                 Text(
-                    text = "  ${stringResource(Res.string.onboarding_s4_marginalia)}",
+                    text = stringResource(Res.string.onboarding_s4_marginalia),
                     color = MarginaliaInk,
                     fontFamily = caveat,
                     fontSize = 14.sp,
+                    modifier = Modifier.padding(start = 8.dp),
                 )
             }
         }

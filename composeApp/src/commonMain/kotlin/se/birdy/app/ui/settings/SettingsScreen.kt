@@ -255,6 +255,8 @@ fun SettingsScreen(
                 )
             }
             if (viewModel.devToolsAvailable) {
+                // DEV-only tools (debug builds, gated by devToolsAvailable). Labels are
+                // intentionally English and not localized — never shown to real users.
                 item { SectionHeader("DEV TOOLS") }
                 item {
                     PaperCard {

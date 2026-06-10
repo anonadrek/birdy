@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s2_eyebrow
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s2_headline
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_s2_plate_caption
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s2_species_demo
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_s2_sub
 import coil3.compose.AsyncImage
@@ -74,7 +75,7 @@ fun ScenePhoto(
         ) {
             PlateFrame(
                 plateLabel = "I",
-                captionLine = "$speciesName, in nature",
+                captionLine = stringResource(Res.string.onboarding_s2_plate_caption, speciesName),
                 image = {
                     Box(
                         modifier = Modifier.fillMaxSize(),
