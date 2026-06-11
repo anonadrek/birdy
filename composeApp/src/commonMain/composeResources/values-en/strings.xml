@@ -13,7 +13,7 @@
     <string name="profile_back">Back</string>
 
     <!-- Plan 7c: Profile Field Journal -->
-    <string name="profile_journal_label">SPECIES · NO %1$s</string>
+    <string name="profile_journal_label">SPECIES</string>
     <string name="profile_journal_headline">*%1$s.*</string>
     <string name="profile_journal_sub">%1$s · %2$s</string>
     <string name="profile_plate_caption">in nature</string>
@@ -332,7 +332,7 @@
     <string name="settings_show_intro_again">Show intro again</string>
 
     <!-- ===== Plan 7b: ListenLauncherScreen ===== -->
-    <string name="listen_journal_label">CATCH · NO 0</string>
+    <string name="listen_journal_label">CATCH · IN THE FIELD</string>
     <string name="listen_journal_headline">Three ways to *catch.*</string>
     <string name="listen_journal_sub">Camera, photo or call — the bird turns up in your field book.</string>
     <string name="listen_card_audio_title">Listen</string>

@@ -16,7 +16,7 @@
     <string name="profile_back">Tillbaka</string>
 
     <!-- Plan 7c: Profile Field Journal -->
-    <string name="profile_journal_label">ART · NO %1$s</string>
+    <string name="profile_journal_label">ART</string>
     <string name="profile_journal_headline">*%1$s.*</string>
     <string name="profile_journal_sub">%1$s · %2$s</string>
     <string name="profile_plate_caption">i naturen</string>
@@ -345,7 +345,7 @@
     <string name="settings_show_intro_again">Visa introduktion igen</string>
 
     <!-- ===== Plan 7b: ListenLauncherScreen ===== -->
-    <string name="listen_journal_label">FÅNGA · NO 0</string>
+    <string name="listen_journal_label">FÅNGA · I FÄLT</string>
     <string name="listen_journal_headline">Tre sätt att *fånga.*</string>
     <string name="listen_journal_sub">Kamera, foto eller läte — arten dyker upp i din fältbok.</string>
     <string name="listen_card_audio_title">Lyssna</string>

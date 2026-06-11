@@ -114,7 +114,6 @@ private fun ProfileContent(
     showPremiumTeaser: Boolean,
 ) {
     val serif = rememberDmSerifDisplay()
-    val plateLabel = species.id.raw.removePrefix("Q")
     val captionPart = stringResource(Res.string.profile_plate_caption)
     val familyLabel = localizedFamilyLabel(locale, species.taxonomy.family, species.taxonomy.familySv)
 
@@ -123,7 +122,7 @@ private fun ProfileContent(
             item {
                 Box {
                     JournalIntro(
-                        label = stringResource(Res.string.profile_journal_label, plateLabel),
+                        label = stringResource(Res.string.profile_journal_label),
                         headline = stringResource(Res.string.profile_journal_headline, species.name),
                         sub = stringResource(Res.string.profile_journal_sub, species.scientificName, familyLabel),
                         headlineFontSize = 36.sp,
@@ -146,7 +145,7 @@ private fun ProfileContent(
                 val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
                 if (heroImage != null) {
                     PlateFrame(
-                        plateLabel = plateLabel,
+                        plateLabel = "",
                         captionLine = "${species.name}, $captionPart",
                     ) {
                         AsyncImage(
