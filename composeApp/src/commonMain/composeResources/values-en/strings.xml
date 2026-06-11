@@ -608,13 +608,13 @@
     <string name="notification_trophy_body_fmt">%1$s of %2$s badges unlocked. Closest: %3$s (%4$s/%5$s).</string>
 
     <!-- Badges -->
-    <string name="badge_premium_early_pilgrim_name">Early Pilgrim</string>
+    <string name="badge_premium_early_pilgrim_name">Early pilgrim</string>
     <string name="badge_premium_early_pilgrim_desc">Save an observation between 05:00 and 07:00.</string>
-    <string name="badge_premium_sunday_birder_name">Sunday Birder</string>
+    <string name="badge_premium_sunday_birder_name">Sunday birder</string>
     <string name="badge_premium_sunday_birder_desc">Observe on 4 consecutive Sundays.</string>
-    <string name="badge_premium_daily_bird_hunter_name">Daily Bird Hunter</string>
+    <string name="badge_premium_daily_bird_hunter_name">Daily bird hunter</string>
     <string name="badge_premium_daily_bird_hunter_desc">Save today’s curated bird on 3 different days.</string>
-    <string name="badge_name_daily_bird_first">First Daily Bird</string>
+    <string name="badge_name_daily_bird_first">First daily bird</string>
     <string name="badge_desc_daily_bird_first">Save today’s curated bird for the first time.</string>
 
     <!-- ===== v1.2 Phase B: Weekly Recap ===== -->
@@ -677,8 +677,10 @@
     <string name="trophy_room_back">Back</string>
     <string name="trophy_room_entry_eyebrow">Your trophy room</string>
     <string name="trophy_room_entry_count">%1$s trophies</string>
+    <string name="trophy_room_entry_count_one">%1$s trophy</string>
     <string name="trophy_room_entry_empty">Your trophy room awaits</string>
     <string name="trophy_room_entry_a11y">Open your trophy room, %1$s trophies</string>
+    <string name="trophy_room_entry_a11y_one">Open your trophy room, %1$s trophy</string>
     <string name="trophy_hero_recent_label">Most recent</string>
     <string name="trophy_hero_empty_name">your first stamp awaits</string>
     <string name="trophy_section_recent">Recently unlocked</string>

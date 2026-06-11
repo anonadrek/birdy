@@ -224,6 +224,7 @@ fun AppScaffold(graph: AppGraph) {
                 composable<AppRoute.ArchiveList> {
                     ArchiveScreen(
                         viewModel = remember(graph) { graph.archiveViewModel() },
+                        locale = graph.defaultLocale,
                         onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
                         onPremiumClick = { navController.navigate(AppRoute.Premium) },
                         onJournalExport = graph.journalExport,
@@ -242,6 +243,7 @@ fun AppScaffold(graph: AppGraph) {
                             remember(graph, route.speciesId) {
                                 graph.speciesProfileViewModel(SpeciesId(route.speciesId))
                             },
+                        locale = graph.defaultLocale,
                         onBack = { navController.popBackStack() },
                         onPremiumClick = { navController.navigate(AppRoute.Premium) },
                         showPremiumTeaser = showPremiumTeaser,

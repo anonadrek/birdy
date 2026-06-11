@@ -690,8 +690,10 @@
     <string name="trophy_room_back">Tillbaka</string>
     <string name="trophy_room_entry_eyebrow">Ditt troférum</string>
     <string name="trophy_room_entry_count">%1$s troféer</string>
+    <string name="trophy_room_entry_count_one">%1$s trofé</string>
     <string name="trophy_room_entry_empty">Ditt troférum väntar</string>
     <string name="trophy_room_entry_a11y">Öppna ditt troférum, %1$s troféer</string>
+    <string name="trophy_room_entry_a11y_one">Öppna ditt troférum, %1$s trofé</string>
     <string name="trophy_hero_recent_label">Senast vunnen</string>
     <string name="trophy_hero_empty_name">din första stämpel väntar</string>
     <string name="trophy_section_recent">Senast upplåsta</string>
