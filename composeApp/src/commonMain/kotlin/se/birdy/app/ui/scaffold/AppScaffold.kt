@@ -288,6 +288,13 @@ fun AppScaffold(graph: AppGraph) {
                     se.birdy.app.ui.map.MapScreen(
                         viewModel = mapVm,
                         onPinClick = { id -> navController.navigate(AppRoute.ObservationDetail(id)) },
+                        onIdentifyClick = {
+                            navController.navigate(AppRoute.Listen) {
+                                popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        },
                     )
                 } else {
                     se.birdy.app.ui.map.MapPremiumTeaser(
