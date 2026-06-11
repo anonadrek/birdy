@@ -499,12 +499,14 @@ private fun TierCard(
                 fontSize = 17.sp,
                 color = TextOnCreme,
             )
-            Text(
-                text = sub ?: price,
-                fontSize = 11.sp,
-                color = MarginaliaInk,
-                modifier = Modifier.padding(top = 2.dp),
-            )
+            if (sub != null) {
+                Text(
+                    text = sub,
+                    fontSize = 11.sp,
+                    color = MarginaliaInk,
+                    modifier = Modifier.padding(top = 2.dp),
+                )
+            }
         }
         Text(
             text = price,

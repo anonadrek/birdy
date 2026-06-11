@@ -29,7 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.trophy_room_entry_a11y
+import birdy_bird_scanner.composeapp.generated.resources.trophy_room_entry_a11y_one
 import birdy_bird_scanner.composeapp.generated.resources.trophy_room_entry_count
+import birdy_bird_scanner.composeapp.generated.resources.trophy_room_entry_count_one
 import birdy_bird_scanner.composeapp.generated.resources.trophy_room_entry_empty
 import birdy_bird_scanner.composeapp.generated.resources.trophy_room_entry_eyebrow
 import coil3.compose.AsyncImage
@@ -56,12 +58,17 @@ fun TrophyRoomEntryCard(
     val eyebrow = stringResource(Res.string.trophy_room_entry_eyebrow)
     val heroName = hero?.let { stringResource(BadgeStringMap.nameFor(it.badge.id)) }
     val countLabel =
-        if (unlockedCount > 0) {
-            stringResource(Res.string.trophy_room_entry_count, unlockedCount.toString())
-        } else {
-            stringResource(Res.string.trophy_room_entry_empty)
+        when {
+            unlockedCount == 0 -> stringResource(Res.string.trophy_room_entry_empty)
+            unlockedCount == 1 -> stringResource(Res.string.trophy_room_entry_count_one, "1")
+            else -> stringResource(Res.string.trophy_room_entry_count, unlockedCount.toString())
         }
-    val a11y = stringResource(Res.string.trophy_room_entry_a11y, unlockedCount.toString())
+    val a11y =
+        if (unlockedCount == 1) {
+            stringResource(Res.string.trophy_room_entry_a11y_one, "1")
+        } else {
+            stringResource(Res.string.trophy_room_entry_a11y, unlockedCount.toString())
+        }
 
     Box(
         modifier =

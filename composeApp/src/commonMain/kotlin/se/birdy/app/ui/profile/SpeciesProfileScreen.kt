@@ -70,6 +70,7 @@ import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.PlateFrame
 import se.birdy.app.ui.components.PremiumTeaserCard
+import se.birdy.app.ui.encyclopedia.localizedFamilyLabel
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaBorder
 import se.birdy.app.ui.theme.MarginaliaInk
@@ -80,11 +81,13 @@ import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.app.util.speciesImageUri
 import se.birdy.content.Abundance
+import se.birdy.content.Locale
 import se.birdy.content.model.Species
 
 @Composable
 fun SpeciesProfileScreen(
     viewModel: SpeciesProfileViewModel,
+    locale: Locale,
     onBack: () -> Unit,
     onPremiumClick: () -> Unit,
     showPremiumTeaser: Boolean = true,
@@ -97,7 +100,7 @@ fun SpeciesProfileScreen(
                 title = stringResource(Res.string.not_found_title),
                 body = stringResource(Res.string.not_found_body),
             )
-        is SpeciesProfileUiState.Loaded -> ProfileContent(s.species, onBack, onPremiumClick, showPremiumTeaser)
+        is SpeciesProfileUiState.Loaded -> ProfileContent(s.species, locale, onBack, onPremiumClick, showPremiumTeaser)
     }
 }
 
@@ -105,21 +108,21 @@ fun SpeciesProfileScreen(
 @Composable
 private fun ProfileContent(
     species: Species,
+    locale: Locale,
     onBack: () -> Unit,
     onPremiumClick: () -> Unit,
     showPremiumTeaser: Boolean,
 ) {
     val serif = rememberDmSerifDisplay()
-    val plateLabel = species.id.raw.removePrefix("Q")
     val captionPart = stringResource(Res.string.profile_plate_caption)
-    val familyLabel = species.taxonomy.familySv ?: species.taxonomy.family
+    val familyLabel = localizedFamilyLabel(locale, species.taxonomy.family, species.taxonomy.familySv)
 
     Box(modifier = Modifier.fillMaxSize().paperBackground()) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             item {
                 Box {
                     JournalIntro(
-                        label = stringResource(Res.string.profile_journal_label, plateLabel),
+                        label = stringResource(Res.string.profile_journal_label),
                         headline = stringResource(Res.string.profile_journal_headline, species.name),
                         sub = stringResource(Res.string.profile_journal_sub, species.scientificName, familyLabel),
                         headlineFontSize = 36.sp,
@@ -142,7 +145,7 @@ private fun ProfileContent(
                 val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
                 if (heroImage != null) {
                     PlateFrame(
-                        plateLabel = plateLabel,
+                        plateLabel = "",
                         captionLine = "${species.name}, $captionPart",
                     ) {
                         AsyncImage(

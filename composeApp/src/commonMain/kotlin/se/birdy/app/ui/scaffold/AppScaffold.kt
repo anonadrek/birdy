@@ -14,8 +14,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
@@ -145,8 +147,12 @@ fun AppScaffold(graph: AppGraph) {
             },
         )
     }
+    val bottomBarEntry by navController.currentBackStackEntryAsState()
+    // Onboarding-replayen är en uppslukande helskärms-story — dölj bottenflikarna där
+    // (övriga detaljskärmar behåller dem, som tidigare).
+    val hideBottomBar = bottomBarEntry?.destination?.hasRoute(AppRoute.OnboardingReplay::class) == true
     Scaffold(
-        bottomBar = { BottomNavBar(navController) },
+        bottomBar = { if (!hideBottomBar) BottomNavBar(navController) },
         snackbarHost = { SnackbarHost(snackbarHostState) { data -> CaveatToast(data) } },
     ) { padding ->
         NavHost(
@@ -224,6 +230,7 @@ fun AppScaffold(graph: AppGraph) {
                 composable<AppRoute.ArchiveList> {
                     ArchiveScreen(
                         viewModel = remember(graph) { graph.archiveViewModel() },
+                        locale = graph.defaultLocale,
                         onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id.raw)) },
                         onPremiumClick = { navController.navigate(AppRoute.Premium) },
                         onJournalExport = graph.journalExport,
@@ -242,6 +249,7 @@ fun AppScaffold(graph: AppGraph) {
                             remember(graph, route.speciesId) {
                                 graph.speciesProfileViewModel(SpeciesId(route.speciesId))
                             },
+                        locale = graph.defaultLocale,
                         onBack = { navController.popBackStack() },
                         onPremiumClick = { navController.navigate(AppRoute.Premium) },
                         showPremiumTeaser = showPremiumTeaser,

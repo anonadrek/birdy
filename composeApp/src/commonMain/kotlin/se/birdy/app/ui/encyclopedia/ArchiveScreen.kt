@@ -123,6 +123,7 @@ import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.app.usecase.JournalExportResult
 import se.birdy.app.util.speciesImageUri
+import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.datastore.ArchiveSort
 
@@ -130,6 +131,7 @@ import se.birdy.datastore.ArchiveSort
 @Composable
 fun ArchiveScreen(
     viewModel: ArchiveViewModel,
+    locale: Locale,
     onSpeciesClick: (SpeciesId) -> Unit,
     onPremiumClick: () -> Unit,
     onJournalExport: (suspend () -> JournalExportResult)? = null,
@@ -315,7 +317,7 @@ fun ArchiveScreen(
                         val grouped = s.rows.groupBy { it.summary.family }
                         grouped.forEach { (family, rows) ->
                             stickyHeader(key = "family-$family") {
-                                FamilyHeader(family = family, familySv = rows.first().summary.familySv)
+                                FamilyHeader(family = family, familySv = rows.first().summary.familySv, locale = locale)
                             }
                             items(rows, key = { it.summary.id.raw }) { row ->
                                 SpeciesRow(
@@ -382,9 +384,11 @@ private fun SpeciesRowSkeleton() {
 private fun FamilyHeader(
     family: String,
     familySv: String,
+    locale: Locale,
 ) {
     val serif = rememberDmSerifDisplay()
-    val label = familySv.ifBlank { family } // svenska där det finns; latin annars (t.ex. EN-locale)
+    // Svenskt trivialnamn i SV-locale, latinskt familjenamn i EN (family_sv finns bara på svenska).
+    val label = localizedFamilyLabel(locale, family, familySv)
     Box(
         modifier =
             Modifier

@@ -43,7 +43,13 @@ fun IntroSceneScaffold(
             modifier
                 .fillMaxSize()
                 .semantics(mergeDescendants = true) {
-                    contentDescription = "$eyebrow. $headline. $sub."
+                    // Sanera marginalia-markup (*emfas*) + normalisera punkter så TalkBack inte
+                    // läser råa asterisker eller dubbelpunkt (headline slutar ofta redan med ".").
+                    contentDescription =
+                        listOf(eyebrow, headline, sub)
+                            .map { it.replace("*", "").trim().trimEnd('.') }
+                            .filter { it.isNotBlank() }
+                            .joinToString(". ", postfix = ".")
                 }.alpha(visibility)
                 .layout { measurable, constraints ->
                     val placeable = measurable.measure(constraints)
