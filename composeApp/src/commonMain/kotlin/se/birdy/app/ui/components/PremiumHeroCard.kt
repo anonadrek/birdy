@@ -57,7 +57,7 @@ fun PremiumHeroCard(
                 .height(160.dp)
                 .clip(RoundedCornerShape(18.dp))
                 .clickable(onClick = onClick)
-                .shimmerSweep(),
+                .premiumGlow(),
     ) {
         AsyncImage(
             model = Res.getUri("files/premium/great-tit-hero.jpg"),
