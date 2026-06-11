@@ -11,19 +11,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Lock
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
@@ -35,13 +31,14 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
-import se.birdy.app.ui.theme.PaperTop
 import se.birdy.app.ui.theme.SandCreme
 import se.birdy.app.ui.theme.rememberCaveat
 
 /**
- * Blurred fake-staplar med 🔒-overlay. Premium-teaser för Lifelist-skärmen.
- * Stapeldatan är hardcoded i v1.
+ * "Locka inte låsa"-förhandsvisning av säsongsstatistik för gratisanvändare:
+ * en mjukt suddad glimt av kopparstaplar som glänser ([premiumGlow]), med en
+ * liten koppar-"Premium"-pill i hörnet och en inbjudande CTA — inget stort
+ * hänglås, ingen mörk dimning. Stapeldatan är hårdkodad i v1.
  */
 @Composable
 fun LockedStatsPreview(
@@ -58,20 +55,22 @@ fun LockedStatsPreview(
                 .fillMaxWidth()
                 .height(140.dp)
                 .clip(RoundedCornerShape(12.dp))
+                .premiumGlow()
                 .clickable(onClick = onClick)
                 .semantics(mergeDescendants = true) {
                     contentDescription = overlayCta
                     role = Role.Button
                 },
     ) {
+        // Mjuk förhandsvisning av säsongsstaplarna — inbjudande, inte dold.
         Column(
             modifier =
                 Modifier
                     .fillMaxSize()
                     .background(SandCreme)
                     .padding(14.dp)
-                    .blur(3.5.dp)
-                    .graphicsLayer(alpha = 0.55f),
+                    .blur(1.5.dp)
+                    .graphicsLayer(alpha = 0.8f),
         ) {
             Text(title, fontSize = 11.sp, color = MarginaliaInk)
             Spacer(Modifier.height(8.dp))
@@ -91,16 +90,32 @@ fun LockedStatsPreview(
                 }
             }
         }
-        Column(
+        // Koppar-"Premium"-pill — uppe i hörnet, nedgraderad från det stora låset.
+        Box(
             modifier =
                 Modifier
-                    .fillMaxSize()
-                    .background(Brush.verticalGradient(0f to PaperTop.copy(alpha = 0f), 1f to PaperTop.copy(alpha = 0.85f))),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
+                    .align(Alignment.TopEnd)
+                    .padding(10.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(AccentCopper)
+                    .padding(horizontal = 10.dp, vertical = 4.dp),
         ) {
-            Icon(Icons.Outlined.Lock, contentDescription = null, tint = AccentCopper, modifier = Modifier.size(18.dp))
-            Spacer(Modifier.height(2.dp))
+            Text(
+                text = overlayBadge,
+                color = Color.White,
+                fontSize = 9.sp,
+                fontWeight = FontWeight.W700,
+                letterSpacing = 0.2.em,
+            )
+        }
+        // Inbjudande CTA — nere till vänster, ingen lås-barriär.
+        Row(
+            modifier =
+                Modifier
+                    .align(Alignment.BottomStart)
+                    .padding(14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
             Text(
                 text = overlayCta,
                 fontFamily = rememberCaveat(),
@@ -108,14 +123,8 @@ fun LockedStatsPreview(
                 color = AccentCopper,
                 fontWeight = FontWeight.W600,
             )
-            Text(
-                text = overlayBadge,
-                fontSize = 9.sp,
-                color = AccentCopper,
-                fontWeight = FontWeight.W700,
-                letterSpacing = 0.2.em,
-                modifier = Modifier.padding(top = 2.dp),
-            )
+            Spacer(Modifier.width(4.dp))
+            Text("›", color = AccentCopper, fontSize = 20.sp, fontWeight = FontWeight.W600)
         }
     }
 }
