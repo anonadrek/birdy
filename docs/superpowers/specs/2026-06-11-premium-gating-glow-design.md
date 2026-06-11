@@ -193,3 +193,29 @@ den. Framtida justering av tempo/styrka = en edit.
 - `composeApp/src/commonMain/kotlin/se/birdy/app/ui/components/PremiumHeroCard.kt`
 - `composeApp/src/commonMain/composeResources/values/strings.xml` (+ `values-en`)
   för CTA-strängen.
+
+## Uppdatering efter enhets-verifiering (2026-06-11, SM-S918B, premium AV)
+
+Den ursprungliga "diskret & stilren / alpha 0.18"-inställningen visade sig **för
+svag** live (vit glöd mot ljust gräddkort = låg kontrast). Efter live-feedback
+tunades glöden om — beslut taget vid enheten, allt går via den enda
+`premiumGlow()`-tuning-punkten:
+
+- **Skarpare:** `alpha 0.18 → 0.85`, smalt crisp band `bandFraction 0.18`,
+  snabbare svep `durationMillis 3500`.
+- **Bakom texten:** `premiumGlow` ritar nu bandet UNDER innehållet
+  (`drawRect` → `drawContent`) i stället för över — texten förblir knivskarp
+  medan skenet glänser bakom. Lager-kontrakt: glöden måste ligga efter
+  `.clip(...)` och efter den ogenomskinliga fyllningen. På `PremiumHeroCard`
+  flyttades glöden till lagret mellan fotot och text-kolumnen; på
+  `LockedStatsPreview` flyttades gräddfyllningen till ytterlagret.
+- **Studsande svep:** `RepeatMode.Restart → Reverse` (v→h, sedan h→v, fram och
+  tillbaka) i stället för att börja om från vänster.
+- **Karta-gatens text → Caveat handstil:** caption/antal/CTA bytte från
+  system-sans till `rememberCaveat()` så Karta-gaten matchar Field Journal-rösten
+  (rubriken kvar i DM Serif som övriga teasers).
+
+Device-verifierade ytor: Karta (gräddkort), Inställningar-hero (foto),
+Arkiv/Artprofil (samma mekanik). `LockedStatsPreview` (Mina arter) är kod-klar men
+kräver ≥1 dagboksfynd för att synas — ej visuellt bekräftad på den färska
+installen.
