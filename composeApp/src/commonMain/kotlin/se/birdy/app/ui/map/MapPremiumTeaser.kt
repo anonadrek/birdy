@@ -39,6 +39,7 @@ import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.SandCreme
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.paperBackground
+import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
 @Composable
@@ -75,12 +76,16 @@ fun MapPremiumTeaser(
                 )
                 Text(
                     stringResource(Res.string.map_teaser_caption),
+                    fontFamily = rememberCaveat(),
+                    fontSize = 17.sp,
                     color = MarginaliaInk,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(top = 6.dp),
                 )
                 Text(
                     stringResource(Res.string.map_teaser_count, state.locatedCount.toString()),
+                    fontFamily = rememberCaveat(),
+                    fontSize = 15.sp,
                     color = MarginaliaInk,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(vertical = 14.dp),
@@ -88,7 +93,14 @@ fun MapPremiumTeaser(
                 Button(
                     onClick = onUpgrade,
                     colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm),
-                ) { Text(stringResource(Res.string.map_teaser_cta)) }
+                ) {
+                    Text(
+                        stringResource(Res.string.map_teaser_cta),
+                        fontFamily = rememberCaveat(),
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.W600,
+                    )
+                }
             }
             // Koppar-"PREMIUM"-flagga, samma språk som PremiumTeaserCard.
             Box(

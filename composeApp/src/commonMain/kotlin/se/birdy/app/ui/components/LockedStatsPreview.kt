@@ -55,6 +55,7 @@ fun LockedStatsPreview(
                 .fillMaxWidth()
                 .height(140.dp)
                 .clip(RoundedCornerShape(12.dp))
+                .background(SandCreme)
                 .clickable(onClick = onClick)
                 .premiumGlow()
                 .semantics(mergeDescendants = true) {
@@ -67,7 +68,6 @@ fun LockedStatsPreview(
             modifier =
                 Modifier
                     .fillMaxSize()
-                    .background(SandCreme)
                     .padding(14.dp)
                     .blur(1.5.dp)
                     .graphicsLayer(alpha = 0.8f),

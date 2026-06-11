@@ -56,8 +56,7 @@ fun PremiumHeroCard(
                 .fillMaxWidth()
                 .height(160.dp)
                 .clip(RoundedCornerShape(18.dp))
-                .clickable(onClick = onClick)
-                .premiumGlow(),
+                .clickable(onClick = onClick),
     ) {
         AsyncImage(
             model = Res.getUri("files/premium/great-tit-hero.jpg"),
@@ -75,7 +74,7 @@ fun PremiumHeroCard(
                             0.6f to Color.Black.copy(alpha = 0.0f),
                             1f to Color.Black.copy(alpha = 0.7f),
                         ),
-                    ),
+                    ).premiumGlow(),
         )
         Column(
             modifier =
