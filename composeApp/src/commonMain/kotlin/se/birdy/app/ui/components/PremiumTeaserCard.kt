@@ -79,8 +79,8 @@ fun PremiumTeaserCard(
                     .clip(RoundedCornerShape(14.dp))
                     .background(SandCreme)
                     .border(1.dp, AccentCopper.copy(alpha = 0.55f), RoundedCornerShape(14.dp))
-                    .then(glowModifier)
                     .clickable(enabled = !(showExportCta && isExporting), onClick = onCardClick)
+                    .then(glowModifier)
                     .padding(14.dp),
         ) {
             Text(

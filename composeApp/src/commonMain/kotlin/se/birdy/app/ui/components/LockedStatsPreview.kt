@@ -55,8 +55,8 @@ fun LockedStatsPreview(
                 .fillMaxWidth()
                 .height(140.dp)
                 .clip(RoundedCornerShape(12.dp))
-                .premiumGlow()
                 .clickable(onClick = onClick)
+                .premiumGlow()
                 .semantics(mergeDescendants = true) {
                     contentDescription = overlayCta
                     role = Role.Button

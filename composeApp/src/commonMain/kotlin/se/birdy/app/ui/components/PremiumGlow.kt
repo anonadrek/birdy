@@ -10,8 +10,9 @@ import androidx.compose.ui.Modifier
  * MapPremiumTeaser-kortet, PremiumHeroCard). Bygger på [shimmerSweep] med ett
  * diskret, långsamt svep i linje med Troférummet.
  *
- * Måste appliceras INNANFÖR kortets .clip(...) så svepet maskas till de rundade
- * hörnen.
+ * Måste appliceras EFTER kortets .clip(...) i modifier-kedjan (inte före) så att
+ * svepet maskas till de rundade hörnen. Lägg den ytterst (efter ev. .clickable)
+ * så glöden ritas över tap-ripplet, som i PremiumHeroCard.
  */
 @Composable
 fun Modifier.premiumGlow(
