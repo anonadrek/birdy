@@ -69,6 +69,7 @@ fun PremiumTeaserCard(
             showExportCta -> onExport
             else -> onUnlock
         }
+    val glowModifier = if (showExportCta) Modifier else Modifier.premiumGlow()
     Box(modifier = modifier.fillMaxWidth()) {
         Column(
             modifier =
@@ -78,6 +79,7 @@ fun PremiumTeaserCard(
                     .clip(RoundedCornerShape(14.dp))
                     .background(SandCreme)
                     .border(1.dp, AccentCopper.copy(alpha = 0.55f), RoundedCornerShape(14.dp))
+                    .then(glowModifier)
                     .clickable(enabled = !(showExportCta && isExporting), onClick = onCardClick)
                     .padding(14.dp),
         ) {
