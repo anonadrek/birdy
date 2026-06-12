@@ -2,17 +2,18 @@
 
 AI-driven Android-app för fågelidentifiering — realtidsskanning via kamera, foto-upload, audio-ID via mikrofon, och ett rikt uppslagsverk över 839 europeiska arter.
 
-> **Status (2026-05-30):** v1.0 släppt (`v1.0.0`, 2026-05-23) följt av onboarding-omarbetning (`v1.0.2` — 7-scens scroll-story). v1.1 Phase A (retention-hooks: Dagens fågel + streak-notis) taggad `v1.1.0-rc1`, följt av kamera-zoom + crop/rotera (`v1.1.0-rc2`). Pågående: en v1.x-respons på feedback från en erfaren testare — **DP A (robust sök) och DP B (positionering & copy: "behåll fyndet, inte bara ID:a det") är mergade till `main`**; DP C (kategori-hotfix) påbörjad, DP D–E (märken, ekologisk grupp-axel) planeras var för sig. Marketing-website live på [birdy.community](https://birdy.community) (Astro + Vercel).
+> **Status (2026-06-12):** v1.2-slutkandidaten är komplett på `main` (versionCode 124, `1.2.0-rc2`). v1.2 lägger till en **privat karta över egna fynd** (kartvyn är Premium, platsfångst är gratis opt-in), en **omgjord Premium-skärm med day-0-paywall**, **Troférummet**, **Veckans uppslag** och en stor UX/polish-genomgång (~105 åtgärdade fynd ur en 136-punkters audit, device-verifierad). Closed testing rullar sedan 2026-06-08 med `1.2.0-rc1` (vC123). Kvar före nästa AAB-upload: bygga vC124, Play Console-texter + färska skärmdumpar, riktig `MAPTILER_API_KEY`, samt Billing v8-runtime-verify innan `PREMIUM_OPEN_FOR_LAUNCH` stängs. Marketing-website live på [birdy.community](https://birdy.community) (Astro + Vercel).
 
 ## Vad du kan göra i appen idag
 
-- **Skanna foto** via kamera (CameraX 3 fps, TFLite + AIY Birds V1, ~14 ms/inference på S23 Ultra) eller upload från galleri.
-- **Identifiera via ljud** — push-to-record, 3 sek, BirdNET-Lite v2 med FlexRFFT TF Select op.
-- **Uppslagsverk** över 839 nordiska/europeiska arter med foto, ljud, beskrivning, migration och säsongs-sannolikhet.
+- **Skanna foto** via kamera (CameraX 3 fps, TFLite + AIY Birds V1, ~14 ms/inference på S23 Ultra) med zoom 1–10×, eller ladda upp från galleri med crop + 90°-rotation.
+- **Identifiera via ljud** — push-to-record, 3 sek, BirdNET-Lite v2 med FlexRFFT TF Select op. Gratis för alla (modellen är CC BY-NC-SA och får inte ligga bakom Premium).
+- **Uppslagsverk** över 839 nordiska/europeiska arter med foto, ljud, beskrivning, migration och säsongs-sannolikhet — bläddringsbart i 15 ekologiska grupper.
 - **Robust sök** i uppslagsverket — på art, vetenskapligt namn, familj och genus; okänsligt för apostroftyp (`'`/`’`), diakriter (`ü`→`u`) och aktivt språk (cross-locale).
 - **Dagbok (Field Journal)** med pappers-look, DM Serif Italic + Caveat-typografi, stampseals och plate-frames.
-- **Gamification** — 25 badges, streaks, life-list, unlock-queue.
-- **Premium-tier** — månatlig/årlig/livstid via Google Play Billing v8, med Restore Purchases och RSA-signature-verify.
+- **Karta över egna fynd** — privat och helt on-device (osmdroid + MapTiler, Field Journal-duotontema med wax-seal-pins). Platsfångst är gratis opt-in; själva kartvyn är Premium.
+- **Gamification** — 34 märken (27 gratis + 7 premium) inkl. rödlistat-spår och livslista upp till 500 arter, streaks, Troférummet, Dagens fågel och Veckans uppslag (adaptiv söndags-recap).
+- **Premium-tier** — PDF-export av fältdagboken, säsongsstatistik, premium-märken och kartvyn. Månatlig/årlig/livstid via Google Play Billing v8, med Restore Purchases och RSA-signature-verify.
 - **Lokaliserad** på svenska och engelska (compose-resources).
 
 ## Arkitektur
@@ -24,12 +25,13 @@ Kotlin Multiplatform-app där affärslogik och UI är delad via Compose Multipla
 | `composeApp` | Compose Multiplatform UI (delad mellan Android och framtida iOS) |
 | `shared/domain` | Use cases, domänmodeller, business rules (ren Kotlin) |
 | `shared/data` | SQLDelight 2.x-queries, repositories, content providers |
-| `shared/ml` | `BirdClassifier` expect/actual för foto-ID, bildpreprocessing |
-| `shared/audio` | BirdNET-Lite audio-ID + push-to-record pipeline |
-| `shared/pdf` | `JournalPdfRenderer` expect/actual (Premium PDF-export, Plan 6b3) |
+| `shared/datastore` | DataStore-baserade user preferences + premium-state |
+| `shared/ml` | `BirdClassifier` expect/actual för foto-ID, bildpreprocessing + BirdNET-Lite audio-runner och label-mapping |
+| `shared/pdf` | `JournalPdfRenderer` expect/actual (Premium PDF-export) |
 | `shared/content` | Artdatabas-loading (839 arter), gamification-regler, badge-evaluator |
 | `androidApp` | Android entry point, MainActivity, plattforms-actuals |
-| `iosApp` | iOS-skelett (aktiveras post-v1.0) |
+| `asset-pack` | Install-time Play Asset Delivery-modul med plåtfoton (~2060 WebP-bilder, ~326 MB) |
+| `iosApp` | iOS-skelett (aktiveras i v2) |
 | `website` | Marketing-site (Astro 5 + Tailwind v4 + i18n EN/SV), deployas till birdy.community via Vercel |
 
 Se design-specen för detaljer: [`docs/superpowers/specs/2026-04-30-birdy-bird-scanner-v1-design.md`](docs/superpowers/specs/2026-04-30-birdy-bird-scanner-v1-design.md)
@@ -40,6 +42,7 @@ Se design-specen för detaljer: [`docs/superpowers/specs/2026-04-30-birdy-bird-s
 - JDK 21 (Temurin/Adoptium rekommenderat)
 - Android Studio Iguana (eller senare) eller IntelliJ IDEA 2024.2+
 - Android SDK 35 + build-tools
+- En MapTiler API-nyckel i lokala `gradle.properties` (`MAPTILER_API_KEY=...`) för kartan — committas aldrig
 - För website-arbete: Node.js 20+
 
 **Bygga och köra (Android):**
@@ -70,7 +73,7 @@ cd website && npm install
 cd website && npm run dev            # localhost preview
 cd website && npm run build
 cd website && npm run test:smoke     # Playwright (7 tester)
-cd website && npm run test:i18n      # SV/EN parity check
+cd website && npm run test:i18n     # SV/EN parity check
 ```
 
 ## Vägkarta — Plan-of-plans (v1.0)
@@ -96,23 +99,23 @@ cd website && npm run test:i18n      # SV/EN parity check
 | 6b3 | Premium content (PDF-export + säsongs-stats + 10 fält-märken) | ✅ `v0.9.0c-premium-content` → `v1.0.0` |
 | W | Marketing-website (Astro + Vercel + birdy.community + /legal/) | ✅ Live |
 
-**v1.0 är levererad** (`v1.0.0`, 2026-05-23). Vägen framåt: Internal Testing → Closed Testing (14d) → Play Store-launch. Billing v8 IPC-runtime-verify + go-live-flippen (`PREMIUM_OPEN_FOR_LAUNCH`) är kvar innan produktions-monetisering — se `docs/superpowers/runbooks/2026-05-26-billing-verify-and-go-live.md`.
+**v1.0 är levererad** (`v1.0.0`, 2026-05-23) och closed testing (14 dagar) pågår. Innan produktions-launch återstår Billing v8 IPC-runtime-verify + go-live-flippen (`PREMIUM_OPEN_FOR_LAUNCH=false`) — se `docs/superpowers/runbooks/2026-05-26-billing-verify-and-go-live.md` — samt färska v1.2-skärmdumpar till Play Store-listningen.
 
-### Efter v1.0 (pågående)
+### Efter v1.0
 
 | Spår | Innehåll | Status |
 |---|---|---|
-| v1.0.2 | Onboarding-omarbetning (7-scens scroll-story) | ✅ taggad |
-| v1.1 Phase A | Retention-hooks — Dagens fågel + söndags streak-notis + deep-links | ✅ `v1.1.0-rc1` |
-| v1.1 zoom + crop | Kamera-zoom 1–10× + crop/rotera av uppladdade bilder | ✅ `v1.1.0-rc2` |
-| v1.x feedback-respons | Testar-feedback i 5 delprojekt (DP A–E): **DP A sök-fix ✅, DP B positionering & copy ✅ mergade**; DP C kategori-hotfix påbörjad; DP D–E planerade | 🔧 pågår |
-| v1.2 Phase B | Weekly Recap ("Veckans uppslag") — adaptiv söndagsskärm + enad push | 📋 spec + plan klara |
+| v1.0.2 | Onboarding-omarbetning — 7-scens scroll-story | ✅ taggad |
+| v1.1 | Retention-hooks (Dagens fågel + notiser), kamera-zoom 1–10× + crop/rotera, testarfeedback DP A–E (robust sök, positionering & copy, ekologiska kategorier, märken-omarbetning 34 st, grupp-axel i DB), Veckans uppslag, Troférummet | ✅ uppladdad till closed testing (vC122) |
+| v1.2 | Privat fynd-karta (osmdroid + MapTiler, Field Journal-tema), premium-skärm-redesign + day-0-paywall, UX/polish-audit (~105 fynd) + scan-freeze-omdesign | ✅ komplett på `main` (vC124 / `1.2.0-rc2`); rc1 (vC123) i closed testing, AAB-bygge + Play Console-upload återstår |
 
-## Roadmap post-v1.0
+## Roadmap post-v1.x
 
-- **v1.5 — "Karta & moln":** Konton, molnsynk av dagboken, karta med fynd från publika datakällor, push-notiser om sällsynta arter nära användaren.
-- **v2 — "Community":** Delning av fynd, kommentarer, flöde, moderering.
-- **v2.x:** Quiz/utbildningsläge, fullt offline-läge för längre exkursioner, iOS-aktivering.
+Geografisk expansion är huvudtracken — ML-modellerna är redan globalt tränade (AIY V1 ≈ 965 klasser, BirdNET-Lite ≈ 6000); jobbet sitter i content-pipeline, regional säsongsdata, on-demand asset packs och fler språk.
+
+- **v2 — "Asien + hela Europa" + iOS-launch:** content-expansion (Östasien/Indien först) + App Store-release via Compose Multiplatform-iOS-target.
+- **v3 — "Hela världen":** alla återstående kontinenter, full content-skalning + språkstöd.
+- **Parallella spår (inte version-bundna):** "Karta & moln" — konton, molnsynk av dagboken, publika fynddata, push om sällsynta arter nära dig (den privata fynd-kartan i v1.2 är första steget); "Community" — delning, kommentarer, flöde, moderering; quiz/utbildningsläge; fullt offline-läge för längre exkursioner.
 
 ## Bidragande
 
