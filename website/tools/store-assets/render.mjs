@@ -21,7 +21,7 @@ for (const card of cfg.cards) {
   const screenUrl = pathToFileURL(join(here, 'screens', `${card.id}.png`)).href;
 
   // --- Play card: 1080x1920, paper background ---
-  const playPage = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 2 });
+  const playPage = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
   await playPage.goto(templateUrl, { waitUntil: 'networkidle' });
   await playPage.evaluate(([c, o]) => window.renderCard(c, o), [card, { mode: 'play', screenUrl, aspect: cfg.screenWindowAspect }]);
   await playPage.waitForFunction(() => document.fonts.status === 'loaded');
