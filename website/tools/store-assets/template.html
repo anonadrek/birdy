@@ -25,8 +25,10 @@
   .body{ font-family:'Caveat'; font-weight:600; font-size:73px; color:var(--moss); line-height:1.12; }
   .prem{ display:inline-block; font-family:Inter; font-weight:700; font-size:35px; letter-spacing:2px;
     color:#fff; background:var(--copper); padding:9px 28px; border-radius:18px; vertical-align:middle; margin-left:22px; }
-  .screenwrap{ flex:1; display:flex; align-items:center; justify-content:center; padding:44px 88px 0; }
-  #screen{ width:100%; background-size:cover; background-position:center top;
+  /* bottom padding reserves a clear paper band for the wordmark so the screen never overlaps it */
+  .screenwrap{ flex:1; display:flex; align-items:center; justify-content:center; padding:44px 88px 210px; }
+  /* play mode: height-driven so the (portrait) screen always fits above the wordmark; width derives from aspect */
+  #screen{ height:100%; width:auto; max-width:100%; background-size:cover; background-position:center top;
     border:16px solid #fff; border-radius:56px; box-shadow:0 56px 90px rgba(42,53,37,.28); }
   .wordmark{ position:absolute; left:82px; bottom:70px; z-index:4;
     font-family:'Caveat'; font-weight:700; font-size:108px; color:var(--copper); line-height:1; }
@@ -35,6 +37,8 @@
   body.web .brackets::before, body.web .brackets::after,
   body.web .counter, body.web .stack, body.web .wordmark{ display:none; }
   body.web .screenwrap{ padding:60px; }
+  /* web cut-out: width-driven (fill), no reserved band needed */
+  body.web #screen{ width:100%; height:auto; max-width:none; }
 </style>
 </head>
 <body>
