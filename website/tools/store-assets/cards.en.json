@@ -1,0 +1,15 @@
+{
+  "rawDir": "../../../Birdy AB/Birdy Screendumps v.1.2rc",
+  "crop": { "top": 96, "bottom": 132 },
+  "screenWindowAspect": 0.7,
+  "cards": [
+    { "id": "01-identify", "n": 1, "raw": "1000039462.jpg", "eyebrow": "Identify · in the field", "headHead": "Three ways to", "headAccent": "catch.", "body": "Camera, photo or call.", "premium": false },
+    { "id": "02-listen",   "n": 2, "raw": "1000039460.jpg", "eyebrow": "Audio ID · on-device", "headHead": "Just", "headAccent": "let it sing.", "body": "A 3-second song is enough.", "premium": false },
+    { "id": "03-journal",  "n": 3, "raw": "1000039468.jpg", "eyebrow": "Your field book", "headHead": "Every find,", "headAccent": "a page.", "body": "Yours. On your phone.", "premium": false },
+    { "id": "04-archive",  "n": 4, "raw": "1000039464.jpg", "eyebrow": "Encyclopedia · 839 species", "headHead": "Know your", "headAccent": "birds.", "body": "Search, filter, learn.", "premium": false },
+    { "id": "05-badges",   "n": 5, "raw": "1000039470.jpg", "eyebrow": "Stamps to chase", "headHead": "Come home with", "headAccent": "a stamp.", "body": "34 to collect, 27 free.", "premium": false },
+    { "id": "06-map",      "n": 6, "raw": "1000039478.jpg", "eyebrow": "Your private map", "headHead": "Everywhere you've", "headAccent": "been.", "body": "On-device, private.", "premium": true },
+    { "id": "07-recap",    "n": 7, "raw": "1000039476.jpg", "eyebrow": "Field report", "headHead": "A week in the", "headAccent": "field.", "body": "Your sightings, recapped.", "premium": false },
+    { "id": "08-season",   "n": 8, "raw": "1000039474.jpg", "eyebrow": "A year in the field", "headHead": "Patterns", "headAccent": "emerge.", "body": "Your year, charted.", "premium": true }
+  ]
+}

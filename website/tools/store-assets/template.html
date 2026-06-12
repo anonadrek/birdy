@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --paper:#EFE7D6; --paper-edge:#E5DCC7; --ink:#2A3520; --moss:#3F4F30; --copper:#A8552D; }
+  *{ margin:0; box-sizing:border-box; }
+  html,body{ background:transparent; }
+  /* 1080x1920 Play canvas (9:16, Play-safe) */
+  #card{ position:relative; width:1080px; height:1920px; background:var(--paper); overflow:hidden;
+    background-image:radial-gradient(rgba(63,79,48,.05) 4px, transparent 4px); background-size:54px 54px;
+    display:flex; flex-direction:column; }
+  .brackets::before,.brackets::after{ content:''; position:absolute; width:108px; height:108px; border:8px solid var(--copper); z-index:4; }
+  .brackets::before{ top:44px; left:44px; border-right:0; border-bottom:0; }
+  .brackets::after{ bottom:44px; right:44px; border-left:0; border-top:0; }
+  .counter{ position:absolute; top:56px; right:76px; font-family:Inter; font-weight:600; font-size:41px; color:var(--moss); z-index:4; }
+  .counter b{ color:var(--ink); font-size:57px; }
+  .stack{ padding:120px 96px 0; }
+  .eyebrow{ font-family:Inter; font-weight:700; font-size:41px; letter-spacing:8px; color:var(--copper); text-transform:uppercase; }
+  .hl{ font-family:'DM Serif Display'; font-size:127px; line-height:1.02; color:var(--ink); margin:24px 0 18px; }
+  .hl em{ font-family:'Caveat'; font-style:normal; color:var(--copper); font-weight:700; font-size:159px; }
+  .body{ font-family:'Caveat'; font-weight:600; font-size:73px; color:var(--moss); line-height:1.12; }
+  .prem{ display:inline-block; font-family:Inter; font-weight:700; font-size:35px; letter-spacing:2px;
+    color:#fff; background:var(--copper); padding:9px 28px; border-radius:18px; vertical-align:middle; margin-left:22px; }
+  /* bottom padding reserves a clear paper band for the wordmark so the screen never overlaps it */
+  .screenwrap{ flex:1; display:flex; align-items:center; justify-content:center; padding:44px 88px 210px; }
+  /* play mode: height-driven so the (portrait) screen always fits above the wordmark; width derives from aspect */
+  #screen{ height:100%; width:auto; max-width:100%; background-size:cover; background-position:center top;
+    border:16px solid #fff; border-radius:56px; box-shadow:0 56px 90px rgba(42,53,37,.28); }
+  .wordmark{ position:absolute; left:82px; bottom:70px; z-index:4;
+    font-family:'Caveat'; font-weight:700; font-size:108px; color:var(--copper); line-height:1; }
+  /* web cut-out mode: hide paper chrome, keep only the framed screen, transparent bg */
+  body.web #card{ background:transparent; background-image:none; }
+  body.web .brackets::before, body.web .brackets::after,
+  body.web .counter, body.web .stack, body.web .wordmark{ display:none; }
+  body.web .screenwrap{ padding:60px; }
+  /* web cut-out: width-driven (fill), no reserved band needed */
+  body.web #screen{ width:100%; height:auto; max-width:none; }
+</style>
+</head>
+<body>
+  <div id="card" class="brackets">
+    <div class="counter"><b id="num">01</b> / <span id="total">08</span></div>
+    <div class="stack">
+      <div class="eyebrow" id="eyebrow"></div>
+      <div class="hl"><span id="headHead"></span> <em id="headAccent"></em></div>
+      <div class="body"><span id="body"></span><span class="prem" id="prem" style="display:none">Premium</span></div>
+    </div>
+    <div class="screenwrap"><div id="screen"></div></div>
+    <div class="wordmark">Birdy.</div>
+  </div>
+<script>
+  window.renderCard = (card, opts) => {
+    document.body.className = opts.mode === 'web' ? 'web' : '';
+    document.getElementById('num').textContent = String(card.n).padStart(2, '0');
+    document.getElementById('total').textContent = String(opts.total).padStart(2, '0');
+    document.getElementById('eyebrow').textContent = card.eyebrow;
+    document.getElementById('headHead').textContent = card.headHead;
+    document.getElementById('headAccent').textContent = card.headAccent;
+    document.getElementById('body').textContent = card.body;
+    document.getElementById('prem').style.display = card.premium ? 'inline-block' : 'none';
+    const screen = document.getElementById('screen');
+    screen.style.backgroundImage = `url('${opts.screenUrl}')`;
+    // window w:h; smaller value = taller window showing more of the screen (~0.52 = whole cleaned shot)
+    screen.style.aspectRatio = `1 / ${1 / opts.aspect}`;
+    return document.fonts.ready;
+  };
+</script>
+</body>
+</html>

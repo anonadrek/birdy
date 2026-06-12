@@ -10,7 +10,11 @@
     "check": "astro check",
     "test:i18n": "node scripts/check-i18n-parity.mjs",
     "test:no-accuracy": "node scripts/check-no-accuracy.mjs",
-    "test:smoke": "playwright test"
+    "test:smoke": "playwright test",
+    "assets:clean": "node tools/store-assets/clean-sources.mjs",
+    "assets:render": "node tools/store-assets/render.mjs --locale=en",
+    "assets:verify": "node tools/store-assets/verify.mjs",
+    "assets:store": "npm run assets:clean && npm run assets:render && npm run assets:verify"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.0.0",
@@ -25,6 +29,7 @@
     "@astrojs/check": "^0.9.9",
     "@playwright/test": "^1.60.0",
     "@types/node": "^22.0.0",
+    "sharp": "^0.34.0",
     "typescript": "^5.9.3"
   }
 }

@@ -81,3 +81,6 @@ Birdy AB/
 
 # bundletool — laddas ner per användare; inte versionerad
 tools/bundletool.jar
+
+# Generated store-asset intermediates
+website/tools/store-assets/screens/
