@@ -1,7 +1,7 @@
 {
   "rawDir": "../../../Birdy AB/Birdy Screendumps v.1.2rc",
   "crop": { "top": 96, "bottom": 132 },
-  "screenWindowAspect": 1.44,
+  "screenWindowAspect": 0.7,
   "cards": [
     { "id": "01-identify", "n": 1, "raw": "1000039462.jpg", "eyebrow": "", "headHead": "", "headAccent": "", "body": "", "premium": false },
     { "id": "02-listen",   "n": 2, "raw": "1000039460.jpg", "eyebrow": "", "headHead": "", "headAccent": "", "body": "", "premium": false },

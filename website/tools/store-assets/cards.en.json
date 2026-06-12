@@ -1,7 +1,7 @@
 {
   "rawDir": "../../../Birdy AB/Birdy Screendumps v.1.2rc",
   "crop": { "top": 96, "bottom": 132 },
-  "screenWindowAspect": 1.44,
+  "screenWindowAspect": 0.7,
   "cards": [
     { "id": "01-identify", "n": 1, "raw": "1000039462.jpg", "eyebrow": "Identify · in the field", "headHead": "Three ways to", "headAccent": "catch.", "body": "Camera, photo or call.", "premium": false },
     { "id": "02-listen",   "n": 2, "raw": "1000039460.jpg", "eyebrow": "Audio ID · on-device", "headHead": "Just", "headAccent": "let it sing.", "body": "A 3-second song is enough.", "premium": false },

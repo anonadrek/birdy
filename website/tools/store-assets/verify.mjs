@@ -6,15 +6,19 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const cfg = JSON.parse(await readFile(join(here, 'cards.en.json'), 'utf8'));
-const playDir = resolve(here, '../../../Birdy AB/Birdy Screendumps v.1.2rc/Play Store');
+const locale = (process.argv.find(a => a.startsWith('--locale='))?.split('=')[1]) || 'en';
+const cfg = JSON.parse(await readFile(join(here, `cards.${locale}.json`), 'utf8'));
+
+// Derive playDir from rawDir in the JSON — single source of truth
+const rawBase = resolve(here, cfg.rawDir);
+const playDir = join(rawBase, 'Play Store');
 const webAssetsDir = resolve(here, '../../src/assets/screens');
 
 let failures = 0;
 const fail = (m) => { console.error('FAIL: ' + m); failures++; };
 
 for (const card of cfg.cards) {
-  const play = join(playDir, `${card.id}-en.png`);
+  const play = join(playDir, `${card.id}-${locale}.png`);
   try {
     const m = await sharp(play).metadata();
     if (m.width !== 1080 || m.height !== 1920) fail(`${card.id} play is ${m.width}x${m.height}, want 1080x1920`);

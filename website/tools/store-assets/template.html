@@ -39,7 +39,7 @@
 </head>
 <body>
   <div id="card" class="brackets">
-    <div class="counter"><b id="num">01</b> / 08</div>
+    <div class="counter"><b id="num">01</b> / <span id="total">08</span></div>
     <div class="stack">
       <div class="eyebrow" id="eyebrow"></div>
       <div class="hl"><span id="headHead"></span> <em id="headAccent"></em></div>
@@ -52,6 +52,7 @@
   window.renderCard = (card, opts) => {
     document.body.className = opts.mode === 'web' ? 'web' : '';
     document.getElementById('num').textContent = String(card.n).padStart(2, '0');
+    document.getElementById('total').textContent = String(opts.total).padStart(2, '0');
     document.getElementById('eyebrow').textContent = card.eyebrow;
     document.getElementById('headHead').textContent = card.headHead;
     document.getElementById('headAccent').textContent = card.headAccent;
@@ -59,7 +60,7 @@
     document.getElementById('prem').style.display = card.premium ? 'inline-block' : 'none';
     const screen = document.getElementById('screen');
     screen.style.backgroundImage = `url('${opts.screenUrl}')`;
-    // window aspect: show top portion of the cleaned shot (height = width / aspect)
+    // window w:h; smaller value = taller window showing more of the screen (~0.52 = whole cleaned shot)
     screen.style.aspectRatio = `1 / ${1 / opts.aspect}`;
     return document.fonts.ready;
   };
