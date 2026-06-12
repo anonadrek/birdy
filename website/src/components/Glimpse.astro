@@ -4,11 +4,14 @@ import EyebrowLabel from './ui/EyebrowLabel.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import OrnamentRule from './ui/OrnamentRule.astro';
 import { type Locale, getCopy } from '../lib/i18n';
-import devMatch from '../assets/screens/dev_match.png';
-import devJournal from '../assets/screens/dev_journal.png';
-import devArchive from '../assets/screens/dev_archive.png';
-import devBadge from '../assets/screens/dev_badge.png';
-import devListen from '../assets/screens/dev_listen.png';
+import vc124Identify from '../assets/screens/vc124_identify.png';
+import vc124Listen from '../assets/screens/vc124_listen.png';
+import vc124Journal from '../assets/screens/vc124_journal.png';
+import vc124Archive from '../assets/screens/vc124_archive.png';
+import vc124Badges from '../assets/screens/vc124_badges.png';
+import vc124Map from '../assets/screens/vc124_map.png';
+import vc124Recap from '../assets/screens/vc124_recap.png';
+import vc124Season from '../assets/screens/vc124_season.png';
 
 interface Props {
   locale: Locale;
@@ -16,14 +19,17 @@ interface Props {
 const { locale } = Astro.props;
 const t = getCopy(locale);
 
-// Background-free, upright device cut-outs (the phone only) — one consistent
-// handset across the journey: identify, journal, browse, collect, listen.
+// Background-free, upright device cut-outs (the phone only) — v1.2 fresh
+// screens: identify, listen, journal, archive, badges, map, recap, season.
 const shots = [
-  { src: devMatch, alt: t.alt.matchScreen },
-  { src: devJournal, alt: t.alt.observationDetail },
-  { src: devArchive, alt: t.alt.archiveScreen },
-  { src: devBadge, alt: t.alt.badgesGrid },
-  { src: devListen, alt: t.alt.audioScan },
+  { src: vc124Identify, alt: t.alt.identifyScreen },
+  { src: vc124Listen, alt: t.alt.listenScreen },
+  { src: vc124Journal, alt: t.alt.journalScreen },
+  { src: vc124Archive, alt: t.alt.archiveScreen },
+  { src: vc124Badges, alt: t.alt.badgesScreen },
+  { src: vc124Map, alt: t.alt.mapScreen },
+  { src: vc124Recap, alt: t.alt.recapScreen },
+  { src: vc124Season, alt: t.alt.seasonScreen },
 ];
 ---
 

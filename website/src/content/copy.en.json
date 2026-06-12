@@ -115,6 +115,13 @@
     "archiveScreen": "Birdy archive screen browsing European species",
     "audioScan": "Birdy audio scan screen with waveform",
     "badgesGrid": "Birdy badges page with the stamp grid",
+    "identifyScreen": "Birdy identify home — three ways to catch a bird",
+    "listenScreen": "Birdy audio identification screen with sound waveform",
+    "journalScreen": "Birdy field journal listing saved bird sightings",
+    "badgesScreen": "Birdy achievement stamps grid",
+    "mapScreen": "Birdy private on-device map of personal bird finds",
+    "recapScreen": "Birdy weekly field report with a new species",
+    "seasonScreen": "Birdy season statistics charting observations by month",
     "glimpseHero": "Birdy intro screen — A field journal for finds",
     "speciesScreen": "Birdy species page — read up on every European bird",
     "panorama": "Birdy app screens — identify a bird, learn the species, and keep every find"

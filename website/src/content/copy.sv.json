@@ -115,6 +115,13 @@
     "archiveScreen": "Birdys arkiv-skärm med europeiska arter",
     "audioScan": "Birdys ljudscan-skärm med vågform",
     "badgesGrid": "Birdys märkessida med stämpel-rutnätet",
+    "identifyScreen": "Birdys identifiera-hem — tre sätt att fånga en fågel",
+    "listenScreen": "Birdys ljudidentifiering med ljudvågform",
+    "journalScreen": "Birdys fältdagbok med sparade fågelfynd",
+    "badgesScreen": "Birdys rutnät av prestationsmärken",
+    "mapScreen": "Birdys privata karta över egna fågelfynd på enheten",
+    "recapScreen": "Birdys veckorapport med en ny art",
+    "seasonScreen": "Birdys säsongsstatistik över observationer per månad",
     "glimpseHero": "Birdys intro-skärm — En fältdagbok för fynd",
     "speciesScreen": "Birdys art-sida — läs på om varje europeisk fågel",
     "panorama": "Birdys app-skärmar — identifiera en fågel, lär dig arten och behåll varje fynd"
