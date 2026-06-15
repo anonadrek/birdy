@@ -1,10 +1,8 @@
 ---
-import { Image } from 'astro:assets';
 import CornerBrackets from './ui/CornerBrackets.astro';
 import EyebrowLabel from './ui/EyebrowLabel.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
-import birdyIcon from '../assets/birdy-icon.png';
 import { type Locale, getCopy } from '../lib/i18n';
 
 interface Props {
@@ -32,13 +30,12 @@ const playUrl = 'https://play.google.com/apps/testing/se.birdy.android';
     </div>
     <a href="#loop" class="scroll-cue">{t.hero.scrollCue}</a>
   </div>
-  <div class="brand-foot">
-    <Image
-      src={birdyIcon}
+  <div class="brand-foot" data-bird-foot>
+    <img
+      src="/favicon-192.png"
       alt={t.alt.wingLogo}
-      widths={[72, 144, 216]}
-      sizes="72px"
-      quality={88}
+      width="72"
+      height="72"
       loading="eager"
       decoding="async"
       class="bird-mark"
@@ -90,6 +87,7 @@ const playUrl = 'https://play.google.com/apps/testing/se.birdy.android';
     display: flex;
     align-items: center;
     justify-content: center;
+    will-change: transform, opacity;
   }
   /*
    * Bird mark fades + drifts up after the rest of the hero has settled.
@@ -127,3 +125,30 @@ const playUrl = 'https://play.google.com/apps/testing/se.birdy.android';
     }
   }
 </style>
+
+<script>
+  // Scroll-linked "fly away": as the bird mark rises past mid-screen on scroll,
+  // it drifts up-and-right, tilts, shrinks and fades — and flies back on the way
+  // up. The wrapper carries the scroll transform; the <img> keeps its entrance
+  // animation, so the two never fight. Disabled for reduced-motion.
+  const foot = document.querySelector<HTMLElement>('[data-bird-foot]');
+  if (foot && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = foot.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const center = r.top + r.height / 2;
+      const start = vh * 0.5; // begin flying once the bird passes mid-screen going up
+      const end = vh * 0.05; // fully gone near the top
+      let p = (start - center) / (start - end);
+      p = Math.max(0, Math.min(1, p));
+      foot.style.transform = `translate(calc(-50% + ${p * 80}px), ${-p * 160}px) rotate(${-p * 24}deg) scale(${1 - p * 0.55})`;
+      foot.style.opacity = String(1 - p);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll, { passive: true });
+    update();
+  }
+</script>
