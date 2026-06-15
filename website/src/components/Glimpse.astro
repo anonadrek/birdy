@@ -4,14 +4,23 @@ import EyebrowLabel from './ui/EyebrowLabel.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import OrnamentRule from './ui/OrnamentRule.astro';
 import { type Locale, getCopy } from '../lib/i18n';
-import vc124Identify from '../assets/screens/vc124_identify.png';
-import vc124Listen from '../assets/screens/vc124_listen.png';
-import vc124Journal from '../assets/screens/vc124_journal.png';
-import vc124Archive from '../assets/screens/vc124_archive.png';
-import vc124Badges from '../assets/screens/vc124_badges.png';
-import vc124Map from '../assets/screens/vc124_map.png';
-import vc124Recap from '../assets/screens/vc124_recap.png';
-import vc124Season from '../assets/screens/vc124_season.png';
+// Full v1.2 marketing cards (same images as the Play Store listing), per locale.
+import cardEnIdentify from '../assets/screens/card_en_identify.png';
+import cardEnListen from '../assets/screens/card_en_listen.png';
+import cardEnJournal from '../assets/screens/card_en_journal.png';
+import cardEnArchive from '../assets/screens/card_en_archive.png';
+import cardEnBadges from '../assets/screens/card_en_badges.png';
+import cardEnMap from '../assets/screens/card_en_map.png';
+import cardEnRecap from '../assets/screens/card_en_recap.png';
+import cardEnSeason from '../assets/screens/card_en_season.png';
+import cardSvIdentify from '../assets/screens/card_sv_identify.png';
+import cardSvListen from '../assets/screens/card_sv_listen.png';
+import cardSvJournal from '../assets/screens/card_sv_journal.png';
+import cardSvArchive from '../assets/screens/card_sv_archive.png';
+import cardSvBadges from '../assets/screens/card_sv_badges.png';
+import cardSvMap from '../assets/screens/card_sv_map.png';
+import cardSvRecap from '../assets/screens/card_sv_recap.png';
+import cardSvSeason from '../assets/screens/card_sv_season.png';
 
 interface Props {
   locale: Locale;
@@ -19,17 +28,21 @@ interface Props {
 const { locale } = Astro.props;
 const t = getCopy(locale);
 
-// Background-free, upright device cut-outs (the phone only) — v1.2 fresh
-// screens: identify, listen, journal, archive, badges, map, recap, season.
+// Same composed cards we upload to Play, localised by page language.
+const cards =
+  locale === 'sv'
+    ? [cardSvIdentify, cardSvListen, cardSvJournal, cardSvArchive, cardSvBadges, cardSvMap, cardSvRecap, cardSvSeason]
+    : [cardEnIdentify, cardEnListen, cardEnJournal, cardEnArchive, cardEnBadges, cardEnMap, cardEnRecap, cardEnSeason];
+
 const shots = [
-  { src: vc124Identify, alt: t.alt.identifyScreen },
-  { src: vc124Listen, alt: t.alt.listenScreen },
-  { src: vc124Journal, alt: t.alt.journalScreen },
-  { src: vc124Archive, alt: t.alt.archiveScreen },
-  { src: vc124Badges, alt: t.alt.badgesScreen },
-  { src: vc124Map, alt: t.alt.mapScreen },
-  { src: vc124Recap, alt: t.alt.recapScreen },
-  { src: vc124Season, alt: t.alt.seasonScreen },
+  { src: cards[0], alt: t.alt.identifyScreen },
+  { src: cards[1], alt: t.alt.listenScreen },
+  { src: cards[2], alt: t.alt.journalScreen },
+  { src: cards[3], alt: t.alt.archiveScreen },
+  { src: cards[4], alt: t.alt.badgesScreen },
+  { src: cards[5], alt: t.alt.mapScreen },
+  { src: cards[6], alt: t.alt.recapScreen },
+  { src: cards[7], alt: t.alt.seasonScreen },
 ];
 ---
 

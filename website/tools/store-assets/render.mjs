@@ -1,7 +1,8 @@
-// Renders each card to a Play PNG (1080x1920, paper bg) and a transparent web
-// cut-out. Usage: node render.mjs [--locale en|sv]
+// Renders each card to a 1080x1920 PNG (paper bg + copy). The same image is used
+// for the Play Store listing AND the website Glimpse carousel (per locale).
+// Usage: node render.mjs [--locale=en|sv]
 import { chromium } from 'playwright';
-import { readFile, mkdir, copyFile, writeFile } from 'node:fs/promises';
+import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 
@@ -11,9 +12,9 @@ const cfg = JSON.parse(await readFile(join(here, `cards.${locale}.json`), 'utf8'
 
 // Derive source dirs from rawDir in the JSON — rename the folder by editing rawDir there
 const rawBase = resolve(here, cfg.rawDir);
-const playDir = join(rawBase, 'Play Store');
-const webReviewDir = join(rawBase, 'Website');
-const webAssetsDir = resolve(here, '../../src/assets/screens');
+const playDir = join(rawBase, 'Play Store');       // upload these to Play Console
+const webReviewDir = join(rawBase, 'Website');     // review copies
+const webAssetsDir = resolve(here, '../../src/assets/screens'); // imported by the site
 for (const d of [playDir, webReviewDir, webAssetsDir]) await mkdir(d, { recursive: true });
 
 const templateUrl = pathToFileURL(join(here, 'template.html')).href;
@@ -22,28 +23,19 @@ const browser = await chromium.launch();
 try {
   for (const card of cfg.cards) {
     const screenUrl = pathToFileURL(join(here, 'screens', `${card.id}.png`)).href;
+    const suffix = card.id.slice(3); // "01-identify" -> "identify"
 
-    // --- Play card: 1080x1920, paper background ---
-    // No deviceScaleFactor — Play Store requires exactly 1080x1920 pixels
-    const playPage = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
-    await playPage.goto(templateUrl, { waitUntil: 'networkidle' });
-    await playPage.evaluate(([c, o]) => window.renderCard(c, o), [card, { mode: 'play', screenUrl, aspect: cfg.screenWindowAspect, total: cfg.cards.length }]);
-    await playPage.waitForFunction(() => document.fonts.status === 'loaded');
-    const playName = `${card.id}-${locale}.png`;
-    await playPage.locator('#card').screenshot({ path: join(playDir, playName) });
-    await playPage.close();
+    // 1080x1920 card, paper background. No deviceScaleFactor — Play requires exactly 1080x1920.
+    const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
+    await page.goto(templateUrl, { waitUntil: 'networkidle' });
+    await page.evaluate(([c, o]) => window.renderCard(c, o), [card, { mode: 'play', screenUrl, aspect: cfg.screenWindowAspect, total: cfg.cards.length }]);
+    await page.waitForFunction(() => document.fonts.status === 'loaded');
+    const buf = await page.locator('#card').screenshot();
+    await page.close();
 
-    // --- Web cut-out: transparent, framed screen only ---
-    // deviceScaleFactor:2 gives retina-quality output for the website carousel
-    const webPage = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 2 });
-    await webPage.goto(templateUrl, { waitUntil: 'networkidle' });
-    await webPage.evaluate(([c, o]) => window.renderCard(c, o), [card, { mode: 'web', screenUrl, aspect: cfg.screenWindowAspect, total: cfg.cards.length }]);
-    await webPage.waitForFunction(() => document.fonts.status === 'loaded');
-    const cutout = await webPage.locator('#screen').screenshot({ omitBackground: true });
-    await webPage.close();
-    const webName = `${card.id}.png`;
-    await writeFile(join(webReviewDir, webName), cutout);
-    await copyFile(join(webReviewDir, webName), join(webAssetsDir, `vc124_${card.id.slice(3)}.png`));
+    await writeFile(join(playDir, `${card.id}-${locale}.png`), buf);          // Play Console
+    await writeFile(join(webReviewDir, `card_${locale}_${suffix}.png`), buf); // review
+    await writeFile(join(webAssetsDir, `card_${locale}_${suffix}.png`), buf); // website import
 
     console.log(`rendered ${card.id} (${locale})`);
   }

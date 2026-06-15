@@ -13,8 +13,10 @@
     "test:smoke": "playwright test",
     "assets:clean": "node tools/store-assets/clean-sources.mjs",
     "assets:render": "node tools/store-assets/render.mjs --locale=en",
-    "assets:verify": "node tools/store-assets/verify.mjs",
-    "assets:store": "npm run assets:clean && npm run assets:render && npm run assets:verify"
+    "assets:render:sv": "node tools/store-assets/render.mjs --locale=sv",
+    "assets:verify": "node tools/store-assets/verify.mjs --locale=en",
+    "assets:verify:sv": "node tools/store-assets/verify.mjs --locale=sv",
+    "assets:store": "npm run assets:clean && npm run assets:render && npm run assets:render:sv && npm run assets:verify && npm run assets:verify:sv"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.0.0",
