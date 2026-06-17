@@ -1,33 +1,38 @@
 # Birdy — Play Store-listning (svenska)
 
 ## App-titel
-Birdy — Fågelskanner
+Birdy — Fågel-ID & Guide
 
 ## Kort beskrivning (max 80 tecken)
-Identifiera fåglar med kamera & ljud. Behåll varje fynd i en fältbok som är din.
+Identifiera fåglar på foto & ljud. Offline fågelguide & privat fågeldagbok.
 
 ## Lång beskrivning (max 4000 tecken)
 
-Birdy är den vackra, privata fältdagboken för fågelskådare.
-Identifiera fåglar med kamera eller ljud — offline, utan konto — och
-behåll varje fynd som ett uppslag du äger och vill bläddra tillbaka till.
+Vilken fågel är det? Birdy är den vackra, privata fågelguiden och
+fågeldagboken för fågelskådare. Artbestämning av fåglar på foto eller
+fågelsång — offline, utan konto — och behåll varje fynd som ett
+uppslag du äger och vill bläddra tillbaka till.
 
 **SKANNA — riktigt enkelt**
 Rikta kameran mot fågeln, välj ett foto från galleriet eller spela in
-ett 3-sekunders ljudklipp. Birdy identifierar arten direkt på enheten
-med lokal AI (Google AIY Birds V1 för bild, BirdNET-Lite för ljud) —
-inget internet behövs, inga konton. Foto- och ljud-ID är alltid gratis.
+ett 3-sekunders klipp för att känna igen fågeln på ljud. Birdy är en
+fågelsång-igenkänning och artbestämning på foto i ett — allt sker
+direkt på enheten med lokal AI (Google AIY Birds V1 för bild,
+BirdNET-Lite för ljud) — inget internet behövs, inga konton. Foto- och
+ljud-ID av fågelläten är alltid gratis.
 
-**LÄR — uppslagsverket växer med dig**
-Bläddra bland 839 europeiska arter med text från Wikipedia, foton
-från Wikimedia Commons och korta marginalanteckningar för fältkännemärken.
-Sök, filtrera på ekologisk grupp, eller bara ströv runt.
+**LÄR — en fågelguide för Sverige och Europa som växer med dig**
+Bläddra bland 839 europeiska arter med text från Wikipedia, foton från
+Wikimedia Commons och korta marginalanteckningar för fältkännemärken.
+Sök på namn, filtrera på ekologisk grupp, eller bara ströv runt. Det
+är följeslagaren för artbestämning av fåglar i fält — och ett stilla
+uppslagsverk hemma.
 
-**SAMLA — fältdagboken är din egen**
+**SAMLA — fågeldagboken är din egen**
 Spara fynd med foto, en handskriven notering i marginalen och — om du
 vill — var fyndet gjordes. Med Premium ser du dem alla på en privat
 karta över dina fynd. Allt sparas lokalt — inga molnkonton, ingen
-tracking, ingen reklam. Dagboken är din.
+spårning, ingen reklam. Dagboken är din.
 
 **STÄMPLA — märken att jaga**
 27 gratis prestationsmärken: först gångers fynd, säsongs-streaks, hela
@@ -37,21 +42,23 @@ rödlistat-spår. Något att gå hem med efter en lyckad dag i skogen.
 **PREMIUM (valfritt)**
 En privat karta över varje plats där du sett en fågel, PDF-export av
 fältdagboken, säsongsstatistik och 7 extra prestationsmärken. Engångsköp
-eller abonnemang via Google Play Billing. Själva skanningen (foto + ljud)
-är alltid gratis.
+eller abonnemang via Google Play Billing. Själva kärnan — artbestämning
+på foto och fågelsång — är alltid gratis.
 
 **FUNGERAR OFFLINE**
-Modellen, encyclopedin och dagboken är på enheten. Du behöver inte
-ström i mobilen i fält — bara batteri.
+Fågel-ID-modellen, fågelguiden och dagboken finns alla på enheten.
+Artbestämning offline utan mobiltäckning i fält — bara batteri.
 
-**PRIVACY-FIRST**
-Inga konton. Inga annonsörer. Ingen tracking. Camera-frames bearbetas
-on-device och slängs direkt. Sparade foton ligger i app-mappen på
-telefonen — uninstall raderar allt.
+**PRIVAT FRÅN GRUNDEN**
+Inga konton. Inga annonsörer. Ingen spårning. Camera-frames bearbetas
+direkt på enheten och slängs på en gång. Nästan ingenting samlas in,
+och dina data stannar på telefonen. Sparade foton ligger i appens
+privata mapp — avinstallation raderar allt. En privat fågelapp utan
+konto.
 
 — Birdy är skapad av en solo-utvecklare i Sverige för fältornitologer,
-nybörjare som vill lära sig, och alla som tycker en sångfågel i ett
-träd förtjänar en stund av uppmärksamhet.
+nybörjare som vill lära sig känna igen fåglar, och alla som tycker en
+sångfågel i ett träd förtjänar en stund av uppmärksamhet.
 
 ## Nyheter (v1.2)
 - NYTT — Karta: se dina fynd på en privat karta som lever på enheten (Premium). Att fånga platsen är gratis och lämnar aldrig telefonen.
@@ -61,9 +68,11 @@ träd förtjänar en stund av uppmärksamhet.
 - Omgjord Premium-skärm: en tydlig gratis-vs-Premium-översikt, plus en titt på vad Premium erbjuder direkt efter introduktionen.
 - Sök hittar nu arter med apostrofer och diakriter. Skarpare app-ikon, en-fågels-splash, mjukare kort.
 
-## Nyckelord (för ASO-text)
-fågel, fågelskanner, fågelguide, fågelid, fågel-AI, naturapp,
-ornitologi, fältornitolog, fågeldagbok, fågelkollen
+## Nyckelord (för ASO-text — internt; Google Play har inget nyckelordsfält, allt indexeras från titel + kort + lång beskrivning)
+artbestämning fåglar, fågelsång igenkänning, fågelläten app, känna igen
+fågel på ljud, fågelskådning app, fågelguide Sverige, fågelguide Europa,
+fågeldagbok, identifiera fågel foto, offline fågelapp, fågelarter,
+privat fågelapp
 
 ## Kategori
 Utbildning / Naturvetenskap
