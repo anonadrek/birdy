@@ -12,7 +12,7 @@ En vacker, privat, **on-device** fältdagbok för fågelskådare — i hela vär
 ## Var vi står nu (framsteg)
 - **v1.0 — Norden/Europa (839 arter):** on-device foto- + ljud-ID, uppslagsverk, fältdagbok, gamification, premium-tier. I closed testing.
 - **v1.1-batchen:** sök/uppslagsverk/märken-polish (DP A–E), onboarding v2, kamera-zoom + crop, website v2, Veckans uppslag, Troférum, jaga Dagens fågel.
-- **v1.2 (NU — vC123 / 1.2.0-rc1, på `main` 2026-06-08):** **Personlig fynd-karta** — privat on-device-karta över egna fynd (opt-in platsfångst gratis, kart-vy Premium), Field Journal-kartstil + vax-sigill-pins, foto-uppladdningar geotaggar. **Första biten av "Karta & moln"-spåret.** → Nästa konkreta steg: bygg + ladda upp AAB:n.
+- **v1.2 — 🚀 LIVE I PRODUKTION på Google Play sedan 2026-06-17** (vC125 / 1.2.0-rc3; publik: `play.google.com/store/apps/details?id=se.birdy.android` — "Birdy — Bird Identify & Guide"). Innehåll: **Personlig fynd-karta** (opt-in platsfångst gratis, kart-vy Premium, Field Journal-stil + vax-sigill-pins, foto-uppladdningar geotaggar — första biten av "Karta & moln"-spåret) + premium-skärm-redesign + UX-polish + scan-freeze-par-modell. Premium öppet/gratis för alla under launch. → **Nästa steg:** bevaka launch-data (krasch/ANR-vitals, installs, recensioner, MapTiler-kvot); **16 KB-fix** (TFLite→LiteRT + Flex/FlexRFFT) krävs före nästa update (vC126) + för 16 KB-enheter; billing-verify + grandfather (tidiga användare behåller premium) + AB-transfer (~2–3 v).
 
 ## Långsiktiga mål (från planen)
 
