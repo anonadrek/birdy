@@ -2,7 +2,7 @@
 
 > **När:** Innan vi flippar `PREMIUM_OPEN_FOR_LAUNCH=false` och släpper Birdy i produktion på Google Play.
 > **Varför:** Override:n `premiumOverride = Active(LIFETIME)` som ligger på under closed testing maskerar hela "no premium → köpflöde → state-flip till Active"-vägen. Den vägen måste verifieras isär från overriden innan den möter riktiga betalande användare.
-> **Status:** Items 1, 2, 4 nedan är **pending** — ska köras innan production-launch. Item 3 (BirdNET-licensguard) är **DONE 2026-05-26** (commit pushas tillsammans med denna fil).
+> **Status:** Item 1 (debug-toggle) **DONE 2026-06-17** (commit `c027a6f6`). Item 3 (BirdNET-licensguard) **DONE 2026-05-26**. Items 2, 4 och **5 (grandfather — NY, hard gate på flippen)** är **pending** — körs på AB-kontot efter account-transfer (billing-beslut 2026-06-17: kod-prep nu, live-test på AB; se memory `reference_play_account_transfer_to_ab`).
 
 ---
 
@@ -76,6 +76,30 @@ Fresh install, debug-toggle PÅ (`NotActive`). Banner "Unlock Premium" syns på 
 
 ---
 
+## 5. Grandfather launch-period-användare (HARD GATE på flippen)
+
+**Beslut (Albin 2026-06-17):** Alla som laddar ner appen *innan* monetiseringen slås på (`PREMIUM_OPEN_FOR_LAUNCH=false`) ska behålla full Premium **för alltid** — "inget snack om saken". Tidiga användare straffas aldrig av att vi börjar ta betalt.
+
+**Varför hard gate:** Idag beräknas `premiumOverride = Active(LIFETIME)` *enbart* från `BuildConfig.PREMIUM_OPEN_FOR_LAUNCH` vid runtime (MainActivity). Flippas flaggan till `false` förlorar **alla** — inklusive tidiga användare — premium vid nästa uppdatering. Ingen kvarstående markering finns. Att flippa utan grandfather-logik = bryter beslutet.
+
+**Mekanism (on-device, ingen backend — respekterar privacy-löftet):** Bygget som introducerar billing måste, *innan* det förlitar sig på billing-state, ge permanent `Active(LIFETIME)` till varje användare vars `firstInstallTimestamp` (redan persisterad i DataStore för ALLA användare sedan Plan 6a) ligger före en cutoff = billing-byggets rollout-datum. Nya installationer efter cutoff får gratis-tier + paywall.
+
+```
+effectivePremium =
+    if (firstInstallTimestamp != null && firstInstallTimestamp < BILLING_LAUNCH_CUTOFF_MS)
+        Active(LIFETIME)        // grandfathered launch-period user
+    else
+        <billing-state>          // new user: free tier + paywall
+```
+
+- Cutoff bakas in som konstant i billing-bygget.
+- **Kräver NOLL kodändring nu** och NOLL ändring i den redan byggda vC125-AAB:n — `firstInstallTimestamp` sätts redan vid första uppstart för alla användare (MainActivity, Plan 6a), så alla nuvarande + framtida open-period-installationer täcks retroaktivt.
+- Accepterad edge: rensar användaren app-datan nollställs `firstInstallTimestamp` → tappar grandfather. Oundvikligt utan backend; acceptabelt (sällsynt).
+
+**Klart-kriterium:** Grandfather-logiken ligger i SAMMA build som flippar `PREMIUM_OPEN_FOR_LAUNCH=false`. Device-verify: en "gammal" install (firstInstall < cutoff) behåller premium efter uppdatering till billing-bygget; en fräsch install (efter cutoff) möter paywall.
+
+---
+
 ## 4. Conversion-monitoring post-launch
 
 **Plan:** Conversion är otestat innan production-launch. Closed-testarna ser allt gratis, så premium-screen / teasers / pris möter inte folk som faktiskt står inför betalvägg. Första produktionsdagarna = första signalen, inte en bekräftelse.
@@ -104,21 +128,22 @@ Fresh install, debug-toggle PÅ (`NotActive`). Banner "Unlock Premium" syns på 
 ## Beroenden + ordning
 
 ```
-1. Implementera debug-toggle  ──┐
-                                ├─►  2. Billing-verify-checklista  ──►  Flippa PREMIUM_OPEN_FOR_LAUNCH=false  ──►  Production launch  ──►  4. Conversion-monitoring
-3. License guard test ✅ ──────┘                                                                                          (+7d, +14d checkpoints)
+1. Debug-toggle ✅  ──┐
+                      ├─►  2. Billing-verify-checklista  ──►  5. Grandfather-logik + flippa PREMIUM_OPEN_FOR_LAUNCH=false (SAMMA build)  ──►  Production launch  ──►  4. Conversion-monitoring
+3. License guard ✅ ──┘                                                                                                                                            (+7d, +14d checkpoints)
 ```
 
-Punkt 3 är redan på plats — fångar regression om någon framöver försöker återinföra premium-gating i audio/listen-koden. Punkt 1 och 2 måste köras i sekvens innan flippen. Punkt 4 startar dagen vi går live.
+Punkt 1 (debug-toggle) och 3 (license guard) är redan på plats. Punkt 2 körs på AB-kontot efter account-transfer. **Punkt 5 (grandfather) MÅSTE ligga i samma build som flippar `PREMIUM_OPEN_FOR_LAUNCH=false`** — annars tappar tidiga användare premium, vilket bryter beslutet i §5. Punkt 4 startar dagen vi går live.
 
 ---
 
 ## Filer som rörs när detta körs
 
-- `composeApp/.../UserPreferences*.kt` — lägg `skipPremiumOverride`.
-- `androidApp/.../MainActivity.kt` — läs flaggan, hoppa över override när satt.
-- `composeApp/.../SettingsScreen.kt` — debug-only toggle i Developer-sektionen.
-- `androidApp/build.gradle.kts` — flippa `PREMIUM_OPEN_FOR_LAUNCH=false` *efter* punkt 2 är grön.
+- ✅ `shared/datastore/.../UserPreferences.kt` (+ InMemory/Fake/Android-impl) — `skipPremiumOverride` tillagd (commit `c027a6f6`).
+- ✅ `androidApp/.../MainActivity.kt` — läser flaggan vid uppstart, kortsluter override:n när satt (DEBUG-only).
+- ✅ `composeApp/.../ui/debug/DiagnosticsScreen.kt` — toggle:n hamnade här (inte SettingsScreen) eftersom debug-skärmen är `null` i release → renare release-isolering i KMP-commonMain. Nås via Arkiv → Diagnostics.
+- ⬜ **Grandfather (§5):** `androidApp/.../MainActivity.kt` (eller premium-resolution) — ge `Active(LIFETIME)` när `firstInstallTimestamp < BILLING_LAUNCH_CUTOFF_MS`; lägg cutoff-konstanten. MÅSTE i samma build som flippen.
+- ⬜ `androidApp/build.gradle.kts` — flippa `PREMIUM_OPEN_FOR_LAUNCH=false` *efter* punkt 2 är grön OCH §5 ligger i bygget.
 - `docs/superpowers/screenshots/v1.0-billing-verify/` — skärmdumpar (skapas vid verify).
 
 ## Referenser
