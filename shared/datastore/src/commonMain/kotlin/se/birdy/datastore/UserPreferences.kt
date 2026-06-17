@@ -40,6 +40,15 @@ interface UserPreferences {
     val locationCaptureEnabled: Flow<Boolean>
     val weeklyTrophyPushEnabled: Flow<Boolean>
 
+    /**
+     * DEBUG-only Billing-verify toggle. When true (and only in `BuildConfig.DEBUG`
+     * builds), MainActivity skips the premium override so the real
+     * `NotActive → purchase → Active` path is exercised even while
+     * `PREMIUM_OPEN_FOR_LAUNCH=true`. Read once at app start — restart to apply.
+     * Never has any effect in release builds. See billing-verify runbook §1.
+     */
+    val skipPremiumOverride: Flow<Boolean>
+
     suspend fun setUserName(name: String)
 
     suspend fun setHasSeenOnboarding(value: Boolean)
@@ -71,4 +80,6 @@ interface UserPreferences {
     suspend fun setLocationCaptureEnabled(value: Boolean)
 
     suspend fun setWeeklyTrophyPushEnabled(value: Boolean)
+
+    suspend fun setSkipPremiumOverride(value: Boolean)
 }

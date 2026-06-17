@@ -52,6 +52,17 @@ class InMemoryUserPreferencesTest {
         }
 
     @Test
+    fun `skipPremiumOverride starts false and updates`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            prefs.skipPremiumOverride.test {
+                assertEquals(false, awaitItem())
+                prefs.setSkipPremiumOverride(true)
+                assertEquals(true, awaitItem())
+            }
+        }
+
+    @Test
     fun `all enum-backed prefs round-trip`() =
         runTest {
             val prefs = InMemoryUserPreferences()

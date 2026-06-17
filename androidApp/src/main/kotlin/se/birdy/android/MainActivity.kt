@@ -45,6 +45,7 @@ import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
 import se.birdy.data.observation.SqlDelightObservationRepository
+import se.birdy.datastore.UserPreferences
 import se.birdy.datastore.UserPreferencesStore
 import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
@@ -300,16 +301,23 @@ class MainActivity : ComponentActivity() {
         // 57 KB typeface load out of the first export's critical path.
         PdfFontProvider.init(applicationContext)
         val journalRenderer = JournalPdfRenderer()
+        // DEBUG-only Billing-verify escape hatch (runbook §1): when the developer
+        // toggle is on, skip EVERY override so the real NotActive→purchase→Active
+        // path is exercised even while PREMIUM_OPEN_FOR_LAUNCH=true. Read once here;
+        // restart applies it. Always false in release (BuildConfig.DEBUG guards it).
+        val skipPremiumOverride =
+            BuildConfig.DEBUG && runBlocking { userPreferences.skipPremiumOverride.first() }
         // PREMIUM_OPEN_FOR_LAUNCH (defaultConfig=true) forces every user to Active(LIFETIME)
         // through the closed-testing + initial production window. Toggle off in
         // androidApp/build.gradle.kts when Billing v8 monetization goes live.
         val premiumOverride: PremiumState? =
-            if (BuildConfig.PREMIUM_OPEN_FOR_LAUNCH) {
-                PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now())
-            } else if (BuildConfig.DEBUG && BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE) {
-                PremiumState.Active(PremiumTier.YEARLY, Clock.System.now())
-            } else {
-                null
+            when {
+                skipPremiumOverride -> null
+                BuildConfig.PREMIUM_OPEN_FOR_LAUNCH ->
+                    PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now())
+                BuildConfig.DEBUG && BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE ->
+                    PremiumState.Active(PremiumTier.YEARLY, Clock.System.now())
+                else -> null
             }
         val overrideTag = runBlocking { userPreferences.appLanguage.first() }.toLocaleTagOrNull()
         val resolvedLocale =
@@ -371,7 +379,7 @@ class MainActivity : ComponentActivity() {
             versionName = BuildConfig.VERSION_NAME,
             defaultLocale = resolvedLocale,
             benchmarkScreen = buildBenchmarkScreen(classifierBootstrap),
-            diagnosticsScreen = buildDiagnosticsScreen(classifierBootstrap),
+            diagnosticsScreen = buildDiagnosticsScreen(classifierBootstrap, userPreferences),
             matchOverrideReader = buildMatchOverrideReader(),
             launchPurchase = { tier ->
                 billingClient.launchPurchase(this@MainActivity, tier)
@@ -500,18 +508,28 @@ class MainActivity : ComponentActivity() {
             null
         }
 
-    private fun buildDiagnosticsScreen(bootstrap: ClassifierBootstrap): (@Composable () -> Unit)? =
+    private fun buildDiagnosticsScreen(
+        bootstrap: ClassifierBootstrap,
+        userPreferences: UserPreferences,
+    ): (@Composable () -> Unit)? =
         if (BuildConfig.DEBUG) {
             @Composable {
                 val ready = bootstrap.state.collectAsState().value as? ClassifierBootstrapState.Ready
-                if (ready != null) {
-                    val classifier = ready.classifier
-                    val runner =
-                        androidx.compose.runtime.remember(classifier) {
-                            DiagnosticsRunner(context = applicationContext, classifier = classifier)
+                // Keep the Billing-verify toggle reachable even before the classifier
+                // is ready (billing testing must not depend on ML bootstrap state).
+                val runner =
+                    ready?.let { r ->
+                        androidx.compose.runtime.remember(r.classifier) {
+                            DiagnosticsRunner(context = applicationContext, classifier = r.classifier)
                         }
-                    DiagnosticsScreen(runDiagnostic = { runner.run() })
-                }
+                    }
+                DiagnosticsScreen(
+                    runDiagnostic = {
+                        runner?.run() ?: "Classifier not ready yet — try again in a moment."
+                    },
+                    skipPremiumOverride = userPreferences.skipPremiumOverride,
+                    onSetSkipPremiumOverride = { userPreferences.setSkipPremiumOverride(it) },
+                )
             }
         } else {
             null
