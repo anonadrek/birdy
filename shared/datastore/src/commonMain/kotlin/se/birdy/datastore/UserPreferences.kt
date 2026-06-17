@@ -49,6 +49,9 @@ interface UserPreferences {
      */
     val skipPremiumOverride: Flow<Boolean>
 
+    /** One-shot: true once the Play in-app review prompt has been requested (never ask twice). */
+    val inAppReviewRequested: Flow<Boolean>
+
     suspend fun setUserName(name: String)
 
     suspend fun setHasSeenOnboarding(value: Boolean)
@@ -82,4 +85,6 @@ interface UserPreferences {
     suspend fun setWeeklyTrophyPushEnabled(value: Boolean)
 
     suspend fun setSkipPremiumOverride(value: Boolean)
+
+    suspend fun setInAppReviewRequested(value: Boolean)
 }

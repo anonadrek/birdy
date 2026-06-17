@@ -63,6 +63,17 @@ class InMemoryUserPreferencesTest {
         }
 
     @Test
+    fun `inAppReviewRequested starts false and updates`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            prefs.inAppReviewRequested.test {
+                assertEquals(false, awaitItem())
+                prefs.setInAppReviewRequested(true)
+                assertEquals(true, awaitItem())
+            }
+        }
+
+    @Test
     fun `all enum-backed prefs round-trip`() =
         runTest {
             val prefs = InMemoryUserPreferences()

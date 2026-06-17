@@ -18,6 +18,7 @@ import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.data.premium.FormattedPrices
 import se.birdy.app.location.LocationProvider
 import se.birdy.app.photo.PhotoStorage
+import se.birdy.app.review.InAppReviewTrigger
 import se.birdy.app.ui.audio.AudioRecorderApi
 import se.birdy.app.ui.audio.AudioScanViewModel
 import se.birdy.app.ui.audio.WaveformRendererApi
@@ -91,6 +92,11 @@ class AppGraph(
      * See Plan 6b1 T3 + docs/superpowers/runbooks/2026-05-16-test-image-infra.md.
      */
     val matchOverrideReader: (() -> MatchOverride?)? = null,
+    /**
+     * Launches the Google Play in-app review prompt (androidMain-only; no-op default).
+     * Fired once after the user's 3rd saved find via [InAppReviewTrigger]; no analytics.
+     */
+    val requestInAppReview: () -> Unit = {},
     /**
      * Real Google Play Billing purchase launcher (Plan 6b1 T4).
      * Null = fall back to repository.markPurchased (legacy stub / tests).
@@ -258,6 +264,9 @@ class AppGraph(
         )
     }
 
+    private val inAppReviewTrigger: InAppReviewTrigger =
+        InAppReviewTrigger(prefs = userPreferences, launchReview = requestInAppReview)
+
     private val saveObservationUseCase: SaveObservationUseCase =
         SaveObservationUseCase(
             repo = observationRepository,
@@ -267,23 +276,25 @@ class AppGraph(
             catalog = badgeCatalog,
             recalculate = recalculateBadges,
             speciesByQid = { repository.allByQid(defaultLocale) },
-            onObservationSaved =
-                dailyBirdHistory?.let { history ->
-                    { obs ->
-                        val speciesId = obs.speciesId
-                        if (speciesId != null) {
-                            val today =
-                                Clock.System
-                                    .now()
-                                    .toLocalDateTime(TimeZone.currentSystemDefault())
-                                    .date
-                            val todayBird = history.speciesIdForDate(today)
-                            if (todayBird == speciesId) {
-                                history.markMatch(today, speciesId)
-                            }
+            onObservationSaved = { obs ->
+                val speciesId = obs.speciesId
+                if (speciesId != null) {
+                    dailyBirdHistory?.let { history ->
+                        val today =
+                            Clock.System
+                                .now()
+                                .toLocalDateTime(TimeZone.currentSystemDefault())
+                                .date
+                        val todayBird = history.speciesIdForDate(today)
+                        if (todayBird == speciesId) {
+                            history.markMatch(today, speciesId)
                         }
                     }
-                },
+                }
+                inAppReviewTrigger.onObservationSaved(
+                    observationRepository.observeAll().first().size,
+                )
+            },
             dailyBirdMatchCount = { dailyBirdHistory?.totalMatchCount() ?: 0 },
             locationProvider = locationProvider,
             locationEnabled = { userPreferences.locationCaptureEnabled.first() },

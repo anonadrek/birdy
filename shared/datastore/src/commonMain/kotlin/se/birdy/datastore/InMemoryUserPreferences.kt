@@ -27,6 +27,7 @@ class InMemoryUserPreferences : UserPreferences {
     private val _locationCaptureEnabled = MutableStateFlow(false)
     private val _weeklyTrophyPushEnabled = MutableStateFlow(true)
     private val _skipPremiumOverride = MutableStateFlow(false)
+    private val _inAppReviewRequested = MutableStateFlow(false)
 
     override val userName: Flow<String> = _userName.asStateFlow()
     override val hasSeenOnboarding: Flow<Boolean> = _hasSeenOnboarding.asStateFlow()
@@ -45,6 +46,7 @@ class InMemoryUserPreferences : UserPreferences {
     override val locationCaptureEnabled: Flow<Boolean> = _locationCaptureEnabled.asStateFlow()
     override val weeklyTrophyPushEnabled: Flow<Boolean> = _weeklyTrophyPushEnabled.asStateFlow()
     override val skipPremiumOverride: Flow<Boolean> = _skipPremiumOverride.asStateFlow()
+    override val inAppReviewRequested: Flow<Boolean> = _inAppReviewRequested.asStateFlow()
 
     override suspend fun setUserName(name: String) {
         _userName.value = name
@@ -112,5 +114,9 @@ class InMemoryUserPreferences : UserPreferences {
 
     override suspend fun setSkipPremiumOverride(value: Boolean) {
         _skipPremiumOverride.value = value
+    }
+
+    override suspend fun setInAppReviewRequested(value: Boolean) {
+        _inAppReviewRequested.value = value
     }
 }

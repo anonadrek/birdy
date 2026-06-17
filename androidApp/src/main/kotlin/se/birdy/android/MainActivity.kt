@@ -14,6 +14,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
+import com.google.android.play.core.review.ReviewManagerFactory
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -381,6 +382,7 @@ class MainActivity : ComponentActivity() {
             benchmarkScreen = buildBenchmarkScreen(classifierBootstrap),
             diagnosticsScreen = buildDiagnosticsScreen(classifierBootstrap, userPreferences),
             matchOverrideReader = buildMatchOverrideReader(),
+            requestInAppReview = { launchInAppReview() },
             launchPurchase = { tier ->
                 billingClient.launchPurchase(this@MainActivity, tier)
                 Unit
@@ -507,6 +509,19 @@ class MainActivity : ComponentActivity() {
         } else {
             null
         }
+
+    /**
+     * Launches the Google Play in-app review prompt. No-op unless installed from Play
+     * (debug/sideload silently does nothing); rate-limited by Play. Best-effort, fire-and-forget.
+     */
+    private fun launchInAppReview() {
+        val manager = ReviewManagerFactory.create(this)
+        manager.requestReviewFlow().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                manager.launchReviewFlow(this, task.result)
+            }
+        }
+    }
 
     private fun buildDiagnosticsScreen(
         bootstrap: ClassifierBootstrap,

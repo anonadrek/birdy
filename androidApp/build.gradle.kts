@@ -30,6 +30,8 @@ kotlin {
             // WorkManager needed for debug-only dev-trigger lambdas in MainActivity.
             implementation(libs.androidx.work.runtime.ktx)
             implementation(libs.osmdroid.android)
+            // Google Play In-App Review API (ratings velocity; Play-mediated, no analytics).
+            implementation("com.google.android.play:review:2.0.2")
         }
     }
 }

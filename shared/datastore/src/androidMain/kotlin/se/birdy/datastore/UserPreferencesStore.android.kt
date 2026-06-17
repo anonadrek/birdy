@@ -52,6 +52,7 @@ private class AndroidUserPreferences(
         val LOCATION_CAPTURE_ENABLED = booleanPreferencesKey("location_capture_enabled")
         val WEEKLY_TROPHY_PUSH_ENABLED = booleanPreferencesKey("weekly_trophy_push_enabled")
         val SKIP_PREMIUM_OVERRIDE = booleanPreferencesKey("skip_premium_override")
+        val IN_APP_REVIEW_REQUESTED = booleanPreferencesKey("in_app_review_requested")
     }
 
     override val userName: Flow<String> = safeData.map { it[Keys.USER_NAME] ?: "" }
@@ -95,6 +96,8 @@ private class AndroidUserPreferences(
         safeData.map { it[Keys.WEEKLY_TROPHY_PUSH_ENABLED] ?: true }
     override val skipPremiumOverride: Flow<Boolean> =
         safeData.map { it[Keys.SKIP_PREMIUM_OVERRIDE] ?: false }
+    override val inAppReviewRequested: Flow<Boolean> =
+        safeData.map { it[Keys.IN_APP_REVIEW_REQUESTED] ?: false }
 
     override suspend fun setUserName(name: String) {
         store.edit { it[Keys.USER_NAME] = name }
@@ -162,5 +165,9 @@ private class AndroidUserPreferences(
 
     override suspend fun setSkipPremiumOverride(value: Boolean) {
         store.edit { it[Keys.SKIP_PREMIUM_OVERRIDE] = value }
+    }
+
+    override suspend fun setInAppReviewRequested(value: Boolean) {
+        store.edit { it[Keys.IN_APP_REVIEW_REQUESTED] = value }
     }
 }
