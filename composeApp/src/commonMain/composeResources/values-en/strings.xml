@@ -545,9 +545,9 @@
     <string name="about_subline">A local journal for sightings.</string>
     <string name="about_version_prefix">Version</string>
     <string name="about_credits_label">CONTENT &amp; DATA</string>
-    <string name="about_credits_body">Bird data from Wikidata and Wikipedia under CC BY-SA. Photos from Wikimedia Commons. ML models: AIY Birds V1 (Google, photo) and BirdNET-Lite v2 (Cornell Lab of Ornithology, audio).</string>
+    <string name="about_credits_body">Bird data from Wikidata and Wikipedia under CC BY-SA. Photos from Wikimedia Commons. Map data © OpenStreetMap contributors, tiles © MapTiler. ML models: AIY Birds V1 (Google, photo) and BirdNET-Lite v2 (Cornell Lab of Ornithology, audio).</string>
     <string name="about_licenses_label">OPEN SOURCE</string>
-    <string name="about_licenses_body">Kotlin, Compose Multiplatform — Apache 2.0\nSQLDelight — Apache 2.0\nCoil — Apache 2.0\nAndroidX — Apache 2.0\nkaml — Apache 2.0\nTensorFlow Lite (AIY Birds V1) — Apache 2.0\nBirdNET-Lite v2 (Cornell Lab of Ornithology) — CC BY-NC-SA 4.0\nDM Serif Display Italic — SIL Open Font License 1.1\nCaveat — SIL Open Font License 1.1</string>
+    <string name="about_licenses_body">Kotlin, Compose Multiplatform — Apache 2.0\nSQLDelight — Apache 2.0\nCoil — Apache 2.0\nAndroidX — Apache 2.0\nkaml — Apache 2.0\nosmdroid — Apache 2.0\nTensorFlow Lite (AIY Birds V1) — Apache 2.0\nBirdNET-Lite v2 (Cornell Lab of Ornithology) — CC BY-NC-SA 4.0\nDM Serif Display Italic — SIL Open Font License 1.1\nCaveat — SIL Open Font License 1.1</string>
     <string name="about_back">Back</string>
 
     <!-- Settings row effects (Plan 6a Task 13) -->

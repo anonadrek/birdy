@@ -123,4 +123,4 @@ Specs och plans i `docs/superpowers/` är källan till sanning. Workflow: Markdo
 
 ## Licens
 
-TBD (lägg till `LICENSE`-fil innan första publika release).
+Proprietär — © 2026 Birdy / Albin Lindblom, all rights reserved. Se [`LICENSE`](LICENSE). Källkoden är sluten; ingen användnings-, kopierings- eller distributionsrätt ges. Tredjepartskomponenter (Kotlin/Compose/SQLDelight/osmdroid m.fl. under Apache 2.0, BirdNET-Lite under CC BY-NC-SA 4.0, fonter under OFL 1.1, kartdata © OpenStreetMap/MapTiler) lyder under sina egna licenser — full attribution finns i appen under Inställningar → Om.
