@@ -23,6 +23,9 @@ afterEvaluate {
 }
 
 kotlin {
+    iosArm64()
+    iosSimulatorArm64()
+
     sourceSets {
         commonMain.dependencies {
             implementation(project(":shared:domain"))
@@ -36,6 +39,9 @@ kotlin {
         }
         jvmMain.dependencies {
             implementation(libs.sqldelight.sqlite.driver)
+        }
+        iosMain.dependencies {
+            implementation(libs.sqldelight.native.driver)
         }
         jvmTest.dependencies {
             implementation(libs.kotlin.test)

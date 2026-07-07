@@ -3,12 +3,12 @@ package se.birdy.data.observation
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
 import app.cash.sqldelight.coroutines.mapToOneOrNull
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.Instant
 import se.birdy.data.db.ObservationQueries
+import se.birdy.data.ioDispatcher
 import se.birdy.domain.observation.FileCleanupRequest
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationRepository
@@ -22,40 +22,40 @@ class SqlDelightObservationRepository(
         queries
             .selectAll()
             .asFlow()
-            .mapToList(Dispatchers.IO)
+            .mapToList(ioDispatcher)
             .map { rows -> rows.map { it.toDomain() } }
 
     override fun observeAllByStampNumber(): Flow<List<Observation>> =
         queries
             .selectAllByStampNumber()
             .asFlow()
-            .mapToList(Dispatchers.IO)
+            .mapToList(ioDispatcher)
             .map { rows -> rows.map { it.toDomain() } }
 
     override fun observeById(id: String): Flow<Observation?> =
         queries
             .selectById(id)
             .asFlow()
-            .mapToOneOrNull(Dispatchers.IO)
+            .mapToOneOrNull(ioDispatcher)
             .map { it?.toDomain() }
 
     override suspend fun nextStampNumber(): Int =
-        withContext(Dispatchers.IO) {
+        withContext(ioDispatcher) {
             queries.nextStampNumber().executeAsOne().toInt()
         }
 
     override suspend fun countByQid(speciesId: String): Int =
-        withContext(Dispatchers.IO) {
+        withContext(ioDispatcher) {
             queries.countByQid(speciesId).executeAsOne().toInt()
         }
 
     override suspend fun firstByQid(speciesId: String): Instant? =
-        withContext(Dispatchers.IO) {
+        withContext(ioDispatcher) {
             queries.firstByQid(speciesId).executeAsOneOrNull()?.let { Instant.fromEpochMilliseconds(it) }
         }
 
     override suspend fun insert(observation: Observation) {
-        withContext(Dispatchers.IO) {
+        withContext(ioDispatcher) {
             queries.insert(
                 id = observation.id,
                 species_id = observation.speciesId,
@@ -78,13 +78,13 @@ class SqlDelightObservationRepository(
         id: String,
         note: String,
     ) {
-        withContext(Dispatchers.IO) {
+        withContext(ioDispatcher) {
             queries.updateNote(note = note, id = id)
         }
     }
 
     override suspend fun delete(id: String): FileCleanupRequest =
-        withContext(Dispatchers.IO) {
+        withContext(ioDispatcher) {
             queries.transactionWithResult {
                 val row = queries.selectById(id).executeAsOneOrNull()
                 queries.deleteById(id)
