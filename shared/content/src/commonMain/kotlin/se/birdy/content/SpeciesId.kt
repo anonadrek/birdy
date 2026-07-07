@@ -1,5 +1,7 @@
 package se.birdy.content
 
+import kotlin.jvm.JvmInline
+
 @JvmInline
 value class SpeciesId(
     val raw: String,
