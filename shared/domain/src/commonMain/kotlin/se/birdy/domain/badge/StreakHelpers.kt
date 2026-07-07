@@ -114,7 +114,7 @@ fun longestWeeklyStreak(
     instants: List<Instant>,
     zone: TimeZone,
 ): Int {
-    val keys = instants.map { weekKey(it, zone) }.toSortedSet().toList()
+    val keys = instants.map { weekKey(it, zone) }.toSet().sorted()
     return longestConsecutive(keys) { it.next() }
 }
 
@@ -122,7 +122,7 @@ fun longestMonthlyStreak(
     instants: List<Instant>,
     zone: TimeZone,
 ): Int {
-    val keys = instants.map { monthKey(it, zone) }.toSortedSet().toList()
+    val keys = instants.map { monthKey(it, zone) }.toSet().sorted()
     return longestConsecutive(keys) { it.next() }
 }
 
@@ -161,15 +161,15 @@ fun consecutiveSundaysWithObservations(
     instants: List<Instant>,
     zone: TimeZone,
 ): Int {
-    val sundays =
+    val list =
         instants
             .map { it.toLocalDateTime(zone).date }
             .filter { it.dayOfWeek == DayOfWeek.SUNDAY }
-            .toSortedSet()
-    if (sundays.isEmpty()) return 0
+            .distinct()
+            .sorted()
+    if (list.isEmpty()) return 0
     var best = 1
     var current = 1
-    val list = sundays.toList()
     for (i in 1 until list.size) {
         val gap = list[i].toEpochDays() - list[i - 1].toEpochDays()
         if (gap == 7) {
