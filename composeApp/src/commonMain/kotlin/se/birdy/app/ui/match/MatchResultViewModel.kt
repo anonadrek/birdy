@@ -3,7 +3,6 @@ package se.birdy.app.ui.match
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,6 +13,10 @@ import kotlinx.datetime.Instant
 import se.birdy.app.photo.FrameUnavailableException
 import se.birdy.app.ui.badges.UnlockQueue
 import se.birdy.app.usecase.SaveObservationUseCase
+import se.birdy.app.util.ReadFailureKind
+import se.birdy.app.util.classifyReadFailure
+import se.birdy.app.util.ioDispatcher
+import se.birdy.app.util.readFileBytes
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
 import se.birdy.content.SpeciesRepository
@@ -21,8 +24,6 @@ import se.birdy.domain.badge.BadgeCatalog
 import se.birdy.domain.observation.ObservationRepository
 import se.birdy.domain.observation.ObservationSource
 import se.birdy.ml.ScanSource
-import java.io.File
-import java.io.IOException
 
 /**
  * Every capture attaches the current device location, gated by the opt-in location toggle.
@@ -222,7 +223,7 @@ class MatchResultViewModel(
         viewModelScope.launch {
             val outcome =
                 runCatching {
-                    val bytes = withContext(Dispatchers.IO) { File(path).readBytes() }
+                    val bytes = withContext(ioDispatcher) { readFileBytes(path) }
                     saveUseCase.save(
                         speciesId = current.species.id.raw,
                         capturedAt = Instant.fromEpochMilliseconds(current.capturedAtMs),
@@ -242,12 +243,12 @@ class MatchResultViewModel(
                     },
                     onFailure = { t ->
                         val kind =
-                            when (t) {
-                                is FrameUnavailableException ->
+                            when {
+                                t is FrameUnavailableException ->
                                     MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable
-                                is java.io.FileNotFoundException ->
+                                classifyReadFailure(t) == ReadFailureKind.NOT_FOUND ->
                                     MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable
-                                is IOException ->
+                                classifyReadFailure(t) == ReadFailureKind.IO_ERROR ->
                                     MatchResultUiState.SaveStatus.Failed.Kind.StorageFull
                                 else ->
                                     MatchResultUiState.SaveStatus.Failed.Kind.DatabaseFailed
@@ -278,7 +279,7 @@ class MatchResultViewModel(
             if (current.source is ScanSource.Audio) ObservationSource.Audio else ObservationSource.Photo
         viewModelScope.launch {
             runCatching {
-                val bytes = withContext(Dispatchers.IO) { File(path).readBytes() }
+                val bytes = withContext(ioDispatcher) { readFileBytes(path) }
                 saveUseCase.save(
                     speciesId = null,
                     capturedAt = Instant.fromEpochMilliseconds(current.capturedAtMs),

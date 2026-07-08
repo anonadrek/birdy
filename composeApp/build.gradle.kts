@@ -19,6 +19,13 @@ tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.BaseKtLintCheckTask>().config
 kotlin {
     androidTarget()
 
+    listOf(iosArm64(), iosSimulatorArm64()).forEach { target ->
+        target.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -61,6 +68,9 @@ kotlin {
         }
         androidUnitTest.dependencies {
             implementation("junit:junit:4.13.2")
+        }
+        iosMain.dependencies {
+            implementation(libs.sqldelight.native.driver)
         }
     }
 }

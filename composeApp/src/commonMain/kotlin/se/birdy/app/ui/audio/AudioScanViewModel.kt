@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.datetime.Clock
 import kotlinx.serialization.json.Json
 import se.birdy.ml.AudioClassifierMode
 import se.birdy.ml.AudioInput
@@ -22,6 +23,7 @@ import se.birdy.ml.ScanSource
 import se.birdy.ml.ScanSourceSerialization
 import se.birdy.ml.normalize
 import se.birdy.ml.toSerial
+import kotlin.concurrent.Volatile
 import kotlin.coroutines.coroutineContext
 
 /**
@@ -41,9 +43,9 @@ class AudioScanViewModel(
     private val recorder: AudioRecorderApi,
     private val waveformRenderer: WaveformRendererApi,
     private val audioStorageDir: () -> String,
-    private val clock: () -> Long = { System.currentTimeMillis() },
+    private val clock: () -> Long = { Clock.System.now().toEpochMilliseconds() },
     private val normalizer: (ShortArray) -> FloatArray = ::normalize,
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val ioDispatcher: CoroutineDispatcher = se.birdy.app.util.ioDispatcher,
     private val inferenceDispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) : ViewModel() {
     private val _state = MutableStateFlow<AudioScanState>(AudioScanState.Preparing)

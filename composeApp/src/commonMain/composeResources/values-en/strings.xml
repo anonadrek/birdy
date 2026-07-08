@@ -697,4 +697,8 @@
     <string name="map_teaser_caption">See where you spotted your birds.</string>
     <string name="map_teaser_count">%1$s located finds waiting on the map</string>
     <string name="map_teaser_cta">Unlock with Premium</string>
+
+    <!-- iOS coming-soon stub panels (plan i0) -->
+    <string name="ios_coming_soon_title">Coming soon on iOS</string>
+    <string name="ios_coming_soon_body">This part of Birdy is being built for iOS right now. The encyclopedia and journal already work!</string>
 </resources>

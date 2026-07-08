@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.datetime.Clock
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.ImageInput
 
@@ -14,7 +15,7 @@ class PhotoAnalyzeViewModel(
     private val classifier: BirdClassifier,
     private val persist: (ByteArray) -> String,
     private val minShortSide: Int = 224,
-    private val clock: () -> Long = { System.currentTimeMillis() },
+    private val clock: () -> Long = { Clock.System.now().toEpochMilliseconds() },
 ) : ViewModel() {
     private val _state = MutableStateFlow<PhotoAnalyzeUiState>(PhotoAnalyzeUiState.Idle)
     val state: StateFlow<PhotoAnalyzeUiState> = _state.asStateFlow()
