@@ -4,11 +4,14 @@
 
 ## Vad är detta?
 
-AI-driven Android-app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + audio-ID + uppslagsverk över 839 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. v1 = Android-only ("Skanna & lär"); senare faser lägger till karta, push, community, iOS.
+AI-driven app för fågelidentifiering. Realtidsskanning via kamera + foto-upload + audio-ID + uppslagsverk över 839 europeiska arter. Kotlin Multiplatform + Compose Multiplatform. **v1.2 (Android) är live på Google Play sedan 2026-06-17** (inkl. privat fynd-karta + premium-tier). **v2 = iOS från samma kodbas — pågår** (plan i0–i6). Senare faser: moln-synk, community, geografisk expansion.
 
-## Status (2026-06-17)
+## Status (2026-07-11)
 
-- **🚀 LIVE I PRODUKTION på Google Play (2026-06-17):** vC125 / 1.2.0-rc3 godkänd + utrullad till produktion (publik: `play.google.com/store/apps/details?id=se.birdy.android` — "Birdy — Bird Identify & Guide"; bekräftad via WebFetch). Hela v1.2 (karta + premium-redesign + UX-polish + scan-freeze-par-modell) ute. Premium öppet/gratis för alla (`PREMIUM_OPEN_FOR_LAUNCH=true`). **Kom förbi 16 KB-page-size-grinden via en per-version-skip i Play Console** (den självbetjänta förlängningen gick ut 2026-05-31; skippen är tillfällig). **KVAR (ej launch-blockerande nu):** (1) **16 KB-fix** — migrera `org.tensorflow:tensorflow-lite` → `com.google.ai.edge.litert` + lös Flex/FlexRFFT-`.so` (BARA de två TFLite-`.so` är 4 KB, uppmätt; AndroidX redan 16 KB) — krävs före NÄSTA update (vC126) + för att appen ska köra på 16 KB-enheter; se [[project_16kb_page_size_blocker]]. (2) Bevaka launch-data (Android vitals krasch/ANR, installs, recensioner, **MapTiler-kvot**). (3) Billing-verify + **grandfather (tidiga användare behåller premium för alltid)** + AB-transfer (~2–3 v) → flippa monetisering på AB:t. Billing-debug-toggle (`c027a6f6`) + grandfather-hard-gate i runbooken redan inlagda; feature-graphic ommatchad till kort-stil (`a3e5a269`). Repo-commits pushade till main.
+- **iOS-spåret (v2) startat — i0 nästan klart (2026-07-07 → 2026-07-11, Mac):** Design-spec (`docs/superpowers/specs/2026-07-07-birdy-ios-v2-design.md`) + i0-plan (`docs/superpowers/plans/2026-07-07-ios-i0-environment-and-ignition.md`) ligger på `main` (= GitHub HEAD `938d5991`). i0 task 1–8 klara som **8 lokala commits på Mac:en, ännu EJ pushade** (`9ea6b642..17a78cde`): `iosArm64`/`iosSimulatorArm64`-targets på alla shared-moduler + `composeApp`, iosMain-actuals (normalizeSearch, `NativeSqliteDriver`-DatabaseFactory, ML-preprocessor m.fl.), iOS-appgraf + `MainViewController`, Xcode-projekt via xcodegen (`iosApp/`, bundle-id `se.birdy.ios`, min iOS 16.0) — **Birdy bootar i iOS-simulatorn** (riktig species.db, FakeClassifier, in-memory-prefs; scan/audio/karta stubbat "kommer snart"). **Kvar i i0:** task 9 (CI macOS-jobb) + push av commits + Apple Developer-enrollment (Albin); task 10 (denna doc-synk) ✅ 2026-07-11. **Okommitterat i Mac-arbetsytan (avbruten plan-session):** test av CMP-bump 1.7.3→1.8.2 mot konan-cache-crashen vid `linkDebugFrameworkIosSimulatorArm64` (`gradle/libs.versions.toml` + `kotlin.native.cacheKind=none` utkommenterad i `gradle.properties`) + ändrad `species.db` — verifiera och committa eller återställ innan nästa i-plan-task. Nästa: i1 (uppslagsverk + dagbok på fysisk iPhone) → i2 (LiteRT-migration = Android 16 KB-fixen + kamera/foto-ID på iOS).
+- **Post-launch Android-arbete (2026-06-17 → 2026-06-25, pushat till GitHub `main`):** Play in-app-review-prompt efter 3:e sparade fyndet (`3b299db0`), ASO-optimerad store-listing EN+SV + launch-posts + presskit (`33a2921b`), längd-säkrade lokaliserade titlar + korta beskrivningar för 12 språk (`ed75ad3d`), proprietär LICENSE + synkad in-app-attribution (`4c682513`). Versionen på `main` är fortsatt **vC125 / 1.2.0-rc3** (= produktionsbygget).
+
+- **🚀 LIVE I PRODUKTION på Google Play (2026-06-17):** vC125 / 1.2.0-rc3 godkänd + utrullad till produktion (publik: `play.google.com/store/apps/details?id=se.birdy.android` — "Birdy — Bird Identify & Guide"; bekräftad via WebFetch). Hela v1.2 (karta + premium-redesign + UX-polish + scan-freeze-par-modell) ute. Premium öppet/gratis för alla (`PREMIUM_OPEN_FOR_LAUNCH=true`). **Kom förbi 16 KB-page-size-grinden via en per-version-skip i Play Console** (den självbetjänta förlängningen gick ut 2026-05-31; skippen är tillfällig). **KVAR (ej launch-blockerande nu):** (1) **16 KB-fix** — migrera `org.tensorflow:tensorflow-lite` → `com.google.ai.edge.litert` + lös Flex/FlexRFFT-`.so` (BARA de två TFLite-`.so` är 4 KB, uppmätt; AndroidX redan 16 KB) — krävs före NÄSTA update (vC126) + för att appen ska köra på 16 KB-enheter; **beslut 2026-07-07: migrationen görs inne i iOS-spåret som plan i2** (så iOS-ML byggs på nya biblioteket och Android blir release-ready på köpet); se [[project_16kb_page_size_blocker]]. (2) Bevaka launch-data (Android vitals krasch/ANR, installs, recensioner, **MapTiler-kvot**). (3) Billing-verify + **grandfather (tidiga användare behåller premium för alltid)** + AB-transfer (~2–3 v) → flippa monetisering på AB:t. Billing-debug-toggle (`c027a6f6`) + grandfather-hard-gate i runbooken redan inlagda; feature-graphic ommatchad till kort-stil (`a3e5a269`). Repo-commits pushade till main.
 - **v1.2 slut-kandidat komplett på `main` → vC124 / 1.2.0-rc2 (2026-06-10):** main bär nu hela v1.2: karta (vC123) + premium-skärm-redesign + day-0-paywall (PR #13, `275e82f4`) + map-attribution-fix (PR #14) + **UX/polish-audit-batchen + scan-freeze-omdesign (PR #17, merge `6cabaf97`)**. PR #17 var "poleringsjobbet" (Albins ordning: polera FÖRE slut-AAB:n) — ~97 av 127 audit-fynd åtgärdade, **device-verifierad PASS på SM-S918B 2026-06-10** (scan freeze NoBird/Match, Mina arter, säsong, uppslagsverk, märken/troférum, karta, recap, inställningar, premium, onboarding-replay, a11y). **Scan-freeze fixades till par-modell:** senast slutförda klassificering lagras ihop med exakt sin frame; frys persistar den framen + routar det resultatet → chip-text == routat resultat == sparat foto (löser device-buggen "chip sa Blå mes 91%, match sa Falk 68%"); 2s-freshness-guard kvar (stall → NoBird). **9 nya småfynd otriagade** (trofé-plural "1 trophies", SV-familjenamn i EN-locale "HÖKAR/Storkar/Mesar", onboarding-content-desc-markup-läcka, m.fl.) → [[project_final_v1_2_build_checklist]] putsnings-följdpunkter. **KVAR före upload:** bygg vC124-AAB från main + bundletool device-smoke + Play Console-paste (What's new/store-listing från `docs/play-store/console-paste-v1.2.md` — täcker karta+premium; lägg till polish-rad) + data-safety; release-gates kvar = färska v1.2-skärmdumpar (#9), riktig `MAPTILER_API_KEY`, Billing-verify före `PREMIUM_OPEN_FOR_LAUNCH=false`. Debug-bygget avinstallerat efter verify.
 - **Personal finds map + polish → v1.2 / vC123 (2026-06-08):** `feat/map-polish-v2` (osmdroid + MapTiler private on-device finds map: opt-in location capture free, map-view Premium; merged to main as PR #4 then polished) is **merged to `main`** with three items DONE + device-verified on SM-S918B: **(1)** HiDPI `@2x` tiles + 8 download threads (crisp/fast); **(2)** Field Journal map theme — toner-v2 tiles + runtime duotone `ColorMatrix` (paper↔sepia) + wax-seal Birdy-bird pins; **(3)** photo uploads now geotag. **Map item 4 gotcha (worth remembering):** gallery + take-photo finds didn't reach the map; the EXIF design (read the photo's GPS) was built + unit-green but returned **null on device** — the **Android photo picker strips GPS EXIF** without `ACCESS_MEDIA_LOCATION` (dangerous permission). Per product call we ship **current-location for uploads** (gated by the opt-in toggle), no new permission (memory `reference_photo_picker_strips_exif_gps`). **versionCode 122→123, versionName 1.1.0-rc7→1.2.0-rc1** (the map is a v1.2 feature — roadmap + data-safety/Phase-B framing; restarted the rc count for the new minor) — one closed-testing build folding the map + ALL post-vC122 changes (trophy-room polish, weekly-recap-shows-all-finds, chase-the-daily-bird free badge → 34 stamps total = 27 free + 7 premium, weekly trophy notification, splash double-bird fix). Store-listing + What's new updated in repo (EN+SV, v1.0.0→v1.2); data-safety already covers location. Website Vercel Analytics shipped with this PR. **Still manual at AAB upload:** Play Console What's new + store-listing text + data-safety form; a real `MAPTILER_API_KEY` for the release build; fresh v1.2 screenshots/feature-graphic (follow-up #9, still pending). Local `gradle.properties` holds the MapTiler key (never committed).
 - **v1.1 release-train → closed-testing-AAB (2026-06-02):** Hela v1.1-batchen (DP A–E + Phase B + zoom/crop + onboarding v2 + website v2) ligger på `main` vid **versionCode 121 / 1.1.0-rc6**, outgiven. **Pre-AAB-audit klar** (`docs/superpowers/research/2026-06-02-pre-aab-release-audit.md` — 6-agent read-only review + grön lokal test/lint): binären är grön (versionsnummer monotont, R8/minify/shrink, signering, `:asset-pack`, targetSdk 35, desugaring; `species.db` **verifierat regenererad till SCHEMA_REV 3** via fingerprint-match; audio ej premium-gate:at). **AAB:n byggs från `main`** — INTE från `feat/badges-v2-trophy-room`, som bär pågående (inert) Troférum-arbete i en parallell session. Innan upload: `:androidApp:bundleRelease` + bundletool device-smoke + full lokal testsvit (CI kör bara 3/7 moduler). Uppskjutna upload-time-steg (What's new vC121, märkesantal 35→**33** = 26+7, data-safety INTERNET-formulering, tester-instruktioner) ligger i memory `project_aab_vc121_upload_checklist.md`. Release-strategi: hela helheten i closed testing sista ~7 dagarna, polering i produktion.
@@ -48,16 +51,32 @@ Full per-plan historik: se "Avslutade planer (referens)" nedan + auto-memory.
 | 6b3 | Premium content (PDF-export + season-statistics + 10 fält-märken) | ✅ `v0.9.0c-premium-content` + `v1.0.0` |
 | W | Marketing-website (Astro + Vercel + birdy.community + /legal/) | ✅ Live |
 
-**Föreslagen ordning:** ~~Plan 6b3 → tag v1.0~~ ✅ → **Internal Testing** → Closed Testing (14d) → Play Store-launch.
+**Föreslagen ordning:** ~~Plan 6b3 → tag v1.0~~ ✅ → ~~Internal Testing → Closed Testing (14d) → Play Store-launch~~ ✅ (live 2026-06-17).
 
-Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew build` ska gå grönt.
+## Plan-of-plans (v2 iOS)
+
+Mål: feature-identisk Birdy (Android v1.2-parity, inga nya features) på App Store, från samma repo/KMP-kod. StoreKit-paywall aktiv från dag 1 (beslut 2026-07-07). Spec: `docs/superpowers/specs/2026-07-07-birdy-ios-v2-design.md`.
+
+| # | Plan | Scope | Status |
+|---|---|---|---|
+| i0 | Environment + iOS ignition | Mac-toolchain, iOS-targets på alla moduler, xcodegen-Xcode-projekt, simulator-boot | 🔄 task 1–8 klara (bootar i simulatorn); kvar: CI macOS-jobb + Apple Developer-enrollment |
+| i1 | Encyclopedia + journal på fysisk iPhone | SQLDelight native driver, artbilder, lätta actuals, device-install | ⬜ |
+| i2 | LiteRT-migration + foto-scan | Android TFLite→LiteRT (16 KB-fixen!), AVFoundation-kamera, foto-ID + crop | ⬜ **Milestone 1** = live scan på iPhone; Android vC126-ready |
+| i3 | Audio-ID | BirdNET Select-TF-ops på iOS, AVAudioEngine-capture | ⬜ |
+| i4 | Parity sweep | Karta (MapLibre iOS), notiser, PDF-export, rest | ⬜ |
+| i5 | StoreKit 2 | `PremiumBillingClient`-actual: köp + restore + entitlement | ⬜ |
+| i6 | App Store-release | Ikoner, TestFlight, listing (återbruk SV/EN-texter), privacy labels, review | ⬜ |
+
+Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew build` ska gå grönt — **och Android ska förbli shippbar efter varje commit** (`:shared:domain:jvmTest :shared:ml:jvmTest :composeApp:testDebugUnitTest :androidApp:assembleDebug` gröna).
 
 ## Var hittar du saker
 
 | Vad | Var |
 |---|---|
 | Designspec för v1 | `docs/superpowers/specs/2026-04-30-birdy-bird-scanner-v1-design.md` |
-| Implementationsplaner | `docs/superpowers/plans/YYYY-MM-DD-v1-NN-<phase>.md` |
+| Designspec för v2 (iOS) | `docs/superpowers/specs/2026-07-07-birdy-ios-v2-design.md` |
+| Implementationsplaner | `docs/superpowers/plans/YYYY-MM-DD-v1-NN-<phase>.md` (iOS: `...-ios-iN-<phase>.md`) |
+| Mac-bootstrap-guide | `docs/mac-bootstrap.md` |
 | Skärmdumpar per milstolpe | `docs/superpowers/screenshots/` |
 | Milstolpe-review-runbook | `docs/superpowers/runbooks/milstolpe-review.md` |
 | Internal Testing hand-off runbook | `docs/superpowers/runbooks/2026-05-22-v1.0.0-internal-testing.md` |
@@ -109,7 +128,8 @@ Vid avbrott: all progress är committad i git. Nästa session fortsätter från 
 
 ## Tekniska val
 
-- **Android-stack:** KMP + Compose Multiplatform (Android primär, iOS-skelett)
+- **Android-stack:** KMP + Compose Multiplatform (Android primär)
+- **iOS-stack (v2, pågår):** samma KMP-kod med `iosArm64` + `iosSimulatorArm64` på alla moduler; statiskt `ComposeApp`-umbrella-framework via `embedAndSignAppleFrameworkForXcode`; Xcode-projekt genererat med xcodegen (`iosApp/project.yml` är källan); SQLDelight `native-driver`; min iOS 16.0; bundle-id `se.birdy.ios`; Swift-lagret hålls minimalt (~10 små filer)
 - **DB:** SQLDelight 2.x med Flow-baserade queries
 - **ML (foto):** TensorFlow Lite + AIY Birds V1 (uint8-quantized MobileNetV2, ~14ms/inference)
 - **ML (audio):** BirdNET-Lite v2 + `tensorflow-lite-select-tf-ops:2.16.1` (FlexRFFT TF Select op — utan denna failar node 29)
@@ -121,7 +141,7 @@ Vid avbrott: all progress är committad i git. Nästa session fortsätter från 
 - **CI:** GitHub Actions (ktlint 12.1.2, detekt 1.23.7, unit tests, assembleDebug)
 - **Website:** Astro 5 + Tailwind v4 + `@astrojs/sitemap` + `marked` + Playwright smoke tests, hostat på Vercel (auto-deploy från `main`, root dir = `website`)
 
-## Lokal utvecklingsmiljö (Windows + Galaxy S23 Ultra)
+## Lokal utvecklingsmiljö — Windows (Android-maskinen, Galaxy S23 Ultra)
 
 | Vad | Var |
 |---|---|
@@ -136,6 +156,19 @@ Vid avbrott: all progress är committad i git. Nästa session fortsätter från 
 export JAVA_HOME="C:/Java/OpenJDK21U-jdk_x64_windows_hotspot_21.0.11_10/jdk-21.0.11+10"
 export PATH="$JAVA_HOME/bin:$PATH"
 ```
+
+## Lokal utvecklingsmiljö — macOS (iOS-spåret, från 2026-07-07)
+
+| Vad | Var |
+|---|---|
+| Repo | `~/dev/birdy` |
+| JDK 21 (Temurin) | `~/.local/java21/Contents/Home` (JAVA_HOME satt i `~/.zshrc`) |
+| Android SDK | `~/Library/Android/sdk` (platform-tools, android-35, build-tools 35.0.0) |
+| Xcode | 26.6 (App Store-installerad); simulator-runtime via `xcodebuild -downloadPlatform iOS` |
+| xcodegen | `~/.local/bin/xcodegen` — `iosApp/project.yml` är källan, `.xcodeproj` genereras |
+| gh CLI | `~/.local/bin/gh` (inloggad som anonadrek) |
+
+Inga Windows-prefix behövs — `./gradlew` funkar direkt (JAVA_HOME kommer från `~/.zshrc`). **Konan-gotcha:** cache-bygget för CMP 1.7.3-klibs under Kotlin 2.1.20 kraschade vid `linkDebugFrameworkIosSimulatorArm64` → workaround `kotlin.native.cacheKind=none` i `gradle.properties` (påverkar bara länk-hastighet); bump till CMP 1.8.2 testas som riktig fix (okommitterat 2026-07-11).
 
 ## Vanliga kommandon
 
@@ -154,6 +187,17 @@ export PATH="$JAVA_HOME/bin:$PATH"
 # Android: signed release-AAB
 ./gradlew :androidApp:bundleRelease
 
+# iOS (Mac): snabbcheck att Kotlin-sidan kompilerar + länkar
+./gradlew :composeApp:linkDebugFrameworkIosSimulatorArm64
+
+# iOS: unit-tests för shared-moduler på simulator-target
+./gradlew :shared:content:iosSimulatorArm64Test :shared:domain:iosSimulatorArm64Test :shared:data:iosSimulatorArm64Test :shared:ml:iosSimulatorArm64Test
+
+# iOS: regenerera Xcode-projektet (bara efter ändring av iosApp/project.yml)
+cd iosApp && xcodegen generate
+# Kör appen: öppna iosApp/Birdy.xcodeproj i Xcode, scheme "Birdy", iOS 16+-simulator.
+# Build-fasen "Compile Kotlin Framework" kör embedAndSignAppleFrameworkForXcode via Gradle.
+
 # Website (kör från website/)
 cd website && npm run build
 cd website && npm run test:smoke   # Playwright (7 tester)
@@ -163,6 +207,7 @@ cd website && npm run test:i18n    # SV/EN parity check
 ## Repo & deploy
 
 - **GitHub:** https://github.com/anonadrek/birdy. Branch `main` är default. Plan-arbete sker på `main` med små commits per task; tagga milstolpar (`v0.1.0-foundation` osv).
+- **Två dev-maskiner, ETT repo:** Windows-maskinen (Android-primär, all v1-historik) + Mac:en `~/dev/birdy` (iOS-spåret sedan 2026-07-07). GitHub `main` är sanningskällan mellan maskinerna — pusha innan man byter maskin. (Per 2026-07-11 ligger Mac-klonen 8 opushade i0-commits före `origin/main`.)
 - **Website:** Auto-deploy till `birdy.community` via Vercel vid push till `main`. **Root Directory MÅSTE vara `website`** i Vercel project settings — annars failar `npm install` med ENOENT på `/vercel/path0/package.json`.
 - **Play Console:** Personligt konto (Albin), approved 2026-05-20. App entry + in-app products + license testers behövs innan Billing v8 IPC kan runtime-verifieras.
 
@@ -200,8 +245,8 @@ Tagits in från v1-design-spec så vi inte tappar bort dem. Inget byggs här inn
 
 ML-modellerna är redan globalt tränade (AIY V1 ≈ 965 klasser, BirdNET-Lite ≈ 6000) — vi har bara filtrerat till EU. Expansionsjobbet sitter i **content-pipeline** (en YAML + plate-foto per art), **regional migrations-/säsongsdata**, **on-demand asset packs** (APK växer snabbt — bortom v1.0:s 136 MB-base) och **fler språk**.
 
-- **v1.0 — Norden/Europa (839 arter)** ← current
-- **v2 — "Asien + hela Europa" + iOS-launch:** Utöka content till delar av Asien (lämpligen Östasien/Indien först) **och** släpp samtidigt på App Store. KMP-skelettet finns redan — iOS-arbetet blir Compose Multiplatform-iOS-target + SwiftUI-shim för plattforms-API:er (kamera, audio, billing → StoreKit istället för Play Billing, share-sheet, file-export). Webb: ny `/regions/`-sida med coverage-status (✅ supportat / 🟡 snart / ⬜ planerat) — byggs först när v2-arbetet faktiskt är igång, annars står den tom.
+- **v1.0–v1.2 — Norden/Europa (839 arter)** ← live på Google Play
+- **v2 — "Asien + hela Europa" + iOS-launch:** Utöka content till delar av Asien (lämpligen Östasien/Indien först) **och** släpp samtidigt på App Store. **iOS-delen har startat 2026-07-07** — eget plan-spår i0–i6, se "Plan-of-plans (v2 iOS)" ovan (Compose Multiplatform-iOS-target + minimal Swift-shim för plattforms-API:er; kamera, audio, billing → StoreKit istället för Play Billing, share-sheet, file-export). Content-expansionen (Asien) är ännu inte påbörjad. Webb: ny `/regions/`-sida med coverage-status (✅ supportat / 🟡 snart / ⬜ planerat) — byggs först när content-delen faktiskt är igång, annars står den tom.
 - **v3 — "Hela världen":** Alla återstående kontinenter; full content-skalning + språkstöd.
 
 ### Parallella feature-spår (inte version-bundna)
