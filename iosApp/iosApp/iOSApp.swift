@@ -1,10 +1,20 @@
 import SwiftUI
+import ComposeApp
 
 @main
-struct iOSApp: App {
+struct BirdyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ComposeView()
+                .ignoresSafeArea(.all)
         }
     }
+}
+
+struct ComposeView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        MainViewControllerKt.MainViewController()
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
