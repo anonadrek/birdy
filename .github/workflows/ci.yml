@@ -58,3 +58,25 @@ jobs:
           path: androidApp/build/outputs/apk/debug/*.apk
           retention-days: 14
           if-no-files-found: error
+
+  ios:
+    name: iOS framework + tests
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Set up Gradle cache
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: iOS unit tests (shared modules)
+        run: ./gradlew :shared:content:iosSimulatorArm64Test :shared:domain:iosSimulatorArm64Test :shared:data:iosSimulatorArm64Test :shared:ml:iosSimulatorArm64Test --stacktrace
+
+      - name: Link iOS framework
+        run: ./gradlew :composeApp:linkDebugFrameworkIosSimulatorArm64 --stacktrace
