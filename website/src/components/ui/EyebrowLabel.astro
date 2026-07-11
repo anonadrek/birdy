@@ -2,11 +2,15 @@
 interface Props {
   text: string;
   color?: string;
+  /** Roman plate number ("II", "V") — sections as numbered plates, the same
+      vocabulary as the app's PlateFrame captions. */
+  plate?: string;
 }
-const { text, color = 'var(--color-copper)' } = Astro.props;
+const { text, color = 'var(--color-copper)', plate } = Astro.props;
 ---
 
 <div class="eyebrow" style={`--c:${color}`}>
+  {plate && <span class="plate" aria-hidden="true">Pl. {plate}</span>}
   {text}
 </div>
 
@@ -18,5 +22,15 @@ const { text, color = 'var(--color-copper)' } = Astro.props;
     letter-spacing: 0.12em;
     color: var(--c);
     font-weight: 600;
+  }
+  .plate {
+    font-family: var(--font-serif);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    font-size: 0.875rem;
+    margin-right: 0.75em;
+    padding-right: 0.75em;
+    border-right: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
   }
 </style>

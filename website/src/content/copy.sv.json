@@ -18,7 +18,13 @@
     "eyebrow": "EN BIRDY-APP · 2026",
     "headline": "En *fältdagbok* som ser ut som en fältdagbok",
     "sub": "Fota eller spela in en fågel, så namnger Birdy den. Allt du hittar sparas i din egen dagbok.",
-    "scrollCue": "Så fungerar det ↓"
+    "scrollCue": "Så fungerar det ↓",
+    "plateCaption": "Pl. I — i fält"
+  },
+  "appStoreBadge": {
+    "top": "Snart på",
+    "bottom": "App Store",
+    "note": "snart!"
   },
   "loop": {
     "eyebrow": "SÅ FUNGERAR DET",
@@ -41,7 +47,8 @@
     "headline": "Namnge den på *gehör.*",
     "sub": "Håll inne knappen och låt fågeln sjunga. Birdy lyssnar och namnger den.",
     "body": "Håll inne inspelningsknappen. Samma AI på din telefon lyssnar tills den känner igen sången — eller tills du släpper. Inget internet, inget laddas upp.",
-    "hint": "tryck för att lyssna"
+    "hint": "tryck för att lyssna",
+    "caption": "fältinspelning, på enheten"
   },
   "inside": {
     "eyebrow": "INUTI APPEN",
@@ -86,7 +93,7 @@
       { "q": "Var lagras mina foton?", "a": "På din enhet. Birdy laddar aldrig upp foton till en server. Det finns ingen server." },
       { "q": "Hur exakt är AI:n?", "a": "Tillräckligt bra för att lära sig av, ärlig när den är osäker. Varje träff visar en säkerhetsnivå, och du bekräftar alltid innan något sparas." },
       { "q": "Vad ingår?", "a": "839 europeiska fåglar — varje art i EBBA2-atlasen plus nära släktingar, med beskrivningar, foton och utbredningsinformation." },
-      { "q": "Finns en iOS-version?", "a": "Inte än. Android först. iOS kommer efter lansering om det finns efterfrågan." },
+      { "q": "Finns en iOS-version?", "a": "Den är på väg — Birdy för iPhone är under utveckling. Android finns att hämta idag." },
       { "q": "Hur funkar ljudet?", "a": "Håll mikrofonknappen i 3 sekunder. BirdNET-Lite körs på enheten, samma offline-garanti." },
       { "q": "Andra frågor?", "a": "Mejla albin@abrahamssons.se — jag läser varje meddelande." }
     ]
@@ -103,12 +110,16 @@
       { "label": "E-post", "href": "mailto:albin@abrahamssons.se" },
       { "label": "EN", "href": "/" }
     ],
-    "credit": "Skapad av Albin · Sverige · 2026 · v1.2.0"
+    "credit": "Skapad av Albin · Sverige · 2026 · v1.2.0",
+    "socialSoon": "kommer snart",
+    "socialNote": "Birdy landar i sociala medier — länkar kommer snart."
   },
   "alt": {
     "wingLogo": "Birdys vinge-logo",
     "wordmark": "Birdy-ordmärke",
     "playStoreBadge": "Hämta den på Google Play",
+    "appStoreBadge": "Snart på App Store",
+    "heroPlate": "Birdy i en telefon — identifiera-skärmen fastnålad i dagboken",
     "scanScreen": "Birdys scan-skärm med en live kamera som identifierar en fågel",
     "matchScreen": "Birdys träff-skärm med en bekräftad art och stämpel",
     "observationDetail": "Birdys observationsdetaljsida i fältdagbok-stil",

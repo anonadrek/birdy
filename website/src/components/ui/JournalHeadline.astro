@@ -13,15 +13,18 @@ const {
   text,
   level = 'h2',
   size = 'clamp(2rem, 5vw, 3.5rem)',
-  align = 'center',
+  align,
   class: cls = '',
 } = Astro.props;
 
 const tokens = parseHeadline(text);
 const Tag = level;
+// Alignment rides on --jh-ta so a parent can retheme it responsively;
+// an explicit `align` prop pins it inline as before.
+const style = `--size:${size}` + (align ? `;--jh-ta:${align}` : '');
 ---
 
-<Tag class={`journal-headline ${cls}`} style={`--size:${size};text-align:${align}`}>
+<Tag class={`journal-headline ${cls}`} style={style}>
   {tokens.map((t) =>
     t.kind === 'plain' ? (
       <span class="plain">{t.text}</span>
@@ -32,13 +35,16 @@ const Tag = level;
 </Tag>
 
 <style>
+  /* Colors resolve via --jh-* so dark "moss" panels can retheme headlines
+     by setting the vars on any ancestor. */
   .journal-headline {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
     font-size: var(--size);
     line-height: 1.05;
-    color: var(--color-text-primary);
+    color: var(--jh-ink, var(--color-text-primary));
+    text-align: var(--jh-ta, center);
     margin: 0;
   }
   .plain { font-family: var(--font-serif); font-style: italic; }
@@ -47,7 +53,7 @@ const Tag = level;
     font-style: italic;
     font-weight: 700;
     font-size: 1.15em;
-    color: var(--color-copper);
+    color: var(--jh-accent, var(--color-copper));
     display: inline-block;
     transform: rotate(-3deg);
     margin: 0 0.15em;

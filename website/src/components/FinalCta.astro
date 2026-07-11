@@ -2,6 +2,7 @@
 import CornerBrackets from './ui/CornerBrackets.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
+import AppStoreBadge from './ui/AppStoreBadge.astro';
 import WingLogo from './ui/WingLogo.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 
@@ -25,6 +26,7 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
     <p class="sub">{t.finalCta.sub}</p>
     <div class="cta">
       <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="large" />
+      <AppStoreBadge locale={locale} size="large" />
     </div>
   </div>
 </section>
@@ -49,5 +51,12 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
     color: var(--color-copper);
     margin: 0.25rem 0;
   }
-  .cta { margin-top: 1rem; }
+  .cta {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem 1.25rem;
+  }
 </style>

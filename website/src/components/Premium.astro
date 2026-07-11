@@ -12,7 +12,8 @@ const t = getCopy(locale);
 
 <section id="premium" class="premium">
   <div class="card" data-reveal>
-    <EyebrowLabel text={t.premium.eyebrow} />
+    <span class="seal" aria-hidden="true">❦</span>
+    <EyebrowLabel text={t.premium.eyebrow} plate="VII" />
     <JournalHeadline text={t.premium.headline} level="h2" size="clamp(2rem, 4.5vw, 3rem)" />
     <p class="sub">{t.premium.sub}</p>
     <p class="body">{t.premium.body}</p>
@@ -26,16 +27,44 @@ const t = getCopy(locale);
     max-width: 60rem;
     margin: 0 auto;
   }
+  /* A certificate insert: double-ruled frame + wax-seal ornament, the kind of
+     page a journal reserves for something optional but considered. */
   .card {
-    background: var(--color-paper-edge);
-    border: 1px solid rgba(63, 79, 48, 0.1);
-    border-radius: 12px;
-    padding: 3rem 2.5rem;
+    position: relative;
+    background: var(--color-paper-top);
+    border: 1px solid rgba(168, 85, 45, 0.35);
+    outline: 1px solid rgba(168, 85, 45, 0.18);
+    outline-offset: 5px;
+    border-radius: 4px;
+    padding: 3.5rem 2.5rem 3rem;
+    margin: 6px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      0 18px 40px -28px rgba(42, 53, 37, 0.5);
+  }
+  .seal {
+    position: absolute;
+    top: -26px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-6deg);
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 30%, #bd643a, var(--color-copper) 68%);
+    color: #f6efdf;
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    box-shadow:
+      0 3px 8px rgba(42, 53, 37, 0.28),
+      inset 0 1px 2px rgba(255, 255, 255, 0.28),
+      inset 0 -2px 4px rgba(42, 53, 37, 0.22);
   }
   .sub {
     font-family: var(--font-script);

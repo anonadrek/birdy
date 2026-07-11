@@ -1,5 +1,6 @@
 ---
 import CornerBrackets from './ui/CornerBrackets.astro';
+import DeckleEdge from './ui/DeckleEdge.astro';
 import EyebrowLabel from './ui/EyebrowLabel.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import OrnamentRule from './ui/OrnamentRule.astro';
@@ -14,11 +15,14 @@ const { locale } = Astro.props;
 const t = getCopy(locale);
 ---
 
+<!-- The journal's "night page": the privacy promise gets the app's own deep
+     moss hero gradient, torn out of the cream paper above and below. -->
 <section id="privacy" class="privacy">
-  <CornerBrackets />
+  <DeckleEdge side="top" />
+  <CornerBrackets color="var(--color-copper-warm)" />
   <div class="content" data-reveal>
     <WingLogo alt={t.alt.wingLogo} size="56px" />
-    <EyebrowLabel text={t.privacy.eyebrow} />
+    <EyebrowLabel text={t.privacy.eyebrow} color="var(--color-copper-warm)" plate="VIII" />
     <JournalHeadline
       text={t.privacy.headline}
       level="h2"
@@ -28,10 +32,11 @@ const t = getCopy(locale);
     <OrnamentRule />
     <p class="body">{t.privacy.body}</p>
     <div class="brand-line">
-      <Wordmark size="44px" alt={t.alt.wordmark} />
+      <Wordmark size="44px" alt={t.alt.wordmark} color="var(--color-copper-warm)" />
       <span class="micro">{t.privacy.wordmarkLabel}</span>
     </div>
   </div>
+  <DeckleEdge side="bottom" />
 </section>
 
 <style>
@@ -39,6 +44,11 @@ const t = getCopy(locale);
     position: relative;
     padding: calc(var(--section-padding-y) * 1.5) 1.5rem;
     text-align: center;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(240, 234, 216, 0.05) 1px, transparent 0) 0 0 / 24px 24px,
+      linear-gradient(178deg, var(--color-moss-mid) 0%, var(--color-moss-deep) 46%, var(--color-moss-shadow) 100%);
+    --jh-ink: var(--color-text-on-hero);
+    --jh-accent: var(--color-copper-warm);
   }
   .content {
     max-width: 48rem;
@@ -51,14 +61,18 @@ const t = getCopy(locale);
   .sub {
     font-family: var(--font-script);
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    color: var(--color-copper);
+    color: var(--color-copper-warm);
     margin: 0;
+  }
+  .content :global(.ornament) {
+    color: var(--color-text-on-hero);
+    opacity: 0.9;
   }
   .body {
     font-family: var(--font-sans);
     font-size: 1.125rem;
     line-height: 1.6;
-    color: var(--color-text-primary);
+    color: var(--color-text-on-hero);
     max-width: 36rem;
     margin: 0;
   }
@@ -74,6 +88,11 @@ const t = getCopy(locale);
     font-size: 0.6875rem;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: var(--color-copper);
+    color: var(--color-copper-warm);
   }
+  /* Keep the corner brackets clear of the torn edges */
+  .privacy :global(.bracket-tl),
+  .privacy :global(.bracket-tr) { top: 48px; }
+  .privacy :global(.bracket-bl),
+  .privacy :global(.bracket-br) { bottom: 48px; }
 </style>

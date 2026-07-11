@@ -27,7 +27,7 @@ const { width = '180px' } = Astro.props;
        horizontal overflow; stays the full --w (180px) at >=600px. */
     width: min(var(--w), 30vw);
     min-width: 0;
-    background: var(--color-marginalia-ink);
+    background: currentColor;
     opacity: 0.4;
   }
   .glyph {

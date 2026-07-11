@@ -1,9 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import CornerBrackets from './ui/CornerBrackets.astro';
 import EyebrowLabel from './ui/EyebrowLabel.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
+import AppStoreBadge from './ui/AppStoreBadge.astro';
 import { type Locale, getCopy } from '../lib/i18n';
+import cardEnIdentify from '../assets/screens/card_en_identify.png';
+import cardSvIdentify from '../assets/screens/card_sv_identify.png';
 
 interface Props {
   locale: Locale;
@@ -11,23 +15,47 @@ interface Props {
 const { locale } = Astro.props;
 const t = getCopy(locale);
 const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
+const plateImg = locale === 'sv' ? cardSvIdentify : cardEnIdentify;
 ---
 
 <section class="hero">
   <CornerBrackets />
-  <div class="content">
-    <EyebrowLabel text={t.hero.eyebrow} />
-    <JournalHeadline
-      text={t.hero.headline}
-      level="h1"
-      size="clamp(2.5rem, 7vw, 5.5rem)"
-    />
-    <p class="sub">{t.hero.sub}</p>
-    <div class="cta">
-      <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="large" loading="eager" />
+  <div class="layout">
+    <div class="content">
+      <EyebrowLabel text={t.hero.eyebrow} />
+      <JournalHeadline
+        text={t.hero.headline}
+        level="h1"
+        size="clamp(2.5rem, 5.5vw, 4.75rem)"
+      />
+      <p class="sub">{t.hero.sub}</p>
+      <div class="cta">
+        <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="large" loading="eager" />
+        <AppStoreBadge locale={locale} size="large" />
+      </div>
+      <a href="#loop" class="scroll-cue">{t.hero.scrollCue}</a>
     </div>
-    <a href="#loop" class="scroll-cue">{t.hero.scrollCue}</a>
+
+    <!-- The first plate of the journal: the actual app, taped down like a
+         specimen — washi tape above, wax seal on the corner, Caveat caption. -->
+    <figure class="plate-pin" aria-label={t.alt.heroPlate}>
+      <div class="mount">
+        <span class="tape" aria-hidden="true"></span>
+        <Image
+          src={plateImg}
+          alt={t.alt.heroPlate}
+          widths={[320, 480, 720]}
+          sizes="(max-width: 900px) 66vw, 340px"
+          quality={86}
+          loading="eager"
+          decoding="async"
+        />
+        <span class="seal" aria-hidden="true"></span>
+      </div>
+      <figcaption class="plate-caption">{t.hero.plateCaption}</figcaption>
+    </figure>
   </div>
+
   <div class="brand-foot" data-bird-foot>
     <img
       src="/favicon-192.png"
@@ -49,34 +77,132 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--section-padding-y) 1.5rem 4rem;
-    text-align: center;
+    padding: var(--section-padding-y) 1.5rem 7rem;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    max-width: var(--container-max);
+    width: 100%;
   }
   .content {
-    max-width: 48rem;
+    --jh-ta: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1.25rem;
+    max-width: 36rem;
   }
   .sub {
     font-family: var(--font-script);
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     color: var(--color-copper);
-    margin: 0.5rem 0 0.5rem;
+    margin: 0.25rem 0;
     line-height: 1.3;
-    max-width: 32rem;
+    max-width: 30rem;
   }
-  .cta { margin-top: 1rem; }
+  .cta {
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 1.25rem;
+  }
   .scroll-cue {
     font-family: var(--font-script);
     font-size: 1.125rem;
     color: var(--color-copper);
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
     opacity: 0.85;
     transition: opacity 0.2s;
   }
   .scroll-cue:hover { opacity: 1; }
+
+  /* ── Pinned plate ── */
+  .plate-pin {
+    margin: 0;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    transform: rotate(2.5deg);
+    animation: plate-settle 0.9s 0.3s var(--ease-paper) both;
+  }
+  @keyframes plate-settle {
+    from {
+      opacity: 0;
+      transform: rotate(4.5deg) translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(2.5deg) translateY(0);
+    }
+  }
+  .mount {
+    position: relative;
+    padding: 10px;
+    background: var(--color-paper-top);
+    border: 1px solid rgba(63, 79, 48, 0.14);
+    border-radius: 6px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 2px 6px rgba(42, 53, 37, 0.12),
+      0 32px 54px -26px rgba(42, 53, 37, 0.6);
+  }
+  .mount :global(img) {
+    display: block;
+    width: clamp(220px, 24vw, 320px);
+    height: auto;
+    border-radius: 3px;
+  }
+  .tape {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 118px;
+    height: 32px;
+    transform: translateX(-50%) rotate(-2.5deg);
+    background: rgba(240, 234, 216, 0.65);
+    border-left: 1px dashed rgba(63, 79, 48, 0.18);
+    border-right: 1px dashed rgba(63, 79, 48, 0.18);
+    box-shadow: 0 1px 3px rgba(42, 53, 37, 0.14);
+    z-index: 2;
+  }
+  /* Copper wax seal with the Birdy bird, overlapping the mount's corner —
+     the same seal that stamps journal pages and map pins in the app. */
+  .seal {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 30%, #bd643a, var(--color-copper) 68%);
+    box-shadow:
+      0 3px 9px rgba(42, 53, 37, 0.3),
+      inset 0 1px 2px rgba(255, 255, 255, 0.28),
+      inset 0 -2px 4px rgba(42, 53, 37, 0.22);
+    transform: rotate(-8deg);
+    z-index: 2;
+  }
+  .seal::after {
+    content: '';
+    position: absolute;
+    inset: 13px;
+    background: #f6efdf;
+    -webkit-mask: url('/coverage/seal-bird.png') center / contain no-repeat;
+    mask: url('/coverage/seal-bird.png') center / contain no-repeat;
+  }
+  .plate-caption {
+    font-family: var(--font-script);
+    font-size: 1.05rem;
+    color: var(--color-marginalia-ink);
+    transform: rotate(-1deg);
+  }
+
   .brand-foot {
     position: absolute;
     bottom: 2rem;
@@ -115,7 +241,36 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
       transform: translateY(0) scale(1);
     }
   }
+
+  @media (max-width: 900px) {
+    .hero { padding-bottom: 8rem; }
+    .layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 3rem;
+    }
+    .content {
+      --jh-ta: center;
+      align-items: center;
+      text-align: center;
+      justify-self: center;
+    }
+    .cta { justify-content: center; }
+    .plate-pin { transform: rotate(2deg); }
+    @keyframes plate-settle {
+      from {
+        opacity: 0;
+        transform: rotate(4deg) translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: rotate(2deg) translateY(0);
+      }
+    }
+    .mount :global(img) { width: min(58vw, 260px); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
+    .plate-pin { animation: none; }
     .brand-foot :global(.bird-mark) {
       opacity: 1;
       transform: none;

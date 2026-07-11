@@ -18,7 +18,13 @@
     "eyebrow": "A BIRDY APP · 2026",
     "headline": "A *field journal* that looks like a field journal",
     "sub": "Photograph or record a bird and Birdy names it. Everything you find is saved in your own journal.",
-    "scrollCue": "See how it works ↓"
+    "scrollCue": "See how it works ↓",
+    "plateCaption": "Pl. I — in the field"
+  },
+  "appStoreBadge": {
+    "top": "Coming soon to the",
+    "bottom": "App Store",
+    "note": "soon!"
   },
   "loop": {
     "eyebrow": "HOW IT WORKS",
@@ -41,7 +47,8 @@
     "headline": "Name it by *ear.*",
     "sub": "Hold the button and let the bird sing. Birdy listens and names it.",
     "body": "Hold the record button. The same AI on your phone listens until it recognises the song — or until you let go. No internet, nothing uploaded.",
-    "hint": "tap to listen"
+    "hint": "tap to listen",
+    "caption": "field recording, on-device"
   },
   "inside": {
     "eyebrow": "INSIDE THE APP",
@@ -86,7 +93,7 @@
       { "q": "Where are my photos stored?", "a": "On your device. Birdy never uploads photos to a server. There is no server." },
       { "q": "How accurate is the AI?", "a": "Good enough to learn from, honest when it's unsure. Every match shows a confidence level, and you always confirm before it's saved." },
       { "q": "What's covered?", "a": "839 European birds — every species in the EBBA2 atlas plus close relatives, with descriptions, photos and range information." },
-      { "q": "Is there an iOS version?", "a": "Not yet. Android first. iOS comes after launch if there is demand." },
+      { "q": "Is there an iOS version?", "a": "It's on its way — Birdy for iPhone is in development. Android is available today." },
       { "q": "What about audio?", "a": "Hold the mic button for 3 seconds. BirdNET-Lite runs on-device, same offline guarantee." },
       { "q": "Other questions?", "a": "Email albin@abrahamssons.se — I read every one." }
     ]
@@ -103,12 +110,16 @@
       { "label": "Email", "href": "mailto:albin@abrahamssons.se" },
       { "label": "SV", "href": "/sv/" }
     ],
-    "credit": "Made by Albin · Sweden · 2026 · v1.2.0"
+    "credit": "Made by Albin · Sweden · 2026 · v1.2.0",
+    "socialSoon": "coming soon",
+    "socialNote": "Birdy is landing on social media — links coming soon."
   },
   "alt": {
     "wingLogo": "Birdy wing logo",
     "wordmark": "Birdy wordmark",
     "playStoreBadge": "Get it on Google Play",
+    "appStoreBadge": "Coming soon to the App Store",
+    "heroPlate": "Birdy on a phone — the identify screen pinned into the journal",
     "scanScreen": "Birdy scan screen showing a live camera identifying a bird",
     "matchScreen": "Birdy match screen showing a confirmed species with stamp",
     "observationDetail": "Birdy observation detail page in field-journal style",

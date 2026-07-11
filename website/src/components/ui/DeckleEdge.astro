@@ -1,0 +1,41 @@
+---
+// Torn-paper edge between the cream page and a dark moss panel — the journal
+// metaphor made literal. Sits inside the dark section; the paper "tears" into
+// it. `side` controls which edge of the panel it dresses.
+interface Props {
+  side?: 'top' | 'bottom';
+  color?: string;
+}
+const { side = 'top', color = 'var(--color-paper-bg)' } = Astro.props;
+---
+
+<div class={`deckle deckle-${side}`} aria-hidden="true">
+  <svg viewBox="0 0 1440 26" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      fill={color}
+      d="M0 0 H1440 V8 L1404 14 L1370 6 L1342 16 L1310 9 L1272 18 L1236 8 L1206 15 L1170 5 L1132 17 L1098 10 L1060 20 L1024 9 L988 16 L952 6 L918 14 L884 8 L846 19 L810 10 L774 16 L738 7 L700 18 L664 9 L630 15 L596 6 L558 17 L524 10 L488 19 L452 8 L418 15 L382 6 L346 16 L312 9 L276 18 L240 8 L206 14 L172 5 L136 16 L100 9 L64 17 L30 7 L0 13 Z"
+    />
+  </svg>
+</div>
+
+<style>
+  .deckle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    line-height: 0;
+    pointer-events: none;
+  }
+  .deckle svg {
+    display: block;
+    width: 100%;
+    height: clamp(14px, 2vw, 26px);
+  }
+  .deckle-top {
+    top: -1px;
+  }
+  .deckle-bottom {
+    bottom: -1px;
+    transform: scaleY(-1);
+  }
+</style>

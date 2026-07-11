@@ -5,8 +5,11 @@ interface Props {
   alt: string;
   class?: string;
 }
-const { variant = 'paper', size = '48px', alt, class: cls = '' } = Astro.props;
-const src = variant === 'paper' ? '/favicon.svg' : '/favicon.svg';
+// Both wing-logo SVG assets turned out to be the full wordmark, so the bird
+// mark comes from the transparent app-icon raster instead (192px source —
+// crisp at every size this component is used at).
+const { size = '48px', alt, class: cls = '' } = Astro.props;
+const src = '/favicon-192.png';
 ---
 
 <img
