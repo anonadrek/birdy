@@ -90,8 +90,17 @@ Varje plan ska lämna projektet i ett byggbart, testbart tillstånd: `./gradlew 
 
 ### När du börjar en ny session
 1. Säg "Vi fortsätter med birdy-bird-scanner" eller liknande.
-2. Be om statusöversikt: "Var står vi?" → kolla git log + senaste commit.
-3. Bestäm nästa steg utifrån status.
+2. **`git pull` först** — den andra maskinen kan ha pushat sedan sist (två-maskiners-setup, se Repo & deploy).
+3. Be om statusöversikt: "Var står vi?" → kolla git log + senaste commit.
+4. Bestäm nästa steg utifrån status.
+
+### SYNK-REGEL (obligatorisk — två maskiner, ett repo)
+
+**Vi synkar ALLTID CLAUDE.md.** Albin jobbar växelvis på Windows-maskinen (Android) och Mac:en (iOS); repot är enda kanalen mellan dem. Därför:
+
+1. **Vid slutet av varje arbetssession** (eller efter varje avslutad milstolpe/plan-task): uppdatera CLAUDE.md:s Status-sektion med vad som hänt → committa → **pusha**. En session är inte klar förrän CLAUDE.md speglar läget och är pushad.
+2. **Placeringsregel för kunskap:** behöver *båda* maskinerna veta det → repot (CLAUDE.md eller `docs/`). Bara *den här* maskinen → auto-memory. Auto-minnen synkas INTE mellan maskinerna — `[[minnes-länkar]]` i den här filen är bara läsbara på maskinen som skrev dem, så lyft in innehållet i repot om det är beslutskritiskt.
+3. **Innan maskinbyte:** allt committat + pushat. Okommitterade experiment (t.ex. pågående version-bump-test) noteras i Status-sektionen så den andra maskinen vet att de finns.
 
 ### Behövs superpowers?
 - **Brainstorming, ny plan, plan-execution med review** → `superpowers:brainstorming` / `:writing-plans` / `:subagent-driven-development`.
