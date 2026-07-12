@@ -6,7 +6,11 @@ targets:
   Birdy:
     type: application
     platform: iOS
-    sources: [iosApp]
+    sources:
+      - path: iosApp
+      - path: ../shared/content/images
+        type: folder
+        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: se.birdy.ios

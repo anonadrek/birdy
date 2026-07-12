@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A965F7A4B9E4AFD56B72DD4 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 1A298D7F0570B43393C195F3 /* images */; };
 		7088D6C396B6633A4CF29FF2 /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B205F74830A0616574856E11 /* iOSApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A298D7F0570B43393C195F3 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../shared/content/images; sourceTree = SOURCE_ROOT; };
 		7148A5C29BA84E88ED5AFE42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B205F74830A0616574856E11 /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		B555F913A675A1B7A9676C11 /* Birdy.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Birdy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +22,7 @@
 		7988FB2114D975F6E614B058 = {
 			isa = PBXGroup;
 			children = (
+				1A298D7F0570B43393C195F3 /* images */,
 				B32279C318DE1D5E0385ADF3 /* iosApp */,
 				AAA9FFD4CE7F4319447B1D8A /* Products */,
 			);
@@ -51,6 +54,7 @@
 			buildPhases = (
 				66143ED3C56C8F94C2C99BCD /* Compile Kotlin Framework */,
 				0D010304787CB54652C058BB /* Sources */,
+				39E387E6BB9100DE3BA61C94 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -95,6 +99,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		39E387E6BB9100DE3BA61C94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A965F7A4B9E4AFD56B72DD4 /* images in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		66143ED3C56C8F94C2C99BCD /* Compile Kotlin Framework */ = {
