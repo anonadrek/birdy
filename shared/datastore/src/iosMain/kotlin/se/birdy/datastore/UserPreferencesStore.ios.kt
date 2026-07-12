@@ -1,10 +1,11 @@
 package se.birdy.datastore
 
+/**
+ * iOS actual. `platformContext` is unused (iOS needs no Context) — pass null.
+ * Returns an NSUserDefaults-backed [UserPreferences] (persistent across relaunch).
+ */
 actual class UserPreferencesStore actual constructor(
     platformContext: Any?,
 ) {
-    actual fun preferences(): UserPreferences =
-        throw NotImplementedError(
-            "iOS UserPreferencesStore not implemented in v1 — see Plan 7a deviation #2 + spec §13.",
-        )
+    actual fun preferences(): UserPreferences = NsUserDefaultsUserPreferences()
 }
