@@ -1,7 +1,5 @@
 package se.birdy.app.ui.photoanalyze
 
-import android.graphics.Bitmap
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -25,7 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
@@ -51,19 +49,22 @@ private const val MIN_CROP_SIDE_PX = 224
 /**
  * Beskärnings- och rotations-yta för en uppladdad bild. Crop-rektangeln hålls i
  * källbildens pixel-koordinater; gester konverteras via en ContentScale.Fit-mappning.
+ *
+ * OBS: system-back → [onCancel] hanteras av respektive plattforms-host (Android:
+ * androidx BackHandler runt anropet; iOS: hostens egen back). CMP 1.8.2:s multiplattforms-
+ * BackHandler (ui-backhandler) ligger bara på runtime-classpathen, inte compile → kan inte
+ * importeras här.
  */
 @Composable
 fun CropAdjustScreen(
-    bitmap: Bitmap,
+    image: ImageBitmap,
     onRotate: () -> Unit,
     onConfirm: (CropRect) -> Unit,
     onCancel: () -> Unit,
 ) {
-    BackHandler(onBack = onCancel)
-
-    // Rect nollställs när bitmappen byts (efter rotation), tack vare remember(bitmap)-key.
-    var rect by remember(bitmap) {
-        mutableStateOf(CropGeometry.fullRect(bitmap.width, bitmap.height))
+    // Rect nollställs när bilden byts (efter rotation), tack vare remember(image)-key.
+    var rect by remember(image) {
+        mutableStateOf(CropGeometry.fullRect(image.width, image.height))
     }
     var boxSize by remember { mutableStateOf(IntSize.Zero) }
     val touchPx = with(LocalDensity.current) { 32.dp.toPx() }
@@ -73,7 +74,6 @@ fun CropAdjustScreen(
             modifier = Modifier.fillMaxWidth().weight(1f),
             contentAlignment = Alignment.Center,
         ) {
-            val image = remember(bitmap) { bitmap.asImageBitmap() }
             val cropHint = stringResource(Res.string.a11y_crop_hint)
             Canvas(
                 modifier =
@@ -81,8 +81,8 @@ fun CropAdjustScreen(
                         .fillMaxSize()
                         .semantics { contentDescription = cropHint }
                         .onSizeChanged { boxSize = it }
-                        .pointerInput(bitmap, boxSize) {
-                            val fit = fitMapping(boxSize, bitmap.width, bitmap.height)
+                        .pointerInput(image, boxSize) {
+                            val fit = fitMapping(boxSize, image.width, image.height)
                             var mode: DragMode = DragMode.None
                             detectDragGestures(
                                 onDragStart = { pos ->
@@ -95,14 +95,14 @@ fun CropAdjustScreen(
                                     rect =
                                         when (val m = mode) {
                                             is DragMode.Corner ->
-                                                applyCorner(rect, m.handle, dxSrc, dySrc, bitmap)
+                                                applyCorner(rect, m.handle, dxSrc, dySrc, image)
                                             DragMode.Move ->
                                                 CropGeometry.move(
                                                     rect,
                                                     dxSrc,
                                                     dySrc,
-                                                    bitmap.width,
-                                                    bitmap.height,
+                                                    image.width,
+                                                    image.height,
                                                 )
                                             DragMode.None -> rect
                                         }
@@ -110,7 +110,7 @@ fun CropAdjustScreen(
                             )
                         },
             ) {
-                val fit = fitMapping(IntSize(size.width.toInt(), size.height.toInt()), bitmap.width, bitmap.height)
+                val fit = fitMapping(IntSize(size.width.toInt(), size.height.toInt()), image.width, image.height)
                 // 1. Bilden
                 drawImage(
                     image = image,
@@ -233,7 +233,7 @@ private fun applyCorner(
     handle: CropHandle,
     dxSrc: Int,
     dySrc: Int,
-    bitmap: Bitmap,
+    image: ImageBitmap,
 ): CropRect {
     val (cx, cy) =
         when (handle) {
@@ -247,8 +247,8 @@ private fun applyCorner(
         handle = handle,
         x = cx + dxSrc,
         y = cy + dySrc,
-        width = bitmap.width,
-        height = bitmap.height,
+        width = image.width,
+        height = image.height,
         minSide = MIN_CROP_SIDE_PX,
     )
 }

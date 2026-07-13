@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,6 +18,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -103,8 +105,20 @@ actual fun PhotoAnalyzeHost(
 
     val bmp = cropBitmap
     if (bmp != null) {
+        // ImageBitmap-derivering memoiseras per käll-bitmap (matchar remember(bitmap) som
+        // låg inuti CropAdjustScreen innan den lyftes till commonMain). Efter rotate byts
+        // käll-bitmappen → ny ImageBitmap → CropAdjustScreens remember(image) nollställer rect.
+        val cropImage = remember(bmp) { bmp.asImageBitmap() }
+        // System-back = avbryt crop (samma logik som onCancel). BackHandlern låg i
+        // CropAdjustScreen innan den lyftes till commonMain; CMP 1.8.2:s multiplattforms-
+        // BackHandler är inte compile-synlig så den androidx-specifika bor i host:en.
+        val cancelCrop = {
+            cropBitmap = null
+            viewModel.reset()
+        }
+        BackHandler(onBack = cancelCrop)
         CropAdjustScreen(
-            bitmap = bmp,
+            image = cropImage,
             onRotate = {
                 // Recycla INTE current synkront: CropAdjustScreen håller en ImageBitmap som
                 // aliasar samma native-buffer, och recomposition är async → en frame skulle
@@ -130,12 +144,9 @@ actual fun PhotoAnalyzeHost(
                     viewModel.analyze(input)
                 }
             },
-            onCancel = {
-                // Sätt null först (lämnar CropAdjustScreen); recycla inte synkront — samma
-                // alias-skäl som onRotate, bitmappen GC:as.
-                cropBitmap = null
-                viewModel.reset()
-            },
+            // Sätt null först (lämnar CropAdjustScreen); recycla inte synkront — samma
+            // alias-skäl som onRotate, bitmappen GC:as.
+            onCancel = cancelCrop,
         )
     } else {
         PhotoAnalyzeScreen(
