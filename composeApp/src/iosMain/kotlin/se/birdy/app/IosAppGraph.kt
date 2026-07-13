@@ -19,19 +19,27 @@ import se.birdy.datastore.UserPreferencesStore
 import se.birdy.domain.premium.PremiumRepository
 import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
+import se.birdy.ml.BirdClassifierFactory
 import se.birdy.ml.ClassifierBootstrap
-import se.birdy.ml.ClassifierMode
 import se.birdy.ml.FakeBirdClassifier
+import se.birdy.ml.ImagePreprocessor
+import se.birdy.ml.IosTfliteRunner
+import se.birdy.ml.ModelArtifactProvider
+import se.birdy.ml.TfLiteBirdClassifier
+import se.birdy.ml.loadAiyLabelMapper
+import se.birdy.ml.loadModelMetadata
 
 /**
  * iOS composition root — the iOS counterpart of MainActivity.buildAppGraph().
  *
  * Remaining stubs (each lifted by its owning plan):
- * - FakeBirdClassifier in DEMO mode: scanning is stubbed (i2).
+ * - Live-camera scan (IosNoopCameraSource): still stubbed — photo classification is
+ *   now REAL (i2b), but the capture path lands in i2c.
  * - premiumOverride Active(LIFETIME): launch-parity with Android's
  *   PREMIUM_OPEN_FOR_LAUNCH; real StoreKit gating lands in i5.
  *
  * i1 resolved: UserPreferences + BadgeVersionStore now persist (NSUserDefaults).
+ * i2b resolved: buildClassifier() mirrors Android's real TFLite classifier wiring.
  */
 fun buildIosAppGraph(): AppGraph {
     val birdyData = BirdyData(DatabaseFactory().createDriver())
@@ -40,7 +48,41 @@ fun buildIosAppGraph(): AppGraph {
     val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
     val classifierBootstrap =
         ClassifierBootstrap(
-            buildClassifier = { Triple(FakeBirdClassifier(), ClassifierMode.DEMO, null) },
+            buildClassifier = {
+                val artifactProvider = ModelArtifactProvider()
+                var capturedModelVersion: String? = null
+                val factory =
+                    BirdClassifierFactory(
+                        createReal = {
+                            val info = loadModelMetadata()
+                            capturedModelVersion = info.modelVersion
+                            val mapper = loadAiyLabelMapper()
+                            val modelBytes = artifactProvider.loadModelBytes(info)
+                            val runner = IosTfliteRunner(modelBytes, info)
+                            val preprocessor = ImagePreprocessor()
+                            TfLiteBirdClassifier(
+                                info = info,
+                                runner = runner,
+                                preprocess = { input, modelInfo ->
+                                    preprocessor.preprocess(
+                                        input = input,
+                                        outHeight = modelInfo.inputHeightPx,
+                                        outWidth = modelInfo.inputWidthPx,
+                                        normalizationMean = modelInfo.normalizationMean.toFloatArray(),
+                                        normalizationStd = modelInfo.normalizationStd.toFloatArray(),
+                                    )
+                                },
+                                mapper = mapper,
+                            )
+                        },
+                        // MUST be cheap + non-throwing — BirdClassifierFactory does not guard the DEMO-path fallback.
+                        createFallback = { FakeBirdClassifier() },
+                        onCrashlytics = { /* no Crashlytics on iOS yet — swallow; factory falls back to FakeBirdClassifier + DEMO */ },
+                    )
+                val (classifier, mode) = factory.create()
+                // capturedModelVersion is null when createReal threw and we fell back to DEMO.
+                Triple(classifier, mode, capturedModelVersion)
+            },
         )
     return AppGraph(
         repository = SpeciesRepositoryProvider.get(),
@@ -54,7 +96,7 @@ fun buildIosAppGraph(): AppGraph {
         userPreferences = UserPreferencesStore(null).preferences(),
         premiumRepository = IosStubPremiumRepository(),
         premiumOverride = PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now()),
-        versionName = "1.2.0-ios-i1",
+        versionName = "1.2.0-ios-i2b",
     )
 }
 
