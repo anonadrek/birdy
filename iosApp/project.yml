@@ -11,6 +11,9 @@ targets:
       - path: ../shared/content/images
         type: folder
         buildPhase: resources
+    dependencies:
+      - framework: Frameworks/TensorFlowLiteC.xcframework
+        embed: false   # static — link only
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: se.birdy.ios

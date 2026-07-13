@@ -1,0 +1,4 @@
+language = C
+package = tflitec
+headers = TensorFlowLiteC/c_api.h
+headerFilter = TensorFlowLiteC/**

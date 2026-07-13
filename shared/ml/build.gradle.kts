@@ -13,8 +13,21 @@ tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.BaseKtLintCheckTask>().config
 }
 
 kotlin {
-    iosArm64()
-    iosSimulatorArm64()
+    val fwRoot = "$projectDir/../../iosApp/Frameworks/TensorFlowLiteC.xcframework"
+    iosArm64 {
+        compilations.getByName("main").cinterops.create("TensorFlowLiteC") {
+            defFile("src/nativeInterop/cinterop/TensorFlowLiteC.def")
+            compilerOpts("-F$fwRoot/ios-arm64")
+        }
+        binaries.all { linkerOpts("-F$fwRoot/ios-arm64", "-framework", "TensorFlowLiteC") }
+    }
+    iosSimulatorArm64 {
+        compilations.getByName("main").cinterops.create("TensorFlowLiteC") {
+            defFile("src/nativeInterop/cinterop/TensorFlowLiteC.def")
+            compilerOpts("-F$fwRoot/ios-arm64_x86_64-simulator")
+        }
+        binaries.all { linkerOpts("-F$fwRoot/ios-arm64_x86_64-simulator", "-framework", "TensorFlowLiteC") }
+    }
 
     sourceSets {
         commonMain.dependencies {
@@ -25,6 +38,10 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
         }
         commonTest.dependencies {
+            implementation(libs.kotlin.test)
+            implementation(libs.kotlinx.coroutines.test)
+        }
+        iosTest.dependencies {
             implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
         }
