@@ -31,8 +31,12 @@ class PhotoAnalyzeViewModel(
         viewModelScope.launch {
             val classification =
                 runCatching { classifier.classify(frame) }
-                    .onFailure { if (it is CancellationException) throw it }
-                    .getOrElse {
+                    .onFailure {
+                        if (it is CancellationException) throw it
+                        // The UI only shows a generic ClassifierFailure; without this we are
+                        // blind to the real exception in the field (first-run bug, i2a).
+                        println("PhotoAnalyzeViewModel: classify failed:\n${it.stackTraceToString()}")
+                    }.getOrElse {
                         _state.value =
                             PhotoAnalyzeUiState.Error(
                                 PhotoAnalyzeUiState.Error.Kind.ClassifierFailure,
@@ -41,8 +45,10 @@ class PhotoAnalyzeViewModel(
                     }
             val path =
                 runCatching { persist(frame.bytes) }
-                    .onFailure { if (it is CancellationException) throw it }
-                    .getOrElse {
+                    .onFailure {
+                        if (it is CancellationException) throw it
+                        println("PhotoAnalyzeViewModel: persist failed:\n${it.stackTraceToString()}")
+                    }.getOrElse {
                         _state.value =
                             PhotoAnalyzeUiState.Error(
                                 PhotoAnalyzeUiState.Error.Kind.IoFailure,

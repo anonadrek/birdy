@@ -31,11 +31,19 @@ import kotlin.math.exp
  */
 class AndroidTfliteAudioRunner private constructor(
     private val interpreter: Interpreter,
+    // Retained on purpose: the Interpreter points into this mapped buffer's native memory
+    // and does not copy it. Dropping the reference lets GC unmap the model mid-lifetime ->
+    // dangling pointer (same defect class as the photo first-run bug, fixed 2026-07-16, i2a).
+    private val modelBuffer: MappedByteBuffer,
     private val mapper: BirdNetLabelMapper,
     override val info: AudioModelInfo,
     /** Number of float samples the model expects per call — read from inputShape at load time. */
     private val expectedSamples: Int,
 ) : BirdAudioClassifier {
+    init {
+        require(modelBuffer.capacity() > 0) { "Empty model buffer — model file failed to map" }
+    }
+
     private val mutex = Mutex()
     private var closed = false
 
@@ -131,7 +139,7 @@ class AndroidTfliteAudioRunner private constructor(
                         outputShape = outputShape,
                         coveragePct = mapper.coveragePct,
                     )
-                return AndroidTfliteAudioRunner(interpreter, mapper, info, expectedSamples)
+                return AndroidTfliteAudioRunner(interpreter, model, mapper, info, expectedSamples)
             } catch (t: Throwable) {
                 runCatching { interpreter.close() }
                 throw t

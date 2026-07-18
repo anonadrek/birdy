@@ -39,16 +39,22 @@ class AndroidTfliteRunner(
             .allocateDirect(info.outputClasses)
             .apply { order(ByteOrder.nativeOrder()) }
 
-    private val interpreter: Interpreter =
-        run {
-            val buffer =
-                ByteBuffer.allocateDirect(modelBytes.size).apply {
-                    order(ByteOrder.nativeOrder())
-                    put(modelBytes)
-                    rewind()
-                }
-            Interpreter(buffer, options)
+    // Retained on purpose (do NOT inline into the interpreter initializer): the Interpreter
+    // points into this direct buffer's native memory and does not copy it. Dropping the
+    // reference lets GC free the model mid-lifetime -> dangling pointer -> "classifier
+    // failed" on first run after clean install (fixed 2026-07-16, i2a).
+    private val modelBuffer: ByteBuffer =
+        ByteBuffer.allocateDirect(modelBytes.size).apply {
+            order(ByteOrder.nativeOrder())
+            put(modelBytes)
+            rewind()
         }
+
+    init {
+        require(modelBuffer.capacity() > 0) { "Empty model buffer — model file failed to map" }
+    }
+
+    private val interpreter: Interpreter = Interpreter(modelBuffer, options)
 
     private var closed = false
 
