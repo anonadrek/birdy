@@ -1,3 +1,6 @@
+import java.net.URI
+import java.security.MessageDigest
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.multiplatform")
@@ -37,6 +40,22 @@ kotlin {
     }
 }
 
+// ---- 16 KB Flex override (BirdNET select-tf-ops) — i2a 2026-07-16 -----------------
+// No official 16 KB select-tf-ops exists: TFLite 2.16.1 (4 KB .so) was the final
+// org.tensorflow release and LiteRT publishes no select-tf-ops artifact. The Maven AAR's
+// libtensorflowlite_flex_jni.so is replaced at build time with a 16 KB-aligned build from
+// github.com/arxdeus/tflite_flex_16kb_android (Apache-2.0 TF build, not Google-signed),
+// pinned by release tag + SHA-256 (computed + ELF-verified by us 2026-07-16). Provenance,
+// decision + fallbacks: docs/superpowers/specs/2026-07-16-i2a-android-litert-16kb-design.md
+val flexReleaseTag = "tf-a95156b81d38"
+val flexSha256ByAbi =
+    mapOf(
+        "arm64-v8a" to "bb63006c3cc8b924c1c83749be39ece51a5dbb2ec1e57a4545f6df1e94e38692",
+        "armeabi-v7a" to "de7c9c41d1207a4d24e7148438e48a56eda22c91d35f4fd71e60dd97e0189109",
+        "x86_64" to "b066a3a9671d06c6d7d54507c5f6f00f167a08b537cafdb3e62fb23c39235446",
+    )
+val flexJniLibsDir = layout.buildDirectory.dir("flex16k/jniLibs")
+
 android {
     namespace = "se.birdy.android"
     compileSdk =
@@ -71,6 +90,12 @@ android {
         // stats + 10 field marks too). Flip to "false" + bump versionCode when Billing v8
         // monetization is enabled in a future release.
         buildConfigField("Boolean", "PREMIUM_OPEN_FOR_LAUNCH", "true")
+        // x86 (32-bit) excluded: no 16 KB flex build exists for it and we never ship a
+        // split with a missing or 4 KB flex lib (i2a spec §2). Real devices are arm64/v7a;
+        // x86_64 covers emulators.
+        ndk {
+            abiFilters += setOf("arm64-v8a", "armeabi-v7a", "x86_64")
+        }
     }
 
     buildFeatures {
@@ -109,6 +134,14 @@ android {
         }
     }
 
+    packaging {
+        jniLibs {
+            // Prefer our 16 KB copy (project jniLibs, from downloadFlex16kJniLibs) over
+            // the select-tf-ops AAR's 4 KB copy. Verified by tools/check_16kb_alignment.py.
+            pickFirsts += "**/libtensorflowlite_flex_jni.so"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
@@ -125,6 +158,7 @@ android {
     sourceSets["main"].apply {
         manifest.srcFile("src/main/AndroidManifest.xml")
         res.srcDirs("src/main/res")
+        jniLibs.srcDir(flexJniLibsDir)
     }
 
     // Debug-only: include asset-pack images directly so device-verify on debug-APK
@@ -147,3 +181,57 @@ tasks
     .configureEach {
         dependsOn(":shared:content:buildSpeciesDb")
     }
+
+val downloadFlex16kJniLibs by tasks.registering {
+    description = "Downloads the 16 KB libtensorflowlite_flex_jni.so per ABI (SHA-256-pinned)."
+    // Store all values as named inputs so the doLast action reads from inputs.properties
+    // only, with no closure capture of script-scope vals (which are not CC-serializable).
+    inputs.property("releaseTag", flexReleaseTag)
+    flexSha256ByAbi.forEach { (abi, sha) -> inputs.property("sha256.$abi", sha) }
+    outputs.dir(flexJniLibsDir)
+    doLast(
+        Action {
+            // Inline SHA-256 helper (no script-scope refs — configuration cache compatibility).
+            fun fileDigest(f: java.io.File): String {
+                val md = MessageDigest.getInstance("SHA-256")
+                f.inputStream().use { s ->
+                    val buf = ByteArray(65536)
+                    var n = s.read(buf)
+                    while (n >= 0) {
+                        md.update(buf, 0, n)
+                        n = s.read(buf)
+                    }
+                }
+                return md.digest().joinToString("") { b -> "%02x".format(b) }
+            }
+            val tag = inputs.properties["releaseTag"] as String
+            val abis =
+                inputs.properties.keys
+                    .filter { it.startsWith("sha256.") }
+                    .map { it.removePrefix("sha256.") }
+            val outputDir = outputs.files.singleFile
+            abis.forEach { abi ->
+                val expectedSha = inputs.properties["sha256.$abi"] as String
+                val target = outputDir.resolve("$abi/libtensorflowlite_flex_jni.so")
+                if (target.exists() && fileDigest(target) == expectedSha) return@forEach
+                target.parentFile.mkdirs()
+                val url =
+                    "https://github.com/arxdeus/tflite_flex_16kb_android/releases/download/" +
+                        "$tag/libtensorflowlite_flex_jni.so-$abi"
+                logger.lifecycle("Downloading 16 KB flex lib for $abi (~100 MB)...")
+                URI(url).toURL().openStream().use { ins ->
+                    target.outputStream().use { out -> ins.copyTo(out) }
+                }
+                val actualSha = fileDigest(target)
+                if (actualSha != expectedSha) {
+                    target.delete()
+                    error("SHA-256 mismatch for $abi: expected $expectedSha, got $actualSha")
+                }
+            }
+        },
+    )
+}
+
+tasks.matching { it.name.endsWith("JniLibFolders") }.configureEach {
+    dependsOn(downloadFlex16kJniLibs)
+}
