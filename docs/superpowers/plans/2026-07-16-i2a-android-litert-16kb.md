@@ -1,5 +1,7 @@
 # i2a — Android LiteRT Migration (16 KB) + Classifier First-Run Fix Implementation Plan
 
+> **✅ STATUS: KOD KLAR + AAB-VERIFIERAD (2026-07-18).** Alla 6 tasks körda via subagent-driven-development (två-stegs-review grön per task), commits `c10f557d..b321ff43` på `main`. vC126 / 1.2.1 release-AAB byggd + 16 KB-verifierad (ELF p_align=0x4000 på alla 15 .so, `zipalign -c -P 16` exit 0). Tre review-drivna förbättringar utöver plan-texten: symmetrisk `init`-guard även i `AndroidTfliteRunner`; flex-download-tasken gjord configuration-cache-kompatibel med härledd ABI-lista (en sanningskälla); död `sha256Of`-helper borttagen. KVAR = endast Albins device-verify (foto-ID första försöket + audio node-29 + live-scan) → Play Console-upload av vC126-AAB. Se CLAUDE.md Status.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Make Android vC126-ready: every `.so` in the release AAB 16 KB-aligned, photo/audio ID regression-free, classifier first-run bug fixed + instrumented.
