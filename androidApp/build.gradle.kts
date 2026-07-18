@@ -22,9 +22,10 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.androidx.core.ktx)
             implementation("androidx.activity:activity-compose:1.9.3")
-            // TFLite needed so Kotlin compiler can resolve Interpreter.Options when calling
-            // AndroidTfliteRunner(modelBytes, info) with default options param in buildClassifier.
-            implementation("org.tensorflow:tensorflow-lite:2.16.1")
+            // LiteRT (f.d. TFLite) needed so Kotlin compiler can resolve Interpreter.Options
+            // when calling AndroidTfliteRunner(modelBytes, info) with default options param
+            // in buildClassifier. LiteRT = 16 KB-aligned core, same org.tensorflow.lite.* API.
+            implementation("com.google.ai.edge.litert:litert:1.4.1")
             implementation(libs.androidx.core.splashscreen)
             implementation(libs.androidx.appcompat)
             // WorkManager needed for debug-only dev-trigger lambdas in MainActivity.

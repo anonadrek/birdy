@@ -50,12 +50,20 @@ kotlin {
             implementation(libs.androidx.camera.camera2)
             implementation(libs.androidx.camera.lifecycle)
             implementation(libs.androidx.camera.view)
-            implementation("org.tensorflow:tensorflow-lite:2.16.1")
-            implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+            // LiteRT (f.d. TFLite) — 16 KB-alignat core, samma org.tensorflow.lite.*-klasser
+            // som tensorflow-lite 2.16.1 (ren koordinat-swap, i2a 2026-07-16).
+            implementation("com.google.ai.edge.litert:litert:1.4.1")
             // BirdNET-Lite uses FlexRFFT (TF Select op) for on-graph spectrogram
             // computation. Without this dep the audio model fails to prepare
             // node 29 with "Select TensorFlow op(s) not supported".
-            implementation("org.tensorflow:tensorflow-lite-select-tf-ops:2.16.1")
+            // Only the Java FlexDelegate + auto-registration are used from this artifact —
+            // its 4 KB native .so is replaced by a 16 KB build in androidApp
+            // (see downloadFlex16kJniLibs). The excludes stop it from dragging the legacy
+            // (4 KB) core + duplicate org.tensorflow.lite API classes onto the classpath.
+            implementation("org.tensorflow:tensorflow-lite-select-tf-ops:2.16.1") {
+                exclude(group = "org.tensorflow", module = "tensorflow-lite")
+                exclude(group = "org.tensorflow", module = "tensorflow-lite-api")
+            }
         }
         androidUnitTest.dependencies {
             implementation("org.robolectric:robolectric:4.13")
