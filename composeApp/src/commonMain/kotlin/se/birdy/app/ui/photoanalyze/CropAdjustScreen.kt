@@ -39,6 +39,7 @@ import birdy_bird_scanner.composeapp.generated.resources.crop_cancel
 import birdy_bird_scanner.composeapp.generated.resources.crop_confirm
 import birdy_bird_scanner.composeapp.generated.resources.crop_rotate
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.PlatformBackHandler
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.OffwhiteWarm
 import se.birdy.app.ui.theme.paperBackground
@@ -50,10 +51,9 @@ private const val MIN_CROP_SIDE_PX = 224
  * Beskärnings- och rotations-yta för en uppladdad bild. Crop-rektangeln hålls i
  * källbildens pixel-koordinater; gester konverteras via en ContentScale.Fit-mappning.
  *
- * OBS: system-back → [onCancel] hanteras av respektive plattforms-host (Android:
- * androidx BackHandler runt anropet; iOS: hostens egen back). CMP 1.8.2:s multiplattforms-
- * BackHandler (ui-backhandler) ligger bara på runtime-classpathen, inte compile → kan inte
- * importeras här.
+ * Self-contained: system-back → [onCancel] hanteras här via [PlatformBackHandler] (Android
+ * actual = androidx BackHandler, iOS actual = no-op) — respektive plattforms-host behöver
+ * inte bolta på en egen BackHandler runt anropet.
  */
 @Composable
 fun CropAdjustScreen(
@@ -62,6 +62,8 @@ fun CropAdjustScreen(
     onConfirm: (CropRect) -> Unit,
     onCancel: () -> Unit,
 ) {
+    PlatformBackHandler(enabled = true) { onCancel() }
+
     // Rect nollställs när bilden byts (efter rotation), tack vare remember(image)-key.
     var rect by remember(image) {
         mutableStateOf(CropGeometry.fullRect(image.width, image.height))

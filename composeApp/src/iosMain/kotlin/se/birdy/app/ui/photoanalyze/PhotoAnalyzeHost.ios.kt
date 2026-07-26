@@ -66,21 +66,25 @@ actual fun PhotoAnalyzeHost(
 
     val working = cropWorkingImage
     if (working != null) {
-        // ImageBitmap deriveras per arbetsbild (matchar Androids remember(bitmap)). Efter rotate
-        // byts arbetsbilden → ny ImageBitmap → CropAdjustScreens remember(image) nollställer rect.
-        val cropImage = remember(working) { working.toImageBitmap() }
+        // working.imageBitmap avkodas redan i IosImageDecode.kt:s withContext(Dispatchers.Default)-
+        // block (bakeUpright) — komposition läser bara det färdiga värdet, ingen Skia-avkodning här.
+        val cropImage = working.imageBitmap
         val cancelCrop = {
             cropWorkingImage = null
             viewModel.reset()
         }
-        // iOS saknar system-back medan crop visas (till skillnad från Androids BackHandler) →
-        // avbryt sker via CropAdjustScreens Avbryt-knapp (onCancel).
+        // CropAdjustScreen hanterar system-back själv (PlatformBackHandler); iOS-actualen är
+        // no-op, så avbryt sker här via crop-skärmens Avbryt-knapp (onCancel).
         CropAdjustScreen(
             image = cropImage,
             onRotate = {
                 val current = cropWorkingImage
                 if (current != null) {
-                    cropWorkingImage = rotate90(current)
+                    // Av samma skäl som decodeForCrop ovan: rotate90 kör en full rita+encode+
+                    // avkoda-cykel (bakeUpright) — håll den av huvudtråden, precis som bygg-steget.
+                    scope.launch {
+                        cropWorkingImage = withContext(Dispatchers.Default) { rotate90(current) }
+                    }
                 }
             },
             onConfirm = { rect ->

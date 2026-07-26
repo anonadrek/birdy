@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
-import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -109,14 +108,10 @@ actual fun PhotoAnalyzeHost(
         // låg inuti CropAdjustScreen innan den lyftes till commonMain). Efter rotate byts
         // käll-bitmappen → ny ImageBitmap → CropAdjustScreens remember(image) nollställer rect.
         val cropImage = remember(bmp) { bmp.asImageBitmap() }
-        // System-back = avbryt crop (samma logik som onCancel). BackHandlern låg i
-        // CropAdjustScreen innan den lyftes till commonMain; CMP 1.8.2:s multiplattforms-
-        // BackHandler är inte compile-synlig så den androidx-specifika bor i host:en.
         val cancelCrop = {
             cropBitmap = null
             viewModel.reset()
         }
-        BackHandler(onBack = cancelCrop)
         CropAdjustScreen(
             image = cropImage,
             onRotate = {

@@ -13,12 +13,14 @@ import kotlinx.cinterop.ptr
 import kotlinx.cinterop.useContents
 import kotlinx.cinterop.value
 import org.jetbrains.skia.Image
+import platform.CoreGraphics.CGContextSetInterpolationQuality
 import platform.CoreGraphics.CGImageCreateWithImageInRect
 import platform.CoreGraphics.CGImageGetHeight
 import platform.CoreGraphics.CGImageGetWidth
 import platform.CoreGraphics.CGImageRelease
 import platform.CoreGraphics.CGRectMake
 import platform.CoreGraphics.CGSizeMake
+import platform.CoreGraphics.kCGInterpolationMedium
 import platform.Foundation.NSCachesDirectory
 import platform.Foundation.NSError
 import platform.Foundation.NSFileManager
@@ -35,6 +37,7 @@ import platform.PhotosUI.PHPickerViewControllerDelegateProtocol
 import platform.UIKit.UIApplication
 import platform.UIKit.UIGraphicsBeginImageContextWithOptions
 import platform.UIKit.UIGraphicsEndImageContext
+import platform.UIKit.UIGraphicsGetCurrentContext
 import platform.UIKit.UIGraphicsGetImageFromCurrentImageContext
 import platform.UIKit.UIImage
 import platform.UIKit.UIImageJPEGRepresentation
@@ -59,18 +62,19 @@ private const val IMAGE_UTI = "public.image"
 
 /**
  * Orienterings-bakad, storleks-cappad arbetsbild. Representeras som upprätt JPEG-bytes plus
- * pixelmått: crop-skärmens [ImageBitmap] deriveras från exakt dessa bytes (via [toImageBitmap])
- * och [finalizeCrop] avkodar samma bytes → display och crop delar ETT koordinatsystem
- * (arbetsbildens pixlar), precis som Android-hostens `Bitmap`.
+ * pixelmått: [imageBitmap] är avkodad från exakt dessa bytes ([finalizeCrop] avkodar samma
+ * bytes för croppningen) → display och crop delar ETT koordinatsystem (arbetsbildens pixlar),
+ * precis som Android-hostens `Bitmap`. [imageBitmap] avkodas redan vid konstruktion (i
+ * [bakeUpright], som alltid körs inuti host:ens `withContext(Dispatchers.Default)`-block för
+ * både bygg och rotera) — komposition läser bara ett redan avkodat värde, aldrig en synkron
+ * Skia-avkodning.
  */
 internal class WorkingImage(
     val bytes: ByteArray,
     val width: Int,
     val height: Int,
+    val imageBitmap: ImageBitmap,
 )
-
-/** Crop-skärmens [ImageBitmap], deriverad från exakt de bytes [finalizeCrop] avkodar. */
-internal fun WorkingImage.toImageBitmap(): ImageBitmap = Image.makeFromEncoded(bytes).toComposeImageBitmap()
 
 /**
  * Avkodar galleri-bytes → EXIF-orienteringen bakas in → långsidan cappas till
@@ -176,7 +180,9 @@ private fun cachesPhotoInputDir(): String {
 /**
  * Ritar [image] (orienterings-respekterat) i en upprätt kontext, cappar långsidan till
  * [maxLongSide] och encodar JPEG. Resultatet saknar EXIF-orientering (default "up") så både
- * Skia (host:ens ImageBitmap) och [finalizeCrop] avkodar identiska pixelmått.
+ * Skia (host:ens ImageBitmap) och [finalizeCrop] avkodar identiska pixelmått. Avkodar även
+ * [WorkingImage.imageBitmap] här — dvs på samma tråd som anroparen kör detta på (host:ens
+ * withContext(Dispatchers.Default)-block), inte i composition.
  */
 private fun UIImage.bakeUpright(maxLongSide: Int): WorkingImage? {
     val (width, height) = size.useContents { width to height }
@@ -186,8 +192,17 @@ private fun UIImage.bakeUpright(maxLongSide: Int): WorkingImage? {
     val targetW = maxOf(1, (width * scale).roundToInt())
     val targetH = maxOf(1, (height * scale).roundToInt())
     val jpeg = drawAndEncodeJpeg(this, targetW, targetH) ?: return null
-    return WorkingImage(jpeg, targetW, targetH)
+    val imageBitmap = jpeg.decodeToImageBitmapOrNull() ?: return null
+    return WorkingImage(jpeg, targetW, targetH, imageBitmap)
 }
+
+/**
+ * Avkodar JPEG-bytes → Compose [ImageBitmap]. `Image.makeFromEncoded` kastar på odekodningsbara
+ * bytes; fångas här så ett dåligt bygge ger en null [WorkingImage] (→ callern tolkar det som
+ * ett avkodningsfel, t.ex. `viewModel.decodeFailed()`) istället för ett kast inifrån komposition.
+ */
+private fun ByteArray.decodeToImageBitmapOrNull(): ImageBitmap? =
+    runCatching { Image.makeFromEncoded(this).toComposeImageBitmap() }.getOrNull()
 
 /** Ritar [image] i en opak `targetW × targetH` bitmap-kontext och encodar JPEG [JPEG_QUALITY]. */
 private fun drawAndEncodeJpeg(
@@ -201,6 +216,10 @@ private fun drawAndEncodeJpeg(
         scale = 1.0,
     )
     try {
+        // Medium ≈ bilinear, matchar ImagePreprocessor.ios.kt:s val och Android
+        // createScaledBitmap(filter=true) — utan detta faller UIGraphics context tillbaka på
+        // kCGInterpolationDefault och driver cross-platform-resultaten isär.
+        CGContextSetInterpolationQuality(UIGraphicsGetCurrentContext(), kCGInterpolationMedium)
         image.drawInRect(CGRectMake(0.0, 0.0, targetW.toDouble(), targetH.toDouble()))
         val baked = UIGraphicsGetImageFromCurrentImageContext() ?: return null
         return UIImageJPEGRepresentation(baked, JPEG_QUALITY)?.toByteArray()
