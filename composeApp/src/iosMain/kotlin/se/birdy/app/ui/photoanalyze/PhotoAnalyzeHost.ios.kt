@@ -7,11 +7,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.graphics.toComposeImageBitmap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.jetbrains.skia.Image
 import se.birdy.app.di.AppGraph
 
 private const val MIN_SHORT_SIDE_PX = 224
@@ -55,6 +53,10 @@ actual fun PhotoAnalyzeHost(
                 withContext(Dispatchers.Default) {
                     finalizeCrop(working, CropGeometry.fullRect(working.width, working.height))
                 }
+            if (input == null) {
+                viewModel.decodeFailed()
+                return@LaunchedEffect
+            }
             viewModel.analyze(input)
             return@LaunchedEffect
         }
@@ -66,7 +68,7 @@ actual fun PhotoAnalyzeHost(
     if (working != null) {
         // ImageBitmap deriveras per arbetsbild (matchar Androids remember(bitmap)). Efter rotate
         // byts arbetsbilden → ny ImageBitmap → CropAdjustScreens remember(image) nollställer rect.
-        val cropImage = remember(working) { Image.makeFromEncoded(working.bytes).toComposeImageBitmap() }
+        val cropImage = remember(working) { working.toImageBitmap() }
         val cancelCrop = {
             cropWorkingImage = null
             viewModel.reset()
@@ -89,6 +91,10 @@ actual fun PhotoAnalyzeHost(
                 // finalize-fönstret avbryts crop→analys (samma avvägning som Android-hosten).
                 scope.launch {
                     val input = withContext(Dispatchers.Default) { finalizeCrop(toFinalize, rect) }
+                    if (input == null) {
+                        viewModel.decodeFailed()
+                        return@launch
+                    }
                     viewModel.analyze(input)
                 }
             },
@@ -98,9 +104,10 @@ actual fun PhotoAnalyzeHost(
         PhotoAnalyzeScreen(
             viewModel = viewModel,
             onPickFromGallery = {
-                presentPhotoPicker { bytes ->
-                    if (bytes != null) pendingBytes.value = bytes
-                }
+                presentPhotoPicker(
+                    onBytes = { bytes -> if (bytes != null) pendingBytes.value = bytes },
+                    onPresentFailure = { viewModel.decodeFailed() },
+                )
             },
             // i2b är galleri-only; ta-foto = i2c. No-op håller den delade skärmen orörd.
             onTakePhoto = {},
