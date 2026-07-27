@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
@@ -57,13 +58,17 @@ import se.birdy.ml.CameraSource
 import se.birdy.ml.FrameFormat
 import se.birdy.ml.ImageInput
 import se.birdy.ml.ZoomState
+import kotlin.concurrent.Volatile
 
 /**
  * AVFoundation-implementation av [CameraSource] (i2c) — spegel av [AndroidCameraSource]:
  * bakre vidvinkelkamera, BGRA-frames (AVCaptures native-format, se FrameFormat.BGRA_8888-
  * grenen i ImagePreprocessor.ios), portrait-låsta connections (rotationDegrees = 0),
  * wall-clock-timestamps (freshness-guarden i ScanViewModel jämför mot klockan — trap-
- * katalogen), och `alwaysDiscardsLateVideoFrames` = CameraX KEEP_ONLY_LATEST.
+ * katalogen). `alwaysDiscardsLateVideoFrames` dumpar sena frames innan de når delegaten,
+ * men det räcker inte ensamt — [frames] är `.conflate()`:ad så bara senaste framen hålls
+ * kvar när konsumenten (klassificeringen på huvudtråden) släpar efter; tillsammans
+ * motsvarar de två CameraX STRATEGY_KEEP_ONLY_LATEST.
  *
  * Preset 1280x720 + ~15 fps-cap: presetten styr BÅDE preview och data-output på iOS
  * (till skillnad från CameraX:s oberoende use cases) — 720p ger skarp preview och
@@ -77,6 +82,10 @@ class IosCameraSource : CameraSource {
     // start() hunnit konfigurera in-/utgångar (motsvarar AndroidCameraSource.previewUseCase).
     val captureSession = AVCaptureSession()
 
+    // Läses från UI-tråden (setZoomRatio) men skrivs i start()/stop() på Dispatchers.Default
+    // → @Volatile för synlighet (set-once-on-start / null-on-stop), spegel av
+    // AndroidCameraSource.camera.
+    @Volatile
     private var device: AVCaptureDevice? = null
     private var configured = false
     private val outputFlow = MutableStateFlow<AVCaptureVideoDataOutput?>(null)
@@ -89,6 +98,9 @@ class IosCameraSource : CameraSource {
     // (samma buggklass som weak PHPicker.delegate, i2b).
     private var frameDelegate: FrameDelegate? = null
 
+    // callbackFlow:s default 64-slot buffert kan annars hålla kvar ~236 MB (64 × ~3.7 MB)
+    // rådata om huvudtråden släpar under klassificering — conflate() nedan = bara senaste
+    // framen, vilket är det som faktiskt ger KEEP_ONLY_LATEST-paritet Kotlin-sidan.
     override fun frames(): Flow<ImageInput> =
         callbackFlow {
             val output = outputFlow.filterNotNull().first()
@@ -99,7 +111,7 @@ class IosCameraSource : CameraSource {
                 output.setSampleBufferDelegate(null, null)
                 frameDelegate = null
             }
-        }
+        }.conflate()
 
     override suspend fun start(): Unit =
         withContext(Dispatchers.Default) {
@@ -195,26 +207,30 @@ class IosCameraSource : CameraSource {
             // Defensiv format-guard: en icke-BGRA-buffert får ALDRIG in i pipelinen
             // (tyst kanalbyte = fel art med rimlig konfidens).
             if (CVPixelBufferGetPixelFormatType(pixelBuffer) != kCVPixelFormatType_32BGRA) return
-            CVPixelBufferLockBaseAddress(pixelBuffer, kCVPixelBufferLock_ReadOnly)
             try {
-                val base = CVPixelBufferGetBaseAddress(pixelBuffer)?.reinterpret<ByteVar>() ?: return
-                val width = CVPixelBufferGetWidth(pixelBuffer).toInt()
-                val height = CVPixelBufferGetHeight(pixelBuffer).toInt()
-                val bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer).toInt()
-                val bytes = copyCompactedBgra(base, bytesPerRow, width, height)
-                onFrame(
-                    ImageInput(
-                        bytes = bytes,
-                        widthPx = width,
-                        heightPx = height,
-                        rotationDegrees = 0,
-                        format = FrameFormat.BGRA_8888,
-                        // Wall clock, INTE sensortid — freshness-guarden jämför mot klockan.
-                        timestampMillis = (NSDate().timeIntervalSince1970 * 1000).toLong(),
-                    ),
-                )
-            } finally {
-                CVPixelBufferUnlockBaseAddress(pixelBuffer, kCVPixelBufferLock_ReadOnly)
+                CVPixelBufferLockBaseAddress(pixelBuffer, kCVPixelBufferLock_ReadOnly)
+                try {
+                    val base = CVPixelBufferGetBaseAddress(pixelBuffer)?.reinterpret<ByteVar>() ?: return
+                    val width = CVPixelBufferGetWidth(pixelBuffer).toInt()
+                    val height = CVPixelBufferGetHeight(pixelBuffer).toInt()
+                    val bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer).toInt()
+                    val bytes = copyCompactedBgra(base, bytesPerRow, width, height)
+                    onFrame(
+                        ImageInput(
+                            bytes = bytes,
+                            widthPx = width,
+                            heightPx = height,
+                            rotationDegrees = 0,
+                            format = FrameFormat.BGRA_8888,
+                            // Wall clock, INTE sensortid — freshness-guarden jämför mot klockan.
+                            timestampMillis = (NSDate().timeIntervalSince1970 * 1000).toLong(),
+                        ),
+                    )
+                } finally {
+                    CVPixelBufferUnlockBaseAddress(pixelBuffer, kCVPixelBufferLock_ReadOnly)
+                }
+            } catch (t: Throwable) {
+                // per-frame errors dropped; ScanViewModel handles persistent failures
             }
         }
     }
