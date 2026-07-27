@@ -102,7 +102,7 @@ class BadgesViewModelTest {
         }
 
     @Test
-    fun `weekly streak visible at 2 (implicit opt-in)`() =
+    fun `weekly streak visible at 2 implicit opt-in`() =
         runTest {
             val obs =
                 listOf(

@@ -122,7 +122,7 @@ class RecalculateBadgesUseCaseTest {
     }
 
     @Test
-    fun `observed_in_season — only december counts as winter (meteorological)`() {
+    fun `observed_in_season — only december counts as winter meteorological`() {
         val obs =
             listOf(
                 obs("Q1", 2026, 11, 30),
@@ -427,7 +427,7 @@ class RecalculateBadgesUseCaseTest {
     }
 
     @Test
-    fun `observed_red_listed — counts distinct NT VU CR species, ignores LC`() {
+    fun `observed_red_listed — counts distinct NT VU CR species and ignores LC`() {
         val species =
             mapOf(
                 SpeciesId("Q1") to fakeSpecies("Q1", iucnStatus = "VU"),

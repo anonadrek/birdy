@@ -92,7 +92,7 @@ class OnboardingViewModelTest {
         }
 
     @Test
-    fun `setPageIndex coerces 7 to 6 (MAX_PAGE_INDEX)`() =
+    fun `setPageIndex coerces 7 to 6 MAX_PAGE_INDEX`() =
         runTest {
             val vm = OnboardingViewModel(InMemoryUserPreferences(), "Min")
             vm.setPageIndex(7)

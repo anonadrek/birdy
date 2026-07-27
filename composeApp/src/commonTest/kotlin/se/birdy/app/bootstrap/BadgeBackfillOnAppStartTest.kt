@@ -54,7 +54,7 @@ class BadgeBackfillOnAppStartTest {
         }
 
     @Test
-    fun `empty observations result in no-op (but updates version)`() =
+    fun `empty observations result in no-op but updates version`() =
         runTest {
             val versionStore = FakeBadgeVersionStore(initial = 0)
             val backfill =

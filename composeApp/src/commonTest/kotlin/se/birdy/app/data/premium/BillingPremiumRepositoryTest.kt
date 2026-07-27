@@ -5,6 +5,7 @@ import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
 import kotlin.test.Test
 import kotlin.test.assertIs
+import kotlin.test.assertTrue
 
 class BillingPremiumRepositoryTest {
     @Test
@@ -31,6 +32,6 @@ class BillingPremiumRepositoryTest {
             val fake = FakePremiumBillingClient()
             val repo = BillingPremiumRepository(fake.state, queryPurchases = { fake.purchasesQueried++ })
             repo.restore()
-            assert(fake.purchasesQueried == 1)
+            assertTrue(fake.purchasesQueried == 1)
         }
 }

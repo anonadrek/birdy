@@ -61,7 +61,7 @@ class TrophyShowcaseTest {
     }
 
     @Test
-    fun `close to unlock sorts by ratio, takes 3, excludes locked and zero-target`() {
+    fun `close to unlock sorts by ratio takes 3 excludes locked and zero-target`() {
         val locked =
             listOf(
                 lbp("almost", current = 4, target = 5), // 0.80

@@ -81,7 +81,7 @@ class BadgesProgressTest {
             }
         }
 
-    @Test fun `redlisted badge is visible (not hidden)`() =
+    @Test fun `redlisted badge is visible not hidden`() =
         runTest {
             val obs = listOf(observation("Q1"))
             val vm =

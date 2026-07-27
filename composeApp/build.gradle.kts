@@ -26,6 +26,23 @@ kotlin {
         }
     }
 
+    // composeApp's own binaries — notably its iOS *test* executable, a standalone
+    // linked Mach-O binary (unlike the static framework above, which defers full
+    // symbol resolution to Xcode's final app-link stage) — need explicit native
+    // linkage for libraries composeApp only touches transitively: sqlite3 (via
+    // shared:data's SQLDelight native driver) and the vendored TensorFlowLiteC
+    // xcframework (via shared:ml, consumed as `api(...)` in commonMain). Pattern
+    // mirrors shared/ml/build.gradle.kts's per-target `binaries.all { linkerOpts(...) }`.
+    val fwRoot = "$projectDir/../iosApp/Frameworks/TensorFlowLiteC.xcframework"
+    iosArm64 {
+        binaries.all { linkerOpts("-lsqlite3", "-F$fwRoot/ios-arm64", "-framework", "TensorFlowLiteC") }
+    }
+    iosSimulatorArm64 {
+        binaries.all {
+            linkerOpts("-lsqlite3", "-F$fwRoot/ios-arm64_x86_64-simulator", "-framework", "TensorFlowLiteC")
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -70,6 +87,9 @@ kotlin {
             implementation("junit:junit:4.13.2")
         }
         iosMain.dependencies {
+            implementation(libs.sqldelight.native.driver)
+        }
+        iosTest.dependencies {
             implementation(libs.sqldelight.native.driver)
         }
     }

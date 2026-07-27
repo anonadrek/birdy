@@ -124,7 +124,7 @@ class EntryFlowDeciderTest {
         )
     }
 
-    @Test fun `post-onboarding true when complete, not shown, free`() {
+    @Test fun `post-onboarding true when complete not shown free`() {
         assertTrue(
             EntryFlowDecider.shouldShowPostOnboardingPremium(
                 onboardingComplete = true,

@@ -120,7 +120,7 @@ class WeeklyRecapBuilderTest {
     // ── selectFinds tests ───────────────────────────────────────────────────
 
     @Test
-    fun `selectFinds returns only current week, newest first`() {
+    fun `selectFinds returns only current week newest first`() {
         val list =
             listOf(
                 obs("b", "Q2", daysAgo(2)), // mån, denna vecka
