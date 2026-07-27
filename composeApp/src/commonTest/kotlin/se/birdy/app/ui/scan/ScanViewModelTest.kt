@@ -1,12 +1,15 @@
 package se.birdy.app.ui.scan
 
+import androidx.lifecycle.ViewModelStore
 import app.cash.turbine.test
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
+import kotlinx.coroutines.withContext
 import se.birdy.app.testing.FakeCameraSource
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.ClassifierMode
@@ -313,6 +316,43 @@ class ScanViewModelTest {
         }
 
     @Test
+    fun on_cleared_stops_camera_but_does_not_close_the_shared_classifier() =
+        runTest(dispatcher) {
+            val cameraSource = FakeCameraSource()
+            val classifier = CloseTrackingClassifier(FakeBirdClassifier())
+            val vm =
+                ScanViewModel(
+                    classifier = classifier,
+                    cameraSourceFactory = { cameraSource },
+                    frameThrottling = false,
+                )
+            vm.onPermissionResult(granted = true)
+
+            // ScanViewModel.onCleared() is protected; drive it the same way the real
+            // ViewModelStoreOwner does (Android nav-graph scope / iOS nav-host scope) instead of
+            // widening visibility: put the VM in a real ViewModelStore and clear the store.
+            val store = ViewModelStore()
+            store.put("scan", vm)
+            store.clear()
+
+            // cameraSource.stop() is dispatched via GlobalScope(Dispatchers.Default) inside
+            // onCleared — a real dispatcher, not the virtual-time TestDispatcher — so poll with
+            // real (bounded) delays rather than advancing virtual time.
+            var waited = 0
+            while (cameraSource.stopCalls == 0 && waited < 200) {
+                withContext(Dispatchers.Default) { delay(10L) }
+                waited++
+            }
+            assertEquals(1, cameraSource.stopCalls, "camera source must be stopped on clear")
+            assertEquals(
+                0,
+                classifier.closeCalls,
+                "classifier is the shared ClassifierBootstrap-owned singleton; the VM must never " +
+                    "close it (doing so bricked scan + gallery photo-ID on later re-entry — i2c final review)",
+            )
+        }
+
+    @Test
     fun classifierMode_defaults_to_real_and_round_trips_demo() =
         runTest(dispatcher) {
             val vmReal =
@@ -343,4 +383,17 @@ private class SlowClassifier(
     override suspend fun classify(image: ImageInput) = delegate.classify(image)
 
     override fun close() {}
+}
+
+/** Wraps a [BirdClassifier] and counts [close] calls, to assert a VM never closes it. */
+private class CloseTrackingClassifier(
+    private val delegate: BirdClassifier,
+) : BirdClassifier by delegate {
+    var closeCalls: Int = 0
+        private set
+
+    override fun close() {
+        closeCalls += 1
+        delegate.close()
+    }
 }

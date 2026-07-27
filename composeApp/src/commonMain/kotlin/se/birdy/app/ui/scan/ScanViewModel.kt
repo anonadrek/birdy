@@ -196,11 +196,16 @@ class ScanViewModel(
     )
 
     override fun onCleared() {
-        // classifier.close() is non-suspend so we run it first; if the process is killed
-        // before the GlobalScope job lands, at least the TFLite interpreter releases.
-        // cameraSource.stop() is suspend (CameraX bind/unbind goes via the camera-executor)
-        // so we have to dispatch it; viewModelScope is already cancelled at this point.
-        runCatching { classifier.close() }
+        // Deliberately do NOT close classifier here: it is the app-lifetime singleton owned
+        // by ClassifierBootstrap (see AppGraph.classifier / scanViewModel()), not something this
+        // VM owns. On iOS (post-i2c) Scan is a pushed nav destination, so back-out clears this
+        // VM on every re-entry; closing the shared classifier here bricked scan AND gallery
+        // photo-ID until app relaunch (every later classify() hit the runner's `check(!closed)`
+        // guard) — found in i2c final review. The bootstrap, not the VM, decides when the
+        // classifier dies.
+        // cameraSource.stop() IS per-VM (each ScanViewModel owns its own CameraSource instance,
+        // see cameraSourceFactory above) and suspend (CameraX bind/unbind goes via the
+        // camera-executor), so we have to dispatch it; viewModelScope is already cancelled here.
         @Suppress("OPT_IN_USAGE")
         GlobalScope.launch(kotlinx.coroutines.Dispatchers.Default + NonCancellable) {
             runCatching { cameraSource.stop() }
