@@ -65,10 +65,11 @@ actual class ImagePreprocessor actual constructor() {
             val native =
                 when (input.format) {
                     FrameFormat.RGBA_8888 -> decodeRgba(input)
+                    FrameFormat.BGRA_8888 -> decodeBgra(input)
                     FrameFormat.JPEG -> decodeCompressed(input.bytes, colorSpace)
                     FrameFormat.YUV_420_888 ->
                         throw NotImplementedError(
-                            "YUV_420_888 preprocessing is Android-only; iOS camera frames are RGBA/BGRA (i2c).",
+                            "YUV_420_888 preprocessing is Android-only; iOS camera frames are BGRA_8888 (i2c).",
                         )
                 }
             val oriented = rotate(native, input.rotationDegrees)
@@ -97,6 +98,27 @@ actual class ImagePreprocessor actual constructor() {
             "RGBA_8888 expects ${expected}B for ${input.widthPx}x${input.heightPx}, got ${input.bytes.size}"
         }
         return Rgba(input.bytes.asUByteArray().copyOf(), input.widthPx, input.heightPx)
+    }
+
+    private fun decodeBgra(input: ImageInput): Rgba {
+        val expected = input.widthPx * input.heightPx * 4
+        require(input.bytes.size == expected) {
+            "BGRA_8888 expects ${expected}B for ${input.widthPx}x${input.heightPx}, got ${input.bytes.size}"
+        }
+        // Fused swizzle: the RGBA path already pays a defensive copy here (decodeRgba's
+        // copyOf); reordering B↔R inside that same copy is the zero-extra-cost format
+        // bridge — no separate per-frame conversion pass ever runs.
+        val src = input.bytes.asUByteArray()
+        val out = UByteArray(expected)
+        var i = 0
+        while (i < expected) {
+            out[i] = src[i + 2]
+            out[i + 1] = src[i + 1]
+            out[i + 2] = src[i]
+            out[i + 3] = src[i + 3]
+            i += 4
+        }
+        return Rgba(out, input.widthPx, input.heightPx)
     }
 
     private fun decodeCompressed(

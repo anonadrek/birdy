@@ -1,6 +1,6 @@
 package se.birdy.ml
 
-enum class FrameFormat { YUV_420_888, JPEG, RGBA_8888 }
+enum class FrameFormat { YUV_420_888, JPEG, RGBA_8888, BGRA_8888 }
 
 data class ImageInput(
     val bytes: ByteArray,

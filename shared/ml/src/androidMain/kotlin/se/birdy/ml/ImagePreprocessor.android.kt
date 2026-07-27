@@ -52,6 +52,8 @@ actual class ImagePreprocessor actual constructor() {
                     ?: error("BitmapFactory.decodeByteArray returned null")
             FrameFormat.YUV_420_888 -> decodeYuv420(input)
             FrameFormat.RGBA_8888 -> decodeRgba(input)
+            FrameFormat.BGRA_8888 ->
+                error("BGRA_8888 frames are iOS-only; Android sources emit JPEG/YUV/RGBA")
         }
 
     private fun decodeRgba(input: ImageInput): Bitmap {
