@@ -22,12 +22,14 @@ import platform.CoreGraphics.CGRectMake
 import platform.CoreGraphics.CGSizeMake
 import platform.CoreGraphics.kCGInterpolationMedium
 import platform.Foundation.NSCachesDirectory
+import platform.Foundation.NSData
 import platform.Foundation.NSError
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSTemporaryDirectory
 import platform.Foundation.NSURL
 import platform.Foundation.NSUUID
 import platform.Foundation.NSUserDomainMask
+import platform.Foundation.dataWithContentsOfFile
 import platform.Foundation.writeToFile
 import platform.PhotosUI.PHPickerConfiguration
 import platform.PhotosUI.PHPickerFilter
@@ -204,11 +206,12 @@ private fun UIImage.bakeUpright(maxLongSide: Int): WorkingImage? {
 private fun ByteArray.decodeToImageBitmapOrNull(): ImageBitmap? =
     runCatching { Image.makeFromEncoded(this).toComposeImageBitmap() }.getOrNull()
 
-/** Ritar [image] i en opak `targetW × targetH` bitmap-kontext och encodar JPEG [JPEG_QUALITY]. */
-private fun drawAndEncodeJpeg(
+/** Ritar [image] i en opak `targetW × targetH` bitmap-kontext och encodar JPEG med [quality]. */
+internal fun drawAndEncodeJpeg(
     image: UIImage,
     targetW: Int,
     targetH: Int,
+    quality: Double = JPEG_QUALITY,
 ): ByteArray? {
     UIGraphicsBeginImageContextWithOptions(
         size = CGSizeMake(targetW.toDouble(), targetH.toDouble()),
@@ -222,13 +225,13 @@ private fun drawAndEncodeJpeg(
         CGContextSetInterpolationQuality(UIGraphicsGetCurrentContext(), kCGInterpolationMedium)
         image.drawInRect(CGRectMake(0.0, 0.0, targetW.toDouble(), targetH.toDouble()))
         val baked = UIGraphicsGetImageFromCurrentImageContext() ?: return null
-        return UIImageJPEGRepresentation(baked, JPEG_QUALITY)?.toByteArray()
+        return UIImageJPEGRepresentation(baked, quality)?.toByteArray()
     } finally {
         UIGraphicsEndImageContext()
     }
 }
 
-private fun scaleToLongSide(
+internal fun scaleToLongSide(
     w: Int,
     h: Int,
     target: Int,
@@ -237,6 +240,15 @@ private fun scaleToLongSide(
     if (longSide <= target) return w to h
     val ratio = target.toDouble() / longSide
     return maxOf(1, (w * ratio).roundToInt()) to maxOf(1, (h * ratio).roundToInt())
+}
+
+/** Läser pixelmåtten ur en JPEG-fil på disk (test + storage-verifiering). */
+internal fun readJpegPixelSize(path: String): Pair<Int, Int>? {
+    val data = NSData.dataWithContentsOfFile(path) ?: return null
+    val image = UIImage(data = data) ?: return null
+    val (w, h) = image.size.useContents { width to height }
+    if (w <= 0.0 || h <= 0.0) return null
+    return w.roundToInt() to h.roundToInt()
 }
 
 // PHPicker-delegaten hålls med stark referens här: PHPickerViewController.delegate är weak, så
