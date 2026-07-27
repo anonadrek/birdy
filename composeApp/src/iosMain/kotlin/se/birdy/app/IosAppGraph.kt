@@ -10,7 +10,6 @@ import se.birdy.app.badges.BadgeCatalogLoader
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.di.AppGraph
 import se.birdy.app.photo.PhotoStorageProvider
-import se.birdy.app.ui.scan.IosNoopCameraSource
 import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
@@ -26,6 +25,7 @@ import se.birdy.ml.ImagePreprocessor
 import se.birdy.ml.IosTfliteRunner
 import se.birdy.ml.ModelArtifactProvider
 import se.birdy.ml.TfLiteBirdClassifier
+import se.birdy.ml.camera.IosCameraSource
 import se.birdy.ml.loadAiyLabelMapper
 import se.birdy.ml.loadModelMetadata
 
@@ -33,13 +33,13 @@ import se.birdy.ml.loadModelMetadata
  * iOS composition root — the iOS counterpart of MainActivity.buildAppGraph().
  *
  * Remaining stubs (each lifted by its owning plan):
- * - Live-camera scan (IosNoopCameraSource): still stubbed — photo classification is
- *   now REAL (i2b), but the capture path lands in i2c.
  * - premiumOverride Active(LIFETIME): launch-parity with Android's
  *   PREMIUM_OPEN_FOR_LAUNCH; real StoreKit gating lands in i5.
  *
  * i1 resolved: UserPreferences + BadgeVersionStore now persist (NSUserDefaults).
  * i2b resolved: buildClassifier() mirrors Android's real TFLite classifier wiring.
+ * i2c resolved: live-camera scan is now REAL (IosCameraSource, AVFoundation) — only the
+ *   premium override remains.
  */
 fun buildIosAppGraph(): AppGraph {
     val birdyData = BirdyData(DatabaseFactory().createDriver())
@@ -87,7 +87,7 @@ fun buildIosAppGraph(): AppGraph {
     return AppGraph(
         repository = SpeciesRepositoryProvider.get(),
         classifierBootstrap = classifierBootstrap,
-        cameraSourceFactory = { IosNoopCameraSource() },
+        cameraSourceFactory = { IosCameraSource() },
         observationRepository = observationRepo,
         photoStorage = PhotoStorageProvider.get(),
         badgeRepository = badgeRepo,
@@ -96,7 +96,7 @@ fun buildIosAppGraph(): AppGraph {
         userPreferences = UserPreferencesStore(null).preferences(),
         premiumRepository = IosStubPremiumRepository(),
         premiumOverride = PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now()),
-        versionName = "1.2.0-ios-i2b",
+        versionName = "1.2.0-ios-i2c",
     )
 }
 

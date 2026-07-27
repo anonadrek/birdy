@@ -20,8 +20,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 
-enum class CameraPermissionStatus { Granted, Denied, NotAsked }
-
 class CameraPermissionState(
     private val statusState: MutableState<CameraPermissionStatus>,
     private val request: () -> Unit,

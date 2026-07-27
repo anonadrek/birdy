@@ -10,14 +10,17 @@
 		1579AEB6F971D503006064A7 /* TensorFlowLiteC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E553E90FC33EDF65FE8A56 /* TensorFlowLiteC.xcframework */; };
 		1A965F7A4B9E4AFD56B72DD4 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 1A298D7F0570B43393C195F3 /* images */; };
 		7088D6C396B6633A4CF29FF2 /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B205F74830A0616574856E11 /* iOSApp.swift */; };
+		C328B9A9FECC4169BDE32370 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 908A15A194F1A4EEA8E94206 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A298D7F0570B43393C195F3 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../shared/content/images; sourceTree = SOURCE_ROOT; };
 		28E553E90FC33EDF65FE8A56 /* TensorFlowLiteC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TensorFlowLiteC.xcframework; path = Frameworks/TensorFlowLiteC.xcframework; sourceTree = "<group>"; };
+		4C4DD3508F5613FE9CAF78FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7148A5C29BA84E88ED5AFE42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B205F74830A0616574856E11 /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		B555F913A675A1B7A9676C11 /* Birdy.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Birdy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F593B6564CB83053E918A723 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,7 @@
 			children = (
 				7148A5C29BA84E88ED5AFE42 /* Info.plist */,
 				B205F74830A0616574856E11 /* iOSApp.swift */,
+				908A15A194F1A4EEA8E94206 /* InfoPlist.strings */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -110,6 +114,7 @@
 			knownRegions = (
 				Base,
 				en,
+				sv,
 			);
 			mainGroup = 7988FB2114D975F6E614B058;
 			minimizedProjectReferenceProxies = 1;
@@ -128,6 +133,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C328B9A9FECC4169BDE32370 /* InfoPlist.strings in Resources */,
 				1A965F7A4B9E4AFD56B72DD4 /* images in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +172,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		908A15A194F1A4EEA8E94206 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C4DD3508F5613FE9CAF78FB /* en */,
+				F593B6564CB83053E918A723 /* sv */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4082103BA46A714C594B39E1 /* Debug */ = {
