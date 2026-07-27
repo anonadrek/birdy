@@ -16,9 +16,10 @@ private const val MIN_SHORT_SIDE_PX = 224
 
 /**
  * iOS-host för foto-ID. Speglar Android-hostens tillståndsmaskin
- * (PhotoAnalyzeHost.android.kt): PHPicker → avkoda → (crop | hoppa över) → analysera.
- * Endast galleri i i2b — ta-foto (kamera) landar i i2c, så [PhotoAnalyzeScreen]s
- * take-photo-knapp får en no-op och är present-men-inaktiv tills dess.
+ * (PhotoAnalyzeHost.android.kt): (PHPicker | systemkamera) → avkoda → (crop | hoppa över) →
+ * analysera. Ta-foto är inte längre uppskjutet (i2c): [PhotoAnalyzeScreen]s take-photo-knapp
+ * presenterar systemkameran (UIImagePickerController) via `IosCameraCapture.kt`; galleri och
+ * kamera konvergerar på samma `pendingBytes` → decode → crop → analyze-väg.
  */
 @Composable
 actual fun PhotoAnalyzeHost(
@@ -113,8 +114,15 @@ actual fun PhotoAnalyzeHost(
                     onPresentFailure = { viewModel.decodeFailed() },
                 )
             },
-            // i2b är galleri-only; ta-foto = i2c. No-op håller den delade skärmen orörd.
-            onTakePhoto = {},
+            onTakePhoto = {
+                if (isCameraCaptureAvailable()) {
+                    presentCameraCapture(
+                        onBytes = { bytes -> if (bytes != null) pendingBytes.value = bytes },
+                        onPresentFailure = { viewModel.decodeFailed() },
+                    )
+                }
+                // Ingen kamera (simulator): tyst no-op — knappen förblir inert som i i2b (spec §5).
+            },
             onLoaded = onLoaded,
             onBack = onBack,
         )

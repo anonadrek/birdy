@@ -242,7 +242,7 @@ private fun scaleToLongSide(
 // PHPicker-delegaten hålls med stark referens här: PHPickerViewController.delegate är weak, så
 // en lokal K/N-delegat skulle deallokeras direkt → callbacken avfyras aldrig. Refereras/tas bort
 // bara på main-tråden (present + finish-hoppet nedan).
-private val retainedPickerDelegates = mutableSetOf<NSObject>()
+internal val retainedPickerDelegates = mutableSetOf<NSObject>()
 
 /**
  * Presenterar en behörighetsfri [PHPickerViewController] (endast bilder, 1 val) från key
@@ -274,7 +274,7 @@ internal fun presentPhotoPicker(
  * `UIApplication.keyWindow` är deprecated sedan iOS 13 för scen-baserade appar (denna app är
  * scen-baserad, se iosApp/iosApp/iOSApp.swift). Hitta key window via `connectedScenes` istället.
  */
-private fun keyWindowRootViewController(): UIViewController? =
+internal fun keyWindowRootViewController(): UIViewController? =
     UIApplication.sharedApplication.connectedScenes
         .filterIsInstance<UIWindowScene>()
         .flatMap { it.windows }
