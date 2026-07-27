@@ -86,7 +86,7 @@ internal class WorkingImage(
  */
 internal fun decodeForCrop(bytes: ByteArray): WorkingImage? {
     if (bytes.isEmpty()) return null
-    val image = UIImage(data = bytes.toNSData()) ?: return null
+    val image = uiImageFromDataOrNull(bytes.toNSData()) ?: return null
     return image.bakeUpright(maxLongSide = CROP_WORKING_MAX_PX)
 }
 
@@ -95,7 +95,7 @@ internal fun decodeForCrop(bytes: ByteArray): WorkingImage? {
  * host:ens `remember(working)` re-key:ar → ny [ImageBitmap] → crop-rektangeln nollställs.
  */
 internal fun rotate90(working: WorkingImage): WorkingImage {
-    val source = UIImage(data = working.bytes.toNSData()) ?: return working
+    val source = uiImageFromDataOrNull(working.bytes.toNSData()) ?: return working
     val cg = source.CGImage ?: return working
     // orientation .right = "rotera datan 90° medurs för visning"; bak:a den till upprätta pixlar.
     val rotated = UIImage.imageWithCGImage(cg, scale = 1.0, orientation = UIImageOrientation.UIImageOrientationRight)
@@ -114,7 +114,7 @@ internal fun finalizeCrop(
     working: WorkingImage,
     rect: CropRect,
 ): ImageInput? {
-    val source = UIImage(data = working.bytes.toNSData()) ?: return null
+    val source = uiImageFromDataOrNull(working.bytes.toNSData()) ?: return null
     val cg = source.CGImage ?: return null
     val croppedCg =
         CGImageCreateWithImageInRect(
@@ -245,11 +245,24 @@ internal fun scaleToLongSide(
 /** Läser pixelmåtten ur en JPEG-fil på disk (test + storage-verifiering). */
 internal fun readJpegPixelSize(path: String): Pair<Int, Int>? {
     val data = NSData.dataWithContentsOfFile(path) ?: return null
-    val image = UIImage(data = data) ?: return null
+    val image = uiImageFromDataOrNull(data) ?: return null
     val (w, h) = image.size.useContents { width to height }
     if (w <= 0.0 || h <= 0.0) return null
     return w.roundToInt() to h.roundToInt()
 }
+
+/**
+ * K/N-brygga för UIImages failable init: konstruktorn kan inte returnera null i Kotlin,
+ * så cinterop kastar rå NullPointerException när ObjC-init:en ger nil (verifierat i i2c
+ * T7 med probe-test). Utan denna guard är `UIImage(data=...) ?: ...` DÖD elvis — korrupta
+ * bytes kraschar istället för att ge decodeFailed-flödet.
+ */
+internal fun uiImageFromDataOrNull(data: NSData): UIImage? =
+    try {
+        UIImage(data = data)
+    } catch (_: NullPointerException) {
+        null
+    }
 
 // PHPicker-delegaten hålls med stark referens här: PHPickerViewController.delegate är weak, så
 // en lokal K/N-delegat skulle deallokeras direkt → callbacken avfyras aldrig. Refereras/tas bort

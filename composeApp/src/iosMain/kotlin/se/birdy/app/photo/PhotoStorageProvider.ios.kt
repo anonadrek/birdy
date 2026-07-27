@@ -10,10 +10,10 @@ import platform.Foundation.NSURL
 import platform.Foundation.NSUUID
 import platform.Foundation.NSUserDomainMask
 import platform.Foundation.writeToFile
-import platform.UIKit.UIImage
 import se.birdy.app.toNSData
 import se.birdy.app.ui.photoanalyze.drawAndEncodeJpeg
 import se.birdy.app.ui.photoanalyze.scaleToLongSide
+import se.birdy.app.ui.photoanalyze.uiImageFromDataOrNull
 import kotlin.math.roundToInt
 
 actual object PhotoStorageProvider {
@@ -35,17 +35,13 @@ class IosPhotoStorage : PhotoStorage {
     override suspend fun persistJpeg(bytes: ByteArray): String =
         withContext(Dispatchers.Default) {
             if (bytes.isEmpty()) throw FrameUnavailableException("Empty JPEG bytes")
-            // UIImage(data:) is a failable ObjC initializer, but this cinterop binding throws a
-            // raw NullPointerException instead of yielding Kotlin null for undecodable bytes
-            // (verified: garbage bytes crash the constructor, not just `?:` below) — catch it
-            // explicitly so a bad gallery/frame input surfaces as our contract's exception, not
-            // an uncaught native crash.
+            // uiImageFromDataOrNull guards the same K/N UIImage(data:) NPE-on-nil gotcha that
+            // IosImageDecode.kt's four call sites guard (verified: garbage bytes crash the raw
+            // constructor, not just `?:` below) — shared helper so a bad gallery/frame input
+            // surfaces as our contract's exception here, not an uncaught native crash.
             val image =
-                try {
-                    UIImage(data = bytes.toNSData())
-                } catch (_: NullPointerException) {
-                    null
-                } ?: throw FrameUnavailableException("Undecodable JPEG bytes")
+                uiImageFromDataOrNull(bytes.toNSData())
+                    ?: throw FrameUnavailableException("Undecodable JPEG bytes")
             val (w, h) = image.size.useContents { width to height }
             if (w <= 0.0 || h <= 0.0) throw FrameUnavailableException("Degenerate image ${w}x$h")
             val (targetW, targetH) = scaleToLongSide(w.roundToInt(), h.roundToInt(), LONGEST_SIDE_PX)
