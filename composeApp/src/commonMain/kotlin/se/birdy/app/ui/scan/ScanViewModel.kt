@@ -145,10 +145,10 @@ class ScanViewModel(
             )
     }
 
-    fun onFreeze(persist: (ByteArray) -> String) {
+    fun onFreeze(persist: (ImageInput) -> String) {
         if (_state.value is ScanUiState.FrozenAt) return
         val snap = lastClassified ?: return
-        val path = runCatching { persist(snap.frame.bytes) }.getOrNull() ?: return
+        val path = runCatching { persist(snap.frame) }.getOrNull() ?: return
         // A freeze must match what the user sees NOW. If the camera stalled (observed on
         // device 2026-06-10: indicator off while ScanScreen was still visible) the last
         // pair can be minutes old — surface it as no-detection, which MatchResultViewModel

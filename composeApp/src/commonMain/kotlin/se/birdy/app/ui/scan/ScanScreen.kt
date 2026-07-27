@@ -83,6 +83,7 @@ import se.birdy.ml.CameraSource
 import se.birdy.ml.Classification
 import se.birdy.ml.ClassificationResult
 import se.birdy.ml.ClassifierMode
+import se.birdy.ml.ImageInput
 import se.birdy.ml.ScanSource
 import se.birdy.ml.ScanSourceSerialization
 import se.birdy.ml.toSerial
@@ -96,7 +97,7 @@ fun ScanScreen(
     onBack: () -> Unit,
     onPermissionRequest: () -> Unit,
     onOpenSettings: () -> Unit,
-    persistFrame: (ByteArray) -> String,
+    persistFrame: (ImageInput) -> String,
 ) {
     val state by viewModel.state.collectAsState()
 

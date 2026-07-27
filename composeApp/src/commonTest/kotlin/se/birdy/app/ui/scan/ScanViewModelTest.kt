@@ -11,6 +11,7 @@ import se.birdy.app.testing.FakeCameraSource
 import se.birdy.ml.BirdClassifier
 import se.birdy.ml.ClassifierMode
 import se.birdy.ml.FakeBirdClassifier
+import se.birdy.ml.FrameFormat
 import se.birdy.ml.ImageInput
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
@@ -137,6 +138,38 @@ class ScanViewModelTest {
                     "freeze must route the classification the chip displayed",
                 )
                 assertEquals(42L, frozen.timestampMillis, "capture time must be the frozen frame's time")
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun freeze_passes_the_paired_frame_to_persist() =
+        runTest(dispatcher) {
+            val cameraSource = FakeCameraSource()
+            val vm =
+                ScanViewModel(
+                    classifier = FakeBirdClassifier(),
+                    cameraSourceFactory = { cameraSource },
+                    frameThrottling = false,
+                    nowMillis = { 142L },
+                )
+            vm.onPermissionResult(granted = true)
+            vm.state.test {
+                assertEquals(ScanUiState.Idle, awaitItem())
+                cameraSource.emit(timestampMillis = 42L)
+                assertIs<ScanUiState.Scanning>(awaitItem())
+
+                var received: ImageInput? = null
+                vm.onFreeze { input ->
+                    received = input
+                    "/cache/scan-frames/pair.jpg"
+                }
+                assertIs<ScanUiState.FrozenAt>(awaitItem())
+                // persist must receive the FULL paired frame (format/dims/timestamp), not
+                // just bytes — the iOS host JPEG-encodes BGRA frames and needs all of it.
+                assertEquals(42L, received?.timestampMillis)
+                assertEquals(224, received?.widthPx)
+                assertEquals(FrameFormat.JPEG, received?.format)
                 cancelAndIgnoreRemainingEvents()
             }
         }

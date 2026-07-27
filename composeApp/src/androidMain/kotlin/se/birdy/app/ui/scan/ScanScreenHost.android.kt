@@ -41,9 +41,9 @@ actual fun ScanScreenHost(
         onBack = onBack,
         onPermissionRequest = { permission.launchRequest() },
         onOpenSettings = { permission.openAppSettings() },
-        persistFrame = { bytes ->
+        persistFrame = { input ->
             val file = File(cacheDir, UUID.randomUUID().toString() + ".jpg")
-            file.outputStream().use { it.write(bytes) }
+            file.outputStream().use { it.write(input.bytes) }
             file.absolutePath
         },
     )
