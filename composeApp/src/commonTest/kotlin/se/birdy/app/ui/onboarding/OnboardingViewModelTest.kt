@@ -7,6 +7,7 @@ import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
+import se.birdy.datastore.AppLanguage
 import se.birdy.datastore.InMemoryUserPreferences
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
@@ -80,26 +81,62 @@ class OnboardingViewModelTest {
         }
 
     @Test
-    fun `setPageIndex moves to page 6`() =
-        runTest {
-            val vm = OnboardingViewModel(InMemoryUserPreferences(), "Min")
-            vm.setPageIndex(6)
-            vm.state.test {
-                val s = awaitItem()
-                assertTrue(s is OnboardingUiState.Visible)
-                assertEquals(6, s.pageIndex)
-            }
-        }
-
-    @Test
-    fun `setPageIndex coerces 7 to 6 MAX_PAGE_INDEX`() =
+    fun `setPageIndex moves to page 7`() =
         runTest {
             val vm = OnboardingViewModel(InMemoryUserPreferences(), "Min")
             vm.setPageIndex(7)
             vm.state.test {
                 val s = awaitItem()
                 assertTrue(s is OnboardingUiState.Visible)
-                assertEquals(6, s.pageIndex)
+                assertEquals(7, s.pageIndex)
+            }
+        }
+
+    @Test
+    fun `setPageIndex coerces 8 to 7 MAX_PAGE_INDEX`() =
+        runTest {
+            val vm = OnboardingViewModel(InMemoryUserPreferences(), "Min")
+            vm.setPageIndex(8)
+            vm.state.test {
+                val s = awaitItem()
+                assertTrue(s is OnboardingUiState.Visible)
+                assertEquals(7, s.pageIndex)
+            }
+        }
+
+    @Test
+    fun `selectLanguage persists immediately and applies locale`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val applied = mutableListOf<String>()
+            val vm = OnboardingViewModel(prefs, "Min", applyLocaleFn = { applied += it })
+            vm.selectLanguage(AppLanguage.EN)
+            prefs.appLanguage.test { assertEquals(AppLanguage.EN, awaitItem()) }
+            assertEquals(listOf("en"), applied)
+            val s = vm.state.value
+            assertTrue(s is OnboardingUiState.Visible)
+            assertEquals(AppLanguage.EN, s.selectedLanguage)
+        }
+
+    @Test
+    fun `selectLanguage persists in replay mode too`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val vm = OnboardingViewModel(prefs, "Min", isReplay = true, applyLocaleFn = {})
+            vm.selectLanguage(AppLanguage.SV)
+            prefs.appLanguage.test { assertEquals(AppLanguage.SV, awaitItem()) }
+        }
+
+    @Test
+    fun `init reads stored non-system language into state`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            prefs.setAppLanguage(AppLanguage.EN)
+            val vm = OnboardingViewModel(prefs, "Min", applyLocaleFn = {})
+            vm.state.test {
+                val s = awaitItem()
+                assertTrue(s is OnboardingUiState.Visible)
+                assertEquals(AppLanguage.EN, s.selectedLanguage)
             }
         }
 
