@@ -30,7 +30,7 @@ class SettingsViewModelLanguageEffectTest {
             val vm = SettingsViewModel(prefs, FakePremiumRepository())
             vm.saveLanguage(AppLanguage.SV)
             val effect = vm.effects.first()
-            assertEquals(SettingsEffect.RestartForLocale("sv"), effect)
+            assertEquals(SettingsEffect.ApplyLocale("sv"), effect)
         }
 
     @Test
@@ -39,7 +39,7 @@ class SettingsViewModelLanguageEffectTest {
             val prefs = FakeUserPreferences()
             val vm = SettingsViewModel(prefs, FakePremiumRepository())
             vm.saveLanguage(AppLanguage.EN)
-            assertEquals(SettingsEffect.RestartForLocale("en"), vm.effects.first())
+            assertEquals(SettingsEffect.ApplyLocale("en"), vm.effects.first())
         }
 
     @Test
@@ -48,6 +48,6 @@ class SettingsViewModelLanguageEffectTest {
             val prefs = FakeUserPreferences()
             val vm = SettingsViewModel(prefs, FakePremiumRepository())
             vm.saveLanguage(AppLanguage.SYSTEM)
-            assertEquals(SettingsEffect.RestartForLocale(""), vm.effects.first())
+            assertEquals(SettingsEffect.ApplyLocale(""), vm.effects.first())
         }
 }

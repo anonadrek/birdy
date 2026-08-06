@@ -4,11 +4,11 @@ import android.Manifest
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.app.NotificationManagerCompat
@@ -77,7 +77,7 @@ import android.graphics.Color as AndroidColor
 private const val UPGRADE_INSTALL_BACKDATE_MS = 8L * 24 * 60 * 60 * 1000
 
 @Suppress("TooManyFunctions")
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     private lateinit var appGraph: AppGraph
     private lateinit var billingClient: se.birdy.app.data.premium.PremiumBillingClient
 

@@ -3,7 +3,8 @@ package se.birdy.app.ui.settings
 import org.jetbrains.compose.resources.StringResource
 
 sealed interface SettingsEffect {
-    data class RestartForLocale(
+    /** Applicerar valt språk. AppCompat/LocaleManager recreatar aktiviteten automatiskt — ingen omstart behövs. */
+    data class ApplyLocale(
         val tag: String,
     ) : SettingsEffect
 

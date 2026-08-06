@@ -73,7 +73,7 @@ class SettingsViewModel(
     fun saveLanguage(value: AppLanguage) {
         viewModelScope.launch {
             prefs.setAppLanguage(value)
-            _effects.send(SettingsEffect.RestartForLocale(value.toLocaleTagOrEmpty()))
+            _effects.send(SettingsEffect.ApplyLocale(value.toLocaleTagOrEmpty()))
         }
     }
 

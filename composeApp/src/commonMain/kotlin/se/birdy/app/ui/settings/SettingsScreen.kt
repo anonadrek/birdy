@@ -142,7 +142,7 @@ fun SettingsScreen(
     LaunchedEffect(Unit) {
         viewModel.effects.collect { effect ->
             when (effect) {
-                is SettingsEffect.RestartForLocale -> applyLocale(effect.tag)
+                is SettingsEffect.ApplyLocale -> applyLocale(effect.tag)
                 is SettingsEffect.ShowToast -> {
                     val text = getString(effect.text)
                     snackbarHostState.showSnackbar(text)
