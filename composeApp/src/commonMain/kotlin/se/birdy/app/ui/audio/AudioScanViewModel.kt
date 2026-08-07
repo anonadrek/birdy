@@ -6,12 +6,14 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeout
 import kotlinx.datetime.Clock
 import kotlinx.serialization.json.Json
 import se.birdy.ml.AudioClassifierMode
@@ -56,6 +58,7 @@ class AudioScanViewModel(
 
     private var sessionJob: Job? = null
     private var inferenceJob: Job? = null
+    private var finalizeJob: Job? = null
     private var handle: RecorderHandle? = null
 
     // Streaming-state, owned by sessionJob coroutine
@@ -82,7 +85,10 @@ class AudioScanViewModel(
         const val MIN_RECORD_MS = 3_000L
         const val MAX_RECORD_MS = 60_000L
         const val MAX_BUFFER_SAMPLES = SAMPLE_RATE * 60 // 60s
+        const val ANALYZE_TIMEOUT_MS = 15_000L
     }
+
+    private fun logAudio(msg: String) = println("Birdy/audio: $msg")
 
     fun onPermissionState(p: PermissionState) {
         when (p) {
@@ -127,7 +133,7 @@ class AudioScanViewModel(
                                 onChunkReceived(samples, rms, totalSoFar)
                             },
                             onCapReached = {
-                                viewModelScope.launch { finalizeAndNavigate(reason = StopReason.CAP) }
+                                finalizeJob = viewModelScope.launch { finalizeAndNavigate(reason = StopReason.CAP) }
                             },
                             maxDurationMs = MAX_RECORD_MS,
                         )
@@ -199,7 +205,7 @@ class AudioScanViewModel(
                     // Finalize FÅR INTE köras inline här: denna coroutine är barn till
                     // inferenceJob, och finalizeAndNavigate cancellar inferenceJob →
                     // self-cancel → permanent Analyzing-häng (i produktion t.o.m. vC126).
-                    viewModelScope.launch { finalizeAndNavigate(reason = StopReason.AUTO) }
+                    finalizeJob = viewModelScope.launch { finalizeAndNavigate(reason = StopReason.AUTO) }
                     return@launch
                 }
             } finally {
@@ -213,7 +219,7 @@ class AudioScanViewModel(
         // Guard: need at least one full 3s window before allowing manual stop.
         // Using sample count rather than wall-clock so tests with frozen clocks work correctly.
         if (bufferEnd < WINDOW_SAMPLES) return
-        viewModelScope.launch { finalizeAndNavigate(reason = StopReason.MANUAL) }
+        finalizeJob = viewModelScope.launch { finalizeAndNavigate(reason = StopReason.MANUAL) }
     }
 
     private suspend fun finalizeAndNavigate(reason: StopReason) {
@@ -238,7 +244,19 @@ class AudioScanViewModel(
         val windowStart = (windowEnd - WINDOW_SAMPLES).coerceAtLeast(0)
         val window = fullPcm.copyOfRange(windowStart, windowEnd)
 
-        analyzeAndNavigate(fullPcm = fullPcm, window = window)
+        try {
+            withTimeout(ANALYZE_TIMEOUT_MS) {
+                analyzeAndNavigate(fullPcm = fullPcm, window = window)
+            }
+        } catch (t: TimeoutCancellationException) {
+            logAudio("analyze timed out after ${ANALYZE_TIMEOUT_MS}ms")
+            _state.update { s -> if (s is AudioScanState.Analyzing) AudioScanState.Error.AnalyzeFailed else s }
+        } catch (t: CancellationException) {
+            throw t
+        } catch (t: Throwable) {
+            logAudio("analyze failed: ${t.message}")
+            _state.update { s -> if (s is AudioScanState.Analyzing) AudioScanState.Error.AnalyzeFailed else s }
+        }
     }
 
     private suspend fun analyzeAndNavigate(
@@ -263,14 +281,28 @@ class AudioScanViewModel(
             }
 
         val ts = clock()
-        val pngPath =
-            withContext(ioDispatcher) {
-                waveformRenderer.renderWaveformPng(fullPcm, "${audioStorageDir()}/$ts.png")
+        val pngPath: String =
+            try {
+                withContext(ioDispatcher) {
+                    waveformRenderer.renderWaveformPng(fullPcm, "${audioStorageDir()}/$ts.png")
+                }
+            } catch (t: CancellationException) {
+                throw t
+            } catch (t: Throwable) {
+                logAudio("waveform png failed: ${t.message}")
+                "" // ""-konventionen: MatchResult ifBlank{null}-ar redan frameJpegPath
             }
         coroutineContext.ensureActive()
-        val audioPath =
-            withContext(ioDispatcher) {
-                waveformRenderer.encodeOpus(fullPcm, "${audioStorageDir()}/$ts.opus")
+        val audioPath: String? =
+            try {
+                withContext(ioDispatcher) {
+                    waveformRenderer.encodeOpus(fullPcm, "${audioStorageDir()}/$ts.opus")
+                }
+            } catch (t: CancellationException) {
+                throw t
+            } catch (t: Throwable) {
+                logAudio("opus encode failed: ${t.message}")
+                null
             }
         coroutineContext.ensureActive()
 
@@ -291,13 +323,18 @@ class AudioScanViewModel(
         sessionJob = null
         inferenceJob?.cancel()
         inferenceJob = null
+        finalizeJob?.cancel()
+        finalizeJob = null
         handle?.cancel()
         handle = null
         sessionScores = emptyMap()
         bufferEnd = 0
         inflight = false
         lastClassifiedAtSamples = 0
-        if (_state.value is AudioScanState.Recording || _state.value is AudioScanState.Error) {
+        if (_state.value is AudioScanState.Recording ||
+            _state.value is AudioScanState.Error ||
+            _state.value is AudioScanState.Analyzing
+        ) {
             _state.value = AudioScanState.Idle
         }
     }
@@ -348,8 +385,12 @@ interface WaveformRendererApi {
         outPath: String,
     ): String
 
+    /**
+     * Returnerar null när encoding inte stöds på plattformen (Android API < 29
+     * saknar Opus-encoder + OGG-muxer). Fel kastas; anroparen degraderar.
+     */
     suspend fun encodeOpus(
         pcm: ShortArray,
         outPath: String,
-    ): String
+    ): String?
 }

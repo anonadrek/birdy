@@ -31,7 +31,7 @@ private class FakeWaveformRenderer : WaveformRendererApi {
     override suspend fun encodeOpus(
         pcm: ShortArray,
         outPath: String,
-    ) = outPath
+    ): String? = outPath
 }
 
 /**
@@ -334,4 +334,130 @@ class AudioScanViewModelTest {
         vm.onPermissionState(PermissionState.PermanentlyDenied)
         assertEquals(AudioScanState.Error.PermanentlyDenied, vm.state.value)
     }
+
+    @Test
+    fun analyzeTimeout_emitsAnalyzeFailed_notHang() =
+        runTest {
+            val slowClassifier =
+                object : BirdAudioClassifier {
+                    override val info =
+                        AudioModelInfo("slow", listOf(1, 144_000), listOf(1, 1), 100.0)
+
+                    override suspend fun classify(input: AudioInput): AudioClassification {
+                        kotlinx.coroutines.delay(60_000) // långt över ANALYZE_TIMEOUT_MS
+                        return AudioClassification(emptyList(), 5L, "slow")
+                    }
+
+                    override fun close() {}
+                }
+            val recorder = FakeStreamingRecorder()
+            val vm =
+                AudioScanViewModel(
+                    classifierProvider = { Pair(slowClassifier, AudioClassifierMode.REAL) },
+                    recorder = recorder,
+                    waveformRenderer = FakeWaveformRenderer(),
+                    audioStorageDir = { "/tmp/audio" },
+                    clock = { 0L },
+                    normalizer = stubNormalizer,
+                    ioDispatcher = Dispatchers.Unconfined,
+                    inferenceDispatcher = Dispatchers.Unconfined,
+                )
+            vm.onPermissionState(PermissionState.Granted)
+            vm.startRecording()
+            recorder.emitChunks(120)
+            // OBS: streaming-inferensen hänger också på slowClassifier — men den är
+            // single-flight (inflight-guard) och blockerar inte stopRecording-vägen.
+            vm.stopRecording()
+            advanceUntilIdle()
+
+            assertEquals(AudioScanState.Error.AnalyzeFailed, vm.state.value)
+        }
+
+    @Test
+    fun encodeFailure_stillNavigatesWithNullAudioPath() =
+        runTest {
+            val failingRenderer =
+                object : WaveformRendererApi {
+                    override suspend fun renderWaveformPng(
+                        pcm: ShortArray,
+                        outPath: String,
+                    ) = outPath
+
+                    override suspend fun encodeOpus(
+                        pcm: ShortArray,
+                        outPath: String,
+                    ): String? = throw RuntimeException("disk full")
+                }
+            val classifier = ScriptedClassifier(confidencesPerCall = listOf(0.45f))
+            val recorder = FakeStreamingRecorder()
+            val vm =
+                AudioScanViewModel(
+                    classifierProvider = { Pair(classifier, AudioClassifierMode.REAL) },
+                    recorder = recorder,
+                    waveformRenderer = failingRenderer,
+                    audioStorageDir = { "/tmp/audio" },
+                    clock = { 0L },
+                    normalizer = stubNormalizer,
+                    ioDispatcher = Dispatchers.Unconfined,
+                    inferenceDispatcher = Dispatchers.Unconfined,
+                )
+            vm.onPermissionState(PermissionState.Granted)
+            vm.startRecording()
+            recorder.emitChunks(120)
+            advanceUntilIdle()
+            vm.stopRecording()
+            advanceUntilIdle()
+
+            val state = vm.state.value
+            assertTrue(state is AudioScanState.NavigateToMatch, "persist-fel får inte blockera ID:t, got $state")
+            val source = Json.decodeFromString<ScanSourceSerialization>(state.sourceJson)
+            assertEquals(null, source.audioWavPath)
+        }
+
+    @Test
+    fun cancelFromAnalyzing_returnsToIdle_andStaleTimeoutDoesNotClobber() =
+        runTest {
+            // Renderer som hänger för evigt -> finalize fastnar i Analyzing på PNG-steget.
+            val hangingRenderer =
+                object : WaveformRendererApi {
+                    override suspend fun renderWaveformPng(
+                        pcm: ShortArray,
+                        outPath: String,
+                    ): String {
+                        kotlinx.coroutines.awaitCancellation()
+                    }
+
+                    override suspend fun encodeOpus(
+                        pcm: ShortArray,
+                        outPath: String,
+                    ): String? = outPath
+                }
+            val recorder = FakeStreamingRecorder()
+            val vm =
+                AudioScanViewModel(
+                    classifierProvider = { Pair(ScriptedClassifier(listOf(0.45f)), AudioClassifierMode.REAL) },
+                    recorder = recorder,
+                    waveformRenderer = hangingRenderer,
+                    audioStorageDir = { "/tmp/audio" },
+                    clock = { 0L },
+                    normalizer = stubNormalizer,
+                    ioDispatcher = Dispatchers.Unconfined,
+                    inferenceDispatcher = Dispatchers.Unconfined,
+                )
+            vm.onPermissionState(PermissionState.Granted)
+            vm.startRecording()
+            recorder.emitChunks(120)
+            advanceUntilIdle()
+            vm.stopRecording()
+            // OBS: ingen advanceUntilIdle här — finalize hänger i renderern -> Analyzing.
+            assertTrue(vm.state.value is AudioScanState.Analyzing, "got ${vm.state.value}")
+
+            vm.cancelRecording()
+            assertEquals(AudioScanState.Idle, vm.state.value)
+
+            // Låt virtuell tid passera 15s-timeouten: det cancellade finalize-jobbet
+            // får INTE klobba Idle med Error.AnalyzeFailed i efterhand.
+            advanceUntilIdle()
+            assertEquals(AudioScanState.Idle, vm.state.value)
+        }
 }

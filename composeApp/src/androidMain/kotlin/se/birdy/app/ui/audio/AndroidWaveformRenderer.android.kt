@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.media.MediaCodec
 import android.media.MediaFormat
 import android.media.MediaMuxer
+import android.os.Build
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
@@ -102,8 +103,13 @@ class AndroidWaveformRenderer : WaveformRendererApi {
     override suspend fun encodeOpus(
         pcm: ShortArray,
         outPath: String,
-    ): String =
+    ): String? =
         withContext(Dispatchers.Default) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                // MIMETYPE_AUDIO_OPUS-encodern + MUXER_OUTPUT_OGG kräver API 29;
+                // minSdk är 24. Android 7-9 får journalpost utan uppspelning.
+                return@withContext null
+            }
             val sampleRate = 48_000
             val file = File(outPath)
             file.parentFile?.mkdirs()

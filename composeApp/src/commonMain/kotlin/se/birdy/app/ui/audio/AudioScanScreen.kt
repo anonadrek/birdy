@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.audio_scan_analyze_failed
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_analyzing
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cta_idle
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cta_recording
@@ -97,6 +98,13 @@ fun AudioScanScreen(
                         )
                     is AudioScanState.Error.BootstrapFailed ->
                         ErrorRetry(message = state.cause, onRetry = onRetry)
+                    is AudioScanState.Error.AnalyzeFailed ->
+                        // Placeholder generic retry; task 12 gives this its own
+                        // avbryt-styled treatment per the finalize-hardening spec.
+                        ErrorRetry(
+                            message = stringResource(Res.string.audio_scan_analyze_failed),
+                            onRetry = onRetry,
+                        )
                     is AudioScanState.NavigateToMatch -> {
                         // handled by host LaunchedEffect
                     }

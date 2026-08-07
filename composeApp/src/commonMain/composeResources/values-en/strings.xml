@@ -567,6 +567,7 @@
     <string name="audio_scan_permission_grant">Grant permission</string>
     <string name="audio_scan_permission_open_settings">Open settings</string>
     <string name="audio_scan_recording_failed">Microphone failed to start.</string>
+    <string name="audio_scan_analyze_failed">Couldn't identify the sound.</string>
     <string name="audio_scan_retry">Try again</string>
     <string name="audio_scan_mic_cd_idle">Start recording</string>
     <string name="audio_scan_mic_cd_recording">Stop recording</string>

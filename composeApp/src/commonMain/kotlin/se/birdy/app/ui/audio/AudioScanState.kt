@@ -30,6 +30,8 @@ sealed interface AudioScanState {
         data class BootstrapFailed(
             val cause: String,
         ) : Error
+
+        data object AnalyzeFailed : Error
     }
 }
 
