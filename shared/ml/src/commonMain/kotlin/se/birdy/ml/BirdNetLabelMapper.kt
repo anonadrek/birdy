@@ -11,6 +11,7 @@ class BirdNetLabelMapper internal constructor(
     private val indexToQid: Map<Int, String>,
     val modelVersion: String,
     val coveragePct: Double,
+    val totalBirdnetClasses: Int,
 ) {
     fun lookup(classIndex: Int): String? = indexToQid[classIndex]
 
@@ -29,6 +30,7 @@ class BirdNetLabelMapper internal constructor(
                 indexToQid = table,
                 modelVersion = dto.meta.generatedForModelVersion,
                 coveragePct = dto.meta.coveragePct,
+                totalBirdnetClasses = dto.meta.totalBirdnetClasses,
             )
         }
     }

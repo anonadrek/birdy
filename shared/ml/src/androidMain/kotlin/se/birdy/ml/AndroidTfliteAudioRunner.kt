@@ -81,14 +81,7 @@ class AndroidTfliteAudioRunner private constructor(
             // Mirrors BirdNET-Analyzer's `flat_sigmoid` post-processing.
             val scores = FloatArray(outputClasses) { flatSigmoid(outputBuf.float) }
 
-            val top3 =
-                scores
-                    .mapIndexed { idx, score -> idx to score }
-                    .sortedByDescending { it.second }
-                    .take(3)
-                    .mapNotNull { (idx, score) ->
-                        mapper.lookup(idx)?.let { qid -> ClassificationResult(qid, score) }
-                    }
+            val top3 = rankMappedScores(scores, mapper::lookup)
 
             AudioClassification(results = top3, inferenceMs = inferenceMs, modelVersion = info.modelVersion)
         }
@@ -125,13 +118,20 @@ class AndroidTfliteAudioRunner private constructor(
                 val inputShape = interpreter.getInputTensor(0).shape().toList()
                 val outputShape = interpreter.getOutputTensor(0).shape().toList()
 
+                // Loaded here (before the shape checks) because the output-shape guard below
+                // needs totalBirdnetClasses to detect a model/mapping mismatch.
+                val mapper = loadBirdNetLabelMapper()
+                check(outputShape.last() == mapper.totalBirdnetClasses) {
+                    "Model emits ${outputShape.last()} classes but birdnet_lite_to_qid.json " +
+                        "maps ${mapper.totalBirdnetClasses} — model/mapping mismatch would mis-index species."
+                }
+
                 check(inputShape.size == 2 && inputShape[0] == 1) {
                     "Unexpected inputShape $inputShape — expected [1, N] waveform tensor. " +
                         "This may indicate the wrong model file was bundled (T1 regression)."
                 }
                 val expectedSamples = inputShape.last()
 
-                val mapper = loadBirdNetLabelMapper()
                 val info =
                     AudioModelInfo(
                         modelVersion = mapper.modelVersion,
