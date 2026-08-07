@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_analyze_failed
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_analyzing
+import birdy_bird_scanner.composeapp.generated.resources.audio_scan_bootstrap_failed
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cta_idle
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cta_recording
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_headline
@@ -97,7 +98,10 @@ fun AudioScanScreen(
                             onRetry = onRetry,
                         )
                     is AudioScanState.Error.BootstrapFailed ->
-                        ErrorRetry(message = state.cause, onRetry = onRetry)
+                        ErrorRetry(
+                            message = stringResource(Res.string.audio_scan_bootstrap_failed),
+                            onRetry = onRetry,
+                        )
                     is AudioScanState.Error.AnalyzeFailed ->
                         // Placeholder generic retry; task 12 gives this its own
                         // avbryt-styled treatment per the finalize-hardening spec.

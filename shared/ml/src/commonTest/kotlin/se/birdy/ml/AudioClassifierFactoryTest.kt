@@ -46,4 +46,38 @@ class AudioClassifierFactoryTest {
             // Should not throw
             clf.close()
         }
+
+    @Test
+    fun allowFallbackFalse_rethrowsRealLoadFailure() =
+        runTest {
+            val boom = IllegalStateException("native lib missing")
+            var degraded: Throwable? = null
+            val factory =
+                AudioClassifierFactory(
+                    createReal = { throw boom },
+                    createFallback = { FakeAudioClassifier() },
+                    onDegrade = { degraded = it },
+                    allowFallback = false,
+                )
+            val thrown = kotlin.runCatching { factory.create() }.exceptionOrNull()
+            assertEquals(boom, thrown)
+            assertEquals(boom, degraded)
+        }
+
+    @Test
+    fun allowFallbackFalse_successReturnsRealWithoutGuardWrap() =
+        runTest {
+            val real = FakeAudioClassifier()
+            val factory =
+                AudioClassifierFactory(
+                    createReal = { real },
+                    createFallback = { FakeAudioClassifier() },
+                    onDegrade = {},
+                    allowFallback = false,
+                )
+            val (clf, mode) = factory.create()
+            assertEquals(AudioClassifierMode.REAL, mode)
+            // Utan guard-wrap är det exakt real-instansen som returneras:
+            assertEquals(real, clf)
+        }
 }

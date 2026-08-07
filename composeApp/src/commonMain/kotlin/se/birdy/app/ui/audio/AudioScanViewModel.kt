@@ -56,6 +56,11 @@ class AudioScanViewModel(
     private val _state = MutableStateFlow<AudioScanState>(AudioScanState.Preparing)
     val state: StateFlow<AudioScanState> = _state
 
+    private val _demoMode = MutableStateFlow(false)
+
+    /** True när fejk-klassificeraren är aktiv (endast debug-byggen) — UI visar banner. */
+    val demoMode: StateFlow<Boolean> = _demoMode
+
     private var sessionJob: Job? = null
     private var inferenceJob: Job? = null
 
@@ -120,13 +125,17 @@ class AudioScanViewModel(
         sessionJob =
             viewModelScope.launch {
                 try {
-                    classifierInstance =
+                    val (clf, mode) =
                         runCatching { classifierProvider() }
                             .getOrElse { throwable ->
                                 coroutineContext.ensureActive()
-                                _state.value = AudioScanState.Error.BootstrapFailed(throwable.message ?: "bootstrap failed")
+                                logAudio("classifier bootstrap failed: ${throwable.message}")
+                                _state.value =
+                                    AudioScanState.Error.BootstrapFailed(throwable.message ?: "bootstrap failed")
                                 return@launch
-                            }.first
+                            }
+                    classifierInstance = clf
+                    _demoMode.value = mode == AudioClassifierMode.DEMO
 
                     handle =
                         recorder.start(
@@ -223,6 +232,12 @@ class AudioScanViewModel(
                     finalizeJob = viewModelScope.launch { finalizeAndNavigate(reason = StopReason.AUTO) }
                     return@launch
                 }
+            } catch (t: CancellationException) {
+                throw t
+            } catch (t: Throwable) {
+                // Per-fönster klassificeringsfel (t.ex. AudioSessionFailureGuard-rethrow innan
+                // degradering) ska logga och släppa fönstret, inte krascha en ofångad coroutine.
+                logAudio("streaming classify failed: ${t.message}")
             } finally {
                 inflight = false
             }

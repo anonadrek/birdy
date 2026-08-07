@@ -18,8 +18,6 @@ import com.google.android.play.core.review.ReviewManagerFactory
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -124,9 +122,6 @@ class MainActivity : AppCompatActivity() {
      * model is loaded at most once per session. [AtomicReference] + CAS ensures only one
      * coroutine wins the load race; losers use [CoroutineStart.LAZY] so their Deferred
      * body never runs and no native handle is created (Fix #2).
-     *
-     * Reset to null in [onTrimMemory] (level >= TRIM_MEMORY_BACKGROUND) to free the
-     * native TFLite handle when the app moves to background.
      */
     private val audioBootstrapCache =
         AtomicReference<Deferred<Pair<BirdAudioClassifier, AudioClassifierMode>>?>(null)
@@ -140,9 +135,12 @@ class MainActivity : AppCompatActivity() {
      * Fix #2: Uses [CoroutineStart.LAZY] so the losing branch's Deferred body never
      * executes — no interpreter is constructed, no native handle can leak.
      *
-     * Fix #5: Retry loop re-checks the cache reference after [Deferred.await] returns.
-     * If [onTrimMemory] cleared the cache and closed the classifier while we were
-     * suspended, we loop to build a fresh instance rather than returning a closed one.
+     * Fix #5: Retry loop re-checks the cache reference after [Deferred.await] returns and
+     * loops to build a fresh instance if it changed underneath us, rather than returning a
+     * stale one. Nothing clears [audioBootstrapCache] today — the onTrimMemory-based release
+     * was removed (i2c ownership rule: the Activity must not close a classifier a live
+     * ViewModel still holds) — but the guard is harmless and stays as defense-in-depth
+     * against a future cache-clear.
      */
     private val audioProvider: suspend () -> Pair<BirdAudioClassifier, AudioClassifierMode> =
         audioProvider@{
@@ -165,12 +163,12 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 val result = deferred.await()
-                // Re-check: if onTrimMemory cleared the cache while we awaited, the
-                // classifier was closed. Loop to build a fresh one (Fix #5).
+                // Re-check: if the cache reference changed while we awaited, the previous
+                // classifier may have been closed. Loop to build a fresh one (Fix #5).
                 if (audioBootstrapCache.get() === deferred) {
                     return@audioProvider result
                 }
-                // Cache was cleared — classifier is closed. Loop.
+                // Cache reference changed — loop and resolve the new one.
             }
             @Suppress("UNREACHABLE_CODE")
             error("audioProvider loop exited unexpectedly")
@@ -178,14 +176,23 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Builds the audio classifier via [AudioClassifierFactory]. Extracted from [audioProvider]
-     * to keep the lambda readable. On failure, falls back to a no-op classifier and logs a warning;
-     * Crashlytics integration is deferred to Plan 6b3.
+     * to keep the lambda readable.
+     *
+     * `allowFallback = BuildConfig.DEBUG`: debug builds keep the historical fallback-to-
+     * [FakeAudioClassifier] behavior; release builds propagate a real-model load failure
+     * honestly (surfaced by the ViewModel as a bootstrap-failed error + retry) instead of
+     * silently answering every recording with a canned guess forever — see the 16 KB-device
+     * classifier-load bug. Crashlytics integration is deferred to Plan 6b3.
      */
     private suspend fun buildAudioClassifier(): Pair<BirdAudioClassifier, AudioClassifierMode> =
         AudioClassifierFactory(
             createReal = { AndroidTfliteAudioRunner.load(applicationContext) },
             createFallback = { FakeAudioClassifier() },
-            onDegrade = { t -> android.util.Log.w("Birdy", "Audio TFLite init failed, falling back to Fake", t) },
+            onDegrade = { t ->
+                android.util.Log.w("Birdy", "Audio TFLite init failed", t)
+                println("Birdy/audio: classifier degrade: ${t.message}")
+            },
+            allowFallback = BuildConfig.DEBUG,
         ).create()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -472,27 +479,6 @@ class MainActivity : AppCompatActivity() {
             .joinToString(" ") { part ->
                 part.replaceFirstChar { ch -> if (ch.isLowerCase()) ch.titlecase() else ch.toString() }
             }
-
-    /**
-     * Releases the cached audio classifier when the system signals memory pressure at or
-     * above [TRIM_MEMORY_BACKGROUND]. The AtomicReference is reset to null so the next
-     * audio-scan entry re-loads the model fresh.
-     *
-     * [GlobalScope] + [NonCancellable] mirrors the pattern used for image-classifier
-     * cleanup in [buildClassifier] (see Plan 4b): [lifecycleScope] may already be
-     * cancelled at this point on some Android versions.
-     */
-    override fun onTrimMemory(level: Int) {
-        super.onTrimMemory(level)
-        if (level >= TRIM_MEMORY_BACKGROUND) {
-            val cached = audioBootstrapCache.getAndSet(null)
-            cached?.let { def ->
-                GlobalScope.launch(Dispatchers.IO + NonCancellable) {
-                    runCatching { def.await().first.close() }
-                }
-            }
-        }
-    }
 
     private fun buildBenchmarkScreen(bootstrap: ClassifierBootstrap): (@Composable () -> Unit)? =
         if (BuildConfig.DEBUG) {
