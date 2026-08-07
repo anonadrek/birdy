@@ -54,7 +54,7 @@ fun ScanSourceSerialization.toScanSource(): ScanSource =
             ScanSource.Audio(
                 frameJpegPath = frameJpegPath,
                 classification = classification.toClassification(),
-                audioWavPath = audioWavPath ?: error("Audio variant missing audioWavPath"),
+                audioWavPath = audioWavPath,
             )
         else -> error("Unknown ScanSource type: $type")
     }

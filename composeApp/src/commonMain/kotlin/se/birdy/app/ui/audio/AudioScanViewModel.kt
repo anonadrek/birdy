@@ -30,13 +30,16 @@ import kotlin.coroutines.coroutineContext
  * Orchestrates the open-ended audio-scan flow:
  *
  *   Preparing → PermissionNeeded / Error.PermanentlyDenied / Idle
- *   Idle → Recording (sliding 3s/1s windows classified during capture)
- *        → Analyzing (final classify on best window)
+ *   Idle → Recording (sliding 3s/1s windows classified during capture;
+ *          every result accumulates into a per-species session-max map)
+ *        → Analyzing (ranks the session accumulator into a top-3 list — no
+ *          re-classification; falls back to a single classify of the last
+ *          window only when the accumulator is empty)
  *        → NavigateToMatch / Error.*
  *
  * Auto-stops when top-1 confidence reaches [AUTO_STOP_THRESHOLD] over any
  * sliding window. Manual stop via [stopRecording] or 60s cap have identical
- * behavior — final-classify on bestSoFar window (or last 3s as fallback).
+ * finalize behavior.
  */
 class AudioScanViewModel(
     private val classifierProvider: suspend () -> Pair<BirdAudioClassifier, AudioClassifierMode>,
@@ -60,7 +63,8 @@ class AudioScanViewModel(
 
     @Volatile private var bufferEnd = 0
 
-    @Volatile private var bestSoFar: Top1? = null
+    /** Per-art sessionsmax över alla fönster: speciesId -> bästa observation. */
+    @Volatile private var sessionScores: Map<String, Top1> = emptyMap()
 
     @Volatile private var lastClassifiedAtSamples = 0
 
@@ -101,7 +105,7 @@ class AudioScanViewModel(
 
         fullBuffer = ShortArray(MAX_BUFFER_SAMPLES)
         bufferEnd = 0
-        bestSoFar = null
+        sessionScores = emptyMap()
         lastClassifiedAtSamples = 0
         inflight = false
         sessionStartMs = clock()
@@ -149,11 +153,9 @@ class AudioScanViewModel(
 
         val elapsed = clock() - sessionStartMs
         _state.update { s ->
-            if (s is AudioScanState.Recording) {
-                AudioScanState.Recording(rms = rms, elapsedMs = elapsed, bestSoFar = bestSoFar)
-            } else {
-                s
-            }
+            // bestSoFar is owned by maybeSubmitInference (derived from sessionScores);
+            // preserve whatever it last set instead of re-deriving on every chunk.
+            if (s is AudioScanState.Recording) s.copy(rms = rms, elapsedMs = elapsed) else s
         }
 
         maybeSubmitInference()
@@ -180,22 +182,25 @@ class AudioScanViewModel(
                 val waveform = normalizer(window)
                 val result = clf.classify(AudioInput(waveform, SAMPLE_RATE, 3_000, rawPcm = window))
                 val top = result.results.firstOrNull()
-
-                if (top != null) {
-                    val current = bestSoFar
-                    if (current == null || top.confidence > current.confidence) {
-                        bestSoFar = Top1(top.speciesId, top.confidence, windowStart, windowEnd)
-                        _state.update { s ->
-                            if (s is AudioScanState.Recording) s.copy(bestSoFar = bestSoFar) else s
-                        }
+                result.results.forEach { r ->
+                    val existing = sessionScores[r.speciesId]
+                    if (existing == null || r.confidence > existing.confidence) {
+                        sessionScores = sessionScores +
+                            (r.speciesId to Top1(r.speciesId, r.confidence, windowStart, windowEnd))
                     }
-                    if (top.confidence >= AUTO_STOP_THRESHOLD) {
-                        // Finalize FÅR INTE köras inline här: denna coroutine är barn till
-                        // inferenceJob, och finalizeAndNavigate cancellar inferenceJob →
-                        // self-cancel → permanent Analyzing-häng (i produktion t.o.m. vC126).
-                        viewModelScope.launch { finalizeAndNavigate(reason = StopReason.AUTO) }
-                        return@launch
+                }
+                if (result.results.isNotEmpty()) {
+                    val best = sessionScores.values.maxByOrNull { it.confidence }
+                    _state.update { s ->
+                        if (s is AudioScanState.Recording) s.copy(bestSoFar = best) else s
                     }
+                }
+                if (top != null && top.confidence >= AUTO_STOP_THRESHOLD) {
+                    // Finalize FÅR INTE köras inline här: denna coroutine är barn till
+                    // inferenceJob, och finalizeAndNavigate cancellar inferenceJob →
+                    // self-cancel → permanent Analyzing-häng (i produktion t.o.m. vC126).
+                    viewModelScope.launch { finalizeAndNavigate(reason = StopReason.AUTO) }
+                    return@launch
                 }
             } finally {
                 inflight = false
@@ -216,7 +221,7 @@ class AudioScanViewModel(
         val analyzing = AudioScanState.Analyzing(rmsFrozen = current.rms)
         if (!_state.compareAndSet(current, analyzing)) return
 
-        // Cancel any in-flight streaming inference — bestSoFar is captured below
+        // Cancel any in-flight streaming inference — sessionScores is read below
         // and further writes would be wasted work past the Analyzing transition.
         inferenceJob?.cancel()
 
@@ -229,16 +234,8 @@ class AudioScanViewModel(
                 fullBuffer.copyOf(bufferEnd)
             }
 
-        val best = bestSoFar
-        val windowStart: Int
-        val windowEnd: Int
-        if (best != null) {
-            windowStart = best.pcmOffset
-            windowEnd = best.pcmEnd
-        } else {
-            windowEnd = fullPcm.size
-            windowStart = (windowEnd - WINDOW_SAMPLES).coerceAtLeast(0)
-        }
+        val windowEnd = fullPcm.size
+        val windowStart = (windowEnd - WINDOW_SAMPLES).coerceAtLeast(0)
         val window = fullPcm.copyOfRange(windowStart, windowEnd)
 
         analyzeAndNavigate(fullPcm = fullPcm, window = window)
@@ -249,10 +246,20 @@ class AudioScanViewModel(
         window: ShortArray,
     ) {
         coroutineContext.ensureActive()
-        val classifier =
-            classifierInstance ?: run {
-                _state.value = AudioScanState.Error.BootstrapFailed("classifier unavailable")
-                return
+        val ranked = sessionScores.values.sortedByDescending { it.confidence }.take(3)
+        val results: List<ClassificationResult> =
+            if (ranked.isNotEmpty()) {
+                // Sessions-ackumulatorn ersätter om-klassificeringen av bästa fönstret —
+                // en inferens mindre, och Disambig får riktiga kandidater.
+                ranked.map { ClassificationResult(it.speciesId, it.confidence) }
+            } else {
+                val classifier =
+                    classifierInstance ?: run {
+                        _state.value = AudioScanState.Error.BootstrapFailed("classifier unavailable")
+                        return
+                    }
+                val waveform = normalizer(window)
+                classifier.classify(AudioInput(waveform, SAMPLE_RATE, 3_000, rawPcm = window)).results
             }
 
         val ts = clock()
@@ -266,29 +273,13 @@ class AudioScanViewModel(
                 waveformRenderer.encodeOpus(fullPcm, "${audioStorageDir()}/$ts.opus")
             }
         coroutineContext.ensureActive()
-        val waveform = normalizer(window)
-        val classification = classifier.classify(AudioInput(waveform, SAMPLE_RATE, 3_000, rawPcm = window))
 
         val source =
-            if (classification.results.isEmpty()) {
-                ScanSource.Audio(
-                    frameJpegPath = pngPath,
-                    classification = Classification(results = emptyList(), frameTimestampMillis = ts),
-                    audioWavPath = audioPath,
-                )
-            } else {
-                val top = classification.results.first()
-                ScanSource.Audio(
-                    frameJpegPath = pngPath,
-                    classification =
-                        Classification(
-                            results = listOf(ClassificationResult(top.speciesId, top.confidence)),
-                            frameTimestampMillis = ts,
-                        ),
-                    audioWavPath = audioPath,
-                )
-            }
-
+            ScanSource.Audio(
+                frameJpegPath = pngPath,
+                classification = Classification(results = results, frameTimestampMillis = ts),
+                audioWavPath = audioPath,
+            )
         val json = Json.encodeToString(ScanSourceSerialization.serializer(), source.toSerial())
         _state.update { s ->
             if (s is AudioScanState.Analyzing) AudioScanState.NavigateToMatch(json, ts) else s
@@ -302,7 +293,7 @@ class AudioScanViewModel(
         inferenceJob = null
         handle?.cancel()
         handle = null
-        bestSoFar = null
+        sessionScores = emptyMap()
         bufferEnd = 0
         inflight = false
         lastClassifiedAtSamples = 0

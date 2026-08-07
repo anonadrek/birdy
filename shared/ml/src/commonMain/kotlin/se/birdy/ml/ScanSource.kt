@@ -16,6 +16,6 @@ sealed interface ScanSource {
     data class Audio(
         override val frameJpegPath: String,
         override val classification: Classification,
-        val audioWavPath: String,
+        val audioWavPath: String?,
     ) : ScanSource
 }

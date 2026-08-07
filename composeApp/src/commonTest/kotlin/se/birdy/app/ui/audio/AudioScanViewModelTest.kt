@@ -7,12 +7,14 @@ import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
+import kotlinx.serialization.json.Json
 import se.birdy.ml.AudioClassification
 import se.birdy.ml.AudioClassifierMode
 import se.birdy.ml.AudioInput
 import se.birdy.ml.AudioModelInfo
 import se.birdy.ml.BirdAudioClassifier
 import se.birdy.ml.ClassificationResult
+import se.birdy.ml.ScanSourceSerialization
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -60,6 +62,29 @@ private class ScriptedClassifier(
             inferenceMs = 5L,
             modelVersion = "scripted",
         )
+    }
+
+    override fun close() {}
+}
+
+/** Klassificerare med olika resultatlistor per anrop — för ackumulator-tester. */
+private class MultiResultClassifier(
+    private val resultsPerCall: List<List<ClassificationResult>>,
+) : BirdAudioClassifier {
+    override val info =
+        AudioModelInfo(
+            modelVersion = "multi",
+            inputShape = listOf(1, 144_000),
+            outputShape = listOf(1, 1),
+            coveragePct = 100.0,
+        )
+    var calls = 0
+        private set
+
+    override suspend fun classify(input: AudioInput): AudioClassification {
+        val results = resultsPerCall.getOrNull(calls) ?: emptyList()
+        calls++
+        return AudioClassification(results = results, inferenceMs = 5L, modelVersion = "multi")
     }
 
     override fun close() {}
@@ -218,6 +243,82 @@ class AudioScanViewModelTest {
                 classifier.callInputs.size >= 3,
                 "expected ≥3 classify calls (3 streaming + 1 final), got ${classifier.callInputs.size}",
             )
+        }
+
+    @Test
+    fun finalize_ranksSessionAccumulatorAcrossWindows_top3InSource() =
+        runTest {
+            // Fönster 1: A=0.30, Fönster 2: B=0.45 + A=0.20, Fönster 3: C=0.10.
+            // Sessionsmax: B=0.45, A=0.30, C=0.10 — i den ordningen i källan.
+            val classifier =
+                MultiResultClassifier(
+                    listOf(
+                        listOf(ClassificationResult("QA", 0.30f)),
+                        listOf(ClassificationResult("QB", 0.45f), ClassificationResult("QA", 0.20f)),
+                        listOf(ClassificationResult("QC", 0.10f)),
+                    ),
+                )
+            val recorder = FakeStreamingRecorder()
+            val vm2 =
+                AudioScanViewModel(
+                    classifierProvider = { Pair(classifier, AudioClassifierMode.REAL) },
+                    recorder = recorder,
+                    waveformRenderer = FakeWaveformRenderer(),
+                    audioStorageDir = { "/tmp/audio" },
+                    clock = { 0L },
+                    normalizer = stubNormalizer,
+                    ioDispatcher = Dispatchers.Unconfined,
+                    inferenceDispatcher = Dispatchers.Unconfined,
+                )
+            vm2.onPermissionState(PermissionState.Granted)
+            vm2.startRecording()
+            // Exakt 3 fönster: 144k (chunk 90) + 48k (chunk 120) + 48k (chunk 150).
+            // Ett 4:e fönster skulle triggas vid chunk 180 (+48k) — håll oss under
+            // den gränsen så `classifier.calls` nedan blir deterministiskt 3.
+            recorder.emitChunks(165)
+            advanceUntilIdle()
+            vm2.stopRecording()
+            advanceUntilIdle()
+
+            val state = vm2.state.value
+            assertTrue(state is AudioScanState.NavigateToMatch, "got $state")
+            val source = Json.decodeFromString<ScanSourceSerialization>(state.sourceJson)
+            val results = source.classification.results
+            assertEquals(listOf("QB", "QA", "QC"), results.map { it.speciesId })
+            assertEquals(0.45f, results[0].confidence)
+            assertEquals(0.30f, results[1].confidence)
+            // Ingen om-klassificering av bästa fönstret: exakt de 3 streaming-anropen.
+            assertEquals(3, classifier.calls)
+        }
+
+    @Test
+    fun finalize_withEmptyAccumulator_runsFallbackClassifyOnLastWindow() =
+        runTest {
+            // Alla streaming-fönster ger tomma resultat -> ackumulatorn är tom ->
+            // finalize kör EN fallback-klassificering på sista fönstret.
+            val classifier = MultiResultClassifier(List(10) { emptyList() })
+            val recorder = FakeStreamingRecorder()
+            val vm =
+                AudioScanViewModel(
+                    classifierProvider = { Pair(classifier, AudioClassifierMode.REAL) },
+                    recorder = recorder,
+                    waveformRenderer = FakeWaveformRenderer(),
+                    audioStorageDir = { "/tmp/audio" },
+                    clock = { 0L },
+                    normalizer = stubNormalizer,
+                    ioDispatcher = Dispatchers.Unconfined,
+                    inferenceDispatcher = Dispatchers.Unconfined,
+                )
+            vm.onPermissionState(PermissionState.Granted)
+            vm.startRecording()
+            recorder.emitChunks(120)
+            advanceUntilIdle()
+            val streamingCalls = classifier.calls
+            vm.stopRecording()
+            advanceUntilIdle()
+
+            assertTrue(vm.state.value is AudioScanState.NavigateToMatch, "got ${vm.state.value}")
+            assertEquals(streamingCalls + 1, classifier.calls)
         }
 
     @Test
