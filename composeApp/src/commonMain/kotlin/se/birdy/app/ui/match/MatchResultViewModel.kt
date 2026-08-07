@@ -51,6 +51,7 @@ class MatchResultViewModel(
     val state: StateFlow<MatchResultUiState> = _state.asStateFlow()
 
     private val unlockQueue = UnlockQueue()
+    private val thresholds = MatchThresholds.forSource(source)
 
     init {
         viewModelScope.launch { resolve() }
@@ -134,7 +135,7 @@ class MatchResultViewModel(
         }
         val (stampNumber, priorCount, prev) = dbLookup
         _state.value =
-            when (MatchThresholds.routeFor(top1.confidence)) {
+            when (thresholds.routeFor(top1.confidence)) {
                 MatchRoute.MATCH -> {
                     MatchResultUiState.Match(
                         species = top1.species,
@@ -153,7 +154,7 @@ class MatchResultViewModel(
                     MatchResultUiState.Disambig(
                         candidates =
                             effective
-                                .filter { it.confidence >= MatchThresholds.DISAMBIG_CONFIDENCE }
+                                .filter { it.confidence >= thresholds.disambigConfidence }
                                 .take(3),
                         stampNumber = stampNumber,
                         frameJpegPath = frameJpegPath,
@@ -165,7 +166,7 @@ class MatchResultViewModel(
                         frameJpegPath = frameJpegPath,
                         capturedAtMs = capturedAtMs,
                         source = source,
-                        topPrediction = top1.takeIf { it.confidence >= 0.15f },
+                        topPrediction = top1.takeIf { it.confidence >= thresholds.noBirdHintFloor },
                     )
             }
     }
