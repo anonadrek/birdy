@@ -18,6 +18,7 @@ import com.google.android.play.core.review.ReviewManagerFactory
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -141,6 +142,12 @@ class MainActivity : AppCompatActivity() {
      * was removed (i2c ownership rule: the Activity must not close a classifier a live
      * ViewModel still holds) — but the guard is harmless and stays as defense-in-depth
      * against a future cache-clear.
+     *
+     * Fix #8: A [Deferred] that completed with an exception (e.g. a release-build
+     * [buildAudioClassifier] failure, `allowFallback=false`) is evicted from
+     * [audioBootstrapCache] before the exception propagates, so the next call — e.g. after
+     * the user taps "Try again" — rebuilds via the normal CAS-from-null path above instead of
+     * re-awaiting the same permanently-failed load forever.
      */
     private val audioProvider: suspend () -> Pair<BirdAudioClassifier, AudioClassifierMode> =
         audioProvider@{
@@ -162,7 +169,23 @@ class MainActivity : AppCompatActivity() {
                             audioBootstrapCache.get() ?: continue
                         }
                     }
-                val result = deferred.await()
+                val result =
+                    try {
+                        deferred.await()
+                    } catch (t: Throwable) {
+                        // Evict only when the DEFERRED ITSELF failed — a caller-side
+                        // cancellation (CE while the shared load is still running/healthy)
+                        // must not evict a healthy in-flight/completed load (Fix #8). CAS on
+                        // the exact reference so a concurrent newer cache entry is never
+                        // clobbered; the next tap after eviction rebuilds via the normal
+                        // CAS-from-null path above.
+                        @OptIn(ExperimentalCoroutinesApi::class)
+                        val deferredFailed = deferred.isCompleted && deferred.getCompletionExceptionOrNull() != null
+                        if (deferredFailed) {
+                            audioBootstrapCache.compareAndSet(deferred, null)
+                        }
+                        throw t
+                    }
                 // Re-check: if the cache reference changed while we awaited, the previous
                 // classifier may have been closed. Loop to build a fresh one (Fix #5).
                 if (audioBootstrapCache.get() === deferred) {
