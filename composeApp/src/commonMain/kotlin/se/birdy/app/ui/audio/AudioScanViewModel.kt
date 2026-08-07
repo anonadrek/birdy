@@ -190,7 +190,10 @@ class AudioScanViewModel(
                         }
                     }
                     if (top.confidence >= AUTO_STOP_THRESHOLD) {
-                        finalizeAndNavigate(reason = StopReason.AUTO)
+                        // Finalize FÅR INTE köras inline här: denna coroutine är barn till
+                        // inferenceJob, och finalizeAndNavigate cancellar inferenceJob →
+                        // self-cancel → permanent Analyzing-häng (i produktion t.o.m. vC126).
+                        viewModelScope.launch { finalizeAndNavigate(reason = StopReason.AUTO) }
                         return@launch
                     }
                 }
@@ -218,8 +221,13 @@ class AudioScanViewModel(
         inferenceJob?.cancel()
 
         val fullPcm =
-            runCatching { handle?.stopAndFlush() ?: ShortArray(bufferEnd) }
-                .getOrElse { fullBuffer.copyOf(bufferEnd) }
+            try {
+                handle?.stopAndFlush() ?: ShortArray(bufferEnd)
+            } catch (t: CancellationException) {
+                throw t
+            } catch (t: Throwable) {
+                fullBuffer.copyOf(bufferEnd)
+            }
 
         val best = bestSoFar
         val windowStart: Int

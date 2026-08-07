@@ -111,9 +111,8 @@ class AudioScanViewModelTest {
             advanceUntilIdle()
 
             assertTrue(
-                vm.state.value is AudioScanState.NavigateToMatch ||
-                    vm.state.value is AudioScanState.Analyzing,
-                "expected Analyzing/NavigateToMatch, got ${vm.state.value}",
+                vm.state.value is AudioScanState.NavigateToMatch,
+                "auto-stop must reach NavigateToMatch (Analyzing-hang = L1 self-cancel bug), got ${vm.state.value}",
             )
             assertTrue(classifier.callInputs.size >= 2, "classifier called ${classifier.callInputs.size} times")
         }
