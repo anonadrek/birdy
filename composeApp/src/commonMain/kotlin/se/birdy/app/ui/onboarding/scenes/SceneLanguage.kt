@@ -16,6 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -88,7 +92,10 @@ private fun LanguageChoice(
                 .border(width = if (isSelected) 2.dp else 1.dp, color = borderColor, shape = shape)
                 .background(if (isSelected) AccentCopper.copy(alpha = 0.08f) else Color.Transparent)
                 .clickable(onClick = onClick)
-                .padding(horizontal = 20.dp, vertical = 16.dp),
+                .semantics(mergeDescendants = true) {
+                    this.selected = isSelected
+                    role = Role.RadioButton
+                }.padding(horizontal = 20.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(text = label, fontSize = 18.sp, color = MarginaliaInk, modifier = Modifier.weight(1f))
