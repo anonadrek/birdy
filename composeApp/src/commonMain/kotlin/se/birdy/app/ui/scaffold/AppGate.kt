@@ -47,6 +47,7 @@ fun AppGate(graph: AppGraph) {
                                 state = s,
                                 onPageChange = vm::setPageIndex,
                                 onNameChange = vm::onNameChange,
+                                onLanguageSelect = vm::selectLanguage,
                                 onComplete = vm::complete,
                             )
                         OnboardingUiState.Done -> AppScaffold(graph)

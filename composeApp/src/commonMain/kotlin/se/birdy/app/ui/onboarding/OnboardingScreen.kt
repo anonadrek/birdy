@@ -34,14 +34,16 @@ import se.birdy.app.ui.onboarding.scenes.SceneAudio
 import se.birdy.app.ui.onboarding.scenes.SceneBadges
 import se.birdy.app.ui.onboarding.scenes.SceneHero
 import se.birdy.app.ui.onboarding.scenes.SceneJournal
+import se.birdy.app.ui.onboarding.scenes.SceneLanguage
 import se.birdy.app.ui.onboarding.scenes.SceneName
 import se.birdy.app.ui.onboarding.scenes.ScenePhoto
 import se.birdy.app.ui.onboarding.scenes.ScenePrivacy
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.paperBackground
+import se.birdy.datastore.AppLanguage
 
-private const val SCENE_COUNT = 7
+private const val SCENE_COUNT = 8
 
 /**
  * Höjden på det reserverade bandet längst ner där sid-prickarna bor. Pager-innehållet
@@ -55,6 +57,7 @@ fun OnboardingScreen(
     state: OnboardingUiState.Visible,
     onPageChange: (Int) -> Unit,
     onNameChange: (String) -> Unit,
+    onLanguageSelect: (AppLanguage) -> Unit,
     onComplete: () -> Unit,
     isReplay: Boolean = false,
 ) {
@@ -86,13 +89,19 @@ fun OnboardingScreen(
             val pageOffset =
                 (pagerState.currentPage - page).toFloat() + pagerState.currentPageOffsetFraction
             when (page) {
-                0 -> SceneHero(pageOffset = pageOffset)
-                1 -> ScenePhoto(pageOffset = pageOffset, isActive = pagerState.currentPage == 1)
-                2 -> SceneAudio(pageOffset = pageOffset, isActive = pagerState.currentPage == 2)
-                3 -> SceneJournal(pageOffset = pageOffset, isActive = pagerState.currentPage == 3)
-                4 -> SceneBadges(pageOffset = pageOffset, isActive = pagerState.currentPage == 4)
-                5 -> ScenePrivacy(pageOffset = pageOffset, isActive = pagerState.currentPage == 5)
-                6 ->
+                0 ->
+                    SceneLanguage(
+                        pageOffset = pageOffset,
+                        selected = state.selectedLanguage,
+                        onSelect = onLanguageSelect,
+                    )
+                1 -> SceneHero(pageOffset = pageOffset)
+                2 -> ScenePhoto(pageOffset = pageOffset, isActive = pagerState.currentPage == 2)
+                3 -> SceneAudio(pageOffset = pageOffset, isActive = pagerState.currentPage == 3)
+                4 -> SceneJournal(pageOffset = pageOffset, isActive = pagerState.currentPage == 4)
+                5 -> SceneBadges(pageOffset = pageOffset, isActive = pagerState.currentPage == 5)
+                6 -> ScenePrivacy(pageOffset = pageOffset, isActive = pagerState.currentPage == 6)
+                7 ->
                     SceneName(
                         nameInput = state.nameInput,
                         onNameChange = onNameChange,

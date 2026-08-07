@@ -353,6 +353,7 @@ fun AppScaffold(graph: AppGraph) {
                             state = s,
                             onPageChange = vm::setPageIndex,
                             onNameChange = vm::onNameChange,
+                            onLanguageSelect = vm::selectLanguage,
                             onComplete = { navController.popBackStack() },
                             isReplay = true,
                         )
