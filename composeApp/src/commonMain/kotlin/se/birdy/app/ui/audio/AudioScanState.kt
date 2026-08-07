@@ -34,15 +34,14 @@ sealed interface AudioScanState {
 }
 
 /**
- * Best classification observed so far across all sliding 3s windows during a
- * single recording session. `[pcmOffset, pcmEnd)` is a half-open range over
- * the PCM buffer (matches `ShortArray.copyOfRange` semantics) — used at
- * final-classify time to re-run the model on the winning window for full
- * Disambig-routing data.
+ * Per-species best confidence observed across all sliding 3s windows during a
+ * single recording session. Entries live in the session accumulator
+ * (`AudioScanViewModel.sessionScores`); the top entry drives
+ * `Recording.bestSoFar` (the live "current best guess" shown while
+ * recording), and at finalize time the whole accumulator is ranked into the
+ * top-3 list packed into `ScanSource`.
  */
 data class Top1(
     val speciesId: String,
     val confidence: Float,
-    val pcmOffset: Int,
-    val pcmEnd: Int,
 )

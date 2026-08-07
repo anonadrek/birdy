@@ -186,7 +186,7 @@ class AudioScanViewModel(
                     val existing = sessionScores[r.speciesId]
                     if (existing == null || r.confidence > existing.confidence) {
                         sessionScores = sessionScores +
-                            (r.speciesId to Top1(r.speciesId, r.confidence, windowStart, windowEnd))
+                            (r.speciesId to Top1(r.speciesId, r.confidence))
                     }
                 }
                 if (result.results.isNotEmpty()) {
