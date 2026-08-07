@@ -136,6 +136,7 @@ class AudioScanViewModel(
                             onCapReached = {
                                 finalizeJob = viewModelScope.launch { finalizeAndNavigate(reason = StopReason.CAP) }
                             },
+                            onError = { t -> onRecorderError(t) },
                             maxDurationMs = MAX_RECORD_MS,
                         )
                 } catch (t: CancellationException) {
@@ -145,6 +146,19 @@ class AudioScanViewModel(
                     _state.value = AudioScanState.Error.RecordingFailed
                 }
             }
+    }
+
+    /** Recorder-haveri mitt i sessionen: städa och visa fel istället för tyst frusen timer. */
+    private fun onRecorderError(cause: Throwable) {
+        logAudio("recorder failed mid-session: ${cause.message}")
+        viewModelScope.launch {
+            inferenceJob?.cancel()
+            handle?.cancel()
+            handle = null
+            if (_state.value is AudioScanState.Recording) {
+                _state.value = AudioScanState.Error.RecordingFailed
+            }
+        }
     }
 
     private fun onChunkReceived(
@@ -355,10 +369,15 @@ interface AudioRecorderApi {
      * - Callbacks fire on the recorder's IO thread, NOT the caller's thread,
      *   and may arrive after [start] has returned the handle. The consumer
      *   must store incoming chunks in a thread-safe way.
+     * - [onError] fyras högst en gång per session när capture havererar mitt i
+     *   (read <= 0 = mic stulen/privacy-toggle/backgrounding, eller throw i
+     *   capture-loopen). Fyras INTE vid normal stop/cancel. Fyras på recorderns
+     *   IO-tråd.
      */
     fun start(
         onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -> Unit,
         onCapReached: () -> Unit,
+        onError: (Throwable) -> Unit = {},
         maxDurationMs: Long = 60_000L,
     ): RecorderHandle
 }

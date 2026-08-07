@@ -226,6 +226,20 @@ class AudioScanViewModelTest {
         }
 
     @Test
+    fun recorderError_midSession_emitsRecordingFailed() =
+        runTest {
+            val recorder = FakeStreamingRecorder()
+            val (vm, _) = makeVm(recorder = recorder)
+            vm.onPermissionState(PermissionState.Granted)
+            vm.startRecording()
+            recorder.emitChunks(30)
+            recorder.emitError(IllegalStateException("AudioRecord.read returned 0"))
+            advanceUntilIdle()
+
+            assertEquals(AudioScanState.Error.RecordingFailed, vm.state.value)
+        }
+
+    @Test
     fun bestSoFar_tracksHighestConfidenceAcrossWindows() =
         runTest {
             val classifier = ScriptedClassifier(confidencesPerCall = listOf(0.30f, 0.50f, 0.40f, 0.55f))

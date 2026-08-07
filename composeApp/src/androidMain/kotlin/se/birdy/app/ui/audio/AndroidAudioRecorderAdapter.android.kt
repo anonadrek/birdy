@@ -12,9 +12,10 @@ class AndroidAudioRecorderAdapter(
     override fun start(
         onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -> Unit,
         onCapReached: () -> Unit,
+        onError: (Throwable) -> Unit,
         maxDurationMs: Long,
     ): RecorderHandle {
-        val androidHandle = recorder.start(onChunk, onCapReached, maxDurationMs)
+        val androidHandle = recorder.start(onChunk, onCapReached, onError, maxDurationMs)
         return object : RecorderHandle {
             override suspend fun stopAndFlush(): ShortArray = androidHandle.stopAndFlush()
 

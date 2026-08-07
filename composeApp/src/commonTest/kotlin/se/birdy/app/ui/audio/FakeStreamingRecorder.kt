@@ -16,6 +16,7 @@ class FakeStreamingRecorder(
 ) : AudioRecorderApi {
     private var onChunk: ((ShortArray, Float, Int) -> Unit)? = null
     private var onCap: (() -> Unit)? = null
+    private var onError: ((Throwable) -> Unit)? = null
     private val buffer = ShortArray(maxBufferSamples)
     private var totalSamples = 0
     private val stopped = MutableStateFlow(false)
@@ -24,10 +25,12 @@ class FakeStreamingRecorder(
     override fun start(
         onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -> Unit,
         onCapReached: () -> Unit,
+        onError: (Throwable) -> Unit,
         maxDurationMs: Long,
     ): RecorderHandle {
         this.onChunk = onChunk
         this.onCap = onCapReached
+        this.onError = onError
         return object : RecorderHandle {
             override suspend fun stopAndFlush(): ShortArray {
                 stopped.value = true
@@ -38,6 +41,11 @@ class FakeStreamingRecorder(
                 cancelled.value = true
             }
         }
+    }
+
+    /** Simulerar recorder-haveri mitt i sessionen (read()<=0 / startRecording-throw). */
+    fun emitError(t: Throwable) {
+        onError?.invoke(t)
     }
 
     /**

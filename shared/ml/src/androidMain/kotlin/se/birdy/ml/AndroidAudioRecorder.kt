@@ -32,6 +32,7 @@ class AndroidAudioRecorder(
     fun start(
         onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -> Unit,
         onCapReached: () -> Unit,
+        onError: (Throwable) -> Unit = {},
         maxDurationMs: Long = 60_000L,
     ): AndroidRecorderHandle {
         val maxSamples = (sampleRate * maxDurationMs / 1000L).toInt()
@@ -43,10 +44,12 @@ class AndroidAudioRecorder(
             )
         require(minBuf > 0) { "AudioRecord.getMinBufferSize returned $minBuf" }
 
-        var recorder = buildRecorder(MediaRecorder.AudioSource.UNPROCESSED, minBuf)
+        // ×4 headroom: an overrun (consumer briefly slower than capture) previously
+        // dropped/glitched reads with no signal — the buffer now absorbs that slack.
+        var recorder = buildRecorder(MediaRecorder.AudioSource.UNPROCESSED, minBuf * 4)
         if (recorder.state != AudioRecord.STATE_INITIALIZED) {
             recorder.release()
-            recorder = buildRecorder(MediaRecorder.AudioSource.VOICE_RECOGNITION, minBuf)
+            recorder = buildRecorder(MediaRecorder.AudioSource.VOICE_RECOGNITION, minBuf * 4)
         }
         if (recorder.state != AudioRecord.STATE_INITIALIZED) {
             recorder.release()
@@ -69,7 +72,15 @@ class AndroidAudioRecorder(
                     while (total < maxSamples && !stopRequested.isCompleted && !cancelRequested.isCompleted) {
                         val toRead = minOf(chunkSize, maxSamples - total)
                         val read = recorder.read(chunkBuf, 0, toRead)
-                        if (read <= 0) break
+                        if (read <= 0) {
+                            // Mic stulen (samtal/privacy-toggle) eller backgrounding: Android 11+
+                            // ger TYSTNAD eller 0-reads till bakgrundsappar — utan signal här
+                            // frös UI:t med död timer och permanent låst stopp-knapp.
+                            if (!stopRequested.isCompleted && !cancelRequested.isCompleted) {
+                                onError(IllegalStateException("AudioRecord.read returned $read"))
+                            }
+                            break
+                        }
                         chunkBuf.copyInto(captured, destinationOffset = total, startIndex = 0, endIndex = read)
                         val rms = computeRms(chunkBuf, 0, read)
                         total += read
@@ -80,6 +91,11 @@ class AndroidAudioRecorder(
                     if (total >= maxSamples && !stopRequested.isCompleted && !cancelRequested.isCompleted) {
                         onCapReached()
                     }
+                } catch (t: Throwable) {
+                    if (t is kotlinx.coroutines.CancellationException) throw t
+                    // startRecording()/read()-throw hamnade förut i SupervisorJob-scopens
+                    // default-handler = app-krasch.
+                    if (!stopRequested.isCompleted && !cancelRequested.isCompleted) onError(t)
                 } finally {
                     runCatching { recorder.stop() }
                     recorder.release()

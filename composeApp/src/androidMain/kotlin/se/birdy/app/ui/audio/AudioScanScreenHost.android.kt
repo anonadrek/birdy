@@ -60,6 +60,15 @@ actual fun AudioScanScreenHost(
     val permissionState by permissionController.state.collectAsState()
 
     val vm = remember(graph) { graph.audioScanViewModel() }
+
+    // Stoppa mikrofonen när skärmen lämnas (Back/navigering). VM:en skapas med
+    // remember — inte ViewModelStore — så onCleared körs aldrig; utan detta höll
+    // AudioRecord micken (OS-indikatorn lyste) i upp till 60s efter utnavigering.
+    // Ofarligt efter NavigateToMatch: cancelRecording rör inte det statet.
+    DisposableEffect(vm) {
+        onDispose { vm.cancelRecording() }
+    }
+
     val state by vm.state.collectAsState()
 
     LaunchedEffect(permissionState) {
