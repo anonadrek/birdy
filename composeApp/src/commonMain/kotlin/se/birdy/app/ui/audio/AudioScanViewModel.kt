@@ -58,7 +58,8 @@ class AudioScanViewModel(
 
     private var sessionJob: Job? = null
     private var inferenceJob: Job? = null
-    private var finalizeJob: Job? = null
+
+    @Volatile private var finalizeJob: Job? = null
     private var handle: RecorderHandle? = null
 
     // Streaming-state, owned by sessionJob coroutine
