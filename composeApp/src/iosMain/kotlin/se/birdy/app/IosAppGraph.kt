@@ -3,12 +3,17 @@ package se.birdy.app
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Clock
+import platform.Foundation.NSLocale
 import platform.Foundation.NSUserDefaults
+import platform.Foundation.preferredLanguages
 import se.birdy.app.badges.BadgeCatalogLoader
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.di.AppGraph
+import se.birdy.app.i18n.LocaleResolver
+import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
@@ -84,6 +89,17 @@ fun buildIosAppGraph(): AppGraph {
                 Triple(classifier, mode, capturedModelVersion)
             },
         )
+    val userPreferences = UserPreferencesStore(null).preferences()
+    // Mirror of MainActivity.buildAppGraph()'s locale resolution (line 323-328).
+    // Without this, species content is hard-locked to the AppGraph default Locale.SV
+    // regardless of device language and the app_language pref. A fresh graph is built
+    // per app launch, so language changes take effect on next launch (live-switch = i4).
+    val storedLanguage = runBlocking { userPreferences.appLanguage.first() }
+    val resolvedLocale =
+        LocaleResolver.resolve(
+            override = storedLanguage.toLocaleTagOrNull(),
+            systemTag = (NSLocale.preferredLanguages.firstOrNull() as? String) ?: "en",
+        )
     return AppGraph(
         repository = SpeciesRepositoryProvider.get(),
         classifierBootstrap = classifierBootstrap,
@@ -93,10 +109,11 @@ fun buildIosAppGraph(): AppGraph {
         badgeRepository = badgeRepo,
         badgeCatalog = badgeCatalog,
         badgeVersionStore = NsUserDefaultsBadgeVersionStore(),
-        userPreferences = UserPreferencesStore(null).preferences(),
+        userPreferences = userPreferences,
         premiumRepository = IosStubPremiumRepository(),
         premiumOverride = PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now()),
         versionName = "1.2.0-ios-i2c",
+        defaultLocale = resolvedLocale,
     )
 }
 
