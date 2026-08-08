@@ -149,6 +149,7 @@ class MainActivity : AppCompatActivity() {
      * the user taps "Try again" — rebuilds via the normal CAS-from-null path above instead of
      * re-awaiting the same permanently-failed load forever.
      */
+    @Suppress("TooGenericExceptionCaught")
     private val audioProvider: suspend () -> Pair<BirdAudioClassifier, AudioClassifierMode> =
         audioProvider@{
             while (true) {
@@ -173,6 +174,11 @@ class MainActivity : AppCompatActivity() {
                     try {
                         deferred.await()
                     } catch (t: Throwable) {
+                        // Generic catch is deliberate (detekt TooGenericExceptionCaught
+                        // suppressed above): native model-load failures surface as Errors
+                        // (e.g. UnsatisfiedLinkError), not just Exceptions, and the
+                        // eviction+rethrow below must cover those too.
+                        //
                         // Evict only when the DEFERRED ITSELF failed — a caller-side
                         // cancellation (CE while the shared load is still running/healthy)
                         // must not evict a healthy in-flight/completed load (Fix #8). CAS on
