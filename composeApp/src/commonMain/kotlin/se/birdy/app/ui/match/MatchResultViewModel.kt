@@ -77,10 +77,12 @@ class MatchResultViewModel(
         // Read classification results from ScanSource (replaces parseCsv)
         val parsed = source.classification.results.map { it.speciesId to it.confidence }
         if (parsed.isEmpty()) {
-            // Empty results = nothing scored above the classifier threshold = no bird
-            // detected, regardless of source. (Image used to route to Error: a garbage
-            // photo the model correctly scored as background got an error screen instead
-            // of NoBird. Decode/runtime failures surface elsewhere, never as empty lists.)
+            // Empty results = the model scored nothing above noise for any mapped species,
+            // regardless of source — a real "no bird here", not a failure. (Image used to
+            // route to Error: a garbage photo the model correctly scored as background got
+            // an error screen instead of NoBird.) Decode/runtime failures surface as error
+            // states upstream of this ViewModel, before a ScanSource is ever constructed —
+            // they never reach resolve() as an empty results list.
             _state.value =
                 MatchResultUiState.NoBird(
                     frameJpegPath = source.frameJpegPath.ifBlank { null },

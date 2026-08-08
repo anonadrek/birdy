@@ -14,7 +14,7 @@ data class ResolvedPrediction(
 sealed interface MatchResultUiState {
     data object Loading : MatchResultUiState
 
-    /** Alla predictions < DISAMBIG_CONFIDENCE (0.35). Inget bevisat fågel-fynd. */
+    /** Alla predictions under källans disambig-tröskel ([MatchThresholds]). Inget bevisat fågel-fynd. */
     data class NoBird(
         val frameJpegPath: String?,
         val capturedAtMs: Long,
@@ -22,7 +22,7 @@ sealed interface MatchResultUiState {
         val topPrediction: ResolvedPrediction? = null,
     ) : MatchResultUiState
 
-    /** Top-1 i 0.35–0.50-bandet. Användaren får välja bland 2-3 kandidater. */
+    /** Top-1 i Disambig-bandet ([MatchThresholds], mellan disambig- och match-tröskeln). Användaren får välja bland 2-3 kandidater. */
     data class Disambig(
         val candidates: List<ResolvedPrediction>,
         val stampNumber: Int,
@@ -31,7 +31,7 @@ sealed interface MatchResultUiState {
         val source: ScanSource,
     ) : MatchResultUiState
 
-    /** Top-1 ≥ 0.50 ELLER användaren just pickade från Disambig. */
+    /** Top-1 ≥ källans match-tröskel ([MatchThresholds]) ELLER användaren just pickade från Disambig. */
     data class Match(
         val species: Species,
         val confidence: Float,

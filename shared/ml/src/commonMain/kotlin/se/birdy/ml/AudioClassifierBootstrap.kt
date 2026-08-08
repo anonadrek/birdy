@@ -82,13 +82,16 @@ class AudioClassifierBootstrap(
 
     /**
      * Releases the classifier if ready and resets state to [AudioClassifierBootstrapState.Idle].
-     * Called by [MainActivity.onTrimMemory] (level >= TRIM_MEMORY_BACKGROUND) to free
-     * the 57 MB TFLite native handle when the app moves to background.
+     *
+     * [release] is unwired in production: `MainActivity` never constructs an
+     * [AudioClassifierBootstrap] instance — it manages its own `Deferred`-backed
+     * `audioBootstrapCache` directly and closes the classifier itself in `onDestroy`.
+     * This method stays as a tested, ready-to-use building block for a future caller
+     * that adopts this class instead.
      *
      * Uses [getAndUpdate] for atomicity: the state is swapped to [AudioClassifierBootstrapState.Idle]
      * in a single CAS operation, so a concurrent [ensureReady] cannot observe a half-released
-     * state (Fix #6). [release] is currently unwired in production — kept for T5/T6 to
-     * consume after this commit. Tests pin its contract.
+     * state (Fix #6). Tests pin its contract.
      */
     fun release() {
         val previous = _state.getAndUpdate { AudioClassifierBootstrapState.Idle }

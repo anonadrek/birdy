@@ -14,8 +14,8 @@ class MatchThresholdsTest {
     }
 
     @Test
-    fun audio_thresholds_are_0_40_0_20_0_10() {
-        assertEquals(0.40f, MatchThresholds.AUDIO.matchConfidence)
+    fun audio_thresholds_are_0_50_0_20_0_10() {
+        assertEquals(0.50f, MatchThresholds.AUDIO.matchConfidence)
         assertEquals(0.20f, MatchThresholds.AUDIO.disambigConfidence)
         assertEquals(0.10f, MatchThresholds.AUDIO.noBirdHintFloor)
     }
@@ -55,8 +55,9 @@ class MatchThresholdsTest {
 
     @Test
     fun audio_routeFor_between_thresholds_routes_to_disambig() {
+        assertEquals(MatchRoute.MATCH, MatchThresholds.AUDIO.routeFor(0.50f))
+        assertEquals(MatchRoute.DISAMBIG, MatchThresholds.AUDIO.routeFor(0.45f))
         assertEquals(MatchRoute.DISAMBIG, MatchThresholds.AUDIO.routeFor(0.30f))
-        assertEquals(MatchRoute.MATCH, MatchThresholds.AUDIO.routeFor(0.40f))
         assertEquals(MatchRoute.NOBIRD, MatchThresholds.AUDIO.routeFor(0.19f))
     }
 }

@@ -19,6 +19,8 @@ import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -138,10 +140,11 @@ class MainActivity : AppCompatActivity() {
      *
      * Fix #5: Retry loop re-checks the cache reference after [Deferred.await] returns and
      * loops to build a fresh instance if it changed underneath us, rather than returning a
-     * stale one. Nothing clears [audioBootstrapCache] today — the onTrimMemory-based release
-     * was removed (i2c ownership rule: the Activity must not close a classifier a live
-     * ViewModel still holds) — but the guard is harmless and stays as defense-in-depth
-     * against a future cache-clear.
+     * stale one. [onDestroy] is the only thing that clears [audioBootstrapCache] — it closes
+     * the classifier there as its own end-of-life cleanup (i2c ownership rule respected: the
+     * Activity only ever closes the audio classifier it owns via this cache, never a shared
+     * bootstrap singleton). This guard is what keeps a caller still awaiting at that moment
+     * from returning the now-closed instance instead of looping to rebuild.
      *
      * Fix #8: A [Deferred] that completed with an exception (e.g. a release-build
      * [buildAudioClassifier] failure, `allowFallback=false`) is evicted from
@@ -288,6 +291,13 @@ class MainActivity : AppCompatActivity() {
         // Rotation destroys+recreates Activity so the classifier re-loads
         // (~14ms p95); singleton-lift to Application scope is a follow-up.
         appGraph.classifierBootstrap.close()
+        // Audio classifier is Activity-owned (audioBootstrapCache above), unlike the image
+        // classifier's AppGraph-owned ClassifierBootstrap — onDestroy is its only close path
+        // since T11 removed onTrimMemory. Owner closes at its own end-of-life; a recreate
+        // (rotation, language change) rebuilds via the CAS-from-null path in audioProvider.
+        audioBootstrapCache.getAndSet(null)?.let { def ->
+            GlobalScope.launch(Dispatchers.IO + NonCancellable) { runCatching { def.await().first.close() } }
+        }
         billingClient.dispose()
     }
 
