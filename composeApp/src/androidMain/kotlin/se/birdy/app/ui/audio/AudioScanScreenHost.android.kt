@@ -70,6 +70,7 @@ actual fun AudioScanScreenHost(
     }
 
     val state by vm.state.collectAsState()
+    val demoMode by vm.demoMode.collectAsState()
 
     LaunchedEffect(permissionState) {
         vm.onPermissionState(permissionState)
@@ -83,8 +84,10 @@ actual fun AudioScanScreenHost(
     AudioScanScreen(
         state = state,
         permissionState = permissionState,
+        demoMode = demoMode,
         onStartRecording = vm::startRecording,
         onStopRecording = vm::stopRecording,
+        onCancelAnalyzing = vm::cancelRecording,
         onRequestPermission = permissionController::request,
         onOpenSettings = permissionController::openSettings,
         onRetry = vm::cancelRecording,

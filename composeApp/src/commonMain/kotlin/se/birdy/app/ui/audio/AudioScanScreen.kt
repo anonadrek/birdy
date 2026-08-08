@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,9 +23,13 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_analyze_failed
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_analyzing
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_bootstrap_failed
+import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cancel
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cta_idle
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cta_recording
+import birdy_bird_scanner.composeapp.generated.resources.audio_scan_cta_recording_locked
+import birdy_bird_scanner.composeapp.generated.resources.audio_scan_demo_banner
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_headline
+import birdy_bird_scanner.composeapp.generated.resources.audio_scan_hearing_chip
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.audio_scan_marginalia_top
@@ -52,8 +57,10 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
 fun AudioScanScreen(
     state: AudioScanState,
     permissionState: PermissionState,
+    demoMode: Boolean,
     onStartRecording: () -> Unit,
     onStopRecording: () -> Unit,
+    onCancelAnalyzing: () -> Unit,
     onRequestPermission: () -> Unit,
     onOpenSettings: () -> Unit,
     onRetry: () -> Unit,
@@ -79,6 +86,15 @@ fun AudioScanScreen(
                 )
                 Spacer(Modifier.height(32.dp))
 
+                if (demoMode) {
+                    Text(
+                        text = stringResource(Res.string.audio_scan_demo_banner),
+                        color = AccentCopper,
+                        fontSize = 12.sp,
+                    )
+                    Spacer(Modifier.height(8.dp))
+                }
+
                 when (state) {
                     is AudioScanState.Preparing ->
                         Text("…", fontFamily = rememberDmSerifDisplay(), fontStyle = FontStyle.Italic)
@@ -91,7 +107,7 @@ fun AudioScanScreen(
                     is AudioScanState.Recording ->
                         RecordingView(state = state, onStop = onStopRecording)
                     is AudioScanState.Analyzing ->
-                        AnalyzingView(state = state)
+                        AnalyzingView(state = state, onCancel = onCancelAnalyzing)
                     is AudioScanState.Error.RecordingFailed ->
                         ErrorRetry(
                             message = stringResource(Res.string.audio_scan_recording_failed),
@@ -103,8 +119,6 @@ fun AudioScanScreen(
                             onRetry = onRetry,
                         )
                     is AudioScanState.Error.AnalyzeFailed ->
-                        // Placeholder generic retry; task 12 gives this its own
-                        // avbryt-styled treatment per the finalize-hardening spec.
                         ErrorRetry(
                             message = stringResource(Res.string.audio_scan_analyze_failed),
                             onRetry = onRetry,
@@ -169,18 +183,39 @@ private fun RecordingView(
         )
         Spacer(Modifier.height(12.dp))
         RecordingTimer(elapsedMs = state.elapsedMs)
+        state.bestSoFar?.let { best ->
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text =
+                    stringResource(
+                        Res.string.audio_scan_hearing_chip,
+                        state.bestSoFarName ?: best.speciesId,
+                        "${(best.confidence * 100).toInt()}%",
+                    ),
+                color = MarginaliaInk,
+                fontFamily = rememberCaveat(),
+                fontSize = 15.sp,
+            )
+        }
         Spacer(Modifier.height(8.dp))
-        Text(
-            text = stringResource(Res.string.audio_scan_cta_recording),
-            color = AccentCopper,
-            fontFamily = rememberCaveat(),
-            fontSize = 16.sp,
-        )
+        val ctaText =
+            if (micState == MicButtonState.RecordingDisabled) {
+                val secondsLeft =
+                    (((AudioScanViewModel.MIN_RECORD_MS - state.elapsedMs).coerceAtLeast(0L) / 1000L) + 1)
+                        .toString()
+                stringResource(Res.string.audio_scan_cta_recording_locked, secondsLeft)
+            } else {
+                stringResource(Res.string.audio_scan_cta_recording)
+            }
+        Text(text = ctaText, color = AccentCopper, fontFamily = rememberCaveat(), fontSize = 16.sp)
     }
 }
 
 @Composable
-private fun AnalyzingView(state: AudioScanState.Analyzing) {
+private fun AnalyzingView(
+    state: AudioScanState.Analyzing,
+    onCancel: () -> Unit,
+) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         WaveformBars(rms = state.rmsFrozen, frozen = true)
         Spacer(Modifier.height(24.dp))
@@ -195,6 +230,10 @@ private fun AnalyzingView(state: AudioScanState.Analyzing) {
             fontFamily = rememberDmSerifDisplay(),
             fontStyle = FontStyle.Italic,
         )
+        Spacer(Modifier.height(12.dp))
+        TextButton(onClick = onCancel) {
+            Text(text = stringResource(Res.string.audio_scan_cancel), color = MarginaliaInk)
+        }
     }
 }
 

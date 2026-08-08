@@ -475,6 +475,9 @@ class AppGraph(
             recorder = recorder,
             waveformRenderer = renderer,
             audioStorageDir = dir,
+            speciesNameLookup = { qid ->
+                repository.getById(SpeciesId(qid), defaultLocale).first()?.name
+            },
         )
     }
 }

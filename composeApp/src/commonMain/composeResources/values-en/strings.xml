@@ -574,6 +574,9 @@
     <string name="audio_scan_mic_cd_idle">Start recording</string>
     <string name="audio_scan_mic_cd_recording">Stop recording</string>
     <string name="audio_scan_mic_cd_analyzing">Analyzing</string>
+    <string name="audio_scan_hearing_chip">Hearing: %1$s · %2$s</string>
+    <string name="audio_scan_cancel">Cancel</string>
+    <string name="audio_scan_cta_recording_locked">Listening — stop available in %1$s s</string>
     <string name="audio_noBird_hint1">Move closer to the bird.</string>
     <string name="audio_noBird_hint2">Reduce wind noise behind you.</string>
     <string name="audio_noBird_hint3">Record while the bird is actually singing.</string>

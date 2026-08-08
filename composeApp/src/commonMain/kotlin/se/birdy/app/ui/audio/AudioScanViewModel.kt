@@ -52,6 +52,7 @@ class AudioScanViewModel(
     private val normalizer: (ShortArray) -> FloatArray = ::normalize,
     private val ioDispatcher: CoroutineDispatcher = se.birdy.app.util.ioDispatcher,
     private val inferenceDispatcher: CoroutineDispatcher = Dispatchers.Default,
+    private val speciesNameLookup: suspend (String) -> String? = { null },
 ) : ViewModel() {
     private val _state = MutableStateFlow<AudioScanState>(AudioScanState.Preparing)
     val state: StateFlow<AudioScanState> = _state
@@ -82,6 +83,9 @@ class AudioScanViewModel(
     @Volatile private var sessionStartMs: Long = 0L
 
     @Volatile private var classifierInstance: BirdAudioClassifier? = null
+
+    /** Per-session cache av speciesId -> lokaliserat namn (eller null om lookup misslyckades). */
+    private val nameCache = mutableMapOf<String, String?>()
 
     companion object {
         const val SAMPLE_RATE = 48_000
@@ -121,6 +125,7 @@ class AudioScanViewModel(
         lastClassifiedAtSamples = 0
         inflight = false
         sessionStartMs = clock()
+        nameCache.clear()
 
         sessionJob =
             viewModelScope.launch {
@@ -191,6 +196,22 @@ class AudioScanViewModel(
         maybeSubmitInference()
     }
 
+    private suspend fun resolveName(speciesId: String): String? =
+        if (nameCache.containsKey(speciesId)) {
+            nameCache[speciesId]
+        } else {
+            val name =
+                try {
+                    speciesNameLookup(speciesId)
+                } catch (t: CancellationException) {
+                    throw t
+                } catch (t: Throwable) {
+                    null
+                }
+            nameCache[speciesId] = name
+            name
+        }
+
     private fun maybeSubmitInference() {
         if (inflight) return
         if (bufferEnd < WINDOW_SAMPLES) return
@@ -221,8 +242,13 @@ class AudioScanViewModel(
                 }
                 if (result.results.isNotEmpty()) {
                     val best = sessionScores.values.maxByOrNull { it.confidence }
+                    val bestName = best?.let { resolveName(it.speciesId) }
                     _state.update { s ->
-                        if (s is AudioScanState.Recording) s.copy(bestSoFar = best) else s
+                        if (s is AudioScanState.Recording) {
+                            s.copy(bestSoFar = best, bestSoFarName = bestName)
+                        } else {
+                            s
+                        }
                     }
                 }
                 if (top != null && top.confidence >= AUTO_STOP_THRESHOLD) {

@@ -587,6 +587,9 @@
     <string name="audio_scan_mic_cd_idle">Starta inspelning</string>
     <string name="audio_scan_mic_cd_recording">Stoppa inspelning</string>
     <string name="audio_scan_mic_cd_analyzing">Analyserar</string>
+    <string name="audio_scan_hearing_chip">Hör: %1$s · %2$s</string>
+    <string name="audio_scan_cancel">Avbryt</string>
+    <string name="audio_scan_cta_recording_locked">Lyssnar — stopp möjligt om %1$s s</string>
     <string name="audio_noBird_hint1">Kom närmare fågeln.</string>
     <string name="audio_noBird_hint2">Sänk vindbruset bakom dig.</string>
     <string name="audio_noBird_hint3">Spela in när fågeln faktiskt sjunger.</string>

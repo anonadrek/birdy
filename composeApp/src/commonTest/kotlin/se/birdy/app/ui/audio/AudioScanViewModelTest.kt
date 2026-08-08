@@ -260,6 +260,34 @@ class AudioScanViewModelTest {
         }
 
     @Test
+    fun bestSoFarName_resolvedViaLookupAndExposedInRecordingState() =
+        runTest {
+            val classifier = ScriptedClassifier(confidencesPerCall = listOf(0.45f))
+            val recorder = FakeStreamingRecorder()
+            val vm =
+                AudioScanViewModel(
+                    classifierProvider = { Pair(classifier, AudioClassifierMode.REAL) },
+                    recorder = recorder,
+                    waveformRenderer = FakeWaveformRenderer(),
+                    audioStorageDir = { "/tmp/audio" },
+                    clock = { 0L },
+                    normalizer = stubNormalizer,
+                    ioDispatcher = Dispatchers.Unconfined,
+                    inferenceDispatcher = Dispatchers.Unconfined,
+                    speciesNameLookup = { qid -> if (qid == "Q25334") "Koltrast" else null },
+                )
+            vm.onPermissionState(PermissionState.Granted)
+            vm.startRecording()
+            recorder.emitChunks(120)
+            advanceUntilIdle()
+
+            val s = vm.state.value
+            assertTrue(s is AudioScanState.Recording, "got $s")
+            assertEquals("Q25334", s.bestSoFar?.speciesId)
+            assertEquals("Koltrast", s.bestSoFarName)
+        }
+
+    @Test
     fun finalize_ranksSessionAccumulatorAcrossWindows_top3InSource() =
         runTest {
             // Fönster 1: A=0.30, Fönster 2: B=0.45 + A=0.20, Fönster 3: C=0.10.

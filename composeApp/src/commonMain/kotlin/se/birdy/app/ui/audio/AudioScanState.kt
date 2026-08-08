@@ -11,6 +11,7 @@ sealed interface AudioScanState {
         val rms: Float,
         val elapsedMs: Long,
         val bestSoFar: Top1? = null,
+        val bestSoFarName: String? = null,
     ) : AudioScanState
 
     data class Analyzing(
