@@ -15,17 +15,22 @@ import platform.AVFAudio.AVAudioConverterInputStatus_HaveData
 import platform.AVFAudio.AVAudioConverterInputStatus_NoDataNow
 import platform.AVFAudio.AVAudioConverterOutputStatus_Error
 import platform.AVFAudio.AVAudioEngine
+import platform.AVFAudio.AVAudioEngineConfigurationChangeNotification
 import platform.AVFAudio.AVAudioFormat
 import platform.AVFAudio.AVAudioPCMBuffer
 import platform.AVFAudio.AVAudioPCMFormatInt16
 import platform.AVFAudio.AVAudioSession
 import platform.AVFAudio.AVAudioSessionCategoryRecord
 import platform.AVFAudio.AVAudioSessionInterruptionNotification
+import platform.AVFAudio.AVAudioSessionInterruptionTypeBegan
+import platform.AVFAudio.AVAudioSessionInterruptionTypeKey
 import platform.AVFAudio.AVAudioSessionModeMeasurement
 import platform.AVFAudio.setActive
 import platform.Foundation.NSError
 import platform.Foundation.NSLock
+import platform.Foundation.NSNotification
 import platform.Foundation.NSNotificationCenter
+import platform.Foundation.NSNumber
 import platform.Foundation.NSOperationQueue
 import platform.darwin.dispatch_async
 import platform.darwin.dispatch_get_main_queue
@@ -38,8 +43,11 @@ import kotlin.math.ceil
  * AVAudioEngine-tap + AVAudioConverter (hårdvaruformat → 48k/mono/Int16).
  * Identiskt callback-kontrakt (se [AndroidAudioRecorder] + AudioRecorderApi-KDoc):
  * onChunk på recorderns egen tråd (~33 ms-chunks), onCapReached vid [maxDurationMs],
- * onError HÖGST EN GÅNG (session-avbrott/mic-förlust/start-fel) och aldrig efter
- * stop/cancel. AVAudioSession .record + .measurement ≈ Androids UNPROCESSED.
+ * onError HÖGST EN GÅNG (session-avbrott via [AVAudioSessionInterruptionNotification],
+ * mic-förlust/engine-ombyggnad via [AVAudioEngineConfigurationChangeNotification] — t.ex.
+ * BT-öronsnäckor ansluter mitt i inspelning) och aldrig efter stop/cancel. Start-fel
+ * kastas SYNKRONT ur [start] (try/catch → teardown → rethrow) — går INTE via onError.
+ * AVAudioSession .record + .measurement ≈ Androids UNPROCESSED.
  *
  * OBS failable-init-trapen (CLAUDE.md): AVAudioFormat/AVAudioConverter är `init?` —
  * konstruktoranropen wrappas i [orNullOnNpe], aldrig elvis direkt på konstruktorn.
@@ -111,14 +119,46 @@ class IosAudioRecorder(
                     ?: error("AVAudioConverter $hwFormat -> $targetFormat kunde inte skapas")
 
             // Avbrott (samtal/Siri) = mic stulen → onError en gång (Androids read<=0-motsvarighet).
+            // Guard på .Began (Fix #2): en avslutad (.Ended) notis får inte fela en session
+            // som redan lever vidare (t.ex. samtalet tar slut och OS postar .Ended efteråt).
             handle.interruptionObserver =
                 NSNotificationCenter.defaultCenter.addObserverForName(
                     name = AVAudioSessionInterruptionNotification,
                     `object` = null,
                     queue = NSOperationQueue.mainQueue,
-                ) { _ ->
-                    handle.fireError(IllegalStateException("AVAudioSession interrupted"))
+                ) { notification ->
+                    if (isInterruptionBegan(notification)) {
+                        handle.fireError(IllegalStateException("AVAudioSession interrupted"))
+                    }
                 }
+            // Registrerings-fönster-guard: om handle redan hunnit terminate:as (fireError/
+            // teardown/cancel körde på en ANNAN tråd mellan handle-konstruktion och denna
+            // assignment) innan vi hann tilldela fältet, river vi observern direkt istället
+            // för att låta den och dess retainade handle-referens läcka tyst vidare.
+            if (handle.terminated) {
+                handle.interruptionObserver?.let { NSNotificationCenter.defaultCenter.removeObserver(it) }
+                handle.interruptionObserver = null
+            }
+
+            // Engine-konfigurationsändring (Fix #1, slutreview Important): input-hårdvaran
+            // byts mitt i inspelning (t.ex. BT-öronsnäckor ansluter) → AVAudioEngine stoppar
+            // SIG SJÄLV och tap-callbacks upphör tyst — AVAudioSessionInterruptionNotification
+            // täcker BARA samtal/Siri-avbrott, inte det här. Utan denna observer fastnar UI:t
+            // i en frusen timer (mic-indikatorn lever kvar, inga nya chunks kommer). object =
+            // engine (INTE null) — en gammal sessions engine-instans får inte träffa en ny
+            // sessions observer (nästa start() skapar en FÄRSK AVAudioEngine).
+            handle.engineConfigObserver =
+                NSNotificationCenter.defaultCenter.addObserverForName(
+                    name = AVAudioEngineConfigurationChangeNotification,
+                    `object` = engine,
+                    queue = NSOperationQueue.mainQueue,
+                ) { _ ->
+                    handle.fireError(IllegalStateException("AVAudioEngine configuration changed"))
+                }
+            if (handle.terminated) {
+                handle.engineConfigObserver?.let { NSNotificationCenter.defaultCenter.removeObserver(it) }
+                handle.engineConfigObserver = null
+            }
 
             input.installTapOnBus(0u, bufferSize = 4800u, format = hwFormat) { buffer, _ ->
                 val inBuf = buffer ?: return@installTapOnBus
@@ -189,6 +229,19 @@ class IosAudioRecorder(
             // K/N mappar failable ObjC-init till konstruktor som kastar NPE vid nil.
             null
         }
+
+    /**
+     * Fix #2: [AVAudioSessionInterruptionNotification] fyras BÅDE när avbrottet börjar
+     * och när det slutar — userInfo[[AVAudioSessionInterruptionTypeKey]] (en boxad
+     * NSNumber) skiljer dem åt. Vi ska bara fela på .Began; en .Ended-notis betyder att
+     * OS just gav tillbaka mic:en, inte att den försvann. Saknad userInfo/typ hanteras
+     * konservativt som .Began (fireError) — hellre en falsk RecordingFailed än en tyst
+     * frusen inspelning om Apple någon gång skulle posta en typlös notis.
+     */
+    private fun isInterruptionBegan(notification: NSNotification?): Boolean {
+        val typeNumber = notification?.userInfo?.get(AVAudioSessionInterruptionTypeKey) as? NSNumber
+        return typeNumber == null || typeNumber.unsignedLongValue == AVAudioSessionInterruptionTypeBegan.toULong()
+    }
 }
 
 @OptIn(ExperimentalForeignApi::class)
@@ -196,9 +249,16 @@ class IosRecorderHandle internal constructor(
     private val engine: AVAudioEngine,
     private val session: AVAudioSession,
 ) {
-    internal lateinit var chunker: PcmChunker
-    internal var onErrorOnce: ((Throwable) -> Unit)? = null
-    internal var interruptionObserver: Any? = null
+    // Fix #4: publicerade av start() (main/caller-tråd), lästa från tap-tråden,
+    // main-queue-notisobservrarna och Dispatchers.Default (stopAndFlush) — @Volatile
+    // ger korrekt cross-thread-synlighet utan att gå vägen om `lock` för varje läsning.
+    @Volatile internal var chunker: PcmChunker? = null
+
+    @Volatile internal var onErrorOnce: ((Throwable) -> Unit)? = null
+
+    @Volatile internal var interruptionObserver: Any? = null
+
+    @Volatile internal var engineConfigObserver: Any? = null
 
     private val lock = NSLock()
 
@@ -244,6 +304,8 @@ class IosRecorderHandle internal constructor(
         runCatching { engine.stop() }
         runCatching { interruptionObserver?.let { NSNotificationCenter.defaultCenter.removeObserver(it) } }
         interruptionObserver = null
+        runCatching { engineConfigObserver?.let { NSNotificationCenter.defaultCenter.removeObserver(it) } }
+        engineConfigObserver = null
     }
 
     /**
@@ -253,7 +315,7 @@ class IosRecorderHandle internal constructor(
      * reentrant in i tap-callbackens egen exekvering, en känd AVAudioEngine-fälla (Apples
      * rekommendation är att trigga tap-borttagning utanför render-callbacken). Konsument-
      * callbacken (onCapReached/onError) fyras ändå direkt från tap-tråden — det är
-     * kontraktsenligt (se AudioRecorderApi-KDoc: "Fyras på recorderns IO-tråd").
+     * kontraktsenligt (se AudioRecorderApi-KDoc: "Fyras på recorderns egen tråd/kö").
      *
      * Idempotent mot en mellanliggande [stopAndFlush]/[cancel]: om [teardown] redan hunnit
      * köra [stopCaptureOnly] synkront innan denna uppskjutna körning triggas, är varje steg
@@ -280,7 +342,18 @@ class IosRecorderHandle internal constructor(
     suspend fun stopAndFlush(): ShortArray =
         withContext(Dispatchers.Default) {
             teardown()
-            if (cancelled) ShortArray(0) else withLockReturning { chunker.snapshot() }
+            if (cancelled) {
+                ShortArray(0)
+            } else {
+                // start() always assigns chunker before returning this handle to the
+                // caller — null here would mean stopAndFlush() was reached without going
+                // through start(), a caller contract violation. Fail loud, not silent
+                // (CLAUDE.md trap-katalogen: tysta fallbacks i produktion är förbjudna).
+                withLockReturning {
+                    checkNotNull(chunker) { "stopAndFlush() called before start() assigned chunker" }
+                        .snapshot()
+                }
+            }
         }
 
     fun cancel() {

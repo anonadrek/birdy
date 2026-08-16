@@ -119,29 +119,35 @@ class AppGraph(
      * The Android actual caches the result via
      * `AtomicReference<Deferred<Pair<BirdAudioClassifier, AudioClassifierMode>>?>` + CAS
      * in [MainActivity] so concurrent callers get the same instance and the 57 MB TFLite
-     * model is loaded at most once per session.
+     * model is loaded at most once per session. iOS wires its own CAS-mirror,
+     * `IosAudioBootstrap` in `buildIosAppGraph()` (composeApp iosMain, since i3) — same
+     * Deferred-CAS-cache pattern, app-lifetime scope (no close on iOS).
      *
-     * Null in tests / non-Android targets — UI must gate audio-scan entry behind a
-     * premium check AND a non-null provider check.
+     * Null only in tests — UI must gate audio-scan entry behind a premium check AND a
+     * non-null provider check.
      */
     val audioClassifierProvider: (suspend () -> Pair<BirdAudioClassifier, AudioClassifierMode>)? = null,
     /**
      * Returns the absolute path to the directory where audio recordings are stored.
      * Must be callable from any thread; the caller ensures [mkdirs] is invoked before
      * returning. Wired from [MainActivity] as `{ File(filesDir, "audio").also { it.mkdirs() }.absolutePath }`.
+     * iOS wires `audioStorageDirPath()` in `buildIosAppGraph()` (composeApp iosMain, since i3),
+     * which resolves `<Documents>/audio` and creates it if missing.
      *
      * Null in tests — [audioScanViewModel] will error if called without this wired.
      */
     val audioStorageDir: (() -> String)? = null,
     /**
-     * Factory for [AudioRecorderApi]. Android actual returns [AndroidAudioRecorderAdapter].
-     * Null in tests / non-Android targets — [audioScanViewModel] will error if null.
+     * Factory for [AudioRecorderApi]. Android actual returns [AndroidAudioRecorderAdapter];
+     * iOS actual returns `IosAudioRecorderAdapter` (wired in `buildIosAppGraph()`, since i3).
+     * Null in tests — [audioScanViewModel] will error if null.
      */
     val audioRecorderFactory: (() -> AudioRecorderApi)? = null,
     /**
      * Factory for [WaveformRendererApi]. T5 returns [AndroidWaveformRendererStub];
-     * T6 upgrades to the real PNG + Opus renderer.
-     * Null in tests / non-Android targets — [audioScanViewModel] will error if null.
+     * T6 upgrades to the real PNG + Opus renderer. iOS wires `IosWaveformRenderer` in
+     * `buildIosAppGraph()` (composeApp iosMain, since i3).
+     * Null in tests — [audioScanViewModel] will error if null.
      */
     val waveformRendererFactory: (() -> WaveformRendererApi)? = null,
     /**

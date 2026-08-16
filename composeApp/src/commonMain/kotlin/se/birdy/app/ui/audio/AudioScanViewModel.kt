@@ -404,16 +404,19 @@ interface AudioRecorderApi {
      * Emits PCM chunks via [onChunk] until [RecorderHandle.stopAndFlush] is called
      * or [maxDurationMs] elapses (in which case [onCapReached] fires).
      *
-     * - [onChunk] runs on the recorder's IO dispatcher; consumer MUST be cheap
+     * - [onChunk] runs on the recorder's own capture thread/queue; consumer MUST be cheap
      *   (append to buffer, update rms) — heavy work (ML inference) belongs in
      *   the ViewModel on its own dispatcher.
-     * - Callbacks fire on the recorder's IO thread, NOT the caller's thread,
-     *   and may arrive after [start] has returned the handle. The consumer
-     *   must store incoming chunks in a thread-safe way.
+     * - Callbacks fire on the recorder's own thread/queue (not necessarily the SAME
+     *   thread/queue across callbacks — see [onError] below), NOT the caller's thread,
+     *   and may arrive after [start] has returned the handle. The consumer must store
+     *   incoming chunks in a thread-safe way and stay thread-agnostic in general.
      * - [onError] fyras högst en gång per session när capture havererar mitt i
      *   (read <= 0 = mic stulen/privacy-toggle/backgrounding, eller throw i
-     *   capture-loopen). Fyras INTE vid normal stop/cancel. Fyras på recorderns
-     *   IO-tråd.
+     *   capture-loopen — Android; på iOS även session-avbrott/mic-byte via
+     *   AVAudioSession-notiser). Fyras INTE vid normal stop/cancel. Fyras på
+     *   recorderns egen tråd/kö — på iOS specifikt main-queuen för
+     *   interruption-/engine-config-vägen, INTE tap-tråden som [onChunk] använder.
      */
     fun start(
         onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -> Unit,

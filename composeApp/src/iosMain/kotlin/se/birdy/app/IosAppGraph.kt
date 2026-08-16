@@ -18,6 +18,7 @@ import platform.Foundation.NSBundle
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSLocale
+import platform.Foundation.NSLog
 import platform.Foundation.NSSearchPathForDirectoriesInDomains
 import platform.Foundation.NSUserDefaults
 import platform.Foundation.NSUserDomainMask
@@ -30,6 +31,7 @@ import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.app.ui.audio.IosAudioRecorderAdapter
 import se.birdy.app.ui.audio.IosWaveformRenderer
+import se.birdy.app.util.ioDispatcher
 import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
@@ -167,12 +169,11 @@ internal object IosAudioBootstrap {
                         cached
                     } else {
                         val newDeferred =
-                            // Dispatchers.IO is internal (not public) on Kotlin/Native in
-                            // kotlinx-coroutines 1.9.0 — Dispatchers.Default is the only
-                            // general-purpose dispatcher kotlinx.coroutines exposes publicly
-                            // on this target. K/N-anpassning av T7-controller-rulingen (explicit
-                            // dispatcher named at the async call site, trognast möjliga spegel).
-                            scope.async(Dispatchers.Default, start = CoroutineStart.LAZY) { build() }
+                            // ioDispatcher = Dispatchers.Default on iOS (Dispatchers.IO is
+                            // internal on Kotlin/Native in kotlinx-coroutines 1.9.0) — reuse
+                            // the shared expect/actual instead of a local comment; see
+                            // composeApp/src/*/kotlin/se/birdy/app/util/IoDispatcher.kt.
+                            scope.async(ioDispatcher, start = CoroutineStart.LAZY) { build() }
                         if (cache.compareAndSet(null, newDeferred)) {
                             newDeferred
                         } else {
@@ -207,7 +208,9 @@ internal object IosAudioBootstrap {
         AudioClassifierFactory(
             createReal = { IosTfliteAudioRunner.load(bundledBirdnetPath()) },
             createFallback = { FakeAudioClassifier() },
-            onDegrade = { t -> println("Birdy/audio: classifier degrade: ${t.message}") },
+            onDegrade = { t ->
+                NSLog("%@", "Birdy/audio: classifier degrade: ${t::class.simpleName}: ${t.message}")
+            },
             allowFallback = Platform.isDebugBinary,
         ).create()
 

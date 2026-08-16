@@ -12,6 +12,7 @@ import kotlinx.cinterop.usePinned
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import platform.Foundation.NSData
+import platform.Foundation.NSDataReadingMappedIfSafe
 import platform.Foundation.dataWithContentsOfFile
 import platform.posix.memcpy
 import tflitec.TfLiteInterpreterAllocateTensors
@@ -231,8 +232,13 @@ class IosTfliteAudioRunner(
         }
 
         private fun readFileBytes(path: String): ByteArray {
+            // NSDataReadingMappedIfSafe: mmap istället för en fullständig heap-kopia av
+            // 54 MB-modellfilen, halverar den transienta minnestoppen per load (den andra
+            // kopian görs sedan medvetet nedan, in i den GC-owned ByteArrayen som pinnas
+            // för TfLiteModelCreate). error = null — samma fel-semantik som förut (null ⇒
+            // kastat fel nedan; NSData.length == 0 ⇒ check() nedan).
             val data =
-                NSData.dataWithContentsOfFile(path)
+                NSData.dataWithContentsOfFile(path, options = NSDataReadingMappedIfSafe, error = null)
                     ?: error("Kunde inte läsa modellfil: $path")
             val size = data.length.toInt()
             check(size > 0) { "Modellfilen är tom: $path" }

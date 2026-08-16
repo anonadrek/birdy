@@ -37,7 +37,9 @@ sealed interface AudioClassifierBootstrapState {
  * a build). Thread-safety for the concurrent-load case is delegated to the
  * `AtomicReference<Deferred<...>>` + CAS pattern in [MainActivity] — only one [Deferred]
  * survives the CAS race and calls [ensureReady]; any losing [Deferred] is cancelled before
- * calling in.
+ * calling in. iOS has its own CAS mirror, `IosAudioBootstrap` (composeApp iosMain, since
+ * i3), with the same Deferred-CAS-cache shape — this class itself remains an unused
+ * building block on both platforms (see [release]'s KDoc for the same note).
  *
  * Contrast with [ClassifierBootstrap] (image model): that class starts loading eagerly
  * via `init { launchBuild() }` because the image model is always needed. The audio model
