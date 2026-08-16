@@ -1,1 +1,2 @@
 "NSCameraUsageDescription" = "Birdy uses the camera to identify birds in real time. Frames are analyzed on your device and never leave it.";
+"NSMicrophoneUsageDescription" = "Birdy uses the microphone to identify birds by their song. Audio is analyzed on your device and never leaves it.";

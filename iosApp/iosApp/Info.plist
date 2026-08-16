@@ -22,5 +22,7 @@
     <true/>
     <key>NSCameraUsageDescription</key>
     <string>Birdy uses the camera to identify birds in real time. Frames are analyzed on your device and never leave it.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Birdy uses the microphone to identify birds by their song. Audio is analyzed on your device and never leaves it.</string>
 </dict>
 </plist>
