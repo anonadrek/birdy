@@ -1,0 +1,8 @@
+[project]
+name = "birdy-flexref"
+version = "0.1.0"
+description = "Full-TF-referens för BirdNET-audio (ai-edge-litert saknar Flex — verifierat 2026-08-15)"
+requires-python = ">=3.12"
+dependencies = [
+    "tensorflow==2.19.0",
+]
