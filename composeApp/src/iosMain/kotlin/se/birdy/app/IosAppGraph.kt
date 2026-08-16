@@ -1,13 +1,26 @@
 package se.birdy.app
 
+import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Clock
+import platform.Foundation.NSBundle
+import platform.Foundation.NSDocumentDirectory
+import platform.Foundation.NSFileManager
 import platform.Foundation.NSLocale
+import platform.Foundation.NSSearchPathForDirectoriesInDomains
 import platform.Foundation.NSUserDefaults
+import platform.Foundation.NSUserDomainMask
 import platform.Foundation.preferredLanguages
 import se.birdy.app.badges.BadgeCatalogLoader
 import se.birdy.app.bootstrap.BadgeVersionStore
@@ -15,6 +28,8 @@ import se.birdy.app.di.AppGraph
 import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.photo.PhotoStorageProvider
+import se.birdy.app.ui.audio.IosAudioRecorderAdapter
+import se.birdy.app.ui.audio.IosWaveformRenderer
 import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
@@ -23,16 +38,24 @@ import se.birdy.datastore.UserPreferencesStore
 import se.birdy.domain.premium.PremiumRepository
 import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
+import se.birdy.ml.AudioClassifierFactory
+import se.birdy.ml.AudioClassifierMode
+import se.birdy.ml.BirdAudioClassifier
 import se.birdy.ml.BirdClassifierFactory
 import se.birdy.ml.ClassifierBootstrap
+import se.birdy.ml.FakeAudioClassifier
 import se.birdy.ml.FakeBirdClassifier
 import se.birdy.ml.ImagePreprocessor
+import se.birdy.ml.IosTfliteAudioRunner
 import se.birdy.ml.IosTfliteRunner
 import se.birdy.ml.ModelArtifactProvider
 import se.birdy.ml.TfLiteBirdClassifier
 import se.birdy.ml.camera.IosCameraSource
 import se.birdy.ml.loadAiyLabelMapper
 import se.birdy.ml.loadModelMetadata
+import kotlin.concurrent.AtomicReference
+import kotlin.experimental.ExperimentalNativeApi
+import kotlin.native.Platform
 
 /**
  * iOS composition root — the iOS counterpart of MainActivity.buildAppGraph().
@@ -45,6 +68,7 @@ import se.birdy.ml.loadModelMetadata
  * i2b resolved: buildClassifier() mirrors Android's real TFLite classifier wiring.
  * i2c resolved: live-camera scan is now REAL (IosCameraSource, AVFoundation) — only the
  *   premium override remains.
+ * i3 resolved: audio-ID wirad (IosTfliteAudioRunner + IosAudioRecorder; Flex endast device — sim visar felstate/DEMO).
  */
 fun buildIosAppGraph(): AppGraph {
     val birdyData = BirdyData(DatabaseFactory().createDriver())
@@ -112,9 +136,99 @@ fun buildIosAppGraph(): AppGraph {
         userPreferences = userPreferences,
         premiumRepository = IosStubPremiumRepository(),
         premiumOverride = PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now()),
-        versionName = "1.2.0-ios-i2c",
+        audioClassifierProvider = IosAudioBootstrap.provider,
+        audioStorageDir = ::audioStorageDirPath,
+        audioRecorderFactory = { IosAudioRecorderAdapter() },
+        waveformRendererFactory = { IosWaveformRenderer() },
+        versionName = "1.2.0-ios-i3",
         defaultLocale = resolvedLocale,
     )
+}
+
+/**
+ * iOS-spegel av MainActivitys audio-bootstrap (Deferred-CAS-cache): modellen (54 MB)
+ * laddas högst en gång, LAZY så förlorar-grenens Deferred aldrig startar, och en
+ * FAILAD Deferred evictas före rethrow så "Försök igen" gör ett RIKTIGT nytt försök
+ * (vC127-fix #8). Skillnader mot Android: scope är app-livstid (grafen dör aldrig på
+ * iOS — ingen onDestroy-close behövs), BuildConfig.DEBUG → Platform.isDebugBinary.
+ */
+internal object IosAudioBootstrap {
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    private val cache =
+        AtomicReference<Deferred<Pair<BirdAudioClassifier, AudioClassifierMode>>?>(null)
+
+    @Suppress("TooGenericExceptionCaught")
+    val provider: suspend () -> Pair<BirdAudioClassifier, AudioClassifierMode> =
+        provider@{
+            while (true) {
+                val cached = cache.value
+                val deferred: Deferred<Pair<BirdAudioClassifier, AudioClassifierMode>> =
+                    if (cached != null) {
+                        cached
+                    } else {
+                        val newDeferred =
+                            // Dispatchers.IO is internal (not public) on Kotlin/Native in
+                            // kotlinx-coroutines 1.9.0 — Dispatchers.Default is the only
+                            // general-purpose dispatcher kotlinx.coroutines exposes publicly
+                            // on this target. K/N-anpassning av T7-controller-rulingen (explicit
+                            // dispatcher named at the async call site, trognast möjliga spegel).
+                            scope.async(Dispatchers.Default, start = CoroutineStart.LAZY) { build() }
+                        if (cache.compareAndSet(null, newDeferred)) {
+                            newDeferred
+                        } else {
+                            cache.value ?: continue
+                        }
+                    }
+                val result =
+                    try {
+                        deferred.await()
+                    } catch (t: Throwable) {
+                        // Generisk catch avsiktlig (spegel av MainActivity): native-laddfel
+                        // kan vara Errors. Evicta ENDAST när deferred SJÄLV failade — en
+                        // caller-cancel får inte evicta en frisk in-flight-load.
+                        @OptIn(ExperimentalCoroutinesApi::class)
+                        val deferredFailed =
+                            deferred.isCompleted && deferred.getCompletionExceptionOrNull() != null
+                        if (deferredFailed) {
+                            cache.compareAndSet(deferred, null)
+                        }
+                        throw t
+                    }
+                if (cache.value === deferred) {
+                    return@provider result
+                }
+            }
+            @Suppress("UNREACHABLE_CODE")
+            error("audioProvider loop exited unexpectedly")
+        }
+
+    @OptIn(ExperimentalNativeApi::class)
+    private suspend fun build(): Pair<BirdAudioClassifier, AudioClassifierMode> =
+        AudioClassifierFactory(
+            createReal = { IosTfliteAudioRunner.load(bundledBirdnetPath()) },
+            createFallback = { FakeAudioClassifier() },
+            onDegrade = { t -> println("Birdy/audio: classifier degrade: ${t.message}") },
+            allowFallback = Platform.isDebugBinary,
+        ).create()
+
+    private fun bundledBirdnetPath(): String =
+        NSBundle.mainBundle.pathForResource("birdnet_lite_v2", ofType = "tflite")
+            ?: error("birdnet_lite_v2.tflite saknas i app-bundlen — kontrollera project.yml-resursen (i3 T1)")
+}
+
+@OptIn(ExperimentalForeignApi::class)
+internal fun audioStorageDirPath(): String {
+    val docs =
+        NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true)
+            .first() as String
+    val dir = "$docs/audio"
+    NSFileManager.defaultManager.createDirectoryAtPath(
+        dir,
+        withIntermediateDirectories = true,
+        attributes = null,
+        error = null,
+    )
+    return dir
 }
 
 /** Persists the last badge-catalog version we backfilled, so it does not re-run each launch. */
