@@ -29,7 +29,7 @@ Med i3-tempot (en fas ≈ en dag) är **TestFlight realistiskt inom ett par veck
   - [ ] i2c-regressionen: scan → back → scan igen → back → galleri-foto-ID (får INTE ge "Analyzer failed")
   - [ ] i2b: galleri→ID med den förladdade **48,8 MP-HEIC:en** + snabb dubbeltryck på rotera i crop-vyn
   - [ ] i3: Lyssna-fliken → mic-permission (SV/EN-sträng) → inspelnings-UI (chip/nedräkning/waveform) → **ärligt felstate** vid analys (sim kan aldrig köra riktig BirdNET — det är korrekt beteende; debug-bygge visar DEMO-banner) → Back mitt i släcker mic-indikatorn
-- [ ] **3. Skaffa fram en fysisk iPhone** för device-verify (lånad duger; iOS 16+). Free Apple ID + Xcode räcker för installation.
+- [x] **3. Skaffa fram en fysisk iPhone** — ✅ PÅ VÄG: företagstelefon (senaste iPhone) levereras **~2026-08-26**. Plan: utvecklingen pausar INTE — i4 (och ev. i5-koden) byggs sim-verifierbart under väntetiden, och device-verifyn körs som EN samlad session när telefonen landar (alla grindar + ev. i4-punkter i ett svep). Kom ihåg första gången: slå på **Developer Mode** (Inställningar → Integritet & säkerhet) + lita på Mac:en; free Apple ID + Xcode räcker för install tills enrollment är klar.
 
 ### Vid iPhone-tillfället (device-verify — grinden som gör anspråken sanna)
 
