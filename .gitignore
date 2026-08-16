@@ -26,6 +26,7 @@ captures/
 .externalNativeBuild/
 
 # Xcode (för iOS-modulen senare)
+iosApp/Local.xcconfig
 xcuserdata/
 *.xcuserstate
 DerivedData/

@@ -26,6 +26,7 @@
 		B205F74830A0616574856E11 /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		B555F913A675A1B7A9676C11 /* Birdy.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Birdy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9AECCF91E67C7BA4F2E93C8 /* birdnet_lite_v2.tflite */ = {isa = PBXFileReference; path = birdnet_lite_v2.tflite; sourceTree = "<group>"; };
+		D95B81602FF2A9E77826AA02 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Local.xcconfig; sourceTree = "<group>"; };
 		F593B6564CB83053E918A723 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,10 +49,20 @@
 				1A298D7F0570B43393C195F3 /* images */,
 				A615E53F06C32B1EEFC318B5 /* TensorFlowLiteSelectTfOps.bundle */,
 				B32279C318DE1D5E0385ADF3 /* iosApp */,
+				90E118E69B9826BAD59572C1 /* iosApp */,
 				A17B9C8B3D1441D43213014D /* models */,
 				EDA6ABB32441F7888BFA6F28 /* Frameworks */,
 				AAA9FFD4CE7F4319447B1D8A /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		90E118E69B9826BAD59572C1 /* iosApp */ = {
+			isa = PBXGroup;
+			children = (
+				D95B81602FF2A9E77826AA02 /* Local.xcconfig */,
+			);
+			name = iosApp;
+			path = .;
 			sourceTree = "<group>";
 		};
 		A17B9C8B3D1441D43213014D /* models */ = {
@@ -229,6 +240,7 @@
 /* Begin XCBuildConfiguration section */
 		4082103BA46A714C594B39E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D95B81602FF2A9E77826AA02 /* Local.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -372,6 +384,7 @@
 		};
 		CCEC480A48C25F864020C380 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D95B81602FF2A9E77826AA02 /* Local.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

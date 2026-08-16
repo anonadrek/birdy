@@ -25,6 +25,9 @@ targets:
         embed: false   # static — link only
       - sdk: CoreML.framework
         weak: true     # SelectTfOps-podspec:ens weak_frameworks
+    configFiles:
+      Debug: Local.xcconfig
+      Release: Local.xcconfig
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: se.birdy.ios

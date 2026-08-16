@@ -1,0 +1,4 @@
+// Lokal, gitignorerad build-konfig. Kopiera till Local.xcconfig och fyll i:
+//   cp Local.xcconfig.sample Local.xcconfig
+// Samma nyckel som Androids gradle.properties (MAPTILER_API_KEY).
+MAPTILER_API_KEY =
