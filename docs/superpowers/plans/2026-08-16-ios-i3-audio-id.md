@@ -40,7 +40,7 @@
 - Consumes: inget från andra tasks.
 - Produces: `iosApp/Frameworks/TensorFlowLiteSelectTfOps.xcframework` på disk (gitignorerad) + device-länk med force_load + modellresursen `birdnet_lite_v2.tflite` i app-bundlen (task 3/7 läser den via `NSBundle.mainBundle.pathForResource("birdnet_lite_v2", "tflite")`).
 
-- [ ] **Step 1: Skriv fetch-scriptet**
+- [x] **Step 1: Skriv fetch-scriptet**
 
 ```bash
 #!/usr/bin/env bash
@@ -88,12 +88,12 @@ echo "${SHA256}" > "${MARKER}"
 echo "TensorFlowLiteSelectTfOps ${VERSION} klar: ${DEST}"
 ```
 
-- [ ] **Step 2: Gör scriptet körbart + kör det**
+- [x] **Step 2: Gör scriptet körbart + kör det**
 
 Run: `chmod +x tools/fetch_ios_selectops.sh && tools/fetch_ios_selectops.sh`
 Expected: slutar med `... klar: .../iosApp/Frameworks/TensorFlowLiteSelectTfOps.xcframework`. Verifiera: `ls iosApp/Frameworks/TensorFlowLiteSelectTfOps.xcframework/ios-arm64/` visar `TensorFlowLiteSelectTfOps.framework`. (Tarballen kan redan ligga i `~/Library/Caches/birdy/` eller scratchpad från researchen — scriptet laddar bara ner vid behov.)
 
-- [ ] **Step 3: `.gitignore`**
+- [x] **Step 3: `.gitignore`**
 
 Lägg till sist i `.gitignore`:
 
@@ -104,7 +104,7 @@ iosApp/Frameworks/TensorFlowLiteSelectTfOps.xcframework/
 
 Run: `git status --short` → xcframeworken syns INTE som untracked.
 
-- [ ] **Step 4: BASELINE-mätning av device-binären (FÖRE länkändringen)**
+- [x] **Step 4: BASELINE-mätning av device-binären (FÖRE länkändringen)**
 
 ```bash
 export JAVA_HOME="$HOME/.local/java21/Contents/Home"
@@ -119,7 +119,7 @@ echo "BASELINE device-binär: ${BASELINE} bytes"
 
 Expected: `BUILD SUCCEEDED`; anteckna siffran (förvänta ~tiotal MB). Om device-bygget failar av annan orsak (signing etc.): felsök INNAN länkflaggorna läggs på — baseline måste vara grön.
 
-- [ ] **Step 5: Skapa privacy-bundlen**
+- [x] **Step 5: Skapa privacy-bundlen**
 
 Skapa `iosApp/TensorFlowLiteSelectTfOps.bundle/PrivacyInfo.xcprivacy` med exakt detta innehåll (kopia av manifestet ur arkivet; committas eftersom arkivet är gitignorerat):
 
@@ -149,7 +149,7 @@ Skapa `iosApp/TensorFlowLiteSelectTfOps.bundle/PrivacyInfo.xcprivacy` med exakt 
 </plist>
 ```
 
-- [ ] **Step 6: Uppdatera `iosApp/project.yml`**
+- [x] **Step 6: Uppdatera `iosApp/project.yml`**
 
 Ersätt hela filen med (diff mot nuvarande: fetch-script först i preBuildScripts, modellresurs + privacy-bundle i sources, device-villkorad OTHER_LDFLAGS, weak CoreML):
 
@@ -206,7 +206,7 @@ targets:
         basedOnDependencyAnalysis: false
 ```
 
-- [ ] **Step 7: Regenerera Xcode-projektet + device-bygg MED flex**
+- [x] **Step 7: Regenerera Xcode-projektet + device-bygg MED flex**
 
 ```bash
 cd iosApp && ~/.local/bin/xcodegen generate && cd ..
@@ -222,7 +222,7 @@ ls -l iosApp/build/dd-device/Build/Products/Debug-iphoneos/Birdy.app/birdnet_lit
 Expected: `BUILD SUCCEEDED`; modellfilen ligger i .app-roten; delta-siffran skriven.
 **⛔ STORLEKSGATE: är binär-deltat > 150 000 000 bytes ⇒ STOPPA HELA PLANEN och rapportera (baseline, med-flex, delta) — väg B omprövas per spec. Committa i så fall ändå detta task-arbete (det är korrekt oavsett väg) men markera planen stoppad.**
 
-- [ ] **Step 8: Sim-bygget är opåverkat**
+- [x] **Step 8: Sim-bygget är opåverkat**
 
 ```bash
 xcodebuild -project iosApp/Birdy.xcodeproj -scheme Birdy -configuration Debug \
@@ -232,7 +232,7 @@ xcodebuild -project iosApp/Birdy.xcodeproj -scheme Birdy -configuration Debug \
 
 Expected: `BUILD SUCCEEDED` (sim-länken har inga force_load-flaggor). Kör sedan full gate (båda raderna i Global Constraints) + `git restore composeApp/src/commonMain/composeResources/files/species.db`.
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add tools/fetch_ios_selectops.sh .gitignore iosApp/project.yml iosApp/TensorFlowLiteSelectTfOps.bundle
@@ -254,7 +254,7 @@ git commit -m "feat(ios): i3 T1 — SelectTfOps 2.17.0 SHA-pinnad fetch + force_
 - Produces: `fun flatSigmoid(logit: Float): Float` i `se.birdy.ml` (commonMain) — task 3:s iOS-runner anropar den.
 - Consumes: inget.
 
-- [ ] **Step 1: Skriv failande test**
+- [x] **Step 1: Skriv failande test**
 
 Lägg i `BirdNetPostprocessTest.kt` (skapa filen med `package se.birdy.ml` + imports `kotlin.test.Test/assertEquals/assertTrue` om den saknas):
 
@@ -272,12 +272,12 @@ fun flatSigmoidMapsLogitsToConfidences() {
 }
 ```
 
-- [ ] **Step 2: Kör testet — ska faila**
+- [x] **Step 2: Kör testet — ska faila**
 
 Run: `./gradlew :shared:ml:jvmTest --tests "se.birdy.ml.BirdNetPostprocessTest" 2>&1 | tail -5`
 Expected: FAIL/kompileringsfel — `flatSigmoid` finns inte i commonMain.
 
-- [ ] **Step 3: Implementera i `BirdNetPostprocess.kt`**
+- [x] **Step 3: Implementera i `BirdNetPostprocess.kt`**
 
 ```kotlin
 import kotlin.math.exp
@@ -293,16 +293,16 @@ fun flatSigmoid(logit: Float): Float {
 }
 ```
 
-- [ ] **Step 4: Peka om Android-runnern**
+- [x] **Step 4: Peka om Android-runnern**
 
 I `AndroidTfliteAudioRunner.kt`: ta bort `private fun flatSigmoid(...)` ur companion (rad ~149–152) och `import kotlin.math.exp` om oanvänd; call-siten `flatSigmoid(outputBuf.float)` löser nu commonMain-funktionen (samma paket — ingen import behövs).
 
-- [ ] **Step 5: Kör tester — ska passera**
+- [x] **Step 5: Kör tester — ska passera**
 
 Run: `./gradlew :shared:ml:jvmTest :shared:ml:iosSimulatorArm64Test 2>&1 | tail -5`
 Expected: BUILD SUCCESSFUL (befintliga AndroidTfliteAudioRunner-relaterade JVM-tester gröna = behavior-preserving bevisat).
 
-- [ ] **Step 6: Full gate + commit**
+- [x] **Step 6: Full gate + commit**
 
 Kör båda gate-raderna; species.db-restore; sedan:
 
@@ -323,7 +323,7 @@ git commit -m "refactor(ml): i3 T2 — flatSigmoid lyft till commonMain, delas a
 - Consumes: `flatSigmoid` (task 2), `rankMappedScores` + `BirdNetLabelMapper`/`loadBirdNetLabelMapper()` + `AudioInput`/`AudioClassification`/`AudioModelInfo`/`BirdAudioClassifier` (befintliga commonMain), tflitec-cinteropen (befintlig).
 - Produces: `class IosTfliteAudioRunner : BirdAudioClassifier` med `companion object { suspend fun load(modelPath: String): IosTfliteAudioRunner }` — task 7 anropar `IosTfliteAudioRunner.load(path)`.
 
-- [ ] **Step 1: Skriv failande tester**
+- [x] **Step 1: Skriv failande tester**
 
 ```kotlin
 package se.birdy.ml
@@ -362,12 +362,12 @@ class IosTfliteAudioRunnerTest {
 }
 ```
 
-- [ ] **Step 2: Kör — ska faila (klassen finns inte)**
+- [x] **Step 2: Kör — ska faila (klassen finns inte)**
 
 Run: `./gradlew :shared:ml:iosSimulatorArm64Test --tests "se.birdy.ml.IosTfliteAudioRunnerTest" 2>&1 | tail -5`
 Expected: kompileringsfel.
 
-- [ ] **Step 3: Implementera**
+- [x] **Step 3: Implementera**
 
 ```kotlin
 package se.birdy.ml
@@ -583,12 +583,12 @@ class IosTfliteAudioRunner(
 
 Notera: om något `TfLiteTensor*`-symbolnamn saknas i `tflitec`-paketet vid kompilering, kolla `shared/ml/src/nativeInterop/cinterop/TensorFlowLiteC.def` — alla funktioner ovan ligger i `c_api.h` som cinteropen redan läser (header-form).
 
-- [ ] **Step 4: Kör testerna — ska passera**
+- [x] **Step 4: Kör testerna — ska passera**
 
 Run: `./gradlew :shared:ml:iosSimulatorArm64Test --tests "se.birdy.ml.IosTfliteAudioRunnerTest" 2>&1 | tail -5`
 Expected: PASS ×3.
 
-- [ ] **Step 5: Full gate + commit**
+- [x] **Step 5: Full gate + commit**
 
 ```bash
 git add shared/ml/src
@@ -608,7 +608,7 @@ git commit -m "feat(ios): i3 T3 — IosTfliteAudioRunner (BirdNET float32-spegel
 - Consumes: inget från andra tasks.
 - Produces: `class IosAudioRecorder(val sampleRate: Int = 48_000)` med `fun start(onChunk: (ShortArray, Float, Int) -> Unit, onCapReached: () -> Unit, onError: (Throwable) -> Unit, maxDurationMs: Long): IosRecorderHandle`; `class IosRecorderHandle` med `suspend fun stopAndFlush(): ShortArray` + `fun cancel()`. Task 7:s adapter wrappar dessa till `AudioRecorderApi`/`RecorderHandle`.
 
-- [ ] **Step 1: Failande PcmChunker-tester**
+- [x] **Step 1: Failande PcmChunker-tester**
 
 ```kotlin
 package se.birdy.ml
@@ -686,12 +686,12 @@ class PcmChunkerTest {
 }
 ```
 
-- [ ] **Step 2: Kör — ska faila**
+- [x] **Step 2: Kör — ska faila**
 
 Run: `./gradlew :shared:ml:iosSimulatorArm64Test --tests "se.birdy.ml.PcmChunkerTest" 2>&1 | tail -5`
 Expected: kompileringsfel.
 
-- [ ] **Step 3: Implementera `PcmChunker`**
+- [x] **Step 3: Implementera `PcmChunker`**
 
 ```kotlin
 package se.birdy.ml
@@ -748,12 +748,12 @@ internal class PcmChunker(
 }
 ```
 
-- [ ] **Step 4: Kör — ska passera**
+- [x] **Step 4: Kör — ska passera**
 
 Run: `./gradlew :shared:ml:iosSimulatorArm64Test --tests "se.birdy.ml.PcmChunkerTest" 2>&1 | tail -5`
 Expected: PASS ×4.
 
-- [ ] **Step 5: Implementera `IosAudioRecorder` (AVAudioEngine-skalet — kompileras, device-verifieras i grind 2)**
+- [x] **Step 5: Implementera `IosAudioRecorder` (AVAudioEngine-skalet — kompileras, device-verifieras i grind 2)**
 
 ```kotlin
 package se.birdy.ml
@@ -1014,12 +1014,12 @@ class IosRecorderHandle internal constructor(
 
 Kompilerings-notiser för implementeraren: (a) `int16ChannelData` bryggas som `CPointer<CPointerVar<ShortVar>>?` — `channel[it]` indexerar `CPointer<ShortVar>`; om typen kräver det, använd `channel.get(it)`. (b) `convertToBuffer`-blockets parametertyper dikteras av K/N-bryggan (`AVAudioConverterInputBlock`) — låt kompilatorn visa exakt signatur och anpassa lambda-parametrarna, semantiken ovan är den rätta (leverera `inBuf` EN gång, därefter `NoDataNow`). (c) `session.setCategory`-överlagringen med `mode:`-parameter kräver iOS 10+ — OK (min 16).
 
-- [ ] **Step 6: Kompilera + full gate**
+- [x] **Step 6: Kompilera + full gate**
 
 Run: `./gradlew :shared:ml:iosSimulatorArm64Test :composeApp:linkDebugFrameworkIosSimulatorArm64 2>&1 | tail -5`
 Expected: BUILD SUCCESSFUL. Kör därefter båda gate-raderna.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add shared/ml/src
@@ -1038,7 +1038,7 @@ git commit -m "feat(ios): i3 T4 — IosAudioRecorder (AVAudioEngine 48k mono Int
 - Consumes: `WaveformRendererApi` (commonMain, `AudioScanViewModel.kt:443`), `uiImageFromDataOrNull` (befintlig internal i `IosImageDecode.kt`, samma modul).
 - Produces: `class IosWaveformRenderer : WaveformRendererApi` — task 7 wire:ar `waveformRendererFactory = { IosWaveformRenderer() }`.
 
-- [ ] **Step 1: Failande test**
+- [x] **Step 1: Failande test**
 
 ```kotlin
 package se.birdy.app.ui.audio
@@ -1097,12 +1097,12 @@ private fun imageHeight(image: UIImage): Double = image.size.useContents { heigh
 
 (Är `uiImageFromDataOrNull` `internal` i annat paket och inte når testet — gör den `internal` + samma modul räcker; justera importvägen efter dess faktiska paket i `IosImageDecode.kt`.)
 
-- [ ] **Step 2: Kör — ska faila**
+- [x] **Step 2: Kör — ska faila**
 
 Run: `./gradlew :composeApp:iosSimulatorArm64Test --tests "se.birdy.app.ui.audio.IosWaveformRendererTest" 2>&1 | tail -5`
 Expected: kompileringsfel.
 
-- [ ] **Step 3: Implementera**
+- [x] **Step 3: Implementera**
 
 ```kotlin
 package se.birdy.app.ui.audio
@@ -1221,12 +1221,12 @@ class IosWaveformRenderer : WaveformRendererApi {
 
 (CG-minnesregler: `CGBitmapContextCreate`/`CGBitmapContextCreateImage`/`CGColorSpaceCreateDeviceRGB` returnerar +1-referenser — K/N:s CF-brygga hanterar release automatiskt för returnerade `CFTypeRef`-managed objekt i moderna Kotlin; om memory-lint klagar, spegla `IosScanFramePersist.kt`s hantering.)
 
-- [ ] **Step 4: Kör — ska passera**
+- [x] **Step 4: Kör — ska passera**
 
 Run: `./gradlew :composeApp:iosSimulatorArm64Test --tests "se.birdy.app.ui.audio.IosWaveformRendererTest" 2>&1 | tail -5`
 Expected: PASS ×2.
 
-- [ ] **Step 5: Full gate + commit**
+- [x] **Step 5: Full gate + commit**
 
 ```bash
 git add composeApp/src
@@ -1245,7 +1245,7 @@ git commit -m "feat(ios): i3 T5 — IosWaveformRenderer (CoreGraphics-PNG-spegel
 - Consumes: `actual interface AudioPermissionController` + `enum PermissionState { Unknown, Granted, Denied, PermanentlyDenied }` (befintliga).
 - Produces: `class IosAudioPermissionController : AudioPermissionController` — task 8:s host instansierar den; `internal fun mapRecordPermission(raw: AVAudioSessionRecordPermission): PermissionState`.
 
-- [ ] **Step 1: Failande test av mappningen**
+- [x] **Step 1: Failande test av mappningen**
 
 ```kotlin
 package se.birdy.app.ui.audio
@@ -1267,11 +1267,11 @@ class IosAudioPermissionControllerTest {
 }
 ```
 
-- [ ] **Step 2: Kör — ska faila**
+- [x] **Step 2: Kör — ska faila**
 
 Run: `./gradlew :composeApp:iosSimulatorArm64Test --tests "se.birdy.app.ui.audio.IosAudioPermissionControllerTest" 2>&1 | tail -5`
 
-- [ ] **Step 3: Implementera**
+- [x] **Step 3: Implementera**
 
 ```kotlin
 package se.birdy.app.ui.audio
@@ -1330,12 +1330,12 @@ internal fun mapRecordPermission(raw: AVAudioSessionRecordPermission): Permissio
     }
 ```
 
-- [ ] **Step 4: Kör — ska passera**
+- [x] **Step 4: Kör — ska passera**
 
 Run: `./gradlew :composeApp:iosSimulatorArm64Test --tests "se.birdy.app.ui.audio.IosAudioPermissionControllerTest" 2>&1 | tail -5`
 Expected: PASS.
 
-- [ ] **Step 5: Full gate + commit**
+- [x] **Step 5: Full gate + commit**
 
 ```bash
 git add composeApp/src
@@ -1354,7 +1354,7 @@ git commit -m "feat(ios): i3 T6 — IosAudioPermissionController (AVAudioSession
 - Consumes: `IosAudioRecorder`/`IosRecorderHandle` (task 4), `IosTfliteAudioRunner.load` (task 3), `IosWaveformRenderer` (task 5), `AudioClassifierFactory`/`FakeAudioClassifier`/`AudioClassifierMode` (befintliga), `AppGraph`-parametrarna `audioClassifierProvider`/`audioStorageDir`/`audioRecorderFactory`/`waveformRendererFactory` (befintliga, idag ovirade på iOS).
 - Produces: fullt wirad audio-graf — task 8:s host kan anropa `graph.audioScanViewModel()` utan `error(...)`.
 
-- [ ] **Step 1: Adaptern**
+- [x] **Step 1: Adaptern**
 
 ```kotlin
 package se.birdy.app.ui.audio
@@ -1381,7 +1381,7 @@ class IosAudioRecorderAdapter(
 }
 ```
 
-- [ ] **Step 2: IosAppGraph — audio-bootstrap-objekt (trogen MainActivity-spegel)**
+- [x] **Step 2: IosAppGraph — audio-bootstrap-objekt (trogen MainActivity-spegel)**
 
 Lägg i `IosAppGraph.kt` (efter `buildIosAppGraph`, före `NsUserDefaultsBadgeVersionStore`), plus imports (`kotlinx.coroutines.*`, `platform.Foundation.*` för NSBundle/NSFileManager/NSSearchPath, `se.birdy.app.ui.audio.IosAudioRecorderAdapter`, `se.birdy.app.ui.audio.IosWaveformRenderer`, `se.birdy.ml.AudioClassifierFactory`, `se.birdy.ml.AudioClassifierMode`, `se.birdy.ml.BirdAudioClassifier`, `se.birdy.ml.FakeAudioClassifier`, `se.birdy.ml.IosTfliteAudioRunner`, `kotlin.concurrent.AtomicReference`, `kotlin.experimental.ExperimentalNativeApi`):
 
@@ -1469,7 +1469,7 @@ internal fun audioStorageDirPath(): String {
 
 (`kotlin.concurrent.AtomicReference` på K/N: `.value`/`.compareAndSet` som ovan. `Platform` = `kotlin.native.Platform`.)
 
-- [ ] **Step 3: Wire:a in i `AppGraph(...)`-anropet + versionName**
+- [x] **Step 3: Wire:a in i `AppGraph(...)`-anropet + versionName**
 
 I `buildIosAppGraph()`s `return AppGraph(...)`: lägg till fyra rader och bumpa versionName:
 
@@ -1483,11 +1483,11 @@ I `buildIosAppGraph()`s `return AppGraph(...)`: lägg till fyra rader och bumpa 
 
 Uppdatera även KDoc-blocket överst i filen: lägg till raden `* i3 resolved: audio-ID wirad (IosTfliteAudioRunner + IosAudioRecorder; Flex endast device — sim visar felstate/DEMO).`
 
-- [ ] **Step 4: Full gate**
+- [x] **Step 4: Full gate**
 
 Run: båda gate-raderna. Expected: gröna (ingen ny test — wiring bevisas av att `:composeApp:iosSimulatorArm64Test` + länken kompilerar och att befintliga VM-tester är orörda).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add composeApp/src
@@ -1506,7 +1506,7 @@ git commit -m "feat(ios): i3 T7 — IosAppGraph wirar audio (CAS-Deferred-spegel
 - Consumes: `IosAudioPermissionController` (task 6), wirad graf (task 7), `AudioScanScreen`/`AudioScanState`/`AudioScanViewModel` (befintliga commonMain — host-anropet speglar `AudioScanScreenHost.android.kt:84-95`).
 - Produces: fungerande Lyssna-flöde på iOS (sim: t.o.m. ärligt felstate/DEMO; device: hela vägen).
 
-- [ ] **Step 1: Ersätt hosten**
+- [x] **Step 1: Ersätt hosten**
 
 ```kotlin
 package se.birdy.app.ui.audio
@@ -1581,7 +1581,7 @@ actual fun AudioScanScreenHost(
 
 (Ta bort `IosComingSoonPanel`-importen; panelen används fortfarande av kartan — radera INTE komponenten.)
 
-- [ ] **Step 2: Mic-usage-strings**
+- [x] **Step 2: Mic-usage-strings**
 
 `iosApp/iosApp/Info.plist` — lägg till efter `NSCameraUsageDescription`-paret:
 
@@ -1602,7 +1602,7 @@ actual fun AudioScanScreenHost(
 "NSMicrophoneUsageDescription" = "Birdy använder mikrofonen för att identifiera fåglar via deras läten. Ljudet analyseras på din enhet och lämnar den aldrig.";
 ```
 
-- [ ] **Step 3: Sim-bygg + boot-verify**
+- [x] **Step 3: Sim-bygg + boot-verify**
 
 ```bash
 export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
@@ -1619,7 +1619,7 @@ xcrun simctl io 183DD149-45ED-49B8-A2C1-70317698B383 screenshot docs/superpowers
 
 Expected: BUILD SUCCEEDED + appen bootar (screenshotten visar Identifiera-fliken, inte svart/krasch). Läs screenshotten och verifiera. (Tap-interaktion är inte agent-möjlig — Lyssna-flödet är Albins sim-check, grind 1.)
 
-- [ ] **Step 4: Full gate + commit**
+- [x] **Step 4: Full gate + commit**
 
 Kör båda gate-raderna + species.db-restore.
 
@@ -1643,7 +1643,7 @@ git commit -m "feat(ios): i3 T8 — AudioScanScreenHost.ios (Lyssna-flödet live
 - Consumes: modellfilen + `composeApp/src/commonMain/composeResources/files/ml/birdnet_lite_to_qid.json` (läses direkt från repo-sökvägar).
 - Produces: facit-dokumentet som device-verifyn (grind 2) jämför mot; `reference.py <wav>` är återanvändbar för godtyckliga klipp Albin vill facit-sätta senare.
 
-- [ ] **Step 1: pyproject**
+- [x] **Step 1: pyproject**
 
 ```toml
 [project]
@@ -1656,7 +1656,7 @@ dependencies = [
 ]
 ```
 
-- [ ] **Step 2: gen_fixture.py**
+- [x] **Step 2: gen_fixture.py**
 
 ```python
 """Genererar en deterministisk 3s/48kHz mono-chirp som paritetsfixtur.
@@ -1698,7 +1698,7 @@ if __name__ == "__main__":
     main()
 ```
 
-- [ ] **Step 3: reference.py**
+- [x] **Step 3: reference.py**
 
 ```python
 """Kör BirdNET-Lite med full TF (Flex ingår) och skriver facit-top-3.
@@ -1790,7 +1790,7 @@ if __name__ == "__main__":
 
 **OBS till implementeraren:** mappnings-parsningen ovan är skriven defensivt eftersom `birdnet_lite_to_qid.json`:s exakta struktur inte är fastslagen i planen — öppna filen först (`head -c 400 composeApp/src/commonMain/composeResources/files/ml/birdnet_lite_to_qid.json`) och anpassa `lookup`-bygget så det speglar `BirdNetLabelMapper.parse` exakt (index → qid, omappade = None). Sanity-korset: antalet mappade poster ska vara `6362 - 5735 = 627`-ish (se BirdNetPostprocess-KDoc:en).
 
-- [ ] **Step 4: Kör + committa artefakterna**
+- [x] **Step 4: Kör + committa artefakterna**
 
 ```bash
 cd tools/ml-eval/flexref
@@ -1802,7 +1802,7 @@ cd ../../..
 
 Expected: facit-filen skriven med top-3 för chirp + tystnad (confidences förväntas LÅGA — under Match-tröskeln 0.50; det är facit, inte ett fel). Verifiera att tystnads-top-3 inte innehåller någon hög confidence (>0.5) — gör den det, flagga i facit-docen.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add tools/ml-eval/flexref docs/superpowers/research/2026-08-16-i3-audio-reference-facit.md
@@ -1821,16 +1821,16 @@ git commit -m "feat(tools): i3 T9 — full-TF desktop-referens för BirdNET-audi
 
 **Interfaces:** inga.
 
-- [ ] **Step 1: Full slutgate — båda raderna + device-länken**
+- [x] **Step 1: Full slutgate — båda raderna + device-länken**
 
 Kör båda gate-raderna PLUS device-bygget ur T1 step 7 (utan mätning — bara BUILD SUCCEEDED) så force_load-länken bevisas grön på slutläget.
 
-- [ ] **Step 2: CLAUDE.md**
+- [x] **Step 2: CLAUDE.md**
 
 - Ny Status-post överst (under NÄSTA ARBETSPASS-posten): "**i3 (iOS ljud-ID) KODKLAR — Albins sim-check + device-verify kvar (2026-08-XX, Mac):** kört SDD på plan `docs/superpowers/plans/2026-08-16-ios-i3-audio-id.md` (spec `...-ios-i3-audio-id-design.md`), tasks 1–10, storleksgatens uppmätta delta = <SIFFRA> MB. KVAR: grind 1 (sim-check: Lyssna → permission → felstate/DEMO) + grind 2 (device-verify på iPhone, jämför `docs/superpowers/research/2026-08-16-i3-audio-reference-facit.md`)." — fyll i faktiskt datum, delta-siffran från T1 och ev. avvikelser/fixrundor.
 - i3-raden i Plan-of-plans (v2): `🔄 kod klar + review:ad; kvar: Albins sim-check + device-verify (kräver iPhone)`.
 
-- [ ] **Step 3: Commit + push**
+- [x] **Step 3: Commit + push**
 
 ```bash
 git add CLAUDE.md docs/superpowers/plans/2026-08-16-ios-i3-audio-id.md
