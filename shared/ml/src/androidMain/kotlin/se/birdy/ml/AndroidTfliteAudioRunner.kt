@@ -9,7 +9,6 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
-import kotlin.math.exp
 
 /**
  * Wraps a TFLite [Interpreter] for the BirdNET-Lite model (float32 input, float32 output).
@@ -144,11 +143,6 @@ class AndroidTfliteAudioRunner private constructor(
                 runCatching { interpreter.close() }
                 throw t
             }
-        }
-
-        private fun flatSigmoid(logit: Float): Float {
-            val clipped = logit.coerceIn(-15f, 15f)
-            return 1f / (1f + exp(-clipped))
         }
 
         // Fix #7: wrap AssetFileDescriptor in .use { } so the fd is closed even if

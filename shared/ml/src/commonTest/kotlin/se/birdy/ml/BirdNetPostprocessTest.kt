@@ -2,8 +2,21 @@ package se.birdy.ml
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class BirdNetPostprocessTest {
+    @Test
+    fun flatSigmoidMapsLogitsToConfidences() {
+        assertEquals(0.5f, flatSigmoid(0f), 1e-6f)
+        // Klipp vid ±15: värden utanför ger exakt samma resultat som gränsen.
+        assertEquals(flatSigmoid(15f), flatSigmoid(99f), 0f)
+        assertEquals(flatSigmoid(-15f), flatSigmoid(-99f), 0f)
+        // Monotont stigande + rimliga ändpunkter.
+        assertTrue(flatSigmoid(-15f) < 1e-6f)
+        assertTrue(flatSigmoid(15f) > 0.999999f)
+        assertTrue(flatSigmoid(1f) > flatSigmoid(0f))
+    }
+
     @Test
     fun unmappedTopClassesDoNotCrowdOutMappedSpecies() {
         // Index 0-2 (omappade brusklasser) har högst score; den mappade arten

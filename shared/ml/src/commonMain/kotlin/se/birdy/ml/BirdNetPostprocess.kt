@@ -1,5 +1,17 @@
 package se.birdy.ml
 
+import kotlin.math.exp
+
+/**
+ * BirdNET-Lite emitterar pre-sigmoid-logits; flat sigmoid mappar till [0, 1]
+ * (klipp ±15 mot overflow). Speglar BirdNET-Analyzers `flat_sigmoid`.
+ * commonMain så Android- och iOS-runnern delar exakt samma formel (i3 T2).
+ */
+fun flatSigmoid(logit: Float): Float {
+    val clipped = logit.coerceIn(-15f, 15f)
+    return 1f / (1f + exp(-clipped))
+}
+
 /**
  * Rankar BirdNET-scores över ENDAST mappade (EU-)klasser och tar sedan topp [take].
  *
