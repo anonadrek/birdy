@@ -12,19 +12,12 @@ import android.graphics.RectF
 import android.graphics.Shader
 import android.graphics.drawable.BitmapDrawable
 
-private const val COPPER = 0xFFA8552D.toInt() // AccentCopper
-private const val NAVY = 0xFF1F3A5F.toInt() // StampNavy
-private const val CREAM_HI = 0xFFF4EDDC.toInt()
-private const val CREAM_LO = 0xFFE5DBC4.toInt()
-private const val SHADOW = 0x66281910
-
 /**
  * Composes the find marker: a cream wax-seal disc with a copper ring, a navy-tinted Birdy bird,
  * and a downward point whose tip marks the find. Anchor the marker at (CENTER, BOTTOM) so the
  * point tip sits on the coordinate. [bird] is the copper hero_bird silhouette (any tint works
  * since it's re-tinted via SRC_IN). Sizes are in dp via [res] density.
  */
-@Suppress("MagicNumber")
 fun buildBirdySealMarker(
     res: Resources,
     bird: Bitmap,
@@ -33,12 +26,12 @@ fun buildBirdySealMarker(
 
     fun dp(v: Float) = v * density
 
-    val ring = dp(3f)
-    val diameter = dp(46f)
-    val point = dp(9f)
-    val pad = dp(3f) // breathing room for the drop shadow
-    val w = (diameter + pad * 2).toInt()
-    val h = (diameter + point + pad * 2).toInt()
+    val ring = dp(MapMarkerSpec.RING_WIDTH)
+    val diameter = dp(MapMarkerSpec.DISC_DIAMETER)
+    val point = dp(MapMarkerSpec.POINT_HEIGHT)
+    val pad = dp(MapMarkerSpec.PADDING) // breathing room for the drop shadow
+    val w = dp(MapMarkerSpec.markerWidth()).toInt()
+    val h = dp(MapMarkerSpec.markerHeight()).toInt()
 
     val bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bmp)
@@ -49,13 +42,13 @@ fun buildBirdySealMarker(
     // Downward point (drawn first, behind the disc).
     val pointPaint =
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            color = COPPER
-            setShadowLayer(dp(2f), 0f, dp(1f), SHADOW)
+            color = MapMarkerSpec.COPPER.toInt()
+            setShadowLayer(dp(MapMarkerSpec.SHADOW_BLUR), 0f, dp(MapMarkerSpec.SHADOW_DY), MapMarkerSpec.SHADOW.toInt())
         }
     val path =
         Path().apply {
-            moveTo(cx - dp(7f), cy + r - dp(2f))
-            lineTo(cx + dp(7f), cy + r - dp(2f))
+            moveTo(cx - dp(MapMarkerSpec.POINT_HALF_WIDTH), cy + r - dp(MapMarkerSpec.POINT_TOP_INSET))
+            lineTo(cx + dp(MapMarkerSpec.POINT_HALF_WIDTH), cy + r - dp(MapMarkerSpec.POINT_TOP_INSET))
             lineTo(cx, cy + r + point)
             close()
         }
@@ -66,14 +59,14 @@ fun buildBirdySealMarker(
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
             shader =
                 RadialGradient(
-                    cx - r * 0.25f,
-                    cy - r * 0.3f,
-                    r * 1.3f,
-                    CREAM_HI,
-                    CREAM_LO,
+                    cx - r * MapMarkerSpec.GRADIENT_CX_OFFSET,
+                    cy - r * MapMarkerSpec.GRADIENT_CY_OFFSET,
+                    r * MapMarkerSpec.GRADIENT_RADIUS,
+                    MapMarkerSpec.CREAM_HI.toInt(),
+                    MapMarkerSpec.CREAM_LO.toInt(),
                     Shader.TileMode.CLAMP,
                 )
-            setShadowLayer(dp(2f), 0f, dp(1f), SHADOW)
+            setShadowLayer(dp(MapMarkerSpec.SHADOW_BLUR), 0f, dp(MapMarkerSpec.SHADOW_DY), MapMarkerSpec.SHADOW.toInt())
         }
     canvas.drawCircle(cx, cy, r, discPaint)
 
@@ -82,16 +75,16 @@ fun buildBirdySealMarker(
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
             style = Paint.Style.STROKE
             strokeWidth = ring
-            color = COPPER
+            color = MapMarkerSpec.COPPER.toInt()
         }
     canvas.drawCircle(cx, cy, r - ring / 2f, ringPaint)
 
     // Navy-tinted bird, centered, ~60% of the disc.
     val birdPaint =
         Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG).apply {
-            colorFilter = PorterDuffColorFilter(NAVY, PorterDuff.Mode.SRC_IN)
+            colorFilter = PorterDuffColorFilter(MapMarkerSpec.NAVY.toInt(), PorterDuff.Mode.SRC_IN)
         }
-    val target = diameter * 0.6f
+    val target = diameter * MapMarkerSpec.BIRD_FRACTION
     val scale = target / maxOf(bird.width, bird.height)
     val bw = bird.width * scale
     val bh = bird.height * scale
