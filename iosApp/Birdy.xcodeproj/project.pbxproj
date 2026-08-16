@@ -9,17 +9,23 @@
 /* Begin PBXBuildFile section */
 		1579AEB6F971D503006064A7 /* TensorFlowLiteC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E553E90FC33EDF65FE8A56 /* TensorFlowLiteC.xcframework */; };
 		1A965F7A4B9E4AFD56B72DD4 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 1A298D7F0570B43393C195F3 /* images */; };
+		251345B772E1C9E0EFF36EA9 /* birdnet_lite_v2.tflite in Resources */ = {isa = PBXBuildFile; fileRef = C9AECCF91E67C7BA4F2E93C8 /* birdnet_lite_v2.tflite */; };
+		4CAD0059F51D3370051EC6E4 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC654AA1BCA95AC1BF5F563 /* CoreML.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7088D6C396B6633A4CF29FF2 /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B205F74830A0616574856E11 /* iOSApp.swift */; };
 		C328B9A9FECC4169BDE32370 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 908A15A194F1A4EEA8E94206 /* InfoPlist.strings */; };
+		FB40191ACF1A77CC7BA52AF4 /* TensorFlowLiteSelectTfOps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A615E53F06C32B1EEFC318B5 /* TensorFlowLiteSelectTfOps.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A298D7F0570B43393C195F3 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../shared/content/images; sourceTree = SOURCE_ROOT; };
 		28E553E90FC33EDF65FE8A56 /* TensorFlowLiteC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TensorFlowLiteC.xcframework; path = Frameworks/TensorFlowLiteC.xcframework; sourceTree = "<group>"; };
 		4C4DD3508F5613FE9CAF78FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6EC654AA1BCA95AC1BF5F563 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		7148A5C29BA84E88ED5AFE42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A615E53F06C32B1EEFC318B5 /* TensorFlowLiteSelectTfOps.bundle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TensorFlowLiteSelectTfOps.bundle; sourceTree = SOURCE_ROOT; };
 		B205F74830A0616574856E11 /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		B555F913A675A1B7A9676C11 /* Birdy.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Birdy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9AECCF91E67C7BA4F2E93C8 /* birdnet_lite_v2.tflite */ = {isa = PBXFileReference; path = birdnet_lite_v2.tflite; sourceTree = "<group>"; };
 		F593B6564CB83053E918A723 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -29,6 +35,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1579AEB6F971D503006064A7 /* TensorFlowLiteC.xcframework in Frameworks */,
+				4CAD0059F51D3370051EC6E4 /* CoreML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,10 +46,21 @@
 			isa = PBXGroup;
 			children = (
 				1A298D7F0570B43393C195F3 /* images */,
+				A615E53F06C32B1EEFC318B5 /* TensorFlowLiteSelectTfOps.bundle */,
 				B32279C318DE1D5E0385ADF3 /* iosApp */,
+				A17B9C8B3D1441D43213014D /* models */,
 				EDA6ABB32441F7888BFA6F28 /* Frameworks */,
 				AAA9FFD4CE7F4319447B1D8A /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		A17B9C8B3D1441D43213014D /* models */ = {
+			isa = PBXGroup;
+			children = (
+				C9AECCF91E67C7BA4F2E93C8 /* birdnet_lite_v2.tflite */,
+			);
+			name = models;
+			path = ../composeApp/src/androidMain/assets/models;
 			sourceTree = "<group>";
 		};
 		AAA9FFD4CE7F4319447B1D8A /* Products */ = {
@@ -66,6 +84,7 @@
 		EDA6ABB32441F7888BFA6F28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6EC654AA1BCA95AC1BF5F563 /* CoreML.framework */,
 				28E553E90FC33EDF65FE8A56 /* TensorFlowLiteC.xcframework */,
 			);
 			name = Frameworks;
@@ -78,6 +97,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE9B9FE3E8847472170DB2D2 /* Build configuration list for PBXNativeTarget "Birdy" */;
 			buildPhases = (
+				59B050468AA3EFC0E00BCE9A /* Fetch SelectTfOps */,
 				66143ED3C56C8F94C2C99BCD /* Compile Kotlin Framework */,
 				0D010304787CB54652C058BB /* Sources */,
 				39E387E6BB9100DE3BA61C94 /* Resources */,
@@ -134,6 +154,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C328B9A9FECC4169BDE32370 /* InfoPlist.strings in Resources */,
+				FB40191ACF1A77CC7BA52AF4 /* TensorFlowLiteSelectTfOps.bundle in Resources */,
+				251345B772E1C9E0EFF36EA9 /* birdnet_lite_v2.tflite in Resources */,
 				1A965F7A4B9E4AFD56B72DD4 /* images in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +163,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		59B050468AA3EFC0E00BCE9A /* Fetch SelectTfOps */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fetch SelectTfOps";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/../tools/fetch_ios_selectops.sh\"\n";
+		};
 		66143ED3C56C8F94C2C99BCD /* Compile Kotlin Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -203,6 +244,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited) -framework ComposeApp -lsqlite3";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = "$(inherited) -framework ComposeApp -lsqlite3 -force_load $(SRCROOT)/Frameworks/TensorFlowLiteSelectTfOps.xcframework/ios-arm64/TensorFlowLiteSelectTfOps.framework/TensorFlowLiteSelectTfOps -lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = se.birdy.ios;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -345,6 +387,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited) -framework ComposeApp -lsqlite3";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = "$(inherited) -framework ComposeApp -lsqlite3 -force_load $(SRCROOT)/Frameworks/TensorFlowLiteSelectTfOps.xcframework/ios-arm64/TensorFlowLiteSelectTfOps.framework/TensorFlowLiteSelectTfOps -lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = se.birdy.ios;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

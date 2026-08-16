@@ -11,18 +11,37 @@ targets:
       - path: ../shared/content/images
         type: folder
         buildPhase: resources
+      # BirdNET-modellen delas med Android (androidMain/assets är dess hemvist —
+      # medvetet beslut B3 i i3-spec:en; flytt hade bytt Androids mmap mot heap-kopia).
+      - path: ../composeApp/src/androidMain/assets/models/birdnet_lite_v2.tflite
+        buildPhase: resources
+      # Privacy-manifest för den statiskt länkade SelectTfOps (arkivet är gitignorerat,
+      # så manifestet committas som egen bundle — speglar podspec:ens resource_bundles).
+      - path: TensorFlowLiteSelectTfOps.bundle
+        type: folder
+        buildPhase: resources
     dependencies:
       - framework: Frameworks/TensorFlowLiteC.xcframework
         embed: false   # static — link only
+      - sdk: CoreML.framework
+        weak: true     # SelectTfOps-podspec:ens weak_frameworks
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: se.birdy.ios
         INFOPLIST_FILE: iosApp/Info.plist
         FRAMEWORK_SEARCH_PATHS: "$(inherited) $(SRCROOT)/../composeApp/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)"
         OTHER_LDFLAGS: "$(inherited) -framework ComposeApp -lsqlite3"
+        # Flex-delegaten (FlexRFFT för BirdNET) finns ENDAST som ios-arm64 — sim-SDK:n
+        # länkar den inte (sim visar ärligt felstate/DEMO, se i3-spec §A). force_load
+        # krävs för att registrerings-objekten inte ska strippas (podspec + ops_select-docs).
+        "OTHER_LDFLAGS[sdk=iphoneos*]": "$(inherited) -framework ComposeApp -lsqlite3 -force_load $(SRCROOT)/Frameworks/TensorFlowLiteSelectTfOps.xcframework/ios-arm64/TensorFlowLiteSelectTfOps.framework/TensorFlowLiteSelectTfOps -lc++"
         ENABLE_USER_SCRIPT_SANDBOXING: "NO"
         CODE_SIGN_STYLE: Automatic
     preBuildScripts:
+      - name: Fetch SelectTfOps
+        script: |
+          "$SRCROOT/../tools/fetch_ios_selectops.sh"
+        basedOnDependencyAnalysis: false
       - name: Compile Kotlin Framework
         script: |
           export JAVA_HOME="$HOME/.local/java21/Contents/Home"

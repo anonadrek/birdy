@@ -84,3 +84,6 @@ tools/bundletool.jar
 
 # Generated store-asset intermediates
 website/tools/store-assets/screens/
+
+# TensorFlowLiteSelectTfOps — 1,1 GB uppackat, hämtas av tools/fetch_ios_selectops.sh (SHA-pinnad)
+iosApp/Frameworks/TensorFlowLiteSelectTfOps.xcframework/
