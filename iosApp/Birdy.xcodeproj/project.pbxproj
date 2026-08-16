@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EFE207DCA8B045B717D8AEA /* BirdyTileOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C71D582857713FB046F4013 /* BirdyTileOverlay.swift */; };
 		1579AEB6F971D503006064A7 /* TensorFlowLiteC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E553E90FC33EDF65FE8A56 /* TensorFlowLiteC.xcframework */; };
 		1A965F7A4B9E4AFD56B72DD4 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 1A298D7F0570B43393C195F3 /* images */; };
 		251345B772E1C9E0EFF36EA9 /* birdnet_lite_v2.tflite in Resources */ = {isa = PBXBuildFile; fileRef = C9AECCF91E67C7BA4F2E93C8 /* birdnet_lite_v2.tflite */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		1A298D7F0570B43393C195F3 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../shared/content/images; sourceTree = SOURCE_ROOT; };
+		1C71D582857713FB046F4013 /* BirdyTileOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdyTileOverlay.swift; sourceTree = "<group>"; };
 		28E553E90FC33EDF65FE8A56 /* TensorFlowLiteC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TensorFlowLiteC.xcframework; path = Frameworks/TensorFlowLiteC.xcframework; sourceTree = "<group>"; };
 		4C4DD3508F5613FE9CAF78FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6EC654AA1BCA95AC1BF5F563 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
@@ -85,6 +87,7 @@
 		B32279C318DE1D5E0385ADF3 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				1C71D582857713FB046F4013 /* BirdyTileOverlay.swift */,
 				7148A5C29BA84E88ED5AFE42 /* Info.plist */,
 				B205F74830A0616574856E11 /* iOSApp.swift */,
 				908A15A194F1A4EEA8E94206 /* InfoPlist.strings */,
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFE207DCA8B045B717D8AEA /* BirdyTileOverlay.swift in Sources */,
 				7088D6C396B6633A4CF29FF2 /* iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

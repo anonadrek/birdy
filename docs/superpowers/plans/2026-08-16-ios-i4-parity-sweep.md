@@ -363,6 +363,8 @@ git commit -m "refactor(map): i4 T3 — vaxsigill-geometri/palett extraherad til
 
 ### Task 4: MapKit-spike — MapTilerTileOverlay + duotone-tint + minimal host (RISKGRIND)
 
+> **RULING (SDD-körningen 2026-08-16, riskgrinden utlöst + löst):** K/N-bindningen (Kotlin 2.1.20) gör BÅDA `MKTileOverlay`-override-punkterna (`loadTileAtPath`, `URLForTilePath`) `final` — Kotlin-subklassen i Step 1 nedan är inte byggbar (klib-verifierat; CI-tint-pipelinen bevisades däremot fungera fristående). Beslut i stället för MapLibre-fallback: **Swift-shim-bro** — `iosApp/iosApp/BirdyTileOverlay.swift` (~25 rader, ren vidarebefordran; Swift kan overrida där K/N inte kan) + Kotlin `IosTileFetcher` (URL/NSURLSession-cache/CI-tint — Step 1-kodens semantik oförändrad) + Kotlin `IosMapOverlayBridge` (factory som `iOSApp.swift` registrerar vid start; hosten hämtar overlayn därifrån). Alla spec-utfall bevaras (MapKit, samma tiles, samma duotone-matris, noll nya beroenden); minimal Swift-shim är husarkitektur per CLAUDE.md. Läs Step 1-koden nedan som SEMANTIK för `IosTileFetcher`, inte som subklass.
+
 Detta är spec:ens riskgrind: bevisa `MKTileOverlay`-subklass + CI-tint + `canReplaceMapContent` i simulatorn INNAN resten byggs. **STOPP-REGEL:** om K/N-subklassningen av `MKTileOverlay` (struct-param i `loadTileAtPath`) eller CI-tintningen inte går att få att fungera efter rimlig felsökning — avbryt, rapportera, och fall tillbaka på MapLibre-spåret per spec §Risker. Bygg INTE vidare på task 5–6 i det läget.
 
 **Files:**

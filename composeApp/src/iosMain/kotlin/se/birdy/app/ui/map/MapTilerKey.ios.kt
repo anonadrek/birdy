@@ -12,7 +12,13 @@ internal object MapTilerKey {
     fun value(): String {
         val key = NSBundle.mainBundle.objectForInfoDictionaryKey("MAPTILER_API_KEY") as? String ?: ""
         if (key.isBlank()) {
-            NSLog("%@", "Birdy/map: MAPTILER_API_KEY saknas — kopiera iosApp/Local.xcconfig.sample till Local.xcconfig och fyll i nyckeln")
+            // Enda arg-formen (ingen "%@" + vararg): NSLog är deklarerad
+            // `NSLog(format: String, vararg variadicArguments: Any?)` (klib-verifierat) — att
+            // skicka en rå Kotlin String som vararg-elementet kraschar (EXC_BAD_ACCESS djupt inne
+            // i CFStringCreateWithFormat/objc_opt_respondsToSelector när "%@" försöker meddela den
+            // som ett ObjC-objekt; verifierat via sim-krasch — se task-4-rapporten, i4 T4). Den
+            // enkla format-only-formen bridgar korrekt eftersom `format` INTE är ett vararg-element.
+            NSLog("Birdy/map: MAPTILER_API_KEY saknas — kopiera iosApp/Local.xcconfig.sample till Local.xcconfig och fyll i nyckeln")
         }
         return key
     }
