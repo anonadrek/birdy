@@ -1,5 +1,9 @@
 package se.birdy.ml
 
+import cnames.structs.TfLiteInterpreter
+import cnames.structs.TfLiteInterpreterOptions
+import cnames.structs.TfLiteModel
+import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.addressOf
 import kotlinx.cinterop.convert
@@ -47,6 +51,16 @@ import kotlin.time.TimeSource
  *   så determinismen görs synlig här. Ingen beteendeskillnad avsedd.
  * - Modellbytes LIFETIME-pinnas ([pinnedModel]-fält, unpin i [close]) —
  *   TfLiteModelCreate kopierar inte FlatBuffern (trap-katalogen).
+ * - **Fix #1** (spegel av `AndroidTfliteAudioRunner.load()`s "wrap post-construction
+ *   steps in try/catch so the native TFLite handle is always closed if anything throws
+ *   before ownership transfers"): hela native-uppbyggnaden (pin → model → options →
+ *   interpreter → allocate → introspektion → nollfyll) körs i EN try/catch. En kastande
+ *   konstruktor lämnar aldrig ifrån sig en instans — [close] kan därför ALDRIG anropas på
+ *   det som redan hunnit skapas. Spec B6 gör en misslyckad load till DEN FÖRVÄNTADE vägen
+ *   på simulator (Flex saknas där, felet landar typiskt på AllocateTensors) — utan denna
+ *   städning läcker varje försök det pinnade modell-minnet + alla native handles som
+ *   redan skapats. Catch-blocket river ner exakt det som lyckades, i omvänd
+ *   (skapande-)ordning, innan det återkastar.
  * - Mutex-serialisering + idempotent [close], som Android.
  */
 @OptIn(ExperimentalForeignApi::class)
@@ -60,71 +74,94 @@ class IosTfliteAudioRunner(
 
     private val pinnedModel = modelBytes.pin()
 
-    private val model =
-        checkNotNull(TfLiteModelCreate(pinnedModel.addressOf(0), modelBytes.size.convert())) {
-            "TfLiteModelCreate returned null — korrupt/ogiltig modellfil"
-        }
-
-    private val options =
-        checkNotNull(TfLiteInterpreterOptionsCreate()) {
-            "TfLiteInterpreterOptionsCreate returned null"
-        }.also { TfLiteInterpreterOptionsSetNumThreads(it, NUM_THREADS) }
-
-    private val interpreter =
-        checkNotNull(TfLiteInterpreterCreate(model, options)) {
-            "TfLiteInterpreterCreate returned null"
-        }.also {
-            check(TfLiteInterpreterAllocateTensors(it) == kTfLiteOk) {
-                "TfLiteInterpreterAllocateTensors failed"
-            }
-        }
-
+    private val model: CPointer<TfLiteModel>
+    private val options: CPointer<TfLiteInterpreterOptions>
+    private val interpreter: CPointer<TfLiteInterpreter>
     private val expectedSamples: Int
     private val outputClasses: Int
     override val info: AudioModelInfo
 
     init {
-        val inputTensor =
-            checkNotNull(TfLiteInterpreterGetInputTensor(interpreter, 0)) { "input tensor was null" }
-        val numDims = TfLiteTensorNumDims(inputTensor)
-        val inputShape = List(numDims) { TfLiteTensorDim(inputTensor, it) }
-        check(numDims == 2 && inputShape[0] == 1) {
-            "Unexpected inputShape $inputShape — expected [1, N] waveform tensor. " +
-                "This may indicate the wrong model file was bundled (T1 regression)."
-        }
-        expectedSamples = inputShape[1]
+        // Spårar bara vad som FAKTISKT hunnit skapas, så catch-blocket kan städa exakt
+        // det — i omvänd ordning — istället för att gissa. Se Fix #1 i KDoc ovan.
+        var createdModel: CPointer<TfLiteModel>? = null
+        var createdOptions: CPointer<TfLiteInterpreterOptions>? = null
+        var createdInterpreter: CPointer<TfLiteInterpreter>? = null
+        try {
+            val model =
+                checkNotNull(TfLiteModelCreate(pinnedModel.addressOf(0), modelBytes.size.convert())) {
+                    "TfLiteModelCreate returned null — korrupt/ogiltig modellfil"
+                }
+            createdModel = model
 
-        val outputTensor =
-            checkNotNull(TfLiteInterpreterGetOutputTensor(interpreter, 0)) { "output tensor was null" }
-        val outDims = TfLiteTensorNumDims(outputTensor)
-        val outputShape = List(outDims) { TfLiteTensorDim(outputTensor, it) }
-        outputClasses = outputShape.last()
-        check(outputClasses == mapper.totalBirdnetClasses) {
-            "Model emits $outputClasses classes but birdnet_lite_to_qid.json " +
-                "maps ${mapper.totalBirdnetClasses} — model/mapping mismatch would mis-index species."
-        }
+            val options =
+                checkNotNull(TfLiteInterpreterOptionsCreate()) {
+                    "TfLiteInterpreterOptionsCreate returned null"
+                }.also { TfLiteInterpreterOptionsSetNumThreads(it, NUM_THREADS) }
+            createdOptions = options
 
-        // Nollfyll METADATA_INPUT (tensor 1) en gång — se KDoc.
-        if (TfLiteInterpreterGetInputTensorCount(interpreter) >= 2) {
-            val meta =
-                checkNotNull(TfLiteInterpreterGetInputTensor(interpreter, 1)) { "metadata tensor was null" }
-            val byteSize = TfLiteTensorByteSize(meta).toInt()
-            if (byteSize > 0) {
-                ByteArray(byteSize).usePinned { pinned ->
-                    check(
-                        TfLiteTensorCopyFromBuffer(meta, pinned.addressOf(0), byteSize.convert()) == kTfLiteOk,
-                    ) { "zero-fill of METADATA_INPUT failed" }
+            val interpreter =
+                checkNotNull(TfLiteInterpreterCreate(model, options)) {
+                    "TfLiteInterpreterCreate returned null"
+                }
+            createdInterpreter = interpreter
+            check(TfLiteInterpreterAllocateTensors(interpreter) == kTfLiteOk) {
+                "TfLiteInterpreterAllocateTensors failed"
+            }
+
+            val inputTensor =
+                checkNotNull(TfLiteInterpreterGetInputTensor(interpreter, 0)) { "input tensor was null" }
+            val numDims = TfLiteTensorNumDims(inputTensor)
+            val inputShape = List(numDims) { TfLiteTensorDim(inputTensor, it) }
+            check(numDims == 2 && inputShape[0] == 1) {
+                "Unexpected inputShape $inputShape — expected [1, N] waveform tensor. " +
+                    "This may indicate the wrong model file was bundled (T1 regression)."
+            }
+
+            val outputTensor =
+                checkNotNull(TfLiteInterpreterGetOutputTensor(interpreter, 0)) { "output tensor was null" }
+            val outDims = TfLiteTensorNumDims(outputTensor)
+            val outputShape = List(outDims) { TfLiteTensorDim(outputTensor, it) }
+            val outputClassCount = outputShape.last()
+            check(outputClassCount == mapper.totalBirdnetClasses) {
+                "Model emits $outputClassCount classes but birdnet_lite_to_qid.json " +
+                    "maps ${mapper.totalBirdnetClasses} — model/mapping mismatch would mis-index species."
+            }
+
+            // Nollfyll METADATA_INPUT (tensor 1) en gång — se KDoc.
+            if (TfLiteInterpreterGetInputTensorCount(interpreter) >= 2) {
+                val meta =
+                    checkNotNull(TfLiteInterpreterGetInputTensor(interpreter, 1)) { "metadata tensor was null" }
+                val byteSize = TfLiteTensorByteSize(meta).toInt()
+                if (byteSize > 0) {
+                    ByteArray(byteSize).usePinned { pinned ->
+                        check(
+                            TfLiteTensorCopyFromBuffer(meta, pinned.addressOf(0), byteSize.convert()) == kTfLiteOk,
+                        ) { "zero-fill of METADATA_INPUT failed" }
+                    }
                 }
             }
-        }
 
-        info =
-            AudioModelInfo(
-                modelVersion = mapper.modelVersion,
-                inputShape = inputShape,
-                outputShape = outputShape,
-                coveragePct = mapper.coveragePct,
-            )
+            // Allt validerade OK — commit:a fälten atomiskt. Inget nedanför kan kasta.
+            this.model = model
+            this.options = options
+            this.interpreter = interpreter
+            this.expectedSamples = inputShape[1]
+            this.outputClasses = outputClassCount
+            this.info =
+                AudioModelInfo(
+                    modelVersion = mapper.modelVersion,
+                    inputShape = inputShape,
+                    outputShape = outputShape,
+                    coveragePct = mapper.coveragePct,
+                )
+        } catch (t: Throwable) {
+            createdInterpreter?.let { TfLiteInterpreterDelete(it) }
+            createdOptions?.let { TfLiteInterpreterOptionsDelete(it) }
+            createdModel?.let { TfLiteModelDelete(it) }
+            pinnedModel.unpin()
+            throw t
+        }
     }
 
     private val mutex = Mutex()
