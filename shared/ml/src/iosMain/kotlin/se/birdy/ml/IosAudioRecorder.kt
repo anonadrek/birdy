@@ -27,6 +27,9 @@ import platform.Foundation.NSError
 import platform.Foundation.NSLock
 import platform.Foundation.NSNotificationCenter
 import platform.Foundation.NSOperationQueue
+import platform.darwin.dispatch_async
+import platform.darwin.dispatch_get_main_queue
+import kotlin.concurrent.AtomicInt
 import kotlin.concurrent.Volatile
 import kotlin.math.ceil
 
@@ -63,7 +66,11 @@ class IosAudioRecorder(
                 onChunk = { s, r, t -> if (!handle.terminated) onChunk(s, r, t) },
                 onCapReached = {
                     // Spegel av Android: capture slutar vid cap; VM:en kör stopAndFlush.
-                    handle.stopCaptureOnly()
+                    // Uppskjuten teardown (main queue) — denna lambda körs inifrån
+                    // tap-callbackens egen call stack, och removeTapOnBus/engine.stop()
+                    // reentrant därifrån är en AVAudioEngine-fälla (se stopCaptureOnlyDeferred-
+                    // KDoc). Själva konsument-callbacken fyras direkt, kontraktsenligt.
+                    handle.stopCaptureOnlyDeferred()
                     onCapReached()
                 },
             )
@@ -155,7 +162,10 @@ class IosAudioRecorder(
                         handle.withLock { chunker.accept(shorts) }
                     }
                 } catch (t: Throwable) {
-                    handle.fireError(t)
+                    // Denna catch körs inifrån tap-callbacken själv → deferTeardown=true
+                    // (se stopCaptureOnlyDeferred-KDoc). Avbrotts-observern nedan körs på
+                    // main queue, INTE inifrån tap-stacken, och behåller default (synkron).
+                    handle.fireError(t, deferTeardown = true)
                 }
             }
 
@@ -197,7 +207,12 @@ class IosRecorderHandle internal constructor(
 
     @Volatile private var cancelled = false
 
-    @Volatile private var errorFired = false
+    // Atomisk engångs-grind (inte en olåst check-and-set): tap-tråden (in-tap-fel) och
+    // main-queue-avbrottsobservern kan anropa fireError samtidigt från OLIKA trådar —
+    // en Boolean-"if (!errorFired) { errorFired = true }" har ett race-fönster där båda
+    // hinner läsa false innan någon skriver true, vilket skulle bryta "onError högst en
+    // gång". compareAndSet(0, 1) gör övergången atomär: exakt en anropare vinner.
+    private val errorFired = AtomicInt(0)
 
     internal fun withLock(block: () -> Unit) {
         lock.lock()
@@ -208,10 +223,18 @@ class IosRecorderHandle internal constructor(
         }
     }
 
-    internal fun fireError(t: Throwable) {
-        if (terminated || errorFired) return
-        errorFired = true
-        stopCaptureOnly()
+    /**
+     * @param deferTeardown true när anroparen själv kör INIFRÅN tap-callbackens call stack
+     *   (se [stopCaptureOnlyDeferred]) — main-queue-avbrottsobservern använder default
+     *   (false) eftersom den redan kör utanför tap-stacken och kan riva synkront.
+     */
+    internal fun fireError(
+        t: Throwable,
+        deferTeardown: Boolean = false,
+    ) {
+        if (terminated) return
+        if (!errorFired.compareAndSet(0, 1)) return
+        if (deferTeardown) stopCaptureOnlyDeferred() else stopCaptureOnly()
         onErrorOnce?.invoke(t)
     }
 
@@ -221,6 +244,26 @@ class IosRecorderHandle internal constructor(
         runCatching { engine.stop() }
         runCatching { interruptionObserver?.let { NSNotificationCenter.defaultCenter.removeObserver(it) } }
         interruptionObserver = null
+    }
+
+    /**
+     * Skjuter upp [stopCaptureOnly] till main queue. Vägar som initieras INIFRÅN
+     * tap-callbackens egen call stack (cap-reached via [PcmChunker]s onCapReached, in-tap-fel
+     * via [fireError]) får INTE riva `removeTapOnBus`/`engine.stop()` synkront där — det är
+     * reentrant in i tap-callbackens egen exekvering, en känd AVAudioEngine-fälla (Apples
+     * rekommendation är att trigga tap-borttagning utanför render-callbacken). Konsument-
+     * callbacken (onCapReached/onError) fyras ändå direkt från tap-tråden — det är
+     * kontraktsenligt (se AudioRecorderApi-KDoc: "Fyras på recorderns IO-tråd").
+     *
+     * Idempotent mot en mellanliggande [stopAndFlush]/[cancel]: om [teardown] redan hunnit
+     * köra [stopCaptureOnly] synkront innan denna uppskjutna körning triggas, är varje steg
+     * i [stopCaptureOnly] redan självt no-op-säkert (`runCatching` + `interruptionObserver`
+     * null-check) — ofarligt att köra en andra gång.
+     */
+    internal fun stopCaptureOnlyDeferred() {
+        dispatch_async(dispatch_get_main_queue()) {
+            stopCaptureOnly()
+        }
     }
 
     internal fun teardown() {
