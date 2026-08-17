@@ -2,6 +2,13 @@ name: Birdy
 options:
   deploymentTarget:
     iOS: "16.0"
+# Delad scheme så CI:s xcodebuild kan bygga utan Xcode-UI:ns autocreate
+# (lokalt spelar den ingen roll — samma namn som den autocreatade).
+schemes:
+  Birdy:
+    build:
+      targets:
+        Birdy: all
 targets:
   Birdy:
     type: application
@@ -54,7 +61,11 @@ targets:
         basedOnDependencyAnalysis: false
       - name: Compile Kotlin Framework
         script: |
-          export JAVA_HOME="$HOME/.local/java21/Contents/Home"
+          # Lokalt (Mac-miljön i CLAUDE.md) bor JDK 21 här; på CI sätter setup-java
+          # JAVA_HOME i miljön som xcodebuild ärver — exportera bara om katalogen finns.
+          if [ -d "$HOME/.local/java21/Contents/Home" ]; then
+            export JAVA_HOME="$HOME/.local/java21/Contents/Home"
+          fi
           cd "$SRCROOT/.."
           ./gradlew :composeApp:embedAndSignAppleFrameworkForXcode
         basedOnDependencyAnalysis: false

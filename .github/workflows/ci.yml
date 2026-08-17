@@ -75,8 +75,40 @@ jobs:
       - name: Set up Gradle cache
         uses: gradle/actions/setup-gradle@v4
 
+      # fetch_ios_selectops.sh (xcodebuild-preBuildScript) laddar annars ner 266 MB
+      # från dl.google.com varje körning; nyckeln följer scriptet (version + SHA-pin).
+      - name: Restore SelectTfOps tarball cache
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/birdy
+          key: selectops-${{ hashFiles('tools/fetch_ios_selectops.sh') }}
+
       - name: iOS unit tests (shared modules + composeApp)
         run: ./gradlew :shared:content:iosSimulatorArm64Test :shared:domain:iosSimulatorArm64Test :shared:data:iosSimulatorArm64Test :shared:ml:iosSimulatorArm64Test :shared:pdf:iosSimulatorArm64Test :composeApp:iosSimulatorArm64Test --stacktrace
 
       - name: Link iOS framework
         run: ./gradlew :composeApp:linkDebugFrameworkIosSimulatorArm64 --stacktrace
+
+      # Local.xcconfig är gitignorerad men refereras som configFile i project.yml —
+      # utan stub failar xcodebuild på "unable to open base configuration reference".
+      - name: Stub Local.xcconfig
+        run: printf 'MAPTILER_API_KEY = ci-stub\n' > iosApp/Local.xcconfig
+
+      # Enda gaten som kompilerar Swift-sidan (BirdyTileOverlay.swift, iOSApp.swift …)
+      # mot ComposeApp-frameworket — en Kotlin-rename av en brygg-symbol failar här
+      # istället för att tyst brickas först i Albins Xcode. OBS: destinationen måste
+      # vara ett KONKRET sim-device (generic/platform failar CMP:s
+      # syncComposeResourcesForIos med "Cannot query the value of this provider");
+      # vilket iOS-device som helst duger för en ren kompilerings-gate, så vi
+      # plockar första tillgängliga istället för att hårdkoda ett namn som byter
+      # med runnerns Xcode-version.
+      - name: Build iOS app (simulator)
+        run: |
+          UDID=$(xcrun simctl list devices available -j | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; print(next(dev['udid'] for rt, devs in d.items() if 'iOS' in rt for dev in devs if dev.get('isAvailable')))")
+          echo "Building against simulator $UDID"
+          xcodebuild build \
+            -project iosApp/Birdy.xcodeproj \
+            -scheme Birdy \
+            -configuration Debug \
+            -destination "id=$UDID" \
+            CODE_SIGNING_ALLOWED=NO

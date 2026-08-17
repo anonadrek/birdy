@@ -230,7 +230,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export JAVA_HOME=\"$HOME/.local/java21/Contents/Home\"\ncd \"$SRCROOT/..\"\n./gradlew :composeApp:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "# Lokalt (Mac-miljön i CLAUDE.md) bor JDK 21 här; på CI sätter setup-java\n# JAVA_HOME i miljön som xcodebuild ärver — exportera bara om katalogen finns.\nif [ -d \"$HOME/.local/java21/Contents/Home\" ]; then\n  export JAVA_HOME=\"$HOME/.local/java21/Contents/Home\"\nfi\ncd \"$SRCROOT/..\"\n./gradlew :composeApp:embedAndSignAppleFrameworkForXcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
