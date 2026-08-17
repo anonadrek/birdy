@@ -12,9 +12,11 @@ import platform.CoreLocation.CLLocationCoordinate2DMake
 import platform.Foundation.NSLog
 import platform.MapKit.MKMapView
 import platform.MapKit.MKMapViewDelegateProtocol
+import platform.MapKit.MKOverlayLevelAboveLabels
 import platform.MapKit.MKOverlayProtocol
 import platform.MapKit.MKOverlayRenderer
 import platform.MapKit.MKPointAnnotation
+import platform.MapKit.MKPointOfInterestFilter
 import platform.MapKit.MKTileOverlay
 import platform.MapKit.MKTileOverlayRenderer
 import platform.MapKit.addOverlay
@@ -31,6 +33,14 @@ import platform.darwin.NSObject
  * med en `MKTileOverlayRenderer` ritas ingenting. Delegaten hålls i en egen [remember] eftersom
  * `MKMapView.delegate` är weak (ObjC-konvention) — utan en stark Kotlin-referens skulle den
  * deallokeras direkt.
+ *
+ * **Rättelse (T4-review, 2026-08-17):** `addOverlay(overlay)` (utan `level`) lägger overlayn på
+ * default-nivån `MKOverlayLevelAboveRoads`, som ligger UNDER Apples etikett-/POI-lager — den
+ * första riskgrind-skärmdumpen visade device-lokaliserade stadsnamn/parkbadges/landsgränser
+ * (Apples lager, inte vårt) rakt igenom de duotone-tintade tilesen, vilket lästes fel som
+ * "tile-innehåll" i förra rapportrundan. Fixat med `MKOverlayLevelAboveLabels` (ritar overlayn
+ * OVANPÅ Apples lager) + `pointOfInterestFilter = excludingAll` (bälte-och-hängslen: döljer
+ * POI-lagret helt, oavsett nivå).
  */
 @Composable
 actual fun MapScreenHost(
@@ -43,6 +53,9 @@ actual fun MapScreenHost(
         remember {
             MKMapView().apply {
                 delegate = birdyDelegate
+                // Bälte-och-hängslen mot Apples POI-lager (se klass-KDoc:en ovan) — oavsett
+                // overlay-nivå ska Apple-badges/POI-ikoner aldrig synas på den här kartan.
+                pointOfInterestFilter = MKPointOfInterestFilter.filterExcludingAllCategories
                 val overlay = IosMapOverlayBridge.overlayFactory?.invoke()
                 if (overlay == null) {
                     // Enda arg-formen (ingen "%@" + vararg) — K/N:s NSLog-vararg-marshaling av en
@@ -53,7 +66,8 @@ actual fun MapScreenHost(
                             "— saknas registreringen i iOSApp.swift?) — visar Apples baskarta",
                     )
                 } else {
-                    addOverlay(overlay)
+                    // AboveLabels (inte default AboveRoads) — se klass-KDoc:en ovan för varför.
+                    addOverlay(overlay, level = MKOverlayLevelAboveLabels)
                 }
             }
         }
