@@ -12,16 +12,20 @@
 		1A965F7A4B9E4AFD56B72DD4 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 1A298D7F0570B43393C195F3 /* images */; };
 		251345B772E1C9E0EFF36EA9 /* birdnet_lite_v2.tflite in Resources */ = {isa = PBXBuildFile; fileRef = C9AECCF91E67C7BA4F2E93C8 /* birdnet_lite_v2.tflite */; };
 		4CAD0059F51D3370051EC6E4 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC654AA1BCA95AC1BF5F563 /* CoreML.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		55B4B7EF6712B0534FDE66C6 /* Caveat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D048DECBD1FA94A158B57AA /* Caveat-Regular.ttf */; };
 		7088D6C396B6633A4CF29FF2 /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B205F74830A0616574856E11 /* iOSApp.swift */; };
+		807AD9946E76EEB536197BFE /* DMSerifDisplay-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11B382F89404A7BE0ED78F16 /* DMSerifDisplay-Italic.ttf */; };
 		C328B9A9FECC4169BDE32370 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 908A15A194F1A4EEA8E94206 /* InfoPlist.strings */; };
 		FB40191ACF1A77CC7BA52AF4 /* TensorFlowLiteSelectTfOps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A615E53F06C32B1EEFC318B5 /* TensorFlowLiteSelectTfOps.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11B382F89404A7BE0ED78F16 /* DMSerifDisplay-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifDisplay-Italic.ttf"; sourceTree = "<group>"; };
 		1A298D7F0570B43393C195F3 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../shared/content/images; sourceTree = SOURCE_ROOT; };
 		1C71D582857713FB046F4013 /* BirdyTileOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdyTileOverlay.swift; sourceTree = "<group>"; };
 		28E553E90FC33EDF65FE8A56 /* TensorFlowLiteC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TensorFlowLiteC.xcframework; path = Frameworks/TensorFlowLiteC.xcframework; sourceTree = "<group>"; };
 		4C4DD3508F5613FE9CAF78FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6D048DECBD1FA94A158B57AA /* Caveat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Caveat-Regular.ttf"; sourceTree = "<group>"; };
 		6EC654AA1BCA95AC1BF5F563 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		7148A5C29BA84E88ED5AFE42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A615E53F06C32B1EEFC318B5 /* TensorFlowLiteSelectTfOps.bundle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TensorFlowLiteSelectTfOps.bundle; sourceTree = SOURCE_ROOT; };
@@ -45,11 +49,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		481AB67EC5EA12DF42D95E82 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6D048DECBD1FA94A158B57AA /* Caveat-Regular.ttf */,
+				11B382F89404A7BE0ED78F16 /* DMSerifDisplay-Italic.ttf */,
+			);
+			name = fonts;
+			path = ../shared/pdf/src/androidMain/assets/fonts;
+			sourceTree = "<group>";
+		};
 		7988FB2114D975F6E614B058 = {
 			isa = PBXGroup;
 			children = (
 				1A298D7F0570B43393C195F3 /* images */,
 				A615E53F06C32B1EEFC318B5 /* TensorFlowLiteSelectTfOps.bundle */,
+				481AB67EC5EA12DF42D95E82 /* fonts */,
 				B32279C318DE1D5E0385ADF3 /* iosApp */,
 				90E118E69B9826BAD59572C1 /* iosApp */,
 				A17B9C8B3D1441D43213014D /* models */,
@@ -167,6 +182,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55B4B7EF6712B0534FDE66C6 /* Caveat-Regular.ttf in Resources */,
+				807AD9946E76EEB536197BFE /* DMSerifDisplay-Italic.ttf in Resources */,
 				C328B9A9FECC4169BDE32370 /* InfoPlist.strings in Resources */,
 				FB40191ACF1A77CC7BA52AF4 /* TensorFlowLiteSelectTfOps.bundle in Resources */,
 				251345B772E1C9E0EFF36EA9 /* birdnet_lite_v2.tflite in Resources */,

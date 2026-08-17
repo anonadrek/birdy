@@ -4,7 +4,8 @@ package se.birdy.pdf
  * Renders a Field Journal-style PDF from observations and species metadata.
  *
  * The Android actual uses `android.graphics.pdf.PdfDocument` to produce a paginated export.
- * JVM and iOS actuals return [JournalPdfRenderResult.Failed] — PDF export is Android-only in v1.
+ * JVM actual returns [JournalPdfRenderResult.Failed]; Android renders via PdfDocument, iOS via
+ * UIGraphicsPDFRenderer (i4).
  */
 expect class JournalPdfRenderer() {
     /**

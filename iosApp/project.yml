@@ -15,6 +15,13 @@ targets:
       # medvetet beslut B3 i i3-spec:en; flytt hade bytt Androids mmap mot heap-kopia).
       - path: ../composeApp/src/androidMain/assets/models/birdnet_lite_v2.tflite
         buildPhase: resources
+      # PDF-export-typsnitten (i4 T12) — delade med Android (androidMain/assets är deras
+      # hemvist, samma delnings-beslut som BirdNET-modellen ovan). Registreras via UIAppFonts
+      # i Info.plist; PostScript-namnen (IosPdfFonts.kt) matchar TTF-metadatan.
+      - path: ../shared/pdf/src/androidMain/assets/fonts/DMSerifDisplay-Italic.ttf
+        buildPhase: resources
+      - path: ../shared/pdf/src/androidMain/assets/fonts/Caveat-Regular.ttf
+        buildPhase: resources
       # Privacy-manifest för den statiskt länkade SelectTfOps (arkivet är gitignorerat,
       # så manifestet committas som egen bundle — speglar podspec:ens resource_bundles).
       - path: TensorFlowLiteSelectTfOps.bundle

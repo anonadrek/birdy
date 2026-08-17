@@ -76,7 +76,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: iOS unit tests (shared modules + composeApp)
-        run: ./gradlew :shared:content:iosSimulatorArm64Test :shared:domain:iosSimulatorArm64Test :shared:data:iosSimulatorArm64Test :shared:ml:iosSimulatorArm64Test :composeApp:iosSimulatorArm64Test --stacktrace
+        run: ./gradlew :shared:content:iosSimulatorArm64Test :shared:domain:iosSimulatorArm64Test :shared:data:iosSimulatorArm64Test :shared:ml:iosSimulatorArm64Test :shared:pdf:iosSimulatorArm64Test :composeApp:iosSimulatorArm64Test --stacktrace
 
       - name: Link iOS framework
         run: ./gradlew :composeApp:linkDebugFrameworkIosSimulatorArm64 --stacktrace

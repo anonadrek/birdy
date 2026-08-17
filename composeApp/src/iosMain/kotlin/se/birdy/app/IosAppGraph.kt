@@ -17,6 +17,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.datetime.Clock
 import platform.Foundation.NSBundle
+import platform.Foundation.NSCachesDirectory
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSLocale
@@ -41,6 +42,8 @@ import se.birdy.app.notifications.todayLocalDate
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.app.ui.audio.IosAudioRecorderAdapter
 import se.birdy.app.ui.audio.IosWaveformRenderer
+import se.birdy.app.ui.badges.BadgeStringMap
+import se.birdy.app.usecase.ExportJournalUseCase
 import se.birdy.app.util.ioDispatcher
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
@@ -67,6 +70,7 @@ import se.birdy.ml.TfLiteBirdClassifier
 import se.birdy.ml.camera.IosCameraSource
 import se.birdy.ml.loadAiyLabelMapper
 import se.birdy.ml.loadModelMetadata
+import se.birdy.pdf.JournalPdfRenderer
 import kotlin.concurrent.AtomicReference
 import kotlin.experimental.ExperimentalNativeApi
 import kotlin.native.Platform
@@ -104,6 +108,10 @@ import kotlin.native.Platform
  *   Review-fix: [IosSpeciesByQidMemoHolder] + [iosNotificationPayloads] memoiserar
  *   artkartan (839 arter) process-livstid för notis-payloads + Dagens fågel — se
  *   [IosSpeciesByQidMemoHolder]s KDoc för varför.
+ * i4 T12 resolved: journalExport wirad (riktig [se.birdy.pdf.JournalPdfRenderer] via
+ *   UIGraphicsPDFRenderer + [se.birdy.app.usecase.ExportJournalUseCase]) — spegel av
+ *   MainActivity.kt:375-394 inkl. dess `resolveBadgeString`-fallback (~rad 505); Arkiv-fliken
+ *   visar nu PDF-export-CTA:n på iOS också.
  */
 fun buildIosAppGraph(): AppGraph {
     val birdyData = BirdyData(DatabaseFactory().createDriver())
@@ -159,6 +167,28 @@ fun buildIosAppGraph(): AppGraph {
             override = storedLanguage.toLocaleTagOrNull(),
             systemTag = (NSLocale.preferredLanguages.firstOrNull() as? String) ?: "en",
         )
+    // i4 T12: PDF-export use case, spegel av MainActivity.kt:375-394 (samma use case,
+    // iOS-paths). journalRenderer/exportJournalUseCase byggs precis som på Android direkt
+    // efter resolvedLocale är känd, eftersom use caset behöver den för species-lookup.
+    val journalRenderer = JournalPdfRenderer()
+    val exportJournalUseCase =
+        ExportJournalUseCase(
+            observationRepo = observationRepo,
+            speciesRepo = SpeciesRepositoryProvider.get(),
+            badgeRepo = badgeRepo,
+            catalog = badgeCatalog,
+            render = { input, path -> journalRenderer.render(input, path) },
+            userPreferences = userPreferences,
+            outputPathFactory = { ms -> "${journalExportDirPath()}/birdy_field_journal_$ms.pdf" },
+            clock = Clock.System,
+            timeZone = kotlinx.datetime.TimeZone.currentSystemDefault(),
+            locale = resolvedLocale,
+            // BadgeStringMap kastar för badge-id:n den inte känner igen — fall tillbaka på en
+            // humaniserad id-sträng (resolveBadgeString/humanizeBadgeId nedan är en exakt
+            // spegel av MainActivity.resolveBadgeString/humanizeBadgeId, rad 505-520).
+            badgeNameResolver = { id -> resolveBadgeString(id) { BadgeStringMap.nameFor(id) } },
+            badgeDescriptionResolver = { id -> resolveBadgeString(id) { BadgeStringMap.descriptionFor(id) } },
+        )
     val dailyBirdHistory =
         se.birdy.data.dailybird
             .DailyBirdHistoryRepositoryImpl(birdyData)
@@ -192,6 +222,7 @@ fun buildIosAppGraph(): AppGraph {
         audioStorageDir = ::audioStorageDirPath,
         audioRecorderFactory = { IosAudioRecorderAdapter() },
         waveformRendererFactory = { IosWaveformRenderer() },
+        journalExport = { exportJournalUseCase.run() },
         versionName = "1.2.0-ios-i3",
         defaultLocale = resolvedLocale,
         selectDailyBird = { date -> dailyBirdSelector.selectFor(date) },
@@ -379,6 +410,50 @@ internal fun audioStorageDirPath(): String {
     )
     return dir
 }
+
+/**
+ * Absolute path to `<Caches>/journal_exports`, creating it if missing — the iOS counterpart
+ * of MainActivity's `File(cacheDir, "journal_exports")` (rad 383-386). Caches, not Documents
+ * (unlike [audioStorageDirPath]): exported PDFs are share-sheet ephemera, not user data that
+ * needs to survive an iCloud/Finder backup restore, matching Android's cacheDir choice.
+ */
+@OptIn(ExperimentalForeignApi::class)
+internal fun journalExportDirPath(): String {
+    val caches =
+        NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, true)
+            .first() as String
+    val dir = "$caches/journal_exports"
+    NSFileManager.defaultManager.createDirectoryAtPath(
+        dir,
+        withIntermediateDirectories = true,
+        attributes = null,
+        error = null,
+    )
+    return dir
+}
+
+/**
+ * Spegel av MainActivity.resolveBadgeString (rad 505-512): BadgeStringMap.nameFor/descriptionFor
+ * kastar för badge-id:n den inte känner igen (t.ex. premium-badges utan strängar än) — fall
+ * tillbaka på [humanizeBadgeId] istället för att låta exporten misslyckas helt.
+ */
+private suspend fun resolveBadgeString(
+    badgeId: String,
+    resourceFor: () -> org.jetbrains.compose.resources.StringResource,
+): String =
+    runCatching {
+        org.jetbrains.compose.resources
+            .getString(resourceFor())
+    }.getOrElse { humanizeBadgeId(badgeId) }
+
+/** Spegel av MainActivity.humanizeBadgeId (rad 514-520) — samma ordvisa titelversalisering. */
+private fun humanizeBadgeId(badgeId: String): String =
+    badgeId
+        .removePrefix("premium_")
+        .split('_')
+        .joinToString(" ") { part ->
+            part.replaceFirstChar { ch -> if (ch.isLowerCase()) ch.titlecase() else ch.toString() }
+        }
 
 /** Persists the last badge-catalog version we backfilled, so it does not re-run each launch. */
 internal class NsUserDefaultsBadgeVersionStore(
