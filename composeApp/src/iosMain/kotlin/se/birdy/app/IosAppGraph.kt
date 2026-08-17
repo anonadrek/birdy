@@ -30,6 +30,8 @@ import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.location.IosLocationPermissionRequester
 import se.birdy.app.location.IosLocationProvider
+import se.birdy.app.notifications.IosNotificationPermission
+import se.birdy.app.notifications.IosPlatformNotificationsApi
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.app.ui.audio.IosAudioRecorderAdapter
 import se.birdy.app.ui.audio.IosWaveformRenderer
@@ -76,6 +78,13 @@ import kotlin.native.Platform
  * i4 T6 resolved: locationProvider/requestLocationPermission wirade (IosLocationProvider,
  *   CoreLocation one-shot + IosLocationPermissionRequester) — kartans opt-in fynd-platsfångst
  *   fungerar nu på iOS, spegel av MainActivity.buildAppGraph().
+ * i4 T9 resolved: platformNotificationsApi/requestPostNotificationsPermission wirade
+ *   (IosPlatformNotificationsApi — UNUserNotificationCenter-cachad auth-status;
+ *   IosNotificationPermission — permission-flödet) + AppGraphHolderIos (spegel av
+ *   AndroidAppGraphHolder, löser cirkulariteten mellan grafbygget och permission-callbacken).
+ *   Stänger även en upptäckt paritetslucka: selectDailyBird/dailyBirdHistory hade ALDRIG
+ *   wire:ats på iOS, så "Dagens fågel" har varit dött på Lyssna-fliken. notificationScheduler
+ *   förblir null till Task 10 wire:ar IosNotificationScheduler.
  */
 fun buildIosAppGraph(): AppGraph {
     val birdyData = BirdyData(DatabaseFactory().createDriver())
@@ -131,6 +140,16 @@ fun buildIosAppGraph(): AppGraph {
             override = storedLanguage.toLocaleTagOrNull(),
             systemTag = (NSLocale.preferredLanguages.firstOrNull() as? String) ?: "en",
         )
+    val dailyBirdHistory =
+        se.birdy.data.dailybird
+            .DailyBirdHistoryRepositoryImpl(birdyData)
+    val dailyBirdSelector =
+        se.birdy.domain.dailybird.DailyBirdSelector(
+            speciesProvider = { SpeciesRepositoryProvider.get().allByQid(resolvedLocale) },
+        )
+    val platformNotificationsApi = IosPlatformNotificationsApi()
+    val deepLinkFlow =
+        kotlinx.coroutines.flow.MutableSharedFlow<String>(replay = 1, extraBufferCapacity = 4)
     return AppGraph(
         repository = SpeciesRepositoryProvider.get(),
         classifierBootstrap = classifierBootstrap,
@@ -151,7 +170,25 @@ fun buildIosAppGraph(): AppGraph {
         waveformRendererFactory = { IosWaveformRenderer() },
         versionName = "1.2.0-ios-i3",
         defaultLocale = resolvedLocale,
+        selectDailyBird = { date -> dailyBirdSelector.selectFor(date) },
+        dailyBirdHistory = dailyBirdHistory,
+        platformNotificationsApi = platformNotificationsApi,
+        requestPostNotificationsPermission = { IosNotificationPermission.request(graphAccessor = { AppGraphHolderIos.current }) },
+        deepLinkFlow = deepLinkFlow,
     )
+}
+
+/**
+ * Process-global handle så iOS-permission-callbacken (som fyras från en godtycklig
+ * completion-handler-kö, INTE komposition) kan nå den byggda [AppGraph] — spegel av
+ * Androids `AndroidAppGraphHolder`. Löser cirkulariteten: `requestPostNotificationsPermission`-
+ * lambdan måste fångas INNAN [AppGraph] existerar, så den fångar en accessor-lambda mot
+ * den här holdern istället för grafen direkt. Sätts i `MainViewController.kt` direkt efter
+ * `buildIosAppGraph()`; grafen dör aldrig under appens livstid (ingen clear-motsvarighet
+ * till Androids onDestroy behövs).
+ */
+internal object AppGraphHolderIos {
+    var current: AppGraph? = null
 }
 
 /**
