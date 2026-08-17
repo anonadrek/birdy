@@ -49,7 +49,9 @@ class SaveObservationUseCase(
 
         val latLng: LatLng? =
             if (attachLocation && locationEnabled()) {
-                runCatching { locationProvider?.current() }.getOrNull()
+                runCatching { locationProvider?.current() }
+                    .onFailure { if (it is CancellationException) throw it }
+                    .getOrNull()
             } else {
                 null
             }
@@ -91,7 +93,10 @@ class SaveObservationUseCase(
                         .first()
                         .map { it.badgeId }
                         .toSet()
-                val matchCount = runCatching { dailyBirdMatchCount() }.getOrDefault(0)
+                val matchCount =
+                    runCatching { dailyBirdMatchCount() }
+                        .onFailure { if (it is CancellationException) throw it }
+                        .getOrDefault(0)
                 val computed = recalculate.newUnlocks(allObs, species, catalog, existing, dailyBirdMatchCount = matchCount)
                 badgeRepo.persist(computed)
                 computed
