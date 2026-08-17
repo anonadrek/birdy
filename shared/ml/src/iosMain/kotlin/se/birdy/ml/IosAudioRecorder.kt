@@ -25,6 +25,7 @@ import platform.AVFAudio.AVAudioSessionInterruptionNotification
 import platform.AVFAudio.AVAudioSessionInterruptionTypeBegan
 import platform.AVFAudio.AVAudioSessionInterruptionTypeKey
 import platform.AVFAudio.AVAudioSessionModeMeasurement
+import platform.AVFAudio.AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation
 import platform.AVFAudio.setActive
 import platform.Foundation.NSError
 import platform.Foundation.NSLock
@@ -334,7 +335,13 @@ class IosRecorderHandle internal constructor(
         runCatching {
             memScoped {
                 val err = alloc<kotlinx.cinterop.ObjCObjectVar<NSError?>>()
-                session.setActive(false, error = err.ptr)
+                // NotifyOthersOnDeactivation: appar vi duckade/avbröt (musik, podd) får
+                // resume-signalen när record-sessionen släpps — utan flaggan förblir de tysta.
+                session.setActive(
+                    false,
+                    withOptions = AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation,
+                    error = err.ptr,
+                )
             }
         }
     }
