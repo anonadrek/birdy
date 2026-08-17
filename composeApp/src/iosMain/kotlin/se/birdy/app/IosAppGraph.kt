@@ -31,7 +31,10 @@ import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.location.IosLocationPermissionRequester
 import se.birdy.app.location.IosLocationProvider
 import se.birdy.app.notifications.IosNotificationPermission
+import se.birdy.app.notifications.IosNotificationScheduler
 import se.birdy.app.notifications.IosPlatformNotificationsApi
+import se.birdy.app.notifications.devNotifTrigger
+import se.birdy.app.notifications.todayLocalDate
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.app.ui.audio.IosAudioRecorderAdapter
 import se.birdy.app.ui.audio.IosWaveformRenderer
@@ -83,8 +86,16 @@ import kotlin.native.Platform
  *   IosNotificationPermission — permission-flödet) + AppGraphHolderIos (spegel av
  *   AndroidAppGraphHolder, löser cirkulariteten mellan grafbygget och permission-callbacken).
  *   Stänger även en upptäckt paritetslucka: selectDailyBird/dailyBirdHistory hade ALDRIG
- *   wire:ats på iOS, så "Dagens fågel" har varit dött på Lyssna-fliken. notificationScheduler
- *   förblir null till Task 10 wire:ar IosNotificationScheduler.
+ *   wire:ats på iOS, så "Dagens fågel" har varit dött på Lyssna-fliken.
+ * i4 T10 resolved: notificationScheduler wirad (IosNotificationScheduler —
+ *   UNCalendarNotificationTrigger, innehåll räknas färskt per schedule*-anrop) +
+ *   devTriggerDailyBird/WeeklyRecap/TrophyProgress (Platform.isDebugBinary-gated, null i
+ *   release — speglar Android BuildConfig.DEBUG). Notis-delegaten installeras INTE härifrån:
+ *   den måste finnas innan appen är klar med att starta (Apples kallstart-tap-krav), så
+ *   `iOSApp.swift`s init() anropar installIosNotificationDelegate() tidigt, långt innan den
+ *   här grafen byggs; MainViewController.kt anropar installIosNotificationLifecycle(graph)
+ *   efteråt för foreground-omschemaläggning + för att dränera en ev. kallstart-stashad
+ *   deep-link (se IosNotificationLifecycle.kt:s KDoc för hela resonemanget).
  */
 fun buildIosAppGraph(): AppGraph {
     val birdyData = BirdyData(DatabaseFactory().createDriver())
@@ -174,6 +185,10 @@ fun buildIosAppGraph(): AppGraph {
         dailyBirdHistory = dailyBirdHistory,
         platformNotificationsApi = platformNotificationsApi,
         requestPostNotificationsPermission = { IosNotificationPermission.request(graphAccessor = { AppGraphHolderIos.current }) },
+        notificationScheduler = IosNotificationScheduler(graphAccessor = { AppGraphHolderIos.current }),
+        devTriggerDailyBird = devNotifTrigger { payloads, _ -> payloads.dailyBird(todayLocalDate()) },
+        devTriggerWeeklyRecap = devNotifTrigger { payloads, _ -> payloads.weeklyRecap(forceForDev = true) },
+        devTriggerTrophyProgress = devNotifTrigger { payloads, _ -> payloads.trophyProgress(forceForDev = true) },
         deepLinkFlow = deepLinkFlow,
     )
 }
