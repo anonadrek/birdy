@@ -36,6 +36,10 @@ class NotificationTimesTest {
         assertEquals(LocalDateTime(2026, 8, 23, 18, 0), NotificationTimes.nextWeekly(at(2026, 8, 16, 18, 0), zone, DayOfWeek.SUNDAY, 18, 0))
 
     @Test
+    fun nextWeekly_same_day_after_hour_rolls_a_week() =
+        assertEquals(LocalDateTime(2026, 8, 23, 18, 0), NotificationTimes.nextWeekly(at(2026, 8, 16, 20, 0), zone, DayOfWeek.SUNDAY, 18, 0))
+
+    @Test
     fun nextWeekly_other_day() =
         // onsdag 09:00 sett från söndag
         assertEquals(
