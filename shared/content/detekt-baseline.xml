@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ConstructorParameterNaming:FamilyGroups.kt$GroupDefYaml$val ioc_order: String? = null</ID>
+    <ID>ConstructorParameterNaming:FamilyGroups.kt$GroupDefYaml$val keyed_by: String? = null</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$ImageRefYaml$val commons_filename: String</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$ImageRefYaml$val source_url: String</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$SourcesYaml$val claude_model: String? = null</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$SourcesYaml$val wikidata_revision: String? = null</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$SourcesYaml$val wikipedia_en_revision: String? = null</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$SourcesYaml$val wikipedia_sv_revision: String? = null</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$SpeciesYaml$val generated_at: String = ""</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$SpeciesYaml$val image_refs: List&lt;ImageRefYaml&gt; = emptyList()</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$SpeciesYaml$val iucn_status: String</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$SpeciesYaml$val review_notes: String = ""</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$SpeciesYaml$val review_status: String = "auto"</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$SpeciesYaml$val scientific_name: String</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$TaxonomyYaml$val family_sv: String? = null</ID>
+    <ID>ConstructorParameterNaming:SpeciesYaml.kt$TaxonomyYaml$val ioc_order: String</ID>
+    <ID>ConstructorParameterNaming:ValidateMain.kt$OverridesPatch$val allow_missing_images: Boolean = false</ID>
+    <ID>ConstructorParameterNaming:ValidateMain.kt$OverridesPatch$val description_accept_missing: List&lt;String&gt; = emptyList()</ID>
+    <ID>CyclomaticComplexMethod:SpeciesDbBuilder.kt$SpeciesDbBuilder$private fun insertSpecies( db: BirdyContent, yaml: SpeciesYaml, )</ID>
+    <ID>CyclomaticComplexMethod:SpeciesValidator.kt$SpeciesValidator$private fun validateOne( path: Path, yaml: SpeciesYaml, ): List&lt;ValidationError&gt;</ID>
+    <ID>CyclomaticComplexMethod:SqlDelightSpeciesRepository.kt$SqlDelightSpeciesRepository$override fun search( query: String, locale: Locale, filters: SpeciesFilter, ): Flow&lt;List&lt;SpeciesSummary&gt;&gt;</ID>
+    <ID>CyclomaticComplexMethod:ValidateBadgesYamlMain.kt$ValidateBadgesYamlMain$@JvmStatic fun main(args: Array&lt;String&gt;)</ID>
+    <ID>DestructuringDeclarationWithTooManyEntries:BuildMain.kt$BuildMain$val (speciesDir, sourceImages, targetDb, targetImages) = args.map(Path::of)</ID>
+    <ID>EnumNaming:Abundance.kt$Abundance$ALLMÄN : Abundance</ID>
+    <ID>EnumNaming:Abundance.kt$Abundance$MINDRE_ALLMÄN : Abundance</ID>
+    <ID>EnumNaming:Abundance.kt$Abundance$SÄLLSYNT : Abundance</ID>
+    <ID>InvalidPackageDeclaration:Species.kt$package se.birdy.content.model</ID>
+    <ID>LongMethod:SpeciesDbBuilder.kt$SpeciesDbBuilder$private fun insertSpecies( db: BirdyContent, yaml: SpeciesYaml, )</ID>
+    <ID>LongMethod:SpeciesValidator.kt$SpeciesValidator$private fun validateOne( path: Path, yaml: SpeciesYaml, ): List&lt;ValidationError&gt;</ID>
+    <ID>LongMethod:ValidateBadgesYamlMain.kt$ValidateBadgesYamlMain$@JvmStatic fun main(args: Array&lt;String&gt;)</ID>
+    <ID>MagicNumber:BuildMain.kt$BuildMain$4</ID>
+    <ID>MagicNumber:SpeciesDbBuilder.kt$SpeciesDbBuilder$0xFF</ID>
+    <ID>MagicNumber:SpeciesDbBuilder.kt$SpeciesDbBuilder$16</ID>
+    <ID>MagicNumber:SpeciesDbBuilder.kt$SpeciesDbBuilder$24</ID>
+    <ID>MagicNumber:SpeciesDbBuilder.kt$SpeciesDbBuilder$3</ID>
+    <ID>MagicNumber:SpeciesDbBuilder.kt$SpeciesDbBuilder$8</ID>
+    <ID>MagicNumber:SpeciesValidator.kt$SpeciesValidator$2048</ID>
+    <ID>MagicNumber:SpeciesValidator.kt$SpeciesValidator$80</ID>
+    <ID>MagicNumber:ValidateBadgeStringsMain.kt$ValidateBadgeStringsMain$3</ID>
+    <ID>MagicNumber:ValidateBadgeStringsMain.kt$ValidateBadgeStringsMain$4</ID>
+    <ID>MagicNumber:ValidateBirdNetMapping.kt$ValidateBirdNetMapping$5</ID>
+    <ID>MagicNumber:ValidateMain.kt$ValidateMain$3</ID>
+    <ID>MagicNumber:ValidateMain.kt$ValidateMain$4</ID>
+    <ID>MaxLineLength:ValidateBadgesYamlMain.kt$ValidateBadgesYamlMain$errors += "$id: missing or non-positive integer 'target' (got '${rule.scalarValue("target")}')"</ID>
+    <ID>MaxLineLength:ValidateBadgesYamlMain.kt$internal fun YamlMap.listValue(key: String): YamlList?</ID>
+    <ID>MaxLineLength:ValidateBadgesYamlMain.kt$internal fun YamlMap.mapValue(key: String): YamlMap?</ID>
+    <ID>ReturnCount:ValidateBadgeStringsMain.kt$ValidateBadgeStringsMain$private fun parseBadgeIds(path: Path): List&lt;String&gt;</ID>
+  </CurrentIssues>
+</SmellBaseline>

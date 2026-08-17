@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>CyclomaticComplexMethod:AndroidAudioRecorder.kt$AndroidAudioRecorder$@SuppressLint("MissingPermission") fun start( onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -&gt; Unit, onCapReached: () -&gt; Unit, onError: (Throwable) -&gt; Unit = {}, maxDurationMs: Long = 60_000L, ): AndroidRecorderHandle</ID>
+    <ID>CyclomaticComplexMethod:IosAudioRecorder.kt$IosAudioRecorder$fun start( onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -&gt; Unit, onCapReached: () -&gt; Unit, onError: (Throwable) -&gt; Unit = {}, maxDurationMs: Long = 60_000L, ): IosRecorderHandle</ID>
+    <ID>InstanceOfCheckForException:AndroidAudioRecorder.kt$AndroidAudioRecorder$t is kotlinx.coroutines.CancellationException</ID>
+    <ID>InstanceOfCheckForException:AudioClassifierFactory.kt$AudioClassifierFactory$t is CancellationException</ID>
+    <ID>InstanceOfCheckForException:AudioSessionFailureGuard.kt$AudioSessionFailureGuard$t is CancellationException</ID>
+    <ID>InstanceOfCheckForException:BirdClassifierFactory.kt$BirdClassifierFactory$t is CancellationException</ID>
+    <ID>InstanceOfCheckForException:ClassifierBootstrap.kt$ClassifierBootstrap$t is CancellationException</ID>
+    <ID>InstanceOfCheckForException:SessionFailureGuard.kt$SessionFailureGuard$t is CancellationException</ID>
+    <ID>LongMethod:AndroidAudioRecorder.kt$AndroidAudioRecorder$@SuppressLint("MissingPermission") fun start( onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -&gt; Unit, onCapReached: () -&gt; Unit, onError: (Throwable) -&gt; Unit = {}, maxDurationMs: Long = 60_000L, ): AndroidRecorderHandle</ID>
+    <ID>LongMethod:IosAudioRecorder.kt$IosAudioRecorder$fun start( onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -&gt; Unit, onCapReached: () -&gt; Unit, onError: (Throwable) -&gt; Unit = {}, maxDurationMs: Long = 60_000L, ): IosRecorderHandle</ID>
+    <ID>LoopWithTooManyJumpStatements:TfLiteBirdClassifier.kt$TfLiteBirdClassifier$for</ID>
+    <ID>MagicNumber:AndroidAudioRecorder.kt$AndroidAudioRecorder$1000L</ID>
+    <ID>MagicNumber:AndroidAudioRecorder.kt$AndroidAudioRecorder$30</ID>
+    <ID>MagicNumber:AndroidAudioRecorder.kt$AndroidAudioRecorder$32768.0</ID>
+    <ID>MagicNumber:AndroidAudioRecorder.kt$AndroidAudioRecorder$4</ID>
+    <ID>MagicNumber:AndroidTfliteAudioRunner.kt$AndroidTfliteAudioRunner.Companion$4</ID>
+    <ID>MagicNumber:AndroidTfliteRunner.kt$AndroidTfliteRunner$0xFF</ID>
+    <ID>MagicNumber:AndroidTfliteRunner.kt$AndroidTfliteRunner$255</ID>
+    <ID>MagicNumber:AndroidTfliteRunner.kt$AndroidTfliteRunner$4</ID>
+    <ID>MagicNumber:AudioPreprocessor.android.kt$32768f</ID>
+    <ID>MagicNumber:AudioPreprocessor.ios.kt$32768f</ID>
+    <ID>MagicNumber:BirdClassifierModelInfoLoader.kt$BirdClassifierModelInfoLoader$4</ID>
+    <ID>MagicNumber:BirdNetPostprocess.kt$15f</ID>
+    <ID>MagicNumber:FakeAudioClassifier.kt$FakeAudioClassifier$0.04f</ID>
+    <ID>MagicNumber:FakeAudioClassifier.kt$FakeAudioClassifier$0.92f</ID>
+    <ID>MagicNumber:FakeAudioClassifier.kt$FakeAudioClassifier$144_000</ID>
+    <ID>MagicNumber:FakeAudioClassifier.kt$FakeAudioClassifier$6_362</ID>
+    <ID>MagicNumber:ImagePreprocessor.android.kt$ImagePreprocessor$0xFF</ID>
+    <ID>MagicNumber:ImagePreprocessor.android.kt$ImagePreprocessor$16</ID>
+    <ID>MagicNumber:ImagePreprocessor.android.kt$ImagePreprocessor$255f</ID>
+    <ID>MagicNumber:ImagePreprocessor.android.kt$ImagePreprocessor$3</ID>
+    <ID>MagicNumber:ImagePreprocessor.android.kt$ImagePreprocessor$8</ID>
+    <ID>MagicNumber:ImagePreprocessor.ios.kt$ImagePreprocessor$180</ID>
+    <ID>MagicNumber:ImagePreprocessor.ios.kt$ImagePreprocessor$255f</ID>
+    <ID>MagicNumber:ImagePreprocessor.ios.kt$ImagePreprocessor$270</ID>
+    <ID>MagicNumber:ImagePreprocessor.ios.kt$ImagePreprocessor$3</ID>
+    <ID>MagicNumber:ImagePreprocessor.ios.kt$ImagePreprocessor$360</ID>
+    <ID>MagicNumber:ImagePreprocessor.ios.kt$ImagePreprocessor$4</ID>
+    <ID>MagicNumber:ImagePreprocessor.ios.kt$ImagePreprocessor$90</ID>
+    <ID>MagicNumber:IosAudioRecorder.kt$IosAudioRecorder$1000L</ID>
+    <ID>MagicNumber:IosAudioRecorder.kt$IosAudioRecorder$16</ID>
+    <ID>MagicNumber:IosCameraSource.kt$4</ID>
+    <ID>MagicNumber:IosTfliteRunner.kt$IosTfliteRunner$0xFF</ID>
+    <ID>MagicNumber:IosTfliteRunner.kt$IosTfliteRunner$255</ID>
+    <ID>MagicNumber:PcmChunker.kt$PcmChunker$32768.0</ID>
+    <ID>MagicNumber:Zoom.kt$10f</ID>
+    <ID>MagicNumber:Zoom.kt$5f</ID>
+    <ID>MatchingDeclarationName:ImagePreprocessor.android.kt$ImagePreprocessor</ID>
+    <ID>MatchingDeclarationName:ImagePreprocessor.ios.kt$ImagePreprocessor</ID>
+    <ID>MatchingDeclarationName:ImagePreprocessor.jvm.kt$ImagePreprocessor</ID>
+    <ID>MatchingDeclarationName:Zoom.kt$ZoomState</ID>
+    <ID>MaxLineLength:AudioClassifierBootstrap.kt$AudioClassifierBootstrap$*</ID>
+    <ID>ReturnCount:AudioClassifierFactory.kt$AudioClassifierFactory$suspend fun create(): Pair&lt;BirdAudioClassifier, AudioClassifierMode&gt;</ID>
+    <ID>ReturnCount:ImagePreprocessor.ios.kt$ImagePreprocessor$private fun rotate( src: Rgba, degrees: Int, ): Rgba</ID>
+    <ID>ReturnCount:IosCameraSource.kt$IosCameraSource$private fun configureSession(cam: AVCaptureDevice): Boolean</ID>
+    <ID>ReturnCount:IosCameraSource.kt$IosCameraSource.FrameDelegate$override fun captureOutput( output: AVCaptureOutput, didOutputSampleBuffer: CMSampleBufferRef?, fromConnection: AVCaptureConnection, )</ID>
+    <ID>SwallowedException:AndroidCameraSource.kt$AndroidCameraSource$t: Throwable</ID>
+    <ID>SwallowedException:IosCameraSource.kt$IosCameraSource.FrameDelegate$t: Throwable</ID>
+    <ID>ThrowsCount:AudioClassifierFactory.kt$AudioClassifierFactory$suspend fun create(): Pair&lt;BirdAudioClassifier, AudioClassifierMode&gt;</ID>
+    <ID>TooGenericExceptionCaught:AndroidAudioRecorder.kt$AndroidAudioRecorder$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:AndroidCameraSource.kt$AndroidCameraSource$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:AndroidTfliteAudioRunner.kt$AndroidTfliteAudioRunner.Companion$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:AudioClassifierBootstrap.kt$AudioClassifierBootstrap$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:AudioClassifierFactory.kt$AudioClassifierFactory$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:AudioSessionFailureGuard.kt$AudioSessionFailureGuard$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:BirdClassifierFactory.kt$BirdClassifierFactory$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:ClassifierBootstrap.kt$ClassifierBootstrap$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:IosAudioRecorder.kt$IosAudioRecorder$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:IosCameraSource.kt$IosCameraSource.FrameDelegate$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:IosTfliteAudioRunner.kt$IosTfliteAudioRunner$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:SessionFailureGuard.kt$SessionFailureGuard$t: Throwable</ID>
+  </CurrentIssues>
+</SmellBaseline>

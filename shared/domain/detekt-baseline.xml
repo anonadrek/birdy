@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>MagicNumber:BadgeCategory.kt$BadgeCategory.AUDIO$5</ID>
+    <ID>MagicNumber:BadgeCategory.kt$BadgeCategory.REDLISTED$3</ID>
+    <ID>MagicNumber:BadgeCategory.kt$BadgeCategory.SEASON$4</ID>
+    <ID>MagicNumber:BadgeCategory.kt$BadgeCategory.STREAK_MONTHLY$7</ID>
+    <ID>MagicNumber:BadgeCategory.kt$BadgeCategory.STREAK_WEEKLY$6</ID>
+    <ID>MagicNumber:DailyBirdSelector.kt$DailyBirdSelector$3</ID>
+    <ID>MagicNumber:StreakHelpers.kt$3</ID>
+    <ID>MagicNumber:StreakHelpers.kt$4</ID>
+    <ID>MagicNumber:StreakHelpers.kt$5</ID>
+    <ID>MagicNumber:StreakHelpers.kt$6</ID>
+    <ID>MagicNumber:StreakHelpers.kt$7</ID>
+    <ID>MagicNumber:StreakHelpers.kt$MonthKey$12</ID>
+    <ID>ReturnCount:StreakHelpers.kt$fun currentWeeklyStreak( instants: List&lt;Instant&gt;, zone: TimeZone, now: Instant, ): Int</ID>
+    <ID>TooManyFunctions:StreakHelpers.kt$se.birdy.domain.badge.StreakHelpers.kt</ID>
+  </CurrentIssues>
+</SmellBaseline>

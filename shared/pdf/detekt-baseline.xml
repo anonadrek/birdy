@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>LongParameterList:JournalPdfLayout.kt$JournalPdfLayout$( doc: PdfDocument, input: JournalPdfInput, rows: List&lt;JournalPageAggregator.SpeciesRow&gt;, pageNum: Int, pageIndex: Int, totalSpeciesPages: Int, )</ID>
+    <ID>LongParameterList:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$( input: JournalPdfInput, rows: List&lt;JournalPageAggregator.SpeciesRow&gt;, pageNum: Int, pageIndex: Int, totalSpeciesPages: Int, zone: TimeZone, )</ID>
+    <ID>LongParameterList:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$( text: String, x: Double, baselineY: Double, font: UIFont, color: Long, centered: Boolean = false, )</ID>
+    <ID>LongParameterList:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$( x1: Double, y1: Double, x2: Double, y2: Double, color: Long, width: Double, )</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$0.5f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$0.6f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$1.5f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$10</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$100f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$10f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$120f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$12f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$140f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$14f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$150f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$16f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$170f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$180f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$188f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$18f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$200f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$22f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$240f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$24f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$26f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$28f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$30f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$322f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$40f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$44f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$48f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$4f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$5</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$50f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$5f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$6f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$80f</ID>
+    <ID>MagicNumber:JournalPdfLayout.kt$JournalPdfLayout$90f</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$0.5</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$0.6</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$1.5</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$10</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$10.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$100.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$12.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$120.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$130.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$14.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$140.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$150.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$16.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$170.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$18.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$180.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$188.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$200.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$22.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$24.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$240.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$26.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$28.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$280.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$30.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$322.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$4.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$40.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$44.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$48.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$5</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$5.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$50.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$6.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$70.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$80.0</ID>
+    <ID>MagicNumber:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$90.0</ID>
+    <ID>MatchingDeclarationName:JournalPdfRenderer.android.kt$JournalPdfRenderer</ID>
+    <ID>MatchingDeclarationName:JournalPdfRenderer.ios.kt$JournalPdfRenderer</ID>
+    <ID>MatchingDeclarationName:JournalPdfRenderer.jvm.kt$JournalPdfRenderer</ID>
+    <ID>MatchingDeclarationName:PdfFontProvider.android.kt$PdfFontProvider</ID>
+    <ID>MaxLineLength:IosPdfFonts.kt$IosPdfFonts$fun dmSerifItalic(size: Double): UIFont</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$JournalPdfMetrics.fmt(JournalPdfMetrics.SPECIES_EYEBROW_PAGED_FMT, "${pageIndex + 1}", "$totalSpeciesPages")</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$canvas.drawLine(JournalPdfMetrics.MARGIN_X, y + 14f, JournalPdfMetrics.PAGE_W - JournalPdfMetrics.MARGIN_X, y + 14f, rulePaint)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$canvas.drawText("${input.stats.totalObservationsThisYear}", JournalPdfMetrics.MARGIN_X + colW + 10f, statsY, bigNumberPaint)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$canvas.drawText(JournalPdfMetrics.ORNAMENT_GLYPH, JournalPdfMetrics.PAGE_W / 2f, JournalPdfMetrics.MARGIN_TOP + 30f, ornamentPaint)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$canvas.drawText(JournalPdfMetrics.STAT_TOTAL, JournalPdfMetrics.MARGIN_X + colW + 10f, statsY + 22f, captionPaint)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$canvas.drawText(JournalPdfMetrics.TITLE, JournalPdfMetrics.PAGE_W / 2f, JournalPdfMetrics.MARGIN_TOP + 150f, titlePaint)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$caveatPaint(textSize = JournalPdfMetrics.BAR_LABEL, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$caveatPaint(textSize = JournalPdfMetrics.BAR_VALUE, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$caveatPaint(textSize = JournalPdfMetrics.ORNAMENT, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$caveatPaint(textSize = JournalPdfMetrics.ORNAMENT_TOP, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$caveatPaint(textSize = JournalPdfMetrics.SECTION_EYEBROW, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$caveatPaint(textSize = JournalPdfMetrics.STAT_CAPTION, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$dmSerifItalicPaint(textSize = JournalPdfMetrics.BADGE_NAME, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$dmSerifItalicPaint(textSize = JournalPdfMetrics.COLOPHON_MARK, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$dmSerifItalicPaint(textSize = JournalPdfMetrics.SECTION_TITLE, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$dmSerifItalicPaint(textSize = JournalPdfMetrics.SPECIES_COUNT, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$dmSerifItalicPaint(textSize = JournalPdfMetrics.SPECIES_NAME, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$dmSerifItalicPaint(textSize = JournalPdfMetrics.STAT_NUMBER, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$dmSerifItalicPaint(textSize = JournalPdfMetrics.TITLE_SIZE, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$dmSerifItalicPaint(textSize = JournalPdfMetrics.TITLE_YEAR, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$dmSerifItalicPaint(textSize = JournalPdfMetrics.TOPS_HEADER, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$val datePaint = caveatPaint(textSize = JournalPdfMetrics.BADGE_DATE, color = JournalPdfMetrics.COLOR_COPPER.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$val datePaint = caveatPaint(textSize = JournalPdfMetrics.SPECIES_DATE, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$val descPaint = caveatPaint(textSize = JournalPdfMetrics.BADGE_DESC, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$val genPaint = caveatPaint(textSize = JournalPdfMetrics.COLOPHON_GEN, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$val pageMarkPaint = caveatPaint(textSize = JournalPdfMetrics.FOOTER, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$val sciPaint = caveatPaint(textSize = JournalPdfMetrics.SPECIES_SCI, color = JournalPdfMetrics.COLOR_INK.toInt(), center = false)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$val subPaint = caveatPaint(textSize = JournalPdfMetrics.TITLE_SUB, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayout.kt$JournalPdfLayout$val teaserPaint = caveatPaint(textSize = JournalPdfMetrics.TITLE_TEASER, color = JournalPdfMetrics.COLOR_INK.toInt(), center = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText("$count", barAreaX + filled + 6.0, barY + 12.0, IosPdfFonts.caveat(M.BAR_VALUE.toDouble()), M.COLOR_COPPER)</ID>
+    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(M.ORNAMENT_GLYPH, M.PAGE_W / 2.0, y + 5.0, IosPdfFonts.caveat(M.ORNAMENT.toDouble()), M.COLOR_COPPER, centered = true)</ID>
+    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(M.STAT_SPECIES, M.MARGIN_X + 10.0, statsY + 22.0, IosPdfFonts.caveat(M.STAT_CAPTION.toDouble()), M.COLOR_INK)</ID>
+    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(M.STAT_TOTAL, M.MARGIN_X + colW + 10.0, statsY + 22.0, IosPdfFonts.caveat(M.STAT_CAPTION.toDouble()), M.COLOR_INK)</ID>
+    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(M.TOPS, M.MARGIN_X.toDouble(), chartTop, IosPdfFonts.dmSerifItalic(M.TOPS_HEADER.toDouble()), M.COLOR_INK)</ID>
+    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(badge.descriptionLocalized, M.MARGIN_X + 44.0, y + 16.0, IosPdfFonts.caveat(M.BADGE_DESC.toDouble()), M.COLOR_INK)</ID>
+    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(badge.nameLocalized, M.MARGIN_X + 44.0, y, IosPdfFonts.dmSerifItalic(M.BADGE_NAME.toDouble()), M.COLOR_INK)</ID>
+    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(row.nameLocalized, M.MARGIN_X + 26.0, y, IosPdfFonts.dmSerifItalic(M.SPECIES_NAME.toDouble()), M.COLOR_INK)</ID>
+    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$drawText(row.scientificName, M.MARGIN_X + 26.0, y + 12.0, IosPdfFonts.caveat(M.SPECIES_SCI.toDouble()), M.COLOR_INK)</ID>
+    <ID>MaxLineLength:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$strokeLine(M.MARGIN_X.toDouble(), y + 14.0, M.PAGE_W - M.MARGIN_X.toDouble(), y + 14.0, M.COLOR_PAPER_EDGE, 0.5)</ID>
+    <ID>MaxLineLength:JournalPdfRenderer.ios.kt$JournalPdfRenderer$(NSFileManager.defaultManager.attributesOfItemAtPath(outputPath, error = null)?.get(NSFileSize) as? NSNumber)</ID>
+    <ID>MaxLineLength:JournalPdfRenderer.ios.kt$JournalPdfRenderer$JournalPdfLayoutIos.drawSpeciesPage(input, rows, pageNum, idx, speciesPages.size, zone)</ID>
+    <ID>MaxLineLength:JournalPdfRenderer.ios.kt$JournalPdfRenderer$if (!success) throw IllegalStateException("writePDFToURL failed: ${err.value?.localizedDescription}")</ID>
+    <ID>MaxLineLength:JournalPdfRenderer.ios.kt$JournalPdfRenderer$val bounds = CGRectMake(0.0, 0.0, JournalPdfMetrics.PAGE_W.toDouble(), JournalPdfMetrics.PAGE_H.toDouble())</ID>
+    <ID>MaxLineLength:JournalPdfRenderer.ios.kt$JournalPdfRenderer$val renderer = UIGraphicsPDFRenderer(bounds = bounds, format = UIGraphicsPDFRendererFormat.defaultFormat())</ID>
+    <ID>TooGenericExceptionCaught:JournalPdfRenderer.android.kt$JournalPdfRenderer$t: Throwable</ID>
+    <ID>TooManyFunctions:JournalPdfLayout.kt$JournalPdfLayout</ID>
+    <ID>TooManyFunctions:JournalPdfLayoutIos.kt$JournalPdfLayoutIos</ID>
+    <ID>UnusedParameter:JournalPdfLayout.kt$JournalPdfLayout$input: JournalPdfInput</ID>
+    <ID>UnusedParameter:JournalPdfLayoutIos.kt$JournalPdfLayoutIos$input: JournalPdfInput</ID>
+    <ID>UseCheckOrError:JournalPdfRenderer.ios.kt$JournalPdfRenderer$throw IllegalStateException("writePDFToURL failed: ${err.value?.localizedDescription}")</ID>
+  </CurrentIssues>
+</SmellBaseline>

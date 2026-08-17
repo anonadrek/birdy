@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>MatchingDeclarationName:PremiumStateStore.ios.kt$PremiumStateStore</ID>
+    <ID>MatchingDeclarationName:PremiumStateStore.jvm.kt$PremiumStateStore</ID>
+    <ID>MatchingDeclarationName:UserPreferencesStore.ios.kt$UserPreferencesStore</ID>
+    <ID>MatchingDeclarationName:UserPreferencesStore.jvm.kt$UserPreferencesStore</ID>
+    <ID>MaxLineLength:PremiumStateStore.ios.kt$PremiumStateStore$actual fun repository(): PremiumRepository</ID>
+    <ID>TooManyFunctions:InMemoryUserPreferences.kt$InMemoryUserPreferences : UserPreferences</ID>
+    <ID>TooManyFunctions:NsUserDefaultsUserPreferences.kt$NsUserDefaultsUserPreferences : UserPreferences</ID>
+    <ID>TooManyFunctions:UserPreferences.kt$UserPreferences</ID>
+    <ID>TooManyFunctions:UserPreferencesStore.android.kt$AndroidUserPreferences : UserPreferences</ID>
+  </CurrentIssues>
+</SmellBaseline>
