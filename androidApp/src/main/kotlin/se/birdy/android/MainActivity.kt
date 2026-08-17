@@ -38,6 +38,7 @@ import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.app.ui.audio.AndroidAudioRecorderAdapter
 import se.birdy.app.ui.audio.AndroidWaveformRenderer
 import se.birdy.app.ui.badges.BadgeStringMap
+import se.birdy.app.ui.badges.resolveBadgeString
 import se.birdy.app.ui.debug.DiagnosticsRunner
 import se.birdy.app.ui.debug.DiagnosticsScreen
 import se.birdy.app.ui.settings.AppLocaleApplier
@@ -501,23 +502,6 @@ class MainActivity : AppCompatActivity() {
             deepLinkFlow = deepLinkFlow,
         )
     }
-
-    private suspend fun resolveBadgeString(
-        badgeId: String,
-        resourceFor: () -> org.jetbrains.compose.resources.StringResource,
-    ): String =
-        runCatching {
-            org.jetbrains.compose.resources
-                .getString(resourceFor())
-        }.getOrElse { humanizeBadgeId(badgeId) }
-
-    private fun humanizeBadgeId(badgeId: String): String =
-        badgeId
-            .removePrefix("premium_")
-            .split('_')
-            .joinToString(" ") { part ->
-                part.replaceFirstChar { ch -> if (ch.isLowerCase()) ch.titlecase() else ch.toString() }
-            }
 
     private fun buildBenchmarkScreen(bootstrap: ClassifierBootstrap): (@Composable () -> Unit)? =
         if (BuildConfig.DEBUG) {

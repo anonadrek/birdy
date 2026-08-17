@@ -43,6 +43,7 @@ import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.app.ui.audio.IosAudioRecorderAdapter
 import se.birdy.app.ui.audio.IosWaveformRenderer
 import se.birdy.app.ui.badges.BadgeStringMap
+import se.birdy.app.ui.badges.resolveBadgeString
 import se.birdy.app.usecase.ExportJournalUseCase
 import se.birdy.app.util.ioDispatcher
 import se.birdy.content.SpeciesId
@@ -111,8 +112,9 @@ import kotlin.native.Platform
  *   [IosSpeciesByQidMemoHolder]s KDoc för varför.
  * i4 T12 resolved: journalExport wirad (riktig [se.birdy.pdf.JournalPdfRenderer] via
  *   UIGraphicsPDFRenderer + [se.birdy.app.usecase.ExportJournalUseCase]) — spegel av
- *   MainActivity.kt:375-394 inkl. dess `resolveBadgeString`-fallback (~rad 505); Arkiv-fliken
- *   visar nu PDF-export-CTA:n på iOS också.
+ *   MainActivity.kt:s exportJournalUseCase-bygge; badge-strängarna löses via delade
+ *   [resolveBadgeString] (ui/badges/BadgeStringResolver.kt). Arkiv-fliken visar nu
+ *   PDF-export-CTA:n på iOS också.
  */
 fun buildIosAppGraph(): AppGraph {
     val birdyData = BirdyData(DatabaseFactory().createDriver())
@@ -184,9 +186,8 @@ fun buildIosAppGraph(): AppGraph {
             clock = Clock.System,
             timeZone = kotlinx.datetime.TimeZone.currentSystemDefault(),
             locale = resolvedLocale,
-            // BadgeStringMap kastar för badge-id:n den inte känner igen — fall tillbaka på en
-            // humaniserad id-sträng (resolveBadgeString/humanizeBadgeId nedan är en exakt
-            // spegel av MainActivity.resolveBadgeString/humanizeBadgeId, rad 505-520).
+            // BadgeStringMap kastar för badge-id:n den inte känner igen — delade
+            // resolveBadgeString faller tillbaka på en humaniserad id-sträng.
             badgeNameResolver = { id -> resolveBadgeString(id) { BadgeStringMap.nameFor(id) } },
             badgeDescriptionResolver = { id -> resolveBadgeString(id) { BadgeStringMap.descriptionFor(id) } },
         )
@@ -444,29 +445,6 @@ internal fun journalExportDirPath(): String {
     )
     return dir
 }
-
-/**
- * Spegel av MainActivity.resolveBadgeString (rad 505-512): BadgeStringMap.nameFor/descriptionFor
- * kastar för badge-id:n den inte känner igen (t.ex. premium-badges utan strängar än) — fall
- * tillbaka på [humanizeBadgeId] istället för att låta exporten misslyckas helt.
- */
-private suspend fun resolveBadgeString(
-    badgeId: String,
-    resourceFor: () -> org.jetbrains.compose.resources.StringResource,
-): String =
-    runCatching {
-        org.jetbrains.compose.resources
-            .getString(resourceFor())
-    }.getOrElse { humanizeBadgeId(badgeId) }
-
-/** Spegel av MainActivity.humanizeBadgeId (rad 514-520) — samma ordvisa titelversalisering. */
-private fun humanizeBadgeId(badgeId: String): String =
-    badgeId
-        .removePrefix("premium_")
-        .split('_')
-        .joinToString(" ") { part ->
-            part.replaceFirstChar { ch -> if (ch.isLowerCase()) ch.titlecase() else ch.toString() }
-        }
 
 /** Persists the last badge-catalog version we backfilled, so it does not re-run each launch. */
 internal class NsUserDefaultsBadgeVersionStore(

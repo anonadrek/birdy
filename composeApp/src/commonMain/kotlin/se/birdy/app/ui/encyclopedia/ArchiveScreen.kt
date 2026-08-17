@@ -105,6 +105,7 @@ import birdy_bird_scanner.composeapp.generated.resources.search_placeholder
 import birdy_bird_scanner.composeapp.generated.resources.settings_menu_item
 import birdy_bird_scanner.composeapp.generated.resources.species_photo_label
 import coil3.compose.AsyncImage
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
@@ -235,9 +236,11 @@ fun ArchiveScreen(
                             isExporting = true
                             scope.launch {
                                 val result =
-                                    runCatching { exportFn() }.getOrElse {
-                                        JournalExportResult.Failed(it.message ?: "Unknown error")
-                                    }
+                                    runCatching { exportFn() }
+                                        .onFailure { if (it is CancellationException) throw it }
+                                        .getOrElse {
+                                            JournalExportResult.Failed(it.message ?: "Unknown error")
+                                        }
                                 isExporting = false
                                 when (result) {
                                     is JournalExportResult.Success -> onSharePdf(result.pdfPath)
