@@ -72,6 +72,7 @@ import se.birdy.ml.loadAiyLabelMapper
 import se.birdy.ml.loadModelMetadata
 import se.birdy.pdf.JournalPdfRenderer
 import kotlin.concurrent.AtomicReference
+import kotlin.concurrent.Volatile
 import kotlin.experimental.ExperimentalNativeApi
 import kotlin.native.Platform
 
@@ -245,8 +246,14 @@ fun buildIosAppGraph(): AppGraph {
  * den här holdern istället för grafen direkt. Sätts i `MainViewController.kt` direkt efter
  * `buildIosAppGraph()`; grafen dör aldrig under appens livstid (ingen clear-motsvarighet
  * till Androids onDestroy behövs).
+ *
+ * Åtkomstkontrakt för [current]: skrivs EN gång, på huvudtråden, vid första compositionen.
+ * Läses därefter både från huvudtrådscoroutines och från godtyckliga
+ * `UNUserNotificationCenter`-callback-köer (Task 10:s `BirdyNotificationDelegate`) —
+ * därför @Volatile, så skrivningen garanterat syns över tråd-gränsen.
  */
 internal object AppGraphHolderIos {
+    @Volatile
     var current: AppGraph? = null
 }
 
@@ -309,11 +316,17 @@ internal fun iosNotificationPayloads(graph: AppGraph): NotificationPayloads =
  * fast/static källa (t.ex. den bundlade artdatabasen). Mutex:en förhindrar en dubbel-
  * beräkning om två callers råkar racea in innan [value] hunnit sättas — den yttre
  * null-checken är en billig fast path som slår till för alla anrop EFTER den första.
+ * [value] är @Volatile: den olåsta fast path-läsningen sker UTAN mutex:en och dess
+ * anropande coroutine-context är inte garanterat huvudtråden (flera olika callers delar
+ * detta memo) — utan @Volatile finns ingen minnesmodell-garanti att en annan tråds
+ * skrivning syns.
  */
 internal class SuspendMemo<T : Any>(
     private val compute: suspend () -> T,
 ) {
     private val mutex = Mutex()
+
+    @Volatile
     private var value: T? = null
 
     suspend fun get(): T = value ?: mutex.withLock { value ?: compute().also { value = it } }

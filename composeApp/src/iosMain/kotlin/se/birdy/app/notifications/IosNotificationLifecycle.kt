@@ -48,7 +48,13 @@ import kotlin.native.Platform
  * drainar stashen (om någon) första gången grafen finns, ovanpå sina befintliga
  * observer- + reschedule-plikter.
  *
- * Observer + delegat hålls i globala vals — BÅDA är weak-refererade av systemet.
+ * Observer + delegat hålls i globala vals. Delegaten MÅSTE strong-retainas här:
+ * `UNUserNotificationCenter.delegate` är en weak-referens, så utan [retainedDelegate]
+ * skulle instansen deallokeras direkt och ingen callback någonsin avfyras. Observer-
+ * tokenet är annorlunda — `NSNotificationCenter.addObserverForName` returnerar ett
+ * token som centret SJÄLVT retainer fram till en matchande `removeObserver`-anrop, så
+ * [retainedObserver] behövs strikt inte för att hålla observationen vid liv; den sparas
+ * ändå som belt-and-braces och som ett handtag att avregistrera med om vi någonsin behöver det.
  * [installIosNotificationDelegate] är idempotent (skapar ALDRIG en andra delegat-
  * instans, oavsett hur många gånger den anropas); [installIosNotificationLifecycle]
  * anropar den ändå defensivt som fallback ifall den tidiga Swift-installationen någon
@@ -143,6 +149,12 @@ internal class BirdyNotificationDelegate :
                 graph.deepLinkFlow?.tryEmit(deepLink)
             } else {
                 pendingDeepLink = deepLink
+                // TOCTOU: grafen kan ha landat i mikrosekund-fönstret precis ovan — läs om och drena direkt.
+                val lateGraph = AppGraphHolderIos.current
+                if (lateGraph != null) {
+                    lateGraph.deepLinkFlow?.tryEmit(deepLink)
+                    pendingDeepLink = null
+                }
             }
         }
         withCompletionHandler()

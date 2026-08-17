@@ -29,8 +29,13 @@ import kotlin.coroutines.resume
  * recap/trofé en förekomst framåt. Payload-null ⇒ pending för den typen städas —
  * schedule* är alltså konvergent oavsett toggle-läge.
  *
- * Jobb per typ hålls så cancel* kan avbryta en pågående beräkning; ensureActive()
- * före add förhindrar att en hunnen-toggla-av-race lämnar en stale notis.
+ * Jobb per typ hålls så cancel* kan avbryta en pågående beräkning; ensureActive() före
+ * add stoppar bara racets in-coroutine-halva (inga fler slots schemaläggs efter ett
+ * observerat cancel) — `addNotificationRequest` självt är fire-and-forget och inte
+ * coroutine-cancellable, så en redan avskickad commit kan ändå landa hos OS:et efter
+ * cancel. Självläkande för samma-id-omschemaläggningar (nästa foreground kör en färsk
+ * removePendingWithPrefix innan den lägger till igen) — men en ren toggla-av-race kan i
+ * värsta fall leverera EN stale push om ingen foreground hinner köras innan avfyringstiden.
  */
 class IosNotificationScheduler(
     private val graphAccessor: () -> AppGraph?,

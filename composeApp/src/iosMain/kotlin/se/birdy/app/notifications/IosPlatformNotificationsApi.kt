@@ -49,9 +49,10 @@ class IosPlatformNotificationsApi : PlatformNotificationsApi {
 /**
  * Fyrar iOS-notis-permission-dialogen — spegel av `MainActivity`s `requestPermLauncher`-
  * callback (persist `pushPermissionAsked` + schemalägg vid grant). `graph.notificationScheduler`
- * är null på iOS fram till Task 10 wire:ar `IosNotificationScheduler` — de null-safe
- * `?.`-anropen nedan är ett avsiktligt mellanläge (pre-flight-tabellens T9↔T10-post),
- * inte en bugg att "fixa" här.
+ * är LIVE sedan Task 10 wire:ade `IosNotificationScheduler` i `buildIosAppGraph()` — de
+ * null-safe `?.`-anropen nedan är kvar som harmlös null-säkerhet mot den delade, nullable
+ * `NotificationScheduler`-interfacetypen (samma kontrakt som Android deklarerar), inte en
+ * signal om att fältet faktiskt kan vara null på iOS längre.
  *
  * `requestAuthorizationWithOptions`s completion handler anländer på en godtycklig kö
  * (inte huvudtråden) → [MainScope]`.launch` hoppar till main för prefs-skrivningen

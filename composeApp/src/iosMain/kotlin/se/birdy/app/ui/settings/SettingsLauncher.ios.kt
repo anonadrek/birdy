@@ -1,8 +1,10 @@
 package se.birdy.app.ui.settings
 
+import platform.Foundation.NSLog
 import platform.Foundation.NSURL
 import platform.UIKit.UIActivityViewController
 import platform.UIKit.UIApplication
+import se.birdy.app.ui.photoanalyze.keyWindowRootViewController
 
 actual fun openExternalUrl(url: String) {
     NSURL.URLWithString(url)?.let { UIApplication.sharedApplication.openURL(it, emptyMap<Any?, Any>(), null) }
@@ -26,7 +28,11 @@ actual fun shareJournalPdf(pdfPath: String) {
 }
 
 private fun presentShareSheet(items: List<*>) {
-    val root = UIApplication.sharedApplication.keyWindow?.rootViewController ?: return
+    val root = keyWindowRootViewController()
+    if (root == null) {
+        NSLog("Birdy/settings: share sheet dropped — no key window root view controller")
+        return
+    }
     val controller = UIActivityViewController(activityItems = items, applicationActivities = null)
     root.presentViewController(controller, animated = true, completion = null)
 }
