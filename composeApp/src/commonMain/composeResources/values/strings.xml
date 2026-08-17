@@ -716,8 +716,4 @@
     <string name="map_teaser_caption">Se var du har sett dina fåglar.</string>
     <string name="map_teaser_count">%1$s fynd med plats väntar på kartan</string>
     <string name="map_teaser_cta">Lås upp med Premium</string>
-
-    <!-- iOS coming-soon stub panels (plan i0) -->
-    <string name="ios_coming_soon_title">Kommer snart till iOS</string>
-    <string name="ios_coming_soon_body">Den här delen av Birdy byggs för iOS just nu. Uppslagsverket och dagboken funkar redan!</string>
 </resources>

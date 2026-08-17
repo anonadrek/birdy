@@ -34,7 +34,7 @@ import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.paperBackground
 
-/** Android draws the osmdroid surface. composeApp is Android-only, so one actual suffices. */
+/** Android ritar osmdroid-ytan; iOS ritar MKMapView + MapTilerTileOverlay (i4). */
 @Composable
 expect fun MapScreenHost(
     pins: List<MapPin>,
