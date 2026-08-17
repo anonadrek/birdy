@@ -47,8 +47,8 @@ Med i3-tempot (en fas ≈ en dag) är **TestFlight realistiskt inom ett par veck
 
 ### Senare beslut/handgrepp (vid respektive fas)
 
-- [ ] **10. (i4) MapTiler-nyckeln för iOS-bygget:** `cp iosApp/Local.xcconfig.sample iosApp/Local.xcconfig` (gitignorerad fil) → fyll i `MAPTILER_API_KEY = <nyckel>` (samma nyckel/konto som Androids `gradle.properties`). Krävs innan punkt 2:s i4-sim-check kan köras (utan nyckel: tomma/403-tiles, ingen krasch — men inget att visuellt bedöma).
-- [ ] **11. (i5) App Store Connect:** app-entry, in-app-produkter (spegla Plays YEARLY/LIFETIME + priser), StoreKit-verify på device — beslut från 2026-07-07 står: **paywall aktiv dag 1 på iOS**
+- [ ] **10. (i4) MapTiler-nyckeln för iOS-bygget:** `iosApp/Local.xcconfig` finns redan på Mac:en men **värdet är TOMT** (kontrollerat 2026-08-17), och nyckeln finns inte någonstans på Mac:en (lokala `gradle.properties` saknar den) — hämta den från **Windows-maskinens `gradle.properties`** (eller MapTiler-kontot) och fyll i `MAPTILER_API_KEY = <nyckel>`. Krävs innan punkt 2:s i4-sim-check kan köras (utan nyckel: tomma/403-tiles, ingen krasch — men inget att visuellt bedöma).
+- [ ] **11. (i5) App Store Connect:** app-entry, in-app-produkter (spegla Plays `premium_yearly_v1` [subscription] / `premium_lifetime_v1` [non-consumable] + priser), StoreKit-verify på device — beslut från 2026-07-07 står: **paywall aktiv dag 1 på iOS**. **OBS (research 2026-08-17): i5:s KODFAS + sim-check behöver INTE detta** — StoreKit Testing i Xcode (`.storekit`-fil) kör köpflöden i simulatorn utan enrollment/Console; endast device-sandbox + i6 väntar på Apple. Arkitektur + spike: `docs/superpowers/research/2026-08-17-ios-i5-storekit2-research.md` (StoreKit 2 är osynligt för K/N — Swift-bro à la kart-tile-bron krävs, klib-bevisat).
 - [ ] **12. (i6) Godkänn listing-texterna** (SV/EN återbrukas från Play), App Store-screenshots (nytt bildpaket — samma behov som follow-up #9 för Play), privacy labels (lätta givet privacy-löftet)
 - [ ] **13. (i6) Trycka på "Submit for review"** + svara på ev. review-frågor
 
