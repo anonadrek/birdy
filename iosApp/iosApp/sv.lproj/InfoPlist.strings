@@ -1,2 +1,3 @@
 "NSCameraUsageDescription" = "Birdy använder kameran för att identifiera fåglar i realtid. Bilderna analyseras på din enhet och lämnar den aldrig.";
 "NSMicrophoneUsageDescription" = "Birdy använder mikrofonen för att identifiera fåglar via deras läten. Ljudet analyseras på din enhet och lämnar den aldrig.";
+"NSLocationWhenInUseUsageDescription" = "Birdy använder din plats för att placera dina fynd på din privata karta. Koordinaterna sparas bara på din enhet och lämnar den aldrig.";

@@ -28,6 +28,8 @@ import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.di.AppGraph
 import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
+import se.birdy.app.location.IosLocationPermissionRequester
+import se.birdy.app.location.IosLocationProvider
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.app.ui.audio.IosAudioRecorderAdapter
 import se.birdy.app.ui.audio.IosWaveformRenderer
@@ -71,6 +73,9 @@ import kotlin.native.Platform
  * i2c resolved: live-camera scan is now REAL (IosCameraSource, AVFoundation) — only the
  *   premium override remains.
  * i3 resolved: audio-ID wirad (IosTfliteAudioRunner + IosAudioRecorder; Flex endast device — sim visar felstate/DEMO).
+ * i4 T6 resolved: locationProvider/requestLocationPermission wirade (IosLocationProvider,
+ *   CoreLocation one-shot + IosLocationPermissionRequester) — kartans opt-in fynd-platsfångst
+ *   fungerar nu på iOS, spegel av MainActivity.buildAppGraph().
  */
 fun buildIosAppGraph(): AppGraph {
     val birdyData = BirdyData(DatabaseFactory().createDriver())
@@ -130,6 +135,8 @@ fun buildIosAppGraph(): AppGraph {
         repository = SpeciesRepositoryProvider.get(),
         classifierBootstrap = classifierBootstrap,
         cameraSourceFactory = { IosCameraSource() },
+        locationProvider = IosLocationProvider(),
+        requestLocationPermission = { IosLocationPermissionRequester.request() },
         observationRepository = observationRepo,
         photoStorage = PhotoStorageProvider.get(),
         badgeRepository = badgeRepo,
