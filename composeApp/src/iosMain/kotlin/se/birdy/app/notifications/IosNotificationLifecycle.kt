@@ -23,6 +23,7 @@ import platform.UserNotifications.UNUserNotificationCenterDelegateProtocol
 import platform.darwin.NSObject
 import se.birdy.app.AppGraphHolderIos
 import se.birdy.app.di.AppGraph
+import se.birdy.app.iosNotificationPayloads
 import kotlin.concurrent.Volatile
 import kotlin.experimental.ExperimentalNativeApi
 import kotlin.native.Platform
@@ -162,7 +163,7 @@ internal fun devNotifTrigger(produce: suspend (NotificationPayloads, AppGraph) -
     return {
         lifecycleScope.launch {
             val graph = AppGraphHolderIos.current ?: return@launch
-            val content = produce(NotificationPayloads.from(graph), graph) ?: return@launch
+            val content = produce(iosNotificationPayloads(graph), graph) ?: return@launch
             val unContent =
                 UNMutableNotificationContent().apply {
                     setTitle(content.title)

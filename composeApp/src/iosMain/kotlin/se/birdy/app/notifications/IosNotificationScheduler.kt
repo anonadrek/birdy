@@ -16,13 +16,15 @@ import platform.UserNotifications.UNNotificationRequest
 import platform.UserNotifications.UNNotificationSound
 import platform.UserNotifications.UNUserNotificationCenter
 import se.birdy.app.di.AppGraph
+import se.birdy.app.iosNotificationPayloads
 import se.birdy.domain.notification.NotificationScheduler
 import kotlin.coroutines.resume
 
 /**
  * iOS-schemaläggaren (spec §D): UNCalendarNotificationTrigger kräver innehåll VID
- * schemaläggning → varje schedule* räknar innehållet färskt via NotificationPayloads
- * och skrivs om vid varje foreground (installIosNotificationLifecycle). Dagens fågel
+ * schemaläggning → varje schedule* räknar innehållet färskt via [iosNotificationPayloads]
+ * (memoiserad artkarta — se `IosSpeciesByQidMemoHolder`s KDoc i IosAppGraph.kt, T10 review-
+ * fix) och skrivs om vid varje foreground (installIosNotificationLifecycle). Dagens fågel
  * förschemaläggs DAILY_WINDOW dagar (deterministisk per datum → exakt innehåll);
  * recap/trofé en förekomst framåt. Payload-null ⇒ pending för den typen städas —
  * schedule* är alltså konvergent oavsett toggle-läge.
@@ -44,7 +46,7 @@ class IosNotificationScheduler(
         dailyJob =
             scope.launch {
                 val graph = graphAccessor() ?: return@launch
-                val payloads = NotificationPayloads.from(graph)
+                val payloads = iosNotificationPayloads(graph)
                 val slots =
                     NotificationTimes.upcomingDaily(graph.clock.now(), graph.timeZone, hour = 8, minute = 0, count = DAILY_WINDOW)
                 removePendingWithPrefix(ID_DAILY_PREFIX)
@@ -61,7 +63,7 @@ class IosNotificationScheduler(
         recapJob =
             scope.launch {
                 val graph = graphAccessor() ?: return@launch
-                val content = NotificationPayloads.from(graph).weeklyRecap()
+                val content = iosNotificationPayloads(graph).weeklyRecap()
                 if (content == null) {
                     center.removePendingNotificationRequestsWithIdentifiers(listOf(ID_RECAP))
                     return@launch
@@ -76,7 +78,7 @@ class IosNotificationScheduler(
         trophyJob =
             scope.launch {
                 val graph = graphAccessor() ?: return@launch
-                val content = NotificationPayloads.from(graph).trophyProgress()
+                val content = iosNotificationPayloads(graph).trophyProgress()
                 if (content == null) {
                     center.removePendingNotificationRequestsWithIdentifiers(listOf(ID_TROPHY))
                     return@launch

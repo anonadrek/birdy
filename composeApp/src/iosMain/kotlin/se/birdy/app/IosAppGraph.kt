@@ -13,6 +13,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.datetime.Clock
 import platform.Foundation.NSBundle
 import platform.Foundation.NSDocumentDirectory
@@ -33,12 +35,15 @@ import se.birdy.app.location.IosLocationProvider
 import se.birdy.app.notifications.IosNotificationPermission
 import se.birdy.app.notifications.IosNotificationScheduler
 import se.birdy.app.notifications.IosPlatformNotificationsApi
+import se.birdy.app.notifications.NotificationPayloads
 import se.birdy.app.notifications.devNotifTrigger
 import se.birdy.app.notifications.todayLocalDate
 import se.birdy.app.photo.PhotoStorageProvider
 import se.birdy.app.ui.audio.IosAudioRecorderAdapter
 import se.birdy.app.ui.audio.IosWaveformRenderer
 import se.birdy.app.util.ioDispatcher
+import se.birdy.content.SpeciesId
+import se.birdy.content.model.Species
 import se.birdy.data.DatabaseFactory
 import se.birdy.data.badge.BadgeRepositoryImpl
 import se.birdy.data.db.BirdyData
@@ -96,6 +101,9 @@ import kotlin.native.Platform
  *   här grafen byggs; MainViewController.kt anropar installIosNotificationLifecycle(graph)
  *   efteråt för foreground-omschemaläggning + för att dränera en ev. kallstart-stashad
  *   deep-link (se IosNotificationLifecycle.kt:s KDoc för hela resonemanget).
+ *   Review-fix: [IosSpeciesByQidMemoHolder] + [iosNotificationPayloads] memoiserar
+ *   artkartan (839 arter) process-livstid för notis-payloads + Dagens fågel — se
+ *   [IosSpeciesByQidMemoHolder]s KDoc för varför.
  */
 fun buildIosAppGraph(): AppGraph {
     val birdyData = BirdyData(DatabaseFactory().createDriver())
@@ -154,9 +162,14 @@ fun buildIosAppGraph(): AppGraph {
     val dailyBirdHistory =
         se.birdy.data.dailybird
             .DailyBirdHistoryRepositoryImpl(birdyData)
+    // Review-fix (i4 T10): ONE memo for the process, not one per schedule*() pass — see
+    // IosSpeciesByQidMemoHolder's KDoc. Both consumers (Dagens fågel selector below +
+    // iosNotificationPayloads, wired into the graph further down) route through it.
+    val speciesByQidMemo = SuspendMemo { SpeciesRepositoryProvider.get().allByQid(resolvedLocale) }
+    IosSpeciesByQidMemoHolder.memo = speciesByQidMemo
     val dailyBirdSelector =
         se.birdy.domain.dailybird.DailyBirdSelector(
-            speciesProvider = { SpeciesRepositoryProvider.get().allByQid(resolvedLocale) },
+            speciesProvider = { speciesByQidMemo.get() },
         )
     val platformNotificationsApi = IosPlatformNotificationsApi()
     val deepLinkFlow =
@@ -204,6 +217,75 @@ fun buildIosAppGraph(): AppGraph {
  */
 internal object AppGraphHolderIos {
     var current: AppGraph? = null
+}
+
+/**
+ * Process-global handle till artkarte-memot (qid→Species, hela 839-artstabellen) —
+ * spegel av [AppGraphHolderIos]. Satt EN gång i [buildIosAppGraph]; läst av
+ * [iosNotificationPayloads], som anropas från en ANNAN fil/paket
+ * (`se.birdy.app.notifications.IosNotificationScheduler`/`IosNotificationLifecycle`) och
+ * annars inte skulle nå den memo-instans grafbygget skapade.
+ *
+ * **Varför ett memo överhuvudtaget:** artdatabasen är statiskt bundlad innehåll och
+ * [AppGraph.defaultLocale] är fixerad för hela processens livstid (exakt EN [AppGraph]
+ * byggs någonsin — se [AppGraphHolderIos]s KDoc) → ett per-process-cache har NOLL
+ * staleness-risk. Utan det materialiserade VARJE `schedule*()`-anrop (T10-reviewfynd)
+ * hela artkartan (sex SELECT-ALL-frågor + 839 `Species`-objekt) på nytt: 7× för
+ * dagens-fågel-fönstret + 1× för `trophyProgress()` = 8× per omschemaläggnings-pass,
+ * körd vid VARJE `UIApplicationDidBecomeActive` (kallstart ≈ två pass ≈ 16 laddningar) —
+ * och `pushPermissionAsked`-grinden gäller bara "har frågats", så även användare som
+ * NEKAT push-behörighet betalar kostnaden. Memot gör detta 1× per process istället.
+ */
+internal object IosSpeciesByQidMemoHolder {
+    internal var memo: SuspendMemo<Map<SpeciesId, Species>>? = null
+}
+
+/**
+ * iOS-spegel av [NotificationPayloads.Companion.from] — MÅSTE hållas synkad med den
+ * fält-för-fält (samma lambdor, samma defaults) om commonMains `from(graph)` någonsin
+ * ändras. `NotificationPayloads`/`DailyBirdSelector` i commonMain rörs INTE av detta —
+ * konstruktorn är public precis för att tillåta den här typen av alternativ wiring på en
+ * enskild plattform. Enda skillnaden mot `from(graph)`: `speciesByQid` går via
+ * [IosSpeciesByQidMemoHolder] istället för att materialisera artkartan på nytt (fallbacken
+ * till en ny, omemoiserad `allByQid`-läsning är en ren defensiv gard — memot är i praktiken
+ * ALLTID satt här, eftersom [buildIosAppGraph] sätter det innan grafen ens returneras och
+ * ingen konsument kan nå denna funktion utan en redan byggd graf).
+ */
+internal fun iosNotificationPayloads(graph: AppGraph): NotificationPayloads =
+    NotificationPayloads(
+        prefs = graph.userPreferences,
+        observationRepo = graph.observationRepository,
+        badgeRepo = graph.badgeRepository,
+        badgeCatalog = graph.badgeCatalog,
+        speciesByQid = {
+            // Fallback matchar from()'s omemoiserade uttryck exakt (defensiv gard — se KDoc ovan).
+            IosSpeciesByQidMemoHolder.memo?.get() ?: graph.repository.allByQid(graph.defaultLocale)
+        },
+        speciesNameFor = { qid ->
+            graph.repository
+                .getById(SpeciesId(qid), graph.defaultLocale)
+                .first()
+                ?.name
+        },
+        selectDailyBird = graph.selectDailyBird,
+        dailyBirdMatchCount = { graph.dailyBirdHistory?.totalMatchCount() ?: 0 },
+        timeZone = graph.timeZone,
+        clock = graph.clock,
+    )
+
+/**
+ * Process-lifetime "compute once, cache forever" för dyra suspend-laddningar med en
+ * fast/static källa (t.ex. den bundlade artdatabasen). Mutex:en förhindrar en dubbel-
+ * beräkning om två callers råkar racea in innan [value] hunnit sättas — den yttre
+ * null-checken är en billig fast path som slår till för alla anrop EFTER den första.
+ */
+internal class SuspendMemo<T : Any>(
+    private val compute: suspend () -> T,
+) {
+    private val mutex = Mutex()
+    private var value: T? = null
+
+    suspend fun get(): T = value ?: mutex.withLock { value ?: compute().also { value = it } }
 }
 
 /**
