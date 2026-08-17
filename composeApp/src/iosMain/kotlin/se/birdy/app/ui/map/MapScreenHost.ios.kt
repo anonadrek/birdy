@@ -121,6 +121,16 @@ actual fun MapScreenHost(
                 val bird = uiImageFromDataOrNull(bytes.toNSData()) ?: return@withContext null
                 buildBirdySealMarkerImage(bird)
             }
+        if (sealImage == null) {
+            // Review-fix (2026-08-17): loggas EN gång här — inte per annotation i
+            // viewForAnnotation — vid avkodnings-/rendreringsfel. Enda arg-formen (statisk
+            // text, inget "%@" + vararg); se motsvarande kommentar ovan för NSLog-vararg-trapp.
+            // sealImage förblir null ⇒ viewForAnnotation returnerar null ⇒ MapKit visar sin
+            // egen standardpin (dokumenterad fallback, se IosSealMarker.kt-KDoc).
+            NSLog(
+                "Birdy/map: kunde inte bygga vaxsigill-markören (avkodning eller CoreGraphics-rendering misslyckades) — visar systemets standardpin",
+            )
+        }
     }
 
     // Nyckad på BÅDE pins och sealImage (speglar Androids LaunchedEffect(pins, sealIcon)):
@@ -183,17 +193,20 @@ internal class BirdyMapDelegate(
         viewForAnnotation: MKAnnotationProtocol,
     ): MKAnnotationView? {
         val annotation = viewForAnnotation as? BirdyPinAnnotation ?: return null
+        // Review-fix (2026-08-17): null ⇒ MapKit faller tillbaka på sin egen standardpin
+        // (tappbar, synlig) i stället för en tom, osynlig, icke-tappbar MKAnnotationView utan
+        // bild — den dokumenterade fallbacken (IosSealMarker.kt-KDoc) implementerades inte
+        // förut. Felet loggas EN gång vid inläsning ovan, inte här (skulle annars logga per
+        // annotation/omritning).
+        val image = sealImage ?: return null
         val view =
             mapView.dequeueReusableAnnotationViewWithIdentifier(SEAL_PIN_REUSE_ID)
                 ?: MKAnnotationView(annotation = annotation, reuseIdentifier = SEAL_PIN_REUSE_ID)
         view.annotation = annotation
-        val image = sealImage
-        if (image != null) {
-            view.image = image
-            // Ankra bottom-center: vyn centreras på koordinaten som default; skjut upp halva höjden
-            // så spetsens topp hamnar på fyndet (Androids ANCHOR_CENTER/ANCHOR_BOTTOM).
-            view.centerOffset = CGPointMake(0.0, -image.size.useContents { height } / 2.0)
-        }
+        view.image = image
+        // Ankra bottom-center: vyn centreras på koordinaten som default; skjut upp halva höjden
+        // så spetsens topp hamnar på fyndet (Androids ANCHOR_CENTER/ANCHOR_BOTTOM).
+        view.centerOffset = CGPointMake(0.0, -image.size.useContents { height } / 2.0)
         return view
     }
 

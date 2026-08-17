@@ -53,10 +53,19 @@ internal fun buildBirdySealMarkerImage(bird: UIImage): UIImage? {
             return null
         }
 
-    val shadowColor = uiColor(s.SHADOW).CGColor
+    // Review-fix (2026-08-17): hålls som `val` genom BÅDA skugg-passen. `uiColor(s.SHADOW).CGColor`
+    // inline (den gamla koden) extraherar CGColorRef ur en UIColor som saknar en Kotlin-ägare i
+    // samma uttryck — K/N:s minneshantering kan då frigöra UIColor-omslaget innan
+    // CGContextSetShadowWithColor hinner läsa det, vilket gör CGColorRef ogiltig/hängande.
+    // CGContextSetShadowWithColor behandlar en ogiltig färg som NULL (dokumenterat: NULL
+    // avaktiverar skuggan) — så BÅDA skugg-passen ritade tyst ingenting. Genom att hålla
+    // `shadowUiColor` i en val som lever över hela funktionskroppen, och läsa `.CGColor` på nytt
+    // vid varje anropsställe, garanteras en levande ägare vid varje CGContextSetShadowWithColor.
+    val shadowUiColor = uiColor(s.SHADOW)
+
     // Nedåtspets (bakom discen), med skugga.
     CGContextSaveGState(ctx)
-    CGContextSetShadowWithColor(ctx, CGSizeMake(0.0, s.SHADOW_DY.toDouble()), s.SHADOW_BLUR.toDouble(), shadowColor)
+    CGContextSetShadowWithColor(ctx, CGSizeMake(0.0, s.SHADOW_DY.toDouble()), s.SHADOW_BLUR.toDouble(), shadowUiColor.CGColor)
     uiColor(s.COPPER).setFill()
     UIBezierPath()
         .apply {
@@ -67,9 +76,21 @@ internal fun buildBirdySealMarkerImage(bird: UIImage): UIImage? {
         }.fill()
     CGContextRestoreGState(ctx)
 
-    // Cream-disc med radial gradient + skugga.
+    // Cream-disc: en opak fyllning FÖRST, med skugga, INTE klippt. Review-fix (2026-08-17):
+    // föregående kod klippte till discens oval FÖRE den ritade något — Quartz klipper skuggans
+    // halo tillsammans med innehållet, så en skugga kan aldrig synas utanför sin egen klippbana.
+    // Den här fyllningen finns bara för att kasta en korrekt skugga; den täcks helt av
+    // gradient-passet nedan (färgen spelar ingen roll, CREAM_LO återanvänds för att undvika en
+    // ny konstant).
     CGContextSaveGState(ctx)
-    CGContextSetShadowWithColor(ctx, CGSizeMake(0.0, s.SHADOW_DY.toDouble()), s.SHADOW_BLUR.toDouble(), shadowColor)
+    CGContextSetShadowWithColor(ctx, CGSizeMake(0.0, s.SHADOW_DY.toDouble()), s.SHADOW_BLUR.toDouble(), shadowUiColor.CGColor)
+    uiColor(s.CREAM_LO).setFill()
+    UIBezierPath.bezierPathWithOvalInRect(CGRectMake(cx - r, cy - r, r * 2, r * 2)).fill()
+    CGContextRestoreGState(ctx)
+
+    // Radial gradient OVANPÅ den opaka fyllningen, klippt till discen — ingen skugga behövs i
+    // detta pass (skuggan är redan kastad av den opaka fyllningen ovan).
+    CGContextSaveGState(ctx)
     UIBezierPath.bezierPathWithOvalInRect(CGRectMake(cx - r, cy - r, r * 2, r * 2)).addClip()
     val colorSpace = CGColorSpaceCreateDeviceRGB()
 
