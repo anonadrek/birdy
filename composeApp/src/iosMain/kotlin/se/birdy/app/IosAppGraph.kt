@@ -224,7 +224,7 @@ fun buildIosAppGraph(): AppGraph {
         audioRecorderFactory = { IosAudioRecorderAdapter() },
         waveformRendererFactory = { IosWaveformRenderer() },
         journalExport = { exportJournalUseCase.run() },
-        versionName = "1.2.0-ios-i3",
+        versionName = "1.2.0-ios-i4",
         defaultLocale = resolvedLocale,
         selectDailyBird = { date -> dailyBirdSelector.selectFor(date) },
         dailyBirdHistory = dailyBirdHistory,
