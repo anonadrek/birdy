@@ -209,7 +209,12 @@ internal object IosAudioBootstrap {
             createReal = { IosTfliteAudioRunner.load(bundledBirdnetPath()) },
             createFallback = { FakeAudioClassifier() },
             onDegrade = { t ->
-                NSLog("%@", "Birdy/audio: classifier degrade: ${t::class.simpleName}: ${t.message}")
+                // Enda arg-formen: samma K/N-vararg-marshaling-fälla som MapTilerKey.ios.kt
+                // dokumenterar (NSLog(format: String, vararg Any?) kraschar om en rå Kotlin
+                // String skickas som vararg-elementet). Nytt här: meddelandet är fri text
+                // (t.message) som kan innehålla "%" — %%-escapas innan det blir
+                // `format`-argumentet, annars tolkar CoreFoundation tecknen som formatdirektiv.
+                NSLog("Birdy/audio: classifier degrade: ${t::class.simpleName}: ${t.message}".replace("%", "%%"))
             },
             allowFallback = Platform.isDebugBinary,
         ).create()
