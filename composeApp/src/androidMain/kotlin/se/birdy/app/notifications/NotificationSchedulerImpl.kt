@@ -5,14 +5,8 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import kotlinx.datetime.Clock
-import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.DayOfWeek
-import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.isoDayNumber
-import kotlinx.datetime.plus
-import kotlinx.datetime.toInstant
-import kotlinx.datetime.toLocalDateTime
 import se.birdy.app.notifications.workers.DailyBirdWorker
 import se.birdy.app.notifications.workers.TrophyProgressWorker
 import se.birdy.app.notifications.workers.WeeklyRecapWorker
@@ -27,26 +21,43 @@ class NotificationSchedulerImpl(
     private val workManager get() = WorkManager.getInstance(context)
 
     override fun scheduleDailyBird() {
+        val now = clock.now()
         val request =
             PeriodicWorkRequestBuilder<DailyBirdWorker>(24, TimeUnit.HOURS)
-                .setInitialDelay(millisUntilNext(hour = 8, minute = 0), TimeUnit.MILLISECONDS)
-                .build()
+                .setInitialDelay(
+                    NotificationTimes.millisUntil(NotificationTimes.nextDaily(now, zone, hour = 8, minute = 0), now, zone),
+                    TimeUnit.MILLISECONDS,
+                ).build()
         workManager.enqueueUniquePeriodicWork(UNIQUE_DAILY_BIRD, ExistingPeriodicWorkPolicy.KEEP, request)
     }
 
     override fun scheduleWeeklyRecap() {
+        val now = clock.now()
         val request =
             PeriodicWorkRequestBuilder<WeeklyRecapWorker>(7, TimeUnit.DAYS)
-                .setInitialDelay(millisUntilNextSunday(hour = 18, minute = 0), TimeUnit.MILLISECONDS)
-                .build()
+                .setInitialDelay(
+                    NotificationTimes.millisUntil(
+                        NotificationTimes.nextWeekly(now, zone, DayOfWeek.SUNDAY, hour = 18, minute = 0),
+                        now,
+                        zone,
+                    ),
+                    TimeUnit.MILLISECONDS,
+                ).build()
         workManager.enqueueUniquePeriodicWork(UNIQUE_WEEKLY_RECAP, ExistingPeriodicWorkPolicy.KEEP, request)
     }
 
     override fun scheduleTrophyProgress() {
+        val now = clock.now()
         val request =
             PeriodicWorkRequestBuilder<TrophyProgressWorker>(7, TimeUnit.DAYS)
-                .setInitialDelay(millisUntilNextDayOfWeek(DayOfWeek.WEDNESDAY, hour = 9, minute = 0), TimeUnit.MILLISECONDS)
-                .build()
+                .setInitialDelay(
+                    NotificationTimes.millisUntil(
+                        NotificationTimes.nextWeekly(now, zone, DayOfWeek.WEDNESDAY, hour = 9, minute = 0),
+                        now,
+                        zone,
+                    ),
+                    TimeUnit.MILLISECONDS,
+                ).build()
         workManager.enqueueUniquePeriodicWork(UNIQUE_TROPHY_PROGRESS, ExistingPeriodicWorkPolicy.KEEP, request)
     }
 
@@ -64,54 +75,6 @@ class NotificationSchedulerImpl(
 
     override fun cancelTrophyProgress() {
         workManager.cancelUniqueWork(UNIQUE_TROPHY_PROGRESS)
-    }
-
-    private fun millisUntilNext(
-        hour: Int,
-        minute: Int,
-    ): Long {
-        val now = clock.now()
-        val local = now.toLocalDateTime(zone)
-        val todayTarget = LocalDateTime(local.year, local.monthNumber, local.dayOfMonth, hour, minute).toInstant(zone)
-        val target =
-            if (todayTarget > now) {
-                todayTarget
-            } else {
-                val tomorrow = local.date.plus(1, DateTimeUnit.DAY)
-                LocalDateTime(tomorrow.year, tomorrow.monthNumber, tomorrow.dayOfMonth, hour, minute).toInstant(zone)
-            }
-        return (target - now).inWholeMilliseconds
-    }
-
-    private fun millisUntilNextSunday(
-        hour: Int,
-        minute: Int,
-    ): Long {
-        val now = clock.now()
-        val local = now.toLocalDateTime(zone)
-        val rawDays = (DayOfWeek.SUNDAY.isoDayNumber - local.dayOfWeek.isoDayNumber + 7) % 7
-        val daysToSunday =
-            if (rawDays == 0 && (local.hour > hour || (local.hour == hour && local.minute >= minute))) 7 else rawDays
-        val targetDate = local.date.plus(daysToSunday, DateTimeUnit.DAY)
-        val targetInstant =
-            LocalDateTime(targetDate.year, targetDate.monthNumber, targetDate.dayOfMonth, hour, minute).toInstant(zone)
-        return (targetInstant - now).inWholeMilliseconds
-    }
-
-    private fun millisUntilNextDayOfWeek(
-        day: DayOfWeek,
-        hour: Int,
-        minute: Int,
-    ): Long {
-        val now = clock.now()
-        val local = now.toLocalDateTime(zone)
-        val rawDays = (day.isoDayNumber - local.dayOfWeek.isoDayNumber + 7) % 7
-        val daysTo =
-            if (rawDays == 0 && (local.hour > hour || (local.hour == hour && local.minute >= minute))) 7 else rawDays
-        val targetDate = local.date.plus(daysTo, DateTimeUnit.DAY)
-        val targetInstant =
-            LocalDateTime(targetDate.year, targetDate.monthNumber, targetDate.dayOfMonth, hour, minute).toInstant(zone)
-        return (targetInstant - now).inWholeMilliseconds
     }
 
     companion object {
