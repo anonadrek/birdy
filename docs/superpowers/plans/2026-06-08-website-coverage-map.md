@@ -12,7 +12,7 @@
 
 **Working dir for all commands:** `website/` (the Astro project). Paths below are relative to `website/` unless they start with `../`.
 
-**Key environment note:** the map reads `import.meta.env.PUBLIC_MAPTILER_KEY`. Create a `website/.env` for local dev (already git-ignored via `.env`), e.g. `PUBLIC_MAPTILER_KEY=yJ7wwJtvTes1n5wNVovA`. The script MUST no-op gracefully when the key is absent (so CI without the key stays green) — see Task 6.
+**Key environment note:** the map reads `import.meta.env.PUBLIC_MAPTILER_KEY`. Create a `website/.env` for local dev (already git-ignored via `.env`), e.g. `PUBLIC_MAPTILER_KEY=<din-maptiler-nyckel>` (hämta ur MapTiler Cloud — ALDRIG en riktig nyckel i repot; det här stället bar en live-nyckel tills Cursor-scanen 2026-08-19 fångade det). The script MUST no-op gracefully when the key is absent (so CI without the key stays green) — see Task 6.
 
 ---
 
@@ -456,7 +456,7 @@ Expected: PASS. (With no `.env` key, `initMap` never runs → no errors. With a 
 
 - [ ] **Step 3: Manual visual check**
 
-Create `website/.env` with `PUBLIC_MAPTILER_KEY=yJ7wwJtvTes1n5wNVovA`, then:
+Create `website/.env` with `PUBLIC_MAPTILER_KEY=<din-maptiler-nyckel>`, then:
 ```bash
 npm run dev
 ```
