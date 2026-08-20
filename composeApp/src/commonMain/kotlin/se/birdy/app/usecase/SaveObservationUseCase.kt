@@ -81,14 +81,7 @@ class SaveObservationUseCase(
             throw t
         }
 
-        // Insert is the commit boundary. Daily-bird marking / in-app review must not
-        // fail the save: the UI treats any thrown error as "not saved" and the user
-        // retries → a duplicate diary row. Cancellation still propagates.
-        try {
-            onObservationSaved?.invoke(observation)
-        } catch (t: Throwable) {
-            if (t is CancellationException) throw t
-        }
+        notifySavedSafely(observation)
 
         val newUnlocks =
             runCatching {
@@ -112,5 +105,19 @@ class SaveObservationUseCase(
             }.getOrDefault(emptyList())
 
         return SaveResult(observationId = id, newUnlocks = newUnlocks)
+    }
+
+    /**
+     * Insert is the commit boundary. Daily-bird marking / in-app review must not
+     * fail the save: the UI treats any thrown error as "not saved" and the user
+     * retries → a duplicate diary row. Cancellation still propagates.
+     */
+    private suspend fun notifySavedSafely(observation: Observation) {
+        try {
+            onObservationSaved?.invoke(observation)
+        } catch (t: Throwable) {
+            if (t is CancellationException) throw t
+            println("SaveObservationUseCase: onObservationSaved side effect failed:\n${t.stackTraceToString()}")
+        }
     }
 }

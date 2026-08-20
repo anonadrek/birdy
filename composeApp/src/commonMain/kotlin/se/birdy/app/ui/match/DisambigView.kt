@@ -68,28 +68,14 @@ internal fun DisambigView(
     onCancel: () -> Unit,
 ) {
     val snackbarHost = remember { SnackbarHostState() }
-    val errorPhotoLabel = stringResource(Res.string.diary_save_error_photo)
-    val errorStorageLabel = stringResource(Res.string.diary_save_error_storage)
-    val errorDbLabel = stringResource(Res.string.diary_save_error_db)
-    val errorFrameLabel = stringResource(Res.string.diary_save_error_frame_unavailable)
     val isSaving = state.saveStatus == MatchResultUiState.SaveStatus.Saving
     val isSaved = state.saveStatus == MatchResultUiState.SaveStatus.Saved
 
-    LaunchedEffect(state.saveStatus) {
-        when (val s = state.saveStatus) {
-            MatchResultUiState.SaveStatus.Saved -> onUnknownSaved()
-            is MatchResultUiState.SaveStatus.Failed ->
-                snackbarHost.showSnackbar(
-                    when (s.kind) {
-                        MatchResultUiState.SaveStatus.Failed.Kind.PhotoEncodeFailed -> errorPhotoLabel
-                        MatchResultUiState.SaveStatus.Failed.Kind.StorageFull -> errorStorageLabel
-                        MatchResultUiState.SaveStatus.Failed.Kind.DatabaseFailed -> errorDbLabel
-                        MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable -> errorFrameLabel
-                    },
-                )
-            else -> Unit
-        }
-    }
+    SaveStatusEffects(
+        saveStatus = state.saveStatus,
+        snackbarHost = snackbarHost,
+        onUnknownSaved = onUnknownSaved,
+    )
 
     val eyebrowRes =
         if (state.candidates.size >= 3) {
@@ -108,35 +94,7 @@ internal fun DisambigView(
 
             Column(modifier = Modifier.padding(horizontal = 16.dp)) {
                 if (state.frameJpegPath != null) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Box(
-                            modifier =
-                                Modifier
-                                    .size(72.dp)
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(Color.White.copy(alpha = 0.4f))
-                                    .border(
-                                        width = 1.dp,
-                                        color = AccentCopper.copy(alpha = 0.3f),
-                                        shape = RoundedCornerShape(10.dp),
-                                    ),
-                        ) {
-                            AsyncImage(
-                                model = "file://${state.frameJpegPath}",
-                                contentDescription = null,
-                                modifier = Modifier.fillMaxSize(),
-                                contentScale = ContentScale.Crop,
-                            )
-                        }
-                        Spacer(Modifier.size(12.dp))
-                        Text(
-                            text = stringResource(Res.string.disambig_frame_caption),
-                            color = MarginaliaInk,
-                            fontStyle = FontStyle.Italic,
-                            fontSize = 13.sp,
-                        )
-                    }
-                    Spacer(Modifier.height(16.dp))
+                    FrameThumbnail(frameJpegPath = state.frameJpegPath)
                 }
 
                 state.candidates.forEach { candidate ->
@@ -148,46 +106,12 @@ internal fun DisambigView(
                     Spacer(Modifier.height(12.dp))
                 }
 
-                Spacer(Modifier.height(8.dp))
-                Text(
-                    text = stringResource(Res.string.disambig_pick_hint),
-                    color = MarginaliaInk.copy(alpha = 0.7f),
-                    fontStyle = FontStyle.Italic,
-                    fontSize = 12.sp,
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                DisambigFooter(
+                    isSaving = isSaving,
+                    isSaved = isSaved,
+                    onSaveAsUnknown = onSaveAsUnknown,
+                    onCancel = onCancel,
                 )
-                TextButton(
-                    onClick = onSaveAsUnknown,
-                    enabled = !isSaving && !isSaved,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    if (isSaving) {
-                        CircularProgressIndicator(
-                            color = AccentCopper,
-                            strokeWidth = 2.dp,
-                            modifier = Modifier.size(20.dp),
-                        )
-                    } else {
-                        Text(
-                            text = stringResource(Res.string.disambig_save_unknown),
-                            color = AccentCopper,
-                            fontWeight = FontWeight.W600,
-                            fontSize = 14.sp,
-                        )
-                    }
-                }
-                TextButton(
-                    onClick = onCancel,
-                    enabled = !isSaving,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(
-                        text = stringResource(Res.string.disambig_cancel_cta),
-                        color = MarginaliaInk,
-                        fontSize = 14.sp,
-                    )
-                }
-                Spacer(Modifier.height(24.dp))
             }
         }
         SnackbarHost(
@@ -195,6 +119,116 @@ internal fun DisambigView(
             modifier = Modifier.align(Alignment.BottomCenter),
         )
     }
+}
+
+@Composable
+private fun SaveStatusEffects(
+    saveStatus: MatchResultUiState.SaveStatus,
+    snackbarHost: SnackbarHostState,
+    onUnknownSaved: () -> Unit,
+) {
+    val errorPhotoLabel = stringResource(Res.string.diary_save_error_photo)
+    val errorStorageLabel = stringResource(Res.string.diary_save_error_storage)
+    val errorDbLabel = stringResource(Res.string.diary_save_error_db)
+    val errorFrameLabel = stringResource(Res.string.diary_save_error_frame_unavailable)
+
+    LaunchedEffect(saveStatus) {
+        when (saveStatus) {
+            MatchResultUiState.SaveStatus.Saved -> onUnknownSaved()
+            is MatchResultUiState.SaveStatus.Failed ->
+                snackbarHost.showSnackbar(
+                    when (saveStatus.kind) {
+                        MatchResultUiState.SaveStatus.Failed.Kind.PhotoEncodeFailed -> errorPhotoLabel
+                        MatchResultUiState.SaveStatus.Failed.Kind.StorageFull -> errorStorageLabel
+                        MatchResultUiState.SaveStatus.Failed.Kind.DatabaseFailed -> errorDbLabel
+                        MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable -> errorFrameLabel
+                    },
+                )
+            else -> Unit
+        }
+    }
+}
+
+@Composable
+private fun FrameThumbnail(frameJpegPath: String) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Box(
+            modifier =
+                Modifier
+                    .size(72.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.White.copy(alpha = 0.4f))
+                    .border(
+                        width = 1.dp,
+                        color = AccentCopper.copy(alpha = 0.3f),
+                        shape = RoundedCornerShape(10.dp),
+                    ),
+        ) {
+            AsyncImage(
+                model = "file://$frameJpegPath",
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop,
+            )
+        }
+        Spacer(Modifier.size(12.dp))
+        Text(
+            text = stringResource(Res.string.disambig_frame_caption),
+            color = MarginaliaInk,
+            fontStyle = FontStyle.Italic,
+            fontSize = 13.sp,
+        )
+    }
+    Spacer(Modifier.height(16.dp))
+}
+
+@Composable
+private fun DisambigFooter(
+    isSaving: Boolean,
+    isSaved: Boolean,
+    onSaveAsUnknown: () -> Unit,
+    onCancel: () -> Unit,
+) {
+    Spacer(Modifier.height(8.dp))
+    Text(
+        text = stringResource(Res.string.disambig_pick_hint),
+        color = MarginaliaInk.copy(alpha = 0.7f),
+        fontStyle = FontStyle.Italic,
+        fontSize = 12.sp,
+        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+    )
+    TextButton(
+        onClick = onSaveAsUnknown,
+        enabled = !isSaving && !isSaved,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        if (isSaving) {
+            CircularProgressIndicator(
+                color = AccentCopper,
+                strokeWidth = 2.dp,
+                modifier = Modifier.size(20.dp),
+            )
+        } else {
+            Text(
+                text = stringResource(Res.string.disambig_save_unknown),
+                color = AccentCopper,
+                fontWeight = FontWeight.W600,
+                fontSize = 14.sp,
+            )
+        }
+    }
+    TextButton(
+        onClick = onCancel,
+        enabled = !isSaving,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Text(
+            text = stringResource(Res.string.disambig_cancel_cta),
+            color = MarginaliaInk,
+            fontSize = 14.sp,
+        )
+    }
+    Spacer(Modifier.height(24.dp))
 }
 
 @OptIn(ExperimentalResourceApi::class)

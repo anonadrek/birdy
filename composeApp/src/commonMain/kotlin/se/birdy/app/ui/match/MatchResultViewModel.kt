@@ -266,12 +266,12 @@ class MatchResultViewModel(
      * find if the process died or the in-flight save failed silently).
      */
     fun saveAsUnknown() {
-        val current = _state.value as? MatchResultUiState.Disambig ?: return
-        if (current.saveStatus is MatchResultUiState.SaveStatus.Saving ||
-            current.saveStatus is MatchResultUiState.SaveStatus.Saved
-        ) {
-            return
-        }
+        val current =
+            (_state.value as? MatchResultUiState.Disambig)
+                ?.takeUnless {
+                    it.saveStatus is MatchResultUiState.SaveStatus.Saving ||
+                        it.saveStatus is MatchResultUiState.SaveStatus.Saved
+                } ?: return
         val path = current.frameJpegPath
         if (path == null) {
             _state.value =
