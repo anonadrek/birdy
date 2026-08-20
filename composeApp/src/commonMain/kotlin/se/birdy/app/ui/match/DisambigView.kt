@@ -16,9 +16,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -28,6 +34,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_db
+import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_frame_unavailable
+import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_photo
+import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_storage
 import birdy_bird_scanner.composeapp.generated.resources.disambig_cancel_cta
 import birdy_bird_scanner.composeapp.generated.resources.disambig_candidate_confidence
 import birdy_bird_scanner.composeapp.generated.resources.disambig_eyebrow_three
@@ -54,8 +64,19 @@ internal fun DisambigView(
     state: MatchResultUiState.Disambig,
     onPick: (SpeciesId) -> Unit,
     onSaveAsUnknown: () -> Unit,
+    onUnknownSaved: () -> Unit,
     onCancel: () -> Unit,
 ) {
+    val snackbarHost = remember { SnackbarHostState() }
+    val isSaving = state.saveStatus == MatchResultUiState.SaveStatus.Saving
+    val isSaved = state.saveStatus == MatchResultUiState.SaveStatus.Saved
+
+    SaveStatusEffects(
+        saveStatus = state.saveStatus,
+        snackbarHost = snackbarHost,
+        onUnknownSaved = onUnknownSaved,
+    )
+
     val eyebrowRes =
         if (state.candidates.size >= 3) {
             Res.string.disambig_eyebrow_three
@@ -73,84 +94,148 @@ internal fun DisambigView(
 
             Column(modifier = Modifier.padding(horizontal = 16.dp)) {
                 if (state.frameJpegPath != null) {
-                    Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
-                        Box(
-                            modifier =
-                                Modifier
-                                    .size(72.dp)
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(Color.White.copy(alpha = 0.4f))
-                                    .border(
-                                        width = 1.dp,
-                                        color = AccentCopper.copy(alpha = 0.3f),
-                                        shape = RoundedCornerShape(10.dp),
-                                    ),
-                        ) {
-                            AsyncImage(
-                                model = "file://${state.frameJpegPath}",
-                                contentDescription = null,
-                                modifier = Modifier.fillMaxSize(),
-                                contentScale = ContentScale.Crop,
-                            )
-                        }
-                        Spacer(Modifier.size(12.dp))
-                        Text(
-                            text = stringResource(Res.string.disambig_frame_caption),
-                            color = MarginaliaInk,
-                            fontStyle = FontStyle.Italic,
-                            fontSize = 13.sp,
-                        )
-                    }
-                    Spacer(Modifier.height(16.dp))
+                    FrameThumbnail(frameJpegPath = state.frameJpegPath)
                 }
 
                 state.candidates.forEach { candidate ->
                     CandidateCard(
                         candidate = candidate,
+                        enabled = !isSaving && !isSaved,
                         onClick = { onPick(candidate.species.id) },
                     )
                     Spacer(Modifier.height(12.dp))
                 }
 
-                Spacer(Modifier.height(8.dp))
-                Text(
-                    text = stringResource(Res.string.disambig_pick_hint),
-                    color = MarginaliaInk.copy(alpha = 0.7f),
-                    fontStyle = FontStyle.Italic,
-                    fontSize = 12.sp,
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                DisambigFooter(
+                    isSaving = isSaving,
+                    isSaved = isSaved,
+                    onSaveAsUnknown = onSaveAsUnknown,
+                    onCancel = onCancel,
                 )
-                TextButton(
-                    onClick = onSaveAsUnknown,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(
-                        text = stringResource(Res.string.disambig_save_unknown),
-                        color = AccentCopper,
-                        fontWeight = FontWeight.W600,
-                        fontSize = 14.sp,
-                    )
-                }
-                TextButton(
-                    onClick = onCancel,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(
-                        text = stringResource(Res.string.disambig_cancel_cta),
-                        color = MarginaliaInk,
-                        fontSize = 14.sp,
-                    )
-                }
-                Spacer(Modifier.height(24.dp))
             }
         }
+        SnackbarHost(
+            hostState = snackbarHost,
+            modifier = Modifier.align(Alignment.BottomCenter),
+        )
     }
+}
+
+@Composable
+private fun SaveStatusEffects(
+    saveStatus: MatchResultUiState.SaveStatus,
+    snackbarHost: SnackbarHostState,
+    onUnknownSaved: () -> Unit,
+) {
+    val errorPhotoLabel = stringResource(Res.string.diary_save_error_photo)
+    val errorStorageLabel = stringResource(Res.string.diary_save_error_storage)
+    val errorDbLabel = stringResource(Res.string.diary_save_error_db)
+    val errorFrameLabel = stringResource(Res.string.diary_save_error_frame_unavailable)
+
+    LaunchedEffect(saveStatus) {
+        when (saveStatus) {
+            MatchResultUiState.SaveStatus.Saved -> onUnknownSaved()
+            is MatchResultUiState.SaveStatus.Failed ->
+                snackbarHost.showSnackbar(
+                    when (saveStatus.kind) {
+                        MatchResultUiState.SaveStatus.Failed.Kind.PhotoEncodeFailed -> errorPhotoLabel
+                        MatchResultUiState.SaveStatus.Failed.Kind.StorageFull -> errorStorageLabel
+                        MatchResultUiState.SaveStatus.Failed.Kind.DatabaseFailed -> errorDbLabel
+                        MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable -> errorFrameLabel
+                    },
+                )
+            else -> Unit
+        }
+    }
+}
+
+@Composable
+private fun FrameThumbnail(frameJpegPath: String) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Box(
+            modifier =
+                Modifier
+                    .size(72.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.White.copy(alpha = 0.4f))
+                    .border(
+                        width = 1.dp,
+                        color = AccentCopper.copy(alpha = 0.3f),
+                        shape = RoundedCornerShape(10.dp),
+                    ),
+        ) {
+            AsyncImage(
+                model = "file://$frameJpegPath",
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop,
+            )
+        }
+        Spacer(Modifier.size(12.dp))
+        Text(
+            text = stringResource(Res.string.disambig_frame_caption),
+            color = MarginaliaInk,
+            fontStyle = FontStyle.Italic,
+            fontSize = 13.sp,
+        )
+    }
+    Spacer(Modifier.height(16.dp))
+}
+
+@Composable
+private fun DisambigFooter(
+    isSaving: Boolean,
+    isSaved: Boolean,
+    onSaveAsUnknown: () -> Unit,
+    onCancel: () -> Unit,
+) {
+    Spacer(Modifier.height(8.dp))
+    Text(
+        text = stringResource(Res.string.disambig_pick_hint),
+        color = MarginaliaInk.copy(alpha = 0.7f),
+        fontStyle = FontStyle.Italic,
+        fontSize = 12.sp,
+        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+    )
+    TextButton(
+        onClick = onSaveAsUnknown,
+        enabled = !isSaving && !isSaved,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        if (isSaving) {
+            CircularProgressIndicator(
+                color = AccentCopper,
+                strokeWidth = 2.dp,
+                modifier = Modifier.size(20.dp),
+            )
+        } else {
+            Text(
+                text = stringResource(Res.string.disambig_save_unknown),
+                color = AccentCopper,
+                fontWeight = FontWeight.W600,
+                fontSize = 14.sp,
+            )
+        }
+    }
+    TextButton(
+        onClick = onCancel,
+        enabled = !isSaving,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Text(
+            text = stringResource(Res.string.disambig_cancel_cta),
+            color = MarginaliaInk,
+            fontSize = 14.sp,
+        )
+    }
+    Spacer(Modifier.height(24.dp))
 }
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun CandidateCard(
     candidate: ResolvedPrediction,
+    enabled: Boolean,
     onClick: () -> Unit,
 ) {
     val serif = rememberDmSerifDisplay()
@@ -161,7 +246,7 @@ private fun CandidateCard(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .clickable(onClick = onClick)
+                .clickable(enabled = enabled, onClick = onClick)
                 .clip(RoundedCornerShape(12.dp))
                 .background(Color.White.copy(alpha = 0.4f))
                 .border(
