@@ -406,4 +406,121 @@ class MatchResultViewModelTest {
                 cancelAndIgnoreRemainingEvents()
             }
         }
+
+    @Test
+    fun saveAsUnknown_on_disambig_inserts_null_species_and_transitions_to_saved() =
+        runTest(dispatcher) {
+            val obsRepo = FakeObservationRepository()
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            val tmpFile = File.createTempFile("birdy-test-frame", ".jpg")
+            tmpFile.writeBytes(byteArrayOf(0xFF.toByte(), 0xD8.toByte(), 0x01))
+            val vm =
+                MatchResultViewModel(
+                    repository = speciesRepo,
+                    observationRepo = obsRepo,
+                    saveUseCase = makeSaveUseCase(obsRepo, speciesRepo),
+                    catalog = emptyCatalog(),
+                    source = csvToScanSource("Q25485:42/100,Q25234:40/100", tmpFile.absolutePath),
+                    capturedAtMs = capturedAtMs,
+                    locale = Locale.SV,
+                )
+            vm.state.test {
+                var item = awaitItem()
+                while (item is MatchResultUiState.Loading) item = awaitItem()
+                assertIs<MatchResultUiState.Disambig>(item)
+
+                vm.saveAsUnknown()
+
+                var saved: MatchResultUiState.Disambig? = null
+                while (true) {
+                    val n = awaitItem() as? MatchResultUiState.Disambig ?: continue
+                    if (n.saveStatus == MatchResultUiState.SaveStatus.Saved) {
+                        saved = n
+                        break
+                    }
+                }
+                assertEquals(MatchResultUiState.SaveStatus.Saved, saved!!.saveStatus)
+                cancelAndIgnoreRemainingEvents()
+            }
+            val rows = obsRepo.allInserted
+            assertEquals(1, rows.size)
+            assertNull(rows[0].speciesId)
+            tmpFile.delete()
+        }
+
+    @Test
+    fun saveAsUnknown_on_insert_failure_stays_on_disambig_failed_without_row() =
+        runTest(dispatcher) {
+            val obsRepo = FakeObservationRepository().apply { failOnInsert = RuntimeException("db down") }
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            val tmpFile = File.createTempFile("birdy-test-frame", ".jpg")
+            tmpFile.writeBytes(byteArrayOf(0xFF.toByte(), 0xD8.toByte(), 0x01))
+            val vm =
+                MatchResultViewModel(
+                    repository = speciesRepo,
+                    observationRepo = obsRepo,
+                    saveUseCase = makeSaveUseCase(obsRepo, speciesRepo),
+                    catalog = emptyCatalog(),
+                    source = csvToScanSource("Q25485:42/100,Q25234:40/100", tmpFile.absolutePath),
+                    capturedAtMs = capturedAtMs,
+                    locale = Locale.SV,
+                )
+            vm.state.test {
+                var item = awaitItem()
+                while (item is MatchResultUiState.Loading) item = awaitItem()
+                assertIs<MatchResultUiState.Disambig>(item)
+
+                vm.saveAsUnknown()
+
+                var failed: MatchResultUiState.Disambig? = null
+                while (true) {
+                    val n = awaitItem() as? MatchResultUiState.Disambig ?: continue
+                    if (n.saveStatus is MatchResultUiState.SaveStatus.Failed) {
+                        failed = n
+                        break
+                    }
+                }
+                val status = failed!!.saveStatus
+                assertIs<MatchResultUiState.SaveStatus.Failed>(status)
+                assertEquals(MatchResultUiState.SaveStatus.Failed.Kind.DatabaseFailed, status.kind)
+                cancelAndIgnoreRemainingEvents()
+            }
+            assertEquals(0, obsRepo.allInserted.size)
+            tmpFile.delete()
+        }
+
+    @Test
+    fun saveAsUnknown_while_saving_or_saved_is_noop() =
+        runTest(dispatcher) {
+            val obsRepo = FakeObservationRepository()
+            val speciesRepo = FakeSpeciesRepository.withDefaults()
+            val tmpFile = File.createTempFile("birdy-test-frame", ".jpg")
+            tmpFile.writeBytes(byteArrayOf(0xFF.toByte(), 0xD8.toByte(), 0x01))
+            val vm =
+                MatchResultViewModel(
+                    repository = speciesRepo,
+                    observationRepo = obsRepo,
+                    saveUseCase = makeSaveUseCase(obsRepo, speciesRepo),
+                    catalog = emptyCatalog(),
+                    source = csvToScanSource("Q25485:42/100,Q25234:40/100", tmpFile.absolutePath),
+                    capturedAtMs = capturedAtMs,
+                    locale = Locale.SV,
+                )
+            vm.state.test {
+                var item = awaitItem()
+                while (item is MatchResultUiState.Loading) item = awaitItem()
+                assertIs<MatchResultUiState.Disambig>(item)
+
+                vm.saveAsUnknown()
+                vm.saveAsUnknown()
+
+                while (true) {
+                    val n = awaitItem() as? MatchResultUiState.Disambig ?: continue
+                    if (n.saveStatus == MatchResultUiState.SaveStatus.Saved) break
+                }
+                cancelAndIgnoreRemainingEvents()
+            }
+            assertEquals(1, obsRepo.allInserted.size)
+            tmpFile.delete()
+        }
 }

@@ -49,10 +49,8 @@ fun MatchResultScreen(
                 DisambigView(
                     state = s,
                     onPick = { speciesId -> viewModel.pickFromDisambig(speciesId) },
-                    onSaveAsUnknown = {
-                        viewModel.saveAsUnknown()
-                        onBack()
-                    },
+                    onSaveAsUnknown = { viewModel.saveAsUnknown() },
+                    onUnknownSaved = onBack,
                     onCancel = onBack,
                 )
             is MatchResultUiState.Match ->

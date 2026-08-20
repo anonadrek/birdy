@@ -29,6 +29,7 @@ sealed interface MatchResultUiState {
         val frameJpegPath: String?,
         val capturedAtMs: Long,
         val source: ScanSource,
+        val saveStatus: SaveStatus = SaveStatus.NotSaved,
     ) : MatchResultUiState
 
     /** Top-1 ≥ källans match-tröskel ([MatchThresholds]) ELLER användaren just pickade från Disambig. */

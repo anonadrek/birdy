@@ -298,6 +298,35 @@ class SaveObservationUseCaseTest {
             assertEquals(emptyList(), result.newUnlocks)
         }
 
+    @Test
+    fun `onObservationSaved failure after insert still returns success`() =
+        runTest {
+            val obsRepo = FakeObservationRepository()
+            val storage = FakePhotoStorage()
+            val useCase =
+                SaveObservationUseCase(
+                    repo = obsRepo,
+                    badgeRepo = FakeBadgeRepository(),
+                    photoStorage = storage,
+                    clock = clock,
+                    catalog = BadgeCatalog(version = 1, badges = emptyList()),
+                    recalculate = RecalculateBadgesUseCase(zone = TimeZone.UTC, clock = clock),
+                    speciesByQid = { emptyMap() },
+                    onObservationSaved = { error("daily-bird / review side effect failed") },
+                )
+            val result =
+                useCase.save(
+                    speciesId = "Q25485",
+                    capturedAt = capturedAt,
+                    confidence = 0.87f,
+                    rawJpegBytes = sampleBytes,
+                    note = "",
+                )
+            assertTrue(result.observationId.isNotBlank())
+            assertEquals(1, obsRepo.observeAll().first().size)
+            assertEquals(1, storage.persisted.size)
+        }
+
     private fun fakeSpecies(
         qid: String,
         family: String = "unknown",

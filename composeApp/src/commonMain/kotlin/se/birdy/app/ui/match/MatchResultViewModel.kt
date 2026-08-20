@@ -244,20 +244,7 @@ class MatchResultViewModel(
                         if (result.newUnlocks.isNotEmpty()) unlockQueue.enqueue(result.newUnlocks)
                         MatchResultUiState.SaveStatus.Saved
                     },
-                    onFailure = { t ->
-                        val kind =
-                            when {
-                                t is FrameUnavailableException ->
-                                    MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable
-                                classifyReadFailure(t) == ReadFailureKind.NOT_FOUND ->
-                                    MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable
-                                classifyReadFailure(t) == ReadFailureKind.IO_ERROR ->
-                                    MatchResultUiState.SaveStatus.Failed.Kind.StorageFull
-                                else ->
-                                    MatchResultUiState.SaveStatus.Failed.Kind.DatabaseFailed
-                            }
-                        MatchResultUiState.SaveStatus.Failed(kind)
-                    },
+                    onFailure = { t -> MatchResultUiState.SaveStatus.Failed(saveFailureKind(t)) },
                 )
             val latest = _state.value
             if (latest is MatchResultUiState.Match) {
@@ -273,27 +260,69 @@ class MatchResultViewModel(
      * Used from Disambig when the user can't pick a candidate but still wants to
      * archive the sighting. Confidence is recorded as 0f and badge-recalc is
      * skipped (no species → no rule matches).
+     *
+     * Mirrors [saveToDiary]: the host must NOT pop the screen until [SaveStatus.Saved]
+     * (location capture can take up to 8s; fire-and-forget + immediate back lost the
+     * find if the process died or the in-flight save failed silently).
      */
     fun saveAsUnknown() {
         val current = _state.value as? MatchResultUiState.Disambig ?: return
-        val path = current.frameJpegPath ?: return
+        if (current.saveStatus is MatchResultUiState.SaveStatus.Saving ||
+            current.saveStatus is MatchResultUiState.SaveStatus.Saved
+        ) {
+            return
+        }
+        val path = current.frameJpegPath
+        if (path == null) {
+            _state.value =
+                current.copy(
+                    saveStatus =
+                        MatchResultUiState.SaveStatus.Failed(
+                            MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable,
+                        ),
+                )
+            return
+        }
         val audioPath = (current.source as? ScanSource.Audio)?.audioWavPath
         val sourceType =
             if (current.source is ScanSource.Audio) ObservationSource.Audio else ObservationSource.Photo
+        _state.value = current.copy(saveStatus = MatchResultUiState.SaveStatus.Saving)
         viewModelScope.launch {
-            runCatching {
-                val bytes = withContext(ioDispatcher) { readFileBytes(path) }
-                saveUseCase.save(
-                    speciesId = null,
-                    capturedAt = Instant.fromEpochMilliseconds(current.capturedAtMs),
-                    confidence = 0f,
-                    rawJpegBytes = bytes,
-                    note = "",
-                    audioPath = audioPath,
-                    sourceType = sourceType,
-                    attachLocation = shouldAttachLocation(current.source),
+            val outcome =
+                runCatching {
+                    val bytes = withContext(ioDispatcher) { readFileBytes(path) }
+                    saveUseCase.save(
+                        speciesId = null,
+                        capturedAt = Instant.fromEpochMilliseconds(current.capturedAtMs),
+                        confidence = 0f,
+                        rawJpegBytes = bytes,
+                        note = "",
+                        audioPath = audioPath,
+                        sourceType = sourceType,
+                        attachLocation = shouldAttachLocation(current.source),
+                    )
+                }.onFailure { if (it is CancellationException) throw it }
+            val status: MatchResultUiState.SaveStatus =
+                outcome.fold(
+                    onSuccess = { MatchResultUiState.SaveStatus.Saved },
+                    onFailure = { t -> MatchResultUiState.SaveStatus.Failed(saveFailureKind(t)) },
                 )
-            }.onFailure { if (it is CancellationException) throw it }
+            val latest = _state.value
+            if (latest is MatchResultUiState.Disambig) {
+                _state.value = latest.copy(saveStatus = status)
+            }
         }
     }
+
+    private fun saveFailureKind(t: Throwable): MatchResultUiState.SaveStatus.Failed.Kind =
+        when {
+            t is FrameUnavailableException ->
+                MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable
+            classifyReadFailure(t) == ReadFailureKind.NOT_FOUND ->
+                MatchResultUiState.SaveStatus.Failed.Kind.FrameUnavailable
+            classifyReadFailure(t) == ReadFailureKind.IO_ERROR ->
+                MatchResultUiState.SaveStatus.Failed.Kind.StorageFull
+            else ->
+                MatchResultUiState.SaveStatus.Failed.Kind.DatabaseFailed
+        }
 }
