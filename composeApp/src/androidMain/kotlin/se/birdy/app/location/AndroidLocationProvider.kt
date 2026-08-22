@@ -7,14 +7,20 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Build
 import androidx.core.content.ContextCompat
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withTimeoutOrNull
-import java.util.concurrent.Executors
 import kotlin.coroutines.resume
 
 /**
  * One-shot device location via the platform LocationManager — no Google Play Services.
  * Returns null when permission is missing, no provider is enabled, or no fix arrives in time.
+ *
+ * API 30+ callbacks run on [ContextCompat.getMainExecutor], not a fresh
+ * `Executors.newSingleThreadExecutor()` per call. A per-call pool leaked a live thread
+ * on every successful geotagged save: `shutdown()` ran only in `invokeOnCancellation`,
+ * and a `ThreadPoolExecutor` core thread never times out by default. Active users could
+ * accumulate hundreds of threads (~1 MB stack each) and OOM.
  */
 class AndroidLocationProvider(
     private val context: Context,
@@ -41,16 +47,12 @@ class AndroidLocationProvider(
         provider: String,
     ): Location? =
         suspendCancellableCoroutine { cont ->
-            val executor = Executors.newSingleThreadExecutor()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 val signal = android.os.CancellationSignal()
-                lm.getCurrentLocation(provider, signal, executor) { loc ->
+                lm.getCurrentLocation(provider, signal, ContextCompat.getMainExecutor(context)) { loc ->
                     if (cont.isActive) cont.resume(loc)
                 }
-                cont.invokeOnCancellation {
-                    signal.cancel()
-                    executor.shutdownNow()
-                }
+                cont.invokeOnCancellation { signal.cancel() }
             } else {
                 val listener =
                     object : android.location.LocationListener {
@@ -70,10 +72,7 @@ class AndroidLocationProvider(
                         override fun onProviderDisabled(p: String) {}
                     }
                 lm.requestSingleUpdate(provider, listener, null)
-                cont.invokeOnCancellation {
-                    lm.removeUpdates(listener)
-                    executor.shutdownNow()
-                }
+                cont.invokeOnCancellation { lm.removeUpdates(listener) }
             }
         }
 
@@ -82,7 +81,8 @@ class AndroidLocationProvider(
         runCatching {
             lm.getLastKnownLocation(LocationManager.GPS_PROVIDER)
                 ?: lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-        }.getOrNull()
+        }.onFailure { if (it is CancellationException) throw it }
+            .getOrNull()
 
     private fun hasPermission(): Boolean =
         ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) ==
