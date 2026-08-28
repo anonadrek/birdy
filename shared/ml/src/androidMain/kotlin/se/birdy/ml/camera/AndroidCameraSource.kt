@@ -23,15 +23,26 @@ import se.birdy.ml.CameraSource
 import se.birdy.ml.FrameFormat
 import se.birdy.ml.ImageInput
 import se.birdy.ml.ZoomState
+import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
+/**
+ * CameraX capture source. Analysis + provider-future callbacks run on [executor]
+ * (default: a dedicated single-thread pool).
+ *
+ * [stop] is terminal: it shuts the pool down. Scan is a pushed nav destination, so each
+ * visit constructs a new [AndroidCameraSource]; leaving Scan calls [stop] from the
+ * ViewModel's `onCleared`. Leaving the pool alive leaked a ~1 MB stack thread per
+ * scan session (same class of leak as the geotag executor in AndroidLocationProvider
+ * — a ThreadPoolExecutor core thread never times out).
+ */
 class AndroidCameraSource(
     private val context: Context,
     private val lifecycleOwner: LifecycleOwner,
+    private val executor: ExecutorService = Executors.newSingleThreadExecutor(),
 ) : CameraSource {
-    private val executor = Executors.newSingleThreadExecutor()
     private var cameraProvider: ProcessCameraProvider? = null
 
     // Läses från UI-tråden (setZoomRatio) men skrivs i start()/stop() på coroutine-/
@@ -101,6 +112,10 @@ class AndroidCameraSource(
         analysisFlow.value = null
         camera = null
         _zoom.value = ZoomState.NONE
+        // After clearAnalyzer so an in-flight frame can finish on this pool first.
+        // shutdown() (not shutdownNow): already-submitted analysis should complete.
+        // Idempotent — onCleared can theoretically race a second stop.
+        executor.shutdown()
     }
 
     override fun setZoomRatio(ratio: Float) {
