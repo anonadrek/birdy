@@ -44,6 +44,21 @@ class AndroidCameraSourceExecutorTest {
             source.stop()
             assertTrue(executor.isShutdown)
         }
+
+    @Test
+    fun start_afterStop_isNoOpAndDoesNotReviveTheExecutor() =
+        runBlocking {
+            val executor = Executors.newSingleThreadExecutor()
+            val source =
+                AndroidCameraSource(
+                    context = RuntimeEnvironment.getApplication(),
+                    lifecycleOwner = CreatedLifecycleOwner(),
+                    executor = executor,
+                )
+            source.stop()
+            source.start()
+            assertTrue(executor.isShutdown, "start() after stop() must not submit work to a dead pool")
+        }
 }
 
 private class CreatedLifecycleOwner : LifecycleOwner {
