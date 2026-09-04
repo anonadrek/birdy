@@ -30,6 +30,7 @@ import kotlinx.coroutines.launch
 import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
+import se.birdy.app.notifications.skipNotificationPermissionSheet
 import se.birdy.app.premium.EntryFlowDecider
 import se.birdy.app.ui.audio.AudioScanScreenHost
 import se.birdy.app.ui.components.CaveatToast
@@ -121,10 +122,13 @@ fun AppScaffold(graph: AppGraph) {
     if (notifApi != null && requestPerm != null) {
         LaunchedEffect(Unit) {
             if (!notifApi.needsRuntimePermission()) return@LaunchedEffect
-            if (graph.userPreferences.pushPermissionAsked.first()) return@LaunchedEffect
-            if (notifApi.areNotificationsEnabled()) {
-                // System already grants it — record asked = true and bail.
-                graph.userPreferences.setPushPermissionAsked(true)
+            val alreadyAsked = graph.userPreferences.pushPermissionAsked.first()
+            if (skipNotificationPermissionSheet(alreadyAsked, notifApi.areNotificationsEnabled())) {
+                // OS already granted (or we asked before). Persisting asked is a
+                // one-way door — [areNotificationsEnabled] must be fail-closed.
+                if (!alreadyAsked) {
+                    graph.userPreferences.setPushPermissionAsked(true)
+                }
                 return@LaunchedEffect
             }
             graph.observationRepository

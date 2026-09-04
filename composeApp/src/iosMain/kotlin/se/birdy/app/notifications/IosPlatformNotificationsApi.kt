@@ -18,10 +18,16 @@ import kotlin.concurrent.Volatile
  * iOS-actual för PlatformNotificationsApi. getNotificationSettings är async-callback
  * men interfacet är synkront → auth-statusen CACHAS och uppdateras vid init, vid
  * varje foreground (Task 10:s lifecycle-pass) och efter permission-request.
- * Default true = samma optimistiska fallback som SettingsViewModel redan använder.
+ *
+ * Default **false** (fail-closed). AppScaffold tolkar `areNotificationsEnabled() == true`
+ * som "OS har redan beviljat" och persisterar `pushPermissionAsked = true` UTAN att
+ * anropa `requestAuthorization`. Default true racade settings-callbacken vid första
+ * start och hoppade permanent över permission-dialogen — appen syns då aldrig under
+ * Inställningar → Notiser, så in-app-hjälplinjen är en återvändsgränd.
+ * SettingsViewModel:s `?: true` är en annan fallback (null API, inte okänd status).
  */
 class IosPlatformNotificationsApi : PlatformNotificationsApi {
-    @Volatile private var enabledCache: Boolean = true
+    @Volatile private var enabledCache: Boolean = false
 
     init {
         refreshStatus()
