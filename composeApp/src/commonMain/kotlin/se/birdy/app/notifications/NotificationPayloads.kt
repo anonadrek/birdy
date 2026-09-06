@@ -176,5 +176,16 @@ class NotificationPayloads(
                 timeZone = graph.timeZone,
                 clock = graph.clock,
             )
+
+        /**
+         * Prefer the live [AppGraph] when MainActivity has published one; otherwise
+         * build a standalone instance. WorkManager workers must use this — a null
+         * graph is the common overnight cold-start case, not a reason to skip the
+         * notification.
+         */
+        suspend fun fromGraphOr(
+            graph: AppGraph?,
+            standalone: suspend () -> NotificationPayloads,
+        ): NotificationPayloads = if (graph != null) from(graph) else standalone()
     }
 }

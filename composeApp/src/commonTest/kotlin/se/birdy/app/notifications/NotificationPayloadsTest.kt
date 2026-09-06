@@ -16,6 +16,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
+import kotlin.test.assertSame
 
 /**
  * Null-path coverage only. The non-null paths call compose-resources `getString`,
@@ -121,6 +122,20 @@ class NotificationPayloadsTest {
 
     @Test
     fun trophy_nothing_in_progress_returns_null() = runTest { assertNull(build(trophyEnabled = true).trophyProgress()) }
+
+    @Test
+    fun fromGraphOr_null_graph_uses_standalone() =
+        runTest {
+            val standalone = build()
+            var standaloneCalls = 0
+            val result =
+                NotificationPayloads.fromGraphOr(graph = null) {
+                    standaloneCalls++
+                    standalone
+                }
+            assertSame(standalone, result)
+            assertEquals(1, standaloneCalls)
+        }
 }
 
 /** Wraps [ObservationRepository] to detect whether code reached past a pref-gate. */

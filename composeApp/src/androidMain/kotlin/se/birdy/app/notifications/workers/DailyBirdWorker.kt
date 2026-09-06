@@ -14,6 +14,7 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import se.birdy.app.AndroidAppGraphHolder
 import se.birdy.app.R
+import se.birdy.app.notifications.AndroidNotificationPayloads
 import se.birdy.app.notifications.NotificationChannels
 import se.birdy.app.notifications.NotificationPayloads
 
@@ -23,13 +24,16 @@ class DailyBirdWorker(
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
         return try {
-            val graph = AndroidAppGraphHolder.current ?: return Result.success()
+            val payloads =
+                NotificationPayloads.fromGraphOr(AndroidAppGraphHolder.current) {
+                    AndroidNotificationPayloads.fromContext(applicationContext)
+                }
             val today =
                 Clock.System
                     .now()
                     .toLocalDateTime(TimeZone.currentSystemDefault())
                     .date
-            val content = NotificationPayloads.from(graph).dailyBird(today) ?: return Result.success()
+            val content = payloads.dailyBird(today) ?: return Result.success()
 
             NotificationChannels.ensureCreated(applicationContext)
 
