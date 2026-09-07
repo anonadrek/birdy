@@ -606,9 +606,13 @@ class MainActivity : AppCompatActivity() {
                 // MUST be cheap + non-throwing — BirdClassifierFactory does not guard the DEMO-path fallback.
                 createFallback = { FakeBirdClassifier() },
                 onCrashlytics = { t ->
-                    android.util.Log.e("Birdy", "TFLite init failed, falling back to Fake", t)
+                    android.util.Log.e("Birdy", "TFLite init failed", t)
                     // FirebaseCrashlytics integration deferred — Plan 6 polish.
                 },
+                // Debug keeps FakeBirdClassifier + SessionFailureGuard; release rethrows
+                // load failure (ClassifierBootstrap Failed + retry) and never degrades
+                // mid-session to canned Great Tit 87% — same gate as buildAudioClassifier.
+                allowFallback = BuildConfig.DEBUG,
             )
         val (classifier, mode) = factory.create()
         // capturedModelVersion is null when createReal threw and we fell back to DEMO.

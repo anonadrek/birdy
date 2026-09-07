@@ -152,7 +152,8 @@ fun buildIosAppGraph(): AppGraph {
                         },
                         // MUST be cheap + non-throwing — BirdClassifierFactory does not guard the DEMO-path fallback.
                         createFallback = { FakeBirdClassifier() },
-                        onCrashlytics = { /* no Crashlytics on iOS yet — swallow; factory falls back to FakeBirdClassifier + DEMO */ },
+                        onCrashlytics = { /* no Crashlytics on iOS yet — swallow */ },
+                        allowFallback = photoClassifierAllowFallback(),
                     )
                 val (classifier, mode) = factory.create()
                 // capturedModelVersion is null when createReal threw and we fell back to DEMO.
@@ -409,6 +410,10 @@ internal object IosAudioBootstrap {
         NSBundle.mainBundle.pathForResource("birdnet_lite_v2", ofType = "tflite")
             ?: error("birdnet_lite_v2.tflite saknas i app-bundlen — kontrollera project.yml-resursen (i3 T1)")
 }
+
+/** Debug keeps FakeBirdClassifier + SessionFailureGuard; release fails closed. */
+@OptIn(ExperimentalNativeApi::class)
+private fun photoClassifierAllowFallback(): Boolean = Platform.isDebugBinary
 
 @OptIn(ExperimentalForeignApi::class)
 internal fun audioStorageDirPath(): String {
