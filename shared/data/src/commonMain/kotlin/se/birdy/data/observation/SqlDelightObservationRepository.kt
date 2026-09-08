@@ -89,8 +89,8 @@ class SqlDelightObservationRepository(
                 val row = queries.selectById(id).executeAsOneOrNull()
                 queries.deleteById(id)
                 FileCleanupRequest(
-                    photoPath = row?.photo_path,
-                    audioPath = row?.audio_path,
+                    photoPath = row?.photo_path?.let(::resolvePersistedMediaPath),
+                    audioPath = row?.audio_path?.let(::resolvePersistedMediaPath),
                 )
             }
         }
@@ -101,14 +101,14 @@ class SqlDelightObservationRepository(
             speciesId = species_id,
             capturedAt = Instant.fromEpochMilliseconds(captured_at_ms),
             savedAt = Instant.fromEpochMilliseconds(saved_at_ms),
-            photoPath = photo_path,
+            photoPath = resolvePersistedMediaPath(photo_path),
             note = note,
             confidence = confidence.toFloat(),
             latitude = latitude,
             longitude = longitude,
             locationLabel = location_label,
             stampNumber = stamp_number.toInt(),
-            audioPath = audio_path,
+            audioPath = audio_path?.let(::resolvePersistedMediaPath),
             sourceType =
                 when (source) {
                     "audio" -> ObservationSource.Audio
