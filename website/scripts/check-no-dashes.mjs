@@ -14,8 +14,8 @@ const files = [
     .map((f) => join('src/content/field-notes', String(f))),
 ];
 const banned = [
-  { re: /—/, name: 'tankstreck (—)' },
-  { re: /\s–\s/, name: 'tankstreck ( – )' },
+  { re: /\u2014/, name: 'tankstreck (—)' },
+  { re: /\s\u2013\s/, name: 'tankstreck ( – )' },
 ];
 
 let failed = false;
