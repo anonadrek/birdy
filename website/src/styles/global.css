@@ -1,39 +1,66 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
 @font-face { font-family: 'DM Serif Display'; font-style: italic; font-weight: 400; font-display: swap; src: url('/fonts/dm-serif-display-italic.woff2') format('woff2'); }
 @font-face { font-family: 'DM Serif Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/dm-serif-display-regular.woff2') format('woff2'); }
 @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/caveat-regular.woff2') format('woff2'); }
 @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/caveat-bold.woff2') format('woff2'); }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/inter-regular.woff2') format('woff2'); }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/inter-semibold.woff2') format('woff2'); }
-@import 'tailwindcss';
-@import './tokens.css';
 
-@theme {
-  --color-paper-bg: #f9f2e6;
-  --color-paper-edge: #ead7bf;
-  --color-paper-top: #fff9ef;
-  --color-rust: #934326;
-  --color-rust-deep: #6d2d1d;
-  --color-rust-shadow: #3f1e18;
-  --color-orange: #b7471d;
-  --color-apricot: #ffc386;
-  --color-text-primary: #302019;
-  --color-text-on-hero: #fff8ee;
-  --color-marginalia-ink: #6e584b;
-  --color-stamp-navy: #1f3a5f;
-  --font-serif: 'DM Serif Display', Georgia, serif;
-  --font-script: 'Caveat', cursive;
-  --font-sans: 'Inter', system-ui, sans-serif;
+/* Tailwind utilities are not used; the theme mirrors the tokens for completeness. */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-rust: var(--rust);
+  --color-apricot: var(--apricot);
+  --color-moss: var(--moss);
+  --color-brass: var(--brass);
+  --color-cream: var(--cream);
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
-body { margin: 0; font-family: var(--font-sans); color: var(--color-text-primary); background: var(--color-paper-bg); -webkit-font-smoothing: antialiased; }
-.paper-bg { background: var(--color-paper-bg); }
-::selection { background: #ffc386; color: var(--color-rust-shadow); }
+body { margin: 0; font-family: var(--font-sans); color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+::selection { background: var(--apricot); color: var(--moss-deep); }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
-:focus-visible { outline: 3px solid var(--color-apricot); outline-offset: 4px; }
-h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; line-height: 1.08; }
+:focus-visible { outline: 3px solid var(--rust); outline-offset: 3px; }
+h1, h2, h3, h4, h5 { font-family: var(--font-serif); font-weight: 400; margin: 0; }
+em { font-style: italic; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
+/* Shared building blocks (spec §4.3). */
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 44px; }
+.sec { padding: 96px 0; }
+.kick { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font-size: 11px; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--kick-color, var(--rust)); }
+.kick-line { width: 22px; height: 1px; background: currentColor; flex: none; }
+.kick--center { justify-content: center; }
+.lead { font-size: 16px; line-height: 1.65; color: var(--lead-color, var(--muted)); margin: 14px 0 0; max-width: 34rem; }
+.btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--rust), var(--rust-deep)); color: var(--cream); padding: 10px 16px; border-radius: 10px; font-weight: 600; font-size: 13px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18); transition: transform .25s var(--ease-paper); }
+.btn:hover { transform: translateY(-2px); }
+.badges { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.free { display: inline-block; margin-left: 8px; font-family: var(--font-sans); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--rust); border: 1px solid rgba(154, 69, 38, .35); border-radius: 20px; padding: 2px 8px; vertical-align: middle; }
+svg.i { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* Stamps (seals), same shapes as the app. Text on brass is dark (brass-ink), never cream. */
+.seal { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: var(--cream); position: relative; transform: rotate(-8deg); flex: none; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .25), transparent 55%), var(--rust); box-shadow: 0 3px 8px rgba(31, 42, 25, .3); font-family: var(--font-serif); font-style: italic; font-size: 12px; line-height: 1; }
+.seal::before { content: ''; position: absolute; inset: 3px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .4); }
+.seal--brass { background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .45), transparent 55%), var(--brass); color: var(--brass-ink); }
+.seal--navy { background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .2), transparent 55%), var(--navy); }
+.seal--off { background: none; box-shadow: none; border: 1.3px dashed var(--line); color: transparent; }
+.seal--off::before { display: none; }
+.seal--mini { width: 22px; height: 22px; font-size: 7px; transform: rotate(-6deg); }
+.seal--mini::before { inset: 2px; }
+
+@media (max-width: 760px) {
+  .wrap { padding: 0 20px; }
+  .sec { padding: 72px 0; }
+}
+
+/* Scroll reveal (unchanged behaviour). */
 html.motion-ready [data-reveal] { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity .68s var(--ease-paper) var(--rd, 0ms), transform .68s var(--ease-paper) var(--rd, 0ms); }
 html.motion-ready [data-reveal].is-visible { opacity: 1; transform: none; }
 html.motion-ready [data-reveal="scale"] { transform: translate3d(0, 18px, 0) scale(.975); }
@@ -41,8 +68,12 @@ html.motion-ready [data-reveal="scale"].is-visible { transform: none; }
 html.motion-ready [data-reveal="slide"] { transform: translate3d(-22px, 0, 0); }
 html.motion-ready [data-reveal="slide"].is-visible { transform: none; }
 
+/* Looping animations pause while their section is off screen (Layout script toggles .is-paused). */
+.is-paused, .is-paused * { animation-play-state: paused !important; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   html.motion-ready [data-reveal], html.motion-ready [data-reveal="scale"], html.motion-ready [data-reveal="slide"] { opacity: 1; transform: none; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  /* Delays are zeroed too: an animation waiting out its delay still counts as running. */
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
 }

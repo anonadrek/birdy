@@ -10,6 +10,8 @@
     "check": "astro check",
     "test:i18n": "node scripts/check-i18n-parity.mjs",
     "test:no-accuracy": "node scripts/check-no-accuracy.mjs",
+    "test:contrast": "node scripts/check-contrast.mjs",
+    "test:no-dashes": "node scripts/check-no-dashes.mjs",
     "test:smoke": "playwright test",
     "assets:clean": "node tools/store-assets/clean-sources.mjs",
     "assets:render": "node tools/store-assets/render.mjs --locale=en",
