@@ -96,10 +96,12 @@ const mobileOnly = [
   /* Moss by default, also without JavaScript. The overlay bar turns transparent only when scripts run (html.js, set in Layout). */
   .nav--solid, .nav--overlay, .nav.is-solid, .nav.is-open { background: var(--moss); box-shadow: 0 1px 0 rgba(255, 255, 255, .08); }
   :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) { background: transparent; box-shadow: none; }
-  /* Below 1024 px the photo band scrolls under the transparent bar; a light moss scrim keeps the menu
-     button at 3:1 or better over the lit parts of the photo. */
+  /* Below 1024 px the photo band scrolls under the transparent bar. The menu button gets its own moss
+     disc (icon contrast at least 3:1 over any part of the photo) and the wordmark a soft shadow, so the
+     bar itself stays transparent as in the mockup. */
   @media (max-width: 1023px) {
-    :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) { background: linear-gradient(180deg, rgba(31, 42, 25, .95) 0%, rgba(31, 42, 25, .95) 72%, rgba(31, 42, 25, 0) 100%); }
+    :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) .menu-toggle { background: rgba(31, 42, 25, .6); border-radius: 50%; }
+    :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) .brand { filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .45)); }
   }
   .nav.is-open { transition: none; }
   .nav :global(:focus-visible) { outline-color: var(--apricot); }
@@ -108,7 +110,7 @@ const mobileOnly = [
   .links { display: flex; align-items: center; gap: 26px; }
   .links a { opacity: .82; transition: opacity .2s; }
   .links a:hover { opacity: 1; }
-  .menu-toggle { display: none; background: none; border: 0; color: inherit; width: 44px; height: 44px; align-items: center; justify-content: center; cursor: pointer; }
+  .menu-toggle { display: none; background: none; border: 0; color: inherit; width: 44px; height: 44px; align-items: center; justify-content: center; cursor: pointer; transition: background-color .3s var(--ease-paper); }
   .mobile-menu { display: none; padding: 4px 20px 20px; max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px); overflow-y: auto; overscroll-behavior: contain; }
   .mobile-menu a { padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); font-size: 15px; }
   .mobile-menu .btn { margin-top: 16px; justify-content: center; border-bottom: 0; }
