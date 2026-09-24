@@ -24,7 +24,7 @@ if (hero && !reduce) {
       armed = false;
       bob.animate(
         [{ transform: 'none' }, { transform: 'scale(1.012, .962)', offset: 0.3 }, { transform: 'scale(.994, 1.022)', offset: 0.6 }, { transform: 'none' }],
-        { duration: 520, easing: 'ease-out' },
+        { duration: 520, easing: 'ease-out', composite: 'add' },
       );
     }
     if (p < 0.1) armed = true;

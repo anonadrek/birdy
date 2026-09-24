@@ -1,6 +1,8 @@
 ---
 import { type Locale } from '../../lib/i18n';
 
+// Official Google Play badge, trimmed to its visible artwork (public/play-badge-{sv,en}.png) and sized by
+// height so it matches the App Store badge next to it (Google asks for at least the same size).
 interface Props {
   locale: Locale;
   href: string;
@@ -9,13 +11,14 @@ interface Props {
   class?: string;
   loading?: 'lazy' | 'eager';
 }
-const { locale, href, alt, size = 'large', class: cls = '', loading = 'lazy' } = Astro.props;
+const { locale, href, alt, size = 'small', class: cls, loading = 'lazy', ...rest } = Astro.props;
 const src = locale === 'sv' ? '/play-badge-sv.png' : '/play-badge-en.png';
-const w = size === 'large' ? 176 : 130;
+const ratio = locale === 'sv' ? 646 / 192 : 564 / 168; // trimmed PNG sizes
 const h = size === 'large' ? 68 : 50;
+const w = Math.round(h * ratio);
 ---
 
-<a href={href} class={`badge ${cls}`} rel="noopener noreferrer" target="_blank">
+<a href={href} class:list={['badge', cls]} {...rest} rel="noopener noreferrer" target="_blank">
   <img src={src} alt={alt} width={w} height={h} loading={loading} decoding="async" />
 </a>
 

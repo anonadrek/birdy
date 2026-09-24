@@ -15,7 +15,7 @@ const glints = [
 
 <div class="scene-clip" aria-hidden="true" data-loop>
   <div class="scene" data-scene>
-    <Image class="plate" src={plate} alt="" widths={[800, 1200, 1672]} sizes="(max-width: 1023px) 782px, 100vw" loading="eager" fetchpriority="high" decoding="async" />
+    <Image class="plate" src={plate} alt="" widths={[800, 1200, 1672]} sizes="(max-width: 782px) 782px, 100vw" loading="eager" fetchpriority="high" decoding="async" />
     <div class="rb" data-robin>
       <div class="rb-bob" data-robin-bob>
         <div class="rb-breathe">
@@ -30,9 +30,10 @@ const glints = [
 
 <style>
   /* Up to 1023 px: a photo band at the top, right-anchored so the robin stays in view (mockup, mobile). */
-  .scene-clip { position: absolute; top: 0; left: 0; right: 0; height: max(440px, 56.28vw); overflow: hidden; }
+  .scene-clip { position: absolute; top: 0; left: 0; right: 0; height: var(--band-h); overflow: hidden; }
   .scene-clip::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(31, 42, 25, .35) 0, rgba(31, 42, 25, 0) 25%, rgba(31, 42, 25, 0) 48%, rgba(31, 42, 25, .88) 80%, var(--moss) 100%); }
   .scene { position: absolute; top: 0; right: 0; width: max(782px, 100%); aspect-ratio: 1672 / 941; }
+  @media (prefers-reduced-motion: no-preference) { .scene { will-change: transform; } }
   .scene :global(.plate) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
 
   /* The robin layer sits exactly where it was cut out; feet are the transform origin. */
@@ -68,8 +69,13 @@ const glints = [
   @media (min-width: 1280px) {
     .scene { right: auto; left: 0; width: max(100cqw, 100cqh * 1.7768, min(112cqw, (100cqh - 12px) * 2.5826)); }
   }
-  /* 2000 px and up: fixed maximum size, right-anchored, fading into the moss on the left. */
-  @media (min-width: 2000px) {
-    .scene { left: auto; right: 0; width: min(2100px, (100cqh - 12px) * 2.5826); -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%); mask-image: linear-gradient(90deg, transparent, #000 18%); }
+  /* Wide, short photo boxes (all widths from about 2090 px, and short desktop windows): fixed maximum
+     size, right-anchored, fading into the moss on the left, so the robin's feet stay inside the first view.
+     The switch at 2.55 comes just before the left-anchored scene would push the feet below the photo
+     (swept 1280–2560 × 500–1400 px). */
+  @media (min-width: 1280px) {
+    @container (min-aspect-ratio: 255/100) {
+      .scene { left: auto; right: 0; width: min(2100px, (100cqh - 12px) * 2.5826); -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%); mask-image: linear-gradient(90deg, transparent, #000 18%); }
+    }
   }
 </style>

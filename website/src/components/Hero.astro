@@ -15,15 +15,16 @@ const t = getCopy(locale);
 const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
 ---
 
-<header class="hero" data-hero data-nav-until>
+<header class="hero" data-hero>
   <div class="photo">
     <HeroScene />
     <div class="copy-wrap">
       <div class="wrap">
         <div class="copy">
+          <span class="nav-until" data-nav-until aria-hidden="true"></span>
           <BirdyBird />
           <Kicker text={t.hero.kicker} />
-          <h1>{t.hero.headline}<em>{t.hero.line2}</em></h1>
+          <h1>{t.hero.headline} <em>{t.hero.line2}</em></h1>
           <p class="sub">{t.hero.sub}</p>
           <div class="badges">
             <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="small" loading="eager" />
@@ -33,7 +34,7 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
       </div>
     </div>
     <div class="meta-wrap">
-      <div class="wrap"><ul class="meta" aria-label={t.hero.metaLabel}>{t.hero.meta.map((m) => <li>{m}</li>)}</ul></div>
+      <div class="wrap"><ul class="meta" role="list" aria-label={t.hero.metaLabel}>{t.hero.meta.map((m) => <li>{m}</li>)}</ul></div>
     </div>
   </div>
   <div class="phone-slot">
@@ -52,11 +53,12 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
 </script>
 
 <style>
-  .hero { position: relative; background: var(--moss); color: var(--cream); --kick-color: var(--apricot); }
+  .hero { position: relative; background: var(--moss); color: var(--cream); --kick-color: var(--apricot); --band-h: max(440px, 56.28vw); }
   .hero :global(:focus-visible) { outline-color: var(--apricot); }
   .photo { position: relative; }
-  .copy-wrap { position: relative; z-index: 2; padding-top: calc(max(440px, 56.28vw) - 110px); }
-  .copy { max-width: 470px; }
+  .copy-wrap { position: relative; z-index: 6; padding-top: calc(var(--band-h) - 110px); pointer-events: none; }
+  .copy { position: relative; max-width: 480px; pointer-events: auto; }
+  .nav-until { position: absolute; left: 0; bottom: 100%; width: 1px; height: 100vh; pointer-events: none; }
   h1 { font-size: 44px; line-height: .95; letter-spacing: -.025em; }
   h1 em { display: block; color: var(--apricot); }
   .sub { font-size: 15px; line-height: 1.65; color: rgba(255, 248, 238, .86); margin: 16px 0 20px; max-width: 28rem; }
@@ -84,6 +86,11 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
     .phone-slot { position: absolute; inset: 0; pointer-events: none; }
     .phone-slot > .wrap { display: block; position: relative; height: 100%; }
     .hero-phone { position: absolute; left: 548px; top: 190px; margin: 0; pointer-events: auto; animation: hero-rise 1s .2s var(--ease-paper) both; }
+  }
+  /* Short desktop windows: the photo gets shorter and its robin moves left while the text column doesn't,
+     so the phone shrinks a little and moves 28 px towards the text (swept: at least 17 px to the robin). */
+  @media (min-width: 1280px) and (max-height: 860px) {
+    .hero-phone { left: 520px; scale: .9; }
   }
   @keyframes hero-rise { from { opacity: 0; translate: 0 30px; } to { opacity: 1; translate: 0 0; } }
 </style>

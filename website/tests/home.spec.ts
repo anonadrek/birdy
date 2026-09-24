@@ -11,6 +11,7 @@ test.describe('meny och sidfot', () => {
       await expect(nav.locator('.links a').first()).toHaveText(label);
       await expect(nav.locator('.nav-cta')).toHaveText(getApp);
       await expect(nav.locator('.nav-cta')).toHaveAttribute('href', `${path}#download`);
+      await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
       await expect(nav).not.toHaveClass(/is-solid/);
       await expect(nav).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
       await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
@@ -109,7 +110,7 @@ test.describe('första vyn', () => {
       await expect(hero.locator('.meta li')).toHaveCount(3);
       await expect(hero.locator('[data-hero-phone] .ph[role="img"]')).toHaveCount(1);
       await expect(hero.locator('[data-robin] img').first()).toBeVisible();
-      await expect(hero.locator('[data-birdy]')).toBeVisible();
+      await expect(hero.locator('[data-birdy] .birdy-shape')).toHaveCSS('opacity', '1');
       expect(errors).toEqual([]);
     });
   }
@@ -128,6 +129,37 @@ test.describe('första vyn', () => {
     });
   }
 
+  for (const [width, height] of [[1280, 720], [1366, 768], [1536, 730], [1600, 720], [1650, 700], [1920, 800], [1999, 800], [2000, 960], [2560, 1300]] as const) {
+    test(`korta och breda fönster: telefonen går fri och fötterna syns i ${width}×${height}`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto('/sv/');
+      const phone = (await page.locator('[data-hero-phone] .ph').boundingBox())!;
+      const robin = (await page.locator('[data-robin]').boundingBox())!;
+      const photo = (await page.locator('[data-hero] .photo').boundingBox())!;
+      const overlaps = phone.x < robin.x + robin.width && robin.x < phone.x + phone.width
+        && phone.y < robin.y + robin.height && robin.y < phone.y + phone.height;
+      expect(overlaps, `telefon ${JSON.stringify(phone)} rödhake ${JSON.stringify(robin)}`).toBe(false);
+      expect(robin.y + robin.height, 'fötterna ryms i fotot').toBeLessThanOrEqual(photo.y + photo.height);
+      expect(robin.x + robin.width).toBeLessThanOrEqual(width);
+    });
+  }
+
+  for (const [width, height] of [[390, 844], [1024, 768], [1440, 900]] as const) {
+    test(`menyn blir mossgrön innan texten når den i ${width}×${height}`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto('/sv/');
+      const nav = page.locator('#site-nav');
+      const navH = await nav.evaluate((n) => n.getBoundingClientRect().height);
+      const copyTop = await page.locator('[data-hero] .copy').evaluate((c) => c.getBoundingClientRect().top + scrollY);
+      const settle = () => page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), Math.max(0, copyTop - navH - 30));
+      await settle();
+      await expect(nav).not.toHaveClass(/is-solid/);
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), copyTop - navH + 2);
+      await expect(nav).toHaveClass(/is-solid/);
+    });
+  }
+
   test('rödhakens ruta börjar under menyn i 1920 px', async ({ page }) => {
     await page.setViewportSize({ width: 1920, height: 900 });
     await page.goto('/sv/');
@@ -137,11 +169,28 @@ test.describe('första vyn', () => {
   });
 
   test('rubriken ryms på två rader på dator', async ({ page }) => {
-    for (const width of [1024, 1280, 1440, 1920]) {
-      await page.setViewportSize({ width, height: 900 });
-      await page.goto('/sv/');
-      const lines = await page.locator('[data-hero] h1').evaluate((h) => Math.round(h.getBoundingClientRect().height / parseFloat(getComputedStyle(h).lineHeight)));
-      expect(lines, `${width} px`).toBeLessThanOrEqual(2);
+    for (const path of ['/sv/', '/']) {
+      for (const width of [1024, 1280, 1440, 1920]) {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path);
+        await page.evaluate(() => document.fonts.ready);
+        const lines = await page.locator('[data-hero] h1').evaluate((h) => Math.round(h.getBoundingClientRect().height / parseFloat(getComputedStyle(h).lineHeight)));
+        expect(lines, `${path} ${width} px`).toBeLessThanOrEqual(2);
+      }
     }
+  });
+});
+
+test.describe('Birdy-fågeln flyger', () => {
+  test('fågeln flyger iväg vid scroll och kommer tillbaka', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const bird = page.locator('[data-birdy]');
+    await expect(bird.locator('.birdy-shape')).toHaveCSS('opacity', '1');
+    await page.evaluate(() => window.scrollTo({ top: 320, behavior: 'instant' }));
+    await expect.poll(() => bird.evaluate((b) => Number(getComputedStyle(b).opacity))).toBeLessThan(0.05);
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+    await expect.poll(() => bird.evaluate((b) => getComputedStyle(b).opacity)).toBe('1');
+    await expect.poll(() => bird.evaluate((b) => getComputedStyle(b).transform)).toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
   });
 });
