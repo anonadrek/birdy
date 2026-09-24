@@ -88,6 +88,9 @@ actual class PremiumBillingClient(
     private val _formattedPrices = MutableStateFlow(FormattedPrices())
     actual val formattedPrices: StateFlow<FormattedPrices> = _formattedPrices.asStateFlow()
 
+    private val _purchasesQueried = MutableStateFlow(false)
+    actual val purchasesQueried: StateFlow<Boolean> = _purchasesQueried.asStateFlow()
+
     private var purchaseDeferred: CompletableDeferred<PurchaseResult>? = null
     private var yearlyDetails: ProductDetails? = null
     private var lifetimeDetails: ProductDetails? = null
@@ -172,29 +175,42 @@ actual class PremiumBillingClient(
     }
 
     actual suspend fun queryPurchases() {
-        val subsResult =
-            suspendCancellableCoroutine<List<Purchase>> { cont ->
+        val subs =
+            suspendCancellableCoroutine<Pair<BillingResult, List<Purchase>>> { cont ->
                 client.queryPurchasesAsync(
                     QueryPurchasesParams
                         .newBuilder()
                         .setProductType(BillingClient.ProductType.SUBS)
                         .build(),
-                ) { _, list -> if (cont.isActive) cont.resume(list) }
+                ) { result, list -> if (cont.isActive) cont.resume(result to list) }
             }
-        val inappResult =
-            suspendCancellableCoroutine<List<Purchase>> { cont ->
+        val inapp =
+            suspendCancellableCoroutine<Pair<BillingResult, List<Purchase>>> { cont ->
                 client.queryPurchasesAsync(
                     QueryPurchasesParams
                         .newBuilder()
                         .setProductType(BillingClient.ProductType.INAPP)
                         .build(),
-                ) { _, list -> if (cont.isActive) cont.resume(list) }
+                ) { result, list -> if (cont.isActive) cont.resume(result to list) }
             }
-        val active =
-            (subsResult + inappResult).firstOrNull { p ->
-                p.purchaseState == Purchase.PurchaseState.PURCHASED && verifySignature(p)
-            }
-        _state.value = active?.toPremiumState() ?: PremiumState.Free
+        // A failed query must never wipe an existing purchase — leave _state untouched and let
+        // the caller retry later (Play unreachable/not connected yields an empty list, which
+        // would otherwise look identical to "genuinely no purchases").
+        if (subs.first.responseCode == BillingClient.BillingResponseCode.OK &&
+            inapp.first.responseCode == BillingClient.BillingResponseCode.OK
+        ) {
+            val active =
+                (subs.second + inapp.second).firstOrNull { p ->
+                    p.purchaseState == Purchase.PurchaseState.PURCHASED && verifySignature(p)
+                }
+            _state.value = active?.toPremiumState() ?: PremiumState.Free
+            _purchasesQueried.value = true
+        } else {
+            Log.w(
+                TAG,
+                "queryPurchases failed: subs=${subs.first.responseCode} inapp=${inapp.first.responseCode}",
+            )
+        }
     }
 
     actual suspend fun launchPurchase(

@@ -31,6 +31,7 @@ import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
 import se.birdy.app.premium.EntryFlowDecider
+import se.birdy.app.premium.awaitBillingAnswer
 import se.birdy.app.ui.audio.AudioScanScreenHost
 import se.birdy.app.ui.components.CaveatToast
 import se.birdy.app.ui.diary.LifelistScreen
@@ -61,6 +62,11 @@ fun AppScaffold(graph: AppGraph) {
     val showPremiumTeaser = !effectivePremiumActive
     LaunchedEffect(Unit) {
         val now = graph.clock.now()
+
+        // Never show an automatic paywall on a guess — a paying user looks Free until Play answers.
+        if (graph.premiumOverride == null && !awaitBillingAnswer(graph.premiumQueried, timeoutMs = 5_000)) {
+            return@LaunchedEffect
+        }
         val premiumState = graph.premiumOverride ?: graph.premiumRepository.state.value
 
         // Day-0: show the premium screen once right after onboarding (non-premium only).

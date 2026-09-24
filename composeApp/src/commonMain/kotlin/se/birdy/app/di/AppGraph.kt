@@ -112,6 +112,13 @@ class AppGraph(
      */
     val formattedPricesFlow: kotlinx.coroutines.flow.StateFlow<FormattedPrices>? = null,
     /**
+     * True once Play (or the iOS stub) has answered a purchase query. Automatic paywalls
+     * (day-0 post-onboarding, 7-day cold-start modal) must wait for this before deciding —
+     * a paying subscriber looks Free until Play answers. Defaults to true (already-answered)
+     * so tests and non-Android callers don't block. Android wires `billingClient.purchasesQueried`.
+     */
+    val premiumQueried: StateFlow<Boolean> = MutableStateFlow(true),
+    /**
      * Lazy audio classifier provider — only invoked on first audio-scan entry (Plan 6b2 T3).
      *
      * Returns a [Pair] of [BirdAudioClassifier] and [AudioClassifierMode] so the UI can

@@ -10,6 +10,10 @@ actual class PremiumBillingClient {
     actual val state: StateFlow<PremiumState> = MutableStateFlow(PremiumState.Free)
     actual val formattedPrices: StateFlow<FormattedPrices> = MutableStateFlow(FormattedPrices())
 
+    // iOS has no automatic paywall before the StoreKit work (plan i5) — true keeps today's
+    // behavior (the caller never blocks waiting for an answer that will never come).
+    actual val purchasesQueried: StateFlow<Boolean> = MutableStateFlow(true)
+
     actual suspend fun connect() = Unit
 
     actual suspend fun queryPurchases() = Unit

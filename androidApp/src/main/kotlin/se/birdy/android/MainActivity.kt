@@ -443,6 +443,7 @@ class MainActivity : AppCompatActivity() {
                 Unit
             },
             formattedPricesFlow = billingClient.formattedPrices,
+            premiumQueried = billingClient.purchasesQueried,
             audioClassifierProvider = audioProvider,
             audioStorageDir = {
                 val dir = File(filesDir, "audio")

@@ -16,6 +16,9 @@ expect class PremiumBillingClient {
     val state: StateFlow<PremiumState>
     val formattedPrices: StateFlow<FormattedPrices>
 
+    /** True once Play has answered a purchase query successfully (never set on a failed query). */
+    val purchasesQueried: StateFlow<Boolean>
+
     suspend fun connect()
 
     suspend fun queryPurchases()
