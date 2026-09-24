@@ -1,6 +1,8 @@
 package se.birdy.app.ui.settings
 
 import app.cash.turbine.test
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_success
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -69,6 +71,50 @@ class SettingsViewModelTest {
             val vm = SettingsViewModel(prefs, premiumRepo)
             vm.state.test {
                 assertTrue(awaitItem().premiumActive)
+            }
+        }
+
+    @Test
+    fun `override active with free billing shows premium as active`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val premiumRepo = FakePremiumRepository(PremiumState.Free)
+            val vm =
+                SettingsViewModel(
+                    prefs,
+                    premiumRepo,
+                    premiumOverride = PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now()),
+                )
+            vm.state.test {
+                assertTrue(awaitItem().premiumActive)
+            }
+        }
+
+    @Test
+    fun `restore with override active reports success`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val premiumRepo = FakePremiumRepository(PremiumState.Free)
+            val vm =
+                SettingsViewModel(
+                    prefs,
+                    premiumRepo,
+                    premiumOverride = PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now()),
+                )
+            vm.effects.test {
+                vm.restorePurchases()
+                assertEquals(SettingsEffect.ShowToast(Res.string.settings_restore_purchases_success), awaitItem())
+            }
+        }
+
+    @Test
+    fun `no override keeps billing state`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val premiumRepo = FakePremiumRepository(PremiumState.Free)
+            val vm = SettingsViewModel(prefs, premiumRepo)
+            vm.state.test {
+                assertFalse(awaitItem().premiumActive)
             }
         }
 }

@@ -23,6 +23,8 @@ import se.birdy.domain.notification.NotificationScheduler
 import se.birdy.domain.premium.PremiumRepository
 import se.birdy.domain.premium.PremiumState
 
+// Mostly optional dev/platform hooks; premiumOverride wires grandfather status (spec 2026-09-24 §5.1).
+@Suppress("LongParameterList")
 class SettingsViewModel(
     private val prefs: UserPreferences,
     private val premiumRepository: PremiumRepository,
@@ -31,6 +33,7 @@ class SettingsViewModel(
     private val devTriggerDailyBird: (() -> Unit)? = null,
     private val devTriggerWeeklyRecap: (() -> Unit)? = null,
     private val devTriggerTrophyProgress: (() -> Unit)? = null,
+    private val premiumOverride: PremiumState? = null,
 ) : ViewModel() {
     private val _state = MutableStateFlow(SettingsUiState())
     val state: StateFlow<SettingsUiState> = _state.asStateFlow()
@@ -60,7 +63,7 @@ class SettingsViewModel(
                 SettingsUiState(
                     userName = name,
                     language = lang,
-                    premiumActive = premium !is PremiumState.Free,
+                    premiumActive = (premiumOverride ?: premium) !is PremiumState.Free,
                 )
             }.collect { _state.value = it }
         }
@@ -160,7 +163,7 @@ class SettingsViewModel(
             try {
                 runCatching { premiumRepository.restore() }
                     .onFailure { /* swallow; state.value still reflects last-known premium status */ }
-                val currentPremium = premiumRepository.state.value
+                val currentPremium = premiumOverride ?: premiumRepository.state.value
                 val message =
                     if (currentPremium is PremiumState.Active) {
                         Res.string.settings_restore_purchases_success

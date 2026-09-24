@@ -52,31 +52,48 @@ class GrandfatherPolicyTest {
     @Test
     fun `earliest install with nothing stored and earlier package uses package`() {
         val candidate = 1_800_000_000_000L
-        val packageMs = 1_700_000_000_000L
+        val packageMs = 1_780_000_000_000L
         assertEquals(packageMs, GrandfatherPolicy.earliestInstallMs(null, packageMs, candidate))
     }
 
     @Test
     fun `earliest install with stored earlier than package keeps stored unchanged`() {
-        val stored = 1_700_000_000_000L
-        val packageMs = 1_750_000_000_000L
+        val stored = 1_780_000_000_000L
+        val packageMs = 1_790_000_000_000L
         val candidate = 1_800_000_000_000L
         assertEquals(stored, GrandfatherPolicy.earliestInstallMs(stored, packageMs, candidate))
     }
 
     @Test
     fun `earliest install with package earlier than stored uses package`() {
-        val stored = 1_750_000_000_000L
-        val packageMs = 1_700_000_000_000L
+        val stored = 1_790_000_000_000L
+        val packageMs = 1_780_000_000_000L
         val candidate = 1_800_000_000_000L
         assertEquals(packageMs, GrandfatherPolicy.earliestInstallMs(stored, packageMs, candidate))
     }
 
     @Test
     fun `earliest install ignores zero or negative package`() {
-        val stored = 1_750_000_000_000L
+        val stored = 1_790_000_000_000L
         val candidate = 1_800_000_000_000L
         assertEquals(stored, GrandfatherPolicy.earliestInstallMs(stored, 0L, candidate))
         assertEquals(stored, GrandfatherPolicy.earliestInstallMs(stored, -1L, candidate))
+    }
+
+    @Test
+    fun `install times before the app existed are ignored`() {
+        assertFalse(GrandfatherPolicy.isGrandfathered(946_684_800_000L, null, cutoff))
+    }
+
+    @Test
+    fun `earliest install ignores a package time before the app existed`() {
+        val candidate = 1_790_000_000_000L
+        assertEquals(candidate, GrandfatherPolicy.earliestInstallMs(null, 946_684_800_000L, candidate))
+    }
+
+    @Test
+    fun `both stored and package invalid falls back to candidate`() {
+        val candidate = 1_790_000_000_000L
+        assertEquals(candidate, GrandfatherPolicy.earliestInstallMs(0L, -5L, candidate))
     }
 }

@@ -407,6 +407,7 @@ class AppGraph(
             devTriggerDailyBird = devTriggerDailyBird,
             devTriggerWeeklyRecap = devTriggerWeeklyRecap,
             devTriggerTrophyProgress = devTriggerTrophyProgress,
+            premiumOverride = premiumOverride,
         )
 
     fun premiumViewModel(): PremiumViewModel =
