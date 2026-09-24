@@ -141,6 +141,10 @@ test.describe('första vyn', () => {
       expect(overlaps, `telefon ${JSON.stringify(phone)} rödhake ${JSON.stringify(robin)}`).toBe(false);
       expect(robin.y + robin.height, 'fötterna ryms i fotot').toBeLessThanOrEqual(photo.y + photo.height);
       expect(robin.x + robin.width).toBeLessThanOrEqual(width);
+      const last = (await page.locator('[data-hero] .meta li').last().boundingBox())!;
+      const hits = await page.evaluate(({ x, ys }) => ys.map((y) => !!document.elementFromPoint(x, y)?.closest('[data-hero-phone]')),
+        { x: last.x + last.width + 8, ys: [last.y + 1, last.y + last.height / 2, last.y + last.height - 1] });
+      expect(hits, 'metaraden har minst 8 px luft till telefonen').toEqual([false, false, false]);
     });
   }
 

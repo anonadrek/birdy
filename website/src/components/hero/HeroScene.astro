@@ -30,7 +30,7 @@ const glints = [
 
 <style>
   /* Up to 1023 px: a photo band at the top, right-anchored so the robin stays in view (mockup, mobile). */
-  .scene-clip { position: absolute; top: 0; left: 0; right: 0; height: var(--band-h); overflow: hidden; }
+  .scene-clip { position: absolute; top: 0; left: 0; right: 0; height: var(--band-h, max(440px, 56.28vw)); overflow: hidden; }
   .scene-clip::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(31, 42, 25, .35) 0, rgba(31, 42, 25, 0) 25%, rgba(31, 42, 25, 0) 48%, rgba(31, 42, 25, .88) 80%, var(--moss) 100%); }
   .scene { position: absolute; top: 0; right: 0; width: max(782px, 100%); aspect-ratio: 1672 / 941; }
   @media (prefers-reduced-motion: no-preference) { .scene { will-change: transform; } }

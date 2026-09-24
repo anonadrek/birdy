@@ -96,6 +96,11 @@ const mobileOnly = [
   /* Moss by default, also without JavaScript. The overlay bar turns transparent only when scripts run (html.js, set in Layout). */
   .nav--solid, .nav--overlay, .nav.is-solid, .nav.is-open { background: var(--moss); box-shadow: 0 1px 0 rgba(255, 255, 255, .08); }
   :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) { background: transparent; box-shadow: none; }
+  /* Below 1024 px the photo band scrolls under the transparent bar; a light moss scrim keeps the menu
+     button at 3:1 or better over the lit parts of the photo. */
+  @media (max-width: 1023px) {
+    :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) { background: linear-gradient(180deg, rgba(31, 42, 25, .95) 0%, rgba(31, 42, 25, .95) 72%, rgba(31, 42, 25, 0) 100%); }
+  }
   .nav.is-open { transition: none; }
   .nav :global(:focus-visible) { outline-color: var(--apricot); }
   .nav-inner { max-width: 1320px; margin: 0 auto; height: 76px; display: flex; align-items: center; gap: 26px; padding: 0 44px; }
