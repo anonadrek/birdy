@@ -23,7 +23,7 @@ const altLocale: Locale = locale === 'en' ? 'sv' : 'en';
 const altPath = alternateHref(locale, pathname);
 const canonical = new URL(pathname, Astro.site).toString();
 const ogImageUrl = new URL(ogImage ?? `/og-field-${locale}.png`, Astro.site).toString();
-const ogAlt = ogImageAlt ?? copy.alt.panorama;
+const ogAlt = ogImageAlt ?? (ogImage ? metaTitle : copy.alt.panorama);
 const englishPath = locale === 'en' ? pathname : altPath;
 
 const jsonLd = {
@@ -119,6 +119,7 @@ const jsonLd = {
     <meta name="twitter:title" content={metaTitle} />
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogAlt} />
 
     <meta name="theme-color" content="#1F2A19" />
 

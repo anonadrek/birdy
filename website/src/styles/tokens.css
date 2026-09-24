@@ -21,10 +21,10 @@
   --font-script: 'Caveat', 'Brush Script MT', cursive;
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --ease-paper: cubic-bezier(0.22, 1, 0.36, 1);
-  --section-padding-y: clamp(4.5rem, 8vw, 6rem);
-  --container-max: 76rem;
 
   /* TILLFÄLLIGA alias för sidor som inte är omskrivna ännu. Tas bort i Task 13. */
+  --section-padding-y: clamp(4.5rem, 8vw, 6rem);
+  --container-max: 76rem;
   --color-paper-bg: var(--paper);
   --color-paper-edge: var(--line);
   --color-paper-top: var(--card);

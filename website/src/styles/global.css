@@ -8,7 +8,7 @@
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/inter-regular.woff2') format('woff2'); }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/inter-semibold.woff2') format('woff2'); }
 
-/* Tailwind utilities are not used; the theme mirrors the tokens for completeness. */
+/* Tailwind utilities are not used; the theme maps the main colours for completeness. */
 @theme inline {
   --color-paper: var(--paper);
   --color-card: var(--card);
@@ -28,7 +28,7 @@ body { margin: 0; font-family: var(--font-sans); color: var(--ink); background: 
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 :focus-visible { outline: 3px solid var(--rust); outline-offset: 3px; }
-h1, h2, h3, h4, h5 { font-family: var(--font-serif); font-weight: 400; margin: 0; }
+h1, h2, h3, h4, h5 { font-family: var(--font-serif); font-weight: 400; margin: 0; line-height: 1.15; }
 em { font-style: italic; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
@@ -69,11 +69,14 @@ html.motion-ready [data-reveal="slide"] { transform: translate3d(-22px, 0, 0); }
 html.motion-ready [data-reveal="slide"].is-visible { transform: none; }
 
 /* Looping animations pause while their section is off screen (Layout script toggles .is-paused). */
-.is-paused, .is-paused * { animation-play-state: paused !important; }
+.is-paused, .is-paused *, .is-paused::before, .is-paused::after, .is-paused *::before, .is-paused *::after { animation-play-state: paused !important; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   html.motion-ready [data-reveal], html.motion-ready [data-reveal="scale"], html.motion-ready [data-reveal="slide"] { opacity: 1; transform: none; }
   /* Delays are zeroed too: an animation waiting out its delay still counts as running. */
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
+  /* The FAQ animates ::details-content, which the * rule above does not reach. Kept separate so
+     browsers without the pseudo-element do not drop the * rule. */
+  ::details-content { transition-duration: 0.01ms !important; transition-delay: 0s !important; }
 }

@@ -4,8 +4,21 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
+const stripComments = (s) => {
+  let out = '';
+  let i = 0;
+  while (i < s.length) {
+    const start = s.indexOf('/*', i);
+    if (start === -1) { out += s.slice(i); break; }
+    out += s.slice(i, start);
+    const end = s.indexOf('*/', start + 2);
+    i = end === -1 ? s.length : end + 2;
+  }
+  return out;
+};
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const css = readFileSync(resolve(root, 'src/styles/tokens.css'), 'utf8');
+const css = stripComments(readFileSync(resolve(root, 'src/styles/tokens.css'), 'utf8'));
 const tokens = Object.fromEntries(
   [...css.matchAll(/--([a-z0-9-]+):\s*(#[0-9a-fA-F]{6})\s*;/g)].map((m) => [m[1], m[2]]),
 );
@@ -37,7 +50,7 @@ let failed = false;
 for (const [fg, bg, min] of pairs) {
   const missing = [fg, bg].find((name) => !tokens[name]);
   if (missing) {
-    console.error(`contrast-guard FAILED: token --${missing} saknas i tokens.css`);
+    console.error(`contrast-guard FAILED: token --${missing} saknas eller är inte #RRGGBB i tokens.css`);
     failed = true;
     continue;
   }
