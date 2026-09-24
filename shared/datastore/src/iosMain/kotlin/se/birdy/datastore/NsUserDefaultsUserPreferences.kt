@@ -37,6 +37,8 @@ internal class NsUserDefaultsUserPreferences(
         const val WEEKLY_TROPHY_PUSH_ENABLED = "weekly_trophy_push_enabled"
         const val SKIP_PREMIUM_OVERRIDE = "skip_premium_override"
         const val IN_APP_REVIEW_REQUESTED = "in_app_review_requested"
+        const val GRANDFATHER_THANKS_SHOWN = "grandfather_thanks_shown"
+        const val DEBUG_FORCE_GRANDFATHERED = "debug_force_grandfathered"
     }
 
     // ---- NSUserDefaults primitives ----
@@ -104,6 +106,8 @@ internal class NsUserDefaultsUserPreferences(
     private val _weeklyTrophyPushEnabled = MutableStateFlow(getBool(Keys.WEEKLY_TROPHY_PUSH_ENABLED, true))
     private val _skipPremiumOverride = MutableStateFlow(getBool(Keys.SKIP_PREMIUM_OVERRIDE, false))
     private val _inAppReviewRequested = MutableStateFlow(getBool(Keys.IN_APP_REVIEW_REQUESTED, false))
+    private val _grandfatherThanksShown = MutableStateFlow(getBool(Keys.GRANDFATHER_THANKS_SHOWN, false))
+    private val _debugForceGrandfathered = MutableStateFlow(getBool(Keys.DEBUG_FORCE_GRANDFATHERED, false))
 
     override val userName: Flow<String> = _userName.asStateFlow()
     override val hasSeenOnboarding: Flow<Boolean> = _hasSeenOnboarding.asStateFlow()
@@ -123,6 +127,8 @@ internal class NsUserDefaultsUserPreferences(
     override val weeklyTrophyPushEnabled: Flow<Boolean> = _weeklyTrophyPushEnabled.asStateFlow()
     override val skipPremiumOverride: Flow<Boolean> = _skipPremiumOverride.asStateFlow()
     override val inAppReviewRequested: Flow<Boolean> = _inAppReviewRequested.asStateFlow()
+    override val grandfatherThanksShown: Flow<Boolean> = _grandfatherThanksShown.asStateFlow()
+    override val debugForceGrandfathered: Flow<Boolean> = _debugForceGrandfathered.asStateFlow()
 
     override suspend fun setUserName(name: String) {
         putString(Keys.USER_NAME, name)
@@ -212,5 +218,15 @@ internal class NsUserDefaultsUserPreferences(
     override suspend fun setInAppReviewRequested(value: Boolean) {
         putBool(Keys.IN_APP_REVIEW_REQUESTED, value)
         _inAppReviewRequested.value = value
+    }
+
+    override suspend fun setGrandfatherThanksShown(value: Boolean) {
+        putBool(Keys.GRANDFATHER_THANKS_SHOWN, value)
+        _grandfatherThanksShown.value = value
+    }
+
+    override suspend fun setDebugForceGrandfathered(value: Boolean) {
+        putBool(Keys.DEBUG_FORCE_GRANDFATHERED, value)
+        _debugForceGrandfathered.value = value
     }
 }

@@ -52,6 +52,15 @@ interface UserPreferences {
     /** One-shot: true once the Play in-app review prompt has been requested (never ask twice). */
     val inAppReviewRequested: Flow<Boolean>
 
+    /** One-shot: true once the early-user thank-you screen has been shown (release 1.3.0). */
+    val grandfatherThanksShown: Flow<Boolean>
+
+    /**
+     * DEBUG-only QA toggle: treat this install as an early (grandfathered) user so the
+     * thank-you screen can be tested. MainActivity only reads it when BuildConfig.DEBUG.
+     */
+    val debugForceGrandfathered: Flow<Boolean>
+
     suspend fun setUserName(name: String)
 
     suspend fun setHasSeenOnboarding(value: Boolean)
@@ -87,4 +96,8 @@ interface UserPreferences {
     suspend fun setSkipPremiumOverride(value: Boolean)
 
     suspend fun setInAppReviewRequested(value: Boolean)
+
+    suspend fun setGrandfatherThanksShown(value: Boolean)
+
+    suspend fun setDebugForceGrandfathered(value: Boolean)
 }
