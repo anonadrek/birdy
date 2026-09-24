@@ -58,6 +58,11 @@ const glints = [
     .scene-clip::after { background: linear-gradient(90deg, rgba(31, 42, 25, .95) 0%, rgba(31, 42, 25, .8) 34%, rgba(31, 42, 25, .2) 62%, rgba(31, 42, 25, 0) 80%), linear-gradient(0deg, rgba(31, 42, 25, .6), transparent 34%); }
     .scene { width: max(100cqw, 100cqh * 1.7768); }
   }
+  /* 1024–1279 px: the hero continues below the photo (the phone hangs there), so the photo's bottom
+     edge fades fully into the moss instead of ending on a visible seam. */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .scene-clip::after { background: linear-gradient(90deg, rgba(31, 42, 25, .95) 0%, rgba(31, 42, 25, .8) 34%, rgba(31, 42, 25, .2) 62%, rgba(31, 42, 25, 0) 80%), linear-gradient(0deg, var(--moss) 0%, rgba(31, 42, 25, .6) 16%, transparent 40%); }
+  }
   /* 1280 px and up: left-anchored and up to 12 % wider, so the robin moves right and the phone fits
      between text and robin; capped so the robin's feet stay inside the first view. */
   @media (min-width: 1280px) {
