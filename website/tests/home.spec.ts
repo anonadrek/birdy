@@ -93,7 +93,7 @@ test.describe('utan JavaScript', () => {
 });
 
 test.describe('första vyn', () => {
-  test.use({ reducedMotion: 'reduce' });
+  test.use({ contextOptions: { reducedMotion: 'reduce' } });
 
   for (const [path, line1, line2, kicker] of [
     ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok'],

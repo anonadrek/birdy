@@ -1317,7 +1317,7 @@ Lägg till sist i `website/tests/home.spec.ts`:
 
 ```ts
 test.describe('första vyn', () => {
-  test.use({ reducedMotion: 'reduce' });
+  test.use({ contextOptions: { reducedMotion: 'reduce' } });
 
   for (const [path, line1, line2, kicker] of [
     ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok'],
@@ -2165,7 +2165,7 @@ test.describe('appkarusellen', () => {
   });
 
   test.describe('med minskad rörelse', () => {
-    test.use({ reducedMotion: 'reduce' });
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
     test('karusellen och rödhaken står still', async ({ page }) => {
       await page.goto('/sv/');
       await page.locator('#app').scrollIntoViewIfNeeded();
