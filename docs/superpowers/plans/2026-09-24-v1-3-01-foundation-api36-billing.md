@@ -843,6 +843,21 @@ och flytta `val premiumState = graph.premiumOverride ?: graph.premiumRepository.
 
 ---
 
+### Task 6d (tillägg från granskningen av 6c, 2026-09-24): Säkra köpflödet före go-live
+
+**Bakgrund (Opus-granskning av 6c):** Ett befintligt fel i `PremiumBillingClient.android.kt` blockerar att vi börjar ta betalt: `queryPurchases()` ger `Active` för ett verifierat köp men kvitterar (acknowledge) det aldrig — bara lyssnarvägen gör det. Dör appen efter köpet innan kvitteringen, eller slutförs ett väntande köp (t.ex. kontant) medan appen är stängd, återbetalar Play automatiskt efter 3 dagar och användaren tappar Premium. Tre viktiga fynd till: betalväggen kunde öppnas sent ovanpå skärmen användaren gått till; produktpriserna hämtades före köpfrågan och åt upp väntetiden; och "Återställ köp" svarade "inga köp" när Play inte gick att nå.
+
+**Ändringar:**
+1. **Kvittering:** `queryPurchases()` kvitterar varje köpt + signaturverifierat köp som inte är kvitterat (samma kvitteringshjälpare som lyssnarvägen). `Active` ges oavsett kvitteringsutfall (Play ger 3 dagar; vi försöker igen vid varje fråga); misslyckad kvittering loggas.
+2. **Ingen sen betalvägg:** efter väntan på Play fortsätter `AppScaffold` bara om användaren fortfarande står på startskärmen (`AppRoute.Listen`); annars avbryts utan att "visad"-flaggorna sätts, så försöket görs vid nästa start.
+3. **Köp före priser:** `connect()` returnerar direkt när anslutningen är klar; produktpriserna hämtas i klientens egen coroutine-scope (avslutas i `dispose()`).
+4. **Ärlig återställning + återanslutning:** `enableAutoServiceReconnection()` på Billing-klienten (eller återanslutning i `queryPurchases()` om API:t saknas); `queryPurchases()` returnerar `Boolean` (expect + Android + iOS `true`); `BillingPremiumRepository.restore()` kastar `BillingUnavailableException` när Play inte svarade; Inställningar visar då ny sträng `settings_restore_purchases_unavailable` (SV: "Kunde inte nå Google Play. Kontrollera anslutningen och försök igen." / EN: "Couldn’t reach Google Play. Check your connection and try again.") — utom när användaren har override (tidig användare), då "lyckades".
+5. **Småsaker:** testfältet `FakePremiumBillingClient.purchasesQueried` döps om till `queryPurchasesCalls`; en 140-teckensrad i `BillingAnswerTest` bryts.
+
+**Runbook:** köp-testet (Task 13) får en extra ruta: köp → döda appen direkt (`adb shell am force-stop`) → starta igen → köpet ska vara kvitterat (syns i Play Console → Beställningar som "Kvitterad"/ingen återbetalning efter 3 dagar).
+
+---
+
 ### Task 7: Köpet räknas som klart först när Premium faktiskt är aktivt (bugg)
 
 **Bakgrund:** `PremiumScreen` anropar idag `viewModel.purchase(); onPurchaseComplete()` i samma klick. `onPurchaseComplete` stänger skärmen och visar "Välkommen, fältmedlem." direkt, även om användaren avbryter Googles köpruta. Maskerat hittills av att alla hade Premium gratis.
@@ -1680,7 +1695,7 @@ Förväntat: alignment-skriptet rapporterar alla `.so` ≥ 0x4000; zipalign `Ver
 >
 > **Förberedelser i Play Console (AB):** (1) skapa `premium_yearly_v1` (prenumeration, årlig bas-plan) och `premium_lifetime_v1` (engångsköp), sätt priser, aktivera; (2) kontrollera att licensnyckeln under Monetization setup → Licensing är samma som `BIRDY_PLAY_LICENSE_KEY` i `~/.gradle/gradle.properties` (klistra in den på nytt om du är osäker, och bygg om); (3) lägg till ditt Google-konto som licenstestare; (4) ladda upp `birdy-1.3.0-vc128-KOPTEST-EJ-PRODUKTION.aab` till **Intern testning**.
 >
-> **Extra rutor för 1.3.0:** [ ] Premium-skärmen visar Plays priser (inga "Hämtar pris…" kvar efter några sekunder); [ ] köpknappen är grå tills priset syns; [ ] avbrutet köp → skärmen står kvar, ingen välkomsttext; [ ] genomfört köp → skärmen stänger + "Välkommen, fältmedlem."; [ ] texten under knappen visar rätt årspris respektive "Engångsköp. Ingen prenumeration."; [ ] allt ovan på både svenska och engelska (Inställningar → Språk).
+> **Extra rutor för 1.3.0:** [ ] köp → döda appen direkt (`adb shell am force-stop se.birdy.android`) → starta igen → köpet ska bli kvitterat (Play Console → Beställningar; ingen automatisk återbetalning efter 3 dagar); [ ] flygplansläge → Inställningar → Återställ köp → "Kunde inte nå Google Play"; [ ] Premium-skärmen visar Plays priser (inga "Hämtar pris…" kvar efter några sekunder); [ ] köpknappen är grå tills priset syns; [ ] avbrutet köp → skärmen står kvar, ingen välkomsttext; [ ] genomfört köp → skärmen stänger + "Välkommen, fältmedlem."; [ ] texten under knappen visar rätt årspris respektive "Engångsköp. Ingen prenumeration."; [ ] allt ovan på både svenska och engelska (Inställningar → Språk).
 ```
 
 - [ ] **Step 4: Commit + push**
