@@ -97,6 +97,7 @@ Förväntat: en PR-URL skrivs ut.
 **Files:**
 - Modify: `gradle/libs.versions.toml` (rad `agp`, `android-compileSdk`, `android-targetSdk`)
 - Modify: `gradle/wrapper/gradle-wrapper.properties`
+- Modify: `buildSrc/build.gradle.kts` (`com.android.tools.build:gradle:8.7.3` → `8.9.1`) — **tillagt under körningen 2026-09-24:** rot-bygget applicerar Android-pluginen utan version, så den faktiska AGP-versionen kommer från `buildSrc`s classpath; katalogens `agp`-nyckel ensam gör ingenting (AGP:s egen varning visade fortfarande 8.7.3). Commit `0521d9ef`.
 
 - [ ] **Step 1: Uppdatera versionskatalogen**
 
