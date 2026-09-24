@@ -32,9 +32,9 @@ import kotlinx.coroutines.launch
  *
  * Hosts two debug affordances:
  *  1. **Billing verify (runbook §1):** a "Skip premium override" toggle. When on,
- *     [se.birdy.android.MainActivity] skips the premium override at app start so the
- *     real `NotActive → purchase → Active` flow is testable even while
- *     `PREMIUM_OPEN_FOR_LAUNCH=true`. Read once at startup — restart to apply.
+ *     [se.birdy.android.MainActivity] skips every premium override at app start —
+ *     including a grandfathered user's (spec §5.1) — so the real
+ *     `NotActive → purchase → Active` flow is testable. Read once at startup — restart to apply.
  *  2. ML preprocessing diagnostic (Plan 6b1 T2) — runs corpus images through the
  *     live BirdClassifier + ImagePreprocessor pipeline and prints predictions +
  *     sampled ARGB pixels, for comparison against the desktop eval (tools/ml-eval/).

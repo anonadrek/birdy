@@ -313,24 +313,32 @@ class MainActivity : AppCompatActivity() {
         val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         val badgeVersionStore = SharedPrefsBadgeVersionStore(applicationContext)
         val userPreferences = UserPreferencesStore(applicationContext).preferences()
-        // One-shot migration: record firstInstallTimestamp if not yet set.
-        // Existing v0.8.0-rc1 users (hasSeenOnboarding=true) get backdated to now-8d
-        // so the 7d grace has already elapsed; the 3d throttle governs the next show.
-        // Fresh installs get now → full 7d grace before any modal can appear.
-        runBlocking {
-            val existingInstall = userPreferences.firstInstallTimestamp.first()
-            if (existingInstall == null) {
-                val isUpgrade = userPreferences.hasSeenOnboarding.first()
-                val installMs =
-                    if (isUpgrade) {
-                        System.currentTimeMillis() - UPGRADE_INSTALL_BACKDATE_MS
-                    } else {
-                        System.currentTimeMillis()
-                    }
-                userPreferences.setFirstInstallTimestamp(installMs)
+        // One-shot migration + phone-change safety net for firstInstallTimestamp. v0.8.0-rc1
+        // upgraders (hasSeenOnboarding=true, no timestamp yet) get backdated to now-8d so the
+        // 7d onboarding-modal grace has already elapsed; fresh installs get now → full 7d grace.
+        // On every start we also fold in Android's PackageInfo install time and keep whichever
+        // of {stored, package, candidate} is earliest (GrandfatherPolicy.earliestInstallMs) —
+        // this is what keeps a pre-cutoff user grandfathered after a phone change, where the
+        // DataStore backup restores the old timestamp but PackageInfo resets to "now".
+        val storedFirstInstallMs = runBlocking { userPreferences.firstInstallTimestamp.first() }
+        val candidateFirstInstallMs =
+            runBlocking {
+                if (userPreferences.hasSeenOnboarding.first()) {
+                    System.currentTimeMillis() - UPGRADE_INSTALL_BACKDATE_MS
+                } else {
+                    System.currentTimeMillis()
+                }
             }
+        val resolvedFirstInstallMs =
+            GrandfatherPolicy.earliestInstallMs(
+                storedMs = storedFirstInstallMs,
+                packageMs = packageFirstInstallTimeOrNull(),
+                candidateMs = candidateFirstInstallMs,
+            )
+        if (resolvedFirstInstallMs != storedFirstInstallMs) {
+            runBlocking { userPreferences.setFirstInstallTimestamp(resolvedFirstInstallMs) }
         }
-        val isGrandfathered = computeGrandfathered(userPreferences)
+        val isGrandfathered = computeGrandfathered(userPreferences, storedFirstInstallMs = resolvedFirstInstallMs)
         billingClient =
             se.birdy.app.data.premium.PremiumBillingClient(
                 context = applicationContext,
@@ -353,9 +361,9 @@ class MainActivity : AppCompatActivity() {
         PdfFontProvider.init(applicationContext)
         val journalRenderer = JournalPdfRenderer()
         // DEBUG-only Billing-verify escape hatch (runbook §1): when the developer
-        // toggle is on, skip EVERY override so the real NotActive→purchase→Active
-        // path is exercised even while PREMIUM_OPEN_FOR_LAUNCH=true. Read once here;
-        // restart applies it. Always false in release (BuildConfig.DEBUG guards it).
+        // toggle is on, skip EVERY override (grandfathered included) so the real
+        // NotActive→purchase→Active path is exercised. Read once here; restart applies it.
+        // Always false in release (BuildConfig.DEBUG guards it).
         val skipPremiumOverride =
             BuildConfig.DEBUG && runBlocking { userPreferences.skipPremiumOverride.first() }
         val premiumOverride: PremiumState? =
@@ -503,13 +511,22 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    /** Spec 2026-09-24 §5.1. DEBUG builds can force it on via DiagnosticsScreen for QA. */
-    private fun computeGrandfathered(userPreferences: UserPreferences): Boolean {
+    /**
+     * Spec 2026-09-24 §5.1. DEBUG builds can force it on via DiagnosticsScreen for QA.
+     *
+     * [storedFirstInstallMs] is the already-resolved earliest-known install time
+     * (see [GrandfatherPolicy.earliestInstallMs] in [buildAppGraph]) — it already folds in
+     * Android's PackageInfo install time, so it alone is enough for the cutoff check here.
+     */
+    private fun computeGrandfathered(
+        userPreferences: UserPreferences,
+        storedFirstInstallMs: Long,
+    ): Boolean {
         val debugForce = BuildConfig.DEBUG && runBlocking { userPreferences.debugForceGrandfathered.first() }
         if (debugForce) return true
         return GrandfatherPolicy.isGrandfathered(
-            storedFirstInstallMs = runBlocking { userPreferences.firstInstallTimestamp.first() },
-            packageFirstInstallMs = packageFirstInstallTimeOrNull(),
+            storedFirstInstallMs = storedFirstInstallMs,
+            packageFirstInstallMs = null,
             cutoffMs = BuildConfig.GRANDFATHER_CUTOFF_MS,
         )
     }

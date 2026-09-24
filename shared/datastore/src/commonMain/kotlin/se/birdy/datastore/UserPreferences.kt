@@ -42,10 +42,11 @@ interface UserPreferences {
 
     /**
      * DEBUG-only Billing-verify toggle. When true (and only in `BuildConfig.DEBUG`
-     * builds), MainActivity skips the premium override so the real
-     * `NotActive → purchase → Active` path is exercised even while
-     * `PREMIUM_OPEN_FOR_LAUNCH=true`. Read once at app start — restart to apply.
-     * Never has any effect in release builds. See billing-verify runbook §1.
+     * builds), MainActivity skips every premium override — including a grandfathered
+     * user's — so the real `NotActive → purchase → Active` path is exercised. Monetisation
+     * has been live since 1.3.0; the only overrides left are grandfathering (spec §5.1) and
+     * debug forcing. Read once at app start — restart to apply. Never has any effect in
+     * release builds. See billing-verify runbook §1.
      */
     val skipPremiumOverride: Flow<Boolean>
 

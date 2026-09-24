@@ -36,8 +36,10 @@ class ArchiveViewModel(
     premiumActiveFlow: Flow<Boolean> = flowOf(false),
 ) : ViewModel() {
     // Plan 6b3 T21 fix: source-of-truth is AppGraph.effectivePremiumActive (override
-    // OR backend), not PremiumRepository.state alone — otherwise PREMIUM_OPEN_FOR_LAUNCH
-    // never opens the "Export Field Journal" CTA on Archive.
+    // OR backend), not PremiumRepository.state alone — otherwise a premium override
+    // (grandfathered user, spec §5.1, or a debug force) never opens the "Export Field
+    // Journal" CTA on Archive. Monetisation has been live since 1.3.0; PREMIUM_OPEN_FOR_LAUNCH
+    // is always false now, but the override path itself is still exercised by grandfathering.
     val premiumActive: StateFlow<Boolean> =
         premiumActiveFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), false)
 

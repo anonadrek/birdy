@@ -52,4 +52,24 @@ class PremiumOverrideResolverTest {
         assertIs<PremiumState.Active>(state)
         assertEquals(PremiumTier.YEARLY, state.tier)
     }
+
+    @Test
+    fun `grandfathered plus debug force yearly stays lifetime`() {
+        val state = resolve(grandfathered = true, debugForceYearly = true)
+        assertIs<PremiumState.Active>(state)
+        assertEquals(PremiumTier.LIFETIME, state.tier)
+    }
+
+    @Test
+    fun `debug skip wins over open for launch too`() {
+        assertNull(resolve(debugSkip = true, openForLaunch = true))
+    }
+
+    @Test
+    fun `open for launch grants lifetime purchased now`() {
+        val state = resolve(openForLaunch = true)
+        assertIs<PremiumState.Active>(state)
+        assertEquals(PremiumTier.LIFETIME, state.tier)
+        assertEquals(now, state.purchasedAt)
+    }
 }

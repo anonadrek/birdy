@@ -88,11 +88,22 @@ android {
         buildConfigField("Boolean", "PREMIUM_OPEN_FOR_LAUNCH", "false")
         // Early-user cutoff (spec §5.1): installs before this instant keep Premium forever.
         // Default = planned go-live + 48 h = 2026-10-02T00:00 Europe/Stockholm
-        // (2026-10-01T22:00:00Z). NEVER change it after 1.3.0 ships. Billing-verify builds
-        // pass -Pbirdy.grandfatherCutoffMs=0 so nobody is grandfathered and purchases can
-        // be tested; such a build must never be promoted to production.
-        val grandfatherCutoffMs =
-            providers.gradleProperty("birdy.grandfatherCutoffMs").orElse("1790892000000").get()
+        // (2026-10-01T22:00:00Z). NEVER change it after 1.3.0 ships. Overriding it requires
+        // BOTH -Pbirdy.grandfatherCutoffMs=<ms> AND -Pbirdy.billingTestBuild=true — the second
+        // flag exists so a cutoff override can never slip into a production upload by accident;
+        // such a build gets a "-koptest" versionName suffix and must never be promoted to
+        // production. Billing-verify builds pass -Pbirdy.grandfatherCutoffMs=0 so nobody is
+        // grandfathered and purchases can be tested.
+        val cutoffOverride = providers.gradleProperty("birdy.grandfatherCutoffMs").orNull
+        val billingTestBuild = providers.gradleProperty("birdy.billingTestBuild").orNull == "true"
+        if (cutoffOverride != null && !billingTestBuild) {
+            error(
+                "birdy.grandfatherCutoffMs may only be set together with -Pbirdy.billingTestBuild=true " +
+                    "(billing-test builds are never promoted to production).",
+            )
+        }
+        if (billingTestBuild) versionNameSuffix = "-koptest"
+        val grandfatherCutoffMs = cutoffOverride ?: "1790892000000"
         buildConfigField("long", "GRANDFATHER_CUTOFF_MS", "${grandfatherCutoffMs}L")
         // x86 (32-bit) excluded: no 16 KB flex build exists for it and we never ship a
         // split with a missing or 4 KB flex lib (i2a spec §2). Real devices are arm64/v7a;

@@ -19,4 +19,16 @@ object GrandfatherPolicy {
     ): Boolean =
         listOfNotNull(storedFirstInstallMs, packageFirstInstallMs)
             .any { it > 0 && it < cutoffMs }
+
+    /**
+     * The install time to persist: the earliest positive value among what we already stored
+     * (or [candidateMs] if nothing is stored yet) and Android's package install time. Only ever
+     * moves the stored value earlier, so the backed-up timestamp carries the true first install
+     * to a new phone.
+     */
+    fun earliestInstallMs(
+        storedMs: Long?,
+        packageMs: Long?,
+        candidateMs: Long,
+    ): Long = listOfNotNull(storedMs ?: candidateMs, packageMs).filter { it > 0 }.minOrNull() ?: candidateMs
 }
