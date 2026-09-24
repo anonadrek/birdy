@@ -30,13 +30,13 @@ const home = locale === 'sv' ? '/sv/' : '/';
 </footer>
 
 <style>
-  .footer { background: var(--color-moss-shadow); color: #f1f2e7; padding: 4.5rem clamp(1.5rem,6vw,5rem) 1.8rem; }
+  .footer { background: var(--color-rust-shadow); color: #fff4e7; padding: 4.5rem clamp(1.5rem,6vw,5rem) 1.8rem; }
   .inner { max-width: 1260px; margin: auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
-  .brand-block p { margin: 1.25rem 0 0; color: #c6d2c4; max-width: 17rem; line-height: 1.5; }
+  .brand-block p { margin: 1.25rem 0 0; color: #e9cbb6; max-width: 17rem; line-height: 1.5; }
   .link-block { display: flex; flex-direction: column; align-items: start; gap: .85rem; }
-  .heading { color: #dda778; font-size: .82rem; font-weight: 600; margin: 0 0 .4rem; }
-  .link-block a { font-size: .84rem; color: #dce5d8; transition: color .2s; }
-  .link-block a:hover { color: #dda778; }
-  .bottom { max-width: 1260px; margin: 4.5rem auto 0; padding-top: 1.3rem; border-top: 1px solid rgba(255,255,255,.17); display: flex; justify-content: space-between; gap: 1rem; color: #b6c8b7; font-size: .72rem; }
+  .heading { color: var(--color-apricot); font-size: .82rem; font-weight: 600; margin: 0 0 .4rem; }
+  .link-block a { font-size: .84rem; color: #f2ddcb; transition: color .2s; }
+  .link-block a:hover { color: var(--color-apricot); }
+  .bottom { max-width: 1260px; margin: 4.5rem auto 0; padding-top: 1.3rem; border-top: 1px solid rgba(255,255,255,.17); display: flex; justify-content: space-between; gap: 1rem; color: #d3b8a8; font-size: .72rem; }
   @media (max-width: 680px) { .inner { grid-template-columns: 1fr 1fr; gap: 3rem 2rem; } .brand-block { grid-column: 1 / -1; } .bottom { flex-direction: column; margin-top: 3rem; } }
 </style>

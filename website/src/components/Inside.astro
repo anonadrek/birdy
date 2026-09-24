@@ -21,8 +21,9 @@ const t = getCopy(locale);
 
   <ul class="stats" role="list">
     {t.inside.stats.map((stat, i) => (
-      <li class="stat" data-reveal style={`--rd:${i * 120}ms`}>
-        <span class="value">{stat.value}</span>
+      <li class="stat" data-reveal data-stat style={`--rd:${i * 120}ms`}>
+        <span class="sr-only">{stat.value}</span>
+        <span class="value" data-count={stat.value} aria-hidden="true">{stat.value}</span>
         <span class="label">{stat.label}</span>
         <span class="caption">{stat.caption}</span>
       </li>
@@ -60,15 +61,19 @@ const t = getCopy(locale);
     gap: 0.4rem;
     padding: 1.2rem 2rem;
   }
+  .stat::after { content: ''; display: block; width: 2.5rem; height: 2px; margin-top: .8rem; background: var(--color-orange); }
+  .stat.is-visible::after { animation: rule-arrive .7s .35s var(--ease-paper) both; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  @keyframes rule-arrive { from { transform: scaleX(0); } to { transform: scaleX(1); } }
   /* Hairline dividers between the columns — ruled like a journal index page */
   .stat + .stat {
-    border-left: 1px solid rgba(63, 79, 48, 0.18);
+    border-left: 1px solid var(--color-paper-edge);
   }
   .value {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: clamp(3.8rem, 7vw, 6rem);
-    color: var(--color-moss-deep);
+    color: var(--color-orange);
     line-height: 1;
   }
   .label {
@@ -88,8 +93,32 @@ const t = getCopy(locale);
     .stats { grid-template-columns: 1fr; gap: 2rem; }
     .stat + .stat {
       border-left: none;
-      border-top: 1px solid rgba(63, 79, 48, 0.18);
+      border-top: 1px solid var(--color-paper-edge);
       padding-top: 2rem;
     }
   }
 </style>
+
+<script>
+  const stats = document.querySelectorAll<HTMLElement>('[data-stat]');
+  if (stats.length && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        counterObserver.unobserve(entry.target);
+        const value = entry.target.querySelector<HTMLElement>('[data-count]');
+        const target = Number(value?.dataset.count);
+        if (!value || !Number.isFinite(target) || target === 0) continue;
+        const duration = 1100;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const progress = Math.min(1, (now - start) / duration);
+          value.textContent = String(Math.round(target * (1 - Math.pow(1 - progress, 3))));
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+    }, { threshold: 0.45 });
+    stats.forEach((stat) => counterObserver.observe(stat));
+  }
+</script>

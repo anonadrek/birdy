@@ -15,14 +15,13 @@ const { locale } = Astro.props;
 const t = getCopy(locale);
 ---
 
-<!-- The journal's "night page": the privacy promise gets the app's own deep
-     moss hero gradient, torn out of the cream paper above and below. -->
+<!-- The journal's warm evening page, torn out of the cream paper. -->
 <section id="privacy" class="privacy">
   <DeckleEdge side="top" />
-  <CornerBrackets color="var(--color-copper-warm)" />
+  <CornerBrackets color="var(--color-apricot)" />
   <div class="content" data-reveal>
     <WingLogo alt={t.alt.wingLogo} size="56px" />
-    <EyebrowLabel text={t.privacy.eyebrow} color="var(--color-copper-warm)" plate="VIII" />
+    <EyebrowLabel text={t.privacy.eyebrow} color="var(--color-apricot)" plate="VIII" />
     <JournalHeadline
       text={t.privacy.headline}
       level="h2"
@@ -32,7 +31,7 @@ const t = getCopy(locale);
     <OrnamentRule />
     <p class="body">{t.privacy.body}</p>
     <div class="brand-line">
-      <Wordmark size="44px" alt={t.alt.wordmark} color="var(--color-copper-warm)" />
+      <Wordmark size="44px" alt={t.alt.wordmark} color="var(--color-apricot)" />
       <span class="micro">{t.privacy.wordmarkLabel}</span>
     </div>
   </div>
@@ -45,10 +44,10 @@ const t = getCopy(locale);
     padding: calc(var(--section-padding-y) * 1.5) 1.5rem;
     text-align: center;
     background:
-      radial-gradient(circle at 1px 1px, rgba(240, 234, 216, 0.05) 1px, transparent 0) 0 0 / 24px 24px,
-      linear-gradient(178deg, var(--color-moss-mid) 0%, var(--color-moss-deep) 46%, var(--color-moss-shadow) 100%);
+      radial-gradient(circle at 1px 1px, rgba(255, 225, 186, 0.09) 1px, transparent 0) 0 0 / 24px 24px,
+      linear-gradient(178deg, var(--color-rust) 0%, var(--color-rust-deep) 48%, var(--color-rust-shadow) 100%);
     --jh-ink: var(--color-text-on-hero);
-    --jh-accent: var(--color-copper-warm);
+    --jh-accent: var(--color-apricot);
   }
   .content {
     max-width: 48rem;
@@ -61,7 +60,7 @@ const t = getCopy(locale);
   .sub {
     font-family: var(--font-script);
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    color: var(--color-copper-warm);
+    color: var(--color-apricot);
     margin: 0;
   }
   .content :global(.ornament) {
@@ -88,7 +87,7 @@ const t = getCopy(locale);
     font-size: 0.6875rem;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: var(--color-copper-warm);
+    color: var(--color-apricot);
   }
   /* Keep the corner brackets clear of the torn edges */
   .privacy :global(.bracket-tl),

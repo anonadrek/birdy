@@ -10,6 +10,7 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
 ---
 
 <section id="download" class="final-cta">
+  <div data-reveal>
   <div class="ornament" aria-hidden="true">✳</div>
   <p class="label">{locale === 'sv' ? 'Nästa fynd väntar' : 'The next sighting is waiting'}</p>
   <h2>{locale === 'sv' ? 'Ta med Birdy ut i fält.' : 'Take Birdy into the field.'}</h2>
@@ -19,14 +20,15 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
     <AppStoreBadge locale={locale} size="large" />
   </div>
   <p class="small">{locale === 'sv' ? 'Gratis att börja · Inget konto krävs · Fungerar offline' : 'Free to start · No account needed · Works offline'}</p>
+  </div>
 </section>
 
 <style>
-  .final-cta { text-align: center; padding: clamp(5rem,9vw,9rem) 1.5rem; background: #dce6d9; color: var(--color-moss-shadow); }
-  .ornament { color: var(--color-copper); font-size: 2.2rem; }
-  .label { margin: .9rem 0 1rem; color: var(--color-copper); font-size: .83rem; font-weight: 600; }
+  .final-cta { text-align: center; padding: clamp(5rem,9vw,9rem) 1.5rem; background: #f8d3a8; color: var(--color-rust-shadow); }
+  .ornament { color: var(--color-orange); font-size: 2.2rem; }
+  .label { margin: .9rem 0 1rem; color: var(--color-orange); font-size: .83rem; font-weight: 600; }
   h2 { margin: 0 auto; font-size: clamp(3rem,6vw,5.6rem); letter-spacing: -.035em; max-width: 850px; text-wrap: balance; }
-  .sub { margin: 1.3rem auto 0; font: 1.5rem var(--font-script); color: var(--color-copper); }
+  .sub { margin: 1.3rem auto 0; font: 1.5rem var(--font-script); color: var(--color-orange); }
   .cta { margin: 2.3rem 0 0; display: flex; justify-content: center; align-items: center; gap: 1rem 1.5rem; flex-wrap: wrap; }
   .small { margin: 1.8rem 0 0; color: var(--color-marginalia-ink); font-size: .78rem; }
 </style>

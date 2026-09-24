@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import EyebrowLabel from './ui/EyebrowLabel.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
+import FieldIcon from './ui/FieldIcon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 import cardEnIdentify from '../assets/screens/card_en_identify.png';
 import cardSvIdentify from '../assets/screens/card_sv_identify.png';
@@ -13,7 +14,7 @@ const shot = locale === 'sv' ? cardSvIdentify : cardEnIdentify;
 ---
 
 <section id="loop" class="loop">
-  <div class="intro">
+  <div class="intro" data-reveal>
     <div class="intro-copy">
       <EyebrowLabel text={t.loop.eyebrow} />
       <JournalHeadline text={t.loop.headline} level="h2" align="left" size="clamp(2.7rem,5vw,5rem)" />
@@ -24,13 +25,13 @@ const shot = locale === 'sv' ? cardSvIdentify : cardEnIdentify;
   <div class="stage">
     <div class="steps">
       {t.loop.cards.map((card, i) => (
-        <div class="step">
-          <span class="num">0{i + 1}</span>
+        <div class="step" data-reveal="slide" style={`--rd:${i * 85}ms`}>
+          <span class="step-icon"><FieldIcon name={(['scan', 'match', 'journal', 'browse'] as const)[i]} /></span>
           <div><h3>{card.title}</h3><p>{card.body}</p></div>
         </div>
       ))}
     </div>
-    <figure class="app-shot">
+    <figure class="app-shot" data-reveal="scale">
       <Image src={shot} alt={t.alt.identifyScreen} widths={[360, 560, 760]} sizes="(max-width: 800px) 60vw, 330px" loading="lazy" decoding="async" />
       <figcaption>{locale === 'sv' ? 'Din första sida börjar här.' : 'Your first page starts here.'}</figcaption>
     </figure>
@@ -39,24 +40,24 @@ const shot = locale === 'sv' ? cardSvIdentify : cardEnIdentify;
 
 <style>
   .loop { padding: var(--section-padding-y) clamp(1.5rem,6vw,5rem); max-width: 1360px; margin: auto; }
-  .intro { display: flex; align-items: end; justify-content: space-between; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid #bdc8b9; }
+  .intro { display: flex; align-items: end; justify-content: space-between; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--color-paper-edge); }
   .intro-copy { max-width: 760px; }
   .intro-copy :global(.journal-headline) { margin-top: 1rem; }
   .sub { color: var(--color-marginalia-ink); max-width: 36rem; line-height: 1.6; font-size: 1.06rem; margin: 1.25rem 0 0; }
-  .intro-aside { min-width: 190px; color: var(--color-copper); text-align: right; }
+  .intro-aside { min-width: 190px; color: var(--color-orange); text-align: right; }
   .intro-aside span { font-size: 3rem; line-height: 1; }
   .intro-aside p { font: 1.5rem var(--font-script); transform: rotate(-4deg); margin: .6rem 0 0; }
   .stage { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(260px,.9fr); gap: clamp(2rem,6vw,7rem); align-items: center; padding-top: 3rem; }
   .steps { display: grid; }
-  .step { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.35rem 0 1.4rem; border-bottom: 1px solid #cdd5c9; }
-  .step:first-child { border-top: 1px solid #cdd5c9; }
-  .num { color: var(--color-copper); font-family: var(--font-serif); font-size: 1.2rem; padding-top: .3rem; }
+  .step { display: grid; grid-template-columns: 3.5rem 1fr; gap: 1rem; padding: 1.35rem 0 1.4rem; border-bottom: 1px solid var(--color-paper-edge); }
+  .step:first-child { border-top: 1px solid var(--color-paper-edge); }
+  .step-icon { width: 3rem; height: 3rem; display: grid; place-items: center; border-radius: 50%; color: var(--color-orange); background: #fce4c9; border: 1px solid #edc29d; }
   h3 { font-size: clamp(1.35rem,2vw,1.8rem); margin: 0; }
   .step p { color: var(--color-marginalia-ink); line-height: 1.55; margin: .35rem 0 0; max-width: 31rem; font-size: .94rem; }
-  .app-shot { margin: 0; display: grid; justify-items: center; position: relative; min-height: 480px; align-content: center; background: radial-gradient(circle at center, #d8e1d5 0%, #e5e9dd 55%, transparent 75%); }
-  .app-shot :global(img) { width: min(100%,340px); height: auto; filter: drop-shadow(0 30px 26px rgba(18,43,30,.23)); transform: rotate(3deg); transition: transform .6s var(--ease-paper); }
+  .app-shot { margin: 0; display: grid; justify-items: center; position: relative; min-height: 480px; align-content: center; background: radial-gradient(circle at center, #f7d4aa 0%, #fae6ce 55%, transparent 75%); }
+  .app-shot :global(img) { width: min(100%,340px); height: auto; filter: drop-shadow(0 30px 26px rgba(86,38,21,.22)); transform: rotate(3deg); transition: transform .6s var(--ease-paper); }
   .app-shot:hover :global(img) { transform: rotate(0deg) translateY(-8px); }
-  figcaption { font: 1.4rem var(--font-script); color: var(--color-copper); transform: rotate(-3deg); margin-top: 1rem; }
+  figcaption { font: 1.4rem var(--font-script); color: var(--color-orange); transform: rotate(-3deg); margin-top: 1rem; }
   @media (max-width: 800px) { .intro-aside { display: none; } .stage { grid-template-columns: 1fr; gap: 2rem; } .app-shot { min-height: 360px; } .app-shot :global(img) { max-width: 260px; } }
   @media (prefers-reduced-motion: reduce) { .app-shot :global(img) { transition: none; } }
 </style>

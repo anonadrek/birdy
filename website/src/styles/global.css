@@ -8,17 +8,17 @@
 @import './tokens.css';
 
 @theme {
-  --color-paper-bg: #f1f0e8;
-  --color-paper-edge: #d8d8c9;
-  --color-paper-top: #faf9f2;
-  --color-moss-mid: #354b3b;
-  --color-moss-deep: #1b3228;
-  --color-moss-shadow: #10251e;
-  --color-copper: #9c5738;
-  --color-copper-warm: #dda778;
-  --color-text-primary: #183026;
-  --color-text-on-hero: #faf8ef;
-  --color-marginalia-ink: #53675a;
+  --color-paper-bg: #f9f2e6;
+  --color-paper-edge: #ead7bf;
+  --color-paper-top: #fff9ef;
+  --color-rust: #934326;
+  --color-rust-deep: #6d2d1d;
+  --color-rust-shadow: #3f1e18;
+  --color-orange: #b7471d;
+  --color-apricot: #ffc386;
+  --color-text-primary: #302019;
+  --color-text-on-hero: #fff8ee;
+  --color-marginalia-ink: #6e584b;
   --color-stamp-navy: #1f3a5f;
   --font-serif: 'DM Serif Display', Georgia, serif;
   --font-script: 'Caveat', cursive;
@@ -28,13 +28,21 @@
 html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
 body { margin: 0; font-family: var(--font-sans); color: var(--color-text-primary); background: var(--color-paper-bg); -webkit-font-smoothing: antialiased; }
 .paper-bg { background: var(--color-paper-bg); }
-::selection { background: #c1d2b5; color: var(--color-moss-shadow); }
+::selection { background: #ffc386; color: var(--color-rust-shadow); }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
-:focus-visible { outline: 3px solid var(--color-copper-warm); outline-offset: 4px; }
+:focus-visible { outline: 3px solid var(--color-apricot); outline-offset: 4px; }
 h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; line-height: 1.08; }
+
+html.motion-ready [data-reveal] { opacity: 0; transform: translate3d(0, 20px, 0); transition: opacity .68s var(--ease-paper) var(--rd, 0ms), transform .68s var(--ease-paper) var(--rd, 0ms); }
+html.motion-ready [data-reveal].is-visible { opacity: 1; transform: none; }
+html.motion-ready [data-reveal="scale"] { transform: translate3d(0, 18px, 0) scale(.975); }
+html.motion-ready [data-reveal="scale"].is-visible { transform: none; }
+html.motion-ready [data-reveal="slide"] { transform: translate3d(-22px, 0, 0); }
+html.motion-ready [data-reveal="slide"].is-visible { transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  html.motion-ready [data-reveal], html.motion-ready [data-reveal="scale"], html.motion-ready [data-reveal="slide"] { opacity: 1; transform: none; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

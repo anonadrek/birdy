@@ -27,12 +27,12 @@
 .legal-prose ul, .legal-prose ol { margin: 0 0 1rem 1.5rem; padding: 0; }
 .legal-prose li { margin: 0.25rem 0; }
 .legal-prose a {
-  color: var(--color-copper);
+  color: var(--color-orange);
   text-decoration: underline;
   text-decoration-color: rgba(168, 85, 45, 0.4);
   text-underline-offset: 3px;
 }
-.legal-prose a:hover { text-decoration-color: var(--color-copper); }
+.legal-prose a:hover { text-decoration-color: var(--color-orange); }
 .legal-prose strong { font-weight: 600; }
 .legal-prose hr {
   border: none;

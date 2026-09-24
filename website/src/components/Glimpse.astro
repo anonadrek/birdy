@@ -53,7 +53,7 @@ const shots = [
     <p class="sub">{t.glimpse.sub}</p>
   </div>
 
-  <div class="strip-wrap" role="region" aria-label={t.glimpse.eyebrow}>
+  <div class="strip-wrap" role="region" aria-label={t.glimpse.eyebrow} data-reveal="scale">
     <ul class="strip" role="list" data-glimpse>
       {shots.map((s, i) => (
         <li
@@ -183,7 +183,7 @@ const shots = [
     padding: var(--section-padding-y) 0 5rem;
     max-width: 100%;
     margin: 0 auto;
-    background: #dce6d9;
+    background: #fce5c9;
   }
   .head {
     text-align: center;
@@ -225,11 +225,11 @@ const shots = [
   }
   .strip-wrap::before {
     left: 0;
-    background: linear-gradient(90deg, #dce6d9 0%, rgba(220,230,217,0) 100%);
+    background: linear-gradient(90deg, #fce5c9 0%, rgba(252,229,201,0) 100%);
   }
   .strip-wrap::after {
     right: 0;
-    background: linear-gradient(270deg, #dce6d9 0%, rgba(220,230,217,0) 100%);
+    background: linear-gradient(270deg, #fce5c9 0%, rgba(252,229,201,0) 100%);
   }
   .strip {
     display: flex;
@@ -268,7 +268,7 @@ const shots = [
       transform 0.45s var(--ease-paper);
   }
   .card:focus-visible {
-    outline: 2px solid var(--color-copper);
+    outline: 2px solid var(--color-orange);
     outline-offset: 6px;
     border-radius: 12px;
   }
@@ -292,7 +292,7 @@ const shots = [
     height: 100%;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 26px 34px rgba(42, 53, 37, 0.3));
+    filter: drop-shadow(0 26px 34px rgba(96, 42, 25, 0.26));
     pointer-events: none;
   }
 
@@ -313,26 +313,26 @@ const shots = [
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(63, 79, 48, 0.22);
+    background: rgba(140, 65, 33, 0.24);
     cursor: pointer;
     transition:
       background 0.25s var(--ease-paper),
       transform 0.25s var(--ease-paper),
       width 0.25s var(--ease-paper);
   }
-  .dot:hover { background: rgba(63, 79, 48, 0.4); }
+  .dot:hover { background: rgba(140, 65, 33, 0.45); }
   .dot:focus-visible {
-    outline: 2px solid var(--color-copper);
+    outline: 2px solid var(--color-orange);
     outline-offset: 3px;
   }
   .dot.is-focus {
-    background: var(--color-copper);
+    background: var(--color-orange);
     width: 22px;
     border-radius: 999px;
   }
   .controls { display: flex; align-items: center; justify-content: center; gap: 1.4rem; margin-top: 1.4rem; }
-  .arrow { width: 42px; height: 42px; background: transparent; border: 1px solid #8da390; border-radius: 50%; color: var(--color-moss-deep); cursor: pointer; transition: background .2s, color .2s, transform .2s; }
-  .arrow:hover { background: var(--color-moss-deep); color: white; transform: scale(1.04); }
+  .arrow { width: 42px; height: 42px; background: transparent; border: 1px solid #bd8c69; border-radius: 50%; color: var(--color-rust-deep); cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+  .arrow:hover { background: var(--color-rust-deep); color: white; transform: scale(1.04); }
   .control-note { color: var(--color-marginalia-ink); font-size: .8rem; }
 
   @media (prefers-reduced-motion: reduce) {
