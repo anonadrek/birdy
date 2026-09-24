@@ -74,7 +74,7 @@ const mobileOnly = [
     if (menu && !menu.hidden && next instanceof Node && !nav.contains(next)) setOpen(false);
   });
   // Leaving the mobile layout closes the menu (same breakpoint as the CSS).
-  matchMedia('(max-width: 900px)').addEventListener('change', (e) => { if (!e.matches) setOpen(false); });
+  matchMedia('(max-width: 1023px)').addEventListener('change', (e) => { if (!e.matches) setOpen(false); });
 
   // Overlay variant: transparent over the dark first view ([data-nav-until]), moss once it has scrolled past.
   if (nav?.dataset.variant === 'overlay') {
@@ -109,13 +109,17 @@ const mobileOnly = [
   .brand { margin-right: auto; display: inline-flex; }
   .links { display: flex; align-items: center; gap: 26px; }
   .links a { opacity: .82; transition: opacity .2s; }
+  /* From 1024 px up, while the bar is still transparent over the photo, the links need a touch more
+     opacity than the default .82 to clear 4.5:1; hover must still win, so it gets its own override too. */
+  :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) .links a { opacity: .9; }
   .links a:hover { opacity: 1; }
+  :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) .links a:hover { opacity: 1; }
   .menu-toggle { display: none; background: none; border: 0; color: inherit; width: 44px; height: 44px; align-items: center; justify-content: center; cursor: pointer; transition: background-color .3s var(--ease-paper); }
   .mobile-menu { display: none; padding: 4px 20px 20px; max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px); overflow-y: auto; overscroll-behavior: contain; }
   .mobile-menu a { padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); font-size: 15px; }
   .mobile-menu .btn { margin-top: 16px; justify-content: center; border-bottom: 0; }
   .mobile-menu a:focus-visible { outline-offset: -3px; }
-  @media (max-width: 900px) {
+  @media (max-width: 1023px) {
     .links, .nav-cta { display: none; }
     .menu-toggle { display: inline-flex; }
     .nav-inner { height: 64px; padding: 0 20px; }
