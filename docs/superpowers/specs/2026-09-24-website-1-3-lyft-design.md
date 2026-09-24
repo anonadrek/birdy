@@ -165,7 +165,11 @@ Fem frågor enligt mockupen på en yta i kortfärg. Svaren öppnas mjukt i webbl
 ### 5.11 Ta med Birdy ut i fält (`#download`) och sidfot
 
 - Ett foto av en skäggmes i bakgrunden med mossgrön toning, rubriken, raden "Gratis att ladda ner. Inget konto. Fungerar utan täckning." och märkena.
-- Sidfoten i mörk mossa: ordmärket i aprikos och "Känn igen fågeln. Bevara stunden.", kolumnerna Utforska, Läs (Fältanteckningar, Varför Birdy finns, Skriv till oss) och Information (Integritetspolicy, Villkor, Datasäkerhet, språkbyte), och sist raden "© 2026 Birdy · Skapad i Sverige" med "Byggd av albIT" (länk som idag).
+- Sidfoten i mörk mossa: ordmärket i aprikos och "Känn igen fågeln. Bevara stunden.", kolumnerna Utforska, Läs (Fältanteckningar, Varför Birdy finns, Skriv till oss) och Information (Integritetspolicy, Villkor, Datasäkerhet, språkbyte), och sist raden "© 2026 Birdy · Skapad i Sverige" med "Byggd av AlbIT".
+- **Tillägg (2026-09-24 kväll, från albit.se-sessionen på Albins uppdrag; länkkartan finns i albit.se-repot under `docs/superpowers/specs/assets/2026-09-24-produktsidor/lankkarta.html`):**
+  - "AlbIT" stavas med stort A. Länken går till Birdys produktsida på albit.se, inte till startsidan: `https://www.albit.se/produkter/birdy/` på svenska sidor och `https://www.albit.se/en/products/birdy/` på engelska.
+  - Under taggraden i sidfoten ligger blocket "Från samma verkstad: LoopLead" / "From the same workshop: LoopLead". Det har LoopLeads märke (grön rundad ruta med en båge mellan två prickar) och raden "HR-verktyg för chefer i växande bolag" / "An HR tool for managers in growing companies", och länkar till `https://looplead.se/`.
+  - Alla länkar är vanliga follow-länkar med varumärket som ankartext, en gång per sidfot.
 
 ## 6. Fältanteckningarna (bloggen)
 
@@ -191,6 +195,11 @@ Fem frågor enligt mockupen på en yta i kortfärg. Svaren öppnas mjukt i webbl
 - I slutet finns en mossgrön ruta med "Ta med Birdy ut i fält" och Play-märket, och sedan länkarna "← Alla fältanteckningar" och "Se hur Birdy fungerar".
 
 **Delningsbild:** inläggets bild beskärs till 1200×630 och används som `og:image` och i BlogPosting-datan för inlägget, med alt-texten.
+
+**Tillägg (2026-09-24 kväll, samma källa som sidfotens tillägg):**
+- **Författarrad:** under rubriken i inläggets foto står "Albin Abrahamsson, AlbIT". Raden länkar till produktsidan på albit.se, med samma adress per språk som i sidfoten.
+- **Strukturerad data:** BlogPosting får `author` = Person "Albin Abrahamsson" (`https://www.albit.se/om-albin/`) och `publisher` = Organization "AlbIT AB" (`https://www.albit.se/`). Appens MobileApplication på startsidorna får `creator` = samma organisation.
+- **Webbplatskartan:** inläggens adresser får `lastmod` (inläggets datum), så att albit.se kan hämta nya inlägg därifrån.
 
 **"Varför Birdy finns" (SV och EN):** får rödhakefotot (Q25334, public domain) som bild. Meningen "Identifieringen ger dig ett namn. Dagboken hjälper dig att behålla fyndet." blir ett citat, och länkarna pekar på `#how-it-works` och `#download`.
 
@@ -385,7 +394,8 @@ Accentord står inom `*…*`. Inga tankstreck i publika texter (enligt `BLOG.md`
 | Rad | Gratis att ladda ner. Inget konto. Fungerar utan täckning. | Free to download. No account. Works without a signal. |
 | Sidfotens tagline | Känn igen fågeln. Bevara stunden. | Know the bird. Keep the moment. |
 | Kolumner | Utforska: Så funkar det, Appen, Premium, Frågor · Läs: Fältanteckningar, Varför Birdy finns, Skriv till oss · Information: Integritetspolicy, Villkor, Datasäkerhet, English | Explore: How it works, The app, Premium, FAQ · Read: Field notes, Why Birdy exists, Write to us · Information: Privacy policy, Terms, Data safety, Svenska |
-| Sista raden | © 2026 Birdy · Skapad i Sverige · Byggd av albIT | © 2026 Birdy · Made in Sweden · Built by albIT |
+| Sista raden | © 2026 Birdy · Skapad i Sverige · Byggd av AlbIT | © 2026 Birdy · Made in Sweden · Built by AlbIT |
+| Syskonblocket | Från samma verkstad · LoopLead · HR-verktyg för chefer i växande bolag | From the same workshop · LoopLead · An HR tool for managers in growing companies |
 
 **Bloggen**
 
@@ -397,6 +407,7 @@ Accentord står inom `*…*`. Inga tankstreck i publika texter (enligt `BLOG.md`
 | Rutan i slutet | Ta med Birdy *ut i fält.* / Gratis att ladda ner. Inget konto. Fungerar utan täckning. | Take Birdy *into the field.* / Free to download. No account. Works without a signal. |
 | Länkar | ← Alla fältanteckningar · Se hur Birdy fungerar | ← All field notes · See how Birdy works |
 | Bildtext (why-birdy) | Rödhake, Erithacus rubecula | European Robin, Erithacus rubecula |
+| Författarrad | Albin Abrahamsson, AlbIT | Albin Abrahamsson, AlbIT |
 
 Sidornas titlar och metabeskrivningar (SEO) ändras inte.
 
