@@ -21,7 +21,8 @@ expect class PremiumBillingClient {
 
     suspend fun connect()
 
-    suspend fun queryPurchases()
+    /** @return true once Play has answered; false if it could not be reached. */
+    suspend fun queryPurchases(): Boolean
 
     suspend fun launchPurchase(
         activityContext: Any,

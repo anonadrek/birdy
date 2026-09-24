@@ -16,7 +16,9 @@ actual class PremiumBillingClient {
 
     actual suspend fun connect() = Unit
 
-    actual suspend fun queryPurchases() = Unit
+    // No real billing client to be unreachable yet (plan i5) — mirrors the trivial no-op style
+    // of the other stubs on this class rather than modeling a failure that can't happen here.
+    actual suspend fun queryPurchases(): Boolean = true
 
     actual suspend fun launchPurchase(
         activityContext: Any,

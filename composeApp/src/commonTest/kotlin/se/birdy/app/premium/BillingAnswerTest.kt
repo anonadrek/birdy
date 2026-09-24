@@ -25,5 +25,8 @@ class BillingAnswerTest {
         }
 
     @Test
-    fun `no answer before timeout returns false`() = runTest { assertFalse(awaitBillingAnswer(MutableStateFlow(false), timeoutMs = 5_000)) }
+    fun `no answer before timeout returns false`() =
+        runTest {
+            assertFalse(awaitBillingAnswer(MutableStateFlow(false), timeoutMs = 5_000))
+        }
 }

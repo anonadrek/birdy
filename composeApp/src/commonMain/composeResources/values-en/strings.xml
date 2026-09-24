@@ -484,6 +484,7 @@
     <string name="settings_restore_purchases">Restore purchases</string>
     <string name="settings_restore_purchases_success">Purchase restored.</string>
     <string name="settings_restore_purchases_empty">Nothing to restore.</string>
+    <string name="settings_restore_purchases_unavailable">Couldn’t reach Google Play. Check your connection and try again.</string>
     <string name="settings_footer">— Birdy is a field prospectus. —</string>
     <!-- Gear -->
     <string name="gear_content_description">Settings</string>

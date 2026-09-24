@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_empty
 import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_success
+import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_unavailable
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,6 +17,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import se.birdy.app.data.premium.BillingUnavailableException
 import se.birdy.app.i18n.toLocaleTagOrEmpty
 import se.birdy.app.notifications.PlatformNotificationsApi
 import se.birdy.datastore.AppLanguage
@@ -161,14 +164,25 @@ class SettingsViewModel(
         restoreInFlight = true
         viewModelScope.launch {
             try {
-                runCatching { premiumRepository.restore() }
-                    .onFailure { /* swallow; state.value still reflects last-known premium status */ }
-                val currentPremium = premiumOverride ?: premiumRepository.state.value
+                var billingUnavailable = false
+                try {
+                    premiumRepository.restore()
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (ignore: BillingUnavailableException) {
+                    billingUnavailable = true
+                } catch (ignore: Exception) {
+                    // swallow; state.value still reflects last-known premium status
+                }
+                val overrideActive = premiumOverride is PremiumState.Active
                 val message =
-                    if (currentPremium is PremiumState.Active) {
-                        Res.string.settings_restore_purchases_success
-                    } else {
-                        Res.string.settings_restore_purchases_empty
+                    when {
+                        // Play couldn't be reached and there's no override to fall back on:
+                        // say so explicitly, rather than a silent "nothing to restore".
+                        billingUnavailable && !overrideActive -> Res.string.settings_restore_purchases_unavailable
+                        (premiumOverride ?: premiumRepository.state.value) is PremiumState.Active ->
+                            Res.string.settings_restore_purchases_success
+                        else -> Res.string.settings_restore_purchases_empty
                     }
                 _effects.send(SettingsEffect.ShowToast(message))
             } finally {

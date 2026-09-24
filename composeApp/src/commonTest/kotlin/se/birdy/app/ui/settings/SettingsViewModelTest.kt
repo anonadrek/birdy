@@ -3,6 +3,7 @@ package se.birdy.app.ui.settings
 import app.cash.turbine.test
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_success
+import birdy_bird_scanner.composeapp.generated.resources.settings_restore_purchases_unavailable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -10,6 +11,7 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import kotlinx.datetime.Clock
+import se.birdy.app.data.premium.BillingUnavailableException
 import se.birdy.app.testing.FakePremiumRepository
 import se.birdy.datastore.AppLanguage
 import se.birdy.datastore.InMemoryUserPreferences
@@ -115,6 +117,38 @@ class SettingsViewModelTest {
             val vm = SettingsViewModel(prefs, premiumRepo)
             vm.state.test {
                 assertFalse(awaitItem().premiumActive)
+            }
+        }
+
+    @Test
+    fun `restore when play is unreachable reports unavailable`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val premiumRepo = FakePremiumRepository(PremiumState.Free, restoreThrows = BillingUnavailableException())
+            val vm = SettingsViewModel(prefs, premiumRepo)
+            vm.effects.test {
+                vm.restorePurchases()
+                assertEquals(
+                    SettingsEffect.ShowToast(Res.string.settings_restore_purchases_unavailable),
+                    awaitItem(),
+                )
+            }
+        }
+
+    @Test
+    fun `restore when play is unreachable but override active reports success`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val premiumRepo = FakePremiumRepository(PremiumState.Free, restoreThrows = BillingUnavailableException())
+            val vm =
+                SettingsViewModel(
+                    prefs,
+                    premiumRepo,
+                    premiumOverride = PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now()),
+                )
+            vm.effects.test {
+                vm.restorePurchases()
+                assertEquals(SettingsEffect.ShowToast(Res.string.settings_restore_purchases_success), awaitItem())
             }
         }
 }

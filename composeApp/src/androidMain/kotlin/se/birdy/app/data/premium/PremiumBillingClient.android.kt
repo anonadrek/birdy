@@ -16,9 +16,14 @@ import com.android.billingclient.api.QueryProductDetailsParams
 import com.android.billingclient.api.QueryProductDetailsResult
 import com.android.billingclient.api.QueryPurchasesParams
 import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.datetime.Clock
 import se.birdy.app.BuildConfig
@@ -95,6 +100,10 @@ actual class PremiumBillingClient(
     private var yearlyDetails: ProductDetails? = null
     private var lifetimeDetails: ProductDetails? = null
 
+    // Owns background work that must outlive a single connect()/queryPurchases() call
+    // (product-details fetch) without blocking the paywall's 5 s budget. Cancelled in dispose().
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
     private val client: BillingClient =
         BillingClient
             .newBuilder(context)
@@ -102,19 +111,26 @@ actual class PremiumBillingClient(
                 handlePurchasesUpdate(result, purchases)
             }.enablePendingPurchases(
                 PendingPurchasesParams.newBuilder().enableOneTimeProducts().build(),
-            ).build()
+            ) // Billing 8: reconnects the service automatically after a transient disconnect,
+            // so a query made right after backgrounding/foregrounding doesn't need a manual
+            // reconnect dance (verified present on BillingClient.Builder via javap, 2026-09-24).
+            .enableAutoServiceReconnection()
+            .build()
 
     actual suspend fun connect() {
         suspendCancellableCoroutine<Unit> { cont ->
             client.startConnection(
                 object : BillingClientStateListener {
                     override fun onBillingSetupFinished(result: BillingResult) {
-                        if (result.responseCode == BillingClient.BillingResponseCode.OK) {
-                            if (cont.isActive) cont.resume(Unit)
-                        } else {
+                        if (result.responseCode != BillingClient.BillingResponseCode.OK) {
                             Log.w(TAG, "Billing setup failed: ${result.debugMessage}")
-                            if (cont.isActive) cont.resume(Unit)
                         }
+                        // Product-details fetch is network I/O and must not delay connect()'s
+                        // return — the paywall decision only needs entitlement (queryPurchases),
+                        // not prices. Runs on the client's own scope; formattedPrices still
+                        // populates once it completes.
+                        scope.launch { queryProducts() }
+                        if (cont.isActive) cont.resume(Unit)
                     }
 
                     override fun onBillingServiceDisconnected() {
@@ -123,7 +139,6 @@ actual class PremiumBillingClient(
                 },
             )
         }
-        queryProducts()
     }
 
     private suspend fun queryProducts() {
@@ -174,7 +189,12 @@ actual class PremiumBillingClient(
         }
     }
 
-    actual suspend fun queryPurchases() {
+    /**
+     * @return true once Play has answered both queries (regardless of what they found);
+     * false if Play could not be reached, so the caller can distinguish "genuinely no
+     * purchases" from "we don't actually know" (e.g. [BillingPremiumRepository.restore]).
+     */
+    actual suspend fun queryPurchases(): Boolean {
         val subs =
             suspendCancellableCoroutine<Pair<BillingResult, List<Purchase>>> { cont ->
                 client.queryPurchasesAsync(
@@ -196,21 +216,38 @@ actual class PremiumBillingClient(
         // A failed query must never wipe an existing purchase — leave _state untouched and let
         // the caller retry later (Play unreachable/not connected yields an empty list, which
         // would otherwise look identical to "genuinely no purchases").
-        if (subs.first.responseCode == BillingClient.BillingResponseCode.OK &&
-            inapp.first.responseCode == BillingClient.BillingResponseCode.OK
+        if (subs.first.responseCode != BillingClient.BillingResponseCode.OK ||
+            inapp.first.responseCode != BillingClient.BillingResponseCode.OK
         ) {
-            val active =
-                (subs.second + inapp.second).firstOrNull { p ->
-                    p.purchaseState == Purchase.PurchaseState.PURCHASED && verifySignature(p)
-                }
-            _state.value = active?.toPremiumState() ?: PremiumState.Free
-            _purchasesQueried.value = true
-        } else {
             Log.w(
                 TAG,
                 "queryPurchases failed: subs=${subs.first.responseCode} inapp=${inapp.first.responseCode}",
             )
+            return false
         }
+
+        val verified = (subs.second + inapp.second).map { it to verifySignature(it) }
+        val active =
+            verified
+                .firstOrNull { (p, ok) -> p.purchaseState == Purchase.PurchaseState.PURCHASED && ok }
+                ?.first
+        // Grant entitlement immediately — never gated on acknowledgement below succeeding.
+        _state.value = active?.toPremiumState() ?: PremiumState.Free
+        _purchasesQueried.value = true
+
+        // A PURCHASED + verified purchase Play still thinks is unacknowledged must be
+        // acknowledged here too, not only via the PurchasesUpdatedListener path — otherwise a
+        // purchase that completed (or an app that died right after purchase, before ack) while
+        // this client wasn't listening never gets acknowledged, and Play auto-refunds it after
+        // 3 days. Re-checked on every query, so Play's 3-day grace window is retried repeatedly.
+        val needsAck =
+            purchasesNeedingAcknowledgement(
+                verified.map { (p, ok) -> AckCandidate(p.purchaseToken, p.purchaseState, ok, p.isAcknowledged) },
+            )
+        verified
+            .filter { (p, _) -> p.purchaseToken in needsAck }
+            .forEach { (p, _) -> acknowledgeIfNeeded(client, p) }
+        return true
     }
 
     actual suspend fun launchPurchase(
@@ -271,7 +308,7 @@ actual class PremiumBillingClient(
                 if (verified != null) {
                     // Always update state when we observe a verified purchase (even server-pushed).
                     if (!verified.isAcknowledged) {
-                        acknowledge(verified) { ackResult ->
+                        acknowledgeAsync(client, verified) { ackResult ->
                             if (ackResult.responseCode == BillingClient.BillingResponseCode.OK) {
                                 _state.value = verified.toPremiumState()
                                 deferred?.complete(PurchaseResult.Success)
@@ -301,18 +338,6 @@ actual class PremiumBillingClient(
         }
     }
 
-    private fun acknowledge(
-        purchase: Purchase,
-        callback: (BillingResult) -> Unit,
-    ) {
-        val params =
-            AcknowledgePurchaseParams
-                .newBuilder()
-                .setPurchaseToken(purchase.purchaseToken)
-                .build()
-        client.acknowledgePurchase(params) { result -> callback(result) }
-    }
-
     private fun verifySignature(purchase: Purchase): Boolean {
         if (licensePublicKeyBase64.isBlank()) {
             Log.w(TAG, "PLAY_LICENSE_KEY blank — DEBUG-only signature bypass")
@@ -336,5 +361,58 @@ actual class PremiumBillingClient(
 
     actual fun dispose() {
         client.endConnection()
+        scope.cancel()
     }
 }
+
+// Top-level (not class members) so acknowledging a purchase doesn't grow
+// PremiumBillingClient's function count — both the listener path (handlePurchasesUpdate)
+// and queryPurchases() call into this single implementation.
+
+/** Single acknowledge implementation — used by both the listener path and queryPurchases(). */
+private fun acknowledgeAsync(
+    client: BillingClient,
+    purchase: Purchase,
+    callback: (BillingResult) -> Unit,
+) {
+    val params =
+        AcknowledgePurchaseParams
+            .newBuilder()
+            .setPurchaseToken(purchase.purchaseToken)
+            .build()
+    client.acknowledgePurchase(params) { result -> callback(result) }
+}
+
+private suspend fun acknowledgeIfNeeded(
+    client: BillingClient,
+    purchase: Purchase,
+) {
+    val result =
+        suspendCancellableCoroutine<BillingResult> { cont ->
+            acknowledgeAsync(client, purchase) { r -> if (cont.isActive) cont.resume(r) }
+        }
+    if (result.responseCode != BillingClient.BillingResponseCode.OK) {
+        Log.w(TAG, "acknowledge failed for ${purchase.orderId}: ${result.debugMessage}")
+    }
+}
+
+/** One purchase's ack-relevant fields, stripped of every Billing SDK type. */
+internal data class AckCandidate(
+    val purchaseToken: String,
+    val purchaseState: Int,
+    val signatureOk: Boolean,
+    val isAcknowledged: Boolean,
+)
+
+/**
+ * Pure decision, extracted from [PremiumBillingClient.queryPurchases] for unit testability
+ * without the Billing SDK: which purchase tokens need acknowledging. A purchase needs it
+ * exactly when it is PURCHASED, its signature verified, and Play doesn't already consider it
+ * acknowledged (never double-acknowledge).
+ */
+internal fun purchasesNeedingAcknowledgement(candidates: List<AckCandidate>): Set<String> =
+    candidates
+        .asSequence()
+        .filter { it.purchaseState == Purchase.PurchaseState.PURCHASED && it.signatureOk && !it.isAcknowledged }
+        .map { it.purchaseToken }
+        .toSet()

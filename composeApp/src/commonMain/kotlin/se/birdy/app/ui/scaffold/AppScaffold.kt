@@ -67,6 +67,14 @@ fun AppScaffold(graph: AppGraph) {
         if (graph.premiumOverride == null && !awaitBillingAnswer(graph.premiumQueried, timeoutMs = 5_000)) {
             return@LaunchedEffect
         }
+
+        // The wait above can take up to 5 s — if the user has since navigated away from the
+        // start destination (opened Scan/Camera, followed a deep link, ...) a paywall popping
+        // up now would cover whatever they're doing. Bail without marking either "shown" flag
+        // so the paywall is reconsidered fresh next launch.
+        if (navController.currentDestination?.hasRoute(AppRoute.Listen::class) != true) {
+            return@LaunchedEffect
+        }
         val premiumState = graph.premiumOverride ?: graph.premiumRepository.state.value
 
         // Day-0: show the premium screen once right after onboarding (non-premium only).

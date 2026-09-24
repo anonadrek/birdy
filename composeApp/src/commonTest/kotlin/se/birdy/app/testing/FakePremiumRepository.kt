@@ -10,6 +10,7 @@ import se.birdy.domain.premium.PremiumTier
 
 class FakePremiumRepository(
     initial: PremiumState = PremiumState.Free,
+    private val restoreThrows: Throwable? = null,
 ) : PremiumRepository {
     private val _state = MutableStateFlow(initial)
     override val state: StateFlow<PremiumState> = _state.asStateFlow()
@@ -19,7 +20,7 @@ class FakePremiumRepository(
     }
 
     override suspend fun restore() {
-        // No-op for fake.
+        restoreThrows?.let { throw it }
     }
 
     fun setState(state: PremiumState) {

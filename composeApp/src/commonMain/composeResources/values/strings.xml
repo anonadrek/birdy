@@ -497,6 +497,7 @@
     <string name="settings_restore_purchases">Återställ köp</string>
     <string name="settings_restore_purchases_success">Köpet är återställt.</string>
     <string name="settings_restore_purchases_empty">Inget köp att återställa.</string>
+    <string name="settings_restore_purchases_unavailable">Kunde inte nå Google Play. Kontrollera anslutningen och försök igen.</string>
     <string name="settings_footer">— Birdy är ett fält-prospekt. —</string>
     <!-- Gear -->
     <string name="gear_content_description">Inställningar</string>
