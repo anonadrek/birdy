@@ -77,8 +77,8 @@ android {
             libs.versions.android.targetSdk
                 .get()
                 .toInt()
-        versionCode = 127
-        versionName = "1.2.2"
+        versionCode = 128
+        versionName = "1.3.0"
         buildConfigField(
             "String",
             "PLAY_LICENSE_KEY",
@@ -234,4 +234,37 @@ val downloadFlex16kJniLibs by tasks.registering {
 
 tasks.matching { it.name.endsWith("JniLibFolders") }.configureEach {
     dependsOn(downloadFlex16kJniLibs)
+}
+
+// Release builds must never ship without the Play licensing key (billing signature
+// verification) or the MapTiler key (map tiles) — blank values only make sense for
+// local debug builds. Only presence (a boolean) is recorded as a task input, never the
+// secret itself. Spec 2026-09-24 §3 A3.
+val verifyReleaseKeys by tasks.registering {
+    description = "Fails release builds when BIRDY_PLAY_LICENSE_KEY or MAPTILER_API_KEY is blank."
+    listOf("BIRDY_PLAY_LICENSE_KEY", "MAPTILER_API_KEY").forEach { key ->
+        inputs.property(
+            "present.$key",
+            providers.gradleProperty(key).map { it.isNotBlank() }.orElse(false),
+        )
+    }
+    doLast(
+        Action {
+            val missing =
+                inputs.properties
+                    .filter { (name, present) -> name.startsWith("present.") && present == false }
+                    .keys
+                    .map { it.removePrefix("present.") }
+            if (missing.isNotEmpty()) {
+                error(
+                    "Release build blocked: blank ${missing.joinToString()}. " +
+                        "Set the real values in ~/.gradle/gradle.properties.",
+                )
+            }
+        },
+    )
+}
+
+tasks.matching { it.name == "preReleaseBuild" }.configureEach {
+    dependsOn(verifyReleaseKeys)
 }
