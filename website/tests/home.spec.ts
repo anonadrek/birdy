@@ -21,13 +21,38 @@ test.describe('meny och sidfot', () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/');
     const toggle = page.locator('#site-nav .menu-toggle');
-    await expect(page.locator('#mobile-menu')).toBeHidden();
+    const menu = page.locator('#mobile-menu');
+    await expect(menu).toBeHidden();
     await toggle.click();
-    await expect(page.locator('#mobile-menu')).toBeVisible();
+    await expect(menu).toBeVisible();
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
-    await expect(page.locator('#mobile-menu a', { hasText: 'Integritet' })).toHaveAttribute('href', '/sv/#privacy');
+    await expect(toggle).toHaveAttribute('aria-label', 'Stäng menyn');
+    await expect(menu.locator('a', { hasText: 'Integritet' })).toHaveAttribute('href', '/sv/#privacy');
+    await expect(menu.locator('a[href="/sv/#guide"]')).toHaveCount(1);
+    await expect(menu.locator('a[href="/sv/#faq"]')).toHaveCount(1);
+    await menu.locator('a').first().focus();
     await page.keyboard.press('Escape');
+    await expect(menu).toBeHidden();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    await expect(toggle).toHaveAttribute('aria-label', 'Öppna menyn');
+    await expect(toggle).toBeFocused();
+  });
+
+  test('mobilmenyn går att scrolla i liggande läge och stängs av en länk', async ({ page }) => {
+    await page.setViewportSize({ width: 844, height: 390 });
+    await page.goto('/sv/');
+    await page.locator('#site-nav .menu-toggle').click();
+    const cta = page.locator('#mobile-menu a.btn');
+    await cta.scrollIntoViewIfNeeded();
+    await expect(cta).toBeInViewport();
+    await cta.click();
     await expect(page.locator('#mobile-menu')).toBeHidden();
+  });
+
+  test('menyn markerar Fältanteckningar på bloggen', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/sv/blog/');
+    await expect(page.locator('#site-nav .links a[aria-current="page"]')).toHaveText('Fältanteckningar');
   });
 
   test('sidfoten har kolumnerna', async ({ page }) => {
@@ -51,4 +76,15 @@ test.describe('meny och sidfot', () => {
       await expect(looplead).toContainText(line);
     });
   }
+});
+
+test.describe('utan JavaScript', () => {
+  test.use({ javaScriptEnabled: false });
+
+  test('startsidans meny är mossgrön och den döda menyknappen dold', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/sv/');
+    await expect(page.locator('#site-nav')).toHaveCSS('background-color', 'rgb(31, 42, 25)');
+    await expect(page.locator('#site-nav .menu-toggle')).toBeHidden();
+  });
 });

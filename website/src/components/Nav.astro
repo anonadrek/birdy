@@ -15,6 +15,7 @@ const t = getCopy(locale);
 const home = locale === 'sv' ? '/sv/' : '/';
 const langHref = switchLangHref ?? t.nav.switchLangHref;
 const langAttr = locale === 'sv' ? 'en' : 'sv';
+const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const links = [
   { href: `${home}#how-it-works`, label: t.nav.howItWorks },
   { href: `${home}#app`, label: t.nav.app },
@@ -32,7 +33,7 @@ const mobileOnly = [
   <div class="nav-inner">
     <a href={home} class="brand" aria-label="Birdy"><Wordmark size="32px" alt={t.alt.wordmark} color="var(--cream)" /></a>
     <div class="links">
-      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      {links.map((l) => <a href={l.href} aria-current={l.href === here ? 'page' : undefined}>{l.label}</a>)}
       <a class="lang" href={langHref} lang={langAttr}>{t.nav.switchLang}</a>
     </div>
     <a class="btn nav-cta" href={`${home}#download`}>{t.nav.getApp}</a>
@@ -41,7 +42,7 @@ const mobileOnly = [
     </button>
   </div>
   <div id="mobile-menu" class="mobile-menu" hidden>
-    {[...links, ...mobileOnly].map((l) => <a href={l.href}>{l.label}</a>)}
+    {[...links, ...mobileOnly].map((l) => <a href={l.href} aria-current={l.href === here ? 'page' : undefined}>{l.label}</a>)}
     <a href={langHref} lang={langAttr}>{t.nav.switchLang}</a>
     <a class="btn" href={`${home}#download`}>{t.nav.getApp}</a>
   </div>
@@ -60,8 +61,20 @@ const mobileOnly = [
   };
   toggle?.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
   menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
-  addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
-  addEventListener('resize', () => { if (innerWidth > 900) setOpen(false); });
+  // Esc closes an open menu and gives focus back to the toggle if it was inside the menu.
+  addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !menu || menu.hidden) return;
+    const inside = menu.contains(document.activeElement);
+    setOpen(false);
+    if (inside) toggle?.focus();
+  });
+  // Tabbing out of the nav closes the menu. Pointer taps (relatedTarget null) are ignored, so a tap on a menu link is never lost.
+  nav?.addEventListener('focusout', (e) => {
+    const next = e.relatedTarget;
+    if (menu && !menu.hidden && next instanceof Node && !nav.contains(next)) setOpen(false);
+  });
+  // Leaving the mobile layout closes the menu (same breakpoint as the CSS).
+  matchMedia('(max-width: 900px)').addEventListener('change', (e) => { if (!e.matches) setOpen(false); });
 
   // Overlay variant: transparent over the dark first view ([data-nav-until]), moss once it has scrolled past.
   if (nav?.dataset.variant === 'overlay') {
@@ -69,7 +82,7 @@ const mobileOnly = [
     if (!until || !('IntersectionObserver' in window)) {
       nav.classList.add('is-solid');
     } else {
-      new IntersectionObserver(([entry]) => nav.classList.toggle('is-solid', !entry.isIntersecting), {
+      new IntersectionObserver((entries) => nav.classList.toggle('is-solid', !entries[entries.length - 1].isIntersecting), {
         rootMargin: `-${nav.offsetHeight}px 0px 0px 0px`,
       }).observe(until);
     }
@@ -80,7 +93,10 @@ const mobileOnly = [
   .nav { z-index: 100; color: var(--cream); font-size: 13px; font-weight: 600; transition: background-color .3s var(--ease-paper), box-shadow .3s var(--ease-paper); }
   .nav--overlay { position: fixed; top: 0; left: 0; right: 0; }
   .nav--solid { position: sticky; top: 0; }
-  .nav--solid, .nav.is-solid, .nav.is-open { background: var(--moss); box-shadow: 0 1px 0 rgba(255, 255, 255, .08); }
+  /* Moss by default, also without JavaScript. The overlay bar turns transparent only when scripts run (html.js, set in Layout). */
+  .nav--solid, .nav--overlay, .nav.is-solid, .nav.is-open { background: var(--moss); box-shadow: 0 1px 0 rgba(255, 255, 255, .08); }
+  :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) { background: transparent; box-shadow: none; }
+  .nav.is-open { transition: none; }
   .nav :global(:focus-visible) { outline-color: var(--apricot); }
   .nav-inner { max-width: 1320px; margin: 0 auto; height: 76px; display: flex; align-items: center; gap: 26px; padding: 0 44px; }
   .brand { margin-right: auto; display: inline-flex; }
@@ -88,13 +104,15 @@ const mobileOnly = [
   .links a { opacity: .82; transition: opacity .2s; }
   .links a:hover { opacity: 1; }
   .menu-toggle { display: none; background: none; border: 0; color: inherit; width: 44px; height: 44px; align-items: center; justify-content: center; cursor: pointer; }
-  .mobile-menu { display: grid; padding: 4px 20px 20px; }
-  .mobile-menu[hidden] { display: none; }
+  .mobile-menu { display: none; padding: 4px 20px 20px; max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px); overflow-y: auto; overscroll-behavior: contain; }
   .mobile-menu a { padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); font-size: 15px; }
   .mobile-menu .btn { margin-top: 16px; justify-content: center; border-bottom: 0; }
   @media (max-width: 900px) {
     .links, .nav-cta { display: none; }
     .menu-toggle { display: inline-flex; }
     .nav-inner { height: 64px; padding: 0 20px; }
+    .mobile-menu:not([hidden]) { display: grid; }
   }
+  /* Without JavaScript the toggle can't open anything; the footer carries every link. */
+  :global(html:not(.js)) .menu-toggle { display: none; }
 </style>
