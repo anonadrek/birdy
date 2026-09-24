@@ -1,4 +1,8 @@
-"""Bygger lagren: rodhake (beskuren, alfa) + platta (rodhaken ifylld) + matt for position."""
+"""Bygger lagren: rodhake (beskuren, alfa) + platta (rodhaken ifylld) + matt for position.
+
+Kor sedan restore-feet.mjs pa plattan: den lagger tillbaka originalbilden runt fotterna,
+som ifyllnaden har suddat bort (se kommentaren i den filen).
+"""
 import sys, json
 import numpy as np
 import cv2

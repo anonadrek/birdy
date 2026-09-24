@@ -104,7 +104,7 @@ Innehåll enligt mockupen: kicker, rubriken "Känn igen fågeln. / Bevara stunde
 **Levande foto**
 
 - Bakgrunden byggs av två lager ur webbens befintliga rödhakebild (`src/assets/hero-robin.webp`, 1672×941, AI-genererad): en platta där rödhaken är borttagen och ifylld, och rödhaken som eget lager (419×502 med alfa, cirka 21 KB).
-- Geometrin finns i `rodhake-utklipp/layers.json`: rutan börjar på 63,038 % / 15,409 % och är 25,06 % × 53,348 % av bilden, och rotationspunkten (fötterna) ligger på 33,93 % / 98,61 % av rutan. Plattan tas fram förlustfritt (PNG) med `layers.py` och masken, och Astro optimerar den. Lagret levereras som WebP.
+- Geometrin finns i `rodhake-utklipp/layers.json`: rutan börjar på 63,038 % / 15,409 % och är 25,06 % × 53,348 % av bilden, och rotationspunkten (fötterna) ligger på 33,93 % / 98,61 % av rutan. Plattan tas fram med `layers.py` och masken (WebP kvalitet 95). Därefter lägger `restore-feet.mjs` tillbaka originalbilden i ett band runt fötterna, så att tårna griper mossan i stället för att sväva över en suddig fläck; fötterna är rotationspunkten och rör sig mindre än 2 px. Astro optimerar plattan. Lagret levereras som WebP.
 - Lagren hålls ihop med ren CSS (samma bildförhållande och samma beskärning), så rödhaken sitter rätt även utan JavaScript.
 - Rörelserna från mockupen: andning (3,8 s), nigning (var 8:e sekund), blinkning (var 5,3:e sekund, ögonlocket är fjädrarna ovanför ögat), fyra daggdroppar som glittrar i tur och ordning, parallax (fotot rör sig med 0,14 av scrollen) och en extra nigning när Birdy-fågeln passerar.
 - Telefonens foto är ett förbeskuret utsnitt av samma rödhake, inte hela bilden uppskalad.

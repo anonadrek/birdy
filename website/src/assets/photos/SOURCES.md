@@ -9,6 +9,6 @@ Fotona är appens egna planschfoton (`asset-pack/src/main/assets/images/<QID>/he
 | `talgoxe-q25485.webp` | Talgoxe | Q25485 | Hobbyfotowiki | CC0 | karusellen: Artprofil |
 | `ladusvala-q25429.webp` | Ladusvala | Q25429 | Аимаина хикари | CC0 | Fältboken (planschen) |
 | `skaggmes-q192817.webp` | Skäggmes | Q192817 | Hobbyfotowiki | CC0 | Ta med Birdy ut i fält |
-| `rodhake-q25334.webp` | Rödhake | Q25334 | Rob Hille | Public domain | blogginlägget "Varför Birdy finns" |
+| `rodhake-q25334.webp` | Rödhake | Q25334 | Rob Hille | Public domain | blogginlägget "Varför Birdy finns" (inläggets foto, korten och delningsbilden) |
 
 Heron (`src/assets/hero/`) bygger på webbens AI-genererade `src/assets/hero-robin.webp`. Underlag och skript: `docs/superpowers/specs/assets/2026-09-24-website-1-3-lyft/rodhake-utklipp/`.
