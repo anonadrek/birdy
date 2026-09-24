@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from './Nav.astro';
 import Hero from './Hero.astro';
-import Loop from './Loop.astro';
+import HowItWorks from './HowItWorks.astro';
+import JournalSection from './JournalSection.astro';
 import Glimpse from './Glimpse.astro';
-import Listen from './Listen.astro';
 import Inside from './Inside.astro';
 import Coverage from './Coverage.astro';
 import Premium from './Premium.astro';
@@ -24,9 +24,9 @@ const pathname = locale === 'sv' ? '/sv/' : '/';
   <Nav locale={locale} variant="overlay" />
   <main>
     <Hero locale={locale} />
-    <Loop locale={locale} />
+    <HowItWorks locale={locale} />
+    <JournalSection locale={locale} />
     <Glimpse locale={locale} />
-    <Listen locale={locale} />
     <Inside locale={locale} />
     <Coverage locale={locale} />
     <Premium locale={locale} />

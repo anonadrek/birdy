@@ -47,29 +47,36 @@
     "top": "Snart på",
     "bottom": "App Store"
   },
-  "loop": {
-    "eyebrow": "SÅ FUNGERAR DET",
-    "headline": "Från första blick till *fältnotering.*",
-    "sub": "Ett enkelt sätt att samla fåglarna du möter i en dagbok värd att behålla.",
-    "cards": [
-      { "title": "Sikta eller spela in", "body": "Öppna kameran och sikta, eller tryck för att spela in en sång. Birdy kollar några gånger i sekunden." },
-      { "title": "Träff", "body": "När Birdy är säker nog får du en träff." },
-      { "title": "Spara", "body": "Bekräfta träffen och spara fyndet i din dagbok. Varje ny art ger en stämpel." },
-      { "title": "Bläddra", "body": "Titta tillbaka när du vill, eller sök bland alla 839 europeiska arter." }
+  "howItWorks": {
+    "kicker": "Så funkar det",
+    "headline": "Tre sätt att *fånga.*",
+    "lead": "Samma tre ingångar som i appen. Birdy visar alltid hur säker den är, och det är du som bestämmer vad som sparas.",
+    "free": "Gratis",
+    "rows": [
+      { "title": "Live med kameran", "body": "Rikta mot fågeln. Birdy tittar flera gånger i sekunden och visar vilken art den ser." },
+      { "title": "Från ett foto", "body": "Välj en bild ur galleriet, beskär runt fågeln och låt Birdy titta." },
+      { "title": "Lyssna på lätet", "body": "Spela in sången så föreslår Birdy arten. Ljud-ID är gratis för alla." }
+    ]
+  },
+  "journal": {
+    "kicker": "Fältboken",
+    "headline": "Varje fynd får *en egen sida.*",
+    "lead": "Spara träffen med datum, en egen anteckning och platsen om du vill. Nya arter får en präglad stämpel, och varje vecka samlas dina fynd i ett eget uppslag.",
+    "marginalia": "första för året",
+    "plateSpecies": "Ladusvala",
+    "plateNote": "14 maj, vid ladan",
+    "plateSeal": "Nr 31",
+    "plateAlt": "En ladusvala som sitter på en gren",
+    "facts": [
+      { "value": "34", "label": "märken att samla" },
+      { "value": "27", "label": "av dem gratis" },
+      { "value": "0", "label": "konton" }
     ]
   },
   "glimpse": {
     "eyebrow": "EN TITT INUTI",
     "headline": "Skapad för *stunden* utomhus.",
     "sub": "Titta närmare på appen du tar med ut i fält."
-  },
-  "listen": {
-    "eyebrow": "ELLER ANVÄND MIKEN · PÅ TELEFONEN",
-    "headline": "Namnge den på *gehör.*",
-    "sub": "Håll inne knappen och låt fågeln sjunga. Birdy lyssnar och namnger den.",
-    "body": "Spela in en kort fågelsång så föreslår Birdy en art. Ljudmodellen körs på telefonen, så inget behöver laddas upp.",
-    "hint": "tryck för att lyssna",
-    "caption": "fältinspelning, på enheten"
   },
   "inside": {
     "eyebrow": "INUTI APPEN",

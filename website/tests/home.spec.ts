@@ -198,3 +198,20 @@ test.describe('Birdy-fågeln flyger', () => {
     await expect.poll(() => bird.evaluate((b) => getComputedStyle(b).transform)).toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
   });
 });
+
+test.describe('så funkar det och fältboken', () => {
+  for (const [path, how, journal, free] of [
+    ['/sv/', 'Tre sätt att fånga.', 'Varje fynd får en egen sida.', 'Gratis'],
+    ['/', 'Three ways to catch it.', 'Every sighting gets its own page.', 'Free'],
+  ] as const) {
+    test(`sektionerna finns på ${path}`, async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator('#how-it-works h2')).toHaveText(how);
+      await expect(page.locator('#how-it-works .row')).toHaveCount(3);
+      await expect(page.locator('#how-it-works .free')).toHaveText(free);
+      await expect(page.locator('#journal h2')).toHaveText(journal);
+      await expect(page.locator('#journal .facts dt')).toHaveText(['34', '27', '0']);
+      await expect(page.locator('#journal img')).toHaveAttribute('alt', /.+/);
+    });
+  }
+});

@@ -47,29 +47,36 @@
     "top": "Coming soon to the",
     "bottom": "App Store"
   },
-  "loop": {
-    "eyebrow": "HOW IT WORKS",
-    "headline": "From first glance to *field note.*",
-    "sub": "A simple way to turn the birds you meet into a journal worth keeping.",
-    "cards": [
-      { "title": "Point or tap record", "body": "Open the camera and aim, or tap to record a song. Birdy checks a few times a second." },
-      { "title": "Match", "body": "When Birdy is sure enough, you get a match." },
-      { "title": "Save", "body": "Confirm the match and keep the sighting in your journal. Each new species earns a stamp." },
-      { "title": "Browse", "body": "Look back whenever you like, or search all 839 European species." }
+  "howItWorks": {
+    "kicker": "How it works",
+    "headline": "Three ways to *catch it.*",
+    "lead": "The same three ways in as in the app. Birdy always shows how sure it is, and you decide what gets saved.",
+    "free": "Free",
+    "rows": [
+      { "title": "Live with the camera", "body": "Point at the bird. Birdy looks several times a second and shows the species it sees." },
+      { "title": "From a photo", "body": "Pick a picture from your gallery, crop around the bird and let Birdy take a look." },
+      { "title": "Listen to the song", "body": "Record the song and Birdy suggests the species. Sound ID is free for everyone." }
+    ]
+  },
+  "journal": {
+    "kicker": "The field journal",
+    "headline": "Every sighting gets *its own page.*",
+    "lead": "Save the match with the date, a note of your own and the place if you like. New species get an embossed stamp, and every week your sightings come together in a spread of their own.",
+    "marginalia": "first of the year",
+    "plateSpecies": "Barn Swallow",
+    "plateNote": "14 May, by the barn",
+    "plateSeal": "No. 31",
+    "plateAlt": "A barn swallow perched on a branch",
+    "facts": [
+      { "value": "34", "label": "badges to collect" },
+      { "value": "27", "label": "of them free" },
+      { "value": "0", "label": "accounts" }
     ]
   },
   "glimpse": {
     "eyebrow": "A LOOK INSIDE",
     "headline": "Made for the *moment* outside.",
     "sub": "A closer look at the app you take into the field."
-  },
-  "listen": {
-    "eyebrow": "OR USE THE MIC · ON YOUR PHONE",
-    "headline": "Name it by *ear.*",
-    "sub": "Hold the button and let the bird sing. Birdy listens and names it.",
-    "body": "Record a short birdsong and Birdy suggests a match. The audio model runs on your phone, so nothing needs to be uploaded.",
-    "hint": "tap to listen",
-    "caption": "field recording, processed on your phone"
   },
   "inside": {
     "eyebrow": "INSIDE THE APP",
