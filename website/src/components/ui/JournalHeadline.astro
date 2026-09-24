@@ -39,24 +39,23 @@ const style = `--size:${size}` + (align ? `;--jh-ta:${align}` : '');
      by setting the vars on any ancestor. */
   .journal-headline {
     font-family: var(--font-serif);
-    font-style: italic;
+    font-style: normal;
     font-weight: 400;
     font-size: var(--size);
-    line-height: 1.05;
+    line-height: 1.06;
     color: var(--jh-ink, var(--color-text-primary));
     text-align: var(--jh-ta, center);
     margin: 0;
   }
-  .plain { font-family: var(--font-serif); font-style: italic; }
+  .plain { font-family: var(--font-serif); font-style: normal; }
   .accent {
-    font-family: var(--font-script);
+    font-family: var(--font-serif);
     font-style: italic;
-    font-weight: 700;
-    font-size: 1.15em;
+    font-weight: 400;
+    font-size: 1em;
     color: var(--jh-accent, var(--color-copper));
     display: inline-block;
-    transform: rotate(-3deg);
-    margin: 0 0.15em;
-    line-height: 0.95;
+    margin: 0 0.05em;
+    line-height: 1;
   }
 </style>

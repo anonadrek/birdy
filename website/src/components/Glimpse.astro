@@ -51,7 +51,6 @@ const shots = [
     <EyebrowLabel text={t.glimpse.eyebrow} plate="III" />
     <JournalHeadline text={t.glimpse.headline} level="h2" />
     <p class="sub">{t.glimpse.sub}</p>
-    <OrnamentRule />
   </div>
 
   <div class="strip-wrap" role="region" aria-label={t.glimpse.eyebrow}>
@@ -89,6 +88,11 @@ const shots = [
         </li>
       ))}
     </ol>
+    <div class="controls">
+      <button type="button" class="arrow" data-glimpse-prev aria-label={locale === 'sv' ? 'Föregående skärm' : 'Previous screen'}>←</button>
+      <span class="control-note">{locale === 'sv' ? 'Bläddra i appen' : 'Browse the app'}</span>
+      <button type="button" class="arrow" data-glimpse-next aria-label={locale === 'sv' ? 'Nästa skärm' : 'Next screen'}>→</button>
+    </div>
   </div>
 </section>
 
@@ -105,6 +109,9 @@ const shots = [
     const dots = dotsRoot
       ? Array.from(dotsRoot.querySelectorAll<HTMLButtonElement>('.dot'))
       : [];
+    const prev = wrap?.querySelector<HTMLButtonElement>('[data-glimpse-prev]');
+    const next = wrap?.querySelector<HTMLButtonElement>('[data-glimpse-next]');
+    let activeIndex = 0;
     strip.dataset.jsActive = '';
 
     function centerCard(idx: number) {
@@ -112,6 +119,8 @@ const shots = [
       // a manual scrollBy gets snapped straight back to the current card.
       cards[idx]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
+    prev?.addEventListener('click', () => centerCard((activeIndex - 1 + cards.length) % cards.length));
+    next?.addEventListener('click', () => centerCard((activeIndex + 1) % cards.length));
 
     function updateFocus() {
       const sr = strip.getBoundingClientRect();
@@ -127,6 +136,7 @@ const shots = [
           bestIdx = idx;
         }
       });
+      activeIndex = bestIdx;
       cards.forEach((card, idx) => {
         card.classList.toggle('is-focus', idx === bestIdx);
       });
@@ -170,9 +180,10 @@ const shots = [
 
 <style>
   .glimpse {
-    padding: var(--section-padding-y) 0;
+    padding: var(--section-padding-y) 0 5rem;
     max-width: 100%;
     margin: 0 auto;
+    background: #dce6d9;
   }
   .head {
     text-align: center;
@@ -185,8 +196,8 @@ const shots = [
     margin: 0 auto;
   }
   .sub {
-    font-family: var(--font-script);
-    font-size: 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
     color: var(--color-marginalia-ink);
     margin: 0;
   }
@@ -214,11 +225,11 @@ const shots = [
   }
   .strip-wrap::before {
     left: 0;
-    background: linear-gradient(90deg, var(--color-paper-bg) 0%, rgba(232, 226, 210, 0) 100%);
+    background: linear-gradient(90deg, #dce6d9 0%, rgba(220,230,217,0) 100%);
   }
   .strip-wrap::after {
     right: 0;
-    background: linear-gradient(270deg, var(--color-paper-bg) 0%, rgba(232, 226, 210, 0) 100%);
+    background: linear-gradient(270deg, #dce6d9 0%, rgba(220,230,217,0) 100%);
   }
   .strip {
     display: flex;
@@ -319,6 +330,10 @@ const shots = [
     width: 22px;
     border-radius: 999px;
   }
+  .controls { display: flex; align-items: center; justify-content: center; gap: 1.4rem; margin-top: 1.4rem; }
+  .arrow { width: 42px; height: 42px; background: transparent; border: 1px solid #8da390; border-radius: 50%; color: var(--color-moss-deep); cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+  .arrow:hover { background: var(--color-moss-deep); color: white; transform: scale(1.04); }
+  .control-note { color: var(--color-marginalia-ink); font-size: .8rem; }
 
   @media (prefers-reduced-motion: reduce) {
     .strip { scroll-behavior: auto; }

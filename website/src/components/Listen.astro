@@ -1,126 +1,43 @@
 ---
+import { Image } from 'astro:assets';
 import EyebrowLabel from './ui/EyebrowLabel.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
-import DeviceFrame from './ui/DeviceFrame.astro';
 import { type Locale, getCopy } from '../lib/i18n';
+import cardEnListen from '../assets/screens/card_en_listen.png';
+import cardSvListen from '../assets/screens/card_sv_listen.png';
 
-interface Props {
-  locale: Locale;
-}
+interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const t = getCopy(locale);
-
-const barCount = 48;
-const bars = Array.from({ length: barCount }).map((_, i) => {
-  const seed = Math.sin(i * 1.7) * Math.cos(i * 0.6);
-  return 20 + Math.abs(seed) * 60;
-});
+const shot = locale === 'sv' ? cardSvListen : cardEnListen;
 ---
 
 <section id="listen" class="listen">
   <div class="grid">
-    <div class="text" data-reveal>
-      <EyebrowLabel text={t.listen.eyebrow} plate="IV" />
-      <JournalHeadline text={t.listen.headline} level="h2" align="left" />
+    <div class="visual">
+      <div class="halo"></div>
+      <Image src={shot} alt={t.alt.listenScreen} widths={[360,560,760]} sizes="(max-width: 800px) 70vw, 360px" loading="lazy" decoding="async" />
+    </div>
+    <div class="text">
+      <EyebrowLabel text={t.listen.eyebrow} />
+      <JournalHeadline text={t.listen.headline} level="h2" align="left" size="clamp(2.8rem,5vw,4.7rem)" />
       <p class="sub">{t.listen.sub}</p>
       <p class="body">{t.listen.body}</p>
-    </div>
-    <div class="visual" data-reveal style="--rd:160ms">
-      <DeviceFrame caption={t.listen.caption}>
-        <div class="audio-screen">
-          <div class="waveform" aria-label={t.alt.audioScan}>
-            {bars.map((h) => (
-              <span class="bar" style={`height:${h}%`}></span>
-            ))}
-          </div>
-          <div class="mic-button">●</div>
-          <div class="hint">{t.listen.hint}</div>
-        </div>
-      </DeviceFrame>
+      <span class="note">✳ {locale === 'sv' ? 'Ljudidentifiering ingår gratis.' : 'Sound identification is free.'}</span>
     </div>
   </div>
 </section>
 
 <style>
-  .listen {
-    padding: var(--section-padding-y) 1.5rem;
-    max-width: var(--container-max);
-    margin: 0 auto;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-  .text { display: flex; flex-direction: column; gap: 1rem; }
-  .sub {
-    font-family: var(--font-script);
-    font-size: 1.5rem;
-    color: var(--color-copper);
-    margin: 0;
-  }
-  .body {
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    color: var(--color-text-primary);
-    max-width: 32rem;
-    margin: 0;
-  }
-  .visual { display: flex; justify-content: center; }
-  .audio-screen {
-    width: 100%;
-    height: 100%;
-    background: var(--color-paper-bg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 2rem 1rem;
-  }
-  .waveform {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    height: 80px;
-  }
-  .bar {
-    display: inline-block;
-    width: 3px;
-    background: var(--color-copper);
-    border-radius: 2px;
-    opacity: 0.85;
-    animation: pulse 1.8s var(--ease-paper) infinite;
-  }
-  .bar:nth-child(odd) { animation-delay: -0.4s; }
-  .bar:nth-child(3n) { animation-delay: -0.9s; }
-  @keyframes pulse {
-    0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(0.5); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .bar { animation: none; }
-  }
-  .mic-button {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: var(--color-copper);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 12px rgba(168, 85, 45, 0.3);
-  }
-  .hint {
-    font-family: var(--font-script);
-    font-size: 1.125rem;
-    color: var(--color-marginalia-ink);
-  }
-  @media (max-width: 768px) {
-    .grid { grid-template-columns: 1fr; gap: 2rem; }
-  }
+  .listen { background: #e2e8dc; padding: clamp(4rem,7vw,7rem) clamp(1.5rem,6vw,5rem); overflow: hidden; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(2rem,6vw,7rem); max-width: 1260px; margin: auto; }
+  .visual { position: relative; display: grid; place-items: center; min-height: 530px; }
+  .halo { position: absolute; width: min(480px,100%); aspect-ratio: 1; border: 1px solid #aec2aa; border-radius: 50%; box-shadow: 0 0 0 55px rgba(174,194,170,.15), 0 0 0 110px rgba(174,194,170,.1); }
+  .visual :global(img) { position: relative; width: min(360px,78%); height: auto; filter: drop-shadow(0 32px 24px rgba(18,43,30,.22)); transform: rotate(-3deg); }
+  .text { position: relative; }
+  .text :global(.journal-headline) { margin-top: 1rem; }
+  .sub { font: 1.65rem/1.2 var(--font-script); color: var(--color-copper); margin: 1.3rem 0 1rem; }
+  .body { max-width: 33rem; line-height: 1.7; color: var(--color-marginalia-ink); font-size: 1.02rem; }
+  .note { display: inline-block; border-top: 1px solid #aac0aa; margin-top: 1.2rem; padding-top: 1rem; color: var(--color-moss-deep); font-size: .82rem; font-weight: 600; }
+  @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } .visual { order: 2; min-height: 430px; } .text { order: 1; } .visual :global(img) { max-width: 280px; } }
 </style>

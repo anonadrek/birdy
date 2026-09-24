@@ -1,62 +1,32 @@
 ---
-import CornerBrackets from './ui/CornerBrackets.astro';
-import JournalHeadline from './ui/JournalHeadline.astro';
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
 import AppStoreBadge from './ui/AppStoreBadge.astro';
-import WingLogo from './ui/WingLogo.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 
-interface Props {
-  locale: Locale;
-}
+interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const t = getCopy(locale);
 const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
 ---
 
-<section class="final-cta">
-  <CornerBrackets />
-  <div class="content" data-reveal>
-    <WingLogo alt={t.alt.wingLogo} size="72px" />
-    <JournalHeadline
-      text={t.finalCta.headline}
-      level="h2"
-      size="clamp(2.5rem, 6vw, 4.5rem)"
-    />
-    <p class="sub">{t.finalCta.sub}</p>
-    <div class="cta">
-      <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="large" />
-      <AppStoreBadge locale={locale} size="large" />
-    </div>
+<section id="download" class="final-cta">
+  <div class="ornament" aria-hidden="true">✳</div>
+  <p class="label">{locale === 'sv' ? 'Nästa fynd väntar' : 'The next sighting is waiting'}</p>
+  <h2>{locale === 'sv' ? 'Ta med Birdy ut i fält.' : 'Take Birdy into the field.'}</h2>
+  <p class="sub">{t.finalCta.sub}</p>
+  <div class="cta">
+    <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="large" />
+    <AppStoreBadge locale={locale} size="large" />
   </div>
+  <p class="small">{locale === 'sv' ? 'Gratis att börja · Inget konto krävs · Fungerar offline' : 'Free to start · No account needed · Works offline'}</p>
 </section>
 
 <style>
-  .final-cta {
-    position: relative;
-    padding: calc(var(--section-padding-y) * 1.5) 1.5rem;
-    text-align: center;
-  }
-  .content {
-    max-width: 42rem;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.25rem;
-  }
-  .sub {
-    font-family: var(--font-script);
-    font-size: clamp(1.125rem, 2vw, 1.5rem);
-    color: var(--color-copper);
-    margin: 0.25rem 0;
-  }
-  .cta {
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem 1.25rem;
-  }
+  .final-cta { text-align: center; padding: clamp(5rem,9vw,9rem) 1.5rem; background: #dce6d9; color: var(--color-moss-shadow); }
+  .ornament { color: var(--color-copper); font-size: 2.2rem; }
+  .label { margin: .9rem 0 1rem; color: var(--color-copper); font-size: .83rem; font-weight: 600; }
+  h2 { margin: 0 auto; font-size: clamp(3rem,6vw,5.6rem); letter-spacing: -.035em; max-width: 850px; text-wrap: balance; }
+  .sub { margin: 1.3rem auto 0; font: 1.5rem var(--font-script); color: var(--color-copper); }
+  .cta { margin: 2.3rem 0 0; display: flex; justify-content: center; align-items: center; gap: 1rem 1.5rem; flex-wrap: wrap; }
+  .small { margin: 1.8rem 0 0; color: var(--color-marginalia-ink); font-size: .78rem; }
 </style>

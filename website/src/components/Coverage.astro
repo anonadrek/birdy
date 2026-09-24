@@ -16,7 +16,6 @@ const t = getCopy(locale);
     <EyebrowLabel text={t.coverage.eyebrow} plate="VI" />
     <JournalHeadline text={t.coverage.headline} level="h2" />
     <p class="sub">{t.coverage.sub}</p>
-    <OrnamentRule />
   </div>
 
   <figure class="map-frame" data-reveal>
@@ -44,19 +43,20 @@ const t = getCopy(locale);
   }
   .head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
   .sub {
-    font-family: var(--font-script);
-    font-size: 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
     color: var(--color-marginalia-ink);
     margin: 0;
   }
-  .map-frame { margin: 2rem auto 0; max-width: 56rem; }
+  .map-frame { margin: 3rem auto 0; max-width: 68rem; }
   .map {
     position: relative;
     aspect-ratio: 16 / 9;
-    border-radius: 16px;
+    border-radius: 3px;
     overflow: hidden;
-    border: 2px solid var(--color-paper-edge, #d8cdb4);
-    box-shadow: 0 10px 34px rgba(42, 53, 32, 0.22);
+    border: 8px solid var(--color-paper-top);
+    outline: 1px solid #ccd5c8;
+    box-shadow: 0 18px 42px rgba(42, 53, 32, 0.13);
     background: #efe7d6;
     cursor: grab;
   }
@@ -68,8 +68,8 @@ const t = getCopy(locale);
     color: var(--color-marginalia-ink); opacity: 0.85;
   }
   .caption {
-    text-align: center; margin-top: 0.75rem;
-    font-family: var(--font-script); font-size: 1.125rem;
+    text-align: center; margin-top: 1.15rem;
+    font-family: var(--font-sans); font-size: .8rem;
     color: var(--color-marginalia-ink);
   }
   /* MapLibre injects a canvas as a child of .map; let it cover the fallback */

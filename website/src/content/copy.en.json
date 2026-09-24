@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Birdy — A field journal for birds",
-    "description": "Identify European birds with your camera or mic, then keep every find in a journal that's yours. 839 species, fully offline, no account.",
+    "title": "Birdy — Identify birds and keep a field journal",
+    "description": "Identify 839 European bird species by photo, camera or song. Save sightings in a private field journal, explore the bird guide and use Birdy offline. Available for Android; coming to iPhone.",
     "ogLocale": "en_US",
     "htmlLang": "en"
   },
@@ -15,10 +15,11 @@
     "getApp": "Get the app"
   },
   "hero": {
-    "eyebrow": "A BIRDY APP · 2026",
-    "headline": "A *field journal* that looks like a field journal",
-    "sub": "Photograph or record a bird and Birdy names it. Everything you find is saved in your own journal.",
-    "scrollCue": "See how it works ↓",
+    "eyebrow": "Your field guide, wherever you go",
+    "headline": "Know the bird.",
+    "line2": "Keep the moment.",
+    "sub": "Identify birds by sight or song. Explore 839 European species and save every find in your own private field journal.",
+    "scrollCue": "Explore Birdy",
     "plateCaption": "Pl. I — in the field"
   },
   "appStoreBadge": {
@@ -28,43 +29,43 @@
   },
   "loop": {
     "eyebrow": "HOW IT WORKS",
-    "headline": "It's a *loop.*",
-    "sub": "Point, match, stamp, browse — then back to the start for the next bird.",
+    "headline": "From first glance to *field note.*",
+    "sub": "A simple way to turn the birds you meet into a journal worth keeping.",
     "cards": [
       { "title": "Point or tap record", "body": "Open the camera and aim, or tap to record a song. Birdy checks a few times a second." },
       { "title": "Match", "body": "When Birdy is sure enough, you get a match." },
-      { "title": "Stamp", "body": "A new page lands in your journal — one stamp for each species." },
+      { "title": "Save", "body": "Confirm the match and keep the sighting in your journal. Each new species earns a stamp." },
       { "title": "Browse", "body": "Look back whenever you like, or search all 839 European species." }
     ]
   },
   "glimpse": {
     "eyebrow": "A LOOK INSIDE",
-    "headline": "A few *pages* from the journal.",
-    "sub": "what it actually looks like, on your phone."
+    "headline": "Made for the *moment* outside.",
+    "sub": "A closer look at the app you take into the field."
   },
   "listen": {
     "eyebrow": "OR USE THE MIC · ON YOUR PHONE",
     "headline": "Name it by *ear.*",
     "sub": "Hold the button and let the bird sing. Birdy listens and names it.",
-    "body": "Hold the record button. The same AI on your phone listens until it recognises the song — or until you let go. No internet, nothing uploaded.",
+    "body": "Record a short birdsong and Birdy suggests a match. The audio model runs on your phone, so nothing needs to be uploaded.",
     "hint": "tap to listen",
     "caption": "field recording, on-device"
   },
   "inside": {
     "eyebrow": "INSIDE THE APP",
-    "headline": "An *archive* in your pocket.",
-    "sub": "every european bird, every stamp, every streak",
+    "headline": "The whole field guide, *in your pocket.*",
+    "sub": "Search, learn, save and revisit — even without a signal.",
     "stats": [
       { "value": "839", "label": "species", "caption": "from common to rare" },
-      { "value": "33", "label": "stamps", "caption": "earned by finding birds" },
-      { "value": "365", "label": "daily streak", "caption": "keep the journal alive" }
+      { "value": "34", "label": "stamps", "caption": "earned by finding birds" },
+      { "value": "0", "label": "accounts", "caption": "your journal stays yours" }
     ]
   },
   "coverage": {
     "eyebrow": "Coverage",
     "headline": "Where Birdy *works*",
-    "sub": "Europe today — the rest of the world is on its way.",
-    "caption": "839 species across Europe. Drag the map to explore.",
+    "sub": "Built around Europe's birds, from familiar garden visitors to rare encounters.",
+    "caption": "839 species across Europe.",
     "fallbackAlt": "Map of Europe filled in copper, marking where Birdy works today",
     "attribution": "© MapTiler © OpenStreetMap contributors"
   },
@@ -81,7 +82,7 @@
     "headline": "Fully *offline.*",
     "sub": "the AI lives in your phone",
     "body": "No cloud, no tracking, no accounts — just you and the birds.",
-    "wordmarkLabel": "AVAILABLE ON GOOGLE PLAY"
+    "wordmarkLabel": "ANDROID NOW · IPHONE COMING SOON"
   },
   "faq": {
     "eyebrow": "QUESTIONS · ANSWERED",
@@ -93,14 +94,14 @@
       { "q": "Where are my photos stored?", "a": "On your device. Birdy never uploads photos to a server. There is no server." },
       { "q": "How accurate is the AI?", "a": "Good enough to learn from, honest when it's unsure. Every match shows a confidence level, and you always confirm before it's saved." },
       { "q": "What's covered?", "a": "839 European birds — every species in the EBBA2 atlas plus close relatives, with descriptions, photos and range information." },
-      { "q": "Is there an iOS version?", "a": "It's on its way — Birdy for iPhone is in development. Android is available today." },
+      { "q": "Is there an iOS version?", "a": "Birdy for iPhone is planned for release at the end of September 2026. Android is available today; the App Store link will appear here once the iPhone app is live." },
       { "q": "What about audio?", "a": "Hold the mic button for 3 seconds. BirdNET-Lite runs on-device, same offline guarantee." },
       { "q": "Other questions?", "a": "Email albin@abrahamssons.se — I read every one." }
     ]
   },
   "finalCta": {
-    "headline": "Get it on *Google Play.*",
-    "sub": "free · no account · offline"
+    "headline": "Take Birdy *into the field.*",
+    "sub": "On Android now. Coming to iPhone."
   },
   "footer": {
     "links": [

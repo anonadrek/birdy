@@ -10,7 +10,6 @@ const { text, color = 'var(--color-copper)', plate } = Astro.props;
 ---
 
 <div class="eyebrow" style={`--c:${color}`}>
-  {plate && <span class="plate" aria-hidden="true">Pl. {plate}</span>}
   {text}
 </div>
 
@@ -18,19 +17,9 @@ const { text, color = 'var(--color-copper)', plate } = Astro.props;
   .eyebrow {
     font-family: var(--font-sans);
     font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
+    text-transform: none;
+    letter-spacing: 0.02em;
     color: var(--c);
     font-weight: 600;
-  }
-  .plate {
-    font-family: var(--font-serif);
-    font-style: italic;
-    text-transform: none;
-    letter-spacing: 0.04em;
-    font-size: 0.875rem;
-    margin-right: 0.75em;
-    padding-right: 0.75em;
-    border-right: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
   }
 </style>

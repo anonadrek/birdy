@@ -7,25 +7,49 @@ interface Props {
   locale: Locale;
   pathname: string;
   noAlternateLocale?: boolean;
+  title?: string;
+  description?: string;
 }
 
-const { locale, pathname, noAlternateLocale = false } = Astro.props;
+const { locale, pathname, noAlternateLocale = false, title, description } = Astro.props;
 const copy = getCopy(locale);
+const metaTitle = title ?? copy.meta.title;
+const metaDescription = description ?? copy.meta.description;
 const altLocale: Locale = locale === 'en' ? 'sv' : 'en';
 const altPath = alternateHref(locale, pathname);
 const canonical = new URL(pathname, Astro.site).toString();
-const ogImageUrl = new URL('/og.png', Astro.site).toString();
+const ogImageUrl = new URL(`/og-field-${locale}.png`, Astro.site).toString();
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'MobileApplication',
-  name: 'Birdy',
-  operatingSystem: 'Android',
-  applicationCategory: 'LifestyleApplication',
-  downloadUrl: 'https://play.google.com/store/apps/details?id=se.birdy.android',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'SEK' },
-  inLanguage: ['en', 'sv'],
-  image: ogImageUrl,
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'Birdy',
+      url: new URL('/', Astro.site).toString(),
+      inLanguage: ['en', 'sv'],
+    },
+    ...((pathname === '/' || pathname === '/sv/') ? [{
+      '@type': 'MobileApplication',
+      name: 'Birdy',
+      description: metaDescription,
+      operatingSystem: 'Android',
+      applicationCategory: 'LifestyleApplication',
+      url: canonical,
+      downloadUrl: 'https://play.google.com/store/apps/details?id=se.birdy.android',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'SEK' },
+      inLanguage: locale,
+      image: ogImageUrl,
+    }] : []),
+    ...((pathname === '/' || pathname === '/sv/') ? [{
+      '@type': 'FAQPage',
+      mainEntity: copy.faq.items.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    }] : []),
+  ],
 };
 ---
 
@@ -36,15 +60,11 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
-    <script is:inline>
-      document.documentElement.classList.add('js');
-    </script>
-
-    <title>{copy.meta.title}</title>
-    <meta name="description" content={copy.meta.description} />
+    <title>{metaTitle}</title>
+    <meta name="description" content={metaDescription} />
 
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang={locale} href={canonical} />
+    {!noAlternateLocale && <link rel="alternate" hreflang={locale} href={canonical} />}
     {!noAlternateLocale && (
       <link
         rel="alternate"
@@ -52,7 +72,7 @@ const jsonLd = {
         href={new URL(altPath, Astro.site).toString()}
       />
     )}
-    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site).toString()} />
+    {!noAlternateLocale && <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site).toString()} />}
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -67,48 +87,26 @@ const jsonLd = {
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={copy.meta.ogLocale} />
-    <meta property="og:title" content={copy.meta.title} />
-    <meta property="og:description" content={copy.meta.description} />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={copy.alt.panorama} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Birdy" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={copy.meta.title} />
-    <meta name="twitter:description" content={copy.meta.description} />
+    <meta name="twitter:title" content={metaTitle} />
+    <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
 
-    <meta name="theme-color" content="#E8E2D2" />
+    <meta name="theme-color" content="#10251e" />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="paper-bg">
     <slot />
-    <script>
-      // Reveal-on-scroll for any [data-reveal] element. Progressive
-      // enhancement: without JS the .js gate in CSS keeps everything visible.
-      const els = Array.from(document.querySelectorAll('[data-reveal]'));
-      if (els.length) {
-        if (!('IntersectionObserver' in window)) {
-          els.forEach((el) => el.classList.add('is-revealed'));
-        } else {
-          const io = new IntersectionObserver(
-            (entries, obs) => {
-              for (const entry of entries) {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add('is-revealed');
-                  obs.unobserve(entry.target);
-                }
-              }
-            },
-            { rootMargin: '0px 0px -8% 0px', threshold: 0.12 },
-          );
-          els.forEach((el) => io.observe(el));
-        }
-      }
-    </script>
     <Analytics />
   </body>
 </html>

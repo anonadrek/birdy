@@ -3,91 +3,38 @@ import EyebrowLabel from './ui/EyebrowLabel.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 
-interface Props {
-  locale: Locale;
-}
+interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const t = getCopy(locale);
 ---
 
 <section id="premium" class="premium">
-  <div class="card" data-reveal>
-    <span class="seal" aria-hidden="true">❦</span>
-    <EyebrowLabel text={t.premium.eyebrow} plate="VII" />
-    <JournalHeadline text={t.premium.headline} level="h2" size="clamp(2rem, 4.5vw, 3rem)" />
-    <p class="sub">{t.premium.sub}</p>
-    <p class="body">{t.premium.body}</p>
-    <a href={t.premium.ctaHref} class="cta" rel="noopener noreferrer" target="_blank">{t.premium.cta}</a>
+  <div class="inner">
+    <div class="copy">
+      <EyebrowLabel text={t.premium.eyebrow} />
+      <JournalHeadline text={t.premium.headline} level="h2" align="left" size="clamp(3rem,5vw,4.7rem)" />
+      <p class="lead">{t.premium.sub}</p>
+      <p class="body">{t.premium.body}</p>
+    </div>
+    <div class="features">
+      <p class="feature-heading">{locale === 'sv' ? 'När du vill gå längre' : 'When you want to go further'}</p>
+      <div><span>01</span><p>{locale === 'sv' ? 'Exportera din dagbok som PDF' : 'Export your journal as a PDF'}</p></div>
+      <div><span>02</span><p>{locale === 'sv' ? 'Se din säsong i statistik' : 'See your season in statistics'}</p></div>
+      <div><span>03</span><p>{locale === 'sv' ? 'Samla extra fältmärken' : 'Collect extra field stamps'}</p></div>
+    </div>
   </div>
 </section>
 
 <style>
-  .premium {
-    padding: var(--section-padding-y) 1.5rem;
-    max-width: 60rem;
-    margin: 0 auto;
-  }
-  /* A certificate insert: double-ruled frame + wax-seal ornament, the kind of
-     page a journal reserves for something optional but considered. */
-  .card {
-    position: relative;
-    background: var(--color-paper-top);
-    border: 1px solid rgba(168, 85, 45, 0.35);
-    outline: 1px solid rgba(168, 85, 45, 0.18);
-    outline-offset: 5px;
-    border-radius: 4px;
-    padding: 3.5rem 2.5rem 3rem;
-    margin: 6px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.35),
-      0 18px 40px -28px rgba(42, 53, 37, 0.5);
-  }
-  .seal {
-    position: absolute;
-    top: -26px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-6deg);
-    display: grid;
-    place-items: center;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 38% 30%, #bd643a, var(--color-copper) 68%);
-    color: #f6efdf;
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
-    box-shadow:
-      0 3px 8px rgba(42, 53, 37, 0.28),
-      inset 0 1px 2px rgba(255, 255, 255, 0.28),
-      inset 0 -2px 4px rgba(42, 53, 37, 0.22);
-  }
-  .sub {
-    font-family: var(--font-script);
-    font-size: 1.375rem;
-    color: var(--color-copper);
-    margin: 0;
-  }
-  .body {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.6;
-    max-width: 38rem;
-    margin: 0;
-  }
-  .cta {
-    margin-top: 1rem;
-    font-family: var(--font-script);
-    font-size: 1.25rem;
-    color: var(--color-copper);
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-color: rgba(168, 85, 45, 0.35);
-  }
-  .cta:hover { text-decoration-color: var(--color-copper); }
+  .premium { padding: var(--section-padding-y) clamp(1.5rem,6vw,5rem); }
+  .inner { max-width: 1190px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem,8vw,8rem); align-items: center; }
+  .copy :global(.journal-headline) { margin-top: 1rem; }
+  .lead { font: 1.7rem var(--font-script); color: var(--color-copper); margin: 1.2rem 0 .7rem; }
+  .body { max-width: 34rem; line-height: 1.7; color: var(--color-marginalia-ink); }
+  .features { border-top: 1px solid #aab9a9; }
+  .feature-heading { margin: 0; padding: 1rem 0; color: var(--color-copper); font-size: .83rem; font-weight: 600; }
+  .features div { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: center; border-top: 1px solid #c5d0c3; min-height: 80px; }
+  .features div span { font: italic 1rem var(--font-serif); color: var(--color-copper); }
+  .features div p { font: 1.25rem var(--font-serif); margin: 0; }
+  @media (max-width: 780px) { .inner { grid-template-columns: 1fr; gap: 2rem; } }
 </style>

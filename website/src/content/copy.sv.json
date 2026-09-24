@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Birdy — En fältdagbok för fåglar",
-    "description": "Identifiera europeiska fåglar med kamera eller mikrofon, och behåll varje fynd i en dagbok som är din. 839 arter, helt offline, inget konto.",
+    "title": "Birdy — Identifiera fåglar och spara dina fynd",
+    "description": "Identifiera 839 europeiska fågelarter med foto, kamera eller sång. Spara fynd i en privat fältdagbok och utforska fågelguiden offline. Finns för Android, kommer till iPhone.",
     "ogLocale": "sv_SE",
     "htmlLang": "sv"
   },
@@ -15,10 +15,11 @@
     "getApp": "Hämta appen"
   },
   "hero": {
-    "eyebrow": "EN BIRDY-APP · 2026",
-    "headline": "En *fältdagbok* som ser ut som en fältdagbok",
-    "sub": "Fota eller spela in en fågel, så namnger Birdy den. Allt du hittar sparas i din egen dagbok.",
-    "scrollCue": "Så fungerar det ↓",
+    "eyebrow": "Din fågelguide, var du än är",
+    "headline": "Känn igen fågeln.",
+    "line2": "Bevara stunden.",
+    "sub": "Identifiera fåglar med bild eller sång. Utforska 839 europeiska arter och spara varje fynd i din privata fältdagbok.",
+    "scrollCue": "Upptäck Birdy",
     "plateCaption": "Pl. I — i fält"
   },
   "appStoreBadge": {
@@ -28,43 +29,43 @@
   },
   "loop": {
     "eyebrow": "SÅ FUNGERAR DET",
-    "headline": "Det är en *loop.*",
-    "sub": "Sikta, träffa, stämpla, bläddra — sen tillbaka till början för nästa fågel.",
+    "headline": "Från första blick till *fältnotering.*",
+    "sub": "Ett enkelt sätt att samla fåglarna du möter i en dagbok värd att behålla.",
     "cards": [
       { "title": "Sikta eller spela in", "body": "Öppna kameran och sikta, eller tryck för att spela in en sång. Birdy kollar några gånger i sekunden." },
       { "title": "Träff", "body": "När Birdy är säker nog får du en träff." },
-      { "title": "Stämpla", "body": "En ny sida hamnar i din dagbok — en stämpel för varje art." },
+      { "title": "Spara", "body": "Bekräfta träffen och spara fyndet i din dagbok. Varje ny art ger en stämpel." },
       { "title": "Bläddra", "body": "Titta tillbaka när du vill, eller sök bland alla 839 europeiska arter." }
     ]
   },
   "glimpse": {
     "eyebrow": "EN TITT INUTI",
-    "headline": "Några *sidor* ur dagboken.",
-    "sub": "hur det faktiskt ser ut, i din telefon."
+    "headline": "Skapad för *stunden* utomhus.",
+    "sub": "Titta närmare på appen du tar med ut i fält."
   },
   "listen": {
     "eyebrow": "ELLER ANVÄND MIKEN · PÅ TELEFONEN",
     "headline": "Namnge den på *gehör.*",
     "sub": "Håll inne knappen och låt fågeln sjunga. Birdy lyssnar och namnger den.",
-    "body": "Håll inne inspelningsknappen. Samma AI på din telefon lyssnar tills den känner igen sången — eller tills du släpper. Inget internet, inget laddas upp.",
+    "body": "Spela in en kort fågelsång så föreslår Birdy en art. Ljudmodellen körs på telefonen, så inget behöver laddas upp.",
     "hint": "tryck för att lyssna",
     "caption": "fältinspelning, på enheten"
   },
   "inside": {
     "eyebrow": "INUTI APPEN",
-    "headline": "Ett *arkiv* i fickan.",
-    "sub": "varje europeisk fågel, varje stämpel, varje serie",
+    "headline": "Hela fågelguiden, *i fickan.*",
+    "sub": "Sök, lär, spara och återvänd — även utan täckning.",
     "stats": [
       { "value": "839", "label": "arter", "caption": "från vanliga till sällsynta" },
-      { "value": "33", "label": "stämplar", "caption": "tjänas in genom att hitta fåglar" },
-      { "value": "365", "label": "daglig serie", "caption": "håll dagboken levande" }
+      { "value": "34", "label": "stämplar", "caption": "tjänas in genom att hitta fåglar" },
+      { "value": "0", "label": "konton", "caption": "din dagbok stannar hos dig" }
     ]
   },
   "coverage": {
     "eyebrow": "Täckning",
     "headline": "Där Birdy *funkar*",
-    "sub": "Europa idag — resten av världen är på väg.",
-    "caption": "839 arter i Europa. Dra i kartan för att utforska.",
+    "sub": "Byggd kring Europas fåglar, från trädgårdens stammisar till sällsynta möten.",
+    "caption": "839 arter i Europa.",
     "fallbackAlt": "Karta över Europa ifylld i koppar, markerar var Birdy funkar idag",
     "attribution": "© MapTiler © OpenStreetMap contributors"
   },
@@ -81,7 +82,7 @@
     "headline": "Helt *offline.*",
     "sub": "AI:n bor i din telefon",
     "body": "Inget moln, ingen spårning, inga konton — bara du och fåglarna.",
-    "wordmarkLabel": "FINNS PÅ GOOGLE PLAY"
+    "wordmarkLabel": "ANDROID NU · IPHONE SNART"
   },
   "faq": {
     "eyebrow": "FRÅGOR · BESVARADE",
@@ -93,14 +94,14 @@
       { "q": "Var lagras mina foton?", "a": "På din enhet. Birdy laddar aldrig upp foton till en server. Det finns ingen server." },
       { "q": "Hur exakt är AI:n?", "a": "Tillräckligt bra för att lära sig av, ärlig när den är osäker. Varje träff visar en säkerhetsnivå, och du bekräftar alltid innan något sparas." },
       { "q": "Vad ingår?", "a": "839 europeiska fåglar — varje art i EBBA2-atlasen plus nära släktingar, med beskrivningar, foton och utbredningsinformation." },
-      { "q": "Finns en iOS-version?", "a": "Den är på väg — Birdy för iPhone är under utveckling. Android finns att hämta idag." },
+      { "q": "Finns en iOS-version?", "a": "Birdy för iPhone planeras att släppas i slutet av september 2026. Android finns att hämta redan nu; App Store-länken kommer hit när iPhone-appen är ute." },
       { "q": "Hur funkar ljudet?", "a": "Håll mikrofonknappen i 3 sekunder. BirdNET-Lite körs på enheten, samma offline-garanti." },
       { "q": "Andra frågor?", "a": "Mejla albin@abrahamssons.se — jag läser varje meddelande." }
     ]
   },
   "finalCta": {
-    "headline": "Hämta den på *Google Play.*",
-    "sub": "gratis · inget konto · offline"
+    "headline": "Ta med Birdy *ut i fält.*",
+    "sub": "På Android nu. Snart på iPhone."
   },
   "footer": {
     "links": [
