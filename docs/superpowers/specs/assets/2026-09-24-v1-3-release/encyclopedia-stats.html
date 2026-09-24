@@ -1,0 +1,128 @@
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#f6efe2; --card:#fffaf1; --ink:#26301f; --muted:#5b6350; --accent:#9a4526; --accent-deep:#72301a; --hi:#f2b27a; --moss:#1f2a19; --gold:#b8893a; --gold-hi:#e2c07e; --line:#dfd2ba; }
+  .wrap3 { display:flex; gap:26px; flex-wrap:wrap; justify-content:center; margin-top:10px; }
+  .col { width:280px; } .col h3 { margin:14px 0 4px; font-size:1rem; } .col p { margin:0; font-size:.83rem; color:#555; line-height:1.5; }
+  .ph { width:280px; height:600px; border-radius:40px; overflow:hidden; position:relative; box-shadow:0 0 0 8px #111, 0 16px 34px rgba(0,0,0,.26); font-family:Inter,system-ui,sans-serif; background:var(--paper); color:var(--ink); }
+  .ph svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+  .serif { font-family:'DM Serif Display',serif; font-weight:400; }
+  .kick { display:flex; align-items:center; gap:8px; margin:0 0 6px; font-size:8.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); }
+  .kick b { width:18px; height:1px; background:currentColor; }
+  .pad { padding:40px 16px 0; }
+  h2.hd { margin:0 0 12px; font-size:30px; line-height:1; letter-spacing:-.015em; } h2.hd em { color:var(--accent); }
+  .nav { position:absolute; bottom:0; left:0; right:0; height:50px; background:var(--paper); border-top:1px solid var(--line); display:flex; justify-content:space-around; align-items:center; color:#8b8f80; }
+  .nav .on { color:var(--accent); }
+
+  /* Encyclopedia */
+  .search { display:flex; align-items:center; gap:8px; background:var(--card); border-radius:12px; padding:9px 12px; font-size:12px; color:var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
+  .chips { display:flex; gap:6px; margin:10px -16px 8px 0; overflow:hidden; white-space:nowrap; }
+  .chip { padding:6px 11px; border-radius:20px; font-size:11px; box-shadow: inset 0 0 0 1px var(--line); color:var(--ink); }
+  .chip.on { background:var(--moss); color:#f2eadc; box-shadow:none; }
+  .sort { display:flex; gap:12px; font-size:10px; font-weight:600; color:var(--muted); margin:4px 0 8px; }
+  .sort .on { color:var(--accent); border-bottom:1.5px solid var(--accent); }
+  .sec { display:flex; justify-content:space-between; font-size:8.5px; letter-spacing:.15em; text-transform:uppercase; font-weight:600; color:var(--muted); padding:8px 0 4px; border-bottom:1px solid var(--line); }
+  .sp { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--line); }
+  .sp .th { width:44px; height:44px; border-radius:12px; background-size:cover; background-position:center; flex:none; }
+  .sp .t { flex:1; } .sp b { display:block; font-family:'DM Serif Display',serif; font-weight:400; font-size:16px; } .sp i { font-size:10.5px; color:var(--muted); font-family:'DM Serif Display',serif; }
+  .mini { width:26px; height:26px; border-radius:50%; display:grid; place-items:center; color:#fff8ee; font-size:9px; font-family:'DM Serif Display',serif; font-style:italic; position:relative;
+          background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.25), transparent 55%), var(--accent); transform:rotate(-8deg); }
+  .mini::before { content:''; position:absolute; inset:2.5px; border-radius:50%; border:1px solid rgba(255,255,255,.4); }
+  .tag { font-size:8px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:#1f3a5f; background:rgba(31,58,95,.1); padding:2px 6px; border-radius:6px; }
+
+  /* Profile */
+  .pr-hero { height:290px; background:url(./bluetit.jpg) center 38%/cover; position:relative; }
+  .pr-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(31,42,25,.96) 0%, rgba(31,42,25,.5) 40%, rgba(31,42,25,0) 72%, rgba(0,0,0,.25) 100%); }
+  .back { position:absolute; top:40px; left:16px; width:32px; height:32px; border-radius:50%; background:rgba(255,255,255,.18); color:#fff; display:grid; place-items:center; z-index:3; }
+  .pr-c { position:absolute; left:18px; right:18px; bottom:30px; z-index:2; color:#fff8ee; }
+  .pr-c .kick { color:var(--hi); }
+  .pr-c h1 { margin:0; font-size:40px; line-height:.95; letter-spacing:-.02em; }
+  .pr-c i { font-family:'DM Serif Display',serif; font-size:13px; color:rgba(255,248,238,.75); }
+  .pills { display:flex; gap:5px; margin-top:9px; flex-wrap:wrap; }
+  .pill { font-size:9px; font-weight:600; padding:3px 8px; border-radius:12px; background:rgba(255,255,255,.16); backdrop-filter:blur(6px); }
+  .pill.st { background:var(--accent); }
+  .sheet { position:absolute; top:268px; left:0; right:0; bottom:0; background:var(--paper); border-radius:24px 24px 0 0; padding:16px 18px 0; }
+  .lbl { font-size:8.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:600; color:var(--accent); margin:0 0 6px; }
+  .desc { font-size:11.5px; line-height:1.55; margin:0 0 12px; }
+  .months { display:grid; grid-template-columns:repeat(12,1fr); gap:3px; }
+  .months span { height:22px; border-radius:4px; background:var(--moss); opacity:.85; }
+  .months span.no { background:var(--line); opacity:1; }
+  .ml { display:grid; grid-template-columns:repeat(12,1fr); gap:3px; font-size:7.5px; color:var(--muted); text-align:center; margin-top:3px; }
+  .thumbs { display:flex; gap:6px; margin-top:12px; } .thumbs div { flex:1; height:58px; border-radius:10px; background-size:cover; background-position:center; }
+
+  /* Stats */
+  .st-top { display:flex; justify-content:space-between; align-items:flex-start; }
+  .prem { font-size:8px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:#2a2010; background:linear-gradient(135deg,#e8c98a,#b8893a); padding:3px 8px; border-radius:10px; }
+  .big { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
+  .big div { background:var(--card); border-radius:14px; padding:10px 12px; box-shadow: inset 0 0 0 1px var(--line); }
+  .big b { display:block; font-family:'DM Serif Display',serif; font-weight:400; font-size:30px; color:var(--accent); line-height:1; }
+  .big small { font-size:9px; letter-spacing:.12em; text-transform:uppercase; font-weight:600; color:var(--muted); }
+  .card { background:var(--card); border-radius:14px; padding:12px; box-shadow: inset 0 0 0 1px var(--line); margin-bottom:10px; }
+  .bars { display:flex; align-items:flex-end; gap:4px; height:70px; margin-top:6px; }
+  .bars span { flex:1; border-radius:3px 3px 0 0; background:linear-gradient(0deg, var(--accent-deep), var(--accent)); }
+  .bars span.cur { background:linear-gradient(0deg, #b8893a, #e2c07e); }
+  .seas { display:flex; height:10px; border-radius:6px; overflow:hidden; margin:8px 0 5px; }
+  .sl { display:flex; justify-content:space-between; font-size:9px; color:var(--muted); }
+  .top { display:flex; align-items:center; gap:8px; font-size:11px; padding:3px 0; } .top em { font-family:'DM Serif Display',serif; font-style:normal; width:74px; }
+  .top .tb { flex:1; height:6px; border-radius:4px; background:var(--line); overflow:hidden; } .top .tb span { display:block; height:100%; background:var(--moss); }
+</style>
+
+<h2>Uppslagsverket, artprofilen och statistiken</h2>
+<p class="subtitle">Samma språk som de andra nyckelskärmarna: foto i mörk mossa, stor serif, tunna linjer och präglade stämplar. Allt som finns idag är kvar (sök, grupper, sortering, stämplad, säsong, foton och alla diagram), det är bara formen som ändras.</p>
+
+<div class="wrap3">
+  <div class="col">
+    <div class="ph"><div class="pad">
+      <p class="kick"><b></b>Uppslagsverk · 839 arter</p>
+      <h2 class="hd serif">Europas <em>fåglar.</em></h2>
+      <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>Sök art, familj eller latinskt namn</div>
+      <div class="chips"><span class="chip on">Alla</span><span class="chip">Tättingar</span><span class="chip">Änder &amp; gäss</span><span class="chip">Vadare</span></div>
+      <div class="sort"><span class="on">A–Ö</span><span>Familj</span><span>Senast tillagd</span></div>
+      <div class="sec"><span>Mesar</span><span>9 arter</span></div>
+      <div class="sp"><div class="th" style="background-image:url(./bluetit.jpg)"></div><div class="t"><b>Talgoxe</b><i>Parus major</i></div><div class="mini">12</div></div>
+      <div class="sp"><div class="th" style="background-image:url(./robin.jpg)"></div><div class="t"><b>Rödhake</b><i>Erithacus rubecula</i></div><div class="mini">4</div></div>
+      <div class="sp"><div class="th" style="background:#d9cdb5"></div><div class="t"><b>Tofsmes</b><i>Lophophanes cristatus</i></div></div>
+      <div class="sp"><div class="th" style="background:#cfc2a8"></div><div class="t"><b>Lappmes</b><i>Poecile cinctus</i></div><span class="tag">Rödlistad</span></div>
+    </div>
+    <nav class="nav"><svg viewBox="0 0 24 24"><path d="M4 8V5h3M17 5h3v3M20 16v3h-3M7 19H4v-3"/><circle cx="12" cy="12" r="2.5"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/></svg><svg viewBox="0 0 24 24"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="5"/><path d="M9 14.5 8 20l4-2 4 2-1-5.5"/></svg><svg viewBox="0 0 24 24"><path d="M9 5 4 7v12l5-2 6 2 5-2V5l-5 2z"/></svg></nav>
+    </div>
+    <h3>Uppslagsverket</h3>
+    <p>Riktiga miniatyrfoton i listan, arter du fångat får en liten präglad stämpel, och grupperna blir mjuka piller. Sökfältet ligger alltid överst.</p>
+  </div>
+
+  <div class="col">
+    <div class="ph">
+      <div class="pr-hero"><div class="back"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></div>
+        <div class="pr-c"><p class="kick"><b></b>Mesar · Paridae</p><h1 class="serif">Talgoxe</h1><i>Parus major</i>
+          <div class="pills"><span class="pill st">Stämplad · 12 fynd</span><span class="pill">Allmän</span><span class="pill">Livskraftig (LC)</span></div></div></div>
+      <div class="sheet">
+        <p class="lbl">Om arten</p>
+        <p class="desc">Talgoxen är en vanlig fågel över stora delar av Europa. Den är mycket anpassningsbar och trivs i alla slags skogslandskap, från täta lövskogar till parker…</p>
+        <p class="lbl">Finns i Sverige</p>
+        <div class="months"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="ml"><span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span></div>
+        <div class="thumbs"><div style="background-image:url(./bluetit.jpg)"></div><div style="background-image:url(./bluetit.jpg);background-position:30% 60%"></div><div style="background-image:url(./bluetit.jpg);background-position:80% 30%"></div></div>
+      </div>
+    </div>
+    <h3>Artprofilen</h3>
+    <p>Samma upplägg som resultatskärmen, så att allt om en art känns som ett och samma uppslag. Säsongen visas som en månadsremsa, och du ser direkt om du har stämplat arten.</p>
+  </div>
+
+  <div class="col">
+    <div class="ph"><div class="pad">
+      <div class="st-top"><p class="kick"><b></b>Säsong 2026</p><span class="prem">Premium</span></div>
+      <h2 class="hd serif">Ett <em>år</em> i fält.</h2>
+      <div class="big"><div><b>23</b><small>Arter</small></div><div><b>57</b><small>Observationer</small></div></div>
+      <div class="card"><p class="lbl">Observationer per månad</p>
+        <div class="bars"><span style="height:10%"></span><span style="height:14%"></span><span style="height:30%"></span><span style="height:55%"></span><span style="height:80%"></span><span style="height:62%"></span><span style="height:40%"></span><span style="height:35%"></span><span class="cur" style="height:70%"></span><span style="height:4%"></span><span style="height:3%"></span><span style="height:3%"></span></div></div>
+      <div class="card"><p class="lbl">Per säsong</p>
+        <div class="seas"><span style="width:12%;background:#8fa0b5"></span><span style="width:38%;background:#6f8a4e"></span><span style="width:30%;background:#b8893a"></span><span style="width:20%;background:#9a4526"></span></div>
+        <div class="sl"><span>Vinter 7</span><span>Vår 22</span><span>Sommar 17</span><span>Höst 11</span></div></div>
+      <div class="card" style="margin-bottom:0"><p class="lbl">Mest sedda</p>
+        <div class="top"><em>Talgoxe</em><div class="tb"><span style="width:90%"></span></div>12</div>
+        <div class="top"><em>Koltrast</em><div class="tb"><span style="width:60%"></span></div>8</div>
+        <div class="top"><em>Rödhake</em><div class="tb"><span style="width:32%"></span></div>4</div></div>
+    </div></div>
+    <h3>Säsongsstatistik</h3>
+    <p>Stora siffror och lugna diagram i fältbokens färger. Innevarande månad lyser i mässing, och Premium markeras diskret.</p>
+  </div>
+</div>

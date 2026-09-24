@@ -1,0 +1,141 @@
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#f6efe2; --card:#fffaf1; --ink:#26301f; --muted:#5b6350; --accent:#9a4526; --accent-deep:#72301a; --hi:#f2b27a; --moss:#1f2a19; --gold:#b8893a; --gold-hi:#e2c07e; --line:#dfd2ba; }
+  .wrap3 { display:flex; gap:26px; flex-wrap:wrap; justify-content:center; margin-top:10px; }
+  .col { width:280px; }
+  .col h3 { margin:14px 0 4px; font-size:1rem; }
+  .col p { margin:0; font-size:.83rem; color:#555; line-height:1.5; }
+  .ph { width:280px; height:600px; border-radius:40px; overflow:hidden; position:relative; box-shadow:0 0 0 8px #111, 0 16px 34px rgba(0,0,0,.26); font-family:Inter,system-ui,sans-serif; background:var(--paper); color:var(--ink); }
+  .ph svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+  .serif { font-family:'DM Serif Display',serif; font-weight:400; }
+  .cav { font-family:'Caveat',cursive; }
+  .kick { display:flex; align-items:center; gap:8px; margin:0 0 7px; font-size:8.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; }
+  .kick b { width:18px; height:1px; background:currentColor; }
+
+  /* Match */
+  .m-photo { height:330px; background:url(./robin.jpg) center 35%/cover; position:relative; }
+  .m-photo::after { content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(31,42,25,.96) 0%, rgba(31,42,25,.55) 38%, rgba(31,42,25,0) 70%, rgba(0,0,0,.25) 100%); }
+  .m-back { position:absolute; top:40px; left:16px; width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.18); backdrop-filter:blur(8px); color:#fff; display:grid; place-items:center; z-index:3; }
+  .m-c { position:absolute; left:18px; right:18px; bottom:34px; z-index:2; color:#fff8ee; }
+  .m-c .kick { color:var(--hi); }
+  .m-c h1 { margin:0; font-size:42px; line-height:.95; letter-spacing:-.02em; }
+  .m-c i { font-family:'DM Serif Display',serif; color:rgba(255,248,238,.75); font-size:14px; }
+  .conf { display:flex; align-items:center; gap:8px; margin-top:10px; font-size:10.5px; font-weight:600; }
+  .conf .bar { width:70px; height:4px; border-radius:4px; background:rgba(255,255,255,.2); overflow:hidden; }
+  .conf .bar span { display:block; width:94%; height:100%; background:var(--hi); }
+  .m-sheet { position:absolute; top:306px; left:0; right:0; bottom:0; background:var(--paper); border-radius:24px 24px 0 0; padding:18px 18px 0; }
+  .m-row { display:flex; align-items:center; gap:12px; }
+  .m-row .t { flex:1; }
+  .m-row .t b { font-size:22px; color:var(--accent); display:block; line-height:1; }
+  .m-row .t small { font-size:10px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; font-weight:600; }
+  .seal { width:58px; height:58px; border-radius:50%; display:grid; place-items:center; color:#fff8ee; position:relative; transform:rotate(-8deg);
+          background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.25), transparent 55%), var(--accent); box-shadow:0 4px 10px rgba(31,42,25,.3); font-family:'DM Serif Display',serif; font-style:italic; font-size:15px; }
+  .seal::before { content:''; position:absolute; inset:4px; border-radius:50%; border:1px solid rgba(255,255,255,.4); }
+  .seal.gold { background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.45), transparent 55%), var(--gold); }
+  .note { margin:14px 0; padding:10px 0; border-bottom:1px solid var(--line); color:var(--muted); font-size:12px; display:flex; gap:8px; align-items:center; }
+  .cta { display:flex; justify-content:center; align-items:center; gap:8px; padding:13px; border-radius:14px; color:#fff8ee; font-weight:600; font-size:13px;
+         background:linear-gradient(135deg, var(--accent), var(--accent-deep)); box-shadow:0 6px 16px rgba(31,42,25,.28), inset 0 1px 0 rgba(255,255,255,.18); }
+  .ghost { text-align:center; margin-top:10px; font-size:12px; color:var(--accent); font-weight:600; }
+
+  /* Premium */
+  .p-top { height:250px; position:relative; background:url(./bluetit.jpg) center 35%/cover; }
+  .p-top::after { content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(31,42,25,1) 0%, rgba(31,42,25,.8) 45%, rgba(31,42,25,.35) 100%); }
+  .p-close { position:absolute; top:40px; right:16px; z-index:3; color:#fff; width:30px; height:30px; border-radius:50%; background:rgba(255,255,255,.16); display:grid; place-items:center; }
+  .p-c { position:absolute; left:18px; right:18px; bottom:16px; z-index:2; color:#fff8ee; }
+  .p-c .kick { color:var(--gold-hi); }
+  .p-c h1 { margin:0; font-size:30px; line-height:1; letter-spacing:-.015em; }
+  .p-c h1 em { color:var(--hi); }
+  .p-body { background:var(--moss); color:#f2eadc; padding:0 16px; height:350px; }
+  .free { font-size:10px; color:rgba(242,234,220,.7); padding:4px 0 10px; border-bottom:1px solid rgba(255,255,255,.1); }
+  .free b { color:#f2eadc; font-weight:600; }
+  .feat { display:flex; align-items:center; gap:10px; padding:7px 0; font-size:12px; }
+  .feat .ic { width:28px; height:28px; border-radius:50%; border:1px solid rgba(226,192,126,.45); color:var(--gold-hi); display:grid; place-items:center; }
+  .feat .ic svg { width:14px; height:14px; }
+  .feat small { display:block; font-size:10px; color:rgba(242,234,220,.6); }
+  .tiers { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:10px 0 10px; }
+  .tier { border:1px solid rgba(255,255,255,.14); border-radius:14px; padding:10px; position:relative; }
+  .tier.on { border:1.5px solid var(--gold-hi); background:rgba(226,192,126,.08); }
+  .tier small { font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:rgba(242,234,220,.65); font-weight:600; }
+  .tier b { display:block; font-family:'DM Serif Display',serif; font-weight:400; font-size:19px; margin-top:2px; }
+  .tier span { font-size:9.5px; color:rgba(242,234,220,.6); }
+  .rib { position:absolute; top:-8px; right:8px; background:var(--gold-hi); color:#2a2010; font-size:8px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:2px 7px; border-radius:10px; }
+  .gcta { display:flex; justify-content:center; padding:12px; border-radius:14px; font-weight:700; font-size:13px; color:#241b0c;
+          background:linear-gradient(135deg, #e8c98a, #b8893a); box-shadow:0 6px 16px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.35); }
+  .fine { text-align:center; font-size:8.5px; color:rgba(242,234,220,.55); margin-top:7px; line-height:1.4; }
+
+  /* Grandfather */
+  .g-body { background:var(--moss); color:#f2eadc; padding:4px 18px 0; height:350px; }
+  .g-body p.lead { font-size:12px; line-height:1.55; color:rgba(242,234,220,.85); margin:4px 0 12px; }
+  .g-body .cav { font-size:21px; color:var(--gold-hi); margin:12px 0 0; }
+  .ok { display:flex; align-items:center; gap:9px; padding:6px 0; font-size:12px; border-bottom:1px solid rgba(255,255,255,.07); }
+  .ok svg { color:var(--gold-hi); width:15px !important; height:15px !important; }
+</style>
+
+<h2>Nyckelskärmarna i den nya stilen</h2>
+<p class="subtitle">Palett 1 (mossa, rost och mässing). Rost betyder "gör något", mässing betyder "Premium". Säg vad som känns fel. Den tredje skärmen är ett förslag, se texten under.</p>
+
+<div class="wrap3">
+  <!-- MATCH -->
+  <div class="col">
+    <div class="ph">
+      <div class="m-photo">
+        <div class="m-back"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></div>
+        <div class="m-c"><p class="kick"><b></b>Match · Fynd nr 12</p><h1 class="serif">Rödhake</h1><i>Erithacus rubecula</i>
+          <div class="conf"><div class="bar"><span></span></div>Säker match · 94 %</div></div>
+      </div>
+      <div class="m-sheet">
+        <div class="m-row"><div class="t"><small>Ny art</small><b class="cav">Första i din fältbok!</b></div><div class="seal">Nr 12</div></div>
+        <div class="note"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>Lägg till en anteckning</div>
+        <div class="cta"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Spara i fältboken</div>
+        <div class="ghost">Inte den? Se fler förslag</div>
+      </div>
+    </div>
+    <h3>Resultat (match)</h3>
+    <p>Ditt eget foto tar halva skärmen, artnamnet står stort på bilden, och stämpeln "präglas" när du sparar. Säkerheten visas som en diskret stapel i stället för bara en siffra.</p>
+  </div>
+
+  <!-- PREMIUM -->
+  <div class="col">
+    <div class="ph">
+      <div class="p-top">
+        <div class="p-close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></div>
+        <div class="p-c"><p class="kick"><b></b>Birdy Premium</p><h1 class="serif">Hela året som <em>fältornitolog.</em></h1></div>
+      </div>
+      <div class="p-body">
+        <div class="free"><b>Alltid gratis:</b> skanna foto och ljud · fältdagbok · 839 arter · 27 märken</div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 5 4 7v12l5-2 6 2 5-2V5l-5 2z"/></svg></div><div>Fynd-kartan<small>Se var du sett dina fåglar</small></div></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/></svg></div><div>Fältdagboken som PDF<small>Hela dagboken, redo att dela</small></div></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 19V11M10 19V6M15 19v-5M20 19V9"/></svg></div><div>Säsongsstatistik<small>Mönster och årsöversikt</small></div></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="5"/><path d="M9 14.5 8 20l4-2 4 2-1-5.5"/></svg></div><div>7 premiummärken<small>Exklusiva stämplar att jaga</small></div></div>
+        <div class="tiers">
+          <div class="tier"><small>1 år</small><b>199 kr</b><span>per år</span></div>
+          <div class="tier on"><div class="rib">Bäst värde</div><small>För alltid</small><b>499 kr</b><span>engångsköp</span></div>
+        </div>
+        <div class="gcta">Fortsätt</div>
+        <div class="fine">Priset hämtas från Google Play · Årsplanen förnyas automatiskt, avsluta när du vill · Återställ köp</div>
+      </div>
+    </div>
+    <h3>Premium (ny användare)</h3>
+    <p>Mörk mossgrön yta med mässing, så Premium känns som något eget och exklusivt. Det som är gratis står först och ärligt. Priserna kommer alltid från Google Play, även i texten om förnyelse.</p>
+  </div>
+
+  <!-- GRANDFATHER -->
+  <div class="col">
+    <div class="ph">
+      <div class="p-top">
+        <div class="p-close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></div>
+        <div class="p-c"><div class="seal gold" style="width:52px;height:52px;margin-bottom:10px;transform:rotate(-6deg)">Tack</div><p class="kick"><b></b>Tidig fältmedlem</p><h1 class="serif">Premium är ditt. <em>För alltid.</em></h1></div>
+      </div>
+      <div class="g-body">
+        <p class="lead">Du var med innan Birdy började ta betalt. Som tack behåller du allt i Premium utan kostnad, så länge du har appen.</p>
+        <div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Fynd-kartan</div>
+        <div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Fältdagboken som PDF</div>
+        <div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Säsongsstatistik</div>
+        <div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>7 premiummärken</div>
+        <p class="cav">Tack för att du var med från början.</p>
+      </div>
+    </div>
+    <h3>Förslag: tack-skärm för tidiga användare</h3>
+    <p>Utan den märker de tidiga användarna aldrig att de fått något. Visas en gång efter uppdateringen och sedan i stället för köpskärmen. Liten insats, mycket goodwill. Tas bort om du inte vill ha den.</p>
+  </div>
+</div>

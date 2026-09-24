@@ -1,0 +1,152 @@
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  .cards .pal { background:#ecebe7; border-radius:14px; padding:18px; margin-bottom:22px; border:2px solid transparent; cursor:pointer; }
+  .pal.selected { border-color: var(--selected-border, #0071e3); }
+  .pal-head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
+  .pal-head h3 { margin:0 0 4px; }
+  .pal-head p { margin:0; font-size:.86rem; color:#555; max-width:560px; line-height:1.5; }
+  .sw { display:flex; gap:6px; flex-wrap:wrap; }
+  .sw span { width:46px; font-size:9px; color:#555; text-align:center; }
+  .sw span i { display:block; height:34px; border-radius:8px; margin-bottom:3px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+  .row { display:flex; gap:22px; flex-wrap:wrap; justify-content:center; }
+
+  .ph { width:250px; height:540px; border-radius:36px; overflow:hidden; position:relative; box-shadow:0 0 0 8px #111, 0 14px 30px rgba(0,0,0,.25); font-family:Inter,system-ui,sans-serif; background: var(--paper); color: var(--ink);
+        background-image: radial-gradient(rgba(0,0,0,.035) 1px, transparent 1.2px); background-size: 14px 14px; }
+  .ph svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+  .kick { display:flex; align-items:center; gap:8px; margin:0 0 8px; font-size:8.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color: var(--accent); }
+  .kick b { width:18px; height:1px; background:currentColor; }
+  .serif { font-family:'DM Serif Display',serif; font-weight:400; }
+  .cav { font-family:'Caveat',cursive; }
+  .nav { position:absolute; bottom:0; left:0; right:0; height:54px; background: var(--paper); border-top:1px solid var(--line); display:flex; justify-content:space-around; align-items:center; color: var(--muted); }
+  .nav .on { color: var(--accent); }
+
+  /* Identify */
+  .hero { height:250px; position:relative; background: url(./robin.jpg) center 40%/cover; }
+  .hero::after { content:''; position:absolute; inset:0; background: linear-gradient(0deg, rgba(var(--dark-rgb),.97) 0%, rgba(var(--dark-rgb),.72) 40%, rgba(var(--dark-rgb),.1) 80%, rgba(0,0,0,.2) 100%); }
+  .hero-c { position:absolute; left:18px; right:18px; bottom:14px; z-index:2; color:#fff8ee; }
+  .hero-c .kick { color: var(--hi); }
+  .hero-c h1 { margin:0; font-size:38px; line-height:.95; letter-spacing:-.02em; }
+  .hero-c h1 em { display:block; font-size:19px; color: var(--hi); margin-top:5px; letter-spacing:0; }
+  .meta { display:flex; justify-content:space-between; margin-top:11px; padding-top:7px; border-top:1px solid rgba(255,255,255,.28); font-size:8.5px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,248,238,.72); }
+  .body { padding:16px 18px 0; }
+  .body h2 { margin:0; font-size:23px; line-height:1.05; letter-spacing:-.01em; }
+  .body h2 em { color: var(--accent); }
+  .note { font-size:16px; color: var(--muted); margin:2px 0 12px; }
+  .prim { display:flex; align-items:center; gap:10px; padding:12px 14px; border-radius:13px; color:#fff8ee; font-weight:600; font-size:12.5px;
+          background: linear-gradient(135deg, var(--accent), var(--accent-deep)); box-shadow: 0 6px 16px rgba(var(--dark-rgb),.28), inset 0 1px 0 rgba(255,255,255,.18); }
+  .prim span { flex:1; }
+  .r { display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid var(--line); }
+  .r .ic { width:32px; height:32px; border-radius:50%; display:grid; place-items:center; color: var(--accent); background: var(--card); box-shadow: inset 0 0 0 1px var(--line); }
+  .r div.t { flex:1; } .r b { display:block; font-size:15px; } .r small { font-size:10.5px; color: var(--muted); }
+
+  /* Trophy */
+  .tb { padding:40px 18px 0; }
+  .tb h2 { margin:0; font-size:25px; line-height:1.02; }
+  .tb h2 em { color: var(--accent); }
+  .orn { text-align:center; color: var(--accent); font-size:13px; margin:8px 0 10px; display:flex; align-items:center; gap:8px; }
+  .orn::before, .orn::after { content:''; flex:1; height:1px; background: var(--line); }
+  .troph { display:flex; align-items:center; gap:12px; padding:14px; border-radius:16px; color:#fff8ee;
+           background: radial-gradient(120% 140% at 0% 0%, rgba(255,255,255,.08), transparent 50%), rgb(var(--dark-rgb)); box-shadow: 0 10px 22px rgba(var(--dark-rgb),.35); }
+  .troph div.t { flex:1; } .troph small { font-size:8px; letter-spacing:.15em; text-transform:uppercase; color: var(--hi); font-weight:600; }
+  .troph b { display:block; font-size:19px; } .troph i { font-family:'Caveat',cursive; font-style:normal; font-size:14px; color:rgba(255,248,238,.75); }
+  .stats { display:flex; justify-content:space-between; margin:14px 2px 10px; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color: var(--muted); font-weight:600; }
+  .stats em { font-family:'DM Serif Display',serif; font-style:normal; font-size:17px; color: var(--accent); letter-spacing:0; margin-right:4px; }
+  .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; }
+  .seal { aspect-ratio:1; border-radius:50%; display:grid; place-items:center; font-family:'DM Serif Display',serif; font-style:italic; font-size:14px; color:#fff8ee; position:relative;
+          background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.22), transparent 55%), var(--accent); box-shadow: 0 3px 8px rgba(var(--dark-rgb),.25); }
+  .seal::before { content:''; position:absolute; inset:4px; border-radius:50%; border:1px solid rgba(255,255,255,.35); }
+  .seal.gold { background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.45), transparent 55%), var(--gold); }
+  .seal.navy { background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.2), transparent 55%), #1f3a5f; }
+  .seal.off { background:none; box-shadow:none; border:1.5px dashed var(--line); color: var(--line); }
+  .seal.off::before { display:none; }
+
+  .p1 { --paper:#f9f2e6; --card:#fffaf1; --ink:#302019; --muted:#6e584b; --accent:#934326; --accent-deep:#6d2d1d; --hi:#ffc386; --dark-rgb:63,30,24; --gold:#c08a3e; --line:#e3cfb6; }
+  .p2 { --paper:#f6efe2; --card:#fffaf1; --ink:#26301f; --muted:#5b6350; --accent:#9a4526; --accent-deep:#72301a; --hi:#f2b27a; --dark-rgb:31,42,25; --gold:#b8893a; --line:#dfd2ba; }
+  .p3 { --paper:#f3eee4; --card:#fbf8f1; --ink:#1b2420; --muted:#56615b; --accent:#b0582b; --accent-deep:#86401f; --hi:#e8c27a; --dark-rgb:18,38,30; --gold:#c9a24a; --line:#d9d1bf; }
+</style>
+
+<h2>Vilken färgpalett lyfter Field Journal bäst?</h2>
+<p class="subtitle">Temat är detsamma i alla tre: papper, serif, stämplar, koppar och lite handskrift som krydda. Det som lyfts är djupet: ljusare och renare papper, mörka ytor bakom foton och troféer, stämplar som ser präglade ut, och en metallton för Premium. Klicka på en rad.</p>
+
+<div class="cards" style="display:block">
+<!-- ============ P2 ============ -->
+<div class="card pal p2" data-choice="p2" onclick="toggleSelect(this)">
+  <div class="pal-head">
+    <div><h3>1 · Mossa, rost &amp; mässing <span style="font-size:.75rem;color:#0a7">rekommenderas</span></h3>
+      <p>Dagens tema, fördjupat. Mossgröna finns kvar som Birdys naturfärg (mörka ytor, text), kopparn blir djupare rost, och mässing blir Premium-färgen. Närmast det du har idag, men rikare.</p></div>
+    <div class="sw"><span><i style="background:#f6efe2"></i>Papper</span><span><i style="background:#26301f"></i>Bläck</span><span><i style="background:#1f2a19"></i>Mossa</span><span><i style="background:#9a4526"></i>Rost</span><span><i style="background:#f2b27a"></i>Aprikos</span><span><i style="background:#b8893a"></i>Mässing</span></div>
+  </div>
+  <div class="row">
+    <div class="ph">
+      <div class="hero"><div class="hero-c"><p class="kick"><b></b>Dagens fågel</p><h1 class="serif">Rödhake<em class="serif">finns nära dig nu.</em></h1><div class="meta"><span>Erithacus rubecula</span><span>0 / 3 fångade</span></div></div></div>
+      <div class="body"><p class="kick"><b></b>Identifiera</p><h2 class="serif">Tre sätt att <em>fånga.</em></h2><p class="note cav">7 fynd den här veckan</p>
+        <div class="prim"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Starta kameran</span></div>
+        <div class="r"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="1.5"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div><div class="t"><b class="serif">Från ett foto</b><small>Välj en bild i galleriet</small></div></div>
+      </div>
+      <nav class="nav"><svg class="on" viewBox="0 0 24 24"><path d="M4 8V5h3M17 5h3v3M20 16v3h-3M7 19H4v-3"/><circle cx="12" cy="12" r="2.5"/></svg><svg viewBox="0 0 24 24"><path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/></svg><svg viewBox="0 0 24 24"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="5"/><path d="M9 14.5 8 20l4-2 4 2-1-5.5"/></svg><svg viewBox="0 0 24 24"><path d="M9 5 4 7v12l5-2 6 2 5-2V5l-5 2z"/></svg></nav>
+    </div>
+    <div class="ph">
+      <div class="tb"><p class="kick"><b></b>Märken · Troférum</p><h2 class="serif">Kom hem med ett <em>märke.</em></h2><div class="orn">❦</div>
+        <div class="troph"><div class="seal gold" style="width:44px">№28</div><div class="t"><small>Ditt troférum</small><b class="serif">Fältmedlem</b><i>3 troféer</i></div></div>
+        <div class="stats"><span><em>12</em>upplåsta</span><span><em>22</em>kvar att jaga</span></div>
+        <div class="grid"><div class="seal">1</div><div class="seal">2</div><div class="seal navy">3</div><div class="seal">4</div><div class="seal gold">5</div><div class="seal">6</div><div class="seal off">7</div><div class="seal off">8</div><div class="seal off">9</div><div class="seal off">10</div><div class="seal off">11</div><div class="seal off">12</div></div>
+      </div>
+      <nav class="nav"><svg viewBox="0 0 24 24"><path d="M4 8V5h3M17 5h3v3M20 16v3h-3M7 19H4v-3"/><circle cx="12" cy="12" r="2.5"/></svg><svg viewBox="0 0 24 24"><path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/></svg><svg viewBox="0 0 24 24"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg><svg class="on" viewBox="0 0 24 24"><circle cx="12" cy="10" r="5"/><path d="M9 14.5 8 20l4-2 4 2-1-5.5"/></svg><svg viewBox="0 0 24 24"><path d="M9 5 4 7v12l5-2 6 2 5-2V5l-5 2z"/></svg></nav>
+    </div>
+  </div>
+</div>
+
+<!-- ============ P1 ============ -->
+<div class="card pal p1" data-choice="p1" onclick="toggleSelect(this)">
+  <div class="pal-head">
+    <div><h3>2 · Rost &amp; aprikos (webbens palett)</h3>
+      <p>Exakt samma färger som nya birdy.community. Mossgröna försvinner, allt blir varmt rost och brunt. Starkast koppling till webben, men appen tappar sin gröna naturton.</p></div>
+    <div class="sw"><span><i style="background:#f9f2e6"></i>Papper</span><span><i style="background:#302019"></i>Bläck</span><span><i style="background:#3f1e18"></i>Mörk rost</span><span><i style="background:#934326"></i>Rost</span><span><i style="background:#ffc386"></i>Aprikos</span><span><i style="background:#c08a3e"></i>Guld</span></div>
+  </div>
+  <div class="row">
+    <div class="ph">
+      <div class="hero"><div class="hero-c"><p class="kick"><b></b>Dagens fågel</p><h1 class="serif">Rödhake<em class="serif">finns nära dig nu.</em></h1><div class="meta"><span>Erithacus rubecula</span><span>0 / 3 fångade</span></div></div></div>
+      <div class="body"><p class="kick"><b></b>Identifiera</p><h2 class="serif">Tre sätt att <em>fånga.</em></h2><p class="note cav">7 fynd den här veckan</p>
+        <div class="prim"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Starta kameran</span></div>
+        <div class="r"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="1.5"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div><div class="t"><b class="serif">Från ett foto</b><small>Välj en bild i galleriet</small></div></div>
+      </div>
+      <nav class="nav"><svg class="on" viewBox="0 0 24 24"><path d="M4 8V5h3M17 5h3v3M20 16v3h-3M7 19H4v-3"/><circle cx="12" cy="12" r="2.5"/></svg><svg viewBox="0 0 24 24"><path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/></svg><svg viewBox="0 0 24 24"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="5"/><path d="M9 14.5 8 20l4-2 4 2-1-5.5"/></svg><svg viewBox="0 0 24 24"><path d="M9 5 4 7v12l5-2 6 2 5-2V5l-5 2z"/></svg></nav>
+    </div>
+    <div class="ph">
+      <div class="tb"><p class="kick"><b></b>Märken · Troférum</p><h2 class="serif">Kom hem med ett <em>märke.</em></h2><div class="orn">❦</div>
+        <div class="troph"><div class="seal gold" style="width:44px">№28</div><div class="t"><small>Ditt troférum</small><b class="serif">Fältmedlem</b><i>3 troféer</i></div></div>
+        <div class="stats"><span><em>12</em>upplåsta</span><span><em>22</em>kvar att jaga</span></div>
+        <div class="grid"><div class="seal">1</div><div class="seal">2</div><div class="seal navy">3</div><div class="seal">4</div><div class="seal gold">5</div><div class="seal">6</div><div class="seal off">7</div><div class="seal off">8</div><div class="seal off">9</div><div class="seal off">10</div><div class="seal off">11</div><div class="seal off">12</div></div>
+      </div>
+      <nav class="nav"><svg viewBox="0 0 24 24"><path d="M4 8V5h3M17 5h3v3M20 16v3h-3M7 19H4v-3"/><circle cx="12" cy="12" r="2.5"/></svg><svg viewBox="0 0 24 24"><path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/></svg><svg viewBox="0 0 24 24"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg><svg class="on" viewBox="0 0 24 24"><circle cx="12" cy="10" r="5"/><path d="M9 14.5 8 20l4-2 4 2-1-5.5"/></svg><svg viewBox="0 0 24 24"><path d="M9 5 4 7v12l5-2 6 2 5-2V5l-5 2z"/></svg></nav>
+    </div>
+  </div>
+</div>
+
+<!-- ============ P3 ============ -->
+<div class="card pal p3" data-choice="p3" onclick="toggleSelect(this)">
+  <div class="pal-head">
+    <div><h3>3 · Djup skog &amp; guld</h3>
+      <p>Mest dramatisk: nästan svartgrön skog, klarare koppar och riktigt guld. Högst kontrast och mest "lyx", men längst från dagens mjuka ton.</p></div>
+    <div class="sw"><span><i style="background:#f3eee4"></i>Papper</span><span><i style="background:#1b2420"></i>Bläck</span><span><i style="background:#12261e"></i>Skog</span><span><i style="background:#b0582b"></i>Koppar</span><span><i style="background:#e8c27a"></i>Ljusguld</span><span><i style="background:#c9a24a"></i>Guld</span></div>
+  </div>
+  <div class="row">
+    <div class="ph">
+      <div class="hero"><div class="hero-c"><p class="kick"><b></b>Dagens fågel</p><h1 class="serif">Rödhake<em class="serif">finns nära dig nu.</em></h1><div class="meta"><span>Erithacus rubecula</span><span>0 / 3 fångade</span></div></div></div>
+      <div class="body"><p class="kick"><b></b>Identifiera</p><h2 class="serif">Tre sätt att <em>fånga.</em></h2><p class="note cav">7 fynd den här veckan</p>
+        <div class="prim"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Starta kameran</span></div>
+        <div class="r"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="1.5"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div><div class="t"><b class="serif">Från ett foto</b><small>Välj en bild i galleriet</small></div></div>
+      </div>
+      <nav class="nav"><svg class="on" viewBox="0 0 24 24"><path d="M4 8V5h3M17 5h3v3M20 16v3h-3M7 19H4v-3"/><circle cx="12" cy="12" r="2.5"/></svg><svg viewBox="0 0 24 24"><path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/></svg><svg viewBox="0 0 24 24"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="5"/><path d="M9 14.5 8 20l4-2 4 2-1-5.5"/></svg><svg viewBox="0 0 24 24"><path d="M9 5 4 7v12l5-2 6 2 5-2V5l-5 2z"/></svg></nav>
+    </div>
+    <div class="ph">
+      <div class="tb"><p class="kick"><b></b>Märken · Troférum</p><h2 class="serif">Kom hem med ett <em>märke.</em></h2><div class="orn">❦</div>
+        <div class="troph"><div class="seal gold" style="width:44px">№28</div><div class="t"><small>Ditt troférum</small><b class="serif">Fältmedlem</b><i>3 troféer</i></div></div>
+        <div class="stats"><span><em>12</em>upplåsta</span><span><em>22</em>kvar att jaga</span></div>
+        <div class="grid"><div class="seal">1</div><div class="seal">2</div><div class="seal navy">3</div><div class="seal">4</div><div class="seal gold">5</div><div class="seal">6</div><div class="seal off">7</div><div class="seal off">8</div><div class="seal off">9</div><div class="seal off">10</div><div class="seal off">11</div><div class="seal off">12</div></div>
+      </div>
+      <nav class="nav"><svg viewBox="0 0 24 24"><path d="M4 8V5h3M17 5h3v3M20 16v3h-3M7 19H4v-3"/><circle cx="12" cy="12" r="2.5"/></svg><svg viewBox="0 0 24 24"><path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/></svg><svg viewBox="0 0 24 24"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg><svg class="on" viewBox="0 0 24 24"><circle cx="12" cy="10" r="5"/><path d="M9 14.5 8 20l4-2 4 2-1-5.5"/></svg><svg viewBox="0 0 24 24"><path d="M9 5 4 7v12l5-2 6 2 5-2V5l-5 2z"/></svg></nav>
+    </div>
+  </div>
+</div>
+</div>
