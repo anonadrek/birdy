@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import se.birdy.app.data.premium.FormattedPrices
 import se.birdy.domain.premium.PremiumRepository
+import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
 
 class PremiumViewModel(
@@ -24,7 +25,14 @@ class PremiumViewModel(
     init {
         viewModelScope.launch {
             repository.state.collect { backend ->
-                _state.update { it.copy(backendState = backend) }
+                _state.update {
+                    val justActivated = it.awaitingActivation && backend is PremiumState.Active
+                    it.copy(
+                        backendState = backend,
+                        purchaseCompleted = it.purchaseCompleted || justActivated,
+                        awaitingActivation = it.awaitingActivation && !justActivated,
+                    )
+                }
             }
         }
         viewModelScope.launch {
@@ -45,7 +53,7 @@ class PremiumViewModel(
 
     fun purchase() {
         if (_state.value.purchaseInFlight) return
-        _state.update { it.copy(purchaseInFlight = true) }
+        _state.update { it.copy(purchaseInFlight = true, awaitingActivation = true) }
         viewModelScope.launch {
             try {
                 launchPurchase(_state.value.selectedTier)
