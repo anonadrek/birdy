@@ -1,0 +1,35 @@
+---
+// Stroke icons from the approved mockup (24×24 grid). Styled by the global `svg.i` rule.
+const paths = {
+  camera: '<path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+  photo: '<rect x="4" y="5" width="16" height="14" rx="1.5"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-4 4 3 3-2 4 3"/>',
+  wave: '<path d="M4 12h1M8 8v8M12 5v14M16 9v6M20 11v2"/>',
+  pencil: '<path d="M4 20h4L19 9l-4-4L4 16z"/>',
+  map: '<path d="M9 5 4 7v12l5-2 6 2 5-2V5l-5 2z"/><path d="M9 5v12M15 7v12"/>',
+  pdf: '<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 13h6M9 17h4"/>',
+  chart: '<path d="M5 19V11M10 19V6M15 19v-5M20 19V9"/>',
+  badge: '<circle cx="12" cy="10" r="5"/><path d="M9 14.5 8 20l4-2 4 2-1-5.5"/>',
+  'no-account': '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.5-4 4-5.5 7-5.5s5.5 1.5 7 5.5"/><path d="M4 4l16 16"/>',
+  phone: '<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17h2"/>',
+  pin: '<path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/>',
+  'arrow-left': '<path d="M15 6l-6 6 6 6"/>',
+  'arrow-right': '<path d="M9 6l6 6-6 6"/>',
+  menu: '<path d="M4 9h16M4 15h16"/>',
+  'tab-identify': '<path d="M4 8V5h3M17 5h3v3M20 16v3h-3M7 19H4v-3"/><circle cx="12" cy="12" r="2.5"/>',
+  'tab-journal': '<path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/>',
+  'tab-archive': '<path d="M7 4h10v16l-5-3.5L7 20z"/>',
+  'tab-badges': '<circle cx="12" cy="10" r="5"/><path d="M9 14.5 8 20l4-2 4 2-1-5.5"/>',
+  'tab-map': '<path d="M9 5 4 7v12l5-2 6 2 5-2V5l-5 2z"/>',
+} as const;
+
+export type IconName = keyof typeof paths;
+
+interface Props {
+  name: IconName;
+  size?: number;
+  class?: string;
+}
+const { name, size = 18, class: cls } = Astro.props;
+---
+
+<svg class:list={['i', cls]} width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false" set:html={paths[name]} />

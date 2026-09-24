@@ -1,0 +1,12 @@
+---
+// The small uppercase line with a hairline before it (and after it when centered).
+// Colour comes from --kick-color on an ancestor (rust by default, apricot on moss).
+interface Props {
+  text: string;
+  center?: boolean;
+  class?: string;
+}
+const { text, center = false, class: cls } = Astro.props;
+---
+
+<p class:list={['kick', { 'kick--center': center }, cls]}><span class="kick-line" aria-hidden="true"></span>{text}{center && <span class="kick-line" aria-hidden="true"></span>}</p>

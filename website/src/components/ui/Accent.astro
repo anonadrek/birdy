@@ -1,0 +1,10 @@
+---
+// Renders copy that uses the `*word*` accent syntax with <em> for the accent, for places
+// where JournalHeadline's heading wrapper is not wanted (phone screens, card titles).
+import { parseHeadline } from '../../lib/headline';
+
+interface Props { text: string }
+const tokens = parseHeadline(Astro.props.text);
+---
+
+{tokens.map((t) => (t.kind === 'accent' ? <em>{t.text}</em> : t.text))}
