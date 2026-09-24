@@ -280,8 +280,8 @@ test.describe('appkarusellen', () => {
       await page.locator('#app').scrollIntoViewIfNeeded();
       const transforms = await page.locator('#app .slide').evaluateAll((els) => els.map((e) => getComputedStyle(e).transform));
       expect(transforms.every((t) => t === 'none')).toBe(true);
-      const running = await page.evaluate(() => document.getAnimations().filter((a) => a.playState === 'running').length);
-      expect(running).toBe(0);
+      // Reduced motion shortens every animation to 0.01 ms, but each still needs a frame to finish; poll until none run.
+      await expect.poll(() => page.evaluate(() => document.getAnimations().filter((a) => a.playState === 'running').length)).toBe(0);
     });
   });
 });
