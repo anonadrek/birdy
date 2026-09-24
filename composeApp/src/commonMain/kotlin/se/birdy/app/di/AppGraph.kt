@@ -58,6 +58,7 @@ import se.birdy.ml.ClassifierMode
 import se.birdy.ml.ScanSourceSerialization
 import se.birdy.ml.toScanSource
 
+@Suppress("LongParameterList") // DI root: one constructor parameter per injected platform dependency, by design.
 class AppGraph(
     val repository: SpeciesRepository,
     val classifierBootstrap: ClassifierBootstrap,
