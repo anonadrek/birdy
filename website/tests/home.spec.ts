@@ -11,8 +11,11 @@ test.describe('meny och sidfot', () => {
       await expect(nav.locator('.links a').first()).toHaveText(label);
       await expect(nav.locator('.nav-cta')).toHaveText(getApp);
       await expect(nav.locator('.nav-cta')).toHaveAttribute('href', `${path}#download`);
-      await page.mouse.wheel(0, 3000);
+      await expect(nav).not.toHaveClass(/is-solid/);
+      await expect(nav).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+      await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
       await expect(nav).toHaveClass(/is-solid/);
+      await expect(nav).toHaveCSS('background-color', 'rgb(31, 42, 25)');
       expect(errors).toEqual([]);
     });
   }
@@ -86,5 +89,59 @@ test.describe('utan JavaScript', () => {
     await page.goto('/sv/');
     await expect(page.locator('#site-nav')).toHaveCSS('background-color', 'rgb(31, 42, 25)');
     await expect(page.locator('#site-nav .menu-toggle')).toBeHidden();
+  });
+});
+
+test.describe('första vyn', () => {
+  test.use({ reducedMotion: 'reduce' });
+
+  for (const [path, line1, line2, kicker] of [
+    ['/sv/', 'Känn igen fågeln.', 'Bevara stunden.', 'Fågelguide och fältdagbok'],
+    ['/', 'Know the bird.', 'Keep the moment.', 'Bird guide and field journal'],
+  ] as const) {
+    test(`rubrik, kicker, metarad och telefon på ${path}`, async ({ page }) => {
+      const errors = trackConsoleErrors(page);
+      await page.goto(path);
+      const hero = page.locator('[data-hero]');
+      await expect(hero.locator('h1')).toContainText(line1);
+      await expect(hero.locator('h1 em')).toHaveText(line2);
+      await expect(hero.locator('.copy .kick')).toHaveText(kicker);
+      await expect(hero.locator('.meta li')).toHaveCount(3);
+      await expect(hero.locator('[data-hero-phone] .ph[role="img"]')).toHaveCount(1);
+      await expect(hero.locator('[data-robin] img').first()).toBeVisible();
+      await expect(hero.locator('[data-birdy]')).toBeVisible();
+      expect(errors).toEqual([]);
+    });
+  }
+
+  for (const width of [390, 1024, 1280, 1440, 1920]) {
+    test(`telefonen täcker inte rödhaken och rödhaken syns helt i ${width} px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/sv/');
+      const phone = (await page.locator('[data-hero-phone] .ph').boundingBox())!;
+      const robin = (await page.locator('[data-robin]').boundingBox())!;
+      const overlaps = phone.x < robin.x + robin.width && robin.x < phone.x + phone.width
+        && phone.y < robin.y + robin.height && robin.y < phone.y + phone.height;
+      expect(overlaps, `telefon ${JSON.stringify(phone)} rödhake ${JSON.stringify(robin)}`).toBe(false);
+      expect(robin.x).toBeGreaterThanOrEqual(0);
+      expect(robin.x + robin.width).toBeLessThanOrEqual(width);
+    });
+  }
+
+  test('rödhakens ruta börjar under menyn i 1920 px', async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 900 });
+    await page.goto('/sv/');
+    const nav = (await page.locator('#site-nav').boundingBox())!;
+    const robin = (await page.locator('[data-robin]').boundingBox())!;
+    expect(robin.y).toBeGreaterThanOrEqual(nav.y + nav.height);
+  });
+
+  test('rubriken ryms på två rader på dator', async ({ page }) => {
+    for (const width of [1024, 1280, 1440, 1920]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/sv/');
+      const lines = await page.locator('[data-hero] h1').evaluate((h) => Math.round(h.getBoundingClientRect().height / parseFloat(getComputedStyle(h).lineHeight)));
+      expect(lines, `${width} px`).toBeLessThanOrEqual(2);
+    }
   });
 });

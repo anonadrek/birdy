@@ -21,12 +21,27 @@
     "menuClose": "Close menu"
   },
   "hero": {
-    "eyebrow": "Your field guide, wherever you go",
+    "kicker": "Bird guide and field journal",
     "headline": "Know the bird.",
     "line2": "Keep the moment.",
-    "sub": "Identify birds by sight or song. Explore 839 European species and save every find in your own private field journal.",
-    "scrollCue": "Explore Birdy",
-    "plateCaption": "Pl. I: in the field"
+    "sub": "Point the camera, pick a photo or let the bird sing. Birdy suggests the species right on your phone, and you save the sighting in your own field journal.",
+    "metaLabel": "Birdy at a glance",
+    "meta": ["839 European species", "Works without a signal", "No account"]
+  },
+  "phone": {
+    "match": {
+      "label": "Birdy's match screen: European robin, a confident 94 percent match, first in the field journal",
+      "kicker": "Match · Find no. 12",
+      "species": "European Robin",
+      "latin": "Erithacus rubecula",
+      "confidence": "Confident match · 94%",
+      "newSpecies": "New species",
+      "first": "First in your field journal!",
+      "seal": "No. 12",
+      "note": "Add a note",
+      "save": "Save to field journal",
+      "more": "Not it? See more suggestions"
+    }
   },
   "appStoreBadge": {
     "top": "Coming soon to the",

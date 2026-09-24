@@ -1,0 +1,40 @@
+/* Phone mockups drawn in code (hero + app tour), ported from the approved mockup.
+   Everything is prefixed ph- so it never collides with page classes. Design size 250×520 px. */
+.ph { width: 250px; height: 520px; border-radius: 34px; overflow: hidden; position: relative; flex: none; background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-size: 10px; line-height: 1.3; text-align: left; user-select: none; box-shadow: 0 0 0 7px #0F140C, 0 0 0 8px rgba(255, 255, 255, .1), 0 30px 50px rgba(0, 0, 0, .4); }
+.ph-screen { position: absolute; inset: 0; }
+.ph-status { position: absolute; top: 10px; left: 22px; right: 22px; display: flex; justify-content: space-between; font-size: 9.5px; font-weight: 600; z-index: 6; color: var(--cream); }
+.ph-status--dark { color: var(--ink); }
+.ph h4, .ph h5 { font-family: var(--font-serif); font-weight: 400; margin: 0; }
+.ph p { margin: 0; }
+.ph .kick { font-size: 7.5px; gap: 6px; margin: 0 0 6px; letter-spacing: .14em; }
+.ph .kick-line { width: 12px; }
+
+/* Photo top with the name on a moss gradient */
+.ph-hero { position: relative; overflow: hidden; }
+.ph-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.ph-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(31, 42, 25, .97) 0%, rgba(31, 42, 25, .6) 40%, rgba(31, 42, 25, .05) 78%, rgba(0, 0, 0, .2) 100%); }
+.ph-hc { position: absolute; left: 16px; right: 16px; bottom: 14px; z-index: 2; color: var(--cream); --kick-color: var(--apricot); }
+.ph-hc h4 { font-size: 32px; line-height: .95; letter-spacing: -.02em; }
+.ph-hc h4 em { display: block; font-size: 15px; color: var(--apricot); margin-top: 4px; letter-spacing: 0; }
+.ph-hc .ph-name { font-size: 34px; }
+.ph-latin { font-family: var(--font-serif); font-style: italic; color: rgba(255, 248, 238, .75); font-size: 11px; }
+.ph-pmeta { display: flex; justify-content: space-between; margin-top: 9px; padding-top: 6px; border-top: 1px solid rgba(255, 255, 255, .28); font-size: 7px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 248, 238, .72); }
+
+/* Match (result) */
+.ph-conf { display: flex; align-items: center; gap: 7px; margin-top: 7px; font-size: 8.5px; font-weight: 600; }
+.ph-conf-bar { width: 56px; height: 3px; border-radius: 3px; background: rgba(255, 255, 255, .2); overflow: hidden; }
+.ph-conf-bar span { display: block; height: 100%; background: var(--apricot); transform-origin: left; }
+.ph-sheet { position: absolute; left: 0; right: 0; bottom: 0; background: var(--paper); border-radius: 20px 20px 0 0; padding: 14px 16px 0; }
+.ph-srow { display: flex; align-items: center; gap: 9px; }
+.ph-srow .t { flex: 1; }
+.ph-srow small { display: block; font-size: 7px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; font-weight: 600; }
+.ph-srow b { display: block; font-family: var(--font-script); font-size: 18px; color: var(--rust); line-height: 1; }
+.ph-noterow { margin: 10px 0; padding: 8px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 9.5px; display: flex; gap: 6px; align-items: center; }
+.ph-cta { display: flex; justify-content: center; padding: 10px; border-radius: 12px; color: var(--cream); font-weight: 600; font-size: 10.5px; background: linear-gradient(135deg, var(--rust), var(--rust-deep)); box-shadow: 0 5px 12px rgba(31, 42, 25, .25), inset 0 1px 0 rgba(255, 255, 255, .18); }
+.ph-ghost { text-align: center; margin-top: 8px; font-size: 9.5px; color: var(--rust); font-weight: 600; }
+
+/* Entry animation, hero phone only */
+.ph--animate .ph-conf-bar span { animation: ph-fill 1.2s .9s var(--ease-paper) both; }
+.ph--animate .ph-srow .seal { animation: ph-press .7s 1.6s var(--ease-paper) both; }
+@keyframes ph-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ph-press { 0% { transform: scale(1.6) rotate(-20deg); opacity: 0; } 60% { transform: scale(.92) rotate(-6deg); opacity: 1; } 100% { transform: scale(1) rotate(-8deg); } }

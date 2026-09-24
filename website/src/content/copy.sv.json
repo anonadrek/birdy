@@ -21,12 +21,27 @@
     "menuClose": "Stäng menyn"
   },
   "hero": {
-    "eyebrow": "Din fågelguide, var du än är",
+    "kicker": "Fågelguide och fältdagbok",
     "headline": "Känn igen fågeln.",
     "line2": "Bevara stunden.",
-    "sub": "Identifiera fåglar med bild eller sång. Utforska 839 europeiska arter och spara varje fynd i din privata fältdagbok.",
-    "scrollCue": "Upptäck Birdy",
-    "plateCaption": "Pl. I: i fält"
+    "sub": "Rikta kameran, välj ett foto eller låt fågeln sjunga. Birdy föreslår arten direkt i telefonen, och du sparar fyndet i din egen fältdagbok.",
+    "metaLabel": "Birdy i korthet",
+    "meta": ["839 europeiska arter", "Fungerar utan täckning", "Inget konto"]
+  },
+  "phone": {
+    "match": {
+      "label": "Birdys träffskärm: rödhake, säker match 94 procent, första i fältboken",
+      "kicker": "Match · Fynd nr 12",
+      "species": "Rödhake",
+      "latin": "Erithacus rubecula",
+      "confidence": "Säker match · 94 %",
+      "newSpecies": "Ny art",
+      "first": "Första i din fältbok!",
+      "seal": "Nr 12",
+      "note": "Lägg till en anteckning",
+      "save": "Spara i fältboken",
+      "more": "Inte den? Se fler förslag"
+    }
   },
   "appStoreBadge": {
     "top": "Snart på",

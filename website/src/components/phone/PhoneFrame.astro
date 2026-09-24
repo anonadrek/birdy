@@ -1,0 +1,19 @@
+---
+import '../../styles/phone.css';
+
+interface Props {
+  /** What the screen shows, read by screen readers. The drawn UI inside is decorative. */
+  label: string;
+  /** Dark status bar text, for screens with a light top. */
+  darkStatus?: boolean;
+  /** Plays the confidence bar and stamp entry animation (hero). */
+  animate?: boolean;
+  class?: string;
+}
+const { label, darkStatus = false, animate = false, class: cls } = Astro.props;
+---
+
+<div class:list={['ph', { 'ph--animate': animate }, cls]} role="img" aria-label={label}>
+  <div class:list={['ph-status', { 'ph-status--dark': darkStatus }]} aria-hidden="true"><span>9:41</span><span>●●● ▮</span></div>
+  <div class="ph-screen" aria-hidden="true"><slot /></div>
+</div>

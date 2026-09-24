@@ -1,76 +1,89 @@
 ---
-import { Image } from 'astro:assets';
-import robin from '../assets/hero-robin.webp';
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
 import AppStoreBadge from './ui/AppStoreBadge.astro';
+import Kicker from './ui/Kicker.astro';
+import HeroScene from './hero/HeroScene.astro';
+import BirdyBird from './hero/BirdyBird.astro';
+import PhoneFrame from './phone/PhoneFrame.astro';
+import MatchScreen from './phone/screens/MatchScreen.astro';
+import phoneRobin from '../assets/hero/phone-robin.webp';
 import { type Locale, getCopy } from '../lib/i18n';
 
-interface Props { locale: Locale; }
+interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getCopy(locale);
 const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
 ---
 
-<section class="hero" aria-labelledby="hero-title">
-  <Image
-    class="hero-photo"
-    src={robin}
-    alt={locale === 'sv' ? 'Rödhake på en mossig gren i en skog i gryningen' : 'European robin perched on a mossy branch at dawn'}
-    widths={[800, 1200, 1800]}
-    sizes="100vw"
-    loading="eager"
-    fetchpriority="high"
-    decoding="async"
-  />
-  <div class="shade" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <p class="kicker"><span class="kicker-line"></span>{t.hero.eyebrow}</p>
-      <h1 id="hero-title">{t.hero.headline}<em>{t.hero.line2}</em></h1>
-      <p class="sub">{t.hero.sub}</p>
-      <div class="cta">
-        <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="large" loading="eager" />
-        <AppStoreBadge locale={locale} size="large" />
+<header class="hero" data-hero data-nav-until>
+  <div class="photo">
+    <HeroScene />
+    <div class="copy-wrap">
+      <div class="wrap">
+        <div class="copy">
+          <BirdyBird />
+          <Kicker text={t.hero.kicker} />
+          <h1>{t.hero.headline}<em>{t.hero.line2}</em></h1>
+          <p class="sub">{t.hero.sub}</p>
+          <div class="badges">
+            <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="small" loading="eager" />
+            <AppStoreBadge locale={locale} size="small" />
+          </div>
+        </div>
       </div>
-      <a class="discover" href="#loop">{t.hero.scrollCue}<span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="meta-wrap">
+      <div class="wrap"><ul class="meta" aria-label={t.hero.metaLabel}>{t.hero.meta.map((m) => <li>{m}</li>)}</ul></div>
     </div>
   </div>
-  <div class="hero-bottom" aria-hidden="true">
-    <span>Birdy · Field journal</span>
-    <span>{locale === 'sv' ? '839 europeiska arter' : '839 European species'}</span>
+  <div class="phone-slot">
+    <div class="wrap">
+      <div class="hero-phone" data-hero-phone>
+        <PhoneFrame label={t.phone.match.label} animate>
+          <MatchScreen photo={phoneRobin} copy={t.phone.match} confidence={94} eager />
+        </PhoneFrame>
+      </div>
+    </div>
   </div>
-</section>
+</header>
+
+<script>
+  import './hero/hero-motion';
+</script>
 
 <style>
-  .hero { position: relative; min-height: min(760px, calc(100svh - 76px)); overflow: hidden; background: var(--color-rust-deep); color: var(--color-text-on-hero); display: flex; align-items: center; }
-  .hero :global(.hero-photo) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 49%; animation: photo-arrive 1.6s var(--ease-paper) both; }
-  .shade { position: absolute; inset: 0; background: linear-gradient(0deg,rgba(158,67,27,.14),rgba(158,67,27,.14)), linear-gradient(90deg, rgba(60,24,18,.96) 0%, rgba(81,32,20,.88) 28%, rgba(104,43,24,.54) 51%, rgba(137,60,29,.1) 80%), linear-gradient(0deg, rgba(65,27,18,.6), transparent 30%); }
-  .hero-inner { position: relative; width: 100%; max-width: 1320px; margin: auto; padding: 5.5rem clamp(1.5rem,7vw,7rem) 7rem; }
-  .hero-copy { max-width: 680px; animation: copy-arrive .85s .1s var(--ease-paper) both; }
-  .kicker { display: flex; align-items: center; gap: .9rem; margin: 0 0 2rem; color: var(--color-apricot); font-size: .78rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
-  .kicker-line { width: 34px; height: 1px; background: currentColor; }
-  h1 { font-size: clamp(3.7rem,6.8vw,7.1rem); letter-spacing: -.035em; font-style: normal; line-height: .98; margin: 0; max-width: 760px; text-wrap: balance; }
-  h1 em { display: block; font-weight: 400; color: var(--color-apricot); }
-  .sub { margin: 2rem 0 0; max-width: 33rem; color: #fbe9d7; font-size: clamp(1rem,1.55vw,1.18rem); line-height: 1.65; }
-  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.5rem; margin-top: 2rem; }
-  .discover { display: inline-flex; align-items: center; gap: 1.25rem; margin-top: 2.8rem; padding-bottom: .35rem; border-bottom: 1px solid rgba(255,255,255,.5); color: #fff4e9; font-size: .85rem; font-weight: 600; transition: gap .25s, border-color .25s; }
-  .discover:hover { gap: 1.7rem; border-color: var(--color-apricot); }
-  .discover span { font-size: 1.15rem; }
-  .hero-bottom { position: absolute; bottom: 1.55rem; left: clamp(1.5rem,7vw,7rem); right: clamp(1.5rem,7vw,7rem); display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.32); padding-top: .8rem; text-transform: uppercase; letter-spacing: .14em; font-size: .65rem; color: rgba(255,255,255,.73); }
-  @keyframes photo-arrive { from { transform: scale(1.045); filter: brightness(.8); } to { transform: scale(1); filter: brightness(1); } }
-  @keyframes copy-arrive { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-  @media (max-width: 780px) {
-    .hero { min-height: 750px; align-items: flex-end; }
-    .hero :global(.hero-photo) { object-position: 63% center; }
-    .shade { background: linear-gradient(0deg, rgba(60,24,18,.99) 0%, rgba(76,29,19,.89) 35%, rgba(94,39,21,.2) 82%), linear-gradient(90deg,rgba(73,30,20,.28),transparent); }
-    .hero-inner { padding: 17rem 1.5rem 6.6rem; }
-    .hero-copy { max-width: 36rem; }
-    h1 { font-size: clamp(3.35rem,11vw,5.5rem); }
-    .sub { margin-top: 1.3rem; }
-    .kicker { margin-bottom: 1.1rem; }
-    .discover { margin-top: 1.8rem; }
-    .hero-bottom { left: 1.5rem; right: 1.5rem; }
+  .hero { position: relative; background: var(--moss); color: var(--cream); --kick-color: var(--apricot); }
+  .hero :global(:focus-visible) { outline-color: var(--apricot); }
+  .photo { position: relative; }
+  .copy-wrap { position: relative; z-index: 2; padding-top: calc(max(440px, 56.28vw) - 110px); }
+  .copy { max-width: 470px; }
+  h1 { font-size: 44px; line-height: .95; letter-spacing: -.025em; }
+  h1 em { display: block; color: var(--apricot); }
+  .sub { font-size: 15px; line-height: 1.65; color: rgba(255, 248, 238, .86); margin: 16px 0 20px; max-width: 28rem; }
+  .meta-wrap { position: relative; z-index: 2; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 26px 0 0; padding: 10px 0 22px; border-top: 1px solid rgba(255, 255, 255, .28); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 248, 238, .78); }
+  /* Below 1280 px the phone hangs under the text and overlaps the next section (mockup, mobile). */
+  .phone-slot { position: relative; z-index: 5; }
+  .phone-slot > .wrap { display: flex; justify-content: center; }
+  .hero-phone { margin: -10px 0 -150px; transform: scale(.86) rotate(-2deg); }
+
+  @media (min-width: 761px) {
+    h1 { font-size: clamp(46px, 4.6vw, 64px); }
+    .sub { font-size: 16px; margin: 22px 0 26px; }
   }
-  @media (max-width: 400px) { .hero { min-height: 760px; } .hero-inner { padding-top: 12rem; } h1 { font-size: 3.25rem; } }
-  @media (prefers-reduced-motion: reduce) { .hero :global(.hero-photo), .hero-copy { animation: none; } }
+  @media (min-width: 1024px) {
+    .photo { height: clamp(640px, min(86svh, 58vw), 820px); }
+    .copy-wrap { position: absolute; inset: 0; display: flex; align-items: center; padding: 0; }
+    .copy-wrap > .wrap { width: 100%; }
+    .meta-wrap { position: absolute; left: 0; right: 0; bottom: 22px; }
+    .meta { gap: 34px; margin: 0; padding: 12px 0 0; font-size: 10.5px; }
+    .hero-phone { margin: -40px 0 -150px; transform: rotate(-3deg); }
+  }
+  /* 1280 px and up: the phone stands in the gap between the text column and the robin. */
+  @media (min-width: 1280px) {
+    .phone-slot { position: absolute; inset: 0; pointer-events: none; }
+    .phone-slot > .wrap { display: block; position: relative; height: 100%; }
+    .hero-phone { position: absolute; left: 548px; top: 190px; margin: 0; pointer-events: auto; animation: hero-rise 1s .2s var(--ease-paper) both; }
+  }
+  @keyframes hero-rise { from { opacity: 0; translate: 0 30px; } to { opacity: 1; translate: 0 0; } }
 </style>

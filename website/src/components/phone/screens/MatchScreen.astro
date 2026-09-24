@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Icon from '../../ui/Icon.astro';
+import Kicker from '../../ui/Kicker.astro';
+
+interface Props {
+  photo: ImageMetadata;
+  photoPosition?: string;
+  copy: {
+    kicker: string; species: string; latin: string; confidence: string; newSpecies: string;
+    first: string; seal: string; note: string; save: string; more: string;
+  };
+  /** 0 to 100, drawn as the confidence bar. */
+  confidence: number;
+  eager?: boolean;
+}
+const { photo, photoPosition = 'center', copy, confidence, eager = false } = Astro.props;
+---
+
+<div class="ph-hero" style="height:300px">
+  <Image src={photo} alt="" widths={[250, 500]} sizes="250px" style={`object-position:${photoPosition}`} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  <div class="ph-hc" style="bottom:34px">
+    <Kicker text={copy.kicker} />
+    <h4 class="ph-name">{copy.species}</h4>
+    <i class="ph-latin">{copy.latin}</i>
+    <div class="ph-conf"><div class="ph-conf-bar"><span style={`width:${confidence}%`}></span></div>{copy.confidence}</div>
+  </div>
+</div>
+<div class="ph-sheet" style="top:278px">
+  <div class="ph-srow">
+    <div class="t"><small>{copy.newSpecies}</small><b>{copy.first}</b></div>
+    <div class="seal">{copy.seal}</div>
+  </div>
+  <div class="ph-noterow"><Icon name="pencil" size={12} />{copy.note}</div>
+  <div class="ph-cta">{copy.save}</div>
+  <div class="ph-ghost">{copy.more}</div>
+</div>
