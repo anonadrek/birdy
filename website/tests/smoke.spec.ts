@@ -8,7 +8,8 @@ test.describe('EN landing /', () => {
     const response = await page.goto('/');
     expect(response?.status()).toBe(200);
 
-    await expect(page.locator('h1')).toContainText('field journal');
+    await expect(page.locator('h1')).toContainText('Know the bird.');
+    await expect(page.locator('h1')).toContainText('Keep the moment.');
 
     const playLink = page.locator(
       'a[href*="play.google.com/store/apps/details?id=se.birdy.android"]',
@@ -34,7 +35,8 @@ test.describe('SV landing /sv/', () => {
     const response = await page.goto('/sv/');
     expect(response?.status()).toBe(200);
 
-    await expect(page.locator('h1')).toContainText('fältdagbok');
+    await expect(page.locator('h1')).toContainText('Känn igen fågeln.');
+    await expect(page.locator('h1')).toContainText('Bevara stunden.');
 
     const playLink = page.locator(
       'a[href*="play.google.com/store/apps/details?id=se.birdy.android"]',
@@ -43,6 +45,40 @@ test.describe('SV landing /sv/', () => {
 
     expect(consoleErrors, `Console errors: ${consoleErrors.join('\n')}`).toEqual([]);
   });
+});
+
+test.describe('Field Notes', () => {
+  test('Swedish pages fit a narrow mobile viewport', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    for (const path of ['/sv/', '/sv/blog/', '/sv/blog/why-birdy/']) {
+      await page.goto(path);
+      const width = await page.evaluate(() => document.documentElement.scrollWidth);
+      expect(width, `${path} should not overflow horizontally`).toBeLessThanOrEqual(390);
+    }
+  });
+
+  for (const [locale, prefix, title] of [
+    ['en', '', 'Why Birdy exists'],
+    ['sv', '/sv', 'Varför Birdy finns'],
+  ] as const) {
+    test(`${locale} index and article have localized navigation and metadata`, async ({ page }) => {
+      const consoleErrors = trackConsoleErrors(page);
+      const index = await page.goto(`${prefix}/blog/`);
+      expect(index?.status()).toBe(200);
+      await expect(page.locator('main h1')).toHaveCount(1);
+      await expect(page.locator(`main a[href="${prefix}/blog/why-birdy/"]`).first()).toBeVisible();
+
+      const article = await page.goto(`${prefix}/blog/why-birdy/`);
+      expect(article?.status()).toBe(200);
+      await expect(page.locator('main h1')).toHaveText(title);
+      await expect(page.locator('.article-prose h2')).toHaveCount(3);
+      await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'article');
+      await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', 'https://birdy.community/blog/why-birdy/');
+      await expect(page.locator('link[rel="alternate"][hreflang="sv"]')).toHaveAttribute('href', 'https://birdy.community/sv/blog/why-birdy/');
+      await expect(page.locator('footer a[href="https://www.albit.se/#produkter"]')).toContainText('albIT');
+      expect(consoleErrors).toEqual([]);
+    });
+  }
 });
 
 test.describe('Legal section', () => {

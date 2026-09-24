@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Birdy — Identify birds and keep a field journal",
+    "title": "Birdy: Identify birds and keep a field journal",
     "description": "Identify 839 European bird species by photo, camera or song. Save sightings in a private field journal, explore the bird guide and use Birdy offline. Available for Android; coming to iPhone.",
     "ogLocale": "en_US",
     "htmlLang": "en"
@@ -20,7 +20,7 @@
     "line2": "Keep the moment.",
     "sub": "Identify birds by sight or song. Explore 839 European species and save every find in your own private field journal.",
     "scrollCue": "Explore Birdy",
-    "plateCaption": "Pl. I — in the field"
+    "plateCaption": "Pl. I: in the field"
   },
   "appStoreBadge": {
     "top": "Coming soon to the",
@@ -49,12 +49,12 @@
     "sub": "Hold the button and let the bird sing. Birdy listens and names it.",
     "body": "Record a short birdsong and Birdy suggests a match. The audio model runs on your phone, so nothing needs to be uploaded.",
     "hint": "tap to listen",
-    "caption": "field recording, on-device"
+    "caption": "field recording, processed on your phone"
   },
   "inside": {
     "eyebrow": "INSIDE THE APP",
     "headline": "The whole field guide, *in your pocket.*",
-    "sub": "Search, learn, save and revisit — even without a signal.",
+    "sub": "Search, learn, save and revisit. It works without a signal.",
     "stats": [
       { "value": "839", "label": "species", "caption": "from common to rare" },
       { "value": "34", "label": "stamps", "caption": "earned by finding birds" },
@@ -73,7 +73,7 @@
     "eyebrow": "OPTIONAL · PREMIUM",
     "headline": "*Free* first.",
     "sub": "Premium adds a few extras if you want to go deeper.",
-    "body": "The core app is free, and always will be. Premium adds PDF export, seasonal stats and a handful of extra stamps — nice to have, never needed.",
+    "body": "Bird identification, the guide and your journal are free. Premium adds PDF export, seasonal statistics and extra stamps.",
     "cta": "See what's inside →",
     "ctaHref": "https://play.google.com/store/apps/details?id=se.birdy.android"
   },
@@ -81,22 +81,22 @@
     "eyebrow": "PRIVACY · NO PHOTOS LEAVE YOUR PHONE",
     "headline": "Fully *offline.*",
     "sub": "the AI lives in your phone",
-    "body": "No cloud, no tracking, no accounts — just you and the birds.",
+    "body": "Your photos and journal stay on your phone. No account is needed.",
     "wordmarkLabel": "ANDROID NOW · IPHONE COMING SOON"
   },
   "faq": {
     "eyebrow": "QUESTIONS · ANSWERED",
     "headline": "Before you *download.*",
     "items": [
-      { "q": "How is this different from Merlin?", "a": "Merlin is brilliant at identifying birds — use it, it's great. Birdy is about what happens after: keeping each find in a field journal that's yours, offline, with no account. Many birders use both." },
-      { "q": "Does it really work offline?", "a": "Yes. The AI runs entirely on your phone — both for camera and audio. No data leaves the device." },
+      { "q": "How is this different from Merlin?", "a": "Birdy combines bird identification with a private field journal. You can save each sighting on your phone and look back at it without an account." },
+      { "q": "Does it really work offline?", "a": "Yes. Camera and audio identification run on your phone. You can use the guide and journal without a connection." },
       { "q": "Do I need an account?", "a": "No. Open the app, point the camera, you're scanning. Your journal lives on the phone." },
       { "q": "Where are my photos stored?", "a": "On your device. Birdy never uploads photos to a server. There is no server." },
       { "q": "How accurate is the AI?", "a": "Good enough to learn from, honest when it's unsure. Every match shows a confidence level, and you always confirm before it's saved." },
-      { "q": "What's covered?", "a": "839 European birds — every species in the EBBA2 atlas plus close relatives, with descriptions, photos and range information." },
+      { "q": "What's covered?", "a": "839 European birds, including every species in the EBBA2 atlas and close relatives. Each entry includes descriptions, photos and range information." },
       { "q": "Is there an iOS version?", "a": "Birdy for iPhone is planned for release at the end of September 2026. Android is available today; the App Store link will appear here once the iPhone app is live." },
-      { "q": "What about audio?", "a": "Hold the mic button for 3 seconds. BirdNET-Lite runs on-device, same offline guarantee." },
-      { "q": "Other questions?", "a": "Email albin@abrahamssons.se — I read every one." }
+      { "q": "What about audio?", "a": "Hold the microphone button for 3 seconds. Birdy identifies the recording on your phone, even without a connection." },
+      { "q": "Other questions?", "a": "Email albin@abrahamssons.se. I read every message." }
     ]
   },
   "finalCta": {
@@ -113,29 +113,29 @@
     ],
     "credit": "Made by Albin · Sweden · 2026 · v1.2.0",
     "socialSoon": "coming soon",
-    "socialNote": "Birdy is landing on social media — links coming soon."
+    "socialNote": "Social media links are coming soon."
   },
   "alt": {
     "wingLogo": "Birdy wing logo",
     "wordmark": "Birdy wordmark",
     "playStoreBadge": "Get it on Google Play",
     "appStoreBadge": "Coming soon to the App Store",
-    "heroPlate": "Birdy on a phone — the identify screen pinned into the journal",
+    "heroPlate": "Birdy on a phone with the identification screen pinned into the journal",
     "scanScreen": "Birdy scan screen showing a live camera identifying a bird",
     "matchScreen": "Birdy match screen showing a confirmed species with stamp",
-    "observationDetail": "Birdy observation detail page in field-journal style",
+    "observationDetail": "Birdy observation detail page styled as a field journal",
     "archiveScreen": "Birdy archive screen browsing European species",
     "audioScan": "Birdy audio scan screen with waveform",
     "badgesGrid": "Birdy badges page with the stamp grid",
-    "identifyScreen": "Birdy identify home — three ways to catch a bird",
+    "identifyScreen": "Birdy identification screen with three ways to recognise a bird",
     "listenScreen": "Birdy audio identification screen with sound waveform",
     "journalScreen": "Birdy field journal listing saved bird sightings",
     "badgesScreen": "Birdy achievement stamps grid",
-    "mapScreen": "Birdy private on-device map of personal bird finds",
+    "mapScreen": "Birdy private map of personal bird sightings stored on the phone",
     "recapScreen": "Birdy weekly field report with a new species",
     "seasonScreen": "Birdy season statistics charting observations by month",
-    "glimpseHero": "Birdy intro screen — A field journal for finds",
-    "speciesScreen": "Birdy species page — read up on every European bird",
-    "panorama": "Birdy app screens — identify a bird, learn the species, and keep every find"
+    "glimpseHero": "Birdy introduction screen with a field journal for sightings",
+    "speciesScreen": "Birdy species page with information about European birds",
+    "panorama": "Birdy app screens showing bird identification, species information and saved sightings"
   }
 }

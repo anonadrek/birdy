@@ -9,9 +9,10 @@ interface Props {
   noAlternateLocale?: boolean;
   title?: string;
   description?: string;
+  articleDate?: string;
 }
 
-const { locale, pathname, noAlternateLocale = false, title, description } = Astro.props;
+const { locale, pathname, noAlternateLocale = false, title, description, articleDate } = Astro.props;
 const copy = getCopy(locale);
 const metaTitle = title ?? copy.meta.title;
 const metaDescription = description ?? copy.meta.description;
@@ -19,6 +20,7 @@ const altLocale: Locale = locale === 'en' ? 'sv' : 'en';
 const altPath = alternateHref(locale, pathname);
 const canonical = new URL(pathname, Astro.site).toString();
 const ogImageUrl = new URL(`/og-field-${locale}.png`, Astro.site).toString();
+const englishPath = locale === 'en' ? pathname : altPath;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -39,6 +41,17 @@ const jsonLd = {
       downloadUrl: 'https://play.google.com/store/apps/details?id=se.birdy.android',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'SEK' },
       inLanguage: locale,
+      image: ogImageUrl,
+    }] : []),
+    ...(articleDate ? [{
+      '@type': 'BlogPosting',
+      headline: metaTitle.replace(/ \| Birdy$/, ''),
+      description: metaDescription,
+      datePublished: articleDate,
+      inLanguage: locale,
+      mainEntityOfPage: canonical,
+      author: { '@type': 'Organization', name: 'Birdy' },
+      publisher: { '@type': 'Organization', name: 'Birdy' },
       image: ogImageUrl,
     }] : []),
     ...((pathname === '/' || pathname === '/sv/') ? [{
@@ -72,7 +85,7 @@ const jsonLd = {
         href={new URL(altPath, Astro.site).toString()}
       />
     )}
-    {!noAlternateLocale && <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site).toString()} />}
+    {!noAlternateLocale && <link rel="alternate" hreflang="x-default" href={new URL(englishPath, Astro.site).toString()} />}
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -85,7 +98,8 @@ const jsonLd = {
     <link rel="preload" href="/fonts/caveat-regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={articleDate ? 'article' : 'website'} />
+    {articleDate && <meta property="article:published_time" content={articleDate} />}
     <meta property="og:locale" content={copy.meta.ogLocale} />
     <meta property="og:title" content={metaTitle} />
     <meta property="og:description" content={metaDescription} />

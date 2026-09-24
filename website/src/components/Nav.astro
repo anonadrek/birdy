@@ -2,8 +2,8 @@
 import Wordmark from './ui/Wordmark.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 
-interface Props { locale: Locale; }
-const { locale } = Astro.props;
+interface Props { locale: Locale; switchLangHref?: string; }
+const { locale, switchLangHref } = Astro.props;
 const t = getCopy(locale);
 const home = locale === 'sv' ? '/sv/' : '/';
 ---
@@ -15,10 +15,11 @@ const home = locale === 'sv' ? '/sv/' : '/';
       <a href={`${home}#loop`}>{t.nav.howItWorks}</a>
       <a href={`${home}#glimpse`}>{t.nav.inside}</a>
       <a href={`${home}#coverage`}>{t.coverage.eyebrow}</a>
+      <a href={locale === 'sv' ? '/sv/blog/' : '/blog/'}>{locale === 'sv' ? 'Fältanteckningar' : 'Field Notes'}</a>
       <a href={`${home}#faq`}>{t.nav.faq}</a>
     </div>
     <div class="actions">
-      <a class="lang" href={t.nav.switchLangHref} lang={locale === 'sv' ? 'en' : 'sv'}>{t.nav.switchLang}</a>
+      <a class="lang" href={switchLangHref ?? t.nav.switchLangHref} lang={locale === 'sv' ? 'en' : 'sv'}>{t.nav.switchLang}</a>
       <a class="download" href={`${home}#download`}>{t.nav.getApp}<span aria-hidden="true">↗</span></a>
       <button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label={locale === 'sv' ? 'Öppna menyn' : 'Open menu'}>
         <span></span><span></span>
@@ -29,6 +30,7 @@ const home = locale === 'sv' ? '/sv/' : '/';
     <a href={`${home}#loop`}>{t.nav.howItWorks}</a>
     <a href={`${home}#glimpse`}>{t.nav.inside}</a>
     <a href={`${home}#coverage`}>{t.coverage.eyebrow}</a>
+    <a href={locale === 'sv' ? '/sv/blog/' : '/blog/'}>{locale === 'sv' ? 'Fältanteckningar' : 'Field Notes'}</a>
     <a href={`${home}#privacy`}>{t.nav.privacy}</a>
     <a href={`${home}#faq`}>{t.nav.faq}</a>
     <a href={`${home}#download`}>{t.nav.getApp}</a>

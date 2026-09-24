@@ -34,7 +34,7 @@ const others = LEGAL_DOCS.filter((d) => d.slug !== doc.slug);
         {others.map((o) => (
           <li>
             <a href={`/legal/${o.slug}/`}>{o.title}</a>
-            <span class="dash"> — </span>
+            <span class="dash"> · </span>
             <span class="desc">{o.description}</span>
           </li>
         ))}

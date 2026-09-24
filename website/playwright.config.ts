@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const port = Number(process.env.PLAYWRIGHT_PORT ?? 4321);
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
@@ -8,18 +10,18 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'list',
   use: {
-    baseURL: 'http://localhost:4321',
+    baseURL: `http://localhost:${port}`,
     trace: 'on-first-retry',
   },
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'], ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) },
     },
   ],
   webServer: {
-    command: 'npm run preview -- --port 4321',
-    url: 'http://localhost:4321',
+    command: `npm run preview -- --port ${port} --strictPort`,
+    url: `http://localhost:${port}`,
     timeout: 60_000,
     reuseExistingServer: !process.env.CI,
   },

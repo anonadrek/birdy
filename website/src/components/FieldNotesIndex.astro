@@ -1,0 +1,57 @@
+---
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+import Layout from '../layouts/Layout.astro';
+import { fieldNoteHref, getFieldNotes, fieldNotesHref } from '../lib/field-notes';
+import type { Locale } from '../lib/i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const notes = await getFieldNotes(locale);
+const sv = locale === 'sv';
+---
+
+<Layout
+  locale={locale}
+  pathname={fieldNotesHref(locale)}
+  title={sv ? 'Fältanteckningar: artiklar om Birdy och fåglar | Birdy' : 'Field Notes: articles about Birdy and birds | Birdy'}
+  description={sv ? 'Läs om hur Birdy byggs, hur appen fungerar och fåglarna du kan upptäcka med den. Artiklar och guider på svenska.' : 'Read how Birdy is built, how the app works and the birds you can discover with it. Articles and guides in English.'}
+>
+  <Nav locale={locale} switchLangHref={fieldNotesHref(sv ? 'en' : 'sv')} />
+  <main class="notes-page">
+    <header class="page-intro">
+      <p class="overline">Birdy / {sv ? 'Fältanteckningar' : 'Field Notes'}</p>
+      <h1>{sv ? 'Fåglar, guider och Birdy.' : 'Birds, guides and Birdy.'}</h1>
+      <p>{sv ? 'Läs om hur Birdy byggs, hur appen fungerar och vad du kan upptäcka med den.' : 'Read how Birdy is built, how the app works and what you can discover with it.'}</p>
+    </header>
+    <div class="notes-list">
+      {notes.map((note) => <article class="note">
+        <div class="meta"><span>{note.data.category}</span><time datetime={note.data.date.toISOString().slice(0, 10)}>{note.data.date.toLocaleDateString(sv ? 'sv-SE' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</time></div>
+        <h2><a href={fieldNoteHref(note)}>{note.data.title}</a></h2>
+        <p>{note.data.description}</p>
+        <a class="read-link" href={fieldNoteHref(note)}>{sv ? 'Läs artikeln' : 'Read the article'} <span aria-hidden="true">↗</span></a>
+      </article>)}
+    </div>
+    <aside class="return"><p>{sv ? 'Vill du prova Birdy själv?' : 'Want to try Birdy yourself?'}</p><a href={sv ? '/sv/#download' : '/#download'}>{sv ? 'Ta med Birdy ut i fält' : 'Take Birdy into the field'} <span aria-hidden="true">↗</span></a></aside>
+  </main>
+  <Footer locale={locale} switchLangHref={fieldNotesHref(sv ? 'en' : 'sv')} />
+</Layout>
+
+<style>
+  .notes-page { max-width: 1260px; margin: auto; padding: clamp(4rem,8vw,8rem) clamp(1.5rem,6vw,5rem) 7rem; }
+  .page-intro { border-bottom: 1px solid var(--color-paper-edge); padding-bottom: clamp(3rem,6vw,6rem); }
+  .overline { margin: 0 0 1.6rem; font-size: .84rem; font-weight: 600; color: var(--color-orange); }
+  h1 { margin: 0; font-size: clamp(3.8rem,8vw,8rem); line-height: .98; letter-spacing: -.04em; max-width: 12ch; text-wrap: balance; }
+  .page-intro > p:last-child { max-width: 39rem; color: var(--color-marginalia-ink); font-size: clamp(1.05rem,1.5vw,1.25rem); line-height: 1.6; margin: 2rem 0 0; }
+  .notes-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(2rem,5vw,6rem); margin-top: 3rem; }
+  .note { border-top: 2px solid var(--color-rust-shadow); padding-top: 1rem; }
+  .meta { display: flex; justify-content: space-between; gap: 1rem; font-size: .78rem; color: var(--color-marginalia-ink); }
+  h2 { margin: 2.5rem 0 1rem; font-size: clamp(2.2rem,3.2vw,3.4rem); line-height: 1.12; letter-spacing: -.025em; hyphens: none; overflow-wrap: anywhere; }
+  h2 a:hover { color: var(--color-orange); }
+  .note > p { color: var(--color-marginalia-ink); max-width: 42ch; line-height: 1.6; }
+  .read-link { display: inline-flex; gap: 1.5rem; color: var(--color-orange); font-weight: 600; font-size: .87rem; padding-bottom: .35rem; border-bottom: 1px solid currentColor; margin-top: 1rem; }
+  .return { border-top: 1px solid var(--color-paper-edge); margin-top: 6rem; padding-top: 1.4rem; display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+  .return p { font: 1.5rem var(--font-script); color: var(--color-orange); margin: 0; }
+  .return a { color: var(--color-orange); font-size: .88rem; font-weight: 600; }
+  @media (max-width: 680px) { .notes-list { grid-template-columns: 1fr; } .return { flex-direction: column; } }
+</style>

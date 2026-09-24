@@ -1,0 +1,52 @@
+---
+import { render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+import { fieldNoteHref, fieldNotesHref, type FieldNote } from '../lib/field-notes';
+import '../styles/article-prose.css';
+
+interface Props { note: FieldNote; }
+const { note } = Astro.props;
+const { Content } = await render(note);
+const { locale, title, description, date, category } = note.data;
+const sv = locale === 'sv';
+const pathname = fieldNoteHref(note);
+const otherPath = `${sv ? '' : '/sv'}/blog/${note.data.slug}/`;
+---
+
+<Layout locale={locale} pathname={pathname} title={`${title} | Birdy`} description={description} articleDate={date.toISOString()}>
+  <Nav locale={locale} switchLangHref={otherPath} />
+  <main class="article-page">
+    <div class="breadcrumbs"><a href={fieldNotesHref(locale)}>{sv ? 'Fältanteckningar' : 'Field Notes'}</a><span aria-hidden="true">/</span><span>{category}</span></div>
+    <header class="article-head">
+      <p class="category">{category}</p>
+      <h1>{title}</h1>
+      <p class="lede">{description}</p>
+      <div class="byline"><span>{sv ? 'Av Birdy' : 'By Birdy'}</span><time datetime={date.toISOString().slice(0, 10)}>{date.toLocaleDateString(sv ? 'sv-SE' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</time></div>
+    </header>
+    <article class="article-prose"><Content /></article>
+    <aside class="article-end">
+      <p>{sv ? 'Känn igen fågeln. Bevara stunden.' : 'Know the bird. Keep the moment.'}</p>
+      <div><a href={fieldNotesHref(locale)}>{sv ? 'Fler fältanteckningar' : 'More field notes'} <span aria-hidden="true">↗</span></a><a href={sv ? '/sv/#download' : '/#download'}>{sv ? 'Hämta Birdy' : 'Get Birdy'} <span aria-hidden="true">↗</span></a></div>
+    </aside>
+  </main>
+  <Footer locale={locale} switchLangHref={otherPath} />
+</Layout>
+
+<style>
+  .article-page { max-width: 1120px; margin: auto; padding: 2rem clamp(1.5rem,6vw,5rem) 7rem; }
+  .breadcrumbs { display: flex; gap: .7rem; align-items: center; color: var(--color-marginalia-ink); font-size: .8rem; }
+  .breadcrumbs a { color: var(--color-orange); border-bottom: 1px solid currentColor; }
+  .article-head { border-bottom: 1px solid var(--color-paper-edge); padding: clamp(3rem,6vw,6rem) 0 2rem; }
+  .category { color: var(--color-orange); font-size: .83rem; font-weight: 600; margin: 0 0 1.5rem; }
+  h1 { margin: 0; font-size: clamp(3.4rem,7.4vw,7.5rem); line-height: .99; letter-spacing: -.04em; max-width: 13ch; text-wrap: balance; hyphens: none; overflow-wrap: anywhere; }
+  .lede { max-width: 45rem; color: var(--color-marginalia-ink); font-size: clamp(1.1rem,1.8vw,1.35rem); line-height: 1.55; margin: 2rem 0; }
+  .byline { display: flex; gap: 1.5rem; font-size: .8rem; color: var(--color-marginalia-ink); }
+  .article-page :global(.article-prose) { margin: 4rem 0 0 min(12vw,9rem); }
+  .article-end { margin: 6rem 0 0; padding-top: 2rem; border-top: 2px solid var(--color-rust-shadow); display: flex; justify-content: space-between; align-items: end; gap: 2rem; }
+  .article-end p { font: 400 clamp(2.4rem,4vw,4rem)/1.1 var(--font-serif); max-width: 12ch; letter-spacing: -.03em; margin: 0; }
+  .article-end div { display: flex; flex-direction: column; align-items: end; gap: 1rem; }
+  .article-end a { color: var(--color-orange); border-bottom: 1px solid currentColor; padding-bottom: .3rem; font-size: .88rem; font-weight: 600; white-space: nowrap; }
+  @media (max-width: 680px) { .article-page :global(.article-prose) { margin-left: 0; } .article-end { flex-direction: column; align-items: start; } .article-end div { align-items: start; } }
+</style>

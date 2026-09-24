@@ -2,41 +2,65 @@
 import Wordmark from './ui/Wordmark.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 
-interface Props { locale: Locale; }
-const { locale } = Astro.props;
+interface Props { locale: Locale; switchLangHref?: string; }
+const { locale, switchLangHref } = Astro.props;
 const t = getCopy(locale);
 const home = locale === 'sv' ? '/sv/' : '/';
+const sv = locale === 'sv';
+const languageHref = switchLangHref ?? t.nav.switchLangHref;
 ---
 
 <footer class="footer">
   <div class="inner">
-    <div class="brand-block">
-      <Wordmark size="45px" alt={t.alt.wordmark} color="#f8f7ed" />
-      <p>{locale === 'sv' ? 'En egen plats för varje fågel du möter.' : 'A place for every bird you meet.'}</p>
+    <div class="footer-lead">
+      <p class="footer-kicker">{sv ? 'Birdy · en fältdagbok för fåglar' : 'Birdy · a field journal for birds'}</p>
+      <p class="footer-statement">{sv ? 'Fågelguide och fältdagbok i samma app.' : 'A bird guide and field journal in one app.'}</p>
     </div>
-    <div class="link-block">
-      <p class="heading">{locale === 'sv' ? 'Utforska' : 'Explore'}</p>
-      <a href={`${home}#loop`}>{t.nav.howItWorks}</a>
-      <a href={`${home}#glimpse`}>{t.nav.inside}</a>
-      <a href={`${home}#coverage`}>{t.coverage.eyebrow}</a>
-      <a href={`${home}#faq`}>{t.nav.faq}</a>
-    </div>
-    <div class="link-block">
-      <p class="heading">{locale === 'sv' ? 'Birdy' : 'Birdy'}</p>
-      {t.footer.links.map((link) => <a href={link.href}>{link.label}</a>)}
+    <div class="footer-grid">
+      <div class="brand-block">
+        <a href={home} aria-label="Birdy"><Wordmark size="48px" alt={t.alt.wordmark} color="#f8f7ed" /></a>
+        <p>{sv ? 'Känn igen fågeln. Bevara stunden.' : 'Know the bird. Keep the moment.'}</p>
+        <a class="maker" href="https://www.albit.se/#produkter">{sv ? 'Byggd av albIT' : 'Built by albIT'} <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="link-block">
+        <p class="heading">{sv ? 'Utforska' : 'Explore'}</p>
+        <a href={`${home}#loop`}>{t.nav.howItWorks}</a>
+        <a href={`${home}#glimpse`}>{t.nav.inside}</a>
+        <a href={`${home}#coverage`}>{t.coverage.eyebrow}</a>
+        <a href={`${home}#faq`}>{t.nav.faq}</a>
+        <a href={`${home}#download`}>{t.nav.getApp}</a>
+      </div>
+      <div class="link-block">
+        <p class="heading">{sv ? 'Läs vidare' : 'Read more'}</p>
+        <a href={sv ? '/sv/blog/' : '/blog/'}>{sv ? 'Fältanteckningar' : 'Field Notes'}</a>
+        <a href={sv ? '/sv/blog/why-birdy/' : '/blog/why-birdy/'}>{sv ? 'Varför Birdy?' : 'Why Birdy?'}</a>
+        <a href="mailto:albin@abrahamssons.se">{sv ? 'Skriv till oss' : 'Write to us'}</a>
+      </div>
+      <div class="link-block">
+        <p class="heading">{sv ? 'Information' : 'Information'}</p>
+        {t.footer.links.filter((link) => link.href.startsWith('/legal')).map((link) => <a href={link.href}>{link.label}</a>)}
+        <a href={languageHref} lang={sv ? 'en' : 'sv'}>{sv ? 'English' : 'Svenska'}</a>
+      </div>
     </div>
   </div>
-  <div class="bottom"><span>© 2026 Birdy · {locale === 'sv' ? 'Skapad i Sverige' : 'Made in Sweden'}</span><span>{locale === 'sv' ? 'För nyfikna ögon och öron.' : 'For curious eyes and ears.'}</span></div>
+  <div class="bottom"><span>© 2026 Birdy · {sv ? 'Skapad i Sverige' : 'Made in Sweden'}</span><span>{sv ? '839 europeiska arter. Din egen fältdagbok.' : '839 European species. Your own field journal.'}</span></div>
 </footer>
 
 <style>
-  .footer { background: var(--color-rust-shadow); color: #fff4e7; padding: 4.5rem clamp(1.5rem,6vw,5rem) 1.8rem; }
-  .inner { max-width: 1260px; margin: auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
-  .brand-block p { margin: 1.25rem 0 0; color: #e9cbb6; max-width: 17rem; line-height: 1.5; }
+  .footer { background: var(--color-rust-shadow); color: #fff4e7; padding: clamp(4rem,7vw,7rem) clamp(1.5rem,6vw,5rem) 1.8rem; }
+  .inner, .bottom { max-width: 1260px; margin: auto; }
+  .footer-lead { border-bottom: 1px solid rgba(255,255,255,.22); padding-bottom: clamp(3rem,5vw,5rem); margin-bottom: 3.5rem; }
+  .footer-kicker { color: var(--color-apricot); font-size: .82rem; font-weight: 600; margin: 0 0 1.5rem; }
+  .footer-statement { font: 400 clamp(3rem,6.2vw,6.5rem)/1 var(--font-serif); letter-spacing: -.035em; max-width: 14ch; margin: 0; text-wrap: balance; }
+  .footer-grid { display: grid; grid-template-columns: minmax(220px,2fr) repeat(3,minmax(130px,1fr)); gap: 2.5rem; }
+  .brand-block p { margin: 1.3rem 0 1.5rem; color: #e9cbb6; max-width: 17rem; line-height: 1.5; }
+  .maker { display: inline-flex; gap: 1rem; align-items: center; color: var(--color-apricot); border-bottom: 1px solid currentColor; padding-bottom: .35rem; font-weight: 600; font-size: .85rem; }
+  .maker:hover { color: #fff4e7; }
   .link-block { display: flex; flex-direction: column; align-items: start; gap: .85rem; }
   .heading { color: var(--color-apricot); font-size: .82rem; font-weight: 600; margin: 0 0 .4rem; }
   .link-block a { font-size: .84rem; color: #f2ddcb; transition: color .2s; }
   .link-block a:hover { color: var(--color-apricot); }
-  .bottom { max-width: 1260px; margin: 4.5rem auto 0; padding-top: 1.3rem; border-top: 1px solid rgba(255,255,255,.17); display: flex; justify-content: space-between; gap: 1rem; color: #d3b8a8; font-size: .72rem; }
-  @media (max-width: 680px) { .inner { grid-template-columns: 1fr 1fr; gap: 3rem 2rem; } .brand-block { grid-column: 1 / -1; } .bottom { flex-direction: column; margin-top: 3rem; } }
+  .bottom { margin-top: 4.5rem; padding-top: 1.3rem; border-top: 1px solid rgba(255,255,255,.17); display: flex; justify-content: space-between; gap: 1rem; color: #d3b8a8; font-size: .72rem; }
+  @media (max-width: 900px) { .footer-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } .brand-block { grid-column: 1 / -1; } }
+  @media (max-width: 560px) { .footer-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2.5rem 1.5rem; } .brand-block { grid-column: 1 / -1; } .bottom { flex-direction: column; margin-top: 3rem; } }
 </style>

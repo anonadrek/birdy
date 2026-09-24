@@ -1,0 +1,11 @@
+---
+import { getFieldNotes } from '../../lib/field-notes';
+import FieldNoteArticle from '../../components/FieldNoteArticle.astro';
+
+export async function getStaticPaths() {
+  return (await getFieldNotes('en')).map((note) => ({ params: { slug: note.data.slug }, props: { note } }));
+}
+
+const { note } = Astro.props;
+---
+<FieldNoteArticle note={note} />
