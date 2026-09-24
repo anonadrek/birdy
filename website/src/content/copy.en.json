@@ -55,7 +55,7 @@
     "rows": [
       { "title": "Live with the camera", "body": "Point at the bird. Birdy looks several times a second and shows the species it sees." },
       { "title": "From a photo", "body": "Pick a picture from your gallery, crop around the bird and let Birdy take a look." },
-      { "title": "Listen to the song", "body": "Record the song and Birdy suggests the species. Sound ID is free for everyone." }
+      { "title": "Listen to the song", "body": "Record the song and Birdy suggests the species. Sound ID is free for everyone.", "free": true }
     ]
   },
   "journal": {
@@ -66,7 +66,7 @@
     "plateSpecies": "Barn Swallow",
     "plateNote": "14 May, by the barn",
     "plateSeal": "No. 31",
-    "plateAlt": "A barn swallow perched on a branch",
+    "plateAlt": "A barn swallow perched on a curved metal rail",
     "facts": [
       { "value": "34", "label": "badges to collect" },
       { "value": "27", "label": "of them free" },

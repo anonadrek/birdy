@@ -55,7 +55,7 @@
     "rows": [
       { "title": "Live med kameran", "body": "Rikta mot fågeln. Birdy tittar flera gånger i sekunden och visar vilken art den ser." },
       { "title": "Från ett foto", "body": "Välj en bild ur galleriet, beskär runt fågeln och låt Birdy titta." },
-      { "title": "Lyssna på lätet", "body": "Spela in sången så föreslår Birdy arten. Ljud-ID är gratis för alla." }
+      { "title": "Lyssna på lätet", "body": "Spela in sången så föreslår Birdy arten. Ljud-ID är gratis för alla.", "free": true }
     ]
   },
   "journal": {
@@ -66,7 +66,7 @@
     "plateSpecies": "Ladusvala",
     "plateNote": "14 maj, vid ladan",
     "plateSeal": "Nr 31",
-    "plateAlt": "En ladusvala som sitter på en gren",
+    "plateAlt": "En ladusvala som sitter på en böjd metallbåge",
     "facts": [
       { "value": "34", "label": "märken att samla" },
       { "value": "27", "label": "av dem gratis" },

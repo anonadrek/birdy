@@ -200,18 +200,39 @@ test.describe('Birdy-fågeln flyger', () => {
 });
 
 test.describe('så funkar det och fältboken', () => {
-  for (const [path, how, journal, free] of [
-    ['/sv/', 'Tre sätt att fånga.', 'Varje fynd får en egen sida.', 'Gratis'],
-    ['/', 'Three ways to catch it.', 'Every sighting gets its own page.', 'Free'],
+  for (const [path, how, journal, free, label] of [
+    ['/sv/', 'Tre sätt att fånga.', 'Varje fynd får en egen sida.', 'Gratis', 'märken att samla'],
+    ['/', 'Three ways to catch it.', 'Every sighting gets its own page.', 'Free', 'badges to collect'],
   ] as const) {
     test(`sektionerna finns på ${path}`, async ({ page }) => {
       await page.goto(path);
       await expect(page.locator('#how-it-works h2')).toHaveText(how);
       await expect(page.locator('#how-it-works .row')).toHaveCount(3);
-      await expect(page.locator('#how-it-works .free')).toHaveText(free);
+      await expect(page.locator('#how-it-works .row:nth-child(3) .free')).toHaveText(free);
       await expect(page.locator('#journal h2')).toHaveText(journal);
       await expect(page.locator('#journal .facts dt')).toHaveText(['34', '27', '0']);
+      await expect(page.locator('#journal .facts dd').first()).toHaveText(label);
       await expect(page.locator('#journal img')).toHaveAttribute('alt', /.+/);
     });
   }
+
+  test.describe('telefonen och smala skärmar', () => {
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
+    for (const [width, height] of [[390, 844], [1024, 900], [1279, 900], [1280, 720]] as const) {
+      test(`herotelefonen slutar ovanför Så funkar det i ${width}×${height}`, async ({ page }) => {
+        await page.setViewportSize({ width, height });
+        await page.goto('/sv/');
+        const phone = (await page.locator('[data-hero-phone] .ph').boundingBox())!;
+        const kick = (await page.locator('#how-it-works .kick').first().boundingBox())!;
+        expect(phone.y + phone.height, 'telefonens underkant').toBeLessThan(kick.y);
+      });
+    }
+    test('inget sidledes scroll på 360 px', async ({ page }) => {
+      await page.setViewportSize({ width: 360, height: 780 });
+      for (const path of ['/sv/', '/']) {
+        await page.goto(path);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth), path).toBeLessThanOrEqual(360);
+      }
+    });
+  });
 });

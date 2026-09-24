@@ -17,12 +17,12 @@ const icons = ['camera', 'photo', 'wave'] as const;
       <JournalHeadline text={t.howItWorks.headline} level="h2" align="left" size="clamp(34px, 4.4vw, 52px)" />
       <p class="lead">{t.howItWorks.lead}</p>
     </div>
-    <ul class="rows">
+    <ul class="rows" role="list">
       {t.howItWorks.rows.map((row, i) => (
         <li class="row" data-reveal="slide" style={`--rd:${i * 85}ms`}>
           <span class="ic"><Icon name={icons[i]} size={21} /></span>
           <div>
-            <h3>{row.title}{i === 2 && <span class="free">{t.howItWorks.free}</span>}</h3>
+            <h3>{row.title}{row.free && <>{' '}<span class="free">{t.howItWorks.free}</span></>}</h3>
             <p>{row.body}</p>
           </div>
         </li>
