@@ -40,7 +40,7 @@ class GrandfatherPolicyTest {
 
     @Test
     fun `cutoff zero grandfathers nobody so purchases can be tested`() {
-        assertFalse(GrandfatherPolicy.isGrandfathered(1_750_000_000_000L, 1_750_000_000_000L, 0L))
+        assertFalse(GrandfatherPolicy.isGrandfathered(1_780_000_000_000L, 1_780_000_000_000L, 0L))
     }
 
     @Test
