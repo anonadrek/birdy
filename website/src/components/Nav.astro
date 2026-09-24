@@ -1,39 +1,49 @@
 ---
 import Wordmark from './ui/Wordmark.astro';
+import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
+import { fieldNotesHref } from '../lib/field-notes';
 
-interface Props { locale: Locale; switchLangHref?: string; }
-const { locale, switchLangHref } = Astro.props;
+interface Props {
+  locale: Locale;
+  switchLangHref?: string;
+  /** overlay = transparent over a dark first view until it scrolls past; solid = moss bar in the flow. */
+  variant?: 'overlay' | 'solid';
+}
+const { locale, switchLangHref, variant = 'solid' } = Astro.props;
 const t = getCopy(locale);
 const home = locale === 'sv' ? '/sv/' : '/';
+const langHref = switchLangHref ?? t.nav.switchLangHref;
+const langAttr = locale === 'sv' ? 'en' : 'sv';
+const links = [
+  { href: `${home}#how-it-works`, label: t.nav.howItWorks },
+  { href: `${home}#app`, label: t.nav.app },
+  { href: `${home}#premium`, label: t.nav.premium },
+  { href: fieldNotesHref(locale), label: t.nav.fieldNotes },
+];
+const mobileOnly = [
+  { href: `${home}#guide`, label: t.nav.guide },
+  { href: `${home}#privacy`, label: t.nav.privacy },
+  { href: `${home}#faq`, label: t.nav.faq },
+];
 ---
 
-<nav id="site-nav" class="nav" aria-label={locale === 'sv' ? 'Huvudmeny' : 'Main navigation'}>
-  <div class="inner">
-    <a href={home} class="brand" aria-label="Birdy"><Wordmark size="35px" alt={t.alt.wordmark} color="#f8f7ed" /></a>
-    <div class="desktop-links">
-      <a href={`${home}#loop`}>{t.nav.howItWorks}</a>
-      <a href={`${home}#glimpse`}>{t.nav.inside}</a>
-      <a href={`${home}#coverage`}>{t.coverage.eyebrow}</a>
-      <a href={locale === 'sv' ? '/sv/blog/' : '/blog/'}>{locale === 'sv' ? 'Fältanteckningar' : 'Field Notes'}</a>
-      <a href={`${home}#faq`}>{t.nav.faq}</a>
+<nav id="site-nav" class:list={['nav', `nav--${variant}`]} aria-label={t.nav.label} data-variant={variant}>
+  <div class="nav-inner">
+    <a href={home} class="brand" aria-label="Birdy"><Wordmark size="32px" alt={t.alt.wordmark} color="var(--cream)" /></a>
+    <div class="links">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      <a class="lang" href={langHref} lang={langAttr}>{t.nav.switchLang}</a>
     </div>
-    <div class="actions">
-      <a class="lang" href={switchLangHref ?? t.nav.switchLangHref} lang={locale === 'sv' ? 'en' : 'sv'}>{t.nav.switchLang}</a>
-      <a class="download" href={`${home}#download`}>{t.nav.getApp}<span aria-hidden="true">↗</span></a>
-      <button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label={locale === 'sv' ? 'Öppna menyn' : 'Open menu'}>
-        <span></span><span></span>
-      </button>
-    </div>
+    <a class="btn nav-cta" href={`${home}#download`}>{t.nav.getApp}</a>
+    <button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label={t.nav.menuOpen} data-label-open={t.nav.menuOpen} data-label-close={t.nav.menuClose}>
+      <Icon name="menu" size={24} />
+    </button>
   </div>
   <div id="mobile-menu" class="mobile-menu" hidden>
-    <a href={`${home}#loop`}>{t.nav.howItWorks}</a>
-    <a href={`${home}#glimpse`}>{t.nav.inside}</a>
-    <a href={`${home}#coverage`}>{t.coverage.eyebrow}</a>
-    <a href={locale === 'sv' ? '/sv/blog/' : '/blog/'}>{locale === 'sv' ? 'Fältanteckningar' : 'Field Notes'}</a>
-    <a href={`${home}#privacy`}>{t.nav.privacy}</a>
-    <a href={`${home}#faq`}>{t.nav.faq}</a>
-    <a href={`${home}#download`}>{t.nav.getApp}</a>
+    {[...links, ...mobileOnly].map((l) => <a href={l.href}>{l.label}</a>)}
+    <a href={langHref} lang={langAttr}>{t.nav.switchLang}</a>
+    <a class="btn" href={`${home}#download`}>{t.nav.getApp}</a>
   </div>
 </nav>
 
@@ -41,45 +51,50 @@ const home = locale === 'sv' ? '/sv/' : '/';
   const nav = document.getElementById('site-nav');
   const toggle = nav?.querySelector<HTMLButtonElement>('.menu-toggle');
   const menu = document.getElementById('mobile-menu');
-  const close = () => {
-    if (toggle && menu) {
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', document.documentElement.lang === 'sv' ? 'Öppna menyn' : 'Open menu');
-      menu.hidden = true;
-    }
-  };
-  toggle?.addEventListener('click', () => {
-    if (!menu) return;
-    const open = toggle.getAttribute('aria-expanded') !== 'true';
+  const setOpen = (open: boolean) => {
+    if (!nav || !toggle || !menu) return;
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open
-      ? (document.documentElement.lang === 'sv' ? 'Stäng menyn' : 'Close menu')
-      : (document.documentElement.lang === 'sv' ? 'Öppna menyn' : 'Open menu'));
+    toggle.setAttribute('aria-label', (open ? toggle.dataset.labelClose : toggle.dataset.labelOpen) ?? '');
     menu.hidden = !open;
-  });
-  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
-  addEventListener('keydown', (event) => { if (event.key === 'Escape') close(); });
-  addEventListener('resize', () => { if (innerWidth > 820) close(); });
+    nav.classList.toggle('is-open', open);
+  };
+  toggle?.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  addEventListener('resize', () => { if (innerWidth > 900) setOpen(false); });
+
+  // Overlay variant: transparent over the dark first view ([data-nav-until]), moss once it has scrolled past.
+  if (nav?.dataset.variant === 'overlay') {
+    const until = document.querySelector<HTMLElement>('[data-nav-until]');
+    if (!until || !('IntersectionObserver' in window)) {
+      nav.classList.add('is-solid');
+    } else {
+      new IntersectionObserver(([entry]) => nav.classList.toggle('is-solid', !entry.isIntersecting), {
+        rootMargin: `-${nav.offsetHeight}px 0px 0px 0px`,
+      }).observe(until);
+    }
+  }
 </script>
 
 <style>
-  .nav { position: sticky; top: 0; z-index: 100; background: var(--color-rust-shadow); color: #fff7ec; border-bottom: 1px solid rgba(255,255,255,.14); }
-  .inner { height: 76px; max-width: 1320px; margin: auto; padding: 0 clamp(1.25rem,4vw,3.5rem); display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-  .brand { display: inline-flex; flex-shrink: 0; }
-  .desktop-links { display: flex; align-items: center; gap: clamp(1.2rem,2.5vw,2.6rem); margin-left: auto; }
-  .desktop-links a, .lang { font-size: .78rem; font-weight: 600; letter-spacing: .02em; opacity: .82; transition: opacity .2s; }
-  .desktop-links a:hover, .lang:hover { opacity: 1; }
-  .actions { display: flex; align-items: center; gap: 1.35rem; }
-  .download { display: inline-flex; align-items: center; gap: 1.3rem; background: var(--color-apricot); color: var(--color-rust-shadow); border-radius: 2px; padding: .82rem 1rem; font-size: .78rem; font-weight: 600; transition: background .2s, transform .2s; }
-  .download:hover { background: #ffdaac; transform: translateY(-2px); }
-  .download span { font-size: 1rem; line-height: .5; }
-  .menu-toggle { display: none; background: none; border: 0; color: inherit; width: 42px; height: 42px; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 6px; }
-  .menu-toggle span { width: 23px; height: 2px; background: currentColor; transition: transform .2s; }
-  .menu-toggle[aria-expanded='true'] span:first-child { transform: translateY(4px) rotate(45deg); }
-  .menu-toggle[aria-expanded='true'] span:last-child { transform: translateY(-4px) rotate(-45deg); }
+  .nav { z-index: 100; color: var(--cream); font-size: 13px; font-weight: 600; transition: background-color .3s var(--ease-paper), box-shadow .3s var(--ease-paper); }
+  .nav--overlay { position: fixed; top: 0; left: 0; right: 0; }
+  .nav--solid { position: sticky; top: 0; }
+  .nav--solid, .nav.is-solid, .nav.is-open { background: var(--moss); box-shadow: 0 1px 0 rgba(255, 255, 255, .08); }
+  .nav :global(:focus-visible) { outline-color: var(--apricot); }
+  .nav-inner { max-width: 1320px; margin: 0 auto; height: 76px; display: flex; align-items: center; gap: 26px; padding: 0 44px; }
+  .brand { margin-right: auto; display: inline-flex; }
+  .links { display: flex; align-items: center; gap: 26px; }
+  .links a { opacity: .82; transition: opacity .2s; }
+  .links a:hover { opacity: 1; }
+  .menu-toggle { display: none; background: none; border: 0; color: inherit; width: 44px; height: 44px; align-items: center; justify-content: center; cursor: pointer; }
+  .mobile-menu { display: grid; padding: 4px 20px 20px; }
   .mobile-menu[hidden] { display: none; }
-  .mobile-menu { display: grid; padding: .5rem 1.5rem 1.5rem; background: var(--color-rust-shadow); border-top: 1px solid rgba(255,255,255,.14); }
-  .mobile-menu a { padding: .85rem 0; border-bottom: 1px solid rgba(255,255,255,.1); }
-  @media (max-width: 820px) { .desktop-links { display: none; } .menu-toggle { display: flex; } .inner { height: 68px; } }
-  @media (max-width: 460px) { .download { display: none; } .actions { gap: .8rem; } }
+  .mobile-menu a { padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); font-size: 15px; }
+  .mobile-menu .btn { margin-top: 16px; justify-content: center; border-bottom: 0; }
+  @media (max-width: 900px) {
+    .links, .nav-cta { display: none; }
+    .menu-toggle { display: inline-flex; }
+    .nav-inner { height: 64px; padding: 0 20px; }
+  }
 </style>

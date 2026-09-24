@@ -1,0 +1,8 @@
+import type { Locale } from './i18n';
+
+// Links to AlbIT (the company behind Birdy) and its sister product LoopLead.
+// Plain follow links with the brand as anchor text (agreed with albit.se).
+export const albitProductHref = (locale: Locale): string =>
+  locale === 'sv' ? 'https://www.albit.se/produkter/birdy/' : 'https://www.albit.se/en/products/birdy/';
+
+export const LOOPLEAD_URL = 'https://looplead.se/';

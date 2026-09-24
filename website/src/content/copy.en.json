@@ -6,13 +6,19 @@
     "htmlLang": "en"
   },
   "nav": {
+    "label": "Main navigation",
     "howItWorks": "How it works",
-    "inside": "Inside",
+    "app": "The app",
+    "premium": "Premium",
+    "fieldNotes": "Field notes",
+    "guide": "Field guide",
     "privacy": "Privacy",
     "faq": "FAQ",
     "switchLang": "SV",
     "switchLangHref": "/sv/",
-    "getApp": "Get the app"
+    "getApp": "Get the app",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
   },
   "hero": {
     "eyebrow": "Your field guide, wherever you go",
@@ -103,16 +109,20 @@
     "sub": "On Android now. Coming to iPhone."
   },
   "footer": {
-    "links": [
-      { "label": "Legal", "href": "/legal/" },
-      { "label": "Privacy", "href": "/legal/privacy/" },
-      { "label": "Terms", "href": "/legal/terms/" },
-      { "label": "Email", "href": "mailto:albin@abrahamssons.se" },
-      { "label": "SV", "href": "/sv/" }
-    ],
-    "credit": "Made by Albin · Sweden · 2026 · v1.2.0",
-    "socialSoon": "coming soon",
-    "socialNote": "Social media links are coming soon."
+    "tagline": "Know the bird. Keep the moment.",
+    "explore": "Explore",
+    "read": "Read",
+    "information": "Information",
+    "whyBirdy": "Why Birdy exists",
+    "writeUs": "Write to us",
+    "privacyPolicy": "Privacy policy",
+    "terms": "Terms",
+    "dataSafety": "Data safety",
+    "otherLanguage": "Svenska",
+    "copyright": "© 2026 Birdy · Made in Sweden",
+    "builtBy": "Built by",
+    "workshop": "From the same workshop",
+    "loopleadLine": "An HR tool for managers in growing companies"
   },
   "alt": {
     "wingLogo": "Birdy wing logo",

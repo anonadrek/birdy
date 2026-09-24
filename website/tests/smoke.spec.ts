@@ -75,7 +75,8 @@ test.describe('Field Notes', () => {
       await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'article');
       await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', 'https://birdy.community/blog/why-birdy/');
       await expect(page.locator('link[rel="alternate"][hreflang="sv"]')).toHaveAttribute('href', 'https://birdy.community/sv/blog/why-birdy/');
-      await expect(page.locator('footer a[href="https://www.albit.se/#produkter"]')).toContainText('albIT');
+      const albitHref = locale === 'sv' ? 'https://www.albit.se/produkter/birdy/' : 'https://www.albit.se/en/products/birdy/';
+      await expect(page.locator(`footer a[href="${albitHref}"]`)).toHaveText('AlbIT');
       expect(consoleErrors).toEqual([]);
     });
   }

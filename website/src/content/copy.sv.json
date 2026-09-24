@@ -6,13 +6,19 @@
     "htmlLang": "sv"
   },
   "nav": {
-    "howItWorks": "Så fungerar det",
-    "inside": "Innehåll",
+    "label": "Huvudmeny",
+    "howItWorks": "Så funkar det",
+    "app": "Appen",
+    "premium": "Premium",
+    "fieldNotes": "Fältanteckningar",
+    "guide": "Uppslagsverket",
     "privacy": "Integritet",
-    "faq": "FAQ",
+    "faq": "Frågor",
     "switchLang": "EN",
     "switchLangHref": "/",
-    "getApp": "Hämta appen"
+    "getApp": "Hämta appen",
+    "menuOpen": "Öppna menyn",
+    "menuClose": "Stäng menyn"
   },
   "hero": {
     "eyebrow": "Din fågelguide, var du än är",
@@ -103,16 +109,20 @@
     "sub": "På Android nu. Snart på iPhone."
   },
   "footer": {
-    "links": [
-      { "label": "Juridik", "href": "/legal/" },
-      { "label": "Integritet", "href": "/legal/privacy/" },
-      { "label": "Villkor", "href": "/legal/terms/" },
-      { "label": "Mejla oss", "href": "mailto:albin@abrahamssons.se" },
-      { "label": "EN", "href": "/" }
-    ],
-    "credit": "Skapad av Albin · Sverige · 2026 · v1.2.0",
-    "socialSoon": "kommer snart",
-    "socialNote": "Länkar till sociala medier kommer snart."
+    "tagline": "Känn igen fågeln. Bevara stunden.",
+    "explore": "Utforska",
+    "read": "Läs",
+    "information": "Information",
+    "whyBirdy": "Varför Birdy finns",
+    "writeUs": "Skriv till oss",
+    "privacyPolicy": "Integritetspolicy",
+    "terms": "Villkor",
+    "dataSafety": "Datasäkerhet",
+    "otherLanguage": "English",
+    "copyright": "© 2026 Birdy · Skapad i Sverige",
+    "builtBy": "Byggd av",
+    "workshop": "Från samma verkstad",
+    "loopleadLine": "HR-verktyg för chefer i växande bolag"
   },
   "alt": {
     "wingLogo": "Birdys fågellogotyp",
