@@ -1,4 +1,4 @@
-# Birdy 1.3.0 (vC128): API 36, betalning och utseendelyft — design
+# Birdy 1.3.0 (vC128 köptest / vC129 produktion): API 36, betalning och utseendelyft — design
 
 > **Datum:** 2026-09-24 (Windows). **Beslutat med Albin** i brainstorming samma dag.
 > **Mål:** en Android-release i slutet av september 2026 som (1) uppfyller Play-kravet targetSdk 36, (2) slår på betalningen via AB-kontot utan att tidiga användare förlorar något, (3) lyfter utseendet till en modernare och mer exklusiv Field Journal, och (4) är proaktivt buggjagad av agenten före produktion. Funktionen ska vara exakt som idag.
@@ -12,7 +12,7 @@
 - **Play-krav:** sedan 31 aug 2026 avvisas uppdateringar som siktar under API 36 (engångsförlängning till 1 nov finns i Console). vC127 (targetSdk 35) kan alltså inte laddas upp → nästa bygge MÅSTE ha targetSdk 36. Källor: Play Console Help "Target API level requirements", developer.android.com "Meet Google Play's target API level requirement".
 - Byggkedja idag: Kotlin 2.1.20, AGP 8.7.3, CMP 1.8.2, compileSdk/targetSdk 35, minSdk 24. AGP 8.x < 8.9.1 stöder inte compileSdk 36.
 - **Appen är flyttad till AB:s utvecklarkonto** (Albin 2026-09-24). Produkterna, licensnyckeln och licenstestare måste sättas upp där.
-- Lokala `gradle.properties` (Windows): `BIRDY_PLAY_LICENSE_KEY` **tom**, `MAPTILER_API_KEY` **tom** (gammal nyckel läckt i git-historiken → roteras).
+- Nycklar (Windows): repo-rotens `gradle.properties` har tomma platshållare; de riktiga värdena ligger i `~/.gradle/gradle.properties`. Där finns en licensnyckel (kontrolleras mot AB-kontots Console) och en MapTiler-nyckel som är **exakt den läckta** (verifierat 2026-09-24 utan att skriva ut den) → ny nyckel skapas, den gamla raderas först ~2 veckor efter release så kartan i live-appen vC125 inte dör.
 - Premium beräknas idag i `MainActivity` (`premiumOverride` = `Active(LIFETIME)` när `PREMIUM_OPEN_FOR_LAUNCH=true`) och konsumeras via `AppGraph.effectivePremiumActive`. `firstInstallTimestamp` finns i DataStore för alla användare sedan Plan 6a. DataStore ingår i Auto Backup + device-transfer (`backup_rules.xml`, `data_extraction_rules.xml`).
 - Appspråk: **svenska** (`composeResources/values/`, default) och **engelska** (`values-en/`). Språkväljare SV/EN/System.
 - Windows-SDK: `platforms/android-35` + `android-36.1`, build-tools 34/36.1/37, emulator-paketet finns men **inga system-images, inga AVD:er och ingen `sdkmanager`** (cmdline-tools saknas). Galaxy S23 Ultra (API 35) ej ansluten vid spec-tillfället.
@@ -30,7 +30,7 @@
 | D7 | Allt ny/ändrad text på **svenska och engelska**; paritet testas automatiskt. | Albin |
 | D8 | Agenten testar funktionaliteten själv (automatiskt + på enhet/emulator) och fixar buggar proaktivt före produktion. | Albin |
 | D9 | Stanna på AGP 8.x (≥ 8.9.1, inte AGP 9) för att slippa AGP 9:s KMP-plugin-migrering mitt i en deadline. | Agent (teknik) |
-| D10 | Version **1.3.0 / versionCode 128**. | Agent |
+| D10 | Version **1.3.0**. Köp-testbygget till internt spår = versionCode 128 (brytpunkt 0, får aldrig till produktion); produktionsbygget = versionCode 129. | Agent |
 
 ## 3. Spår A — Release-teknik (API 36)
 
@@ -42,7 +42,7 @@
 - Orientering/storleksändring ignoreras på stora skärmar (≥ 600 dp): layouterna får inte gå sönder på surfplatta (lägre prioritet, sanity-check).
 - Bakgrundsjobb (WorkManager-notiser: veckosammanfattning, trofé, dagens fågel) schemaläggs och avfyras fortfarande.
 
-**A3. Version + nycklar.** versionCode 128, versionName 1.3.0. Release-bygget ska **faila** om `MAPTILER_API_KEY` eller `BIRDY_PLAY_LICENSE_KEY` är tomma (nytt Gradle-skydd; debug påverkas inte). Förhindrar att vi skeppar tom karta eller trasig betalning.
+**A3. Version + nycklar.** versionName 1.3.0; versionCode 128 för köp-testbygget, 129 för produktion (D10). Release-bygget ska **faila** om `MAPTILER_API_KEY` eller `BIRDY_PLAY_LICENSE_KEY` är tomma (nytt Gradle-skydd; debug påverkas inte). Förhindrar att vi skeppar tom karta eller trasig betalning.
 
 **A4. Paketering.** `:androidApp:bundleRelease` → `tools/check_16kb_alignment.py` + `zipalign -c -P 16` på AAB:n → R8-smoke på ett riktigt release-bygge (billingklasser får inte strippas).
 
@@ -110,7 +110,7 @@ Tokens → komponenter → Identifiera → Resultat → Mina arter → Premium +
 - Ren funktion i delad kod: `isGrandfathered(storedFirstInstallMs: Long?, packageFirstInstallMs: Long?, cutoffMs: Long): Boolean` = `true` om **någon** av källorna är satt och `< cutoffMs`.
   - `storedFirstInstallMs` = DataStore `firstInstallTimestamp` (skrivs vid första start sedan Plan 6a).
   - `packageFirstInstallMs` = Androids `PackageInfo.firstInstallTime` (täcker den som installerat men aldrig öppnat appen före brytpunkten).
-- **Beslutas en gång** vid första start av 1.3.0 (före premium-wiringen i `MainActivity`) och sparas som `premiumGrandfathered: Boolean?` i `UserPreferences` (`null` = ej beslutat). Ett sparat `true` återkallas aldrig. DataStore ingår i Google-backup → följer med till ny telefon.
+- **Räknas om vid varje start** (före premium-wiringen i `MainActivity`); inget beslut sparas. Källorna är stabila och brytpunkten är en konstant, så svaret ändras aldrig för en given installation. Att inte spara gör att köp-testbygget (brytpunkt 0) inte kan förstöra läget för riktiga användare. `firstInstallTimestamp` ligger i DataStore som ingår i Google-backup → följer med till ny telefon; `PackageInfo.firstInstallTime` överlever "rensa data". Brytpunkten får aldrig ändras efter release.
 - **Brytpunkt:** `GRANDFATHER_CUTOFF_MS` i `BuildConfig` = planerad go-live + 48 h. Plan: **2026-10-02 00:00 Europe/Stockholm (2026-10-01T22:00:00Z)**. Slirar releasen flyttas brytpunkten till nya go-live + 48 h (release-checklistepunkt). Hellre några dagar för generöst än att en tidig användare förlorar något.
 - **Premium-upplösning:** `grandfathered → Active(LIFETIME)`; annars `DEBUG && skipPremiumOverride → null`; annars billing-state. `PREMIUM_OPEN_FOR_LAUNCH` flippas till `false` i **samma bygge**.
 - iOS berörs inte (ingen iOS-användarbas; betalvägg från dag 1 i i5). Funktionen ligger i delad kod men källorna kopplas bara på Android.
@@ -179,9 +179,9 @@ Genomgång **på svenska och engelska**, med logcat bevakad för krascher/ANR/fe
 ## 8. Albins manuella steg
 
 1. Play Console (AB): skapa `premium_yearly_v1` (prenumeration, årlig) och `premium_lifetime_v1` (engångsköp), sätt priser, aktivera.
-2. Hämta licensnyckeln (Monetization setup → Licensing) → `BIRDY_PLAY_LICENSE_KEY` i lokala `gradle.properties`.
+2. Kontrollera licensnyckeln (Monetization setup → Licensing) mot `BIRDY_PLAY_LICENSE_KEY` i `~/.gradle/gradle.properties`; klistra in på nytt vid minsta osäkerhet.
 3. Lägg till licenstestare (eget Google-konto), koppla Galaxy till samma konto.
-4. MapTiler Cloud: rotera den läckta nyckeln, lägg nya i `MAPTILER_API_KEY` (lokalt).
+4. MapTiler Cloud: skapa en ny nyckel, lägg den i `MAPTILER_API_KEY` i `~/.gradle/gradle.properties` före produktionsbygget; radera den läckta först ~2 veckor efter release.
 5. Koppla in Galaxy via USB för enhetssteg; köra köpchecklistan.
 6. Upload/publicering i Console + What's new-inmatning.
 
