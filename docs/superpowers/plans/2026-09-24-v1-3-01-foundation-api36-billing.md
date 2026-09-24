@@ -739,6 +739,110 @@ git push
 
 ---
 
+### Task 6b (tillägg från granskningen 2026-09-24): Inställningar visar tidiga användares Premium
+
+**Bakgrund:** `SettingsViewModel` läser bara `premiumRepository.state` (Play-köp) och ignorerar `premiumOverride`. En grandfathered användare ser därför "Skaffa Premium"-kortet i Inställningar, och "Återställ köp" svarar "inga köp hittades".
+
+**Files:**
+- Modify: `composeApp/src/commonMain/kotlin/se/birdy/app/ui/settings/SettingsViewModel.kt`
+- Modify: `composeApp/src/commonMain/kotlin/se/birdy/app/di/AppGraph.kt` (`settingsViewModel()`)
+- Test: `composeApp/src/commonTest/kotlin/se/birdy/app/ui/settings/SettingsViewModelTest.kt`
+
+- [ ] **Step 1: Fallerande tester** (följ befintliga `SettingsViewModelTest`s konstruktion av VM:en):
+  - `override active with free billing shows premium as active` — `premiumOverride = PremiumState.Active(LIFETIME, now)`, `FakePremiumRepository(PremiumState.Free)` → `state.value.premiumActive == true`.
+  - `restore with override active reports success` — samma uppsättning, `restorePurchases()` → effekten `ShowToast(Res.string.settings_restore_purchases_success)`.
+  - `no override keeps billing state` — ingen override, Free → `premiumActive == false`.
+- [ ] **Step 2:** Kör → kompileringsfel (parametern finns inte).
+- [ ] **Step 3:** `SettingsViewModel` får konstruktorparametern `private val premiumOverride: PremiumState? = null` (sist, med default). I `combine`: `premiumActive = (premiumOverride ?: premium) !is PremiumState.Free`. I `restorePurchases()`: `val currentPremium = premiumOverride ?: premiumRepository.state.value`.
+- [ ] **Step 4:** `AppGraph.settingsViewModel()` skickar `premiumOverride = premiumOverride`.
+- [ ] **Step 5:** Testerna gröna + full gate.
+- [ ] **Step 6: Commit** (utan push): exakta sökvägar till de tre filerna, meddelande `fix(settings): tidiga användares Premium syns i Inställningar och vid återställning` + Co-Authored-By-raden.
+
+---
+
+### Task 6c (tillägg från granskningen 2026-09-24): Ingen automatisk betalvägg förrän Play har svarat
+
+**Bakgrund:** `PremiumBillingClient` startar som `Free` och frågar Play först efter start. `AppScaffold` läser läget en gång vid kallstart, så en betalande prenumerant kan få dag-0- eller 7-dagars-betalväggen om Play inte hunnit svara. Dessutom ignorerar `queryPurchases()` svarskoden: misslyckas frågan (Play ej nåbar) blir en betalande användare `Free`.
+
+**Files:**
+- Modify: `composeApp/src/commonMain/kotlin/se/birdy/app/data/premium/PremiumBillingClient.kt` (expect: ny `purchasesQueried`)
+- Modify: `composeApp/src/androidMain/kotlin/se/birdy/app/data/premium/PremiumBillingClient.android.kt`
+- Modify: `composeApp/src/iosMain/kotlin/se/birdy/app/data/premium/PremiumBillingClient.ios.kt`
+- Create: `composeApp/src/commonMain/kotlin/se/birdy/app/premium/BillingAnswer.kt`
+- Test: `composeApp/src/commonTest/kotlin/se/birdy/app/premium/BillingAnswerTest.kt`
+- Modify: `composeApp/src/commonMain/kotlin/se/birdy/app/di/AppGraph.kt`, `androidApp/src/main/kotlin/se/birdy/android/MainActivity.kt`, `composeApp/src/commonMain/kotlin/se/birdy/app/ui/scaffold/AppScaffold.kt`
+
+- [ ] **Step 1: Fallerande test**
+
+```kotlin
+package se.birdy.app.premium
+
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.test.advanceTimeBy
+import kotlinx.coroutines.test.runTest
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
+
+@OptIn(ExperimentalCoroutinesApi::class)
+class BillingAnswerTest {
+    @Test
+    fun `already answered returns true at once`() =
+        runTest { assertTrue(awaitBillingAnswer(MutableStateFlow(true), timeoutMs = 5_000)) }
+
+    @Test
+    fun `answer arriving before timeout returns true`() =
+        runTest {
+            val queried = MutableStateFlow(false)
+            val result = async { awaitBillingAnswer(queried, timeoutMs = 5_000) }
+            advanceTimeBy(1_000)
+            queried.value = true
+            assertTrue(result.await())
+        }
+
+    @Test
+    fun `no answer before timeout returns false`() =
+        runTest { assertFalse(awaitBillingAnswer(MutableStateFlow(false), timeoutMs = 5_000)) }
+}
+```
+Kör `./gradlew :composeApp:testDebugUnitTest --tests "se.birdy.app.premium.BillingAnswerTest"` → `Unresolved reference: awaitBillingAnswer`.
+
+- [ ] **Step 2: `BillingAnswer.kt`**
+
+```kotlin
+package se.birdy.app.premium
+
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withTimeoutOrNull
+
+/**
+ * Waits until Play Billing has answered the purchase query. Automatic paywalls must never be
+ * shown on a guess: a paying subscriber looks Free until Play answers. Returns false on timeout
+ * (Play unreachable) so the caller skips the paywall for this launch.
+ */
+suspend fun awaitBillingAnswer(
+    purchasesQueried: StateFlow<Boolean>,
+    timeoutMs: Long,
+): Boolean = withTimeoutOrNull(timeoutMs) { purchasesQueried.first { it } } != null
+```
+
+- [ ] **Step 3: expect/actual.** I expect-klassen, efter `formattedPrices`: `/** True once Play has answered a purchase query successfully (never on a failed query). */ val purchasesQueried: StateFlow<Boolean>`. Android: `private val _purchasesQueried = MutableStateFlow(false)` + `actual val purchasesQueried: StateFlow<Boolean> = _purchasesQueried.asStateFlow()`; i `queryPurchases()` fångas `BillingResult` i båda callbackarna (`{ result, list -> if (cont.isActive) cont.resume(result to list) }`); **bara om båda är `BillingResponseCode.OK`** sätts `_state.value` och `_purchasesQueried.value = true`, annars loggas koderna med `Log.w(TAG, ...)` och befintligt state lämnas orört. iOS: `actual val purchasesQueried: StateFlow<Boolean> = MutableStateFlow(true)` (iOS har ingen automatisk betalvägg före i5).
+- [ ] **Step 4:** `AppGraph` får `val premiumQueried: StateFlow<Boolean> = MutableStateFlow(true),` efter `formattedPricesFlow`; `MainActivity` skickar `premiumQueried = billingClient.purchasesQueried`.
+- [ ] **Step 5: AppScaffold** — i första `LaunchedEffect(Unit)`, efter grandfather-blocket och före dag-0-kontrollen:
+```kotlin
+        // Never show an automatic paywall on a guess — a paying user looks Free until Play answers.
+        if (graph.premiumOverride == null && !awaitBillingAnswer(graph.premiumQueried, timeoutMs = 5_000)) {
+            return@LaunchedEffect
+        }
+```
+och flytta `val premiumState = graph.premiumOverride ?: graph.premiumRepository.state.value` till direkt efter det blocket.
+- [ ] **Step 6:** Full gate. Commit (utan push) med exakta sökvägar, meddelande `fix(premium): ingen automatisk betalvägg förrän Play svarat, misslyckad fråga nollar inte köp` + Co-Authored-By-raden.
+
+---
+
 ### Task 7: Köpet räknas som klart först när Premium faktiskt är aktivt (bugg)
 
 **Bakgrund:** `PremiumScreen` anropar idag `viewModel.purchase(); onPurchaseComplete()` i samma klick. `onPurchaseComplete` stänger skärmen och visar "Välkommen, fältmedlem." direkt, även om användaren avbryter Googles köpruta. Maskerat hittills av att alla hade Premium gratis.
@@ -1556,7 +1660,7 @@ git fetch origin && git checkout release/1.3.0 && git merge --ff-only origin/mai
 - [ ] **Step 1: Bygg köp-test-AAB:n**
 
 ```bash
-./gradlew :androidApp:bundleRelease -Pbirdy.grandfatherCutoffMs=0
+./gradlew :androidApp:bundleRelease -Pbirdy.grandfatherCutoffMs=0 -Pbirdy.billingTestBuild=true
 cp androidApp/build/outputs/bundle/release/androidApp-release.aab "$HOME/Desktop/birdy-1.3.0-vc128-KOPTEST-EJ-PRODUKTION.aab"
 ```
 Förväntat: `BUILD SUCCESSFUL` (nyckelvakten passerar med de lokala nycklarna).
@@ -1572,7 +1676,7 @@ Förväntat: alignment-skriptet rapporterar alla `.so` ≥ 0x4000; zipalign `Ver
 - [ ] **Step 3: Uppdatera runbooken** — i `docs/superpowers/runbooks/2026-05-26-billing-verify-and-go-live.md`, lägg till överst efter titelraden:
 
 ```markdown
-> **Uppdatering 2026-09-24 (release 1.3.0):** Appen ligger nu på AB:s utvecklarkonto. `PREMIUM_OPEN_FOR_LAUNCH=false` och grandfather-regeln (§5) är implementerade i 1.3.0 (`GrandfatherPolicy`, brytpunkt `GRANDFATHER_CUTOFF_MS` = 2026-10-02 00:00 Stockholm). Köp-testet körs med **vC128 byggt med `-Pbirdy.grandfatherCutoffMs=0`** (ingen är grandfathered, så betalväggen syns även på Albins gamla installation). **vC128 får ALDRIG befordras till produktion** — produktionsbygget blir vC129 med standardbrytpunkten.
+> **Uppdatering 2026-09-24 (release 1.3.0):** Appen ligger nu på AB:s utvecklarkonto. `PREMIUM_OPEN_FOR_LAUNCH=false` och grandfather-regeln (§5) är implementerade i 1.3.0 (`GrandfatherPolicy`, brytpunkt `GRANDFATHER_CUTOFF_MS` = 2026-10-02 00:00 Stockholm). Köp-testet körs med **vC128 byggt med `-Pbirdy.grandfatherCutoffMs=0 -Pbirdy.billingTestBuild=true`** (versionsnamnet blir `1.3.0-koptest`) (ingen är grandfathered, så betalväggen syns även på Albins gamla installation). **vC128 får ALDRIG befordras till produktion** — produktionsbygget blir vC129 med standardbrytpunkten.
 >
 > **Förberedelser i Play Console (AB):** (1) skapa `premium_yearly_v1` (prenumeration, årlig bas-plan) och `premium_lifetime_v1` (engångsköp), sätt priser, aktivera; (2) kontrollera att licensnyckeln under Monetization setup → Licensing är samma som `BIRDY_PLAY_LICENSE_KEY` i `~/.gradle/gradle.properties` (klistra in den på nytt om du är osäker, och bygg om); (3) lägg till ditt Google-konto som licenstestare; (4) ladda upp `birdy-1.3.0-vc128-KOPTEST-EJ-PRODUKTION.aab` till **Intern testning**.
 >
