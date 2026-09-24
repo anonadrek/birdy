@@ -65,10 +65,11 @@ Definieras på ett ställe (`src/styles/tokens.css`) och speglas i Tailwinds `@t
 | `--apricot` | `#F2B27A` | accent på mossgrönt och Birdy-fågeln |
 | `--moss` / `--moss-2` / `--moss-deep` | `#1F2A19` / `#2B3A23` / `#172013` | hero, karusell, Premium, sidfot |
 | `--brass` / `--brass-hi` | `#B8893A` / `#E2C07E` | Premium |
+| `--brass-ink` | `#241B0C` | text på mässing (sigill, Premium-märken) |
 | `--cream` | `#FFF8EE` | text på mossgrönt |
 | `--navy` | `#1F3A5F` | en stämpelvariant, som i appen |
 
-Kontrast (uträknad): muted på papper 5,5:1, rost på papper 5,6:1, aprikos på mossa 8,1:1 och ljus mässing på mossa 8,6:1. Allt klarar WCAG AA även för liten text. `theme-color` blir `#1F2A19`.
+Kontrast (uträknad): muted på papper 5,5:1, rost på papper 5,6:1, aprikos på mossa 8,1:1, ljus mässing på mossa 8,6:1 och mörk text på mässing 5,4:1. Allt klarar WCAG AA även för liten text. Krämfärgad text på mässing (som i mockupens sigill) ger bara 3:1, så text på mässing är alltid mörk, precis som i appen. `theme-color` blir `#1F2A19`.
 
 ### 4.2 Typsnitt
 
@@ -220,11 +221,13 @@ Fem frågor enligt mockupen på en yta i kortfärg. Svaren öppnas mjukt i webbl
 | nya `src/components/phone/PhoneFrame.astro` och `phone/screens/*.astro` | telefonerna i kod; träffskärmen delas mellan heron och karusellen |
 | nya `HowItWorks.astro`, `JournalSection.astro`, `AppTour.astro`, `Guide.astro` och `CoverageMap.astro` | nya sektioner; kartlogiken flyttas från `Coverage.astro` |
 | `Premium.astro`, `Privacy.astro`, `FieldNotesTeaser.astro`, `Faq.astro`, `ui/FaqItem.astro`, `FinalCta.astro` | omskrivna |
-| `FieldNotesIndex.astro`, `FieldNoteArticle.astro`, `src/styles/article-prose.css` | omskrivna |
+| `FieldNotesIndex.astro`, `FieldNoteArticle.astro`, `src/styles/article-prose.css` och ny `NoteCard.astro` | omskrivna; kortet delas av listan och startsidan |
 | `src/content.config.ts`, `src/lib/field-notes.ts`, `BLOG.md` | bildfält och lästid |
 | `src/content/field-notes/{sv,en}/why-birdy.md` | bild (från `src/assets/photos/`), citat och länkar |
 | `src/content/copy.{sv,en}.json` | omstrukturerade texter (bilaga A) |
-| `src/pages/index.astro`, `src/pages/sv/index.astro` | ny sektionsordning |
+| `src/pages/index.astro`, `src/pages/sv/index.astro` och ny `src/components/HomePage.astro` | en gemensam startsida för båda språken med den nya sektionsordningen; sidfilerna blir tunna omslag |
+| nya `src/components/ui/Icon.astro`, `Kicker.astro`, `Accent.astro` och `src/components/phone/TabBar.astro` | små gemensamma delar (ikoner, kicker, accentord, telefonernas flikrad) |
+| nya `scripts/check-contrast.mjs` och `scripts/check-no-dashes.mjs` | vakter för palettens kontrast och mot tankstreck i publika texter |
 | `src/layouts/LegalLayout.astro`, `src/pages/legal/index.astro`, `src/styles/legal-prose.css` | nya tokennamn och mossgrön meny |
 | nya `src/assets/hero/` (platta, rödhakelager, telefonutsnitt), `src/assets/photos/` (sex foton och `SOURCES.md`) och `public/brand/birdy-bird.png` | bilder |
 | `public/coverage/coverage-fallback.webp` och nytt `tools/render-coverage-fallback.mjs` | reservkartan i nya färger |
@@ -236,7 +239,7 @@ Fem frågor enligt mockupen på en yta i kortfärg. Svaren öppnas mjukt i webbl
 
 **Automatiskt** (måste vara grönt före go-live)
 
-- `npm run build`, `npm run check` (utgångsläget har ett känt typfel i `astro.config.mjs`, inga nya får tillkomma), `npm run test:i18n`, `npm run test:no-accuracy` och `npm run test:smoke`.
+- `npm run build`, `npm run check` (utgångsläget har ett känt typfel i `astro.config.mjs`, inga nya får tillkomma), `npm run test:i18n`, `npm run test:no-accuracy`, de nya vakterna `npm run test:contrast` och `npm run test:no-dashes`, och Playwright-testerna.
 - **Uppdaterade tester:** startsidans rubriker och Play-länk (SV och EN), hreflang, blogglistan och inlägget (en h1, tre h2, `og:type=article`, `og:image` är inläggets bild, hreflang), albIT-länken i sidfoten, juridiksidorna och kartsektionen (nu `#guide`, med levande karta eller reservbild och inga fel i konsolen).
 - **Nya tester:** sektionernas ordning och ID:n, karusellen har åtta skärmar och "nästa" byter text, rödhaken och karusellen står still med minskad rörelse, ingen sidledsscroll i 390 px på startsidan, blogglistan och inlägget (SV och EN), telefonen överlappar inte rödhaken i 1024, 1280, 1440 och 1920 px, och rödhakens ruta börjar under menyn i 1920 px.
 

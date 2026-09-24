@@ -26,7 +26,7 @@ soft = cv2.GaussianBlur(dil, (0, 0), 6).astype(np.float32)[..., None] / 255
 plate = (filled * (1 - soft) + blur * soft).astype(np.uint8)
 plate_rgb = cv2.cvtColor(plate, cv2.COLOR_BGR2RGB)
 Image.fromarray(plate_rgb).save(f'{out}/robin-plate.jpg', quality=86, optimize=True, progressive=True)
-Image.fromarray(plate_rgb).save(f'{out}/robin-plate.webp', quality=82, method=6)
+Image.fromarray(plate_rgb).save(f'{out}/robin-plate.webp', quality=95, method=6)
 
 # Fotterna: lagsta punkten dar benen moter grenen (for transform-origin)
 feet_y = ys.max()
