@@ -1,0 +1,26 @@
+---
+import Kicker from '../../ui/Kicker.astro';
+import Accent from '../../ui/Accent.astro';
+import TabBar from '../TabBar.astro';
+
+interface Props {
+  copy: { kicker: string; headline: string; roomLabel: string; rank: string; trophies: string; unlocked: string; remaining: string };
+}
+const { copy } = Astro.props;
+const seals: { n: string; kind?: 'navy' | 'brass' | 'off' }[] = [
+  { n: '1' }, { n: '2' }, { n: '3', kind: 'navy' }, { n: '4' }, { n: '5', kind: 'brass' }, { n: '6' },
+  { n: '7', kind: 'off' }, { n: '8', kind: 'off' }, { n: '9', kind: 'off' }, { n: '10', kind: 'off' }, { n: '11', kind: 'off' }, { n: '12', kind: 'off' },
+];
+---
+
+<div class="ph-body ph-body--top">
+  <Kicker text={copy.kicker} />
+  <h5><Accent text={copy.headline} /></h5>
+  <div class="ph-troph">
+    <span class="seal seal--brass">№28</span>
+    <span class="t"><small>{copy.roomLabel}</small><b>{copy.rank}</b><i>{copy.trophies}</i></span>
+  </div>
+  <div class="ph-tstats"><span><em>12</em>{copy.unlocked}</span><span><em>22</em>{copy.remaining}</span></div>
+  <div class="ph-sgrid">{seals.map((s) => <span class:list={['seal', s.kind && `seal--${s.kind}`]}>{s.n}</span>)}</div>
+</div>
+<TabBar active={3} />

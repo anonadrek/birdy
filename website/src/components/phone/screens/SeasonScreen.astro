@@ -1,0 +1,36 @@
+---
+import Accent from '../../ui/Accent.astro';
+import TabBar from '../TabBar.astro';
+
+interface Props {
+  copy: {
+    kicker: string; headline: string; species: string; observations: string; perMonth: string; perSeason: string;
+    seasons: string[]; mostSeen: string; top: { name: string; count: string }[];
+  };
+  premium: string;
+}
+const { copy, premium } = Astro.props;
+const months = [10, 14, 30, 55, 80, 62, 40, 35, 70, 4, 3, 3]; // percent of the busiest month; September is "now"
+const seasonBar: [string, string][] = [['12%', '#8FA0B5'], ['38%', '#6F8A4E'], ['30%', 'var(--brass)'], ['20%', 'var(--rust)']];
+const topWidths = ['90%', '60%'];
+---
+
+<div class="ph-body ph-body--top">
+  <p class="kick"><span class="kick-line"></span>{copy.kicker}<span class="ph-pbadge">{premium}</span></p>
+  <h5><Accent text={copy.headline} /></h5>
+  <div class="ph-big"><div><b>23</b><small>{copy.species}</small></div><div><b>57</b><small>{copy.observations}</small></div></div>
+  <div class="ph-pcard">
+    <p class="ph-lbl">{copy.perMonth}</p>
+    <div class="ph-bars">{months.map((h, i) => <span class:list={[{ now: i === 8 }]} style={`height:${h}%`}></span>)}</div>
+  </div>
+  <div class="ph-pcard">
+    <p class="ph-lbl">{copy.perSeason}</p>
+    <div class="ph-seas">{seasonBar.map(([w, c]) => <span style={`width:${w};background:${c}`}></span>)}</div>
+    <div class="ph-sl">{copy.seasons.map((s) => <span>{s}</span>)}</div>
+  </div>
+  <div class="ph-pcard">
+    <p class="ph-lbl">{copy.mostSeen}</p>
+    {copy.top.map((row, i) => <div class="ph-tp"><em>{row.name}</em><div class="ph-tb"><span style={`width:${topWidths[i]}`}></span></div>{row.count}</div>)}
+  </div>
+</div>
+<TabBar active={1} />

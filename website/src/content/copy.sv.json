@@ -41,7 +41,101 @@
       "note": "Lägg till en anteckning",
       "save": "Spara i fältboken",
       "more": "Inte den? Se fler förslag"
-    }
+    },
+    "matchTour": {
+      "label": "Birdys träffskärm: domherre, säker match 91 procent",
+      "kicker": "Match · Fynd nr 24",
+      "species": "Domherre",
+      "latin": "Pyrrhula pyrrhula",
+      "confidence": "Säker match · 91 %",
+      "seal": "Nr 24"
+    },
+    "identify": {
+      "label": "Birdys startskärm Identifiera med dagens fågel, en stjärtmes",
+      "dailyBird": "Dagens fågel",
+      "species": "Stjärtmes",
+      "status": "här just nu.",
+      "latin": "Aegithalos caudatus",
+      "caught": "Inte fångad än",
+      "kicker": "Identifiera",
+      "headline": "Tre sätt att *fånga.*",
+      "weekNote": "7 fynd den här veckan",
+      "startCamera": "Starta kameran",
+      "photoTitle": "Från ett foto",
+      "photoBody": "Välj en bild i galleriet",
+      "listenTitle": "Lyssna på lätet",
+      "listenBody": "Spela in sång eller läte"
+    },
+    "listen": {
+      "label": "Birdys ljud-ID som lyssnar och hör en koltrast",
+      "kicker": "Lyssnar",
+      "headline": "Låt den *sjunga.*",
+      "hearing": "Hör: Koltrast",
+      "hint1": "Håll telefonen stilla.",
+      "hint2": "Birdy stannar själv när den är säker."
+    },
+    "journal": {
+      "label": "Birdys fältbok med 24 arter och veckans uppslag",
+      "kicker": "Mina arter",
+      "headline": "Din *fältbok.*",
+      "stats": [
+        { "value": "24", "label": "arter" },
+        { "value": "9", "label": "märken" },
+        { "value": "5", "label": "dagar i rad" }
+      ],
+      "weekLabel": "Veckans uppslag",
+      "weekSpecies": "Domherre",
+      "entries": [
+        { "no": "24", "species": "Domherre", "when": "12 jan · Hagaparken" },
+        { "no": "23", "species": "Talgoxe", "when": "10 jan · Trädgården" },
+        { "no": "22", "species": "Sidensvans", "when": "8 jan · Centrum" },
+        { "no": "21", "species": "Stjärtmes", "when": "6 jan · Skogsstigen" }
+      ]
+    },
+    "species": {
+      "label": "Birdys artprofil för talgoxe, stämplad med 12 fynd",
+      "family": "Mesar · Paridae",
+      "name": "Talgoxe",
+      "latin": "Parus major",
+      "stamped": "Stämplad · 12 fynd",
+      "abundance": "Allmän",
+      "status": "Livskraftig (LC)",
+      "aboutLabel": "Om arten",
+      "about": "Talgoxen är en vanlig fågel som förekommer över stora delar av Europa. Den är mycket anpassningsbar och trivs i alla slags skogslandskap, från täta lövskogar till öppnare terränger.",
+      "seasonLabel": "Finns i Sverige",
+      "months": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
+    },
+    "badges": {
+      "label": "Birdys märken med troférummet och tolv stämplar",
+      "kicker": "Märken · Troférum",
+      "headline": "Kom hem med ett *märke.*",
+      "roomLabel": "Ditt troférum",
+      "rank": "Fältmedlem",
+      "trophies": "3 troféer",
+      "unlocked": "upplåsta",
+      "remaining": "kvar att jaga"
+    },
+    "map": {
+      "label": "Birdys fynd-karta med fyra fynd som sigill",
+      "kicker": "Fynd-kartan",
+      "headline": "Överallt du *varit.*"
+    },
+    "season": {
+      "label": "Birdys säsongsstatistik för 2026 med 23 arter och 57 observationer",
+      "kicker": "Säsong 2026",
+      "headline": "Ett *år* i fält.",
+      "species": "arter",
+      "observations": "observationer",
+      "perMonth": "Observationer per månad",
+      "perSeason": "Per säsong",
+      "seasons": ["Vinter 7", "Vår 22", "Sommar 17", "Höst 11"],
+      "mostSeen": "Mest sedda",
+      "top": [
+        { "name": "Talgoxe", "count": "12" },
+        { "name": "Koltrast", "count": "8" }
+      ]
+    },
+    "premiumBadge": "Premium"
   },
   "appStoreBadge": {
     "top": "Snart på",
@@ -73,10 +167,24 @@
       { "value": "0", "label": "konton" }
     ]
   },
-  "glimpse": {
-    "eyebrow": "EN TITT INUTI",
-    "headline": "Skapad för *stunden* utomhus.",
-    "sub": "Titta närmare på appen du tar med ut i fält."
+  "tour": {
+    "kicker": "Appen",
+    "headline": "Ett varv i *fältboken.*",
+    "lead": "Från första träffen till ditt eget uppslagsverk. Så här ser Birdy ut i telefonen.",
+    "label": "Skärmar ur appen",
+    "prev": "Föregående skärm",
+    "next": "Nästa skärm",
+    "premium": "Premium",
+    "slides": [
+      { "k": "Identifiera", "h": "Tre sätt att fånga", "p": "Kamera, foto eller läte. Dagens fågel visar en art som finns i Sverige just nu.", "premium": false },
+      { "k": "Träff", "h": "Ärlig om hur säker den är", "p": "Birdy visar säkerheten tydligt. Är den osäker får du fler förslag att välja mellan.", "premium": false },
+      { "k": "Ljud-ID · gratis", "h": "Lyssna på lätet", "p": "Spela in sången så föreslår Birdy arten. Ljudidentifieringen är gratis för alla.", "premium": false },
+      { "k": "Fältboken", "h": "Din egen fältbok", "p": "Varje fynd sparas i telefonen. Nya arter får en präglad stämpel.", "premium": false },
+      { "k": "Artprofil", "h": "Allt om arten på ett uppslag", "p": "Foton, beskrivning och när arten finns i Sverige. Du ser direkt om du har stämplat den.", "premium": false },
+      { "k": "Märken", "h": "Kom hem med ett märke", "p": "34 märken att samla, 27 av dem gratis. Troférummet visar allt du har jagat ihop.", "premium": false },
+      { "k": "Fynd-kartan", "h": "Överallt du har varit", "p": "Dina fynd på en egen karta. Platsen sparas bara om du vill, och bara i telefonen.", "premium": true },
+      { "k": "Säsong", "h": "Ett år i fält", "p": "Stora siffror och lugna diagram. Se mönstren i dina fynd, månad för månad.", "premium": true }
+    ]
   },
   "inside": {
     "eyebrow": "INUTI APPEN",

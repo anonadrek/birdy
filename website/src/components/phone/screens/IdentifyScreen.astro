@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import Icon from '../../ui/Icon.astro';
+import Kicker from '../../ui/Kicker.astro';
+import Accent from '../../ui/Accent.astro';
+import TabBar from '../TabBar.astro';
+import longTailedTit from '../../../assets/photos/stjartmes-q170831.webp';
+
+interface Props {
+  copy: {
+    dailyBird: string; species: string; status: string; latin: string; caught: string; kicker: string;
+    headline: string; weekNote: string; startCamera: string; photoTitle: string; photoBody: string;
+    listenTitle: string; listenBody: string;
+  };
+}
+const { copy } = Astro.props;
+---
+
+<div class="ph-hero" style="height:208px">
+  <Image src={longTailedTit} alt="" widths={[250, 500]} sizes="250px" style="object-position:center 35%" loading="lazy" decoding="async" />
+  <div class="ph-hc">
+    <Kicker text={copy.dailyBird} />
+    <h4>{copy.species}<em>{copy.status}</em></h4>
+    <div class="ph-pmeta"><span>{copy.latin}</span><span>{copy.caught}</span></div>
+  </div>
+</div>
+<div class="ph-body">
+  <Kicker text={copy.kicker} />
+  <h5><Accent text={copy.headline} /></h5>
+  <p class="ph-note">{copy.weekNote}</p>
+  <div class="ph-prim"><Icon name="camera" size={14} /><span>{copy.startCamera}</span></div>
+  <div class="ph-row"><span class="ph-ic"><Icon name="photo" size={13} /></span><span class="t"><b>{copy.photoTitle}</b><small>{copy.photoBody}</small></span></div>
+  <div class="ph-row"><span class="ph-ic"><Icon name="wave" size={13} /></span><span class="t"><b>{copy.listenTitle}</b><small>{copy.listenBody}</small></span></div>
+</div>
+<TabBar active={0} />

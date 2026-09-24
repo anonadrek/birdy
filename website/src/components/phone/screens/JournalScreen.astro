@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import Kicker from '../../ui/Kicker.astro';
+import Accent from '../../ui/Accent.astro';
+import TabBar from '../TabBar.astro';
+import bullfinch from '../../../assets/photos/domherre-q25382.webp';
+
+interface Props {
+  copy: {
+    kicker: string; headline: string; stats: { value: string; label: string }[];
+    weekLabel: string; weekSpecies: string; entries: { no: string; species: string; when: string }[];
+  };
+}
+const { copy } = Astro.props;
+---
+
+<div class="ph-body ph-body--top">
+  <Kicker text={copy.kicker} />
+  <h5><Accent text={copy.headline} /></h5>
+  <div class="ph-nums">{copy.stats.map((s) => <div><b>{s.value}</b><small>{s.label}</small></div>)}</div>
+  <div class="ph-week">
+    <Image src={bullfinch} alt="" widths={[250, 500]} sizes="218px" loading="lazy" decoding="async" />
+    <div><small>{copy.weekLabel}</small><b>{copy.weekSpecies}</b></div>
+  </div>
+  {copy.entries.map((e, i) => (
+    <div class="ph-jr">
+      <span class:list={['seal', 'seal--mini', { 'seal--brass': i === 2 }]}>{e.no}</span>
+      <span class="t"><b>{e.species}</b><small>{e.when}</small></span>
+    </div>
+  ))}
+</div>
+<TabBar active={1} />

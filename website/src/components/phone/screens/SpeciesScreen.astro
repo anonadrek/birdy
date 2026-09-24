@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import Kicker from '../../ui/Kicker.astro';
+import greatTit from '../../../assets/photos/talgoxe-q25485.webp';
+
+interface Props {
+  copy: {
+    family: string; name: string; latin: string; stamped: string; abundance: string; status: string;
+    aboutLabel: string; about: string; seasonLabel: string; months: string[];
+  };
+}
+const { copy } = Astro.props;
+const thumbPositions = ['center', '20% 70%', '80% 20%'];
+---
+
+<div class="ph-hero" style="height:250px">
+  <Image src={greatTit} alt="" widths={[250, 500]} sizes="250px" style="object-position:center 30%" loading="lazy" decoding="async" />
+  <div class="ph-hc" style="bottom:30px">
+    <Kicker text={copy.family} />
+    <h4>{copy.name}</h4>
+    <i class="ph-latin">{copy.latin}</i>
+    <div class="ph-pills">
+      <span class="ph-pill ph-pill--on">{copy.stamped}</span>
+      <span class="ph-pill">{copy.abundance}</span>
+      <span class="ph-pill">{copy.status}</span>
+    </div>
+  </div>
+</div>
+<div class="ph-sheet" style="top:232px">
+  <p class="ph-lbl">{copy.aboutLabel}</p>
+  <p class="ph-desc">{copy.about}</p>
+  <p class="ph-lbl">{copy.seasonLabel}</p>
+  <div class="ph-months">{copy.months.map(() => <span></span>)}</div>
+  <div class="ph-ml">{copy.months.map((m) => <span>{m}</span>)}</div>
+  <div class="ph-thumbs">
+    {thumbPositions.map((pos) => <span><Image src={greatTit} alt="" widths={[136]} sizes="68px" style={`object-position:${pos}`} loading="lazy" decoding="async" /></span>)}
+  </div>
+</div>

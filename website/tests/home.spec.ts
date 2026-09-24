@@ -236,3 +236,52 @@ test.describe('så funkar det och fältboken', () => {
     });
   });
 });
+
+test.describe('appkarusellen', () => {
+  test('åtta telefoner och pilarna byter text (SV)', async ({ page }) => {
+    const errors = trackConsoleErrors(page);
+    await page.goto('/sv/');
+    const tour = page.locator('#app');
+    await expect(tour.locator('.slide')).toHaveCount(8);
+    await expect(tour.locator('.slide .ph[role="img"]')).toHaveCount(8);
+    await tour.scrollIntoViewIfNeeded();
+    const title = tour.locator('[data-ch]');
+    await expect(title).toHaveText('Tre sätt att fånga');
+    await tour.locator('[data-next]').click();
+    await expect(title).toHaveText('Ärlig om hur säker den är');
+    await tour.locator('[data-next]').click();
+    await expect(title).toHaveText('Lyssna på lätet');
+    await tour.locator('[data-prev]').click();
+    await expect(title).toHaveText('Ärlig om hur säker den är');
+    expect(errors).toEqual([]);
+  });
+
+  test('sista skärmen är märkt Premium (EN)', async ({ page }) => {
+    await page.goto('/');
+    const tour = page.locator('#app');
+    await tour.scrollIntoViewIfNeeded();
+    await tour.locator('[data-track]').evaluate((t) => t.scrollTo({ left: t.scrollWidth }));
+    await expect(tour.locator('[data-ch]')).toHaveText('A year in the field');
+    await expect(tour.locator('[data-cp]')).toBeVisible();
+    await expect(tour.locator('[data-cp]')).toHaveText('Premium');
+  });
+
+  test('alla telefonbilder är laddade när man når karusellen', async ({ page }) => {
+    await page.goto('/sv/');
+    await page.locator('#app').scrollIntoViewIfNeeded();
+    await expect.poll(() => page.locator('#app img').evaluateAll((imgs) =>
+      imgs.every((img) => (img as HTMLImageElement).complete && (img as HTMLImageElement).naturalWidth > 0))).toBe(true);
+  });
+
+  test.describe('med minskad rörelse', () => {
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
+    test('karusellen och rödhaken står still', async ({ page }) => {
+      await page.goto('/sv/');
+      await page.locator('#app').scrollIntoViewIfNeeded();
+      const transforms = await page.locator('#app .slide').evaluateAll((els) => els.map((e) => getComputedStyle(e).transform));
+      expect(transforms.every((t) => t === 'none')).toBe(true);
+      const running = await page.evaluate(() => document.getAnimations().filter((a) => a.playState === 'running').length);
+      expect(running).toBe(0);
+    });
+  });
+});
