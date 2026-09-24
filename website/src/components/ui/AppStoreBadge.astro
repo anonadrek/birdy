@@ -8,13 +8,13 @@ interface Props {
   size?: 'small' | 'large';
   class?: string;
 }
-const { locale, size = 'small', class: cls = '' } = Astro.props;
+const { locale, size = 'small', class: cls, ...rest } = Astro.props;
 const t = getCopy(locale);
 const w = size === 'large' ? 190 : 140;
 const h = size === 'large' ? 68 : 50;
 ---
 
-<span class={`appstore ${cls}`} role="img" aria-label={t.alt.appStoreBadge} title={t.alt.appStoreBadge} aria-disabled="true">
+<span class:list={['appstore', cls]} {...rest} role="img" aria-label={t.alt.appStoreBadge} title={t.alt.appStoreBadge} aria-disabled="true">
   <svg width={w} height={h} viewBox="0 0 190 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect x="0.5" y="0.5" width="189" height="67" rx="10" fill="#0B0F09" stroke="#FFFFFF" stroke-opacity="0.35" />
     <g transform="translate(17 16) scale(1.5)">
