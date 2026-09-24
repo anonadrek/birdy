@@ -1,6 +1,7 @@
 package se.birdy.app.data.premium
 
 import kotlinx.coroutines.test.runTest
+import se.birdy.domain.premium.BillingUnavailableException
 import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
 import kotlin.test.Test

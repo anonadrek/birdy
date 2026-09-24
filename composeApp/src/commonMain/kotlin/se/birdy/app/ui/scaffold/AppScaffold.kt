@@ -71,8 +71,15 @@ fun AppScaffold(graph: AppGraph) {
         // The wait above can take up to 5 s — if the user has since navigated away from the
         // start destination (opened Scan/Camera, followed a deep link, ...) a paywall popping
         // up now would cover whatever they're doing. Bail without marking either "shown" flag
-        // so the paywall is reconsidered fresh next launch.
-        if (navController.currentDestination?.hasRoute(AppRoute.Listen::class) != true) {
+        // so the paywall is reconsidered fresh next launch. currentBackStackEntryFlow replays
+        // the current entry and first() suspends until the NavHost has set its graph, so this
+        // can't run against a null destination when the wait above didn't run (override users
+        // skip it) — currentDestination could be null in that case.
+        if (!navController.currentBackStackEntryFlow
+                .first()
+                .destination
+                .hasRoute(AppRoute.Listen::class)
+        ) {
             return@LaunchedEffect
         }
         val premiumState = graph.premiumOverride ?: graph.premiumRepository.state.value

@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import se.birdy.app.data.premium.BillingUnavailableException
 import se.birdy.app.i18n.toLocaleTagOrEmpty
 import se.birdy.app.notifications.PlatformNotificationsApi
 import se.birdy.datastore.AppLanguage
@@ -165,14 +164,19 @@ class SettingsViewModel(
         viewModelScope.launch {
             try {
                 var billingUnavailable = false
+                // Any failure (including BillingUnavailableException) means we couldn't confirm
+                // with the store — never silently swallowed, always logged (house rule: a
+                // degradation must always show — state + log). The catch-all is deliberate: we
+                // want every unexpected error, not just the ones we've anticipated, to fall back
+                // to the honest "unavailable" message instead of a misleading "nothing to restore".
+                @Suppress("TooGenericExceptionCaught")
                 try {
                     premiumRepository.restore()
                 } catch (e: CancellationException) {
                     throw e
-                } catch (ignore: BillingUnavailableException) {
+                } catch (e: Exception) {
                     billingUnavailable = true
-                } catch (ignore: Exception) {
-                    // swallow; state.value still reflects last-known premium status
+                    println("SettingsViewModel: restore failed:\n${e.stackTraceToString()}")
                 }
                 val overrideActive = premiumOverride is PremiumState.Active
                 val message =

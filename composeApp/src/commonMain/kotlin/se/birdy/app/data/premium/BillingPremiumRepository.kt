@@ -1,14 +1,10 @@
 package se.birdy.app.data.premium
 
 import kotlinx.coroutines.flow.StateFlow
+import se.birdy.domain.premium.BillingUnavailableException
 import se.birdy.domain.premium.PremiumRepository
 import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
-
-/** Thrown by [BillingPremiumRepository.restore] when the platform billing service could not be
- * reached (e.g. Play unreachable) — as opposed to a successful query that simply found nothing.
- */
-class BillingUnavailableException : Exception("Google Play billing unavailable")
 
 /**
  * Plan 6b1: replaces the DataStore-only stub from Plan 7e.

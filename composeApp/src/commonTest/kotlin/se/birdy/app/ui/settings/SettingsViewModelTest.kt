@@ -11,10 +11,10 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import kotlinx.datetime.Clock
-import se.birdy.app.data.premium.BillingUnavailableException
 import se.birdy.app.testing.FakePremiumRepository
 import se.birdy.datastore.AppLanguage
 import se.birdy.datastore.InMemoryUserPreferences
+import se.birdy.domain.premium.BillingUnavailableException
 import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
 import kotlin.test.AfterTest
@@ -149,6 +149,40 @@ class SettingsViewModelTest {
             vm.effects.test {
                 vm.restorePurchases()
                 assertEquals(SettingsEffect.ShowToast(Res.string.settings_restore_purchases_success), awaitItem())
+            }
+        }
+
+    @Test
+    fun `restore when play is unreachable and billing already active reports unavailable`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val premiumRepo =
+                FakePremiumRepository(
+                    PremiumState.Active(PremiumTier.YEARLY, Clock.System.now()),
+                    restoreThrows = BillingUnavailableException(),
+                )
+            val vm = SettingsViewModel(prefs, premiumRepo)
+            vm.effects.test {
+                vm.restorePurchases()
+                assertEquals(
+                    SettingsEffect.ShowToast(Res.string.settings_restore_purchases_unavailable),
+                    awaitItem(),
+                )
+            }
+        }
+
+    @Test
+    fun `restore with unexpected error reports unavailable`() =
+        runTest {
+            val prefs = InMemoryUserPreferences()
+            val premiumRepo = FakePremiumRepository(PremiumState.Free, restoreThrows = IllegalStateException("boom"))
+            val vm = SettingsViewModel(prefs, premiumRepo)
+            vm.effects.test {
+                vm.restorePurchases()
+                assertEquals(
+                    SettingsEffect.ShowToast(Res.string.settings_restore_purchases_unavailable),
+                    awaitItem(),
+                )
             }
         }
 }
