@@ -70,6 +70,8 @@ class AppGraph(
     val userPreferences: UserPreferences,
     val premiumRepository: PremiumRepository,
     val premiumOverride: PremiumState? = null,
+    /** True for early users who keep Premium forever (spec 2026-09-24 §5.1). Android-only source. */
+    val isGrandfathered: Boolean = false,
     val versionName: String = "0.0.0",
     val clock: Clock = Clock.System,
     val timeZone: TimeZone = TimeZone.currentSystemDefault(),

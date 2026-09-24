@@ -84,12 +84,16 @@ android {
             "PLAY_LICENSE_KEY",
             "\"${project.findProperty("BIRDY_PLAY_LICENSE_KEY") ?: ""}\"",
         )
-        // Launch-period flag: while true, MainActivity forces premiumOverride = Active(LIFETIME)
-        // so closed-testing + initial production users get every Premium feature for free
-        // (BirdNET audio-ID is already free per CC BY-NC-SA license; this opens PDF + season
-        // stats + 10 field marks too). Flip to "false" + bump versionCode when Billing v8
-        // monetization is enabled in a future release.
-        buildConfigField("Boolean", "PREMIUM_OPEN_FOR_LAUNCH", "true")
+        // Monetisation is live from 1.3.0 (spec 2026-09-24): no launch-period override.
+        buildConfigField("Boolean", "PREMIUM_OPEN_FOR_LAUNCH", "false")
+        // Early-user cutoff (spec §5.1): installs before this instant keep Premium forever.
+        // Default = planned go-live + 48 h = 2026-10-02T00:00 Europe/Stockholm
+        // (2026-10-01T22:00:00Z). NEVER change it after 1.3.0 ships. Billing-verify builds
+        // pass -Pbirdy.grandfatherCutoffMs=0 so nobody is grandfathered and purchases can
+        // be tested; such a build must never be promoted to production.
+        val grandfatherCutoffMs =
+            providers.gradleProperty("birdy.grandfatherCutoffMs").orElse("1790892000000").get()
+        buildConfigField("long", "GRANDFATHER_CUTOFF_MS", "${grandfatherCutoffMs}L")
         // x86 (32-bit) excluded: no 16 KB flex build exists for it and we never ship a
         // split with a missing or 4 KB flex lib (i2a spec §2). Real devices are arm64/v7a;
         // x86_64 covers emulators.

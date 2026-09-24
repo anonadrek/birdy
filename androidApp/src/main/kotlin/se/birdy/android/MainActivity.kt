@@ -2,6 +2,7 @@ package se.birdy.android
 
 import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.SystemBarStyle
@@ -35,6 +36,8 @@ import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.notifications.workers.TrophyProgressWorker
 import se.birdy.app.photo.PhotoStorageProvider
+import se.birdy.app.premium.GrandfatherPolicy
+import se.birdy.app.premium.PremiumOverrideResolver
 import se.birdy.app.ui.audio.AndroidAudioRecorderAdapter
 import se.birdy.app.ui.audio.AndroidWaveformRenderer
 import se.birdy.app.ui.badges.BadgeStringMap
@@ -51,7 +54,6 @@ import se.birdy.data.observation.SqlDelightObservationRepository
 import se.birdy.datastore.UserPreferences
 import se.birdy.datastore.UserPreferencesStore
 import se.birdy.domain.premium.PremiumState
-import se.birdy.domain.premium.PremiumTier
 import se.birdy.ml.AndroidTfliteAudioRunner
 import se.birdy.ml.AndroidTfliteRunner
 import se.birdy.ml.AudioClassifierFactory
@@ -328,6 +330,7 @@ class MainActivity : AppCompatActivity() {
                 userPreferences.setFirstInstallTimestamp(installMs)
             }
         }
+        val isGrandfathered = computeGrandfathered(userPreferences)
         billingClient =
             se.birdy.app.data.premium.PremiumBillingClient(
                 context = applicationContext,
@@ -355,18 +358,14 @@ class MainActivity : AppCompatActivity() {
         // restart applies it. Always false in release (BuildConfig.DEBUG guards it).
         val skipPremiumOverride =
             BuildConfig.DEBUG && runBlocking { userPreferences.skipPremiumOverride.first() }
-        // PREMIUM_OPEN_FOR_LAUNCH (defaultConfig=true) forces every user to Active(LIFETIME)
-        // through the closed-testing + initial production window. Toggle off in
-        // androidApp/build.gradle.kts when Billing v8 monetization goes live.
         val premiumOverride: PremiumState? =
-            when {
-                skipPremiumOverride -> null
-                BuildConfig.PREMIUM_OPEN_FOR_LAUNCH ->
-                    PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now())
-                BuildConfig.DEBUG && BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE ->
-                    PremiumState.Active(PremiumTier.YEARLY, Clock.System.now())
-                else -> null
-            }
+            PremiumOverrideResolver.resolve(
+                isGrandfathered = isGrandfathered,
+                debugSkipOverride = skipPremiumOverride,
+                premiumOpenForLaunch = BuildConfig.PREMIUM_OPEN_FOR_LAUNCH,
+                debugForceYearly = BuildConfig.DEBUG && BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE,
+                now = Clock.System.now(),
+            )
         val overrideTag = runBlocking { userPreferences.appLanguage.first() }.toLocaleTagOrNull()
         val resolvedLocale =
             LocaleResolver.resolve(
@@ -424,6 +423,7 @@ class MainActivity : AppCompatActivity() {
             userPreferences = userPreferences,
             premiumRepository = premiumRepository,
             premiumOverride = premiumOverride,
+            isGrandfathered = isGrandfathered,
             versionName = BuildConfig.VERSION_NAME,
             defaultLocale = resolvedLocale,
             benchmarkScreen = buildBenchmarkScreen(classifierBootstrap),
@@ -502,6 +502,33 @@ class MainActivity : AppCompatActivity() {
             deepLinkFlow = deepLinkFlow,
         )
     }
+
+    /** Spec 2026-09-24 §5.1. DEBUG builds can force it on via DiagnosticsScreen for QA. */
+    private fun computeGrandfathered(userPreferences: UserPreferences): Boolean {
+        val debugForce = BuildConfig.DEBUG && runBlocking { userPreferences.debugForceGrandfathered.first() }
+        if (debugForce) return true
+        return GrandfatherPolicy.isGrandfathered(
+            storedFirstInstallMs = runBlocking { userPreferences.firstInstallTimestamp.first() },
+            packageFirstInstallMs = packageFirstInstallTimeOrNull(),
+            cutoffMs = BuildConfig.GRANDFATHER_CUTOFF_MS,
+        )
+    }
+
+    /** Android's own install time survives "clear data", unlike our DataStore timestamp. */
+    private fun packageFirstInstallTimeOrNull(): Long? =
+        try {
+            val info =
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    packageManager.getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(0))
+                } else {
+                    @Suppress("DEPRECATION")
+                    packageManager.getPackageInfo(packageName, 0)
+                }
+            info.firstInstallTime.takeIf { it > 0 }
+        } catch (e: PackageManager.NameNotFoundException) {
+            android.util.Log.w("Birdy", "firstInstallTime unavailable", e)
+            null
+        }
 
     private fun buildBenchmarkScreen(bootstrap: ClassifierBootstrap): (@Composable () -> Unit)? =
         if (BuildConfig.DEBUG) {
