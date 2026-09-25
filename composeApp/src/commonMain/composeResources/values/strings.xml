@@ -143,7 +143,7 @@
     <!-- Plan 6b2 T6: NoBird audio-specifika hints -->
     <string name="audio_no_bird_hint_1">prova en lugnare plats</string>
     <string name="audio_no_bird_hint_2">vänd mikrofonen mot fågeln</string>
-    <string name="audio_no_bird_hint_3">spela in i 3 sekunder</string>
+    <string name="audio_no_bird_hint_3">spela in lite längre</string>
     <!-- Plan 6a Task 10.7: Match inline note field -->
     <string name="match_note_label">Lägg till en anteckning</string>
 
@@ -316,7 +316,7 @@
 
     <string name="onboarding_s3_eyebrow">LJUD · NO 3</string>
     <string name="onboarding_s3_headline">Eller — *lyssna*.</string>
-    <string name="onboarding_s3_sub">3 sekunders inspelning. Identifiera sången. Gratis, alltid.</string>
+    <string name="onboarding_s3_sub">Spela in sången så föreslår Birdy arten. Gratis, alltid.</string>
     <string name="onboarding_s3_free_pill">GRATIS</string>
     <string name="onboarding_s3_species_demo">Talgoxe — 94%</string>
 
@@ -349,7 +349,7 @@
     <string name="listen_journal_headline">Tre sätt att *fånga.*</string>
     <string name="listen_journal_sub">Kamera, foto eller läte — arten dyker upp i din fältbok.</string>
     <string name="listen_card_audio_title">Lyssna</string>
-    <string name="listen_card_audio_body">Identifiera via 3 sekunders läte.</string>
+    <string name="listen_card_audio_body">Spela in sång eller läte.</string>
     <string name="listen_card_camera_title">Kika</string>
     <string name="listen_card_camera_body">Identifiera live genom kameran.</string>
     <string name="listen_card_photo_title">Leta upp</string>

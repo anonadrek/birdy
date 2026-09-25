@@ -132,7 +132,7 @@
     <!-- Plan 6b2 T6: NoBird audio-specific hints -->
     <string name="audio_no_bird_hint_1">try a quieter spot</string>
     <string name="audio_no_bird_hint_2">point the mic at the bird</string>
-    <string name="audio_no_bird_hint_3">capture a 3-second clip</string>
+    <string name="audio_no_bird_hint_3">record a little longer</string>
     <!-- Plan 6a Task 10.7: Match inline note field -->
     <string name="match_note_label">Add a note</string>
 
@@ -303,7 +303,7 @@
 
     <string name="onboarding_s3_eyebrow">SOUND · NO 3</string>
     <string name="onboarding_s3_headline">Or — *listen*.</string>
-    <string name="onboarding_s3_sub">3 seconds of recording. ID the song. Free, always.</string>
+    <string name="onboarding_s3_sub">Record the song and Birdy suggests the species. Free, always.</string>
     <string name="onboarding_s3_free_pill">FREE</string>
     <string name="onboarding_s3_species_demo">Great Tit — 94%</string>
 
@@ -336,7 +336,7 @@
     <string name="listen_journal_headline">Three ways to *catch.*</string>
     <string name="listen_journal_sub">Camera, photo or call — the bird turns up in your field book.</string>
     <string name="listen_card_audio_title">Listen</string>
-    <string name="listen_card_audio_body">Identify a 3-second song.</string>
+    <string name="listen_card_audio_body">Record a song or call.</string>
     <string name="listen_card_camera_title">Look</string>
     <string name="listen_card_camera_body">Identify live through the camera.</string>
     <string name="listen_card_photo_title">Find</string>
