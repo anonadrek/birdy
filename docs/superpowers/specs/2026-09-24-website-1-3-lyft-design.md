@@ -435,5 +435,6 @@ Sidornas titlar och metabeskrivningar (SEO) ändras inte.
 | Fältboken (planschen) | Ladusvala | Q25429 | Аимаина хикари | CC0 |
 | Ta med Birdy ut i fält | Skäggmes | Q192817 | Hobbyfotowiki | CC0 |
 | Bloggens första inlägg och kortet på startsidan | Rödhake | Q25334 | Rob Hille | Public domain |
+| Uppslagsverket: kartans fallback-bild | – | – | Natural Earth 1:50m (`ne_50m_admin_0_countries`), renderad av `tools/render-coverage-fallback.mjs` | Public domain |
 
 Källfil för varje foto: `asset-pack/src/main/assets/images/<QID>/hero.webp`. Metadata: `shared/content/species/**/<QID>.yaml`.

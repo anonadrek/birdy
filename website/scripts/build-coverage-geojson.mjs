@@ -1,15 +1,31 @@
 #!/usr/bin/env node
-// Builds public/coverage/coverage-europe.geojson from a public Europe dataset:
-// keep Birdy's core-Europe countries, drop bbox-clipped/non-core ones, round
-// coordinates to 2 decimals, dedupe, then Douglas-Peucker simplify each ring
-// (the copper wash renders at maxZoom 8 / 0.42 opacity — country borders don't
-// need full vertex density, so we trim the payload hard).
+// Builds public/coverage/coverage-europe.geojson from Natural Earth's 1:50m admin-0 countries
+// dataset (https://www.naturalearthdata.com — public domain; "No permission is required to use
+// Natural Earth. Crediting the authors is unnecessary." per its terms of use), pinned to the
+// v5.1.2 tag on jsDelivr so the build is reproducible. Keeps Birdy's core-Europe countries, drops
+// overseas exclaves (French Guiana, the Caribbean, Réunion, Mayotte, ...), rounds coordinates to
+// 2 decimals, dedupes, then Douglas-Peucker simplifies each ring (the copper wash renders at
+// maxZoom 8 / 0.42 opacity — country borders don't need full vertex density, so we trim the
+// payload hard).
 import { writeFileSync, mkdirSync } from 'node:fs';
 
-const SRC = 'https://cdn.jsdelivr.net/gh/leakyMirror/map-of-europe@master/GeoJSON/europe.geojson';
-const EXCLUDE = new Set(['Russia', 'Turkey', 'Israel', 'Armenia', 'Azerbaijan', 'Georgia']);
-const MUST_INCLUDE = ['Sweden', 'France', 'Germany', 'Spain', 'Poland', 'Italy', 'United Kingdom'];
+const SRC = 'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_50m_admin_0_countries.geojson';
+
+// Natural Earth's CONTINENT field covers Birdy's Europe scope except Cyprus and Northern Cyprus,
+// which it files under Asia — added back explicitly. Russia is Europe in Natural Earth but out
+// of scope for Birdy, so it is the one Europe country actively excluded.
+const EUROPE_EXTRA_INCLUDE = new Set(['Cyprus', 'N. Cyprus']);
+const EUROPE_EXCLUDE = new Set(['Russia']);
+// Regression guard: none of these may ever appear in the output, whichever set let them through.
+const MUST_EXCLUDE = ['Russia', 'Turkey', 'Israel', 'Armenia', 'Azerbaijan', 'Georgia'];
+const MUST_INCLUDE = ['Sweden', 'France', 'Germany', 'Spain', 'Poland', 'Italy', 'United Kingdom', 'Kosovo', 'Cyprus', 'N. Cyprus', 'Åland'];
 const SIMPLIFY_EPS = 0.02; // degrees (~2 km) — invisible at country-wash zoom
+
+// Overseas parts bundled into a European country's (Multi)Polygon (French Guiana, the
+// Caribbean, Réunion, Mayotte, ...) read as noise on a Europe map. Any polygon whose bbox
+// centre falls outside this box is dropped; it still keeps the Azores, Madeira, the Canaries,
+// Svalbard and Jan Mayen, which all sit inside it.
+const OVERSEAS_BOUNDS = { west: -32, east: 45, south: 27, north: 82 };
 
 const round = (n) => Math.round(n * 100) / 100;
 
@@ -60,17 +76,54 @@ function simplifyGeom(g) {
   return g;
 }
 
+function polygonsOf(geometry) {
+  if (geometry.type === 'Polygon') return [geometry.coordinates];
+  if (geometry.type === 'MultiPolygon') return geometry.coordinates;
+  return [];
+}
+
+function bboxCentroid(ring) {
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  for (const [x, y] of ring) {
+    if (x < minX) minX = x;
+    if (x > maxX) maxX = x;
+    if (y < minY) minY = y;
+    if (y > maxY) maxY = y;
+  }
+  return [(minX + maxX) / 2, (minY + maxY) / 2];
+}
+
+const inOverseasBounds = ([lon, lat]) =>
+  lon >= OVERSEAS_BOUNDS.west && lon <= OVERSEAS_BOUNDS.east && lat >= OVERSEAS_BOUNDS.south && lat <= OVERSEAS_BOUNDS.north;
+
+// Drops any polygon (island/exclave) of a (Multi)Polygon whose bbox centre falls outside
+// OVERSEAS_BOUNDS, e.g. France's French Guiana/Martinique/Guadeloupe/Réunion/Mayotte parts.
+function dropOverseas(geometry, name) {
+  const kept = polygonsOf(geometry).filter((poly) => inOverseasBounds(bboxCentroid(poly[0])));
+  if (kept.length === 0) throw new Error(`dropOverseas removed every part of ${name}`);
+  return geometry.type === 'Polygon' ? { type: 'Polygon', coordinates: kept[0] } : { type: 'MultiPolygon', coordinates: kept };
+}
+
 const res = await fetch(SRC);
 if (!res.ok) throw new Error(`source fetch failed: ${res.status}`);
 const gj = await res.json();
 
 gj.features = gj.features
-  .filter((f) => f.geometry && !EXCLUDE.has(f.properties?.NAME))
-  .map((f) => ({ type: 'Feature', properties: { name: f.properties.NAME }, geometry: simplifyGeom(f.geometry) }));
+  .filter((f) => {
+    const name = f.properties?.NAME;
+    if (!f.geometry) return false;
+    if (EUROPE_EXTRA_INCLUDE.has(name)) return true;
+    return f.properties?.CONTINENT === 'Europe' && !EUROPE_EXCLUDE.has(name);
+  })
+  .map((f) => ({
+    type: 'Feature',
+    properties: { name: f.properties.NAME },
+    geometry: simplifyGeom(dropOverseas(f.geometry, f.properties.NAME)),
+  }));
 
 const names = new Set(gj.features.map((f) => f.properties.name));
 for (const must of MUST_INCLUDE) if (!names.has(must)) throw new Error(`expected country missing: ${must}`);
-for (const no of EXCLUDE) if (names.has(no)) throw new Error(`country should be excluded: ${no}`);
+for (const no of MUST_EXCLUDE) if (names.has(no)) throw new Error(`country should be excluded: ${no}`);
 
 mkdirSync(new URL('../public/coverage/', import.meta.url), { recursive: true });
 const out = new URL('../public/coverage/coverage-europe.geojson', import.meta.url);

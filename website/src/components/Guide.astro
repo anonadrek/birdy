@@ -28,7 +28,6 @@ const t = getCopy(locale);
       ))}
     </ul>
     <CoverageMap locale={locale} />
-    <p class="mapcap">{t.guide.mapCaption}</p>
   </div>
 </section>
 
@@ -63,9 +62,8 @@ const t = getCopy(locale);
   .stats li + li { border-left: 1px solid var(--line); }
   .stats b { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 52px; color: var(--rust); line-height: 1; }
   .stat-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-  .mapcap { text-align: center; margin: 14px 0 0; font-size: 13px; color: var(--muted); }
   @media (max-width: 760px) {
-    .head { grid-template-columns: 1fr; gap: 24px; }
+    .head { grid-template-columns: 1fr; gap: 40px; }
     .stats b { font-size: 38px; }
   }
 </style>
