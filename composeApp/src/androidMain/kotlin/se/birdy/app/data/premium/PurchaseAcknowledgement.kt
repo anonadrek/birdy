@@ -51,6 +51,9 @@ internal suspend fun acknowledgeAndLog(
             client.acknowledgePurchase(params) { r -> if (cont.isActive) cont.resume(r) }
         }
     if (result.responseCode != BillingClient.BillingResponseCode.OK) {
-        Log.w(TAG, "acknowledge failed for ${purchase.orderId}: ${result.debugMessage}")
+        Log.w(
+            TAG,
+            "acknowledge failed for ${purchase.orderId}: responseCode=${result.responseCode} ${result.debugMessage}",
+        )
     }
 }

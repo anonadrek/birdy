@@ -205,6 +205,7 @@ class PremiumViewModelTest {
 
             secondAttempt.complete(PurchaseResult.UserCancelled)
             assertNull(vm.state.first().purchaseNotice)
+            assertEquals(false, vm.state.first().purchaseInFlight)
         }
 
     @Test

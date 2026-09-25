@@ -353,8 +353,11 @@ class MainActivity : AppCompatActivity() {
             )
         // Connect, then re-check purchases every time the app comes to the foreground (Google's
         // recommendation): a pending payment can complete, or a subscription lapse, while the app
-        // isn't running. STARTED rather than RESUMED: Play's purchase sheet is translucent, so it
-        // only pauses this activity and the re-check doesn't run in the middle of a purchase.
+        // isn't running. STARTED rather than RESUMED because Play's purchase sheet is usually
+        // translucent and only pauses this activity — but full-screen payment steps (3-D Secure,
+        // adding a card) DO stop it, so this re-check can still fire mid-purchase. That's fine:
+        // PremiumBillingClient's listenerGrants guard (see its KDoc) stops a stale query from
+        // overwriting a fresher listener-granted entitlement.
         lifecycleScope.launch {
             billingClient.connect()
             repeatOnLifecycle(Lifecycle.State.STARTED) { billingClient.queryPurchases() }

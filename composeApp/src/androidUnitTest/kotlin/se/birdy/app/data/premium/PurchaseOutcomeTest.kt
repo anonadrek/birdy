@@ -32,6 +32,15 @@ class PurchaseOutcomeTest {
     }
 
     @Test
+    fun `unspecified purchase state is an error`() {
+        val candidate = OutcomeCandidate(purchaseState = Purchase.PurchaseState.UNSPECIFIED_STATE, signatureOk = false)
+        assertEquals(
+            PurchaseResult.Error("No verified purchase in callback"),
+            purchaseUpdateOutcome(listOf(candidate)),
+        )
+    }
+
+    @Test
     fun `verified purchased wins over a pending purchase in the same list`() {
         val purchased = OutcomeCandidate(purchaseState = Purchase.PurchaseState.PURCHASED, signatureOk = true)
         val pending = OutcomeCandidate(purchaseState = Purchase.PurchaseState.PENDING, signatureOk = false)
@@ -80,6 +89,21 @@ class PurchaseOutcomeTest {
     }
 
     @Test
+    fun `already owned not answered with no pending purchase and not entitled is an error`() {
+        val result = alreadyOwnedOutcome(queryAnswered = false, entitled = false, hasPendingPurchase = false)
+        assertEquals(
+            PurchaseResult.Error("ITEM_ALREADY_OWNED but no verified purchase after re-query"),
+            result,
+        )
+    }
+
+    @Test
+    fun `already owned answered entitled with a pending purchase is success`() {
+        val result = alreadyOwnedOutcome(queryAnswered = true, entitled = true, hasPendingPurchase = true)
+        assertEquals(PurchaseResult.Success, result)
+    }
+
+    @Test
     fun `free to free is unchanged`() {
         assertFalse(entitlementChanged(PremiumState.Free, PremiumState.Free))
     }
@@ -108,5 +132,31 @@ class PurchaseOutcomeTest {
         val current = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(0))
         val updated = PremiumState.Active(PremiumTier.LIFETIME, Instant.fromEpochMilliseconds(0))
         assertTrue(entitlementChanged(current, updated))
+    }
+
+    @Test
+    fun `listener grant is written for a new active entitlement`() {
+        val granted = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(0))
+        assertTrue(shouldWriteListenerGrant(PremiumState.Free, granted))
+    }
+
+    @Test
+    fun `listener grant is written when the tier changes`() {
+        val current = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(0))
+        val granted = PremiumState.Active(PremiumTier.LIFETIME, Instant.fromEpochMilliseconds(0))
+        assertTrue(shouldWriteListenerGrant(current, granted))
+    }
+
+    @Test
+    fun `listener grant is not written for a repeat of the same tier`() {
+        val current = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(0))
+        val granted = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(999_999))
+        assertFalse(shouldWriteListenerGrant(current, granted))
+    }
+
+    @Test
+    fun `listener grant is not written when it resolves to Free`() {
+        val current = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(0))
+        assertFalse(shouldWriteListenerGrant(current, PremiumState.Free))
     }
 }

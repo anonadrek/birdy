@@ -20,6 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -39,6 +40,14 @@ import java.util.Base64 as JvmBase64
 private const val TAG = "PremiumBilling"
 private const val YEARLY_PRODUCT_ID = "premium_yearly_v1"
 private const val LIFETIME_PRODUCT_ID = "premium_lifetime_v1"
+
+// Retry backoff for a still-missing price after a product-details fetch (e.g. a flaky/offline
+// cold start): 2 s, then 5 s, then 15 s. Each named separately so the literals count as constant
+// declarations for detekt's MagicNumber rule instead of magic numbers inside a listOf(...) call.
+private const val PRICE_RETRY_DELAY_1_MS = 2_000L
+private const val PRICE_RETRY_DELAY_2_MS = 5_000L
+private const val PRICE_RETRY_DELAY_3_MS = 15_000L
+private val PRICE_RETRY_BACKOFF_MS = listOf(PRICE_RETRY_DELAY_1_MS, PRICE_RETRY_DELAY_2_MS, PRICE_RETRY_DELAY_3_MS)
 
 /**
  * Pure-JVM signature verification — extracted for unit testability.
@@ -75,6 +84,14 @@ internal fun verifyPlaySignature(
         false
     }
 }
+
+/**
+ * The subscription offer Play considers the base plan (no offerId), falling back to the first
+ * offer if none is explicitly the base plan. We show and sell the base plan, so the renewal
+ * text always matches what the user buys, even if an intro/trial offer is ever added in Console.
+ */
+private fun ProductDetails.basePlanOffer(): ProductDetails.SubscriptionOfferDetails? =
+    subscriptionOfferDetails?.firstOrNull { it.offerId == null } ?: subscriptionOfferDetails?.firstOrNull()
 
 actual class PremiumBillingClient(
     private val context: Context,
@@ -147,7 +164,10 @@ actual class PremiumBillingClient(
                 object : BillingClientStateListener {
                     override fun onBillingSetupFinished(result: BillingResult) {
                         if (result.responseCode != BillingClient.BillingResponseCode.OK) {
-                            Log.w(TAG, "Billing setup failed: ${result.debugMessage}")
+                            Log.w(
+                                TAG,
+                                "Billing setup failed: responseCode=${result.responseCode} ${result.debugMessage}",
+                            )
                         }
                         // Product-details fetch is network I/O and must not delay connect()'s
                         // return — the paywall decision only needs entitlement (queryPurchases),
@@ -167,22 +187,51 @@ actual class PremiumBillingClient(
         }
     }
 
+    /**
+     * Fetches both product prices, retrying a still-missing one with [PRICE_RETRY_BACKOFF_MS]
+     * backoff (2 s, 5 s, 15 s) — a flaky/offline cold start must not leave the purchase screen
+     * stuck on "Loading price…" until the next foreground. Runs entirely inside the caller's
+     * single [productsJob] launch, so [connect] and [queryPurchases] still never race a second
+     * concurrent fetch while retries are pending.
+     */
     private suspend fun queryProducts() {
-        // Billing v8 requires same product type per query, so issue two separate calls.
-        yearlyDetails = querySingleProduct(YEARLY_PRODUCT_ID, BillingClient.ProductType.SUBS)
-        lifetimeDetails = querySingleProduct(LIFETIME_PRODUCT_ID, BillingClient.ProductType.INAPP)
-        _formattedPrices.value =
-            FormattedPrices(
-                yearly =
-                    yearlyDetails
-                        ?.subscriptionOfferDetails
-                        ?.firstOrNull()
-                        ?.pricingPhases
-                        ?.pricingPhaseList
-                        ?.firstOrNull()
-                        ?.formattedPrice,
-                lifetime = lifetimeDetails?.oneTimePurchaseOfferDetails?.formattedPrice,
-            )
+        // Billing v8 requires same product type per query, so issue two separate calls. A
+        // failed or empty fetch keeps the previous details (Elvis fallback) — a transient
+        // failure must never erase a price that was already loaded.
+        suspend fun fetchPrices() {
+            yearlyDetails = querySingleProduct(YEARLY_PRODUCT_ID, BillingClient.ProductType.SUBS) ?: yearlyDetails
+            lifetimeDetails =
+                querySingleProduct(LIFETIME_PRODUCT_ID, BillingClient.ProductType.INAPP) ?: lifetimeDetails
+            _formattedPrices.value =
+                FormattedPrices(
+                    yearly =
+                        yearlyDetails
+                            ?.basePlanOffer()
+                            ?.pricingPhases
+                            ?.pricingPhaseList
+                            // Recurring phase, not an intro/trial one — matches what launchPurchase() buys.
+                            ?.lastOrNull()
+                            ?.formattedPrice,
+                    lifetime = lifetimeDetails?.oneTimePurchaseOfferDetails?.formattedPrice,
+                )
+        }
+
+        fun bothPricesLoaded() = _formattedPrices.value.yearly != null && _formattedPrices.value.lifetime != null
+
+        fetchPrices()
+        for (backoffMs in PRICE_RETRY_BACKOFF_MS) {
+            if (bothPricesLoaded()) return
+            delay(backoffMs)
+            fetchPrices()
+        }
+        if (!bothPricesLoaded()) {
+            val missing =
+                buildList {
+                    if (_formattedPrices.value.yearly == null) add(YEARLY_PRODUCT_ID)
+                    if (_formattedPrices.value.lifetime == null) add(LIFETIME_PRODUCT_ID)
+                }
+            Log.w(TAG, "Price(s) still missing after retries: $missing")
+        }
     }
 
     private suspend fun querySingleProduct(
@@ -208,9 +257,24 @@ actual class PremiumBillingClient(
                 }
             }
         return if (result.responseCode == BillingClient.BillingResponseCode.OK) {
-            queryResult.productDetailsList.orEmpty().firstOrNull { it.productId == productId }
+            val details = queryResult.productDetailsList.orEmpty().firstOrNull { it.productId == productId }
+            if (details == null) {
+                // OK-but-missing means Play doesn't know this product — most likely it isn't
+                // configured/active in Play Console yet. Silent otherwise: nothing would ever
+                // flag a Console typo or an unpublished product.
+                val unfetched = queryResult.unfetchedProductList.joinToString { "${it.productId}:${it.statusCode}" }
+                Log.w(
+                    TAG,
+                    "queryProductDetails($productId) returned no match (unfetched=[$unfetched]) — " +
+                        "check the product is configured and active in Play Console.",
+                )
+            }
+            details
         } else {
-            Log.w(TAG, "queryProductDetails($productId) failed: ${result.debugMessage}")
+            Log.w(
+                TAG,
+                "queryProductDetails($productId) failed: responseCode=${result.responseCode} ${result.debugMessage}",
+            )
             null
         }
     }
@@ -318,7 +382,9 @@ actual class PremiumBillingClient(
                             .setProductDetails(details)
                             .apply {
                                 if (tier == PremiumTier.YEARLY) {
-                                    val token = details.subscriptionOfferDetails?.firstOrNull()?.offerToken
+                                    // Buy the same base-plan offer that basePlanOffer() showed the
+                                    // price for, so the purchase always matches what the user saw.
+                                    val token = details.basePlanOffer()?.offerToken
                                     if (token != null) setOfferToken(token)
                                 }
                             }.build(),
@@ -370,8 +436,16 @@ actual class PremiumBillingClient(
                     // Play gives 3 days to acknowledge, and queryPurchases() retries the
                     // acknowledgement on every call; a failed ack must never leave a paying user
                     // Free or make the purchase screen report an error.
-                    _state.value = verified.toPremiumState()
-                    listenerGrants++
+                    val granted = verified.toPremiumState()
+                    // See shouldWriteListenerGrant's KDoc: only a new Active entitlement is
+                    // written + bumps listenerGrants — this listener can legitimately fire more
+                    // than once for the same purchase (see the ITEM_ALREADY_OWNED echo below).
+                    if (shouldWriteListenerGrant(_state.value, granted)) {
+                        _state.value = granted
+                        listenerGrants++
+                    }
+                    // Acknowledgement is unconditional — independent of whether the entitlement
+                    // looked "new" above; Play still needs the ack regardless.
                     if (!verified.isAcknowledged) {
                         scope.launch { acknowledgeAndLog(client, verified) }
                     }
@@ -392,9 +466,13 @@ actual class PremiumBillingClient(
                 if (deferred != null) purchaseDeferred = null
             }
             BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED -> {
-                // Realistic triggers: tapping buy again while a pending purchase waits, or a
-                // paying user whose startup query hasn't answered yet. Play's guidance is to
-                // re-query purchases rather than surface this as a purchase error.
+                // Most common trigger: Billing 8 echoes every non-OK launchBillingFlow result
+                // back to this listener too, and launchPurchase() already cleared
+                // purchaseDeferred for that same ITEM_ALREADY_OWNED — so deferred is null here
+                // and the echo just refreshes state via the else branch below. Also reachable
+                // directly: tapping buy again while a pending purchase waits, or a paying user
+                // whose startup query hasn't answered yet. Play's guidance is to re-query
+                // purchases rather than surface this as a purchase error.
                 if (deferred != null) {
                     purchaseDeferred = null
                     scope.launch { deferred.complete(resolveAlreadyOwned()) }

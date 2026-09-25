@@ -53,3 +53,17 @@ internal fun entitlementChanged(
         is PremiumState.Free -> current !is PremiumState.Free
         is PremiumState.Active -> current !is PremiumState.Active || current.tier != updated.tier
     }
+
+/**
+ * Pure decision for [PremiumBillingClient]'s purchases-updated listener, extracted for unit
+ * testability: a verified purchase should only be written to its `_state` (and counted as a
+ * `listenerGrants` event that a concurrent [PremiumBillingClient.queryPurchases] must not
+ * overwrite) when it actually grants Active and that entitlement is new — never for a `granted`
+ * that resolved to Free (e.g. a verified purchase of an unrecognised product), which must never
+ * downgrade a real entitlement, and never for a repeat grant of the same tier (Billing 8 can
+ * redeliver the same purchase to this listener more than once).
+ */
+internal fun shouldWriteListenerGrant(
+    current: PremiumState,
+    granted: PremiumState,
+): Boolean = granted is PremiumState.Active && entitlementChanged(current, granted)
