@@ -5,8 +5,10 @@ import se.birdy.domain.premium.PremiumState
 import se.birdy.domain.premium.PremiumTier
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class PremiumOverrideResolverTest {
     private val now = Instant.fromEpochMilliseconds(1_790_000_000_000L)
@@ -71,5 +73,29 @@ class PremiumOverrideResolverTest {
         assertIs<PremiumState.Active>(state)
         assertEquals(PremiumTier.LIFETIME, state.tier)
         assertEquals(now, state.purchasedAt)
+    }
+
+    // isEarlyMember — exercised through the resolver's own output, since the DEBUG skip
+    // toggle's precedence (see PremiumOverrideResolver.isEarlyMember's KDoc) is what makes
+    // gating on the override's presence different from gating on isGrandfathered alone.
+
+    @Test
+    fun `grandfathered user with no debug skip is an early member`() {
+        val override = resolve(grandfathered = true)
+        assertTrue(PremiumOverrideResolver.isEarlyMember(isGrandfathered = true, premiumOverride = override))
+    }
+
+    @Test
+    fun `grandfathered user with debug skip is not an early member`() {
+        val override = resolve(grandfathered = true, debugSkip = true)
+        assertNull(override)
+        assertFalse(PremiumOverrideResolver.isEarlyMember(isGrandfathered = true, premiumOverride = override))
+    }
+
+    @Test
+    fun `non-grandfathered user is not an early member even with a debug force yearly override`() {
+        val override = resolve(debugForceYearly = true)
+        assertIs<PremiumState.Active>(override)
+        assertFalse(PremiumOverrideResolver.isEarlyMember(isGrandfathered = false, premiumOverride = override))
     }
 }

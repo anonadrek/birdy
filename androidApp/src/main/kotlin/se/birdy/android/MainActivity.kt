@@ -261,7 +261,13 @@ class MainActivity : AppCompatActivity() {
         // enqueue whenever effectivePremiumActive flips false→true (cancelled with lifecycleScope).
         appGraph.premiumActivationListener.start(lifecycleScope)
         setContent { App(appGraph) }
-        intent?.let { handleDeepLink(it) }
+        // Only forward the launch intent's deep link on a genuinely fresh start: a recreation
+        // (e.g. the in-app language switch, or a process-death restore) must not replay an old
+        // notification link on top of whatever the NavHost's restored back stack already shows.
+        val launchedFromHistory = (intent?.flags ?: 0) and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
+        if (savedInstanceState == null && !launchedFromHistory) {
+            intent?.let { handleDeepLink(it) }
+        }
         lifecycleScope.launch {
             val prefs = appGraph.userPreferences
             val notificationsOn =

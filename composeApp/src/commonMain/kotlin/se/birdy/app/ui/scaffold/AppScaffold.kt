@@ -25,12 +25,14 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_fallback_name
 import birdy_bird_scanner.composeapp.generated.resources.premium_dismiss_toast
 import birdy_bird_scanner.composeapp.generated.resources.premium_welcome_toast
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
 import se.birdy.app.premium.EntryFlowDecider
+import se.birdy.app.premium.PremiumOverrideResolver
 import se.birdy.app.premium.awaitBillingAnswer
 import se.birdy.app.ui.audio.AudioScanScreenHost
 import se.birdy.app.ui.components.CaveatToast
@@ -61,9 +63,9 @@ fun AppScaffold(graph: AppGraph) {
         }
     }
     val showPremiumTeaser = !effectivePremiumActive
-    // The DEBUG "Skip premium override" toggle nulls every override (including a grandfathered
-    // user's), so gate on the override actually being present, not just isGrandfathered.
-    val isEarlyMember = graph.isGrandfathered && graph.premiumOverride != null
+    // See PremiumOverrideResolver.isEarlyMember's KDoc: the DEBUG skip-override toggle must
+    // win, so this gates on the override actually being present, not just isGrandfathered.
+    val isEarlyMember = PremiumOverrideResolver.isEarlyMember(graph.isGrandfathered, graph.premiumOverride)
     LaunchedEffect(Unit) {
         val now = graph.clock.now()
 
@@ -90,9 +92,24 @@ fun AppScaffold(graph: AppGraph) {
         // 1.3.0: early users get a one-time thank-you instead of any paywall (spec §5.2).
         if (isEarlyMember) {
             val thanksShown = graph.userPreferences.grandfatherThanksShown.first()
+            // The read above suspends — re-check synchronously (nothing suspends between here
+            // and the navigate below) that a deep link handled during that gap (e.g. a
+            // notification tap) hasn't already navigated away from Listen. If it has, bail
+            // WITHOUT saving "shown" so the thank-you is reconsidered at a later start instead
+            // of covering whatever the deep link opened.
+            if (navController.currentDestination?.hasRoute(AppRoute.Listen::class) != true) {
+                return@LaunchedEffect
+            }
             if (EntryFlowDecider.shouldShowGrandfatherThanks(isGrandfathered = true, alreadyShown = thanksShown)) {
-                graph.userPreferences.setGrandfatherThanksShown(true)
+                // Navigate first, then persist "shown": if the write below fails (or the
+                // process dies before it runs), the thank-you simply shows again at the next
+                // start instead of never showing at all.
                 navController.navigate(AppRoute.Premium)
+                runCatching { graph.userPreferences.setGrandfatherThanksShown(true) }
+                    .onFailure {
+                        if (it is CancellationException) throw it
+                        println("AppScaffold: saving grandfatherThanksShown failed: ${it.message}")
+                    }
             }
             return@LaunchedEffect
         }
@@ -400,7 +417,12 @@ fun AppScaffold(graph: AppGraph) {
             }
             composable<AppRoute.Premium> {
                 if (isEarlyMember) {
-                    PremiumThankYouScreen(onClose = { navController.popBackStack() })
+                    // Idempotent pop (mirrors onPurchaseComplete below): a double tap on
+                    // Continue — or PlatformBackHandler firing during the NavHost's fade —
+                    // must not try to pop past an already-empty stack.
+                    PremiumThankYouScreen(
+                        onClose = { navController.popBackStack(AppRoute.Premium, inclusive = true) },
+                    )
                 } else {
                     PremiumScreen(
                         viewModel = remember(graph) { graph.premiumViewModel() },
