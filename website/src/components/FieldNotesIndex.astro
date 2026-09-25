@@ -22,11 +22,11 @@ const otherLocale: Locale = locale === 'sv' ? 'en' : 'sv';
       <div class="wrap">
         <Kicker text={t.blog.kicker} />
         <JournalHeadline text={t.blog.headline} level="h1" align="left" size="clamp(40px, 5vw, 60px)" />
-        <p>{t.blog.lead}</p>
+        <p class="blead">{t.blog.lead}</p>
       </div>
     </header>
     <div class="wrap list">
-      {latest && <div class="first"><NoteCard note={latest} size="large" headingLevel="h2" /></div>}
+      {latest && <div class="first"><NoteCard note={latest} size="large" headingLevel="h2" priority /></div>}
       {rest.length > 0 && <div class="grid">{rest.map((note) => <NoteCard note={note} headingLevel="h2" />)}</div>}
     </div>
   </main>
@@ -35,10 +35,10 @@ const otherLocale: Locale = locale === 'sv' ? 'en' : 'sv';
 
 <style>
   .bhead { background: var(--moss); color: var(--cream); padding: 34px 0 70px; --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); }
-  .bhead p { color: rgba(255, 248, 238, .8); font-size: 16px; line-height: 1.6; max-width: 34rem; margin: 16px 0 0; }
+  .bhead .blead { color: rgba(255, 248, 238, .8); font-size: 16px; line-height: 1.6; max-width: 34rem; margin: 16px 0 0; text-wrap: pretty; }
   .list { padding-bottom: 96px; }
   .first { position: relative; margin-top: -40px; }
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 44px; }
   @media (max-width: 760px) {
     .bhead { padding: 24px 0 60px; }
     .grid { grid-template-columns: 1fr; }

@@ -1,5 +1,45 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Locator, type Page } from '@playwright/test';
+import sharp from 'sharp';
 import { trackConsoleErrors } from './test-helpers';
+
+// WCAG contrast helpers for the pixel-contrast test (1c): hide the text, screenshot the real
+// background behind it, composite the text's own colour (and any element opacity) over that
+// measured background, and compute the standard relative-luminance contrast ratio. Mirrors the
+// method the code review itself used, and scripts/check-contrast.mjs's formulas for solid tokens.
+function relLuminance([r, g, b]: number[]): number {
+  const channel = (v: number) => {
+    const c = v / 255;
+    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);
+}
+function contrastRatio(a: number[], b: number[]): number {
+  const [hi, lo] = [relLuminance(a), relLuminance(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+}
+function parseCssColor(str: string): { rgb: number[]; a: number } {
+  const parts = str.match(/rgba?\(([^)]+)\)/)![1].split(',').map((s) => parseFloat(s));
+  return { rgb: parts.slice(0, 3), a: parts.length > 3 ? parts[3] : 1 };
+}
+async function avgColorInBox(page: Page, box: { x: number; y: number; width: number; height: number }): Promise<number[]> {
+  const buf = await page.screenshot({ clip: box });
+  const { data } = await sharp(buf).resize(1, 1, { fit: 'fill' }).raw().toBuffer({ resolveWithObject: true });
+  return [data[0], data[1], data[2]];
+}
+/** Contrast of `locator`'s own computed text colour (colour alpha × element opacity), composited over its real measured background, with the locator's own text hidden first. */
+async function textContrastAgainstBackground(page: Page, locator: Locator): Promise<number> {
+  const box = await locator.boundingBox();
+  if (!box) throw new Error('element not visible for contrast measurement');
+  const bg = await avgColorInBox(page, box);
+  const { color, opacity } = await locator.evaluate((el) => ({
+    color: getComputedStyle(el).color,
+    opacity: parseFloat(getComputedStyle(el).opacity),
+  }));
+  const { rgb: fg, a: colorAlpha } = parseCssColor(color);
+  const alpha = colorAlpha * opacity;
+  const effective = [0, 1, 2].map((i) => alpha * fg[i] + (1 - alpha) * bg[i]);
+  return contrastRatio(effective, bg);
+}
 
 test.describe('meny och sidfot', () => {
   for (const [path, label, getApp] of [['/sv/', 'Så funkar det', 'Hämta appen'], ['/', 'How it works', 'Get the app']] as const) {
@@ -372,6 +412,12 @@ test.describe('bloggen', () => {
       await expect(page.locator('.aend a[href*="play.google.com"]')).toHaveCount(1);
       await expect(page.locator('.aback a').first()).toContainText(allNotes);
       await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/_astro\/rodhake-q25334[^/]*\.jpg$/);
+      const imageAlt = prefix === '/sv'
+        ? 'En rödhake som sitter på en vissnad hortensia och tittar åt vänster'
+        : 'A European robin perched on a faded hydrangea, looking left';
+      await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute('content', imageAlt);
+      const ogWidth = page.locator('meta[property="og:image:width"]');
+      if (await ogWidth.count()) await expect(ogWidth).toHaveAttribute('content', '1200');
 
       const albitHref = prefix === '/sv' ? 'https://www.albit.se/produkter/birdy/' : 'https://www.albit.se/en/products/birdy/';
       await expect(page.locator('.ahero .aby a')).toHaveText('Albin Abrahamsson, AlbIT');
@@ -386,10 +432,12 @@ test.describe('bloggen', () => {
     });
   }
 
-  test('startsidan visar senaste inlägget som fotokort', async ({ page }) => {
-    await page.goto('/sv/');
-    await expect(page.locator('#field-notes a.ncard[href="/sv/blog/why-birdy/"] img')).toBeVisible();
-  });
+  for (const [path, href] of [['/sv/', '/sv/blog/why-birdy/'], ['/', '/blog/why-birdy/']] as const) {
+    test(`startsidan visar senaste inlägget som fotokort på ${path}`, async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator(`#field-notes a.ncard[href="${href}"] img`)).toBeVisible();
+    });
+  }
 
   test('appens strukturerade data har AlbIT som skapare', async ({ page }) => {
     for (const path of ['/', '/sv/'] as const) {
@@ -400,19 +448,22 @@ test.describe('bloggen', () => {
     }
   });
 
-  test('webbplatskartan har lastmod för inläggen', async ({ page }) => {
+  test('webbplatskartan har lastmod endast för inläggen', async ({ page }) => {
     const xml = await (await page.request.get('/sitemap-0.xml')).text();
     const blocks = xml.match(/<url>[\s\S]*?<\/url>/g) ?? [];
     const blockFor = (url: string) => blocks.find((b) => b.includes(`<loc>${url}</loc>`));
-    for (const url of ['https://birdy.community/blog/why-birdy/', 'https://birdy.community/sv/blog/why-birdy/']) {
+    const postUrls = ['https://birdy.community/blog/why-birdy/', 'https://birdy.community/sv/blog/why-birdy/'];
+    for (const url of postUrls) {
       const block = blockFor(url);
       expect(block, url).toBeTruthy();
       expect(block, url).toMatch(/<lastmod>2026-09-24/);
     }
-    for (const url of ['https://birdy.community/', 'https://birdy.community/sv/']) {
-      const block = blockFor(url);
-      expect(block, url).toBeTruthy();
-      expect(block, url).not.toMatch(/<lastmod>/);
+    // No other URL in the whole sitemap carries a lastmod, not just the two obvious home-page checks.
+    expect(blocks.length).toBeGreaterThan(postUrls.length);
+    for (const block of blocks) {
+      const loc = block.match(/<loc>(.*?)<\/loc>/)?.[1] ?? block;
+      if (postUrls.includes(loc)) continue;
+      expect(block, loc).not.toMatch(/<lastmod>/);
     }
   });
 
@@ -431,4 +482,35 @@ test.describe('bloggen', () => {
       await expect(nav).toHaveClass(/is-solid/);
     });
   }
+
+  test.describe('kontrast över inläggsfotot', () => {
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
+
+    // Pixel-contrast guard (review item 1c): hides the hero text and the transparent nav's link
+    // text, screenshots what's really behind them, and checks the two worst known spots (the
+    // apricot kicker, and the first transparent nav link) clear WCAG AA at load (scrollY 0, before
+    // the nav has flipped solid) at 1440×900. The full sweep across widths/locales/scroll steps
+    // that justified the chosen scrim values lives in the PR report, not in CI, to keep this fast.
+    test('kickern och den första menylänken klarar 4.5:1 mot fotot', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto('/sv/blog/why-birdy/');
+      await page.addStyleTag({ content: '.ahero .in * { visibility: hidden !important; } #site-nav .links a { visibility: hidden !important; }' });
+      await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+      await expect(page.locator('#site-nav')).not.toHaveClass(/is-solid/);
+
+      const kickerRatio = await textContrastAgainstBackground(page, page.locator('.ahero .in .kick'));
+      expect(kickerRatio, `kicker mot fotot: ${kickerRatio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+
+      const navLinkRatio = await textContrastAgainstBackground(page, page.locator('#site-nav .links a').first());
+      expect(navLinkRatio, `första menylänken mot fotot: ${navLinkRatio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+    });
+  });
+
+  test('listkickern och karusellkickern är apricot, inte bladets stil', async ({ page }) => {
+    await page.goto('/sv/blog/');
+    await expect(page.locator('.bhead .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
+
+    await page.goto('/sv/');
+    await expect(page.locator('.tour-head .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
+  });
 });

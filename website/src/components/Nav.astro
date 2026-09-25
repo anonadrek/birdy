@@ -9,8 +9,11 @@ interface Props {
   switchLangHref?: string;
   /** overlay = transparent over a dark first view until it scrolls past; solid = moss bar in the flow. */
   variant?: 'overlay' | 'solid';
+  /** Darkens the transparent overlay bar with a moss gradient, for pages whose photo can't guarantee
+   * text contrast on its own (the field note hero). The home hero measures well without it. */
+  scrim?: boolean;
 }
-const { locale, switchLangHref, variant = 'solid' } = Astro.props;
+const { locale, switchLangHref, variant = 'solid', scrim = false } = Astro.props;
 const t = getCopy(locale);
 const home = locale === 'sv' ? '/sv/' : '/';
 const langHref = switchLangHref ?? t.nav.switchLangHref;
@@ -29,7 +32,7 @@ const mobileOnly = [
 ];
 ---
 
-<nav id="site-nav" class:list={['nav', `nav--${variant}`]} aria-label={t.nav.label} data-variant={variant}>
+<nav id="site-nav" class:list={['nav', `nav--${variant}`, { 'nav--scrim': scrim }]} aria-label={t.nav.label} data-variant={variant}>
   <div class="nav-inner">
     <a href={home} class="brand" aria-label="Birdy"><Wordmark size="32px" alt={t.alt.wordmark} color="var(--cream)" /></a>
     <div class="links">
@@ -96,6 +99,9 @@ const mobileOnly = [
   /* Moss by default, also without JavaScript. The overlay bar turns transparent only when scripts run (html.js, set in Layout). */
   .nav--solid, .nav--overlay, .nav.is-solid, .nav.is-open { background: var(--moss); box-shadow: 0 1px 0 rgba(255, 255, 255, .08); }
   :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) { background: transparent; box-shadow: none; }
+  /* The field note hero's photo can't guarantee link contrast on its own (each post brings a new
+     photo). This travels with the fixed transparent bar and is dropped the instant it turns solid. */
+  :global(html.js) .nav--overlay.nav--scrim:not(.is-solid):not(.is-open) { background: linear-gradient(180deg, rgba(31, 42, 25, .85), rgba(31, 42, 25, .6)); }
   /* Below 1024 px the photo band scrolls under the transparent bar. The menu button gets its own moss
      disc (icon contrast at least 3:1 over any part of the photo) and the wordmark a soft shadow, so the
      bar itself stays transparent as in the mockup. */
