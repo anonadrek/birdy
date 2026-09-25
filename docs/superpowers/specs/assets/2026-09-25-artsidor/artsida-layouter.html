@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="sv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Artsidan: layout A, B och C (B vald)</title>
+<style>body{font-family:system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:24px;background:#f4f4f2;color:#222}
+.mockup{border:1px solid #ddd;border-radius:10px;overflow:hidden;background:#fff;margin:14px 0}.mockup-header{padding:8px 14px;font-size:13px;font-weight:600;background:#eee;border-bottom:1px solid #ddd}
+.subtitle{color:#555}.options{display:none}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  .sp{--paper:#F6EFE2;--card:#FFFAF1;--ink:#26301F;--muted:#5B6350;--line:#DFD2BA;--rust:#9A4526;--apricot:#F2B27A;--moss:#1F2A19;--moss2:#2B3A23;--cream:#FFF8EE;
+      background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:14px;line-height:1.6}
+  .sp *{box-sizing:border-box}
+  .sp .nav{display:flex;justify-content:space-between;align-items:center;padding:10px 22px;background:var(--moss);color:var(--cream);font-size:12px}
+  .sp .nav b{font-family:Caveat,cursive;font-size:22px;color:var(--apricot);font-weight:600}
+  .sp .crumb{font-size:11px;color:var(--muted);letter-spacing:.04em}
+  .sp .kicker{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);font-weight:600;display:flex;align-items:center;gap:8px}
+  .sp .kicker:before{content:"";width:18px;height:1.5px;background:var(--rust)}
+  .sp h1{font-family:"DM Serif Display",serif;font-weight:400;font-size:44px;line-height:1.05;margin:6px 0 2px}
+  .sp .latin{font-family:Caveat,cursive;font-size:22px;color:var(--muted)}
+  .sp .lead{font-size:16px;line-height:1.55;margin:12px 0 0}
+  .sp h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:22px;margin:22px 0 6px}
+  .sp ul{margin:0;padding-left:18px}
+  .sp li{margin:2px 0}
+  .sp p{margin:0}
+  .sp .plate{background:var(--card);border:1px solid var(--line);padding:10px 10px 6px;box-shadow:0 2px 0 var(--line)}
+  .sp .plate img{display:block;width:100%;height:auto}
+  .sp .plate .cap{font-family:Caveat,cursive;font-size:17px;color:var(--muted);display:flex;justify-content:space-between;padding-top:4px}
+  .sp .facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:18px 0 4px}
+  .sp .facts div{padding:9px 10px;border-right:1px solid var(--line)}
+  .sp .facts div:last-child{border-right:0}
+  .sp .facts small{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .sp .facts span{font-weight:600;font-size:13px}
+  .sp .factlist div{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .sp .factlist small{color:var(--muted)}
+  .sp .note{font-family:Caveat,cursive;font-size:21px;color:var(--rust);transform:rotate(-2deg);line-height:1.2}
+  .sp .cta{background:var(--moss);color:var(--cream);border-radius:10px;padding:16px 18px;display:flex;gap:14px;align-items:center;justify-content:space-between}
+  .sp .cta p{font-size:14px}
+  .sp .cta em{font-family:"DM Serif Display",serif;color:var(--apricot);font-size:19px;font-style:italic;display:block}
+  .sp .badge{background:#000;color:#fff;border-radius:6px;padding:7px 12px;font-size:11px;white-space:nowrap;border:1px solid #555}
+  .sp .fam{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .sp .fam figure{margin:0;background:var(--card);border:1px solid var(--line);padding:5px}
+  .sp .fam img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+  .sp .fam figcaption{font-size:12px;font-weight:600;padding:4px 2px 0}
+  .sp .credits{font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;margin-top:22px}
+  .sp .foot{background:var(--moss);color:var(--cream);font-size:11px;padding:10px 22px;display:flex;justify-content:space-between;opacity:.95}
+  /* A */
+  .sp-a .col{max-width:640px;margin:0 auto;padding:22px 20px 26px}
+  .sp-a .withnote{position:relative}
+  .sp-a .withnote .note{position:absolute;right:-150px;top:0;width:130px}
+  /* B */
+  .sp-b .spread{display:grid;grid-template-columns:5fr 7fr;gap:0;max-width:980px;margin:0 auto;padding:22px}
+  .sp-b .left{padding-right:24px;border-right:1px dashed var(--line)}
+  .sp-b .right{padding-left:26px}
+  .sp-b .sticky{position:sticky;top:10px}
+  /* C */
+  .sp-c .hero{background:linear-gradient(135deg,var(--moss2),var(--moss));color:var(--cream);display:grid;grid-template-columns:1fr 1.1fr;gap:24px;align-items:center;padding:26px 26px}
+  .sp-c .hero h1{color:var(--cream)}
+  .sp-c .hero .latin{color:var(--apricot)}
+  .sp-c .hero .kicker{color:var(--apricot)}
+  .sp-c .hero .kicker:before{background:var(--apricot)}
+  .sp-c .hero img{width:100%;border-radius:8px;display:block;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .sp-c .body{display:grid;grid-template-columns:7fr 4fr;gap:28px;max-width:980px;margin:0 auto;padding:22px 26px}
+  .sp .mobile-note{font-size:12px;color:#666;margin:6px 0 18px}
+</style>
+
+<h2>Fråga 4: Hur ska en artsida se ut?</h2>
+<p class="subtitle">Samma innehåll i alla tre: talgoxen med ny webbtext (exempel jag skrivit), dess riktiga foton, fakta, din marginalanteckning ur artfilen, knapp till appen och fler arter i familjen. På mobil blir alla tre en enda spalt. Skillnaden syns på dator.</p>
+
+<!-- ================= A ================= -->
+<div class="mockup">
+  <div class="mockup-header">A. Planschen: en spalt, som blogginlägget (pappersark)</div>
+  <div class="mockup-body" style="padding:0">
+    <div class="sp sp-a">
+      <div class="nav"><b>Birdy.</b><span>Så funkar det · Appen · Arter · Fältanteckningar · EN/SV</span></div>
+      <div class="col">
+        <div class="crumb">Birdy · Arter · Mesar · Talgoxe</div>
+        <div class="plate" style="margin:12px 0 16px"><img src="talgoxe-hero.jpg" alt=""><div class="cap"><span>Pl. 1, Talgoxe</span><span>Foto: Hobbyfotowiki</span></div></div>
+        <div class="kicker">Mesar</div>
+        <h1>Talgoxe</h1><div class="latin">Parus major</div>
+        <p class="lead">Den största av våra mesar och en av fåglarna du oftast ser vid fågelbordet. Den finns i hela Sverige året runt.</p>
+        <div class="facts">
+          <div><small>Familj</small><span>Mesar</span></div>
+          <div><small>I Sverige</small><span>Allmän, året runt</span></div>
+          <div><small>Rödlistan</small><span>Livskraftig (LC)</span></div>
+          <div><small>Storlek</small><span>Cirka 14 cm</span></div>
+        </div>
+        <div class="withnote">
+          <h2>Så känner du igen den</h2>
+          <ul><li>Svart huvud med vita kinder</li><li>Gul buk med ett svart band längs mitten, bredare hos hanen</li><li>Olivgrön rygg och blågrå vingar med ett vitt vingband</li><li>Större än blåmesen, som har blå hätta</li></ul>
+          <div class="note">Talgoxen söker frön i barren mitt i vintern.</div>
+        </div>
+        <h2>Läte</h2>
+        <p>Ett ringande ti ta, ti ta som hörs redan i februari. Talgoxen har ovanligt många läten, så ett okänt läte i trädgården är ofta just en talgoxe.</p>
+        <h2>Var och när</h2>
+        <p>Stannfågel i hela landet. Vanligast i lövskog, parker och trädgårdar. På vintern söker den sig till fågelmatningar och på våren flyttar den gärna in i en holk.</p>
+        <div class="plate" style="margin:16px 0"><img src="talgoxe-2.jpg" alt=""><div class="cap"><span>Pl. 2</span><span>Foto: Anton Whoa</span></div></div>
+        <div class="cta"><p><em>Osäker på vad du ser?</em>Birdy känner igen talgoxen på foto eller läte, direkt i telefonen och utan täckning.</p><span class="badge">▶ Google Play</span></div>
+        <h2>Fler mesar</h2>
+        <div class="fam"><figure><img src="blames.jpg" alt=""><figcaption>Blåmes</figcaption></figure><figure><img src="svartmes.jpg" alt=""><figcaption>Svartmes</figcaption></figure><figure><img src="tofsmes.jpg" alt=""><figcaption>Tofsmes</figcaption></figure><figure><img src="entita.jpg" alt=""><figcaption>Entita</figcaption></figure></div>
+        <div class="credits">Foton via Wikimedia Commons: Hobbyfotowiki (CC0), Anton Whoa (CC BY 2.0). Texten bygger på Wikipedia (CC BY-SA 4.0).</div>
+      </div>
+      <div class="foot"><span>Birdy · birdy.community</span><span>Byggd av albIT ↗</span></div>
+    </div>
+  </div>
+</div>
+<p class="mobile-note">A: lugnast och mest likt bloggen. Allt läses uppifrån och ned. Marginalanteckningen hamnar i marginalen på dator och under listan på mobil.</p>
+
+<!-- ================= B ================= -->
+<div class="mockup">
+  <div class="mockup-header">B. Uppslaget: två spalter som en uppslagen fältbok</div>
+  <div class="mockup-body" style="padding:0">
+    <div class="sp sp-b">
+      <div class="nav"><b>Birdy.</b><span>Så funkar det · Appen · Arter · Fältanteckningar · EN/SV</span></div>
+      <div class="spread">
+        <div class="left"><div class="sticky">
+          <div class="plate"><img src="talgoxe-hero.jpg" alt=""><div class="cap"><span>Pl. 1, Talgoxe</span><span>Foto: Hobbyfotowiki</span></div></div>
+          <div class="factlist" style="margin:14px 0">
+            <div><small>Vetenskapligt namn</small><span><i>Parus major</i></span></div>
+            <div><small>Familj</small><span>Mesar</span></div>
+            <div><small>I Sverige</small><span>Allmän, året runt</span></div>
+            <div><small>Rödlistan</small><span>Livskraftig (LC)</span></div>
+            <div><small>Storlek</small><span>Cirka 14 cm</span></div>
+          </div>
+          <div class="cta" style="flex-direction:column;align-items:flex-start"><p><em>Osäker på vad du ser?</em>Birdy känner igen talgoxen på foto eller läte, utan täckning.</p><span class="badge">▶ Google Play</span></div>
+          <div class="note" style="margin-top:14px">Talgoxen söker frön i barren mitt i vintern.</div>
+        </div></div>
+        <div class="right">
+          <div class="crumb">Birdy · Arter · Mesar · Talgoxe</div>
+          <div class="kicker" style="margin-top:10px">Mesar</div>
+          <h1>Talgoxe</h1><div class="latin">Parus major</div>
+          <p class="lead">Den största av våra mesar och en av fåglarna du oftast ser vid fågelbordet. Den finns i hela Sverige året runt.</p>
+          <h2>Så känner du igen den</h2>
+          <ul><li>Svart huvud med vita kinder</li><li>Gul buk med ett svart band längs mitten, bredare hos hanen</li><li>Olivgrön rygg och blågrå vingar med ett vitt vingband</li><li>Större än blåmesen, som har blå hätta</li></ul>
+          <h2>Läte</h2>
+          <p>Ett ringande ti ta, ti ta som hörs redan i februari. Talgoxen har ovanligt många läten, så ett okänt läte i trädgården är ofta just en talgoxe.</p>
+          <h2>Var och när</h2>
+          <p>Stannfågel i hela landet. Vanligast i lövskog, parker och trädgårdar. På vintern söker den sig till fågelmatningar och på våren flyttar den gärna in i en holk.</p>
+          <div class="plate" style="margin:16px 0"><img src="talgoxe-2.jpg" alt=""><div class="cap"><span>Pl. 2</span><span>Foto: Anton Whoa</span></div></div>
+          <h2>Fler mesar</h2>
+          <div class="fam"><figure><img src="blames.jpg" alt=""><figcaption>Blåmes</figcaption></figure><figure><img src="svartmes.jpg" alt=""><figcaption>Svartmes</figcaption></figure><figure><img src="tofsmes.jpg" alt=""><figcaption>Tofsmes</figcaption></figure><figure><img src="entita.jpg" alt=""><figcaption>Entita</figcaption></figure></div>
+          <div class="credits">Foton via Wikimedia Commons: Hobbyfotowiki (CC0), Anton Whoa (CC BY 2.0). Texten bygger på Wikipedia (CC BY-SA 4.0).</div>
+        </div>
+      </div>
+      <div class="foot"><span>Birdy · birdy.community</span><span>Byggd av albIT ↗</span></div>
+    </div>
+  </div>
+</div>
+<p class="mobile-note">B: mest "fältbok". Fotot, fakta och knappen följer med när man scrollar på dator. På mobil hamnar fotot och fakta först, sedan texten.</p>
+
+<!-- ================= C ================= -->
+<div class="mockup">
+  <div class="mockup-header">C. Mossgrön topp: som startsidans hero, sedan papper</div>
+  <div class="mockup-body" style="padding:0">
+    <div class="sp sp-c">
+      <div class="nav"><b>Birdy.</b><span>Så funkar det · Appen · Arter · Fältanteckningar · EN/SV</span></div>
+      <div class="hero">
+        <div>
+          <div class="kicker">Mesar</div>
+          <h1>Talgoxe</h1><div class="latin">Parus major</div>
+          <p class="lead">Den största av våra mesar och en av fåglarna du oftast ser vid fågelbordet. Den finns i hela Sverige året runt.</p>
+          <div style="margin-top:14px"><span class="badge" style="background:#000">▶ Känn igen den med Birdy</span></div>
+        </div>
+        <img src="talgoxe-hero.jpg" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <div class="crumb">Birdy · Arter · Mesar · Talgoxe</div>
+          <h2>Så känner du igen den</h2>
+          <ul><li>Svart huvud med vita kinder</li><li>Gul buk med ett svart band längs mitten, bredare hos hanen</li><li>Olivgrön rygg och blågrå vingar med ett vitt vingband</li><li>Större än blåmesen, som har blå hätta</li></ul>
+          <h2>Läte</h2>
+          <p>Ett ringande ti ta, ti ta som hörs redan i februari. Talgoxen har ovanligt många läten, så ett okänt läte i trädgården är ofta just en talgoxe.</p>
+          <h2>Var och när</h2>
+          <p>Stannfågel i hela landet. Vanligast i lövskog, parker och trädgårdar. På vintern söker den sig till fågelmatningar och på våren flyttar den gärna in i en holk.</p>
+          <h2>Fler mesar</h2>
+          <div class="fam"><figure><img src="blames.jpg" alt=""><figcaption>Blåmes</figcaption></figure><figure><img src="svartmes.jpg" alt=""><figcaption>Svartmes</figcaption></figure><figure><img src="tofsmes.jpg" alt=""><figcaption>Tofsmes</figcaption></figure><figure><img src="entita.jpg" alt=""><figcaption>Entita</figcaption></figure></div>
+        </div>
+        <div>
+          <div class="factlist">
+            <div><small>Familj</small><span>Mesar</span></div>
+            <div><small>I Sverige</small><span>Allmän, året runt</span></div>
+            <div><small>Rödlistan</small><span>Livskraftig (LC)</span></div>
+            <div><small>Storlek</small><span>Cirka 14 cm</span></div>
+          </div>
+          <div class="note" style="margin:16px 0">Talgoxen söker frön i barren mitt i vintern.</div>
+          <div class="plate"><img src="talgoxe-2.jpg" alt=""><div class="cap"><span>Pl. 2</span><span>Foto: Anton Whoa</span></div></div>
+          <div class="credits">Foton via Wikimedia Commons: Hobbyfotowiki (CC0), Anton Whoa (CC BY 2.0). Texten bygger på Wikipedia (CC BY-SA 4.0).</div>
+        </div>
+      </div>
+      <div class="foot"><span>Birdy · birdy.community</span><span>Byggd av albIT ↗</span></div>
+    </div>
+  </div>
+</div>
+<p class="mobile-note">C: mest dramatisk och mest lik startsidan. Titel och foto syns direkt i första vyn. Tyngre, och alla 360 sidor får samma kraftiga topp.</p>
+
+<h3 style="margin-top:24px">Välj en</h3>
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)"><div class="letter">A</div><div class="content"><h3>Planschen</h3><p>En spalt, lugn, som bloggen</p></div></div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)"><div class="letter">B</div><div class="content"><h3>Uppslaget</h3><p>Två spalter, foto och fakta följer med</p></div></div>
+  <div class="option" data-choice="c" onclick="toggleSelect(this)"><div class="letter">C</div><div class="content"><h3>Mossgrön topp</h3><p>Hero som startsidan, sedan papper</p></div></div>
+</div>
+
+</body></html>
