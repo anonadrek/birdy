@@ -16,6 +16,7 @@ import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.data.premium.FormattedPrices
+import se.birdy.app.data.premium.PurchaseResult
 import se.birdy.app.location.LocationProvider
 import se.birdy.app.photo.PhotoStorage
 import se.birdy.app.review.InAppReviewTrigger
@@ -102,10 +103,11 @@ class AppGraph(
     val requestInAppReview: () -> Unit = {},
     /**
      * Real Google Play Billing purchase launcher (Plan 6b1 T4).
-     * Null = fall back to repository.markPurchased (legacy stub / tests).
-     * Android actual: billingClient.launchPurchase(activity, tier).
+     * Null = fall back to repository.markPurchased (legacy stub / tests), reporting [PurchaseResult.Success].
+     * Android actual: billingClient.launchPurchase(activity, tier), whose result is passed through
+     * unchanged so a pending or failed purchase reaches the purchase screen (Task 7b).
      */
-    val launchPurchase: (suspend (PremiumTier) -> Unit)? = null,
+    val launchPurchase: (suspend (PremiumTier) -> PurchaseResult)? = null,
     /**
      * Live formatted prices from ProductDetails (Plan 6b1 T4).
      * Null = no live prices; PremiumUiState keeps null price fields.
@@ -420,7 +422,11 @@ class AppGraph(
     fun premiumViewModel(): PremiumViewModel =
         PremiumViewModel(
             repository = premiumRepository,
-            launchPurchase = launchPurchase ?: { premiumRepository.markPurchased(it) },
+            launchPurchase =
+                launchPurchase ?: { tier ->
+                    premiumRepository.markPurchased(tier)
+                    PurchaseResult.Success
+                },
             formattedPricesFlow = formattedPricesFlow ?: MutableStateFlow(FormattedPrices()),
         )
 

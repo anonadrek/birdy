@@ -464,6 +464,8 @@
     <string name="premium_auto_renew_disclosure">Auto-renews yearly at 199 SEK · Cancel anytime.</string>
     <string name="premium_cta_primary">Continue</string>
     <string name="premium_cta_subtext">Cancel anytime.</string>
+    <string name="premium_purchase_pending">Your payment is pending. Premium turns on once Google Play confirms it.</string>
+    <string name="premium_purchase_failed">The purchase didn’t go through. Please try again in a moment.</string>
     <string name="premium_attribution_format">Photo: Wikimedia / %1$s · %2$s</string>
     <string name="premium_welcome_toast">Welcome, field member.</string>
     <string name="premium_dismiss_toast">Find it in Settings →</string>

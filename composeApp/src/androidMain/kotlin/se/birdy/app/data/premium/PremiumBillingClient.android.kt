@@ -323,6 +323,12 @@ actual class PremiumBillingClient(
                     if (!verified.isAcknowledged) {
                         scope.launch { acknowledgeAndLog(client, verified) }
                     }
+                } else if (list.any { it.purchaseState == Purchase.PurchaseState.PENDING }) {
+                    // Cash/delayed payment method: Play accepted the order but hasn't confirmed
+                    // payment yet. Not an error — entitlement arrives later via `state` or the
+                    // next queryPurchases() once Play confirms it.
+                    deferred?.complete(PurchaseResult.Pending)
+                    if (deferred != null) purchaseDeferred = null
                 } else {
                     deferred?.complete(PurchaseResult.Error("No verified purchase in callback"))
                     if (deferred != null) purchaseDeferred = null

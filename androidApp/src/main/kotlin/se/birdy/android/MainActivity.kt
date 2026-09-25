@@ -440,7 +440,6 @@ class MainActivity : AppCompatActivity() {
             requestInAppReview = { launchInAppReview() },
             launchPurchase = { tier ->
                 billingClient.launchPurchase(this@MainActivity, tier)
-                Unit
             },
             formattedPricesFlow = billingClient.formattedPrices,
             premiumQueried = billingClient.purchasesQueried,

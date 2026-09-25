@@ -42,6 +42,14 @@ sealed interface PurchaseResult {
 
     data object UserCancelled : PurchaseResult
 
+    /**
+     * Play accepted the order but payment isn't confirmed yet (e.g. a cash/delayed payment
+     * method). Premium turns on later via [PremiumBillingClient.state] (the purchases-updated
+     * listener) or the next [PremiumBillingClient.queryPurchases] call once it completes —
+     * nothing more to do here than tell the user to expect it.
+     */
+    data object Pending : PurchaseResult
+
     data class Error(
         val message: String,
     ) : PurchaseResult

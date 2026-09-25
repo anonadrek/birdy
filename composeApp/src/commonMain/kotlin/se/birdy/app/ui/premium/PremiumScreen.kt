@@ -38,7 +38,9 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
@@ -68,6 +70,8 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_free_scan
 import birdy_bird_scanner.composeapp.generated.resources.premium_headline_accent
 import birdy_bird_scanner.composeapp.generated.resources.premium_headline_plain
 import birdy_bird_scanner.composeapp.generated.resources.premium_headline_suffix
+import birdy_bird_scanner.composeapp.generated.resources.premium_purchase_failed
+import birdy_bird_scanner.composeapp.generated.resources.premium_purchase_pending
 import birdy_bird_scanner.composeapp.generated.resources.premium_screen_close
 import birdy_bird_scanner.composeapp.generated.resources.premium_subline
 import birdy_bird_scanner.composeapp.generated.resources.premium_tier_lifetime_price
@@ -168,6 +172,28 @@ fun PremiumScreen(
                     inFlight = state.purchaseInFlight,
                     onClick = { viewModel.purchase() },
                 )
+            }
+            val purchaseNotice = state.purchaseNotice
+            if (purchaseNotice != null) {
+                item {
+                    Text(
+                        text =
+                            stringResource(
+                                when (purchaseNotice) {
+                                    PurchaseNotice.PENDING -> Res.string.premium_purchase_pending
+                                    PurchaseNotice.FAILED -> Res.string.premium_purchase_failed
+                                },
+                            ),
+                        color = MarginaliaInk,
+                        fontSize = 14.sp,
+                        textAlign = TextAlign.Center,
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 24.dp, vertical = 8.dp)
+                                .semantics { liveRegion = LiveRegionMode.Polite },
+                    )
+                }
             }
             item {
                 Text(
