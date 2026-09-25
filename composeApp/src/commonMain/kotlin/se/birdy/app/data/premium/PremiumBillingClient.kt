@@ -7,7 +7,12 @@ import se.birdy.domain.premium.PremiumTier
 /**
  * Thin Android Billing v8 wrapper exposed as expect/actual for KMP.
  * - Android actual: wraps com.android.billingclient.api.BillingClient
- * - iOS actual: no-op stub (returns Inactive, throws on launchPurchase)
+ * - iOS actual: no-op stub — `state` stays `PremiumState.Free`, `purchasesQueried` and
+ *   `queryPurchases()` both report success (`true`, nothing to query), and
+ *   `launchPurchase` returns `PurchaseResult.Error` (never throws). None of this is
+ *   normally observable today: `IosAppGraph`'s `premiumOverride` forces
+ *   `Active(LIFETIME)` regardless of this stub. The real StoreKit 2 implementation
+ *   lands in plan i5, which also removes that override.
  *
  * BillingClient lifecycle (connect/disconnect) is handled internally;
  * call `connect()` once at app start and `dispose()` on Activity destroy.

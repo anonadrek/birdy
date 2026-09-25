@@ -81,8 +81,13 @@ import kotlin.native.Platform
  * iOS composition root — the iOS counterpart of MainActivity.buildAppGraph().
  *
  * Remaining stubs (each lifted by its owning plan):
- * - premiumOverride Active(LIFETIME): launch-parity with Android's
- *   PREMIUM_OPEN_FOR_LAUNCH; real StoreKit gating lands in i5.
+ * - premiumOverride Active(LIFETIME): iOS has no StoreKit purchases yet (see the
+ *   no-op [se.birdy.app.data.premium.PremiumBillingClient] iOS actual), so every iOS
+ *   build stays Premium regardless. This is NOT launch-parity with Android's
+ *   PREMIUM_OPEN_FOR_LAUNCH — that Android launch-period override is gone as of 1.3.0
+ *   (monetisation is live there, spec 2026-09-24). This override is iOS-only technical
+ *   debt, not a product decision, and must be removed together with the
+ *   PremiumBillingClient stub once plan i5 wires real StoreKit purchases.
  *
  * i1 resolved: UserPreferences + BadgeVersionStore now persist (NSUserDefaults).
  * i2b resolved: buildClassifier() mirrors Android's real TFLite classifier wiring.
