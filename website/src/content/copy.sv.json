@@ -244,23 +244,20 @@
     "indexDescription": "Läs om hur Birdy byggs, hur appen fungerar och fåglarna du kan upptäcka med den. Artiklar och guider på svenska."
   },
   "faq": {
-    "eyebrow": "FRÅGOR · BESVARADE",
+    "kicker": "Frågor",
     "headline": "Innan du *laddar ner.*",
     "items": [
-      { "q": "Hur skiljer sig Birdy från Merlin?", "a": "Birdy samlar fågelidentifiering och en privat fältdagbok i samma app. Du kan spara varje fynd på telefonen och titta tillbaka utan konto." },
-      { "q": "Funkar den verkligen offline?", "a": "Ja. Identifiering med kamera och ljud körs på din telefon. Du kan använda guiden och dagboken utan uppkoppling." },
-      { "q": "Behöver jag ett konto?", "a": "Nej. Öppna appen, rikta kameran, du skannar. Din dagbok bor på telefonen." },
-      { "q": "Var lagras mina foton?", "a": "På din enhet. Birdy laddar aldrig upp foton till en server. Det finns ingen server." },
-      { "q": "Hur exakt är AI:n?", "a": "Tillräckligt bra för att lära sig av, ärlig när den är osäker. Varje träff visar en säkerhetsnivå, och du bekräftar alltid innan något sparas." },
-      { "q": "Vad ingår?", "a": "839 europeiska fåglar, med alla arter i EBBA2 atlasen och nära släktingar. Varje art har beskrivning, foton och information om utbredning." },
-      { "q": "Finns Birdy för iPhone?", "a": "Birdy för iPhone planeras till slutet av september 2026. Android finns att hämta nu. Vi lägger till länken till App Store när appen finns där." },
-      { "q": "Hur funkar ljudet?", "a": "Håll mikrofonknappen i 3 sekunder. Birdy identifierar inspelningen på din telefon, även utan uppkoppling." },
-      { "q": "Andra frågor?", "a": "Mejla albin@abrahamssons.se. Jag läser varje meddelande." }
+      { "q": "Fungerar Birdy utan täckning?", "a": "Ja. Identifiering med kamera, foto och ljud körs i telefonen, och guiden och dagboken finns alltid med. Bara kartbilderna i Premium-kartan behöver uppkoppling." },
+      { "q": "Behöver jag ett konto?", "a": "Nej. Öppna appen och börja. Din dagbok finns i telefonen." },
+      { "q": "Hur säker är identifieringen?", "a": "Tillräckligt bra för att lära sig av, och ärlig när den är osäker. Varje träff visar hur säker Birdy är, och du bekräftar alltid innan något sparas." },
+      { "q": "Vad kostar Birdy?", "a": "Birdy är gratis att ladda ner och använda. Premium är ett tillval med kartan, PDF-export, säsongsstatistik och extra märken. Priset ser du i appen." },
+      { "q": "Finns Birdy för iPhone?", "a": "iPhone-appen är på väg. Android-appen finns att hämta nu, och länken till App Store dyker upp här när iPhone-versionen är ute." }
     ]
   },
-  "finalCta": {
+  "download": {
+    "kicker": "Birdy för Android och snart iPhone",
     "headline": "Ta med Birdy *ut i fält.*",
-    "sub": "På Android nu. Snart på iPhone."
+    "sub": "Gratis att ladda ner. Inget konto. Fungerar utan täckning."
   },
   "footer": {
     "tagline": "Känn igen fågeln. Bevara stunden.",

@@ -244,23 +244,20 @@
     "indexDescription": "Read how Birdy is built, how the app works and the birds you can discover with it. Articles and guides in English."
   },
   "faq": {
-    "eyebrow": "QUESTIONS · ANSWERED",
+    "kicker": "Questions",
     "headline": "Before you *download.*",
     "items": [
-      { "q": "How is this different from Merlin?", "a": "Birdy combines bird identification with a private field journal. You can save each sighting on your phone and look back at it without an account." },
-      { "q": "Does it really work offline?", "a": "Yes. Camera and audio identification run on your phone. You can use the guide and journal without a connection." },
-      { "q": "Do I need an account?", "a": "No. Open the app, point the camera, you're scanning. Your journal lives on the phone." },
-      { "q": "Where are my photos stored?", "a": "On your device. Birdy never uploads photos to a server. There is no server." },
-      { "q": "How accurate is the AI?", "a": "Good enough to learn from, honest when it's unsure. Every match shows a confidence level, and you always confirm before it's saved." },
-      { "q": "What's covered?", "a": "839 European birds, including every species in the EBBA2 atlas and close relatives. Each entry includes descriptions, photos and range information." },
-      { "q": "Is there an iOS version?", "a": "Birdy for iPhone is planned for release at the end of September 2026. Android is available today; the App Store link will appear here once the iPhone app is live." },
-      { "q": "What about audio?", "a": "Hold the microphone button for 3 seconds. Birdy identifies the recording on your phone, even without a connection." },
-      { "q": "Other questions?", "a": "Email albin@abrahamssons.se. I read every message." }
+      { "q": "Does Birdy work without a signal?", "a": "Yes. Identification with the camera, photos and sound runs on your phone, and the guide and journal are always there. Only the map tiles in the Premium map need a connection." },
+      { "q": "Do I need an account?", "a": "No. Open the app and start. Your journal lives on your phone." },
+      { "q": "How sure is the identification?", "a": "Good enough to learn from, and honest when it is unsure. Every match shows how sure Birdy is, and you always confirm before anything is saved." },
+      { "q": "What does Birdy cost?", "a": "Birdy is free to download and use. Premium is an optional upgrade with the map, PDF export, season statistics and extra badges. You see the price in the app." },
+      { "q": "Is Birdy available for iPhone?", "a": "The iPhone app is on its way. The Android app is available now, and the App Store link will appear here when the iPhone version is out." }
     ]
   },
-  "finalCta": {
+  "download": {
+    "kicker": "Birdy for Android, soon on iPhone",
     "headline": "Take Birdy *into the field.*",
-    "sub": "On Android now. Coming to iPhone."
+    "sub": "Free to download. No account. Works without a signal."
   },
   "footer": {
     "tagline": "Know the bird. Keep the moment.",

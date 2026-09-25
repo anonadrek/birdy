@@ -514,3 +514,49 @@ test.describe('bloggen', () => {
     await expect(page.locator('.tour-head .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
   });
 });
+
+test.describe('frågor, slutet och ordningen', () => {
+  test('startsidans sektioner kommer i rätt ordning', async ({ page }) => {
+    for (const path of ['/sv/', '/']) {
+      await page.goto(path);
+      const ids = await page.locator('main > section[id]').evaluateAll((els) => els.map((e) => e.id));
+      expect(ids).toEqual(['how-it-works', 'journal', 'app', 'guide', 'premium', 'privacy', 'field-notes', 'faq', 'download']);
+    }
+  });
+
+  for (const [path, firstQ, headline] of [
+    ['/sv/', 'Fungerar Birdy utan täckning?', 'Ta med Birdy ut i fält.'],
+    ['/', 'Does Birdy work without a signal?', 'Take Birdy into the field.'],
+  ] as const) {
+    test(`frågor och slutsektion på ${path}`, async ({ page }) => {
+      await page.goto(path);
+      const faq = page.locator('#faq');
+      await expect(faq.locator('details')).toHaveCount(5);
+      await expect(faq.locator('details').first()).toHaveAttribute('open', '');
+      await expect(faq.locator('summary .q').first()).toHaveText(firstQ);
+      await expect(page.locator('#download h2')).toHaveText(headline);
+      await expect(page.locator('#download a[href*="play.google.com"]')).toHaveCount(1);
+      const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}');
+      const faqLd = ld['@graph'].find((n: { '@type': string }) => n['@type'] === 'FAQPage');
+      expect(faqLd.mainEntity).toHaveLength(5);
+    });
+  }
+
+  test('inget iPhone-datum och ingen "håll i 3 sekunder" på startsidan', async ({ page }) => {
+    for (const path of ['/sv/', '/']) {
+      await page.goto(path);
+      const text = await page.locator('main').innerText();
+      expect(text).not.toMatch(/slutet av september|end of September|3 sekunder|3 seconds/i);
+    }
+  });
+
+  test('alla menylänkar och sidfotslänkar till startsidan pekar på en sektion som finns', async ({ page }) => {
+    for (const path of ['/sv/', '/']) {
+      await page.goto(path);
+      const hrefs = await page.locator('#site-nav a, footer a').evaluateAll((els) => els.map((a) => a.getAttribute('href') ?? ''));
+      const hashes = [...new Set(hrefs.filter((h) => h.startsWith(`${path}#`)).map((h) => h.slice(path.length + 1)))];
+      expect(hashes.length, `${path}: inga ankarlänkar hittades`).toBeGreaterThan(3);
+      for (const id of hashes) await expect(page.locator(`#${id}`), `${path}#${id}`).toHaveCount(1);
+    }
+  });
+});
