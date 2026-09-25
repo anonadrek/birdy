@@ -10,6 +10,14 @@
 >
 > **HÅRD GRIND före vC129:** ett riktigt köp i vC128 ska ge Premium (skärmen stänger med "Välkommen, fältmedlem.") och `adb logcat -s PremiumBilling` får INTE visa `Signature verification failed`. Visas raden: stoppa, rätta licensnyckeln och bygg om. Produktionsbygget kräver också en NY MapTiler-nyckel (bygget stoppar med den läckta) och signeringsnyckeln.
 >
+> **Checklista för produktionsbygget vC129:**
+> 1. Höj `releaseVersionCode` till 129 i `androidApp/build.gradle.kts`.
+> 2. Bygg från en vanlig terminal med `./gradlew :androidApp:bundleRelease` utan några `-P`-argument (inte heller i IDE:ns fält). Bygg aldrig via `packageReleaseBundle` direkt, eftersom skyddet sitter på `bundleRelease`/`assembleRelease`.
+> 3. Kontrollera raden i byggutskriften: `Birdy release config: versionCode=129 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1790892000000 billingTestBuild=false`. Står det `-koptest` eller `GRANDFATHER_CUTOFF_MS=0`: stoppa.
+> 4. Versionsnamnet i Console får inte sluta på `-koptest`.
+> 5. Slirar go-live: flytta brytpunkten (go-live + 48 h) FÖRE uploaden, aldrig efter.
+> 6. När vC129 är i produktion: ta bort vC128 från intern testning (eller befordra vC129 dit). Ett senare köptestbygge måste ha en versionCode över produktionens och behålla `-koptest`.
+>
 > **Extra rutor för 1.3.0** (på svenska OCH engelska, Inställningar → Språk):
 > - **Grund:** [ ] Premium-skärmen visar Plays priser (inte "Hämtar pris…" efter några sekunder); [ ] köpknappen är grå tills priset syns; [ ] texten under knappen visar rätt årspris respektive "Engångsköp. Ingen prenumeration."; [ ] avbrutet köp: skärmen står kvar, ingen välkomsttext; [ ] genomfört köp: skärmen stänger och "Välkommen, fältmedlem." visas; [ ] köp, avbryt, köp igen.
 > - **Kvittering och återställning:** [ ] köp och döda appen direkt (`adb shell am force-stop se.birdy.android`), starta igen: köpet ska bli kvitterat (Play Console → Beställningar, ingen automatisk återbetalning efter 3 dagar); [ ] flygplansläge → Inställningar → Återställ köp → "Kunde inte nå Google Play"; [ ] Återställ köp under och efter ett köp.
