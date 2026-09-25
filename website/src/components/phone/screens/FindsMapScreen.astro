@@ -1,0 +1,30 @@
+---
+import Accent from '../../ui/Accent.astro';
+import TabBar from '../TabBar.astro';
+
+interface Props { copy: { kicker: string; headline: string }; premium: string }
+const { copy, premium } = Astro.props;
+const pins: { n: string; left: number; top: number; kind?: 'brass' | 'navy' }[] = [
+  { n: '24', left: 60, top: 190 },
+  { n: '23', left: 150, top: 250 },
+  { n: '22', left: 100, top: 330, kind: 'brass' },
+  { n: '19', left: 175, top: 150, kind: 'navy' },
+];
+---
+
+<div class="ph-map">
+  <svg viewBox="0 0 250 520" preserveAspectRatio="none">
+    <path d="M-10 120 C 60 100, 90 160, 150 140 S 230 90, 270 110" stroke="#CDBF9F" stroke-width="10" fill="none" />
+    <path d="M-10 330 C 70 300, 120 360, 180 320 S 240 300, 270 320" stroke="#D6C9AB" stroke-width="16" fill="none" />
+    <path d="M60 -10 C 70 120, 40 240, 90 540" stroke="#E2D6BB" stroke-width="3" fill="none" />
+    <path d="M170 -10 C 160 140, 200 260, 160 540" stroke="#E2D6BB" stroke-width="3" fill="none" />
+    <path d="M0 230 L 250 250" stroke="#E2D6BB" stroke-width="2" fill="none" />
+    <ellipse cx="190" cy="420" rx="60" ry="40" fill="#D6CCB3" />
+  </svg>
+</div>
+<div class="ph-body ph-body--top">
+  <p class="kick"><span class="kick-line"></span>{copy.kicker}<span class="ph-pbadge">{premium}</span></p>
+  <h5><Accent text={copy.headline} /></h5>
+</div>
+{pins.map((p) => <span class:list={['seal', 'seal--mini', 'ph-pin', p.kind && `seal--${p.kind}`]} style={`left:${p.left}px;top:${p.top}px`}>{p.n}</span>)}
+<TabBar active={4} />

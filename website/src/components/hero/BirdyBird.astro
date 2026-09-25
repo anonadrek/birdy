@@ -1,0 +1,18 @@
+---
+// The app's bird (public/brand/birdy-bird.png) as an apricot mask. It lands above the kicker on
+// load; hero-motion.ts flies it towards the robin on scroll ([data-birdy] gets an inline transform).
+---
+
+<div class="birdy" data-birdy aria-hidden="true"><i class="birdy-shape"></i></div>
+
+<style>
+  .birdy { position: relative; z-index: 6; width: 62px; height: 62px; margin: 0 0 20px; will-change: transform, opacity; }
+  .birdy-shape { display: block; width: 100%; height: 100%; background: var(--apricot); -webkit-mask: url('/brand/birdy-bird.png') center / contain no-repeat; mask: url('/brand/birdy-bird.png') center / contain no-repeat; opacity: 0; animation: birdy-land 1.2s .15s var(--ease-paper) forwards; }
+  @keyframes birdy-land {
+    0% { opacity: 0; transform: translate(-38px, -28px) rotate(-18deg) scale(.78); }
+    65% { opacity: 1; transform: translate(2px, 2px) rotate(3deg) scale(1.04); }
+    100% { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .birdy-shape { opacity: 1; animation: none; } }
+  @media (max-width: 760px) { .birdy { width: 52px; height: 52px; margin-bottom: 16px; } }
+</style>

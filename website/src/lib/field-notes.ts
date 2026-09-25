@@ -26,3 +26,13 @@ export async function getFieldNotes(locale: Locale): Promise<FieldNote[]> {
   return all.filter((note) => note.data.locale === locale)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
+
+/** Minutes to read a note's markdown body at 200 words per minute, at least 1. */
+export function readingMinutes(body: string | undefined): number {
+  const words = (body ?? '').replace(/[#>*_`[\]()!]/g, ' ').split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
+export function formatNoteDate(date: Date, locale: Locale): string {
+  return date.toLocaleDateString(locale === 'sv' ? 'sv-SE' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+}

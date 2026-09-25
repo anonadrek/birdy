@@ -42,10 +42,12 @@ const style = `--size:${size}` + (align ? `;--jh-ta:${align}` : '');
     font-style: normal;
     font-weight: 400;
     font-size: var(--size);
-    line-height: 1.06;
-    color: var(--jh-ink, var(--color-text-primary));
+    line-height: 1.02;
+    letter-spacing: -.018em;
+    color: var(--jh-ink, var(--ink));
     text-align: var(--jh-ta, center);
     margin: 0;
+    text-wrap: balance;
   }
   .plain { font-family: var(--font-serif); font-style: normal; }
   .accent {
@@ -53,9 +55,6 @@ const style = `--size:${size}` + (align ? `;--jh-ta:${align}` : '');
     font-style: italic;
     font-weight: 400;
     font-size: 1em;
-    color: var(--jh-accent, var(--color-orange));
-    display: inline-block;
-    margin: 0 0.05em;
-    line-height: 1;
+    color: var(--jh-accent, var(--rust));
   }
 </style>

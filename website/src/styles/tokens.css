@@ -1,20 +1,24 @@
+/* Birdy 1.3: palett "Mossa, rost & mässing", samma som appen (spec §4.1). */
 :root {
-  --color-paper-bg: #f9f2e6;
-  --color-paper-edge: #ead7bf;
-  --color-paper-top: #fff9ef;
-  --color-rust: #934326;
-  --color-rust-deep: #6d2d1d;
-  --color-rust-shadow: #3f1e18;
-  --color-orange: #b7471d;
-  --color-apricot: #ffc386;
-  --color-text-primary: #302019;
-  --color-text-on-hero: #fff8ee;
-  --color-marginalia-ink: #6e584b;
-  --color-stamp-navy: #1f3a5f;
+  --paper: #F6EFE2;
+  --card: #FFFAF1;
+  --ink: #26301F;
+  --muted: #5B6350;
+  --line: #DFD2BA;
+  --rust: #9A4526;
+  --rust-deep: #72301A;
+  --apricot: #F2B27A;
+  --moss: #1F2A19;
+  --moss-2: #2B3A23;
+  --moss-deep: #172013;
+  --brass: #B8893A;
+  --brass-hi: #E2C07E;
+  --brass-ink: #241B0C;
+  --cream: #FFF8EE;
+  --navy: #1F3A5F;
+
   --font-serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
   --font-script: 'Caveat', 'Brush Script MT', cursive;
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --section-padding-y: clamp(5rem, 9vw, 9rem);
-  --container-max: 76rem;
   --ease-paper: cubic-bezier(0.22, 1, 0.36, 1);
 }

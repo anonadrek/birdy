@@ -1,52 +1,108 @@
 ---
 import { render } from 'astro:content';
+import { Image, getImage } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Nav from './Nav.astro';
 import Footer from './Footer.astro';
-import { fieldNoteHref, fieldNotesHref, type FieldNote } from '../lib/field-notes';
+import Kicker from './ui/Kicker.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import PlayStoreBadge from './ui/PlayStoreBadge.astro';
+import { fieldNoteHref, fieldNotesHref, formatNoteDate, readingMinutes, type FieldNote } from '../lib/field-notes';
+import { getCopy } from '../lib/i18n';
+import { albitProductHref } from '../lib/links';
 import '../styles/article-prose.css';
 
-interface Props { note: FieldNote; }
+interface Props { note: FieldNote }
 const { note } = Astro.props;
 const { Content } = await render(note);
-const { locale, title, description, date, category } = note.data;
+const { locale, title, description, date, category, image, imageAlt, imageCaption, imagePosition } = note.data;
+const t = getCopy(locale);
 const sv = locale === 'sv';
 const pathname = fieldNoteHref(note);
 const otherPath = `${sv ? '' : '/sv'}/blog/${note.data.slug}/`;
+const home = sv ? '/sv/' : '/';
+const minutes = t.blog.minRead.replace('{n}', String(readingMinutes(note.body)));
+// The note's own photo, cropped to 1200×630, is the share image (spec §6).
+const share = await getImage({ src: image, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 });
+const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
 ---
 
-<Layout locale={locale} pathname={pathname} title={`${title} | Birdy`} description={description} articleDate={date.toISOString()}>
-  <Nav locale={locale} switchLangHref={otherPath} />
-  <main class="article-page">
-    <div class="breadcrumbs"><a href={fieldNotesHref(locale)}>{sv ? 'Fältanteckningar' : 'Field Notes'}</a><span aria-hidden="true">/</span><span>{category}</span></div>
-    <header class="article-head">
-      <p class="category">{category}</p>
-      <h1>{title}</h1>
-      <p class="lede">{description}</p>
-      <div class="byline"><span>{sv ? 'Av Birdy' : 'By Birdy'}</span><time datetime={date.toISOString().slice(0, 10)}>{date.toLocaleDateString(sv ? 'sv-SE' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</time></div>
+<Layout locale={locale} pathname={pathname} title={`${title} | Birdy`} description={description} articleDate={date.toISOString()} ogImage={share.src} ogImageAlt={imageAlt}>
+  <Nav locale={locale} variant="overlay" scrim switchLangHref={otherPath} />
+  <main>
+    <header class="ahero">
+      <Image class="ahero-img" src={image} alt={imageAlt} widths={[800, 1200, 1600]} sizes="100vw" style={imagePosition ? `object-position:${imagePosition}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
+      <div class="wrap">
+        <div class="in">
+          <span class="nav-until" data-nav-until aria-hidden="true"></span>
+          <Kicker text={category} />
+          <h1>{title}</h1>
+          <p class="aby"><a href={albitProductHref(locale)}>{t.blog.byline}</a></p>
+          <p class="ameta"><time datetime={date.toISOString().slice(0, 10)}>{formatNoteDate(date, locale)}</time> · {minutes}</p>
+        </div>
+      </div>
+      {imageCaption && <span class="cap" aria-hidden="true">{imageCaption}</span>}
     </header>
-    <article class="article-prose"><Content /></article>
-    <aside class="article-end">
-      <p>{sv ? 'Känn igen fågeln. Bevara stunden.' : 'Know the bird. Keep the moment.'}</p>
-      <div><a href={fieldNotesHref(locale)}>{sv ? 'Fler fältanteckningar' : 'More field notes'} <span aria-hidden="true">↗</span></a><a href={sv ? '/sv/#download' : '/#download'}>{sv ? 'Hämta Birdy' : 'Get Birdy'} <span aria-hidden="true">↗</span></a></div>
-    </aside>
+    <article class="asheet">
+      <div class="article-prose"><Content /></div>
+      <aside class="aend">
+        <div>
+          <JournalHeadline text={t.blog.endHeadline} level="h2" align="left" size="28px" />
+          <p>{t.blog.endSub}</p>
+        </div>
+        <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="small" />
+      </aside>
+      <nav class="aback" aria-label={t.blog.kicker}>
+        <a href={fieldNotesHref(locale)}><span aria-hidden="true">← </span>{t.blog.allNotes}</a>
+        <a href={`${home}#how-it-works`}>{t.blog.seeHow}</a>
+      </nav>
+    </article>
   </main>
   <Footer locale={locale} switchLangHref={otherPath} />
 </Layout>
 
 <style>
-  .article-page { max-width: 1120px; margin: auto; padding: 2rem clamp(1.5rem,6vw,5rem) 7rem; }
-  .breadcrumbs { display: flex; gap: .7rem; align-items: center; color: var(--color-marginalia-ink); font-size: .8rem; }
-  .breadcrumbs a { color: var(--color-orange); border-bottom: 1px solid currentColor; }
-  .article-head { border-bottom: 1px solid var(--color-paper-edge); padding: clamp(3rem,6vw,6rem) 0 2rem; }
-  .category { color: var(--color-orange); font-size: .83rem; font-weight: 600; margin: 0 0 1.5rem; }
-  h1 { margin: 0; font-size: clamp(3.4rem,7.4vw,7.5rem); line-height: .99; letter-spacing: -.04em; max-width: 13ch; text-wrap: balance; hyphens: none; overflow-wrap: anywhere; }
-  .lede { max-width: 45rem; color: var(--color-marginalia-ink); font-size: clamp(1.1rem,1.8vw,1.35rem); line-height: 1.55; margin: 2rem 0; }
-  .byline { display: flex; gap: 1.5rem; font-size: .8rem; color: var(--color-marginalia-ink); }
-  .article-page :global(.article-prose) { margin: 4rem 0 0 min(12vw,9rem); }
-  .article-end { margin: 6rem 0 0; padding-top: 2rem; border-top: 2px solid var(--color-rust-shadow); display: flex; justify-content: space-between; align-items: end; gap: 2rem; }
-  .article-end p { font: 400 clamp(2.4rem,4vw,4rem)/1.1 var(--font-serif); max-width: 12ch; letter-spacing: -.03em; margin: 0; }
-  .article-end div { display: flex; flex-direction: column; align-items: end; gap: 1rem; }
-  .article-end a { color: var(--color-orange); border-bottom: 1px solid currentColor; padding-bottom: .3rem; font-size: .88rem; font-weight: 600; white-space: nowrap; }
-  @media (max-width: 680px) { .article-page :global(.article-prose) { margin-left: 0; } .article-end { flex-direction: column; align-items: start; } .article-end div { align-items: start; } }
+  .ahero { position: relative; min-height: 540px; display: flex; align-items: flex-end; color: var(--cream); background: var(--moss); overflow: hidden; --kick-color: var(--apricot); }
+  .ahero :global(.ahero-img) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center; }
+  .ahero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(31, 42, 25, .96) 0%, rgba(31, 42, 25, .55) 45%, rgba(31, 42, 25, .1) 80%), linear-gradient(180deg, rgba(31, 42, 25, .55), transparent 120px); }
+  .ahero .wrap { position: relative; z-index: 2; width: 100%; padding-top: 124px; padding-bottom: 96px; }
+  .ahero :global(:focus-visible) { outline-color: var(--apricot); }
+  /* isolate traps .in::before's negative z-index inside .in, so the scrim sits only behind this
+     text column (never below the fixed nav or the photo's own darkening layers outside .in). */
+  .in { position: relative; isolation: isolate; max-width: 760px; margin: 0 auto; }
+  /* Soft local scrim so the kicker/title/byline/meta clear WCAG AA on any post photo, without
+     darkening the photo's upper half (the subject) or widening the existing full-bleed gradient.
+     A blurred flat rounded-rect, not a radial-gradient: filter:blur() is a pixel-level post-process
+     with no hard mathematical edge (unlike a gradient's ending-shape, which is clipped by the box the
+     moment its percentage-sized radius doesn't fully reach transparent before the box border — that
+     produced a visible rectangle around y≈200px / x≈290–1150px at 1440px in an earlier version). */
+  .in::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: -24px -40px -12px;
+    border-radius: 48px;
+    background: rgba(31, 42, 25, .72);
+    filter: blur(36px);
+    pointer-events: none;
+  }
+  .nav-until { position: absolute; left: 0; bottom: 100%; width: 1px; height: 100vh; pointer-events: none; }
+  h1 { font-size: clamp(40px, 4.8vw, 58px); line-height: 1.02; letter-spacing: -.02em; max-width: 15ch; overflow-wrap: anywhere; hyphens: auto; }
+  .aby { margin: 14px 0 0; font-size: 14px; font-weight: 600; }
+  .aby a { color: var(--cream); border-bottom: 1px solid rgba(255, 248, 238, .45); padding-bottom: 1px; }
+  .aby a:hover { border-bottom-color: var(--apricot); }
+  .ameta { margin: 10px 0 0; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 248, 238, .75); }
+  .cap { position: absolute; z-index: 2; right: 44px; bottom: 100px; font-family: var(--font-script); font-size: 20px; color: rgba(255, 248, 238, .8); transform: rotate(-3deg); }
+  .asheet { position: relative; z-index: 3; max-width: 760px; margin: -54px auto 0; background: var(--paper); border-radius: 24px 24px 0 0; padding: 52px 60px 10px; }
+  .aend { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 52px 0 30px; padding: 30px 32px; border-radius: 18px; background: var(--moss); color: var(--cream); --jh-ink: var(--cream); --jh-accent: var(--apricot); }
+  .aend p { margin: 8px 0 0; font-size: 14px; color: rgba(255, 248, 238, .78); }
+  .aend :global(:focus-visible) { outline-color: var(--apricot); }
+  .aback { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; font-weight: 600; color: var(--rust); padding: 22px 0 60px; border-top: 1px solid var(--line); }
+  @media (max-width: 760px) {
+    .ahero { min-height: 470px; }
+    .ahero .wrap { padding-top: 104px; padding-bottom: 80px; }
+    .cap { display: none; }
+    .asheet { margin-top: -40px; padding: 34px 20px 6px; border-radius: 20px 20px 0 0; }
+    .aend { flex-direction: column; align-items: flex-start; }
+  }
 </style>

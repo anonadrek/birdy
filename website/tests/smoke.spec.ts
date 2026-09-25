@@ -48,12 +48,14 @@ test.describe('SV landing /sv/', () => {
 });
 
 test.describe('Field Notes', () => {
-  test('Swedish pages fit a narrow mobile viewport', async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
-    for (const path of ['/sv/', '/sv/blog/', '/sv/blog/why-birdy/']) {
-      await page.goto(path);
-      const width = await page.evaluate(() => document.documentElement.scrollWidth);
-      expect(width, `${path} should not overflow horizontally`).toBeLessThanOrEqual(390);
+  test('pages fit a narrow mobile viewport (SV and EN)', async ({ page }) => {
+    for (const width of [360, 390]) {
+      await page.setViewportSize({ width, height: 844 });
+      for (const path of ['/sv/', '/sv/blog/', '/sv/blog/why-birdy/', '/', '/blog/', '/blog/why-birdy/']) {
+        await page.goto(path);
+        const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+        expect(scrollWidth, `${path} at ${width}px should not overflow horizontally`).toBeLessThanOrEqual(width);
+      }
     }
   });
 
@@ -75,7 +77,8 @@ test.describe('Field Notes', () => {
       await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'article');
       await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', 'https://birdy.community/blog/why-birdy/');
       await expect(page.locator('link[rel="alternate"][hreflang="sv"]')).toHaveAttribute('href', 'https://birdy.community/sv/blog/why-birdy/');
-      await expect(page.locator('footer a[href="https://www.albit.se/#produkter"]')).toContainText('albIT');
+      const albitHref = locale === 'sv' ? 'https://www.albit.se/produkter/birdy/' : 'https://www.albit.se/en/products/birdy/';
+      await expect(page.locator(`footer a[href="${albitHref}"]`)).toHaveText('AlbIT');
       expect(consoleErrors).toEqual([]);
     });
   }

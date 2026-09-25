@@ -40,71 +40,13 @@ const pathname = '/legal/';
 </Layout>
 
 <style>
-  .legal-index {
-    padding: 4rem 1.5rem 2rem;
-    max-width: 60rem;
-    margin: 0 auto;
-  }
-  .hero {
-    text-align: center;
-    margin-bottom: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .sub {
-    font-family: var(--font-script);
-    font-size: 1.25rem;
-    color: var(--color-marginalia-ink);
-    margin: 0;
-  }
-  .docs {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 1.5rem;
-    max-width: 42rem;
-    margin-inline: auto;
-  }
-  .doc-link {
-    display: block;
-    padding: 2rem;
-    background: var(--color-paper-edge);
-    border: 1px solid #ddbb9d;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: transform 0.2s var(--ease-paper), box-shadow 0.2s var(--ease-paper);
-  }
-  .doc-link:hover,
-  .doc-link:focus-visible {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(96, 42, 25, 0.1);
-  }
-  .doc-link:focus-visible {
-    outline: 2px solid var(--color-orange);
-    outline-offset: 2px;
-  }
-  .doc-title {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1.75rem;
-    color: var(--color-text-primary);
-    margin: 0 0 0.5rem;
-  }
-  .doc-desc {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--color-text-primary);
-    margin: 0 0 1rem;
-  }
-  .doc-cta {
-    font-family: var(--font-script);
-    font-size: 1.125rem;
-    color: var(--color-orange);
-    font-weight: 700;
-  }
+  .legal-index { padding: 4rem 1.5rem 2rem; max-width: 60rem; margin: 0 auto; }
+  .hero { text-align: center; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .sub { font-family: var(--font-script); font-size: 1.25rem; color: var(--muted); margin: 0; }
+  .docs { list-style: none; margin: 0 auto; padding: 0; display: grid; gap: 1.5rem; max-width: 42rem; }
+  .doc-link { display: block; padding: 2rem; background: var(--card); border: 1px solid var(--line); border-radius: 16px; text-decoration: none; transition: transform 0.2s var(--ease-paper), box-shadow 0.2s var(--ease-paper); }
+  .doc-link:hover, .doc-link:focus-visible { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(31, 42, 25, 0.1); }
+  .doc-title { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: 1.75rem; color: var(--ink); margin: 0 0 0.5rem; }
+  .doc-desc { font-family: var(--font-sans); font-size: 1rem; line-height: 1.5; color: var(--ink); margin: 0 0 1rem; }
+  .doc-cta { font-family: var(--font-script); font-size: 1.125rem; color: var(--rust); font-weight: 700; }
 </style>

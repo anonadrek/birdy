@@ -5,10 +5,10 @@ interface Props {
   alt: string;
   class?: string;
 }
-const { size = '120px', color = 'var(--color-orange)', alt, class: cls = '' } = Astro.props;
+const { size = '120px', color = 'var(--rust)', class: cls = '' } = Astro.props;
 ---
 
-<span class={`wordmark ${cls}`} style={`--w:${size};--c:${color}`} aria-label={alt}>
+<span class={`wordmark ${cls}`} style={`--w:${size};--c:${color}`}>
   Birdy<span class="dot">.</span>
 </span>
 

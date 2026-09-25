@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
 import { getCopy, alternateHref, type Locale } from '../lib/i18n';
+import { ALBIT_URL, ALBIN_URL } from '../lib/links';
 
 interface Props {
   locale: Locale;
@@ -10,17 +11,22 @@ interface Props {
   title?: string;
   description?: string;
   articleDate?: string;
+  /** Site-relative or absolute URL of a 1200×630 share image. Defaults to the locale's og-field image. */
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
-const { locale, pathname, noAlternateLocale = false, title, description, articleDate } = Astro.props;
+const { locale, pathname, noAlternateLocale = false, title, description, articleDate, ogImage, ogImageAlt } = Astro.props;
 const copy = getCopy(locale);
 const metaTitle = title ?? copy.meta.title;
 const metaDescription = description ?? copy.meta.description;
 const altLocale: Locale = locale === 'en' ? 'sv' : 'en';
 const altPath = alternateHref(locale, pathname);
 const canonical = new URL(pathname, Astro.site).toString();
-const ogImageUrl = new URL(`/og-field-${locale}.png`, Astro.site).toString();
+const ogImageUrl = new URL(ogImage ?? `/og-field-${locale}.png`, Astro.site).toString();
+const ogAlt = ogImageAlt ?? (ogImage ? metaTitle : copy.alt.panorama);
 const englishPath = locale === 'en' ? pathname : altPath;
+const albit = { '@type': 'Organization', name: 'AlbIT AB', url: ALBIT_URL };
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -42,6 +48,7 @@ const jsonLd = {
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'SEK' },
       inLanguage: locale,
       image: ogImageUrl,
+      creator: albit,
     }] : []),
     ...(articleDate ? [{
       '@type': 'BlogPosting',
@@ -50,12 +57,13 @@ const jsonLd = {
       datePublished: articleDate,
       inLanguage: locale,
       mainEntityOfPage: canonical,
-      author: { '@type': 'Organization', name: 'Birdy' },
-      publisher: { '@type': 'Organization', name: 'Birdy' },
+      author: { '@type': 'Person', name: 'Albin Abrahamsson', url: ALBIN_URL },
+      publisher: albit,
       image: ogImageUrl,
     }] : []),
     ...((pathname === '/' || pathname === '/sv/') ? [{
       '@type': 'FAQPage',
+      inLanguage: locale,
       mainEntity: copy.faq.items.map((item) => ({
         '@type': 'Question',
         name: item.q,
@@ -70,6 +78,7 @@ const jsonLd = {
 <html lang={copy.meta.htmlLang}>
   <head>
     <meta charset="UTF-8" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
@@ -94,9 +103,10 @@ const jsonLd = {
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
+    <link rel="preload" href="/fonts/dm-serif-display-regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/dm-serif-display-italic.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/caveat-regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/caveat-bold.woff2" as="font" type="font/woff2" crossorigin />
 
     <meta property="og:type" content={articleDate ? 'article' : 'website'} />
     {articleDate && <meta property="article:published_time" content={articleDate} />}
@@ -105,7 +115,7 @@ const jsonLd = {
     <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:image:alt" content={copy.alt.panorama} />
+    <meta property="og:image:alt" content={ogAlt} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Birdy" />
@@ -114,17 +124,18 @@ const jsonLd = {
     <meta name="twitter:title" content={metaTitle} />
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogAlt} />
 
-    <meta name="theme-color" content="#6d2d1d" />
+    <meta name="theme-color" content="#1F2A19" />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
-  <body class="paper-bg">
+  <body>
     <slot />
     <Analytics />
     <script>
-      const revealTargets = [...document.querySelectorAll<HTMLElement>('[data-reveal]')];
       const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealTargets = [...document.querySelectorAll<HTMLElement>('[data-reveal]')];
       if (revealTargets.length && !reduceMotion && 'IntersectionObserver' in window) {
         document.documentElement.classList.add('motion-ready');
         const observer = new IntersectionObserver((entries) => {
@@ -135,6 +146,15 @@ const jsonLd = {
           }
         }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
         for (const target of revealTargets) observer.observe(target);
+      }
+
+      // Looping animations (robin, sound waves) pause while their section is off screen.
+      const loops = [...document.querySelectorAll<HTMLElement>('[data-loop]')];
+      if (loops.length && 'IntersectionObserver' in window) {
+        const pauser = new IntersectionObserver((entries) => {
+          for (const entry of entries) entry.target.classList.toggle('is-paused', !entry.isIntersecting);
+        });
+        for (const el of loops) pauser.observe(el);
       }
     </script>
   </body>

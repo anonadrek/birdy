@@ -1,9 +1,20 @@
-.article-prose { max-width: 66ch; font-size: 1.075rem; line-height: 1.82; }
-.article-prose > p:first-child { font-family: var(--font-serif); font-size: clamp(1.4rem,2vw,1.8rem); line-height: 1.5; }
-.article-prose p { margin: 0 0 1.5rem; }
-.article-prose h2 { font-size: clamp(2rem,3vw,2.8rem); line-height: 1.14; letter-spacing: -.02em; margin: 3.5rem 0 1.1rem; }
-.article-prose h3 { font-size: 1.5rem; margin: 2.5rem 0 1rem; }
-.article-prose a { color: var(--color-orange); text-decoration: underline; text-underline-offset: .2em; }
-.article-prose ul, .article-prose ol { padding-left: 1.5rem; margin: 0 0 1.5rem; }
-.article-prose li { margin-bottom: .4rem; }
-.article-prose strong { font-weight: 600; }
+/* Field note body (spec §6): calm serif headings, a narrow readable column and a rust pull quote. */
+.article-prose { font-size: 17px; line-height: 1.75; color: #3B4434; }
+.article-prose > p:first-child { font-size: 20px; line-height: 1.6; color: var(--ink); margin: 0 0 26px; }
+.article-prose p { margin: 0 0 18px; }
+.article-prose h2 { font-size: 30px; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); margin: 44px 0 14px; }
+.article-prose h3 { font-size: 23px; line-height: 1.2; color: var(--ink); margin: 32px 0 10px; }
+.article-prose a { color: var(--rust); font-weight: 600; border-bottom: 1px solid currentColor; }
+.article-prose ul, .article-prose ol { padding-left: 1.4rem; margin: 0 0 18px; }
+.article-prose ul { list-style: disc; }
+.article-prose ol { list-style: decimal; }
+.article-prose li { margin-bottom: 6px; }
+.article-prose strong { font-weight: 600; color: var(--ink); }
+.article-prose blockquote { margin: 34px 0; padding: 6px 0 6px 24px; border-left: 2px solid var(--rust); font-family: var(--font-serif); font-style: italic; font-size: 27px; line-height: 1.25; color: var(--rust-deep); }
+.article-prose blockquote p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+@media (max-width: 760px) {
+  .article-prose { font-size: 16px; }
+  .article-prose > p:first-child { font-size: 18px; }
+  .article-prose h2 { font-size: 25px; }
+  .article-prose blockquote { font-size: 23px; }
+}

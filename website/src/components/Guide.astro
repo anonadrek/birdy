@@ -1,0 +1,69 @@
+---
+import Kicker from './ui/Kicker.astro';
+import JournalHeadline from './ui/JournalHeadline.astro';
+import CoverageMap from './CoverageMap.astro';
+import { type Locale, getCopy } from '../lib/i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getCopy(locale);
+---
+
+<section id="guide" class="sec guide">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <div>
+        <Kicker text={t.guide.kicker} />
+        <JournalHeadline text={t.guide.headline} level="h2" align="left" size="clamp(34px, 4.4vw, 52px)" />
+      </div>
+      <p class="lead">{t.guide.lead}</p>
+    </div>
+    <ul class="stats" role="list">
+      {t.guide.stats.map((s, i) => (
+        <li data-stat data-reveal style={`--rd:${i * 120}ms`}>
+          <span class="sr-only">{s.value} {s.label}</span>
+          <b data-count={s.value} aria-hidden="true">{s.value}</b>
+          <span class="stat-label" aria-hidden="true">{s.label}</span>
+        </li>
+      ))}
+    </ul>
+    <CoverageMap locale={locale} />
+  </div>
+</section>
+
+<script>
+  // Count the stats up when they come into view (same behaviour as the old Inside section).
+  const stats = document.querySelectorAll<HTMLElement>('[data-stat]');
+  if (stats.length && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const counter = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        counter.unobserve(entry.target);
+        const value = entry.target.querySelector<HTMLElement>('[data-count]');
+        const target = Number(value?.dataset.count);
+        if (!value || !Number.isFinite(target) || target === 0) continue;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const progress = Math.min(1, (now - start) / 1100);
+          value.textContent = String(Math.round(target * (1 - Math.pow(1 - progress, 3))));
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+    }, { threshold: 0.45 });
+    stats.forEach((s) => counter.observe(s));
+  }
+</script>
+
+<style>
+  .head { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: end; }
+  .stats { display: flex; margin: 44px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stats li { flex: 1; padding: 18px 0; text-align: center; }
+  .stats li + li { border-left: 1px solid var(--line); }
+  .stats b { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 52px; color: var(--rust); line-height: 1; }
+  .stat-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  @media (max-width: 760px) {
+    .head { grid-template-columns: 1fr; gap: 40px; }
+    .stats b { font-size: 38px; }
+  }
+</style>

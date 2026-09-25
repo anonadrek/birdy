@@ -1,0 +1,21 @@
+---
+import Kicker from '../../ui/Kicker.astro';
+import Accent from '../../ui/Accent.astro';
+
+interface Props { copy: { kicker: string; headline: string; hearing: string; hint1: string; hint2: string } }
+const { copy } = Astro.props;
+// Same bar heights as the mockup's generated waveform.
+const bars = Array.from({ length: 34 }, (_, i) => ({
+  height: 18 + Math.round(Math.abs(Math.sin(i * 0.7)) * 62 + (i % 5) * 4),
+  delay: (i * 0.045).toFixed(2),
+}));
+---
+
+<div class="ph-listen">
+  <Kicker text={copy.kicker} center />
+  <h5><Accent text={copy.headline} /></h5>
+  <div class="ph-chip"><i></i>{copy.hearing}</div>
+  <div class="ph-wave">{bars.map((b) => <span style={`height:${b.height}px;animation-delay:${b.delay}s`}></span>)}</div>
+  <div class="ph-rec"><b></b></div>
+  <small>{copy.hint1}<br />{copy.hint2}</small>
+</div>

@@ -1,0 +1,9 @@
+---
+import Icon from '../ui/Icon.astro';
+
+interface Props { active: number }
+const { active } = Astro.props;
+const tabs = ['tab-identify', 'tab-journal', 'tab-archive', 'tab-badges', 'tab-map'] as const;
+---
+
+<div class="ph-tabs">{tabs.map((name, i) => <span class:list={[{ on: i === active }]}><Icon name={name} size={15} /></span>)}</div>

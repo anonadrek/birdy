@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from './Nav.astro';
+import Hero from './Hero.astro';
+import HowItWorks from './HowItWorks.astro';
+import JournalSection from './JournalSection.astro';
+import AppTour from './AppTour.astro';
+import Guide from './Guide.astro';
+import Premium from './Premium.astro';
+import Privacy from './Privacy.astro';
+import FieldNotesTeaser from './FieldNotesTeaser.astro';
+import Faq from './Faq.astro';
+import FinalCta from './FinalCta.astro';
+import Footer from './Footer.astro';
+import type { Locale } from '../lib/i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const pathname = locale === 'sv' ? '/sv/' : '/';
+---
+
+<Layout locale={locale} pathname={pathname}>
+  <Nav locale={locale} variant="overlay" />
+  <main>
+    <Hero locale={locale} />
+    <HowItWorks locale={locale} />
+    <JournalSection locale={locale} />
+    <AppTour locale={locale} />
+    <Guide locale={locale} />
+    <Premium locale={locale} />
+    <Privacy locale={locale} />
+    <FieldNotesTeaser locale={locale} />
+    <Faq locale={locale} />
+    <FinalCta locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</Layout>
