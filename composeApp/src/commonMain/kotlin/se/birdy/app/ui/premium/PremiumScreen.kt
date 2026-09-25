@@ -575,13 +575,13 @@ private fun PrimaryCta(
     }
 }
 
-private data class PremiumFeatureItem(
+internal data class PremiumFeatureItem(
     val icon: PremiumFeatureIcon,
     val title: StringResource,
     val sub: StringResource,
 )
 
-private val premiumFeatures =
+internal val premiumFeatures =
     listOf(
         PremiumFeatureItem(PremiumFeatureIcon.MAP, Res.string.premium_feature_map_title, Res.string.premium_feature_map_sub),
         PremiumFeatureItem(PremiumFeatureIcon.EXPORT, Res.string.premium_feature_export_title, Res.string.premium_feature_export_sub),

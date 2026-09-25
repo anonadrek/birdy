@@ -40,6 +40,7 @@ import se.birdy.app.ui.encyclopedia.ArchiveScreen
 import se.birdy.app.ui.listen.ListenLauncherScreen
 import se.birdy.app.ui.match.MatchResultScreen
 import se.birdy.app.ui.premium.PremiumScreen
+import se.birdy.app.ui.premium.PremiumThankYouScreen
 import se.birdy.app.ui.profile.SpeciesProfileScreen
 import se.birdy.app.ui.scan.ScanScreenHost
 import se.birdy.content.SpeciesId
@@ -60,6 +61,9 @@ fun AppScaffold(graph: AppGraph) {
         }
     }
     val showPremiumTeaser = !effectivePremiumActive
+    // The DEBUG "Skip premium override" toggle nulls every override (including a grandfathered
+    // user's), so gate on the override actually being present, not just isGrandfathered.
+    val isEarlyMember = graph.isGrandfathered && graph.premiumOverride != null
     LaunchedEffect(Unit) {
         val now = graph.clock.now()
 
@@ -80,6 +84,16 @@ fun AppScaffold(graph: AppGraph) {
                 .destination
                 .hasRoute(AppRoute.Listen::class)
         ) {
+            return@LaunchedEffect
+        }
+
+        // 1.3.0: early users get a one-time thank-you instead of any paywall (spec §5.2).
+        if (isEarlyMember) {
+            val thanksShown = graph.userPreferences.grandfatherThanksShown.first()
+            if (EntryFlowDecider.shouldShowGrandfatherThanks(isGrandfathered = true, alreadyShown = thanksShown)) {
+                graph.userPreferences.setGrandfatherThanksShown(true)
+                navController.navigate(AppRoute.Premium)
+            }
             return@LaunchedEffect
         }
         val premiumState = graph.premiumOverride ?: graph.premiumRepository.state.value
@@ -385,17 +399,21 @@ fun AppScaffold(graph: AppGraph) {
                 }
             }
             composable<AppRoute.Premium> {
-                PremiumScreen(
-                    viewModel = remember(graph) { graph.premiumViewModel() },
-                    onClose = {
-                        navController.popBackStack()
-                        scope.launch { snackbarHostState.showSnackbar(dismissToast) }
-                    },
-                    onPurchaseComplete = {
-                        navController.popBackStack(AppRoute.Premium, inclusive = true)
-                        scope.launch { snackbarHostState.showSnackbar(welcomeToast) }
-                    },
-                )
+                if (isEarlyMember) {
+                    PremiumThankYouScreen(onClose = { navController.popBackStack() })
+                } else {
+                    PremiumScreen(
+                        viewModel = remember(graph) { graph.premiumViewModel() },
+                        onClose = {
+                            navController.popBackStack()
+                            scope.launch { snackbarHostState.showSnackbar(dismissToast) }
+                        },
+                        onPurchaseComplete = {
+                            navController.popBackStack(AppRoute.Premium, inclusive = true)
+                            scope.launch { snackbarHostState.showSnackbar(welcomeToast) }
+                        },
+                    )
+                }
             }
             graph.benchmarkScreen?.let { benchmarkContent ->
                 composable<AppRoute.DebugBenchmark> { benchmarkContent() }

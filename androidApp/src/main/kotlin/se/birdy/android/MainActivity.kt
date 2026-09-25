@@ -46,6 +46,7 @@ import se.birdy.app.ui.badges.BadgeStringMap
 import se.birdy.app.ui.badges.resolveBadgeString
 import se.birdy.app.ui.debug.DiagnosticsRunner
 import se.birdy.app.ui.debug.DiagnosticsScreen
+import se.birdy.app.ui.debug.GrandfatherDebugControls
 import se.birdy.app.ui.settings.AppLocaleApplier
 import se.birdy.app.ui.settings.SettingsLauncherSetup
 import se.birdy.app.usecase.ExportJournalUseCase
@@ -605,6 +606,12 @@ class MainActivity : AppCompatActivity() {
                     },
                     skipPremiumOverride = userPreferences.skipPremiumOverride,
                     onSetSkipPremiumOverride = { userPreferences.setSkipPremiumOverride(it) },
+                    grandfatherDebug =
+                        GrandfatherDebugControls(
+                            forceGrandfathered = userPreferences.debugForceGrandfathered,
+                            onSetForceGrandfathered = { userPreferences.setDebugForceGrandfathered(it) },
+                            onResetGrandfatherThanks = { userPreferences.setGrandfatherThanksShown(false) },
+                        ),
                 )
             }
         } else {

@@ -461,6 +461,11 @@
     <string name="premium_auto_renew_disclosure">Renews yearly at %1$s. Cancel anytime in Google Play.</string>
     <string name="premium_lifetime_note">One-time purchase. No subscription.</string>
     <string name="premium_price_loading">Loading price…</string>
+    <string name="premium_thanks_kicker">Early field member</string>
+    <string name="premium_thanks_headline">Premium is yours. *Forever.*</string>
+    <string name="premium_thanks_body">You joined before Birdy started charging. As a thank you, you keep everything in Premium for free, for as long as you have the app.</string>
+    <string name="premium_thanks_signoff">Thank you for being here from the start.</string>
+    <string name="premium_thanks_continue">Continue</string>
     <string name="premium_cta_primary">Continue</string>
     <string name="premium_purchase_pending">Your payment is pending. Premium turns on once Google Play confirms it.</string>
     <string name="premium_purchase_failed">The purchase didn’t go through. Please try again in a moment.</string>
