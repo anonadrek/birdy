@@ -16,12 +16,28 @@ if (root && track) {
   const nextBtn = root.querySelector<HTMLButtonElement>('[data-next]');
   const rm = matchMedia('(prefers-reduced-motion: reduce)');
   let active = 0;
-  let target = 0;
+  let pending: number | null = null;
   let raf = 0;
   let moved = false;
   let capTimer = 0;
+  let settleTimer = 0;
 
   const centerOf = (s: HTMLElement) => s.offsetLeft + s.offsetWidth / 2;
+
+  // The real, current resting slide, read fresh from the scroll position rather than from `active`
+  // (which only updates via rAF and can lag under load) or `pending` (which only reflects our own
+  // last `go()` call, not a native touch swipe that never went through it).
+  const nearest = (): number => {
+    const mid = track.scrollLeft + track.clientWidth / 2;
+    const step = slides.length > 1 ? centerOf(slides[1]) - centerOf(slides[0]) : 1;
+    let best = 0;
+    let bestDist = Infinity;
+    slides.forEach((s, i) => {
+      const d = Math.abs((centerOf(s) - mid) / step);
+      if (d < bestDist) { bestDist = d; best = i; }
+    });
+    return best;
+  };
 
   const setCaption = (i: number) => {
     const s = slides[i];
@@ -38,9 +54,9 @@ if (root && track) {
     capTimer = window.setTimeout(apply, 160);
   };
 
-  const setArrows = () => {
-    prevBtn?.setAttribute('aria-disabled', target <= 0 ? 'true' : 'false');
-    nextBtn?.setAttribute('aria-disabled', target >= slides.length - 1 ? 'true' : 'false');
+  const setArrows = (i: number) => {
+    prevBtn?.setAttribute('aria-disabled', i <= 0 ? 'true' : 'false');
+    nextBtn?.setAttribute('aria-disabled', i >= slides.length - 1 ? 'true' : 'false');
   };
 
   const frame = () => {
@@ -74,24 +90,36 @@ if (root && track) {
   const schedule = () => { if (!raf) raf = requestAnimationFrame(frame); };
 
   const go = (i: number) => {
-    target = Math.max(0, Math.min(slides.length - 1, i));
-    track.scrollTo({ left: centerOf(slides[target]) - track.clientWidth / 2, behavior: rm.matches ? 'auto' : 'smooth' });
-    setArrows();
+    pending = Math.max(0, Math.min(slides.length - 1, i));
+    setArrows(pending);
+    track.scrollTo({ left: centerOf(slides[pending]) - track.clientWidth / 2, behavior: rm.matches ? 'auto' : 'smooth' });
   };
 
+  // Once scrolling has genuinely finished (including any CSS scroll-snap settling, or a native
+  // touch swipe that never went through `go()` at all), drop `pending` and resync the arrows to
+  // wherever the track actually landed. `nearest()` reads the real position at that moment, so it
+  // is correct however long settling actually took, on Safari as much as anywhere else.
+  const settle = () => { pending = null; setArrows(nearest()); };
+
   track.addEventListener('scroll', schedule, { passive: true });
-  // Once scrolling has genuinely finished (including any CSS scroll-snap settling), resync target
-  // to wherever it actually landed, so a stray earlier target doesn't leave an arrow wrongly
-  // disabled. `scrollend` (unlike a fixed-delay debounce) only fires once the browser itself is
-  // sure nothing is still moving, so it stays correct even when frames are dropped under load.
-  track.addEventListener('scrollend', () => { target = active; setArrows(); }, { passive: true });
+  if ('onscrollend' in window) {
+    track.addEventListener('scrollend', settle);
+  } else {
+    // Safari (all of it, including iOS) never fires `scrollend`, so fall back to a debounce.
+    // Unlike a resync that trusts a stored index, `settle` re-reads the real scroll position, so a
+    // debounce firing early or late under load still lands on the correct slide.
+    track.addEventListener('scroll', () => {
+      clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(settle, 180);
+    }, { passive: true });
+  }
   addEventListener('resize', schedule, { passive: true });
-  prevBtn?.addEventListener('click', () => go(target - 1));
-  nextBtn?.addEventListener('click', () => go(target + 1));
+  prevBtn?.addEventListener('click', () => go((pending ?? nearest()) - 1));
+  nextBtn?.addEventListener('click', () => go((pending ?? nearest()) + 1));
   track.addEventListener('keydown', (e) => {
     if (e.altKey || e.ctrlKey || e.metaKey) return;
-    if (e.key === 'ArrowRight') { e.preventDefault(); go(target + 1); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); go(target - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go((pending ?? nearest()) + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); go((pending ?? nearest()) - 1); }
     else if (e.key === 'Home') { e.preventDefault(); go(0); }
     else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
   });
@@ -151,7 +179,7 @@ if (root && track) {
     preload.observe(root);
   }
 
-  setArrows();
+  setArrows(0);
   frame();
 }
 
