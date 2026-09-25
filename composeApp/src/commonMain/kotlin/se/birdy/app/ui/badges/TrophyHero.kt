@@ -48,7 +48,7 @@ fun TrophyHero(
                 )
             }
             Spacer(Modifier.height(8.dp))
-            MicroLabel(stringResource(Res.string.trophy_hero_recent_label))
+            MicroLabel(stringResource(Res.string.trophy_hero_recent_label), showRule = false)
             Text(
                 text = formatBadgeFullDate(hero.unlockedAt, zone, locale),
                 color = MarginaliaInk,

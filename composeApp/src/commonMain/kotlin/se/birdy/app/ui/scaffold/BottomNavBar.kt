@@ -3,6 +3,7 @@ package se.birdy.app.ui.scaffold
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,7 +12,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.LibraryBooks
@@ -26,7 +29,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
@@ -48,7 +52,8 @@ import birdy_bird_scanner.composeapp.generated.resources.tab_map
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.Hairline
+import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.PaperBottomBar
 import kotlin.reflect.KClass
 
@@ -93,7 +98,14 @@ fun BottomNavBar(navController: NavHostController) {
             Modifier
                 .fillMaxWidth()
                 .background(PaperBottomBar)
-                .windowInsetsPadding(WindowInsets.navigationBars)
+                .drawBehind {
+                    drawLine(
+                        color = Hairline,
+                        start = Offset(0f, 0f),
+                        end = Offset(size.width, 0f),
+                        strokeWidth = 1.dp.toPx(),
+                    )
+                }.windowInsetsPadding(WindowInsets.navigationBars)
                 .height(72.dp)
                 .padding(horizontal = 8.dp, vertical = 6.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
@@ -136,12 +148,11 @@ private fun TabCell(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val color = if (selected) AccentCopper else MarginaliaInk.copy(alpha = 0.6f)
+    val color = if (selected) AccentCopper else InkMuted
     Column(
         modifier =
             modifier
                 .clip(RoundedCornerShape(50))
-                .background(if (selected) AccentCopper.copy(alpha = 0.12f) else Color.Transparent)
                 .clickable(onClick = onClick)
                 .padding(vertical = 6.dp)
                 .semantics(mergeDescendants = true) {
@@ -159,6 +170,15 @@ private fun TabCell(
             color = color,
             fontSize = 10.sp,
             fontWeight = if (selected) FontWeight.W700 else FontWeight.W500,
+        )
+        Spacer(Modifier.height(3.dp))
+        // Reserve the dot's footprint on every tab (selected or not) so the row of
+        // labels stays vertically aligned instead of jumping when selection changes.
+        Box(
+            modifier =
+                Modifier
+                    .size(4.dp)
+                    .let { m -> if (selected) m.clip(CircleShape).background(AccentCopper) else m },
         )
     }
 }
