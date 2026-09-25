@@ -19,6 +19,7 @@
     "assets:verify": "node tools/store-assets/verify.mjs --locale=en",
     "assets:verify:sv": "node tools/store-assets/verify.mjs --locale=sv",
     "assets:og": "node tools/generate-og.mjs",
+    "assets:coverage": "node tools/render-coverage-fallback.mjs",
     "assets:store": "npm run assets:clean && npm run assets:render && npm run assets:render:sv && npm run assets:verify && npm run assets:verify:sv"
   },
   "dependencies": {

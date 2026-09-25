@@ -186,22 +186,17 @@
       { "k": "Säsong", "h": "Ett år i fält", "p": "Stora siffror och lugna diagram. Se mönstren i dina fynd, månad för månad.", "premium": true }
     ]
   },
-  "inside": {
-    "eyebrow": "INUTI APPEN",
-    "headline": "Hela fågelguiden, *i fickan.*",
-    "sub": "Sök, lär dig, spara och titta tillbaka. Det fungerar även utan täckning.",
+  "guide": {
+    "kicker": "Uppslagsverket",
+    "headline": "Europas fåglar, *i fickan.*",
+    "lead": "839 arter med foton, beskrivningar och utbredning. Allt ligger i telefonen, så guiden fungerar även där täckningen tar slut.",
     "stats": [
-      { "value": "839", "label": "arter", "caption": "från vanliga till sällsynta" },
-      { "value": "34", "label": "stämplar", "caption": "tjänas in genom att hitta fåglar" },
-      { "value": "0", "label": "konton", "caption": "din dagbok stannar hos dig" }
-    ]
-  },
-  "coverage": {
-    "eyebrow": "Täckning",
-    "headline": "Där Birdy *funkar*",
-    "sub": "Byggd kring Europas fåglar, från trädgårdens stammisar till sällsynta möten.",
-    "caption": "839 arter i Europa.",
-    "fallbackAlt": "Karta över Europa ifylld i koppar, markerar var Birdy funkar idag",
+      { "value": "839", "label": "arter" },
+      { "value": "34", "label": "märken" },
+      { "value": "0", "label": "konton" }
+    ],
+    "mapCaption": "Birdy känner igen fåglar i hela Europa, från trädgårdens stammisar till sällsynta gäster.",
+    "fallbackAlt": "Karta över Europa där länderna som Birdy täcker är ifyllda i rost",
     "attribution": "© MapTiler © OpenStreetMap contributors"
   },
   "premium": {

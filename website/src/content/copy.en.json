@@ -186,22 +186,17 @@
       { "k": "Season", "h": "A year in the field", "p": "Big numbers and calm charts. See the patterns in your sightings, month by month.", "premium": true }
     ]
   },
-  "inside": {
-    "eyebrow": "INSIDE THE APP",
-    "headline": "The whole field guide, *in your pocket.*",
-    "sub": "Search, learn, save and revisit. It works without a signal.",
+  "guide": {
+    "kicker": "The field guide",
+    "headline": "Europe's birds, *in your pocket.*",
+    "lead": "839 species with photos, descriptions and range. Everything lives on your phone, so the guide keeps working where the signal ends.",
     "stats": [
-      { "value": "839", "label": "species", "caption": "from common to rare" },
-      { "value": "34", "label": "stamps", "caption": "earned by finding birds" },
-      { "value": "0", "label": "accounts", "caption": "your journal stays yours" }
-    ]
-  },
-  "coverage": {
-    "eyebrow": "Coverage",
-    "headline": "Where Birdy *works*",
-    "sub": "Built around Europe's birds, from familiar garden visitors to rare encounters.",
-    "caption": "839 species across Europe.",
-    "fallbackAlt": "Map of Europe filled in copper, marking where Birdy works today",
+      { "value": "839", "label": "species" },
+      { "value": "34", "label": "badges" },
+      { "value": "0", "label": "accounts" }
+    ],
+    "mapCaption": "Birdy recognises birds across Europe, from garden regulars to rare visitors.",
+    "fallbackAlt": "Map of Europe with the countries Birdy covers filled in rust",
     "attribution": "© MapTiler © OpenStreetMap contributors"
   },
   "premium": {

@@ -1,0 +1,151 @@
+---
+import { type Locale, getCopy } from '../lib/i18n';
+
+interface Props { locale: Locale }
+const t = getCopy(Astro.props.locale);
+---
+
+<figure class="mapbox" data-reveal>
+  <div class="map" data-coverage-map role="img" aria-label={t.guide.fallbackAlt}>
+    <img class="fallback" src="/coverage/coverage-fallback.webp" alt="" width="1600" height="700" loading="lazy" decoding="async" />
+    <span class="attrib">{t.guide.attribution}</span>
+  </div>
+</figure>
+
+<style>
+  .mapbox { margin: 44px 0 0; }
+  .map { position: relative; aspect-ratio: 16 / 7; border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 1px var(--line), 0 20px 44px rgba(31, 42, 25, .12); background: #EFE6D3; cursor: grab; }
+  .map:active { cursor: grabbing; }
+  .fallback { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; display: block; }
+  .attrib { position: absolute; left: 10px; bottom: 8px; z-index: 3; font-size: 10px; color: var(--muted); background: rgba(255, 250, 241, .85); padding: 2px 6px; border-radius: 6px; }
+  /* MapLibre injects its canvas into .map; let it cover the fallback. */
+  .map :global(.maplibregl-canvas) { position: absolute; inset: 0; }
+  @media (max-width: 760px) { .map { aspect-ratio: 4 / 3; } }
+</style>
+
+<script>
+  import 'maplibre-gl/dist/maplibre-gl.css';
+
+  const KEY = import.meta.env.PUBLIC_MAPTILER_KEY as string | undefined;
+  // Field journal colours (spec §5.6): paper, ink and rust, with the pins as rust seals and a moss bird.
+  const PAPER = '#F1E8D6';
+  const WATER = '#D9CCAF';
+  const INK = '#26301F';
+  const RUST = '#9A4526';
+  const RUST_DEEP = '#72301A';
+  const MOSS = '#1F2A19';
+  const BOUNDS: [[number, number], [number, number]] = [[-25, 34], [42, 71.5]];
+
+  const container = document.querySelector<HTMLElement>('[data-coverage-map]');
+  if (container && KEY) {
+    const io = new IntersectionObserver((entries, obs) => {
+      if (entries.some((e) => e.isIntersecting)) { obs.disconnect(); initMap(container, KEY); }
+    }, { rootMargin: '200px' });
+    io.observe(container);
+  }
+
+  async function initMap(el: HTMLElement, key: string) {
+    const maplibregl = (await import('maplibre-gl')).default;
+    // Localise MapLibre's cooperative-gesture hint on /sv/.
+    const localeOverride = document.documentElement.lang === 'sv' ? {
+      'CooperativeGesturesHandler.WindowsHelpText': 'Använd Ctrl + scroll för att zooma kartan',
+      'CooperativeGesturesHandler.MacHelpText': 'Använd ⌘ + scroll för att zooma kartan',
+      'CooperativeGesturesHandler.MobileHelpText': 'Använd två fingrar för att flytta kartan',
+    } : undefined;
+    const map = new maplibregl.Map({
+      container: el,
+      attributionControl: false,
+      bounds: BOUNDS,
+      fitBoundsOptions: { padding: 12 },
+      minZoom: 1.1,
+      maxZoom: 8,
+      dragRotate: false,
+      pitchWithRotate: false,
+      touchPitch: false,
+      cooperativeGestures: true,
+      locale: localeOverride,
+      style: `https://api.maptiler.com/maps/dataviz-light/style.json?key=${key}`,
+    });
+    map.touchZoomRotate.disableRotation();
+
+    // The box gets its height from aspect-ratio after layout; keep the canvas in sync.
+    const fit = () => { try { map.resize(); } catch { /* map not ready yet */ } };
+    requestAnimationFrame(fit);
+    new ResizeObserver(fit).observe(el);
+
+    map.on('load', () => {
+      fit();
+      recolour(map);
+
+      let firstSymbol: string | undefined;
+      for (const l of map.getStyle().layers) { if (l.type === 'symbol') { firstSymbol = l.id; break; } }
+
+      fetch('/coverage/coverage-europe.geojson')
+        .then((r) => r.json())
+        .then((gj) => {
+          map.addSource('coverage', { type: 'geojson', data: gj });
+          map.addLayer({ id: 'coverage-fill', type: 'fill', source: 'coverage', paint: { 'fill-color': RUST, 'fill-opacity': 0.42 } }, firstSymbol);
+          map.addLayer({ id: 'coverage-line', type: 'line', source: 'coverage', paint: { 'line-color': RUST_DEEP, 'line-width': 1, 'line-opacity': 0.9 } }, firstSymbol);
+        })
+        .catch((err) => console.warn('coverage fill failed to load', err));
+
+      const bird = new Image();
+      bird.onload = () => {
+        const data = buildSeal(bird);
+        if (data && !map.hasImage('seal')) map.addImage('seal', data, { pixelRatio: 2 });
+        // Decorative sample pins (NOT real user finds): Stockholm, Berlin, Paris, Rome, Madrid.
+        const pinCoords = [[18.07, 59.33], [13.4, 52.52], [2.35, 48.85], [12.49, 41.9], [-3.7, 40.42]];
+        map.addSource('finds', { type: 'geojson', data: {
+          type: 'FeatureCollection',
+          features: pinCoords.map((c) => ({ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: c } })),
+        } });
+        map.addLayer({ id: 'finds', type: 'symbol', source: 'finds', layout: { 'icon-image': 'seal', 'icon-anchor': 'bottom', 'icon-allow-overlap': true, 'icon-size': 0.55 } });
+      };
+      bird.src = '/coverage/seal-bird.png';
+    });
+  }
+
+  function buildSeal(birdImg: HTMLImageElement) {
+    const S = 2, R = 40, ring = 6, pt = 18, pad = 6;
+    const w = 2 * (R + pad), h = 2 * (R + pad) + pt;
+    const cvs = document.createElement('canvas');
+    cvs.width = w * S; cvs.height = h * S;
+    const ctx = cvs.getContext('2d');
+    if (!ctx) return null;
+    ctx.scale(S, S);
+    const cx = w / 2, cy = R + pad;
+    ctx.fillStyle = RUST;
+    ctx.beginPath(); ctx.moveTo(cx - 7, cy + R - 2); ctx.lineTo(cx + 7, cy + R - 2); ctx.lineTo(cx, cy + R + pt); ctx.closePath(); ctx.fill();
+    const grad = ctx.createRadialGradient(cx - R * 0.25, cy - R * 0.3, R * 0.2, cx, cy, R * 1.25);
+    grad.addColorStop(0, '#FFF8EE'); grad.addColorStop(1, '#EFE6D3');
+    ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.fill();
+    ctx.lineWidth = ring; ctx.strokeStyle = RUST; ctx.beginPath(); ctx.arc(cx, cy, R - ring / 2, 0, 7); ctx.stroke();
+    const tint = document.createElement('canvas'); tint.width = birdImg.width; tint.height = birdImg.height;
+    const tintCtx = tint.getContext('2d');
+    if (tintCtx) {
+      tintCtx.drawImage(birdImg, 0, 0);
+      tintCtx.globalCompositeOperation = 'source-in';
+      tintCtx.fillStyle = MOSS; tintCtx.fillRect(0, 0, tint.width, tint.height);
+      const bw = R * 1.25, bh = bw * (birdImg.height / birdImg.width);
+      ctx.drawImage(tint, cx - bw / 2, cy - bh / 2, bw, bh);
+    }
+    return ctx.getImageData(0, 0, cvs.width, cvs.height);
+  }
+
+  function recolour(map: { getStyle: () => { layers: { id: string; type: string }[] }; setPaintProperty: (id: string, prop: string, value: unknown) => void }) {
+    for (const l of map.getStyle().layers) {
+      try {
+        if (l.type === 'background') map.setPaintProperty(l.id, 'background-color', PAPER);
+        else if (l.type === 'fill') {
+          if (/water|sea|ocean|lake|river|bath/i.test(l.id)) map.setPaintProperty(l.id, 'fill-color', WATER);
+          else { map.setPaintProperty(l.id, 'fill-color', PAPER); map.setPaintProperty(l.id, 'fill-opacity', 1); }
+        } else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', INK);
+        else if (l.type === 'symbol') {
+          map.setPaintProperty(l.id, 'text-color', INK);
+          map.setPaintProperty(l.id, 'text-halo-color', PAPER);
+          map.setPaintProperty(l.id, 'text-halo-width', 1.4);
+        }
+      } catch { /* layer without that paint property */ }
+    }
+  }
+</script>
