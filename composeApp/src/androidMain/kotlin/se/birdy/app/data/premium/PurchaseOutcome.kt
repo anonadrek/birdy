@@ -59,9 +59,10 @@ internal fun entitlementChanged(
  * ([PremiumBillingClient]'s marker of fresh listener evidence that a racing
  * [PremiumBillingClient.queryPurchases] must not overwrite with an older answer): 1 whenever it
  * actually resolved to Active, 0 otherwise. Deliberately independent of [entitlementChanged] —
- * this listener can legitimately fire more than once for the same purchase (e.g. Billing 8
- * echoing a non-OK launchBillingFlow result back to the listener), and even a repeat grant of an
- * unchanged tier is still newer evidence than a query that started before it landed, so
+ * a grant can repeat an entitlement that is already applied (e.g. a foreground re-check after a
+ * 3-D Secure step stopped the activity applied the purchase before the listener delivered it),
+ * and even a repeat grant of an unchanged tier is still newer evidence than a query that started
+ * before it landed, so
  * suppressing that racing query is free (state is already Active for that tier) while failing to
  * suppress it could let a stale query write Free over a real entitlement.
  */

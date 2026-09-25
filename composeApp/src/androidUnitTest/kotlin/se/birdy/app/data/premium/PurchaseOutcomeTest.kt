@@ -33,7 +33,8 @@ class PurchaseOutcomeTest {
 
     @Test
     fun `unspecified purchase state is an error`() {
-        val candidate = OutcomeCandidate(purchaseState = Purchase.PurchaseState.UNSPECIFIED_STATE, signatureOk = false)
+        // signatureOk = true so the test fails if the PURCHASED check is ever dropped from the success branch.
+        val candidate = OutcomeCandidate(purchaseState = Purchase.PurchaseState.UNSPECIFIED_STATE, signatureOk = true)
         assertEquals(
             PurchaseResult.Error("No verified purchase in callback"),
             purchaseUpdateOutcome(listOf(candidate)),

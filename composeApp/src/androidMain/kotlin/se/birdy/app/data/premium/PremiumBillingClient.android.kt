@@ -353,8 +353,8 @@ actual class PremiumBillingClient(
             .filter { (p, _) -> p.purchaseToken in needsAck }
             .forEach { (p, _) -> scope.launch { acknowledgeAndLog(client, p) } }
 
-        // Prices are otherwise only fetched once at connect() — an offline cold start would
-        // leave the purchase screen on "Loading price…" with a disabled buy button until restart.
+        // The connect-time fetch retries for ~22 s; this restart covers longer outages (an offline
+        // cold start would otherwise leave "Loading price…" and a disabled buy button until restart).
         val missingPrice = _formattedPrices.value.yearly == null || _formattedPrices.value.lifetime == null
         if (missingPrice && productsJob?.isActive != true) {
             productsJob = scope.launch { queryProducts() }
