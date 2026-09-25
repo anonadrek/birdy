@@ -63,7 +63,7 @@ const first = slides[0];
     <button class="arrow" type="button" data-next aria-label={t.tour.next}><Icon name="arrow-right" /></button>
   </div>
   <noscript>
-    <ol class="cap-list">{slides.map((s) => <li><span class="kick">{s.k}</span><b>{s.h}</b><span>{s.p}</span></li>)}</ol>
+    <ol class="cap-list">{slides.map((s) => <li><span class="kick kick--center">{s.k}{s.premium && <span class="pr2">{t.tour.premium}</span>}</span><b>{s.h}</b><span>{s.p}</span></li>)}</ol>
   </noscript>
   <div class="rail" style={`--n:${slides.length};--p:0`} data-rail aria-hidden="true"><span></span></div>
 </section>
@@ -95,7 +95,7 @@ const first = slides[0];
   .cap-inner:global(.out) { opacity: 0; transform: translateY(6px); }
   .cap-sizer { visibility: hidden; pointer-events: none; }
   .cap .kick { margin-bottom: 6px; }
-  .pr2 { color: var(--brass-ink); background: var(--brass-hi); padding: 2px 7px; border-radius: 10px; letter-spacing: .1em; font-size: 8.5px; margin-left: 4px; }
+  .tour :global(.pr2) { color: var(--brass-ink); background: var(--brass-hi); padding: 2px 7px; border-radius: 10px; letter-spacing: .1em; font-size: 8.5px; margin-left: 4px; }
   .cap h3, .cap-h { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1.15; color: var(--cream); text-wrap: balance; }
   .cap-text { margin: 6px 0 0; font-size: 14px; color: rgba(242, 234, 220, .72); line-height: 1.5; }
   .rail { position: relative; width: 200px; height: 2px; margin: 20px auto 0; background: rgba(242, 234, 220, .15); border-radius: 2px; overflow: hidden; }
@@ -105,8 +105,8 @@ const first = slides[0];
   /* No-JS fallback: the scroller still works with native horizontal scrolling, but the shared
      caption can only ever show the first slide, so read the copy as a plain list instead and
      drop the now-nonfunctional arrows/caption/rail. */
-  .tour :global(.cap-list) { list-style: none; margin: 0 auto; padding: 0; max-width: 640px; text-align: center; display: grid; gap: 28px; }
+  .tour :global(.cap-list) { list-style: none; margin: 0 auto; padding: 0 20px; max-width: 640px; text-align: center; display: grid; gap: 28px; }
   .tour :global(.cap-list b) { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1.15; color: var(--cream); margin: 4px 0 6px; text-wrap: balance; }
-  .tour :global(.cap-list li span:last-child) { display: block; font-size: 14px; color: rgba(242, 234, 220, .72); line-height: 1.5; }
+  .tour :global(.cap-list li > span:last-child) { display: block; font-size: 14px; color: rgba(242, 234, 220, .72); line-height: 1.5; }
   :global(html:not(.js)) .foot, :global(html:not(.js)) .rail { display: none; }
 </style>

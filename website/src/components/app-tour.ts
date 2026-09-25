@@ -83,6 +83,9 @@ if (root && track) {
         s.style.transform = `translate3d(0, ${(a * 22).toFixed(2)}px, 0) scale(${(1 - a * 0.13).toFixed(4)}) rotate(${(Math.max(-1.4, Math.min(1.4, d)) * -2.2).toFixed(2)}deg)`;
         s.style.opacity = (1 - Math.min(a, 1) * 0.55).toFixed(3);
       });
+    } else {
+      // Reduced motion, possibly switched on mid-visit: drop any depth styling written earlier.
+      slides.forEach((s) => { s.style.transform = ''; s.style.opacity = ''; });
     }
     rail?.style.setProperty('--p', (progress * (slides.length - 1)).toFixed(4));
     if (best !== active) { active = best; setCaption(best); }
@@ -114,6 +117,11 @@ if (root && track) {
     }, { passive: true });
   }
   addEventListener('resize', schedule, { passive: true });
+  rm.addEventListener('change', schedule);
+  // A native gesture interrupts any arrow-started scroll, so the next press builds on the real position.
+  track.addEventListener('pointerdown', () => { pending = null; }, { passive: true });
+  track.addEventListener('wheel', () => { pending = null; }, { passive: true });
+  track.addEventListener('touchstart', () => { pending = null; }, { passive: true });
   prevBtn?.addEventListener('click', () => go((pending ?? nearest()) - 1));
   nextBtn?.addEventListener('click', () => go((pending ?? nearest()) + 1));
   track.addEventListener('keydown', (e) => {
