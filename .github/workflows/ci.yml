@@ -37,7 +37,13 @@ jobs:
         run: ./gradlew detekt --stacktrace
 
       - name: Unit tests (shared modules)
-        run: ./gradlew :shared:domain:jvmTest :shared:ml:jvmTest --stacktrace
+        run: ./gradlew :shared:domain:jvmTest :shared:ml:jvmTest :shared:datastore:jvmTest --stacktrace
+
+      # composeApp's JVM suite: commonTest + androidUnitTest (billing decisions, SV/EN string
+      # parity, the truthful-Premium-copy guard, the BirdNET licence guard). Without this step
+      # the androidUnitTest guards only ever ran locally.
+      - name: Unit tests (composeApp)
+        run: ./gradlew :composeApp:testDebugUnitTest --stacktrace
 
       - name: Validate species data
         run: ./gradlew :shared:content:validateSpeciesData --stacktrace

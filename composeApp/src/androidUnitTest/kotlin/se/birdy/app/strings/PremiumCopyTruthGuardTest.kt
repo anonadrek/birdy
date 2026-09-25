@@ -36,6 +36,9 @@ class PremiumCopyTruthGuardTest {
             "audio",
         )
 
+    /** Every string that sells Premium: the purchase screen and teasers, the Settings hero card, the map teaser. */
+    private val premiumCopyPrefixes = listOf("premium_", "settings_hero_", "map_teaser_")
+
     @Test
     fun `premium strings never promise features that premium does not unlock`() {
         val offenders =
@@ -45,7 +48,7 @@ class PremiumCopyTruthGuardTest {
             ).flatMap { (file, forbidden) ->
                 StringsXml
                     .strings(file)
-                    .filterKeys { it.startsWith("premium_") }
+                    .filterKeys { key -> premiumCopyPrefixes.any { key.startsWith(it) } }
                     .flatMap { (key, value) ->
                         forbidden.filter { value.lowercase().contains(it) }.map { "${file.parentFile?.name}/$key: '$it'" }
                     }
