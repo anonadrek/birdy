@@ -28,7 +28,11 @@ class PremiumViewModel(
         viewModelScope.launch {
             repository.state.collect { backend ->
                 _state.update {
-                    val justActivated = it.awaitingActivation && backend is PremiumState.Active
+                    // A transition observed while this screen is open — not just an already-active
+                    // state seen at construction (the initial _state already mirrors that value),
+                    // and not gated on this screen having launched the purchase itself: see
+                    // PremiumUiState.purchaseCompleted for why any Free→Active transition counts.
+                    val justActivated = backend is PremiumState.Active && it.backendState !is PremiumState.Active
                     it.copy(
                         backendState = backend,
                         purchaseCompleted = it.purchaseCompleted || justActivated,
@@ -55,6 +59,10 @@ class PremiumViewModel(
 
     fun purchase() {
         if (!_state.value.canPurchase) return
+        // Captured right next to the guard, not read again inside the coroutine below — so the
+        // tier bought is always the one whose price canPurchase just checked, independent of
+        // whatever the dispatcher does with selectedTier between here and launchPurchase running.
+        val tier = _state.value.selectedTier
         _state.update {
             it.copy(purchaseInFlight = true, awaitingActivation = true, purchaseNotice = null)
         }
@@ -64,7 +72,7 @@ class PremiumViewModel(
             // caught and turned into the same FAILED notice a reported error would produce.
             @Suppress("TooGenericExceptionCaught")
             try {
-                val result = launchPurchase(_state.value.selectedTier)
+                val result = launchPurchase(tier)
                 val notice =
                     when (result) {
                         PurchaseResult.Pending -> PurchaseNotice.PENDING

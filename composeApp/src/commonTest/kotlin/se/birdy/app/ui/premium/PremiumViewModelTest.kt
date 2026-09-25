@@ -229,6 +229,20 @@ class PremiumViewModelTest {
         }
 
     @Test
+    fun `premium turning on while the screen is open completes even without a purchase from this screen`() =
+        runTest {
+            val repo = FakePremiumRepository()
+            val vm = PremiumViewModel(repo, formattedPricesFlow = prices)
+            assertEquals(false, vm.state.first().purchaseCompleted)
+
+            // No purchase() call from this screen — e.g. the process died during 3-D Secure and
+            // this VM was created fresh for the restored route, or a pending purchase from an
+            // earlier session just completed.
+            repo.markPurchased(PremiumTier.LIFETIME)
+            assertEquals(true, vm.state.first().purchaseCompleted)
+        }
+
+    @Test
     fun `purchase is blocked until the selected price is loaded from Play`() =
         runTest {
             val noPrices = MutableStateFlow(FormattedPrices())
@@ -245,16 +259,70 @@ class PremiumViewModelTest {
             assertEquals(false, vm.state.first().canPurchase)
             vm.purchase()
             assertEquals(false, launched)
+            assertEquals(false, vm.state.first().awaitingActivation)
+            assertEquals(false, vm.state.first().purchaseInFlight)
         }
 
     @Test
     fun `lifetime can be bought when only the lifetime price is loaded`() =
         runTest {
             val onlyLifetime = MutableStateFlow(FormattedPrices(yearly = null, lifetime = "499 kr"))
+            var launchedTier: PremiumTier? = null
             val vm =
-                PremiumViewModel(FakePremiumRepository(), launchPurchase = { PurchaseResult.Success }, formattedPricesFlow = onlyLifetime)
+                PremiumViewModel(
+                    FakePremiumRepository(),
+                    launchPurchase = { tier ->
+                        launchedTier = tier
+                        PurchaseResult.Success
+                    },
+                    formattedPricesFlow = onlyLifetime,
+                )
             assertEquals(false, vm.state.first().canPurchase)
             vm.selectTier(PremiumTier.LIFETIME)
+            assertEquals(true, vm.state.first().canPurchase)
+            vm.purchase()
+            assertEquals(PremiumTier.LIFETIME, launchedTier)
+        }
+
+    @Test
+    fun `a second tap while a purchase is in flight launches only once`() =
+        runTest {
+            val repo = FakePremiumRepository()
+            val gate = CompletableDeferred<PurchaseResult>()
+            var callCount = 0
+            val vm =
+                PremiumViewModel(
+                    repo,
+                    launchPurchase = {
+                        callCount++
+                        gate.await()
+                    },
+                    formattedPricesFlow = prices,
+                )
+
+            vm.purchase()
+            vm.purchase()
+            assertEquals(1, callCount)
+            assertEquals(false, vm.state.value.canPurchase)
+
+            gate.complete(PurchaseResult.UserCancelled)
+            assertEquals(false, vm.state.first().purchaseInFlight)
+            assertEquals(true, vm.state.first().canPurchase)
+        }
+
+    @Test
+    fun `prices arriving after the screen opened enable buying`() =
+        runTest {
+            val lateArrivingPrices = MutableStateFlow(FormattedPrices())
+            val vm =
+                PremiumViewModel(
+                    FakePremiumRepository(),
+                    launchPurchase = { PurchaseResult.Success },
+                    formattedPricesFlow = lateArrivingPrices,
+                )
+            assertEquals(false, vm.state.first().canPurchase)
+
+            lateArrivingPrices.value = FormattedPrices(yearly = "199 kr", lifetime = "499 kr")
             assertEquals(true, vm.state.first().canPurchase)
         }
 
