@@ -59,6 +59,7 @@ class PremiumViewModelTest {
                         repo.markPurchased(tier)
                         PurchaseResult.Success
                     },
+                    formattedPricesFlow = prices,
                 )
             vm.selectTier(PremiumTier.LIFETIME)
             vm.purchase()
@@ -225,5 +226,56 @@ class PremiumViewModelTest {
             // (e.g. a pending purchase from another attempt completing) still finishes the flow.
             repo.markPurchased(PremiumTier.LIFETIME)
             assertEquals(true, vm.state.first().purchaseCompleted)
+        }
+
+    @Test
+    fun `purchase is blocked until the selected price is loaded from Play`() =
+        runTest {
+            val noPrices = MutableStateFlow(FormattedPrices())
+            var launched = false
+            val vm =
+                PremiumViewModel(
+                    FakePremiumRepository(),
+                    launchPurchase = {
+                        launched = true
+                        PurchaseResult.Success
+                    },
+                    formattedPricesFlow = noPrices,
+                )
+            assertEquals(false, vm.state.first().canPurchase)
+            vm.purchase()
+            assertEquals(false, launched)
+        }
+
+    @Test
+    fun `lifetime can be bought when only the lifetime price is loaded`() =
+        runTest {
+            val onlyLifetime = MutableStateFlow(FormattedPrices(yearly = null, lifetime = "499 kr"))
+            val vm =
+                PremiumViewModel(FakePremiumRepository(), launchPurchase = { PurchaseResult.Success }, formattedPricesFlow = onlyLifetime)
+            assertEquals(false, vm.state.first().canPurchase)
+            vm.selectTier(PremiumTier.LIFETIME)
+            assertEquals(true, vm.state.first().canPurchase)
+        }
+
+    @Test
+    fun `an already active buyer cannot start another purchase`() =
+        runTest {
+            var launched = false
+            val repo = FakePremiumRepository(PremiumState.Active(PremiumTier.YEARLY, Clock.System.now()))
+            val vm =
+                PremiumViewModel(
+                    repo,
+                    launchPurchase = {
+                        launched = true
+                        PurchaseResult.Success
+                    },
+                    formattedPricesFlow = prices,
+                )
+            vm.selectTier(PremiumTier.LIFETIME)
+            assertEquals(false, vm.state.first().canPurchase)
+            vm.purchase()
+            assertEquals(false, launched)
+            assertEquals(false, vm.state.first().awaitingActivation)
         }
 }

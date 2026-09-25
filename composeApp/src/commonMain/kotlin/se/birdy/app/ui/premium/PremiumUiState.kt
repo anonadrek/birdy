@@ -20,7 +20,23 @@ data class PremiumUiState(
     val purchaseCompleted: Boolean = false,
     /** Feedback for the last purchase attempt's result; cleared at the start of the next attempt. */
     val purchaseNotice: PurchaseNotice? = null,
-)
+) {
+    /** Price for the currently selected tier, straight from Play. Null until loaded. */
+    val selectedPrice: String?
+        get() =
+            when (selectedTier) {
+                PremiumTier.YEARLY -> formattedYearlyPrice
+                PremiumTier.LIFETIME -> formattedLifetimePrice
+            }
+
+    /**
+     * Never let the user buy something whose price we haven't shown them, and never start a
+     * second purchase for someone Play already reports as active (a yearly subscriber buying
+     * lifetime would keep paying for the subscription).
+     */
+    val canPurchase: Boolean
+        get() = selectedPrice != null && !purchaseInFlight && backendState !is PremiumState.Active
+}
 
 /** Short-lived feedback shown on the purchase screen after a purchase attempt. */
 enum class PurchaseNotice {

@@ -54,7 +54,7 @@ class PremiumViewModel(
     }
 
     fun purchase() {
-        if (_state.value.purchaseInFlight) return
+        if (!_state.value.canPurchase) return
         _state.update {
             it.copy(purchaseInFlight = true, awaitingActivation = true, purchaseNotice = null)
         }

@@ -470,13 +470,11 @@
     <string name="premium_feature_badges_title">7 premium-fältmärken</string>
     <string name="premium_feature_badges_sub">Exklusiva stämplar att jaga</string>
     <string name="premium_tier_yearly_title">1 år</string>
-    <string name="premium_tier_yearly_price">199 kr / år</string>
-    <string name="premium_tier_yearly_sub">~17 kr / mån</string>
     <string name="premium_tier_lifetime_title">För alltid</string>
-    <string name="premium_tier_lifetime_price">499 kr · engångsköp</string>
-    <string name="premium_auto_renew_disclosure">Förnyas årligen 199 kr · Avbryt när som helst.</string>
+    <string name="premium_auto_renew_disclosure">Förnyas årligen till %1$s. Avsluta när som helst i Google Play.</string>
+    <string name="premium_lifetime_note">Engångsköp. Ingen prenumeration.</string>
+    <string name="premium_price_loading">Hämtar pris…</string>
     <string name="premium_cta_primary">Fortsätt</string>
-    <string name="premium_cta_subtext">Avbryt när som helst.</string>
     <string name="premium_purchase_pending">Betalningen väntar. Premium slås på när Google Play har bekräftat den.</string>
     <string name="premium_purchase_failed">Köpet gick inte igenom. Försök igen om en stund.</string>
     <string name="premium_attribution_format">Foto: Wikimedia / %1$s · %2$s</string>
