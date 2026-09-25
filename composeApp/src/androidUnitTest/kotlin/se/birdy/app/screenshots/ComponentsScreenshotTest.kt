@@ -3,8 +3,11 @@ package se.birdy.app.screenshots
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
@@ -14,7 +17,12 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
+import se.birdy.app.ui.components.BirdyPremiumButton
+import se.birdy.app.ui.components.BirdyPrimaryButton
 import se.birdy.app.ui.components.MiniStamp
+import se.birdy.app.ui.components.PaperSheet
+import se.birdy.app.ui.components.PhotoHero
+import se.birdy.app.ui.components.SectionCard
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.theme.Brass
@@ -53,6 +61,31 @@ class ComponentsScreenshotTest {
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     MiniStamp(number = 12)
                     MiniStamp(number = 4, size = 28.dp)
+                }
+            }
+        }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun building_blocks_sv() =
+        compose.captureScreen("components_blocks_sv") {
+            Column(Modifier.fillMaxWidth().paperBackground()) {
+                PhotoHero(
+                    kicker = "Dagens fågel",
+                    title = "Rödhake",
+                    subtitle = "finns nära dig nu.",
+                    metaStart = "Erithacus rubecula",
+                    metaEnd = "0 / 3 fångade",
+                    bottomPadding = 42.dp,
+                )
+                PaperSheet {
+                    BirdyPrimaryButton(text = "Starta kameran", onClick = {})
+                    Spacer(Modifier.height(10.dp))
+                    BirdyPremiumButton(text = "Fortsätt", onClick = {})
+                    Spacer(Modifier.height(10.dp))
+                    BirdyPrimaryButton(text = "Inaktiv", onClick = {}, enabled = false)
+                    Spacer(Modifier.height(10.dp))
+                    SectionCard { Text("Kort på papper") }
                 }
             }
         }

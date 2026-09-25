@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -14,10 +15,15 @@ import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
+import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.content.Locale
 
+// Already over threshold pre-1.3.0 (baselined); adding accentColor changes the baseline's
+// exact signature match, so this is a fresh, justified suppress rather than a baseline edit
+// (house rule: never extend detekt-baseline.xml).
+@Suppress("LongParameterList")
 @Composable
 fun BadgeRecentCard(
     localizedName: String,
@@ -29,6 +35,7 @@ fun BadgeRecentCard(
     zone: TimeZone,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    accentColor: Color = AccentCopper,
 ) {
     val caveat = rememberCaveat()
     Column(
@@ -37,6 +44,7 @@ fun BadgeRecentCard(
     ) {
         StampSeal(
             state = StampSealState.Unlocked(number = stampNumber, glyph = glyph, name = localizedName),
+            accentColor = accentColor,
             onClick = onClick,
         )
         Spacer(Modifier.height(4.dp))
