@@ -63,6 +63,7 @@ const jsonLd = {
     }] : []),
     ...((pathname === '/' || pathname === '/sv/') ? [{
       '@type': 'FAQPage',
+      inLanguage: locale,
       mainEntity: copy.faq.items.map((item) => ({
         '@type': 'Question',
         name: item.q,

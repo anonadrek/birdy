@@ -513,40 +513,69 @@ test.describe('bloggen', () => {
     await page.goto('/sv/');
     await expect(page.locator('.tour-head .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
   });
+
+  for (const [prefix, home] of [['/sv', '/sv/'], ['', '/']] as const) {
+    test(`länken till Så funkar det från inlägget pekar på en sektion som finns (${prefix || 'EN'})`, async ({ page }) => {
+      await page.goto(`${prefix}/blog/why-birdy/`);
+      const seeHow = page.locator('.aback a').last();
+      await expect(seeHow).toHaveAttribute('href', `${home}#how-it-works`);
+      await page.goto(home);
+      await expect(page.locator('#how-it-works')).toHaveCount(1);
+    });
+  }
 });
 
 test.describe('frågor, slutet och ordningen', () => {
-  test('startsidans sektioner kommer i rätt ordning', async ({ page }) => {
+  test('startsidans sektioner kommer i rätt ordning, med hero först', async ({ page }) => {
     for (const path of ['/sv/', '/']) {
       await page.goto(path);
+      await expect(page.locator('main > header.hero:first-child')).toHaveCount(1);
       const ids = await page.locator('main > section[id]').evaluateAll((els) => els.map((e) => e.id));
       expect(ids).toEqual(['how-it-works', 'journal', 'app', 'guide', 'premium', 'privacy', 'field-notes', 'faq', 'download']);
     }
   });
 
-  for (const [path, firstQ, headline] of [
-    ['/sv/', 'Fungerar Birdy utan täckning?', 'Ta med Birdy ut i fält.'],
-    ['/', 'Does Birdy work without a signal?', 'Take Birdy into the field.'],
+  for (const [path, firstQ, headline, kicker, sub] of [
+    ['/sv/', 'Fungerar Birdy utan täckning?', 'Ta med Birdy ut i fält.', 'Birdy för Android och snart iPhone', 'Gratis att ladda ner. Inget konto. Fungerar utan täckning.'],
+    ['/', 'Does Birdy work without a signal?', 'Take Birdy into the field.', 'Birdy for Android, soon on iPhone', 'Free to download. No account. Works without a signal.'],
   ] as const) {
     test(`frågor och slutsektion på ${path}`, async ({ page }) => {
       await page.goto(path);
       const faq = page.locator('#faq');
-      await expect(faq.locator('details')).toHaveCount(5);
-      await expect(faq.locator('details').first()).toHaveAttribute('open', '');
+      const details = faq.locator('details');
+      await expect(details).toHaveCount(5);
+      await expect(details.first()).toHaveAttribute('open', '');
+      for (let i = 1; i < 5; i++) await expect(details.nth(i), `fråga ${i + 1} ska vara stängd`).not.toHaveAttribute('open', '');
       await expect(faq.locator('summary .q').first()).toHaveText(firstQ);
-      await expect(page.locator('#download h2')).toHaveText(headline);
-      await expect(page.locator('#download a[href*="play.google.com"]')).toHaveCount(1);
+
+      const download = page.locator('#download');
+      await expect(download.locator('h2')).toHaveText(headline);
+      await expect(download.locator('.kick')).toContainText(kicker);
+      await expect(download.locator('.sub')).toHaveText(sub);
+      await expect(download.locator('a[href*="play.google.com"]')).toHaveCount(1);
+      await expect(download.locator('a .appstore'), 'App Store-märket ska inte ligga i en länk').toHaveCount(0);
+
       const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}');
       const faqLd = ld['@graph'].find((n: { '@type': string }) => n['@type'] === 'FAQPage');
       expect(faqLd.mainEntity).toHaveLength(5);
+      expect(faqLd.inLanguage).toBe(path === '/sv/' ? 'sv' : 'en');
+      const visibleQ = await faq.locator('summary .q').allTextContents();
+      const visibleA = await faq.locator('.a').allTextContents();
+      expect(faqLd.mainEntity.map((m: { name: string }) => m.name)).toEqual(visibleQ);
+      expect(faqLd.mainEntity.map((m: { acceptedAnswer: { text: string } }) => m.acceptedAnswer.text)).toEqual(visibleA);
     });
   }
 
-  test('inget iPhone-datum och ingen "håll i 3 sekunder" på startsidan', async ({ page }) => {
-    for (const path of ['/sv/', '/']) {
+  test('inget iPhone-datum och ingen "håll i 3 sekunder" på startsidan, även i stängda frågor och i html-koden', async ({ page }) => {
+    // main.innerText() skips text inside closed <details> (quality-review item 2), so 4 of the 5
+    // FAQ answers — including the iPhone one — were never actually checked. toContainText reads
+    // textContent, which sees closed-details text too; the raw HTML check also covers the
+    // FAQPage JSON-LD and any meta tags carrying the same old claims.
+    const noOldClaims = /slutet av september|end of september|(3|tre)[\s-]*sekund|(3|three)[\s-]*second/i;
+    for (const path of ['/sv/', '/'] as const) {
       await page.goto(path);
-      const text = await page.locator('main').innerText();
-      expect(text).not.toMatch(/slutet av september|end of September|3 sekunder|3 seconds/i);
+      await expect(page.locator('main')).not.toContainText(noOldClaims);
+      expect(await (await page.request.get(path)).text()).not.toMatch(noOldClaims);
     }
   });
 
@@ -557,6 +586,43 @@ test.describe('frågor, slutet och ordningen', () => {
       const hashes = [...new Set(hrefs.filter((h) => h.startsWith(`${path}#`)).map((h) => h.slice(path.length + 1)))];
       expect(hashes.length, `${path}: inga ankarlänkar hittades`).toBeGreaterThan(3);
       for (const id of hashes) await expect(page.locator(`#${id}`), `${path}#${id}`).toHaveCount(1);
+    }
+  });
+
+  test.describe('kontrast i #download mot fotot', () => {
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
+
+    // Pixel-contrast guard (quality-review item 1): the scrim's stops are percentages of the
+    // section while the text column is a fixed width, so at medium/narrow widths the dark part of
+    // the gradient doesn't reach far enough under the text. Hides #download's text, screenshots
+    // the real photo behind it, and checks the kicker/sub (normal text, needs ≥4.5:1) and the
+    // headline's accent span (large text, needs ≥3:1) in both languages. Mirrors 'kickern och den
+    // första menylänken klarar 4.5:1 mot fotot' above. Widths: the review's own 390/800/1440, plus
+    // 320 — in this environment the unfixed CSS is only knife-edge (~4.5-4.6:1) at exactly
+    // 390/800/1440, not clearly red, while 320 reproducibly fails pre-fix (~4.2:1), so 320 is what
+    // makes 'must fail before fixing' provable here (see the task report for the measured numbers).
+    for (const path of ['/sv/', '/'] as const) {
+      for (const width of [320, 390, 800, 1440] as const) {
+        test(`kicker, underrad och rubrikaccent klarar kontrasten mot fotot i ${width}px på ${path}`, async ({ page }) => {
+          await page.setViewportSize({ width, height: 900 });
+          await page.goto(path);
+          const download = page.locator('#download');
+          await download.scrollIntoViewIfNeeded();
+          await expect.poll(() => download.locator('img').evaluateAll((imgs) =>
+            imgs.every((img) => (img as HTMLImageElement).complete && (img as HTMLImageElement).naturalWidth > 0))).toBe(true);
+          await page.addStyleTag({ content: '#download .wrap > * { visibility: hidden !important; }' });
+          await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+
+          const kickerRatio = await textContrastAgainstBackground(page, download.locator('.kick'));
+          expect(kickerRatio, `kicker: ${kickerRatio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+
+          const subRatio = await textContrastAgainstBackground(page, download.locator('.sub'));
+          expect(subRatio, `underrad: ${subRatio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+
+          const accentRatio = await textContrastAgainstBackground(page, download.locator('.journal-headline .accent'));
+          expect(accentRatio, `rubrikaccent: ${accentRatio.toFixed(2)}:1`).toBeGreaterThanOrEqual(3);
+        });
+      }
     }
   });
 });

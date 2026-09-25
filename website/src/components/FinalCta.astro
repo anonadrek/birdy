@@ -14,7 +14,7 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
 ---
 
 <section id="download" class="final">
-  <Image class="final-bg" src={reedling} alt="" widths={[800, 1200, 1600]} sizes="100vw" loading="lazy" decoding="async" />
+  <Image class="final-bg" src={reedling} alt="" widths={[800, 1200, 1600]} sizes="(max-width: 760px) 840px, 100vw" loading="lazy" decoding="async" />
   <div class="wrap" data-reveal>
     <Kicker text={t.download.kicker} />
     <JournalHeadline text={t.download.headline} level="h2" align="left" size="clamp(40px, 5.4vw, 66px)" />
@@ -27,17 +27,17 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
 </section>
 
 <style>
-  .final { position: relative; min-height: 520px; display: flex; align-items: center; color: var(--cream); background: var(--moss); overflow: hidden; --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); }
-  .final :global(.final-bg) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center 40%; }
-  .final::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(31, 42, 25, .94) 0%, rgba(31, 42, 25, .78) 40%, rgba(31, 42, 25, .15) 75%); }
+  .final { position: relative; min-height: clamp(520px, 34vw, 680px); display: flex; align-items: center; color: var(--cream); background: var(--moss); overflow: hidden; --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); }
+  .final :global(.final-bg) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center 32%; }
+  .final::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(31, 42, 25, .94) 0%, rgba(31, 42, 25, .8) max(40%, 640px), rgba(31, 42, 25, .15) max(75%, 940px)); }
   .final :global(:focus-visible) { outline-color: var(--apricot); }
   .final .wrap { position: relative; z-index: 2; width: 100%; }
   .final :global(.journal-headline) { max-width: 560px; }
   .sub { font-size: 16px; color: rgba(255, 248, 238, .85); margin: 18px 0 26px; }
   @media (max-width: 760px) {
     .final { min-height: 560px; align-items: flex-end; }
-    .final :global(.final-bg) { object-position: 65% center; }
-    .final::before { background: linear-gradient(0deg, rgba(31, 42, 25, .97) 0%, rgba(31, 42, 25, .8) 45%, rgba(31, 42, 25, .1) 85%); }
-    .final .wrap { padding-bottom: 44px; }
+    .final :global(.final-bg) { object-position: 38% center; }
+    .final::before { background: linear-gradient(0deg, rgba(31, 42, 25, .5) 0, rgba(31, 42, 25, .1) 85%); }
+    .final .wrap { padding-top: 70px; padding-bottom: 44px; background: linear-gradient(0deg, rgba(31, 42, 25, .95) 0, rgba(31, 42, 25, .9) calc(100% - 70px), rgba(31, 42, 25, 0) 100%); }
   }
 </style>
