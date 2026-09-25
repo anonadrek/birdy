@@ -328,17 +328,21 @@ test.describe('appkarusellen', () => {
 });
 
 test.describe('premium och integritet', () => {
-  for (const [path, firstFeature, freeLabel, firstCol] of [
-    ['/sv/', 'Fynd-kartan', 'Alltid gratis:', 'Inget konto'],
-    ['/', 'Finds map', 'Always free:', 'No account'],
+  for (const [path, features, freeLabel, firstCol] of [
+    ['/sv/', ['Fynd-kartan', 'Fältdagboken som PDF', 'Säsongsstatistik', '7 premiummärken'], 'Alltid gratis:', 'Inget konto'],
+    ['/', ['Finds map', 'Field journal as PDF', 'Season statistics', '7 premium badges'], 'Always free:', 'No account'],
   ] as const) {
     test(`premium och integritet på ${path}`, async ({ page }) => {
       await page.goto(path);
       const prem = page.locator('#premium');
-      await expect(prem.locator('.feat h3')).toHaveCount(4);
-      await expect(prem.locator('.feat h3').first()).toHaveText(firstFeature);
+      // Premium is exactly these four. Sound ID is free for everyone (BirdNET licence) and never listed as Premium.
+      await expect(prem.locator('.feat h3')).toHaveText([...features]);
+      await expect(prem.locator('.feats')).not.toContainText(/ljud|sound|audio|birdnet/i);
+      await expect(prem.locator('.alw')).toContainText(/ljud|sound/);
       await expect(prem.locator('.alw b')).toHaveText(freeLabel);
-      await expect(prem).not.toContainText(/\d+\s?kr\b|SEK|€|\$/);
+      await expect(prem.locator('.pseal')).toHaveAttribute('aria-hidden', 'true');
+      // No prices anywhere on the page: purchases and prices are handled in the app, through Google Play.
+      await expect(page.locator('main')).not.toContainText(/\d[\d\s.,]*(?:kr(?:onor)?|sek|eur|usd|:-)(?![\p{L}\p{N}])|(?<![\p{L}\p{N}])(?:kr|sek|eur|usd)\s?\d|[€$£]/iu);
       const priv = page.locator('#privacy');
       await expect(priv.locator('.cols li')).toHaveCount(3);
       await expect(priv.locator('.cols h3').first()).toHaveText(firstCol);

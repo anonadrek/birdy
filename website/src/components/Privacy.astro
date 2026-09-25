@@ -40,7 +40,8 @@ const icons = ['no-account', 'phone', 'pin'] as const;
   h3 { font-size: 21px; }
   .cols p { margin: 8px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
   .plink { display: table; margin: 30px auto 0; font-size: 13.5px; font-weight: 600; color: var(--rust); border-bottom: 1px solid currentColor; }
-  @media (max-width: 760px) {
+  /* Three columns get cramped on tablets in portrait, so they stack up to 900 px. */
+  @media (max-width: 900px) {
     .cols { grid-template-columns: 1fr; }
     .cols li + li { border-left: 0; border-top: 1px solid var(--line); }
     .cols li { padding: 26px 6px; }
