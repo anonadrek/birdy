@@ -135,28 +135,45 @@ class PurchaseOutcomeTest {
     }
 
     @Test
-    fun `listener grant is written for a new active entitlement`() {
+    fun `listener grant increment is 1 for an active grant`() {
         val granted = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(0))
-        assertTrue(shouldWriteListenerGrant(PremiumState.Free, granted))
+        assertEquals(1, listenerGrantIncrement(granted))
     }
 
     @Test
-    fun `listener grant is written when the tier changes`() {
+    fun `listener grant increment is 1 even for a repeat of the same tier`() {
+        val granted = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(999_999))
+        assertEquals(1, listenerGrantIncrement(granted))
+    }
+
+    @Test
+    fun `listener grant increment is 0 when it resolves to Free`() {
+        assertEquals(0, listenerGrantIncrement(PremiumState.Free))
+    }
+
+    @Test
+    fun `next state after listener grant is the new active entitlement`() {
+        val granted = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(0))
+        assertEquals(granted, nextStateAfterListenerGrant(PremiumState.Free, granted))
+    }
+
+    @Test
+    fun `next state after listener grant is the changed tier`() {
         val current = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(0))
         val granted = PremiumState.Active(PremiumTier.LIFETIME, Instant.fromEpochMilliseconds(0))
-        assertTrue(shouldWriteListenerGrant(current, granted))
+        assertEquals(granted, nextStateAfterListenerGrant(current, granted))
     }
 
     @Test
-    fun `listener grant is not written for a repeat of the same tier`() {
+    fun `next state after listener grant keeps current for a repeat of the same tier`() {
         val current = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(0))
         val granted = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(999_999))
-        assertFalse(shouldWriteListenerGrant(current, granted))
+        assertEquals(current, nextStateAfterListenerGrant(current, granted))
     }
 
     @Test
-    fun `listener grant is not written when it resolves to Free`() {
+    fun `next state after listener grant keeps current when it resolves to Free`() {
         val current = PremiumState.Active(PremiumTier.YEARLY, Instant.fromEpochMilliseconds(0))
-        assertFalse(shouldWriteListenerGrant(current, PremiumState.Free))
+        assertEquals(current, nextStateAfterListenerGrant(current, PremiumState.Free))
     }
 }

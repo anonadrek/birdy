@@ -55,15 +55,28 @@ internal fun entitlementChanged(
     }
 
 /**
- * Pure decision for [PremiumBillingClient]'s purchases-updated listener, extracted for unit
- * testability: a verified purchase should only be written to its `_state` (and counted as a
- * `listenerGrants` event that a concurrent [PremiumBillingClient.queryPurchases] must not
- * overwrite) when it actually grants Active and that entitlement is new — never for a `granted`
- * that resolved to Free (e.g. a verified purchase of an unrecognised product), which must never
- * downgrade a real entitlement, and never for a repeat grant of the same tier (Billing 8 can
- * redeliver the same purchase to this listener more than once).
+ * How much a purchases-updated [granted] entitlement should bump `listenerGrants`
+ * ([PremiumBillingClient]'s marker of fresh listener evidence that a racing
+ * [PremiumBillingClient.queryPurchases] must not overwrite with an older answer): 1 whenever it
+ * actually resolved to Active, 0 otherwise. Deliberately independent of [entitlementChanged] —
+ * this listener can legitimately fire more than once for the same purchase (e.g. Billing 8
+ * echoing a non-OK launchBillingFlow result back to the listener), and even a repeat grant of an
+ * unchanged tier is still newer evidence than a query that started before it landed, so
+ * suppressing that racing query is free (state is already Active for that tier) while failing to
+ * suppress it could let a stale query write Free over a real entitlement.
  */
-internal fun shouldWriteListenerGrant(
+internal fun listenerGrantIncrement(granted: PremiumState): Int = if (granted is PremiumState.Active) 1 else 0
+
+/**
+ * The entitlement [PremiumBillingClient]'s `_state` should hold after a purchases-updated
+ * [granted] result: [granted] itself only when it actually resolved to Active AND
+ * [entitlementChanged] says it's genuinely new — never for a [granted] that resolved to Free
+ * (e.g. a verified purchase of an unrecognised product), which must never downgrade a real
+ * entitlement, and never for a repeat grant of the same tier, so toPremiumState()'s fresh
+ * purchasedAt stamp doesn't make an unchanged Active look "new" on every redelivery. [current]
+ * unchanged otherwise (a self-assignment MutableStateFlow.value will not re-emit for).
+ */
+internal fun nextStateAfterListenerGrant(
     current: PremiumState,
     granted: PremiumState,
-): Boolean = granted is PremiumState.Active && entitlementChanged(current, granted)
+): PremiumState = if (granted is PremiumState.Active && entitlementChanged(current, granted)) granted else current

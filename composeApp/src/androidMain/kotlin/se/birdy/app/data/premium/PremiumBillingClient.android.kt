@@ -437,13 +437,11 @@ actual class PremiumBillingClient(
                     // acknowledgement on every call; a failed ack must never leave a paying user
                     // Free or make the purchase screen report an error.
                     val granted = verified.toPremiumState()
-                    // See shouldWriteListenerGrant's KDoc: only a new Active entitlement is
-                    // written + bumps listenerGrants — this listener can legitimately fire more
-                    // than once for the same purchase (see the ITEM_ALREADY_OWNED echo below).
-                    if (shouldWriteListenerGrant(_state.value, granted)) {
-                        _state.value = granted
-                        listenerGrants++
-                    }
+                    // listenerGrantIncrement's KDoc: bumps on every Active grant, including a
+                    // repeat of an unchanged tier; nextStateAfterListenerGrant's KDoc: the write
+                    // is gated separately, only for a genuinely new entitlement.
+                    listenerGrants += listenerGrantIncrement(granted)
+                    _state.value = nextStateAfterListenerGrant(_state.value, granted)
                     // Acknowledgement is unconditional — independent of whether the entitlement
                     // looked "new" above; Play still needs the ack regardless.
                     if (!verified.isAcknowledged) {
