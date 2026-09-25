@@ -1,5 +1,6 @@
 package se.birdy.app.ui.premium
 
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -64,6 +65,7 @@ class PremiumViewModelTest {
             val s = repo.state.first()
             assertIs<PremiumState.Active>(s)
             assertEquals(PremiumTier.LIFETIME, s.tier)
+            assertNull(vm.state.value.purchaseNotice)
         }
 
     private val prices = MutableStateFlow(FormattedPrices(yearly = "199 kr", lifetime = "499 kr"))
@@ -178,19 +180,30 @@ class PremiumViewModelTest {
     @Test
     fun `a new purchase attempt clears the previous notice`() =
         runTest {
-            var result: PurchaseResult = PurchaseResult.Error("first")
             val repo = FakePremiumRepository()
+            val secondAttempt = CompletableDeferred<PurchaseResult>()
+            var callCount = 0
             val vm =
                 PremiumViewModel(
                     repo,
-                    launchPurchase = { result },
+                    launchPurchase = {
+                        callCount++
+                        if (callCount == 1) PurchaseResult.Error("first") else secondAttempt.await()
+                    },
                     formattedPricesFlow = prices,
                 )
             vm.purchase()
             assertEquals(PurchaseNotice.FAILED, vm.state.first().purchaseNotice)
 
-            result = PurchaseResult.UserCancelled
             vm.purchase()
+            // Prove the clearing happens at the START of the attempt, before launchPurchase's
+            // result is known — the second attempt is suspended on secondAttempt here, so if this
+            // passed only because UserCancelled maps to null at the end, it would still be FAILED
+            // right now.
+            assertEquals(true, vm.state.value.purchaseInFlight)
+            assertNull(vm.state.value.purchaseNotice)
+
+            secondAttempt.complete(PurchaseResult.UserCancelled)
             assertNull(vm.state.first().purchaseNotice)
         }
 

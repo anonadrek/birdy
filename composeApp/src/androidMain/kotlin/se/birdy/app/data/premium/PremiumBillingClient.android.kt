@@ -17,6 +17,7 @@ import com.android.billingclient.api.QueryPurchasesParams
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -99,13 +100,31 @@ actual class PremiumBillingClient(
     private var yearlyDetails: ProductDetails? = null
     private var lifetimeDetails: ProductDetails? = null
 
+    /** True when the last successful [queryPurchases] saw a PENDING purchase (cash/delayed payment). */
+    private var hasPendingPurchase = false
+
+    /**
+     * Bumped every time [handlePurchasesUpdate] grants an entitlement. [queryPurchases] reads
+     * this before/after its own network round trip to detect whether the listener granted an
+     * entitlement while the query was in flight — the app now re-queries on every foreground, so
+     * the two race. When they do, the listener's answer is newer and must not be overwritten by
+     * the query's (possibly stale) one.
+     */
+    private var listenerGrants = 0
+
+    /**
+     * Tracks the in-flight [queryProducts] fetch, if any, so [connect] and [queryPurchases]
+     * (which can both want a fresh price fetch) never pile up a second concurrent one.
+     */
+    private var productsJob: Job? = null
+
     // Owns background work that must outlive a single connect()/queryPurchases() call
     // (product-details fetch, fire-and-forget acknowledgement) without blocking the paywall's
     // 5 s budget. Dispatchers.Main, not IO: every Billing callback (setListener,
     // queryProductDetailsAsync, queryPurchasesAsync, acknowledgePurchase) already lands on the
     // main thread, and queryProducts() is itself callback-based (no blocking calls) — Main keeps
-    // yearlyDetails/lifetimeDetails/_state/purchaseDeferred confined to one thread instead of
-    // hopping between IO and Main. Cancelled in dispose().
+    // yearlyDetails/lifetimeDetails/_state/purchaseDeferred/hasPendingPurchase/listenerGrants
+    // confined to one thread instead of hopping between IO and Main. Cancelled in dispose().
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private val client: BillingClient =
@@ -134,7 +153,9 @@ actual class PremiumBillingClient(
                         // return — the paywall decision only needs entitlement (queryPurchases),
                         // not prices. Runs on the client's own scope; formattedPrices still
                         // populates once it completes.
-                        scope.launch { queryProducts() }
+                        if (productsJob?.isActive != true) {
+                            productsJob = scope.launch { queryProducts() }
+                        }
                         if (cont.isActive) cont.resume(Unit)
                     }
 
@@ -200,6 +221,9 @@ actual class PremiumBillingClient(
      * purchases" from "we don't actually know" (e.g. [BillingPremiumRepository.restore]).
      */
     actual suspend fun queryPurchases(): Boolean {
+        // See the listenerGrants KDoc: captured before the network round trip so a grant that
+        // lands while it's in flight is detected below rather than clobbered.
+        val grantsBefore = listenerGrants
         val subs =
             suspendCancellableCoroutine<Pair<BillingResult, List<Purchase>>> { cont ->
                 client.queryPurchasesAsync(
@@ -236,8 +260,18 @@ actual class PremiumBillingClient(
             verified
                 .firstOrNull { (p, ok) -> p.purchaseState == Purchase.PurchaseState.PURCHASED && ok }
                 ?.first
-        // Grant entitlement immediately — never gated on acknowledgement below succeeding.
-        _state.value = active?.toPremiumState() ?: PremiumState.Free
+        hasPendingPurchase = (subs.second + inapp.second).any { it.purchaseState == Purchase.PurchaseState.PENDING }
+        // The purchases-updated listener can grant an entitlement while this query is in flight
+        // (the app now re-queries on every foreground). When that happened, its answer is newer
+        // than this query's and must win — this query must not overwrite it with a stale Free.
+        if (grantsBefore == listenerGrants) {
+            val newState = active?.toPremiumState() ?: PremiumState.Free
+            // toPremiumState() re-stamps purchasedAt on every call — entitlementChanged() ignores
+            // that field, so an unchanged Active doesn't look "new" on every foreground re-check.
+            if (entitlementChanged(_state.value, newState)) {
+                _state.value = newState
+            }
+        }
         _purchasesQueried.value = true
 
         // A PURCHASED + verified purchase Play still thinks is unacknowledged must be
@@ -254,6 +288,13 @@ actual class PremiumBillingClient(
         verified
             .filter { (p, _) -> p.purchaseToken in needsAck }
             .forEach { (p, _) -> scope.launch { acknowledgeAndLog(client, p) } }
+
+        // Prices are otherwise only fetched once at connect() — an offline cold start would
+        // leave the purchase screen on "Loading price…" with a disabled buy button until restart.
+        val missingPrice = _formattedPrices.value.yearly == null || _formattedPrices.value.lifetime == null
+        if (missingPrice && productsJob?.isActive != true) {
+            productsJob = scope.launch { queryProducts() }
+        }
         return true
     }
 
@@ -292,10 +333,20 @@ actual class PremiumBillingClient(
                 ?: return PurchaseResult.Error("launchPurchase requires Activity context")
         val deferred = CompletableDeferred<PurchaseResult>()
         purchaseDeferred = deferred
-        val launchResult = client.launchBillingFlow(activity, flowParams)
+        // A throw here (rather than a non-OK BillingResult) must not leave purchaseDeferred set —
+        // a stale deferred would fail every later purchase as "already in flight" forever.
+        val launchResult =
+            runCatching { client.launchBillingFlow(activity, flowParams) }
+                .onFailure { purchaseDeferred = null }
+                .getOrThrow()
         if (launchResult.responseCode != BillingClient.BillingResponseCode.OK) {
             purchaseDeferred = null
-            return PurchaseResult.Error("launchBillingFlow failed: ${launchResult.debugMessage}")
+            return if (launchResult.responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
+                resolveAlreadyOwned()
+            } else {
+                val code = launchResult.responseCode
+                PurchaseResult.Error("launchBillingFlow failed $code: ${launchResult.debugMessage}")
+            }
         }
         return deferred.await()
     }
@@ -307,43 +358,69 @@ actual class PremiumBillingClient(
         val deferred = purchaseDeferred
         when (result.responseCode) {
             BillingClient.BillingResponseCode.OK -> {
-                val list = purchases.orEmpty()
+                // Verify each purchase's signature once — reused both to grant the entitlement
+                // below and to decide the outcome via the pure purchaseUpdateOutcome().
+                val checked = purchases.orEmpty().map { it to verifySignature(it) }
                 val verified =
-                    list.firstOrNull {
-                        it.purchaseState == Purchase.PurchaseState.PURCHASED && verifySignature(it)
-                    }
+                    checked
+                        .firstOrNull { (p, ok) -> p.purchaseState == Purchase.PurchaseState.PURCHASED && ok }
+                        ?.first
                 if (verified != null) {
                     // Grant entitlement immediately — never gated on acknowledgement succeeding.
                     // Play gives 3 days to acknowledge, and queryPurchases() retries the
                     // acknowledgement on every call; a failed ack must never leave a paying user
                     // Free or make the purchase screen report an error.
                     _state.value = verified.toPremiumState()
-                    deferred?.complete(PurchaseResult.Success)
-                    if (deferred != null) purchaseDeferred = null
+                    listenerGrants++
                     if (!verified.isAcknowledged) {
                         scope.launch { acknowledgeAndLog(client, verified) }
                     }
-                } else if (list.any { it.purchaseState == Purchase.PurchaseState.PENDING }) {
+                }
+                val outcome =
+                    purchaseUpdateOutcome(checked.map { (p, ok) -> OutcomeCandidate(p.purchaseState, ok) })
+                if (outcome is PurchaseResult.Pending) {
                     // Cash/delayed payment method: Play accepted the order but hasn't confirmed
                     // payment yet. Not an error — entitlement arrives later via `state` or the
                     // next queryPurchases() once Play confirms it.
-                    deferred?.complete(PurchaseResult.Pending)
-                    if (deferred != null) purchaseDeferred = null
-                } else {
-                    deferred?.complete(PurchaseResult.Error("No verified purchase in callback"))
-                    if (deferred != null) purchaseDeferred = null
+                    Log.i(TAG, "Purchase pending: Play accepted the order, payment not confirmed yet")
                 }
+                deferred?.complete(outcome)
+                if (deferred != null) purchaseDeferred = null
             }
             BillingClient.BillingResponseCode.USER_CANCELED -> {
                 deferred?.complete(PurchaseResult.UserCancelled)
                 if (deferred != null) purchaseDeferred = null
             }
+            BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED -> {
+                // Realistic triggers: tapping buy again while a pending purchase waits, or a
+                // paying user whose startup query hasn't answered yet. Play's guidance is to
+                // re-query purchases rather than surface this as a purchase error.
+                if (deferred != null) {
+                    purchaseDeferred = null
+                    scope.launch { deferred.complete(resolveAlreadyOwned()) }
+                } else {
+                    scope.launch { queryPurchases() }
+                }
+            }
             else -> {
-                deferred?.complete(PurchaseResult.Error(result.debugMessage))
+                val code = result.responseCode
+                deferred?.complete(PurchaseResult.Error("onPurchasesUpdated $code: ${result.debugMessage}"))
                 if (deferred != null) purchaseDeferred = null
             }
         }
     }
+
+    /**
+     * Re-queries purchases after Play answered ITEM_ALREADY_OWNED (from either
+     * [handlePurchasesUpdate] or [launchPurchase]) and turns the fresh answer into a
+     * [PurchaseResult] via the pure [alreadyOwnedOutcome].
+     */
+    private suspend fun resolveAlreadyOwned(): PurchaseResult =
+        alreadyOwnedOutcome(
+            queryAnswered = queryPurchases(),
+            entitled = _state.value is PremiumState.Active,
+            hasPendingPurchase = hasPendingPurchase,
+        )
 
     private fun verifySignature(purchase: Purchase): Boolean {
         if (licensePublicKeyBase64.isBlank()) {

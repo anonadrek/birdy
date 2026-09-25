@@ -14,7 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.play.core.review.ReviewManagerFactory
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
@@ -349,10 +351,13 @@ class MainActivity : AppCompatActivity() {
                 state = billingClient.state,
                 queryPurchases = { billingClient.queryPurchases() },
             )
-        // Connect + cold-start query in parallel with classifier bootstrap
+        // Connect, then re-check purchases every time the app comes to the foreground (Google's
+        // recommendation): a pending payment can complete, or a subscription lapse, while the app
+        // isn't running. STARTED rather than RESUMED: Play's purchase sheet is translucent, so it
+        // only pauses this activity and the re-check doesn't run in the middle of a purchase.
         lifecycleScope.launch {
             billingClient.connect()
-            billingClient.queryPurchases()
+            repeatOnLifecycle(Lifecycle.State.STARTED) { billingClient.queryPurchases() }
         }
         val classifierBootstrap = ClassifierBootstrap(buildClassifier = { buildClassifier() })
         // Plan 6b3 T7: build the PDF export use case. PdfFontProvider must be
