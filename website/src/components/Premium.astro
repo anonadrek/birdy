@@ -38,11 +38,13 @@ const icons = ['map', 'pdf', 'chart', 'badge'] as const;
   .grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }
   .alw { margin: 28px 0 0; padding: 16px 0; border-top: 1px solid rgba(255, 255, 255, .12); border-bottom: 1px solid rgba(255, 255, 255, .12); font-size: 14px; line-height: 1.7; color: rgba(242, 234, 220, .8); }
   .alw b { color: var(--cream); font-weight: 600; }
+  /* alpha checked in scripts/check-contrast.mjs */
   .pnote { font-size: 12.5px; color: rgba(242, 234, 220, .62); margin: 16px 0 0; }
   .feat { display: flex; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
   .feat:first-child { padding-top: 4px; }
   .fic { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(226, 192, 126, .45); color: var(--brass-hi); display: grid; place-items: center; flex: none; }
   .feat h3 { font-size: 21px; color: var(--cream); }
+  /* alpha checked in scripts/check-contrast.mjs */
   .feat p { margin: 3px 0 0; font-size: 13.5px; color: rgba(242, 234, 220, .66); }
   .pseal { position: absolute; z-index: 3; right: 9%; top: -46px; width: 92px; height: 92px; font-size: 17px; transform: rotate(-10deg); }
   @media (max-width: 760px) {

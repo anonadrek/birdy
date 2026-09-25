@@ -276,26 +276,9 @@
     "loopleadLine": "HR-verktyg för chefer i växande bolag"
   },
   "alt": {
-    "wingLogo": "Birdys fågellogotyp",
     "wordmark": "Birdys ordbild",
     "playStoreBadge": "Hämta den på Google Play",
     "appStoreBadge": "Snart på App Store",
-    "heroPlate": "Birdy på en telefon med identifieringens skärm fäst i dagboken",
-    "scanScreen": "Birdys kameravy som identifierar en fågel",
-    "matchScreen": "Birdys träffvy med en bekräftad art och stämpel",
-    "observationDetail": "Birdys vy för ett sparat fynd, utformad som en fältdagbok",
-    "archiveScreen": "Birdys uppslagsverk med europeiska arter",
-    "audioScan": "Birdys ljudidentifiering med ljudvåg",
-    "badgesGrid": "Birdys sida med stämplar i ett rutnät",
-    "identifyScreen": "Birdys startsida med tre sätt att identifiera en fågel",
-    "listenScreen": "Birdys ljudidentifiering med ljudvågform",
-    "journalScreen": "Birdys fältdagbok med sparade fågelfynd",
-    "badgesScreen": "Birdys rutnät av prestationsmärken",
-    "mapScreen": "Birdys privata karta över egna fågelfynd på enheten",
-    "recapScreen": "Birdys veckorapport med en ny art",
-    "seasonScreen": "Birdys säsongsstatistik över observationer per månad",
-    "glimpseHero": "Birdys introduktion med en fältdagbok för fynd",
-    "speciesScreen": "Birdys artsida med information om europeiska fåglar",
     "panorama": "Birdys appvyer för fågelidentifiering, artinformation och sparade fynd"
   }
 }

@@ -60,5 +60,49 @@ for (const [fg, bg, min] of pairs) {
     failed = true;
   }
 }
+
+// Genomskinliga textfärger: några komponenter skriver texten som rgba(...) direkt i <style>
+// (inte en token), så vakten ovan ser dem aldrig. De alfa-blandas här mot den riktiga bakgrunden
+// (c = a*fg + (1-a)*bg per kanal) innan samma WCAG-kontroll körs. Ändras en av rgba()-färgerna
+// eller bakgrunden i Footer.astro/Premium.astro, uppdatera paret här också — varje CSS-regel har
+// en kommentar ("alpha checked in scripts/check-contrast.mjs") som pekar tillbaka hit.
+const hexToRgb = (hex) => {
+  const n = parseInt(hex.slice(1), 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+};
+const luminanceRgb = ([r, g, b]) => 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);
+const ratioRgb = (a, b) => {
+  const [hi, lo] = [luminanceRgb(a), luminanceRgb(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+};
+const compositeOver = (fg, alpha, bg) => fg.map((c, i) => alpha * c + (1 - alpha) * bg[i]);
+
+const mossDeep = tokens['moss-deep'] ? hexToRgb(tokens['moss-deep']) : null;
+// Ljusaste punkten i Premiums mossgröna gradient (mossa + mässingsglöden från .prem::before,
+// mätt mitt i den radiella höjdpunkten) — finns inte som token, bara ett uppmätt läge.
+const premiumGradientLight = hexToRgb('#323822');
+
+const compositedPairs = [
+  { label: 'Footer .fbot', fg: [233, 226, 210], alpha: 0.55, bg: mossDeep, min: 4.5 },
+  { label: 'Footer .sib-kick', fg: [233, 226, 210], alpha: 0.6, bg: mossDeep, min: 4.5 },
+  { label: 'Premium .pnote', fg: [242, 234, 220], alpha: 0.62, bg: premiumGradientLight, min: 4.5 },
+  { label: 'Premium .feat p', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
+];
+
+for (const { label, fg, alpha, bg, min } of compositedPairs) {
+  if (!bg) {
+    console.error(`contrast-guard FAILED: bakgrund saknas för ${label}`);
+    failed = true;
+    continue;
+  }
+  const composited = compositeOver(fg, alpha, bg);
+  const r = ratioRgb(composited, bg);
+  if (r < min) {
+    console.error(`contrast-guard FAILED: ${label} = ${r.toFixed(2)}:1 (kräver ${min}:1)`);
+    failed = true;
+  }
+}
+
+const totalPairs = pairs.length + compositedPairs.length;
 if (failed) process.exit(1);
-console.log(`contrast-guard OK (${pairs.length} par)`);
+console.log(`contrast-guard OK (${totalPairs} par)`);
