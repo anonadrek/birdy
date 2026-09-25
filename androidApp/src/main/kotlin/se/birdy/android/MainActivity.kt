@@ -265,9 +265,10 @@ class MainActivity : AppCompatActivity() {
         appGraph.premiumActivationListener.start(lifecycleScope)
         setContent { App(appGraph) }
         // Skip a recreate of the same already-handled link (language switch, process-death
-        // restore) and Recents relaunches. A fresh notification tap after process death still
-        // arrives here — onNewIntent does not run when the process was gone — so compare URIs
-        // instead of treating any savedInstanceState as a skip.
+        // restore) and Recents relaunches. Whether a new notification link after process death
+        // arrives as this activity's intent or later via onNewIntent depends on the launch flags
+        // and Android version, so compare against the last forwarded URI instead of treating any
+        // savedInstanceState as "already handled".
         lastForwardedDeepLink = savedInstanceState?.getString(STATE_LAST_FORWARDED_DEEP_LINK)
         val launchedFromHistory = (intent?.flags ?: 0) and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
         val incomingDeepLink = intent?.data?.takeIf { it.scheme == "birdy" }?.toString()
