@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="sv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Artsidor: helheten (sidhuvud, kategorirad, artsida B, sidfot, mobil)</title>
+<style>body{font-family:system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:24px;background:#f4f4f2;color:#222}
+.mockup{border:1px solid #ddd;border-radius:10px;overflow:hidden;background:#fff;margin:14px 0}.mockup-header{padding:8px 14px;font-size:13px;font-weight:600;background:#eee;border-bottom:1px solid #ddd}
+.subtitle{color:#555}.options{display:none}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  .sp{--paper:#F6EFE2;--card:#FFFAF1;--ink:#26301F;--muted:#5B6350;--line:#DFD2BA;--rust:#9A4526;--rust2:#72301A;--apricot:#F2B27A;--moss:#1F2A19;--moss2:#2B3A23;--mossd:#172013;--cream:#FFF8EE;--fcream:#E9E2D2;
+      background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:14px;line-height:1.6;position:relative}
+  .sp *{box-sizing:border-box}
+  .sp a{color:inherit;text-decoration:none}
+  /* nav */
+  .sp .nav{display:flex;align-items:center;gap:22px;padding:0 28px;height:62px;background:var(--moss);color:var(--cream);font-size:12.5px;font-weight:600}
+  .sp .wm{font-family:Caveat,cursive;font-size:30px;color:var(--cream);font-weight:600;margin-right:auto;line-height:1}
+  .sp .nav .l{opacity:.85}
+  .sp .nav .l.on{opacity:1;color:var(--apricot)}
+  .sp .nav .cta{background:linear-gradient(180deg,#B0552F,var(--rust));color:#fff;border-radius:999px;padding:8px 15px}
+  .sp .caret{font-size:9px;margin-left:3px}
+  /* category bar */
+  .sp .cats{display:flex;align-items:center;gap:8px;padding:10px 28px;background:var(--card);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+  .sp .chip{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:12px;font-weight:600;color:var(--ink);background:var(--paper)}
+  .sp .chip small{color:var(--muted);font-weight:400}
+  .sp .chip.on{background:var(--rust);border-color:var(--rust);color:#fff}
+  .sp .chip.on small{color:#f4d9c9}
+  .sp .search{margin-left:auto;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12px;color:var(--muted);background:#fff;min-width:150px}
+  /* type */
+  .sp .crumb{font-size:11px;color:var(--muted);letter-spacing:.04em}
+  .sp .kicker{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);font-weight:600;display:flex;align-items:center;gap:8px}
+  .sp .kicker:before{content:"";width:18px;height:1.5px;background:var(--rust)}
+  .sp h1{font-family:"DM Serif Display",serif;font-weight:400;font-size:42px;line-height:1.05;margin:6px 0 2px}
+  .sp h1 em{color:var(--rust)}
+  .sp .latin{font-family:Caveat,cursive;font-size:22px;color:var(--muted)}
+  .sp .lead{font-size:15.5px;line-height:1.55;margin:12px 0 0}
+  .sp h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:21px;margin:20px 0 6px}
+  .sp ul{margin:0;padding-left:18px}
+  .sp p{margin:0}
+  .sp .plate{background:var(--card);border:1px solid var(--line);padding:9px 9px 5px;box-shadow:0 2px 0 var(--line)}
+  .sp .plate img{display:block;width:100%;height:auto}
+  .sp .plate .cap{font-family:Caveat,cursive;font-size:16px;color:var(--muted);display:flex;justify-content:space-between;padding-top:3px}
+  .sp .factlist div{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .sp .factlist small{color:var(--muted)}
+  .sp .note{font-family:Caveat,cursive;font-size:21px;color:var(--rust);transform:rotate(-2deg);line-height:1.2}
+  .sp .ctabox{background:var(--moss);color:var(--cream);border-radius:10px;padding:15px 16px}
+  .sp .ctabox em{font-family:"DM Serif Display",serif;color:var(--apricot);font-size:19px;display:block}
+  .sp .badge{display:inline-block;background:#000;color:#fff;border-radius:6px;padding:6px 11px;font-size:11px;border:1px solid #555;margin-top:10px}
+  .sp .fam{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .sp .fam figure{margin:0;background:var(--card);border:1px solid var(--line);padding:5px}
+  .sp .fam img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+  .sp .fam figcaption{font-size:12px;font-weight:600;padding:4px 2px 0}
+  .sp .credits{font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;margin-top:20px}
+  /* B spread */
+  .sp .spread{display:grid;grid-template-columns:5fr 7fr;max-width:1000px;margin:0 auto;padding:18px 28px 30px}
+  .sp .left{padding-right:24px;border-right:1px dashed var(--line)}
+  .sp .right{padding-left:26px}
+  /* mega menu */
+  .sp .dim{position:relative}
+  .sp .dim:after{content:"";position:absolute;inset:0;background:rgba(23,32,19,.45)}
+  .sp .mega{position:absolute;left:0;right:0;top:62px;z-index:3;background:var(--card);border-bottom:1px solid var(--line);box-shadow:0 18px 40px rgba(0,0,0,.25);display:grid;grid-template-columns:1.7fr 1fr;gap:30px;padding:22px 28px 20px}
+  .sp .mega h3{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin:0 0 10px;font-weight:600}
+  .sp .mega .grp{columns:3;column-gap:22px;font-size:13px}
+  .sp .mega .grp a{display:flex;justify-content:space-between;padding:4px 0;break-inside:avoid;border-bottom:1px dotted var(--line)}
+  .sp .mega .grp small{color:var(--muted)}
+  .sp .mega .pop{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .sp .mega .pop figure{margin:0;display:flex;gap:8px;align-items:center;font-size:12.5px;font-weight:600}
+  .sp .mega .pop img{width:46px;height:36px;object-fit:cover;border:1px solid var(--line)}
+  .sp .mega .all{grid-column:1/-1;border-top:1px solid var(--line);padding-top:10px;font-size:13px;font-weight:600;color:var(--rust)}
+  /* hub */
+  .sp .hub{max-width:1000px;margin:0 auto;padding:22px 28px 30px}
+  .sp .gcards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}
+  .sp .gcard{background:var(--card);border:1px solid var(--line);padding:6px;font-size:12.5px}
+  .sp .gcard img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+  .sp .gcard b{display:block;padding:5px 2px 0;font-size:13px}
+  .sp .gcard small{color:var(--muted);padding:0 2px}
+  /* footer */
+  .sp .footer{background:var(--mossd);color:var(--fcream);padding:34px 28px 16px}
+  .sp .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:26px;max-width:1000px;margin:0 auto}
+  .sp .fwm{font-family:Caveat,cursive;font-size:32px;color:var(--apricot);font-weight:600;line-height:1}
+  .sp .tag{color:rgba(233,226,210,.7);font-size:13px;margin-top:8px}
+  .sp .sib{margin-top:16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:9px 11px;font-size:12px}
+  .sp .sib strong{display:block;font-size:13px}
+  .sp .sib span{color:rgba(233,226,210,.7)}
+  .sp .sibk{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,226,210,.6);margin-top:18px;font-weight:600}
+  .sp .fh{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--apricot);font-weight:600;margin:0 0 10px}
+  .sp .col a{display:block;font-size:13px;color:rgba(233,226,210,.82);margin-bottom:7px}
+  .sp .col a.new,.sp .fpop.new{outline:2px dashed var(--apricot);outline-offset:3px}
+  .sp .fpop{max-width:1000px;margin:24px auto 0;font-size:12.5px;color:rgba(233,226,210,.75);line-height:1.9}
+  .sp .fpop b{color:var(--apricot);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;margin-right:8px}
+  .sp .fpop a{margin-right:12px;text-decoration:underline;text-decoration-color:rgba(233,226,210,.3);text-underline-offset:3px}
+  .sp .fbot{max-width:1000px;margin:18px auto 0;border-top:1px solid rgba(255,255,255,.1);padding-top:12px;display:flex;justify-content:space-between;font-size:12px;color:rgba(233,226,210,.55)}
+  .sp .fbot a{color:var(--apricot);text-decoration:underline}
+  .newtag{display:inline-block;background:#F2B27A;color:#241B0C;font:600 10px Inter,sans-serif;border-radius:4px;padding:1px 6px;margin-left:6px;letter-spacing:.04em;vertical-align:middle}
+  /* phones */
+  .phones{display:flex;gap:22px;flex-wrap:wrap;justify-content:center}
+  .phone{width:300px;border:9px solid #111;border-radius:34px;overflow:hidden;background:#111;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .phone .sp{height:600px;overflow:hidden;font-size:12.5px}
+  .phone .sp .nav{height:52px;padding:0 14px}
+  .phone .sp .wm{font-size:26px}
+  .phone .sp .burger{font-size:20px}
+  .phone .sp .cats{padding:8px 14px}
+  .phone .sp h1{font-size:34px}
+  .phone .cap-under{font-size:12px;color:#666;text-align:center;margin-top:8px}
+  .phone .sp .mm{padding:10px 16px;font-size:15px;font-weight:600}
+  .phone .sp .mm a{display:block;padding:9px 0;border-bottom:1px solid var(--line)}
+  .phone .sp .mm .sub{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px 0 10px;border-bottom:1px solid var(--line)}
+  .phone .sp .mm .sub span{font-size:12.5px;font-weight:600;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+  .phone .sp .fgrid{grid-template-columns:1fr 1fr;gap:18px}
+  .phone .sp .fgrid .fb{grid-column:1/-1}
+  .note-row{font-size:12.5px;color:#555;margin:8px 0 26px;line-height:1.55}
+</style>
+
+<h2>Helheten: sidhuvud, kategorier, artsidan (B) och sidfot</h2>
+<p class="subtitle">Allt i samma rad som 1.3-webben: mossgrön menyrad, papper, rost och aprikos. Det som är nytt är markerat <span class="newtag">NYTT</span>. Kategorierna är samma 15 grupper som i appens uppslagsverk, med antal granskade arter i varje.</p>
+
+<!-- ============ 1. Header med Arter-menyn öppen ============ -->
+<div class="mockup">
+  <div class="mockup-header">1. Sidhuvudet på dator, med Arter-menyn uppfälld (hovra eller klicka på "Arter")</div>
+  <div class="mockup-body" style="padding:0">
+    <div class="sp" style="height:390px;overflow:hidden">
+      <div class="nav" style="position:relative;z-index:4"><span class="wm">Birdy.</span><a class="l on">Arter <span class="caret">▾</span></a><a class="l">Så funkar det</a><a class="l">Appen</a><a class="l">Premium</a><a class="l">Fältanteckningar</a><a class="l">EN</a><a class="cta">Hämta appen</a></div>
+      <div class="mega">
+        <div>
+          <h3>Grupper</h3>
+          <div class="grp">
+            <a>Tättingar <small>88</small></a><a>Änder &amp; gäss <small>18</small></a><a>Vadare <small>14</small></a><a>Rovfåglar <small>10</small></a><a>Måsar &amp; tärnor <small>9</small></a><a>Ugglor <small>8</small></a><a>Hönsfåglar <small>7</small></a><a>Hackspettar <small>5</small></a><a>Duvor <small>4</small></a><a>Tranor &amp; rallar <small>4</small></a><a>Alkor <small>3</small></a><a>Doppingar &amp; lommar <small>3</small></a><a>Hägrar &amp; storkar <small>2</small></a><a>Havsfåglar <small>1</small></a><a>Övriga <small>4</small></a>
+          </div>
+        </div>
+        <div>
+          <h3>Vanliga i trädgården</h3>
+          <div class="pop"><figure><img src="talgoxe-hero.jpg" alt="">Talgoxe</figure><figure><img src="blames.jpg" alt="">Blåmes</figure><figure><img src="g-songbirds.jpg" alt="">Koltrast</figure><figure><img src="g-songbirds-2.jpg" alt="">Rödhake</figure></div>
+        </div>
+        <a class="all">Alla 180 arter från A till Ö →</a>
+      </div>
+      <div class="dim" style="height:330px"><div class="hub" style="opacity:.9"><div class="kicker">Uppslagsverket</div><h1>Sveriges <em>fåglar</em></h1></div></div>
+    </div>
+  </div>
+</div>
+<p class="note-row">"Arter" <span class="newtag">NYTT</span> blir första länken i menyn. Resten av menyraden är som i 1.3. Menyn är ett tillägg: den som hoppar över den når samma sidor via kategoriraden nedan.</p>
+
+<!-- ============ 2. Hubben ============ -->
+<div class="mockup">
+  <div class="mockup-header">2. Ingångssidan /sv/arter/ med kategoriraden under menyn</div>
+  <div class="mockup-body" style="padding:0">
+    <div class="sp">
+      <div class="nav"><span class="wm">Birdy.</span><a class="l on">Arter <span class="caret">▾</span></a><a class="l">Så funkar det</a><a class="l">Appen</a><a class="l">Premium</a><a class="l">Fältanteckningar</a><a class="l">EN</a><a class="cta">Hämta appen</a></div>
+      <div class="cats"><span class="chip on">Alla arter <small>180</small></span><span class="chip">Tättingar <small>88</small></span><span class="chip">Änder &amp; gäss <small>18</small></span><span class="chip">Vadare <small>14</small></span><span class="chip">Rovfåglar <small>10</small></span><span class="chip">Måsar &amp; tärnor <small>9</small></span><span class="chip">Ugglor <small>8</small></span><span class="chip">Hönsfåglar <small>7</small></span><span class="search">⌕ Sök art</span></div>
+      <div class="hub">
+        <div class="crumb">Birdy · Arter</div>
+        <div class="kicker" style="margin-top:10px">Uppslagsverket</div>
+        <h1>Sveriges <em>fåglar</em></h1>
+        <p class="lead" style="max-width:620px">180 vanliga fåglar i Sverige och Norden, med foton, kännetecken och läten. Samma uppslagsverk som finns i appen, där du också kan känna igen fågeln på plats.</p>
+        <div class="gcards">
+          <div class="gcard"><img src="g-songbirds.jpg" alt=""><b>Tättingar</b><small>88 arter</small></div>
+          <div class="gcard"><img src="g-waterfowl.jpg" alt=""><b>Änder &amp; gäss</b><small>18 arter</small></div>
+          <div class="gcard"><img src="g-waders.jpg" alt=""><b>Vadare</b><small>14 arter</small></div>
+          <div class="gcard"><img src="g-raptors.jpg" alt=""><b>Rovfåglar</b><small>10 arter</small></div>
+          <div class="gcard"><img src="g-gulls_terns.jpg" alt=""><b>Måsar &amp; tärnor</b><small>9 arter</small></div>
+          <div class="gcard"><img src="g-owls.jpg" alt=""><b>Ugglor</b><small>8 arter</small></div>
+          <div class="gcard"><img src="g-gamebirds.jpg" alt=""><b>Hönsfåglar</b><small>7 arter</small></div>
+          <div class="gcard"><img src="g-woodpeckers.jpg" alt=""><b>Hackspettar</b><small>5 arter</small></div>
+          <div class="gcard"><img src="g-doves.jpg" alt=""><b>Duvor</b><small>4 arter</small></div>
+          <div class="gcard"><img src="g-cranes_rails.jpg" alt=""><b>Tranor &amp; rallar</b><small>4 arter</small></div>
+        </div>
+        <p class="crumb" style="margin-top:12px">… plus Alkor, Doppingar &amp; lommar, Hägrar &amp; storkar, Havsfåglar och Övriga. Under korten: hela listan A till Ö.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="note-row">Kategoriraden <span class="newtag">NYTT</span> ligger kvar överst på alla artsidor och går att svepa i sidled. Den aktiva gruppen är rostfärgad. Sökfältet filtrerar listan direkt i webbläsaren, utan server.</p>
+
+<!-- ============ 3. Artsidan B + sidfot ============ -->
+<div class="mockup">
+  <div class="mockup-header">3. Artsidan (B, uppslaget) i sitt sammanhang, hela vägen ned till sidfoten</div>
+  <div class="mockup-body" style="padding:0">
+    <div class="sp">
+      <div class="nav"><span class="wm">Birdy.</span><a class="l on">Arter <span class="caret">▾</span></a><a class="l">Så funkar det</a><a class="l">Appen</a><a class="l">Premium</a><a class="l">Fältanteckningar</a><a class="l">EN</a><a class="cta">Hämta appen</a></div>
+      <div class="cats"><span class="chip">Alla arter <small>180</small></span><span class="chip on">Tättingar <small>88</small></span><span class="chip">Änder &amp; gäss <small>18</small></span><span class="chip">Vadare <small>14</small></span><span class="chip">Rovfåglar <small>10</small></span><span class="chip">Måsar &amp; tärnor <small>9</small></span><span class="chip">Ugglor <small>8</small></span><span class="chip">Hönsfåglar <small>7</small></span><span class="search">⌕ Sök art</span></div>
+      <div class="spread">
+        <div class="left">
+          <div class="plate"><img src="talgoxe-hero.jpg" alt=""><div class="cap"><span>Pl. 1, Talgoxe</span><span>Foto: Hobbyfotowiki</span></div></div>
+          <div class="factlist" style="margin:14px 0">
+            <div><small>Vetenskapligt namn</small><span><i>Parus major</i></span></div>
+            <div><small>Familj</small><span>Mesar</span></div>
+            <div><small>I Sverige</small><span>Allmän, året runt</span></div>
+            <div><small>Rödlistan</small><span>Livskraftig (LC)</span></div>
+            <div><small>Storlek</small><span>Cirka 14 cm</span></div>
+          </div>
+          <div class="ctabox"><em>Osäker på vad du ser?</em>Birdy känner igen talgoxen på foto eller läte, utan täckning.<br><span class="badge">▶ Google Play</span></div>
+          <div class="note" style="margin-top:14px">Talgoxen söker frön i barren mitt i vintern.</div>
+        </div>
+        <div class="right">
+          <div class="crumb">Birdy · Arter · Tättingar · Mesar · Talgoxe</div>
+          <div class="kicker" style="margin-top:10px">Mesar</div>
+          <h1>Talgoxe</h1><div class="latin">Parus major</div>
+          <p class="lead">Den största av våra mesar och en av fåglarna du oftast ser vid fågelbordet. Den finns i hela Sverige året runt.</p>
+          <h2>Så känner du igen den</h2>
+          <ul><li>Svart huvud med vita kinder</li><li>Gul buk med ett svart band längs mitten, bredare hos hanen</li><li>Olivgrön rygg och blågrå vingar med ett vitt vingband</li><li>Större än blåmesen, som har blå hätta</li></ul>
+          <h2>Läte</h2>
+          <p>Ett ringande ti ta, ti ta som hörs redan i februari. Talgoxen har ovanligt många läten, så ett okänt läte i trädgården är ofta just en talgoxe.</p>
+          <h2>Var och när</h2>
+          <p>Stannfågel i hela landet. Vanligast i lövskog, parker och trädgårdar. På vintern söker den sig till fågelmatningar och på våren flyttar den gärna in i en holk.</p>
+          <div class="plate" style="margin:16px 0"><img src="talgoxe-2.jpg" alt=""><div class="cap"><span>Pl. 2</span><span>Foto: Anton Whoa</span></div></div>
+          <h2>Fler mesar</h2>
+          <div class="fam"><figure><img src="blames.jpg" alt=""><figcaption>Blåmes</figcaption></figure><figure><img src="svartmes.jpg" alt=""><figcaption>Svartmes</figcaption></figure><figure><img src="tofsmes.jpg" alt=""><figcaption>Tofsmes</figcaption></figure><figure><img src="entita.jpg" alt=""><figcaption>Entita</figcaption></figure></div>
+          <div class="credits">Foton via Wikimedia Commons: Hobbyfotowiki (CC0), Anton Whoa (CC BY 2.0). Texten bygger på Wikipedia (CC BY-SA 4.0).</div>
+        </div>
+      </div>
+      <!-- footer -->
+      <div class="footer">
+        <div class="fgrid">
+          <div><div class="fwm">Birdy.</div><p class="tag">Känn igen fågeln. Bevara stunden.</p><div class="sibk">Från samma verkstad</div><div class="sib"><strong>LoopLead</strong><span>HR-verktyg för chefer i växande bolag</span></div></div>
+          <div class="col"><div class="fh">Arter <span class="newtag">NYTT</span></div><a class="new">Tättingar</a><a class="new">Änder &amp; gäss</a><a class="new">Vadare</a><a class="new">Rovfåglar</a><a class="new">Ugglor</a><a class="new">Alla arter A till Ö</a></div>
+          <div class="col"><div class="fh">Utforska</div><a>Så funkar det</a><a>Appen</a><a>Premium</a><a>Frågor</a></div>
+          <div class="col"><div class="fh">Läs</div><a>Fältanteckningar</a><a>Varför Birdy finns</a><a>Skriv till oss</a></div>
+          <div class="col"><div class="fh">Information</div><a>Integritetspolicy</a><a>Villkor</a><a>Datasäkerhet</a><a>English</a></div>
+        </div>
+        <div class="fpop new"><b>Vanliga arter</b><a>Talgoxe</a><a>Blåmes</a><a>Koltrast</a><a>Rödhake</a><a>Gråsparv</a><a>Skata</a><a>Kaja</a><a>Bofink</a><a>Gräsand</a><a>Fiskmås</a><a>Ormvråk</a><a>Trana</a></div>
+        <div class="fbot"><span>© 2026 Birdy · Skapad i Sverige</span><span>Byggd av <a>AlbIT</a></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="note-row">Sidfoten får en kolumn <b>Arter</b> <span class="newtag">NYTT</span> och en rad <b>Vanliga arter</b> <span class="newtag">NYTT</span> (tolv länkar). Allt annat är som i 1.3, även "Byggd av AlbIT" längst ned. Sidfoten syns på alla sidor, även startsidan och bloggen, så varje sida länkar in till arterna.</p>
+
+<!-- ============ 4. Mobil ============ -->
+<h3 style="margin-top:30px">4. Samma sak i mobilen (390 px)</h3>
+<div class="phones">
+  <div>
+    <div class="phone"><div class="sp">
+      <div class="nav"><span class="wm">Birdy.</span><span class="burger">☰</span></div>
+      <div class="cats"><span class="chip">Alla</span><span class="chip on">Tättingar</span><span class="chip">Änder &amp; gäss</span><span class="chip">Vadare</span></div>
+      <div style="padding:12px 14px">
+        <div class="crumb">Arter · Tättingar · Mesar</div>
+        <h1 style="margin-top:8px">Talgoxe</h1><div class="latin">Parus major</div>
+        <div class="plate" style="margin:10px 0"><img src="talgoxe-hero.jpg" alt=""><div class="cap"><span>Pl. 1</span><span>Foto: Hobbyfotowiki</span></div></div>
+        <div class="factlist"><div><small>I Sverige</small><span>Allmän, året runt</span></div><div><small>Rödlistan</small><span>Livskraftig (LC)</span></div><div><small>Storlek</small><span>Cirka 14 cm</span></div></div>
+        <p class="lead" style="font-size:14px">Den största av våra mesar och en av fåglarna du oftast ser vid fågelbordet.</p>
+      </div>
+    </div></div>
+    <div class="cap-under" style="font-size:12px;color:#666;text-align:center;margin-top:8px">Artsidan: rubrik, foto och fakta först</div>
+  </div>
+  <div>
+    <div class="phone"><div class="sp" style="background:var(--card)">
+      <div class="nav"><span class="wm">Birdy.</span><span class="burger">✕</span></div>
+      <div class="mm">
+        <a style="color:var(--rust)">Arter ▴</a>
+        <div class="sub"><span>Tättingar</span><span>Änder &amp; gäss</span><span>Vadare</span><span>Rovfåglar</span><span>Måsar &amp; tärnor</span><span>Ugglor</span><span>Hönsfåglar</span><span>Alla arter →</span></div>
+        <a>Så funkar det</a><a>Appen</a><a>Premium</a><a>Fältanteckningar</a><a>Uppslagsverket</a><a>Integritet</a><a>Frågor</a><a>EN</a>
+        <div style="margin-top:12px;background:var(--rust);color:#fff;border-radius:999px;text-align:center;padding:10px">Hämta appen</div>
+      </div>
+    </div></div>
+    <div class="cap-under" style="font-size:12px;color:#666;text-align:center;margin-top:8px">Mobilmenyn: Arter fälls ut med grupperna</div>
+  </div>
+  <div>
+    <div class="phone"><div class="sp" style="background:var(--mossd)">
+      <div class="footer" style="padding:22px 16px">
+        <div class="fgrid">
+          <div class="fb"><div class="fwm">Birdy.</div><p class="tag">Känn igen fågeln. Bevara stunden.</p><div class="sib"><strong>LoopLead</strong><span>HR-verktyg för chefer i växande bolag</span></div></div>
+          <div class="col"><div class="fh">Arter</div><a>Tättingar</a><a>Änder &amp; gäss</a><a>Vadare</a><a>Rovfåglar</a><a>Alla arter</a></div>
+          <div class="col"><div class="fh">Utforska</div><a>Så funkar det</a><a>Appen</a><a>Premium</a><a>Frågor</a></div>
+          <div class="col"><div class="fh">Läs</div><a>Fältanteckningar</a><a>Varför Birdy</a></div>
+          <div class="col"><div class="fh">Information</div><a>Integritet</a><a>Villkor</a><a>English</a></div>
+        </div>
+        <div class="fpop" style="margin-top:14px"><b>Vanliga arter</b><br><a>Talgoxe</a><a>Blåmes</a><a>Koltrast</a><a>Rödhake</a><a>Gråsparv</a><a>Skata</a></div>
+        <div class="fbot" style="flex-direction:column;gap:4px"><span>© 2026 Birdy · Skapad i Sverige</span><span>Byggd av <a>AlbIT</a></span></div>
+      </div>
+    </div></div>
+    <div class="cap-under" style="font-size:12px;color:#666;text-align:center;margin-top:8px">Sidfoten i mobilen</div>
+  </div>
+</div>
+
+<h3 style="margin-top:30px">Vad vill du ha med?</h3>
+<p class="subtitle">Klicka i det du vill behålla (flera val går bra). Svara gärna i terminalen också.</p>
+<div class="options" data-multiselect>
+  <div class="option" data-choice="mega" onclick="toggleSelect(this)"><div class="letter">1</div><div class="content"><h3>Arter-menyn som fälls ut i sidhuvudet</h3><p>Grupperna och vanliga arter direkt från alla sidor</p></div></div>
+  <div class="option" data-choice="cats" onclick="toggleSelect(this)"><div class="letter">2</div><div class="content"><h3>Kategoriraden under menyn på artsidorna</h3><p>Chips med grupperna, sveps i sidled i mobilen</p></div></div>
+  <div class="option" data-choice="search" onclick="toggleSelect(this)"><div class="letter">3</div><div class="content"><h3>Sökfältet i kategoriraden</h3><p>Filtrerar artlistan direkt i webbläsaren</p></div></div>
+  <div class="option" data-choice="footcol" onclick="toggleSelect(this)"><div class="letter">4</div><div class="content"><h3>Kolumnen Arter i sidfoten</h3><p>Fem grupper plus Alla arter</p></div></div>
+  <div class="option" data-choice="footpop" onclick="toggleSelect(this)"><div class="letter">5</div><div class="content"><h3>Raden Vanliga arter i sidfoten</h3><p>Tolv länkar till de mest sökta arterna</p></div></div>
+</div>
+
+</body></html>
