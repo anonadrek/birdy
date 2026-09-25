@@ -225,6 +225,24 @@
     ],
     "policyLink": "Läs integritetspolicyn"
   },
+  "fieldNotes": {
+    "kicker": "Fältanteckningar",
+    "headline": "Från *fältboken.*",
+    "all": "Alla fältanteckningar"
+  },
+  "blog": {
+    "kicker": "Fältanteckningar",
+    "headline": "Anteckningar *från fältet.*",
+    "lead": "Om fåglarna vi möter, hur Birdy fungerar och varför den är byggd som den är.",
+    "minRead": "{n} min läsning",
+    "allNotes": "Alla fältanteckningar",
+    "seeHow": "Se hur Birdy fungerar",
+    "endHeadline": "Ta med Birdy *ut i fält.*",
+    "endSub": "Gratis att ladda ner. Inget konto. Fungerar utan täckning.",
+    "byline": "Albin Abrahamsson, AlbIT",
+    "indexTitle": "Fältanteckningar: artiklar om Birdy och fåglar | Birdy",
+    "indexDescription": "Läs om hur Birdy byggs, hur appen fungerar och fåglarna du kan upptäcka med den. Artiklar och guider på svenska."
+  },
   "faq": {
     "eyebrow": "FRÅGOR · BESVARADE",
     "headline": "Innan du *laddar ner.*",

@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import Kicker from './ui/Kicker.astro';
+import { fieldNoteHref, formatNoteDate, readingMinutes, type FieldNote } from '../lib/field-notes';
+import { getCopy } from '../lib/i18n';
+
+interface Props {
+  note: FieldNote;
+  /** large = photo beside the text (latest note); small = photo above the text (grid). */
+  size?: 'large' | 'small';
+  headingLevel?: 'h2' | 'h3';
+}
+const { note, size = 'small', headingLevel = 'h3' } = Astro.props;
+const { locale, title, description, category, date, image, imageAlt, imagePosition } = note.data;
+const t = getCopy(locale);
+const Heading = headingLevel;
+const minutes = t.blog.minRead.replace('{n}', String(readingMinutes(note.body)));
+---
+
+<a class:list={['ncard', `ncard--${size}`]} href={fieldNoteHref(note)}>
+  <div class="ncard-img">
+    <Image
+      src={image}
+      alt={imageAlt}
+      widths={size === 'large' ? [600, 900, 1300] : [400, 800]}
+      sizes={size === 'large' ? '(max-width: 760px) 100vw, 620px' : '(max-width: 760px) 100vw, 360px'}
+      style={imagePosition ? `object-position:${imagePosition}` : undefined}
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <div class="ncard-body">
+    <Kicker text={category} />
+    <Heading class="ncard-title">{title}</Heading>
+    {size === 'large' && <p class="ncard-desc">{description}</p>}
+    <p class="ncard-meta"><time datetime={date.toISOString().slice(0, 10)}>{formatNoteDate(date, locale)}</time> · {minutes}</p>
+  </div>
+</a>
+
+<style>
+  .ncard { display: grid; background: var(--card); border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); transition: transform .35s var(--ease-paper), box-shadow .35s var(--ease-paper); }
+  .ncard:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px var(--line), 0 18px 36px rgba(31, 42, 25, .12); }
+  .ncard-img { position: relative; overflow: hidden; }
+  .ncard-img :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+  .ncard-body { padding: 20px 20px 22px; }
+  .ncard-body :global(.kick) { margin-bottom: 8px; font-size: 10px; }
+  .ncard-title { font-size: 22px; line-height: 1.1; }
+  .ncard-desc { color: var(--muted); font-size: 15px; line-height: 1.6; margin: 14px 0 0; }
+  .ncard-meta { margin: 14px 0 0; font-size: 11.5px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+  .ncard--small .ncard-img { aspect-ratio: 4 / 3; }
+  .ncard--large { grid-template-columns: 1.2fr 1fr; }
+  .ncard--large .ncard-img { min-height: 320px; }
+  .ncard--large .ncard-body { padding: 36px; }
+  .ncard--large .ncard-body :global(.kick) { margin-bottom: 12px; font-size: 11px; }
+  .ncard--large .ncard-title { font-size: 34px; line-height: 1.05; }
+  .ncard--large .ncard-meta { margin-top: 22px; }
+  @media (max-width: 760px) {
+    .ncard--large { grid-template-columns: 1fr; }
+    .ncard--large .ncard-img { min-height: 200px; }
+    .ncard--large .ncard-body { padding: 24px; }
+    .ncard--large .ncard-title { font-size: 28px; }
+  }
+</style>

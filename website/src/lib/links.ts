@@ -9,3 +9,7 @@ export const LOOPLEAD_URL = 'https://looplead.se/';
 
 /** Contact address on the site. A bridge until feedback@birdy.community exists (CLAUDE.md, follow-up #2). */
 export const CONTACT_EMAIL = 'albin@abrahamssons.se';
+
+/** AlbIT AB, the company behind Birdy, and its founder (schema.org publisher, author and creator). */
+export const ALBIT_URL = 'https://www.albit.se/';
+export const ALBIN_URL = 'https://www.albit.se/om-albin/';

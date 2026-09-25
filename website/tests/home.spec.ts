@@ -350,3 +350,85 @@ test.describe('premium och integritet', () => {
     });
   }
 });
+
+test.describe('bloggen', () => {
+  for (const [prefix, minRead, allNotes] of [
+    ['/sv', 'min läsning', 'Alla fältanteckningar'],
+    ['', 'min read', 'All field notes'],
+  ] as const) {
+    test(`listan och inlägget med bild på ${prefix || 'EN'}`, async ({ page }) => {
+      const errors = trackConsoleErrors(page);
+      await page.goto(`${prefix}/blog/`);
+      await expect(page.locator('#site-nav')).toHaveClass(/nav--solid/);
+      const card = page.locator(`main a.ncard[href="${prefix}/blog/why-birdy/"]`);
+      await expect(card).toBeVisible();
+      await expect(card.locator('img')).toHaveAttribute('alt', /.+/);
+      await expect(card.locator('.ncard-meta')).toContainText(minRead);
+
+      await page.goto(`${prefix}/blog/why-birdy/`);
+      await expect(page.locator('.ahero img')).toBeVisible();
+      await expect(page.locator('.ahero .ameta')).toContainText(minRead);
+      await expect(page.locator('.article-prose blockquote')).toHaveCount(1);
+      await expect(page.locator('.aend a[href*="play.google.com"]')).toHaveCount(1);
+      await expect(page.locator('.aback a').first()).toContainText(allNotes);
+      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/_astro\/rodhake-q25334[^/]*\.jpg$/);
+
+      const albitHref = prefix === '/sv' ? 'https://www.albit.se/produkter/birdy/' : 'https://www.albit.se/en/products/birdy/';
+      await expect(page.locator('.ahero .aby a')).toHaveText('Albin Abrahamsson, AlbIT');
+      await expect(page.locator('.ahero .aby a')).toHaveAttribute('href', albitHref);
+
+      const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}');
+      const posting = ld['@graph'].find((n: { '@type': string }) => n['@type'] === 'BlogPosting');
+      expect(posting.author).toEqual({ '@type': 'Person', name: 'Albin Abrahamsson', url: 'https://www.albit.se/om-albin/' });
+      expect(posting.publisher).toEqual({ '@type': 'Organization', name: 'AlbIT AB', url: 'https://www.albit.se/' });
+
+      expect(errors).toEqual([]);
+    });
+  }
+
+  test('startsidan visar senaste inlägget som fotokort', async ({ page }) => {
+    await page.goto('/sv/');
+    await expect(page.locator('#field-notes a.ncard[href="/sv/blog/why-birdy/"] img')).toBeVisible();
+  });
+
+  test('appens strukturerade data har AlbIT som skapare', async ({ page }) => {
+    for (const path of ['/', '/sv/'] as const) {
+      await page.goto(path);
+      const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}');
+      const app = ld['@graph'].find((n: { '@type': string }) => n['@type'] === 'MobileApplication');
+      expect(app.creator.name, path).toBe('AlbIT AB');
+    }
+  });
+
+  test('webbplatskartan har lastmod för inläggen', async ({ page }) => {
+    const xml = await (await page.request.get('/sitemap-0.xml')).text();
+    const blocks = xml.match(/<url>[\s\S]*?<\/url>/g) ?? [];
+    const blockFor = (url: string) => blocks.find((b) => b.includes(`<loc>${url}</loc>`));
+    for (const url of ['https://birdy.community/blog/why-birdy/', 'https://birdy.community/sv/blog/why-birdy/']) {
+      const block = blockFor(url);
+      expect(block, url).toBeTruthy();
+      expect(block, url).toMatch(/<lastmod>2026-09-24/);
+    }
+    for (const url of ['https://birdy.community/', 'https://birdy.community/sv/']) {
+      const block = blockFor(url);
+      expect(block, url).toBeTruthy();
+      expect(block, url).not.toMatch(/<lastmod>/);
+    }
+  });
+
+  for (const [width, height] of [[390, 844], [1440, 900]] as const) {
+    test(`menyn på inlägget blir mossgrön innan rubriken når den i ${width}×${height}`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto('/sv/blog/why-birdy/');
+      const nav = page.locator('#site-nav');
+      const navH = await nav.evaluate((n) => n.getBoundingClientRect().height);
+      const inTop = await page.locator('.ahero .in').evaluate((c) => c.getBoundingClientRect().top + scrollY);
+      const settle = () => page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), Math.max(0, inTop - navH - 30));
+      await settle();
+      await expect(nav).not.toHaveClass(/is-solid/);
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), inTop - navH + 2);
+      await expect(nav).toHaveClass(/is-solid/);
+    });
+  }
+});

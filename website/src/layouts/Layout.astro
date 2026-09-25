@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
 import { getCopy, alternateHref, type Locale } from '../lib/i18n';
+import { ALBIT_URL, ALBIN_URL } from '../lib/links';
 
 interface Props {
   locale: Locale;
@@ -25,6 +26,7 @@ const canonical = new URL(pathname, Astro.site).toString();
 const ogImageUrl = new URL(ogImage ?? `/og-field-${locale}.png`, Astro.site).toString();
 const ogAlt = ogImageAlt ?? (ogImage ? metaTitle : copy.alt.panorama);
 const englishPath = locale === 'en' ? pathname : altPath;
+const albit = { '@type': 'Organization', name: 'AlbIT AB', url: ALBIT_URL };
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -46,6 +48,7 @@ const jsonLd = {
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'SEK' },
       inLanguage: locale,
       image: ogImageUrl,
+      creator: albit,
     }] : []),
     ...(articleDate ? [{
       '@type': 'BlogPosting',
@@ -54,8 +57,8 @@ const jsonLd = {
       datePublished: articleDate,
       inLanguage: locale,
       mainEntityOfPage: canonical,
-      author: { '@type': 'Organization', name: 'Birdy' },
-      publisher: { '@type': 'Organization', name: 'Birdy' },
+      author: { '@type': 'Person', name: 'Albin Abrahamsson', url: ALBIN_URL },
+      publisher: albit,
       image: ogImageUrl,
     }] : []),
     ...((pathname === '/' || pathname === '/sv/') ? [{

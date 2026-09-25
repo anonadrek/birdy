@@ -48,12 +48,14 @@ test.describe('SV landing /sv/', () => {
 });
 
 test.describe('Field Notes', () => {
-  test('Swedish pages fit a narrow mobile viewport', async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
-    for (const path of ['/sv/', '/sv/blog/', '/sv/blog/why-birdy/']) {
-      await page.goto(path);
-      const width = await page.evaluate(() => document.documentElement.scrollWidth);
-      expect(width, `${path} should not overflow horizontally`).toBeLessThanOrEqual(390);
+  test('pages fit a narrow mobile viewport (SV and EN)', async ({ page }) => {
+    for (const width of [360, 390]) {
+      await page.setViewportSize({ width, height: 844 });
+      for (const path of ['/sv/', '/sv/blog/', '/sv/blog/why-birdy/', '/', '/blog/', '/blog/why-birdy/']) {
+        await page.goto(path);
+        const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+        expect(scrollWidth, `${path} at ${width}px should not overflow horizontally`).toBeLessThanOrEqual(width);
+      }
     }
   });
 

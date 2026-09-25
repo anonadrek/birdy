@@ -225,6 +225,24 @@
     ],
     "policyLink": "Read the privacy policy"
   },
+  "fieldNotes": {
+    "kicker": "Field notes",
+    "headline": "From *the field journal.*",
+    "all": "All field notes"
+  },
+  "blog": {
+    "kicker": "Field notes",
+    "headline": "Notes *from the field.*",
+    "lead": "About the birds we meet, how Birdy works and why it is built the way it is.",
+    "minRead": "{n} min read",
+    "allNotes": "All field notes",
+    "seeHow": "See how Birdy works",
+    "endHeadline": "Take Birdy *into the field.*",
+    "endSub": "Free to download. No account. Works without a signal.",
+    "byline": "Albin Abrahamsson, AlbIT",
+    "indexTitle": "Field Notes: articles about Birdy and birds | Birdy",
+    "indexDescription": "Read how Birdy is built, how the app works and the birds you can discover with it. Articles and guides in English."
+  },
   "faq": {
     "eyebrow": "QUESTIONS · ANSWERED",
     "headline": "Before you *download.*",
