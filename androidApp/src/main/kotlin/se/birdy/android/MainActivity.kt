@@ -94,6 +94,9 @@ class MainActivity : AppCompatActivity() {
             extraBufferCapacity = 4,
         )
 
+    /** Last `birdy://` URI forwarded this task, persisted across recreate. */
+    private var lastForwardedDeepLink: String? = null
+
     private val requestPermLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
             lifecycleScope.launch {
@@ -261,11 +264,14 @@ class MainActivity : AppCompatActivity() {
         // enqueue whenever effectivePremiumActive flips false→true (cancelled with lifecycleScope).
         appGraph.premiumActivationListener.start(lifecycleScope)
         setContent { App(appGraph) }
-        // Only forward the launch intent's deep link on a genuinely fresh start: a recreation
-        // (e.g. the in-app language switch, or a process-death restore) must not replay an old
-        // notification link on top of whatever the NavHost's restored back stack already shows.
+        // Skip a recreate of the same already-handled link (language switch, process-death
+        // restore) and Recents relaunches. A fresh notification tap after process death still
+        // arrives here — onNewIntent does not run when the process was gone — so compare URIs
+        // instead of treating any savedInstanceState as a skip.
+        lastForwardedDeepLink = savedInstanceState?.getString(STATE_LAST_FORWARDED_DEEP_LINK)
         val launchedFromHistory = (intent?.flags ?: 0) and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
-        if (savedInstanceState == null && !launchedFromHistory) {
+        val incomingDeepLink = intent?.data?.takeIf { it.scheme == "birdy" }?.toString()
+        if (!launchedFromHistory && incomingDeepLink != null && incomingDeepLink != lastForwardedDeepLink) {
             intent?.let { handleDeepLink(it) }
         }
         lifecycleScope.launch {
@@ -289,10 +295,17 @@ class MainActivity : AppCompatActivity() {
         handleDeepLink(intent)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        lastForwardedDeepLink?.let { outState.putString(STATE_LAST_FORWARDED_DEEP_LINK, it) }
+    }
+
     private fun handleDeepLink(intent: Intent) {
         val uri = intent.data ?: return
         if (uri.scheme != "birdy") return
-        deepLinkFlow.tryEmit(uri.toString())
+        val uriString = uri.toString()
+        lastForwardedDeepLink = uriString
+        deepLinkFlow.tryEmit(uriString)
     }
 
     override fun onDestroy() {
@@ -693,5 +706,6 @@ class MainActivity : AppCompatActivity() {
 
     private companion object {
         private const val ONE_HOUR_MS = 60L * 60L * 1000L
+        private const val STATE_LAST_FORWARDED_DEEP_LINK = "last_forwarded_deep_link"
     }
 }
