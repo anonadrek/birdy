@@ -247,6 +247,7 @@ test.describe('appkarusellen', () => {
     await tour.scrollIntoViewIfNeeded();
     const title = tour.locator('[data-ch]');
     await expect(title).toHaveText('Tre sätt att fånga');
+    await expect(tour.locator('[data-cp]')).toBeHidden();
     await tour.locator('[data-next]').click();
     await expect(title).toHaveText('Ärlig om hur säker den är');
     await tour.locator('[data-next]').click();
@@ -270,7 +271,38 @@ test.describe('appkarusellen', () => {
     await page.goto('/sv/');
     await page.locator('#app').scrollIntoViewIfNeeded();
     await expect.poll(() => page.locator('#app img').evaluateAll((imgs) =>
+      imgs.every((img) => (img as HTMLImageElement).loading === 'eager'))).toBe(true);
+    await expect.poll(() => page.locator('#app img').evaluateAll((imgs) =>
       imgs.every((img) => (img as HTMLImageElement).complete && (img as HTMLImageElement).naturalWidth > 0))).toBe(true);
+  });
+
+  test('ett musklick på grannen centrerar den', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const tour = page.locator('#app');
+    await tour.scrollIntoViewIfNeeded();
+    const neighbor = tour.locator('.slide').nth(1);
+    const box = (await neighbor.boundingBox())!;
+    await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+    await expect(tour.locator('[data-ch]')).toHaveText('Ärlig om hur säker den är');
+  });
+
+  test('bildtexten har samma höjd på alla skärmar', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    for (const path of ['/sv/', '/']) {
+      await page.goto(path);
+      const tour = page.locator('#app');
+      await tour.scrollIntoViewIfNeeded();
+      const cap = tour.locator('.cap');
+      const heights: number[] = [(await cap.boundingBox())!.height];
+      for (let i = 1; i <= 7; i++) {
+        await tour.locator('[data-next]').click();
+        const expected = await tour.locator('.slide').nth(i).getAttribute('data-h');
+        await expect(tour.locator('[data-ch]')).toHaveText(expected ?? '');
+        heights.push((await cap.boundingBox())!.height);
+      }
+      expect(Math.max(...heights) - Math.min(...heights), path).toBeLessThanOrEqual(1);
+    }
   });
 
   test.describe('med minskad rörelse', () => {
@@ -282,6 +314,15 @@ test.describe('appkarusellen', () => {
       expect(transforms.every((t) => t === 'none')).toBe(true);
       // Reduced motion shortens every animation to 0.01 ms, but each still needs a frame to finish; poll until none run.
       await expect.poll(() => page.evaluate(() => document.getAnimations().filter((a) => a.playState === 'running').length)).toBe(0);
+    });
+  });
+
+  test.describe('utan JavaScript', () => {
+    test.use({ javaScriptEnabled: false });
+    test('bildtextlistan visar alla åtta skärmar', async ({ page }) => {
+      await page.goto('/sv/');
+      await expect(page.locator('#app .cap-list li')).toHaveCount(8);
+      await expect(page.locator('#app .foot')).toBeHidden();
     });
   });
 });

@@ -12,10 +12,14 @@ if (root && track) {
   const ch = root.querySelector<HTMLElement>('[data-ch]');
   const cpp = root.querySelector<HTMLElement>('[data-cpp]');
   const cp = root.querySelector<HTMLElement>('[data-cp]');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prevBtn = root.querySelector<HTMLButtonElement>('[data-prev]');
+  const nextBtn = root.querySelector<HTMLButtonElement>('[data-next]');
+  const rm = matchMedia('(prefers-reduced-motion: reduce)');
   let active = 0;
+  let target = 0;
   let raf = 0;
   let moved = false;
+  let capTimer = 0;
 
   const centerOf = (s: HTMLElement) => s.offsetLeft + s.offsetWidth / 2;
 
@@ -28,46 +32,76 @@ if (root && track) {
       if (cp) cp.hidden = !s.dataset.premium;
       capInner?.classList.remove('out');
     };
-    if (reduce) { apply(); return; }
+    clearTimeout(capTimer);
+    if (rm.matches) { apply(); return; }
     capInner?.classList.add('out');
-    setTimeout(apply, 160);
+    capTimer = window.setTimeout(apply, 160);
+  };
+
+  const setArrows = () => {
+    prevBtn?.setAttribute('aria-disabled', target <= 0 ? 'true' : 'false');
+    nextBtn?.setAttribute('aria-disabled', target >= slides.length - 1 ? 'true' : 'false');
   };
 
   const frame = () => {
     raf = 0;
+    // Read phase: every slide's distance from centre, plus the scroll progress. No writes yet,
+    // so this never forces a synchronous layout in between reads.
     const mid = track.scrollLeft + track.clientWidth / 2;
     const step = slides.length > 1 ? centerOf(slides[1]) - centerOf(slides[0]) : 1;
+    const ds: number[] = [];
     let best = 0;
     let bestDist = Infinity;
     slides.forEach((s, i) => {
       const d = (centerOf(s) - mid) / step;
-      const a = Math.min(Math.abs(d), 1.4);
-      if (!reduce) {
-        s.style.transform = `translate3d(0, ${(a * 22).toFixed(2)}px, 0) scale(${(1 - a * 0.13).toFixed(4)}) rotate(${(Math.max(-1.4, Math.min(1.4, d)) * -2.2).toFixed(2)}deg)`;
-        s.style.opacity = (1 - Math.min(a, 1) * 0.55).toFixed(3);
-      }
+      ds.push(d);
       if (Math.abs(d) < bestDist) { bestDist = Math.abs(d); best = i; }
     });
     const progress = track.scrollLeft / Math.max(1, track.scrollWidth - track.clientWidth);
+
+    // Write phase.
+    if (!rm.matches) {
+      slides.forEach((s, i) => {
+        const d = ds[i];
+        const a = Math.min(Math.abs(d), 1.4);
+        s.style.transform = `translate3d(0, ${(a * 22).toFixed(2)}px, 0) scale(${(1 - a * 0.13).toFixed(4)}) rotate(${(Math.max(-1.4, Math.min(1.4, d)) * -2.2).toFixed(2)}deg)`;
+        s.style.opacity = (1 - Math.min(a, 1) * 0.55).toFixed(3);
+      });
+    }
     rail?.style.setProperty('--p', (progress * (slides.length - 1)).toFixed(4));
     if (best !== active) { active = best; setCaption(best); }
   };
   const schedule = () => { if (!raf) raf = requestAnimationFrame(frame); };
 
   const go = (i: number) => {
-    const target = Math.max(0, Math.min(slides.length - 1, i));
-    track.scrollTo({ left: centerOf(slides[target]) - track.clientWidth / 2, behavior: reduce ? 'auto' : 'smooth' });
+    target = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: centerOf(slides[target]) - track.clientWidth / 2, behavior: rm.matches ? 'auto' : 'smooth' });
+    setArrows();
   };
 
   track.addEventListener('scroll', schedule, { passive: true });
+  // Once scrolling has genuinely finished (including any CSS scroll-snap settling), resync target
+  // to wherever it actually landed, so a stray earlier target doesn't leave an arrow wrongly
+  // disabled. `scrollend` (unlike a fixed-delay debounce) only fires once the browser itself is
+  // sure nothing is still moving, so it stays correct even when frames are dropped under load.
+  track.addEventListener('scrollend', () => { target = active; setArrows(); }, { passive: true });
   addEventListener('resize', schedule, { passive: true });
-  root.querySelector('[data-prev]')?.addEventListener('click', () => go(active - 1));
-  root.querySelector('[data-next]')?.addEventListener('click', () => go(active + 1));
+  prevBtn?.addEventListener('click', () => go(target - 1));
+  nextBtn?.addEventListener('click', () => go(target + 1));
   track.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') { e.preventDefault(); go(active + 1); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); go(active - 1); }
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(target + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); go(target - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
   });
-  slides.forEach((s, i) => s.addEventListener('click', () => { if (!moved && i !== active) go(i); }));
+  // Pointer capture during a mouse drag sends the click to the track, so find the slide under the pointer.
+  track.addEventListener('click', (e) => {
+    if (moved) return;
+    const el = document.elementFromPoint(e.clientX, e.clientY)?.closest<HTMLElement>('.slide');
+    const i = el ? slides.indexOf(el) : -1;
+    if (i >= 0 && i !== active) go(i);
+  });
 
   let down = false;
   let startX = 0;
@@ -94,12 +128,12 @@ if (root && track) {
     if (!down) return;
     down = false;
     if (!moved) return;
-    track.classList.remove('dragging');
     const mid = track.scrollLeft + track.clientWidth / 2 - velocity * 180;
     let best = 0;
     let bestDist = Infinity;
     slides.forEach((s, i) => { const d = Math.abs(centerOf(s) - mid); if (d < bestDist) { bestDist = d; best = i; } });
     go(best);
+    track.classList.remove('dragging');
     setTimeout(() => { moved = false; }, 50);
   };
   track.addEventListener('pointerup', end);
@@ -117,6 +151,7 @@ if (root && track) {
     preload.observe(root);
   }
 
+  setArrows();
   frame();
 }
 

@@ -75,21 +75,21 @@
       "hint2": "Birdy stops by itself when it is sure."
     },
     "journal": {
-      "label": "Birdy's field journal with 24 species and this week's spread",
-      "kicker": "My species",
+      "label": "Birdy's field journal with 24 species and this week's page",
+      "kicker": "Lifelist",
       "headline": "Your *field journal.*",
       "stats": [
         { "value": "24", "label": "species" },
-        { "value": "9", "label": "badges" },
+        { "value": "9", "label": "stamps" },
         { "value": "5", "label": "day streak" }
       ],
-      "weekLabel": "This week's spread",
+      "weekLabel": "This week's page",
       "weekSpecies": "Eurasian Bullfinch",
       "entries": [
         { "no": "24", "species": "Eurasian Bullfinch", "when": "12 Jan · Hagaparken" },
-        { "no": "23", "species": "Great Tit", "when": "10 Jan · Garden" },
-        { "no": "22", "species": "Bohemian Waxwing", "when": "8 Jan · Town centre" },
-        { "no": "21", "species": "Long-tailed Tit", "when": "6 Jan · Forest trail" }
+        { "no": "23", "species": "Great Tit", "when": "10 Jan · Trädgården" },
+        { "no": "22", "species": "Bohemian Waxwing", "when": "8 Jan · Centrum" },
+        { "no": "21", "species": "Long-tailed Tit", "when": "6 Jan · Skogsstigen" }
       ]
     },
     "species": {
@@ -132,7 +132,7 @@
       "mostSeen": "Most seen",
       "top": [
         { "name": "Great Tit", "count": "12" },
-        { "name": "Blackbird", "count": "8" }
+        { "name": "Common Blackbird", "count": "8" }
       ]
     },
     "premiumBadge": "Premium"

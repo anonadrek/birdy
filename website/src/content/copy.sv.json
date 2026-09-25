@@ -80,8 +80,8 @@
       "headline": "Din *fältbok.*",
       "stats": [
         { "value": "24", "label": "arter" },
-        { "value": "9", "label": "märken" },
-        { "value": "5", "label": "dagar i rad" }
+        { "value": "9", "label": "stämplar" },
+        { "value": "5", "label": "dagars svit" }
       ],
       "weekLabel": "Veckans uppslag",
       "weekSpecies": "Domherre",

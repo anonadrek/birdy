@@ -34,7 +34,7 @@ const first = slides[0];
     <JournalHeadline text={t.tour.headline} level="h2" size="clamp(34px, 4.4vw, 52px)" />
     <p>{t.tour.lead}</p>
   </div>
-  <ul class="track" tabindex="0" aria-label={t.tour.label} data-track>
+  <ul class="track" tabindex="0" role="list" aria-label={t.tour.label} data-track>
     <li class="slide" {...slideData(0)}><PhoneFrame label={p.identify.label}><IdentifyScreen copy={p.identify} /></PhoneFrame></li>
     <li class="slide" {...slideData(1)}><PhoneFrame label={p.matchTour.label}><MatchScreen photo={bullfinch} photoPosition="40% 35%" copy={{ ...p.match, ...p.matchTour }} confidence={91} /></PhoneFrame></li>
     <li class="slide" {...slideData(2)}><PhoneFrame label={p.listen.label}><ListenScreen copy={p.listen} /></PhoneFrame></li>
@@ -46,16 +46,26 @@ const first = slides[0];
   </ul>
   <div class="foot">
     <button class="arrow" type="button" data-prev aria-label={t.tour.prev}><Icon name="arrow-left" /></button>
-    <div class="cap" aria-live="polite">
+    <div class="cap" aria-live="polite" aria-atomic="true">
       <div class="cap-inner" data-cap>
         <p class="kick kick--center"><span class="kick-line" aria-hidden="true"></span><span data-ck>{first.k}</span><span class="pr2" data-cp hidden={!first.premium}>{t.tour.premium}</span><span class="kick-line" aria-hidden="true"></span></p>
         <h3 data-ch>{first.h}</h3>
         <p class="cap-text" data-cpp>{first.p}</p>
       </div>
+      {slides.map((s) => (
+        <div class="cap-sizer" aria-hidden="true">
+          <p class="kick kick--center"><span class="kick-line"></span><span>{s.k}</span>{s.premium && <span class="pr2">{t.tour.premium}</span>}<span class="kick-line"></span></p>
+          <p class="cap-h">{s.h}</p>
+          <p class="cap-text">{s.p}</p>
+        </div>
+      ))}
     </div>
     <button class="arrow" type="button" data-next aria-label={t.tour.next}><Icon name="arrow-right" /></button>
   </div>
-  <div class="rail" style="--n:8;--p:0" data-rail aria-hidden="true"><span></span></div>
+  <noscript>
+    <ol class="cap-list">{slides.map((s) => <li><span class="kick">{s.k}</span><b>{s.h}</b><span>{s.p}</span></li>)}</ol>
+  </noscript>
+  <div class="rail" style={`--n:${slides.length};--p:0`} data-rail aria-hidden="true"><span></span></div>
 </section>
 
 <script>
@@ -66,24 +76,37 @@ const first = slides[0];
   .tour { position: relative; overflow: hidden; color: #F2EADC; background: radial-gradient(90% 70% at 50% 45%, var(--moss-2) 0%, var(--moss) 55%, var(--moss-deep) 100%); padding: 96px 0 70px; --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); }
   .tour::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(242, 234, 220, .05) 1px, transparent 1.2px); background-size: 18px 18px; pointer-events: none; }
   .tour :global(:focus-visible) { outline-color: var(--apricot); }
+  .track:focus-visible { outline-offset: -3px; }
   .tour-head { position: relative; text-align: center; padding: 0 24px; }
   .tour-head p { margin: 14px auto 0; max-width: 480px; font-size: 15px; line-height: 1.6; color: rgba(242, 234, 220, .72); }
   .track { --w: 250px; --gap: 34px; position: relative; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; margin: 0; padding: 40px calc(50% - var(--w) / 2) 34px; scrollbar-width: none; cursor: grab; overscroll-behavior-x: contain; }
   .track::-webkit-scrollbar { display: none; }
   .track:global(.dragging) { cursor: grabbing; scroll-snap-type: none; }
   .slide { flex: 0 0 var(--w); scroll-snap-align: center; will-change: transform, opacity; transform-origin: 50% 60%; }
+  @media (prefers-reduced-motion: reduce) { .slide { will-change: auto; } }
   .foot { position: relative; display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; gap: 18px; max-width: 640px; margin: 0 auto; padding: 0 24px; }
   .arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(242, 234, 220, .28); background: transparent; color: #F2EADC; display: grid; place-items: center; cursor: pointer; transition: background .25s, border-color .25s, transform .25s; }
-  .arrow:hover { background: rgba(242, 234, 220, .1); border-color: var(--apricot); }
+  .arrow:hover:not([aria-disabled="true"]) { background: rgba(242, 234, 220, .1); border-color: var(--apricot); }
   .arrow:active { transform: scale(.94); }
-  .cap { text-align: center; min-height: 92px; }
+  .arrow[aria-disabled="true"] { opacity: .35; cursor: default; }
+  .cap { display: grid; text-align: center; min-height: 92px; }
+  .cap > * { grid-area: 1 / 1; }
   .cap-inner { transition: opacity .35s var(--ease-paper), transform .35s var(--ease-paper); }
   .cap-inner:global(.out) { opacity: 0; transform: translateY(6px); }
+  .cap-sizer { visibility: hidden; pointer-events: none; }
   .cap .kick { margin-bottom: 6px; }
   .pr2 { color: var(--brass-ink); background: var(--brass-hi); padding: 2px 7px; border-radius: 10px; letter-spacing: .1em; font-size: 8.5px; margin-left: 4px; }
-  .cap h3 { font-size: 26px; color: var(--cream); }
+  .cap h3, .cap-h { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1.15; color: var(--cream); text-wrap: balance; }
   .cap-text { margin: 6px 0 0; font-size: 14px; color: rgba(242, 234, 220, .72); line-height: 1.5; }
   .rail { position: relative; width: 200px; height: 2px; margin: 20px auto 0; background: rgba(242, 234, 220, .15); border-radius: 2px; overflow: hidden; }
   .rail span { position: absolute; top: 0; bottom: 0; width: calc(100% / var(--n)); background: var(--apricot); border-radius: 2px; transform: translateX(calc(var(--p) * 100%)); }
   @media (max-width: 760px) { .track { --gap: 22px; } }
+
+  /* No-JS fallback: the scroller still works with native horizontal scrolling, but the shared
+     caption can only ever show the first slide, so read the copy as a plain list instead and
+     drop the now-nonfunctional arrows/caption/rail. */
+  .tour :global(.cap-list) { list-style: none; margin: 0 auto; padding: 0; max-width: 640px; text-align: center; display: grid; gap: 28px; }
+  .tour :global(.cap-list b) { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1.15; color: var(--cream); margin: 4px 0 6px; text-wrap: balance; }
+  .tour :global(.cap-list li span:last-child) { display: block; font-size: 14px; color: rgba(242, 234, 220, .72); line-height: 1.5; }
+  :global(html:not(.js)) .foot, :global(html:not(.js)) .rail { display: none; }
 </style>
