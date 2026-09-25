@@ -64,7 +64,7 @@ for (const [fg, bg, min] of pairs) {
 // Genomskinliga textfärger: några komponenter skriver texten som rgba(...) direkt i <style>
 // (inte en token), så vakten ovan ser dem aldrig. De alfa-blandas här mot den riktiga bakgrunden
 // (c = a*fg + (1-a)*bg per kanal) innan samma WCAG-kontroll körs. Ändras en av rgba()-färgerna
-// eller bakgrunden i Footer.astro/Premium.astro, uppdatera paret här också — varje CSS-regel har
+// eller bakgrunden i Footer.astro/Premium.astro/AppTour.astro, uppdatera paret här också — varje CSS-regel har
 // en kommentar ("alpha checked in scripts/check-contrast.mjs") som pekar tillbaka hit.
 const hexToRgb = (hex) => {
   const n = parseInt(hex.slice(1), 16);
@@ -78,6 +78,7 @@ const ratioRgb = (a, b) => {
 const compositeOver = (fg, alpha, bg) => fg.map((c, i) => alpha * c + (1 - alpha) * bg[i]);
 
 const mossDeep = tokens['moss-deep'] ? hexToRgb(tokens['moss-deep']) : null;
+const moss2 = tokens['moss-2'] ? hexToRgb(tokens['moss-2']) : null;
 // Ljusaste punkten i Premiums mossgröna gradient (mossa + mässingsglöden från .prem::before,
 // mätt mitt i den radiella höjdpunkten) — finns inte som token, bara ett uppmätt läge.
 const premiumGradientLight = hexToRgb('#323822');
@@ -87,6 +88,8 @@ const compositedPairs = [
   { label: 'Footer .sib-kick', fg: [233, 226, 210], alpha: 0.6, bg: mossDeep, min: 4.5 },
   { label: 'Premium .pnote', fg: [242, 234, 220], alpha: 0.62, bg: premiumGradientLight, min: 4.5 },
   { label: 'Premium .feat p', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
+  { label: 'AppTour .cap-text', fg: [242, 234, 220], alpha: 0.72, bg: moss2, min: 4.5 },
+  { label: 'AppTour .tour-lead', fg: [242, 234, 220], alpha: 0.72, bg: moss2, min: 4.5 },
 ];
 
 for (const { label, fg, alpha, bg, min } of compositedPairs) {

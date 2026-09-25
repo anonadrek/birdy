@@ -267,13 +267,15 @@ test.describe('så funkar det och fältboken', () => {
         expect(phone.y + phone.height, 'telefonens underkant').toBeLessThan(kick.y);
       });
     }
-    test('inget sidledes scroll på 360 px', async ({ page }) => {
-      await page.setViewportSize({ width: 360, height: 780 });
-      for (const path of ['/sv/', '/']) {
-        await page.goto(path);
-        expect(await page.evaluate(() => document.documentElement.scrollWidth), path).toBeLessThanOrEqual(360);
-      }
-    });
+    for (const width of [320, 360]) {
+      test(`inget sidledes scroll på ${width} px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 780 });
+        for (const path of ['/sv/', '/']) {
+          await page.goto(path);
+          expect(await page.evaluate(() => document.documentElement.scrollWidth), path).toBeLessThanOrEqual(width);
+        }
+      });
+    }
   });
 });
 
@@ -327,21 +329,37 @@ test.describe('appkarusellen', () => {
     await expect(tour.locator('[data-ch]')).toHaveText('Ärlig om hur säker den är');
   });
 
-  test('bildtexten har samma höjd på alla skärmar', async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
+  for (const width of [320, 390]) {
+    test(`bildtexten har samma höjd på alla skärmar (${width} px)`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      for (const path of ['/sv/', '/']) {
+        await page.goto(path);
+        const tour = page.locator('#app');
+        await tour.scrollIntoViewIfNeeded();
+        const cap = tour.locator('.cap');
+        const heights: number[] = [(await cap.boundingBox())!.height];
+        for (let i = 1; i <= 7; i++) {
+          await tour.locator('[data-next]').click();
+          const expected = await tour.locator('.slide').nth(i).getAttribute('data-h');
+          await expect(tour.locator('[data-ch]')).toHaveText(expected ?? '');
+          heights.push((await cap.boundingBox())!.height);
+        }
+        expect(Math.max(...heights) - Math.min(...heights), path).toBeLessThanOrEqual(1);
+      }
+    });
+  }
+
+  test('pilarna syns helt i 320 px', async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 700 });
     for (const path of ['/sv/', '/']) {
       await page.goto(path);
       const tour = page.locator('#app');
       await tour.scrollIntoViewIfNeeded();
-      const cap = tour.locator('.cap');
-      const heights: number[] = [(await cap.boundingBox())!.height];
-      for (let i = 1; i <= 7; i++) {
-        await tour.locator('[data-next]').click();
-        const expected = await tour.locator('.slide').nth(i).getAttribute('data-h');
-        await expect(tour.locator('[data-ch]')).toHaveText(expected ?? '');
-        heights.push((await cap.boundingBox())!.height);
+      for (const sel of ['[data-prev]', '[data-next]']) {
+        const box = (await tour.locator(sel).boundingBox())!;
+        expect(box.x, `${path} ${sel} x`).toBeGreaterThanOrEqual(0);
+        expect(box.x + box.width, `${path} ${sel} x+width`).toBeLessThanOrEqual(320);
       }
-      expect(Math.max(...heights) - Math.min(...heights), path).toBeLessThanOrEqual(1);
     }
   });
 

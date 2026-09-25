@@ -78,13 +78,14 @@ const first = slides[0];
   .tour :global(:focus-visible) { outline-color: var(--apricot); }
   .track:focus-visible { outline-offset: -3px; }
   .tour-head { position: relative; text-align: center; padding: 0 24px; }
+  /* alpha checked in scripts/check-contrast.mjs */
   .tour-head .tour-lead { margin: 14px auto 0; max-width: 480px; font-size: 15px; line-height: 1.6; color: rgba(242, 234, 220, .72); }
   .track { --w: 250px; --gap: 34px; position: relative; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; margin: 0; padding: 40px calc(50% - var(--w) / 2) 34px; scrollbar-width: none; cursor: grab; overscroll-behavior-x: contain; }
   .track::-webkit-scrollbar { display: none; }
   .track:global(.dragging) { cursor: grabbing; scroll-snap-type: none; }
   .slide { flex: 0 0 var(--w); scroll-snap-align: center; will-change: transform, opacity; transform-origin: 50% 60%; }
   @media (prefers-reduced-motion: reduce) { .slide { will-change: auto; } }
-  .foot { position: relative; display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; gap: 18px; max-width: 640px; margin: 0 auto; padding: 0 24px; }
+  .foot { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 18px; max-width: 640px; margin: 0 auto; padding: 0 24px; }
   .arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(242, 234, 220, .28); background: transparent; color: #F2EADC; display: grid; place-items: center; cursor: pointer; transition: background .25s, border-color .25s, transform .25s; }
   .arrow:hover:not([aria-disabled="true"]) { background: rgba(242, 234, 220, .1); border-color: var(--apricot); }
   .arrow:active { transform: scale(.94); }
@@ -94,13 +95,14 @@ const first = slides[0];
   .cap-inner { transition: opacity .35s var(--ease-paper), transform .35s var(--ease-paper); }
   .cap-inner:global(.out) { opacity: 0; transform: translateY(6px); }
   .cap-sizer { visibility: hidden; pointer-events: none; }
-  .cap .kick { margin-bottom: 6px; }
+  .cap .kick { margin-bottom: 6px; flex-wrap: wrap; row-gap: 4px; }
   .tour :global(.pr2) { color: var(--brass-ink); background: var(--brass-hi); padding: 2px 7px; border-radius: 10px; letter-spacing: .1em; font-size: 8.5px; margin-left: 4px; }
   .cap h3, .cap-h { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1.15; color: var(--cream); text-wrap: balance; }
+  /* alpha checked in scripts/check-contrast.mjs */
   .cap-text { margin: 6px 0 0; font-size: 14px; color: rgba(242, 234, 220, .72); line-height: 1.5; }
   .rail { position: relative; width: 200px; height: 2px; margin: 20px auto 0; background: rgba(242, 234, 220, .15); border-radius: 2px; overflow: hidden; }
   .rail span { position: absolute; top: 0; bottom: 0; width: calc(100% / var(--n)); background: var(--apricot); border-radius: 2px; transform: translateX(calc(var(--p) * 100%)); }
-  @media (max-width: 760px) { .track { --gap: 22px; } }
+  @media (max-width: 760px) { .track { --gap: 22px; } .foot { gap: 10px; padding: 0 16px; } }
 
   /* No-JS fallback: the scroller still works with native horizontal scrolling, but the shared
      caption can only ever show the first slide, so read the copy as a plain list instead and

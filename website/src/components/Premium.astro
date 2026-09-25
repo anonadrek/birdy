@@ -46,7 +46,7 @@ const icons = ['map', 'pdf', 'chart', 'badge'] as const;
   .feat h3 { font-size: 21px; color: var(--cream); }
   /* alpha checked in scripts/check-contrast.mjs */
   .feat p { margin: 3px 0 0; font-size: 13.5px; color: rgba(242, 234, 220, .66); }
-  .pseal { position: absolute; z-index: 3; right: 9%; top: -46px; width: 92px; height: 92px; font-size: 17px; transform: rotate(-10deg); }
+  .pseal { position: absolute; z-index: 3; right: max(9%, calc((100% - 1160px) / 2 - 20px)); top: -46px; width: 92px; height: 92px; font-size: 17px; transform: rotate(-10deg); }
   @media (max-width: 760px) {
     .grid { grid-template-columns: 1fr; gap: 40px; }
     .pseal { right: 20px; top: -40px; width: 74px; height: 74px; font-size: 14px; }

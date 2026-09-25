@@ -4951,7 +4951,14 @@ Blir det konflikt i `CLAUDE.md`: behåll texten från `origin/main` och lägg ti
 
 - [ ] **Step 2: Sista kontroll**
 
-Kör Task 14 Step 1 (hela gaten) och Step 4 (sakpåståenden, nu mot `origin/main` om release-grenen redan är ihopslagen, annars mot `origin/release/1.3.0`). Allt ska vara grönt och stämma.
+Kör Task 14 Step 1 (hela gaten) och Step 4 (sakpåståenden, nu mot `origin/main` om release-grenen redan är ihopslagen, annars mot `origin/release/1.3.0`). Allt ska vara grönt och stämma. Kör Playwright-delen på en privat port, till exempel `PLAYWRIGHT_CHANNEL=chrome PLAYWRIGHT_PORT=4741 npx playwright test` — standardporten 4321 kan redan vara upptagen av en annan sessions server.
+
+Sakpåståendekontrollen (Step 4) ska den här gången också bekräfta tre saker på releasegrenen:
+- att appens egna "3 sekunder"/"3-second"-strängar (`listen_card_audio_body`, `onboarding_s3_sub`, `audio_no_bird_hint_3`) är ändrade;
+- att Premium-teasers (`premium_archive_subtitle`, `premium_species_subtitle`) inte längre lovar molnsynk, flera foton, en migrationskarta eller läten;
+- att 1.3.0-looken (Plan 2) finns i produktionsbygget, eftersom karusellen visar den.
+
+Stämmer något av detta inte: stoppa och fråga Albin innan sajten går live.
 
 - [ ] **Step 3: Publicera**
 
@@ -4963,10 +4970,23 @@ Förväntat: den andra pushen är en snabbspolning av `main`. Avvisas den (main 
 - [ ] **Step 4: Kontrollera live**
 
 ```bash
-sleep 150
+node -e "
+(async () => {
+  for (let i = 0; i < 30; i++) {
+    try {
+      const html = await (await fetch('https://birdy.community/sv/')).text();
+      if (html.includes('Fågelguide och fältdagbok')) { console.log('LIVE efter', i * 10, 's'); process.exit(0); }
+    } catch (e) {}
+    await new Promise((r) => setTimeout(r, 10000));
+  }
+  console.error('TIMEOUT: sidan visade inte den nya texten inom 5 minuter');
+  process.exit(1);
+})();
+"
 for p in / /sv/ /blog/ /sv/blog/why-birdy/ /legal/privacy/; do printf '%s ' "$p"; curl -s -o /dev/null -w '%{http_code}\n' "https://birdy.community$p"; done
 curl -s https://birdy.community/sv/ | grep -c "Fågelguide och fältdagbok"
 ```
+(Foreground `sleep` kan vara blockerad i den miljö det här körs i — pollingen ovan är en Node-process, inte ett `sleep`-kommando, och funkar oavsett.)
 Förväntat: `200` för alla sidor och `1` (eller fler) för den sista raden. Öppna `https://birdy.community/sv/#guide` i Chrome och kontrollera att den levande kartan (MapLibre-canvas) laddar på riktigt här; det gick inte att se i förhandsvisningen.
 
 - [ ] **Step 5: Efterarbete**
