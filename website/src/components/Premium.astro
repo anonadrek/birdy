@@ -1,41 +1,52 @@
 ---
-import EyebrowLabel from './ui/EyebrowLabel.astro';
+import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
-import FieldIcon from './ui/FieldIcon.astro';
+import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 
-interface Props { locale: Locale; }
+interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getCopy(locale);
+const icons = ['map', 'pdf', 'chart', 'badge'] as const;
 ---
 
-<section id="premium" class="premium">
-  <div class="inner">
-    <div class="copy" data-reveal>
-      <EyebrowLabel text={t.premium.eyebrow} />
-      <JournalHeadline text={t.premium.headline} level="h2" align="left" size="clamp(3rem,5vw,4.7rem)" />
-      <p class="lead">{t.premium.sub}</p>
-      <p class="body">{t.premium.body}</p>
+<section id="premium" class="sec prem">
+  <span class="seal seal--brass pseal" aria-hidden="true">{t.premium.seal}</span>
+  <div class="wrap grid">
+    <div data-reveal>
+      <Kicker text={t.premium.kicker} />
+      <JournalHeadline text={t.premium.headline} level="h2" align="left" size="clamp(34px, 4.4vw, 52px)" />
+      <p class="lead">{t.premium.lead}</p>
+      <p class="alw"><b>{t.premium.alwaysFreeLabel}</b> {t.premium.alwaysFree}</p>
+      <p class="pnote">{t.premium.purchaseNote}</p>
     </div>
-    <div class="features">
-      <p class="feature-heading">{locale === 'sv' ? 'När du vill gå längre' : 'When you want to go further'}</p>
-      <div data-reveal="slide"><span class="feature-icon"><FieldIcon name="pdf" /></span><p>{locale === 'sv' ? 'Exportera din dagbok som PDF' : 'Export your journal as a PDF'}</p></div>
-      <div data-reveal="slide" style="--rd:90ms"><span class="feature-icon"><FieldIcon name="chart" /></span><p>{locale === 'sv' ? 'Se din säsong i statistik' : 'See your season in statistics'}</p></div>
-      <div data-reveal="slide" style="--rd:180ms"><span class="feature-icon"><FieldIcon name="stamp" /></span><p>{locale === 'sv' ? 'Samla extra fältmärken' : 'Collect extra field stamps'}</p></div>
-    </div>
+    <ul class="feats" role="list">
+      {t.premium.features.map((f, i) => (
+        <li class="feat" data-reveal="slide" style={`--rd:${i * 90}ms`}>
+          <span class="fic"><Icon name={icons[i]} size={21} /></span>
+          <div><h3>{f.title}</h3><p>{f.body}</p></div>
+        </li>
+      ))}
+    </ul>
   </div>
 </section>
 
 <style>
-  .premium { padding: var(--section-padding-y) clamp(1.5rem,6vw,5rem); }
-  .inner { max-width: 1190px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem,8vw,8rem); align-items: center; }
-  .copy :global(.journal-headline) { margin-top: 1rem; }
-  .lead { font: 1.7rem var(--font-script); color: var(--color-orange); margin: 1.2rem 0 .7rem; }
-  .body { max-width: 34rem; line-height: 1.7; color: var(--color-marginalia-ink); }
-  .features { border-top: 1px solid var(--color-paper-edge); }
-  .feature-heading { margin: 0; padding: 1rem 0; color: var(--color-orange); font-size: .83rem; font-weight: 600; }
-  .features div { display: grid; grid-template-columns: 3.5rem 1fr; gap: 1rem; align-items: center; border-top: 1px solid var(--color-paper-edge); min-height: 86px; }
-  .feature-icon { width: 3rem; height: 3rem; display: grid; place-items: center; border-radius: 50%; background: #fce4c9; border: 1px solid #edc29d; color: var(--color-orange); }
-  .features div p { font: 1.25rem var(--font-serif); margin: 0; }
-  @media (max-width: 780px) { .inner { grid-template-columns: 1fr; gap: 2rem; } }
+  .prem { position: relative; color: #F2EADC; background: linear-gradient(180deg, var(--moss) 0%, #18200F 100%); --kick-color: var(--brass-hi); --jh-ink: var(--cream); --jh-accent: var(--brass-hi); --lead-color: rgba(242, 234, 220, .75); }
+  .prem::before { content: ''; position: absolute; inset: 0; background: radial-gradient(60% 80% at 85% 20%, rgba(226, 192, 126, .1), transparent 60%); pointer-events: none; }
+  .prem :global(:focus-visible) { outline-color: var(--apricot); }
+  .grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }
+  .alw { margin: 28px 0 0; padding: 16px 0; border-top: 1px solid rgba(255, 255, 255, .12); border-bottom: 1px solid rgba(255, 255, 255, .12); font-size: 14px; line-height: 1.7; color: rgba(242, 234, 220, .8); }
+  .alw b { color: var(--cream); font-weight: 600; }
+  .pnote { font-size: 12.5px; color: rgba(242, 234, 220, .62); margin: 16px 0 0; }
+  .feat { display: flex; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+  .feat:first-child { padding-top: 4px; }
+  .fic { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(226, 192, 126, .45); color: var(--brass-hi); display: grid; place-items: center; flex: none; }
+  .feat h3 { font-size: 21px; color: var(--cream); }
+  .feat p { margin: 3px 0 0; font-size: 13.5px; color: rgba(242, 234, 220, .66); }
+  .pseal { position: absolute; z-index: 3; right: 9%; top: -46px; width: 92px; height: 92px; font-size: 17px; transform: rotate(-10deg); }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; gap: 40px; }
+    .pseal { right: 20px; top: -40px; width: 74px; height: 74px; }
+  }
 </style>

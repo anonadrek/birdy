@@ -200,19 +200,30 @@
     "attribution": "© MapTiler © OpenStreetMap contributors"
   },
   "premium": {
-    "eyebrow": "VALFRITT · PREMIUM",
-    "headline": "*Gratis* först.",
-    "sub": "Premium lägger till några extrasaker om du vill gå djupare.",
-    "body": "Fågelidentifiering, guiden och din dagbok är gratis. Premium ger dig möjlighet att exportera dagboken som PDF och se säsongsstatistik. Du får också extra stämplar.",
-    "cta": "Se vad som finns →",
-    "ctaHref": "https://play.google.com/store/apps/details?id=se.birdy.android"
+    "kicker": "Birdy Premium",
+    "headline": "För dig som vill *se mer.*",
+    "lead": "Allt du behöver för att känna igen och spara fåglar är gratis. Premium lägger till fyra saker för dig som vill följa ditt år i fält.",
+    "alwaysFreeLabel": "Alltid gratis:",
+    "alwaysFree": "identifiering med kamera, foto och ljud · fältdagboken · 839 arter · 27 märken",
+    "purchaseNote": "Köp och priser sköts i appen, via Google Play.",
+    "seal": "Premium",
+    "features": [
+      { "title": "Fynd-kartan", "body": "Se var du har sett dina fåglar" },
+      { "title": "Fältdagboken som PDF", "body": "Hela dagboken, redo att spara eller skriva ut" },
+      { "title": "Säsongsstatistik", "body": "Mönster månad för månad" },
+      { "title": "7 premiummärken", "body": "Extra stämplar att jaga" }
+    ]
   },
   "privacy": {
-    "eyebrow": "INTEGRITET · INGA FOTON LÄMNAR DIN TELEFON",
-    "headline": "Helt *offline.*",
-    "sub": "AI:n bor i din telefon",
-    "body": "Dina foton och din dagbok stannar på telefonen. Du behöver inget konto.",
-    "wordmarkLabel": "ANDROID NU · IPHONE SNART"
+    "kicker": "Integritet",
+    "headline": "AI:n bor i *telefonen.*",
+    "lead": "Birdy känner igen fåglar utan att skicka dina bilder eller ljud någonstans.",
+    "cols": [
+      { "title": "Inget konto", "body": "Öppna appen och börja. Det finns inget att logga in på." },
+      { "title": "Stannar i telefonen", "body": "Bilder, ljud och fältdagbok sparas hos dig. Inget laddas upp för att identifiera en fågel." },
+      { "title": "Plats bara om du vill", "body": "Platsen sparas bara om du slår på det, och då bara i telefonen." }
+    ],
+    "policyLink": "Läs integritetspolicyn"
   },
   "faq": {
     "eyebrow": "FRÅGOR · BESVARADE",

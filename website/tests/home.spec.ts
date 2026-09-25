@@ -326,3 +326,23 @@ test.describe('appkarusellen', () => {
     });
   });
 });
+
+test.describe('premium och integritet', () => {
+  for (const [path, firstFeature, freeLabel, firstCol] of [
+    ['/sv/', 'Fynd-kartan', 'Alltid gratis:', 'Inget konto'],
+    ['/', 'Finds map', 'Always free:', 'No account'],
+  ] as const) {
+    test(`premium och integritet på ${path}`, async ({ page }) => {
+      await page.goto(path);
+      const prem = page.locator('#premium');
+      await expect(prem.locator('.feat h3')).toHaveCount(4);
+      await expect(prem.locator('.feat h3').first()).toHaveText(firstFeature);
+      await expect(prem.locator('.alw b')).toHaveText(freeLabel);
+      await expect(prem).not.toContainText(/\d+\s?kr\b|SEK|€|\$/);
+      const priv = page.locator('#privacy');
+      await expect(priv.locator('.cols li')).toHaveCount(3);
+      await expect(priv.locator('.cols h3').first()).toHaveText(firstCol);
+      await expect(priv.locator('a.plink')).toHaveAttribute('href', '/legal/privacy/');
+    });
+  }
+});

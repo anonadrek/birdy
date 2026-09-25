@@ -1,97 +1,48 @@
 ---
-import CornerBrackets from './ui/CornerBrackets.astro';
-import DeckleEdge from './ui/DeckleEdge.astro';
-import EyebrowLabel from './ui/EyebrowLabel.astro';
+import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
-import OrnamentRule from './ui/OrnamentRule.astro';
-import WingLogo from './ui/WingLogo.astro';
-import Wordmark from './ui/Wordmark.astro';
+import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 
-interface Props {
-  locale: Locale;
-}
+interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getCopy(locale);
+const icons = ['no-account', 'phone', 'pin'] as const;
 ---
 
-<!-- The journal's warm evening page, torn out of the cream paper. -->
-<section id="privacy" class="privacy">
-  <DeckleEdge side="top" />
-  <CornerBrackets color="var(--color-apricot)" />
-  <div class="content" data-reveal>
-    <WingLogo alt={t.alt.wingLogo} size="56px" />
-    <EyebrowLabel text={t.privacy.eyebrow} color="var(--color-apricot)" plate="VIII" />
-    <JournalHeadline
-      text={t.privacy.headline}
-      level="h2"
-      size="clamp(3rem, 8vw, 6rem)"
-    />
-    <p class="sub">{t.privacy.sub}</p>
-    <OrnamentRule />
-    <p class="body">{t.privacy.body}</p>
-    <div class="brand-line">
-      <Wordmark size="44px" alt={t.alt.wordmark} color="var(--color-apricot)" />
-      <span class="micro">{t.privacy.wordmarkLabel}</span>
+<section id="privacy" class="sec priv">
+  <div class="wrap">
+    <div class="top" data-reveal>
+      <Kicker text={t.privacy.kicker} center />
+      <JournalHeadline text={t.privacy.headline} level="h2" size="clamp(34px, 4.4vw, 52px)" />
+      <p class="lead">{t.privacy.lead}</p>
     </div>
+    <ul class="cols" role="list">
+      {t.privacy.cols.map((c, i) => (
+        <li data-reveal style={`--rd:${i * 90}ms`}>
+          <span class="ic"><Icon name={icons[i]} size={21} /></span>
+          <h3>{c.title}</h3>
+          <p>{c.body}</p>
+        </li>
+      ))}
+    </ul>
+    <a class="plink" href="/legal/privacy/">{t.privacy.policyLink}</a>
   </div>
-  <DeckleEdge side="bottom" />
 </section>
 
 <style>
-  .privacy {
-    position: relative;
-    padding: calc(var(--section-padding-y) * 1.5) 1.5rem;
-    text-align: center;
-    background:
-      radial-gradient(circle at 1px 1px, rgba(255, 225, 186, 0.09) 1px, transparent 0) 0 0 / 24px 24px,
-      linear-gradient(178deg, var(--color-rust) 0%, var(--color-rust-deep) 48%, var(--color-rust-shadow) 100%);
-    --jh-ink: var(--color-text-on-hero);
-    --jh-accent: var(--color-apricot);
+  .top { text-align: center; max-width: 640px; margin: 0 auto; }
+  .top .lead { margin-left: auto; margin-right: auto; }
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); margin: 48px 0 0; border-top: 1px solid var(--line); }
+  .cols li { padding: 28px 28px 0; text-align: center; }
+  .cols li + li { border-left: 1px solid var(--line); }
+  .ic { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: var(--rust); background: var(--card); box-shadow: inset 0 0 0 1px var(--line); margin: 0 auto 14px; }
+  h3 { font-size: 21px; }
+  .cols p { margin: 8px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+  .plink { display: table; margin: 30px auto 0; font-size: 13.5px; font-weight: 600; color: var(--rust); border-bottom: 1px solid currentColor; }
+  @media (max-width: 760px) {
+    .cols { grid-template-columns: 1fr; }
+    .cols li + li { border-left: 0; border-top: 1px solid var(--line); }
+    .cols li { padding: 26px 6px; }
   }
-  .content {
-    max-width: 48rem;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .sub {
-    font-family: var(--font-script);
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    color: var(--color-apricot);
-    margin: 0;
-  }
-  .content :global(.ornament) {
-    color: var(--color-text-on-hero);
-    opacity: 0.9;
-  }
-  .body {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    line-height: 1.6;
-    color: var(--color-text-on-hero);
-    max-width: 36rem;
-    margin: 0;
-  }
-  .brand-line {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .micro {
-    font-family: var(--font-sans);
-    font-size: 0.6875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--color-apricot);
-  }
-  /* Keep the corner brackets clear of the torn edges */
-  .privacy :global(.bracket-tl),
-  .privacy :global(.bracket-tr) { top: 48px; }
-  .privacy :global(.bracket-bl),
-  .privacy :global(.bracket-br) { bottom: 48px; }
 </style>

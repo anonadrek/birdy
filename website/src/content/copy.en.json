@@ -200,19 +200,30 @@
     "attribution": "© MapTiler © OpenStreetMap contributors"
   },
   "premium": {
-    "eyebrow": "OPTIONAL · PREMIUM",
-    "headline": "*Free* first.",
-    "sub": "Premium adds a few extras if you want to go deeper.",
-    "body": "Bird identification, the guide and your journal are free. Premium adds PDF export, seasonal statistics and extra stamps.",
-    "cta": "See what's inside →",
-    "ctaHref": "https://play.google.com/store/apps/details?id=se.birdy.android"
+    "kicker": "Birdy Premium",
+    "headline": "For when you want *to see more.*",
+    "lead": "Everything you need to identify and save birds is free. Premium adds four things for when you want to follow your year in the field.",
+    "alwaysFreeLabel": "Always free:",
+    "alwaysFree": "identification with camera, photo and sound · the field journal · 839 species · 27 badges",
+    "purchaseNote": "Purchases and prices are handled in the app, through Google Play.",
+    "seal": "Premium",
+    "features": [
+      { "title": "Finds map", "body": "See where you have seen your birds" },
+      { "title": "Field journal as PDF", "body": "The whole journal, ready to save or print" },
+      { "title": "Season statistics", "body": "Patterns month by month" },
+      { "title": "7 premium badges", "body": "Extra stamps to chase" }
+    ]
   },
   "privacy": {
-    "eyebrow": "PRIVACY · NO PHOTOS LEAVE YOUR PHONE",
-    "headline": "Fully *offline.*",
-    "sub": "the AI lives in your phone",
-    "body": "Your photos and journal stay on your phone. No account is needed.",
-    "wordmarkLabel": "ANDROID NOW · IPHONE COMING SOON"
+    "kicker": "Privacy",
+    "headline": "The AI lives *on your phone.*",
+    "lead": "Birdy identifies birds without sending your photos or sound anywhere.",
+    "cols": [
+      { "title": "No account", "body": "Open the app and start. There is nothing to sign in to." },
+      { "title": "Stays on your phone", "body": "Photos, sound and your field journal are stored with you. Nothing is uploaded to identify a bird." },
+      { "title": "Location only if you want", "body": "Location is only saved if you turn it on, and then only on your phone." }
+    ],
+    "policyLink": "Read the privacy policy"
   },
   "faq": {
     "eyebrow": "QUESTIONS · ANSWERED",
