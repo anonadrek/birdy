@@ -93,6 +93,13 @@ const t = getCopy(Astro.props.locale);
       });
       map.touchZoomRotate.disableRotation();
 
+      // Decorative, not a data view: nothing inside it should be reachable or announced. Set
+      // this right away, not only in 'load' -- when the style fails (bad/blocked key), 'load'
+      // never fires and the canvas would otherwise stay focusable inside a role="img" container.
+      const canvas = map.getCanvas();
+      canvas.setAttribute('tabindex', '-1');
+      canvas.setAttribute('aria-hidden', 'true');
+
       // The box gets its height from aspect-ratio after layout; keep the canvas in sync.
       const fit = () => { try { map.resize(); } catch { /* map not ready yet */ } };
       requestAnimationFrame(fit);
@@ -107,11 +114,6 @@ const t = getCopy(Astro.props.locale);
         // The static fallback needed the MapTiler/OSM credit; this is our own rendering doing
         // live tile fetches now, so the attribution appears only once the map is actually up.
         el.querySelector<HTMLElement>('.attrib')?.removeAttribute('hidden');
-
-        // Decorative, not a data view: nothing inside it should be reachable or announced.
-        const canvas = map.getCanvas();
-        canvas.setAttribute('tabindex', '-1');
-        canvas.setAttribute('aria-hidden', 'true');
 
         let firstSymbol: string | undefined;
         for (const l of map.getStyle().layers) { if (l.type === 'symbol') { firstSymbol = l.id; break; } }

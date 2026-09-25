@@ -3,9 +3,10 @@
 // is missing (CI, previews). No map service is needed. Run: npm run assets:coverage
 //
 // Europe would otherwise float as a rust island on flat beige, so a context layer of neighbouring
-// land is drawn underneath it first, from the same pinned Natural Earth 1:50m admin-0 countries
-// file the coverage GeoJSON is built from (see scripts/build-coverage-geojson.mjs) — public domain,
-// no attribution required.
+// land is drawn underneath it first, from the same pinned Natural Earth SWEDISH POINT OF VIEW
+// 1:10m admin-0 countries file the coverage GeoJSON is built from (see
+// scripts/build-coverage-geojson.mjs, which explains why: the default file's de facto borders put
+// Crimea inside Russia) — public domain, no attribution required.
 import sharp from 'sharp';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -14,8 +15,8 @@ import { resolve, dirname } from 'node:path';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const gj = JSON.parse(readFileSync(resolve(root, 'public/coverage/coverage-europe.geojson'), 'utf8'));
 
-const NE_SRC = 'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_50m_admin_0_countries.geojson';
-const CONTEXT_SIMPLIFY_EPS = 0.03; // degrees — context land is backdrop only, coarser than the coverage wash
+const NE_SRC = 'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_10m_admin_0_countries_swe.geojson';
+const CONTEXT_SIMPLIFY_EPS = 0.05; // degrees — context land is backdrop only, coarser than the coverage wash; raised for the denser 1:10m source
 
 const W = 1600;
 const H = 700;
@@ -79,6 +80,12 @@ function douglasPeucker(points, eps) {
   return points.filter((_, i) => keep[i]);
 }
 
+function closeRing(points) {
+  const first = points[0], last = points[points.length - 1];
+  if (first && (first[0] !== last[0] || first[1] !== last[1])) points.push(first);
+  return points;
+}
+
 function simplifyContextRing(ring) {
   const rounded = [];
   let prev = null;
@@ -86,10 +93,13 @@ function simplifyContextRing(ring) {
     const p = [Math.round(x * 100) / 100, Math.round(y * 100) / 100];
     if (!prev || p[0] !== prev[0] || p[1] !== prev[1]) { rounded.push(p); prev = p; }
   }
-  const simplified = douglasPeucker(rounded, CONTEXT_SIMPLIFY_EPS);
-  const first = simplified[0], last = simplified[simplified.length - 1];
-  if (first && (first[0] !== last[0] || first[1] !== last[1])) simplified.push(first);
-  return simplified.length >= 4 ? simplified : rounded;
+  const simplified = closeRing(douglasPeucker(rounded, CONTEXT_SIMPLIFY_EPS));
+  if (simplified.length >= 4) return simplified;
+  if (rounded.length >= 4) return rounded;
+  // Same tiny-landmass collapse as coverage rings can hit (see build-coverage-geojson.mjs):
+  // fall back to full precision rather than emit an invalid <4-point ring.
+  const fullPrecision = closeRing(douglasPeucker(ring, CONTEXT_SIMPLIFY_EPS));
+  return fullPrecision.length >= 4 ? fullPrecision : ring;
 }
 
 function polygonsOf(geometry) {
