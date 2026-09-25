@@ -32,9 +32,11 @@ import kotlinx.coroutines.launch
  *
  * Hosts two debug affordances:
  *  1. **Billing verify (runbook §1):** a "Skip premium override" toggle. When on,
- *     [se.birdy.android.MainActivity] skips the premium override at app start so the
- *     real `NotActive → purchase → Active` flow is testable even while
- *     `PREMIUM_OPEN_FOR_LAUNCH=true`. Read once at startup — restart to apply.
+ *     [se.birdy.android.MainActivity] skips every premium override at app start —
+ *     including a grandfathered user's (spec §5.1) — so the real
+ *     `NotActive → purchase → Active` flow is testable. Read once at startup — restart to apply.
+ *     Also hosts the grandfather-thanks QA controls (spec §5.2): force this install to look
+ *     early, and reset the one-shot "shown" flag so the thank-you screen re-triggers.
  *  2. ML preprocessing diagnostic (Plan 6b1 T2) — runs corpus images through the
  *     live BirdClassifier + ImagePreprocessor pipeline and prints predictions +
  *     sampled ARGB pixels, for comparison against the desktop eval (tools/ml-eval/).
@@ -48,11 +50,13 @@ fun DiagnosticsScreen(
     runDiagnostic: suspend () -> String,
     skipPremiumOverride: Flow<Boolean> = flowOf(false),
     onSetSkipPremiumOverride: suspend (Boolean) -> Unit = {},
+    grandfatherDebug: GrandfatherDebugControls = GrandfatherDebugControls(),
 ) {
     val scope = rememberCoroutineScope()
     var running by remember { mutableStateOf(false) }
     var log by remember { mutableStateOf("Tap 'Run diagnostic' to begin.") }
     val skip by skipPremiumOverride.collectAsState(initial = false)
+    val forceGf by grandfatherDebug.forceGrandfathered.collectAsState(initial = false)
 
     Column(
         Modifier
@@ -61,32 +65,20 @@ fun DiagnosticsScreen(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        Text("Billing verify", style = MaterialTheme.typography.headlineMedium)
-        Row(
-            Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Column(Modifier.weight(1f)) {
-                Text("Skip premium override", style = MaterialTheme.typography.bodyLarge)
-                Text(
-                    "Forces NotActive so the purchase flow is testable. " +
-                        "Restart the app to apply.",
-                    style = MaterialTheme.typography.bodySmall,
-                )
-            }
-            Switch(
-                checked = skip,
-                onCheckedChange = { value -> scope.launch { onSetSkipPremiumOverride(value) } },
-            )
-        }
+        BillingVerifySection(
+            skip = skip,
+            onSetSkip = { value -> scope.launch { onSetSkipPremiumOverride(value) } },
+            forceGrandfathered = forceGf,
+            onSetForceGrandfathered = { value -> scope.launch { grandfatherDebug.onSetForceGrandfathered(value) } },
+            onResetGrandfatherThanks = { scope.launch { grandfatherDebug.onResetGrandfatherThanks() } },
+        )
 
         HorizontalDivider()
 
-        Text("ML preprocessing diagnostic", style = MaterialTheme.typography.headlineMedium)
-        Button(
-            enabled = !running,
-            onClick = {
+        MlDiagnosticSection(
+            running = running,
+            log = log,
+            onRun = {
                 scope.launch {
                     running = true
                     log = "Running…"
@@ -99,9 +91,61 @@ fun DiagnosticsScreen(
                     }
                 }
             },
-        ) { Text(if (running) "Running…" else "Run diagnostic") }
-
-        HorizontalDivider()
-        Text(log, style = MaterialTheme.typography.bodySmall)
+        )
     }
+}
+
+@Composable
+private fun BillingVerifySection(
+    skip: Boolean,
+    onSetSkip: (Boolean) -> Unit,
+    forceGrandfathered: Boolean,
+    onSetForceGrandfathered: (Boolean) -> Unit,
+    onResetGrandfatherThanks: () -> Unit,
+) {
+    Text("Billing verify", style = MaterialTheme.typography.headlineMedium)
+    Row(
+        Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text("Skip premium override", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Forces NotActive so the purchase flow is testable. " +
+                    "Restart the app to apply.",
+                style = MaterialTheme.typography.bodySmall,
+            )
+        }
+        Switch(checked = skip, onCheckedChange = onSetSkip)
+    }
+
+    Row(
+        Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text("Simulate early user (restart to apply)", style = MaterialTheme.typography.bodyLarge)
+        }
+        Switch(checked = forceGrandfathered, onCheckedChange = onSetForceGrandfathered)
+    }
+    Button(onClick = onResetGrandfatherThanks) {
+        Text("Show thank-you screen again (restart)")
+    }
+}
+
+@Composable
+private fun MlDiagnosticSection(
+    running: Boolean,
+    log: String,
+    onRun: () -> Unit,
+) {
+    Text("ML preprocessing diagnostic", style = MaterialTheme.typography.headlineMedium)
+    Button(enabled = !running, onClick = onRun) {
+        Text(if (running) "Running…" else "Run diagnostic")
+    }
+
+    HorizontalDivider()
+    Text(log, style = MaterialTheme.typography.bodySmall)
 }

@@ -53,6 +53,8 @@ private class AndroidUserPreferences(
         val WEEKLY_TROPHY_PUSH_ENABLED = booleanPreferencesKey("weekly_trophy_push_enabled")
         val SKIP_PREMIUM_OVERRIDE = booleanPreferencesKey("skip_premium_override")
         val IN_APP_REVIEW_REQUESTED = booleanPreferencesKey("in_app_review_requested")
+        val GRANDFATHER_THANKS_SHOWN = booleanPreferencesKey("grandfather_thanks_shown")
+        val DEBUG_FORCE_GRANDFATHERED = booleanPreferencesKey("debug_force_grandfathered")
     }
 
     override val userName: Flow<String> = safeData.map { it[Keys.USER_NAME] ?: "" }
@@ -98,6 +100,10 @@ private class AndroidUserPreferences(
         safeData.map { it[Keys.SKIP_PREMIUM_OVERRIDE] ?: false }
     override val inAppReviewRequested: Flow<Boolean> =
         safeData.map { it[Keys.IN_APP_REVIEW_REQUESTED] ?: false }
+    override val grandfatherThanksShown: Flow<Boolean> =
+        safeData.map { it[Keys.GRANDFATHER_THANKS_SHOWN] ?: false }
+    override val debugForceGrandfathered: Flow<Boolean> =
+        safeData.map { it[Keys.DEBUG_FORCE_GRANDFATHERED] ?: false }
 
     override suspend fun setUserName(name: String) {
         store.edit { it[Keys.USER_NAME] = name }
@@ -169,5 +175,13 @@ private class AndroidUserPreferences(
 
     override suspend fun setInAppReviewRequested(value: Boolean) {
         store.edit { it[Keys.IN_APP_REVIEW_REQUESTED] = value }
+    }
+
+    override suspend fun setGrandfatherThanksShown(value: Boolean) {
+        store.edit { it[Keys.GRANDFATHER_THANKS_SHOWN] = value }
+    }
+
+    override suspend fun setDebugForceGrandfathered(value: Boolean) {
+        store.edit { it[Keys.DEBUG_FORCE_GRANDFATHERED] = value }
     }
 }

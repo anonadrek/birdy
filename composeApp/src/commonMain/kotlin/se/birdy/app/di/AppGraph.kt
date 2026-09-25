@@ -16,6 +16,7 @@ import se.birdy.app.badges.RecalculateBadgesUseCase
 import se.birdy.app.bootstrap.BadgeBackfillOnAppStart
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.data.premium.FormattedPrices
+import se.birdy.app.data.premium.PurchaseResult
 import se.birdy.app.location.LocationProvider
 import se.birdy.app.photo.PhotoStorage
 import se.birdy.app.review.InAppReviewTrigger
@@ -58,6 +59,7 @@ import se.birdy.ml.ClassifierMode
 import se.birdy.ml.ScanSourceSerialization
 import se.birdy.ml.toScanSource
 
+@Suppress("LongParameterList") // DI root: one constructor parameter per injected platform dependency, by design.
 class AppGraph(
     val repository: SpeciesRepository,
     val classifierBootstrap: ClassifierBootstrap,
@@ -70,6 +72,8 @@ class AppGraph(
     val userPreferences: UserPreferences,
     val premiumRepository: PremiumRepository,
     val premiumOverride: PremiumState? = null,
+    /** True for early users who keep Premium forever (spec 2026-09-24 §5.1). Android-only source. */
+    val isGrandfathered: Boolean = false,
     val versionName: String = "0.0.0",
     val clock: Clock = Clock.System,
     val timeZone: TimeZone = TimeZone.currentSystemDefault(),
@@ -99,15 +103,23 @@ class AppGraph(
     val requestInAppReview: () -> Unit = {},
     /**
      * Real Google Play Billing purchase launcher (Plan 6b1 T4).
-     * Null = fall back to repository.markPurchased (legacy stub / tests).
-     * Android actual: billingClient.launchPurchase(activity, tier).
+     * Null = fall back to repository.markPurchased (legacy stub / tests), reporting [PurchaseResult.Success].
+     * Android actual: billingClient.launchPurchase(activity, tier), whose result is passed through
+     * unchanged so a pending or failed purchase reaches the purchase screen (Task 7b).
      */
-    val launchPurchase: (suspend (PremiumTier) -> Unit)? = null,
+    val launchPurchase: (suspend (PremiumTier) -> PurchaseResult)? = null,
     /**
      * Live formatted prices from ProductDetails (Plan 6b1 T4).
      * Null = no live prices; PremiumUiState keeps null price fields.
      */
     val formattedPricesFlow: kotlinx.coroutines.flow.StateFlow<FormattedPrices>? = null,
+    /**
+     * True once Play (or the iOS stub) has answered a purchase query. Automatic paywalls
+     * (day-0 post-onboarding, 7-day cold-start modal) must wait for this before deciding —
+     * a paying subscriber looks Free until Play answers. Defaults to true (already-answered)
+     * so tests and non-Android callers don't block. Android wires `billingClient.purchasesQueried`.
+     */
+    val premiumQueried: StateFlow<Boolean> = MutableStateFlow(true),
     /**
      * Lazy audio classifier provider — only invoked on first audio-scan entry (Plan 6b2 T3).
      *
@@ -404,12 +416,17 @@ class AppGraph(
             devTriggerDailyBird = devTriggerDailyBird,
             devTriggerWeeklyRecap = devTriggerWeeklyRecap,
             devTriggerTrophyProgress = devTriggerTrophyProgress,
+            premiumOverride = premiumOverride,
         )
 
     fun premiumViewModel(): PremiumViewModel =
         PremiumViewModel(
             repository = premiumRepository,
-            launchPurchase = launchPurchase ?: { premiumRepository.markPurchased(it) },
+            launchPurchase =
+                launchPurchase ?: { tier ->
+                    premiumRepository.markPurchased(tier)
+                    PurchaseResult.Success
+                },
             formattedPricesFlow = formattedPricesFlow ?: MutableStateFlow(FormattedPrices()),
         )
 

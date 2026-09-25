@@ -50,4 +50,10 @@ object EntryFlowDecider {
         if (state !is PremiumState.Free) return false
         return true
     }
+
+    /** Early users see the thank-you screen exactly once after updating to 1.3.0. */
+    fun shouldShowGrandfatherThanks(
+        isGrandfathered: Boolean,
+        alreadyShown: Boolean,
+    ): Boolean = isGrandfathered && !alreadyShown
 }

@@ -25,12 +25,15 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_fallback_name
 import birdy_bird_scanner.composeapp.generated.resources.premium_dismiss_toast
 import birdy_bird_scanner.composeapp.generated.resources.premium_welcome_toast
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
 import se.birdy.app.premium.EntryFlowDecider
+import se.birdy.app.premium.PremiumOverrideResolver
+import se.birdy.app.premium.awaitBillingAnswer
 import se.birdy.app.ui.audio.AudioScanScreenHost
 import se.birdy.app.ui.components.CaveatToast
 import se.birdy.app.ui.diary.LifelistScreen
@@ -39,6 +42,7 @@ import se.birdy.app.ui.encyclopedia.ArchiveScreen
 import se.birdy.app.ui.listen.ListenLauncherScreen
 import se.birdy.app.ui.match.MatchResultScreen
 import se.birdy.app.ui.premium.PremiumScreen
+import se.birdy.app.ui.premium.PremiumThankYouScreen
 import se.birdy.app.ui.profile.SpeciesProfileScreen
 import se.birdy.app.ui.scan.ScanScreenHost
 import se.birdy.content.SpeciesId
@@ -59,8 +63,56 @@ fun AppScaffold(graph: AppGraph) {
         }
     }
     val showPremiumTeaser = !effectivePremiumActive
+    // See PremiumOverrideResolver.isEarlyMember's KDoc: the DEBUG skip-override toggle must
+    // win, so this gates on the override actually being present, not just isGrandfathered.
+    val isEarlyMember = PremiumOverrideResolver.isEarlyMember(graph.isGrandfathered, graph.premiumOverride)
     LaunchedEffect(Unit) {
         val now = graph.clock.now()
+
+        // Never show an automatic paywall on a guess — a paying user looks Free until Play answers.
+        if (graph.premiumOverride == null && !awaitBillingAnswer(graph.premiumQueried, timeoutMs = 5_000)) {
+            return@LaunchedEffect
+        }
+
+        // The wait above can take up to 5 s — if the user has since navigated away from the
+        // start destination (opened Scan/Camera, followed a deep link, ...) a paywall popping
+        // up now would cover whatever they're doing. Bail without marking either "shown" flag
+        // so the paywall is reconsidered fresh next launch. currentBackStackEntryFlow replays
+        // the current entry and first() suspends until the NavHost has set its graph, so this
+        // can't run against a null destination when the wait above didn't run (override users
+        // skip it) — currentDestination could be null in that case.
+        if (!navController.currentBackStackEntryFlow
+                .first()
+                .destination
+                .hasRoute(AppRoute.Listen::class)
+        ) {
+            return@LaunchedEffect
+        }
+
+        // 1.3.0: early users get a one-time thank-you instead of any paywall (spec §5.2).
+        if (isEarlyMember) {
+            val thanksShown = graph.userPreferences.grandfatherThanksShown.first()
+            // The read above suspends — re-check synchronously (nothing suspends between here
+            // and the navigate below) that a deep link handled during that gap (e.g. a
+            // notification tap) hasn't already navigated away from Listen. If it has, bail
+            // WITHOUT saving "shown" so the thank-you is reconsidered at a later start instead
+            // of covering whatever the deep link opened.
+            if (navController.currentDestination?.hasRoute(AppRoute.Listen::class) != true) {
+                return@LaunchedEffect
+            }
+            if (EntryFlowDecider.shouldShowGrandfatherThanks(isGrandfathered = true, alreadyShown = thanksShown)) {
+                // Navigate first, then persist "shown": if the write below fails (or the
+                // process dies before it runs), the thank-you simply shows again at the next
+                // start instead of never showing at all.
+                navController.navigate(AppRoute.Premium)
+                runCatching { graph.userPreferences.setGrandfatherThanksShown(true) }
+                    .onFailure {
+                        if (it is CancellationException) throw it
+                        println("AppScaffold: saving grandfatherThanksShown failed: ${it.message}")
+                    }
+            }
+            return@LaunchedEffect
+        }
         val premiumState = graph.premiumOverride ?: graph.premiumRepository.state.value
 
         // Day-0: show the premium screen once right after onboarding (non-premium only).
@@ -364,17 +416,26 @@ fun AppScaffold(graph: AppGraph) {
                 }
             }
             composable<AppRoute.Premium> {
-                PremiumScreen(
-                    viewModel = remember(graph) { graph.premiumViewModel() },
-                    onClose = {
-                        navController.popBackStack()
-                        scope.launch { snackbarHostState.showSnackbar(dismissToast) }
-                    },
-                    onPurchaseComplete = {
-                        navController.popBackStack(AppRoute.Premium, inclusive = true)
-                        scope.launch { snackbarHostState.showSnackbar(welcomeToast) }
-                    },
-                )
+                if (isEarlyMember) {
+                    // Idempotent pop (mirrors onPurchaseComplete below): a double tap on
+                    // Continue — or PlatformBackHandler firing during the NavHost's fade —
+                    // must not try to pop past an already-empty stack.
+                    PremiumThankYouScreen(
+                        onClose = { navController.popBackStack(AppRoute.Premium, inclusive = true) },
+                    )
+                } else {
+                    PremiumScreen(
+                        viewModel = remember(graph) { graph.premiumViewModel() },
+                        onClose = {
+                            navController.popBackStack()
+                            scope.launch { snackbarHostState.showSnackbar(dismissToast) }
+                        },
+                        onPurchaseComplete = {
+                            navController.popBackStack(AppRoute.Premium, inclusive = true)
+                            scope.launch { snackbarHostState.showSnackbar(welcomeToast) }
+                        },
+                    )
+                }
             }
             graph.benchmarkScreen?.let { benchmarkContent ->
                 composable<AppRoute.DebugBenchmark> { benchmarkContent() }

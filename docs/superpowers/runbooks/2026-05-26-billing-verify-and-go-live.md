@@ -1,8 +1,37 @@
 # Billing-verify + go-live runbook (v1.0)
 
+> **Uppdatering 2026-09-25 (release 1.3.0):** Appen ligger nu på AB:s utvecklarkonto. `PREMIUM_OPEN_FOR_LAUNCH=false` och grandfather-regeln (§5) är implementerade i 1.3.0 (`GrandfatherPolicy`, brytpunkt `GRANDFATHER_CUTOFF_MS` = 2026-10-02 00:00 Stockholm, tack-skärm en gång för tidiga användare). Köptestet körs med **vC128 byggt med `-Pbirdy.grandfatherCutoffMs=0 -Pbirdy.billingTestBuild=true`** (versionsnamnet blir `1.3.0-koptest`; flaggorna gäller bara på kommandoraden, aldrig i gradle.properties): ingen är grandfathered, så betalväggen syns även på Albins gamla installation. **vC128 får ALDRIG befordras till produktion.** Produktionsbygget blir vC129 med standardbrytpunkten; bygget skriver ut `Birdy release config: … GRANDFATHER_CUTOFF_MS=1790892000000 billingTestBuild=false`, kontrollera den raden.
+>
+> **Förberedelser i Play Console (AB):**
+> 1. Skapa `premium_yearly_v1` (prenumeration med EN basplan: 1 år, förnyas automatiskt, eftersom appen säger "Förnyas årligen till <pris>") och `premium_lifetime_v1` (engångsköp). Sätt priser och aktivera båda.
+> 2. Kontrollera att licensnyckeln under Monetization setup → Licensing är samma som `BIRDY_PLAY_LICENSE_KEY` i `~/.gradle/gradle.properties`. Klistra in den på nytt om du är osäker, och bygg om. **Fel nyckel betyder att varje riktigt köp misslyckas signaturkontrollen: kunden debiteras, ser "Köpet gick inte igenom", köpet kvitteras aldrig och Play återbetalar automatiskt efter 3 dagar.**
+> 3. Lägg till ditt Google-konto som licenstestare och logga in med det på Galaxyn.
+> 4. Ladda upp `birdy-1.3.0-vc128-KOPTEST-EJ-PRODUKTION.aab` (skrivbordet) till **Intern testning** och installera från Play.
+>
+> **HÅRD GRIND före vC129:** ett riktigt köp i vC128 ska ge Premium (skärmen stänger med "Välkommen, fältmedlem.") och `adb logcat -s PremiumBilling` får INTE visa `Signature verification failed`. Visas raden: stoppa, rätta licensnyckeln och bygg om. Produktionsbygget kräver också en NY MapTiler-nyckel (bygget stoppar med den läckta) och signeringsnyckeln.
+>
+> **Checklista för produktionsbygget vC129:**
+> 1. Höj `releaseVersionCode` till 129 i `androidApp/build.gradle.kts`.
+> 2. Bygg från en vanlig terminal med `./gradlew :androidApp:bundleRelease` utan några `-P`-argument (inte heller i IDE:ns fält). Bygg aldrig via `packageReleaseBundle` direkt, eftersom skyddet sitter på `bundleRelease`/`assembleRelease`.
+> 3. Kontrollera raden i byggutskriften: `Birdy release config: versionCode=129 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1790892000000 billingTestBuild=false`. Står det `-koptest` eller `GRANDFATHER_CUTOFF_MS=0`: stoppa.
+> 4. Versionsnamnet i Console får inte sluta på `-koptest`.
+> 5. Slirar go-live: flytta brytpunkten (go-live + 48 h) FÖRE uploaden, aldrig efter.
+> 6. När vC129 är i produktion: ta bort vC128 från intern testning (eller befordra vC129 dit). Ett senare köptestbygge måste ha en versionCode över produktionens och behålla `-koptest`.
+>
+> **Extra rutor för 1.3.0** (på svenska OCH engelska, Inställningar → Språk):
+> - **Grund:** [ ] Premium-skärmen visar Plays priser (inte "Hämtar pris…" efter några sekunder); [ ] köpknappen är grå tills priset syns; [ ] texten under knappen visar rätt årspris respektive "Engångsköp. Ingen prenumeration."; [ ] avbrutet köp: skärmen står kvar, ingen välkomsttext; [ ] genomfört köp: skärmen stänger och "Välkommen, fältmedlem." visas; [ ] köp, avbryt, köp igen.
+> - **Kvittering och återställning:** [ ] köp och döda appen direkt (`adb shell am force-stop se.birdy.android`), starta igen: köpet ska bli kvitterat (Play Console → Beställningar, ingen automatisk återbetalning efter 3 dagar); [ ] flygplansläge → Inställningar → Återställ köp → "Kunde inte nå Google Play"; [ ] Återställ köp under och efter ett köp.
+> - **Väntande köp** (Plays testkort "Slow test card, approves after a few minutes" och "declines after a few minutes"): [ ] beskedet "Betalningen väntar…" visas; [ ] vänta kvar på skärmen: välkomst när kortet godkänns; [ ] lägg appen i bakgrunden under väntan, låt det godkännas, öppna igen: Premium på och exakt en välkomst; [ ] tryck på köpknappen igen under väntan: fortfarande "väntar", inte "gick inte igenom"; [ ] avböjt kort: förblir gratis, ingen välkomst.
+> - **Redan ägt:** [ ] köp livstid igen när du redan äger det: skärmen stänger som klart; med ett väntande livstidsköp: "väntar".
+> - **Nät:** [ ] kallstart i flygplansläge, slå på nätet: priserna syns inom ungefär 20 sekunder, annars efter att appen varit i bakgrunden en stund.
+> - **3-D Secure / nytt betalsätt:** [ ] en välkomst, inget Premium-flimmer efteråt.
+> - **Språkbyte:** [ ] byt språk med Premium aktivt: Premium kvar, ingen gammal aviseringslänk öppnas igen.
+> - **Tidig användare** (debugbygge: Diagnostics → "Simulate early user", starta om): [ ] tack-skärmen visas en gång, dubbeltryck på Fortsätt ger ingen tom skärm, nästa start visar den inte; [ ] med "Skip premium override" på visas betalväggen i stället.
+> - **Felsökning:** om priserna aldrig syns, kör `adb logcat -s PremiumBilling` och leta efter `unfetched=` (produkten saknas eller är inaktiv i Console) eller `responseCode=`.
+
 > **När:** Innan vi flippar `PREMIUM_OPEN_FOR_LAUNCH=false` och släpper Birdy i produktion på Google Play.
 > **Varför:** Override:n `premiumOverride = Active(LIFETIME)` som ligger på under closed testing maskerar hela "no premium → köpflöde → state-flip till Active"-vägen. Den vägen måste verifieras isär från overriden innan den möter riktiga betalande användare.
-> **Status:** Item 1 (debug-toggle) **DONE 2026-06-17** (commit `c027a6f6`). Item 3 (BirdNET-licensguard) **DONE 2026-05-26**. Items 2, 4 och **5 (grandfather — NY, hard gate på flippen)** är **pending** — körs på AB-kontot efter account-transfer (billing-beslut 2026-06-17: kod-prep nu, live-test på AB; se memory `reference_play_account_transfer_to_ab`).
+> **Status:** Item 1 (debug-toggle) **DONE 2026-06-17** (commit `c027a6f6`). Item 3 (BirdNET-licensguard) **DONE 2026-05-26**. Item 5 (grandfather) **implementerad i 1.3.0** (Plan 1, 2026-09-24/25: `GrandfatherPolicy` med båda källorna `firstInstallTimestamp` + `PackageInfo.firstInstallTime`, så även "rensa data" täcks; tack-skärm; samma bygge som `PREMIUM_OPEN_FOR_LAUNCH=false`). **Kvar:** item 2 (köptestet med vC128 på AB-kontot, se uppdateringen överst) och item 4 (uppföljning efter release).
 
 ---
 
@@ -77,6 +106,8 @@ Fresh install, debug-toggle PÅ (`NotActive`). Banner "Unlock Premium" syns på 
 ---
 
 ## 5. Grandfather launch-period-användare (HARD GATE på flippen)
+
+> **Implementerad i 1.3.0 (2026-09-24/25).** Texten nedan är det ursprungliga beslutet. Skillnader i det som byggdes: båda källorna används (DataStore-tiden OCH `PackageInfo.firstInstallTime`, som överlever "rensa data"), den tidigaste kända tiden sparas tillbaka vid varje start, brytpunkten är 2026-10-02 00:00 Stockholm (go-live + 48 h), och en tack-skärm visas en gång. Verifieras på enhet i Plan 3 (debugbygge: Diagnostics → "Simulate early user").
 
 **Beslut (Albin 2026-06-17):** Alla som laddar ner appen *innan* monetiseringen slås på (`PREMIUM_OPEN_FOR_LAUNCH=false`) ska behålla full Premium **för alltid** — "inget snack om saken". Tidiga användare straffas aldrig av att vi börjar ta betalt.
 

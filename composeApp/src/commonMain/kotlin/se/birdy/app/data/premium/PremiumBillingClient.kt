@@ -7,7 +7,12 @@ import se.birdy.domain.premium.PremiumTier
 /**
  * Thin Android Billing v8 wrapper exposed as expect/actual for KMP.
  * - Android actual: wraps com.android.billingclient.api.BillingClient
- * - iOS actual: no-op stub (returns Inactive, throws on launchPurchase)
+ * - iOS actual: no-op stub — `state` stays `PremiumState.Free`, `purchasesQueried` and
+ *   `queryPurchases()` both report success (`true`, nothing to query), and
+ *   `launchPurchase` returns `PurchaseResult.Error` (never throws). None of this is
+ *   normally observable today: `IosAppGraph`'s `premiumOverride` forces
+ *   `Active(LIFETIME)` regardless of this stub. The real StoreKit 2 implementation
+ *   lands in plan i5, which also removes that override.
  *
  * BillingClient lifecycle (connect/disconnect) is handled internally;
  * call `connect()` once at app start and `dispose()` on Activity destroy.
@@ -16,9 +21,13 @@ expect class PremiumBillingClient {
     val state: StateFlow<PremiumState>
     val formattedPrices: StateFlow<FormattedPrices>
 
+    /** True once Play has answered a purchase query successfully (never set on a failed query). */
+    val purchasesQueried: StateFlow<Boolean>
+
     suspend fun connect()
 
-    suspend fun queryPurchases()
+    /** @return true once Play has answered; false if it could not be reached. */
+    suspend fun queryPurchases(): Boolean
 
     suspend fun launchPurchase(
         activityContext: Any,
@@ -37,6 +46,14 @@ sealed interface PurchaseResult {
     data object Success : PurchaseResult
 
     data object UserCancelled : PurchaseResult
+
+    /**
+     * Play accepted the order but payment isn't confirmed yet (e.g. a cash/delayed payment
+     * method). Premium turns on later via [PremiumBillingClient.state] (the purchases-updated
+     * listener) or the next [PremiumBillingClient.queryPurchases] call once it completes —
+     * nothing more to do here than tell the user to expect it.
+     */
+    data object Pending : PurchaseResult
 
     data class Error(
         val message: String,

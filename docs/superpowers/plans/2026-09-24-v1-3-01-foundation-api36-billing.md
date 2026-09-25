@@ -990,6 +990,25 @@ Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>"
 
 ---
 
+### Task 7b (tillägg från granskningen av Task 7, 2026-09-24/25): Väntande och misslyckade köp ger besked
+
+**Bakgrund:** `MainActivity` slängde köpresultatet (`PurchaseResult` → `Unit`). Ett väntande köp (kontant/fördröjd betalning: Play svarar OK med ett PENDING-köp) rapporterades som fel, och alla fel återställde bara knappen utan besked. Förut dolde den falska välkomsttexten det.
+
+**Gjort (`306e0f79`):** `PurchaseResult.Pending`; Android-klienten ger `Pending` när OK-svaret bär ett PENDING-köp; resultatet går genom `AppGraph.launchPurchase`/`PremiumViewModel` (typ `suspend (PremiumTier) -> PurchaseResult`); `PremiumUiState.purchaseNotice` (PENDING/FAILED) visas som en rad under köpknappen (SV/EN `premium_purchase_pending`/`premium_purchase_failed`); ett undantag från `launchPurchase` loggas och blir FAILED i stället för att krascha appen. (Den förra sessionen avbröts mitt i gaten; koden verifierades och committades 2026-09-25.)
+
+---
+
+### Task 7c + 7d (tillägg från granskningarna av 7b och 7c, 2026-09-25): Köpflödet återhämtar sig utan omstart
+
+**Gjort (`108f3c3c`, `85d30213`, `441937f5`, `8a3816a1`):**
+- Rena beslut i `composeApp/src/androidMain/.../data/premium/PurchaseOutcome.kt` (+ `PurchaseOutcomeTest`, 25 tester): `purchaseUpdateOutcome` (verifierat PURCHASED vinner, sedan PENDING, annars fel), `alreadyOwnedOutcome`, `entitlementChanged` (ignorerar `purchasedAt`), `listenerGrantIncrement`/`nextStateAfterListenerGrant`.
+- `ITEM_ALREADY_OWNED` (både lyssnaren och direktsvaret från `launchBillingFlow`) frågar Play igen i stället för att visa "Köpet gick inte igenom": ägt köp → klart, väntande köp → "väntar". Billing 8 ekar varje icke-OK `launchBillingFlow`-svar till lyssnaren; ekot uppdaterar bara.
+- `MainActivity`: köpen kontrolleras vid varje `STARTED` (`repeatOnLifecycle`), Googles rekommendation, så att ett väntande köp som blir klart medan appen är stängd syns utan kallstart. Räknaren `listenerGrants` (räknas upp vid VARJE beviljat köp från lyssnaren) hindrar en samtidig, äldre köpfråga från att skriva över ett nytt köp med Free. Ett oförändrat köp stämplas inte om (ingen ny emission vid varje förgrund).
+- Priser: omförsök efter 2, 5 och 15 s i samma `productsJob`, senast hämtade priser behålls vid tillfälligt fel, och en köpfråga startar om prishämtningen om ett pris saknas. Årspriset OCH köpets `offerToken` tas från basplanen (`offerId == null`), så förnyelsetexten stämmer även om ett erbjudande läggs till i Console.
+- `launchBillingFlow` som kastar lämnar inte `purchaseDeferred` kvar (låste annars alla senare köp). Loggar har Plays svarskod; produkter som saknas i Console loggas med `unfetchedProductList` (productId:statusCode).
+
+---
+
 ### Task 8: Alla priser från Google Play (inga hårdkodade priser)
 
 **Files:**
@@ -1145,6 +1164,14 @@ när priset ändras i Console). Förnyelsetexten visar Plays riktiga pris.
 
 Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>"
 ```
+
+**Utfört 2026-09-25 (`7f73a771`) med ett tillägg:** `canPurchase` kräver också att backend inte redan är Active (en årsprenumerant ska inte kunna köpa livstid och fortsätta betala prenumerationen). Planens testsnuttar med `launchPurchase = {}` kompilerar inte sedan Task 7b; lambdorna returnerar ett `PurchaseResult`.
+
+---
+
+### Task 8b (tillägg från granskningen av Task 8, 2026-09-25): Köpskärmen avslutas när Premium slås på medan den är öppen
+
+**Gjort (`fce73734`):** skärmen avslutas (välkomst + stäng) vid varje observerad övergång Free→Active medan den är öppen, inte bara efter ett köp från just den skärmen. Annars blev den en återvändsgränd med grå knapp om appen startades om mitt i 3-D Secure eller en bank-app (ny ViewModel, köpfrågan vid förgrund gav Active). Ett Active-läge redan vid öppning räknas inte. Nivån som köps fångas vid spärren. Tester för dubbeltryck, sena priser och låst köp utan pris. (`awaitingActivation` läses inte längre; tas bort i Plan 2 Task 9.)
 
 ---
 
@@ -1355,6 +1382,11 @@ inget av det finns bakom Premium.
 
 Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>"
 ```
+
+**Utfört 2026-09-25 (`8c1ed217`, `1168d506`, `f91e7149`) med tre avvikelser:**
+- Vakttestets förbjudna ord är **per språk** (svenska ord mot `values/`, engelska mot `values-en/`) med delsträngsmatchning. Planens gemensamma lista gav falsklarm: "säsongsstatistik" innehåller "songs". Stammar som "säkerhetskopi" och sammansättningar som "fågelläten" fångas fortfarande (kanarieprovat).
+- Tankstreck borttagna ur alla `premium_*`-texter (`premium_free_eyebrow`, `premium_teaser_export_failed`, `premium_hero_photo_label` utöver planens rader).
+- Vakten granskar även `settings_hero_*` och `map_teaser_*`, och **CI kör nu `:composeApp:testDebugUnitTest` + `:shared:datastore:jvmTest`**. androidUnitTest-vakterna (köpbeslut, paritet, sann copy, BirdNET-licensen) kördes förut bara lokalt.
 
 ---
 
@@ -1631,9 +1663,21 @@ gh pr checks --watch
 ```
 Förväntat: båda CI-jobben gröna.
 
+**Utfört 2026-09-25 (`ddd93b32`) med två avvikelser:** routingen använder `isEarlyMember = isGrandfathered && premiumOverride != null` (inte bara `isGrandfathered`), så att DEBUG-växeln "Skip premium override" når den riktiga betalväggen även på en telefon som själv är tidig användare. Blocket ligger EFTER kontrollen att användaren står kvar på startskärmen (den väntar in NavHost-grafen), inte först i effekten. `DiagnosticsScreen` fick `GrandfatherDebugControls` och utbrutna sektioner (detekt LongParameterList/LongMethod). Enhetscheck uppskjuten till Plan 3 (ingen enhet ansluten).
+
+---
+
+### Task 11b (tillägg från granskningen av Task 11, 2026-09-25): Tack-skärmen tål dubbeltryck och visas säkert en gång
+
+**Gjort (`efdc3e94`):** stängningen poppar idempotent (`popBackStack(AppRoute.Premium, inclusive = true)`; ett dubbeltryck under NavHosts toning tömde förut navigeringen); den automatiska visningen kontrollerar startskärmen synkront direkt före navigeringen (en aviseringslänk som hunnit öppnas täcks inte), navigerar FÖRE sparandet (i värsta fall visas den två gånger, aldrig noll) och kraschar inte om DataStore-skrivningen misslyckas; `PremiumOverrideResolver.isEarlyMember` med tester genom `resolve()`; `MainActivity` vidarebefordrar startintentens länk bara vid en färsk start (inte vid omstart av aktiviteten, t.ex. språkbyte, eller start från Senaste).
+
+**Tillägg (`2dfebefa`):** ljud-ID-texterna säger inte längre "3 sekunder" (`listen_card_audio_body`, `onboarding_s3_sub`, `audio_no_bird_hint_3`, SV + EN), samma budskap som webbplatsen.
+
 ---
 
 ### Task 12: Plan 1-avslut — slutgate, merge till main, synka dokumenten
+
+**Utfört 2026-09-25.** Slutgranskning av hela grenen (`d12efcf1..efdc3e94`, Fable): "merge to main, with fixes tracked"; den körde full gate + `lintRelease` (0 fel) och BuildConfig-kontrollerna. Dess viktiga fynd åtgärdades i **Task 12a (`4985bf50`)**: `birdy.billingTestBuild`/`birdy.grandfatherCutoffMs` gäller bara från kommandoraden (`gradle.startParameter.projectProperties`) och konfigurationen stoppar om de ligger i en gradle.properties-fil, så att en kvarglömd rad aldrig kan göra produktionsbygget till ett köptestbygge med brytpunkt 0; `verifyReleaseKeys` skriver ut `Birdy release config: versionCode=… versionName=… GRANDFATHER_CUTOFF_MS=… billingTestBuild=…`; ny `verifyProductionRelease` (bara på `bundleRelease`/`assembleRelease`, hoppas över för köptestbyggen) stoppar den läckta MapTiler-nyckeln (SHA-256) och osignerade bundles. Licensnyckeln kan inte kontrolleras i bygget, så runbooken har en hård grind: ett riktigt vC128-köp ska ge Premium utan `Signature verification failed` i logcat. `main` (`d0ea7f7f`) slogs ihop in i grenen före dokumentuppdateringen (`8b377cc1`).
 
 **Files:**
 - Modify: `CLAUDE.md` (statusposten för 1.3.0), `AGENTS.md` (genereras)

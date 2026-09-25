@@ -2,6 +2,7 @@ package se.birdy.android
 
 import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.SystemBarStyle
@@ -13,7 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.play.core.review.ReviewManagerFactory
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
@@ -35,12 +38,15 @@ import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.notifications.workers.TrophyProgressWorker
 import se.birdy.app.photo.PhotoStorageProvider
+import se.birdy.app.premium.GrandfatherPolicy
+import se.birdy.app.premium.PremiumOverrideResolver
 import se.birdy.app.ui.audio.AndroidAudioRecorderAdapter
 import se.birdy.app.ui.audio.AndroidWaveformRenderer
 import se.birdy.app.ui.badges.BadgeStringMap
 import se.birdy.app.ui.badges.resolveBadgeString
 import se.birdy.app.ui.debug.DiagnosticsRunner
 import se.birdy.app.ui.debug.DiagnosticsScreen
+import se.birdy.app.ui.debug.GrandfatherDebugControls
 import se.birdy.app.ui.settings.AppLocaleApplier
 import se.birdy.app.ui.settings.SettingsLauncherSetup
 import se.birdy.app.usecase.ExportJournalUseCase
@@ -51,7 +57,6 @@ import se.birdy.data.observation.SqlDelightObservationRepository
 import se.birdy.datastore.UserPreferences
 import se.birdy.datastore.UserPreferencesStore
 import se.birdy.domain.premium.PremiumState
-import se.birdy.domain.premium.PremiumTier
 import se.birdy.ml.AndroidTfliteAudioRunner
 import se.birdy.ml.AndroidTfliteRunner
 import se.birdy.ml.AudioClassifierFactory
@@ -88,6 +93,9 @@ class MainActivity : AppCompatActivity() {
             replay = 1,
             extraBufferCapacity = 4,
         )
+
+    /** Last `birdy://` URI forwarded this task, persisted across recreate. */
+    private var lastForwardedDeepLink: String? = null
 
     private val requestPermLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
@@ -256,7 +264,17 @@ class MainActivity : AppCompatActivity() {
         // enqueue whenever effectivePremiumActive flips false→true (cancelled with lifecycleScope).
         appGraph.premiumActivationListener.start(lifecycleScope)
         setContent { App(appGraph) }
-        intent?.let { handleDeepLink(it) }
+        // Skip a recreate of the same already-handled link (language switch, process-death
+        // restore) and Recents relaunches. Whether a new notification link after process death
+        // arrives as this activity's intent or later via onNewIntent depends on the launch flags
+        // and Android version, so compare against the last forwarded URI instead of treating any
+        // savedInstanceState as "already handled".
+        lastForwardedDeepLink = savedInstanceState?.getString(STATE_LAST_FORWARDED_DEEP_LINK)
+        val launchedFromHistory = (intent?.flags ?: 0) and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
+        val incomingDeepLink = intent?.data?.takeIf { it.scheme == "birdy" }?.toString()
+        if (!launchedFromHistory && incomingDeepLink != null && incomingDeepLink != lastForwardedDeepLink) {
+            intent?.let { handleDeepLink(it) }
+        }
         lifecycleScope.launch {
             val prefs = appGraph.userPreferences
             val notificationsOn =
@@ -278,10 +296,17 @@ class MainActivity : AppCompatActivity() {
         handleDeepLink(intent)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        lastForwardedDeepLink?.let { outState.putString(STATE_LAST_FORWARDED_DEEP_LINK, it) }
+    }
+
     private fun handleDeepLink(intent: Intent) {
         val uri = intent.data ?: return
         if (uri.scheme != "birdy") return
-        deepLinkFlow.tryEmit(uri.toString())
+        val uriString = uri.toString()
+        lastForwardedDeepLink = uriString
+        deepLinkFlow.tryEmit(uriString)
     }
 
     override fun onDestroy() {
@@ -311,23 +336,32 @@ class MainActivity : AppCompatActivity() {
         val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         val badgeVersionStore = SharedPrefsBadgeVersionStore(applicationContext)
         val userPreferences = UserPreferencesStore(applicationContext).preferences()
-        // One-shot migration: record firstInstallTimestamp if not yet set.
-        // Existing v0.8.0-rc1 users (hasSeenOnboarding=true) get backdated to now-8d
-        // so the 7d grace has already elapsed; the 3d throttle governs the next show.
-        // Fresh installs get now → full 7d grace before any modal can appear.
-        runBlocking {
-            val existingInstall = userPreferences.firstInstallTimestamp.first()
-            if (existingInstall == null) {
-                val isUpgrade = userPreferences.hasSeenOnboarding.first()
-                val installMs =
-                    if (isUpgrade) {
-                        System.currentTimeMillis() - UPGRADE_INSTALL_BACKDATE_MS
-                    } else {
-                        System.currentTimeMillis()
-                    }
-                userPreferences.setFirstInstallTimestamp(installMs)
+        // One-shot migration + phone-change safety net for firstInstallTimestamp. v0.8.0-rc1
+        // upgraders (hasSeenOnboarding=true, no timestamp yet) get backdated to now-8d so the
+        // 7d onboarding-modal grace has already elapsed; fresh installs get now → full 7d grace.
+        // On every start we also fold in Android's PackageInfo install time and keep whichever
+        // of {stored, package, candidate} is earliest (GrandfatherPolicy.earliestInstallMs) —
+        // this is what keeps a pre-cutoff user grandfathered after a phone change, where the
+        // DataStore backup restores the old timestamp but PackageInfo resets to "now".
+        val storedFirstInstallMs = runBlocking { userPreferences.firstInstallTimestamp.first() }
+        val candidateFirstInstallMs =
+            runBlocking {
+                if (userPreferences.hasSeenOnboarding.first()) {
+                    System.currentTimeMillis() - UPGRADE_INSTALL_BACKDATE_MS
+                } else {
+                    System.currentTimeMillis()
+                }
             }
+        val resolvedFirstInstallMs =
+            GrandfatherPolicy.earliestInstallMs(
+                storedMs = storedFirstInstallMs,
+                packageMs = packageFirstInstallTimeOrNull(),
+                candidateMs = candidateFirstInstallMs,
+            )
+        if (resolvedFirstInstallMs != storedFirstInstallMs) {
+            runBlocking { userPreferences.setFirstInstallTimestamp(resolvedFirstInstallMs) }
         }
+        val isGrandfathered = computeGrandfathered(userPreferences, storedFirstInstallMs = resolvedFirstInstallMs)
         billingClient =
             se.birdy.app.data.premium.PremiumBillingClient(
                 context = applicationContext,
@@ -338,10 +372,16 @@ class MainActivity : AppCompatActivity() {
                 state = billingClient.state,
                 queryPurchases = { billingClient.queryPurchases() },
             )
-        // Connect + cold-start query in parallel with classifier bootstrap
+        // Connect, then re-check purchases every time the app comes to the foreground (Google's
+        // recommendation): a pending payment can complete, or a subscription lapse, while the app
+        // isn't running. STARTED rather than RESUMED because Play's purchase sheet is usually
+        // translucent and only pauses this activity — but full-screen payment steps (3-D Secure,
+        // adding a card) DO stop it, so this re-check can still fire mid-purchase. That's fine:
+        // PremiumBillingClient's listenerGrants guard (see its KDoc) stops a stale query from
+        // overwriting a fresher listener-granted entitlement.
         lifecycleScope.launch {
             billingClient.connect()
-            billingClient.queryPurchases()
+            repeatOnLifecycle(Lifecycle.State.STARTED) { billingClient.queryPurchases() }
         }
         val classifierBootstrap = ClassifierBootstrap(buildClassifier = { buildClassifier() })
         // Plan 6b3 T7: build the PDF export use case. PdfFontProvider must be
@@ -350,23 +390,19 @@ class MainActivity : AppCompatActivity() {
         PdfFontProvider.init(applicationContext)
         val journalRenderer = JournalPdfRenderer()
         // DEBUG-only Billing-verify escape hatch (runbook §1): when the developer
-        // toggle is on, skip EVERY override so the real NotActive→purchase→Active
-        // path is exercised even while PREMIUM_OPEN_FOR_LAUNCH=true. Read once here;
-        // restart applies it. Always false in release (BuildConfig.DEBUG guards it).
+        // toggle is on, skip EVERY override (grandfathered included) so the real
+        // NotActive→purchase→Active path is exercised. Read once here; restart applies it.
+        // Always false in release (BuildConfig.DEBUG guards it).
         val skipPremiumOverride =
             BuildConfig.DEBUG && runBlocking { userPreferences.skipPremiumOverride.first() }
-        // PREMIUM_OPEN_FOR_LAUNCH (defaultConfig=true) forces every user to Active(LIFETIME)
-        // through the closed-testing + initial production window. Toggle off in
-        // androidApp/build.gradle.kts when Billing v8 monetization goes live.
         val premiumOverride: PremiumState? =
-            when {
-                skipPremiumOverride -> null
-                BuildConfig.PREMIUM_OPEN_FOR_LAUNCH ->
-                    PremiumState.Active(PremiumTier.LIFETIME, Clock.System.now())
-                BuildConfig.DEBUG && BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE ->
-                    PremiumState.Active(PremiumTier.YEARLY, Clock.System.now())
-                else -> null
-            }
+            PremiumOverrideResolver.resolve(
+                isGrandfathered = isGrandfathered,
+                debugSkipOverride = skipPremiumOverride,
+                premiumOpenForLaunch = BuildConfig.PREMIUM_OPEN_FOR_LAUNCH,
+                debugForceYearly = BuildConfig.DEBUG && BuildConfig.PREMIUM_DEBUG_FORCE_ACTIVE,
+                now = Clock.System.now(),
+            )
         val overrideTag = runBlocking { userPreferences.appLanguage.first() }.toLocaleTagOrNull()
         val resolvedLocale =
             LocaleResolver.resolve(
@@ -424,6 +460,7 @@ class MainActivity : AppCompatActivity() {
             userPreferences = userPreferences,
             premiumRepository = premiumRepository,
             premiumOverride = premiumOverride,
+            isGrandfathered = isGrandfathered,
             versionName = BuildConfig.VERSION_NAME,
             defaultLocale = resolvedLocale,
             benchmarkScreen = buildBenchmarkScreen(classifierBootstrap),
@@ -432,9 +469,9 @@ class MainActivity : AppCompatActivity() {
             requestInAppReview = { launchInAppReview() },
             launchPurchase = { tier ->
                 billingClient.launchPurchase(this@MainActivity, tier)
-                Unit
             },
             formattedPricesFlow = billingClient.formattedPrices,
+            premiumQueried = billingClient.purchasesQueried,
             audioClassifierProvider = audioProvider,
             audioStorageDir = {
                 val dir = File(filesDir, "audio")
@@ -503,6 +540,42 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    /**
+     * Spec 2026-09-24 §5.1. DEBUG builds can force it on via DiagnosticsScreen for QA.
+     *
+     * [storedFirstInstallMs] is the already-resolved earliest-known install time
+     * (see [GrandfatherPolicy.earliestInstallMs] in [buildAppGraph]) — it already folds in
+     * Android's PackageInfo install time, so it alone is enough for the cutoff check here.
+     */
+    private fun computeGrandfathered(
+        userPreferences: UserPreferences,
+        storedFirstInstallMs: Long,
+    ): Boolean {
+        val debugForce = BuildConfig.DEBUG && runBlocking { userPreferences.debugForceGrandfathered.first() }
+        if (debugForce) return true
+        return GrandfatherPolicy.isGrandfathered(
+            storedFirstInstallMs = storedFirstInstallMs,
+            packageFirstInstallMs = null,
+            cutoffMs = BuildConfig.GRANDFATHER_CUTOFF_MS,
+        )
+    }
+
+    /** Android's own install time survives "clear data", unlike our DataStore timestamp. */
+    private fun packageFirstInstallTimeOrNull(): Long? =
+        try {
+            val info =
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    packageManager.getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(0))
+                } else {
+                    @Suppress("DEPRECATION")
+                    packageManager.getPackageInfo(packageName, 0)
+                }
+            info.firstInstallTime.takeIf { it > 0 }
+        } catch (e: PackageManager.NameNotFoundException) {
+            android.util.Log.w("Birdy", "firstInstallTime unavailable", e)
+            null
+        }
+
     private fun buildBenchmarkScreen(bootstrap: ClassifierBootstrap): (@Composable () -> Unit)? =
         if (BuildConfig.DEBUG) {
             @Composable {
@@ -553,6 +626,12 @@ class MainActivity : AppCompatActivity() {
                     },
                     skipPremiumOverride = userPreferences.skipPremiumOverride,
                     onSetSkipPremiumOverride = { userPreferences.setSkipPremiumOverride(it) },
+                    grandfatherDebug =
+                        GrandfatherDebugControls(
+                            forceGrandfathered = userPreferences.debugForceGrandfathered,
+                            onSetForceGrandfathered = { userPreferences.setDebugForceGrandfathered(it) },
+                            onResetGrandfatherThanks = { userPreferences.setGrandfatherThanksShown(false) },
+                        ),
                 )
             }
         } else {
@@ -628,5 +707,6 @@ class MainActivity : AppCompatActivity() {
 
     private companion object {
         private const val ONE_HOUR_MS = 60L * 60L * 1000L
+        private const val STATE_LAST_FORWARDED_DEEP_LINK = "last_forwarded_deep_link"
     }
 }

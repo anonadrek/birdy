@@ -28,6 +28,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -37,7 +38,9 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
@@ -49,7 +52,6 @@ import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.premium_auto_renew_disclosure
 import birdy_bird_scanner.composeapp.generated.resources.premium_cta_primary
-import birdy_bird_scanner.composeapp.generated.resources.premium_cta_subtext
 import birdy_bird_scanner.composeapp.generated.resources.premium_divider
 import birdy_bird_scanner.composeapp.generated.resources.premium_feature_badges_sub
 import birdy_bird_scanner.composeapp.generated.resources.premium_feature_badges_title
@@ -67,12 +69,13 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_free_scan
 import birdy_bird_scanner.composeapp.generated.resources.premium_headline_accent
 import birdy_bird_scanner.composeapp.generated.resources.premium_headline_plain
 import birdy_bird_scanner.composeapp.generated.resources.premium_headline_suffix
+import birdy_bird_scanner.composeapp.generated.resources.premium_lifetime_note
+import birdy_bird_scanner.composeapp.generated.resources.premium_price_loading
+import birdy_bird_scanner.composeapp.generated.resources.premium_purchase_failed
+import birdy_bird_scanner.composeapp.generated.resources.premium_purchase_pending
 import birdy_bird_scanner.composeapp.generated.resources.premium_screen_close
 import birdy_bird_scanner.composeapp.generated.resources.premium_subline
-import birdy_bird_scanner.composeapp.generated.resources.premium_tier_lifetime_price
 import birdy_bird_scanner.composeapp.generated.resources.premium_tier_lifetime_title
-import birdy_bird_scanner.composeapp.generated.resources.premium_tier_yearly_price
-import birdy_bird_scanner.composeapp.generated.resources.premium_tier_yearly_sub
 import birdy_bird_scanner.composeapp.generated.resources.premium_tier_yearly_title
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
@@ -96,6 +99,10 @@ fun PremiumScreen(
     onPurchaseComplete: () -> Unit,
 ) {
     val state by viewModel.state.collectAsState()
+
+    LaunchedEffect(state.purchaseCompleted) {
+        if (state.purchaseCompleted) onPurchaseComplete()
+    }
 
     Box(
         modifier =
@@ -127,31 +134,16 @@ fun PremiumScreen(
             item {
                 TierCard(
                     title = stringResource(Res.string.premium_tier_yearly_title),
-                    price = state.formattedYearlyPrice ?: stringResource(Res.string.premium_tier_yearly_price),
-                    sub = stringResource(Res.string.premium_tier_yearly_sub),
+                    price = state.formattedYearlyPrice ?: stringResource(Res.string.premium_price_loading),
+                    sub = null,
                     selected = state.selectedTier == PremiumTier.YEARLY,
                     onClick = { viewModel.selectTier(PremiumTier.YEARLY) },
                 )
             }
             item {
-                if (state.selectedTier == PremiumTier.YEARLY) {
-                    Text(
-                        text = stringResource(Res.string.premium_auto_renew_disclosure),
-                        fontFamily = rememberCaveat(),
-                        fontSize = 13.sp,
-                        color = MarginaliaInk,
-                        textAlign = TextAlign.Center,
-                        modifier =
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 24.dp, vertical = 2.dp),
-                    )
-                }
-            }
-            item {
                 TierCard(
                     title = stringResource(Res.string.premium_tier_lifetime_title),
-                    price = state.formattedLifetimePrice ?: stringResource(Res.string.premium_tier_lifetime_price),
+                    price = state.formattedLifetimePrice ?: stringResource(Res.string.premium_price_loading),
                     sub = null,
                     selected = state.selectedTier == PremiumTier.LIFETIME,
                     onClick = { viewModel.selectTier(PremiumTier.LIFETIME) },
@@ -161,21 +153,50 @@ fun PremiumScreen(
                 PrimaryCta(
                     text = stringResource(Res.string.premium_cta_primary),
                     inFlight = state.purchaseInFlight,
-                    onClick = {
-                        viewModel.purchase()
-                        onPurchaseComplete()
-                    },
+                    enabled = state.canPurchase,
+                    onClick = { viewModel.purchase() },
                 )
             }
+            val purchaseNotice = state.purchaseNotice
+            if (purchaseNotice != null) {
+                item {
+                    Text(
+                        text =
+                            stringResource(
+                                when (purchaseNotice) {
+                                    PurchaseNotice.PENDING -> Res.string.premium_purchase_pending
+                                    PurchaseNotice.FAILED -> Res.string.premium_purchase_failed
+                                },
+                            ),
+                        color = MarginaliaInk,
+                        fontSize = 14.sp,
+                        textAlign = TextAlign.Center,
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 24.dp, vertical = 8.dp)
+                                .semantics { liveRegion = LiveRegionMode.Polite },
+                    )
+                }
+            }
             item {
-                Text(
-                    text = stringResource(Res.string.premium_cta_subtext),
-                    fontFamily = rememberCaveat(),
-                    color = MarginaliaInk,
-                    fontSize = 14.sp,
-                    modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
-                    textAlign = TextAlign.Center,
-                )
+                val note =
+                    when (state.selectedTier) {
+                        PremiumTier.YEARLY ->
+                            state.formattedYearlyPrice?.let {
+                                stringResource(Res.string.premium_auto_renew_disclosure, it)
+                            }
+                        PremiumTier.LIFETIME -> stringResource(Res.string.premium_lifetime_note)
+                    }
+                if (note != null) {
+                    Text(
+                        text = note,
+                        color = MarginaliaInk,
+                        fontSize = 13.sp,
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 4.dp),
+                        textAlign = TextAlign.Center,
+                    )
+                }
             }
         }
         IconButton(
@@ -522,6 +543,7 @@ private fun TierCard(
 private fun PrimaryCta(
     text: String,
     inFlight: Boolean,
+    enabled: Boolean,
     onClick: () -> Unit,
 ) {
     Box(
@@ -530,8 +552,8 @@ private fun PrimaryCta(
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp, vertical = 4.dp)
                 .clip(RoundedCornerShape(999.dp))
-                .background(AccentCopper)
-                .clickable(enabled = !inFlight, onClick = onClick)
+                .background(if (enabled || inFlight) AccentCopper else AccentCopper.copy(alpha = 0.45f))
+                .clickable(enabled = enabled, onClick = onClick)
                 .padding(vertical = 14.dp),
         contentAlignment = Alignment.Center,
     ) {
@@ -553,13 +575,13 @@ private fun PrimaryCta(
     }
 }
 
-private data class PremiumFeatureItem(
+internal data class PremiumFeatureItem(
     val icon: PremiumFeatureIcon,
     val title: StringResource,
     val sub: StringResource,
 )
 
-private val premiumFeatures =
+internal val premiumFeatures =
     listOf(
         PremiumFeatureItem(PremiumFeatureIcon.MAP, Res.string.premium_feature_map_title, Res.string.premium_feature_map_sub),
         PremiumFeatureItem(PremiumFeatureIcon.EXPORT, Res.string.premium_feature_export_title, Res.string.premium_feature_export_sub),
