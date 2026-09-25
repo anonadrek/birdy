@@ -453,9 +453,9 @@
     <string name="premium_headline_plain">Hela året som</string>
     <string name="premium_headline_accent">fältornitolog.</string>
     <string name="premium_headline_suffix"></string>
-    <string name="premium_subline">— Stöd Birdy och få fler verktyg i fält. —</string>
+    <string name="premium_subline">Stöd Birdy och få fler verktyg i fält.</string>
     <!-- Premium-skärm v2: gratis-summering + 4 feature-rader -->
-    <string name="premium_free_eyebrow">Allt det här är gratis — alltid</string>
+    <string name="premium_free_eyebrow">Allt det här är alltid gratis</string>
     <string name="premium_free_scan">Skanna foto &amp; ljud</string>
     <string name="premium_free_save">Spara fynd i fältdagboken</string>
     <string name="premium_free_encyclopedia">Uppslagsverk · 839 arter</string>
@@ -502,23 +502,23 @@
     <!-- Gear -->
     <string name="gear_content_description">Inställningar</string>
     <!-- Per-tab markers -->
-    <string name="premium_archive_title">Exportera &amp; säkerhetskopiera</string>
-    <string name="premium_archive_subtitle">PDF-fältdagbok · molnsynk · flera foton per fynd</string>
+    <string name="premium_archive_title">Exportera fältdagboken</string>
+    <string name="premium_archive_subtitle">Hela dagboken som PDF, redo att dela</string>
     <string name="premium_lifelist_title">Säsongs-statistik</string>
     <string name="premium_lifelist_cta">Se hela din säsong</string>
     <string name="premium_lifelist_badge">PREMIUM</string>
-    <string name="premium_lifelist_preview_caption">Vår 2026 · 23 nya arter</string>
+    <string name="premium_lifelist_preview_caption">Exempel: Vår 2026 · 23 nya arter</string>
     <string name="premium_badges_section">Fältmärken · PREMIUM</string>
     <string name="premium_badges_cta">Lås upp 7 fältmärken →</string>
-    <string name="premium_species_title">Fältobservatörens insikter</string>
-    <string name="premium_species_subtitle">Migrationskarta · läten · djupare fält-anteckningar</string>
+    <string name="premium_species_title">Fler verktyg i fält</string>
+    <string name="premium_species_subtitle">Fynd-karta · PDF-export · säsongsstatistik</string>
     <string name="premium_teaser_corner">PREMIUM</string>
     <string name="premium_teaser_cta">→ Lås upp</string>
     <!-- Plan 6b3 T8: Export CTA states when premium is active -->
     <string name="premium_teaser_export_active">Exportera fältdagbok</string>
     <string name="premium_teaser_export_busy">Förbereder PDF…</string>
     <string name="premium_teaser_export_empty">Inga observationer ännu</string>
-    <string name="premium_teaser_export_failed">Kunde inte skapa PDF — försök igen</string>
+    <string name="premium_teaser_export_failed">Kunde inte skapa PDF. Försök igen.</string>
 
     <!-- Plan 6b3 T11: Season Statistics screen -->
     <string name="stats_title">Säsongsstatistik</string>
@@ -545,7 +545,7 @@
     <!-- ===== Plan 6a Task 9: A11y strings ===== -->
     <!-- AsyncImage contentDescription -->
     <string name="species_photo_label">Foto av %1$s</string>
-    <string name="premium_hero_photo_label">Talgoxe — illustrationsfoto för premium</string>
+    <string name="premium_hero_photo_label">Talgoxe, illustrationsfoto för Premium</string>
     <!-- StampSeal semantics -->
     <string name="stamp_locked_label">%1$s, låst märke. Tryck för mer info.</string>
     <string name="stamp_in_progress_label">%1$s, %2$s klart.</string>
