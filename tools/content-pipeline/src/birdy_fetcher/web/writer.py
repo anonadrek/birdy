@@ -7,12 +7,13 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Protocol
 
-from anthropic.types import MessageParam
+from anthropic import AsyncAnthropic, transform_schema
+from anthropic.types import JSONOutputFormatParam, MessageParam, OutputConfigParam
 from pydantic import ValidationError
 
 from ..cache import Cache
 from ..claude_summarizer import _split_prompt
-from ..cost import CostTracker
+from ..cost import CostTracker, MaxCostExceeded
 from .checks import Issue, check_facts, check_text, drop_facts
 from .model import WebTextOutput
 from .source import SpeciesSource
@@ -23,6 +24,13 @@ COST_KEYS = {"opus": "opus5", "sonnet": "sonnet5"}
 PROMPT_VERSION = "web-v1"
 MAX_TOKENS = 16_000
 ATTEMPTS = 2
+# `messages.parse()`'s post-parse failure path (see AnthropicStructuredClient) loses paid
+# usage and the real stop_reason, so we build the JSON-schema output format ourselves and
+# call `messages.create()` directly instead.
+_FORMAT: JSONOutputFormatParam = {
+    "type": "json_schema",
+    "schema": transform_schema(WebTextOutput),
+}
 
 
 @dataclass
@@ -42,29 +50,34 @@ class StructuredClient(Protocol):
 
 class AnthropicStructuredClient:
     """The real client. `AsyncAnthropic()` finds ANTHROPIC_API_KEY or an `ant auth login`
-    profile."""
+    profile. Retries are turned up because 180 species means 429/529 responses are routine.
+
+    Uses `messages.create` with a JSON-schema output format, not the SDK's `.parse()` helper:
+    in anthropic 0.97, `.parse()` raises a `pydantic.ValidationError` inside its own
+    post-parser when a reply is cut off at `max_tokens` or is a refusal, which throws away
+    the already-paid usage and the real `stop_reason` before the caller ever sees them. We
+    validate the JSON text ourselves instead, so usage and stop_reason survive every path."""
 
     def __init__(self) -> None:
-        from anthropic import AsyncAnthropic
-
-        self._client = AsyncAnthropic()
+        self._client = AsyncAnthropic(max_retries=5)
 
     async def parse_web_text(
         self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int
     ) -> StructuredReply:
-        try:
-            msg = await self._client.messages.parse(
-                model=model,
-                max_tokens=max_tokens,
-                system=system,
-                messages=messages,
-                output_format=WebTextOutput,
-            )
-        except ValidationError as exc:
-            return StructuredReply(None, str(exc), 0, 0, "invalid_output")
+        msg = await self._client.messages.create(
+            model=model,
+            max_tokens=max_tokens,
+            system=system,
+            messages=messages,
+            output_config=OutputConfigParam(format=_FORMAT),
+        )
         text = "".join(block.text for block in msg.content if block.type == "text")
+        try:
+            output: WebTextOutput | None = WebTextOutput.model_validate_json(text)
+        except ValidationError:
+            output = None
         return StructuredReply(
-            output=msg.parsed_output,
+            output=output,
             raw_text=text,
             input_tokens=msg.usage.input_tokens,
             output_tokens=msg.usage.output_tokens,
@@ -109,7 +122,9 @@ def feedback_message(issues: list[Issue]) -> str:
     lines = "\n".join(f"- {i.path}: {i.message}" for i in issues)
     return (
         "Your answer broke these rules. Write the whole answer again with the same structure "
-        "and fix only these points:\n" + lines
+        "and fix only these points:\n" + lines + "\n"
+        "For any facts.* point above, either copy an exact quote from one of the articles or "
+        "set that fact to null. Never invent or paraphrase a quote."
     )
 
 
@@ -157,29 +172,47 @@ class WebTextWriter:
 
         system, user = render_prompt(template, source, articles, group_sv, group_en, self.banned)
         messages: list[MessageParam] = [{"role": "user", "content": user}]
-        output: WebTextOutput | None = None
-        issues: list[Issue] = []
+        best_output: WebTextOutput | None = None
+        best_hard_count = 0
+        last_issues: list[Issue] = []
         attempts = 0
         for attempt in range(1, ATTEMPTS + 1):
             attempts = attempt
             reply = await self.client.parse_web_text(
                 model=self.model_id, system=system, messages=messages, max_tokens=MAX_TOKENS
             )
-            self.cost.record(
-                model=COST_KEYS[self.model_key],
-                input_tokens=reply.input_tokens,
-                output_tokens=reply.output_tokens,
-            )
+            try:
+                self.cost.record(
+                    model=COST_KEYS[self.model_key],
+                    input_tokens=reply.input_tokens,
+                    output_tokens=reply.output_tokens,
+                )
+            except MaxCostExceeded:
+                # The reply is already paid for. Keep it (if it parsed) so a rerun with more
+                # budget does not pay for the same species twice.
+                if reply.output is not None:
+                    self.cache.put(source.qid, cache_name, reply.output.model_dump_json(indent=2))
+                raise
+
             if reply.output is None:
-                issues = [
+                last_issues = [
                     Issue(
                         "svar",
                         f"modellen gav inget giltigt svar (stop_reason={reply.stop_reason})",
                     )
                 ]
                 continue
+
             output = reply.output
             issues = check_text(output, self.banned) + check_facts(output, articles)
+            last_issues = issues
+            # Keep the best valid answer seen so far, not just the last one: a retry meant to
+            # fix one problem can introduce a worse one, and that must not throw away an
+            # otherwise usable first answer. Fewest hard (non-droppable) issues wins; ties go
+            # to the later attempt.
+            hard_count = len([i for i in issues if i.fact is None])
+            if best_output is None or hard_count <= best_hard_count:
+                best_output, best_hard_count = output, hard_count
             if not issues:
                 break
             if attempt < ATTEMPTS:
@@ -189,7 +222,7 @@ class WebTextWriter:
                     {"role": "user", "content": feedback_message(issues)},
                 ]
 
-        if output is None:
-            return WriteResult(None, issues, [], attempts, False)
-        self.cache.put(source.qid, cache_name, output.model_dump_json(indent=2))
-        return self._finish(output, articles, attempts=attempts, cached=False)
+        if best_output is None:
+            return WriteResult(None, last_issues, [], attempts, False)
+        self.cache.put(source.qid, cache_name, best_output.model_dump_json(indent=2))
+        return self._finish(best_output, articles, attempts=attempts, cached=False)

@@ -9,7 +9,7 @@ import pytest
 from anthropic.types import MessageParam
 
 from birdy_fetcher.cache import Cache
-from birdy_fetcher.cost import CostTracker
+from birdy_fetcher.cost import CostTracker, MaxCostExceeded
 from birdy_fetcher.web.checks import load_banned
 from birdy_fetcher.web.model import WebTextOutput
 from birdy_fetcher.web.source import SourceImage, SpeciesSource
@@ -138,3 +138,62 @@ async def test_cached_answer_is_reused_without_a_call(tmp_path: Path) -> None:
         SOURCE, ARTICLES, "Tättingar", "Songbirds"
     )
     assert len(third.calls) == 1
+
+
+async def test_retry_keeps_the_better_answer_when_the_second_try_is_worse(
+    tmp_path: Path,
+) -> None:
+    first = valid_output()
+    assert first.sv.facts.size is not None
+    first.sv.facts.size.quote = "en påhittad mening om storleken"  # fact issue only
+    second = valid_output()
+    second.en.voice = "We love it!"  # hard issue
+    client = FakeClient([_reply(first), _reply(second)])
+    result = await _writer(tmp_path, client).write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
+    assert result.issues == []
+    assert result.output is not None and result.output.sv.facts.size is None
+    assert [i.fact for i in result.dropped_facts] == ["size"]
+
+
+async def test_only_valid_reply_is_kept_and_cached_when_retry_gives_no_output(
+    tmp_path: Path,
+) -> None:
+    first = valid_output()
+    first.en.voice = "We love it!"
+    client = FakeClient([_reply(first), _reply(None)])
+    writer = _writer(tmp_path, client)
+    result = await writer.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
+    assert result.output is not None
+    assert {i.path for i in result.issues} == {"en.voice"}
+
+    cached = await _writer(tmp_path, FakeClient([])).write(
+        SOURCE, ARTICLES, "Tättingar", "Songbirds"
+    )
+    assert cached.from_cache and cached.output is not None
+
+
+async def test_cost_cap_exceeded_still_caches_the_paid_reply(tmp_path: Path) -> None:
+    client = FakeClient([_reply(valid_output())])
+    writer = WebTextWriter(
+        cache=Cache(tmp_path),
+        cost=CostTracker(max_usd=0.01),
+        client=client,
+        prompt_path=PROMPT,
+        banned=BANNED,
+        model_key="opus",
+    )
+    with pytest.raises(MaxCostExceeded):
+        await writer.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
+
+    cached = await _writer(tmp_path, FakeClient([])).write(
+        SOURCE, ARTICLES, "Tättingar", "Songbirds"
+    )
+    assert cached.from_cache and cached.output is not None
+
+
+async def test_no_output_still_bills_cost(tmp_path: Path) -> None:
+    client = FakeClient([_reply(None), _reply(None)])
+    writer = _writer(tmp_path, client)
+    await writer.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
+    assert writer.cost.total_usd == pytest.approx(0.20)  # two billed calls at 10k/2k each
+    assert writer.cost.call_count == 2

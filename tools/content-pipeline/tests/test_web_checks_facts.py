@@ -90,6 +90,64 @@ def test_size_quote_about_wingspan_with_along_is_still_a_fact_issue() -> None:
     assert [(i.lang, i.fact) for i in issues] == [("en", "size")]
 
 
+def test_size_quote_with_swedish_length_compound_is_not_wingspan_only() -> None:
+    # "kroppslängd" contains "längd" as a substring, not as a whole word -- a whole-word-only
+    # match on "längd" would wrongly treat this quote as wingspan-only.
+    out = valid_output()
+    assert out.sv.facts.size is not None
+    out.sv.facts.size.value = "13 till 15 cm"
+    out.sv.facts.size.quote = "Den har en kroppslängd på 13–15 cm och ett vingspann på 22–25 cm"  # noqa: RUF001
+    articles = {
+        **ARTICLES,
+        "sv": WikiArticle(
+            lang="sv",
+            title="Talgoxe",
+            revision="111",
+            text="Den har en kroppslängd på 13–15 cm och ett vingspann på 22–25 cm. "  # noqa: RUF001
+            "Den är stannfågel i hela Sverige och ses året runt.",
+        ),
+    }
+    issues = check_facts(out, articles)
+    assert [i for i in issues if i.path == "sv.facts.size"] == []
+
+
+def test_size_quote_with_langden_ar_is_not_wingspan_only() -> None:
+    out = valid_output()
+    assert out.sv.facts.size is not None
+    out.sv.facts.size.quote = "Längden är 14 cm och den har ett vingspann på 22 cm"
+    articles = {
+        **ARTICLES,
+        "sv": WikiArticle(
+            lang="sv",
+            title="Talgoxe",
+            revision="111",
+            text="Längden är 14 cm och den har ett vingspann på 22 cm. "
+            "Den är stannfågel i hela Sverige och ses året runt.",
+        ),
+    }
+    issues = check_facts(out, articles)
+    assert [i for i in issues if i.path == "sv.facts.size"] == []
+
+
+def test_size_quote_about_vingspannet_only_is_a_fact_issue() -> None:
+    out = valid_output()
+    assert out.sv.facts.size is not None
+    out.sv.facts.size.value = "22 till 25 cm"
+    out.sv.facts.size.quote = "vingspannet är 22–25 cm hos båda könen"  # noqa: RUF001
+    articles = {
+        **ARTICLES,
+        "sv": WikiArticle(
+            lang="sv",
+            title="Talgoxe",
+            revision="111",
+            text="Vingspannet är 22–25 cm hos båda könen. "  # noqa: RUF001
+            "Den är stannfågel i hela Sverige och ses året runt.",
+        ),
+    }
+    issues = check_facts(out, articles)
+    assert [(i.lang, i.fact) for i in issues] == [("sv", "size")]
+
+
 def test_status_mismatch_between_languages_drops_both() -> None:
     out = valid_output()
     assert out.en.facts.sweden_status is not None
@@ -183,6 +241,20 @@ def test_absent_status_with_hackar_utanfor_sverige_wording_has_no_issue() -> Non
     out.en.where_when = "It has never been seen in Sweden."
     issues = check_facts(out, ARTICLES)
     assert [i for i in issues if i.fact is None] == []
+
+
+def test_absent_status_with_unrelated_utanfor_phrase_is_flagged() -> None:
+    # "utanför" alone must not negate the sentence -- only "utanför Sverige/landet" does.
+    # "Utanför häckningstiden" (outside the breeding season) is a real, unrelated use.
+    out = valid_output()
+    assert out.sv.facts.sweden_status is not None and out.en.facts.sweden_status is not None
+    out.sv.facts.sweden_status.value = "absent"
+    out.en.facts.sweden_status.value = "absent"
+    out.sv.where_when = "Utanför häckningstiden ses den i hela Sverige."
+    out.en.where_when = "It has never been seen in Sweden."
+    issues = check_facts(out, ARTICLES)
+    hard = [i for i in issues if i.fact is None]
+    assert [i.path for i in hard] == ["sv.where_when"]
 
 
 def test_absent_status_with_real_contradiction_is_flagged() -> None:

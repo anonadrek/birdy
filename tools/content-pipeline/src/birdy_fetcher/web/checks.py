@@ -149,11 +149,18 @@ _SWEDEN = {
     "en": re.compile(r"\b(sweden|the country)\b"),
 }
 _NEGATION = {
-    "sv": re.compile(r"\b(inte|aldrig|ej|saknas|utanför)\b"),
-    "en": re.compile(r"\b(not|never|no|absent|outside)\b|n't\b"),
+    # A bare "utanför"/"outside"/"absent" is too broad ("Utanför häckningstiden ..." is not a
+    # negation of Sweden presence) -- only count it when it actually names Sweden as what the
+    # species is outside of.
+    "sv": re.compile(r"\b(inte|aldrig|ej|saknas)\b|utanför (sverige|landet)"),
+    "en": re.compile(r"\b(not|never|no)\b|n't\b|absent from|outside (sweden|the country)"),
 }
-_WINGSPAN_RE = re.compile(r"\b(vingspann|wingspan)\b")
-_LENGTH_RE = re.compile(r"\b(lång|längd|long|length)\b")
+# Swedish compounds ("kroppslängd", "vingspannet") carry these words as substrings, not
+# whole words, so word-boundary-only matching misses them -- match "vingspann"/"längd" as
+# plain substrings, but keep whole-word boundaries on the short English/Swedish words that
+# would otherwise false-match inside other words (e.g. "long" inside "along").
+_WINGSPAN_RE = re.compile(r"vingspann|\bwingspan", re.IGNORECASE)
+_LENGTH_RE = re.compile(r"längd|\blång\b|\b(long|length)\b", re.IGNORECASE)
 
 
 def _normalize(text: str) -> str:
