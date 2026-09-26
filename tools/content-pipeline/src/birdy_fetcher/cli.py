@@ -261,7 +261,7 @@ def web(
     # characters or literal `[...]` that would otherwise crash or mangle on a Windows
     # console; disable rich markup interpretation and make stdout tolerant of encoding gaps.
     if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(errors="replace")
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     console = Console(markup=False, highlight=False)
     for o in outcomes:
         if o.status != "ok":
