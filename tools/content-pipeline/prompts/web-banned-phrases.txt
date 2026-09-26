@@ -2,11 +2,18 @@
 # Får växa när Albins granskning hittar nya mönster.
 anmärkningsvärd
 anmärkningsvärt
+anmärkningsvärda
 fascinerande
 spännande
 magnifik
+magnifikt
+magnifika
 fantastisk
+fantastiskt
+fantastiska
 unik
+unikt
+unika
 en sann
 en riktig pärla
 inte bara
@@ -24,6 +31,8 @@ stunning
 breathtaking
 magnificent
 boasts
+boast
+boasting
 nestled
 a true
 a testament to
@@ -32,6 +41,8 @@ but also
 in the heart of
 it is worth noting
 delve
+delves
+delving
 tapestry
 vibrant
 iconic

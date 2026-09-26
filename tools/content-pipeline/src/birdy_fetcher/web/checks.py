@@ -45,8 +45,17 @@ def banned_hits(text: str, banned: list[str]) -> list[str]:
     return [p for p in banned if re.search(rf"(?<!\w){re.escape(p)}(?!\w)", lower)]
 
 
+_SENTENCE_SPLIT = re.compile(r"(?<=[.?!])\s+(?=[A-ZÅÄÖ])")
+
+
+def _split_sentences(text: str) -> list[str]:
+    """Split on sentence-ending punctuation followed by an uppercase letter, so abbreviations
+    like "bl.a." or "e.g." do not count as sentence ends."""
+    return [s for s in _SENTENCE_SPLIT.split(text.strip()) if s]
+
+
 def sentence_count(text: str) -> int:
-    return len([s for s in re.split(r"(?<=[.?!])\s+", text.strip()) if s])
+    return len(_split_sentences(text))
 
 
 def _words(text: str) -> int:
@@ -62,8 +71,9 @@ def _style(path: str, lang: str, text: str, banned: list[str]) -> list[Issue]:
         issues.append(Issue(path, "innehåller tankstreck eller --"))
     if "!" in text:
         issues.append(Issue(path, "innehåller utropstecken"))
-    if FIRST_PERSON[lang].search(text):
-        issues.append(Issue(path, "är skriven i första person"))
+    first_person = FIRST_PERSON[lang].search(text)
+    if first_person:
+        issues.append(Issue(path, f"är skriven i första person ('{first_person.group(0)}')"))
     issues.extend(
         Issue(path, f"innehåller den förbjudna frasen '{h}'") for h in banned_hits(text, banned)
     )
@@ -116,23 +126,6 @@ def check_text(out: WebTextOutput, banned: list[str]) -> list[Issue]:
 
 
 MIN_QUOTE_CHARS = 20
-PRESENCE = {
-    "sv": (
-        "häckar i sverige",
-        "vanlig i sverige",
-        "stannfågel",
-        "flyttfågel",
-        "ses i sverige",
-        "finns i sverige",
-    ),
-    "en": (
-        "breeds in sweden",
-        "common in sweden",
-        "resident in sweden",
-        "seen in sweden",
-        "found in sweden",
-    ),
-}
 _QUOTE_CHARS = {
     "’": "'",  # noqa: RUF001
     "‘": "'",  # noqa: RUF001
@@ -142,10 +135,31 @@ _QUOTE_CHARS = {
     "»": '"',
     " ": " ",  # noqa: RUF001 -- key is U+00A0 (non-breaking space)
 }
+# Wikipedia writes size ranges with a typographic dash or minus sign; the prompt forbids
+# dashes in the model's own prose, so a quoted "28-31" must still match a differently
+# dashed source.
+_DASH_TO_HYPHEN = {chr(cp): "-" for cp in (*range(0x2010, 0x2016), 0x2212)}
+
+_PRESENCE = {
+    "sv": re.compile(r"\b(häckar|ses|vanlig\w*|finns|förekommer|stannfågel|flyttfågel)\b"),
+    "en": re.compile(r"\b(breeds?|seen|common|found|resident|occurs?)\b"),
+}
+_SWEDEN = {
+    "sv": re.compile(r"\b(sverige|landet)\b"),
+    "en": re.compile(r"\b(sweden|the country)\b"),
+}
+_NEGATION = {
+    "sv": re.compile(r"\b(inte|aldrig|ej|saknas)\b"),
+    "en": re.compile(r"\b(not|never|no)\b|n't\b"),
+}
+_WINGSPAN_WORDS = ("vingspann", "wingspan")
+_LENGTH_WORDS = ("lång", "längd", "long", "length")
 
 
 def _normalize(text: str) -> str:
     for src, dst in _QUOTE_CHARS.items():
+        text = text.replace(src, dst)
+    for src, dst in _DASH_TO_HYPHEN.items():
         text = text.replace(src, dst)
     return " ".join(text.lower().split())
 
@@ -155,6 +169,19 @@ def quote_in_sources(quote: str, sources: list[str]) -> bool:
     return len(q) >= MIN_QUOTE_CHARS and any(q in _normalize(s) for s in sources)
 
 
+def _is_wingspan_not_length(quote: str) -> bool:
+    """True when a size quote talks about the wingspan but never the body length -- the
+    two are easy for the model to conflate since both are given in centimetres."""
+    q = quote.lower()
+    has_wingspan = any(w in q for w in _WINGSPAN_WORDS)
+    has_length = any(w in q for w in _LENGTH_WORDS)
+    return has_wingspan and not has_length
+
+
+def _status_flagged(issues: list[Issue], lang: str) -> bool:
+    return any(i.lang == lang and i.fact == "sweden_status" for i in issues)
+
+
 def check_facts(out: WebTextOutput, articles: dict[str, WikiArticle]) -> list[Issue]:
     sources = [a.text for a in articles.values()]
     issues: list[Issue] = []
@@ -162,7 +189,9 @@ def check_facts(out: WebTextOutput, articles: dict[str, WikiArticle]) -> list[Is
         facts = getattr(out, lang).facts
         if facts.size is not None:
             path = f"{lang}.facts.size"
-            if not quote_in_sources(facts.size.quote, sources):
+            if not re.search(r"\d", facts.size.value):
+                issues.append(Issue(path, "storleken saknar siffror", lang, "size"))
+            elif not quote_in_sources(facts.size.quote, sources):
                 issues.append(Issue(path, "citatet finns inte i Wikipediatexten", lang, "size"))
             elif not set(re.findall(r"\d+", facts.size.value)) <= set(
                 re.findall(r"\d+", facts.size.quote)
@@ -170,6 +199,8 @@ def check_facts(out: WebTextOutput, articles: dict[str, WikiArticle]) -> list[Is
                 issues.append(
                     Issue(path, "siffrorna i storleken finns inte i citatet", lang, "size")
                 )
+            elif _is_wingspan_not_length(facts.size.quote):
+                issues.append(Issue(path, "citatet gäller vingbredden, inte längden", lang, "size"))
         if facts.sweden_status is not None and not quote_in_sources(
             facts.sweden_status.quote, sources
         ):
@@ -194,16 +225,51 @@ def check_facts(out: WebTextOutput, articles: dict[str, WikiArticle]) -> list[Is
                 )
             )
 
+    # Keep the two languages' sweden_status in lockstep: if either side is missing it, or
+    # either side already has a fact issue on it (so it will be dropped), drop the other
+    # side's status too -- otherwise one page could end up saying "resident" and the other
+    # nothing, or one "absent" and the other "resident".
+    status_of = {"sv": sv_status, "en": en_status}
+    other = {"sv": "en", "en": "sv"}
+    flagged = {lang: _status_flagged(issues, lang) for lang in LANGS}
+
+    def _drop_status(lang: str) -> None:
+        issues.append(
+            Issue(
+                f"{lang}.facts.sweden_status",
+                "statusen ströks på det andra språket",
+                lang,
+                "sweden_status",
+            )
+        )
+        flagged[lang] = True
+
+    for lang in LANGS:
+        opp = other[lang]
+        if status_of[lang] is None and status_of[opp] is not None and not flagged[opp]:
+            _drop_status(opp)
+    for lang in LANGS:
+        opp = other[lang]
+        if flagged[lang] and not flagged[opp] and status_of[opp] is not None:
+            _drop_status(opp)
+
     for lang in LANGS:
         t = getattr(out, lang)
         status = t.facts.sweden_status
-        if status is not None and status.value == "absent":
-            text = t.where_when.lower()
-            if any(phrase in text for phrase in PRESENCE[lang]):
+        if status is None or status.value != "absent" or flagged[lang]:
+            continue
+        for sentence in _split_sentences(t.where_when):
+            low = sentence.lower()
+            if (
+                _PRESENCE[lang].search(low)
+                and _SWEDEN[lang].search(low)
+                and not _NEGATION[lang].search(low)
+            ):
                 issues.append(
                     Issue(
                         f"{lang}.where_when",
-                        "beskriver förekomst i Sverige fast statusen är 'absent'",
+                        "beskriver förekomst i Sverige fast statusen är 'absent': "
+                        f'"{low.strip()}"',
                     )
                 )
     return issues

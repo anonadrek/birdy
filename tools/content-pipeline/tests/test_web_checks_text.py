@@ -33,6 +33,8 @@ def test_dashes_exclamation_and_first_person() -> None:
     assert "tankstreck" in messages
     assert "utropstecken" in messages
     assert "första person" in messages
+    assert "('Jag')" in messages
+    assert "('We')" in messages
 
 
 def test_vara_is_not_first_person() -> None:
@@ -43,7 +45,8 @@ def test_vara_is_not_first_person() -> None:
 
 def test_banned_phrases_are_whole_words() -> None:
     assert banned_hits("En fascinerande fågel", BANNED) == ["fascinerande"]
-    assert banned_hits("Unika teckningar", BANNED) == []
+    assert banned_hits("Kommunikationen fungerar", BANNED) == []
+    assert banned_hits("Unika teckningar", BANNED) == ["unika"]
     assert banned_hits("It is truly common", BANNED) == ["truly"]
 
 
@@ -78,6 +81,8 @@ def test_size_value_with_dash_is_a_fact_issue() -> None:
 def test_sentence_count() -> None:
     assert sentence_count("Ett. Två? Tre!") == 3
     assert sentence_count("Ingen punkt") == 1
+    assert sentence_count("Den äter bl.a. insekter. Den finns i hela Sverige.") == 2
+    assert sentence_count("It is c. 14 cm long, e.g. like a sparrow. It is common.") == 2
 
 
 def test_group_intros_have_no_banned_phrases() -> None:
