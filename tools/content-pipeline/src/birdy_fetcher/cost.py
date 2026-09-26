@@ -4,10 +4,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-# Anthropic published pricing (2026-01) — $/1M tokens. Update yearly.
+# Anthropic published pricing — $/1M tokens. Update yearly.
 _PRICING = {
     "haiku": {"input": 0.80, "output": 4.00},  # claude-haiku-4-5
     "sonnet": {"input": 3.00, "output": 15.00},  # claude-sonnet-4-6
+    "opus5": {"input": 5.00, "output": 25.00},  # claude-opus-5 (web step)
+    "sonnet5": {"input": 2.00, "output": 10.00},  # claude-sonnet-5 (web step)
 }
 
 
