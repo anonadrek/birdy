@@ -241,6 +241,9 @@ def _keep_existing_timestamp_if_text_unchanged(
         return record
     existing: dict[str, Any] = json.loads(existing_path.read_text(encoding="utf-8"))
     existing_generated = existing.get("generated")
-    if existing_generated is not None and existing.get("text") == record.get("text"):
+    same_text = existing.get("text") == record.get("text") and existing.get(
+        "rejectedText"
+    ) == record.get("rejectedText")
+    if existing_generated is not None and same_text:
         record["generated"] = existing_generated
     return record

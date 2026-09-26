@@ -42,7 +42,9 @@ def test_web_workers_must_be_at_least_one() -> None:
     # click validates --workers before the command body runs, so this never touches
     # the network -- it is safe alongside the --help-only rule for `web`.
     runner = CliRunner()
-    result = runner.invoke(main, ["web", "--dry-run", "--workers", "0"])
+    # --species Q1 is a second guard: should IntRange ever be loosened, the unknown QID
+    # fails in load_approved before any Wikipedia request.
+    result = runner.invoke(main, ["web", "--dry-run", "--workers", "0", "--species", "Q1"])
     assert result.exit_code != 0
 
 
