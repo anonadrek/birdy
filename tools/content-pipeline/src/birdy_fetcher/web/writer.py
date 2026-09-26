@@ -44,13 +44,16 @@ class StructuredReply:
 
 class StructuredClient(Protocol):
     async def parse_web_text(
-        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int
+        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int,
+        effort: str,
     ) -> StructuredReply: ...
 
 
 class AnthropicStructuredClient:
-    """The real client. `AsyncAnthropic()` finds ANTHROPIC_API_KEY or an `ant auth login`
-    profile. Retries are turned up because 180 species means 429/529 responses are routine.
+    """The real client. The locked anthropic 0.97 SDK reads `ANTHROPIC_API_KEY` or
+    `ANTHROPIC_AUTH_TOKEN` from the environment for `AsyncAnthropic()` -- there is no
+    `ant auth login` profile support. Retries are turned up because 180 species means
+    429/529 responses are routine.
 
     Uses `messages.create` with a JSON-schema output format, not the SDK's `.parse()` helper:
     in anthropic 0.97, `.parse()` raises a `pydantic.ValidationError` inside its own
@@ -62,14 +65,18 @@ class AnthropicStructuredClient:
         self._client = AsyncAnthropic(max_retries=5)
 
     async def parse_web_text(
-        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int
+        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int,
+        effort: str,
     ) -> StructuredReply:
         msg = await self._client.messages.create(
             model=model,
             max_tokens=max_tokens,
             system=system,
             messages=messages,
-            output_config=OutputConfigParam(format=_FORMAT),
+            # `effort` is a plain `str` throughout our own code (matching `model_key`), but
+            # the SDK's TypedDict narrows it to a Literal -- the CLI's click.Choice already
+            # constrains the actual values to a subset of that Literal at runtime.
+            output_config=OutputConfigParam(format=_FORMAT, effort=effort),  # type: ignore[typeddict-item]
         )
         text = "".join(block.text for block in msg.content if block.type == "text")
         try:
@@ -83,6 +90,9 @@ class AnthropicStructuredClient:
             output_tokens=msg.usage.output_tokens,
             stop_reason=msg.stop_reason,
         )
+
+    async def aclose(self) -> None:
+        await self._client.close()
 
 
 @dataclass
@@ -136,6 +146,7 @@ class WebTextWriter:
     prompt_path: Path
     banned: list[str]
     model_key: str
+    effort: str = "high"  # the API default for Opus 5, so this keeps prior behaviour unchanged
     regenerate: bool = False
 
     @property
@@ -145,7 +156,7 @@ class WebTextWriter:
     def _cache_name(self, template: str, articles: dict[str, WikiArticle]) -> str:
         prompt_hash = hashlib.sha256(template.encode("utf-8")).hexdigest()[:8]
         revs = "-".join(f"{lang}{articles[lang].revision}" for lang in sorted(articles))
-        return f"web-text-{self.model_key}-{prompt_hash}-{revs}.json"
+        return f"web-text-{self.model_key}-{self.effort}-{prompt_hash}-{revs}.json"
 
     def _finish(
         self, output: WebTextOutput, articles: dict[str, WikiArticle], attempts: int, cached: bool
@@ -179,7 +190,8 @@ class WebTextWriter:
         for attempt in range(1, ATTEMPTS + 1):
             attempts = attempt
             reply = await self.client.parse_web_text(
-                model=self.model_id, system=system, messages=messages, max_tokens=MAX_TOKENS
+                model=self.model_id, system=system, messages=messages, max_tokens=MAX_TOKENS,
+                effort=self.effort,
             )
             try:
                 self.cost.record(
@@ -211,6 +223,11 @@ class WebTextWriter:
                         f"modellen gav inget giltigt svar (stop_reason={reply.stop_reason})",
                     )
                 ]
+                # A cut-off (max_tokens) or a content-policy refusal will not change on an
+                # identical retry -- sending the same request again just pays for the same
+                # non-answer twice. Stop and report it instead.
+                if reply.stop_reason in ("max_tokens", "refusal"):
+                    break
                 continue
 
             output = reply.output

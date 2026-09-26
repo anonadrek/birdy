@@ -41,22 +41,25 @@ class FakeClient:
     replies: list[StructuredReply]
     calls: list[list[MessageParam]] = field(default_factory=list)
     systems: list[str] = field(default_factory=list)
+    efforts: list[str] = field(default_factory=list)
 
     async def parse_web_text(
-        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int
+        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int,
+        effort: str,
     ) -> StructuredReply:
         self.calls.append(list(messages))
         self.systems.append(system)
+        self.efforts.append(effort)
         return self.replies.pop(0)
 
 
-def _reply(output: WebTextOutput | None) -> StructuredReply:
+def _reply(output: WebTextOutput | None, stop_reason: str = "end_turn") -> StructuredReply:
     return StructuredReply(
         output=output,
         raw_text="{}",
         input_tokens=10_000,
         output_tokens=2_000,
-        stop_reason="end_turn",
+        stop_reason=stop_reason,
     )
 
 
@@ -249,3 +252,48 @@ async def test_no_output_still_bills_cost(tmp_path: Path) -> None:
     await writer.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
     assert writer.cost.total_usd == pytest.approx(0.20)  # two billed calls at 10k/2k each
     assert writer.cost.call_count == 2
+
+
+async def test_effort_is_passed_to_the_client(tmp_path: Path) -> None:
+    client = FakeClient([_reply(valid_output())])
+    writer = WebTextWriter(
+        cache=Cache(tmp_path), cost=CostTracker(max_usd=None), client=client,
+        prompt_path=PROMPT, banned=BANNED, model_key="opus", effort="low",
+    )
+    await writer.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
+    assert client.efforts == ["low"]
+
+
+async def test_different_effort_is_a_cache_miss(tmp_path: Path) -> None:
+    high = WebTextWriter(
+        cache=Cache(tmp_path), cost=CostTracker(max_usd=None),
+        client=FakeClient([_reply(valid_output())]), prompt_path=PROMPT, banned=BANNED,
+        model_key="opus", effort="high",
+    )
+    await high.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
+
+    low_client = FakeClient([_reply(valid_output())])
+    low = WebTextWriter(
+        cache=Cache(tmp_path), cost=CostTracker(max_usd=None), client=low_client,
+        prompt_path=PROMPT, banned=BANNED, model_key="opus", effort="low",
+    )
+    result = await low.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
+    assert not result.from_cache
+    assert len(low_client.calls) == 1
+
+
+async def test_max_tokens_stop_reason_does_not_retry(tmp_path: Path) -> None:
+    client = FakeClient([_reply(None, "max_tokens")])
+    result = await _writer(tmp_path, client).write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
+    assert result.output is None
+    assert len(client.calls) == 1
+    assert result.attempts == 1
+    assert any("max_tokens" in i.message for i in result.issues)
+
+
+async def test_refusal_stop_reason_does_not_retry(tmp_path: Path) -> None:
+    client = FakeClient([_reply(None, "refusal")])
+    result = await _writer(tmp_path, client).write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
+    assert result.output is None
+    assert len(client.calls) == 1
+    assert any("refusal" in i.message for i in result.issues)

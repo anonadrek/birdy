@@ -39,12 +39,15 @@ def build_record(
     images: list[ImageOut],
     errors: list[str],
     model_id: str,
+    effort: str,
     generated_at: datetime,
 ) -> dict[str, Any]:
     has_marginalia = source.marginalia_sv or source.marginalia_en
-    return {
+    status = "failed" if errors or text is None else "ok"
+    lang_text = {"sv": _lang(text.sv), "en": _lang(text.en)} if text is not None else None
+    record: dict[str, Any] = {
         "qid": source.qid,
-        "status": "failed" if errors or text is None else "ok",
+        "status": status,
         "review": "unreviewed",
         "slug": {"sv": slugify(source.name_sv, "sv"), "en": slugify(source.name_en, "en")},
         "names": {"sv": source.name_sv, "en": source.name_en, "scientific": source.scientific_name},
@@ -75,14 +78,22 @@ def build_record(
             )
             for lang in ("sv", "en")
         },
-        "text": {"sv": _lang(text.sv), "en": _lang(text.en)} if text is not None else None,
+        # `text` is only ever populated on an "ok" record. The website schema enforces
+        # text's length limits, so a failed record (unresolved checks, or no model answer
+        # at all) must never put anything there -- the rejected attempt, if any, goes under
+        # `rejectedText` instead, so it stays readable without ever reaching the schema.
+        "text": lang_text if status == "ok" else None,
         "generated": {
             "model": model_id,
             "prompt": PROMPT_VERSION,
+            "effort": effort,
             "at": generated_at.isoformat(),
         },
         "errors": errors,
     }
+    if status == "failed":
+        record["rejectedText"] = lang_text
+    return record
 
 
 def is_approved(path: Path) -> bool:

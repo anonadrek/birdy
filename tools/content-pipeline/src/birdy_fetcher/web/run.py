@@ -82,6 +82,7 @@ class WebPaths:
 class WebRunOptions:
     qids: tuple[str, ...]
     model_key: str
+    effort: str
     max_cost: float | None
     force: bool
     refresh_sources: bool
@@ -121,14 +122,21 @@ async def run_web(
     wiki = wiki or FullWikiClient(cache=cache)
     cost = CostTracker(max_usd=options.max_cost)
     writer: WebTextWriter | None = None
+    # Only construct our own client -- and only close it below -- when the caller didn't
+    # supply one. A caller-supplied client (tests, or a future caller reusing one across
+    # runs) is theirs to open and close; we must not touch its lifecycle.
+    owns_client = client is None and not options.dry_run
+    resolved_client = client
     if not options.dry_run:
+        resolved_client = client if client is not None else AnthropicStructuredClient()
         writer = WebTextWriter(
             cache=cache,
             cost=cost,
-            client=client or AnthropicStructuredClient(),
+            client=resolved_client,
             prompt_path=paths.prompt,
             banned=load_banned(paths.banned),
             model_key=options.model_key,
+            effort=options.effort,
             regenerate=options.regenerate,
         )
     stop = asyncio.Event()
@@ -138,14 +146,19 @@ async def run_web(
         async with semaphore:
             return await _process(source, paths, options, groups, wiki, writer, stop, now)
 
-    outcomes = list(await asyncio.gather(*(one(s) for s in sources)))
-    if not options.dry_run:
-        paths.reports.mkdir(parents=True, exist_ok=True)
-        report = render_report(outcomes, cost_usd=cost.total_usd,
-                               model_id=WEB_MODELS[options.model_key],
-                               date=now.date().isoformat())
-        (paths.reports / f"web-{now.date().isoformat()}.md").write_text(report, encoding="utf-8")
-    return outcomes
+    try:
+        outcomes = list(await asyncio.gather(*(one(s) for s in sources)))
+        if not options.dry_run:
+            paths.reports.mkdir(parents=True, exist_ok=True)
+            report = render_report(outcomes, cost_usd=cost.total_usd,
+                                   model_id=WEB_MODELS[options.model_key],
+                                   effort=options.effort, date=now.date().isoformat())
+            report_name = f"web-{now:%Y-%m-%d-%H%M%S}.md"
+            (paths.reports / report_name).write_text(report, encoding="utf-8")
+        return outcomes
+    finally:
+        if owns_client and isinstance(resolved_client, AnthropicStructuredClient):
+            await resolved_client.aclose()
 
 
 async def _process(
@@ -163,9 +176,11 @@ async def _process(
         return SpeciesOutcome(source.qid, source.name_sv, status, errors, dropped or [],
                               attempts, cached)
 
-    if not options.force and is_approved(paths.data_out / f"{source.qid}.json"):
-        return outcome("skipped", ["redan granskad (review: approved)"])
     try:
+        # Inside the try too: a hand-edited record with broken JSON must fail just this one
+        # species, not raise out of `is_approved` and abort the whole run via gather.
+        if not options.force and is_approved(paths.data_out / f"{source.qid}.json"):
+            return outcome("skipped", ["redan granskad (review: approved)"])
         articles = await wiki.articles(source.qid, refresh=options.refresh_sources)
         group = groups.group_for(family=source.family, ioc_order=source.ioc_order)
         model_id = WEB_MODELS[options.model_key]
@@ -176,11 +191,13 @@ async def _process(
 
         if not articles:
             errors = ["ingen Wikipediaartikel på svenska eller engelska"]
-            images = prepare_images(source, asset_images=paths.asset_images,
-                                    out_root=paths.images_out)
+            images = await asyncio.to_thread(
+                prepare_images, source, asset_images=paths.asset_images,
+                out_root=paths.images_out,
+            )
             record = build_record(source=source, group=group, text=None, articles=articles,
                                   images=images, errors=errors, model_id=model_id,
-                                  generated_at=now)
+                                  effort=options.effort, generated_at=now)
             write_record(record, paths.data_out, force=options.force)
             return outcome("failed", errors)
 
@@ -195,9 +212,12 @@ async def _process(
 
         errors = [f"{i.path}: {i.message}" for i in result.issues]
         dropped = [f"{i.path}: {i.message}" for i in result.dropped_facts]
-        images = prepare_images(source, asset_images=paths.asset_images, out_root=paths.images_out)
+        images = await asyncio.to_thread(
+            prepare_images, source, asset_images=paths.asset_images, out_root=paths.images_out
+        )
         record = build_record(source=source, group=group, text=result.output, articles=articles,
-                              images=images, errors=errors, model_id=model_id, generated_at=now)
+                              images=images, errors=errors, model_id=model_id,
+                              effort=options.effort, generated_at=now)
         out_path = paths.data_out / f"{source.qid}.json"
         if result.from_cache:
             record = _keep_existing_timestamp_if_text_unchanged(record, out_path)
@@ -206,8 +226,9 @@ async def _process(
         return outcome(status, errors, dropped, result.attempts, result.from_cache)
     except Exception as exc:  # one species' transient error must not abort the whole run
         # Deliberately does not write/overwrite the species' JSON record here: a transient
-        # error (Wikipedia hiccup, a model API error, an unreadable image) must not replace a
-        # good file from an earlier run. Just report it; the species is retried next run.
+        # error (Wikipedia hiccup, a model API error, an unreadable image, broken pre-existing
+        # JSON) must not replace a good file from an earlier run. Just report it; the species
+        # is retried next run.
         return outcome("failed", [f"{type(exc).__name__}: {exc}"])
 
 
@@ -219,6 +240,7 @@ def _keep_existing_timestamp_if_text_unchanged(
     if not existing_path.exists():
         return record
     existing: dict[str, Any] = json.loads(existing_path.read_text(encoding="utf-8"))
-    if existing.get("text") == record.get("text"):
-        record["generated"] = existing["generated"]
+    existing_generated = existing.get("generated")
+    if existing_generated is not None and existing.get("text") == record.get("text"):
+        record["generated"] = existing_generated
     return record

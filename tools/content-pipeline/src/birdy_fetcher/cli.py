@@ -202,15 +202,18 @@ def build_mapping(labelmap: Path, model_version: str, out: Path) -> None:
 @main.command()
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
+@click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high",
+              help="Modellens svarsansträngning. 'high' är Opus 5-standarden (oförändrat).")
 @click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
 @click.option("--force", is_flag=True, help="Skriv över arter som redan har review: approved.")
 @click.option("--refresh-sources", is_flag=True, help="Hämta Wikidata och Wikipedia på nytt.")
 @click.option("--regenerate", is_flag=True, help="Fråga modellen igen trots cachat svar.")
-@click.option("--workers", type=int, default=4)
+@click.option("--workers", type=click.IntRange(min=1), default=4)
 @click.option("--dry-run", is_flag=True, help="Hämta källor och visa artikelstorlek, inget anrop.")
 def web(
     species: tuple[str, ...],
     model_key: str,
+    effort: str,
     max_cost: float | None,
     force: bool,
     refresh_sources: bool,
@@ -219,17 +222,32 @@ def web(
     dry_run: bool,
 ) -> None:
     """Webbtexter, foton och licensdata för artsidorna på birdy.community."""
+    import os
+    import sys
     from collections import Counter
 
     from rich.console import Console
 
     from .web.run import WebPaths, WebRunOptions, run_web
 
+    # The locked anthropic 0.97 SDK only reads ANTHROPIC_API_KEY / ANTHROPIC_AUTH_TOKEN from
+    # the environment (no `ant auth login` profile support) -- fail fast with a clear message
+    # instead of getting an opaque SDK error partway through a 180-species run. --dry-run
+    # never calls the model, so it doesn't need a key.
+    if not dry_run and not (
+        os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN")
+    ):
+        raise click.ClickException(
+            "ANTHROPIC_API_KEY saknas. Lägg den i miljön eller i "
+            "tools/content-pipeline/.env och kör med uv run --env-file .env ..."
+        )
+
     pipeline_root = Path(__file__).resolve().parent.parent.parent
     paths = WebPaths(repo_root=pipeline_root.parent.parent)
     options = WebRunOptions(
         qids=species,
         model_key=model_key,
+        effort=effort,
         max_cost=max_cost,
         force=force,
         refresh_sources=refresh_sources,
@@ -238,14 +256,23 @@ def web(
         dry_run=dry_run,
     )
     outcomes = asyncio.run(run_web(paths, options, client=None))
-    console = Console()
+
+    # 180 species' worth of Swedish/Polish/etc. author names and error text can contain
+    # characters or literal `[...]` that would otherwise crash or mangle on a Windows
+    # console; disable rich markup interpretation and make stdout tolerant of encoding gaps.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(errors="replace")
+    console = Console(markup=False, highlight=False)
     for o in outcomes:
         if o.status != "ok":
             console.print(f"{o.status:8} {o.name_sv} ({o.qid}): {'; '.join(o.errors)}")
     counts = Counter(o.status for o in outcomes)
-    console.print(f"Klart: {dict(counts)}. Rapport i {paths.reports}.")
+    if dry_run:
+        console.print(f"Klart: {dict(counts)}.")
+    else:
+        console.print(f"Klart: {dict(counts)}. Rapport i {paths.reports}.")
     if counts["failed"]:
-        console.print("[yellow]Några arter fick ingen sida. Se rapporten.[/yellow]")
+        console.print("Några arter fick ingen sida. Se rapporten.", style="yellow")
 
 
 if __name__ == "__main__":

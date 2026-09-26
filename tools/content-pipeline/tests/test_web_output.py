@@ -28,6 +28,7 @@ def _record(errors: list[str] | None = None) -> dict[str, object]:
         images=[IMAGE],
         errors=errors or [],
         model_id="claude-opus-5",
+        effort="high",
         generated_at=NOW,
     )
 
@@ -45,7 +46,8 @@ def test_record_matches_appendix_c() -> None:
         "en": {"title": "Great tit", "revision": "222"},
     }
     assert rec["generated"] == {
-        "model": "claude-opus-5", "prompt": "web-v1", "at": "2026-10-01T12:00:00+00:00"
+        "model": "claude-opus-5", "prompt": "web-v1", "effort": "high",
+        "at": "2026-10-01T12:00:00+00:00",
     }
     text = rec["text"]
     assert isinstance(text, dict)
@@ -59,11 +61,36 @@ def test_record_matches_appendix_c() -> None:
         "author": "Hobbyfotowiki", "license": "CC0", "licenseUrl": None,
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:A.jpg",
     }
+    assert "rejectedText" not in rec
 
 
 def test_errors_make_the_record_failed() -> None:
     rec = _record(["en.voice: är skriven i första person"])
     assert rec["status"] == "failed" and rec["errors"] == ["en.voice: är skriven i första person"]
+    # The website schema enforces text's length limits -- a failed record must never carry
+    # text under that key. The model's rejected attempt is kept, readable, under a side key.
+    assert rec["text"] is None
+    rejected = rec["rejectedText"]
+    assert isinstance(rejected, dict)
+    assert set(rejected) == {"sv", "en"}
+    assert rejected["sv"]["lead"] == valid_output().sv.lead
+
+
+def test_failed_without_any_model_output_has_no_rejected_text() -> None:
+    rec = build_record(
+        source=SOURCE,
+        group="songbirds",
+        text=None,
+        articles={},
+        images=[],
+        errors=["ingen Wikipediaartikel på svenska eller engelska"],
+        model_id="claude-opus-5",
+        effort="high",
+        generated_at=NOW,
+    )
+    assert rec["status"] == "failed"
+    assert rec["text"] is None
+    assert rec["rejectedText"] is None
 
 
 def test_write_keeps_approved_files_unless_forced(tmp_path: Path) -> None:

@@ -24,7 +24,7 @@
 ## Förutsättningar (görs en gång, före Task 13)
 
 - `uv` finns (`uv --version`).
-- **API-nyckel:** Windows-maskinen saknar `tools/content-pipeline/.env`. Antingen kopierar Albin `.env.example` till `.env` och fyller i `ANTHROPIC_API_KEY`, eller så kör han `ant auth login` (den nya klienten använder `AsyncAnthropic()` utan argument och hittar då profilen själv). Kommandona i Task 13 och 14 körs med `uv run --env-file .env ...` när `.env` används.
+- **API-nyckel:** Windows-maskinen saknar `tools/content-pipeline/.env`. Antingen kopierar Albin `.env.example` till `.env` och fyller i `ANTHROPIC_API_KEY`, eller så sätter han nyckeln direkt i miljön (`ANTHROPIC_API_KEY`, alternativt `ANTHROPIC_AUTH_TOKEN`) — den låsta anthropic 0.97-klienten läser bara dessa miljövariabler, det finns ingen `ant auth login`-profil att falla tillbaka på. Kommandona i Task 13 och 14 körs med `uv run --env-file .env ...` när `.env` används, annars utan den flaggan.
 - Alla kommandon i planen körs från `tools/content-pipeline` om inget annat står.
 
 ## Filstruktur
@@ -3057,7 +3057,7 @@ Expected: 180 rader `dry-run` med artikelstorlek per språk. Notera arter med "i
 - [ ] **Step 2: Skarp körning för talgoxen**
 
 Run: `uv run --env-file .env birdy-fetcher web --species Q25485 --max-cost 2`
-(Utan `.env`, efter `ant auth login`: `uv run birdy-fetcher web --species Q25485 --max-cost 2`.)
+(Nyckeln kan också komma direkt från miljön: sätt `ANTHROPIC_API_KEY` och kör utan `--env-file`: `uv run birdy-fetcher web --species Q25485 --max-cost 2`.)
 Expected: `Klart: {'ok': 1}` och filerna `website/src/data/species/Q25485.json`, `website/src/assets/species/Q25485/hero.webp` och `extra.webp`.
 
 - [ ] **Step 3: Läs resultatet**

@@ -1,4 +1,4 @@
-"""Markdown report for a web run: tools/content-pipeline/reports/web-<date>.md."""
+"""Markdown report for a web run: tools/content-pipeline/reports/web-<date>-<time>.md."""
 
 from __future__ import annotations
 
@@ -18,13 +18,13 @@ class SpeciesOutcome:
 
 
 def render_report(
-    outcomes: list[SpeciesOutcome], *, cost_usd: float, model_id: str, date: str
+    outcomes: list[SpeciesOutcome], *, cost_usd: float, model_id: str, effort: str, date: str
 ) -> str:
     counts = Counter(o.status for o in outcomes)
     lines = [
         f"# Webbtexter {date}",
         "",
-        f"Modell: `{model_id}`. Kostnad för körningen: ${cost_usd:.2f}.",
+        f"Modell: `{model_id}` (effort: {effort}). Kostnad för körningen: ${cost_usd:.2f}.",
         "",
         "| Utfall | Antal |",
         "|---|---|",
