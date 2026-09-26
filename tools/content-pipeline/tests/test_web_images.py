@@ -57,3 +57,43 @@ def test_missing_extra_is_skipped_but_missing_hero_is_an_error(tmp_path: Path) -
     assert [i.role for i in images] == ["hero"]
     with pytest.raises(MissingImageError):
         prepare_images(_source((EXTRA,)), asset_images=assets, out_root=tmp_path / "o")
+
+
+def _jpeg_with_orientation(path: Path, size: tuple[int, int], orientation: int) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    img = Image.new("RGB", size, (120, 140, 90))
+    exif = img.getexif()
+    exif[0x0112] = orientation  # EXIF Orientation tag
+    img.save(path, "JPEG", exif=exif.tobytes())
+
+
+def test_exif_orientation_is_applied_before_saving(tmp_path: Path) -> None:
+    assets = tmp_path / "assets"
+    # Orientation 6 = rotate 270 (a 90 degree turn), which swaps width and height.
+    _jpeg_with_orientation(assets / "Q1/hero.webp", (100, 50), orientation=6)
+    images = prepare_images(_source((HERO,)), asset_images=assets, out_root=tmp_path / "out")
+    assert (images[0].width, images[0].height) == (50, 100)
+    with Image.open(tmp_path / "out/Q1/hero.webp") as im:
+        assert im.size == (50, 100)
+
+
+def test_stale_extra_photo_is_removed_when_species_has_no_secondary_ref(tmp_path: Path) -> None:
+    assets, out = tmp_path / "assets", tmp_path / "out"
+    _webp(assets / "Q1/hero.webp", (2000, 1000))
+    stale = out / "Q1/extra.webp"
+    stale.parent.mkdir(parents=True, exist_ok=True)
+    stale.write_bytes(b"stale webp bytes")
+    images = prepare_images(_source((HERO,)), asset_images=assets, out_root=out)
+    assert [i.role for i in images] == ["hero"]
+    assert not stale.exists()
+
+
+def test_stale_extra_photo_is_removed_when_secondary_source_is_missing(tmp_path: Path) -> None:
+    assets, out = tmp_path / "assets", tmp_path / "out"
+    _webp(assets / "Q1/hero.webp", (2000, 1000))  # no secondary-1.webp on disk
+    stale = out / "Q1/extra.webp"
+    stale.parent.mkdir(parents=True, exist_ok=True)
+    stale.write_bytes(b"stale webp bytes")
+    images = prepare_images(_source((HERO, EXTRA)), asset_images=assets, out_root=out)
+    assert [i.role for i in images] == ["hero"]
+    assert not stale.exists()

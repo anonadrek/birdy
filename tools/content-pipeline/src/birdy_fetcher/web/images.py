@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageOps
 
 from .licenses import clean_author, commons_url, license_url
 from .source import SourceImage, SpeciesSource
@@ -50,7 +50,8 @@ def prepare_images(source: SpeciesSource, *, asset_images: Path, out_root: Path)
         dst = out_root / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         with Image.open(src) as loaded:
-            im = loaded.convert("RGB")
+            transposed = ImageOps.exif_transpose(loaded)
+            im = (transposed if transposed is not None else loaded).convert("RGB")
             limit = MAX_WIDTH[role]
             if im.width > limit:
                 im = im.resize(
@@ -70,4 +71,7 @@ def prepare_images(source: SpeciesSource, *, asset_images: Path, out_root: Path)
                 source_url=commons_url(img.source_url),
             )
         )
+    if not any(i.role == "extra" for i in result):
+        stale_extra = out_root / source.qid / "extra.webp"
+        stale_extra.unlink(missing_ok=True)
     return result

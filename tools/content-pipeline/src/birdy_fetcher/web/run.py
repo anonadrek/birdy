@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 import asyncio
+import json
 from collections import Counter
 from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Protocol
+from typing import Any, Protocol
 
 from ..cache import Cache
 from ..cost import CostTracker, MaxCostExceeded
@@ -164,36 +165,60 @@ async def _process(
 
     if not options.force and is_approved(paths.data_out / f"{source.qid}.json"):
         return outcome("skipped", ["redan granskad (review: approved)"])
-    articles = await wiki.articles(source.qid, refresh=options.refresh_sources)
-    group = groups.group_for(family=source.family, ioc_order=source.ioc_order)
-    model_id = WEB_MODELS[options.model_key]
-
-    if options.dry_run or writer is None:
-        sizes = ", ".join(f"{lang} {len(a.text)} tecken" for lang, a in articles.items())
-        return outcome("dry-run", [sizes or "ingen artikel"])
-
-    if not articles:
-        errors = ["ingen Wikipediaartikel på svenska eller engelska"]
-        images = prepare_images(source, asset_images=paths.asset_images, out_root=paths.images_out)
-        record = build_record(source=source, group=group, text=None, articles=articles,
-                              images=images, errors=errors, model_id=model_id, generated_at=now)
-        write_record(record, paths.data_out, force=options.force)
-        return outcome("failed", errors)
-
-    if stop.is_set():
-        return outcome("skipped", ["kostnadstaket nåddes, körs vid nästa körning"])
-    web_group = groups.by_key(group)
     try:
-        result = await writer.write(source, articles, web_group.name_sv, web_group.name_en)
-    except MaxCostExceeded as exc:
-        stop.set()
-        return outcome("skipped", [f"kostnadstaket nåddes: {exc}"])
+        articles = await wiki.articles(source.qid, refresh=options.refresh_sources)
+        group = groups.group_for(family=source.family, ioc_order=source.ioc_order)
+        model_id = WEB_MODELS[options.model_key]
 
-    errors = [f"{i.path}: {i.message}" for i in result.issues]
-    dropped = [f"{i.path}: {i.message}" for i in result.dropped_facts]
-    images = prepare_images(source, asset_images=paths.asset_images, out_root=paths.images_out)
-    record = build_record(source=source, group=group, text=result.output, articles=articles,
-                          images=images, errors=errors, model_id=model_id, generated_at=now)
-    write_record(record, paths.data_out, force=options.force)
-    status = "ok" if record["status"] == "ok" else "failed"
-    return outcome(status, errors, dropped, result.attempts, result.from_cache)
+        if options.dry_run or writer is None:
+            sizes = ", ".join(f"{lang} {len(a.text)} tecken" for lang, a in articles.items())
+            return outcome("dry-run", [sizes or "ingen artikel"])
+
+        if not articles:
+            errors = ["ingen Wikipediaartikel på svenska eller engelska"]
+            images = prepare_images(source, asset_images=paths.asset_images,
+                                    out_root=paths.images_out)
+            record = build_record(source=source, group=group, text=None, articles=articles,
+                                  images=images, errors=errors, model_id=model_id,
+                                  generated_at=now)
+            write_record(record, paths.data_out, force=options.force)
+            return outcome("failed", errors)
+
+        if stop.is_set():
+            return outcome("skipped", ["kostnadstaket nåddes, körs vid nästa körning"])
+        web_group = groups.by_key(group)
+        try:
+            result = await writer.write(source, articles, web_group.name_sv, web_group.name_en)
+        except MaxCostExceeded as exc:
+            stop.set()
+            return outcome("skipped", [f"kostnadstaket nåddes: {exc}"])
+
+        errors = [f"{i.path}: {i.message}" for i in result.issues]
+        dropped = [f"{i.path}: {i.message}" for i in result.dropped_facts]
+        images = prepare_images(source, asset_images=paths.asset_images, out_root=paths.images_out)
+        record = build_record(source=source, group=group, text=result.output, articles=articles,
+                              images=images, errors=errors, model_id=model_id, generated_at=now)
+        out_path = paths.data_out / f"{source.qid}.json"
+        if result.from_cache:
+            record = _keep_existing_timestamp_if_text_unchanged(record, out_path)
+        write_record(record, paths.data_out, force=options.force)
+        status = "ok" if record["status"] == "ok" else "failed"
+        return outcome(status, errors, dropped, result.attempts, result.from_cache)
+    except Exception as exc:  # one species' transient error must not abort the whole run
+        # Deliberately does not write/overwrite the species' JSON record here: a transient
+        # error (Wikipedia hiccup, a model API error, an unreadable image) must not replace a
+        # good file from an earlier run. Just report it; the species is retried next run.
+        return outcome("failed", [f"{type(exc).__name__}: {exc}"])
+
+
+def _keep_existing_timestamp_if_text_unchanged(
+    record: dict[str, Any], existing_path: Path
+) -> dict[str, Any]:
+    """A cached answer reruns with identical `text` -- keep the old file's `generated` object
+    so a full rerun does not rewrite every species' file just to change a timestamp."""
+    if not existing_path.exists():
+        return record
+    existing: dict[str, Any] = json.loads(existing_path.read_text(encoding="utf-8"))
+    if existing.get("text") == record.get("text"):
+        record["generated"] = existing["generated"]
+    return record

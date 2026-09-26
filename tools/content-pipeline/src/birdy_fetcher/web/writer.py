@@ -188,10 +188,20 @@ class WebTextWriter:
                     output_tokens=reply.output_tokens,
                 )
             except MaxCostExceeded:
-                # The reply is already paid for. Keep it (if it parsed) so a rerun with more
-                # budget does not pay for the same species twice.
+                # The reply is already paid for. Keep the better of this attempt and any
+                # earlier one -- but only if it is good enough (zero hard issues) to skip
+                # re-asking on the next run. Otherwise cache nothing, so a rerun with more
+                # budget starts fresh with its own retry instead of reusing a bad answer.
+                candidate, candidate_hard = best_output, best_hard_count
                 if reply.output is not None:
-                    self.cache.put(source.qid, cache_name, reply.output.model_dump_json(indent=2))
+                    reply_issues = check_text(reply.output, self.banned) + check_facts(
+                        reply.output, articles
+                    )
+                    reply_hard = len([i for i in reply_issues if i.fact is None])
+                    if candidate is None or reply_hard <= candidate_hard:
+                        candidate, candidate_hard = reply.output, reply_hard
+                if candidate is not None and candidate_hard == 0:
+                    self.cache.put(source.qid, cache_name, candidate.model_dump_json(indent=2))
                 raise
 
             if reply.output is None:

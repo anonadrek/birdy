@@ -124,3 +124,59 @@ async def test_slug_collision_stops_the_run(tmp_path: Path) -> None:
     paths = _repo(tmp_path, [("Q1", "Tättingar", "Great Tit")])
     with pytest.raises(SlugCollisionError, match="tattingar"):
         await run_web(paths, _options(), client=FakeClient(), wiki=FakeWiki(), now=NOW)
+
+
+@dataclass
+class FlakyWiki:
+    async def articles(self, qid: str, *, refresh: bool = False) -> dict[str, WikiArticle]:
+        if qid == "Q2":
+            raise TimeoutError("Wikipedia gav timeout")
+        return ARTICLES
+
+
+@dataclass
+class FlakyClient:
+    async def parse_web_text(
+        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int
+    ) -> StructuredReply:
+        text = " ".join(str(m["content"]) for m in messages)
+        if "Svartmes" in text:
+            raise RuntimeError("modellen svarade inte")
+        return StructuredReply(valid_output(), "{}", 1000, 500, "end_turn")
+
+
+async def test_one_species_failing_does_not_abort_the_whole_run(tmp_path: Path) -> None:
+    paths = _repo(
+        tmp_path,
+        [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Blåmes", "Blue Tit"),
+         ("Q3", "Svartmes", "Coal Tit")],
+    )
+    paths.data_out.mkdir(parents=True, exist_ok=True)
+    stale = json.dumps({"qid": "Q2", "review": "unreviewed", "marker": "stale-from-earlier-run"})
+    (paths.data_out / "Q2.json").write_text(stale, encoding="utf-8")
+
+    outcomes = await run_web(paths, _options(), client=FlakyClient(), wiki=FlakyWiki(), now=NOW)
+    by_qid = {o.qid: o for o in outcomes}
+    assert by_qid["Q1"].status == "ok"
+    assert by_qid["Q2"].status == "failed"
+    assert "TimeoutError" in by_qid["Q2"].errors[0]
+    assert by_qid["Q3"].status == "failed"
+    assert "RuntimeError" in by_qid["Q3"].errors[0]
+    assert (paths.reports / "web-2026-10-01.md").exists()
+    # A transient error must not overwrite a JSON record from an earlier, good run.
+    assert (paths.data_out / "Q2.json").read_text(encoding="utf-8") == stale
+
+
+async def test_rerun_from_cache_keeps_the_existing_generated_timestamp(tmp_path: Path) -> None:
+    paths = _repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    await run_web(paths, _options(), client=FakeClient(), wiki=FakeWiki(), now=NOW)
+    first = json.loads((paths.data_out / "Q1.json").read_text(encoding="utf-8"))
+
+    later = datetime(2026, 10, 2, tzinfo=UTC)
+    second_client = FakeClient()
+    outcomes = await run_web(paths, _options(), client=second_client, wiki=FakeWiki(), now=later)
+    assert outcomes[0].status == "ok"
+    assert second_client.calls == 0  # answered from cache, no new model call
+
+    second = json.loads((paths.data_out / "Q1.json").read_text(encoding="utf-8"))
+    assert second["generated"]["at"] == first["generated"]["at"]

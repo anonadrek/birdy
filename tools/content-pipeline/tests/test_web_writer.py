@@ -191,6 +191,58 @@ async def test_cost_cap_exceeded_still_caches_the_paid_reply(tmp_path: Path) -> 
     assert cached.from_cache and cached.output is not None
 
 
+async def test_cost_cap_picks_the_better_of_the_two_attempts_and_caches_it(
+    tmp_path: Path,
+) -> None:
+    first = valid_output()
+    assert first.sv.facts.size is not None
+    first.sv.facts.size.quote = "en påhittad mening om storleken"  # fact issue only, hard=0
+    second = valid_output()
+    second.en.voice = "We love it!"  # hard issue
+    client = FakeClient([_reply(first), _reply(second)])
+    writer = WebTextWriter(
+        cache=Cache(tmp_path),
+        cost=CostTracker(max_usd=0.15),
+        client=client,
+        prompt_path=PROMPT,
+        banned=BANNED,
+        model_key="opus",
+    )
+    with pytest.raises(MaxCostExceeded):
+        await writer.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
+
+    cached = await _writer(tmp_path, FakeClient([])).write(
+        SOURCE, ARTICLES, "Tättingar", "Songbirds"
+    )
+    assert cached.from_cache and cached.output is not None
+    assert cached.output.sv.facts.size is None
+    assert cached.output.en.voice != "We love it!"
+
+
+async def test_cost_cap_with_no_good_attempt_caches_nothing(tmp_path: Path) -> None:
+    first = valid_output()
+    first.en.voice = "We love it!"  # hard issue
+    second = valid_output()
+    second.sv.voice = "Jag älskar det."  # hard issue (first person)
+    client = FakeClient([_reply(first), _reply(second)])
+    writer = WebTextWriter(
+        cache=Cache(tmp_path),
+        cost=CostTracker(max_usd=0.15),
+        client=client,
+        prompt_path=PROMPT,
+        banned=BANNED,
+        model_key="opus",
+    )
+    with pytest.raises(MaxCostExceeded):
+        await writer.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
+
+    second_client = FakeClient([_reply(valid_output())])
+    result = await _writer(tmp_path, second_client).write(SOURCE, ARTICLES, "Tättingar",
+                                                           "Songbirds")
+    assert not result.from_cache
+    assert len(second_client.calls) == 1
+
+
 async def test_no_output_still_bills_cost(tmp_path: Path) -> None:
     client = FakeClient([_reply(None), _reply(None)])
     writer = _writer(tmp_path, client)
