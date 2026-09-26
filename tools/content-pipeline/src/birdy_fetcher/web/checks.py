@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .model import LangText, WebTextOutput
+from .wiki_full import WikiArticle
 
 LANGS = ("sv", "en")
 DASHES = ("—", "–", "--")  # noqa: RUF001
@@ -112,3 +113,106 @@ def check_text(out: WebTextOutput, banned: list[str]) -> list[Issue]:
     for lang in LANGS:
         issues.extend(_check_lang(lang, getattr(out, lang), banned))
     return issues
+
+
+MIN_QUOTE_CHARS = 20
+PRESENCE = {
+    "sv": (
+        "häckar i sverige",
+        "vanlig i sverige",
+        "stannfågel",
+        "flyttfågel",
+        "ses i sverige",
+        "finns i sverige",
+    ),
+    "en": (
+        "breeds in sweden",
+        "common in sweden",
+        "resident in sweden",
+        "seen in sweden",
+        "found in sweden",
+    ),
+}
+_QUOTE_CHARS = {
+    "’": "'",  # noqa: RUF001
+    "‘": "'",  # noqa: RUF001
+    "“": '"',
+    "”": '"',
+    "«": '"',
+    "»": '"',
+    " ": " ",  # noqa: RUF001 -- key is U+00A0 (non-breaking space)
+}
+
+
+def _normalize(text: str) -> str:
+    for src, dst in _QUOTE_CHARS.items():
+        text = text.replace(src, dst)
+    return " ".join(text.lower().split())
+
+
+def quote_in_sources(quote: str, sources: list[str]) -> bool:
+    q = _normalize(quote)
+    return len(q) >= MIN_QUOTE_CHARS and any(q in _normalize(s) for s in sources)
+
+
+def check_facts(out: WebTextOutput, articles: dict[str, WikiArticle]) -> list[Issue]:
+    sources = [a.text for a in articles.values()]
+    issues: list[Issue] = []
+    for lang in LANGS:
+        facts = getattr(out, lang).facts
+        if facts.size is not None:
+            path = f"{lang}.facts.size"
+            if not quote_in_sources(facts.size.quote, sources):
+                issues.append(Issue(path, "citatet finns inte i Wikipediatexten", lang, "size"))
+            elif not set(re.findall(r"\d+", facts.size.value)) <= set(
+                re.findall(r"\d+", facts.size.quote)
+            ):
+                issues.append(
+                    Issue(path, "siffrorna i storleken finns inte i citatet", lang, "size")
+                )
+        if facts.sweden_status is not None and not quote_in_sources(
+            facts.sweden_status.quote, sources
+        ):
+            issues.append(
+                Issue(
+                    f"{lang}.facts.sweden_status",
+                    "citatet finns inte i Wikipediatexten",
+                    lang,
+                    "sweden_status",
+                )
+            )
+
+    sv_status, en_status = out.sv.facts.sweden_status, out.en.facts.sweden_status
+    if sv_status and en_status and sv_status.value != en_status.value:
+        for lang in LANGS:
+            issues.append(
+                Issue(
+                    f"{lang}.facts.sweden_status",
+                    "statusen skiljer sig mellan språken",
+                    lang,
+                    "sweden_status",
+                )
+            )
+
+    for lang in LANGS:
+        t = getattr(out, lang)
+        status = t.facts.sweden_status
+        if status is not None and status.value == "absent":
+            text = t.where_when.lower()
+            if any(phrase in text for phrase in PRESENCE[lang]):
+                issues.append(
+                    Issue(
+                        f"{lang}.where_when",
+                        "beskriver förekomst i Sverige fast statusen är 'absent'",
+                    )
+                )
+    return issues
+
+
+def drop_facts(out: WebTextOutput, fact_issues: list[Issue]) -> WebTextOutput:
+    """A copy of `out` where every fact named by an issue is set to None."""
+    data = out.model_dump()
+    for issue in fact_issues:
+        if issue.lang is not None and issue.fact is not None:
+            data[issue.lang]["facts"][issue.fact] = None
+    return WebTextOutput.model_validate(data)
