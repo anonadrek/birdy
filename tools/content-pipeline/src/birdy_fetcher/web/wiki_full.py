@@ -114,17 +114,44 @@ class FullWikiClient:
         self._last_request_started_at = self._clock()
 
     async def sitelinks(self, qid: str, *, refresh: bool = False) -> dict[str, str]:
+        """Titles per language. An item with no sv/en sitelinks at all is often a newer
+        name combination whose articles still hang on the original combination (P1403),
+        e.g. fjällpipare Q25677554 -> Q202504; those are used instead. Cached under `qid`."""
+        titles = await self._item_sitelinks(qid, qid, "web-sitelinks.json", refresh)
+        if titles:
+            return titles
+        original = await self._original_combination(qid, refresh)
+        if original is None:
+            return {}
+        return await self._item_sitelinks(qid, original, "web-sitelinks-original.json", refresh)
+
+    async def _item_sitelinks(
+        self, cache_qid: str, item: str, name: str, refresh: bool
+    ) -> dict[str, str]:
         url = (
             "https://www.wikidata.org/w/api.php?action=wbgetentities&format=json"
-            f"&props=sitelinks&sitefilter=svwiki%7Cenwiki&ids={qid}"
+            f"&props=sitelinks&sitefilter=svwiki%7Cenwiki&ids={item}"
         )
-        raw = await self._cached(qid, "web-sitelinks.json", url, refresh)
-        links = json.loads(raw).get("entities", {}).get(qid, {}).get("sitelinks", {})
+        raw = await self._cached(cache_qid, name, url, refresh)
+        links = json.loads(raw).get("entities", {}).get(item, {}).get("sitelinks", {})
         return {
             site.removesuffix("wiki"): link["title"]
             for site, link in links.items()
             if site in ("svwiki", "enwiki")
         }
+
+    async def _original_combination(self, qid: str, refresh: bool) -> str | None:
+        url = (
+            "https://www.wikidata.org/w/api.php?action=wbgetclaims&format=json"
+            f"&entity={qid}&property=P1403"
+        )
+        raw = await self._cached(qid, "web-original-combination.json", url, refresh)
+        for claim in json.loads(raw).get("claims", {}).get("P1403", []):
+            value = claim.get("mainsnak", {}).get("datavalue", {}).get("value", {})
+            target = value.get("id") if isinstance(value, dict) else None
+            if isinstance(target, str):
+                return target
+        return None
 
     async def article(
         self, qid: str, lang: str, title: str, *, refresh: bool = False

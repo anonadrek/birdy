@@ -84,6 +84,60 @@ async def test_missing_sitelink_and_missing_page(tmp_path: Path) -> None:
     assert await client.articles("Q1") == {}
 
 
+def _original_combination(target: str | None) -> str:
+    if target is None:
+        return json.dumps({"claims": {}})
+    value = {"entity-type": "item", "id": target}
+    snak = {"snaktype": "value", "datavalue": {"value": value, "type": "wikibase-entityid"}}
+    return json.dumps({"claims": {"P1403": [{"mainsnak": snak, "rank": "normal"}]}})
+
+
+async def test_item_without_sitelinks_uses_its_original_combination(tmp_path: Path) -> None:
+    """Fjällpipare: Q25677554 (Eudromias morinellus) has no sitelinks at all. Both articles
+    hang on its original combination Q202504 (Charadrius morinellus), found through P1403."""
+    urls: list[str] = []
+
+    async def http(url: str) -> str:
+        urls.append(url)
+        if "action=wbgetclaims" in url:
+            assert "entity=Q25677554" in url and "property=P1403" in url
+            return _original_combination("Q202504")
+        if "ids=Q25677554" in url:
+            return json.dumps({"entities": {"Q25677554": {"id": "Q25677554", "sitelinks": {}}}})
+        if "ids=Q202504" in url:
+            links = {
+                "svwiki": {"site": "svwiki", "title": "Fjällpipare"},
+                "enwiki": {"site": "enwiki", "title": "Eurasian dotterel"},
+            }
+            return json.dumps({"entities": {"Q202504": {"sitelinks": links}}})
+        raise AssertionError(f"unexpected request: {url}")
+
+    client = FullWikiClient(cache=Cache(tmp_path), http_get=http, min_interval=0.0)
+    assert await client.sitelinks("Q25677554") == {"sv": "Fjällpipare", "en": "Eurasian dotterel"}
+    calls = len(urls)
+    assert await client.sitelinks("Q25677554") == {"sv": "Fjällpipare", "en": "Eurasian dotterel"}
+    assert len(urls) == calls  # the fallback is cached like everything else
+
+
+async def test_item_without_sitelinks_or_original_combination_has_none(tmp_path: Path) -> None:
+    async def http(url: str) -> str:
+        if "action=wbgetclaims" in url:
+            return _original_combination(None)
+        return json.dumps({"entities": {"Q1": {"id": "Q1", "sitelinks": {}}}})
+
+    client = FullWikiClient(cache=Cache(tmp_path), http_get=http, min_interval=0.0)
+    assert await client.sitelinks("Q1") == {}
+
+
+async def test_item_with_own_sitelinks_never_asks_for_original_combination(
+    tmp_path: Path,
+) -> None:
+    http = FakeHttp()
+    client = FullWikiClient(cache=Cache(tmp_path), http_get=http, min_interval=0.0)
+    await client.articles("Q25485")
+    assert not any("wbgetclaims" in u for u in http.urls)
+
+
 def _response_error(
     status: int, headers: dict[str, str] | None = None
 ) -> aiohttp.ClientResponseError:
