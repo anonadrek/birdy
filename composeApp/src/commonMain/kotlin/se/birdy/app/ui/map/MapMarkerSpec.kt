@@ -7,7 +7,7 @@ package se.birdy.app.ui.map
  * båda MÅSTE läsa härifrån så plattformarna inte divergerar. Mått i dp/pt.
  */
 object MapMarkerSpec {
-    const val COPPER: Long = 0xFFA8552D // AccentCopper
+    const val COPPER: Long = 0xFF9A4526 // mirrors AccentCopper (rust, 1.3.0 palette lift)
     const val NAVY: Long = 0xFF1F3A5F // StampNavy
     const val CREAM_HI: Long = 0xFFF4EDDC
     const val CREAM_LO: Long = 0xFFE5DBC4

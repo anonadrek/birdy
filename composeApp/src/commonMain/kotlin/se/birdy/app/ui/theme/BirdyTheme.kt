@@ -10,12 +10,16 @@ private val BirdyLightColors =
         onPrimary = TextOnHero,
         secondary = HeroMossMid,
         onSecondary = TextOnHero,
+        tertiary = Brass,
+        onTertiary = BrassInk,
         background = MossCreme,
         onBackground = TextOnCreme,
         surface = MossCreme,
         onSurface = TextOnCreme,
         surfaceVariant = SandCreme,
-        onSurfaceVariant = TextOnCreme,
+        onSurfaceVariant = InkMuted,
+        outline = Hairline,
+        outlineVariant = Hairline,
     )
 
 @Composable

@@ -1,60 +1,60 @@
+// Every literal below IS the named palette token — MagicNumber has no signal to add here.
+// (Historically these hex literals lived in the committed detekt-baseline.xml; the palette
+// lift changed every value, so baseline signatures no longer match. Per house rule the
+// baseline is never extended — suppress at file level instead, spec 2026-09-24 §4.1.)
+@file:Suppress("MagicNumber")
+
 package se.birdy.app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Mossbädd palette — locked 2026-04-30. See CLAUDE.md and visual_language_birdy_v1 memory.
+// Field Journal palette, lifted 2026-09-24 for release 1.3.0 — "Mossa, rost & mässing".
+// Spec: docs/superpowers/specs/2026-09-24-v1-3-release-design.md §4.1.
+// Token NAMES are kept from the Mossbädd / Plan 7 eras so the ~70 call sites lift
+// automatically; the VALUES are new. ColorContrastTest pins WCAG AA for every text token.
 
-// Backgrounds
-val MossCreme = Color(0xFFE8E2D2) // primary background
-val SandCreme = Color(0xFFD8D0BC) // stat surface, slightly darker than bg
+// ===== Paper =====
+val MossCreme = Color(0xFFF6EFE2) // primary background
+val SandCreme = Color(0xFFEDE3D1) // stat surface, a step darker than the background
+val PaperTop = Color(0xFFF8F2E7) // paperBackground() gradient, top
+val PaperBottom = Color(0xFFF2E9D8) // paperBackground() gradient, bottom
+val CardPaper = Color(0xFFFFFAF1) // cards and sheets on paper
+val Hairline = Color(0xFFDFD2BA) // 1dp rules and card outlines — never text
+val PaperBottomBar = Color(0xFFF6EFE2) // bottom nav + system nav bar strip
 
-// Hero gradient (top → bottom)
-val HeroMossLight = Color(0xFF5C6E48)
-val HeroMossMid = Color(0xFF3F4F30)
-val HeroMossDeep = Color(0xFF2A3520)
+// ===== Dark moss surfaces (photo scrims, Premium, hero gradients), light → deep =====
+val HeroMossLight = Color(0xFF3A4A2E)
+val HeroMossMid = Color(0xFF2C3A23)
+val HeroMossDeep = Color(0xFF1F2A19)
 
-// Accent (warm copper — CTA, active tab, stat numbers)
-val AccentCopper = Color(0xFFA8552D)
+// ===== Rust = "do something" (CTA, active tab, stat numbers, stamps) =====
+val AccentCopper = Color(0xFF9A4526)
+val AccentCopperDeep = Color(0xFF72301A) // end of the primary-button gradient
 
-// Text
-val TextOnCreme = Color(0xFF2A3525) // primary text on background
-val TextOnHero = Color(0xFFF0EAD8) // text on hero zone or accent surfaces
+// Apricot: accent words and kickers on dark surfaces (8.1:1 on HeroMossDeep).
+val AccentCopperLight = Color(0xFFF2B27A)
 
-// ===== Plan 7 redesign tokens (locked 2026-05-08) =====
+// ===== Brass = Premium. Fills and ornaments only — NEVER text on paper (2.8:1). =====
+val Brass = Color(0xFFB8893A)
+val BrassLight = Color(0xFFE2C07E) // brass text / icons on dark moss (8.6:1)
+val BrassInk = Color(0xFF241B0C) // text on brass fills (5.4:1)
+val BrassText = Color(0xFF805F28) // the text-safe brass: labels on paper (≥ 4.6:1 on every paper)
 
-// Warmer offwhite for hero text — replaces TextOnHero on redesigned screens.
-// Slightly more white-toned than #F0EAD8 for pop on mossgrön gradient.
-val OffwhiteWarm = Color(0xFFFFFCF0)
+// ===== Ink =====
+val TextOnCreme = Color(0xFF26301F) // primary text on paper (11.4:1 on PaperBottom)
+val InkMuted = Color(0xFF5B6350) // secondary text on paper (≥ 4.9:1 on every paper)
+val MarginaliaInk = Color(0xFF3F4A33) // marginalia / Caveat sub-lines (≥ 7.3:1)
+val MarginaliaBorder = Color(0xFF9A4526) // = AccentCopper, 2dp left border on citations
+val TextOnHero = Color(0xFFFFF8EE) // text on dark moss, photos and rust
+val OffwhiteWarm = Color(0xFFFFF8EE)
 
-// Lighter copper for italic accents within hero headlines (e.g. *fånga* in
-// "Tre sätt att *fånga*."). Brighter than AccentCopper so italic segments pop.
-val AccentCopperLight = Color(0xFFE0A47C)
-
-// Match-confidence color grades — used in LifelistScreen stamp rows.
+// ===== Match-confidence grades (Lifelist stamp rows) — unchanged in 1.3.0 =====
 val MatchHigh = Color(0xFF7CA868) // ≥80% confidence
 val MatchMid = Color(0xFFD9B45A) // 60–79%
 val MatchLow = Color(0xFFC07560) // <60%
 
-// ===== Plan 7c Field Journal tokens (locked 2026-05-09) =====
-
-// Paper background gradient — replaces MossCreme as primary bg on all
-// redesigned screens. Lighter top, darker bottom.
-val PaperTop = Color(0xFFF0E7D0)
-val PaperBottom = Color(0xFFE6D8B8)
-
-// Stamp (sigill) state-tints
-val StampLocked = Color(0x66A8552D) // 40% AccentCopper for dashed border on locked stamps
-val StampLockedBg = Color(0x99E8E2D2) // 60% MossCreme for locked stamp interior
-val StampUnlockedBg = Color(0x1FA8552D) // 12% AccentCopper for unlocked stamp interior
-
-// Navy-variant av stämpeln — sällsynta/rödlistade troféer i troférummet (Field Journal "StampNavy").
-val StampNavy = Color(0xFF1F3A5F)
-
-// Marginalia — left border and text color for handwritten citations
-// Bumped from 0xFF5C6E48 (HeroMossLight) to 0xFF3F4F30 (HeroMossMid) for WCAG AA ~6.7:1 on PaperTop (Plan 6a T9)
-val MarginaliaInk = Color(0xFF3F4F30)
-val MarginaliaBorder = Color(0xFFA8552D) // AccentCopper for 2dp left border
-
-// Bottom navigation bar background — also applied to system navigation bar so
-// the two surfaces read as a single continuous paper strip.
-val PaperBottomBar = Color(0xFFEFE8DA)
+// ===== Stamps =====
+val StampLocked = Color(0xFFCDBB9C) // dashed outline + "?" on locked stamps (decorative)
+val StampLockedBg = Color(0x00000000) // locked stamps are open circles on the paper
+val StampUnlockedBg = Color(0x1F9A4526) // 12% rust behind in-progress stamps
+val StampNavy = Color(0xFF1F3A5F) // rare / red-listed trophies

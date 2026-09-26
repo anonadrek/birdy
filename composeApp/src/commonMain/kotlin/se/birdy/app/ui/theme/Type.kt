@@ -17,7 +17,7 @@ fun birdyTypography(): Typography {
             TextStyle(
                 fontFamily = displaySerif,
                 fontWeight = FontWeight.Normal,
-                fontStyle = FontStyle.Italic,
+                fontStyle = FontStyle.Normal,
                 fontSize = 32.sp,
                 lineHeight = 36.sp,
             ),
@@ -25,7 +25,7 @@ fun birdyTypography(): Typography {
             TextStyle(
                 fontFamily = displaySerif,
                 fontWeight = FontWeight.Normal,
-                fontStyle = FontStyle.Italic,
+                fontStyle = FontStyle.Normal,
                 fontSize = 26.sp,
                 lineHeight = 30.sp,
             ),
@@ -33,7 +33,7 @@ fun birdyTypography(): Typography {
             TextStyle(
                 fontFamily = displaySerif,
                 fontWeight = FontWeight.Normal,
-                fontStyle = FontStyle.Italic,
+                fontStyle = FontStyle.Normal,
                 fontSize = 22.sp,
                 lineHeight = 26.sp,
             ),
@@ -41,7 +41,7 @@ fun birdyTypography(): Typography {
             TextStyle(
                 fontFamily = displaySerif,
                 fontWeight = FontWeight.Normal,
-                fontStyle = FontStyle.Italic,
+                fontStyle = FontStyle.Normal,
                 fontSize = 18.sp,
                 lineHeight = 22.sp,
             ),

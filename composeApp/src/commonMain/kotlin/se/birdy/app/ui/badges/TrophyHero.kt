@@ -21,6 +21,8 @@ import se.birdy.app.ui.components.MicroLabel
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.components.shimmerSweep
+import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.Brass
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.content.Locale
@@ -44,11 +46,12 @@ fun TrophyHero(
                 StampSeal(
                     state = StampSealState.Unlocked(number = hero.stampNumber, glyph = null, name = name),
                     size = 104.dp,
+                    accentColor = if (hero.badge.isPremium) Brass else AccentCopper,
                     onClick = { onHeroClick(hero) },
                 )
             }
             Spacer(Modifier.height(8.dp))
-            MicroLabel(stringResource(Res.string.trophy_hero_recent_label))
+            MicroLabel(stringResource(Res.string.trophy_hero_recent_label), showRule = false)
             Text(
                 text = formatBadgeFullDate(hero.unlockedAt, zone, locale),
                 color = MarginaliaInk,
