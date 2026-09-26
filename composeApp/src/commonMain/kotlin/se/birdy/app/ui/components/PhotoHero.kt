@@ -190,6 +190,9 @@ private fun MetaText(
         fontFamily = FontFamily.SansSerif,
         fontWeight = FontWeight.W600,
         fontSize = 9.5.sp,
+        // Explicit, tight line height — otherwise this inherits the theme's bodyLarge 22sp
+        // line height, making the hero's text block ~20dp taller than the mockup.
+        lineHeight = 12.sp,
         letterSpacing = 0.12.em,
         modifier = modifier,
     )

@@ -85,25 +85,44 @@ fun BirdyPremiumButton(
     )
 }
 
-/** Secondary action: rust text, no fill. */
+/**
+ * Secondary action: rust text, no fill. [enabled]/[loading] mirror [FilledButton]'s guards —
+ * callers that gate a save/cancel flow on in-flight state (Match "Cancel", Disambig "Save as
+ * unknown") need these to keep working once wired to this button.
+ */
+@Suppress("LongParameterList") // text/onClick/modifier/color + enabled/loading is the full, deliberate API.
 @Composable
 fun BirdyTextButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     color: Color = AccentCopper,
+    enabled: Boolean = true,
+    loading: Boolean = false,
 ) {
-    Text(
-        text = text,
-        color = color,
-        fontWeight = FontWeight.W600,
-        fontSize = 14.sp,
+    Box(
         modifier =
             modifier
+                .heightIn(min = 48.dp)
+                .alpha(if (enabled || loading) 1f else DISABLED_ALPHA)
                 .clip(ButtonShape)
-                .clickable(role = Role.Button, onClick = onClick)
-                .padding(horizontal = 12.dp, vertical = 12.dp),
-    )
+                .clickable(enabled = enabled && !loading, role = Role.Button, onClick = onClick)
+                .padding(horizontal = 12.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        // Same technique as FilledButton: the label stays in the semantics tree (alpha 0)
+        // while loading, so a screen reader still announces it under the spinner.
+        Text(
+            text = text,
+            color = color,
+            fontWeight = FontWeight.W600,
+            fontSize = 14.sp,
+            modifier = Modifier.alpha(if (loading) 0f else 1f),
+        )
+        if (loading) {
+            CircularProgressIndicator(color = color, strokeWidth = 2.dp, modifier = Modifier.size(20.dp))
+        }
+    }
 }
 
 @Suppress("LongParameterList") // internal shared renderer for the two filled-button variants above.
@@ -124,7 +143,7 @@ private fun FilledButton(
                 .fillMaxWidth()
                 .heightIn(min = 52.dp)
                 .alpha(if (enabled || loading) 1f else DISABLED_ALPHA)
-                .shadow(if (enabled) 6.dp else 0.dp, ButtonShape)
+                .shadow(if (enabled || loading) 6.dp else 0.dp, ButtonShape)
                 .clip(ButtonShape)
                 .background(brush)
                 .clickable(enabled = enabled && !loading, role = Role.Button, onClick = onClick)

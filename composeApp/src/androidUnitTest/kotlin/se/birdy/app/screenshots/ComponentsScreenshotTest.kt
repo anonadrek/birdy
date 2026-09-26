@@ -11,6 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,12 +22,15 @@ import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import se.birdy.app.ui.components.BirdyPremiumButton
 import se.birdy.app.ui.components.BirdyPrimaryButton
+import se.birdy.app.ui.components.BirdyTextButton
 import se.birdy.app.ui.components.MiniStamp
 import se.birdy.app.ui.components.PaperSheet
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.SectionCard
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
+import se.birdy.app.ui.scaffold.AppRoute
+import se.birdy.app.ui.scaffold.BottomNavBar
 import se.birdy.app.ui.theme.Brass
 import se.birdy.app.ui.theme.StampNavy
 import se.birdy.app.ui.theme.paperBackground
@@ -87,6 +93,36 @@ class ComponentsScreenshotTest {
                     Spacer(Modifier.height(10.dp))
                     SectionCard { Text("Kort på papper") }
                 }
+            }
+        }
+
+    @Test
+    @Config(qualifiers = "+sv")
+    fun text_buttons_sv() =
+        compose.captureScreen("text_buttons_sv") {
+            Column(
+                Modifier.fillMaxWidth().paperBackground().padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                BirdyTextButton(text = "Avbryt", onClick = {})
+                BirdyTextButton(text = "Avbryt", onClick = {}, enabled = false)
+                BirdyTextButton(text = "Avbryt", onClick = {}, loading = true)
+            }
+        }
+
+    // Only AppRoute.Listen is registered: the bar's selected-tab check tolerates tabs whose
+    // route isn't in the graph (see BottomNavBar.kt), and this test never navigates — it only
+    // needs one real destination so Listen renders selected (the mockup-visible dot under it).
+    @Test
+    @Config(qualifiers = "+sv")
+    fun bottom_nav_sv() =
+        compose.captureScreen("bottom_nav_sv") {
+            Column(Modifier.fillMaxWidth()) {
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = AppRoute.Listen) {
+                    composable<AppRoute.Listen> {}
+                }
+                BottomNavBar(navController)
             }
         }
 }

@@ -105,7 +105,19 @@ fun ListenLauncherScreen(
                     .verticalScroll(rememberScrollState()),
         ) {
             val dailyBirdState by viewModel.dailyBird.collectAsState()
-            val gear: @Composable BoxScope.() -> Unit = {
+            // Two variants, not one shared lambda: the hero is a dark photo (rust-on-dark-moss
+            // is hard to see, needs the light onDark styling), the fallback sits on plain paper
+            // (default rust ring is correct there).
+            val gearOnHero: @Composable BoxScope.() -> Unit = {
+                Box(Modifier.align(Alignment.TopEnd).padding(end = 16.dp)) {
+                    GearButton(
+                        onClick = onSettingsClick,
+                        contentDescription = stringResource(Res.string.gear_content_description),
+                        onDark = true,
+                    )
+                }
+            }
+            val gearOnPaper: @Composable BoxScope.() -> Unit = {
                 Box(Modifier.align(Alignment.TopEnd).padding(end = 16.dp)) {
                     GearButton(
                         onClick = onSettingsClick,
@@ -115,9 +127,9 @@ fun ListenLauncherScreen(
             }
             val ui = dailyBirdState
             if (ui != null) {
-                DailyBirdHero(ui = ui, onClick = { onSpeciesProfileClick(ui.speciesId) }, topBar = gear)
+                DailyBirdHero(ui = ui, onClick = { onSpeciesProfileClick(ui.speciesId) }, topBar = gearOnHero)
             } else {
-                Box(Modifier.fillMaxWidth().padding(top = 8.dp), content = gear)
+                Box(Modifier.fillMaxWidth().padding(top = 8.dp), content = gearOnPaper)
             }
             JournalIntro(
                 label = stringResource(Res.string.listen_journal_label),

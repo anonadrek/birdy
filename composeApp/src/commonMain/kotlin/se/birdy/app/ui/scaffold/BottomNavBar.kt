@@ -99,11 +99,14 @@ fun BottomNavBar(navController: NavHostController) {
                 .fillMaxWidth()
                 .background(PaperBottomBar)
                 .drawBehind {
+                    // Centred on y = 0 a stroked line draws half outside the bar — offset by
+                    // half the stroke width so the whole hairline sits inside the bar bounds.
+                    val strokeWidthPx = 1.dp.toPx()
                     drawLine(
                         color = Hairline,
-                        start = Offset(0f, 0f),
-                        end = Offset(size.width, 0f),
-                        strokeWidth = 1.dp.toPx(),
+                        start = Offset(0f, strokeWidthPx / 2f),
+                        end = Offset(size.width, strokeWidthPx / 2f),
+                        strokeWidth = strokeWidthPx,
                     )
                 }.windowInsetsPadding(WindowInsets.navigationBars)
                 .height(72.dp)
@@ -169,6 +172,11 @@ private fun TabCell(
             text = stringResource(tab.label),
             color = color,
             fontSize = 10.sp,
+            // Explicit, tight line height: this cell's budget is 72dp (bar) − 12dp (bar's own
+            // vertical padding) − 12dp (this Column's vertical padding) = 48dp for
+            // icon(24) + spacer(2) + label + spacer(3) + dot(4) — the inherited bodyLarge
+            // 22sp line height blew that budget and squeezed the selected-tab dot to nothing.
+            lineHeight = 12.sp,
             fontWeight = if (selected) FontWeight.W700 else FontWeight.W500,
         )
         Spacer(Modifier.height(3.dp))

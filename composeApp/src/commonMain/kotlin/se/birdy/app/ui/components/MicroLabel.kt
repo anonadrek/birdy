@@ -40,6 +40,10 @@ fun MicroLabel(
             color = color,
             fontFamily = FontFamily.SansSerif,
             fontSize = 9.5.sp,
+            // Explicit, tight line height — otherwise this inherits the theme's bodyLarge
+            // 22sp line height, which is why callers that budget a fixed-height row around
+            // this text (e.g. BottomNavBar's TabCell) can overflow their cell.
+            lineHeight = 12.sp,
             fontWeight = FontWeight.W600,
             letterSpacing = 0.16.em,
         )
