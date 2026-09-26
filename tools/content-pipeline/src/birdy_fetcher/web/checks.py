@@ -149,11 +149,11 @@ _SWEDEN = {
     "en": re.compile(r"\b(sweden|the country)\b"),
 }
 _NEGATION = {
-    "sv": re.compile(r"\b(inte|aldrig|ej|saknas)\b"),
-    "en": re.compile(r"\b(not|never|no)\b|n't\b"),
+    "sv": re.compile(r"\b(inte|aldrig|ej|saknas|utanför)\b"),
+    "en": re.compile(r"\b(not|never|no|absent|outside)\b|n't\b"),
 }
-_WINGSPAN_WORDS = ("vingspann", "wingspan")
-_LENGTH_WORDS = ("lång", "längd", "long", "length")
+_WINGSPAN_RE = re.compile(r"\b(vingspann|wingspan)\b")
+_LENGTH_RE = re.compile(r"\b(lång|längd|long|length)\b")
 
 
 def _normalize(text: str) -> str:
@@ -173,8 +173,8 @@ def _is_wingspan_not_length(quote: str) -> bool:
     """True when a size quote talks about the wingspan but never the body length -- the
     two are easy for the model to conflate since both are given in centimetres."""
     q = quote.lower()
-    has_wingspan = any(w in q for w in _WINGSPAN_WORDS)
-    has_length = any(w in q for w in _LENGTH_WORDS)
+    has_wingspan = bool(_WINGSPAN_RE.search(q))
+    has_length = bool(_LENGTH_RE.search(q))
     return has_wingspan and not has_length
 
 

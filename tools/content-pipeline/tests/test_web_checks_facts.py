@@ -70,6 +70,26 @@ def test_size_quote_about_wingspan_not_length_is_a_fact_issue() -> None:
     assert [(i.lang, i.fact) for i in issues] == [("en", "size")]
 
 
+def test_size_quote_about_wingspan_with_along_is_still_a_fact_issue() -> None:
+    # "along" contains the substring "long"; the wingspan/length check must match whole
+    # words only, or a quote that never actually says "long" would slip through.
+    out = valid_output()
+    assert out.en.facts.size is not None
+    out.en.facts.size.quote = "has a wingspan of about 14 centimetres along the back"
+    articles = {
+        **ARTICLES,
+        "en": WikiArticle(
+            lang="en",
+            title="Great tit",
+            revision="222",
+            text="The great tit has a wingspan of about 14 centimetres along the back. "
+            "It is a resident bird across Sweden.",
+        ),
+    }
+    issues = check_facts(out, articles)
+    assert [(i.lang, i.fact) for i in issues] == [("en", "size")]
+
+
 def test_status_mismatch_between_languages_drops_both() -> None:
     out = valid_output()
     assert out.en.facts.sweden_status is not None
@@ -127,6 +147,39 @@ def test_absent_status_with_never_seen_text_has_no_issue() -> None:
     out.sv.facts.sweden_status.value = "absent"
     out.en.facts.sweden_status.value = "absent"
     out.sv.where_when = "Arten finns inte i Sverige."
+    out.en.where_when = "It has never been seen in Sweden."
+    issues = check_facts(out, ARTICLES)
+    assert [i for i in issues if i.fact is None] == []
+
+
+def test_absent_status_with_absent_from_sweden_wording_has_no_issue() -> None:
+    out = valid_output()
+    assert out.sv.facts.sweden_status is not None and out.en.facts.sweden_status is not None
+    out.sv.facts.sweden_status.value = "absent"
+    out.en.facts.sweden_status.value = "absent"
+    out.sv.where_when = "Arten finns inte i Sverige."
+    out.en.where_when = "It is absent from Sweden but common in North Africa."
+    issues = check_facts(out, ARTICLES)
+    assert [i for i in issues if i.fact is None] == []
+
+
+def test_absent_status_with_breeds_outside_sweden_wording_has_no_issue() -> None:
+    out = valid_output()
+    assert out.sv.facts.sweden_status is not None and out.en.facts.sweden_status is not None
+    out.sv.facts.sweden_status.value = "absent"
+    out.en.facts.sweden_status.value = "absent"
+    out.sv.where_when = "Arten finns inte i Sverige."
+    out.en.where_when = "It breeds outside Sweden, in North Africa."
+    issues = check_facts(out, ARTICLES)
+    assert [i for i in issues if i.fact is None] == []
+
+
+def test_absent_status_with_hackar_utanfor_sverige_wording_has_no_issue() -> None:
+    out = valid_output()
+    assert out.sv.facts.sweden_status is not None and out.en.facts.sweden_status is not None
+    out.sv.facts.sweden_status.value = "absent"
+    out.en.facts.sweden_status.value = "absent"
+    out.sv.where_when = "Den häckar utanför Sverige, på Kanarieöarna."
     out.en.where_when = "It has never been seen in Sweden."
     issues = check_facts(out, ARTICLES)
     assert [i for i in issues if i.fact is None] == []
