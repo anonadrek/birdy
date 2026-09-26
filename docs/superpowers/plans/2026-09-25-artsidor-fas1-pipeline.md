@@ -3098,7 +3098,7 @@ Expected: cirka 180 `ok`. Arter som failar listas i rapporten `tools/content-pip
 - [ ] **Step 3: Följ upp de som failade**
 
 För varje art under "Arter som inte fick någon sida" i rapporten:
-- Saknas artikel: kontrollera Wikidata-sitelinken. Ingen åtgärd om arten saknar artikel på båda språken, då får den ingen sida.
+- Saknas artikel: kontrollera Wikidata-sitelinken. Ingen åtgärd om arten saknar artikel på båda språken, då får den ingen sida. (Tillägg 2026-09-26, `f511cba7`: en post utan sv- och en-sitelinks följer P1403 till ursprunglig kombination. Det löste fjällpipare `Q25677554`, som var den enda arten utan artikel i torrkörningen.)
 - Regelbrott två gånger: kör om arten med `--species <QID> --regenerate`. Upprepas samma brott för flera arter, skärp prompten och kör om de berörda.
 
 Målet är minst 170 arter med `status: "ok"`. Stannar det under, stoppa och rapportera till Albin med rapporten.
