@@ -89,7 +89,10 @@ class FullWikiClient:
     async def _fetch(self, url: str) -> str:
         """One throttled, retried request: a single in-flight slot shared by every call on
         this client, at least `min_interval` seconds between request starts, and up to
-        `_MAX_ATTEMPTS` tries on 429/5xx (honouring Retry-After, else backoff)."""
+        `_MAX_ATTEMPTS` tries on 429/5xx (honouring Retry-After, else backoff). The backoff
+        sleep itself happens while still holding the throttle lock, so a 429/5xx pauses the
+        *whole* client, not just this one request -- otherwise other workers would keep
+        hitting Wikimedia exactly while it asked us to back off."""
         failures = 0
         while True:
             async with self._throttle_lock:
@@ -101,7 +104,7 @@ class FullWikiClient:
                     if not _is_retryable_status(exc.status) or failures >= _MAX_ATTEMPTS:
                         raise
                     delay = _retry_delay(exc, failures)
-            await self._sleep(delay)
+                await self._sleep(delay)
 
     async def _wait_for_slot(self) -> None:
         if self._last_request_started_at is not None:

@@ -50,7 +50,7 @@ class FakeHttp:
 
 async def test_articles_uses_sitelinks_and_full_text(tmp_path: Path) -> None:
     http = FakeHttp()
-    client = FullWikiClient(cache=Cache(tmp_path), http_get=http)
+    client = FullWikiClient(cache=Cache(tmp_path), http_get=http, min_interval=0.0)
     articles = await client.articles("Q25485")
     assert set(articles) == {"sv", "en"}
     assert articles["sv"].title == "Talgoxe"
@@ -63,7 +63,7 @@ async def test_articles_uses_sitelinks_and_full_text(tmp_path: Path) -> None:
 
 async def test_second_call_uses_cache(tmp_path: Path) -> None:
     http = FakeHttp()
-    client = FullWikiClient(cache=Cache(tmp_path), http_get=http)
+    client = FullWikiClient(cache=Cache(tmp_path), http_get=http, min_interval=0.0)
     await client.articles("Q25485")
     calls = len(http.urls)
     await client.articles("Q25485")
@@ -80,7 +80,7 @@ async def test_missing_sitelink_and_missing_page(tmp_path: Path) -> None:
             )
         return json.dumps({"query": {"pages": [{"title": "X", "missing": True}]}})
 
-    client = FullWikiClient(cache=Cache(tmp_path), http_get=http)
+    client = FullWikiClient(cache=Cache(tmp_path), http_get=http, min_interval=0.0)
     assert await client.articles("Q1") == {}
 
 
@@ -235,3 +235,37 @@ async def test_only_one_request_in_flight_at_a_time(tmp_path: Path) -> None:
     client = FullWikiClient(cache=Cache(tmp_path), http_get=http, min_interval=0.0)
     await asyncio.gather(*(client.articles(f"Q{i}") for i in range(5)))
     assert max_in_flight == 1
+
+
+async def test_backoff_sleep_blocks_other_requests_until_it_completes(tmp_path: Path) -> None:
+    """The whole client must pause during a 429/5xx backoff wait -- not just the one
+    request that got throttled. A second, concurrent request must not start its
+    http_get until the first request's backoff sleep has actually been awaited."""
+    events: list[str] = []
+    calls: dict[str, int] = {}
+
+    async def http(url: str) -> str:
+        match = re.search(r"ids=(Q\d+)", url)
+        assert match is not None
+        qid = match.group(1)
+        calls[qid] = calls.get(qid, 0) + 1
+        events.append(f"call {qid}")
+        if qid == "Q1" and calls[qid] == 1:
+            raise _response_error(429, {"Retry-After": "3"})
+        return json.dumps(
+            {"entities": {qid: {"sitelinks": {"svwiki": {"site": "svwiki", "title": "Test"}}}}}
+        )
+
+    async def fake_sleep(seconds: float) -> None:
+        # Only records the event once the sleep has actually been awaited -- so if the
+        # lock were released before this call, a concurrent request could sneak its
+        # http_get in while we're "asleep", and its "call" event would land first.
+        await asyncio.sleep(0)
+        events.append(f"sleep {seconds}")
+
+    client = FullWikiClient(
+        cache=Cache(tmp_path), http_get=http, min_interval=0.0, sleep=fake_sleep, clock=lambda: 0.0
+    )
+    await asyncio.gather(client.sitelinks("Q1"), client.sitelinks("Q2"))
+
+    assert events.index("sleep 3.0") < events.index("call Q2")
