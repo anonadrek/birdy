@@ -35,6 +35,9 @@ class _TextCollector(HTMLParser):
         self.parts.append(data)
 
 
+_NAMESPACE_PREFIXES = ("Template:", "User:")
+
+
 def clean_author(raw: str | None) -> str | None:
     """Commons author fields are HTML; the site shows plain text."""
     if not raw:
@@ -43,6 +46,10 @@ def clean_author(raw: str | None) -> str | None:
     parser.feed(raw)
     parser.close()
     text = " ".join("".join(parser.parts).split())
+    for prefix in _NAMESPACE_PREFIXES:
+        if text.startswith(prefix):
+            text = text.removeprefix(prefix).strip()
+            break
     return text or None
 
 

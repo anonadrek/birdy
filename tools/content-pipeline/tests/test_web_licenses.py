@@ -53,6 +53,13 @@ def test_clean_author_decodes_entities_and_handles_empty() -> None:
     assert clean_author("<span> </span>") is None
 
 
+def test_clean_author_strips_commons_namespace_prefix() -> None:
+    assert clean_author('<a href="x">Template:Kjetil Hansen</a>') == "Kjetil Hansen"
+    assert clean_author("User:Ann") == "Ann"
+    assert clean_author("Template:") is None
+    assert clean_author("User:") is None
+
+
 def test_commons_url_replaces_spaces() -> None:
     url = (
         "https://commons.wikimedia.org/wiki/File:Great tit (Parus major), "
