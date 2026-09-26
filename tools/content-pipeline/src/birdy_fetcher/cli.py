@@ -199,5 +199,54 @@ def build_mapping(labelmap: Path, model_version: str, out: Path) -> None:
     )
 
 
+@main.command()
+@click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
+@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
+@click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
+@click.option("--force", is_flag=True, help="Skriv över arter som redan har review: approved.")
+@click.option("--refresh-sources", is_flag=True, help="Hämta Wikidata och Wikipedia på nytt.")
+@click.option("--regenerate", is_flag=True, help="Fråga modellen igen trots cachat svar.")
+@click.option("--workers", type=int, default=4)
+@click.option("--dry-run", is_flag=True, help="Hämta källor och visa artikelstorlek, inget anrop.")
+def web(
+    species: tuple[str, ...],
+    model_key: str,
+    max_cost: float | None,
+    force: bool,
+    refresh_sources: bool,
+    regenerate: bool,
+    workers: int,
+    dry_run: bool,
+) -> None:
+    """Webbtexter, foton och licensdata för artsidorna på birdy.community."""
+    from collections import Counter
+
+    from rich.console import Console
+
+    from .web.run import WebPaths, WebRunOptions, run_web
+
+    pipeline_root = Path(__file__).resolve().parent.parent.parent
+    paths = WebPaths(repo_root=pipeline_root.parent.parent)
+    options = WebRunOptions(
+        qids=species,
+        model_key=model_key,
+        max_cost=max_cost,
+        force=force,
+        refresh_sources=refresh_sources,
+        regenerate=regenerate,
+        workers=workers,
+        dry_run=dry_run,
+    )
+    outcomes = asyncio.run(run_web(paths, options, client=None))
+    console = Console()
+    for o in outcomes:
+        if o.status != "ok":
+            console.print(f"{o.status:8} {o.name_sv} ({o.qid}): {'; '.join(o.errors)}")
+    counts = Counter(o.status for o in outcomes)
+    console.print(f"Klart: {dict(counts)}. Rapport i {paths.reports}.")
+    if counts["failed"]:
+        console.print("[yellow]Några arter fick ingen sida. Se rapporten.[/yellow]")
+
+
 if __name__ == "__main__":
     main()
