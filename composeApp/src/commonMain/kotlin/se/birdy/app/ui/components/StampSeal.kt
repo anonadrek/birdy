@@ -17,9 +17,11 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
@@ -38,6 +40,7 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.Brass
 import se.birdy.app.ui.theme.BrassInk
+import se.birdy.app.ui.theme.BrassText
 import se.birdy.app.ui.theme.CardPaper
 import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.StampLocked
@@ -45,6 +48,10 @@ import se.birdy.app.ui.theme.StampLockedBg
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
+
+// A fill this light or lighter needs dark ink text/ring content to stay legible — measured:
+// Brass ≈0.28, AccentCopper ≈0.11, StampNavy ≈0.04 (WCAG relative luminance).
+private const val LUMINANCE_THRESHOLD_FOR_DARK_FILL = 0.2f
 
 enum class StampStyle { Solid, Dashed }
 
@@ -94,12 +101,6 @@ fun StampSeal(
     onClick: (() -> Unit)? = null,
 ) {
     val serif = rememberDmSerifDisplay()
-    val borderColor =
-        when (state) {
-            is StampSealState.Locked -> StampLocked
-            is StampSealState.InProgress -> accentColor.copy(alpha = 0.6f)
-            is StampSealState.Unlocked -> accentColor
-        }
 
     val badgeName =
         when (state) {
@@ -128,7 +129,10 @@ fun StampSeal(
     ) {
         // Embossed wax seal (spec 2026-09-24 §4.3): solid fill, top-left highlight + inner
         // ring for Unlocked, soft drop shadow, DM Serif Display ITALIC for the seal glyphs.
-        val textOnSeal = if (accentColor == Brass) BrassInk else TextOnHero
+        // textOnSeal is decided by the FILL's luminance, not by an == Brass equality check, so
+        // any future light accentColor automatically gets legible (dark) glyph/ring content
+        // instead of silently repeating Brass's old dark-ring-on-light-fill bug.
+        val textOnSeal = if (accentColor.luminance() > LUMINANCE_THRESHOLD_FOR_DARK_FILL) BrassInk else TextOnHero
         val sealModifier =
             Modifier
                 .rotate(state.rotationDegrees())
@@ -141,12 +145,20 @@ fun StampSeal(
                         is StampSealState.Unlocked -> {
                             drawCircle(accentColor)
                             drawCircle(
-                                color = Color.White.copy(alpha = 0.18f),
+                                brush =
+                                    Brush.radialGradient(
+                                        colors = listOf(Color.White.copy(alpha = 0.22f), Color.Transparent),
+                                        center = Offset(x = this.size.width * 0.36f, y = this.size.height * 0.32f),
+                                        radius = r * 0.62f,
+                                    ),
                                 radius = r * 0.62f,
                                 center = Offset(x = this.size.width * 0.36f, y = this.size.height * 0.32f),
                             )
+                            // Inner ring is always a light hairline on the fill (mockup) — never
+                            // the dark textOnSeal, which on a light fill (e.g. Brass) used to
+                            // paint a near-invisible dark ring instead of the intended highlight.
                             drawCircle(
-                                color = textOnSeal.copy(alpha = 0.4f),
+                                color = Color.White.copy(alpha = 0.4f),
                                 radius = r - 4.dp.toPx(),
                                 style = Stroke(width = 1.dp.toPx()),
                             )
@@ -158,7 +170,7 @@ fun StampSeal(
                     when (state) {
                         is StampSealState.InProgress ->
                             m.border(width = 1.5.dp, color = accentColor.copy(alpha = 0.6f), shape = CircleShape)
-                        is StampSealState.Locked -> m.dashedCircleBorder(width = 1.5.dp, color = borderColor)
+                        is StampSealState.Locked -> m.dashedCircleBorder(width = 1.5.dp, color = StampLocked)
                         is StampSealState.Unlocked -> m
                     }
                 }.let { m -> if (onClick != null) m.clickable(onClick = onClick) else m }
@@ -177,9 +189,12 @@ fun StampSeal(
                             fontSize = (size.value * 0.32f).sp,
                         )
                     is StampSealState.InProgress -> {
+                        // Brass text on the CardPaper fill is 3.0:1 (fails AA) — the border
+                        // stays Brass (above), but the label swaps to the text-safe BrassText.
+                        val labelColor = if (accentColor == Brass) BrassText else accentColor
                         Text(
                             text = "№${state.number}",
-                            color = accentColor,
+                            color = labelColor,
                             fontFamily = serif,
                             fontStyle = FontStyle.Italic,
                             fontSize = (size.value * 0.18f).sp,
@@ -187,7 +202,7 @@ fun StampSeal(
                         if (state.progressLabel != null) {
                             Text(
                                 text = state.progressLabel,
-                                color = accentColor,
+                                color = labelColor,
                                 fontFamily = FontFamily.SansSerif,
                                 fontWeight = FontWeight.W600,
                                 fontSize = (size.value * 0.12f).sp,

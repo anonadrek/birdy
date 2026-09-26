@@ -20,7 +20,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -40,6 +42,11 @@ private val ButtonShape = RoundedCornerShape(14.dp)
 // Disabled fill: dimmed but still legible against paper (not the a11y announcement — that
 // comes from clickable(enabled = false), unaffected by this purely visual alpha).
 private const val DISABLED_ALPHA = 0.45f
+
+// Subtle light top line on filled buttons (mockup: inset 0 1px 0 rgba(255,255,255,.18-.35));
+// one value shared by rust and brass keeps FilledButton a single, undifferentiated renderer.
+private const val TOP_LINE_ALPHA = 0.18f
+private val TopLineWidth = 1.dp
 
 /** Rust = "do something". The one primary action on a screen. */
 @Suppress("LongParameterList") // text/onClick/modifier + enabled/loading/leadingIcon is the full, deliberate API.
@@ -146,7 +153,16 @@ private fun FilledButton(
                 .shadow(if (enabled || loading) 6.dp else 0.dp, ButtonShape)
                 .clip(ButtonShape)
                 .background(brush)
-                .clickable(enabled = enabled && !loading, role = Role.Button, onClick = onClick)
+                .drawWithContent {
+                    drawContent()
+                    val y = TopLineWidth.toPx() / 2f
+                    drawLine(
+                        color = Color.White.copy(alpha = TOP_LINE_ALPHA),
+                        start = Offset(0f, y),
+                        end = Offset(size.width, y),
+                        strokeWidth = TopLineWidth.toPx(),
+                    )
+                }.clickable(enabled = enabled && !loading, role = Role.Button, onClick = onClick)
                 .padding(horizontal = 18.dp, vertical = 14.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,

@@ -38,6 +38,7 @@ val AccentCopperLight = Color(0xFFF2B27A)
 val Brass = Color(0xFFB8893A)
 val BrassLight = Color(0xFFE2C07E) // brass text / icons on dark moss (8.6:1)
 val BrassInk = Color(0xFF241B0C) // text on brass fills (5.4:1)
+val BrassText = Color(0xFF805F28) // the text-safe brass: labels on paper (≥ 4.6:1 on every paper)
 
 // ===== Ink =====
 val TextOnCreme = Color(0xFF26301F) // primary text on paper (11.4:1 on PaperBottom)
