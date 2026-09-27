@@ -53,6 +53,7 @@ import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_marginal
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_stamp_name
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline_anonymous
+import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline_no_name
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_sub_empty
@@ -72,6 +73,9 @@ import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_stamps
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_streak
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_year
 import birdy_bird_scanner.composeapp.generated.resources.months_short_uppercase
+import birdy_bird_scanner.composeapp.generated.resources.possessive_sibilant_endings
+import birdy_bird_scanner.composeapp.generated.resources.possessive_suffix
+import birdy_bird_scanner.composeapp.generated.resources.possessive_suffix_sibilant
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_badge
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_cta
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_preview_caption
@@ -243,10 +247,19 @@ private fun LoadedLifelist(
                 JournalIntro(
                     label = stringResource(Res.string.lifelist_journal_label),
                     headline =
-                        stringResource(
-                            Res.string.lifelist_journal_headline,
-                            state.userName.ifEmpty { "Min" },
-                        ),
+                        if (state.userName.isEmpty()) {
+                            stringResource(Res.string.lifelist_journal_headline_no_name)
+                        } else {
+                            stringResource(
+                                Res.string.lifelist_journal_headline,
+                                possessive(
+                                    name = state.userName,
+                                    suffix = stringResource(Res.string.possessive_suffix),
+                                    sibilantSuffix = stringResource(Res.string.possessive_suffix_sibilant),
+                                    sibilantEndings = stringResource(Res.string.possessive_sibilant_endings),
+                                ),
+                            )
+                        },
                     sub =
                         stringResource(
                             Res.string.lifelist_journal_sub,

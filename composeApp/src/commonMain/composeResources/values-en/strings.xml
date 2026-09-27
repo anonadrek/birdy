@@ -416,6 +416,12 @@
     <!-- ===== Plan 7c: Lifelist Field Journal ===== -->
     <string name="lifelist_journal_label">MY COLLECTION · VOL. I</string>
     <string name="lifelist_journal_headline">*%1$s* journal.</string>
+    <string name="lifelist_journal_headline_no_name">*My* journal.</string>
+    <!-- Genitive form of the name in lifelist_journal_headline (Albin -> Albin's). Names ending
+         in "s" take only an apostrophe (James') — see possessive() in Possessive.kt. -->
+    <string name="possessive_suffix">’s</string>
+    <string name="possessive_suffix_sibilant">’</string>
+    <string name="possessive_sibilant_endings">s</string>
     <string name="lifelist_journal_sub">%1$s days. %2$s found.</string>
     <string name="lifelist_journal_headline_anonymous">*My* collection.</string>
     <string name="lifelist_journal_sub_empty">An empty page, for now.</string>

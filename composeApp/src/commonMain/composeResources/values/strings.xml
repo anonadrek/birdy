@@ -429,6 +429,12 @@
     <!-- ===== Plan 7c: Lifelist Field Journal ===== -->
     <string name="lifelist_journal_label">MIN SAMLING · VOL. I</string>
     <string name="lifelist_journal_headline">*%1$s* dagbok.</string>
+    <string name="lifelist_journal_headline_no_name">*Min* dagbok.</string>
+    <!-- Genitiv-formen av namnet i lifelist_journal_headline (Albin -> Albins). Namn som slutar
+         på s/x/z tar inget extra "s" (Lars, Max, Liz) — se possessive() i Possessive.kt. -->
+    <string name="possessive_suffix">s</string>
+    <string name="possessive_suffix_sibilant"></string>
+    <string name="possessive_sibilant_endings">sxz</string>
     <string name="lifelist_journal_sub">%1$s dagar. %2$s funna.</string>
     <string name="lifelist_journal_headline_anonymous">*Min* samling.</string>
     <string name="lifelist_journal_sub_empty">En tom sida, för nu.</string>
