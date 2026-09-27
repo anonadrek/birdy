@@ -28,7 +28,17 @@ internal fun ComposeContentTestRule.captureScreen(
     // so stringResource()/font loading throws "Android context is not initialized"
     // unless we attach it ourselves first (robolectric/robolectric#9603).
     val providerClass =
-        Class.forName("org.jetbrains.compose.resources.AndroidContextProvider") as Class<ContentProvider>
+        try {
+            Class.forName("org.jetbrains.compose.resources.AndroidContextProvider") as Class<ContentProvider>
+        } catch (e: ClassNotFoundException) {
+            throw IllegalStateException(
+                "compose-resources' internal AndroidContextProvider class has moved or been renamed. " +
+                    "captureScreen() needs it to attach an Application context under Robolectric so " +
+                    "Res.string/fonts resolve — look in compose-resources' ResourceReader.android.kt " +
+                    "for the new class name and update this Class.forName call.",
+                e,
+            )
+        }
     Robolectric.setupContentProvider(providerClass)
     setContent { BirdyTheme { content() } }
     waitForIdle()

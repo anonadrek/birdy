@@ -125,7 +125,9 @@ afterEvaluate {
 
 // Read once at configuration time (release 1.3.0 Plan 2 Task 1) so the testOptions
 // lambda below only ever closes over a plain Boolean, not `project` itself.
-val runScreenshotTests = project.hasProperty("birdy.screenshots")
+// `project.hasProperty(...)` only checks presence, so `-Pbirdy.screenshots=false` was
+// indistinguishable from `=true` (fix wave B, finding B4) — parse the value instead.
+val runScreenshotTests = providers.gradleProperty("birdy.screenshots").map { it.toBoolean() }.getOrElse(false)
 
 android {
     namespace = "se.birdy.app"
