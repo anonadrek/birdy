@@ -30,11 +30,22 @@ import androidx.compose.ui.graphics.Color
  * men så att texten/innehållet ritas av `drawContent()` ovanpå. På ytor där
  * fyllningen är en bild eller ett inre lager: lägg glöden på ett eget lager
  * mellan fyllningen och texten (se PremiumHeroCard / LockedStatsPreview).
+ *
+ * [color] och [peakAlpha] (T10b Critical 1): defaultvärdena (vitt band, 0.85 topp-alpha) gör
+ * ljusytornas (LockedStatsPreview, PremiumHeroCard, MapPremiumTeaser) glöd pixel-identisk med
+ * innan — bandet är ändå så smalt ([bandFraction]) att en glimt av 0.85-alpha vitt på en redan
+ * ljus pappersyta aldrig hotar textkontrasten där. På en MÖRK yta (PremiumTeaserCards mossgradient)
+ * skulle samma 0.85-alpha vita band vid sin topp sänka text/CTA-kontrasten mot ~1.2:1 — en
+ * screenshot kan aldrig fånga det (oändliga transitions fryser på frame 0 = progress 0, aldrig vid
+ * bandets topp) så det är pixelmatematik, inte pixlar, som bevisar det säkert: se
+ * `PremiumTeaserCardContrastTest`. Mörka ytor ska skicka in en lägre [peakAlpha] (PremiumTeaserCard
+ * använder `DARK_SURFACE_GLOW_PEAK_ALPHA`).
  */
 @Composable
 fun Modifier.premiumGlow(
     durationMillis: Int = 3500,
-    alpha: Float = 0.85f,
+    color: Color = Color.White,
+    peakAlpha: Float = 0.85f,
     bandFraction: Float = 0.18f,
 ): Modifier =
     composed {
@@ -59,9 +70,9 @@ fun Modifier.premiumGlow(
                 Brush.linearGradient(
                     colorStops =
                         arrayOf(
-                            0.0f to Color.White.copy(alpha = 0f),
-                            0.5f to Color.White.copy(alpha = alpha),
-                            1.0f to Color.White.copy(alpha = 0f),
+                            0.0f to color.copy(alpha = 0f),
+                            0.5f to color.copy(alpha = peakAlpha),
+                            1.0f to color.copy(alpha = 0f),
                         ),
                     start = Offset(x, 0f),
                     end = Offset(x + bandWidth, size.height),

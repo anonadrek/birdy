@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -28,6 +30,16 @@ import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossMid
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
+
+// T10b Critical 1: premiumGlow()'s default peakAlpha (0.85, tuned for light paper surfaces) would
+// drop this card's text to ~1.2:1 at the glow's animated peak — a screenshot can never show it
+// (infinite transitions freeze at frame 0), so PremiumTeaserCardContrastTest pins this exact
+// value with pure color math. 0.10 keeps every text ≥ 5:1 with margin (reviewer measured 0.12 at
+// sub 4.83/CTA 4.78, 0.15 failing).
+internal const val DARK_SURFACE_GLOW_PEAK_ALPHA = 0.10f
+
+// T10b: extracted so PremiumTeaserCardContrastTest pins the exact alpha the subtitle renders at.
+internal const val PREMIUM_TEASER_SUBTITLE_ALPHA = 0.7f
 
 /**
  * Dark-moss gradient card (rost & mässing) med mässings corner-flag. Återanvänds på
@@ -67,14 +79,18 @@ fun PremiumTeaserCard(
             showExportCta -> onExport
             else -> onUnlock
         }
-    val glowModifier = if (showExportCta) Modifier else Modifier.premiumGlow()
+    val glowModifier =
+        if (showExportCta) Modifier else Modifier.premiumGlow(peakAlpha = DARK_SURFACE_GLOW_PEAK_ALPHA)
     val cardShape = RoundedCornerShape(18.dp)
     Box(modifier = modifier.fillMaxWidth()) {
         Column(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(top = 9.dp)
+                    // 13dp (was 9dp): a bit more clearance below the corner tag so the title
+                    // never crowds it, especially once the tag grows at large font scales
+                    // (T10b minor 6 — the tag switched from a fixed height to heightIn(min=...)).
+                    .padding(top = 13.dp)
                     .clip(cardShape)
                     .background(Brush.linearGradient(listOf(HeroMossMid, HeroMossDeep)))
                     .clickable(enabled = !(showExportCta && isExporting), onClick = onCardClick)
@@ -91,7 +107,7 @@ fun PremiumTeaserCard(
             Text(
                 text = subtitle,
                 fontSize = 13.sp,
-                color = TextOnHero.copy(alpha = 0.7f),
+                color = TextOnHero.copy(alpha = PREMIUM_TEASER_SUBTITLE_ALPHA),
                 lineHeight = 18.sp,
             )
             Spacer(Modifier.height(10.dp))
@@ -106,7 +122,15 @@ fun PremiumTeaserCard(
                     fontSize = 16.sp,
                     color = if (showExportCta && isExporting) BrassLight.copy(alpha = 0.55f) else BrassLight,
                 )
-                Text("›", color = BrassLight, fontSize = 20.sp, fontWeight = FontWeight.W600)
+                // Purely decorative next to the CTA text — a second affordance would otherwise
+                // double up in TalkBack's announcement (T10b Important 5).
+                Text(
+                    "›",
+                    color = BrassLight,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.W600,
+                    modifier = Modifier.clearAndSetSemantics {},
+                )
             }
         }
         Box(
@@ -116,7 +140,9 @@ fun PremiumTeaserCard(
                     .clip(RoundedCornerShape(4.dp))
                     .background(BrassLight)
                     .padding(horizontal = 8.dp, vertical = 3.dp)
-                    .height(18.dp),
+                    // min, not a fixed height (T10b minor 6): 9sp clips against a fixed 18dp box
+                    // at large accessibility font scales.
+                    .heightIn(min = 18.dp),
             contentAlignment = Alignment.Center,
         ) {
             Text(
