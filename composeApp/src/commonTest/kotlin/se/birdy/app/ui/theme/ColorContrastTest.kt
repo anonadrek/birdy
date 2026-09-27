@@ -59,4 +59,17 @@ class ColorContrastTest {
         assertTrue(contrastRatio(TextOnHero, AccentCopper) >= 4.5)
         assertTrue(contrastRatio(BrassInk, Brass) >= 4.5)
     }
+
+    // T10b spec gap C: Archive's red-listed tag — StampNavy text on its own 12% tint (RedListTagBg
+    // carries that alpha baked in, so composite using the color's own .alpha rather than a
+    // second, possibly-drifting literal).
+    @Test
+    fun `red-listed tag text reaches AA on every paper surface`() {
+        val failures =
+            papers.mapNotNull { (pn, p) ->
+                val backdrop = compositeOver(RedListTagBg, RedListTagBg.alpha, p)
+                contrastRatio(StampNavy, backdrop).takeIf { it < 4.5 }?.let { "StampNavy tag on $pn = $it" }
+            }
+        assertTrue(failures.isEmpty(), failures.joinToString("\n"))
+    }
 }

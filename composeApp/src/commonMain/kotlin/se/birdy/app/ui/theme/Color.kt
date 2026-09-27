@@ -67,3 +67,6 @@ val StampLocked = Color(0xFFCDBB9C) // dashed outline + "?" on locked stamps (de
 val StampLockedBg = Color(0x00000000) // locked stamps are open circles on the paper
 val StampUnlockedBg = Color(0x1F9A4526) // 12% rust behind in-progress stamps
 val StampNavy = Color(0xFF1F3A5F) // rare / red-listed trophies
+
+// 12% StampNavy tint — Archive red-listed tag pill (T10b, ≥7.4:1 for StampNavy text on every paper).
+val RedListTagBg = Color(0x1F1F3A5F)

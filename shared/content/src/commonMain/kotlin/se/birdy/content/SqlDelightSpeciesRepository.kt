@@ -158,6 +158,7 @@ class SqlDelightSpeciesRepository(
                             family = taxonomy?.family ?: "",
                             familySv = taxonomy?.family_sv ?: "",
                             group = taxonomy?.group_id ?: "",
+                            iucnStatus = sp.iucn_status,
                         )
                     }
             }
@@ -302,6 +303,7 @@ class SqlDelightSpeciesRepository(
             family = taxonomy?.family ?: "",
             familySv = taxonomy?.family_sv ?: "",
             group = taxonomy?.group_id ?: "",
+            iucnStatus = sp.iucn_status,
         )
     }
 

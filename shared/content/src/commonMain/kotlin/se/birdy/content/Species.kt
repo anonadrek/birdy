@@ -46,4 +46,7 @@ data class SpeciesSummary(
     val family: String = "",
     val familySv: String = "",
     val group: String = "",
+    // GLOBAL IUCN red-list status ("NT"/"VU"/"EN"/"CR"/"LC"/...), not a national one — powers the
+    // Archive's red-listed tag (T10b, se.birdy.app.util.isRedListed).
+    val iucnStatus: String = "",
 )
