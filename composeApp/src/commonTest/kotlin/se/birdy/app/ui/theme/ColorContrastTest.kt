@@ -37,6 +37,13 @@ class ColorContrastTest {
     }
 
     @Test
+    fun `OutlineInk reaches non-text AA on every paper surface`() {
+        val failures =
+            papers.mapNotNull { (pn, p) -> contrastRatio(OutlineInk, p).takeIf { it < 3.0 }?.let { "OutlineInk on $pn = $it" } }
+        assertTrue(failures.isEmpty(), failures.joinToString("\n"))
+    }
+
+    @Test
     fun `light tokens reach AA on dark moss`() {
         val light = mapOf("TextOnHero" to TextOnHero, "AccentCopperLight" to AccentCopperLight, "BrassLight" to BrassLight)
         val failures =

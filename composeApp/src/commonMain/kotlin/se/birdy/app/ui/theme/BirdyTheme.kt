@@ -18,8 +18,18 @@ private val BirdyLightColors =
         onSurface = TextOnCreme,
         surfaceVariant = SandCreme,
         onSurfaceVariant = InkMuted,
-        outline = Hairline,
+        outline = OutlineInk,
         outlineVariant = Hairline,
+        surfaceContainerLowest = CardPaper,
+        surfaceContainerLow = PaperTop,
+        surfaceContainer = MossCreme,
+        surfaceContainerHigh = PaperBottom,
+        surfaceContainerHighest = SandCreme,
+        surfaceBright = CardPaper,
+        surfaceDim = SandCreme,
+        inverseSurface = HeroMossDeep,
+        inverseOnSurface = TextOnHero,
+        inversePrimary = AccentCopperLight,
     )
 
 @Composable

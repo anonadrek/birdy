@@ -21,6 +21,7 @@ val PaperBottom = Color(0xFFF2E9D8) // paperBackground() gradient, bottom
 val CardPaper = Color(0xFFFFFAF1) // cards and sheets on paper
 val Hairline = Color(0xFFDFD2BA) // 1dp rules and card outlines — never text
 val PaperBottomBar = Color(0xFFF6EFE2) // bottom nav + system nav bar strip
+val OutlineInk = Color(0xFF7D7766) // Material outline: interactive boundaries (≥ 3:1 on every paper)
 
 // ===== Dark moss surfaces (photo scrims, Premium, hero gradients), light → deep =====
 val HeroMossLight = Color(0xFF3A4A2E)
