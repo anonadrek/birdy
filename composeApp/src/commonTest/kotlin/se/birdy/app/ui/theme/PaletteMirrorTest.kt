@@ -21,6 +21,7 @@ class PaletteMirrorTest {
         assertEquals(PaperTop, Color(MapMarkerSpec.CREAM_HI))
         assertEquals(SandCreme, Color(MapMarkerSpec.CREAM_LO))
         assertEquals(AccentCopper, Color(MapMarkerSpec.COPPER))
+        assertEquals(StampNavy, Color(MapMarkerSpec.NAVY))
     }
 
     @Test

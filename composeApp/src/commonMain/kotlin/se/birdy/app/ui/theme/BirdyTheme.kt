@@ -3,7 +3,6 @@ package se.birdy.app.ui.theme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 
 private val BirdyLightColors =
     lightColorScheme(
@@ -31,11 +30,13 @@ private val BirdyLightColors =
         inverseSurface = HeroMossDeep,
         inverseOnSurface = TextOnHero,
         inversePrimary = AccentCopperLight,
-        // Defensive (fix wave B8): M3's tonal-elevation overlay tints a surface toward
-        // surfaceTint as elevation rises (e.g. AppBar/Card/BottomSheet shadows). Left at the
-        // scheme default it's `primary` = AccentCopper, which would rust-tint paper surfaces
-        // that use tonal elevation — transparent keeps every surface reading as flat paper.
-        surfaceTint = Color.Transparent,
+        // Defensive (fix wave B8, corrected B9): M3's surfaceColorAtElevation does
+        // surfaceTint.copy(alpha = a).compositeOver(surface) as elevation rises (e.g.
+        // AppBar/Card/BottomSheet shadows). Color.Transparent is black at alpha 0, so
+        // copy(alpha = a) on it produces a translucent BLACK, not "no tint" — tonally
+        // elevated surfaces would turn grey. surfaceTint = MossCreme (== surface) instead:
+        // compositing a color over itself is a no-op, so every surface stays flat paper.
+        surfaceTint = MossCreme,
     )
 
 @Composable

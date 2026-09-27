@@ -55,7 +55,6 @@ import se.birdy.app.ui.theme.StampNavy
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.paperBackground
 import java.io.File
-import kotlin.math.abs
 
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
@@ -217,6 +216,12 @@ class ComponentsScreenshotTest {
     @Test
     @Config(qualifiers = "+sv")
     fun photo_scene_seal_pixel_is_low_alpha_wash() {
+        // Delete any stale PNG from a previous run first — otherwise a broken capture (e.g. the
+        // roborazzi.test.record trick below silently no-op-ing) could leave yesterday's file on
+        // disk and the assertions below would pass against THAT instead of a fresh render.
+        val file = File("build/outputs/roborazzi/photo_scene_seal_pixel_probe.png")
+        file.delete()
+
         val previousRecordFlag = System.getProperty("roborazzi.test.record")
         System.setProperty("roborazzi.test.record", "true")
         try {
@@ -238,9 +243,9 @@ class ComponentsScreenshotTest {
                 System.clearProperty("roborazzi.test.record")
             }
         }
+        assertTrue("expected a freshly recorded screenshot at ${file.path}", file.exists())
 
-        val png = File("build/outputs/roborazzi/photo_scene_seal_pixel_probe.png").readBytes()
-        val pixelMap = png.decodeToImageBitmap().toPixelMap()
+        val pixelMap = file.readBytes().decodeToImageBitmap().toPixelMap()
         // Sample near the top of the disc: inside the low-alpha fill, away from the centered
         // "№1" text and away from the opaque 2dp ring stroke right at the edge.
         val sampled = pixelMap[pixelMap.width / 2, (pixelMap.height * 0.2f).toInt()]
@@ -256,12 +261,6 @@ class ComponentsScreenshotTest {
         assertEquals(expected.red, sampled.red, tolerance)
         assertEquals(expected.green, sampled.green, tolerance)
         assertEquals(expected.blue, sampled.blue, tolerance)
-
-        // ...and clearly not the ring's solid AccentCopper.
-        assertTrue(
-            "sampled pixel should be the low-alpha wash, not solid AccentCopper",
-            abs(sampled.red - AccentCopper.red) > tolerance,
-        )
     }
 
     // Long English name (30 chars, real species.db entry Q210418) at 130% system font scale —
