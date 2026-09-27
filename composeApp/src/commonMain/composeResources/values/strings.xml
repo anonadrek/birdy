@@ -528,7 +528,7 @@
     <!-- Per-tab markers -->
     <string name="premium_archive_title">Exportera fältdagboken</string>
     <string name="premium_archive_subtitle">Hela dagboken som PDF, redo att dela</string>
-    <string name="premium_lifelist_title">Säsongs-statistik</string>
+    <string name="premium_lifelist_title">Säsongsstatistik</string>
     <string name="premium_lifelist_cta">Se hela din säsong</string>
     <string name="premium_lifelist_badge">PREMIUM</string>
     <string name="premium_lifelist_preview_caption">Exempel: Vår 2026 · 23 nya arter</string>
@@ -568,6 +568,7 @@
     <string name="stats_summer">Sommar</string>
     <string name="stats_autumn">Höst</string>
     <string name="stats_open_link">Öppna statistik →</string>
+    <string name="stats_preview_species_this_year">arter i år</string>
 
     <!-- ===== Plan 6a Task 9: A11y strings ===== -->
     <!-- AsyncImage contentDescription -->

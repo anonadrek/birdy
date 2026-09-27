@@ -2,22 +2,25 @@ package se.birdy.app.ui.stats
 
 import se.birdy.app.ui.theme.CardPaper
 import se.birdy.app.ui.theme.contrastRatio
-import se.birdy.app.ui.theme.relativeLuminance
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
 /**
- * T12b review fix: pins two things about [SeasonPalette] so the summer/autumn regression
+ * T12b/T12c review fixes: pins two things about [SeasonPalette] so the summer/autumn regression
  * (Brass swapped for BrassText, indistinguishable for deuteranopes) can't silently recur.
  *
  * 1. Every season swatch clears WCAG 1.4.11's 3:1 graphics-object floor against [CardPaper] —
  *    the only surface [se.birdy.app.ui.stats.charts.JournalDonutChart] and the legend ever draw
  *    on ([se.birdy.app.ui.components.SectionCard] always sits on `CardPaper`). Brass is the
  *    tightest of the four at ≈3.02:1 — honestly close to the floor, not padded, but real.
- * 2. Summer and autumn are apart by luminance, not just by hue — a rough proxy for "still
- *    distinguishable once desaturated" (a full CVD (color-vision-deficiency) simulation needs
- *    more machinery than is available in a commonTest; luminance separation is the cheap,
- *    honest stand-in the review itself used to explain the regression).
+ * 2. Summer and autumn are apart by luminance-contrast ratio, not just by hue — a rough proxy for
+ *    "still distinguishable once desaturated" (a full CVD (color-vision-deficiency) simulation
+ *    needs more machinery than is available in a commonTest; contrast ratio is the cheap, honest
+ *    stand-in the review itself used to explain the regression). T12c: switched from an absolute
+ *    luminance-gap floor (0.03, opaque and not directly comparable to the KDoc's own ":1" ratios)
+ *    to the same `contrastRatio` used everywhere else in this file — 1.8:1 sits between the
+ *    BrassText regression (1.10:1, must fail) and today's real Brass/AccentCopper gap (2.05:1,
+ *    must pass).
  */
 class SeasonPaletteContrastTest {
     @Test
@@ -39,20 +42,19 @@ class SeasonPaletteContrastTest {
 
     @Test
     fun `summer and autumn are apart by luminance`() {
-        val summerLuminance = relativeLuminance(SeasonPalette.summer)
-        val autumnLuminance = relativeLuminance(SeasonPalette.autumn)
-        val gap = kotlin.math.abs(summerLuminance - autumnLuminance)
-        // The BrassText regression measured ~1.1:1 luminance-ratio apart (indistinguishable).
-        // Brass vs AccentCopper measures a real gap here; 0.03 absolute luminance is a
-        // deliberately loose floor — this test exists to catch "swapped back to something
-        // BrassText-close", not to pin the exact current values.
+        val ratio = contrastRatio(SeasonPalette.summer, SeasonPalette.autumn)
+        // The BrassText regression measured ~1.10:1 luminance-ratio apart (indistinguishable).
+        // Brass vs AccentCopper measures ≈2.05:1 — a real gap. The floor sits between the two,
+        // closer to the regression value than to today's real one, so it stays loose enough not
+        // to pin the exact current colors while still catching "swapped back to something
+        // BrassText-close".
         assertTrue(
-            gap > MIN_SEASON_LUMINANCE_GAP,
-            "summer ($summerLuminance) and autumn ($autumnLuminance) are only $gap apart",
+            ratio >= MIN_SEASON_LUMINANCE_RATIO,
+            "summer/autumn contrast ratio is only $ratio:1",
         )
     }
 
     private companion object {
-        const val MIN_SEASON_LUMINANCE_GAP = 0.03
+        const val MIN_SEASON_LUMINANCE_RATIO = 1.8
     }
 }

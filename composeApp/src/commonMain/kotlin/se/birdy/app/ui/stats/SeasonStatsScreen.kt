@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -29,7 +31,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -123,12 +127,16 @@ private fun SeasonStatsTopBar(onBack: () -> Unit) {
             contentDescription = stringResource(Res.string.stats_back),
         )
         Spacer(Modifier.size(8.dp))
-        Text(
+        // T12c M2: BasicText + autoSize instead of a fixed 20sp Text — with the PREMIUM badge
+        // eating into the row's width, "Säsongsstatistik" wrapped mid-word at w360 under a ~1.4×
+        // system font scale. Same StepBased pattern as the Premium screen's price line
+        // (ui/premium/PremiumScreen.kt).
+        BasicText(
             text = stringResource(Res.string.stats_title),
-            fontFamily = rememberDmSerifDisplay(),
-            fontSize = 20.sp,
-            color = TextOnCreme,
-            modifier = Modifier.weight(1f),
+            style = TextStyle(fontFamily = rememberDmSerifDisplay(), color = TextOnCreme, fontSize = 20.sp),
+            maxLines = 1,
+            autoSize = TextAutoSize.StepBased(minFontSize = 14.sp, maxFontSize = 20.sp),
+            modifier = Modifier.weight(1f).semantics { heading() },
         )
         PremiumBadge()
     }
@@ -199,8 +207,14 @@ private fun LoadedContent(
         item { Spacer(Modifier.height(10.dp)) }
         item { SeasonsCard(s.seasonDonut) }
         item { Spacer(Modifier.height(10.dp)) }
-        item { TopSpeciesCard(s.topSpecies) }
-        item { Spacer(Modifier.height(10.dp)) }
+        // T12c M3: a user whose only finds this year are "unknown" gets Loaded with an empty
+        // topSpecies — TopSpeciesCard would otherwise render as a card containing nothing but
+        // its own header. Skip the card AND its trailing spacer so CumulativeCard's own
+        // preceding gap (below) reads as the section break instead.
+        if (s.topSpecies.isNotEmpty()) {
+            item { TopSpeciesCard(s.topSpecies) }
+            item { Spacer(Modifier.height(10.dp)) }
+        }
         item { CumulativeCard(s.cumulativeLine) }
     }
 }
@@ -210,7 +224,11 @@ private fun MonthsCard(bars: List<SeasonStatsUiState.MonthBar>) {
     SectionCard(modifier = Modifier.padding(horizontal = 24.dp)) {
         MicroLabel(
             text = stringResource(Res.string.stats_section_months),
-            modifier = Modifier.semantics { heading() },
+            // T12c I-A: MicroLabel applies its modifier to a Row that doesn't merge its
+            // children, so a plain `semantics { heading() }` here lands on a text-less
+            // container TalkBack can't focus — mergeDescendants pulls the child Text's text up
+            // onto this same node so the heading actually carries readable content.
+            modifier = Modifier.semantics(mergeDescendants = true) { heading() },
         )
         Spacer(Modifier.height(10.dp))
         JournalBarChart(
@@ -226,7 +244,8 @@ private fun SeasonsCard(breakdown: SeasonStatsUiState.SeasonBreakdown) {
     SectionCard(modifier = Modifier.padding(horizontal = 24.dp)) {
         MicroLabel(
             text = stringResource(Res.string.stats_section_seasons),
-            modifier = Modifier.semantics { heading() },
+            // T12c I-A: see the comment on this same pattern in MonthsCard above.
+            modifier = Modifier.semantics(mergeDescendants = true) { heading() },
         )
         Spacer(Modifier.height(10.dp))
         JournalDonutChart(
@@ -242,7 +261,8 @@ private fun TopSpeciesCard(rows: List<SeasonStatsUiState.TopSpeciesRow>) {
     SectionCard(modifier = Modifier.padding(horizontal = 24.dp)) {
         MicroLabel(
             text = stringResource(Res.string.stats_section_top),
-            modifier = Modifier.semantics { heading() },
+            // T12c I-A: see the comment on this same pattern in MonthsCard above.
+            modifier = Modifier.semantics(mergeDescendants = true) { heading() },
         )
         val maxCount = (rows.maxOfOrNull { it.count } ?: 1).coerceAtLeast(1)
         rows.forEach { row ->
@@ -258,7 +278,8 @@ private fun CumulativeCard(points: List<SeasonStatsUiState.CumulativePoint>) {
     SectionCard(modifier = Modifier.padding(horizontal = 24.dp)) {
         MicroLabel(
             text = stringResource(Res.string.stats_section_cumulative),
-            modifier = Modifier.semantics { heading() },
+            // T12c I-A: see the comment on this same pattern in MonthsCard above.
+            modifier = Modifier.semantics(mergeDescendants = true) { heading() },
         )
         Spacer(Modifier.height(10.dp))
         JournalLineChart(
@@ -313,7 +334,7 @@ private fun MonthLabelsRow(bars: List<SeasonStatsUiState.MonthBar>) {
                 fontSize = 11.sp,
                 color = if (b.isCurrent) BrassText else InkMuted,
                 fontWeight = if (b.isCurrent) FontWeight.W700 else FontWeight.W400,
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                textAlign = TextAlign.Center,
                 modifier = Modifier.weight(1f),
             )
         }

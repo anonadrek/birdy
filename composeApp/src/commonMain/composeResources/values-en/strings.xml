@@ -554,6 +554,7 @@
     <string name="stats_summer">Summer</string>
     <string name="stats_autumn">Autumn</string>
     <string name="stats_open_link">Open stats →</string>
+    <string name="stats_preview_species_this_year">species this year</string>
 
     <!-- ===== Plan 6a Task 9: A11y strings ===== -->
     <!-- AsyncImage contentDescription -->

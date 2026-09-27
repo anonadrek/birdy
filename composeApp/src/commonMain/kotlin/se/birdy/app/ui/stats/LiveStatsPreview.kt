@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
 import birdy_bird_scanner.composeapp.generated.resources.stats_open_link
-import birdy_bird_scanner.composeapp.generated.resources.stats_section_top
+import birdy_bird_scanner.composeapp.generated.resources.stats_preview_species_this_year
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.stats.charts.JournalBarChart
 import se.birdy.app.ui.theme.AccentCopper
@@ -72,7 +72,11 @@ fun LiveStatsPreview(
             )
             Spacer(Modifier.width(4.dp))
             Text(
-                text = stringResource(Res.string.stats_section_top),
+                // T12c C1: was Res.string.stats_section_top ("Most-seen species") — reading
+                // "3 Most-seen species" next to totalSpeciesThisYear is false; this label exists
+                // only to caption the count, not to name the section (the section's real title
+                // is drawn separately, above this card, by LifelistScreen).
+                text = stringResource(Res.string.stats_preview_species_this_year),
                 fontFamily = rememberCaveat(),
                 fontSize = 14.sp,
                 color = MarginaliaInk,

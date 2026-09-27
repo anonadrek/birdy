@@ -15,8 +15,8 @@ import se.birdy.app.ui.theme.StampNavy
  *
  * Summer is [Brass], not `BrassText` (T12's choice, reverted in review): [se.birdy.app.ui.theme.BrassText]
  * reads almost identically to [AccentCopper] (autumn) for deuteranopes — the two colors are
- * ~2:1 apart in luminance and simulate to a ΔE of ~2 (indistinguishable), because both are
- * fairly dark, desaturated browns. [Brass] keeps a real gap from [AccentCopper] (≈2:1 in
+ * ~1.10:1 apart in luminance and simulate to a ΔE of ~2 (indistinguishable), because both are
+ * fairly dark, desaturated browns. [Brass] keeps a real gap from [AccentCopper] (≈2.05:1 in
  * luminance, ΔE 22–34 across every CVD simulation) while still clearing WCAG 1.4.11's 3:1
  * graphics-object floor on the surface this palette is actually drawn on: both
  * [se.birdy.app.ui.stats.charts.JournalDonutChart] and the legend only ever render inside a

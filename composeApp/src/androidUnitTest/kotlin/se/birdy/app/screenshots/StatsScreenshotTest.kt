@@ -2,6 +2,8 @@ package se.birdy.app.screenshots
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.isHeading
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import kotlinx.datetime.Clock
@@ -11,6 +13,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import se.birdy.app.testing.FakeObservationRepository
@@ -110,6 +113,27 @@ class StatsScreenshotTest {
     @Config(qualifiers = "+sv")
     fun stats_sv() {
         compose.captureScreen("stats_sv") { screen(Locale.SV) }
+        compose.onNodeWithText("15").assertExists()
+        // T12c I-A: MicroLabel's `heading()` modifier landed on a Row that doesn't merge its
+        // children, so the node TalkBack would find via this exact text had no `heading()` on
+        // it — the merged-tree node carrying "OBSERVATIONER PER MÅNAD" (MicroLabel's uppercased
+        // stats_section_months) must itself report isHeading().
+        compose.onNodeWithText("OBSERVATIONER PER MÅNAD").assert(isHeading())
+    }
+
+    /**
+     * T12c M2: with the PREMIUM badge eating into the top bar's width, the single-word title
+     * "Säsongsstatistik" wrapped mid-word at a narrow phone width under a large system font
+     * scale before the top bar's title switched to `BasicText` + `TextAutoSize.StepBased`
+     * (same pattern as [se.birdy.app.ui.premium.PremiumScreen]'s price line). "15" existing
+     * without wrapping/clipping is the visual proof; there's no production testTag to assert
+     * a single-line layout directly.
+     */
+    @Test
+    @Config(qualifiers = "+sv-w360dp")
+    fun stats_w360_sv_150() {
+        RuntimeEnvironment.setFontScale(1.5f)
+        compose.captureScreen("stats_w360_sv_150") { screen(Locale.SV) }
         compose.onNodeWithText("15").assertExists()
     }
 

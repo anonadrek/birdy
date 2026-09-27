@@ -349,12 +349,15 @@ private fun LoadedLifelist(
         if (showPremiumTeaser) {
             item {
                 Spacer(Modifier.height(20.dp))
+                // T12c C2: matches the "SENASTE · N STÄMPLAR" section label's own style/uppercasing
+                // above (see the recent-sort row) instead of its own one-off letter-spaced sentence
+                // case, so the two section labels on this screen read consistently.
                 Text(
-                    text = stringResource(Res.string.premium_lifelist_title),
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.W600,
-                    letterSpacing = 0.16.em,
+                    text = stringResource(Res.string.premium_lifelist_title).uppercase(),
                     color = MarginaliaInk,
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.W700,
+                    letterSpacing = 0.22.em,
                     modifier = Modifier.padding(horizontal = 24.dp, vertical = 6.dp),
                 )
                 Spacer(Modifier.height(8.dp))
@@ -369,12 +372,14 @@ private fun LoadedLifelist(
         } else if (livePreviewState != null) {
             item {
                 Spacer(Modifier.height(20.dp))
+                // T12c C2: see the comment on the same style match in the showPremiumTeaser
+                // branch above.
                 Text(
-                    text = stringResource(Res.string.premium_lifelist_title),
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.W600,
-                    letterSpacing = 0.16.em,
+                    text = stringResource(Res.string.premium_lifelist_title).uppercase(),
                     color = MarginaliaInk,
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.W700,
+                    letterSpacing = 0.22.em,
                     modifier = Modifier.padding(horizontal = 24.dp, vertical = 6.dp),
                 )
                 Spacer(Modifier.height(8.dp))

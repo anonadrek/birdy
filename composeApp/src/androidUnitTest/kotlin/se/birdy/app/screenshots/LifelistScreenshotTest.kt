@@ -2,8 +2,11 @@ package se.birdy.app.screenshots
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.test.hasScrollToIndexAction
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performScrollToNode
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import org.junit.Rule
@@ -209,11 +212,24 @@ class LifelistScreenshotTest {
      * all before this — the SandCreme-surface regression (invisible axis, sub-3:1 current-month
      * bar) went unnoticed because nothing ever rendered it. Asserts the preview's own content
      * (the "Open stats" link) actually rendered before trusting the capture.
+     *
+     * T12c I-B: the un-scrolled capture cropped the card at its first bars (it starts around
+     * 775dp into the fixed 891dp viewport) — the axis, zero-observation months and the
+     * current-month label (the whole point of T12b's CardPaper/OutlineInk fix) were below the
+     * fold and invisible in the PNG. Scrolling the LazyColumn to the card before capturing shows
+     * the whole thing, real phone frame and all.
      */
     @Test
     @Config(qualifiers = "+sv")
     fun lifelist_live_preview_sv() {
-        compose.captureScreen("lifelist_live_preview_sv") { loadedScreenWithLivePreview() }
+        compose.captureScreen(
+            "lifelist_live_preview_sv",
+            settle = {
+                compose
+                    .onNode(hasScrollToIndexAction())
+                    .performScrollToNode(hasText("Öppna statistik", substring = true))
+            },
+        ) { loadedScreenWithLivePreview() }
         compose.onNodeWithText("Öppna statistik", substring = true).assertExists()
     }
 }
