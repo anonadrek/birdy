@@ -10,11 +10,11 @@ import kotlin.test.Test
 import kotlin.test.assertTrue
 
 /**
- * WCAG 2.1 AA for [PhotoHero]'s bottom-aligned text over a worst-case LIGHT photo (spec
- * 2026-09-24 §4.3). Fix wave A2b (2026-09-27) replaced the old hero-relative scrim ramp — which
- * had to be strengthened so much it made the photo nearly invisible (fix wave A2, finding I3) —
- * with a scrim that follows the text block itself: it fades in above the text Column's top edge,
- * then stays FLAT at [TEXT_SCRIM_ALPHA] all the way to the bottom (see [PhotoHero]'s drawBehind /
+ * WCAG 2.1 AA for [PhotoHero]'s bottom-aligned text over the worst-case photo (spec 2026-09-24
+ * §4.3). Fix wave A2b (2026-09-27) replaced the old hero-relative scrim ramp — which had to be
+ * strengthened so much it made the photo nearly invisible (fix wave A2, finding I3) — with a
+ * scrim that follows the text block itself: it fades in above the text Column's top edge, then
+ * stays FLAT at [TEXT_SCRIM_ALPHA] all the way to the bottom (see [PhotoHero]'s
  * `drawTextFollowingScrim`).
  *
  * This models the backdrop with ONLY that text scrim, treating the separate global scrim (the
@@ -26,17 +26,22 @@ import kotlin.test.assertTrue
  * every real position, and — because the text scrim is flat rather than ramped — the same single
  * backdrop color covers every line (kicker, latinName, subtitle, meta and title all sit on it).
  *
+ * The reference photo is pure white (fix wave A2c, controller decision, 2026-09-27), not an
+ * overcast-sky gray: a blown-out sky or snow is a realistic bird photo, and for light text over
+ * a darkening scrim, white is the strict worst case (the brightest anything can be) — so this
+ * makes the test a true lower bound for every photo, not just plausible-looking ones.
+ *
  * This is pure-color/pure-math — a commonTest has no compose measurer, so it can't lay the real
  * component out — modeled the same way [se.birdy.app.ui.theme.ColorContrastTest] treats color
  * math independently of any real layout pass.
  */
 class PhotoHeroContrastTest {
-    // An overcast-sky photo color — the reviewer's reference for the worst realistic photo.
-    private val lightReferencePhoto = Color(0xFFD6DBE0)
+    // Pure white — the strict worst case for a photo behind light text (see class KDoc).
+    private val worstCasePhoto = Color(0xFFFFFFFF)
 
     @Test
-    fun `hero text clears AA over a light reference photo with only the text scrim`() {
-        val backdrop = compositeOver(HeroMossDeep, TEXT_SCRIM_ALPHA, lightReferencePhoto)
+    fun `hero text clears AA over a worst-case white photo with only the text scrim`() {
+        val backdrop = compositeOver(HeroMossDeep, TEXT_SCRIM_ALPHA, worstCasePhoto)
 
         val kicker = contrastRatio(AccentCopperLight, backdrop)
         val latinName = contrastRatio(compositeOver(TextOnHero, LATIN_NAME_TEXT_ALPHA, backdrop), backdrop)

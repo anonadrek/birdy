@@ -196,8 +196,9 @@ class ComponentsScreenshotTest {
     }
 
     // Long English name (30 chars, real species.db entry Q210418) at 130% system font scale —
-    // the worse of the two scales this suite screenshots (see PhotoHeroContrastTest). No image:
-    // this one is about text metrics, not the photo.
+    // exercises HeroTitle's auto-shrink and the text block's layout at a larger scale. No image:
+    // this one is about text metrics/layout, not photo contrast (PhotoHeroContrastTest covers
+    // contrast separately and no longer models a specific font scale or text-block position).
     @Test
     @Config(qualifiers = "+en")
     fun hero_long_en_130() {
