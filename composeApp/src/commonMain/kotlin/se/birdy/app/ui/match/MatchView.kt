@@ -184,6 +184,7 @@ internal fun MatchView(
             PaperSheet {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     MatchMarginalia(state = state, zone = zone, modifier = Modifier.weight(1f))
