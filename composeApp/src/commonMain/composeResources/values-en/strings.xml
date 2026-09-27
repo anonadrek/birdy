@@ -11,6 +11,7 @@
     <string name="profile_label_migration">MIGRATION</string>
     <string name="profile_label_photos">PHOTOS</string>
     <string name="profile_back">Back</string>
+    <string name="profile_iucn_description">Global Red List (IUCN): %1$s</string>
 
     <!-- Plan 7c: Profile Field Journal -->
     <string name="profile_journal_label">SPECIES</string>

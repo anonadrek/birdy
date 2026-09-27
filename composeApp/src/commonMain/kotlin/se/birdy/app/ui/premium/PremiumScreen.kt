@@ -3,7 +3,6 @@ package se.birdy.app.ui.premium
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -41,10 +40,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -83,10 +80,10 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BirdyPremiumButton
+import se.birdy.app.ui.components.GlassIconButton
 import se.birdy.app.ui.components.MicroLabel
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.theme.BrassLight
-import se.birdy.app.ui.theme.GlassOnPhoto
 import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
@@ -223,37 +220,14 @@ fun PremiumScreen(
                 }
             }
         }
-        val closeLabel = stringResource(Res.string.premium_screen_close)
-        // A manual 48dp clickable Box, not IconButton (T9c #2): IconButton's own effective touch
-        // target here measured ~40dp (its Material state-layer sizing), not the full ≥48dp the
-        // previous comment assumed. contentDescription lives on this outer clickable node (the
-        // Icon's own is null) so TalkBack announces exactly this tap target, not a separate
-        // nested one.
-        Box(
-            modifier =
-                Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(top = 12.dp, end = 14.dp)
-                    .size(48.dp)
-                    .clip(CircleShape)
-                    .clickable(role = Role.Button, onClick = onClose)
-                    .semantics {
-                        contentDescription = closeLabel
-                        traversalIndex = -1f
-                    },
-            contentAlignment = Alignment.Center,
-        ) {
-            Box(
-                modifier = Modifier.size(36.dp).background(GlassOnPhoto, CircleShape),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    Icons.Outlined.Close,
-                    contentDescription = null,
-                    tint = TextOnHero,
-                )
-            }
-        }
+        // Shared GlassIconButton (Task 11c): a real ≥48dp touch target (IconButton's own
+        // effective touch target here measured ~40dp — T9c #2) holding a 36dp GlassOnPhoto disc.
+        GlassIconButton(
+            icon = Icons.Outlined.Close,
+            contentDescription = stringResource(Res.string.premium_screen_close),
+            onClick = onClose,
+            modifier = Modifier.align(Alignment.TopEnd).padding(top = 12.dp, end = 14.dp),
+        )
     }
 }
 

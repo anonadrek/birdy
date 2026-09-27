@@ -25,6 +25,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -52,6 +55,8 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_species_title
 import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_corner
 import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_cta
 import birdy_bird_scanner.composeapp.generated.resources.profile_back
+import birdy_bird_scanner.composeapp.generated.resources.profile_iucn_description
+import birdy_bird_scanner.composeapp.generated.resources.profile_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.profile_label_description
 import birdy_bird_scanner.composeapp.generated.resources.profile_label_migration
 import birdy_bird_scanner.composeapp.generated.resources.profile_label_photos
@@ -113,11 +118,25 @@ private fun ProfileContent(
     val serif = rememberDmSerifDisplay()
     val familyLabel = localizedFamilyLabel(locale, species.taxonomy.family, species.taxonomy.familySv)
     val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
+    // The family lives ONLY in the kicker now — the quality review found it shown twice (kicker
+    // + an abundance-adjacent pill in ProfilePillRow, removed below). SV pairs the Swedish family
+    // name with the Latin one ("Mesar · Paridae") when both exist and differ; EN shows the family
+    // alone (there is no separate English trivial name in the content, see localizedFamilyLabel).
+    // familySv is hoisted to a local val: species.taxonomy.familySv is a public property from a
+    // different Gradle module, so a chained null-check on the property access itself can't be
+    // smart-cast (cross-module properties may have custom getters) — a local val can.
+    val familySv = species.taxonomy.familySv
+    val kicker =
+        if (locale == Locale.SV && !familySv.isNullOrBlank() && familySv != species.taxonomy.family) {
+            stringResource(Res.string.profile_journal_sub, familySv, species.taxonomy.family)
+        } else {
+            familyLabel
+        }
 
     LazyColumn(modifier = Modifier.fillMaxSize().background(MossCreme)) {
         item {
             PhotoHero(
-                kicker = familyLabel,
+                kicker = kicker,
                 title = species.name,
                 latinName = species.scientificName,
                 height = 320.dp,
@@ -143,7 +162,7 @@ private fun ProfileContent(
                 },
                 bottomContent = {
                     Spacer(Modifier.height(10.dp))
-                    ProfilePillRow(species = species, familyLabel = familyLabel)
+                    ProfilePillRow(species = species)
                 },
             )
         }
@@ -219,38 +238,53 @@ private fun ProfileContent(
 }
 
 /**
- * The abundance/family/IUCN pill row, drawn in [PhotoHero]'s bottomContent slot — light-on-dark,
- * over the photo's text-following scrim (spec 2026-09-24 §4.3). [FlowRow] wraps a long family
- * name or IUCN label onto a second line instead of overflowing the hero's width.
+ * The abundance/IUCN pill row, drawn in [PhotoHero]'s bottomContent slot — light-on-dark, over
+ * the photo's text-following scrim (spec 2026-09-24 §4.3). The family already has its own place
+ * in the kicker above (see [ProfileContent]'s `kicker`), so it does not get a pill here too —
+ * the quality review caught the family appearing twice. [FlowRow] wraps a long IUCN label onto a
+ * second line instead of overflowing the hero's width; `semantics(mergeDescendants = true)` on
+ * the row groups the pills into one accessible stop instead of two-to-three separate ones (the
+ * IUCN pill's own [JournalPill] uses `clearAndSetSemantics` rather than another
+ * `mergeDescendants = true`, so it does not become a second, un-merged merge boundary).
  */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun ProfilePillRow(
-    species: Species,
-    familyLabel: String,
-) {
+private fun ProfilePillRow(species: Species) {
     val abundanceLabel =
         when (species.abundance) {
             Abundance.ALLMÄN -> stringResource(Res.string.badge_common)
             else -> stringResource(Res.string.badge_uncommon)
         }
-    val iucnLabel =
-        when (species.iucnStatus.uppercase()) {
+    // The pill alone ("Livskraftig"/"Least concern") gives no hint this is an IUCN rating, let
+    // alone the GLOBAL red list rather than a national one — the quality review flagged the
+    // missing context. The mapped word gets its code appended ("Livskraftig (LC)"); an
+    // unmapped/unknown status falls back to the raw code alone (no word to pair it with).
+    val iucnCode = species.iucnStatus.uppercase()
+    val iucnWord =
+        when (iucnCode) {
             "LC" -> stringResource(Res.string.iucn_lc)
             "NT" -> stringResource(Res.string.iucn_nt)
             "VU" -> stringResource(Res.string.iucn_vu)
             "EN" -> stringResource(Res.string.iucn_en)
             "CR" -> stringResource(Res.string.iucn_cr)
             "DD" -> stringResource(Res.string.iucn_dd)
-            else -> species.iucnStatus
+            else -> null
         }
+    val iucnPillText = iucnWord?.let { "$it ($iucnCode)" } ?: species.iucnStatus
+
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(6.dp),
         verticalArrangement = Arrangement.spacedBy(6.dp),
+        modifier = Modifier.semantics(mergeDescendants = true) {},
     ) {
         JournalPill(text = abundanceLabel, isFilled = true)
-        JournalPill(text = familyLabel, isFilled = false)
-        if (iucnLabel.isNotBlank()) JournalPill(text = iucnLabel, isFilled = false)
+        if (iucnPillText.isNotBlank()) {
+            JournalPill(
+                text = iucnPillText,
+                isFilled = false,
+                contentDescription = stringResource(Res.string.profile_iucn_description, iucnPillText),
+            )
+        }
     }
 }
 
@@ -259,8 +293,10 @@ private fun DescriptionWithDropCap(
     text: String,
     serif: FontFamily,
 ) {
-    val firstChar = text.first().toString()
-    val rest = text.drop(1)
+    // trimStart: a leading space/quote in the source text must not become the drop cap itself.
+    val trimmed = text.trimStart()
+    val firstChar = trimmed.first().toString()
+    val rest = trimmed.drop(1)
     val annotated =
         AnnotatedString
             .Builder()
@@ -316,13 +352,28 @@ internal const val PROFILE_PILL_GLASS_ALPHA = 0.16f
 private fun JournalPill(
     text: String,
     isFilled: Boolean,
+    contentDescription: String? = null,
 ) {
     Box(
         modifier =
             Modifier
                 .clip(RoundedCornerShape(50))
                 .background(if (isFilled) AccentCopper else Color.White.copy(alpha = PROFILE_PILL_GLASS_ALPHA))
-                .padding(horizontal = 10.dp, vertical = 4.dp),
+                .padding(horizontal = 10.dp, vertical = 4.dp)
+                .let { m ->
+                    // clearAndSetSemantics, not semantics(mergeDescendants = true): the latter
+                    // would make this pill its OWN merge boundary, so the parent row's
+                    // mergeDescendants (ProfilePillRow) could not merge it in — TalkBack would
+                    // get two stops (row, then pill) instead of one, and might still read the
+                    // Text's literal contentDescription-less-node text too. clearAndSetSemantics
+                    // replaces the Text's literal-text semantics with this description and is
+                    // NOT a merge boundary itself, so the row merges it into its single stop.
+                    if (contentDescription != null) {
+                        m.clearAndSetSemantics { this.contentDescription = contentDescription }
+                    } else {
+                        m
+                    }
+                },
     ) {
         Text(
             text = text,

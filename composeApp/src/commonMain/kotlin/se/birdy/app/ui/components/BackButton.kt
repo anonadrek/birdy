@@ -2,8 +2,6 @@ package se.birdy.app.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -11,27 +9,19 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.GlassOnPhoto
 import se.birdy.app.ui.theme.OffwhiteWarm
-import se.birdy.app.ui.theme.TextOnHero
 
 /**
- * Universell tillbaka-pil — samma utseende på ALLA del-skärmar (papper som mörk
- * kamera-bakgrund). En 40dp ⊙-bricka med solid off-white fyllning + copper-ring
- * + copper-pil. Den fyllda behållaren bryter av mot pappersbakgrunden så pilen
+ * Universell tillbaka-pil. Default (papper): en 40dp ⊙-bricka med solid off-white fyllning +
+ * copper-ring + copper-pil — den fyllda behållaren bryter av mot pappersbakgrunden så pilen
  * läser som en knapp i stället för att smälta in i Field Journal-ornamentiken.
  *
- * [onDark]: true on a dark surface (e.g. a [PhotoHero]) — a real ≥48dp touch target holding a
- * 36dp [GlassOnPhoto] glass disc + a [TextOnHero]-tinted arrow, mirroring the Premium screen's
- * close button (`PremiumScreen.kt`). Default (false, off-white ring on paper) is unchanged.
+ * [onDark]: true på en mörk yta (t.ex. en [PhotoHero]) — byts mot den delade [GlassIconButton]
+ * (mörkt glas, samma mönster som Premiums stängknapp). Default (false) är oförändrat.
  */
 @Composable
 fun BackButton(
@@ -41,31 +31,12 @@ fun BackButton(
     onDark: Boolean = false,
 ) {
     if (onDark) {
-        // A local val, not the parameter name itself, on the RHS below: `contentDescription`
-        // inside `semantics { }` would otherwise shadow the extension property with this same-
-        // named function parameter (the pattern PremiumScreen's `closeLabel` also avoids).
-        val backLabel = contentDescription
-        Box(
-            modifier =
-                modifier
-                    .size(48.dp)
-                    .clip(CircleShape)
-                    .clickable(role = Role.Button, onClick = onClick)
-                    .semantics { this.contentDescription = backLabel },
-            contentAlignment = Alignment.Center,
-        ) {
-            Box(
-                modifier = Modifier.size(36.dp).background(GlassOnPhoto, CircleShape),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = null,
-                    tint = TextOnHero,
-                    modifier = Modifier.size(20.dp),
-                )
-            }
-        }
+        GlassIconButton(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
+            contentDescription = contentDescription,
+            onClick = onClick,
+            modifier = modifier,
+        )
     } else {
         IconButton(
             onClick = onClick,

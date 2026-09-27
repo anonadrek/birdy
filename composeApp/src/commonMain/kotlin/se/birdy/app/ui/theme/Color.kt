@@ -28,13 +28,18 @@ val HeroMossLight = Color(0xFF3A4A2E)
 val HeroMossMid = Color(0xFF2C3A23)
 val HeroMossDeep = Color(0xFF1F2A19)
 
-// Dark glass behind icons drawn directly on a photo (Premium's close button; Task 11 reuses it).
-// ≈6.7:1 for TextOnHero against this composited over the bundled Premium photo's top-right
-// region (measured directly from the JPEG, not a worst-case-white photo — this is one fixed
-// bundled asset, not an arbitrary species photo). A translucent WHITE glass was tried first and
-// was invisible: both the icon and the glass are light, so lightening an already-bright photo
-// further left almost no contrast between them.
-val GlassOnPhoto = Color.Black.copy(alpha = 0.30f)
+// Dark glass behind icons drawn directly on a photo (Premium's close button; BackButton/
+// GearButton's onDark variants reuse it via the shared GlassIconButton). A translucent WHITE
+// glass was tried first and was invisible: both the icon and the glass are light, so lightening
+// an already-bright photo further leaves almost no contrast between them.
+//
+// alpha is pinned to ≥3:1 for TextOnHero on a worst-case (blown-out white, no photo/scrim credit)
+// backdrop — GlassOnPhotoContrastTest computes contrastRatio(TextOnHero, compositeOver(Black,
+// alpha, White)). 0.30 (the original value, measured against one bundled photo's top-right
+// region — ≈6.7:1 there, but that was one fixed bright-but-not-blown-out asset, not a worst
+// case) only clears ≈2.0:1 against pure white with no credit for the hero's global scrim, or
+// ≈2.85:1 with it — both below AA. 0.45 clears ≈3.2:1 with no scrim credit at all.
+val GlassOnPhoto = Color.Black.copy(alpha = 0.45f)
 
 // ===== Rust = "do something" (CTA, active tab, stat numbers, stamps) =====
 val AccentCopper = Color(0xFF9A4526)
