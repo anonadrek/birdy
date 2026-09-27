@@ -407,6 +407,7 @@
     <string name="lifelist_sort_recent">Recent</string>
     <string name="lifelist_sort_stamp">Stamp #</string>
     <string name="lifelist_sort_species">Species</string>
+    <string name="sort_chip_description">Sort: %1$s</string>
     <string name="lifelist_relative_just_now">just now</string>
     <string name="lifelist_relative_minutes">%1$s min ago</string>
     <string name="lifelist_relative_hours">%1$s h ago</string>
@@ -429,7 +430,10 @@
     <!-- Plan 6a Task 10.3: Diary empty-state redesign -->
     <string name="lifelist_empty_stamp_name">First sighting</string>
     <string name="lifelist_empty_marginalia">Your field journal is empty — \nscan to write the first page.</string>
-    <string name="lifelist_month_header">%1$s · %2$s entries</string>
+    <plurals name="lifelist_month_header">
+        <item quantity="one">%1$s · %2$s entry</item>
+        <item quantity="other">%1$s · %2$s entries</item>
+    </plurals>
     <!-- Plan 6a Task 10.6: Disambig "Save as unknown" -->
     <string name="unknown_species_label">Unidentified</string>
     <string name="disambig_save_unknown">Save as unknown</string>

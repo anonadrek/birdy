@@ -32,9 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -68,6 +66,7 @@ import se.birdy.app.ui.components.GearButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.PhotoHero
+import se.birdy.app.ui.components.hairlineBottom
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperDeep
 import se.birdy.app.ui.theme.CardPaper
@@ -244,9 +243,7 @@ private fun LaunchCard(
                             .clip(shape)
                             .background(Brush.linearGradient(listOf(AccentCopper, AccentCopperDeep)))
                     } else {
-                        m.drawBehind {
-                            drawLine(Hairline, Offset(0f, size.height), Offset(size.width, size.height), 1.dp.toPx())
-                        }
+                        m.hairlineBottom()
                     }
                 }.clickable(role = Role.Button, onClick = onClick)
                 .semantics(mergeDescendants = true) {}

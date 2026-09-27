@@ -42,4 +42,30 @@ class StringsParityTest {
         assertEquals(svArrays.keys, enArrays.keys)
         svArrays.forEach { (key, items) -> assertEquals("Array $key", items.size, enArrays.getValue(key).size) }
     }
+
+    @Test
+    fun `plural resources have the same keys, quantity forms and placeholders`() {
+        val svPlurals = StringsXml.plurals(StringsXml.swedish())
+        val enPlurals = StringsXml.plurals(StringsXml.english())
+        assertTrue("Parsed zero plurals — regex broken?", svPlurals.isNotEmpty() && enPlurals.isNotEmpty())
+        assertEquals("Only in Swedish", emptySet<String>(), svPlurals.keys - enPlurals.keys)
+        assertEquals("Only in English", emptySet<String>(), enPlurals.keys - svPlurals.keys)
+        svPlurals.forEach { (key, quantities) ->
+            val enQuantities = enPlurals.getValue(key)
+            assertEquals("Plural $key quantities", quantities.keys, enQuantities.keys)
+            quantities.forEach { (quantity, svText) ->
+                val svPlaceholders =
+                    StringsXml.placeholderRegex
+                        .findAll(svText)
+                        .map { it.value }
+                        .toSet()
+                val enPlaceholders =
+                    StringsXml.placeholderRegex
+                        .findAll(enQuantities.getValue(quantity))
+                        .map { it.value }
+                        .toSet()
+                assertEquals("Plural $key[$quantity] placeholders", svPlaceholders, enPlaceholders)
+            }
+        }
+    }
 }

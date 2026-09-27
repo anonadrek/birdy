@@ -420,6 +420,7 @@
     <string name="lifelist_sort_recent">Senaste</string>
     <string name="lifelist_sort_stamp">Stämpel #</string>
     <string name="lifelist_sort_species">Art</string>
+    <string name="sort_chip_description">Sortering: %1$s</string>
     <string name="lifelist_relative_just_now">just nu</string>
     <string name="lifelist_relative_minutes">för %1$s min sen</string>
     <string name="lifelist_relative_hours">för %1$s h sen</string>
@@ -442,7 +443,11 @@
     <!-- Plan 6a Task 10.3: Diary empty-state redesign -->
     <string name="lifelist_empty_stamp_name">Första fyndet</string>
     <string name="lifelist_empty_marginalia">Din fältbok är tom — \nskanna för att skriva första sidan.</string>
-    <string name="lifelist_month_header">%1$s · %2$s fynd</string>
+    <!-- "fynd" is invariant in Swedish (same word 1 or N) — both quantities render identically. -->
+    <plurals name="lifelist_month_header">
+        <item quantity="one">%1$s · %2$s fynd</item>
+        <item quantity="other">%1$s · %2$s fynd</item>
+    </plurals>
     <!-- Plan 6a Task 10.6: Disambig "Save as unknown" -->
     <string name="unknown_species_label">Obestämd art</string>
     <string name="disambig_save_unknown">Spara som okänd</string>

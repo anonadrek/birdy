@@ -4,7 +4,6 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,12 +32,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
@@ -83,6 +81,7 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_title
 import birdy_bird_scanner.composeapp.generated.resources.recap_eyebrow_fmt
 import birdy_bird_scanner.composeapp.generated.resources.recap_lifelist_entry_title
 import birdy_bird_scanner.composeapp.generated.resources.recap_summary_active_fmt
+import birdy_bird_scanner.composeapp.generated.resources.sort_chip_description
 import birdy_bird_scanner.composeapp.generated.resources.unknown_species_label
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.delay
@@ -90,8 +89,10 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringArrayResource
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BirdyPill
 import se.birdy.app.ui.components.BirdyPrimaryButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalLoading
@@ -102,6 +103,7 @@ import se.birdy.app.ui.components.MicroLabel
 import se.birdy.app.ui.components.MiniStamp
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
+import se.birdy.app.ui.components.hairlineBottom
 import se.birdy.app.ui.components.parseJournalHeadline
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
@@ -115,7 +117,6 @@ import se.birdy.app.ui.theme.MatchHigh
 import se.birdy.app.ui.theme.MatchLow
 import se.birdy.app.ui.theme.MatchMid
 import se.birdy.app.ui.theme.MossCreme
-import se.birdy.app.ui.theme.PaperBottom
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberCaveat
@@ -224,7 +225,6 @@ private fun LoadedLifelist(
     val labelStat2 = stringResource(Res.string.lifelist_stat_stamps)
     val labelStat3 = labelForStat3(state.stat3.kind)
     val months = stringArrayResource(Res.array.months_short_uppercase)
-    val headerFmt = stringResource(Res.string.lifelist_month_header)
     val zone = remember { TimeZone.currentSystemDefault() }
     val grouped =
         remember(state.rows, state.sort) {
@@ -282,7 +282,11 @@ private fun LoadedLifelist(
 
         item {
             Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp),
+                // vertical = 2dp (was 10dp): SortChip's BirdyPill now carries its own
+                // minimumInteractiveComponentSize() touch-target padding (≥48dp tall), which
+                // otherwise stacks with this row's own padding and makes the row noticeably
+                // taller than before.
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 2.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -304,9 +308,12 @@ private fun LoadedLifelist(
                 stickyHeader(key = "month-$year-$month") {
                     MonthHeader(
                         text =
-                            headerFmt
-                                .replace("%1\$s", "$monthLabel $year")
-                                .replace("%2\$s", rows.size.toString()),
+                            pluralStringResource(
+                                Res.plurals.lifelist_month_header,
+                                rows.size,
+                                "$monthLabel $year",
+                                rows.size.toString(),
+                            ),
                     )
                 }
                 items(rows, key = { it.observation.id }) { row ->
@@ -373,6 +380,20 @@ private fun LoadedLifelist(
 
 // ─── Recap entry card ─────────────────────────────────────────────────────────
 
+// The photo overlay (HeroMossDeep at three stops, left to right) exists so the kicker/title/sub
+// text block — which sits in the card's left ~75%, after the week-number circle — clears WCAG
+// AA even over a blown-out (near-white) photo, while the far-right edge (behind only the
+// decorative chevron, hidden from screen readers) can fade further since a graphical object only
+// needs 3:1. Review fix wave T8c, 2026-09-27; proof in RecapEntryCardContrastTest.
+// FAR_ALPHA: review's own suggested literal value was 0.5f — RecapEntryCardContrastTest's exact
+// edge-of-gradient case (x=1.0, the true worst position, not a specific screen width) measured
+// only 2.91:1 there, just under the 3:1 floor. Bumped to 0.55f for a real margin (≈3.36:1 at the
+// same worst case) rather than relying on the chevron's 14dp inset keeping it off the true edge.
+internal const val RECAP_OVERLAY_NEAR_ALPHA = 0.92f
+internal const val RECAP_OVERLAY_MID_ALPHA = 0.85f
+internal const val RECAP_OVERLAY_FAR_ALPHA = 0.55f
+internal const val RECAP_OVERLAY_MID_STOP = 0.75f
+
 @Composable
 private fun RecapEntryCard(
     preview: RecapPreview,
@@ -419,10 +440,9 @@ private fun RecapEntryCard(
                         .matchParentSize()
                         .background(
                             Brush.horizontalGradient(
-                                listOf(
-                                    HeroMossDeep.copy(alpha = 0.92f),
-                                    HeroMossDeep.copy(alpha = 0.35f),
-                                ),
+                                0f to HeroMossDeep.copy(alpha = RECAP_OVERLAY_NEAR_ALPHA),
+                                RECAP_OVERLAY_MID_STOP to HeroMossDeep.copy(alpha = RECAP_OVERLAY_MID_ALPHA),
+                                1f to HeroMossDeep.copy(alpha = RECAP_OVERLAY_FAR_ALPHA),
                             ),
                         ),
             )
@@ -437,12 +457,13 @@ private fun RecapEntryCard(
                     Modifier
                         .size(44.dp)
                         .clip(CircleShape)
-                        .background(AccentCopper),
+                        .background(AccentCopper)
+                        .clearAndSetSemantics {},
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
                     text = preview.isoWeek.toString(),
-                    color = Color.White,
+                    color = TextOnHero,
                     fontFamily = caveat,
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp,
@@ -473,8 +494,9 @@ private fun RecapEntryCard(
                 text = "›",
                 color = TextOnHero,
                 fontFamily = serif,
-                fontStyle = FontStyle.Italic,
+                fontStyle = FontStyle.Normal,
                 fontSize = 22.sp,
+                modifier = Modifier.clearAndSetSemantics {},
             )
         }
     }
@@ -487,11 +509,10 @@ private fun MonthHeader(text: String) {
             Modifier
                 .fillMaxWidth()
                 .background(MossCreme)
-                .drawBehind {
-                    drawLine(Hairline, Offset(0f, size.height), Offset(size.width, size.height), 1.dp.toPx())
-                }.padding(horizontal = 16.dp, vertical = 8.dp),
+                .hairlineBottom()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
-        JournalSubLine(text = text)
+        JournalSubLine(text = text, modifier = Modifier.semantics { heading() })
     }
 }
 
@@ -544,6 +565,10 @@ private fun StatColumn(
             fontStyle = FontStyle.Normal,
             fontWeight = FontWeight.Normal,
             fontSize = 30.sp,
+            // Explicit — otherwise this inherits the theme's bodyLarge 22sp line height (tighter
+            // than the 30sp glyph itself), which clips the glyph/ripple bounds. Mirrors the
+            // gotcha documented on MicroLabel.
+            lineHeight = 34.sp,
         )
         Text(
             text = stat.label.uppercase(),
@@ -579,22 +604,11 @@ private fun SortChip(
             LifelistSort.STAMP_NUMBER -> stringResource(Res.string.lifelist_sort_stamp)
             LifelistSort.SPECIES -> stringResource(Res.string.lifelist_sort_species)
         }
-    Box(
-        modifier =
-            Modifier
-                .clip(RoundedCornerShape(50))
-                .background(PaperBottom.copy(alpha = 0.6f))
-                .border(1.dp, Hairline, RoundedCornerShape(50))
-                .clickable(onClick = onClick)
-                .padding(horizontal = 12.dp, vertical = 6.dp),
-    ) {
-        Text(
-            text = label,
-            color = AccentCopper,
-            fontWeight = FontWeight.W600,
-            fontSize = 12.sp,
-        )
-    }
+    BirdyPill(
+        text = label,
+        onClick = onClick,
+        contentDescription = stringResource(Res.string.sort_chip_description, label),
+    )
 }
 
 // ─── Stamp row ────────────────────────────────────────────────────────────────
@@ -618,9 +632,8 @@ private fun LifelistRowComposable(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .drawBehind {
-                    drawLine(Hairline, Offset(0f, size.height), Offset(size.width, size.height), 1.dp.toPx())
-                }.clickable(onClick = onClick)
+                .hairlineBottom()
+                .clickable(onClick = onClick)
                 .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {

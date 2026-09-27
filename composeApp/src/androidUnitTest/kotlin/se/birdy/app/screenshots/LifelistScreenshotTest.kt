@@ -31,8 +31,12 @@ import kotlin.time.Duration.Companion.hours
  * Datumen är relativa till [Clock.System.now] (inte fasta datum) eftersom [LifelistScreen]s
  * relativtids-tickare och månadsgruppering läser den riktiga klockan (se `produceState` i
  * `LoadedLifelist`) — ett fast datum hade blivit ett allt äldre "för N dagar sedan" i taget.
- * o1/o2 hamnar i samma kalendermånad (timmar isär); o3 ligger 40 dagar bak, garanterat en
- * annan månad (ingen månad har fler än 31 dagar) — övar flera `stickyHeader`-rubriker.
+ * o1/o2 hamnar normalt i samma kalendermånad (timmar isär) och o3 40 dagar bak i en annan
+ * (ingen månad har fler än 31 dagar) — övar flera `stickyHeader`-rubriker. Två körningsberoende
+ * kanter, ofarliga för testet men värda att känna till: körs det före kl 20 lokal tid den 1:a i
+ * månaden hamnar o1/o2 i olika månader (o2 = now-20h faller då på förra månadens sista dag); och
+ * recap-kortets "N fynd den här veckan" kan visa 1 i stället för 2 tidigt en måndagmorgon (o2
+ * kan då falla i föregående ISO-vecka).
  */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
