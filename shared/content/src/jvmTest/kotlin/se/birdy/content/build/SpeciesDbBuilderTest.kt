@@ -102,6 +102,22 @@ class SpeciesDbBuilderTest {
     }
 
     @Test
+    fun `fingerprint changes when a text is edited by hand without touching generated_at`() {
+        val items =
+            parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+        val builder = SpeciesDbBuilder()
+        val edited =
+            items.map { (path, yaml) ->
+                path to yaml.copy(description = yaml.description + ("sv" to "Handskriven text."))
+            }
+        assertNotEquals(
+            builder.contentFingerprint(items, 2),
+            builder.contentFingerprint(edited, 2),
+            "a hand edit that keeps generated_at must still flip application_id, or installed apps keep the old db",
+        )
+    }
+
+    @Test
     fun `fingerprint stable for same content and schema rev`() {
         val items =
             parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species"))

@@ -128,17 +128,20 @@ class SpeciesDbBuilder(
 
     /**
      * Stable content fingerprint stamped into the SQLite file header at byte
-     * 68-71 (PRAGMA application_id). The Android repository compares this 4-byte
-     * value between APK assets and the cached internal-storage copy on every
-     * launch, and re-copies the bundled DB when they differ. This is what makes
-     * new species data take effect on app upgrade without an app-data wipe.
+     * 68-71 (PRAGMA application_id). The Android and iOS repository providers
+     * compare this 4-byte value between the bundled DB and the cached copy on
+     * every launch, and re-copy the bundled DB when they differ. This is what
+     * makes new species data take effect on app upgrade without an app-data wipe.
      *
      * Hashed input: prefixed with `schema=<schemaRev>` so the fingerprint also
      * flips whenever the DB schema changes (bump SCHEMA_REV on any Species*.sq
      * change), even if all YAMLs are unchanged. After the prefix, each species'
-     * id + generated_at is appended, sorted by id. Sorting makes the hash
-     * insensitive to YAML file ordering; generated_at ensures any pipeline
-     * `refresh` of an existing species also flips the fingerprint.
+     * id + generated_at + its full parsed content (the [SpeciesYaml] data class
+     * representation) is appended, sorted by id. Sorting makes the hash
+     * insensitive to YAML file ordering; generated_at flips it on any pipeline
+     * `refresh`, and the full content flips it on a hand edit that leaves the
+     * provenance fields alone (release 1.3.0: before this, the corrected
+     * Stenfalk texts would never have replaced an installed app's cached DB).
      */
     internal fun contentFingerprint(
         items: List<Pair<Path, SpeciesYaml>>,
@@ -147,7 +150,7 @@ class SpeciesDbBuilder(
         val signature =
             "schema=$schemaRev\n" +
                 items
-                    .map { (_, y) -> "${y.id}:${y.generated_at}" }
+                    .map { (_, y) -> "${y.id}:${y.generated_at}:$y" }
                     .sorted()
                     .joinToString("\n")
         val digest = MessageDigest.getInstance("SHA-256").digest(signature.toByteArray())
