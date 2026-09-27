@@ -61,8 +61,7 @@ class ExportJournalUseCase(
         // only ever the fallback word in the English UI (Swedish's is "Min"). This use case isn't
         // @Composable so it can't call stringResource() itself; it already receives `locale` for
         // species lookup, so the same value drives the mask here — the least invasive option,
-        // no new constructor parameter or platform wiring needed (mirrors the locale branch
-        // LifelistViewModel.defaultName() already uses for the same two words).
+        // no new constructor parameter or platform wiring needed.
         val maskedNames =
             if (locale == Locale.SV) {
                 setOf(HISTORICAL_SV_ONBOARDING_FALLBACK_NAME)

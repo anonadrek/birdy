@@ -49,14 +49,20 @@ class PremiumScreenshotTest {
     }
 
     // The price node's line height is a proxy for its font size (T9c #1 guard): at the correct
-    // ~22sp it renders well above 20dp tall; if the autosize-floor regression comes back (price
-    // stuck at the 14sp minFontSize), this line height drops under 20dp and the assertion fails
-    // — a screenshot alone wouldn't necessarily catch a subtle size regression like that.
+    // ~22sp its DM Serif line box is ≈30.2dp tall; if the autosize-floor regression comes back
+    // (price stuck at the 14sp minFontSize) it drops to ≈19.2dp — 25dp is the safe midpoint. A
+    // screenshot alone wouldn't necessarily catch a subtle size regression like that.
+    //
+    // useUnmergedTree = true (T9d): TierCard's `.selectable()` merges all its descendants
+    // (title/price/check-icon) into ONE semantics node ~75dp tall — the default MERGED tree
+    // lookup finds that outer node instead of the price text itself, so the assertion would
+    // pass at any price size, merged-node height included. The unmerged tree exposes the price
+    // Text node directly.
     @Test
     @Config(qualifiers = "+sv")
     fun premium_sv() {
         compose.captureScreen("premium_sv") { screen(FormattedPrices("199 kr", "499 kr")) }
-        compose.onNodeWithText("199 kr").assertHeightIsAtLeast(20.dp)
+        compose.onNodeWithText("199 kr", useUnmergedTree = true).assertHeightIsAtLeast(25.dp)
     }
 
     @Test

@@ -47,12 +47,12 @@ internal const val HISTORICAL_SV_ONBOARDING_FALLBACK_NAME = "Min"
  * UI language's onboarding fallback word (`stringResource(Res.string.onboarding_p3_fallback_name)`
  * where composable) — "Min" again in Swedish (a harmless duplicate) or "My" in English.
  *
- * "My" is deliberately NOT masked unconditionally, unlike this function's pre-Task-9c version:
- * it's a real, if uncommon, Swedish given name, and masking it everywhere hid real Swedish
- * users' names forever. It's only ever the onboarding fallback word in the ENGLISH UI
- * (`onboarding_p3_fallback_name` is "My" there, "Min" in Swedish) — so only there can a stored
- * "My" actually have come from a pre-1.3.0 skip-the-name-field flow and need masking. In the
- * Swedish UI a stored "My" can only be a real person's real name, and correctly gets its
+ * "My" is deliberately NOT masked unconditionally, unlike this function's version before the
+ * T8f / 1.3.0 change: it's a real, if uncommon, Swedish given name, and masking it everywhere
+ * hid real Swedish users' names forever. It's only ever the onboarding fallback word in the
+ * ENGLISH UI (`onboarding_p3_fallback_name` is "My" there, "Min" in Swedish) — so only there can
+ * a stored "My" actually have come from a pre-1.3.0 skip-the-name-field flow and need masking.
+ * In the Swedish UI a stored "My" can only be a real person's real name, and correctly gets its
  * possessive form ("Mys dagbok.") instead of being mistaken for the fallback.
  */
 internal fun displayNameOrNull(

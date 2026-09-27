@@ -148,4 +148,19 @@ class LifelistScreenshotTest {
     @Test
     @Config(qualifiers = "+sv")
     fun lifelist_name_my_sv() = compose.captureScreen("lifelist_name_my_sv") { loadedScreen(userName = "My") }
+
+    /**
+     * T9d: onboarding stores "" (not a fallback word) when the name field is skipped, from
+     * 1.3.0 on — and [LifelistViewModel] no longer invents "Min"/"My" for a blank stored name
+     * either (that fallback was removed as redundant with `displayNameOrNull`'s own blank check,
+     * and only worked by coincidence of its hardcoded words matching the masked set). A blank
+     * `userName` must still land on the same anonymous headline as a masked historical value.
+     */
+    @Test
+    @Config(qualifiers = "+sv")
+    fun lifelist_blank_name_sv() = compose.captureScreen("lifelist_blank_name_sv") { loadedScreen(userName = "") }
+
+    @Test
+    @Config(qualifiers = "+en")
+    fun lifelist_blank_name_en() = compose.captureScreen("lifelist_blank_name_en") { loadedScreen(userName = "") }
 }

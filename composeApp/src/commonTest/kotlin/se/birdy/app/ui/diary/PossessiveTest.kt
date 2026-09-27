@@ -58,7 +58,7 @@ class PossessiveTest {
 }
 
 /**
- * Regression for the CRITICAL bug found reviewing T8b/T8c (2026-09-27), refined in T9c/T8f:
+ * Regression for the CRITICAL bug found reviewing T8b/T8c (2026-09-27), refined in T8f:
  * before 1.3.0, [OnboardingViewModel.complete] stored the literal fallback WORD ("Min"/"My" —
  * `onboarding_p3_fallback_name`) as `userName` when the user skipped the name field, instead of
  * leaving it blank. From 1.3.0 it stores "" instead, but already-installed users can still have
