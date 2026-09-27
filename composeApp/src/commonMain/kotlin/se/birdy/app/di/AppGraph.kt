@@ -451,10 +451,8 @@ class AppGraph(
             huntTarget = 3, // premium_daily_bird_hunter target
         )
 
-    fun onboardingViewModel(
-        fallbackName: String,
-        isReplay: Boolean = false,
-    ): OnboardingViewModel = OnboardingViewModel(prefs = userPreferences, defaultFallbackName = fallbackName, isReplay = isReplay)
+    fun onboardingViewModel(isReplay: Boolean = false): OnboardingViewModel =
+        OnboardingViewModel(prefs = userPreferences, isReplay = isReplay)
 
     /**
      * Factory for [AudioScanViewModel].

@@ -14,7 +14,6 @@ import se.birdy.datastore.UserPreferences
 
 class OnboardingViewModel(
     private val prefs: UserPreferences,
-    private val defaultFallbackName: String,
     private val isReplay: Boolean = false,
     private val applyLocaleFn: (String) -> Unit = ::applyLocale,
 ) : ViewModel() {
@@ -64,11 +63,16 @@ class OnboardingViewModel(
         }
     }
 
+    /**
+     * Skipping the name field stores "" (from 1.3.0 / T8f) — never a placeholder word. Earlier
+     * versions wrote the literal fallback word ("Min"/"My", `onboarding_p3_fallback_name`)
+     * instead, so already-installed users can still have that on disk; every reader of
+     * `userName` masks it on read — see `Possessive.kt`'s `displayNameOrNull`.
+     */
     fun complete() {
         val current = _state.value
         if (current !is OnboardingUiState.Visible) return
-        val trimmed = current.nameInput.trim()
-        val resolvedName = trimmed.ifEmpty { defaultFallbackName }
+        val resolvedName = current.nameInput.trim()
         viewModelScope.launch {
             if (!isReplay) {
                 prefs.setUserName(resolvedName)

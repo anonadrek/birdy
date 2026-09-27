@@ -71,6 +71,7 @@ import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_stamps
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_streak
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_year
 import birdy_bird_scanner.composeapp.generated.resources.months_short_uppercase
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_fallback_name
 import birdy_bird_scanner.composeapp.generated.resources.possessive_sibilant_endings
 import birdy_bird_scanner.composeapp.generated.resources.possessive_suffix
 import birdy_bird_scanner.composeapp.generated.resources.possessive_suffix_sibilant
@@ -244,11 +245,17 @@ private fun LoadedLifelist(
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item {
             Column {
-                // displayNameOrNull (not a plain isEmpty/isBlank check): userName can hold the
-                // onboarding fallback word itself ("Min"/"My") for anyone who skipped the name
-                // field — onboarding STILL stores it that way today, not just for past users
-                // (OnboardingViewModel.kt) — see Possessive.kt.
-                val displayName = displayNameOrNull(state.userName)
+                // displayNameOrNull (not a plain isEmpty/isBlank check): userName can hold a
+                // historical onboarding fallback word ("Min"/"My", pre-1.3.0 skip-the-name-field
+                // flows) — see Possessive.kt. maskedNames: "Min" always, "My" only in the current
+                // UI language's own fallback word (masking "My" unconditionally would hide real
+                // Swedish users named My).
+                val maskedNames =
+                    setOf(
+                        HISTORICAL_SV_ONBOARDING_FALLBACK_NAME,
+                        stringResource(Res.string.onboarding_p3_fallback_name),
+                    )
+                val displayName = displayNameOrNull(state.userName, maskedNames)
                 JournalIntro(
                     label = stringResource(Res.string.lifelist_journal_label),
                     headline =

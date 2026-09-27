@@ -58,44 +58,58 @@ class PossessiveTest {
 }
 
 /**
- * Regression for the CRITICAL bug found reviewing T8b/T8c (2026-09-27):
- * [OnboardingViewModel.complete] stores the literal fallback WORD ("Min"/"My" —
- * `onboarding_p3_fallback_name`) as `userName` when the user skips the name field, instead of
- * leaving it blank — and STILL does, today, for every user who skips the field, not just users
- * who did so before some later fix (no such fix has landed on the write side). Every reader of
- * `userName` must treat those two values the same as blank. Masked on every read (this function),
- * not by migrating stored data or changing onboarding's own persistence — this stays load-bearing
- * until onboarding itself is changed to store "" instead.
+ * Regression for the CRITICAL bug found reviewing T8b/T8c (2026-09-27), refined in T9c/T8f:
+ * before 1.3.0, [OnboardingViewModel.complete] stored the literal fallback WORD ("Min"/"My" —
+ * `onboarding_p3_fallback_name`) as `userName` when the user skipped the name field, instead of
+ * leaving it blank. From 1.3.0 it stores "" instead, but already-installed users can still have
+ * "Min"/"My" on disk from before. "My" is also a real Swedish given name, so — unlike "Min" — it
+ * is masked only when the CURRENT UI language's fallback word IS "My" (English); see
+ * [displayNameOrNull]'s KDoc.
  */
 class DisplayNameOrNullTest {
+    // Mirrors how call sites build maskedNames: HISTORICAL_SV_ONBOARDING_FALLBACK_NAME plus the
+    // current UI language's own onboarding_p3_fallback_name value.
+    private val svMask = setOf(HISTORICAL_SV_ONBOARDING_FALLBACK_NAME)
+    private val enMask = setOf(HISTORICAL_SV_ONBOARDING_FALLBACK_NAME, "My")
+
     @Test
-    fun `the swedish legacy fallback word is treated as no name`() {
-        assertEquals(null, displayNameOrNull("Min"))
+    fun `Min is masked in the swedish set`() {
+        assertEquals(null, displayNameOrNull("Min", svMask))
     }
 
     @Test
-    fun `the english legacy fallback word is treated as no name`() {
-        assertEquals(null, displayNameOrNull("My"))
+    fun `Min is masked in the english set too`() {
+        assertEquals(null, displayNameOrNull("Min", enMask))
+    }
+
+    @Test
+    fun `My is NOT masked in the swedish set — it is a real swedish name there`() {
+        assertEquals("My", displayNameOrNull("My", svMask))
+    }
+
+    @Test
+    fun `My is masked in the english set — that is where it is the fallback word`() {
+        assertEquals(null, displayNameOrNull("My", enMask))
     }
 
     @Test
     fun `whitespace-only is treated as no name`() {
-        assertEquals(null, displayNameOrNull("  "))
+        assertEquals(null, displayNameOrNull("  ", svMask))
     }
 
     @Test
     fun `empty is treated as no name`() {
-        assertEquals(null, displayNameOrNull(""))
+        assertEquals(null, displayNameOrNull("", svMask))
     }
 
     @Test
     fun `a real name is trimmed and kept`() {
-        assertEquals("Albin", displayNameOrNull(" Albin "))
+        assertEquals("Albin", displayNameOrNull(" Albin ", svMask))
     }
 
     @Test
-    fun `a name merely starting with the fallback word is not mistaken for it`() {
-        assertEquals("Mina", displayNameOrNull("Mina"))
-        assertEquals("Myra", displayNameOrNull("Myra"))
+    fun `a name merely starting with a masked word is not mistaken for it`() {
+        assertEquals("Mina", displayNameOrNull("Mina", enMask))
+        assertEquals("Myra", displayNameOrNull("Myra", enMask))
     }
 }

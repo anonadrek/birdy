@@ -130,13 +130,22 @@ class LifelistScreenshotTest {
     fun lifelist_empty_sv() = compose.captureScreen("lifelist_empty_sv") { emptyScreen() }
 
     /**
-     * Regression for the T8d CRITICAL fix: onboarding still persists the literal fallback word
-     * "Min" as `userName` today for anyone who skips the name field (not just historical users —
-     * see `Possessive.kt`) — this must render as the anonymous "*Min* dagbok." headline
-     * (`displayNameOrNull`), not the genitive "*Mins* dagbok." that a plain
-     * `possessive("Min", ...)` would have produced.
+     * Regression for the T8d CRITICAL fix: onboarding builds before 1.3.0 persisted the literal
+     * fallback word "Min" as `userName` for anyone who skipped the name field (from 1.3.0 it
+     * stores "" instead — T8f — but already-installed users can still have "Min" on disk) — this
+     * must render as the anonymous "*Min* dagbok." headline (`displayNameOrNull`), not the
+     * genitive "*Mins* dagbok." that a plain `possessive("Min", ...)` would have produced.
      */
     @Test
     @Config(qualifiers = "+sv")
     fun lifelist_skipped_name_sv() = compose.captureScreen("lifelist_skipped_name_sv") { loadedScreen(userName = "Min") }
+
+    /**
+     * T8f: "My" is a real Swedish given name — unlike "Min", it must NOT be masked in the
+     * Swedish UI (it's only ever onboarding's fallback word in English). A Swedish user actually
+     * named My gets the normal genitive headline "*Mys* dagbok.", not the anonymous one.
+     */
+    @Test
+    @Config(qualifiers = "+sv")
+    fun lifelist_name_my_sv() = compose.captureScreen("lifelist_name_my_sv") { loadedScreen(userName = "My") }
 }

@@ -22,28 +22,43 @@ internal fun possessive(
 }
 
 /**
- * The literal fallback WORD [OnboardingViewModel][se.birdy.app.ui.onboarding.OnboardingViewModel]
- * persists as `userName` when a user skips the name field — `onboarding_p3_fallback_name` is
- * "Min" (Swedish) / "My" (English). `complete()` STILL does `trimmed.ifEmpty { defaultFallbackName }`
- * today (`OnboardingViewModel.kt`, not a fixed historical bug), so instead of leaving `userName`
- * blank it writes this word in as if it were a real name — for every user who skips the field,
- * right now, not just ones who did so in the past. This set mirrors that current fallback and
- * must stay exactly in sync with it; it can only be retired once onboarding itself is changed to
- * persist "" instead of [se.birdy.app.ui.onboarding.OnboardingViewModel]'s `defaultFallbackName`.
+ * The Swedish onboarding fallback word — `onboarding_p3_fallback_name` in the Swedish
+ * strings.xml — persisted as `userName` by onboarding builds BEFORE 1.3.0, for anyone who
+ * skipped the name field: [OnboardingViewModel][se.birdy.app.ui.onboarding.OnboardingViewModel]
+ * used to do `trimmed.ifEmpty { defaultFallbackName }` instead of leaving `userName` blank. From
+ * 1.3.0, `complete()` stores "" instead (no more fallback persisted), so this is now purely a
+ * HISTORICAL value some already-installed users still have on disk, not something a fresh
+ * install can produce — see [displayNameOrNull]'s KDoc for why it must still be masked.
+ *
+ * Unlike the English fallback word ("My" — see [displayNameOrNull]'s KDoc for why THAT one is
+ * conditional), "Min" is masked unconditionally in both languages: it isn't a plausible real
+ * Swedish (or English) given name, so there's no real-user tradeoff to weigh.
  */
-private val LEGACY_ONBOARDING_FALLBACK_NAMES = setOf("Min", "My")
+internal const val HISTORICAL_SV_ONBOARDING_FALLBACK_NAME = "Min"
 
 /**
- * Normalizes a stored `userName` for display: `null` when it's blank, or — after trimming —
- * exactly equal (case-sensitively) to one of [LEGACY_ONBOARDING_FALLBACK_NAMES]; otherwise the
- * trimmed name. Every reader of `userName` must go through this, not just `.isEmpty()`/`.ifEmpty`,
- * because [LEGACY_ONBOARDING_FALLBACK_NAMES] are values onboarding is still writing TODAY for
- * every user who skips the name field (see that val's KDoc), not just already-persisted values
- * from before some fix — this masks it on every read rather than changing onboarding's own
- * persistence, so it stays load-bearing (not a one-time migration to eventually delete) until
- * onboarding stores "" instead.
+ * Normalizes a stored `userName` for display: `null` when it's blank or — after trimming —
+ * exactly equal (case-sensitively) to one of [maskedNames]; otherwise the trimmed name. Every
+ * reader of `userName` must go through this, not just `.isEmpty()`/`.ifEmpty`, because a stored
+ * name can still be a historical onboarding-fallback word — see
+ * [HISTORICAL_SV_ONBOARDING_FALLBACK_NAME]'s KDoc — even though onboarding no longer writes one.
+ *
+ * [maskedNames] should always include [HISTORICAL_SV_ONBOARDING_FALLBACK_NAME] plus the CURRENT
+ * UI language's onboarding fallback word (`stringResource(Res.string.onboarding_p3_fallback_name)`
+ * where composable) — "Min" again in Swedish (a harmless duplicate) or "My" in English.
+ *
+ * "My" is deliberately NOT masked unconditionally, unlike this function's pre-Task-9c version:
+ * it's a real, if uncommon, Swedish given name, and masking it everywhere hid real Swedish
+ * users' names forever. It's only ever the onboarding fallback word in the ENGLISH UI
+ * (`onboarding_p3_fallback_name` is "My" there, "Min" in Swedish) — so only there can a stored
+ * "My" actually have come from a pre-1.3.0 skip-the-name-field flow and need masking. In the
+ * Swedish UI a stored "My" can only be a real person's real name, and correctly gets its
+ * possessive form ("Mys dagbok.") instead of being mistaken for the fallback.
  */
-internal fun displayNameOrNull(stored: String): String? {
+internal fun displayNameOrNull(
+    stored: String,
+    maskedNames: Set<String>,
+): String? {
     val trimmed = stored.trim()
-    return trimmed.takeUnless { it.isEmpty() || it in LEGACY_ONBOARDING_FALLBACK_NAMES }
+    return trimmed.takeUnless { it.isEmpty() || it in maskedNames }
 }

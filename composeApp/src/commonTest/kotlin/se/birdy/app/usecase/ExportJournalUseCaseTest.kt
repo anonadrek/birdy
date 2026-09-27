@@ -215,10 +215,10 @@ class ExportJournalUseCaseTest {
     @Test
     fun legacy_onboarding_fallback_name_falls_back_to_default() =
         runTest {
-            // Onboarding still persists the literal fallback WORD ("Min"/"My" —
-            // onboarding_p3_fallback_name) as userName instead of leaving it blank, today, not
-            // just for past users; this must fall back the same as a blank name, not render
-            // "av Min" in the PDF byline.
+            // A stored "Min" can be a historical onboarding fallback (pre-1.3.0
+            // skip-the-name-field flows persisted this literal word instead of leaving userName
+            // blank) — masked in every locale, so this must fall back the same as a blank name,
+            // not render "av Min" in the PDF byline.
             val prefs = FakeUserPreferences().apply { userNameValue = "Min" }
             val captured = mutableListOf<JournalPdfInput>()
             val uc =
@@ -226,6 +226,50 @@ class ExportJournalUseCaseTest {
                     obsRepo = FakeObservationRepository.withDefaults(),
                     speciesRepo = FakeSpeciesRepository.withDefaults(),
                     prefs = prefs,
+                    render = { input, _ ->
+                        captured += input
+                        JournalPdfRenderResult.Success(1, 0L)
+                    },
+                )
+
+            uc.run()
+
+            assertEquals("Birdy", captured.single().displayName)
+        }
+
+    @Test
+    fun `My is a real name in the swedish export, not masked`() =
+        runTest {
+            val prefs = FakeUserPreferences().apply { userNameValue = "My" }
+            val captured = mutableListOf<JournalPdfInput>()
+            val uc =
+                newUseCase(
+                    obsRepo = FakeObservationRepository.withDefaults(),
+                    speciesRepo = FakeSpeciesRepository.withDefaults(),
+                    prefs = prefs,
+                    locale = Locale.SV,
+                    render = { input, _ ->
+                        captured += input
+                        JournalPdfRenderResult.Success(1, 0L)
+                    },
+                )
+
+            uc.run()
+
+            assertEquals("My", captured.single().displayName)
+        }
+
+    @Test
+    fun `My is onboarding's english fallback word, masked in the english export`() =
+        runTest {
+            val prefs = FakeUserPreferences().apply { userNameValue = "My" }
+            val captured = mutableListOf<JournalPdfInput>()
+            val uc =
+                newUseCase(
+                    obsRepo = FakeObservationRepository.withDefaults(),
+                    speciesRepo = FakeSpeciesRepository.withDefaults(),
+                    prefs = prefs,
+                    locale = Locale.EN,
                     render = { input, _ ->
                         captured += input
                         JournalPdfRenderResult.Success(1, 0L)
