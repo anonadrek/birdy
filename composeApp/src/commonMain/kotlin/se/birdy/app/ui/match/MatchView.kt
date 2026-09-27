@@ -2,30 +2,32 @@ package se.birdy.app.ui.match
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -35,6 +37,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
@@ -42,6 +45,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
@@ -52,7 +56,6 @@ import birdy_bird_scanner.composeapp.generated.resources.diary_save_error_storag
 import birdy_bird_scanner.composeapp.generated.resources.diary_save_success
 import birdy_bird_scanner.composeapp.generated.resources.match_cancel_cta
 import birdy_bird_scanner.composeapp.generated.resources.match_eyebrow
-import birdy_bird_scanner.composeapp.generated.resources.match_headline
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_captured_audio
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_captured_photo
 import birdy_bird_scanner.composeapp.generated.resources.match_marginalia_first_sighting
@@ -70,15 +73,22 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.badges.BadgeStringMap
 import se.birdy.app.ui.badges.UnlockBottomSheet
+import se.birdy.app.ui.components.BirdyPrimaryButton
+import se.birdy.app.ui.components.BirdyTextButton
 import se.birdy.app.ui.components.BodyTextWithCaveatAccents
-import se.birdy.app.ui.components.JournalIntro
-import se.birdy.app.ui.components.PlateFrame
+import se.birdy.app.ui.components.PaperSheet
+import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.AccentCopperLight
+import se.birdy.app.ui.theme.CardPaper
+import se.birdy.app.ui.theme.Hairline
+import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.MarginaliaInk
-import se.birdy.app.ui.theme.OffwhiteWarm
+import se.birdy.app.ui.theme.MossCreme
 import se.birdy.app.ui.theme.TextOnCreme
+import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.util.speciesImageUri
 import se.birdy.content.Locale
@@ -128,51 +138,58 @@ internal fun MatchView(
     val isSaving = state.saveStatus == MatchResultUiState.SaveStatus.Saving
 
     Box(modifier = Modifier.fillMaxSize()) {
-        Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
-            JournalIntro(
-                label = stringResource(Res.string.match_eyebrow, state.stampNumber),
-                headline = stringResource(Res.string.match_headline, state.species.name),
-                sub = stringResource(Res.string.match_sub_confidence, "$confidencePct%"),
-                headlineFontSize = 36.sp,
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    // PaperSheet's rounded top corners overlap the hero below; this must match
+                    // its own MossCreme fill or a seam of a different color shows through the
+                    // corner cutouts (see PaperSheet's KDoc).
+                    .background(MossCreme)
+                    .verticalScroll(rememberScrollState()),
+        ) {
+            val heroImage =
+                state.species.images.firstOrNull { it.role == "hero" }
+                    ?: state.species.images.firstOrNull()
+            val heroPath = heroImage?.path
+            val confidenceLabel = stringResource(Res.string.match_sub_confidence, "$confidencePct%")
+
+            PhotoHero(
+                kicker = stringResource(Res.string.match_eyebrow, state.stampNumber),
+                title = state.species.name,
+                metaStart = state.species.scientificName,
+                height = 340.dp,
+                bottomPadding = 42.dp,
+                image =
+                    heroPath?.let { path ->
+                        {
+                            AsyncImage(
+                                model = speciesImageUri(path),
+                                contentDescription = null,
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier.fillMaxSize(),
+                            )
+                        }
+                    },
+                bottomContent = {
+                    ConfidenceBar(confidence = state.confidence, label = confidenceLabel)
+                },
             )
-
-            Column(modifier = Modifier.padding(horizontal = 16.dp)) {
-                PlateFrame(
-                    plateLabel = state.stampNumber.toString(),
-                    captionLine = state.species.scientificName,
-                ) {
-                    val heroImage =
-                        state.species.images.firstOrNull { it.role == "hero" }
-                            ?: state.species.images.firstOrNull()
-                    if (heroImage != null) {
-                        AsyncImage(
-                            model = speciesImageUri(heroImage.path),
-                            contentDescription = null,
-                            modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Crop,
-                        )
-                    }
-                }
-
-                Spacer(Modifier.height(16.dp))
-
+            PaperSheet {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    StampWithAnimation(state = state)
+                    MatchMarginalia(state = state, zone = zone, modifier = Modifier.weight(1f))
+                    StampWithAnimation(state = state, size = 72.dp)
                 }
 
-                Spacer(Modifier.height(16.dp))
-
-                MatchMarginalia(state = state, zone = zone)
-
-                Spacer(Modifier.height(24.dp))
+                Spacer(Modifier.height(20.dp))
 
                 if (isSaved) {
                     Text(
                         text = stringResource(Res.string.match_saved_text),
-                        color = MarginaliaInk,
+                        color = InkMuted,
                         fontStyle = FontStyle.Italic,
                         fontSize = 14.sp,
                         modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
@@ -191,49 +208,33 @@ internal fun MatchView(
                         enabled = !isSaving,
                         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                         keyboardActions = KeyboardActions(onDone = { onSave(note.trim()) }),
+                        shape = RoundedCornerShape(12.dp),
                         colors =
                             OutlinedTextFieldDefaults.colors(
+                                unfocusedBorderColor = Hairline,
                                 focusedBorderColor = AccentCopper,
+                                unfocusedContainerColor = CardPaper,
+                                focusedContainerColor = CardPaper,
                                 cursorColor = AccentCopper,
                             ),
                         modifier = Modifier.fillMaxWidth(),
                     )
                     Spacer(Modifier.height(12.dp))
-                    Button(
+                    BirdyPrimaryButton(
+                        text = stringResource(Res.string.match_save_cta),
                         onClick = { onSave(note.trim()) },
                         enabled = !isSaving && !isSaved && state.unlockQueueSize == 0,
-                        colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm),
-                        shape = RoundedCornerShape(12.dp),
-                        modifier = Modifier.fillMaxWidth().height(52.dp),
-                    ) {
-                        if (isSaving) {
-                            CircularProgressIndicator(
-                                color = OffwhiteWarm,
-                                strokeWidth = 2.dp,
-                                modifier = Modifier.size(20.dp),
-                            )
-                        } else {
-                            Text(
-                                text = stringResource(Res.string.match_save_cta),
-                                fontWeight = FontWeight.W600,
-                                fontSize = 16.sp,
-                            )
-                        }
-                    }
+                        loading = isSaving,
+                        leadingIcon = Icons.Outlined.Check,
+                    )
                     Spacer(Modifier.height(8.dp))
-                    TextButton(
+                    BirdyTextButton(
+                        text = stringResource(Res.string.match_cancel_cta),
                         onClick = onCancel,
                         enabled = !isSaving,
-                        modifier = Modifier.fillMaxWidth(),
-                    ) {
-                        Text(
-                            text = stringResource(Res.string.match_cancel_cta),
-                            color = MarginaliaInk,
-                            fontSize = 14.sp,
-                        )
-                    }
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                    )
                 }
-                Spacer(Modifier.height(24.dp))
             }
         }
         SnackbarHost(
@@ -257,8 +258,37 @@ internal fun MatchView(
     }
 }
 
+/** Confidence bar drawn in [PhotoHero]'s bottomContent slot (light-on-dark, spec 2026-09-24 §4.3). */
 @Composable
-private fun StampWithAnimation(state: MatchResultUiState.Match) {
+private fun ConfidenceBar(
+    confidence: Float,
+    label: String,
+) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 12.dp)) {
+        Box(
+            Modifier
+                .width(72.dp)
+                .height(4.dp)
+                .clip(RoundedCornerShape(2.dp))
+                .background(TextOnHero.copy(alpha = 0.2f)),
+        ) {
+            Box(
+                Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(confidence.coerceIn(0f, 1f))
+                    .background(AccentCopperLight),
+            )
+        }
+        Spacer(Modifier.width(10.dp))
+        Text(label, color = TextOnHero, fontSize = 12.sp, fontWeight = FontWeight.W600)
+    }
+}
+
+@Composable
+private fun StampWithAnimation(
+    state: MatchResultUiState.Match,
+    size: Dp = 110.dp,
+) {
     val isSaved = state.saveStatus == MatchResultUiState.SaveStatus.Saved
     val captionPending = stringResource(Res.string.match_stamp_caption_pending)
     val rotation by animateFloatAsState(
@@ -288,14 +318,14 @@ private fun StampWithAnimation(state: MatchResultUiState.Match) {
     Box(modifier = Modifier.rotate(rotation)) {
         StampSeal(
             state = stampState,
-            size = 110.dp,
+            size = size,
         )
     }
     if (state.saveStatus == MatchResultUiState.SaveStatus.Saving) {
         CircularProgressIndicator(
             color = AccentCopper,
             strokeWidth = 2.dp,
-            modifier = Modifier.size(40.dp),
+            modifier = Modifier.size(28.dp),
         )
     }
 }
@@ -304,6 +334,7 @@ private fun StampWithAnimation(state: MatchResultUiState.Match) {
 private fun MatchMarginalia(
     state: MatchResultUiState.Match,
     zone: TimeZone,
+    modifier: Modifier = Modifier,
 ) {
     val caveat = rememberCaveat()
     val capturedLabel =
@@ -311,7 +342,7 @@ private fun MatchMarginalia(
             is ScanSource.Audio -> stringResource(Res.string.match_marginalia_captured_audio)
             is ScanSource.Image -> stringResource(Res.string.match_marginalia_captured_photo)
         }
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = modifier.fillMaxWidth()) {
         Text(
             text = capturedLabel,
             fontFamily = caveat,
