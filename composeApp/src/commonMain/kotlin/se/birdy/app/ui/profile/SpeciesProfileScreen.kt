@@ -1,10 +1,11 @@
 package se.birdy.app.ui.profile
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -20,7 +21,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -53,30 +53,27 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_species_title
 import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_corner
 import birdy_bird_scanner.composeapp.generated.resources.premium_teaser_cta
 import birdy_bird_scanner.composeapp.generated.resources.profile_back
-import birdy_bird_scanner.composeapp.generated.resources.profile_journal_headline
-import birdy_bird_scanner.composeapp.generated.resources.profile_journal_label
-import birdy_bird_scanner.composeapp.generated.resources.profile_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.profile_label_description
 import birdy_bird_scanner.composeapp.generated.resources.profile_label_migration
 import birdy_bird_scanner.composeapp.generated.resources.profile_label_photos
-import birdy_bird_scanner.composeapp.generated.resources.profile_plate_caption
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.HeroImage
-import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalLoading
-import se.birdy.app.ui.components.PlateFrame
+import se.birdy.app.ui.components.PaperSheet
+import se.birdy.app.ui.components.PaperSheetOverlap
+import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.PremiumTeaserCard
 import se.birdy.app.ui.encyclopedia.localizedFamilyLabel
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaBorder
 import se.birdy.app.ui.theme.MarginaliaInk
-import se.birdy.app.ui.theme.OffwhiteWarm
+import se.birdy.app.ui.theme.MossCreme
 import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.paperBackground
+import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.app.util.speciesImageUri
@@ -114,78 +111,46 @@ private fun ProfileContent(
     showPremiumTeaser: Boolean,
 ) {
     val serif = rememberDmSerifDisplay()
-    val captionPart = stringResource(Res.string.profile_plate_caption)
     val familyLabel = localizedFamilyLabel(locale, species.taxonomy.family, species.taxonomy.familySv)
+    val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
 
-    Box(modifier = Modifier.fillMaxSize().paperBackground()) {
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            item {
-                Box {
-                    JournalIntro(
-                        label = stringResource(Res.string.profile_journal_label),
-                        headline = stringResource(Res.string.profile_journal_headline, species.name),
-                        sub = stringResource(Res.string.profile_journal_sub, species.scientificName, familyLabel),
-                        headlineFontSize = 36.sp,
-                        // Lämna plats överst åt den fyllda bakåtbrickan (overlay) så den
-                        // inte täcker eyebrow/rubrik. Top-only — inte topPadding (symmetrisk).
-                        modifier = Modifier.padding(top = 48.dp),
-                    )
+    LazyColumn(modifier = Modifier.fillMaxSize().background(MossCreme)) {
+        item {
+            PhotoHero(
+                kicker = familyLabel,
+                title = species.name,
+                latinName = species.scientificName,
+                height = 320.dp,
+                bottomPadding = PaperSheetOverlap + 18.dp,
+                image =
+                    heroImage?.let { img ->
+                        {
+                            AsyncImage(
+                                model = speciesImageUri(img.path),
+                                contentDescription = null,
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.Crop,
+                            )
+                        }
+                    },
+                topBar = {
                     BackButton(
                         onClick = onBack,
                         contentDescription = stringResource(Res.string.profile_back),
-                        modifier =
-                            Modifier
-                                .align(Alignment.TopStart)
-                                .padding(top = 24.dp, start = 12.dp),
+                        onDark = true,
+                        modifier = Modifier.padding(start = 12.dp),
                     )
-                }
-            }
+                },
+                bottomContent = {
+                    Spacer(Modifier.height(10.dp))
+                    ProfilePillRow(species = species, familyLabel = familyLabel)
+                },
+            )
+        }
 
-            item {
-                val heroImage = species.images.firstOrNull { it.role == "hero" } ?: species.images.firstOrNull()
-                if (heroImage != null) {
-                    PlateFrame(
-                        plateLabel = "",
-                        captionLine = "${species.name}, $captionPart",
-                    ) {
-                        AsyncImage(
-                            model = speciesImageUri(heroImage.path),
-                            contentDescription = null,
-                            modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Crop,
-                        )
-                    }
-                }
-            }
-
-            item {
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    val abundanceLabel =
-                        when (species.abundance) {
-                            Abundance.ALLMÄN -> stringResource(Res.string.badge_common)
-                            else -> stringResource(Res.string.badge_uncommon)
-                        }
-                    val iucnLabel =
-                        when (species.iucnStatus.uppercase()) {
-                            "LC" -> stringResource(Res.string.iucn_lc)
-                            "NT" -> stringResource(Res.string.iucn_nt)
-                            "VU" -> stringResource(Res.string.iucn_vu)
-                            "EN" -> stringResource(Res.string.iucn_en)
-                            "CR" -> stringResource(Res.string.iucn_cr)
-                            "DD" -> stringResource(Res.string.iucn_dd)
-                            else -> species.iucnStatus
-                        }
-                    JournalPill(text = abundanceLabel, isFilled = true)
-                    JournalPill(text = familyLabel, isFilled = false)
-                    if (iucnLabel.isNotBlank()) JournalPill(text = iucnLabel, isFilled = false)
-                }
-            }
-
-            item {
-                Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+        item {
+            PaperSheet {
+                Column(modifier = Modifier.fillMaxWidth()) {
                     SectionLabel(stringResource(Res.string.profile_label_description))
                     Spacer(Modifier.height(6.dp))
                     DescriptionWithDropCap(
@@ -193,27 +158,25 @@ private fun ProfileContent(
                         serif = serif,
                     )
                 }
-            }
 
-            if (!species.marginalia.isNullOrBlank()) {
-                item { MarginaliaBlock(text = species.marginalia!!) }
-            }
+                if (!species.marginalia.isNullOrBlank()) {
+                    Spacer(Modifier.height(16.dp))
+                    MarginaliaBlock(text = species.marginalia!!)
+                }
 
-            if (showPremiumTeaser) {
-                item {
+                if (showPremiumTeaser) {
+                    Spacer(Modifier.height(16.dp))
                     PremiumTeaserCard(
                         title = stringResource(Res.string.premium_species_title),
                         subtitle = stringResource(Res.string.premium_species_subtitle),
                         cornerLabel = stringResource(Res.string.premium_teaser_corner),
                         ctaLabel = stringResource(Res.string.premium_teaser_cta),
                         onUnlock = onPremiumClick,
-                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
                     )
                 }
-            }
 
-            item {
-                Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+                Spacer(Modifier.height(16.dp))
+                Column(modifier = Modifier.fillMaxWidth()) {
                     SectionLabel(stringResource(Res.string.profile_label_migration))
                     Spacer(Modifier.height(6.dp))
                     Text(
@@ -222,10 +185,9 @@ private fun ProfileContent(
                         color = TextOnCreme,
                     )
                 }
-            }
 
-            item {
-                Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+                Spacer(Modifier.height(16.dp))
+                Column(modifier = Modifier.fillMaxWidth()) {
                     SectionLabel(stringResource(Res.string.profile_label_photos))
                     Spacer(Modifier.height(6.dp))
                     if (species.images.isEmpty()) {
@@ -249,10 +211,46 @@ private fun ProfileContent(
                         }
                     }
                 }
-            }
 
-            item { Spacer(Modifier.height(24.dp)) }
+                Spacer(Modifier.height(24.dp))
+            }
         }
+    }
+}
+
+/**
+ * The abundance/family/IUCN pill row, drawn in [PhotoHero]'s bottomContent slot — light-on-dark,
+ * over the photo's text-following scrim (spec 2026-09-24 §4.3). [FlowRow] wraps a long family
+ * name or IUCN label onto a second line instead of overflowing the hero's width.
+ */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun ProfilePillRow(
+    species: Species,
+    familyLabel: String,
+) {
+    val abundanceLabel =
+        when (species.abundance) {
+            Abundance.ALLMÄN -> stringResource(Res.string.badge_common)
+            else -> stringResource(Res.string.badge_uncommon)
+        }
+    val iucnLabel =
+        when (species.iucnStatus.uppercase()) {
+            "LC" -> stringResource(Res.string.iucn_lc)
+            "NT" -> stringResource(Res.string.iucn_nt)
+            "VU" -> stringResource(Res.string.iucn_vu)
+            "EN" -> stringResource(Res.string.iucn_en)
+            "CR" -> stringResource(Res.string.iucn_cr)
+            "DD" -> stringResource(Res.string.iucn_dd)
+            else -> species.iucnStatus
+        }
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        JournalPill(text = abundanceLabel, isFilled = true)
+        JournalPill(text = familyLabel, isFilled = false)
+        if (iucnLabel.isNotBlank()) JournalPill(text = iucnLabel, isFilled = false)
     }
 }
 
@@ -302,13 +300,7 @@ private fun DescriptionWithDropCap(
 @Composable
 private fun MarginaliaBlock(text: String) {
     val caveat = rememberCaveat()
-    Row(
-        modifier =
-            Modifier
-                .fillMaxWidth()
-                .height(IntrinsicSize.Min)
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-    ) {
+    Row(modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
         Box(
             modifier =
                 Modifier
@@ -327,29 +319,29 @@ private fun MarginaliaBlock(text: String) {
     }
 }
 
+// Glass fill alpha for the profile hero's unfilled pills — pinned by ProfilePillContrastTest,
+// change both together.
+internal const val PROFILE_PILL_GLASS_ALPHA = 0.16f
+
 @Composable
 private fun JournalPill(
     text: String,
     isFilled: Boolean,
 ) {
-    val serif = rememberDmSerifDisplay()
     Box(
         modifier =
             Modifier
                 .clip(RoundedCornerShape(50))
-                .background(if (isFilled) AccentCopper else Color.Transparent)
-                .border(
-                    width = 1.dp,
-                    color = AccentCopper.copy(alpha = if (isFilled) 0f else 0.5f),
-                    shape = RoundedCornerShape(50),
-                ).padding(horizontal = 10.dp, vertical = 4.dp),
+                .background(if (isFilled) AccentCopper else Color.White.copy(alpha = PROFILE_PILL_GLASS_ALPHA))
+                .padding(horizontal = 10.dp, vertical = 4.dp),
     ) {
         Text(
             text = text,
-            color = if (isFilled) OffwhiteWarm else TextOnCreme,
-            fontFamily = serif,
-            fontStyle = FontStyle.Italic,
-            fontSize = 11.sp,
+            color = TextOnHero,
+            fontFamily = FontFamily.SansSerif,
+            fontWeight = FontWeight.W600,
+            fontSize = 10.sp,
+            lineHeight = 12.sp,
         )
     }
 }
