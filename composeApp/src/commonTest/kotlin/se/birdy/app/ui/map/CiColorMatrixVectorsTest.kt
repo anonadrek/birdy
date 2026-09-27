@@ -23,9 +23,9 @@ class CiColorMatrixVectorsTest {
     fun white_maps_to_paper() {
         val v = ciVectorsFrom(MapTileTheme.duotoneMatrix(MapTileTheme.INK, MapTileTheme.PAPER))
         val out = apply(v, floatArrayOf(1f, 1f, 1f, 1f))
-        assertClose(0xEF / 255f, out[0])
-        assertClose(0xE7 / 255f, out[1])
-        assertClose(0xD6 / 255f, out[2])
+        assertClose(0xF6 / 255f, out[0])
+        assertClose(0xEF / 255f, out[1])
+        assertClose(0xE2 / 255f, out[2])
     }
 
     @Test

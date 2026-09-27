@@ -23,14 +23,14 @@ class MapTileThemeTest {
 
     @Test
     fun blackMapsToInk() {
-        val m = MapTileTheme.duotoneMatrix(ink = 0x2E2417, paper = 0xEFE7D6)
+        val m = MapTileTheme.duotoneMatrix(ink = 0x2E2417, paper = 0xF6EFE2)
         assertEquals(rgb(0x2E2417), apply(m, 0, 0, 0))
     }
 
     @Test
     fun whiteMapsToPaper() {
-        val m = MapTileTheme.duotoneMatrix(ink = 0x2E2417, paper = 0xEFE7D6)
-        assertEquals(rgb(0xEFE7D6), apply(m, 255, 255, 255))
+        val m = MapTileTheme.duotoneMatrix(ink = 0x2E2417, paper = 0xF6EFE2)
+        assertEquals(rgb(0xF6EFE2), apply(m, 255, 255, 255))
     }
 
     @Test
