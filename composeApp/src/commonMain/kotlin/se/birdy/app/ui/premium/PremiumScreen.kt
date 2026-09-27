@@ -3,6 +3,7 @@ package se.birdy.app.ui.premium
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,7 +29,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -41,12 +41,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
@@ -221,17 +223,25 @@ fun PremiumScreen(
                 }
             }
         }
-        IconButton(
-            onClick = onClose,
+        val closeLabel = stringResource(Res.string.premium_screen_close)
+        // A manual 48dp clickable Box, not IconButton (T9c #2): IconButton's own effective touch
+        // target here measured ~40dp (its Material state-layer sizing), not the full ≥48dp the
+        // previous comment assumed. contentDescription lives on this outer clickable node (the
+        // Icon's own is null) so TalkBack announces exactly this tap target, not a separate
+        // nested one.
+        Box(
             modifier =
                 Modifier
                     .align(Alignment.TopEnd)
                     .padding(top = 12.dp, end = 14.dp)
-                    // TalkBack should reach the close action before the hero's own kicker/title —
-                    // the IconButton keeps its default ≥48dp touch target (removed the old
-                    // `.size(36.dp)` here, which shrank the tappable area, not just the glass
-                    // disc drawn inside it below).
-                    .semantics { traversalIndex = -1f },
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .clickable(role = Role.Button, onClick = onClose)
+                    .semantics {
+                        contentDescription = closeLabel
+                        traversalIndex = -1f
+                    },
+            contentAlignment = Alignment.Center,
         ) {
             Box(
                 modifier = Modifier.size(36.dp).background(GlassOnPhoto, CircleShape),
@@ -239,7 +249,7 @@ fun PremiumScreen(
             ) {
                 Icon(
                     Icons.Outlined.Close,
-                    contentDescription = stringResource(Res.string.premium_screen_close),
+                    contentDescription = null,
                     tint = TextOnHero,
                 )
             }
@@ -291,7 +301,7 @@ private fun FreeSummarySection() {
             // Non-breaking spaces inside each item (not just around "·"): a bare " · " join lets
             // the line wrap inside a phrase like "839 arter", splitting the number from its unit.
             // Built in Kotlin, not strings.xml, so it stays a plain, translatable sentence there.
-            text = items.joinToString(" · ") { it.replace(' ', ' ') },
+            text = items.joinToString("\u00A0\u00B7 ") { it.replace(' ', '\u00A0') },
             color = TextOnHero.copy(alpha = PREMIUM_FREE_ITEM_TEXT_ALPHA),
             fontSize = 12.sp,
             lineHeight = 17.sp,
@@ -378,23 +388,38 @@ private fun TierCard(
                 color = TextOnHero.copy(alpha = PREMIUM_TIER_TITLE_ALPHA),
                 fontWeight = FontWeight.W600,
                 fontSize = 11.sp,
+                // Always, not just when selected (T9c #4): the check glyph's own position doesn't
+                // move, so a fixed end-padding avoids a layout shift when a card becomes selected.
+                modifier = Modifier.padding(end = 20.dp),
             )
             Spacer(Modifier.height(6.dp))
             if (priceLoaded) {
                 BasicText(
                     text = price,
-                    style = TextStyle(fontFamily = rememberDmSerifDisplay(), color = TextOnHero),
+                    // fontSize is NOT optional here (T9c #1): the Row above is
+                    // Modifier.height(IntrinsicSize.Min), and that intrinsic-height pass measures
+                    // this line at its OWN style's fontSize, ignoring autoSize entirely (autoSize
+                    // only applies once real layout constraints — including the height this pass
+                    // produces — are known). Without an explicit size here it fell back to
+                    // ~14sp, so the row was sized for a 14sp price line and autoSize's own
+                    // height-fit check then had nowhere to grow into, capping every price at the
+                    // 14sp floor even when there was room for the full 22sp. Setting it to the
+                    // target maxFontSize makes the intrinsic pass budget the right height, and
+                    // autoSize still steps down from there for width (e.g. long/narrow prices).
+                    style = TextStyle(fontFamily = rememberDmSerifDisplay(), color = TextOnHero, fontSize = 22.sp),
                     maxLines = 1,
                     autoSize = TextAutoSize.StepBased(minFontSize = 14.sp, maxFontSize = 22.sp),
                 )
             } else {
                 // Sans, smaller and fixed-size (no autosize needed): "Hämtar pris…"/"Loading
-                // price…" is short and must never wrap onto a second line.
+                // price…" is short and must never wrap onto a second line. Ellipsis as a last-
+                // resort guard, not the expected outcome, for a future longer loading string.
                 Text(
                     text = price,
                     color = TextOnHero,
                     fontSize = 14.sp,
                     maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
             }
         }

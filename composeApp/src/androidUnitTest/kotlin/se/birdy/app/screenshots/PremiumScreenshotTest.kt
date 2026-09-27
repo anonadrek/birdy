@@ -2,7 +2,10 @@ package se.birdy.app.screenshots
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.junit.Rule
 import org.junit.Test
@@ -45,9 +48,16 @@ class PremiumScreenshotTest {
         PremiumScreen(viewModel = viewModel, onClose = {}, onPurchaseComplete = {})
     }
 
+    // The price node's line height is a proxy for its font size (T9c #1 guard): at the correct
+    // ~22sp it renders well above 20dp tall; if the autosize-floor regression comes back (price
+    // stuck at the 14sp minFontSize), this line height drops under 20dp and the assertion fails
+    // — a screenshot alone wouldn't necessarily catch a subtle size regression like that.
     @Test
     @Config(qualifiers = "+sv")
-    fun premium_sv() = compose.captureScreen("premium_sv") { screen(FormattedPrices("199 kr", "499 kr")) }
+    fun premium_sv() {
+        compose.captureScreen("premium_sv") { screen(FormattedPrices("199 kr", "499 kr")) }
+        compose.onNodeWithText("199 kr").assertHeightIsAtLeast(20.dp)
+    }
 
     @Test
     @Config(qualifiers = "+en")
