@@ -1,6 +1,7 @@
 package se.birdy.app.screenshots
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +14,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toPixelMap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
@@ -24,6 +27,8 @@ import birdy_bird_scanner.composeapp.generated.resources.Res
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.decodeToImageBitmap
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -44,10 +49,13 @@ import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.scaffold.AppRoute
 import se.birdy.app.ui.scaffold.BottomNavBar
+import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.Brass
 import se.birdy.app.ui.theme.StampNavy
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.paperBackground
+import java.io.File
+import kotlin.math.abs
 
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
@@ -193,6 +201,67 @@ class ComponentsScreenshotTest {
                 )
             }
         }
+    }
+
+    // Real pixel assertion for the see-through seal (fix wave B8, finding 4): over a flat white
+    // backdrop, sample a point inside the disc but away from the "№1" glyph and confirm it's the
+    // low-alpha rust wash (12% AccentCopper over white), not the ring's solid AccentCopper stroke.
+    //
+    // androidx.compose.ui.test.captureToImage() times out here (ComposeTimeoutException on its
+    // internal forceRedraw/waitUntil — a known Robolectric-native-graphics-mode gap). Roborazzi's
+    // own capture is the proven-working path (every other test in this class already renders
+    // correctly-colored PNGs through it), so this forces Roborazzi's record mode for one capture,
+    // then reads the PNG back and inspects its pixels the same way hero_photo_sv reads a bundled
+    // JPEG. The property is restored afterwards so it doesn't leak into sibling tests.
+    @OptIn(ExperimentalResourceApi::class)
+    @Test
+    @Config(qualifiers = "+sv")
+    fun photo_scene_seal_pixel_is_low_alpha_wash() {
+        val previousRecordFlag = System.getProperty("roborazzi.test.record")
+        System.setProperty("roborazzi.test.record", "true")
+        try {
+            compose.captureScreen("photo_scene_seal_pixel_probe") {
+                Box(
+                    modifier = Modifier.size(88.dp).background(Color.White),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    StampSeal(
+                        state = StampSealState.Unlocked(number = 1, glyph = null, name = null),
+                        filled = false,
+                    )
+                }
+            }
+        } finally {
+            if (previousRecordFlag != null) {
+                System.setProperty("roborazzi.test.record", previousRecordFlag)
+            } else {
+                System.clearProperty("roborazzi.test.record")
+            }
+        }
+
+        val png = File("build/outputs/roborazzi/photo_scene_seal_pixel_probe.png").readBytes()
+        val pixelMap = png.decodeToImageBitmap().toPixelMap()
+        // Sample near the top of the disc: inside the low-alpha fill, away from the centered
+        // "№1" text and away from the opaque 2dp ring stroke right at the edge.
+        val sampled = pixelMap[pixelMap.width / 2, (pixelMap.height * 0.2f).toInt()]
+
+        val washAlpha = 0.12f
+        val expected =
+            Color(
+                red = AccentCopper.red * washAlpha + (1f - washAlpha),
+                green = AccentCopper.green * washAlpha + (1f - washAlpha),
+                blue = AccentCopper.blue * washAlpha + (1f - washAlpha),
+            )
+        val tolerance = 3f / 255f
+        assertEquals(expected.red, sampled.red, tolerance)
+        assertEquals(expected.green, sampled.green, tolerance)
+        assertEquals(expected.blue, sampled.blue, tolerance)
+
+        // ...and clearly not the ring's solid AccentCopper.
+        assertTrue(
+            "sampled pixel should be the low-alpha wash, not solid AccentCopper",
+            abs(sampled.red - AccentCopper.red) > tolerance,
+        )
     }
 
     // Long English name (30 chars, real species.db entry Q210418) at 130% system font scale —

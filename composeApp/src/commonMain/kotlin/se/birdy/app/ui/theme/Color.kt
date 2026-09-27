@@ -52,7 +52,7 @@ val OffwhiteWarm = Color(0xFFFFF8EE)
 // ===== Match-confidence grades (Lifelist stamp rows) — text colors, AA on every paper =====
 val MatchHigh = Color(0xFF4E6D3F) // ≥80% confidence
 val MatchMid = Color(0xFF7D611D) // 60–79%
-val MatchLow = Color(0xFF9B523D) // <60%
+val MatchLow = Color(0xFF98503C) // <60% (darkened from 9B523D — was 4.50:1 on SandCreme, razor-thin AA)
 
 // ===== Stamps =====
 val StampLocked = Color(0xFFCDBB9C) // dashed outline + "?" on locked stamps (decorative)

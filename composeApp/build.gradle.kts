@@ -127,7 +127,13 @@ afterEvaluate {
 // lambda below only ever closes over a plain Boolean, not `project` itself.
 // `project.hasProperty(...)` only checks presence, so `-Pbirdy.screenshots=false` was
 // indistinguishable from `=true` (fix wave B, finding B4) — parse the value instead.
-val runScreenshotTests = providers.gradleProperty("birdy.screenshots").map { it.toBoolean() }.getOrElse(false)
+// A bare `-Pbirdy.screenshots` (no `=value`) sets the property to `""`, which the reader
+// must treat as "on" (that's what a bare flag means) rather than silently falling through
+// `toBoolean()`'s false-if-not-"true" behavior; `toBooleanStrict()` for any other value
+// fails loudly on a typo like `-Pbirdy.screenshots=yes` instead of quietly disabling the
+// gate (fix wave B8, finding 5).
+val runScreenshotTests =
+    providers.gradleProperty("birdy.screenshots").map { it.isEmpty() || it.toBooleanStrict() }.getOrElse(false)
 
 android {
     namespace = "se.birdy.app"
