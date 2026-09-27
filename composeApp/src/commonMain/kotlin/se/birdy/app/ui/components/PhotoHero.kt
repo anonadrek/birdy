@@ -25,9 +25,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -53,7 +55,9 @@ import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
 /**
- * Full-bleed photo header (spec 2026-09-24 §4.3): photo, dark-moss scrim from the bottom,
+ * Full-bleed photo header (spec 2026-09-24 §4.3): photo, a light full-photo moss scrim (the
+ * approved mockup gradient — see [HeroScrim]) plus a second, stronger scrim that follows the
+ * bottom-aligned text block itself (see the text Column's drawBehind, [drawTextFollowingScrim]),
  * kicker + serif title (+ optional italic latin name, apricot subtitle and a hairline meta
  * row).
  *
@@ -115,24 +119,14 @@ fun PhotoHero(
                 Modifier
                     .align(Alignment.BottomStart)
                     .fillMaxWidth()
+                    .drawBehind { drawTextFollowingScrim() } // before padding: see its KDoc.
                     .padding(start = 22.dp, end = 22.dp, bottom = bottomPadding),
         ) {
             MicroLabel(kicker, color = AccentCopperLight)
             Spacer(Modifier.height(8.dp))
             HeroTitle(title = title, titleAccent = titleAccent, serif = serif)
             if (latinName != null) {
-                Text(
-                    text = latinName,
-                    color = TextOnHero.copy(alpha = LATIN_NAME_TEXT_ALPHA),
-                    fontFamily = serif,
-                    fontStyle = FontStyle.Italic,
-                    fontSize = 15.sp,
-                    lineHeight = 18.sp,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    style = TextStyle(shadow = HeroTextShadow),
-                    modifier = Modifier.padding(top = 2.dp),
-                )
+                HeroLatinName(latinName = latinName, serif = serif)
             }
             if (subtitle != null) {
                 Text(
@@ -153,54 +147,95 @@ fun PhotoHero(
     }
 }
 
-// Text alpha over the scrim — shared with PhotoHeroContrastTest, which proves these (plus the
-// scrim stops below) clear WCAG AA over a worst-case light photo. Change all three together.
+// Text alpha over the scrim — shared with PhotoHeroContrastTest, which proves these (plus
+// TEXT_SCRIM_ALPHA below) clear WCAG AA over a worst-case light photo. Change all three together.
 internal const val LATIN_NAME_TEXT_ALPHA = 0.85f
 internal const val META_TEXT_ALPHA = 0.75f
 
-// Scrim stops (spec 2026-09-24 §4.3; strengthened 2026-09-26 fix wave A2, finding I3: the
-// kicker/latinName/subtitle/meta text only cleared 1.5-4.6:1 over a light photo before this).
-// A single HeroMossDeep alpha ramp — light at the very top (the photo still reads as a photo),
-// strong by SCRIM_STRONG_FRACTION, where the bottom-aligned text block can start even in the
-// worst case this suite screenshots (2-line title, 130% font scale — see
-// ComponentsScreenshotTest.hero_long_en_130). See PhotoHeroContrastTest for the numeric proof;
-// change these four numbers together with it.
-private const val SCRIM_TOP_ALPHA = 0.18f
-private const val SCRIM_STRONG_FRACTION = 0.16f
-private const val SCRIM_STRONG_ALPHA = 0.92f
-private const val SCRIM_BOTTOM_ALPHA = 0.97f
-
-/** HeroMossDeep's scrim alpha at [fraction] (0f = hero top, 1f = hero bottom). */
-internal fun heroScrimAlphaAt(fraction: Float): Float {
-    val clamped = fraction.coerceIn(0f, 1f)
-    return if (clamped <= SCRIM_STRONG_FRACTION) {
-        lerp(SCRIM_TOP_ALPHA, SCRIM_STRONG_ALPHA, clamped / SCRIM_STRONG_FRACTION)
-    } else {
-        lerp(SCRIM_STRONG_ALPHA, SCRIM_BOTTOM_ALPHA, (clamped - SCRIM_STRONG_FRACTION) / (1f - SCRIM_STRONG_FRACTION))
-    }
-}
-
-private fun lerp(
-    start: Float,
-    stop: Float,
-    fraction: Float,
-): Float = start + (stop - start) * fraction
+// Global scrim (spec 2026-09-24 §4.3 mockups): the approved mockup's light gradient, ported
+// directly — CSS `linear-gradient(0deg, rgba(31,42,25,.96) 0%, rgba(31,42,25,.55) 38%,
+// rgba(31,42,25,0) 70%, rgba(0,0,0,.25) 100%)` (rgb(31,42,25) = HeroMossDeep). CSS "0deg" runs
+// bottom→top; Compose's Brush.verticalGradient runs top→bottom, so the CSS 0%/38%/70%/100%
+// stops become the 1f/0.62f/0.30f/0f fractions below. Black at the very top keeps the
+// gear/status icons legible over a bright sky; the transparent band around 30% is what keeps
+// the photo itself visible. Fix wave A2 (2026-09-26) had strengthened this ramp so much the
+// photo nearly disappeared (finding I3) — fix wave A2b (this one) moved WCAG AA coverage to
+// the text-following scrim below instead, so this one could go back to the light mockup look.
+// This scrim alone is NOT relied on for text contrast — see PhotoHeroContrastTest.
+private const val GLOBAL_SCRIM_TOP_ALPHA = 0.25f
+private const val GLOBAL_SCRIM_FADE_OUT_FRACTION = 0.30f
+private const val GLOBAL_SCRIM_RAMP_FRACTION = 0.62f
+private const val GLOBAL_SCRIM_RAMP_ALPHA = 0.55f
+private const val GLOBAL_SCRIM_BOTTOM_ALPHA = 0.96f
 
 @Composable
 private fun HeroScrim() {
     Box(
         Modifier.fillMaxSize().background(
             Brush.verticalGradient(
-                0f to HeroMossDeep.copy(alpha = heroScrimAlphaAt(0f)),
-                SCRIM_STRONG_FRACTION to HeroMossDeep.copy(alpha = heroScrimAlphaAt(SCRIM_STRONG_FRACTION)),
-                1f to HeroMossDeep.copy(alpha = heroScrimAlphaAt(1f)),
+                0f to Color.Black.copy(alpha = GLOBAL_SCRIM_TOP_ALPHA),
+                GLOBAL_SCRIM_FADE_OUT_FRACTION to HeroMossDeep.copy(alpha = 0f),
+                GLOBAL_SCRIM_RAMP_FRACTION to HeroMossDeep.copy(alpha = GLOBAL_SCRIM_RAMP_ALPHA),
+                1f to HeroMossDeep.copy(alpha = GLOBAL_SCRIM_BOTTOM_ALPHA),
             ),
         ),
     )
 }
 
+// Text-following scrim (fix wave A2b, 2026-09-27): painted behind the bottom-aligned text
+// Column itself (see PhotoHero's drawBehind), not tied to a fraction of the hero's own height
+// like the old ramp was. It fades in over TEXT_SCRIM_FADE above the column's top edge (alpha
+// 0 -> TEXT_SCRIM_ALPHA), then stays FLAT at TEXT_SCRIM_ALPHA down to the column's bottom — so
+// it follows the text block whatever its height (1- or 2-line title, font scale) instead of
+// covering a fixed band of the photo regardless of where the text actually starts. This is
+// what carries WCAG AA now (not the global scrim above). TEXT_SCRIM_ALPHA is the smallest value
+// (steps of 0.05) that clears WCAG AA in PhotoHeroContrastTest — change both together.
+private val TEXT_SCRIM_FADE = 64.dp
+internal const val TEXT_SCRIM_ALPHA = 0.80f
+
+/**
+ * Must be applied BEFORE any `.padding(...)` on the text Column: [DrawScope.getSize] here needs
+ * to be the column's full width + full height (incl. bottomPadding), not just its inner content
+ * box, and the fade drawn above y=0 relies on Compose not clipping drawBehind to its own bounds.
+ */
+private fun DrawScope.drawTextFollowingScrim() {
+    val fadePx = TEXT_SCRIM_FADE.toPx()
+    val totalPx = fadePx + size.height
+    drawRect(
+        brush =
+            Brush.verticalGradient(
+                0f to HeroMossDeep.copy(alpha = 0f),
+                (fadePx / totalPx) to HeroMossDeep.copy(alpha = TEXT_SCRIM_ALPHA),
+                1f to HeroMossDeep.copy(alpha = TEXT_SCRIM_ALPHA),
+                startY = -fadePx,
+                endY = size.height,
+            ),
+        topLeft = Offset(0f, -fadePx),
+        size = Size(size.width, totalPx),
+    )
+}
+
 // A practical legibility aid on top of the scrim, not counted in PhotoHeroContrastTest.
 private val HeroTextShadow = Shadow(color = Color.Black.copy(alpha = 0.35f), offset = Offset(0f, 1f), blurRadius = 6f)
+
+@Composable
+private fun HeroLatinName(
+    latinName: String,
+    serif: FontFamily,
+) {
+    Text(
+        text = latinName,
+        color = TextOnHero.copy(alpha = LATIN_NAME_TEXT_ALPHA),
+        fontFamily = serif,
+        fontStyle = FontStyle.Italic,
+        fontSize = 15.sp,
+        lineHeight = 18.sp,
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
+        style = TextStyle(shadow = HeroTextShadow),
+        modifier = Modifier.padding(top = 2.dp),
+    )
+}
 
 private val HeroTitleMaxFontSize = 42.sp
 private val HeroTitleMinFontSize = 28.sp

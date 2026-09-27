@@ -11,60 +11,32 @@ import kotlin.test.assertTrue
 
 /**
  * WCAG 2.1 AA for [PhotoHero]'s bottom-aligned text over a worst-case LIGHT photo (spec
- * 2026-09-24 §4.3, strengthened by the 2026-09-26 fix wave A2 review, finding I3: the kicker/
- * latinName/subtitle/meta text only cleared 1.5–4.6:1 over an overcast-sky photo before this
- * fix). This is a pure-color/pure-math regression test — a commonTest has no compose measurer,
- * so it can't lay the real component out — modeled the same way [se.birdy.app.ui.theme.ColorContrastTest]
- * treats color math independently of any real layout pass.
+ * 2026-09-24 §4.3). Fix wave A2b (2026-09-27) replaced the old hero-relative scrim ramp — which
+ * had to be strengthened so much it made the photo nearly invisible (fix wave A2, finding I3) —
+ * with a scrim that follows the text block itself: it fades in above the text Column's top edge,
+ * then stays FLAT at [TEXT_SCRIM_ALPHA] all the way to the bottom (see [PhotoHero]'s drawBehind /
+ * `drawTextFollowingScrim`).
  *
- * The modeled scenario is deliberately the WORSE of the two this suite screenshots
- * (see ComponentsScreenshotTest.hero_photo_sv / hero_long_en_130): a 2-line title (at its
- * un-shrunk 44sp lineHeight — many 2-line names never trigger TextAutoSize's step-down, since
- * wrapping to exactly 2 lines isn't an overflow) + a latinName + a subtitle + a meta row, all
- * at 130% system font scale. sp line heights scale with font scale; the dp paddings around them
- * don't. If PhotoHero's real text block ever starts higher (a smaller fraction from the top)
- * than this budget assumes, this test is the tripwire — tighten heroScrimAlphaAt's stops to
- * match.
+ * This models the backdrop with ONLY that text scrim, treating the separate global scrim (the
+ * light mockup gradient painted across the whole photo) as fully transparent. That is a
+ * deliberate LOWER BOUND, not a guess at one specific layout: the text block can start anywhere
+ * in the hero, including inside the global scrim's own transparent band, and everywhere the
+ * global scrim DOES contribute alpha it only adds more darkness under light text — which can
+ * only raise contrast further. So proving AA with the global scrim zeroed out proves it for
+ * every real position, and — because the text scrim is flat rather than ramped — the same single
+ * backdrop color covers every line (kicker, latinName, subtitle, meta and title all sit on it).
+ *
+ * This is pure-color/pure-math — a commonTest has no compose measurer, so it can't lay the real
+ * component out — modeled the same way [se.birdy.app.ui.theme.ColorContrastTest] treats color
+ * math independently of any real layout pass.
  */
 class PhotoHeroContrastTest {
-    private val fontScale = 1.3f
-
-    // Fixed dp paddings around the text block — unaffected by font scale.
-    private val kickerSpacerDp = 8f
-    private val latinNameTopPaddingDp = 2f
-    private val subtitleTopPaddingDp = 4f
-    private val metaRowTopPaddingDp = 12f + 1f + 8f // divider top padding + 1dp rule + text top padding
-    private val defaultBottomPaddingDp = 18f
-
-    // sp line heights, scaled by fontScale (sp tracks the system font scale; dp doesn't).
-    private val kickerLineHeightSp = 12f * fontScale
-    private val titleLineHeightSp = 44f * fontScale // HeroTitle's un-shrunk (42sp) lineHeight
-    private val latinNameLineHeightSp = 18f * fontScale
-    private val subtitleLineHeightSp = 22f * fontScale // inherited bodyLarge lineHeight (20sp font — see MetaText's comment)
-    private val metaLineHeightSp = 12f * fontScale
-
-    private val heroHeightDp = 300f // PhotoHero's default/minimum `height`
-
-    /** Where (as a fraction from the hero's top) the text block's topmost line — the kicker — can start. */
-    private fun conservativeTopFraction(): Float {
-        val textBlockHeight =
-            kickerLineHeightSp + kickerSpacerDp +
-                titleLineHeightSp * 2 +
-                latinNameTopPaddingDp + latinNameLineHeightSp +
-                subtitleTopPaddingDp + subtitleLineHeightSp +
-                metaRowTopPaddingDp + metaLineHeightSp +
-                defaultBottomPaddingDp
-        return ((heroHeightDp - textBlockHeight) / heroHeightDp).coerceAtLeast(0f)
-    }
-
     // An overcast-sky photo color — the reviewer's reference for the worst realistic photo.
     private val lightReferencePhoto = Color(0xFFD6DBE0)
 
     @Test
-    fun `hero text clears AA over a light reference photo at the conservative text-block position`() {
-        val fraction = conservativeTopFraction()
-        val alpha = heroScrimAlphaAt(fraction)
-        val backdrop = compositeOver(HeroMossDeep, alpha, lightReferencePhoto)
+    fun `hero text clears AA over a light reference photo with only the text scrim`() {
+        val backdrop = compositeOver(HeroMossDeep, TEXT_SCRIM_ALPHA, lightReferencePhoto)
 
         val kicker = contrastRatio(AccentCopperLight, backdrop)
         val latinName = contrastRatio(compositeOver(TextOnHero, LATIN_NAME_TEXT_ALPHA, backdrop), backdrop)
@@ -82,7 +54,7 @@ class PhotoHeroContrastTest {
             )
         assertTrue(
             failures.isEmpty(),
-            "at fraction $fraction (scrim alpha $alpha): " + failures.joinToString("; "),
+            "at scrim alpha $TEXT_SCRIM_ALPHA: " + failures.joinToString("; "),
         )
     }
 }
