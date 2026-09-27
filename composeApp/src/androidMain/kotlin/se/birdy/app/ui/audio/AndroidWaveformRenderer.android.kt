@@ -22,7 +22,7 @@ import kotlin.math.abs
  * Real implementation of [WaveformRendererApi] for Plan 6b2 T6.
  *
  * [renderWaveformPng]: renders PCM samples as a waveform bar chart onto a 600×200 Bitmap
- * using the Mossbädd colour palette (PaperBg background, MarginaliaInk bars,
+ * using the Field Journal colour palette (MossCreme background, MarginaliaInk bars,
  * AccentCopper underline). Output is written as a lossless PNG.
  *
  * [encodeOpus]: encodes a mono 48 kHz PCM ShortArray into an Opus-in-OGG container
@@ -63,17 +63,17 @@ class AndroidWaveformRenderer : WaveformRendererApi {
             val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
             try {
                 val canvas = Canvas(bitmap)
-                canvas.drawColor(Color.parseColor("#EFE7D6")) // PaperBg
+                canvas.drawColor(Color.parseColor("#F6EFE2")) // MossCreme
 
                 val barPaint =
                     Paint().apply {
-                        color = Color.parseColor("#3F4F30") // MarginaliaInk
+                        color = Color.parseColor("#3F4A33") // MarginaliaInk
                         style = Paint.Style.FILL
                         isAntiAlias = true
                     }
                 val underlinePaint =
                     Paint().apply {
-                        color = Color.parseColor("#A8552D") // AccentCopper
+                        color = Color.parseColor("#9A4526") // AccentCopper
                         style = Paint.Style.STROKE
                         strokeWidth = 2f
                         isAntiAlias = true

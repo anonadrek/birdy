@@ -22,12 +22,12 @@ object JournalPdfMetrics {
     const val MARGIN_TOP: Float = 60f
     const val MARGIN_BOTTOM: Float = 60f
 
-    // ----- Palett (ARGB Long) -------------------------------------------------
-    const val COLOR_PAPER_BG: Long = 0xFFEFE7D6
-    const val COLOR_PAPER_EDGE: Long = 0xFFE5DCC7
-    const val COLOR_INK: Long = 0xFF3F4F30
-    const val COLOR_COPPER: Long = 0xFFA8552D
-    const val COLOR_NAVY: Long = 0xFF1F3A5F
+    // ----- Palett (ARGB Long) — Field Journal "Mossa, rost & mässing" (1.3.0) -------------------
+    const val COLOR_PAPER_BG: Long = 0xFFF6EFE2 // MossCreme
+    const val COLOR_PAPER_EDGE: Long = 0xFFDFD2BA // Hairline
+    const val COLOR_INK: Long = 0xFF26301F // TextOnCreme
+    const val COLOR_COPPER: Long = 0xFF9A4526 // AccentCopper
+    const val COLOR_NAVY: Long = 0xFF1F3A5F // StampNavy (unchanged in 1.3.0)
 
     // ----- Typstorlekar (pt) ---------------------------------------------------
     const val TITLE_SIZE: Float = 52f

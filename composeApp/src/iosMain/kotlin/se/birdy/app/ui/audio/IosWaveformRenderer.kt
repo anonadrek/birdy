@@ -24,13 +24,20 @@ import kotlin.math.abs
 
 /**
  * iOS-spegel av [AndroidWaveformRenderer]s PNG-rendering: 600×200, 120 buckets,
- * 3-tap-utjämning, Mossbädd-paletten (PaperBg-bakgrund #EFE7D6, MarginaliaInk-staplar
- * #3F4F30, AccentCopper-underlinje #A8552D vid y = height-6, staplar ±40 % av höjden,
+ * 3-tap-utjämning, Field Journal-paletten (MossCreme-bakgrund #F6EFE2, MarginaliaInk-staplar
+ * #3F4A33, AccentCopper-underlinje #9A4526 vid y = height-6, staplar ±40 % av höjden,
  * min-stapel 2 px). [encodeOpus] returnerar null — den dokumenterade degrade-vägen
  * (i3-spec B1; iOS har ingen system-Opus-encoder och .opus kan ändå inte spelas nativt).
  */
 class IosWaveformRenderer : WaveformRendererApi {
     @OptIn(ExperimentalForeignApi::class)
+    // MagicNumber: the RGB byte components below ARE the named palette hex literals (mirrors
+    // AndroidWaveformRenderer.android.kt's Color.parseColor("#...") strings, which detekt can't
+    // see inside a string). The 1.3.0 palette lift changed every one of them, so the previously
+    // baselined literal values no longer match — per house rule the baseline isn't extended for
+    // a value swap; suppress at the function instead (fix wave B, mirrors Color.kt's file-level
+    // suppress rationale).
+    @Suppress("MagicNumber")
     override suspend fun renderWaveformPng(
         pcm: ShortArray,
         outPath: String,
@@ -80,13 +87,13 @@ class IosWaveformRenderer : WaveformRendererApi {
                     // OBS: CG har origo nere-vänster (y upp); Android-mallen räknar uppifrån
                     // (y ner). Vi speglar y-koordinaterna (yCg = height - yAndroid - rectHeight)
                     // så PNG:n blir visuellt identisk med Android-renderern.
-                    // PaperBg #EFE7D6
-                    CGContextSetRGBFillColor(ctx, 0xEF / 255.0, 0xE7 / 255.0, 0xD6 / 255.0, 1.0)
+                    // MossCreme #F6EFE2
+                    CGContextSetRGBFillColor(ctx, 0xF6 / 255.0, 0xEF / 255.0, 0xE2 / 255.0, 1.0)
                     CGContextFillRect(ctx, CGRectMake(0.0, 0.0, width.toDouble(), height.toDouble()))
 
-                    // MarginaliaInk #3F4F30 — staplar kring mittlinjen (symmetriska kring
+                    // MarginaliaInk #3F4A33 — staplar kring mittlinjen (symmetriska kring
                     // centerY → ingen y-spegling behövs, samma span i båda koordinatsystemen).
-                    CGContextSetRGBFillColor(ctx, 0x3F / 255.0, 0x4F / 255.0, 0x30 / 255.0, 1.0)
+                    CGContextSetRGBFillColor(ctx, 0x3F / 255.0, 0x4A / 255.0, 0x33 / 255.0, 1.0)
                     val barWidth = width.toDouble() / buckets
                     val centerY = height / 2.0
                     val maxHalfHeight = height * 0.4
@@ -96,10 +103,10 @@ class IosWaveformRenderer : WaveformRendererApi {
                         CGContextFillRect(ctx, CGRectMake(x + 1.0, centerY - h, barWidth - 2.0, h * 2.0))
                     }
 
-                    // AccentCopper #A8552D — underlinje vid Android-y (height-6, 2px stroke →
+                    // AccentCopper #9A4526 — underlinje vid Android-y (height-6, 2px stroke →
                     // Android-span [193,195]). Speglad: yCg = 200-193-2 = 5 → CG-span [5,7],
                     // dvs. nära CG-golvet (y=0) = nära botten av bilden, precis som Android.
-                    CGContextSetRGBFillColor(ctx, 0xA8 / 255.0, 0x55 / 255.0, 0x2D / 255.0, 1.0)
+                    CGContextSetRGBFillColor(ctx, 0x9A / 255.0, 0x45 / 255.0, 0x26 / 255.0, 1.0)
                     CGContextFillRect(ctx, CGRectMake(0.0, 5.0, width.toDouble(), 2.0))
 
                     val cgImage = CGBitmapContextCreateImage(ctx) ?: error("CGBitmapContextCreateImage failed")

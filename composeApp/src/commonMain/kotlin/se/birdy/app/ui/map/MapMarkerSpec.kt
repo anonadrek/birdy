@@ -9,8 +9,8 @@ package se.birdy.app.ui.map
 object MapMarkerSpec {
     const val COPPER: Long = 0xFF9A4526 // mirrors AccentCopper (rust, 1.3.0 palette lift)
     const val NAVY: Long = 0xFF1F3A5F // StampNavy
-    const val CREAM_HI: Long = 0xFFF4EDDC
-    const val CREAM_LO: Long = 0xFFE5DBC4
+    const val CREAM_HI: Long = 0xFFF8F2E7 // PaperTop
+    const val CREAM_LO: Long = 0xFFEDE3D1 // SandCreme
     const val SHADOW: Long = 0x66281910
 
     const val RING_WIDTH: Float = 3f
