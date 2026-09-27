@@ -371,7 +371,7 @@
     <string name="menu_button">Meny</string>
 
     <!-- ===== Plan 7b: ArchiveScreen ===== -->
-    <string name="archive_journal_label">ARKIV · 839 ARTER</string>
+    <string name="archive_journal_label">UPPSLAGSVERK · 839 ARTER</string>
     <string name="archive_journal_headline">*Fåglar.*</string>
     <string name="archive_journal_sub">Sök, filtrera, lär.</string>
     <string name="archive_chip_all">Alla</string>
@@ -394,7 +394,16 @@
     <string name="archive_sort_family">Familj</string>
     <string name="archive_sort_recent">Senast tillagd</string>
     <string name="archive_pill_stamped">STÄMPLAD</string>
-    <string name="archive_section_count">%1$s arter</string>
+    <plurals name="archive_section_count">
+        <item quantity="one">%1$d art</item>
+        <item quantity="other">%1$d arter</item>
+    </plurals>
+    <!-- TalkBack-only: FamilyHeader's clearAndSetSemantics contentDescription (T10b Important 4) -->
+    <plurals name="archive_family_header_description">
+        <item quantity="one">%1$s, %2$d art</item>
+        <item quantity="other">%1$s, %2$d arter</item>
+    </plurals>
+    <string name="archive_red_listed_tag">Rödlistad</string>
     <string name="archive_search_clear">Rensa sökning</string>
     <string name="archive_error_title">Fältboken kunde inte öppnas</string>
     <string name="archive_error_body">Något gick fel när artlistan lästes in.</string>
@@ -527,7 +536,7 @@
     <string name="premium_species_title">Fler verktyg i fält</string>
     <string name="premium_species_subtitle">Fynd-karta · PDF-export · säsongsstatistik</string>
     <string name="premium_teaser_corner">PREMIUM</string>
-    <string name="premium_teaser_cta">→ Lås upp</string>
+    <string name="premium_teaser_cta">Lås upp</string>
     <!-- Plan 6b3 T8: Export CTA states when premium is active -->
     <string name="premium_teaser_export_active">Exportera fältdagbok</string>
     <string name="premium_teaser_export_busy">Förbereder PDF…</string>

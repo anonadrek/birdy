@@ -358,7 +358,7 @@
     <string name="menu_button">Menu</string>
 
     <!-- ===== Plan 7b: ArchiveScreen ===== -->
-    <string name="archive_journal_label">ARCHIVE · 839 SPECIES</string>
+    <string name="archive_journal_label">ENCYCLOPEDIA · 839 SPECIES</string>
     <string name="archive_journal_headline">*Birds.*</string>
     <string name="archive_journal_sub">Search, filter, learn.</string>
     <string name="archive_chip_all">All</string>
@@ -381,7 +381,16 @@
     <string name="archive_sort_family">Family</string>
     <string name="archive_sort_recent">Recently added</string>
     <string name="archive_pill_stamped">STAMPED</string>
-    <string name="archive_section_count">%1$s species</string>
+    <plurals name="archive_section_count">
+        <item quantity="one">%1$d species</item>
+        <item quantity="other">%1$d species</item>
+    </plurals>
+    <!-- TalkBack-only: FamilyHeader's clearAndSetSemantics contentDescription (T10b Important 4) -->
+    <plurals name="archive_family_header_description">
+        <item quantity="one">%1$s, %2$d species</item>
+        <item quantity="other">%1$s, %2$d species</item>
+    </plurals>
+    <string name="archive_red_listed_tag">Red-listed</string>
     <string name="archive_search_clear">Clear search</string>
     <string name="archive_error_title">Couldn’t open the field journal</string>
     <string name="archive_error_body">Something went wrong while loading the species list.</string>
@@ -513,7 +522,7 @@
     <string name="premium_species_title">More tools in the field</string>
     <string name="premium_species_subtitle">Finds map · PDF export · season stats</string>
     <string name="premium_teaser_corner">PREMIUM</string>
-    <string name="premium_teaser_cta">→ Unlock</string>
+    <string name="premium_teaser_cta">Unlock</string>
     <!-- Plan 6b3 T8: Export CTA states when premium is active -->
     <string name="premium_teaser_export_active">Export Field Journal</string>
     <string name="premium_teaser_export_busy">Preparing PDF…</string>
