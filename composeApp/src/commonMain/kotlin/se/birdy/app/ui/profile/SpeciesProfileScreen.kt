@@ -293,7 +293,9 @@ private fun DescriptionWithDropCap(
     text: String,
     serif: FontFamily,
 ) {
-    // trimStart: a leading space/quote in the source text must not become the drop cap itself.
+    // trimStart only strips leading whitespace, so a leading space doesn't become the drop cap
+    // itself. The repository already strips markdown (headings, bold/italic markers) before this
+    // screen ever sees the text — see se.birdy.content.cleanSpeciesText.
     val trimmed = text.trimStart()
     val firstChar = trimmed.first().toString()
     val rest = trimmed.drop(1)

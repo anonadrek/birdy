@@ -32,7 +32,7 @@ import se.birdy.app.ui.theme.TextOnHero
  * first in reading order regardless of where it's placed in the layout (mirrors the close
  * button's original T9c #2 reasoning).
  *
- * [iconSize] defaults to ~20dp per spec; [GearButton] passes 18dp so its glyph stays the exact
+ * [iconSize] defaults to 20dp, matching [BackButton]; [GearButton] passes 18dp so its glyph stays the exact
  * size it was before this extraction — only its glass disc grew, from 32dp to this shared 36dp.
  */
 @Composable

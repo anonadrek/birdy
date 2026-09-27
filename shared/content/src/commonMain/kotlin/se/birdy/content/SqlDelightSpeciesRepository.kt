@@ -313,7 +313,9 @@ class SqlDelightSpeciesRepository(
         kind: String,
     ): String? {
         val match = texts.firstOrNull { it.locale == locale.code && it.kind == kind }
-        if (match != null) return match.text
-        return texts.firstOrNull { it.locale == Locale.EN.code && it.kind == kind }?.text
+        val text =
+            match?.text
+                ?: texts.firstOrNull { it.locale == Locale.EN.code && it.kind == kind }?.text
+        return text?.let { cleanSpeciesText(it) }
     }
 }
