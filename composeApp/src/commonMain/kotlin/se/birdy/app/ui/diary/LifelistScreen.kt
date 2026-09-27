@@ -21,8 +21,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -35,13 +33,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -89,26 +88,32 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.stringArrayResource
 import org.jetbrains.compose.resources.stringResource
-import se.birdy.app.ui.components.JournalHeadline
+import se.birdy.app.ui.components.BirdyPrimaryButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.JournalSubLine
 import se.birdy.app.ui.components.LockedStatsPreview
+import se.birdy.app.ui.components.MicroLabel
 import se.birdy.app.ui.components.MiniStamp
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
-import se.birdy.app.ui.components.shimmerBorder
+import se.birdy.app.ui.components.parseJournalHeadline
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.AccentCopperLight
+import se.birdy.app.ui.theme.Hairline
+import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.HeroMossMid
+import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.MatchHigh
 import se.birdy.app.ui.theme.MatchLow
 import se.birdy.app.ui.theme.MatchMid
-import se.birdy.app.ui.theme.OffwhiteWarm
+import se.birdy.app.ui.theme.MossCreme
 import se.birdy.app.ui.theme.PaperBottom
 import se.birdy.app.ui.theme.TextOnCreme
+import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.datastore.LifelistSort
@@ -177,18 +182,12 @@ private fun EmptyLifelist(onScanCtaClick: () -> Unit) {
                 textAlign = androidx.compose.ui.text.style.TextAlign.Center,
             )
             Spacer(Modifier.height(32.dp))
-            Button(
+            BirdyPrimaryButton(
+                text =
+                    parseJournalHeadline(stringResource(Res.string.lifelist_empty_caveat_cta))
+                        .joinToString("") { it.text },
                 onClick = onScanCtaClick,
-                colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm),
-                shape = RoundedCornerShape(50),
-            ) {
-                JournalHeadline(
-                    text = stringResource(Res.string.lifelist_empty_caveat_cta),
-                    fontSize = 14.sp,
-                    plainColor = OffwhiteWarm,
-                    accentColor = OffwhiteWarm,
-                )
-            }
+            )
         }
     }
 }
@@ -383,10 +382,9 @@ private fun RecapEntryCard(
             Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp, vertical = 8.dp)
-                .clip(RoundedCornerShape(14.dp))
+                .clip(RoundedCornerShape(18.dp))
                 .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
-                .clickable(onClick = onClick)
-                .shimmerBorder(durationMillis = 7000, cornerRadius = 14.dp, strokeWidth = 3.dp, alpha = 0.85f, bandFraction = 0.3f),
+                .clickable(onClick = onClick),
     ) {
         if (photos.isNotEmpty()) {
             Crossfade(
@@ -407,10 +405,10 @@ private fun RecapEntryCard(
                     Modifier
                         .matchParentSize()
                         .background(
-                            Brush.verticalGradient(
+                            Brush.horizontalGradient(
                                 listOf(
-                                    Color.Black.copy(alpha = 0.35f),
-                                    Color.Black.copy(alpha = 0.55f),
+                                    HeroMossDeep.copy(alpha = 0.92f),
+                                    HeroMossDeep.copy(alpha = 0.35f),
                                 ),
                             ),
                         ),
@@ -438,32 +436,29 @@ private fun RecapEntryCard(
                 )
             }
             Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = stringResource(Res.string.recap_eyebrow_fmt, preview.isoWeek.toString()).uppercase(),
-                    color = AccentCopper,
-                    fontSize = 9.sp,
-                    fontWeight = FontWeight.W700,
-                    letterSpacing = 1.6.sp,
+                MicroLabel(
+                    text = stringResource(Res.string.recap_eyebrow_fmt, preview.isoWeek.toString()),
+                    color = AccentCopperLight,
                 )
                 Text(
                     text = stringResource(Res.string.recap_lifelist_entry_title),
-                    color = Color.White,
+                    color = TextOnHero,
                     fontFamily = serif,
-                    fontStyle = FontStyle.Italic,
+                    fontStyle = FontStyle.Normal,
                     fontSize = 20.sp,
                 )
                 if (preview.findCount > 0) {
                     Text(
                         text = stringResource(Res.string.recap_summary_active_fmt, preview.findCount.toString()),
-                        color = Color.White.copy(alpha = 0.85f),
+                        color = TextOnHero.copy(alpha = 0.8f),
                         fontFamily = caveat,
-                        fontSize = 14.sp,
+                        fontSize = 15.sp,
                     )
                 }
             }
             Text(
                 text = "›",
-                color = Color.White,
+                color = TextOnHero,
                 fontFamily = serif,
                 fontStyle = FontStyle.Italic,
                 fontSize = 22.sp,
@@ -478,8 +473,10 @@ private fun MonthHeader(text: String) {
         modifier =
             Modifier
                 .fillMaxWidth()
-                .background(PaperBottom.copy(alpha = 0.85f))
-                .padding(horizontal = 16.dp, vertical = 8.dp),
+                .background(MossCreme)
+                .drawBehind {
+                    drawLine(Hairline, Offset(0f, size.height), Offset(size.width, size.height), 1.dp.toPx())
+                }.padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
         JournalSubLine(text = text)
     }
@@ -499,16 +496,15 @@ private fun StatRow(
     stat3: StatItem,
     onStat3Click: () -> Unit,
 ) {
-    val serif = rememberDmSerifDisplay()
     Row(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
     ) {
         StatColumn(stat = stat1)
-        StatSeparator(serif)
+        StatSeparator()
         StatColumn(stat = stat2)
-        StatSeparator(serif)
+        StatSeparator()
         StatColumn(stat = stat3, onClick = onStat3Click)
     }
 }
@@ -532,28 +528,28 @@ private fun StatColumn(
             text = stat.value,
             color = AccentCopper,
             fontFamily = serif,
-            fontStyle = FontStyle.Italic,
+            fontStyle = FontStyle.Normal,
             fontWeight = FontWeight.Normal,
-            fontSize = 26.sp,
+            fontSize = 30.sp,
         )
         Text(
             text = stat.label.uppercase(),
-            color = MarginaliaInk,
-            fontSize = 9.sp,
-            fontWeight = FontWeight.W700,
-            letterSpacing = 0.22.em,
+            color = InkMuted,
+            fontSize = 9.5.sp,
+            fontWeight = FontWeight.W600,
+            letterSpacing = 0.14.em,
         )
     }
 }
 
 @Composable
-private fun StatSeparator(serif: FontFamily) {
-    Text(
-        text = "·",
-        color = AccentCopper.copy(alpha = 0.5f),
-        fontFamily = serif,
-        fontStyle = FontStyle.Italic,
-        fontSize = 22.sp,
+private fun StatSeparator() {
+    Box(
+        modifier =
+            Modifier
+                .size(4.dp)
+                .clip(CircleShape)
+                .background(Hairline),
     )
 }
 
@@ -570,21 +566,20 @@ private fun SortChip(
             LifelistSort.STAMP_NUMBER -> stringResource(Res.string.lifelist_sort_stamp)
             LifelistSort.SPECIES -> stringResource(Res.string.lifelist_sort_species)
         }
-    val serif = rememberDmSerifDisplay()
     Box(
         modifier =
             Modifier
                 .clip(RoundedCornerShape(50))
                 .background(PaperBottom.copy(alpha = 0.6f))
+                .border(1.dp, Hairline, RoundedCornerShape(50))
                 .clickable(onClick = onClick)
                 .padding(horizontal = 12.dp, vertical = 6.dp),
     ) {
         Text(
             text = label,
             color = AccentCopper,
-            fontFamily = serif,
-            fontStyle = FontStyle.Italic,
-            fontSize = 11.sp,
+            fontWeight = FontWeight.W600,
+            fontSize = 12.sp,
         )
     }
 }
@@ -610,15 +605,13 @@ private fun LifelistRowComposable(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 6.dp)
-                .clip(RoundedCornerShape(12.dp))
-                .background(Color.White.copy(alpha = 0.4f))
-                .border(1.dp, AccentCopper.copy(alpha = 0.18f), RoundedCornerShape(12.dp))
-                .clickable(onClick = onClick)
-                .padding(horizontal = 12.dp, vertical = 10.dp),
+                .drawBehind {
+                    drawLine(Hairline, Offset(0f, size.height), Offset(size.width, size.height), 1.dp.toPx())
+                }.clickable(onClick = onClick)
+                .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        MiniStamp(number = row.observation.stampNumber, photoPath = row.observation.photoPath)
+        MiniStamp(number = row.observation.stampNumber, photoPath = row.observation.photoPath, size = 40.dp)
         Spacer(Modifier.width(12.dp))
         Column(modifier = Modifier.weight(1f)) {
             val unknownLabel = stringResource(Res.string.unknown_species_label)
@@ -626,13 +619,13 @@ private fun LifelistRowComposable(
                 text = row.species?.name ?: row.observation.speciesId ?: unknownLabel,
                 color = TextOnCreme,
                 fontFamily = serif,
-                fontStyle = FontStyle.Italic,
-                fontSize = 16.sp,
+                fontStyle = FontStyle.Normal,
+                fontSize = 17.sp,
             )
             Text(
                 text = "${row.species?.scientificName ?: ""} · ${relativeTime(row.observation.savedAt, now)}",
-                color = MarginaliaInk.copy(alpha = 0.7f),
-                fontSize = 11.sp,
+                color = InkMuted,
+                fontSize = 12.sp,
             )
         }
         Text(
