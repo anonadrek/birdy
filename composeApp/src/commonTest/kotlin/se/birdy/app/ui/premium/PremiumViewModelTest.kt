@@ -349,7 +349,7 @@ class PremiumViewModelTest {
         }
 
     @Test
-    fun `the tier bought is locked at purchase start, unaffected by selecting a different tier while in flight`() =
+    fun `the tier bought is locked at purchase start - unaffected by selecting a different tier while in flight`() =
         runTest {
             // NOT the class's UnconfinedTestDispatcher: Unconfined runs purchase()'s
             // viewModelScope.launch{} block immediately, inline, up to gate.await() — so

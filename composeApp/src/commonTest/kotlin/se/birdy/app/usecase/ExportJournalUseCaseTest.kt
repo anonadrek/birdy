@@ -238,7 +238,7 @@ class ExportJournalUseCaseTest {
         }
 
     @Test
-    fun `My is a real name in the swedish export, not masked`() =
+    fun `My is a real name in the swedish export - not masked`() =
         runTest {
             val prefs = FakeUserPreferences().apply { userNameValue = "My" }
             val captured = mutableListOf<JournalPdfInput>()
@@ -260,7 +260,7 @@ class ExportJournalUseCaseTest {
         }
 
     @Test
-    fun `My is onboarding's english fallback word, masked in the english export`() =
+    fun `My is onboarding's english fallback word - masked in the english export`() =
         runTest {
             val prefs = FakeUserPreferences().apply { userNameValue = "My" }
             val captured = mutableListOf<JournalPdfInput>()

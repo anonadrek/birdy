@@ -53,7 +53,7 @@ class OnboardingViewModelTest {
     // stored "Min"/"My" for display (see Possessive.kt's displayNameOrNull) is what handles the
     // already-installed users who have the old fallback word on disk from before this change.
     @Test
-    fun `complete with empty name stores empty, not a fallback word`() =
+    fun `complete with empty name stores empty - not a fallback word`() =
         runTest {
             val prefs = InMemoryUserPreferences()
             val vm = OnboardingViewModel(prefs)
