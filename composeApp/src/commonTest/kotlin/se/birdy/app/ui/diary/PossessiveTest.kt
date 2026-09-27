@@ -56,3 +56,44 @@ class PossessiveTest {
         assertEquals("Max’s", possessive("Max", suffix = "’s", sibilantSuffix = "’", sibilantEndings = "s"))
     }
 }
+
+/**
+ * Regression for the CRITICAL bug found reviewing T8b/T8c (2026-09-27): before this fix,
+ * [OnboardingViewModel.complete] stored the literal fallback WORD ("Min"/"My" —
+ * `onboarding_p3_fallback_name`) as `userName` when the user skipped the name field, instead of
+ * leaving it blank. Every reader of `userName` — including existing production users who already
+ * have "Min"/"My" persisted — must treat those two values the same as blank. Fixed on every read
+ * (this function), not by migrating stored data or changing onboarding's persistence.
+ */
+class DisplayNameOrNullTest {
+    @Test
+    fun `the swedish legacy fallback word is treated as no name`() {
+        assertEquals(null, displayNameOrNull("Min"))
+    }
+
+    @Test
+    fun `the english legacy fallback word is treated as no name`() {
+        assertEquals(null, displayNameOrNull("My"))
+    }
+
+    @Test
+    fun `whitespace-only is treated as no name`() {
+        assertEquals(null, displayNameOrNull("  "))
+    }
+
+    @Test
+    fun `empty is treated as no name`() {
+        assertEquals(null, displayNameOrNull(""))
+    }
+
+    @Test
+    fun `a real name is trimmed and kept`() {
+        assertEquals("Albin", displayNameOrNull(" Albin "))
+    }
+
+    @Test
+    fun `a name merely starting with the fallback word is not mistaken for it`() {
+        assertEquals("Mina", displayNameOrNull("Mina"))
+        assertEquals("Myra", displayNameOrNull("Myra"))
+    }
+}

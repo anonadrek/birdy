@@ -212,6 +212,30 @@ class ExportJournalUseCaseTest {
             assertEquals("Albin", captured.single().displayName)
         }
 
+    @Test
+    fun legacy_onboarding_fallback_name_falls_back_to_default() =
+        runTest {
+            // Pre-fix onboarding persisted the literal fallback WORD ("Min"/"My" —
+            // onboarding_p3_fallback_name) as userName instead of leaving it blank; this must
+            // fall back the same as a blank name, not render "av Min" in the PDF byline.
+            val prefs = FakeUserPreferences().apply { userNameValue = "Min" }
+            val captured = mutableListOf<JournalPdfInput>()
+            val uc =
+                newUseCase(
+                    obsRepo = FakeObservationRepository.withDefaults(),
+                    speciesRepo = FakeSpeciesRepository.withDefaults(),
+                    prefs = prefs,
+                    render = { input, _ ->
+                        captured += input
+                        JournalPdfRenderResult.Success(1, 0L)
+                    },
+                )
+
+            uc.run()
+
+            assertEquals("Birdy", captured.single().displayName)
+        }
+
     // -- helpers --
 
     private fun newUseCase(

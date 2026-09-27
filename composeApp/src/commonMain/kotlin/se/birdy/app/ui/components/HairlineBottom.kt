@@ -10,8 +10,10 @@ import se.birdy.app.ui.theme.Hairline
 
 /**
  * Draws a single [thickness] rule along the node's bottom edge, centered at
- * `size.height - strokePx / 2` — fully inside the node's own bounds, not straddling the
- * boundary (a stroke centered exactly on `size.height` would have half its width clipped away).
+ * `size.height - strokePx / 2` — fully inside the node's own bounds. Centering the stroke
+ * exactly on `size.height` instead would draw half of it OUTSIDE the node (below its bottom
+ * edge, over whatever sits underneath) rather than crop it away — `drawBehind` isn't clipped to
+ * the node's bounds by default.
  */
 fun Modifier.hairlineBottom(
     color: Color = Hairline,

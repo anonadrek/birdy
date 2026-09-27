@@ -4,6 +4,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import se.birdy.app.ui.diary.displayNameOrNull
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesRepository
 import se.birdy.datastore.UserPreferences
@@ -53,10 +54,13 @@ class ExportJournalUseCase(
         val now = clock.now()
         val currentYear = now.toLocalDateTime(timeZone).year
 
-        val displayName =
-            userPreferences.userName
-                .first()
-                .takeIf { it.isNotBlank() } ?: fallbackDisplayName
+        // displayNameOrNull (not a plain isNotBlank check): userName can already hold the legacy
+        // onboarding fallback word itself ("Min"/"My") for users who skipped the name field
+        // before that bug was fixed — see Possessive.kt. Neither PDF renderer (Android/iOS)
+        // conditionally omits the byline line, so this reuses the use case's own existing,
+        // already-tested fallbackDisplayName ("Birdy") rather than adding renderer-level
+        // omission logic for a line that's always drawn today.
+        val displayName = displayNameOrNull(userPreferences.userName.first()) ?: fallbackDisplayName
 
         val stats =
             JournalPdfInput.Stats(

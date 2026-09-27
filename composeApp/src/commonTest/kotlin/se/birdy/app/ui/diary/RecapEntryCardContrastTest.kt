@@ -36,9 +36,11 @@ class RecapEntryCardContrastTest {
     }
 
     @Test
-    fun `title clears large-text AA over a worst-case white photo`() {
+    fun `title clears normal-text AA over a worst-case white photo`() {
+        // 20sp regular doesn't meet WCAG's "large text" size (18pt/24px regular, or 14pt/18.66px
+        // bold) — the 4.5:1 normal-text minimum applies, not the relaxed 3:1 large-text one.
         val title = contrastRatio(TextOnHero, textBackdrop)
-        assertTrue(title >= 3.0, "title $title < 3.0")
+        assertTrue(title >= 4.5, "title $title < 4.5")
     }
 
     @Test

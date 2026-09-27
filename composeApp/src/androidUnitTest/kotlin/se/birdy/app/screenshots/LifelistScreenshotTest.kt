@@ -81,21 +81,23 @@ class LifelistScreenshotTest {
         return repo
     }
 
-    private fun viewModel(repo: FakeObservationRepository) =
-        LifelistViewModel(
-            observationRepo = repo,
-            speciesRepo = FakeSpeciesRepository.withDefaults(),
-            prefs =
-                FakeUserPreferences().apply {
-                    userNameValue = "Albin"
-                    lifelistStat3Value = LifelistStat3Choice.STREAK
-                    lifelistSortValue = LifelistSort.RECENT
-                },
-        )
+    private fun viewModel(
+        repo: FakeObservationRepository,
+        userName: String = "Albin",
+    ) = LifelistViewModel(
+        observationRepo = repo,
+        speciesRepo = FakeSpeciesRepository.withDefaults(),
+        prefs =
+            FakeUserPreferences().apply {
+                userNameValue = userName
+                lifelistStat3Value = LifelistStat3Choice.STREAK
+                lifelistSortValue = LifelistSort.RECENT
+            },
+    )
 
     @Composable
-    private fun loadedScreen() {
-        val vm = remember { viewModel(loadedRepo()) }
+    private fun loadedScreen(userName: String = "Albin") {
+        val vm = remember { viewModel(loadedRepo(), userName) }
         LifelistScreen(
             viewModel = vm,
             onObservationClick = {},
@@ -126,4 +128,14 @@ class LifelistScreenshotTest {
     @Test
     @Config(qualifiers = "+sv")
     fun lifelist_empty_sv() = compose.captureScreen("lifelist_empty_sv") { emptyScreen() }
+
+    /**
+     * Regression for the T8d CRITICAL fix: pre-fix onboarding persisted the literal fallback
+     * word "Min" as `userName` for anyone who skipped the name field — this must render as the
+     * anonymous "*Min* dagbok." headline (`displayNameOrNull`), not the genitive "*Mins* dagbok."
+     * that a plain `possessive("Min", ...)` would have produced.
+     */
+    @Test
+    @Config(qualifiers = "+sv")
+    fun lifelist_skipped_name_sv() = compose.captureScreen("lifelist_skipped_name_sv") { loadedScreen(userName = "Min") }
 }
