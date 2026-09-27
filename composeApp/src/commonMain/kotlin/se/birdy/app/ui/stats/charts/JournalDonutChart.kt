@@ -13,12 +13,9 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import se.birdy.app.ui.stats.SeasonPalette
 import se.birdy.app.ui.stats.SeasonStatsUiState
-import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.BrassText
 import se.birdy.app.ui.theme.Hairline
-import se.birdy.app.ui.theme.HeroMossLight
-import se.birdy.app.ui.theme.StampNavy
 import kotlin.math.min
 
 /**
@@ -28,22 +25,21 @@ import kotlin.math.min
  * total is zero the chart draws an empty ring so the section is still
  * recognisable.
  *
- * 1.3.0 T12: season colors now match `SeasonStatsScreen`'s own legend swatches exactly
- * (winter/spring/summer/autumn) — see that file's `SeasonLegend`. Summer uses [BrassText]
- * rather than the literal `Brass` fill token: measured against this chart's CardPaper card
- * background, `Brass` is a razor-thin 3.02:1 (barely clears WCAG 1.4.11's 3:1 graphics
- * minimum) and drops to 2.75:1 on the app's page-level MossCreme background; [BrassText]
- * clears both with real margin (5.63:1 / 5.12:1) while still reading as the brass/mässing
- * family for "summer".
+ * 1.3.0 T12b: season colors default to [SeasonPalette] — the single shared source also used
+ * by `SeasonStatsScreen`'s own legend (`SeasonLegend`), so the arcs and the swatches can never
+ * drift apart. See [SeasonPalette]'s own doc for why summer is `Brass` (not `BrassText`, T12's
+ * original — and wrong — choice: `BrassText` reads almost identically to autumn's `AccentCopper`
+ * for deuteranopes).
  */
+@Suppress("LongParameterList") // every color/size param has a default so call sites stay short.
 @Composable
 fun JournalDonutChart(
     breakdown: SeasonStatsUiState.SeasonBreakdown,
     modifier: Modifier = Modifier,
-    winterColor: Color = StampNavy,
-    springColor: Color = HeroMossLight,
-    summerColor: Color = BrassText,
-    autumnColor: Color = AccentCopper,
+    winterColor: Color = SeasonPalette.winter,
+    springColor: Color = SeasonPalette.spring,
+    summerColor: Color = SeasonPalette.summer,
+    autumnColor: Color = SeasonPalette.autumn,
     emptyRingColor: Color = Hairline,
     height: Dp = 160.dp,
     strokeWidth: Dp = 22.dp,

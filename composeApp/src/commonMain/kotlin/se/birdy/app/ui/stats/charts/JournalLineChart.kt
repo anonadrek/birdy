@@ -31,7 +31,14 @@ import se.birdy.app.ui.theme.MarginaliaInk
  * is drawn with — [Path.addPath] copies it wholesale, then two `lineTo`s close it down to
  * the baseline — so the point/curve math itself is untouched, only a derived shape is
  * added. The axis rule moved off a hardcoded translucent ink to the [axisColor] token.
+ *
+ * 1.3.0 T12b: draw order fixed to fill → axis → line → dots (the fill used to paint over
+ * the axis, drawn first). The axis is `1.dp` tall (was a raw `1f` px, ~0.33dp on xxhdpi and
+ * nearly invisible together with [Hairline]'s thin paper-contrast); the line stroke and dot
+ * radius are now `1.5.dp`/`2.dp` (were raw `3.5f`/`4.5f` px — ≈1.17dp/1.5dp at xxhdpi's 3x
+ * density; rounded up slightly for a cleaner value that keeps today's look).
  */
+@Suppress("LongParameterList") // every color/size param has a default so call sites stay short.
 @Composable
 fun JournalLineChart(
     points: List<SeasonStatsUiState.CumulativePoint>,
@@ -79,13 +86,14 @@ fun JournalLineChart(
                 lineTo(coords.first().x, size.height)
                 close()
             }
+        val axisHeight = 1.dp.toPx()
+        drawPath(path = fillPath, color = fillColor)
         drawRect(
             color = axisColor,
-            topLeft = Offset(0f, size.height - 1f),
-            size = Size(size.width, 1f),
+            topLeft = Offset(0f, size.height - axisHeight),
+            size = Size(size.width, axisHeight),
         )
-        drawPath(path = fillPath, color = fillColor)
-        drawPath(path = path, color = lineColor, style = Stroke(width = 3.5f))
-        coords.forEach { drawCircle(color = dotColor, radius = 4.5f, center = it) }
+        drawPath(path = path, color = lineColor, style = Stroke(width = 1.5.dp.toPx()))
+        coords.forEach { drawCircle(color = dotColor, radius = 2.dp.toPx(), center = it) }
     }
 }

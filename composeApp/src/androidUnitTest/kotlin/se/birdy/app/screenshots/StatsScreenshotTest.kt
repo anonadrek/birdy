@@ -26,7 +26,8 @@ import se.birdy.content.Locale
  * [ArchiveScreenshotTest]/[LifelistScreenshotTest]: Talgoxe/Koltrast/Blåmes/Knölsvan/Tornfalk,
  * [FakeSpeciesRepository.withDefaults]) spridda över åtta av tolv månader 2026 med sinsemellan
  * olika antal (5/4/3/2/1) så månadsstaplarna, säsongsdonuten (alla fyra säsonger > 0), topplistans
- * mässing-/mossfärgade stapel och den kumulativa linjen alla får meningsfull, olikstor data att
+ * mossfärgade stapel (moss only — mässing/brass finns bara i säsongsdonuten och den aktuella
+ * månadens stapel/etikett) och den kumulativa linjen alla får meningsfull, olikstor data att
  * rita — se [seededObservationRepo] för exakt fördelning.
  *
  * Klockan är FAST (2026-08-20, inte [Clock.System]) eftersom "aktuell månad" annars hade drivit
@@ -141,6 +142,11 @@ class StatsScreenshotTest {
         compose.captureScreen("stats_empty_sv") {
             screen(Locale.SV, observationRepo = FakeObservationRepository())
         }
+        // T12b: "Talgoxe" absent would also pass while the screen is still Loading — assert the
+        // empty-state headline itself ("Inget att *kartlägga* ännu.") to prove Empty actually
+        // rendered. "kartlägga" is JournalHeadline's one accent segment (parseJournalHeadline
+        // splits on the `*...*` markers with no surrounding whitespace inside the word itself).
+        compose.onNodeWithText("kartlägga").assertExists()
         compose.onNodeWithText("Talgoxe").assertDoesNotExist()
     }
 }

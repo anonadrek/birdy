@@ -531,6 +531,9 @@
     <string name="premium_teaser_export_failed">Couldn’t make the PDF. Try again.</string>
 
     <!-- Plan 6b3 T11: Season Statistics screen -->
+    <!-- 1.3.0 T12b: neutral top-bar badge, independent of premium_teaser_corner (a teaser CTA
+         reused elsewhere) so that key's wording can change without touching this badge. -->
+    <string name="premium_badge">PREMIUM</string>
     <string name="stats_title">Season Statistics</string>
     <string name="stats_intro_eyebrow">SEASON</string>
     <string name="stats_intro_headline">A *year* in the field.</string>

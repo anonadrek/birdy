@@ -26,7 +26,12 @@ import se.birdy.app.ui.theme.Hairline
  * only, never text on paper" doc comment), not the text label under it, so its 2.8:1
  * paper-contrast is fine here. The axis line moved off a hardcoded translucent ink to the
  * [axisColor] token so it matches every other hairline rule on the redesigned screen.
+ *
+ * 1.3.0 T12b: the axis is drawn `1.dp` tall (was a raw `1f` — 1 physical pixel regardless of
+ * density, effectively invisible on an xxhdpi phone together with [Hairline]'s already-thin
+ * 1.44:1 on `CardPaper`).
  */
+@Suppress("LongParameterList") // every color/size param has a default so call sites stay short.
 @Composable
 fun JournalBarChart(
     bars: List<SeasonStatsUiState.MonthBar>,
@@ -45,7 +50,7 @@ fun JournalBarChart(
         val slot = size.width / bars.size
         val barWidth = slot * 0.62f
         val barInset = (slot - barWidth) / 2f
-        val axisHeight = 1f
+        val axisHeight = 1.dp.toPx()
         bars.forEachIndexed { i, b ->
             val h = (b.observationCount / maxCount.toFloat()) * (size.height - axisHeight)
             val x = i * slot + barInset
