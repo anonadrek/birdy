@@ -1,7 +1,6 @@
 package se.birdy.app.ui.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,23 +17,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
-import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.MarginaliaInk
-import se.birdy.app.ui.theme.SandCreme
-import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.rememberCaveat
+import se.birdy.app.ui.theme.BrassInk
+import se.birdy.app.ui.theme.BrassLight
+import se.birdy.app.ui.theme.HeroMossDeep
+import se.birdy.app.ui.theme.HeroMossMid
+import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 
 /**
- * Paper-edge-card med corner-flag + Caveat-italic CTA-rad. Återanvänds på
- * Arkiv-, Species Profile- och (eventuellt) Settings-sidorna för att teasa
- * Premium-features. Konsekvent visuellt språk över hela appen.
+ * Dark-moss gradient card (rost & mässing) med mässings corner-flag. Återanvänds på
+ * Arkiv- och Species Profile-sidorna för att teasa Premium-features. Konsekvent
+ * visuellt språk över hela appen (1.3.0 palette lift, spec 2026-09-24 §4.1).
  *
  * Plan 6b3 T8: when [premiumActive] is true AND [exportLabel] is non-null the
  * card swaps the "Unlock" CTA for an "Export Field Journal" action that invokes
@@ -70,15 +68,15 @@ fun PremiumTeaserCard(
             else -> onUnlock
         }
     val glowModifier = if (showExportCta) Modifier else Modifier.premiumGlow()
+    val cardShape = RoundedCornerShape(18.dp)
     Box(modifier = modifier.fillMaxWidth()) {
         Column(
             modifier =
                 Modifier
                     .fillMaxWidth()
                     .padding(top = 9.dp)
-                    .clip(RoundedCornerShape(14.dp))
-                    .background(SandCreme)
-                    .border(1.dp, AccentCopper.copy(alpha = 0.55f), RoundedCornerShape(14.dp))
+                    .clip(cardShape)
+                    .background(Brush.linearGradient(listOf(HeroMossMid, HeroMossDeep)))
                     .clickable(enabled = !(showExportCta && isExporting), onClick = onCardClick)
                     .then(glowModifier)
                     .padding(14.dp),
@@ -86,16 +84,15 @@ fun PremiumTeaserCard(
             Text(
                 text = title,
                 fontFamily = rememberDmSerifDisplay(),
-                fontStyle = FontStyle.Italic,
-                fontSize = 15.sp,
-                color = TextOnCreme,
+                fontSize = 19.sp,
+                color = TextOnHero,
             )
             Spacer(Modifier.height(4.dp))
             Text(
                 text = subtitle,
-                fontSize = 11.sp,
-                color = MarginaliaInk,
-                lineHeight = 16.sp,
+                fontSize = 13.sp,
+                color = TextOnHero.copy(alpha = 0.7f),
+                lineHeight = 18.sp,
             )
             Spacer(Modifier.height(10.dp))
             Row(
@@ -105,12 +102,11 @@ fun PremiumTeaserCard(
             ) {
                 Text(
                     text = effectiveCta,
-                    fontFamily = rememberCaveat(),
                     fontWeight = FontWeight.W600,
                     fontSize = 16.sp,
-                    color = if (showExportCta && isExporting) AccentCopper.copy(alpha = 0.55f) else AccentCopper,
+                    color = if (showExportCta && isExporting) BrassLight.copy(alpha = 0.55f) else BrassLight,
                 )
-                Text("›", color = AccentCopper, fontSize = 20.sp, fontWeight = FontWeight.W600)
+                Text("›", color = BrassLight, fontSize = 20.sp, fontWeight = FontWeight.W600)
             }
         }
         Box(
@@ -118,14 +114,14 @@ fun PremiumTeaserCard(
                 Modifier
                     .offset(x = 14.dp, y = 0.dp)
                     .clip(RoundedCornerShape(4.dp))
-                    .background(AccentCopper)
+                    .background(BrassLight)
                     .padding(horizontal = 8.dp, vertical = 3.dp)
                     .height(18.dp),
             contentAlignment = Alignment.Center,
         ) {
             Text(
                 text = cornerLabel,
-                color = Color.White,
+                color = BrassInk,
                 fontSize = 9.sp,
                 fontWeight = FontWeight.W700,
                 letterSpacing = 0.2.em,
