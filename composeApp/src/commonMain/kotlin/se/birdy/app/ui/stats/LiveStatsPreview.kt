@@ -1,6 +1,7 @@
 package se.birdy.app.ui.stats
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,8 +26,10 @@ import birdy_bird_scanner.composeapp.generated.resources.stats_section_top
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.stats.charts.JournalBarChart
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.CardPaper
+import se.birdy.app.ui.theme.Hairline
 import se.birdy.app.ui.theme.MarginaliaInk
-import se.birdy.app.ui.theme.SandCreme
+import se.birdy.app.ui.theme.OutlineInk
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
@@ -35,6 +38,12 @@ import se.birdy.app.ui.theme.rememberDmSerifDisplay
  * Plan 6b3 T12: replaces [LockedStatsPreview] when premium is active. Shows a
  * mini bar-chart of the current calendar year + a species-count chip and a
  * tappable "Open stats →" link that navigates to [SeasonStatsScreen].
+ *
+ * 1.3.0 T12b review fix: surface moved from `SandCreme` to [CardPaper] + a 1dp [Hairline]
+ * border, matching [se.birdy.app.ui.components.SectionCard]'s look — `SandCreme` made
+ * [JournalBarChart]'s default `Hairline` axis ~1.17:1 (invisible) and its `Brass` current-month
+ * bar ~2.47:1 (below 3:1); the card's own `axisColor` is now passed explicitly as [OutlineInk]
+ * so a zero-observation month still has a visible baseline here.
  */
 @Composable
 fun LiveStatsPreview(
@@ -42,12 +51,14 @@ fun LiveStatsPreview(
     onOpen: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val shape = RoundedCornerShape(16.dp)
     Column(
         modifier =
             modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(12.dp))
-                .background(SandCreme)
+                .clip(shape)
+                .background(CardPaper)
+                .border(1.dp, Hairline, shape)
                 .clickable(onClick = onOpen)
                 .padding(horizontal = 14.dp, vertical = 12.dp),
     ) {
@@ -79,6 +90,7 @@ fun LiveStatsPreview(
         JournalBarChart(
             bars = state.monthBars,
             modifier = Modifier.fillMaxWidth(),
+            axisColor = OutlineInk,
             height = 70.dp,
         )
         val currentLabel = state.monthBars.firstOrNull { it.isCurrent }?.label

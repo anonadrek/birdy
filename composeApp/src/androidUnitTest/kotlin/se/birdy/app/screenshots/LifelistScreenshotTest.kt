@@ -3,6 +3,7 @@ package se.birdy.app.screenshots
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithText
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import org.junit.Rule
@@ -16,6 +17,7 @@ import se.birdy.app.testing.FakeSpeciesRepository
 import se.birdy.app.testing.FakeUserPreferences
 import se.birdy.app.ui.diary.LifelistScreen
 import se.birdy.app.ui.diary.LifelistViewModel
+import se.birdy.app.ui.stats.SeasonStatsUiState
 import se.birdy.datastore.LifelistSort
 import se.birdy.datastore.LifelistStat3Choice
 import se.birdy.domain.observation.Observation
@@ -117,6 +119,44 @@ class LifelistScreenshotTest {
         )
     }
 
+    /**
+     * T12b: minimal [SeasonStatsUiState.Loaded] fixture for [LiveStatsPreview] — only
+     * `totalSpeciesThisYear` and `monthBars` are read by that composable; the rest are
+     * present only because the sealed state requires them.
+     */
+    private fun livePreviewFixture(): SeasonStatsUiState.Loaded {
+        val bars =
+            (1..12).map { month ->
+                SeasonStatsUiState.MonthBar(
+                    month = month,
+                    label = month.toString(),
+                    observationCount = if (month <= 6) month else 0,
+                    isCurrent = month == 6,
+                )
+            }
+        return SeasonStatsUiState.Loaded(
+            totalSpeciesThisYear = 3,
+            totalObservationsThisYear = 21,
+            monthBars = bars,
+            seasonDonut = SeasonStatsUiState.SeasonBreakdown(winter = 3, spring = 6, summer = 9, autumn = 3),
+            topSpecies = emptyList(),
+            cumulativeLine = emptyList(),
+        )
+    }
+
+    @Composable
+    private fun loadedScreenWithLivePreview() {
+        val vm = remember { viewModel(loadedRepo()) }
+        LifelistScreen(
+            viewModel = vm,
+            onObservationClick = {},
+            onScanCtaClick = {},
+            onPremiumClick = {},
+            showPremiumTeaser = false,
+            livePreviewState = livePreviewFixture(),
+        )
+    }
+
     @Test
     @Config(qualifiers = "+sv")
     fun lifelist_sv() = compose.captureScreen("lifelist_sv") { loadedScreen() }
@@ -163,4 +203,17 @@ class LifelistScreenshotTest {
     @Test
     @Config(qualifiers = "+en")
     fun lifelist_blank_name_en() = compose.captureScreen("lifelist_blank_name_en") { loadedScreen(userName = "") }
+
+    /**
+     * T12b review fix: [se.birdy.app.ui.stats.LiveStatsPreview] had no screenshot coverage at
+     * all before this — the SandCreme-surface regression (invisible axis, sub-3:1 current-month
+     * bar) went unnoticed because nothing ever rendered it. Asserts the preview's own content
+     * (the "Open stats" link) actually rendered before trusting the capture.
+     */
+    @Test
+    @Config(qualifiers = "+sv")
+    fun lifelist_live_preview_sv() {
+        compose.captureScreen("lifelist_live_preview_sv") { loadedScreenWithLivePreview() }
+        compose.onNodeWithText("Öppna statistik", substring = true).assertExists()
+    }
 }
