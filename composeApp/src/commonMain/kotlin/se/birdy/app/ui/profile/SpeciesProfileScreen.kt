@@ -31,7 +31,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import birdy_bird_scanner.composeapp.generated.resources.Res
@@ -63,6 +62,7 @@ import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.HeroImage
 import se.birdy.app.ui.components.JournalLoading
+import se.birdy.app.ui.components.MicroLabel
 import se.birdy.app.ui.components.PaperSheet
 import se.birdy.app.ui.components.PaperSheetOverlap
 import se.birdy.app.ui.components.PhotoHero
@@ -151,8 +151,8 @@ private fun ProfileContent(
         item {
             PaperSheet {
                 Column(modifier = Modifier.fillMaxWidth()) {
-                    SectionLabel(stringResource(Res.string.profile_label_description))
-                    Spacer(Modifier.height(6.dp))
+                    MicroLabel(stringResource(Res.string.profile_label_description))
+                    Spacer(Modifier.height(8.dp))
                     DescriptionWithDropCap(
                         text = species.description.orEmpty().ifBlank { stringResource(Res.string.empty_description) },
                         serif = serif,
@@ -177,8 +177,8 @@ private fun ProfileContent(
 
                 Spacer(Modifier.height(16.dp))
                 Column(modifier = Modifier.fillMaxWidth()) {
-                    SectionLabel(stringResource(Res.string.profile_label_migration))
-                    Spacer(Modifier.height(6.dp))
+                    MicroLabel(stringResource(Res.string.profile_label_migration))
+                    Spacer(Modifier.height(8.dp))
                     Text(
                         text = species.migration.orEmpty().ifBlank { stringResource(Res.string.empty_migration) },
                         style = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp),
@@ -188,8 +188,8 @@ private fun ProfileContent(
 
                 Spacer(Modifier.height(16.dp))
                 Column(modifier = Modifier.fillMaxWidth()) {
-                    SectionLabel(stringResource(Res.string.profile_label_photos))
-                    Spacer(Modifier.height(6.dp))
+                    MicroLabel(stringResource(Res.string.profile_label_photos))
+                    Spacer(Modifier.height(8.dp))
                     if (species.images.isEmpty()) {
                         Text(
                             text = stringResource(Res.string.empty_photos),
@@ -205,7 +205,7 @@ private fun ProfileContent(
                                 HeroImage(
                                     imagePath = img.path,
                                     modifier = Modifier.weight(1f).height(64.dp),
-                                    cornerRadius = 8.dp,
+                                    cornerRadius = 12.dp,
                                 )
                             }
                         }
@@ -255,17 +255,6 @@ private fun ProfilePillRow(
 }
 
 @Composable
-private fun SectionLabel(text: String) {
-    Text(
-        text = text.uppercase(),
-        color = MarginaliaInk,
-        fontSize = 9.sp,
-        fontWeight = FontWeight.W700,
-        letterSpacing = 0.22.em,
-    )
-}
-
-@Composable
 private fun DescriptionWithDropCap(
     text: String,
     serif: FontFamily,
@@ -279,21 +268,21 @@ private fun DescriptionWithDropCap(
                 pushStyle(
                     SpanStyle(
                         fontFamily = serif,
-                        fontSize = 26.sp,
+                        fontSize = 44.sp,
                         fontStyle = FontStyle.Italic,
                         color = AccentCopper,
                     ),
                 )
                 append(firstChar)
                 pop()
-                pushStyle(SpanStyle(fontSize = 13.sp))
+                pushStyle(SpanStyle(fontSize = 14.5.sp))
                 append(rest)
                 pop()
             }.toAnnotatedString()
     Text(
         text = annotated,
         color = TextOnCreme,
-        lineHeight = 20.sp,
+        lineHeight = 22.sp,
     )
 }
 
