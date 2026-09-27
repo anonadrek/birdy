@@ -51,7 +51,6 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -522,10 +521,11 @@ private fun JournalSearchField(
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        // T10b minor 12: OutlinedTextField's placeholder is only announced while the field is
-        // empty — once there's a query, TalkBack's only stable name for this field is this
-        // persistent contentDescription (doesn't change the visible look).
-        modifier = modifier.semantics { contentDescription = placeholder },
+        // T10c: reverted the T10b attempt at a persistent contentDescription here — a
+        // contentDescription on an EDITABLE field can make TalkBack read the description
+        // instead of the typed value (Accessibility Scanner's EditableContentDescCheck flags
+        // exactly this). The placeholder alone (announced while empty) is the correct pattern.
+        modifier = modifier,
         singleLine = true,
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         keyboardActions = KeyboardActions(onSearch = { keyboardController?.hide() }),
@@ -715,6 +715,10 @@ private fun RedListedTag() {
             color = StampNavy,
             fontWeight = FontWeight.W600,
             fontSize = 9.5.sp,
+            // T10c: without this the pill inherits the theme's 22sp bodyLarge line height and
+            // grows to ~28dp tall, reading as a button rather than a small tag.
+            lineHeight = 12.sp,
+            maxLines = 1,
             letterSpacing = 0.1.em,
         )
     }

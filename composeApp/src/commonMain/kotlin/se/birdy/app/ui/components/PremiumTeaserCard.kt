@@ -150,6 +150,10 @@ fun PremiumTeaserCard(
                 color = BrassInk,
                 fontSize = 9.sp,
                 fontWeight = FontWeight.W700,
+                // T10c: without this the theme's 22sp bodyLarge line height grew the tab ~2.5dp
+                // taller than its own heightIn(min = 18.dp) box implies.
+                lineHeight = 12.sp,
+                maxLines = 1,
                 letterSpacing = 0.2.em,
             )
         }

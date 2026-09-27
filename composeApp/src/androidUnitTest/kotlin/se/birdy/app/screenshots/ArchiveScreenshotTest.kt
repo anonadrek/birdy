@@ -83,9 +83,11 @@ class ArchiveScreenshotTest {
         FakeSpeciesRepository().apply {
             searchResults.value =
                 listOf(
-                    summary("Q25485", "Talgoxe", "Parus major", "Paridae", "Mesfåglar"),
-                    // Red-listed (T10b spec gap C) so the Archive's tag renders in these
-                    // screenshots — Blåmes isn't really NT in species.db, this is fixture-only.
+                    // Red-listed AND stamped (T10c) so one row exercises the tag + MiniStamp
+                    // together — Talgoxe isn't really NT in species.db, this is fixture-only.
+                    summary("Q25485", "Talgoxe", "Parus major", "Paridae", "Mesfåglar", iucnStatus = "NT"),
+                    // Red-listed (T10b spec gap C) so the Archive's tag also renders on its own,
+                    // without a stamp — Blåmes isn't really NT in species.db, this is fixture-only.
                     summary("Q25404", "Blåmes", "Cyanistes caeruleus", "Paridae", "Mesfåglar", iucnStatus = "NT"),
                     summary("Q25406", "Svartmes", "Periparus ater", "Paridae", "Mesfåglar"),
                     summary("Q25234", "Koltrast", "Turdus merula", "Turdidae", "Trastar"),
