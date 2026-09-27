@@ -8,6 +8,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import se.birdy.app.data.premium.FormattedPrices
@@ -65,4 +66,33 @@ class PremiumScreenshotTest {
     @Test
     @Config(qualifiers = "+en")
     fun thanks_en() = compose.captureScreen("thanks_en") { PremiumThankYouScreen(onClose = {}) }
+
+    // Stress case (T9b #9): a narrow phone (360dp, vs. the class default 411dp) + 130% system
+    // font scale + long, realistic price strings ("SEK 1,499.00" is wider than any SEK amount
+    // Birdy would plausibly charge, but Play formats can be this long for some locales/currencies)
+    // — the two tier cards must stay equal height (IntrinsicSize.Min) and each price must stay on
+    // one line (BasicText autoSize) instead of wrapping or overflowing its card.
+    // Height taller than a real device (LazyColumn only composes what's in the viewport, so the
+    // tier cards this test exists to check need to fall inside it, not below an unscrolled fold)
+    // — width is the actual stress dimension here (360dp, narrower than the class default
+    // 411dp), combined with 130% font scale and long price strings.
+    @Test
+    @Config(qualifiers = "en-w360dp-h1400dp")
+    fun premium_w360_long_en_130() {
+        RuntimeEnvironment.setFontScale(1.3f)
+        compose.captureScreen("premium_w360_long_en_130") {
+            screen(FormattedPrices(yearly = "SEK 1,499.00", lifetime = "SEK 199.00"))
+        }
+    }
+
+    // Cheap to add alongside the EN stress case above: same narrow width + font scale, Swedish
+    // price formatting (space thousands separator, comma decimal, trailing "kr").
+    @Test
+    @Config(qualifiers = "sv-w360dp-h1400dp")
+    fun premium_w360_long_sv_130() {
+        RuntimeEnvironment.setFontScale(1.3f)
+        compose.captureScreen("premium_w360_long_sv_130") {
+            screen(FormattedPrices(yearly = "1 499,00 kr", lifetime = "199,00 kr"))
+        }
+    }
 }

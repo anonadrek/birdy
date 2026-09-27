@@ -18,7 +18,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
@@ -27,8 +26,6 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_thanks_continue
 import birdy_bird_scanner.composeapp.generated.resources.premium_thanks_headline
 import birdy_bird_scanner.composeapp.generated.resources.premium_thanks_kicker
 import birdy_bird_scanner.composeapp.generated.resources.premium_thanks_signoff
-import coil3.compose.AsyncImage
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BirdyPremiumButton
@@ -48,7 +45,6 @@ internal const val PREMIUM_THANKS_BODY_ALPHA = 0.85f
  * Shown to early (grandfathered) users: once automatically after updating to 1.3.0, and
  * instead of the purchase screen whenever they open Premium. Spec 2026-09-24 §5.2.
  */
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun PremiumThankYouScreen(onClose: () -> Unit) {
     PlatformBackHandler(enabled = true, onBack = onClose)
@@ -85,15 +81,20 @@ fun PremiumThankYouScreen(onClose: () -> Unit) {
     }
 }
 
-/** `*accent*` markup in [premium_thanks_headline] split into [PhotoHero]'s title/titleAccent slots. */
-private fun thanksHeadlineParts(text: String): Pair<String, String?> {
+/**
+ * `*accent*` markup in [premium_thanks_headline] split into [PhotoHero]'s title/titleAccent
+ * slots. The Accent segment(s), if any, MUST be trailing (after all Plain text) — [PhotoHero]
+ * only supports one accent run, appended after the title with a space, so a `*accent*` placed
+ * mid-sentence in the source string would visually reorder to the end here, not render in place.
+ * Internal so [PremiumThankYouHeadlineTest] can pin this contract.
+ */
+internal fun thanksHeadlineParts(text: String): Pair<String, String?> {
     val segments = parseJournalHeadline(text)
     val plain = segments.filterIsInstance<HeadlineSegment.Plain>().joinToString("") { it.text }.trim()
     val accent = segments.filterIsInstance<HeadlineSegment.Accent>().joinToString(" ") { it.text }.ifBlank { null }
     return plain to accent
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun ThanksHero(
     kicker: String,
@@ -105,14 +106,7 @@ private fun ThanksHero(
         title = plain,
         titleAccent = accent,
         height = 280.dp,
-        image = {
-            AsyncImage(
-                model = Res.getUri("files/premium/great-tit-hero.jpg"),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize(),
-            )
-        },
+        image = { PremiumHeroPhoto() },
     )
 }
 

@@ -28,6 +28,14 @@ val HeroMossLight = Color(0xFF3A4A2E)
 val HeroMossMid = Color(0xFF2C3A23)
 val HeroMossDeep = Color(0xFF1F2A19)
 
+// Dark glass behind icons drawn directly on a photo (Premium's close button; Task 11 reuses it).
+// ≈6.7:1 for TextOnHero against this composited over the bundled Premium photo's top-right
+// region (measured directly from the JPEG, not a worst-case-white photo — this is one fixed
+// bundled asset, not an arbitrary species photo). A translucent WHITE glass was tried first and
+// was invisible: both the icon and the glass are light, so lightening an already-bright photo
+// further left almost no contrast between them.
+val GlassOnPhoto = Color.Black.copy(alpha = 0.30f)
+
 // ===== Rust = "do something" (CTA, active tab, stat numbers, stamps) =====
 val AccentCopper = Color(0xFF9A4526)
 val AccentCopperDeep = Color(0xFF72301A) // end of the primary-button gradient
