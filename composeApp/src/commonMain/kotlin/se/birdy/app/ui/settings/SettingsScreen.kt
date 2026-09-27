@@ -111,6 +111,7 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.components.OrnamentRule
 import se.birdy.app.ui.components.PremiumHeroCard
+import se.birdy.app.ui.diary.displayNameOrNull
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.PaperTop
@@ -182,7 +183,7 @@ fun SettingsScreen(
                     SettingsRow(
                         icon = Icons.Outlined.Person,
                         label = stringResource(Res.string.settings_label_name),
-                        value = state.userName.ifEmpty { "—" },
+                        value = displayNameOrNull(state.userName) ?: "—",
                         onClick = { showNameDialog = true },
                     )
                     DashedDivider()
@@ -380,7 +381,7 @@ fun SettingsScreen(
 
     if (showNameDialog) {
         NameEditDialog(
-            initial = state.userName,
+            initial = displayNameOrNull(state.userName).orEmpty(),
             onSave = {
                 viewModel.saveName(it)
                 showNameDialog = false

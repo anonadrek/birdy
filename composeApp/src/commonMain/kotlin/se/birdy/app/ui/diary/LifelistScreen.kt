@@ -244,9 +244,10 @@ private fun LoadedLifelist(
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item {
             Column {
-                // displayNameOrNull (not a plain isEmpty/isBlank check): userName can already
-                // hold the legacy onboarding fallback word itself ("Min"/"My") for users who
-                // skipped the name field before that bug was fixed — see Possessive.kt.
+                // displayNameOrNull (not a plain isEmpty/isBlank check): userName can hold the
+                // onboarding fallback word itself ("Min"/"My") for anyone who skipped the name
+                // field — onboarding STILL stores it that way today, not just for past users
+                // (OnboardingViewModel.kt) — see Possessive.kt.
                 val displayName = displayNameOrNull(state.userName)
                 JournalIntro(
                     label = stringResource(Res.string.lifelist_journal_label),

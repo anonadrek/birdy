@@ -54,12 +54,13 @@ class ExportJournalUseCase(
         val now = clock.now()
         val currentYear = now.toLocalDateTime(timeZone).year
 
-        // displayNameOrNull (not a plain isNotBlank check): userName can already hold the legacy
-        // onboarding fallback word itself ("Min"/"My") for users who skipped the name field
-        // before that bug was fixed — see Possessive.kt. Neither PDF renderer (Android/iOS)
-        // conditionally omits the byline line, so this reuses the use case's own existing,
-        // already-tested fallbackDisplayName ("Birdy") rather than adding renderer-level
-        // omission logic for a line that's always drawn today.
+        // displayNameOrNull (not a plain isNotBlank check): userName can hold the onboarding
+        // fallback word itself ("Min"/"My") for anyone who skipped the name field — onboarding
+        // STILL stores it that way today, not just for past users (OnboardingViewModel.kt) — see
+        // Possessive.kt. Neither PDF renderer (Android/iOS) conditionally omits the byline line,
+        // so this reuses the use case's own existing, already-tested fallbackDisplayName
+        // ("Birdy") rather than adding renderer-level omission logic for a line that's always
+        // drawn today.
         val displayName = displayNameOrNull(userPreferences.userName.first()) ?: fallbackDisplayName
 
         val stats =

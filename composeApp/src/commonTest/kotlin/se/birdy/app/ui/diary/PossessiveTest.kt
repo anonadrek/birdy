@@ -58,12 +58,14 @@ class PossessiveTest {
 }
 
 /**
- * Regression for the CRITICAL bug found reviewing T8b/T8c (2026-09-27): before this fix,
- * [OnboardingViewModel.complete] stored the literal fallback WORD ("Min"/"My" —
- * `onboarding_p3_fallback_name`) as `userName` when the user skipped the name field, instead of
- * leaving it blank. Every reader of `userName` — including existing production users who already
- * have "Min"/"My" persisted — must treat those two values the same as blank. Fixed on every read
- * (this function), not by migrating stored data or changing onboarding's persistence.
+ * Regression for the CRITICAL bug found reviewing T8b/T8c (2026-09-27):
+ * [OnboardingViewModel.complete] stores the literal fallback WORD ("Min"/"My" —
+ * `onboarding_p3_fallback_name`) as `userName` when the user skips the name field, instead of
+ * leaving it blank — and STILL does, today, for every user who skips the field, not just users
+ * who did so before some later fix (no such fix has landed on the write side). Every reader of
+ * `userName` must treat those two values the same as blank. Masked on every read (this function),
+ * not by migrating stored data or changing onboarding's own persistence — this stays load-bearing
+ * until onboarding itself is changed to store "" instead.
  */
 class DisplayNameOrNullTest {
     @Test

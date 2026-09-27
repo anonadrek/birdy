@@ -130,10 +130,11 @@ class LifelistScreenshotTest {
     fun lifelist_empty_sv() = compose.captureScreen("lifelist_empty_sv") { emptyScreen() }
 
     /**
-     * Regression for the T8d CRITICAL fix: pre-fix onboarding persisted the literal fallback
-     * word "Min" as `userName` for anyone who skipped the name field — this must render as the
-     * anonymous "*Min* dagbok." headline (`displayNameOrNull`), not the genitive "*Mins* dagbok."
-     * that a plain `possessive("Min", ...)` would have produced.
+     * Regression for the T8d CRITICAL fix: onboarding still persists the literal fallback word
+     * "Min" as `userName` today for anyone who skips the name field (not just historical users —
+     * see `Possessive.kt`) — this must render as the anonymous "*Min* dagbok." headline
+     * (`displayNameOrNull`), not the genitive "*Mins* dagbok." that a plain
+     * `possessive("Min", ...)` would have produced.
      */
     @Test
     @Config(qualifiers = "+sv")

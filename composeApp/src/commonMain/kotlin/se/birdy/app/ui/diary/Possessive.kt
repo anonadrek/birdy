@@ -23,9 +23,13 @@ internal fun possessive(
 
 /**
  * The literal fallback WORD [OnboardingViewModel][se.birdy.app.ui.onboarding.OnboardingViewModel]
- * persisted as `userName` when a user skipped the name field, pre-fix — `onboarding_p3_fallback_name`
- * is "Min" (Swedish) / "My" (English). `complete()` did `trimmed.ifEmpty { defaultFallbackName }`,
- * so instead of leaving `userName` blank it wrote this word in as if it were a real name.
+ * persists as `userName` when a user skips the name field — `onboarding_p3_fallback_name` is
+ * "Min" (Swedish) / "My" (English). `complete()` STILL does `trimmed.ifEmpty { defaultFallbackName }`
+ * today (`OnboardingViewModel.kt`, not a fixed historical bug), so instead of leaving `userName`
+ * blank it writes this word in as if it were a real name — for every user who skips the field,
+ * right now, not just ones who did so in the past. This set mirrors that current fallback and
+ * must stay exactly in sync with it; it can only be retired once onboarding itself is changed to
+ * persist "" instead of [se.birdy.app.ui.onboarding.OnboardingViewModel]'s `defaultFallbackName`.
  */
 private val LEGACY_ONBOARDING_FALLBACK_NAMES = setOf("Min", "My")
 
@@ -33,9 +37,11 @@ private val LEGACY_ONBOARDING_FALLBACK_NAMES = setOf("Min", "My")
  * Normalizes a stored `userName` for display: `null` when it's blank, or — after trimming —
  * exactly equal (case-sensitively) to one of [LEGACY_ONBOARDING_FALLBACK_NAMES]; otherwise the
  * trimmed name. Every reader of `userName` must go through this, not just `.isEmpty()`/`.ifEmpty`,
- * because [LEGACY_ONBOARDING_FALLBACK_NAMES] are real, already-persisted values for existing
- * production users, not just a hypothetical input — this fixes it on read rather than migrating
- * stored data or touching onboarding's own persistence.
+ * because [LEGACY_ONBOARDING_FALLBACK_NAMES] are values onboarding is still writing TODAY for
+ * every user who skips the name field (see that val's KDoc), not just already-persisted values
+ * from before some fix — this masks it on every read rather than changing onboarding's own
+ * persistence, so it stays load-bearing (not a one-time migration to eventually delete) until
+ * onboarding stores "" instead.
  */
 internal fun displayNameOrNull(stored: String): String? {
     val trimmed = stored.trim()
