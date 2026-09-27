@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -63,7 +64,8 @@ import se.birdy.app.util.speciesImageUri
 import se.birdy.content.SpeciesId
 
 // Disabled candidate card (already-picked-away sibling once one candidate is chosen): dimmed
-// but still legible, same visual language as BirdyTextButton's DISABLED_ALPHA.
+// but still legible — same visual language as BirdyTextButton's DISABLED_ALPHA (0.45f), a touch
+// lighter since a whole card reads as "disabled" more readily than a small text button does.
 private const val DISABLED_CARD_ALPHA = 0.5f
 
 @Composable
@@ -239,7 +241,7 @@ private fun CandidateCard(
                 .clip(shape)
                 .background(CardPaper)
                 .border(width = 1.dp, color = Hairline, shape = shape)
-                .clickable(enabled = enabled, onClick = onClick)
+                .clickable(enabled = enabled, role = Role.Button, onClick = onClick)
                 .padding(12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {

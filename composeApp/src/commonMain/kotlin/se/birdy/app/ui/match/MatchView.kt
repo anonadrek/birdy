@@ -13,8 +13,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -22,7 +22,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Check
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.SnackbarHost
@@ -77,22 +76,29 @@ import se.birdy.app.ui.components.BirdyPrimaryButton
 import se.birdy.app.ui.components.BirdyTextButton
 import se.birdy.app.ui.components.BodyTextWithCaveatAccents
 import se.birdy.app.ui.components.PaperSheet
+import se.birdy.app.ui.components.PaperSheetOverlap
 import se.birdy.app.ui.components.PhotoHero
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.AccentCopperLight
 import se.birdy.app.ui.theme.CardPaper
-import se.birdy.app.ui.theme.Hairline
 import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.MossCreme
+import se.birdy.app.ui.theme.OutlineInk
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.util.speciesImageUri
 import se.birdy.content.Locale
 import se.birdy.ml.ScanSource
+
+// Caps the stamp column's width so a long caption (StampSeal's 10sp name/caption text has no
+// maxLines — "awaiting your signature", or a long species name after a first-sighting save) wraps
+// instead of crushing the weighted marginalia column at large font scales (a Row measures its
+// unweighted children — this Box — before it hands the rest of the width to weight(1f)).
+private val StampColumnMaxWidth = 104.dp
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -157,9 +163,9 @@ internal fun MatchView(
             PhotoHero(
                 kicker = stringResource(Res.string.match_eyebrow, state.stampNumber),
                 title = state.species.name,
-                metaStart = state.species.scientificName,
+                latinName = state.species.scientificName,
                 height = 340.dp,
-                bottomPadding = 42.dp,
+                bottomPadding = PaperSheetOverlap + 18.dp,
                 image =
                     heroPath?.let { path ->
                         {
@@ -181,7 +187,9 @@ internal fun MatchView(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     MatchMarginalia(state = state, zone = zone, modifier = Modifier.weight(1f))
-                    StampWithAnimation(state = state, size = 72.dp)
+                    Box(modifier = Modifier.widthIn(max = StampColumnMaxWidth)) {
+                        StampWithAnimation(state = state, size = 72.dp)
+                    }
                 }
 
                 Spacer(Modifier.height(20.dp))
@@ -211,7 +219,7 @@ internal fun MatchView(
                         shape = RoundedCornerShape(12.dp),
                         colors =
                             OutlinedTextFieldDefaults.colors(
-                                unfocusedBorderColor = Hairline,
+                                unfocusedBorderColor = OutlineInk,
                                 focusedBorderColor = AccentCopper,
                                 unfocusedContainerColor = CardPaper,
                                 focusedContainerColor = CardPaper,
@@ -287,7 +295,7 @@ private fun ConfidenceBar(
 @Composable
 private fun StampWithAnimation(
     state: MatchResultUiState.Match,
-    size: Dp = 110.dp,
+    size: Dp,
 ) {
     val isSaved = state.saveStatus == MatchResultUiState.SaveStatus.Saved
     val captionPending = stringResource(Res.string.match_stamp_caption_pending)
@@ -319,13 +327,6 @@ private fun StampWithAnimation(
         StampSeal(
             state = stampState,
             size = size,
-        )
-    }
-    if (state.saveStatus == MatchResultUiState.SaveStatus.Saving) {
-        CircularProgressIndicator(
-            color = AccentCopper,
-            strokeWidth = 2.dp,
-            modifier = Modifier.size(28.dp),
         )
     }
 }

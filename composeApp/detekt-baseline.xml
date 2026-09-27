@@ -425,7 +425,6 @@
     <ID>MaxLineLength:MapScreenHost.ios.kt$"Birdy/map: kunde inte bygga vaxsigill-markören (avkodning eller CoreGraphics-rendering misslyckades) — visar systemets standardpin"</ID>
     <ID>MaxLineLength:MapTilerKey.ios.kt$MapTilerKey$NSLog("Birdy/map: MAPTILER_API_KEY saknas — kopiera iosApp/Local.xcconfig.sample till Local.xcconfig och fyll i nyckeln")</ID>
     <ID>MaxLineLength:MatchResultUiState.kt$MatchResultUiState.Disambig$/** Top-1 i Disambig-bandet ([MatchThresholds], mellan disambig- och match-tröskeln). Användaren får välja bland 2-3 kandidater. */</ID>
-    <ID>MaxLineLength:MatchView.kt$colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm)</ID>
     <ID>MaxLineLength:MiniStamp.kt$TextStyle(shadow = Shadow(color = Color.Black.copy(alpha = 0.7f), offset = Offset(0f, 1f), blurRadius = 3f))</ID>
     <ID>MaxLineLength:NotificationSchedulerImpl.kt$NotificationSchedulerImpl$NotificationTimes.millisUntil(NotificationTimes.nextDaily(now, zone, hour = 8, minute = 0), now, zone)</ID>
     <ID>MaxLineLength:PremiumFeatureIcons.kt$drawLine(tint, Offset(w * 0.16f, base), Offset(w * 0.84f, base), strokeWidth = sw, cap = StrokeCap.Round)</ID>

@@ -7,6 +7,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import se.birdy.app.ui.match.DisambigView
@@ -86,6 +87,9 @@ class MatchScreenshotTest {
 
     private fun blueTit(locale: Locale) = species("Q25404", "Cyanistes caeruleus", "Blåmes", "Eurasian Blue Tit", locale)
 
+    private fun woodpecker(locale: Locale) =
+        species("Q210418", "Picoides tridactylus", "Tretåig hackspett", "Eurasian Three-toed Woodpecker", locale)
+
     private fun matchState(locale: Locale) =
         MatchResultUiState.Match(
             species = robin(locale),
@@ -98,6 +102,25 @@ class MatchScreenshotTest {
             frameJpegPath = null,
             capturedAtMs = 1_800_000_000_000L,
             source = ScanSource.Image(frameJpegPath = "/fake/frame.jpg", classification = classification("Q25998", 0.94f)),
+        )
+
+    // Stress case (T7b finding 3): a long English name + saved-manual-pick state, at 130% font
+    // scale — checks that StampWithAnimation's caption ("your choice" tag + the species name
+    // under an Unlocked stamp) wraps within its widthIn(max) cap instead of crushing the
+    // weight(1f) marginalia column.
+    private fun matchLongState() =
+        MatchResultUiState.Match(
+            species = woodpecker(Locale.EN),
+            confidence = 0.94f,
+            isManualPick = true,
+            isFirstSighting = true,
+            prevObservedAt = null,
+            sightingCount = 1,
+            stampNumber = 12,
+            frameJpegPath = null,
+            capturedAtMs = 1_800_000_000_000L,
+            source = ScanSource.Image(frameJpegPath = "/fake/frame.jpg", classification = classification("Q210418", 0.94f)),
+            saveStatus = MatchResultUiState.SaveStatus.Saved,
         )
 
     private fun disambigState(locale: Locale) =
@@ -134,6 +157,18 @@ class MatchScreenshotTest {
     }
 
     @Composable
+    private fun matchLong() {
+        MatchView(
+            state = matchLongState(),
+            onSave = {},
+            onCancel = {},
+            onDismissUnlock = {},
+            locale = Locale.EN,
+            zone = TimeZone.UTC,
+        )
+    }
+
+    @Composable
     private fun disambig(locale: Locale) {
         DisambigView(
             state = disambigState(locale),
@@ -160,6 +195,13 @@ class MatchScreenshotTest {
     @Test
     @Config(qualifiers = "+en")
     fun match_en() = compose.captureScreen("match_en") { match(Locale.EN) }
+
+    @Test
+    @Config(qualifiers = "+en")
+    fun match_long_en_130() {
+        RuntimeEnvironment.setFontScale(1.3f)
+        compose.captureScreen("match_long_en_130") { matchLong() }
+    }
 
     @Test
     @Config(qualifiers = "+sv")

@@ -103,7 +103,6 @@
     <!-- ===== Plan 7d: Match / Disambig / NoBird ===== -->
     <!-- Match-skärm (top-1 >= 0.50) -->
     <string name="match_eyebrow">MATCH · NO %1$d</string>
-    <string name="match_headline">*%1$s*</string>
     <string name="match_sub_confidence">En %1$s match.</string>
     <string name="match_marginalia_first_sighting">*NY ART*</string>
     <string name="match_marginalia_repeat">OBS *#%1$d* · FÖRSTA SÅGS: %2$s</string>

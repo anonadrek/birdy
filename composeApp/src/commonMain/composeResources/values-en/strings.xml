@@ -92,7 +92,6 @@
     <!-- ===== Plan 7d: Match / Disambig / NoBird ===== -->
     <!-- Match screen (top-1 >= 0.50) -->
     <string name="match_eyebrow">MATCH · NO %1$d</string>
-    <string name="match_headline">*%1$s*</string>
     <string name="match_sub_confidence">A %1$s match.</string>
     <string name="match_marginalia_first_sighting">*NEW SPECIES*</string>
     <string name="match_marginalia_repeat">SIGHT *#%1$d* · FIRST SEEN: %2$s</string>
