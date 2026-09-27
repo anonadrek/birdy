@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import se.birdy.app.ui.stats.SeasonStatsUiState
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.Hairline
 import se.birdy.app.ui.theme.MarginaliaInk
 
 /**
@@ -24,6 +25,12 @@ import se.birdy.app.ui.theme.MarginaliaInk
  * dots mark each point so the reader can read off integer counts. The y-axis is
  * scaled to the max observed value (with a minimum of 1 so a single-species
  * year still draws cleanly).
+ *
+ * 1.3.0 T12: the area under the curve is now filled with [fillColor] (defaults to a
+ * 12%-alpha [AccentCopper]). The fill path reuses the exact same cubic [path] the stroke
+ * is drawn with — [Path.addPath] copies it wholesale, then two `lineTo`s close it down to
+ * the baseline — so the point/curve math itself is untouched, only a derived shape is
+ * added. The axis rule moved off a hardcoded translucent ink to the [axisColor] token.
  */
 @Composable
 fun JournalLineChart(
@@ -31,6 +38,8 @@ fun JournalLineChart(
     modifier: Modifier = Modifier,
     lineColor: Color = AccentCopper,
     dotColor: Color = MarginaliaInk,
+    fillColor: Color = AccentCopper.copy(alpha = 0.12f),
+    axisColor: Color = Hairline,
     height: Dp = 140.dp,
     contentDescription: String? = null,
 ) {
@@ -63,11 +72,19 @@ fun JournalLineChart(
                     )
                 }
             }
+        val fillPath =
+            Path().apply {
+                addPath(path)
+                lineTo(coords.last().x, size.height)
+                lineTo(coords.first().x, size.height)
+                close()
+            }
         drawRect(
-            color = MarginaliaInk.copy(alpha = 0.35f),
+            color = axisColor,
             topLeft = Offset(0f, size.height - 1f),
             size = Size(size.width, 1f),
         )
+        drawPath(path = fillPath, color = fillColor)
         drawPath(path = path, color = lineColor, style = Stroke(width = 3.5f))
         coords.forEach { drawCircle(color = dotColor, radius = 4.5f, center = it) }
     }

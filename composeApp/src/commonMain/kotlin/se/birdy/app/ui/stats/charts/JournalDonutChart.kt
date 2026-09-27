@@ -15,8 +15,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import se.birdy.app.ui.stats.SeasonStatsUiState
 import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.HeroMossMid
-import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.BrassText
+import se.birdy.app.ui.theme.Hairline
+import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.StampNavy
 import kotlin.math.min
 
@@ -26,15 +27,24 @@ import kotlin.math.min
  * is hollow (donut) and each season gets a distinct paper-palette color. If
  * total is zero the chart draws an empty ring so the section is still
  * recognisable.
+ *
+ * 1.3.0 T12: season colors now match `SeasonStatsScreen`'s own legend swatches exactly
+ * (winter/spring/summer/autumn) — see that file's `SeasonLegend`. Summer uses [BrassText]
+ * rather than the literal `Brass` fill token: measured against this chart's CardPaper card
+ * background, `Brass` is a razor-thin 3.02:1 (barely clears WCAG 1.4.11's 3:1 graphics
+ * minimum) and drops to 2.75:1 on the app's page-level MossCreme background; [BrassText]
+ * clears both with real margin (5.63:1 / 5.12:1) while still reading as the brass/mässing
+ * family for "summer".
  */
 @Composable
 fun JournalDonutChart(
     breakdown: SeasonStatsUiState.SeasonBreakdown,
     modifier: Modifier = Modifier,
     winterColor: Color = StampNavy,
-    springColor: Color = HeroMossMid,
-    summerColor: Color = AccentCopper,
-    autumnColor: Color = MarginaliaInk,
+    springColor: Color = HeroMossLight,
+    summerColor: Color = BrassText,
+    autumnColor: Color = AccentCopper,
+    emptyRingColor: Color = Hairline,
     height: Dp = 160.dp,
     strokeWidth: Dp = 22.dp,
     contentDescription: String? = null,
@@ -53,7 +63,7 @@ fun JournalDonutChart(
         val total = breakdown.total
         if (total == 0) {
             drawArc(
-                color = MarginaliaInk.copy(alpha = 0.25f),
+                color = emptyRingColor,
                 startAngle = 0f,
                 sweepAngle = 360f,
                 useCenter = false,
