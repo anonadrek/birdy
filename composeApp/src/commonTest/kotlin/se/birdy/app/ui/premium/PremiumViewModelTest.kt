@@ -222,8 +222,9 @@ class PremiumViewModelTest {
             vm.purchase()
             assertEquals(false, vm.state.first().purchaseCompleted)
 
-            // awaitingActivation stays sticky after a cancel — a real entitlement arriving later
-            // (e.g. a pending purchase from another attempt completing) still finishes the flow.
+            // purchaseCompleted only tracks the backend's Free→Active transition — a real
+            // entitlement arriving later (e.g. a pending purchase from another attempt
+            // completing) still finishes the flow even after this screen's own attempt cancelled.
             repo.markPurchased(PremiumTier.LIFETIME)
             assertEquals(true, vm.state.first().purchaseCompleted)
         }
@@ -259,7 +260,6 @@ class PremiumViewModelTest {
             assertEquals(false, vm.state.first().canPurchase)
             vm.purchase()
             assertEquals(false, launched)
-            assertEquals(false, vm.state.first().awaitingActivation)
             assertEquals(false, vm.state.first().purchaseInFlight)
         }
 
@@ -344,6 +344,33 @@ class PremiumViewModelTest {
             assertEquals(false, vm.state.first().canPurchase)
             vm.purchase()
             assertEquals(false, launched)
-            assertEquals(false, vm.state.first().awaitingActivation)
+        }
+
+    @Test
+    fun `the tier bought is locked at purchase start, unaffected by selecting a different tier while in flight`() =
+        runTest {
+            val repo = FakePremiumRepository()
+            val gate = CompletableDeferred<PurchaseResult>()
+            var launchedTier: PremiumTier? = null
+            val vm =
+                PremiumViewModel(
+                    repo,
+                    launchPurchase = { tier ->
+                        launchedTier = tier
+                        gate.await()
+                    },
+                    formattedPricesFlow = prices,
+                )
+
+            vm.selectTier(PremiumTier.YEARLY)
+            vm.purchase()
+            // Switching the selected tier while the purchase is already in flight must not
+            // change which tier launchPurchase was called with.
+            vm.selectTier(PremiumTier.LIFETIME)
+            assertEquals(PremiumTier.YEARLY, launchedTier)
+
+            gate.complete(PurchaseResult.UserCancelled)
+            vm.state.first { !it.purchaseInFlight }
+            assertEquals(PremiumTier.YEARLY, launchedTier)
         }
 }

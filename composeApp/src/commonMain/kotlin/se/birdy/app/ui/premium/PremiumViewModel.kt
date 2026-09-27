@@ -36,7 +36,6 @@ class PremiumViewModel(
                     it.copy(
                         backendState = backend,
                         purchaseCompleted = it.purchaseCompleted || justActivated,
-                        awaitingActivation = it.awaitingActivation && !justActivated,
                     )
                 }
             }
@@ -64,7 +63,7 @@ class PremiumViewModel(
         // whatever the dispatcher does with selectedTier between here and launchPurchase running.
         val tier = _state.value.selectedTier
         _state.update {
-            it.copy(purchaseInFlight = true, awaitingActivation = true, purchaseNotice = null)
+            it.copy(purchaseInFlight = true, purchaseNotice = null)
         }
         viewModelScope.launch {
             // launchPurchase is expected to report failures as PurchaseResult.Error, not throw —
