@@ -28,6 +28,9 @@ class ColorContrastTest {
                 "AccentCopper" to AccentCopper,
                 "StampNavy" to StampNavy,
                 "BrassText" to BrassText,
+                "MatchHigh" to MatchHigh,
+                "MatchMid" to MatchMid,
+                "MatchLow" to MatchLow,
             )
         val failures =
             texts.flatMap { (tn, t) ->

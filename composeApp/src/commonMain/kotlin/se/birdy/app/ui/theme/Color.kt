@@ -49,10 +49,10 @@ val MarginaliaBorder = Color(0xFF9A4526) // = AccentCopper, 2dp left border on c
 val TextOnHero = Color(0xFFFFF8EE) // text on dark moss, photos and rust
 val OffwhiteWarm = Color(0xFFFFF8EE)
 
-// ===== Match-confidence grades (Lifelist stamp rows) — unchanged in 1.3.0 =====
-val MatchHigh = Color(0xFF7CA868) // ≥80% confidence
-val MatchMid = Color(0xFFD9B45A) // 60–79%
-val MatchLow = Color(0xFFC07560) // <60%
+// ===== Match-confidence grades (Lifelist stamp rows) — text colors, AA on every paper =====
+val MatchHigh = Color(0xFF4E6D3F) // ≥80% confidence
+val MatchMid = Color(0xFF7D611D) // 60–79%
+val MatchLow = Color(0xFF9B523D) // <60%
 
 // ===== Stamps =====
 val StampLocked = Color(0xFFCDBB9C) // dashed outline + "?" on locked stamps (decorative)
