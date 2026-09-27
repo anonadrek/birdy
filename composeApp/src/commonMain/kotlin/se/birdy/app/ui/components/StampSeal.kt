@@ -91,13 +91,25 @@ sealed interface StampSealState {
 
 /**
  * Recurring stamp circle — Birdy's signature glyph. 88dp default.
+ *
+ * [filled] defaults to true (the embossed wax-seal look, spec 2026-09-24 §4.3) and every
+ * existing call site keeps that default, so this is additive. `filled = false` restores the
+ * pre-1.3 see-through ink-stamp look (low-alpha rust wash + a solid rust ring, no drop shadow) —
+ * for [StampSealState.Unlocked] only, used by ScenePhoto so the seal doesn't hide the photo
+ * underneath it (fix wave B, finding B5/I7).
+ *
+ * LongParameterList suppressed: this composable already carries baselined LongMethod/
+ * CyclomaticComplexMethod debt; `filled` is a single additive Boolean default-true param
+ * (fix wave B), not new debt worth growing the committed baseline for.
  */
+@Suppress("LongParameterList")
 @Composable
 fun StampSeal(
     state: StampSealState,
     modifier: Modifier = Modifier,
     size: Dp = 88.dp,
     accentColor: Color = AccentCopper,
+    filled: Boolean = true,
     onClick: (() -> Unit)? = null,
 ) {
     val serif = rememberDmSerifDisplay()
@@ -132,36 +144,53 @@ fun StampSeal(
         // textOnSeal is decided by the FILL's luminance, not by an == Brass equality check, so
         // any future light accentColor automatically gets legible (dark) glyph/ring content
         // instead of silently repeating Brass's old dark-ring-on-light-fill bug.
-        val textOnSeal = if (accentColor.luminance() > LUMINANCE_THRESHOLD_FOR_DARK_FILL) BrassInk else TextOnHero
+        val textOnSeal =
+            when {
+                !filled -> accentColor
+                accentColor.luminance() > LUMINANCE_THRESHOLD_FOR_DARK_FILL -> BrassInk
+                else -> TextOnHero
+            }
         val sealModifier =
             Modifier
                 .rotate(state.rotationDegrees())
                 .size(size)
-                .let { m -> if (state is StampSealState.Unlocked) m.shadow(3.dp, CircleShape) else m }
+                .let { m -> if (state is StampSealState.Unlocked && filled) m.shadow(3.dp, CircleShape) else m }
                 .clip(CircleShape)
                 .drawBehind {
                     val r = this.size.minDimension / 2f
                     when (state) {
                         is StampSealState.Unlocked -> {
-                            drawCircle(accentColor)
-                            drawCircle(
-                                brush =
-                                    Brush.radialGradient(
-                                        colors = listOf(Color.White.copy(alpha = 0.22f), Color.Transparent),
-                                        center = Offset(x = this.size.width * 0.36f, y = this.size.height * 0.32f),
-                                        radius = r * 0.62f,
-                                    ),
-                                radius = r * 0.62f,
-                                center = Offset(x = this.size.width * 0.36f, y = this.size.height * 0.32f),
-                            )
-                            // Inner ring is always a light hairline on the fill (mockup) — never
-                            // the dark textOnSeal, which on a light fill (e.g. Brass) used to
-                            // paint a near-invisible dark ring instead of the intended highlight.
-                            drawCircle(
-                                color = Color.White.copy(alpha = 0.4f),
-                                radius = r - 4.dp.toPx(),
-                                style = Stroke(width = 1.dp.toPx()),
-                            )
+                            if (filled) {
+                                drawCircle(accentColor)
+                                drawCircle(
+                                    brush =
+                                        Brush.radialGradient(
+                                            colors = listOf(Color.White.copy(alpha = 0.22f), Color.Transparent),
+                                            center = Offset(x = this.size.width * 0.36f, y = this.size.height * 0.32f),
+                                            radius = r * 0.62f,
+                                        ),
+                                    radius = r * 0.62f,
+                                    center = Offset(x = this.size.width * 0.36f, y = this.size.height * 0.32f),
+                                )
+                                // Inner ring is always a light hairline on the fill (mockup) — never
+                                // the dark textOnSeal, which on a light fill (e.g. Brass) used to
+                                // paint a near-invisible dark ring instead of the intended highlight.
+                                drawCircle(
+                                    color = Color.White.copy(alpha = 0.4f),
+                                    radius = r - 4.dp.toPx(),
+                                    style = Stroke(width = 1.dp.toPx()),
+                                )
+                            } else {
+                                // Pre-1.3 see-through ink stamp: low-alpha rust wash (mirrors the
+                                // old StampUnlockedBg 12% wash) + a solid rust ring — the photo
+                                // underneath stays visible instead of being covered by a fill.
+                                drawCircle(accentColor.copy(alpha = 0.12f))
+                                drawCircle(
+                                    color = accentColor,
+                                    radius = r - 1.dp.toPx(),
+                                    style = Stroke(width = 2.dp.toPx()),
+                                )
+                            }
                         }
                         is StampSealState.InProgress -> drawCircle(CardPaper)
                         is StampSealState.Locked -> drawCircle(StampLockedBg)

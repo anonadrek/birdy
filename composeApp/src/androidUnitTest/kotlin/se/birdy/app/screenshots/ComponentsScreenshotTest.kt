@@ -2,12 +2,14 @@ package se.birdy.app.screenshots
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -161,6 +163,33 @@ class ComponentsScreenshotTest {
                             modifier = Modifier.matchParentSize(),
                         )
                     },
+                )
+            }
+        }
+    }
+
+    // ScenePhoto's seal (fix wave B, finding B5/I7): filled = false must stay see-through so
+    // the bird photo underneath is still visible, unlike the default opaque embossed fill.
+    @OptIn(ExperimentalResourceApi::class)
+    @Test
+    @Config(qualifiers = "+sv")
+    fun photo_scene_seal_sv() {
+        val bytes = runBlocking { Res.readBytes("files/premium/great-tit-hero.jpg") }
+        val bitmap = bytes.decodeToImageBitmap()
+        compose.captureScreen("photo_scene_seal_sv") {
+            Box(
+                modifier = Modifier.size(220.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Image(
+                    bitmap = bitmap,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.matchParentSize(),
+                )
+                StampSeal(
+                    state = StampSealState.Unlocked(number = 1, glyph = null, name = null),
+                    filled = false,
                 )
             }
         }
