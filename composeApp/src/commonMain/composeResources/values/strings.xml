@@ -460,10 +460,9 @@
 
     <!-- Plan 7e — Premium tier -->
     <string name="premium_screen_close">Stäng</string>
+    <string name="premium_kicker">Birdy Premium</string>
     <string name="premium_headline_plain">Hela året som</string>
     <string name="premium_headline_accent">fältornitolog.</string>
-    <string name="premium_headline_suffix"></string>
-    <string name="premium_subline">Stöd Birdy och få fler verktyg i fält.</string>
     <!-- Premium-skärm v2: gratis-summering + 4 feature-rader -->
     <string name="premium_free_eyebrow">Allt det här är alltid gratis</string>
     <string name="premium_free_scan">Skanna foto &amp; ljud</string>
