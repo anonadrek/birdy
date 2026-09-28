@@ -10,10 +10,9 @@ package se.birdy.content
  * the (44sp, copper) first letter, and the migration section opens with a visible "# …" line.
  * This function strips that pipeline-authoring markdown down to plain prose.
  *
- * It also returns `""` for pipeline "no data" texts (see [NO_DATA_SENTINELS] and
- * [SOURCE_META_OPENINGS]) so the UI shows its own localized empty-state string instead, and
- * `SqlDelightSpeciesRepository.pickText` falls back to the English text when the localized
- * one cleans to blank.
+ * It also returns `""` for pipeline "no data" texts (see `SpeciesTextNoData.kt`) so the UI shows
+ * its own localized empty-state string instead, and `SqlDelightSpeciesRepository.pickText` falls
+ * back to the English text when the localized one cleans to blank.
  *
  * Implemented with plain string scanning (no regex) so the same logic behaves identically on the
  * JVM and Kotlin/Native (iOS) targets.
@@ -22,80 +21,33 @@ internal fun cleanSpeciesText(raw: String): String {
     val normalized = raw.replace("\r\n", "\n").replace("\r", "\n")
     val lines = normalized.split("\n").toMutableList()
 
-    if (lines.isNotEmpty() && isHeadingLine(lines[0])) {
+    val headingIsNoData = lines.isNotEmpty() && isHeadingLine(lines[0]) && isNoDataHeadingLine(lines[0].trim())
+    if (!headingIsNoData && lines.isNotEmpty() && isHeadingLine(lines[0])) {
         lines.removeAt(0)
         while (lines.isNotEmpty() && lines[0].isBlank()) {
             lines.removeAt(0)
         }
     }
 
-    val body = dropHorizontalRules(lines).joinToString("\n")
-    if (isNoDataText(body)) return ""
+    val body = if (headingIsNoData) "" else dropHorizontalRules(lines).joinToString("\n")
+    val paragraphs = if (headingIsNoData || isNoDataText(body)) emptyList() else keptParagraphs(body)
+    if (paragraphs.isEmpty()) return ""
 
-    val withoutBold = body.replace(BOLD_MARKER, "")
-    val cleaned = withoutBold.split("\n").joinToString("\n") { line -> stripStarEmphasis(line) }
-
-    return cleaned.trim()
+    val withoutBold = paragraphs.joinToString("\n\n").replace(BOLD_MARKER, "")
+    return withoutBold.split("\n").joinToString("\n") { line -> stripStarEmphasis(line) }.trim()
 }
 
 /**
- * The sentences the content pipeline writes when Wikipedia has no migration data for a species.
- * They are pipeline artefacts, not content: the LLM often appended meta-commentary about its
- * source after them ("The provided source text contains…", "**Förklaring:** Källtexten…"), so a
- * text that OPENS with one is treated as empty and the UI shows its own localized "no migration
- * data" string. Deliberately narrow (exact sentences, opening position only); cleaning up the
- * content itself is tracked separately in the content pipeline.
+ * [body] split into paragraphs, with a trailing sentinel or labelled meta-commentary paragraph
+ * dropped (T11f / Important I1) — see [isTrailingNoDataParagraph].
  */
-private val NO_DATA_SENTINELS =
-    listOf(
-        "Migration data unavailable for this species.",
-        "Migrationsdata saknas för denna art.",
-    )
-
-/**
- * Openings of LLM meta-commentary about the pipeline's source text instead of species content
- * (e.g. "The source text provides no information…", "Källtexten innehåller ingen information…").
- * A text that opens with one of these is treated as empty, for the same reason and with the same
- * narrow scope as [NO_DATA_SENTINELS]. Matched case-insensitively on the first letter only.
- */
-private val SOURCE_META_OPENINGS =
-    listOf(
-        "The source text",
-        "The provided source text",
-        "The Wikipedia source text",
-        "Källtexten",
-    )
-
-/**
- * Language labels the pipeline sometimes put in front of a sentinel (`sv: "Migrationsdata…"`,
- * `En: Migration data…`). Only stripped for the [isNoDataText] check, never from real prose.
- */
-private val LANGUAGE_LABEL_PREFIXES = listOf("sv:", "en:")
-
-private const val OPENING_QUOTES = "\"“”„"
-
-private fun isNoDataText(body: String): Boolean {
-    val opening = openingForNoDataCheck(body)
-    return NO_DATA_SENTINELS.any { startsWithFirstLetterIgnoringCase(opening, it) } ||
-        SOURCE_META_OPENINGS.any { startsWithFirstLetterIgnoringCase(opening, it) }
+private fun keptParagraphs(body: String): List<String> {
+    val paragraphs = splitIntoParagraphs(body).toMutableList()
+    while (paragraphs.isNotEmpty() && isTrailingNoDataParagraph(paragraphs.last())) {
+        paragraphs.removeAt(paragraphs.lastIndex)
+    }
+    return paragraphs
 }
-
-/** The start of [body] with bold markers, one language label and an opening quote removed. */
-private fun openingForNoDataCheck(body: String): String {
-    var opening = body.replace(BOLD_MARKER, "").trimStart()
-    val label = LANGUAGE_LABEL_PREFIXES.firstOrNull { opening.startsWith(it, ignoreCase = true) }
-    if (label != null) opening = opening.substring(label.length).trimStart()
-    if (opening.isNotEmpty() && opening[0] in OPENING_QUOTES) opening = opening.substring(1)
-    return opening
-}
-
-private fun startsWithFirstLetterIgnoringCase(
-    text: String,
-    prefix: String,
-): Boolean =
-    text.length >= prefix.length &&
-        text[0].equals(prefix[0], ignoreCase = true) &&
-        text.startsWith(prefix.substring(1), startIndex = 1)
 
 private const val HORIZONTAL_RULE_MARKS = "-*_"
 private const val HORIZONTAL_RULE_MIN_MARKS = 3
@@ -136,7 +88,7 @@ private fun dropHorizontalRules(lines: List<String>): List<String> {
 
 private const val ATX_HEADING_MAX_HASHES = 6
 private const val BOLD_HEADING_MIN_LENGTH = 5
-private const val BOLD_MARKER = "**"
+internal const val BOLD_MARKER = "**"
 private const val SENTENCE_END_MARKS = ".!?"
 
 /**
@@ -169,4 +121,23 @@ private fun isBoldOnlyHeading(trimmed: String): Boolean {
     if (!wrappedInBold) return false
     val inner = trimmed.substring(BOLD_MARKER.length, trimmed.length - BOLD_MARKER.length).trim()
     return inner.isNotEmpty() && BOLD_MARKER !in inner && inner.last() !in SENTENCE_END_MARKS
+}
+
+/** Splits [body] on blank lines into non-blank, possibly multi-line paragraphs. */
+private fun splitIntoParagraphs(body: String): List<String> {
+    val paragraphs = mutableListOf<String>()
+    val current = StringBuilder()
+    for (line in body.split("\n")) {
+        if (line.isBlank()) {
+            if (current.isNotEmpty()) {
+                paragraphs.add(current.toString())
+                current.clear()
+            }
+        } else {
+            if (current.isNotEmpty()) current.append("\n")
+            current.append(line)
+        }
+    }
+    if (current.isNotEmpty()) paragraphs.add(current.toString())
+    return paragraphs
 }
