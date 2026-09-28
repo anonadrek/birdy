@@ -44,7 +44,12 @@ class StructuredReply:
 
 class StructuredClient(Protocol):
     async def parse_web_text(
-        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int,
+        self,
+        *,
+        model: str,
+        system: str,
+        messages: list[MessageParam],
+        max_tokens: int,
         effort: str,
     ) -> StructuredReply: ...
 
@@ -65,7 +70,12 @@ class AnthropicStructuredClient:
         self._client = AsyncAnthropic(max_retries=5)
 
     async def parse_web_text(
-        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int,
+        self,
+        *,
+        model: str,
+        system: str,
+        messages: list[MessageParam],
+        max_tokens: int,
         effort: str,
     ) -> StructuredReply:
         msg = await self._client.messages.create(
@@ -190,7 +200,10 @@ class WebTextWriter:
         for attempt in range(1, ATTEMPTS + 1):
             attempts = attempt
             reply = await self.client.parse_web_text(
-                model=self.model_id, system=system, messages=messages, max_tokens=MAX_TOKENS,
+                model=self.model_id,
+                system=system,
+                messages=messages,
+                max_tokens=MAX_TOKENS,
                 effort=self.effort,
             )
             try:

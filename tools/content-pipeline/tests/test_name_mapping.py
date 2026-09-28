@@ -16,11 +16,7 @@ from birdy_fetcher.name_mapping import (
 def test_parse_labelmap_csv_skips_background_and_header(tmp_path: Path) -> None:
     csv = tmp_path / "labelmap.csv"
     csv.write_text(
-        "id,name\n"
-        "964,background\n"
-        "0,Cyanistes caeruleus\n"
-        "1,Turdus merula\n"
-        "2,Parus major\n",
+        "id,name\n964,background\n0,Cyanistes caeruleus\n1,Turdus merula\n2,Parus major\n",
         encoding="utf-8",
     )
     pairs = parse_labelmap_csv(csv)
@@ -41,27 +37,43 @@ def test_build_query_emits_p225_values_clause_for_names() -> None:
 
 
 def test_parse_sparql_response_for_names_returns_name_to_qid() -> None:
-    raw = json.dumps({
-        "results": {"bindings": [
-            {"item": {"value": "http://www.wikidata.org/entity/Q1226346"},
-             "name": {"value": "Cyanistes caeruleus"}},
-            {"item": {"value": "http://www.wikidata.org/entity/Q913049"},
-             "name": {"value": "Turdus merula"}},
-        ]}
-    })
+    raw = json.dumps(
+        {
+            "results": {
+                "bindings": [
+                    {
+                        "item": {"value": "http://www.wikidata.org/entity/Q1226346"},
+                        "name": {"value": "Cyanistes caeruleus"},
+                    },
+                    {
+                        "item": {"value": "http://www.wikidata.org/entity/Q913049"},
+                        "name": {"value": "Turdus merula"},
+                    },
+                ]
+            }
+        }
+    )
     result = parse_sparql_response_for_names(raw)
     assert result == {"Cyanistes caeruleus": "Q1226346", "Turdus merula": "Q913049"}
 
 
 def test_parse_sparql_response_for_names_first_wins_on_duplicates() -> None:
-    raw = json.dumps({
-        "results": {"bindings": [
-            {"item": {"value": "http://www.wikidata.org/entity/Q1"},
-             "name": {"value": "Parus major"}},
-            {"item": {"value": "http://www.wikidata.org/entity/Q2"},
-             "name": {"value": "Parus major"}},
-        ]}
-    })
+    raw = json.dumps(
+        {
+            "results": {
+                "bindings": [
+                    {
+                        "item": {"value": "http://www.wikidata.org/entity/Q1"},
+                        "name": {"value": "Parus major"},
+                    },
+                    {
+                        "item": {"value": "http://www.wikidata.org/entity/Q2"},
+                        "name": {"value": "Parus major"},
+                    },
+                ]
+            }
+        }
+    )
     result = parse_sparql_response_for_names(raw)
     assert result == {"Parus major": "Q1"}
 
@@ -69,14 +81,22 @@ def test_parse_sparql_response_for_names_first_wins_on_duplicates() -> None:
 def test_parse_sparql_response_for_names_skips_lexeme_entities() -> None:
     # P225 can resolve to Lexeme entities (L-prefix) for some taxa. Filter them
     # so downstream consumers get only Q-IDs in aiy_to_qid.json.
-    raw = json.dumps({
-        "results": {"bindings": [
-            {"item": {"value": "http://www.wikidata.org/entity/L1370926-S1"},
-             "name": {"value": "Gallus gallus domesticus"}},
-            {"item": {"value": "http://www.wikidata.org/entity/Q780"},
-             "name": {"value": "Gallus gallus domesticus"}},
-        ]}
-    })
+    raw = json.dumps(
+        {
+            "results": {
+                "bindings": [
+                    {
+                        "item": {"value": "http://www.wikidata.org/entity/L1370926-S1"},
+                        "name": {"value": "Gallus gallus domesticus"},
+                    },
+                    {
+                        "item": {"value": "http://www.wikidata.org/entity/Q780"},
+                        "name": {"value": "Gallus gallus domesticus"},
+                    },
+                ]
+            }
+        }
+    )
     result = parse_sparql_response_for_names(raw)
     assert result == {"Gallus gallus domesticus": "Q780"}
 
@@ -106,22 +126,38 @@ def test_run_build_name_mapping_stitches_batches_and_drops_unknown_names() -> No
     pairs = [(0, "Cyanistes caeruleus"), (1, "Turdus merula"), (2, "Parus major")]
 
     batch_responses = [
-        json.dumps({
-            "results": {"bindings": [
-                {"item": {"value": "http://www.wikidata.org/entity/Q1226346"},
-                 "name": {"value": "Cyanistes caeruleus"}},
-                {"item": {"value": "http://www.wikidata.org/entity/Q913049"},
-                 "name": {"value": "Turdus merula"}},
-                {"item": {"value": "http://www.wikidata.org/entity/Q9999"},
-                 "name": {"value": "Not in pairs — must be ignored"}},
-            ]}
-        }),
-        json.dumps({
-            "results": {"bindings": [
-                {"item": {"value": "http://www.wikidata.org/entity/Q3534"},
-                 "name": {"value": "Parus major"}},
-            ]}
-        }),
+        json.dumps(
+            {
+                "results": {
+                    "bindings": [
+                        {
+                            "item": {"value": "http://www.wikidata.org/entity/Q1226346"},
+                            "name": {"value": "Cyanistes caeruleus"},
+                        },
+                        {
+                            "item": {"value": "http://www.wikidata.org/entity/Q913049"},
+                            "name": {"value": "Turdus merula"},
+                        },
+                        {
+                            "item": {"value": "http://www.wikidata.org/entity/Q9999"},
+                            "name": {"value": "Not in pairs — must be ignored"},
+                        },
+                    ]
+                }
+            }
+        ),
+        json.dumps(
+            {
+                "results": {
+                    "bindings": [
+                        {
+                            "item": {"value": "http://www.wikidata.org/entity/Q3534"},
+                            "name": {"value": "Parus major"},
+                        },
+                    ]
+                }
+            }
+        ),
     ]
     queries: list[str] = []
 
@@ -131,6 +167,7 @@ def test_run_build_name_mapping_stitches_batches_and_drops_unknown_names() -> No
 
     # Batch boundary forced via SPARQL_BATCH_SIZE — patch to 2 so 3 pairs split 2+1.
     from birdy_fetcher import name_mapping
+
     original_size = name_mapping.SPARQL_BATCH_SIZE
     name_mapping.SPARQL_BATCH_SIZE = 2
     try:
@@ -148,16 +185,34 @@ def test_run_build_name_mapping_first_batch_wins_on_cross_batch_duplicates() -> 
     pairs = [(0, "Parus major"), (1, "Turdus merula")]
 
     batch_responses = [
-        json.dumps({"results": {"bindings": [
-            {"item": {"value": "http://www.wikidata.org/entity/Q3534"},
-             "name": {"value": "Parus major"}},
-        ]}}),
-        json.dumps({"results": {"bindings": [
-            {"item": {"value": "http://www.wikidata.org/entity/Q9999"},
-             "name": {"value": "Parus major"}},
-            {"item": {"value": "http://www.wikidata.org/entity/Q913049"},
-             "name": {"value": "Turdus merula"}},
-        ]}}),
+        json.dumps(
+            {
+                "results": {
+                    "bindings": [
+                        {
+                            "item": {"value": "http://www.wikidata.org/entity/Q3534"},
+                            "name": {"value": "Parus major"},
+                        },
+                    ]
+                }
+            }
+        ),
+        json.dumps(
+            {
+                "results": {
+                    "bindings": [
+                        {
+                            "item": {"value": "http://www.wikidata.org/entity/Q9999"},
+                            "name": {"value": "Parus major"},
+                        },
+                        {
+                            "item": {"value": "http://www.wikidata.org/entity/Q913049"},
+                            "name": {"value": "Turdus merula"},
+                        },
+                    ]
+                }
+            }
+        ),
     ]
     call_count = [0]
 
@@ -167,6 +222,7 @@ def test_run_build_name_mapping_first_batch_wins_on_cross_batch_duplicates() -> 
         return batch_responses[idx]
 
     from birdy_fetcher import name_mapping
+
     original_size = name_mapping.SPARQL_BATCH_SIZE
     name_mapping.SPARQL_BATCH_SIZE = 1
     try:

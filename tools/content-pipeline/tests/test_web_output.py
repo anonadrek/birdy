@@ -12,10 +12,29 @@ from birdy_fetcher.web.source import SpeciesSource
 
 from .web_fixtures import ARTICLES, valid_output
 
-SOURCE = SpeciesSource("Q25485", "Parus major", "Talgoxe", "Great Tit", "Paridae", "Mesar",
-                       "Passeriformes", "LC", "Söker frön.", "Forages.", ())
-IMAGE = ImageOut("hero", "Q25485/hero.webp", 1600, 1067, "Hobbyfotowiki", "CC0", None,
-                 "https://commons.wikimedia.org/wiki/File:A.jpg")
+SOURCE = SpeciesSource(
+    "Q25485",
+    "Parus major",
+    "Talgoxe",
+    "Great Tit",
+    "Paridae",
+    "Mesar",
+    "Passeriformes",
+    "LC",
+    "Söker frön.",
+    "Forages.",
+    (),
+)
+IMAGE = ImageOut(
+    "hero",
+    "Q25485/hero.webp",
+    1600,
+    1067,
+    "Hobbyfotowiki",
+    "CC0",
+    None,
+    "https://commons.wikimedia.org/wiki/File:A.jpg",
+)
 NOW = datetime(2026, 10, 1, 12, 0, tzinfo=UTC)
 
 
@@ -46,7 +65,9 @@ def test_record_matches_appendix_c() -> None:
         "en": {"title": "Great tit", "revision": "222"},
     }
     assert rec["generated"] == {
-        "model": "claude-opus-5", "prompt": "web-v1", "effort": "high",
+        "model": "claude-opus-5",
+        "prompt": "web-v1",
+        "effort": "high",
         "at": "2026-10-01T12:00:00+00:00",
     }
     text = rec["text"]
@@ -57,8 +78,13 @@ def test_record_matches_appendix_c() -> None:
     images = rec["images"]
     assert isinstance(images, list)
     assert images[0] == {
-        "role": "hero", "file": "Q25485/hero.webp", "width": 1600, "height": 1067,
-        "author": "Hobbyfotowiki", "license": "CC0", "licenseUrl": None,
+        "role": "hero",
+        "file": "Q25485/hero.webp",
+        "width": 1600,
+        "height": 1067,
+        "author": "Hobbyfotowiki",
+        "license": "CC0",
+        "licenseUrl": None,
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:A.jpg",
     }
     assert "rejectedText" not in rec

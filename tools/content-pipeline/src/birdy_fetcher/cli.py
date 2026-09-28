@@ -170,12 +170,17 @@ def eval_prompts() -> None:
 
 
 @main.command("build-mapping")
-@click.option("--labelmap", type=click.Path(exists=True, path_type=Path),
-              default=Path("../../shared/ml/src/commonMain/composeResources/files/ml/aiy_labelmap.csv"))
-@click.option("--model-version", required=True,
-              help="ex: aiy_birds_v1")
-@click.option("--out", type=click.Path(path_type=Path),
-              default=Path("../../shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json"))
+@click.option(
+    "--labelmap",
+    type=click.Path(exists=True, path_type=Path),
+    default=Path("../../shared/ml/src/commonMain/composeResources/files/ml/aiy_labelmap.csv"),
+)
+@click.option("--model-version", required=True, help="ex: aiy_birds_v1")
+@click.option(
+    "--out",
+    type=click.Path(path_type=Path),
+    default=Path("../../shared/ml/src/commonMain/composeResources/files/ml/aiy_to_qid.json"),
+)
 def build_mapping(labelmap: Path, model_version: str, out: Path) -> None:
     """Build AIY class_index → Q-ID mapping via SPARQL P225 (taxon name)."""
     from datetime import UTC, datetime
@@ -189,7 +194,9 @@ def build_mapping(labelmap: Path, model_version: str, out: Path) -> None:
     pairs = parse_labelmap_csv(labelmap)
     result = asyncio.run(run_build_name_mapping(pairs))
     rendered = render_mapping_json_by_class_index(
-        result, model_version=model_version, generated_at=datetime.now(UTC),
+        result,
+        model_version=model_version,
+        generated_at=datetime.now(UTC),
     )
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(rendered, encoding="utf-8")
@@ -202,8 +209,12 @@ def build_mapping(labelmap: Path, model_version: str, out: Path) -> None:
 @main.command()
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
-@click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high",
-              help="Modellens svarsansträngning. 'high' är Opus 5-standarden (oförändrat).")
+@click.option(
+    "--effort",
+    type=click.Choice(["low", "medium", "high"]),
+    default="high",
+    help="Modellens svarsansträngning. 'high' är Opus 5-standarden (oförändrat).",
+)
 @click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
 @click.option("--force", is_flag=True, help="Skriv över arter som redan har review: approved.")
 @click.option("--refresh-sources", is_flag=True, help="Hämta Wikidata och Wikipedia på nytt.")

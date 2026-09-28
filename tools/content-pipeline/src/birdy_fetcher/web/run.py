@@ -50,8 +50,15 @@ class WebPaths:
 
     @property
     def family_groups(self) -> Path:
-        return (self.repo_root / "shared" / "content" / "src" / "jvmMain" / "resources"
-                / "family_groups.yaml")
+        return (
+            self.repo_root
+            / "shared"
+            / "content"
+            / "src"
+            / "jvmMain"
+            / "resources"
+            / "family_groups.yaml"
+        )
 
     @property
     def web_groups(self) -> Path:
@@ -150,9 +157,13 @@ async def run_web(
         outcomes = list(await asyncio.gather(*(one(s) for s in sources)))
         if not options.dry_run:
             paths.reports.mkdir(parents=True, exist_ok=True)
-            report = render_report(outcomes, cost_usd=cost.total_usd,
-                                   model_id=WEB_MODELS[options.model_key],
-                                   effort=options.effort, date=now.date().isoformat())
+            report = render_report(
+                outcomes,
+                cost_usd=cost.total_usd,
+                model_id=WEB_MODELS[options.model_key],
+                effort=options.effort,
+                date=now.date().isoformat(),
+            )
             report_name = f"web-{now:%Y-%m-%d-%H%M%S}.md"
             (paths.reports / report_name).write_text(report, encoding="utf-8")
         return outcomes
@@ -171,10 +182,16 @@ async def _process(
     stop: asyncio.Event,
     now: datetime,
 ) -> SpeciesOutcome:
-    def outcome(status: str, errors: list[str], dropped: list[str] | None = None,
-                attempts: int = 0, cached: bool = False) -> SpeciesOutcome:
-        return SpeciesOutcome(source.qid, source.name_sv, status, errors, dropped or [],
-                              attempts, cached)
+    def outcome(
+        status: str,
+        errors: list[str],
+        dropped: list[str] | None = None,
+        attempts: int = 0,
+        cached: bool = False,
+    ) -> SpeciesOutcome:
+        return SpeciesOutcome(
+            source.qid, source.name_sv, status, errors, dropped or [], attempts, cached
+        )
 
     try:
         # Inside the try too: a hand-edited record with broken JSON must fail just this one
@@ -192,12 +209,22 @@ async def _process(
         if not articles:
             errors = ["ingen Wikipediaartikel på svenska eller engelska"]
             images = await asyncio.to_thread(
-                prepare_images, source, asset_images=paths.asset_images,
+                prepare_images,
+                source,
+                asset_images=paths.asset_images,
                 out_root=paths.images_out,
             )
-            record = build_record(source=source, group=group, text=None, articles=articles,
-                                  images=images, errors=errors, model_id=model_id,
-                                  effort=options.effort, generated_at=now)
+            record = build_record(
+                source=source,
+                group=group,
+                text=None,
+                articles=articles,
+                images=images,
+                errors=errors,
+                model_id=model_id,
+                effort=options.effort,
+                generated_at=now,
+            )
             write_record(record, paths.data_out, force=options.force)
             return outcome("failed", errors)
 
@@ -215,9 +242,17 @@ async def _process(
         images = await asyncio.to_thread(
             prepare_images, source, asset_images=paths.asset_images, out_root=paths.images_out
         )
-        record = build_record(source=source, group=group, text=result.output, articles=articles,
-                              images=images, errors=errors, model_id=model_id,
-                              effort=options.effort, generated_at=now)
+        record = build_record(
+            source=source,
+            group=group,
+            text=result.output,
+            articles=articles,
+            images=images,
+            errors=errors,
+            model_id=model_id,
+            effort=options.effort,
+            generated_at=now,
+        )
         out_path = paths.data_out / f"{source.qid}.json"
         if result.from_cache:
             record = _keep_existing_timestamp_if_text_unchanged(record, out_path)

@@ -33,8 +33,17 @@ def test_web_help_lists_all_flags() -> None:
     runner = CliRunner()
     result = runner.invoke(main, ["web", "--help"])
     assert result.exit_code == 0
-    for flag in ("--species", "--model", "--effort", "--max-cost", "--force",
-                "--refresh-sources", "--regenerate", "--workers", "--dry-run"):
+    for flag in (
+        "--species",
+        "--model",
+        "--effort",
+        "--max-cost",
+        "--force",
+        "--refresh-sources",
+        "--regenerate",
+        "--workers",
+        "--dry-run",
+    ):
         assert flag in result.output
 
 

@@ -44,7 +44,12 @@ class FakeClient:
     efforts: list[str] = field(default_factory=list)
 
     async def parse_web_text(
-        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int,
+        self,
+        *,
+        model: str,
+        system: str,
+        messages: list[MessageParam],
+        max_tokens: int,
         effort: str,
     ) -> StructuredReply:
         self.calls.append(list(messages))
@@ -240,8 +245,9 @@ async def test_cost_cap_with_no_good_attempt_caches_nothing(tmp_path: Path) -> N
         await writer.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
 
     second_client = FakeClient([_reply(valid_output())])
-    result = await _writer(tmp_path, second_client).write(SOURCE, ARTICLES, "Tättingar",
-                                                           "Songbirds")
+    result = await _writer(tmp_path, second_client).write(
+        SOURCE, ARTICLES, "Tättingar", "Songbirds"
+    )
     assert not result.from_cache
     assert len(second_client.calls) == 1
 
@@ -257,8 +263,13 @@ async def test_no_output_still_bills_cost(tmp_path: Path) -> None:
 async def test_effort_is_passed_to_the_client(tmp_path: Path) -> None:
     client = FakeClient([_reply(valid_output())])
     writer = WebTextWriter(
-        cache=Cache(tmp_path), cost=CostTracker(max_usd=None), client=client,
-        prompt_path=PROMPT, banned=BANNED, model_key="opus", effort="low",
+        cache=Cache(tmp_path),
+        cost=CostTracker(max_usd=None),
+        client=client,
+        prompt_path=PROMPT,
+        banned=BANNED,
+        model_key="opus",
+        effort="low",
     )
     await writer.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
     assert client.efforts == ["low"]
@@ -266,16 +277,25 @@ async def test_effort_is_passed_to_the_client(tmp_path: Path) -> None:
 
 async def test_different_effort_is_a_cache_miss(tmp_path: Path) -> None:
     high = WebTextWriter(
-        cache=Cache(tmp_path), cost=CostTracker(max_usd=None),
-        client=FakeClient([_reply(valid_output())]), prompt_path=PROMPT, banned=BANNED,
-        model_key="opus", effort="high",
+        cache=Cache(tmp_path),
+        cost=CostTracker(max_usd=None),
+        client=FakeClient([_reply(valid_output())]),
+        prompt_path=PROMPT,
+        banned=BANNED,
+        model_key="opus",
+        effort="high",
     )
     await high.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
 
     low_client = FakeClient([_reply(valid_output())])
     low = WebTextWriter(
-        cache=Cache(tmp_path), cost=CostTracker(max_usd=None), client=low_client,
-        prompt_path=PROMPT, banned=BANNED, model_key="opus", effort="low",
+        cache=Cache(tmp_path),
+        cost=CostTracker(max_usd=None),
+        client=low_client,
+        prompt_path=PROMPT,
+        banned=BANNED,
+        model_key="opus",
+        effort="low",
     )
     result = await low.write(SOURCE, ARTICLES, "Tättingar", "Songbirds")
     assert not result.from_cache

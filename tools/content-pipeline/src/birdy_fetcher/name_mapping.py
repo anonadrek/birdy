@@ -11,7 +11,9 @@ from datetime import datetime
 from pathlib import Path
 
 from .inat_mapping import (
-    SPARQL_BATCH_SIZE,
+    SPARQL_BATCH_SIZE as SPARQL_BATCH_SIZE,  # re-export: tests patch name_mapping.SPARQL_BATCH_SIZE
+)
+from .inat_mapping import (
     SparqlRunner,
     _default_run_sparql,
     chunked,
@@ -51,7 +53,7 @@ def parse_labelmap_csv(path: Path) -> list[tuple[int, str]]:
 
 def build_query(names: Iterable[str]) -> str:
     def escape(name: str) -> str:
-        return name.replace('\\', '\\\\').replace('"', '\\"')
+        return name.replace("\\", "\\\\").replace('"', '\\"')
 
     values = " ".join(f'"{escape(n)}"' for n in names)
     return f"""
@@ -78,7 +80,9 @@ def parse_sparql_response_for_names(raw: str) -> dict[str, str]:
         if name in out:
             logger.warning(
                 "Duplicate taxon name %r: keeping %s, dropping %s",
-                name, out[name], entity,
+                name,
+                out[name],
+                entity,
             )
             continue
         out[name] = entity
@@ -91,9 +95,7 @@ def render_mapping_json_by_class_index(
     model_version: str,
     generated_at: datetime,
 ) -> str:
-    sorted_mappings = {
-        str(k): v for k, v in sorted(result.mappings.items(), key=lambda kv: kv[0])
-    }
+    sorted_mappings = {str(k): v for k, v in sorted(result.mappings.items(), key=lambda kv: kv[0])}
     payload = {
         "_meta": {
             "generated_for_model_version": model_version,
@@ -126,7 +128,10 @@ async def run_build_name_mapping(
             if class_index in merged_by_index:
                 logger.warning(
                     "Cross-batch duplicate for %r (class_index=%d): keeping %s, dropping %s",
-                    name, class_index, merged_by_index[class_index], qid,
+                    name,
+                    class_index,
+                    merged_by_index[class_index],
+                    qid,
                 )
                 continue
             merged_by_index[class_index] = qid

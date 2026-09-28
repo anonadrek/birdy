@@ -38,18 +38,21 @@ def _repo(tmp_path: Path, species: list[tuple[str, str, str]]) -> WebPaths:
     base = {"name": {"sv": "X", "en": "X"}, "photo": species[0][0], "intro": {"sv": "a", "en": "a"}}
     paths.web_groups.parent.mkdir(parents=True, exist_ok=True)
     paths.web_groups.write_text(
-        json.dumps({
-            "groups": [
-                {**base, "key": "songbirds", "slug": {"sv": "tattingar", "en": "songbirds"}},
-                {**base, "key": "other", "slug": {"sv": "ovriga-faglar", "en": "other-birds"}},
-            ],
-            "common": [species[0][0]],
-        }),
+        json.dumps(
+            {
+                "groups": [
+                    {**base, "key": "songbirds", "slug": {"sv": "tattingar", "en": "songbirds"}},
+                    {**base, "key": "other", "slug": {"sv": "ovriga-faglar", "en": "other-birds"}},
+                ],
+                "common": [species[0][0]],
+            }
+        ),
         encoding="utf-8",
     )
     paths.prompt.parent.mkdir(parents=True, exist_ok=True)
-    paths.prompt.write_text((PIPELINE / "prompts/web-v1.md").read_text(encoding="utf-8"),
-                            encoding="utf-8")
+    paths.prompt.write_text(
+        (PIPELINE / "prompts/web-v1.md").read_text(encoding="utf-8"), encoding="utf-8"
+    )
     paths.banned.write_text("fascinerande\n", encoding="utf-8")
     return paths
 
@@ -67,7 +70,12 @@ class FakeClient:
     aclose_called: bool = False
 
     async def parse_web_text(
-        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int,
+        self,
+        *,
+        model: str,
+        system: str,
+        messages: list[MessageParam],
+        max_tokens: int,
         effort: str,
     ) -> StructuredReply:
         self.calls += 1
@@ -78,9 +86,17 @@ class FakeClient:
 
 
 def _options(**kw: object) -> WebRunOptions:
-    base: dict[str, object] = dict(qids=(), model_key="opus", effort="high", max_cost=None,
-                                   force=False, refresh_sources=False, regenerate=False,
-                                   workers=2, dry_run=False)
+    base: dict[str, object] = dict(
+        qids=(),
+        model_key="opus",
+        effort="high",
+        max_cost=None,
+        force=False,
+        refresh_sources=False,
+        regenerate=False,
+        workers=2,
+        dry_run=False,
+    )
     base.update(kw)
     return WebRunOptions(**base)  # type: ignore[arg-type]
 
@@ -113,8 +129,9 @@ async def test_approved_species_are_skipped_without_a_call(tmp_path: Path) -> No
     record["review"] = "approved"
     record_path.write_text(json.dumps(record), encoding="utf-8")
     client = FakeClient()
-    outcomes = await run_web(paths, _options(regenerate=True), client=client, wiki=FakeWiki(),
-                             now=NOW)
+    outcomes = await run_web(
+        paths, _options(regenerate=True), client=client, wiki=FakeWiki(), now=NOW
+    )
     assert outcomes[0].status == "skipped" and client.calls == 0
 
 
@@ -142,7 +159,12 @@ class FlakyWiki:
 @dataclass
 class FlakyClient:
     async def parse_web_text(
-        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int,
+        self,
+        *,
+        model: str,
+        system: str,
+        messages: list[MessageParam],
+        max_tokens: int,
         effort: str,
     ) -> StructuredReply:
         text = " ".join(str(m["content"]) for m in messages)
@@ -154,8 +176,11 @@ class FlakyClient:
 async def test_one_species_failing_does_not_abort_the_whole_run(tmp_path: Path) -> None:
     paths = _repo(
         tmp_path,
-        [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Blåmes", "Blue Tit"),
-         ("Q3", "Svartmes", "Coal Tit")],
+        [
+            ("Q1", "Talgoxe", "Great Tit"),
+            ("Q2", "Blåmes", "Blue Tit"),
+            ("Q3", "Svartmes", "Coal Tit"),
+        ],
     )
     paths.data_out.mkdir(parents=True, exist_ok=True)
     stale = json.dumps({"qid": "Q2", "review": "unreviewed", "marker": "stale-from-earlier-run"})
@@ -175,7 +200,8 @@ async def test_one_species_failing_does_not_abort_the_whole_run(tmp_path: Path) 
 
 async def test_broken_pre_existing_json_does_not_abort_the_run(tmp_path: Path) -> None:
     paths = _repo(
-        tmp_path, [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Blåmes", "Blue Tit")],
+        tmp_path,
+        [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Blåmes", "Blue Tit")],
     )
     paths.data_out.mkdir(parents=True, exist_ok=True)
     broken = "{not valid json"
@@ -195,7 +221,12 @@ class ExpensiveClient:
     calls: int = 0
 
     async def parse_web_text(
-        self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int,
+        self,
+        *,
+        model: str,
+        system: str,
+        messages: list[MessageParam],
+        max_tokens: int,
         effort: str,
     ) -> StructuredReply:
         self.calls += 1
@@ -205,12 +236,16 @@ class ExpensiveClient:
 async def test_cost_cap_stops_the_run_and_skips_the_remaining_species(tmp_path: Path) -> None:
     paths = _repo(
         tmp_path,
-        [("Q1", "Talgoxe", "Great Tit"), ("Q2", "Blåmes", "Blue Tit"),
-         ("Q3", "Svartmes", "Coal Tit")],
+        [
+            ("Q1", "Talgoxe", "Great Tit"),
+            ("Q2", "Blåmes", "Blue Tit"),
+            ("Q3", "Svartmes", "Coal Tit"),
+        ],
     )
     client = ExpensiveClient()
-    outcomes = await run_web(paths, _options(max_cost=0.01, workers=1), client=client,
-                             wiki=FakeWiki(), now=NOW)
+    outcomes = await run_web(
+        paths, _options(max_cost=0.01, workers=1), client=client, wiki=FakeWiki(), now=NOW
+    )
     by_qid = {o.qid: o for o in outcomes}
     assert by_qid["Q1"].status == "skipped"
     assert "kostnadstaket nåddes:" in by_qid["Q1"].errors[0]
@@ -247,7 +282,12 @@ async def test_run_web_closes_a_client_it_created_itself(
     @dataclass
     class FakeInternalClient:
         async def parse_web_text(
-            self, *, model: str, system: str, messages: list[MessageParam], max_tokens: int,
+            self,
+            *,
+            model: str,
+            system: str,
+            messages: list[MessageParam],
+            max_tokens: int,
             effort: str,
         ) -> StructuredReply:
             return StructuredReply(valid_output(), "{}", 1000, 500, "end_turn")

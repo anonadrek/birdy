@@ -12,8 +12,19 @@ from birdy_fetcher.web.source import SourceImage, SpeciesSource
 
 
 def _source(images: tuple[SourceImage, ...]) -> SpeciesSource:
-    return SpeciesSource("Q1", "Parus major", "Talgoxe", "Great Tit", "Paridae", "Mesar",
-                         "Passeriformes", "LC", None, None, images)
+    return SpeciesSource(
+        "Q1",
+        "Parus major",
+        "Talgoxe",
+        "Great Tit",
+        "Paridae",
+        "Mesar",
+        "Passeriformes",
+        "LC",
+        None,
+        None,
+        images,
+    )
 
 
 def _webp(path: Path, size: tuple[int, int]) -> None:
@@ -21,8 +32,13 @@ def _webp(path: Path, size: tuple[int, int]) -> None:
     Image.new("RGB", size, (120, 140, 90)).save(path, "WEBP")
 
 
-HERO = SourceImage("hero", "Q1/hero.webp", "CC BY-SA 4.0", "<a>Ann</a>",
-                   "https://commons.wikimedia.org/wiki/File:A b.jpg")
+HERO = SourceImage(
+    "hero",
+    "Q1/hero.webp",
+    "CC BY-SA 4.0",
+    "<a>Ann</a>",
+    "https://commons.wikimedia.org/wiki/File:A b.jpg",
+)
 EXTRA = SourceImage("secondary", "Q1/secondary-1.webp", "CC0", None, "https://c/File:C.jpg")
 
 
