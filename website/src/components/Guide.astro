@@ -26,6 +26,7 @@ const t = getCopy(locale);
           <span class="sr-only">{s.value} {s.label}</span>
           <b data-count={s.value} aria-hidden="true">{s.value}</b>
           <span class="stat-label" aria-hidden="true">{s.label}</span>
+          <span class="stat-note">{s.note}</span>
         </li>
       ))}
     </ul>
@@ -64,6 +65,7 @@ const t = getCopy(locale);
   .stats li + li { border-left: 1px solid var(--line); }
   .stats b { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 52px; color: var(--rust); line-height: 1; }
   .stat-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .stat-note { display: block; margin-top: 4px; font-family: var(--font-script); font-size: 19px; line-height: 1.2; color: var(--rust); }
   @media (max-width: 760px) {
     .head { grid-template-columns: 1fr; gap: 40px; }
     .stats b { font-size: 38px; }

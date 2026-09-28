@@ -185,6 +185,9 @@ test.describe('första vyn', () => {
       const hits = await page.evaluate(({ x, ys }) => ys.map((y) => !!document.elementFromPoint(x, y)?.closest('[data-hero-phone]')),
         { x: last.x + last.width + 16, ys: [last.y + 1, last.y + last.height / 2, last.y + last.height - 1] });
       expect(hits, 'metaraden har minst 8 px synlig luft till telefonen').toEqual([false, false, false]);
+      const copyBottom = await page.locator('[data-hero] .copy').evaluate((c) => c.getBoundingClientRect().bottom);
+      const metaTop = await page.locator('[data-hero] .meta').evaluate((m) => m.getBoundingClientRect().top);
+      expect(copyBottom, 'herotexten når aldrig metaraden').toBeLessThan(metaTop);
     });
   }
 

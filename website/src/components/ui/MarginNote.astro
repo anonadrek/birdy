@@ -1,7 +1,7 @@
 ---
 // A short handwritten line in the margin under a heading (spec 2026-09-28-webb-faltboksfarger §5.2).
 // Colour comes from --mn-color on an ancestor: rust on light sections, apricot on the dark ones.
-// Renders nothing when the copy has no note.
+// Renders nothing when the note is empty ("note": "" in the copy is how a section drops its note).
 interface Props {
   text?: string;
   align?: 'left' | 'center';
@@ -9,7 +9,7 @@ interface Props {
 const { text, align = 'left' } = Astro.props;
 ---
 
-{text && <p class:list={['mnote', { 'mnote--center': align === 'center' }]}>{text}</p>}
+{text?.trim() && <p class:list={['mnote', { 'mnote--center': align === 'center' }]}>{text}</p>}
 
 <style>
   .mnote {

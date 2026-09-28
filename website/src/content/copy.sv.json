@@ -195,9 +195,9 @@
     "note": "slå upp fågeln du just såg",
     "lead": "839 arter med foton, beskrivningar och utbredning. Allt ligger i telefonen, så guiden fungerar även där täckningen tar slut.",
     "stats": [
-      { "value": "839", "label": "arter" },
-      { "value": "34", "label": "märken" },
-      { "value": "0", "label": "konton" }
+      { "value": "839", "label": "arter", "note": "från vanliga till sällsynta" },
+      { "value": "34", "label": "märken", "note": "tjänas in när du hittar fåglar" },
+      { "value": "0", "label": "konton", "note": "din dagbok stannar hos dig" }
     ],
     "mapCaption": "Birdy känner igen fåglar i hela Europa, från trädgårdens stammisar till sällsynta gäster.",
     "fallbackAlt": "Karta över Europa där länderna som Birdy täcker är ifyllda i rost",

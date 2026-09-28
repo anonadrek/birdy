@@ -195,9 +195,9 @@
     "note": "look up the bird you just saw",
     "lead": "839 species with photos, descriptions and range. Everything lives on your phone, so the guide keeps working where the signal ends.",
     "stats": [
-      { "value": "839", "label": "species" },
-      { "value": "34", "label": "badges" },
-      { "value": "0", "label": "accounts" }
+      { "value": "839", "label": "species", "note": "from common to rare" },
+      { "value": "34", "label": "badges", "note": "earned by finding birds" },
+      { "value": "0", "label": "accounts", "note": "your journal stays with you" }
     ],
     "mapCaption": "Birdy recognises birds across Europe, from garden regulars to rare visitors.",
     "fallbackAlt": "Map of Europe with the countries Birdy covers filled in rust",

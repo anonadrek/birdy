@@ -59,11 +59,14 @@ test.describe('handskrivna accentord', () => {
       for (const el of await accents.all()) {
         await expect(el).toHaveCSS('font-family', /Caveat/);
         await expect(el).toHaveCSS('font-style', 'normal');
+        await expect(el).toHaveCSS('font-weight', '700');
       }
       if (path !== '/blog/') {
         await expect(page.locator('[data-hero] h1 em')).toHaveCSS('font-family', /Caveat/);
         await expect(page.locator('[data-hero] h1 em')).toHaveCSS('font-style', 'normal');
+        await expect(page.locator('[data-hero] h1 em')).toHaveCSS('font-weight', '700');
       }
+      // Only proves the Caveat bold face exists and loads (the nav wordmark uses it too); the font-weight checks above prove the accents use it.
       await page.evaluate(() => document.fonts.ready);
       expect(
         await page.evaluate(() =>
@@ -86,9 +89,30 @@ test.describe('marginalanteckningar', () => {
       await page.goto(path);
       const mnotes = page.locator('.mnote');
       await expect(mnotes).toHaveText([...texts]);
-      for (const el of await mnotes.all()) await expect(el).toHaveCSS('font-family', /Caveat/);
+      for (const el of await mnotes.all()) {
+        await expect(el).toHaveCSS('font-family', /Caveat/);
+        await expect(el).toHaveCSS('font-weight', '700');
+      }
       await expect(page.locator('[data-hero] .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
       await expect(page.locator('#how-it-works .mnote')).toHaveCSS('color', 'rgb(154, 69, 38)');
+      await expect(page.locator('#premium .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
+      await expect(page.locator('#download .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
+    });
+  }
+});
+
+test.describe('bildtexter i handstil', () => {
+  const stats = {
+    '/sv/': ['från vanliga till sällsynta', 'tjänas in när du hittar fåglar', 'din dagbok stannar hos dig'],
+    '/': ['from common to rare', 'earned by finding birds', 'your journal stays with you'],
+  } as const;
+  for (const [path, texts] of Object.entries(stats)) {
+    test(`siffernoter, kartans bildtext och sidfotens rad på ${path}`, async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator('#guide .stat-note')).toHaveText([...texts]);
+      for (const sel of ['#guide .stat-note', '#guide .mapcap', 'footer .tag']) {
+        await expect(page.locator(sel).first()).toHaveCSS('font-family', /Caveat/);
+      }
     });
   }
 });
