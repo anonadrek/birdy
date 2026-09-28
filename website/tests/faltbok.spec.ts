@@ -159,18 +159,32 @@ test.describe('rivna papperskanter', () => {
 
   test('startsidan: övre bandets färg river ner i det undre', async ({ page }) => {
     await page.goto('/sv/');
-    expect(await fills(page)).toEqual([
-      'rgb(42, 29, 23)',    // hero → Tre sätt att fånga
-      'rgb(255, 250, 241)', // Fältboken → karusellen
-      'rgb(253, 229, 203)', // karusellen → Uppslagsverket
-      'rgb(246, 239, 226)', // Uppslagsverket → Premium
-      'rgb(30, 20, 16)',    // Premium → Integritet
-      'rgb(255, 250, 241)', // Frågor → Ta med Birdy
-      'rgb(42, 29, 23)',    // Ta med Birdy → sidfot
-    ]);
+    // Named per section so a failure points straight at the broken edge, and a total-count
+    // assertion so an extra/missing edge fails even if every named one still matches.
+    const edges: [string, string][] = [
+      ['#how-it-works > .deckle path', 'rgb(42, 29, 23)'],    // hero → Tre sätt att fånga
+      ['#app > .deckle path', 'rgb(255, 250, 241)'],          // Fältboken → karusellen
+      ['#guide > .deckle path', 'rgb(253, 229, 203)'],        // karusellen → Uppslagsverket
+      ['#premium > .deckle path', 'rgb(246, 239, 226)'],      // Uppslagsverket → Premium
+      ['#privacy > .deckle path', 'rgb(30, 20, 16)'],         // Premium → Integritet
+      ['#download > .deckle path', 'rgb(255, 250, 241)'],     // Frågor → Ta med Birdy
+      ['footer.footer > .deckle path', 'rgb(42, 29, 23)'],    // Ta med Birdy → sidfot
+    ];
+    await expect(page.locator('.deckle')).toHaveCount(7);
+    for (const [selector, expected] of edges) {
+      await expect(page.locator(selector), selector).toHaveCSS('fill', expected);
+    }
     const sealZ = await page.locator('#premium .pseal').evaluate((el) => Number(getComputedStyle(el).zIndex));
     const edgeZ = await page.locator('#premium .deckle').evaluate((el) => Number(getComputedStyle(el).zIndex));
     expect(sealZ).toBeGreaterThan(edgeZ);
+  });
+
+  test('herotelefonen ligger ovanför kanten mot Så funkar det i 1024×768', async ({ page }) => {
+    await page.setViewportSize({ width: 1024, height: 768 });
+    await page.goto('/sv/');
+    const phoneZ = await page.locator('.phone-slot').evaluate((el) => Number(getComputedStyle(el).zIndex));
+    const edgeZ = await page.locator('#how-it-works > .deckle').evaluate((el) => Number(getComputedStyle(el).zIndex));
+    expect(phoneZ).toBeGreaterThan(edgeZ);
   });
 
   test('bloggen och juridiken', async ({ page }) => {

@@ -78,7 +78,7 @@ const first = slides[0];
 
 <style>
   /* --ph-shadow: offset + blur (12 + 20 px) must stay below .track's padding-bottom (34 px), or the scroller clips the phones' shadow. */
-  .tour { position: relative; overflow: hidden; color: var(--ink); background: var(--peach); padding: 96px 0 70px; --kick-color: var(--rust); --jh-ink: var(--ink); --jh-accent: var(--rust); --ph-shadow: 0 12px 20px rgba(var(--dark-rgb), .22); }
+  .tour { position: relative; overflow-x: clip; color: var(--ink); background: var(--peach); padding: 96px 0 70px; --kick-color: var(--rust); --jh-ink: var(--ink); --jh-accent: var(--rust); --ph-shadow: 0 12px 20px rgba(var(--dark-rgb), .22); }
   .tour::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(154, 69, 38, .07) 1px, transparent 1.2px); background-size: 18px 18px; pointer-events: none; }
   .tour :global(:focus-visible) { outline-color: var(--rust); }
   .track:focus-visible { outline-offset: -3px; }

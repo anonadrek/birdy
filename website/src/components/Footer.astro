@@ -5,16 +5,16 @@ import { type Locale, getCopy } from '../lib/i18n';
 import { fieldNotesHref } from '../lib/field-notes';
 import { albitProductHref, CONTACT_EMAIL, LOOPLEAD_URL } from '../lib/links';
 
-// edge: the colour of whatever sits above the footer; it tears down into the footer (spec §6).
-interface Props { locale: Locale; switchLangHref?: string; edge?: string }
-const { locale, switchLangHref, edge = 'var(--paper)' } = Astro.props;
+// edgeColor: the colour of whatever sits above the footer; it tears down into the footer (spec §6).
+interface Props { locale: Locale; switchLangHref?: string; edgeColor?: string }
+const { locale, switchLangHref, edgeColor = 'var(--paper)' } = Astro.props;
 const t = getCopy(locale);
 const home = locale === 'sv' ? '/sv/' : '/';
 const blogPrefix = locale === 'sv' ? '/sv' : '';
 ---
 
 <footer class="footer">
-  <DeckleEdge color={edge} />
+  <DeckleEdge color={edgeColor} />
   <div class="wrap">
     <div class="fgrid">
       <div class="fbrand">

@@ -2,7 +2,10 @@
 // Torn paper edge where a coloured band meets its neighbour (spec 2026-09-28-webb-faltboksfarger §6).
 // Sits at the top of the lower band, filled with the upper band's colour, so the upper band tears down
 // into it. side="bottom" flips it for a band whose lower neighbour is not its own section.
-// The parent must be position: relative. The path is the July DeckleEdge's.
+// The parent must be position: relative and must not clip overflow (it cuts the 1 px overlap and shows
+// a seam at fractional scaling). Layering: z-index 2 sits above section backgrounds and tints (≤ 1);
+// anything that must overlap the tear (hero phone, Premium seal, the blog's first card) needs z-index ≥ 3.
+// The path is the July DeckleEdge's.
 interface Props {
   color: string;
   side?: 'top' | 'bottom';
@@ -24,4 +27,5 @@ const { color, side = 'top' } = Astro.props;
   .deckle svg { display: block; width: 100%; height: clamp(14px, 2vw, 26px); }
   .deckle-top { top: -1px; }
   .deckle-bottom { bottom: -1px; transform: scaleY(-1); }
+  @media (forced-colors: active) { .deckle { display: none; } }
 </style>
