@@ -1,4 +1,4 @@
-// Share images (1200×630) for the homepages in the 1.3 palette: the robin photo under a moss shade.
+// Share images (1200×630) for the homepages in the field journal palette: the robin photo under an espresso shade.
 // Run: npm run assets:og
 import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
@@ -13,7 +13,7 @@ const variants = [
 
 for (const item of variants) {
   const overlay = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
-    <defs><linearGradient id="shade"><stop offset="0" stop-color="#1F2A19" stop-opacity=".96"/><stop offset=".48" stop-color="#1F2A19" stop-opacity=".8"/><stop offset="1" stop-color="#1F2A19" stop-opacity=".06"/></linearGradient></defs>
+    <defs><linearGradient id="shade"><stop offset="0" stop-color="#2A1D17" stop-opacity=".96"/><stop offset=".48" stop-color="#2A1D17" stop-opacity=".8"/><stop offset="1" stop-color="#2A1D17" stop-opacity=".06"/></linearGradient></defs>
     <rect width="1200" height="630" fill="url(#shade)"/>
     <text x="72" y="85" fill="#FFF8EE" font-family="Georgia,serif" font-style="italic" font-size="42">Birdy.</text>
     <text x="72" y="182" fill="#F2B27A" font-family="Arial,sans-serif" font-size="17" letter-spacing="3">${item.note}</text>

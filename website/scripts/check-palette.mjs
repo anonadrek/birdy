@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve, join } from 'node:path';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const scanDirs = ['src'];
+const scanDirs = ['src', 'tools'];
 const allowed = (rel) => rel === 'src/styles/phone.css' || rel.startsWith('src/components/phone/');
 const banned = [
   [/#1f2a19/i, 'appens mossa #1F2A19'],
@@ -24,7 +24,7 @@ const banned = [
 const files = scanDirs.flatMap((dir) =>
   readdirSync(resolve(root, dir), { recursive: true })
     .map((f) => join(dir, String(f)).split('\\').join('/'))
-    .filter((rel) => /\.(astro|css|ts|mjs|js)$/.test(rel)),
+    .filter((rel) => /\.(astro|css|ts|mjs|js|svg)$/.test(rel)),
 );
 
 const hits = [];

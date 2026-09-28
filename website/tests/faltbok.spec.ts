@@ -196,3 +196,16 @@ test.describe('rivna papperskanter', () => {
     expect(await fills(page)).toEqual(['rgb(246, 239, 226)']);
   });
 });
+
+test.describe('delningsbilder', () => {
+  const alts = {
+    '/sv/': 'En rödhake i varmt ljus med orden Känn igen fågeln. Bevara stunden.',
+    '/': 'A European robin in warm light with the words Know the bird. Keep the moment.',
+  } as const;
+  for (const [path, alt] of Object.entries(alts)) {
+    test(`delningsbildens alt-text på ${path}`, async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute('content', alt);
+    });
+  }
+});
