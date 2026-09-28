@@ -14,7 +14,7 @@
 
 ## Avvikelser från specen (medvetna, små)
 
-1. **Skriptet heter `npm run verify`**, eftersom `npm run check` redan är `astro check`. Det kör build, `check-seo`, `test:i18n`, `test:no-dashes` och `test:contrast`.
+1. **Skriptet heter `npm run verify`**, eftersom `npm run check` redan är `astro check`. Det kör build, `check-seo`, `test:i18n`, `test:no-dashes`, `test:palette` och `test:contrast`.
 2. **Appruta och textcredit nämner inte artens namn.** "Birdy känner igen talgoxe på foto" blir fel böjning på svenska och datan har inte bestämd form. Ny text: "Birdy känner igen arten på foto eller läte, direkt i telefonen och utan täckning." Textcrediten blir: "Texten bygger på Wikipedia och får delas under CC BY-SA 4.0. Källor: svenska artikeln, engelska artikeln", med länkar till respektive revision.
 3. **Sökfältet i kategoriraden skickar `q` till ingångssidan**, som gör filtreringen. I mobilen visas bara ikonen, och ett tryck öppnar ingångssidan med sökfältet i fokus.
 4. **Artkorten har tom alt-text.** Namnet står som text i samma länk, så en alt-text hade upprepat det för skärmläsare. Artsidans foton har full alt-text.
@@ -542,7 +542,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
 
 - [ ] **Step 3: Kör textvakterna**
 
-Run: `npm run test:i18n && npm run test:no-dashes && npm run test:no-accuracy && npx astro check`
+Run: `npm run test:i18n && npm run test:no-dashes && npm run test:palette && npm run test:no-accuracy && npx astro check`
 Expected: paritet OK, inga streck, ingen noggrannhetssiffra och inga nya typfel (nu känner `Copy` till `species`).
 
 - [ ] **Step 4: Commit**
@@ -582,7 +582,7 @@ I `src/components/ui/Icon.astro`, lägg till i `paths` efter `menu`:
 .sp-crumbs a:hover { color: var(--rust); border-bottom-color: currentColor; }
 .sp-h2 { font-size: clamp(24px, 2.6vw, 30px); margin: 44px 0 16px; }
 .sp-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; }
-.sp-app { background: var(--moss); color: var(--cream); border-radius: 14px; padding: 18px 20px; --jh-ink: var(--cream); }
+.sp-app { background: var(--dark); color: var(--cream); border-radius: 14px; padding: 18px 20px; --jh-ink: var(--cream); }
 .sp-app .sp-app-h { margin: 0 0 6px; font-family: var(--font-serif); font-style: italic; font-size: 21px; color: var(--apricot); }
 .sp-app p { margin: 0 0 12px; font-size: 14px; line-height: 1.55; color: var(--cream); }
 .sp-app :global(:focus-visible), .sp-app :focus-visible { outline-color: var(--apricot); }
@@ -613,7 +613,7 @@ const { species: s, locale } = Astro.props;
 
 <style>
   .scard { display: block; height: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 6px; transition: transform .25s var(--ease-paper), box-shadow .25s var(--ease-paper); }
-  .scard:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(31, 42, 25, .12); }
+  .scard:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(var(--dark-rgb), .12); }
   .scard :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
   .scard-name { display: block; margin: 8px 4px 0; font-weight: 600; font-size: 14px; color: var(--ink); }
   .scard-latin { display: block; margin: 0 4px 4px; font-family: var(--font-script); font-size: 17px; color: var(--muted); }
@@ -1897,7 +1897,7 @@ Lägg till i `"scripts"`:
 
 ```json
     "test:seo": "node scripts/check-seo.mjs",
-    "verify": "npm run build && npm run test:seo && npm run test:i18n && npm run test:no-dashes && npm run test:contrast",
+    "verify": "npm run build && npm run test:seo && npm run test:i18n && npm run test:no-dashes && npm run test:palette && npm run test:contrast",
 ```
 
 - [ ] **Step 6: Kör**

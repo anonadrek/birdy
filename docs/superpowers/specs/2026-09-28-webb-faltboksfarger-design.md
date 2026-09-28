@@ -163,3 +163,15 @@ Artsidorna ärver annars tokens och komponenter automatiskt.
 ## 12. Utanför
 
 Appens färger och 1.3.0-releasen (appen behåller "Mossa, rost & mässing"), nya foton, julis snedställda kort och hörnmarkeringar, handstil på listrubriker och FAQ-frågor, fler språk.
+
+## 13. Avvikelser vid genomförandet (2026-09-28)
+
+- `--dark-2` togs bort när karusellen blev persika; ingen annan del använde den.
+- Telefonernas lokala tokens i `phone.css` är `--moss`, `--ink`, `--muted` och `--kick-color` (inte `--moss-2`/`--moss-deep`, som ingen telefonskärm använder). Karusellens telefoner får en kortare, varm skugga via `--ph-shadow` så att den ryms i karusellens nederkant.
+- Karusellens kicker är rost (persikabandet är ljust); testet i `home.spec.ts` följer med.
+- Artikelns hero har ingen riven kant: papperssidan ligger redan över heron med rundade hörn. Bloggens rubrikband har kanten i nederkant, och sidfotens kant följer sidan via `edgeColor` (espresso på startsidan, papper annars).
+- Sektioner med riven kant får inte klippa överflöd (annars syns en söm vid 125/150 % skalning): `.final` har inte längre `overflow: hidden`, karusellen har `overflow-x: clip`. Fältbokens nedre linje togs bort eftersom den rivna kanten gör jobbet. Kanterna döljs i Windows högkontrastläge.
+- Siffernoterna har luft till kolumnkanterna (`padding: 18px 6px`) och balanserade rader på mobil.
+- Grep-kontrollen i §3.2 är en vakt: `npm run test:palette` (`website/scripts/check-palette.mjs`), som täcker `website/src/` och `website/tools/` (kod och `.svg`).
+- Premiums marginalanteckning är aprikos som i de andra mörka partierna.
+- Delningsbilden har `?v=2` i adressen så att sociala medier hämtar den nya bilden; App Store-märkets nästan svarta fyllning är nu `#000`.

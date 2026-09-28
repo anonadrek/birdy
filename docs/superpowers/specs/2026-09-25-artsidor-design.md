@@ -104,6 +104,8 @@
 
 ## 5. Artsidan (layout B)
 
+Utseendet följer webben i fältbokens färger (`2026-09-28-webb-faltboksfarger-design.md`): inget grönt, espresso för mörka ytor, handskrivna accentord i rubrikerna via `JournalHeadline`.
+
 **Dator (från 1024 px):** två spalter, 5 : 7, med en streckad hårlinje emellan.
 
 - **Vänster spalt**, `position: sticky` under menyn och kategoriraden:
@@ -116,8 +118,8 @@
      - Global rödlista (IUCN): kategorin i ord med koden inom parentes. Raden döljs när koden är NE.
 
      Raderna "I Sverige" och "Storlek" döljs när faktauppgiften saknas (`null`, avsnitt 7).
-  3. Appruta (mossgrön): rubrik "Osäker på vad du ser?" och text om att Birdy känner igen arten på foto eller läte utan täckning. Därunder det officiella Google Play-märket med UTM (avsnitt 12).
-  4. Marginalanteckning i Caveat, bara där artfilen har `marginalia` (i dag fyra arter).
+  3. Appruta (espresso, `var(--dark)`, enligt `2026-09-28-webb-faltboksfarger-design.md`): rubrik "Osäker på vad du ser?" och text om att Birdy känner igen arten på foto eller läte utan täckning. Därunder det officiella Google Play-märket med UTM (avsnitt 12).
+  4. Marginalanteckning i Caveat med startsidans `MarginNote`-komponent, bara där artfilen har `marginalia` (i dag fyra arter).
 - **Höger spalt:**
   1. Brödsmulor: Birdy › Arter › {Grupp} › {Art}.
   2. Kicker med familjen, h1 med artens namn och det vetenskapliga namnet i Caveat.
