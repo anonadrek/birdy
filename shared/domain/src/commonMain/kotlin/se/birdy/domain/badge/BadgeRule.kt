@@ -81,7 +81,11 @@ sealed interface BadgeRule {
         override val target: Int,
     ) : BadgeRule
 
-    /** Distinct species observed whose iucnStatus is red-listed (NT/VU/CR). */
+    // NT/VU/EN/CR (T10c: doc was missing EN) — see `se.birdy.app.util.isRedListed`, the single
+    // shared predicate for this, which both this rule's evaluation and Archive's red-listed tag
+    // use so they never disagree.
+
+    /** Distinct species observed whose iucnStatus is red-listed (NT/VU/EN/CR). */
     data class ObservedRedListed(
         override val target: Int,
     ) : BadgeRule

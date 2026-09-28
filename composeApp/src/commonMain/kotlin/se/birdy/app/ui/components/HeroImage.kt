@@ -3,9 +3,11 @@ package se.birdy.app.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.PhotoCamera
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,6 +20,7 @@ import coil3.compose.AsyncImage
 import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.HeroMossMid
+import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.util.speciesImageUri
 
 @Composable
@@ -44,7 +47,12 @@ fun HeroImage(
                 contentScale = ContentScale.Crop,
             )
         } else {
-            Text("📷", style = MaterialTheme.typography.headlineLarge)
+            Icon(
+                Icons.Outlined.PhotoCamera,
+                contentDescription = null,
+                tint = TextOnHero.copy(alpha = 0.5f),
+                modifier = Modifier.size(32.dp),
+            )
         }
     }
 }

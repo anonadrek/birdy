@@ -14,19 +14,31 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import se.birdy.app.ui.stats.SeasonStatsUiState
 import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.Brass
+import se.birdy.app.ui.theme.Hairline
 
 /**
  * Plan 6b3 T10: month-bar chart. 12 bars across the width, the current month is
- * highlighted in MarginaliaInk while the rest use AccentCopper. Zero-height bars
+ * highlighted in [currentMonthColor] while the rest use [barColor]. Zero-height bars
  * render as nothing (the axis line still anchors them visually).
+ *
+ * 1.3.0 T12: current-month fill is [Brass] — a graphical fill (see [Brass]'s own "fills
+ * only, never text on paper" doc comment), not the text label under it, so its 2.8:1
+ * paper-contrast is fine here. The axis line moved off a hardcoded translucent ink to the
+ * [axisColor] token so it matches every other hairline rule on the redesigned screen.
+ *
+ * 1.3.0 T12b: the axis is drawn `1.dp` tall (was a raw `1f` — 1 physical pixel regardless of
+ * density, effectively invisible on an xxhdpi phone together with [Hairline]'s already-thin
+ * 1.44:1 on `CardPaper`).
  */
+@Suppress("LongParameterList") // every color/size param has a default so call sites stay short.
 @Composable
 fun JournalBarChart(
     bars: List<SeasonStatsUiState.MonthBar>,
     modifier: Modifier = Modifier,
     barColor: Color = AccentCopper,
-    currentMonthColor: Color = MarginaliaInk,
+    currentMonthColor: Color = Brass,
+    axisColor: Color = Hairline,
     height: Dp = 140.dp,
     contentDescription: String? = null,
 ) {
@@ -38,7 +50,7 @@ fun JournalBarChart(
         val slot = size.width / bars.size
         val barWidth = slot * 0.62f
         val barInset = (slot - barWidth) / 2f
-        val axisHeight = 1f
+        val axisHeight = 1.dp.toPx()
         bars.forEachIndexed { i, b ->
             val h = (b.observationCount / maxCount.toFloat()) * (size.height - axisHeight)
             val x = i * slot + barInset
@@ -49,7 +61,7 @@ fun JournalBarChart(
             )
         }
         drawRect(
-            color = MarginaliaInk.copy(alpha = 0.35f),
+            color = axisColor,
             topLeft = Offset(0f, size.height - axisHeight),
             size = Size(size.width, axisHeight),
         )

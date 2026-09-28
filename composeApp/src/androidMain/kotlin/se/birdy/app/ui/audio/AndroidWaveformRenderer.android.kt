@@ -2,16 +2,19 @@ package se.birdy.app.ui.audio
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.media.MediaCodec
 import android.media.MediaFormat
 import android.media.MediaMuxer
 import android.os.Build
+import androidx.compose.ui.graphics.toArgb
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
+import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.MossCreme
 import java.io.File
 import java.io.FileOutputStream
 import java.nio.ByteBuffer
@@ -22,8 +25,10 @@ import kotlin.math.abs
  * Real implementation of [WaveformRendererApi] for Plan 6b2 T6.
  *
  * [renderWaveformPng]: renders PCM samples as a waveform bar chart onto a 600×200 Bitmap
- * using the Mossbädd colour palette (PaperBg background, MarginaliaInk bars,
- * AccentCopper underline). Output is written as a lossless PNG.
+ * using the Field Journal colour palette (MossCreme background, MarginaliaInk bars,
+ * AccentCopper underline) — read directly from the shared tokens (fix wave B8) so this
+ * can never drift out of sync with a future palette change again. Output is written as
+ * a lossless PNG.
  *
  * [encodeOpus]: encodes a mono 48 kHz PCM ShortArray into an Opus-in-OGG container
  * via [MediaCodec] + [MediaMuxer] at ~32 kbps. Output is written to [outPath].
@@ -63,17 +68,17 @@ class AndroidWaveformRenderer : WaveformRendererApi {
             val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
             try {
                 val canvas = Canvas(bitmap)
-                canvas.drawColor(Color.parseColor("#EFE7D6")) // PaperBg
+                canvas.drawColor(MossCreme.toArgb())
 
                 val barPaint =
                     Paint().apply {
-                        color = Color.parseColor("#3F4F30") // MarginaliaInk
+                        color = MarginaliaInk.toArgb()
                         style = Paint.Style.FILL
                         isAntiAlias = true
                     }
                 val underlinePaint =
                     Paint().apply {
-                        color = Color.parseColor("#A8552D") // AccentCopper
+                        color = AccentCopper.toArgb()
                         style = Paint.Style.STROKE
                         strokeWidth = 2f
                         isAntiAlias = true

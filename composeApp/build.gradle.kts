@@ -4,6 +4,9 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
+    // Screenshot rig (release 1.3.0 Plan 2 Task 1) — only applied here (not at the
+    // root), so a plain version suffices; no other module needs this plugin.
+    id("io.github.takahirom.roborazzi") version "1.43.1"
 }
 
 // ktlint-gradle 12.x with KMP + Compose Multiplatform pulls files under
@@ -85,6 +88,15 @@ kotlin {
         }
         androidUnitTest.dependencies {
             implementation("junit:junit:4.13.2")
+            // Screenshot rig (release 1.3.0 Plan 2 Task 1): renders commonMain Compose
+            // screens to PNG on the JVM via Robolectric, in SV + EN, without a device.
+            // Gated behind -Pbirdy.screenshots=true (see testOptions below) so the
+            // normal gate (:composeApp:testDebugUnitTest) stays fast.
+            implementation("org.robolectric:robolectric:4.17")
+            implementation("io.github.takahirom.roborazzi:roborazzi:1.43.1")
+            implementation("io.github.takahirom.roborazzi:roborazzi-compose:1.43.1")
+            implementation("io.github.takahirom.roborazzi:roborazzi-junit-rule:1.43.1")
+            implementation("androidx.compose.ui:ui-test-junit4:1.8.2")
         }
         iosMain.dependencies {
             implementation(libs.sqldelight.native.driver)
@@ -110,6 +122,18 @@ afterEvaluate {
             dependsOn(":shared:content:validateModelMapping")
         }
 }
+
+// Read once at configuration time (release 1.3.0 Plan 2 Task 1) so the testOptions
+// lambda below only ever closes over a plain Boolean, not `project` itself.
+// `project.hasProperty(...)` only checks presence, so `-Pbirdy.screenshots=false` was
+// indistinguishable from `=true` (fix wave B, finding B4) — parse the value instead.
+// A bare `-Pbirdy.screenshots` (no `=value`) sets the property to `""`, which the reader
+// must treat as "on" (that's what a bare flag means) rather than silently falling through
+// `toBoolean()`'s false-if-not-"true" behavior; `toBooleanStrict()` for any other value
+// fails loudly on a typo like `-Pbirdy.screenshots=yes` instead of quietly disabling the
+// gate (fix wave B8, finding 5).
+val runScreenshotTests =
+    providers.gradleProperty("birdy.screenshots").map { it.isEmpty() || it.toBooleanStrict() }.getOrElse(false)
 
 android {
     namespace = "se.birdy.app"
@@ -139,8 +163,23 @@ android {
         // på API 24/25). Phase-B-notiskoden använder DayOfWeek.SUNDAY som triggade det.
         isCoreLibraryDesugaringEnabled = true
     }
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+        unitTests.all { test ->
+            // Screenshot tests (release 1.3.0 Plan 2 Task 1) are slow and
+            // memory-hungry; run them only on request (-Pbirdy.screenshots=true)
+            // so the normal :composeApp:testDebugUnitTest gate stays fast.
+            if (!runScreenshotTests) {
+                test.filter.excludeTestsMatching("se.birdy.app.screenshots.*")
+            }
+            test.maxHeapSize = "3g"
+        }
+    }
 }
 
 dependencies {
     coreLibraryDesugaring(libs.desugar.jdk.libs)
+    // Lets createComposeRule() host a ComponentActivity under the testDebugUnitTest
+    // variant (release 1.3.0 Plan 2 Task 1 screenshot rig).
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.8.2")
 }

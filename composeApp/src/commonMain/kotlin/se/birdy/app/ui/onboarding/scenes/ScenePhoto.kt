@@ -126,6 +126,9 @@ fun ScenePhoto(
                                         glyph = null,
                                         name = null,
                                     ),
+                                // See-through ink-stamp look — the embossed 1.3 fill (default)
+                                // is opaque and hides the bird photo underneath (finding I7).
+                                filled = false,
                             )
                         }
                     }

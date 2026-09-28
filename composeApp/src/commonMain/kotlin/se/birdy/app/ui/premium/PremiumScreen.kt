@@ -3,15 +3,14 @@ package se.birdy.app.ui.premium
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,13 +18,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Close
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -34,19 +36,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.liveRegion
-import androidx.compose.ui.semantics.role
-import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
@@ -68,29 +67,39 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_free_save
 import birdy_bird_scanner.composeapp.generated.resources.premium_free_scan
 import birdy_bird_scanner.composeapp.generated.resources.premium_headline_accent
 import birdy_bird_scanner.composeapp.generated.resources.premium_headline_plain
-import birdy_bird_scanner.composeapp.generated.resources.premium_headline_suffix
+import birdy_bird_scanner.composeapp.generated.resources.premium_kicker
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifetime_note
 import birdy_bird_scanner.composeapp.generated.resources.premium_price_loading
 import birdy_bird_scanner.composeapp.generated.resources.premium_purchase_failed
 import birdy_bird_scanner.composeapp.generated.resources.premium_purchase_pending
 import birdy_bird_scanner.composeapp.generated.resources.premium_screen_close
-import birdy_bird_scanner.composeapp.generated.resources.premium_subline
 import birdy_bird_scanner.composeapp.generated.resources.premium_tier_lifetime_title
 import birdy_bird_scanner.composeapp.generated.resources.premium_tier_yearly_title
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
-import se.birdy.app.ui.components.OrnamentRule
-import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.MarginaliaInk
-import se.birdy.app.ui.theme.PaperTop
-import se.birdy.app.ui.theme.SandCreme
-import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.paperBackground
-import se.birdy.app.ui.theme.rememberCaveat
+import se.birdy.app.ui.components.BirdyPremiumButton
+import se.birdy.app.ui.components.GlassIconButton
+import se.birdy.app.ui.components.MicroLabel
+import se.birdy.app.ui.components.PhotoHero
+import se.birdy.app.ui.theme.BrassLight
+import se.birdy.app.ui.theme.HeroMossDeep
+import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.domain.premium.PremiumTier
+
+// Text alphas over HeroMossDeep, pinned by PremiumContrastTest — change both together.
+internal const val PREMIUM_FREE_ITEM_TEXT_ALPHA = 0.75f
+internal const val PREMIUM_FEATURE_SUB_ALPHA = 0.6f
+internal const val PREMIUM_TIER_TITLE_ALPHA = 0.65f
+internal const val PREMIUM_NOTE_ALPHA = 0.55f
+
+// TierCard fill alphas — the real backdrop the tier title sits on is this fill composited over
+// HeroMossDeep, not HeroMossDeep directly. Selected (more white mixed in) is the lower-contrast
+// case for light text; both are pinned by PremiumContrastTest.
+internal const val PREMIUM_TIER_FILL_SELECTED_ALPHA = 0.08f
+internal const val PREMIUM_TIER_FILL_UNSELECTED_ALPHA = 0.03f
 
 @Composable
 fun PremiumScreen(
@@ -108,21 +117,17 @@ fun PremiumScreen(
         modifier =
             Modifier
                 .fillMaxSize()
-                .paperBackground(),
+                .background(HeroMossDeep),
     ) {
         LazyColumn(
             contentPadding = PaddingValues(bottom = 32.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             item { PremiumHero() }
-            item { OrnamentRule() }
-            item { PremiumHeadline() }
-            item { PremiumSubline() }
-            item { Spacer(Modifier.height(10.dp)) }
+            item { Spacer(Modifier.height(20.dp)) }
             item { FreeSummarySection() }
-            item { Spacer(Modifier.height(8.dp)) }
+            item { Spacer(Modifier.height(6.dp)) }
             item { PremiumDivider() }
-            item { Spacer(Modifier.height(2.dp)) }
+            item { Spacer(Modifier.height(4.dp)) }
             items(premiumFeatures) { f ->
                 FeatureRowC(
                     icon = f.icon,
@@ -130,33 +135,40 @@ fun PremiumScreen(
                     sub = stringResource(f.sub),
                 )
             }
-            item { Spacer(Modifier.height(10.dp)) }
+            item { Spacer(Modifier.height(14.dp)) }
             item {
-                TierCard(
-                    title = stringResource(Res.string.premium_tier_yearly_title),
-                    price = state.formattedYearlyPrice ?: stringResource(Res.string.premium_price_loading),
-                    sub = null,
-                    selected = state.selectedTier == PremiumTier.YEARLY,
-                    onClick = { viewModel.selectTier(PremiumTier.YEARLY) },
-                )
+                Row(
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp)
+                            .height(IntrinsicSize.Min)
+                            .selectableGroup(),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    TierCard(
+                        modifier = Modifier.weight(1f).fillMaxHeight(),
+                        title = stringResource(Res.string.premium_tier_yearly_title),
+                        price = state.formattedYearlyPrice ?: stringResource(Res.string.premium_price_loading),
+                        priceLoaded = state.formattedYearlyPrice != null,
+                        selected = state.selectedTier == PremiumTier.YEARLY,
+                        enabled = !state.purchaseInFlight,
+                        onClick = { viewModel.selectTier(PremiumTier.YEARLY) },
+                    )
+                    TierCard(
+                        modifier = Modifier.weight(1f).fillMaxHeight(),
+                        title = stringResource(Res.string.premium_tier_lifetime_title),
+                        price = state.formattedLifetimePrice ?: stringResource(Res.string.premium_price_loading),
+                        priceLoaded = state.formattedLifetimePrice != null,
+                        selected = state.selectedTier == PremiumTier.LIFETIME,
+                        enabled = !state.purchaseInFlight,
+                        onClick = { viewModel.selectTier(PremiumTier.LIFETIME) },
+                    )
+                }
             }
-            item {
-                TierCard(
-                    title = stringResource(Res.string.premium_tier_lifetime_title),
-                    price = state.formattedLifetimePrice ?: stringResource(Res.string.premium_price_loading),
-                    sub = null,
-                    selected = state.selectedTier == PremiumTier.LIFETIME,
-                    onClick = { viewModel.selectTier(PremiumTier.LIFETIME) },
-                )
-            }
-            item {
-                PrimaryCta(
-                    text = stringResource(Res.string.premium_cta_primary),
-                    inFlight = state.purchaseInFlight,
-                    enabled = state.canPurchase,
-                    onClick = { viewModel.purchase() },
-                )
-            }
+            item { Spacer(Modifier.height(16.dp)) }
+            // Moved above the CTA (T9b #6): on a short screen the notice must not sit below the
+            // fold, right after a tap that just changed nothing visible above it.
             val purchaseNotice = state.purchaseNotice
             if (purchaseNotice != null) {
                 item {
@@ -168,7 +180,7 @@ fun PremiumScreen(
                                     PurchaseNotice.FAILED -> Res.string.premium_purchase_failed
                                 },
                             ),
-                        color = MarginaliaInk,
+                        color = TextOnHero,
                         fontSize = 14.sp,
                         textAlign = TextAlign.Center,
                         modifier =
@@ -178,6 +190,15 @@ fun PremiumScreen(
                                 .semantics { liveRegion = LiveRegionMode.Polite },
                     )
                 }
+            }
+            item {
+                BirdyPremiumButton(
+                    text = stringResource(Res.string.premium_cta_primary),
+                    onClick = { viewModel.purchase() },
+                    enabled = state.canPurchase,
+                    loading = state.purchaseInFlight,
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                )
             }
             item {
                 val note =
@@ -191,7 +212,7 @@ fun PremiumScreen(
                 if (note != null) {
                     Text(
                         text = note,
-                        color = MarginaliaInk,
+                        color = TextOnHero.copy(alpha = PREMIUM_NOTE_ALPHA),
                         fontSize = 13.sp,
                         modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 4.dp),
                         textAlign = TextAlign.Center,
@@ -199,233 +220,78 @@ fun PremiumScreen(
                 }
             }
         }
-        IconButton(
+        // Shared GlassIconButton (Task 11c): a real ≥48dp touch target (IconButton's own
+        // effective touch target here measured ~40dp — T9c #2) holding a 36dp GlassOnPhoto disc.
+        GlassIconButton(
+            icon = Icons.Outlined.Close,
+            contentDescription = stringResource(Res.string.premium_screen_close),
             onClick = onClose,
-            modifier =
-                Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(top = 18.dp, end = 14.dp)
-                    .size(36.dp)
-                    .background(Color.White.copy(alpha = 0.78f), CircleShape),
-        ) {
-            Icon(
-                Icons.Outlined.Close,
-                contentDescription = stringResource(Res.string.premium_screen_close),
-                tint = MarginaliaInk,
-            )
-        }
+            modifier = Modifier.align(Alignment.TopEnd).padding(top = 12.dp, end = 14.dp),
+        )
     }
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun PremiumHero() {
-    Box(
-        modifier =
-            Modifier
-                .fillMaxWidth()
-                .height(300.dp),
-    ) {
-        AsyncImage(
-            model = Res.getUri("files/premium/great-tit-hero.jpg"),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize(),
-        )
-        Box(
-            modifier =
-                Modifier
-                    .fillMaxSize()
-                    .background(
-                        Brush.verticalGradient(
-                            0f to Color.Transparent,
-                            0.55f to Color.Transparent,
-                            0.85f to PaperTop.copy(alpha = 0.55f),
-                            1f to PaperTop,
-                        ),
-                    ),
-        )
-        Box(
-            modifier =
-                Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 28.dp, vertical = 80.dp),
-        ) {
-            CornerBracket(Alignment.TopStart)
-            CornerBracket(Alignment.TopEnd)
-            CornerBracket(Alignment.BottomStart)
-            CornerBracket(Alignment.BottomEnd)
-        }
-    }
+    PhotoHero(
+        kicker = stringResource(Res.string.premium_kicker),
+        title = stringResource(Res.string.premium_headline_plain),
+        titleAccent = stringResource(Res.string.premium_headline_accent),
+        height = 280.dp,
+        image = { PremiumHeroPhoto() },
+    )
 }
 
+/**
+ * The one bundled Premium promo photo (`great-tit-hero.jpg`), shared by [PremiumHero] and
+ * [ThanksHero] — unlike the species photos elsewhere in the app, this asset never varies, so
+ * both heroes draw the exact same crop. Purely decorative: the kicker + headline already carry
+ * the meaning, so `contentDescription` is null on both call sites, not a redundant caption.
+ */
+@OptIn(ExperimentalResourceApi::class)
 @Composable
-private fun BoxScope.CornerBracket(align: Alignment) {
-    val topEdge = align == Alignment.TopStart || align == Alignment.TopEnd
-    val leftEdge = align == Alignment.TopStart || align == Alignment.BottomStart
-    val vAlign =
-        when {
-            topEdge && leftEdge -> Alignment.TopStart
-            topEdge && !leftEdge -> Alignment.TopEnd
-            !topEdge && leftEdge -> Alignment.BottomStart
-            else -> Alignment.BottomEnd
-        }
-    Box(modifier = Modifier.align(align).size(28.dp)) {
-        Box(
-            modifier =
-                Modifier
-                    .align(if (topEdge) Alignment.TopStart else Alignment.BottomStart)
-                    .fillMaxWidth()
-                    .height(2.5.dp)
-                    .background(Color.White.copy(alpha = 0.95f)),
-        )
-        Box(
-            modifier =
-                Modifier
-                    .align(vAlign)
-                    .size(width = 2.5.dp, height = 28.dp)
-                    .background(Color.White.copy(alpha = 0.95f)),
-        )
-    }
-}
-
-@Composable
-private fun PremiumHeadline() {
-    val plain = stringResource(Res.string.premium_headline_plain)
-    val accent = stringResource(Res.string.premium_headline_accent)
-    val suffix = stringResource(Res.string.premium_headline_suffix)
-    Column(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 22.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        if (suffix.isNotEmpty()) {
-            // EN-style: plain + accent on line 1, suffix on line 2
-            Row(verticalAlignment = Alignment.Bottom) {
-                Text(
-                    text = plain,
-                    fontFamily = rememberDmSerifDisplay(),
-                    fontStyle = FontStyle.Italic,
-                    fontSize = 28.sp,
-                    color = TextOnCreme,
-                )
-                Spacer(Modifier.size(8.dp))
-                Text(
-                    text = accent,
-                    fontFamily = rememberCaveat(),
-                    fontWeight = FontWeight.W600,
-                    fontSize = 34.sp,
-                    color = AccentCopper,
-                    modifier = Modifier.rotate(-3f),
-                )
-            }
-            Text(
-                text = suffix,
-                fontFamily = rememberDmSerifDisplay(),
-                fontStyle = FontStyle.Italic,
-                fontSize = 28.sp,
-                color = TextOnCreme,
-            )
-        } else {
-            // SV-style: plain on line 1, accent on line 2
-            Text(
-                text = plain,
-                fontFamily = rememberDmSerifDisplay(),
-                fontStyle = FontStyle.Italic,
-                fontSize = 28.sp,
-                color = TextOnCreme,
-            )
-            Text(
-                text = accent,
-                fontFamily = rememberCaveat(),
-                fontWeight = FontWeight.W600,
-                fontSize = 36.sp,
-                color = AccentCopper,
-                modifier = Modifier.rotate(-3f),
-            )
-        }
-    }
-}
-
-@Composable
-private fun PremiumSubline() {
-    Text(
-        text = stringResource(Res.string.premium_subline),
-        fontFamily = rememberCaveat(),
-        fontSize = 15.sp,
-        color = MarginaliaInk,
-        textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp),
+internal fun PremiumHeroPhoto() {
+    AsyncImage(
+        model = Res.getUri("files/premium/great-tit-hero.jpg"),
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = Modifier.fillMaxSize(),
     )
 }
 
 @Composable
 private fun FreeSummarySection() {
-    Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp)) {
+    Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)) {
+        MicroLabel(text = stringResource(Res.string.premium_free_eyebrow), color = BrassLight)
+        Spacer(Modifier.height(8.dp))
+        val items =
+            listOf(
+                stringResource(Res.string.premium_free_scan),
+                stringResource(Res.string.premium_free_save),
+                stringResource(Res.string.premium_free_encyclopedia),
+                stringResource(Res.string.premium_free_badges),
+            )
         Text(
-            text = stringResource(Res.string.premium_free_eyebrow),
-            fontFamily = rememberCaveat(),
-            fontWeight = FontWeight.W600,
-            fontSize = 15.sp,
-            color = MarginaliaInk,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp),
+            // Non-breaking spaces inside each item (not just around "·"): a bare " · " join lets
+            // the line wrap inside a phrase like "839 arter", splitting the number from its unit.
+            // Built in Kotlin, not strings.xml, so it stays a plain, translatable sentence there.
+            text = items.joinToString("\u00A0\u00B7 ") { it.replace(' ', '\u00A0') },
+            color = TextOnHero.copy(alpha = PREMIUM_FREE_ITEM_TEXT_ALPHA),
+            fontSize = 12.sp,
+            lineHeight = 17.sp,
         )
-        Column(
-            modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(MarginaliaInk.copy(alpha = 0.05f))
-                    .border(1.dp, MarginaliaInk.copy(alpha = 0.28f), RoundedCornerShape(12.dp))
-                    .padding(horizontal = 12.dp, vertical = 10.dp),
-            verticalArrangement = Arrangement.spacedBy(7.dp),
-        ) {
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                FreeItem(stringResource(Res.string.premium_free_scan), Modifier.weight(1f))
-                FreeItem(stringResource(Res.string.premium_free_save), Modifier.weight(1f))
-            }
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                FreeItem(stringResource(Res.string.premium_free_encyclopedia), Modifier.weight(1f))
-                FreeItem(stringResource(Res.string.premium_free_badges), Modifier.weight(1f))
-            }
-        }
-    }
-}
-
-@Composable
-private fun RowScope.FreeItem(
-    text: String,
-    modifier: Modifier = Modifier,
-) {
-    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
-        Box(
-            modifier = Modifier.size(16.dp).clip(CircleShape).background(MarginaliaInk),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text("✓", color = PaperTop, fontSize = 10.sp)
-        }
-        Spacer(Modifier.size(7.dp))
-        Text(text, fontSize = 11.sp, color = MarginaliaInk, lineHeight = 13.sp)
+        Spacer(Modifier.height(14.dp))
+        Box(Modifier.fillMaxWidth().height(1.dp).background(TextOnHero.copy(alpha = 0.12f)))
     }
 }
 
 @Composable
 private fun PremiumDivider() {
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-    ) {
-        Box(Modifier.weight(1f).height(1.dp).background(AccentCopper.copy(alpha = 0.4f)))
-        Text(
-            text = stringResource(Res.string.premium_divider),
-            fontFamily = rememberCaveat(),
-            fontWeight = FontWeight.W700,
-            fontSize = 15.sp,
-            color = AccentCopper,
-        )
-        Box(Modifier.weight(1f).height(1.dp).background(AccentCopper.copy(alpha = 0.4f)))
-    }
+    MicroLabel(
+        text = stringResource(Res.string.premium_divider),
+        color = BrassLight,
+        modifier = Modifier.padding(horizontal = 20.dp),
+    )
 }
 
 @Composable
@@ -435,141 +301,108 @@ private fun FeatureRowC(
     sub: String,
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 6.dp),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
         verticalAlignment = Alignment.Top,
     ) {
         Box(
             modifier =
                 Modifier
-                    .size(34.dp)
-                    .clip(RoundedCornerShape(9.dp))
-                    .background(AccentCopper.copy(alpha = 0.08f))
-                    .border(1.3.dp, AccentCopper.copy(alpha = 0.5f), RoundedCornerShape(9.dp)),
+                    .size(30.dp)
+                    .clip(CircleShape)
+                    .border(1.dp, BrassLight.copy(alpha = 0.45f), CircleShape),
             contentAlignment = Alignment.Center,
         ) {
-            PremiumFeatureGlyph(icon, modifier = Modifier.size(18.dp))
+            PremiumFeatureGlyph(icon, tint = BrassLight)
         }
         Spacer(Modifier.size(12.dp))
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = title,
-                fontFamily = rememberDmSerifDisplay(),
-                fontStyle = FontStyle.Italic,
+                color = TextOnHero,
+                fontWeight = FontWeight.W600,
                 fontSize = 15.sp,
-                color = TextOnCreme,
             )
             Text(
                 text = sub,
-                fontSize = 11.sp,
-                color = MarginaliaInk,
-                modifier = Modifier.padding(top = 1.dp),
+                color = TextOnHero.copy(alpha = PREMIUM_FEATURE_SUB_ALPHA),
+                fontSize = 12.sp,
+                modifier = Modifier.padding(top = 2.dp),
             )
         }
     }
 }
 
+@Suppress("LongParameterList") // title/price/priceLoaded/selected/enabled/onClick/modifier — the full, deliberate API.
 @Composable
 private fun TierCard(
     title: String,
     price: String,
-    sub: String?,
+    priceLoaded: Boolean,
     selected: Boolean,
-    onClick: () -> Unit,
-) {
-    val border = if (selected) BorderStroke(1.8.dp, AccentCopper) else BorderStroke(1.dp, AccentCopper.copy(alpha = 0.3f))
-    Row(
-        modifier =
-            Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp)
-                .clip(RoundedCornerShape(12.dp))
-                .background(if (selected) AccentCopper.copy(alpha = 0.08f) else Color.White.copy(alpha = 0.35f))
-                .border(border, RoundedCornerShape(12.dp))
-                .clickable(onClick = onClick)
-                .semantics(mergeDescendants = true) {
-                    this.selected = selected
-                    role = Role.RadioButton
-                }.padding(horizontal = 14.dp, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        // Radio button
-        Box(
-            modifier =
-                Modifier
-                    .size(18.dp)
-                    .clip(CircleShape)
-                    .border(1.5.dp, AccentCopper, CircleShape),
-            contentAlignment = Alignment.Center,
-        ) {
-            if (selected) {
-                Box(
-                    modifier =
-                        Modifier
-                            .size(10.dp)
-                            .clip(CircleShape)
-                            .background(AccentCopper),
-                )
-            }
-        }
-        Spacer(Modifier.size(12.dp))
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = title,
-                fontFamily = rememberDmSerifDisplay(),
-                fontStyle = FontStyle.Italic,
-                fontSize = 17.sp,
-                color = TextOnCreme,
-            )
-            if (sub != null) {
-                Text(
-                    text = sub,
-                    fontSize = 11.sp,
-                    color = MarginaliaInk,
-                    modifier = Modifier.padding(top = 2.dp),
-                )
-            }
-        }
-        Text(
-            text = price,
-            fontFamily = rememberCaveat(),
-            fontWeight = FontWeight.W600,
-            fontSize = 14.sp,
-            color = AccentCopper,
-        )
-    }
-}
-
-@Composable
-private fun PrimaryCta(
-    text: String,
-    inFlight: Boolean,
     enabled: Boolean,
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
+    val border = if (selected) BorderStroke(1.5.dp, BrassLight) else BorderStroke(1.dp, TextOnHero.copy(alpha = 0.14f))
+    val fillAlpha = if (selected) PREMIUM_TIER_FILL_SELECTED_ALPHA else PREMIUM_TIER_FILL_UNSELECTED_ALPHA
     Box(
         modifier =
-            Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp, vertical = 4.dp)
-                .clip(RoundedCornerShape(999.dp))
-                .background(if (enabled || inFlight) AccentCopper else AccentCopper.copy(alpha = 0.45f))
-                .clickable(enabled = enabled, onClick = onClick)
-                .padding(vertical = 14.dp),
-        contentAlignment = Alignment.Center,
+            modifier
+                .clip(RoundedCornerShape(14.dp))
+                .background(Color.White.copy(alpha = fillAlpha))
+                .border(border, RoundedCornerShape(14.dp))
+                // selectable() already marks this node selected/RadioButton and a merge boundary
+                // for TalkBack — no separate manual semantics{} block needed on top of it.
+                .selectable(selected = selected, enabled = enabled, role = Role.RadioButton, onClick = onClick)
+                .padding(horizontal = 14.dp, vertical = 12.dp),
     ) {
-        if (inFlight) {
-            CircularProgressIndicator(
-                color = SandCreme,
-                strokeWidth = 2.dp,
-                modifier = Modifier.size(20.dp),
-            )
-        } else {
+        Column(modifier = Modifier.fillMaxWidth()) {
             Text(
-                text = text,
-                color = SandCreme,
-                fontFamily = rememberDmSerifDisplay(),
-                fontStyle = FontStyle.Italic,
-                fontSize = 18.sp,
+                text = title.uppercase(),
+                color = TextOnHero.copy(alpha = PREMIUM_TIER_TITLE_ALPHA),
+                fontWeight = FontWeight.W600,
+                fontSize = 11.sp,
+                // Always, not just when selected (T9c #4): the check glyph's own position doesn't
+                // move, so a fixed end-padding avoids a layout shift when a card becomes selected.
+                modifier = Modifier.padding(end = 20.dp),
+            )
+            Spacer(Modifier.height(6.dp))
+            if (priceLoaded) {
+                BasicText(
+                    text = price,
+                    // fontSize is NOT optional here (T9c #1): the Row above is
+                    // Modifier.height(IntrinsicSize.Min), and that intrinsic-height pass measures
+                    // this line at its OWN style's fontSize, ignoring autoSize entirely (autoSize
+                    // only applies once real layout constraints — including the height this pass
+                    // produces — are known). Without an explicit size here it fell back to
+                    // ~14sp, so the row was sized for a 14sp price line and autoSize's own
+                    // height-fit check then had nowhere to grow into, capping every price at the
+                    // 14sp floor even when there was room for the full 22sp. Setting it to the
+                    // target maxFontSize makes the intrinsic pass budget the right height, and
+                    // autoSize still steps down from there for width (e.g. long/narrow prices).
+                    style = TextStyle(fontFamily = rememberDmSerifDisplay(), color = TextOnHero, fontSize = 22.sp),
+                    maxLines = 1,
+                    autoSize = TextAutoSize.StepBased(minFontSize = 14.sp, maxFontSize = 22.sp),
+                )
+            } else {
+                // Sans, smaller and fixed-size (no autosize needed): "Hämtar pris…"/"Loading
+                // price…" is short and must never wrap onto a second line. Ellipsis as a last-
+                // resort guard, not the expected outcome, for a future longer loading string.
+                Text(
+                    text = price,
+                    color = TextOnHero,
+                    fontSize = 14.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+        }
+        if (selected) {
+            Icon(
+                Icons.Outlined.Check,
+                contentDescription = null,
+                tint = BrassLight,
+                modifier = Modifier.align(Alignment.TopEnd).size(16.dp),
             )
         }
     }

@@ -13,11 +13,9 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import se.birdy.app.ui.stats.SeasonPalette
 import se.birdy.app.ui.stats.SeasonStatsUiState
-import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.HeroMossMid
-import se.birdy.app.ui.theme.MarginaliaInk
-import se.birdy.app.ui.theme.StampNavy
+import se.birdy.app.ui.theme.Hairline
 import kotlin.math.min
 
 /**
@@ -26,15 +24,23 @@ import kotlin.math.min
  * is hollow (donut) and each season gets a distinct paper-palette color. If
  * total is zero the chart draws an empty ring so the section is still
  * recognisable.
+ *
+ * 1.3.0 T12b: season colors default to [SeasonPalette] — the single shared source also used
+ * by `SeasonStatsScreen`'s own legend (`SeasonLegend`), so the arcs and the swatches can never
+ * drift apart. See [SeasonPalette]'s own doc for why summer is `Brass` (not `BrassText`, T12's
+ * original — and wrong — choice: `BrassText` reads almost identically to autumn's `AccentCopper`
+ * for deuteranopes).
  */
+@Suppress("LongParameterList") // every color/size param has a default so call sites stay short.
 @Composable
 fun JournalDonutChart(
     breakdown: SeasonStatsUiState.SeasonBreakdown,
     modifier: Modifier = Modifier,
-    winterColor: Color = StampNavy,
-    springColor: Color = HeroMossMid,
-    summerColor: Color = AccentCopper,
-    autumnColor: Color = MarginaliaInk,
+    winterColor: Color = SeasonPalette.winter,
+    springColor: Color = SeasonPalette.spring,
+    summerColor: Color = SeasonPalette.summer,
+    autumnColor: Color = SeasonPalette.autumn,
+    emptyRingColor: Color = Hairline,
     height: Dp = 160.dp,
     strokeWidth: Dp = 22.dp,
     contentDescription: String? = null,
@@ -53,7 +59,7 @@ fun JournalDonutChart(
         val total = breakdown.total
         if (total == 0) {
             drawArc(
-                color = MarginaliaInk.copy(alpha = 0.25f),
+                color = emptyRingColor,
                 startAngle = 0f,
                 sweepAngle = 360f,
                 useCenter = false,

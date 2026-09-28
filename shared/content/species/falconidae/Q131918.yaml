@@ -30,31 +30,72 @@ regions:
 - DK
 - DE
 description:
-  sv: ''
-  en: 'I appreciate the request, but I notice the source text provided is about Merlin
-    the legendary figure from Arthurian legend, not about the Merlin bird species
-    (Falco columbarius).
+  sv: 'Stenfalken är en kompakt liten falk med ganska breda vingar och lång stjärt.
+    Den förväxlas ibland med småhökar som sparvhök, men har till skillnad från dem
+    spetsiga vingar. En vuxen hane blir 25–30 centimeter lång och har ett vingspann
+    på 50–65 centimeter. Honan är något större och tyngre än hanen.
 
 
-    To write an accurate bird guide entry about the Merlin falcon, I would need source
-    material about the actual bird—its physical characteristics, behavior, vocalizations,
-    and habitat preferences.
+    Den vuxna hanen har blågrå rygg och stjärt, mörka vingspetsar och ljus undersida
+    med fin, svart längsstreckning. Ansiktsteckningen är svag, med ett otydligt mustaschstreck
+    och en antydan till ett rostaktigt nackband. Honor och unga fåglar har gråbrun
+    ovansida, ljusare och kraftigt längsstreckad undersida och tvärbandad stjärt.
+    Vaxhuden är gul hos vuxna fåglar och blågrå hos unga.
 
 
-    Could you please provide the correct source text about Falco columbarius? Once
-    you do, I''ll be happy to write a 2-3 paragraph guide (or shorter if needed) following
-    your specifications: focusing on appearance, behavior, call, and habitat while
-    avoiding anecdotes and place names.'
+    Stenfalken jagar framför allt småfåglar men tar ibland gnagare och insekter. Den
+    spanar gärna från en något upphöjd plats och jagar ofta i snabb, låg flykt nära
+    marken, där den överraskar fåglar och tar de flesta av dem i luften. Den är djärv
+    och jagar gärna bort betydligt större rovfåglar från reviret. Arten lever i ganska
+    öppen terräng som björk- och videsnår, tajga och hedar, från havsnivån upp till
+    trädgränsen, och undviker tät skog. Den bygger inget eget bo utan lägger äggen
+    i gamla bon efter kråkfåglar eller ringduvor, eller på en klipphylla.'
+  en: 'The merlin is a small, compact falcon with fairly broad but pointed wings and
+    a long tail. It is more robust and heavily built than most other small falcons,
+    and its pointed wings separate it from small hawks such as the sparrowhawk, with
+    which it is sometimes confused. It measures 24–33 cm with a wingspan of 50–73
+    cm, and females are slightly larger and heavier than males.
+
+
+    The adult male has a blue-grey back and tail, dark wingtips and pale underparts
+    with fine dark streaking. Females and young birds are greyish brown to dark brown
+    above and whitish buff with brown markings below, with a barred tail. The face
+    is less strongly patterned than in most other falcons, with only a faint moustache
+    stripe. The cere and feet are yellow, although the cere is blue-grey in juveniles.
+
+
+    Merlins mainly hunt small birds and also take insects and small mammals, especially
+    outside the breeding season. They watch from a slightly raised perch and often
+    hunt in fast, low flight close to the ground, using trees and bushes to surprise
+    their prey and catching most birds in the air after a short chase. They are bold
+    and readily chase much larger birds of prey away from their territory. The species
+    lives in fairly open country such as birch and willow scrub, taiga and moorland,
+    from sea level up to the tree line, and avoids dense forest. It builds no nest
+    of its own but uses old nests of crows and other birds, or lays its eggs on a
+    cliff ledge or on the ground.'
 migration:
-  sv: ''
-  en: 'Migration data unavailable for this species.
-
-
-    The source text provided is about Merlin from Arthurian legend and contains no
-    information about the bird species Falco columbarius (Merlin/Stenfalk). To write
-    an accurate guide about the migration patterns of this falcon species in Scandinavia
-    and Northern Europe, I would need ornithological source material rather than mythological
-    content.'
+  sv: I Sverige häckar stenfalken i barrskog från norra Dalarna och norrut genom större
+    delen av Norrland, på myrar och i fjällen, och med några par på Öland. Stenfalkarna
+    i Skandinavien är flyttfåglar, liksom resten av deras underart utom fåglarna på
+    Brittiska öarna, som stannar året runt. Underarten övervintrar i Europa och i
+    Medelhavsområdet ända bort till Iran, och nordeuropeiska fåglar drar till södra
+    Europa och Nordafrika. Vårflyttningen börjar i slutet av februari, de flesta fåglarna
+    passerar Centraleuropa i mars och april och de sista når häckningsområdena mot
+    slutet av maj. Äggen läggs i maj–juni. Höstflyttningen når sin topp i augusti
+    och september. I södra Sverige förekommer stenfalken också som vintergäst, och
+    vintertid övernattar stenfalkar i Europa ofta tillsammans, gärna med blå kärrhök.
+  en: In Sweden the merlin breeds in coniferous forest from northern Dalarna northwards
+    through most of Norrland, on bogs and in the mountains, with a few pairs on Öland.
+    Scandinavian merlins are migratory, like the rest of their subspecies except the
+    birds of the British Isles, which stay all year or only move from the moors to
+    the coast. The subspecies winters in continental Europe and the Mediterranean
+    region east to about Iran, and Northern European birds move to southern Europe
+    and North Africa. Spring migration begins in late February, most birds pass through
+    Central Europe in March and April, and the last ones reach the breeding grounds
+    towards the end of May. Eggs are laid in May and June, and autumn migration peaks
+    in August and September. In southern Sweden the merlin also occurs as a winter
+    visitor, and in winter merlins in Europe often roost communally, frequently together
+    with hen harriers.
 image_refs:
 - role: hero
   path: Q131918/hero.webp
@@ -84,7 +125,7 @@ image_refs:
     NY 1.jpg
   commons_filename: Falco columbarius pair Auburn NY 1.jpg
 review_status: approved
-review_notes: "Hero = Falco columbarius USFWS-foto, matchar art. Stenfalk häckar i fjäll/myrar, vintergäst i södra SE."
+review_notes: "Hero = Falco columbarius USFWS-foto, matchar art. Stenfalk häckar i fjäll/myrar, vintergäst i södra SE. Beskrivning och migration (sv + en) omskrivna för hand 2026-09-27 ur de cachade Wikipediaartiklarna (sv Stenfalk rev 59603908, en Merlin (bird) rev 1367745672) eftersom pipelinen hade hämtat fel engelsk artikel (trollkarlen Merlin); väntar på Albins granskning."
 generated_at: '2026-05-15T19:00:14.206869+00:00'
 sources:
   wikipedia_sv_revision: '59194706'

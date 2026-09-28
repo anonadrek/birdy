@@ -4,35 +4,38 @@ import androidx.compose.ui.graphics.Color
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
+// Pins the "Mossa, rost & mässing" palette (1.3.0, spec 2026-09-24 §4.1). Previously pinned
+// the Plan 7c Mossbädd palette (locked 2026-05-10) — updated 2026-09-24 for the palette lift;
+// token NAMES are unchanged, only the literal values below moved to match the new spec.
 class ColorTokensTest {
     @Test
     fun `paper top is light parchment`() {
-        assertEquals(0xFFF0E7D0.toInt(), PaperTop.argb())
+        assertEquals(0xFFF8F2E7.toInt(), PaperTop.argb())
     }
 
     @Test
     fun `paper bottom is darker parchment`() {
-        assertEquals(0xFFE6D8B8.toInt(), PaperBottom.argb())
+        assertEquals(0xFFF2E9D8.toInt(), PaperBottom.argb())
     }
 
     @Test
-    fun `accent copper is retinted warm copper`() {
-        assertEquals(0xFFA8552D.toInt(), AccentCopper.argb())
+    fun `accent copper is rust`() {
+        assertEquals(0xFF9A4526.toInt(), AccentCopper.argb())
     }
 
     @Test
-    fun `stamp locked is 40 percent copper`() {
-        assertEquals(0x66A8552D.toInt(), StampLocked.argb())
+    fun `stamp locked is decorative tan`() {
+        assertEquals(0xFFCDBB9C.toInt(), StampLocked.argb())
     }
 
     @Test
-    fun `stamp unlocked bg is 12 percent copper`() {
-        assertEquals(0x1FA8552D.toInt(), StampUnlockedBg.argb())
+    fun `stamp unlocked bg is 12 percent rust`() {
+        assertEquals(0x1F9A4526.toInt(), StampUnlockedBg.argb())
     }
 
     @Test
-    fun `marginalia border is copper`() {
-        assertEquals(0xFFA8552D.toInt(), MarginaliaBorder.argb())
+    fun `marginalia border is rust`() {
+        assertEquals(0xFF9A4526.toInt(), MarginaliaBorder.argb())
     }
 }
 

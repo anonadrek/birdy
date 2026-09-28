@@ -16,31 +16,43 @@ import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.OffwhiteWarm
 
 /**
- * Universell tillbaka-pil — samma utseende på ALLA del-skärmar (papper som mörk
- * kamera-bakgrund). En 40dp ⊙-bricka med solid off-white fyllning + copper-ring
- * + copper-pil. Den fyllda behållaren bryter av mot pappersbakgrunden så pilen
+ * Universell tillbaka-pil. Default (papper): en 40dp ⊙-bricka med solid off-white fyllning +
+ * copper-ring + copper-pil — den fyllda behållaren bryter av mot pappersbakgrunden så pilen
  * läser som en knapp i stället för att smälta in i Field Journal-ornamentiken.
+ *
+ * [onDark]: true på en mörk yta (t.ex. en [PhotoHero]) — byts mot den delade [GlassIconButton]
+ * (mörkt glas, samma mönster som Premiums stängknapp). Default (false) är oförändrat.
  */
 @Composable
 fun BackButton(
     onClick: () -> Unit,
     contentDescription: String,
     modifier: Modifier = Modifier,
+    onDark: Boolean = false,
 ) {
-    IconButton(
-        onClick = onClick,
-        modifier =
-            modifier
-                .size(40.dp)
-                .clip(CircleShape)
-                .background(OffwhiteWarm)
-                .border(1.5.dp, AccentCopper, CircleShape),
-    ) {
-        Icon(
-            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+    if (onDark) {
+        GlassIconButton(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
             contentDescription = contentDescription,
-            tint = AccentCopper,
-            modifier = Modifier.size(20.dp),
+            onClick = onClick,
+            modifier = modifier,
         )
+    } else {
+        IconButton(
+            onClick = onClick,
+            modifier =
+                modifier
+                    .size(40.dp)
+                    .clip(CircleShape)
+                    .background(OffwhiteWarm)
+                    .border(1.5.dp, AccentCopper, CircleShape),
+        ) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                contentDescription = contentDescription,
+                tint = AccentCopper,
+                modifier = Modifier.size(20.dp),
+            )
+        }
     }
 }

@@ -6,10 +6,19 @@ package se.birdy.app.ui.map
  * giving the ink-on-paper look without a custom MapTiler style. Constants tuned on device.
  */
 object MapTileTheme {
-    /** Field Journal paper (PaperBg #EFE7D6). White tile pixels map here. */
-    const val PAPER: Int = 0xEFE7D6
+    /**
+     * Field Journal paper (MossCreme #F6EFE2 — the app's primary background). White tile
+     * pixels map here so the map reads as the same "paper" as the screen it sits on (B7).
+     */
+    const val PAPER: Int = 0xF6EFE2
 
-    /** Warm dark sepia. Black tile pixels (ink lines, labels) map here. */
+    /**
+     * Warm dark sepia. Black tile pixels (ink lines, labels) map here. Bespoke, fine-tuned
+     * on-device against the actual map tiles (coastlines, roads, labels) per the original
+     * map-styling spec — never one of the reusable named ink tokens (checked against
+     * TextOnCreme/MarginaliaInk/InkMuted/HeroMossDeep/BrassInk: no match, before or after
+     * the 1.3.0 palette lift), so left unchanged in B7.
+     */
     const val INK: Int = 0x2E2417
 
     /**

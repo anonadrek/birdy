@@ -4,7 +4,6 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,8 +20,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -36,12 +33,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -54,6 +51,7 @@ import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_marginal
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_empty_stamp_name
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline_anonymous
+import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_headline_no_name
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_sub
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_journal_sub_empty
@@ -73,6 +71,10 @@ import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_stamps
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_streak
 import birdy_bird_scanner.composeapp.generated.resources.lifelist_stat_year
 import birdy_bird_scanner.composeapp.generated.resources.months_short_uppercase
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_fallback_name
+import birdy_bird_scanner.composeapp.generated.resources.possessive_sibilant_endings
+import birdy_bird_scanner.composeapp.generated.resources.possessive_suffix
+import birdy_bird_scanner.composeapp.generated.resources.possessive_suffix_sibilant
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_badge
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_cta
 import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_preview_caption
@@ -80,6 +82,7 @@ import birdy_bird_scanner.composeapp.generated.resources.premium_lifelist_title
 import birdy_bird_scanner.composeapp.generated.resources.recap_eyebrow_fmt
 import birdy_bird_scanner.composeapp.generated.resources.recap_lifelist_entry_title
 import birdy_bird_scanner.composeapp.generated.resources.recap_summary_active_fmt
+import birdy_bird_scanner.composeapp.generated.resources.sort_chip_description
 import birdy_bird_scanner.composeapp.generated.resources.unknown_species_label
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.delay
@@ -87,28 +90,36 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringArrayResource
 import org.jetbrains.compose.resources.stringResource
-import se.birdy.app.ui.components.JournalHeadline
+import se.birdy.app.ui.components.BirdyPill
+import se.birdy.app.ui.components.BirdyPrimaryButton
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.JournalSubLine
 import se.birdy.app.ui.components.LockedStatsPreview
+import se.birdy.app.ui.components.MicroLabel
 import se.birdy.app.ui.components.MiniStamp
 import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
-import se.birdy.app.ui.components.shimmerBorder
+import se.birdy.app.ui.components.hairlineBottom
+import se.birdy.app.ui.components.parseJournalHeadline
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.AccentCopperLight
+import se.birdy.app.ui.theme.Hairline
+import se.birdy.app.ui.theme.HeroMossDeep
 import se.birdy.app.ui.theme.HeroMossLight
 import se.birdy.app.ui.theme.HeroMossMid
+import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.MatchHigh
 import se.birdy.app.ui.theme.MatchLow
 import se.birdy.app.ui.theme.MatchMid
-import se.birdy.app.ui.theme.OffwhiteWarm
-import se.birdy.app.ui.theme.PaperBottom
+import se.birdy.app.ui.theme.MossCreme
 import se.birdy.app.ui.theme.TextOnCreme
+import se.birdy.app.ui.theme.TextOnHero
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.datastore.LifelistSort
@@ -177,18 +188,12 @@ private fun EmptyLifelist(onScanCtaClick: () -> Unit) {
                 textAlign = androidx.compose.ui.text.style.TextAlign.Center,
             )
             Spacer(Modifier.height(32.dp))
-            Button(
+            BirdyPrimaryButton(
+                text =
+                    parseJournalHeadline(stringResource(Res.string.lifelist_empty_caveat_cta))
+                        .joinToString("") { it.text },
                 onClick = onScanCtaClick,
-                colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm),
-                shape = RoundedCornerShape(50),
-            ) {
-                JournalHeadline(
-                    text = stringResource(Res.string.lifelist_empty_caveat_cta),
-                    fontSize = 14.sp,
-                    plainColor = OffwhiteWarm,
-                    accentColor = OffwhiteWarm,
-                )
-            }
+            )
         }
     }
 }
@@ -221,7 +226,6 @@ private fun LoadedLifelist(
     val labelStat2 = stringResource(Res.string.lifelist_stat_stamps)
     val labelStat3 = labelForStat3(state.stat3.kind)
     val months = stringArrayResource(Res.array.months_short_uppercase)
-    val headerFmt = stringResource(Res.string.lifelist_month_header)
     val zone = remember { TimeZone.currentSystemDefault() }
     val grouped =
         remember(state.rows, state.sort) {
@@ -241,13 +245,33 @@ private fun LoadedLifelist(
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item {
             Column {
+                // displayNameOrNull (not a plain isEmpty/isBlank check): userName can hold a
+                // historical onboarding fallback word ("Min"/"My", pre-1.3.0 skip-the-name-field
+                // flows) — see Possessive.kt. maskedNames: "Min" always, "My" only in the current
+                // UI language's own fallback word (masking "My" unconditionally would hide real
+                // Swedish users named My).
+                val maskedNames =
+                    setOf(
+                        HISTORICAL_SV_ONBOARDING_FALLBACK_NAME,
+                        stringResource(Res.string.onboarding_p3_fallback_name),
+                    )
+                val displayName = displayNameOrNull(state.userName, maskedNames)
                 JournalIntro(
                     label = stringResource(Res.string.lifelist_journal_label),
                     headline =
-                        stringResource(
-                            Res.string.lifelist_journal_headline,
-                            state.userName.ifEmpty { "Min" },
-                        ),
+                        if (displayName == null) {
+                            stringResource(Res.string.lifelist_journal_headline_no_name)
+                        } else {
+                            stringResource(
+                                Res.string.lifelist_journal_headline,
+                                possessive(
+                                    name = displayName,
+                                    suffix = stringResource(Res.string.possessive_suffix),
+                                    sibilantSuffix = stringResource(Res.string.possessive_suffix_sibilant),
+                                    sibilantEndings = stringResource(Res.string.possessive_sibilant_endings),
+                                ),
+                            )
+                        },
                     sub =
                         stringResource(
                             Res.string.lifelist_journal_sub,
@@ -270,7 +294,11 @@ private fun LoadedLifelist(
 
         item {
             Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp),
+                // vertical = 2dp (was 10dp): SortChip's BirdyPill now carries its own
+                // minimumInteractiveComponentSize() touch-target padding (≥48dp tall), which
+                // otherwise stacks with this row's own padding and makes the row noticeably
+                // taller than before.
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 2.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -292,9 +320,12 @@ private fun LoadedLifelist(
                 stickyHeader(key = "month-$year-$month") {
                     MonthHeader(
                         text =
-                            headerFmt
-                                .replace("%1\$s", "$monthLabel $year")
-                                .replace("%2\$s", rows.size.toString()),
+                            pluralStringResource(
+                                Res.plurals.lifelist_month_header,
+                                rows.size,
+                                "$monthLabel $year",
+                                rows.size.toString(),
+                            ),
                     )
                 }
                 items(rows, key = { it.observation.id }) { row ->
@@ -318,14 +349,10 @@ private fun LoadedLifelist(
         if (showPremiumTeaser) {
             item {
                 Spacer(Modifier.height(20.dp))
-                Text(
-                    text = stringResource(Res.string.premium_lifelist_title),
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.W600,
-                    letterSpacing = 0.16.em,
-                    color = MarginaliaInk,
-                    modifier = Modifier.padding(horizontal = 24.dp, vertical = 6.dp),
-                )
+                // T12c C2: matches the "SENASTE · N STÄMPLAR" section label's own style/uppercasing
+                // above (see the recent-sort row) instead of its own one-off letter-spaced sentence
+                // case, so the two section labels on this screen read consistently.
+                SectionLabel(text = stringResource(Res.string.premium_lifelist_title))
                 Spacer(Modifier.height(8.dp))
                 LockedStatsPreview(
                     title = stringResource(Res.string.premium_lifelist_preview_caption),
@@ -338,14 +365,9 @@ private fun LoadedLifelist(
         } else if (livePreviewState != null) {
             item {
                 Spacer(Modifier.height(20.dp))
-                Text(
-                    text = stringResource(Res.string.premium_lifelist_title),
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.W600,
-                    letterSpacing = 0.16.em,
-                    color = MarginaliaInk,
-                    modifier = Modifier.padding(horizontal = 24.dp, vertical = 6.dp),
-                )
+                // T12c C2: see the comment on the same style match in the showPremiumTeaser
+                // branch above.
+                SectionLabel(text = stringResource(Res.string.premium_lifelist_title))
                 Spacer(Modifier.height(8.dp))
                 se.birdy.app.ui.stats.LiveStatsPreview(
                     state = livePreviewState,
@@ -359,7 +381,42 @@ private fun LoadedLifelist(
     }
 }
 
+/**
+ * T12d Minor C2: the premium-teaser and live-preview section labels each hardcoded their own
+ * 24dp horizontal padding — 8dp wider than the "SENASTE · N STÄMPLAR" row above (16dp) and the
+ * card below it (16dp), a visible jog between the two. Shared here so both call sites stay at
+ * 16dp and can't drift apart again.
+ */
+@Composable
+private fun SectionLabel(
+    text: String,
+    modifier: Modifier = Modifier,
+) {
+    Text(
+        text = text.uppercase(),
+        color = MarginaliaInk,
+        fontSize = 9.sp,
+        fontWeight = FontWeight.W700,
+        letterSpacing = 0.22.em,
+        modifier = modifier.padding(horizontal = 16.dp, vertical = 6.dp),
+    )
+}
+
 // ─── Recap entry card ─────────────────────────────────────────────────────────
+
+// The photo overlay (HeroMossDeep at three stops, left to right) exists so the kicker/title/sub
+// text block — which sits in the card's left ~75%, after the week-number circle — clears WCAG
+// AA even over a blown-out (near-white) photo, while the far-right edge (behind only the
+// decorative chevron, hidden from screen readers) can fade further since a graphical object only
+// needs 3:1. Review fix wave T8c, 2026-09-27; proof in RecapEntryCardContrastTest.
+// FAR_ALPHA: review's own suggested literal value was 0.5f — RecapEntryCardContrastTest's exact
+// edge-of-gradient case (x=1.0, the true worst position, not a specific screen width) measured
+// only 2.91:1 there, just under the 3:1 floor. Bumped to 0.55f for a real margin (≈3.36:1 at the
+// same worst case) rather than relying on the chevron's 14dp inset keeping it off the true edge.
+internal const val RECAP_OVERLAY_NEAR_ALPHA = 0.92f
+internal const val RECAP_OVERLAY_MID_ALPHA = 0.85f
+internal const val RECAP_OVERLAY_FAR_ALPHA = 0.55f
+internal const val RECAP_OVERLAY_MID_STOP = 0.75f
 
 @Composable
 private fun RecapEntryCard(
@@ -383,10 +440,9 @@ private fun RecapEntryCard(
             Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp, vertical = 8.dp)
-                .clip(RoundedCornerShape(14.dp))
+                .clip(RoundedCornerShape(18.dp))
                 .background(Brush.verticalGradient(listOf(HeroMossLight, HeroMossMid)))
-                .clickable(onClick = onClick)
-                .shimmerBorder(durationMillis = 7000, cornerRadius = 14.dp, strokeWidth = 3.dp, alpha = 0.85f, bandFraction = 0.3f),
+                .clickable(onClick = onClick),
     ) {
         if (photos.isNotEmpty()) {
             Crossfade(
@@ -407,11 +463,10 @@ private fun RecapEntryCard(
                     Modifier
                         .matchParentSize()
                         .background(
-                            Brush.verticalGradient(
-                                listOf(
-                                    Color.Black.copy(alpha = 0.35f),
-                                    Color.Black.copy(alpha = 0.55f),
-                                ),
+                            Brush.horizontalGradient(
+                                0f to HeroMossDeep.copy(alpha = RECAP_OVERLAY_NEAR_ALPHA),
+                                RECAP_OVERLAY_MID_STOP to HeroMossDeep.copy(alpha = RECAP_OVERLAY_MID_ALPHA),
+                                1f to HeroMossDeep.copy(alpha = RECAP_OVERLAY_FAR_ALPHA),
                             ),
                         ),
             )
@@ -426,47 +481,46 @@ private fun RecapEntryCard(
                     Modifier
                         .size(44.dp)
                         .clip(CircleShape)
-                        .background(AccentCopper),
+                        .background(AccentCopper)
+                        .clearAndSetSemantics {},
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
                     text = preview.isoWeek.toString(),
-                    color = Color.White,
+                    color = TextOnHero,
                     fontFamily = caveat,
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp,
                 )
             }
             Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = stringResource(Res.string.recap_eyebrow_fmt, preview.isoWeek.toString()).uppercase(),
-                    color = AccentCopper,
-                    fontSize = 9.sp,
-                    fontWeight = FontWeight.W700,
-                    letterSpacing = 1.6.sp,
+                MicroLabel(
+                    text = stringResource(Res.string.recap_eyebrow_fmt, preview.isoWeek.toString()),
+                    color = AccentCopperLight,
                 )
                 Text(
                     text = stringResource(Res.string.recap_lifelist_entry_title),
-                    color = Color.White,
+                    color = TextOnHero,
                     fontFamily = serif,
-                    fontStyle = FontStyle.Italic,
+                    fontStyle = FontStyle.Normal,
                     fontSize = 20.sp,
                 )
                 if (preview.findCount > 0) {
                     Text(
                         text = stringResource(Res.string.recap_summary_active_fmt, preview.findCount.toString()),
-                        color = Color.White.copy(alpha = 0.85f),
+                        color = TextOnHero.copy(alpha = 0.8f),
                         fontFamily = caveat,
-                        fontSize = 14.sp,
+                        fontSize = 15.sp,
                     )
                 }
             }
             Text(
                 text = "›",
-                color = Color.White,
+                color = TextOnHero,
                 fontFamily = serif,
-                fontStyle = FontStyle.Italic,
+                fontStyle = FontStyle.Normal,
                 fontSize = 22.sp,
+                modifier = Modifier.clearAndSetSemantics {},
             )
         }
     }
@@ -478,10 +532,11 @@ private fun MonthHeader(text: String) {
         modifier =
             Modifier
                 .fillMaxWidth()
-                .background(PaperBottom.copy(alpha = 0.85f))
+                .background(MossCreme)
+                .hairlineBottom()
                 .padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
-        JournalSubLine(text = text)
+        JournalSubLine(text = text, modifier = Modifier.semantics { heading() })
     }
 }
 
@@ -499,16 +554,15 @@ private fun StatRow(
     stat3: StatItem,
     onStat3Click: () -> Unit,
 ) {
-    val serif = rememberDmSerifDisplay()
     Row(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
     ) {
         StatColumn(stat = stat1)
-        StatSeparator(serif)
+        StatSeparator()
         StatColumn(stat = stat2)
-        StatSeparator(serif)
+        StatSeparator()
         StatColumn(stat = stat3, onClick = onStat3Click)
     }
 }
@@ -532,28 +586,32 @@ private fun StatColumn(
             text = stat.value,
             color = AccentCopper,
             fontFamily = serif,
-            fontStyle = FontStyle.Italic,
+            fontStyle = FontStyle.Normal,
             fontWeight = FontWeight.Normal,
-            fontSize = 26.sp,
+            fontSize = 30.sp,
+            // Explicit — otherwise this inherits the theme's bodyLarge 22sp line height (tighter
+            // than the 30sp glyph itself), which clips the glyph/ripple bounds. Mirrors the
+            // gotcha documented on MicroLabel.
+            lineHeight = 34.sp,
         )
         Text(
             text = stat.label.uppercase(),
-            color = MarginaliaInk,
-            fontSize = 9.sp,
-            fontWeight = FontWeight.W700,
-            letterSpacing = 0.22.em,
+            color = InkMuted,
+            fontSize = 9.5.sp,
+            fontWeight = FontWeight.W600,
+            letterSpacing = 0.14.em,
         )
     }
 }
 
 @Composable
-private fun StatSeparator(serif: FontFamily) {
-    Text(
-        text = "·",
-        color = AccentCopper.copy(alpha = 0.5f),
-        fontFamily = serif,
-        fontStyle = FontStyle.Italic,
-        fontSize = 22.sp,
+private fun StatSeparator() {
+    Box(
+        modifier =
+            Modifier
+                .size(4.dp)
+                .clip(CircleShape)
+                .background(Hairline),
     )
 }
 
@@ -570,23 +628,11 @@ private fun SortChip(
             LifelistSort.STAMP_NUMBER -> stringResource(Res.string.lifelist_sort_stamp)
             LifelistSort.SPECIES -> stringResource(Res.string.lifelist_sort_species)
         }
-    val serif = rememberDmSerifDisplay()
-    Box(
-        modifier =
-            Modifier
-                .clip(RoundedCornerShape(50))
-                .background(PaperBottom.copy(alpha = 0.6f))
-                .clickable(onClick = onClick)
-                .padding(horizontal = 12.dp, vertical = 6.dp),
-    ) {
-        Text(
-            text = label,
-            color = AccentCopper,
-            fontFamily = serif,
-            fontStyle = FontStyle.Italic,
-            fontSize = 11.sp,
-        )
-    }
+    BirdyPill(
+        text = label,
+        onClick = onClick,
+        contentDescription = stringResource(Res.string.sort_chip_description, label),
+    )
 }
 
 // ─── Stamp row ────────────────────────────────────────────────────────────────
@@ -610,15 +656,12 @@ private fun LifelistRowComposable(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 6.dp)
-                .clip(RoundedCornerShape(12.dp))
-                .background(Color.White.copy(alpha = 0.4f))
-                .border(1.dp, AccentCopper.copy(alpha = 0.18f), RoundedCornerShape(12.dp))
+                .hairlineBottom()
                 .clickable(onClick = onClick)
-                .padding(horizontal = 12.dp, vertical = 10.dp),
+                .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        MiniStamp(number = row.observation.stampNumber, photoPath = row.observation.photoPath)
+        MiniStamp(number = row.observation.stampNumber, photoPath = row.observation.photoPath, size = 40.dp)
         Spacer(Modifier.width(12.dp))
         Column(modifier = Modifier.weight(1f)) {
             val unknownLabel = stringResource(Res.string.unknown_species_label)
@@ -626,13 +669,13 @@ private fun LifelistRowComposable(
                 text = row.species?.name ?: row.observation.speciesId ?: unknownLabel,
                 color = TextOnCreme,
                 fontFamily = serif,
-                fontStyle = FontStyle.Italic,
-                fontSize = 16.sp,
+                fontStyle = FontStyle.Normal,
+                fontSize = 17.sp,
             )
             Text(
                 text = "${row.species?.scientificName ?: ""} · ${relativeTime(row.observation.savedAt, now)}",
-                color = MarginaliaInk.copy(alpha = 0.7f),
-                fontSize = 11.sp,
+                color = InkMuted,
+                fontSize = 12.sp,
             )
         }
         Text(

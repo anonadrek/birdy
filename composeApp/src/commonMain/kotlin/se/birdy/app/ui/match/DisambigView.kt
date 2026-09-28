@@ -16,21 +16,22 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material3.Icon
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
@@ -50,14 +51,22 @@ import birdy_bird_scanner.composeapp.generated.resources.disambig_sub
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BirdyTextButton
 import se.birdy.app.ui.components.JournalIntro
-import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.CardPaper
+import se.birdy.app.ui.theme.Hairline
+import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.SandCreme
 import se.birdy.app.ui.theme.TextOnCreme
-import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.app.util.speciesImageUri
 import se.birdy.content.SpeciesId
+
+// Disabled candidate card (already-picked-away sibling once one candidate is chosen): dimmed
+// but still legible — same visual language as BirdyTextButton's DISABLED_ALPHA (0.45f), a touch
+// lighter since a whole card reads as "disabled" more readily than a small text button does.
+private const val DISABLED_CARD_ALPHA = 0.5f
 
 @Composable
 internal fun DisambigView(
@@ -155,13 +164,13 @@ private fun FrameThumbnail(frameJpegPath: String) {
         Box(
             modifier =
                 Modifier
-                    .size(72.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(Color.White.copy(alpha = 0.4f))
+                    .size(88.dp)
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(SandCreme)
                     .border(
                         width = 1.dp,
-                        color = AccentCopper.copy(alpha = 0.3f),
-                        shape = RoundedCornerShape(10.dp),
+                        color = Hairline,
+                        shape = RoundedCornerShape(16.dp),
                     ),
         ) {
             AsyncImage(
@@ -192,42 +201,24 @@ private fun DisambigFooter(
     Spacer(Modifier.height(8.dp))
     Text(
         text = stringResource(Res.string.disambig_pick_hint),
-        color = MarginaliaInk.copy(alpha = 0.7f),
-        fontStyle = FontStyle.Italic,
-        fontSize = 12.sp,
+        color = InkMuted,
+        fontSize = 13.sp,
         modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
     )
-    TextButton(
+    BirdyTextButton(
+        text = stringResource(Res.string.disambig_save_unknown),
         onClick = onSaveAsUnknown,
         enabled = !isSaving && !isSaved,
+        loading = isSaving,
         modifier = Modifier.fillMaxWidth(),
-    ) {
-        if (isSaving) {
-            CircularProgressIndicator(
-                color = AccentCopper,
-                strokeWidth = 2.dp,
-                modifier = Modifier.size(20.dp),
-            )
-        } else {
-            Text(
-                text = stringResource(Res.string.disambig_save_unknown),
-                color = AccentCopper,
-                fontWeight = FontWeight.W600,
-                fontSize = 14.sp,
-            )
-        }
-    }
-    TextButton(
+    )
+    BirdyTextButton(
+        text = stringResource(Res.string.disambig_cancel_cta),
         onClick = onCancel,
         enabled = !isSaving,
+        color = InkMuted,
         modifier = Modifier.fillMaxWidth(),
-    ) {
-        Text(
-            text = stringResource(Res.string.disambig_cancel_cta),
-            color = MarginaliaInk,
-            fontSize = 14.sp,
-        )
-    }
+    )
     Spacer(Modifier.height(24.dp))
 }
 
@@ -239,57 +230,53 @@ private fun CandidateCard(
     onClick: () -> Unit,
 ) {
     val serif = rememberDmSerifDisplay()
-    val caveat = rememberCaveat()
     val pct = (candidate.confidence * 100).toInt()
     val confidenceLabel = stringResource(Res.string.disambig_candidate_confidence, candidate.species.scientificName, "$pct%")
-    Column(
+    val shape = RoundedCornerShape(16.dp)
+    Row(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .clickable(enabled = enabled, onClick = onClick)
-                .clip(RoundedCornerShape(12.dp))
-                .background(Color.White.copy(alpha = 0.4f))
-                .border(
-                    width = 1.dp,
-                    color = AccentCopper.copy(alpha = 0.3f),
-                    shape = RoundedCornerShape(12.dp),
-                ).padding(12.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp),
+                .alpha(if (enabled) 1f else DISABLED_CARD_ALPHA)
+                .clip(shape)
+                .background(CardPaper)
+                .border(width = 1.dp, color = Hairline, shape = shape)
+                .clickable(enabled = enabled, role = Role.Button, onClick = onClick)
+                .padding(12.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         val heroImage =
             candidate.species.images.firstOrNull { it.role == "hero" }
                 ?: candidate.species.images.firstOrNull()
-        Box(
-            modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .height(140.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(Color.White.copy(alpha = 0.3f)),
+        CandidateThumbnail(heroImage?.path)
+        Spacer(Modifier.size(12.dp))
+        Column(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(2.dp),
         ) {
-            if (heroImage != null) {
-                AsyncImage(
-                    model = speciesImageUri(heroImage.path),
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop,
-                )
-            }
+            Text(text = candidate.species.name, color = TextOnCreme, fontFamily = serif, fontSize = 18.sp)
+            Text(text = confidenceLabel, color = InkMuted, fontSize = 12.sp)
         }
-        Text(
-            text = candidate.species.name,
-            color = TextOnCreme,
-            fontFamily = serif,
-            fontStyle = FontStyle.Italic,
-            fontWeight = FontWeight.Normal,
-            fontSize = 20.sp,
-        )
-        Text(
-            text = confidenceLabel,
-            color = AccentCopper,
-            fontFamily = caveat,
-            fontWeight = FontWeight.Bold,
-            fontSize = 14.sp,
-        )
+        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = InkMuted)
+    }
+}
+
+@Composable
+private fun CandidateThumbnail(imagePath: String?) {
+    Box(
+        modifier =
+            Modifier
+                .size(64.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(SandCreme),
+    ) {
+        if (imagePath != null) {
+            AsyncImage(
+                model = speciesImageUri(imagePath),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop,
+            )
+        }
     }
 }

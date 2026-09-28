@@ -63,6 +63,7 @@ import se.birdy.app.ui.components.StampSeal
 import se.birdy.app.ui.components.StampSealState
 import se.birdy.app.ui.components.StampTrack
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.Brass
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.content.Locale
@@ -187,6 +188,7 @@ private fun LoadedContent(
                                 locale = locale,
                                 zone = zone,
                                 onClick = { onUnlockedClick(r.badge, BadgeUnlock(r.badge.id, r.unlockedAt)) },
+                                accentColor = if (r.badge.isPremium) Brass else AccentCopper,
                             )
                         }
                     }
@@ -296,9 +298,12 @@ private fun PremiumBadgeCell(
                 )
             else -> StampSealState.Locked(name = name)
         }
+    // Premium badges seal in brass once unlocked/in-progress (spec §4.3 stamp variants);
+    // Locked keeps the default — StampSeal ignores accentColor for its Locked border anyway.
     StampSeal(
         state = state,
         modifier = modifier,
+        accentColor = if (state is StampSealState.Locked) AccentCopper else Brass,
         onClick = onClick,
     )
 }

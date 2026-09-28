@@ -35,6 +35,8 @@ import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.StampSealState
+import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.Brass
 import se.birdy.app.ui.theme.StampNavy
 import se.birdy.content.Locale
 
@@ -124,6 +126,7 @@ private fun LoadedTrophyRoom(
                         val name = stringResource(BadgeStringMap.nameFor(bwu.badge.id))
                         TrophyStampItem(
                             state = StampSealState.Unlocked(number = bwu.stampNumber, glyph = null, name = name),
+                            accentColor = if (bwu.badge.isPremium) Brass else AccentCopper,
                             onClick = { onStampClick(bwu) },
                         )
                     }

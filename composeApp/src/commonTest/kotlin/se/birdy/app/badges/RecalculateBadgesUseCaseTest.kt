@@ -427,17 +427,21 @@ class RecalculateBadgesUseCaseTest {
     }
 
     @Test
-    fun `observed_red_listed — counts distinct NT VU CR species and ignores LC`() {
+    fun `observed_red_listed — counts distinct NT VU EN CR species and ignores LC`() {
         val species =
             mapOf(
                 SpeciesId("Q1") to fakeSpecies("Q1", iucnStatus = "VU"),
                 SpeciesId("Q2") to fakeSpecies("Q2", iucnStatus = "CR"),
                 SpeciesId("Q3") to fakeSpecies("Q3", iucnStatus = "LC"),
                 SpeciesId("Q4") to fakeSpecies("Q4", iucnStatus = "NT"),
+                // T10b regression: "EN" (Endangered) was missing from the badge rule's status
+                // set — a pre-existing bug, fixed by extracting a shared isRedListed() predicate.
+                SpeciesId("Q5") to fakeSpecies("Q5", iucnStatus = "EN"),
             )
-        val obs = listOf(obs("Q1", day = 1), obs("Q2", day = 2), obs("Q3", day = 3), obs("Q4", day = 4))
-        val rule = BadgeRule.ObservedRedListed(target = 3)
-        assertEquals(3, recalc.currentValue(rule, obs, species))
+        val obs =
+            listOf(obs("Q1", day = 1), obs("Q2", day = 2), obs("Q3", day = 3), obs("Q4", day = 4), obs("Q5", day = 5))
+        val rule = BadgeRule.ObservedRedListed(target = 4)
+        assertEquals(4, recalc.currentValue(rule, obs, species))
         assertEquals(listOf("rl"), recalc.newUnlocks(obs, species, catalogOf(badge("rl", rule)), emptySet()).map { it.badgeId })
     }
 

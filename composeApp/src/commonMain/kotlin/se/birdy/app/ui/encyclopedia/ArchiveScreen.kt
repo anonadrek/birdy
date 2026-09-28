@@ -1,7 +1,6 @@
 package se.birdy.app.ui.encyclopedia
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,13 +17,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Sort
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
@@ -33,10 +33,10 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -46,16 +46,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.role
-import androidx.compose.ui.semantics.selected
-import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -82,9 +81,11 @@ import birdy_bird_scanner.composeapp.generated.resources.archive_empty_group_tit
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_body
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_retry
 import birdy_bird_scanner.composeapp.generated.resources.archive_error_title
+import birdy_bird_scanner.composeapp.generated.resources.archive_family_header_description
 import birdy_bird_scanner.composeapp.generated.resources.archive_journal_headline
 import birdy_bird_scanner.composeapp.generated.resources.archive_journal_label
 import birdy_bird_scanner.composeapp.generated.resources.archive_journal_sub
+import birdy_bird_scanner.composeapp.generated.resources.archive_red_listed_tag
 import birdy_bird_scanner.composeapp.generated.resources.archive_search_clear
 import birdy_bird_scanner.composeapp.generated.resources.archive_section_count
 import birdy_bird_scanner.composeapp.generated.resources.archive_sort_alpha
@@ -103,26 +104,37 @@ import birdy_bird_scanner.composeapp.generated.resources.search_empty_body
 import birdy_bird_scanner.composeapp.generated.resources.search_empty_title
 import birdy_bird_scanner.composeapp.generated.resources.search_placeholder
 import birdy_bird_scanner.composeapp.generated.resources.settings_menu_item
+import birdy_bird_scanner.composeapp.generated.resources.sort_chip_description
 import birdy_bird_scanner.composeapp.generated.resources.species_photo_label
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BirdyPill
 import se.birdy.app.ui.components.EmptyState
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.components.JournalScaffold
 import se.birdy.app.ui.components.MiniStamp
 import se.birdy.app.ui.components.PremiumTeaserCard
+import se.birdy.app.ui.components.hairlineBottom
 import se.birdy.app.ui.settings.shareJournalPdf
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.CardPaper
+import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.MarginaliaInk
+import se.birdy.app.ui.theme.MossCreme
 import se.birdy.app.ui.theme.OffwhiteWarm
-import se.birdy.app.ui.theme.PaperBottom
+import se.birdy.app.ui.theme.OutlineInk
+import se.birdy.app.ui.theme.RedListTagBg
+import se.birdy.app.ui.theme.SandCreme
+import se.birdy.app.ui.theme.StampNavy
 import se.birdy.app.ui.theme.TextOnCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.app.ui.theme.rememberDmSerifDisplay
 import se.birdy.app.usecase.JournalExportResult
+import se.birdy.app.util.isRedListed
 import se.birdy.app.util.speciesImageUri
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesId
@@ -159,12 +171,18 @@ fun ArchiveScreen(
     val exportFailedMsg = stringResource(Res.string.premium_teaser_export_failed)
 
     JournalScaffold(snackbarHost = { SnackbarHost(snackbarHostState) }) { padding ->
+        // T10b Important 2: no more global spacedBy — a row's own hairlineBottom + vertical
+        // padding already gives it symmetric breathing room on both sides, so an outer spacedBy
+        // on top of that made row-to-row gaps uneven (10dp below a row's content, 18dp above the
+        // next). Each NON-row item below (header/search/chips/sort/premium/count) instead carries
+        // its own trailing `padding(bottom = 8.dp)`, replicating the old spacedBy(8.dp) look
+        // between them; rows and family headers sit flush against each other and against
+        // whatever preceded them.
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(padding),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             item(key = "header") {
-                Box(modifier = Modifier.fillMaxWidth()) {
+                Box(modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)) {
                     JournalIntro(
                         label = stringResource(Res.string.archive_journal_label),
                         headline = stringResource(Res.string.archive_journal_headline),
@@ -182,6 +200,7 @@ fun ArchiveScreen(
                         DropdownMenu(
                             expanded = menuExpanded,
                             onDismissRequest = { menuExpanded = false },
+                            containerColor = CardPaper,
                         ) {
                             DropdownMenuItem(
                                 text = { Text(stringResource(Res.string.settings_menu_item)) },
@@ -211,6 +230,45 @@ fun ArchiveScreen(
                             }
                         }
                     }
+                }
+            }
+
+            // Spec gap B (2026-09-24 §3 item 6): search field sits right below the header, then
+            // group pills, then sorting — matching the approved spec's reading order. The premium
+            // teaser moved below sorting, before the results (was between header and search).
+            item(key = "search") {
+                JournalSearchField(
+                    value = query,
+                    onValueChange = viewModel::onQueryChanged,
+                    onClear = viewModel::clearQuery,
+                    placeholder = stringResource(Res.string.search_placeholder),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
+                            .padding(bottom = 8.dp),
+                )
+            }
+
+            item(key = "chips") {
+                ChipBar(
+                    selected = chip,
+                    onSelect = viewModel::onChipSelected,
+                    modifier = Modifier.padding(bottom = 8.dp),
+                )
+            }
+
+            item(key = "sort") {
+                Row(
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
+                            .padding(bottom = 8.dp),
+                    horizontalArrangement = Arrangement.End,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    SortChip(sort = sort, onClick = viewModel::onSortToggle)
                 }
             }
 
@@ -251,32 +309,11 @@ fun ArchiveScreen(
                                 }
                             }
                         },
-                        modifier = Modifier.padding(horizontal = 16.dp),
+                        modifier =
+                            Modifier
+                                .padding(horizontal = 16.dp)
+                                .padding(bottom = 8.dp),
                     )
-                }
-            }
-
-            item(key = "search") {
-                JournalSearchField(
-                    value = query,
-                    onValueChange = viewModel::onQueryChanged,
-                    onClear = viewModel::clearQuery,
-                    placeholder = stringResource(Res.string.search_placeholder),
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-                )
-            }
-
-            item(key = "chips") {
-                ChipBar(selected = chip, onSelect = viewModel::onChipSelected)
-            }
-
-            item(key = "sort") {
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.End,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    SortChip(sort = sort, onClick = viewModel::onSortToggle)
                 }
             }
 
@@ -308,19 +345,33 @@ fun ArchiveScreen(
                 is ArchiveUiState.Loaded -> {
                     item(key = "count") {
                         Text(
-                            text = stringResource(Res.string.archive_section_count, s.rows.size.toString()),
-                            color = MarginaliaInk.copy(alpha = 0.6f),
-                            fontSize = 9.sp,
-                            fontWeight = FontWeight.W700,
-                            letterSpacing = 0.22.em,
-                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp),
+                            // T10b Important 3: restyled to match FamilyHeader (was 9sp W700
+                            // MarginaliaInk@0.6, ~3:1 — failed AA) and pluralized ("1 arter" was
+                            // grammatically wrong for a single result).
+                            text =
+                                pluralStringResource(Res.plurals.archive_section_count, s.rows.size, s.rows.size)
+                                    .uppercase(),
+                            color = InkMuted,
+                            fontWeight = FontWeight.W600,
+                            fontSize = 9.5.sp,
+                            lineHeight = 12.sp,
+                            letterSpacing = 0.15.em,
+                            modifier =
+                                Modifier
+                                    .padding(horizontal = 16.dp, vertical = 6.dp)
+                                    .padding(bottom = 8.dp),
                         )
                     }
                     if (s.sort == ArchiveSort.FAMILY) {
                         val grouped = s.rows.groupBy { it.summary.family }
                         grouped.forEach { (family, rows) ->
                             stickyHeader(key = "family-$family") {
-                                FamilyHeader(family = family, familySv = rows.first().summary.familySv, locale = locale)
+                                FamilyHeader(
+                                    family = family,
+                                    familySv = rows.first().summary.familySv,
+                                    locale = locale,
+                                    count = rows.size,
+                                )
                             }
                             items(rows, key = { it.summary.id.raw }) { row ->
                                 SpeciesRow(
@@ -350,15 +401,15 @@ fun ArchiveScreen(
 @Composable
 private fun SpeciesRowSkeleton() {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
             modifier =
                 Modifier
-                    .size(36.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(MarginaliaInk.copy(alpha = 0.1f)),
+                    .size(48.dp)
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(SandCreme),
         )
         Spacer(Modifier.width(12.dp))
         Column(modifier = Modifier.weight(1f)) {
@@ -368,7 +419,7 @@ private fun SpeciesRowSkeleton() {
                         .fillMaxWidth(0.55f)
                         .height(14.dp)
                         .clip(RoundedCornerShape(4.dp))
-                        .background(MarginaliaInk.copy(alpha = 0.1f)),
+                        .background(SandCreme),
             )
             Spacer(Modifier.height(6.dp))
             Box(
@@ -377,7 +428,7 @@ private fun SpeciesRowSkeleton() {
                         .fillMaxWidth(0.35f)
                         .height(10.dp)
                         .clip(RoundedCornerShape(4.dp))
-                        .background(MarginaliaInk.copy(alpha = 0.08f)),
+                        .background(SandCreme),
             )
         }
     }
@@ -388,24 +439,43 @@ private fun FamilyHeader(
     family: String,
     familySv: String,
     locale: Locale,
+    count: Int,
 ) {
-    val serif = rememberDmSerifDisplay()
     // Svenskt trivialnamn i SV-locale, latinskt familjenamn i EN (family_sv finns bara på svenska).
     val label = localizedFamilyLabel(locale, family, familySv)
-    Box(
+    // T10b Important 4: TalkBack read the bare count Text ("3") with no context. clearAndSetSemantics
+    // replaces the row's two child Texts with one clean "<family>, N arter/species" announcement,
+    // built from the label BEFORE uppercasing (TalkBack shouldn't spell it out letter by letter).
+    val description = pluralStringResource(Res.plurals.archive_family_header_description, count, label, count)
+    Row(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .background(PaperBottom.copy(alpha = 0.85f))
-                .padding(horizontal = 16.dp, vertical = 6.dp),
+                .background(MossCreme)
+                .hairlineBottom()
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .clearAndSetSemantics {
+                    heading()
+                    contentDescription = description
+                },
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
             text = label.uppercase(),
-            color = MarginaliaInk,
-            fontFamily = serif,
-            fontStyle = FontStyle.Italic,
-            fontSize = 12.sp,
-            letterSpacing = 0.18.em,
+            color = InkMuted,
+            fontWeight = FontWeight.W600,
+            fontSize = 9.5.sp,
+            lineHeight = 12.sp,
+            letterSpacing = 0.15.em,
+        )
+        Text(
+            text = count.toString(),
+            color = InkMuted,
+            fontWeight = FontWeight.W600,
+            fontSize = 9.5.sp,
+            lineHeight = 12.sp,
+            letterSpacing = 0.15.em,
         )
     }
 }
@@ -447,21 +517,32 @@ private fun JournalSearchField(
     placeholder: String,
     modifier: Modifier = Modifier,
 ) {
-    val caveat = rememberCaveat()
     val keyboardController = LocalSoftwareKeyboardController.current
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
+        // T10c: reverted the T10b attempt at a persistent contentDescription here — a
+        // contentDescription on an EDITABLE field can make TalkBack read the description
+        // instead of the typed value (Accessibility Scanner's EditableContentDescCheck flags
+        // exactly this). The placeholder alone (announced while empty) is the correct pattern.
         modifier = modifier,
         singleLine = true,
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         keyboardActions = KeyboardActions(onSearch = { keyboardController?.hide() }),
-        shape = RoundedCornerShape(24.dp),
+        shape = RoundedCornerShape(12.dp),
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Outlined.Search,
+                contentDescription = null,
+                tint = InkMuted,
+            )
+        },
+        // T10b minor 12: Inter (the default sans), not Caveat — Caveat is reserved for marginalia
+        // accents elsewhere, not a search hint.
         placeholder = {
             Text(
                 text = placeholder,
-                color = MarginaliaInk.copy(alpha = 0.5f),
-                fontFamily = caveat,
+                color = InkMuted,
                 fontSize = 14.sp,
             )
         },
@@ -480,11 +561,14 @@ private fun JournalSearchField(
                 null
             },
         colors =
-            TextFieldDefaults.colors(
-                focusedContainerColor = Color.White.copy(alpha = 0.4f),
-                unfocusedContainerColor = Color.White.copy(alpha = 0.4f),
-                focusedIndicatorColor = AccentCopper,
-                unfocusedIndicatorColor = AccentCopper.copy(alpha = 0.3f),
+            OutlinedTextFieldDefaults.colors(
+                // OutlineInk, not Hairline: Hairline measures 1.24–1.44:1 on our papers and fails
+                // WCAG 1.4.11's 3:1 for an interactive input's boundary (T10b minor 13).
+                unfocusedBorderColor = OutlineInk,
+                focusedBorderColor = AccentCopper,
+                unfocusedContainerColor = CardPaper,
+                focusedContainerColor = CardPaper,
+                cursorColor = AccentCopper,
             ),
     )
 }
@@ -493,6 +577,7 @@ private fun JournalSearchField(
 private fun ChipBar(
     selected: ArchiveChip,
     onSelect: (ArchiveChip) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val labels =
         listOf(
@@ -513,36 +598,20 @@ private fun ChipBar(
             ArchiveChip.CRANES_RAILS to stringResource(Res.string.archive_chip_cranes_rails),
             ArchiveChip.OTHER to stringResource(Res.string.archive_chip_other),
         )
-    val serif = rememberDmSerifDisplay()
+    // T10b minor 9+10: ChipBar's chips are now BirdyPill's filter variant (selected != null) —
+    // same padding/size as the action pill (SortChip), so the two rows match in height.
+    // selectableGroup() tells TalkBack this LazyRow is one mutually-exclusive choice.
     LazyRow(
+        modifier = modifier.selectableGroup(),
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         items(labels) { (chipValue, label) ->
-            val isSelected = selected == chipValue
-            Box(
-                modifier =
-                    Modifier
-                        .clip(RoundedCornerShape(50))
-                        .background(if (isSelected) AccentCopper else Color.Transparent)
-                        .border(
-                            width = 1.dp,
-                            color = AccentCopper.copy(alpha = if (isSelected) 0f else 0.5f),
-                            shape = RoundedCornerShape(50),
-                        ).clickable { onSelect(chipValue) }
-                        .semantics(mergeDescendants = true) {
-                            this.selected = isSelected
-                            role = Role.Button
-                        }.padding(horizontal = 12.dp, vertical = 6.dp),
-            ) {
-                Text(
-                    text = label,
-                    color = if (isSelected) OffwhiteWarm else TextOnCreme,
-                    fontFamily = serif,
-                    fontStyle = FontStyle.Italic,
-                    fontSize = 11.sp,
-                )
-            }
+            BirdyPill(
+                text = label,
+                onClick = { onSelect(chipValue) },
+                selected = selected == chipValue,
+            )
         }
     }
 }
@@ -558,26 +627,11 @@ private fun SortChip(
             ArchiveSort.FAMILY -> stringResource(Res.string.archive_sort_family)
             ArchiveSort.RECENT -> stringResource(Res.string.archive_sort_recent)
         }
-    val serif = rememberDmSerifDisplay()
-    Row(
-        modifier =
-            Modifier
-                .clip(RoundedCornerShape(50))
-                .background(PaperBottom.copy(alpha = 0.6f))
-                .clickable(onClick = onClick)
-                .semantics(mergeDescendants = true) { role = Role.Button }
-                .padding(horizontal = 12.dp, vertical = 6.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Icon(
-            imageVector = Icons.Default.Sort,
-            contentDescription = null,
-            tint = AccentCopper,
-            modifier = Modifier.size(14.dp),
-        )
-        Spacer(Modifier.width(6.dp))
-        Text(label, color = TextOnCreme, fontFamily = serif, fontStyle = FontStyle.Italic, fontSize = 11.sp)
-    }
+    BirdyPill(
+        text = label,
+        onClick = onClick,
+        contentDescription = stringResource(Res.string.sort_chip_description, label),
+    )
 }
 
 @OptIn(ExperimentalResourceApi::class)
@@ -594,14 +648,15 @@ private fun SpeciesRow(
             Modifier
                 .fillMaxWidth()
                 .clickable(onClick = onClick)
-                .padding(horizontal = 16.dp, vertical = 8.dp),
+                .hairlineBottom()
+                .padding(horizontal = 16.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         val thumbModifier =
             Modifier
-                .size(36.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .background(MarginaliaInk.copy(alpha = 0.1f))
+                .size(48.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(SandCreme)
         val heroImagePath = summary.heroImagePath
         if (heroImagePath != null) {
             AsyncImage(
@@ -619,18 +674,52 @@ private fun SpeciesRow(
                 text = summary.name,
                 color = TextOnCreme,
                 fontFamily = serif,
-                fontStyle = FontStyle.Italic,
                 fontSize = 16.sp,
+                // T10b minor 8: up to 2 lines for long common names; the Latin name stays 1.
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
             )
             Text(
                 text = summary.scientificName,
-                color = MarginaliaInk.copy(alpha = 0.65f),
+                color = InkMuted,
+                fontFamily = serif,
                 fontStyle = FontStyle.Italic,
-                fontSize = 11.sp,
+                fontSize = 12.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
             )
         }
-        if (isStamped && stampNumber != null) {
-            MiniStamp(number = stampNumber)
+        // Spec gap C: iucn_status is the GLOBAL IUCN red list (not a national one).
+        if (isRedListed(summary.iucnStatus)) {
+            Spacer(Modifier.width(8.dp))
+            RedListedTag()
         }
+        if (isStamped && stampNumber != null) {
+            Spacer(Modifier.width(8.dp))
+            MiniStamp(number = stampNumber, size = 26.dp)
+        }
+    }
+}
+
+@Composable
+private fun RedListedTag() {
+    Box(
+        modifier =
+            Modifier
+                .clip(RoundedCornerShape(4.dp))
+                .background(RedListTagBg)
+                .padding(horizontal = 6.dp, vertical = 3.dp),
+    ) {
+        Text(
+            text = stringResource(Res.string.archive_red_listed_tag),
+            color = StampNavy,
+            fontWeight = FontWeight.W600,
+            fontSize = 9.5.sp,
+            // T10c: without this the pill inherits the theme's 22sp bodyLarge line height and
+            // grows to ~28dp tall, reading as a button rather than a small tag.
+            lineHeight = 12.sp,
+            maxLines = 1,
+            letterSpacing = 0.1.em,
+        )
     }
 }

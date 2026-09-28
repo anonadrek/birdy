@@ -249,6 +249,66 @@ class SpeciesRepositoryTest {
         )
     }
 
+    // --- T11e: pickText runs the text cleaner and falls back to English when it blanks ---
+
+    private fun BirdyContent.seedTalgoxe() =
+        seedSpecies(
+            "Q25485",
+            "Parus major",
+            "Paridae",
+            "Mesar",
+            "Parus",
+            sv = "Talgoxe",
+            en = "Great Tit",
+        )
+
+    @Test
+    fun `getById returns the description without its markdown heading`() =
+        runTest {
+            val db = newInMemoryDb()
+            db.seedTalgoxe()
+            db.speciesTextQueries.insert("Q25485", "sv", "description", "# Talgoxe\n\nTalgoxen är *Parus major*.")
+            val repo = SqlDelightSpeciesRepository(db)
+            assertEquals("Talgoxen är Parus major.", repo.getById(SpeciesId("Q25485"), Locale.SV).first()?.description)
+            assertEquals("Talgoxen är Parus major.", repo.allByQid(Locale.SV)[SpeciesId("Q25485")]?.description)
+        }
+
+    @Test
+    fun `a no data text that cleans to blank falls back to english`() =
+        runTest {
+            val db = newInMemoryDb()
+            db.seedTalgoxe()
+            db.speciesTextQueries.insert(
+                "Q25485",
+                "sv",
+                "migration",
+                "Migrationsdata saknas för denna art.\n\n**Förklaring:** Källtexten nämner inget om flyttning.",
+            )
+            db.speciesTextQueries.insert("Q25485", "en", "migration", "# Great Tit\n\nThe Great Tit is resident.")
+            val repo = SqlDelightSpeciesRepository(db)
+            assertEquals("The Great Tit is resident.", repo.getById(SpeciesId("Q25485"), Locale.SV).first()?.migration)
+            assertEquals("The Great Tit is resident.", repo.allByQid(Locale.SV)[SpeciesId("Q25485")]?.migration)
+        }
+
+    @Test
+    fun `no data texts in both locales leave the migration blank for the ui fallback`() =
+        runTest {
+            val db = newInMemoryDb()
+            db.seedTalgoxe()
+            db.speciesTextQueries.insert("Q25485", "sv", "migration", "Migrationsdata saknas för denna art.")
+            db.speciesTextQueries.insert(
+                "Q25485",
+                "en",
+                "migration",
+                "Migration data unavailable for this species.\n\nThe source text says nothing.",
+            )
+            val repo = SqlDelightSpeciesRepository(db)
+            val sv = repo.getById(SpeciesId("Q25485"), Locale.SV).first()
+            val en = repo.getById(SpeciesId("Q25485"), Locale.EN).first()
+            assertTrue(sv?.migration.isNullOrBlank())
+            assertTrue(en?.migration.isNullOrBlank())
+        }
+
     @Test
     fun `finds Eleonora with plain apostrophe against U2019 data`() =
         runTest {

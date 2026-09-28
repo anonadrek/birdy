@@ -12,7 +12,6 @@ import birdy_bird_scanner.composeapp.generated.resources.bootstrap_failed_body
 import birdy_bird_scanner.composeapp.generated.resources.bootstrap_failed_retry
 import birdy_bird_scanner.composeapp.generated.resources.bootstrap_failed_title
 import birdy_bird_scanner.composeapp.generated.resources.bootstrap_loading
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_fallback_name
 import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
 import se.birdy.app.ui.components.JournalDialog
@@ -38,8 +37,7 @@ fun AppGate(graph: AppGraph) {
                 null -> JournalLoading()
                 true -> AppScaffold(graph)
                 false -> {
-                    val fallback = stringResource(Res.string.onboarding_p3_fallback_name)
-                    val vm = remember(graph) { graph.onboardingViewModel(fallback) }
+                    val vm = remember(graph) { graph.onboardingViewModel() }
                     val state by vm.state.collectAsState()
                     when (val s = state) {
                         is OnboardingUiState.Visible ->

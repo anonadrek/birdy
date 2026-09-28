@@ -17,7 +17,7 @@
     <ID>CyclomaticComplexMethod:RecalculateBadgesUseCase.kt$RecalculateBadgesUseCase$private fun rawValue( rule: BadgeRule, observations: List&lt;Observation&gt;, speciesByQid: Map&lt;SpeciesId, Species&gt;, dailyBirdMatchCount: Int = 0, ): Int</ID>
     <ID>CyclomaticComplexMethod:SettingsScreen.kt$@Composable fun SettingsScreen( viewModel: SettingsViewModel, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, onNavigateToAbout: () -&gt; Unit, onShowIntroAgain: () -&gt; Unit, versionName: String, onRequestLocationPermission: () -&gt; Unit = {}, )</ID>
     <ID>CyclomaticComplexMethod:SpeciesProfileScreen.kt$@OptIn(ExperimentalResourceApi::class) @Composable private fun ProfileContent( species: Species, locale: Locale, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, showPremiumTeaser: Boolean, )</ID>
-    <ID>CyclomaticComplexMethod:StampSeal.kt$@Composable fun StampSeal( state: StampSealState, modifier: Modifier = Modifier, size: Dp = 88.dp, accentColor: Color = AccentCopper, onClick: (() -&gt; Unit)? = null, )</ID>
+    <ID>CyclomaticComplexMethod:StampSeal.kt$@Suppress("LongParameterList") @Composable fun StampSeal( state: StampSealState, modifier: Modifier = Modifier, size: Dp = 88.dp, accentColor: Color = AccentCopper, filled: Boolean = true, onClick: (() -&gt; Unit)? = null, )</ID>
     <ID>DestructuringDeclarationWithTooManyEntries:ArchiveViewModel.kt$ArchiveViewModel$(q, c, s, stamped)</ID>
     <ID>EmptyFunctionBlock:AndroidLocationProvider.kt$AndroidLocationProvider.&lt;no name provided&gt;${}</ID>
     <ID>InstanceOfCheckForException:SaveObservationUseCase.kt$SaveObservationUseCase$t is CancellationException</ID>
@@ -34,7 +34,7 @@
     <ID>LongMethod:DisambigView.kt$@Composable internal fun DisambigView( state: MatchResultUiState.Disambig, onPick: (SpeciesId) -&gt; Unit, onSaveAsUnknown: () -&gt; Unit, onCancel: () -&gt; Unit, )</ID>
     <ID>LongMethod:IosAppGraph.kt$fun buildIosAppGraph(): AppGraph</ID>
     <ID>LongMethod:IosSealMarker.kt$@OptIn(ExperimentalForeignApi::class) internal fun buildBirdySealMarkerImage(bird: UIImage): UIImage?</ID>
-    <ID>LongMethod:IosWaveformRenderer.kt$IosWaveformRenderer$@OptIn(ExperimentalForeignApi::class) override suspend fun renderWaveformPng( pcm: ShortArray, outPath: String, ): String</ID>
+    <ID>LongMethod:IosWaveformRenderer.kt$IosWaveformRenderer$@OptIn(ExperimentalForeignApi::class) @Suppress("MagicNumber") override suspend fun renderWaveformPng( pcm: ShortArray, outPath: String, ): String</ID>
     <ID>LongMethod:LifelistScreen.kt$@Composable private fun RecapEntryCard( preview: RecapPreview, onClick: () -&gt; Unit, )</ID>
     <ID>LongMethod:LifelistScreen.kt$@OptIn(ExperimentalFoundationApi::class) @Composable private fun LoadedLifelist( state: LifelistUiState.Loaded, onObservationClick: (id: String) -&gt; Unit, onStat3Toggle: () -&gt; Unit, onSortToggle: () -&gt; Unit, onPremiumClick: () -&gt; Unit, showPremiumTeaser: Boolean, livePreviewState: se.birdy.app.ui.stats.SeasonStatsUiState.Loaded? = null, onSeasonStatsClick: () -&gt; Unit = {}, onRecapClick: () -&gt; Unit = {}, )</ID>
     <ID>LongMethod:ListenLauncherScreen.kt$@Composable fun ListenLauncherScreen( viewModel: ListenLauncherViewModel, onCameraClick: () -&gt; Unit, onPhotoClick: () -&gt; Unit, onSettingsClick: () -&gt; Unit, onNavigateToAudioScan: () -&gt; Unit, onSpeciesProfileClick: (String) -&gt; Unit, )</ID>
@@ -67,7 +67,7 @@
     <ID>LongMethod:ScenePrivacy.kt$@Composable fun ScenePrivacy( pageOffset: Float, isActive: Boolean, )</ID>
     <ID>LongMethod:SettingsScreen.kt$@Composable fun SettingsScreen( viewModel: SettingsViewModel, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, onNavigateToAbout: () -&gt; Unit, onShowIntroAgain: () -&gt; Unit, versionName: String, onRequestLocationPermission: () -&gt; Unit = {}, )</ID>
     <ID>LongMethod:SpeciesProfileScreen.kt$@OptIn(ExperimentalResourceApi::class) @Composable private fun ProfileContent( species: Species, locale: Locale, onBack: () -&gt; Unit, onPremiumClick: () -&gt; Unit, showPremiumTeaser: Boolean, )</ID>
-    <ID>LongMethod:StampSeal.kt$@Composable fun StampSeal( state: StampSealState, modifier: Modifier = Modifier, size: Dp = 88.dp, accentColor: Color = AccentCopper, onClick: (() -&gt; Unit)? = null, )</ID>
+    <ID>LongMethod:StampSeal.kt$@Suppress("LongParameterList") @Composable fun StampSeal( state: StampSealState, modifier: Modifier = Modifier, size: Dp = 88.dp, accentColor: Color = AccentCopper, filled: Boolean = true, onClick: (() -&gt; Unit)? = null, )</ID>
     <ID>LongMethod:TrophyRoomEntryCard.kt$@OptIn(ExperimentalResourceApi::class) @Composable fun TrophyRoomEntryCard( hero: BadgeWithUnlock?, unlockedCount: Int, onClick: () -&gt; Unit, modifier: Modifier = Modifier, )</ID>
     <ID>LongMethod:TrophyRoomScreen.kt$@Composable private fun LoadedTrophyRoom( state: BadgesUiState.Loaded, locale: Locale, zone: TimeZone, onHeroClick: (BadgeWithUnlock) -&gt; Unit, onStampClick: (BadgeWithUnlock) -&gt; Unit, )</ID>
     <ID>LongMethod:UnlockBottomSheet.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun UnlockBottomSheet( badge: Badge, unlockedAt: Instant, isCelebration: Boolean, locale: Locale, zone: TimeZone, nameRes: StringResource, descriptionRes: StringResource, onDismiss: () -&gt; Unit, stampNumber: Int? = null, nextTier: NextTier? = null, )</ID>
@@ -83,11 +83,8 @@
     <ID>LongParameterList:ExportJournalUseCase.kt$ExportJournalUseCase$( private val observationRepo: ObservationRepository, private val speciesRepo: SpeciesRepository, private val badgeRepo: BadgeRepository, private val catalog: BadgeCatalog, private val render: suspend (JournalPdfInput, String) -&gt; JournalPdfRenderResult, private val userPreferences: UserPreferences, private val outputPathFactory: (timestampMs: Long) -&gt; String, private val clock: Clock, private val timeZone: TimeZone, private val locale: Locale, private val badgeNameResolver: suspend (badgeId: String) -&gt; String, private val badgeDescriptionResolver: suspend (badgeId: String) -&gt; String, private val fallbackDisplayName: String = "Birdy", )</ID>
     <ID>LongParameterList:IntroSceneScaffold.kt$( eyebrow: String, headline: String, sub: String, pageOffset: Float, modifier: Modifier = Modifier, visual: @Composable () -&gt; Unit, )</ID>
     <ID>LongParameterList:ItalicMixedText.kt$( text: String, style: TextStyle, modifier: Modifier = Modifier, color: Color = style.color, italicAccent: Color = AccentCopperLight, textAlign: TextAlign? = null, )</ID>
-    <ID>LongParameterList:JournalBarChart.kt$( bars: List&lt;SeasonStatsUiState.MonthBar&gt;, modifier: Modifier = Modifier, barColor: Color = AccentCopper, currentMonthColor: Color = MarginaliaInk, height: Dp = 140.dp, contentDescription: String? = null, )</ID>
     <ID>LongParameterList:JournalDialog.kt$( title: String, body: String, confirmLabel: String, onConfirm: () -&gt; Unit, dismissLabel: String? = null, onDismiss: () -&gt; Unit = {}, )</ID>
-    <ID>LongParameterList:JournalDonutChart.kt$( breakdown: SeasonStatsUiState.SeasonBreakdown, modifier: Modifier = Modifier, winterColor: Color = StampNavy, springColor: Color = HeroMossMid, summerColor: Color = AccentCopper, autumnColor: Color = MarginaliaInk, height: Dp = 160.dp, strokeWidth: Dp = 22.dp, contentDescription: String? = null, )</ID>
     <ID>LongParameterList:JournalIntro.kt$( label: String, headline: String, sub: String?, modifier: Modifier = Modifier, headlineFontSize: TextUnit = 30.sp, horizontalPadding: Int = 24, topPadding: Int = 28, trailingContent: (@Composable () -&gt; Unit)? = null, )</ID>
-    <ID>LongParameterList:JournalLineChart.kt$( points: List&lt;SeasonStatsUiState.CumulativePoint&gt;, modifier: Modifier = Modifier, lineColor: Color = AccentCopper, dotColor: Color = MarginaliaInk, height: Dp = 140.dp, contentDescription: String? = null, )</ID>
     <ID>LongParameterList:LifelistScreen.kt$( state: LifelistUiState.Loaded, onObservationClick: (id: String) -&gt; Unit, onStat3Toggle: () -&gt; Unit, onSortToggle: () -&gt; Unit, onPremiumClick: () -&gt; Unit, showPremiumTeaser: Boolean, livePreviewState: se.birdy.app.ui.stats.SeasonStatsUiState.Loaded? = null, onSeasonStatsClick: () -&gt; Unit = {}, onRecapClick: () -&gt; Unit = {}, )</ID>
     <ID>LongParameterList:LifelistScreen.kt$( viewModel: LifelistViewModel, onObservationClick: (id: String) -&gt; Unit, onScanCtaClick: () -&gt; Unit, onPremiumClick: () -&gt; Unit, showPremiumTeaser: Boolean = true, livePreviewState: se.birdy.app.ui.stats.SeasonStatsUiState.Loaded? = null, onSeasonStatsClick: () -&gt; Unit = {}, onRecapClick: () -&gt; Unit = {}, )</ID>
     <ID>LongParameterList:ListenLauncherScreen.kt$( viewModel: ListenLauncherViewModel, onCameraClick: () -&gt; Unit, onPhotoClick: () -&gt; Unit, onSettingsClick: () -&gt; Unit, onNavigateToAudioScan: () -&gt; Unit, onSpeciesProfileClick: (String) -&gt; Unit, )</ID>
@@ -185,22 +182,6 @@
     <ID>MagicNumber:IosSealMarker.kt$255.0</ID>
     <ID>MagicNumber:IosSealMarker.kt$8</ID>
     <ID>MagicNumber:IosTileFetcher.kt$IosTileFetcher$3</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$0.4</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$0x30</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$0x3F</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$0x4F</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$0x55</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$0xA8</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$0xD6</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$0xE7</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$0xEF</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$120</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$200</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$255.0</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$32768f</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$3f</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$5.0</ID>
-    <ID>MagicNumber:IosWaveformRenderer.kt$IosWaveformRenderer$600</ID>
     <ID>MagicNumber:JournalBarChart.kt$0.62f</ID>
     <ID>MagicNumber:JournalDonutChart.kt$360f</ID>
     <ID>MagicNumber:JournalDonutChart.kt$90f</ID>
@@ -375,7 +356,6 @@
     <ID>MagicNumber:ScenePrivacy.kt$35f</ID>
     <ID>MagicNumber:ScenePrivacy.kt$700</ID>
     <ID>MagicNumber:SeasonStatsViewModel.kt$SeasonStatsViewModel$12</ID>
-    <ID>MagicNumber:ShimmerBorder.kt$24</ID>
     <ID>MagicNumber:ShimmerSweep.kt$0.4f</ID>
     <ID>MagicNumber:ShimmerSweep.kt$0.5f</ID>
     <ID>MagicNumber:ShimmerSweep.kt$1.8f</ID>
@@ -441,7 +421,6 @@
     <ID>MaxLineLength:MapScreenHost.ios.kt$"Birdy/map: kunde inte bygga vaxsigill-markören (avkodning eller CoreGraphics-rendering misslyckades) — visar systemets standardpin"</ID>
     <ID>MaxLineLength:MapTilerKey.ios.kt$MapTilerKey$NSLog("Birdy/map: MAPTILER_API_KEY saknas — kopiera iosApp/Local.xcconfig.sample till Local.xcconfig och fyll i nyckeln")</ID>
     <ID>MaxLineLength:MatchResultUiState.kt$MatchResultUiState.Disambig$/** Top-1 i Disambig-bandet ([MatchThresholds], mellan disambig- och match-tröskeln). Användaren får välja bland 2-3 kandidater. */</ID>
-    <ID>MaxLineLength:MatchView.kt$colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm)</ID>
     <ID>MaxLineLength:MiniStamp.kt$TextStyle(shadow = Shadow(color = Color.Black.copy(alpha = 0.7f), offset = Offset(0f, 1f), blurRadius = 3f))</ID>
     <ID>MaxLineLength:NotificationSchedulerImpl.kt$NotificationSchedulerImpl$NotificationTimes.millisUntil(NotificationTimes.nextDaily(now, zone, hour = 8, minute = 0), now, zone)</ID>
     <ID>MaxLineLength:PremiumFeatureIcons.kt$drawLine(tint, Offset(w * 0.16f, base), Offset(w * 0.84f, base), strokeWidth = sw, cap = StrokeCap.Round)</ID>
@@ -486,7 +465,6 @@
     <ID>ReturnCount:SpeciesRepositoryProvider.ios.kt$SpeciesRepositoryProvider$private fun needsCopy( dbPath: String, bundled: ByteArray, ): Boolean</ID>
     <ID>ReturnCount:TrophyProgressWorker.kt$TrophyProgressWorker$override suspend fun doWork(): Result</ID>
     <ID>ReturnCount:WeeklyRecapWorker.kt$WeeklyRecapWorker$override suspend fun doWork(): Result</ID>
-    <ID>SpreadOperator:ShimmerBorder.kt$(*stops, center = Offset(size.width / 2f, size.height / 2f))</ID>
     <ID>SwallowedException:AudioScanViewModel.kt$AudioScanViewModel$t: Throwable</ID>
     <ID>SwallowedException:AudioScanViewModel.kt$AudioScanViewModel$t: TimeoutCancellationException</ID>
     <ID>SwallowedException:PremiumBillingClient.android.kt$t: Throwable</ID>

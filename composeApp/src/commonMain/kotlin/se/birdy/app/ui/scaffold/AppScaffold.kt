@@ -22,7 +22,6 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import birdy_bird_scanner.composeapp.generated.resources.Res
-import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_fallback_name
 import birdy_bird_scanner.composeapp.generated.resources.premium_dismiss_toast
 import birdy_bird_scanner.composeapp.generated.resources.premium_welcome_toast
 import kotlinx.coroutines.CancellationException
@@ -200,9 +199,11 @@ fun AppScaffold(graph: AppGraph) {
         )
     }
     val bottomBarEntry by navController.currentBackStackEntryAsState()
-    // Onboarding-replayen är en uppslukande helskärms-story — dölj bottenflikarna där
-    // (övriga detaljskärmar behåller dem, som tidigare).
-    val hideBottomBar = bottomBarEntry?.destination?.hasRoute(AppRoute.OnboardingReplay::class) == true
+    // Onboarding-replayen och Premium (köpskärm + tack-skärm, båda mörk mossa) är uppslukande
+    // helskärms-vyer — dölj bottenflikarna där (övriga detaljskärmar behåller dem, som tidigare).
+    val hideBottomBar =
+        bottomBarEntry?.destination?.hasRoute(AppRoute.OnboardingReplay::class) == true ||
+            bottomBarEntry?.destination?.hasRoute(AppRoute.Premium::class) == true
     Scaffold(
         bottomBar = { if (!hideBottomBar) BottomNavBar(navController) },
         snackbarHost = { SnackbarHost(snackbarHostState) { data -> CaveatToast(data) } },
@@ -396,8 +397,7 @@ fun AppScaffold(graph: AppGraph) {
                 )
             }
             composable<AppRoute.OnboardingReplay> {
-                val fallback = stringResource(Res.string.onboarding_p3_fallback_name)
-                val vm = remember(graph) { graph.onboardingViewModel(fallback, isReplay = true) }
+                val vm = remember(graph) { graph.onboardingViewModel(isReplay = true) }
                 val state by vm.state.collectAsState()
                 when (val s = state) {
                     is se.birdy.app.ui.onboarding.OnboardingUiState.Visible ->

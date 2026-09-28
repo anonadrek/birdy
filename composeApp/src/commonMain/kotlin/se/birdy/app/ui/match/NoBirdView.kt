@@ -15,17 +15,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
@@ -49,11 +45,13 @@ import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.stringResource
+import se.birdy.app.ui.components.BirdyPrimaryButton
 import se.birdy.app.ui.components.BodyTextWithCaveatAccents
 import se.birdy.app.ui.components.JournalIntro
 import se.birdy.app.ui.theme.AccentCopper
+import se.birdy.app.ui.theme.Hairline
 import se.birdy.app.ui.theme.MarginaliaInk
-import se.birdy.app.ui.theme.OffwhiteWarm
+import se.birdy.app.ui.theme.SandCreme
 import se.birdy.app.ui.theme.rememberCaveat
 import se.birdy.ml.ScanSource
 
@@ -87,12 +85,12 @@ internal fun NoBirdView(
                                 Modifier
                                     .size(120.dp)
                                     .rotate(-3f)
-                                    .clip(RoundedCornerShape(8.dp))
-                                    .background(Color.White.copy(alpha = 0.4f))
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .background(SandCreme)
                                     .border(
                                         width = 1.dp,
-                                        color = AccentCopper.copy(alpha = 0.3f),
-                                        shape = RoundedCornerShape(8.dp),
+                                        color = Hairline,
+                                        shape = RoundedCornerShape(16.dp),
                                     ),
                         ) {
                             AsyncImage(
@@ -123,18 +121,11 @@ internal fun NoBirdView(
                 }
                 Spacer(Modifier.height(24.dp))
 
-                Button(
+                BirdyPrimaryButton(
+                    text = stringResource(Res.string.nobird_retry_cta),
                     onClick = onRetry,
-                    colors = ButtonDefaults.buttonColors(containerColor = AccentCopper, contentColor = OffwhiteWarm),
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier.fillMaxWidth().height(52.dp),
-                ) {
-                    Text(
-                        text = stringResource(Res.string.nobird_retry_cta),
-                        fontWeight = FontWeight.W600,
-                        fontSize = 16.sp,
-                    )
-                }
+                    modifier = Modifier.padding(horizontal = 18.dp),
+                )
                 Spacer(Modifier.height(24.dp))
             }
         }

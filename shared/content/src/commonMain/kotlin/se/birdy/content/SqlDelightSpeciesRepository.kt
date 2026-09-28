@@ -158,6 +158,7 @@ class SqlDelightSpeciesRepository(
                             family = taxonomy?.family ?: "",
                             familySv = taxonomy?.family_sv ?: "",
                             group = taxonomy?.group_id ?: "",
+                            iucnStatus = sp.iucn_status,
                         )
                     }
             }
@@ -302,16 +303,31 @@ class SqlDelightSpeciesRepository(
             family = taxonomy?.family ?: "",
             familySv = taxonomy?.family_sv ?: "",
             group = taxonomy?.group_id ?: "",
+            iucnStatus = sp.iucn_status,
         )
     }
 
+    /**
+     * The [kind] text in [locale], cleaned by [cleanSpeciesText]. Falls back to the English text
+     * when the localized one is missing OR cleans to blank (e.g. a Swedish "no data" sentinel);
+     * a blank result makes the UI show its own localized empty-state string.
+     */
     private fun pickText(
         texts: List<se.birdy.content.SpeciesText>,
         locale: Locale,
         kind: String,
     ): String? {
-        val match = texts.firstOrNull { it.locale == locale.code && it.kind == kind }
-        if (match != null) return match.text
-        return texts.firstOrNull { it.locale == Locale.EN.code && it.kind == kind }?.text
+        val localized =
+            texts
+                .firstOrNull { it.locale == locale.code && it.kind == kind }
+                ?.text
+                ?.let(::cleanSpeciesText)
+        if (!localized.isNullOrBlank()) return localized
+        val english =
+            texts
+                .firstOrNull { it.locale == Locale.EN.code && it.kind == kind }
+                ?.text
+                ?.let(::cleanSpeciesText)
+        return english ?: localized
     }
 }

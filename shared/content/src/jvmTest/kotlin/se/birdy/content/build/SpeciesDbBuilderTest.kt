@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import se.birdy.content.db.BirdyContent
+import java.nio.file.Files
 import java.nio.file.Path
 
 class SpeciesDbBuilderTest {
@@ -98,6 +99,75 @@ class SpeciesDbBuilderTest {
         assertNotEquals(
             builder.contentFingerprint(items, 1),
             builder.contentFingerprint(items, 2),
+        )
+    }
+
+    @Test
+    fun `fingerprint changes when a text is edited by hand without touching generated_at`() {
+        val items =
+            parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+        val builder = SpeciesDbBuilder()
+        val edited =
+            items.map { (path, yaml) ->
+                path to yaml.copy(description = yaml.description + ("sv" to "Handskriven text."))
+            }
+        assertNotEquals(
+            builder.contentFingerprint(items, 2),
+            builder.contentFingerprint(edited, 2),
+            "a hand edit that keeps generated_at must still flip application_id, or installed apps keep the old db",
+        )
+    }
+
+    @Test
+    fun `fingerprint is unaffected by CRLF line endings in the source yaml file`(
+        @TempDir tempDir: Path,
+    ) {
+        val items = parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+        val builder = SpeciesDbBuilder()
+
+        // T11f/F2: a hand-edited YAML checked out with Windows line endings must fingerprint the
+        // same as the LF original — kaml normalizes \r\n in scalars, but this locks that in at the
+        // file level instead of trusting the parser's behaviour by inspection only.
+        val sourceDir = Path.of("src/jvmTest/resources/fixtures/species")
+        val crlfDir = tempDir.resolve("species-crlf")
+        Files.walk(sourceDir).use { paths ->
+            paths.filter { Files.isRegularFile(it) }.forEach { file ->
+                val target = crlfDir.resolve(sourceDir.relativize(file))
+                Files.createDirectories(target.parent)
+                val crlfContent = Files.readString(file).replace("\r\n", "\n").replace("\n", "\r\n")
+                Files.writeString(target, crlfContent)
+            }
+        }
+        val crlfItems = parser.parseAll(crlfDir)
+
+        assertEquals(
+            builder.contentFingerprint(items, 2),
+            builder.contentFingerprint(crlfItems, 2),
+            "a CRLF checkout of the same YAML content must produce the same fingerprint",
+        )
+    }
+
+    @Test
+    fun `fingerprint is unaffected by item order`() {
+        val items = parser.parseAll(Path.of("src/jvmTest/resources/fixtures/species"))
+        val builder = SpeciesDbBuilder()
+        val (path, yaml) = items.first()
+        val threeItems =
+            listOf(
+                path to yaml.copy(id = "Q100001"),
+                path to yaml.copy(id = "Q100002"),
+                path to yaml.copy(id = "Q100003"),
+            )
+
+        assertEquals(
+            builder.contentFingerprint(threeItems, 2),
+            builder.contentFingerprint(threeItems.reversed(), 2),
+            "a reversed item order must not change the fingerprint",
+        )
+        assertEquals(
+            builder.contentFingerprint(threeItems, 2),
+            builder.contentFingerprint(threeItems.shuffled(), 2),
+            "a shuffled item order must not change the fingerprint",
         )
     }
 

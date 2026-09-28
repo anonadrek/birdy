@@ -18,14 +18,14 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import se.birdy.app.ui.theme.AccentCopper
-import se.birdy.app.ui.theme.MarginaliaInk
-import se.birdy.app.ui.theme.PaperBottom
+import se.birdy.app.ui.theme.CardPaper
+import se.birdy.app.ui.theme.Hairline
+import se.birdy.app.ui.theme.InkMuted
 import se.birdy.app.ui.theme.rememberCaveat
 
 /**
- * Naturalist plate-frame: paper-toned rounded box with inset border, photo
- * centered + Caveat-italic caption below (`Pl. {idx} — {name}, in nature`).
+ * Naturalist plate-frame: card-paper rounded box with hairline border, photo
+ * centered + Caveat-italic caption below (`Pl. {idx} · {name}, in nature`).
  * Used in Species Profile + Observation Detail in place of LargeTopAppBar.
  */
 @Composable
@@ -42,9 +42,9 @@ fun PlateFrame(
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp, vertical = 12.dp)
                 .semantics(mergeDescendants = true) {}
-                .clip(RoundedCornerShape(12.dp))
-                .background(PaperBottom.copy(alpha = 0.5f))
-                .border(width = 1.dp, color = AccentCopper.copy(alpha = 0.3f), shape = RoundedCornerShape(12.dp))
+                .clip(RoundedCornerShape(16.dp))
+                .background(CardPaper)
+                .border(width = 1.dp, color = Hairline, shape = RoundedCornerShape(16.dp))
                 .padding(8.dp),
     ) {
         Box(
@@ -52,15 +52,15 @@ fun PlateFrame(
                 Modifier
                     .fillMaxWidth()
                     .height(220.dp)
-                    .clip(RoundedCornerShape(8.dp)),
+                    .clip(RoundedCornerShape(12.dp)),
             contentAlignment = Alignment.Center,
         ) {
             image()
         }
         Spacer(Modifier.height(6.dp))
         Text(
-            text = if (plateLabel.isNotEmpty()) "Pl. $plateLabel — $captionLine" else captionLine,
-            color = MarginaliaInk,
+            text = if (plateLabel.isNotEmpty()) "Pl. $plateLabel · $captionLine" else captionLine,
+            color = InkMuted,
             fontFamily = caveat,
             fontWeight = FontWeight.Normal,
             fontSize = 13.sp,

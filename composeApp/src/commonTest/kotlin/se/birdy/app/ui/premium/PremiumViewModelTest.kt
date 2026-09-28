@@ -5,8 +5,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import kotlinx.datetime.Clock
@@ -222,8 +224,9 @@ class PremiumViewModelTest {
             vm.purchase()
             assertEquals(false, vm.state.first().purchaseCompleted)
 
-            // awaitingActivation stays sticky after a cancel — a real entitlement arriving later
-            // (e.g. a pending purchase from another attempt completing) still finishes the flow.
+            // purchaseCompleted only tracks the backend's Free→Active transition — a real
+            // entitlement arriving later (e.g. a pending purchase from another attempt
+            // completing) still finishes the flow even after this screen's own attempt cancelled.
             repo.markPurchased(PremiumTier.LIFETIME)
             assertEquals(true, vm.state.first().purchaseCompleted)
         }
@@ -259,7 +262,6 @@ class PremiumViewModelTest {
             assertEquals(false, vm.state.first().canPurchase)
             vm.purchase()
             assertEquals(false, launched)
-            assertEquals(false, vm.state.first().awaitingActivation)
             assertEquals(false, vm.state.first().purchaseInFlight)
         }
 
@@ -344,6 +346,44 @@ class PremiumViewModelTest {
             assertEquals(false, vm.state.first().canPurchase)
             vm.purchase()
             assertEquals(false, launched)
-            assertEquals(false, vm.state.first().awaitingActivation)
+        }
+
+    @Test
+    fun `the tier bought is locked at purchase start - unaffected by selecting a different tier while in flight`() =
+        runTest {
+            // NOT the class's UnconfinedTestDispatcher: Unconfined runs purchase()'s
+            // viewModelScope.launch{} block immediately, inline, up to gate.await() — so
+            // launchPurchase(tier) would already have run and captured `tier` before this test
+            // even gets to call selectTier(LIFETIME) below, and the test would pass no matter
+            // what `purchase()` reads `tier` from or when. StandardTestDispatcher only *queues*
+            // the launch; runCurrent() below decides exactly when it actually runs, which is what
+            // lets this test put selectTier(LIFETIME) in between "purchase() called" and
+            // "launchPurchase actually invoked" — the real race this test exists to cover.
+            Dispatchers.setMain(StandardTestDispatcher(testScheduler))
+            val repo = FakePremiumRepository()
+            val gate = CompletableDeferred<PurchaseResult>()
+            var launchedTier: PremiumTier? = null
+            val vm =
+                PremiumViewModel(
+                    repo,
+                    launchPurchase = { tier ->
+                        launchedTier = tier
+                        gate.await()
+                    },
+                    formattedPricesFlow = prices,
+                )
+            // Let the VM's init collectors deliver the initial repo/price state (queued, not run
+            // yet, under StandardTestDispatcher) so canPurchase is true before purchase() below.
+            runCurrent()
+
+            vm.selectTier(PremiumTier.YEARLY)
+            vm.purchase()
+            // Switching the selected tier while the purchase coroutine is only QUEUED (not yet
+            // run) must not change which tier launchPurchase ends up called with.
+            vm.selectTier(PremiumTier.LIFETIME)
+            runCurrent()
+            assertEquals(PremiumTier.YEARLY, launchedTier)
+
+            gate.complete(PurchaseResult.UserCancelled)
         }
 }

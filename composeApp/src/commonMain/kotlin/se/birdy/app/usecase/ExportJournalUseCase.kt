@@ -4,6 +4,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import se.birdy.app.ui.diary.HISTORICAL_SV_ONBOARDING_FALLBACK_NAME
+import se.birdy.app.ui.diary.displayNameOrNull
 import se.birdy.content.Locale
 import se.birdy.content.SpeciesRepository
 import se.birdy.datastore.UserPreferences
@@ -53,10 +55,23 @@ class ExportJournalUseCase(
         val now = clock.now()
         val currentYear = now.toLocalDateTime(timeZone).year
 
-        val displayName =
-            userPreferences.userName
-                .first()
-                .takeIf { it.isNotBlank() } ?: fallbackDisplayName
+        // displayNameOrNull (not a plain isNotBlank check): userName can hold a historical
+        // onboarding fallback word ("Min"/"My", pre-1.3.0 skip-the-name-field flows) — see
+        // Possessive.kt. "My" is only masked in English: it's a real Swedish given name, and is
+        // only ever the fallback word in the English UI (Swedish's is "Min"). This use case isn't
+        // @Composable so it can't call stringResource() itself; it already receives `locale` for
+        // species lookup, so the same value drives the mask here — the least invasive option,
+        // no new constructor parameter or platform wiring needed.
+        val maskedNames =
+            if (locale == Locale.SV) {
+                setOf(HISTORICAL_SV_ONBOARDING_FALLBACK_NAME)
+            } else {
+                setOf(HISTORICAL_SV_ONBOARDING_FALLBACK_NAME, "My")
+            }
+        // Neither PDF renderer (Android/iOS) conditionally omits the byline line, so this reuses
+        // the use case's own existing, already-tested fallbackDisplayName ("Birdy") rather than
+        // adding renderer-level omission logic for a line that's always drawn today.
+        val displayName = displayNameOrNull(userPreferences.userName.first(), maskedNames) ?: fallbackDisplayName
 
         val stats =
             JournalPdfInput.Stats(

@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.sp
 /**
  * Field Journal intro block — the red thread:
  *  1) MicroLabel (Inter caps copper)
- *  2) JournalHeadline (DM Serif italic + Caveat accent)
+ *  2) JournalHeadline (upright DM Serif Display, `*word*` accents in italic DM Serif Display)
  *  3) JournalSubLine (Caveat mossgrön) — optional
  *  4) OrnamentRule (line · ❦ · line)
  *

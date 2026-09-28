@@ -46,7 +46,7 @@ class LifelistViewModel(
                 LifelistUiState.Empty
             } else {
                 val byQid = speciesRepo.allByQid(locale)
-                buildLoaded(obs, byQid, name.ifEmpty { defaultName() }, stat3, sort)
+                buildLoaded(obs, byQid, name, stat3, sort)
             }
         }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000L), LifelistUiState.Loading)
 
@@ -152,6 +152,4 @@ class LifelistViewModel(
                 )
         }
     }
-
-    private fun defaultName(): String = if (locale == Locale.SV) "Min" else "My"
 }

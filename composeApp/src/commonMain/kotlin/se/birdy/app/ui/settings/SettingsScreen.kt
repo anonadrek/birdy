@@ -67,6 +67,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.onboarding_p3_fallback_name
 import birdy_bird_scanner.composeapp.generated.resources.settings_back
 import birdy_bird_scanner.composeapp.generated.resources.settings_dev_trigger_recap
 import birdy_bird_scanner.composeapp.generated.resources.settings_feedback_subject
@@ -111,6 +112,8 @@ import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.ui.components.BackButton
 import se.birdy.app.ui.components.OrnamentRule
 import se.birdy.app.ui.components.PremiumHeroCard
+import se.birdy.app.ui.diary.HISTORICAL_SV_ONBOARDING_FALLBACK_NAME
+import se.birdy.app.ui.diary.displayNameOrNull
 import se.birdy.app.ui.theme.AccentCopper
 import se.birdy.app.ui.theme.MarginaliaInk
 import se.birdy.app.ui.theme.PaperTop
@@ -138,6 +141,10 @@ fun SettingsScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val shareText = stringResource(Res.string.settings_share_copy)
     val feedbackSubject = stringResource(Res.string.settings_feedback_subject, versionName)
+    // "Min" always (a historical, never-real name); "My" only if the current UI language's own
+    // onboarding fallback word IS "My" (English) — see Possessive.kt's displayNameOrNull KDoc.
+    val nameMaskedNames =
+        setOf(HISTORICAL_SV_ONBOARDING_FALLBACK_NAME, stringResource(Res.string.onboarding_p3_fallback_name))
 
     LaunchedEffect(Unit) {
         viewModel.effects.collect { effect ->
@@ -182,7 +189,7 @@ fun SettingsScreen(
                     SettingsRow(
                         icon = Icons.Outlined.Person,
                         label = stringResource(Res.string.settings_label_name),
-                        value = state.userName.ifEmpty { "—" },
+                        value = displayNameOrNull(state.userName, nameMaskedNames) ?: "—",
                         onClick = { showNameDialog = true },
                     )
                     DashedDivider()
@@ -380,7 +387,7 @@ fun SettingsScreen(
 
     if (showNameDialog) {
         NameEditDialog(
-            initial = state.userName,
+            initial = displayNameOrNull(state.userName, nameMaskedNames).orEmpty(),
             onSave = {
                 viewModel.saveName(it)
                 showNameDialog = false

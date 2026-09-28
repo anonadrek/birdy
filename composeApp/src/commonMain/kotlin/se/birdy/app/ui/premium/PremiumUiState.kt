@@ -10,18 +10,11 @@ data class PremiumUiState(
     val formattedYearlyPrice: String? = null,
     val formattedLifetimePrice: String? = null,
     /**
-     * This screen launched a purchase that Play hasn't activated yet. Deliberately sticky after
-     * a cancel or error: any real entitlement arriving while this screen is still open (e.g. a
-     * pending purchase from an earlier attempt completing) still surfaces below, instead of
-     * being silently missed. Completion itself doesn't require this flag — see
-     * [purchaseCompleted].
-     */
-    val awaitingActivation: Boolean = false,
-    /**
-     * Premium turned on while this screen was open — via a purchase this screen launched
-     * ([awaitingActivation]), or any other Free→Active transition observed while it was open
-     * (e.g. a purchase that finished while the app was killed during 3-D Secure, or a pending
-     * purchase from an earlier session completing while this screen happened to be open).
+     * Premium turned on while this screen was open — a purchase this screen launched, or any
+     * other Free→Active transition observed while it was open (e.g. a purchase that finished
+     * while the app was killed during 3-D Secure, or a pending purchase from an earlier session
+     * completing while this screen happened to be open). Not gated on this screen having
+     * launched the purchase itself — see [PremiumViewModel]'s `justActivated` check.
      */
     val purchaseCompleted: Boolean = false,
     /** Feedback for the last purchase attempt's result; cleared at the start of the next attempt. */

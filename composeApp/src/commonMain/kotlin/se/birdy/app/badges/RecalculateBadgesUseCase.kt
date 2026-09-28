@@ -3,6 +3,7 @@ package se.birdy.app.badges
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import se.birdy.app.util.isRedListed
 import se.birdy.content.SpeciesId
 import se.birdy.content.model.Species
 import se.birdy.domain.badge.BadgeCatalog
@@ -14,8 +15,6 @@ import se.birdy.domain.badge.longestWeeklyStreak
 import se.birdy.domain.badge.seasonOf
 import se.birdy.domain.observation.Observation
 import se.birdy.domain.observation.ObservationSource
-
-private val RED_LISTED = setOf("NT", "VU", "CR")
 
 class RecalculateBadgesUseCase(
     private val zone: TimeZone = TimeZone.currentSystemDefault(),
@@ -85,7 +84,7 @@ class RecalculateBadgesUseCase(
                     .size
             is BadgeRule.ObservedRedListed ->
                 observations.mapNotNull { it.speciesId }.distinct().count { qid ->
-                    speciesByQid[SpeciesId(qid)]?.iucnStatus in RED_LISTED
+                    isRedListed(speciesByQid[SpeciesId(qid)]?.iucnStatus)
                 }
             is BadgeRule.ObservedBeforeHour ->
                 observations.count { o ->
