@@ -4,7 +4,7 @@ export type Token =
 
 /**
  * Parse "A *word* and more" into tokens.
- * - `*word*` becomes an accent token (handwritten Caveat bold, rotated)
+ * - `*word*` becomes an accent token (handwritten Caveat bold, upright)
  * - Plain text becomes plain tokens
  * - Asymmetric asterisks are kept as literal text
  *
