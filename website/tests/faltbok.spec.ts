@@ -21,7 +21,7 @@ test.describe('espresso i stället för mossa', () => {
     await expect(page.locator('body')).toHaveCSS('color', 'rgb(48, 32, 25)');
   });
 
-  test('telefonerna visar appens egna färger (Lyssna-skärmen är mossgrön)', async ({ page }) => {
+  test('telefonerna visar appens egna färger (mossgrön Lyssna, olivbläck)', async ({ page }) => {
     await page.goto('/sv/');
     const bg = await page.locator('#app .ph-listen').first().evaluate((el) => getComputedStyle(el).backgroundImage);
     expect(bg).toContain('rgb(31, 42, 25)');
@@ -41,5 +41,7 @@ test.describe('persika bakom karusellen', () => {
     await expect(tour).toHaveCSS('background-color', 'rgb(253, 229, 203)');
     await expect(tour.locator('.tour-lead')).toHaveCSS('color', 'rgb(110, 88, 75)');
     await expect(tour.locator('.tour-head .journal-headline')).toHaveCSS('color', 'rgb(48, 32, 25)');
+    const shadow = await tour.locator('.ph').first().evaluate((el) => getComputedStyle(el).boxShadow);
+    expect(shadow).toContain('rgba(42, 29, 23, 0.22)');
   });
 });

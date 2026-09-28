@@ -44,7 +44,7 @@ const pairs = [
   ['cream', 'dark', 4.5], ['apricot', 'dark', 4.5], ['brass-hi', 'dark', 4.5],
   ['cream', 'dark-deep', 4.5], ['apricot', 'dark-deep', 4.5],
   ['cream', 'rust', 4.5], ['cream', 'rust-deep', 4.5],
-  ['brass-ink', 'brass', 4.5],
+  ['brass-ink', 'brass', 4.5], ['brass-ink', 'brass-hi', 4.5],
 ];
 
 let failed = false;

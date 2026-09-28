@@ -73,7 +73,7 @@ const first = slides[0];
 </script>
 
 <style>
-  .tour { position: relative; overflow: hidden; color: var(--ink); background: var(--peach); padding: 96px 0 70px; --kick-color: var(--rust); --jh-ink: var(--ink); --jh-accent: var(--rust); }
+  .tour { position: relative; overflow: hidden; color: var(--ink); background: var(--peach); padding: 96px 0 70px; --kick-color: var(--rust); --jh-ink: var(--ink); --jh-accent: var(--rust); --ph-shadow: 0 12px 20px rgba(var(--dark-rgb), .22); }
   .tour::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(154, 69, 38, .07) 1px, transparent 1.2px); background-size: 18px 18px; pointer-events: none; }
   .tour :global(:focus-visible) { outline-color: var(--rust); }
   .track:focus-visible { outline-offset: -3px; }
@@ -85,7 +85,7 @@ const first = slides[0];
   .slide { flex: 0 0 var(--w); scroll-snap-align: center; will-change: transform, opacity; transform-origin: 50% 60%; }
   @media (prefers-reduced-motion: reduce) { .slide { will-change: auto; } }
   .foot { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 18px; max-width: 640px; margin: 0 auto; padding: 0 24px; }
-  .arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(48, 32, 25, .25); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: background .25s, border-color .25s, transform .25s; }
+  .arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(48, 32, 25, .5); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: background .25s, border-color .25s, transform .25s; }
   .arrow:hover:not([aria-disabled="true"]) { background: rgba(154, 69, 38, .08); border-color: var(--rust); }
   .arrow:active { transform: scale(.94); }
   .arrow[aria-disabled="true"] { opacity: .35; cursor: default; }
