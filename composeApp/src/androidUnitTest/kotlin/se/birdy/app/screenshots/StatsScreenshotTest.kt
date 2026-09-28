@@ -9,12 +9,14 @@ import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.isHeading
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.text.TextLayoutResult
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -126,6 +128,11 @@ class StatsScreenshotTest {
         // it — the merged-tree node carrying "OBSERVATIONER PER MÅNAD" (MicroLabel's uppercased
         // stats_section_months) must itself report isHeading().
         compose.onNodeWithText("OBSERVATIONER PER MÅNAD").assert(isHeading())
+        // T12e Minor 1: at 1.0x (MonthLabelMode.FULL) the month axis renders the full 3-letter
+        // label as visible text (not just a contentDescription, unlike INITIAL mode below) — a
+        // direct, positive proof that the axis-decision-once fix from T12d still renders the
+        // ordinary case unchanged.
+        compose.onNodeWithText("MAR").assertExists()
     }
 
     /**
@@ -142,7 +149,22 @@ class StatsScreenshotTest {
         RuntimeEnvironment.setFontScale(1.5f)
         compose.captureScreen("stats_w360_sv_150") { screen(Locale.SV) }
         compose.onNodeWithText("15").assertExists()
-        compose.assertNoForcedMidWordBreaks()
+        compose.assertNoTextLayoutRegressions()
+    }
+
+    /**
+     * T12e Minor 2: [MonthLabelMode.MEDIUM] (9.5sp month labels) is reached at 1.3x-1.5x on a
+     * w360dp phone (measured in the T12d re-review's Robolectric probe), but no screenshot
+     * exercised it — [stats_w360_sv_150] already sits in MEDIUM too, but 1.3x is the mode's own
+     * entry point and worth its own reviewable capture.
+     */
+    @Test
+    @Config(qualifiers = "+sv-w360dp")
+    fun stats_w360_sv_130() {
+        RuntimeEnvironment.setFontScale(1.3f)
+        compose.captureScreen("stats_w360_sv_130") { screen(Locale.SV) }
+        compose.onNodeWithText("15").assertExists()
+        compose.assertNoTextLayoutRegressions()
     }
 
     /**
@@ -159,7 +181,12 @@ class StatsScreenshotTest {
         RuntimeEnvironment.setFontScale(2.0f)
         compose.captureScreen("stats_w360_sv_200") { screen(Locale.SV) }
         compose.onNodeWithText("15").assertExists()
-        compose.assertNoForcedMidWordBreaks()
+        compose.assertNoTextLayoutRegressions()
+        // T12e Minor 1: at 2.0x (MonthLabelMode.INITIAL) the month axis shortens to one letter
+        // on screen and moves the full abbreviation to contentDescription instead — a direct,
+        // positive proof that TalkBack still hears "JAN", not "J" (see the fixed comment on
+        // MonthLabelsRow's clearAndSetSemantics call).
+        compose.onNodeWithContentDescription("JAN").assertExists()
     }
 
     @Test
@@ -200,29 +227,56 @@ class StatsScreenshotTest {
     }
 
     /**
-     * T12d Important 1: generic guard for the whole composed screen, not just the month
-     * labels/totals label this wave fixes — walks every node that carries a
-     * `GetTextLayoutResult` semantics action (i.e. every laid-out [Text]/[BasicText]),
-     * fetches its real [TextLayoutResult] and reuses [hasForcedMidWordBreak] (promoted from
-     * `private` to `internal` in `PhotoHero.kt` for this) to fail on any text whose wrap broke
-     * mid-word rather than at a space. `useUnmergedTree = true` so a merged container (e.g. a
-     * card `semantics(mergeDescendants = true)`) doesn't hide a child's own layout node.
+     * T12d Important 1 / T12e Minor 1: generic guard for the whole composed screen, not just the
+     * month labels/totals label this wave fixes — walks every node that carries a
+     * `GetTextLayoutResult` semantics action (i.e. every laid-out [Text]/[BasicText]), fetches
+     * its real [TextLayoutResult] and checks three ways a label can silently lose content:
+     * 1. [hasForcedMidWordBreak] (promoted from `private` to `internal` in `PhotoHero.kt` for
+     *    this): the wrap broke mid-word rather than at a space.
+     * 2. A single-line node (`maxLines == 1`, e.g. the top bar title's `BasicText` autosize)
+     *    exceeded that line and got clipped (`multiParagraph.didExceedMaxLines`).
+     * 3. A `softWrap = false` node (e.g. the month labels) laid its text out wider than the
+     *    box Compose actually gave it — `hasVisualOverflow` is `true` for nearly all ordinary
+     *    `Text` (its accessibility/semantics bookkeeping trips it even when nothing visible is
+     *    cut off), so the review found comparing `multiParagraph.width` against `size.width`
+     *    directly is the one that actually means "this text no longer fits" (T12d re-review).
+     *
+     * T12d's original version of this guard only checked (1), so it caught a regression in
+     * `hasForcedMidWordBreak`'s own logic but not a `maxLines`/`softWrap` regression elsewhere —
+     * both real render-time failure modes for the exact labels this wave fixed. Renamed from
+     * `assertNoForcedMidWordBreaks` since it now checks more than that one thing.
+     * `useUnmergedTree = true` so a merged container (e.g. a card
+     * `semantics(mergeDescendants = true)`) doesn't hide a child's own layout node.
      */
-    private fun ComposeContentTestRule.assertNoForcedMidWordBreaks() {
+    private fun ComposeContentTestRule.assertNoTextLayoutRegressions() {
         val layoutResults = mutableListOf<TextLayoutResult>()
-        onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsActions.GetTextLayoutResult), useUnmergedTree = true)
-            .fetchSemanticsNodes()
-            .forEach { node ->
-                val action = node.config.getOrNull(SemanticsActions.GetTextLayoutResult)?.action ?: return@forEach
-                layoutResults.clear()
-                action(layoutResults)
-                layoutResults.forEach { result ->
-                    val text = result.layoutInput.text.text
+        val nodes =
+            onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsActions.GetTextLayoutResult), useUnmergedTree = true)
+                .fetchSemanticsNodes()
+        assertTrue("expected at least one laid-out text node", nodes.isNotEmpty())
+        nodes.forEach { node ->
+            val action = node.config.getOrNull(SemanticsActions.GetTextLayoutResult)?.action ?: return@forEach
+            layoutResults.clear()
+            action(layoutResults)
+            layoutResults.forEach { result ->
+                val text = result.layoutInput.text.text
+                assertFalse(
+                    "\"$text\" has a forced mid-word break",
+                    result.hasForcedMidWordBreak(text),
+                )
+                if (result.layoutInput.maxLines == 1) {
                     assertFalse(
-                        "\"$text\" has a forced mid-word break",
-                        result.hasForcedMidWordBreak(text),
+                        "\"$text\" exceeded its single line and was clipped",
+                        result.multiParagraph.didExceedMaxLines,
+                    )
+                }
+                if (!result.layoutInput.softWrap) {
+                    assertTrue(
+                        "\"$text\" is wider (${result.multiParagraph.width}) than its softWrap=false box (${result.size.width})",
+                        result.multiParagraph.width <= result.size.width,
                     )
                 }
             }
+        }
     }
 }

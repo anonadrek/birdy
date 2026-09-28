@@ -30,11 +30,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
@@ -301,28 +303,77 @@ private fun CumulativeCard(points: List<SeasonStatsUiState.CumulativePoint>) {
     }
 }
 
+/**
+ * T12e Minor 3: the two totals cells used to each run [MicroLabel]'s own `autoSize` independently
+ * — at ≥1.3-1.5x system font scale "ARTER"/"SPECIES" (the shorter label) still fit at 9.5sp while
+ * "OBSERVATIONER"/"OBSERVATIONS" (the longer one) had already shrunk, so the two cells rendered
+ * their labels at visibly different sizes (same "mixed sizes" the re-review flagged and rejected
+ * for the month axis). Decided ONCE here instead, exactly like [MonthLabelsRow]: measure BOTH
+ * labels in [MicroLabel]'s own style against one cell's inner width, and use the largest size
+ * (9.5sp down to 6sp) where BOTH fit — so the two totals are always the same size as each other.
+ */
 @Composable
 private fun TotalsRow(
     totalSpecies: Int,
     totalObservations: Int,
 ) {
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp).height(IntrinsicSize.Min),
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-    ) {
-        SectionCard(modifier = Modifier.weight(1f).fillMaxHeight()) {
-            TotalCell(value = totalSpecies, labelRes = Res.string.stats_total_species)
+    val speciesLabel = stringResource(Res.string.stats_total_species).uppercase()
+    val observationsLabel = stringResource(Res.string.stats_total_observations).uppercase()
+    val measurer = rememberTextMeasurer(cacheSize = TOTALS_LABEL_MEASURER_CACHE_SIZE)
+    val density = LocalDensity.current
+
+    BoxWithConstraints(Modifier.fillMaxWidth().padding(horizontal = 24.dp)) {
+        val spacingPx = with(density) { 10.dp.roundToPx() }
+        // SectionCard's own 14dp padding on every side (SectionCard.kt) — not exposed as a
+        // constant there since this is the only place outside it that needs to know it.
+        val cellInnerPaddingPx = with(density) { (14.dp * 2).roundToPx() }
+        val cellInnerWidthPx = (constraints.maxWidth - spacingPx) / 2 - cellInnerPaddingPx
+
+        fun bothFit(fontSize: TextUnit): Boolean {
+            val style =
+                TextStyle(
+                    fontFamily = FontFamily.SansSerif,
+                    fontSize = fontSize,
+                    fontWeight = FontWeight.W600,
+                    letterSpacing = 0.16.em,
+                )
+
+            fun widthPx(label: String) = measurer.measure(label, style, maxLines = 1, softWrap = false).size.width
+            return widthPx(speciesLabel) <= cellInnerWidthPx && widthPx(observationsLabel) <= cellInnerWidthPx
         }
-        SectionCard(modifier = Modifier.weight(1f).fillMaxHeight()) {
-            TotalCell(value = totalObservations, labelRes = Res.string.stats_total_observations)
+        val labelFontSize = TOTALS_LABEL_SIZE_STEPS.firstOrNull(::bothFit) ?: TOTALS_LABEL_SIZE_STEPS.last()
+
+        Row(
+            modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            SectionCard(modifier = Modifier.weight(1f).fillMaxHeight()) {
+                TotalCell(
+                    value = totalSpecies,
+                    labelRes = Res.string.stats_total_species,
+                    labelFontSize = labelFontSize,
+                )
+            }
+            SectionCard(modifier = Modifier.weight(1f).fillMaxHeight()) {
+                TotalCell(
+                    value = totalObservations,
+                    labelRes = Res.string.stats_total_observations,
+                    labelFontSize = labelFontSize,
+                )
+            }
         }
     }
 }
+
+/** 9.5sp (unchanged at 1.0x) down to a 6sp floor, same range [MicroLabel]'s old autoSize used. */
+private val TOTALS_LABEL_SIZE_STEPS = listOf(9.5.sp, 9.sp, 8.5.sp, 8.sp, 7.5.sp, 7.sp, 6.5.sp, 6.sp)
+private const val TOTALS_LABEL_MEASURER_CACHE_SIZE = 24
 
 @Composable
 private fun TotalCell(
     value: Int,
     labelRes: StringResource,
+    labelFontSize: TextUnit,
 ) {
     Column {
         Text(
@@ -332,16 +383,11 @@ private fun TotalCell(
             lineHeight = 36.sp,
             color = AccentCopper,
         )
-        // T12d Important 1: "OBSERVATIONER"/"OBSERVATIONS" forces a mid-word break in this
-        // card's ~123-148dp inner width once the system font scale pushes MicroLabel's fixed
-        // 9.5sp past ~1.4-1.7x (measured in the re-review). StepBased shrinks it down to a
-        // 6sp floor instead — well under 9.5sp so it only ever kicks in once the fixed size
-        // would already have broken, matching this card's actual available width.
         MicroLabel(
             text = stringResource(labelRes),
             color = InkMuted,
             showRule = false,
-            autoSize = TextAutoSize.StepBased(minFontSize = 6.sp, maxFontSize = 9.5.sp),
+            fontSize = labelFontSize,
         )
     }
 }
@@ -360,8 +406,15 @@ private fun TotalCell(
  */
 @Composable
 private fun MonthLabelsRow(bars: List<SeasonStatsUiState.MonthBar>) {
+    // T12e Minor 5: JournalBarChart (the bar row this axis sits under) guards the same way —
+    // bars is always 12 items from the ViewModel today, but widestWidthPx below calls
+    // bars.maxOf, which throws on an empty list.
+    if (bars.isEmpty()) return
     val fontFamily = rememberCaveat()
-    val measurer = rememberTextMeasurer()
+    // T12e Minor 6: the default cache (8) is smaller than the 12-24 texts (two font sizes ×
+    // up to 12 months) this row measures on every composition, e.g. every time the card
+    // re-enters a LazyColumn viewport.
+    val measurer = rememberTextMeasurer(cacheSize = MONTH_LABEL_MEASURER_CACHE_SIZE)
     BoxWithConstraints(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
         val slotCount = bars.size.coerceAtLeast(1)
         val slotPx = constraints.maxWidth / slotCount
@@ -395,9 +448,11 @@ private fun MonthLabelsRow(bars: List<SeasonStatsUiState.MonthBar>) {
                         Modifier
                             .weight(1f)
                             .then(
-                                // Shortened to one letter: TalkBack should still hear the whole
-                                // month name, not "J" — clearAndSetSemantics (not a plain
-                                // contentDescription) so the node doesn't ALSO carry the
+                                // Shortened to one letter on screen: TalkBack should still hear
+                                // the 3-letter abbreviation ("JAN"), not "J" — b.label IS that
+                                // abbreviation (never the full month name, in either mode; T12e
+                                // Minor 4 corrected this comment). clearAndSetSemantics (not a
+                                // plain contentDescription) so the node doesn't ALSO carry the
                                 // one-letter text and get announced twice.
                                 if (mode == MonthLabelMode.INITIAL) {
                                     Modifier.clearAndSetSemantics { contentDescription = b.label }
@@ -415,6 +470,7 @@ private enum class MonthLabelMode { FULL, MEDIUM, INITIAL }
 
 private val MONTH_LABEL_FULL_SIZE = 11.sp
 private val MONTH_LABEL_MEDIUM_SIZE = 9.5.sp
+private const val MONTH_LABEL_MEASURER_CACHE_SIZE = 24
 
 /**
  * Winter/spring/summer/autumn swatches, sourced from the single shared [SeasonPalette] — also
