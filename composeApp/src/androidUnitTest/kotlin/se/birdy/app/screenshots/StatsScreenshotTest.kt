@@ -155,8 +155,8 @@ class StatsScreenshotTest {
     /**
      * T12e Minor 2: [MonthLabelMode.MEDIUM] (9.5sp month labels) is reached at 1.3x-1.5x on a
      * w360dp phone (measured in the T12d re-review's Robolectric probe), but no screenshot
-     * exercised it — [stats_w360_sv_150] already sits in MEDIUM too, but 1.3x is the mode's own
-     * entry point and worth its own reviewable capture.
+     * exercised it: [stats_w360_sv_150] is already past it, in the one-letter INITIAL axis, so
+     * 1.3x is the only capture that shows the 9.5sp three-letter row.
      */
     @Test
     @Config(qualifiers = "+sv-w360dp")
@@ -164,6 +164,7 @@ class StatsScreenshotTest {
         RuntimeEnvironment.setFontScale(1.3f)
         compose.captureScreen("stats_w360_sv_130") { screen(Locale.SV) }
         compose.onNodeWithText("15").assertExists()
+        compose.onNodeWithText("MAR").assertExists()
         compose.assertNoTextLayoutRegressions()
     }
 
@@ -235,11 +236,11 @@ class StatsScreenshotTest {
      *    this): the wrap broke mid-word rather than at a space.
      * 2. A single-line node (`maxLines == 1`, e.g. the top bar title's `BasicText` autosize)
      *    exceeded that line and got clipped (`multiParagraph.didExceedMaxLines`).
-     * 3. A `softWrap = false` node (e.g. the month labels) laid its text out wider than the
-     *    box Compose actually gave it — `hasVisualOverflow` is `true` for nearly all ordinary
-     *    `Text` (its accessibility/semantics bookkeeping trips it even when nothing visible is
-     *    cut off), so the review found comparing `multiParagraph.width` against `size.width`
-     *    directly is the one that actually means "this text no longer fits" (T12d re-review).
+     * 3. A `softWrap = false` node (e.g. the month labels) needs more width for its text
+     *    (`multiParagraph.maxIntrinsicWidth`) than the box Compose actually gave it. Neither
+     *    `hasVisualOverflow` (true for nearly all ordinary `Text`) nor `multiParagraph.width`
+     *    works here: in a fixed-size box `multiParagraph.width` equals `size.width`, so it never
+     *    fails, and in a wider box it reports the box, not the text (T11f/T12e re-review).
      *
      * T12d's original version of this guard only checked (1), so it caught a regression in
      * `hasForcedMidWordBreak`'s own logic but not a `maxLines`/`softWrap` regression elsewhere —
@@ -272,8 +273,9 @@ class StatsScreenshotTest {
                 }
                 if (!result.layoutInput.softWrap) {
                     assertTrue(
-                        "\"$text\" is wider (${result.multiParagraph.width}) than its softWrap=false box (${result.size.width})",
-                        result.multiParagraph.width <= result.size.width,
+                        "\"$text\" needs ${result.multiParagraph.maxIntrinsicWidth}px, " +
+                            "more than its softWrap=false box (${result.size.width}px)",
+                        result.multiParagraph.maxIntrinsicWidth <= result.size.width,
                     )
                 }
             }

@@ -326,7 +326,7 @@ private fun TotalsRow(
         val spacingPx = with(density) { 10.dp.roundToPx() }
         // SectionCard's own 14dp padding on every side (SectionCard.kt) — not exposed as a
         // constant there since this is the only place outside it that needs to know it.
-        val cellInnerPaddingPx = with(density) { (14.dp * 2).roundToPx() }
+        val cellInnerPaddingPx = with(density) { 2 * 14.dp.roundToPx() }
         val cellInnerWidthPx = (constraints.maxWidth - spacingPx) / 2 - cellInnerPaddingPx
 
         fun bothFit(fontSize: TextUnit): Boolean {
