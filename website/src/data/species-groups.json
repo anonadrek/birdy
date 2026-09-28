@@ -1,0 +1,158 @@
+{
+  "groups": [
+    {
+      "key": "songbirds",
+      "slug": { "sv": "tattingar", "en": "songbirds" },
+      "name": { "sv": "Tättingar", "en": "Songbirds" },
+      "photo": "Q25234",
+      "intro": {
+        "sv": "Tättingar är den största ordningen bland fåglarna, med mer än hälften av alla fågelarter. Hit hör de flesta småfåglar du ser i trädgården och skogen, och många känns lättast igen på sången.",
+        "en": "Songbirds, or passerines, are the largest order of birds, with more than half of all bird species. Most of the small birds in gardens and woodland belong here, and many are easiest to recognise by their song."
+      }
+    },
+    {
+      "key": "waterfowl",
+      "slug": { "sv": "ander-och-gass", "en": "ducks-and-geese" },
+      "name": { "sv": "Änder & gäss", "en": "Ducks & geese" },
+      "photo": "Q25348",
+      "intro": {
+        "sv": "Änder, gäss och svanar hör alla till familjen andfåglar. De lever vid sjöar, vikar och kuster, och hos många änder ser hanen och honan helt olika ut.",
+        "en": "Ducks, geese and swans all belong to the same family. They live on lakes, bays and coasts, and in many ducks the male and female look completely different."
+      }
+    },
+    {
+      "key": "waders",
+      "slug": { "sv": "vadare", "en": "waders" },
+      "name": { "sv": "Vadare", "en": "Waders" },
+      "photo": "Q25928",
+      "intro": {
+        "sv": "Vadare söker föda på stränder, i våtmarker och på grunda bottnar, ofta med lång näbb och långa ben. Många häckar i norr och syns i södra Sverige under flyttningen vår och höst.",
+        "en": "Waders feed on shores, in wetlands and on mudflats, often with long bills and long legs. Many breed in the far north and pass through southern Sweden on migration in spring and autumn."
+      }
+    },
+    {
+      "key": "gulls_terns",
+      "slug": { "sv": "masar-och-tarnor", "en": "gulls-and-terns" },
+      "name": { "sv": "Måsar & tärnor", "en": "Gulls & terns" },
+      "photo": "Q26427",
+      "intro": {
+        "sv": "Måsar och trutar är vanliga längs kusterna och allt oftare i städerna. Tärnorna är smäckrare, dyker efter småfisk och flyttar långt söderut över vintern.",
+        "en": "Gulls are common along the coasts and more and more often in towns. Terns are slimmer, dive for small fish and migrate far south for the winter."
+      }
+    },
+    {
+      "key": "auks",
+      "slug": { "sv": "alkor", "en": "auks" },
+      "name": { "sv": "Alkor", "en": "Auks" },
+      "photo": "Q27102",
+      "intro": {
+        "sv": "Alkor är havsfåglar som dyker och simmar under vattnet med hjälp av vingarna. De häckar i kolonier på klippor och öar och tillbringar resten av året ute till havs.",
+        "en": "Auks are seabirds that dive and swim underwater using their wings. They breed in colonies on cliffs and islands and spend the rest of the year out at sea."
+      }
+    },
+    {
+      "key": "seabirds",
+      "slug": { "sv": "havsfaglar", "en": "seabirds" },
+      "name": { "sv": "Havsfåglar", "en": "Seabirds" },
+      "photo": "Q25440",
+      "intro": {
+        "sv": "Här samlas fåglar som hör hemma på öppet hav eller längs kusten, som skarvar och sulor. Många ses bäst från en udde eller en färja.",
+        "en": "This group gathers birds of the open sea and the coast, such as cormorants and gannets. Many are best seen from a headland or a ferry."
+      }
+    },
+    {
+      "key": "grebes_divers",
+      "slug": { "sv": "doppingar-och-lommar", "en": "grebes-and-divers" },
+      "name": { "sv": "Doppingar & lommar", "en": "Grebes & divers" },
+      "photo": "Q25422",
+      "intro": {
+        "sv": "Doppingar och lommar är skickliga dykare med benen placerade långt bak på kroppen. På land rör de sig klumpigt, men i vattnet är de snabba och jagar fisk under ytan.",
+        "en": "Grebes and divers are skilled divers with their legs set far back on the body. They are clumsy on land, but in the water they are fast and hunt fish below the surface."
+      }
+    },
+    {
+      "key": "herons_storks",
+      "slug": { "sv": "hagrar-och-storkar", "en": "herons-and-storks" },
+      "name": { "sv": "Hägrar & storkar", "en": "Herons & storks" },
+      "photo": "Q25273",
+      "intro": {
+        "sv": "Hägrar och storkar är stora fåglar med långa ben, lång hals och kraftig näbb. De söker föda i grunt vatten och på fuktiga ängar och står ofta helt stilla medan de väntar på bytet.",
+        "en": "Herons and storks are large birds with long legs, long necks and strong bills. They feed in shallow water and on wet meadows and often stand completely still while they wait for prey."
+      }
+    },
+    {
+      "key": "raptors",
+      "slug": { "sv": "rovfaglar", "en": "birds-of-prey" },
+      "name": { "sv": "Rovfåglar", "en": "Birds of prey" },
+      "photo": "Q25385",
+      "intro": {
+        "sv": "Rovfåglar jagar med skarp syn, kraftiga klor och krökt näbb. De flesta känns lättast igen på silhuetten och sättet att flyga, eftersom de sällan ses på nära håll.",
+        "en": "Birds of prey hunt with sharp eyesight, strong talons and a hooked bill. Most are easiest to recognise by their silhouette and the way they fly, since they are rarely seen up close."
+      }
+    },
+    {
+      "key": "owls",
+      "slug": { "sv": "ugglor", "en": "owls" },
+      "name": { "sv": "Ugglor", "en": "Owls" },
+      "photo": "Q25756",
+      "intro": {
+        "sv": "Ugglor jagar mest i skymning och mörker och hittar bytet med hjälp av hörseln. Du hör dem oftare än du ser dem, och lätet är det säkraste sättet att veta vilken uggla det är.",
+        "en": "Owls hunt mostly at dusk and in the dark and find their prey by hearing. You will hear them more often than you see them, and the call is the surest way to tell which owl it is."
+      }
+    },
+    {
+      "key": "gamebirds",
+      "slug": { "sv": "honsfaglar", "en": "gamebirds" },
+      "name": { "sv": "Hönsfåglar", "en": "Gamebirds" },
+      "photo": "Q25432",
+      "intro": {
+        "sv": "Hönsfåglar lever mest på marken och har kraftig kropp och korta, rundade vingar. Hit hör skogshönsen som tjäder och orre, men också fasan och rapphöna.",
+        "en": "Gamebirds live mostly on the ground and have a heavy body and short, rounded wings. The group includes forest grouse such as the capercaillie and black grouse, as well as the pheasant and grey partridge."
+      }
+    },
+    {
+      "key": "doves",
+      "slug": { "sv": "duvor", "en": "doves-and-pigeons" },
+      "name": { "sv": "Duvor", "en": "Doves & pigeons" },
+      "photo": "Q26026",
+      "intro": {
+        "sv": "Duvor har litet huvud, rund kropp och ett mjukt, kuttrande läte. Ringduvan är den största och vanligaste i Sverige, och flera arter trivs nära människor.",
+        "en": "Pigeons and doves have a small head, a plump body and a soft, cooing call. The woodpigeon is the largest and most common in Sweden, and several species thrive close to people."
+      }
+    },
+    {
+      "key": "woodpeckers",
+      "slug": { "sv": "hackspettar", "en": "woodpeckers" },
+      "name": { "sv": "Hackspettar", "en": "Woodpeckers" },
+      "photo": "Q26209",
+      "intro": {
+        "sv": "Hackspettar klättrar på trädstammar och hackar i trä efter insekter och för att göra bohål. På våren trummar de med näbben mot torra grenar för att hävda revir.",
+        "en": "Woodpeckers climb tree trunks and chisel into wood for insects and to make nest holes. In spring they drum on dry branches with their bills to claim a territory."
+      }
+    },
+    {
+      "key": "cranes_rails",
+      "slug": { "sv": "tranor-och-rallar", "en": "cranes-and-rails" },
+      "name": { "sv": "Tranor & rallar", "en": "Cranes & rails" },
+      "photo": "Q4764",
+      "intro": {
+        "sv": "Tranan är en av Sveriges största fåglar och känns igen på sitt trumpetande läte. Rallarna lever i vass och våtmark, och medan sothönan simmar öppet hörs vattenrallen oftare än den syns.",
+        "en": "The common crane is one of the largest birds in Sweden and is known for its trumpeting call. Rails live in reeds and wetlands, and while the coot swims in the open, the water rail is heard more often than it is seen."
+      }
+    },
+    {
+      "key": "other",
+      "slug": { "sv": "ovriga-faglar", "en": "other-birds" },
+      "name": { "sv": "Övriga fåglar", "en": "Other birds" },
+      "photo": "Q18845",
+      "intro": {
+        "sv": "Här samlas fåglar från små familjer som inte passar i de andra grupperna. Hit hör göken, tornseglaren, nattskärran och kungsfiskaren.",
+        "en": "This group gathers birds from small families that do not fit in the other groups. It includes the cuckoo, the swift, the nightjar and the kingfisher."
+      }
+    }
+  ],
+  "common": [
+    "Q25485", "Q25404", "Q25234", "Q25334", "Q14683", "Q25307",
+    "Q25345384", "Q25383", "Q25348", "Q26427", "Q25385", "Q4764"
+  ]
+}

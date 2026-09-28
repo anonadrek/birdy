@@ -1,9 +1,9 @@
 # Birdy — Privacy Policy
 
-_Last updated: 2026-06-06_
+_Last updated: 2026-09-28_
 
-Birdy is built and operated by **Albin Viktor Lindblom** (Sweden). This
-policy explains what data the app handles and how. Birdy is designed to
+Birdy is built and operated by **AlbIT AB** (org. no. 559593-7607,
+Solna, Sweden), which is responsible for the app. This policy explains what data the app handles and how. Birdy is designed to
 work fully offline. We do not collect, transmit, or sell personal data.
 
 ## 1. What data does Birdy handle?

@@ -253,9 +253,7 @@ async def test_run_build_mapping_logs_warning_on_cross_batch_conflict(
 
     # Two QIDs with batch_size=1 forces two separate batch calls
     with caplog.at_level(logging.WARNING, logger="birdy_fetcher.inat_mapping"):
-        result = await run_build_mapping(
-            ["QA", "QB"], run_sparql=fake_runner, batch_size=1
-        )
+        result = await run_build_mapping(["QA", "QB"], run_sparql=fake_runner, batch_size=1)
 
     # First batch wins
     assert result.mappings == {"100": "Q1"}
@@ -263,6 +261,6 @@ async def test_run_build_mapping_logs_warning_on_cross_batch_conflict(
     assert result.cross_batch_conflicts == 1
     # Warning record contains iNat-ID and both Q-IDs
     warning_messages = [r.message for r in caplog.records if r.levelno == logging.WARNING]
-    assert any(
-        "100" in msg and "Q1" in msg and "Q2" in msg for msg in warning_messages
-    ), f"Expected warning mentioning 100, Q1, Q2 but got: {warning_messages}"
+    assert any("100" in msg and "Q1" in msg and "Q2" in msg for msg in warning_messages), (
+        f"Expected warning mentioning 100, Q1, Q2 but got: {warning_messages}"
+    )

@@ -401,9 +401,11 @@ Listan ligger i `prompts/web-banned-phrases.txt` och får växa när Albins gran
     },
     "en": { "…": "samma fält" }
   },
-  "generated": { "model": "…", "prompt": "web-v1", "at": "2026-10-…" },
+  "generated": { "model": "…", "prompt": "web-v1", "effort": "high", "at": "2026-10-…" },
   "errors": []
 }
 ```
 
 `status` är `ok` eller `failed` (då fylls `errors` och sidan byggs inte). `review` är `unreviewed` eller `approved`. `facts.size` och `facts.swedenStatus` kan vara `null` (avsnitt 7), och `marginalia` saknas för de flesta arter. Sajtens zod-schema speglar exakt de här fälten.
+
+**Tillägg under fas 1 (2026-09-26):** en art med `status: "failed"` har alltid `"text": null`. Texten som modellen skrev men som inte klarade kontrollerna ligger i stället under `"rejectedText"` (samma form som `text`, eller `null` om modellen inte gav något svar), så att Albin kan läsa den utan att sajtens längdregler ser den. `ok`-poster har ingen `rejectedText`. `generated.effort` är den tankenivå (`low`, `medium` eller `high`) som körningen använde. Sajtens zod-schema läser inte `rejectedText` eller `effort` och ska därför inte göras `.strict()`.
