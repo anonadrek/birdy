@@ -198,14 +198,22 @@ test.describe('rivna papperskanter', () => {
 });
 
 test.describe('delningsbilder', () => {
-  const alts = {
-    '/sv/': 'En rödhake i varmt ljus med orden Känn igen fågeln. Bevara stunden.',
-    '/': 'A European robin in warm light with the words Know the bird. Keep the moment.',
+  const shares = {
+    '/sv/': {
+      alt: 'En rödhake i varmt ljus med orden Känn igen fågeln. Bevara stunden.',
+      image: /\/og-field-sv\.png\?v=2$/,
+    },
+    '/': {
+      alt: 'A European robin in warm light with the words Know the bird. Keep the moment.',
+      image: /\/og-field-en\.png\?v=2$/,
+    },
   } as const;
-  for (const [path, alt] of Object.entries(alts)) {
+  for (const [path, { alt, image }] of Object.entries(shares)) {
     test(`delningsbildens alt-text på ${path}`, async ({ page }) => {
       await page.goto(path);
       await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute('content', alt);
+      await expect(page.locator('meta[name="twitter:image:alt"]')).toHaveAttribute('content', alt);
+      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', image);
     });
   }
 });

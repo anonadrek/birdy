@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 // Palettvakt (spec 2026-09-28-webb-faltboksfarger §3): webbens egen yta har inget mossgrönt och
 // ingen olivton. Appens färger får bara finnas i telefonerna (src/styles/phone.css och
-// src/components/phone/), som visar appen som den är.
+// src/components/phone/), som visar appen som den är. Skannar src/ och tools/ (bl.a.
+// delningsbild-generatorn), kodfiler (.astro/.css/.ts/.mjs/.js) och .svg. tools/store-assets/*.html
+// är MEDVETET oskannade — de mallarna använder appens egen Play Store-palett med --moss, så .html
+// finns inte med i filtret av den anledningen.
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve, join } from 'node:path';
@@ -24,6 +27,7 @@ const banned = [
 const files = scanDirs.flatMap((dir) =>
   readdirSync(resolve(root, dir), { recursive: true })
     .map((f) => join(dir, String(f)).split('\\').join('/'))
+    .filter((rel) => !rel.split('/').includes('node_modules'))
     .filter((rel) => /\.(astro|css|ts|mjs|js|svg)$/.test(rel)),
 );
 
