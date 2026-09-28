@@ -40,6 +40,7 @@ const ratio = (a, b) => {
 const pairs = [
   ['ink', 'paper', 4.5], ['muted', 'paper', 4.5], ['rust', 'paper', 4.5],
   ['ink', 'card', 4.5], ['muted', 'card', 4.5], ['rust', 'card', 4.5],
+  ['ink', 'peach', 4.5], ['muted', 'peach', 4.5], ['rust', 'peach', 4.5],
   ['cream', 'dark', 4.5], ['apricot', 'dark', 4.5], ['brass-hi', 'dark', 4.5],
   ['cream', 'dark-deep', 4.5], ['apricot', 'dark-deep', 4.5],
   ['cream', 'rust', 4.5], ['cream', 'rust-deep', 4.5],
@@ -64,7 +65,7 @@ for (const [fg, bg, min] of pairs) {
 // Genomskinliga textfärger: några komponenter skriver texten som rgba(...) direkt i <style>
 // (inte en token), så vakten ovan ser dem aldrig. De alfa-blandas här mot den riktiga bakgrunden
 // (c = a*fg + (1-a)*bg per kanal) innan samma WCAG-kontroll körs. Ändras en av rgba()-färgerna
-// eller bakgrunden i Footer.astro/Premium.astro/AppTour.astro, uppdatera paret här också — varje CSS-regel har
+// eller bakgrunden i Footer.astro/Premium.astro, uppdatera paret här också — varje CSS-regel har
 // en kommentar ("alpha checked in scripts/check-contrast.mjs") som pekar tillbaka hit.
 const hexToRgb = (hex) => {
   const n = parseInt(hex.slice(1), 16);
@@ -78,7 +79,6 @@ const ratioRgb = (a, b) => {
 const compositeOver = (fg, alpha, bg) => fg.map((c, i) => alpha * c + (1 - alpha) * bg[i]);
 
 const darkDeep = tokens['dark-deep'] ? hexToRgb(tokens['dark-deep']) : null;
-const dark2 = tokens['dark-2'] ? hexToRgb(tokens['dark-2']) : null;
 // Ljusaste punkten i Premiums espressogradient: mässingsglöden från .prem::before (10 % av
 // rgba(226, 192, 126)) över --dark, mitt i den radiella höjdpunkten. Finns inte som token.
 const premiumGradientLight = hexToRgb('#3C2D21');
@@ -88,8 +88,6 @@ const compositedPairs = [
   { label: 'Footer .sib-kick', fg: [233, 226, 210], alpha: 0.6, bg: darkDeep, min: 4.5 },
   { label: 'Premium .pnote', fg: [242, 234, 220], alpha: 0.62, bg: premiumGradientLight, min: 4.5 },
   { label: 'Premium .feat p', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
-  { label: 'AppTour .cap-text', fg: [242, 234, 220], alpha: 0.72, bg: dark2, min: 4.5 },
-  { label: 'AppTour .tour-lead', fg: [242, 234, 220], alpha: 0.72, bg: dark2, min: 4.5 },
 ];
 
 for (const { label, fg, alpha, bg, min } of compositedPairs) {

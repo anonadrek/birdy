@@ -524,12 +524,12 @@ test.describe('bloggen', () => {
     });
   });
 
-  test('listkickern och karusellkickern är apricot, inte bladets stil', async ({ page }) => {
+  test('listkickern är apricot (espresso) och karusellkickern är rost (persika), inte bladets stil', async ({ page }) => {
     await page.goto('/sv/blog/');
     await expect(page.locator('.bhead .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
 
     await page.goto('/sv/');
-    await expect(page.locator('.tour-head .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
+    await expect(page.locator('.tour-head .kick').first()).toHaveCSS('color', 'rgb(154, 69, 38)');
   });
 
   for (const [prefix, home] of [['/sv', '/sv/'], ['', '/']] as const) {

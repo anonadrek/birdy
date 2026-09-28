@@ -1,5 +1,5 @@
 /* Birdy-webben: fältbokens färger (spec 2026-09-28-webb-faltboksfarger §3). Espresso i stället för appens
-   mossa och varm brun text. Telefonerna i karusellen har appens egna färger (styles/phone.css). */
+   mossa och varm brun text. Telefonerna (hero och karusell) har appens egna färger (styles/phone.css). */
 :root {
   --paper: #F6EFE2;
   --card: #FFFAF1;
@@ -9,8 +9,8 @@
   --rust: #9A4526;
   --rust-deep: #72301A;
   --apricot: #F2B27A;
+  --peach: #FDE5CB;
   --dark: #2A1D17;
-  --dark-2: #3B2A21;
   --dark-deep: #1E1410;
   --dark-rgb: 42, 29, 23;
   --brass: #B8893A;

@@ -17,7 +17,7 @@ const banned = [
   [/#26301f/i, 'olivbläck #26301F'],
   [/#5b6350/i, 'olivgrå #5B6350'],
   [/#3b4434/i, 'olivgrå brödtext #3B4434'],
-  [/31,\s*42,\s*25\b/, 'mossa som rgb (31, 42, 25)'],
+  [/(?<!\d)31[,\s]+42[,\s]+25\b/, 'mossa som rgb (31, 42, 25)'],
   [/-moss\b/, 'mossnamn (--moss*, --color-moss)'],
 ];
 

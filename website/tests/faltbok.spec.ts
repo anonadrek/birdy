@@ -25,10 +25,21 @@ test.describe('espresso i stället för mossa', () => {
     await page.goto('/sv/');
     const bg = await page.locator('#app .ph-listen').first().evaluate((el) => getComputedStyle(el).backgroundImage);
     expect(bg).toContain('rgb(31, 42, 25)');
+    await expect(page.locator('#app .ph').first()).toHaveCSS('color', 'rgb(38, 48, 31)');
   });
 
   test('bloggens rubrikband är espresso', async ({ page }) => {
     await page.goto('/sv/blog/');
     await expect(page.locator('.bhead')).toHaveCSS('background-color', ESPRESSO);
+  });
+});
+
+test.describe('persika bakom karusellen', () => {
+  test('karusellbandet är persika med mörk text', async ({ page }) => {
+    await page.goto('/sv/');
+    const tour = page.locator('#app');
+    await expect(tour).toHaveCSS('background-color', 'rgb(253, 229, 203)');
+    await expect(tour.locator('.tour-lead')).toHaveCSS('color', 'rgb(110, 88, 75)');
+    await expect(tour.locator('.tour-head .journal-headline')).toHaveCSS('color', 'rgb(48, 32, 25)');
   });
 });
