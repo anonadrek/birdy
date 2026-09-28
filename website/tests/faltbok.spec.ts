@@ -45,3 +45,18 @@ test.describe('persika bakom karusellen', () => {
     expect(shadow).toContain('rgba(42, 29, 23, 0.22)');
   });
 });
+
+test.describe('handskrivna accentord', () => {
+  for (const path of ['/', '/sv/'] as const) {
+    test(`accentorden och heroraden är handskrivna på ${path}`, async ({ page }) => {
+      await page.goto(path);
+      const accents = page.locator('.journal-headline .accent');
+      expect(await accents.count()).toBeGreaterThan(5);
+      for (const el of await accents.all()) {
+        await expect(el).toHaveCSS('font-family', /Caveat/);
+        await expect(el).toHaveCSS('font-style', 'normal');
+      }
+      await expect(page.locator('[data-hero] h1 em')).toHaveCSS('font-family', /Caveat/);
+    });
+  }
+});

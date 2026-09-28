@@ -50,11 +50,14 @@ const style = `--size:${size}` + (align ? `;--jh-ta:${align}` : '');
     text-wrap: balance;
   }
   .plain { font-family: var(--font-serif); font-style: normal; }
+  /* Handwritten accent word, the field journal's signature (spec 2026-09-28-webb-faltboksfarger §5.1). */
   .accent {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1em;
+    font-family: var(--font-script);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.18em;
+    letter-spacing: 0;
+    line-height: .9;
     color: var(--jh-accent, var(--rust));
   }
 </style>
