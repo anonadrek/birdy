@@ -172,7 +172,7 @@
   "tour": {
     "kicker": "Appen",
     "headline": "Ett varv i *fältboken.*",
-    "note": "så här ser det ut i fält",
+    "note": "rakt ur appen",
     "lead": "Från första träffen till ditt eget uppslagsverk. Så här ser Birdy ut i telefonen.",
     "label": "Skärmar ur appen",
     "prev": "Föregående skärm",
@@ -206,7 +206,7 @@
   "premium": {
     "kicker": "Birdy Premium",
     "headline": "För dig som vill *se mer.*",
-    "note": "helt valfritt, att känna igen fåglar är gratis",
+    "note": "ett tillval, aldrig ett måste",
     "lead": "Allt du behöver för att känna igen och spara fåglar är gratis. Premium lägger till fyra saker för dig som vill följa ditt år i fält.",
     "alwaysFreeLabel": "Alltid gratis:",
     "alwaysFree": "identifiering med kamera, foto och ljud · fältdagboken · 839 arter · 27 märken",
@@ -222,7 +222,7 @@
   "privacy": {
     "kicker": "Integritet",
     "headline": "AI:n bor i *telefonen.*",
-    "note": "dina bilder stannar i telefonen",
+    "note": "din fältbok är bara din",
     "lead": "Birdy känner igen fåglar utan att skicka dina bilder eller ljud någonstans.",
     "cols": [
       { "title": "Inget konto", "body": "Öppna appen och börja. Det finns inget att logga in på." },
@@ -265,7 +265,7 @@
   "download": {
     "kicker": "Birdy för Android och snart iPhone",
     "headline": "Ta med Birdy *ut i fält.*",
-    "note": "vi ses i fält",
+    "note": "vi ses därute",
     "sub": "Gratis att ladda ner. Inget konto. Fungerar utan täckning."
   },
   "footer": {

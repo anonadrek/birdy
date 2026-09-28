@@ -1,8 +1,18 @@
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
 import { test, expect } from '@playwright/test';
 
 // Webben i fältbokens färger (docs/superpowers/specs/2026-09-28-webb-faltboksfarger-design.md).
 const ESPRESSO = 'rgb(42, 29, 23)';
 const ESPRESSO_DEEP = 'rgb(30, 20, 16)';
+
+// Läs copy-texterna direkt så framtida ordbyten inte kräver testredigering (spec 2026-09-28 §fixrunda).
+const contentDir = resolve(dirname(fileURLToPath(import.meta.url)), '../src/content');
+const copy = {
+  sv: JSON.parse(readFileSync(resolve(contentDir, 'copy.sv.json'), 'utf8')),
+  en: JSON.parse(readFileSync(resolve(contentDir, 'copy.en.json'), 'utf8')),
+} as const;
 
 test.describe('espresso i stället för mossa', () => {
   test('de mörka partierna på /sv/ är espresso', async ({ page }) => {
@@ -81,11 +91,17 @@ test.describe('handskrivna accentord', () => {
 
 test.describe('marginalanteckningar', () => {
   const notes = {
-    '/sv/': ['Se. Lyssna. Spara.', 'kamera, foto eller läte', 'så här ser det ut i fält', 'slå upp fågeln du just såg', 'helt valfritt, att känna igen fåglar är gratis', 'dina bilder stannar i telefonen', 'anteckningar från oss som bygger Birdy', 'det folk brukar undra', 'vi ses i fält'],
-    '/': ['See. Listen. Keep.', 'camera, photo or song', 'this is how it looks in the field', 'look up the bird you just saw', 'optional, identifying birds is free', 'your photos stay on your phone', 'notes from the people who build Birdy', 'what people usually ask', 'see you out there'],
+    '/sv/': [copy.sv.hero.note, copy.sv.howItWorks.note, copy.sv.tour.note, copy.sv.guide.note, copy.sv.premium.note, copy.sv.privacy.note, copy.sv.fieldNotes.note, copy.sv.faq.note, copy.sv.download.note],
+    '/': [copy.en.hero.note, copy.en.howItWorks.note, copy.en.tour.note, copy.en.guide.note, copy.en.premium.note, copy.en.privacy.note, copy.en.fieldNotes.note, copy.en.faq.note, copy.en.download.note],
   } as const;
   for (const [path, texts] of Object.entries(notes)) {
     test(`en handskriven rad under varje rubrik på ${path}`, async ({ page }) => {
+      // Guard mot att copy-driven-jämförelsen passerar tomt om en nyckel saknas eller flyttas.
+      expect(texts).toHaveLength(9);
+      for (const t of texts) {
+        expect(typeof t).toBe('string');
+        expect(t.length).toBeGreaterThan(0);
+      }
       await page.goto(path);
       const mnotes = page.locator('.mnote');
       await expect(mnotes).toHaveText([...texts]);
@@ -103,8 +119,8 @@ test.describe('marginalanteckningar', () => {
 
 test.describe('bildtexter i handstil', () => {
   const stats = {
-    '/sv/': ['från vanliga till sällsynta', 'tjänas in när du hittar fåglar', 'din dagbok stannar hos dig'],
-    '/': ['from common to rare', 'earned by finding birds', 'your journal stays with you'],
+    '/sv/': copy.sv.guide.stats.map((s: { note: string }) => s.note),
+    '/': copy.en.guide.stats.map((s: { note: string }) => s.note),
   } as const;
   for (const [path, texts] of Object.entries(stats)) {
     test(`siffernoter, kartans bildtext och sidfotens rad på ${path}`, async ({ page }) => {
@@ -200,11 +216,11 @@ test.describe('rivna papperskanter', () => {
 test.describe('delningsbilder', () => {
   const shares = {
     '/sv/': {
-      alt: 'En rödhake i varmt ljus med orden Känn igen fågeln. Bevara stunden.',
+      alt: copy.sv.alt.panorama,
       image: /\/og-field-sv\.png\?v=2$/,
     },
     '/': {
-      alt: 'A European robin in warm light with the words Know the bird. Keep the moment.',
+      alt: copy.en.alt.panorama,
       image: /\/og-field-en\.png\?v=2$/,
     },
   } as const;

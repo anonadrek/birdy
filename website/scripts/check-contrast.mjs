@@ -35,6 +35,29 @@ const ratio = (a, b) => {
   const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
   return (hi + 0.05) / (lo + 0.05);
 };
+const hexToRgb = (hex) => {
+  const n = parseInt(hex.slice(1), 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+};
+
+let failed = false;
+
+// --dark-rgb måste vara samma triplet som --dark: några CSS-regler skriver rgba(var(--dark-rgb), a)
+// eftersom rgba() inte kan ta en #hex-variabel direkt, så de två får aldrig gå isär.
+const darkRgbMatch = css.match(/--dark-rgb:\s*([0-9]+),\s*([0-9]+),\s*([0-9]+)/);
+if (!tokens.dark || !darkRgbMatch) {
+  console.error('contrast-guard FAILED: --dark eller --dark-rgb saknas i tokens.css');
+  failed = true;
+} else {
+  const darkRgbToken = darkRgbMatch.slice(1, 4).map(Number);
+  const darkRgbFromHex = hexToRgb(tokens.dark);
+  if (darkRgbToken.some((v, i) => v !== darkRgbFromHex[i])) {
+    console.error(
+      `contrast-guard FAILED: --dark-rgb (${darkRgbToken.join(', ')}) matchar inte --dark (${darkRgbFromHex.join(', ')})`,
+    );
+    failed = true;
+  }
+}
 
 // [text, background, minimum ratio]
 const pairs = [
@@ -47,7 +70,6 @@ const pairs = [
   ['brass-ink', 'brass', 4.5], ['brass-ink', 'brass-hi', 4.5],
 ];
 
-let failed = false;
 for (const [fg, bg, min] of pairs) {
   const missing = [fg, bg].find((name) => !tokens[name]);
   if (missing) {
@@ -67,10 +89,6 @@ for (const [fg, bg, min] of pairs) {
 // (c = a*fg + (1-a)*bg per kanal) innan samma WCAG-kontroll körs. Ändras en av rgba()-färgerna
 // eller bakgrunden i Footer.astro/Premium.astro, uppdatera paret här också — varje CSS-regel har
 // en kommentar ("alpha checked in scripts/check-contrast.mjs") som pekar tillbaka hit.
-const hexToRgb = (hex) => {
-  const n = parseInt(hex.slice(1), 16);
-  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
-};
 const luminanceRgb = ([r, g, b]) => 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);
 const ratioRgb = (a, b) => {
   const [hi, lo] = [luminanceRgb(a), luminanceRgb(b)].sort((x, y) => y - x);
@@ -80,8 +98,9 @@ const compositeOver = (fg, alpha, bg) => fg.map((c, i) => alpha * c + (1 - alpha
 
 const darkDeep = tokens['dark-deep'] ? hexToRgb(tokens['dark-deep']) : null;
 // Ljusaste punkten i Premiums espressogradient: mässingsglöden från .prem::before (10 % av
-// rgba(226, 192, 126)) över --dark, mitt i den radiella höjdpunkten. Finns inte som token.
-const premiumGradientLight = hexToRgb('#3C2D21');
+// rgba(226, 192, 126)) över --dark, mitt i den radiella höjdpunkten. Finns inte som egen token,
+// så den härleds ur --dark (rundar till #3C2D21) istället för att stå hårdkodad separat.
+const premiumGradientLight = tokens.dark ? compositeOver([226, 192, 126], 0.1, hexToRgb(tokens.dark)) : null;
 
 const compositedPairs = [
   { label: 'Footer .fbot', fg: [233, 226, 210], alpha: 0.55, bg: darkDeep, min: 4.5 },
