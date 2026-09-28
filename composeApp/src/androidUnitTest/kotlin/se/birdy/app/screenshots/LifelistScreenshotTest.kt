@@ -126,13 +126,19 @@ class LifelistScreenshotTest {
      * T12b: minimal [SeasonStatsUiState.Loaded] fixture for [LiveStatsPreview] — only
      * `totalSpeciesThisYear` and `monthBars` are read by that composable; the rest are
      * present only because the sealed state requires them.
+     *
+     * T12d Important 2: `label` used to be the raw `month.toString()` ("6"), which is never
+     * what the real app shows — [se.birdy.app.ui.stats.SeasonStatsViewModel] always resolves a
+     * three-letter abbreviation (`SV_MONTHS`/`EN_MONTHS`). This screen is captured with
+     * `@Config(qualifiers = "+sv")`, so the fixture uses the same Swedish abbreviations.
      */
     private fun livePreviewFixture(): SeasonStatsUiState.Loaded {
+        val svMonths = listOf("JAN", "FEB", "MAR", "APR", "MAJ", "JUN", "JUL", "AUG", "SEP", "OKT", "NOV", "DEC")
         val bars =
             (1..12).map { month ->
                 SeasonStatsUiState.MonthBar(
                     month = month,
-                    label = month.toString(),
+                    label = svMonths[month - 1],
                     observationCount = if (month <= 6) month else 0,
                     isCurrent = month == 6,
                 )

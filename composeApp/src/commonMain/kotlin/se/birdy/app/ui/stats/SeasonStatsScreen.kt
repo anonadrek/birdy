@@ -4,6 +4,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
@@ -29,11 +30,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -135,7 +141,13 @@ private fun SeasonStatsTopBar(onBack: () -> Unit) {
             text = stringResource(Res.string.stats_title),
             style = TextStyle(fontFamily = rememberDmSerifDisplay(), color = TextOnCreme, fontSize = 20.sp),
             maxLines = 1,
-            autoSize = TextAutoSize.StepBased(minFontSize = 14.sp, maxFontSize = 20.sp),
+            // T12d Minor: at a 2.0x system font scale on a w360dp phone, even the 14sp floor
+            // needs more room than the badge leaves — StepBased has nowhere further to shrink,
+            // so the title hard-clipped instead of ellipsizing. A lower minFontSize (11sp) buys
+            // a bit more room before that point, and `overflow = Ellipsis` gives a graceful
+            // last resort instead of a clipped word once autoSize truly runs out of space.
+            overflow = TextOverflow.Ellipsis,
+            autoSize = TextAutoSize.StepBased(minFontSize = 11.sp, maxFontSize = 20.sp),
             modifier = Modifier.weight(1f).semantics { heading() },
         )
         PremiumBadge()
@@ -320,26 +332,89 @@ private fun TotalCell(
             lineHeight = 36.sp,
             color = AccentCopper,
         )
-        MicroLabel(text = stringResource(labelRes), color = InkMuted, showRule = false)
+        // T12d Important 1: "OBSERVATIONER"/"OBSERVATIONS" forces a mid-word break in this
+        // card's ~123-148dp inner width once the system font scale pushes MicroLabel's fixed
+        // 9.5sp past ~1.4-1.7x (measured in the re-review). StepBased shrinks it down to a
+        // 6sp floor instead — well under 9.5sp so it only ever kicks in once the fixed size
+        // would already have broken, matching this card's actual available width.
+        MicroLabel(
+            text = stringResource(labelRes),
+            color = InkMuted,
+            showRule = false,
+            autoSize = TextAutoSize.StepBased(minFontSize = 6.sp, maxFontSize = 9.5.sp),
+        )
     }
 }
 
+/**
+ * T12d Important 1: the row used to render every month label at a fixed 11sp — at large system
+ * font scales on a narrow phone, 3-letter labels (MAR/MAJ/MAY) no longer fit their 1/12th slot
+ * and Compose force-splits them mid-word (e.g. "MA" over "R"). Decided ONCE for the whole row
+ * (not per label, which would give each month a different size) via a single measure pass:
+ * 1) 3-letter labels at today's 11sp if the widest one fits its slot: unchanged from before.
+ * 2) else uniform 9.5sp (matches [MicroLabel]'s own kicker size) if that fits.
+ * 3) else a one-letter axis ("J F M A M J J A S O N D") — verified in the re-review to still
+ *    fit every slot up to a 2.0x system font scale, the largest this app supports.
+ * Measuring with the bold (current-month) style variant since it's the widest of the two weights
+ * this row ever renders, so the decision never under-estimates the space a label actually needs.
+ */
 @Composable
 private fun MonthLabelsRow(bars: List<SeasonStatsUiState.MonthBar>) {
-    Row(modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
-        bars.forEach { b ->
-            Text(
-                text = b.label,
-                fontFamily = rememberCaveat(),
-                fontSize = 11.sp,
-                color = if (b.isCurrent) BrassText else InkMuted,
-                fontWeight = if (b.isCurrent) FontWeight.W700 else FontWeight.W400,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.weight(1f),
-            )
+    val fontFamily = rememberCaveat()
+    val measurer = rememberTextMeasurer()
+    BoxWithConstraints(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+        val slotCount = bars.size.coerceAtLeast(1)
+        val slotPx = constraints.maxWidth / slotCount
+
+        fun widestWidthPx(fontSize: TextUnit): Int {
+            val style = TextStyle(fontFamily = fontFamily, fontSize = fontSize, fontWeight = FontWeight.W700)
+            return bars.maxOf { b ->
+                measurer.measure(text = b.label, style = style, maxLines = 1, softWrap = false).size.width
+            }
+        }
+        val mode =
+            when {
+                widestWidthPx(MONTH_LABEL_FULL_SIZE) <= slotPx -> MonthLabelMode.FULL
+                widestWidthPx(MONTH_LABEL_MEDIUM_SIZE) <= slotPx -> MonthLabelMode.MEDIUM
+                else -> MonthLabelMode.INITIAL
+            }
+        Row(Modifier.fillMaxWidth()) {
+            bars.forEach { b ->
+                val displayText = if (mode == MonthLabelMode.INITIAL) b.label.take(1) else b.label
+                val fontSize = if (mode == MonthLabelMode.MEDIUM) MONTH_LABEL_MEDIUM_SIZE else MONTH_LABEL_FULL_SIZE
+                Text(
+                    text = displayText,
+                    fontFamily = fontFamily,
+                    fontSize = fontSize,
+                    color = if (b.isCurrent) BrassText else InkMuted,
+                    fontWeight = if (b.isCurrent) FontWeight.W700 else FontWeight.W400,
+                    maxLines = 1,
+                    softWrap = false,
+                    textAlign = TextAlign.Center,
+                    modifier =
+                        Modifier
+                            .weight(1f)
+                            .then(
+                                // Shortened to one letter: TalkBack should still hear the whole
+                                // month name, not "J" — clearAndSetSemantics (not a plain
+                                // contentDescription) so the node doesn't ALSO carry the
+                                // one-letter text and get announced twice.
+                                if (mode == MonthLabelMode.INITIAL) {
+                                    Modifier.clearAndSetSemantics { contentDescription = b.label }
+                                } else {
+                                    Modifier
+                                },
+                            ),
+                )
+            }
         }
     }
 }
+
+private enum class MonthLabelMode { FULL, MEDIUM, INITIAL }
+
+private val MONTH_LABEL_FULL_SIZE = 11.sp
+private val MONTH_LABEL_MEDIUM_SIZE = 9.5.sp
 
 /**
  * Winter/spring/summer/autumn swatches, sourced from the single shared [SeasonPalette] — also

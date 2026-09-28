@@ -352,14 +352,7 @@ private fun LoadedLifelist(
                 // T12c C2: matches the "SENASTE · N STÄMPLAR" section label's own style/uppercasing
                 // above (see the recent-sort row) instead of its own one-off letter-spaced sentence
                 // case, so the two section labels on this screen read consistently.
-                Text(
-                    text = stringResource(Res.string.premium_lifelist_title).uppercase(),
-                    color = MarginaliaInk,
-                    fontSize = 9.sp,
-                    fontWeight = FontWeight.W700,
-                    letterSpacing = 0.22.em,
-                    modifier = Modifier.padding(horizontal = 24.dp, vertical = 6.dp),
-                )
+                SectionLabel(text = stringResource(Res.string.premium_lifelist_title))
                 Spacer(Modifier.height(8.dp))
                 LockedStatsPreview(
                     title = stringResource(Res.string.premium_lifelist_preview_caption),
@@ -374,14 +367,7 @@ private fun LoadedLifelist(
                 Spacer(Modifier.height(20.dp))
                 // T12c C2: see the comment on the same style match in the showPremiumTeaser
                 // branch above.
-                Text(
-                    text = stringResource(Res.string.premium_lifelist_title).uppercase(),
-                    color = MarginaliaInk,
-                    fontSize = 9.sp,
-                    fontWeight = FontWeight.W700,
-                    letterSpacing = 0.22.em,
-                    modifier = Modifier.padding(horizontal = 24.dp, vertical = 6.dp),
-                )
+                SectionLabel(text = stringResource(Res.string.premium_lifelist_title))
                 Spacer(Modifier.height(8.dp))
                 se.birdy.app.ui.stats.LiveStatsPreview(
                     state = livePreviewState,
@@ -393,6 +379,27 @@ private fun LoadedLifelist(
 
         item { Spacer(Modifier.height(16.dp)) }
     }
+}
+
+/**
+ * T12d Minor C2: the premium-teaser and live-preview section labels each hardcoded their own
+ * 24dp horizontal padding — 8dp wider than the "SENASTE · N STÄMPLAR" row above (16dp) and the
+ * card below it (16dp), a visible jog between the two. Shared here so both call sites stay at
+ * 16dp and can't drift apart again.
+ */
+@Composable
+private fun SectionLabel(
+    text: String,
+    modifier: Modifier = Modifier,
+) {
+    Text(
+        text = text.uppercase(),
+        color = MarginaliaInk,
+        fontSize = 9.sp,
+        fontWeight = FontWeight.W700,
+        letterSpacing = 0.22.em,
+        modifier = modifier.padding(horizontal = 16.dp, vertical = 6.dp),
+    )
 }
 
 // ─── Recap entry card ─────────────────────────────────────────────────────────

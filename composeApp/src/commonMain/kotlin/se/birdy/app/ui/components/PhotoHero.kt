@@ -270,8 +270,12 @@ private const val HERO_TITLE_MAX_LINES = 2
  * breaker force-splits an unbreakable run rather than let it overflow the width, and
  * hasVisualOverflow is false either way — so auto-size never tries a smaller size where the
  * whole word would fit on one line. Hence the manual step-down below instead of autoSize.
+ *
+ * T12d: made `internal` (was `private`) so [se.birdy.app.screenshots.StatsScreenshotTest]'s
+ * generic mid-word-break guard can reuse it across every laid-out text on the stats screen,
+ * instead of re-deriving the same check.
  */
-private fun TextLayoutResult.hasForcedMidWordBreak(text: String): Boolean {
+internal fun TextLayoutResult.hasForcedMidWordBreak(text: String): Boolean {
     for (line in 0 until lineCount - 1) {
         val end = getLineEnd(line, visibleEnd = false)
         val brokeAtWhitespace = end in 1..text.length && text[end - 1].isWhitespace()

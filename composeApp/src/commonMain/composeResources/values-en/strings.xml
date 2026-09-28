@@ -470,7 +470,7 @@
     <string name="premium_feature_map_sub">See where you&#8217;ve spotted your birds</string>
     <string name="premium_feature_export_title">Export field journal</string>
     <string name="premium_feature_export_sub">Your whole journal as a shareable PDF</string>
-    <string name="premium_feature_stats_title">Seasonal statistics</string>
+    <string name="premium_feature_stats_title">Season statistics</string>
     <string name="premium_feature_stats_sub">Patterns &amp; yearly overview from your finds</string>
     <string name="premium_feature_badges_title">7 premium field marks</string>
     <string name="premium_feature_badges_sub">Exclusive stamps to chase</string>
@@ -514,7 +514,7 @@
     <!-- Per-tab markers -->
     <string name="premium_archive_title">Export your field journal</string>
     <string name="premium_archive_subtitle">Your whole journal as a PDF, ready to share</string>
-    <string name="premium_lifelist_title">Seasonal statistics</string>
+    <string name="premium_lifelist_title">Season statistics</string>
     <string name="premium_lifelist_cta">See your full season</string>
     <string name="premium_lifelist_badge">PREMIUM</string>
     <string name="premium_lifelist_preview_caption">Example: Spring 2026 · 23 new species</string>
@@ -534,7 +534,7 @@
     <!-- 1.3.0 T12b: neutral top-bar badge, independent of premium_teaser_corner (a teaser CTA
          reused elsewhere) so that key's wording can change without touching this badge. -->
     <string name="premium_badge">PREMIUM</string>
-    <string name="stats_title">Season Statistics</string>
+    <string name="stats_title">Season statistics</string>
     <string name="stats_intro_eyebrow">SEASON</string>
     <string name="stats_intro_headline">A *year* in the field.</string>
     <string name="stats_intro_sub">Patterns from your observations.</string>
@@ -554,7 +554,10 @@
     <string name="stats_summer">Summer</string>
     <string name="stats_autumn">Autumn</string>
     <string name="stats_open_link">Open stats →</string>
-    <string name="stats_preview_species_this_year">species this year</string>
+    <plurals name="stats_preview_species_this_year">
+        <item quantity="one">species this year</item>
+        <item quantity="other">species this year</item>
+    </plurals>
 
     <!-- ===== Plan 6a Task 9: A11y strings ===== -->
     <!-- AsyncImage contentDescription -->

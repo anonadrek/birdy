@@ -2,13 +2,19 @@ package se.birdy.app.screenshots
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.semantics.getOrNull
+import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.isHeading
+import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.text.TextLayoutResult
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
+import org.junit.Assert.assertFalse
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,6 +24,7 @@ import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import se.birdy.app.testing.FakeObservationRepository
 import se.birdy.app.testing.FakeSpeciesRepository
+import se.birdy.app.ui.components.hasForcedMidWordBreak
 import se.birdy.app.ui.stats.SeasonStatsScreen
 import se.birdy.app.ui.stats.SeasonStatsViewModel
 import se.birdy.content.Locale
@@ -135,6 +142,24 @@ class StatsScreenshotTest {
         RuntimeEnvironment.setFontScale(1.5f)
         compose.captureScreen("stats_w360_sv_150") { screen(Locale.SV) }
         compose.onNodeWithText("15").assertExists()
+        compose.assertNoForcedMidWordBreaks()
+    }
+
+    /**
+     * T12d Important 1: the re-review measured that 3-letter month labels (MAR/MAY) and the
+     * "OBSERVATIONER"/"OBSERVATIONS" totals label both force a mid-word break at large system
+     * font scales on a narrow phone — [stats_w360_sv_150] asserted only that "15" rendered, so
+     * the broken labels went uncaught. 2.0x is the largest scale the review measured (also the
+     * first case that exercises the top bar title's own autosize floor) — this is the ceiling
+     * this wave targets, not merely one more step past 1.5x.
+     */
+    @Test
+    @Config(qualifiers = "+sv-w360dp")
+    fun stats_w360_sv_200() {
+        RuntimeEnvironment.setFontScale(2.0f)
+        compose.captureScreen("stats_w360_sv_200") { screen(Locale.SV) }
+        compose.onNodeWithText("15").assertExists()
+        compose.assertNoForcedMidWordBreaks()
     }
 
     @Test
@@ -172,5 +197,32 @@ class StatsScreenshotTest {
         // splits on the `*...*` markers with no surrounding whitespace inside the word itself).
         compose.onNodeWithText("kartlägga").assertExists()
         compose.onNodeWithText("Talgoxe").assertDoesNotExist()
+    }
+
+    /**
+     * T12d Important 1: generic guard for the whole composed screen, not just the month
+     * labels/totals label this wave fixes — walks every node that carries a
+     * `GetTextLayoutResult` semantics action (i.e. every laid-out [Text]/[BasicText]),
+     * fetches its real [TextLayoutResult] and reuses [hasForcedMidWordBreak] (promoted from
+     * `private` to `internal` in `PhotoHero.kt` for this) to fail on any text whose wrap broke
+     * mid-word rather than at a space. `useUnmergedTree = true` so a merged container (e.g. a
+     * card `semantics(mergeDescendants = true)`) doesn't hide a child's own layout node.
+     */
+    private fun ComposeContentTestRule.assertNoForcedMidWordBreaks() {
+        val layoutResults = mutableListOf<TextLayoutResult>()
+        onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsActions.GetTextLayoutResult), useUnmergedTree = true)
+            .fetchSemanticsNodes()
+            .forEach { node ->
+                val action = node.config.getOrNull(SemanticsActions.GetTextLayoutResult)?.action ?: return@forEach
+                layoutResults.clear()
+                action(layoutResults)
+                layoutResults.forEach { result ->
+                    val text = result.layoutInput.text.text
+                    assertFalse(
+                        "\"$text\" has a forced mid-word break",
+                        result.hasForcedMidWordBreak(text),
+                    )
+                }
+            }
     }
 }

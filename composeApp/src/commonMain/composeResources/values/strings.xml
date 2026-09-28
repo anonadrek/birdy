@@ -568,7 +568,10 @@
     <string name="stats_summer">Sommar</string>
     <string name="stats_autumn">Höst</string>
     <string name="stats_open_link">Öppna statistik →</string>
-    <string name="stats_preview_species_this_year">arter i år</string>
+    <plurals name="stats_preview_species_this_year">
+        <item quantity="one">art i år</item>
+        <item quantity="other">arter i år</item>
+    </plurals>
 
     <!-- ===== Plan 6a Task 9: A11y strings ===== -->
     <!-- AsyncImage contentDescription -->
