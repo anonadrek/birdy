@@ -53,10 +53,12 @@ const glints = [
   @keyframes dew-glint { 0%, 72%, 100% { opacity: 0; transform: scale(.3); } 80% { opacity: 1; transform: scale(1.15); } 90% { opacity: 0; transform: scale(.5); } }
   @media (prefers-reduced-motion: reduce) { .rb-breathe, .rb-bob, .lid, .glint { animation: none; } }
 
-  /* 1024 px and up: the photo fills the first view (cover), right-anchored. */
+  /* 1024 px and up: the photo fills the first view (cover), right-anchored. The first layer melts the
+     photo's bottom into the espresso before the torn edge below; 56 px still leaves the robin's claws
+     visible in wide and short windows, where its feet come within about 20 px of the bottom. */
   @media (min-width: 1024px) {
     .scene-clip { inset: 0; height: auto; container-type: size; }
-    .scene-clip::after { background: linear-gradient(90deg, rgba(var(--dark-rgb), .95) 0%, rgba(var(--dark-rgb), .8) 34%, rgba(var(--dark-rgb), .2) 62%, rgba(var(--dark-rgb), 0) 80%), linear-gradient(0deg, rgba(var(--dark-rgb), .6), transparent 34%); }
+    .scene-clip::after { background: linear-gradient(0deg, var(--dark) 0, rgba(var(--dark-rgb), 0) 56px), linear-gradient(90deg, rgba(var(--dark-rgb), .95) 0%, rgba(var(--dark-rgb), .8) 34%, rgba(var(--dark-rgb), .2) 62%, rgba(var(--dark-rgb), 0) 80%), linear-gradient(0deg, rgba(var(--dark-rgb), .6), transparent 34%); }
     .scene { width: max(100cqw, 100cqh * 1.7768); }
   }
   /* 1024–1279 px: the hero continues below the photo (the phone hangs there), so the photo's bottom

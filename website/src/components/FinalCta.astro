@@ -33,7 +33,8 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
 <style>
   .final { position: relative; min-height: clamp(520px, 34vw, 680px); display: flex; align-items: center; color: var(--cream); background: var(--dark); --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); --mn-color: var(--apricot); }
   .final :global(.final-bg) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center 32%; }
-  .final::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(var(--dark-rgb), .94) 0%, rgba(var(--dark-rgb), .8) max(40%, 640px), rgba(var(--dark-rgb), .15) max(75%, 940px)); }
+  /* First layer: the photo melts into the espresso before the footer's torn edge instead of ending in a straight line. */
+  .final::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, var(--dark) 0, rgba(var(--dark-rgb), 0) 72px), linear-gradient(90deg, rgba(var(--dark-rgb), .94) 0%, rgba(var(--dark-rgb), .8) max(40%, 640px), rgba(var(--dark-rgb), .15) max(75%, 940px)); }
   .final :global(:focus-visible) { outline-color: var(--apricot); }
   .final .wrap { position: relative; z-index: 2; width: 100%; }
   .final :global(.journal-headline) { max-width: 560px; }
@@ -41,7 +42,7 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
   @media (max-width: 760px) {
     .final { min-height: 560px; align-items: flex-end; }
     .final :global(.final-bg) { object-position: 38% center; }
-    .final::before { background: linear-gradient(0deg, rgba(var(--dark-rgb), .5) 0, rgba(var(--dark-rgb), .1) 85%); }
+    .final::before { background: linear-gradient(0deg, var(--dark) 0, rgba(var(--dark-rgb), 0) 72px), linear-gradient(0deg, rgba(var(--dark-rgb), .5) 0, rgba(var(--dark-rgb), .1) 85%); }
     .final .wrap { padding-top: 70px; padding-bottom: 44px; background: linear-gradient(0deg, rgba(var(--dark-rgb), .95) 0, rgba(var(--dark-rgb), .9) calc(100% - 70px), rgba(var(--dark-rgb), 0) 100%); }
   }
 </style>

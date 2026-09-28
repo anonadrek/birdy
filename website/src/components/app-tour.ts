@@ -81,7 +81,8 @@ if (root && track) {
         const d = ds[i];
         const a = Math.min(Math.abs(d), 1.4);
         s.style.transform = `translate3d(0, ${(a * 22).toFixed(2)}px, 0) scale(${(1 - a * 0.13).toFixed(4)}) rotate(${(Math.max(-1.4, Math.min(1.4, d)) * -2.2).toFixed(2)}deg)`;
-        s.style.opacity = (1 - Math.min(a, 1) * 0.55).toFixed(3);
+        // Light fade only: on the peach band a stronger fade washes the screens out (khaki Listen screen).
+        s.style.opacity = (1 - Math.min(a, 1) * 0.3).toFixed(3);
       });
     } else {
       // Reduced motion, possibly switched on mid-visit: drop any depth styling written earlier.
