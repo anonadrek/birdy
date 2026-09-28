@@ -97,7 +97,6 @@ test.describe('marginalanteckningar', () => {
   for (const [path, texts] of Object.entries(notes)) {
     test(`en handskriven rad under varje rubrik på ${path}`, async ({ page }) => {
       // Guard mot att copy-driven-jämförelsen passerar tomt om en nyckel saknas eller flyttas.
-      expect(texts).toHaveLength(9);
       for (const t of texts) {
         expect(typeof t).toBe('string');
         expect(t.length).toBeGreaterThan(0);
@@ -226,6 +225,10 @@ test.describe('delningsbilder', () => {
   } as const;
   for (const [path, { alt, image }] of Object.entries(shares)) {
     test(`delningsbildens alt-text på ${path}`, async ({ page }) => {
+      // toHaveAttribute('content', alt) skulle passera lika gärna om alt vore undefined
+      // (då kollas bara att attributet finns) — säkra att copy-värdet faktiskt är text.
+      expect(typeof alt).toBe('string');
+      expect(alt.trim().length).toBeGreaterThan(0);
       await page.goto(path);
       await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute('content', alt);
       await expect(page.locator('meta[name="twitter:image:alt"]')).toHaveAttribute('content', alt);

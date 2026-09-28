@@ -44,7 +44,7 @@ let failed = false;
 
 // --dark-rgb måste vara samma triplet som --dark: några CSS-regler skriver rgba(var(--dark-rgb), a)
 // eftersom rgba() inte kan ta en #hex-variabel direkt, så de två får aldrig gå isär.
-const darkRgbMatch = css.match(/--dark-rgb:\s*([0-9]+),\s*([0-9]+),\s*([0-9]+)/);
+const darkRgbMatch = css.match(/--dark-rgb:\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*;/);
 if (!tokens.dark || !darkRgbMatch) {
   console.error('contrast-guard FAILED: --dark eller --dark-rgb saknas i tokens.css');
   failed = true;

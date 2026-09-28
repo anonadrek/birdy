@@ -92,13 +92,13 @@ En ny komponent `ui/MarginNote.astro` renderar en kort handskriven rad direkt un
 |---|---|---|
 | `hero.note` | Se. Lyssna. Spara. | See. Listen. Keep. |
 | `howItWorks.note` | kamera, foto eller läte | camera, photo or song |
-| `tour.note` | så här ser det ut i fält | this is how it looks in the field |
+| `tour.note` | rakt ur appen | straight from the app |
 | `guide.note` | slå upp fågeln du just såg | look up the bird you just saw |
-| `premium.note` | helt valfritt, att känna igen fåglar är gratis | optional, identifying birds is free |
-| `privacy.note` | dina bilder stannar i telefonen | your photos stay on your phone |
+| `premium.note` | ett tillval, aldrig ett måste | an extra, never a must |
+| `privacy.note` | din fältbok är bara din | your journal is yours alone |
 | `fieldNotes.note` | anteckningar från oss som bygger Birdy | notes from the people who build Birdy |
 | `faq.note` | det folk brukar undra | what people usually ask |
-| `download.note` | vi ses i fält | see you out there |
+| `download.note` | vi ses därute | see you out there |
 
 Fältboken-sektionen har redan handstil (`journal.marginalia`, plåtens bildtext) och får ingen ny anteckning.
 
@@ -175,3 +175,4 @@ Appens färger och 1.3.0-releasen (appen behåller "Mossa, rost & mässing"), ny
 - Grep-kontrollen i §3.2 är en vakt: `npm run test:palette` (`website/scripts/check-palette.mjs`), som täcker `website/src/` och `website/tools/` (kod och `.svg`).
 - Premiums marginalanteckning är aprikos som i de andra mörka partierna.
 - Delningsbilden har `?v=2` i adressen så att sociala medier hämtar den nya bilden; App Store-märkets nästan svarta fyllning är nu `#000`.
+- Albin bytte fyra marginalanteckningar i förhandsvisningen (2026-09-28) eftersom de upprepade grannordet; testerna läser nu texterna ur copy-filerna.
