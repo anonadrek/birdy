@@ -61,11 +61,11 @@ const t = getCopy(locale);
 <style>
   .head { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: end; }
   .stats { display: flex; margin: 44px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .stats li { flex: 1; padding: 18px 0; text-align: center; }
+  .stats li { flex: 1; padding: 18px 6px; text-align: center; }
   .stats li + li { border-left: 1px solid var(--line); }
   .stats b { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 52px; color: var(--rust); line-height: 1; }
   .stat-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-  .stat-note { display: block; margin-top: 4px; font-family: var(--font-script); font-size: 19px; line-height: 1.2; color: var(--rust); }
+  .stat-note { display: block; margin-top: 4px; font-family: var(--font-script); font-size: 19px; line-height: 1.2; color: var(--rust); text-wrap: balance; }
   @media (max-width: 760px) {
     .head { grid-template-columns: 1fr; gap: 40px; }
     .stats b { font-size: 38px; }

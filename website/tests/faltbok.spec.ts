@@ -113,6 +113,40 @@ test.describe('bildtexter i handstil', () => {
       for (const sel of ['#guide .stat-note', '#guide .mapcap', 'footer .tag']) {
         await expect(page.locator(sel).first()).toHaveCSS('font-family', /Caveat/);
       }
+      await expect(page.locator('#guide .stat-note').first()).toHaveCSS('color', 'rgb(154, 69, 38)');
+      await expect(page.locator('#guide .mapcap')).toHaveCSS('color', 'rgb(154, 69, 38)');
+      await expect(page.locator('footer .tag')).toHaveCSS('color', 'rgb(242, 178, 122)');
     });
+  }
+
+  for (const width of [320, 360, 390]) {
+    for (const path of ['/sv/', '/'] as const) {
+      test(`siffernoterna håller avstånd till kolumnkanterna på mobil ${width}px ${path}`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 844 });
+        await page.goto(path);
+        await page.evaluate(() => document.fonts.ready);
+        // global.css sets transition-duration: .01ms under reduced motion on everything, so
+        // settle two rAFs after navigation instead of measuring right away.
+        await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+        const gaps = await page.evaluate(() => {
+          const lis = [...document.querySelectorAll('#guide .stats li')];
+          return lis.map((li) => {
+            const note = li.querySelector('.stat-note');
+            const liBox = li.getBoundingClientRect();
+            if (!note || !note.textContent?.trim()) return { left: Infinity, right: Infinity };
+            const r = document.createRange();
+            r.selectNodeContents(note);
+            const rects = [...r.getClientRects()];
+            const textLeft = Math.min(...rects.map((rect) => rect.left));
+            const textRight = Math.max(...rects.map((rect) => rect.right));
+            return { left: textLeft - liBox.left, right: liBox.right - textRight };
+          });
+        });
+        for (const gap of gaps) {
+          expect(gap.left, 'vänster luft till kolumnkanten').toBeGreaterThanOrEqual(4);
+          expect(gap.right, 'höger luft till kolumnkanten').toBeGreaterThanOrEqual(4);
+        }
+      });
+    }
   }
 });
