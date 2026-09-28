@@ -15,7 +15,7 @@ const t = getCopy(Astro.props.locale);
 
 <style>
   .mapbox { margin: 44px 0 0; }
-  .map { position: relative; aspect-ratio: 16 / 7; border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 1px var(--line), 0 20px 44px rgba(31, 42, 25, .12); background: #EFE6D3; }
+  .map { position: relative; aspect-ratio: 16 / 7; border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 1px var(--line), 0 20px 44px rgba(var(--dark-rgb), .12); background: #EFE6D3; }
   .fallback { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; display: block; }
   .attrib { position: absolute; left: 10px; bottom: 8px; z-index: 3; font-family: var(--font-sans); line-height: 1.4; font-size: 10px; color: var(--muted); background: rgba(255, 250, 241, .85); padding: 2px 6px; border-radius: 6px; }
   .mapcap { text-align: center; margin: 14px 0 0; font-size: 13px; color: var(--muted); }
@@ -35,13 +35,13 @@ const t = getCopy(Astro.props.locale);
   import maplibreCssUrl from 'maplibre-gl/dist/maplibre-gl.css?url';
 
   const KEY = import.meta.env.PUBLIC_MAPTILER_KEY as string | undefined;
-  // Field journal colours (spec §5.6): paper, ink and rust, with the pins as rust seals and a moss bird.
+  // Field journal colours (spec §5.6): paper, ink and rust, with the pins as rust seals and an espresso bird.
   const PAPER = '#F1E8D6';
   const WATER = '#D9CCAF';
-  const INK = '#26301F';
+  const INK = '#302019';
   const RUST = '#9A4526';
   const RUST_DEEP = '#72301A';
-  const MOSS = '#1F2A19';
+  const DARK = '#2A1D17';
   const BOUNDS: [[number, number], [number, number]] = [[-25, 34], [42, 71.5]];
 
   const container = document.querySelector<HTMLElement>('[data-coverage-map]');
@@ -173,7 +173,7 @@ const t = getCopy(Astro.props.locale);
     if (tintCtx) {
       tintCtx.drawImage(birdImg, 0, 0);
       tintCtx.globalCompositeOperation = 'source-in';
-      tintCtx.fillStyle = MOSS; tintCtx.fillRect(0, 0, tint.width, tint.height);
+      tintCtx.fillStyle = DARK; tintCtx.fillRect(0, 0, tint.width, tint.height);
       const bw = R * 1.25, bh = bw * (birdImg.height / birdImg.width);
       ctx.drawImage(tint, cx - bw / 2, cy - bh / 2, bw, bh);
     }

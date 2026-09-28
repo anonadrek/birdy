@@ -17,14 +17,14 @@
   --color-line: var(--line);
   --color-rust: var(--rust);
   --color-apricot: var(--apricot);
-  --color-moss: var(--moss);
+  --color-dark: var(--dark);
   --color-brass: var(--brass);
   --color-cream: var(--cream);
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
 body { margin: 0; font-family: var(--font-sans); color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; overflow-x: clip; }
-::selection { background: var(--apricot); color: var(--moss-deep); }
+::selection { background: var(--apricot); color: var(--dark-deep); }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 :focus-visible { outline: 3px solid var(--rust); outline-offset: 3px; }
@@ -46,7 +46,7 @@ em { font-style: italic; }
 svg.i { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 
 /* Stamps (seals), same shapes as the app. Text on brass is dark (brass-ink), never cream. */
-.seal { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: var(--cream); position: relative; transform: rotate(-8deg); flex: none; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .25), transparent 55%), var(--rust); box-shadow: 0 3px 8px rgba(31, 42, 25, .3); font-family: var(--font-serif); font-style: italic; font-size: 12px; line-height: 1; }
+.seal { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: var(--cream); position: relative; transform: rotate(-8deg); flex: none; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .25), transparent 55%), var(--rust); box-shadow: 0 3px 8px rgba(var(--dark-rgb), .3); font-family: var(--font-serif); font-style: italic; font-size: 12px; line-height: 1; }
 .seal::before { content: ''; position: absolute; inset: 3px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .4); }
 .seal--brass { background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .45), transparent 55%), var(--brass); color: var(--brass-ink); }
 .seal--navy { background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .2), transparent 55%), var(--navy); }

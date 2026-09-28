@@ -40,8 +40,8 @@ const ratio = (a, b) => {
 const pairs = [
   ['ink', 'paper', 4.5], ['muted', 'paper', 4.5], ['rust', 'paper', 4.5],
   ['ink', 'card', 4.5], ['muted', 'card', 4.5], ['rust', 'card', 4.5],
-  ['cream', 'moss', 4.5], ['apricot', 'moss', 4.5], ['brass-hi', 'moss', 4.5],
-  ['cream', 'moss-deep', 4.5], ['apricot', 'moss-deep', 4.5],
+  ['cream', 'dark', 4.5], ['apricot', 'dark', 4.5], ['brass-hi', 'dark', 4.5],
+  ['cream', 'dark-deep', 4.5], ['apricot', 'dark-deep', 4.5],
   ['cream', 'rust', 4.5], ['cream', 'rust-deep', 4.5],
   ['brass-ink', 'brass', 4.5],
 ];
@@ -77,19 +77,19 @@ const ratioRgb = (a, b) => {
 };
 const compositeOver = (fg, alpha, bg) => fg.map((c, i) => alpha * c + (1 - alpha) * bg[i]);
 
-const mossDeep = tokens['moss-deep'] ? hexToRgb(tokens['moss-deep']) : null;
-const moss2 = tokens['moss-2'] ? hexToRgb(tokens['moss-2']) : null;
-// Ljusaste punkten i Premiums mossgröna gradient (mossa + mässingsglöden från .prem::before,
-// mätt mitt i den radiella höjdpunkten) — finns inte som token, bara ett uppmätt läge.
-const premiumGradientLight = hexToRgb('#323822');
+const darkDeep = tokens['dark-deep'] ? hexToRgb(tokens['dark-deep']) : null;
+const dark2 = tokens['dark-2'] ? hexToRgb(tokens['dark-2']) : null;
+// Ljusaste punkten i Premiums espressogradient: mässingsglöden från .prem::before (10 % av
+// rgba(226, 192, 126)) över --dark, mitt i den radiella höjdpunkten. Finns inte som token.
+const premiumGradientLight = hexToRgb('#3C2D21');
 
 const compositedPairs = [
-  { label: 'Footer .fbot', fg: [233, 226, 210], alpha: 0.55, bg: mossDeep, min: 4.5 },
-  { label: 'Footer .sib-kick', fg: [233, 226, 210], alpha: 0.6, bg: mossDeep, min: 4.5 },
+  { label: 'Footer .fbot', fg: [233, 226, 210], alpha: 0.55, bg: darkDeep, min: 4.5 },
+  { label: 'Footer .sib-kick', fg: [233, 226, 210], alpha: 0.6, bg: darkDeep, min: 4.5 },
   { label: 'Premium .pnote', fg: [242, 234, 220], alpha: 0.62, bg: premiumGradientLight, min: 4.5 },
   { label: 'Premium .feat p', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
-  { label: 'AppTour .cap-text', fg: [242, 234, 220], alpha: 0.72, bg: moss2, min: 4.5 },
-  { label: 'AppTour .tour-lead', fg: [242, 234, 220], alpha: 0.72, bg: moss2, min: 4.5 },
+  { label: 'AppTour .cap-text', fg: [242, 234, 220], alpha: 0.72, bg: dark2, min: 4.5 },
+  { label: 'AppTour .tour-lead', fg: [242, 234, 220], alpha: 0.72, bg: dark2, min: 4.5 },
 ];
 
 for (const { label, fg, alpha, bg, min } of compositedPairs) {

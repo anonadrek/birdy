@@ -43,7 +43,7 @@ async function textContrastAgainstBackground(page: Page, locator: Locator): Prom
 
 test.describe('meny och sidfot', () => {
   for (const [path, label, getApp] of [['/sv/', 'Så funkar det', 'Hämta appen'], ['/', 'How it works', 'Get the app']] as const) {
-    test(`menyn på ${path} har nya länkar och blir mossgrön efter första vyn`, async ({ page }) => {
+    test(`menyn på ${path} har nya länkar och blir espressobrun efter första vyn`, async ({ page }) => {
       const errors = trackConsoleErrors(page);
       await page.setViewportSize({ width: 1280, height: 800 });
       await page.goto(path);
@@ -56,7 +56,7 @@ test.describe('meny och sidfot', () => {
       await expect(nav).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
       await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
       await expect(nav).toHaveClass(/is-solid/);
-      await expect(nav).toHaveCSS('background-color', 'rgb(31, 42, 25)');
+      await expect(nav).toHaveCSS('background-color', 'rgb(42, 29, 23)');
       expect(errors).toEqual([]);
     });
   }
@@ -125,10 +125,10 @@ test.describe('meny och sidfot', () => {
 test.describe('utan JavaScript', () => {
   test.use({ javaScriptEnabled: false });
 
-  test('startsidans meny är mossgrön och den döda menyknappen dold', async ({ page }) => {
+  test('startsidans meny är espressobrun och den döda menyknappen dold', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/');
-    await expect(page.locator('#site-nav')).toHaveCSS('background-color', 'rgb(31, 42, 25)');
+    await expect(page.locator('#site-nav')).toHaveCSS('background-color', 'rgb(42, 29, 23)');
     await expect(page.locator('#site-nav .menu-toggle')).toBeHidden();
   });
 });
@@ -189,7 +189,7 @@ test.describe('första vyn', () => {
   }
 
   for (const [width, height] of [[390, 844], [1024, 768], [1440, 900]] as const) {
-    test(`menyn blir mossgrön innan texten når den i ${width}×${height}`, async ({ page }) => {
+    test(`menyn blir espressobrun innan texten når den i ${width}×${height}`, async ({ page }) => {
       await page.setViewportSize({ width, height });
       await page.goto('/sv/');
       const nav = page.locator('#site-nav');
@@ -486,7 +486,7 @@ test.describe('bloggen', () => {
   });
 
   for (const [width, height] of [[390, 844], [1440, 900]] as const) {
-    test(`menyn på inlägget blir mossgrön innan rubriken når den i ${width}×${height}`, async ({ page }) => {
+    test(`menyn på inlägget blir espressobrun innan rubriken når den i ${width}×${height}`, async ({ page }) => {
       await page.setViewportSize({ width, height });
       await page.goto('/sv/blog/why-birdy/');
       const nav = page.locator('#site-nav');

@@ -7,9 +7,9 @@ import { fieldNotesHref } from '../lib/field-notes';
 interface Props {
   locale: Locale;
   switchLangHref?: string;
-  /** overlay = transparent over a dark first view until it scrolls past; solid = moss bar in the flow. */
+  /** overlay = transparent over a dark first view until it scrolls past; solid = espresso bar in the flow. */
   variant?: 'overlay' | 'solid';
-  /** Darkens the transparent overlay bar with a moss gradient, for pages whose photo can't guarantee
+  /** Darkens the transparent overlay bar with an espresso gradient, for pages whose photo can't guarantee
    * text contrast on its own (the field note hero). The home hero measures well without it. */
   scrim?: boolean;
 }
@@ -79,7 +79,7 @@ const mobileOnly = [
   // Leaving the mobile layout closes the menu (same breakpoint as the CSS).
   matchMedia('(max-width: 1023px)').addEventListener('change', (e) => { if (!e.matches) setOpen(false); });
 
-  // Overlay variant: transparent over the dark first view ([data-nav-until]), moss once it has scrolled past.
+  // Overlay variant: transparent over the dark first view ([data-nav-until]), espresso once it has scrolled past.
   if (nav?.dataset.variant === 'overlay') {
     const until = document.querySelector<HTMLElement>('[data-nav-until]');
     if (!until || !('IntersectionObserver' in window)) {
@@ -96,17 +96,17 @@ const mobileOnly = [
   .nav { z-index: 100; color: var(--cream); font-size: 13px; font-weight: 600; transition: background-color .3s var(--ease-paper), box-shadow .3s var(--ease-paper); }
   .nav--overlay { position: fixed; top: 0; left: 0; right: 0; }
   .nav--solid { position: sticky; top: 0; }
-  /* Moss by default, also without JavaScript. The overlay bar turns transparent only when scripts run (html.js, set in Layout). */
-  .nav--solid, .nav--overlay, .nav.is-solid, .nav.is-open { background: var(--moss); box-shadow: 0 1px 0 rgba(255, 255, 255, .08); }
+  /* Espresso by default, also without JavaScript. The overlay bar turns transparent only when scripts run (html.js, set in Layout). */
+  .nav--solid, .nav--overlay, .nav.is-solid, .nav.is-open { background: var(--dark); box-shadow: 0 1px 0 rgba(255, 255, 255, .08); }
   :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) { background: transparent; box-shadow: none; }
   /* The field note hero's photo can't guarantee link contrast on its own (each post brings a new
      photo). This travels with the fixed transparent bar and is dropped the instant it turns solid. */
-  :global(html.js) .nav--overlay.nav--scrim:not(.is-solid):not(.is-open) { background: linear-gradient(180deg, rgba(31, 42, 25, .85), rgba(31, 42, 25, .6)); }
-  /* Below 1024 px the photo band scrolls under the transparent bar. The menu button gets its own moss
+  :global(html.js) .nav--overlay.nav--scrim:not(.is-solid):not(.is-open) { background: linear-gradient(180deg, rgba(var(--dark-rgb), .85), rgba(var(--dark-rgb), .6)); }
+  /* Below 1024 px the photo band scrolls under the transparent bar. The menu button gets its own espresso
      disc (icon contrast at least 3:1 over any part of the photo) and the wordmark a soft shadow, so the
      bar itself stays transparent as in the mockup. */
   @media (max-width: 1023px) {
-    :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) .menu-toggle { background: rgba(31, 42, 25, .6); border-radius: 50%; }
+    :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) .menu-toggle { background: rgba(var(--dark-rgb), .6); border-radius: 50%; }
     :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) .brand { filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .45)); }
   }
   .nav.is-open { transition: none; }

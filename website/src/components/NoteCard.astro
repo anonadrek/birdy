@@ -45,7 +45,7 @@ const titleId = `nc-title-${note.id.replace(/[^a-zA-Z0-9_-]+/g, '-')}`;
 
 <style>
   .ncard { display: grid; background: var(--card); border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); transition: transform .35s var(--ease-paper), box-shadow .35s var(--ease-paper); }
-  .ncard:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px var(--line), 0 18px 36px rgba(31, 42, 25, .12); }
+  .ncard:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px var(--line), 0 18px 36px rgba(var(--dark-rgb), .12); }
   .ncard-img { position: relative; overflow: hidden; }
   .ncard-img :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
   .ncard-body { padding: 20px 20px 22px; }

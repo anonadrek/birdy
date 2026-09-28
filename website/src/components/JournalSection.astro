@@ -35,7 +35,7 @@ const t = getCopy(locale);
   .journal { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
   /* The rotation lives on the figure, the reveal on its wrapper, so they never fight over transform. */
-  .plate { position: relative; max-width: 440px; margin: 0 auto; background: #fff; padding: 14px 14px 46px; box-shadow: 0 20px 40px rgba(31, 42, 25, .16); transform: rotate(-2.5deg); }
+  .plate { position: relative; max-width: 440px; margin: 0 auto; background: #fff; padding: 14px 14px 46px; box-shadow: 0 20px 40px rgba(var(--dark-rgb), .16); transform: rotate(-2.5deg); }
   .plate :global(.plate-img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 40%; }
   .cap { margin-top: 12px; font-family: var(--font-script); font-size: 22px; color: var(--muted); padding-right: 52px; }
   .cap b { font-family: var(--font-serif); font-weight: 400; font-style: italic; color: var(--ink); font-size: 21px; }

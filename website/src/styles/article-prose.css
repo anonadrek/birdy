@@ -1,5 +1,5 @@
 /* Field note body (spec §6): calm serif headings, a narrow readable column and a rust pull quote. */
-.article-prose { font-size: 17px; line-height: 1.75; color: #3B4434; }
+.article-prose { font-size: 17px; line-height: 1.75; color: #3D2C24; }
 .article-prose > p:first-child { font-size: 20px; line-height: 1.6; color: var(--ink); margin: 0 0 26px; }
 .article-prose p { margin: 0 0 18px; }
 .article-prose h2 { font-size: 30px; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); margin: 44px 0 14px; }
