@@ -3,6 +3,9 @@
 This document captures the answers we will provide in the Google Play
 Console **Data Safety** section. Keep in sync with code reality.
 
+Birdy is developed and operated by **AlbIT AB** (org. no. 559593-7607,
+Solna, Sweden).
+
 _Last reviewed: 2026-06-06 (v1.2, personal-finds-map) — opt-in on-device location for personal map + MapTiler tile fetching; location data never leaves the device; INTERNET + location permissions added. See Diff log entry 2026-06-06._
 
 ## Data collection and security
@@ -153,3 +156,6 @@ features, provide:
   no sharing per Play Console definitions). Encryption-in-transit
   answer updated to **Yes** (HTTPS tile requests; no user data in
   transit).
+- **2026-09-28** — developer changed from a private person to
+  **AlbIT AB** (the Play Console account moved to the company). No
+  change to any form answer.

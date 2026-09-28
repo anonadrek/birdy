@@ -1,9 +1,10 @@
 # Birdy — Terms of Use
 
-_Last updated: 2026-05-22_
+_Last updated: 2026-09-28_
 
 These terms govern your use of the **Birdy** Android application
-("the App") provided by **Albin Viktor Lindblom** ("we", "us").
+("the App") provided by **AlbIT AB** (org. no. 559593-7607, Solna,
+Sweden) ("we", "us").
 
 ## 1. Age requirement
 
