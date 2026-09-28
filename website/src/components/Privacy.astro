@@ -1,6 +1,7 @@
 ---
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
+import DeckleEdge from './ui/DeckleEdge.astro';
 import MarginNote from './ui/MarginNote.astro';
 import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
@@ -12,6 +13,7 @@ const icons = ['no-account', 'phone', 'pin'] as const;
 ---
 
 <section id="privacy" class="sec priv">
+  <DeckleEdge color="var(--dark-deep)" />
   <div class="wrap">
     <div class="top" data-reveal>
       <Kicker text={t.privacy.kicker} center />
@@ -33,6 +35,7 @@ const icons = ['no-account', 'phone', 'pin'] as const;
 </section>
 
 <style>
+  .priv { position: relative; }
   .top { text-align: center; max-width: 640px; margin: 0 auto; }
   .top .lead { margin-left: auto; margin-right: auto; }
   .cols { display: grid; grid-template-columns: repeat(3, 1fr); margin: 48px 0 0; border-top: 1px solid var(--line); }

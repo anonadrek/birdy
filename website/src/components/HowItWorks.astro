@@ -1,6 +1,7 @@
 ---
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
+import DeckleEdge from './ui/DeckleEdge.astro';
 import MarginNote from './ui/MarginNote.astro';
 import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
@@ -12,6 +13,7 @@ const icons = ['camera', 'photo', 'wave'] as const;
 ---
 
 <section id="how-it-works" class="sec how">
+  <DeckleEdge color="var(--dark)" />
   <div class="wrap grid">
     <div data-reveal>
       <Kicker text={t.howItWorks.kicker} />
@@ -34,6 +36,7 @@ const icons = ['camera', 'photo', 'wave'] as const;
 </section>
 
 <style>
+  .how { position: relative; }
   .grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 70px; align-items: start; padding-top: 40px; }
   .row { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
   .row:first-child { border-top: 1px solid var(--line); }

@@ -125,8 +125,7 @@ test.describe('bildtexter i handstil', () => {
         await page.setViewportSize({ width, height: 844 });
         await page.goto(path);
         await page.evaluate(() => document.fonts.ready);
-        // global.css sets transition-duration: .01ms under reduced motion on everything, so
-        // settle two rAFs after navigation instead of measuring right away.
+        // Settle two rAFs after fonts load so layout has caught up before measuring.
         await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
         const gaps = await page.evaluate(() => {
           const lis = [...document.querySelectorAll('#guide .stats li')];
@@ -142,11 +141,44 @@ test.describe('bildtexter i handstil', () => {
             return { left: textLeft - liBox.left, right: liBox.right - textRight };
           });
         });
+        expect(gaps).toHaveLength(3);
         for (const gap of gaps) {
+          expect(Number.isFinite(gap.left), 'vänster kant hittade ingen text').toBe(true);
+          expect(Number.isFinite(gap.right), 'höger kant hittade ingen text').toBe(true);
           expect(gap.left, 'vänster luft till kolumnkanten').toBeGreaterThanOrEqual(4);
           expect(gap.right, 'höger luft till kolumnkanten').toBeGreaterThanOrEqual(4);
         }
       });
     }
   }
+});
+
+test.describe('rivna papperskanter', () => {
+  const fills = (page: import('@playwright/test').Page) =>
+    page.locator('.deckle path').evaluateAll((ps) => ps.map((p) => getComputedStyle(p).fill));
+
+  test('startsidan: övre bandets färg river ner i det undre', async ({ page }) => {
+    await page.goto('/sv/');
+    expect(await fills(page)).toEqual([
+      'rgb(42, 29, 23)',    // hero → Tre sätt att fånga
+      'rgb(255, 250, 241)', // Fältboken → karusellen
+      'rgb(253, 229, 203)', // karusellen → Uppslagsverket
+      'rgb(246, 239, 226)', // Uppslagsverket → Premium
+      'rgb(30, 20, 16)',    // Premium → Integritet
+      'rgb(255, 250, 241)', // Frågor → Ta med Birdy
+      'rgb(42, 29, 23)',    // Ta med Birdy → sidfot
+    ]);
+    const sealZ = await page.locator('#premium .pseal').evaluate((el) => Number(getComputedStyle(el).zIndex));
+    const edgeZ = await page.locator('#premium .deckle').evaluate((el) => Number(getComputedStyle(el).zIndex));
+    expect(sealZ).toBeGreaterThan(edgeZ);
+  });
+
+  test('bloggen och juridiken', async ({ page }) => {
+    await page.goto('/sv/blog/');
+    expect(await fills(page)).toEqual(['rgb(246, 239, 226)', 'rgb(246, 239, 226)']);
+    await page.goto('/legal/privacy/');
+    expect(await fills(page)).toEqual(['rgb(246, 239, 226)']);
+    await page.goto('/sv/blog/why-birdy/');
+    expect(await fills(page)).toEqual(['rgb(246, 239, 226)']);
+  });
 });

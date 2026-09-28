@@ -1,6 +1,7 @@
 ---
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
+import DeckleEdge from './ui/DeckleEdge.astro';
 import MarginNote from './ui/MarginNote.astro';
 import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
@@ -12,6 +13,7 @@ const icons = ['map', 'pdf', 'chart', 'badge'] as const;
 ---
 
 <section id="premium" class="sec prem">
+  <DeckleEdge color="var(--paper)" />
   <span class="seal seal--brass pseal" aria-hidden="true">{t.premium.seal}</span>
   <div class="wrap grid">
     <div data-reveal>

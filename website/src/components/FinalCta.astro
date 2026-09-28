@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
+import DeckleEdge from './ui/DeckleEdge.astro';
 import MarginNote from './ui/MarginNote.astro';
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
 import AppStoreBadge from './ui/AppStoreBadge.astro';
@@ -15,6 +16,7 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
 ---
 
 <section id="download" class="final">
+  <DeckleEdge color="var(--card)" />
   <Image class="final-bg" src={reedling} alt="" widths={[800, 1200, 1600]} sizes="(max-width: 760px) 840px, 100vw" loading="lazy" decoding="async" />
   <div class="wrap" data-reveal>
     <Kicker text={t.download.kicker} />

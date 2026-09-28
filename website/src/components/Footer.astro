@@ -1,17 +1,20 @@
 ---
 import Wordmark from './ui/Wordmark.astro';
+import DeckleEdge from './ui/DeckleEdge.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 import { fieldNotesHref } from '../lib/field-notes';
 import { albitProductHref, CONTACT_EMAIL, LOOPLEAD_URL } from '../lib/links';
 
-interface Props { locale: Locale; switchLangHref?: string }
-const { locale, switchLangHref } = Astro.props;
+// edge: the colour of whatever sits above the footer; it tears down into the footer (spec §6).
+interface Props { locale: Locale; switchLangHref?: string; edge?: string }
+const { locale, switchLangHref, edge = 'var(--paper)' } = Astro.props;
 const t = getCopy(locale);
 const home = locale === 'sv' ? '/sv/' : '/';
 const blogPrefix = locale === 'sv' ? '/sv' : '';
 ---
 
 <footer class="footer">
+  <DeckleEdge color={edge} />
   <div class="wrap">
     <div class="fgrid">
       <div class="fbrand">
@@ -54,7 +57,7 @@ const blogPrefix = locale === 'sv' ? '/sv' : '';
 </footer>
 
 <style>
-  .footer { background: var(--dark-deep); color: #E9E2D2; padding: 70px 0 26px; }
+  .footer { position: relative; background: var(--dark-deep); color: #E9E2D2; padding: 70px 0 26px; }
   .footer :global(:focus-visible) { outline-color: var(--apricot); }
   .fgrid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
   .tag { margin: 12px 0 0; font-family: var(--font-script); font-size: 21px; line-height: 1.2; color: var(--apricot); }

@@ -4,6 +4,7 @@ import Nav from './Nav.astro';
 import Footer from './Footer.astro';
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
+import DeckleEdge from './ui/DeckleEdge.astro';
 import NoteCard from './NoteCard.astro';
 import { getFieldNotes, fieldNotesHref } from '../lib/field-notes';
 import { type Locale, getCopy } from '../lib/i18n';
@@ -24,6 +25,7 @@ const otherLocale: Locale = locale === 'sv' ? 'en' : 'sv';
         <JournalHeadline text={t.blog.headline} level="h1" align="left" size="clamp(40px, 5vw, 60px)" />
         <p class="blead">{t.blog.lead}</p>
       </div>
+      <DeckleEdge color="var(--paper)" side="bottom" />
     </header>
     <div class="wrap list">
       {latest && <div class="first"><NoteCard note={latest} size="large" headingLevel="h2" priority /></div>}
@@ -34,10 +36,10 @@ const otherLocale: Locale = locale === 'sv' ? 'en' : 'sv';
 </Layout>
 
 <style>
-  .bhead { background: var(--dark); color: var(--cream); padding: 34px 0 70px; --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); }
+  .bhead { position: relative; background: var(--dark); color: var(--cream); padding: 34px 0 70px; --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); }
   .bhead .blead { color: rgba(255, 248, 238, .8); font-size: 16px; line-height: 1.6; max-width: 34rem; margin: 16px 0 0; text-wrap: pretty; }
   .list { padding-bottom: 96px; }
-  .first { position: relative; margin-top: -40px; }
+  .first { position: relative; z-index: 3; margin-top: -40px; }
   .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 44px; }
   @media (max-width: 760px) {
     .bhead { padding: 24px 0 60px; }

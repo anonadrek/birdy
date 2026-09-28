@@ -1,6 +1,7 @@
 ---
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
+import DeckleEdge from './ui/DeckleEdge.astro';
 import MarginNote from './ui/MarginNote.astro';
 import Icon from './ui/Icon.astro';
 import PhoneFrame from './phone/PhoneFrame.astro';
@@ -30,6 +31,7 @@ const first = slides[0];
 ---
 
 <section id="app" class="tour" data-tour data-loop>
+  <DeckleEdge color="var(--card)" />
   <div class="tour-head" data-reveal>
     <Kicker text={t.tour.kicker} center />
     <JournalHeadline text={t.tour.headline} level="h2" size="clamp(34px, 4.4vw, 52px)" />
