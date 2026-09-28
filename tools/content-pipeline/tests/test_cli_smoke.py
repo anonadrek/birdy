@@ -16,9 +16,14 @@ def test_cli_help_runs() -> None:
 
 
 def test_doctor_subcommand_exists() -> None:
+    # doctor exits 1 when the environment is incomplete (no ANTHROPIC_API_KEY, no local
+    # sources/), which is the normal state in CI. This smoke test only proves the command
+    # is wired up and runs its checks without crashing, whatever the environment.
     runner = CliRunner()
     result = runner.invoke(main, ["doctor"])
-    assert result.exit_code == 0
+    assert result.exit_code in (0, 1), result.output
+    assert result.exception is None or isinstance(result.exception, SystemExit)
+    assert "ANTHROPIC_API_KEY" in result.output
 
 
 def test_refresh_dry_run_flag_exists() -> None:
