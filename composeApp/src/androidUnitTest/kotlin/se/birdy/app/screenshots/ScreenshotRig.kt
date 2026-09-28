@@ -20,6 +20,10 @@ import se.birdy.app.ui.theme.BirdyTheme
  * default, so a coroutine `delay()` scheduled on `Dispatchers.Main` never fires on its own; the
  * caller advances it explicitly (see `ArchiveScreenshotTest`'s `advanceMainLooper`). Defaults to
  * a no-op, so existing callers are unaffected.
+ *
+ * The unchecked cast: `Class.forName` returns `Class<*>` but `setupContentProvider` needs
+ * `Class<ContentProvider>`, and the provider class is Kotlin-internal to compose-resources, so
+ * it can only be reached by name.
  */
 @Suppress("UNCHECKED_CAST")
 internal fun ComposeContentTestRule.captureScreen(

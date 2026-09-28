@@ -356,7 +356,6 @@
     <ID>MagicNumber:ScenePrivacy.kt$35f</ID>
     <ID>MagicNumber:ScenePrivacy.kt$700</ID>
     <ID>MagicNumber:SeasonStatsViewModel.kt$SeasonStatsViewModel$12</ID>
-    <ID>MagicNumber:ShimmerBorder.kt$24</ID>
     <ID>MagicNumber:ShimmerSweep.kt$0.4f</ID>
     <ID>MagicNumber:ShimmerSweep.kt$0.5f</ID>
     <ID>MagicNumber:ShimmerSweep.kt$1.8f</ID>
@@ -466,7 +465,6 @@
     <ID>ReturnCount:SpeciesRepositoryProvider.ios.kt$SpeciesRepositoryProvider$private fun needsCopy( dbPath: String, bundled: ByteArray, ): Boolean</ID>
     <ID>ReturnCount:TrophyProgressWorker.kt$TrophyProgressWorker$override suspend fun doWork(): Result</ID>
     <ID>ReturnCount:WeeklyRecapWorker.kt$WeeklyRecapWorker$override suspend fun doWork(): Result</ID>
-    <ID>SpreadOperator:ShimmerBorder.kt$(*stops, center = Offset(size.width / 2f, size.height / 2f))</ID>
     <ID>SwallowedException:AudioScanViewModel.kt$AudioScanViewModel$t: Throwable</ID>
     <ID>SwallowedException:AudioScanViewModel.kt$AudioScanViewModel$t: TimeoutCancellationException</ID>
     <ID>SwallowedException:PremiumBillingClient.android.kt$t: Throwable</ID>
