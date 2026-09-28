@@ -2,7 +2,7 @@
  * i18n infrastructure for the landing page.
  *
  * Copy strings in copy.{en,sv}.json may contain `*word*` syntax that the
- * T8 JournalHeadline parser converts to Caveat-italic accent spans.
+ * T8 JournalHeadline parser converts to handwritten Caveat bold accent spans.
  * Literal asterisks in copy are not currently supported — if future copy
  * needs a literal *, add an escape mechanism in headline.ts before using it.
  */

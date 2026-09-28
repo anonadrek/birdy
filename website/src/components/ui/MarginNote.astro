@@ -1,0 +1,28 @@
+---
+// A short handwritten line in the margin under a heading (spec 2026-09-28-webb-faltboksfarger §5.2).
+// Colour comes from --mn-color on an ancestor: rust on light sections, apricot on the dark ones.
+// Renders nothing when the copy has no note.
+interface Props {
+  text?: string;
+  align?: 'left' | 'center';
+}
+const { text, align = 'left' } = Astro.props;
+---
+
+{text && <p class:list={['mnote', { 'mnote--center': align === 'center' }]}>{text}</p>}
+
+<style>
+  .mnote {
+    width: fit-content;
+    max-width: 100%;
+    margin: 12px 0 0;
+    font-family: var(--font-script);
+    font-weight: 700;
+    font-size: clamp(20px, 2vw, 24px);
+    line-height: 1.15;
+    color: var(--mn-color, var(--rust));
+    transform: rotate(-1.4deg);
+    text-wrap: balance;
+  }
+  .mnote--center { margin-left: auto; margin-right: auto; }
+</style>

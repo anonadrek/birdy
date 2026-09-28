@@ -1,6 +1,7 @@
 ---
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
+import MarginNote from './ui/MarginNote.astro';
 import Icon from './ui/Icon.astro';
 import PhoneFrame from './phone/PhoneFrame.astro';
 import IdentifyScreen from './phone/screens/IdentifyScreen.astro';
@@ -32,6 +33,7 @@ const first = slides[0];
   <div class="tour-head" data-reveal>
     <Kicker text={t.tour.kicker} center />
     <JournalHeadline text={t.tour.headline} level="h2" size="clamp(34px, 4.4vw, 52px)" />
+    <MarginNote text={t.tour.note} align="center" />
     <p class="tour-lead">{t.tour.lead}</p>
   </div>
   <ul class="track" tabindex="0" role="list" aria-label={t.tour.label} data-track>
@@ -73,6 +75,7 @@ const first = slides[0];
 </script>
 
 <style>
+  /* --ph-shadow: offset + blur (12 + 20 px) must stay below .track's padding-bottom (34 px), or the scroller clips the phones' shadow. */
   .tour { position: relative; overflow: hidden; color: var(--ink); background: var(--peach); padding: 96px 0 70px; --kick-color: var(--rust); --jh-ink: var(--ink); --jh-accent: var(--rust); --ph-shadow: 0 12px 20px rgba(var(--dark-rgb), .22); }
   .tour::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(154, 69, 38, .07) 1px, transparent 1.2px); background-size: 18px 18px; pointer-events: none; }
   .tour :global(:focus-visible) { outline-color: var(--rust); }

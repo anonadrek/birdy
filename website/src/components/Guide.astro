@@ -1,6 +1,7 @@
 ---
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
+import MarginNote from './ui/MarginNote.astro';
 import CoverageMap from './CoverageMap.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 
@@ -15,6 +16,7 @@ const t = getCopy(locale);
       <div>
         <Kicker text={t.guide.kicker} />
         <JournalHeadline text={t.guide.headline} level="h2" align="left" size="clamp(34px, 4.4vw, 52px)" />
+        <MarginNote text={t.guide.note} />
       </div>
       <p class="lead">{t.guide.lead}</p>
     </div>

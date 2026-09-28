@@ -24,6 +24,7 @@
     "kicker": "Bird guide and field journal",
     "headline": "Know the bird.",
     "line2": "Keep the moment.",
+    "note": "See. Listen. Keep.",
     "sub": "Point the camera, pick a photo or let the bird sing. Birdy suggests the species right on your phone, and you save the sighting in your own field journal.",
     "metaLabel": "Birdy at a glance",
     "meta": ["839 European species", "Works without a signal", "No account"]
@@ -144,6 +145,7 @@
   "howItWorks": {
     "kicker": "How it works",
     "headline": "Three ways to *catch it.*",
+    "note": "camera, photo or song",
     "lead": "The same three ways in as in the app. Birdy always shows how sure it is, and you decide what gets saved.",
     "free": "Free",
     "rows": [
@@ -170,6 +172,7 @@
   "tour": {
     "kicker": "The app",
     "headline": "A tour of *the field journal.*",
+    "note": "this is how it looks in the field",
     "lead": "From the first match to your own field guide. This is Birdy on your phone.",
     "label": "Screens from the app",
     "prev": "Previous screen",
@@ -189,6 +192,7 @@
   "guide": {
     "kicker": "The field guide",
     "headline": "Europe's birds, *in your pocket.*",
+    "note": "look up the bird you just saw",
     "lead": "839 species with photos, descriptions and range. Everything lives on your phone, so the guide keeps working where the signal ends.",
     "stats": [
       { "value": "839", "label": "species" },
@@ -202,6 +206,7 @@
   "premium": {
     "kicker": "Birdy Premium",
     "headline": "For when you want *to see more.*",
+    "note": "optional, identifying birds is free",
     "lead": "Everything you need to identify and save birds is free. Premium adds four things for when you want to follow your year in the field.",
     "alwaysFreeLabel": "Always free:",
     "alwaysFree": "identification with camera, photo and sound · the field journal · 839 species · 27 badges",
@@ -217,6 +222,7 @@
   "privacy": {
     "kicker": "Privacy",
     "headline": "The AI lives *on your phone.*",
+    "note": "your photos stay on your phone",
     "lead": "Birdy identifies birds without sending your photos or sound anywhere.",
     "cols": [
       { "title": "No account", "body": "Open the app and start. There is nothing to sign in to." },
@@ -228,6 +234,7 @@
   "fieldNotes": {
     "kicker": "Field notes",
     "headline": "From *the field journal.*",
+    "note": "notes from the people who build Birdy",
     "all": "All field notes"
   },
   "blog": {
@@ -246,6 +253,7 @@
   "faq": {
     "kicker": "Questions",
     "headline": "Before you *download.*",
+    "note": "what people usually ask",
     "items": [
       { "q": "Does Birdy work without a signal?", "a": "Yes. Identification with the camera, photos and sound runs on your phone, and the guide and journal are always there. Only the map tiles in the Premium map need a connection." },
       { "q": "Do I need an account?", "a": "No. Open the app and start. Your journal lives on your phone." },
@@ -257,6 +265,7 @@
   "download": {
     "kicker": "Birdy for Android, soon on iPhone",
     "headline": "Take Birdy *into the field.*",
+    "note": "see you out there",
     "sub": "Free to download. No account. Works without a signal."
   },
   "footer": {

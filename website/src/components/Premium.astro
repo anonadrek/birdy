@@ -1,6 +1,7 @@
 ---
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
+import MarginNote from './ui/MarginNote.astro';
 import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 
@@ -16,6 +17,7 @@ const icons = ['map', 'pdf', 'chart', 'badge'] as const;
     <div data-reveal>
       <Kicker text={t.premium.kicker} />
       <JournalHeadline text={t.premium.headline} level="h2" align="left" size="clamp(34px, 4.4vw, 52px)" />
+      <MarginNote text={t.premium.note} />
       <p class="lead">{t.premium.lead}</p>
       <p class="alw"><b>{t.premium.alwaysFreeLabel}</b> {t.premium.alwaysFree}</p>
       <p class="pnote">{t.premium.purchaseNote}</p>
@@ -32,7 +34,7 @@ const icons = ['map', 'pdf', 'chart', 'badge'] as const;
 </section>
 
 <style>
-  .prem { position: relative; color: #F2EADC; background: linear-gradient(180deg, var(--dark) 0%, var(--dark-deep) 100%); --kick-color: var(--brass-hi); --jh-ink: var(--cream); --jh-accent: var(--brass-hi); --lead-color: rgba(242, 234, 220, .75); }
+  .prem { position: relative; color: #F2EADC; background: linear-gradient(180deg, var(--dark) 0%, var(--dark-deep) 100%); --kick-color: var(--brass-hi); --jh-ink: var(--cream); --jh-accent: var(--brass-hi); --mn-color: var(--apricot); --lead-color: rgba(242, 234, 220, .75); }
   .prem::before { content: ''; position: absolute; inset: 0; background: radial-gradient(60% 80% at 85% 20%, rgba(226, 192, 126, .1), transparent 60%); pointer-events: none; }
   .prem :global(:focus-visible) { outline-color: var(--apricot); }
   .grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }

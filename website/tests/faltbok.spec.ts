@@ -47,16 +47,48 @@ test.describe('persika bakom karusellen', () => {
 });
 
 test.describe('handskrivna accentord', () => {
-  for (const path of ['/', '/sv/'] as const) {
-    test(`accentorden och heroraden är handskrivna på ${path}`, async ({ page }) => {
+  for (const path of ['/', '/sv/', '/blog/'] as const) {
+    test(`accentorden är handskrivna på ${path}`, async ({ page }) => {
       await page.goto(path);
       const accents = page.locator('.journal-headline .accent');
-      expect(await accents.count()).toBeGreaterThan(5);
+      if (path === '/blog/') {
+        expect(await accents.count()).toBeGreaterThan(0);
+      } else {
+        expect(await accents.count()).toBeGreaterThan(5);
+      }
       for (const el of await accents.all()) {
         await expect(el).toHaveCSS('font-family', /Caveat/);
         await expect(el).toHaveCSS('font-style', 'normal');
       }
-      await expect(page.locator('[data-hero] h1 em')).toHaveCSS('font-family', /Caveat/);
+      if (path !== '/blog/') {
+        await expect(page.locator('[data-hero] h1 em')).toHaveCSS('font-family', /Caveat/);
+        await expect(page.locator('[data-hero] h1 em')).toHaveCSS('font-style', 'normal');
+      }
+      await page.evaluate(() => document.fonts.ready);
+      expect(
+        await page.evaluate(() =>
+          [...document.fonts].some(
+            (f) => f.family.replace(/"/g, '') === 'Caveat' && f.weight === '700' && f.status === 'loaded',
+          ),
+        ),
+      ).toBe(true);
+    });
+  }
+});
+
+test.describe('marginalanteckningar', () => {
+  const notes = {
+    '/sv/': ['Se. Lyssna. Spara.', 'kamera, foto eller läte', 'så här ser det ut i fält', 'slå upp fågeln du just såg', 'helt valfritt, att känna igen fåglar är gratis', 'dina bilder stannar i telefonen', 'anteckningar från oss som bygger Birdy', 'det folk brukar undra', 'vi ses i fält'],
+    '/': ['See. Listen. Keep.', 'camera, photo or song', 'this is how it looks in the field', 'look up the bird you just saw', 'optional, identifying birds is free', 'your photos stay on your phone', 'notes from the people who build Birdy', 'what people usually ask', 'see you out there'],
+  } as const;
+  for (const [path, texts] of Object.entries(notes)) {
+    test(`en handskriven rad under varje rubrik på ${path}`, async ({ page }) => {
+      await page.goto(path);
+      const mnotes = page.locator('.mnote');
+      await expect(mnotes).toHaveText([...texts]);
+      for (const el of await mnotes.all()) await expect(el).toHaveCSS('font-family', /Caveat/);
+      await expect(page.locator('[data-hero] .mnote')).toHaveCSS('color', 'rgb(242, 178, 122)');
+      await expect(page.locator('#how-it-works .mnote')).toHaveCSS('color', 'rgb(154, 69, 38)');
     });
   }
 });

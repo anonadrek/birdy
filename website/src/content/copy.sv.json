@@ -24,6 +24,7 @@
     "kicker": "Fågelguide och fältdagbok",
     "headline": "Känn igen fågeln.",
     "line2": "Bevara stunden.",
+    "note": "Se. Lyssna. Spara.",
     "sub": "Rikta kameran, välj ett foto eller låt fågeln sjunga. Birdy föreslår arten direkt i telefonen, och du sparar fyndet i din egen fältdagbok.",
     "metaLabel": "Birdy i korthet",
     "meta": ["839 europeiska arter", "Fungerar utan täckning", "Inget konto"]
@@ -144,6 +145,7 @@
   "howItWorks": {
     "kicker": "Så funkar det",
     "headline": "Tre sätt att *fånga.*",
+    "note": "kamera, foto eller läte",
     "lead": "Samma tre ingångar som i appen. Birdy visar alltid hur säker den är, och det är du som bestämmer vad som sparas.",
     "free": "Gratis",
     "rows": [
@@ -170,6 +172,7 @@
   "tour": {
     "kicker": "Appen",
     "headline": "Ett varv i *fältboken.*",
+    "note": "så här ser det ut i fält",
     "lead": "Från första träffen till ditt eget uppslagsverk. Så här ser Birdy ut i telefonen.",
     "label": "Skärmar ur appen",
     "prev": "Föregående skärm",
@@ -189,6 +192,7 @@
   "guide": {
     "kicker": "Uppslagsverket",
     "headline": "Europas fåglar, *i fickan.*",
+    "note": "slå upp fågeln du just såg",
     "lead": "839 arter med foton, beskrivningar och utbredning. Allt ligger i telefonen, så guiden fungerar även där täckningen tar slut.",
     "stats": [
       { "value": "839", "label": "arter" },
@@ -202,6 +206,7 @@
   "premium": {
     "kicker": "Birdy Premium",
     "headline": "För dig som vill *se mer.*",
+    "note": "helt valfritt, att känna igen fåglar är gratis",
     "lead": "Allt du behöver för att känna igen och spara fåglar är gratis. Premium lägger till fyra saker för dig som vill följa ditt år i fält.",
     "alwaysFreeLabel": "Alltid gratis:",
     "alwaysFree": "identifiering med kamera, foto och ljud · fältdagboken · 839 arter · 27 märken",
@@ -217,6 +222,7 @@
   "privacy": {
     "kicker": "Integritet",
     "headline": "AI:n bor i *telefonen.*",
+    "note": "dina bilder stannar i telefonen",
     "lead": "Birdy känner igen fåglar utan att skicka dina bilder eller ljud någonstans.",
     "cols": [
       { "title": "Inget konto", "body": "Öppna appen och börja. Det finns inget att logga in på." },
@@ -228,6 +234,7 @@
   "fieldNotes": {
     "kicker": "Fältanteckningar",
     "headline": "Från *fältboken.*",
+    "note": "anteckningar från oss som bygger Birdy",
     "all": "Alla fältanteckningar"
   },
   "blog": {
@@ -246,6 +253,7 @@
   "faq": {
     "kicker": "Frågor",
     "headline": "Innan du *laddar ner.*",
+    "note": "det folk brukar undra",
     "items": [
       { "q": "Fungerar Birdy utan täckning?", "a": "Ja. Identifiering med kamera, foto och ljud körs i telefonen, och guiden och dagboken finns alltid med. Bara kartbilderna i Premium-kartan behöver uppkoppling." },
       { "q": "Behöver jag ett konto?", "a": "Nej. Öppna appen och börja. Din dagbok finns i telefonen." },
@@ -257,6 +265,7 @@
   "download": {
     "kicker": "Birdy för Android och snart iPhone",
     "headline": "Ta med Birdy *ut i fält.*",
+    "note": "vi ses i fält",
     "sub": "Gratis att ladda ner. Inget konto. Fungerar utan täckning."
   },
   "footer": {

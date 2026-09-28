@@ -2,6 +2,7 @@
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
 import AppStoreBadge from './ui/AppStoreBadge.astro';
 import Kicker from './ui/Kicker.astro';
+import MarginNote from './ui/MarginNote.astro';
 import HeroScene from './hero/HeroScene.astro';
 import BirdyBird from './hero/BirdyBird.astro';
 import PhoneFrame from './phone/PhoneFrame.astro';
@@ -25,6 +26,7 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
           <BirdyBird />
           <Kicker text={t.hero.kicker} />
           <h1>{t.hero.headline} <em>{t.hero.line2}</em></h1>
+          <MarginNote text={t.hero.note} />
           <p class="sub">{t.hero.sub}</p>
           <div class="badges">
             <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="small" loading="eager" />
@@ -53,13 +55,14 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
 </script>
 
 <style>
-  .hero { position: relative; background: var(--dark); color: var(--cream); --kick-color: var(--apricot); --band-h: max(440px, 56.28vw); }
+  .hero { position: relative; background: var(--dark); color: var(--cream); --kick-color: var(--apricot); --mn-color: var(--apricot); --band-h: max(440px, 56.28vw); }
   .hero :global(:focus-visible) { outline-color: var(--apricot); }
   .photo { position: relative; }
   .copy-wrap { position: relative; z-index: 6; padding-top: calc(var(--band-h) - 110px); pointer-events: none; }
   .copy { position: relative; max-width: 480px; pointer-events: auto; }
   .nav-until { position: absolute; left: 0; bottom: 100%; width: 1px; height: 100vh; pointer-events: none; }
   h1 { font-size: 44px; line-height: .95; letter-spacing: -.025em; }
+  /* Same handwritten accent as JournalHeadline's .accent (spec §5.1); only line-height differs. */
   h1 em { display: block; color: var(--apricot); font-family: var(--font-script); font-style: normal; font-weight: 700; font-size: 1.18em; letter-spacing: 0; line-height: .95; }
   .sub { font-size: 15px; line-height: 1.65; color: rgba(255, 248, 238, .86); margin: 16px 0 20px; max-width: 28rem; }
   .meta-wrap { position: relative; z-index: 2; }

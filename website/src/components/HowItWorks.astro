@@ -1,6 +1,7 @@
 ---
 import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
+import MarginNote from './ui/MarginNote.astro';
 import Icon from './ui/Icon.astro';
 import { type Locale, getCopy } from '../lib/i18n';
 
@@ -15,6 +16,7 @@ const icons = ['camera', 'photo', 'wave'] as const;
     <div data-reveal>
       <Kicker text={t.howItWorks.kicker} />
       <JournalHeadline text={t.howItWorks.headline} level="h2" align="left" size="clamp(34px, 4.4vw, 52px)" />
+      <MarginNote text={t.howItWorks.note} />
       <p class="lead">{t.howItWorks.lead}</p>
     </div>
     <ul class="rows" role="list">
