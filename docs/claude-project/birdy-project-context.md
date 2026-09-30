@@ -2,7 +2,7 @@
 
 > **Syfte:** Den här filen laddas upp till mitt Claude Project i webbläsaren och fungerar som **fristående bakgrund** så att Claude förstår vad Birdy är, var vi står, hur det ska se ut, hur det ska säljas — utan att se kodbasen.
 >
-> Skriven 2026-05-20 inför v1.0-launch. **Senast uppdaterad 2026-07-11** — v1.2 live i produktion på Google Play sedan 2026-06-17, iOS-spåret (v2) startat. Uppdatera när stora beslut tas.
+> Skriven 2026-05-20 inför v1.0-launch. **Senast uppdaterad 2026-09-30:** v1.2 live på Google Play sedan 2026-06-17, release 1.3.0 (API 36, betalning, utseendelyft) i slutskedet, iOS i0 till i4 kodklara, webben i fältbokens färger live. Uppdatera när stora beslut tas.
 
 ---
 
@@ -11,7 +11,7 @@
 **Birdy** är en AI-driven app för fågelidentifiering med ett digitalt fältdagbok-koncept. Tagline (SV): *"Identifiera fåglar med kameran. En fältdagbok som ser ut som en fältdagbok. Inga foton lämnar din telefon."* Store-positionering (SV kort-beskrivning): *"Identifiera fåglar på foto & ljud. Offline, privat fågelguide & dagbok."*
 
 **Kärnloop:**
-1. Användaren öppnar appen och får upp en livekamera (zoom 1–10× via preset-chips), laddar upp ett foto (med beskärning + 90°-rotation), **eller spelar in ett 3-sekunders ljudklipp** (audio-ID via BirdNET-Lite — gratis för alla).
+1. Användaren öppnar appen och får upp en livekamera (zoom 1–10× via preset-chips), laddar upp ett foto (med beskärning + 90°-rotation), **eller spelar in fågelsång** (öppen inspelning upp till 60 s med rullande 3 s-fönster och auto-stopp vid tydlig träff; audio-ID via BirdNET-Lite, gratis för alla).
 2. AI:n (on-device, ingen cloud) klassar fågeln i realtid (3 fps för foto).
 3. Resultatet visas i en av tre vyer beroende på säkerhet:
    - **Match** (≥50% confidence) — en stämpel slås mot pappret: "ny art" eller "gång N".
@@ -24,12 +24,12 @@
 - **Encyclopedia** — 839 europeiska arter, organiserade i **ekologiska grupper** (alkor, hackspettar, duvor, tranor & rallar …). Browse + sök (klarar apostrofer/diakriter) + filter + artprofil.
 - **Lifelist** — vilka arter användaren sett, statistik; livslista-märkesspår upp till 500 arter + rödlistat-spår.
 - **Karta (Premium)** — privat fynd-karta som lever helt på enheten. Platsfångst är gratis och opt-in; själva kartvyn är Premium. Field Journal-tematiserade kartplattor + vax-sigill-pins.
-- **Audio-ID (gratis, alltid)** — BirdNET-Lite; 3s-inspelning → art. Gratis pga licens (se §6).
+- **Audio-ID (gratis, alltid)** — BirdNET-Lite; öppen inspelning (max 60 s) med live-hör-chip → upp till 3 kandidater. Gratis pga licens (se §6). Ljudets egna trösklar: Match ≥50 %, Disambig ≥20 %.
 - **Veckans uppslag** (weekly recap, visar veckans alla fynd) + **Dagens fågel** (jaga dagens art för ett gratis märke) + veckovis märkesprogression-notis.
 - **PDF-export av dagboken** (Premium) + **säsongsstatistik** (Premium).
 - **Onboarding** — 7-scens scroll-driven story (Hero/Foto/Ljud/Fältboken/Märken/Privatliv/Namn); kan spelas upp igen från Inställningar.
 
-**Plattform:** Kotlin Multiplatform + Compose Multiplatform. **Android live på Google Play.** **iOS-spåret (v2) pågår** — feature-identisk parity från samma kodbas, plan i0–i6; StoreKit-paywall aktiv från dag 1 på iOS (till skillnad från Android-lanseringen).
+**Plattform:** Kotlin Multiplatform + Compose Multiplatform. **Android live på Google Play.** **iOS-spåret (v2) pågår:** feature-identisk parity från samma kodbas, plan i0–i6; i0 till i4 är kodklara (foto-ID, livekamera, ljud-ID, karta, notiser, PDF), StoreKit (i5) och App Store (i6) återstår. StoreKit-paywall aktiv från dag 1 på iOS.
 
 **Geografi:** Norden/Europa, fokus Sverige först. (v2-roadmap: Asien-content; v3: hela världen.)
 
@@ -37,22 +37,22 @@
 
 ---
 
-## 2. Var vi står just nu (2026-07-11)
+## 2. Var vi står just nu (2026-09-30)
 
-**🚀 LIVE I PRODUKTION på Google Play sedan 2026-06-17.** Listad som **"Birdy — Bird Identify & Guide"**: `play.google.com/store/apps/details?id=se.birdy.android`. Version vC125 / 1.2.0-rc3 — hela v1.2 ute (karta + premium-redesign + UX-polish-batch, ~97 av 127 audit-fynd åtgärdade, device-verifierad).
+**🚀 LIVE på Google Play sedan 2026-06-17** som `se.birdy.android` (`play.google.com/store/apps/details?id=se.birdy.android`). Version i produktion: 1.2.0 (vC125). Premium är fortfarande öppet för alla i den versionen.
 
-**Premium är öppet/gratis för alla under lanseringsperioden** (`PREMIUM_OPEN_FOR_LAUNCH=true`). Beslut: **grandfather** — användare från lanseringsperioden behåller premium för alltid när monetiseringen flippas på. Flippen väntar på Billing-runtime-verify + AB-bolagets Play-kontoflytt.
+**Release 1.3.0 i slutskedet (spec 2026-09-24):**
+- **API 36** (Play kräver det för alla uppdateringar sedan 31 aug 2026; de färdiga 1.2.1/1.2.2-fixarna, 16 KB-sidor, språkval och ljud-ID, åker med här eftersom de aldrig laddades upp).
+- **Betalningen påslagen** på **AlbIT AB:s utvecklarkonto** (appen är flyttad dit). Produkter `premium_yearly_v1` + `premium_lifetime_v1`, priserna hämtas bara från Play.
+- **Tidiga användare behåller Premium för alltid:** installerat före brytpunkten 2026-10-02 00:00 Stockholm (go-live + 48 h; flyttas om releasen slirar) ger livstids-Premium och en tack-skärm en gång.
+- **Utseendelyftet** "Mossa, rost & mässing" (se §3), nya layouter för Identifiera, resultat, Mina arter, Premium, uppslagsverket, artprofilen och säsongsstatistiken.
+- Status: Plan 1 (grund) och Plan 2 (utseende) klara och mergade. Köptestbygget vC128 finns. **Produktionsbygget vC129 väntar på Albin:** ny MapTiler-nyckel (den gamla läckte i ett publikt plan-dokument), ett riktigt köp med vC128 på Galaxyn, och go-live-datum. Därefter Plan 3 (QA + release).
 
-**Marketing-webbplatsen är live:** `https://birdy.community` (Astro + Vercel, EN/SV, `/legal/`-sidor, Glimpse-carousel med riktiga Play-kort, scroll-animerad hero-fågel).
+**Webben (birdy.community):** live i **fältbokens färger** sedan 2026-09-28: espresso i stället för mossgrönt, persika bakom telefonkarusellen, handskrivna accentord (Caveat), rivna papperskanter. Telefonerna i karusellen visar appens 1.3-look. Blogg med inlägget "Why Birdy exists", AlbIT-kreditering. **Artsidor** (en sida per art, 180 godkända arter, SV + EN, ~392 sidor) är nästa webbspår: pipelinen är klar, den betalda textkörningen väntar på API-kredit.
 
-**iOS (v2) startat 2026-07-07 på Mac:** plan i0 (miljö + ignition) nästan klar — alla KMP-moduler har iOS-targets och **Birdy bootar i iOS-simulatorn** (riktig artdatabas, fejkad skanner; scan/audio/karta stubbat "kommer snart"). Plan-spår i0–i6; **Milestone 1** = uppslagsverk + dagbok + live foto-skanning på fysisk iPhone (slutet av i2). Det man ser i simulatorn idag ligger alltså långt efter Android-appen — parity byggs plan för plan.
+**iOS (v2):** i0 till i4 kodklara och granskade på Mac:en (uppslagsverk, dagbok, foto-ID, livekamera, ljud-ID, karta via MapKit, notiser, PDF). Hela iPhone-appen har ett Swift-skal på 58 rader, resten är delad Kotlin. Kvar: simulator- och enhetstester, i5 (StoreKit 2), i6 (App Store).
 
-**Kvar på Android (ej blockerande nu):**
-- **16 KB page-size-fix** — migrera TensorFlow Lite → LiteRT; krävs före nästa Android-uppdatering (vC126). Beslut: görs inne i iOS-spåret (plan i2) så iOS-ML byggs på nya biblioteket direkt.
-- Bevaka launch-data: Android vitals (krasch/ANR), installs, recensioner, MapTiler-kvot.
-- Billing-verify → monetiseringsflipp (med grandfather-gaten).
-
-**Versionshistorik i korthet:** `v1.0.0` taggad 2026-05-23 → v1.1-batchen (zoom/crop, onboarding v2, omgjorda märken, Troférummet, website v2) → v1.2 (kartan, premium-redesign, polish) → produktion 2026-06-17.
+**Versionshistorik i korthet:** första commit 2026-04-30 → `v1.0.0` 2026-05-23 (23 dagar) → v1.1 (zoom/crop, onboarding v2, omgjorda märken, Troférummet) → v1.2 (kartan, premium-redesign, polish) → produktion 2026-06-17 (dag 48) → iOS från 2026-07-07 → 1.3.0 (sept 2026).
 
 **Paketnamn (locked):** Android `se.birdy.android` · iOS `se.birdy.ios`.
 
@@ -62,32 +62,37 @@
 
 Birdys hela visuella identitet är byggd runt en **digital fältdagbok**: pappersbakgrund, italic-serif rubriker som ser handskrivna ut, stämplar som låses upp, små marginal-anteckningar med en penna-känsla.
 
-### Färgpalett (locked 2026-04-30, finetuned i Plan 6a)
+### Färgpalett: "Mossa, rost & mässing" (1.3.0, 2026-09-24; ersätter 2026-04-30-paletten)
 
 | Token | Hex | Roll |
 |---|---|---|
-| `PaperBg` | `#EFE7D6` | Huvudbakgrund — varmt creme-papper |
-| `PaperTop` | `#E5DCC7` | Top-gradient på papper |
-| `PaperEdge` | `#E5DCC7` | Pappersedge-skugga |
-| `MarginaliaInk` | `#3F4F30` | Penna-mörkgrön (text på papper) — WCAG AA-kontrast |
-| `HeroMossMid` | `#3F4F30` | Mossgrön (samma hex som MarginaliaInk men separat token) |
-| `HeroMossDeep` | `#2A3520` | Djup mossgrön (hero-gradient) |
-| `AccentCopper` | `#A8552D` | Koppar — CTA, aktiv flik, stat-siffror, stämpel-pill |
-| `StampNavy` | `#1F3A5F` | Marin — för "låsta" stämplar och vissa accents |
-| `TextOnAccent` | `#F0EAD8` | Varm offwhite för text på koppar/moss |
+| `MossCreme` | `#F6EFE2` | Huvudbakgrund, varmt papper |
+| `PaperTop` / `PaperBottom` | `#F8F2E7` / `#F2E9D8` | Pappersgradienten i `paperBackground()` |
+| `CardPaper` | `#FFFAF1` | Kort och ark på papper |
+| `Hairline` | `#DFD2BA` | 1 dp-linjer och kortramar (aldrig text) |
+| `TextOnCreme` | `#26301F` | Bläck: primär text på papper |
+| `InkMuted` | `#5B6350` | Sekundär text |
+| `AccentCopper` (rost) | `#9A4526` | CTA, aktiv flik, siffror, stämplar |
+| `AccentCopperLight` (aprikos) | `#F2B27A` | Accent på mörka ytor |
+| `Brass` / `BrassText` | `#B8893A` / `#805F28` | Mässing: Premium, aktuell månad; textsäker variant på papper |
+| `HeroMossDeep` | `#1F2A19` | Djup mossa: Premium- och tack-skärmen, foto-toningar |
+| `StampNavy` | `#1F3A5F` | Sällsynta och rödlistade troféer |
+| `TextOnHero` | `#FFF8EE` | Text på mossa, foton och rost |
 
-**Viktig regel:** Bakgrunden är **alltid** `PaperBg` med en subtil dot-texture (`Modifier.paperBackground()` i Compose). Aldrig ren vit, aldrig grå.
+Alla textfärger är låsta mot WCAG AA med kontrasttest i koden (`PaletteMirrorTest` håller kartnålar, PDF och kartpapper i synk). **Viktig regel:** bakgrunden är **alltid** papper med subtil dot-texture (`Modifier.paperBackground()`). Aldrig ren vit, aldrig grå.
+
+**Webben** (birdy.community, 2026-09-28) har en egen variant i samma familj: espresso `#2A1D17` / `#1E1410` för mörka partier, varm brun text `#302019`, persika `#FDE5CB` bakom telefonkarusellen. Mossgrönt finns bara i telefonerna (palettvakten `npm run test:palette` fäller det annars).
 
 ### Typografi
 
 | Typsnitt | Användning |
 |---|---|
-| **DM Serif Display Italic** | Stora rubriker, artnamn på artprofilen, premium-headline. Italic, elegant, känns som tryckt i en gammal naturalist-bok. |
-| **Caveat** (regular + bold) | Accent-ord, marginal-anteckningar, "ditt val", små copy-snuttar som ska se handskrivna ut. Roterade -3° till -6° för känslan av en penna. |
+| **DM Serif Display** | Rubriker, artnamn, premium-headline. Sedan 1.3.0 **upprätt**, med accentordet i **kursiv** DM Serif (i appen). Känns tryckt i en gammal naturalist-bok. |
+| **Caveat** (regular + bold) | Marginal-anteckningar, toasts och små copy-snuttar som ska se handskrivna ut, roterade -3° till -6°. På webben även accentord i rubrikerna. |
 | **Inter** (sans, regular + medium + semibold) | Body-text, UI-element, knapptexter, allt funktionellt. |
 | **System monospace** | Pris-rader, exakta siffror där det måste vara läsbart. |
 
-**Konvention:** Rubriker använder syntaxen `*ord*` i koden för att markera accent-segment som ska renderas i Caveat-italic. Exempel: `"A *field birder's* / year."` → "A" + "field birder's" (Caveat, roterad) + "year." på rad 2.
+**Konvention:** Rubriker använder syntaxen `*ord*` i koden för att markera accent-segment. I appen renderas de sedan 1.3.0 i kursiv DM Serif (förut Caveat). Exempel: `"A *field birder's* / year."` → "A" + "field birder's" (kursiv accent) + "year." på rad 2. Kickers (`MicroLabel`) har en hårlinje.
 
 ### Komponenter (de viktigaste)
 
@@ -112,7 +117,7 @@ Birdys hela visuella identitet är byggd runt en **digital fältdagbok**: papper
 
 - **Hero är en zon, inte ett kort.** Vertikal gradient flödar mot pappersbg, ingen hård kant.
 - **Inga skarpa rektanglar.** Allt är antingen runda (stämplar, knappar), ramade (PlateFrame), eller övergångar (gradients).
-- **Aktiva element i koppar** (`#A8552D`). Aktiv flik, primär CTA, stat-siffror — alla pekar mot samma färg-eko.
+- **Aktiva element i rost** (`#9A4526`). Aktiv flik, primär CTA, stat-siffror: alla pekar mot samma färg-eko. Mässing (`#B8893A`) hör till Premium.
 - **Marginal-texter i Caveat-italic, roterade**. Aldrig stora textmassor i Caveat — bara accents.
 
 ### Vad det INTE är
@@ -141,7 +146,7 @@ Birdys hela visuella identitet är byggd runt en **digital fältdagbok**: papper
 
 När du ber Claude hjälpa med ikondesign:
 
-- **Var alltid explicit med palett**: skicka in `#EFE7D6` (paper), `#A8552D` (copper), `#3F4F30` (marginalia ink), `#1F3A5F` (stamp navy).
+- **Var alltid explicit med palett**: skicka in `#F6EFE2` (papper), `#26301F` (bläck), `#9A4526` (rost), `#1F2A19` (mossa), `#B8893A` (mässing), `#1F3A5F` (stamp navy).
 - **Var explicit med stil**: "tunn linjekonst, naturalist-fältdagbok, ingen gradients, ingen glow, ingen 3D, inga emojis-look".
 - **Be om SVG-output** för allt som ska skalas.
 - **Be om dual-variant** (locked + unlocked) för stämplar.
@@ -192,12 +197,12 @@ Lanserad i produktion 2026-06-17. Lokaliserade, längd-säkra titlar + korta bes
 
 - **Free tier:** Foto-ID + audio-ID + Match-flow + Encyclopedia + Dagbok + platsfångst (opt-in) + 27 märken
 - **Premium:** privat fynd-**karta**, **PDF-export** av dagboken, **säsongsstatistik**, **7 extra märken**
-- **Produkter:** årsabonnemang (`premium_yearly_v1`) + lifetime engångsköp (`premium_lifetime_v1`) via Google Play Billing v8. Priser sätts i Play Console och hämtas runtime (lokaliserad valuta). Beslutad prisnivå 2026-05-15: 299 kr/år + 699 kr lifetime. **OBS:** appens fallback-strängar (visas innan Billing laddat) säger fortfarande 199/499 kr — synka vid Billing-go-live.
+- **Produkter:** årsabonnemang (`premium_yearly_v1`) + lifetime engångsköp (`premium_lifetime_v1`) via Google Play Billing v8. Priser sätts i Play Console och hämtas runtime (lokaliserad valuta). Beslutad prisnivå 2026-05-15: 299 kr/år + 699 kr lifetime. Sedan 1.3.0 finns inga hårdkodade reservpriser: köpknappen är spärrad tills Play har svarat med priset.
 - **iOS:** StoreKit 2 i plan i5; paywall aktiv från dag 1 på App Store.
 
 ### Lanseringsläge
 
-`PREMIUM_OPEN_FOR_LAUNCH=true` → alla har premium gratis just nu. **Grandfather-beslut:** användare från lanseringsperioden behåller premium för alltid. Monetiseringsflippen kräver: Billing-runtime-verify (checklista finns i repo-runbook) → AB-bolagets kontoflytt → flippa flaggan + bumpa version.
+I produktionsversionen 1.2.0 gäller fortfarande `PREMIUM_OPEN_FOR_LAUNCH=true` (alla har Premium gratis). **I 1.3.0 är flaggan `false` och betalningen på**, på AlbIT AB:s konto. **Grandfather:** `firstInstallTimestamp` eller `PackageInfo.firstInstallTime` före brytpunkten 2026-10-02 00:00 Stockholm ger `Active(LIFETIME)` för alltid; regeln räknas om vid varje start (inget sparat beslut) och brytpunkten får aldrig ändras efter release. Hård grind före produktionsbygget: ett riktigt köp ska ge Premium utan `Signature verification failed` (runbook i repot).
 
 ### Viktiga don'ts (från research; status)
 
@@ -208,7 +213,7 @@ Lanserad i produktion 2026-06-17. Lokaliserade, längd-säkra titlar + korta bes
 
 ### Realistisk prognos år 1
 
-~85 000 kr brutto efter Google's 15% cut (small-business-tier). Inte en kassasuccé — målet är **proof-of-concept för Birdy AB**, inte primary income. Monetiseringen är ännu inte påslagen; real ramp efter flippen + iOS-launch.
+~85 000 kr brutto efter Google's 15% cut (small-business-tier). Inte en kassasuccé — målet är **proof-of-concept och varumärke för AlbIT AB**, inte primary income. Monetiseringen slås på i 1.3.0; real ramp efter det + iOS-launch.
 
 ---
 
@@ -235,8 +240,9 @@ Lanserad i produktion 2026-06-17. Lokaliserade, längd-säkra titlar + korta bes
 
 ### Kommande marketing-beats
 
-1. **Monetiseringsflippen** — "grandfather"-berättelsen (tidiga användare belönas) är en positiv story, inte en paywall-story.
-2. **iOS-launchen (v2)** — ny pressrunda; "nu även på iPhone" + KMP-tech-vinkeln för HN.
+1. **1.3.0 och monetiseringsflippen**: "grandfather"-berättelsen (tidiga användare behåller Premium för alltid) är en positiv story, inte en paywall-story. Webbens Premium-ton: "ett tillval, aldrig ett måste".
+2. **Artsidorna** på birdy.community (organisk söktrafik per art och grupp, SV + EN).
+3. **iOS-launchen (v2)**: ny pressrunda; "nu även på iPhone" + KMP-tech-vinkeln för HN.
 
 ---
 
@@ -290,7 +296,15 @@ Lanserad i produktion 2026-06-17. Lokaliserade, längd-säkra titlar + korta bes
 | Proprietär LICENSE på repot | 2026-06-25 | Koden är publik att läsa men inte fri att återanvända |
 | **iOS (v2): feature-parity, inga nya features under porten** | 2026-07-07 | Scope-disciplin; parity är mätbart |
 | **iOS lanserar med StoreKit-paywall aktiv dag 1** | 2026-07-07 | Android-lanseringens gratis-period upprepas inte |
-| LiteRT-migrationen (16 KB-fixen) görs i iOS-plan i2 | 2026-07-07 | iOS-ML byggs på nya biblioteket; Android blir release-ready på köpet |
+| LiteRT-migrationen (16 KB-fixen) görs i iOS-plan i2 | 2026-07-07 | Gjord i i2a 2026-07-18 (`litert:1.4.1` + 16 KB-flex); når användarna med 1.3.0 |
+| vC127 (1.2.2) laddas aldrig upp; allt samlas i 1.3.0 med API 36 | 2026-09-24 | Play avvisar API 35-uppdateringar sedan 31 aug 2026 |
+| **Release 1.3.0: API 36 + betalning + utseendelyft i samma release, datumet styr** | 2026-09-24 | Det som inte hinns blir en oktober-uppföljare |
+| **Appen flyttad till AlbIT AB:s utvecklarkonto, betalningen på** | 2026-09-24 | Bolaget är registrerat; kontoflytten var villkoret för flippen |
+| **Grandfather via installationstid före brytpunkten (2026-10-02 00:00)** | 2026-09-24 | Räknas om vid varje start; flyttas bara före produktionsbygget om releasen slirar |
+| Palett "Mossa, rost & mässing", upprätt DM Serif med kursiv accent | 2026-09-24 | Redaktionellt lyft av Field Journal, inte ett nytt tema |
+| Webben går live före appen | 2026-09-25 | Albins beslut vid förhandsvisningen |
+| Artsidor på webben: SV + EN, bara de 180 granskade arterna | 2026-09-25 | Organisk sök + AlbIT:s eget SEO-case |
+| Webben i fältbokens färger (espresso, persika, handstil); mossgrönt bara i telefonerna | 2026-09-28 | "Super happy. Do it all." |
 
 ---
 
@@ -300,7 +314,7 @@ Lanserad i produktion 2026-06-17. Lokaliserade, längd-säkra titlar + korta bes
 
 ### Ikondesign
 
-> "Designa en stämpel för 'Storgöksobservation' i Birdys Field Journal-stil. Stämpel-form rund, tunn linjekonst, palett: paper `#EFE7D6`, copper `#A8552D`, marginalia ink `#3F4F30`. Två varianter: locked (outline only) + unlocked (filled + AccentCopper). SVG-output, 96×96 viewBox."
+> "Designa en stämpel för 'Storgöksobservation' i Birdys Field Journal-stil. Stämpel-form rund, tunn linjekonst, palett: papper `#F6EFE2`, rost `#9A4526`, bläck `#26301F`. Två varianter: locked (outline only) + unlocked (filled + rost). SVG-output, 96×96 viewBox."
 
 ### Marketing-copy
 
@@ -343,4 +357,4 @@ Om Claude behöver något av detta — säg till mig så bifogar jag.
 
 ---
 
-*Filen uppdaterad: 2026-07-11 (från 2026-05-20-versionen). Owner: Albin Lindblom. Repo: github.com/anonadrek/birdy.*
+*Filen uppdaterad: 2026-09-30 (tidigare 2026-07-11 och 2026-05-20). Owner: Albin Lindblom. Repo: github.com/anonadrek/birdy.*
