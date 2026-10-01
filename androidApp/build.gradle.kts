@@ -101,9 +101,11 @@ if (cutoffOverride != null && !billingTestBuild) {
 val releaseVersionName = releaseVersionNameBase + (if (billingTestBuild) "-koptest" else "")
 
 // Early-user cutoff (spec §5.1): installs before this instant keep Premium forever.
-// Default = planned go-live + 48 h = 2026-10-02T00:00 Europe/Stockholm
-// (2026-10-01T22:00:00Z). NEVER change it after 1.3.0 ships.
-val grandfatherCutoffMs = cutoffOverride ?: "1790892000000"
+// Default = planned go-live + 48 h = 2026-10-16T00:00 Europe/Stockholm
+// (2026-10-15T22:00:00Z), for go-live no later than 2026-10-14. Moved 2026-10-01
+// from 2026-10-02 because go-live slipped (Albin's call); move it again BEFORE
+// building vC129 if go-live slips past 2026-10-14. NEVER change it after 1.3.0 ships.
+val grandfatherCutoffMs = cutoffOverride ?: "1792101600000"
 
 android {
     namespace = "se.birdy.android"

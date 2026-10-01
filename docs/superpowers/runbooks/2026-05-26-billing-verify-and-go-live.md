@@ -1,6 +1,6 @@
 # Billing-verify + go-live runbook (v1.0)
 
-> **Uppdatering 2026-09-25 (release 1.3.0):** Appen ligger nu på AB:s utvecklarkonto. `PREMIUM_OPEN_FOR_LAUNCH=false` och grandfather-regeln (§5) är implementerade i 1.3.0 (`GrandfatherPolicy`, brytpunkt `GRANDFATHER_CUTOFF_MS` = 2026-10-02 00:00 Stockholm, tack-skärm en gång för tidiga användare). Köptestet körs med **vC128 byggt med `-Pbirdy.grandfatherCutoffMs=0 -Pbirdy.billingTestBuild=true`** (versionsnamnet blir `1.3.0-koptest`; flaggorna gäller bara på kommandoraden, aldrig i gradle.properties): ingen är grandfathered, så betalväggen syns även på Albins gamla installation. **vC128 får ALDRIG befordras till produktion.** Produktionsbygget blir vC129 med standardbrytpunkten; bygget skriver ut `Birdy release config: … GRANDFATHER_CUTOFF_MS=1790892000000 billingTestBuild=false`, kontrollera den raden.
+> **Uppdatering 2026-09-25 (release 1.3.0):** Appen ligger nu på AB:s utvecklarkonto. `PREMIUM_OPEN_FOR_LAUNCH=false` och grandfather-regeln (§5) är implementerade i 1.3.0 (`GrandfatherPolicy`, brytpunkt `GRANDFATHER_CUTOFF_MS` = 2026-10-16 00:00 Stockholm (flyttad 2026-10-01 från 2026-10-02, för go-live senast 2026-10-14), tack-skärm en gång för tidiga användare). Köptestet körs med **vC128 byggt med `-Pbirdy.grandfatherCutoffMs=0 -Pbirdy.billingTestBuild=true`** (versionsnamnet blir `1.3.0-koptest`; flaggorna gäller bara på kommandoraden, aldrig i gradle.properties): ingen är grandfathered, så betalväggen syns även på Albins gamla installation. **vC128 får ALDRIG befordras till produktion.** Produktionsbygget blir vC129 med standardbrytpunkten; bygget skriver ut `Birdy release config: … GRANDFATHER_CUTOFF_MS=1792101600000 billingTestBuild=false`, kontrollera den raden.
 >
 > **Förberedelser i Play Console (AB):**
 > 1. Skapa `premium_yearly_v1` (prenumeration med EN basplan: 1 år, förnyas automatiskt, eftersom appen säger "Förnyas årligen till <pris>") och `premium_lifetime_v1` (engångsköp). Sätt priser och aktivera båda.
@@ -13,7 +13,7 @@
 > **Checklista för produktionsbygget vC129:**
 > 1. Höj `releaseVersionCode` till 129 i `androidApp/build.gradle.kts`.
 > 2. Bygg från en vanlig terminal med `./gradlew :androidApp:bundleRelease` utan några `-P`-argument (inte heller i IDE:ns fält). Bygg aldrig via `packageReleaseBundle` direkt, eftersom skyddet sitter på `bundleRelease`/`assembleRelease`.
-> 3. Kontrollera raden i byggutskriften: `Birdy release config: versionCode=129 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1790892000000 billingTestBuild=false`. Står det `-koptest` eller `GRANDFATHER_CUTOFF_MS=0`: stoppa.
+> 3. Kontrollera raden i byggutskriften: `Birdy release config: versionCode=129 versionName=1.3.0 GRANDFATHER_CUTOFF_MS=1792101600000 billingTestBuild=false`. Står det `-koptest` eller `GRANDFATHER_CUTOFF_MS=0`: stoppa.
 > 4. Versionsnamnet i Console får inte sluta på `-koptest`.
 > 5. Slirar go-live: flytta brytpunkten (go-live + 48 h) FÖRE uploaden, aldrig efter.
 > 6. När vC129 är i produktion: ta bort vC128 från intern testning (eller befordra vC129 dit). Ett senare köptestbygge måste ha en versionCode över produktionens och behålla `-koptest`.
@@ -108,7 +108,7 @@ Fresh install, debug-toggle PÅ (`NotActive`). Banner "Unlock Premium" syns på 
 
 ## 5. Grandfather launch-period-användare (HARD GATE på flippen)
 
-> **Implementerad i 1.3.0 (2026-09-24/25).** Texten nedan är det ursprungliga beslutet. Skillnader i det som byggdes: brytpunkten är 2026-10-02 00:00 Stockholm (go-live + 48 h), och en tack-skärm visas en gång. Källorna härdades 2026-10-01 (spec §5.1 tillägget): `firstInstallTimestamp` räknas bara som det värde ett äldre bygge (1.2.x/vC128) skrev, fångat en gång vid första starten av ett bygge med regeln, och annars nätverkstiden (Android 13+) vid första starten; enhetens klocka och `PackageInfo.firstInstallTime` är inte bevis. Verifieras på enhet i Plan 3 (debugbygge: Diagnostics → "Simulate early user").
+> **Implementerad i 1.3.0 (2026-09-24/25).** Texten nedan är det ursprungliga beslutet. Skillnader i det som byggdes: brytpunkten är 2026-10-16 00:00 Stockholm (go-live senast 2026-10-14 + 48 h; flyttad 2026-10-01 från 2026-10-02), och en tack-skärm visas en gång. Källorna härdades 2026-10-01 (spec §5.1 tillägget): `firstInstallTimestamp` räknas bara som det värde ett äldre bygge (1.2.x/vC128) skrev, fångat en gång vid första starten av ett bygge med regeln, och annars nätverkstiden (Android 13+) vid första starten; enhetens klocka och `PackageInfo.firstInstallTime` är inte bevis. Verifieras på enhet i Plan 3 (debugbygge: Diagnostics → "Simulate early user").
 
 **Beslut (Albin 2026-06-17):** Alla som laddar ner appen *innan* monetiseringen slås på (`PREMIUM_OPEN_FOR_LAUNCH=false`) ska behålla full Premium **för alltid** — "inget snack om saken". Tidiga användare straffas aldrig av att vi börjar ta betalt.
 

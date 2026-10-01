@@ -44,7 +44,7 @@
 **Release 1.3.0 i slutskedet (spec 2026-09-24):**
 - **API 36** (Play kräver det för alla uppdateringar sedan 31 aug 2026; de färdiga 1.2.1/1.2.2-fixarna, 16 KB-sidor, språkval och ljud-ID, åker med här eftersom de aldrig laddades upp).
 - **Betalningen påslagen** på **AlbIT AB:s utvecklarkonto** (appen är flyttad dit). Produkter `premium_yearly_v1` + `premium_lifetime_v1`, priserna hämtas bara från Play.
-- **Tidiga användare behåller Premium för alltid:** installerat före brytpunkten 2026-10-02 00:00 Stockholm (go-live + 48 h; flyttas om releasen slirar) ger livstids-Premium och en tack-skärm en gång.
+- **Tidiga användare behåller Premium för alltid:** installerat före brytpunkten 2026-10-16 00:00 Stockholm (go-live senast 2026-10-14 + 48 h; flyttad 2026-10-01 från 2026-10-02, flyttas igen om releasen slirar) ger livstids-Premium och en tack-skärm en gång.
 - **Utseendelyftet** "Mossa, rost & mässing" (se §3), nya layouter för Identifiera, resultat, Mina arter, Premium, uppslagsverket, artprofilen och säsongsstatistiken.
 - Status: Plan 1 (grund) och Plan 2 (utseende) klara och mergade. Köptestbygget vC128 finns. **Produktionsbygget vC129 väntar på Albin:** ny MapTiler-nyckel (den gamla läckte i ett publikt plan-dokument), ett riktigt köp med vC128 på Galaxyn, och go-live-datum. Därefter Plan 3 (QA + release).
 
@@ -300,7 +300,7 @@ I produktionsversionen 1.2.0 gäller fortfarande `PREMIUM_OPEN_FOR_LAUNCH=true` 
 | vC127 (1.2.2) laddas aldrig upp; allt samlas i 1.3.0 med API 36 | 2026-09-24 | Play avvisar API 35-uppdateringar sedan 31 aug 2026 |
 | **Release 1.3.0: API 36 + betalning + utseendelyft i samma release, datumet styr** | 2026-09-24 | Det som inte hinns blir en oktober-uppföljare |
 | **Appen flyttad till AlbIT AB:s utvecklarkonto, betalningen på** | 2026-09-24 | Bolaget är registrerat; kontoflytten var villkoret för flippen |
-| **Grandfather via installationstid före brytpunkten (2026-10-02 00:00)** | 2026-09-24 | Räknas om vid varje start; flyttas bara före produktionsbygget om releasen slirar |
+| **Grandfather via installationstid före brytpunkten (2026-10-16 00:00, flyttad från 2026-10-02)** | 2026-09-24 | Räknas om vid varje start; flyttas bara före produktionsbygget om releasen slirar |
 | Palett "Mossa, rost & mässing", upprätt DM Serif med kursiv accent | 2026-09-24 | Redaktionellt lyft av Field Journal, inte ett nytt tema |
 | Webben går live före appen | 2026-09-25 | Albins beslut vid förhandsvisningen |
 | Artsidor på webben: SV + EN, bara de 180 granskade arterna | 2026-09-25 | Organisk sök + AlbIT:s eget SEO-case |
