@@ -11,6 +11,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import se.birdy.app.AndroidAppGraphHolder
 import se.birdy.app.R
+import se.birdy.app.notifications.AndroidNotificationPayloads
 import se.birdy.app.notifications.NotificationChannels
 import se.birdy.app.notifications.NotificationPayloads
 
@@ -20,9 +21,12 @@ class WeeklyRecapWorker(
 ) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
         return try {
-            val graph = AndroidAppGraphHolder.current ?: return Result.success()
+            val payloads =
+                NotificationPayloads.fromGraphOr(AndroidAppGraphHolder.current) {
+                    AndroidNotificationPayloads.fromContext(applicationContext)
+                }
             val forceForDev = inputData.getBoolean(KEY_FORCE_FOR_DEV, false)
-            val content = NotificationPayloads.from(graph).weeklyRecap(forceForDev) ?: return Result.success()
+            val content = payloads.weeklyRecap(forceForDev) ?: return Result.success()
 
             NotificationChannels.ensureCreated(applicationContext)
 
