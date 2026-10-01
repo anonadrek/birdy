@@ -1,35 +1,46 @@
-# Artsidor fas 2: sidorna på birdy.community – implementationsplan
+# Artsidor fas 2: sidorna på birdy.community, implementationsplan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Ingångssida, 15 gruppsidor och en artsida per granskad art (svenska och engelska) på birdy.community, byggda ur fas 1:s datafiler. Dessutom ny meny- och sidfotsnavigering och SEO-reglerna som ett skript som stoppar bygget vid fel.
+> **Reviderad 2026-10-01** efter specens revision samma dag (faktablad, flera källor, datamoduler, inspelningar, förväxlingsarter, jämförelsesidor, om-sidan, publicering i vågor). Planen byggs **mot testdata** parallellt med pipelineplanen `docs/superpowers/plans/2026-10-01-artsidor-fas1b-faktablad.md`. Kontraktet mellan dem är specens bilaga C och D. Riktig data behövs först i Task 17.
 
-**Architecture:** En innehållssamling `species` (Astro content collection) läser `website/src/data/species/*.json`, och `src/lib/species.ts` samlar all logik (adresser, grupper, titlar, relaterade arter, bilder). Sidorna är komponenter under `src/components/species/`, och en dynamisk route per språk renderar artsidor och gruppsidor. Artsidan har layout B: ett CSS-rutnät på dator med sticky vänsterspalt, och i mobilen `display: contents` med `order`, så att ordningen blir den som specen kräver. `scripts/check-seo.mjs` kontrollerar den byggda sajten.
+**Goal:** Ingångssida, gruppsidor, en artsida per publicerad art, jämförelsesidor för förväxlingspar och sidan "Så gör vi artsidorna", på svenska och engelska, byggda ur pipelinens datafiler och publicerade våg för våg. Dessutom ny meny- och sidfotsnavigering, filter för egna besök i Vercel Analytics och SEO-reglerna som ett skript som stoppar bygget vid fel.
 
-**Tech Stack:** Astro 5 (content layer, `astro:assets`), TypeScript, `@astrojs/sitemap`, Playwright, Node-skript utan nya beroenden.
+**Architecture:** Två innehållssamlingar (`species`, `comparisons`) läser JSON-filerna, och `src/lib/species-source.mjs` avgör i ren JS var datan ligger (riktig data eller testdata) och vilka poster som får en sida (publicerade, eller granskade i ett förhandsbygge). `src/lib/species.ts` samlar all sidlogik. Komponenterna under `src/components/species/` renderar sidorna, och en dynamisk route per språk delegerar till rätt komponent. Diagram och länskarta ritas som SVG när sajten byggs. Inspelningarna kopieras in i `dist/` vid bygget, bara för arter som får en sida. `scripts/check-seo.mjs` och `scripts/check-preview-build.mjs` kontrollerar den byggda sajten.
 
-**Spec:** `docs/superpowers/specs/2026-09-25-artsidor-design.md` (avsnitt 4 till 6 och 9 till 12, bilaga A). Mockup: `docs/superpowers/specs/assets/2026-09-25-artsidor/helheten.html`. Fas 1: `docs/superpowers/plans/2026-09-25-artsidor-fas1-pipeline.md`.
+**Tech Stack:** Astro 5 (content layer, `astro:assets`), TypeScript, Zod, `@astrojs/sitemap`, Playwright, Node 22 (`node --test` för enhetstester), sharp (finns redan), inga nya beroenden.
+
+**Spec:** `docs/superpowers/specs/2026-09-25-artsidor-design.md` (avsnitt 4 till 8 och 10 till 15, bilaga A, C och D). Mockup: `docs/superpowers/specs/assets/2026-09-25-artsidor/helheten.html`.
 
 ---
 
 ## Avvikelser från specen (medvetna, små)
 
-1. **Skriptet heter `npm run verify`**, eftersom `npm run check` redan är `astro check`. Det kör build, `check-seo`, `test:i18n`, `test:no-dashes`, `test:palette` och `test:contrast`.
-2. **Appruta och textcredit nämner inte artens namn.** "Birdy känner igen talgoxe på foto" blir fel böjning på svenska och datan har inte bestämd form. Ny text: "Birdy känner igen arten på foto eller läte, direkt i telefonen och utan täckning." Textcrediten blir: "Texten bygger på Wikipedia och får delas under CC BY-SA 4.0. Källor: svenska artikeln, engelska artikeln", med länkar till respektive revision.
-3. **Sökfältet i kategoriraden skickar `q` till ingångssidan**, som gör filtreringen. I mobilen visas bara ikonen, och ett tryck öppnar ingångssidan med sökfältet i fokus.
-4. **Artkorten har tom alt-text.** Namnet står som text i samma länk, så en alt-text hade upprepat det för skärmläsare. Artsidans foton har full alt-text.
+1. **Skriptet heter `npm run verify`**, eftersom `npm run check` redan är `astro check`. Testdatans variant heter `npm run verify:fixtures`.
+2. **Approtan, spelarens etikett och textcrediten nämner inte artens namn i löptext.** "Birdy känner igen talgoxe på foto" blir fel böjning på svenska och datan har inte bestämd form. Approtan säger "arten" / "this species" i fyra varianter efter `identifiable`, spelarens etikett är "Inspelning: Talgoxe", och textcrediten är "Texten bygger på Wikipedia och får delas under CC BY-SA 4.0. Källor: svenska artikeln, engelska artikeln, tyska artikeln" med länkar till revisionerna.
+3. **Sökfältet i kategoriraden skickar `q` till ingångssidan**, som gör filtreringen.
+4. **Artkort och förväxlingsfoton har tom alt-text.** Namnet står som text i samma länk eller bredvid.
+5. **Grupper utan någon byggd art får varken sida, chip eller kort.** Specen säger att chipsen gäller grupper med minst en publicerad art; samma regel används för gruppsidan och kortet, annars hade det funnits tomma sidor.
+6. **Datameningarna visas som ett stycke under diagrammet och kartan tillsammans.** Pipelinen skriver dem som en lista utan uppdelning (bilaga C), så båda SVG:erna pekar på samma stycke med `aria-describedby`.
+7. **Namnet på en förväxlingsart utan egen fil läses ur `facts[].other.scientific`.** Bilaga C säger att sajten inte läser `facts`, men en förväxlingsart utanför de 180 har inget annat namn i datan. Sajten läser bara `id`, `topic` och `other` ur faktalistan.
+8. **Inspelningens creditrad står direkt under spelaren**, inte i creditblocket längst ned.
+9. **Inspelningarnas adresser har ett innehållshash** (`/audio/species/Q25485.3f9c0a1b2d.mp3`) och kopieras till `dist/` av en byggkrok, bara för arter som får en sida. En Vite-glob (`?url`) hade lagt alla inspelningar i bygget, även opublicerade.
+10. **Planen har ett eget publiceringsskript** (`scripts/publish-wave.mjs`) som sätter `publish: true` för en våg. Det rör bara fältet `publish`.
+11. **Jämförelsesidans engelska version ordnar arterna efter de engelska slugsen** (spec §4), så kolumnerna kan byta plats mellan språken. Tabellens celler följer med.
+12. **Specens exempel i bilaga C och D har fel QID för blåmes** (Q25438 är havsörn, blåmesen är Q25404). Testdatan använder Q25404.
 
 ## Förutsättningar
 
-- **Fas 1 är klar:** `website/src/data/species/*.json` och `website/src/assets/species/` finns på `main`, och talgoxen (Q25485) har `status: "ok"`. Testerna i den här planen använder talgoxen, blåmesen och gruppen Ugglor.
-- **1.3-webben är live** (sedan 2026-09-25). Planen bygger på den koden.
+- **1.3-webben i fältbokens färger är live** (sedan 2026-09-28). Planen bygger på den koden.
+- **Fas 1b behövs inte förrän Task 17.** Task 1 till 16 körs på testdata i `website/tests/fixtures/`.
 - **Gren:** från `main`, i en egen worktree med kort sökväg (långa sökvägar failar på Windows):
   ```bash
   git worktree add C:/w/birdy-artsidor -b website/artsidor
   cd C:/w/birdy-artsidor/website && npm ci
   ```
-  Alla kommandon nedan körs i `C:/w/birdy-artsidor/website`.
-- **Testkommando:** `npm run build && PLAYWRIGHT_PORT=4327 npx playwright test <fil>` (egen port så att en annan dev-server inte krockar, som i 1.3-arbetet).
+  Alla kommandon nedan körs i `C:/w/birdy-artsidor/website` med Git Bash.
+- **Bygg och testa på testdata:** `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test <fil>` (egen port så att en annan dev-server inte krockar). Playwright serverar `dist/`, så bygg alltid med testdata före Playwright.
+- **Lägen:** `SPECIES_FIXTURES=1` läser testdatan i stället för `src/data/` och `src/assets/species/`. `SPECIES_PREVIEW=1` bygger även granskade sidor som inte är publicerade (sätts i Vercels miljö Preview i Task 18). `scripts/env-run.mjs` sätter variablerna på samma sätt på Windows och macOS.
 
 ## Filstruktur
 
@@ -37,30 +48,606 @@
 
 | Fil | Ansvar |
 |---|---|
-| `src/lib/species.ts` | Typer, laddning, adresser, grupper, titlar, relaterade arter, bilder, UTM, JSON-LD för brödsmulor. |
-| `src/lib/species-sitemap.mjs` | Samma data i ren JS för `astro.config.mjs`: `lastmod` och vilka gruppsidor som har `noindex`. |
-| `src/styles/species.css` | Delade stilar för brödsmulor, rubriker, kortrutnät och approta. |
-| `src/components/species/CategoryBar.astro` | Kategoriraden med chips och sökfält. |
-| `src/components/species/SpeciesCard.astro` | Artkort (foto, namn, vetenskapligt namn). |
-| `src/components/species/SpeciesHub.astro` | Ingångssidan. |
-| `src/components/species/GroupPage.astro` | Gruppsidan. |
-| `src/components/species/SpeciesArticle.astro` | Artsidan (layout B). |
-| `src/components/species/Credits.astro` | Foto- och textcredits samt raden "Hittade du ett fel?". |
-| `src/pages/species/index.astro`, `src/pages/species/[slug].astro` | Engelska routes. |
-| `src/pages/sv/arter/index.astro`, `src/pages/sv/arter/[slug].astro` | Svenska routes. |
-| `scripts/check-seo.mjs` | SEO-reglerna på `dist/`. |
-| `tests/species.spec.ts` | Playwright för ingång, grupp, art, meny och sidfot. |
+| `scripts/env-run.mjs` | Kör ett kommando med extra miljövariabler (Windows och macOS). |
+| `src/lib/species-source.mjs` | Var datan ligger, vem som får en sida, inspelningarnas adresser. Delas av config, sidor och skript. |
+| `tests/fixtures/make-species-fixtures.mjs` | Skriver testdatan (20 arter, 4 jämförelser, testbilder, tysta mp3). |
+| `tests/fixtures/species/*.json`, `tests/fixtures/comparisons/*.json`, `tests/fixtures/species-assets/**` | Testdatan (genererad, committad). |
+| `tests/unit/species-source.unit.mjs`, `tests/unit/publish-wave.unit.mjs` | Enhetstester med `node --test`. |
+| `scripts/build-sweden-counties.mjs`, `src/data/sweden-counties.json` | Länsgränserna som SVG-banor (Natural Earth). |
+| `src/lib/species.ts` | Typer, laddning, adresser, grupper, titlar, jämförelser, förväxlingsarter, datum, JSON-LD. |
+| `src/lib/species-routes.ts` | Sökvägarna för den dynamiska routen. |
+| `src/lib/species-sitemap.mjs` | `lastmod` och `noindex` för sitemapen, i ren JS. |
+| `src/styles/species.css` | Delade stilar. |
+| `src/components/species/CategoryBar.astro`, `SpeciesCard.astro`, `SpeciesHub.astro`, `GroupPage.astro`, `SpeciesArticle.astro`, `ComparisonPage.astro`, `AboutSpeciesPages.astro`, `SpeciesRoute.astro` | Sidorna. |
+| `src/components/species/MonthChart.astro`, `CountyMap.astro`, `AudioPlayer.astro`, `Credits.astro` | Moduler. |
+| `src/pages/species/index.astro`, `src/pages/species/[slug].astro`, `src/pages/species/about-these-pages.astro` | Engelska routes. |
+| `src/pages/sv/arter/index.astro`, `src/pages/sv/arter/[slug].astro`, `src/pages/sv/arter/om-artsidorna.astro` | Svenska routes. |
+| `scripts/check-seo.mjs`, `scripts/check-preview-build.mjs`, `scripts/publish-wave.mjs` | Kontroller och publicering. |
+| `tests/species.spec.ts`, `tests/comparisons.spec.ts`, `tests/analytics.spec.ts` | Playwright. |
 
-**Ändras:** `src/content.config.ts`, `src/layouts/Layout.astro`, `src/components/Nav.astro`, `src/components/Footer.astro`, `src/components/Guide.astro`, `src/components/ui/Icon.astro`, `src/content/copy.{en,sv}.json`, `astro.config.mjs`, `scripts/check-no-dashes.mjs`, `package.json`, `tests/home.spec.ts`.
+**Ändras:** `src/content.config.ts`, `src/layouts/Layout.astro`, `src/components/Nav.astro`, `src/components/Footer.astro`, `src/components/Guide.astro`, `src/components/ui/Icon.astro`, `src/content/copy.{en,sv}.json`, `astro.config.mjs`, `scripts/check-no-dashes.mjs`, `package.json`, `.gitignore`, `tests/home.spec.ts`.
 
 ---
 
-### Task 1: Layout får språkpar, noindex och extra JSON-LD
+### Task 1: Byggläget och testdatan
+
+**Files:**
+- Create: `website/scripts/env-run.mjs`
+- Create: `website/src/lib/species-source.mjs`
+- Create: `website/tests/unit/species-source.unit.mjs`
+- Create: `website/tests/fixtures/make-species-fixtures.mjs` (och det den genererar)
+- Modify: `website/package.json`, `website/.gitignore`
+
+- [ ] **Step 1: Skriv enhetstestet för publiceringsregeln**
+
+`tests/unit/species-source.unit.mjs`:
+
+```js
+// node --test "tests/unit/*.unit.mjs"  (the .unit.mjs suffix keeps Playwright from picking it up)
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { isComparisonBuilt, isSpeciesBuilt } from '../../src/lib/species-source.mjs';
+
+const ok = { status: 'ok', publish: true, review: { facts: { by: 'Albin Abrahamsson', at: '2026-11-20' } } };
+
+test('publicerad och granskad art får sida', () => {
+  assert.equal(isSpeciesBuilt(ok, false), true);
+});
+
+test('opublicerad art får sida bara i förhandsbygget', () => {
+  const draft = { ...ok, publish: false };
+  assert.equal(isSpeciesBuilt(draft, false), false);
+  assert.equal(isSpeciesBuilt(draft, true), true);
+});
+
+test('pending och failed får aldrig sida', () => {
+  for (const status of ['pending', 'failed']) assert.equal(isSpeciesBuilt({ ...ok, status }, true), false);
+});
+
+test('ogranskade fakta ger ingen sida, inte ens i förhandsbygget', () => {
+  assert.equal(isSpeciesBuilt({ ...ok, review: { wave: 1 } }, true), false);
+});
+
+test('jämförelse kräver båda arternas sidor', () => {
+  const cmp = { status: 'ok', publish: true, a: 'Q1', b: 'Q2' };
+  const both = new Set(['Q1', 'Q2']);
+  assert.equal(isComparisonBuilt(cmp, both, false), true);
+  assert.equal(isComparisonBuilt(cmp, new Set(['Q1']), false), false);
+  assert.equal(isComparisonBuilt({ ...cmp, publish: false }, both, false), false);
+  assert.equal(isComparisonBuilt({ ...cmp, publish: false }, both, true), true);
+  assert.equal(isComparisonBuilt({ ...cmp, status: 'pending' }, both, true), false);
+});
+```
+
+- [ ] **Step 2: Kör och se det faila**
+
+Run: `node --test "tests/unit/*.unit.mjs"`
+Expected: FAIL, `Cannot find module '.../src/lib/species-source.mjs'`.
+
+- [ ] **Step 3: Skriv `src/lib/species-source.mjs`**
+
+```js
+// Where the species pages read their data, and which records get a page (spec 2026-09-25 §14).
+// Plain JS so astro.config.mjs, content.config.ts, src/lib/species.ts and the check scripts share one rule.
+//   SPECIES_FIXTURES=1  read the test data in tests/fixtures/ instead of src/data/ and src/assets/species/
+//   SPECIES_PREVIEW=1   also build reviewed pages that are not published yet (Vercel Preview)
+import { createHash } from 'node:crypto';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+
+export const useFixtures = () => process.env.SPECIES_FIXTURES === '1';
+export const isPreview = () => process.env.SPECIES_PREVIEW === '1';
+
+/** Folders relative to the website root. */
+export const speciesDir = () => (useFixtures() ? 'tests/fixtures/species' : 'src/data/species');
+export const comparisonsDir = () => (useFixtures() ? 'tests/fixtures/comparisons' : 'src/data/comparisons');
+export const assetsDir = () => (useFixtures() ? 'tests/fixtures/species-assets' : 'src/assets/species');
+
+/** A species page exists when its text is written (ok), its facts are reviewed, and it is published or this is a preview build. */
+export function isSpeciesBuilt(record, preview = isPreview()) {
+  return record.status === 'ok' && Boolean(record.review?.facts) && (record.publish === true || preview);
+}
+
+/** A comparison page exists when its text is written, it is published or previewed, and both species pages exist. */
+export function isComparisonBuilt(record, builtQids, preview = isPreview()) {
+  return record.status === 'ok' && (record.publish === true || preview) && builtQids.has(record.a) && builtQids.has(record.b);
+}
+
+/** Every *.json in a folder under the website root, parsed and sorted by file name. A missing folder is an empty list. */
+export function readJsonDir(root, dir) {
+  const abs = resolve(root, dir);
+  if (!existsSync(abs)) return [];
+  return readdirSync(abs)
+    .filter((f) => f.endsWith('.json'))
+    .sort()
+    .map((f) => JSON.parse(readFileSync(resolve(abs, f), 'utf8')));
+}
+
+/** Public path of a species' recording. Content-hashed; astro.config.mjs copies the file into dist for built species only. */
+export function audioPublicPath(root, record) {
+  const file = resolve(root, assetsDir(), record.audio.file);
+  const hash = createHash('sha256').update(readFileSync(file)).digest('hex').slice(0, 10);
+  return `/audio/species/${record.qid}.${hash}.mp3`;
+}
+```
+
+- [ ] **Step 4: Kör testet igen**
+
+Run: `node --test "tests/unit/*.unit.mjs"`
+Expected: PASS (5 tester)
+
+- [ ] **Step 5: Skriv `scripts/env-run.mjs`**
+
+```js
+#!/usr/bin/env node
+// Runs a command with extra environment variables, the same way on Windows and macOS:
+//   node scripts/env-run.mjs SPECIES_FIXTURES=1 SPECIES_PREVIEW=1 -- astro build --force
+import { spawnSync } from 'node:child_process';
+
+const args = process.argv.slice(2);
+const split = args.indexOf('--');
+if (split < 1 || split === args.length - 1) {
+  console.error('Användning: node scripts/env-run.mjs NAMN=värde [NAMN=värde ...] -- kommando [argument]');
+  process.exit(2);
+}
+const env = { ...process.env };
+for (const pair of args.slice(0, split)) {
+  const eq = pair.indexOf('=');
+  if (eq < 1) {
+    console.error(`Ogiltig variabel: ${pair}`);
+    process.exit(2);
+  }
+  env[pair.slice(0, eq)] = pair.slice(eq + 1);
+}
+const result = spawnSync(args.slice(split + 1).join(' '), { stdio: 'inherit', env, shell: true });
+process.exit(result.status ?? 1);
+```
+
+- [ ] **Step 6: Skriv testdatans generator**
+
+`tests/fixtures/make-species-fixtures.mjs`:
+
+```js
+#!/usr/bin/env node
+// Writes TEST data for the species pages (spec 2026-09-25 appendix C and D), so the pages can be built
+// and tested before the pipeline has produced real files. Never real facts: every text says
+// "Testtext" / "Test text". Output lives under tests/fixtures/ and is only read when the build runs
+// with SPECIES_FIXTURES=1 (npm run build:fixtures). Re-run after changing this file:
+//   node tests/fixtures/make-species-fixtures.mjs
+import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
+
+const here = dirname(fileURLToPath(import.meta.url));
+const OUT = {
+  species: resolve(here, 'species'),
+  comparisons: resolve(here, 'comparisons'),
+  assets: resolve(here, 'species-assets'),
+};
+
+const COUNTY_CODES = ['SE-AB', 'SE-AC', 'SE-BD', 'SE-C', 'SE-D', 'SE-E', 'SE-F', 'SE-G', 'SE-H', 'SE-I', 'SE-K', 'SE-M', 'SE-N', 'SE-O', 'SE-S', 'SE-T', 'SE-U', 'SE-W', 'SE-X', 'SE-Y', 'SE-Z'];
+const YEAR_ROUND = [72, 58, 61, 55, 70, 79, 64, 68, 74, 100, 66, 69];
+const SUMMER = [0, 0, 1, 36, 100, 51, 49, 65, 51, 10, 1, 0];
+
+// The twelve "common species" in the footer must all be here, or the footer stops the build.
+const SPECIES = [
+  { qid: 'Q25485', sv: 'Talgoxe', en: 'Great Tit', sci: 'Parus major', fam: ['Paridae', 'Mesar'], group: 'songbirds', slug: ['talgoxe', 'great-tit'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, audio: 'trimmed', marginalia: true, de: true, months: YEAR_ROUND, status: 'resident', size: ['Cirka 14 cm', 'About 14 cm'], look: ['Q25404'] },
+  { qid: 'Q25404', sv: 'Blåmes', en: 'Eurasian Blue Tit', sci: 'Cyanistes caeruleus', fam: ['Paridae', 'Mesar'], group: 'songbirds', slug: ['blames', 'eurasian-blue-tit'], iucn: 'LC', red: 'not_listed', id: [true, true], audio: 'full', de: true, months: YEAR_ROUND, status: 'resident', size: ['Cirka 12 cm', 'About 12 cm'], look: ['Q25485'] },
+  { qid: 'Q25234', sv: 'Koltrast', en: 'Common Blackbird', sci: 'Turdus merula', fam: ['Turdidae', 'Trastar'], group: 'songbirds', slug: ['koltrast', 'common-blackbird'], iucn: 'LC', red: 'not_listed', id: [true, true], extra: true, audio: 'trimmed', de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q25334', sv: 'Rödhake', en: 'European Robin', sci: 'Erithacus rubecula', fam: ['Muscicapidae', 'Flugsnappare'], group: 'songbirds', slug: ['rodhake', 'european-robin'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q14683', sv: 'Gråsparv', en: 'House Sparrow', sci: 'Passer domesticus', fam: ['Passeridae', 'Sparvfinkar'], group: 'songbirds', slug: ['grasparv', 'house-sparrow'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q25307', sv: 'Skata', en: 'Eurasian Magpie', sci: 'Pica pica', fam: ['Corvidae', 'Kråkfåglar'], group: 'songbirds', slug: ['skata', 'eurasian-magpie'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', look: ['Q25345384'] },
+  { qid: 'Q25345384', sv: 'Kaja', en: 'Western Jackdaw', sci: 'Coloeus monedula', fam: ['Corvidae', 'Kråkfåglar'], group: 'songbirds', slug: ['kaja', 'western-jackdaw'], iucn: 'NE', red: 'not_listed', id: [false, true], de: true, months: YEAR_ROUND, status: 'resident', look: ['Q25307'] },
+  { qid: 'Q25383', sv: 'Bofink', en: 'Eurasian Chaffinch', sci: 'Fringilla coelebs', fam: ['Fringillidae', 'Finkar'], group: 'songbirds', slug: ['bofink', 'eurasian-chaffinch'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: SUMMER, status: 'breeding_migrant' },
+  { qid: 'Q25348', sv: 'Gräsand', en: 'Mallard', sci: 'Anas platyrhynchos', fam: ['Anatidae', 'Egentliga andfåglar'], group: 'waterfowl', slug: ['grasand', 'mallard'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q26427', sv: 'Fiskmås', en: 'Common Gull', sci: 'Larus canus', fam: ['Laridae', 'Måsfåglar'], group: 'gulls_terns', slug: ['fiskmas', 'common-gull'], iucn: 'LC', red: 'NT', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q25385', sv: 'Ormvråk', en: 'Common Buzzard', sci: 'Buteo buteo', fam: ['Accipitridae', 'Hökar'], group: 'raptors', slug: ['ormvrak', 'common-buzzard'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  { qid: 'Q4764', sv: 'Trana', en: 'Common Crane', sci: 'Grus grus', fam: ['Gruidae', 'Tranor'], group: 'cranes_rails', slug: ['trana', 'common-crane'], iucn: 'LC', red: 'not_listed', id: [true, false], de: true, months: SUMMER, status: 'breeding_migrant' },
+  { qid: 'Q25756', sv: 'Kattuggla', en: 'Tawny Owl', sci: 'Strix aluco', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['kattuggla', 'tawny-owl'], iucn: 'LC', red: 'not_listed', id: [true, true], audio: 'full', de: true, months: YEAR_ROUND, status: 'resident', look: ['Strix uralensis'] },
+  { qid: 'Q25384', sv: 'Hornuggla', en: 'Long-eared Owl', sci: 'Asio otus', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['hornuggla', 'long-eared-owl'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', look: ['Q25769'] },
+  // Minimal record: no audio, no report data, no extra photo, no behaviour or look-alikes, no size,
+  // status or Swedish red list, Swedish article only.
+  { qid: 'Q174466', sv: 'Pärluggla', en: 'Boreal Owl', sci: 'Aegolius funereus', fam: ['Strigidae', 'Egentliga ugglor'], group: 'owls', slug: ['parluggla', 'boreal-owl'], iucn: 'LC', red: null, id: [false, false], minimal: true },
+  // The only seabird, so its group page gets noindex.
+  { qid: 'Q25440', sv: 'Storskarv', en: 'Great Cormorant', sci: 'Phalacrocorax carbo', fam: ['Phalacrocoracidae', 'Skarvar'], group: 'seabirds', slug: ['storskarv', 'great-cormorant'], iucn: 'LC', red: 'not_listed', id: [false, true], de: true, months: YEAR_ROUND, status: 'resident' },
+  // Reviewed and written but not published: only preview builds (SPECIES_PREVIEW=1) show them.
+  { qid: 'Q26209', sv: 'Större hackspett', en: 'Great Spotted Woodpecker', sci: 'Dendrocopos major', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['storre-hackspett', 'great-spotted-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', publish: false, look: ['Q210418'] },
+  { qid: 'Q210418', sv: 'Tretåig hackspett', en: 'Eurasian Three-toed Woodpecker', sci: 'Picoides tridactylus', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['tretaig-hackspett', 'eurasian-three-toed-woodpecker'], iucn: 'LC', red: 'NT', id: [true, true], de: true, months: YEAR_ROUND, status: 'resident', publish: false, look: ['Q26209'] },
+  // Never a page: one failed, one pending (facts exist, text not written yet).
+  { qid: 'Q166171', sv: 'Gröngöling', en: 'European Green Woodpecker', sci: 'Picus viridis', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['grongoling', 'european-green-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'failed' },
+  { qid: 'Q143284', sv: 'Spillkråka', en: 'Black Woodpecker', sci: 'Dryocopus martius', fam: ['Picidae', 'Hackspettar'], group: 'woodpeckers', slug: ['spillkraka', 'black-woodpecker'], iucn: 'LC', red: 'not_listed', id: [true, true], recordStatus: 'pending' },
+];
+
+const S = (text, factIds) => ({ text, factIds });
+const lowerSv = (name) => name.toLocaleLowerCase('sv');
+
+function meta(name, lang) {
+  let s = lang === 'sv'
+    ? `${name}: testtext för artsidornas bygge. Kännetecken, läte och när arten syns i Sverige, med foton och karta.`
+    : `${name}: test text for building the species pages. Field marks, call and when it is seen in Sweden, with photos.`;
+  while (s.length < 120) s += lang === 'sv' ? ' Testdata.' : ' Test data.';
+  if (s.length > 155) throw new Error(`metaDescription är ${s.length} tecken: ${s}`);
+  return s;
+}
+
+function textFor(sp, lang) {
+  const sv = lang === 'sv';
+  const name = sv ? sp.sv : sp.en;
+  return {
+    lead: [S(sv ? `Testtext: ${name} används som exempel när artsidorna byggs och testas.` : `Test text: the ${name} is used as an example when the species pages are built and tested.`, ['f01'])],
+    fieldMarks: (sv
+      ? [`Testpunkt ett om hur ${lowerSv(name)} ser ut`, 'Testpunkt två om storlek och form', 'Testpunkt tre om beteende i fält']
+      : ['Test point one about what it looks like', 'Test point two about size and shape', 'Test point three about behaviour in the field']
+    ).map((m) => S(m, ['f02'])),
+    voice: [S(sv ? 'Testtext om lätet, skriven så att sidan går att bygga utan riktig data.' : 'Test text about the call, written so the page can be built without real data.', ['f04'])],
+    whereWhen: [S(sv ? 'Testtext om var och när arten syns i Sverige.' : 'Test text about where and when it is seen in Sweden.', ['f06', 'd01'])],
+    ...(sp.minimal ? {} : { behaviour: [S(sv ? 'Testtext om föda och beteende.' : 'Test text about food and behaviour.', ['f07'])] }),
+    lookAlikes: (sp.look ?? []).map((other) => ({ other, text: [S(sv ? 'Testtext om hur de skiljer sig åt.' : 'Test text about how to tell them apart.', ['f09'])] })),
+    metaDescription: meta(name, lang),
+    facts: {
+      size: sp.size ? { value: sv ? sp.size[0] : sp.size[1], factIds: ['f03'] } : null,
+      swedenStatus: sp.status ? { value: sp.status, factIds: ['s01'] } : null,
+    },
+  };
+}
+
+function lookalikeFact(other) {
+  const known = SPECIES.find((x) => x.qid === other);
+  const scientific = known?.sci ?? (other === 'Q25769' ? 'Asio flammeus' : other);
+  return {
+    id: 'f09', topic: 'lookalike', sv: 'Testfaktum om förväxling.',
+    other: other.startsWith('Q') ? { scientific, qid: other } : { scientific },
+    sources: [{ article: 'sv', quote: 'Testcitat som bara finns i testdata.' }],
+  };
+}
+
+function dataFor(sp) {
+  const summer = sp.months === SUMMER;
+  return {
+    fetchedAt: '2026-10-15',
+    gbifTaxonKey: 1,
+    totalReports: 1000,
+    months: sp.months,
+    counties: Object.fromEntries(COUNTY_CODES.map((c, i) => [c, (i * 37 + sp.qid.length * 11) % 101])),
+    raw: { speciesByMonth: [], allBirdsByMonth: [], speciesByCounty: {}, allBirdsByCounty: {} },
+    sentences: summer
+      ? {
+          sv: ['Rapporteras mest i maj.', 'Nästan aldrig i november till mars.', 'Vanligast i rapporterna från Testlän, Provlän och Exempellän.'],
+          en: ['Reported most in May.', 'Almost never in November to March.', 'Most common in reports from Testshire, Sampleshire and Exampleshire.'],
+        }
+      : {
+          sv: ['Rapporteras året runt.', 'Vanligast i rapporterna från Testlän, Provlän och Exempellän.'],
+          en: ['Reported all year round.', 'Most common in reports from Testshire, Sampleshire and Exampleshire.'],
+        },
+    statusSignal: { contradicts: null },
+  };
+}
+
+function record(sp) {
+  const status = sp.recordStatus ?? 'ok';
+  const commons = (suffix) => `https://commons.wikimedia.org/wiki/File:Fixture_${sp.qid}_${suffix}`;
+  return {
+    qid: sp.qid,
+    status,
+    publish: status === 'ok' && sp.publish !== false,
+    slug: { sv: sp.slug[0], en: sp.slug[1] },
+    names: { sv: sp.sv, en: sp.en, scientific: sp.sci },
+    family: { latin: sp.fam[0], sv: sp.fam[1] },
+    group: sp.group,
+    iucn: sp.iucn,
+    ...(sp.red ? { swedishRedList: sp.red } : {}),
+    identifiable: { photo: sp.id[0], sound: sp.id[1] },
+    ...(sp.marginalia ? { marginalia: { sv: 'Testanteckning i marginalen.', en: 'A test note in the margin.' } } : {}),
+    images: [
+      { role: 'hero', file: `${sp.qid}/hero.webp`, width: 1200, height: 800, author: 'Testfotograf', license: 'CC0', licenseUrl: null, sourceUrl: commons('hero.jpg') },
+      ...(sp.extra ? [{ role: 'extra', file: `${sp.qid}/extra.webp`, width: 1200, height: 800, author: 'Testfotograf två', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', sourceUrl: commons('extra.jpg') }] : []),
+    ],
+    ...(sp.audio ? {
+      audio: {
+        file: `${sp.qid}/voice.mp3`, durationSec: 1, trimmed: sp.audio === 'trimmed',
+        author: 'Testinspelare', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', sourceUrl: commons('song.ogg'),
+      },
+    } : {}),
+    wikipedia: {
+      sv: { title: sp.sv, revision: '1000001' },
+      ...(sp.minimal ? {} : { en: { title: sp.en, revision: '2000002' } }),
+      ...(sp.de ? { de: { title: `${sp.en} (Testartikel)`, revision: '3000003' } } : {}),
+    },
+    ...(sp.months ? { data: dataFor(sp) } : {}),
+    facts: [
+      { id: 'f01', topic: 'appearance', sv: 'Testfaktum.', sources: [{ article: 'sv', quote: 'Testcitat som bara finns i testdata.' }] },
+      ...(sp.look ?? []).map(lookalikeFact),
+    ],
+    review: status === 'pending' ? { wave: 2 } : { facts: { by: 'Albin Abrahamsson', at: '2026-11-20' }, wave: sp.publish === false ? 2 : 1 },
+    text: status === 'ok' ? { sv: textFor(sp, 'sv'), en: textFor(sp, 'en') } : null,
+    ...(status === 'failed' ? { rejectedText: null } : {}),
+    generated: {
+      facts: { model: 'fixture', prompt: 'fixture', effort: 'none', at: '2026-10-20' },
+      ...(status === 'ok' ? { text: { model: 'fixture', prompt: 'fixture', effort: 'none', checker: 'fixture', at: '2026-11-25' } } : {}),
+    },
+    errors: status === 'failed' ? ['Testfel: kontrollen failade.'] : [],
+  };
+}
+
+// a and b follow the Swedish slug order (appendix D); the file name has the QIDs in string order.
+const COMPARISONS = [
+  { file: 'Q25404_Q25485', a: 'Q25404', b: 'Q25485', slug: ['blames-eller-talgoxe', 'eurasian-blue-tit-vs-great-tit'], publish: true },
+  { file: 'Q25307_Q25345384', a: 'Q25345384', b: 'Q25307', slug: ['kaja-eller-skata', 'eurasian-magpie-vs-western-jackdaw'], publish: true },
+  { file: 'Q210418_Q26209', a: 'Q26209', b: 'Q210418', slug: ['storre-hackspett-eller-tretaig-hackspett', 'eurasian-three-toed-woodpecker-vs-great-spotted-woodpecker'], publish: false },
+  { file: 'Q25384_Q25756', a: 'Q25384', b: 'Q25756', slug: ['hornuggla-eller-kattuggla', 'long-eared-owl-vs-tawny-owl'], status: 'pending' },
+];
+
+function comparison(c) {
+  const [a, b] = [SPECIES.find((s) => s.qid === c.a), SPECIES.find((s) => s.qid === c.b)];
+  const status = c.status ?? 'ok';
+  const lang = (l) => {
+    const sv = l === 'sv';
+    const [na, nb] = sv ? [a.sv, lowerSv(b.sv)] : [a.en, b.en];
+    let metaDescription = sv
+      ? `${na} eller ${nb}? Testtext för jämförelsesidan: så skiljer du dem åt i fält, på storlek, färg och läte.`
+      : `${na} or ${nb}? Test text for the comparison page: how to tell them apart by size, colour and call.`;
+    while (metaDescription.length < 120) metaDescription += sv ? ' Testdata.' : ' Test data.';
+    if (metaDescription.length > 155) throw new Error(`jämförelsens metaDescription är ${metaDescription.length} tecken`);
+    return {
+      shortAnswer: [S(sv ? `Testtext: det kortaste svaret på hur ${lowerSv(na)} och ${nb} skiljer sig åt.` : `Test text: the shortest answer to how the ${na} and the ${nb} differ.`, ['a:f01', 'b:f01'])],
+      rows: (sv ? ['Storlek', 'Huvud', 'Läte'] : ['Size', 'Head', 'Call']).map((feature, i) => ({
+        feature,
+        a: S(sv ? `Testcell ${i + 1} för den första arten` : `Test cell ${i + 1} for the first species`, ['a:f02']),
+        b: S(sv ? `Testcell ${i + 1} för den andra arten` : `Test cell ${i + 1} for the second species`, ['b:f02']),
+      })),
+      metaDescription,
+    };
+  };
+  return {
+    a: c.a,
+    b: c.b,
+    status,
+    publish: status === 'ok' && c.publish === true,
+    slug: { sv: c.slug[0], en: c.slug[1] },
+    volumes: { sv: 100, en: 50 },
+    text: status === 'ok' ? { sv: lang('sv'), en: lang('en') } : null,
+    generated: { model: 'fixture', prompt: 'fixture', checker: 'fixture', at: '2026-11-26' },
+    errors: [],
+  };
+}
+
+async function photo(qid, role, label) {
+  const dir = resolve(OUT.assets, qid);
+  mkdirSync(dir, { recursive: true });
+  const bg = role === 'hero' ? '#F2B27A' : '#FDE5CB';
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="1200" height="800" fill="${bg}"/><text x="600" y="420" font-family="Georgia, serif" font-size="64" fill="#302019" text-anchor="middle">Testbild: ${label}</text></svg>`;
+  await sharp(Buffer.from(svg)).webp({ quality: 60 }).toFile(resolve(dir, `${role}.webp`));
+}
+
+// About one second of silent MP3 (MPEG-1 Layer III, 128 kbit/s, 44.1 kHz, mono, empty side info):
+// the audio player needs a real file to point at, laid out like the pipeline's voice.mp3.
+function silentMp3(frames = 38) {
+  const frame = Buffer.alloc(417);
+  frame[0] = 0xff; frame[1] = 0xfb; frame[2] = 0x90; frame[3] = 0xc0;
+  return Buffer.concat(Array.from({ length: frames }, () => frame));
+}
+
+for (const dir of Object.values(OUT)) {
+  rmSync(dir, { recursive: true, force: true });
+  mkdirSync(dir, { recursive: true });
+}
+for (const sp of SPECIES) {
+  writeFileSync(resolve(OUT.species, `${sp.qid}.json`), `${JSON.stringify(record(sp), null, 2)}\n`);
+  await photo(sp.qid, 'hero', sp.sv);
+  if (sp.extra) await photo(sp.qid, 'extra', `${sp.sv}, extra`);
+  if (sp.audio) writeFileSync(resolve(OUT.assets, sp.qid, 'voice.mp3'), silentMp3());
+}
+for (const c of COMPARISONS) writeFileSync(resolve(OUT.comparisons, `${c.file}.json`), `${JSON.stringify(comparison(c), null, 2)}\n`);
+console.log(`fixtures: ${SPECIES.length} arter och ${COMPARISONS.length} jämförelser i tests/fixtures/`);
+```
+
+- [ ] **Step 7: Kör generatorn**
+
+Run: `node tests/fixtures/make-species-fixtures.mjs && ls tests/fixtures/species | wc -l && ls tests/fixtures/comparisons && ls tests/fixtures/species-assets/Q25485`
+Expected: `fixtures: 20 arter och 4 jämförelser i tests/fixtures/`, `20`, fyra jämförelsefiler (`Q210418_Q26209.json Q25307_Q25345384.json Q25384_Q25756.json Q25404_Q25485.json`) och `extra.webp hero.webp voice.mp3`. Totalt cirka 350 KB.
+
+- [ ] **Step 8: Skript och gitignore**
+
+I `package.json`, lägg till i `"scripts"`:
+
+```json
+    "build:fixtures": "node scripts/env-run.mjs SPECIES_FIXTURES=1 -- astro build --force",
+    "build:preview-fixtures": "node scripts/env-run.mjs SPECIES_FIXTURES=1 SPECIES_PREVIEW=1 -- astro build --force --outDir dist-preview",
+    "fixtures:species": "node tests/fixtures/make-species-fixtures.mjs",
+    "test:unit": "node --test \"tests/unit/*.unit.mjs\"",
+```
+
+(`--force` tömmer innehållslagrets cache, så att bygget inte återanvänder data från det andra läget.)
+
+I `website/.gitignore`, lägg till raden `dist-preview/` efter `dist/`.
+
+- [ ] **Step 9: Kontrollera att det befintliga bygget är orört**
+
+Run: `npm run build:fixtures && npm run test:unit`
+Expected: bygget går igenom (testdatan läses inte av något än) och 5 enhetstester PASS.
+
+- [ ] **Step 10: Commit**
+
+```bash
+git add scripts/env-run.mjs src/lib/species-source.mjs tests/unit/species-source.unit.mjs tests/fixtures package.json .gitignore
+git commit -m "feat(website): testdata och bygglägen för artsidorna"
+```
+
+---
+
+### Task 2: Länskartan
+
+**Files:**
+- Create: `website/scripts/build-sweden-counties.mjs`
+- Create: `website/src/data/sweden-counties.json` (genererad)
+- Modify: `website/package.json`
+
+- [ ] **Step 1: Skriv skriptet**
+
+`scripts/build-sweden-counties.mjs`:
+
+```js
+#!/usr/bin/env node
+// Builds src/data/sweden-counties.json: Sweden's 21 counties as SVG paths for the species pages'
+// county map (spec 2026-09-25 §5). Source: Natural Earth 1:10m admin-1 (public domain, "No
+// permission is required to use Natural Earth"), pinned to the v5.1.2 tag. raw.githubusercontent
+// rather than jsDelivr, because the file (~40 MB) is over jsDelivr's size limit. Keys are ISO
+// 3166-2:SE codes (SE-AB ...), the same codes the pipeline writes into data.counties.
+// Run: npm run assets:counties   (writes the JSON; commit it, the build never downloads anything)
+import { writeFileSync, readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const SRC = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_1_states_provinces.geojson';
+const OUT = resolve(root, 'src/data/sweden-counties.json');
+const WIDTH = 300; // SVG user units; the page scales the map with CSS
+const LAT0 = 62; // projection centre: x = lon * cos(62°) keeps Sweden's shape close to a map's
+const SIMPLIFY_EPS = 0.025; // degrees (~2.8 km): enough for a 200 to 300 px wide map
+const MIN_PART_AREA = 0.02; // square degrees: drops skerries, keeps Öland, Gotland and the big islands
+
+// --src <file> reads a local copy instead of downloading (used when testing the script).
+const srcArg = process.argv.indexOf('--src');
+const geo = srcArg > -1
+  ? JSON.parse(readFileSync(process.argv[srcArg + 1], 'utf8'))
+  : await (await fetch(SRC)).json();
+
+const features = geo.features.filter((f) => f.properties.adm0_a3 === 'SWE');
+if (features.length !== 21) throw new Error(`Väntade 21 län, fick ${features.length}`);
+
+function perpDist(p, a, b) {
+  const dx = b[0] - a[0], dy = b[1] - a[1];
+  if (dx === 0 && dy === 0) return Math.hypot(p[0] - a[0], p[1] - a[1]);
+  const t = ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy);
+  return Math.hypot(p[0] - (a[0] + t * dx), p[1] - (a[1] + t * dy));
+}
+function douglasPeucker(points, eps) {
+  if (points.length < 3) return points.slice();
+  const keep = new Array(points.length).fill(false);
+  keep[0] = keep[points.length - 1] = true;
+  const stack = [[0, points.length - 1]];
+  while (stack.length) {
+    const [lo, hi] = stack.pop();
+    let maxD = 0, idx = -1;
+    for (let i = lo + 1; i < hi; i++) {
+      const d = perpDist(points[i], points[lo], points[hi]);
+      if (d > maxD) { maxD = d; idx = i; }
+    }
+    if (maxD > eps && idx !== -1) { keep[idx] = true; stack.push([lo, idx], [idx, hi]); }
+  }
+  return points.filter((_, i) => keep[i]);
+}
+const ringArea = (ring) => Math.abs(ring.reduce((s, [x1, y1], i) => {
+  const [x2, y2] = ring[(i + 1) % ring.length];
+  return s + (x1 * y2 - x2 * y1);
+}, 0) / 2);
+
+const cos0 = Math.cos((LAT0 * Math.PI) / 180);
+const polygonsOf = (g) => (g.type === 'Polygon' ? [g.coordinates] : g.coordinates);
+let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+const counties = features.map((f) => {
+  const parts = polygonsOf(f.geometry).map((poly) => poly[0]); // outer rings only, counties have no holes worth drawing
+  const largest = Math.max(...parts.map(ringArea));
+  const kept = parts
+    .filter((ring) => ringArea(ring) >= MIN_PART_AREA || ringArea(ring) === largest)
+    .map((ring) => douglasPeucker(ring, SIMPLIFY_EPS).map(([lon, lat]) => [lon * cos0, -lat]))
+    .filter((ring) => ring.length >= 4);
+  for (const ring of kept) for (const [x, y] of ring) {
+    minX = Math.min(minX, x); maxX = Math.max(maxX, x); minY = Math.min(minY, y); maxY = Math.max(maxY, y);
+  }
+  return { code: f.properties.iso_3166_2, sv: f.properties.name_sv, en: f.properties.name_en, rings: kept };
+});
+
+const scale = WIDTH / (maxX - minX);
+const height = Math.round((maxY - minY) * scale);
+const r1 = (n) => Math.round(n * 10) / 10;
+const out = {
+  source: 'Natural Earth 1:10m admin-1 v5.1.2 (public domain)',
+  viewBox: `0 0 ${WIDTH} ${height}`,
+  counties: counties
+    .map(({ code, sv, en, rings }) => ({
+      code, sv, en,
+      d: rings.map((ring) => `M${ring.map(([x, y]) => `${r1((x - minX) * scale)} ${r1((y - minY) * scale)}`).join('L')}Z`).join(''),
+    }))
+    .sort((a, b) => a.code.localeCompare(b.code)),
+};
+const codes = new Set(out.counties.map((c) => c.code));
+for (const must of ['SE-AB', 'SE-BD', 'SE-I', 'SE-M', 'SE-O', 'SE-T']) if (!codes.has(must)) throw new Error(`Länet ${must} saknas`);
+const json = JSON.stringify(out);
+writeFileSync(OUT, `${json}\n`);
+console.log(`sweden-counties: ${out.counties.length} län, viewBox ${out.viewBox}, ${(json.length / 1024).toFixed(1)} KB -> ${OUT}`);
+if (json.length > 80 * 1024) throw new Error('Kartfilen är över 80 KB, höj SIMPLIFY_EPS');
+```
+
+- [ ] **Step 2: Skriptet i `package.json`**
+
+Lägg till i `"scripts"`: `"assets:counties": "node scripts/build-sweden-counties.mjs",`
+
+- [ ] **Step 3: Kör**
+
+Run: `npm run assets:counties`
+Expected: `sweden-counties: 21 län, viewBox 0 0 300 670, 15.9 KB -> .../src/data/sweden-counties.json` (provkört 2026-10-01 mot samma källfil; storleken kan skilja på någon tiondel).
+
+- [ ] **Step 4: Titta på kartan**
+
+Run (ritar kartan till en PNG i fyra nyanser, bara för ögat, filen committas inte):
+
+```bash
+node -e "
+const d=JSON.parse(require('fs').readFileSync('src/data/sweden-counties.json','utf8'));
+const c=['#FFFAF1','#FDE5CB','#F2B27A','#9A4526'];
+const svg='<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"'+d.viewBox+'\" width=\"300\" height=\"670\"><rect width=\"100%\" height=\"100%\" fill=\"#F6EFE2\"/>'+d.counties.map((x,i)=>'<path d=\"'+x.d+'\" fill=\"'+c[i%4]+'\" stroke=\"#6E584B\" stroke-width=\"0.6\"/>').join('')+'</svg>';
+require('sharp')(Buffer.from(svg)).png().toFile('../county-check.png').then(()=>console.log('../county-check.png'))"
+```
+
+Expected: Sverige med 21 län, Gotland och Öland med, inga hål. Ta bort `../county-check.png` efteråt.
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add scripts/build-sweden-counties.mjs src/data/sweden-counties.json package.json
+git commit -m "feat(website): länsgränser för artsidornas karta (Natural Earth)"
+```
+
+---
+
+### Task 3: Layout får språkpar, noindex, extra JSON-LD och filtret för egna besök
 
 **Files:**
 - Modify: `website/src/layouts/Layout.astro`
+- Create: `website/tests/analytics.spec.ts`
 
-- [ ] **Step 1: Utöka `Props`**
+- [ ] **Step 1: Skriv testet för filtret**
+
+`tests/analytics.spec.ts`:
+
+```ts
+import { test, expect } from '@playwright/test';
+
+// Own visits (spec 2026-09-25 §15): ?va-ignore=1 marks the browser, ?va-ignore=0 removes the mark.
+test('filtret för egna besök sätts och tas bort med en adressparameter', async ({ page }) => {
+  await page.goto('/?va-ignore=1');
+  expect(await page.evaluate(() => localStorage.getItem('birdy-va-ignore'))).toBe('1');
+  expect(await page.evaluate(() => typeof (window as unknown as { webAnalyticsBeforeSend?: unknown }).webAnalyticsBeforeSend)).toBe('function');
+  expect(await page.evaluate(() => (window as unknown as { webAnalyticsBeforeSend: (e: unknown) => unknown }).webAnalyticsBeforeSend({ type: 'pageview', url: location.href }))).toBeNull();
+
+  await page.goto('/sv/');
+  expect(await page.evaluate(() => typeof (window as unknown as { webAnalyticsBeforeSend?: unknown }).webAnalyticsBeforeSend)).toBe('function');
+
+  await page.goto('/?va-ignore=0');
+  expect(await page.evaluate(() => localStorage.getItem('birdy-va-ignore'))).toBeNull();
+  await page.goto('/sv/');
+  expect(await page.evaluate(() => typeof (window as unknown as { webAnalyticsBeforeSend?: unknown }).webAnalyticsBeforeSend)).toBe('undefined');
+});
+```
+
+- [ ] **Step 2: Kör och se det faila**
+
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/analytics.spec.ts`
+Expected: FAIL, `localStorage.getItem` ger `null` i stället för `'1'`.
+
+- [ ] **Step 3: Utöka `Props`**
 
 I `src/layouts/Layout.astro`, ersätt `interface Props { ... }` och raden `const { locale, pathname, ... } = Astro.props;` med:
 
@@ -71,7 +658,7 @@ interface Props {
   noAlternateLocale?: boolean;
   /** The other language's path when the two languages use different slugs (species pages). */
   alternatePath?: string;
-  /** Adds `<meta name="robots" content="noindex, follow">` (small group pages, spec §4). */
+  /** Adds `<meta name="robots" content="noindex, follow">` (small groups and unpublished preview pages). */
   noindex?: boolean;
   /** Extra schema.org nodes appended to the page's @graph. */
   jsonLd?: Record<string, unknown>[];
@@ -89,7 +676,7 @@ const {
 } = Astro.props;
 ```
 
-- [ ] **Step 2: Använd dem**
+- [ ] **Step 4: Använd dem**
 
 Ersätt `const altPath = alternateHref(locale, pathname);` med:
 
@@ -112,81 +699,178 @@ Lägg till direkt efter `<meta name="description" content={metaDescription} />`:
     {noindex && <meta name="robots" content="noindex, follow" />}
 ```
 
-- [ ] **Step 3: Kontrollera att inget befintligt ändrats**
+- [ ] **Step 5: Filtret för egna besök**
 
-Run: `npm run build && PLAYWRIGHT_PORT=4327 npx playwright test tests/smoke.spec.ts tests/home.spec.ts`
-Expected: samma resultat som på `main` (alla gröna). Ingen sida skickar de nya fälten än.
+`@vercel/analytics` 2.0.1:s Astro-komponent (`node_modules/@vercel/analytics/dist/astro/index.astro`) skickar `window.webAnalyticsBeforeSend` som `beforeSend`, och en `beforeSend` som returnerar `null` gör att händelsen inte skickas. Ersätt `<Analytics />` i `<body>` med:
 
-- [ ] **Step 4: Commit**
+```astro
+    <script is:inline>
+      // Own visits (spec 2026-09-25 §15): ?va-ignore=1 marks this browser, ?va-ignore=0 removes the mark.
+      // A marked browser sends nothing to Vercel Analytics. Runs before the analytics element below.
+      (function () {
+        try {
+          var flag = new URLSearchParams(location.search).get('va-ignore');
+          if (flag === '1') localStorage.setItem('birdy-va-ignore', '1');
+          if (flag === '0') localStorage.removeItem('birdy-va-ignore');
+          if (localStorage.getItem('birdy-va-ignore') === '1') {
+            window.webAnalyticsBeforeSend = function () { return null; };
+          }
+        } catch (e) {
+          // Storage blocked (private mode): the visit is counted as usual.
+        }
+      })();
+    </script>
+    <Analytics />
+```
+
+- [ ] **Step 6: Kör testerna**
+
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/analytics.spec.ts tests/smoke.spec.ts tests/home.spec.ts`
+Expected: PASS. De befintliga testerna är oförändrade, inga sidor skickar de nya fälten än.
+
+- [ ] **Step 7: Commit**
 
 ```bash
-git add src/layouts/Layout.astro
-git commit -m "feat(website): Layout tar språkpar, noindex och extra JSON-LD"
+git add src/layouts/Layout.astro tests/analytics.spec.ts
+git commit -m "feat(website): Layout tar språkpar, noindex och extra JSON-LD, och egna besök kan filtreras bort"
 ```
 
 ---
 
-### Task 2: Innehållssamlingen och `lib/species.ts`
+### Task 4: Innehållssamlingarna, `lib/species.ts` och inspelningarna i bygget
 
 **Files:**
 - Modify: `website/src/content.config.ts`
 - Create: `website/src/lib/species.ts`
+- Modify: `website/astro.config.mjs`
 
-- [ ] **Step 1: Lägg till samlingen**
+- [ ] **Step 1: Samlingarna**
 
-I `src/content.config.ts`, lägg till före `export const collections`:
+I `src/content.config.ts`, ändra importerna överst till:
 
 ```ts
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { comparisonsDir, speciesDir } from './lib/species-source.mjs';
+```
+
+och lägg till före `export const collections`:
+
+```ts
+// Species pages (spec 2026-09-25 appendix C and D). The pipeline writes src/data/species/*.json and
+// src/data/comparisons/*.json; SPECIES_FIXTURES=1 reads the test data in tests/fixtures/ instead.
+// Not .strict(): the files carry more than the pages read (raw counts, sources, generation details).
+const qid = z.string().regex(/^Q\d+$/);
 const localized = z.object({ sv: z.string().min(1), en: z.string().min(1) });
+const sentence = z.object({ text: z.string().min(1), factIds: z.array(z.string().min(1)).min(1) });
+const sentences = z.array(sentence).min(1);
 const statuses = ['resident', 'breeding_migrant', 'passage', 'winter_visitor', 'rare_visitor', 'absent'] as const;
+const recordStatus = z.enum(['pending', 'ok', 'failed']);
+const licensed = {
+  author: z.string().nullable(),
+  license: z.string().min(1),
+  licenseUrl: z.string().url().nullable(),
+  sourceUrl: z.string().url(),
+};
+const wikiRef = z.object({ title: z.string().min(1), revision: z.string().min(1) });
 const langText = z.object({
-  lead: z.string().min(1),
-  fieldMarks: z.array(z.string().min(1)).min(3).max(4),
-  voice: z.string().min(1),
-  whereWhen: z.string().min(1),
+  lead: sentences,
+  fieldMarks: z.array(sentence).min(3).max(4),
+  voice: sentences,
+  whereWhen: sentences,
+  behaviour: z.array(sentence).optional(),
+  lookAlikes: z.array(z.object({ other: z.string().min(1), text: sentences })).max(3).default([]),
   metaDescription: z.string().min(120).max(155),
   facts: z.object({
-    size: z.object({ value: z.string().min(1), quote: z.string() }).nullable(),
-    swedenStatus: z.object({ value: z.enum(statuses), quote: z.string() }).nullable(),
+    size: z.object({ value: z.string().min(1), factIds: z.array(z.string()) }).nullable(),
+    swedenStatus: z.object({ value: z.enum(statuses), factIds: z.array(z.string()) }).nullable(),
   }),
 });
-const wikiRef = z.object({ title: z.string(), revision: z.string() }).nullable();
 
-// One file per species, written by `birdy-fetcher web` (spec 2026-09-25 appendix C).
 const species = defineCollection({
-  loader: glob({ pattern: '*.json', base: './src/data/species' }),
+  loader: glob({ pattern: '*.json', base: `./${speciesDir()}` }),
   schema: z
     .object({
-      qid: z.string().regex(/^Q\d+$/),
-      status: z.enum(['ok', 'failed']),
-      review: z.enum(['unreviewed', 'approved']),
+      qid,
+      status: recordStatus,
+      publish: z.boolean(),
       slug: localized,
       names: z.object({ sv: z.string().min(1), en: z.string().min(1), scientific: z.string().min(1) }),
       family: z.object({ latin: z.string().min(1), sv: z.string().min(1) }),
       group: z.string().min(1),
       iucn: z.string(),
-      marginalia: localized.nullable(),
-      images: z.array(
-        z.object({
-          role: z.enum(['hero', 'extra']),
-          file: z.string().regex(/^Q\d+\/(hero|extra)\.webp$/),
-          width: z.number().int().positive(),
-          height: z.number().int().positive(),
-          author: z.string().nullable(),
-          license: z.string().min(1),
-          licenseUrl: z.string().url().nullable(),
-          sourceUrl: z.string().url(),
-        }),
-      ),
-      wikipedia: z.object({ sv: wikiRef, en: wikiRef }),
+      swedishRedList: z.enum(['RE', 'CR', 'EN', 'VU', 'NT', 'DD', 'not_listed']).optional(),
+      identifiable: z.object({ photo: z.boolean(), sound: z.boolean() }).optional(),
+      marginalia: localized.optional(),
+      images: z.array(z.object({
+        role: z.enum(['hero', 'extra']),
+        file: z.string().regex(/^Q\d+\/(hero|extra)\.webp$/),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+        ...licensed,
+      })).default([]),
+      audio: z.object({
+        file: z.string().regex(/^Q\d+\/voice\.mp3$/),
+        durationSec: z.number().positive(),
+        trimmed: z.boolean(),
+        ...licensed,
+      }).optional(),
+      wikipedia: z.object({ sv: wikiRef.optional(), en: wikiRef.optional(), de: wikiRef.optional() }).default({}),
+      data: z.object({
+        totalReports: z.number().int().nonnegative(),
+        months: z.array(z.number().int().min(0).max(100)).length(12).optional(),
+        counties: z.record(z.string().regex(/^SE-[A-Z]{1,2}$/), z.number().int().min(0).max(100)).optional(),
+        sentences: z.object({ sv: z.array(z.string()), en: z.array(z.string()) }),
+      }).optional(),
+      // Only to name a look-alike that has no species file (deviation 7 in the plan).
+      facts: z.array(z.object({
+        id: z.string(),
+        topic: z.string(),
+        other: z.object({ scientific: z.string().min(1), qid: qid.optional() }).optional(),
+      })).default([]),
+      review: z.object({
+        facts: z.object({ by: z.string().min(1), at: z.string().regex(/^\d{4}-\d{2}-\d{2}/) }).optional(),
+        wave: z.number().int().min(1).optional(),
+      }),
       text: z.object({ sv: langText, en: langText }).nullable(),
-      generated: z.object({ model: z.string(), prompt: z.string(), at: z.string() }),
-      errors: z.array(z.string()),
+      generated: z.object({ text: z.object({ at: z.string() }).optional() }).optional(),
     })
     .superRefine((d, ctx) => {
-      if (d.status !== 'ok') return;
-      if (!d.text) ctx.addIssue({ code: 'custom', message: `${d.qid}: status ok kräver text` });
-      if (!d.images.some((i) => i.role === 'hero')) ctx.addIssue({ code: 'custom', message: `${d.qid}: status ok kräver huvudfoto` });
+      if (d.status === 'ok') {
+        if (!d.text) ctx.addIssue({ code: 'custom', message: `${d.qid}: status ok kräver text` });
+        if (!d.images.some((i) => i.role === 'hero')) ctx.addIssue({ code: 'custom', message: `${d.qid}: status ok kräver huvudfoto` });
+        if (!d.identifiable) ctx.addIssue({ code: 'custom', message: `${d.qid}: status ok kräver identifiable` });
+      } else if (d.text) {
+        ctx.addIssue({ code: 'custom', message: `${d.qid}: status ${d.status} ska ha text: null` });
+      }
+      if (d.publish && (d.status !== 'ok' || !d.review.facts)) {
+        ctx.addIssue({ code: 'custom', message: `${d.qid}: publish kräver status ok och granskade fakta` });
+      }
+    }),
+});
+
+const compareText = z.object({
+  shortAnswer: sentences,
+  rows: z.array(z.object({ feature: z.string().min(1), a: sentence, b: sentence })).min(3).max(5),
+  metaDescription: z.string().min(120).max(155),
+});
+
+const comparisons = defineCollection({
+  loader: glob({ pattern: '*.json', base: `./${comparisonsDir()}` }),
+  schema: z
+    .object({
+      a: qid,
+      b: qid,
+      status: recordStatus,
+      publish: z.boolean(),
+      slug: localized,
+      text: z.object({ sv: compareText, en: compareText }).nullable(),
+      generated: z.object({ at: z.string() }).optional(),
+    })
+    .superRefine((d, ctx) => {
+      if (d.status === 'ok' && !d.text) ctx.addIssue({ code: 'custom', message: `${d.slug.sv}: status ok kräver text` });
+      if (d.status !== 'ok' && d.text) ctx.addIssue({ code: 'custom', message: `${d.slug.sv}: status ${d.status} ska ha text: null` });
+      if (d.publish && d.status !== 'ok') ctx.addIssue({ code: 'custom', message: `${d.slug.sv}: publish kräver status ok` });
     }),
 });
 ```
@@ -194,7 +878,7 @@ const species = defineCollection({
 Ändra sista raden till:
 
 ```ts
-export const collections = { fieldNotes, species };
+export const collections = { fieldNotes, species, comparisons };
 ```
 
 - [ ] **Step 2: Skriv `src/lib/species.ts`**
@@ -204,10 +888,17 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import type { ImageMetadata } from 'astro';
 import groupData from '../data/species-groups.json';
 import type { Copy, Locale } from './i18n';
+import { ALBIN_URL } from './links';
+import { audioPublicPath, isComparisonBuilt, isPreview, isSpeciesBuilt, useFixtures } from './species-source.mjs';
 
 export type Species = CollectionEntry<'species'>['data'];
 export type SpeciesImage = Species['images'][number];
 export type SpeciesText = NonNullable<Species['text']>['sv'];
+export type Sentence = SpeciesText['lead'][number];
+export type LookAlike = SpeciesText['lookAlikes'][number];
+export type Comparison = CollectionEntry<'comparisons'>['data'];
+export type WikiLang = 'sv' | 'en' | 'de';
+export interface WikiRef { title: string; revision: string }
 
 export interface Group {
   key: string;
@@ -219,17 +910,30 @@ export interface Group {
 
 /** The app's 15 groups in the app's order (src/data/species-groups.json, shared with the pipeline). */
 export const GROUPS: Group[] = groupData.groups;
-/** Groups with fewer species get noindex (spec §4). Same rule in src/lib/species-sitemap.mjs. */
+/** Groups with fewer built species get noindex (spec §2). Same rule in src/lib/species-sitemap.mjs. */
 export const MIN_GROUP_SIZE = 3;
 export const SITE = 'https://birdy.community';
 export const PLAY_URL = 'https://play.google.com/store/apps/details?id=se.birdy.android';
+/** The person who reviews every fact sheet (spec §9.4), on every page and in JSON-LD. */
+export const REVIEWER = { name: 'Albin Abrahamsson', url: ALBIN_URL };
+export const ABOUT_SLUG: Record<Locale, string> = { sv: 'om-artsidorna', en: 'about-these-pages' };
 
-const images = import.meta.glob<{ default: ImageMetadata }>('../assets/species/*/*.webp', { eager: true });
+// Photos: src/assets/species/<QID>/*.webp, or the test images under tests/fixtures/ (SPECIES_FIXTURES=1).
+// The test images are imported lazily, so a normal build only loads them if fixture mode asks for them.
+const realImages = import.meta.glob<{ default: ImageMetadata }>('../assets/species/*/*.webp', { eager: true });
+const fixtureImages = import.meta.glob<{ default: ImageMetadata }>('../../tests/fixtures/species-assets/*/*.webp');
+const images = new Map<string, ImageMetadata>(
+  useFixtures()
+    ? await Promise.all(
+        Object.entries(fixtureImages).map(async ([path, load]) => [path.replace('../../tests/fixtures/species-assets/', ''), (await load()).default] as const),
+      )
+    : Object.entries(realImages).map(([path, mod]) => [path.replace('../assets/species/', ''), mod.default] as const),
+);
 
 export function speciesImage(file: string): ImageMetadata {
-  const hit = images[`../assets/species/${file}`];
-  if (!hit) throw new Error(`Artbilden saknas: src/assets/species/${file}`);
-  return hit.default;
+  const hit = images.get(file);
+  if (!hit) throw new Error(`Artbilden saknas: ${file} (${useFixtures() ? 'tests/fixtures/species-assets' : 'src/assets/species'})`);
+  return hit;
 }
 
 export function heroOf(s: Species): SpeciesImage {
@@ -238,16 +942,43 @@ export function heroOf(s: Species): SpeciesImage {
   return hero;
 }
 
-let cached: Species[] | undefined;
-/** Every species with status ok. Failed species get no page. */
-export async function getAllSpecies(): Promise<Species[]> {
-  cached ??= (await getCollection('species')).map((e) => e.data).filter((s) => s.status === 'ok');
-  return cached;
+/** Where the species' recording is served (astro.config.mjs copies it there), or undefined. */
+export function audioHref(s: Species): string | undefined {
+  return s.audio ? audioPublicPath(process.cwd(), s) : undefined;
 }
+
+let records: Species[] | undefined;
+/** Every species file, whatever its status. Used for names (look-alikes), never for pages. */
+export async function getAllRecords(): Promise<Species[]> {
+  records ??= (await getCollection('species')).map((e) => e.data);
+  return records;
+}
+
+let built: Species[] | undefined;
+/** The species that get a page in this build (spec §14): written, reviewed, and published or previewed. */
+export async function getAllSpecies(): Promise<Species[]> {
+  built ??= (await getAllRecords()).filter((s) => isSpeciesBuilt(s));
+  return built;
+}
+
+let builtComparisons: Comparison[] | undefined;
+/** The comparisons that get a page: written, published or previewed, and both species built. */
+export async function getComparisons(): Promise<Comparison[]> {
+  if (!builtComparisons) {
+    const qids = new Set((await getAllSpecies()).map((s) => s.qid));
+    builtComparisons = (await getCollection('comparisons')).map((e) => e.data).filter((c) => isComparisonBuilt(c, qids));
+  }
+  return builtComparisons;
+}
+
+/** Built only because this is a preview build: noindex and the preview banner. */
+export const isUnpublished = (item: { publish: boolean }): boolean => isPreview() && !item.publish;
 
 export const hubHref = (locale: Locale): string => (locale === 'sv' ? '/sv/arter/' : '/species/');
 export const speciesHref = (s: Species, locale: Locale): string => `${hubHref(locale)}${s.slug[locale]}/`;
 export const groupHref = (g: Group, locale: Locale): string => `${hubHref(locale)}${g.slug[locale]}/`;
+export const comparisonHref = (c: Comparison, locale: Locale): string => `${hubHref(locale)}${c.slug[locale]}/`;
+export const aboutHref = (locale: Locale): string => `${hubHref(locale)}${ABOUT_SLUG[locale]}/`;
 
 export function groupByKey(key: string): Group {
   const group = GROUPS.find((g) => g.key === key);
@@ -265,32 +996,39 @@ export function groupSizes(list: Species[]): Map<string, number> {
   return sizes;
 }
 
+/** Groups with at least one page in this build, in the app's order. Empty groups get no page, chip or card. */
+export function activeGroups(list: Species[]): Group[] {
+  const sizes = groupSizes(list);
+  return GROUPS.filter((g) => (sizes.get(g.key) ?? 0) > 0);
+}
+
 export function isGroupIndexed(group: Group, list: Species[]): boolean {
   return (groupSizes(list).get(group.key) ?? 0) >= MIN_GROUP_SIZE;
 }
 
-/** The `n` groups with the most species, ties in the app's order (footer column). */
+/** The `n` groups with the most built species, ties in the app's order (footer column). */
 export function largestGroups(list: Species[], n: number): Group[] {
   const sizes = groupSizes(list);
-  return [...GROUPS].sort((a, b) => (sizes.get(b.key) ?? 0) - (sizes.get(a.key) ?? 0)).slice(0, n);
+  return activeGroups(list).sort((a, b) => (sizes.get(b.key) ?? 0) - (sizes.get(a.key) ?? 0)).slice(0, n);
 }
 
-/** The footer's "Common species" row. A listed species without a page stops the build. */
+/** The footer's "Common species" row. A listed species without a page stops the build (all twelve are in wave 1). */
 export function commonSpecies(list: Species[]): Species[] {
   return groupData.common.map((qid) => {
     const hit = list.find((s) => s.qid === qid);
-    if (!hit) throw new Error(`Vanliga arter: ${qid} saknar sida (status ok krävs). Byt art i src/data/species-groups.json.`);
+    if (!hit) throw new Error(`Vanliga arter: ${qid} saknar sida i det här bygget (skriven, granskad och publicerad krävs).`);
     return hit;
   });
 }
 
+/** The group's fixed photo species, or its first built species in Swedish alphabetical order (spec §6). */
 export function groupPhoto(group: Group, list: Species[]): ImageMetadata | undefined {
-  const members = list.filter((s) => s.group === group.key);
+  const members = sortByName(list.filter((s) => s.group === group.key), 'sv');
   const pick = members.find((s) => s.qid === group.photo) ?? members[0];
   return pick ? speciesImage(heroOf(pick).file) : undefined;
 }
 
-/** Up to four other species in the same family, or in the same group when the family is too small. */
+/** Up to four other built species in the same family, or in the same group when the family is too small. */
 export function related(s: Species, list: Species[], locale: Locale): { kind: 'family' | 'group'; items: Species[] } {
   const others = list.filter((x) => x.qid !== s.qid);
   const family = sortByName(others.filter((x) => x.family.latin === s.family.latin), locale);
@@ -314,8 +1052,81 @@ export function groupTitle(g: Group, n: number, locale: Locale, t: Copy): string
   return fits(long) ? long : t.species.titleGroupShort.replace('{group}', g.name[locale]);
 }
 
-/** Play link with UTM tags, readable in Play Console's acquisition report (spec §12). */
-export function playHref(campaign: string, medium: 'species' | 'group' | 'hub'): string {
+export interface PairSide { side: 'a' | 'b'; species: Species }
+
+/** The comparison's two species in this language's slug order (spec §4), each with its side in the record. */
+export function comparisonPair(c: Comparison, locale: Locale, list: Species[]): [PairSide, PairSide] {
+  const find = (qid: string): Species => {
+    const hit = list.find((s) => s.qid === qid);
+    if (!hit) throw new Error(`Jämförelsen ${c.slug.sv} saknar arten ${qid}`);
+    return hit;
+  };
+  const a: PairSide = { side: 'a', species: find(c.a) };
+  const b: PairSide = { side: 'b', species: find(c.b) };
+  return a.species.slug[locale] <= b.species.slug[locale] ? [a, b] : [b, a];
+}
+
+/** "Blåmes" and "talgoxe": in Swedish the second name is in lower case, as in running text. */
+export function pairNames(pair: [PairSide, PairSide], locale: Locale): [string, string] {
+  const first = pair[0].species.names[locale];
+  const second = pair[1].species.names[locale];
+  return [first, locale === 'sv' ? second.toLocaleLowerCase('sv') : second];
+}
+
+export function comparisonTitle(names: [string, string], t: Copy): string {
+  const fill = (tpl: string) => tpl.replace('{a}', names[0]).replace('{b}', names[1]);
+  const long = fill(t.species.titleCompare);
+  return fits(long) ? long : fill(t.species.titleCompareShort);
+}
+
+export function joinSentences(list?: Sentence[]): string {
+  return (list ?? []).map((x) => x.text).join(' ');
+}
+
+export interface LookAlikeView {
+  name: string;
+  /** No species file: the name is the scientific one and is shown in italics. */
+  scientificOnly: boolean;
+  /** The other species when it has a page in this build. */
+  species?: Species;
+  text: string;
+  comparison?: Comparison;
+}
+
+/** What the "Can be confused with" section shows for one look-alike (spec §5, deviation 7). */
+export function lookAlikeView(s: Species, item: LookAlike, locale: Locale, builtList: Species[], records: Species[], comps: Comparison[]): LookAlikeView | undefined {
+  const isQid = /^Q\d+$/.test(item.other);
+  const record = isQid ? records.find((x) => x.qid === item.other) : undefined;
+  const page = isQid ? builtList.find((x) => x.qid === item.other) : undefined;
+  const fact = s.facts.find((f) => f.topic === 'lookalike' && (f.other?.qid === item.other || f.other?.scientific === item.other));
+  const name = record ? record.names[locale] : (fact?.other?.scientific ?? (isQid ? undefined : item.other));
+  if (!name) return undefined;
+  const comparison = page
+    ? comps.find((c) => (c.a === s.qid && c.b === page.qid) || (c.b === s.qid && c.a === page.qid))
+    : undefined;
+  return { name, scientificOnly: !record, species: page, text: joinSentences(item.text), comparison };
+}
+
+/** The date the species' facts were reviewed, YYYY-MM-DD. Built species always have one. */
+export const reviewDate = (s: Species): string => (s.review.facts?.at ?? '').slice(0, 10);
+export const laterDate = (a: string, b: string): string => (a > b ? a : b);
+
+export function formatDate(iso: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(locale === 'sv' ? 'sv-SE' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+    .format(new Date(`${iso.slice(0, 10)}T00:00:00Z`));
+}
+
+/** The app box says only what the app can do for this species (spec §5); a group or comparison gets the general line. */
+export function appText(s: Species | undefined, t: Copy): string {
+  const id = s?.identifiable;
+  if (id?.photo && id.sound) return t.species.appTextBoth;
+  if (id?.sound) return t.species.appTextSound;
+  if (id?.photo) return t.species.appTextPhoto;
+  return t.species.appTextNone;
+}
+
+/** Play link with UTM tags, readable in Play Console's acquisition report (spec §15). */
+export function playHref(campaign: string, medium: 'species' | 'group' | 'hub' | 'compare'): string {
   const referrer = `utm_source=birdy.community&utm_medium=${medium}&utm_campaign=${campaign}`;
   return `${PLAY_URL}&referrer=${encodeURIComponent(referrer)}`;
 }
@@ -325,9 +1136,17 @@ export function searchKey(s: Species): string {
   return [s.names.sv, s.names.en, s.names.scientific].join(' ').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
 }
 
-export function wikiUrl(lang: Locale, ref: { title: string; revision: string }): string {
+export function wikiUrl(lang: WikiLang, ref: WikiRef): string {
   const title = encodeURIComponent(ref.title.replace(/ /g, '_'));
   return `https://${lang}.wikipedia.org/w/index.php?title=${title}&oldid=${ref.revision}`;
+}
+
+/** The Wikipedia articles a species' text is based on, in the order Swedish, English, German. */
+export function wikiSources(s: Species): { lang: WikiLang; ref: WikiRef }[] {
+  return (['sv', 'en', 'de'] as const).flatMap((lang) => {
+    const ref = s.wikipedia[lang];
+    return ref ? [{ lang, ref }] : [];
+  });
 }
 
 export interface Crumb { name: string; href: string }
@@ -355,6 +1174,31 @@ export function itemListJsonLd(pathname: string, name: string, locale: Locale, i
   };
 }
 
+export const reviewerJsonLd = (): Record<string, unknown> => ({ '@type': 'Person', name: REVIEWER.name, url: REVIEWER.url });
+
+export function taxonJsonLd(s: Species): Record<string, unknown> {
+  return {
+    '@type': 'Taxon',
+    name: s.names.scientific,
+    alternateName: [s.names.sv, s.names.en],
+    taxonRank: 'species',
+    sameAs: `https://www.wikidata.org/wiki/${s.qid}`,
+  };
+}
+
+export function audioJsonLd(s: Species): Record<string, unknown> | undefined {
+  const href = audioHref(s);
+  if (!s.audio || !href) return undefined;
+  return {
+    '@type': 'AudioObject',
+    contentUrl: new URL(href, SITE).toString(),
+    encodingFormat: 'audio/mpeg',
+    ...(s.audio.licenseUrl ? { license: s.audio.licenseUrl } : {}),
+    acquireLicensePage: s.audio.sourceUrl,
+    ...(s.audio.author ? { creator: { '@type': 'Person', name: s.audio.author }, creditText: s.audio.author } : {}),
+  };
+}
+
 /** Throws when two pages in one language would get the same address (spec §4). */
 export function assertUniqueSlugs(slugs: string[], locale: Locale): void {
   const seen = new Set<string>();
@@ -365,30 +1209,99 @@ export function assertUniqueSlugs(slugs: string[], locale: Locale): void {
 }
 ```
 
-- [ ] **Step 3: Typkontroll och bygge**
+- [ ] **Step 3: Inspelningarna kopieras in vid bygget**
 
-Run: `npx astro check && npm run build`
-Expected: `astro check` utan nya fel (ett känt Vite/Tailwind-typfel i `astro.config.mjs` finns sedan tidigare och räknas inte). Bygget går igenom och läser in alla artfiler. Failar schemat på en artfil, rätta filen eller kör om arten i fas 1. Ändra inte schemat för att släppa igenom felet.
+I `astro.config.mjs`:
 
-Om `copy`-typen saknar `species`-nycklarna klagar `astro check` på `t.species` här. Det åtgärdas i Task 3. Kör i så fall bara `npm run build` nu.
+Ändra importraden `import { readFileSync, readdirSync } from 'node:fs';` till:
 
-- [ ] **Step 4: Commit**
+```js
+import { copyFileSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
+```
+
+och lägg till efter `import { dirname, resolve } from 'node:path';`:
+
+```js
+import { assetsDir, audioPublicPath, isSpeciesBuilt, readJsonDir, speciesDir } from './src/lib/species-source.mjs';
+```
+
+Lägg till före `export default defineConfig({`:
+
+```js
+// Recordings live beside the photos (src/assets/species/<QID>/voice.mp3) and are copied into dist only
+// for species that get a page in this build, under the content-hashed name the page links to, so an
+// unpublished recording is never served (spec 2026-09-25 §9.9; deviation 9 in the plan).
+const speciesAudio = {
+  name: 'birdy-species-audio',
+  hooks: {
+    'astro:build:done': ({ dir, logger }) => {
+      const out = fileURLToPath(new URL('audio/species/', dir));
+      let copied = 0;
+      for (const record of readJsonDir(root, speciesDir()).filter((r) => isSpeciesBuilt(r) && r.audio)) {
+        mkdirSync(out, { recursive: true });
+        const name = audioPublicPath(root, record).split('/').pop();
+        copyFileSync(resolve(root, assetsDir(), record.audio.file), resolve(out, name));
+        copied += 1;
+      }
+      logger.info(`${copied} inspelningar kopierade till audio/species/`);
+    },
+  },
+};
+```
+
+och ändra `integrations: [sitemap({ ... })],` så att `speciesAudio` läggs till sist i listan:
+
+```js
+  integrations: [sitemap({
+    serialize(item) {
+      const d = noteDates.get(new URL(item.url).pathname);
+      if (d) item.lastmod = d;
+      return item;
+    },
+  }), speciesAudio],
+```
+
+- [ ] **Step 4: Typkontroll och bygge**
+
+Run: `npx astro check && npm run build:fixtures`
+Expected: `astro check` utan nya fel (det kända Vite/Tailwind-typfelet i `astro.config.mjs` räknas inte; nya fel om `t.species` åtgärdas i Task 5, kör i så fall bara bygget nu). Bygget läser 20 artfiler och 4 jämförelser utan schemafel och loggar `4 inspelningar kopierade till audio/species/`.
+
+Run: `ls dist/audio/species`
+Expected: fyra filer, `Q25234.<hash>.mp3`, `Q25404.<hash>.mp3`, `Q25485.<hash>.mp3` och `Q25756.<hash>.mp3`.
+
+Om bygget klagar på top-level `await` i `src/lib/species.ts`: byt de två glob-raderna och `images` mot en eager-glob även för testbilderna:
+
+```ts
+const fixtureImages = import.meta.glob<{ default: ImageMetadata }>('../../tests/fixtures/species-assets/*/*.webp', { eager: true });
+const images = new Map<string, ImageMetadata>(
+  useFixtures()
+    ? Object.entries(fixtureImages).map(([path, mod]) => [path.replace('../../tests/fixtures/species-assets/', ''), mod.default] as const)
+    : Object.entries(realImages).map(([path, mod]) => [path.replace('../assets/species/', ''), mod.default] as const),
+);
+```
+
+Testbilderna är små (cirka 10 KB styck), så det enda priset är att de kan följa med som oanvända originalfiler i `dist/_astro/`. Notera valet i commit-meddelandet.
+
+Run (bara i riktigt läge, utan testdata): `npm run build`
+Expected: bygget går igenom med varningar om att `src/data/species` och `src/data/comparisons` saknar filer. Inga artsidor finns än, så inget läser datan.
+
+- [ ] **Step 5: Commit**
 
 ```bash
-git add src/content.config.ts src/lib/species.ts
-git commit -m "feat(website): innehållssamlingen species och lib/species.ts"
+git add src/content.config.ts src/lib/species.ts astro.config.mjs
+git commit -m "feat(website): samlingarna species och comparisons, lib/species.ts och inspelningar i bygget"
 ```
 
 ---
 
-### Task 3: Texterna (SV och EN)
+### Task 5: Texterna (SV och EN)
 
 **Files:**
 - Modify: `website/src/content/copy.sv.json`, `website/src/content/copy.en.json`
 
 - [ ] **Step 1: Lägg till nycklarna i `copy.sv.json`**
 
-I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"species": "Arter", "allSpecies": "Alla arter från A till Ö", "commonSpecies": "Vanliga arter",`. I `guide`, lägg till `"browse": "Bläddra bland arterna",`. Lägg till ett nytt toppnivåobjekt `species` (före `footer`):
+I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"species": "Arter", "allSpecies": "Alla arter från A till Ö", "commonSpecies": "Vanliga arter",`. I `guide`, lägg till `"browse": "Bläddra bland arterna",`. Lägg till två nya toppnivåobjekt före `footer`:
 
 ```json
   "species": {
@@ -401,7 +1314,9 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "hubHeadline": "Fåglar i Sverige och *Europa*",
     "hubLead": "{n} vanliga fåglar med foton, kännetecken och läten. Samma uppslagsverk som i appen, där du också kan känna igen fågeln på plats.",
     "hubGroups": "Grupperna",
+    "hubCompare": "Lätta att blanda ihop",
     "hubAll": "Alla arter från A till Ö",
+    "hubAbout": "Så gör vi artsidorna",
     "noResults": "Ingen art matchar sökningen.",
     "groupSpecies": "Arterna",
     "countOne": "1 art",
@@ -411,6 +1326,8 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "titleGroup": "{group}: {count} med foton och kännetecken | Birdy",
     "titleGroupShort": "{group}: arter och kännetecken | Birdy",
     "titleHub": "Fåglar i Sverige och Europa: {count} med foton | Birdy",
+    "titleCompare": "{a} eller {b}? Så skiljer du dem åt | Birdy",
+    "titleCompareShort": "{a} eller {b}? | Birdy",
     "descGroup": "{group}: {count} med foton, kännetecken och läten. Lär dig skilja dem åt i fält, och känn igen dem på plats med appen Birdy.",
     "descHub": "Bläddra bland {n} vanliga fåglar i Sverige och Europa. Foton, kännetecken och läten, sorterade i samma grupper som i appen Birdy.",
     "crumbLabel": "Brödsmulor",
@@ -421,6 +1338,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       "family": "Familj",
       "sweden": "I Sverige",
       "size": "Storlek",
+      "swedishRedList": "Svenska rödlistan 2025",
       "iucn": "Global rödlista (IUCN)"
     },
     "statusLabels": {
@@ -430,6 +1348,15 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       "winter_visitor": "Vintergäst",
       "rare_visitor": "Sällsynt gäst",
       "absent": "Förekommer inte"
+    },
+    "redListLabels": {
+      "RE": "Nationellt utdöd",
+      "CR": "Akut hotad",
+      "EN": "Starkt hotad",
+      "VU": "Sårbar",
+      "NT": "Nära hotad",
+      "DD": "Kunskapsbrist",
+      "not_listed": "Inte rödlistad"
     },
     "iucnLabels": {
       "LC": "Livskraftig",
@@ -444,28 +1371,102 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "headMarks": "Så känner du igen den",
     "headVoice": "Läte",
     "headWhere": "Var och när",
+    "headBehaviour": "Föda och beteende",
+    "headLookAlikes": "Kan förväxlas med",
+    "compareLink": "Jämför {a} och {b}",
+    "chartTitle": "När ses den i Sverige?",
+    "chartCaption": "Andel av alla fågelrapporter per månad i Artportalen 2016 till 2025.",
+    "mapTitle": "Var rapporteras den?",
+    "mapCaption": "Andel av alla fågelrapporter per län i Artportalen 2016 till 2025.",
+    "mapLegend": ["Inga rapporter", "Liten andel", "Mellanstor andel", "Störst andel"],
+    "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
     "moreFamily": "Fler {family}",
     "moreGroup": "Fler {group}",
     "appHeadline": "Osäker på vad du ser?",
-    "appText": "Birdy känner igen arten på foto eller läte, direkt i telefonen och utan täckning.",
+    "appTextBoth": "Birdy känner igen arten på foto eller läte, direkt i telefonen och utan täckning.",
+    "appTextSound": "Birdy känner igen arten på lätet, direkt i telefonen och utan täckning.",
+    "appTextPhoto": "Birdy känner igen arten på foto, direkt i telefonen och utan täckning.",
+    "appTextNone": "Birdy hjälper dig känna igen fåglarna omkring dig på foto och läte, direkt i telefonen och utan täckning.",
     "plate": "Pl. {n}",
     "photoCredit": "Foto:",
     "via": "via",
     "unknownAuthor": "okänd fotograf",
+    "recordingLabel": "Inspelning: {name}",
+    "recordingCredit": "Inspelning:",
+    "unknownRecordist": "okänd inspelare",
+    "trimmed": "klippt",
     "textCredit": "Texten bygger på Wikipedia och får delas under",
     "sources": "Källor",
     "articleSv": "svenska artikeln",
     "articleEn": "engelska artikeln",
+    "articleDe": "tyska artikeln",
+    "dataCreditReports": "Rapportdata: Artportalen (SLU Artdatabanken) via {gbif}, 2016 till 2025.",
+    "dataCreditRedList": "Rödlista: Rödlistade arter i Sverige 2025, SLU Artdatabanken.",
+    "reviewed": "Faktagranskad av {name} {date}.",
+    "aboutLink": "Så gör vi artsidorna",
     "reportError": "Hittade du ett fel? Skriv till oss.",
     "reportSubject": "Fel på artsidan: {name}",
+    "reportSubjectCompare": "Fel på jämförelsesidan: {name}",
     "altHero": "{name} ({scientific})",
-    "altExtra": "{name}, ytterligare foto"
+    "altExtra": "{name}, ytterligare foto",
+    "previewBanner": "Förhandsvisning, inte publicerad",
+    "compareKicker": "Lätta att blanda ihop",
+    "compareHeadline": "{a} eller *{b}*?",
+    "compareItem": "{a} eller {b}",
+    "compareTable": "Så skiljer du dem åt",
+    "compareFeature": "Kännetecken",
+    "compareChart": "När ses de?",
+    "compareApp": "Fortfarande osäker?",
+    "chartSeriesSentence": "{name}: {text}"
+  },
+  "speciesAbout": {
+    "title": "Så gör vi artsidorna: källor och granskning | Birdy",
+    "description": "Så skrivs Birdys artsidor: källorna, hur AI används, hur Albin Abrahamsson granskar fakta, vilka licenser som gäller och hur du rapporterar fel.",
+    "crumb": "Så gör vi artsidorna",
+    "headline": "Så gör vi *artsidorna*",
+    "lead": "Varje artsida bygger på flera källor, kontrolleras i flera steg och granskas av en människa innan den publiceras. Så här går det till.",
+    "sections": [
+      {
+        "heading": "Källorna",
+        "paragraphs": [
+          "Texterna bygger på artiklarna om varje art på svenska, engelska och tyska Wikipedia.",
+          "Diagrammet över när arten syns och kartan över var den rapporteras räknas fram ur Artportalen, Sveriges rapportsystem för fynd av växter och djur, som SLU Artdatabanken delar via den internationella databasen GBIF. Siffrorna visar artens andel av alla fågelrapporter, så att en månad eller ett län med många fågelskådare inte ser ut att ha fler fåglar än det har.",
+          "Den svenska rödlistestatusen kommer från Rödlistade arter i Sverige 2025, från SLU Artdatabanken. Foton och inspelningar kommer från Wikimedia Commons."
+        ]
+      },
+      {
+        "heading": "Så används AI",
+        "paragraphs": [
+          "En språkmodell läser artiklarna och plockar ut fakta om utseende, läte, miljö och förekomst i Sverige. Varje faktum ska ha ett ordagrant citat ur artikeln, och ett program kontrollerar att citatet verkligen finns där. Fakta utan giltigt citat stryks.",
+          "Texten på sidan skrivs sedan av en modell som bara får se de fakta som har godkänts, inte artiklarna. En annan modell läser därefter varje mening och jämför den med fakta. Meningar som inte stöds skrivs om eller stryks.",
+          "Diagrammet, kartan och rödlistestatusen räknas fram direkt ur datan, utan någon språkmodell."
+        ]
+      },
+      {
+        "heading": "Granskningen",
+        "paragraphs": [
+          "Albin Abrahamsson, som har byggt Birdy, går igenom varje arts fakta innan sidan publiceras och stryker eller rättar det som inte stämmer. Datumet för granskningen står längst ned på varje artsida."
+        ]
+      },
+      {
+        "heading": "Licenserna",
+        "paragraphs": [
+          "Texterna på artsidorna bygger på Wikipedia och får därför delas under CC BY-SA 4.0, om du anger Birdy som källa och delar vidare på samma villkor. Foton och inspelningar har sina egna licenser, och varje sida anger upphovsperson, licens och källa för dem."
+        ]
+      },
+      {
+        "heading": "Rättelser",
+        "paragraphs": [
+          "Hittar du ett fel? Skriv till {email}, gärna med en länk till sidan. Vi rättar sidan och sätter ett nytt granskningsdatum."
+        ]
+      }
+    ]
   },
 ```
 
 - [ ] **Step 2: Samma nycklar i `copy.en.json`**
 
-`nav.species`: `"Species"`. `footer`: `"species": "Species", "allSpecies": "All species A to Z", "commonSpecies": "Common species"`. `guide.browse`: `"Browse the species"`. Objektet `species`:
+`nav.species`: `"Species"`. `footer`: `"species": "Species", "allSpecies": "All species A to Z", "commonSpecies": "Common species"`. `guide.browse`: `"Browse the species"`. Objekten:
 
 ```json
   "species": {
@@ -478,7 +1479,9 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "hubHeadline": "Birds of Sweden and *Europe*",
     "hubLead": "{n} common birds with photos, field marks and calls. The same field guide as in the app, where you can also identify the bird on the spot.",
     "hubGroups": "The groups",
+    "hubCompare": "Easy to mix up",
     "hubAll": "All species A to Z",
+    "hubAbout": "How we make these pages",
     "noResults": "No species match your search.",
     "groupSpecies": "The species",
     "countOne": "1 species",
@@ -488,6 +1491,8 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "titleGroup": "{group}: {count} with photos and ID tips | Birdy",
     "titleGroupShort": "{group}: species and ID tips | Birdy",
     "titleHub": "Birds of Sweden and Europe: {count} with photos | Birdy",
+    "titleCompare": "{a} vs {b}: how to tell them apart | Birdy",
+    "titleCompareShort": "{a} vs {b} | Birdy",
     "descGroup": "{group}: {count} with photos, field marks and calls. Learn to tell them apart, and identify them on the spot with the Birdy app.",
     "descHub": "Browse {n} common birds of Sweden and Europe. Photos, field marks and calls, sorted in the same groups as in the Birdy app.",
     "crumbLabel": "Breadcrumb",
@@ -498,6 +1503,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       "family": "Family",
       "sweden": "In Sweden",
       "size": "Size",
+      "swedishRedList": "Swedish Red List 2025",
       "iucn": "Global Red List (IUCN)"
     },
     "statusLabels": {
@@ -507,6 +1513,15 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       "winter_visitor": "Winter visitor",
       "rare_visitor": "Rare visitor",
       "absent": "Does not occur"
+    },
+    "redListLabels": {
+      "RE": "Regionally extinct",
+      "CR": "Critically endangered",
+      "EN": "Endangered",
+      "VU": "Vulnerable",
+      "NT": "Near threatened",
+      "DD": "Data deficient",
+      "not_listed": "Not red-listed"
     },
     "iucnLabels": {
       "LC": "Least concern",
@@ -521,40 +1536,114 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "headMarks": "How to recognise it",
     "headVoice": "Call and song",
     "headWhere": "Where and when",
+    "headBehaviour": "Food and behaviour",
+    "headLookAlikes": "Can be confused with",
+    "compareLink": "Compare the {a} and the {b}",
+    "chartTitle": "When is it seen in Sweden?",
+    "chartCaption": "Share of all bird reports per month in Artportalen, 2016 to 2025.",
+    "mapTitle": "Where is it reported?",
+    "mapCaption": "Share of all bird reports per county in Artportalen, 2016 to 2025.",
+    "mapLegend": ["No reports", "Small share", "Medium share", "Largest share"],
+    "monthLetters": ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
     "moreFamily": "More in the {family} family",
     "moreGroup": "More {group}",
     "appHeadline": "Not sure what you are seeing?",
-    "appText": "Birdy identifies the species from a photo or its song, right on your phone and without signal.",
+    "appTextBoth": "Birdy identifies this species from a photo or its song, right on your phone and without signal.",
+    "appTextSound": "Birdy identifies this species from its song, right on your phone and without signal.",
+    "appTextPhoto": "Birdy identifies this species from a photo, right on your phone and without signal.",
+    "appTextNone": "Birdy helps you identify the birds around you from photos and songs, right on your phone and without signal.",
     "plate": "Pl. {n}",
     "photoCredit": "Photo:",
     "via": "via",
     "unknownAuthor": "unknown photographer",
+    "recordingLabel": "Recording: {name}",
+    "recordingCredit": "Recording:",
+    "unknownRecordist": "unknown recordist",
+    "trimmed": "trimmed",
     "textCredit": "The text is based on Wikipedia and may be shared under",
     "sources": "Sources",
     "articleSv": "Swedish article",
     "articleEn": "English article",
+    "articleDe": "German article",
+    "dataCreditReports": "Report data: Artportalen (SLU Swedish Species Information Centre) via {gbif}, 2016 to 2025.",
+    "dataCreditRedList": "Red list: The Swedish Red List 2025, SLU Swedish Species Information Centre.",
+    "reviewed": "Facts reviewed by {name} on {date}.",
+    "aboutLink": "How we make these pages",
     "reportError": "Found a mistake? Write to us.",
     "reportSubject": "Mistake on the species page: {name}",
+    "reportSubjectCompare": "Mistake on the comparison page: {name}",
     "altHero": "{name} ({scientific})",
-    "altExtra": "{name}, another photo"
+    "altExtra": "{name}, another photo",
+    "previewBanner": "Preview, not published",
+    "compareKicker": "Easy to mix up",
+    "compareHeadline": "{a} or *{b}*?",
+    "compareItem": "{a} or {b}",
+    "compareTable": "How to tell them apart",
+    "compareFeature": "Feature",
+    "compareChart": "When are they seen?",
+    "compareApp": "Still not sure?",
+    "chartSeriesSentence": "{name}: {text}"
+  },
+  "speciesAbout": {
+    "title": "How we make the species pages: sources and review | Birdy",
+    "description": "How the species pages on Birdy are made: the sources, how AI is used, how Albin Abrahamsson reviews the facts, the licences and how to report a mistake.",
+    "crumb": "How we make these pages",
+    "headline": "How we make the *species pages*",
+    "lead": "Every species page is built from several sources, checked in several steps and reviewed by a person before it is published. This is how it works.",
+    "sections": [
+      {
+        "heading": "The sources",
+        "paragraphs": [
+          "The texts are based on the articles about each species on Swedish, English and German Wikipedia.",
+          "The chart of when the species is seen and the map of where it is reported are calculated from Artportalen, Sweden's reporting system for sightings of plants and animals, which the SLU Swedish Species Information Centre shares through the international database GBIF. The figures show the species' share of all bird reports, so that a month or a county with many birdwatchers does not look as if it had more birds than it does.",
+          "The Swedish red list status comes from The Swedish Red List 2025 by the SLU Swedish Species Information Centre. Photos and recordings come from Wikimedia Commons."
+        ]
+      },
+      {
+        "heading": "How AI is used",
+        "paragraphs": [
+          "A language model reads the articles and picks out facts about appearance, call, habitat and occurrence in Sweden. Every fact needs a word for word quote from the article, and a program checks that the quote really is there. Facts without a valid quote are removed.",
+          "The text on the page is then written by a model that only sees the approved facts, not the articles. Another model then reads every sentence and compares it with the facts. Sentences that are not supported are rewritten or removed.",
+          "The chart, the map and the red list status are calculated directly from the data, without any language model."
+        ]
+      },
+      {
+        "heading": "The review",
+        "paragraphs": [
+          "Albin Abrahamsson, who built Birdy, goes through the facts for every species before the page is published, and removes or corrects anything that is wrong. The date of the review is at the bottom of every species page."
+        ]
+      },
+      {
+        "heading": "The licences",
+        "paragraphs": [
+          "The texts on the species pages are based on Wikipedia and may therefore be shared under CC BY-SA 4.0, if you credit Birdy and share on the same terms. Photos and recordings have their own licences, and every page names the author, licence and source for them."
+        ]
+      },
+      {
+        "heading": "Corrections",
+        "paragraphs": [
+          "Found a mistake? Write to {email}, ideally with a link to the page. We correct the page and set a new review date."
+        ]
+      }
+    ]
   },
 ```
 
 - [ ] **Step 3: Kör textvakterna**
 
 Run: `npm run test:i18n && npm run test:no-dashes && npm run test:palette && npm run test:no-accuracy && npx astro check`
-Expected: paritet OK, inga streck, ingen noggrannhetssiffra och inga nya typfel (nu känner `Copy` till `species`).
+Expected: paritet OK, inga streck, ingen noggrannhetssiffra och inga nya typfel (nu känner `Copy` till `species` och `speciesAbout`).
 
 - [ ] **Step 4: Commit**
 
 ```bash
 git add src/content/copy.sv.json src/content/copy.en.json
-git commit -m "feat(website): texter för artsidorna (SV och EN)"
+git commit -m "feat(website): texter för artsidorna, jämförelserna och om-sidan (SV och EN)"
 ```
 
 ---
 
-### Task 4: Kategoriraden, artkortet och de delade stilarna
+### Task 6: Kategoriraden, artkortet och de delade stilarna
 
 **Files:**
 - Modify: `website/src/components/ui/Icon.astro` (ny ikon `search`)
@@ -575,7 +1664,8 @@ I `src/components/ui/Icon.astro`, lägg till i `paths` efter `menu`:
 `src/styles/species.css`:
 
 ```css
-/* Shared by the species hub, group pages and species pages (spec 2026-09-25 §5 and §6). */
+/* Shared by the species hub, group, species, comparison and about pages (spec 2026-09-25 §5 to §8).
+   Plain CSS, so it reaches markup in every component; palette tokens only (npm run test:palette). */
 .sp-crumbs ol { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0 0 16px; padding: 0; font-size: 12.5px; color: var(--muted); }
 .sp-crumbs li + li::before { content: '›'; margin-right: 6px; }
 .sp-crumbs a { color: var(--muted); border-bottom: 1px solid transparent; }
@@ -585,7 +1675,17 @@ I `src/components/ui/Icon.astro`, lägg till i `paths` efter `menu`:
 .sp-app { background: var(--dark); color: var(--cream); border-radius: 14px; padding: 18px 20px; --jh-ink: var(--cream); }
 .sp-app .sp-app-h { margin: 0 0 6px; font-family: var(--font-serif); font-style: italic; font-size: 21px; color: var(--apricot); }
 .sp-app p { margin: 0 0 12px; font-size: 14px; line-height: 1.55; color: var(--cream); }
-.sp-app :global(:focus-visible), .sp-app :focus-visible { outline-color: var(--apricot); }
+.sp-app :focus-visible { outline-color: var(--apricot); }
+.sp-preview { margin: 0 0 18px; padding: 8px 14px; border: 1px dashed var(--rust); border-radius: 10px; background: var(--peach); color: var(--ink); font-size: 13px; font-weight: 600; }
+.plate { margin: 0; background: var(--card); border: 1px solid var(--line); padding: 9px 9px 5px; box-shadow: 0 2px 0 var(--line); }
+.plate img { display: block; width: 100%; height: auto; }
+.plate figcaption { display: flex; justify-content: space-between; gap: 12px; padding-top: 4px; font-family: var(--font-script); font-size: 17px; color: var(--muted); }
+.facts { margin: 0; }
+.facts div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; font-weight: 600; text-align: right; }
+.data-summary { font-size: 14.5px; line-height: 1.6; color: var(--ink); margin: 0; }
+.fig-caption { margin-top: 6px; font-size: 12px; line-height: 1.45; color: var(--muted); }
 @media (max-width: 760px) {
   .sp-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 }
@@ -628,11 +1728,11 @@ const { species: s, locale } = Astro.props;
 ---
 import Icon from '../ui/Icon.astro';
 import { getCopy, type Locale } from '../../lib/i18n';
-import { GROUPS, getAllSpecies, groupHref, groupSizes, hubHref } from '../../lib/species';
+import { activeGroups, getAllSpecies, groupHref, groupSizes, hubHref } from '../../lib/species';
 
 interface Props {
   locale: Locale;
-  /** 'all' on the hub, otherwise the group key. */
+  /** 'all' on the hub, a group key on group and species pages, '' when no chip is current. */
   active: string;
   /** The hub has its own search field, so it hides this one. */
   search?: boolean;
@@ -643,7 +1743,7 @@ const all = await getAllSpecies();
 const sizes = groupSizes(all);
 const chips = [
   { key: 'all', href: hubHref(locale), label: t.species.allChip, n: all.length },
-  ...GROUPS.map((g) => ({ key: g.key, href: groupHref(g, locale), label: g.name[locale], n: sizes.get(g.key) ?? 0 })),
+  ...activeGroups(all).map((g) => ({ key: g.key, href: groupHref(g, locale), label: g.name[locale], n: sizes.get(g.key) ?? 0 })),
 ];
 ---
 
@@ -700,8 +1800,8 @@ const chips = [
 
 - [ ] **Step 5: Bygg**
 
-Run: `npm run build`
-Expected: bygget går igenom (komponenterna används inte än).
+Run: `npm run build:fixtures && npm run test:palette`
+Expected: bygget går igenom (komponenterna används inte än) och palettvakten är grön.
 
 - [ ] **Step 6: Commit**
 
@@ -712,7 +1812,7 @@ git commit -m "feat(website): kategoriraden, artkortet och delade stilar för ar
 
 ---
 
-### Task 5: Ingångssidan
+### Task 7: Ingångssidan
 
 **Files:**
 - Create: `website/tests/species.spec.ts`
@@ -727,24 +1827,45 @@ git commit -m "feat(website): kategoriraden, artkortet och delade stilar för ar
 import { test, expect, type Page } from '@playwright/test';
 import { trackConsoleErrors } from './test-helpers';
 
+// Runs against the TEST data (tests/fixtures/): build with `npm run build:fixtures` first.
+// 16 species are published there, in 7 groups; two woodpeckers are unpublished, one is failed and one pending.
+
 async function noSideScroll(page: Page): Promise<void> {
   const [scroll, client] = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]);
   expect(scroll).toBeLessThanOrEqual(client);
 }
 
 test.describe('ingångssidan', () => {
-  for (const [path, h1, other] of [['/sv/arter/', 'Europa', '/species/'], ['/species/', 'Europe', '/sv/arter/']] as const) {
-    test(`${path} visar grupper och hela listan`, async ({ page }) => {
+  for (const [path, h1, other, about] of [
+    ['/sv/arter/', 'Europa', '/species/', '/sv/arter/om-artsidorna/'],
+    ['/species/', 'Europe', '/sv/arter/', '/species/about-these-pages/'],
+  ] as const) {
+    test(`${path} visar grupper, jämförelser och hela listan`, async ({ page }) => {
       const errors = trackConsoleErrors(page);
       const res = await page.goto(path);
       expect(res?.status()).toBe(200);
       await expect(page.locator('h1')).toContainText(h1);
-      expect(await page.locator('.groups a').count()).toBe(15);
-      expect(await page.locator('[data-item]').count()).toBeGreaterThan(150);
-      await expect(page.locator('link[rel="alternate"][hreflang="' + (path.startsWith('/sv') ? 'en' : 'sv') + '"]')).toHaveAttribute('href', `https://birdy.community${other}`);
+      await expect(page.locator('.groups a')).toHaveCount(7);
+      await expect(page.locator('[data-item]')).toHaveCount(16);
+      await expect(page.locator('[data-compare-link]')).toHaveCount(2);
+      await expect(page.locator(`a[href="${about}"]`)).toHaveCount(1);
+      await expect(page.locator(`link[rel="alternate"][hreflang="${path.startsWith('/sv') ? 'en' : 'sv'}"]`)).toHaveAttribute('href', `https://birdy.community${other}`);
       expect(errors).toEqual([]);
     });
   }
+
+  test('jämförelserna har namnen i svensk ordning', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    await expect(page.locator('[data-compare-link]')).toHaveText(['Blåmes eller talgoxe', 'Kaja eller skata']);
+  });
+
+  test('opublicerade, väntande och misslyckade arter syns inte', async ({ page }) => {
+    await page.goto('/sv/arter/');
+    for (const name of ['Större hackspett', 'Tretåig hackspett', 'Gröngöling', 'Spillkråka']) {
+      await expect(page.locator('[data-item]', { hasText: name })).toHaveCount(0);
+    }
+    await expect(page.locator('.catbar .chip', { hasText: 'Hackspettar' })).toHaveCount(0);
+  });
 
   test('sökningen filtrerar och klarar å, ä och ö', async ({ page }) => {
     await page.goto('/sv/arter/');
@@ -782,7 +1903,7 @@ test.describe('ingångssidan utan JavaScript', () => {
 
 - [ ] **Step 2: Kör och se dem faila**
 
-Run: `npm run build && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts`
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts`
 Expected: FAIL, `/sv/arter/` ger 404.
 
 - [ ] **Step 3: Skriv komponenten**
@@ -800,8 +1921,8 @@ import JournalHeadline from '../ui/JournalHeadline.astro';
 import CategoryBar from './CategoryBar.astro';
 import { getCopy, type Locale } from '../../lib/i18n';
 import {
-  GROUPS, breadcrumbJsonLd, countLabel, getAllSpecies, groupHref, groupPhoto, groupSizes, hubHref,
-  itemListJsonLd, searchKey, sortByName, speciesHref,
+  aboutHref, activeGroups, breadcrumbJsonLd, comparisonHref, comparisonPair, countLabel, getAllSpecies, getComparisons,
+  groupHref, groupPhoto, groupSizes, hubHref, itemListJsonLd, pairNames, searchKey, sortByName, speciesHref,
 } from '../../lib/species';
 import '../../styles/species.css';
 
@@ -811,7 +1932,14 @@ const t = getCopy(locale);
 const other: Locale = locale === 'sv' ? 'en' : 'sv';
 const all = await getAllSpecies();
 const sizes = groupSizes(all);
+const groups = activeGroups(all);
 const sorted = sortByName(all, locale);
+const comparisons = (await getComparisons())
+  .map((c) => {
+    const names = pairNames(comparisonPair(c, locale, all), locale);
+    return { href: comparisonHref(c, locale), label: t.species.compareItem.replace('{a}', names[0]).replace('{b}', names[1]) };
+  })
+  .sort((a, b) => a.label.localeCompare(b.label, locale));
 const firstLetter = (name: string) => name.charAt(0).toLocaleUpperCase(locale);
 const letters = [...new Set(sorted.map((s) => firstLetter(s.names[locale])))];
 const pathname = hubHref(locale);
@@ -844,7 +1972,7 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
 
     <h2 class="sp-h2">{t.species.hubGroups}</h2>
     <ul class="groups" role="list">
-      {GROUPS.map((g) => {
+      {groups.map((g) => {
         const photo = groupPhoto(g, all);
         return (
           <li>
@@ -857,6 +1985,15 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
         );
       })}
     </ul>
+
+    {comparisons.length > 0 && (
+      <Fragment>
+        <h2 class="sp-h2">{t.species.hubCompare}</h2>
+        <ul class="compare-list" role="list">
+          {comparisons.map((c) => <li><a href={c.href} data-compare-link>{c.label}</a></li>)}
+        </ul>
+      </Fragment>
+    )}
 
     <h2 class="sp-h2" id="a-o">{t.species.hubAll}</h2>
     <p class="no-results" data-no-results hidden>{t.species.noResults}</p>
@@ -872,6 +2009,8 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
         </ul>
       </section>
     ))}
+
+    <p class="about-link"><a href={aboutHref(locale)}>{t.species.hubAbout}</a></p>
   </main>
   <Footer locale={locale} switchLangHref={hubHref(other)} />
 </Layout>
@@ -913,6 +2052,9 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
   .gcard :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
   .gcard-name { display: block; margin: 8px 4px 0; font-weight: 600; font-size: 14px; }
   .gcard-n { display: block; margin: 0 4px 4px; font-size: 12.5px; color: var(--muted); }
+  .compare-list { list-style: none; margin: 0; padding: 0; columns: 2 260px; column-gap: 28px; }
+  .compare-list li { break-inside: avoid; padding: 6px 0; border-bottom: 1px dotted var(--line); font-size: 15px; }
+  .compare-list a:hover { color: var(--rust); }
   .letter { margin-top: 22px; }
   .letter h3 { font-size: 26px; color: var(--rust); margin: 0 0 8px; }
   .letter ul { list-style: none; margin: 0; padding: 0; columns: 3 220px; column-gap: 28px; }
@@ -921,6 +2063,8 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, title.replace
   .letter a:hover span { color: var(--rust); }
   .letter i { font-family: var(--font-script); font-style: normal; font-size: 16px; color: var(--muted); margin-left: 4px; }
   .no-results { color: var(--muted); }
+  .about-link { margin: 48px 0 0; font-weight: 600; }
+  .about-link a { color: var(--rust); border-bottom: 1px solid currentColor; padding-bottom: 2px; }
   @media (max-width: 760px) {
     .groups { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   }
@@ -949,22 +2093,24 @@ import SpeciesHub from '../../components/species/SpeciesHub.astro';
 
 - [ ] **Step 5: Kör testerna igen**
 
-Run: `npm run build && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts`
-Expected: PASS (7 tester)
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts`
+Expected: PASS (8 tester)
 
 - [ ] **Step 6: Commit**
 
 ```bash
 git add src/components/species/SpeciesHub.astro src/pages/sv/arter/index.astro src/pages/species/index.astro tests/species.spec.ts
-git commit -m "feat(website): ingångssidan för arterna med sökning"
+git commit -m "feat(website): ingångssidan för arterna med sökning och jämförelser"
 ```
 
 ---
 
-### Task 6: Gruppsidorna
+### Task 8: Gruppsidorna
 
 **Files:**
 - Create: `website/src/components/species/GroupPage.astro`
+- Create: `website/src/components/species/SpeciesRoute.astro`
+- Create: `website/src/lib/species-routes.ts`
 - Create: `website/src/pages/sv/arter/[slug].astro`, `website/src/pages/species/[slug].astro`
 - Modify: `website/tests/species.spec.ts` (lägg till i slutet)
 
@@ -980,20 +2126,26 @@ test.describe('gruppsidorna', () => {
     expect(res?.status()).toBe(200);
     await expect(page.locator('h1')).toHaveText('Ugglor');
     await expect(page.locator('.catbar .chip[aria-current="page"]')).toContainText('Ugglor');
-    expect(await page.locator('[data-item]').count()).toBeGreaterThanOrEqual(3);
+    await expect(page.locator('.catbar .chip')).toHaveCount(8);
+    await expect(page.locator('[data-item]')).toHaveCount(3);
     await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
     await expect(page.locator('a[href*="utm_medium%3Dgroup"]')).toHaveCount(1);
+    await expect(page.locator('.sp-app')).toContainText('hjälper dig känna igen fåglarna');
     expect(errors).toEqual([]);
   });
 
   test('Tättingar delas upp i familjer', async ({ page }) => {
     await page.goto('/sv/arter/tattingar/');
-    expect(await page.locator('.family h3').count()).toBeGreaterThan(5);
+    await expect(page.locator('.family h3')).toHaveCount(6);
   });
 
   test('små grupper har noindex', async ({ page }) => {
     await page.goto('/sv/arter/havsfaglar/');
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, follow');
+  });
+
+  test('en grupp utan byggda arter får ingen sida', async ({ page }) => {
+    expect((await page.goto('/sv/arter/hackspettar/'))?.status()).toBe(404);
   });
 
   test('kategoriraden sveps i sidled på 390 px utan att sidan gör det', async ({ page }) => {
@@ -1014,8 +2166,8 @@ test.describe('gruppsidorna', () => {
 
 - [ ] **Step 2: Kör och se dem faila**
 
-Run: `npm run build && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts -g gruppsidorna`
-Expected: FAIL (404)
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts -g gruppsidorna`
+Expected: FAIL (404 på `/sv/arter/ugglor/`)
 
 - [ ] **Step 3: Skriv gruppsidan**
 
@@ -1032,7 +2184,7 @@ import CategoryBar from './CategoryBar.astro';
 import SpeciesCard from './SpeciesCard.astro';
 import { getCopy, type Locale } from '../../lib/i18n';
 import {
-  breadcrumbJsonLd, countLabel, getAllSpecies, groupHref, groupTitle, hubHref, isGroupIndexed,
+  appText, breadcrumbJsonLd, countLabel, getAllSpecies, groupHref, groupTitle, hubHref, isGroupIndexed,
   itemListJsonLd, playHref, sortByName, type Group, type Species,
 } from '../../lib/species';
 import '../../styles/species.css';
@@ -1091,7 +2243,7 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, group.name[lo
 
     <aside class="sp-app group-app">
       <p class="sp-app-h">{t.species.appHeadline}</p>
-      <p>{t.species.appText}</p>
+      <p>{appText(undefined, t)}</p>
       <PlayStoreBadge locale={locale} href={playHref(group.slug[locale], 'group')} alt={t.alt.playStoreBadge} size="small" />
     </aside>
   </main>
@@ -1107,64 +2259,308 @@ const jsonLd = [breadcrumbJsonLd(crumbs), itemListJsonLd(pathname, group.name[lo
 </style>
 ```
 
-- [ ] **Step 4: Routes (grupper nu, arter i Task 7)**
+- [ ] **Step 4: Routen (grupper nu, arter i Task 10 och jämförelser i Task 11)**
+
+`src/lib/species-routes.ts`:
+
+```ts
+import type { Locale } from './i18n';
+import { ABOUT_SLUG, activeGroups, assertUniqueSlugs, getAllSpecies } from './species';
+
+/** Every page under /species/ and /sv/arter/ except the hub and the about page (spec §4). */
+export async function speciesPaths(locale: Locale) {
+  const all = await getAllSpecies();
+  const groups = activeGroups(all);
+  assertUniqueSlugs([...groups.map((g) => g.slug[locale]), ABOUT_SLUG[locale]], locale);
+  return groups.map((group) => ({ params: { slug: group.slug[locale] }, props: { group } }));
+}
+```
+
+`src/components/species/SpeciesRoute.astro`:
+
+```astro
+---
+import GroupPage from './GroupPage.astro';
+import type { Locale } from '../../lib/i18n';
+import type { Group } from '../../lib/species';
+
+interface Props { locale: Locale; group?: Group }
+const { locale, group } = Astro.props;
+---
+{group && <GroupPage group={group} locale={locale} />}
+```
 
 `src/pages/sv/arter/[slug].astro`:
 
 ```astro
 ---
-import GroupPage from '../../../components/species/GroupPage.astro';
-import { GROUPS, assertUniqueSlugs, type Group } from '../../../lib/species';
+import SpeciesRoute from '../../../components/species/SpeciesRoute.astro';
+import { speciesPaths } from '../../../lib/species-routes';
 
 export async function getStaticPaths() {
-  assertUniqueSlugs(GROUPS.map((g) => g.slug.sv), 'sv');
-  return GROUPS.map((group) => ({ params: { slug: group.slug.sv }, props: { group } }));
+  return speciesPaths('sv');
 }
-
-interface Props { group: Group }
-const { group } = Astro.props;
 ---
-<GroupPage group={group} locale="sv" />
+<SpeciesRoute {...Astro.props} locale="sv" />
 ```
 
 `src/pages/species/[slug].astro`:
 
 ```astro
 ---
-import GroupPage from '../../components/species/GroupPage.astro';
-import { GROUPS, assertUniqueSlugs, type Group } from '../../lib/species';
+import SpeciesRoute from '../../components/species/SpeciesRoute.astro';
+import { speciesPaths } from '../../lib/species-routes';
 
 export async function getStaticPaths() {
-  assertUniqueSlugs(GROUPS.map((g) => g.slug.en), 'en');
-  return GROUPS.map((group) => ({ params: { slug: group.slug.en }, props: { group } }));
+  return speciesPaths('en');
 }
-
-interface Props { group: Group }
-const { group } = Astro.props;
 ---
-<GroupPage group={group} locale="en" />
+<SpeciesRoute {...Astro.props} locale="en" />
 ```
 
 - [ ] **Step 5: Kör testerna igen**
 
-Run: `npm run build && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts`
-Expected: PASS (alla, 12 tester)
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts`
+Expected: PASS (14 tester)
 
 - [ ] **Step 6: Commit**
 
 ```bash
-git add src/components/species/GroupPage.astro src/pages/sv/arter/[slug].astro src/pages/species/[slug].astro tests/species.spec.ts
+git add src/components/species/GroupPage.astro src/components/species/SpeciesRoute.astro src/lib/species-routes.ts "src/pages/sv/arter/[slug].astro" "src/pages/species/[slug].astro" tests/species.spec.ts
 git commit -m "feat(website): gruppsidorna med familjer, noindex för små grupper och approta"
 ```
 
 ---
 
-### Task 7: Artsidan (layout B)
+### Task 9: Diagrammet, kartan, spelaren och creditblocket
 
 **Files:**
+- Create: `website/src/components/species/MonthChart.astro`
+- Create: `website/src/components/species/CountyMap.astro`
+- Create: `website/src/components/species/AudioPlayer.astro`
 - Create: `website/src/components/species/Credits.astro`
+
+Komponenterna testas genom artsidan i Task 10 och jämförelsesidan i Task 11.
+
+- [ ] **Step 1: Månadsdiagrammet**
+
+`src/components/species/MonthChart.astro`:
+
+```astro
+---
+// Bars per month as SVG, drawn when the site is built (spec 2026-09-25 §5 and §7). One series on species
+// pages, two on comparison pages. Values are the species' share of all bird reports, scaled so the top
+// month is 100. The text alternative is the paragraph that `describedBy` points at.
+interface Series { label: string; values: number[]; tone: 'rust' | 'navy' }
+interface Props { id: string; title: string; letters: string[]; series: Series[]; describedBy: string }
+const { id, title, letters, series, describedBy } = Astro.props;
+const W = 360;
+const TOP = 8;
+const H = 112;
+const BASE = TOP + H;
+const SLOT = W / 12;
+const barW = series.length === 1 ? 18 : 11;
+const offset = (i: number) => (series.length === 1 ? (SLOT - barW) / 2 : (SLOT - 2 * barW - 2) / 2 + i * (barW + 2));
+const heightOf = (v: number) => (v > 0 ? Math.max(1.5, (v / 100) * H) : 0);
+---
+
+<svg class="mchart" viewBox={`0 0 ${W} ${BASE + 22}`} role="img" aria-labelledby={`${id}-t`} aria-describedby={describedBy} data-chart={id}>
+  <title id={`${id}-t`}>{title}</title>
+  <line x1="0" x2={W} y1={BASE} y2={BASE} class="axis" />
+  {letters.map((letter, m) => (
+    <g>
+      {series.map((s, i) => {
+        const h = heightOf(s.values[m] ?? 0);
+        return <rect data-month={m + 1} data-series={i} class={`bar bar--${s.tone}`} x={(m * SLOT + offset(i)).toFixed(1)} y={(BASE - h).toFixed(1)} width={barW} height={h.toFixed(1)} rx="2" />;
+      })}
+      <text x={(m * SLOT + SLOT / 2).toFixed(1)} y={BASE + 16} class="month">{letter}</text>
+    </g>
+  ))}
+</svg>
+
+<style>
+  .mchart { display: block; width: 100%; height: auto; }
+  .axis { stroke: var(--line); stroke-width: 1; }
+  .bar--rust { fill: var(--rust); }
+  .bar--navy { fill: var(--navy); }
+  .month { font-family: var(--font-sans); font-size: 11px; fill: var(--muted); text-anchor: middle; }
+</style>
+```
+
+- [ ] **Step 2: Länskartan**
+
+`src/components/species/CountyMap.astro`:
+
+```astro
+---
+// Sweden's 21 counties shaded by the species' share of all bird reports (spec 2026-09-25 §5 and §9.2).
+// Geometry: src/data/sweden-counties.json (npm run assets:counties). Four shades: no reports, 1 to 33,
+// 34 to 66 and 67 to 100 per cent of the highest county.
+import counties from '../../data/sweden-counties.json';
+import type { Locale } from '../../lib/i18n';
+
+interface Props { id: string; values: Record<string, number>; locale: Locale; title: string; legend: string[]; describedBy: string }
+const { id, values, locale, title, legend, describedBy } = Astro.props;
+const bucket = (v: number | undefined) => (!v ? 0 : v <= 33 ? 1 : v <= 66 ? 2 : 3);
+---
+
+<div class="cmap" data-map={id}>
+  <svg viewBox={counties.viewBox} role="img" aria-labelledby={`${id}-t`} aria-describedby={describedBy}>
+    <title id={`${id}-t`}>{title}</title>
+    {counties.counties.map((c) => (
+      <path d={c.d} class={`b${bucket(values[c.code])}`} data-county={c.code}><title>{locale === 'sv' ? c.sv : c.en}</title></path>
+    ))}
+  </svg>
+  <ul class="legend" role="list">
+    {legend.map((label, i) => <li><span class={`sw b${i}`} aria-hidden="true"></span>{label}</li>)}
+  </ul>
+</div>
+
+<style>
+  .cmap svg { display: block; width: 100%; height: auto; max-height: 420px; }
+  path { stroke: var(--muted); stroke-width: .6; stroke-linejoin: round; }
+  .b0 { fill: var(--card); }
+  .b1 { fill: var(--peach); }
+  .b2 { fill: var(--apricot); }
+  .b3 { fill: var(--rust); }
+  .legend { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12px; color: var(--muted); }
+  .legend li { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--muted); }
+  .sw.b0 { background: var(--card); }
+  .sw.b1 { background: var(--peach); }
+  .sw.b2 { background: var(--apricot); }
+  .sw.b3 { background: var(--rust); }
+</style>
+```
+
+- [ ] **Step 3: Spelaren**
+
+`src/components/species/AudioPlayer.astro`:
+
+```astro
+---
+// One recording with its credit line right under it (spec 2026-09-25 §5; deviation 8 in the plan).
+// preload="none": nothing is downloaded until the visitor presses play.
+import { getCopy, type Locale } from '../../lib/i18n';
+import { audioHref, type Species } from '../../lib/species';
+
+interface Props { species: Species; locale: Locale; creditKey: string }
+const { species: s, locale, creditKey } = Astro.props;
+const t = getCopy(locale);
+const audio = s.audio;
+const src = audioHref(s);
+---
+
+{audio && src && (
+  <figure class="player" data-audio={creditKey}>
+    <audio controls preload="none" src={src} aria-label={t.species.recordingLabel.replace('{name}', s.names[locale])}></audio>
+    <figcaption data-credit-for={creditKey}>
+      {t.species.recordingCredit} {audio.author ?? t.species.unknownRecordist},{' '}
+      {audio.licenseUrl ? <a href={audio.licenseUrl} rel="license noopener">{audio.license}</a> : audio.license},{' '}
+      {t.species.via} <a href={audio.sourceUrl} rel="noopener">Wikimedia Commons</a>{audio.trimmed && `, ${t.species.trimmed}`}
+    </figcaption>
+  </figure>
+)}
+
+<style>
+  .player { margin: 12px 0 0; max-width: 40rem; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 8px; }
+  .player audio { display: block; width: 100%; }
+  .player figcaption { margin-top: 6px; font-size: 12px; line-height: 1.45; color: var(--muted); }
+  .player a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+  .player a:hover { color: var(--rust); }
+</style>
+```
+
+- [ ] **Step 4: Creditblocket**
+
+`src/components/species/Credits.astro`:
+
+```astro
+---
+// Credits for every photo, the Wikipedia articles, the data sources, the review line and the report
+// link (spec 2026-09-25 §5, §7 and §10). scripts/check-seo.mjs fails the build when one is missing.
+import { getCopy, type Locale } from '../../lib/i18n';
+import { CONTACT_EMAIL } from '../../lib/links';
+import { REVIEWER, aboutHref, formatDate, wikiUrl, type SpeciesImage, type WikiLang, type WikiRef } from '../../lib/species';
+
+interface Props {
+  locale: Locale;
+  photos: { key: string; image: SpeciesImage }[];
+  /** `name` tells two species' articles apart on comparison pages. */
+  articles: { lang: WikiLang; ref: WikiRef; name?: string }[];
+  reportData: boolean;
+  redList: boolean;
+  /** YYYY-MM-DD */
+  reviewedAt: string;
+  reportSubject: string;
+}
+const { locale, photos, articles, reportData, redList, reviewedAt, reportSubject } = Astro.props;
+const t = getCopy(locale);
+const labels: Record<WikiLang, string> = { sv: t.species.articleSv, en: t.species.articleEn, de: t.species.articleDe };
+const [gbifBefore, gbifAfter] = t.species.dataCreditReports.split('{gbif}');
+const [reviewedBefore, reviewedAfter] = t.species.reviewed.replace('{name}', REVIEWER.name).split('{date}');
+---
+
+<div class="credits">
+  {photos.map(({ key, image }) => (
+    <p data-credit-for={key}>
+      {t.species.photoCredit} {image.author ?? t.species.unknownAuthor},{' '}
+      {image.licenseUrl ? <a href={image.licenseUrl} rel="license noopener">{image.license}</a> : image.license},{' '}
+      {t.species.via} <a href={image.sourceUrl} rel="noopener">Wikimedia Commons</a>
+    </p>
+  ))}
+  <p data-wiki-credit>
+    {t.species.textCredit} <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a>.
+    {' '}{t.species.sources}:{' '}
+    {articles.map((a, i) => (
+      <Fragment>{i > 0 && ', '}<a href={wikiUrl(a.lang, a.ref)} rel="noopener" data-wiki={a.lang}>{a.name ? `${labels[a.lang]} (${a.name})` : labels[a.lang]}</a></Fragment>
+    ))}
+  </p>
+  {(reportData || redList) && (
+    <p data-data-credit>
+      {reportData && <Fragment>{gbifBefore}<a href="https://www.gbif.org/" rel="noopener">GBIF.org</a>{gbifAfter}</Fragment>}
+      {reportData && redList && ' '}
+      {redList && t.species.dataCreditRedList}
+    </p>
+  )}
+  <p class="reviewed">
+    <span data-reviewed-by>{reviewedBefore}<time datetime={reviewedAt} data-reviewed>{formatDate(reviewedAt, locale)}</time>{reviewedAfter}</span>
+    {' '}<a href={aboutHref(locale)}>{t.species.aboutLink}</a>
+  </p>
+  <p class="report"><a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(reportSubject)}`}>{t.species.reportError}</a></p>
+</div>
+
+<style>
+  .credits { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12.5px; line-height: 1.6; color: var(--muted); }
+  .credits p { margin: 0 0 6px; }
+  .credits a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+  .credits a:hover { color: var(--rust); }
+  .reviewed { margin-top: 12px !important; color: var(--ink); }
+  .reviewed a { color: var(--rust); }
+  .report { margin-top: 12px !important; font-weight: 600; }
+  .report a { color: var(--rust); }
+</style>
+```
+
+- [ ] **Step 5: Bygg och kontrollera paletten**
+
+Run: `npm run build:fixtures && npm run test:palette && npx astro check`
+Expected: bygget går igenom, palettvakten grön, inga nya typfel.
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add src/components/species/MonthChart.astro src/components/species/CountyMap.astro src/components/species/AudioPlayer.astro src/components/species/Credits.astro
+git commit -m "feat(website): månadsdiagram, länskarta, spelare och creditblock för artsidorna"
+```
+
+---
+
+### Task 10: Artsidan (layout B med de nya modulerna)
+
+**Files:**
 - Create: `website/src/components/species/SpeciesArticle.astro`
-- Modify: `website/src/pages/sv/arter/[slug].astro`, `website/src/pages/species/[slug].astro` (arter läggs till)
+- Modify: `website/src/lib/species-routes.ts`, `website/src/components/species/SpeciesRoute.astro`
 - Modify: `website/tests/species.spec.ts` (lägg till i slutet)
 
 - [ ] **Step 1: Skriv testerna**
@@ -1173,23 +2569,102 @@ Lägg till i slutet av `tests/species.spec.ts`:
 
 ```ts
 test.describe('artsidan', () => {
-  test('talgoxe: rubrik, fakta, texter, credits och språkbyte', async ({ page }) => {
+  test('talgoxe: rubrik, fakta, moduler, förväxlingsart, credits och språkbyte', async ({ page, request }) => {
     const errors = trackConsoleErrors(page);
     const res = await page.goto('/sv/arter/talgoxe/');
     expect(res?.status()).toBe(200);
     await expect(page.locator('h1')).toHaveText('Talgoxe');
     await expect(page.locator('.latin')).toHaveText('Parus major');
-    await expect(page.locator('.facts')).toContainText('Vetenskapligt namn');
-    await expect(page.locator('.facts')).toContainText('Mesar');
-    await expect(page.locator('h2')).toContainText(['Så känner du igen den', 'Läte', 'Var och när']);
-    const photos = await page.locator('[data-photo]').count();
-    await expect(page.locator('[data-credit-for]')).toHaveCount(photos);
+
+    const facts = page.locator('.facts');
+    for (const text of ['Vetenskapligt namn', 'Mesar', 'Stannfågel', 'Cirka 14 cm', 'Livskraftig (LC)']) await expect(facts).toContainText(text);
+    await expect(facts.locator('[data-redlist]')).toContainText('Inte rödlistad');
+    await expect(page.locator('.sp-app')).toContainText('på foto eller läte');
+    await expect(page.locator('h2')).toContainText(['Så känner du igen den', 'Läte', 'Var och när', 'Föda och beteende', 'Kan förväxlas med', 'Fler tättingar']);
+
+    const audio = page.locator('audio');
+    await expect(audio).toHaveAttribute('preload', 'none');
+    const src = await audio.getAttribute('src');
+    expect(src).toMatch(/^\/audio\/species\/Q25485\.[0-9a-f]{10}\.mp3$/);
+    expect((await request.get(src!)).status()).toBe(200);
+    await expect(page.locator('[data-credit-for="audio"]')).toContainText('klippt');
+
+    await expect(page.locator('[data-chart] rect[data-month]')).toHaveCount(12);
+    await expect(page.locator('[data-map] path[data-county]')).toHaveCount(21);
+    await expect(page.locator('.data-summary')).toHaveText('Rapporteras året runt. Vanligast i rapporterna från Testlän, Provlän och Exempellän.');
+    await expect(page.locator('[data-data-credit]')).toContainText('Artportalen');
+
+    const looks = page.locator('.looks li');
+    await expect(looks).toHaveCount(1);
+    await expect(looks.locator('.look-name a')).toHaveAttribute('href', '/sv/arter/blames/');
+    await expect(looks.locator('.look-compare')).toHaveAttribute('href', '/sv/arter/blames-eller-talgoxe/');
+    await expect(looks.locator('.look-compare')).toHaveText('Jämför blåmes och talgoxe');
+
+    const keys = await page.locator('[data-photo], [data-audio]').evaluateAll((els) => els.map((e) => e.getAttribute('data-photo') ?? e.getAttribute('data-audio')));
+    expect(keys).toEqual(['hero', 'audio', 'extra']);
+    for (const key of keys) await expect(page.locator(`[data-credit-for="${key}"]`)).toHaveCount(1);
+    await expect(page.locator('[data-wiki-credit] [data-wiki]')).toHaveCount(3);
     await expect(page.locator('[data-wiki-credit]')).toContainText('CC BY-SA 4.0');
+    await expect(page.locator('[data-reviewed-by]')).toContainText('Faktagranskad av Albin Abrahamsson 20 november 2026');
+    await expect(page.locator('time[data-reviewed]')).toHaveAttribute('datetime', '2026-11-20');
+    await expect(page.locator('.credits a[href="/sv/arter/om-artsidorna/"]')).toHaveCount(1);
     await expect(page.locator('a[href*="utm_campaign%3Dtalgoxe"]')).toHaveCount(1);
     await expect(page.locator('#site-nav .links a[lang="en"]')).toHaveAttribute('href', '/species/great-tit/');
-    await expect(page.locator('#site-nav .links a[aria-current="page"]')).toHaveText('Arter');
     await expect(page.locator('.catbar .chip[aria-current="page"]')).toContainText('Tättingar');
+    await expect(page.locator('[data-preview-banner]')).toHaveCount(0);
+    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
     expect(errors).toEqual([]);
+  });
+
+  test('engelska sidan: granskningsraden och jämförelselänken', async ({ page }) => {
+    await page.goto('/species/great-tit/');
+    await expect(page.locator('h1')).toHaveText('Great Tit');
+    await expect(page.locator('[data-reviewed-by]')).toContainText('Facts reviewed by Albin Abrahamsson on 20 November 2026.');
+    await expect(page.locator('.look-compare')).toHaveText('Compare the Eurasian Blue Tit and the Great Tit');
+    await expect(page.locator('.sp-app')).toContainText('from a photo or its song');
+  });
+
+  test('pärluggla: utan inspelning, data, extrafoto, föda och förväxlingsarter', async ({ page }) => {
+    const errors = trackConsoleErrors(page);
+    await page.goto('/sv/arter/parluggla/');
+    await expect(page.locator('audio')).toHaveCount(0);
+    await expect(page.locator('[data-chart], [data-map]')).toHaveCount(0);
+    await expect(page.locator('[data-data-credit]')).toHaveCount(0);
+    await expect(page.locator('[data-photo]')).toHaveCount(1);
+    await expect(page.locator('h2', { hasText: 'Föda och beteende' })).toHaveCount(0);
+    await expect(page.locator('h2', { hasText: 'Kan förväxlas med' })).toHaveCount(0);
+    for (const label of ['I Sverige', 'Storlek', 'Svenska rödlistan 2025']) await expect(page.locator('.facts')).not.toContainText(label);
+    await expect(page.locator('.sp-app')).toContainText('hjälper dig känna igen fåglarna');
+    await expect(page.locator('[data-wiki-credit] [data-wiki]')).toHaveCount(1);
+    expect(errors).toEqual([]);
+  });
+
+  for (const [path, text] of [['/sv/arter/kaja/', 'på lätet,'], ['/sv/arter/trana/', 'på foto,'], ['/species/western-jackdaw/', 'from its song']] as const) {
+    test(`approtan på ${path} säger bara vad appen klarar`, async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator('.sp-app')).toContainText(text);
+    });
+  }
+
+  test('global rödlista döljs för NE, svensk rödlista visas med kod', async ({ page }) => {
+    await page.goto('/sv/arter/kaja/');
+    await expect(page.locator('.facts')).not.toContainText('Global rödlista');
+    await page.goto('/sv/arter/fiskmas/');
+    await expect(page.locator('.facts [data-redlist]')).toContainText('Nära hotad (NT)');
+  });
+
+  test('förväxlingsarter utan egen sida får vetenskapligt namn utan länk', async ({ page }) => {
+    await page.goto('/sv/arter/kattuggla/');
+    await expect(page.locator('.looks .look-name')).toHaveText('Strix uralensis');
+    await expect(page.locator('.looks .look-name a')).toHaveCount(0);
+    await page.goto('/sv/arter/hornuggla/');
+    await expect(page.locator('.looks .look-name')).toHaveText('Asio flammeus');
+  });
+
+  test('opublicerade, väntande och misslyckade arter ger 404', async ({ page }) => {
+    for (const path of ['/sv/arter/storre-hackspett/', '/sv/arter/grongoling/', '/sv/arter/spillkraka/', '/species/black-woodpecker/']) {
+      expect((await page.goto(path))?.status(), path).toBe(404);
+    }
   });
 
   test('vänsterspalten följer med på dator', async ({ page }) => {
@@ -1201,21 +2676,18 @@ test.describe('artsidan', () => {
     expect(box.y).toBeLessThan(260);
   });
 
-  test('mobilen: rubrik, foto, fakta och ingress i den ordningen', async ({ page }) => {
+  test('mobilen: rubrik, foto, fakta, ingress och approta i den ordningen', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/arter/talgoxe/');
     const y = async (sel: string) => (await page.locator(sel).first().boundingBox())!.y;
-    const [h1, hero, facts, lead, app] = [await y('h1'), await y('.plate.hero'), await y('.facts'), await y('.sp-lead'), await y('.sp-app')];
-    expect(h1).toBeLessThan(hero);
-    expect(hero).toBeLessThan(facts);
-    expect(facts).toBeLessThan(lead);
-    expect(lead).toBeLessThan(app);
+    const order = [await y('h1'), await y('.plate.hero'), await y('.facts'), await y('.sp-lead'), await y('.looks-sec'), await y('.sp-app')];
+    for (let i = 1; i < order.length; i += 1) expect(order[i]).toBeGreaterThan(order[i - 1]);
   });
 
   for (const width of [360, 390, 430]) {
     test(`ingen sidledsscroll i ${width} px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 844 });
-      for (const path of ['/sv/arter/talgoxe/', '/species/great-tit/']) {
+      for (const path of ['/sv/arter/talgoxe/', '/species/great-tit/', '/sv/arter/parluggla/']) {
         await page.goto(path);
         await noSideScroll(page);
       }
@@ -1226,58 +2698,10 @@ test.describe('artsidan', () => {
 
 - [ ] **Step 2: Kör och se dem faila**
 
-Run: `npm run build && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts -g artsidan`
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts -g artsidan`
 Expected: FAIL (404 på `/sv/arter/talgoxe/`)
 
-- [ ] **Step 3: Credits**
-
-`src/components/species/Credits.astro`:
-
-```astro
----
-import { getCopy, type Locale } from '../../lib/i18n';
-import { CONTACT_EMAIL } from '../../lib/links';
-import { wikiUrl, type Species, type SpeciesImage } from '../../lib/species';
-
-interface Props { species: Species; locale: Locale; images: SpeciesImage[] }
-const { species: s, locale, images } = Astro.props;
-const t = getCopy(locale);
-const sources = (['sv', 'en'] as const).flatMap((lang) => {
-  const ref = s.wikipedia[lang];
-  return ref ? [{ href: wikiUrl(lang, ref), label: lang === 'sv' ? t.species.articleSv : t.species.articleEn }] : [];
-});
-const subject = encodeURIComponent(t.species.reportSubject.replace('{name}', s.names[locale]));
----
-
-<div class="credits">
-  {images.map((img) => (
-    <p data-credit-for={img.role}>
-      {t.species.photoCredit} {img.author ?? t.species.unknownAuthor},{' '}
-      {img.licenseUrl ? <a href={img.licenseUrl} rel="license noopener">{img.license}</a> : img.license},{' '}
-      {t.species.via} <a href={img.sourceUrl} rel="noopener">Wikimedia Commons</a>
-    </p>
-  ))}
-  <p data-wiki-credit>
-    {t.species.textCredit} <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a>.
-    {' '}{t.species.sources}:{' '}
-    {sources.map((src, i) => (
-      <Fragment>{i > 0 && ', '}<a href={src.href} rel="noopener">{src.label}</a></Fragment>
-    ))}
-  </p>
-  <p class="report"><a href={`mailto:${CONTACT_EMAIL}?subject=${subject}`}>{t.species.reportError}</a></p>
-</div>
-
-<style>
-  .credits { margin-top: 40px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12.5px; line-height: 1.6; color: var(--muted); }
-  .credits p { margin: 0 0 6px; }
-  .credits a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
-  .credits a:hover { color: var(--rust); }
-  .report { margin-top: 12px !important; font-weight: 600; }
-  .report a { color: var(--rust); }
-</style>
-```
-
-- [ ] **Step 4: Artsidan**
+- [ ] **Step 3: Artsidan**
 
 `src/components/species/SpeciesArticle.astro`:
 
@@ -1292,10 +2716,15 @@ import PlayStoreBadge from '../ui/PlayStoreBadge.astro';
 import CategoryBar from './CategoryBar.astro';
 import SpeciesCard from './SpeciesCard.astro';
 import Credits from './Credits.astro';
+import AudioPlayer from './AudioPlayer.astro';
+import MonthChart from './MonthChart.astro';
+import CountyMap from './CountyMap.astro';
 import { getCopy, type Locale } from '../../lib/i18n';
 import {
-  SITE, breadcrumbJsonLd, getAllSpecies, groupByKey, groupHref, heroOf, hubHref, playHref, related,
-  speciesHref, speciesImage, speciesTitle, type Species,
+  SITE, appText, audioJsonLd, breadcrumbJsonLd, comparisonHref, comparisonPair, getAllRecords, getAllSpecies, getComparisons,
+  groupByKey, groupHref, heroOf, hubHref, isUnpublished, joinSentences, lookAlikeView, pairNames, playHref, related,
+  reviewDate, reviewerJsonLd, speciesHref, speciesImage, speciesTitle, taxonJsonLd, wikiSources,
+  type Comparison, type LookAlikeView, type Species,
 } from '../../lib/species';
 import '../../styles/species.css';
 
@@ -1304,23 +2733,28 @@ const { species: s, locale } = Astro.props;
 const t = getCopy(locale);
 const other: Locale = locale === 'sv' ? 'en' : 'sv';
 const text = s.text![locale];
-const all = await getAllSpecies();
+const [all, records, comps] = await Promise.all([getAllSpecies(), getAllRecords(), getComparisons()]);
 const group = groupByKey(s.group);
 const name = s.names[locale];
 const pathname = speciesHref(s, locale);
 const otherPath = speciesHref(s, other);
 const title = speciesTitle(s, locale, t);
+const unpublished = isUnpublished(s);
 
 const hero = heroOf(s);
 const extra = s.images.find((i) => i.role === 'extra');
 const heroImg = speciesImage(hero.file);
 const extraImg = extra ? speciesImage(extra.file) : undefined;
-const shown = extra ? [hero, extra] : [hero];
+const photos = [{ key: 'hero', image: hero }, ...(extra ? [{ key: 'extra', image: extra }] : [])];
 const altHero = t.species.altHero.replace('{name}', name).replace('{scientific}', s.names.scientific);
 const share = await getImage({ src: heroImg, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 });
 const content = await getImage({ src: heroImg, width: 1200, format: 'webp' });
 
 const status = text.facts.swedenStatus ? t.species.statusLabels[text.facts.swedenStatus.value] : undefined;
+const redCode = s.swedishRedList;
+const redLabel = redCode
+  ? redCode === 'not_listed' ? t.species.redListLabels.not_listed : `${t.species.redListLabels[redCode]} (${redCode})`
+  : undefined;
 const iucnLabel = s.iucn !== 'NE' ? (t.species.iucnLabels as Record<string, string>)[s.iucn] : undefined;
 const familyShown = locale === 'sv' ? s.family.sv : s.family.latin;
 const rel = related(s, all, locale);
@@ -1328,6 +2762,22 @@ const moreHeading = rel.kind === 'family'
   ? t.species.moreFamily.replace('{family}', locale === 'sv' ? s.family.sv.toLocaleLowerCase('sv') : s.family.latin)
   : t.species.moreGroup.replace('{group}', group.name[locale].toLocaleLowerCase(locale));
 const marginalia = s.marginalia?.[locale];
+
+const months = s.data?.months;
+const counties = s.data?.counties;
+const summaryId = `data-summary-${s.qid}`;
+const behaviour = joinSentences(text.behaviour);
+const looks = text.lookAlikes.flatMap((item) => {
+  const view = lookAlikeView(s, item, locale, all, records, comps);
+  return view ? [view] : [];
+});
+const compareText = (c: Comparison): string => {
+  const [na, nb] = pairNames(comparisonPair(c, locale, all), locale);
+  return t.species.compareLink.replace('{a}', locale === 'sv' ? na.toLocaleLowerCase('sv') : na).replace('{b}', nb);
+};
+const lookPhoto = (view: LookAlikeView) => (view.species ? speciesImage(heroOf(view.species).file) : undefined);
+const reviewed = reviewDate(s);
+const audioNode = audioJsonLd(s);
 
 const crumbs = [
   { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
@@ -1342,13 +2792,7 @@ const jsonLd = [
     url: new URL(pathname, SITE).toString(),
     name: title.replace(/ \| Birdy$/, ''),
     inLanguage: locale,
-    about: {
-      '@type': 'Taxon',
-      name: s.names.scientific,
-      alternateName: [s.names.sv, s.names.en],
-      taxonRank: 'species',
-      sameAs: `https://www.wikidata.org/wiki/${s.qid}`,
-    },
+    about: taxonJsonLd(s),
     primaryImageOfPage: {
       '@type': 'ImageObject',
       contentUrl: new URL(content.src, SITE).toString(),
@@ -1356,14 +2800,18 @@ const jsonLd = [
       acquireLicensePage: hero.sourceUrl,
       ...(hero.author ? { creator: { '@type': 'Person', name: hero.author }, creditText: hero.author } : {}),
     },
+    ...(audioNode ? { associatedMedia: audioNode } : {}),
+    reviewedBy: reviewerJsonLd(),
+    lastReviewed: reviewed,
   },
 ];
 ---
 
-<Layout locale={locale} pathname={pathname} alternatePath={otherPath} title={title} description={text.metaDescription} ogImage={share.src} ogImageAlt={altHero} jsonLd={jsonLd}>
+<Layout locale={locale} pathname={pathname} alternatePath={otherPath} title={title} description={text.metaDescription} ogImage={share.src} ogImageAlt={altHero} noindex={unpublished} jsonLd={jsonLd}>
   <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
   <CategoryBar locale={locale} active={s.group} />
   <main class="sp wrap" data-species-page>
+    {unpublished && <p class="sp-preview" data-preview-banner role="note">{t.species.previewBanner}</p>}
     <div class="spread">
       <header class="head">
         <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
@@ -1388,11 +2836,12 @@ const jsonLd = [
             <div><dt>{t.species.facts.family}</dt><dd>{familyShown}</dd></div>
             {status && <div><dt>{t.species.facts.sweden}</dt><dd>{status}</dd></div>}
             {text.facts.size && <div><dt>{t.species.facts.size}</dt><dd>{text.facts.size.value}</dd></div>}
+            {redLabel && <div data-redlist><dt>{t.species.facts.swedishRedList}</dt><dd>{redLabel}</dd></div>}
             {iucnLabel && <div><dt>{t.species.facts.iucn}</dt><dd>{iucnLabel} ({s.iucn})</dd></div>}
           </dl>
           <aside class="sp-app">
             <p class="sp-app-h">{t.species.appHeadline}</p>
-            <p>{t.species.appText}</p>
+            <p>{appText(s, t)}</p>
             <PlayStoreBadge locale={locale} href={playHref(s.slug[locale], 'species')} alt={t.alt.playStoreBadge} size="small" />
           </aside>
           {marginalia && <p class="note">{marginalia}</p>}
@@ -1400,20 +2849,76 @@ const jsonLd = [
       </div>
 
       <div class="body">
-        <p class="sp-lead">{text.lead}</p>
+        <p class="sp-lead">{joinSentences(text.lead)}</p>
         <div class="texts">
           <h2>{t.species.headMarks}</h2>
-          <ul class="marks">{text.fieldMarks.map((m) => <li>{m}</li>)}</ul>
+          <ul class="marks">{text.fieldMarks.map((m) => <li>{m.text}</li>)}</ul>
           <h2>{t.species.headVoice}</h2>
-          <p>{text.voice}</p>
+          <p>{joinSentences(text.voice)}</p>
+          <AudioPlayer species={s} locale={locale} creditKey="audio" />
           <h2>{t.species.headWhere}</h2>
-          <p>{text.whereWhen}</p>
+          <p>{joinSentences(text.whereWhen)}</p>
+          {(months || counties) && (
+            <div class="datafig">
+              {months && (
+                <div class="fig-chart">
+                  <h3 class="fig-h">{t.species.chartTitle}</h3>
+                  <figure>
+                    <MonthChart id={`chart-${s.qid}`} title={t.species.chartTitle} letters={t.species.monthLetters} series={[{ label: name, values: months, tone: 'rust' }]} describedBy={summaryId} />
+                    <figcaption class="fig-caption">{t.species.chartCaption}</figcaption>
+                  </figure>
+                </div>
+              )}
+              {counties && (
+                <div class="fig-map">
+                  <h3 class="fig-h">{t.species.mapTitle}</h3>
+                  <figure>
+                    <CountyMap id={`map-${s.qid}`} values={counties} locale={locale} title={t.species.mapTitle} legend={t.species.mapLegend} describedBy={summaryId} />
+                    <figcaption class="fig-caption">{t.species.mapCaption}</figcaption>
+                  </figure>
+                </div>
+              )}
+              <p class="data-summary" id={summaryId}>{(s.data?.sentences[locale] ?? []).join(' ')}</p>
+            </div>
+          )}
+          {behaviour && (
+            <Fragment>
+              <h2>{t.species.headBehaviour}</h2>
+              <p>{behaviour}</p>
+            </Fragment>
+          )}
         </div>
         {extra && extraImg && (
           <figure class="plate extra" data-photo="extra">
             <Image src={extraImg} alt={t.species.altExtra.replace('{name}', name)} widths={[480, 800, 1200]} sizes="(max-width: 1023px) 100vw, 640px" loading="lazy" decoding="async" />
             <figcaption><span>{t.species.plate.replace('{n}', '2')}</span><span>{t.species.photoCredit} {extra.author ?? t.species.unknownAuthor}</span></figcaption>
           </figure>
+        )}
+        {looks.length > 0 && (
+          <section class="looks-sec">
+            <h2>{t.species.headLookAlikes}</h2>
+            <ul class="looks" role="list">
+              {looks.map((view) => {
+                const photo = lookPhoto(view);
+                return (
+                  <li class:list={[{ 'no-photo': !photo }]}>
+                    {photo && view.species && (
+                      <a href={speciesHref(view.species, locale)} tabindex="-1" aria-hidden="true">
+                        <Image src={photo} alt="" widths={[192]} sizes="96px" loading="lazy" decoding="async" />
+                      </a>
+                    )}
+                    <div>
+                      <p class="look-name">
+                        {view.species ? <a href={speciesHref(view.species, locale)}>{view.name}</a> : view.scientificOnly ? <i>{view.name}</i> : view.name}
+                      </p>
+                      <p class="look-text">{view.text}</p>
+                      {view.comparison && <a class="look-compare" href={comparisonHref(view.comparison, locale)}>{compareText(view.comparison)}</a>}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
         )}
         {rel.items.length > 0 && (
           <section class="more">
@@ -1423,7 +2928,17 @@ const jsonLd = [
             </ul>
           </section>
         )}
-        <div class="credits-wrap"><Credits species={s} locale={locale} images={shown} /></div>
+        <div class="credits-wrap">
+          <Credits
+            locale={locale}
+            photos={photos}
+            articles={wikiSources(s)}
+            reportData={Boolean(months || counties)}
+            redList={Boolean(redCode)}
+            reviewedAt={reviewed}
+            reportSubject={t.species.reportSubject.replace('{name}', name)}
+          />
+        </div>
       </div>
     </div>
   </main>
@@ -1439,20 +2954,30 @@ const jsonLd = [
   .body { grid-area: body; padding-left: 36px; }
   h1 { font-size: clamp(40px, 4.6vw, 58px); line-height: 1.02; margin: 4px 0 0; overflow-wrap: anywhere; }
   .latin { margin: 2px 0 0; font-family: var(--font-script); font-size: 24px; color: var(--muted); }
-  .plate { margin: 0; background: var(--card); border: 1px solid var(--line); padding: 9px 9px 5px; box-shadow: 0 2px 0 var(--line); }
-  .plate :global(img) { display: block; width: 100%; height: auto; }
-  .plate figcaption { display: flex; justify-content: space-between; gap: 12px; padding-top: 4px; font-family: var(--font-script); font-size: 17px; color: var(--muted); }
-  .facts { margin: 0; }
-  .facts div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
-  .facts dt { color: var(--muted); }
-  .facts dd { margin: 0; font-weight: 600; text-align: right; }
   .note { margin: 4px 0 0; font-family: var(--font-script); font-size: 22px; line-height: 1.2; color: var(--rust); transform: rotate(-2deg); }
   .sp-lead { font-size: 17px; line-height: 1.6; margin: 18px 0 0; max-width: 40rem; }
-  .texts h2, .more h2 { font-size: 24px; margin: 30px 0 8px; }
-  .texts p, .marks { font-size: 15.5px; line-height: 1.65; max-width: 40rem; margin: 0; }
+  .texts h2, .looks-sec h2, .more h2 { font-size: 24px; margin: 30px 0 8px; }
+  .texts > p, .marks { font-size: 15.5px; line-height: 1.65; max-width: 40rem; margin: 0; }
   .marks { padding-left: 20px; }
   .marks li { margin: 3px 0; }
+  .datafig { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 18px 28px; align-items: start; margin-top: 16px; max-width: 40rem; }
+  .datafig figure { margin: 0; }
+  .datafig .data-summary { grid-column: 1 / -1; }
+  .fig-h { font-family: var(--font-sans); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--rust); font-weight: 600; margin: 0 0 8px; }
+  .fig-map { max-width: 220px; }
   .plate.extra { margin-top: 30px; max-width: 640px; }
+  .looks { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; max-width: 40rem; }
+  .looks li { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 14px; align-items: start; }
+  .looks li.no-photo { grid-template-columns: minmax(0, 1fr); }
+  .looks :global(img) { display: block; width: 96px; height: 72px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+  .look-name { margin: 0; font-weight: 600; font-size: 16px; }
+  .look-name a:hover { color: var(--rust); }
+  .look-name i { font-family: var(--font-script); font-style: normal; font-size: 19px; font-weight: 400; }
+  .look-text { margin: 2px 0 0; font-size: 15px; line-height: 1.6; }
+  .look-compare { display: inline-block; margin-top: 4px; font-size: 13.5px; font-weight: 600; color: var(--rust); border-bottom: 1px solid currentColor; }
+  @media (max-width: 600px) {
+    .datafig { grid-template-columns: minmax(0, 1fr); }
+  }
   @media (max-width: 1023px) {
     .spread { display: flex; flex-direction: column; gap: 18px; }
     .left, .left-inner, .body { display: contents; }
@@ -1462,58 +2987,556 @@ const jsonLd = [
     .sp-lead { order: 4; margin-top: 0; }
     .texts { order: 5; }
     .plate.extra { order: 6; margin-top: 0; }
-    .sp-app { order: 7; }
-    .note { order: 8; }
-    .more { order: 9; }
-    .credits-wrap { order: 10; }
-    .texts h2, .more h2 { margin-top: 18px; }
+    .looks-sec { order: 7; }
+    .sp-app { order: 8; }
+    .note { order: 9; }
+    .more { order: 10; }
+    .credits-wrap { order: 11; }
+    .texts h2, .looks-sec h2, .more h2 { margin-top: 18px; }
   }
 </style>
 ```
 
-- [ ] **Step 5: Routes med arter**
+- [ ] **Step 4: Routen med arter**
 
-Ersätt `src/pages/sv/arter/[slug].astro` med:
+Ersätt `src/lib/species-routes.ts` med:
+
+```ts
+import type { Locale } from './i18n';
+import { ABOUT_SLUG, activeGroups, assertUniqueSlugs, getAllSpecies } from './species';
+
+/** Every page under /species/ and /sv/arter/ except the hub and the about page (spec §4). */
+export async function speciesPaths(locale: Locale) {
+  const all = await getAllSpecies();
+  const groups = activeGroups(all);
+  assertUniqueSlugs([...all.map((s) => s.slug[locale]), ...groups.map((g) => g.slug[locale]), ABOUT_SLUG[locale]], locale);
+  return [
+    ...all.map((species) => ({ params: { slug: species.slug[locale] }, props: { species } })),
+    ...groups.map((group) => ({ params: { slug: group.slug[locale] }, props: { group } })),
+  ];
+}
+```
+
+Ersätt `src/components/species/SpeciesRoute.astro` med:
 
 ```astro
 ---
-import SpeciesArticle from '../../../components/species/SpeciesArticle.astro';
-import GroupPage from '../../../components/species/GroupPage.astro';
-import { GROUPS, assertUniqueSlugs, getAllSpecies, type Group, type Species } from '../../../lib/species';
+import GroupPage from './GroupPage.astro';
+import SpeciesArticle from './SpeciesArticle.astro';
+import type { Locale } from '../../lib/i18n';
+import type { Group, Species } from '../../lib/species';
 
-export async function getStaticPaths() {
-  const all = await getAllSpecies();
-  assertUniqueSlugs([...all.map((s) => s.slug.sv), ...GROUPS.map((g) => g.slug.sv)], 'sv');
-  return [
-    ...all.map((species) => ({ params: { slug: species.slug.sv }, props: { species } })),
-    ...GROUPS.map((group) => ({ params: { slug: group.slug.sv }, props: { group } })),
-  ];
-}
-
-interface Props { species?: Species; group?: Group }
-const { species, group } = Astro.props;
+interface Props { locale: Locale; species?: Species; group?: Group }
+const { locale, species, group } = Astro.props;
 ---
-{species && <SpeciesArticle species={species} locale="sv" />}
-{group && <GroupPage group={group} locale="sv" />}
+{species && <SpeciesArticle species={species} locale={locale} />}
+{group && <GroupPage group={group} locale={locale} />}
 ```
 
-Ersätt `src/pages/species/[slug].astro` med samma innehåll, men med importvägarna `../../components/...` och `../../lib/species`, `slug.en` på alla fyra ställen, `'en'` i `assertUniqueSlugs` och `locale="en"` i de två komponenterna.
+- [ ] **Step 5: Kör testerna**
 
-- [ ] **Step 6: Kör testerna**
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts`
+Expected: PASS (alla). Om datumformatet skiljer (Node utan full ICU ger "November 20, 2026"): kontrollera `node -p "new Intl.DateTimeFormat('sv-SE',{day:'numeric',month:'long',year:'numeric'}).format(new Date('2026-11-20'))"`. Node 22 har full ICU som standard och ger `20 november 2026`.
 
-Run: `npm run build && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts`
-Expected: PASS (alla). Om "Arter" inte är markerad i menyn failar det testet tills Task 8. Kör i så fall `-g "artsidan"` utan den raden och gå vidare, testet går igenom efter Task 8.
-
-- [ ] **Step 7: Commit**
+- [ ] **Step 6: Commit**
 
 ```bash
-git add src/components/species/Credits.astro src/components/species/SpeciesArticle.astro src/pages/sv/arter/[slug].astro src/pages/species/[slug].astro tests/species.spec.ts
-git commit -m "feat(website): artsidan i layout B med credits, relaterade arter och JSON-LD"
+git add src/components/species/SpeciesArticle.astro src/lib/species-routes.ts src/components/species/SpeciesRoute.astro tests/species.spec.ts
+git commit -m "feat(website): artsidan med diagram, karta, inspelning, förväxlingsarter, granskningsrad och JSON-LD"
 ```
 
 ---
 
-### Task 8: Menyn, sidfoten och startsidans länk
+### Task 11: Jämförelsesidorna
+
+**Files:**
+- Create: `website/tests/comparisons.spec.ts`
+- Create: `website/src/components/species/ComparisonPage.astro`
+- Modify: `website/src/lib/species-routes.ts`, `website/src/components/species/SpeciesRoute.astro`
+
+- [ ] **Step 1: Skriv testerna**
+
+`tests/comparisons.spec.ts`:
+
+```ts
+import { test, expect, type Page } from '@playwright/test';
+import { trackConsoleErrors } from './test-helpers';
+
+// Runs against the TEST data (tests/fixtures/): build with `npm run build:fixtures` first.
+
+async function noSideScroll(page: Page): Promise<void> {
+  const [scroll, client] = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]);
+  expect(scroll).toBeLessThanOrEqual(client);
+}
+
+test.describe('jämförelsesidorna', () => {
+  test('blåmes eller talgoxe: båda arterna, tabell, diagram, approta och credits', async ({ page, request }) => {
+    const errors = trackConsoleErrors(page);
+    const res = await page.goto('/sv/arter/blames-eller-talgoxe/');
+    expect(res?.status()).toBe(200);
+    await expect(page.locator('h1')).toHaveText('Blåmes eller talgoxe?');
+    await expect(page.locator('.side h2 a')).toHaveText(['Blåmes', 'Talgoxe']);
+    await expect(page.locator('.side h2 a').first()).toHaveAttribute('href', '/sv/arter/blames/');
+    await expect(page.locator('.ctable thead th')).toHaveText(['Kännetecken', 'Blåmes', 'Talgoxe']);
+    await expect(page.locator('.ctable tbody tr')).toHaveCount(3);
+    await expect(page.locator('[data-chart] rect[data-month]')).toHaveCount(24);
+    const audios = page.locator('audio');
+    await expect(audios).toHaveCount(2);
+    for (const src of await audios.evaluateAll((els) => els.map((e) => e.getAttribute('src')!))) expect((await request.get(src)).status()).toBe(200);
+    await expect(page.locator('.sp-app')).toContainText('Fortfarande osäker?');
+    await expect(page.locator('a[href*="utm_medium%3Dcompare"]')).toHaveCount(1);
+    await expect(page.locator('[data-wiki-credit] [data-wiki]')).toHaveCount(6);
+    await expect(page.locator('time[data-reviewed]')).toHaveAttribute('datetime', '2026-11-20');
+    await expect(page.locator('.sp-crumbs [aria-current="page"]')).toHaveText('Blåmes eller talgoxe?');
+    await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', 'https://birdy.community/species/eurasian-blue-tit-vs-great-tit/');
+    await expect(page.locator('title')).toHaveText('Blåmes eller talgoxe? Så skiljer du dem åt | Birdy');
+    expect(errors).toEqual([]);
+  });
+
+  test('engelska sidan följer engelsk slug-ordning, och cellerna följer med', async ({ page }) => {
+    await page.goto('/species/eurasian-magpie-vs-western-jackdaw/');
+    await expect(page.locator('h1')).toHaveText('Eurasian Magpie or Western Jackdaw?');
+    await expect(page.locator('.ctable thead th')).toHaveText(['Feature', 'Eurasian Magpie', 'Western Jackdaw']);
+    await expect(page.locator('.ctable tbody tr').first().locator('td').first()).toHaveText('Test cell 1 for the second species');
+    await expect(page.locator('title')).toHaveText('Eurasian Magpie vs Western Jackdaw | Birdy');
+    await page.goto('/sv/arter/kaja-eller-skata/');
+    await expect(page.locator('h1')).toHaveText('Kaja eller skata?');
+    await expect(page.locator('.ctable tbody tr').first().locator('td').first()).toHaveText('Testcell 1 för den första arten');
+  });
+
+  test('opublicerade och väntande jämförelser ger 404', async ({ page }) => {
+    for (const path of ['/sv/arter/storre-hackspett-eller-tretaig-hackspett/', '/sv/arter/hornuggla-eller-kattuggla/', '/species/long-eared-owl-vs-tawny-owl/']) {
+      expect((await page.goto(path))?.status(), path).toBe(404);
+    }
+  });
+
+  for (const width of [360, 390]) {
+    test(`ingen sidledsscroll i ${width} px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto('/sv/arter/blames-eller-talgoxe/');
+      await noSideScroll(page);
+    });
+  }
+});
+```
+
+- [ ] **Step 2: Kör och se dem faila**
+
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/comparisons.spec.ts`
+Expected: FAIL (404 på `/sv/arter/blames-eller-talgoxe/`)
+
+- [ ] **Step 3: Jämförelsesidan**
+
+`src/components/species/ComparisonPage.astro`:
+
+```astro
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../Nav.astro';
+import Footer from '../Footer.astro';
+import Kicker from '../ui/Kicker.astro';
+import JournalHeadline from '../ui/JournalHeadline.astro';
+import PlayStoreBadge from '../ui/PlayStoreBadge.astro';
+import CategoryBar from './CategoryBar.astro';
+import Credits from './Credits.astro';
+import AudioPlayer from './AudioPlayer.astro';
+import MonthChart from './MonthChart.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+import {
+  SITE, appText, breadcrumbJsonLd, comparisonHref, comparisonPair, comparisonTitle, getAllSpecies, heroOf, hubHref,
+  isUnpublished, joinSentences, laterDate, pairNames, playHref, reviewDate, reviewerJsonLd, speciesHref, speciesImage,
+  taxonJsonLd, wikiSources, type Comparison, type Species,
+} from '../../lib/species';
+import '../../styles/species.css';
+
+interface Props { comparison: Comparison; locale: Locale }
+const { comparison: c, locale } = Astro.props;
+const t = getCopy(locale);
+const other: Locale = locale === 'sv' ? 'en' : 'sv';
+const text = c.text![locale];
+const all = await getAllSpecies();
+const pair = comparisonPair(c, locale, all);
+const names = pairNames(pair, locale);
+// The address must follow the slug rule in spec §4; a mismatch means the data and the pages disagree.
+const expected = `${pair[0].species.slug[locale]}${locale === 'sv' ? '-eller-' : '-vs-'}${pair[1].species.slug[locale]}`;
+if (expected !== c.slug[locale]) throw new Error(`Jämförelsens adress ${c.slug[locale]} följer inte slug-ordningen (väntade ${expected})`);
+
+const pathname = comparisonHref(c, locale);
+const otherPath = comparisonHref(c, other);
+const title = comparisonTitle(names, t);
+const headline = t.species.compareHeadline.replace('{a}', names[0]).replace('{b}', names[1]);
+const crumbName = `${t.species.compareItem.replace('{a}', names[0]).replace('{b}', names[1])}?`;
+const sharedGroup = pair[0].species.group === pair[1].species.group ? pair[0].species.group : '';
+const reviewed = laterDate(reviewDate(pair[0].species), reviewDate(pair[1].species));
+const unpublished = isUnpublished(c);
+const bothMonths = pair.every((p) => Boolean(p.species.data?.months));
+const summaryId = `compare-summary-${c.a}-${c.b}`;
+const tones = ['rust', 'navy'] as const;
+const statusOf = (s: Species) => {
+  const v = s.text![locale].facts.swedenStatus;
+  return v ? t.species.statusLabels[v.value] : undefined;
+};
+const cell = (row: (typeof text.rows)[number], side: 'a' | 'b') => (side === 'a' ? row.a.text : row.b.text);
+
+const crumbs = [
+  { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
+  { name: t.species.crumbHub, href: hubHref(locale) },
+  { name: crumbName, href: pathname },
+];
+const jsonLd = [
+  breadcrumbJsonLd(crumbs),
+  {
+    '@type': 'WebPage',
+    url: new URL(pathname, SITE).toString(),
+    name: title.replace(/ \| Birdy$/, ''),
+    inLanguage: locale,
+    about: pair.map((p) => taxonJsonLd(p.species)),
+    reviewedBy: reviewerJsonLd(),
+    lastReviewed: reviewed,
+  },
+];
+---
+
+<Layout locale={locale} pathname={pathname} alternatePath={otherPath} title={title} description={text.metaDescription} noindex={unpublished} jsonLd={jsonLd}>
+  <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
+  <CategoryBar locale={locale} active={sharedGroup} />
+  <main class="cmp wrap" data-comparison-page>
+    {unpublished && <p class="sp-preview" data-preview-banner role="note">{t.species.previewBanner}</p>}
+    <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
+      <ol>
+        {crumbs.slice(0, -1).map((cr) => <li><a href={cr.href} data-crumb>{cr.name}</a></li>)}
+        <li><span aria-current="page" data-crumb>{crumbName}</span></li>
+      </ol>
+    </nav>
+    <Kicker text={t.species.compareKicker} />
+    <JournalHeadline text={headline} level="h1" align="left" size="clamp(36px, 4.6vw, 56px)" />
+    <p class="answer">{joinSentences(text.shortAnswer)}</p>
+
+    <div class="pair">
+      {pair.map((p, i) => {
+        const s = p.species;
+        const hero = heroOf(s);
+        const size = s.text![locale].facts.size?.value;
+        const status = statusOf(s);
+        return (
+          <section class="side">
+            <figure class="plate" data-photo={`${p.side}-hero`}>
+              <Image src={speciesImage(hero.file)} alt={t.species.altHero.replace('{name}', s.names[locale]).replace('{scientific}', s.names.scientific)} widths={[480, 800]} sizes="(max-width: 760px) 100vw, 45vw" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <figcaption><span>{t.species.plate.replace('{n}', String(i + 1))}</span><span>{t.species.photoCredit} {hero.author ?? t.species.unknownAuthor}</span></figcaption>
+            </figure>
+            <h2><a href={speciesHref(s, locale)}>{s.names[locale]}</a></h2>
+            <p class="side-latin">{s.names.scientific}</p>
+            {(size || status) && (
+              <dl class="facts">
+                {size && <div><dt>{t.species.facts.size}</dt><dd>{size}</dd></div>}
+                {status && <div><dt>{t.species.facts.sweden}</dt><dd>{status}</dd></div>}
+              </dl>
+            )}
+            <AudioPlayer species={s} locale={locale} creditKey={`${p.side}-audio`} />
+          </section>
+        );
+      })}
+    </div>
+
+    <h2 class="sp-h2">{t.species.compareTable}</h2>
+    <table class="ctable">
+      <thead>
+        <tr>
+          <th scope="col">{t.species.compareFeature}</th>
+          {pair.map((p) => <th scope="col">{p.species.names[locale]}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {text.rows.map((row) => (
+          <tr>
+            <th scope="row">{row.feature}</th>
+            {pair.map((p) => <td>{cell(row, p.side)}</td>)}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    {bothMonths && (
+      <section class="cmp-chart">
+        <h2 class="sp-h2">{t.species.compareChart}</h2>
+        <figure>
+          <MonthChart
+            id={`chart-${c.a}-${c.b}`}
+            title={t.species.compareChart}
+            letters={t.species.monthLetters}
+            series={pair.map((p, i) => ({ label: p.species.names[locale], values: p.species.data!.months!, tone: tones[i] }))}
+            describedBy={summaryId}
+          />
+          <figcaption class="fig-caption">{t.species.chartCaption}</figcaption>
+        </figure>
+        <ul class="clegend" role="list">
+          {pair.map((p, i) => <li><span class={`sw sw--${tones[i]}`} aria-hidden="true"></span>{p.species.names[locale]}</li>)}
+        </ul>
+        <p class="data-summary" id={summaryId}>
+          {pair.map((p) => t.species.chartSeriesSentence.replace('{name}', p.species.names[locale]).replace('{text}', (p.species.data?.sentences[locale] ?? []).join(' '))).join(' ')}
+        </p>
+      </section>
+    )}
+
+    <aside class="sp-app cmp-app">
+      <p class="sp-app-h">{t.species.compareApp}</p>
+      <p>{appText(undefined, t)}</p>
+      <PlayStoreBadge locale={locale} href={playHref(c.slug[locale], 'compare')} alt={t.alt.playStoreBadge} size="small" />
+    </aside>
+
+    <Credits
+      locale={locale}
+      photos={pair.map((p) => ({ key: `${p.side}-hero`, image: heroOf(p.species) }))}
+      articles={pair.flatMap((p) => wikiSources(p.species).map((w) => ({ ...w, name: p.species.names[locale] })))}
+      reportData={bothMonths}
+      redList={false}
+      reviewedAt={reviewed}
+      reportSubject={t.species.reportSubjectCompare.replace('{name}', crumbName)}
+    />
+  </main>
+  <Footer locale={locale} switchLangHref={otherPath} />
+</Layout>
+
+<style>
+  .cmp { padding-top: 26px; padding-bottom: 88px; }
+  .answer { font-size: 18px; line-height: 1.6; max-width: 44rem; margin: 14px 0 0; }
+  .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 30px; }
+  .side h2 { font-size: 28px; margin: 14px 0 0; }
+  .side h2 a:hover { color: var(--rust); }
+  .side-latin { margin: 0 0 8px; font-family: var(--font-script); font-size: 20px; color: var(--muted); }
+  .ctable { width: 100%; max-width: 52rem; border-collapse: collapse; font-size: 15px; }
+  .ctable th, .ctable td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .ctable thead th { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .ctable tbody th { font-weight: 600; color: var(--rust); width: 22%; }
+  .cmp-chart figure { margin: 0; max-width: 36rem; }
+  .clegend { list-style: none; margin: 10px 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px; }
+  .clegend li { display: inline-flex; align-items: center; gap: 8px; }
+  .sw { width: 12px; height: 12px; border-radius: 3px; }
+  .sw--rust { background: var(--rust); }
+  .sw--navy { background: var(--navy); }
+  .cmp-chart .data-summary { max-width: 40rem; }
+  .cmp-app { margin-top: 44px; max-width: 520px; }
+  @media (max-width: 760px) {
+    .pair { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .ctable { font-size: 14px; }
+    .ctable th, .ctable td { padding: 8px 6px; }
+  }
+</style>
+```
+
+- [ ] **Step 4: Routen med jämförelser**
+
+Ersätt `src/lib/species-routes.ts` med:
+
+```ts
+import type { Locale } from './i18n';
+import { ABOUT_SLUG, activeGroups, assertUniqueSlugs, getAllSpecies, getComparisons } from './species';
+
+/** Every page under /species/ and /sv/arter/ except the hub and the about page (spec §4). */
+export async function speciesPaths(locale: Locale) {
+  const all = await getAllSpecies();
+  const groups = activeGroups(all);
+  const comparisons = await getComparisons();
+  assertUniqueSlugs([
+    ...all.map((s) => s.slug[locale]),
+    ...groups.map((g) => g.slug[locale]),
+    ...comparisons.map((c) => c.slug[locale]),
+    ABOUT_SLUG[locale],
+  ], locale);
+  return [
+    ...all.map((species) => ({ params: { slug: species.slug[locale] }, props: { species } })),
+    ...groups.map((group) => ({ params: { slug: group.slug[locale] }, props: { group } })),
+    ...comparisons.map((comparison) => ({ params: { slug: comparison.slug[locale] }, props: { comparison } })),
+  ];
+}
+```
+
+Ersätt `src/components/species/SpeciesRoute.astro` med:
+
+```astro
+---
+import ComparisonPage from './ComparisonPage.astro';
+import GroupPage from './GroupPage.astro';
+import SpeciesArticle from './SpeciesArticle.astro';
+import type { Locale } from '../../lib/i18n';
+import type { Comparison, Group, Species } from '../../lib/species';
+
+interface Props { locale: Locale; species?: Species; group?: Group; comparison?: Comparison }
+const { locale, species, group, comparison } = Astro.props;
+---
+{species && <SpeciesArticle species={species} locale={locale} />}
+{group && <GroupPage group={group} locale={locale} />}
+{comparison && <ComparisonPage comparison={comparison} locale={locale} />}
+```
+
+- [ ] **Step 5: Kör testerna**
+
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/comparisons.spec.ts tests/species.spec.ts`
+Expected: PASS (alla)
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add tests/comparisons.spec.ts src/components/species/ComparisonPage.astro src/lib/species-routes.ts src/components/species/SpeciesRoute.astro
+git commit -m "feat(website): jämförelsesidorna för förväxlingspar"
+```
+
+---
+
+### Task 12: Sidan "Så gör vi artsidorna"
+
+**Files:**
+- Create: `website/src/components/species/AboutSpeciesPages.astro`
+- Create: `website/src/pages/sv/arter/om-artsidorna.astro`, `website/src/pages/species/about-these-pages.astro`
+- Modify: `website/tests/species.spec.ts` (lägg till i slutet)
+
+- [ ] **Step 1: Skriv testerna**
+
+Lägg till i slutet av `tests/species.spec.ts`:
+
+```ts
+test.describe('om-sidan', () => {
+  for (const [path, h1, other, sections] of [
+    ['/sv/arter/om-artsidorna/', 'Så gör vi artsidorna', '/species/about-these-pages/', ['Källorna', 'Så används AI', 'Granskningen', 'Licenserna', 'Rättelser']],
+    ['/species/about-these-pages/', 'How we make the species pages', '/sv/arter/om-artsidorna/', ['The sources', 'How AI is used', 'The review', 'The licences', 'Corrections']],
+  ] as const) {
+    test(`${path} har rubrikerna, mejladressen och språkparet`, async ({ page }) => {
+      const errors = trackConsoleErrors(page);
+      const res = await page.goto(path);
+      expect(res?.status()).toBe(200);
+      await expect(page.locator('h1')).toHaveText(h1);
+      await expect(page.locator('main h2')).toHaveText([...sections]);
+      await expect(page.locator('main a[href^="mailto:"]')).toHaveCount(1);
+      await expect(page.locator(`link[rel="alternate"][hreflang="${path.startsWith('/sv') ? 'en' : 'sv'}"]`)).toHaveAttribute('href', `https://birdy.community${other}`);
+      expect(errors).toEqual([]);
+    });
+  }
+});
+```
+
+- [ ] **Step 2: Kör och se dem faila**
+
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts -g om-sidan`
+Expected: FAIL (404)
+
+- [ ] **Step 3: Komponenten**
+
+`src/components/species/AboutSpeciesPages.astro`:
+
+```astro
+---
+// "How we make the species pages" (spec 2026-09-25 §8). Text in copy.{sv,en}.json → speciesAbout.
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../Nav.astro';
+import Footer from '../Footer.astro';
+import Kicker from '../ui/Kicker.astro';
+import JournalHeadline from '../ui/JournalHeadline.astro';
+import { getCopy, type Locale } from '../../lib/i18n';
+import { ALBIN_URL, ALBIT_URL, CONTACT_EMAIL } from '../../lib/links';
+import { SITE, aboutHref, breadcrumbJsonLd, hubHref } from '../../lib/species';
+import '../../styles/species.css';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getCopy(locale);
+const a = t.speciesAbout;
+const other: Locale = locale === 'sv' ? 'en' : 'sv';
+const pathname = aboutHref(locale);
+const crumbs = [
+  { name: t.species.crumbHome, href: locale === 'sv' ? '/sv/' : '/' },
+  { name: t.species.crumbHub, href: hubHref(locale) },
+  { name: a.crumb, href: pathname },
+];
+const jsonLd = [
+  breadcrumbJsonLd(crumbs),
+  {
+    '@type': 'WebPage',
+    url: new URL(pathname, SITE).toString(),
+    name: a.title.replace(/ \| Birdy$/, ''),
+    inLanguage: locale,
+    author: { '@type': 'Person', name: 'Albin Abrahamsson', url: ALBIN_URL },
+    publisher: { '@type': 'Organization', name: 'AlbIT AB', url: ALBIT_URL },
+  },
+];
+---
+
+<Layout locale={locale} pathname={pathname} alternatePath={aboutHref(other)} title={a.title} description={a.description} jsonLd={jsonLd}>
+  <Nav locale={locale} variant="solid" switchLangHref={aboutHref(other)} />
+  <main class="about wrap">
+    <nav class="sp-crumbs" aria-label={t.species.crumbLabel}>
+      <ol>
+        <li><a href={crumbs[0].href} data-crumb>{crumbs[0].name}</a></li>
+        <li><a href={crumbs[1].href} data-crumb>{crumbs[1].name}</a></li>
+        <li><span aria-current="page" data-crumb>{crumbs[2].name}</span></li>
+      </ol>
+    </nav>
+    <Kicker text={t.species.kicker} />
+    <JournalHeadline text={a.headline} level="h1" align="left" size="clamp(38px, 5vw, 60px)" />
+    <p class="lead">{a.lead}</p>
+    {a.sections.map((section) => (
+      <section class="about-sec">
+        <h2>{section.heading}</h2>
+        {section.paragraphs.map((paragraph) => {
+          const [before, after] = paragraph.split('{email}');
+          return (
+            <p>
+              {before}
+              {after !== undefined && <Fragment><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>{after}</Fragment>}
+            </p>
+          );
+        })}
+      </section>
+    ))}
+  </main>
+  <Footer locale={locale} switchLangHref={aboutHref(other)} />
+</Layout>
+
+<style>
+  .about { padding-top: 26px; padding-bottom: 88px; max-width: 46rem; }
+  .about-sec h2 { font-size: 26px; margin: 36px 0 10px; }
+  .about-sec p { font-size: 16px; line-height: 1.7; margin: 0 0 12px; }
+  .about-sec a { color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
+</style>
+```
+
+- [ ] **Step 4: Routes**
+
+`src/pages/sv/arter/om-artsidorna.astro`:
+
+```astro
+---
+import AboutSpeciesPages from '../../../components/species/AboutSpeciesPages.astro';
+---
+<AboutSpeciesPages locale="sv" />
+```
+
+`src/pages/species/about-these-pages.astro`:
+
+```astro
+---
+import AboutSpeciesPages from '../../components/species/AboutSpeciesPages.astro';
+---
+<AboutSpeciesPages locale="en" />
+```
+
+- [ ] **Step 5: Kör testerna**
+
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts tests/comparisons.spec.ts`
+Expected: PASS (alla)
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add src/components/species/AboutSpeciesPages.astro src/pages/sv/arter/om-artsidorna.astro src/pages/species/about-these-pages.astro tests/species.spec.ts
+git commit -m "feat(website): sidan Så gör vi artsidorna (SV och EN)"
+```
+
+---
+
+### Task 13: Menyn, sidfoten och startsidans länk
 
 **Files:**
 - Modify: `website/src/components/Nav.astro`
@@ -1556,12 +3579,19 @@ test.describe('meny och sidfot för arterna', () => {
     await page.locator('#site-nav .menu-toggle').click();
     await expect(page.locator('#mobile-menu a').first()).toHaveText('Arter');
   });
+
+  test('Arter är markerad i menyn under hela /sv/arter/', async ({ page }) => {
+    for (const path of ['/sv/arter/', '/sv/arter/ugglor/', '/sv/arter/talgoxe/', '/sv/arter/blames-eller-talgoxe/', '/sv/arter/om-artsidorna/']) {
+      await page.goto(path);
+      await expect(page.locator('#site-nav .links a[aria-current="page"]'), path).toHaveText('Arter');
+    }
+  });
 });
 ```
 
 - [ ] **Step 2: Kör och se dem faila**
 
-Run: `npm run build && PLAYWRIGHT_PORT=4327 npx playwright test tests/home.spec.ts tests/species.spec.ts -g "meny|sidfot"`
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test tests/home.spec.ts tests/species.spec.ts -g "meny|sidfot"`
 Expected: FAIL (ingen länk "Arter" än)
 
 - [ ] **Step 3: Menyn**
@@ -1577,13 +3607,13 @@ const links = [
   { href: `${home}#premium`, label: t.nav.premium },
   { href: fieldNotesHref(locale), label: t.nav.fieldNotes },
 ];
-// "Species" is current on the hub, group pages and species pages.
+// "Species" is current on the hub, group, species, comparison and about pages.
 const isCurrent = (href: string) => href === here || (href === speciesHub && here.startsWith(speciesHub));
 ```
 
 Byt båda förekomsterna av `aria-current={l.href === here ? 'page' : undefined}` mot `aria-current={isCurrent(l.href) ? 'page' : undefined}`.
 
-Kontrollera i 1024 px att menyraden fortfarande får plats (sex länkar plus knappen). Om den bryter: sänk `gap` i `.links` från `26px` till `20px` i `@media (max-width: 1180px)`.
+Kontrollera i 1024 px att menyraden fortfarande får plats (fem länkar, språkbytet och knappen). Om den bryter: sänk `gap` i `.links` från `26px` till `20px` i `@media (max-width: 1180px)`.
 
 - [ ] **Step 4: Sidfoten**
 
@@ -1611,7 +3641,7 @@ Lägg till före `<div class="fbot">`:
     <p class="fpop"><span class="fpop-h">{t.footer.commonSpecies}</span>{common.map((s) => <a href={speciesHref(s, locale)}>{s.names[locale]}</a>)}</p>
 ```
 
-I `<style>`: ändra `.fgrid { ... grid-template-columns: 1.6fr 1fr 1fr 1fr; ... }` till `grid-template-columns: 1.6fr repeat(4, 1fr);` och lägg till:
+I `<style>`: ändra `.fgrid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }` till `grid-template-columns: 1.6fr repeat(4, 1fr);` och lägg till:
 
 ```css
   .fpop { margin: 40px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; font-size: 13.5px; }
@@ -1638,8 +3668,8 @@ Och i komponentens `<style>`:
 
 - [ ] **Step 6: Kör alla webbtester**
 
-Run: `npm run build && PLAYWRIGHT_PORT=4327 npx playwright test`
-Expected: PASS (hela sviten, även de gamla testerna och artsidans menytest från Task 7)
+Run: `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test`
+Expected: PASS (hela sviten, även de gamla testerna)
 
 - [ ] **Step 7: Commit**
 
@@ -1650,12 +3680,13 @@ git commit -m "feat(website): Arter i menyn, sidfoten och startsidans uppslagsve
 
 ---
 
-### Task 9: Sitemap och SEO-reglerna som kod
+### Task 14: Sitemap, SEO-reglerna som kod och kontrollen av förhandsbygget
 
 **Files:**
 - Create: `website/src/lib/species-sitemap.mjs`
 - Modify: `website/astro.config.mjs`
 - Create: `website/scripts/check-seo.mjs`
+- Create: `website/scripts/check-preview-build.mjs`
 - Modify: `website/scripts/check-no-dashes.mjs`
 - Modify: `website/package.json`
 
@@ -1665,37 +3696,52 @@ git commit -m "feat(website): Arter i menyn, sidfoten och startsidans uppslagsve
 
 ```js
 // Species data for astro.config.mjs (sitemap lastmod and noindex), in plain JS so the config can load it.
-// The noindex rule must match MIN_GROUP_SIZE in src/lib/species.ts; scripts/check-seo.mjs fails if they drift.
-import { existsSync, readdirSync, readFileSync } from 'node:fs';
+// Same publishing rule as the pages (src/lib/species-source.mjs). The group rule must match MIN_GROUP_SIZE
+// in src/lib/species.ts; scripts/check-seo.mjs fails if a noindex page shows up in the sitemap.
+import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { comparisonsDir, isComparisonBuilt, isPreview, isSpeciesBuilt, readJsonDir, speciesDir } from './species-source.mjs';
 
 export const MIN_GROUP_SIZE = 3;
 const BASES = [['sv', '/sv/arter/'], ['en', '/species/']];
 
 /** @param {string} root the website folder */
 export function readSpeciesSitemapInfo(root) {
-  const dir = resolve(root, 'src/data/species');
   const groups = JSON.parse(readFileSync(resolve(root, 'src/data/species-groups.json'), 'utf8')).groups;
-  const records = existsSync(dir)
-    ? readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(resolve(dir, f), 'utf8'))).filter((r) => r.status === 'ok')
-    : [];
+  const built = readJsonDir(root, speciesDir()).filter((r) => isSpeciesBuilt(r));
+  const builtQids = new Set(built.map((r) => r.qid));
+  const comparisons = readJsonDir(root, comparisonsDir()).filter((c) => isComparisonBuilt(c, builtQids));
+  const preview = isPreview();
   /** @type {Map<string, string>} */
   const lastmod = new Map();
+  /** @type {Set<string>} */
+  const noindex = new Set();
   /** @type {Map<string, number>} */
   const sizes = new Map();
   let newest = '';
-  for (const r of records) {
-    for (const [lang, base] of BASES) lastmod.set(`${base}${r.slug[lang]}/`, r.generated.at);
+  for (const r of built) {
+    const at = r.generated?.text?.at ?? r.review?.facts?.at ?? '';
+    for (const [lang, base] of BASES) {
+      const path = `${base}${r.slug[lang]}/`;
+      if (at) lastmod.set(path, at);
+      if (preview && !r.publish) noindex.add(path);
+    }
     sizes.set(r.group, (sizes.get(r.group) ?? 0) + 1);
-    if (r.generated.at > newest) newest = r.generated.at;
+    if (at > newest) newest = at;
   }
-  /** @type {Set<string>} */
-  const noindex = new Set();
+  for (const c of comparisons) {
+    for (const [lang, base] of BASES) {
+      const path = `${base}${c.slug[lang]}/`;
+      if (c.generated?.at) lastmod.set(path, c.generated.at);
+      if (preview && !c.publish) noindex.add(path);
+    }
+  }
   for (const g of groups) {
-    const small = (sizes.get(g.key) ?? 0) < MIN_GROUP_SIZE;
+    const n = sizes.get(g.key) ?? 0;
+    if (n === 0) continue; // no page at all
     for (const [lang, base] of BASES) {
       const path = `${base}${g.slug[lang]}/`;
-      if (small) noindex.add(path);
+      if (n < MIN_GROUP_SIZE) noindex.add(path);
       else if (newest) lastmod.set(path, newest);
     }
   }
@@ -1709,11 +3755,11 @@ export function readSpeciesSitemapInfo(root) {
 Lägg till importen `import { readSpeciesSitemapInfo } from './src/lib/species-sitemap.mjs';` och efter `for`-loopen som fyller `noteDates`:
 
 ```js
-// Species pages: lastmod from each species' generated date, and small group pages left out (spec §10).
+// Species pages: lastmod from each page's data, small groups and unpublished preview pages left out (spec §12 and §14).
 const speciesInfo = readSpeciesSitemapInfo(root);
 ```
 
-Ersätt `integrations: [sitemap({ ... })],` med:
+Ersätt `integrations: [sitemap({ ... }), speciesAudio],` med:
 
 ```js
   integrations: [sitemap({
@@ -1724,7 +3770,7 @@ Ersätt `integrations: [sitemap({ ... })],` med:
       if (d) item.lastmod = new Date(d).toISOString();
       return item;
     },
-  })],
+  }), speciesAudio],
 ```
 
 - [ ] **Step 3: SEO-skriptet**
@@ -1733,19 +3779,20 @@ Ersätt `integrations: [sitemap({ ... })],` med:
 
 ```js
 #!/usr/bin/env node
-// SEO rules as code (spec 2026-09-25 §10). Runs on the built site in dist/ and lists every failure.
-// New pages (/species/, /sv/arter/) get the full list; every page gets one h1, alt on images and no dead links.
+// SEO rules as code (spec 2026-09-25 §12). Runs on the built site (dist/, or the folder given as the first
+// argument) and lists every failure. New pages (/species/, /sv/arter/) get the full list; every page gets
+// one h1, alt on images and no dead links.
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const dist = resolve(root, 'dist');
+const dist = resolve(root, process.argv[2] ?? 'dist');
 const SITE = 'https://birdy.community';
 const NEW = ['/species/', '/sv/arter/'];
 
 if (!existsSync(dist)) {
-  console.error('check-seo: dist/ saknas, kör npm run build först');
+  console.error(`check-seo: ${dist} saknas, bygg först`);
   process.exit(1);
 }
 
@@ -1793,8 +3840,10 @@ for (const { path, html } of pages) {
   }
   if (!isNew) continue;
 
+  // Comparison titles may fall back to "{A} vs {B} | Birdy", which is under 40 for short names (spec §12).
+  const isComparison = html.includes('data-comparison-page');
   const title = text(html.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '');
-  if (title.length < 40 || title.length > 60) fail(path, `titeln är ${title.length} tecken: ${title}`);
+  if ((!isComparison && title.length < 40) || title.length > 60) fail(path, `titeln är ${title.length} tecken: ${title}`);
   if (seenTitles.has(title)) fail(path, `samma titel som ${seenTitles.get(title)}`);
   seenTitles.set(title, path);
 
@@ -1846,11 +3895,34 @@ for (const { path, html } of pages) {
     if (list.numberOfItems !== shown || list.itemListElement.length !== shown) fail(path, `ItemList har ${list.numberOfItems} poster men sidan visar ${shown}`);
   }
 
-  if (html.includes('data-species-page')) {
-    const photos = new Set([...html.matchAll(/data-photo="([^"]+)"/g)].map((m) => m[1]));
+  // Reviewer and date in JSON-LD must be the ones the page shows (spec §11).
+  const webPage = graph.find((n) => n['@type'] === 'WebPage');
+  const reviewedAt = attr(html.match(/<time\b[^>]*data-reviewed[^>]*>/)?.[0] ?? '', 'datetime');
+  if (reviewedAt) {
+    const visible = text(html.match(/<span data-reviewed-by[^>]*>([\s\S]*?)<\/span>/)?.[1] ?? '');
+    if (!webPage?.reviewedBy?.name || !visible.includes(webPage.reviewedBy.name)) fail(path, `reviewedBy (${webPage?.reviewedBy?.name}) syns inte på sidan`);
+    if (webPage?.lastReviewed !== reviewedAt) fail(path, `lastReviewed (${webPage?.lastReviewed}) är inte datumet på sidan (${reviewedAt})`);
+  }
+
+  // Credits and media on species and comparison pages (spec §10, rule 5).
+  if (html.includes('data-species-page') || isComparison) {
+    if (!reviewedAt) fail(path, 'granskningsraden saknas');
+    const keys = new Set([...html.matchAll(/data-(?:photo|audio)="([^"]+)"/g)].map((m) => m[1]));
     const credits = new Set([...html.matchAll(/data-credit-for="([^"]+)"/g)].map((m) => m[1]));
-    for (const photo of photos) if (!credits.has(photo)) fail(path, `fotot ${photo} saknar creditrad`);
-    if (!html.includes('data-wiki-credit')) fail(path, 'Wikipediaraden saknas');
+    for (const key of keys) if (!credits.has(key)) fail(path, `${key} saknar creditrad`);
+    if (!/data-wiki-credit[\s\S]*?data-wiki="/.test(html)) fail(path, 'Wikipediaraden saknas eller har inga artiklar');
+    if (/data-(?:chart|map|redlist)\b/.test(html) && !html.includes('data-data-credit')) fail(path, 'diagram, karta eller rödlista utan datakälla');
+    const audios = [...html.matchAll(/<audio\b[^>]*>/g)].map((m) => attr(m[0], 'src'));
+    for (const src of audios) if (!src || !exists(src)) fail(path, `inspelningen finns inte i bygget: ${src}`);
+    for (const media of [webPage?.associatedMedia].flat().filter(Boolean)) {
+      if (!audios.includes(new URL(media.contentUrl).pathname)) fail(path, `AudioObject pekar på ${media.contentUrl}, som inte spelas på sidan`);
+    }
+  }
+
+  // Every chart and map has its sentences as text (spec §12, rule 6).
+  for (const m of html.matchAll(/<svg\b[^>]*aria-describedby="([^"]+)"[^>]*>/g)) {
+    const desc = text(html.match(new RegExp(`id="${m[1]}"[^>]*>([\\s\\S]*?)</p>`))?.[1] ?? '');
+    if (!desc) fail(path, `diagrammet eller kartan har ingen mening som text (#${m[1]})`);
   }
 }
 
@@ -1861,169 +3933,568 @@ if (errors.length) {
 console.log(`check-seo OK (${pages.length} sidor, ${pages.filter((p) => NEW.some((n) => p.path.startsWith(n))).length} artsidor, ${sitemap.size} adresser i sitemapen)`);
 ```
 
-- [ ] **Step 4: Streckvakten täcker artdatan**
+- [ ] **Step 4: Kontrollen av förhandsbygget**
 
-I `scripts/check-no-dashes.mjs`, lägg till efter loopen över `deckFiles` (före loopen över `noteFiles`):
+`scripts/check-preview-build.mjs`:
 
 ```js
-// Species data (spec 2026-09-25): rendered text only. Quotes are Wikipedia's own words and are not shown.
-const SKIP = new Set(['quote', 'sourceUrl', 'licenseUrl', 'file', 'revision', 'title', 'model', 'prompt', 'at', 'errors', 'qid', 'slug']);
+#!/usr/bin/env node
+// Checks the publishing rule (spec 2026-09-25 §14) on the TEST data: dist/ is the normal fixture build
+// (npm run build:fixtures) and dist-preview/ the preview build (npm run build:preview-fixtures).
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const dist = resolve(root, 'dist');
+const preview = resolve(root, 'dist-preview');
+for (const dir of [dist, preview]) {
+  if (!existsSync(dir)) {
+    console.error(`check-preview-build: ${dir} saknas (npm run build:fixtures och npm run build:preview-fixtures)`);
+    process.exit(1);
+  }
+}
+const page = (dir, path) => {
+  const file = join(dir, path, 'index.html');
+  return existsSync(file) ? readFileSync(file, 'utf8') : null;
+};
+const errors = [];
+
+const UNPUBLISHED = [
+  'sv/arter/storre-hackspett',
+  'species/great-spotted-woodpecker',
+  'sv/arter/storre-hackspett-eller-tretaig-hackspett',
+  'species/eurasian-three-toed-woodpecker-vs-great-spotted-woodpecker',
+];
+const NEVER = ['sv/arter/grongoling', 'sv/arter/spillkraka', 'sv/arter/hornuggla-eller-kattuggla', 'species/long-eared-owl-vs-tawny-owl'];
+
+for (const p of UNPUBLISHED) {
+  if (page(dist, p)) errors.push(`dist/${p}: opublicerad sida finns i det vanliga bygget`);
+  const html = page(preview, p);
+  if (!html) {
+    errors.push(`dist-preview/${p}: saknas i förhandsbygget`);
+    continue;
+  }
+  if (!html.includes('<meta name="robots" content="noindex, follow"')) errors.push(`dist-preview/${p}: saknar noindex`);
+  if (!html.includes('data-preview-banner')) errors.push(`dist-preview/${p}: saknar förhandsbanderollen`);
+}
+for (const p of NEVER) {
+  for (const [name, dir] of [['dist', dist], ['dist-preview', preview]]) if (page(dir, p)) errors.push(`${name}/${p}: ska aldrig få en sida`);
+}
+
+const talgoxe = page(preview, 'sv/arter/talgoxe');
+if (!talgoxe || talgoxe.includes('data-preview-banner') || talgoxe.includes('noindex')) errors.push('dist-preview/sv/arter/talgoxe: en publicerad sida ska se ut som vanligt');
+
+if (page(dist, 'sv/arter/hackspettar')) errors.push('dist/sv/arter/hackspettar: en grupp utan byggda arter ska inte få en sida');
+const woodpeckers = page(preview, 'sv/arter/hackspettar');
+if (!woodpeckers || !woodpeckers.includes('noindex')) errors.push('dist-preview/sv/arter/hackspettar: ska finnas med noindex (färre än tre arter)');
+
+const sitemap = readdirSync(preview).filter((f) => /^sitemap-\d+\.xml$/.test(f)).map((f) => readFileSync(join(preview, f), 'utf8')).join('\n');
+if (sitemap.includes('storre-hackspett')) errors.push('dist-preview: en opublicerad sida finns i sitemapen');
+
+const audio = existsSync(join(dist, 'audio/species')) ? readdirSync(join(dist, 'audio/species')) : [];
+if (audio.length !== 4) errors.push(`dist/audio/species: väntade 4 inspelningar (byggda arter med inspelning), fick ${audio.length}`);
+
+if (errors.length) {
+  console.error(`check-preview-build FAILED (${errors.length} fel):\n${errors.join('\n')}`);
+  process.exit(1);
+}
+console.log('check-preview-build OK (opublicerat bara i förhandsbygget, med noindex och banderoll)');
+```
+
+- [ ] **Step 5: Streckvakten täcker artdatan**
+
+I `scripts/check-no-dashes.mjs`, ändra importraden högst upp till `import { existsSync, readFileSync, readdirSync } from 'node:fs';` och lägg till efter loopen över `deckFiles` (före loopen över `noteFiles`):
+
+```js
+// Species and comparison data (spec 2026-09-25): rendered text only. Quotes are Wikipedia's own words and
+// are not shown; the top-level fact list, raw counts and generation details are not shown either.
+const SKIP = new Set(['quote', 'sourceUrl', 'licenseUrl', 'file', 'revision', 'title', 'model', 'prompt', 'at', 'effort', 'checker', 'qid', 'slug', 'factIds']);
+const SKIP_TOP = new Set(['facts', 'raw', 'generated', 'rejectedText', 'errors', 'review']);
 const walkRendered = (value, path, cb) => {
   if (typeof value === 'string') cb(value, path);
   else if (Array.isArray(value)) value.forEach((v, i) => walkRendered(v, `${path}[${i}]`, cb));
   else if (value && typeof value === 'object') {
-    for (const key of Object.keys(value)) if (!SKIP.has(key)) walkRendered(value[key], path ? `${path}.${key}` : key, cb);
+    for (const key of Object.keys(value)) {
+      if (SKIP.has(key) || (!path && SKIP_TOP.has(key))) continue;
+      walkRendered(value[key], path ? `${path}.${key}` : key, cb);
+    }
   }
 };
-const speciesDir = resolve(root, 'src/data/species');
+const dataDirs = ['src/data/species', 'src/data/comparisons', 'tests/fixtures/species', 'tests/fixtures/comparisons'];
 const dataFiles = [
   'src/data/species-groups.json',
-  ...(existsSync(speciesDir) ? readdirSync(speciesDir).filter((f) => f.endsWith('.json')).map((f) => join('src/data/species', f)) : []),
+  ...dataDirs.flatMap((dir) => (existsSync(resolve(root, dir)) ? readdirSync(resolve(root, dir)).filter((f) => f.endsWith('.json')).map((f) => join(dir, f)) : [])),
 ];
 for (const file of dataFiles) {
-  walkRendered(JSON.parse(readFileSync(resolve(root, file), 'utf8')), '', (text, path) => {
-    if (emDashRe.test(text)) fail(`${file}:${path}`, `tankstreck (${EM_DASH})`);
-    if (spacedEnDashRe.test(text)) fail(`${file}:${path}`, `tankstreck ( ${EN_DASH} )`);
+  walkRendered(JSON.parse(readFileSync(resolve(root, file), 'utf8')), '', (value, path) => {
+    if (emDashRe.test(value)) fail(`${file}:${path}`, `tankstreck (${EM_DASH})`);
+    if (spacedEnDashRe.test(value)) fail(`${file}:${path}`, `tankstreck ( ${EN_DASH} )`);
   });
 }
 files.push(...dataFiles);
 ```
 
-och ändra importraden högst upp till `import { existsSync, readFileSync, readdirSync } from 'node:fs';`. (Variabeln `files` används bara i slutraden `no-dashes OK (${files.length} filer)`.) Ändra `const files = [...]` till `let` om den är `const` och `push` inte godtas. En `const`-array går att pusha till, så normalt behövs ingen ändring.
+(`files` är en `const`-array och går att pusha till; den används bara i slutraden `no-dashes OK (${files.length} filer)`.)
 
-- [ ] **Step 5: Skripten i `package.json`**
+- [ ] **Step 6: Skripten i `package.json`**
 
 Lägg till i `"scripts"`:
 
 ```json
     "test:seo": "node scripts/check-seo.mjs",
+    "test:preview-build": "npm run build:preview-fixtures && node scripts/check-preview-build.mjs",
     "verify": "npm run build && npm run test:seo && npm run test:i18n && npm run test:no-dashes && npm run test:palette && npm run test:contrast",
+    "verify:fixtures": "npm run build:fixtures && npm run test:seo && npm run test:unit && npm run test:i18n && npm run test:no-dashes && npm run test:palette && npm run test:contrast && npm run test:preview-build",
 ```
 
-- [ ] **Step 6: Kör**
+- [ ] **Step 7: Kör**
 
-Run: `npm run verify`
-Expected: `check-seo OK (... sidor, ... artsidor, ... adresser i sitemapen)` och de andra vakterna gröna.
-Failar regel 9 eller 10 (en h1, alt, döda länkar) på en **befintlig** sida är det ett riktigt SEO-fel: rätta sidan i samma task och skriv i commit-meddelandet vilken sida det gällde. Failar en regel på de nya sidorna: rätta komponenten, inte skriptet.
+Run: `npm run verify:fixtures`
+Expected: `check-seo OK (... sidor, ... artsidor, ... adresser i sitemapen)`, enhetstesterna, vakterna och `check-preview-build OK (...)` gröna.
 
-- [ ] **Step 7: Kör hela Playwright-sviten igen**
+Failar en regel på en **befintlig** sida (en h1, alt, döda länkar) är det ett riktigt SEO-fel: rätta sidan i samma task och skriv i commit-meddelandet vilken sida det gällde. Failar en regel på de nya sidorna: rätta komponenten, inte skriptet.
 
-Run: `PLAYWRIGHT_PORT=4327 npx playwright test`
-Expected: PASS
+Run: `npm run build:fixtures && node scripts/check-seo.mjs && PLAYWRIGHT_PORT=4327 npx playwright test`
+Expected: PASS (`dist/` är testdatans vanliga bygge igen efter förhandsbygget, som skrev till `dist-preview/`).
 
 - [ ] **Step 8: Commit**
 
 ```bash
-git add src/lib/species-sitemap.mjs astro.config.mjs scripts/check-seo.mjs scripts/check-no-dashes.mjs package.json
-git commit -m "feat(website): sitemap för artsidorna och SEO-reglerna som kod (npm run verify)"
+git add src/lib/species-sitemap.mjs astro.config.mjs scripts/check-seo.mjs scripts/check-preview-build.mjs scripts/check-no-dashes.mjs package.json
+git commit -m "feat(website): sitemap för artsidorna, SEO-reglerna som kod och kontroll av förhandsbygget"
 ```
 
 ---
 
-### Task 10: Full QA
+### Task 15: Publiceringen per våg
+
+**Files:**
+- Create: `website/scripts/publish-wave.mjs`
+- Create: `website/tests/unit/publish-wave.unit.mjs`
+- Modify: `website/package.json`
+
+- [ ] **Step 1: Skriv enhetstestet**
+
+`tests/unit/publish-wave.unit.mjs`:
+
+```js
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { publishWave } from '../../scripts/publish-wave.mjs';
+
+const reviewed = { facts: { by: 'Albin Abrahamsson', at: '2026-11-20' } };
+const species = () => [
+  { qid: 'Q1', status: 'ok', publish: false, review: { ...reviewed, wave: 1 } },
+  { qid: 'Q2', status: 'ok', publish: false, review: { ...reviewed, wave: 1 } },
+  { qid: 'Q3', status: 'ok', publish: false, review: { wave: 1 } },
+  { qid: 'Q4', status: 'pending', publish: false, review: { wave: 1 } },
+  { qid: 'Q5', status: 'ok', publish: false, review: { ...reviewed, wave: 2 } },
+  { qid: 'Q6', status: 'ok', publish: true, review: { ...reviewed, wave: 1 } },
+];
+const comparisons = () => [
+  { a: 'Q1', b: 'Q2', status: 'ok', publish: false },
+  { a: 'Q1', b: 'Q5', status: 'ok', publish: false },
+  { a: 'Q2', b: 'Q6', status: 'pending', publish: false },
+];
+
+test('publicerar vågens skrivna och granskade arter och par där båda är publicerade', () => {
+  const s = species();
+  const c = comparisons();
+  const result = publishWave(s, c, 1);
+  assert.deepEqual(result.species, ['Q1', 'Q2']);
+  assert.deepEqual(result.comparisons, ['Q1_Q2']);
+  assert.deepEqual(result.skipped, ['Q3 (ok, ogranskad)', 'Q4 (pending, ogranskad)']);
+  assert.equal(s.find((r) => r.qid === 'Q5').publish, false);
+  assert.equal(c[1].publish, false);
+  assert.equal(c[2].publish, false);
+});
+
+test('avpublicerar aldrig', () => {
+  const s = species();
+  publishWave(s, comparisons(), 2);
+  assert.equal(s.find((r) => r.qid === 'Q6').publish, true);
+});
+```
+
+- [ ] **Step 2: Kör och se det faila**
+
+Run: `npm run test:unit`
+Expected: FAIL, `Cannot find module '.../scripts/publish-wave.mjs'`.
+
+- [ ] **Step 3: Skriv skriptet**
+
+`scripts/publish-wave.mjs`:
+
+```js
+#!/usr/bin/env node
+// Publishes one wave (spec 2026-09-25 §14): sets publish: true on the wave's species that are written
+// (status ok) and reviewed, and on comparisons whose two species are then both published. Never
+// unpublishes anything and changes no other field. Run after Albin has approved the wave's preview:
+//   node scripts/publish-wave.mjs --wave 1 [--dry-run]
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { comparisonsDir, speciesDir } from '../src/lib/species-source.mjs';
+
+/** Mutates the records it publishes and returns what changed. */
+export function publishWave(species, comparisons, wave) {
+  const changedSpecies = [];
+  const skipped = [];
+  for (const r of species) {
+    if (r.review?.wave !== wave || r.publish) continue;
+    if (r.status === 'ok' && r.review?.facts) {
+      r.publish = true;
+      changedSpecies.push(r.qid);
+    } else {
+      skipped.push(`${r.qid} (${r.status}${r.review?.facts ? '' : ', ogranskad'})`);
+    }
+  }
+  const published = new Set(species.filter((r) => r.publish && r.status === 'ok').map((r) => r.qid));
+  const changedComparisons = [];
+  for (const c of comparisons) {
+    if (!c.publish && c.status === 'ok' && published.has(c.a) && published.has(c.b)) {
+      c.publish = true;
+      changedComparisons.push(`${c.a}_${c.b}`);
+    }
+  }
+  return { species: changedSpecies, comparisons: changedComparisons, skipped };
+}
+
+function main() {
+  const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+  const waveArg = process.argv.indexOf('--wave');
+  const wave = Number(process.argv[waveArg + 1]);
+  if (waveArg < 0 || !Number.isInteger(wave) || wave < 1) {
+    console.error('Användning: node scripts/publish-wave.mjs --wave <nummer> [--dry-run]');
+    process.exit(2);
+  }
+  const dryRun = process.argv.includes('--dry-run');
+  const load = (dir) => readdirSync(resolve(root, dir)).filter((f) => f.endsWith('.json')).map((f) => {
+    const file = resolve(root, dir, f);
+    return { file, record: JSON.parse(readFileSync(file, 'utf8')) };
+  });
+  const species = load(speciesDir());
+  const comparisons = load(comparisonsDir());
+  const before = new Map([...species, ...comparisons].map((x) => [x.file, x.record.publish]));
+  const result = publishWave(species.map((x) => x.record), comparisons.map((x) => x.record), wave);
+  if (!dryRun) {
+    for (const x of [...species, ...comparisons]) {
+      if (before.get(x.file) !== x.record.publish) writeFileSync(x.file, `${JSON.stringify(x.record, null, 2)}\n`);
+    }
+  }
+  console.log(`${dryRun ? 'Provkörning: ' : ''}våg ${wave}: ${result.species.length} arter och ${result.comparisons.length} jämförelser publicerade`);
+  if (result.species.length) console.log(`  arter: ${result.species.join(', ')}`);
+  if (result.comparisons.length) console.log(`  jämförelser: ${result.comparisons.join(', ')}`);
+  if (result.skipped.length) console.log(`  hoppades över (inte klara): ${result.skipped.join(', ')}`);
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1]).href) main();
+```
+
+- [ ] **Step 4: Kör testerna**
+
+Run: `npm run test:unit`
+Expected: PASS (7 tester)
+
+Run (testdatan, utan att skriva): `node scripts/env-run.mjs SPECIES_FIXTURES=1 -- node scripts/publish-wave.mjs --wave 2 --dry-run`
+Expected: `Provkörning: våg 2: 2 arter och 1 jämförelser publicerade` (de två hackspettarna och deras par), `hoppades över (inte klara): Q143284 (pending, ogranskad)`. Inga filer ändras (`git status` är ren).
+
+- [ ] **Step 5: Skriptet i `package.json`**
+
+Lägg till i `"scripts"`: `"publish:wave": "node scripts/publish-wave.mjs",`
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add scripts/publish-wave.mjs tests/unit/publish-wave.unit.mjs package.json
+git commit -m "feat(website): publiceringsskript per våg"
+```
+
+---
+
+### Task 16: Full QA på testdatan
 
 - [ ] **Step 1: Alla vakter och tester**
 
-Run: `npm run verify && npx astro check && npm run test:no-accuracy && PLAYWRIGHT_PORT=4327 npx playwright test`
+Run: `npm run verify:fixtures && npx astro check && npm run test:no-accuracy && PLAYWRIGHT_PORT=4327 npx playwright test`
 Expected: allt grönt (utom det kända typfelet i `astro.config.mjs`).
 
-- [ ] **Step 2: Skärmdumpar**
+- [ ] **Step 2: Skärmdumpar av testdatan (för ögat, committas inte)**
 
-Starta `npm run preview -- --port 4327` i bakgrunden och ta skärmdumpar till `docs/superpowers/screenshots/artsidor/` (från repots rot, mappen skapas först):
+Starta `npm run preview -- --port 4327` i bakgrunden och kör:
 
 ```bash
-mkdir -p ../docs/superpowers/screenshots/artsidor
-for page in "sv/arter/" "sv/arter/ugglor/" "sv/arter/talgoxe/" "species/" "species/owls/" "species/great-tit/"; do
+mkdir -p ../.superpowers/artsidor-testdata
+for page in "sv/arter/" "sv/arter/ugglor/" "sv/arter/talgoxe/" "sv/arter/parluggla/" "sv/arter/blames-eller-talgoxe/" "sv/arter/om-artsidorna/" "species/great-tit/"; do
   name=$(echo "$page" | tr '/' '-' | sed 's/-$//')
-  npx playwright screenshot --viewport-size=390,844 --full-page "http://localhost:4327/$page" "../docs/superpowers/screenshots/artsidor/$name-390.png"
-  npx playwright screenshot --viewport-size=1440,900 --full-page "http://localhost:4327/$page" "../docs/superpowers/screenshots/artsidor/$name-1440.png"
+  npx playwright screenshot --viewport-size=390,844 --full-page "http://localhost:4327/$page" "../.superpowers/artsidor-testdata/$name-390.png"
+  npx playwright screenshot --viewport-size=1440,900 --full-page "http://localhost:4327/$page" "../.superpowers/artsidor-testdata/$name-1440.png"
 done
 ```
 
-Lägg till en art med marginalanteckning (talgoxen har en) och en art utan extrafoto: hitta en med `grep -L '"role": "extra"' src/data/species/*.json | head -1`, läs dess `slug.sv` och ta samma två skärmdumpar.
+Kontrollera i bilderna:
+- artsidan på dator: vänsterspalten med foto, fakta, approta och marginalanteckning; högerspalten med texterna, spelaren under Läte, diagrammet och kartan bredvid varandra under Var och när, förväxlingsarten och credits
+- artsidan i mobil: diagram och karta under varandra, ingen sidledsscroll
+- jämförelsesidan: två kolumner på dator, en i mobil, tabellen läsbar i 390 px
+- inget mossgrönt någonstans (bara rost, persika, aprikos, mässing, marinblått och espresso)
 
-- [ ] **Step 3: Jämför med mockupen**
+Avvikelser som inte står under "Avvikelser från specen" rättas och testas om.
 
-Öppna `docs/superpowers/specs/assets/2026-09-25-artsidor/helheten.html` bredvid skärmdumparna. Kontrollera:
-- menyraden med Arter först
-- kategoriraden med aktiv chip
-- vänsterspalten (foto, fakta, approta, marginalanteckning)
-- högerspalten med texterna i rätt ordning
-- sidfotens kolumn Arter och raden Vanliga arter
-- mobilordningen
-
-Avvikelser som inte är listade under "Avvikelser från specen" rättas.
-
-- [ ] **Step 4: Lighthouse**
-
-```bash
-npx lighthouse http://localhost:4327/sv/arter/talgoxe/ --form-factor=mobile --screenEmulation.mobile --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=../docs/superpowers/screenshots/artsidor/lighthouse-talgoxe --chrome-flags="--headless=new"
-npx lighthouse http://localhost:4327/sv/arter/ --form-factor=mobile --screenEmulation.mobile --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=../docs/superpowers/screenshots/artsidor/lighthouse-arter --chrome-flags="--headless=new"
-```
-
-Mål: 90 eller mer i alla fyra kategorierna. Ligger Performance under 90: kontrollera att huvudfotot har `fetchpriority="high"` och att `sizes` stämmer, och sänk `widths` i artkorten. Resultaten sparas som underlag till AlbIT-caset.
-
-- [ ] **Step 5: Commit**
-
-```bash
-git add ../docs/superpowers/screenshots/artsidor
-git commit -m "docs: skärmdumpar och Lighthouse för artsidorna"
-```
-
----
-
-### Task 11: Förhandsvisning, baslinje och go-live
-
-- [ ] **Step 1: Pusha grenen och hämta förhandsvisningen**
+- [ ] **Step 3: Pusha grenen (ingen förhandsvisning med riktig data än)**
 
 ```bash
 git push -u origin website/artsidor
 ```
 
-Vercel bygger en förhandsvisning för grenen. Hämta länken (`npx vercel ls` eller Vercels kommentar på grenen) och kontrollera att `/sv/arter/talgoxe/` och `/species/` svarar 200 där.
+Vercels förhandsbygge av grenen failar tills riktig data finns (sidfoten kräver de tolv vanliga arterna). Det är väntat fram till Task 17.
 
-- [ ] **Step 2: Albin godkänner förhandsvisningen (manuell grind)**
+---
 
-Skicka länken till Albin med tre adresser att titta på: `/sv/arter/`, `/sv/arter/talgoxe/` och `/sv/arter/ugglor/`. Vänta på hans ok. Rätta det han hittar på grenen.
+### Task 17: Riktig data för våg 1
 
-- [ ] **Step 3: Baslinjen i Search Console (Albin, före sammanslagningen)**
+**Villkor:** Fas 1b har skrivit texter för våg 1 på `main`: varje art i våg 1 har `status: "ok"`, `review.facts` och `review.wave: 1`, och vågens jämförelser har `status: "ok"`. Alla tolv vanliga arter (`src/data/species-groups.json` → `common`) ingår i våg 1. Är villkoret inte uppfyllt: stoppa och rapportera vad som saknas.
 
-Albin exporterar Search Console för birdy.community, de senaste 3 månaderna: klick, visningar och antal indexerade sidor. Skriv in siffrorna med dagens datum i `docs/superpowers/research/<datum>-artsidor-baslinje.md` (spec avsnitt 12) och committa filen på grenen.
-
-- [ ] **Step 4: Slå ihop**
+- [ ] **Step 1: Ta in `main`**
 
 ```bash
 git fetch origin && git merge origin/main
-npm ci && npm run verify && PLAYWRIGHT_PORT=4327 npx playwright test
+npm ci
+```
+
+- [ ] **Step 2: Kontrollera datan**
+
+```bash
+node -e "
+const fs=require('fs');const d='src/data/species';
+const r=fs.readdirSync(d).filter(f=>f.endsWith('.json')).map(f=>JSON.parse(fs.readFileSync(d+'/'+f,'utf8')));
+const c={};for(const x of r){const k=x.status+'/w'+(x.review?.wave??'-')+(x.review?.facts?'/granskad':'');c[k]=(c[k]??0)+1}
+console.log(c);
+const common=JSON.parse(fs.readFileSync('src/data/species-groups.json','utf8')).common;
+console.log('vanliga utan klar text i våg 1:',common.filter(q=>{const x=r.find(y=>y.qid===q);return !x||x.status!=='ok'||!x.review?.facts||x.review?.wave!==1}));
+"
+ls src/data/comparisons | wc -l
+```
+
+Expected: ett antal `ok/w1/granskad` (cirka 40), resten `pending/...`, och listan över vanliga arter utan klar text är tom (`[]`).
+
+- [ ] **Step 3: Förhandsbygge lokalt med riktig data**
+
+Run: `node scripts/env-run.mjs SPECIES_PREVIEW=1 -- astro build --force && node scripts/check-seo.mjs`
+Expected: bygget går igenom med våg 1:s sidor (med `noindex` och banderoll, de är inte publicerade än) och `check-seo OK`. Schemafel i en artfil: rätta pipelinens utdata via fas 1b, ändra inte schemat för att släppa igenom felet.
+
+- [ ] **Step 4: Testdatan är fortfarande grön**
+
+Run: `npm run verify:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test`
+Expected: PASS (testerna kör på testdatan oavsett riktig data).
+
+- [ ] **Step 5: Skärmdumpar med riktig data**
+
+Bygg förhandsläget igen (`node scripts/env-run.mjs SPECIES_PREVIEW=1 -- astro build --force`), starta `npm run preview -- --port 4327` i bakgrunden och ta skärmdumpar till `../docs/superpowers/screenshots/artsidor/` av ingångssidan, Ugglor, Talgoxe (marginalanteckning), en art utan extrafoto eller inspelning (hitta en med `grep -L '"audio"' src/data/species/*.json | xargs grep -l '"status": "ok"' | head -1` och läs dess `slug.sv`), en jämförelsesida (`ls src/data/comparisons | head -1`, läs `slug.sv`) och om-sidan, i 390 och 1440 px, med samma `npx playwright screenshot`-kommandon som i Task 16. Banderollen syns överst, det är väntat.
+
+- [ ] **Step 6: Jämför med mockupen**
+
+Öppna `docs/superpowers/specs/assets/2026-09-25-artsidor/helheten.html` bredvid skärmdumparna och kontrollera menyraden med Arter först, kategoriraden, vänsterspalten, högerspaltens ordning, sidfotens kolumn och rad samt mobilordningen. Kontrollera också de nya modulerna mot specens avsnitt 5 och 7. Rätta det som inte stämmer.
+
+- [ ] **Step 7: Commit**
+
+```bash
+git add ../docs/superpowers/screenshots/artsidor
+git commit -m "docs: skärmdumpar av artsidorna med våg 1:s data"
+git push
+```
+
+---
+
+### Task 18: Förhandsvisning, Albins godkännande och go-live för våg 1
+
+- [ ] **Step 1: `SPECIES_PREVIEW=1` i Vercels miljö Preview**
+
+Vercel-projektet ligger i teamet `loop-lead-ab` (Albit AB). I `website/`:
+
+```bash
+vercel link --yes --scope loop-lead-ab --project birdy
+printf '1' | vercel env add SPECIES_PREVIEW preview --scope loop-lead-ab
+vercel env ls preview --scope loop-lead-ab | grep SPECIES_PREVIEW
+```
+
+Expected: `SPECIES_PREVIEW` finns för Preview. (Saknas Vercel CLI eller inloggning: be Albin lägga in variabeln i Vercel, Settings → Environment Variables, värde `1`, bara Preview.) `SPECIES_FIXTURES` får aldrig sättas på Vercel.
+
+- [ ] **Step 2: Förhandsvisningen**
+
+Pusha en tom commit så att Vercel bygger om med variabeln:
+
+```bash
+git commit --allow-empty -m "chore(website): bygg om förhandsvisningen med SPECIES_PREVIEW"
+git push
+```
+
+Hämta förhandslänken (`vercel ls birdy --scope loop-lead-ab | head -5` eller Vercels kommentar på grenen) och kontrollera att `/sv/arter/` och `/sv/arter/talgoxe/` svarar 200 där, med banderollen "Förhandsvisning, inte publicerad".
+
+- [ ] **Step 3: Albin granskar (manuell grind)**
+
+Skicka länken till Albin med:
+- `/sv/arter/` och en gruppsida
+- tre artsidor att skumma, bland dem `/sv/arter/talgoxe/`
+- **alla** våg 1:s jämförelsesidor (lista adresserna ur `src/data/comparisons/*.json`, `slug.sv`, för par där båda arterna är i våg 1)
+- `/sv/arter/om-artsidorna/` och `/species/about-these-pages/` (texten skrevs i den här planen och ska godkännas av Albin)
+
+Vänta på hans ok. Rätta det han hittar på grenen. Faktafel rättas i fas 1b:s flöde (granskningsarket), inte i JSON-filerna för hand.
+
+- [ ] **Step 4: Baslinjen tas om (före sammanslagningen)**
+
+Hämta Search Console för `sc-domain:birdy.community`, de senaste 3 månaderna (klick, visningar, indexerade sidor), och skriv in dem i raden "Go-live (fas 2)" i `docs/superpowers/research/2026-09-30-artsidor-baslinje.md` med dagens datum. Committa filen på grenen.
+
+- [ ] **Step 5: Publicera våg 1**
+
+```bash
+node scripts/publish-wave.mjs --wave 1 --dry-run
+node scripts/publish-wave.mjs --wave 1
+npm run verify
+```
+
+Expected: provkörningen listar våg 1:s arter och jämförelser och inga oväntade "hoppades över"; skarpa körningen skriver samma sak; `npm run verify` bygger produktionsläget (utan förhandsläge) och alla vakter är gröna.
+
+- [ ] **Step 6: Lighthouse på produktionsbygget**
+
+Starta `npm run preview -- --port 4327` i bakgrunden och kör (den första publicerade jämförelsen väljs ur datan):
+
+```bash
+COMPARE=$(node -e "const fs=require('fs');const d='src/data/comparisons';const hit=fs.readdirSync(d).map((f)=>JSON.parse(fs.readFileSync(d+'/'+f,'utf8'))).find((x)=>x.publish);console.log(hit.slug.sv)")
+for p in "sv/arter/talgoxe/" "sv/arter/$COMPARE/" "sv/arter/"; do
+  name=$(echo "$p" | tr '/' '-' | sed 's/-$//')
+  npx lighthouse "http://localhost:4327/$p" --form-factor=mobile --screenEmulation.mobile --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path="../docs/superpowers/screenshots/artsidor/lighthouse-$name" --chrome-flags="--headless=new"
+done
+```
+
+Mål: 90 eller mer i alla fyra kategorierna på alla tre sidorna. Under 90 i Performance: kontrollera att huvudfotot har `fetchpriority="high"` och att `sizes` stämmer, och sänk `widths` i artkorten.
+
+- [ ] **Step 7: Slå ihop**
+
+```bash
+git add src/data/species src/data/comparisons ../docs/superpowers/screenshots/artsidor ../docs/superpowers/research/2026-09-30-artsidor-baslinje.md
+git commit -m "feat(website): våg 1 av artsidorna publicerad"
+git fetch origin && git merge origin/main
+npm ci && npm run verify && npm run verify:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test
+git push
+```
+
+Sedan i huvudmappen för `main` (worktreen kan inte byta till `main`):
+
+```bash
 git switch main && git pull && git merge --ff-only website/artsidor && git push
 ```
 
-(Kör kommandona i huvudmappen för `main` om worktreen inte kan byta gren. Går `--ff-only` inte: ta in `main` i grenen igen, kör om verifieringen och försök på nytt.)
+Går `--ff-only` inte: ta in `main` i grenen igen, kör om verifieringen och försök på nytt.
 
-- [ ] **Step 5: Kontrollera live**
+- [ ] **Step 8: Kontrollera live**
 
 När Vercel har byggt produktion:
 
 ```bash
-for p in /sv/arter/ /species/ /sv/arter/talgoxe/ /species/great-tit/ /sv/arter/ugglor/ /sitemap-0.xml; do
+for p in /sv/arter/ /species/ /sv/arter/talgoxe/ /species/great-tit/ /sv/arter/om-artsidorna/ /sitemap-0.xml; do
   echo "$p $(curl -s -o /dev/null -w '%{http_code}' https://birdy.community$p)"
 done
+curl -s https://birdy.community/sv/arter/talgoxe/ | grep -c 'data-preview-banner'
 curl -s https://birdy.community/sitemap-0.xml | grep -c '/arter/'
 ```
 
-Expected: 200 överallt, och sitemapen innehåller artsidorna (ungefär antalet `ok`-arter plus indexerade grupper plus ingångssidan).
+Expected: 200 överallt, `0` banderoller i produktion, och sitemapen innehåller våg 1:s artsidor, jämförelser, indexerade grupper och ingångssidan.
 
-- [ ] **Step 6: Search Console efter go-live (Albin eller agenten via Chrome)**
+- [ ] **Step 9: Search Console (med Albins ok per inskickning)**
 
 Skicka in `https://birdy.community/sitemap-index.xml` igen och begär indexering av `/sv/arter/`, `/species/` och de tolv vanliga arternas svenska sidor.
 
-- [ ] **Step 7: Synka status**
+- [ ] **Step 10: Utkast till utskick för länkar**
 
-Uppdatera 🔎-posten i CLAUDE.md:
-- artsidorna live med datum
-- antal sidor
+Skriv `docs/marketing/2026-artsidor-utskick.md` med utkasten nedan. Fyll i antalet publicerade arter och jämförelser ur publiceringsskriptets utskrift i Step 5. Albin skickar dem i eget namn; agenten skickar inget.
+
+```markdown
+# Utskick för artsidorna, våg 1
+
+Albin skickar. Länka alltid till ingångssidan eller en jämförelsesida, aldrig till appen direkt.
+
+## birdforum.net (engelska)
+
+**Title:** Free field guide pages for common Swedish winter and garden birds
+
+Hi all, I build Birdy, a small bird ID app from Sweden. We have just published field guide pages for {antal arter} of the most common winter and garden birds in Sweden and Europe: field marks, calls with recordings, when each species is reported in Sweden month by month (from Artportalen data via GBIF), and side by side comparisons of species that are easy to mix up, like the blue tit and the great tit. Every fact sheet is reviewed before publishing, and the texts may be reused under CC BY-SA. Corrections are very welcome. https://birdy.community/species/
+
+## Lokala ornitologiska föreningar (svenska, mejl)
+
+**Ämne:** Gratis artsidor om vinterfåglar till era medlemmar
+
+Hej! Jag heter Albin Abrahamsson och har byggt Birdy, en app för att känna igen fåglar. Inför Vinterfåglar inpå knuten har vi publicerat artsidor om {antal arter} av de vanligaste vinter- och trädgårdsfåglarna, med kännetecken, läten, när arten rapporteras i Sverige månad för månad (ur Artportalen) och jämförelser av arter som är lätta att blanda ihop, som blåmes och talgoxe. Allt är gratis och texterna får delas vidare. Får jag tipsa om sidorna i ert nyhetsbrev eller på er webbplats? https://birdy.community/sv/arter/
+
+Hälsningar, Albin Abrahamsson
+
+## Svenska fågelgrupper på Facebook
+
+Inför Vinterfåglar inpå knuten: vi har gjort gratis artsidor om de vanligaste fåglarna vid fågelbordet, med läten, när de rapporteras i Sverige och jämförelser av arter som är lätta att blanda ihop. Hittar ni ett fel får ni gärna säga till. https://birdy.community/sv/arter/
+
+## Lärare och naturskolor (svenska, mejl)
+
+**Ämne:** Gratis jämförelser av fåglar som är lätta att blanda ihop
+
+Hej! Vi har publicerat {antal jämförelser} jämförelser av fåglar som är lätta att blanda ihop, till exempel blåmes och talgoxe, med foton, läten och en tabell över skillnaderna. De passar bra inför en fågelräkning med klassen och får användas fritt i undervisningen. https://birdy.community/sv/arter/
+
+Hälsningar, Albin Abrahamsson
+
+## AlbIT-caset
+
+Skicka adresserna `https://birdy.community/sv/arter/` och `https://birdy.community/species/` till albit.se-sessionen, tillsammans med Lighthouse-resultaten i `docs/superpowers/screenshots/artsidor/`.
+```
+
+Committa och pusha filen på `main`.
+
+- [ ] **Step 11: Synka status**
+
+Uppdatera 🔎-posten om artsidorna i CLAUDE.md:
+- våg 1 live med datum, antal artsidor och jämförelser
 - Lighthouse-resultaten
-- baslinjefilen
-- triggrarna: kontroll efter 6 veckor (datum) och 12 veckor (datum) enligt spec avsnitt 12
+- baslinjefilen och triggrarna: kontroll efter 6 veckor (datum) och 12 veckor (datum) enligt spec §15
+- att `SPECIES_PREVIEW=1` ligger i Vercels miljö Preview
+- att egna besök filtreras med `?va-ignore=1` (Albin öppnar `https://birdy.community/?va-ignore=1` en gång per webbläsare och enhet)
 
 Committa och pusha. Ta bort worktreen: `git worktree remove C:/w/birdy-artsidor`.
+
+---
+
+### Task 19: Senare vågor (checklista)
+
+Våg 2 (senast 15 januari 2027) och våg 3 (senast 26 februari 2027) är dataändringar. Ingen ny kod behövs om inget nytt dyker upp.
+
+- [ ] **Step 1: Villkor**
+
+Fas 1b har skrivit vågens texter på `main`: vågens arter har `status: "ok"`, `review.facts` och `review.wave` lika med vågens nummer.
+
+- [ ] **Step 2: Förhandsvisning**
+
+```bash
+git switch main && git pull
+git switch -c website/vag-<N>
+git push -u origin website/vag-<N>
+```
+
+Vercel bygger förhandsvisningen med `SPECIES_PREVIEW=1`. Kontrollera att vågens sidor finns med banderollen.
+
+- [ ] **Step 3: Albin godkänner (manuell grind)**
+
+Skicka förhandslänken med vågens jämförelsesidor och tre artsidor att skumma. Vänta på hans ok.
+
+- [ ] **Step 4: Publicera och slå ihop**
+
+```bash
+npm ci
+node scripts/publish-wave.mjs --wave <N> --dry-run
+node scripts/publish-wave.mjs --wave <N>
+npm run verify && npm run verify:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test
+git add src/data/species src/data/comparisons
+git commit -m "feat(website): våg <N> av artsidorna publicerad"
+git push
+git switch main && git merge --ff-only website/vag-<N> && git push
+```
+
+- [ ] **Step 5: Efter go-live**
+
+Kontrollera live som i Task 18 Step 8, skicka in sitemapen igen och begär indexering för vågens viktigaste sidor (med Albins ok). Uppdatera CLAUDE.md med vågen och dess triggerdatum (6 och 12 veckor). Efter 6 och 12 veckor: skriv in mätvärdena i baslinjefilen och följ triggrarna i spec §15 innan nästa våg.
