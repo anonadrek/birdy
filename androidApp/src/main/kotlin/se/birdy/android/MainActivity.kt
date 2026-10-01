@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -38,7 +39,9 @@ import se.birdy.app.i18n.LocaleResolver
 import se.birdy.app.i18n.toLocaleTagOrNull
 import se.birdy.app.notifications.workers.TrophyProgressWorker
 import se.birdy.app.photo.PhotoStorageProvider
+import se.birdy.app.premium.GrandfatherEvidence
 import se.birdy.app.premium.GrandfatherPolicy
+import se.birdy.app.premium.GrandfatherStartup
 import se.birdy.app.premium.PremiumOverrideResolver
 import se.birdy.app.ui.audio.AndroidAudioRecorderAdapter
 import se.birdy.app.ui.audio.AndroidWaveformRenderer
@@ -80,8 +83,6 @@ import se.birdy.pdf.PdfFontProvider
 import java.io.File
 import java.util.concurrent.atomic.AtomicReference
 import android.graphics.Color as AndroidColor
-
-private const val UPGRADE_INSTALL_BACKDATE_MS = 8L * 24 * 60 * 60 * 1000
 
 @Suppress("TooManyFunctions")
 class MainActivity : AppCompatActivity() {
@@ -336,32 +337,24 @@ class MainActivity : AppCompatActivity() {
         val badgeCatalog = runBlocking { BadgeCatalogLoader.loadFromResources() }
         val badgeVersionStore = SharedPrefsBadgeVersionStore(applicationContext)
         val userPreferences = UserPreferencesStore(applicationContext).preferences()
-        // One-shot migration + phone-change safety net for firstInstallTimestamp. v0.8.0-rc1
-        // upgraders (hasSeenOnboarding=true, no timestamp yet) get backdated to now-8d so the
-        // 7d onboarding-modal grace has already elapsed; fresh installs get now → full 7d grace.
-        // On every start we also fold in Android's PackageInfo install time and keep whichever
-        // of {stored, package, candidate} is earliest (GrandfatherPolicy.earliestInstallMs) —
-        // this is what keeps a pre-cutoff user grandfathered after a phone change, where the
-        // DataStore backup restores the old timestamp but PackageInfo resets to "now".
-        val storedFirstInstallMs = runBlocking { userPreferences.firstInstallTimestamp.first() }
-        val candidateFirstInstallMs =
+        // Early-user proof + install time (spec 2026-09-24 §5.1, hardened 2026-10-01). This MUST
+        // run before anything else writes these preferences: on the first start of a build with
+        // the hardened rule, GrandfatherStartup copies firstInstallTimestamp exactly as an older
+        // build (1.2.x, vC128) left it, once, and it keeps the network time of the first start
+        // where the platform has one. Only after that does it repair firstInstallTimestamp for
+        // the 7-day onboarding grace (v0.8.0-rc1 upgraders backdated 8 days, earliest of stored,
+        // PackageInfo and now). That timestamp, the device clock and PackageInfo are no longer
+        // proof: all three follow a clock the user can set back before installing.
+        val grandfatherEvidence =
             runBlocking {
-                if (userPreferences.hasSeenOnboarding.first()) {
-                    System.currentTimeMillis() - UPGRADE_INSTALL_BACKDATE_MS
-                } else {
-                    System.currentTimeMillis()
-                }
+                GrandfatherStartup.run(
+                    prefs = userPreferences,
+                    packageFirstInstallMs = packageFirstInstallTimeOrNull(),
+                    deviceNowMs = System.currentTimeMillis(),
+                    trustedNowMs = ::trustedNetworkTimeMsOrNull,
+                )
             }
-        val resolvedFirstInstallMs =
-            GrandfatherPolicy.earliestInstallMs(
-                storedMs = storedFirstInstallMs,
-                packageMs = packageFirstInstallTimeOrNull(),
-                candidateMs = candidateFirstInstallMs,
-            )
-        if (resolvedFirstInstallMs != storedFirstInstallMs) {
-            runBlocking { userPreferences.setFirstInstallTimestamp(resolvedFirstInstallMs) }
-        }
-        val isGrandfathered = computeGrandfathered(userPreferences, storedFirstInstallMs = resolvedFirstInstallMs)
+        val isGrandfathered = computeGrandfathered(userPreferences, grandfatherEvidence)
         billingClient =
             se.birdy.app.data.premium.PremiumBillingClient(
                 context = applicationContext,
@@ -541,26 +534,48 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Spec 2026-09-24 §5.1. DEBUG builds can force it on via DiagnosticsScreen for QA.
-     *
-     * [storedFirstInstallMs] is the already-resolved earliest-known install time
-     * (see [GrandfatherPolicy.earliestInstallMs] in [buildAppGraph]) — it already folds in
-     * Android's PackageInfo install time, so it alone is enough for the cutoff check here.
+     * Spec 2026-09-24 §5.1 (hardened 2026-10-01). Recomputed on every start from the stored proof
+     * ([GrandfatherStartup]) and this build's cutoff; the decision itself is never stored, so a
+     * purchase-test build (cutoff 0) cannot spoil it for the production build. DEBUG builds can
+     * force it on via DiagnosticsScreen for QA.
      */
     private fun computeGrandfathered(
         userPreferences: UserPreferences,
-        storedFirstInstallMs: Long,
+        evidence: GrandfatherEvidence,
     ): Boolean {
         val debugForce = BuildConfig.DEBUG && runBlocking { userPreferences.debugForceGrandfathered.first() }
         if (debugForce) return true
         return GrandfatherPolicy.isGrandfathered(
-            storedFirstInstallMs = storedFirstInstallMs,
-            packageFirstInstallMs = null,
+            legacyInstallMs = evidence.legacyInstallMs,
+            trustedFirstSeenMs = evidence.trustedFirstSeenMs,
             cutoffMs = BuildConfig.GRANDFATHER_CUTOFF_MS,
         )
     }
 
-    /** Android's own install time survives "clear data", unlike our DataStore timestamp. */
+    /**
+     * The network-synchronised time (API 33+), which the user cannot change in the phone's
+     * settings, for the early-user proof. Null below API 33 or while the platform has no network
+     * time (e.g. offline since boot); GrandfatherStartup then asks again at the next start. Never
+     * falls back to the device clock.
+     */
+    @Suppress("TooGenericExceptionCaught") // Deliberate, see the catch.
+    private fun trustedNetworkTimeMsOrNull(): Long? {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return null
+        return try {
+            SystemClock.currentNetworkTimeClock().millis()
+        } catch (e: RuntimeException) {
+            // "No network time yet" is a java.time.DateTimeException, but it must be caught as its
+            // RuntimeException supertype: core library desugaring (minSdk 24) rewrites a typed
+            // `catch (DateTimeException)` to j$.time.DateTimeException, which would let the
+            // platform's exception through and crash the start. The platform also throws plain
+            // RuntimeExceptions when the system server is unreachable. Either way there is simply
+            // no trusted time this start.
+            android.util.Log.i("Birdy", "No network time for the early-user proof this start", e)
+            null
+        }
+    }
+
+    /** Android's own install time; it feeds the onboarding grace only, never the early-user proof. */
     private fun packageFirstInstallTimeOrNull(): Long? =
         try {
             val info =

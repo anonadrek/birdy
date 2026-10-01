@@ -7,7 +7,7 @@ import platform.Foundation.NSUserDefaults
 
 /**
  * iOS actual backing store for [UserPreferences]. Mirrors [AndroidUserPreferences]
- * (DataStore) exactly — same 18 keys and same default values — but persists via
+ * (DataStore) exactly — same keys and same default values — but persists via
  * NSUserDefaults instead of DataStore. Each property is a MutableStateFlow seeded
  * from NSUserDefaults at construction and updated on every setter, so Flow consumers
  * react to changes exactly as on Android while the value survives app relaunch.
@@ -39,6 +39,9 @@ internal class NsUserDefaultsUserPreferences(
         const val IN_APP_REVIEW_REQUESTED = "in_app_review_requested"
         const val GRANDFATHER_THANKS_SHOWN = "grandfather_thanks_shown"
         const val DEBUG_FORCE_GRANDFATHERED = "debug_force_grandfathered"
+        const val GRANDFATHER_LEGACY_CAPTURED = "grandfather_legacy_captured"
+        const val GRANDFATHER_LEGACY_INSTALL_MS = "grandfather_legacy_install_ms"
+        const val GRANDFATHER_TRUSTED_FIRST_SEEN_MS = "grandfather_trusted_first_seen_ms"
     }
 
     // ---- NSUserDefaults primitives ----
@@ -108,6 +111,10 @@ internal class NsUserDefaultsUserPreferences(
     private val _inAppReviewRequested = MutableStateFlow(getBool(Keys.IN_APP_REVIEW_REQUESTED, false))
     private val _grandfatherThanksShown = MutableStateFlow(getBool(Keys.GRANDFATHER_THANKS_SHOWN, false))
     private val _debugForceGrandfathered = MutableStateFlow(getBool(Keys.DEBUG_FORCE_GRANDFATHERED, false))
+    private val _grandfatherLegacyCaptured = MutableStateFlow(getBool(Keys.GRANDFATHER_LEGACY_CAPTURED, false))
+    private val _grandfatherLegacyInstallMs = MutableStateFlow(getLongOrNull(Keys.GRANDFATHER_LEGACY_INSTALL_MS))
+    private val _grandfatherTrustedFirstSeenMs =
+        MutableStateFlow(getLongOrNull(Keys.GRANDFATHER_TRUSTED_FIRST_SEEN_MS))
 
     override val userName: Flow<String> = _userName.asStateFlow()
     override val hasSeenOnboarding: Flow<Boolean> = _hasSeenOnboarding.asStateFlow()
@@ -129,6 +136,9 @@ internal class NsUserDefaultsUserPreferences(
     override val inAppReviewRequested: Flow<Boolean> = _inAppReviewRequested.asStateFlow()
     override val grandfatherThanksShown: Flow<Boolean> = _grandfatherThanksShown.asStateFlow()
     override val debugForceGrandfathered: Flow<Boolean> = _debugForceGrandfathered.asStateFlow()
+    override val grandfatherLegacyCaptured: Flow<Boolean> = _grandfatherLegacyCaptured.asStateFlow()
+    override val grandfatherLegacyInstallMs: Flow<Long?> = _grandfatherLegacyInstallMs.asStateFlow()
+    override val grandfatherTrustedFirstSeenMs: Flow<Long?> = _grandfatherTrustedFirstSeenMs.asStateFlow()
 
     override suspend fun setUserName(name: String) {
         putString(Keys.USER_NAME, name)
@@ -228,5 +238,22 @@ internal class NsUserDefaultsUserPreferences(
     override suspend fun setDebugForceGrandfathered(value: Boolean) {
         putBool(Keys.DEBUG_FORCE_GRANDFATHERED, value)
         _debugForceGrandfathered.value = value
+    }
+
+    // Two NSUserDefaults writes: value first, flag last, so an interrupted capture is simply redone.
+    override suspend fun captureGrandfatherLegacy(installMs: Long?) {
+        if (installMs != null) {
+            putLong(Keys.GRANDFATHER_LEGACY_INSTALL_MS, installMs)
+        } else {
+            defaults.removeObjectForKey(Keys.GRANDFATHER_LEGACY_INSTALL_MS)
+        }
+        putBool(Keys.GRANDFATHER_LEGACY_CAPTURED, true)
+        _grandfatherLegacyInstallMs.value = installMs
+        _grandfatherLegacyCaptured.value = true
+    }
+
+    override suspend fun setGrandfatherTrustedFirstSeenMs(ms: Long) {
+        putLong(Keys.GRANDFATHER_TRUSTED_FIRST_SEEN_MS, ms)
+        _grandfatherTrustedFirstSeenMs.value = ms
     }
 }

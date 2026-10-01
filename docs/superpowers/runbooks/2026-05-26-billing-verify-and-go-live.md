@@ -27,11 +27,12 @@
 > - **3-D Secure / nytt betalsätt:** [ ] en välkomst, inget Premium-flimmer efteråt.
 > - **Språkbyte:** [ ] byt språk med Premium aktivt: Premium kvar, ingen gammal aviseringslänk öppnas igen.
 > - **Tidig användare** (debugbygge: Diagnostics → "Simulate early user", starta om): [ ] tack-skärmen visas en gång, dubbeltryck på Fortsätt ger ingen tom skärm, nästa start visar den inte; [ ] med "Skip premium override" på visas betalväggen i stället.
+> - **Bevis i stället för klocka** (härdningen 2026-10-01, spec §5.1 tillägget): [ ] Galaxyn med 1.2.x/vC128 från före brytpunkten uppdaterad till vC129: tidig användare (tack-skärmen en gång). [ ] Efter brytpunkten, på Android 13 eller senare och utan tidigare Birdy-backup på kontot (t.ex. emulatorn; annars återställer installationen det gamla beviset): avinstallera, ställ datumet till före brytpunkten, installera och starta: INTE tidig användare; ställ tillbaka datumet och starta igen: fortfarande inte.
 > - **Felsökning:** om priserna aldrig syns, kör `adb logcat -s PremiumBilling` och leta efter `unfetched=` (produkten saknas eller är inaktiv i Console) eller `responseCode=`.
 
 > **När:** Innan vi flippar `PREMIUM_OPEN_FOR_LAUNCH=false` och släpper Birdy i produktion på Google Play.
 > **Varför:** Override:n `premiumOverride = Active(LIFETIME)` som ligger på under closed testing maskerar hela "no premium → köpflöde → state-flip till Active"-vägen. Den vägen måste verifieras isär från overriden innan den möter riktiga betalande användare.
-> **Status:** Item 1 (debug-toggle) **DONE 2026-06-17** (commit `c027a6f6`). Item 3 (BirdNET-licensguard) **DONE 2026-05-26**. Item 5 (grandfather) **implementerad i 1.3.0** (Plan 1, 2026-09-24/25: `GrandfatherPolicy` med båda källorna `firstInstallTimestamp` + `PackageInfo.firstInstallTime`, så även "rensa data" täcks; tack-skärm; samma bygge som `PREMIUM_OPEN_FOR_LAUNCH=false`). **Kvar:** item 2 (köptestet med vC128 på AB-kontot, se uppdateringen överst) och item 4 (uppföljning efter release).
+> **Status:** Item 1 (debug-toggle) **DONE 2026-06-17** (commit `c027a6f6`). Item 3 (BirdNET-licensguard) **DONE 2026-05-26**. Item 5 (grandfather) **implementerad i 1.3.0** (Plan 1, 2026-09-24/25; härdad 2026-10-01 mot bakåtställd klocka: sparat bevis i stället för klocktider, alltså installationstiden som 1.2.x/vC128 skrev, fångad en gång, plus nätverkstiden på Android 13+; "rensa data" efter uppdateringen tappar beviset; se spec §5.1 tillägget; tack-skärm; samma bygge som `PREMIUM_OPEN_FOR_LAUNCH=false`). **Kvar:** item 2 (köptestet med vC128 på AB-kontot, se uppdateringen överst) och item 4 (uppföljning efter release).
 
 ---
 
@@ -107,7 +108,7 @@ Fresh install, debug-toggle PÅ (`NotActive`). Banner "Unlock Premium" syns på 
 
 ## 5. Grandfather launch-period-användare (HARD GATE på flippen)
 
-> **Implementerad i 1.3.0 (2026-09-24/25).** Texten nedan är det ursprungliga beslutet. Skillnader i det som byggdes: båda källorna används (DataStore-tiden OCH `PackageInfo.firstInstallTime`, som överlever "rensa data"), den tidigaste kända tiden sparas tillbaka vid varje start, brytpunkten är 2026-10-02 00:00 Stockholm (go-live + 48 h), och en tack-skärm visas en gång. Verifieras på enhet i Plan 3 (debugbygge: Diagnostics → "Simulate early user").
+> **Implementerad i 1.3.0 (2026-09-24/25).** Texten nedan är det ursprungliga beslutet. Skillnader i det som byggdes: brytpunkten är 2026-10-02 00:00 Stockholm (go-live + 48 h), och en tack-skärm visas en gång. Källorna härdades 2026-10-01 (spec §5.1 tillägget): `firstInstallTimestamp` räknas bara som det värde ett äldre bygge (1.2.x/vC128) skrev, fångat en gång vid första starten av ett bygge med regeln, och annars nätverkstiden (Android 13+) vid första starten; enhetens klocka och `PackageInfo.firstInstallTime` är inte bevis. Verifieras på enhet i Plan 3 (debugbygge: Diagnostics → "Simulate early user").
 
 **Beslut (Albin 2026-06-17):** Alla som laddar ner appen *innan* monetiseringen slås på (`PREMIUM_OPEN_FOR_LAUNCH=false`) ska behålla full Premium **för alltid** — "inget snack om saken". Tidiga användare straffas aldrig av att vi börjar ta betalt.
 

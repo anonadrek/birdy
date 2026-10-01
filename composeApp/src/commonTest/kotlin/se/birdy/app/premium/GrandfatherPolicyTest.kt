@@ -8,40 +8,62 @@ import kotlin.test.assertTrue
 class GrandfatherPolicyTest {
     private val cutoff = 1_790_892_000_000L // 2026-10-02T00:00 Europe/Stockholm
 
+    private fun grandfathered(
+        legacy: Long?,
+        trusted: Long?,
+        cutoffMs: Long = cutoff,
+    ) = GrandfatherPolicy.isGrandfathered(
+        legacyInstallMs = legacy,
+        trustedFirstSeenMs = trusted,
+        cutoffMs = cutoffMs,
+    )
+
     @Test
-    fun `no install data means not grandfathered`() {
-        assertFalse(GrandfatherPolicy.isGrandfathered(null, null, cutoff))
+    fun `no evidence means not grandfathered`() {
+        assertFalse(grandfathered(legacy = null, trusted = null))
     }
 
     @Test
-    fun `stored first install before cutoff is grandfathered`() {
-        assertTrue(GrandfatherPolicy.isGrandfathered(cutoff - 1, null, cutoff))
+    fun `legacy install before cutoff is grandfathered`() {
+        assertTrue(grandfathered(legacy = cutoff - 1, trusted = null))
     }
 
     @Test
-    fun `package first install before cutoff is grandfathered even if stored is after`() {
-        assertTrue(GrandfatherPolicy.isGrandfathered(cutoff + 5_000, cutoff - 86_400_000, cutoff))
+    fun `trusted first start before cutoff is grandfathered`() {
+        assertTrue(grandfathered(legacy = null, trusted = cutoff - 1))
     }
 
     @Test
-    fun `both sources after cutoff is not grandfathered`() {
-        assertFalse(GrandfatherPolicy.isGrandfathered(cutoff + 1, cutoff + 2, cutoff))
+    fun `legacy install before cutoff is grandfathered even if the trusted first start is after`() {
+        assertTrue(grandfathered(legacy = cutoff - 86_400_000, trusted = cutoff + 5_000))
     }
 
     @Test
-    fun `install exactly at cutoff is not grandfathered`() {
-        assertFalse(GrandfatherPolicy.isGrandfathered(cutoff, cutoff, cutoff))
+    fun `evidence after cutoff is not grandfathered`() {
+        assertFalse(grandfathered(legacy = cutoff + 1, trusted = cutoff + 2))
+    }
+
+    @Test
+    fun `evidence exactly at cutoff is not grandfathered`() {
+        assertFalse(grandfathered(legacy = cutoff, trusted = cutoff))
     }
 
     @Test
     fun `zero or negative timestamps are treated as unknown`() {
-        assertFalse(GrandfatherPolicy.isGrandfathered(0L, -1L, cutoff))
+        assertFalse(grandfathered(legacy = 0L, trusted = -1L))
     }
 
     @Test
     fun `cutoff zero grandfathers nobody so purchases can be tested`() {
-        assertFalse(GrandfatherPolicy.isGrandfathered(1_780_000_000_000L, 1_780_000_000_000L, 0L))
+        assertFalse(grandfathered(legacy = 1_780_000_000_000L, trusted = 1_780_000_000_000L, cutoffMs = 0L))
     }
+
+    @Test
+    fun `evidence from before the app existed is ignored`() {
+        assertFalse(grandfathered(legacy = 946_684_800_000L, trusted = 946_684_800_000L))
+    }
+
+    // earliestInstallMs feeds the 7-day onboarding grace only (never early-user proof).
 
     @Test
     fun `earliest install with nothing stored and no package uses candidate`() {
@@ -78,11 +100,6 @@ class GrandfatherPolicyTest {
         val candidate = 1_800_000_000_000L
         assertEquals(stored, GrandfatherPolicy.earliestInstallMs(stored, 0L, candidate))
         assertEquals(stored, GrandfatherPolicy.earliestInstallMs(stored, -1L, candidate))
-    }
-
-    @Test
-    fun `install times before the app existed are ignored`() {
-        assertFalse(GrandfatherPolicy.isGrandfathered(946_684_800_000L, null, cutoff))
     }
 
     @Test

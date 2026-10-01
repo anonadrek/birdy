@@ -67,4 +67,38 @@ class NsUserDefaultsUserPreferencesTest {
             store().setUserName("Albin")
             assertEquals("Albin", store().userName.first())
         }
+
+    @Test
+    fun grandfather_evidence_is_empty_when_nothing_persisted() =
+        runTest {
+            val prefs = store()
+            assertEquals(false, prefs.grandfatherLegacyCaptured.first())
+            assertNull(prefs.grandfatherLegacyInstallMs.first())
+            assertNull(prefs.grandfatherTrustedFirstSeenMs.first())
+        }
+
+    @Test
+    fun grandfather_legacy_capture_persists_across_instances() =
+        runTest {
+            store().captureGrandfatherLegacy(1_780_000_000_000L)
+            val relaunched = store()
+            assertEquals(true, relaunched.grandfatherLegacyCaptured.first())
+            assertEquals(1_780_000_000_000L, relaunched.grandfatherLegacyInstallMs.first())
+        }
+
+    @Test
+    fun grandfather_capture_without_value_persists_only_the_flag() =
+        runTest {
+            store().captureGrandfatherLegacy(null)
+            val relaunched = store()
+            assertEquals(true, relaunched.grandfatherLegacyCaptured.first())
+            assertNull(relaunched.grandfatherLegacyInstallMs.first())
+        }
+
+    @Test
+    fun grandfather_trusted_first_seen_round_trips() =
+        runTest {
+            store().setGrandfatherTrustedFirstSeenMs(1_790_000_000_000L)
+            assertEquals(1_790_000_000_000L, store().grandfatherTrustedFirstSeenMs.first())
+        }
 }

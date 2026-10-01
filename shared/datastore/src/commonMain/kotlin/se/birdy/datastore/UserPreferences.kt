@@ -24,7 +24,11 @@ interface UserPreferences {
     val archiveSort: Flow<ArchiveSort>
     val lifelistSort: Flow<LifelistSort>
 
-    /** Wall-clock epoch ms when the first install was recorded, null = not yet migrated. */
+    /**
+     * Wall-clock epoch ms when the first install was recorded, null = not yet migrated. Drives the
+     * 7-day onboarding grace only; it follows the user-adjustable device clock, so it is never
+     * early-user proof by itself (see [grandfatherLegacyCaptured]).
+     */
     val firstInstallTimestamp: Flow<Long?>
 
     /** Wall-clock epoch ms when modal was last shown, null = never shown. */
@@ -61,6 +65,25 @@ interface UserPreferences {
      * thank-you screen can be tested. MainActivity only reads it when BuildConfig.DEBUG.
      */
     val debugForceGrandfathered: Flow<Boolean>
+
+    /**
+     * Early-user proof, part 1 (spec 2026-09-24 §5.1, hardened 2026-10-01): true once the first
+     * start of a build with the hardened rule has copied [firstInstallTimestamp], exactly as an
+     * older build left it, into [grandfatherLegacyInstallMs]. Captured once, also when there was
+     * nothing to copy, so a timestamp written by that build or any later one never becomes proof.
+     * Part of DataStore, so it travels with Google backup to a new phone.
+     */
+    val grandfatherLegacyCaptured: Flow<Boolean>
+
+    /** The captured legacy install time (epoch ms); null = nothing plausible was there to capture. */
+    val grandfatherLegacyInstallMs: Flow<Long?>
+
+    /**
+     * Early-user proof, part 2: the network-synchronised time (Android 13+, not adjustable in the
+     * phone's settings) at the first start where the platform had one; null = none seen yet.
+     * Stored once and never overwritten.
+     */
+    val grandfatherTrustedFirstSeenMs: Flow<Long?>
 
     suspend fun setUserName(name: String)
 
@@ -101,4 +124,13 @@ interface UserPreferences {
     suspend fun setGrandfatherThanksShown(value: Boolean)
 
     suspend fun setDebugForceGrandfathered(value: Boolean)
+
+    /**
+     * The one-time legacy capture: stores [installMs] (null = nothing to keep) as
+     * [grandfatherLegacyInstallMs] and sets [grandfatherLegacyCaptured], in one write wherever the
+     * platform allows it, so the flag is never persisted without its value.
+     */
+    suspend fun captureGrandfatherLegacy(installMs: Long?)
+
+    suspend fun setGrandfatherTrustedFirstSeenMs(ms: Long)
 }

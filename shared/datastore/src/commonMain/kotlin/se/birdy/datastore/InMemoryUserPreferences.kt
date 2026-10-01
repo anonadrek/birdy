@@ -30,6 +30,9 @@ class InMemoryUserPreferences : UserPreferences {
     private val _inAppReviewRequested = MutableStateFlow(false)
     private val _grandfatherThanksShown = MutableStateFlow(false)
     private val _debugForceGrandfathered = MutableStateFlow(false)
+    private val _grandfatherLegacyCaptured = MutableStateFlow(false)
+    private val _grandfatherLegacyInstallMs = MutableStateFlow<Long?>(null)
+    private val _grandfatherTrustedFirstSeenMs = MutableStateFlow<Long?>(null)
 
     override val userName: Flow<String> = _userName.asStateFlow()
     override val hasSeenOnboarding: Flow<Boolean> = _hasSeenOnboarding.asStateFlow()
@@ -51,6 +54,9 @@ class InMemoryUserPreferences : UserPreferences {
     override val inAppReviewRequested: Flow<Boolean> = _inAppReviewRequested.asStateFlow()
     override val grandfatherThanksShown: Flow<Boolean> = _grandfatherThanksShown.asStateFlow()
     override val debugForceGrandfathered: Flow<Boolean> = _debugForceGrandfathered.asStateFlow()
+    override val grandfatherLegacyCaptured: Flow<Boolean> = _grandfatherLegacyCaptured.asStateFlow()
+    override val grandfatherLegacyInstallMs: Flow<Long?> = _grandfatherLegacyInstallMs.asStateFlow()
+    override val grandfatherTrustedFirstSeenMs: Flow<Long?> = _grandfatherTrustedFirstSeenMs.asStateFlow()
 
     override suspend fun setUserName(name: String) {
         _userName.value = name
@@ -130,5 +136,14 @@ class InMemoryUserPreferences : UserPreferences {
 
     override suspend fun setDebugForceGrandfathered(value: Boolean) {
         _debugForceGrandfathered.value = value
+    }
+
+    override suspend fun captureGrandfatherLegacy(installMs: Long?) {
+        _grandfatherLegacyInstallMs.value = installMs
+        _grandfatherLegacyCaptured.value = true
+    }
+
+    override suspend fun setGrandfatherTrustedFirstSeenMs(ms: Long) {
+        _grandfatherTrustedFirstSeenMs.value = ms
     }
 }

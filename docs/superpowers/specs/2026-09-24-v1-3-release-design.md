@@ -107,6 +107,8 @@ Tokens → komponenter → Identifiera → Resultat → Mina arter → Premium +
 
 ### 5.1 Grandfather-regeln (tidiga användare)
 
+> **Härdad 2026-10-01:** källorna och "inget sparas" nedan gäller inte längre. Se **Tillägg 2026-10-01** sist i avsnittet. Brytpunkten, upplösningsordningen, debugverktygen och tack-skärmen är oförändrade.
+
 - Ren funktion i delad kod: `isGrandfathered(storedFirstInstallMs: Long?, packageFirstInstallMs: Long?, cutoffMs: Long): Boolean` = `true` om **någon** av källorna är satt och `< cutoffMs`.
   - `storedFirstInstallMs` = DataStore `firstInstallTimestamp` (skrivs vid första start sedan Plan 6a).
   - `packageFirstInstallMs` = Androids `PackageInfo.firstInstallTime` (täcker den som installerat men aldrig öppnat appen före brytpunkten).
@@ -115,6 +117,22 @@ Tokens → komponenter → Identifiera → Resultat → Mina arter → Premium +
 - **Premium-upplösning:** `DEBUG && skipPremiumOverride → null` (först, så betalväggen kan testas på en utvecklartelefon som själv är grandfathered); annars `grandfathered → Active(LIFETIME)`; annars billing-state. Den sparade installationstiden repareras vid varje start till den tidigaste kända (DataStore eller `PackageInfo`), så den som öppnar appen första gången efter brytpunkten ändå bär rätt tid till en ny telefon. En brytpunkts-override kräver `-Pbirdy.billingTestBuild=true` och ger versionsnamnet `-koptest`. `PREMIUM_OPEN_FOR_LAUNCH` flippas till `false` i **samma bygge**.
 - iOS berörs inte (ingen iOS-användarbas; betalvägg från dag 1 i i5). Funktionen ligger i delad kod men källorna kopplas bara på Android.
 - **Debug-verktyg** (DiagnosticsScreen, bara debug): simulera grandfathered, återställ beslutet, visa tack-skärmen igen. Krävs för QA av båda tillstånden.
+
+**Tillägg 2026-10-01: bevis som inte går att backa med klockan** (Cursors kodgranskning 2026-09-26, före produktionsbygget vC129):
+
+- **Problemet:** båda källorna ovan kommer från enhetens klocka vid installationen eller första starten. Den som ställde klockan till före brytpunkten, installerade 1.3.x och sedan ställde tillbaka klockan blev tidig användare med livstids-Premium utan köp, och värdet sparades och följde med Google-backup.
+- **Ny modell:** appen samlar *bevis* och sparar det i tre nya värden i `UserPreferences` (DataStore, alltså med i Google-backup): `grandfatherLegacyCaptured`, `grandfatherLegacyInstallMs` och `grandfatherTrustedFirstSeenMs`. Beslutet sparas fortfarande inte utan räknas om vid varje start: `isGrandfathered(legacyInstallMs, trustedFirstSeenMs, cutoffMs)` är sant om något av värdena ligger i [2026-04-01, brytpunkten).
+  - **Legacy-bevis:** vid första starten av ett bygge med den här regeln läses `firstInstallTimestamp` innan bygget skriver något, och ett rimligt värde sparas som `grandfatherLegacyInstallMs`. Det sker exakt en gång, även när värdet saknas. Ett värde från ett äldre bygge (1.2.x eller köptestbygget vC128) skrevs innan en bakåtställd klocka kunde ge något och räknas. Ett värde som det här bygget eller ett senare skriver räknas aldrig.
+  - **Betrott bevis:** nätverkstiden (`SystemClock.currentNetworkTimeClock()`, Android 13/API 33 och senare, går inte att ändra i telefonens inställningar) vid första starten där plattformen har en sådan sparas en gång som `grandfatherTrustedFirstSeenMs`. Saknas nätverkstid (äldre Android, eller ingen synk sedan omstart) sparas inget och nästa start försöker igen. Enhetens klocka används aldrig som reserv.
+  - `firstInstallTimestamp` och `PackageInfo.firstInstallTime` är inte längre bevis. De styr bara 7-dagarsfristen för betalväggen, som förut.
+- **Ordningen** (läs `firstInstallTimestamp`, spara beviset, reparera sedan `firstInstallTimestamp`) ligger i `GrandfatherStartup` i delad kod och är enhetstestad (`GrandfatherStartupTest`, `GrandfatherEvidenceTest`); `MainActivity` skickar bara in plattformsvärdena. Insamlingen bryr sig inte om brytpunkten, så ett köptestbygge (brytpunkt 0) samlar samma bevis som produktionsbygget sedan bedömer.
+- **Avvägningar (accepterade):**
+  1. En riktig tidig användare som rensar appens data *efter* uppdateringen till 1.3.x förlorar beviset. `PackageInfo` överlever rensningen men följer klockan vid installationen och går inte att lita på.
+  2. Den som installerar 1.3.x för första gången under 48-timmarsfönstret före brytpunkten blir tidig användare bara om nätverkstid fanns vid en start före brytpunkten, alltså på Android 13 eller senare.
+  3. Den som installerade 1.2.x men aldrig öppnade appen före uppdateringen har inget legacy-värde (förut täckte `PackageInfo` det fallet) och blir tidig användare bara via nätverkstid före brytpunkten.
+  4. Kvarvarande väg till gratis Premium: sidladda ett äldre signerat APK (1.2.x) med bakåtställd klocka, starta det och uppdatera sedan. Det kräver det gamla APK:t.
+  5. Nätverkstiden är ett hinder, inget kryptografiskt skydd: Android skriver själv att synken kan gå över ett osäkert protokoll. Den som styr tidsservern eller har utvecklarverktyg (adb) kan i princip mata in en falsk tid före första starten (inte provat). Det kräver betydligt mer än att ändra datumet i inställningarna.
+- **Plattformsfälla (verifierad i dex-koden):** core library desugaring (minSdk 24) skriver om `java.time.DateTimeException` till `j$.time.DateTimeException`, så en typad `catch (DateTimeException)` fångar inte plattformens undantag och appen skulle krascha vid start utan nätverkstid. `MainActivity.trustedNetworkTimeMsOrNull` fångar därför `RuntimeException`. Själva `java.time.Clock` konverteras korrekt av D8 (`Clock$VivifiedWrapper`).
 
 ### 5.2 Tack-skärmen
 

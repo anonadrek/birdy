@@ -55,6 +55,9 @@ private class AndroidUserPreferences(
         val IN_APP_REVIEW_REQUESTED = booleanPreferencesKey("in_app_review_requested")
         val GRANDFATHER_THANKS_SHOWN = booleanPreferencesKey("grandfather_thanks_shown")
         val DEBUG_FORCE_GRANDFATHERED = booleanPreferencesKey("debug_force_grandfathered")
+        val GRANDFATHER_LEGACY_CAPTURED = booleanPreferencesKey("grandfather_legacy_captured")
+        val GRANDFATHER_LEGACY_INSTALL_MS = longPreferencesKey("grandfather_legacy_install_ms")
+        val GRANDFATHER_TRUSTED_FIRST_SEEN_MS = longPreferencesKey("grandfather_trusted_first_seen_ms")
     }
 
     override val userName: Flow<String> = safeData.map { it[Keys.USER_NAME] ?: "" }
@@ -104,6 +107,12 @@ private class AndroidUserPreferences(
         safeData.map { it[Keys.GRANDFATHER_THANKS_SHOWN] ?: false }
     override val debugForceGrandfathered: Flow<Boolean> =
         safeData.map { it[Keys.DEBUG_FORCE_GRANDFATHERED] ?: false }
+    override val grandfatherLegacyCaptured: Flow<Boolean> =
+        safeData.map { it[Keys.GRANDFATHER_LEGACY_CAPTURED] ?: false }
+    override val grandfatherLegacyInstallMs: Flow<Long?> =
+        safeData.map { it[Keys.GRANDFATHER_LEGACY_INSTALL_MS]?.takeIf { ms -> ms > 0L } }
+    override val grandfatherTrustedFirstSeenMs: Flow<Long?> =
+        safeData.map { it[Keys.GRANDFATHER_TRUSTED_FIRST_SEEN_MS]?.takeIf { ms -> ms > 0L } }
 
     override suspend fun setUserName(name: String) {
         store.edit { it[Keys.USER_NAME] = name }
@@ -183,5 +192,21 @@ private class AndroidUserPreferences(
 
     override suspend fun setDebugForceGrandfathered(value: Boolean) {
         store.edit { it[Keys.DEBUG_FORCE_GRANDFATHERED] = value }
+    }
+
+    // One edit is one atomic file write: the captured flag can never land without its value.
+    override suspend fun captureGrandfatherLegacy(installMs: Long?) {
+        store.edit {
+            if (installMs != null) {
+                it[Keys.GRANDFATHER_LEGACY_INSTALL_MS] = installMs
+            } else {
+                it.remove(Keys.GRANDFATHER_LEGACY_INSTALL_MS)
+            }
+            it[Keys.GRANDFATHER_LEGACY_CAPTURED] = true
+        }
+    }
+
+    override suspend fun setGrandfatherTrustedFirstSeenMs(ms: Long) {
+        store.edit { it[Keys.GRANDFATHER_TRUSTED_FIRST_SEEN_MS] = ms }
     }
 }
