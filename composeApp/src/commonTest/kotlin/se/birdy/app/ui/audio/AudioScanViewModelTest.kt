@@ -90,6 +90,33 @@ private class MultiResultClassifier(
     override fun close() {}
 }
 
+/**
+ * [AudioRecorderApi.start] is not a cancellation point. Invoking [cancelDuringStart] before
+ * returning the handle models Back / DisposableEffect running [AudioScanViewModel.cancelRecording]
+ * while AudioRecord / AVAudioEngine init is still in flight and [handle] is still null.
+ */
+private class CancelDuringStartRecorder : AudioRecorderApi {
+    var cancelCount = 0
+        private set
+    lateinit var cancelDuringStart: () -> Unit
+
+    override fun start(
+        onChunk: (samples: ShortArray, rms: Float, totalSamplesSoFar: Int) -> Unit,
+        onCapReached: () -> Unit,
+        onError: (Throwable) -> Unit,
+        maxDurationMs: Long,
+    ): RecorderHandle {
+        cancelDuringStart()
+        return object : RecorderHandle {
+            override suspend fun stopAndFlush(): ShortArray = ShortArray(0)
+
+            override fun cancel() {
+                cancelCount++
+            }
+        }
+    }
+}
+
 @OptIn(ExperimentalCoroutinesApi::class)
 class AudioScanViewModelTest {
     private val stubNormalizer: (ShortArray) -> FloatArray = { FloatArray(it.size) }
@@ -223,6 +250,21 @@ class AudioScanViewModelTest {
 
             assertEquals(AudioScanState.Idle, vm.state.value)
             assertEquals(0, classifier.callInputs.size)
+        }
+
+    @Test
+    fun cancelRecording_duringStart_cancelsTheHandle() =
+        runTest {
+            val recorder = CancelDuringStartRecorder()
+            val (vm, _) = makeVm(recorder = recorder)
+            recorder.cancelDuringStart = { vm.cancelRecording() }
+            vm.onPermissionState(PermissionState.Granted)
+
+            vm.startRecording()
+            advanceUntilIdle()
+
+            assertEquals(1, recorder.cancelCount)
+            assertEquals(AudioScanState.Idle, vm.state.value)
         }
 
     @Test
