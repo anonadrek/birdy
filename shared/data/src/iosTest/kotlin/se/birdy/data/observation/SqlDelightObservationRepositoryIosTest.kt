@@ -12,6 +12,7 @@ import se.birdy.domain.observation.Observation
 import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 /**
  * Runs the real observation repository against an in-memory instance of the
@@ -91,5 +92,44 @@ class SqlDelightObservationRepositoryIosTest {
                 assertEquals("Stockholm", row.locationLabel)
                 cancelAndIgnoreRemainingEvents()
             }
+        }
+
+    @Test
+    fun observeById_rebases_stale_sandbox_photo_path_onto_current_documents() =
+        runTest {
+            val repo = newRepo()
+            val docs = currentDocumentsDirectory()
+            assertTrue(docs.isNotEmpty(), "iosTest must resolve a live Documents directory")
+            val stale =
+                "/var/mobile/Containers/Data/Application/" +
+                    "DEADBEEF-0000-0000-0000-000000000000/Documents/observations/restored.jpg"
+            repo.insert(sample("r", 1_000L).copy(photoPath = stale))
+            repo.observeById("r").test {
+                val row = awaitItem()!!
+                assertEquals("$docs/observations/restored.jpg", row.photoPath)
+                cancelAndIgnoreRemainingEvents()
+            }
+        }
+
+    @Test
+    fun delete_cleanup_paths_are_rebased_to_current_container() =
+        runTest {
+            val repo = newRepo()
+            val docs = currentDocumentsDirectory()
+            val stalePhoto =
+                "/var/mobile/Containers/Data/Application/" +
+                    "DEADBEEF-0000-0000-0000-000000000000/Documents/observations/p.jpg"
+            val staleAudio =
+                "/var/mobile/Containers/Data/Application/" +
+                    "DEADBEEF-0000-0000-0000-000000000000/Documents/audio/a.opus"
+            repo.insert(
+                sample("r", 1_000L).copy(
+                    photoPath = stalePhoto,
+                    audioPath = staleAudio,
+                ),
+            )
+            val cleanup = repo.delete("r")
+            assertEquals("$docs/observations/p.jpg", cleanup.photoPath)
+            assertEquals("$docs/audio/a.opus", cleanup.audioPath)
         }
 }
