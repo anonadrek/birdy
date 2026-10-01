@@ -249,8 +249,8 @@ Allt cachas under `.cache/` med hämtningsdatum. Revisioner och adresser sparas 
 - **Svenska rödlistan 2025:** artens post i dataset `87e639cc-30a9-4007-bd2c-b0cab60326b9`, matchad på GBIF:s taxonnyckel (inte bara namnet). Kategorin översätts till `RE`, `CR`, `EN`, `VU`, `NT` eller `DD`. Finns arten inte i listan blir värdet `not_listed`.
 - **Inspelning:**
   - Kandidater i ordning: filer i Wikidata P51, sedan Commonssökning `"{vetenskapligt namn}" filetype:audio` bland filer.
-  - En fil godkänns bara om alla villkor gäller: titeln eller kategorierna innehåller det vetenskapliga namnet, eller titeln har ett xeno-canto-nummer (`XC` följt av siffror); den ligger inte i en kategori för uttal (namnet innehåller "Pronunciation" eller "Lingua Libre"); licensen finns i licenstabellen (avsnitt 10); längden är minst 3 sekunder.
-  - Första godkända kandidaten används. Den klipps till de första 20 sekunderna om den är längre, ljudnivån normaliseras och den sparas som mono-MP3 i 64 kbit/s till `website/public/audio/species/<QID>.mp3` (cirka 160 kB). Verktyget för omkodning väljs i planen och ska gå att installera via uv.
+  - En fil godkänns bara om alla villkor gäller: den är en ljudfil; den ligger inte i en kategori för uttal (namnet innehåller "pronunciation" eller "Lingua Libre"); licensen finns i licenstabellen (avsnitt 10); längden är minst 3 sekunder; och en fil från sökningen (inte från Wikidata) har det vetenskapliga namnet i titeln eller i en kategori. Ett xeno-canto-nummer räcker inte ensamt (skärpt 2026-10-01: numret säger inte vilken art det är).
+  - Första godkända kandidaten används. Den klipps till de första 20 sekunderna om den är längre, ljudnivån normaliseras och den sparas som mono-MP3 i 64 kbit/s till `website/src/assets/species/<QID>/voice.mp3` (cirka 160 kB), bredvid fotona. Filer i `website/public/` serveras direkt, även innan en sida med credit finns, så inspelningarna ligger inte där. Omkodningen görs med ffmpeg ur paketet `imageio-ffmpeg` (installeras via uv, har MP3-kodare och `loudnorm`).
 - **Appens modeller:** `identifiable.photo` är sant om QID finns i `aiy_to_qid.json`, `identifiable.sound` om det finns under `mapping` i `birdnet_lite_to_qid.json`.
 
 ### 9.2 Datamodulerna
@@ -269,6 +269,7 @@ Räknas av kod, aldrig av en modell.
 ### 9.3 Faktabladet
 
 - **Prompt:** `prompts/facts-v1.md`. Underlag: de tre artiklarna, namn och familj. Modell i Opus-klass med hög tankenivå.
+- **Status i Sverige** tas också fram här, inte av skribenten: modellen anger en av `resident`, `breeding_migrant`, `passage`, `winter_visitor`, `rare_visitor` eller `absent` med citat, och den sparas som faktumet `s01` (`topic: "status"`). Statussignalen (9.2) jämförs med den direkt, så att en motsägelse blir en flagga i Albins granskningsark.
 - **Ett faktum** har:
   - `id` (`f01`, `f02` …)
   - `topic`: en av `appearance`, `sex_age`, `size`, `voice`, `habitat`, `sweden`, `breeding`, `food`, `behaviour`, `lookalike`
@@ -301,7 +302,7 @@ Räknas av kod, aldrig av en modell.
   | `lookAlikes` | 0 till 3 poster med `other` och text | högst 35 ord per post |
   | `metaDescription` | för sökresultatet | 120 till 155 tecken |
   | `facts.size` | "Cirka 14 cm" eller "13 till 15 cm" | med fakta-id, eller `null` |
-  | `facts.swedenStatus` | `resident`, `breeding_migrant`, `passage`, `winter_visitor`, `rare_visitor` eller `absent` | med fakta-id, eller `null` |
+  | `facts.swedenStatus` | fylls av koden ur det granskade statusfaktumet `s01`, samma på båda språken | `{ value, factIds: ["s01"] }`, eller `null` |
 
 - **Varje mening och punkt** sparas som `{ "text": "…", "factIds": ["f03", "d01"] }`. Sajten fogar ihop meningarna.
 - **Skrivregler** som i fas 1: kort och konkret, inga streck, inga utropstecken, ingen första person, inga frågor till läsaren, inga förbjudna fraser (bilaga B), nämn inte Birdy, appar, foton eller Wikipedia.
@@ -332,12 +333,12 @@ Räknas av kod, aldrig av en modell.
 
 - Stegen går att köra var för sig och per art: källor, faktablad, granskningsark för en våg, import av en våg, skrivande, jämförelser. Exakta kommandon står i planen.
 - **Provkörning först:** samma fyra arter som i fas 1 (talgoxe Q25485, Q25383, Q25386 och Q10546857) med `--max-cost 5`. Kostnaden per art räknas om och Albin godkänner modell och tankenivå innan resten körs.
-- **Uppskattning:** två till tre gånger fas 1:s uppskattning (Opus cirka 30 USD för 180 arter), alltså i storleksordningen 60 till 100 USD inklusive jämförelserna. Provkörningen avgör.
+- **Uppskattning (räknad 2026-10-01 med Opus 5 för faktablad och text och Sonnet 5 för kontrollen):** cirka 145 USD för 180 arter och 30 jämförelser, med marginal för omförsök. Albin fyller på 200 USD. Provkörningen avgör.
 - **Rapport per körning** i `tools/content-pipeline/reports/`: kostnad, arter per status, strukna fakta och citat som inte hittades, borttagna meningar, flaggor, arter utan datamoduler eller inspelning.
 
 ### 9.9 Utdata
 
-- Artfiler `website/src/data/species/<QID>.json` (bilaga C), jämförelsefiler `website/src/data/comparisons/<QID-A>_<QID-B>.json` med QID i bokstavsordning (bilaga D), foton i `website/src/assets/species/<QID>/`, inspelningar i `website/public/audio/species/`.
+- Artfiler `website/src/data/species/<QID>.json` (bilaga C), jämförelsefiler `website/src/data/comparisons/<QID-A>_<QID-B>.json` med QID i bokstavsordning (bilaga D), foton och inspelningar i `website/src/assets/species/<QID>/`.
 - Pipelinen skriver aldrig över granskade fakta (`review.facts` satt) utan `--force`. Texten skrivs bara om när faktabladet har ändrats.
 
 ## 10. Media, data och licenser
@@ -437,7 +438,7 @@ För alla sidor: inga interna länkar till sidor som saknas, exakt en h1, `alt` 
 | 2 | Övriga stannfåglar och vanliga arter | 15 januari 2027 | Vintersäsongen |
 | 3 | Flyttfåglar | 26 februari 2027 | Före vårens sökningar i april och maj |
 
-Listorna tas fram ur datan i planen och Albin justerar dem i första granskningsarket.
+Listorna tas fram ur datan (`birdy-fetcher web waves`) och Albin justerar dem i chatten innan första granskningsarket skapas.
 
 **Varje våg:** granskningsark → Albins granskning → import → skrivande och kontroll → jämförelser → förhandsvisning → Albin läser jämförelsesidorna och skummar artsidorna → `publish: true` → sammanslagning → sitemapen skickas in och indexering begärs för vågens viktigaste sidor.
 
@@ -582,7 +583,7 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
     }
   ],
   "audio": {
-    "file": "/audio/species/Q25485.mp3", "durationSec": 20, "trimmed": true,
+    "file": "Q25485/voice.mp3", "durationSec": 20, "trimmed": true,
     "author": "…", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:…"
   },
@@ -610,14 +611,15 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
     },
     {
       "id": "f09", "topic": "lookalike", "sv": "…",
-      "other": { "scientific": "Cyanistes caeruleus", "qid": "Q25438" },
+      "other": { "scientific": "Cyanistes caeruleus", "qid": "Q25404" },
       "sources": [ { "article": "sv", "quote": "…" } ]
     },
     { "id": "d01", "topic": "data", "source": "artportalen", "sv": "Rapporteras året runt." }
   ],
   "review": {
     "facts": { "by": "Albin Abrahamsson", "at": "2026-11-…" },
-    "wave": 1
+    "wave": 1,
+    "statusConfirmed": false
   },
   "text": {
     "sv": {
@@ -626,11 +628,11 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
       "voice": [ { "text": "…", "factIds": ["f04"] } ],
       "whereWhen": [ { "text": "…", "factIds": ["f06", "d01"] } ],
       "behaviour": [ { "text": "…", "factIds": ["f07"] } ],
-      "lookAlikes": [ { "other": "Q25438", "text": [ { "text": "…", "factIds": ["f09"] } ] } ],
+      "lookAlikes": [ { "other": "Q25404", "text": [ { "text": "…", "factIds": ["f09"] } ] } ],
       "metaDescription": "…",
       "facts": {
         "size": { "value": "Cirka 14 cm", "factIds": ["f02"] },
-        "swedenStatus": { "value": "resident", "factIds": ["f06"] }
+        "swedenStatus": { "value": "resident", "factIds": ["s01"] }
       }
     },
     "en": { "…": "samma fält" }
@@ -643,18 +645,20 @@ Listan ligger i `prompts/web-banned-phrases.txt` (med böjningsformer sedan fas 
 }
 ```
 
-- `status` är `ok` eller `failed`. En `failed`-post har `"text": null` och texten som inte klarade sig under `rejectedText`.
+- `status` är `pending` (källor och faktablad finns men ingen text än), `ok` eller `failed`. `pending` och `failed` har `"text": null`; en `failed`-post har texten som inte klarade sig under `rejectedText`. Bara `ok` kan ge en sida.
+- `review` är alltid ett objekt. `review.statusConfirmed` är sant när Albin har behållit statusen trots en flagga.
 - `publish` styr produktionsbygget (avsnitt 14).
 - `audio`, `marginalia`, `data` och `wikipedia.de` kan saknas. `data.months` och `data.counties` saknas när arten har färre än 200 rapporter.
 - `swedishRedList` är `RE`, `CR`, `EN`, `VU`, `NT`, `DD` eller `not_listed`, eller saknas om matchningen mot listan misslyckades.
 - `lookAlikes[].other` och `facts[].other.qid` är QID när den andra arten finns bland de 839, annars saknas `qid` och `lookAlikes[].other` är det vetenskapliga namnet. Bara arter med publicerad sida länkas.
-- Sajtens zod-schema läser bara de fält sidorna behöver och görs inte `.strict()`. `facts`, `raw`, `generated` och `rejectedText` läses inte av sajten.
+- Sajtens zod-schema läser bara de fält sidorna behöver och görs inte `.strict()`. Av `facts` läser sajten bara `id`, `topic` och `other` (namnet på en förväxlingsart som inte har egen sida). `raw`, `generated` och `rejectedText` läses inte av sajten.
+- `publish` sätts bara av pipelinen (`birdy-fetcher web publish --wave N`), aldrig för hand och aldrig av sajtens skript.
 
 ## Bilaga D: schema för `website/src/data/comparisons/<QID-A>_<QID-B>.json`
 
 ```json
 {
-  "a": "Q25438",
+  "a": "Q25404",
   "b": "Q25485",
   "status": "ok",
   "publish": false,
