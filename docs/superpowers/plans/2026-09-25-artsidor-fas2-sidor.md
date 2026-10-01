@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-> **Reviderad 2026-10-01** efter specens revision samma dag (faktablad, flera källor, datamoduler, inspelningar, förväxlingsarter, jämförelsesidor, om-sidan, publicering i vågor). Planen byggs **mot testdata** parallellt med pipelineplanen `docs/superpowers/plans/2026-10-01-artsidor-fas1b-faktablad.md`. Kontraktet mellan dem är specens bilaga C och D. Riktig data behövs först i Task 17.
+> **Reviderad 2026-10-01** efter specens revision samma dag (faktablad, flera källor, datamoduler, inspelningar, förväxlingsarter, jämförelsesidor, om-sidan, publicering i vågor). Planen byggs **mot testdata** parallellt med pipelineplanen `docs/superpowers/plans/2026-10-01-artsidor-fas1b-faktablad.md`. Kontraktet mellan dem är specens bilaga C och D. Riktig data behövs först i Task 16.
 
 **Goal:** Ingångssida, gruppsidor, en artsida per publicerad art, jämförelsesidor för förväxlingspar och sidan "Så gör vi artsidorna", på svenska och engelska, byggda ur pipelinens datafiler och publicerade våg för våg. Dessutom ny meny- och sidfotsnavigering, filter för egna besök i Vercel Analytics och SEO-reglerna som ett skript som stoppar bygget vid fel.
 
@@ -17,22 +17,22 @@
 ## Avvikelser från specen (medvetna, små)
 
 1. **Skriptet heter `npm run verify`**, eftersom `npm run check` redan är `astro check`. Testdatans variant heter `npm run verify:fixtures`.
-2. **Approtan, spelarens etikett och textcrediten nämner inte artens namn i löptext.** "Birdy känner igen talgoxe på foto" blir fel böjning på svenska och datan har inte bestämd form. Approtan säger "arten" / "this species" i fyra varianter efter `identifiable`, spelarens etikett är "Inspelning: Talgoxe", och textcrediten är "Texten bygger på Wikipedia och får delas under CC BY-SA 4.0. Källor: svenska artikeln, engelska artikeln, tyska artikeln" med länkar till revisionerna.
+2. **Approtan, spelarens etikett och textcrediten nämner inte artens namn i löptext.** "Birdy känner igen talgoxe på foto" blir fel böjning på svenska och datan har inte bestämd form. Approtan säger "arten" / "this species" i fyra varianter efter `identifiable`, spelarens etikett är "Inspelning: Talgoxe", och textcrediten är "Texten bygger på Wikipedia och får delas under CC BY-SA 4.0. Källor: svenska artikeln, engelska artikeln, tyska artikeln" med länkar till revisionerna. Svenskan behöver bestämd form ("talgoxen"), som datan inte har. Albin ser formuleringen i förhandsvisningen (Task 17 Step 3).
 3. **Sökfältet i kategoriraden skickar `q` till ingångssidan**, som gör filtreringen.
 4. **Artkort och förväxlingsfoton har tom alt-text.** Namnet står som text i samma länk eller bredvid.
 5. **Grupper utan någon byggd art får varken sida, chip eller kort.** Specen säger att chipsen gäller grupper med minst en publicerad art; samma regel används för gruppsidan och kortet, annars hade det funnits tomma sidor.
 6. **Datameningarna visas som ett stycke under diagrammet och kartan tillsammans.** Pipelinen skriver dem som en lista utan uppdelning (bilaga C), så båda SVG:erna pekar på samma stycke med `aria-describedby`.
-7. **Namnet på en förväxlingsart utan egen fil läses ur `facts[].other.scientific`.** Bilaga C säger att sajten inte läser `facts`, men en förväxlingsart utanför de 180 har inget annat namn i datan. Sajten läser bara `id`, `topic` och `other` ur faktalistan.
+7. **Namnet på en förväxlingsart utan egen fil läses ur `facts[].other.scientific`.** En förväxlingsart utanför de 180 har inget annat namn i datan. Sajten läser bara `id`, `topic` och `other` ur faktalistan (bilaga C tillåter det).
 8. **Inspelningens creditrad står direkt under spelaren**, inte i creditblocket längst ned.
 9. **Inspelningarnas adresser har ett innehållshash** (`/audio/species/Q25485.3f9c0a1b2d.mp3`) och kopieras till `dist/` av en byggkrok, bara för arter som får en sida. En Vite-glob (`?url`) hade lagt alla inspelningar i bygget, även opublicerade.
-10. **Planen har ett eget publiceringsskript** (`scripts/publish-wave.mjs`) som sätter `publish: true` för en våg. Det rör bara fältet `publish`.
-11. **Jämförelsesidans engelska version ordnar arterna efter de engelska slugsen** (spec §4), så kolumnerna kan byta plats mellan språken. Tabellens celler följer med.
-12. **Specens exempel i bilaga C och D har fel QID för blåmes** (Q25438 är havsörn, blåmesen är Q25404). Testdatan använder Q25404.
+10. **Jämförelsesidans engelska version ordnar arterna efter de engelska slugsen** (spec §4), så kolumnerna kan byta plats mellan språken. Tabellens celler följer med.
+
+**Publiceringen** görs av pipelinen, inte av sajten: `uv run birdy-fetcher web publish --wave N` i `tools/content-pipeline` (fas 1b, Task 23) sätter `publish: true` på vågens skrivna och granskade arter och på jämförelser där båda arterna är publicerade. Kommandot avpublicerar aldrig. Sajten läser bara fältet.
 
 ## Förutsättningar
 
 - **1.3-webben i fältbokens färger är live** (sedan 2026-09-28). Planen bygger på den koden.
-- **Fas 1b behövs inte förrän Task 17.** Task 1 till 16 körs på testdata i `website/tests/fixtures/`.
+- **Fas 1b behövs inte förrän Task 16.** Task 1 till 15 körs på testdata i `website/tests/fixtures/`.
 - **Gren:** från `main`, i en egen worktree med kort sökväg (långa sökvägar failar på Windows):
   ```bash
   git worktree add C:/w/birdy-artsidor -b website/artsidor
@@ -40,7 +40,7 @@
   ```
   Alla kommandon nedan körs i `C:/w/birdy-artsidor/website` med Git Bash.
 - **Bygg och testa på testdata:** `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test <fil>` (egen port så att en annan dev-server inte krockar). Playwright serverar `dist/`, så bygg alltid med testdata före Playwright.
-- **Lägen:** `SPECIES_FIXTURES=1` läser testdatan i stället för `src/data/` och `src/assets/species/`. `SPECIES_PREVIEW=1` bygger även granskade sidor som inte är publicerade (sätts i Vercels miljö Preview i Task 18). `scripts/env-run.mjs` sätter variablerna på samma sätt på Windows och macOS.
+- **Lägen:** `SPECIES_FIXTURES=1` läser testdatan i stället för `src/data/` och `src/assets/species/`. `SPECIES_PREVIEW=1` bygger även granskade sidor som inte är publicerade (sätts i Vercels miljö Preview i Task 17). `scripts/env-run.mjs` sätter variablerna på samma sätt på Windows och macOS.
 
 ## Filstruktur
 
@@ -52,7 +52,7 @@
 | `src/lib/species-source.mjs` | Var datan ligger, vem som får en sida, inspelningarnas adresser. Delas av config, sidor och skript. |
 | `tests/fixtures/make-species-fixtures.mjs` | Skriver testdatan (20 arter, 4 jämförelser, testbilder, tysta mp3). |
 | `tests/fixtures/species/*.json`, `tests/fixtures/comparisons/*.json`, `tests/fixtures/species-assets/**` | Testdatan (genererad, committad). |
-| `tests/unit/species-source.unit.mjs`, `tests/unit/publish-wave.unit.mjs` | Enhetstester med `node --test`. |
+| `tests/unit/species-source.unit.mjs` | Enhetstester med `node --test`. |
 | `scripts/build-sweden-counties.mjs`, `src/data/sweden-counties.json` | Länsgränserna som SVG-banor (Natural Earth). |
 | `src/lib/species.ts` | Typer, laddning, adresser, grupper, titlar, jämförelser, förväxlingsarter, datum, JSON-LD. |
 | `src/lib/species-routes.ts` | Sökvägarna för den dynamiska routen. |
@@ -62,7 +62,7 @@
 | `src/components/species/MonthChart.astro`, `CountyMap.astro`, `AudioPlayer.astro`, `Credits.astro` | Moduler. |
 | `src/pages/species/index.astro`, `src/pages/species/[slug].astro`, `src/pages/species/about-these-pages.astro` | Engelska routes. |
 | `src/pages/sv/arter/index.astro`, `src/pages/sv/arter/[slug].astro`, `src/pages/sv/arter/om-artsidorna.astro` | Svenska routes. |
-| `scripts/check-seo.mjs`, `scripts/check-preview-build.mjs`, `scripts/publish-wave.mjs` | Kontroller och publicering. |
+| `scripts/check-seo.mjs`, `scripts/check-preview-build.mjs` | Kontroller av den byggda sajten. |
 | `tests/species.spec.ts`, `tests/comparisons.spec.ts`, `tests/analytics.spec.ts` | Playwright. |
 
 **Ändras:** `src/content.config.ts`, `src/layouts/Layout.astro`, `src/components/Nav.astro`, `src/components/Footer.astro`, `src/components/Guide.astro`, `src/components/ui/Icon.astro`, `src/content/copy.{en,sv}.json`, `astro.config.mjs`, `scripts/check-no-dashes.mjs`, `package.json`, `.gitignore`, `tests/home.spec.ts`.
@@ -4067,153 +4067,7 @@ git commit -m "feat(website): sitemap för artsidorna, SEO-reglerna som kod och 
 
 ---
 
-### Task 15: Publiceringen per våg
-
-**Files:**
-- Create: `website/scripts/publish-wave.mjs`
-- Create: `website/tests/unit/publish-wave.unit.mjs`
-- Modify: `website/package.json`
-
-- [ ] **Step 1: Skriv enhetstestet**
-
-`tests/unit/publish-wave.unit.mjs`:
-
-```js
-import { test } from 'node:test';
-import assert from 'node:assert/strict';
-import { publishWave } from '../../scripts/publish-wave.mjs';
-
-const reviewed = { facts: { by: 'Albin Abrahamsson', at: '2026-11-20' } };
-const species = () => [
-  { qid: 'Q1', status: 'ok', publish: false, review: { ...reviewed, wave: 1 } },
-  { qid: 'Q2', status: 'ok', publish: false, review: { ...reviewed, wave: 1 } },
-  { qid: 'Q3', status: 'ok', publish: false, review: { wave: 1 } },
-  { qid: 'Q4', status: 'pending', publish: false, review: { wave: 1 } },
-  { qid: 'Q5', status: 'ok', publish: false, review: { ...reviewed, wave: 2 } },
-  { qid: 'Q6', status: 'ok', publish: true, review: { ...reviewed, wave: 1 } },
-];
-const comparisons = () => [
-  { a: 'Q1', b: 'Q2', status: 'ok', publish: false },
-  { a: 'Q1', b: 'Q5', status: 'ok', publish: false },
-  { a: 'Q2', b: 'Q6', status: 'pending', publish: false },
-];
-
-test('publicerar vågens skrivna och granskade arter och par där båda är publicerade', () => {
-  const s = species();
-  const c = comparisons();
-  const result = publishWave(s, c, 1);
-  assert.deepEqual(result.species, ['Q1', 'Q2']);
-  assert.deepEqual(result.comparisons, ['Q1_Q2']);
-  assert.deepEqual(result.skipped, ['Q3 (ok, ogranskad)', 'Q4 (pending, ogranskad)']);
-  assert.equal(s.find((r) => r.qid === 'Q5').publish, false);
-  assert.equal(c[1].publish, false);
-  assert.equal(c[2].publish, false);
-});
-
-test('avpublicerar aldrig', () => {
-  const s = species();
-  publishWave(s, comparisons(), 2);
-  assert.equal(s.find((r) => r.qid === 'Q6').publish, true);
-});
-```
-
-- [ ] **Step 2: Kör och se det faila**
-
-Run: `npm run test:unit`
-Expected: FAIL, `Cannot find module '.../scripts/publish-wave.mjs'`.
-
-- [ ] **Step 3: Skriv skriptet**
-
-`scripts/publish-wave.mjs`:
-
-```js
-#!/usr/bin/env node
-// Publishes one wave (spec 2026-09-25 §14): sets publish: true on the wave's species that are written
-// (status ok) and reviewed, and on comparisons whose two species are then both published. Never
-// unpublishes anything and changes no other field. Run after Albin has approved the wave's preview:
-//   node scripts/publish-wave.mjs --wave 1 [--dry-run]
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
-import { comparisonsDir, speciesDir } from '../src/lib/species-source.mjs';
-
-/** Mutates the records it publishes and returns what changed. */
-export function publishWave(species, comparisons, wave) {
-  const changedSpecies = [];
-  const skipped = [];
-  for (const r of species) {
-    if (r.review?.wave !== wave || r.publish) continue;
-    if (r.status === 'ok' && r.review?.facts) {
-      r.publish = true;
-      changedSpecies.push(r.qid);
-    } else {
-      skipped.push(`${r.qid} (${r.status}${r.review?.facts ? '' : ', ogranskad'})`);
-    }
-  }
-  const published = new Set(species.filter((r) => r.publish && r.status === 'ok').map((r) => r.qid));
-  const changedComparisons = [];
-  for (const c of comparisons) {
-    if (!c.publish && c.status === 'ok' && published.has(c.a) && published.has(c.b)) {
-      c.publish = true;
-      changedComparisons.push(`${c.a}_${c.b}`);
-    }
-  }
-  return { species: changedSpecies, comparisons: changedComparisons, skipped };
-}
-
-function main() {
-  const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-  const waveArg = process.argv.indexOf('--wave');
-  const wave = Number(process.argv[waveArg + 1]);
-  if (waveArg < 0 || !Number.isInteger(wave) || wave < 1) {
-    console.error('Användning: node scripts/publish-wave.mjs --wave <nummer> [--dry-run]');
-    process.exit(2);
-  }
-  const dryRun = process.argv.includes('--dry-run');
-  const load = (dir) => readdirSync(resolve(root, dir)).filter((f) => f.endsWith('.json')).map((f) => {
-    const file = resolve(root, dir, f);
-    return { file, record: JSON.parse(readFileSync(file, 'utf8')) };
-  });
-  const species = load(speciesDir());
-  const comparisons = load(comparisonsDir());
-  const before = new Map([...species, ...comparisons].map((x) => [x.file, x.record.publish]));
-  const result = publishWave(species.map((x) => x.record), comparisons.map((x) => x.record), wave);
-  if (!dryRun) {
-    for (const x of [...species, ...comparisons]) {
-      if (before.get(x.file) !== x.record.publish) writeFileSync(x.file, `${JSON.stringify(x.record, null, 2)}\n`);
-    }
-  }
-  console.log(`${dryRun ? 'Provkörning: ' : ''}våg ${wave}: ${result.species.length} arter och ${result.comparisons.length} jämförelser publicerade`);
-  if (result.species.length) console.log(`  arter: ${result.species.join(', ')}`);
-  if (result.comparisons.length) console.log(`  jämförelser: ${result.comparisons.join(', ')}`);
-  if (result.skipped.length) console.log(`  hoppades över (inte klara): ${result.skipped.join(', ')}`);
-}
-
-if (import.meta.url === pathToFileURL(process.argv[1]).href) main();
-```
-
-- [ ] **Step 4: Kör testerna**
-
-Run: `npm run test:unit`
-Expected: PASS (7 tester)
-
-Run (testdatan, utan att skriva): `node scripts/env-run.mjs SPECIES_FIXTURES=1 -- node scripts/publish-wave.mjs --wave 2 --dry-run`
-Expected: `Provkörning: våg 2: 2 arter och 1 jämförelser publicerade` (de två hackspettarna och deras par), `hoppades över (inte klara): Q143284 (pending, ogranskad)`. Inga filer ändras (`git status` är ren).
-
-- [ ] **Step 5: Skriptet i `package.json`**
-
-Lägg till i `"scripts"`: `"publish:wave": "node scripts/publish-wave.mjs",`
-
-- [ ] **Step 6: Commit**
-
-```bash
-git add scripts/publish-wave.mjs tests/unit/publish-wave.unit.mjs package.json
-git commit -m "feat(website): publiceringsskript per våg"
-```
-
----
-
-### Task 16: Full QA på testdatan
+### Task 15: Full QA på testdatan
 
 - [ ] **Step 1: Alla vakter och tester**
 
@@ -4247,11 +4101,11 @@ Avvikelser som inte står under "Avvikelser från specen" rättas och testas om.
 git push -u origin website/artsidor
 ```
 
-Vercels förhandsbygge av grenen failar tills riktig data finns (sidfoten kräver de tolv vanliga arterna). Det är väntat fram till Task 17.
+Vercels förhandsbygge av grenen failar tills riktig data finns (sidfoten kräver de tolv vanliga arterna). Det är väntat fram till Task 16.
 
 ---
 
-### Task 17: Riktig data för våg 1
+### Task 16: Riktig data för våg 1
 
 **Villkor:** Fas 1b har skrivit texter för våg 1 på `main`: varje art i våg 1 har `status: "ok"`, `review.facts` och `review.wave: 1`, och vågens jämförelser har `status: "ok"`. Alla tolv vanliga arter (`src/data/species-groups.json` → `common`) ingår i våg 1. Är villkoret inte uppfyllt: stoppa och rapportera vad som saknas.
 
@@ -4290,7 +4144,7 @@ Expected: PASS (testerna kör på testdatan oavsett riktig data).
 
 - [ ] **Step 5: Skärmdumpar med riktig data**
 
-Bygg förhandsläget igen (`node scripts/env-run.mjs SPECIES_PREVIEW=1 -- astro build --force`), starta `npm run preview -- --port 4327` i bakgrunden och ta skärmdumpar till `../docs/superpowers/screenshots/artsidor/` av ingångssidan, Ugglor, Talgoxe (marginalanteckning), en art utan extrafoto eller inspelning (hitta en med `grep -L '"audio"' src/data/species/*.json | xargs grep -l '"status": "ok"' | head -1` och läs dess `slug.sv`), en jämförelsesida (`ls src/data/comparisons | head -1`, läs `slug.sv`) och om-sidan, i 390 och 1440 px, med samma `npx playwright screenshot`-kommandon som i Task 16. Banderollen syns överst, det är väntat.
+Bygg förhandsläget igen (`node scripts/env-run.mjs SPECIES_PREVIEW=1 -- astro build --force`), starta `npm run preview -- --port 4327` i bakgrunden och ta skärmdumpar till `../docs/superpowers/screenshots/artsidor/` av ingångssidan, Ugglor, Talgoxe (marginalanteckning), en art utan extrafoto eller inspelning (hitta en med `grep -L '"audio"' src/data/species/*.json | xargs grep -l '"status": "ok"' | head -1` och läs dess `slug.sv`), en jämförelsesida (`ls src/data/comparisons | head -1`, läs `slug.sv`) och om-sidan, i 390 och 1440 px, med samma `npx playwright screenshot`-kommandon som i Task 15. Banderollen syns överst, det är väntat.
 
 - [ ] **Step 6: Jämför med mockupen**
 
@@ -4306,7 +4160,7 @@ git push
 
 ---
 
-### Task 18: Förhandsvisning, Albins godkännande och go-live för våg 1
+### Task 17: Förhandsvisning, Albins godkännande och go-live för våg 1
 
 - [ ] **Step 1: `SPECIES_PREVIEW=1` i Vercels miljö Preview**
 
@@ -4338,6 +4192,7 @@ Skicka länken till Albin med:
 - tre artsidor att skumma, bland dem `/sv/arter/talgoxe/`
 - **alla** våg 1:s jämförelsesidor (lista adresserna ur `src/data/comparisons/*.json`, `slug.sv`, för par där båda arterna är i våg 1)
 - `/sv/arter/om-artsidorna/` och `/species/about-these-pages/` (texten skrevs i den här planen och ska godkännas av Albin)
+- formuleringen i approtan, spelarens etikett och textcrediten: "Birdy känner igen arten ..." och "Inspelning: Talgoxe" i stället för artens namn i löptext, eftersom svenskan behöver bestämd form som datan saknar (avvikelse 2)
 
 Vänta på hans ok. Rätta det han hittar på grenen. Faktafel rättas i fas 1b:s flöde (granskningsarket), inte i JSON-filerna för hand.
 
@@ -4347,13 +4202,16 @@ Hämta Search Console för `sc-domain:birdy.community`, de senaste 3 månaderna 
 
 - [ ] **Step 5: Publicera våg 1**
 
+Pipelinens kommando (fas 1b, Task 23) är den enda som sätter `publish`. Kör det i grenens worktree:
+
 ```bash
-node scripts/publish-wave.mjs --wave 1 --dry-run
-node scripts/publish-wave.mjs --wave 1
+cd ../tools/content-pipeline && uv run birdy-fetcher web publish --wave 1 && cd ../../website
+git diff --stat -- src/data
+git diff -- src/data | grep '^[-+] ' | grep -v '"publish":' | head
 npm run verify
 ```
 
-Expected: provkörningen listar våg 1:s arter och jämförelser och inga oväntade "hoppades över"; skarpa körningen skriver samma sak; `npm run verify` bygger produktionsläget (utan förhandsläge) och alla vakter är gröna.
+Expected: kommandot listar våg 1:s arter och jämförelser; `git diff --stat` visar bara våg 1:s filer; den andra `git diff`-raden skriver ingenting (bara fältet `publish` har ändrats); `npm run verify` bygger produktionsläget (utan förhandsläge) och alla vakter är gröna. Hoppar kommandot över en art som borde vara med: stoppa och rätta i fas 1b:s flöde.
 
 - [ ] **Step 6: Lighthouse på produktionsbygget**
 
@@ -4407,7 +4265,7 @@ Skicka in `https://birdy.community/sitemap-index.xml` igen och begär indexering
 
 - [ ] **Step 10: Utkast till utskick för länkar**
 
-Skriv `docs/marketing/2026-artsidor-utskick.md` med utkasten nedan. Fyll i antalet publicerade arter och jämförelser ur publiceringsskriptets utskrift i Step 5. Albin skickar dem i eget namn; agenten skickar inget.
+Skriv `docs/marketing/2026-artsidor-utskick.md` med utkasten nedan. Fyll i antalet publicerade arter och jämförelser (`grep -l '"publish": true' src/data/species/*.json | wc -l` och samma för `src/data/comparisons/`). Albin skickar dem i eget namn; agenten skickar inget.
 
 ```markdown
 # Utskick för artsidorna, våg 1
@@ -4460,7 +4318,7 @@ Committa och pusha. Ta bort worktreen: `git worktree remove C:/w/birdy-artsidor`
 
 ---
 
-### Task 19: Senare vågor (checklista)
+### Task 18: Senare vågor (checklista)
 
 Våg 2 (senast 15 januari 2027) och våg 3 (senast 26 februari 2027) är dataändringar. Ingen ny kod behövs om inget nytt dyker upp.
 
@@ -4486,8 +4344,8 @@ Skicka förhandslänken med vågens jämförelsesidor och tre artsidor att skumm
 
 ```bash
 npm ci
-node scripts/publish-wave.mjs --wave <N> --dry-run
-node scripts/publish-wave.mjs --wave <N>
+cd ../tools/content-pipeline && uv run birdy-fetcher web publish --wave <N> && cd ../../website
+git diff -- src/data | grep '^[-+] ' | grep -v '"publish":' | head
 npm run verify && npm run verify:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test
 git add src/data/species src/data/comparisons
 git commit -m "feat(website): våg <N> av artsidorna publicerad"
@@ -4497,4 +4355,4 @@ git switch main && git merge --ff-only website/vag-<N> && git push
 
 - [ ] **Step 5: Efter go-live**
 
-Kontrollera live som i Task 18 Step 8, skicka in sitemapen igen och begär indexering för vågens viktigaste sidor (med Albins ok). Uppdatera CLAUDE.md med vågen och dess triggerdatum (6 och 12 veckor). Efter 6 och 12 veckor: skriv in mätvärdena i baslinjefilen och följ triggrarna i spec §15 innan nästa våg.
+Kontrollera live som i Task 17 Step 8, skicka in sitemapen igen och begär indexering för vågens viktigaste sidor (med Albins ok). Uppdatera CLAUDE.md med vågen och dess triggerdatum (6 och 12 veckor). Efter 6 och 12 veckor: skriv in mätvärdena i baslinjefilen och följ triggrarna i spec §15 innan nästa våg.
