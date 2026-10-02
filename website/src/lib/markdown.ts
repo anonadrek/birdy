@@ -1,7 +1,13 @@
 import { marked } from 'marked';
-import { readFileSync } from 'node:fs';
 
-const PLAY_STORE_DIR = new URL('../../../docs/play-store/', import.meta.url);
+// The legal texts live in the repo's docs/play-store/, outside the website. Vite reads them at build
+// time, resolved from this source file. Resolving at runtime from import.meta.url broke with Astro 7:
+// the bundled chunk sits at another depth, so '../../../docs' pointed inside website/.
+const PLAY_STORE_DOCS = import.meta.glob<string>('../../../docs/play-store/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
 
 export interface LegalDoc {
   slug: string;
@@ -40,8 +46,8 @@ export function getLegalDoc(slug: string): LegalDoc | undefined {
 }
 
 export function renderLegalDoc(filename: string): string {
-  const path = new URL(filename, PLAY_STORE_DIR);
-  const md = readFileSync(path, 'utf-8');
+  const md = PLAY_STORE_DOCS[`../../../docs/play-store/${filename}`];
+  if (md === undefined) throw new Error(`Legal document not found in docs/play-store/: ${filename}`);
   const stripped = md.trimStart().replace(/^#\s+.*(?:\r?\n)+/, '');
   return marked.parse(stripped, { async: false }) as string;
 }

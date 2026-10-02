@@ -95,6 +95,9 @@ for (const locale of ['en', 'sv']) {
 export default defineConfig({
   site: 'https://birdy.community',
   trailingSlash: 'ignore',
+  // Astro 7 defaults to 'jsx', which strips whitespace between inline elements (the legal pages'
+  // "Privacy Policy · …" links moved). `true` keeps the HTML-aware compression the site was built with.
+  compressHTML: true,
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'sv'],

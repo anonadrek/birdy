@@ -24,19 +24,22 @@
     "assets:store": "npm run assets:clean && npm run assets:render && npm run assets:render:sv && npm run assets:verify && npm run assets:verify:sv"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.0.0",
     "@vercel/analytics": "^2.0.1",
-    "astro": "^5.0.0",
-    "maplibre-gl": "^4.7.1",
+    "astro": "^7.3.5",
+    "maplibre-gl": "^6.11.2",
     "marked": "^18.0.4",
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
+    "@astrojs/check": "^0.9.10",
     "@playwright/test": "^1.60.0",
     "@types/node": "^22.0.0",
-    "sharp": "^0.34.0",
+    "sharp": "^0.35.5",
     "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

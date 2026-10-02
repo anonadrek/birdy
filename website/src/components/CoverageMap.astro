@@ -33,6 +33,12 @@ const t = getCopy(Astro.props.locale);
   // plain hashed URL string inlined at build time, with no eager `<link>` of its own, so the
   // stylesheet itself is only requested once initMap inserts it, below.
   import maplibreCssUrl from 'maplibre-gl/dist/maplibre-gl.css?url';
+  // maplibre-gl 6 starts its web worker from `./maplibre-gl-worker.mjs` next to its own module URL.
+  // Once Vite has bundled the library into an _astro chunk that file is not there (404, blank map),
+  // so Vite builds the worker as its own file (with the shared code it imports) and initMap hands
+  // the URL to setWorkerUrl. Like the stylesheet, it is only fetched when the map actually starts.
+  import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
+  import type { Map as MaplibreMap } from 'maplibre-gl';
 
   const KEY = import.meta.env.PUBLIC_MAPTILER_KEY as string | undefined;
   // Field journal colours (spec §5.6): paper, ink and rust, with the pins as rust seals and an espresso bird.
@@ -68,7 +74,9 @@ const t = getCopy(Astro.props.locale);
     try {
       // The stylesheet only matters once the library actually runs, so it loads alongside it
       // instead of blocking every page load (most builds never reach this function at all).
-      const [{ default: maplibregl }] = await Promise.all([import('maplibre-gl'), loadStylesheet(maplibreCssUrl)]);
+      // maplibre-gl 6 is ESM-only with named exports and no default export: use the module namespace.
+      const [maplibregl] = await Promise.all([import('maplibre-gl'), loadStylesheet(maplibreCssUrl)]);
+      maplibregl.setWorkerUrl(maplibreWorkerUrl);
 
       // Localise MapLibre's cooperative-gesture hint on /sv/.
       const localeOverride = document.documentElement.lang === 'sv' ? {
@@ -180,7 +188,9 @@ const t = getCopy(Astro.props.locale);
     return ctx.getImageData(0, 0, cvs.width, cvs.height);
   }
 
-  function recolour(map: { getStyle: () => { layers: { id: string; type: string }[] }; setPaintProperty: (id: string, prop: string, value: unknown) => void }) {
+  // maplibre-gl 6 types setPaintProperty per property name, so take the library's own Map type
+  // (a type-only import: erased at build, the library itself still loads lazily in initMap).
+  function recolour(map: MaplibreMap) {
     for (const l of map.getStyle().layers) {
       try {
         if (l.type === 'background') map.setPaintProperty(l.id, 'background-color', PAPER);
