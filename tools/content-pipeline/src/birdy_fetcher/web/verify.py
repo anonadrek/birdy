@@ -19,6 +19,9 @@ from .wiki_full import WikiArticle
 PROMPT_VERSION = "verify-v1"
 Verdict = Literal["supported", "partial", "unsupported"]
 
+# Severity order: unsupported > partial > supported (highest to lowest)
+VERDICT_SEVERITY = {"unsupported": 3, "partial": 2, "supported": 1}
+
 
 class FactVerdict(BaseModel):
     fact_id: str
@@ -88,7 +91,12 @@ class FactChecker:
             raise FactCheckFailed(
                 f"kontrollen gav inget giltigt svar (stop_reason={reply.stop_reason})"
             )
-        by_id = {v.fact_id: v for v in reply.parsed.verdicts}
+        # Keep the most severe verdict per fact id (unsupported > partial > supported).
+        by_id: dict[str, FactVerdict] = {}
+        for v in reply.parsed.verdicts:
+            existing = by_id.get(v.fact_id)
+            if existing is None or VERDICT_SEVERITY[v.verdict] > VERDICT_SEVERITY[existing.verdict]:
+                by_id[v.fact_id] = v
         result: dict[str, tuple[Verdict, str]] = {}
         for fact in checkable:
             verdict = by_id.get(fact["id"])

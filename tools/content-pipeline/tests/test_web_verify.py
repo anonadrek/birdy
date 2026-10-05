@@ -76,6 +76,31 @@ async def test_a_fact_with_no_verdict_counts_as_unsupported(tmp_path: Path) -> N
     assert set(result) == {"f01", "f02"}
 
 
+async def test_duplicate_verdicts_take_the_worst(tmp_path: Path) -> None:
+    prompt = tmp_path / "verify-v1.md"
+    prompt.write_text("System: x\n\nUser: {facts}", encoding="utf-8")
+    # Model returns two verdicts for f01: first "unsupported", then "supported".
+    # The result must treat that fact as unsupported (fail-closed, not the last one).
+    verdicts = [
+        FactVerdict(fact_id="f01", verdict="unsupported", reason="unsupported first"),
+        FactVerdict(fact_id="f02", verdict="supported", reason="f02 ok"),
+        FactVerdict(fact_id="f01", verdict="supported", reason="supported second"),
+    ]
+    client = FakeJsonClient([reply(FactVerifyOutput(verdicts=verdicts))])
+    result = await _checker(client, prompt).check(FACTS, {"sv": ARTICLE})
+    # f01 must be unsupported despite the later "supported" verdict.
+    assert result == {"f01": ("unsupported", "unsupported first")}
+    # Also verify reverse order gives the same result (most severe always wins).
+    verdicts_reversed = [
+        FactVerdict(fact_id="f01", verdict="supported", reason="supported first"),
+        FactVerdict(fact_id="f02", verdict="supported", reason="f02 ok"),
+        FactVerdict(fact_id="f01", verdict="unsupported", reason="unsupported second"),
+    ]
+    client2 = FakeJsonClient([reply(FactVerifyOutput(verdicts=verdicts_reversed))])
+    result2 = await _checker(client2, prompt).check(FACTS, {"sv": ARTICLE})
+    assert result2 == {"f01": ("unsupported", "unsupported second")}
+
+
 async def test_no_checkable_facts_means_no_call(tmp_path: Path) -> None:
     prompt = tmp_path / "verify-v1.md"
     prompt.write_text("System: x\n\nUser: {facts}", encoding="utf-8")
