@@ -9,6 +9,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import kotlinx.coroutines.CancellationException
 import se.birdy.app.AndroidAppGraphHolder
 import se.birdy.app.R
 import se.birdy.app.notifications.AndroidNotificationPayloads
@@ -59,6 +60,8 @@ class TrophyProgressWorker(
                 NotificationManagerCompat.from(applicationContext).notify(NOTIF_ID_TROPHY_PROGRESS, notif)
             }
             Result.success()
+        } catch (e: CancellationException) {
+            throw e
         } catch (t: Throwable) {
             Log.w("TrophyProgressWorker", "fail", t)
             Result.retry()

@@ -9,6 +9,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import kotlinx.coroutines.CancellationException
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -65,6 +66,8 @@ class DailyBirdWorker(
                 NotificationManagerCompat.from(applicationContext).notify(NOTIF_ID_DAILY_BIRD, notif)
             }
             Result.success()
+        } catch (e: CancellationException) {
+            throw e
         } catch (t: Throwable) {
             Log.w("DailyBirdWorker", "fail", t)
             Result.retry()
