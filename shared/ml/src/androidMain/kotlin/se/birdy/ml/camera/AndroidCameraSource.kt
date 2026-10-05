@@ -10,6 +10,8 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.lifecycle.LifecycleOwner
 import com.google.common.util.concurrent.ListenableFuture
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,6 +21,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
 import se.birdy.ml.CameraSource
 import se.birdy.ml.FrameFormat
 import se.birdy.ml.ImageInput
@@ -39,12 +42,18 @@ import kotlin.coroutines.resumeWithException
  * — a ThreadPoolExecutor core thread never times out).
  *
  * [start] and [stop] race: `ScanViewModel` launches start() on viewModelScope, then
- * onCleared dispatches stop() on GlobalScope. `awaitProvider` resumes on [executor],
- * so `bindToLifecycle` also runs there — and it is not a cancellation point. Without
- * a terminal [stopped] flag, stop() can observe a still-null [cameraProvider] and
- * return, after which start() finishes the bind against the Activity lifecycle.
- * Result: camera LED stays on after leaving Scan. [stopped] is set *before* taking
- * [lifecycleLock] so an in-flight bind unbinds itself; stop() then unbinds again.
+ * onCleared dispatches stop() on GlobalScope(Dispatchers.Default). `awaitProvider`'s
+ * continuation is intercepted by the *caller's* dispatcher (viewModelScope defaults to
+ * `Dispatchers.Main.immediate`), so `bindToLifecycle` actually runs on the main thread —
+ * only the `ListenableFuture` listener that calls `cont.resume` runs on [executor]. CameraX
+ * 1.4.0 enforces that itself: `ProcessCameraProvider.unbindAll()` calls
+ * `Threads.checkMainThread()` and throws off-main. [stop] is called from GlobalScope on
+ * `Dispatchers.Default`, so it force-dispatches its CameraX-touching body onto
+ * `Dispatchers.Main.immediate` regardless of the caller's thread — and that dispatch is not
+ * a cancellation point. Without a terminal [stopped] flag, stop() can observe a still-null
+ * [cameraProvider] and return, after which start() finishes the bind against the Activity
+ * lifecycle. Result: camera LED stays on after leaving Scan. [stopped] is set *before*
+ * taking [lifecycleLock] so an in-flight bind unbinds itself; stop() then unbinds again.
  */
 class AndroidCameraSource(
     private val context: Context,
@@ -129,12 +138,25 @@ class AndroidCameraSource(
 
     override suspend fun stop() {
         stopped = true
-        synchronized(lifecycleLock) {
-            unbindLocked()
-            // After clearAnalyzer so an in-flight frame can finish on this pool first.
-            // shutdown() (not shutdownNow): already-submitted analysis should complete.
-            // Idempotent — onCleared can theoretically race a second stop.
-            executor.shutdown()
+        try {
+            // onCleared dispatches stop() from GlobalScope on Dispatchers.Default, but
+            // unbindLocked() touches CameraX (unbindAll/clearAnalyzer), which CameraX 1.4.0
+            // enforces must run on the main thread (Threads.checkMainThread()) — calling it
+            // off-main throws IllegalStateException. Force the whole CameraX-touching body
+            // onto the main thread regardless of which thread called stop().
+            withContext(Dispatchers.Main.immediate) {
+                synchronized(lifecycleLock) {
+                    unbindLocked()
+                    // After clearAnalyzer so an in-flight frame can finish on this pool first.
+                    // shutdown() (not shutdownNow): already-submitted analysis should complete.
+                    // Idempotent — onCleared can theoretically race a second stop.
+                    executor.shutdown()
+                }
+            }
+        } catch (e: CancellationException) {
+            throw e
+        } catch (t: Throwable) {
+            println("AndroidCameraSource: stop() failed to unbind camera on main thread:\n${t.stackTraceToString()}")
         }
     }
 
