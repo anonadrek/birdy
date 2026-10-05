@@ -6,6 +6,7 @@ and sentences on the page. A model is never involved."""
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Any
 
 from .counties import COUNTIES, COUNTY_NAMES
 
@@ -142,3 +143,64 @@ def data_sentences(months: list[int], counties: dict[str, int], lang: str) -> li
     if county is not None:
         sentences.append(county)
     return sentences
+
+
+RESIDENT_MIN_MONTH = 5
+MIGRANT_WINTER_MAX = 25
+WINTER_VISITOR_SUMMER_MAX = 25
+_WINTER = (11, 0, 1)
+_SUMMER = (5, 6)
+
+
+def _mean(profile: list[int], months: tuple[int, ...]) -> float:
+    return sum(profile[i] for i in months) / len(months)
+
+
+def status_contradiction(status: str, months: list[int] | None, total_reports: int) -> str | None:
+    """A plain Swedish reason when the report data clearly contradicts the stated status,
+    otherwise None. Only clear contradictions count (spec §9.2); passage and rare_visitor are
+    never flagged."""
+    if status == "absent":
+        if total_reports >= MIN_REPORTS:
+            return (
+                "Statusen säger att arten inte förekommer i Sverige, men den har "
+                f"{total_reports} rapporter i Artportalen 2016 till 2025."
+            )
+        return None
+    if months is None:
+        return None
+    if status == "resident" and min(months) < RESIDENT_MIN_MONTH:
+        lowest = MONTHS["sv"][months.index(min(months))]
+        return f"Statusen säger stannfågel, men arten rapporteras nästan aldrig i {lowest}."
+    if status == "breeding_migrant" and _mean(months, _WINTER) > MIGRANT_WINTER_MAX:
+        return "Statusen säger flyttfågel, men arten rapporteras ofta december till februari."
+    if status == "winter_visitor" and _mean(months, _SUMMER) > WINTER_VISITOR_SUMMER_MAX:
+        return "Statusen säger vintergäst, men arten rapporteras ofta i juni och juli."
+    return None
+
+
+def build_data(
+    *, taxon_key: int, species: Counts, all_birds: Counts, fetched_at: str
+) -> dict[str, Any]:
+    """The record's `data` object (spec appendix C)."""
+    data: dict[str, Any] = {
+        "fetchedAt": fetched_at,
+        "gbifTaxonKey": taxon_key,
+        "totalReports": species.total,
+    }
+    if species.total >= MIN_REPORTS:
+        months = month_profile(species.by_month, all_birds.by_month)
+        counties = county_profile(species.by_county, all_birds.by_county)
+        data["months"] = months
+        data["counties"] = counties
+        data["sentences"] = {lang: data_sentences(months, counties, lang) for lang in ("sv", "en")}
+    else:
+        data["sentences"] = {"sv": [], "en": []}
+    data["raw"] = {
+        "speciesByMonth": species.by_month,
+        "allBirdsByMonth": all_birds.by_month,
+        "speciesByCounty": species.by_county,
+        "allBirdsByCounty": all_birds.by_county,
+    }
+    data["statusSignal"] = {"contradicts": None}
+    return data

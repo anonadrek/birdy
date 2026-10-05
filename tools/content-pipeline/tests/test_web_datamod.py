@@ -6,6 +6,9 @@ import pytest
 
 from birdy_fetcher.web.counties import COUNTIES
 from birdy_fetcher.web.datamod import (
+    MIN_REPORTS,
+    Counts,
+    build_data,
     county_profile,
     county_sentence,
     data_sentences,
@@ -15,6 +18,7 @@ from birdy_fetcher.web.datamod import (
     month_sentences,
     months_text,
     scaled,
+    status_contradiction,
 )
 
 
@@ -135,3 +139,60 @@ def test_no_peak_but_low_months_gives_only_never_sentence() -> None:
 
 def test_all_zero_profile_gives_no_month_sentences() -> None:
     assert month_sentences([0] * 12, "sv") == []
+
+
+RESIDENT = [70, 65, 60, 55, 70, 79, 64, 68, 74, 100, 66, 69]
+WINTER_VISITOR = [100, 90, 70, 20, 2, 0, 0, 1, 10, 40, 80, 95]
+
+
+def test_no_contradiction_when_data_agrees() -> None:
+    assert status_contradiction("resident", RESIDENT, 5000) is None
+    assert status_contradiction("breeding_migrant", MIGRANT, 5000) is None
+    assert status_contradiction("winter_visitor", WINTER_VISITOR, 5000) is None
+    assert status_contradiction("passage", MIGRANT, 5000) is None
+
+
+def test_resident_with_an_empty_month_is_flagged() -> None:
+    reason = status_contradiction("resident", MIGRANT, 5000)
+    assert reason is not None
+    assert "januari" in reason
+
+
+def test_migrant_reported_in_winter_is_flagged() -> None:
+    assert status_contradiction("breeding_migrant", RESIDENT, 5000) is not None
+
+
+def test_winter_visitor_reported_in_summer_is_flagged() -> None:
+    assert status_contradiction("winter_visitor", RESIDENT, 5000) is not None
+
+
+def test_absent_with_many_reports_is_flagged_even_without_a_profile() -> None:
+    assert status_contradiction("absent", None, MIN_REPORTS) is not None
+    assert status_contradiction("absent", None, MIN_REPORTS - 1) is None
+
+
+def test_missing_profile_never_flags_other_statuses() -> None:
+    assert status_contradiction("resident", None, 50) is None
+
+
+def test_build_data_with_enough_reports() -> None:
+    species = Counts([10] * 12, {"SE-I": 50}, 1200)
+    all_birds = Counts([100] * 12, {"SE-I": 100, "SE-M": 100}, 99_000)
+    data = build_data(taxon_key=7, species=species, all_birds=all_birds, fetched_at="2026-10-01")
+    assert data["months"] == [100] * 12
+    assert data["counties"]["SE-I"] == 100
+    assert data["sentences"]["sv"][0] == "Rapporteras året runt."
+    assert data["totalReports"] == 1200
+    assert data["gbifTaxonKey"] == 7
+    assert data["raw"]["speciesByCounty"] == {"SE-I": 50}
+    assert data["statusSignal"] == {"contradicts": None}
+
+
+def test_build_data_with_too_few_reports_has_no_modules() -> None:
+    species = Counts([1] * 12, {}, MIN_REPORTS - 1)
+    data = build_data(
+        taxon_key=7, species=species, all_birds=Counts([100] * 12, {}, 1), fetched_at="x"
+    )
+    assert "months" not in data
+    assert "counties" not in data
+    assert data["sentences"] == {"sv": [], "en": []}
