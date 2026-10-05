@@ -330,6 +330,23 @@ def web_verify(
     _print_outcomes(asyncio.run(run_verify(paths, options)), paths.reports)
 
 
+@web.command("waves")
+@click.option("--size", type=click.IntRange(min=12), default=40, help="Antal arter i våg 1.")
+@click.option(
+    "--recompute", is_flag=True, help="Räkna om listan i stället för att läsa waves.json."
+)
+def web_waves(size: int, recompute: bool) -> None:
+    """Delar in arterna i tre vågor (körordning, ingen publiceringsgrind) och skriver
+    review/waves.json. Gratis."""
+    from .web.waves import run_waves
+
+    paths = _web_paths()
+    waves = run_waves(paths, size=size, recompute=recompute)
+    for number, qids in sorted(waves.items()):
+        click.echo(f"Våg {number}: {len(qids)} arter")
+    click.echo(f"Listan finns i {paths.review / 'waves.json'}.")
+
+
 @web.command("v1")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
