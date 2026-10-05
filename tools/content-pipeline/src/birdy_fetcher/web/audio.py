@@ -60,8 +60,23 @@ def rejection(candidate: AudioCandidate, scientific: str) -> str | None:
         return "kortare än 3 sekunder"
     if not candidate.from_wikidata:
         name = scientific.lower()
-        in_title = name in candidate.title.lower().replace("_", " ")
-        if not in_title and not any(name in c for c in categories):
+        # Build a word-boundary regex: each word in the species name must match as a whole word
+        words = name.split()
+        # Pattern: word1 followed by word2, etc., with word boundaries and underscores as spaces
+        pattern = re.compile(
+            r"(?<![a-z])"
+            + re.escape(words[0])
+            + r"(?![a-z])"
+            + (
+                r"(?:\s|_)+" + r"(?<![a-z])" + re.escape(words[1]) + r"(?![a-z])"
+                if len(words) > 1
+                else ""
+            )
+        )
+        text_with_spaces = candidate.title.lower().replace("_", " ")
+        in_title = pattern.search(text_with_spaces) is not None
+        in_categories = any(pattern.search(c) is not None for c in categories)
+        if not in_title and not in_categories:
             return "nämner inte arten i titeln eller kategorierna"
     return None
 

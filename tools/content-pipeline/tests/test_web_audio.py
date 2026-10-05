@@ -78,3 +78,36 @@ def test_audio_record() -> None:
     assert short["durationSec"] == 12
     assert short["trimmed"] is False
     assert short["licenseUrl"] is None
+
+
+def test_search_hit_with_longer_name_is_rejected() -> None:
+    """A file titled "Parus majoroides calling.ogg" should be rejected for "Parus major"."""
+    candidate = replace(
+        BASE,
+        title="File:Parus majoroides calling.ogg",
+        categories=(),
+        from_wikidata=False,
+    )
+    assert rejection(candidate, "Parus major") == "nämner inte arten i titeln eller kategorierna"
+
+
+def test_search_hit_with_underscores_is_accepted() -> None:
+    """A file titled "Parus_major_song.ogg" should be accepted for "Parus major"."""
+    candidate = replace(
+        BASE,
+        title="File:Parus_major_song.ogg",
+        categories=(),
+        from_wikidata=False,
+    )
+    assert rejection(candidate, "Parus major") is None
+
+
+def test_search_hit_with_name_in_category_is_accepted() -> None:
+    """A file with species name only in category should be accepted."""
+    candidate = replace(
+        BASE,
+        title="File:Songbird recording.ogg",
+        categories=("Category:Sounds of Parus major",),
+        from_wikidata=False,
+    )
+    assert rejection(candidate, "Parus major") is None
