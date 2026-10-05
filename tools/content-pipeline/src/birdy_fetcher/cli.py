@@ -299,6 +299,37 @@ def web_facts(
     _print_outcomes(asyncio.run(run_facts(paths, options)), paths.reports)
 
 
+@web.command("verify")
+@click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla med ett faktablad.")
+@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="sonnet")
+@click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
+@click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
+@click.option("--force", is_flag=True, help="Kontrollera även arter som redan är kontrollerade.")
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+def web_verify(
+    species: tuple[str, ...],
+    model_key: str,
+    effort: str,
+    max_cost: float | None,
+    force: bool,
+    workers: int,
+) -> None:
+    """Automatisk kontroll (V1 till V4) av faktabladet. Kostar pengar (V1)."""
+    from .web.verify_step import VerifyOptions, run_verify
+
+    _require_api_key()
+    paths = _web_paths()
+    options = VerifyOptions(
+        qids=species,
+        model_key=model_key,
+        effort=effort,
+        max_cost=max_cost,
+        force=force,
+        workers=workers,
+    )
+    _print_outcomes(asyncio.run(run_verify(paths, options)), paths.reports)
+
+
 @web.command("v1")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")

@@ -13,7 +13,7 @@ from birdy_fetcher.web.paths import WebPaths
 from .test_web_source import _write
 
 PIPELINE = Path(__file__).resolve().parents[1]
-PROMPTS = ("web-v1", "facts-v1", "web-v2", "check-v1", "compare-v1")
+PROMPTS = ("web-v1", "facts-v1", "verify-v1", "web-v2", "check-v1", "compare-v1")
 
 
 def make_repo(

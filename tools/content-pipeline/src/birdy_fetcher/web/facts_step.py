@@ -88,18 +88,26 @@ class FactExtractor:
         return check_fact_sheet(out, articles, self.scientific_index)
 
     async def extract(
-        self, source: SpeciesSource, articles: dict[str, WikiArticle]
+        self,
+        source: SpeciesSource,
+        articles: dict[str, WikiArticle],
+        *,
+        extra_feedback: str | None = None,
     ) -> tuple[FactCheck, int, bool]:
         """(check, attempts, from_cache). Raises FactsFailed when no answer was usable and
-        MaxCostExceeded when the cap is passed."""
+        MaxCostExceeded when the cap is passed. extra_feedback (Revision 2026-10-05, the V1
+        retry) skips the cache: the same articles would otherwise give the same cached answer
+        as last time."""
         template = self.prompt_path.read_text(encoding="utf-8")
         name = self._cache_name(template, articles)
-        cached = None if self.regenerate else self.cache.get(source.qid, name)
+        cached = None if (self.regenerate or extra_feedback) else self.cache.get(source.qid, name)
         if cached is not None:
             return self._check(FactSheetOutput.model_validate_json(cached), articles), 0, True
 
         system, user = render_facts_prompt(template, source, articles)
         messages: list[MessageParam] = [{"role": "user", "content": user}]
+        if extra_feedback:
+            messages.append({"role": "user", "content": extra_feedback})
         best: tuple[FactSheetOutput, FactCheck] | None = None
         reason = "modellen gav inget svar"
         attempts = 0
