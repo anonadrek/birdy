@@ -165,6 +165,36 @@ def test_extract_measurements_detects_wingspan_from_a_nearby_keyword() -> None:
     assert m.kind == "length"
 
 
+def test_extract_measurements_uses_nearest_keyword_when_both_present() -> None:
+    # When both wingspan and length keywords appear in the look-back window,
+    # use the NEAREST one to decide the kind.
+    measurements = extract_measurements("Vingbredden är 45–55 cm och längden 28–31 cm.")  # noqa: RUF001
+    assert len(measurements) == 2
+    assert measurements[0] == Measurement(45.0, 55.0, "cm", "wingspan")
+    assert measurements[1] == Measurement(28.0, 31.0, "cm", "length")
+
+
+def test_extract_measurements_reverses_order_when_length_comes_first() -> None:
+    measurements = extract_measurements("Längden är 28–31 cm och vingbredden 45–55 cm.")  # noqa: RUF001
+    assert len(measurements) == 2
+    assert measurements[0] == Measurement(28.0, 31.0, "cm", "length")
+    assert measurements[1] == Measurement(45.0, 55.0, "cm", "wingspan")
+
+
+def test_extract_measurements_english_both_keywords() -> None:
+    measurements = extract_measurements("Body length 28 to 31 cm, wingspan 45 to 55 cm.")
+    assert len(measurements) == 2
+    assert measurements[0] == Measurement(28.0, 31.0, "cm", "length")
+    assert measurements[1] == Measurement(45.0, 55.0, "cm", "wingspan")
+
+
+def test_extract_measurements_german_both_keywords() -> None:
+    measurements = extract_measurements("Körperlänge 28 bis 31 cm, Flügelspannweite 45 bis 55 cm.")
+    assert len(measurements) == 2
+    assert measurements[0] == Measurement(28.0, 31.0, "cm", "length")
+    assert measurements[1] == Measurement(45.0, 55.0, "cm", "wingspan")
+
+
 def test_extract_measurements_reads_clutch_size_in_eggs() -> None:
     [m] = extract_measurements("4–6 ägg")  # noqa: RUF001
     assert (m.low, m.high, m.unit, m.kind) == (4.0, 6.0, "ägg", "clutch")

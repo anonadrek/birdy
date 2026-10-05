@@ -52,6 +52,19 @@ WINGSPAN_KEYWORDS = (
     "flügelspannweite",
     "spannweite",
 )
+
+# sv/en/de words that mean "(body) length" for a cm/mm number.
+LENGTH_KEYWORDS = (
+    "längd",
+    "längden",
+    "lång",
+    "length",
+    "long",
+    "länge",
+    "körperlänge",
+    "lang",
+)
+
 _WINGSPAN_WINDOW = 40
 
 
@@ -69,15 +82,37 @@ def _num(text: str) -> float:
 
 
 def _length_kind(text: str, start: int) -> Kind:
-    """ "wingspan" if a wingspan keyword occurs earlier in the same sentence, within
-    `_WINGSPAN_WINDOW` characters before the number; "length" otherwise (spec V2)."""
+    """Determine if a measurement is "wingspan" or "length" based on the nearest keyword
+    occurring earlier in the same sentence, within `_WINGSPAN_WINDOW` characters before
+    the number. If both wingpsan and length keywords are present, the nearest one wins.
+    If neither is found, default to "length" (spec V2)."""
     segment = text[max(0, start - _WINGSPAN_WINDOW) : start]
     for punct in ".!?\n":
         index = segment.rfind(punct)
         if index != -1:
             segment = segment[index + 1 :]
     lowered = segment.lower()
-    return "wingspan" if any(keyword in lowered for keyword in WINGSPAN_KEYWORDS) else "length"
+
+    # Find the position of the nearest wingspan and length keywords.
+    wingspan_pos = -1
+    for keyword in WINGSPAN_KEYWORDS:
+        pos = lowered.rfind(keyword)
+        if pos > wingspan_pos:
+            wingspan_pos = pos
+
+    length_pos = -1
+    for keyword in LENGTH_KEYWORDS:
+        pos = lowered.rfind(keyword)
+        if pos > length_pos:
+            length_pos = pos
+
+    # If both found, use the nearest; if only one found, use it; default to "length".
+    if wingspan_pos >= 0 and length_pos >= 0:
+        return "wingspan" if wingspan_pos > length_pos else "length"
+    elif wingspan_pos >= 0:
+        return "wingspan"
+    else:
+        return "length"
 
 
 def _normalise(low: float, high: float, unit_raw: str, text: str, start: int) -> Measurement:
