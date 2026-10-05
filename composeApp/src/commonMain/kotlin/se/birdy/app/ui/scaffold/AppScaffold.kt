@@ -284,7 +284,7 @@ fun AppScaffold(
                     }
                 MatchResultScreen(
                     viewModel = vm,
-                    onBack = { navController.popBackStack() },
+                    onBack = { navController.popIfTop(entry) },
                     locale = graph.defaultLocale,
                     zone = graph.timeZone,
                 )
@@ -313,7 +313,7 @@ fun AppScaffold(
                                 graph.speciesProfileViewModel(SpeciesId(route.speciesId))
                             },
                         locale = graph.defaultLocale,
-                        onBack = { navController.popBackStack() },
+                        onBack = { navController.popIfTop(entry) },
                         onPremiumClick = { navController.navigate(AppRoute.Premium) },
                         showPremiumTeaser = showPremiumTeaser,
                     )
@@ -370,7 +370,7 @@ fun AppScaffold(
                 val route = entry.toRoute<AppRoute.ObservationDetail>()
                 ObservationDetailScreen(
                     viewModel = remember(graph, route.id) { graph.observationDetailViewModel(route.id) },
-                    onBack = { navController.popBackStack() },
+                    onBack = { navController.popIfTop(entry) },
                     onSpeciesClick = { id -> navController.navigate(AppRoute.SpeciesProfile(id)) },
                 )
             }
@@ -383,16 +383,16 @@ fun AppScaffold(
                     showPremiumTeaser = showPremiumTeaser,
                 )
             }
-            composable<AppRoute.TrophyRoom> {
+            composable<AppRoute.TrophyRoom> { entry ->
                 TrophyRoomRoute(
                     graph = graph,
-                    onBack = { navController.popBackStack() },
+                    onBack = { navController.popIfTop(entry) },
                 )
             }
-            composable<AppRoute.Settings> {
+            composable<AppRoute.Settings> { entry ->
                 se.birdy.app.ui.settings.SettingsScreen(
                     viewModel = remember(graph) { graph.settingsViewModel() },
-                    onBack = { navController.popBackStack() },
+                    onBack = { navController.popIfTop(entry) },
                     onPremiumClick = { navController.navigate(AppRoute.Premium) },
                     onNavigateToAbout = { navController.navigate(AppRoute.About) },
                     onShowIntroAgain = { navController.navigate(AppRoute.OnboardingReplay) },
@@ -400,13 +400,13 @@ fun AppScaffold(
                     onRequestLocationPermission = { graph.requestLocationPermission?.invoke() },
                 )
             }
-            composable<AppRoute.About> {
+            composable<AppRoute.About> { entry ->
                 se.birdy.app.ui.settings.AboutScreen(
-                    onBack = { navController.popBackStack() },
+                    onBack = { navController.popIfTop(entry) },
                     version = graph.versionName,
                 )
             }
-            composable<AppRoute.OnboardingReplay> {
+            composable<AppRoute.OnboardingReplay> { entry ->
                 val vm = remember(graph) { graph.onboardingViewModel(isReplay = true) }
                 val state by vm.state.collectAsState()
                 when (val s = state) {
@@ -416,16 +416,16 @@ fun AppScaffold(
                             onPageChange = vm::setPageIndex,
                             onNameChange = vm::onNameChange,
                             onLanguageSelect = vm::selectLanguage,
-                            onComplete = { navController.popBackStack() },
+                            onComplete = { navController.popIfTop(entry) },
                             isReplay = true,
                         )
                     se.birdy.app.ui.onboarding.OnboardingUiState.Done -> {
-                        LaunchedEffect(Unit) { navController.popBackStack() }
+                        LaunchedEffect(Unit) { navController.popIfTop(entry) }
                     }
                     se.birdy.app.ui.onboarding.OnboardingUiState.Loading -> Unit
                 }
             }
-            composable<AppRoute.Premium> {
+            composable<AppRoute.Premium> { entry ->
                 if (isEarlyMember) {
                     // Idempotent pop (mirrors onPurchaseComplete below): a double tap on
                     // Continue — or PlatformBackHandler firing during the NavHost's fade —
@@ -437,8 +437,10 @@ fun AppScaffold(
                     PremiumScreen(
                         viewModel = remember(graph) { graph.premiumViewModel() },
                         onClose = {
-                            navController.popBackStack()
-                            scope.launch { snackbarHostState.showSnackbar(dismissToast) }
+                            // The "find it in Settings" hint only when this tap actually closed the screen.
+                            if (navController.popIfTop(entry)) {
+                                scope.launch { snackbarHostState.showSnackbar(dismissToast) }
+                            }
                         },
                         onPurchaseComplete = {
                             navController.popBackStack(AppRoute.Premium, inclusive = true)
@@ -466,15 +468,15 @@ fun AppScaffold(
                     },
                 )
             }
-            composable<AppRoute.SeasonStats> {
+            composable<AppRoute.SeasonStats> { entry ->
                 LaunchedEffect(effectivePremiumActive) {
                     if (!effectivePremiumActive) {
-                        navController.popBackStack()
+                        navController.popIfTop(entry)
                     }
                 }
                 se.birdy.app.ui.stats.SeasonStatsScreen(
                     viewModel = remember(graph) { graph.seasonStatsViewModel() },
-                    onBack = { navController.popBackStack() },
+                    onBack = { navController.popIfTop(entry) },
                 )
             }
             composable<AppRoute.WeeklyRecap> {
