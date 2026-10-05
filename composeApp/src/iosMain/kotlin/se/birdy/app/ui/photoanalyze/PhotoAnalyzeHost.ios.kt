@@ -8,10 +8,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import birdy_bird_scanner.composeapp.generated.resources.Res
+import birdy_bird_scanner.composeapp.generated.resources.bootstrap_loading
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.jetbrains.compose.resources.stringResource
 import se.birdy.app.di.AppGraph
+import se.birdy.app.ui.components.JournalLoading
 import se.birdy.app.ui.components.PhotoModelUnavailableView
 import se.birdy.ml.ClassifierBootstrapState
 
@@ -35,6 +39,14 @@ actual fun PhotoAnalyzeHost(
         // The photo model failed to load — AppGraph.photoAnalyzeViewModel() would throw reading
         // AppGraph.classifier. Show the shared error state instead of constructing the VM.
         PhotoModelUnavailableView(onRetry = { graph.classifierBootstrap.retry() }, onBack = onBack)
+        return
+    }
+    if (bootstrapState is ClassifierBootstrapState.Initializing) {
+        // The photo model is (re)building — e.g. a retry() from the error view above. Don't
+        // call graph.photoAnalyzeViewModel() yet (it requires Ready); show an in-place loader
+        // scoped to this screen instead of AppGate's full-screen one, so Photo-ID stays on the
+        // back stack.
+        JournalLoading(label = stringResource(Res.string.bootstrap_loading))
         return
     }
     val scope = rememberCoroutineScope()

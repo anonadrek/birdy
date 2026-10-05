@@ -235,7 +235,10 @@ class AppGraph(
     val classifier: BirdClassifier
         get() =
             (classifierBootstrap.state.value as? ClassifierBootstrapState.Ready)?.classifier
-                ?: error("Classifier not ready — AppGate should gate on bootstrap state")
+                ?: error(
+                    "Classifier not ready — ScanScreenHost/PhotoAnalyzeHost must check " +
+                        "classifierBootstrap.state (Initializing/Failed) before building their ViewModel",
+                )
 
     val classifierMode: ClassifierMode
         get() =

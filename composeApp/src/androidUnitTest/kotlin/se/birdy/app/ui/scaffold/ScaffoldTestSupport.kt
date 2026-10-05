@@ -3,6 +3,7 @@ package se.birdy.app.ui.scaffold
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -136,16 +137,40 @@ internal fun ComposeContentTestRule.startAppGate(graph: AppGraph): NavHostContro
  * initial build, plus one per [ClassifierBootstrap.retry]); the builder fails while
  * `buildAttempts.value < succeedOnAttempt`, so e.g. `succeedOnAttempt = 2` starts Failed and
  * only succeeds after one retry().
+ *
+ * Release 1.3.0 Plan 3 Task 2c review fix: [holdInitialBuild] and [armHoldForNextBuild] let a
+ * test suspend a build attempt mid-flight on a [CompletableDeferred], so it can observe
+ * [se.birdy.ml.ClassifierBootstrapState.Initializing] on its own before completing the hold and
+ * letting that attempt settle (succeed/fail per [succeedOnAttempt]) — with Unconfined otherwise
+ * every build settles synchronously, so Initializing is never observable by itself.
  */
 internal class ControllableClassifierBootstrap(
     succeedOnAttempt: Int,
+    holdInitialBuild: Boolean = false,
 ) {
     private val _buildAttempts = MutableStateFlow(0)
     val buildAttempts: StateFlow<Int> = _buildAttempts.asStateFlow()
 
+    private var pendingHold: CompletableDeferred<Unit>? = null
+
+    /** Non-null only when constructed with `holdInitialBuild = true`; complete it to let the first build settle. */
+    val initialBuildHold: CompletableDeferred<Unit>? = if (holdInitialBuild) arm() else null
+
+    /**
+     * Arms a one-shot hold for the NEXT build attempt (a later [ClassifierBootstrap.retry]).
+     * Call this before triggering that retry; complete the returned [CompletableDeferred] to let
+     * the attempt proceed.
+     */
+    fun armHoldForNextBuild(): CompletableDeferred<Unit> = arm()
+
+    private fun arm(): CompletableDeferred<Unit> = CompletableDeferred<Unit>().also { pendingHold = it }
+
     val bootstrap: ClassifierBootstrap =
         ClassifierBootstrap(
             buildClassifier = {
+                val hold = pendingHold
+                pendingHold = null
+                hold?.await()
                 val attempt = _buildAttempts.value + 1
                 _buildAttempts.value = attempt
                 if (attempt < succeedOnAttempt) {
