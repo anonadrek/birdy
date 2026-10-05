@@ -25,6 +25,7 @@ from .verify import (
     missing_required_topics,
     number_flags,
     status_flags,
+    status_strike_flag,
     strike_unsupported,
 )
 from .wiki_full import FullWikiClient
@@ -144,6 +145,7 @@ async def _one(
             return out("skipped", [f"kostnadstaket nåddes: {exc}"])
         kept, strike_notes = strike_unsupported(record["facts"], verdicts)
         notes += strike_notes
+        status_flag = status_strike_flag(verdicts)
         missing = missing_required_topics(kept)
         if missing and strike_notes:
             try:
@@ -154,15 +156,36 @@ async def _one(
                 stop.set()
                 return out("skipped", [f"kostnadstaket nåddes: {exc}"])
             if check.fatal:
+                record["facts"] = kept
                 record["status"] = "failed"
                 record["errors"] = [f"saknas efter V1-omförsöket: {', '.join(missing)}"]
                 save_record(path, record)
                 return out("failed", record["errors"], notes)
             apply_facts(record, check, generated=record["generated"]["facts"])
-        else:
-            record["facts"] = kept
+
+            # The retried sheet is brand new text the model just wrote: it gets the same V1
+            # pass the original facts did, so a fact it invents cannot slip through
+            # unchecked (item 3, 2026-10-05 review fix).
+            try:
+                verdicts = await checker.check(record["facts"], articles)
+            except MaxCostExceeded as exc:
+                stop.set()
+                return out("skipped", [f"kostnadstaket nåddes: {exc}"])
+            kept, strike_notes = strike_unsupported(record["facts"], verdicts)
+            notes += strike_notes
+            status_flag = status_strike_flag(verdicts)
+            missing = missing_required_topics(kept)
+            if missing:
+                record["facts"] = kept
+                record["status"] = "failed"
+                record["errors"] = [f"saknas efter V1-omförsöket: {', '.join(missing)}"]
+                save_record(path, record)
+                return out("failed", record["errors"], notes)
+        record["facts"] = kept
 
         flags = number_flags(record, articles) + status_flags(record)
+        if status_flag:
+            flags.append(status_flag)
 
         audio = record.get("audio")
         if audio:
@@ -170,18 +193,24 @@ async def _one(
             try:
                 result = classify_clip(paths.images_out / source.qid / "voice.mp3", paths.flexref)
             except AudioCheckFailed as exc:
-                notes.append(
-                    f"ljudmodellen kunde inte köras, inspelningen flaggas i stället: {exc}"
+                flags.append(
+                    {
+                        "check": "V4",
+                        "factId": None,
+                        "message": (
+                            f"Ljudmodellen kunde inte köras ({exc}). Lyssna och besluta, "
+                            "eller kör om när felet är åtgärdat."
+                        ),
+                    }
                 )
-                result = None
-                identifiable = False  # no verdict possible: treat like an uncovered species
-            verdict = audio_verdict(result, source.qid, identifiable_sound=identifiable)
-            if verdict.action == "strike":
-                record.pop("audio", None)
-                record.setdefault("review", {})["audioStruck"] = True
-                notes.append(f"inspelningen ströks: {verdict.reason}")
-            elif verdict.action == "flag":
-                flags.append({"check": "V4", "factId": None, "message": verdict.reason})
+            else:
+                verdict = audio_verdict(result, source.qid, identifiable_sound=identifiable)
+                if verdict.action == "strike":
+                    record.pop("audio", None)
+                    record.setdefault("review", {})["audioStruck"] = True
+                    notes.append(f"inspelningen ströks: {verdict.reason}")
+                elif verdict.action == "flag":
+                    flags.append({"check": "V4", "factId": None, "message": verdict.reason})
 
         record["flags"] = flags
         record.setdefault("generated", {})["verify"] = {

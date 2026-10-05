@@ -326,5 +326,25 @@ def strike_unsupported(
     return kept, notes
 
 
+def status_strike_flag(verdicts: dict[str, tuple[Verdict, str]]) -> dict[str, Any] | None:
+    """When V1 strikes the status fact (s01), `strike_unsupported` drops it from `kept` like
+    any other rejected fact — but "status" is not in REQUIRED_TOPICS, so
+    `missing_required_topics` never notices, there is no retry, and nothing else tells Albin
+    the status vanished: a species could be verified with zero flags and a null status.
+    Turn the strike itself into a flag instead, so it is never silent."""
+    verdict = verdicts.get("s01")
+    if verdict is None:
+        return None
+    _, reason = verdict
+    return {
+        "check": "V1",
+        "factId": "s01",
+        "message": (
+            f"Statusen i Sverige ströks av faktakontrollen: {reason}. "
+            "Bestäm status eller lämna tom."
+        ),
+    }
+
+
 def missing_required_topics(facts: list[dict[str, Any]]) -> list[str]:
     return [TOPIC_SV[t] for t in REQUIRED_TOPICS if not any(f["topic"] == t for f in facts)]

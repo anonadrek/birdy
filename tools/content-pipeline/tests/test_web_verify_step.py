@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from birdy_fetcher.web.audio_check import AudioCheckResult
+from birdy_fetcher.web.audio_check import AudioCheckFailed, AudioCheckResult
 from birdy_fetcher.web.facts import FactSheetOutput
 from birdy_fetcher.web.paths import WebPaths
 from birdy_fetcher.web.record import load_record, merge_sources, record_path, save_record
@@ -98,6 +98,22 @@ def _verdicts(**unsupported: str) -> FactVerifyOutput:
     )
 
 
+def _all_supported(*ids: str, unsupported: dict[str, str] | None = None) -> FactVerifyOutput:
+    """A V1 reply covering exactly `ids` (a retried sheet's ids differ from `_verdicts`'
+    fixed set), supported unless the id is a key in `unsupported`."""
+    unsupported = unsupported or {}
+    return FactVerifyOutput(
+        verdicts=[
+            FactVerdict(
+                fact_id=i,
+                verdict="unsupported" if i in unsupported else "supported",
+                reason=unsupported.get(i, ""),
+            )
+            for i in ids
+        ]
+    )
+
+
 async def test_a_clean_fact_sheet_is_verified_with_no_flags(tmp_path: Path) -> None:
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
     _seed(paths, "Q1")
@@ -132,14 +148,172 @@ async def test_a_struck_required_topic_is_retried_once(tmp_path: Path) -> None:
         ],
         sweden_status=STATUS,
     )
+    # f01-f06 = GOOD (size, sex_age, voice, habitat, appearance, lookalike), f07 = the new
+    # voice fact, f08-f10 = the three extra appearance facts, s01 = the status.
+    retried_ids = [f"f{i:02d}" for i in range(1, 11)] + ["s01"]
+    # Item 3 (2026-10-05 review fix): the retried sheet gets its own V1 pass, so this needs a
+    # third reply (the checker's second call) or the fake client pops from an empty list.
     client = FakeJsonClient(
-        [reply(_verdicts(f04="citatet nämner inget avstånd")), reply(retry_sheet)]
+        [
+            reply(_verdicts(f04="citatet nämner inget avstånd")),
+            reply(retry_sheet),
+            reply(_all_supported(*retried_ids)),
+        ]
     )
     outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
     assert [o.status for o in outcomes] == ["ok"]
     record = load_record(record_path(paths.data_out, "Q1"))
     assert record is not None
     assert any(f["topic"] == "voice" for f in record["facts"])
+    assert client.schemas.count("FactVerifyOutput") == 2
+
+
+async def test_a_fact_struck_in_the_retried_sheet_does_not_survive(tmp_path: Path) -> None:
+    """Item 3: the retried sheet gets its own V1 pass too, so a fact it invents is struck
+    out there just like the very first pass — and the checker ran twice to catch it."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    retry_sheet = FactSheetOutput(
+        facts=[
+            *GOOD,
+            _fact("voice", "Sången hörs på långt håll.", "Sången är ett ringande ti-ta ti-ta"),
+            *[
+                _fact("appearance", f"Svart band på buken {i}.", "ett bredare svart band på buken")
+                for i in range(3)
+            ],
+        ],
+        sweden_status=STATUS,
+    )
+    # f08 is the first of the three extra appearance facts ("Svart band på buken 0.");
+    # appearance is still covered by f05 and f09/f10 once f08 is struck, so this is not fatal.
+    retried_ids = [f"f{i:02d}" for i in range(1, 11)] + ["s01"]
+    client = FakeJsonClient(
+        [
+            reply(_verdicts(f04="citatet nämner inget avstånd")),
+            reply(retry_sheet),
+            reply(
+                _all_supported(*retried_ids, unsupported={"f08": "hittar inte citatet i artikeln"})
+            ),
+        ]
+    )
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert not any(f["sv"] == "Svart band på buken 0." for f in record["facts"])
+    assert client.schemas.count("FactVerifyOutput") == 2
+
+
+async def test_missing_after_the_second_v1_pass_also_fails(tmp_path: Path) -> None:
+    """Item 3: if V1 strikes a required-topic fact in the *retried* sheet too (here f04,
+    the only habitat fact in the retry), that is still fatal — same as today's fatal path."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    retry_sheet = FactSheetOutput(
+        facts=[
+            *GOOD,
+            _fact("voice", "Sången hörs på långt håll.", "Sången är ett ringande ti-ta ti-ta"),
+            *[
+                _fact("appearance", f"Svart band på buken {i}.", "ett bredare svart band på buken")
+                for i in range(3)
+            ],
+        ],
+        sweden_status=STATUS,
+    )
+    retried_ids = [f"f{i:02d}" for i in range(1, 11)] + ["s01"]
+    client = FakeJsonClient(
+        [
+            reply(_verdicts(f04="citatet nämner inget avstånd")),
+            reply(retry_sheet),
+            reply(
+                _all_supported(*retried_ids, unsupported={"f04": "hittar inte citatet i artikeln"})
+            ),
+        ]
+    )
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["status"] == "failed"
+    assert not any(f["id"] == "f04" for f in record["facts"])
+
+
+async def test_a_fatal_retry_still_saves_only_the_post_strike_facts(tmp_path: Path) -> None:
+    """Item 4: a failed path must never keep a fact V1 already struck in the saved record —
+    only `kept` (post-first-strike) is saved alongside the failed status."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    fatal_retry_sheet = FactSheetOutput(facts=GOOD[:2], sweden_status=None)
+    client = FakeJsonClient(
+        [
+            reply(_verdicts(f04="citatet nämner inget avstånd")),
+            reply(fatal_retry_sheet),
+            reply(fatal_retry_sheet),
+        ]
+    )
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["failed"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["status"] == "failed"
+    assert not any(f["id"] == "f04" for f in record["facts"])
+    assert any(f["id"] == "f01" for f in record["facts"])
+
+
+async def test_a_struck_status_fact_becomes_a_v1_flag_instead_of_vanishing(
+    tmp_path: Path,
+) -> None:
+    """Item 1: status is not a required topic, so striking s01 must not pass through
+    unnoticed with zero flags and a null status."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    client = FakeJsonClient([reply(_verdicts(s01="ingen av källorna säger att den är stannfågel"))])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert not any(f["id"] == "s01" for f in record["facts"])
+    assert record["flags"] == [
+        {
+            "check": "V1",
+            "factId": "s01",
+            "message": (
+                "Statusen i Sverige ströks av faktakontrollen: ingen av källorna säger att "
+                "den är stannfågel. Bestäm status eller lämna tom."
+            ),
+        }
+    ]
+    assert "verification" not in record
+
+
+async def test_an_audio_check_failure_is_a_distinct_v4_flag_and_keeps_the_recording(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Item 2: a technical V4 failure (AudioCheckFailed) must read differently from a
+    genuinely-uncovered species, and must not silently drop the recording."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True, identifiable_sound=True)
+
+    def failing_classify_clip(mp3_path: Path, flexref_dir: Path) -> AudioCheckResult:
+        raise AudioCheckFailed("ljudmodellen kraschade")
+
+    monkeypatch.setattr("birdy_fetcher.web.verify_step.classify_clip", failing_classify_clip)
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "audio" in record
+    assert record["flags"] == [
+        {
+            "check": "V4",
+            "factId": None,
+            "message": (
+                "Ljudmodellen kunde inte köras (ljudmodellen kraschade). Lyssna och besluta, "
+                "eller kör om när felet är åtgärdat."
+            ),
+        }
+    ]
 
 
 async def test_a_number_disagreement_becomes_a_v2_flag(tmp_path: Path) -> None:
