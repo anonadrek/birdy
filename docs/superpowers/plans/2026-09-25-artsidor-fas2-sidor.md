@@ -3,10 +3,12 @@
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 > **Reviderad 2026-10-01** efter specens revision samma dag (faktablad, flera källor, datamoduler, inspelningar, förväxlingsarter, jämförelsesidor, om-sidan, publicering i vågor). Planen byggs **mot testdata** parallellt med pipelineplanen `docs/superpowers/plans/2026-10-01-artsidor-fas1b-faktablad.md`. Kontraktet mellan dem är specens bilaga C och D. Riktig data behövs först i Task 16.
+>
+> **Reviderad 2026-10-05:** Albin granskar inte längre varje arts faktablad för hand (spec Revision 2026-10-05). Fältet `review.facts` är ersatt av `verification = { method, at, model, spotChecked }`, och raden på sidan blir "Kontrollerad mot källorna {datum}" i stället för "Faktagranskad av Albin Abrahamsson {datum}". JSON-LD tappar `reviewedBy` (bara `lastReviewed` blir kvar), och "Så gör vi artsidorna" (Task 12) beskriver den automatiska kontrollen i stället för att säga att Albin granskar varje art. Berör Task 4 (zod-schemat och `species.ts`), Task 9 (artsidans creditblock), Task 11 (jämförelsesidan), Task 12, Task 14 (`check-seo.mjs`) och Task 16 till 18 (villkoren mot fas 1b:s data).
 
 **Goal:** Ingångssida, gruppsidor, en artsida per publicerad art, jämförelsesidor för förväxlingspar och sidan "Så gör vi artsidorna", på svenska och engelska, byggda ur pipelinens datafiler och publicerade våg för våg. Dessutom ny meny- och sidfotsnavigering, filter för egna besök i Vercel Analytics och SEO-reglerna som ett skript som stoppar bygget vid fel.
 
-**Architecture:** Två innehållssamlingar (`species`, `comparisons`) läser JSON-filerna, och `src/lib/species-source.mjs` avgör i ren JS var datan ligger (riktig data eller testdata) och vilka poster som får en sida (publicerade, eller granskade i ett förhandsbygge). `src/lib/species.ts` samlar all sidlogik. Komponenterna under `src/components/species/` renderar sidorna, och en dynamisk route per språk delegerar till rätt komponent. Diagram och länskarta ritas som SVG när sajten byggs. Inspelningarna kopieras in i `dist/` vid bygget, bara för arter som får en sida. `scripts/check-seo.mjs` och `scripts/check-preview-build.mjs` kontrollerar den byggda sajten.
+**Architecture:** Två innehållssamlingar (`species`, `comparisons`) läser JSON-filerna, och `src/lib/species-source.mjs` avgör i ren JS var datan ligger (riktig data eller testdata) och vilka poster som får en sida (publicerade, eller kontrollerade i ett förhandsbygge). `src/lib/species.ts` samlar all sidlogik. Komponenterna under `src/components/species/` renderar sidorna, och en dynamisk route per språk delegerar till rätt komponent. Diagram och länskarta ritas som SVG när sajten byggs. Inspelningarna kopieras in i `dist/` vid bygget, bara för arter som får en sida. `scripts/check-seo.mjs` och `scripts/check-preview-build.mjs` kontrollerar den byggda sajten.
 
 **Tech Stack:** Astro 5 (content layer, `astro:assets`), TypeScript, Zod, `@astrojs/sitemap`, Playwright, Node 22 (`node --test` för enhetstester), sharp (finns redan), inga nya beroenden.
 
@@ -27,7 +29,7 @@
 9. **Inspelningarnas adresser har ett innehållshash** (`/audio/species/Q25485.3f9c0a1b2d.mp3`) och kopieras till `dist/` av en byggkrok, bara för arter som får en sida. En Vite-glob (`?url`) hade lagt alla inspelningar i bygget, även opublicerade.
 10. **Jämförelsesidans engelska version ordnar arterna efter de engelska slugsen** (spec §4), så kolumnerna kan byta plats mellan språken. Tabellens celler följer med.
 
-**Publiceringen** görs av pipelinen, inte av sajten: `uv run birdy-fetcher web publish --wave N` i `tools/content-pipeline` (fas 1b, Task 23) sätter `publish: true` på vågens skrivna och granskade arter och på jämförelser där båda arterna är publicerade. Kommandot avpublicerar aldrig. Sajten läser bara fältet.
+**Publiceringen** görs av pipelinen, inte av sajten: `uv run birdy-fetcher web publish --wave N` i `tools/content-pipeline` (fas 1b, Task 23) sätter `publish: true` på vågens skrivna och kontrollerade arter och på jämförelser där båda arterna är publicerade. Kommandot avpublicerar aldrig. Sajten läser bara fältet.
 
 ## Förutsättningar
 
@@ -40,7 +42,7 @@
   ```
   Alla kommandon nedan körs i `C:/w/birdy-artsidor/website` med Git Bash.
 - **Bygg och testa på testdata:** `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test <fil>` (egen port så att en annan dev-server inte krockar). Playwright serverar `dist/`, så bygg alltid med testdata före Playwright.
-- **Lägen:** `SPECIES_FIXTURES=1` läser testdatan i stället för `src/data/` och `src/assets/species/`. `SPECIES_PREVIEW=1` bygger även granskade sidor som inte är publicerade (sätts i Vercels miljö Preview i Task 17). `scripts/env-run.mjs` sätter variablerna på samma sätt på Windows och macOS.
+- **Lägen:** `SPECIES_FIXTURES=1` läser testdatan i stället för `src/data/` och `src/assets/species/`. `SPECIES_PREVIEW=1` bygger även kontrollerade sidor som inte är publicerade (sätts i Vercels miljö Preview i Task 17). `scripts/env-run.mjs` sätter variablerna på samma sätt på Windows och macOS.
 
 ## Filstruktur
 
@@ -88,9 +90,12 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { isComparisonBuilt, isSpeciesBuilt } from '../../src/lib/species-source.mjs';
 
-const ok = { status: 'ok', publish: true, review: { facts: { by: 'Albin Abrahamsson', at: '2026-11-20' } } };
+const ok = {
+  status: 'ok', publish: true,
+  verification: { method: 'auto', at: '2026-11-20', model: 'claude-sonnet-5', spotChecked: false },
+};
 
-test('publicerad och granskad art får sida', () => {
+test('publicerad och kontrollerad art får sida', () => {
   assert.equal(isSpeciesBuilt(ok, false), true);
 });
 
@@ -104,8 +109,9 @@ test('pending och failed får aldrig sida', () => {
   for (const status of ['pending', 'failed']) assert.equal(isSpeciesBuilt({ ...ok, status }, true), false);
 });
 
-test('ogranskade fakta ger ingen sida, inte ens i förhandsbygget', () => {
-  assert.equal(isSpeciesBuilt({ ...ok, review: { wave: 1 } }, true), false);
+test('okontrollerat faktablad ger ingen sida, inte ens i förhandsbygget', () => {
+  const { verification, ...unverified } = ok;
+  assert.equal(isSpeciesBuilt(unverified, true), false);
 });
 
 test('jämförelse kräver båda arternas sidor', () => {
@@ -130,7 +136,7 @@ Expected: FAIL, `Cannot find module '.../src/lib/species-source.mjs'`.
 // Where the species pages read their data, and which records get a page (spec 2026-09-25 §14).
 // Plain JS so astro.config.mjs, content.config.ts, src/lib/species.ts and the check scripts share one rule.
 //   SPECIES_FIXTURES=1  read the test data in tests/fixtures/ instead of src/data/ and src/assets/species/
-//   SPECIES_PREVIEW=1   also build reviewed pages that are not published yet (Vercel Preview)
+//   SPECIES_PREVIEW=1   also build verified pages that are not published yet (Vercel Preview)
 import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -143,9 +149,9 @@ export const speciesDir = () => (useFixtures() ? 'tests/fixtures/species' : 'src
 export const comparisonsDir = () => (useFixtures() ? 'tests/fixtures/comparisons' : 'src/data/comparisons');
 export const assetsDir = () => (useFixtures() ? 'tests/fixtures/species-assets' : 'src/assets/species');
 
-/** A species page exists when its text is written (ok), its facts are reviewed, and it is published or this is a preview build. */
+/** A species page exists when its text is written (ok), its facts are verified (spec Revision 2026-10-05), and it is published or this is a preview build. */
 export function isSpeciesBuilt(record, preview = isPreview()) {
-  return record.status === 'ok' && Boolean(record.review?.facts) && (record.publish === true || preview);
+  return record.status === 'ok' && Boolean(record.verification) && (record.publish === true || preview);
 }
 
 /** A comparison page exists when its text is written, it is published or previewed, and both species pages exist. */
@@ -359,7 +365,8 @@ function record(sp) {
       { id: 'f01', topic: 'appearance', sv: 'Testfaktum.', sources: [{ article: 'sv', quote: 'Testcitat som bara finns i testdata.' }] },
       ...(sp.look ?? []).map(lookalikeFact),
     ],
-    review: status === 'pending' ? { wave: 2 } : { facts: { by: 'Albin Abrahamsson', at: '2026-11-20' }, wave: sp.publish === false ? 2 : 1 },
+    review: { wave: status === 'pending' ? 2 : sp.publish === false ? 2 : 1 },
+    ...(status !== 'pending' ? { verification: { method: 'auto', at: '2026-11-20', model: 'fixture', spotChecked: false } } : {}),
     text: status === 'ok' ? { sv: textFor(sp, 'sv'), en: textFor(sp, 'en') } : null,
     ...(status === 'failed' ? { rejectedText: null } : {}),
     generated: {
@@ -829,9 +836,17 @@ const species = defineCollection({
         other: z.object({ scientific: z.string().min(1), qid: qid.optional() }).optional(),
       })).default([]),
       review: z.object({
-        facts: z.object({ by: z.string().min(1), at: z.string().regex(/^\d{4}-\d{2}-\d{2}/) }).optional(),
         wave: z.number().int().min(1).optional(),
       }),
+      // Revision 2026-10-05: replaces the old review.facts. Only `at` is read by the pages
+      // (the credit line and lastReviewed); method, model and spotChecked exist so the
+      // pipeline's own records are self-explaining, the site never branches on them.
+      verification: z.object({
+        method: z.literal('auto'),
+        at: z.string().regex(/^\d{4}-\d{2}-\d{2}/),
+        model: z.string().min(1),
+        spotChecked: z.boolean(),
+      }).optional(),
       text: z.object({ sv: langText, en: langText }).nullable(),
       generated: z.object({ text: z.object({ at: z.string() }).optional() }).optional(),
     })
@@ -843,8 +858,8 @@ const species = defineCollection({
       } else if (d.text) {
         ctx.addIssue({ code: 'custom', message: `${d.qid}: status ${d.status} ska ha text: null` });
       }
-      if (d.publish && (d.status !== 'ok' || !d.review.facts)) {
-        ctx.addIssue({ code: 'custom', message: `${d.qid}: publish kräver status ok och granskade fakta` });
+      if (d.publish && (d.status !== 'ok' || !d.verification)) {
+        ctx.addIssue({ code: 'custom', message: `${d.qid}: publish kräver status ok och kontrollerade fakta` });
       }
     }),
 });
@@ -888,7 +903,6 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import type { ImageMetadata } from 'astro';
 import groupData from '../data/species-groups.json';
 import type { Copy, Locale } from './i18n';
-import { ALBIN_URL } from './links';
 import { audioPublicPath, isComparisonBuilt, isPreview, isSpeciesBuilt, useFixtures } from './species-source.mjs';
 
 export type Species = CollectionEntry<'species'>['data'];
@@ -914,8 +928,6 @@ export const GROUPS: Group[] = groupData.groups;
 export const MIN_GROUP_SIZE = 3;
 export const SITE = 'https://birdy.community';
 export const PLAY_URL = 'https://play.google.com/store/apps/details?id=se.birdy.android';
-/** The person who reviews every fact sheet (spec §9.4), on every page and in JSON-LD. */
-export const REVIEWER = { name: 'Albin Abrahamsson', url: ALBIN_URL };
 export const ABOUT_SLUG: Record<Locale, string> = { sv: 'om-artsidorna', en: 'about-these-pages' };
 
 // Photos: src/assets/species/<QID>/*.webp, or the test images under tests/fixtures/ (SPECIES_FIXTURES=1).
@@ -1107,8 +1119,8 @@ export function lookAlikeView(s: Species, item: LookAlike, locale: Locale, built
   return { name, scientificOnly: !record, species: page, text: joinSentences(item.text), comparison };
 }
 
-/** The date the species' facts were reviewed, YYYY-MM-DD. Built species always have one. */
-export const reviewDate = (s: Species): string => (s.review.facts?.at ?? '').slice(0, 10);
+/** The date the species' facts were verified, YYYY-MM-DD (spec Revision 2026-10-05). Built species always have one. */
+export const reviewDate = (s: Species): string => (s.verification?.at ?? '').slice(0, 10);
 export const laterDate = (a: string, b: string): string => (a > b ? a : b);
 
 export function formatDate(iso: string, locale: Locale): string {
@@ -1173,8 +1185,6 @@ export function itemListJsonLd(pathname: string, name: string, locale: Locale, i
     },
   };
 }
-
-export const reviewerJsonLd = (): Record<string, unknown> => ({ '@type': 'Person', name: REVIEWER.name, url: REVIEWER.url });
 
 export function taxonJsonLd(s: Species): Record<string, unknown> {
   return {
@@ -2477,11 +2487,12 @@ const src = audioHref(s);
 
 ```astro
 ---
-// Credits for every photo, the Wikipedia articles, the data sources, the review line and the report
-// link (spec 2026-09-25 §5, §7 and §10). scripts/check-seo.mjs fails the build when one is missing.
+// Credits for every photo, the Wikipedia articles, the data sources, the verification line
+// (spec Revision 2026-10-05: "Kontrollerad mot källorna {date}", no name) and the report link
+// (spec 2026-09-25 §5, §7 and §10). scripts/check-seo.mjs fails the build when one is missing.
 import { getCopy, type Locale } from '../../lib/i18n';
 import { CONTACT_EMAIL } from '../../lib/links';
-import { REVIEWER, aboutHref, formatDate, wikiUrl, type SpeciesImage, type WikiLang, type WikiRef } from '../../lib/species';
+import { aboutHref, formatDate, wikiUrl, type SpeciesImage, type WikiLang, type WikiRef } from '../../lib/species';
 
 interface Props {
   locale: Locale;
@@ -2498,7 +2509,7 @@ const { locale, photos, articles, reportData, redList, reviewedAt, reportSubject
 const t = getCopy(locale);
 const labels: Record<WikiLang, string> = { sv: t.species.articleSv, en: t.species.articleEn, de: t.species.articleDe };
 const [gbifBefore, gbifAfter] = t.species.dataCreditReports.split('{gbif}');
-const [reviewedBefore, reviewedAfter] = t.species.reviewed.replace('{name}', REVIEWER.name).split('{date}');
+const [reviewedBefore, reviewedAfter] = t.species.reviewed.split('{date}');
 ---
 
 <div class="credits">
@@ -2723,7 +2734,7 @@ import { getCopy, type Locale } from '../../lib/i18n';
 import {
   SITE, appText, audioJsonLd, breadcrumbJsonLd, comparisonHref, comparisonPair, getAllRecords, getAllSpecies, getComparisons,
   groupByKey, groupHref, heroOf, hubHref, isUnpublished, joinSentences, lookAlikeView, pairNames, playHref, related,
-  reviewDate, reviewerJsonLd, speciesHref, speciesImage, speciesTitle, taxonJsonLd, wikiSources,
+  reviewDate, speciesHref, speciesImage, speciesTitle, taxonJsonLd, wikiSources,
   type Comparison, type LookAlikeView, type Species,
 } from '../../lib/species';
 import '../../styles/species.css';
@@ -2801,7 +2812,6 @@ const jsonLd = [
       ...(hero.author ? { creator: { '@type': 'Person', name: hero.author }, creditText: hero.author } : {}),
     },
     ...(audioNode ? { associatedMedia: audioNode } : {}),
-    reviewedBy: reviewerJsonLd(),
     lastReviewed: reviewed,
   },
 ];
@@ -3145,7 +3155,7 @@ import MonthChart from './MonthChart.astro';
 import { getCopy, type Locale } from '../../lib/i18n';
 import {
   SITE, appText, breadcrumbJsonLd, comparisonHref, comparisonPair, comparisonTitle, getAllSpecies, heroOf, hubHref,
-  isUnpublished, joinSentences, laterDate, pairNames, playHref, reviewDate, reviewerJsonLd, speciesHref, speciesImage,
+  isUnpublished, joinSentences, laterDate, pairNames, playHref, reviewDate, speciesHref, speciesImage,
   taxonJsonLd, wikiSources, type Comparison, type Species,
 } from '../../lib/species';
 import '../../styles/species.css';
@@ -3192,7 +3202,6 @@ const jsonLd = [
     name: title.replace(/ \| Birdy$/, ''),
     inLanguage: locale,
     about: pair.map((p) => taxonJsonLd(p.species)),
-    reviewedBy: reviewerJsonLd(),
     lastReviewed: reviewed,
   },
 ];
