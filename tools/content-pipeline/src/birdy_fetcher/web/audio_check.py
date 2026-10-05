@@ -11,10 +11,12 @@ import tempfile
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
-from subprocess import CompletedProcess
+from subprocess import CompletedProcess, TimeoutExpired
 from typing import Literal
 
 CONFIDENCE_THRESHOLD = 0.10
+FFMPEG_TIMEOUT = 120  # seconds; MP3 to WAV conversion should complete quickly
+CLASSIFY_TIMEOUT = 900  # seconds; first run may install TensorFlow via uv sync
 ToWavFn = Callable[[Path, Path], None]
 RunFn = Callable[..., "CompletedProcess[str]"]
 
@@ -57,23 +59,29 @@ def _default_to_wav(mp3_path: Path, wav_path: Path) -> None:
     import imageio_ffmpeg
 
     ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
-    subprocess.run(
-        [
-            ffmpeg,
-            "-y",
-            "-i",
-            str(mp3_path),
-            "-ar",
-            "48000",
-            "-ac",
-            "1",
-            "-sample_fmt",
-            "s16",
-            str(wav_path),
-        ],
-        check=True,
-        capture_output=True,
-    )
+    try:
+        subprocess.run(
+            [
+                ffmpeg,
+                "-y",
+                "-i",
+                str(mp3_path),
+                "-ar",
+                "48000",
+                "-ac",
+                "1",
+                "-sample_fmt",
+                "s16",
+                str(wav_path),
+            ],
+            check=True,
+            capture_output=True,
+            timeout=FFMPEG_TIMEOUT,
+        )
+    except subprocess.CalledProcessError as e:
+        raise AudioCheckFailed(f"ffmpeg misslyckades med kod {e.returncode}") from e
+    except TimeoutExpired as e:
+        raise AudioCheckFailed(f"ffmpeg timeout efter {FFMPEG_TIMEOUT} sekunder") from e
 
 
 def classify_clip(
@@ -85,22 +93,38 @@ def classify_clip(
 ) -> AudioCheckResult:
     with tempfile.TemporaryDirectory() as tmp:
         wav_path = Path(tmp) / "clip.wav"
-        to_wav(mp3_path, wav_path)
-        completed = run(
-            [
-                "uv",
-                "run",
-                "--project",
-                str(flexref_dir),
-                "python",
-                "classify_clip.py",
-                str(wav_path),
-            ],
-            cwd=flexref_dir,
-            capture_output=True,
-            text=True,
-            check=False,
+        try:
+            to_wav(mp3_path, wav_path)
+        except AudioCheckFailed:
+            # Already converted to AudioCheckFailed
+            raise
+        except subprocess.CalledProcessError as e:
+            raise AudioCheckFailed(f"ffmpeg misslyckades med kod {e.returncode}") from e
+        except TimeoutExpired as e:
+            raise AudioCheckFailed(f"ffmpeg timeout efter {FFMPEG_TIMEOUT} sekunder") from e
+
+        print(
+            "Kontrollerar inspelningen med ljudmodellen (första körningen kan ta flera minuter)..."
         )
+        try:
+            completed = run(
+                [
+                    "uv",
+                    "run",
+                    "--project",
+                    str(flexref_dir),
+                    "python",
+                    "classify_clip.py",
+                    str(wav_path),
+                ],
+                cwd=flexref_dir,
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=CLASSIFY_TIMEOUT,
+            )
+        except TimeoutExpired as e:
+            raise AudioCheckFailed(f"ljudmodellen timeout efter {CLASSIFY_TIMEOUT} sekunder") from e
     if completed.returncode != 0:
         raise AudioCheckFailed(completed.stderr.strip() or "ljudmodellen gav inget svar")
     return AudioCheckResult(windows=json.loads(completed.stdout)["windows"])

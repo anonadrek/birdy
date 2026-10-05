@@ -45,11 +45,74 @@ def test_audio_verdict_keeps_a_matched_recording() -> None:
     assert audio_verdict(result, "Q25485", identifiable_sound=True).action == "keep"
 
 
+def test_to_wav_failure_raises_audio_check_failed(tmp_path: Path) -> None:
+    """ffmpeg failure (non-zero exit) should raise AudioCheckFailed, not raw CalledProcessError."""
+
+    def fake_to_wav_fail(mp3_path: Path, wav_path: Path) -> None:
+        import subprocess
+
+        raise subprocess.CalledProcessError(1, "ffmpeg", stderr="corrupt MP3")
+
+    def fake_run(cmd: list[str], **kwargs: object) -> CompletedProcess[str]:
+        return _completed(stdout=json.dumps({"windows": [{"startSec": 0.0, "top": []}]}))
+
+    with pytest.raises(AudioCheckFailed, match="ffmpeg"):
+        classify_clip(
+            tmp_path / "voice.mp3",
+            tmp_path / "flexref",
+            to_wav=fake_to_wav_fail,
+            run=fake_run,
+        )
+
+
+def test_to_wav_timeout_raises_audio_check_failed(tmp_path: Path) -> None:
+    """ffmpeg timeout should raise AudioCheckFailed."""
+
+    def fake_to_wav_timeout(mp3_path: Path, wav_path: Path) -> None:
+        import subprocess
+
+        raise subprocess.TimeoutExpired("ffmpeg", 120)
+
+    def fake_run(cmd: list[str], **kwargs: object) -> CompletedProcess[str]:
+        return _completed(stdout=json.dumps({"windows": [{"startSec": 0.0, "top": []}]}))
+
+    with pytest.raises(AudioCheckFailed, match=r"timeout|tidsgräns"):
+        classify_clip(
+            tmp_path / "voice.mp3",
+            tmp_path / "flexref",
+            to_wav=fake_to_wav_timeout,
+            run=fake_run,
+        )
+
+
+def test_classify_timeout_raises_audio_check_failed(tmp_path: Path) -> None:
+    """Classification uv run timeout should raise AudioCheckFailed."""
+    import subprocess
+
+    def fake_run(cmd: list[str], **kwargs: object) -> CompletedProcess[str]:
+        if "classify_clip.py" in str(cmd):
+            raise subprocess.TimeoutExpired(cmd[0], 900)
+        return _completed(stdout=json.dumps({"windows": [{"startSec": 0.0, "top": []}]}))
+
+    def fake_to_wav(mp3_path: Path, wav_path: Path) -> None:
+        wav_path.write_bytes(b"RIFF....")
+
+    with pytest.raises(AudioCheckFailed, match=r"timeout|tidsgräns"):
+        classify_clip(
+            tmp_path / "voice.mp3",
+            tmp_path / "flexref",
+            to_wav=fake_to_wav,
+            run=fake_run,
+        )
+
+
 def test_classify_clip_calls_the_ml_eval_script_and_parses_json(tmp_path: Path) -> None:
     calls = []
+    kwargs_list = []
 
     def fake_run(cmd: list[str], **kwargs: object) -> CompletedProcess[str]:
         calls.append(cmd)
+        kwargs_list.append(kwargs)
         return _completed(stdout=json.dumps({"windows": [{"startSec": 0.0, "top": []}]}))
 
     def fake_to_wav(mp3_path: Path, wav_path: Path) -> None:
@@ -59,7 +122,21 @@ def test_classify_clip_calls_the_ml_eval_script_and_parses_json(tmp_path: Path) 
         tmp_path / "voice.mp3", tmp_path / "flexref", to_wav=fake_to_wav, run=fake_run
     )
     assert result.windows == [{"startSec": 0.0, "top": []}]
-    assert calls[0][:2] == ["uv", "run"]
+    # Verify full command prefix, not just first two elements
+    flexref_dir = str(tmp_path / "flexref")
+    expected_prefix = [
+        "uv",
+        "run",
+        "--project",
+        flexref_dir,
+        "python",
+        "classify_clip.py",
+    ]
+    assert calls[0][:6] == expected_prefix
+    # Verify cwd is set correctly
+    assert kwargs_list[0].get("cwd") == tmp_path / "flexref"
+    # Verify timeout is passed
+    assert "timeout" in kwargs_list[0]
 
 
 def test_classify_clip_raises_on_a_nonzero_exit(tmp_path: Path) -> None:
