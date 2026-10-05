@@ -12,6 +12,7 @@ import androidx.lifecycle.LifecycleOwner
 import com.google.common.util.concurrent.ListenableFuture
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -49,8 +50,11 @@ import kotlin.coroutines.resumeWithException
  * 1.4.0 enforces that itself: `ProcessCameraProvider.unbindAll()` calls
  * `Threads.checkMainThread()` and throws off-main. [stop] is called from GlobalScope on
  * `Dispatchers.Default`, so it force-dispatches its CameraX-touching body onto
- * `Dispatchers.Main.immediate` regardless of the caller's thread — and that dispatch is not
- * a cancellation point. Without a terminal [stopped] flag, stop() can observe a still-null
+ * `Dispatchers.Main.immediate` regardless of the caller's thread, combined with [NonCancellable]
+ * so the dispatch itself can't be skipped by a cancelled caller — `withContext` checks for
+ * cancellation on entry, and without [NonCancellable] a cancelled caller (e.g. a second,
+ * overlapping `stop()` call) would make it throw before ever unbinding, leaving the camera
+ * bound. Without a terminal [stopped] flag, stop() can observe a still-null
  * [cameraProvider] and return, after which start() finishes the bind against the Activity
  * lifecycle. Result: camera LED stays on after leaving Scan. [stopped] is set *before*
  * taking [lifecycleLock] so an in-flight bind unbinds itself; stop() then unbinds again.
@@ -143,8 +147,10 @@ class AndroidCameraSource(
             // unbindLocked() touches CameraX (unbindAll/clearAnalyzer), which CameraX 1.4.0
             // enforces must run on the main thread (Threads.checkMainThread()) — calling it
             // off-main throws IllegalStateException. Force the whole CameraX-touching body
-            // onto the main thread regardless of which thread called stop().
-            withContext(Dispatchers.Main.immediate) {
+            // onto the main thread regardless of which thread called stop(). NonCancellable:
+            // stop() must release the camera even if its own caller is cancelled — it must
+            // never depend on the caller's cancellation state.
+            withContext(NonCancellable + Dispatchers.Main.immediate) {
                 synchronized(lifecycleLock) {
                     unbindLocked()
                     // After clearAnalyzer so an in-flight frame can finish on this pool first.
