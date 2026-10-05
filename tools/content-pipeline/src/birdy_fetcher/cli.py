@@ -265,6 +265,40 @@ def web_sources(
     _print_outcomes(asyncio.run(run_sources(paths, options)), paths.reports)
 
 
+@web.command("facts")
+@click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
+@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")
+@click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
+@click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
+@click.option("--force", is_flag=True, help="Ta fram faktablad även för granskade arter.")
+@click.option("--regenerate", is_flag=True, help="Fråga modellen igen trots cachat svar.")
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+def web_facts(
+    species: tuple[str, ...],
+    model_key: str,
+    effort: str,
+    max_cost: float | None,
+    force: bool,
+    regenerate: bool,
+    workers: int,
+) -> None:
+    """Steg 2: faktablad med citat ur Wikipedia. Kostar pengar."""
+    from .web.facts_step import FactsOptions, run_facts
+
+    _require_api_key()
+    paths = _web_paths()
+    options = FactsOptions(
+        qids=species,
+        model_key=model_key,
+        effort=effort,
+        max_cost=max_cost,
+        force=force,
+        regenerate=regenerate,
+        workers=workers,
+    )
+    _print_outcomes(asyncio.run(run_facts(paths, options)), paths.reports)
+
+
 @web.command("v1")
 @click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla granskade arter.")
 @click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="opus")

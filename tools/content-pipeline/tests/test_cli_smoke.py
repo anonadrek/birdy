@@ -79,3 +79,11 @@ def test_web_sources_help_lists_its_flags() -> None:
     assert result.exit_code == 0
     for flag in ("--species", "--refresh", "--force", "--workers", "--dry-run"):
         assert flag in result.output
+
+
+def test_web_facts_requires_an_api_key(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("ANTHROPIC_AUTH_TOKEN", raising=False)
+    result = CliRunner().invoke(main, ["web", "facts", "--species", "Q1", "--max-cost", "1"])
+    assert result.exit_code != 0
+    assert "ANTHROPIC_API_KEY" in str(result.output)
