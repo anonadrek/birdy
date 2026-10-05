@@ -4,6 +4,8 @@
 
 > **Avvikelse 2026-10-05:** Albin granskar inte längre varje arts faktablad för hand (spec Revision 2026-10-05). En automatisk kontroll (V1 till V4, Task 14b till 14e) ersätter det, och Albin beslutar bara om det kontrollen flaggar plus ett stickprov på 2 arter per våg, i ett undantagsark (Task 16, 17 omskrivna). Fältet `review.facts` är ersatt av `verification`. De nya tasken är numrerade 14b till 14e för att inte rubba numreringen på Task 15 och framåt.
 
+> **Avvikelse 2026-10-05 (b):** Albin vill committa och pusha sida för sida i stället för att gå igenom en hel våg i taget (spec Revision 2026-10-05 (b)). Det ändrar två saker här: (1) **`web publish` (Task 23)** publicerar en art eller jämförelse i taget i stället för att vänta på hela vågen; `--wave N` blir en kö-ordning, inte en gemensam frisläppning. (2) **`web sheet` (Task 16)** får ett andra läge: stickprovet flyttas ur undantagsarket och tas i stället efter publicering, 2 arter per 40 publicerade (plus 1 jämförelse per 10), i en egen flik. Körtaskarna R5 till R9 är omskrivna till en löpande art-för-art-loop; den loopen äger stegen för lokalt bygge, `check-seo.mjs`, Playwright/axe, commit och push per sida, och körs i sin helhet i fas 2:s worktree (`docs/superpowers/plans/2026-09-25-artsidor-fas2-sidor.md` Task 17), eftersom den behöver Astro och Playwright. Fas 1b:s ansvar är bara att `web publish` kan köras en art i taget och att `web sheet` kan dra ett stickprov efter publicering.
+
 **Goal:** Bygga om pipelinesteget `birdy-fetcher web` så att varje art får källor från tre Wikipedior, Artportalen, Svenska rödlistan och Commons, ett faktablad som kontrolleras automatiskt (och granskas av Albin bara vid undantag), text som bara skrivs ur godkända fakta och kontrolleras mening för mening, samt jämförelsetexter för de mest sökta förväxlingsparen.
 
 **Architecture:** Artens JSON-fil i `website/src/data/species/<QID>.json` är tillståndet mellan stegen: `sources` → `facts` → `verify` → `waves` → `sheet` → (Albin beslutar om undantagen) → `import` → `write` → `compare` → `publish`. Varje steg äger vissa nycklar och lämnar resten orörda. Allt som går att räkna (månader, län, rödlista, status mot data, siffror mellan artiklarna) görs av kod. Modellen tar bara ut citerade fakta, kontrollerar varje faktum mot sitt citat, skriver ur godkända fakta och kontrollerar meningar.
@@ -49,7 +51,7 @@ Nya filer under `src/birdy_fetcher/web/`:
 | `audio_check.py` | V4: kör Birdys egen ljudmodell på inspelningen via `tools/ml-eval/flexref`, i en egen process |
 | `verify_step.py` | Steg mellan faktablad och undantagsark: kör V1 till V4 för en art, samlar flaggorna, skriver `record["flags"]` |
 | `waves.py` | Vågorna och publiceringen |
-| `review_sheet.py` | Undantagsarket ut (CSV, bara flaggor och vågens stickprov) och Albins beslut in |
+| `review_sheet.py` | Undantagsarket ut (CSV, bara flaggor) och Albins beslut in; stickprovet efter publicering (ändrat 2026-10-05 (b)) |
 | `text_model.py` | Textens modell med meningar och fakta-id, omvandling till sajtens form |
 | `text_checks.py` | Kodkontrollerna för texten, borttagning av meningar |
 | `checker.py` | Den andra modellen som kontrollerar meningar |
@@ -4892,6 +4894,8 @@ git commit -m "feat(pipeline): V4 kör Birdys ljudmodell på inspelningen"
 
 Flödet per art: V1 (stryk, och om ett obligatoriskt ämne då blir tomt: ett nytt försök hos faktabladets modell med felen, spegel av Task 13/14:s befintliga omförsök) → V2 och V3 (flaggor) → V4 (stryk, flagga eller inget, bara om arten har en inspelning). Resultatet är `record["flags"]` (tom lista om inget flaggades) och ett nytt `record["generated"]["verify"]`. En art utan flaggor behöver ingen rad i undantagsarket (Task 16).
 
+**Ändrat 2026-10-05 (b):** en art utan flaggor väntar inte på Task 17:s import längre. `web verify` sätter `record["verification"]` direkt när `flags` är tom, så arten kan gå vidare till `web write` och publiceras utan att någon våg behöver samlas ihop och importeras som en batch. Bara arter med en öppen flagga väntar, på Albins beslut i det löpande undantagsarket (`web import`, Task 17).
+
 - [ ] **Step 1: `FactExtractor.extract` får valfri extra feedback**
 
 I `facts_step.py`, ändra signaturen och cache-kontrollen i `FactExtractor.extract` (koden runt dem är oförändrad):
@@ -5005,6 +5009,9 @@ async def test_a_clean_fact_sheet_is_verified_with_no_flags(tmp_path: Path) -> N
     assert record is not None
     assert record["flags"] == []
     assert record["generated"]["verify"]["model"] == "claude-sonnet-5"
+    # Ändrat 2026-10-05 (b): sätts direkt, utan att vänta på web import.
+    assert record["verification"]["spotChecked"] is False
+    assert record["verification"]["model"] == "claude-sonnet-5"
 
 
 async def test_a_struck_required_topic_is_retried_once(tmp_path: Path) -> None:
@@ -5276,6 +5283,15 @@ async def _one(
             "at": now.isoformat(),
             "factsHash": facts_hash(record),
         }
+        if not flags:
+            # Ändrat 2026-10-05 (b): inga flaggor betyder inget att vänta på. Arten
+            # behöver aldrig gå via undantagsarket eller `web import` (Task 17).
+            record["verification"] = {
+                "method": "auto",
+                "at": now.date().isoformat(),
+                "model": MODELS[options.model_key],
+                "spotChecked": False,
+            }
         save_record(path, record)
         return out("ok", [], [*notes, *([f"{len(flags)} flaggor"] if flags else [])])
     except Exception as exc:  # one species' error must not stop the run or overwrite a file
@@ -5526,7 +5542,9 @@ git commit -m "feat(pipeline): web waves delar in arterna i tre publiceringsvåg
 - Modify: `src/birdy_fetcher/cli.py`
 - Test: `tests/test_web_review_sheet.py`
 
-Spec Revision 2026-10-05 (ersätter bilaga E:s tidigare form). Arket visar bara det den automatiska kontrollen (Task 14e) inte kunde avgöra: en rad per flagga, plus hela faktabladet för ett stickprov på `SPOT_CHECK_SIZE` (2) arter per våg, draget med ett sparat frö så att samma frö alltid ger samma arter. Förväxlingsartens vetenskapliga namn står i kolumnen Ämne, så att Faktum bara innehåller själva faktumet och kan ändras fritt.
+Spec Revision 2026-10-05 (ersätter bilaga E:s tidigare form). Arket visar bara det den automatiska kontrollen (Task 14e) inte kunde avgöra: en rad per flagga. Förväxlingsartens vetenskapliga namn står i kolumnen Ämne, så att Faktum bara innehåller själva faktumet och kan ändras fritt.
+
+**Ändrat 2026-10-05 (b):** stickprovet är inte längre en del av den här exporten. Det drogs tidigare per våg, före publicering, ur arter som ännu inte var granskade (`_eligible`); nu dras det efter publicering, 2 arter per 40 publicerade (plus 1 jämförelse per 10 publicerade jämförelser), i en egen flik (`review/stickprov.csv`). `export_wave` nedan exporterar därför bara flaggor (ingen spot check-parameter kvar); den nya funktionen `export_spot_check`, i samma fil, hanterar stickprovet och återanvänder `full_sheet_rows`, `write_sheet` och `COLUMNS`. Jämförelsernas stickprov (1 av 10) läggs till av fas 2:s publiceringsloop (`docs/superpowers/plans/2026-09-25-artsidor-fas2-sidor.md` Task 17), eftersom en jämförelse inte har ett eget faktablad; den raden visar hela jämförelsetexten (`shortAnswer` och tabellraderna) i stället för fakta-rader, och behöver ett nytt fält `spotChecked: false` på jämförelsens post (standard `false`, inte med i specens ursprungliga bilaga D).
 
 - [ ] **Step 1: Skriv de fallerande testerna**
 
@@ -5540,8 +5558,10 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
-from birdy_fetcher.web.record import Record, new_record, record_path, save_record
-from birdy_fetcher.web.review_sheet import COLUMNS, export_wave, flag_rows, full_sheet_rows, write_sheet
+from birdy_fetcher.web.record import Record, load_record, new_record, record_path, save_record
+from birdy_fetcher.web.review_sheet import (
+    COLUMNS, export_spot_check, export_wave, flag_rows, full_sheet_rows, write_sheet,
+)
 
 from .web_repo import make_repo
 
@@ -5623,26 +5643,64 @@ def test_write_sheet_has_the_columns(tmp_path: Path) -> None:
         assert len(list(reader)) == 5
 
 
-def test_export_wave_picks_flagged_species_and_a_seeded_spot_check(tmp_path: Path) -> None:
+def test_export_wave_picks_only_flagged_species(tmp_path: Path) -> None:
+    """Ändrat 2026-10-05 (b): export_wave drar inte längre ett stickprov. Den delen
+    flyttade till export_spot_check, efter publicering."""
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
     flagged = _flagged("Q1")
     clean = [_record(f"Q{i}") for i in range(2, 7)]
     for r in (flagged, *clean):
         save_record(record_path(paths.data_out, r["qid"]), r)
-    result = export_wave(paths, 1, seed=42)
+    result = export_wave(paths, 1)
     assert result.flagged == ["Q1"]
-    assert len(result.spot_checked) == 2
-    assert "Q1" not in result.spot_checked
-    again = export_wave(paths, 1, seed=42)
-    assert again.spot_checked == result.spot_checked
+    assert not hasattr(result, "spot_checked")
 
 
-def test_export_wave_redraw_adds_named_species(tmp_path: Path) -> None:
+def _published(qid: str) -> Record:
+    record = _record(qid)
+    record["publish"] = True
+    record["verification"] = {
+        "method": "auto", "at": "2026-11-20", "model": "claude-sonnet-5", "spotChecked": False,
+    }
+    return record
+
+
+def test_spot_check_draws_nothing_below_the_batch_size(tmp_path: Path) -> None:
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
-    for r in (_record(f"Q{i}") for i in range(1, 6)):
+    for r in (_published(f"Q{i}") for i in range(1, 40)):  # 39, one short of SPOT_CHECK_BATCH
         save_record(record_path(paths.data_out, r["qid"]), r)
-    result = export_wave(paths, 1, seed=1, extra_spot_check=("Q5",))
-    assert "Q5" in result.spot_checked
+    assert export_spot_check(paths, seed=1) is None
+
+
+def test_spot_check_draws_two_once_the_batch_is_full(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    for r in (_published(f"Q{i}") for i in range(1, 41)):  # exactly SPOT_CHECK_BATCH
+        save_record(record_path(paths.data_out, r["qid"]), r)
+    result = export_spot_check(paths, seed=1)
+    assert result is not None
+    assert len(result.species) == 2
+    for qid in result.species:
+        record = load_record(record_path(paths.data_out, qid))
+        assert record is not None and record["verification"]["spotChecked"] is True
+    # drawn species don't come up again once the batch has been consumed
+    again = export_spot_check(paths, seed=1)
+    assert again is None
+
+
+def test_spot_check_force_draws_regardless_of_batch_size(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    for r in (_published(f"Q{i}") for i in range(1, 6)):
+        save_record(record_path(paths.data_out, r["qid"]), r)
+    result = export_spot_check(paths, seed=1, force=True)
+    assert result is not None and len(result.species) == 2
+
+
+def test_spot_check_extra_species_is_a_redraw_after_a_confirmed_miss(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    for r in (_published(f"Q{i}") for i in range(1, 6)):
+        save_record(record_path(paths.data_out, r["qid"]), r)
+    result = export_spot_check(paths, seed=1, extra_species=("Q5",))
+    assert "Q5" in result.species
 ```
 
 - [ ] **Step 2: Kör och se dem falla**
@@ -5653,9 +5711,10 @@ Expected: FAIL med `ModuleNotFoundError`.
 - [ ] **Step 3: Skriv `review_sheet.py`**
 
 ```python
-"""The exception sheet (spec 2026-09-25 Revision 2026-10-05, §9.4 and appendix E): one CSV
-per wave, uploaded to Albin's Drive as a Google Sheet, exported back as CSV and imported.
-Only what the automatic kontroll (V1 to V4, Task 14e) flagged, plus a seeded spot check."""
+"""The exception sheet (spec 2026-09-25 Revision 2026-10-05, §9.4 and appendix E): a
+running CSV, uploaded to Albin's Drive as a Google Sheet, exported back as CSV and
+imported. Only what the automatic kontroll (V1 to V4, Task 14e) flagged. The seeded spot
+check moved out to `export_spot_check` after publication (Revision 2026-10-05 (b))."""
 
 from __future__ import annotations
 
@@ -5667,7 +5726,7 @@ from typing import Any
 
 from .facts import TOPIC_SV
 from .paths import WebPaths
-from .record import Record, is_reviewed, load_all
+from .record import Record, is_reviewed, load_all, record_path, save_record
 
 COLUMNS = [
     "Art", "QID", "Rad", "Kontroll", "Typ", "Id", "Ämne", "Faktum", "Källa", "Citat", "Beslut", "Kommentar",
@@ -5676,7 +5735,9 @@ KEEP = "behåll"
 STRIKE = "stryk"
 CHANGE = "ändra"
 DATA_SOURCES = {"artportalen": "Artportalen via GBIF", "rodlistan": "Svenska rödlistan 2025"}
-SPOT_CHECK_SIZE = 2
+# Stickprovet efter publicering (ändrat 2026-10-05 (b)): 2 arter per 40 publicerade.
+SPOT_CHECK_BATCH = 40
+SPOT_CHECK_DRAW = 2
 
 
 def revision_url(lang: str, revision: str) -> str:
@@ -5789,8 +5850,6 @@ def write_sheet(path: Path, rows: list[dict[str, str]]) -> None:
 class ExportResult:
     path: Path
     flagged: list[str] = field(default_factory=list)
-    spot_checked: list[str] = field(default_factory=list)
-    seed: int = 0
 
 
 def _eligible(records: dict[str, Record], wave: int) -> list[Record]:
@@ -5803,51 +5862,103 @@ def _eligible(records: dict[str, Record], wave: int) -> list[Record]:
     ]
 
 
-def export_wave(
-    paths: WebPaths, wave: int, *, seed: int | None = None, extra_spot_check: tuple[str, ...] = ()
-) -> ExportResult:
-    """Flagged species plus a seeded spot check of SPOT_CHECK_SIZE clean species (spec point
-    5). `extra_spot_check` adds named species on top, for a redraw after the spot check
-    catches something V1 to V4 missed (the agent logs the miss in the report by hand)."""
+def export_wave(paths: WebPaths, wave: int) -> ExportResult:
+    """Flagged species only (ändrat 2026-10-05 (b): stickprovet flyttat till
+    export_spot_check, se nedan). Arket är löpande, inte uppdelat per våg i Drive, men
+    `wave` är kvar som ett filter så Albin kan be om bara en körnings flaggor."""
     records = load_all(paths.data_out)
     eligible = _eligible(records, wave)
     flagged = sorted((r for r in eligible if r.get("flags")), key=lambda r: str(r["names"]["sv"]))
-    unflagged = {str(r["qid"]): r for r in eligible if not r.get("flags")}
-    used_seed = seed if seed is not None else 1000 + wave
-    ordered = sorted(unflagged.values(), key=lambda r: str(r["names"]["sv"]))
-    drawn = random.Random(used_seed).sample(ordered, k=min(SPOT_CHECK_SIZE, len(ordered)))
-    spot = {str(r["qid"]): r for r in drawn}
-    for qid in extra_spot_check:
-        if qid in unflagged:
-            spot[qid] = unflagged[qid]
-    spot_list = sorted(spot.values(), key=lambda r: str(r["names"]["sv"]))
     rows = [row for r in flagged for row in flag_rows(r)]
-    rows += [row for r in spot_list for row in full_sheet_rows(r)]
-    path = paths.review / f"wave-{wave}-ark.csv"
+    path = paths.review / "undantag.csv"
     write_sheet(path, rows)
-    return ExportResult(
-        path=path,
-        flagged=[str(r["qid"]) for r in flagged],
-        spot_checked=[str(r["qid"]) for r in spot_list],
-        seed=used_seed,
+    return ExportResult(path=path, flagged=[str(r["qid"]) for r in flagged])
+
+
+@dataclass
+class SpotCheckResult:
+    path: Path
+    species: list[str] = field(default_factory=list)
+    seed: int = 0
+
+
+def _unspotchecked_published(records: dict[str, Record]) -> list[Record]:
+    return [
+        r
+        for r in records.values()
+        if r.get("publish") and r.get("verification") and not r["verification"].get("spotChecked")
+    ]
+
+
+def export_spot_check(
+    paths: WebPaths, *, seed: int | None = None, extra_species: tuple[str, ...] = (), force: bool = False
+) -> SpotCheckResult | None:
+    """Stickprovet efter publicering (spec Revision 2026-10-05 (b), ersätter export_wave:s
+    tidigare stickprov före publicering). Drar SPOT_CHECK_DRAW arter först när
+    SPOT_CHECK_BATCH fler publicerade-men-inte-stickprovade arter har samlats sedan
+    senaste dragningen; returnerar None annars. `force` drar direkt oavsett antal, för en
+    redragning efter ett bekräftat fel (`extra_species` lägger till namngivna arter på
+    samma dragning). Dragna arter får `verification.spotChecked = true` direkt; Albins
+    beslut (behåll/stryk/ändra) importeras separat, som för undantagsarkets flaggor."""
+    records = load_all(paths.data_out)
+    pending = sorted(_unspotchecked_published(records), key=lambda r: str(r["names"]["sv"]))
+    used_seed = seed if seed is not None else 2000
+    drawn: list[Record] = []
+    if force or len(pending) >= SPOT_CHECK_BATCH:
+        drawn = random.Random(used_seed).sample(pending, k=min(SPOT_CHECK_DRAW, len(pending)))
+    drawn_by_qid = {str(r["qid"]): r for r in drawn}
+    for qid in extra_species:
+        if qid in records and qid not in drawn_by_qid:
+            drawn_by_qid[qid] = records[qid]
+    if not drawn_by_qid:
+        return None
+    drawn_list = sorted(drawn_by_qid.values(), key=lambda r: str(r["names"]["sv"]))
+    rows = [row for r in drawn_list for row in full_sheet_rows(r)]
+    path = paths.review / "stickprov.csv"
+    existing_rows: list[dict[str, str]] = []
+    if path.exists():
+        with path.open(encoding="utf-8", newline="") as f:
+            existing_rows = list(csv.DictReader(f))
+    write_sheet(path, [*existing_rows, *rows])
+    for record in drawn_list:
+        record["verification"]["spotChecked"] = True
+        save_record(record_path(paths.data_out, str(record["qid"])), record)
+    return SpotCheckResult(
+        path=path, species=[str(r["qid"]) for r in drawn_list], seed=used_seed
     )
 ```
 
-- [ ] **Step 4: Kommandot i `cli.py`**
+**Jämförelsernas stickprov** (1 av 10 publicerade jämförelser) är inte kodat här: en jämförelse har inget eget faktablad, bara en text byggd ur de två arternas fakta, så raden i arket blir annorlunda (hela jämförelsetexten, inte fakta-rad för fakta-rad) och fältet den sätter (`spotChecked` på jämförelsens post, `false` som standard, finns inte i specens bilaga D ännu) hör hemma i `compare.py` (Task 22). Läggs till av fas 2:s publiceringsloop (`docs/superpowers/plans/2026-09-25-artsidor-fas2-sidor.md` Task 17) när den byggs, med samma `SPOT_CHECK_BATCH`-mönster men batch 10 och drag 1.
+
+- [ ] **Step 4: Kommandona i `cli.py`**
 
 ```python
 @web.command("sheet")
 @click.option("--wave", type=click.IntRange(1, 3), required=True)
-@click.option("--seed", type=int, default=None, help="Frö för stickprovet. Standard: 1000 + våg.")
-@click.option("--redraw", multiple=True, help="Extra Q-ID(er) till stickprovet efter ett missat fel.")
-def web_sheet(wave: int, seed: int | None, redraw: tuple[str, ...]) -> None:
-    """Skriver undantagsarket för en våg till review/wave-<n>-ark.csv. Gratis."""
+def web_sheet(wave: int) -> None:
+    """Skriver undantagsarkets flaggor till review/undantag.csv. Gratis."""
     from .web.review_sheet import export_wave
 
-    result = export_wave(_web_paths(), wave, seed=seed, extra_spot_check=redraw)
+    result = export_wave(_web_paths(), wave)
+    click.echo(f"{len(result.flagged)} flaggade arter. Ladda upp {result.path} till Drive.")
+
+
+@web.command("spot-check")
+@click.option("--seed", type=int, default=None, help="Frö för stickprovet. Standard: 2000.")
+@click.option("--extra", multiple=True, help="Extra Q-ID(er) till stickprovet efter ett bekräftat missat fel.")
+@click.option("--force", is_flag=True, help="Dra direkt, utan att vänta på SPOT_CHECK_BATCH fler publicerade arter.")
+def web_spot_check(seed: int | None, extra: tuple[str, ...], force: bool) -> None:
+    """Stickprov efter publicering (spec Revision 2026-10-05 (b)). Körs av fas 2:s
+    publiceringsloop efter varje publicerad art; skriver bara när något faktiskt drogs."""
+    from .web.review_sheet import export_spot_check
+
+    result = export_spot_check(_web_paths(), seed=seed, extra_species=extra, force=force)
+    if result is None:
+        click.echo("Inget drogs än (för få nypublicerade arter sedan sist).")
+        return
     click.echo(
-        f"{len(result.flagged)} flaggade arter. Stickprov (frö {result.seed}): "
-        f"{', '.join(result.spot_checked)}. Ladda upp {result.path} till Drive som Google-kalkylark."
+        f"Stickprov (frö {result.seed}): {', '.join(result.species)}. "
+        f"Ladda upp {result.path} till Drive som Google-kalkylark."
     )
 ```
 
@@ -5862,7 +5973,7 @@ Run: `uv run ruff check --fix . && uv run ruff format . && uv run mypy`
 
 ```bash
 git add src/birdy_fetcher/web/review_sheet.py src/birdy_fetcher/cli.py tests/test_web_review_sheet.py
-git commit -m "feat(pipeline): web sheet skriver undantagsarket, flaggor plus ett seedat stickprov"
+git commit -m "feat(pipeline): web sheet skriver bara flaggor, web spot-check drar stickprovet efter publicering"
 ```
 
 ---
@@ -5873,7 +5984,9 @@ git commit -m "feat(pipeline): web sheet skriver undantagsarket, flaggor plus et
 - Modify: `src/birdy_fetcher/web/review_sheet.py` (lägg till), `src/birdy_fetcher/cli.py`
 - Test: `tests/test_web_review_sheet.py` (lägg till)
 
-Spec Revision 2026-10-05. Importen kontrollerar hela arket först och ändrar ingenting om något är fel: en rad som saknas för ett stickprov-faktum, ett okänt beslut, `ändra` utan ny text, en status som inte är en av de sex etiketterna, eller en flagga utan `behåll` eller `stryk`. En art som inte stod i arket alls (inga flaggor, inget stickprov) får `verification` direkt, utan beslut. Fältet `review.facts = { by, at }` finns inte längre: `verification = { method, at, model, spotChecked }` är den nya sanningskällan för "är den här artens faktablad klar att skriva text ur".
+Spec Revision 2026-10-05. Importen kontrollerar hela arket först och ändrar ingenting om något är fel: ett okänt beslut, `ändra` utan ny text, en status som inte är en av de sex etiketterna, eller en flagga utan `behåll` eller `stryk`. Fältet `review.facts = { by, at }` finns inte längre: `verification = { method, at, model, spotChecked }` är den nya sanningskällan för "är den här artens faktablad klar att skriva text ur".
+
+**Ändrat 2026-10-05 (b):** `web verify` (Task 14e) sätter redan `verification` direkt för en art utan flaggor, så `_auto_clear` nedan är bara en säkerhetsnät för data som verifierades före den ändringen, inte det normala fallet längre. Arket (`export_wave`) innehåller numera bara flaggor, aldrig stickprov-rader, så validator-grenen om "en rad som saknas för ett stickprov-faktum" i den tidigare specversionen gäller inte den här importen (den gäller nu stickprovets egen import, nedan). `apply_review` återanvänds oförändrad för BÅDA arken: undantagsarkets flaggor och stickprovets `behåll`/`stryk`/`ändra` (samma `Typ`-värden, samma kolumner), eftersom en stickprovsrad som rättas med `ändra` måste gå igenom samma faktakontroll och sättas `edited: true` på samma sätt. Default-filen byts från `review/wave-<n>.csv` till `review/undantag.csv`, och `--wave` blir valfritt (bara ett filter för auto-clear-säkerhetsnätet, inte ett krav).
 
 - [ ] **Step 1: Skriv de fallerande testerna**
 
@@ -5979,11 +6092,34 @@ def test_import_wave_also_verifies_species_without_a_sheet_row(tmp_path: Path) -
     save_record(record_path(paths.data_out, "Q2"), clean)
     sheet = tmp_path / "wave-1.csv"
     write_sheet(sheet, _flag_decisions(flag_rows(flagged), s01=KEEP))
-    result = import_wave(paths, 1, sheet, date="2026-11-20")
+    result = import_wave(paths, sheet, wave=1, date="2026-11-20")
     assert set(result.changed) == {"Q1", "Q2"}
     cleared = load_record(record_path(paths.data_out, "Q2"))
     assert cleared is not None
     assert cleared["verification"]["spotChecked"] is False
+
+
+def test_import_without_a_wave_only_touches_the_sheets_species(tmp_path: Path) -> None:
+    """Ändrat 2026-10-05 (b): samma kommando importerar stickprovet efter publicering,
+    utan --wave och utan att röra arter som inte stod i arket."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    spot_checked = _record("Q1")
+    spot_checked["publish"] = True
+    spot_checked["verification"] = {
+        "method": "auto", "at": "2026-11-10", "model": "claude-sonnet-5", "spotChecked": True,
+    }
+    untouched = _record("Q2")
+    save_record(record_path(paths.data_out, "Q1"), spot_checked)
+    save_record(record_path(paths.data_out, "Q2"), untouched)
+    sheet = tmp_path / "stickprov.csv"
+    rows = _decide(full_sheet_rows(spot_checked), f01=(CHANGE, "Svart huvud och vita kinder."))
+    write_sheet(sheet, rows)
+    result = import_wave(paths, sheet, date="2026-12-01")
+    assert result.changed == ["Q1"]
+    fixed = load_record(record_path(paths.data_out, "Q1"))
+    assert fixed is not None
+    assert fixed["verification"]["at"] == "2026-12-01"
+    assert fixed["facts"][0]["sv"] == "Svart huvud och vita kinder."
 ```
 
 - [ ] **Step 2: Kör och se dem falla**
@@ -5993,7 +6129,7 @@ Expected: FAIL med `ImportError`.
 
 - [ ] **Step 3: Implementera**
 
-Lägg till i `review_sheet.py` (och `from .facts import STATUS_BY_SV, STATUS_SV` samt `from .record import record_path, save_record` bland importerna):
+Lägg till i `review_sheet.py` (och `from .facts import STATUS_BY_SV, STATUS_SV` bland importerna; `record_path` och `save_record` finns redan sedan Task 16):
 
 ```python
 class ReviewImportError(ValueError):
@@ -6119,9 +6255,21 @@ def _auto_clear(record: Record) -> bool:
     )
 
 
-def import_wave(paths: WebPaths, wave: int, sheet: Path, *, date: str) -> ImportResult:
+def import_wave(paths: WebPaths, sheet: Path, *, wave: int | None = None, date: str) -> ImportResult:
+    """Ändrat 2026-10-05 (b): `wave` är valfritt. Utan den importeras bara arket, utan
+    säkerhetsnätet som letar upp opåverkade arter i en bestämd våg (`_auto_clear`
+    behövs sällan längre, se tasken ovan, men är kvar för äldre data). Samma funktion
+    importerar både det löpande undantagsarket och stickprovet efter publicering
+    (`review/stickprov.csv`): en `ändra` på en stickprovsrad sätter `verification.at`
+    till importdatumet, vilket är det nya datumet på "Kontrollerad mot källorna"."""
     records = load_all(paths.data_out)
     result = apply_review(records, read_sheet(sheet), date=date)
+    if wave is None:
+        for qid in result.changed:
+            save_record(record_path(paths.data_out, qid), records[qid])
+        for qid in result.removed_audio:
+            (paths.images_out / qid / "voice.mp3").unlink(missing_ok=True)
+        return result
     for qid, record in records.items():
         if qid in result.changed or record.get("review", {}).get("wave") != wave:
             continue
@@ -6144,23 +6292,26 @@ def import_wave(paths: WebPaths, wave: int, sheet: Path, *, date: str) -> Import
 
 ```python
 @web.command("import")
-@click.option("--wave", type=click.IntRange(1, 3), required=True)
+@click.option("--wave", type=click.IntRange(1, 3), default=None, help="Valfritt säkerhetsnät, se Task 17 (ändrat 2026-10-05 (b)).")
 @click.option(
     "--file", "sheet", type=click.Path(exists=True, dir_okay=False, path_type=Path), default=None,
-    help="Exporterad CSV. Standard: review/wave-<n>.csv.",
+    help="Exporterad CSV. Standard: review/undantag.csv.",
 )
 @click.option("--date", "review_date", default=None, help="Kontrolldatum, YYYY-MM-DD. Standard: i dag.")
-def web_import(wave: int, sheet: Path | None, review_date: str | None) -> None:
-    """Läser in Albins beslut ur undantagsarket och sätter verification på hela vågen. Ändrar ingenting om något är fel."""
+def web_import(wave: int | None, sheet: Path | None, review_date: str | None) -> None:
+    """Läser in Albins beslut ur undantagsarket (standard) eller stickprovet (--file
+    review/stickprov.csv) och sätter verification på de berörda arterna. Ändrar
+    ingenting om något är fel. En rättad stickprovsrad får ett nytt kontrolldatum,
+    vilket fas 2:s publiceringsloop republicerar sidan med."""
     from datetime import date
 
     from .web.review_sheet import ReviewImportError, import_wave
 
     paths = _web_paths()
-    path = sheet or paths.review / f"wave-{wave}.csv"
+    path = sheet or paths.review / "undantag.csv"
     when = review_date or date.today().isoformat()
     try:
-        result = import_wave(paths, wave, path, date=when)
+        result = import_wave(paths, path, wave=wave, date=when)
     except ReviewImportError as exc:
         raise click.ClickException(f"Arket har fel, inget ändrades:\n{exc}") from exc
     click.echo(f"{len(result.changed)} arter kontrollerade {when}. Inspelningar strukna: {len(result.removed_audio)}.")
@@ -8577,7 +8728,9 @@ git commit -m "feat(pipeline): delad skrivslinga och jämförelsetexter för fö
 - Modify: `src/birdy_fetcher/web/waves.py` (lägg till), `src/birdy_fetcher/cli.py`
 - Test: `tests/test_web_waves.py` (lägg till)
 
-En art publiceras när den hör till vågen, har `status: "ok"`, ett kontrollerat faktablad (`verification` satt) och en text som inte skrevs med `--allow-unreviewed`. En jämförelse publiceras när den är `ok` och båda arterna är publicerade.
+En art publiceras när den är `status: "ok"`, har ett kontrollerat faktablad (`verification` satt) och en text som inte skrevs med `--allow-unreviewed`. En jämförelse publiceras när den är `ok` och båda arterna är publicerade.
+
+**Ändrat 2026-10-05 (b):** publicering sker en art i taget, inte bara efter en hel vågs godkännande (fas 2:s publiceringsloop anropar kommandot en gång per art). `--wave` är kvar som ett filter för körordningen; `--species` (flera gånger) väljer en eller flera bestämda arter. Minst en av dem krävs.
 
 - [ ] **Step 1: Skriv de fallerande testerna**
 
@@ -8612,7 +8765,7 @@ def test_publish_turns_on_ready_species_and_their_comparisons(tmp_path: Path) ->
             paths.comparisons_out / f"{a}_{b}.json",
             {"a": a, "b": b, "status": "ok", "publish": False},
         )
-    outcomes = publish_wave(paths, 1)
+    outcomes = publish_wave(paths, wave=1)
     published = {qid for qid in ("Q1", "Q2", "Q3", "Q4", "Q5")
                  if (load_record(record_path(paths.data_out, qid)) or {}).get("publish")}
     assert published == {"Q1", "Q2"}
@@ -8621,6 +8774,19 @@ def test_publish_turns_on_ready_species_and_their_comparisons(tmp_path: Path) ->
     assert pair is not None and pair["publish"] is True
     assert other is not None and other["publish"] is False
     assert {o.qid: o.status for o in outcomes}["Q3"] == "skipped"
+
+
+def test_publish_one_species_at_a_time(tmp_path: Path) -> None:
+    """Spec Revision 2026-10-05 (b): publishing does not wait for the whole wave."""
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    ready = _ready("Q1", "Talgoxe", 1)
+    sibling = _ready("Q2", "Blåmes", 1)
+    for record in (ready, sibling):
+        save_record(record_path(paths.data_out, record["qid"]), record)
+    outcomes = publish_wave(paths, species=["Q1"])
+    assert {o.qid for o in outcomes} == {"Q1"}
+    assert (load_record(record_path(paths.data_out, "Q1")) or {}).get("publish") is True
+    assert (load_record(record_path(paths.data_out, "Q2")) or {}).get("publish") is not True
 ```
 
 - [ ] **Step 2: Kör och se dem falla**
@@ -8638,13 +8804,23 @@ def _ready(record: Record) -> bool:
     return record.get("status") == "ok" and is_reviewed(record) and not text.get("unreviewed")
 
 
-def publish_wave(paths: WebPaths, wave: int) -> list[StepOutcome]:
-    """Turns `publish` on for the wave's finished species, then for every finished comparison
-    whose two species are both published. Nothing is ever turned off here."""
+def publish_wave(
+    paths: WebPaths, wave: int | None = None, species: list[str] | None = None
+) -> list[StepOutcome]:
+    """Turns `publish` on for every ready species, then for every finished comparison
+    whose two species are both published. Nothing is ever turned off here.
+
+    Scope (spec Revision 2026-10-05 (b)): `wave` narrows to a wave's queue order,
+    `species` narrows to an explicit list; either, both or neither may be given. With
+    neither, every ready species across all waves is published (used by the continuous
+    per-species loop, which normally calls this with a single `species` entry at a time).
+    """
     outcomes: list[StepOutcome] = []
     records = load_all(paths.data_out)
     for qid, record in sorted(records.items()):
-        if record.get("review", {}).get("wave") != wave:
+        if wave is not None and record.get("review", {}).get("wave") != wave:
+            continue
+        if species is not None and qid not in species:
             continue
         name = _name(record)
         if _ready(record):
@@ -8671,13 +8847,18 @@ def publish_wave(paths: WebPaths, wave: int) -> list[StepOutcome]:
 
 ```python
 @web.command("publish")
-@click.option("--wave", type=click.IntRange(1, 3), required=True)
-def web_publish(wave: int) -> None:
-    """Slår på publish för vågens färdiga arter och jämförelser. Körs efter Albins godkännande."""
+@click.option("--wave", type=click.IntRange(1, 3))
+@click.option("--species", multiple=True, help="QID, kan upprepas. En art i taget är det normala läget (ändrat 2026-10-05 (b)).")
+def web_publish(wave: int | None, species: tuple[str, ...]) -> None:
+    """Slår på publish för färdiga arter och jämförelser, filtrerat på våg, på en eller
+    flera bestämda arter, eller båda. Körs löpande av fas 2:s publiceringsloop, en art i
+    taget, inte bara efter en hel vågs godkännande."""
     from .web.waves import publish_wave
 
+    if wave is None and not species:
+        raise click.UsageError("Ange --wave, en eller flera --species, eller båda.")
     paths = _web_paths()
-    _print_outcomes(publish_wave(paths, wave), paths.reports)
+    _print_outcomes(publish_wave(paths, wave, list(species) or None), paths.reports)
 ```
 
 - [ ] **Step 5: Kör testerna**
@@ -8691,7 +8872,7 @@ Run: `uv run ruff check --fix . && uv run ruff format . && uv run mypy`
 
 ```bash
 git add src/birdy_fetcher/web/waves.py src/birdy_fetcher/cli.py tests/test_web_waves.py
-git commit -m "feat(pipeline): web publish slår på en färdig våg och dess jämförelser"
+git commit -m "feat(pipeline): web publish slår på en art eller jämförelse i taget"
 ```
 
 ---
@@ -8853,39 +9034,40 @@ Ny körtask 2026-10-05: ersätter Albins manuella faktabladsgranskning. Ingen Al
 - [ ] Läs rapporten `reports/web-verify-*.md`. Räkna flaggor per kontroll (V2, V3, V4) och arter med `failed` (saknar fortfarande ett obligatoriskt ämne efter V1-omförsöket). Kör om misslyckade arter en gång med `--regenerate --species ...` i `web facts` först, sedan `web verify --force --species ...`.
 - [ ] Commit och push.
 
-### R5: Vågor och undantagsgranskning av våg 1 (Albin, cirka 15 till 30 minuter)
+### R5: Vågor och löpande undantagsgranskning (Albin, cirka 15 till 30 minuter per våg)
 
-Ändrad 2026-10-05: Albin granskar bara flaggorna och vågens stickprov, inte varje arts faktablad (se CLAUDE.md-beslutet och spec Revision 2026-10-05).
+Ändrad 2026-10-05: Albin granskar bara flaggorna, inte varje arts faktablad (se CLAUDE.md-beslutet och spec Revision 2026-10-05). **Ändrad igen 2026-10-05 (b):** stickprovet är inte längre en del av den här genomgången (det tas efter publicering, R8); Albin behöver alltså inte gå igenom några hela faktablad här, bara ta beslut på flaggorna. `web verify` (R4b) har redan satt `verification` direkt på alla arter utan flaggor, så de behöver ingen genomgång alls här och väntar inte på resten av vågen.
 
 - [ ] `uv run birdy-fetcher web waves` och visa Albin våg 1:s 40 arter i chatten. Albin byter arter om han vill; ändra `review/waves.json` och kör `uv run birdy-fetcher web waves` igen.
 - [ ] `uv run birdy-fetcher web sheet --wave 1`
-- [ ] Ladda upp `review/wave-1-ark.csv` till Albins Google Drive som Google-kalkylark med Google Drive-verktyget, och ge Albin länken med en kort instruktion: fatta beslut (`behåll`/`stryk`, eller `ändra` med ny text) på varje flagga, gå igenom stickprovets båda arters hela faktablad som förut, och lyssna på eventuella flaggade inspelningar.
-- [ ] Hittar Albin i stickprovet ett fel som kontrollen borde ha fångat: dra två fler arter med `uv run birdy-fetcher web sheet --wave 1 --redraw <QID> --redraw <QID>` och notera missen i nästa `reports/web-verify-*.md`-körning (vilken kontroll missade, varför), så att prompten eller trösklarna kan justeras innan nästa våg.
-- [ ] När Albin säger att han är klar: exportera kalkylarket som CSV till `review/wave-1.csv`, kör `uv run birdy-fetcher web import --wave 1`. Detta sätter `verification` på hela vågen, inte bara de arter som stod i arket. Rättar Albin fel som importen hittar, kör om.
+- [ ] Ladda upp `review/undantag.csv` till Albins Google Drive som Google-kalkylark med Google Drive-verktyget, och ge Albin länken med en kort instruktion: fatta beslut (`behåll`/`stryk`, eller `ändra` med ny text) på varje flagga, och lyssna på eventuella flaggade inspelningar. Arket är löpande: nya flaggor från senare vågor läggs till i samma flik.
+- [ ] När Albin har beslutat om en omgång: exportera kalkylarket som CSV över `review/undantag.csv`, kör `uv run birdy-fetcher web import`. Rättar Albin fel som importen hittar, kör om.
 - [ ] Commit och push.
 
-### R6: Text för våg 1 (cirka 25 USD)
+### R6: Text (cirka 25 USD för våg 1, mindre för senare vågor)
 
 - [ ] `uv run birdy-fetcher web write --wave 1 --max-cost 40`
 - [ ] Läs rapporten. Visa Albin tre slumpvisa texter och alla arter med `failed`. Kör om misslyckade arter en gång med `--regenerate --species ...`.
 - [ ] Commit och push.
 
-### R7: Jämförelser för våg 1 (cirka 5 USD)
+### R7: Jämförelser (cirka 5 USD för våg 1, mindre för senare vågor)
 
 - [ ] `uv run birdy-fetcher web compare-candidates`
 - [ ] **Fråga Albin innan** sökordsplaneraren används i hans Google Ads-konto. Fyll sedan i `sv_volume` (Sverige, svenska) och `en_volume` (Storbritannien, engelska) i `review/comparison-volumes.csv`: summan av de genomsnittliga månadssökningarna för parets fyra svenska respektive tre engelska sökningar. Ger planeraren ett intervall, använd mitten.
-- [ ] `uv run birdy-fetcher web compare --top 30 --max-cost 15` (par där båda arterna inte är kontrollerade hoppas över och skrivs i en senare våg).
+- [ ] `uv run birdy-fetcher web compare --top 30 --max-cost 15` (par där båda arterna inte är kontrollerade hoppas över och skrivs när den andra arten blir klar).
 - [ ] Commit och push.
 
-### R8: Överlämning till sidorna och go-live för våg 1
+### R8: Överlämning till sidorna, art för art (ändrat 2026-10-05 (b), var tidigare go-live för en hel våg)
 
-- [ ] Fas 2-planens förhandsvisning (Vercel Preview med `SPECIES_PREVIEW=1`) visar våg 1. Albin läser jämförelsesidorna och skummar artsidorna.
-- [ ] Efter Albins godkännande: `uv run birdy-fetcher web publish --wave 1`, commit och push. Fas 2-planen tar sammanslagningen och go-live därifrån.
-- [ ] CLAUDE.md: status för våg 1 (datum, antal sidor, kostnad).
+Det finns ingen gemensam förhandsvisning och inget Albin läser igenom före publicering längre. Det sköts av fas 2:s publiceringsloop (`docs/superpowers/plans/2026-09-25-artsidor-fas2-sidor.md` Task 17): för varje art som är `status: "ok"` och har `verification` men inte redan är publicerad, kör loopen `uv run birdy-fetcher web publish --species <QID>` i worktreen, bygger och kontrollerar den enskilda sidan, committar och pushar, väntar cirka 5 minuter, och fortsätter med nästa. Jämförelser publiceras på samma sätt så snart båda arterna är det.
+
+- [ ] Starta loopen (fas 2 Task 17) och låt den gå. Den rapporterar varje push och stoppar aldrig helt på en enskild sidas fel (nödstoppet `--max-publish` och stoppet vid flera fel i rad gäller bara systematiska problem).
+- [ ] Var 40:e publicerade art (och var 10:e publicerade jämförelse) drar loopen automatiskt ett stickprov (`uv run birdy-fetcher web spot-check`) och lägger det i Albins ark (`review/stickprov.csv`). Albin beslutar som i R5; ett bekräftat fel importeras (`uv run birdy-fetcher web import --file review/stickprov.csv`) och den sidan republiceras av loopen med nytt datum, och missen loggas i rapporten.
+- [ ] CLAUDE.md: status uppdaterad löpande (antal publicerade sidor, kostnad), inte bara vid en vågs slut.
 
 ### R9: Våg 2 och 3
 
-Upprepa R5 till R8 för våg 2 (mål 15 januari 2027) och våg 3 (mål 26 februari 2027), med `--wave 2` respektive `--wave 3`. Kör `web compare-candidates` och `web compare` igen i varje våg: par som väntade på en art i den nya vågen skrivs då.
+Loopen fortsätter automatiskt genom köns ordning. Albins återkommande uppgift är bara R5 (undantagsarkets flaggor) när nästa vågs arter har körts genom källor, faktablad och kontroll (R2 till R4b, körs med `--species` eller utan filter för hela vågen), plus stickprovet i R8. Kör `web compare-candidates` och `web compare` igen när en ny våg startar: par som väntade på en art i den nya vågen skrivs då.
 
 ---
 
@@ -8901,16 +9083,17 @@ Upprepa R5 till R8 för våg 2 (mål 15 januari 2027) och våg 3 (mål 26 februa
 | §9.2 Andelar, meningar, statussignal, för lite data | Task 3, 4, 5, R2 (kalibrering) |
 | §9.3 Faktablad med citat, status s01, datafakta | Task 13, 14 |
 | Revision 2026-10-05, V1 till V4: automatisk kontroll | Task 14b, 14c, 14d, 14e, R3, R4b |
-| §9.4 (Revision 2026-10-05) Undantagsark, import, `verification` | Task 16, 17, R5 |
+| §9.4 (Revision 2026-10-05) Undantagsark, import, `verification` | Task 14e, 16, 17, R5 |
+| Revision 2026-10-05 (b): publicering en art i taget, stickprov efter publicering | Task 14e, 16, 23, R5, R8, R9 |
 | §9.5 Text ur godkända fakta, fakta-id per mening | Task 18, 19, 20 |
 | §9.6 Kodkontroller och andra modellen, omskrivning, borttagning | Task 18, 19, 20, 22 |
 | §9.7 Jämförelsetexter | Task 21, 22 |
 | §9.8 Provkörning, kostnadstak, rapport | Task 11, 14, 14e, 20, 22, R3 |
 | §9.9 Utdata, skriv aldrig över kontrollerat | Task 11, 14, 14e, 20 |
 | §10 Licenser (CC BY-SA, LICENSE.md, CC0-filter, licenstabell, credits) | Task 6, 7, 11 (byggkontrollen av credits ligger i fas 2) |
-| §14 Vågor, `publish`, kontrollerad text | Task 15, 23, R5 till R9 |
+| §14 Vågor som körordning, publicering en art i taget, `publish` | Task 15, 23, R5 till R9 (själva publiceringsloopen körs av fas 2 Task 17) |
 | §15 Baslinje, UTM, egna besök, länkutskick | Fas 2-planen och R8 |
 | Bilaga C och D (schema) | Task 11, 12, 13, 14e, 17, 20, 22 |
-| Bilaga E (undantagsarket) | Task 16 |
+| Bilaga E (undantagsarket och stickprovet) | Task 16, 17 |
 
 Det som avviker från specens ord, och varför (redan infört i specen 2026-10-01): statusen tas fram i faktabladet i stället för av skribenten, så att den automatiska kontrollen kan jämföra den direkt och flaggan syns i undantagsarket; inspelningar ligger i `website/src/assets/species/` och inte i `public/`; en sökträff måste nämna arten (ett xeno-canto-nummer räcker inte); våglistan justeras i chatten innan första arket. Tillagt 2026-10-05: faktabladens automatiska kontroll (V1 till V4) körs för alla 180 på en gång direkt efter faktabladen (som faktabladen själva), inte våg för våg som undantagsarket och skrivandet; `verify.py`:s nummertolerans (V2) är ett startvärde som kalibreras i R4b, spegel av statussignalens trösklar i Task 5.

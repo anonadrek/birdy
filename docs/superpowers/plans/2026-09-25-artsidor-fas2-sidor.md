@@ -5,8 +5,10 @@
 > **Reviderad 2026-10-01** efter specens revision samma dag (faktablad, flera källor, datamoduler, inspelningar, förväxlingsarter, jämförelsesidor, om-sidan, publicering i vågor). Planen byggs **mot testdata** parallellt med pipelineplanen `docs/superpowers/plans/2026-10-01-artsidor-fas1b-faktablad.md`. Kontraktet mellan dem är specens bilaga C och D. Riktig data behövs först i Task 16.
 >
 > **Reviderad 2026-10-05:** Albin granskar inte längre varje arts faktablad för hand (spec Revision 2026-10-05). Fältet `review.facts` är ersatt av `verification = { method, at, model, spotChecked }`, och raden på sidan blir "Kontrollerad mot källorna {datum}" i stället för "Faktagranskad av Albin Abrahamsson {datum}". JSON-LD tappar `reviewedBy` (bara `lastReviewed` blir kvar), och "Så gör vi artsidorna" (Task 12) beskriver den automatiska kontrollen i stället för att säga att Albin granskar varje art. Berör Task 4 (zod-schemat och `species.ts`), Task 9 (artsidans creditblock), Task 11 (jämförelsesidan), Task 12, Task 14 (`check-seo.mjs`) och Task 16 till 18 (villkoren mot fas 1b:s data).
+>
+> **Reviderad 2026-10-05 (b):** Albin vill committa och pusha sida för sida ("Commit and push each page one by one; I don't need to go through each one manually") i stället för att samla en hel våg, förhandsvisa den och läsa igenom allt före en gemensam go-live (spec Revision 2026-10-05 (b)). **Task 15** får ett sista steg som slår ihop kod-grenen till `main` direkt när testdata-QA är grön, eftersom riktig artdata från nu på går direkt till `main`, inte via den här grenen. **Task 16 och 17 är slagna ihop och omskrivna** till en löpande publiceringsloop: ingen förhandsvisning, inget Albin läser igenom i förväg, bara automatiska kontroller per sida (bygge, `check-seo.mjs`, Playwright/axe), en commit och push per art eller jämförelse, en takt på cirka 5 minuter mellan pushar, en nödstopp (`--max-publish`, stopp vid upprepade fel) och ett stickprov efter publicering (2 arter per 40, 1 jämförelse per 10) i Albins ark. **Task 18** ("Senare vågor") tas bort som eget steg: loopen fortsätter automatiskt genom köns ordning, Albins återkommande uppgift är bara undantagsarkets flaggor (fas 1b R5) och stickprovet.
 
-**Goal:** Ingångssida, gruppsidor, en artsida per publicerad art, jämförelsesidor för förväxlingspar och sidan "Så gör vi artsidorna", på svenska och engelska, byggda ur pipelinens datafiler och publicerade våg för våg. Dessutom ny meny- och sidfotsnavigering, filter för egna besök i Vercel Analytics och SEO-reglerna som ett skript som stoppar bygget vid fel.
+**Goal:** Ingångssida, gruppsidor, en artsida per publicerad art, jämförelsesidor för förväxlingspar och sidan "Så gör vi artsidorna", på svenska och engelska, byggda ur pipelinens datafiler och publicerade sida för sida, i vågornas körordning (ändrat 2026-10-05 (b)). Dessutom ny meny- och sidfotsnavigering, filter för egna besök i Vercel Analytics och SEO-reglerna som ett skript som stoppar bygget vid fel.
 
 **Architecture:** Två innehållssamlingar (`species`, `comparisons`) läser JSON-filerna, och `src/lib/species-source.mjs` avgör i ren JS var datan ligger (riktig data eller testdata) och vilka poster som får en sida (publicerade, eller kontrollerade i ett förhandsbygge). `src/lib/species.ts` samlar all sidlogik. Komponenterna under `src/components/species/` renderar sidorna, och en dynamisk route per språk delegerar till rätt komponent. Diagram och länskarta ritas som SVG när sajten byggs. Inspelningarna kopieras in i `dist/` vid bygget, bara för arter som får en sida. `scripts/check-seo.mjs` och `scripts/check-preview-build.mjs` kontrollerar den byggda sajten.
 
@@ -19,7 +21,7 @@
 ## Avvikelser från specen (medvetna, små)
 
 1. **Skriptet heter `npm run verify`**, eftersom `npm run check` redan är `astro check`. Testdatans variant heter `npm run verify:fixtures`.
-2. **Approtan, spelarens etikett och textcrediten nämner inte artens namn i löptext.** "Birdy känner igen talgoxe på foto" blir fel böjning på svenska och datan har inte bestämd form. Approtan säger "arten" / "this species" i fyra varianter efter `identifiable`, spelarens etikett är "Inspelning: Talgoxe", och textcrediten är "Texten bygger på Wikipedia och får delas under CC BY-SA 4.0. Källor: svenska artikeln, engelska artikeln, tyska artikeln" med länkar till revisionerna. Albin ser formuleringen i förhandsvisningen (Task 17 Step 3).
+2. **Approtan, spelarens etikett och textcrediten nämner inte artens namn i löptext.** "Birdy känner igen talgoxe på foto" blir fel böjning på svenska och datan har inte bestämd form. Approtan säger "arten" / "this species" i fyra varianter efter `identifiable`, spelarens etikett är "Inspelning: Talgoxe", och textcrediten är "Texten bygger på Wikipedia och får delas under CC BY-SA 4.0. Källor: svenska artikeln, engelska artikeln, tyska artikeln" med länkar till revisionerna. Kontrolleras i Task 15:s testdata-skärmdumpar (ändrat 2026-10-05 (b): ingen förhandsvisning av riktig data att läsa igenom längre).
 3. **Sökfältet i kategoriraden skickar `q` till ingångssidan**, som gör filtreringen.
 4. **Artkort och förväxlingsfoton har tom alt-text.** Namnet står som text i samma länk eller bredvid.
 5. **Grupper utan någon byggd art får varken sida, chip eller kort.** Specen säger att chipsen gäller grupper med minst en publicerad art; samma regel används för gruppsidan och kortet, annars hade det funnits tomma sidor.
@@ -29,7 +31,7 @@
 9. **Inspelningarnas adresser har ett innehållshash** (`/audio/species/Q25485.3f9c0a1b2d.mp3`) och kopieras till `dist/` av en byggkrok, bara för arter som får en sida. En Vite-glob (`?url`) hade lagt alla inspelningar i bygget, även opublicerade.
 10. **Jämförelsesidans engelska version ordnar arterna efter de engelska slugsen** (spec §4), så kolumnerna kan byta plats mellan språken. Tabellens celler följer med.
 
-**Publiceringen** görs av pipelinen, inte av sajten: `uv run birdy-fetcher web publish --wave N` i `tools/content-pipeline` (fas 1b, Task 23) sätter `publish: true` på vågens skrivna och kontrollerade arter och på jämförelser där båda arterna är publicerade. Kommandot avpublicerar aldrig. Sajten läser bara fältet.
+**Publiceringen** görs av pipelinen, inte av sajten: `uv run birdy-fetcher web publish --species <QID>` i `tools/content-pipeline` (fas 1b, Task 23) sätter `publish: true` på en skriven och kontrollerad art i taget, och på en jämförelse där båda arterna är publicerade. `--wave N` finns kvar som filter men väntar inte på att hela vågen blir klar (ändrat 2026-10-05 (b)). Kommandot avpublicerar aldrig. Sajten läser bara fältet.
 
 ## Förutsättningar
 
@@ -42,7 +44,7 @@
   ```
   Alla kommandon nedan körs i `C:/w/birdy-artsidor/website` med Git Bash.
 - **Bygg och testa på testdata:** `npm run build:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test <fil>` (egen port så att en annan dev-server inte krockar). Playwright serverar `dist/`, så bygg alltid med testdata före Playwright.
-- **Lägen:** `SPECIES_FIXTURES=1` läser testdatan i stället för `src/data/` och `src/assets/species/`. `SPECIES_PREVIEW=1` bygger även kontrollerade sidor som inte är publicerade (sätts i Vercels miljö Preview i Task 17). `scripts/env-run.mjs` sätter variablerna på samma sätt på Windows och macOS.
+- **Lägen:** `SPECIES_FIXTURES=1` läser testdatan i stället för `src/data/` och `src/assets/species/`. `SPECIES_PREVIEW=1` bygger även kontrollerade sidor som inte är publicerade (sätts i Vercels miljö Preview i Task 16, numera bara för kod-förhandsvisningar, ändrat 2026-10-05 (b)). `scripts/env-run.mjs` sätter variablerna på samma sätt på Windows och macOS.
 
 ## Filstruktur
 
@@ -1455,7 +1457,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "Granskningen",
         "paragraphs": [
-          "En andra modell kontrollerar varje faktum mot sitt citat i artikeln. Kod jämför siffrorna mellan de olika språkens artiklar och jämför förekomsten i Sverige med Artportalen och den svenska rödlistan. Inspelningen kontrolleras med Birdys egen ljudmodell. Det som inte går att avgöra automatiskt, plus ett stickprov varje våg, granskas av Albin Abrahamsson, som har byggt Birdy. Datumet för den senaste kontrollen står längst ned på varje artsida."
+          "En andra modell kontrollerar varje faktum mot sitt citat i artikeln. Kod jämför siffrorna mellan de olika språkens artiklar och jämför förekomsten i Sverige med Artportalen och den svenska rödlistan. Inspelningen kontrolleras med Birdys egen ljudmodell. Det som inte går att avgöra automatiskt granskas av Albin Abrahamsson, som har byggt Birdy, innan sidan publiceras. Efter publicering granskar han dessutom ett löpande stickprov av redan publicerade sidor. Datumet för den senaste kontrollen står längst ned på varje artsida."
         ]
       },
       {
@@ -1620,7 +1622,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "The review",
         "paragraphs": [
-          "A second model checks every fact against its quote in the article. Code compares the numbers between the different language articles, and compares the occurrence in Sweden with Artportalen and the Swedish red list. The recording is checked with Birdy's own sound model. What cannot be settled automatically, plus a spot check every wave, is reviewed by Albin Abrahamsson, who built Birdy. The date of the latest check is at the bottom of every species page."
+          "A second model checks every fact against its quote in the article. Code compares the numbers between the different language articles, and compares the occurrence in Sweden with Artportalen and the Swedish red list. The recording is checked with Birdy's own sound model. What cannot be settled automatically is reviewed by Albin Abrahamsson, who built Birdy, before the page is published. After publishing, he also reviews an ongoing spot check of already published pages. The date of the latest check is at the bottom of every species page."
         ]
       },
       {
@@ -3697,6 +3699,7 @@ git commit -m "feat(website): Arter i menyn, sidfoten och startsidans uppslagsve
 - Create: `website/scripts/check-seo.mjs`
 - Create: `website/scripts/check-preview-build.mjs`
 - Modify: `website/scripts/check-no-dashes.mjs`
+- Create: `website/tests/a11y.spec.ts` (ändrat 2026-10-05 (b), se Step 6b)
 - Modify: `website/package.json`
 
 - [ ] **Step 1: Sitemap-data**
@@ -4057,6 +4060,29 @@ Lägg till i `"scripts"`:
     "verify:fixtures": "npm run build:fixtures && npm run test:seo && npm run test:unit && npm run test:i18n && npm run test:no-dashes && npm run test:palette && npm run test:contrast && npm run test:preview-build",
 ```
 
+- [ ] **Step 6b: En axe-kontroll för en enskild sida (ändrat 2026-10-05 (b): publiceringsloopen i Task 16 behöver kontrollera exakt den sida den just byggde, inte hela sajten)**
+
+Det finns ingen axe-uppsättning i `website/` ännu (den tidigare "axe 0 fel" i CLAUDE.md var en engångsgranskning, inte ett skript). Lägg till `@axe-core/playwright` som devDependency (`npm install -D @axe-core/playwright`) och `tests/a11y.spec.ts`:
+
+```ts
+import AxeBuilder from '@axe-core/playwright';
+import { expect, test } from '@playwright/test';
+
+const path = process.env.AXE_PATH ?? 'sv/arter/';
+
+test(`axe: /${path}`, async ({ page }) => {
+  await page.goto(`/${path}`);
+  const results = await new AxeBuilder({ page }).analyze();
+  expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([]);
+});
+```
+
+```json
+    "test:a11y": "playwright test tests/a11y.spec.ts",
+```
+
+Kör mot en adress: `AXE_PATH="sv/arter/talgoxe/" PLAYWRIGHT_PORT=4327 npm run test:a11y`. Fel: rätta komponenten (samma regel som Step 7 nedan för SEO).
+
 - [ ] **Step 7: Kör**
 
 Run: `npm run verify:fixtures`
@@ -4070,8 +4096,8 @@ Expected: PASS (`dist/` är testdatans vanliga bygge igen efter förhandsbygget,
 - [ ] **Step 8: Commit**
 
 ```bash
-git add src/lib/species-sitemap.mjs astro.config.mjs scripts/check-seo.mjs scripts/check-preview-build.mjs scripts/check-no-dashes.mjs package.json
-git commit -m "feat(website): sitemap för artsidorna, SEO-reglerna som kod och kontroll av förhandsbygget"
+git add src/lib/species-sitemap.mjs astro.config.mjs scripts/check-seo.mjs scripts/check-preview-build.mjs scripts/check-no-dashes.mjs tests/a11y.spec.ts package.json package-lock.json
+git commit -m "feat(website): sitemap för artsidorna, SEO-reglerna som kod, axe-kontroll och kontroll av förhandsbygget"
 ```
 
 ---
@@ -4104,145 +4130,19 @@ Kontrollera i bilderna:
 
 Avvikelser som inte står under "Avvikelser från specen" rättas och testas om.
 
-- [ ] **Step 3: Pusha grenen (ingen förhandsvisning med riktig data än)**
+- [ ] **Step 3: Pusha grenen**
 
 ```bash
 git push -u origin website/artsidor
 ```
 
-Vercels förhandsbygge av grenen failar tills riktig data finns (sidfoten kräver de tolv vanliga arterna). Det är väntat fram till Task 16.
+- [ ] **Step 4: Slå ihop koden till `main` (ändrat 2026-10-05 (b))**
 
----
-
-### Task 16: Riktig data för våg 1
-
-**Villkor:** Fas 1b har skrivit texter för våg 1 på `main`: varje art i våg 1 har `status: "ok"`, `verification` och `review.wave: 1`, och vågens jämförelser har `status: "ok"`. Alla tolv vanliga arter (`src/data/species-groups.json` → `common`) ingår i våg 1. Är villkoret inte uppfyllt: stoppa och rapportera vad som saknas.
-
-- [ ] **Step 1: Ta in `main`**
+Riktig artdata går från nu på direkt till `main`, en art i taget (avsnitt 14, Task 16 och framåt). Koden måste alltså vara på `main` innan den första riktiga arten publiceras, annars finns inga mallar att rendera den med. Vercels förhandsbygge av grenen failar fram till den här sammanslagningen (sidfoten kräver de tolv vanliga arterna, som inte finns i testdata-läget på riktigt Vercel-bygge); det är väntat.
 
 ```bash
 git fetch origin && git merge origin/main
-npm ci
-```
-
-- [ ] **Step 2: Kontrollera datan**
-
-```bash
-node -e "
-const fs=require('fs');const d='src/data/species';
-const r=fs.readdirSync(d).filter(f=>f.endsWith('.json')).map(f=>JSON.parse(fs.readFileSync(d+'/'+f,'utf8')));
-const c={};for(const x of r){const k=x.status+'/w'+(x.review?.wave??'-')+(x.verification?'/kontrollerad':'');c[k]=(c[k]??0)+1}
-console.log(c);
-const common=JSON.parse(fs.readFileSync('src/data/species-groups.json','utf8')).common;
-console.log('vanliga utan klar text i våg 1:',common.filter(q=>{const x=r.find(y=>y.qid===q);return !x||x.status!=='ok'||!x.verification||x.review?.wave!==1}));
-"
-ls src/data/comparisons | wc -l
-```
-
-Expected: ett antal `ok/w1/kontrollerad` (cirka 40), resten `pending/...`, och listan över vanliga arter utan klar text är tom (`[]`).
-
-- [ ] **Step 3: Förhandsbygge lokalt med riktig data**
-
-Run: `node scripts/env-run.mjs SPECIES_PREVIEW=1 -- astro build --force && node scripts/check-seo.mjs`
-Expected: bygget går igenom med våg 1:s sidor (med `noindex` och banderoll, de är inte publicerade än) och `check-seo OK`. Schemafel i en artfil: rätta pipelinens utdata via fas 1b, ändra inte schemat för att släppa igenom felet.
-
-- [ ] **Step 4: Testdatan är fortfarande grön**
-
-Run: `npm run verify:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test`
-Expected: PASS (testerna kör på testdatan oavsett riktig data).
-
-- [ ] **Step 5: Skärmdumpar med riktig data**
-
-Bygg förhandsläget igen (`node scripts/env-run.mjs SPECIES_PREVIEW=1 -- astro build --force`), starta `npm run preview -- --port 4327` i bakgrunden och ta skärmdumpar till `../docs/superpowers/screenshots/artsidor/` av ingångssidan, Ugglor, Talgoxe (marginalanteckning), en art utan extrafoto eller inspelning (hitta en med `grep -L '"audio"' src/data/species/*.json | xargs grep -l '"status": "ok"' | head -1` och läs dess `slug.sv`), en jämförelsesida (`ls src/data/comparisons | head -1`, läs `slug.sv`) och om-sidan, i 390 och 1440 px, med samma `npx playwright screenshot`-kommandon som i Task 15. Banderollen syns överst, det är väntat.
-
-- [ ] **Step 6: Jämför med mockupen**
-
-Öppna `docs/superpowers/specs/assets/2026-09-25-artsidor/helheten.html` bredvid skärmdumparna och kontrollera menyraden med Arter först, kategoriraden, vänsterspalten, högerspaltens ordning, sidfotens kolumn och rad samt mobilordningen. Kontrollera också de nya modulerna mot specens avsnitt 5 och 7. Rätta det som inte stämmer.
-
-- [ ] **Step 7: Commit**
-
-```bash
-git add ../docs/superpowers/screenshots/artsidor
-git commit -m "docs: skärmdumpar av artsidorna med våg 1:s data"
-git push
-```
-
----
-
-### Task 17: Förhandsvisning, Albins godkännande och go-live för våg 1
-
-- [ ] **Step 1: `SPECIES_PREVIEW=1` i Vercels miljö Preview**
-
-Vercel-projektet ligger i teamet `loop-lead-ab` (Albit AB). I `website/`:
-
-```bash
-vercel link --yes --scope loop-lead-ab --project birdy
-printf '1' | vercel env add SPECIES_PREVIEW preview --scope loop-lead-ab
-vercel env ls preview --scope loop-lead-ab | grep SPECIES_PREVIEW
-```
-
-Expected: `SPECIES_PREVIEW` finns för Preview. (Saknas Vercel CLI eller inloggning: be Albin lägga in variabeln i Vercel, Settings → Environment Variables, värde `1`, bara Preview.) `SPECIES_FIXTURES` får aldrig sättas på Vercel.
-
-- [ ] **Step 2: Förhandsvisningen**
-
-Pusha en tom commit så att Vercel bygger om med variabeln:
-
-```bash
-git commit --allow-empty -m "chore(website): bygg om förhandsvisningen med SPECIES_PREVIEW"
-git push
-```
-
-Hämta förhandslänken (`vercel ls birdy --scope loop-lead-ab | head -5` eller Vercels kommentar på grenen) och kontrollera att `/sv/arter/` och `/sv/arter/talgoxe/` svarar 200 där, med banderollen "Förhandsvisning, inte publicerad".
-
-- [ ] **Step 3: Albin granskar (manuell grind)**
-
-Skicka länken till Albin med:
-- `/sv/arter/` och en gruppsida
-- tre artsidor att skumma, bland dem `/sv/arter/talgoxe/`
-- **alla** våg 1:s jämförelsesidor (lista adresserna ur `src/data/comparisons/*.json`, `slug.sv`, för par där båda arterna är i våg 1)
-- `/sv/arter/om-artsidorna/` och `/species/about-these-pages/` (texten skrevs i den här planen och ska godkännas av Albin)
-- formuleringen i approtan, spelarens etikett och textcrediten: "Birdy känner igen arten ..." och "Inspelning: Talgoxe" i stället för artens namn i löptext, eftersom svenskan behöver bestämd form som datan saknar (avvikelse 2)
-
-Vänta på hans ok. Rätta det han hittar på grenen. Faktafel rättas i fas 1b:s flöde (undantagsarket), inte i JSON-filerna för hand.
-
-- [ ] **Step 4: Baslinjen tas om (före sammanslagningen)**
-
-Hämta Search Console för `sc-domain:birdy.community`, de senaste 3 månaderna (klick, visningar, indexerade sidor), och skriv in dem i raden "Go-live (fas 2)" i `docs/superpowers/research/2026-09-30-artsidor-baslinje.md` med dagens datum. Committa filen på grenen.
-
-- [ ] **Step 5: Publicera våg 1**
-
-Pipelinens kommando (fas 1b, Task 23) är den enda som sätter `publish`. Kör det i grenens worktree:
-
-```bash
-cd ../tools/content-pipeline && uv run birdy-fetcher web publish --wave 1 && cd ../../website
-git diff --stat -- src/data
-git diff -- src/data | grep '^[-+] ' | grep -v '"publish":' | head
-npm run verify
-```
-
-Expected: kommandot listar våg 1:s arter och jämförelser; `git diff --stat` visar bara våg 1:s filer; den andra `git diff`-raden skriver ingenting (bara fältet `publish` har ändrats); `npm run verify` bygger produktionsläget (utan förhandsläge) och alla vakter är gröna. Hoppar kommandot över en art som borde vara med: stoppa och rätta i fas 1b:s flöde.
-
-- [ ] **Step 6: Lighthouse på produktionsbygget**
-
-Starta `npm run preview -- --port 4327` i bakgrunden och kör (den första publicerade jämförelsen väljs ur datan):
-
-```bash
-COMPARE=$(node -e "const fs=require('fs');const d='src/data/comparisons';const hit=fs.readdirSync(d).map((f)=>JSON.parse(fs.readFileSync(d+'/'+f,'utf8'))).find((x)=>x.publish);console.log(hit.slug.sv)")
-for p in "sv/arter/talgoxe/" "sv/arter/$COMPARE/" "sv/arter/"; do
-  name=$(echo "$p" | tr '/' '-' | sed 's/-$//')
-  npx lighthouse "http://localhost:4327/$p" --form-factor=mobile --screenEmulation.mobile --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path="../docs/superpowers/screenshots/artsidor/lighthouse-$name" --chrome-flags="--headless=new"
-done
-```
-
-Mål: 90 eller mer i alla fyra kategorierna på alla tre sidorna. Under 90 i Performance: kontrollera att huvudfotot har `fetchpriority="high"` och att `sizes` stämmer, och sänk `widths` i artkorten.
-
-- [ ] **Step 7: Slå ihop**
-
-```bash
-git add src/data/species src/data/comparisons ../docs/superpowers/screenshots/artsidor ../docs/superpowers/research/2026-09-30-artsidor-baslinje.md
-git commit -m "feat(website): våg 1 av artsidorna publicerad"
-git fetch origin && git merge origin/main
-npm ci && npm run verify && npm run verify:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test
+npm ci && npm run verify:fixtures && npx astro check && npm run test:no-accuracy && PLAYWRIGHT_PORT=4327 npx playwright test
 git push
 ```
 
@@ -4252,27 +4152,102 @@ Sedan i huvudmappen för `main` (worktreen kan inte byta till `main`):
 git switch main && git pull && git merge --ff-only website/artsidor && git push
 ```
 
-Går `--ff-only` inte: ta in `main` i grenen igen, kör om verifieringen och försök på nytt.
+Går `--ff-only` inte: ta in `main` i grenen igen, kör om verifieringen och försök på nytt. När Vercel har byggt produktion: sidorna under `/sv/arter/` och `/species/` svarar ännu bara med `noindex`-sidor eller 404 (ingen art har `publish: true` än), det är väntat tills Task 16.
 
-- [ ] **Step 8: Kontrollera live**
+---
 
-När Vercel har byggt produktion:
+### Task 16: Publiceringsloopen, en art eller jämförelse i taget (ändrat 2026-10-05 (b), var tidigare "Riktig data för våg 1" och "Förhandsvisning, Albins godkännande och go-live för våg 1" som två separata tasks)
+
+**Villkor:** Task 15 Steg 4 har slagit ihop kodgrenen till `main`. Fas 1b har skrivit minst en arts text till `main` (`status: "ok"`, `verification` satt). Körs i huvudklonen (`C:\Users\abbea\dev\1-mina-projekt\birdy\website`), inte i worktreen `website/artsidor`, som bara behövdes för kodarbetet i Task 1 till 15: all riktig artdata går nu direkt mot `main`.
+
+- [ ] **Step 1: `SPECIES_PREVIEW=1` i Vercels miljö Preview (valfritt, för kod-förhandsvisningar, inte en release-grind längre)**
+
+Vercel-projektet ligger i teamet `loop-lead-ab` (Albit AB). I `website/`:
 
 ```bash
-for p in /sv/arter/ /species/ /sv/arter/talgoxe/ /species/great-tit/ /sv/arter/om-artsidorna/ /sitemap-0.xml; do
+vercel link --yes --scope loop-lead-ab --project birdy
+printf '1' | vercel env add SPECIES_PREVIEW preview --scope loop-lead-ab
+vercel env ls preview --scope loop-lead-ab | grep SPECIES_PREVIEW
+```
+
+Expected: `SPECIES_PREVIEW` finns för Preview. (Saknas Vercel CLI eller inloggning: be Albin lägga in variabeln i Vercel, Settings → Environment Variables, värde `1`, bara Preview.) `SPECIES_FIXTURES` får aldrig sättas på Vercel. Variabeln används bara om en senare kodändring behöver förhandsgranskas mot kontrollerad-men-opublicerad data; ingen art väntar på den.
+
+- [ ] **Step 2: Kontrollera Vercel-projektets byggkvot**
+
+Takten nedan (cirka en push var 5 minuter, ~230 pushar totalt) kräver att planen tillåter det. Kontrollera i Vercels dashboard (Settings → General, teamet `loop-lead-ab`) om projektet är på Hobby (100 bygg per dag) eller Pro (betydligt fler). Hobby räcker, men sprider körningen över flera dagar (cirka 230 bygg / 100 om dagen ≈ 3 dagar); det är okej, bara loopen (Step 3) kan köras i flera omgångar.
+
+- [ ] **Step 3: Publiceringsloopen**
+
+Skapa (med SDD, enligt plan-skelettets vanliga TDD-mönster) `scripts/publish-next.mjs`, ett skript som körs en gång och publicerar **högst en** art eller jämförelse:
+
+1. Läs `src/data/species/*.json` och `src/data/comparisons/*.json`. Hoppa över allt som redan har `publish: true`.
+2. Bland arterna: välj den med lägst `review.wave` (saknas `review.wave`: sist), och inom samma våg i bokstavsordning efter `names.sv`, som har `status: "ok"` och `verification` satt. Finns ingen sådan art: samma urval bland jämförelser med `status: "ok"` där båda `a` och `b` redan är publicerade.
+3. Finns ingen kandidat: skriv "Inget att publicera" och avsluta med kod 0 (inget fel, bara tomt för stunden).
+4. Kör `uv run birdy-fetcher web publish --species <QID>` (art) eller `--species <A> --species <B>` (så att jämförelsen upptäcks av `publish_wave`s jämförelselogik) i `../tools/content-pipeline`.
+5. Bygg produktionsläget (`node scripts/env-run.mjs -- astro build --force`), kör `node scripts/check-seo.mjs`, kör den sidans egna Playwright-test (`PLAYWRIGHT_PORT=4327 npx playwright test tests/species.spec.ts -g <slug>` för en art, `tests/comparisons.spec.ts -g <slug>` för en jämförelse) och axe-kontrollen mot samma adress (`AXE_PATH="sv/arter/<slug>/" PLAYWRIGHT_PORT=4327 npm run test:a11y`, Task 14 Step 6b).
+6. Något steg i 4 eller 5 failar: `git checkout -- src/data` (ångra `publish`-ändringen), skriv felet till `reports/publish-loop-<datum>.md`, avsluta med kod 1. Inget annat ändras.
+7. Allt grönt: `git add` bara de filer som ändrades för just den här arten eller jämförelsen (dess JSON i `src/data/`, foton och inspelning under `src/assets/species/<QID>/` om de är nya), commit `data(artsidor): {namn} ({QID})` (jämförelse: `data(artsidor): {A} eller {B} ({QID-A}+{QID-B})`), push, avsluta med kod 0.
+
+Spara loopen som `scripts/publish-loop.sh`:
+
+```bash
+#!/usr/bin/env bash
+set -u
+MAX_PUBLISH=${1:-9999}
+published=0
+consecutive_failures=0
+while [ "$published" -lt "$MAX_PUBLISH" ] && [ "$consecutive_failures" -lt 3 ]; do
+  if node scripts/publish-next.mjs; then
+    consecutive_failures=0
+    published=$((published + 1))
+    [ "$published" -lt "$MAX_PUBLISH" ] && sleep 300
+  else
+    consecutive_failures=$((consecutive_failures + 1))
+  fi
+done
+echo "$published publicerade, $consecutive_failures fel i rad vid stopp."
+```
+
+`MAX_PUBLISH` är nödstoppet (`--max-publish N` i spec-språket): kör till exempel `bash scripts/publish-loop.sh 5` för en liten testomgång innan hela kön släpps på. Tre fel i rad stoppar loopen helt (ett enstaka sidfel stoppar bara den sidan, se steg 6 ovan); läs `reports/publish-loop-*.md` innan omstart.
+
+- [ ] **Step 4: Stickprovet var 40:e art och var 10:e jämförelse**
+
+Efter varje lyckad publicering i loopen, kör `cd ../tools/content-pipeline && uv run birdy-fetcher web spot-check && cd ../../website`. Skriver den något (se fas 1b Task 16): ladda upp `review/stickprov.csv` till Albins Drive, samma instruktion som undantagsarket (fas 1b R5). Ett bekräftat fel: `uv run birdy-fetcher web import --file review/stickprov.csv`, sedan kör loopen (Step 3) på nytt för just den arten så att den byggs, committas och pushas om med det nya kontrolldatumet; notera missen i rapporten.
+
+- [ ] **Step 5: Periodisk kontroll, inte per sida**
+
+Lighthouse (mål 90 eller mer på performance, accessibility, best-practices, seo) och en jämförelse mot mockupen (`docs/superpowers/specs/assets/2026-09-25-artsidor/helheten.html`) körs en gång efter de första publicerade sidorna (en art, en jämförelse, ingångssidan) och sedan ungefär var 40:e art, inte vid varje push (230 Lighthouse-körningar är inte värt det). Samma kommandon som tidigare:
+
+```bash
+npm run preview -- --port 4327 &
+for p in "sv/arter/<en-publicerad-slug>/" "sv/arter/<en-publicerad-jämförelse-slug>/" "sv/arter/"; do
+  name=$(echo "$p" | tr '/' '-' | sed 's/-$//')
+  npx lighthouse "http://localhost:4327/$p" --form-factor=mobile --screenEmulation.mobile --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path="../docs/superpowers/screenshots/artsidor/lighthouse-$name" --chrome-flags="--headless=new"
+done
+```
+
+Under 90 i Performance: kontrollera att huvudfotot har `fetchpriority="high"` och att `sizes` stämmer, och sänk `widths` i artkorten.
+
+- [ ] **Step 6: Kontrollera live, efter de första sidorna och sedan stickprovsvis**
+
+```bash
+for p in /sv/arter/ /species/ /sv/arter/om-artsidorna/ /sitemap-0.xml; do
   echo "$p $(curl -s -o /dev/null -w '%{http_code}' https://birdy.community$p)"
 done
-curl -s https://birdy.community/sv/arter/talgoxe/ | grep -c 'data-preview-banner'
 curl -s https://birdy.community/sitemap-0.xml | grep -c '/arter/'
 ```
 
-Expected: 200 överallt, `0` banderoller i produktion, och sitemapen innehåller våg 1:s artsidor, jämförelser, indexerade grupper och ingångssidan.
+Expected: 200 överallt, och sitemapen växer med varje publicerad sida.
 
-- [ ] **Step 9: Search Console (med Albins ok per inskickning)**
+- [ ] **Step 7: Search Console, i omgångar (med Albins ok per inskickning)**
 
-Skicka in `https://birdy.community/sitemap-index.xml` igen och begär indexering av `/sv/arter/`, `/species/` och de tolv vanliga arternas svenska sidor.
+Inte efter varje enskild sida. Skicka in `https://birdy.community/sitemap-index.xml` igen och begär indexering av de nypublicerade sidorna ungefär var 20:e till 40:e publicerade art, och alltid efter ingångssidan, de tolv vanliga arterna och den första gruppsidan.
 
-- [ ] **Step 10: Utkast till utskick för länkar**
+- [ ] **Step 8: Baslinjen (en gång, när den första artens sida är live)**
+
+Hämta Search Console för `sc-domain:birdy.community`, de senaste 3 månaderna (klick, visningar, indexerade sidor), och skriv in dem i raden "Go-live (fas 2)" i `docs/superpowers/research/2026-09-30-artsidor-baslinje.md` med dagens datum. Committa och pusha filen direkt på `main`.
+
+- [ ] **Step 9: Utkast till utskick för länkar (när våg 1:s arter är publicerade)**
 
 Skriv `docs/marketing/2026-artsidor-utskick.md` med utkasten nedan. Fyll i antalet publicerade arter och jämförelser (`grep -l '"publish": true' src/data/species/*.json | wc -l` och samma för `src/data/comparisons/`). Albin skickar dem i eget namn; agenten skickar inget.
 
@@ -4312,56 +4287,17 @@ Hälsningar, Albin Abrahamsson
 Skicka adresserna `https://birdy.community/sv/arter/` och `https://birdy.community/species/` till albit.se-sessionen, tillsammans med Lighthouse-resultaten i `docs/superpowers/screenshots/artsidor/`.
 ```
 
-Committa och pusha filen på `main`.
+Committa och pusha filen direkt på `main` när våg 1:s arter är publicerade.
 
-- [ ] **Step 11: Synka status**
+- [ ] **Step 10: Synka status (löpande, inte bara vid en vågs slut)**
 
-Uppdatera 🔎-posten om artsidorna i CLAUDE.md:
-- våg 1 live med datum, antal artsidor och jämförelser
+Uppdatera 🔎-posten om artsidorna i CLAUDE.md efter hand:
+- antal publicerade artsidor och jämförelser, uppdaterat ungefär var 40:e art
 - Lighthouse-resultaten
-- baslinjefilen och triggrarna: kontroll efter 6 veckor (datum) och 12 veckor (datum) enligt spec §15
+- baslinjefilen och triggrarna: kontroll efter 6 veckor (datum) och 12 veckor (datum) enligt spec §15, räknat från den första artens go-live (Step 8)
 - att `SPECIES_PREVIEW=1` ligger i Vercels miljö Preview
 - att egna besök filtreras med `?va-ignore=1` (Albin öppnar `https://birdy.community/?va-ignore=1` en gång per webbläsare och enhet)
 
-Committa och pusha. Ta bort worktreen: `git worktree remove C:/w/birdy-artsidor`.
+Committa och pusha. Ta bort worktreen när koden är stabil och inget mer väntas i den: `git worktree remove C:/w/birdy-artsidor`.
 
----
-
-### Task 18: Senare vågor (checklista)
-
-Våg 2 (senast 15 januari 2027) och våg 3 (senast 26 februari 2027) är dataändringar. Ingen ny kod behövs om inget nytt dyker upp.
-
-- [ ] **Step 1: Villkor**
-
-Fas 1b har skrivit vågens texter på `main`: vågens arter har `status: "ok"`, `verification` och `review.wave` lika med vågens nummer.
-
-- [ ] **Step 2: Förhandsvisning**
-
-```bash
-git switch main && git pull
-git switch -c website/vag-<N>
-git push -u origin website/vag-<N>
-```
-
-Vercel bygger förhandsvisningen med `SPECIES_PREVIEW=1`. Kontrollera att vågens sidor finns med banderollen.
-
-- [ ] **Step 3: Albin godkänner (manuell grind)**
-
-Skicka förhandslänken med vågens jämförelsesidor och tre artsidor att skumma. Vänta på hans ok.
-
-- [ ] **Step 4: Publicera och slå ihop**
-
-```bash
-npm ci
-cd ../tools/content-pipeline && uv run birdy-fetcher web publish --wave <N> && cd ../../website
-git diff -- src/data | grep '^[-+] ' | grep -v '"publish":' | head
-npm run verify && npm run verify:fixtures && PLAYWRIGHT_PORT=4327 npx playwright test
-git add src/data/species src/data/comparisons
-git commit -m "feat(website): våg <N> av artsidorna publicerad"
-git push
-git switch main && git merge --ff-only website/vag-<N> && git push
-```
-
-- [ ] **Step 5: Efter go-live**
-
-Kontrollera live som i Task 17 Step 8, skicka in sitemapen igen och begär indexering för vågens viktigaste sidor (med Albins ok). Uppdatera CLAUDE.md med vågen och dess triggerdatum (6 och 12 veckor). Efter 6 och 12 veckor: skriv in mätvärdena i baslinjefilen och följ triggrarna i spec §15 innan nästa våg.
+**Löpande drift, våg 2 och 3 (ändrat 2026-10-05 (b), var tidigare en egen Task 18 med en ny förhandsgren per våg):** loopen i Step 3 fortsätter automatiskt genom hela kön, oavsett vågnummer, så länge fas 1b fortsätter skriva fler arters `status: "ok"` + `verification` till `main` (fas 1b R2 till R9). Det finns ingen ny gren, ingen ny förhandsvisning och inget nytt godkännande per våg. Det som återkommer per våg är fas 1b:s R5 (Albin beslutar om undantagsarkets flaggor när nästa vågs arter har körts genom kontrollen) och stickprovet i Step 4 ovan. Efter 6 och 12 veckor sedan en vågs första sida gick live: skriv in mätvärdena i baslinjefilen och följ triggrarna i spec §15 innan nästa våg.
