@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from .counties import COUNTIES
+from .counties import COUNTIES, COUNTY_NAMES
 
 MIN_REPORTS = 200
 
@@ -47,3 +47,92 @@ def county_profile(
     isos = [c.iso for c in COUNTIES.values()]
     shares = [_share(species_by_county.get(i, 0), all_by_county.get(i, 0)) for i in isos]
     return dict(zip(isos, scaled(shares), strict=True))
+
+
+MONTHS = {
+    "sv": (
+        "januari", "februari", "mars", "april", "maj", "juni",
+        "juli", "augusti", "september", "oktober", "november", "december",
+    ),
+    "en": (
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December",
+    ),
+}  # fmt: skip
+_AND = {"sv": "och", "en": "and"}
+_TO = {"sv": "till", "en": "to"}
+ALL_YEAR = {"sv": "Rapporteras året runt.", "en": "Reported all year round."}
+MOST = {"sv": "Rapporteras mest i {months}.", "en": "Reported most in {months}."}
+NEVER = {"sv": "Nästan aldrig i {months}.", "en": "Almost never in {months}."}
+COUNTIES_SENTENCE = {
+    "sv": "Vanligast i rapporterna från {counties}.",
+    "en": "Most common in reports from {counties}.",
+}
+PEAK = 80
+LOW = 10
+ALL_YEAR_MIN = 30
+
+
+def join_list(items: list[str], lang: str) -> str:
+    if len(items) == 1:
+        return items[0]
+    return ", ".join(items[:-1]) + f" {_AND[lang]} " + items[-1]
+
+
+def month_runs(selected: set[int]) -> list[list[int]]:
+    """Runs of consecutive months (0 to 11), where December and January are neighbours."""
+    if not selected:
+        return []
+    if len(selected) == 12:
+        return [list(range(12))]
+    start = next(i for i in range(12) if i in selected and (i - 1) % 12 not in selected)
+    runs: list[list[int]] = []
+    current: list[int] = []
+    for k in range(12):
+        month = (start + k) % 12
+        if month in selected:
+            current.append(month)
+        elif current:
+            runs.append(current)
+            current = []
+    if current:
+        runs.append(current)
+    return runs
+
+
+def months_text(selected: set[int], lang: str) -> str:
+    parts: list[str] = []
+    for run in month_runs(selected):
+        names = [MONTHS[lang][i] for i in run]
+        parts.extend([f"{names[0]} {_TO[lang]} {names[-1]}"] if len(run) >= 3 else names)
+    return join_list(parts, lang)
+
+
+def month_sentences(profile: list[int], lang: str) -> list[str]:
+    if min(profile) >= ALL_YEAR_MIN:
+        return [ALL_YEAR[lang]]
+    peak = {i for i, value in enumerate(profile) if value >= PEAK}
+    sentences = [MOST[lang].format(months=months_text(peak, lang))]
+    low = {i for i, value in enumerate(profile) if value <= LOW}
+    if low:
+        sentences.append(NEVER[lang].format(months=months_text(low, lang)))
+    return sentences
+
+
+def county_sentence(profile: dict[str, int], lang: str) -> str | None:
+    ranked = sorted(
+        (iso for iso, value in profile.items() if value > 0),
+        key=lambda iso: (-profile[iso], COUNTY_NAMES[iso]),
+    )[:3]
+    if not ranked:
+        return None
+    names = [COUNTY_NAMES[iso] for iso in ranked]
+    return COUNTIES_SENTENCE[lang].format(counties=join_list(names, lang))
+
+
+def data_sentences(months: list[int], counties: dict[str, int], lang: str) -> list[str]:
+    sentences = month_sentences(months, lang)
+    county = county_sentence(counties, lang)
+    if county is not None:
+        sentences.append(county)
+    return sentences

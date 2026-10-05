@@ -5,7 +5,16 @@ from __future__ import annotations
 import pytest
 
 from birdy_fetcher.web.counties import COUNTIES
-from birdy_fetcher.web.datamod import county_profile, month_profile, scaled
+from birdy_fetcher.web.datamod import (
+    county_profile,
+    county_sentence,
+    data_sentences,
+    month_profile,
+    month_runs,
+    month_sentences,
+    months_text,
+    scaled,
+)
 
 
 def test_counties_table_has_21_unique_iso_codes() -> None:
@@ -43,3 +52,64 @@ def test_county_profile_covers_all_21_counties() -> None:
     assert profile["SE-BD"] == 100
     assert profile["SE-M"] == 33
     assert profile["SE-AB"] == 0
+
+
+MIGRANT = [0, 0, 5, 60, 100, 90, 85, 70, 40, 5, 0, 0]
+
+
+def test_runs_wrap_around_the_new_year() -> None:
+    assert month_runs({10, 11, 0, 1}) == [[10, 11, 0, 1]]
+    assert month_runs({4, 5, 8}) == [[4, 5], [8]]
+
+
+def test_three_or_more_months_in_a_row_become_a_span() -> None:
+    assert months_text({11, 0, 1}, "sv") == "december till februari"
+    assert months_text({11, 0, 1}, "en") == "December to February"
+
+
+def test_two_months_are_listed() -> None:
+    assert months_text({4, 5}, "sv") == "maj och juni"
+    assert months_text({2, 4, 5}, "en") == "March, May and June"
+
+
+def test_migrant_sentences() -> None:
+    assert month_sentences(MIGRANT, "sv") == [
+        "Rapporteras mest i maj till juli.",
+        "Nästan aldrig i oktober till mars.",
+    ]
+    assert month_sentences(MIGRANT, "en") == [
+        "Reported most in May to July.",
+        "Almost never in October to March.",
+    ]
+
+
+def test_resident_is_reported_all_year() -> None:
+    assert month_sentences([70, 65, 60, 55, 70, 79, 64, 68, 74, 100, 66, 69], "sv") == [
+        "Rapporteras året runt."
+    ]
+
+
+def test_county_sentence_names_the_top_three() -> None:
+    profile = {iso: 0 for iso in ("SE-BD", "SE-AC", "SE-Z", "SE-M")}
+    profile.update({"SE-BD": 100, "SE-AC": 80, "SE-Z": 60, "SE-M": 5})
+    assert county_sentence(profile, "sv") == (
+        "Vanligast i rapporterna från Norrbotten, Västerbotten och Jämtland."
+    )
+    assert county_sentence(profile, "en") == (
+        "Most common in reports from Norrbotten, Västerbotten and Jämtland."
+    )
+
+
+def test_county_sentence_with_one_county_and_with_none() -> None:
+    assert county_sentence({"SE-I": 100, "SE-M": 0}, "sv") == (
+        "Vanligast i rapporterna från Gotland."
+    )
+    assert county_sentence({"SE-I": 0}, "sv") is None
+
+
+def test_data_sentences_put_months_first() -> None:
+    assert data_sentences(MIGRANT, {"SE-I": 100}, "sv") == [
+        "Rapporteras mest i maj till juli.",
+        "Nästan aldrig i oktober till mars.",
+        "Vanligast i rapporterna från Gotland.",
+    ]
