@@ -1412,7 +1412,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "articleDe": "tyska artikeln",
     "dataCreditReports": "Rapportdata: Artportalen (SLU Artdatabanken) via {gbif}, 2016 till 2025.",
     "dataCreditRedList": "Rödlista: Rödlistade arter i Sverige 2025, SLU Artdatabanken.",
-    "reviewed": "Faktagranskad av {name} {date}.",
+    "reviewed": "Kontrollerad mot källorna {date}.",
     "aboutLink": "Så gör vi artsidorna",
     "reportError": "Hittade du ett fel? Skriv till oss.",
     "reportSubject": "Fel på artsidan: {name}",
@@ -1431,10 +1431,10 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
   },
   "speciesAbout": {
     "title": "Så gör vi artsidorna: källor och granskning | Birdy",
-    "description": "Så skrivs Birdys artsidor: källorna, hur AI används, hur Albin Abrahamsson granskar fakta, vilka licenser som gäller och hur du rapporterar fel.",
+    "description": "Så skrivs Birdys artsidor: källorna, hur AI används, hur fakta kontrolleras, vilka licenser som gäller och hur du rapporterar fel.",
     "crumb": "Så gör vi artsidorna",
     "headline": "Så gör vi *artsidorna*",
-    "lead": "Varje artsida bygger på flera källor, kontrolleras i flera steg och granskas av en människa innan den publiceras. Så här går det till.",
+    "lead": "Varje artsida bygger på flera källor och kontrolleras i flera steg, mest automatiskt och vid undantag av en människa, innan den publiceras. Så här går det till.",
     "sections": [
       {
         "heading": "Källorna",
@@ -1455,7 +1455,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "Granskningen",
         "paragraphs": [
-          "Albin Abrahamsson, som har byggt Birdy, går igenom varje arts fakta innan sidan publiceras och stryker eller rättar det som inte stämmer. Datumet för granskningen står längst ned på varje artsida."
+          "En andra modell kontrollerar varje faktum mot sitt citat i artikeln. Kod jämför siffrorna mellan de olika språkens artiklar och jämför förekomsten i Sverige med Artportalen och den svenska rödlistan. Inspelningen kontrolleras med Birdys egen ljudmodell. Det som inte går att avgöra automatiskt, plus ett stickprov varje våg, granskas av Albin Abrahamsson, som har byggt Birdy. Datumet för den senaste kontrollen står längst ned på varje artsida."
         ]
       },
       {
@@ -1467,7 +1467,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "Rättelser",
         "paragraphs": [
-          "Hittar du ett fel? Skriv till {email}, gärna med en länk till sidan. Vi rättar sidan och sätter ett nytt granskningsdatum."
+          "Hittar du ett fel? Skriv till {email}, gärna med en länk till sidan. Vi rättar sidan och sätter ett nytt kontrolldatum."
         ]
       }
     ]
@@ -1577,7 +1577,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
     "articleDe": "German article",
     "dataCreditReports": "Report data: Artportalen (SLU Swedish Species Information Centre) via {gbif}, 2016 to 2025.",
     "dataCreditRedList": "Red list: The Swedish Red List 2025, SLU Swedish Species Information Centre.",
-    "reviewed": "Facts reviewed by {name} on {date}.",
+    "reviewed": "Checked against sources on {date}.",
     "aboutLink": "How we make these pages",
     "reportError": "Found a mistake? Write to us.",
     "reportSubject": "Mistake on the species page: {name}",
@@ -1596,10 +1596,10 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
   },
   "speciesAbout": {
     "title": "How we make the species pages: sources and review | Birdy",
-    "description": "How the species pages on Birdy are made: the sources, how AI is used, how Albin Abrahamsson reviews the facts, the licences and how to report a mistake.",
+    "description": "How the species pages on Birdy are made: the sources, how AI is used, how the facts are checked, the licences and how to report a mistake.",
     "crumb": "How we make these pages",
     "headline": "How we make the *species pages*",
-    "lead": "Every species page is built from several sources, checked in several steps and reviewed by a person before it is published. This is how it works.",
+    "lead": "Every species page is built from several sources and checked in several steps, mostly automatically and by a person when something needs it, before it is published. This is how it works.",
     "sections": [
       {
         "heading": "The sources",
@@ -1620,7 +1620,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "The review",
         "paragraphs": [
-          "Albin Abrahamsson, who built Birdy, goes through the facts for every species before the page is published, and removes or corrects anything that is wrong. The date of the review is at the bottom of every species page."
+          "A second model checks every fact against its quote in the article. Code compares the numbers between the different language articles, and compares the occurrence in Sweden with Artportalen and the Swedish red list. The recording is checked with Birdy's own sound model. What cannot be settled automatically, plus a spot check every wave, is reviewed by Albin Abrahamsson, who built Birdy. The date of the latest check is at the bottom of every species page."
         ]
       },
       {
@@ -1632,7 +1632,7 @@ I objektet `nav`, lägg till `"species": "Arter",`. I `footer`, lägg till `"spe
       {
         "heading": "Corrections",
         "paragraphs": [
-          "Found a mistake? Write to {email}, ideally with a link to the page. We correct the page and set a new review date."
+          "Found a mistake? Write to {email}, ideally with a link to the page. We correct the page and set a new check date."
         ]
       }
     ]
@@ -2616,7 +2616,7 @@ test.describe('artsidan', () => {
     for (const key of keys) await expect(page.locator(`[data-credit-for="${key}"]`)).toHaveCount(1);
     await expect(page.locator('[data-wiki-credit] [data-wiki]')).toHaveCount(3);
     await expect(page.locator('[data-wiki-credit]')).toContainText('CC BY-SA 4.0');
-    await expect(page.locator('[data-reviewed-by]')).toContainText('Faktagranskad av Albin Abrahamsson 20 november 2026');
+    await expect(page.locator('[data-reviewed-by]')).toContainText('Kontrollerad mot källorna 20 november 2026');
     await expect(page.locator('time[data-reviewed]')).toHaveAttribute('datetime', '2026-11-20');
     await expect(page.locator('.credits a[href="/sv/arter/om-artsidorna/"]')).toHaveCount(1);
     await expect(page.locator('a[href*="utm_campaign%3Dtalgoxe"]')).toHaveCount(1);
@@ -2627,10 +2627,10 @@ test.describe('artsidan', () => {
     expect(errors).toEqual([]);
   });
 
-  test('engelska sidan: granskningsraden och jämförelselänken', async ({ page }) => {
+  test('engelska sidan: kontrollraden och jämförelselänken', async ({ page }) => {
     await page.goto('/species/great-tit/');
     await expect(page.locator('h1')).toHaveText('Great Tit');
-    await expect(page.locator('[data-reviewed-by]')).toContainText('Facts reviewed by Albin Abrahamsson on 20 November 2026.');
+    await expect(page.locator('[data-reviewed-by]')).toContainText('Checked against sources on 20 November 2026.');
     await expect(page.locator('.look-compare')).toHaveText('Compare the Eurasian Blue Tit and the Great Tit');
     await expect(page.locator('.sp-app')).toContainText('from a photo or its song');
   });
@@ -3904,18 +3904,18 @@ for (const { path, html } of pages) {
     if (list.numberOfItems !== shown || list.itemListElement.length !== shown) fail(path, `ItemList har ${list.numberOfItems} poster men sidan visar ${shown}`);
   }
 
-  // Reviewer and date in JSON-LD must be the ones the page shows (spec §11).
+  // The date in JSON-LD must be the one the page shows (spec §11, Revision 2026-10-05:
+  // no more reviewedBy, the page no longer names a reviewer, only a verification date).
   const webPage = graph.find((n) => n['@type'] === 'WebPage');
   const reviewedAt = attr(html.match(/<time\b[^>]*data-reviewed[^>]*>/)?.[0] ?? '', 'datetime');
-  if (reviewedAt) {
-    const visible = text(html.match(/<span data-reviewed-by[^>]*>([\s\S]*?)<\/span>/)?.[1] ?? '');
-    if (!webPage?.reviewedBy?.name || !visible.includes(webPage.reviewedBy.name)) fail(path, `reviewedBy (${webPage?.reviewedBy?.name}) syns inte på sidan`);
-    if (webPage?.lastReviewed !== reviewedAt) fail(path, `lastReviewed (${webPage?.lastReviewed}) är inte datumet på sidan (${reviewedAt})`);
+  if (reviewedAt && webPage?.lastReviewed !== reviewedAt) {
+    fail(path, `lastReviewed (${webPage?.lastReviewed}) är inte datumet på sidan (${reviewedAt})`);
   }
+  if (webPage?.reviewedBy) fail(path, 'reviewedBy finns kvar i JSON-LD (borttaget 2026-10-05, bara lastReviewed ska finnas)');
 
   // Credits and media on species and comparison pages (spec §10, rule 5).
   if (html.includes('data-species-page') || isComparison) {
-    if (!reviewedAt) fail(path, 'granskningsraden saknas');
+    if (!reviewedAt) fail(path, 'kontrollraden saknas');
     const keys = new Set([...html.matchAll(/data-(?:photo|audio)="([^"]+)"/g)].map((m) => m[1]));
     const credits = new Set([...html.matchAll(/data-credit-for="([^"]+)"/g)].map((m) => m[1]));
     for (const key of keys) if (!credits.has(key)) fail(path, `${key} saknar creditrad`);
@@ -4019,7 +4019,7 @@ I `scripts/check-no-dashes.mjs`, ändra importraden högst upp till `import { ex
 // Species and comparison data (spec 2026-09-25): rendered text only. Quotes are Wikipedia's own words and
 // are not shown; the top-level fact list, raw counts and generation details are not shown either.
 const SKIP = new Set(['quote', 'sourceUrl', 'licenseUrl', 'file', 'revision', 'title', 'model', 'prompt', 'at', 'effort', 'checker', 'qid', 'slug', 'factIds']);
-const SKIP_TOP = new Set(['facts', 'raw', 'generated', 'rejectedText', 'errors', 'review']);
+const SKIP_TOP = new Set(['facts', 'raw', 'generated', 'rejectedText', 'errors', 'review', 'verification']);
 const walkRendered = (value, path, cb) => {
   if (typeof value === 'string') cb(value, path);
   else if (Array.isArray(value)) value.forEach((v, i) => walkRendered(v, `${path}[${i}]`, cb));
