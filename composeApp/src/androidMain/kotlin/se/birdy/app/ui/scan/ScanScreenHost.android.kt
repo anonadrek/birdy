@@ -2,12 +2,16 @@ package se.birdy.app.ui.scan
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import se.birdy.app.di.AppGraph
 import se.birdy.app.permissions.CameraPermissionStatus
 import se.birdy.app.permissions.rememberCameraPermissionState
+import se.birdy.app.ui.components.PhotoModelUnavailableView
+import se.birdy.ml.ClassifierBootstrapState
 import java.io.File
 import java.util.UUID
 
@@ -18,6 +22,13 @@ actual fun ScanScreenHost(
     onFrozen: (sourceJson: String, capturedAtMs: Long) -> Unit,
     onBack: () -> Unit,
 ) {
+    val bootstrapState by graph.classifierBootstrap.state.collectAsState()
+    if (bootstrapState is ClassifierBootstrapState.Failed) {
+        // The photo model failed to load — AppGraph.scanViewModel() would throw reading
+        // AppGraph.classifier. Show the shared error state instead of constructing the VM.
+        PhotoModelUnavailableView(onRetry = { graph.classifierBootstrap.retry() }, onBack = onBack)
+        return
+    }
     val context = LocalContext.current
     val permission = rememberCameraPermissionState(context)
     val viewModel = viewModel { graph.scanViewModel() }

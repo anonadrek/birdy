@@ -3,7 +3,11 @@ package se.birdy.app.ui.scaffold
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.datetime.Instant
 import se.birdy.app.bootstrap.BadgeVersionStore
 import se.birdy.app.data.premium.FormattedPrices
@@ -51,6 +55,11 @@ internal fun testAppGraph(
     debugSkipOverride: Boolean = false,
     backend: PremiumState = PremiumState.Free,
     prices: FormattedPrices = FormattedPrices(),
+    // Release 1.3.0 Plan 3 Task 2c: overridable so AppGate/photo-model-failed tests can supply
+    // a ClassifierBootstrap that starts Failed (or counts retry() attempts) instead of the
+    // always-succeeds default below.
+    classifierBootstrap: ClassifierBootstrap =
+        ClassifierBootstrap(buildClassifier = { Triple(FakeBirdClassifier(), ClassifierMode.DEMO, null) }),
 ): AppGraph {
     val grandfathered =
         GrandfatherPolicy.isGrandfathered(
@@ -60,8 +69,7 @@ internal fun testAppGraph(
         )
     return AppGraph(
         repository = FakeSpeciesRepository(),
-        classifierBootstrap =
-            ClassifierBootstrap(buildClassifier = { Triple(FakeBirdClassifier(), ClassifierMode.DEMO, null) }),
+        classifierBootstrap = classifierBootstrap,
         cameraSourceFactory = { FakeCameraSource() },
         observationRepository = FakeObservationRepository(),
         photoStorage = FakePhotoStorage(),
@@ -100,4 +108,52 @@ internal fun ComposeContentTestRule.startAppScaffold(graph: AppGraph): NavHostCo
     }
     waitForIdle()
     return nav
+}
+
+/**
+ * Composes the real AppGate (not AppScaffold directly) inside BirdyTheme, waits until it has
+ * settled, returns its NavHostController. Release 1.3.0 Plan 3 Task 2c: use this (instead of
+ * [startAppScaffold]) whenever a test cares about the gate's own Initializing/Failed/Ready
+ * handling — AppScaffold alone never reads classifierBootstrap.state.
+ */
+internal fun ComposeContentTestRule.startAppGate(graph: AppGraph): NavHostController {
+    attachComposeResourcesContext()
+    lateinit var nav: NavHostController
+    setContent {
+        nav = rememberNavController()
+        BirdyTheme { AppGate(graph = graph, navController = nav) }
+    }
+    waitForIdle()
+    return nav
+}
+
+/**
+ * A real [ClassifierBootstrap] whose build runs synchronously on the calling thread
+ * ([Dispatchers.Unconfined] instead of the production default [Dispatchers.Default]), so
+ * Robolectric tests observe [ClassifierBootstrap.state] settle deterministically — by the time
+ * the constructor (or [ClassifierBootstrap.retry]) returns, the build has already run, instead
+ * of racing a real background thread. [buildAttempts] counts every call to the builder (the
+ * initial build, plus one per [ClassifierBootstrap.retry]); the builder fails while
+ * `buildAttempts.value < succeedOnAttempt`, so e.g. `succeedOnAttempt = 2` starts Failed and
+ * only succeeds after one retry().
+ */
+internal class ControllableClassifierBootstrap(
+    succeedOnAttempt: Int,
+) {
+    private val _buildAttempts = MutableStateFlow(0)
+    val buildAttempts: StateFlow<Int> = _buildAttempts.asStateFlow()
+
+    val bootstrap: ClassifierBootstrap =
+        ClassifierBootstrap(
+            buildClassifier = {
+                val attempt = _buildAttempts.value + 1
+                _buildAttempts.value = attempt
+                if (attempt < succeedOnAttempt) {
+                    error("photo model unavailable in test (attempt $attempt)")
+                }
+                Triple(FakeBirdClassifier(), ClassifierMode.DEMO, null)
+            },
+            scope = CoroutineScope(Dispatchers.Unconfined),
+            buildContext = Dispatchers.Unconfined,
+        )
 }

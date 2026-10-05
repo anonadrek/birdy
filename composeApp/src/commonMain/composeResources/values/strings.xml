@@ -464,9 +464,11 @@
 
     <!-- ===== Plan 6a Task 5: Bootstrap ===== -->
     <string name="bootstrap_loading">Förbereder fältboken…</string>
-    <string name="bootstrap_failed_title">Något gick fel</string>
-    <string name="bootstrap_failed_body">Kunde inte ladda fågel-arkivet. Försök igen om en stund.</string>
-    <string name="bootstrap_failed_retry">Försök igen</string>
+    <!-- Release 1.3.0 Plan 3 Task 2c: fotomodellen kunde inte laddas (ClassifierBootstrapState.Failed).
+         Stoppar bara Skanna + foto-ID (PhotoModelUnavailableView); resten av appen gatas inte längre
+         av detta (AppGate), se photo_retry för knappen. -->
+    <string name="photo_model_unavailable_title">Fotoigenkänningen kunde inte starta</string>
+    <string name="photo_model_unavailable_body">Det gick inte att ladda modellen som känner igen fåglar på bild. Ljud-ID och resten av appen fungerar som vanligt.</string>
 
     <!-- Plan 7e — Premium tier -->
     <string name="premium_screen_close">Stäng</string>

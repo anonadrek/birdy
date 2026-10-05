@@ -10,6 +10,7 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,6 +26,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import se.birdy.app.di.AppGraph
+import se.birdy.app.ui.components.PhotoModelUnavailableView
+import se.birdy.ml.ClassifierBootstrapState
 import se.birdy.ml.FrameFormat
 import se.birdy.ml.ImageInput
 import java.io.ByteArrayOutputStream
@@ -41,6 +44,13 @@ actual fun PhotoAnalyzeHost(
     onLoaded: (sourceJson: String, capturedAtMs: Long) -> Unit,
     onBack: () -> Unit,
 ) {
+    val bootstrapState by graph.classifierBootstrap.state.collectAsState()
+    if (bootstrapState is ClassifierBootstrapState.Failed) {
+        // The photo model failed to load — AppGraph.photoAnalyzeViewModel() would throw reading
+        // AppGraph.classifier. Show the shared error state instead of constructing the VM.
+        PhotoModelUnavailableView(onRetry = { graph.classifierBootstrap.retry() }, onBack = onBack)
+        return
+    }
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val photoCacheDir =

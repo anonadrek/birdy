@@ -450,9 +450,11 @@
 
     <!-- ===== Plan 6a Task 5: Bootstrap ===== -->
     <string name="bootstrap_loading">Preparing the field journal…</string>
-    <string name="bootstrap_failed_title">Something went wrong</string>
-    <string name="bootstrap_failed_body">Couldn't load the bird archive. Try again in a moment.</string>
-    <string name="bootstrap_failed_retry">Try again</string>
+    <!-- Release 1.3.0 Plan 3 Task 2c: the photo model failed to load (ClassifierBootstrapState.Failed).
+         Stops only Scan + photo-ID (PhotoModelUnavailableView); the rest of the app is no longer
+         gated on this (AppGate), see photo_retry for the button. -->
+    <string name="photo_model_unavailable_title">Photo ID couldn't start</string>
+    <string name="photo_model_unavailable_body">The model that recognises birds in photos didn't load. Sound ID and the rest of the app work as usual.</string>
 
     <!-- Plan 7e — Premium tier -->
     <string name="premium_screen_close">Close</string>
