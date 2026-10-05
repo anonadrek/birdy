@@ -12,7 +12,7 @@ from urllib.parse import quote
 from ..cache import Cache
 from .http import GetText, ThrottledHttp
 
-LANGS = ("sv", "en")
+LANGS = ("sv", "en", "de")
 
 
 @dataclass(frozen=True)
@@ -46,30 +46,34 @@ class FullWikiClient:
         return raw
 
     async def sitelinks(self, qid: str, *, refresh: bool = False) -> dict[str, str]:
-        """Titles per language. An item with no sv/en sitelinks at all is often a newer
-        name combination whose articles still hang on the original combination (P1403),
-        e.g. fjällpipare Q25677554 -> Q202504; those are used instead. Cached under `qid`."""
-        titles = await self._item_sitelinks(qid, qid, "web-sitelinks.json", refresh)
-        if titles:
+        """Titles per language (sv, en, de). An item with neither a sv nor an en sitelink is
+        often a newer name combination whose articles still hang on the original combination
+        (P1403), e.g. fjällpipare Q25677554 -> Q202504; those are used instead. Cached under
+        `qid`. The cache names end in -v2 because the v1 files were fetched without dewiki."""
+        titles = await self._item_sitelinks(qid, qid, "web-sitelinks-v2.json", refresh)
+        if "sv" in titles or "en" in titles:
             return titles
         original = await self._original_combination(qid, refresh)
         if original is None:
-            return {}
-        return await self._item_sitelinks(qid, original, "web-sitelinks-original.json", refresh)
+            return titles
+        original_titles = await self._item_sitelinks(
+            qid, original, "web-sitelinks-original-v2.json", refresh
+        )
+        return original_titles or titles
 
     async def _item_sitelinks(
         self, cache_qid: str, item: str, name: str, refresh: bool
     ) -> dict[str, str]:
         url = (
             "https://www.wikidata.org/w/api.php?action=wbgetentities&format=json"
-            f"&props=sitelinks&sitefilter=svwiki%7Cenwiki&ids={item}"
+            f"&props=sitelinks&sitefilter=svwiki%7Cenwiki%7Cdewiki&ids={item}"
         )
         raw = await self._cached(cache_qid, name, url, refresh)
         links = json.loads(raw).get("entities", {}).get(item, {}).get("sitelinks", {})
         return {
             site.removesuffix("wiki"): link["title"]
             for site, link in links.items()
-            if site in ("svwiki", "enwiki")
+            if site in ("svwiki", "enwiki", "dewiki")
         }
 
     async def _original_combination(self, qid: str, refresh: bool) -> str | None:

@@ -323,3 +323,57 @@ async def test_backoff_sleep_blocks_other_requests_until_it_completes(tmp_path: 
     await asyncio.gather(client.sitelinks("Q1"), client.sitelinks("Q2"))
 
     assert events.index("sleep 3.0") < events.index("call Q2")
+
+
+class RoutedHttp:
+    """Answers with the first route whose key is in the URL."""
+
+    def __init__(self, routes: dict[str, str]) -> None:
+        self.routes = routes
+        self.urls: list[str] = []
+
+    async def __call__(self, url: str) -> str:
+        self.urls.append(url)
+        for key, body in self.routes.items():
+            if key in url:
+                return body
+        raise FileNotFoundError(url)
+
+
+def _entities(qid: str, links: dict[str, str]) -> str:
+    sitelinks = {site: {"site": site, "title": title} for site, title in links.items()}
+    return json.dumps({"entities": {qid: {"sitelinks": sitelinks}}})
+
+
+async def test_articles_include_german(tmp_path: Path) -> None:
+    http = RoutedHttp(
+        {
+            "ids=Q25485": _entities(
+                "Q25485", {"svwiki": "Talgoxe", "enwiki": "Great tit", "dewiki": "Kohlmeise"}
+            ),
+            "sv.wikipedia": _article("Talgoxe", "Talgoxen är cirka 14 centimeter lång.", 111),
+            "en.wikipedia": _article("Great tit", "The great tit is about 14 cm long.", 222),
+            "de.wikipedia": _article("Kohlmeise", "Die Kohlmeise ist etwa 14 cm lang.", 333),
+        }
+    )
+    client = FullWikiClient(cache=Cache(tmp_path), http_get=http, min_interval=0.0)
+    articles = await client.articles("Q25485")
+    assert set(articles) == {"sv", "en", "de"}
+    assert articles["de"].title == "Kohlmeise"
+    assert articles["de"].revision == "333"
+    assert any("dewiki" in url for url in http.urls)
+
+
+async def test_german_only_item_still_uses_its_original_combination(tmp_path: Path) -> None:
+    claims = json.dumps(
+        {"claims": {"P1403": [{"mainsnak": {"datavalue": {"value": {"id": "Q901"}}}}]}}
+    )
+    http = RoutedHttp(
+        {
+            "ids=Q900": _entities("Q900", {"dewiki": "Mornellregenpfeifer"}),
+            "property=P1403": claims,
+            "ids=Q901": _entities("Q901", {"svwiki": "Fjällpipare"}),
+        }
+    )
+    client = FullWikiClient(cache=Cache(tmp_path), http_get=http, min_interval=0.0)
+    assert await client.sitelinks("Q900") == {"sv": "Fjällpipare"}
