@@ -33,7 +33,7 @@ Flödet (ersätter avsnitt 9.4 "Albins granskning", nu "Automatisk kontroll och 
 2. **Siffror mellan artiklarna (V2, kod, ingen modell):** för fakta med tal (storlek, vikt, vingbredd, kullstorlek och liknande) tar koden ut tal och enhet och jämför med de andra artiklarna (sv/en/de) som anger samma mått. Intervallen måste överlappa (toleransen bestäms i planen, med tester). Skiljer de sig åt blir det en flagga.
 3. **Förekomst (V3, kod):** den befintliga statussignalen mot Artportalens data kompletteras med en kontroll mot Svenska rödlistan 2025: status `absent` eller `rare_visitor` för en art som har en bedömd rödlistekategori (inte NA/NE) ger en flagga.
 4. **Inspelningen (V4):** Birdys egen BirdNET-modell körs på den klippta inspelningen (skrivbordsreferensen finns redan i `tools/ml-eval/flexref/`; planen utformar anropet, till exempel ett litet script där som pipelinen anropar via `uv run --project ...` och som svarar med JSON top-3 per 3-sekundersfönster). Arten måste ligga i top-3 med minst 0,10 i konfidens i minst ett fönster, annars tas inspelningen bort automatiskt (sidan visar ingen inspelning). Arter som ljudmodellen inte täcker (174 av 180, avsnitt 1) ger i stället en flagga så att Albin kan lyssna.
-5. **Undantagsark per våg:** ett Google-ark per våg (samma uppbyggnad och kolumner som tidigare, bilaga E, justerad) men med bara: alla flaggor från V2 till V4 och de befintliga statusflaggorna, och ett **stickprov** på 2 arter per våg draget med ett sparat frö, visade med hela faktabladet. Albins beslut som förut (`behåll`, `stryk`, `ändra`); flaggor kräver ett beslut. Hittar stickprovet ett fel som V1 till V4 missade dras två nya arter och missen loggas i rapporten.
+5. **Undantagsark per våg:** ett Google-ark per våg (samma uppbyggnad och kolumner som tidigare, bilaga E, justerad) men med bara: alla flaggor från V2 till V4 (V3 omfattar både den befintliga statussignalen mot Artportalen och den nya rödlistekontrollen), och ett **stickprov** på 2 arter per våg draget med ett sparat frö, visade med hela faktabladet. Albins beslut som förut (`behåll`, `stryk`, `ändra`); flaggor kräver ett beslut. Hittar stickprovet ett fel som V1 till V4 missade dras två nya arter och missen loggas i rapporten.
 6. **Import:** artens fält `review.facts = { by, at }` ersätts av `verification = { method: "auto", at: "<datum>", model: "<modell-id>", spotChecked: true|false }`. Ingen text skrivs för en art utan `verification` eller med en öppen flagga.
 
 Konsekvenser för sidorna och metadatan (ska alltid vara sant):
@@ -309,7 +309,7 @@ Ersätter Albins manuella granskning av varje faktablad (Revision 2026-10-05). E
 - **V2, siffror mellan artiklarna** (kod, ingen modell): för fakta med tal (storlek, vikt, vingbredd, kullstorlek och liknande) tar koden ut tal och enhet och jämför med de andra artiklarna (sv/en/de) som anger samma mått. Intervallen måste överlappa (toleransen ges i planen, med tester). Skiljer de sig åt blir det en flagga.
 - **V3, förekomst** (kod): den befintliga statussignalen mot Artportalens data (9.2) kompletteras med en kontroll mot Svenska rödlistan 2025: status `absent` eller `rare_visitor` för en art som har en bedömd rödlistekategori (inte NA/NE) ger en flagga.
 - **V4, inspelningen:** Birdys egen BirdNET-modell körs på den klippta inspelningen (skrivbordsreferensen finns i `tools/ml-eval/flexref/`; planen anropar den, till exempel via ett litet script som pipelinen kör med `uv run --project ...` och som svarar med JSON top-3 per 3-sekundersfönster). Arten måste ligga i top-3 med minst 0,10 i konfidens i minst ett fönster, annars tas inspelningen bort automatiskt (sidan visar ingen inspelning). Arter som ljudmodellen inte täcker (174 av 180, avsnitt 1) ger i stället en flagga så att Albin kan lyssna.
-- **Undantagsark per våg:** ett Google-ark per våg i Albins Drive, skapat av agenten. Kolumnerna står i bilaga E. Arket innehåller bara: alla flaggor från V2 till V4 och de befintliga statusflaggorna, och ett **stickprov** på 2 arter per våg draget med ett sparat frö, visade med hela faktabladet så att Albin kan stämma av kontrollens arbete.
+- **Undantagsark per våg:** ett Google-ark per våg i Albins Drive, skapat av agenten. Kolumnerna står i bilaga E. Arket innehåller bara: alla flaggor från V2 till V4 (V3 omfattar både den befintliga statussignalen mot Artportalen och den nya rödlistekontrollen), och ett **stickprov** på 2 arter per våg draget med ett sparat frö, visade med hela faktabladet så att Albin kan stämma av kontrollens arbete.
 - **Beslut:** `behåll` (standard), `stryk` eller `ändra` (Albin skriver den nya texten i faktumkolumnen). Flaggor kräver ett beslut. Hittar stickprovet ett fel som V1 till V4 missade dras två nya arter till stickprovet och missen loggas i rapporten.
 - **Import:** arket exporteras till `tools/content-pipeline/review/wave-<n>.csv` och committas. Strukna fakta tas bort, ändrade fakta ersätts och märks `edited: true` (citatet behålls som källa; ändringen är Albins ansvar), strukna inspelningar tas bort. Artens fält `review.facts = { by, at }` ersätts av `verification = { method: "auto", at: "<datum>", model: "<modell-id>", spotChecked: true|false }`.
 - **Ingen text skrivs** för en art utan `verification`, eller med en öppen flagga.
@@ -718,14 +718,14 @@ Fakta-id har prefixet `a:` eller `b:` för att visa vilken arts faktablad de kom
 
 ## Bilaga E: undantagsarket
 
-En flik per våg (ändrat 2026-10-05, se Revision 2026-10-05). Innehåller bara det den automatiska kontrollen inte kan avgöra: alla flaggor från V2 till V4 och statussignalen, plus hela faktabladet för de 2 arter som vågens stickprov drar. En rad per faktum, inspelning, datarad eller flagga, sorterat på art och ämne.
+En flik per våg (ändrat 2026-10-05, se Revision 2026-10-05). Innehåller bara det den automatiska kontrollen inte kan avgöra: alla flaggor från V2 till V4, plus hela faktabladet för de 2 arter som vågens stickprov drar. En rad per faktum, inspelning, datarad eller flagga, sorterat på art och ämne.
 
 | Kolumn | Innehåll |
 |---|---|
 | Art | Svenskt namn |
 | QID | Wikidata-id |
 | Rad | `stickprov` eller `flagga` |
-| Kontroll | Vilken kontroll som gav flaggan: `V1`, `V2`, `V3`, `V4` eller `statussignalen`. Tomt för en stickprovsrad. |
+| Kontroll | Vilken kontroll som gav flaggan: `V2`, `V3` eller `V4`. Tomt för en stickprovsrad. |
 | Typ | `faktum`, `data`, `inspelning` eller `flagga` |
 | Id | Fakta-id (`f03`, `d01`), eller tomt för en inspelningsflagga |
 | Ämne | Ämnet på svenska |
