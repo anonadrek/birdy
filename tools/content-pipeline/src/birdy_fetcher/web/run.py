@@ -17,6 +17,7 @@ from .checks import load_banned
 from .groups import GroupTable
 from .images import prepare_images
 from .output import build_record, is_approved, write_record
+from .paths import WebPaths as WebPaths
 from .report import SpeciesOutcome, render_report
 from .slugs import slugify
 from .source import SpeciesSource, load_approved
@@ -30,59 +31,6 @@ class SlugCollisionError(ValueError):
 
 class ArticleSource(Protocol):
     async def articles(self, qid: str, *, refresh: bool = False) -> dict[str, WikiArticle]: ...
-
-
-@dataclass(frozen=True)
-class WebPaths:
-    repo_root: Path
-
-    @property
-    def pipeline_root(self) -> Path:
-        return self.repo_root / "tools" / "content-pipeline"
-
-    @property
-    def species_root(self) -> Path:
-        return self.repo_root / "shared" / "content" / "species"
-
-    @property
-    def asset_images(self) -> Path:
-        return self.repo_root / "asset-pack" / "src" / "main" / "assets" / "images"
-
-    @property
-    def family_groups(self) -> Path:
-        return (
-            self.repo_root
-            / "shared"
-            / "content"
-            / "src"
-            / "jvmMain"
-            / "resources"
-            / "family_groups.yaml"
-        )
-
-    @property
-    def web_groups(self) -> Path:
-        return self.repo_root / "website" / "src" / "data" / "species-groups.json"
-
-    @property
-    def data_out(self) -> Path:
-        return self.repo_root / "website" / "src" / "data" / "species"
-
-    @property
-    def images_out(self) -> Path:
-        return self.repo_root / "website" / "src" / "assets" / "species"
-
-    @property
-    def reports(self) -> Path:
-        return self.pipeline_root / "reports"
-
-    @property
-    def prompt(self) -> Path:
-        return self.pipeline_root / "prompts" / "web-v1.md"
-
-    @property
-    def banned(self) -> Path:
-        return self.pipeline_root / "prompts" / "web-banned-phrases.txt"
 
 
 @dataclass(frozen=True)

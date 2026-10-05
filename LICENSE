@@ -30,3 +30,10 @@ remain subject to their own licenses, including (non-exhaustively):
 The full attribution list is shown in-app under Settings → About. These
 third-party licenses govern their respective components and are not affected by
 the proprietary terms above.
+
+EXCEPTIONS
+
+The species texts in website/src/data/species/ and the comparison texts in
+website/src/data/comparisons/ are licensed under CC BY-SA 4.0, see the LICENSE.md
+file in each folder. Photos and recordings in website/src/assets/species/ keep the
+licenses credited in the species files and on each page.

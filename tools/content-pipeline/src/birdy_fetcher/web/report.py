@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from collections import Counter
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from datetime import datetime
+from pathlib import Path
 
 
 @dataclass(frozen=True)
@@ -47,3 +49,50 @@ def render_report(
     lines += ["", "## Hoppades över", ""]
     lines += [f"- {o.name_sv} ({o.qid}): {'; '.join(o.errors)}" for o in skipped] or ["Inga."]
     return "\n".join(lines) + "\n"
+
+
+STEP_STATUSES = ("ok", "pending", "failed", "skipped", "dry-run")
+
+
+@dataclass(frozen=True)
+class StepOutcome:
+    qid: str
+    name: str
+    status: str
+    errors: list[str] = field(default_factory=list)
+    notes: list[str] = field(default_factory=list)
+
+
+def render_step_report(
+    *,
+    title: str,
+    date: str,
+    outcomes: list[StepOutcome],
+    cost_usd: float | None = None,
+    model_line: str | None = None,
+) -> str:
+    counts = Counter(o.status for o in outcomes)
+    lines = [f"# {title} {date}", ""]
+    if model_line:
+        lines += [model_line, ""]
+    if cost_usd is not None:
+        lines += [f"Kostnad för körningen: ${cost_usd:.2f}.", ""]
+    lines += ["| Utfall | Antal |", "|---|---|"]
+    lines += [f"| {s} | {counts[s]} |" for s in STEP_STATUSES if counts[s]]
+    lines.append("")
+    for heading, status in (("Misslyckades", "failed"), ("Hoppades över", "skipped")):
+        rows = [o for o in outcomes if o.status == status]
+        lines += [f"## {heading}", ""]
+        lines += [f"- **{o.name} ({o.qid})**: {'; '.join(o.errors)}" for o in rows] or ["Inga."]
+        lines.append("")
+    noted = [o for o in outcomes if o.notes]
+    lines += ["## Anteckningar", ""]
+    lines += [f"- **{o.name} ({o.qid})**: {'; '.join(o.notes)}" for o in noted] or ["Inga."]
+    return "\n".join(lines) + "\n"
+
+
+def write_step_report(reports_dir: Path, step: str, now: datetime, text: str) -> Path:
+    reports_dir.mkdir(parents=True, exist_ok=True)
+    path = reports_dir / f"web-{step}-{now:%Y-%m-%d-%H%M%S}.md"
+    path.write_text(text, encoding="utf-8")
+    return path
