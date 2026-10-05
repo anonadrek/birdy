@@ -24,14 +24,35 @@ Verdict = Literal["supported", "partial", "unsupported"]
 # Severity order: unsupported > partial > supported (highest to lowest)
 VERDICT_SEVERITY = {"unsupported": 3, "partial": 2, "supported": 1}
 
-NUMBER_RE = re.compile(
-    r"(\d+(?:[.,]\d+)?)\s*(?:till|-|–)\s*(\d+(?:[.,]\d+)?)\s*(cm|mm|g|kg)\b"  # noqa: RUF001
-    r"|(\d+(?:[.,]\d+)?)\s*(cm|mm|g|kg)\b",
-    re.IGNORECASE,
-)
-UNITS = ("cm", "mm", "g", "kg")
 NUMBER_TOLERANCE = 0.15  # 15 %, a startvärde (se tasktexten)
 RED_LIST_ASSESSED_NONE = (None, "not_listed")
+
+Kind = Literal["length", "wingspan", "weight", "clutch"]
+
+# Thousands separator inside a number: plain space, NBSP (U+00A0) or narrow NBSP (U+202F).
+_THOUSANDS_CHARS = "   "  # noqa: RUF001 -- NBSP + narrow NBSP, not plain spaces
+_NUM = rf"\d{{1,3}}(?:[{_THOUSANDS_CHARS}]\d{{3}})+(?:[.,]\d+)?|\d+(?:[.,]\d+)?"
+_RANGE_SEP = r"(?:till|to|bis|-|–|—)"  # noqa: RUF001
+_UNIT = r"(?:cm|mm|kg|g|ägg|eggs|egg|Eier)"
+
+NUMBER_RE = re.compile(
+    rf"(?P<low>{_NUM})\s*{_RANGE_SEP}\s*(?P<high>{_NUM})\s*(?P<unit_range>{_UNIT})\b"
+    rf"|(?P<value>{_NUM})\s*(?P<unit_single>{_UNIT})\b",
+    re.IGNORECASE,
+)
+
+# sv/en/de words that mean "wingspan" rather than "(body) length" for a cm/mm number.
+WINGSPAN_KEYWORDS = (
+    "vingbredd",
+    "vingspann",
+    "vingspannet",
+    "spännvidd",
+    "wingspan",
+    "wing span",
+    "flügelspannweite",
+    "spannweite",
+)
+_WINGSPAN_WINDOW = 40
 
 
 @dataclass(frozen=True)
@@ -39,21 +60,55 @@ class Measurement:
     low: float
     high: float
     unit: str
+    kind: Kind
 
 
 def _num(text: str) -> float:
-    return float(text.replace(",", "."))
+    cleaned = re.sub(rf"[{_THOUSANDS_CHARS}]", "", text)
+    return float(cleaned.replace(",", "."))
 
 
-def extract_measurements(text: str, unit: str) -> list[Measurement]:
-    """Every "<number> <unit>" or "<number> till <number> <unit>" in the text, for one unit."""
+def _length_kind(text: str, start: int) -> Kind:
+    """ "wingspan" if a wingspan keyword occurs earlier in the same sentence, within
+    `_WINGSPAN_WINDOW` characters before the number; "length" otherwise (spec V2)."""
+    segment = text[max(0, start - _WINGSPAN_WINDOW) : start]
+    for punct in ".!?\n":
+        index = segment.rfind(punct)
+        if index != -1:
+            segment = segment[index + 1 :]
+    lowered = segment.lower()
+    return "wingspan" if any(keyword in lowered for keyword in WINGSPAN_KEYWORDS) else "length"
+
+
+def _normalise(low: float, high: float, unit_raw: str, text: str, start: int) -> Measurement:
+    """Length/wingspan normalise to cm, weight to g, clutch size stays a plain egg count,
+    so values of the same measure can be compared across articles (spec V2)."""
+    unit = unit_raw.lower()
+    if unit == "mm":
+        return Measurement(low / 10, high / 10, "cm", _length_kind(text, start))
+    if unit == "cm":
+        return Measurement(low, high, "cm", _length_kind(text, start))
+    if unit == "kg":
+        return Measurement(low * 1000, high * 1000, "g", "weight")
+    if unit == "g":
+        return Measurement(low, high, "g", "weight")
+    return Measurement(low, high, "ägg", "clutch")  # ägg/eggs/egg/Eier
+
+
+def extract_measurements(text: str) -> list[Measurement]:
+    """Every length/wingspan/weight/clutch-size number or range in the text, normalised to a
+    shared unit per kind (cm, g, ägg) so the same measure can be compared across articles."""
     found: list[Measurement] = []
     for match in NUMBER_RE.finditer(text):
-        if match.group(3) and match.group(3).lower() == unit:
-            found.append(Measurement(_num(match.group(1)), _num(match.group(2)), unit))
-        elif match.group(5) and match.group(5).lower() == unit:
-            value = _num(match.group(4))
-            found.append(Measurement(value, value, unit))
+        unit_range = match.group("unit_range")
+        if unit_range:
+            low = _num(match.group("low"))
+            high = _num(match.group("high"))
+            unit_raw = unit_range
+        else:
+            value = _num(match.group("value"))
+            low, high, unit_raw = value, value, match.group("unit_single")
+        found.append(_normalise(low, high, unit_raw, text, match.start()))
     return found
 
 
@@ -68,30 +123,40 @@ def _overlaps(a: Measurement, b: Measurement, tolerance: float) -> bool:
     return a_lo <= b_hi and b_lo <= a_hi
 
 
+KIND_LABEL: dict[Kind, str] = {
+    "length": "cm",
+    "wingspan": "cm",
+    "weight": "g",
+    "clutch": "ägg",
+}
+
+
 def number_flag(
     fact: dict[str, Any], articles: dict[str, WikiArticle], *, tolerance: float = NUMBER_TOLERANCE
 ) -> str | None:
-    """None when the fact's own numbers agree with at least one measurement of the same unit
-    in another cached article, or when no other article states that unit at all (spec V2)."""
+    """None when the fact's own numbers agree with at least one measurement of the same kind
+    (length/wingspan/weight/clutch size) in another cached article, or when no other article
+    states that kind at all — that article then gives no evidence either way (spec V2)."""
     if fact["topic"] == "data":
         return None
     own_article = fact["sources"][0]["article"] if fact.get("sources") else None
-    for unit in UNITS:
-        own = extract_measurements(fact["sv"], unit)
+    own_all = extract_measurements(fact["sv"])
+    for kind, label in KIND_LABEL.items():
+        own = [m for m in own_all if m.kind == kind]
         if not own:
             continue
         others: list[Measurement] = []
         for lang, article in articles.items():
             if lang == own_article:
                 continue
-            others += extract_measurements(article.text, unit)
+            others += [m for m in extract_measurements(article.text) if m.kind == kind]
         if not others:
             continue
         if not any(_overlaps(m, o, tolerance) for m in own for o in others):
             low, high = min(o.low for o in others), max(o.high for o in others)
             return (
-                f"{fact['id']} anger ett tal i {unit} som inte stämmer med de andra "
-                f"artiklarna ({low:g} till {high:g} {unit})"
+                f"{fact['id']} anger ett tal i {label} som inte stämmer med de andra "
+                f"artiklarna ({low:g} till {high:g} {label})"
             )
     return None
 

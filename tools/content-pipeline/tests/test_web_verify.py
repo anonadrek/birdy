@@ -129,10 +129,52 @@ def test_missing_required_topics() -> None:
 
 
 def test_extract_measurements_handles_a_single_value_and_a_range() -> None:
-    assert extract_measurements("Cirka 14 cm lång.", "cm") == [Measurement(14.0, 14.0, "cm")]
-    assert extract_measurements("28 till 31 cm.", "cm") == [Measurement(28.0, 31.0, "cm")]
-    assert extract_measurements("Väger omkring 2,5 kg.", "kg") == [Measurement(2.5, 2.5, "kg")]
-    assert extract_measurements("Ingen siffra här.", "cm") == []
+    # Was `extract_measurements(text, "kg") == [Measurement(2.5, 2.5, "kg")]`: that encoded the
+    # old behaviour of NOT normalising weight units, which is exactly what V2 now fixes (spec
+    # 9.4) so a kg-value and a g-value of the same bird can be compared. Also dropped the
+    # per-call `unit` filter argument: the function now scans a text for every kind at once, a
+    # Measurement carries its own `kind`, and normalises weight to g (see the new tests below
+    # for thousands separators, wingspan-vs-length and clutch size).
+    assert extract_measurements("Cirka 14 cm lång.") == [Measurement(14.0, 14.0, "cm", "length")]
+    assert extract_measurements("28 till 31 cm.") == [Measurement(28.0, 31.0, "cm", "length")]
+    assert extract_measurements("Väger omkring 2,5 kg.") == [
+        Measurement(2500.0, 2500.0, "g", "weight")
+    ]
+    assert extract_measurements("Ingen siffra här.") == []
+
+
+def test_extract_measurements_reads_thousands_separators_and_decimal_commas() -> None:
+    for text in ("1 200 g", "1 200 g", "1 200 g"):  # noqa: RUF001
+        assert extract_measurements(text) == [Measurement(1200.0, 1200.0, "g", "weight")]
+    assert extract_measurements("1,2 kg") == [Measurement(1200.0, 1200.0, "g", "weight")]
+    assert extract_measurements("14,5 cm") == [Measurement(14.5, 14.5, "cm", "length")]
+    assert extract_measurements("14.5 cm") == [Measurement(14.5, 14.5, "cm", "length")]
+
+
+def test_extract_measurements_reads_a_range_with_any_separator() -> None:
+    [m] = extract_measurements("28 to 31 cm")
+    assert (m.low, m.high, m.kind) == (28.0, 31.0, "length")
+    [m] = extract_measurements("Flügelspannweite 45 bis 55 cm")
+    assert (m.low, m.high, m.kind) == (45.0, 55.0, "wingspan")
+
+
+def test_extract_measurements_detects_wingspan_from_a_nearby_keyword() -> None:
+    [m] = extract_measurements("vingbredd 65–70 cm")  # noqa: RUF001
+    assert m.kind == "wingspan"
+    [m] = extract_measurements("längd 28–31 cm")  # noqa: RUF001
+    assert m.kind == "length"
+
+
+def test_extract_measurements_reads_clutch_size_in_eggs() -> None:
+    [m] = extract_measurements("4–6 ägg")  # noqa: RUF001
+    assert (m.low, m.high, m.unit, m.kind) == (4.0, 6.0, "ägg", "clutch")
+    [m] = extract_measurements("lays 4 to 6 eggs")
+    assert (m.low, m.high, m.unit, m.kind) == (4.0, 6.0, "ägg", "clutch")
+
+
+def test_extract_measurements_ignores_bare_numbers_without_a_unit() -> None:
+    assert extract_measurements("1758") == []
+    assert extract_measurements("över 100 000 par") == []
 
 
 def test_number_flag_is_none_when_no_other_article_states_the_unit() -> None:
@@ -173,6 +215,65 @@ def test_number_flag_accepts_an_overlapping_range() -> None:
         "en": WikiArticle("en", "x", "1", "11 to 12.5 inches, about 29 to 32 cm."),
     }
     assert number_flag(fact, articles) is None
+
+
+def test_number_flag_normalises_thousands_and_kg_before_comparing() -> None:
+    fact = {
+        "id": "f04",
+        "topic": "size",
+        "sv": "Arten väger cirka 1 200 g.",
+        "sources": [{"article": "sv", "quote": "cirka 1 200 g"}],
+    }
+    articles = {
+        "sv": WikiArticle("sv", "x", "1", "Arten väger cirka 1 200 g."),
+        "en": WikiArticle("en", "x", "1", "The species weighs 1150 to 1250 g."),
+    }
+    assert number_flag(fact, articles) is None
+
+
+def test_number_flag_does_not_compare_wingspan_with_body_length() -> None:
+    fact = {
+        "id": "f05",
+        "topic": "size",
+        "sv": "Vingbredden är 65 till 70 cm.",
+        "sources": [{"article": "sv", "quote": "Vingbredden är 65 till 70 cm"}],
+    }
+    # The other article only states body length, never wingspan: no evidence either way.
+    articles = {
+        "sv": WikiArticle("sv", "x", "1", "Vingbredden är 65 till 70 cm."),
+        "en": WikiArticle("en", "x", "1", "The body is 28 to 31 cm long."),
+    }
+    assert number_flag(fact, articles) is None
+
+
+def test_number_flag_catches_a_real_wingspan_disagreement() -> None:
+    fact = {
+        "id": "f05",
+        "topic": "size",
+        "sv": "Vingbredden är 65 till 70 cm.",
+        "sources": [{"article": "sv", "quote": "Vingbredden är 65 till 70 cm"}],
+    }
+    articles = {
+        "sv": WikiArticle("sv", "x", "1", "Vingbredden är 65 till 70 cm."),
+        "en": WikiArticle("en", "x", "1", "The wingspan is 120 to 130 cm."),
+    }
+    flag = number_flag(fact, articles)
+    assert flag is not None and "f05" in flag
+
+
+def test_number_flag_catches_a_real_clutch_disagreement() -> None:
+    fact = {
+        "id": "f06",
+        "topic": "breeding",
+        "sv": "Lägger 4–6 ägg.",  # noqa: RUF001
+        "sources": [{"article": "sv", "quote": "Lägger 4–6 ägg"}],  # noqa: RUF001
+    }
+    articles = {
+        "sv": WikiArticle("sv", "x", "1", "Lägger 4–6 ägg."),  # noqa: RUF001
+        "en": WikiArticle("en", "x", "1", "The female lays 9 to 12 eggs."),
+    }
+    flag = number_flag(fact, articles)
+    assert flag is not None and "f06" in flag
 
 
 def test_redlist_occurrence_flag() -> None:
