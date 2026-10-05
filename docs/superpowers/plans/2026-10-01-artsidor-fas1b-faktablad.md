@@ -1,14 +1,16 @@
-# Artsidor fas 1b: källor, faktablad, granskning, text och jämförelser (implementationsplan)
+# Artsidor fas 1b: källor, faktablad, kontroll, text och jämförelser (implementationsplan)
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Bygga om pipelinesteget `birdy-fetcher web` så att varje art får källor från tre Wikipedior, Artportalen, Svenska rödlistan och Commons, ett faktablad som Albin granskar, text som bara skrivs ur godkända fakta och kontrolleras mening för mening, samt jämförelsetexter för de mest sökta förväxlingsparen.
+> **Avvikelse 2026-10-05:** Albin granskar inte längre varje arts faktablad för hand (spec Revision 2026-10-05). En automatisk kontroll (V1 till V4, Task 14b till 14e) ersätter det, och Albin beslutar bara om det kontrollen flaggar plus ett stickprov på 2 arter per våg, i ett undantagsark (Task 16, 17 omskrivna). Fältet `review.facts` är ersatt av `verification`. De nya tasken är numrerade 14b till 14e för att inte rubba numreringen på Task 15 och framåt.
 
-**Architecture:** Artens JSON-fil i `website/src/data/species/<QID>.json` är tillståndet mellan stegen: `sources` → `facts` → `waves` → `sheet` → (Albin granskar) → `import` → `write` → `compare` → `publish`. Varje steg äger vissa nycklar och lämnar resten orörda. Allt som går att räkna (månader, län, rödlista, status mot data) görs av kod. Modellen tar bara ut citerade fakta, skriver ur godkända fakta och kontrollerar meningar.
+**Goal:** Bygga om pipelinesteget `birdy-fetcher web` så att varje art får källor från tre Wikipedior, Artportalen, Svenska rödlistan och Commons, ett faktablad som kontrolleras automatiskt (och granskas av Albin bara vid undantag), text som bara skrivs ur godkända fakta och kontrolleras mening för mening, samt jämförelsetexter för de mest sökta förväxlingsparen.
+
+**Architecture:** Artens JSON-fil i `website/src/data/species/<QID>.json` är tillståndet mellan stegen: `sources` → `facts` → `verify` → `waves` → `sheet` → (Albin beslutar om undantagen) → `import` → `write` → `compare` → `publish`. Varje steg äger vissa nycklar och lämnar resten orörda. Allt som går att räkna (månader, län, rödlista, status mot data, siffror mellan artiklarna) görs av kod. Modellen tar bara ut citerade fakta, kontrollerar varje faktum mot sitt citat, skriver ur godkända fakta och kontrollerar meningar.
 
 **Tech Stack:** Python 3.12 med uv, click, aiohttp, pydantic 2, anthropic 0.97 (låst), Pillow, imageio-ffmpeg (ny), pytest, ruff, mypy strict.
 
-**Spec:** `docs/superpowers/specs/2026-09-25-artsidor-design.md`, reviderad 2026-10-01 (avsnitt 9, 10 och 14, bilaga C, D och E). **Sidorna** byggs parallellt enligt `docs/superpowers/plans/2026-09-25-artsidor-fas2-sidor.md` mot samma datakontrakt (bilaga C och D).
+**Spec:** `docs/superpowers/specs/2026-09-25-artsidor-design.md`, reviderad 2026-10-01 och 2026-10-05 (avsnitt 9, 10 och 14, bilaga C, D och E). **Sidorna** byggs parallellt enligt `docs/superpowers/plans/2026-09-25-artsidor-fas2-sidor.md` mot samma datakontrakt (bilaga C och D).
 
 ---
 
@@ -19,8 +21,8 @@
   - `uv run pytest -q` ska vara grönt.
   - `uv run ruff check . && uv run ruff format --check .` ska vara rent.
   - `uv run mypy` har bara de 6 gamla felen i `tests/test_name_mapping.py`. Inga nya fel får tillkomma.
-- **Inga nätverksanrop i testerna.** Alla klienter tar emot en falsk HTTP-funktion eller en falsk modellklient. ffmpeg-testet i Task 8 kör den lokala binären, inget nät.
-- **Kör aldrig ett betalt kommando** (`web facts`, `web write`, `web compare` utan `--help`) utanför körtaskarna R1 till R7. Dessa kräver `ANTHROPIC_API_KEY` och Albins kredit.
+- **Inga nätverksanrop i testerna.** Alla klienter tar emot en falsk HTTP-funktion eller en falsk modellklient. ffmpeg-testet i Task 8 kör den lokala binären, inget nät. Ljudmodellkontrollen (V4, Task 14d) kör en falsk `subprocess.run` i testerna, aldrig den riktiga `tools/ml-eval/flexref`-processen.
+- **Kör aldrig ett betalt kommando** (`web facts`, `web verify`, `web write`, `web compare` utan `--help`) utanför körtaskarna R1 till R9. Dessa kräver `ANTHROPIC_API_KEY` och Albins kredit.
 - **Lint i varje task:** `uv run ruff check --fix . && uv run ruff format . && uv run mypy`. Koden i planen är inte garanterat byte-exakt formaterad eller importsorterad; låt ruff rätta det. Bara mypy får inte få nya fel.
 - **Husregler:** inga tankstreck (U+2014) och inga tankstreck med mellanslag runt (U+2013) i text som kan hamna på sajten. Felmeddelanden på svenska som i befintlig kod. Inga nya `# type: ignore` utan kod som motiverar dem.
 - **Det som återanvänds från fas 1** (`src/birdy_fetcher/web/`): `checks.py` (`_style`, `quote_in_sources`, `load_banned`, `sentence_count`, `DASHES`), `licenses.py`, `images.py`, `slugs.py`, `groups.py`, `source.py`, `wiki_full.py`, `../cache.py`, `../cost.py`, `../claude_summarizer._split_prompt`. Det gamla enkla skrivpasset (`writer.py`, `model.py`, `output.py`, `run.py`, `prompts/web-v1.md`) ligger kvar som `web v1` tills Task 24 tar bort det.
@@ -43,15 +45,18 @@ Nya filer under `src/birdy_fetcher/web/`:
 | `sources_step.py` | Steg 1: källor för varje art, `check_slug_collisions` |
 | `facts.py` | Faktabladets modell, citatkontroll, status, datafakta |
 | `facts_step.py` | Steg 2: faktabladet med modellen, omförsök, cache |
+| `verify.py` | Automatisk kontroll (Revision 2026-10-05): faktakontroll mot citaten med en andra modell (V1), sifferjämförelse mellan artiklarna (V2), rödlistekontroll (V3) |
+| `audio_check.py` | V4: kör Birdys egen ljudmodell på inspelningen via `tools/ml-eval/flexref`, i en egen process |
+| `verify_step.py` | Steg mellan faktablad och undantagsark: kör V1 till V4 för en art, samlar flaggorna, skriver `record["flags"]` |
 | `waves.py` | Vågorna och publiceringen |
-| `review_sheet.py` | Granskningsarket ut (CSV) och Albins beslut in |
+| `review_sheet.py` | Undantagsarket ut (CSV, bara flaggor och vågens stickprov) och Albins beslut in |
 | `text_model.py` | Textens modell med meningar och fakta-id, omvandling till sajtens form |
 | `text_checks.py` | Kodkontrollerna för texten, borttagning av meningar |
 | `checker.py` | Den andra modellen som kontrollerar meningar |
 | `text_step.py` | Steg 3: skriva, kontrollera, skriva om, ta bort |
 | `compare.py` | Förväxlingspar, sökvolymer, jämförelsetexter |
 
-Ändrade filer: `wiki_full.py`, `report.py`, `run.py` (tills Task 24), `../cli.py`, `pyproject.toml`, `uv.lock`, rotens `LICENSE`. Nya promptar: `prompts/facts-v1.md`, `prompts/web-v2.md`, `prompts/check-v1.md`, `prompts/compare-v1.md`. Nya mappar: `review/` (granskningsark, vågor, sökvolymer), `website/src/data/species/LICENSE.md`, `website/src/data/comparisons/LICENSE.md`.
+Ändrade filer: `wiki_full.py`, `report.py`, `run.py` (tills Task 24), `../cli.py`, `pyproject.toml`, `uv.lock`, rotens `LICENSE`. Nya promptar: `prompts/facts-v1.md`, `prompts/verify-v1.md`, `prompts/web-v2.md`, `prompts/check-v1.md`, `prompts/compare-v1.md`. Nya mappar: `review/` (undantagsark, vågor, sökvolymer), `website/src/data/species/LICENSE.md`, `website/src/data/comparisons/LICENSE.md`.
 
 ---
 
@@ -2200,6 +2205,7 @@ def test_new_record_is_pending_and_unpublished() -> None:
     assert record["status"] == "pending"
     assert record["publish"] is False
     assert record["review"] == {}
+    assert "verification" not in record
     assert record["facts"] == []
     assert record["text"] is None
 
@@ -2207,11 +2213,13 @@ def test_new_record_is_pending_and_unpublished() -> None:
 def test_merge_sources_keeps_what_later_steps_own() -> None:
     existing = new_record("Q1")
     existing["facts"] = [{"id": "f01"}]
-    existing["review"] = {"facts": {"by": "Albin Abrahamsson", "at": "2026-11-01"}}
+    existing["review"] = {"wave": 1}
+    existing["verification"] = {"method": "auto", "at": "2026-11-01", "model": "x", "spotChecked": False}
     existing["audio"] = {"file": "Q1/voice.mp3"}
     merged = merge_sources(existing, "Q1", {"iucn": "LC", "audio": None, "data": {"x": 1}})
     assert merged["facts"] == [{"id": "f01"}]
-    assert merged["review"]["facts"]["by"] == "Albin Abrahamsson"
+    assert merged["review"]["wave"] == 1
+    assert merged["verification"]["model"] == "x"
     assert merged["iucn"] == "LC"
     assert merged["data"] == {"x": 1}
     assert "audio" not in merged
@@ -2239,7 +2247,7 @@ def test_facts_hash_changes_with_the_facts() -> None:
 def test_is_reviewed() -> None:
     record = new_record("Q1")
     assert not is_reviewed(record)
-    record["review"]["facts"] = {"by": "Albin Abrahamsson", "at": "2026-11-01"}
+    record["verification"] = {"method": "auto", "at": "2026-11-01", "model": "x", "spotChecked": False}
     assert is_reviewed(record)
 ```
 
@@ -2352,6 +2360,12 @@ class WebPaths:
         return self.pipeline_root / "review"
 
     @property
+    def flexref(self) -> Path:
+        """V4 (Revision 2026-10-05): the desktop BirdNET reference client that `audio_check.py`
+        shells out to, so the pipeline itself never imports TensorFlow."""
+        return self.repo_root / "tools" / "ml-eval" / "flexref"
+
+    @property
     def prompt(self) -> Path:
         return self.pipeline_root / "prompts" / "web-v1.md"
 
@@ -2373,9 +2387,10 @@ from .paths import WebPaths as WebPaths
 
 ```python
 """The species record (website/src/data/species/<QID>.json) is the state between the steps
-(spec 2026-09-25 appendix C). Each step owns some keys and leaves the rest alone: sources
-owns SOURCE_KEYS, facts owns `facts` and `generated.facts`, import owns `review`, write owns
-`text`, `status` and `generated.text`, publish owns `publish`."""
+(spec 2026-09-25 appendix C, revised 2026-10-05). Each step owns some keys and leaves the
+rest alone: sources owns SOURCE_KEYS, facts owns `facts` and `generated.facts`, verify owns
+`flags`, waves owns `review.wave`, import owns `review` (minus `wave`) and `verification`,
+write owns `text`, `status` and `generated.text`, publish owns `publish`."""
 
 from __future__ import annotations
 
@@ -2469,7 +2484,9 @@ def image_dict(image: ImageOut) -> dict[str, Any]:
 
 
 def is_reviewed(record: Record) -> bool:
-    return bool(record.get("review", {}).get("facts"))
+    """True once the automatic verification (Revision 2026-10-05) has set `verification`,
+    directly or after Albin's decisions on a flag. The old `review.facts` is gone."""
+    return bool(record.get("verification"))
 
 
 def facts_hash(record: Record) -> str:
@@ -2834,7 +2851,7 @@ async def test_dry_run_writes_nothing(tmp_path: Path) -> None:
 async def test_reviewed_species_are_not_refreshed_without_force(tmp_path: Path) -> None:
     paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
     seeded = new_record("Q1")
-    seeded["review"] = {"facts": {"by": "Albin Abrahamsson", "at": "2026-11-01"}}
+    seeded["verification"] = {"method": "auto", "at": "2026-11-01", "model": "x", "spotChecked": False}
     save_record(record_path(paths.data_out, "Q1"), seeded)
     outcomes = await run_sources(paths, SourcesOptions(refresh=True), clients=_clients(), now=NOW)
     assert [o.status for o in outcomes] == ["skipped"]
@@ -3088,7 +3105,7 @@ async def run_sources(
                         source.qid,
                         source.name_sv,
                         "skipped",
-                        ["faktabladet är granskat: hämtas inte om utan --force"],
+                        ["faktabladet är kontrollerat: hämtas inte om utan --force"],
                     )
                 skip_audio = bool(existing and existing.get("review", {}).get("audioStruck"))
                 collected, notes = await _collect(source, ctx, skip_audio=skip_audio)
@@ -3784,7 +3801,7 @@ async def test_a_reviewed_fact_sheet_is_left_alone(tmp_path: Path) -> None:
     path = record_path(paths.data_out, "Q1")
     record = load_record(path)
     assert record is not None
-    record["review"] = {"facts": {"by": "Albin Abrahamsson", "at": "2026-11-01"}}
+    record["verification"] = {"method": "auto", "at": "2026-11-01", "model": "x", "spotChecked": False}
     save_record(path, record)
     client = FakeJsonClient([])
     outcomes = await run_facts(paths, FactsOptions(), client=client, wiki=FakeWiki(), now=NOW)
@@ -4049,7 +4066,7 @@ async def _one(
         if record is None:
             return out("failed", ["artposten saknas: kör web sources först"])
         if is_reviewed(record) and not options.force:
-            return out("skipped", ["faktabladet är granskat: körs inte om utan --force"])
+            return out("skipped", ["faktabladet är kontrollerat: körs inte om utan --force"])
         if stop.is_set():
             return out("skipped", ["kostnadstaket nåddes: körs vid nästa körning"])
         articles = await wiki.articles(source.qid)
@@ -4145,6 +4162,1162 @@ Run: `uv run ruff check --fix . && uv run ruff format . && uv run mypy`
 ```bash
 git add src/birdy_fetcher/web/facts_step.py src/birdy_fetcher/cli.py tests/web_fakes.py tests/test_web_facts_step.py tests/test_cli_smoke.py
 git commit -m "feat(pipeline): web facts tar fram faktablad med ett omförsök och cache"
+```
+
+---
+
+### Task 14b: Faktakontrollen med en andra modell (V1)
+
+**Files:**
+- Create: `src/birdy_fetcher/web/verify.py`, `prompts/verify-v1.md`
+- Test: `tests/test_web_verify.py`
+
+Spec Revision 2026-10-05 punkt 1. En annan modell än skribenten (standard Sonnet, mot skribentens Opus) får varje faktum med sitt citat och stycket citatet står i, och svarar `supported`, `partial` eller `unsupported` per faktum. Datafakta (`topic: "data"`) skickas inte, de kommer från kod. Ett faktum utan svar räknas som `unsupported` (spegel av `checker.py`:s "ett svar som saknas räknas som icke stött").
+
+- [ ] **Step 1: Skriv de fallerande testerna**
+
+`tests/test_web_verify.py`:
+
+```python
+"""Tests for web/verify.py: V1 (the fact checker), V2 (numbers) and V3 (red list)."""
+
+from __future__ import annotations
+
+from birdy_fetcher.cost import CostTracker
+from birdy_fetcher.web.verify import (
+    FactChecker,
+    FactVerdict,
+    FactVerifyOutput,
+    missing_required_topics,
+    render_facts_for_check,
+    strike_unsupported,
+)
+from birdy_fetcher.web.wiki_full import WikiArticle
+
+from .web_fakes import FakeJsonClient, reply
+
+ARTICLE = WikiArticle(
+    "sv",
+    "Talgoxe",
+    "1",
+    "Talgoxen är en vanlig fågel i Sverige.\n\n"
+    "Den har svart huvud med vita kinder och gul buk.\n\n"
+    "Sången är ett ringande ti-ta ti-ta.",
+)
+FACTS = [
+    {
+        "id": "f01", "topic": "appearance", "sv": "Svart huvud med vita kinder.",
+        "sources": [{"article": "sv", "quote": "svart huvud med vita kinder"}],
+    },
+    {
+        "id": "f02", "topic": "voice", "sv": "Sången hörs på långt håll.",
+        "sources": [{"article": "sv", "quote": "ett ringande ti-ta ti-ta"}],
+    },
+    {"id": "d01", "topic": "data", "source": "artportalen", "sv": "Rapporteras året runt."},
+]
+
+
+def _checker(client: FakeJsonClient, prompt_path) -> FactChecker:
+    return FactChecker(client=client, cost=CostTracker(max_usd=None), prompt_path=prompt_path)
+
+
+def test_render_facts_for_check_shows_the_paragraph_and_skips_data_facts() -> None:
+    text = render_facts_for_check(FACTS, {"sv": ARTICLE})
+    assert '<fact id="f01">' in text
+    assert "svart huvud med vita kinder och gul buk" in text
+    assert "d01" not in text
+
+
+async def test_unsupported_facts_are_reported(tmp_path) -> None:
+    prompt = tmp_path / "verify-v1.md"
+    prompt.write_text("System: x\n\nUser: {facts}", encoding="utf-8")
+    verdicts = [
+        FactVerdict(fact_id="f01", verdict="supported", reason=""),
+        FactVerdict(fact_id="f02", verdict="unsupported", reason="citatet nämner inget avstånd"),
+    ]
+    client = FakeJsonClient([reply(FactVerifyOutput(verdicts=verdicts))])
+    result = await _checker(client, prompt).check(FACTS, {"sv": ARTICLE})
+    assert result == {"f02": ("unsupported", "citatet nämner inget avstånd")}
+    assert client.schemas == ["FactVerifyOutput"]
+
+
+async def test_a_fact_with_no_verdict_counts_as_unsupported(tmp_path) -> None:
+    prompt = tmp_path / "verify-v1.md"
+    prompt.write_text("System: x\n\nUser: {facts}", encoding="utf-8")
+    client = FakeJsonClient([reply(FactVerifyOutput(verdicts=[]))])
+    result = await _checker(client, prompt).check(FACTS, {"sv": ARTICLE})
+    assert set(result) == {"f01", "f02"}
+
+
+async def test_no_checkable_facts_means_no_call(tmp_path) -> None:
+    prompt = tmp_path / "verify-v1.md"
+    prompt.write_text("System: x\n\nUser: {facts}", encoding="utf-8")
+    client = FakeJsonClient([])
+    assert await _checker(client, prompt).check(FACTS[2:], {"sv": ARTICLE}) == {}
+
+
+def test_strike_unsupported_keeps_everything_else() -> None:
+    kept, notes = strike_unsupported(FACTS, {"f02": ("unsupported", "citatet nämner inget avstånd")})
+    assert [f["id"] for f in kept] == ["f01", "d01"]
+    assert "f02 ströks (unsupported): citatet nämner inget avstånd" in notes[0]
+
+
+def test_missing_required_topics() -> None:
+    assert missing_required_topics([{"topic": "appearance"}]) == ["läte", "miljö"]
+    only = [{"topic": "appearance"}, {"topic": "voice"}, {"topic": "habitat"}]
+    assert missing_required_topics(only) == []
+```
+
+- [ ] **Step 2: Kör och se dem falla**
+
+Run: `uv run pytest tests/test_web_verify.py -v`
+Expected: FAIL med `ModuleNotFoundError`.
+
+- [ ] **Step 3: Skriv `verify.py`**
+
+```python
+"""Automatic verification (spec 2026-09-25 Revision 2026-10-05): replaces Albin reviewing
+every fact sheet by hand. V1 here is the second model that checks every fact against its
+own quote. V2 and V3 (added in Task 14c) are code, no model."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Literal
+
+from pydantic import BaseModel
+
+from ..claude_summarizer import _split_prompt
+from ..cost import CostTracker
+from .facts import REQUIRED_TOPICS, TOPIC_SV
+from .llm import MODELS, JsonModelClient, record_cost
+from .wiki_full import WikiArticle
+
+PROMPT_VERSION = "verify-v1"
+Verdict = Literal["supported", "partial", "unsupported"]
+
+
+class FactVerdict(BaseModel):
+    fact_id: str
+    verdict: Verdict
+    reason: str
+
+
+class FactVerifyOutput(BaseModel):
+    verdicts: list[FactVerdict]
+
+
+class FactCheckFailed(RuntimeError):
+    pass
+
+
+def _paragraph(article_text: str, quote: str) -> str:
+    """The paragraph the quote sits in. Blank lines split paragraphs; this only needs to
+    find roughly where the quote is, the exact-match normalisation lives in checks.py."""
+    for paragraph in article_text.split("\n\n"):
+        if quote[:40].lower() in paragraph.lower():
+            return paragraph.strip()
+    return quote
+
+
+def render_facts_for_check(facts: list[dict[str, Any]], articles: dict[str, WikiArticle]) -> str:
+    blocks = []
+    for fact in facts:
+        if fact["topic"] == "data":
+            continue
+        source = fact["sources"][0]
+        article = articles.get(source["article"])
+        paragraph = _paragraph(article.text, source["quote"]) if article else source["quote"]
+        blocks.append(
+            f'<fact id="{fact["id"]}">\n<claim>{fact["sv"]}</claim>\n'
+            f'<quote>{source["quote"]}</quote>\n<paragraph>{paragraph}</paragraph>\n</fact>'
+        )
+    return "\n\n".join(blocks)
+
+
+@dataclass
+class FactChecker:
+    client: JsonModelClient
+    cost: CostTracker
+    prompt_path: Path
+    model_key: str = "sonnet"
+    effort: str = "high"
+
+    async def check(
+        self, facts: list[dict[str, Any]], articles: dict[str, WikiArticle]
+    ) -> dict[str, tuple[Verdict, str]]:
+        """Fact id to (verdict, reason), for every non-`partial`/`unsupported`-free fact
+        that is not a data fact. A fact the model did not answer for counts as unsupported."""
+        checkable = [f for f in facts if f["topic"] != "data"]
+        if not checkable:
+            return {}
+        template = self.prompt_path.read_text(encoding="utf-8")
+        system, user = _split_prompt(template, facts=render_facts_for_check(checkable, articles))
+        reply = await self.client.complete(
+            model=MODELS[self.model_key],
+            system=system,
+            messages=[{"role": "user", "content": user}],
+            effort=self.effort,
+            schema=FactVerifyOutput,
+        )
+        record_cost(self.cost, self.model_key, reply)
+        if reply.parsed is None:
+            raise FactCheckFailed(f"kontrollen gav inget giltigt svar (stop_reason={reply.stop_reason})")
+        by_id = {v.fact_id: v for v in reply.parsed.verdicts}
+        result: dict[str, tuple[Verdict, str]] = {}
+        for fact in checkable:
+            verdict = by_id.get(fact["id"])
+            if verdict is None:
+                result[fact["id"]] = ("unsupported", "kontrollen gav inget svar för faktumet")
+            elif verdict.verdict != "supported":
+                result[fact["id"]] = (verdict.verdict, verdict.reason)
+        return result
+
+
+def strike_unsupported(
+    facts: list[dict[str, Any]], verdicts: dict[str, tuple[Verdict, str]]
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """Facts with a `partial` or `unsupported` verdict are struck; everything else (including
+    every data fact, which is never in `verdicts`) is kept."""
+    notes = [f"{fid} ströks ({label}): {reason}" for fid, (label, reason) in verdicts.items()]
+    kept = [f for f in facts if f["id"] not in verdicts]
+    return kept, notes
+
+
+def missing_required_topics(facts: list[dict[str, Any]]) -> list[str]:
+    return [TOPIC_SV[t] for t in REQUIRED_TOPICS if not any(f["topic"] == t for f in facts)]
+```
+
+- [ ] **Step 4: Skriv prompten `prompts/verify-v1.md`**
+
+```markdown
+# verify prompt v1 (artsidor, spec 2026-09-25 Revision 2026-10-05, V1)
+
+System: You check facts about one bird species against the Wikipedia quote and paragraph they were extracted from, for the field guide pages on birdy.community. A different model than the one that wrote the facts extracted them; your job is to find anything it got wrong or overstated. Precision matters more than leniency: when in doubt, say so.
+
+Rules:
+- For every fact, decide: "supported" (the quote and paragraph fully back the claim), "partial" (the quote backs part of it, or the claim adds a detail, number or qualifier the quote does not state), or "unsupported" (the quote does not back the claim, or contradicts it).
+- Judge the claim against the quote and paragraph only. Do not use outside knowledge of the species.
+- Give a short reason in English for every fact, even "supported" ones.
+
+User: Facts to check:
+
+{facts}
+```
+
+- [ ] **Step 5: Kör testerna**
+
+Run: `uv run pytest tests/test_web_verify.py -v`
+Expected: PASS
+
+- [ ] **Step 6: Lint, typer och commit**
+
+Run: `uv run ruff check --fix . && uv run ruff format . && uv run mypy`
+
+```bash
+git add src/birdy_fetcher/web/verify.py prompts/verify-v1.md tests/test_web_verify.py
+git commit -m "feat(pipeline): V1, en andra modell kontrollerar varje faktum mot sitt citat"
+```
+
+---
+
+### Task 14c: Siffror mellan artiklarna och rödlistekontrollen (V2, V3)
+
+**Files:**
+- Modify: `src/birdy_fetcher/web/verify.py` (lägg till)
+- Test: `tests/test_web_verify.py` (lägg till)
+
+Spec Revision 2026-10-05 punkt 2 och 3. Ingen modell, bara kod. Trösklarna här är startvärden, spegel av Task 5: kalibreras i R4b om en riktig art ger en falsk flagga.
+
+- [ ] **Step 1: Skriv de fallerande testerna**
+
+Lägg till i `tests/test_web_verify.py` (och `Measurement`, `extract_measurements`, `number_flag`, `number_flags`, `redlist_occurrence_flag`, `status_flags` i importen):
+
+```python
+def test_extract_measurements_handles_a_single_value_and_a_range() -> None:
+    assert extract_measurements("Cirka 14 cm lång.", "cm") == [Measurement(14.0, 14.0, "cm")]
+    assert extract_measurements("28 till 31 cm.", "cm") == [Measurement(28.0, 31.0, "cm")]
+    assert extract_measurements("Väger omkring 2,5 kg.", "kg") == [Measurement(2.5, 2.5, "kg")]
+    assert extract_measurements("Ingen siffra här.", "cm") == []
+
+
+def test_number_flag_is_none_when_no_other_article_states_the_unit() -> None:
+    fact = {
+        "id": "f03", "topic": "size", "sv": "Talgoxen är cirka 14 cm lång.",
+        "sources": [{"article": "sv", "quote": "cirka 14 centimeter lång"}],
+    }
+    articles = {"sv": WikiArticle("sv", "x", "1", "Talgoxen är cirka 14 cm lång.")}
+    assert number_flag(fact, articles) is None
+
+
+def test_number_flag_catches_a_real_disagreement() -> None:
+    fact = {
+        "id": "f03", "topic": "size", "sv": "Arten är cirka 25 cm lång.",
+        "sources": [{"article": "sv", "quote": "cirka 25 cm lång"}],
+    }
+    articles = {
+        "sv": WikiArticle("sv", "x", "1", "Arten är cirka 25 cm lång."),
+        "en": WikiArticle("en", "x", "1", "The species is about 14 cm long."),
+    }
+    flag = number_flag(fact, articles)
+    assert flag is not None and "f03" in flag
+
+
+def test_number_flag_accepts_an_overlapping_range() -> None:
+    fact = {
+        "id": "f03", "topic": "size", "sv": "28 till 31 cm.",
+        "sources": [{"article": "sv", "quote": "28 till 31 cm"}],
+    }
+    articles = {
+        "sv": WikiArticle("sv", "x", "1", "28 till 31 cm."),
+        "en": WikiArticle("en", "x", "1", "11 to 12.5 inches, about 29 to 32 cm."),
+    }
+    assert number_flag(fact, articles) is None
+
+
+def test_redlist_occurrence_flag() -> None:
+    assert redlist_occurrence_flag("resident", "VU") is None
+    assert redlist_occurrence_flag("absent", "not_listed") is None
+    assert redlist_occurrence_flag("absent", None) is None
+    flag = redlist_occurrence_flag("rare_visitor", "VU")
+    assert flag is not None and "VU" in flag
+
+
+def test_status_flags_combines_the_data_contradiction_and_the_red_list() -> None:
+    record = {
+        "facts": [{"id": "s01", "topic": "status", "value": "absent", "sv": "Förekommer inte"}],
+        "data": {"statusSignal": {"contradicts": "Statusen säger ... men 5000 rapporter"}},
+        "swedishRedList": "VU",
+    }
+    flags = status_flags(record)
+    assert [f["check"] for f in flags] == ["V3", "V3"]
+    assert all(f["factId"] == "s01" for f in flags)
+
+
+def test_status_flags_is_empty_without_a_status_fact() -> None:
+    assert status_flags({"facts": []}) == []
+```
+
+- [ ] **Step 2: Kör och se dem falla**
+
+Run: `uv run pytest tests/test_web_verify.py -v`
+Expected: FAIL med `ImportError`.
+
+- [ ] **Step 3: Lägg till i `verify.py`**
+
+(och `import re` samt `from .record import Record` bland importerna)
+
+```python
+NUMBER_RE = re.compile(
+    r"(\d+(?:[.,]\d+)?)\s*(?:till|-|–)\s*(\d+(?:[.,]\d+)?)\s*(cm|mm|g|kg)\b"
+    r"|(\d+(?:[.,]\d+)?)\s*(cm|mm|g|kg)\b",
+    re.IGNORECASE,
+)
+UNITS = ("cm", "mm", "g", "kg")
+NUMBER_TOLERANCE = 0.15  # 15 %, a startvärde (se tasktexten)
+RED_LIST_ASSESSED_NONE = (None, "not_listed")
+
+
+@dataclass(frozen=True)
+class Measurement:
+    low: float
+    high: float
+    unit: str
+
+
+def _num(text: str) -> float:
+    return float(text.replace(",", "."))
+
+
+def extract_measurements(text: str, unit: str) -> list[Measurement]:
+    """Every "<number> <unit>" or "<number> till <number> <unit>" in the text, for one unit."""
+    found: list[Measurement] = []
+    for match in NUMBER_RE.finditer(text):
+        if match.group(3) and match.group(3).lower() == unit:
+            found.append(Measurement(_num(match.group(1)), _num(match.group(2)), unit))
+        elif match.group(5) and match.group(5).lower() == unit:
+            value = _num(match.group(4))
+            found.append(Measurement(value, value, unit))
+    return found
+
+
+def _padded(m: Measurement, tolerance: float) -> tuple[float, float]:
+    margin = max(m.high, m.low, 1.0) * tolerance
+    return m.low - margin, m.high + margin
+
+
+def _overlaps(a: Measurement, b: Measurement, tolerance: float) -> bool:
+    a_lo, a_hi = _padded(a, tolerance)
+    b_lo, b_hi = _padded(b, tolerance)
+    return a_lo <= b_hi and b_lo <= a_hi
+
+
+def number_flag(
+    fact: dict[str, Any], articles: dict[str, WikiArticle], *, tolerance: float = NUMBER_TOLERANCE
+) -> str | None:
+    """None when the fact's own numbers agree with at least one measurement of the same unit
+    in another cached article, or when no other article states that unit at all (spec V2)."""
+    if fact["topic"] == "data":
+        return None
+    own_article = fact["sources"][0]["article"] if fact.get("sources") else None
+    for unit in UNITS:
+        own = extract_measurements(fact["sv"], unit)
+        if not own:
+            continue
+        others: list[Measurement] = []
+        for lang, article in articles.items():
+            if lang == own_article:
+                continue
+            others += extract_measurements(article.text, unit)
+        if not others:
+            continue
+        if not any(_overlaps(m, o, tolerance) for m in own for o in others):
+            low, high = min(o.low for o in others), max(o.high for o in others)
+            return (
+                f"{fact['id']} anger ett tal i {unit} som inte stämmer med de andra "
+                f"artiklarna ({low:g} till {high:g} {unit})"
+            )
+    return None
+
+
+def number_flags(record: dict[str, Any], articles: dict[str, WikiArticle]) -> list[dict[str, Any]]:
+    flags = []
+    for fact in record.get("facts", []):
+        message = number_flag(fact, articles)
+        if message:
+            flags.append({"check": "V2", "factId": fact["id"], "message": message})
+    return flags
+
+
+def redlist_occurrence_flag(status_value: str, red_list: str | None) -> str | None:
+    """None unless the status says the species is absent or a rare visitor while the red
+    list has actually assessed it (spec V3: not `not_listed`, Sweden's stand-in for NA/NE)."""
+    if status_value not in ("absent", "rare_visitor") or red_list in RED_LIST_ASSESSED_NONE:
+        return None
+    return (
+        f"Statusen säger {STATUS_SV[status_value].lower()}, men arten har kategorin "
+        f"{red_list} i Svenska rödlistan 2025."
+    )
+
+
+def status_flags(record: dict[str, Any]) -> list[dict[str, Any]]:
+    """V3: the existing status-vs-Artportalen contradiction (spec 9.2) and the red list
+    check above, both about the status fact s01."""
+    status_fact = next((f for f in record.get("facts", []) if f.get("id") == "s01"), None)
+    if status_fact is None:
+        return []
+    flags = []
+    contradicts = (record.get("data") or {}).get("statusSignal", {}).get("contradicts")
+    if contradicts:
+        flags.append({"check": "V3", "factId": "s01", "message": contradicts})
+    red_flag = redlist_occurrence_flag(status_fact["value"], record.get("swedishRedList"))
+    if red_flag:
+        flags.append({"check": "V3", "factId": "s01", "message": red_flag})
+    return flags
+```
+
+Lägg till `STATUS_SV` i importen från `.facts` (redan importerad `REQUIRED_TOPICS, TOPIC_SV`, utöka till `REQUIRED_TOPICS, STATUS_SV, TOPIC_SV`).
+
+- [ ] **Step 4: Kör testerna**
+
+Run: `uv run pytest tests/test_web_verify.py -v`
+Expected: PASS
+
+- [ ] **Step 5: Lint, typer och commit**
+
+Run: `uv run ruff check --fix . && uv run ruff format . && uv run mypy`
+
+```bash
+git add src/birdy_fetcher/web/verify.py tests/test_web_verify.py
+git commit -m "feat(pipeline): V2 sifferjämförelse mellan artiklarna, V3 rödlistekontroll"
+```
+
+---
+
+### Task 14d: Ljudmodellkontrollen (V4)
+
+**Files:**
+- Create: `src/birdy_fetcher/web/audio_check.py`, `tools/ml-eval/flexref/classify_clip.py`
+- Test: `tests/test_web_audio_check.py`
+
+Spec Revision 2026-10-05 punkt 4. `tools/ml-eval/flexref/reference.py` (i3-forskningen, 2026-08-16) har redan modellen, mappningen och `top3()`; `classify_clip.py` är en tunn CLI-granne som skriver JSON till stdout i stället för att skriva fasta `reference.py`-rapporten, så facit-skriptets beteende rörs inte. Pipelinen själv importerar aldrig TensorFlow: den konverterar MP3 till WAV med den redan tillagda `imageio-ffmpeg` (Task 8) och kör resten som en egen process.
+
+- [ ] **Step 1: Skriv de fallerande testerna**
+
+`tests/test_web_audio_check.py`:
+
+```python
+"""Tests for web/audio_check.py: V4, Birdy's own sound model checks the recording."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from subprocess import CompletedProcess
+
+import pytest
+
+from birdy_fetcher.web.audio_check import (
+    AudioCheckFailed,
+    AudioCheckResult,
+    audio_verdict,
+    classify_clip,
+)
+
+
+def _completed(stdout: str = "", returncode: int = 0, stderr: str = "") -> CompletedProcess[str]:
+    return CompletedProcess(args=[], returncode=returncode, stdout=stdout, stderr=stderr)
+
+
+def test_matches_checks_the_qid_and_the_threshold() -> None:
+    result = AudioCheckResult(windows=[{"startSec": 0.0, "top": [{"qid": "Q25485", "confidence": 0.42}]}])
+    assert result.matches("Q25485")
+    assert not result.matches("Q25485", threshold=0.5)
+    assert not result.matches("Q99999")
+
+
+def test_audio_verdict_flags_a_species_the_model_does_not_cover() -> None:
+    assert audio_verdict(None, "Q1", identifiable_sound=False).action == "flag"
+
+
+def test_audio_verdict_strikes_a_covered_species_without_a_match() -> None:
+    result = AudioCheckResult(windows=[{"startSec": 0.0, "top": []}])
+    assert audio_verdict(result, "Q25485", identifiable_sound=True).action == "strike"
+
+
+def test_audio_verdict_keeps_a_matched_recording() -> None:
+    result = AudioCheckResult(windows=[{"startSec": 0.0, "top": [{"qid": "Q25485", "confidence": 0.3}]}])
+    assert audio_verdict(result, "Q25485", identifiable_sound=True).action == "keep"
+
+
+def test_classify_clip_calls_the_ml_eval_script_and_parses_json(tmp_path: Path) -> None:
+    calls = []
+
+    def fake_run(cmd: list[str], **kwargs: object) -> CompletedProcess[str]:
+        calls.append(cmd)
+        return _completed(stdout=json.dumps({"windows": [{"startSec": 0.0, "top": []}]}))
+
+    def fake_to_wav(mp3_path: Path, wav_path: Path) -> None:
+        wav_path.write_bytes(b"RIFF....")
+
+    result = classify_clip(
+        tmp_path / "voice.mp3", tmp_path / "flexref", to_wav=fake_to_wav, run=fake_run
+    )
+    assert result.windows == [{"startSec": 0.0, "top": []}]
+    assert calls[0][:2] == ["uv", "run"]
+
+
+def test_classify_clip_raises_on_a_nonzero_exit(tmp_path: Path) -> None:
+    def fake_run(cmd: list[str], **kwargs: object) -> CompletedProcess[str]:
+        return _completed(returncode=1, stderr="boom")
+
+    with pytest.raises(AudioCheckFailed):
+        classify_clip(
+            tmp_path / "voice.mp3",
+            tmp_path / "flexref",
+            to_wav=lambda a, b: b.write_bytes(b"x"),
+            run=fake_run,
+        )
+```
+
+- [ ] **Step 2: Kör och se dem falla**
+
+Run: `uv run pytest tests/test_web_audio_check.py -v`
+Expected: FAIL med `ModuleNotFoundError`.
+
+- [ ] **Step 3: Skriv `audio_check.py`**
+
+```python
+"""V4 (spec 2026-09-25 Revision 2026-10-05): Birdy's own BirdNET model classifies the
+species' recording, via tools/ml-eval/flexref in its own process. A species the photo/sound
+coverage map (identify.py) says the audio model does not cover gets a flag instead of an
+automatic verdict: there is nothing for the model to confirm or deny."""
+
+from __future__ import annotations
+
+import json
+import subprocess
+import tempfile
+from collections.abc import Callable
+from dataclasses import dataclass
+from pathlib import Path
+from subprocess import CompletedProcess
+from typing import Literal
+
+CONFIDENCE_THRESHOLD = 0.10
+ToWavFn = Callable[[Path, Path], None]
+RunFn = Callable[..., "CompletedProcess[str]"]
+
+
+class AudioCheckFailed(RuntimeError):
+    pass
+
+
+@dataclass(frozen=True)
+class AudioCheckResult:
+    windows: list[dict[str, object]]
+
+    def matches(self, qid: str, *, threshold: float = CONFIDENCE_THRESHOLD) -> bool:
+        return any(
+            entry["qid"] == qid and float(entry["confidence"]) >= threshold  # type: ignore[arg-type]
+            for window in self.windows
+            for entry in window["top"]  # type: ignore[index]
+        )
+
+
+@dataclass(frozen=True)
+class AudioVerdict:
+    action: Literal["keep", "strike", "flag"]
+    reason: str | None = None
+
+
+def audio_verdict(
+    result: AudioCheckResult | None, qid: str, *, identifiable_sound: bool
+) -> AudioVerdict:
+    if not identifiable_sound:
+        return AudioVerdict("flag", "ljudmodellen täcker inte arten: lyssna och besluta")
+    if result is None or not result.matches(qid):
+        return AudioVerdict(
+            "strike", "ljudmodellen hittade inte arten i inspelningen (minst 0,10 i konfidens)"
+        )
+    return AudioVerdict("keep")
+
+
+def _default_to_wav(mp3_path: Path, wav_path: Path) -> None:
+    import imageio_ffmpeg
+
+    ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
+    subprocess.run(
+        [ffmpeg, "-y", "-i", str(mp3_path), "-ar", "48000", "-ac", "1", "-sample_fmt", "s16", str(wav_path)],
+        check=True,
+        capture_output=True,
+    )
+
+
+def classify_clip(
+    mp3_path: Path,
+    flexref_dir: Path,
+    *,
+    to_wav: ToWavFn = _default_to_wav,
+    run: RunFn = subprocess.run,
+) -> AudioCheckResult:
+    with tempfile.TemporaryDirectory() as tmp:
+        wav_path = Path(tmp) / "clip.wav"
+        to_wav(mp3_path, wav_path)
+        completed = run(
+            ["uv", "run", "--project", str(flexref_dir), "python", "classify_clip.py", str(wav_path)],
+            cwd=flexref_dir,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    if completed.returncode != 0:
+        raise AudioCheckFailed(completed.stderr.strip() or "ljudmodellen gav inget svar")
+    return AudioCheckResult(windows=json.loads(completed.stdout)["windows"])
+```
+
+- [ ] **Step 4: Skriv `tools/ml-eval/flexref/classify_clip.py`**
+
+```python
+"""CLI wrapper around reference.py's top3() for the content pipeline's V4 recording check
+(spec 2026-09-25 Revision 2026-10-05). Reads one WAV file (48 kHz mono 16-bit, any length)
+and prints JSON top-3 per 3-second window to stdout. Kept separate from reference.py so the
+facit generator's file-writing behaviour (used by Albin/the agent by hand) is untouched."""
+
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+import tensorflow as tf
+
+from reference import MAPPING, MODEL, load_wav, top3
+
+WINDOW = 144_000  # 3 s at 48 kHz
+MIN_TAIL = WINDOW // 3  # a shorter tail is mostly zero-padding, not worth scoring
+
+
+def main() -> None:
+    path = Path(sys.argv[1])
+    mapping = json.loads(MAPPING.read_text())
+    lookup = {int(k): v for k, v in mapping["mapping"].items()}
+    interp = tf.lite.Interpreter(model_path=str(MODEL))
+    interp.allocate_tensors()
+    waveform = load_wav(path)
+    windows = []
+    for start in range(0, max(len(waveform), 1), WINDOW):
+        chunk = waveform[start : start + WINDOW]
+        if len(chunk) < MIN_TAIL:
+            continue
+        result = top3(chunk, interp, lookup)
+        windows.append(
+            {
+                "startSec": start / 48_000,
+                "top": [{"qid": qid, "confidence": conf} for qid, conf in result],
+            }
+        )
+    json.dump({"windows": windows}, sys.stdout)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+Manuell verifiering (ingen pytest mot den riktiga modellen, spegel av `reference.py` som inte har en egen testsvit): kör `uv run --project tools/ml-eval/flexref python classify_clip.py <en riktig wav-fil>` mot en 20 sekunders inspelning i R4b och läs av att JSON:en har flera fönster och rimliga konfidensvärden.
+
+- [ ] **Step 5: Kör testerna**
+
+Run: `uv run pytest tests/test_web_audio_check.py -v`
+Expected: PASS
+
+- [ ] **Step 6: Lint, typer och commit**
+
+Run: `uv run ruff check --fix . && uv run ruff format . && uv run mypy`
+
+```bash
+git add src/birdy_fetcher/web/audio_check.py tools/ml-eval/flexref/classify_clip.py tests/test_web_audio_check.py
+git commit -m "feat(pipeline): V4 kör Birdys ljudmodell på inspelningen"
+```
+
+---
+
+### Task 14e: Samla ihop flaggorna, `web verify`
+
+**Files:**
+- Create: `src/birdy_fetcher/web/verify_step.py`
+- Modify: `src/birdy_fetcher/web/facts_step.py` (`FactExtractor.extract` får `extra_feedback`), `src/birdy_fetcher/cli.py`
+- Test: `tests/test_web_verify_step.py`
+
+Flödet per art: V1 (stryk, och om ett obligatoriskt ämne då blir tomt: ett nytt försök hos faktabladets modell med felen, spegel av Task 13/14:s befintliga omförsök) → V2 och V3 (flaggor) → V4 (stryk, flagga eller inget, bara om arten har en inspelning). Resultatet är `record["flags"]` (tom lista om inget flaggades) och ett nytt `record["generated"]["verify"]`. En art utan flaggor behöver ingen rad i undantagsarket (Task 16).
+
+- [ ] **Step 1: `FactExtractor.extract` får valfri extra feedback**
+
+I `facts_step.py`, ändra signaturen och cache-kontrollen i `FactExtractor.extract` (koden runt dem är oförändrad):
+
+```python
+    async def extract(
+        self,
+        source: SpeciesSource,
+        articles: dict[str, WikiArticle],
+        *,
+        extra_feedback: str | None = None,
+    ) -> tuple[FactCheck, int, bool]:
+        """(check, attempts, from_cache). extra_feedback (Revision 2026-10-05, V1-omförsöket)
+        skippar cachen: samma artiklar skulle annars ge samma cachade svar som förra gången."""
+        template = self.prompt_path.read_text(encoding="utf-8")
+        name = self._cache_name(template, articles)
+        cached = None if (self.regenerate or extra_feedback) else self.cache.get(source.qid, name)
+        if cached is not None:
+            return self._check(FactSheetOutput.model_validate_json(cached), articles), 0, True
+
+        system, user = render_facts_prompt(template, source, articles)
+        messages: list[MessageParam] = [{"role": "user", "content": user}]
+        if extra_feedback:
+            messages.append({"role": "user", "content": extra_feedback})
+        best: tuple[FactSheetOutput, FactCheck] | None = None
+```
+
+(Resten av metoden, från `reason = "modellen gav inget svar"` och nedåt, är exakt som förut.)
+
+- [ ] **Step 2: Skriv de fallerande testerna**
+
+`tests/test_web_verify_step.py`:
+
+```python
+"""Tests for web/verify_step.py: V1 to V4 tied together, and the run."""
+
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass
+from datetime import UTC, datetime
+from pathlib import Path
+from subprocess import CompletedProcess
+
+from birdy_fetcher.web.facts import FactSheetOutput
+from birdy_fetcher.web.record import load_record, merge_sources, record_path, save_record
+from birdy_fetcher.web.verify import FactVerdict, FactVerifyOutput
+from birdy_fetcher.web.verify_step import VerifyOptions, run_verify
+from birdy_fetcher.web.wiki_full import WikiArticle
+
+from .test_web_facts import ARTICLES, GOOD, STATUS, _fact
+from .web_fakes import FakeJsonClient, reply
+from .web_repo import make_repo
+
+NOW = datetime(2026, 11, 10, tzinfo=UTC)
+
+
+@dataclass
+class FakeWiki:
+    async def articles(self, qid: str, *, refresh: bool = False) -> dict[str, WikiArticle]:
+        return ARTICLES
+
+
+def _seed(paths, qid: str, *, with_audio: bool = False, identifiable_sound: bool = True) -> None:
+    record = merge_sources(
+        None, qid,
+        {
+            "names": {"sv": "Talgoxe", "en": "Great Tit", "scientific": "Parus major"},
+            "wikipedia": {"sv": {"title": "Talgoxe", "revision": "1"}},
+            "identifiable": {"photo": True, "sound": identifiable_sound},
+            "audio": {"file": f"{qid}/voice.mp3", "sourceUrl": "x"} if with_audio else None,
+        },
+    )
+    record["facts"] = [
+        {"id": "f01", "topic": "appearance", "sv": "Svart huvud med vita kinder.",
+         "sources": [{"article": "sv", "quote": "svart huvud med vita kinder"}]},
+        {"id": "f04", "topic": "voice", "sv": "Sången är ett ringande ti-ta ti-ta.",
+         "sources": [{"article": "sv", "quote": "Sången är ett ringande ti-ta ti-ta"}]},
+        {"id": "f05", "topic": "habitat", "sv": "Talgoxen lever i skog, parker och trädgårdar.",
+         "sources": [{"article": "sv", "quote": "lever i skog, parker och trädgårdar"}]},
+        {"id": "s01", "topic": "status", "value": "resident", "sv": "Stannfågel",
+         "sources": [{"article": "sv", "quote": "Den är stannfågel i hela Sverige"}]},
+        {"id": "d01", "topic": "data", "source": "artportalen", "sv": "Rapporteras året runt."},
+    ]
+    record["data"] = {"statusSignal": {"contradicts": None}}
+    record["generated"] = {"facts": {"model": "claude-opus-5"}}
+    if with_audio:
+        (paths.images_out / qid).mkdir(parents=True, exist_ok=True)
+        (paths.images_out / qid / "voice.mp3").write_bytes(b"id3")
+    save_record(record_path(paths.data_out, qid), record)
+
+
+def _verdicts(**unsupported: str) -> FactVerifyOutput:
+    ids = {"f01", "f04", "f05"}
+    return FactVerifyOutput(
+        verdicts=[
+            FactVerdict(fact_id=i, verdict="supported" if i not in unsupported else "unsupported",
+                        reason=unsupported.get(i, ""))
+            for i in ids
+        ]
+    )
+
+
+async def test_a_clean_fact_sheet_is_verified_with_no_flags(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert record["flags"] == []
+    assert record["generated"]["verify"]["model"] == "claude-sonnet-5"
+
+
+async def test_a_struck_required_topic_is_retried_once(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    retry_sheet = FactSheetOutput(
+        facts=[*GOOD, _fact("voice", "Sången hörs på långt håll.", "Sången är ett ringande ti-ta ti-ta")],
+        sweden_status=STATUS,
+    )
+    client = FakeJsonClient([reply(_verdicts(f04="citatet nämner inget avstånd")), reply(retry_sheet)])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert any(f["topic"] == "voice" for f in record["facts"])
+
+
+async def test_a_number_disagreement_becomes_a_v2_flag(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    record["facts"].append(
+        {"id": "f06", "topic": "size", "sv": "Cirka 25 cm lång.",
+         "sources": [{"article": "sv", "quote": "cirka 25 cm lång"}]}
+    )
+    save_record(record_path(paths.data_out, "Q1"), record)
+    wiki = FakeWiki()
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=wiki, now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert [f["check"] for f in record["flags"]] == ["V2"]
+
+
+async def test_audio_is_struck_silently_when_the_model_covers_the_species_and_misses(
+    tmp_path: Path, monkeypatch
+) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True, identifiable_sound=True)
+
+    def fake_run(cmd: list[str], **kwargs: object) -> CompletedProcess[str]:
+        return CompletedProcess([], 0, stdout=json.dumps({"windows": [{"startSec": 0.0, "top": []}]}))
+
+    monkeypatch.setattr("birdy_fetcher.web.audio_check._default_to_wav", lambda a, b: b.write_bytes(b"x"))
+    monkeypatch.setattr("subprocess.run", fake_run)
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "audio" not in record
+    assert record["review"]["audioStruck"] is True
+    assert record["flags"] == []
+
+
+async def test_audio_the_model_does_not_cover_becomes_a_v4_flag_and_is_kept(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1", with_audio=True, identifiable_sound=False)
+    client = FakeJsonClient([reply(_verdicts())])
+    outcomes = await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in outcomes] == ["ok"]
+    record = load_record(record_path(paths.data_out, "Q1"))
+    assert record is not None
+    assert "audio" in record
+    assert [f["check"] for f in record["flags"]] == ["V4"]
+
+
+async def test_a_current_verification_is_skipped_unless_forced(tmp_path: Path) -> None:
+    paths = make_repo(tmp_path, [("Q1", "Talgoxe", "Great Tit")])
+    _seed(paths, "Q1")
+    client = FakeJsonClient([reply(_verdicts())])
+    await run_verify(paths, VerifyOptions(), client=client, wiki=FakeWiki(), now=NOW)
+    again = await run_verify(paths, VerifyOptions(), client=FakeJsonClient([]), wiki=FakeWiki(), now=NOW)
+    assert [o.status for o in again] == ["skipped"]
+```
+
+De sista testerna som rör `subprocess`/ffmpeg i verklig fil-i/o kräver en `monkeypatch`-fixture (pytest har den redan tillgänglig utan import). Justera patch-sökvägarna om `audio_check.py`:s interna namn ändras under Task 14d:s granskning.
+
+- [ ] **Step 3: Kör och se dem falla**
+
+Run: `uv run pytest tests/test_web_verify_step.py -v`
+Expected: FAIL med `ModuleNotFoundError`.
+
+- [ ] **Step 4: Skriv `verify_step.py`**
+
+```python
+"""Step between the fact sheet and the exception sheet (spec 2026-09-25 Revision 2026-10-05):
+V1 to V4, run once per species, no Albin. A species with an empty `flags` list needs no row
+in the exception sheet at all (Task 16)."""
+
+from __future__ import annotations
+
+import asyncio
+from dataclasses import dataclass
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
+
+from ..cache import Cache
+from ..cost import CostTracker, MaxCostExceeded
+from .audio_check import AudioCheckFailed, audio_verdict, classify_clip
+from .facts import PROMPT_VERSION as FACTS_PROMPT_VERSION
+from .facts import apply_facts
+from .facts_step import FactExtractor
+from .llm import MODELS, AnthropicJsonClient, JsonModelClient
+from .paths import WebPaths
+from .record import Record, facts_hash, load_record, record_path, save_record
+from .report import StepOutcome, render_step_report, write_step_report
+from .source import SpeciesSource, load_approved, load_scientific_index
+from .sources_step import ArticleSource
+from .verify import FactChecker, missing_required_topics, number_flags, status_flags, strike_unsupported
+from .wiki_full import FullWikiClient
+
+PROMPT_VERSION = "verify-v1"
+
+
+@dataclass(frozen=True)
+class VerifyOptions:
+    qids: tuple[str, ...] = ()
+    model_key: str = "sonnet"
+    effort: str = "high"
+    max_cost: float | None = None
+    force: bool = False
+    workers: int = 4
+
+
+def _current(record: Record) -> bool:
+    return record.get("generated", {}).get("verify", {}).get("factsHash") == facts_hash(record)
+
+
+async def run_verify(
+    paths: WebPaths,
+    options: VerifyOptions,
+    *,
+    client: JsonModelClient | None = None,
+    wiki: ArticleSource | None = None,
+    now: datetime | None = None,
+) -> list[StepOutcome]:
+    now = now or datetime.now(UTC)
+    cache = Cache(paths.pipeline_root / ".cache")
+    sources = load_approved(paths.species_root, options.qids)
+    wiki = wiki or FullWikiClient(cache=cache)
+    owned = client is None
+    model_client: JsonModelClient = client or AnthropicJsonClient()
+    cost = CostTracker(max_usd=options.max_cost)
+    checker = FactChecker(
+        client=model_client,
+        cost=cost,
+        prompt_path=paths.prompt_file(PROMPT_VERSION),
+        model_key=options.model_key,
+        effort=options.effort,
+    )
+    extractor = FactExtractor(
+        cache=cache,
+        cost=cost,
+        client=model_client,
+        prompt_path=paths.prompt_file(FACTS_PROMPT_VERSION),
+        scientific_index=load_scientific_index(paths.species_root),
+    )
+    stop = asyncio.Event()
+    semaphore = asyncio.Semaphore(options.workers)
+
+    async def one(source: SpeciesSource) -> StepOutcome:
+        async with semaphore:
+            return await _one(source, paths, options, wiki, checker, extractor, stop, now)
+
+    try:
+        outcomes = list(await asyncio.gather(*(one(s) for s in sources)))
+    finally:
+        if owned and isinstance(model_client, AnthropicJsonClient):
+            await model_client.aclose()
+    report = render_step_report(
+        title="Automatisk kontroll",
+        date=now.date().isoformat(),
+        outcomes=outcomes,
+        cost_usd=cost.total_usd,
+        model_line=f"Kontroll: `{MODELS[options.model_key]}`.",
+    )
+    write_step_report(paths.reports, "verify", now, report)
+    return outcomes
+
+
+def _retry_feedback(strike_notes: list[str], missing: list[str]) -> str:
+    return (
+        "A fact checker rejected some of the facts you gave earlier for this species:\n"
+        + "\n".join(f"- {n}" for n in strike_notes)
+        + f"\nWrite the whole fact sheet again. Keep every fact the checker did not reject, "
+        f"and add what is missing so it still covers: {', '.join(missing)}."
+    )
+
+
+async def _one(
+    source: SpeciesSource,
+    paths: WebPaths,
+    options: VerifyOptions,
+    wiki: ArticleSource,
+    checker: FactChecker,
+    extractor: FactExtractor,
+    stop: asyncio.Event,
+    now: datetime,
+) -> StepOutcome:
+    def out(status: str, errors: list[str] | None = None, notes: list[str] | None = None) -> StepOutcome:
+        return StepOutcome(source.qid, source.name_sv, status, errors or [], notes or [])
+
+    path = record_path(paths.data_out, source.qid)
+    try:
+        record = load_record(path)
+        if record is None or not record.get("facts"):
+            return out("failed", ["faktabladet saknas: kör web facts först"])
+        if record.get("status") == "failed":
+            return out("skipped", ["faktabladet är failed: ingenting att kontrollera"])
+        if _current(record) and not options.force:
+            return out("skipped", ["redan kontrollerat ur samma faktablad"])
+        if stop.is_set():
+            return out("skipped", ["kostnadstaket nåddes: körs vid nästa körning"])
+        articles = await wiki.articles(source.qid)
+
+        notes: list[str] = []
+        try:
+            verdicts = await checker.check(record["facts"], articles)
+        except MaxCostExceeded as exc:
+            stop.set()
+            return out("skipped", [f"kostnadstaket nåddes: {exc}"])
+        kept, strike_notes = strike_unsupported(record["facts"], verdicts)
+        notes += strike_notes
+        missing = missing_required_topics(kept)
+        if missing and strike_notes:
+            try:
+                check, _, _ = await extractor.extract(
+                    source, articles, extra_feedback=_retry_feedback(strike_notes, missing)
+                )
+            except MaxCostExceeded as exc:
+                stop.set()
+                return out("skipped", [f"kostnadstaket nåddes: {exc}"])
+            if check.fatal:
+                record["status"] = "failed"
+                record["errors"] = [f"saknas efter V1-omförsöket: {', '.join(missing)}"]
+                save_record(path, record)
+                return out("failed", record["errors"], notes)
+            apply_facts(record, check, generated=record["generated"]["facts"])
+        else:
+            record["facts"] = kept
+
+        flags = number_flags(record, articles) + status_flags(record)
+
+        audio = record.get("audio")
+        if audio:
+            identifiable = bool(record.get("identifiable", {}).get("sound"))
+            try:
+                result = classify_clip(paths.images_out / source.qid / "voice.mp3", paths.flexref)
+            except AudioCheckFailed as exc:
+                notes.append(f"ljudmodellen kunde inte köras, inspelningen flaggas i stället: {exc}")
+                result = None
+                identifiable = False  # no verdict possible: treat like an uncovered species
+            verdict = audio_verdict(result, source.qid, identifiable_sound=identifiable)
+            if verdict.action == "strike":
+                record.pop("audio", None)
+                record.setdefault("review", {})["audioStruck"] = True
+                notes.append(f"inspelningen ströks: {verdict.reason}")
+            elif verdict.action == "flag":
+                flags.append({"check": "V4", "factId": None, "message": verdict.reason})
+
+        record["flags"] = flags
+        record.setdefault("generated", {})["verify"] = {
+            "model": MODELS[options.model_key],
+            "prompt": PROMPT_VERSION,
+            "at": now.isoformat(),
+            "factsHash": facts_hash(record),
+        }
+        save_record(path, record)
+        return out("ok", [], [*notes, *([f"{len(flags)} flaggor"] if flags else [])])
+    except Exception as exc:  # one species' error must not stop the run or overwrite a file
+        return out("failed", [f"{type(exc).__name__}: {exc}"])
+```
+
+- [ ] **Step 5: Kommandot i `cli.py`**
+
+```python
+@web.command("verify")
+@click.option("--species", multiple=True, help="Q-ID(s). Utan flaggan körs alla med ett faktablad.")
+@click.option("--model", "model_key", type=click.Choice(["opus", "sonnet"]), default="sonnet")
+@click.option("--effort", type=click.Choice(["low", "medium", "high"]), default="high")
+@click.option("--max-cost", type=float, default=None, help="Kostnadstak i USD för körningen.")
+@click.option("--force", is_flag=True, help="Kontrollera även arter som redan är kontrollerade.")
+@click.option("--workers", type=click.IntRange(min=1), default=4)
+def web_verify(
+    species: tuple[str, ...], model_key: str, effort: str, max_cost: float | None, force: bool, workers: int
+) -> None:
+    """Automatisk kontroll (V1 till V4) av faktabladet. Kostar pengar (V1)."""
+    from .web.verify_step import VerifyOptions, run_verify
+
+    _require_api_key()
+    paths = _web_paths()
+    options = VerifyOptions(
+        qids=species, model_key=model_key, effort=effort, max_cost=max_cost, force=force, workers=workers
+    )
+    _print_outcomes(asyncio.run(run_verify(paths, options)), paths.reports)
+```
+
+- [ ] **Step 6: Kör testerna**
+
+Run: `uv run pytest tests/test_web_verify_step.py tests/test_web_facts_step.py -v`
+Expected: PASS
+
+- [ ] **Step 7: Lint, typer och commit**
+
+Run: `uv run ruff check --fix . && uv run ruff format . && uv run mypy`
+
+```bash
+git add src/birdy_fetcher/web/verify_step.py src/birdy_fetcher/web/facts_step.py src/birdy_fetcher/cli.py tests/test_web_verify_step.py
+git commit -m "feat(pipeline): web verify samlar V1 till V4 och skriver record.flags"
 ```
 
 ---
