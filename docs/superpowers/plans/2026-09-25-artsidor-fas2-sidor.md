@@ -1028,7 +1028,7 @@ export function largestGroups(list: Species[], n: number): Group[] {
 export function commonSpecies(list: Species[]): Species[] {
   return groupData.common.map((qid) => {
     const hit = list.find((s) => s.qid === qid);
-    if (!hit) throw new Error(`Vanliga arter: ${qid} saknar sida i det här bygget (skriven, granskad och publicerad krävs).`);
+    if (!hit) throw new Error(`Vanliga arter: ${qid} saknar sida i det här bygget (skriven, kontrollerad och publicerad krävs).`);
     return hit;
   });
 }
@@ -3729,7 +3729,7 @@ export function readSpeciesSitemapInfo(root) {
   const sizes = new Map();
   let newest = '';
   for (const r of built) {
-    const at = r.generated?.text?.at ?? r.review?.facts?.at ?? '';
+    const at = r.generated?.text?.at ?? r.verification?.at ?? '';
     for (const [lang, base] of BASES) {
       const path = `${base}${r.slug[lang]}/`;
       if (at) lastmod.set(path, at);
@@ -4116,7 +4116,7 @@ Vercels förhandsbygge av grenen failar tills riktig data finns (sidfoten kräve
 
 ### Task 16: Riktig data för våg 1
 
-**Villkor:** Fas 1b har skrivit texter för våg 1 på `main`: varje art i våg 1 har `status: "ok"`, `review.facts` och `review.wave: 1`, och vågens jämförelser har `status: "ok"`. Alla tolv vanliga arter (`src/data/species-groups.json` → `common`) ingår i våg 1. Är villkoret inte uppfyllt: stoppa och rapportera vad som saknas.
+**Villkor:** Fas 1b har skrivit texter för våg 1 på `main`: varje art i våg 1 har `status: "ok"`, `verification` och `review.wave: 1`, och vågens jämförelser har `status: "ok"`. Alla tolv vanliga arter (`src/data/species-groups.json` → `common`) ingår i våg 1. Är villkoret inte uppfyllt: stoppa och rapportera vad som saknas.
 
 - [ ] **Step 1: Ta in `main`**
 
@@ -4131,15 +4131,15 @@ npm ci
 node -e "
 const fs=require('fs');const d='src/data/species';
 const r=fs.readdirSync(d).filter(f=>f.endsWith('.json')).map(f=>JSON.parse(fs.readFileSync(d+'/'+f,'utf8')));
-const c={};for(const x of r){const k=x.status+'/w'+(x.review?.wave??'-')+(x.review?.facts?'/granskad':'');c[k]=(c[k]??0)+1}
+const c={};for(const x of r){const k=x.status+'/w'+(x.review?.wave??'-')+(x.verification?'/kontrollerad':'');c[k]=(c[k]??0)+1}
 console.log(c);
 const common=JSON.parse(fs.readFileSync('src/data/species-groups.json','utf8')).common;
-console.log('vanliga utan klar text i våg 1:',common.filter(q=>{const x=r.find(y=>y.qid===q);return !x||x.status!=='ok'||!x.review?.facts||x.review?.wave!==1}));
+console.log('vanliga utan klar text i våg 1:',common.filter(q=>{const x=r.find(y=>y.qid===q);return !x||x.status!=='ok'||!x.verification||x.review?.wave!==1}));
 "
 ls src/data/comparisons | wc -l
 ```
 
-Expected: ett antal `ok/w1/granskad` (cirka 40), resten `pending/...`, och listan över vanliga arter utan klar text är tom (`[]`).
+Expected: ett antal `ok/w1/kontrollerad` (cirka 40), resten `pending/...`, och listan över vanliga arter utan klar text är tom (`[]`).
 
 - [ ] **Step 3: Förhandsbygge lokalt med riktig data**
 
@@ -4203,7 +4203,7 @@ Skicka länken till Albin med:
 - `/sv/arter/om-artsidorna/` och `/species/about-these-pages/` (texten skrevs i den här planen och ska godkännas av Albin)
 - formuleringen i approtan, spelarens etikett och textcrediten: "Birdy känner igen arten ..." och "Inspelning: Talgoxe" i stället för artens namn i löptext, eftersom svenskan behöver bestämd form som datan saknar (avvikelse 2)
 
-Vänta på hans ok. Rätta det han hittar på grenen. Faktafel rättas i fas 1b:s flöde (granskningsarket), inte i JSON-filerna för hand.
+Vänta på hans ok. Rätta det han hittar på grenen. Faktafel rättas i fas 1b:s flöde (undantagsarket), inte i JSON-filerna för hand.
 
 - [ ] **Step 4: Baslinjen tas om (före sammanslagningen)**
 
@@ -4285,7 +4285,7 @@ Albin skickar. Länka alltid till ingångssidan eller en jämförelsesida, aldri
 
 **Title:** Free field guide pages for common Swedish winter and garden birds
 
-Hi all, I build Birdy, a small bird ID app from Sweden. We have just published field guide pages for {antal arter} of the most common winter and garden birds in Sweden and Europe: field marks, calls with recordings, when each species is reported in Sweden month by month (from Artportalen data via GBIF), and side by side comparisons of species that are easy to mix up, like the blue tit and the great tit. Every fact sheet is reviewed before publishing, and the texts may be reused under CC BY-SA. Corrections are very welcome. https://birdy.community/species/
+Hi all, I build Birdy, a small bird ID app from Sweden. We have just published field guide pages for {antal arter} of the most common winter and garden birds in Sweden and Europe: field marks, calls with recordings, when each species is reported in Sweden month by month (from Artportalen data via GBIF), and side by side comparisons of species that are easy to mix up, like the blue tit and the great tit. Every fact sheet is checked against its sources before publishing, and the texts may be reused under CC BY-SA. Corrections are very welcome. https://birdy.community/species/
 
 ## Lokala ornitologiska föreningar (svenska, mejl)
 
@@ -4333,7 +4333,7 @@ Våg 2 (senast 15 januari 2027) och våg 3 (senast 26 februari 2027) är dataän
 
 - [ ] **Step 1: Villkor**
 
-Fas 1b har skrivit vågens texter på `main`: vågens arter har `status: "ok"`, `review.facts` och `review.wave` lika med vågens nummer.
+Fas 1b har skrivit vågens texter på `main`: vågens arter har `status: "ok"`, `verification` och `review.wave` lika med vågens nummer.
 
 - [ ] **Step 2: Förhandsvisning**
 
